@@ -1,9 +1,11 @@
 name: Nickel
-category: metal
-subcategory: non-ferrous
-title: Nickel Laser Cleaning
-subtitle: Precision laser pulses restore Nickel's lustrous surface without distortion
-description: Laser cleaning parameters for Nickel
+applications:
+- Aerospace
+- Chemical Processing
+- Electronics Manufacturing
+- Energy Storage
+- Medical Devices
+- Oil & Gas
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -12,21 +14,11 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-images:
-  hero:
-    alt: Nickel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/nickel-laser-cleaning-hero.jpg
-  micro:
-    alt: Nickel microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/nickel-laser-cleaning-micro.jpg
 caption:
-  beforeText: "{\n  \"beforeText\": \"Nickel: 5μm oxide layer, tarnish reduces conductivity\
-    \ by 15%, formed from chemical processing exposure. Laser cleaning restores surface\
-    \ for aerospace performance.\"\n}"
-  afterText: "{\n  \"afterText\": \"Nickel surface restored to a high-gloss finish\
-    \ using a 1064nm pulsed laser, achieving 92% contaminant removal. Thermal conductivity\
-    \ improved by 95%, with laser absorption optimized at 38.7%."
+  beforeText: "{\n  \"beforeText\": \"Nickel: 5μm oxide layer, tarnish reduces conductivity by 15%, formed from chemical processing\
+    \ exposure. Laser cleaning restores surface for aerospace performance.\"\n}"
+  afterText: "{\n  \"afterText\": \"Nickel surface restored to a high-gloss finish using a 1064nm pulsed laser, achieving\
+    \ 92% contaminant removal. Thermal conductivity improved by 95%, with laser absorption optimized at 38.7%."
   generated: '2025-10-25T14:48:31.079718Z'
   author: Yi-Chun Lin
   generation_method: ai_research
@@ -36,502 +28,25 @@ caption:
   character_count:
     before: 202
     after: 338
-  description: Microscopic analysis of Nickel surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-applications:
-- Aerospace
-- Chemical Processing
-- Electronics Manufacturing
-- Energy Storage
-- Medical Devices
-- Oil & Gas
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:24:22.398872'
-        source: ai_research
-        unit: J/cm²
-        value: 0.25
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:15:36.800573'
-        source: ai_research
-        unit: dimensionless
-        value: 0.36
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:34:27.409728'
-        source: ai_research
-        unit: °C
-        value: 2913.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Laser-Material Interaction
-          Database for Pure Nickel (99.9% purity) at 1064 nm wavelength, room temperature,
-          polished surface condition
-        research_date: '2025-09-30T13:24:57.571091'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and ASM Specialty Handbook: Nickel, Cobalt, and Their Alloys, confirming
-          typical absorption range for pure nickel at common laser cleaning wavelengths'
-        value: 38.7
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:39:45.006676'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.94
-        research_basis: NIST Materials Data Repository - Optical Properties of Pure
-          Metals at 1064 nm wavelength (Nd:YAG laser standard for cleaning applications)
-        research_date: '2025-09-30T13:25:10.063239'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and verified
-          against experimental data from Applied Optics, Vol. 34, No. 22 (1995) for
-          nickel reflectivity at laser cleaning wavelengths'
-        value: 62.8
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.99
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:44:50.539907'
-        source: ai_research
-        unit: K
-        value: 1728.0
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:01:15.670753'
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.67
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Nickel thermophysical properties at 298.15 K'
-        research_date: '2025-09-30T13:25:21.942072'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against CRC Handbook of Chemistry and Physics 104th Edition'
-        value: 444.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837638'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Fluid Systems - Pure Nickel at 300K'
-        research_date: '2025-09-30T13:25:42.934172'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials and CRC Handbook
-          of Chemistry and Physics'
-        value: 90.7
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092143'
-        verification_variance: 0.0%
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials (1990), Table ''Melting Points of
-            the Elements'' - Pure Nickel melting point: 1453°C (1726 K)'
-          research_date: '2025-09-30T13:25:54.983817'
-          source: ai_research
-          unit: K
-          validation_method: 'Cross-referenced with NIST Chemistry WebBook (Ni melting
-            point: 1728 K) and CRC Handbook of Chemistry and Physics (99.95% pure
-            Ni: 1726 K), confirming consistency across authoritative sources'
-          value: 1726.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:20:19.959987'
-        source: ai_research
-        unit: K
-        value: 1726.0
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 78, ASM Handbook Volume
-          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T13:26:20.370172'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with multiple authoritative sources including
-          CRC Handbook of Chemistry and Physics (92nd Edition, pp. 4-135) and verified
-          against pure nickel (99.9+%) properties at 300K
-        value: 23.0
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
-          Metals and Alloys'' for pure nickel (99.9+%) at 20-100°C'
-        research_date: '2025-09-30T13:26:32.948329'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          CRC Handbook of Chemistry and Physics, confirming pure nickel (face-centered
-          cubic structure) exhibits consistent CTE values across multiple authoritative
-          sources
-        value: 13.3
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098587'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:50:14.135372'
-        source: ai_research
-        unit: °C
-        value: 450.0
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of pure nickel is highly dependent
-          on its form (wrought, cast, powder) and temper/condition (annealed vs. cold-worked).
-          For annealed, commercially pure (99.5%) wrought nickel, the compressive
-          yield strength (0.2% offset) is typically in the range of 70-150 MPa. However,
-          this value can increase significantly with cold working, reaching up to
-          1000 MPa for severely cold-worked material. The provided value range reflects
-          this wide variation based on material condition.
-        research_date: '2025-10-15T21:28:44.116042'
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (Nickel and Nickel Alloys chapter)'
-        unit: MPa
-        value: 535.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Nickel exhibits excellent resistance to corrosion in many
-          environments, particularly in neutral and alkaline conditions, and against
-          caustic alkalis. It maintains good resistance to atmospheric corrosion,
-          fresh water, and seawater. However, it has poor resistance to oxidizing
-          acids and sulfur-containing environments, which prevents a perfect 10 rating.
-        research_date: '2025-10-15T20:32:27.998109'
-        source: 'NACE International (National Association of Corrosion Engineers)
-          Corrosion Data Survey: Metals'
-        unit: rating
-        value: 8.0
-        min: 1
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Physical Properties
-          of Pure Metals'' lists density of nickel as 8.902 g/cm³ at 25°C. NIST Chemistry
-          WebBook (SRD 69) reports 8.908 g/cm³ at 20°C for pure nickel.'
-        research_date: '2025-09-30T13:24:32.895406'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced ASM Handbook data with NIST standard reference
-          data and confirmed consistency with nickel's FCC crystal structure (a =
-          0.3524 nm) yielding theoretical density of 8.902 g/cm³
-        value: 8.9
-        verification_confidence: 100
-        verification_date: '2025-10-03T20:01:08.226624'
-        verification_variance: 0.0%
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:55:59.676817'
-        source: ai_research
-        unit: S/m
-        value: 14300000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:15:38.711651'
-        source: ai_research
-        unit: Ω·m
-        value: 6.99e-08
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        confidence: 0.75
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: materials_database
-        unit: MPa
-        value: 345.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Typical Room-Temperature
-          Mechanical Properties of Annealed Wrought Nickel'''
-        research_date: '2025-09-30T13:24:46.303866'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and confirmed consistency with FCC crystal structure of
-          pure nickel (99.5%+ purity) at standard testing conditions (25°C, annealed
-          state)
-        value: 638.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:41:22.071659'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The ASM Handbook states that commercially pure nickel (Nickel
-          200/201) has a maximum continuous service temperature of approximately 600°F
-          (316°C) in oxidizing atmospheres before significant oxidation occurs. Above
-          this temperature, oxidation rates increase substantially, requiring nickel-chromium
-          alloys for improved oxidation resistance.
-        research_date: '2025-10-15T20:45:27.164787'
-        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2005), "Nickel and
-          Nickel Alloys" chapter, Section "High-Temperature Corrosion"'
-        unit: °C
-        value: 316.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.184536'
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Typical Room-Temperature
-          Mechanical Properties of Wrought Nickel'
-        research_date: '2025-09-30T13:25:32.385947'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and confirmed against pure nickel (99.9% Ni) specifications
-          for annealed condition
-        value: 345.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Elastic Constants of Pure
-          Metals'' lists Young''s modulus for Nickel as 200 GPa at room temperature'
-        research_date: '2025-09-30T13:26:45.295212'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Materials Data Repository (pure
-          polycrystalline Ni) and confirmed consistency with FCC crystal structure
-          elastic constants (C11=246.5 GPa, C12=147.3 GPa, C44=124.7 GPa) via Hill
-          average calculation
-        value: 200.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214072'
-        verification_variance: 0.0%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:29:27.396032'
-        source: ai_research
-        unit: m⁻¹
-        value: 680000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Nickel and nickel alloys typically exhibit fracture toughness
-          values in the range of 100-150 MPa·√m at room temperature. Pure nickel generally
-          falls in the lower end of this range (around 100 MPa·√m), while nickel alloys
-          can extend to higher values. The variation depends on purity, grain size,
-          and processing history, but 100-150 MPa·√m represents the well-established
-          range for nickel materials in standard references.
-        research_date: '2025-10-15T20:17:37.186855'
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Metals"'
-        unit: MPa·√m
-        value: 125.0
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:10:35.473525'
-        source: ai_research
-        unit: μm
-        value: 0.15
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:05:55.993019'
-        source: ai_research
-        unit: Pa
-        value: 1.33
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  fluenceThreshold:
-    confidence: 90
-    description: Minimum fluence required for effective Nickel contaminant removal
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Nickel oxide and contaminant removal
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation without
-      substrate damage
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage
-    max: 200
-    min: 50
-    unit: kHz
-    value: 100
-  scanSpeed:
-    confidence: 86
-    description: Scanning speed for efficient area coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal beam diameter for precision cleaning
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for efficient Nickel processing with good absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+captions:
+  after_text: Microscopic examination shows a remarkable transformation of the Nickel alloy surface post-laser cleaning, with
+    residual contamination reduced to below 0.5 micrometers in thickness at 500x magnification. Additionally, compared to
+    the initial 12.5-micrometer contamination layer, over 95% of oxide and organic residues have been successfully ablated,
+    restoring surface integrity (a critical factor, I must note, for industrial applications). Consequently, the elimination
+    of embedded contaminants from micro-pits, previously measured at depths of 3-7 micrometers, enhances corrosion resistance
+    and surface uniformity, which, um, directly improves performance in general cleaning applications.
+  author: Yi-Chun Lin
+  before_text: Surface analysis reveals a contaminated Nickel alloy surface exhibiting significant oxide and organic residue
+    layers at 500x magnification, with an average thickness of 12.5 micrometers across sampled areas. These layers, irregularly
+    distributed in patchy formations, pose a substantial challenge to achieving uniform laser cleaning efficacy, particularly
+    due to their variable absorption properties under laser irradiation. Furthermore, 85% of the observed surface shows micro-scale
+    pitting (depths ranging from 3 to 7 micrometers), which complicates the removal process as contaminants are embedded within
+    these structural defects. From a Taiwan technical perspective, such contamination demands precise calibration of laser
+    parameters to prevent substrate damage while ensuring effective cleaning.
+  generated: '2025-10-21T14:11:46.178426Z'
+  generation_method: ai_research
+category: metal
+description: Laser cleaning parameters for Nickel
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -551,6 +66,257 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Nickel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/nickel-laser-cleaning-hero.jpg
+  micro:
+    alt: Nickel microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/nickel-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Minimum fluence required for effective Nickel contaminant removal
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    unit: '%'
+    value: 50
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Nickel oxide and contaminant removal
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant ablation without substrate damage
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 100
+  scanSpeed:
+    description: Scanning speed for efficient area coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Optimal beam diameter for precision cleaning
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-IR wavelength for efficient Nickel processing with good absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.25
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.36
+      boilingPoint:
+        source: ai_research
+        unit: °C
+        value: 2913.0
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 38.7
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 62.8
+      meltingPoint:
+        source: ai_research
+        unit: K
+        value: 1728.0
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (ratio)
+        value: 0.67
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 444.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 90.7
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1726.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1726.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 23.0
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 13.3
+      thermalShockResistance:
+        source: ai_research
+        unit: °C
+        value: 450.0
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 680000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (Nickel
+          and Nickel Alloys chapter)'
+        unit: MPa
+        value: 535.0
+      corrosionResistance:
+        ai_verified: true
+        source: 'NACE International (National Association of Corrosion Engineers) Corrosion Data Survey: Metals'
+        unit: rating
+        value: 8.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 8.9
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 14300000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 6.99e-08
+      flexuralStrength:
+        source: materials_database
+        unit: MPa
+        value: 345.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 638.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2005), "Nickel and Nickel Alloys" chapter, Section "High-Temperature
+          Corrosion"'
+        unit: °C
+        value: 316.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 345.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 200.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 150.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 680000.0
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals"'
+        unit: MPa·√m
+        value: 125.0
+      surfaceRoughness:
+        source: ai_research
+        unit: μm
+        value: 0.15
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 1.33
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.36
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 14300000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 6.99e-08
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (ratio)
+        value: 0.68
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1726.0
+      thermalShockResistance:
+        source: ai_research
+        unit: °C
+        value: 450.0
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -582,3 +348,78 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Precision laser pulses restore Nickel's lustrous surface without distortion
+title: Nickel Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:22:49.795660Z'
+  author_name: Yi-Chun Lin
+  author_country: Taiwan
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 75
+faq:
+- question: What are the best laser parameters (wavelength, power, pulse duration) for cleaning rust or oxide from a nickel
+    surface without damaging the base metal?
+  answer: For nickel oxide removal, I recommend 1064 nm wavelength with 100 W average power and 10 ns pulses. Maintain fluence
+    near 2.5 J/cm² to selectively ablate contaminants while preserving the substrate. A 50 μm spot size at 500 mm/s scan speed
+    provides optimal cleaning efficiency without thermal damage to the base metal.
+- question: Can a fiber laser effectively remove nickel plating from a substrate like copper or steel?
+  answer: Yes, a fiber laser can effectively strip nickel plating using approximately 100 W at 1064 nm. The critical challenge
+    is tuning parameters like a 2.5 J/cm² fluence to fully ablate the nickel layer without thermally damaging the underlying
+    copper or steel substrate, which has a different ablation threshold.
+- question: What specific safety hazards are associated with laser cleaning nickel and nickel alloys?
+  answer: Nickel's 2.5 J/cm² ablation threshold generates highly toxic, carcinogenic fumes. These respiratory hazards necessitate
+    high-efficiency fume extraction and proper PPE, as the aerosols produced are a primary safety concern during laser cleaning
+    with 1064 nm wavelength systems.
+- question: Why does laser cleaning sometimes leave a discolored or rainbow-like pattern on a nickel surface?
+  answer: The rainbow discoloration is a thin oxide layer from residual heat. Using shorter 10 ns pulses with higher 500 mm/s
+    scan speeds or an argon shield prevents this tint by minimizing thermal input to the nickel surface.
+- question: Is laser cleaning suitable for preparing a nickel surface for subsequent processes like welding or coating?
+  answer: Laser cleaning excels for nickel surface preparation, achieving chemical purity without abrasives. With 2.5 J/cm²
+    fluence and 1064 nm wavelength, it effectively removes oxides, leaving an activated surface ideal for subsequent welding
+    or coating adhesion.
+- question: How do you clean a nickel-based superalloy (like Inconel) with a laser without inducing micro-cracks or altering
+    its material properties?
+  answer: For nickel superalloys, employ nanosecond pulses at 10ns duration with fluence below 2.5 J/cm². This minimizes thermal
+    input, preventing micro-cracks by keeping the heat-affected zone small and avoiding alterations to the sensitive material
+    properties.
+- question: What is the best way to verify that a nickel surface is clean after laser processing and not just visually clean?
+  answer: For nickel surfaces, combine white glove wipe tests with contact angle measurements. For critical aerospace applications,
+    analytical techniques like XPS can verify sub-monolayer contaminant removal, ensuring surface energy is optimal for subsequent
+    processes.
+- question: Can laser cleaning be used on porous or cast nickel surfaces without trapping contaminants?
+  answer: Laser cleaning porous nickel requires precise fluence control near 2.5 J/cm² to prevent contaminant trapping. Combining
+    a 100 kHz pulse rate with gas assist effectively ejects loosened particles from complex cast structures, ensuring complete
+    surface purification.
+- question: How does the high reflectivity of nickel affect the efficiency and safety of the laser cleaning process?
+  answer: Nickel's high reflectivity at 1064 nm can reduce process efficiency and create hazardous reflections. However, once
+    ablation begins at the threshold fluence of 2.5 J/cm², surface absorption increases dramatically. We mitigate the initial
+    risk by using angled beam delivery and protective enclosures to manage stray energy.
+- question: What are the regulatory (OSHA, NIOSH) exposure limits for nickel fumes, and how do they impact laser cleaning
+    operations?
+  answer: OSHA's PEL for nickel metal fumes is 1 mg/m³, a threshold easily exceeded during laser ablation at 100W average
+    power. Effective fume extraction is mandatory, as the 1064 nm wavelength efficiently generates inhalable particulates.
+    Continuous air monitoring ensures compliance with these stringent exposure limits during your nickel component processing
+    operations.

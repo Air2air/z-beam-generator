@@ -1,66 +1,4 @@
 name: Calcite
-category: stone
-subcategory: sedimentary
-title: Calcite Laser Cleaning
-subtitle: Precision laser cleaning unveils Calcite's inherent translucency while preventing
-  thermal decomposition
-description: Laser cleaning parameters for Calcite
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Calcite surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/calcite-laser-cleaning-hero.jpg
-  micro:
-    alt: Calcite microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/calcite-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the calcite surface appears very-very rough and contaminated,
-    with fine dust particles scattered and adhered tightly. Contaminants, mostly organic
-    residues and mineral specks, measure 1-10 micrometers, clustering in pits and
-    causing uneven coverage. Surface degradation shows micro-etching and small cracks,
-    so the stone looks dull and weakened, needing careful cleaning to restore smoothness.
-  afterText: Calcite surface is cleaned very-very effectively by laser process, appearing
-    smooth and restored. Material integrity remains fully intact.
-  generated: '2025-10-25T14:04:21.136236Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 55
-    after: 18
-  character_count:
-    before: 411
-    after: 138
-  description: Microscopic analysis of Calcite surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Geology and Mineralogy
@@ -72,374 +10,32 @@ applications:
 - Research and Development
 - Museum Conservation
 - Optical Manufacturing
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Standard Reference Database 78 & Applied Optics, Vol.
-          42, No. 7, 'Optical properties of calcite and gypsum in crystalline and
-          powdered form'
-        research_date: '2025-09-30T14:45:48.344614'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with single-crystal calcite absorption
-          measurements at 1064 nm wavelength using integrating sphere methodology
-          and accounting for crystal orientation effects
-        value: 8.7
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Standard Reference Database 78 & Applied Optics, Vol.
-          37, Issue 16, pp. 3558-3568 (1998) - 'Optical properties of calcite and
-          gypsum in crystalline and powdered form'
-        research_date: '2025-09-30T14:46:00.837485'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with calcite's fundamental optical properties
-          including refractive index (n₀ = 1.658, nₑ = 1.486 at 1064 nm) and absorption
-          coefficient, validated against single-crystal calcite reflectance measurements
-          at 1064 nm wavelength
-        value: 38.2
-        min: 5
-        max: 80
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Calcite thermodynamic properties at 25°C'
-        research_date: '2025-09-30T14:46:12.511393'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with CRC Handbook of Chemistry and Physics
-          (97th Edition) and Robie et al. (1978) thermodynamic data for calcium carbonate
-          minerals
-        value: 837.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837769'
-        verification_variance: 2.07%
-        min: 400
-        max: 1200
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Minerals - Calcite (CaCO₃) at 300K, crystal orientation [001]'
-        research_date: '2025-09-30T14:46:36.370555'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with American Mineralogist Crystal Structure
-          Database and ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        value: 3.61
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092238'
-        verification_variance: 13.64%
-        min: 0.2
-        max: 8
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Standard Reference Database 77 & Academic Press: ''Thermal
-            Decomposition of Carbonates'' - Calcite (CaCO₃) decomposition temperature
-            at standard atmospheric pressure'
-          research_date: '2025-09-30T14:46:48.044783'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced with XRD analysis of calcite phase transformation
-            and TGA/DSC studies showing consistent decomposition onset at 898-902°C
-            under laser irradiation conditions
-          value: 898.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Horai, K. (1971). Thermal conductivity of rock-forming minerals.
-          Journal of Geophysical Research, 76(5), 1278-1308. DOI: 10.1029/JB076i005p01278'
-        research_date: '2025-09-30T14:47:13.917621'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST mineral database and confirmed
-          through thermal property measurements of pure calcite single crystals at
-          300K, accounting for anisotropic crystal structure (trigonal system)
-        value: 1.32
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: NIST Crystal Data, ASM Handbook Volume 2, and academic studies
-          (Graf, D.L., 1961; Skinner, B.J., 1966) confirming calcite's anisotropic
-          thermal expansion with maximum coefficient along c-axis
-        research_date: '2025-09-30T14:47:24.665147'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced multiple crystallographic databases and
-          verified against calcite's rhombohedral crystal structure (CaCO3) and known
-          anisotropic thermal behavior
-        value: 25.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098699'
-        verification_variance: 11.11%
-        min: 3
-        max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of calcite is highly dependent on
-          test conditions, particularly confining pressure and sample porosity. The
-          cited value of 150 MPa is a representative upper-bound strength for relatively
-          intact, low-porosity calcite tested under standard uniaxial compressive
-          strength (UCS) conditions at room temperature. However, literature values
-          show significant variation, ranging from below 50 MPa for porous or weak
-          samples to over 200 MPa for very dense, crystalline calcite.
-        research_date: '2025-10-15T21:24:36.106816'
-        source: M. S. Paterson and T.-F. Wong, "Experimental Rock Deformation - The
-          Brittle Field," Springer, 2005, p. 90.
-        unit: MPa
-        value: 150.0
-        min: 20
-        max: 500
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Calcite (calcium carbonate) is highly reactive with even weak
-          acids, including those found in acid rain and soil environments. Its low
-          hardness (3 Mohs) makes it highly susceptible to mechanical weathering and
-          dissolution. While stable in alkaline conditions, its poor performance in
-          common corrosive environments (urban, industrial, marine) results in a low
-          overall corrosion resistance rating.
-        research_date: '2025-10-15T20:27:37.692129'
-        source: 'Deer, Howie, and Zussman, "Rock-Forming Minerals: Volume 5B, Non-Silicates,"
-          2nd Edition'
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 124 - Mineralogy Database;
-          ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
-          Materials'
-        research_date: '2025-09-30T14:45:24.097788'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with crystallographic data confirming
-          calcite's rhombohedral structure (space group R3̄c) with lattice parameters
-          a=4.9896Å, c=17.0610Å, and molecular weight of 100.087 g/mol, yielding theoretical
-          density of 2.710 g/cm³
-        value: 2.71
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:01:08.226727'
-        verification_variance: 0.0%
-        min: 1.5
-        max: 6.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Flexural strength for calcite is not a commonly reported property
-          in general material databases, as it is more often characterized by its
-          compressive strength for geological applications. However, authoritative
-          experimental rock mechanics texts like Paterson & Wong report a "bending
-          strength" for Carrara marble (a well-known, nearly pure calcite rock) of
-          approximately 10 MPa. This value is derived from standard 3-point bend tests
-          on rock cores. The confidence is high because the source is a foundational
-          rock mechanics reference, but it is not 1.00 because the value is for a
-          specific calcite marble rather than a universal property of all calcite
-          crystals.
-        research_date: '2025-10-15T20:53:29.382888'
-        source: M. S. Paterson and T.-F. Wong, "Experimental Rock Deformation - The
-          Brittle Field," Springer, 2005, p. 89 (Table 5.1).
-        unit: MPa
-        value: 10.0
-        min: 5
-        max: 50
-      hardness:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'Klein, C., & Dutrow, B. (2007). Manual of Mineral Science
-          (23rd ed.). Wiley. p. 342. ASM Handbook, Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials (1990). ASM International.
-          p. 1098.'
-        research_date: '2025-09-30T14:45:36.363656'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced mineralogy reference texts and hardness
-          testing methodology standards, confirmed through crystal structure analysis
-          (rhombohedral cleavage) and chemical composition (CaCO₃)
-        value: 3.0
-        verification_confidence: 100
-        verification_date: '2025-10-03T20:41:22.071751'
-        verification_variance: 0.0%
-        min: 1
-        max: 7
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: 'Calcite (CaCO₃) does not oxidize; it decomposes. The primary
-          high-temperature reaction is calcination: CaCO₃ -> CaO + CO₂. This decomposition
-          begins significantly around 525°C in air at atmospheric pressure, which
-          is the functional equivalent of its "oxidation resistance temperature" as
-          it defines its maximum useful service temperature in an oxidative environment.
-          This temperature is well-documented in geological and materials science
-          literature for calcium carbonate.'
-        research_date: '2025-10-15T20:40:59.694395'
-        source: 'National Research Council (US) Committee on Coatings, "High-Temperature
-          Oxidation-Resistant Coatings: Coatings for Protection from Oxidation of
-          Superalloys, Refractory Metals, and Graphite," National Academies Press,
-          1970. (Specifically, data on carbonate decomposition)'
-        unit: °C
-        value: 525.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.188840'
-        source: ai_research
-        unit: '%'
-        value: 0.7
-        min: 0.5
-        max: 25
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'Attewell, P. B., & Farmer, I. W. (1976). Principles of Engineering
-          Geology. Springer Science & Business Media. Chapter 4: Rock and mineral
-          properties, Table 4.2: Mechanical properties of common minerals.'
-        research_date: '2025-09-30T14:46:24.595902'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with multiple geological engineering sources
-          including Goodman's 'Introduction to Rock Mechanics' and verified against
-          calcite's known crystal structure (rhombohedral cleavage) and Mohs hardness
-          of 3, which correlates with low tensile strength
-        value: 6.0
-        min: 2
-        max: 25
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: Mavko, G., Mukerji, T., & Dvorkin, J. (2009). The Rock Physics
-          Handbook. Cambridge University Press, 2nd edition, Table 7.1.1 - Elastic
-          properties of minerals
-        research_date: '2025-09-30T14:47:38.732918'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with multiple crystallographic studies
-          and ultrasonic velocity measurements on single-crystal calcite specimens,
-          validated against known anisotropy ratios (C11 = 144 GPa, C33 = 84 GPa,
-          C44 = 34 GPa) for polycrystalline average
-        value: 70.0
-        verification_confidence: 90
-        verification_date: '2025-10-03T21:55:35.214177'
-        verification_variance: 4.11%
-        min: 10
-        max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The fracture toughness of calcite, as a single crystal or
-          the primary mineral in limestone/marble, is consistently reported in geomechanics
-          literature as being very low, typically in the range of 0.2-0.4 MPa·√m.
-          The value of 0.30 MPa·√m is a commonly cited median value from compilations
-          of experimental data on geological materials, reflecting its perfect rhombohedral
-          cleavage which makes it prone to brittle fracture.
-        research_date: '2025-10-15T20:11:40.942207'
-        source: Atkinson, B.K. (Ed.). Fracture Mechanics of Rock. Academic Press,
-          1987. (Table of fracture toughness values for various rocks and minerals)
-        unit: MPa·√m
-        value: 0.3
-        min: 0.5
-        max: 5
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal from Calcite
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
-    max: 70
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    max: 6
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 90
-    description: Optimal average power for Calcite cleaning without thermal damage
-    max: 65
-    min: 30
-    unit: W
-    value: 45
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface
-      contaminants
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Beam spot diameter for precise cleaning resolution on Calcite surfaces
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for efficient Calcite absorption with minimal
-      transmission
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Under microscopy, the calcite surface appears very-very rough and contaminated, with fine dust particles scattered
+    and adhered tightly. Contaminants, mostly organic residues and mineral specks, measure 1-10 micrometers, clustering in
+    pits and causing uneven coverage. Surface degradation shows micro-etching and small cracks, so the stone looks dull and
+    weakened, needing careful cleaning to restore smoothness.
+  afterText: Calcite surface is cleaned very-very effectively by laser process, appearing smooth and restored. Material integrity
+    remains fully intact.
+  generated: '2025-10-25T14:04:21.136236Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 55
+    after: 18
+  character_count:
+    before: 411
+    after: 138
+category: stone
+description: Laser cleaning parameters for Calcite
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -459,6 +55,176 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Calcite surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/calcite-laser-cleaning-hero.jpg
+  micro:
+    alt: Calcite microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/calcite-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Minimum fluence required for effective contaminant removal from Calcite
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Calcite cleaning without thermal damage
+    unit: W
+    value: 45
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning resolution on Calcite surfaces
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-IR wavelength for efficient Calcite absorption with minimal transmission
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 38.2
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 837.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 3.61
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 898.0
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.32
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 25.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: M. S. Paterson and T.-F. Wong, "Experimental Rock Deformation - The Brittle Field," Springer, 2005, p. 90.
+        unit: MPa
+        value: 150.0
+      corrosionResistance:
+        ai_verified: true
+        source: 'Deer, Howie, and Zussman, "Rock-Forming Minerals: Volume 5B, Non-Silicates," 2nd Edition'
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.71
+      flexuralStrength:
+        ai_verified: true
+        source: M. S. Paterson and T.-F. Wong, "Experimental Rock Deformation - The Brittle Field," Springer, 2005, p. 89
+          (Table 5.1).
+        unit: MPa
+        value: 10.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 3.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'National Research Council (US) Committee on Coatings, "High-Temperature Oxidation-Resistant Coatings: Coatings
+          for Protection from Oxidation of Superalloys, Refractory Metals, and Graphite," National Academies Press, 1970.
+          (Specifically, data on carbonate decomposition)'
+        unit: °C
+        value: 525.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.7
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 6.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 70.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.27
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Atkinson, B.K. (Ed.). Fracture Mechanics of Rock. Academic Press, 1987. (Table of fracture toughness values
+          for various rocks and minerals)
+        unit: MPa·√m
+        value: 0.3
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -490,3 +256,76 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: sedimentary
+subtitle: Precision laser cleaning unveils Calcite's inherent translucency while preventing thermal decomposition
+title: Calcite Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:00:31.959020Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 11
+  character_count: 103
+faq:
+- question: Can laser cleaning effectively remove calcite scale from industrial equipment without damaging the underlying
+    metal?
+  answer: Laser cleaning effectively removes calcite scale using 1064 nm wavelength and ~2.5 J/cm² fluence, which the mineral
+    readily absorbs. This process preserves underlying metals like steel or aluminum by operating below their ablation thresholds.
+    It offers a precise, chemical-free alternative to traditional descaling methods.
+- question: What laser wavelength and parameters work best for cleaning calcite deposits from marble and limestone sculptures?
+  answer: For calcite, I recommend 1064 nm wavelength with fluence below 2.5 J/cm² to prevent surface damage. A 50 kHz repetition
+    rate and 500 mm/s scan speed effectively remove deposits while preserving the original patina. These parameters ensure
+    controlled ablation of contaminants without affecting the underlying stone structure.
+- question: Does laser cleaning cause thermal decomposition of calcite into calcium oxide, and how can this be prevented?
+  answer: Thermal decomposition occurs above 2.5 J/cm², converting CaCO₃ to CaO. Using ultrashort pulses below 12 ns prevents
+    this by minimizing heat diffusion. Real-time LIBS monitoring detects calcium oxide formation, allowing immediate parameter
+    adjustment.
+- question: How do different calcite crystal sizes and orientations affect laser cleaning efficiency on geological specimens?
+  answer: Crystal orientation significantly alters calcite's absorption at 1064 nm, requiring fluence adjustments from the
+    baseline 2.5 J/cm². For heterogeneous specimens, I recommend a lower 45 W power and rapid 500 mm/s scanning to prevent
+    differential etching across grain boundaries.
+- question: What safety precautions are needed when laser cleaning calcite due to potential nanoparticle release?
+  answer: When cleaning calcite at 1064 nm with 2.5 J/cm² fluence, nanoparticle release necessitates robust respiratory protection.
+    Use a P100 filter and implement local exhaust ventilation to contain the generated calcium carbonate and contaminant aerosols,
+    ensuring operator safety.
+- question: Can laser cleaning selectively remove biological growth from calcite surfaces without etching the mineral itself?
+  answer: Yes, selective removal is achievable by exploiting differential absorption at 1064 nm. Optimal parameters around
+    2.5 J/cm² fluence and 500 mm/s scan speed effectively ablate biological growth while preserving the calcite substrate,
+    verified through spectroscopic analysis.
+- question: Why does calcite sometimes develop a white residue after laser cleaning, and how is this avoided?
+  answer: White residue typically results from calcite decomposition into calcium oxide at excessive fluence above 2.5 J/cm².
+    To prevent this, optimize scanning speed near 500 mm/s and use minimal passes to avoid thermal degradation of the surface.
+- question: What is the economic feasibility of using laser cleaning for large-scale calcite removal compared to traditional
+    methods?
+  answer: Laser cleaning achieves superior economic viability for large-scale calcite processing. With a 45 W average power
+    and 500 mm/s scan speed, its throughput surpasses mechanical methods while eliminating recurring chemical costs and abrasive
+    waste disposal, significantly reducing operational expenditure.
+- question: How does the presence of iron oxide staining within calcite affect laser cleaning parameters and outcomes?
+  answer: Iron oxide's strong 1064 nm absorption requires careful fluence control below 2.5 J/cm² to prevent preferential
+    removal that could etch the calcite. I recommend reducing power to 45 W and adjusting scan speed to manage this differential
+    absorption, preventing subsurface damage to the mineral matrix.
+- question: What diagnostic methods are used to verify complete calcite contamination removal without surface damage?
+  answer: Laser-Induced Breakdown Spectroscopy (LIBS) verifies complete decontamination by detecting elemental traces below
+    2.5 J/cm², the ablation threshold for Calcite. Raman spectroscopy then confirms no structural phase change, ensuring the
+    1064 nm wavelength cleaning preserved the crystal lattice. These non-destructive methods provide definitive quality control.

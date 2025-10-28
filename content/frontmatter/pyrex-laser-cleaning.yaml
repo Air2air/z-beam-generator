@@ -1,70 +1,4 @@
 name: Pyrex
-category: glass
-subcategory: soda-lime
-title: Pyrex Laser Cleaning
-subtitle: Unlike ordinary glass, Pyrex endures precise laser cleaning without thermal
-  damage
-description: Laser cleaning parameters for Pyrex
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/pyrex-laser-cleaning-hero.jpg
-  micro:
-    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/pyrex-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under the microscope, the Pyrex surface displays a contaminated condition
-    marked by clustered particulates and oily residues. These contaminants, fine dust
-    and hydrocarbon films, adhere unevenly, forming hazy domains that obscure the
-    glass's clarity. Surface degradation manifests in micro-pitting and faint cracks,
-    eroding the material's smooth integrity and signaling potential long-term weakening.
-  afterText: After meticulous cleaning, the Pyrex surface emerges pristine, with its
-    inherent transparency fully restored. This clarity, it reveals no residual contaminants
-    or micro-abrasions, ensuring optical purity akin to the original state. The restoration
-    quality excels, preserving the glass's thermal resistance and structural integrity
-    without compromising its borosilicate composition. For general applications, such
-    as laboratory use, this condition guarantees reliable performance and longevity.
-  generated: '2025-10-25T15:06:03.609899Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 52
-    after: 62
-  character_count:
-    before: 400
-    after: 493
-  description: Microscopic analysis of Pyrex surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Laboratory and Scientific Equipment
 - Pharmaceutical Manufacturing
@@ -76,369 +10,35 @@ applications:
 - Energy and Power Generation
 - Automotive Manufacturing
 - Chemical Processing
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:21:16.430331'
-        source: ai_research
-        unit: J/cm²
-        value: 2.1
-        min: 2.0
-        max: 6.0
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 78 (2019) - Optical Constants
-          of Inorganic Glasses; Corning Incorporated Pyrex 7740 Technical Data Sheet
-          - Composition: 80.6% SiO₂, 12.6% B₂O₃, 4.2% Na₂O, 2.2% Al₂O₃'
-        research_date: '2025-09-30T12:08:47.854247'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced NIST optical constants with Pyrex composition
-          data, calculated absorption coefficient at 1064 nm using Beer-Lambert law,
-          validated against experimental measurements from 'Laser Cleaning of Glass
-          Surfaces' (Wang et al., Applied Surface Science, 2018)
-        value: 3.2
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        confidence: 0.95
-        research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
-          Academic Press. Vol. 2, pp. 761-763. Data for borosilicate glass (Pyrex
-          7740) at 1064 nm wavelength.
-        research_date: '2025-09-30T12:09:00.375758'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST Materials Data Repository for
-          borosilicate glass composition (81% SiO₂, 13% B₂O₃, 4% Na₂O, 2% Al₂O₃) and
-          validated against typical reflectivity ranges for similar glass compositions
-          in laser processing literature
-        value: 4.0
-        min: 0.1
-        max: 92
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Pyrex borosilicate glass at 20°C (https://webbook.nist.gov/cgi/inchi?ID=C977051785&Mask=2)'
-        research_date: '2025-09-30T12:09:15.878470'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against borosilicate glass composition (80-81% SiO₂, 12-13% B₂O₃, 4-5% Na₂O/K₂O,
-          2-3% Al₂O₃)'
-        value: 753.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837527'
-        verification_variance: 0.0%
-        min: 120
-        max: 900
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Miscellaneous Materials, specifically borosilicate glass (Pyrex 7740)
-          at 300K'
-        research_date: '2025-09-30T12:09:38.876962'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and academic
-          literature on borosilicate glass thermal properties'
-        value: 1.13
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092043'
-        verification_variance: 0.0%
-        min: 0.7
-        max: 30
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'Corning Incorporated Technical Data - Pyrex 7740 Glass
-            Properties, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials'
-          research_date: '2025-09-30T12:09:50.705119'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced manufacturer specifications with materials
-            science literature and thermal analysis data for borosilicate glass composition
-            (81% SiO₂, 13% B₂O₃, 4% Na₂O, 2% Al₂O₃)
-          value: 823.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Borosilicate Glass (Pyrex 7740) at 300K'
-        research_date: '2025-09-30T12:10:17.893598'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against Pyrex 7740 composition (80.6% SiO₂, 12.6% B₂O₃, 4.2% Na₂O, 2.2%
-          Al₂O₃) and known thermal conductivity (1.11 W/m·K), density (2230 kg/m³),
-          and specific heat (830 J/kg·K)'
-        value: 0.67
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Specification - Pyrex 7740
-          Borosilicate Glass (20-300°C range), ASM Handbook Volume 2: Properties and
-          Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:10:30.199408'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced manufacturer specifications with ASM Handbook
-          data and verified against borosilicate glass composition (SiO₂ ~80%, B₂O₃
-          ~13%, Na₂O ~4%, Al₂O₃ ~2%) characteristic of Pyrex 7740
-        value: 3.25
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098478'
-        verification_variance: 0.0%
-        min: 0.1
-        max: 15
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of glass is significantly higher
-          than its tensile strength. For borosilicate glass like Pyrex, authoritative
-          manufacturer data from Corning specifies a typical compressive strength
-          of 1 GPa (1000 MPa). This value is a standard reference for the material's
-          failure point under a crushing load.
-        research_date: '2025-10-15T21:30:38.907954'
-        source: Corning Incorporated, "Pyrex® 7740 Borosilicate Glass Properties Sheet"
-        unit: MPa
-        value: 1000.0
-        min: 500
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Pyrex borosilicate glass exhibits excellent chemical durability
-          against water, acids, salt solutions, and halogens. It maintains stability
-          in most environments except strong alkalis and hydrofluoric acid, where
-          it shows moderate corrosion. The borosilicate composition provides superior
-          chemical resistance compared to ordinary soda-lime glass.
-        research_date: '2025-10-15T20:34:35.486658'
-        source: Corning Incorporated (Pyrex manufacturer) technical documentation
-        unit: rating
-        value: 8.0
-        min: 9
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Specifications for Pyrex 7740
-          borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:08:22.590697'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced manufacturer specifications with academic
-          literature on borosilicate glass properties and verified against NIST Standard
-          Reference Data for glass materials
-        value: 2.23
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226527'
-        verification_variance: 0.0%
-        min: 1.2
-        max: 7.6
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:12:44.608397'
-        source: ai_research
-        unit: Ω·m
-        value: 120000000000000.0
-        min: 10000000000.0
-        max: 1000000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The manufacturer's technical data sheet is the definitive
-          source for this property. It lists the modulus of rupture (a measure of
-          flexural strength) for annealed Pyrex 7740 glass as 69 MPa, determined by
-          a standard 4-point bend test method (ASTM C158). This value is consistent
-          across multiple authoritative engineering and materials science references
-          for borosilicate glass.
-        research_date: '2025-10-15T21:00:37.365411'
-        source: Corning Incorporated, "Pyrex® 7740 Borosilicate Glass Technical Data
-          Sheet"
-        unit: MPa
-        value: 69.0
-        min: 50
-        max: 750.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Property Sheets for Pyrex 7740
-          borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:08:34.569164'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced manufacturer specifications with academic
-          literature on borosilicate glass mechanical properties and verified against
-          standardized testing methodologies for glass hardness measurement
-        value: 6.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071557'
-        verification_variance: 0.0%
-        min: 3.5
-        max: 9.5
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The maximum continuous service temperature for Pyrex 7740
-          borosilicate glass in air is consistently cited as 500°C by its primary
-          manufacturer, Corning. This is not an oxidation temperature in the metallic
-          sense, but the temperature at which the glass begins to undergo significant
-          thermal deformation and chemical degradation, which is the relevant failure
-          mode for this material class.
-        research_date: '2025-10-15T20:47:27.485512'
-        source: Corning Incorporated, "Pyrex® 7740 Technical Data Sheet"
-        unit: °C
-        value: 500.0
-        min: 400.0
-        max: 1700.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Section ''Properties of Glass''
-          and Corning Incorporated Pyrex® 7740 technical data sheets'
-        research_date: '2025-09-30T12:09:26.897999'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced manufacturer technical data with materials
-          science handbook values and verified against borosilicate glass composition-property
-          relationships
-        value: 70.0
-        min: 30
-        max: 2000
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Property Sheets for Pyrex 7740
-          borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:10:42.875977'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced manufacturer specifications with academic
-          literature on borosilicate glass mechanical properties and verified against
-          ASTM C623 standard testing methods for Young's modulus measurement in glasses
-        value: 62.0
-        min: 10
-        max: 400
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Pyrex, a borosilicate glass, has low fracture toughness typical
-          of oxide glasses. Published values for borosilicate glass generally range
-          from 0.70 to 0.85 MPa·√m, with 0.77 MPa·√m being a commonly reported median
-          value in materials science literature and standards compilations for this
-          material class.
-        research_date: '2025-10-15T20:20:12.809620'
-        source: ASTM International, "Fracture Toughness of Ceramics and Hardmetals,"
-          compiled data for borosilicate glass (Pyrex)
-        unit: MPa·√m
-        value: 0.77
-        min: 0.5
-        max: 2
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      damaging Pyrex substrate
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      thermal buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 90
-    description: Optimal average power for Pyrex surface cleaning without thermal
-      damage
-    max: 40
-    min: 15
-    unit: W
-    value: 25
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-    max: 200
-    min: 50
-    unit: ns
-    value: 100
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk Pyrex absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Under the microscope, the Pyrex surface displays a contaminated condition marked by clustered particulates and
+    oily residues. These contaminants, fine dust and hydrocarbon films, adhere unevenly, forming hazy domains that obscure
+    the glass's clarity. Surface degradation manifests in micro-pitting and faint cracks, eroding the material's smooth integrity
+    and signaling potential long-term weakening.
+  afterText: After meticulous cleaning, the Pyrex surface emerges pristine, with its inherent transparency fully restored.
+    This clarity, it reveals no residual contaminants or micro-abrasions, ensuring optical purity akin to the original state.
+    The restoration quality excels, preserving the glass's thermal resistance and structural integrity without compromising
+    its borosilicate composition. For general applications, such as laboratory use, this condition guarantees reliable performance
+    and longevity.
+  generated: '2025-10-25T15:06:03.609899Z'
+  author: Alessandro Moretti
+  generation_method: ai_research
+  word_count:
+    before: 52
+    after: 62
+  character_count:
+    before: 400
+    after: 493
+category: glass
+description: Laser cleaning parameters for Pyrex
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -458,6 +58,180 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/pyrex-laser-cleaning-hero.jpg
+  micro:
+    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/pyrex-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Energy density threshold for effective contaminant removal without damaging Pyrex substrate
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning without excessive thermal buildup
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Pyrex surface cleaning without thermal damage
+    unit: W
+    value: 25
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+    unit: ns
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk Pyrex absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 2.1
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 3.2
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 4.0
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 753.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 1.13
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 823.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.67
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 3.25
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: Corning Incorporated, "Pyrex® 7740 Borosilicate Glass Properties Sheet"
+        unit: MPa
+        value: 1000.0
+      corrosionResistance:
+        ai_verified: true
+        source: Corning Incorporated (Pyrex manufacturer) technical documentation
+        unit: rating
+        value: 8.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.23
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 120000000000000.0
+      flexuralStrength:
+        ai_verified: true
+        source: Corning Incorporated, "Pyrex® 7740 Borosilicate Glass Technical Data Sheet"
+        unit: MPa
+        value: 69.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 6.0
+      oxidationResistance:
+        ai_verified: true
+        source: Corning Incorporated, "Pyrex® 7740 Technical Data Sheet"
+        unit: °C
+        value: 500.0
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 70.0
+      youngsModulus:
+        source: ai_research
+        unit: GPa
+        value: 62.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.77
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: ASTM International, "Fracture Toughness of Ceramics and Hardmetals," compiled data for borosilicate glass
+          (Pyrex)
+        unit: MPa·√m
+        value: 0.77
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 120000000000000.0
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -489,3 +263,71 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: soda-lime
+subtitle: Unlike ordinary glass, Pyrex endures precise laser cleaning without thermal damage
+title: Pyrex Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:33:20.446636Z'
+  author_name: Alessandro Moretti
+  author_country: Italy
+  generation_method: ai_research_voice
+  word_count: 11
+  character_count: 82
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning contaminants from Pyrex
+    without damaging the surface?
+  answer: For Pyrex cleaning, employ a 1064 nm wavelength with ~25 W average power and 100 ns pulses. Maintain fluence below
+    2.5 J/cm² to selectively remove organics and particulates without micro-cracking the substrate, as this wavelength is
+    poorly absorbed by the pristine glass. A 50 μm spot size scanned at 500 mm/s ensures effective, non-damaging results.
+- question: Can laser cleaning create micro-fractures or induce thermal stress in Pyrex, and how can this be prevented?
+  answer: Yes, Pyrex's low thermal expansion makes it vulnerable to microfractures from excessive fluence. We prevent this
+    using nanosecond pulses at 2.5 J/cm² and a 50 μm spot size. A defocused beam or thin water film further manages thermal
+    stress, ensuring the integrity of your precision components.
+- question: Is it safe to use a laser to remove labels, adhesives, or paint from Pyrex laboratory glassware?
+  answer: Properly configured laser cleaning at 1064nm wavelength and 2.5 J/cm² fluence safely removes labels from Pyrex.
+    This process vaporizes adhesives without chemical residue, preserving the material's optical clarity and structural integrity
+    for laboratory applications.
+- question: How does laser cleaning affect the optical properties and surface roughness of Pyrex?
+  answer: Properly calibrated laser cleaning at 2.5 J/cm² fluence maintains Pyrex's optical clarity. This process avoids surface
+    hazing and minimizes roughness changes, ensuring high transmission with negligible light scattering for demanding optical
+    applications.
+- question: What are the primary safety hazards when laser cleaning Pyrex, and what PPE is required?
+  answer: Thermal shock from exceeding 2.5 J/cm² can shatter Pyrex. The 1064 nm wavelength requires IR-specific laser safety
+    eyewear. Hazardous glass and coating particulates necessitate a properly fitted respirator to protect against inhalation.
+- question: Can laser cleaning be used to prepare a Pyrex surface for high-vacuum or thin-film deposition applications?
+  answer: Yes, laser cleaning effectively prepares Pyrex for high-vacuum applications. Using a 1064 nm wavelength at ~2.5
+    J/cm² removes contaminants and activates the surface without subsurface damage, outperforming solvent methods for superior
+    thin-film adhesion.
+- question: Why is a pulsed fiber laser often recommended for cleaning Pyrex over a continuous-wave (CW) laser?
+  answer: Pulsed fiber lasers, typically at 1064 nm wavelength, provide nanosecond pulses that enable precise thermal control.
+    This prevents heat diffusion into the Pyrex bulk, crucial as its low thermal conductivity makes it susceptible to thermal
+    shock from continuous-wave exposure.
+- question: What is the best method to verify the effectiveness and safety of laser cleaning on Pyrex?
+  answer: First, inspect under 50× magnification for micro-cracks. For critical flatness in optics, use white-light interferometry
+    to verify surface roughness remains below 10 nm Ra. Finally, conduct a helium leak test to ensure integrity for vacuum
+    systems, confirming the 2.5 J/cm² fluence didn't compromise the material.
+- question: How do you clean deeply embedded metallic stains or diffusion layers from Pyrex with a laser?
+  answer: For deeply embedded metallic stains in Pyrex, we use a multi-step approach. First, a 1064 nm wavelength at 2.5 J/cm²
+    fluence selectively vaporizes the surface contaminant. A subsequent, gentler pass then removes any remaining diffusion
+    layer without exceeding the ablation threshold of the Pyrex substrate itself.

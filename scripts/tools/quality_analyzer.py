@@ -2,6 +2,20 @@
 """
 Schema-Based Quality Metrics
 
+⚠️  DEPRECATED - Use validation/content_validator.py instead
+This standalone tool is maintained for backward compatibility only.
+New code should use validation.content_validator.ContentValidationService
+
+Migration Guide:
+- Quality metrics → ContentValidationService
+- Schema-based scoring → ContentValidationResult
+- Standalone script → Use python3 run.py --content-validation-report FILE
+
+See: docs/CONTENT_VALIDATION_SYSTEM.md for complete migration guide
+
+---
+
+Legacy Implementation:
 Quality measurement system that leverages JSON schemas to provide:
 1. Multi-dimensional completeness scoring
 2. Research validation depth analysis
@@ -12,10 +26,21 @@ Quality measurement system that leverages JSON schemas to provide:
 
 import json
 import yaml
+import warnings
 from pathlib import Path
 from typing import Dict, Any, Optional
 from dataclasses import dataclass, asdict
 from datetime import datetime
+
+# Issue deprecation warning on import
+warnings.warn(
+    "scripts.tools.quality_analyzer is deprecated. "
+    "Use validation.content_validator.ContentValidationService or "
+    "python3 run.py --content-validation-report instead. "
+    "See docs/CONTENT_VALIDATION_SYSTEM.md for migration guide.",
+    DeprecationWarning,
+    stacklevel=2
+)
 
 
 @dataclass

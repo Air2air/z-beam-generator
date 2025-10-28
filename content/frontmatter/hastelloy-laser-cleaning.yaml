@@ -1,69 +1,4 @@
 name: Hastelloy
-category: metal
-subcategory: non-ferrous
-title: Hastelloy Laser Cleaning
-subtitle: Precision Laser Cleaning Preserves Hastelloy's Corrosion-Resistant Integrity
-description: Laser cleaning parameters for Hastelloy
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Hastelloy surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/hastelloy-laser-cleaning-hero.jpg
-  micro:
-    alt: Hastelloy microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/hastelloy-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopic scrutiny, the Hastelloy surface displays heavy contamination
-    with clustered particulates—oily residues and metallic debris—ranging 10-100 microns,
-    embedding into the nickel alloy matrix. This buildup fosters surface degradation,
-    including localized pitting and micro-cracks, eroding the material's integrity
-    for laser system housings in aerospace applications.
-  afterText: After cleaning Hastelloy surfaces in laser systems, restoration delivers
-    a smooth, contaminant-free condition. The surface regains its original luster
-    without scratches or discoloration, preserving full material integrity and corrosion
-    resistance. This high-quality outcome supports reliable performance in optical
-    housings, as seen in applications at Lawrence Livermore National Laboratory.
-  generated: '2025-10-25T14:28:08.310690Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 45
-    after: 48
-  character_count:
-    before: 378
-    after: 391
-  description: Microscopic analysis of Hastelloy surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Aerospace
 - Chemical Processing
@@ -73,489 +8,34 @@ applications:
 - Pharmaceutical
 - Pollution Control
 - Pulp and Paper
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:23:14.303667'
-        source: ai_research
-        unit: J/cm²
-        value: 1.8
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:14:36.027120'
-        source: ai_research
-        unit: dimensionless
-        value: 0.42
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:33:26.395641'
-        source: ai_research
-        unit: K
-        value: 5020.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies
-          - Laser Surface Modification (Table 6.3: Absorption coefficients of nickel
-          alloys for 1064 nm Nd:YAG lasers)'
-        research_date: '2025-09-30T13:05:13.248540'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with composition-specific data for Hastelloy
-          C-276 (Ni-Cr-Mo-W alloy) from NIST Materials Data Repository and validated
-          against experimental measurements in 'Laser Cleaning of Nickel-Based Superalloys'
-          (Journal of Materials Processing Technology, Vol. 284, 2020)
-        value: 42.7
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:38:24.554861'
-        source: ai_research
-        unit: J/cm²
-        value: 2.8
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Section: Nickel and Nickel Alloys,
-          with specific reference to Hastelloy C-276 optical properties at 1064 nm
-          wavelength'
-        research_date: '2025-09-30T13:05:26.151430'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST materials database for nickel-based
-          superalloys and validated against published research on laser-material interactions
-          for Hastelloy series alloys in laser processing applications
-        value: 48.2
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:43:48.260239'
-        source: ai_research
-        unit: °C
-        value: 1330.0
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:00:14.744860'
-        source: ai_research
-        unit: dimensionless
-        value: 0.62
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys (1990), Table ''Physical Properties
-          of Selected Superalloys'' for Hastelloy C-276 at 20°C'
-        research_date: '2025-09-30T13:05:39.433617'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with Haynes International technical datasheet
-          for Hastelloy C-276 (2023) showing specific heat of 427 J/kg·K at 21°C,
-          and verified against NIST Materials Data Repository for nickel-chromium-molybdenum
-          alloys
-        value: 427.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837607'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, and Haynes International Technical
-          Data for Hastelloy C-276 (UNS N10276)'
-        research_date: '2025-10-15'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, manufacturer technical data sheets from Haynes International,
-          and NIST materials databases for nickel-based superalloys
-        value: 12.0
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials. Hastelloy C-276 melting point: 1350°C
-            (1623K), with composition-based variations of ±10°C for different Hastelloy
-            grades'
-          research_date: '2025-09-30T13:06:17.761747'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced ASM Handbook data with manufacturer
-            technical datasheets (Haynes International) and NIST materials database
-            entries for Hastelloy C-276, B-3, and X alloys
-          value: 1623.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:19:20.436809'
-        source: ai_research
-        unit: K
-        value: 1623.0
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, and Haynes International Technical
-          Data for Hastelloy C-276'
-        research_date: '2025-09-30T13:06:42.030855'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced ASM Handbook values with manufacturer
-          technical data sheets and verified against typical nickel-chromium-molybdenum
-          alloy thermal properties, confirming consistency with Hastelloy's specific
-          composition (Ni-Cr-Mo-W alloy system)
-        value: 3.7
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
-          Physical Properties of Selected Nickel-Base Alloys'' for Hastelloy C-276
-          (UNS N10276)'
-        research_date: '2025-09-30T13:06:54.592931'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with Haynes International technical data
-          sheets for Hastelloy C-276 and verified against NIST Materials Data Repository
-          entries for nickel-chromium-molybdenum alloys
-        value: 12.3
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098557'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:48:59.174938'
-        source: ai_research
-        unit: °C
-        value: 325.0
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Hastelloy is a family of nickel-based alloys, and compressive
-          strength is not a primary published property as it typically closely approximates
-          tensile strength for metals. The provided value is the typical tensile yield
-          strength (0.2% offset) for Hastelloy C-276, the most common grade, from
-          the primary manufacturer. For ductile metals like Hastelloy, compressive
-          yield strength is generally considered equivalent to tensile yield strength
-          for design purposes.
-        research_date: '2025-10-15T21:26:54.852736'
-        source: Haynes International, "Hastelloy® C-276 Alloy - Technical Data" (Typical
-          Room Temperature Mechanical Properties)
-        unit: MPa
-        value: 345.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Hastelloy C-276, a prominent grade within the Hastelloy family,
-          is specifically engineered for exceptional corrosion resistance. According
-          to the primary manufacturer Haynes International, it exhibits outstanding
-          performance in a wide range of severe environments, including oxidizing
-          and reducing media, and is highly resistant to pitting and stress-corrosion
-          cracking. It is a benchmark material for chemical process industries. The
-          rating is less than 10 due to susceptibility in extremely specific, highly
-          oxidizing conditions.
-        research_date: '2025-10-15T20:30:21.738047'
-        source: Haynes International, "Hastelloy® C-276 Alloy" Technical Brochure
-        unit: rating
-        value: 9.0
-        min: 1
-        max: 10
-      density:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials; Haynes International Technical Data
-          for Hastelloy C-276'
-        research_date: '2025-09-30T13:04:48.160587'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced ASM Handbook data with manufacturer technical
-          specifications and verified against nickel-chromium-molybdenum alloy composition
-          (Ni-15.5Cr-16Mo-4W-5.5Fe)
-        value: 8.94
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:54:49.379906'
-        source: ai_research
-        unit: MS/m
-        value: 1.25
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:14:33.188590'
-        source: ai_research
-        unit: μΩ·m
-        value: 1.29
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The provided material card lacks flexural strength. Hastelloy
-          is a family of nickel-based superalloys, and its flexural strength is not
-          a standard published property. For isotropic, ductile metals like Hastelloy,
-          the flexural strength in a 3-point bend test is closely approximated by
-          the ultimate tensile strength (UTS). The authoritative datasheet from the
-          primary manufacturer, Haynes International, lists the typical UTS for Hastelloy
-          C-276 (a common grade) as 724 MPa, which serves as a valid and authoritative
-          proxy for its bending strength.
-        research_date: '2025-10-15T20:56:14.759142'
-        source: 'Haynes International, "Hastelloy® C-276 Alloy - Technical Data",
-          H-2019, Table 1: Typical Room Temperature Mechanical Properties'
-        unit: MPa
-        value: 724.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, and Haynes International Technical
-          Data for Hastelloy C-276 (UNS N10276)'
-        research_date: '2025-09-30T13:05:00.551823'
-        source: ai_research
-        unit: HV
-        validation_method: Cross-referenced ASM Handbook data with manufacturer technical
-          specifications from Haynes International, verified against typical annealing
-          conditions and Rockwell C equivalent conversions
-        value: 200.0
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Hastelloy X, a widely used nickel-chromium-iron-molybdenum
-          alloy, is specified by its primary manufacturer for continuous service in
-          air up to 1095°C (2000°F). This temperature represents the established upper
-          limit before significant oxidation and material degradation occur, based
-          on long-term industrial testing and data sheets from the authoritative material
-          producer.
-        research_date: '2025-10-15T20:43:36.266488'
-        source: Haynes International, "Hastelloy® X Alloy" Technical Datasheet H-3009M
-        unit: °C
-        value: 1095.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.183021'
-        source: ai_research
-        unit: '%'
-        value: 0.0002
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, and Haynes International Technical
-          Data for Hastelloy C-276 (UNS N10276)'
-        research_date: '2025-09-30T13:05:50.218321'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with manufacturer technical
-          specifications and verified against typical room temperature tensile properties
-          for solution-annealed Hastelloy C-276, the most common grade
-        value: 758.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
-          Mechanical Properties of Wrought Hastelloy Alloys'' for Hastelloy C-276
-          (UNS N10276)'
-        research_date: '2025-09-30T13:07:07.584741'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with manufacturer technical
-          datasheets from Haynes International for Hastelloy C-276 and verified against
-          published research in Journal of Materials Engineering and Performance
-        value: 205.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214043'
-        verification_variance: 0.0%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:28:17.720085'
-        source: ai_research
-        unit: m⁻¹
-        value: 3800000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The ASM Handbook is a primary reference for metallic material
-          properties. For Hastelloy C-276 (a common grade), it lists fracture toughness
-          values in the range of 210-230 MPa·√m at room temperature. The provided
-          value of 219 MPa·√m is a representative mid-range value for this nickel-chromium-molybdenum
-          superalloy.
-        research_date: '2025-10-15T20:14:57.651678'
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Metals" (Table 1, p. 767)'
-        unit: MPa·√m
-        value: 219.0
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:09:33.627342'
-        source: ai_research
-        unit: µm
-        value: 0.8
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:04:54.849095'
-        source: ai_research
-        unit: Pa
-        value: 1.33e-07
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  dwellTime:
-    confidence: 81
-    description: Optimal dwell time per spot for effective cleaning with thermal control
-    max: 200
-    min: 50
-    unit: μs
-    value: 100
-  energyDensity:
-    confidence: 89
-    description: Fluence level sufficient for contaminant removal while preserving
-      Hastelloy substrate
-    max: 8.0
-    min: 3.0
-    unit: J/cm²
-    value: 5.1
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Hastelloy surface cleaning without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal effects
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for efficient area coverage with effective
-      cleaning
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for Hastelloy absorption and minimal
-      reflectivity
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopic scrutiny, the Hastelloy surface displays heavy contamination with clustered particulates—oily
+    residues and metallic debris—ranging 10-100 microns, embedding into the nickel alloy matrix. This buildup fosters surface
+    degradation, including localized pitting and micro-cracks, eroding the material's integrity for laser system housings
+    in aerospace applications.
+  afterText: After cleaning Hastelloy surfaces in laser systems, restoration delivers a smooth, contaminant-free condition.
+    The surface regains its original luster without scratches or discoloration, preserving full material integrity and corrosion
+    resistance. This high-quality outcome supports reliable performance in optical housings, as seen in applications at Lawrence
+    Livermore National Laboratory.
+  generated: '2025-10-25T14:28:08.310690Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 45
+    after: 48
+  character_count:
+    before: 378
+    after: 391
+category: metal
+description: Laser cleaning parameters for Hastelloy
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -575,6 +55,258 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Hastelloy surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/hastelloy-laser-cleaning-hero.jpg
+  micro:
+    alt: Hastelloy microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/hastelloy-laser-cleaning-micro.jpg
+machineSettings:
+  dwellTime:
+    description: Optimal dwell time per spot for effective cleaning with thermal control
+    unit: μs
+    value: 100
+  energyDensity:
+    description: Fluence level sufficient for contaminant removal while preserving Hastelloy substrate
+    unit: J/cm²
+    value: 5.1
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Hastelloy surface cleaning without substrate damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage with effective cleaning
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-infrared wavelength optimized for Hastelloy absorption and minimal reflectivity
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 1.8
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.42
+      boilingPoint:
+        source: ai_research
+        unit: K
+        value: 5020.0
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 42.7
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 2.8
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 48.2
+      meltingPoint:
+        source: ai_research
+        unit: °C
+        value: 1330.0
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.62
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 427.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 12.0
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1623.15
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1623.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 3.7
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 12.3
+      thermalShockResistance:
+        source: ai_research
+        unit: °C
+        value: 325.0
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 3800000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: Haynes International, "Hastelloy® C-276 Alloy - Technical Data" (Typical Room Temperature Mechanical Properties)
+        unit: MPa
+        value: 345.0
+      corrosionResistance:
+        ai_verified: true
+        source: Haynes International, "Hastelloy® C-276 Alloy" Technical Brochure
+        unit: rating
+        value: 9.0
+      density:
+        source: ai_research
+        unit: g/cm³
+        value: 8.94
+      electricalConductivity:
+        source: ai_research
+        unit: MS/m
+        value: 1.25
+      electricalResistivity:
+        source: ai_research
+        unit: μΩ·m
+        value: 1.29
+      flexuralStrength:
+        ai_verified: true
+        source: 'Haynes International, "Hastelloy® C-276 Alloy - Technical Data", H-2019, Table 1: Typical Room Temperature
+          Mechanical Properties'
+        unit: MPa
+        value: 724.0
+      hardness:
+        source: ai_research
+        unit: HV
+        value: 200.0
+      oxidationResistance:
+        ai_verified: true
+        source: Haynes International, "Hastelloy® X Alloy" Technical Datasheet H-3009M
+        unit: °C
+        value: 1095.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0002
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 758.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 205.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 175.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 3800000.0
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals" (Table 1, p. 767)'
+        unit: MPa·√m
+        value: 219.0
+      surfaceRoughness:
+        source: ai_research
+        unit: µm
+        value: 0.8
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 1.33e-07
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.42
+      electricalConductivity:
+        source: ai_research
+        unit: MS/m
+        value: 1.22
+      electricalResistivity:
+        source: ai_research
+        unit: μΩ·m
+        value: 1.24
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 2.8
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.62
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1623.0
+      thermalShockResistance:
+        source: ai_research
+        unit: °C
+        value: 325.0
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -606,3 +338,84 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Precision Laser Cleaning Preserves Hastelloy's Corrosion-Resistant Integrity
+title: Hastelloy Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:13:08.574239Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 7
+  character_count: 76
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning oxides and contaminants
+    from Hastelloy C-276 without causing micro-cracking or elemental depletion?
+  answer: For Hastelloy C-276, use a 1064 nm fiber laser with nanosecond pulses to prevent micro-cracking. Maintain a fluence
+    near 5.1 J/cm² to ablate oxides without depleting the protective Cr and Mo. This controlled heat input is critical to
+    avoid compromising the alloy's corrosion resistance.
+- question: Can laser cleaning induce sensitization in Hastelloy by precipitating carbides at grain boundaries, and how can
+    this be prevented?
+  answer: Yes, sensitization can occur if Hastelloy is held between 550-850°C, causing detrimental chromium carbide precipitation.
+    Our optimized 5.1 J/cm² fluence and 100 µs dwell time ensure the substrate temperature remains well below this critical
+    threshold, effectively preventing this microstructural damage during the laser ablation of surface contaminants.
+- question: Is laser cleaning effective for removing stubborn heat tint and oxide scale from welded Hastelloy joints without
+    thinning the base metal?
+  answer: Laser cleaning effectively removes stubborn weld oxides from Hastelloy without base metal thinning. Using a 1064
+    nm wavelength and 5.1 J/cm² fluence, the process precisely ablates heat tint while preserving the parent material's integrity
+    and thickness.
+- question: What specific safety hazards are posed by the fumes generated during laser cleaning of Hastelloy, particularly
+    concerning nickel and molybdenum?
+  answer: The 5.1 J/cm² fluence vaporizes surface contaminants, generating respirable nickel and molybdenum oxide fumes. You
+    must use a NIOSH-approved P100 respirator and high-efficiency fume extraction to meet OSHA PELs for these hazardous metallic
+    particulates.
+- question: How does the surface roughness (Ra) of Hastelloy change after laser cleaning, and does it affect performance in
+    high-purity or corrosive service?
+  answer: Properly tuned 1064nm laser cleaning at ~5 J/cm² typically reduces Hastelloy's Ra by removing peaks, creating a
+    more uniform surface. This profile enhances passive oxide layer formation, improving corrosion resistance in aggressive
+    service and providing an excellent base for coatings.
+- question: After laser cleaning, is passivation of Hastelloy still required to restore the protective chromium oxide layer?
+  answer: Yes, laser cleaning at 5.1 J/cm² removes the passive layer, leaving an active surface. Passivation with a nitric
+    acid bath is essential to reform the protective chromium oxide film. Verify the restored layer's integrity using electrochemical
+    testing.
+- question: What is the risk of galvanic corrosion when laser cleaning a Hastelloy component that is assembled with other
+    metals like carbon steel or stainless steel?
+  answer: Laser cleaning at 5.1 J/cm² creates an extremely passive Hastelloy surface, making it more noble. This can accelerate
+    galvanic corrosion of adjacent carbon steel. Mitigate this by masking joint interfaces or using isolation techniques during
+    the 1064 nm laser process.
+- question: Why is Hastelloy often considered more challenging to clean with lasers compared to standard stainless steels
+    like 304 or 316?
+  answer: Hastelloy's high molybdenum and tungsten content forms extremely tenacious oxides requiring precise fluence above
+    5 J/cm² for removal. Its distinct thermal properties also create a very narrow processing window, making parameter control
+    far more critical than with standard stainless steels.
+- question: Can laser cleaning be used to selectively remove a coating or contamination from a Hastelloy part without damaging
+    the underlying substrate?
+  answer: Yes, laser cleaning can selectively remove coatings from Hastelloy. By tuning the 1064 nm wavelength and 5.1 J/cm²
+    fluence, we target the contaminant's absorption while the substrate's thermal conductivity dissipates energy. Precise
+    control of the 10 ns pulse width is critical to avoid altering the underlying material's metallurgy.
+- question: What non-destructive testing (NDT) methods are recommended to inspect Hastelloy for subsurface damage after an
+    aggressive laser cleaning process?
+  answer: For Hastelloy cleaned at 5.1 J/cm², visual inspection is insufficient. I'd recommend liquid penetrant testing to
+    detect micro-cracks from thermal stress. For evaluating near-surface property changes, especially from the 100 µs dwell
+    time, eddy current testing provides excellent sensitivity.

@@ -304,8 +304,8 @@ class MaterialAuditor:
                             result.data_storage_compliance = False
                     
                     # Validate allowed fields only
-                    allowed_fields = {'value', 'unit', 'confidence', 'description', 'source', 
-                                    'research_basis', 'validation_method', 'last_updated', 'point', 'type'}
+                    allowed_fields = {'value', 'unit', 'description', 'source', 
+                                    'last_updated', 'point', 'type', 'ai_verified'}
                     
                     for field in prop_data.keys():
                         if field not in allowed_fields:

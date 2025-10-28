@@ -1,66 +1,4 @@
 name: Plaster
-category: masonry
-subcategory: general
-title: Plaster Laser Cleaning
-subtitle: Preserve plaster's fragile porosity with precise low-power laser restoration
-  techniques
-description: Laser cleaning parameters for Plaster
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-images:
-  hero:
-    alt: Plaster surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/plaster-laser-cleaning-hero.jpg
-  micro:
-    alt: Plaster microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/plaster-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under the microscope, the plaster surface displays fine cracks and pitting
-    from degradation, with dark dust particles and oily residues embedded in porous
-    areas. This reveals uneven texture and material loss, affecting overall integrity.
-  afterText: The laser-cleaned plaster surface shows a smooth, even finish free of
-    residues. This treatment demonstrates excellent restoration quality, reviving
-    the original texture without compromise. Material integrity remains fully intact,
-    and it ensures the masonry's enduring strength for general applications.
-  generated: '2025-10-25T14:54:46.925161Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 34
-    after: 39
-  character_count:
-    before: 237
-    after: 302
-  description: Microscopic analysis of Plaster surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Healthcare Facilities
@@ -72,362 +10,32 @@ applications:
 - Food Processing
 - Manufacturing Tooling
 - Construction Restoration
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          in Conservation'' - Table 4.3: Absorption coefficients of common masonry
-          materials at 1064 nm'
-        research_date: '2025-09-30T12:30:01.332517'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with compositional analysis of calcium
-          sulfate hemihydrate (CaSO4·0.5H2O) and mineral additives in typical plaster
-          formulations, validated against experimental data from 'Laser Cleaning of
-          Architectural Surfaces' (Journal of Cultural Heritage, 2018)
-        value: 8.2
-        min: 0.5
-        max: 15
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
-          of Building Materials at 1064 nm, specifically for gypsum plaster (CaSO₄·2H₂O)
-          with typical mineral filler composition'
-        research_date: '2025-09-30T12:30:14.336633'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 10: Materials
-          Characterization and academic studies on laser-masonry interactions (Applied
-          Surface Science, Vol. 428, 2018) confirming plaster''s reflectance range
-          at common cleaning wavelengths (1064 nm)'
-        value: 35.2
-        min: 10
-        max: 70
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Thermophysical Properties of Fluid Systems - Calcium Sulfate Hemihydrate
-          (Plaster of Paris) at standard conditions (25°C)'
-        research_date: '2025-09-30T12:30:26.931096'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against known mineralogical properties of gypsum-based plasters'
-        value: 1090.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837556'
-        verification_variance: 0.46%
-        min: 700
-        max: 1100
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST IR 7563 - Thermophysical Properties of Masonry and Its
-          Constituents, Table 2.1: Thermal Properties of Masonry Materials (Plaster:
-          0.43 W/m·K at 24°C)'
-        research_date: '2025-09-30T12:30:51.273506'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against material composition analysis of calcium sulfate hemihydrate (CaSO₄·0.5H₂O)
-          with typical porosity of 40-60%'
-        value: 0.43
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092070'
-        verification_variance: 0.0%
-        min: 0.08
-        max: 2.5
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-            of Minerals and Other Solids - Calcium Sulfate Dihydrate (Gypsum) Dehydration
-            Temperatures'
-          research_date: '2025-09-30T12:31:03.693348'
-          source: ai_research
-          unit: K
-          validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-            and ASM Handbook Volume 5: Surface Engineering for laser processing parameters,
-            validated against plaster composition (primarily CaSO4·2H2O) phase transformation
-            data'
-          value: 1073.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: spalling
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-137: Thermophysical Properties
-          of Masonry Materials, Table 4.3 - Plaster thermal properties (calcium sulfate
-          hemihydrate based)'
-        research_date: '2025-09-30T12:31:27.552423'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and ASHRAE Fundamentals Chapter 26 for building materials thermal properties'
-        value: 0.48
-        min: 0.1
-        max: 1
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Section: Building Materials and Components,
-          Table: Thermal Expansion of Common Building Materials'
-        research_date: '2025-09-30T12:31:39.940490'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with NIST Special Publication 1146: Thermophysical
-          Properties of Materials for Nuclear Engineering and specific studies on
-          gypsum plaster thermal behavior in construction materials literature'
-        value: 18.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098505'
-        verification_variance: 0.0%
-        min: 5
-        max: 20
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        confidence: 0.92
-        research_basis: 'ASTM C472-99 (Standard Test Methods for Physical Testing
-          of Gypsum Plasters) and NIST Special Publication 1129: Properties of Building
-          Materials for Advanced Analysis'
-        research_date: '2025-09-30T12:29:23.443490'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASTM standardized testing protocols with
-          NIST material property databases and verified against gypsum plaster composition
-          (CaSO₄·½H₂O) crystal structure limitations
-        value: 12.4
-        min: 5
-        max: 100
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Plaster (primarily gypsum-based) has very poor corrosion resistance
-          as it is highly soluble in water and readily deteriorates in moist or humid
-          environments. ASTM standards classify gypsum plasters as unsuitable for
-          exterior or wet service conditions due to their susceptibility to water
-          damage and lack of chemical stability when exposed to moisture, which is
-          the primary driver of general environmental corrosion.
-        research_date: '2025-10-15T20:33:14.283477'
-        source: ASTM C28/C28M Standard Specification for Gypsum Plasters
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-165: Standard Reference Materials
-          for Building Materials, Table 4-3: Physical Properties of Common Masonry
-          Materials (plaster specimens)'
-        research_date: '2025-09-30T12:29:35.830282'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with ASTM C472-99 standard test methods
-          for physical testing of gypsum plasters and ASTM C28/C28M for gypsum plaster
-          specifications
-        value: 1.5
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226554'
-        verification_variance: 2.6%
-        min: 0.6
-        max: 3.2
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: For brittle, cementitious materials like plaster, a well-established
-          empirical relationship exists where the flexural strength is typically 20-30%
-          of the compressive strength. Given the provided compressive strength of
-          12.4 MPa, this predicts a flexural strength of approximately 2.5 - 3.7 MPa.
-          Independent data sheets for gypsum plaster consistently report 3-point bend
-          test results in the range of 2.8 to 3.4 MPa, with 3.1 MPa being a representative
-          median value for a plaster of this density and compressive strength.
-        research_date: '2025-10-15T20:59:21.844434'
-        source: ASTM C28 / C28M - Standard Specification for Gypsum Plasters, and
-          typical material property data sheets for gypsum plaster from construction
-          material databases.
-        unit: MPa
-        value: 3.1
-        min: 2
-        max: 20
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 960-15 ''Hardness Measurements of
-          Common Building Materials'' (Table 3: Gypsum Plaster Hardness = 1.5-2.0
-          Mohs); ASM Handbook Vol. 18 ''Friction, Lubrication, and Wear Technology''
-          (Section: Abrasiveness of Minerals)'
-        research_date: '2025-09-30T12:29:49.555208'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced NIST building materials data with ASM
-          mineral hardness standards, confirming plaster's primary constituent (gypsum/calcium
-          sulfate hemihydrate) exhibits consistent Mohs hardness of 2.0 when properly
-          cured
-        value: 2.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071584'
-        verification_variance: 0.0%
-        min: 1
-        max: 6
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Plaster (calcium sulfate hemihydrate) decomposes to anhydrite
-          (CaSO₄) around 1200°C in air, where significant oxidation-driven structural
-          breakdown occurs. NIST data confirms this as the maximum service temperature
-          before rapid degradation, though practical limits are lower (~600°C) due
-          to dehydration phases.
-        research_date: '2025-10-15T20:46:08.023307'
-        source: National Institute of Standards and Technology (NIST), "Thermal Properties
-          of Gypsum Plaster" (Monograph 158)
-        unit: °C
-        value: 1200.0
-        min: 300.0
-        max: 1200.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASTM C472-99: Standard Test Methods for Physical Testing
-          of Gypsum Plasters and Gypsum Concrete; NIST Special Publication 1129: Properties
-          of Materials for Historic Masonry Structures'
-        research_date: '2025-09-30T12:30:37.923828'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASTM standard test data with NIST material
-          property databases and peer-reviewed studies on gypsum plaster mechanical
-          properties, confirming consistency across multiple authoritative sources
-        value: 2.0
-        min: 1
-        max: 15
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: NIST Technical Note 1493 - 'Mechanical Properties of Masonry
-          Materials' and ASM Handbook Vol. 4 - 'Heat Treating' for gypsum plaster
-          properties
-        research_date: '2025-09-30T12:31:51.660185'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple materials science sources including
-          academic studies on gypsum plaster mechanical properties and ASTM C472 standard
-          test methods for gypsum products
-        value: 3.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.213995'
-        verification_variance: 25.0%
-        min: 3.0
-        max: 50
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Plaster (gypsum plaster) is a brittle, low-strength material.
-          The provided compressive strength (12.4 MPa) and low Mohs hardness are consistent
-          with its known fragility. Authoritative materials property compilations
-          (Ashby, CES EduPack) list the fracture toughness (K_IC) for gypsum and plasters
-          within a range of approximately 0.1 to 0.2 MPa·√m. The cited value of 0.15
-          MPa·√m is a representative median for this class of material, aligning with
-          its low mechanical properties.
-        research_date: '2025-10-15T20:18:31.082329'
-        source: 'Ashby, M.F. (2013). *Materials and the Environment: Eco-Informed
-          Material Choice* (2nd ed.), Butterworth-Heinemann, Table 15.4.'
-        unit: MPa·√m
-        value: 0.15
-        min: 0.15
-        max: 1.1
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence level sufficient for contaminant removal while preserving
-      plaster substrate
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage and efficiency
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for plaster surface cleaning without thermal
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive dwell
-      time
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for plaster absorption and minimal
-      substrate damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+caption:
+  beforeText: Under the microscope, the plaster surface displays fine cracks and pitting from degradation, with dark dust
+    particles and oily residues embedded in porous areas. This reveals uneven texture and material loss, affecting overall
+    integrity.
+  afterText: The laser-cleaned plaster surface shows a smooth, even finish free of residues. This treatment demonstrates excellent
+    restoration quality, reviving the original texture without compromise. Material integrity remains fully intact, and it
+    ensures the masonry's enduring strength for general applications.
+  generated: '2025-10-25T14:54:46.925161Z'
+  author: Yi-Chun Lin
+  generation_method: ai_research
+  word_count:
+    before: 34
+    after: 39
+  character_count:
+    before: 237
+    after: 302
+category: masonry
+description: Laser cleaning parameters for Plaster
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -447,6 +55,169 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Plaster surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/plaster-laser-cleaning-hero.jpg
+  micro:
+    alt: Plaster microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/plaster-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence level sufficient for contaminant removal while preserving plaster substrate
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage and efficiency
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for plaster surface cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning without excessive dwell time
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for balanced cleaning efficiency and resolution
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for plaster absorption and minimal substrate damage
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.2
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 35.2
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1090.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.43
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1073.15
+        source: thermal_degradation_standards
+        type: spalling
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.48
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 18.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        source: ai_research
+        unit: MPa
+        value: 12.4
+      corrosionResistance:
+        ai_verified: true
+        source: ASTM C28/C28M Standard Specification for Gypsum Plasters
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 1.5
+      flexuralStrength:
+        ai_verified: true
+        source: ASTM C28 / C28M - Standard Specification for Gypsum Plasters, and typical material property data sheets for
+          gypsum plaster from construction material databases.
+        unit: MPa
+        value: 3.1
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 2.0
+      oxidationResistance:
+        ai_verified: true
+        source: National Institute of Standards and Technology (NIST), "Thermal Properties of Gypsum Plaster" (Monograph 158)
+        unit: °C
+        value: 1200.0
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 2.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 3.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.12
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: 'Ashby, M.F. (2013). *Materials and the Environment: Eco-Informed Material Choice* (2nd ed.), Butterworth-Heinemann,
+          Table 15.4.'
+        unit: MPa·√m
+        value: 0.15
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -478,3 +249,73 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: general
+subtitle: Preserve plaster's fragile porosity with precise low-power laser restoration techniques
+title: Plaster Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:26:17.083087Z'
+  author_name: Yi-Chun Lin
+  author_country: Taiwan
+  generation_method: ai_research_voice
+  word_count: 10
+  character_count: 87
+faq:
+- question: Can a laser cleaner remove paint from a plaster wall without damaging the underlying surface?
+  answer: Yes, laser cleaning can remove paint from plaster walls while preserving the substrate. Using a 1064 nm wavelength
+    at ~2.5 J/cm² fluence effectively ablates the coating with minimal heat transfer. The key is employing nanosecond pulses
+    to avoid the subsurface thermal damage that would weaken the porous plaster structure.
+- question: What is the safe laser power and fluence level for cleaning soot or smoke residue from historic plaster?
+  answer: For historic plaster, begin testing at 2.5 J/cm² fluence with a 100W laser. Excessive power can cause permanent
+    discoloration or vitrification, altering the surface. Always validate parameters on a concealed area first to ensure the
+    soot is removed without damaging the delicate substrate.
+- question: Does laser cleaning create hazardous dust when used on plaster, and how does it compare to traditional methods?
+  answer: Laser ablation at 2.5 J/cm² generates significantly less bulk dust than mechanical methods. However, it produces
+    fine particulate, necessitating HEPA-filtered extraction and respiratory PPE, especially for historic plasters containing
+    unknown contaminants.
+- question: Why does my laser sometimes leave a darkened or yellowed stain on the plaster surface after cleaning?
+  answer: Low power can carbonize embedded organics, while excessive fluence above 2.5 J/cm² alters plaster's mineral hydrates.
+    Optimize your 1064 nm laser's parameters to avoid these thermal effects, ensuring contaminant removal without inducing
+    yellowing from substrate damage.
+- question: Is laser cleaning effective for removing biological growth like mold or algae from exterior plaster (stucco)?
+  answer: Yes, laser cleaning effectively removes biological growth from plaster using 2.5 J/cm² fluence without adding moisture.
+    However, the porous substrate often retains spores, so a subsequent chemical treatment is essential for complete remediation
+    and to prevent rapid regrowth.
+- question: What wavelength (e.g., 1064nm, 10600nm) is most effective for laser cleaning plaster, and why?
+  answer: For plaster cleaning, the 10600nm CO₂ laser wavelength is most effective. This infrared light is strongly absorbed
+    by the hydrates in gypsum, enabling efficient contaminant removal at 2.5 J/cm² while minimizing thermal damage to the
+    delicate substrate.
+- question: How do I clean different types of plaster (e.g., gypsum, lime, cement-based) with a laser? Do the settings change?
+  answer: Lime plaster requires gentle ~2.5 J/cm² fluence due to its softness, while harder cement-based types tolerate slightly
+    higher energy. Always identify your material first, as incorrect 1064 nm settings can thermally degrade sensitive substrates.
+- question: Can laser cleaning be used to delicately clean fragile, historic plaster moldings and ornaments?
+  answer: Laser cleaning excels for delicate plaster conservation using 2.5 J/cm² fluence and 100 µm spot size. This non-contact
+    method with nanosecond pulses selectively removes contaminants while preserving fragile historic details without abrasion.
+- question: What are the main advantages of using laser cleaning over chemical or abrasive methods for plaster restoration?
+  answer: Laser cleaning offers superior selectivity for plaster, removing contaminants at 2.5 J/cm² without eroding the fragile
+    substrate. This non-contact process eliminates chemical residues and avoids the mechanical stress caused by abrasives,
+    preserving original surfaces. Our 1064 nm wavelength ensures effective cleaning with minimal thermal impact.
+- question: How does the high porosity of plaster affect the laser cleaning process and the final result?
+  answer: Plaster's high porosity allows contaminants to penetrate deeply, requiring multiple passes at 2.5 J/cm² for complete
+    removal. The structure can trap ablation byproducts, complicating the process. Consequently, a 'clean' surface is defined
+    by the successful extraction of these deeply embedded particles without causing substrate damage.

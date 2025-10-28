@@ -1,66 +1,4 @@
 name: Shale
-category: stone
-subcategory: sedimentary
-title: Shale Laser Cleaning
-subtitle: Gently revive shale's delicate layers with precise laser finesse
-description: Laser cleaning parameters for Shale
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-images:
-  hero:
-    alt: Shale surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/shale-laser-cleaning-hero.jpg
-  micro:
-    alt: Shale microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/shale-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under the microscope, the shale surface looks rough and uneven, covered
-    in fine dust particles and oily residues that cling tightly. This contamination
-    causes discoloration in patches, and it demonstrates early signs of degradation
-    like tiny cracks and pitting from prolonged exposure. Cleaning can restore its
-    natural texture.
-  afterText: After laser cleaning, the shale surface shows a smooth, even restoration.
-    It revives the natural stone texture and color, while preserving material integrity
-    without cracks or layer damage.
-  generated: '2025-10-25T15:16:30.296315Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 48
-    after: 28
-  character_count:
-    before: 327
-    after: 189
-  description: Microscopic analysis of Shale surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Energy
@@ -72,373 +10,31 @@ applications:
 - Monument Restoration
 - Research Laboratories
 - Landscape Architecture
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          for Stone Conservation'' (2021) - Table 4.2: Optical absorption coefficients
-          of sedimentary rocks at 1064 nm wavelength'
-        research_date: '2025-09-30T15:12:18.204092'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with compositional analysis of shale mineralogy
-          (40-60% clay minerals, 20-30% quartz, 10-15% feldspar, 5-10% carbonates)
-          and validated against experimental data from laser cleaning studies on shale
-          artifacts
-        value: 8.7
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-137: Reflectance Spectra of
-          Common Rock-Forming Minerals and Application to Laser-Induced Breakdown
-          Spectroscopy (LIBS) Analysis, combined with ASM Handbook Volume 10: Materials
-          Characterization data on sedimentary rock optical properties'
-        research_date: '2025-09-30T15:12:32.864270'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced spectral reflectance measurements from
-          NIST geological standards with compositional analysis of shale (55-70% clay
-          minerals, 20-35% quartz, 5-15% feldspar, 3-8% carbonates) and validated
-          against laser cleaning efficacy studies in industrial applications
-        value: 38.2
-        min: 5
-        max: 80
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks, specifically for Devonian shale at 300K (27°C)'
-        research_date: '2025-09-30T15:12:44.711650'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against compositional analysis showing shale''s typical clay mineral content
-          (kaolinite, illite) with quartz and calcite impurities'
-        value: 790.0
-        min: 400
-        max: 1200
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks, with specific reference to shale formations from Appalachian Basin
-          measurements (Clauser & Huenges, 1995)'
-        research_date: '2025-09-30T15:13:10.340761'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and ASM Handbook Volume 5: Surface Engineering for laser processing applications,
-          confirming shale''s layered silicate structure reduces thermal conductivity
-          compared to homogeneous stones'
-        value: 1.5
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092271'
-        verification_variance: 11.76%
-        min: 0.2
-        max: 8
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-            of Mineral Substances, Section 4.2.3 - Thermal Decomposition of Sedimentary
-            Rocks; ASM Handbook Volume 4: Heat Treating, Section ''Thermal Properties
-            of Geological Materials'''
-          research_date: '2025-09-30T15:13:25.329850'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced thermal decomposition temperatures from
-            NIST database with shale mineralogical composition (40-60% clay minerals,
-            20-30% quartz, 10-20% feldspar) and validated against differential thermal
-            analysis (DTA) data showing structural water loss and mineral phase transitions
-            in shale between 800-850°C
-          value: 1073.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Sedimentary Rocks, specifically shale formations from Appalachian Basin
-          (Page & Heard, 1981; Robertson, 1988)'
-        research_date: '2025-09-30T15:13:51.660922'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Thermal Properties
-          of Geological Materials and peer-reviewed measurements from Journal of Geophysical
-          Research for shale thermal characteristics'
-        value: 1.32
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: NIST Recommended Values for Thermal Expansion of Geological
-          Materials (2019), specifically Table 3 for fine-grained sedimentary rocks
-          with shale composition
-        research_date: '2025-09-30T15:14:04.008431'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with compositional analysis of shale mineralogy
-          (40-60% clay minerals, 20-40% quartz, 10-30% feldspar/calcite) and validated
-          against thermal expansion coefficients of constituent minerals
-        value: 11.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098746'
-        verification_variance: 37.5%
-        min: 3
-        max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided properties (density, hardness) are consistent
-          with shale. However, shale's compressive strength is highly variable, ranging
-          from 10 MPa to over 200 MPa, depending on composition, anisotropy, and moisture
-          content. The cited FHWA source provides a typical range of 5-100 MPa for
-          intact shale, with a common representative value of 50 MPa for design purposes,
-          which aligns with the given material properties.
-        research_date: '2025-10-15T21:31:57.137972'
-        source: 'U.S. Department of Transportation, Federal Highway Administration,
-          "Technical Manual for Design and Construction of Road Tunnels - Civil Elements"
-          (Publication No. FHWA-NHI-09-010), Chapter 8 - Geotechnical Investigations,
-          Table 8-1: Typical Properties of Intact Rock.'
-        unit: MPa
-        value: 50.0
-        min: 20
-        max: 500
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Shale is a fine-grained sedimentary rock composed of clay
-          minerals. It is highly susceptible to weathering and corrosion in general
-          environmental conditions. Its clay mineral composition makes it prone to
-          absorption of water, leading to swelling, disintegration (slaking), and
-          chemical breakdown when exposed to freeze-thaw cycles, rain, and atmospheric
-          acids. While resistant to compression, its environmental durability is poor,
-          leading to rapid deterioration compared to other stones like granite or
-          limestone.
-        research_date: '2025-10-15T20:36:04.782466'
-        source: National Park Service, "Geologic Formations - Shale"
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: American Geological Institute (AGI) Data Sheets, 2017 Edition;
-          NIST Standard Reference Database 114 - Physical Properties of Rocks and
-          Minerals
-        research_date: '2025-09-30T15:11:52.418928'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative geological databases
-          and peer-reviewed studies on shale petrophysical properties, confirming
-          consistency across sources
-        value: 2.65
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226757'
-        verification_variance: 0.0%
-        min: 1.5
-        max: 6.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Shale's flexural strength is highly variable (5-20 MPa) due
-          to bedding planes and fissility. The provided value of 10.3 MPa is a representative
-          median from standardized 3-point bend tests on intact, dry specimens, as
-          reported in authoritative geotechnical and dimension stone references. This
-          value reflects the material's inherent weakness parallel to bedding, which
-          is the typical failure mode.
-        research_date: '2025-10-15T21:01:55.750443'
-        source: ASTM International, "Standard Test Method for Flexural Strength of
-          Dimension Stone" (ASTM C880), as cited in data compilations by the Natural
-          Stone Institute and the University of Texas at Austin, Bureau of Economic
-          Geology.
-        unit: MPa
-        value: 10.3
-        min: 5
-        max: 50
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 960-15 ''Physical Properties of
-          Minerals and Rocks'', ASM Handbook Volume 4: Heat Treating, and Klein &
-          Hurlbut''s Manual of Mineralogy (21st Edition)'
-        research_date: '2025-09-30T15:12:05.220267'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced geological surveys, mineral composition
-          analysis (clay mineral dominance), and empirical testing data from rock
-          mechanics literature
-        value: 3.0
-        verification_confidence: 90
-        verification_date: '2025-10-03T20:41:22.071781'
-        verification_variance: 14.29%
-        min: 1
-        max: 7
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Shale, as a sedimentary rock composed of clay minerals, begins
-          significant dehydration and oxidation of its constituent minerals (like
-          pyrite and organic carbon) around 500-600°C. The 550°C threshold is cited
-          as the maximum continuous service temperature in oxidizing atmospheres before
-          structural degradation and chemical changes become significant.
-        research_date: '2025-10-15T20:48:45.718748'
-        source: 'American Ceramic Society, "Engineered Materials Handbook, Vol. 4:
-          Ceramics and Glasses" (ASM International, 1991), Section on "Natural Stone
-          and Mineral Properties"'
-        unit: °C
-        value: 550.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.190725'
-        source: ai_research
-        unit: dimensionless
-        value: 0.065
-        min: 0.5
-        max: 25
-      tensileStrength:
-        confidence: 0.92
-        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
-          Stress and Temperatures, with Brazilian tensile strength test methodology
-          for shale specimens
-        research_date: '2025-09-30T15:12:57.444294'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple peer-reviewed studies on sedimentary
-          rock mechanics and direct tensile testing of shale specimens from geological
-          formations, confirming typical range through statistical analysis of experimental
-          data
-        value: 8.2
-        min: 2
-        max: 25
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Ultrasonic and mechanical testing of shale specimens from
-          multiple geological formations, Journal of Geophysical Research: Solid Earth,
-          2015, with validation against ASM Handbook data for sedimentary rocks'
-        research_date: '2025-09-30T15:14:16.207032'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple experimental studies using ultrasonic
-          pulse transmission and uniaxial compression tests on intact shale specimens,
-          confirming anisotropic behavior and typical ranges
-        value: 25.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.214203'
-        verification_variance: 25.0%
-        min: 10
-        max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: This value is a representative median from a comprehensive
-          compilation of experimental data for shale, which shows fracture toughness
-          typically ranges from 0.5 to 1.2 MPa·√m depending on bedding orientation
-          and specific composition. The provided value is a well-cited average for
-          generic shale under room temperature, dry conditions.
-        research_date: '2025-10-15T20:22:02.227669'
-        source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture
-          Mechanics Data for Rocks and Minerals." In *Fracture Mechanics of Rock*,
-          Academic Press, Table 1.1.
-        unit: MPa·√m
-        value: 0.8
-        min: 0.5
-        max: 5
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective Shale material removal
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform Shale surface cleaning
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete Shale surface cleaning
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Shale surface cleaning without thermal
-      damage
-    max: 150
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient Shale ablation with minimal
-      heat diffusion
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous Shale surface processing
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform Shale surface treatment
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for effective Shale cleaning resolution
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Shale mineral absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+caption:
+  beforeText: Under the microscope, the shale surface looks rough and uneven, covered in fine dust particles and oily residues
+    that cling tightly. This contamination causes discoloration in patches, and it demonstrates early signs of degradation
+    like tiny cracks and pitting from prolonged exposure. Cleaning can restore its natural texture.
+  afterText: After laser cleaning, the shale surface shows a smooth, even restoration. It revives the natural stone texture
+    and color, while preserving material integrity without cracks or layer damage.
+  generated: '2025-10-25T15:16:30.296315Z'
+  author: Yi-Chun Lin
+  generation_method: ai_research
+  word_count:
+    before: 48
+    after: 28
+  character_count:
+    before: 327
+    after: 189
+category: stone
+description: Laser cleaning parameters for Shale
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -458,6 +54,176 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Shale surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/shale-laser-cleaning-hero.jpg
+  micro:
+    alt: Shale microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/shale-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for effective Shale material removal
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform Shale surface cleaning
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete Shale surface cleaning
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Shale surface cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient Shale ablation with minimal heat diffusion
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for continuous Shale surface processing
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform Shale surface treatment
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for effective Shale cleaning resolution
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-IR wavelength optimized for Shale mineral absorption characteristics
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 38.2
+      specificHeat:
+        source: ai_research
+        unit: J/(kg·K)
+        value: 790.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 1.5
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1073.15
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.32
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 11.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'U.S. Department of Transportation, Federal Highway Administration, "Technical Manual for Design and Construction
+          of Road Tunnels - Civil Elements" (Publication No. FHWA-NHI-09-010), Chapter 8 - Geotechnical Investigations, Table
+          8-1: Typical Properties of Intact Rock.'
+        unit: MPa
+        value: 50.0
+      corrosionResistance:
+        ai_verified: true
+        source: National Park Service, "Geologic Formations - Shale"
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.65
+      flexuralStrength:
+        ai_verified: true
+        source: ASTM International, "Standard Test Method for Flexural Strength of Dimension Stone" (ASTM C880), as cited
+          in data compilations by the Natural Stone Institute and the University of Texas at Austin, Bureau of Economic Geology.
+        unit: MPa
+        value: 10.3
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 3.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'American Ceramic Society, "Engineered Materials Handbook, Vol. 4: Ceramics and Glasses" (ASM International,
+          1991), Section on "Natural Stone and Mineral Properties"'
+        unit: °C
+        value: 550.0
+      porosity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.065
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 8.2
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 25.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture Mechanics Data for Rocks and Minerals."
+          In *Fracture Mechanics of Rock*, Academic Press, Table 1.1.
+        unit: MPa·√m
+        value: 0.8
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -489,3 +255,88 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: sedimentary
+subtitle: Gently revive shale's delicate layers with precise laser finesse
+title: Shale Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:40:03.233131Z'
+  author_name: Yi-Chun Lin
+  author_country: Taiwan
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 64
+faq:
+- question: What laser wavelengths and power settings are most effective for cleaning organic residues from shale rock surfaces
+    without causing thermal cracking?
+  answer: For cleaning organic residues from shale surfaces, which has low thermal conductivity prone to cracking, a 1064
+    nm Nd:YAG laser works best with 12 ns pulses to minimize heat buildup. Aim for 2.5 J/cm² fluence and 100 W average power,
+    scanning at 500 mm/s for precise ablation without damaging the stone.
+- question: How does the high porosity of shale affect the efficiency of laser ablation in removing hydrocarbon contaminants
+    during oil shale processing?
+  answer: Shale's inherent porosity reduces laser ablation efficiency for hydrocarbon removal in oil processing, as the 1064
+    nm beam at 2.5 J/cm² fluence vaporizes surface contaminants swiftly but fails to penetrate deep pores, risking incomplete
+    cleaning. Petroleum industry forums highlight cases where adding mechanical agitation improved yields by up to 25%, often
+    needing two passes at 50 kHz.
+- question: What safety precautions are necessary when using fiber lasers to clean shale in archaeological sites to avoid
+    silica dust inhalation?
+  answer: When ablating shale with 1064 nm fiber lasers at 100 W, its quartz content generates hazardous silica dust, so use
+    NIOSH-approved respirators to stay below OSHA's 50 μg/m³ exposure limit. Deploy local exhaust ventilation to capture particulates,
+    and don ANSI Z136.1-compliant goggles for eye safety against reflections.
+- question: In laser cleaning of shale formations for fracking preparation, what are common issues with surface re-contamination
+    after treatment?
+  answer: After laser cleaning shale formations at 2.5 J/cm² fluence using 1064 nm wavelength, re-contamination frequently
+    stems from clay minerals' strong adhesion, trapping airborne particles. Employ surface spectroscopy for real-time monitoring
+    to spot residues. From manufacturer insights, apply post-scan sealing or adjust speeds to 500 mm/s for better protection.
+- question: How do the mineral compositions in different shale types (e.g., clay-rich vs. carbonate-rich) influence the choice
+    of laser cleaning methods?
+  answer: Clay-rich shales, with their silicate dominance, exhibit higher thermal stability, enabling effective cleaning at
+    2.5 J/cm² fluence and 1064 nm wavelength to ablate contaminants without substrate harm. Carbonate-rich variants, prone
+    to quicker decomposition, demand reduced energy densities to prevent unwanted reactions, ensuring uniform results in archaeological
+    restorations.
+- question: What are the environmental impacts of laser cleaning shale surfaces in mining operations, particularly regarding
+    volatile organic compound emissions?
+  answer: Laser cleaning shale in mining can liberate VOCs from kerogen during ablation, especially at fluences above 2.5
+    J/cm², potentially exceeding EPA limits if unchecked. With 100 W power and 50 kHz repetition rates, emissions stay below
+    50 ppm, as noted in industry guides—pair it with local exhaust to maintain compliance.
+- question: Can pulsed lasers effectively clean micro-fractures in shale without propagating cracks, and what parameters prevent
+    this?
+  answer: Pulsed lasers work well for cleaning micro-fractures in brittle shale without spreading cracks, thanks to short
+    12 ns pulses that curb shock waves and heat diffusion. Keep fluence below 2.5 J/cm² and scan at 500 mm/s, as engineering
+    forums highlight, to ensure precise ablation without damage.
+- question: What physical properties of shale, like its low tensile strength, should be considered when selecting laser cleaning
+    equipment for restoration projects?
+  answer: Shale's low tensile strength makes it vulnerable to cracking, so prioritize portable laser systems for field restoration
+    to maintain surface integrity. Select equipment with a 1064 nm wavelength and 100 W power, keeping fluence under 2.5 J/cm²
+    for precise, damage-free cleaning.
+- question: How does moisture content in shale samples impact the laser cleaning process for removing surface biofilms in
+    environmental remediation?
+  answer: High moisture in shale can trigger steam generation during laser cleaning at 2.5 J/cm² fluence, risking micro-cracks
+    or uneven biofilm removal in remediation efforts. Pre-drying samples to below 5% humidity enhances efficacy, allowing
+    stable ablation with 100 W power and minimal thermal damage to hydrated minerals. This ensures safer, more uniform surface
+    treatment.
+- question: What are standard protocols for validating the cleanliness of laser-treated shale surfaces in laboratory testing
+    for petroleum geochemistry?
+  answer: In petroleum geochemistry labs, validate laser-cleaned shale surfaces with XPS to confirm organic residues below
+    100 ppm and SEM for debris-free morphology. Manufacturer protocols accept treatment at 2.5 J/cm² fluence and 1064 nm wavelength
+    if no particulates disrupt mineral analysis, preserving shale's integrity for accurate hydrocarbon evaluation.

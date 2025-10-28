@@ -470,17 +470,24 @@ VOICE GUIDANCE ({author_country.upper()}):
 STRICT LENGTH REQUIREMENTS:
 - Target: {target_words} words (20-60 word range - HARD LIMIT)
 - Write 1-3 sentences maximum
-- Use clear, varied language - avoid repeating phrases
-- Vary sentence structure and word choice throughout
+- Vary your language naturally - never repeat the same phrases or sentence patterns
+- Use diverse vocabulary and phrasing throughout your answer
+
+NATURAL WRITING REQUIREMENTS:
+- Avoid robotic patterns - write like a human expert would speak
+- Don't repeat key terms more than once unless absolutely necessary
+- Use synonyms, varied sentence structure, and natural transitions
+- Reference specific values (fluence, power, wavelength) when relevant
+- Avoid formulaic phrases like "It's important to note" or "Always ensure"
 
 CONTENT REQUIREMENTS:
-- Reference 1 key property value when relevant
-- Ensure answer addresses {material_name} specifically
-- Balance technical accuracy with readability
-- Focus on practical, actionable information
-- Use synonyms and varied phrasing to maintain flow
+- Cite 1-2 specific technical values when relevant (J/cm², W, mm/s, μm, °C, ppm)
+- Address {material_name} specifically - use material properties in context
+- Balance precision with readability - explain technical terms briefly
+- Focus on actionable, practical information
+- Connect recommendations to material behavior or characteristics
 
-Write a CLEAR, CONCISE answer (1-3 sentences, 20-60 words):"""
+Write a NATURAL, CONVERSATIONAL answer (1-3 sentences, 20-60 words):"""
         
         return prompt
     

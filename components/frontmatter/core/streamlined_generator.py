@@ -1372,14 +1372,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         try:
             from utils.core.author_manager import get_author_by_id
             
-            # Prefer author.id from materials.yaml, fallback to legacy author_id
+            # Use author.id from materials.yaml
             author_id = None
             if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
                 author_id = material_data['author']['id']
-            elif 'author_id' in material_data:
-                author_id = material_data['author_id']
             else:
-                author_id = 3
+                author_id = 3  # Default to Ikmanda Roswati
+            
             author_info = get_author_by_id(author_id)
             
             if not author_info:
@@ -2228,13 +2227,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             author_id = None
             if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
                 author_id = material_data['author']['id']
-            elif 'author_id' in material_data:
-                author_id = material_data['author_id']
             else:
-                author_id = 3  # Default author
+                author_id = 3  # Default to Ikmanda Roswati
+            
             author_info = get_author_by_id(author_id)
             if not author_info:
                 raise PropertyDiscoveryError(f"Author with ID {author_id} not found")
+            
             # Load author voice profile
             country = author_info.get('country', 'United States')
             # Map country to voice profile file

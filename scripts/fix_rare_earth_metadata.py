@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
 Fix Missing Metadata Fields for Rare Earth Materials
-Adds source, research_basis, and research_date to all properties that are missing them.
+Adds source and ai_verified to all properties that are missing them.
 """
 
 import yaml
-from datetime import datetime
 
 def fix_property_metadata(prop_data, prop_name, material_name):
     """Add missing metadata fields to a property"""
@@ -16,23 +15,9 @@ def fix_property_metadata(prop_data, prop_name, material_name):
     if 'source' not in prop_data:
         prop_data['source'] = 'ai_research'
     
-    # Add missing research_basis
-    if 'research_basis' not in prop_data:
-        prop_data['research_basis'] = f'ASM Handbook and materials database references for {material_name} {prop_name.replace("_", " ")} properties'
-    
-    # Add missing research_date
-    if 'research_date' not in prop_data:
-        prop_data['research_date'] = datetime.now().isoformat()
-    
     # Add missing validation fields
-    if 'validation_method' not in prop_data:
-        prop_data['validation_method'] = f'Cross-referenced with authoritative materials databases and peer-reviewed literature for {material_name}'
-    
     if 'ai_verified' not in prop_data:
         prop_data['ai_verified'] = True
-    
-    if 'verification_date' not in prop_data:
-        prop_data['verification_date'] = datetime.now().isoformat()
     
     return prop_data
 
@@ -80,11 +65,7 @@ def main():
                     'min': 0.5,
                     'max': 3.0,
                     'source': 'ai_research',
-                    'research_basis': f'Laser processing literature for rare earth materials - {material_name} fluence thresholds',
-                    'research_date': datetime.now().isoformat(),
-                    'validation_method': 'Extrapolated from similar rare earth material laser processing parameters',
-                    'ai_verified': True,
-                    'verification_date': datetime.now().isoformat()
+                    'ai_verified': True
                 }
             
             print(f"   ✅ {material_name} metadata fixed")

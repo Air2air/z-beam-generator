@@ -1,73 +1,4 @@
 name: Cherry
-category: wood
-subcategory: hardwood
-title: Cherry Laser Cleaning
-subtitle: Safely Restore Cherry Wood's Rich Warmth with Precise Laser Care
-description: Laser cleaning parameters for Cherry
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Cherry surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/cherry-laser-cleaning-hero.jpg
-  micro:
-    alt: Cherry microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/cherry-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the cherry wood surface shows a rough, fibrous texture
-    marred by clustered dust particles and sticky organic residues. Contaminants feature
-    fine silica grains and lipid films that infiltrate pores, causing degradation
-    like micro-fissures and subtle discoloration. This impacts laser enclosure aesthetics,
-    demanding targeted cleaning in optical assemblies.
-  afterText: After cleaning, the cherry wood surface regains its smooth, even texture
-    and vibrant reddish-brown patina, restoring near-original vibrancy without residue
-    buildup. Restoration quality excels, upholding material integrity by avoiding
-    grain distortion or fiber weakening, ensuring long-term durability. This supports
-    applications in precision laser-cut furniture for optical system enclosures.
-  generated: '2025-10-25T14:10:54.390351Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 49
-    after: 48
-  character_count:
-    before: 373
-    after: 392
-  description: Microscopic analysis of Cherry surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-- name: Unknown
-  description: EPA Clean Air Act Compliance
-  url: ''
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
 applications:
 - Furniture Manufacturing
 - Musical Instrument Manufacturing
@@ -79,378 +10,34 @@ applications:
 - Art and Sculpture Conservation
 - Premium Packaging Manufacturing
 - Custom Boat Building
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Optical Properties
-          of Wood Species at 1064 nm Laser Wavelength, specifically Table 4.2 for
-          Prunus serotina (Black Cherry)'
-        research_date: '2025-09-30T15:43:16.008173'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Section on Laser Material Processing, and validated against cherry wood''s
-          specific chemical composition (lignin content: 28-32%, cellulose: 42-48%,
-          extractives: 3-8%) and density (0.50-0.60 g/cm³)'
-        value: 30.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T23:08:00.985322'
-        verification_variance: 8.26%
-        min: 1
-        max: 50
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Optical Properties
-          of Materials for Laser Applications, Section 8.3 - Wood Species Database
-          (2021), with specific measurements for Prunus avium (European cherry) at
-          1064 nm wavelength'
-        research_date: '2025-09-30T15:43:30.036811'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Section 3A - Laser Material Processing Parameters for Wood Materials, and
-          validated against spectral reflectance studies of cherry wood microstructure
-          and chemical composition'
-        value: 32.7
-        min: 10
-        max: 60
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (Forest Products
-          Laboratory, 2010) - Table 4-3 provides specific heat values for various
-          wood species including cherry at 12% moisture content'
-        research_date: '2025-09-30T15:43:43.450690'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with NIST Wood Properties Database and
-          verified against thermal property studies of Prunus serotina (black cherry)
-          at standard laboratory conditions (20°C, 12% moisture content)
-        value: 1600.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837828'
-        verification_variance: 0.0%
-        min: 800
-        max: 2500
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-          2010. Table 4-3 provides thermal conductivity values for various wood species
-          at 12% moisture content.'
-        research_date: '2025-09-30T15:44:11.406066'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and data from NIST Wood Database. Validated against known density range
-          of cherry wood (500-600 kg/m³) and correlation between density and thermal
-          conductivity in hardwoods.'
-        value: 0.15
-        min: 0.04
-        max: 0.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Wood Database - Thermal Degradation Properties of
-            Hardwoods, specifically Table 4: Onset Temperature of Major Degradation
-            for Cherry Wood (Prunus serotina)'
-          research_date: '2025-09-30T15:44:23.898990'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced with thermogravimetric analysis (TGA)
-            data from Forest Products Laboratory publications and validated against
-            laser ablation thresholds for lignocellulosic materials
-          value: 427.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering
-          Material. USDA Forest Service, 2010. Chapter 4: Thermal Properties, Table
-          4-3.'
-        research_date: '2025-09-30T15:44:48.534178'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with multiple wood science publications
-          and validated against Cherry's specific density (0.50-0.60 g/cm³) and moisture
-          content (12%) conditions, confirming consistency with measured thermal conductivity
-          and specific heat capacity relationships.
-        value: 0.16
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest
-          Service, Forest Products Laboratory, Chapter 4: Moisture and Thermal Properties
-          of Wood, Table 4-5: Thermal expansion coefficients of selected woods at
-          8-12% moisture content'
-        research_date: '2025-09-30T15:45:00.971402'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with Forest Products Laboratory data and
-          verified against species-specific measurements for Prunus serotina (black
-          cherry) in longitudinal direction at room temperature conditions
-        value: 3.7
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098779'
-        verification_variance: 12.12%
-        min: 3.0
-        max: 60
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Database, a widely cited authority for wood properties,
-          lists the compressive strength of Black Cherry (Prunus serotina) parallel
-          to the grain at 12% moisture content as 6,670 psi, which converts to 46.0
-          MPa. This value is consistent with the provided hardness and density data,
-          indicating a medium-strength hardwood.
-        research_date: '2025-10-15T21:25:01.297684'
-        source: Wood Database (www.wood-database.com) - Mechanical Properties for
-          Black Cherry
-        unit: MPa
-        value: 46.0
-        min: 20
-        max: 80
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Cherry wood has poor natural corrosion resistance, rated as
-          non-durable to perishable regarding decay resistance. It has low resistance
-          to insect attack and fungal decay, with limited weathering capabilities.
-          The Wood Database specifically notes its susceptibility to rot when exposed
-          to moisture and outdoor conditions, classifying it below most commonly used
-          outdoor woods.
-        research_date: '2025-10-15T20:28:14.556800'
-        source: Wood Database - "Cherry, Black" technical specifications
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
-          Chapter 4: Mechanical Properties of Wood, Table 4-3a, USDA Forest Products
-          Laboratory, 2010'
-        research_date: '2025-09-30T15:42:47.861884'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with ASTM D2395 standard test method for
-          specific gravity of wood and wood-based materials, and verified against
-          multiple wood science databases including Wood Database (www.wood-database.com)
-          for Black Cherry (Prunus serotina)
-        value: 0.62
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226784'
-        verification_variance: 1.59%
-        min: 0.12
-        max: 1.5
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Database, a widely cited authority on wood properties,
-          lists the modulus of rupture (MOR) for Black Cherry as 12,300 psi, which
-          converts to approximately 85 MPa. This value is derived from standardized
-          3-point and 4-point bend tests and is consistent with the known density
-          and hardness properties provided.
-        research_date: '2025-10-15T20:54:01.730418'
-        source: Wood Database (www.wood-database.com) - Mechanical Properties for
-          Black Cherry
-        unit: MPa
-        value: 85.0
-        min: 40
-        max: 150
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
-          Table 4-3: Hardness of commercially important woods grown in the United
-          States. Specifically cites Black Cherry (Prunus serotina) Janka hardness
-          of 950 lbf (4220 N) converted to N/mm² using standard methodology.'
-        research_date: '2025-09-30T15:43:02.526629'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D143
-          standard test methods for small clear wood specimens, confirming Janka ball
-          test methodology (11.28 mm diameter steel ball) and unit conversion from
-          lbf to N/mm² accounting for contact area.
-        value: 84.3
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071805'
-        verification_variance: 96.64%
-        min: 1
-        max: 5000
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is the authoritative source on wood properties. It states that significant
-          thermal degradation (including oxidative processes) for most wood species
-          begins in the range of 150-200°C under prolonged exposure. Cherry wood,
-          being a hardwood with moderate density, is consistently referenced in industry
-          guidelines (e.g., for kiln drying and heat treatment) with a maximum safe
-          continuous service temperature of 150°C to avoid charring, weight loss,
-          and significant loss of mechanical strength.
-        research_date: '2025-10-15T20:41:39.016524'
-        source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
-          of Wood, Table 3-5: Thermal Degradation Temperatures of Wood. Forest Products
-          Laboratory (FPL). 2010.'
-        unit: °C
-        value: 150.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.192432'
-        source: ai_research
-        unit: m³/m³
-        value: 0.56
-        min: 12
-        max: 65
-      tensileStrength:
-        confidence: 0.92
-        research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a: Mechanical properties of some
-          commercially important woods grown in the United States - Black Cherry (Prunus
-          serotina)'
-        research_date: '2025-09-30T15:43:57.069830'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D143
-          standard testing methodology for small clear wood specimens, validated against
-          material composition parameters including specific gravity (0.47) and moisture
-          content (12%)
-        value: 95.0
-        min: 20
-        max: 200
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 10.0
-        verification_confidence: 90
-        verification_date: '2025-10-03T21:55:35.214227'
-        verification_variance: 2.91%
-        min: 5
-        max: 20000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The fracture toughness (Mode I, K_IC) of wood is highly dependent
-          on grain orientation. For common hardwoods, including species like cherry,
-          values typically range from 0.3 to 0.6 MPa·√m for crack propagation perpendicular
-          to the grain. The provided value is a conservative estimate for cherry based
-          on its density and hardness relative to other hardwoods documented in this
-          authoritative source.
-        research_date: '2025-10-15T20:12:25.492759'
-        source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook:
-          Wood as an Engineering Material" (Chapter 4: Mechanical Properties of Wood).'
-        unit: MPa·√m
-        value: 0.39
-        min: 0.33
-        max: 4.4
-machineSettings:
-  dwellTime:
-    confidence: 82
-    description: Effective dwell time per spot for contaminant removal
-    max: 200
-    min: 50
-    unit: μs
-    value: 100
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    max: 2.5
-    min: 1.2
-    unit: J/cm²
-    value: 1.8
-  overlapRatio:
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 50
-    min: 20
-    unit: '%'
-    value: 30
-  passCount:
-    confidence: 83
-    description: Number of cleaning passes for complete surface treatment
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Cherry surface cleaning without thermal
-      damage
-    max: 110
-    min: 70
-    unit: W
-    value: 90
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient ablation of contaminants
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning process
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for efficient area coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength for optimal absorption in Cherry organic
-      compounds
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopy, the cherry wood surface shows a rough, fibrous texture marred by clustered dust particles
+    and sticky organic residues. Contaminants feature fine silica grains and lipid films that infiltrate pores, causing degradation
+    like micro-fissures and subtle discoloration. This impacts laser enclosure aesthetics, demanding targeted cleaning in
+    optical assemblies.
+  afterText: After cleaning, the cherry wood surface regains its smooth, even texture and vibrant reddish-brown patina, restoring
+    near-original vibrancy without residue buildup. Restoration quality excels, upholding material integrity by avoiding grain
+    distortion or fiber weakening, ensuring long-term durability. This supports applications in precision laser-cut furniture
+    for optical system enclosures.
+  generated: '2025-10-25T14:10:54.390351Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 49
+    after: 48
+  character_count:
+    before: 373
+    after: 392
+category: wood
+description: Laser cleaning parameters for Cherry
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -470,6 +57,181 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Cherry surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/cherry-laser-cleaning-hero.jpg
+  micro:
+    alt: Cherry microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/cherry-laser-cleaning-micro.jpg
+machineSettings:
+  dwellTime:
+    description: Effective dwell time per spot for contaminant removal
+    unit: μs
+    value: 100
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal
+    unit: J/cm²
+    value: 1.8
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 30
+  passCount:
+    description: Number of cleaning passes for complete surface treatment
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Cherry surface cleaning without thermal damage
+    unit: W
+    value: 90
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient ablation of contaminants
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning process
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for efficient area coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-infrared wavelength for optimal absorption in Cherry organic compounds
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        ai_verified: true
+        source: ai_research
+        unit: '%'
+        value: 30.0
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 32.7
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1600.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.15
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 427.0
+        source: wood_combustion_standards
+        type: carbonization
+        unit: °C
+        value: 300.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.16
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 3.7
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: Wood Database (www.wood-database.com) - Mechanical Properties for Black Cherry
+        unit: MPa
+        value: 46.0
+      corrosionResistance:
+        ai_verified: true
+        source: Wood Database - "Cherry, Black" technical specifications
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 0.62
+      flexuralStrength:
+        ai_verified: true
+        source: Wood Database (www.wood-database.com) - Mechanical Properties for Black Cherry
+        unit: MPa
+        value: 85.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 84.3
+      oxidationResistance:
+        ai_verified: true
+        source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations of Wood, Table 3-5: Thermal Degradation
+          Temperatures of Wood. Forest Products Laboratory (FPL). 2010.'
+        unit: °C
+        value: 150.0
+      porosity:
+        source: ai_research
+        unit: m³/m³
+        value: 0.56
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 95.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 10.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 3.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook: Wood as an Engineering Material" (Chapter
+          4: Mechanical Properties of Wood).'
+        unit: MPa·√m
+        value: 0.39
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -501,3 +263,84 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+- name: Unknown
+  description: EPA Clean Air Act Compliance
+  url: ''
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+subcategory: hardwood
+subtitle: Safely Restore Cherry Wood's Rich Warmth with Precise Laser Care
+title: Cherry Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:03:28.623946Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 10
+  character_count: 64
+faq:
+- question: Can laser cleaning effectively remove oxidation and patina from cherry wood without damaging the surface?
+  answer: Using a 1064nm wavelength at 1.8 J/cm² fluence effectively removes oxidation from cherry wood. This setting targets
+    contaminants while minimizing thermal penetration, preserving the delicate surface. With precise control, we can eliminate
+    patina without causing discoloration or burning the underlying material.
+- question: What laser settings (wavelength, power, pulse duration) are recommended for cleaning soot and smoke residue from
+    cherry furniture after a fire?
+  answer: For cherry furniture, use a 1064 nm wavelength at 90W average power with 1.8 J/cm² fluence. This effectively ablates
+    soot while preserving the wood's integrity. Always begin with a low-power test on an inconspicuous area to verify the
+    surface response before proceeding with the full cleaning process.
+- question: Does laser cleaning cherry wood surfaces affect the natural color or cause any bleaching effect?
+  answer: Properly configured laser cleaning preserves cherry's natural pigments exceptionally well. At our optimal 1.8 J/cm²
+    fluence and 90W power, we effectively remove contaminants without the bleaching effect common with chemical or abrasive
+    methods, maintaining the wood's rich color stability.
+- question: How do you prepare a cherry wood surface for laser cleaning to ensure uniform results and prevent damage?
+  answer: First verify the wood's moisture content stays below 12% to prevent thermal stress. For uniform cleaning on carved
+    surfaces, use a 1064 nm wavelength at 1.8 J/cm² fluence, adjusting the 500 mm/s scan speed to maintain consistent distance
+    across contours.
+- question: What safety precautions are specific to laser cleaning cherry wood, particularly regarding fume extraction and
+    fire risk?
+  answer: Cherry's organic compounds require robust fume extraction at your 90W system. The 1.8 J/cm² fluence threshold can
+    ignite resins, demanding Class D filtration for VOC-laden smoke. Maintain a fire watch and ensure ventilation meets local
+    codes for wood particulate.
+- question: Can laser cleaning be used to selectively remove old varnish or finish from cherry wood while preserving the underlying
+    grain?
+  answer: Yes, laser cleaning excels at selectively removing aged varnish from cherry wood. The 1064 nm wavelength and 1.8
+    J/cm² fluence threshold allow precise ablation of the finish while preserving the delicate grain structure beneath, making
+    it ideal for antique restoration.
+- question: What are the limitations of laser cleaning for cherry compared to other wood species like oak or maple?
+  answer: Cherry's moderate density and natural oils require careful fluence control around 1.8 J/cm². Its tighter grain structure
+    is more susceptible to thermal marking than open-grained woods like oak, demanding precise power management below 90 W
+    to preserve its rich color.
+- question: How does the natural porosity of cherry wood affect laser cleaning efficiency for embedded contaminants?
+  answer: Cherry's porous structure can trap contaminants beyond surface reach. Our 1.8 J/cm² fluence setting effectively
+    lifts embedded particles, but aggressive parameters risk driving debris deeper into the wood's cellular matrix, complicating
+    the cleaning process.
+- question: What post-cleaning treatments are recommended for cherry wood after laser cleaning to restore and protect the
+    surface?
+  answer: After laser cleaning at 1.8 J/cm², cherry's open grain requires immediate conditioning. I recommend a penetrating
+    oil like tung or linseed to rehydrate the wood fibers before applying a protective sealant. This two-step process restores
+    the natural luster and provides a durable finish, enhancing the wood's inherent beauty.
+- question: Is laser cleaning economically viable for cherry wood restoration compared to chemical or mechanical methods?
+  answer: Laser cleaning becomes economically viable for cherry wood at 1.8 J/cm², preserving its rich patina where mechanical
+    abrasion or chemical solvents can damage the surface. For high-value projects like instrument restoration, the precision
+    and time savings at 500 mm/s scan speeds justify the initial equipment investment.

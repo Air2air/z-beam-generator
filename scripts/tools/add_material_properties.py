@@ -107,8 +107,7 @@ class MaterialPropertiesAdder:
                     'min': None,
                     'max': None,
                     'confidence': None,
-                    'source': 'ai_research',
-                    'research_date': self.timestamp
+                    'source': 'ai_research'
                 },
                 'type': None
             }
@@ -121,8 +120,7 @@ class MaterialPropertiesAdder:
             'min': None,
             'max': None,
             'confidence': None,
-            'source': 'ai_research',
-            'research_date': self.timestamp
+            'source': 'ai_research'
         }
     
     def add_properties_to_material(self, material_name: str, material_data: Dict) -> Dict:

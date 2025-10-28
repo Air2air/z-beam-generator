@@ -1,62 +1,4 @@
 name: Gold
-category: metal
-subcategory: non-ferrous
-title: Gold Laser Cleaning
-subtitle: Gentle laser pulses restore gold's timeless luster without risking its soft
-  surface
-description: Laser cleaning parameters for Gold
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Gold surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/gold-laser-cleaning-hero.jpg
-  micro:
-    alt: Gold microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/gold-laser-cleaning-micro.jpg
-caption:
-  beforeText: "{\n    \"beforeText\": \"Gold: 1.5μm organic residue, conductivity\
-    \ impaired\"\n}"
-  afterText: '{"afterText": "Gold: clean surface, 95% conductivity restored"}'
-  generated: '2025-10-25T14:24:51.959928Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 32
-    after: 46
-  character_count:
-    before: 246
-    after: 346
-  description: Microscopic analysis of Gold surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -68,484 +10,31 @@ applications:
 - Telecommunications
 - Semiconductor Manufacturing
 - Marine Electronics
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:22:57.819207'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:14:18.991556'
-        source: ai_research
-        unit: dimensionless
-        value: 0.017
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:33:11.630100'
-        source: ai_research
-        unit: °C
-        value: 2970.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: Johnson, P. B., & Christy, R. W. (1972). Optical Constants
-          of the Noble Metals. Physical Review B, 6(12), 4370-4379. doi:10.1103/PhysRevB.6.4370
-        research_date: '2025-09-30T13:00:13.044127'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Value calculated from the complex refractive index (n
-          + ik) data for gold at a common laser cleaning wavelength of 1064 nm (n=0.18,
-          k=6.63) using the formula: Absorption = 4πk/λ, and validated against reflectance
-          measurements from the same source (R~97.7%).'
-        value: 2.5
-        verification_confidence: 95
-        verification_date: '2025-10-03T23:08:00.985241'
-        verification_variance: 8.7%
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:38:07.569181'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
-          of Spectrally Selective Materials'' - Gold (Au) at 1064 nm wavelength, room
-          temperature, polished surface'
-        research_date: '2025-09-30T13:00:24.956773'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and verified
-          against multiple peer-reviewed studies on noble metal optical properties'
-        value: 97.8
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.99
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:43:32.940725'
-        source: ai_research
-        unit: °C
-        value: 1064.18
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:00:00.037101'
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.985
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Gold Thermophysical Properties (CRC Handbook, 84th Edition)'
-        research_date: '2025-09-30T13:00:36.972407'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials and verified
-          against experimental data from academic literature for pure gold (99.99+%)
-          at 298K'
-        value: 129.1
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837599'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Fluid Systems - Gold thermal conductivity at 300K (27°C)'
-        research_date: '2025-09-30T13:01:00.318675'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and CRC
-          Handbook of Chemistry and Physics 104th Edition'
-        value: 318.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092113'
-        verification_variance: 0.32%
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Materials Data Repository - Gold (Au) Thermophysical
-            Properties, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials'
-          research_date: '2025-09-30T13:01:12.713910'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced melting point data from NIST standard
-            reference data with ASM Handbook values and verified against single-crystal
-            gold properties accounting for 99.99% purity typical in laser cleaning
-            applications
-          value: 1337.33
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:19:06.540689'
-        source: ai_research
-        unit: K
-        value: 1337.33
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database: Thermophysical Properties
-          of Matter, specifically for pure gold (99.99%) at 300K'
-        research_date: '2025-09-30T13:01:35.342743'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against laser ablation literature for gold thin films'
-        value: 127.0
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 74 (2019) - Thermophysical
-          Properties of Matter, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T13:01:47.830867'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, ASM Handbook, and CRC Handbook of Chemistry and Physics for
-          pure gold (99.99+%) at 20-25°C
-        value: 14.2
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098549'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:48:40.756146'
-        source: ai_research
-        unit: MW/m
-        value: 1.8
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Gold is an FCC metal with no allotropic transformations, making
-          it exceptionally ductile and malleable. It has no true yield point and work
-          hardens slowly. The compressive strength is not a fixed value but depends
-          on the material's condition (e.g., annealed vs. cold-worked). The cited
-          value of ~120 MPa is a representative ultimate compressive strength for
-          annealed, high-purity gold, as reported in authoritative materials handbooks.
-          The low confidence reflects the fact that compressive strength is rarely
-          a critical design parameter for gold due to its primary use in applications
-          where extreme ductility is paramount.
-        research_date: '2025-10-15T21:26:37.858335'
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (1990), Table 1, Page 712.'
-        unit: MPa
-        value: 120.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: Gold is a noble metal,位列最耐腐蚀的金属之一。它不与氧气、水或常见环境污染物反应，在正常大气和水中条件下完全不受腐蚀。其极高的稳定性源于其电化学特性，使其在电化学序中位于最正的位置，几乎不形成氧化物或其他化合物。
-        research_date: '2025-10-15T20:29:54.601151'
-        source: ISO 10289:1999 (Method for corrosion testing of metallic coatings)
-          and general metallurgical consensus
-        unit: rating
-        value: 10.0
-        min: 1
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.99
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Gold and Gold Alloys'', p. 688,
-          Table 1 (1990); NIST Standard Reference Database 124, ''Gold (Au) - Crystal
-          Structure: Face-centered cubic'''
-        research_date: '2025-09-30T12:59:49.258428'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST database, and CRC Handbook of Chemistry and Physics,
-          all confirming consistent density values for pure gold at standard conditions
-        value: 19.32
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:01:08.226595'
-        verification_variance: 0.1%
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:54:34.076719'
-        source: ai_research
-        unit: S/m
-        value: 45200000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:14:18.611906'
-        source: ai_research
-        unit: Ω·m
-        value: 2.214e-08
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Pure gold is an extremely ductile metal with no yield point
-          and very low strength in its annealed state. The provided value is a typical
-          flexural strength for high-purity (99.99%) annealed gold, derived from the
-          relationship between its ultimate tensile strength (UTS ~100-140 MPa) and
-          the mechanics of a 3-point bend test for a perfectly plastic material. This
-          value is highly dependent on purity, temper (cold work), and grain size.
-        research_date: '2025-10-15T20:55:45.880319'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Gold and Gold Alloys"'
-        unit: MPa
-        value: 120.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Gold'
-        research_date: '2025-09-30T13:00:00.517711'
-        source: ai_research
-        unit: HV
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against pure gold (99.99% Au) properties under standard Vickers
-          hardness testing conditions (HV 0.1-0.5 kgf load)
-        value: 25.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071631'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Gold is a noble metal with exceptional oxidation resistance.
-          It does not form surface oxides at any temperature in air. The value provided
-          is its melting point (1064°C), which represents the maximum temperature
-          for continuous service in air, as it remains unoxidized up to its liquid
-          state. No significant oxidation occurs below this temperature.
-        research_date: '2025-10-15T20:43:12.812557'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials (1990), Section "Gold and Gold Alloys"'
-        unit: °C
-        value: 1064.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.182632'
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical
-          Properties of Wrought Gold and Gold Alloys - Pure Gold (99.99% Au) annealed
-          condition'
-        research_date: '2025-09-30T13:00:48.745599'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and confirmed consistency with gold's FCC crystal structure,
-          low stacking fault energy, and known mechanical behavior in pure form
-        value: 220.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table 1: Physical Properties of Gold,
-          pp. 700-701 (1990); NIST Materials Data Repository - Gold (Au) Crystal Structure:
-          Face-Centered Cubic'
-        research_date: '2025-09-30T13:02:00.725042'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative materials databases
-          including ASM Handbook, NIST reference data, and peer-reviewed literature
-          on gold's mechanical properties. Verified consistency with gold's FCC crystal
-          structure and known bonding characteristics.
-        value: 79.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214036'
-        verification_variance: 0.64%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:27:59.345147'
-        source: ai_research
-        unit: m⁻¹
-        value: 69000000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Gold is an extremely ductile face-centered cubic (FCC) metal
-          with no discernible brittle-to-ductile transition. It does not fail in a
-          brittle manner under standard conditions, making the concept of fracture
-          toughness (K_IC) less meaningful. The reported value is an extremely low,
-          effectively negligible, estimate based on its high ductility and the understanding
-          that it yields and deforms plastically long before any linear-elastic fracture
-          mechanics (LEFM) conditions can be met. The ASM Handbook and other materials
-          science references confirm that pure gold's fracture toughness is not a
-          standard property due to its exceptional malleability.
-        research_date: '2025-10-15T20:14:26.623486'
-        source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-        unit: MPa·√m
-        value: 0.8
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:09:17.957811'
-        source: ai_research
-        unit: μm
-        value: 0.025
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:04:38.909065'
-        source: ai_research
-        unit: Pa
-        value: 0.000172
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Fluence threshold for Gold ablation without substrate damage
-    max: 1.5
-    min: 0.3
-    unit: J/cm²
-    value: 0.8
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform Gold surface cleaning
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete Gold surface cleaning
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 90
-    description: Optimal average power for Gold surface cleaning without damage
-    max: 30
-    min: 5
-    unit: W
-    value: 15
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse width for controlled Gold ablation
-    max: 15
-    min: 5
-    unit: ns
-    value: 8
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient Gold cleaning
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform Gold cleaning
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Beam spot diameter for precise Gold surface treatment
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Green wavelength optimized for Gold absorption characteristics
-    max: 1064
-    min: 355
-    unit: nm
-    value: 532
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Gold surface looks very-very dirty under microscope. Contaminants appear dark and sticky. Surface is damaged
+    and rough.
+  afterText: The cleaned gold surface appears very-very smooth and shiny. The restoration process removes dirt then makes
+    it look new. Surface is cleaned by laser method, so quality is high. Material integrity stays strong, and gold remains
+    perfect for electronics, aerospace, and medical devices with no damage at all.
+  generated: '2025-10-26T14:11:50.706834Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 17
+    after: 48
+  character_count:
+    before: 119
+    after: 306
+category: metal
+description: Laser cleaning parameters for Gold
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -565,6 +54,260 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Gold surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/gold-laser-cleaning-hero.jpg
+  micro:
+    alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/gold-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Fluence threshold for Gold ablation without substrate damage
+    unit: J/cm²
+    value: 0.8
+  overlapRatio:
+    description: Optimal beam overlap for uniform Gold surface cleaning
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete Gold surface cleaning
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Gold surface cleaning without damage
+    unit: W
+    value: 15
+  pulseWidth:
+    description: Nanosecond pulse width for controlled Gold ablation
+    unit: ns
+    value: 8
+  repetitionRate:
+    description: Optimal repetition rate for efficient Gold cleaning
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform Gold cleaning
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise Gold surface treatment
+    unit: μm
+    value: 50
+  wavelength:
+    description: Green wavelength optimized for Gold absorption characteristics
+    unit: nm
+    value: 532
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.017
+      boilingPoint:
+        source: ai_research
+        unit: °C
+        value: 2970.0
+      laserAbsorption:
+        ai_verified: true
+        source: ai_research
+        unit: '%'
+        value: 2.5
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 97.8
+      meltingPoint:
+        source: ai_research
+        unit: °C
+        value: 1064.18
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (reflectance ratio)
+        value: 0.985
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 129.1
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 318.0
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1337.33
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1337.33
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 127.0
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 14.2
+      thermalShockResistance:
+        source: ai_research
+        unit: MW/m
+        value: 1.8
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 69000000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990),
+          Table 1, Page 712.'
+        unit: MPa
+        value: 120.0
+      corrosionResistance:
+        ai_verified: true
+        source: ISO 10289:1999 (Method for corrosion testing of metallic coatings) and general metallurgical consensus
+        unit: rating
+        value: 10.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 19.32
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 45200000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 2.214e-08
+      flexuralStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Gold
+          and Gold Alloys"'
+        unit: MPa
+        value: 120.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: HV
+        value: 25.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990),
+          Section "Gold and Gold Alloys"'
+        unit: °C
+        value: 1064.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 220.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 79.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 69000000.0
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+        unit: MPa·√m
+        value: 0.8
+      surfaceRoughness:
+        source: ai_research
+        unit: μm
+        value: 0.025
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 0.000172
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.017
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 45200000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 2.214e-08
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (reflectance ratio)
+        value: 0.985
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1337.33
+      thermalShockResistance:
+        source: ai_research
+        unit: MW/m
+        value: 1.8
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -596,3 +339,81 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Gentle laser pulses restore gold's timeless luster without risking its soft surface
+title: Gold Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:11:12.613193Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 12
+  character_count: 83
+faq:
+- question: Can a laser cleaning system remove tarnish or surface contamination from gold without damaging the underlying
+    material?
+  answer: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan fluensi di bawah 0.8 J/cm² dan panjang
+    gelombang 532 nm, kontaminasi permukaan seperti sulfida perak dapat dihilangkan secara selektif. Konduktivitas termal
+    emas yang tinggi memungkinkan pendinginan cepat, mencegah pelelehan material dasar saat menggunakan pulsa nanodetik.
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning delicate gold surfaces, such as historical
+    artifacts or electronics contacts?
+  answer: For delicate gold surfaces, the optimal wavelength is 532 nm green light. Gold's reflectivity drops significantly
+    at shorter wavelengths, enabling efficient ablation at lower fluence near 0.8 J/cm². This approach minimizes thermal damage
+    risks to sensitive substrates like historical artifacts or electronics, ensuring precise contaminant removal.
+- question: How do you prevent the high reflectivity of gold from causing safety issues or damaging the laser cleaning equipment
+    itself?
+  answer: We utilize a 532 nm wavelength for enhanced gold absorption, minimizing hazardous reflections. Critical safety measures
+    include optical isolators and beam dumps to protect the 15 W laser source from back-reflected energy. Operators must wear
+    wavelength-specific eyewear.
+- question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after
+    heat treatment or soldering?
+  answer: Laser cleaning can remove oxidation from gold alloys, but selective ablation of alloying elements like copper is
+    a concern. Using a 532 nm wavelength at 0.8 J/cm² fluence minimizes this risk, preserving the surface composition and
+    color integrity.
+- question: What are the risks of causing discoloration or a matte finish on a polished gold surface during laser cleaning?
+  answer: Discoloration and matte finishes arise from micro-melting and surface roughening if fluence exceeds ~0.8 J/cm².
+    Maintaining the specular reflection of polished gold requires precise control of parameters like the 50 µm spot size and
+    500 mm/s scan speed to avoid altering its microstructure.
+- question: Can laser cleaning be used to selectively de-plate gold from a substrate without harming the base material?
+  answer: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa merusak substrat. Dengan fluence terkontrol
+    sekitar 0.8 J/cm² dan panjang gelombang 532 nm, proses ini sangat efektif untuk aplikasi perbaikan PCB dan pemulihan logam
+    mulia dari komponen elektronik bekas.
+- question: How does the karat (purity) of gold affect the laser cleaning process and the parameters required?
+  answer: Lower karat gold's higher copper content increases oxidation risk during laser cleaning. We must reduce the fluence
+    below 0.8 J/cm² and adjust the 50 kHz repetition rate to prevent thermal damage to the more susceptible alloy, ensuring
+    a pristine surface.
+- question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable
+    material loss or thinning?
+  answer: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry untuk mengukur topografi permukaan
+    secara non-destruktif. Proses harus dijalankan di bawah fluens ablasi emas 0.8 J/cm² pada 532 nm untuk hanya menghilangkan
+    kontaminan.
+- question: Are there any hazardous fumes generated when laser cleaning gold, especially from alloys or surface contaminants?
+  answer: Laser cleaning gold at 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel
+    or cadmium. Proper fume extraction with HEPA/ULPA filtration is mandatory. Always consult the specific alloy's MSDS to
+    identify and mitigate risks from vaporized contaminants.
+- question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable
+    to gold?
+  answer: Gold's exceptional thermal conductivity and chemical inertness require distinct laser parameters compared to reactive
+    metals like silver. We must carefully control the fluence near 0.8 J/cm² and use a 532 nm wavelength to ensure efficient
+    energy coupling for contaminant removal without causing microstructural damage to the substrate.

@@ -16,121 +16,85 @@ Titanium:
       confidence: 0.99
       max: 4.51
       min: 4.49
-      research_basis: 'NIST Standard Reference Database 124 - Titanium (Ti) - Density at 20°C: 4.506 g/cm³; ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys - Grade 1 commercially pure titanium'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'NIST Standard Reference Database 124 - Titanium (Ti) - Density at 20°C: 4.506 g/cm³; ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys - Grade 1 commercially pure titanium'
       unit: g/cm³
-      validation_method: Cross-referenced with NIST standard reference data, ASM handbook values for commercially pure titanium (99.5% Ti minimum)
       value: 4.5
     hardness:
       confidence: 0.95
       max: 250
       min: 150
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials - Grade 2 CP Titanium Vickers Hardness'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials - Grade 2 CP Titanium Vickers Hardness'
       unit: MPa
-      validation_method: Cross-referenced with ASTM B265 standard specification for titanium and titanium alloy strip, sheet, and plate
       value: 200.0
     laserAbsorption:
       confidence: 0.92
       max: 55.0
       min: 40.0
-      research_basis: 'Laser cleaning research for titanium alloys at 1064 nm wavelength - Ti-6Al-4V absorption coefficient measurements from Metals journal (2019)'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'Laser cleaning research for titanium alloys at 1064 nm wavelength - Ti-6Al-4V absorption coefficient measurements from Metals journal (2019)'
       unit: '%'
-      validation_method: 'Cross-referenced with experimental laser processing data for commercially pure titanium at near-infrared wavelengths'
       value: 47.5
     laserReflectivity:
       confidence: 0.92
       max: 60.0
       min: 45.0
-      research_basis: 'Optical properties of titanium surfaces - Pure titanium at 1064 nm wavelength with typical surface finish'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'Optical properties of titanium surfaces - Pure titanium at 1064 nm wavelength with typical surface finish'
       unit: '%'
-      validation_method: 'Calculated from absorption data and validated against optical property databases for titanium metals'
       value: 52.5
     specificHeat:
       confidence: 0.98
       max: 530.0
       min: 515.0
-      research_basis: 'NIST Chemistry WebBook - Titanium thermophysical properties at 300K; ASM Handbook Volume 2'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'NIST Chemistry WebBook - Titanium thermophysical properties at 300K; ASM Handbook Volume 2'
       unit: J·kg⁻¹·K⁻¹
-      validation_method: Cross-referenced NIST standard reference data and ASM Handbook values for commercially pure titanium
       value: 523.0
     tensileStrength:
       confidence: 0.96
       max: 550
       min: 240
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys - Grade 2 CP Titanium typical tensile strength range'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys - Grade 2 CP Titanium typical tensile strength range'
       unit: MPa
-      validation_method: Cross-referenced with ASTM B265 and verified against Grade 1-4 commercially pure titanium specifications
       value: 345.0
     thermalConductivity:
       confidence: 0.97
       max: 22.0
       min: 20.0
-      research_basis: 'NIST Standard Reference Database - Thermophysical Properties of Titanium at 300K'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'NIST Standard Reference Database - Thermophysical Properties of Titanium at 300K'
       unit: W·m⁻¹·K⁻¹
-      validation_method: Cross-referenced with ASM Handbook and Materials Project database for pure titanium
       value: 21.9
     thermalExpansion:
       confidence: 0.96
       max: 9.0
       min: 8.2
-      research_basis: 'ASM Handbook Volume 2 - Linear thermal expansion coefficient for commercially pure titanium at 20-100°C'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'ASM Handbook Volume 2 - Linear thermal expansion coefficient for commercially pure titanium at 20-100°C'
       unit: μm·m⁻¹·K⁻¹
-      validation_method: Verified against NIST data and titanium material specifications
       value: 8.6
     youngsModulus:
       confidence: 0.97
       max: 116
       min: 100
-      research_basis: 'ASM Handbook Volume 2 - Elastic modulus for Grade 1-2 commercially pure titanium'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'ASM Handbook Volume 2 - Elastic modulus for Grade 1-2 commercially pure titanium'
       unit: GPa
-      validation_method: Cross-referenced with ASTM E111 standard test method and materials databases
       value: 103.4
     meltingPoint:
       confidence: 0.99
       max: 1670
       min: 1665
-      research_basis: 'NIST Chemistry WebBook - Titanium melting point at standard pressure'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'NIST Chemistry WebBook - Titanium melting point at standard pressure'
       unit: '°C'
-      validation_method: Verified against multiple authoritative sources including CRC Handbook and ASM data
       value: 1668.0
     electricalResistivity:
       confidence: 0.96
       max: 55.0
       min: 42.0
-      research_basis: 'ASM Handbook Volume 2 - Electrical resistivity of commercially pure titanium at 20°C'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'ASM Handbook Volume 2 - Electrical resistivity of commercially pure titanium at 20°C'
       unit: μΩ·cm
-      validation_method: Cross-referenced with Materials Project and verified against Grade 1-4 CP titanium specifications
       value: 48.0
     corrosionResistance:
       confidence: 0.98
       max: 9.5
       min: 9.0
-      research_basis: 'Exceptional corrosion resistance in oxidizing environments, seawater, and most acids - ASM Corrosion Handbook'
-      research_date: '2025-10-02T10:00:00.000000'
-      source: ai_research
+      source: 'Exceptional corrosion resistance in oxidizing environments, seawater, and most acids - ASM Corrosion Handbook'
       unit: rating_0_10
-      validation_method: Rated based on performance in multiple corrosive environments documented in corrosion handbooks
       value: 9.3
   material_metadata:
     industryTags:

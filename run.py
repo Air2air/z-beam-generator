@@ -13,6 +13,8 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --material "Aluminum"     # Specific material (frontmatter-only)
   python3 run.py --all                     # All materials (frontmatter-only)
   python3 run.py --caption "Aluminum"      # Generate AI caption (saves to Materials.yaml)
+  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle (saves to Materials.yaml)
+  python3 run.py --faq "Aluminum"          # Generate AI FAQ (saves to Materials.yaml)
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -22,6 +24,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --test-api                # Test API connections
   python3 run.py --validate                # Validate existing data without regeneration
   python3 run.py --validate-report report.md  # Generate validation report
+  python3 run.py --content-validation-report report.md  # Content quality validation (FAQ, Caption, Subtitle)
   python3 run.py --check-env               # Health check
   python3 run.py --list-materials          # List available materials
 
@@ -793,6 +796,105 @@ def handle_subtitle_generation(material_name: str):
         print(f"❌ Error during subtitle generation: {e}")
         import traceback
         traceback.print_exc()
+        return False
+
+
+def handle_faq_generation(material_name: str):
+    """Generate AI-powered FAQ for a material and save to Materials.yaml"""
+    print("="*80)
+    print(f"❓ FAQ GENERATION: {material_name}")
+    print("="*80)
+    print()
+    
+    try:
+        # Import required modules
+        from components.faq.generators.faq_generator import FAQComponentGenerator
+        from data.materials import load_materials, get_material_by_name
+        from pathlib import Path
+        import yaml
+        from datetime import datetime, timezone
+        
+        # Load materials data
+        print("📂 Loading Materials.yaml...")
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
+        
+        if not material_data:
+            print(f"❌ Material '{material_name}' not found in Materials.yaml")
+            return False
+        
+        print(f"✅ Found material: {material_name}")
+        print()
+        
+        # Initialize DeepSeek API client for FAQ
+        from api.client_factory import create_api_client
+        print("🔧 Initializing DeepSeek API client...")
+        deepseek_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
+        print()
+        
+        # Initialize FAQ generator
+        print("🔧 Initializing FAQComponentGenerator...")
+        generator = FAQComponentGenerator()
+        print("✅ Generator ready")
+        print()
+        
+        # Generate FAQ
+        print("🤖 Generating AI-powered FAQ with author voice...")
+        print("   • Questions: 7-12 material-specific Q&As")
+        print("   • Categories: Based on researched material characteristics")
+        print("   • Answers: 20-60 words each with technical precision")
+        print("   • Voice: Country-specific writing style and formality")
+        print()
+        
+        result = generator.generate(
+            material_name=material_name,
+            material_data=material_data,
+            api_client=deepseek_client
+        )
+        
+        if not result.success:
+            print(f"❌ FAQ generation failed: {result.error_message}")
+            return False
+        
+        # FAQ was already written to Materials.yaml by the generator
+        # Reload to display statistics
+        print("✅ FAQ generated and saved successfully!")
+        print()
+        
+        # Reload materials to show what was written
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
+        
+        faq = material_data.get('faq', {})
+        if 'questions' in faq:
+            questions = faq['questions']
+            total_words = sum(q.get('word_count', 0) for q in questions)
+            
+            print("📊 Statistics:")
+            print(f"   • Questions: {len(questions)}")
+            print(f"   • Total words: {total_words}")
+            print(f"   • Avg words/answer: {total_words / len(questions):.1f}")
+            if faq.get('author'):
+                print(f"   • Author: {faq['author']}")
+            print()
+            print("📝 Preview (first 3 questions):")
+            for i, qa in enumerate(questions[:3], 1):
+                print(f"   {i}. {qa['question']}")
+                print(f"      Category: {qa.get('category', 'N/A')}")
+                print(f"      Answer: {qa['answer'][:80]}...")
+                print()
+        
+        print("💾 Saved to: data/Materials.yaml → faq")
+        print("✨ FAQ generation complete!")
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error during FAQ generation: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
 
 
 # =================================================================================
@@ -1345,8 +1447,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                             'value': result.researched_value,
                             'unit': result.unit,
                             'confidence': int(result.confidence * 100),
-                            'source': result.source,
-                            'research_date': result.research_date
+                            'source': result.source
                         }
                         
                         print(f"✅ {result.researched_value} {result.unit} (confidence: {int(result.confidence * 100)}%)")
@@ -1555,6 +1656,228 @@ def generate_safe_filename(material_name: str) -> str:
 # MAIN ENTRY POINT
 # =================================================================================
 
+def generate_content_validation_report(output_file: str) -> bool:
+    """
+    Generate comprehensive content quality validation report for all materials.
+    
+    Validates FAQ, Caption, and Subtitle quality using ContentValidationService.
+    Produces detailed multi-dimensional scoring and recommendations.
+    
+    Args:
+        output_file: Path to save the validation report
+        
+    Returns:
+        True if report generated successfully
+    """
+    from pathlib import Path
+    from datetime import datetime
+    from validation.integration import validate_generated_content, get_dimension_scores_dict
+    from data.materials import load_materials, get_material_by_name
+    from utils.core.author_manager import get_author_info_for_material
+    
+    print("📊 Generating Content Quality Validation Report")
+    print("=" * 80)
+    
+    # Load materials
+    materials_data = load_materials()
+    
+    # Collect validation results
+    validation_results = []
+    total_materials = 0
+    materials_with_content = 0
+    
+    for material_name in materials_data.get('materials', {}).keys():
+        total_materials += 1
+        material_info = get_material_by_name(material_name, materials_data)
+        
+        if not material_info:
+            continue
+        
+        # Get author info
+        author_info = get_author_info_for_material(material_info)
+        if not author_info:
+            author_info = {'name': 'Unknown', 'country': 'Unknown'}
+        
+        # Check for FAQ, Caption, Subtitle content
+        has_content = False
+        material_results = {
+            'material_name': material_name,
+            'author': author_info.get('name'),
+            'country': author_info.get('country'),
+            'faq': None,
+            'caption': None,
+            'subtitle': None
+        }
+        
+        # Validate FAQ if exists
+        faq_questions = material_info.get('questions', [])
+        if faq_questions:
+            has_content = True
+            try:
+                result = validate_generated_content(
+                    content={'questions': faq_questions},
+                    component_type='faq',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                material_results['faq'] = {
+                    'success': result.success,
+                    'overall_score': result.overall_score,
+                    'grade': result.grade,
+                    'dimensions': get_dimension_scores_dict(result),
+                    'issues': result.critical_issues,
+                    'warnings': result.warnings,
+                    'recommendations': result.recommendations
+                }
+            except Exception as e:
+                material_results['faq'] = {'error': str(e)}
+        
+        # Validate Caption if exists
+        before_text = material_info.get('beforeText')
+        after_text = material_info.get('afterText')
+        if before_text or after_text:
+            has_content = True
+            try:
+                result = validate_generated_content(
+                    content={'beforeText': before_text or '', 'afterText': after_text or ''},
+                    component_type='caption',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                material_results['caption'] = {
+                    'success': result.success,
+                    'overall_score': result.overall_score,
+                    'grade': result.grade,
+                    'dimensions': get_dimension_scores_dict(result),
+                    'issues': result.critical_issues,
+                    'warnings': result.warnings,
+                    'recommendations': result.recommendations
+                }
+            except Exception as e:
+                material_results['caption'] = {'error': str(e)}
+        
+        # Validate Subtitle if exists
+        subtitle = material_info.get('subtitle')
+        if subtitle:
+            has_content = True
+            try:
+                result = validate_generated_content(
+                    content=subtitle,
+                    component_type='subtitle',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                material_results['subtitle'] = {
+                    'success': result.success,
+                    'overall_score': result.overall_score,
+                    'grade': result.grade,
+                    'dimensions': get_dimension_scores_dict(result),
+                    'issues': result.critical_issues,
+                    'warnings': result.warnings,
+                    'recommendations': result.recommendations
+                }
+            except Exception as e:
+                material_results['subtitle'] = {'error': str(e)}
+        
+        if has_content:
+            materials_with_content += 1
+            validation_results.append(material_results)
+            print(f"✅ Validated {material_name}: FAQ={material_results['faq'] is not None}, Caption={material_results['caption'] is not None}, Subtitle={material_results['subtitle'] is not None}")
+    
+    # Generate report
+    print(f"\n📝 Generating report to {output_file}")
+    
+    with open(output_file, 'w') as f:
+        f.write("# Content Quality Validation Report\n\n")
+        f.write(f"**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write(f"**Total Materials**: {total_materials}\n")
+        f.write(f"**Materials with Content**: {materials_with_content}\n\n")
+        f.write("---\n\n")
+        
+        # Summary statistics
+        total_scores = {'faq': [], 'caption': [], 'subtitle': []}
+        total_grades = {'faq': {}, 'caption': {}, 'subtitle': {}}
+        
+        for result in validation_results:
+            for component in ['faq', 'caption', 'subtitle']:
+                if result[component] and 'overall_score' in result[component]:
+                    total_scores[component].append(result[component]['overall_score'])
+                    grade = result[component]['grade']
+                    total_grades[component][grade] = total_grades[component].get(grade, 0) + 1
+        
+        f.write("## Summary Statistics\n\n")
+        for component in ['FAQ', 'Caption', 'Subtitle']:
+            comp_key = component.lower()
+            if total_scores[comp_key]:
+                avg_score = sum(total_scores[comp_key]) / len(total_scores[comp_key])
+                f.write(f"### {component}\n")
+                f.write(f"- **Count**: {len(total_scores[comp_key])}\n")
+                f.write(f"- **Average Score**: {avg_score:.1f}/100\n")
+                f.write(f"- **Grade Distribution**: {', '.join(f'{g}: {c}' for g, c in sorted(total_grades[comp_key].items()))}\n\n")
+        
+        f.write("---\n\n")
+        f.write("## Detailed Validation Results\n\n")
+        
+        # Detailed results per material
+        for result in validation_results:
+            f.write(f"### {result['material_name']}\n\n")
+            f.write(f"**Author**: {result['author']} ({result['country']})\n\n")
+            
+            for component in ['FAQ', 'Caption', 'Subtitle']:
+                comp_key = component.lower()
+                comp_result = result[comp_key]
+                
+                if comp_result is None:
+                    continue
+                
+                f.write(f"#### {component}\n\n")
+                
+                if 'error' in comp_result:
+                    f.write(f"❌ **Error**: {comp_result['error']}\n\n")
+                    continue
+                
+                status = "✅ PASSED" if comp_result['success'] else "⚠️ FAILED"
+                f.write(f"{status} - **Score**: {comp_result['overall_score']:.1f}/100 - **Grade**: {comp_result['grade']}\n\n")
+                
+                # Dimension scores
+                f.write("**Dimension Scores**:\n")
+                dims = comp_result['dimensions']
+                f.write(f"- Author Voice: {dims.get('author_voice', 0):.1f}\n")
+                f.write(f"- Variation: {dims.get('variation', 0):.1f}\n")
+                f.write(f"- Human Characteristics: {dims.get('human_characteristics', 0):.1f}\n")
+                f.write(f"- AI Avoidance: {dims.get('ai_avoidance', 0):.1f}\n\n")
+                
+                # Issues
+                if comp_result['issues']:
+                    f.write("**Critical Issues**:\n")
+                    for issue in comp_result['issues']:
+                        f.write(f"- {issue}\n")
+                    f.write("\n")
+                
+                # Warnings
+                if comp_result['warnings']:
+                    f.write("**Warnings**:\n")
+                    for warning in comp_result['warnings']:
+                        f.write(f"- {warning}\n")
+                    f.write("\n")
+                
+                # Recommendations
+                if comp_result['recommendations']:
+                    f.write("**Recommendations**:\n")
+                    for rec in comp_result['recommendations']:
+                        f.write(f"- {rec}\n")
+                    f.write("\n")
+            
+            f.write("---\n\n")
+    
+    print(f"\n✅ Report generated: {output_file}")
+    print(f"   Validated {materials_with_content} materials with content")
+    return True
+
+
 def main():
     """Main application entry point with basic command line interface."""
     
@@ -1676,6 +1999,9 @@ def main():
     parser.add_argument("--research-confidence-threshold", type=int, default=70, help="Minimum confidence threshold for research results (default: 70)")
     parser.add_argument("--enforce-completeness", action="store_true", help="Block generation if data completeness below threshold (strict mode)")
     
+    # Content Quality Validation
+    parser.add_argument("--content-validation-report", help="Generate comprehensive content quality validation report (FAQ, Caption, Subtitle)")
+    
     # Material Auditing System
     parser.add_argument("--audit", help="Audit specific material for requirements compliance")
     parser.add_argument("--audit-batch", help="Audit multiple materials (comma-separated list)")
@@ -1691,6 +2017,9 @@ def main():
     # Subtitle Generation (Author Voice Phase 1)
     parser.add_argument("--subtitle", help="Generate AI-powered subtitle for specific material (saves to Materials.yaml)")
     
+    # FAQ Generation (Author Voice Phase 2)
+    parser.add_argument("--faq", help="Generate AI-powered FAQ for specific material (saves to Materials.yaml)")
+    
     args = parser.parse_args()
     
     # Handle caption generation
@@ -1700,6 +2029,10 @@ def main():
     # Handle subtitle generation
     if args.subtitle:
         return handle_subtitle_generation(args.subtitle)
+    
+    # Handle FAQ generation
+    if args.faq:
+        return handle_faq_generation(args.faq)
     
     # Handle material auditing system
     if args.audit or args.audit_batch or args.audit_all:
@@ -1733,6 +2066,10 @@ def main():
     # Handle data validation without regeneration
     if args.validate or args.validate_report:
         return run_data_validation(args.validate_report)
+    
+    # Handle content quality validation report
+    if args.content_validation_report:
+        return generate_content_validation_report(args.content_validation_report)
     
     # Apply enforcement flag if specified
     if hasattr(args, 'enforce_completeness') and args.enforce_completeness:

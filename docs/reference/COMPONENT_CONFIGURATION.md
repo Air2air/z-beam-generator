@@ -152,32 +152,60 @@ text:
 #### Author Persona Configuration
 
 ```yaml
+```yaml
 authors:
   1:
-    name: "Dr. Marcus Weber"
-    country: "Germany"
-    expertise: "Precision Manufacturing"
+    name: "Dr. Yi-Chun Lin"
+    country: "Taiwan"
+    expertise: "Laser Materials Processing"
     style:
-      tone: "technical_authoritative"
-      vocabulary: "academic_industrial"
-      structure: "systematic_methodical"
+      tone: "technical_precise"
+      vocabulary: "academic_systematic"
+      structure: "methodical_analytical"
       cultural_markers:
         - "precision_focus"
-        - "efficiency_emphasis"
-        - "engineering_rigor"
+        - "systematic_approach"
+        - "measurement_emphasis"
   
   2:
-    name: "Dr. Yuki Tanaka"
-    country: "Japan"
-    expertise: "Advanced Materials"
+    name: "Dr. Alessandro Moretti"
+    country: "Italy"
+    expertise: "Laser-Based Additive Manufacturing"
     style:
-      tone: "innovative_respectful"
-      vocabulary: "technical_harmonious"
-      structure: "balanced_comprehensive"
+      tone: "expressive_technical"
+      vocabulary: "technical_elegant"
+      structure: "complex_sophisticated"
       cultural_markers:
-        - "innovation_respect"
-        - "detail_oriented"
-        - "harmony_balance"
+        - "aesthetic_awareness"
+        - "expressive_language"
+        - "quality_emphasis"
+  
+  3:
+    name: "Dr. Ikmanda Roswati"
+    country: "Indonesia"
+    expertise: "Ultrafast Laser Physics and Material Interactions"
+    style:
+      tone: "accessible_technical"
+      vocabulary: "straightforward_practical"
+      structure: "direct_clear"
+      cultural_markers:
+        - "accessibility_focus"
+        - "practical_emphasis"
+        - "clear_communication"
+  
+  4:
+    name: "Todd Dunning"
+    country: "United States (California)"
+    expertise: "Optical Materials for Laser Systems"
+    style:
+      tone: "innovative_pragmatic"
+      vocabulary: "technical_action_oriented"
+      structure: "efficient_results_focused"
+      cultural_markers:
+        - "innovation_emphasis"
+        - "practical_application"
+        - "efficiency_focus"
+```
   
   3:
     name: "Ikmanda Roswati"

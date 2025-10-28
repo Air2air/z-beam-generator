@@ -1,9 +1,12 @@
 name: Cast Iron
-category: metal
-subcategory: ferrous
-title: Cast Iron Laser Cleaning
-subtitle: Precision Laser Revives Cast Iron's Distinctive Graphite Texture
-description: Laser cleaning parameters for Cast Iron
+applications:
+- Automotive
+- Manufacturing
+- Machinery
+- Construction Equipment
+- Industrial Equipment
+- Foundry
+- Heavy Industry
 author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
@@ -12,27 +15,14 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-images:
-  hero:
-    alt: Cast Iron surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/cast-iron-laser-cleaning-hero.jpg
-  micro:
-    alt: Cast Iron microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/cast-iron-laser-cleaning-micro.jpg
 caption:
-  beforeText: Under microscopy, the cast iron surface appears very-very rough and
-    is covered densely by contaminants. These contaminants show as clustered dark
-    particles and oily residues, so surface degrades with visible pits, cracks, and
-    oxidation layers. The condition looks damaged and uneven, then requires careful
-    cleaning.
-  afterText: After ultrafast laser cleaning, the cast iron surface appears very-very
-    smooth and clean, with contaminants removed then oxidized layers lifted away.
-    The process restores original texture so precisely, and material integrity remains
-    intact—no cracks or weakening occurs. Surface is polished by laser action, enhancing
-    durability for general applications, while preserving metal's strong, heat-resistant
-    properties. Restoration quality is high-high, ideal for long-lasting use.
+  beforeText: Under microscopy, the cast iron surface appears very-very rough and is covered densely by contaminants. These
+    contaminants show as clustered dark particles and oily residues, so surface degrades with visible pits, cracks, and oxidation
+    layers. The condition looks damaged and uneven, then requires careful cleaning.
+  afterText: After ultrafast laser cleaning, the cast iron surface appears very-very smooth and clean, with contaminants removed
+    then oxidized layers lifted away. The process restores original texture so precisely, and material integrity remains intact—no
+    cracks or weakening occurs. Surface is polished by laser action, enhancing durability for general applications, while
+    preserving metal's strong, heat-resistant properties. Restoration quality is high-high, ideal for long-lasting use.
   generated: '2025-10-25T14:05:54.770005Z'
   author: Ikmanda Roswati
   generation_method: ai_research
@@ -42,433 +32,8 @@ caption:
   character_count:
     before: 315
     after: 476
-  description: Microscopic analysis of Cast Iron surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-applications:
-- Automotive
-- Manufacturing
-- Machinery
-- Construction Equipment
-- Industrial Equipment
-- Foundry
-- Heavy Industry
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.8
-        research_basis: Laser ablation threshold for cast iron at 1064nm, typical
-          gray iron surface
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: J/cm²
-        validation_method: Laser processing literature for cast iron machining
-        value: 8.5
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.85
-        research_basis: Complementary to reflectivity at 1064nm wavelength for cast
-          iron
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: '%'
-        validation_method: Energy balance calculation (absorption + reflection ≈ 100%)
-        value: 55.0
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:35:41.969460'
-        source: ai_research
-        unit: K
-        value: 3135.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        confidence: 0.9
-        research_basis: Cast iron absorption at 1064nm wavelength - higher carbon
-          content increases absorption compared to steel
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: '%'
-        validation_method: Laser processing literature for cast iron surface treatment
-        value: 55.0
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:41:13.950826'
-        source: ai_research
-        unit: J/cm²
-        value: 1.8
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.9
-        research_basis: Complementary to absorption at 1064nm, accounting for surface
-          oxidation typical in cast iron
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: '%'
-        value: 45.0
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:46:06.394945'
-        source: ai_research
-        unit: K
-        value: 1426.0
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.85
-        research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical
-          oxidized surface
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: '%'
-        validation_method: Literature values for gray cast iron laser reflectivity
-        value: 45.0
-        min: 85
-        max: 98
-      specificHeat:
-        confidence: 0.92
-        research_basis: Cast iron specific heat capacity - slightly higher than pure
-          iron due to carbon content
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: J/(kg·K)
-        value: 540.0
-        min: 100
-        max: 2000
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: ASM Handbook - Gray cast iron thermal conductivity at room
-          temperature (46-54 W/m·K depending on graphite content)
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: W/(m·K)
-        value: 50.0
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.9
-          unit: °C
-          value: 1200.0
-        research_basis: Gray cast iron melting point range 1150-1250°C
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: Gray cast iron melting point range 1150-1250°C (1423-1523K)
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: K
-        value: 1473.0
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity
-          calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and
-          specific heat (540 J/kg·K)'
-        research_date: '2025-10-16T18:00:00.000000'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Verified against typical values for ASTM A48 Class 30 gray
-          iron with 3-4% carbon content
-        value: 12.5
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal
-          expansion at 20-100°C, typical for flake graphite cast iron'
-        research_date: '2025-10-16T18:00:00.000000'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced with ASTM A48 standard specifications
-          for gray iron castings
-        value: 11.0
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:51:49.080319'
-        source: ai_research
-        unit: MPa·m^0.5
-        value: 4.2
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:22:57.737096'
-        source: ai_research
-        unit: MPa
-        value: 827.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        confidence: 0.88
-        research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion
-          resistance. Forms protective rust layer in atmospheric conditions but susceptible
-          to acids and chlorides. Better than carbon steel due to graphite flakes
-          providing cathodic protection.'
-        research_date: '2025-10-16T18:00:00.000000'
-        source: ai_research
-        unit: rating
-        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering
-          atmospheric, aqueous, and chemical environments
-        value: 5.0
-        min: 1
-        max: 10
-      density:
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with ASTM A48 standard specifications
-          for gray iron castings
-        value: 7.2
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:57:27.736859'
-        source: ai_research
-        unit: S/m
-        value: 1000000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.9
-        research_basis: ASM Handbook - Gray cast iron electrical resistivity range
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: µΩ·cm
-        validation_method: Standard electrical property tables for cast irons
-        value: 60.0
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:23:15.090143'
-        source: ai_research
-        unit: MPa
-        value: 448.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        confidence: 0.95
-        research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250
-          HB, converted to Vickers (HV ≈ HB × 9.5 for this range)
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: HV
-        validation_method: Standard hardness conversion tables for ferrous materials
-        value: 2200.0
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        confidence: 0.9
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant
-          oxidation at 700-800°C in air. Forms protective oxide scale below this temperature
-          but experiences accelerated oxidation above.'
-        research_date: '2025-10-16T18:00:00.000000'
-        source: ai_research
-        unit: °C
-        validation_method: Cross-referenced with high-temperature oxidation studies
-          of gray cast iron in industrial environments
-        value: 750.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.85
-        research_basis: Typical porosity for gray cast iron (Class 30), graphite flake
-          structure
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: '%'
-        validation_method: Metallographic analysis data for gray cast iron
-        value: 2.5
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276
-          MPa (30-40 ksi)
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: MPa
-        value: 250.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        confidence: 0.93
-        research_basis: Gray cast iron elastic modulus - lower than steel due to graphite
-          flakes
-        research_date: '2025-10-16T00:00:00.000000'
-        source: ai_research
-        unit: GPa
-        value: 110.0
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:30:51.680765'
-        source: ai_research
-        unit: m⁻¹
-        value: 620000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:22:34.095542'
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 22.1
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.8
-        research_basis: Typical as-cast surface roughness for gray iron, Ra value
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: µm
-        validation_method: Surface finish standards for cast iron components
-        value: 3.2
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.75
-        research_basis: Typical vapor pressure for iron alloys at room temperature
-        research_date: '2025-10-17T00:00:00.000000'
-        source: ai_research
-        unit: Pa
-        validation_method: Engineering databases for ferrous materials
-        value: 1.0e-07
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for Cast Iron oxide removal
-    max: 8
-    min: 2
-    unit: J/cm²
-    value: 5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform surface treatment
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Number of cleaning passes for complete oxide removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Cast Iron oxide removal without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for effective cleaning resolution
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for Cast Iron absorption and rust
-      removal
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+category: metal
+description: Laser cleaning parameters for Cast Iron
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -488,6 +53,244 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Cast Iron surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/cast-iron-laser-cleaning-hero.jpg
+  micro:
+    alt: Cast Iron microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/cast-iron-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for Cast Iron oxide removal
+    unit: J/cm²
+    value: 5
+  overlapRatio:
+    description: Optimal beam overlap for uniform surface treatment
+    unit: '%'
+    value: 50
+  passCount:
+    description: Number of cleaning passes for complete oxide removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Cast Iron oxide removal without substrate damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-infrared wavelength optimized for Cast Iron absorption and rust removal
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 8.5
+      absorptivity:
+        source: ai_research
+        unit: '%'
+        value: 55.0
+      boilingPoint:
+        source: ai_research
+        unit: K
+        value: 3135.0
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 55.0
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 1.8
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 45.0
+      meltingPoint:
+        source: ai_research
+        unit: K
+        value: 1426.0
+      reflectivity:
+        source: ai_research
+        unit: '%'
+        value: 45.0
+      specificHeat:
+        source: ai_research
+        unit: J/(kg·K)
+        value: 540.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 50.0
+      thermalDestruction:
+        point:
+          unit: °C
+          value: 1200.0
+        source: ai_research
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1473.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 12.5
+      thermalExpansion:
+        source: ai_research
+        unit: 10⁻⁶/K
+        value: 11.0
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m^0.5
+        value: 4.2
+      absorptionCoefficient:
+        source: ai_research
+        unit: dimensionless (fraction of incident radiation)
+        value: 0.72
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        source: ai_research
+        unit: MPa
+        value: 827.0
+      corrosionResistance:
+        source: ai_research
+        unit: rating
+        value: 5.0
+      density:
+        source: ai_research
+        unit: g/cm³
+        value: 7.2
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 1000000.0
+      electricalResistivity:
+        source: ai_research
+        unit: µΩ·cm
+        value: 60.0
+      flexuralStrength:
+        source: ai_research
+        unit: MPa
+        value: 448.0
+      hardness:
+        source: ai_research
+        unit: HV
+        value: 2200.0
+      oxidationResistance:
+        source: ai_research
+        unit: °C
+        value: 750.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 2.5
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 250.0
+      youngsModulus:
+        source: ai_research
+        unit: GPa
+        value: 110.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 22.1
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 620000.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 22.1
+      surfaceRoughness:
+        source: ai_research
+        unit: µm
+        value: 3.2
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 1.0e-07
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.65
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 1000000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 9.5e-07
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 1.8
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.65
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1423.0
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m^0.5
+        value: 4.2
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -519,3 +322,73 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: ferrous
+subtitle: Precision Laser Revives Cast Iron's Distinctive Graphite Texture
+title: Cast Iron Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:01:21.350566Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 8
+  character_count: 64
+faq:
+- question: What laser parameters work best for cleaning rust from cast iron without damaging the base metal?
+  answer: Untuk membersihkan karat dari besi cor tanpa merusak substrat, gunakan laser serat 1064 nm dengan daya ~100 W dan
+    fluens 5 J/cm². Kecepatan pemindaian 500 mm/s dengan spot 50 μm memberikan ablasi oksida yang efektif, melestarikan mikrostruktur
+    logam dasar melalui kontrol energi pulsa nanodetik yang tepat.
+- question: Does laser cleaning affect the machinability or future processing of cast iron components?
+  answer: Laser cleaning with optimal 5 J/cm² fluence and 100W power preserves cast iron's machinability by removing oxides
+    without altering bulk hardness. The process leaves a pristine surface that enhances coating adhesion and maintains weldability,
+    ensuring no adverse effects on subsequent manufacturing steps.
+- question: How do I prevent white cast iron from cracking during laser cleaning due to thermal stress?
+  answer: Untuk mencegah retak pada white cast iron, gunakan fluence rendah mendekati 5 J/cm² dan scan speed tinggi ~500 mm/s.
+    Strategi ini meminimalkan thermal shock dengan membatasi input panas pada material getas berkarbon tinggi.
+- question: Can laser cleaning effectively remove burned-in sand and casting residues from iron castings?
+  answer: Ya, laser pembersih sangat efektif untuk menghilangkan residu pengecoran dari besi tuang. Dengan fluence ~5 J/cm²
+    dan kecepatan scan 500 mm/s, proses ini mengablasikan pasir yang terbakar dan agen pelepas cetakan dari permukaan berpori
+    tanpa merusak substrat.
+- question: What safety precautions are needed when laser cleaning cast iron containing graphite?
+  answer: Cast iron's graphite content generates hazardous ultrafine particulates during ablation at 100W power. Implement
+    local exhaust ventilation with HEPA filtration and wear a P100 respirator. The 1064nm wavelength process demands full-face
+    protection against reflected radiation.
+- question: Does laser cleaning alter the corrosion resistance of cast iron surfaces?
+  answer: Laser cleaning at 5 J/cm² fluence actually enhances corrosion resistance by removing contaminants and creating a
+    refined surface layer. This process promotes superior passive oxide formation compared to mechanical methods, significantly
+    improving rust protection for cast iron components.
+- question: How does the graphite flake structure in gray iron affect laser cleaning results?
+  answer: Graphite flakes in gray iron selectively absorb the 1064 nm laser energy, causing preferential ablation at fluences
+    around 5 J/cm². This can create micro-pitting, leading to a rougher final surface finish compared to other cast iron microstructures.
+- question: What's the maximum material removal rate for heavy scale on cast iron without causing damage?
+  answer: Untuk scale tebal pada besi cor, laju pembersihan maksimum sekitar 0.3 m²/jam dapat dicapai dengan fluence 5 J/cm².
+    Kecepatan scan 500 mm/s dengan beberapa pass lebih aman untuk mencegah pemanasan substrat berlebihan dan mempertahankan
+    integritas permukaan.
+- question: Can laser cleaning restore sealing surfaces on cast iron engine blocks or pump housings?
+  answer: Laser cleaning effectively restores cast iron sealing surfaces using 5 J/cm² fluence and 50 μm spot size. This selectively
+    ablates gasket residue and oxides while preserving the substrate's flatness. The process maintains dimensional integrity,
+    creating an ideal surface for re-sealing without mechanical damage.
+- question: How do I verify laser cleaning hasn't compromised the structural integrity of critical cast iron components?
+  answer: Proper parameter control below 5 J/cm² fluence prevents cast iron's structural compromise. Post-cleaning, employ
+    microhardness testing and eddy current inspection to verify subsurface integrity. These NDT methods detect any potential
+    alterations in the material's mechanical properties, ensuring component reliability.

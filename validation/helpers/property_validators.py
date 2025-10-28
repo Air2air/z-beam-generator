@@ -28,8 +28,6 @@ class PropertyValidators:
         - unit: Units of measurement
         - confidence: Confidence score (0-1)
         - source: Data source ('ai_research' for new materials)
-        - research_basis: Explanation of research methodology
-        - research_date: When the research was conducted
         """
         issues = []
         
@@ -37,9 +35,7 @@ class PropertyValidators:
             'value': 'Property value',
             'unit': 'Units of measurement',
             'confidence': 'Confidence score',
-            'source': 'Data source',
-            'research_basis': 'Research methodology',
-            'research_date': 'Research date'
+            'source': 'Data source'
         }
         
         # Check for missing required fields

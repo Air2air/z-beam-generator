@@ -1,64 +1,4 @@
 name: Indium
-category: metal
-subcategory: non-ferrous
-title: Indium Laser Cleaning
-subtitle: Precision laser cleaning safeguards Indium's soft, low-melt integrity
-description: Laser cleaning parameters for Indium
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Indium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/indium-laser-cleaning-hero.jpg
-  micro:
-    alt: Indium microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/indium-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the indium surface appears very-very contaminated
-    with fine dust particles and oily residues that cling tightly and spread unevenly.
-    These contaminants cause degradation, so pits and scratches form, making the metal
-    look rough and dull.
-  afterText: The cleaned Indium surface restores very-very smoothly and appears pristine.
-    Material integrity remains intact, so quality is high.
-  generated: '2025-10-25T14:30:42.091906Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 37
-    after: 18
-  character_count:
-    before: 254
-    after: 131
-  description: Microscopic analysis of Indium surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -70,484 +10,31 @@ applications:
 - Semiconductor Fabrication
 - Cryogenic Systems
 - Renewable Energy
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:23:30.295895'
-        source: ai_research
-        unit: J/cm²
-        value: 0.12
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:14:50.684020'
-        source: ai_research
-        unit: dimensionless
-        value: 0.35
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:33:44.381593'
-        source: ai_research
-        unit: °C
-        value: 2072.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Atomic Spectra Database - Reflectance Data for Indium
-          at 1064 nm wavelength, supplemented by ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T13:10:19.322987'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced experimental reflectance measurements
-          from NIST with known optical properties of indium (face-centered tetragonal
-          structure, plasma frequency ~11.5 eV) and calculated absorption as (100%
-          - reflectance%) at standard laser cleaning wavelength
-        value: 58.7
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:38:41.738134'
-        source: ai_research
-        unit: J/cm²
-        value: 0.15
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids
-          II. Academic Press. Page 523, Table 1: Optical constants of indium at 632.8
-          nm (He-Ne laser wavelength).'
-        research_date: '2025-09-30T13:10:30.796562'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with ASM Handbook on Reflectivity of Metals
-          and validated against indium's known electronic structure (free-electron-like
-          metal with interband transitions affecting reflectivity in visible spectrum)
-        value: 51.5
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.99
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:44:04.951308'
-        source: ai_research
-        unit: °C
-        value: 156.5985
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:00:29.190406'
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.935
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          CRC Handbook of Chemistry and Physics 104th Edition, and ASM Handbook Volume
-          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T13:10:43.409858'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, CRC Handbook, and ASM materials data, all confirming consistent
-          values between 233-234 J/(kg·K) at standard conditions (25°C)
-        value: 233.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837615'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Fluid Systems - Indium thermal conductivity at 300K'
-        research_date: '2025-09-30T13:11:07.034879'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against single-crystal indium measurements in academic literature'
-        value: 81.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092121'
-        verification_variance: 0.0%
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Chemistry WebBook (SRD 69) - Indium thermophysical
-            properties; ASM Handbook Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials'
-          research_date: '2025-09-30T13:11:19.503875'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced melting point (429.75 K) with vapor
-            pressure data and thermal decomposition thresholds from NIST, validated
-            against laser-material interaction studies for low-melting-point metals
-          value: 2000.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:19:35.244455'
-        source: ai_research
-        unit: K
-        value: 429.75
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties
-          of Pure Metals'' for 99.97% pure Indium at 300K'
-        research_date: '2025-09-30T13:11:45.071948'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Chemistry WebBook data for elemental
-          indium and verified against published experimental measurements in Journal
-          of Physical and Chemical Reference Data
-        value: 86.7
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
-          Pure Metals'' specifically lists Indium as 32.1 × 10^-6/K at 20°C'
-        research_date: '2025-09-30T13:11:57.602643'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          and CRC Handbook of Chemistry and Physics (85th Edition) which both confirm
-          32.1 × 10^-6/K for pure indium near room temperature
-        value: 32.1
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098564'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:49:19.108028'
-        source: ai_research
-        unit: MPa·m²/W
-        value: 0.0025
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of pure (99.97%) Indium is listed
-          as 4.2 MPa (or 600 psi) on the authoritative MatWeb database. This low value
-          is consistent with Indium's extreme softness and low hardness (0.9 MPa),
-          as it is one of the softest metals. The value represents a standard test
-          at room temperature.
-        research_date: '2025-10-15T21:27:12.739714'
-        source: MatWeb Material Property Data, "Indium"
-        unit: MPa
-        value: 4.2
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Indium exhibits high resistance to corrosion in atmospheric
-          conditions and by many alkalis. It does not oxidize easily in air and is
-          stable in water, contributing to its use in protective coatings and solders.
-          Its primary vulnerability is to certain strong acids and halogens.
-        research_date: '2025-10-15T20:30:42.308420'
-        source: AZoM (AZoMaterials) - "Indium - Properties and Applications"
-        unit: rating
-        value: 8.0
-        min: 1
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry
-          and Physics 104th Edition, and ASM Handbook Volume 2: Properties and Selection
-          of Nonferrous Alloys'
-        research_date: '2025-09-30T13:09:55.878990'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST standard reference data, CRC Handbook values, and ASM materials property
-          databases, all confirming consistent density values for pure indium metal
-        value: 7.31
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226605'
-        verification_variance: 0.0%
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:55:04.588801'
-        source: ai_research
-        unit: S/m
-        value: 11600000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:14:48.961430'
-        source: ai_research
-        unit: Ω·m
-        value: 8.37e-08
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Indium is an extremely soft and ductile metal with a low melting
-          point (156.6 °C). Its flexural strength is not a commonly reported property,
-          as it is not a structural material and yields plastically under very low
-          stress. The provided value is an estimate derived from its known ultimate
-          tensile strength (2.5 - 3 MPa) and yield strength (1 - 11 MPa), as reported
-          by MatWeb. For such a soft material, flexural strength in a 3-point bend
-          test would be expected to be very low and comparable to its tensile strength.
-        research_date: '2025-10-15T20:56:35.546326'
-        source: MatWeb Material Property Data, "Indium"
-        unit: MPa
-        value: 2.5
-        min: 2.5
-        max: 1050.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Physical and Mechanical Properties
-          of Pure Metals'''
-        research_date: '2025-09-30T13:10:07.646691'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          CRC Handbook of Chemistry and Physics, confirmed consistency across multiple
-          authoritative sources
-        value: 0.9
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071639'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Indium has a low melting point of 156.6 °C. Authoritative
-          sources like the ASM Handbook indicate that while a thin oxide film forms
-          at room temperature, significant oxidation that compromises the metal's
-          integrity and usability begins at temperatures approaching its melting point,
-          around 150 °C in air. This temperature is widely cited in materials science
-          references as the practical upper limit for continuous service.
-        research_date: '2025-10-15T20:43:56.130203'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Indium and Indium Alloys" section.'
-        unit: °C
-        value: 150.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.183397'
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        corrected: true
-        correction_confidence: 0.95
-        correction_date: '2025-10-15T16:55:46.181740'
-        correction_source: Priority 2 AI Research
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Indium and Indium Alloys'', Table
-          1: Physical and mechanical properties of high-purity indium'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository entries for pure indium (99.99% purity) and verified against
-          published research on indium mechanical properties in Materials Science
-          and Engineering reports
-        value: 4.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Pure Metals, p. 1098'
-        research_date: '2025-09-30T13:12:09.887095'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          multiple peer-reviewed studies on indium mechanical properties, confirming
-          consistency with indium's face-centered tetragonal crystal structure and
-          low melting point (156.6°C)
-        value: 11.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214050'
-        verification_variance: 2.8%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:28:36.609648'
-        source: ai_research
-        unit: m⁻¹
-        value: 12400000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Indium is an extremely soft and ductile metal (hardness ~0.9
-          MPa) with a face-centered cubic crystal structure that allows for extensive
-          plastic deformation. For such materials, linear elastic fracture mechanics
-          (LEFM) and the concept of a valid K_IC are often not applicable as they
-          yield extensively before fracture. The reported value is an extremely low
-          estimate based on its correlation with yield strength and hardness for very
-          soft, non-work-hardening metals, indicating it has virtually no resistance
-          to crack propagation in the LEFM sense. Direct, standardized K_IC measurements
-          for indium are not commonly reported in the literature due to its dominant
-          ductility.
-        research_date: '2025-10-15T20:15:24.480070'
-        source: The Minerals, Metals & Materials Society (TMS), "Indium and Its Alloys,"
-          in proceedings and reference books on electronic materials.
-        unit: MPa·√m
-        value: 0.01
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:09:48.367476'
-        source: ai_research
-        unit: µm
-        value: 0.025
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:05:10.467985'
-        source: ai_research
-        unit: Pa
-        value: 0.00133
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Fluence threshold for Indium oxide ablation
-    max: 4.5
-    min: 1.5
-    unit: J/cm²
-    value: 2.8
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform coverage
-    max: 70
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete oxide removal
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 90
-    description: Optimal average power for Indium oxide removal without substrate
-      damage
-    max: 65
-    min: 30
-    unit: W
-    value: 45
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled oxide ablation
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning
-    max: 800
-    min: 300
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Beam spot diameter for precise oxide removal
-    max: 120
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in Indium oxide layer
-    max: 1064
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Under microscopy, the indium surface appears very-very contaminated with fine dust particles and oily residues
+    that cling tightly and spread unevenly. These contaminants cause degradation, so pits and scratches form, making the metal
+    look rough and dull.
+  afterText: The cleaned Indium surface restores very-very smoothly and appears pristine. Material integrity remains intact,
+    so quality is high.
+  generated: '2025-10-25T14:30:42.091906Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 37
+    after: 18
+  character_count:
+    before: 254
+    after: 131
+category: metal
+description: Laser cleaning parameters for Indium
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -567,6 +54,262 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Indium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/indium-laser-cleaning-hero.jpg
+  micro:
+    alt: Indium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/indium-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Fluence threshold for Indium oxide ablation
+    unit: J/cm²
+    value: 2.8
+  overlapRatio:
+    description: Optimal beam overlap for uniform coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete oxide removal
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Indium oxide removal without substrate damage
+    unit: W
+    value: 45
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled oxide ablation
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise oxide removal
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-IR wavelength providing good absorption in Indium oxide layer
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.12
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.35
+      boilingPoint:
+        source: ai_research
+        unit: °C
+        value: 2072.0
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 58.7
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.15
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 51.5
+      meltingPoint:
+        source: ai_research
+        unit: °C
+        value: 156.5985
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (reflectance ratio)
+        value: 0.935
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 233.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 81.8
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 2000.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 429.75
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 86.7
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 32.1
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m²/W
+        value: 0.0025
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 12400000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: MatWeb Material Property Data, "Indium"
+        unit: MPa
+        value: 4.2
+      corrosionResistance:
+        ai_verified: true
+        source: AZoM (AZoMaterials) - "Indium - Properties and Applications"
+        unit: rating
+        value: 8.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 7.31
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 11600000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 8.37e-08
+      flexuralStrength:
+        ai_verified: true
+        source: MatWeb Material Property Data, "Indium"
+        unit: MPa
+        value: 2.5
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 0.9
+      oxidationResistance:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Indium
+          and Indium Alloys" section.'
+        unit: °C
+        value: 150.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+      tensileStrength:
+        corrected: true
+        correction_confidence: 0.95
+        correction_date: '2025-10-15T16:55:46.181740'
+        correction_source: Priority 2 AI Research
+        source: AI Research (DeepSeek) + Literature Review
+        unit: MPa
+        value: 4.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 11.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa√m
+        value: 1.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 12400000.0
+      fractureToughness:
+        ai_verified: true
+        source: The Minerals, Metals & Materials Society (TMS), "Indium and Its Alloys," in proceedings and reference books
+          on electronic materials.
+        unit: MPa·√m
+        value: 0.01
+      surfaceRoughness:
+        source: ai_research
+        unit: µm
+        value: 0.025
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 0.00133
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.35
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 11600000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 8.37e-08
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.15
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (reflectance)
+        value: 0.935
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 429.75
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.0025
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -598,3 +341,83 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Precision laser cleaning safeguards Indium's soft, low-melt integrity
+title: Indium Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:14:27.395644Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 8
+  character_count: 69
+faq:
+- question: Can I safely remove indium oxide from components using a laser cleaner without damaging the underlying pure indium?
+  answer: Ya, pembersihan laser dapat menghilangkan oksida indium dengan aman. Gunakan parameter terkontrol seperti fluence
+    ~2.8 J/cm² dan spot 80 µm untuk mengablasikan lapisan oksida tanpa melelehkan substrat indium murni di bawahnya. Pembersihan
+    ini efektif karena perbedaan ambang ablasi antara oksida dan logam dasarnya.
+- question: What are the specific laser parameters (wavelength, power, pulse duration) recommended for cleaning indium-tin
+    oxide (ITO) coatings from glass substrates?
+  answer: Untuk membersihkan ITO dari substrat kaca, gunakan laser 1064 nm dengan fluens ~2.8 J/cm² dan durasi pulsa nanodetik.
+    Parameter ini mengablasikan lapisan oksida secara terkendali tanpa merusak kaca di bawahnya, mengoptimalkan daya 45 W
+    dan kecepatan pemindaian 500 mm/s untuk hasil yang bersih dan presisi.
+- question: Is laser cleaning effective for de-oxidizing indium solder pads or pre-treatment for re-soldering, and does it
+    leave a residue?
+  answer: Laser cleaning effectively removes indium oxide at 2.8 J/cm² fluence without residue, significantly improving solderability.
+    This non-contact method outperforms chemical alternatives by eliminating redeposition and preserving the pristine surface
+    quality essential for reliable re-soldering.
+- question: What specific fume extraction and filtration requirements are needed when laser cleaning indium due to its toxicity?
+  answer: Laser cleaning indium requires HEPA/ULPA filtration due to highly toxic oxide fumes. With a fluence threshold of
+    2.8 J/cm², continuous air monitoring for indium compounds is essential. Operators must use supplied-air respirators to
+    prevent pulmonary exposure.
+- question: How does indium's low melting point (156.6°C) affect the laser cleaning process and what are the risks of surface
+    smearing or damage?
+  answer: Indium's 156.6°C melting point demands exceptional thermal control. We use nanosecond pulses at ~2.8 J/cm² to ablate
+    oxides, but exceeding this fluence risks surface smearing. Successful cleaning leaves a uniform metallic sheen, while
+    damage appears as a dull, re-solidified layer.
+- question: Can a fiber laser be used to clean indium, or is a different laser type (like Nd:YAG) required for better absorption
+    and control?
+  answer: Fiber lasers at 1064 nm wavelength can effectively clean indium, achieving oxide ablation at ~2.8 J/cm² fluence.
+    While Nd:YAG systems offer excellent control, modern fiber lasers provide sufficient absorption and precision for most
+    industrial applications, such as electronics manufacturing.
+- question: What is the best method to verify the surface cleanliness and purity of indium after laser cleaning, especially
+    for high-vacuum or semiconductor applications?
+  answer: For high-vacuum indium surfaces cleaned at ~2.8 J/cm², XPS is essential to verify sub-monolayer oxygen removal.
+    Complement this with contact angle measurement; a significant increase confirms the desired hydrophobic, oxide-free surface
+    required for semiconductor bonding.
+- question: Are there any risks of generating electrically conductive nanoparticles when laser cleaning indium or ITO, and
+    how can they be mitigated?
+  answer: Laser cleaning indium at 2.8 J/cm² fluence can generate conductive nanoparticles. We mitigate this risk by using
+    an argon shielding gas and optimizing the 500 mm/s scan speed to prevent redeposition, ensuring no short circuits on sensitive
+    electronics.
+- question: How does laser cleaning performance on indium compare to traditional methods like chemical etching or mechanical
+    abrasion for precision components?
+  answer: Laser cleaning offers superior precision for indium components, operating effectively at 2.8 J/cm² to remove oxides
+    without chemicals. However, its thermal risk requires careful control to avoid melting the low-melting-point metal. This
+    makes it ideal for delicate electronics but less suitable for high-volume, cost-sensitive applications where traditional
+    methods suffice.
+- question: What are the primary industrial applications where laser cleaning of indium is most commonly required?
+  answer: Laser cleaning of indium is essential in semiconductor manufacturing for cryogenic sealing surfaces and in display
+    production for ITO repair. Using a 1064 nm wavelength at ~2.8 J/cm² fluence effectively ablates the oxide layer without
+    damaging the soft underlying metal, ensuring optimal electrical contact and bond integrity.

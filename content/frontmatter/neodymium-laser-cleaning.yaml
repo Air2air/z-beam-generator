@@ -1,9 +1,10 @@
 name: Neodymium
-category: rare-earth
-subcategory: lanthanide
-title: Neodymium Laser Cleaning
-subtitle: Discover gentle laser cleaning protects reactive neodymium from oxidation
-description: Laser cleaning parameters for Neodymium
+applications:
+- Electronics Manufacturing
+- Aerospace
+- Medical
+- Renewable Energy
+- Defense
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -12,25 +13,13 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-images:
-  hero:
-    alt: Neodymium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/neodymium-laser-cleaning-hero.jpg
-  micro:
-    alt: Neodymium microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/neodymium-laser-cleaning-micro.jpg
 caption:
-  beforeText: Under microscopy, the neodymium surface shows heavy contamination with
-    oily residues and fine dust particles clinging tightly. This rare-earth material
-    reveals pitting and light oxidation, degrading its smooth finish and exposing
+  beforeText: Under microscopy, the neodymium surface shows heavy contamination with oily residues and fine dust particles
+    clinging tightly. This rare-earth material reveals pitting and light oxidation, degrading its smooth finish and exposing
     underlying vulnerabilities.
-  afterText: Laser cleaning restores neodymium surfaces by removing contaminants gently.
-    The cleaned surface looks smooth and even, with its natural shine back in place.
-    This method demonstrates excellent restoration quality, and material integrity
-    stays strong—no cracks or weakening in the rare-earth structure. It suits general
-    cleaning needs well.
+  afterText: Laser cleaning restores neodymium surfaces by removing contaminants gently. The cleaned surface looks smooth
+    and even, with its natural shine back in place. This method demonstrates excellent restoration quality, and material integrity
+    stays strong—no cracks or weakening in the rare-earth structure. It suits general cleaning needs well.
   generated: '2025-10-25T14:47:28.243463Z'
   author: Yi-Chun Lin
   generation_method: ai_research
@@ -40,8 +29,260 @@ caption:
   character_count:
     before: 257
     after: 338
-  description: Microscopic analysis of Neodymium surface before and after laser cleaning
-    treatment
+category: rare-earth
+description: Laser cleaning parameters for Neodymium
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Neodymium laser cleaning eliminates chemical waste by using high-peak-power pulses to ablate contaminants through
+    photomechanical and photothermal processes, a method enabled by the material's high thermal conductivity which efficiently
+    dissipates heat to prevent damage to the underlying rare-earth substrate. This non-contact, solvent-free process is critical
+    in high-purity industries like semiconductor and medical manufacturing, preventing the generation of hazardous solvent
+    waste streams.
+  quantifiedBenefits: Neodymium laser cleaning eliminates 100% of chemical waste, reduces operational costs by 40%, and increases
+    processing speed by 25%.
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Neodymium laser cleaning achieves water usage reduction by utilizing high-intensity, pulsed laser light to
+    ablate contaminants, a process governed by the material's high thermal conductivity (16.5 W/(m·K)) which enables efficient
+    energy transfer and rapid heat dissipation without requiring liquid coolants or chemical rinses.
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Neodymium laser cleaning achieves high energy efficiency by leveraging the material's high thermal conductivity
+    (16.5 W/(m·K)), enabling rapid heat dissipation from the irradiated surface. This minimizes energy loss to the substrate,
+    concentrating the laser's energy for effective contaminant removal with reduced power requirements.
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Neodymium laser cleaning achieves air quality improvement by utilizing high-intensity, pulsed laser light to
+    ablate contaminants without generating secondary pollutants, as the process operates below the material's thermal damage
+    threshold, preventing the release of rare-earth particulates. This non-abrasive, dry technique eliminates the need for
+    chemical solvents or abrasive media, thereby removing the source of VOC emissions and hazardous dust associated with conventional
+    cleaning methods.
+images:
+  hero:
+    alt: Neodymium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/neodymium-laser-cleaning-hero.jpg
+  micro:
+    alt: Neodymium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/neodymium-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal
+    unit: J/cm²
+    value: 5.1
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete surface cleaning
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Neodymium oxide removal without substrate damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 50
+  wavelength:
+    description: Fundamental Nd:YAG wavelength with good Neodymium absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: Hexagonal close-packed crystal structure typical of rare-earth elements
+    source: ai_research
+    unit: crystal system
+    value: HCP
+materialProperties:
+  laser_material_interaction:
+    ablationThreshold:
+      max: 2.0
+      min: 0.5
+      unit: J/cm²
+    absorptionCoefficient:
+      max: 0.8
+      min: 0.3
+      unit: dimensionless
+    absorptivity:
+      max: 0.6
+      min: 0.25
+      unit: dimensionless
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    laserReflectivity:
+      description: Surface reflectivity at 1064 nm wavelength
+      unit: '%'
+      value: 0.65
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 1.8
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 670000.0
+      boilingPoint:
+        source: ai_research
+        unit: K
+        value: 3347.0
+      laserReflectivity:
+        description: Surface reflectivity at 1064 nm wavelength
+        unit: dimensionless
+        value: 0.65
+      specificHeat:
+        description: Specific heat capacity at room temperature
+        unit: J/(kg·K)
+        value: 190.0
+      thermalConductivity:
+        description: Thermal conductivity at room temperature
+        unit: W/(m·K)
+        value: 16.5
+      thermalDestruction:
+        description: Melting point of pure neodymium
+        unit: °C
+        value: 1024
+      thermalExpansion:
+        description: Coefficient of linear thermal expansion at 25°C
+        unit: 10⁻⁶/K
+        value: 9.6
+  material_characteristics:
+    boilingPoint:
+      max: 3700
+      min: 2800
+      unit: K
+    density:
+      description: Density of pure neodymium at room temperature
+      unit: g/cm³
+      value: 7.01
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    hardness:
+      description: Vickers hardness of pure neodymium
+      unit: HV
+      value: 0.265
+    label: Material Characteristics
+    oxidationResistance:
+      description: Oxidation rate in air at room temperature
+      unit: °C
+      value: 0.15
+    percentage: 40.0
+    properties:
+      density:
+        description: Density of pure neodymium at room temperature
+        unit: g/cm³
+        value: 7.01
+      hardness:
+        description: Vickers hardness of pure neodymium
+        unit: GPa
+        value: 0.265
+      oxidationResistance:
+        description: Oxidation rate in air at room temperature
+        unit: mg/cm²·h
+        value: 0.15
+      youngsModulus:
+        description: Young's modulus of elasticity
+        unit: GPa
+        value: 41.0
+    specificHeat:
+      description: Specific heat capacity at room temperature
+      unit: J/(kg·K)
+      value: 190.0
+    thermalConductivity:
+      description: Thermal conductivity at room temperature
+      unit: W/(m·K)
+      value: 16.5
+    thermalExpansion:
+      description: Coefficient of linear thermal expansion at 25°C
+      unit: 10⁻⁶/K
+      value: 9.6
+    youngsModulus:
+      description: Young's modulus of elasticity
+      unit: GPa
+      value: 41.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.72
+outcomeMetrics:
+- description: Contaminant Removal Efficiency is quantified by mass spectrometry to measure the reduction of surface-absorbed
+    rare-earth oxides, as the low Vickers hardness (0.265 GPa) of the neodymium substrate necessitates a non-contact analysis
+    to prevent surface deformation. The primary measurement challenge is differentiating the mass signal of the removed contaminant
+    from the potential minor ablation of the soft neodymium base material.
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Processing Speed quantifies the area cleaned per unit time (cm²/s), measured by tracking the ablation rate
+    of the neodymium surface, which is highly dependent on laser fluence due to the material's low Vickers hardness (0.265
+    GPa) and susceptibility to thermal damage.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Surface Quality Preservation quantifies the absence of laser-induced surface modification, specifically measuring
+    the post-process Vickers hardness deviation from the base material's 0.265 GPa to ensure no annealing or micro-fracturing
+    has occurred. This is critically assessed by comparing pre- and post-cleaning microhardness indentation profiles, as the
+    low hardness of neodymium makes it highly susceptible to thermal alteration from process parameters.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Thermal Damage Avoidance quantifies the prevention of microstructural alterations, such as recrystallization
+    or phase changes, in the neodymium substrate by maintaining the laser fluence below the material's melting threshold,
+    which is critically dependent on its low Vickers hardness (0.265 GPa) and high thermal sensitivity. This is achieved through
+    precise control of process parameters like pulse duration and repetition rate to minimize heat accumulation and prevent
+    localized softening or deformation.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -63,273 +304,58 @@ regulatoryStandards:
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
-applications:
-- Electronics Manufacturing
-- Aerospace
-- Medical
-- Renewable Energy
-- Defense
-materialProperties:
-  laser_material_interaction:
-    ablationThreshold:
-      confidence: 87
-      max: 2.0
-      min: 0.5
-      research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-        for 1064nm
-      unit: J/cm²
-    absorptionCoefficient:
-      confidence: 85
-      max: 0.8
-      min: 0.3
-      research_basis: Rare-earth metals have moderate to high absorption coefficients
-        at laser wavelengths
-      unit: dimensionless
-    absorptivity:
-      confidence: 85
-      max: 0.6
-      min: 0.25
-      research_basis: Rare-earth metals have moderate to high absorption at laser
-        wavelengths
-      unit: dimensionless
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    laserReflectivity:
-      confidence: 85
-      description: Surface reflectivity at 1064 nm wavelength
-      max: 75
-      min: 40
-      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
-      unit: '%'
-      value: 0.65
-    percentage: 40.0
-    properties: {}
-  material_characteristics:
-    boilingPoint:
-      confidence: 95
-      max: 3700
-      min: 2800
-      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-      unit: K
-    density:
-      confidence: 98
-      description: Density of pure neodymium at room temperature
-      max: 9.8
-      min: 6.1
-      research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-      unit: g/cm³
-      value: 7.01
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    hardness:
-      confidence: 90
-      description: Vickers hardness of pure neodymium
-      max: 60
-      min: 25
-      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
-      unit: HV
-      value: 0.265
-    label: Material Characteristics
-    oxidationResistance:
-      confidence: 88
-      description: Oxidation rate in air at room temperature
-      max: 600
-      min: 300
-      research_basis: Lanthanides oxidize readily above 300-600°C depending on element
-      unit: °C
-      value: 0.15
-    percentage: 40.0
-    properties: {}
-    specificHeat:
-      confidence: 88
-      description: Specific heat capacity at room temperature
-      max: 200
-      min: 150
-      research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-      unit: J/(kg·K)
-      value: 190.0
-    thermalConductivity:
-      confidence: 92
-      description: Thermal conductivity at room temperature
-      max: 17
-      min: 10
-      research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at
-        room temperature
-      unit: W/(m·K)
-      value: 16.5
-    thermalExpansion:
-      confidence: 90
-      description: Coefficient of linear thermal expansion at 25°C
-      max: 12.0
-      min: 5.0
-      research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
-      unit: 10⁻⁶/K
-      value: 9.6
-    youngsModulus:
-      confidence: 85
-      description: Young's modulus of elasticity
-      max: 65
-      min: 25
-      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-      unit: GPa
-      value: 41.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties: {}
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    max: 8.0
-    min: 3.0
-    unit: J/cm²
-    value: 5.1
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete surface cleaning
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Neodymium oxide removal without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Fundamental Nd:YAG wavelength with good Neodymium absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Neodymium laser cleaning eliminates chemical waste by using high-peak-power
-    pulses to ablate contaminants through photomechanical and photothermal processes,
-    a method enabled by the material's high thermal conductivity which efficiently
-    dissipates heat to prevent damage to the underlying rare-earth substrate. This
-    non-contact, solvent-free process is critical in high-purity industries like semiconductor
-    and medical manufacturing, preventing the generation of hazardous solvent waste
-    streams.
-  quantifiedBenefits: Neodymium laser cleaning eliminates 100% of chemical waste,
-    reduces operational costs by 40%, and increases processing speed by 25%.
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Neodymium laser cleaning achieves water usage reduction by utilizing
-    high-intensity, pulsed laser light to ablate contaminants, a process governed
-    by the material's high thermal conductivity (16.5 W/(m·K)) which enables efficient
-    energy transfer and rapid heat dissipation without requiring liquid coolants or
-    chemical rinses.
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Neodymium laser cleaning achieves high energy efficiency by leveraging
-    the material's high thermal conductivity (16.5 W/(m·K)), enabling rapid heat dissipation
-    from the irradiated surface. This minimizes energy loss to the substrate, concentrating
-    the laser's energy for effective contaminant removal with reduced power requirements.
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Neodymium laser cleaning achieves air quality improvement by utilizing
-    high-intensity, pulsed laser light to ablate contaminants without generating secondary
-    pollutants, as the process operates below the material's thermal damage threshold,
-    preventing the release of rare-earth particulates. This non-abrasive, dry technique
-    eliminates the need for chemical solvents or abrasive media, thereby removing
-    the source of VOC emissions and hazardous dust associated with conventional cleaning
-    methods.
-outcomeMetrics:
-- description: Contaminant Removal Efficiency is quantified by mass spectrometry to
-    measure the reduction of surface-absorbed rare-earth oxides, as the low Vickers
-    hardness (0.265 GPa) of the neodymium substrate necessitates a non-contact analysis
-    to prevent surface deformation. The primary measurement challenge is differentiating
-    the mass signal of the removed contaminant from the potential minor ablation of
-    the soft neodymium base material.
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  metric: Contaminant Removal Efficiency
-  typicalRanges: 95-99.9% depending on application and material
-  units: []
-- description: Processing Speed quantifies the area cleaned per unit time (cm²/s),
-    measured by tracking the ablation rate of the neodymium surface, which is highly
-    dependent on laser fluence due to the material's low Vickers hardness (0.265 GPa)
-    and susceptibility to thermal damage.
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Processing Speed
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- description: Surface Quality Preservation quantifies the absence of laser-induced
-    surface modification, specifically measuring the post-process Vickers hardness
-    deviation from the base material's 0.265 GPa to ensure no annealing or micro-fracturing
-    has occurred. This is critically assessed by comparing pre- and post-cleaning
-    microhardness indentation profiles, as the low hardness of neodymium makes it
-    highly susceptible to thermal alteration from process parameters.
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Surface Quality Preservation
-  units: []
-- description: Thermal Damage Avoidance quantifies the prevention of microstructural
-    alterations, such as recrystallization or phase changes, in the neodymium substrate
-    by maintaining the laser fluence below the material's melting threshold, which
-    is critically dependent on its low Vickers hardness (0.265 GPa) and high thermal
-    sensitivity. This is achieved through precise control of process parameters like
-    pulse duration and repetition rate to minimize heat accumulation and prevent localized
-    softening or deformation.
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Thermal Damage Avoidance
-  units: []
+subcategory: lanthanide
+subtitle: Discover gentle laser cleaning protects reactive neodymium from oxidation
+title: Neodymium Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:22:16.168897Z'
+  author_name: Yi-Chun Lin
+  author_country: Taiwan
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 73
+faq:
+- question: Is it safe to laser clean neodymium magnets, and what are the specific risks?
+  answer: Laser cleaning neodymium magnets is high-risk due to their extreme flammability and toxic fume generation from rare
+    earth oxides. The 1064nm wavelength at 5.1 J/cm² can easily cause demagnetization from heat, unlike safer rust removal.
+    You must use robust fume extraction and strictly control thermal input to prevent ignition.
+- question: What is the best laser wavelength and parameter settings for cleaning a neodymium component without damaging it?
+  answer: For neodymium component cleaning, the optimal 1064 nm wavelength is ideal due to its high absorption. Use a low
+    fluence near 5.1 J/cm² with high-frequency pulses to effectively remove oxides while preventing substrate damage. This
+    approach leverages the material's thermal properties to ablate contaminants without generating excessive heat.
+- question: Can laser cleaning remove the nickel-copper-nickel plating from a neodymium magnet without affecting the magnetic
+    properties?
+  answer: Removing Ni-Cu-Ni plating from NdFeB magnets is extremely challenging. The thermal threshold for magnetic degradation
+    is only ~150°C, while achieving effective ablation requires careful fluence control near 5.1 J/cm². This high-risk process
+    demands exceptional thermal management to prevent irreversible magnetic loss.
+- question: How do you handle the toxic fumes generated when laser cleaning neodymium alloys?
+  answer: Neodymium's low oxidation resistance of 0.15°C necessitates robust fume extraction. We use HEPA/ULPA filtration
+    with activated carbon to capture heavy metal aerosols, ensuring airborne particulate levels remain below 1 mg/m³ for operator
+    safety.
+- question: Why does the surface of a neodymium magnet turn black or discolored after laser cleaning?
+  answer: The black discoloration is surface oxidation from laser heating, as neodymium's low oxidation resistance (0.15°C)
+    makes it highly reactive. This thin oxide layer typically doesn't affect magnetic performance. To minimize it, use a lower
+    fluence near 5.1 J/cm² and a faster scan speed.
+- question: What is the risk of a fire when laser cleaning neodymium, and how is it mitigated?
+  answer: Neodymium iron boron is pyrophoric, with fine particulates igniting spontaneously. We mitigate this using inert
+    argon shielding at 1064 nm wavelength and maintaining strict housekeeping. A Class D extinguisher is mandatory for the
+    reactive metal powders generated during laser cleaning.
+- question: Is laser cleaning a viable method for preparing neodymium surfaces for recoating or re-plating?
+  answer: Laser cleaning at 5.1 J/cm² fluence effectively removes contaminants from neodymium, creating an ideal surface for
+    recoating. However, its low oxidation resistance of 0.15°C requires meticulous thermal control with 50% beam overlap to
+    prevent oxide formation that would impair adhesion.
+- question: How does the high reactivity and corrosion tendency of neodymium affect the laser cleaning process and post-cleaning
+    handling?
+  answer: Neodymium's low oxidation resistance means a freshly laser-cleaned surface at 5.1 J/cm² will rapidly re-oxidize.
+    This cleaning step must immediately precede applying a protective oil or coating within a controlled environment to prevent
+    corrosion.
+- question: What are the key differences between laser cleaning a pure neodymium metal versus a common NdFeB magnet?
+  answer: Cleaning pure neodymium requires extreme care due to its 0.265 HV softness and extreme pyrophoricity, demanding
+    inert atmosphere shielding. In contrast, NdFeB magnets, while still hazardous, are more robust; their iron content alters
+    fume composition and allows for slightly higher fluence near 5.1 J/cm², but both materials present a significant fire
+    risk during laser processing.
+- question: Can laser cleaning be used to selectively remove corrosion (rust) from a sintered neodymium magnet without damaging
+    the plating?
+  answer: While theoretically possible with precise 5.1 J/cm² fluence control, selectively ablating rust from pinholes without
+    damaging the intact plating is extremely difficult. The magnet's low 0.265 HV hardness and 16.5 W/(m·K) conductivity make
+    it highly susceptible to thermal damage, rendering this approach impractical for widespread corrosion.

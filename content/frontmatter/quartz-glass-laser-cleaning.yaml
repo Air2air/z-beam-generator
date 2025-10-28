@@ -1,70 +1,4 @@
 name: Quartz Glass
-category: glass
-subcategory: soda-lime
-title: Quartz Glass Laser Cleaning
-subtitle: Precision laser cleaning restores quartz glass transparency without risking
-  thermal fractures
-description: Laser cleaning parameters for Quartz Glass
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/quartz-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Quartz Glass microscopic view of laser cleaning showing detailed precise
-      contamination removal
-    url: /images/material/quartz-glass-laser-cleaning-micro.jpg
-caption:
-  beforeText: 'Under microscopy, the quartz glass surface appears very-very contaminated,
-    with fine dust particles and oily residues scattered everywhere and then clustered
-    in spots. Contaminants show irregular shapes, sizes from nanometers to microns,
-    sticking tightly and blocking transparency. Surface degradation is evident: micro-pits
-    form, edges roughen, and overall smoothness is lost, so the material looks dull
-    and weakened.'
-  afterText: After ultrafast laser cleaning, the quartz glass surface appears very-very
-    smooth and clean, with dirt removed then shine restored quickly. Integrity stays
-    strong, no cracks or damage seen, so material looks like new. Process cleans effectively
-    and preserves optical properties well.
-  generated: '2025-10-25T15:06:48.499784Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 57
-    after: 41
-  character_count:
-    before: 418
-    after: 283
-  description: Microscopic analysis of Quartz Glass surface before and after laser
-    cleaning treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Semiconductor Manufacturing
 - Aerospace & Defense
@@ -76,375 +10,33 @@ applications:
 - Marine & Offshore
 - Automotive Lighting
 - High-Temperature Processing
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:21:26.403606'
-        source: ai_research
-        unit: J/cm²
-        value: 2.1
-        min: 2.0
-        max: 6.0
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: NIST Standard Reference Database 78 (2019) - Spectroscopic
-          Properties of Fused Silica; Handbook of Laser Wavelengths (1998) - Absorption
-          coefficient for high-purity fused quartz at 1064 nm is typically 0.95-0.98
-          m⁻¹
-        research_date: '2025-09-30T12:11:17.285715'
-        source: ai_research
-        unit: 1/m
-        validation_method: Cross-referenced with material composition analysis of
-          high-purity SiO₂ (>99.9%) and verification against laser cleaning parameters
-          for quartz glass substrates
-        value: 0.999
-        verification_confidence: 95
-        verification_date: '2025-10-03T23:08:00.985199'
-        verification_variance: 4.06%
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        confidence: 0.95
-        research_basis: NIST Materials Data Repository - Fused Silica Optical Properties
-          Database (SRM 2036) and Palik's Handbook of Optical Constants of Solids,
-          Vol. II, showing 3.4-3.8% reflectivity at near-infrared wavelengths (1064
-          nm) for high-purity fused quartz
-        research_date: '2025-09-30T12:11:29.891897'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 10: Materials
-          Characterization and academic literature on laser processing of fused silica,
-          confirming typical reflectivity values between 3.2-4.2% for common laser
-          cleaning wavelengths'
-        value: 3.6
-        min: 0.1
-        max: 92
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Fluid Systems - Fused Quartz (SiO₂) at 300K'
-        research_date: '2025-09-30T12:11:42.988510'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against quartz glass composition (99.9+% SiO₂) and amorphous silica structure'
-        value: 741.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837531'
-        verification_variance: 0.0%
-        min: 120
-        max: 900
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Fused Quartz, measured at 300K using guarded hot plate method (ASTM C177)'
-        research_date: '2025-09-30T12:12:07.051472'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and confirmed
-          consistency with pure fused silica composition (99.9+% SiO2)'
-        value: 1.38
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092047'
-        verification_variance: 0.0%
-        min: 0.7
-        max: 30
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Standard Reference Database 77: High-Temperature Properties
-            of Fused Quartz (SiO₂) - Annealing Point 1336K, Strain Point 1273K, Softening
-            Point 1923K with structural degradation onset at ~1683K'
-          research_date: '2025-09-30T12:12:18.417085'
-          source: ai_research
-          unit: K
-          validation_method: 'Cross-referenced NIST data with ASM Handbook Vol. 4:
-            Ceramics and Glasses, and academic literature on laser-induced damage
-            thresholds in fused silica'
-          value: 1683.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 78, Section 4.2.3: ''Fused
-          quartz at 300K exhibits thermal diffusivity of 8.5 ± 0.3 mm²/s'''
-        research_date: '2025-09-30T12:12:40.992873'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against quartz glass composition (99.95% SiO₂) and amorphous structure'
-        value: 8.5
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84: Fused Silica (Quartz
-          Glass) - Thermal Expansion Coefficient at 20°C = 0.55 × 10⁻⁶/K'
-        research_date: '2025-09-30T12:12:52.913107'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against academic literature on fused quartz properties'
-        value: 0.55
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098482'
-        verification_variance: 0.0%
-        min: 0.1
-        max: 15
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of fused quartz (quartz glass) is
-          exceptionally high compared to its tensile strength. The cited authoritative
-          handbook provides a typical value of 1.1 GPa (1100 MPa) for the compressive
-          strength of this material, which is consistent with the known brittle nature
-          of glass where compressive strength is significantly higher than tensile
-          strength.
-        research_date: '2025-10-15T21:30:45.561561'
-        source: '"Handbook of Glass Properties" by Narottam P. Bansal and Robert H.
-          Doremus, Academic Press, 1986, p. 89.'
-        unit: MPa
-        value: 1100.0
-        min: 500
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Quartz glass (fused silica) is documented by manufacturers
-          like Corning and Heraeus as having "exceptional chemical purity and resistance,"
-          being nearly inert to most acids, salts, and water. It is attacked only
-          by hydrofluoric acid and strong alkalis at high temperatures, giving it
-          superior but not perfect resistance across general environmental conditions.
-        research_date: '2025-10-15T20:34:41.427010'
-        source: Corning HPFS® Fused Silica (Quartz Glass) Material Properties Datasheet
-        unit: rating
-        value: 9.0
-        min: 9
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (ASM International, 1990), Section
-          ''Fused Silica and Other Glasses'''
-        research_date: '2025-09-30T12:10:53.481715'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          for glass properties and verified against academic literature on high-purity
-          fused quartz/silica glass compositions
-        value: 2.2
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226530'
-        verification_variance: 0.0%
-        min: 1.2
-        max: 7.6
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:12:52.289628'
-        source: ai_research
-        unit: Ω·m
-        value: 1.5e+18
-        min: 10000000000.0
-        max: 1000000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Quartz glass (fused silica) is a brittle ceramic material
-          with typical flexural strength ranging from 30-70 MPa. The value of 50 MPa
-          represents a conservative average from materials engineering references
-          for 3-point bend testing of pristine, annealed specimens. The low strength
-          is characteristic of glass's brittle nature and sensitivity to surface flaws.
-        research_date: '2025-10-15T21:00:43.457063'
-        source: '"Handbook of Materials Selection" by Myer Kutz, Chapter 11 - "Ceramics
-          and Glasses", Table 11.2 - Mechanical Properties of Commercial Glasses'
-        unit: MPa
-        value: 50.0
-        min: 50
-        max: 750.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Section:
-          ''Properties of Glass and Glass Ceramics''; NIST Special Publication 960-15:
-          ''Properties of Optical Materials'''
-        research_date: '2025-09-30T12:11:05.711919'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced multiple authoritative materials databases
-          and verified against quartz crystal structure (amorphous SiO₂ with >99.9%
-          purity) and known mechanical properties including fracture toughness and
-          Young's modulus
-        value: 7.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071563'
-        verification_variance: 0.0%
-        min: 3.5
-        max: 9.5
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: According to the leading manufacturer Heraeus, the maximum
-          continuous service temperature for fused quartz in air is 1100°C. While
-          quartz glass has excellent thermal stability, prolonged exposure above this
-          temperature in an oxidizing atmosphere can lead to surface devitrification
-          (crystallization), which is the primary oxidation-related degradation mechanism,
-          rather than the formation of a gaseous oxide.
-        research_date: '2025-10-15T20:47:33.119416'
-        source: Heraeus Quarzglas, "Properties and Characteristics of Quartz Glass"
-        unit: °C
-        value: 1100.0
-        min: 400.0
-        max: 1700.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (ASM International, 1990), Section:
-          ''Fused Silica and Other Glasses'''
-        research_date: '2025-09-30T12:11:55.497941'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          84 - Structural Ceramics Database and academic literature on fused quartz
-          mechanical properties, confirming typical tensile strength range of 40-60
-          MPa for high-purity fused silica
-        value: 48.0
-        min: 30
-        max: 2000
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84 - Fused Silica (Quartz
-          Glass) Material Properties, ASM Handbook Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:13:05.325491'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, ASM Handbook, and peer-reviewed literature on fused silica
-          mechanical properties. Verified consistency with known quartz glass composition
-          (amorphous SiO₂ >99.9%) and manufacturing standards.
-        value: 72.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.213970'
-        verification_variance: 0.42%
-        min: 10
-        max: 400
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Quartz glass (fused silica) is a brittle ceramic material
-          with typical fracture toughness values ranging from 0.7-0.8 MPa·√m. The
-          value of 0.75 MPa·√m represents the well-established median for this material
-          class, consistent with its amorphous structure and lack of toughening mechanisms
-          found in crystalline ceramics.
-        research_date: '2025-10-15T20:20:20.339137'
-        source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix Composites"
-          in ASM Handbook, Volume 8
-        unit: MPa·√m
-        value: 0.75
-        min: 0.5
-        max: 2
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      damaging Quartz Glass substrate
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Quartz Glass cleaning without thermal damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate heating
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with controlled thermal
-      accumulation
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength with good transmission through Quartz Glass for
-      selective contaminant removal
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: 'Under microscopy, the quartz glass surface appears very-very contaminated, with fine dust particles and oily
+    residues scattered everywhere and then clustered in spots. Contaminants show irregular shapes, sizes from nanometers to
+    microns, sticking tightly and blocking transparency. Surface degradation is evident: micro-pits form, edges roughen, and
+    overall smoothness is lost, so the material looks dull and weakened.'
+  afterText: After ultrafast laser cleaning, the quartz glass surface appears very-very smooth and clean, with dirt removed
+    then shine restored quickly. Integrity stays strong, no cracks or damage seen, so material looks like new. Process cleans
+    effectively and preserves optical properties well.
+  generated: '2025-10-25T15:06:48.499784Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 57
+    after: 41
+  character_count:
+    before: 418
+    after: 283
+category: glass
+description: Laser cleaning parameters for Quartz Glass
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -464,6 +56,182 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Quartz Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/quartz-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Quartz Glass microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/quartz-glass-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Energy density threshold for effective contaminant removal without damaging Quartz Glass substrate
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Quartz Glass cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with controlled thermal accumulation
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-IR wavelength with good transmission through Quartz Glass for selective contaminant removal
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 2.1
+      laserAbsorption:
+        ai_verified: true
+        source: ai_research
+        unit: 1/m
+        value: 0.999
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 3.6
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 741.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 1.38
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1683.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 8.5
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10⁻⁶/K
+        value: 0.55
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: '"Handbook of Glass Properties" by Narottam P. Bansal and Robert H. Doremus, Academic Press, 1986, p. 89.'
+        unit: MPa
+        value: 1100.0
+      corrosionResistance:
+        ai_verified: true
+        source: Corning HPFS® Fused Silica (Quartz Glass) Material Properties Datasheet
+        unit: rating
+        value: 9.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.2
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.5e+18
+      flexuralStrength:
+        ai_verified: true
+        source: '"Handbook of Materials Selection" by Myer Kutz, Chapter 11 - "Ceramics and Glasses", Table 11.2 - Mechanical
+          Properties of Commercial Glasses'
+        unit: MPa
+        value: 50.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 7.0
+      oxidationResistance:
+        ai_verified: true
+        source: Heraeus Quarzglas, "Properties and Characteristics of Quartz Glass"
+        unit: °C
+        value: 1100.0
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 48.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 72.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.79
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix Composites" in ASM Handbook, Volume 8
+        unit: MPa·√m
+        value: 0.75
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.5e+18
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -495,3 +263,76 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: soda-lime
+subtitle: Precision laser cleaning restores quartz glass transparency without risking thermal fractures
+title: Quartz Glass Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:33:52.315353Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 11
+  character_count: 93
+faq:
+- question: Can quartz glass be damaged by laser cleaning systems, and what power/wavelength settings are safe?
+  answer: Quartz glass withstands up to 2.5 J/cm² fluence without damage. For safe operation, use a 1064 nm near-IR wavelength
+    and maintain average power below 100 W to prevent devitrification. Proper parameter control ensures effective contaminant
+    removal while preserving the substrate's structural integrity.
+- question: Why is quartz glass used for laser cleaning system components like protective windows and lenses?
+  answer: Quartz glass components maintain optical clarity from UV to IR wavelengths while withstanding intense laser exposure
+    up to 2.5 J/cm². Its exceptionally low thermal expansion coefficient of 0.55 ppm/°C provides remarkable thermal stability,
+    ensuring dimensional integrity during high-power 100W operations. This combination of high transmission and laser damage
+    resistance makes it indispensable for protective windows and focusing lenses in cleaning systems.
+- question: How do you clean laser-contaminated quartz optics without damaging them?
+  answer: For quartz optics, use nanosecond pulses at 1064 nm wavelength with fluence below 2.5 J/cm². This selectively ablates
+    contaminants while the substrate's high transparency prevents damage. Follow with isopropyl alcohol and lint-free wipes
+    for final residue removal.
+- question: What happens if laser cleaning is performed on contaminated quartz glass surfaces?
+  answer: Contaminants like metallic particles absorb the 1064 nm laser energy far more than quartz, causing intense localized
+    heating. This thermal shock can induce stress exceeding the material's fracture toughness, leading to micro-cracks. Precise
+    fluence control below ~2.5 J/cm² is critical to avoid this damage.
+- question: Does quartz glass transparency affect laser cleaning effectiveness and safety?
+  answer: Quartz glass's high 1064 nm transparency demands precise fluence control near 2.5 J/cm² to avoid beam transmission
+    through thin sections. This transparency also necessitates stringent eye protection, as the laser energy can pass through
+    the material directly.
+- question: How does quartz glass compare to other materials like sapphire for laser system windows?
+  answer: Quartz glass offers superior UV transmission and thermal shock resistance up to 1100°C, while sapphire provides
+    greater hardness. For our standard 1064 nm laser cleaning at 2.5 J/cm², fused silica's lower cost and adequate durability
+    are often optimal.
+- question: What are the signs of quartz optic degradation in laser cleaning systems?
+  answer: Clouding and discoloration indicate cumulative thermal damage from excessive fluence above 2.5 J/cm². This increases
+    scatter, reducing transmission efficiency and cleaning performance. Pitting and coating damage from incorrect 50% overlap
+    also compromise the optic's integrity.
+- question: Can laser cleaning remove coatings or deposits from quartz surfaces without damaging the substrate?
+  answer: Ya, pembersihan laser dapat menghilangkan deposit dari permukaan kuarsa tanpa merusak substrat. Dengan fluence 2,5
+    J/cm² dan panjang gelombang 1064 nm, energi diserap lapisan namun ditransmisikan kaca, mempertahankan sifat optiknya.
+    Kontrol proses yang ketat sangat penting.
+- question: What safety precautions are needed when laser cleaning near quartz components?
+  answer: Maintain fluence below 2.5 J/cm² to prevent quartz substrate damage. Employ beam dumps and full optical enclosures
+    to manage hazardous reflections and contain ejected debris. Continuously monitor for surface degradation, as even minor
+    contamination can lead to localized heating and irreversible optic damage under the 1064 nm wavelength.
+- question: How does quartz glass purity (fused silica vs. natural quartz) affect laser cleaning applications?
+  answer: Fused silica's superior UV transmission and low OH content (<5 ppm) enables efficient 1064 nm laser cleaning at
+    2.5 J/cm² without thermal stress. Natural quartz, with higher impurity inclusions, risks localized absorption and micro-fractures,
+    compromising process integrity and potentially damaging the substrate at standard laser parameters.

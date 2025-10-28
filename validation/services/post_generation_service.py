@@ -1,14 +1,42 @@
 #!/usr/bin/env python3
 """
-Post-Generation Quality Assurance Service
+Post-Generation Quality Validation Service
 
-Unified post-generation QA service consolidating:
-- schema_validator.py
-- enhanced_schema_validator.py
-- caption_integration_validator.py
+⚠️  DEPRECATED - Use validation/content_validator.py instead
+This module is maintained for backward compatibility only.
+New code should use validation.content_validator.ContentValidationService
 
-STRICT FAIL-FAST ARCHITECTURE - ZERO TOLERANCE for mocks/fallbacks
+Migration Guide:
+- PostGenerationQualityService → ContentValidationService
+- QualityScore → ContentValidationResult
+- Multi-dimensional scoring now available in ContentValidationService
+
+See: docs/CONTENT_VALIDATION_SYSTEM.md for complete migration guide
+
+---
+
+Legacy Implementation:
+Provides multi-dimensional quality scoring for generated content
+(formerly split across multiple validation utilities).
 """
+
+import logging
+import warnings
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Any
+from datetime import datetime
+
+# Issue deprecation warning on import
+warnings.warn(
+    "validation.services.post_generation_service is deprecated. "
+    "Use validation.content_validator.ContentValidationService instead. "
+    "See docs/CONTENT_VALIDATION_SYSTEM.md for migration guide.",
+    DeprecationWarning,
+    stacklevel=2
+)
+
+logger = logging.getLogger(__name__)
+
 
 import yaml
 import logging

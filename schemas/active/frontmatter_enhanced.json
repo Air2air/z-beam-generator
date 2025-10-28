@@ -232,33 +232,9 @@
                     "type": "string",
                     "description": "Data source information"
                   },
-                  "research_basis": {
-                    "type": "string",
-                    "description": "Research methodology basis"
-                  },
-                  "research_date": {
-                    "type": "string",
-                    "description": "Research date"
-                  },
-                  "validation_method": {
-                    "type": "string",
-                    "description": "Validation approach used"
-                  },
                   "ai_verified": {
                     "type": "boolean",
                     "description": "AI verification status"
-                  },
-                  "verification_date": {
-                    "type": "string",
-                    "description": "Verification timestamp"
-                  },
-                  "verification_variance": {
-                    "type": "string",
-                    "description": "Verification variance percentage"
-                  },
-                  "verification_confidence": {
-                    "type": "integer",
-                    "description": "Verification confidence percentage"
                   }
                 },
                 "required": ["value", "unit"]

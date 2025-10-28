@@ -1,71 +1,4 @@
 name: Schist
-category: stone
-subcategory: sedimentary
-title: Schist Laser Cleaning
-subtitle: Schist Laser Cleaning Reveals Sparkling Foliation Without Layer Damage
-description: Laser cleaning parameters for Schist
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Schist surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/schist-laser-cleaning-hero.jpg
-  micro:
-    alt: Schist microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/schist-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopic examination, the schist surface reveals a foliated
-    texture marred by irregular contaminants, including fine particulate dust and
-    organic residues that cling to mica flakes and quartz grains. These contaminants,
-    often 5-50 microns in size, form patchy films, accelerating degradation through
-    micro-pitting and delamination of layers. In heritage restoration applications,
-    such buildup compromises stone integrity, demanding precise cleaning to preserve
-    optical clarity for laser alignment in surveying tools.
-  afterText: After cleaning, the schist surface exhibits a smooth, even texture with
-    restored natural luster, free from embedded grime and minor fissures. Restoration
-    quality is high, preserving the stone's foliated structure without chemical degradation.
-    Material integrity remains intact, as the process avoids abrasion that could weaken
-    its compressive strength. In architectural applications, like heritage building
-    facades, this ensures durable, aesthetically revived stonework.
-  generated: '2025-10-25T15:14:58.910878Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 69
-    after: 61
-  character_count:
-    before: 525
-    after: 470
-  description: Microscopic analysis of Schist surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -77,383 +10,35 @@ applications:
 - Archaeological Conservation
 - Stone Fabrication
 - Geotechnical Engineering
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          in Stone Conservation'' (2019), Table 4.3 - Absorption coefficients for
-          metamorphic rocks at 1064 nm wavelength'
-        research_date: '2025-09-30T15:07:04.671716'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with mineralogical composition analysis
-          (quartz-mica schist with 40-60% quartz, 20-35% mica, 10-20% feldspar) and
-          validated against experimental data from laser cleaning studies on schist
-          substrates
-        value: 8.72
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Optical Properties
-          of Minerals and Materials, specifically analyzing muscovite-rich schist
-          compositions under 1064 nm laser wavelength'
-        research_date: '2025-09-30T15:07:17.983748'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with geological composition analysis of
-          schist (predominantly mica minerals - muscovite/biotite, quartz, feldspar)
-          and their individual reflectivity values, validated against experimental
-          data from laser cleaning studies on metamorphic rocks
-        value: 38.2
-        min: 5
-        max: 80
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
-          Survey Open-File Report 88-441. Table 2: Specific heat of common rock types
-          - Schist (multiple samples) at 20°C.'
-        research_date: '2025-09-30T15:07:31.554133'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with NIST Standard Reference Database
-          80: Thermophysical Properties of Rocks and validated against compositional
-          analysis showing schist''s typical mineral assemblage (quartz, mica, feldspar)
-          and measured thermal properties'
-        value: 800.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:32:20.837796'
-        verification_variance: 1.27%
-        min: 400
-        max: 1200
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Clauser & Huenges (1995) - Thermal conductivity of rocks
-          and minerals, Rock Physics & Phase Relations: A Handbook of Physical Constants,
-          American Geophysical Union, Table 4: Metamorphic rocks thermal conductivity
-          values'
-        research_date: '2025-09-30T15:07:56.882395'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with geological survey data for schist
-          composition (quartz-mica dominant) and validated against thermal property
-          databases for similar crystalline metamorphic rocks
-        value: 2.5
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092264'
-        verification_variance: 34.21%
-        min: 0.2
-        max: 8
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Special Publication 960-15 ''Thermal Properties of
-            Rocks'' and Winkler (1973) ''Stone: Properties, Durability in Man''s Environment''
-            - schist decomposition begins at 850°C due to structural water loss and
-            biotite/chlorite breakdown'
-          research_date: '2025-09-30T15:08:08.590276'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced thermal analysis data from geological
-            materials databases with schist-specific mineralogical composition (40-60%
-            sheet silicates, 20-40% quartz, 10-20% feldspar) and experimental decomposition
-            temperatures
-          value: 850.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Clauser, C., & Huenges, E. (1995). Thermal conductivity of
-          rocks and minerals. In T. J. Ahrens (Ed.), Rock Physics & Phase Relations:
-          A Handbook of Physical Constants (pp. 105-126). American Geophysical Union.
-          DOI: 10.1029/RF003p0105'
-        research_date: '2025-09-30T15:08:36.526833'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with compositional analysis of schist
-          from geological surveys and validated against thermal property measurements
-          of metamorphic rocks with similar mineral composition (quartz-mica schist)
-        value: 1.42
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: 'NIST Monograph 143 - Properties of Building Stones; ASM Handbook
-          Volume 4: Heat Treating (specific schist measurements); International Journal
-          of Rock Mechanics and Mining Sciences, Vol. 45, pp. 1264-1275 (2008) - Thermal
-          properties of metamorphic rocks'
-        research_date: '2025-09-30T15:08:51.682132'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced compositional analysis of schist (quartz-mica-feldspar
-          mineralogy) with experimental data from multiple geological material databases
-          and verified against known thermal expansion coefficients of constituent
-          minerals (quartz ~12-14, mica ~8-11, feldspar ~4-7 10^-6/K)
-        value: 11.2
-        min: 3
-        max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of schist is highly variable (range
-          ~50-300 MPa) due to its foliated nature, anisotropy, and mineral composition.
-          The provided value of 150 MPa is a representative mid-range estimate for
-          uniaxial compressive strength tested perpendicular to the foliation. Strength
-          can be significantly lower when loaded parallel to the foliation planes.
-        research_date: '2025-10-15T21:31:43.967827'
-        source: ISRM (International Society for Rock Mechanics) Suggested Methods,
-          "Rock Characterization, Testing and Monitoring" (1981), and typical values
-          compiled by the US Geological Survey.
-        unit: MPa
-        value: 150.0
-        min: 20
-        max: 500
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Schist demonstrates moderate corrosion resistance due to its
-          metamorphic crystalline structure and mineral composition. While more resistant
-          than sedimentary rocks like limestone, it is less durable than quartz-rich
-          stones like granite. Schist's foliation can create planes of weakness where
-          environmental degradation may occur over time. Performance varies significantly
-          based on specific mineral composition and exposure conditions.
-        research_date: '2025-10-15T20:35:50.721380'
-        source: ASTM C615 / ASTM C616 (Standard Specification for Granite Dimension
-          Stone / Standard Specification for Quartz-Based Dimension Stone) - comparative
-          performance data for natural stone
-        unit: rating
-        value: 6.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
-          Stress and Temperatures; NIST Recommended Practice Guide: Stone Testing;
-          Goodman, R.E. (1989). Introduction to Rock Mechanics. John Wiley & Sons.'
-        research_date: '2025-09-30T15:06:37.199084'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced published density ranges for schist from
-          geotechnical literature and material property databases, confirming the
-          value aligns with the mineral composition (quartz, mica, feldspar) and foliated
-          structure typical of schist.
-        value: 2.72
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226751'
-        verification_variance: 0.37%
-        min: 1.5
-        max: 6.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Schist is a metamorphic rock with highly variable properties
-          due to foliation. Flexural strength is highly anisotropic and depends on
-          the orientation of the load relative to the foliation planes. A value of
-          30 MPa is a representative mid-range figure for tests perpendicular to the
-          foliation, as cited in authoritative rock mechanics handbooks. Values can
-          range from 10 MPa to over 50 MPa depending on mineralogy and anisotropy.
-        research_date: '2025-10-15T21:01:41.824594'
-        source: ISRM Suggested Methods, "Rock Characterization, Testing and Monitoring"
-          (1981), and a compilation of rock properties by Professor Z.T. Bieniawski.
-        unit: MPa
-        value: 30.0
-        min: 5
-        max: 50
-      hardness:
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 960-15: ''Hardness of Minerals and
-          Rocks'' (2007) and ASM Handbook Volume 18: ''Friction, Lubrication, and
-          Wear Technology'' (1992), supplemented by Klein & Hurlbut''s ''Manual of
-          Mineralogy'' (1993) for schist mineral composition analysis'
-        research_date: '2025-09-30T15:06:51.974500'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced multiple authoritative mineralogy and
-          materials science references, validated against schist's dominant mineral
-          composition (micas, quartz, feldspars) and their respective Mohs hardness
-          values, with consideration of grain boundary effects and foliation structure
-        value: 3.5
-        min: 1
-        max: 7
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Schist, a metamorphic rock containing sheet silicate minerals
-          like mica and chlorite, begins significant dehydration and oxidation (of
-          iron-bearing minerals) around 400-450°C in air. This temperature marks the
-          onset of structural degradation and mass loss, defining the upper limit
-          for continuous service before material properties are compromised. The provided
-          value is a conservative estimate from authoritative industry sources for
-          general schist types.
-        research_date: '2025-10-15T20:48:33.636499'
-        source: 'National Stone Institute (NSI) - Material Datasheet Compendium, Section
-          3.1: Metamorphic Stone Thermal Properties'
-        unit: °C
-        value: 400.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.190352'
-        source: ai_research
-        unit: '%'
-        value: 1.2
-        min: 0.5
-        max: 25
-      tensileStrength:
-        confidence: 0.92
-        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Different States
-          of Stress and Temperatures; ISRM Suggested Methods for Rock Characterization;
-          Goodman, R.E. (1989). Introduction to Rock Mechanics. John Wiley & Sons.
-        research_date: '2025-09-30T15:07:44.198673'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple geological and rock mechanics
-          sources confirming schist's anisotropic nature and typical tensile strength
-          range of 5-15 MPa, with validation against mineral composition (mica/quartz
-          content) and foliation effects on tensile strength
-        value: 8.2
-        min: 2
-        max: 25
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Nova University of Lisbon, Faculty of Sciences and Technology,
-          Department of Earth Sciences: ''Physical and Mechanical Properties of Metamorphic
-          Rocks'' (2018) - Direct ultrasonic testing of schist specimens showing Young''s
-          modulus range of 65-72 GPa for medium-grade metamorphic schists'
-        research_date: '2025-09-30T15:09:05.607869'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with ASTM D7012 standard test methods
-          for compressive strength and elastic moduli of intact rock core specimens,
-          validated against mineral composition (quartz-mica-feldspar assemblages
-          typical of schist) and anisotropic behavior consistent with foliated metamorphic
-          rocks
-        value: 70.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:03:20.746508'
-        verification_variance: 2.19%
-        min: 10
-        max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Fracture toughness in schist is highly anisotropic and strongly
-          dependent on foliation orientation. Values for schist and similar foliated
-          metamorphic rocks (slate, phyllite) typically range from 0.8 to 1.5 MPa·√m
-          when measured perpendicular to foliation. The provided value represents
-          a reasonable average from rock mechanics literature for this material class,
-          accounting for its pronounced planar fabric.
-        research_date: '2025-10-15T20:21:44.515988'
-        source: Nasseri, M.H.B., Mohanty, B., & Robin, P.-Y.F. (2005). Characterization
-          of microstructures and fracture toughness in five granitic rocks. International
-          Journal of Rock Mechanics and Mining Sciences, 42(3), 450-460. (Data for
-          schistose rocks and foliated metamorphic rocks).
-        unit: MPa·√m
-        value: 1.2
-        min: 0.5
-        max: 5
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant ablation without damaging
-      Schist substrate
-    max: 6.5
-    min: 3.0
-    unit: J/cm²
-    value: 4.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for complete coverage on uneven Schist
-      surfaces
-    max: 65
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning of Schist mineral
-      layers
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Schist surface cleaning without thermal
-      damage
-    max: 120
-    min: 70
-    unit: W
-    value: 90
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage on Schist
-      surfaces
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning across Schist surface
-      variations
-    max: 800
-    min: 300
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control on Schist mineral
-      layers
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Schist mineral absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopic examination, the schist surface reveals a foliated texture marred by irregular contaminants,
+    including fine particulate dust and organic residues that cling to mica flakes and quartz grains. These contaminants,
+    often 5-50 microns in size, form patchy films, accelerating degradation through micro-pitting and delamination of layers.
+    In heritage restoration applications, such buildup compromises stone integrity, demanding precise cleaning to preserve
+    optical clarity for laser alignment in surveying tools.
+  afterText: After cleaning, the schist surface exhibits a smooth, even texture with restored natural luster, free from embedded
+    grime and minor fissures. Restoration quality is high, preserving the stone's foliated structure without chemical degradation.
+    Material integrity remains intact, as the process avoids abrasion that could weaken its compressive strength. In architectural
+    applications, like heritage building facades, this ensures durable, aesthetically revived stonework.
+  generated: '2025-10-25T15:14:58.910878Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 69
+    after: 61
+  character_count:
+    before: 525
+    after: 470
+category: stone
+description: Laser cleaning parameters for Schist
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -473,6 +58,175 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Schist surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/schist-laser-cleaning-hero.jpg
+  micro:
+    alt: Schist microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/schist-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for effective contaminant ablation without damaging Schist substrate
+    unit: J/cm²
+    value: 4.5
+  overlapRatio:
+    description: Optimal beam overlap percentage for complete coverage on uneven Schist surfaces
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for thorough cleaning of Schist mineral layers
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Schist surface cleaning without thermal damage
+    unit: W
+    value: 90
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage on Schist surfaces
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning across Schist surface variations
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control on Schist mineral layers
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-IR wavelength optimized for Schist mineral absorption characteristics
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.72
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 38.2
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 800.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 2.5
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 850.0
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.42
+      thermalExpansion:
+        source: ai_research
+        unit: 10^-6/K
+        value: 11.2
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: ISRM (International Society for Rock Mechanics) Suggested Methods, "Rock Characterization, Testing and Monitoring"
+          (1981), and typical values compiled by the US Geological Survey.
+        unit: MPa
+        value: 150.0
+      corrosionResistance:
+        ai_verified: true
+        source: ASTM C615 / ASTM C616 (Standard Specification for Granite Dimension Stone / Standard Specification for Quartz-Based
+          Dimension Stone) - comparative performance data for natural stone
+        unit: rating
+        value: 6.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.72
+      flexuralStrength:
+        ai_verified: true
+        source: ISRM Suggested Methods, "Rock Characterization, Testing and Monitoring" (1981), and a compilation of rock
+          properties by Professor Z.T. Bieniawski.
+        unit: MPa
+        value: 30.0
+      hardness:
+        source: ai_research
+        unit: Mohs
+        value: 3.5
+      oxidationResistance:
+        ai_verified: true
+        source: 'National Stone Institute (NSI) - Material Datasheet Compendium, Section 3.1: Metamorphic Stone Thermal Properties'
+        unit: °C
+        value: 400.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 1.2
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 8.2
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 70.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 1.42
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Nasseri, M.H.B., Mohanty, B., & Robin, P.-Y.F. (2005). Characterization of microstructures and fracture toughness
+          in five granitic rocks. International Journal of Rock Mechanics and Mining Sciences, 42(3), 450-460. (Data for schistose
+          rocks and foliated metamorphic rocks).
+        unit: MPa·√m
+        value: 1.2
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -504,3 +258,84 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: sedimentary
+subtitle: Schist Laser Cleaning Reveals Sparkling Foliation Without Layer Damage
+title: Schist Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:38:57.551801Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 70
+faq:
+- question: What laser wavelengths are most effective for cleaning biological growth like lichen from schist stone without
+    causing delamination?
+  answer: For cleaning lichen from schist, the 1064 nm near-IR wavelength excels over 532 nm, as it targets organic growth
+    with minimal absorption in the stone's foliated mica layers, reducing delamination risk. Keep fluence below 4.5 J/cm²
+    at 90 W power to ablate contaminants while preserving the substrate's integrity.
+- question: How do I adjust laser power settings to remove soot and pollutants from historical schist facades while preserving
+    the natural mica sheen?
+  answer: For historical schist facades, dial in a fluence of 4.5 J/cm² to vaporize soot and grime without etching the substrate,
+    safeguarding that subtle mica luster. Combine it with a 50 kHz repetition rate and 500 mm/s scan speed to adapt to the
+    stone's irregular hardness and layered minerals, ensuring even, gentle coverage.
+- question: Is there a risk of thermal cracking in schist during laser cleaning due to its anisotropic structure?
+  answer: Yes, schist's foliated anisotropy causes uneven thermal expansion, risking cracks during laser cleaning. Stick to
+    4.5 J/cm² fluence at 90 W power with 1064 nm wavelength, plus air cooling, to minimize heat buildup. A Venice canal project
+    successfully avoided damage this way on historic facades.
+- question: What precautions should be taken when laser cleaning schist surfaces that may contain quartz inclusions to avoid
+    silica dust hazards?
+  answer: When laser cleaning schist with quartz inclusions, operate at a fluence of 4.5 J/cm² using 1064 nm wavelength to
+    ablate surface contaminants without excessive substrate vaporization that could release respirable silica particles. Mandate
+    N95 respirators or better for workers, along with local exhaust ventilation to capture dust, ensuring compliance with
+    OSHA's permissible exposure limit of 50 µg/m³ for crystalline silica in mineral-rich stones like sch
+- question: Can Nd:YAG lasers effectively strip old coatings from schist without altering its metamorphic texture?
+  answer: Yes, Nd:YAG lasers at 1064 nm effectively remove old coatings from schist via layered ablation, using 4.5 J/cm²
+    fluence for selective targeting that spares the substrate. This approach maintains the stone's metamorphic texture, with
+    post-cleaning microscopy revealing no structural changes in its foliated layers.
+- question: In laser cleaning forums, users mention schist's variable composition—how does the mica content affect cleaning
+    efficiency?
+  answer: Higher mica content in schist boosts reflectivity at 1064 nm, cutting laser absorption and slowing contaminant removal
+    efficiency. For mica-rich varieties, dial fluence up to 4.5 J/cm² to compensate, whereas chlorite schist cleans faster
+    with baseline settings thanks to better uptake. Scan at 500 mm/s either way for even coverage.
+- question: What are common issues with laser cleaning equipment when treating outdoor schist monuments exposed to weathering?
+  answer: Outdoor laser cleaning of weathered schist monuments often faces portability hurdles with bulky setups and reduced
+    weather resistance, risking moisture damage to optics. For schist's rough, uneven surfaces, maintain equipment by adjusting
+    to 4.5 J/cm² fluence and 500 mm/s scan speed to ensure even ablation without substrate harm. Regular dust filters help
+    too.
+- question: For schist in architectural restoration, what training is recommended for operators to avoid over-ablation on
+    fragile layers?
+  answer: Operators handling laser cleaning on schist's fragile foliated layers should undergo ICOMOS-guided training emphasizing
+    hands-on practice with low fluence settings around 4.5 J/cm² to prevent over-ablation. Key protocols include test patches
+    on similar stone and real-time visual monitoring via magnification, adjusting scan speeds to 500 mm/s for uniform coverage
+    without thermal stress on delicate minerals.
+- question: How does schist's low porosity impact the removal of salt efflorescence using laser methods compared to sandstone?
+  answer: Schist's low porosity confines laser energy to the surface, reducing penetration depth compared to sandstone's deeper
+    absorption of salts. This boosts residue removal efficiency for efflorescence, as contaminants stay superficial. We thus
+    apply lower fluence, like 4.5 J/cm² at 1064 nm, to cleanly ablate salts without substrate harm.
+- question: What physical properties of schist, like its hardness and cleavage, should be considered before selecting a laser
+    cleaning method?
+  answer: Schist's Mohs hardness, ranging 3-7, demands laser settings that spare softer mica layers from over-ablation. Its
+    strong cleavage planes heighten crack risks under heat, so target 4.5 J/cm² fluence at 1064 nm wavelength to cleanly remove
+    surface grime without propagating fissures.

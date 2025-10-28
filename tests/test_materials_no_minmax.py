@@ -74,7 +74,7 @@ class TestMaterialsNoMinMax:
                 error_msg += f"  - {v['material']}.{v['property']}.{v['field']} = {v['value']}\n"
             
             error_msg += "\n💡 FIX: Remove min/max fields and keep only averaged 'value' field.\n"
-            error_msg += "Document variance context in research_basis or validation_method instead.\n"
+            error_msg += "Document variance context in research_basis field instead.\n"
             
             pytest.fail(error_msg)
     

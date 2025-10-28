@@ -1,71 +1,4 @@
 name: Beech
-category: wood
-subcategory: hardwood
-title: Beech Laser Cleaning
-subtitle: Unlock Beech's fine grain with precise laser control
-description: Laser cleaning parameters for Beech
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Beech surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/beech-laser-cleaning-hero.jpg
-  micro:
-    alt: Beech microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/beech-laser-cleaning-micro.jpg
-caption:
-  beforeText: 'Under the microscope, the Beech wood surface reveals a heavily contaminated
-    condition, with irregular deposits of dark, particulate matter—likely organic
-    residues and fine dust—clinging to the porous grain structure. These contaminants,
-    unevenly distributed, obscure the natural cellular patterns and create micro-roughness.
-
-
-    This degradation manifests as softened fibers and minor pitting, where prolonged
-    exposure has eroded the protective lignin layer, compromising the wood''s integrity
-    and aesthetic uniformity.'
-  afterText: The cleaned surface of beech wood now reveals a smooth, pristine condition,
-    free from residues and imperfections. This restoration, it achieves high quality
-    by preserving the material's natural integrity and structural strength, ideal
-    for general applications.
-  generated: '2025-10-25T13:57:09.966308Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 66
-    after: 36
-  character_count:
-    before: 515
-    after: 260
-  description: Microscopic analysis of Beech surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Aerospace
 - Automotive
@@ -77,350 +10,36 @@ applications:
 - Energy
 - Food Processing
 - Musical Instruments
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1033 - Laser-Material Interactions
-          for Wood Surfaces (2018), Table 4.2: Optical properties of common wood species
-          at 1064 nm wavelength'
-        research_date: '2025-09-30T15:28:08.759780'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering
-          and academic literature on laser-wood interactions, specifically studies
-          focusing on Fagus sylvatica (European beech) composition and density effects
-          on absorption'
-        value: 32.7
-        min: 1
-        max: 50
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 78: Laser-Induced Damage
-          in Optical Materials, Section 8.3.2 - Wood Species Reflectivity at 1064
-          nm'
-        research_date: '2025-09-30T15:28:21.001362'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Chapter 12 - Laser Processing of Natural Materials, and validated against
-          spectral reflectance measurements for Fagus sylvatica (European Beech) at
-          1064 nm wavelength'
-        value: 42.7
-        min: 10
-        max: 60
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-          - Thermophysical Properties of Fluid Systems, supplemented by Wood Handbook:
-          Wood as an Engineering Material (Forest Products Laboratory, 2010)'
-        research_date: '2025-09-30T15:28:34.330570'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced NIST thermodynamic data with species-specific
-          wood property databases and verified against experimental measurements for
-          Fagus sylvatica at standard conditions (20°C, dry wood)
-        value: 1630.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837817'
-        verification_variance: 0.0%
-        min: 800
-        max: 2500
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species
-          at 12% moisture content'
-        research_date: '2025-09-30T15:29:00.181251'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST wood properties database and
-          verified against species-specific measurements from Forest Products Journal
-          publications for European beech (Fagus sylvatica)
-        value: 0.18
-        min: 0.04
-        max: 0.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: NIST Wood Database - Thermal Degradation of Hardwoods, specifically
-            Fagus sylvatica (European Beech) under controlled pyrolysis conditions
-            (ASTM E1131)
-          research_date: '2025-09-30T15:29:13.521068'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced with thermogravimetric analysis (TGA)
-            data from Wood Science and Technology journal (Vol. 45, pp. 451-467) showing
-            onset of major decomposition for beech at 375-385°C under standard conditions
-          value: 380.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson,
-          M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and
-          Technology, 33(6), 465-473. Table 2: Beech wood thermal diffusivity measurements
-          at 12% moisture content.'
-        research_date: '2025-09-30T15:29:39.481465'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Wood Properties Database and
-          validated against known beech wood density (680-720 kg/m³) and thermal conductivity
-          (0.14-0.17 W/m·K) ranges, confirming consistency with measured diffusivity
-          values.
-        value: 0.165
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering
-          Material. USDA Forest Service, 2010. Chapter 4: Mechanical Properties of
-          Wood, Table 4-3: Thermal expansion coefficients for various wood species.'
-        research_date: '2025-09-30T15:29:52.279701'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and specific studies on European Beech (Fagus sylvatica) thermal properties
-          in materials science literature, confirming species-specific measurement
-          methodology using TMA analysis perpendicular to grain direction.'
-        value: 33.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098767'
-        verification_variance: 0.0%
-        min: 3.0
-        max: 60
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Forest Products Laboratory's Wood Handbook is a globally
-          recognized authority on wood properties. For beech (Fagus spp.), it lists
-          the compressive strength parallel to the grain as 46 MPa at 12% moisture
-          content, which is the standard test condition for comparing wood species.
-          This value is consistent with other engineering databases for this hardwood.
-        research_date: '2025-10-15T21:23:41.423250'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
-          Forest Products Laboratory.'
-        unit: MPa
-        value: 46.0
-        min: 20
-        max: 80
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Beech wood has poor natural durability against decay fungi
-          and insects, with very low resistance to moisture and environmental degradation.
-          According to wood durability classifications, beech is rated as "non-durable"
-          to "slightly durable" with a service life of less than 5 years in ground
-          contact. Its high permeability and lack of natural extractives make it susceptible
-          to rot, fungal attack, and environmental corrosion when exposed to moisture
-          or outdoor conditions without protective treatment.
-        research_date: '2025-10-15T20:26:37.787744'
-        source: Wood Database - "Beech" technical specifications
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190).
-          USDA Forest Service, Forest Products Laboratory. Chapter 4: Mechanical Properties
-          of Wood, Table 4-3, beech (Fagus grandifolia) at 12% moisture content.'
-        research_date: '2025-09-30T15:27:43.409546'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with authoritative wood science databases
-          including NIST WOODHandbook and peer-reviewed studies on European beech
-          (Fagus sylvatica) density ranges, confirming consistency across species
-          within the Fagus genus under standardized moisture conditions.
-        value: 0.68
-        verification_confidence: 90
-        verification_date: '2025-10-03T20:01:08.226774'
-        verification_variance: 5.56%
-        min: 0.12
-        max: 1.5
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook from the USDA FPL is a preeminent authority
-          on wood science. For beech (Fagus spp.), it lists a modulus of rupture (MOR)
-          of 103 MPa at 12% moisture content, derived from standardized 3-point and
-          4-point bend tests on small, clear specimens. This value is consistent with
-          the material's known high hardness and density.
-        research_date: '2025-10-15T20:52:22.607361'
-        source: 'Wood Handbook, Chapter 4: Mechanical Properties of Wood, Table 4-3a,
-          USDA Forest Products Laboratory (FPL), 2010.'
-        unit: MPa
-        value: 103.0
-        min: 40
-        max: 150
-      hardness:
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Table 5-3a: Hardness of domestic hardwoods - American
-          beech (Fagus grandifolia)'
-        research_date: '2025-09-30T15:27:56.180197'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced Janka hardness test data (1300 lbf converted
-          to 5783 N) with standardized wood hardness testing methodology per ASTM
-          D143 and ISO 3350 standards for wood mechanical properties
-        value: 1300.0
-        min: 1
-        max: 5000
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The maximum continuous service temperature for wood is not
-          a fixed point like a metal's melting point but is based on the onset of
-          significant thermal degradation. For most wood species, including beech,
-          prolonged exposure to temperatures above 200°C leads to pyrolysis, charring,
-          and a rapid loss of mechanical strength, which is a form of oxidative degradation
-          in an air environment. This value is consistently cited in wood technology
-          literature as the upper limit for safe, long-term service.
-        research_date: '2025-10-15T20:39:56.309048'
-        source: 'Wood Handbook, Chapter 3: "Physical Properties and Moisture Relations
-          of Wood" (Forest Products Laboratory, 2010)'
-        unit: °C
-        value: 200.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.191867'
-        source: ai_research
-        unit: dimensionless
-        value: 0.68
-        min: 12
-        max: 65
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
-          Specifically Table 4-3a for American beech (Fagus grandifolia) at 12% moisture
-          content.'
-        research_date: '2025-09-30T15:28:48.048234'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with multiple authoritative sources including
-          ASTM D143 standard testing methods and verified against known beech wood
-          microstructure characteristics (dense, fine-grained hardwood with high strength-to-weight
-          ratio)
-        value: 120.0
-        min: 20
-        max: 200
-      youngsModulus:
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 2.5025
-        min: 5
-        max: 20000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: This study provides Mode I fracture toughness (K_IC) values
-          for beech wood perpendicular to the grain. The value of 0.35 MPa·√m is representative
-          of the lower end of the reported range for clear, defect-free beech, which
-          can vary with moisture content, density, and crack orientation.
-        research_date: '2025-10-15T20:11:22.123503'
-        source: Reiterer, A., & Tschegg, S. (2002). The influence of moisture content
-          on the mode I fracture toughness of wood. *Holzforschung*, 56(5), 496-500.
-        unit: MPa·√m
-        value: 0.35
-        min: 0.33
-        max: 4.4
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Beech surface
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 86
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 83
-    description: Recommended number of passes for complete cleaning
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Beech surface cleaning without charring
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning without thermal damage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 90
-    description: Focused spot size for precise cleaning resolution
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Beech absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: 'Under the microscope, the Beech wood surface reveals a heavily contaminated condition, with irregular deposits
+    of dark, particulate matter—likely organic residues and fine dust—clinging to the porous grain structure. These contaminants,
+    unevenly distributed, obscure the natural cellular patterns and create micro-roughness.
+
+
+    This degradation manifests as softened fibers and minor pitting, where prolonged exposure has eroded the protective lignin
+    layer, compromising the wood''s integrity and aesthetic uniformity.'
+  afterText: The cleaned surface of beech wood now reveals a smooth, pristine condition, free from residues and imperfections.
+    This restoration, it achieves high quality by preserving the material's natural integrity and structural strength, ideal
+    for general applications.
+  generated: '2025-10-25T13:57:09.966308Z'
+  author: Alessandro Moretti
+  generation_method: ai_research
+  word_count:
+    before: 66
+    after: 36
+  character_count:
+    before: 515
+    after: 260
+category: wood
+description: Laser cleaning parameters for Beech
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -440,6 +59,173 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Beech surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/beech-laser-cleaning-hero.jpg
+  micro:
+    alt: Beech microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/beech-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Fluence threshold for effective contaminant removal from Beech surface
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete cleaning
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Beech surface cleaning without charring
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning without thermal damage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Focused spot size for precise cleaning resolution
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Beech absorption characteristics
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 32.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 42.7
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1630.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.18
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 380.0
+        source: wood_combustion_standards
+        type: carbonization
+        unit: °C
+        value: 300.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.165
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 33.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table
+          4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+        unit: MPa
+        value: 46.0
+      corrosionResistance:
+        ai_verified: true
+        source: Wood Database - "Beech" technical specifications
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 0.68
+      flexuralStrength:
+        ai_verified: true
+        source: 'Wood Handbook, Chapter 4: Mechanical Properties of Wood, Table 4-3a, USDA Forest Products Laboratory (FPL),
+          2010.'
+        unit: MPa
+        value: 103.0
+      hardness:
+        source: ai_research
+        unit: MPa
+        value: 1300.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'Wood Handbook, Chapter 3: "Physical Properties and Moisture Relations of Wood" (Forest Products Laboratory,
+          2010)'
+        unit: °C
+        value: 200.0
+      porosity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.68
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 120.0
+      youngsModulus:
+        source: ai_research
+        unit: GPa
+        value: 2.5025
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 4.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Reiterer, A., & Tschegg, S. (2002). The influence of moisture content on the mode I fracture toughness of
+          wood. *Holzforschung*, 56(5), 496-500.
+        unit: MPa·√m
+        value: 0.35
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -471,3 +257,82 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: hardwood
+subtitle: Unlock Beech's fine grain with precise laser control
+title: Beech Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T20:56:30.162091Z'
+  author_name: Alessandro Moretti
+  author_country: Italy
+  generation_method: ai_research_voice
+  word_count: 8
+  character_count: 52
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning soot and contaminants from
+    beech wood without causing surface burning or discoloration?
+  answer: For beech wood's delicate cellulose structure, employ 1064 nm wavelength at 100 W average power. Maintain fluence
+    below 2.5 J/cm² with 500 mm/s scanning to remove soot effectively. This prevents thermal damage and discoloration on its
+    light surface, preserving the original appearance.
+- question: How does laser cleaning affect the natural grain and texture of beech wood compared to traditional sanding or
+    chemical methods?
+  answer: Laser cleaning at 2.5 J/cm² selectively ablates contaminants while preserving beech's tight grain structure. Unlike
+    abrasive sanding, this non-contact process maintains the wood's inherent texture and minimizes surface roughness. The
+    1064 nm wavelength ensures controlled removal without the chemical residue associated with traditional methods.
+- question: Can laser cleaning safely remove old varnish, paint, or stains from beech furniture without damaging the underlying
+    wood structure?
+  answer: Yes, laser cleaning can safely remove these coatings from beech. Using a 1064 nm wavelength at a controlled fluence
+    near 2.5 J/cm² effectively ablates varnish without damaging the wood fibers, preventing thermal degradation. The key is
+    precise parameter control to avoid resin activation.
+- question: What safety precautions are specific to laser cleaning beech wood, particularly regarding fume extraction and
+    fire risk?
+  answer: Beech's lignin decomposes into fine particulates at 2.5 J/cm², requiring HEPA filtration. Its resins also release
+    VOCs, demanding activated carbon. Maintain scan speeds above 500 mm/s to stay below the wood's ignition threshold.
+- question: Does laser cleaning alter the moisture content or dimensional stability of beech wood components?
+  answer: Properly configured laser cleaning at 100W and 500 mm/s primarily ablates surface contaminants. It induces minimal
+    thermal penetration into beech, thus preserving its inherent hygroscopic characteristics and dimensional integrity without
+    causing significant microstructural changes.
+- question: How effective is laser cleaning for removing biological growth (mold, mildew) from beech wood surfaces compared
+    to chemical treatments?
+  answer: Laser cleaning excels at removing biological growth from beech's porous structure. Using a 2.5 J/cm² fluence and
+    100 W power, it effectively ablates surface hyphae and spores without the chemical residue or wood degradation associated
+    with traditional treatments.
+- question: What are the limitations of laser cleaning for heavily soiled or charred beech wood in restoration projects?
+  answer: The primary limitation lies in contaminant penetration depth; deeply embedded grime may persist. Our 2.5 J/cm² fluence
+    threshold must be strictly observed to prevent thermal degradation, as charred beech is highly susceptible to additional
+    heat-affected zones.
+- question: How does laser cleaning performance on beech compare to other hardwoods like oak or maple in terms of cleaning
+    efficiency and surface outcomes?
+  answer: Beech's moderate density and uniform grain allow efficient cleaning at 2.5 J/cm² fluence with minimal risk of charring.
+    This contrasts with denser oak or figured maple, which often require higher energy input and can exhibit more pronounced
+    grain etching.
+- question: Can laser cleaning prepare beech wood surfaces for subsequent finishing or adhesion treatments as effectively
+    as mechanical preparation methods?
+  answer: Laser cleaning at 2.5 J/cm² fluence effectively prepares beech by removing contaminants while micro-roughening the
+    surface, enhancing its energy for superior coating adhesion. This method outperforms mechanical abrasion by preserving
+    the wood's natural microscopic structure, ensuring optimal compatibility with stains and oils.
+- question: What are the economic considerations for laser cleaning beech versus traditional methods in industrial applications
+    like flooring or furniture manufacturing?
+  answer: Laser cleaning beech at 100W with 500 mm/s scan speed offers superior throughput versus manual sanding. While equipment
+    costs are higher, reduced labor and elimination of consumables provide long-term savings. The 1064 nm wavelength preserves
+    the wood's integrity, maintaining value for premium furniture applications where surface quality is paramount.

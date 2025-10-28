@@ -226,8 +226,6 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
                     author_info["name"] = value
                 elif key == "persona_country":
                     author_info["country"] = value.lower()
-                elif key == "author_id":
-                    author_info["id"] = int(value) if value.isdigit() else 1
 
         if author_info:
             author_info.setdefault("id", 1)
@@ -244,9 +242,9 @@ def get_author_info_for_material(
     material_data_or_name: Any, fallback_author_id: Optional[int] = None
 ) -> Dict[str, Any]:
     """
-    Get author information for a material, prioritizing material data author_id.
+    Get author information for a material, prioritizing material data author.id.
 
-    This function first tries to extract author ID from the material data,
+    This function first tries to extract author ID from the material data author.id,
     then falls back to existing frontmatter, and finally to the fallback ID.
 
     Args:
@@ -265,15 +263,12 @@ def get_author_info_for_material(
 
     # If material_data_or_name is a dictionary with material data
     if isinstance(material_data_or_name, dict):
-        # Extract author_id from material data
-        if "author_id" in material_data_or_name:
-            material_author_id = material_data_or_name["author_id"]
-            import logging
-            logging.info(f"Resolved author_id {material_author_id} to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
-        elif "data" in material_data_or_name and "author_id" in material_data_or_name["data"]:
-            material_author_id = material_data_or_name["data"]["author_id"]
-            import logging
-            logging.info(f"Resolved author_id {material_author_id} from data to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
+        # Extract author.id from material data (NEW STANDARD)
+        if "author" in material_data_or_name and isinstance(material_data_or_name["author"], dict):
+            if "id" in material_data_or_name["author"]:
+                material_author_id = material_data_or_name["author"]["id"]
+                import logging
+                logging.info(f"Resolved author.id {material_author_id} to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
         
         # Extract material name for frontmatter lookup
         if "name" in material_data_or_name:

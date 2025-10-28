@@ -2,13 +2,12 @@
 """Subtitle Component Generator - Author Voice Integration (Phase 1)"""
 
 import datetime
-import json
 import logging
 from pathlib import Path
 from typing import Dict, Optional
 from generators.component_generators import APIComponentGenerator
 from utils.config_loader import load_yaml_config
-from voice.orchestrator import VoiceOrchestrator
+from voice.voice_service import VoiceService
 
 logger = logging.getLogger(__name__)
 
@@ -61,55 +60,26 @@ class SubtitleComponentGenerator(APIComponentGenerator):
         Returns:
             Complete prompt string for subtitle generation
         """
-        # Extract author data
+        # Extract author data and initialize VoiceService
         author_obj = frontmatter_data.get('author', {})
         if not author_obj or not author_obj.get('country'):
             raise ValueError(f"No author data found in frontmatter for {material_name} - required for voice system")
         
-        # Get author details
-        author_name = author_obj.get('name', 'Unknown')
-        author_country = author_obj.get('country', 'Unknown')
-        author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
+        # Initialize centralized VoiceService
+        voice_service = VoiceService(author_data=author_obj)
         
-        # Initialize VoiceOrchestrator for country-specific voice
-        voice = VoiceOrchestrator(country=author_country)
+        # Build standardized material context
+        material_context = voice_service.build_material_context(
+            material_name=material_name,
+            frontmatter_data=frontmatter_data,
+            include_machine_settings=False
+        )
         
-        # Extract material properties for context
-        material_props = frontmatter_data.get('materialProperties', {})
-        category = frontmatter_data.get('category', 'material')
-        applications = frontmatter_data.get('applications', [])
-        
-        # Build comprehensive context
-        properties_json = json.dumps(
-            {prop: data.get('value') for prop, data in material_props.items() 
-             if isinstance(data, dict) and 'value' in data},
-            indent=2
-        ) if material_props else 'Standard material characteristics'
-        
-        applications_str = ', '.join(applications[:3]) if applications else 'General cleaning applications'
-        
-        # Build material context dict
-        material_context = {
-            'material_name': material_name,
-            'category': category,
-            'properties': properties_json,
-            'applications': applications_str
-        }
-        
-        # Build author dict
-        author_dict = {
-            'name': author_name,
-            'country': author_country,
-            'expertise': author_expertise
-        }
-        
-        # Call Voice service to generate subtitle prompt
+        # Generate prompt using VoiceService
         try:
-            # Generate base prompt from voice system
-            prompt = voice.get_unified_prompt(
+            prompt = voice_service.generate_prompt(
                 component_type='subtitle',
                 material_context=material_context,
-                author=author_dict,
                 section_focus='marketing_tagline',
                 section_instruction=f"Write a concise, engaging {target_words}-word subtitle/tagline for {material_name} laser cleaning. Capture the essence of this material in a professional phrase that appeals to technical decision-makers.",
                 target_words=target_words,
@@ -123,7 +93,7 @@ class SubtitleComponentGenerator(APIComponentGenerator):
             prompt += f"TONE: Professional, engaging, technically accurate.\n"
             prompt += f"TARGET AUDIENCE: Technical professionals and decision-makers in industrial laser cleaning.\n"
             
-            logger.info(f"✅ Generated subtitle prompt for {material_name} ({author_country}): {target_words}w")
+            logger.info(f"✅ Generated subtitle prompt for {material_name} ({voice_service.country}): {target_words}w")
             return prompt
             
         except Exception as e:
@@ -323,6 +293,35 @@ class SubtitleComponentGenerator(APIComponentGenerator):
         except Exception as e:
             logger.error(f"AI processing failed for {material_name}: {e}")
             raise ValueError(f"Subtitle generation failed for {material_name}: {e}") from e
+        
+        # Validate generated content quality
+        try:
+            from validation.integration import validate_generated_content, get_validation_summary
+            
+            validation_result = validate_generated_content(
+                content=subtitle,
+                component_type='subtitle',
+                material_name=material_name,
+                author_info={
+                    'name': author_name,
+                    'country': author_country
+                },
+                voice_profile=None,
+                log_report=False
+            )
+            
+            validation_summary = get_validation_summary(validation_result)
+            logger.info(f"📊 Content Validation: {validation_summary}")
+            
+            if not validation_result.success:
+                logger.warning("⚠️  Quality issues detected:")
+                for issue in validation_result.critical_issues[:3]:
+                    logger.warning(f"   - {issue}")
+                if validation_result.recommendations:
+                    logger.info(f"💡 Recommendation: {validation_result.recommendations[0]}")
+            
+        except Exception as validation_error:
+            logger.warning(f"⚠️  Validation failed (non-critical): {validation_error}")
         
         # Write subtitle to Materials.yaml with full author metadata
         success = self._write_subtitle_to_materials(

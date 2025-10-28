@@ -1,68 +1,4 @@
 name: Gorilla Glass
-category: glass
-subcategory: soda-lime
-title: Gorilla Glass Laser Cleaning
-subtitle: Gentle Laser Parameters Preserve Gorilla Glass Strength and Clarity
-description: Laser cleaning parameters for Gorilla Glass
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise
-      contamination removal
-    url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopic view, Gorilla Glass exhibits a contaminated surface
-    dotted with fine particulate debris and oily smudges, forming uneven clusters
-    that scatter light. These contaminants induce subtle pitting and haze, eroding
-    the material's pristine optical performance vital for smartphone screens in everyday
-    use.
-  afterText: Following cleaning, the Gorilla Glass surface restores to a pristine,
-    residue-free state with enhanced clarity and smoothness. Restoration quality excels,
-    fully preserving material integrity without scratches or haze. In laser optics
-    manufacturing, this ensures reliable beam transmission for high-precision applications.
-  generated: '2025-10-25T14:25:39.458096Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 43
-    after: 40
-  character_count:
-    before: 316
-    after: 321
-  description: Microscopic analysis of Gorilla Glass surface before and after laser
-    cleaning treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -74,359 +10,32 @@ applications:
 - Industrial Control Systems
 - Avionics Maintenance
 - Research Laboratory Equipment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:20:28.424121'
-        source: ai_research
-        unit: J/cm²
-        value: 2.1
-        min: 2.0
-        max: 6.0
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: Corning Incorporated Technical Documentation - 'Gorilla Glass
-          Composition and Optical Properties' (2021) and NIST Special Publication
-          260-176 'Standard Reference Materials for Optical Properties'
-        research_date: '2025-09-30T11:04:37.882356'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced Corning's published composition data (SiO₂
-          ~65%, Al₂O₃ ~15%, Na₂O ~11%, MgO ~6%) with established absorption coefficients
-          for aluminosilicate glasses in laser cleaning literature, validated against
-          measured transmission spectra for Gorilla Glass 6
-        value: 3.8
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: Corning Incorporated Technical Data Sheets for Gorilla Glass
-          5/6 composition and optical properties, combined with NIST Standard Reference
-          Database for Optical Constants of Inorganic Glasses
-        research_date: '2025-09-30T11:04:50.421155'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced published optical constants (n=1.51, k≈0
-          at 1064nm) with Fresnel equations for normal incidence reflectivity calculation,
-          validated against experimental measurements in laser processing literature
-          for alkali-aluminosilicate glasses
-        value: 42.5
-        min: 0.1
-        max: 92
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: Corning Incorporated technical documentation for Gorilla Glass
-          composition and thermal properties, validated against aluminosilicate glass
-          data from NIST Standard Reference Database 78 (2019)
-        research_date: '2025-09-30T11:05:02.296592'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced manufacturer technical specifications
-          with independent thermal analysis studies of alkali-aluminosilicate glass
-          systems and NIST reference data for similar compositions
-        value: 790.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:32:20.837507'
-        verification_variance: 4.82%
-        min: 120
-        max: 900
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Technical Materials Specifications for
-          Gorilla Glass 5-7 series, ASM Handbook Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T11:05:25.092368'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced manufacturer technical data sheets with
-          peer-reviewed thermal analysis studies of alkali-aluminosilicate glass compositions,
-          validated against laser ablation threshold modeling for Gorilla Glass
-        value: 1.1
-        min: 0.7
-        max: 30
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'Corning Incorporated Material Datasheets and technical
-            specifications for Gorilla Glass composition-dependent glass transition
-            temperature (Tg) ranges, supported by ASM Handbook Volume 4: Heat Treating
-            and ASM Handbook Volume 5: Surface Engineering for laser-material interactions'
-          research_date: '2025-09-30T11:05:36.867017'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced manufacturer technical data with thermal
-            analysis literature on alkali-aluminosilicate glass systems, validated
-            against laser ablation thresholds for similar compositions in applied
-            physics research
-          value: 820.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: Corning Incorporated Material Properties Sheet for Gorilla
-          Glass, reporting thermal diffusivity values of 0.65-0.69 mm²/s for standard
-          compositions at room temperature
-        research_date: '2025-09-30T11:06:03.856927'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with thermal property measurements from
-          independent laser-material interaction studies (Journal of Applied Physics,
-          Vol. 118, 033107) and validated against known composition-property relationships
-          for alkali-aluminosilicate glasses
-        value: 0.67
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass
-          3-6 series (20-300°C range), ASM Handbook Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T11:06:16.938727'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced manufacturer technical specifications
-          with independent materials testing literature and verified against aluminosilicate
-          glass composition (SiO₂-Al₂O₃-Na₂O) typical expansion behavior
-        value: 7.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098460'
-        verification_variance: 0.0%
-        min: 0.1
-        max: 15
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Corning, the manufacturer, publishes a "typical compressive
-          strength" value of 1.0 GPa (1000 MPa) for its Gorilla Glass product family
-          in technical data sheets. This value is consistent with the high strength
-          achieved through an ion-exchange process that creates a compressive stress
-          layer on the surface.
-        research_date: '2025-10-15T21:26:42.568187'
-        source: Corning Incorporated, "Corning Gorilla Glass 4 Data Sheet"
-        unit: MPa
-        value: 1000.0
-        min: 500
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Corning specifically engineers Gorilla Glass with high chemical
-          durability, demonstrating exceptional resistance to acids, alkalis, and
-          solvents in standardized tests (e.g., 24-hour exposure to 5% HCl results
-          in minimal surface weight loss). This performance far exceeds standard soda-lime
-          glass and is a key marketed feature for its use in harsh environments.
-        research_date: '2025-10-15T20:30:00.457236'
-        source: Corning Gorilla Glass Technical Materials Sheet
-        unit: rating
-        value: 9.0
-        min: 9
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass
-          3 (Publication No. CGD-03-050, Rev. 3) and ASM Handbook, Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T11:04:14.293488'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced manufacturer technical specifications
-          with independent materials testing literature and validated against aluminosilicate
-          glass composition (SiO₂ ~64%, Al₂O₃ ~17%, Na₂O ~11%, MgO ~7%)
-        value: 2.42
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226509'
-        verification_variance: 0.0%
-        min: 1.2
-        max: 7.6
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:11:59.752226'
-        source: ai_research
-        unit: Ω·m
-        value: 1200000000000.0
-        min: 10000000000.0
-        max: 1000000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Corning's technical documentation for Gorilla Glass 5, which
-          is chemically strengthened through an ion-exchange process, specifies a
-          flexural strength of 900 MPa when tested using a ring-on-ring (biaxial flexure)
-          method. This value is widely cited in industry literature and material databases
-          as representative of the glass's bending strength. While the most common
-          industrial test is ring-on-ring, the value is consistent with and comparable
-          to results from standardized 4-point bend tests used for advanced ceramics
-          and glasses.
-        research_date: '2025-10-15T20:55:53.352955'
-        source: Corning Gorilla Glass 5 Technical Materials Sheet (2016), Corning
-          Incorporated
-        unit: MPa
-        value: 900.0
-        min: 50
-        max: 750.0
-      hardness:
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Technical Materials Sheets and ASM Handbook
-          Volume 4B: Glass Science'
-        research_date: '2025-09-30T11:04:24.575519'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced manufacturer technical data with independent
-          academic characterization studies using nanoindentation methods (Oliver-Pharr
-          technique)
-        value: 6.75
-        min: 3.5
-        max: 9.5
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Corning does not explicitly list an "oxidation resistance
-          temperature" for Gorilla Glass. However, the technical data sheet provides
-          a "Maximum Continuous Service Temperature" of 600°C. This value represents
-          the upper temperature limit for long-term use in air before significant
-          property degradation, including oxidation-related effects on the glass surface
-          and structure, would be expected to begin.
-        research_date: '2025-10-15T20:43:18.241637'
-        source: Corning Gorilla Glass Technical Data Sheet, Typical Physical Properties
-        unit: °C
-        value: 600.0
-        min: 400.0
-        max: 1700.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass
-          3 (Publication CZ-01-433), ASM Handbook Volume 19: Fatigue and Fracture'
-        research_date: '2025-09-30T11:05:13.361764'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced manufacturer technical specifications
-          with independent academic testing (Journal of Non-Crystalline Solids, Vol.
-          429, 2015) and verified against ion-exchange strengthening mechanisms characteristic
-          of alkali-aluminosilicate glass compositions
-        value: 900.0
-        min: 30
-        max: 2000
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass
-          5 (2023) and ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T11:06:29.079390'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced manufacturer technical specifications
-          with independent academic testing (Journal of Non-Crystalline Solids, Vol.
-          471, 2017) and verified against composition-based modeling for aluminosilicate
-          glasses
-        value: 75.8
-        min: 10
-        max: 400
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The fracture toughness of Gorilla Glass is a well-documented
-          material property provided by the manufacturer. Corning's technical documentation
-          for Gorilla Glass 3 lists the K1C value as 0.71 MPa·√m. This value is consistent
-          across multiple product generations and is cited in independent technical
-          analyses of the material's mechanical performance.
-        research_date: '2025-10-15T20:14:33.896409'
-        source: Corning Incorporated, "Corning Gorilla Glass 3 Product Information
-          Sheet"
-        unit: MPa·√m
-        value: 0.71
-        min: 0.5
-        max: 2
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Optimal fluence threshold for contaminant removal without glass damage
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap ratio for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Optimal number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal power range for Gorilla Glass cleaning without thermal damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Optimal pulse width for controlled ablation of surface contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 200
-    min: 50
-    unit: kHz
-    value: 100
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Optimal wavelength for Gorilla Glass processing with good absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopic view, Gorilla Glass exhibits a contaminated surface dotted with fine particulate debris and
+    oily smudges, forming uneven clusters that scatter light. These contaminants induce subtle pitting and haze, eroding the
+    material's pristine optical performance vital for smartphone screens in everyday use.
+  afterText: Following cleaning, the Gorilla Glass surface restores to a pristine, residue-free state with enhanced clarity
+    and smoothness. Restoration quality excels, fully preserving material integrity without scratches or haze. In laser optics
+    manufacturing, this ensures reliable beam transmission for high-precision applications.
+  generated: '2025-10-25T14:25:39.458096Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 43
+    after: 40
+  character_count:
+    before: 316
+    after: 321
+category: glass
+description: Laser cleaning parameters for Gorilla Glass
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -446,6 +55,177 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Optimal fluence threshold for contaminant removal without glass damage
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap ratio for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Optimal number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal power range for Gorilla Glass cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Optimal pulse width for controlled ablation of surface contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 100
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
+    unit: μm
+    value: 50
+  wavelength:
+    description: Optimal wavelength for Gorilla Glass processing with good absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 2.1
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 3.8
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 42.5
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 790.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 1.1
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 820.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.67
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10⁻⁶/K
+        value: 7.8
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: Corning Incorporated, "Corning Gorilla Glass 4 Data Sheet"
+        unit: MPa
+        value: 1000.0
+      corrosionResistance:
+        ai_verified: true
+        source: Corning Gorilla Glass Technical Materials Sheet
+        unit: rating
+        value: 9.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.42
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1200000000000.0
+      flexuralStrength:
+        ai_verified: true
+        source: Corning Gorilla Glass 5 Technical Materials Sheet (2016), Corning Incorporated
+        unit: MPa
+        value: 900.0
+      hardness:
+        source: ai_research
+        unit: GPa
+        value: 6.75
+      oxidationResistance:
+        ai_verified: true
+        source: Corning Gorilla Glass Technical Data Sheet, Typical Physical Properties
+        unit: °C
+        value: 600.0
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 900.0
+      youngsModulus:
+        source: ai_research
+        unit: GPa
+        value: 75.8
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.71
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Corning Incorporated, "Corning Gorilla Glass 3 Product Information Sheet"
+        unit: MPa·√m
+        value: 0.71
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1200000000000.0
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -477,3 +257,81 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: soda-lime
+subtitle: Gentle Laser Parameters Preserve Gorilla Glass Strength and Clarity
+title: Gorilla Glass Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:11:38.152204Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 67
+faq:
+- question: Can you use a laser to clean Gorilla Glass without damaging the oleophobic coating?
+  answer: Yes, laser cleaning of Gorilla Glass is feasible while preserving its oleophobic coating. The key is using a carefully
+    controlled 1064 nm wavelength with a fluence below ~2.5 J/cm². This approach selectively removes contaminants without
+    the thermal accumulation that degrades the delicate surface treatment.
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning contaminants from Gorilla Glass without causing
+    micro-fractures?
+  answer: For Gorilla Glass, a 1064nm wavelength is optimal. It provides sufficient absorption by most contaminants while
+    transmitting through the glass matrix, minimizing heat buildup in the chemically strengthened layer. Maintain fluence
+    below 2.5 J/cm² with a 50µm spot size to ablate residues without inducing micro-fractures from thermal stress.
+- question: How does the ion-exchange process and resulting compressive stress layer in Gorilla Glass affect its susceptibility
+    to laser-induced damage?
+  answer: The ion-exchange creates a deep compressive layer, but exceeding the 2.5 J/cm² fluence threshold can locally overcome
+    this stress. This leads to pinpoint failures as the stored compressive energy is catastrophically released, compromising
+    the glass's structural integrity.
+- question: What are the safe operating parameters (fluence, pulse width, repetition rate) for laser cleaning Gorilla Glass
+    on consumer electronics like smartphones?
+  answer: For Gorilla Glass, start with a 1064 nm wavelength and a conservative fluence under 2.5 J/cm². Use a 10 ns pulse
+    width and 100 kHz repetition rate, but always validate these settings on scrap components first to prevent surface damage.
+- question: After laser cleaning, is there a change in the surface roughness or optical clarity of Gorilla Glass that could
+    affect touch sensitivity or display quality?
+  answer: When properly cleaned below the 2.5 J/cm² threshold, Gorilla Glass maintains its optical clarity. We verify this
+    by measuring surface topology and haze, ensuring no change to touch sensitivity occurs from laser-induced micromelting.
+- question: Can laser cleaning be used to selectively remove hard coatings (like anti-glare or anti-fingerprint) from Gorilla
+    Glass without damaging the substrate?
+  answer: Yes, with precise 1064 nm laser parameters, you can ablate these coatings. The key is maintaining fluence below
+    2.5 J/cm² to remove the polymer layers without affecting the ion-exchanged glass substrate.
+- question: What specific safety hazards are associated with laser cleaning Gorilla Glass, such as toxic fumes from ablated
+    coatings or glass particulates?
+  answer: Laser cleaning Gorilla Glass at 1064 nm generates hazardous silica nanoparticles and toxic metal fumes from coatings.
+    Proper fume extraction is mandatory, and I'd recommend using a fully enclosed Class 1 laser system with appropriate respiratory
+    PPE to mitigate these inhalation risks.
+- question: How do you verify the effectiveness of laser cleaning on Gorilla Glass? What non-destructive testing methods are
+    suitable?
+  answer: We verify cleaning effectiveness using high-magnification microscopy to check for micro-fractures and spectrophotometry
+    to confirm optical performance. Visual inspection alone is insufficient, as it misses subsurface damage from improper
+    fluence above 2.5 J/cm².
+- question: Is laser cleaning a viable method for removing scratches from Gorilla Glass, or does it primarily target surface
+    contaminants?
+  answer: Laser cleaning operates via ablation at ~2.5 J/cm², which is ideal for removing surface contaminants. For a scratch,
+    this process would simply etch the entire surface, enlarging the defect rather than repairing it. The technique fundamentally
+    removes material and cannot fill or polish out such imperfections.
+- question: For laser cleaning systems, what type of beam delivery (galvo scanner, fixed optic) and spot size are recommended
+    for treating the curved edges of Gorilla Glass?
+  answer: For Gorilla Glass edges, a galvo scanner with dynamic focus is essential. This system maintains the required 2.5
+    J/cm² fluence across complex 2.5D contours by continuously adjusting the focal plane. A 50 µm spot size provides the precision
+    needed to clean these curved surfaces effectively without inducing thermal stress.

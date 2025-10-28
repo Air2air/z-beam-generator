@@ -26,7 +26,7 @@ The system follows a strict **separation of concerns**:
 
 **CRITICAL RULE**: Min/max ranges exist **EXCLUSIVELY** in Categories.yaml, **NEVER** in materials.yaml.
 
-**Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the `research_basis` or `validation_method` fields for context, but min/max fields must never be present at the material level.
+**Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the source field for context, but min/max fields must never be present at the material level.
 
 **VITAL PROPERTY VALIDATION RULE**: If a property is **NOT** defined in Categories.yaml 
 for a given category, it **MUST NOT** be added to any material in that category in 
@@ -449,7 +449,7 @@ The generator has special handling for nested structures in `_populate_property(
    - Violates single source of truth principle
    - Creates ambiguity between category ranges and material values
    - Even if material has inherent variance (alloys, grades), use ONLY averaged value
-   - Document variance context in research_basis/validation_method fields instead
+   - Document variance context in source field instead
 
 2. **DO NOT use material min/max in frontmatter**
    - Frontmatter min/max MUST come exclusively from Categories.yaml
@@ -458,7 +458,7 @@ The generator has special handling for nested structures in `_populate_property(
 
 3. **DO NOT store material variance as min/max**
    - **WRONG**: `density: {value: 7.2, min: 7.1, max: 7.3}`
-   - **CORRECT**: `density: {value: 7.2}` with note in research_basis: "Range 7.1-7.3 g/cm³ for ASTM A48 Class 30"
+   - **CORRECT**: `density: {value: 7.2}` with note in source: "Range 7.1-7.3 g/cm³ for ASTM A48 Class 30"
    - Average the range to a single representative value
 
 ---
@@ -637,7 +637,7 @@ properties:
     value: 2200.0
     min: 1900.0  # ❌ NO! Average to single value
     max: 2500.0  # ❌ NO! Average to single value
-    research_basis: "Range for ASTM A48 Class 30: 190-250 HB"
+    source: "Range for ASTM A48 Class 30: 190-250 HB"
 ```
 
 ❌ **DON'T**: Add properties to materials that aren't in Categories.yaml
@@ -672,7 +672,7 @@ properties:
     value: 8.96
     unit: g/cm³
     confidence: 98
-    research_basis: "Pure copper density at 20°C"
+    source: "Pure copper density at 20°C"
 ```
 
 ✅ **DO**: Document material variance in metadata
@@ -683,8 +683,7 @@ properties:
     value: 2200.0  # Averaged from 1900-2500 range
     unit: HV
     confidence: 95
-    research_basis: "ASTM A48 Class 30 gray cast iron hardness range 190-250 HB (1900-2500 HV)"
-    validation_method: "Value represents mid-range for typical applications"
+    source: "ASTM A48 Class 30 gray cast iron hardness range 190-250 HB (1900-2500 HV). Value represents mid-range for typical applications."
 ```
 
 ✅ **DO**: Only add properties defined in Categories.yaml

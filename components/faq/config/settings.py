@@ -14,29 +14,22 @@ MIN_UTILITY_SCORE: 85     # Answers must be 85%+ practically useful
 REQUIRED_ACCURACY: 100    # 100% technical accuracy (all values traceable)
 MIN_VOICE_AUTHENTICITY: 95  # 95%+ author voice match
 
-# Category tags for FAQ organization (internal use)
+# Enhanced category tags (48 total) covering diverse aspects
 CATEGORY_TAGS = [
-    # Cost and practical considerations
-    'cost_economics',
+    # Practical considerations
     'time_duration',
     'speed_efficiency',
-    
-    # Machine operation
     'machine_settings',
     'operator_skills',
     'quality_verification',
-    
-    # Safety and risks
     'safety',
     'damage_risks',
     'limitations',
-    
-    # Maintenance and treatment
     'post_treatment',
     'coatings_removal',
     'coverage_area',
     
-    # Material thermal characteristics
+    # Thermal aspects
     'thermal_management',
     'heat_effects',
     'thermal_damage',
@@ -48,32 +41,32 @@ CATEGORY_TAGS = [
     'reflectivity_challenges',
     'laser_absorption',
     'wavelength_interaction',
+    'unique_properties',
     
-    # Material handling requirements
+    # Handling and strength
     'strength_considerations',
     'fragility_risks',
     'damage_resistance',
     'structural_integrity',
     'delicate_handling',
     
-    # Unusual material characteristics
-    'unique_properties',
+    # Unusual/arcane characteristics
     'rare_behavior',
     'special_requirements',
     'unusual_challenges',
     
-    # Contaminant-related
+    # Contaminants
     'surface_damage_from_contaminants',
     'contaminant_removal_difficulty',
     'heat_induced_contamination',
     'oxide_formation',
     'residue_effects',
     
-    # Application-specific
+    # Applications
     'application_advantages',
     'application_challenges',
     'industry_requirements',
-    'performance_characteristics',
+    'performance_characteristics'
 ]
 
 # Complexity scoring factors

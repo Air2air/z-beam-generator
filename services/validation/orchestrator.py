@@ -117,13 +117,13 @@ class ValidationOrchestrator:
         try:
             # Lazy imports to avoid circular dependencies
             from validation.services.pre_generation_service import PreGenerationValidationService
-            from validation.services.post_generation_service import PostGenerationQualityService
+            from validation.content_validator import ContentValidationService
             from components.frontmatter.services.material_auditor import MaterialAuditor
             from components.frontmatter.services.validation_service import ValidationService
             
             # Core validation services
             self.pre_generation_service = PreGenerationValidationService()
-            self.post_generation_service = PostGenerationQualityService()
+            self.content_validation_service = ContentValidationService()  # Replaced PostGenerationQualityService
             self.material_auditor = MaterialAuditor()
             self.validation_service = ValidationService()
             
@@ -305,24 +305,85 @@ class ValidationOrchestrator:
         material_name: str, 
         result: ComprehensiveValidationResult
     ) -> Any:
-        """Run post-generation quality validation phase"""
+        """Run post-generation quality validation phase using ContentValidationService"""
         try:
             self.logger.info(f"📊 Running post-generation validation for {material_name}")
             
-            # Use existing post-generation service
-            post_result = self.post_generation_service.validate_generated_content(
-                material_name, 
-                component_type="frontmatter"
-            )
+            # Load material data to validate
+            from data.materials import load_materials, get_material_by_name
+            materials_data = load_materials()
+            material_info = get_material_by_name(material_name, materials_data)
             
-            # Extract issues and add to result
-            if hasattr(post_result, 'errors') and post_result.errors:
-                for error in post_result.errors:
-                    result.post_generation_issues.append(str(error))
-                    result.total_issues += 1
-                    result.medium_issues += 1
+            if not material_info:
+                result.post_generation_issues.append(f"Material {material_name} not found")
+                result.medium_issues += 1
+                return None
             
-            return post_result
+            # Get author info
+            from utils.core.author_manager import get_author_info_for_material
+            author_info = get_author_info_for_material(material_info)
+            
+            if not author_info:
+                author_info = {'name': 'Unknown', 'country': 'Unknown'}
+            
+            # Validate components if they exist
+            validation_results = []
+            
+            # Validate FAQ
+            if 'questions' in material_info and material_info['questions']:
+                from validation.integration import validate_generated_content
+                faq_result = validate_generated_content(
+                    content={'questions': material_info['questions']},
+                    component_type='faq',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                validation_results.append(('FAQ', faq_result))
+                
+                if not faq_result.success:
+                    for issue in faq_result.critical_issues:
+                        result.post_generation_issues.append(f"FAQ: {issue}")
+                        result.medium_issues += 1
+            
+            # Validate Caption
+            if 'beforeText' in material_info or 'afterText' in material_info:
+                from validation.integration import validate_generated_content
+                caption_result = validate_generated_content(
+                    content={
+                        'beforeText': material_info.get('beforeText', ''),
+                        'afterText': material_info.get('afterText', '')
+                    },
+                    component_type='caption',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                validation_results.append(('Caption', caption_result))
+                
+                if not caption_result.success:
+                    for issue in caption_result.critical_issues:
+                        result.post_generation_issues.append(f"Caption: {issue}")
+                        result.medium_issues += 1
+            
+            # Validate Subtitle
+            if 'subtitle' in material_info and material_info['subtitle']:
+                from validation.integration import validate_generated_content
+                subtitle_result = validate_generated_content(
+                    content=material_info['subtitle'],
+                    component_type='subtitle',
+                    material_name=material_name,
+                    author_info=author_info,
+                    log_report=False
+                )
+                validation_results.append(('Subtitle', subtitle_result))
+                
+                if not subtitle_result.success:
+                    for issue in subtitle_result.critical_issues:
+                        result.post_generation_issues.append(f"Subtitle: {issue}")
+                        result.medium_issues += 1
+            
+            return validation_results
             
         except Exception as e:
             self.logger.error(f"❌ Post-generation validation failed: {e}")

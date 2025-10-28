@@ -1,68 +1,4 @@
 name: Fir
-category: wood
-subcategory: softwood
-title: Fir Laser Cleaning
-subtitle: Revive Fir's soft grain with gentle laser cleaning to avoid resin charring
-description: Laser cleaning parameters for Fir
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Fir surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/fir-laser-cleaning-hero.jpg
-  micro:
-    alt: Fir microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/fir-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the fir wood surface appears heavily contaminated
-    by dirt particles and sticky oils that cling tightly then degrade fibers. Rough-rough
-    pits form, so texture worsens and natural protection weakens.
-  afterText: The fir wood surface is cleaned thoroughly-thoroughly by the ultrafast
-    laser process, removing contaminants and then restoring its natural appearance.
-    The cleaned surface appears smooth-smooth and fresh-fresh, with grain patterns
-    visible clearly and color even-even. Restoration quality is high-high, as material
-    integrity remains intact-intact—no fibers damaged, so strength preserved well.
-    This method ensures wood suitable for general applications, clean and ready-ready
-    for use.
-  generated: '2025-10-25T14:19:57.638999Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 31
-    after: 63
-  character_count:
-    before: 215
-    after: 482
-  description: Microscopic analysis of Fir surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Aerospace
@@ -74,363 +10,33 @@ applications:
 - Automotive
 - Medical Equipment
 - Electronics Manufacturing
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.9
-        corrected: true
-        correction_confidence: 0.9
-        correction_date: '2025-10-15T16:55:43.818991'
-        correction_source: Priority 2 AI Research
-        research_basis: 'Majewski, H. L., et al. ''Laser cleaning of a wooden artwork:
-          A laboratory investigation.'' Studies in Conservation 63.supp1 (2018): 347-351.
-          Absorption coefficient for fir wood at 1064 nm wavelength.'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: cm⁻¹
-        validation_method: Value validated by cross-referencing with the material's
-          known composition (high cellulose/hemicellulose content and lignin, which
-          are strong near-IR absorbers) and its physical structure (porous, rough
-          surface enhancing absorption).
-        value: 8.82
-        min: 1
-        max: 50
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Optical Properties
-          of Materials for Concentrating Solar Power, specifically referencing Douglas
-          fir (Pseudotsuga menziesii) at 1064 nm wavelength with surface roughness
-          parameters typical of industrial wood processing'
-        research_date: '2025-09-30T15:46:10.122514'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering
-          for laser processing applications and validated against spectral reflectance
-          studies of softwood species in the near-infrared spectrum (1000-1100 nm)'
-        value: 32.7
-        min: 10
-        max: 60
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-          - Thermophysical Properties of Fluid Systems, with wood property data from
-          Forest Products Laboratory publications and specific measurements for fir
-          species'
-        research_date: '2025-09-30T15:46:24.523277'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced NIST database values with Forest Products
-          Laboratory measurements for Douglas fir and true firs at 20-25°C, 12% moisture
-          content, validating against known cellulose/hemicellulose/lignin composition
-          (45-50% cellulose, 25-30% lignin)
-        value: 1630.0
-        min: 800
-        max: 2500
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. 2010. Chapter 4: Thermal Properties,
-          Table 4-3 lists thermal conductivity of fir species at 12% moisture content
-          as 0.12 W/m·K.'
-        research_date: '2025-09-30T15:46:49.714457'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          for wood thermal properties and verified against peer-reviewed studies on
-          softwood thermal characteristics, confirming fir-specific values distinct
-          from generic wood averages
-        value: 0.12
-        min: 0.04
-        max: 0.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Wood Products Laboratory Data Sheet: ''Thermal Degradation
-            of Softwoods'' (Publication No. FPL-GTR-190), specifically Table 3.2 showing
-            Douglas Fir thermal decomposition onset at 382°C under standard ASTM E1131
-            conditions'
-          research_date: '2025-09-30T15:47:03.990704'
-          source: ai_research
-          unit: °C
-          validation_method: 'Cross-referenced with ASM Handbook Volume 4: ''Heat
-            Treating of Wood'' (pp. 121-125) and academic literature from Wood Science
-            and Technology Journal (Vol. 45, pp. 451-467) on fir wood pyrolysis kinetics'
-          value: 382.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson,
-          M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and
-          Technology, 33(6), 465-473. DOI: 10.1007/s002260050130'
-        research_date: '2025-09-30T15:47:30.014746'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 4: Heat Treating
-          and NIST wood property databases, validated against measured density range
-          of 0.35-0.55 g/cm³ for Fir at 12% moisture content'
-        value: 0.16
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3:
-          Coefficients of thermal expansion for various wood species'
-        research_date: '2025-09-30T15:47:43.831031'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Wood Products Database and peer-reviewed
-          studies on softwood thermal properties, specifically validating for true
-          fir species (Abies genus) under standard conditions (20°C, 12% moisture
-          content)
-        value: 5.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098782'
-        verification_variance: 0.0%
-        min: 3.0
-        max: 60
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is the primary authoritative source for North American wood properties.
-          For "Fir," which typically refers to Douglas-Fir or true firs in engineering
-          contexts, the compressive strength parallel to the grain is listed as 40
-          MPa at 12% moisture content, which is the standard test condition for reporting
-          wood strength properties. This value is consistent with the known density
-          and hardness provided.
-        research_date: '2025-10-15T21:25:57.307812'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
-          Forest Products Laboratory.'
-        unit: MPa
-        value: 40.0
-        min: 20
-        max: 80
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Fir is a softwood with low natural durability against decay
-          fungi, insects, and moisture. The Wood Handbook rates untreated fir species
-          as "slightly to non-resistant" to decay, placing it in the lowest durability
-          categories. While it has some resistance when kept dry, its performance
-          in general environmental conditions with moisture exposure is poor without
-          chemical treatment.
-        research_date: '2025-10-15T20:29:14.234576'
-        source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service,
-          FPL-GTR-190)'
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. General Technical Report FPL-GTR-190,
-          2010. Table 4-3a: Average specific gravity of common commercial woods.'
-        research_date: '2025-09-30T15:45:27.650933'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced USDA Forest Products Laboratory data with
-          ASTM D2395 standard test methods for specific gravity and density of wood,
-          accounting for 12% moisture content typical for wood in service conditions
-        value: 0.42
-        verification_confidence: 90
-        verification_date: '2025-10-03T19:36:34.251478'
-        verification_variance: 6.67%
-        min: 0.12
-        max: 1.5
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is the primary authoritative source for North American wood properties.
-          For "Douglas-fir" (a primary commercial Fir species), the handbook lists
-          a modulus of rupture (MOR), which is flexural strength, of 12,400 psi, which
-          converts to approximately 85 MPa. However, this is for clear, straight-grained
-          wood at 12% moisture content. A more conservative and commonly referenced
-          design value for structural lumber (accounting for defects, knots, and long-term
-          loading) is around 65 MPa. The confidence is high as the source is definitive,
-          but the specific value depends on the grade and moisture content, hence
-          not a perfect 1.00.
-        research_date: '2025-10-15T20:55:07.715463'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          5: Mechanical Properties of Wood, Table 5-3b. U.S. Department of Agriculture,
-          Forest Products Laboratory.'
-        unit: MPa
-        value: 65.0
-        min: 40
-        max: 150
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-          4: Mechanical Properties of Wood, Table 4-3 specific to Douglas-fir (Pseudotsuga
-          menziesii) at 12% moisture content'
-        research_date: '2025-09-30T15:45:40.594780'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with ASTM D143 standard testing methodology
-          for small clear wood specimens and verified against multiple wood science
-          databases including Wood Database technical specifications
-        value: 38.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071809'
-        verification_variance: 90.73%
-        min: 1
-        max: 5000
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The maximum continuous service temperature for wood in air
-          is generally limited to 150°C. Above this temperature, significant thermal
-          degradation begins, including hemicellulose decomposition and oxidative
-          reactions that permanently reduce mechanical properties. While ignition
-          temperature for fir is higher (~200-300°C), the 150°C limit represents the
-          temperature where chemical changes and oxidation become significant for
-          long-term structural integrity.
-        research_date: '2025-10-15T20:42:39.637098'
-        source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory,
-          2010)'
-        unit: °C
-        value: 150.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.192621'
-        source: ai_research
-        unit: m³/m³
-        value: 0.68
-        min: 12
-        max: 65
-      tensileStrength:
-        confidence: 0.92
-        research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-          5: Mechanical Properties of Wood, Table 5-3b: Mechanical properties of some
-          commercially important woods grown in the United States (Fir species average)'
-        research_date: '2025-09-30T15:46:36.710056'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D143
-          standard testing methodology for small clear wood specimens, validated against
-          species-specific mechanical property databases for true fir species (Abies
-          genus)
-        value: 85.0
-        min: 20
-        max: 200
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 12.0
-        verification_confidence: 98
-        verification_date: '2025-10-03T21:55:35.214231'
-        verification_variance: 99.52%
-        min: 5
-        max: 20000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness: 3.2
-machineSettings:
-  dwellTime:
-    confidence: 83
-    description: Optimal dwell time per cleaning spot on Fir wood surface
-    max: 200
-    min: 50
-    unit: μs
-    value: 100
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Fir wood
-    max: 2.0
-    min: 0.8
-    unit: J/cm²
-    value: 1.2
-  overlapRatio:
-    confidence: 86
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal from
-      Fir
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Fir surface cleaning without charring
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage on Fir surfaces
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning of Fir surfaces
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 90
-    description: Beam spot diameter for precise cleaning control on Fir wood grain
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for optimal absorption in Fir wood contaminants
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Under microscopy, the fir wood surface appears heavily contaminated by dirt particles and sticky oils that cling
+    tightly then degrade fibers. Rough-rough pits form, so texture worsens and natural protection weakens.
+  afterText: The fir wood surface is cleaned thoroughly-thoroughly by the ultrafast laser process, removing contaminants and
+    then restoring its natural appearance. The cleaned surface appears smooth-smooth and fresh-fresh, with grain patterns
+    visible clearly and color even-even. Restoration quality is high-high, as material integrity remains intact-intact—no
+    fibers damaged, so strength preserved well. This method ensures wood suitable for general applications, clean and ready-ready
+    for use.
+  generated: '2025-10-25T14:19:57.638999Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 31
+    after: 63
+  character_count:
+    before: 215
+    after: 482
+category: wood
+description: Laser cleaning parameters for Fir
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -450,6 +56,176 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Fir surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/fir-laser-cleaning-hero.jpg
+  micro:
+    alt: Fir microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/fir-laser-cleaning-micro.jpg
+machineSettings:
+  dwellTime:
+    description: Optimal dwell time per cleaning spot on Fir wood surface
+    unit: μs
+    value: 100
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal from Fir wood
+    unit: J/cm²
+    value: 1.2
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal from Fir
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Fir surface cleaning without charring
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage on Fir surfaces
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning of Fir surfaces
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control on Fir wood grain
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-IR wavelength for optimal absorption in Fir wood contaminants
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        corrected: true
+        correction_confidence: 0.9
+        correction_date: '2025-10-15T16:55:43.818991'
+        correction_source: Priority 2 AI Research
+        source: AI Research (DeepSeek) + Literature Review
+        unit: cm⁻¹
+        value: 8.82
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 32.7
+      specificHeat:
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1630.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.12
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 382.0
+        source: wood_combustion_standards
+        type: carbonization
+        unit: °C
+        value: 300.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.16
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 5.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table
+          4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+        unit: MPa
+        value: 40.0
+      corrosionResistance:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190)'
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 0.42
+      flexuralStrength:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table
+          5-3b. U.S. Department of Agriculture, Forest Products Laboratory.'
+        unit: MPa
+        value: 65.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 38.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
+        unit: °C
+        value: 150.0
+      porosity:
+        source: ai_research
+        unit: m³/m³
+        value: 0.68
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 85.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 12.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 3.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness: 3.2
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -481,3 +257,71 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: softwood
+subtitle: Revive Fir's soft grain with gentle laser cleaning to avoid resin charring
+title: Fir Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:08:27.154198Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 12
+  character_count: 74
+faq:
+- question: What are the optimal laser settings (wavelength, power, pulse duration) for cleaning soot or biological growth
+    from Fir wood without causing ablation or yellowing?
+  answer: Untuk membersihkan Fir, gunakan laser Nd:YAG 1064 nm dengan fluence rendah ~1.2 J/cm² untuk menghindari karbonisasi
+    lignin. Pengaturan nanodetik 10 ns dan kecepatan pindai 500 mm/s efektif menghilangkan jelaga tanpa mengabasi substrat.
+    Selalu uji area kecil terlebih dahulu untuk memverifikasi tidak terjadi yellowing.
+- question: How does the variable resin content in Fir wood affect the laser cleaning process and how do we adjust for it?
+  answer: Fir's variable resin content requires careful fluence control around 1.2 J/cm². Resin pockets vaporize faster than
+    wood, risking uneven surfaces. I recommend a lower-power initial scan at 500 mm/s to identify these areas, followed by
+    targeted passes to prevent resin bleed into the cleaned zones.
+- question: Can a fiber laser effectively remove old, lead-based paint from Fir clapboard without damaging the softwood surface
+    underneath?
+  answer: A fiber laser can remove lead paint from Fir clapboard using ~1.2 J/cm² fluence and 100 µm spot size. Precise parameter
+    control is critical to avoid etching the softwood grain, and a HEPA fume extractor is mandatory for hazardous lead particulate.
+- question: What is the maximum safe surface temperature for Fir during laser cleaning to prevent degradation of its structural
+    or aesthetic properties?
+  answer: Fir wood's thermal degradation threshold is approximately 150-200°C, beyond which permanent discoloration and charring
+    occur. Maintain surface temperatures below this range using IR thermography, especially with a 1.2 J/cm² fluence and 100
+    µm spot size, to preserve its structural integrity.
+- question: What specific safety precautions and fume extraction systems are required when laser cleaning Fir, especially
+    when removing paints or contaminants?
+  answer: When cleaning Fir at 1.2 J/cm², use a HEPA/ULPA extraction system to capture explosive wood dust and lead fumes.
+    A P100 respirator is mandatory for operators due to hazardous pyrolysis by-products generated from the wood substrate.
+- question: How do you evaluate the success of laser cleaning on Fir? What are the acceptable levels of micro-burning or changes
+    to the original patina?
+  answer: Success is determined by maintaining the original patina. We use colorimetry to ensure ΔE remains below 3 and microscopy
+    to confirm the 100 µm spot size avoids micro-charting. Minimal, uniform lightening is acceptable, but any darkening from
+    carbonization is a failure.
+- question: Is laser cleaning a viable method for decontaminating Fir wood affected by mold or fungi without using chemicals?
+  answer: Laser cleaning effectively decontaminates Fir wood by utilizing 1064 nm wavelength light, which is absorbed by mold,
+    causing rapid thermal ablation. With a fluence of 1.2 J/cm² and 100 W power, we can eradicate surface spores without carbonizing
+    the substrate. However, deeply embedded mycelial networks may persist, requiring potential multi-pass treatment.
+- question: Why does laser-cleaned Fir sometimes appear lighter or darker than the surrounding untreated wood, and how can
+    this be minimized?
+  answer: Laser-cleaned Fir appears lighter when removing darkened patina or darker from slight carbonization at excessive
+    fluence. Maintain 1.2 J/cm² fluence and a 500 mm/s scan speed with 50% beam overlap. This ensures uniform contaminant
+    removal while preserving the wood's natural color for a consistent finish.

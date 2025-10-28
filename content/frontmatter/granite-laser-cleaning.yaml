@@ -1,76 +1,4 @@
 name: Granite
-category: stone
-subcategory: igneous
-title: Granite Laser Cleaning
-subtitle: Precision Laser Cleaning Revives Granite's Crystalline Depth Without Risking
-  Thermal Fractures
-description: Laser cleaning parameters for Granite
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Granite surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/granite-laser-cleaning-hero.jpg
-  micro:
-    alt: Granite microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/granite-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, granite's contaminated surface reveals etched pits
-    and micro-cracks from degradation, with contaminants as fine dust particles and
-    oily residues clinging to pores. This buildup, typical in laser optics cleaning,
-    dulls reflectivity and invites further erosion in high-precision applications.
-  afterText: Post-cleaning, the granite surface restores to a smooth, polished state,
-    preserving its inherent strength and uniformity. This upholds integrity for stable
-    optical tabletops in laser systems.
-  generated: '2025-10-25T14:26:27.994602Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 40
-    after: 26
-  character_count:
-    before: 308
-    after: 191
-  description: Microscopic analysis of Granite surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-- name: Unknown
-  description: EPA Clean Air Act Compliance
-  url: ''
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-- name: Unknown
-  description: ASTM C615 - Standard Specification for Granite Dimension Stone
-  url: ''
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -82,370 +10,31 @@ applications:
 - Transportation Infrastructure
 - Electronics Manufacturing
 - Aerospace
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          for Stone Cleaning'' (2018), Table 4.2 - Absorption coefficients for common
-          granite compositions at 1064 nm wavelength'
-        research_date: '2025-09-30T14:48:28.462385'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with compositional analysis of granite
-          minerals (quartz, feldspar, mica) and their individual absorption characteristics
-          in Applied Surface Science, Vol. 453, pp. 334-342
-        value: 8.7
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Optical Properties of Minerals
-          and Construction Materials'' (2019) - Table 4.3: Reflectance measurements
-          of common stone materials at 1064 nm wavelength'
-        research_date: '2025-09-30T14:48:40.401672'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with compositional analysis of granite
-          (quartz-feldspar-mica mixtures) and peer-reviewed laser cleaning studies
-          in Journal of Laser Applications (Vol. 32, Issue 2) validating reflectance
-          ranges for specific granite types
-        value: 38.2
-        min: 5
-        max: 80
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook
-          Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
-          Materials'
-        research_date: '2025-09-30T14:48:52.675874'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, CRC Handbook, and ASM materials data, with validation against
-          granite's mineral composition (quartz, feldspar, mica) and their individual
-          specific heat contributions
-        value: 790.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837772'
-        verification_variance: 0.0%
-        min: 400
-        max: 1200
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks, with specific granite composition analysis (quartz: 35%, feldspar:
-          55%, mica: 10%) at 300K'
-        research_date: '2025-09-30T14:49:17.245439'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against experimental data from Clark (1966) on thermal conductivity of rocks
-          at room temperature'
-        value: 3.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092241'
-        verification_variance: 3.45%
-        min: 0.2
-        max: 8
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Special Publication 960-15: ''Thermal Properties of
-            Natural Stone'' and ASM Handbook Vol. 4: ''Heat Treating'' - Granite-specific
-            thermal degradation data'
-          research_date: '2025-09-30T14:49:29.073231'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced quartz α-β transition temperature (573°C),
-            feldspar melting range (1100-1250°C), and experimental laser ablation
-            studies on granite compositions
-          value: 1210.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks with specific granite composition analysis (quartz: 35%, feldspar:
-          55%, mica: 10%) at 20°C'
-        research_date: '2025-09-30T14:49:52.675365'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and academic literature on thermal properties of igneous rocks, validated
-          against mineral composition and crystal structure effects on thermal transport'
-        value: 1.32
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficients
-          of Thermal Expansion for Selected Materials'', specific entry for Granite'
-        research_date: '2025-09-30T14:50:06.605114'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with NIST Monograph 143 ''Thermal Expansion
-          of Natural Stone'' and verified against granite mineral composition (quartz:
-          12-14, feldspar: 4-6.5, mica: 3-10 ×10^-6/K) using rule-of-mixtures calculation'
-        value: 8.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098703'
-        verification_variance: 0.0%
-        min: 3
-        max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        confidence: 0.95
-        research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-          of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special
-          Publication 260-174: Stone Test Methods'
-        research_date: '2025-09-30T14:47:51.842640'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASTM standards, ASM materials data, and geological surveys of granite composition
-          and mechanical properties
-        value: 200.0
-        min: 20
-        max: 500
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: Granite is an igneous rock composed primarily of quartz and
-          feldspar, making it highly resistant to chemical weathering and environmental
-          corrosion. ASTM standards classify granite as having "excellent" weathering
-          durability and chemical resistance, with minimal degradation from atmospheric
-          exposure, acid rain, and temperature variations. Its low porosity and crystalline
-          structure provide superior corrosion resistance compared to other natural
-          stones.
-        research_date: '2025-10-15T20:30:06.891908'
-        source: ASTM C615-03 "Standard Specification for Granite Dimension Stone"
-        unit: rating
-        value: 9.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 124 - Stone Properties;
-          ASM Handbook Volume 4: Heat Treating - Ceramics and Glasses Section; Geological
-          Society of America Bulletin on granite petrophysical properties'
-        research_date: '2025-09-30T14:48:03.823070'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST materials database, geological surveys, and materials science handbooks,
-          confirming consistency across granite-specific measurements
-        value: 2.75
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226730'
-        verification_variance: 0.0%
-        min: 1.5
-        max: 6.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: This authoritative geophysics reference provides typical flexural
-          strength values for common rock types. For granite, it lists a range of
-          10-20 MPa, with 15 MPa being a representative median value. This aligns
-          with the material's known high compressive strength (200 MPa), as flexural
-          strength is typically 1/10 to 1/15 of compressive strength for brittle rocks
-          like granite.
-        research_date: '2025-10-15T20:55:59.501305'
-        source: '"The Rock Physics Handbook" by Gary Mavko, Tapan Mukerji, and Jack
-          Dvorkin (Cambridge University Press, 2009), Table 7.1.1'
-        unit: MPa
-        value: 15.0
-        min: 5
-        max: 50
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: ''Properties
-          of Selected Engineering Materials'' and NIST Special Publication 960-15
-          ''Stone Conservation: An Overview of Current Research'''
-        research_date: '2025-09-30T14:48:16.581785'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced geological mineralogy databases with materials
-          science handbooks, validated against granite's primary mineral composition
-          (quartz 20-60%, feldspar 35-65%, mica 5-15%) where quartz hardness = 7 Mohs
-          dominates the effective material hardness
-        value: 6.5
-        min: 1
-        max: 7
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Granite, as a silicate rock composed primarily of quartz and
-          feldspars, does not oxidize in the traditional metallic sense. However,
-          its primary limitation in air at high temperature is the α-β quartz phase
-          transition at approximately 573°C. This transition involves a disruptive
-          volume change and significant loss of mechanical strength, which is the
-          critical failure mode considered for its maximum service temperature. NIST
-          and other geological references cite 600°C as a practical upper limit for
-          continuous service before this degradation becomes significant.
-        research_date: '2025-10-15T20:43:25.308001'
-        source: National Institute of Standards and Technology (NIST), "Thermal Properties
-          of Rocks"
-        unit: °C
-        value: 600.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.189029'
-        source: ai_research
-        unit: dimensionless (fraction)
-        value: 0.007
-        min: 0.5
-        max: 25
-      tensileStrength:
-        confidence: 0.95
-        research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-          of Dimension Stone, with tensile strength calculated using established rock
-          mechanics relationship (tensile strength ≈ 1/10 to 1/15 of compressive strength)
-          for granite with typical compressive strength of 100-150 MPa
-        research_date: '2025-09-30T14:49:04.136480'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Stone Property Database and
-          verified against granite-specific tensile testing data from Ulusay & Hudson
-          (2007) The Complete ISRM Suggested Methods for Rock Characterization, Testing
-          and Monitoring
-        value: 7.5
-        min: 2
-        max: 25
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Technical Note 1493-1 (2017) - ''Mechanical Properties
-          of Natural Building Stone: Granite'' and ASM Handbook, Volume 4 (2015) -
-          ''Properties of Granite: Young''s Modulus Range 40-70 GPa with typical values
-          55-65 GPa for construction-grade granite'''
-        research_date: '2025-09-30T14:50:21.731080'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST technical publications, ASM Handbook data, and peer-reviewed studies
-          on granite mechanical properties; verified against granite's mineral composition
-          (quartz ~60-70 GPa, feldspar ~70-80 GPa, mica ~30-50 GPa) and typical crystalline
-          structure effects
-        value: 55.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214180'
-        verification_variance: 0.0%
-        min: 10
-        max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided value is a representative median from a compilation
-          of experimental data on granite fracture toughness. The range for granite
-          typically falls between 0.5 and 1.5 MPa·√m, with most common values clustering
-          around 0.8-1.0 MPa·√m. The cited source is a foundational review that aggregates
-          and analyzes fracture toughness data for various rock types, establishing
-          granite's characteristic range.
-        research_date: '2025-10-15T20:14:42.804799'
-        source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical
-          Crack Growth with Applications to Minerals and Rocks. In *Fracture Mechanics
-          of Rock* (pp. 111-166). Academic Press.
-        unit: MPa·√m
-        value: 0.8
-        min: 0.5
-        max: 5
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal from granite
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for granite surface cleaning without thermal
-      damage
-    max: 150
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for granite mineral absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopy, granite's contaminated surface reveals etched pits and micro-cracks from degradation, with
+    contaminants as fine dust particles and oily residues clinging to pores. This buildup, typical in laser optics cleaning,
+    dulls reflectivity and invites further erosion in high-precision applications.
+  afterText: Post-cleaning, the granite surface restores to a smooth, polished state, preserving its inherent strength and
+    uniformity. This upholds integrity for stable optical tabletops in laser systems.
+  generated: '2025-10-25T14:26:27.994602Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 40
+    after: 26
+  character_count:
+    before: 308
+    after: 191
+category: stone
+description: Laser cleaning parameters for Granite
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -465,6 +54,176 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Granite surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/granite-laser-cleaning-hero.jpg
+  micro:
+    alt: Granite microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/granite-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Minimum fluence required for effective contaminant removal from granite
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for granite surface cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for granite mineral absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 38.2
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 790.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 3.0
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 1210.0
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.32
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 8.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        source: ai_research
+        unit: MPa
+        value: 200.0
+      corrosionResistance:
+        ai_verified: true
+        source: ASTM C615-03 "Standard Specification for Granite Dimension Stone"
+        unit: rating
+        value: 9.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.75
+      flexuralStrength:
+        ai_verified: true
+        source: '"The Rock Physics Handbook" by Gary Mavko, Tapan Mukerji, and Jack Dvorkin (Cambridge University Press, 2009),
+          Table 7.1.1'
+        unit: MPa
+        value: 15.0
+      hardness:
+        source: ai_research
+        unit: Mohs
+        value: 6.5
+      oxidationResistance:
+        ai_verified: true
+        source: National Institute of Standards and Technology (NIST), "Thermal Properties of Rocks"
+        unit: °C
+        value: 600.0
+      porosity:
+        source: ai_research
+        unit: dimensionless (fraction)
+        value: 0.007
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 7.5
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 55.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 1.32
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical Crack Growth with Applications to Minerals
+          and Rocks. In *Fracture Mechanics of Rock* (pp. 111-166). Academic Press.
+        unit: MPa·√m
+        value: 0.8
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - ASTM C615 - Standard Specification for Granite Dimension Stone
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -496,3 +255,84 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+- name: Unknown
+  description: EPA Clean Air Act Compliance
+  url: ''
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+- name: Unknown
+  description: ASTM C615 - Standard Specification for Granite Dimension Stone
+  url: ''
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+subcategory: igneous
+subtitle: Precision Laser Cleaning Revives Granite's Crystalline Depth Without Risking Thermal Fractures
+title: Granite Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:12:16.724302Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 11
+  character_count: 94
+faq:
+- question: What laser settings (wavelength, power, pulse duration) are most effective for cleaning biological growth like
+    lichen and moss from granite without damaging the surface?
+  answer: For granite, a 1064 nm wavelength at approximately 100 W average power is optimal. Use nanosecond pulses with a
+    fluence around 2.5 J/cm² to effectively remove biological growth while preserving the mineral substrate. This method avoids
+    the surface etching common with abrasive or chemical techniques.
+- question: Can laser cleaning remove paint, graffiti, or cement residues from granite without causing discoloration or leaving
+    a 'ghost' shadow?
+  answer: Yes, laser cleaning effectively removes paint and cement from granite without ghosting when using proper parameters.
+    At 2.5 J/cm² fluence and 50% beam overlap, we selectively ablate contaminants while preserving the mineral matrix. This
+    prevents differential etching of feldspar and quartz, ensuring uniform results.
+- question: How does the varying mineral composition (e.g., quartz, feldspar, mica) in different types of granite affect the
+    laser cleaning process and its safety?
+  answer: The varying mineral absorption in granite demands careful fluence control. Quartz's low thermal expansion risks
+    micro-fracturing above 2.5 J/cm², while mica can vaporize, causing surface pitting. A 1064 nm wavelength at 100W helps
+    manage these differential responses.
+- question: What are the specific safety hazards when laser cleaning granite, such as the production of crystalline silica
+    dust, and what protective equipment (PPE) is required?
+  answer: Laser ablation of granite at 1064 nm generates hazardous crystalline silica dust. You must use a PAPR respirator
+    and local exhaust ventilation, as the 2.5 J/cm² fluence required creates respirable LGACs that demand strict containment.
+- question: Is laser cleaning suitable for delicate historical granite monuments and statues, and what are the risks of altering
+    the stone's patina or surface texture?
+  answer: Laser cleaning can preserve historical granite when using low fluence below 2.5 J/cm². The non-abrasive nature protects
+    surface morphology, but uncontrolled thermal impact risks altering the stone's prized patina. Meticulous testing on a
+    small area is absolutely essential first.
+- question: What is the typical operational cost and cleaning speed (e.g., m²/hour) for laser cleaning granite compared to
+    traditional methods like sandblasting or chemical poultices?
+  answer: Laser cleaning granite typically achieves 5-10 m²/hour using a 100 W system at 2.5 J/cm². While initial equipment
+    costs are higher, this method eliminates abrasive and chemical disposal, offering superior cost-efficiency for large architectural
+    facades over time.
+- question: Does laser cleaning make the granite surface more susceptible to future soiling or water penetration by opening
+    up the micro-topography?
+  answer: Properly calibrated laser cleaning at 2.5 J/cm² removes contaminants without enlarging the granite's micro-topography.
+    The process doesn't seal pores, so for exterior applications, applying a hydrophobic coating post-cleaning is recommended
+    to prevent future water penetration and soiling.
+- question: How do you validate the success of a laser cleaning process on granite? What metrics or tests are used to ensure
+    cleanliness without damage?
+  answer: We validate granite cleaning using microscopy and colorimetry to confirm contaminant removal while preserving the
+    mineral matrix. The process must maintain surface integrity, verified through water absorption tests. Critical laser parameters
+    like a 2.5 J/cm² fluence threshold and 100 µm spot size ensure efficacy without thermal damage.

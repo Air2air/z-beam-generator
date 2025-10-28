@@ -1,13 +1,37 @@
 """
 AI Detection Circuit Breaker for Z-Beam Generator
 
+⚠️  DEPRECATED - Use validation/content_validator.py instead
+This module is maintained for backward compatibility only.
+New code should use validation.content_validator.ContentValidationService
+
+Migration Guide:
+- QualityScoreValidator → ContentValidationService (validation/content_validator.py)
+- AIDetectionCircuitBreaker → Use retry logic in api/client.py
+- Persona thresholds → PERSONA_THRESHOLDS in validation/content_validator.py
+
+See: docs/CONTENT_VALIDATION_SYSTEM.md for migration details
+
+---
+
+Legacy Implementation:
 Implements circuit breaker pattern for AI detection services to ensure
 resilient quality assurance. Supports Winston.ai primary with GPTZero fallback.
 """
 
 import time
+import warnings
 from dataclasses import dataclass
 from typing import Dict, List, Optional
+
+# Issue deprecation warning on import
+warnings.warn(
+    "utils.validation.quality_validator is deprecated. "
+    "Use validation.content_validator.ContentValidationService instead. "
+    "See docs/CONTENT_VALIDATION_SYSTEM.md for migration guide.",
+    DeprecationWarning,
+    stacklevel=2
+)
 
 
 @dataclass

@@ -1,72 +1,4 @@
 name: Manganese
-category: metal
-subcategory: non-ferrous
-title: Manganese Laser Cleaning
-subtitle: Tailored low-fluence lasers restore Manganese's pristine, oxidation-free
-  metallic surface
-description: Laser cleaning parameters for Manganese
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/manganese-laser-cleaning-hero.jpg
-  micro:
-    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/manganese-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the manganese surface appears marred by irregular
-    contaminants, including fine oxide particles and organic residues that cluster
-    in pits and scratches. These contaminants, often from industrial handling, exhibit
-    jagged edges and varying densities, accelerating localized corrosion. Surface
-    degradation shows as etched micro-voids, reducing reflectivity in laser optics
-    applications like precision beam delivery systems.
-  afterText: After thorough cleaning, the manganese surface regains a smooth, contaminant-free
-    finish, closely mirroring its pre-use condition. Restoration quality excels in
-    uniformity, with no pitting or oxidation remnants, preserving the metal's inherent
-    hardness and corrosion resistance. This maintains structural integrity for demanding
-    uses, such as in precision laser optics at companies like Coherent Inc., ensuring
-    reliable performance in optical systems.
-  generated: '2025-10-25T14:41:49.222003Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 55
-    after: 59
-  character_count:
-    before: 437
-    after: 451
-  description: Microscopic analysis of Manganese surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Aerospace
 - Automotive
@@ -78,493 +10,34 @@ applications:
 - Industrial Manufacturing
 - Rail Transportation
 - Mining Equipment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:22:06.300161'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:13:18.494053'
-        source: ai_research
-        unit: dimensionless
-        value: 0.42
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:32:19.896870'
-        source: ai_research
-        unit: °C
-        value: 2061.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Atomic Spectra Database - Reflectance measurements for
-          pure manganese at 1064 nm wavelength, supplemented by ASM Handbook Volume
-          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:42:57.844529'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced experimental reflectance data from NIST
-          with published optical properties of transition metals, validated against
-          manganese's electronic structure (3d⁵4s² configuration) and known absorption
-          characteristics in IR spectrum
-        value: 62.3
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:37:05.737530'
-        source: ai_research
-        unit: J/cm²
-        value: 0.15
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids.
-          Academic Press. Volume 2, Page 643, Table 2: Optical constants of manganese
-          at 632.8 nm wavelength.'
-        research_date: '2025-09-30T12:43:08.598654'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials for consistency
-          with metallic manganese properties and typical reflectivity ranges for transition
-          metals'
-        value: 52.0
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:42:41.085296'
-        source: ai_research
-        unit: °C
-        value: 1246.0
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:59:02.148464'
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.58
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          CRC Handbook of Chemistry and Physics (97th Edition), and ASM Handbook Volume
-          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:43:21.192710'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, CRC Handbook, and ASM materials references with verification
-          against pure manganese (99.95+%) at standard conditions (25°C, 1 atm)
-        value: 479.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837575'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        corrected: true
-        correction_confidence: 0.95
-        correction_date: '2025-10-15T16:55:55.982476'
-        correction_source: Priority 2 AI Research
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Physical Properties
-          of Pure Metals'' and NIST Standard Reference Database'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, CRC Handbook of Chemistry and Physics (97th Edition), and
-          NIST materials database, confirming consistency across room temperature
-          (300K) measurements for pure manganese (>99.9%)
-        value: 7.81
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092087'
-        verification_variance: 0.0%
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials. ''Properties of Pure Metals'' section.
-            ASM International, 1990.'
-          research_date: '2025-09-30T12:44:00.280097'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced melting point data from ASM Handbook
-            with NIST Chemistry WebBook (SRD 69) and CRC Handbook of Chemistry and
-            Physics, confirming 1519 K (1246 °C) as the standard melting point for
-            pure manganese under standard atmospheric pressure.
-          value: 1519.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:18:14.006320'
-        source: ai_research
-        unit: K
-        value: 1519.0
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties
-          of Pure Metals'' for manganese at 300K'
-        research_date: '2025-09-30T12:44:23.559232'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against manganese's known thermal conductivity (7.81 W/m·K), specific
-          heat (479 J/kg·K), and density (7.47 g/cm³) using the relationship α = k/(ρ·Cp)
-        value: 1.7
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1, Page 1139 - Pure Manganese
-          thermal expansion coefficient at 20°C'
-        research_date: '2025-09-30T12:44:36.361409'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against manganese's body-centered cubic (β-Mn) crystal structure
-          at room temperature, confirming the value aligns with known BCC metal expansion
-          characteristics
-        value: 21.7
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098524'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:47:35.287636'
-        source: ai_research
-        unit: MPa·m^0.5
-        value: 0.8
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of pure manganese is not a single
-          fixed value but is closely related to its hardness. For many metals, an
-          empirical relationship exists where compressive strength (in MPa) is approximately
-          equal to the Brinell Hardness Number (HB). Given the provided hardness of
-          210.0 HB, the compressive strength is estimated to be ~210 MPa. This correlation
-          is well-documented for non-hardened metals, and specific literature sources
-          for manganese confirm a compressive yield strength in this range. The confidence
-          is not higher because the exact value can vary slightly based on purity,
-          grain structure, and the specific stress-strain curve.
-        research_date: '2025-10-15T21:28:14.419500'
-        source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (1990), and more recent data from the National
-          Institute of Standards and Technology (NIST) Materials Data Repository.'
-        unit: MPa
-        value: 210.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Manganese is a highly reactive metal that oxidizes readily
-          in air and corrodes in the presence of moisture. While it forms a protective
-          oxide layer, this layer is not as stable or impervious as those on metals
-          like aluminum or chromium, offering only limited protection. It is primarily
-          used as an alloying element (e.g., in steel) rather than in its pure form
-          due to its poor corrosion resistance.
-        research_date: '2025-10-15T20:31:49.645255'
-        source: AZoM - Manganese (Mn) - Properties, Applications
-        unit: rating
-        value: 2.0
-        min: 1
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1, p. 1120; NIST Standard
-          Reference Database 144, ''Physical Properties of Manganese'''
-        research_date: '2025-09-30T12:42:34.938357'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST database, and CRC Handbook of Chemistry and Physics,
-          all confirming consistent density values for pure manganese metal at standard
-          conditions
-        value: 7.21
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226572'
-        verification_variance: 3.09%
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:53:33.563232'
-        source: ai_research
-        unit: S/m
-        value: 694000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:13:28.341364'
-        source: ai_research
-        unit: Ω·m
-        value: 1.44e-06
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided value is for high-purity, polycrystalline manganese.
-          It is important to note that flexural strength is highly dependent on the
-          material's form (cast, wrought), purity, grain size, and the presence of
-          impurities or alloying elements. Manganese metal is generally brittle, and
-          its strength values are not as commonly reported as for structural alloys.
-          This value represents a typical result from a standard bend test on a pure,
-          consolidated form.
-        research_date: '2025-10-15T20:57:45.969408'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Properties of Pure Metals"'
-        unit: MPa
-        value: 241.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Pure Metals'
-        research_date: '2025-09-30T12:42:45.351759'
-        source: ai_research
-        unit: HB
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and verified against manganese's BCC crystal structure (α-Mn)
-          and typical mechanical properties for pure elemental metals
-        value: 210.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071603'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Manganese oxidizes readily in air, forming a non-protective
-          oxide scale. While oxidation begins at lower temperatures, the ASM Handbook
-          indicates that significant, rapid oxidation occurs above approximately 520°C,
-          making this the practical upper limit for continuous service in air. Pure
-          manganese is not considered an oxidation-resistant metal.
-        research_date: '2025-10-15T20:44:45.588512'
-        source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.).
-          ASM International. pp. 392-396.
-        unit: °C
-        value: 520.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.181364'
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Manganese and Manganese Alloys''
-          chapter, Table 1: Typical mechanical properties of pure manganese (99.9%)
-          at room temperature'
-        research_date: '2025-09-30T12:43:33.792336'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Materials Data Repository entry
-          for pure manganese (UNS M15100) and verified against academic literature
-          on manganese mechanical properties from Journal of Materials Science
-        value: 241.3
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Pure Metals'
-        research_date: '2025-09-30T12:44:48.292834'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          multiple academic sources including 'Elastic Constants of Manganese Single
-          Crystals' (J. Appl. Phys. 36, 1032, 1965) confirming polycrystalline average
-        value: 198.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214011'
-        verification_variance: 0.0%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:26:56.164124'
-        source: ai_research
-        unit: m⁻¹
-        value: 14200000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided value of 66 MPa·√m is the fracture toughness
-          (K_IC) for high-purity polycrystalline manganese at room temperature, as
-          reported in the authoritative ASM Handbook. This value is characteristic
-          for the metal in its unalloyed form. The confidence is not 1.00 because
-          fracture toughness can be sensitive to factors like grain size, purity,
-          and texture, which may cause slight variations from this reference value.
-        research_date: '2025-10-15T20:16:45.781682'
-        source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Properties of Pure Metals"'
-        unit: MPa·√m
-        value: 66.0
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:08:20.460699'
-        source: ai_research
-        unit: µm
-        value: 0.85
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:03:47.936699'
-        source: ai_research
-        unit: Pa
-        value: 121.0
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Minimum fluence required for Manganese oxide removal
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete oxide removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Manganese oxide removal without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for optimal absorption in Manganese oxides
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Under microscopy, the manganese surface appears marred by irregular contaminants, including fine oxide particles
+    and organic residues that cluster in pits and scratches. These contaminants, often from industrial handling, exhibit jagged
+    edges and varying densities, accelerating localized corrosion. Surface degradation shows as etched micro-voids, reducing
+    reflectivity in laser optics applications like precision beam delivery systems.
+  afterText: After thorough cleaning, the manganese surface regains a smooth, contaminant-free finish, closely mirroring its
+    pre-use condition. Restoration quality excels in uniformity, with no pitting or oxidation remnants, preserving the metal's
+    inherent hardness and corrosion resistance. This maintains structural integrity for demanding uses, such as in precision
+    laser optics at companies like Coherent Inc., ensuring reliable performance in optical systems.
+  generated: '2025-10-25T14:41:49.222003Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 55
+    after: 59
+  character_count:
+    before: 437
+    after: 451
+category: metal
+description: Laser cleaning parameters for Manganese
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -584,6 +57,263 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/manganese-laser-cleaning-hero.jpg
+  micro:
+    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/manganese-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    description: Minimum fluence required for Manganese oxide removal
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete oxide removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Manganese oxide removal without substrate damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-IR wavelength for optimal absorption in Manganese oxides
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.42
+      boilingPoint:
+        source: ai_research
+        unit: °C
+        value: 2061.0
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 62.3
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.15
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 52.0
+      meltingPoint:
+        source: ai_research
+        unit: °C
+        value: 1246.0
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (ratio)
+        value: 0.58
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 479.0
+      thermalConductivity:
+        ai_verified: true
+        corrected: true
+        correction_confidence: 0.95
+        correction_date: '2025-10-15T16:55:55.982476'
+        correction_source: Priority 2 AI Research
+        source: AI Research (DeepSeek) + Literature Review
+        unit: W/(m·K)
+        value: 7.81
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 1519.0
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1519.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.7
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 21.7
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m^0.5
+        value: 0.8
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 14200000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990),
+          and more recent data from the National Institute of Standards and Technology (NIST) Materials Data Repository.'
+        unit: MPa
+        value: 210.0
+      corrosionResistance:
+        ai_verified: true
+        source: AZoM - Manganese (Mn) - Properties, Applications
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 7.21
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 694000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.44e-06
+      flexuralStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Properties
+          of Pure Metals"'
+        unit: MPa
+        value: 241.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: HB
+        value: 210.0
+      oxidationResistance:
+        ai_verified: true
+        source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM International. pp. 392-396.
+        unit: °C
+        value: 520.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 241.3
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 198.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 50.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 14200000.0
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Properties
+          of Pure Metals"'
+        unit: MPa·√m
+        value: 66.0
+      surfaceRoughness:
+        source: ai_research
+        unit: µm
+        value: 0.85
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 121.0
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.42
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 694000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.44e-06
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.15
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (ratio)
+        value: 0.58
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1519.0
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m^0.5
+        value: 0.8
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -615,3 +345,83 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Tailored low-fluence lasers restore Manganese's pristine, oxidation-free metallic surface
+title: Manganese Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:19:32.179998Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 89
+faq:
+- question: Does laser cleaning manganese-containing steel (like Hadfield steel) create hazardous manganese oxide fumes?
+  answer: Yes, laser cleaning manganese alloys generates hazardous MnO and Mn3O4 fumes requiring strict controls. Using our
+    100W, 1064nm system at 2.5 J/cm² fluence, proper fume extraction is non-negotiable. Operators must use NIOSH-approved
+    P100 respirators and engineered local exhaust ventilation to maintain airborne concentrations below the 5 mg/m³ OSHA ceiling
+    limit.
+- question: What laser parameters (wavelength, pulse duration, power) work best for removing rust from manganese steel without
+    damaging the base material?
+  answer: For manganese steel rust removal, I recommend 1064nm wavelength with 10ns pulses at 2.5 J/cm² fluence. Maintain
+    100W average power and 500mm/s scan speed to effectively ablate oxides while preventing micro-cracking in the tough substrate.
+    This balances efficient contaminant removal with preservation of the base material's structural integrity.
+- question: Can laser cleaning effectively remove manganese phosphate coatings from metal surfaces?
+  answer: Yes, laser cleaning effectively strips manganese phosphate coatings using ~100W at 1064nm wavelength. The process
+    ablates the conversion layer at approximately 2.5 J/cm² without damaging the underlying metal, eliminating chemical residue
+    concerns entirely.
+- question: How does the high hardness of manganese steel affect laser cleaning efficiency and potential for surface damage?
+  answer: Manganese's high hardness requires precise fluence control near 2.5 J/cm² to avoid micro-cracking from thermal stress.
+    We use a 50 µm spot at 500 mm/s to manage heat input, effectively ablating oxides while preserving the tough substrate
+    integrity.
+- question: What are the OSHA exposure limits for manganese fumes during laser cleaning operations?
+  answer: OSHA's permissible exposure limit for manganese fumes is 5 mg/m³ as a ceiling. Given the high fluence (2.5 J/cm²)
+    required for oxide removal, you must conduct initial air monitoring and maintain exposure records to ensure compliance
+    with this strict action level.
+- question: Does laser cleaning affect the work-hardening properties of austenitic manganese steel surfaces?
+  answer: Properly configured laser cleaning at 2.5 J/cm² fluence minimizes thermal input, preserving the austenitic structure.
+    This prevents altering the work-hardening characteristics critical for maintaining manganese steel's wear resistance.
+    The process avoids annealing effects that would soften the surface.
+- question: What filtration systems are recommended for capturing manganese oxide nanoparticles generated during laser cleaning?
+  answer: For manganese oxide nanoparticles generated at 1064 nm wavelength and 2.5 J/cm² fluence, a HEPA H14 or ULPA filter
+    is essential. These systems effectively capture submicron particles, preventing hazardous fume dispersion during the laser
+    ablation process.
+- question: Can laser cleaning be used on manganese-based alloys in the railroad industry (frogs, crossings) without compromising
+    fatigue strength?
+  answer: Properly calibrated laser cleaning at 2.5 J/cm² fluence effectively removes oxides from manganese alloys. This process
+    preserves the underlying microstructure, which is critical for maintaining the fatigue strength required for railroad
+    components like frogs and crossings.
+- question: How do you verify complete removal of manganese-rich corrosion products without leaving surface contamination?
+  answer: We verify complete manganese oxide removal using 2.5 J/cm² fluence with visual inspection and surface roughness
+    analysis. For critical applications, Energy Dispersive X-ray Spectroscopy (EDS) confirms no residual contamination, ensuring
+    the substrate is pristine.
+- question: What personal protective equipment (PPE) is specifically required for laser cleaning manganese alloys compared
+    to regular steel?
+  answer: Manganese fume hazards demand enhanced respiratory protection beyond standard steel protocols. Use a NIOSH-approved
+    P100 or N100 filter, as manganese oxide particles generated at our typical 100W, 1064nm settings are a significant inhalation
+    risk. This specific cartridge is essential for adequate filtration of the fine particulate byproduct.
+- question: Does laser cleaning create any surface oxidation or discoloration on manganese steels that requires post-treatment?
+  answer: Properly tuned 1064nm laser systems at ~2.5 J/cm² fluence effectively ablate manganese oxides without inducing new
+    discoloration. With optimal parameters like 500 mm/s scan speed, the process yields a clean, passivated surface that typically
+    requires no additional finishing for industrial applications.

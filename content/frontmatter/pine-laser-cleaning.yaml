@@ -1,64 +1,4 @@
 name: Pine
-category: wood
-subcategory: softwood
-title: Pine Laser Cleaning
-subtitle: Unlock Pine's resin-rich grain with gentle laser precision to avoid scorching
-description: Laser cleaning parameters for Pine
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Pine surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/pine-laser-cleaning-hero.jpg
-  micro:
-    alt: Pine microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/pine-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the pine surface reveals embedded dirt particles and
-    slight pitting. This contamination erodes its smooth, natural grain.
-  afterText: After laser cleaning, the pine surface gleams with restored natural luster,
-    its grain vividly revealed without blemish. This treatment upholds material integrity,
-    preventing fiber degradation and ensuring superior restoration quality for enduring
-    wood applications.
-  generated: '2025-10-25T14:53:51.861638Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 19
-    after: 34
-  character_count:
-    before: 139
-    after: 265
-  description: Microscopic analysis of Pine surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage Restoration
 - Marine and Shipbuilding
@@ -70,367 +10,16 @@ applications:
 - Art and Sculpture Conservation
 - Packaging and Pallet Manufacturing
 - Architectural Millwork
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Laser-Material Interaction
-          Data for Pine Wood at 1064 nm wavelength, combined with ASM Handbook Volume
-          5: Surface Engineering - Laser Processing Data'
-        research_date: '2025-09-30T16:01:28.088954'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with peer-reviewed studies on laser-wood
-          interactions and validated against pine's specific chemical composition
-          (cellulose 45%, lignin 28%, hemicellulose 27%) and density (0.45-0.55 g/cm³)
-        value: 32.7
-        min: 1
-        max: 50
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 78: Laser-Induced Damage
-          in Optical Materials, Section 8.3.2 - Wood Species Reflectivity at 1064
-          nm'
-        research_date: '2025-09-30T16:01:40.889147'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Section 3.4.1 - Optical Properties of Natural Materials and validated against
-          peer-reviewed measurements from Journal of Materials Processing Technology
-          (Vol. 254, pp. 33-41)'
-        value: 42.7
-        min: 10
-        max: 60
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          SRD 69 - Wood (Pinus spp.) thermal properties data at 25°C'
-        research_date: '2025-09-30T16:01:55.170534'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and ASHRAE Fundamentals Chapter 26: Physical Properties of Materials for
-          pine wood species including Pinus taeda (loblolly pine) and Pinus ponderosa
-          (ponderosa pine)'
-        value: 1380.0
-        min: 800
-        max: 2500
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, 2010) - Table 4-3 provides specific thermal conductivity values
-          for pine species at 12% moisture content'
-        research_date: '2025-09-30T16:02:20.704761'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST wood properties database and
-          peer-reviewed studies on softwood thermal properties, confirming pine-specific
-          values distinct from hardwoods or generic wood averages
-        value: 0.12
-        verification_confidence: 90
-        verification_date: '2025-10-03T20:20:53.092309'
-        verification_variance: 14.29%
-        min: 0.04
-        max: 0.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Wood Handbook: Wood as an Engineering Material, Chapter
-            4: Thermal Properties of Wood. Specific data for Pinus species thermal
-            degradation onset at 427°C under standard heating conditions (2-5°C/min
-            in oxidative atmosphere).'
-          research_date: '2025-09-30T16:02:35.080678'
-          source: ai_research
-          unit: °C
-          validation_method: 'Cross-referenced with TGA analysis from White & Dietenberger
-            (2001) ''Wood Products: Thermal Degradation and Fire'' in ASM Handbook
-            Vol. 13B and Spearpoint & Quintiere (2001) fire properties database for
-            softwoods'
-          value: 427.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson,
-          M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and
-          Technology, 33(6), 465-473. Specific data for Pinus sylvestris (Scots pine)
-          at 12% moisture content, room temperature.
-        research_date: '2025-09-30T16:03:02.161747'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and NIST wood property databases, confirming pine-specific values fall within
-          0.15-0.18 mm²/s range under standard conditions'
-        value: 0.165
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-          an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
-          Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal
-          expansion for selected woods.'
-        research_date: '2025-09-30T16:03:15.506260'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and NIST wood property databases, validated against pine''s specific density
-          range (0.35-0.55 g/cm³) and cellulose crystallinity'
-        value: 27.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098803'
-        verification_variance: 0.0%
-        min: 3.0
-        max: 60
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided hardness value of 40.0 MPa is identical to the
-          typical compressive strength value for pine parallel to grain. For many
-          softwoods like pine, there is a strong correlation between Janka hardness
-          (measured in MPa) and compressive strength. The Wood Database lists the
-          compressive strength of Eastern White Pine as 40 MPa, which aligns precisely
-          with the given data point.
-        research_date: '2025-10-15T21:29:20.568561'
-        source: Wood Database (www.wood-database.com) - Mechanical Properties for
-          Eastern White Pine
-        unit: MPa
-        value: 40.0
-        min: 20
-        max: 80
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Pine is a softwood with poor natural durability against decay
-          fungi, insects, and moisture. The USDA Wood Handbook rates untreated pine
-          species as "slightly resistant" to "non-resistant" to decay, placing it
-          in the lowest durability categories. While not metallic corrosion, wood
-          decay is the equivalent corrosion mechanism for this material.
-        research_date: '2025-10-15T20:33:07.683079'
-        source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service,
-          2010)'
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3
-          specific gravity values for common wood species'
-        research_date: '2025-09-30T16:01:01.876551'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced USDA Forest Products Laboratory data with
-          ASTM D2395 standard test methods for specific gravity and density of wood,
-          validated against known cellular structure of Pinus species with typical
-          cell wall density of 1.5 g/cm³ and 60-70% void volume
-        value: 0.37
-        verification_confidence: 95
-        verification_date: '2025-10-03T19:36:34.251495'
-        verification_variance: 28.85%
-        min: 0.12
-        max: 1.5
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is the preeminent authority on wood properties. It reports the modulus of
-          rupture (MOR), which is the standard measure of flexural/bending strength,
-          for pine species at 12% moisture content. The value of 59.0 MPa is a representative
-          average for common structural pine species.
-        research_date: '2025-10-15T20:59:14.370783'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
-          Forest Products Laboratory.'
-        unit: MPa
-        value: 59.0
-        min: 40
-        max: 150
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'USDA Forest Products Laboratory Wood Handbook (Chapter 4:
-          Mechanical Properties of Wood), ASTM D143-14 Standard Test Methods for Small
-          Clear Specimens of Timber, with specific data for Eastern White Pine (Pinus
-          strobus) under standardized moisture content conditions'
-        research_date: '2025-09-30T16:01:14.981726'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM testing
-          standards and verified against published academic studies on softwood mechanical
-          properties, ensuring measurement at 12% moisture content as per standard
-          wood testing protocols
-        value: 40.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071826'
-        verification_variance: 93.94%
-        min: 1
-        max: 5000
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Forest Products Laboratory, the primary wood research
-          institution of the USDA, states that prolonged exposure to temperatures
-          above 150°C (302°F) causes significant thermal degradation in wood, including
-          hemicellulose decomposition and accelerated oxidative reactions, leading
-          to permanent loss of mechanical properties. While wood can char at higher
-          temperatures in short-term fire events, 150°C is the established maximum
-          for continuous service in air before significant chemical degradation begins.
-        research_date: '2025-10-15T20:46:02.083730'
-        source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory,
-          2010)'
-        unit: °C
-        value: 150.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:43.339915'
-        source: ai_research
-        unit: dimensionless
-        value: 0.72
-        min: 12
-        max: 65
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an
-          Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a:
-          ''Mechanical properties of some commercially important woods grown in the
-          United States'' for Eastern White Pine (Pinus strobus) parallel to grain
-          at 12% moisture content.'
-        research_date: '2025-09-30T16:02:08.024779'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with ASTM D143 standard testing methodology
-          for small clear wood specimens and verified against multiple pine species
-          data in the Wood Handbook, ensuring the value represents actual pine material
-          properties rather than category averages.
-        value: 97.0
-        min: 20
-        max: 200
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 9.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.214239'
-        verification_variance: 12.5%
-        min: 5
-        max: 20000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: This value represents the average Mode I fracture toughness
-          (K_IC) for clear pine wood in the radial-longitudinal orientation at room
-          temperature, based on standardized testing of small, defect-free specimens.
-        research_date: '2025-10-15T20:18:20.865612'
-        source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979),
-          p. 45
-        unit: MPa·√m
-        value: 0.37
-        min: 0.33
-        max: 4.4
-machineSettings:
-  dwellTime:
-    confidence: 82
-    description: Optimal dwell time per spot for Pine cleaning efficiency
-    max: 200
-    min: 80
-    unit: μs
-    value: 120
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Pine
-    max: 3.0
-    min: 1.2
-    unit: J/cm²
-    value: 1.8
-  overlapRatio:
-    confidence: 85
-    description: Beam overlap percentage for uniform Pine surface coverage
-    max: 50
-    min: 20
-    unit: '%'
-    value: 30
-  passCount:
-    confidence: 83
-    description: Number of cleaning passes for complete Pine surface treatment
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Pine surface cleaning without charring
-    max: 120
-    min: 70
-    unit: W
-    value: 90
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient Pine surface cleaning
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform Pine cleaning
-    max: 1500
-    min: 500
-    unit: mm/s
-    value: 800
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise Pine surface treatment
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength for optimal Pine wood absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+category: wood
+description: Laser cleaning parameters for Pine
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -450,6 +39,176 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Pine surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/pine-laser-cleaning-hero.jpg
+  micro:
+    alt: Pine microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/pine-laser-cleaning-micro.jpg
+machineSettings:
+  dwellTime:
+    description: Optimal dwell time per spot for Pine cleaning efficiency
+    unit: μs
+    value: 120
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal from Pine
+    unit: J/cm²
+    value: 1.8
+  overlapRatio:
+    description: Beam overlap percentage for uniform Pine surface coverage
+    unit: '%'
+    value: 30
+  passCount:
+    description: Number of cleaning passes for complete Pine surface treatment
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Pine surface cleaning without charring
+    unit: W
+    value: 90
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 12
+  repetitionRate:
+    description: Optimal repetition rate for efficient Pine surface cleaning
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform Pine cleaning
+    unit: mm/s
+    value: 800
+  spotSize:
+    description: Beam spot diameter for precise Pine surface treatment
+    unit: μm
+    value: 80
+  wavelength:
+    description: Near-infrared wavelength for optimal Pine wood absorption
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 32.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 42.7
+      specificHeat:
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1380.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.12
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 427.0
+        source: wood_combustion_standards
+        type: carbonization
+        unit: °C
+        value: 300.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 0.165
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 27.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: Wood Database (www.wood-database.com) - Mechanical Properties for Eastern White Pine
+        unit: MPa
+        value: 40.0
+      corrosionResistance:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, 2010)'
+        unit: rating
+        value: 2.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 0.37
+      flexuralStrength:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table
+          4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+        unit: MPa
+        value: 59.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 40.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
+        unit: °C
+        value: 150.0
+      porosity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.72
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 97.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 9.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 2.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), p. 45
+        unit: MPa·√m
+        value: 0.37
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -481,3 +240,90 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: softwood
+subtitle: Unlock Pine's resin-rich grain with gentle laser precision to avoid scorching
+title: Pine Laser Cleaning
+caption:
+  beforeText: Under microscopy, the pine surface reveals embedded dirt particles and slight pitting. This contamination erodes
+    its smooth, natural grain.
+  afterText: After laser cleaning, the pine surface gleams with restored natural luster, its grain vividly revealed without
+    blemish. This treatment upholds material integrity, preventing fiber degradation and ensuring superior restoration quality
+    for enduring wood applications.
+  generated: '2025-10-25T14:53:51.861638Z'
+  author: Alessandro Moretti
+  generation_method: ai_research
+  word_count:
+    before: 19
+    after: 34
+  character_count:
+    before: 139
+    after: 265
+subtitle_metadata:
+  generated: '2025-10-25T21:25:46.924961Z'
+  author_name: Alessandro Moretti
+  author_country: Italy
+  generation_method: ai_research_voice
+  word_count: 11
+  character_count: 77
+faq:
+- question: Can laser cleaning effectively remove old paint and varnish from pine wood without damaging the soft wood surface?
+  answer: Yes, laser cleaning effectively removes paint and varnish from pine. Using a 1064 nm wavelength at 1.8 J/cm² fluence
+    and 90 W power prevents damage to the soft wood structure. Precise parameter control is essential to avoid charring, ensuring
+    the delicate surface remains intact.
+- question: What laser parameters (wavelength, power, pulse duration) work best for cleaning pine compared to hardwoods?
+  answer: For pine's lower density and resinous structure, I recommend a 1064 nm wavelength at 90 W average power. This setting,
+    combined with a fluence of 1.8 J/cm², effectively removes contaminants while minimizing the charring risk associated with
+    its softer composition compared to hardwoods.
+- question: How does the resin content in pine affect laser cleaning results and potential residue issues?
+  answer: Pine's high resin content poses significant melting risks at excessive fluence levels. Maintain energy density below
+    1.8 J/cm² with 90W power to prevent redeposition. The 1064nm wavelength effectively vaporizes contaminants while managing
+    thermal input to the wood substrate.
+- question: Is laser cleaning safe for antique pine furniture where preserving the patina is important?
+  answer: With proper 1064nm wavelength and controlled 1.8 J/cm² fluence, laser cleaning safely preserves pine patina. Our
+    90W power and 800mm/s scan speed selectively remove contaminants without damaging the delicate aged wood surface, maintaining
+    its historical integrity.
+- question: What safety precautions are needed when laser cleaning pine due to potential VOC emissions from resins?
+  answer: Pine's high resin content releases terpenes when laser cleaned at 1064nm wavelength. You'll need industrial fume
+    extraction rated for VOCs and respiratory protection. Continuous air monitoring for organic compounds is essential during
+    processing.
+- question: Can laser cleaning prepare pine surfaces for refinishing or bonding without creating a weakened surface layer?
+  answer: Properly calibrated laser parameters at 1.8 J/cm² and 90W power effectively remove contaminants from pine. This
+    process enhances surface energy for superior bonding without compromising the delicate cellular structure of the wood
+    fibers, ensuring a sound substrate.
+- question: How does laser cleaning compare to traditional methods (sanding, chemical stripping) for pine restoration projects?
+  answer: Laser cleaning offers superior precision for pine restoration, operating at 90W average power to avoid charring.
+    Unlike abrasive methods, it preserves delicate wood grain while removing contaminants at 800 mm/s, making it both faster
+    and more environmentally sound than chemical alternatives.
+- question: What are the risks of discoloration or charring when laser cleaning pine, and how can they be minimized?
+  answer: Pine's low thermal threshold requires careful fluence control below 1.8 J/cm² to prevent charring. Utilize real-time
+    monitoring to detect discoloration, adjusting the 90W power and 800 mm/s scan speed dynamically. This ensures uniform
+    cleaning while preserving the wood's natural integrity.
+- question: Does laser cleaning affect the dimensional stability or moisture content of pine wood?
+  answer: Properly configured laser parameters like 1.8 J/cm² fluence and 90W power avoid significant thermal penetration
+    into pine's cellular structure. This preserves dimensional stability by preventing lignin softening and maintains the
+    wood's inherent moisture equilibrium, ensuring no long-term warping or shrinkage from the cleaning process.
+- question: How effective is laser cleaning for removing biological growth (mold, mildew) from pine surfaces?
+  answer: Laser cleaning effectively ablates biological contaminants from pine at 1.8 J/cm², eliminating surface spores without
+    chemical residue. The 1064 nm wavelength and 90 W power ensure thorough decontamination while preserving the wood's structural
+    integrity. This non-contact method significantly reduces the potential for future regrowth on the substrate.

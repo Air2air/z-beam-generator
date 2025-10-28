@@ -2,7 +2,6 @@
 """Caption Component Generator - Chain-Enhanced with Quality Gates"""
 
 import datetime
-import json
 import logging
 import time
 from pathlib import Path
@@ -10,7 +9,10 @@ from typing import Dict, Optional, List
 from generators.component_generators import APIComponentGenerator
 from utils.config_loader import load_yaml_config
 from utils.requirements_loader import RequirementsLoader
-from voice.orchestrator import VoiceOrchestrator
+from voice.voice_service import VoiceService
+
+# Import TopicResearcher for enhanced material research
+from research.topic_researcher import TopicResearcher
 
 # Import the new chain components and grader
 try:
@@ -78,47 +80,20 @@ class CaptionComponentGenerator(APIComponentGenerator):
         Returns:
             Complete prompt string for single section generation
         """
-        # Extract author data
+        # Extract author data and initialize VoiceService
         author_obj = frontmatter_data.get('author', {})
         if not author_obj or not author_obj.get('country'):
             raise ValueError(f"No author data found in frontmatter for {material_name} - required for voice system")
         
-        # Get author details
-        author_name = author_obj.get('name', 'Unknown')
-        author_country = author_obj.get('country', 'Unknown')
-        author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
+        # Initialize centralized VoiceService
+        voice_service = VoiceService(author_data=author_obj)
         
-        # Initialize VoiceOrchestrator for country-specific voice
-        voice = VoiceOrchestrator(country=author_country)
-        
-        # Extract material properties for context
-        material_props = frontmatter_data.get('materialProperties', {})
-        category = frontmatter_data.get('category', 'material')
-        applications = frontmatter_data.get('applications', [])
-        
-        # Build comprehensive context
-        properties_json = json.dumps(
-            {prop: data.get('value') for prop, data in material_props.items() 
-             if isinstance(data, dict) and 'value' in data},
-            indent=2
-        ) if material_props else 'Standard material characteristics'
-        
-        applications_str = ', '.join(applications[:3]) if applications else 'General cleaning applications'
-        
-        # Build material context dict
-        material_context = {
-            'material_name': material_name,
-            'category': category,
-            'properties': properties_json,
-            'applications': applications_str
-        }
-        
-        # Build author dict
-        author_dict = {
-            'name': author_name,
-            'country': author_country,
-            'expertise': author_expertise
-        }
+        # Build standardized material context
+        material_context = voice_service.build_material_context(
+            material_name=material_name,
+            frontmatter_data=frontmatter_data,
+            include_machine_settings=False
+        )
         
         # Determine section-specific context
         if section_type == "before":
@@ -128,13 +103,11 @@ class CaptionComponentGenerator(APIComponentGenerator):
             section_focus = "cleaned surface restoration"
             section_instruction = "Describe the cleaned surface condition, restoration quality, and material integrity"
         
-        # Call Voice service to generate prompt
+        # Generate prompt using VoiceService
         try:
-            # Generate base prompt from voice system
-            prompt = voice.get_unified_prompt(
+            prompt = voice_service.generate_prompt(
                 component_type='microscopy_description',
                 material_context=material_context,
-                author=author_dict,
                 section_focus=section_focus,
                 section_instruction=section_instruction,
                 target_words=target_words,
@@ -148,7 +121,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
             prompt += f"CRITICAL: DO NOT exceed {target_words + max_tolerance} words under any circumstances.\n"
             prompt += f"MINIMUM: Write at least {max(15, target_words - max_tolerance)} words for substantive content.\n"
             
-            logger.info(f"✅ Generated {section_type} prompt for {material_name} ({author_country}): {target_words}w (±{max_tolerance}), {style_guidance}")
+            logger.info(f"✅ Generated {section_type} prompt for {material_name} ({voice_service.country}): {target_words}w (±{max_tolerance}), {style_guidance}")
             return prompt
         except Exception as e:
             logger.error(f"Failed to generate {section_type} prompt for {material_name}: {e}")
@@ -219,11 +192,11 @@ class CaptionComponentGenerator(APIComponentGenerator):
             Tuple of (trimmed_before_text, trimmed_after_text)
         """
         try:
-            from voice.orchestrator import VoiceOrchestrator
             import re
             
-            # Get voice profile requirements
-            voice = VoiceOrchestrator(author_country)
+            # Get voice profile requirements via VoiceService
+            voice_service = VoiceService(author_data={'country': author_country})
+            voice = voice_service.voice
             profile = voice.profile
             caption_adaptation = profile.get('voice_adaptation', {}).get('caption_generation', {})
             validation_req = caption_adaptation.get('validation_requirements', {})
@@ -513,6 +486,52 @@ class CaptionComponentGenerator(APIComponentGenerator):
         # Calculate dynamic token limit based on author's word limit
         dynamic_max_tokens = self._calculate_author_token_limit(author_country)
         
+        # === CAPTION-SPECIFIC RESEARCH: Visual characteristics ===
+        caption_research = None
+        if api_client:
+            print(f"\n🔬 Researching visual characteristics for {material_name}...")
+            logger.info(f"🔬 Researching visual characteristics for {material_name} caption...")
+            
+            try:
+                researcher = TopicResearcher(api_client)
+                
+                # Check for cached caption research
+                cached_caption_research = researcher.load_cached_research(material_name, 'caption')
+                
+                if cached_caption_research:
+                    caption_research = {
+                        'scores': cached_caption_research.get('scores', {}),
+                        'characteristics': cached_caption_research.get('key_traits', []),
+                        'reasoning': cached_caption_research.get('reasoning', '')
+                    }
+                    print("✅ Using cached visual research")
+                else:
+                    # Perform caption-specific research
+                    research_result = researcher.research_material_characteristics(material_name, 'caption')
+                    
+                    if research_result and research_result.success:
+                        # Save to Materials.yaml under caption.characteristics
+                        researcher.save_research_to_materials(material_name, research_result)
+                        
+                        caption_research = {
+                            'scores': research_result.scores,
+                            'characteristics': research_result.characteristics,
+                            'reasoning': research_result.reasoning
+                        }
+                        print("✅ Visual research complete:")
+                        print(f"   Visual emphasis: {research_result.characteristics[:3]}")
+                        logger.info(f"   Caption focus: {research_result.reasoning[:100]}...")
+                    else:
+                        print("⚠️  Visual research unavailable, using general description")
+                        
+            except Exception as e:
+                logger.warning(f"Caption research failed (non-critical): {e}")
+                caption_research = None
+        
+        # Store research for use in prompt building
+        if caption_research:
+            self._caption_research = caption_research
+        
         # Build AI prompt and generate content using unified voice system
         try:
             import random
@@ -640,6 +659,39 @@ class CaptionComponentGenerator(APIComponentGenerator):
                 }
                 
                 logger.info(f"📊 Caption complete: {len(before_text.split())} before + {len(after_text.split())} after = {len(before_text.split()) + len(after_text.split())} total words")
+                
+                # Validate generated content quality
+                try:
+                    from validation.integration import validate_generated_content, get_validation_summary
+                    
+                    validation_result = validate_generated_content(
+                        content={
+                            'beforeText': ai_content['beforeText'],
+                            'afterText': ai_content['afterText']
+                        },
+                        component_type='caption',
+                        material_name=material_name,
+                        author_info={
+                            'name': author,
+                            'country': author_country
+                        },
+                        voice_profile=None,  # Voice profile already applied during generation
+                        log_report=False
+                    )
+                    
+                    validation_summary = get_validation_summary(validation_result)
+                    logger.info(f"📊 Content Validation: {validation_summary}")
+                    
+                    if not validation_result.success:
+                        logger.warning("⚠️  Quality issues detected:")
+                        for issue in validation_result.critical_issues[:3]:
+                            logger.warning(f"   - {issue}")
+                        if validation_result.recommendations:
+                            logger.info(f"💡 Recommendation: {validation_result.recommendations[0]}")
+                    
+                except Exception as validation_error:
+                    logger.warning(f"⚠️  Validation failed (non-critical): {validation_error}")
+            
             else:
                 raise ValueError(f"No author data available for {material_name} - fail-fast requires author information")
             

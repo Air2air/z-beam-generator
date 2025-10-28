@@ -14,7 +14,7 @@ OPERATION:
 2. Load Materials.yaml with hierarchical materialProperties
 3. For each material, iterate through materialProperties sections
 4. For each property with null min/max, lookup category range
-5. Apply min/max values while preserving value/confidence/research_basis
+5. Apply min/max values while preserving value/unit/source/ai_verified
 6. Backup Materials.yaml before modifications
 7. Save enriched Materials.yaml
 8. Report statistics (properties enriched, missing ranges, etc.)

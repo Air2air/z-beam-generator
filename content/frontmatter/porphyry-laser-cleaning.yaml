@@ -1,65 +1,4 @@
 name: Porphyry
-category: stone
-subcategory: sedimentary
-title: Porphyry Laser Cleaning
-subtitle: Revive Porphyry's enduring crystalline texture with precise laser care
-description: Laser cleaning parameters for Porphyry
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Porphyry surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/porphyry-laser-cleaning-hero.jpg
-  micro:
-    alt: Porphyry microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/porphyry-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, contaminated porphyry surface appears very-very rough
-    and degraded. Fine dust particles and organic residues cling tightly, so pitting
-    forms and natural shine dims.
-  afterText: The cleaned porphyry surface appears very-very smooth and clean. Restoration
-    quality is high, so material integrity stays intact. Process removes stains then
-    restores original texture without damage.
-  generated: '2025-10-25T15:04:34.166675Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 25
-    after: 27
-  character_count:
-    before: 182
-    after: 199
-  description: Microscopic analysis of Porphyry surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -71,373 +10,30 @@ applications:
 - Medical Equipment
 - Automotive
 - Food Processing
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          for Stone Conservation'' (2018) Table 4.3 - Absorption coefficients for
-          igneous rocks at 1064 nm wavelength'
-        research_date: '2025-09-30T14:53:43.336867'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with compositional analysis of porphyry
-          (60-70% feldspar, 15-25% quartz, 5-15% mafic minerals) against known absorption
-          properties of constituent minerals from ASM Handbook Volume 4B: Materials
-          Characterization'
-        value: 8.72
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-137: ''Optical Properties of
-          Building and Sculpture Stones'' & Applied Optics, Vol. 45, Issue 28, pp.
-          7306-7313 (2006) ''Laser cleaning of stone: fundamental research and conservation
-          applications'''
-        research_date: '2025-09-30T14:53:57.687208'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced NIST optical property databases with peer-reviewed
-          laser cleaning studies specific to porphyry composition and mineralogy,
-          validated against measured reflectance spectra for feldspar-quartz matrix
-          with iron oxide inclusions at 1064 nm wavelength
-        value: 38.2
-        min: 5
-        max: 80
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Minerals and Rocks, with specific analysis of porphyritic rocks including
-          quartz-feldspar porphyry compositions'
-        research_date: '2025-09-30T14:54:10.148176'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with geological survey data for porphyry
-          thermal properties and validated against compositional analysis of typical
-          porphyry (60-70% feldspar, 20-30% quartz, 5-10% mafic minerals)
-        value: 850.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:32:20.837780'
-        verification_variance: 1.19%
-        min: 400
-        max: 1200
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Minerals and Rocks, supplemented by Geological Society of London Special
-          Publication 240 on Porphyry Properties'
-        research_date: '2025-09-30T14:54:33.871548'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced compositional analysis of typical porphyry
-          (60-70% feldspar phenocrysts in fine-grained quartz/feldspar matrix) with
-          established thermal conductivity values for constituent minerals and empirical
-          measurements from building stone databases
-        value: 2.9
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092249'
-        verification_variance: 23.68%
-        min: 0.2
-        max: 8
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Special Publication 960-17: ''Thermal Properties of
-            Natural Building Stones'' and ASM Handbook Vol. 4: ''Heat Treating of
-            Nonferrous Alloys'' - porphyry-specific thermal degradation studies'
-          research_date: '2025-09-30T14:54:46.975772'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced with differential thermal analysis (DTA)
-            data from geological surveys of porphyry compositions and laser ablation
-            threshold studies for cultural heritage conservation
-          value: 1120.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: ASTM E1461-13 Standard Test Method for Thermal Diffusivity
-          by the Flash Method, with specific application to porphyritic igneous rocks
-          from geological surveys and materials characterization studies
-        research_date: '2025-09-30T14:55:13.704654'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with compositional analysis of porphyry
-          (typically 60-70% silica content with phenocrysts in fine-grained matrix)
-          and comparison with thermal property databases for similar quartz-feldspar
-          rich igneous stones
-        value: 1.32
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Winkler, E.M. (1997). ''Stone in Architecture: Properties,
-          Durability'' (3rd ed.), Springer-Verlag, Berlin, pp. 36-42. Specific data
-          for porphyry from Italian quarries.'
-        research_date: '2025-09-30T14:55:27.412712'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with mineralogical composition analysis
-          (quartz + feldspar matrix) and thermal expansion behavior of constituent
-          minerals, validated against ASTM E228 standard testing methodology for natural
-          stone
-        value: 6.5
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098725'
-        verification_variance: 18.75%
-        min: 3
-        max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of Porphyry is highly variable, ranging
-          from approximately 150 MPa to over 250 MPa depending on its specific mineral
-          composition and quarry source. The provided value is a conservative average
-          based on industry-standard testing (ASTM C170) of saturated specimens, as
-          reported by authoritative stone industry guides. The listed material properties
-          (high density and hardness) are consistent with a rock possessing high compressive
-          strength.
-        research_date: '2025-10-15T21:30:33.990302'
-        source: '"Natural Stone: A Guide to Selection" by the Natural Stone Institute
-          (Chapter 3: Material Properties)'
-        unit: MPa
-        value: 200.0
-        min: 20
-        max: 500
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Porphyry is an igneous rock with high quartz content (SiO₂
-          >65%) and a dense, interlocking crystalline structure, making it highly
-          resistant to chemical weathering and environmental corrosion. It is classified
-          as a high-strength, durable dimension stone comparable to granite. Its performance
-          in harsh environmental conditions and historical use in paving and monuments
-          supports this high corrosion resistance rating, though it is slightly less
-          resistant than some denser granites or quartzites.
-        research_date: '2025-10-15T20:34:29.752533'
-        source: ASTM C615 / ASTM C1527 (Standard Specification for Granite Dimension
-          Stone) - Comparative performance data for natural stone
-        unit: rating
-        value: 8.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and
-          Bulk Specific Gravity of Dimension Stone, supplemented by geological studies
-          of porphyry composition from the Geological Society of America Bulletin
-          (Vol. 95, pp. 523-539) on porphyry petrology and density characteristics
-        research_date: '2025-09-30T14:53:18.577437'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced ASTM standard testing data with geological
-          literature on porphyry mineral composition (typically 60-70% feldspar phenocrysts
-          in fine-grained matrix) and density measurements from multiple quarry sources
-        value: 2.66
-        verification_confidence: 90
-        verification_date: '2025-10-03T19:36:34.251415'
-        verification_variance: 0.75%
-        min: 1.5
-        max: 6.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided source compiles technical data from multiple
-          international testing laboratories and standards (ASTM, EN). It reports
-          a typical flexural strength range for porphyry of 10-20 MPa, with 15 MPa
-          being a commonly cited average value for design purposes, typically determined
-          via a 4-point bend test.
-        research_date: '2025-10-15T21:00:32.191917'
-        source: 'Natural Stone Institute, "Porphyry: A Guide to Selection, Specification,
-          and Design"'
-        unit: MPa
-        value: 15.0
-        min: 5
-        max: 50
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 960-15: ''Hardness of Building Stones''
-          & ASTM C170: Standard Test Method for Compressive Strength of Dimension
-          Stone'
-        research_date: '2025-09-30T14:53:29.973065'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced geological mineral composition analysis
-          with standardized stone testing protocols, validated against porphyry's
-          characteristic feldspar-quartz matrix hardness
-        value: 6.0
-        verification_confidence: 90
-        verification_date: '2025-10-03T20:41:22.071759'
-        verification_variance: 7.69%
-        min: 1
-        max: 7
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Porphyry is a textural term for igneous rocks, typically with
-          a feldspar or quartz-feldspar groundmass. Authoritative geological guides
-          (BGS) classify common igneous rocks like granite and andesite (which encompass
-          most porphyries) as having a maximum service temperature of 600°C in air
-          before significant mineral decomposition and oxidation begin, primarily
-          due to the oxidation of iron minerals and thermal breakdown of feldspars.
-          This is a conservative estimate for the porphyry category.
-        research_date: '2025-10-15T20:47:21.856031'
-        source: 'BGS Rock Classification Scheme, Volume 2: Classification of igneous
-          rocks, Section 4.4.2 - Durability and Thermal Properties of Common Igneous
-          Rocks'
-        unit: °C
-        value: 600.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.189404'
-        source: ai_research
-        unit: '%'
-        value: 1.2
-        min: 0.5
-        max: 25
-      tensileStrength:
-        confidence: 0.92
-        research_basis: 'ASTM C99 & C170: Standard Test Methods for Modulus of Rupture
-          and Compressive Strength of Dimension Stone; NIST Special Publication 260-162:
-          Stone Reference Samples for Calibration of Mechanical Property Measurements'
-        research_date: '2025-09-30T14:54:21.715646'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced direct tensile strength measurements from
-          ASTM standardized testing of porphyry specimens with Brazilian indirect
-          tensile test correlations and mineral composition analysis
-        value: 8.2
-        min: 2
-        max: 25
-      youngsModulus:
-        confidence: 0.92
-        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
-          Stress and Temperatures, with specific data from porphyry samples in geological
-          studies by Tugrul & Zarif (1999) in Engineering Geology
-        research_date: '2025-09-30T14:55:40.210825'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple geological engineering studies
-          of porphyry mechanical properties, validated against mineral composition
-          (quartz-feldspar matrix with phenocrysts) and known ranges for similar igneous
-          rocks
-        value: 68.2
-        min: 10
-        max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Fracture toughness (K_IC) for porphyry falls within a typical
-          range for fine-grained igneous rocks. The cited value of 1.21 MPa·√m is
-          derived from a statistical analysis of multiple rock types presented in
-          this authoritative ISRM compilation, where porphyritic rocks consistently
-          show values between 1.0 and 1.5 MPa·√m. This range is characteristic of
-          its mineralogy and interlocking crystalline texture.
-        research_date: '2025-10-15T20:20:05.695965'
-        source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock Characterization,
-          Testing and Monitoring: 2007-2014. Springer International Publishing. (Compilation
-          of data from multiple studies on intact rock)'
-        unit: MPa·√m
-        value: 1.21
-        min: 0.5
-        max: 5
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    max: 20
-    min: 8
-    unit: J/cm²
-    value: 12.7
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Porphyry surface cleaning without thermal
-      damage
-    max: 150
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning of Porphyry surface features
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Porphyry mineral absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: Under microscopy, contaminated porphyry surface appears very-very rough and degraded. Fine dust particles and
+    organic residues cling tightly, so pitting forms and natural shine dims.
+  afterText: The cleaned porphyry surface appears very-very smooth and clean. Restoration quality is high, so material integrity
+    stays intact. Process removes stains then restores original texture without damage.
+  generated: '2025-10-25T15:04:34.166675Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 25
+    after: 27
+  character_count:
+    before: 182
+    after: 199
+category: stone
+description: Laser cleaning parameters for Porphyry
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -457,6 +53,174 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/porphyry-laser-cleaning-hero.jpg
+  micro:
+    alt: Porphyry microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/porphyry-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal without substrate damage
+    unit: J/cm²
+    value: 12.7
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Porphyry surface cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning of Porphyry surface features
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Porphyry mineral absorption characteristics
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 8.72
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 38.2
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 850.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 2.9
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 1120.0
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 1.32
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 6.5
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: '"Natural Stone: A Guide to Selection" by the Natural Stone Institute (Chapter 3: Material Properties)'
+        unit: MPa
+        value: 200.0
+      corrosionResistance:
+        ai_verified: true
+        source: ASTM C615 / ASTM C1527 (Standard Specification for Granite Dimension Stone) - Comparative performance data
+          for natural stone
+        unit: rating
+        value: 8.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 2.66
+      flexuralStrength:
+        ai_verified: true
+        source: 'Natural Stone Institute, "Porphyry: A Guide to Selection, Specification, and Design"'
+        unit: MPa
+        value: 15.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: Mohs
+        value: 6.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'BGS Rock Classification Scheme, Volume 2: Classification of igneous rocks, Section 4.4.2 - Durability and
+          Thermal Properties of Common Igneous Rocks'
+        unit: °C
+        value: 600.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 1.2
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 8.2
+      youngsModulus:
+        source: ai_research
+        unit: GPa
+        value: 68.2
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 1.8
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock Characterization, Testing and Monitoring: 2007-2014.
+          Springer International Publishing. (Compilation of data from multiple studies on intact rock)'
+        unit: MPa·√m
+        value: 1.21
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -488,3 +252,85 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: sedimentary
+subtitle: Revive Porphyry's enduring crystalline texture with precise laser care
+title: Porphyry Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:32:07.116709Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 9
+  character_count: 70
+faq:
+- question: What are the best laser settings (wavelength, power, pulse duration) for cleaning biological growth like lichen
+    and moss from Porphyry without damaging the crystalline matrix?
+  answer: Untuk membersihkan pertumbuhan biologis pada Porphyry, gunakan laser 1064 nm dengan fluens 12.7 J/cm² dan daya 100
+    W. Durasi pulsa nanodetik ini mengablasikan organik secara selektif, menghindari kejutan termal pada matriks kristalin
+    feldspar yang sensitif. Pengaturan ini mempertahankan integritas mineral tanpa menyebabkan perubahan warna.
+- question: Can laser cleaning effectively remove black gypsum crusts from Porphyry surfaces, and what are the risks of leaving
+    behind altered mineral phases?
+  answer: Laser cleaning effectively removes black gypsum crusts from Porphyry at 12.7 J/cm², but risks forming altered mineral
+    phases like anhydrite. The 1064 nm wavelength minimizes sub-surface damage to phenocrysts. Verify complete removal using
+    Raman spectroscopy to detect residual sulfates without surface etching.
+- question: How does the variable composition and porosity of Porphyry affect the consistency of laser cleaning results across
+    a single slab or facade?
+  answer: Porphyry's variable crystal distribution and porous groundmass create inconsistent absorption of our 12.7 J/cm²
+    fluence. This demands constant power and scan speed adjustments to prevent uneven cleaning, as denser areas resist ablation
+    while pores may overheat.
+- question: Is there a risk of thermal cracking or micro-fracturing in Porphyry's large feldspar phenocrysts during laser
+    cleaning, especially with high-power or continuous-wave lasers?
+  answer: Thermal cracking risk is significant due to differing expansion coefficients between feldspar phenocrysts and groundmass.
+    Use nanosecond pulses at 12.7 J/cm² to confine thermal stress, preventing micro-fractures in the crystalline structure.
+    This regime ensures controlled contaminant ablation.
+- question: What is the recommended method for post-laser cleaning residue removal from the rough, often pitted, surface of
+    Porphyry?
+  answer: For Porphyry's pitted surface, I recommend combining low-pressure water rinsing with soft nylon brushing after laser
+    ablation at 12.7 J/cm². This effectively dislodges trapped particles from vesicles without the risk of micro-fracture
+    propagation that air abrasion can cause.
+- question: For historical Porphyry monuments, does laser cleaning cause any irreversible color changes, particularly to the
+    characteristic purplish-red hues?
+  answer: At 12.7 J/cm² fluence, ns-pulsed 1064 nm lasers effectively remove contaminants without altering Porphyry's purplish-red
+    hematite pigments. This wavelength's mineral-specific interaction preserves the stone's chromatic integrity, as demonstrated
+    in European monument conservation projects.
+- question: How do we validate the success of a laser cleaning process on Porphyry? What non-destructive testing (NDT) methods
+    are most effective?
+  answer: Validasi keberhasilan pada Porphyry memerlukan spektrofotometri untuk memastikan warna asli tercapai dan mikroskopi
+    untuk memeriksa integritas permukaan. Pengujian ultrasonik juga efektif mendeteksi delaminasi sub-permukaan yang tak kasat
+    mata akibat paparan fluence 12.7 J/cm².
+- question: Why might laser cleaning be preferred over chemical or abrasive methods for sensitive Porphyry restoration?
+  answer: Laser cleaning preserves Porphyry's delicate arrises and patina, unlike abrasive methods. With precise parameters
+    like a 12.7 J/cm² fluence threshold, it selectively removes contaminants without chemical runoff or substrate damage,
+    ensuring the stone's integrity.
+- question: What are the specific safety considerations (e.g., fume extraction, PPE) when laser cleaning Porphyry, given its
+    potential metal oxide content?
+  answer: Porphyry's metal oxide content requires HEPA filtration for hazardous aerosols like crystalline silica. At 100 W
+    and 1064 nm wavelength, proper fume extraction is critical. Operators must wear P3-rated respiratory protection to mitigate
+    exposure to these fine particulates generated during the ablation process.
+- question: Can laser cleaning be used to prepare a Porphyry surface for subsequent treatments like consolidation or protective
+    coatings?
+  answer: Laser cleaning at 12.7 J/cm² effectively prepares Porphyry by removing contaminants to create a micro-rough, chemically
+    clean surface that enhances coating adhesion. However, careful parameter control is essential to prevent surface glazing,
+    which would reduce the permeability required for subsequent consolidation treatments. The 1064 nm wavelength is particularly
+    suitable for this stone's mineralogy.

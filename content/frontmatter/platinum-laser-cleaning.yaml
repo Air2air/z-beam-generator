@@ -1,66 +1,4 @@
 name: Platinum
-category: metal
-subcategory: non-ferrous
-title: Platinum Laser Cleaning
-subtitle: Revive platinum's noble luster through precise laser control preserving
-  its corrosion-free integrity
-description: Laser cleaning parameters for Platinum
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/platinum-laser-cleaning-hero.jpg
-  micro:
-    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/platinum-laser-cleaning-micro.jpg
-caption:
-  beforeText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm contaminant layer,\
-    \ exhibiting reduced thermal conductivity of 71.6 W/(m·K) and laser absorption\
-    \ at 36.5%, requiring precise cleaning to restore properties.\","
-  afterText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm oxide layer, exhibiting\
-    \ reduced thermal conductivity of 71.6 W/(m·K) and compromised laser absorption\
-    \ at 36.5%, requiring precise cleaning to restore properties"
-  generated: '2025-10-25T14:55:42.482579Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 56
-    after: 17
-  character_count:
-    before: 400
-    after: 132
-  description: Microscopic analysis of Platinum surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Aerospace
 - Medical Devices
@@ -72,489 +10,30 @@ applications:
 - Energy Sector
 - Marine and Offshore
 - Cultural Heritage
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:24:49.639555'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 2.0
-        max: 8.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:15:59.456420'
-        source: ai_research
-        unit: dimensionless
-        value: 0.065
-        min: 2.0
-        max: 65.0
-      boilingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:34:50.986924'
-        source: ai_research
-        unit: °C
-        value: 3827.0
-        min: 907
-        max: 5870
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: NIST Database of Optical Constants of Metals - Platinum (Johnson
-          & Christy, 1972, Physical Review B, 6:4370-4379) for 1064 nm wavelength
-        research_date: '2025-09-30T13:32:13.280409'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials and verified
-          against experimental data for polished platinum surfaces at common laser
-          cleaning wavelengths (1064 nm Nd:YAG)'
-        value: 36.5
-        verification_confidence: 85
-        verification_date: '2025-10-03T23:08:00.985264'
-        verification_variance: 5.68%
-        min: 0.02
-        max: 100
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:40:13.431606'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 0.1
-        max: 20.0
-      laserReflectivity:
-        confidence: 0.95
-        research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
-          Press, 1998; Johnson, P.B. & Christy, R.W. Physical Review B, 1972, for
-          platinum optical constants at 1064 nm wavelength
-        research_date: '2025-09-30T13:32:25.275697'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced multiple authoritative optical constant
-          databases and calculated reflectivity using Fresnel equations with published
-          complex refractive index data (n = 4.15, k = 5.25 at 1064 nm)
-        value: 73.2
-        min: 5
-        max: 99.9
-      meltingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:45:12.345289'
-        source: ai_research
-        unit: °C
-        value: 1768.3
-        min: -39
-        max: 3422
-      reflectivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:01:39.459454'
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.73
-        min: 85
-        max: 98
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          Platinum thermophysical properties at 298.15 K'
-        research_date: '2025-09-30T13:32:38.172081'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with CRC Handbook of Chemistry and Physics
-          (97th Edition, page 4-134) and ASM Handbook Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials, confirming consistency
-          across multiple authoritative sources'
-        value: 133.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837650'
-        verification_variance: 0.0%
-        min: 100
-        max: 2000
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Fluid Systems - Pure Platinum at 300K'
-        research_date: '2025-09-30T13:33:01.407859'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials and CRC Handbook
-          of Chemistry and Physics 104th Edition'
-        value: 71.6
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:20:53.092155'
-        verification_variance: 0.0%
-        min: 7.0
-        max: 430
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials (1990), Table ''Melting Points of
-            the Elements'' - Platinum melting point: 1768.4°C (2041.15 K)'
-          research_date: '2025-09-30T13:33:12.670999'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced with NIST Chemistry WebBook (Platinum
-            element data) and verified against platinum's face-centered cubic crystal
-            structure stability limits, confirming melting point as the definitive
-            thermal destruction threshold for elemental metals
-          value: 2041.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:20:42.177944'
-        source: ai_research
-        unit: K
-        value: 2041.15
-        min: 873
-        max: 3695
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Thermal Properties of Pure Metals,
-          Table: Thermal Diffusivity Values for Platinum at 300K'
-        research_date: '2025-09-30T13:33:36.432725'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with NIST Materials Data Repository and
-          verified against platinum''s fundamental properties: density (21.45 g/cm³),
-          specific heat capacity (0.133 J/g·K), and thermal conductivity (71.6 W/m·K)
-          using the relationship α = k/(ρ·Cp)'
-        value: 25.9
-        min: 0.06
-        max: 174
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 74, ''Thermophysical Properties
-          of Materials for Nuclear Engineering: Platinum'', and ASM Handbook Volume
-          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T13:33:48.841990'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, ASM Handbook, and CRC Handbook of Chemistry and Physics for
-          pure platinum (99.95+%) at 20-100°C range
-        value: 8.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098598'
-        verification_variance: 0.0%
-        min: 0.5
-        max: 33
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:50:42.146863'
-        source: ai_research
-        unit: MW/m
-        value: 1.8
-        min: 50
-        max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Platinum is a face-centered cubic (FCC) metal with high ductility,
-          and pure metals in this group typically do not have a definitive compressive
-          strength as they yield and deform plastically rather than fracture. The
-          provided range represents the compressive yield strength (typically at 0.2%
-          offset) for annealed, high-purity platinum, which is highly dependent on
-          purity, grain size, and prior work hardening. The value is derived from
-          the material's known tensile behavior and hardness correlation, as compressive
-          strength for such ductile metals is generally similar to tensile strength.
-        research_date: '2025-10-15T21:29:28.046567'
-        source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (Platinum and Platinum Alloys section)'
-        unit: MPa
-        value: 325.0
-        min: 50
-        max: 2000
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: Platinum is considered one of the most corrosion-resistant
-          metals, essentially inert to air, water, and single acids at all temperatures.
-          It exhibits exceptional resistance to oxidation, even at high temperatures,
-          and is unaffected by most common corrosive environments, including those
-          that attack noble metals like gold.
-        research_date: '2025-10-15T20:33:20.018212'
-        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (ASM International)'
-        unit: rating
-        value: 10.0
-        min: 1
-        max: 10
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1; NIST Standard Reference
-          Data; CRC Handbook of Chemistry and Physics (97th Edition)'
-        research_date: '2025-09-30T13:31:50.674333'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative materials science
-          references and validated against platinum's face-centered cubic crystal
-          structure (a = 3.9231 Å) and atomic properties (atomic weight 195.084 g/mol)
-        value: 21.45
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:01:08.226635'
-        verification_variance: 0.0%
-        min: 0.53
-        max: 22.6
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:56:29.269458'
-        source: ai_research
-        unit: S/m
-        value: 9430000.0
-        min: 0.67
-        max: 63.0
-      electricalResistivity:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:16:02.982668'
-        source: ai_research
-        unit: Ω·m
-        value: 1.06e-07
-        min: 1.0e-08
-        max: 1.5e-06
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Platinum is a face-centered cubic (FCC) metal with high ductility,
-          resulting in relatively low flexural strength compared to its compressive
-          strength. The provided value is a typical flexural strength for annealed,
-          high-purity platinum based on standardized bend tests. The value is consistent
-          with its low hardness (41 HV) and known mechanical behavior, where yield
-          strength is typically in the range of 110-165 MPa.
-        research_date: '2025-10-15T20:59:28.090060'
-        source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
-          Special-Purpose Materials", Vol. 2, ASM Handbook Committee.'
-        unit: MPa
-        value: 125.0
-        min: 2.5
-        max: 1050.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Section: Platinum Group Metals,
-          Table: Mechanical Properties of Platinum'
-        research_date: '2025-09-30T13:32:01.514680'
-        source: ai_research
-        unit: HV
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against multiple academic sources including 'Mechanical Properties
-          of Platinum and Platinum Alloys' (Journal of Materials Science, 2002)
-        value: 41.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071671'
-        verification_variance: 2.5%
-        min: 0.5
-        max: 3500
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Platinum is one of the most oxidation-resistant metals. It
-          does not form a stable oxide (platinum oxide decomposes around 500-600 °C).
-          The limit of ~1000 °C in air is not due to catastrophic oxidation but to
-          a slow, continuous loss of material through the formation of volatile PtO₂,
-          which becomes significant at this temperature. Below this, it is considered
-          highly stable.
-        research_date: '2025-10-15T20:46:15.292843'
-        source: 'ASM International, "ASM Handbook, Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials" (1990), and Haynes International,
-          "High-Temperature Alloys - Platinum and Platinum Alloys"'
-        unit: °C
-        value: 1000.0
-        min: 200
-        max: 1200
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.185249'
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-        min: 0.0
-        max: 15.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Platinum Group Metals'', pp. 693-694,
-          indicating annealed platinum tensile strength range 125-165 MPa'
-        research_date: '2025-09-30T13:32:48.812701'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Materials Data Repository (Platinum
-          pure element properties) and confirmed consistency with FCC crystal structure
-          behavior in annealed condition
-        value: 125.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Platinum and Platinum Alloys'
-        research_date: '2025-09-30T13:34:00.900540'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          CRC Handbook of Chemistry and Physics (85th Edition) which reports 168 GPa
-          for pure platinum at room temperature
-        value: 168.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214083'
-        verification_variance: 0.0%
-        min: 5
-        max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:29:52.029863'
-        source: ai_research
-        unit: m⁻¹
-        value: 42000000.0
-        min: 100000
-        max: 50000000
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Platinum, as a face-centered cubic (FCC) metal, exhibits high
-          ductility and good fracture toughness. The reported K_IC value for high-purity
-          platinum falls within the range of approximately 35-40 MPa·√m at room temperature.
-          The value of 38.0 MPa·√m is a representative mid-range value cited in authoritative
-          materials handbooks for general design purposes.
-        research_date: '2025-10-15T20:18:38.552238'
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Metals"'
-        unit: MPa·√m
-        value: 38.0
-        min: 20
-        max: 200
-      surfaceRoughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:10:59.509088'
-        source: ai_research
-        unit: μm
-        value: 0.025
-        min: 0.4
-        max: 150
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:06:16.028011'
-        source: ai_research
-        unit: Pa
-        value: 2.51e-07
-        min: 1.0e-10
-        max: 0.001
-machineSettings:
-  fluence:
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      Platinum damage
-    max: 8
-    min: 3
-    unit: J/cm²
-    value: 5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    max: 70
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning of Platinum surfaces
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Platinum surface cleaning without thermal
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal while
-      minimizing Platinum substrate heating
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage with controlled
-      thermal input
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
-      and thermal processing
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+caption:
+  beforeText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm contaminant layer, exhibiting reduced thermal conductivity\
+    \ of 71.6 W/(m·K) and laser absorption at 36.5%, requiring precise cleaning to restore properties.\","
+  afterText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm oxide layer, exhibiting reduced thermal conductivity of\
+    \ 71.6 W/(m·K) and compromised laser absorption at 36.5%, requiring precise cleaning to restore properties"
+  generated: '2025-10-25T14:55:42.482579Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 56
+    after: 17
+  character_count:
+    before: 400
+    after: 132
+category: metal
+description: Laser cleaning parameters for Platinum
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -574,6 +53,260 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/platinum-laser-cleaning-hero.jpg
+  micro:
+    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/platinum-laser-cleaning-micro.jpg
+machineSettings:
+  fluence:
+    description: Energy density threshold for effective contaminant removal without Platinum damage
+    unit: J/cm²
+    value: 5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for thorough cleaning of Platinum surfaces
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Platinum surface cleaning without thermal damage
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal while minimizing Platinum substrate heating
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage with controlled thermal input
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  wavelength:
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.065
+      boilingPoint:
+        source: ai_research
+        unit: °C
+        value: 3827.0
+      laserAbsorption:
+        ai_verified: true
+        source: ai_research
+        unit: '%'
+        value: 36.5
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 73.2
+      meltingPoint:
+        source: ai_research
+        unit: °C
+        value: 1768.3
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (ratio)
+        value: 0.73
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 133.0
+      thermalConductivity:
+        ai_verified: true
+        source: ai_research
+        unit: W/(m·K)
+        value: 71.6
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: K
+          value: 2041.15
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 2041.15
+      thermalDiffusivity:
+        source: ai_research
+        unit: mm²/s
+        value: 25.9
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10^-6/K
+        value: 8.8
+      thermalShockResistance:
+        source: ai_research
+        unit: MW/m
+        value: 1.8
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 42000000.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (Platinum
+          and Platinum Alloys section)'
+        unit: MPa
+        value: 325.0
+      corrosionResistance:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (ASM International)'
+        unit: rating
+        value: 10.0
+      density:
+        ai_verified: true
+        source: ai_research
+        unit: g/cm³
+        value: 21.45
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 9430000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.06e-07
+      flexuralStrength:
+        ai_verified: true
+        source: 'ASM International, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials", Vol. 2, ASM
+          Handbook Committee.'
+        unit: MPa
+        value: 125.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: HV
+        value: 41.0
+      oxidationResistance:
+        ai_verified: true
+        source: 'ASM International, "ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
+          Materials" (1990), and Haynes International, "High-Temperature Alloys - Platinum and Platinum Alloys"'
+        unit: °C
+        value: 1000.0
+      porosity:
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 125.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 168.0
+      fractureToughness:
+        source: ai_research
+        unit: MPa√m
+        value: 77.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 42000000.0
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals"'
+        unit: MPa·√m
+        value: 38.0
+      surfaceRoughness:
+        source: ai_research
+        unit: μm
+        value: 0.025
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 2.51e-07
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.065
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 9430000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.06e-07
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.73
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 2041.15
+      thermalShockResistance:
+        source: ai_research
+        unit: MW/m
+        value: 1.8
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -605,3 +338,81 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: non-ferrous
+subtitle: Revive platinum's noble luster through precise laser control preserving its corrosion-free integrity
+title: Platinum Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:26:44.565150Z'
+  author_name: Ikmanda Roswati
+  author_country: Indonesia
+  generation_method: ai_research_voice
+  word_count: 12
+  character_count: 100
+faq:
+- question: Can laser cleaning damage the thin platinum coating on medical devices or catalytic converters?
+  answer: Proper laser cleaning won't damage platinum coatings when fluence is carefully controlled below its ablation threshold,
+    typically under 5 J/cm². Using nanosecond pulses at 1064 nm wavelength minimizes thermal stress. Verification via scanning
+    electron microscopy confirms the underlying layer remains intact post-process.
+- question: What laser wavelength (nm) and pulse duration work best for cleaning platinum jewelry without causing micro-pitting?
+  answer: For platinum jewelry, I recommend 1064 nm wavelength fiber lasers with 10 ns pulses at 5 J/cm² fluence. This balances
+    platinum's high reflectivity while minimizing heat penetration. The 50 μm spot size with 500 mm/s scanning prevents micro-pitting
+    by limiting thermal accumulation in the precious metal substrate.
+- question: How do you safely remove oxidation layers from platinum crucibles used in laboratory settings without altering
+    their chemical purity?
+  answer: Laser cleaning at 5 J/cm² fluence effectively removes platinum oxides without chemical residues. This maintains
+    surface purity for high-temperature applications, unlike acid methods that risk contamination. The 1064 nm wavelength
+    ensures minimal thermal impact on the substrate.
+- question: What safety precautions are needed when laser cleaning platinum components that may have absorbed hazardous materials
+    in industrial processes?
+  answer: For platinum components with absorbed contaminants like arsenic, implement Class III fume extraction and full-face
+    respirators. The 1064 nm wavelength at 5 J/cm² efficiently removes hazardous materials while minimizing toxic fume generation.
+    Always conduct material safety analysis before processing.
+- question: Does laser cleaning affect the electrochemical properties of platinum electrodes used in scientific instruments?
+  answer: Properly tuned laser cleaning at 5 J/cm² fluence actually enhances platinum's electrochemical performance. The process
+    removes contaminants while creating beneficial micro-roughness, increasing active surface area without introducing impurities
+    that degrade catalytic activity.
+- question: What is the maximum safe laser power density for cleaning platinum spark plug electrodes without melting or deforming
+    them?
+  answer: Untuk platinum dengan titik leleh 1768°C, rapat daya aman maksimum sekitar 5 J/cm² pada laser 1064 nm. Konduktivitas
+    termalnya yang tinggi memungkinkan pendinginan cepat, namun pemindaian di atas 500 mm/s dan monitoring termal real-time
+    sangat penting untuk mencegah deformasi.
+- question: How effective is laser cleaning for removing carbon buildup from platinum-rhodium thermocouple wires in high-temperature
+    applications?
+  answer: Laser cleaning excels for platinum-rhodium thermocouples, using ~5 J/cm² fluence to selectively ablate carbon without
+    altering the alloy. This non-contact method preserves calibration accuracy far better than abrasive techniques, which
+    risk surface damage and compositional changes.
+- question: Can laser cleaning create surface defects in platinum that lead to stress corrosion cracking in chemical processing
+    equipment?
+  answer: With optimal 5 J/cm² fluence and 50% overlap, laser cleaning minimizes microstructural changes in platinum. However,
+    improper parameters can induce residual stress, increasing susceptibility to chemical attack. Post-cleaning inspection
+    for micro-cracks is essential for chemical processing equipment integrity.
+- question: What are the economic considerations for laser cleaning platinum recovery scrap versus traditional refining methods?
+  answer: Laser cleaning preserves over 99.9% of your platinum scrap, unlike chemical refining's significant material loss.
+    With a 100W, 1064nm system operating at 5 J/cm², processing is dramatically faster. This method eliminates hazardous chemical
+    costs while maintaining the metal's intrinsic purity, making it economically superior for high-value recovery.
+- question: How does laser cleaning compare to ultrasonic cleaning for removing polishing compounds from intricate platinum
+    jewelry designs?
+  answer: Laser cleaning excels for intricate platinum jewelry by reaching complex geometries that ultrasonic methods miss.
+    With precise 50 μm spot control at 5 J/cm² fluence, it completely removes polishing compounds without embedding residues.
+    This dry process maintains platinum's premium surface finish while significantly reducing cycle times in manufacturing.

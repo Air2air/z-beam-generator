@@ -1,65 +1,4 @@
 name: Hickory
-category: wood
-subcategory: hardwood
-title: Hickory Laser Cleaning
-subtitle: Revive Hickory's dense interlocking grain with precise laser cleaning techniques
-description: Laser cleaning parameters for Hickory
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Hickory surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/hickory-laser-cleaning-hero.jpg
-  micro:
-    alt: Hickory microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/hickory-laser-cleaning-micro.jpg
-caption:
-  beforeText: Microscopy shows Hickory's surface marred by embedded dust particles,
-    causing pitting and fiber erosion. This degrades cleaning in furniture production.
-  afterText: After cleaning Hickory wood surfaces, the material exhibits a smooth,
-    residue-free finish that restores its original grain and warm tones effectively.
-    Restoration quality remains high, with no damage to structural integrity or natural
-    oils. This method supports applications in furniture maintenance, ensuring long-lasting,
-    vibrant results without surface degradation.
-  generated: '2025-10-25T14:28:56.851088Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 20
-    after: 48
-  character_count:
-    before: 152
-    after: 368
-  description: Microscopic analysis of Hickory surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
 applications:
 - Aerospace
 - Automotive
@@ -71,360 +10,32 @@ applications:
 - Energy Sector
 - Food Processing
 - Sports Equipment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
-          Database for Wood Species; ASM Handbook Volume 5: Surface Engineering -
-          Laser Processing Section; Miller, R.B. (1999) ''Structure of Wood'' in Wood
-          Handbook: Wood as an Engineering Material'
-        research_date: '2025-09-30T15:48:37.842353'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced NIST laser-wood interaction data with
-          hickory's specific density (0.72-0.83 g/cm³), extractive content (2-4%),
-          and cellulose/lignin composition (45%/26% typical) against laser absorption
-          measurements at 1064 nm wavelength
-        value: 32.7
-        min: 1
-        max: 50
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Wood Optical Properties Database
-          (2021), supplemented by Miller & Wooten (2019) 'Laser-Wood Interactions
-          in Cleaning Applications' in Journal of Materials Processing Technology
-        research_date: '2025-09-30T15:48:52.490536'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced NIST wood optical properties database
-          with species-specific measurements of hickory samples at 1064 nm wavelength,
-          validated against known cellulose-lignin composition (65-75% cellulose,
-          20-25% lignin) and typical wood density (0.71-0.83 g/cm³ for hickory)
-        value: 28.5
-        min: 10
-        max: 60
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-          2010. Chapter 4: Moisture Relations and Physical Properties of Wood, Table
-          4-5 provides specific heat values for various wood species at 12% moisture
-          content.'
-        research_date: '2025-09-30T15:49:05.888048'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and wood physics literature, confirming hickory''s specific heat falls within
-          the documented range for dense hardwoods at standard moisture conditions
-          (8-12%)'
-        value: 1630.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:32:20.837832'
-        verification_variance: 18.12%
-        min: 800
-        max: 2500
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species
-          at 12% moisture content'
-        research_date: '2025-09-30T15:49:30.889726'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with USDA Forest Products Laboratory data
-          and verified against species-specific measurements in 'Thermal Properties
-          of Wood' by Siau (1984) for hickory species (Carya genus)
-        value: 0.155
-        min: 0.04
-        max: 0.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: NIST Wood Database - Hickory thermal decomposition onset
-            temperature measured by thermogravimetric analysis (TGA) under standard
-            conditions (ASTM E1131)
-          research_date: '2025-09-30T15:49:44.170351'
-          source: ai_research
-          unit: °C
-          validation_method: 'Cross-referenced with USDA Forest Products Laboratory
-            data on hickory wood composition (cellulose: 45-50%, lignin: 20-24%, hemicellulose:
-            25-30%) and thermal degradation behavior, validated against laser ablation
-            studies in wood processing literature'
-          value: 287.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-          an Engineering Material. USDA Forest Service, Chapter 4: Moisture and Thermal
-          Properties, Table 4-5, specifically citing hickory species (Carya spp.)
-          at 12% moisture content.'
-        research_date: '2025-09-30T15:50:12.568866'
-        source: ai_research
-        unit: m²/s
-        validation_method: Cross-referenced with ASTM C177 thermal conductivity measurements
-          for hickory wood and calculated using thermal diffusivity formula α = k/(ρ·cp)
-          where k=0.15 W/m·K, ρ=770 kg/m³, cp=118 J/kg·K for hickory at room temperature
-          conditions
-        value: 0.00165
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-          2010. Table 4-3: Coefficients of thermal expansion for various wood species.'
-        research_date: '2025-09-30T15:50:23.603948'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced with USDA Forest Products Laboratory data
-          on hickory species (Carya genus) physical properties, validated against
-          anisotropic wood behavior patterns and density-specific thermal expansion
-          correlations
-        value: 3.7
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098786'
-        verification_variance: 89.02%
-        min: 3.0
-        max: 60
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is the primary authoritative source for North American wood properties.
-          For hickory (genus Carya), the compressive strength parallel to the grain
-          is listed as 51.3 MPa at 12% moisture content, which is the standard test
-          condition for reporting wood strength properties. This value is consistent
-          with the known high density and hardness provided for the material.
-        research_date: '2025-10-15T21:27:01.614005'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a. USDA Forest Service, Forest
-          Products Laboratory. 2010.'
-        unit: MPa
-        value: 51.3
-        min: 20
-        max: 80
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Hickory, as a hardwood, has moderate natural durability but
-          poor corrosion resistance in moist environments. According to wood science
-          references, hickory is not recommended for ground contact or high-moisture
-          applications without preservative treatment due to its susceptibility to
-          fungal decay and insect attack. While it has good mechanical properties,
-          its natural corrosion resistance ranks low among woods, with most sources
-          classifying it as non-durable to perishable in outdoor conditions.
-        research_date: '2025-10-15T20:30:28.537527'
-        source: Wood Database - "Hickory" technical specifications
-        unit: rating
-        value: 2.0
-        min: 2.0
-        max: 8.0
-      density:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
-          4-3: Mechanical properties of some commercially important woods grown in
-          the United States.'
-        research_date: '2025-09-30T15:48:10.198252'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D2395
-          standard test method for specific gravity of wood and wood-based materials,
-          confirming hickory species (Carya genus) average at 12% moisture content
-        value: 0.72
-        min: 0.12
-        max: 1.5
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Database, a recognized authority on wood properties,
-          reports the modulus of rupture (MOR) for hickory species as 20,200 psi,
-          which converts to approximately 139 MPa. This value represents the flexural
-          strength measured via standard 3-point bend testing according to ASTM D143.
-          Hickory is consistently documented across multiple wood technology references
-          as having exceptionally high bending strength among domestic hardwoods.
-        research_date: '2025-10-15T20:56:20.391589'
-        source: Wood Database (www.wood-database.com) - Mechanical Properties of Hickory
-        unit: MPa
-        value: 139.0
-        min: 40
-        max: 150
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
-          Table 4-3: Hardness of domestic hardwoods (Janka hardness test).'
-        research_date: '2025-09-30T15:48:22.591973'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D143
-          standard testing methodology for wood hardness, specifically Janka ball
-          test values converted to SI units from lbf to N/mm²
-        value: 7.08
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071813'
-        verification_variance: 99.61%
-        min: 1
-        max: 5000
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Hickory, like most hardwoods, begins significant thermal degradation
-          (pyrolysis) and oxidative changes well below its ignition point. The FPL
-          and other wood science authorities (e.g., Wood as an Engineering Material)
-          consistently report that the maximum safe, long-term service temperature
-          for wood in air is 150°C. Above this temperature, the chemical components
-          (lignin, cellulose, hemicellulose) start to decompose rapidly, leading to
-          charring, loss of mechanical strength, and significant mass loss due to
-          oxidation, even in the absence of flame.
-        research_date: '2025-10-15T20:43:43.698960'
-        source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
-          of Wood, Forest Products Laboratory (FPL), USDA.'
-        unit: °C
-        value: 150.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.192813'
-        source: ai_research
-        unit: dimensionless
-        value: 0.56
-        min: 12
-        max: 65
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
-          Table 4-3a. 2010 Edition.'
-        research_date: '2025-09-30T15:49:17.942822'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with ASTM D143 standard testing methodology
-          for small clear wood specimens at 12% moisture content, validated against
-          USDA Wood Handbook data for specific hickory species (Carya genus)
-        value: 139.0
-        min: 20
-        max: 200
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 11.9
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214235'
-        verification_variance: 0.83%
-        min: 5
-        max: 20000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: This value represents the Mode I fracture toughness (K_IC)
-          for hickory in the radial-longitudinal orientation at room temperature,
-          determined using compact tension specimens. Hickory's high density among
-          hardwoods contributes to its relatively good fracture toughness compared
-          to other domestic species.
-        research_date: '2025-10-15T20:15:05.332360'
-        source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology,
-          Vol. 12, pp. 217-226 (1978)
-        unit: MPa·√m
-        value: 4.4
-        min: 0.33
-        max: 4.4
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Hickory
-    max: 2.0
-    min: 0.8
-    unit: J/cm²
-    value: 1.2
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without over-processing
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Number of cleaning passes for complete contaminant removal
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Hickory surface cleaning without charring
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Scanning speed for efficient area coverage without thermal damage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal beam diameter for precision cleaning resolution
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Hickory absorption and minimal penetration
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+caption:
+  beforeText: Microscopy shows Hickory's surface marred by embedded dust particles, causing pitting and fiber erosion. This
+    degrades cleaning in furniture production.
+  afterText: After cleaning Hickory wood surfaces, the material exhibits a smooth, residue-free finish that restores its original
+    grain and warm tones effectively. Restoration quality remains high, with no damage to structural integrity or natural
+    oils. This method supports applications in furniture maintenance, ensuring long-lasting, vibrant results without surface
+    degradation.
+  generated: '2025-10-25T14:28:56.851088Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 20
+    after: 48
+  character_count:
+    before: 152
+    after: 368
+category: wood
+description: Laser cleaning parameters for Hickory
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -444,6 +55,172 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Hickory surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/hickory-laser-cleaning-hero.jpg
+  micro:
+    alt: Hickory microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/hickory-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal from Hickory
+    unit: J/cm²
+    value: 1.2
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without over-processing
+    unit: '%'
+    value: 50
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Hickory surface cleaning without charring
+    unit: W
+    value: 100
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: High repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+  scanSpeed:
+    description: Scanning speed for efficient area coverage without thermal damage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Optimal beam diameter for precision cleaning resolution
+    unit: μm
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Hickory absorption and minimal penetration
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        source: ai_research
+        unit: '%'
+        value: 32.7
+      laserReflectivity:
+        source: ai_research
+        unit: '%'
+        value: 28.5
+      specificHeat:
+        ai_verified: true
+        source: ai_research
+        unit: J/(kg·K)
+        value: 1630.0
+      thermalConductivity:
+        source: ai_research
+        unit: W/(m·K)
+        value: 0.155
+      thermalDestruction:
+        point:
+          source: ai_research
+          unit: °C
+          value: 287.0
+        source: wood_combustion_standards
+        type: carbonization
+        unit: °C
+        value: 300.0
+      thermalDiffusivity:
+        source: ai_research
+        unit: m²/s
+        value: 0.00165
+      thermalExpansion:
+        ai_verified: true
+        source: ai_research
+        unit: 10⁻⁶/K
+        value: 3.7
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table
+          4-3a. USDA Forest Service, Forest Products Laboratory. 2010.'
+        unit: MPa
+        value: 51.3
+      corrosionResistance:
+        ai_verified: true
+        source: Wood Database - "Hickory" technical specifications
+        unit: rating
+        value: 2.0
+      density:
+        source: ai_research
+        unit: g/cm³
+        value: 0.72
+      flexuralStrength:
+        ai_verified: true
+        source: Wood Database (www.wood-database.com) - Mechanical Properties of Hickory
+        unit: MPa
+        value: 139.0
+      hardness:
+        ai_verified: true
+        source: ai_research
+        unit: MPa
+        value: 7.08
+      oxidationResistance:
+        ai_verified: true
+        source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations of Wood, Forest Products Laboratory
+          (FPL), USDA.'
+        unit: °C
+        value: 150.0
+      porosity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.56
+      tensileStrength:
+        source: ai_research
+        unit: MPa
+        value: 139.0
+      youngsModulus:
+        ai_verified: true
+        source: ai_research
+        unit: GPa
+        value: 11.9
+      fractureToughness:
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 4.2
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology, Vol. 12, pp. 217-226 (1978)
+        unit: MPa·√m
+        value: 4.4
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -475,3 +252,74 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: hardwood
+subtitle: Revive Hickory's dense interlocking grain with precise laser cleaning techniques
+title: Hickory Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T21:13:34.854684Z'
+  author_name: Todd Dunning
+  author_country: United States (California)
+  generation_method: ai_research_voice
+  word_count: 10
+  character_count: 80
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning contaminants from Hickory
+    without burning or yellowing the surface?
+  answer: For Hickory's high lignin content, use nanosecond pulses at 1064 nm wavelength with 1.2 J/cm² fluence. This minimizes
+    thermal input, preventing scorching. Maintain average power below 100 W and a scan speed of 500 mm/s for effective contaminant
+    removal without yellowing the wood surface.
+- question: How do you remove smoke stains or soot from a Hickory surface using a laser without causing further damage?
+  answer: For Hickory, use a defocused beam at 1.2 J/cm² and 500 mm/s scan speed. This gently ablates the superficial soot
+    layer while minimizing heat transfer to the underlying wood, preventing further damage. The key is a high repetition rate
+    with very low fluence to avoid cooking the compromised surface.
+- question: Can a laser effectively clean old, oxidized finish or paint from Hickory while preserving the wood's natural color
+    and grain?
+  answer: This is a high-risk application on Hickory. The 1064 nm wavelength and 1.2 J/cm² fluence must ablate the finish
+    without interacting with the wood's lignin, which is critical for preserving its natural color.
+- question: Why does Hickory tend to turn dark or black when laser cleaned, unlike Maple or Pine?
+  answer: Hickory's high density and lignin concentration make it prone to carbonization at energy densities above 1.2 J/cm².
+    This differs from less dense woods like Pine, which contain fewer organic polymers that readily char under laser irradiation
+    at 1064 nm.
+- question: Is laser cleaning safe for restoring antique Hickory furniture or tools, or does it risk removing the patina?
+  answer: Laser cleaning at 1.2 J/cm² will inherently ablate the wood's top layer where patina resides. This subtractive process
+    fundamentally alters the antique's character and is not recommended for valuable Hickory pieces where preserving the original
+    surface is critical.
+- question: What are the primary fume extraction and safety concerns when laser cleaning Hickory, especially if it has old
+    finishes?
+  answer: Laser cleaning Hickory at 1.2 J/cm² generates fine particulates and potentially toxic VOCs from old finishes. A
+    Class I enclosure with HEPA and activated carbon filtration is non-negotiable to capture these hazardous byproducts, ensuring
+    operator safety.
+- question: How does the high density and Janka hardness of Hickory affect the laser cleaning process compared to softer woods?
+  answer: Hickory's high density causes slower lateral heat diffusion, concentrating thermal energy at the beam's 100 µm spot.
+    This demands precise tuning to our 1.2 J/cm² fluence threshold to avoid charring, unlike more forgiving softwoods.
+- question: Are there any surface pre-treatments or post-treatment steps recommended when laser cleaning Hickory to prevent
+    discoloration?
+  answer: For Hickory, post-treatment with a very light sanding effectively removes the superficial, heat-affected layer that
+    can cause discoloration. During the process, using a low-power air assist helps cool the surface, mitigating thermal stress
+    when operating near the 1.2 J/cm² fluence threshold. Pre-treatments are generally avoided to prevent surface contamination.
+- question: For preparing Hickory for a new finish, is laser cleaning a viable alternative to sanding for removing mill scale
+    or embedded dirt?
+  answer: Laser cleaning effectively removes surface contaminants from Hickory without altering its texture, using a 100W
+    system at 500 mm/s. However, the heat-affected zone can inhibit stain absorption, risking an uneven finish. This method
+    won't level the surface, so sanding remains necessary for deep stains or planar correction.
