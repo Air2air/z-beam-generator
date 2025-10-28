@@ -22,6 +22,69 @@ class FAQComponentGenerator(APIComponentGenerator):
         self.min_words_per_answer = 20
         self.max_words_per_answer = 60
         
+        # Voice validation patterns (from voice profiles)
+        self.voice_indicators = {
+            'TAIWAN': ['systematic', 'methodology', 'precisely', 'optimization', 'precision', 'technological', 'comprehensive', 'analytical'],
+            'ITALY': ['sophisticated', 'elegant', 'refined', 'meticulous', 'excellence', 'optimal', 'engineering', 'aesthetic'],
+            'INDONESIA': ['practical', 'efficient', 'sustainable', 'environmental', 'effective', 'straightforward', 'accessible'],
+            'USA': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 'state-of-the-art'],
+            'UNITED STATES': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 'state-of-the-art']
+        }
+    
+    def _validate_voice_consistency(self, faq_items: List[Dict], author_country: str, material_name: str) -> Dict:
+        """
+        Validate that FAQ answers match the author's voice
+        
+        Args:
+            faq_items: List of FAQ question/answer dicts
+            author_country: Author's country (e.g., "Taiwan", "Italy")
+            material_name: Material name for logging
+            
+        Returns:
+            Dict with validation results
+        """
+        # Combine all FAQ text
+        all_text = " ".join([f"{item.get('question', '')} {item.get('answer', '')}" for item in faq_items])
+        text_lower = all_text.lower()
+        
+        # Count voice indicators for each country
+        voice_counts = {}
+        for voice, indicators in self.voice_indicators.items():
+            count = sum(1 for word in indicators if word in text_lower)
+            if count > 0:
+                voice_counts[voice] = count
+        
+        # Determine dominant voice
+        expected_voice = author_country.upper()
+        if not voice_counts:
+            return {
+                'valid': False,
+                'expected_voice': expected_voice,
+                'detected_voice': 'NONE',
+                'voice_counts': {},
+                'warning': f"No clear voice detected in FAQs for {material_name}"
+            }
+        
+        detected_voice = max(voice_counts, key=voice_counts.get)
+        matches = detected_voice == expected_voice
+        
+        result = {
+            'valid': matches,
+            'expected_voice': expected_voice,
+            'detected_voice': detected_voice,
+            'voice_counts': voice_counts,
+            'warning': None if matches else f"Voice mismatch: Expected {expected_voice}, detected {detected_voice}"
+        }
+        
+        # Log validation result
+        if matches:
+            logger.info(f"✅ Voice validation passed: {expected_voice} voice detected ({voice_counts.get(expected_voice, 0)} indicators)")
+        else:
+            logger.warning(f"⚠️  Voice mismatch for {material_name}: Expected {expected_voice}, detected {detected_voice}")
+            logger.warning(f"   Voice distribution: {voice_counts}")
+        
+        return result
+        
     def _load_frontmatter_data(self, material_name: str) -> Dict:
         """Load frontmatter data for the material - case-insensitive search"""
         content_dir = Path("content/frontmatter")
@@ -411,6 +474,16 @@ Make questions specific to {material_name}, not generic questions."""
             # Build FAQ structure - simplified to only questions and answers
             faq_structure = faq_items
             
+            # Validate voice consistency
+            author_obj = frontmatter_data.get('author', {})
+            author_country = author_obj.get('country', 'Unknown')
+            
+            voice_validation = self._validate_voice_consistency(faq_items, author_country, material_name)
+            
+            if not voice_validation['valid']:
+                logger.warning(f"⚠️  {voice_validation['warning']}")
+                logger.info(f"   💡 Consider regenerating FAQs with stronger {voice_validation['expected_voice']} voice enforcement")
+            
             # Convert to YAML format
             faq_yaml = yaml.dump({'faq': faq_structure}, 
                                 default_flow_style=False, 
@@ -419,7 +492,12 @@ Make questions specific to {material_name}, not generic questions."""
             
             logger.info(f"✅ FAQ generation complete: {len(faq_items)} questions, {total_words} total words")
             
-            return self._create_result(faq_yaml, success=True)
+            # Add voice validation info to result metadata
+            result = self._create_result(faq_yaml, success=True)
+            if hasattr(result, 'metadata'):
+                result.metadata['voice_validation'] = voice_validation
+            
+            return result
             
         except Exception as e:
             logger.error(f"❌ FAQ generation failed for {material_name}: {e}")
