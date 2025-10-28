@@ -22,14 +22,60 @@ class FAQComponentGenerator(APIComponentGenerator):
         self.min_words_per_answer = 20
         self.max_words_per_answer = 60
         
-        # Voice validation patterns (from voice profiles)
+        # Load variation patterns for reducing repetition
+        self.variation_patterns = self._load_variation_patterns()
+        
+        # Voice validation patterns (expanded for better detection)
         self.voice_indicators = {
-            'TAIWAN': ['systematic', 'methodology', 'precisely', 'optimization', 'precision', 'technological', 'comprehensive', 'analytical'],
-            'ITALY': ['sophisticated', 'elegant', 'refined', 'meticulous', 'excellence', 'optimal', 'engineering', 'aesthetic'],
-            'INDONESIA': ['practical', 'efficient', 'sustainable', 'environmental', 'effective', 'straightforward', 'accessible'],
-            'USA': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 'state-of-the-art'],
-            'UNITED STATES': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 'state-of-the-art']
+            'TAIWAN': ['systematic', 'methodology', 'precisely', 'optimization', 'precision', 'technological', 
+                       'comprehensive', 'analytical', 'empirical', 'rigorous', 'framework', 'theoretical', 
+                       'structured', 'research-based'],
+            'ITALY': ['sophisticated', 'elegant', 'refined', 'meticulous', 'excellence', 'optimal', 
+                      'engineering', 'aesthetic', 'finesse', 'craftsmanship', 'artisan', 'mastery',
+                      'precision', 'heritage'],
+            'INDONESIA': ['practical', 'efficient', 'sustainable', 'environmental', 'effective', 'straightforward', 
+                          'accessible', 'cost-effective', 'reliable', 'versatile', 'clear', 'sustainable'],
+            'USA': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 
+                    'state-of-the-art', 'breakthrough', 'revolutionary', 'next-generation', 'optimize',
+                    'maximize', 'high-performance'],
+            'UNITED STATES': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 
+                              'state-of-the-art', 'breakthrough', 'revolutionary', 'next-generation', 'optimize',
+                              'maximize', 'high-performance']
         }
+    
+    def _load_variation_patterns(self) -> Dict:
+        """Load variation patterns from config"""
+        try:
+            patterns_path = Path(__file__).parent.parent / "config" / "variation_patterns.yaml"
+            if patterns_path.exists():
+                with open(patterns_path, 'r', encoding='utf-8') as f:
+                    return yaml.safe_load(f)
+            return {}
+        except Exception as e:
+            logger.warning(f"Could not load variation patterns: {e}")
+            return {}
+    
+    def _get_voice_guidance(self, author_country: str) -> str:
+        """Get voice-specific guidance for answer generation"""
+        country_key = author_country.lower().replace(' ', '_')
+        
+        guidance = ""
+        if self.variation_patterns and 'voice_phrases' in self.variation_patterns:
+            voice_phrases = self.variation_patterns['voice_phrases'].get(country_key, {})
+            
+            if voice_phrases:
+                guidance += f"\n🎨 {author_country.upper()} VOICE EXAMPLES:\n"
+                
+                if 'opening' in voice_phrases:
+                    guidance += f"Opening phrases: {', '.join(voice_phrases['opening'][:3])}\n"
+                
+                if 'technical' in voice_phrases:
+                    guidance += f"Technical phrasing: {', '.join(voice_phrases['technical'][:3])}\n"
+                
+                if 'transition' in voice_phrases:
+                    guidance += f"Transitions: {', '.join(voice_phrases['transition'][:2])}\n"
+        
+        return guidance
     
     def _validate_voice_consistency(self, faq_items: List[Dict], author_country: str, material_name: str) -> Dict:
         """
@@ -337,11 +383,34 @@ Make questions specific to {material_name}, not generic questions."""
                 technical_depth='expert'
             )
             
+            # Add strict voice enforcement
+            country_upper = author_country.upper()
+            if country_upper in self.voice_indicators:
+                voice_words = self.voice_indicators[country_upper]
+                prompt += f"\n\n🎯 VOICE ENFORCEMENT - {author_country} Author ({author_name}):\n"
+                prompt += f"REQUIRED: Use these {author_country}-specific voice indicators naturally in your answer:\n"
+                prompt += f"  • Voice markers: {', '.join(voice_words[:8])}\n"
+                prompt += "  • Include at least 2-3 of these indicators organically\n"
+                prompt += f"  • Write from {author_name}'s perspective and expertise\n"
+                prompt += f"  • Reflect {author_country} cultural communication style\n"
+                
+                # Add voice-specific phrasing examples
+                voice_guidance = self._get_voice_guidance(author_country)
+                if voice_guidance:
+                    prompt += voice_guidance
+            
+            # Add variation guidance to reduce repetition
+            if self.variation_patterns:
+                prompt += "\n\n📊 VARIATION REQUIREMENTS:\n"
+                prompt += "• Vary your opening - avoid starting every answer the same way\n"
+                prompt += "• Rotate technical parameter phrasing (don't always say '1064 nm wavelength')\n"
+                prompt += "• Use different sentence structures and transitions\n"
+                prompt += "• Include material-specific context and applications\n"
+            
             # Add word limit enforcement
             tolerance = 20
-            prompt += f"\n\nSTRICT WORD LIMIT: Write {target_words} words (±{tolerance} words tolerance).\n"
+            prompt += f"\n\n📏 STRICT WORD LIMIT: Write {target_words} words (±{tolerance} words tolerance).\n"
             prompt += "CRITICAL: Include actual property values from material data in your answer.\n"
-            prompt += "REQUIRED: Use author's country-specific voice and technical style.\n"
             prompt += f"MINIMUM: Write at least {self.min_words_per_answer} words for substantive content.\n"
             prompt += f"MAXIMUM: Do NOT exceed {self.max_words_per_answer} words.\n"
             
