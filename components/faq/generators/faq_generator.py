@@ -1,228 +1,142 @@
 #!/usr/bin/env python3
-"""FAQ Component Generator - Material-Specific Question/Answer Generation with Author Voice"""
+"""
+FAQ Component Generator - Discrete, Simple Material-Specific Q&A Generation
+
+This component is DISCRETE and FOCUSED:
+- Generates material-specific FAQ questions and answers
+- NO author voice functionality (handled by separate post-processor)
+- NO frontmatter dependencies
+- NO voice validation
+- Minimal, clean interface
+"""
 
 import json
 import logging
+import os
+import random
+import tempfile
 import time
 import yaml
 from pathlib import Path
-from typing import Dict, Optional, List
+from typing import Dict, List
 from generators.component_generators import APIComponentGenerator, ComponentResult
-from utils.config_loader import load_yaml_config
-from voice.orchestrator import VoiceOrchestrator
 
 logger = logging.getLogger(__name__)
 
 
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+
+# Answer length constraints (words)
+MIN_WORDS_PER_ANSWER = 15
+MAX_WORDS_PER_ANSWER = 50
+
+# Question generation settings
+MIN_QUESTIONS = 5
+MAX_QUESTIONS = 10
+QUESTION_RESEARCH_MAX_TOKENS = 2000
+QUESTION_RESEARCH_TEMPERATURE = 0.7
+
+# Answer generation settings
+ANSWER_GENERATION_TEMPERATURE = 0.6
+TOKEN_ESTIMATION_PER_WORD = 1.3  # Conservative estimate
+TOKEN_SAFETY_MARGIN = 1.5  # Prevent truncation
+
+# API call delays
+API_CALL_DELAY_SECONDS = 0.5
+
+# Data file paths
+MATERIALS_DATA_PATH = "data/Materials.yaml"
+CATEGORIES_DATA_PATH = "data/Categories.yaml"
+
+# ============================================================================
+
+
 class FAQComponentGenerator(APIComponentGenerator):
-    """Generate material-specific FAQ with 7-12 questions using author voice"""
+    """
+    Generate material-specific FAQ with 7-12 questions.
+    
+    Responsibilities:
+    - Generate relevant questions based on material properties
+    - Generate technical answers (20-60 words each)
+    - Return FAQ data structure
+    
+    NOT Responsible For:
+    - Author voice (use VoicePostProcessor separately)
+    - Frontmatter management
+    - Voice validation
+    """
     
     def __init__(self):
         super().__init__("faq")
-        self.min_words_per_answer = 20
-        self.max_words_per_answer = 60
-        
-        # Load variation patterns for reducing repetition
-        self.variation_patterns = self._load_variation_patterns()
-        
-        # Voice validation patterns (expanded for better detection)
-        self.voice_indicators = {
-            'TAIWAN': ['systematic', 'methodology', 'precisely', 'optimization', 'precision', 'technological', 
-                       'comprehensive', 'analytical', 'empirical', 'rigorous', 'framework', 'theoretical', 
-                       'structured', 'research-based'],
-            'ITALY': ['sophisticated', 'elegant', 'refined', 'meticulous', 'excellence', 'optimal', 
-                      'engineering', 'aesthetic', 'finesse', 'craftsmanship', 'artisan', 'mastery',
-                      'precision', 'heritage'],
-            'INDONESIA': ['practical', 'efficient', 'sustainable', 'environmental', 'effective', 'straightforward', 
-                          'accessible', 'cost-effective', 'reliable', 'versatile', 'clear', 'sustainable'],
-            'USA': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 
-                    'state-of-the-art', 'breakthrough', 'revolutionary', 'next-generation', 'optimize',
-                    'maximize', 'high-performance'],
-            'UNITED STATES': ['innovative', 'performance', 'advanced', 'cutting-edge', 'superior', 'enhanced', 
-                              'state-of-the-art', 'breakthrough', 'revolutionary', 'next-generation', 'optimize',
-                              'maximize', 'high-performance']
-        }
-    
-    def _load_variation_patterns(self) -> Dict:
-        """Load variation patterns from config"""
-        try:
-            patterns_path = Path(__file__).parent.parent / "config" / "variation_patterns.yaml"
-            if patterns_path.exists():
-                with open(patterns_path, 'r', encoding='utf-8') as f:
-                    return yaml.safe_load(f)
-            return {}
-        except Exception as e:
-            logger.warning(f"Could not load variation patterns: {e}")
-            return {}
-    
-    def _get_voice_guidance(self, author_country: str) -> str:
-        """Get voice-specific guidance for answer generation"""
-        country_key = author_country.lower().replace(' ', '_')
-        
-        guidance = ""
-        if self.variation_patterns and 'voice_phrases' in self.variation_patterns:
-            voice_phrases = self.variation_patterns['voice_phrases'].get(country_key, {})
-            
-            if voice_phrases:
-                guidance += f"\n🎨 {author_country.upper()} VOICE EXAMPLES:\n"
-                
-                if 'opening' in voice_phrases:
-                    guidance += f"Opening phrases: {', '.join(voice_phrases['opening'][:3])}\n"
-                
-                if 'technical' in voice_phrases:
-                    guidance += f"Technical phrasing: {', '.join(voice_phrases['technical'][:3])}\n"
-                
-                if 'transition' in voice_phrases:
-                    guidance += f"Transitions: {', '.join(voice_phrases['transition'][:2])}\n"
-        
-        return guidance
-    
-    def _validate_voice_consistency(self, faq_items: List[Dict], author_country: str, material_name: str) -> Dict:
-        """
-        Validate that FAQ answers match the author's voice
-        
-        Args:
-            faq_items: List of FAQ question/answer dicts
-            author_country: Author's country (e.g., "Taiwan", "Italy")
-            material_name: Material name for logging
-            
-        Returns:
-            Dict with validation results
-        """
-        # Combine all FAQ text
-        all_text = " ".join([f"{item.get('question', '')} {item.get('answer', '')}" for item in faq_items])
-        text_lower = all_text.lower()
-        
-        # Count voice indicators for each country
-        voice_counts = {}
-        for voice, indicators in self.voice_indicators.items():
-            count = sum(1 for word in indicators if word in text_lower)
-            if count > 0:
-                voice_counts[voice] = count
-        
-        # Determine dominant voice
-        expected_voice = author_country.upper()
-        if not voice_counts:
-            return {
-                'valid': False,
-                'expected_voice': expected_voice,
-                'detected_voice': 'NONE',
-                'voice_counts': {},
-                'warning': f"No clear voice detected in FAQs for {material_name}"
-            }
-        
-        detected_voice = max(voice_counts, key=voice_counts.get)
-        matches = detected_voice == expected_voice
-        
-        result = {
-            'valid': matches,
-            'expected_voice': expected_voice,
-            'detected_voice': detected_voice,
-            'voice_counts': voice_counts,
-            'warning': None if matches else f"Voice mismatch: Expected {expected_voice}, detected {detected_voice}"
-        }
-        
-        # Log validation result
-        if matches:
-            logger.info(f"✅ Voice validation passed: {expected_voice} voice detected ({voice_counts.get(expected_voice, 0)} indicators)")
-        else:
-            logger.warning(f"⚠️  Voice mismatch for {material_name}: Expected {expected_voice}, detected {detected_voice}")
-            logger.warning(f"   Voice distribution: {voice_counts}")
-        
-        return result
-        
-    def _load_frontmatter_data(self, material_name: str) -> Dict:
-        """Load frontmatter data for the material - case-insensitive search"""
-        content_dir = Path("content/frontmatter")
-        
-        # Normalize material name for more flexible matching
-        normalized_name = material_name.lower().replace('_', ' ').replace(' ', '-')
-        
-        potential_paths = [
-            content_dir / f"{material_name.lower()}.yaml",
-            content_dir / f"{material_name.lower().replace(' ', '-')}.yaml",
-            content_dir / f"{material_name.lower().replace('_', '-')}.yaml",
-            content_dir / f"{normalized_name}.yaml",
-            content_dir / f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml",
-            content_dir / f"{normalized_name}-laser-cleaning.yaml"
-        ]
-        
-        for path in potential_paths:
-            if path.exists():
-                try:
-                    return load_yaml_config(str(path))
-                except Exception as e:
-                    logger.warning(f"Could not load frontmatter from {path}: {e}")
-                    continue
-        
-        return {}
+        self.min_words_per_answer = MIN_WORDS_PER_ANSWER
+        self.max_words_per_answer = MAX_WORDS_PER_ANSWER
     
     def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml for property lookups"""
-        materials_path = Path("data/Materials.yaml")
-        if materials_path.exists():
-            try:
-                return load_yaml_config(str(materials_path))
-            except Exception as e:
-                logger.warning(f"Could not load Materials.yaml: {e}")
-        return {}
+        """Load Materials.yaml"""
+        materials_path = Path(MATERIALS_DATA_PATH)
+        if not materials_path.exists():
+            raise FileNotFoundError(f"Materials.yaml not found at {materials_path}")
+        
+        with open(materials_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
     
     def _load_categories_data(self) -> Dict:
-        """Load Categories.yaml for range comparisons"""
-        categories_path = Path("data/Categories.yaml")
-        if categories_path.exists():
-            try:
-                return load_yaml_config(str(categories_path))
-            except Exception as e:
-                logger.warning(f"Could not load Categories.yaml: {e}")
-        return {}
+        """Load Categories.yaml for property ranges"""
+        categories_path = Path(CATEGORIES_DATA_PATH)
+        if not categories_path.exists():
+            raise FileNotFoundError(f"Categories.yaml not found at {categories_path}")
+        
+        with open(categories_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
     
     def _generate_material_questions(
         self,
         material_name: str,
         material_data: Dict,
-        frontmatter_data: Dict,
         categories_data: Dict,
-        api_client=None
+        api_client
     ) -> List[Dict]:
-        """Generate material-specific questions using AI research of public discourse
+        """
+        Generate 7-12 material-specific FAQ questions using AI research.
         
+        Args:
+            material_name: Name of the material
+            material_data: Material properties from Materials.yaml
+            categories_data: Category ranges (currently unused, reserved for future)
+            api_client: API client for generation
+            
         Returns:
             List of question dictionaries with 'question', 'category', 'focus'
         """
-        from research.topic_researcher import TopicResearcher
+        # Validate inputs
+        if not material_data:
+            raise ValueError(f"Empty material_data for {material_name}")
         
-        if not api_client:
-            raise ValueError("API client required for question generation")
+        # Extract material context
+        category = material_data.get('category', 'material')
+        material_props = material_data.get('materialProperties', {})
+        applications = material_data.get('applications', [])
+        machine_settings = material_data.get('machineSettings', {})
         
-        logger.info(f"🔍 Researching what people actually ask about {material_name}...")
-        
-        # Use TopicResearcher to find real public questions
-        researcher = TopicResearcher(api_client)
-        
-        # Load cached research or perform new research
-        research_data = researcher.load_cached_research(material_name, "faq_questions")
-        
-        if not research_data:
-            # Perform AI research on what people actually ask
-            research_prompt = f"""Research what people ACTUALLY ask about {material_name} in the context of laser cleaning and surface treatment.
+        # Build comprehensive research prompt
+        research_prompt = f"""You are a laser cleaning expert researching frequently asked questions about {material_name}.
 
-PRIMARY FOCUS - Laser Cleaning:
-1. Common questions from laser cleaning industry forums and discussions
-2. Concerns raised in technical documentation and safety sheets
-3. Questions from laser cleaning equipment manufacturers
-4. Issues discussed in online communities and Q&A sites
-5. Topics covered in training materials and guides
+MATERIAL CONTEXT:
+• Category: {category}
+• Key Properties: {', '.join([f"{k}: {v}" for k, v in list(material_props.items())[:5]])}
+• Applications: {', '.join(applications[:3]) if applications else 'General industrial use'}
+• Machine Settings: Wavelength {machine_settings.get('wavelength', 'N/A')} nm, Power {machine_settings.get('power', 'N/A')} W
 
-SECONDARY FOCUS - If laser cleaning information is limited:
-6. General material characteristics relevant to surface treatment
-7. Physical and chemical properties that affect cleaning methods
-8. Common applications and handling requirements
-9. Safety considerations and regulatory compliance
-10. Industry-standard practices for this material
+TASK: Generate {MIN_QUESTIONS}-{MAX_QUESTIONS} specific, practical questions that professionals ask about laser cleaning {material_name}.
 
-Generate 7-12 questions based on the material's complexity and available discourse.
-Prioritize laser cleaning-specific questions, but include material characteristic questions if needed.
+REQUIREMENTS:
+1. Questions must be SPECIFIC to {material_name} - not generic
+2. Cover diverse categories: safety, effectiveness, equipment, applications, challenges
+3. Address real-world concerns and technical details
+4. Be practical and actionable
+5. Focus on laser cleaning context specifically
 
 Format as JSON:
 {{
@@ -237,46 +151,39 @@ Format as JSON:
 
 Make questions specific to {material_name}, not generic questions."""
             
-            research_result = api_client.generate_simple(
-                research_prompt,
-                max_tokens=2000,
-                temperature=0.7
-            )
+        research_result = api_client.generate_simple(
+            research_prompt,
+            max_tokens=QUESTION_RESEARCH_MAX_TOKENS,
+            temperature=QUESTION_RESEARCH_TEMPERATURE
+        )
+        
+        if not research_result.success:
+            raise ValueError(f"Failed to research questions: {research_result.error}")
+        
+        # Parse JSON response - simplified, fail-fast approach
+        try:
+            content = research_result.content.strip()
             
-            if not research_result.success:
-                raise ValueError(f"Failed to research questions: {research_result.error}")
-            
-            # Parse JSON response (FAQ-specific structure)
-            try:
-                content = research_result.content.strip()
-                # Extract JSON from markdown code blocks if present
+            # Try to extract JSON from markdown code blocks first
+            if '```' in content:
                 import re
                 json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', content, re.DOTALL)
-                if not json_match:
-                    # Try without code blocks
-                    json_match = re.search(r'\{.*\}', content, re.DOTALL)
-                
                 if json_match:
-                    json_str = json_match.group(1) if json_match.lastindex else json_match.group()
-                    research_data = json.loads(json_str)
-                else:
-                    raise ValueError("No JSON found in AI response")
-                    
-            except (json.JSONDecodeError, ValueError) as e:
-                logger.error(f"Failed to parse AI response: {e}")
-                logger.debug(f"Raw response: {research_result.content[:500]}...")
-                raise ValueError(f"Invalid JSON response from AI: {e}")
+                    content = json_match.group(1)
             
-            logger.info(f"✅ Generated {len(research_data.get('questions', []))} questions from AI research")
+            # Parse JSON
+            research_data = json.loads(content)
+                
+        except json.JSONDecodeError as e:
+            logger.error(f"Invalid JSON from AI: {e}")
+            logger.debug(f"Raw response: {research_result.content[:500]}...")
+            raise ValueError(f"AI returned invalid JSON for question research: {e}")
         
-        # Extract questions from research
         questions = research_data.get('questions', [])
         
-        # Validate we got questions
         if not questions:
             raise ValueError("Research returned no questions")
         
-        # Return all AI-generated questions (AI determines optimal count)
         logger.info(f"✅ AI generated {len(questions)} questions based on material complexity")
         return questions
 
@@ -286,140 +193,122 @@ Make questions specific to {material_name}, not generic questions."""
         material_name: str,
         question: str,
         focus_points: str,
-        frontmatter_data: Dict,
         material_data: Dict,
         categories_data: Dict,
-        target_words: int = 250
+        target_words: int = 45
     ) -> str:
-        """Build AI prompt for FAQ answer generation using Voice service
+        """
+        Build simple, direct prompt for FAQ answer generation.
+        NO voice functionality - just technical accuracy.
         
         Args:
             material_name: Name of the material
             question: The FAQ question
-            focus_points: Key points to address in answer
-            frontmatter_data: Frontmatter data dictionary
+            focus_points: Key points to address
             material_data: Full material data from Materials.yaml
             categories_data: Category ranges from Categories.yaml
-            target_words: Target word count (150-300)
+            target_words: Target word count (20-60)
             
         Returns:
             Complete prompt string for answer generation
         """
-        # Extract author data
-        author_obj = frontmatter_data.get('author', {})
-        if not author_obj or not author_obj.get('country'):
-            raise ValueError(f"No author data found for {material_name} - required for voice system")
-        
-        # Get author details
-        author_name = author_obj.get('name', 'Unknown')
-        author_country = author_obj.get('country', 'Unknown')
-        author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
-        
-        # Initialize VoiceOrchestrator for country-specific voice
-        voice = VoiceOrchestrator(country=author_country)
-        
-        # Extract material properties for context
+        # Extract material properties
         material_props = material_data.get('materialProperties', {})
         category = material_data.get('category', 'material')
         applications = material_data.get('applications', [])
         machine_settings = material_data.get('machineSettings', {})
         
-        # Build comprehensive material context
-        properties_summary = {}
-        for category_key in ['material_characteristics', 'laser_material_interaction']:
-            if category_key in material_props:
-                for prop_name, prop_data in material_props[category_key].items():
-                    if isinstance(prop_data, dict) and 'value' in prop_data:
-                        properties_summary[prop_name] = {
-                            'value': prop_data['value'],
-                            'unit': prop_data.get('unit', ''),
-                            'min': prop_data.get('min'),
-                            'max': prop_data.get('max')
-                        }
+        # Build material context
+        material_context = f"""
+MATERIAL: {material_name}
+CATEGORY: {category}
+
+KEY PROPERTIES:
+{chr(10).join([f"• {k}: {v}" for k, v in material_props.items()])}
+
+MACHINE SETTINGS:
+• Wavelength: {machine_settings.get('wavelength', 'N/A')} nm
+• Power: {machine_settings.get('power', 'N/A')} W
+• Fluence: {machine_settings.get('fluence', 'N/A')} J/cm²
+• Pulse Duration: {machine_settings.get('pulseDuration', 'N/A')} ns
+
+APPLICATIONS:
+{chr(10).join([f"• {app}" for app in applications])}
+"""
         
-        settings_summary = {}
-        for setting_name, setting_data in machine_settings.items():
-            if isinstance(setting_data, dict) and 'value' in setting_data:
-                settings_summary[setting_name] = {
-                    'value': setting_data['value'],
-                    'unit': setting_data.get('unit', ''),
-                    'description': setting_data.get('description', '')
-                }
+        # Build simple, direct prompt
+        prompt = f"""You are a laser cleaning expert answering a technical question about {material_name}.
+
+{material_context}
+
+QUESTION: {question}
+
+FOCUS AREAS: {focus_points}
+
+REQUIREMENTS:
+1. Write EXACTLY {target_words} words (±5 words tolerance)
+2. Be technically accurate - use actual property values from the material data
+3. Be specific to {material_name} - not generic answers
+4. Include concrete numbers and parameters
+5. **ANSWER IN ENGLISH ONLY**
+
+ANSWER ({target_words} words):"""
         
-        # Get category ranges for comparison
-        category_ranges = {}
-        if category in categories_data.get('categories', {}):
-            cat_data = categories_data['categories'][category]
-            if 'category_ranges' in cat_data:
-                category_ranges = cat_data['category_ranges']
+        return prompt
+    
+    def _write_faq_to_materials(
+        self,
+        material_name: str,
+        faq_items: List[Dict]
+    ) -> bool:
+        """Write FAQ to Materials.yaml with atomic write"""
         
-        # Build material context dict
-        material_context = {
-            'material_name': material_name,
-            'category': category,
-            'applications': ', '.join(applications[:5]) if applications else 'General applications',
-            'properties': json.dumps(properties_summary, indent=2),
-            'machine_settings': json.dumps(settings_summary, indent=2),
-            'category_ranges': json.dumps(category_ranges, indent=2) if category_ranges else 'No category data'
-        }
+        materials_path = Path(MATERIALS_DATA_PATH)
         
-        # Build author dict
-        author_dict = {
-            'name': author_name,
-            'country': author_country,
-            'expertise': author_expertise
-        }
-        
-        # Call Voice service to generate FAQ answer prompt
         try:
-            prompt = voice.get_unified_prompt(
-                component_type='technical_faq_answer',
-                material_context=material_context,
-                author=author_dict,
-                question=question,
-                focus_points=focus_points,
-                target_words=target_words,
-                include_property_values=True,
-                technical_depth='expert'
-            )
+            # Load Materials.yaml
+            with open(materials_path, 'r', encoding='utf-8') as f:
+                materials_data = yaml.safe_load(f) or {}
             
-            # Add strict voice enforcement
-            country_upper = author_country.upper()
-            if country_upper in self.voice_indicators:
-                voice_words = self.voice_indicators[country_upper]
-                prompt += f"\n\n🎯 VOICE ENFORCEMENT - {author_country} Author ({author_name}):\n"
-                prompt += f"REQUIRED: Use these {author_country}-specific voice indicators naturally in your answer:\n"
-                prompt += f"  • Voice markers: {', '.join(voice_words[:8])}\n"
-                prompt += "  • Include at least 2-3 of these indicators organically\n"
-                prompt += f"  • Write from {author_name}'s perspective and expertise\n"
-                prompt += f"  • Reflect {author_country} cultural communication style\n"
+            # Navigate to materials section
+            if 'materials' not in materials_data:
+                raise ValueError("No 'materials' section found in Materials.yaml")
+            
+            materials_section = materials_data['materials']
+            
+            # Find material (case-insensitive)
+            actual_key = None
+            for key in materials_section.keys():
+                if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
+                    actual_key = key
+                    break
+            
+            if not actual_key:
+                raise ValueError(f"Material {material_name} not found in Materials.yaml")
+            
+            # Write FAQ
+            materials_section[actual_key]['faq'] = faq_items
+            
+            # Atomic write using tempfile (matches Subtitle/Caption pattern)
+            temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
+            try:
+                os.close(temp_fd)  # Close file descriptor before writing
+                with open(temp_path, 'w', encoding='utf-8') as f:
+                    yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
                 
-                # Add voice-specific phrasing examples
-                voice_guidance = self._get_voice_guidance(author_country)
-                if voice_guidance:
-                    prompt += voice_guidance
-            
-            # Add variation guidance to reduce repetition
-            if self.variation_patterns:
-                prompt += "\n\n📊 VARIATION REQUIREMENTS:\n"
-                prompt += "• Vary your opening - avoid starting every answer the same way\n"
-                prompt += "• Rotate technical parameter phrasing (don't always say '1064 nm wavelength')\n"
-                prompt += "• Use different sentence structures and transitions\n"
-                prompt += "• Include material-specific context and applications\n"
-            
-            # Add word limit enforcement
-            tolerance = 20
-            prompt += f"\n\n📏 STRICT WORD LIMIT: Write {target_words} words (±{tolerance} words tolerance).\n"
-            prompt += "CRITICAL: Include actual property values from material data in your answer.\n"
-            prompt += f"MINIMUM: Write at least {self.min_words_per_answer} words for substantive content.\n"
-            prompt += f"MAXIMUM: Do NOT exceed {self.max_words_per_answer} words.\n"
-            
-            logger.info(f"✅ Generated FAQ answer prompt for: {question[:50]}... ({author_country} voice, {target_words}w)")
-            
-            return prompt
+                # Atomic rename
+                Path(temp_path).replace(materials_path)
+                logger.info(f"✅ FAQ written to Materials.yaml → materials.{actual_key}.faq")
+                return True
+                
+            except Exception as e:
+                # Cleanup temp file on error
+                if Path(temp_path).exists():
+                    Path(temp_path).unlink()
+                raise e
             
         except Exception as e:
-            logger.error(f"Failed to generate FAQ answer prompt via Voice service: {e}")
+            logger.error(f"Failed to write FAQ to Materials.yaml: {e}")
             raise
     
     def generate(
@@ -427,29 +316,35 @@ Make questions specific to {material_name}, not generic questions."""
         material_name: str,
         material_data: Dict,
         api_client=None,
-        author_info: Optional[Dict] = None,
-        frontmatter_data: Optional[Dict] = None,
-        schema_fields: Optional[Dict] = None,
+        **kwargs  # Accept but ignore extra parameters
     ) -> ComponentResult:
-        """Generate complete FAQ with 7-12 questions for the material
+        """
+        Generate complete FAQ with 7-12 questions for the material.
         
+        Args:
+            material_name: Name of the material
+            material_data: Material properties dictionary
+            api_client: API client for generation (required)
+            **kwargs: Extra parameters (ignored - for compatibility)
+            
         Returns:
             ComponentResult with generated FAQ content in YAML format
         """
         try:
+            # Input validation
+            if not api_client:
+                raise ValueError("API client required for FAQ generation")
+            
+            if not material_data or not isinstance(material_data, dict):
+                raise ValueError(f"Valid material_data dict required for {material_name}")
+            
             logger.info(f"🎯 Generating FAQ for {material_name}...")
             
-            # Load frontmatter if not provided
-            if not frontmatter_data:
-                frontmatter_data = self._load_frontmatter_data(material_name)
-                if not frontmatter_data:
-                    raise ValueError(f"No frontmatter data found for {material_name}")
-            
-            # Load Materials.yaml and Categories.yaml for context
+            # Load data files
             materials_yaml = self._load_materials_data()
             categories_yaml = self._load_categories_data()
             
-            # Get material data from Materials.yaml
+            # Get full material data from Materials.yaml
             if 'materials' in materials_yaml and material_name in materials_yaml['materials']:
                 full_material_data = materials_yaml['materials'][material_name]
             else:
@@ -461,7 +356,6 @@ Make questions specific to {material_name}, not generic questions."""
             questions = self._generate_material_questions(
                 material_name,
                 full_material_data,
-                frontmatter_data,
                 categories_yaml,
                 api_client
             )
@@ -472,51 +366,40 @@ Make questions specific to {material_name}, not generic questions."""
             total_questions = len(questions)
             
             for idx, q_dict in enumerate(questions, 1):
-                question = q_dict.get('question') or q_dict.get('template')  # Support both AI-generated and legacy format
+                question = q_dict.get('question') or q_dict.get('template')
                 focus = q_dict['focus']
                 
-                # Vary word count (20-60 range - concise and accessible)
-                if idx <= 2:
-                    target_words = 58  # Comprehensive for early questions
-                elif idx >= total_questions - 1:
-                    target_words = 55  # Moderate for late questions
-                else:
-                    target_words = 45  # Standard middle questions
+                # Completely random word count between min and max
+                target_words = random.randint(MIN_WORDS_PER_ANSWER, MAX_WORDS_PER_ANSWER)
                 
-                logger.info(f"  Question {idx}/{total_questions}: {question[:60]}...")
+                logger.info(f"  Question {idx}/{total_questions}: {question[:60]}... (target: {target_words}w)")
                 
-                # Build prompt
+                # Build prompt - simple and direct
                 prompt = self._build_faq_answer_prompt(
                     material_name,
                     question,
                     focus,
-                    frontmatter_data,
                     full_material_data,
                     categories_yaml,
                     target_words
                 )
                 
-                # Generate answer via API
-                if not api_client:
-                    raise ValueError("API client required for FAQ answer generation")
-                
-                # Calculate max_tokens for target word count (fail-fast: explicit values required)
-                # FAQ answers: 150-300 words
-                # Token estimation: ~1.3 tokens per word (conservative)
-                # Safety margin: 1.5x to prevent truncation
-                max_tokens = int(target_words * 1.3 * 1.5)  # Explicit calculation
+                # Calculate max_tokens
+                max_tokens = int(target_words * TOKEN_ESTIMATION_PER_WORD * TOKEN_SAFETY_MARGIN)
                 
                 try:
+                    # Generate answer
                     response = api_client.generate_simple(
                         prompt,
-                        max_tokens=max_tokens,  # Explicit - no defaults
-                        temperature=0.6  # Slightly creative for natural FAQ responses
+                        system_prompt=None,
+                        max_tokens=max_tokens,
+                        temperature=ANSWER_GENERATION_TEMPERATURE
                     )
                     
                     if not response.success:
                         raise ValueError(f"API generation failed: {response.error}")
                     
-                    answer = response.content
+                    answer = response.content.strip()
                     word_count = len(answer.split())
                     total_words += word_count
                     
@@ -530,28 +413,18 @@ Make questions specific to {material_name}, not generic questions."""
                     
                     faq_items.append({
                         'question': question,
-                        'answer': answer.strip()
+                        'answer': answer
                     })
                     
                     # Brief delay between API calls
-                    time.sleep(0.5)
+                    time.sleep(API_CALL_DELAY_SECONDS)
                     
                 except Exception as e:
                     logger.error(f"    ❌ Failed to generate answer: {e}")
                     raise
             
-            # Build FAQ structure - simplified to only questions and answers
+            # Build simple FAQ structure - just questions and answers
             faq_structure = faq_items
-            
-            # Validate voice consistency
-            author_obj = frontmatter_data.get('author', {})
-            author_country = author_obj.get('country', 'Unknown')
-            
-            voice_validation = self._validate_voice_consistency(faq_items, author_country, material_name)
-            
-            if not voice_validation['valid']:
-                logger.warning(f"⚠️  {voice_validation['warning']}")
-                logger.info(f"   💡 Consider regenerating FAQs with stronger {voice_validation['expected_voice']} voice enforcement")
             
             # Convert to YAML format
             faq_yaml = yaml.dump({'faq': faq_structure}, 
@@ -561,15 +434,14 @@ Make questions specific to {material_name}, not generic questions."""
             
             logger.info(f"✅ FAQ generation complete: {len(faq_items)} questions, {total_words} total words")
             
-            # Add voice validation info to result metadata
-            result = self._create_result(faq_yaml, success=True)
-            if hasattr(result, 'metadata'):
-                result.metadata['voice_validation'] = voice_validation
+            # Write to Materials.yaml using dedicated method (atomic write)
+            self._write_faq_to_materials(
+                material_name=material_name,
+                faq_items=faq_structure
+            )
             
-            return result
+            return self._create_result(faq_yaml, success=True)
             
         except Exception as e:
-            logger.error(f"❌ FAQ generation failed for {material_name}: {e}")
-            from utils.ai.loud_errors import component_failure
-            component_failure(self.component_type, str(e), material=material_name)
+            logger.error(f"FAQ generation failed: {e}")
             return self._create_result("", success=False, error_message=str(e))
