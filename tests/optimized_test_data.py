@@ -13,7 +13,15 @@ _OPTIMIZED_DATA = {
             "category": "metal",
             "density": "2.70 g/cm³",
             "melting_point": "660.3°C",
-            "author_id": "USA_AUTHOR"
+            "author": {
+                "id": 4,
+                "name": "Todd Dunning",
+                "country": "United States",
+                "sex": "m",
+                "title": "MA",
+                "expertise": "Optical Materials for Laser Systems",
+                "image": "/images/author/todd-dunning.jpg"
+            }
         },
         "copper": {
             "name": "copper", 
@@ -21,7 +29,15 @@ _OPTIMIZED_DATA = {
             "category": "metal",
             "density": "8.96 g/cm³",
             "melting_point": "1084.6°C",
-            "author_id": "INDONESIA_AUTHOR"
+            "author": {
+                "id": 3,
+                "name": "Ikmanda Roswati",
+                "country": "Indonesia",
+                "sex": "m",
+                "title": "Ph.D.",
+                "expertise": "Ultrafast Laser Physics and Material Interactions",
+                "image": "/images/author/ikmanda-roswati.jpg"
+            }
         },
         "steel": {
             "name": "steel",
@@ -29,29 +45,53 @@ _OPTIMIZED_DATA = {
             "category": "alloy",
             "density": "7.85 g/cm³",
             "melting_point": "1370°C",
-            "author_id": "ITALY_AUTHOR"
+            "author": {
+                "id": 2,
+                "name": "Alessandro Moretti",
+                "country": "Italy",
+                "sex": "m",
+                "title": "Ph.D.",
+                "expertise": "Laser-Based Additive Manufacturing",
+                "image": "/images/author/alessandro-moretti.jpg"
+            }
         }
     },
     "authors": {
-        "TAIWAN_AUTHOR": {
+        1: {
+            "id": 1,
             "name": "Yi-Chun Lin",
             "country": "Taiwan",
-            "expertise": "Laser surface engineering and materials science"
+            "sex": "f",
+            "title": "Ph.D.",
+            "expertise": "Laser Materials Processing",
+            "image": "/images/author/yi-chun-lin.jpg"
         },
-        "ITALY_AUTHOR": {
+        2: {
+            "id": 2,
             "name": "Alessandro Moretti",
             "country": "Italy",
-            "expertise": "Industrial laser applications and precision manufacturing"
+            "sex": "m",
+            "title": "Ph.D.",
+            "expertise": "Laser-Based Additive Manufacturing",
+            "image": "/images/author/alessandro-moretti.jpg"
         },
-        "INDONESIA_AUTHOR": {
+        3: {
+            "id": 3,
             "name": "Ikmanda Roswati",
             "country": "Indonesia",
-            "expertise": "Sustainable laser cleaning technologies"
+            "sex": "m",
+            "title": "Ph.D.",
+            "expertise": "Ultrafast Laser Physics and Material Interactions",
+            "image": "/images/author/ikmanda-roswati.jpg"
         },
-        "USA_AUTHOR": {
+        4: {
+            "id": 4,
             "name": "Todd Dunning",
             "country": "United States",
-            "expertise": "Advanced laser cleaning systems and innovation"
+            "sex": "m",
+            "title": "MA",
+            "expertise": "Optical Materials for Laser Systems",
+            "image": "/images/author/todd-dunning.jpg"
         }
     },
     "test_configs": {
