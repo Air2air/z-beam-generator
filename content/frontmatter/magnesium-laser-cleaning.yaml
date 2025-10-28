@@ -30,13 +30,6 @@ caption:
   word_count:
     after: 54
     before: 30
-captions:
-  after_text: Microscopic examination shows a remarkable transformation of the Magnesium alloy surface post-laser cleaning, with contamination layers reduced to negligible levels under 500x magnification. Specifically, the oxide layer thickness has decreased to under 0.5 micrometers, while organic residues are virtually eliminated, reflecting a 95% reduction compared to the initial state. Furthermore, the surface uniformity has improved significantly, as evidenced by a surface roughness value of Ra 0.8 micrometers, which enhances corrosion resistance and suitability for general cleaning applications. At this stage, one might note, um, a slight variation in reflectivity across treated zones, though this remains within acceptable limits. Consequently, these quantified results (including a cleaning efficiency of 98%) demonstrate the effectiveness of tailored laser settings in preserving substrate integrity. From a Taiwan technical documentation standard, such outcomes validate the precision
-    of pulsed laser systems for lightweight metal applications, ensuring optimal performance in industrial contexts.
-  author: Yi-Chun Lin
-  before_text: Surface analysis reveals significant contamination on the Magnesium alloy substrate, characterized by a heterogeneous oxide layer and organic residues under 500x magnification. At this resolution, the oxide layer thickness measures approximately 12.5 micrometers, which, combined with irregular carbon-based deposits ranging from 3 to 7 micrometers, poses a substantial challenge for achieving uniform cleaning. Additionally, the contamination exhibits a patchy distribution pattern, with denser accumulations near micro-crevices, potentially compromising the structural integrity if not addressed. From a Taiwan technical perspective, such layered impurities demand precise laser parameter calibration to avoid substrate damage. Perhaps, considering the alloy’s low melting point, this level of contamination underscores the critical need for controlled energy density during cleaning.
-  generated: '2025-10-21T14:10:01.032959Z'
-  generation_method: ai_research
 category: metal
 description: Laser cleaning parameters for Magnesium
 environmentalImpact:
@@ -472,3 +465,8 @@ faq:
   answer: Magnesium's low melting point (~650°C) and high reactivity demand extremely precise laser parameters. We must carefully control fluence near 1.2 J/cm² to ablate oxides without melting the base material, a much narrower process window than for steel or aluminum. This requires meticulous parameter tuning for successful, damage-free results.
 - question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
   answer: For magnesium cleaning, pulsed fiber lasers operating at 1064 nm are optimal. With a fluence of 1.2 J/cm² and a 10 ns pulse width, this setup minimizes thermal input, preventing damage to the sensitive substrate. A scanning speed of 500 mm/s ensures efficient and uniform oxide layer removal.
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922179Z'
+  structure_version: '2.0'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922187Z'
