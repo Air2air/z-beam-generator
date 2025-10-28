@@ -13,7 +13,7 @@ _OPTIMIZED_DATA = {
             "category": "metal",
             "density": "2.70 g/cm³",
             "melting_point": "660.3°C",
-            "author_id": "US_AUTHOR"
+            "author_id": "USA_AUTHOR"
         },
         "copper": {
             "name": "copper", 
@@ -21,7 +21,7 @@ _OPTIMIZED_DATA = {
             "category": "metal",
             "density": "8.96 g/cm³",
             "melting_point": "1084.6°C",
-            "author_id": "CA_AUTHOR"
+            "author_id": "INDONESIA_AUTHOR"
         },
         "steel": {
             "name": "steel",
@@ -33,20 +33,25 @@ _OPTIMIZED_DATA = {
         }
     },
     "authors": {
-        "US_AUTHOR": {
-            "name": "John Smith",
-            "country": "US",
-            "expertise": "Industrial cleaning"
+        "TAIWAN_AUTHOR": {
+            "name": "Yi-Chun Lin",
+            "country": "Taiwan",
+            "expertise": "Laser surface engineering and materials science"
         },
         "ITALY_AUTHOR": {
             "name": "Alessandro Moretti",
             "country": "Italy",
-            "expertise": "Laser materials engineering"
+            "expertise": "Industrial laser applications and precision manufacturing"
         },
         "INDONESIA_AUTHOR": {
             "name": "Ikmanda Roswati",
             "country": "Indonesia",
-            "expertise": "Industrial laser applications"
+            "expertise": "Sustainable laser cleaning technologies"
+        },
+        "USA_AUTHOR": {
+            "name": "Todd Dunning",
+            "country": "United States",
+            "expertise": "Advanced laser cleaning systems and innovation"
         }
     },
     "test_configs": {
