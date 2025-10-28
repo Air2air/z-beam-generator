@@ -829,12 +829,6 @@ materials:
       word_count:
         after: 40
         before: 68
-    captions:
-      after_text: Bottom line - this cleaning really cleaned up that surface. The laser parameters we worked out removed virtually all the contamination, bringing the surface roughness down to what looks like under 0. 8 microns. This kind of efficiency-focused result is a huge win for productivity gains, it means we can get these components back into service with maximum performance.
-      author: Todd Dunning
-      before_text: Looking at these results, this aluminum's got a pretty significant oxide layer, I'd estimate around 4 to 6 microns thick. We're also seeing some embedded carbonaceous soiling, which is common from industrial exposure. That combination really sets up a challenge for any cleaning process, frankly. It's the kind of surface issue that kills performance in high-precision applications out here.
-      generated: '2025-10-22T00:44:35.403116Z'
-      generation_method: ai_research
     category: metal
     description: Laser cleaning parameters for Aluminum
     environmentalImpact:
@@ -856,50 +850,42 @@ materials:
       benefit: Air Quality Improvement
       description: Laser cleaning of aluminum eliminates the use of chemical solvents and abrasive media, preventing the release of volatile organic compounds (VOCs) and particulate matter (PM) into the atmosphere. The process is contained and fume-free, leveraging aluminum's high thermal conductivity for efficient, localized contaminant removal without generating secondary airborne waste.
     faq:
-      author: Todd Dunning
-      author_country: United States (California)
-      avg_words_per_answer: 40.0
-      generated: '2025-10-27T12:56:39.351355Z'
-      generation_method: intelligent_scoring
-      questions:
-      - answer: Aluminum's high thermal conductivity (237 W/m·K) enables rapid heat dissipation during laser cleaning. However, exceeding its 660°C melting point can cause surface melting and microstructural damage, compromising the material's integrity.
-        category: heat_effects
-        question: How does heat affect Aluminum during laser cleaning?
-        word_count: 30
-      - answer: Aluminum's high reflectivity, often exceeding 90% at 1064 nm, dictates laser-material interaction. This necessitates careful wavelength selection and sufficient power density to overcome reflection and ensure efficient energy coupling for effective contaminant removal.
-        category: reflectivity_challenges
-        question: Why does Aluminum's reflectivity matter for laser cleaning?
-        word_count: 33
-      - answer: Yes, contaminants can severely damage aluminum's surface. At 1064 nm wavelength, laser cleaning effectively removes corrosive agents that cause pitting and oxidation. This prevents permanent degradation of the material's structural integrity.
-        category: surface_damage_from_contaminants
-        question: Can contaminants damage Aluminum's surface?
-        word_count: 31
-      - answer: Aluminum's exceptional strength-to-weight ratio, with a density of approximately 2.7 g/cm³, makes it ideal for weight-sensitive applications in aerospace and automotive industries. Its natural corrosion resistance also ensures long-term durability in demanding environments.
-        category: application_advantages
-        question: Why is Aluminum chosen for its main applications?
-        word_count: 33
-      - answer: Yes, laser cleaning can damage aluminum, primarily through excessive energy input. At a 1064 nm wavelength, high power or low scan speeds can cause surface melting and micro-cracking. To prevent this, carefully optimize parameters like the 500 mm/s scan speed to remove contaminants without compromising the base material.
-        category: damage_risks
-        question: Can laser cleaning damage Aluminum?
-        word_count: 48
-      - answer: After laser cleaning, aluminum's freshly exposed surface is highly reactive. Immediate application of a protective coating, such as a chromate conversion or anodized layer, is essential to prevent rapid re-oxidation. For temporary storage, keep the material in a low-humidity, controlled environment to preserve the pristine surface quality for subsequent processes like welding or bonding.
-        category: post_treatment
-        question: What care does Aluminum need after cleaning?
-        word_count: 54
-      - answer: For aluminum, verify cleaning effectiveness through visual inspection for uniform matte finish and water break testing. The 1064 nm wavelength is ideal for removing oxides without damaging the base metal. Quantitative methods like contact angle measurement can confirm the required surface energy for subsequent processes like bonding or coating.
-        category: quality_verification
-        question: How can I verify Aluminum was cleaned properly?
-        word_count: 49
-      - answer: Aluminum is not inherently fragile during laser cleaning when using proper parameters. With a 1064 nm wavelength and controlled energy density, the process removes contaminants without compromising the structural integrity. Precise control prevents heat-affected zone issues, ensuring the metal's ductility is preserved.
-        category: fragility_risks
-        question: Is Aluminum fragile during laser cleaning?
-        word_count: 42
-      - answer: Aluminum's high thermal conductivity of 237 W/m·K necessitates careful management to prevent heat accumulation. Effective cooling between passes is critical to avoid surface oxidation and metallurgical damage. This ensures the integrity of the cleaned substrate is maintained throughout the process.
-        category: thermal_management
-        question: What temperature considerations exist for Aluminum?
-        word_count: 40
-      total_questions: 9
-      total_words: 360
+    - answer: Aluminum's high thermal conductivity (237 W/m·K) enables rapid heat dissipation during laser cleaning. However, exceeding its 660°C melting point can cause surface melting and microstructural damage, compromising the material's integrity.
+      category: heat_effects
+      question: How does heat affect Aluminum during laser cleaning?
+      word_count: 30
+    - answer: Aluminum's high reflectivity, often exceeding 90% at 1064 nm, dictates laser-material interaction. This necessitates careful wavelength selection and sufficient power density to overcome reflection and ensure efficient energy coupling for effective contaminant removal.
+      category: reflectivity_challenges
+      question: Why does Aluminum's reflectivity matter for laser cleaning?
+      word_count: 33
+    - answer: Yes, contaminants can severely damage aluminum's surface. At 1064 nm wavelength, laser cleaning effectively removes corrosive agents that cause pitting and oxidation. This prevents permanent degradation of the material's structural integrity.
+      category: surface_damage_from_contaminants
+      question: Can contaminants damage Aluminum's surface?
+      word_count: 31
+    - answer: Aluminum's exceptional strength-to-weight ratio, with a density of approximately 2.7 g/cm³, makes it ideal for weight-sensitive applications in aerospace and automotive industries. Its natural corrosion resistance also ensures long-term durability in demanding environments.
+      category: application_advantages
+      question: Why is Aluminum chosen for its main applications?
+      word_count: 33
+    - answer: Yes, laser cleaning can damage aluminum, primarily through excessive energy input. At a 1064 nm wavelength, high power or low scan speeds can cause surface melting and micro-cracking. To prevent this, carefully optimize parameters like the 500 mm/s scan speed to remove contaminants without compromising the base material.
+      category: damage_risks
+      question: Can laser cleaning damage Aluminum?
+      word_count: 48
+    - answer: After laser cleaning, aluminum's freshly exposed surface is highly reactive. Immediate application of a protective coating, such as a chromate conversion or anodized layer, is essential to prevent rapid re-oxidation. For temporary storage, keep the material in a low-humidity, controlled environment to preserve the pristine surface quality for subsequent processes like welding or bonding.
+      category: post_treatment
+      question: What care does Aluminum need after cleaning?
+      word_count: 54
+    - answer: For aluminum, verify cleaning effectiveness through visual inspection for uniform matte finish and water break testing. The 1064 nm wavelength is ideal for removing oxides without damaging the base metal. Quantitative methods like contact angle measurement can confirm the required surface energy for subsequent processes like bonding or coating.
+      category: quality_verification
+      question: How can I verify Aluminum was cleaned properly?
+      word_count: 49
+    - answer: Aluminum is not inherently fragile during laser cleaning when using proper parameters. With a 1064 nm wavelength and controlled energy density, the process removes contaminants without compromising the structural integrity. Precise control prevents heat-affected zone issues, ensuring the metal's ductility is preserved.
+      category: fragility_risks
+      question: Is Aluminum fragile during laser cleaning?
+      word_count: 42
+    - answer: Aluminum's high thermal conductivity of 237 W/m·K necessitates careful management to prevent heat accumulation. Effective cooling between passes is critical to avoid surface oxidation and metallurgical damage. This ensures the integrity of the cleaned substrate is maintained throughout the process.
+      category: thermal_management
+      question: What temperature considerations exist for Aluminum?
+      word_count: 40
     images:
       hero:
         alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
@@ -1210,6 +1196,11 @@ materials:
       generation_method: ai_research_voice
       word_count: 7
     title: Aluminum Laser Cleaning
+    material_metadata:
+      last_updated: '2025-10-27T23:46:20.363334Z'
+      structure_version: '2.0'
+      restructured_date: '2025-10-27T23:46:20.363369Z'
+      normalization_applied: true
   Ash:
     applications:
     - Cultural Heritage Restoration
@@ -1264,68 +1255,42 @@ materials:
       benefit: Air Quality Improvement
       description: Eliminates volatile organic compounds from chemical cleaning
     faq:
-      author: Todd Dunning
-      author_country: United States (California)
-      avg_words_per_answer: 36.7
-      characteristics:
-        component_type: faq
-        key_traits:
-        - Highly porous and absorbent structure
-        - Variable composition depending on source material
-        - Extremely fragile and prone to surface damage
-        - Can contain embedded unburned carbon particles
-        reasoning: Ash is primarily relevant in conservation contexts (historical documents, fire-damaged artifacts) rather than industrial manufacturing. Its technical complexity is exceptionally high due to extreme fragility and variable composition, requiring delicate laser parameters to avoid destroying the substrate. While inexpensive as a material, the objects it contaminates (art, documents) often have high cultural value. Safety concerns arise from potential inhalation of fine particulate during cleaning, requiring respiratory protection.
-        research_method: ai_web_research
-        researched_date: '2025-10-27T16:44:44.305625Z'
-        scores:
-          aesthetic_importance: 7
-          cost_impact: 1
-          cultural_historical_value: 8
-          environmental_sensitivity: 3
-          industrial_relevance: 2
-          safety_concerns: 6
-          technical_complexity: 9
-      generated: '2025-10-27T15:39:01.436694Z'
-      generation_method: intelligent_scoring
-      questions:
-      - answer: Ash exhibits moderate thermal sensitivity, so your 5.1 J/cm² fluence must be carefully managed. The wood's porous structure aids heat dissipation, but exceeding ~200°C risks irreversible surface charring. With a 50% overlap, monitor for discoloration to stay below this critical temperature threshold.
-        category: heat_effects
-        question: How does heat affect Ash during laser cleaning?
-        word_count: 42
-      - answer: Ash requires careful handling at 5.1 J/cm² due to its open grain structure. The 1064 nm wavelength is well-absorbed, but excessive fluence can compromise its integrity by removing softer earlywood.
-        category: fragility_risks
-        question: Is Ash fragile during laser cleaning?
-        word_count: 30
-      - answer: Yes, contaminants can definitely damage Ash's surface. At 5.1 J/cm², embedded particles can absorb laser energy, leading to localized overheating and potential etching or discoloration of the wood
-        category: surface_damage_from_contaminants
-        question: Can contaminants damage Ash's surface?
-        word_count: 28
-      - answer: Ash is selected for its excellent strength-to-weight ratio and shock resistance, particularly in aerospace and musical instruments. Its open grain structure responds well to 1064 nm laser cleaning at 5.1 J/cm², allowing for precise surface preparation without compromising structural integrity.
-        category: application_advantages
-        question: Why is Ash chosen for its main applications?
-        word_count: 40
-      - answer: Yes, laser cleaning can damage Ash wood. At 5.1 J/cm², the 1064 nm wavelength can easily carbonize its porous surface. Monitor for darkening or a brittle texture, and always begin with a low fluence test on an inconspicuous area to establish a safe parameter window.
-        category: damage_risks
-        question: Can laser cleaning damage Ash?
-        word_count: 45
-      - answer: After laser cleaning at 5.1 J/cm², this wood requires immediate application of a protective oil or lacquer. Proper sealing prevents moisture absorption and preserves its open-grain structure. Store the component in a stable, climate-controlled environment to maintain its integrity.
-        category: post_treatment
-        question: What care does Ash need after cleaning?
-        word_count: 39
-      - answer: Verify proper cleaning by examining the surface under 10x magnification for uniform, undamaged wood grain. With your 5.1 J/cm² fluence, the surface should appear consistent in color and texture, free from any residual contaminants or laser-induced discoloration.
-        category: quality_verification
-        question: How can I verify Ash was cleaned properly?
-        word_count: 37
-      - answer: Ash's moderate density and hardness require careful fluence control around 5.1 J/cm². Its cellular structure can absorb energy efficiently, but excessive power must be avoided to prevent etching the wood grain.
-        category: unique_properties
-        question: What physical properties make Ash unique for cleaning?
-        word_count: 31
-      - answer: Ash has low thermal conductivity, so heat accumulation is a primary concern. With your 5.1 J/cm² fluence, closely monitor the surface temperature to prevent charring. Ensure adequate cooling between passes to manage the energy deposited in the wood.
-        category: thermal_management
-        question: What temperature considerations exist for Ash?
-        word_count: 38
-      total_questions: 9
-      total_words: 330
+    - answer: Ash exhibits moderate thermal sensitivity, so your 5.1 J/cm² fluence must be carefully managed. The wood's porous structure aids heat dissipation, but exceeding ~200°C risks irreversible surface charring. With a 50% overlap, monitor for discoloration to stay below this critical temperature threshold.
+      category: heat_effects
+      question: How does heat affect Ash during laser cleaning?
+      word_count: 42
+    - answer: Ash requires careful handling at 5.1 J/cm² due to its open grain structure. The 1064 nm wavelength is well-absorbed, but excessive fluence can compromise its integrity by removing softer earlywood.
+      category: fragility_risks
+      question: Is Ash fragile during laser cleaning?
+      word_count: 30
+    - answer: Yes, contaminants can definitely damage Ash's surface. At 5.1 J/cm², embedded particles can absorb laser energy, leading to localized overheating and potential etching or discoloration of the wood
+      category: surface_damage_from_contaminants
+      question: Can contaminants damage Ash's surface?
+      word_count: 28
+    - answer: Ash is selected for its excellent strength-to-weight ratio and shock resistance, particularly in aerospace and musical instruments. Its open grain structure responds well to 1064 nm laser cleaning at 5.1 J/cm², allowing for precise surface preparation without compromising structural integrity.
+      category: application_advantages
+      question: Why is Ash chosen for its main applications?
+      word_count: 40
+    - answer: Yes, laser cleaning can damage Ash wood. At 5.1 J/cm², the 1064 nm wavelength can easily carbonize its porous surface. Monitor for darkening or a brittle texture, and always begin with a low fluence test on an inconspicuous area to establish a safe parameter window.
+      category: damage_risks
+      question: Can laser cleaning damage Ash?
+      word_count: 45
+    - answer: After laser cleaning at 5.1 J/cm², this wood requires immediate application of a protective oil or lacquer. Proper sealing prevents moisture absorption and preserves its open-grain structure. Store the component in a stable, climate-controlled environment to maintain its integrity.
+      category: post_treatment
+      question: What care does Ash need after cleaning?
+      word_count: 39
+    - answer: Verify proper cleaning by examining the surface under 10x magnification for uniform, undamaged wood grain. With your 5.1 J/cm² fluence, the surface should appear consistent in color and texture, free from any residual contaminants or laser-induced discoloration.
+      category: quality_verification
+      question: How can I verify Ash was cleaned properly?
+      word_count: 37
+    - answer: Ash's moderate density and hardness require careful fluence control around 5.1 J/cm². Its cellular structure can absorb energy efficiently, but excessive power must be avoided to prevent etching the wood grain.
+      category: unique_properties
+      question: What physical properties make Ash unique for cleaning?
+      word_count: 31
+    - answer: Ash has low thermal conductivity, so heat accumulation is a primary concern. With your 5.1 J/cm² fluence, closely monitor the surface temperature to prevent charring. Ensure adequate cooling between passes to manage the energy deposited in the wood.
+      category: thermal_management
+      question: What temperature considerations exist for Ash?
+      word_count: 38
     images:
       hero:
         alt: Ash surface undergoing laser cleaning showing precise contamination removal
@@ -8786,12 +8751,6 @@ materials:
       word_count:
         after: 30
         before: 51
-    captions:
-      after_text: Microscopic examination shows a remarkable transformation of the copper surface post-laser cleaning, with contamination layers reduced to negligible traces at 500x magnification. Compared to the initial 15-25 micrometer thick deposits, the cleaned surface exhibits a uniform texture, with residual contaminants below 1 micrometer, restoring optimal conductivity and aesthetic quality. This improvement, achieved through targeted laser technology, enhances the material’s performance in general applications and minimizes waste, aligning with sustainable practices vital in Indonesia’s industrial context. Furthermore, the process efficiency—completing cleaning in under 10 minutes per square meter—demonstrates practical benefits for large-scale operations.
-      author: Ikmanda Roswati
-      before_text: Surface analysis reveals significant contamination on the copper alloy surface, observed at 500x magnification, with layered deposits of organic residues and oxide formations. These contaminants, measuring approximately 15-25 micrometers in thickness, form irregular patchy patterns across the material, posing a substantial challenge for effective cleaning. From an Indonesian technical perspective, such contamination hinders thermal and electrical conductivity, critical for copper’s industrial applications, while also risking environmental degradation if not addressed sustainably.
-      generated: '2025-10-21T14:57:34.356902Z'
-      generation_method: ai_research
     category: metal
     description: Laser cleaning parameters for Copper
     environmentalImpact:
@@ -8813,50 +8772,42 @@ materials:
       benefit: Air Quality Improvement
       description: Copper laser cleaning eliminates airborne particulate matter by vaporizing contaminants without generating secondary waste, unlike abrasive methods. This non-contact process prevents the release of copper dust, a hazardous air pollutant, ensuring captured fumes are filtered without residual solid waste.
     faq:
-      author: Ikmanda Roswati
-      author_country: Indonesia
-      avg_words_per_answer: 40.3
-      generated: '2025-10-27T12:06:19.082488Z'
-      generation_method: intelligent_scoring
-      questions:
-      - answer: Copper's high reflectivity, approximately 90% at 1064 nm, presents a key challenge. This property causes most laser energy to reflect away, demanding precise wavelength selection and higher fluence to ensure effective contaminant removal without substrate damage.
-        category: reflectivity_challenges
-        question: Why does Copper's reflectivity matter for laser cleaning?
-        word_count: 36
-      - answer: Ya, kontaminan dapat merusak permukaan tembaga melalui oksidasi dan korosi, yang mengancam konduktivitas listriknya. Pembersihan laser pada 1064 nm secara efektif menghilangkan lapisan ini tanpa merusak substrat logam, memulihkan integrit
-        category: surface_damage_from_contaminants
-        question: Can contaminants damage Copper's surface?
-        word_count: 30
-      - answer: Laser cleaning dapat merusak tembaga jika parameter melebihi fluence threshold 2.5 J/cm². Tanda peringatan utama adalah perubahan warna menjadi kemerahan atau oranye akibat oksidasi. Atur daya laser dan kecepatan scan secara konservatif untuk mencegah kerus
-        category: damage_risks
-        question: Can laser cleaning damage Copper?
-        word_count: 35
-      - answer: Setelah pembersihan laser, aplikasikan lapisan pelindung seperti lacquer bening atau inhibitor tarnish untuk mencegah oksidasi. Simpan tembaga di lingkungan kering dengan suhu terkontrol, karena material ini sangat rentan terhadap perubahan warna pada kelembapan di atas 60%.
-        category: post_treatment
-        question: What care does Copper need after cleaning?
-        word_count: 36
-      - answer: Copper's exceptional thermal conductivity facilitates rapid heat dissipation during laser cleaning. However, its high reflectivity at the 1064 nm wavelength necessitates precise fluence control. Exceeding the material's thermal limits can induce surface oxidation and annealing, compromising its electrical and mechanical properties.
-        category: heat_effects
-        question: How does heat affect Copper during laser cleaning?
-        word_count: 41
-      - answer: Copper maintains excellent structural integrity during laser cleaning at the recommended 1064 nm wavelength. Its inherent ductility prevents embrittlement, ensuring the material is not fragile. Proper parameter control, particularly with a 100W power range, is crucial to avoid any potential surface annealing that could affect the underlying microstructure.
-        category: fragility_risks
-        question: Is Copper fragile during laser cleaning?
-        word_count: 48
-      - answer: Verifikasi pembersihan tembaga yang optimal dapat dilakukan melalui inspeksi visual dan uji water break. Permukaan harus bebas dari residu oksida dan menunjukkan sudut kontak air >90 derajat. Pengaturan fluence laser harus tetap di bawah 2.5 J/cm² untuk mencegah ablasi berlebih pada material lunak ini.
-        category: quality_verification
-        question: How can I verify Copper was cleaned properly?
-        word_count: 44
-      - answer: Oxide layers and heat-induced scale present the greatest removal challenge on copper. Their strong chemical bonding requires precise laser parameters, particularly with copper's high reflectivity at the 1064 nm wavelength. This necessitates optimized fluence above the 2.5 J/cm² threshold to break these tenacious bonds without substrate damage.
-        category: contaminant_removal_difficulty
-        question: Which contaminants are hardest to remove from Copper?
-        word_count: 47
-      - answer: Laser cleaning copper is safe when proper protocols are followed. The 1064 nm wavelength is highly reflective, posing a burn hazard and requiring Class 4 laser safety enclosures. Operators must wear protective eyewear specifically rated for this wavelength to mitigate reflected radiation risks during the process.
-        category: safety
-        question: Is laser cleaning Copper safe?
-        word_count: 46
-      total_questions: 9
-      total_words: 363
+    - answer: Copper's high reflectivity, approximately 90% at 1064 nm, presents a key challenge. This property causes most laser energy to reflect away, demanding precise wavelength selection and higher fluence to ensure effective contaminant removal without substrate damage.
+      category: reflectivity_challenges
+      question: Why does Copper's reflectivity matter for laser cleaning?
+      word_count: 36
+    - answer: Ya, kontaminan dapat merusak permukaan tembaga melalui oksidasi dan korosi, yang mengancam konduktivitas listriknya. Pembersihan laser pada 1064 nm secara efektif menghilangkan lapisan ini tanpa merusak substrat logam, memulihkan integrit
+      category: surface_damage_from_contaminants
+      question: Can contaminants damage Copper's surface?
+      word_count: 30
+    - answer: Laser cleaning dapat merusak tembaga jika parameter melebihi fluence threshold 2.5 J/cm². Tanda peringatan utama adalah perubahan warna menjadi kemerahan atau oranye akibat oksidasi. Atur daya laser dan kecepatan scan secara konservatif untuk mencegah kerus
+      category: damage_risks
+      question: Can laser cleaning damage Copper?
+      word_count: 35
+    - answer: Setelah pembersihan laser, aplikasikan lapisan pelindung seperti lacquer bening atau inhibitor tarnish untuk mencegah oksidasi. Simpan tembaga di lingkungan kering dengan suhu terkontrol, karena material ini sangat rentan terhadap perubahan warna pada kelembapan di atas 60%.
+      category: post_treatment
+      question: What care does Copper need after cleaning?
+      word_count: 36
+    - answer: Copper's exceptional thermal conductivity facilitates rapid heat dissipation during laser cleaning. However, its high reflectivity at the 1064 nm wavelength necessitates precise fluence control. Exceeding the material's thermal limits can induce surface oxidation and annealing, compromising its electrical and mechanical properties.
+      category: heat_effects
+      question: How does heat affect Copper during laser cleaning?
+      word_count: 41
+    - answer: Copper maintains excellent structural integrity during laser cleaning at the recommended 1064 nm wavelength. Its inherent ductility prevents embrittlement, ensuring the material is not fragile. Proper parameter control, particularly with a 100W power range, is crucial to avoid any potential surface annealing that could affect the underlying microstructure.
+      category: fragility_risks
+      question: Is Copper fragile during laser cleaning?
+      word_count: 48
+    - answer: Verifikasi pembersihan tembaga yang optimal dapat dilakukan melalui inspeksi visual dan uji water break. Permukaan harus bebas dari residu oksida dan menunjukkan sudut kontak air >90 derajat. Pengaturan fluence laser harus tetap di bawah 2.5 J/cm² untuk mencegah ablasi berlebih pada material lunak ini.
+      category: quality_verification
+      question: How can I verify Copper was cleaned properly?
+      word_count: 44
+    - answer: Oxide layers and heat-induced scale present the greatest removal challenge on copper. Their strong chemical bonding requires precise laser parameters, particularly with copper's high reflectivity at the 1064 nm wavelength. This necessitates optimized fluence above the 2.5 J/cm² threshold to break these tenacious bonds without substrate damage.
+      category: contaminant_removal_difficulty
+      question: Which contaminants are hardest to remove from Copper?
+      word_count: 47
+    - answer: Laser cleaning copper is safe when proper protocols are followed. The 1064 nm wavelength is highly reflective, posing a burn hazard and requiring Class 4 laser safety enclosures. Operators must wear protective eyewear specifically rated for this wavelength to mitigate reflected radiation risks during the process.
+      category: safety
+      question: Is laser cleaning Copper safe?
+      word_count: 46
     images:
       hero:
         alt: Copper surface undergoing laser cleaning showing precise contamination removal
@@ -9167,6 +9118,11 @@ materials:
       generation_method: ai_research_voice
       word_count: 8
     title: Copper Laser Cleaning
+    material_metadata:
+      last_updated: '2025-10-27T23:46:20.363438Z'
+      structure_version: '2.0'
+      restructured_date: '2025-10-27T23:46:20.363457Z'
+      normalization_applied: true
   Crown Glass:
     applications:
     - Aerospace
@@ -34954,50 +34910,42 @@ materials:
       benefit: Air Quality Improvement
       description: Eliminates volatile organic compounds from chemical cleaning
     faq:
-      author: Alessandro Moretti
-      author_country: Italy
-      avg_words_per_answer: 43.7
-      generated: '2025-10-27T12:03:52.974777Z'
-      generation_method: intelligent_scoring
-      questions:
-      - answer: Yes, contaminants can severely damage stainless steel's surface. They initiate localized corrosion, compromising the material's integrity. Our 1064 nm laser process effectively removes these without harming the base metal.
-        category: surface_damage_from_contaminants
-        question: Can contaminants damage Stainless Steel's surface?
-        word_count: 29
-      - answer: Stainless steel is primarily selected for its excellent corrosion resistance, a property derived from its minimum 10.5% chromium content. This ensures long-term structural integrity in demanding environments like aerospace and automotive applications, where material failure is not an option.
-        category: application_advantages
-        question: Why is Stainless Steel chosen for its main applications?
-        word_count: 39
-      - answer: Yes, laser cleaning can damage stainless steel. Excessive energy density, such as exceeding 5.1 J/cm², may cause surface etching or alter the protective passive layer. Monitor for discoloration, a key warning sign of thermal overload, and always optimize parameters.
-        category: damage_risks
-        question: Can laser cleaning damage Stainless Steel?
-        word_count: 39
-      - answer: Following laser cleaning, immediately apply a protective passivation layer to restore the chromium oxide film. For storage, ensure a dry, contaminant-free environment to prevent corrosion initiation, especially given the material's 1064 nm wavelength affinity which leaves a pristine, active surface.
-        category: post_treatment
-        question: What care does Stainless Steel need after cleaning?
-        word_count: 40
-      - answer: Proper verification combines visual inspection for uniform matte finish with scientific measurement. A surface roughness (Ra) below 1.0 µm, confirmed with a profilometer, indicates successful contaminant removal without damaging the underlying stainless steel substrate. This ensures optimal adhesion for subsequent processes.
-        category: quality_verification
-        question: How can I verify Stainless Steel was cleaned properly?
-        word_count: 41
-      - answer: Stainless steel's high reflectivity, often exceeding 60% at 1064 nm, directly challenges laser cleaning efficiency. This property causes a significant portion of the beam energy to be lost rather than absorbed by the surface contaminants. Therefore, selecting the optimal wavelength and pulse parameters is critical to overcome this reflectivity and ensure effective contaminant removal.
-        category: reflectivity_challenges
-        question: Why does Stainless Steel's reflectivity matter for laser cleaning?
-        word_count: 54
-      - answer: The most challenging contaminants are tenacious heat-induced oxides and deeply embedded mill scale. These layers exhibit strong adhesion to the stainless steel substrate, requiring precise laser parameters like a 1064 nm wavelength for effective ablation without compromising the underlying material's corrosion resistance. Their removal complexity is significantly higher than that of superficial oils or paints.
-        category: contaminant_removal_difficulty
-        question: Which contaminants are hardest to remove from Stainless Steel?
-        word_count: 55
-      - answer: Stainless steel's high chromium content, vital for its 1064 nm laser absorption, presents a primary challenge. Its tenacious oxide layer requires precise parameter control to avoid surface etching or metallurgical damage. Maintaining this balance is critical for aerospace and automotive components where surface integrity is paramount.
-        category: application_challenges
-        question: What challenges does Stainless Steel present in use?
-        word_count: 46
-      - answer: Laser cleaning stainless steel is safe when proper protocols are followed. The primary hazard is the intense 1064 nm wavelength laser radiation and the resulting particulate plume. Operators must wear appropriate laser safety eyewear and ensure adequate fume extraction to mitigate risks, allowing for a controlled and effective cleaning process.
-        category: safety
-        question: Is laser cleaning Stainless Steel safe?
-        word_count: 50
-      total_questions: 9
-      total_words: 393
+    - answer: Yes, contaminants can severely damage stainless steel's surface. They initiate localized corrosion, compromising the material's integrity. Our 1064 nm laser process effectively removes these without harming the base metal.
+      category: surface_damage_from_contaminants
+      question: Can contaminants damage Stainless Steel's surface?
+      word_count: 29
+    - answer: Stainless steel is primarily selected for its excellent corrosion resistance, a property derived from its minimum 10.5% chromium content. This ensures long-term structural integrity in demanding environments like aerospace and automotive applications, where material failure is not an option.
+      category: application_advantages
+      question: Why is Stainless Steel chosen for its main applications?
+      word_count: 39
+    - answer: Yes, laser cleaning can damage stainless steel. Excessive energy density, such as exceeding 5.1 J/cm², may cause surface etching or alter the protective passive layer. Monitor for discoloration, a key warning sign of thermal overload, and always optimize parameters.
+      category: damage_risks
+      question: Can laser cleaning damage Stainless Steel?
+      word_count: 39
+    - answer: Following laser cleaning, immediately apply a protective passivation layer to restore the chromium oxide film. For storage, ensure a dry, contaminant-free environment to prevent corrosion initiation, especially given the material's 1064 nm wavelength affinity which leaves a pristine, active surface.
+      category: post_treatment
+      question: What care does Stainless Steel need after cleaning?
+      word_count: 40
+    - answer: Proper verification combines visual inspection for uniform matte finish with scientific measurement. A surface roughness (Ra) below 1.0 µm, confirmed with a profilometer, indicates successful contaminant removal without damaging the underlying stainless steel substrate. This ensures optimal adhesion for subsequent processes.
+      category: quality_verification
+      question: How can I verify Stainless Steel was cleaned properly?
+      word_count: 41
+    - answer: Stainless steel's high reflectivity, often exceeding 60% at 1064 nm, directly challenges laser cleaning efficiency. This property causes a significant portion of the beam energy to be lost rather than absorbed by the surface contaminants. Therefore, selecting the optimal wavelength and pulse parameters is critical to overcome this reflectivity and ensure effective contaminant removal.
+      category: reflectivity_challenges
+      question: Why does Stainless Steel's reflectivity matter for laser cleaning?
+      word_count: 54
+    - answer: The most challenging contaminants are tenacious heat-induced oxides and deeply embedded mill scale. These layers exhibit strong adhesion to the stainless steel substrate, requiring precise laser parameters like a 1064 nm wavelength for effective ablation without compromising the underlying material's corrosion resistance. Their removal complexity is significantly higher than that of superficial oils or paints.
+      category: contaminant_removal_difficulty
+      question: Which contaminants are hardest to remove from Stainless Steel?
+      word_count: 55
+    - answer: Stainless steel's high chromium content, vital for its 1064 nm laser absorption, presents a primary challenge. Its tenacious oxide layer requires precise parameter control to avoid surface etching or metallurgical damage. Maintaining this balance is critical for aerospace and automotive components where surface integrity is paramount.
+      category: application_challenges
+      question: What challenges does Stainless Steel present in use?
+      word_count: 46
+    - answer: Laser cleaning stainless steel is safe when proper protocols are followed. The primary hazard is the intense 1064 nm wavelength laser radiation and the resulting particulate plume. Operators must wear appropriate laser safety eyewear and ensure adequate fume extraction to mitigate risks, allowing for a controlled and effective cleaning process.
+      category: safety
+      question: Is laser cleaning Stainless Steel safe?
+      word_count: 50
     images:
       hero:
         alt: Stainless Steel surface undergoing laser cleaning showing precise contamination removal
@@ -35093,6 +35041,11 @@ materials:
       generation_method: ai_research_voice
       word_count: 10
     title: Stainless Steel Laser Cleaning
+    material_metadata:
+      last_updated: '2025-10-27T23:46:20.363498Z'
+      structure_version: '2.0'
+      restructured_date: '2025-10-27T23:46:20.363514Z'
+      normalization_applied: true
   Steel:
     applications:
     - Automotive
@@ -36792,50 +36745,42 @@ materials:
       benefit: Air Quality Improvement
       description: Titanium laser cleaning eliminates airborne particulate matter by selectively ablating contaminants without vaporizing the underlying substrate, as the process operates below titanium's vaporization threshold. This prevents the generation of hazardous metal fumes and respirable dust, ensuring no secondary air pollution from the base material.
     faq:
-      author: Yi-Chun Lin
-      author_country: Taiwan
-      avg_words_per_answer: 41.1
-      generated: '2025-10-27T13:55:42.662321Z'
-      generation_method: intelligent_scoring
-      questions:
-      - answer: Titanium is selected for aerospace and chemical applications due to its exceptional strength-to-weight ratio and outstanding corrosion resistance. Its ability to withstand aggressive environments ensures long-term structural integrity and reliability.
-        category: application_advantages
-        question: Why is Titanium chosen for its main applications?
-        word_count: 30
-      - answer: Yes, laser cleaning can damage titanium if the fluence exceeds approximately 2.5 J/cm². This can cause surface oxidation and micro-melting. To prevent this, always optimize your power settings and scan speed, and conduct a preliminary test on a small area.
-        category: damage_risks
-        question: Can laser cleaning damage Titanium?
-        word_count: 40
-      - answer: Verify cleaning efficacy through visual inspection for uniform matte finish and water break test. For aerospace applications, confirm oxygen levels remain below 500 ppm to prevent embrittlement, ensuring surface integrity.
-        category: quality_verification
-        question: How can I verify Titanium was cleaned properly?
-        word_count: 30
-      - answer: Thermal oxide layers and embedded aluminum contaminants present the greatest removal challenge from titanium substrates. Their strong adhesion requires precise fluence control near the 2.5 J/cm² threshold to avoid metallurgical damage while ensuring complete ablation.
-        category: contaminant_removal_difficulty
-        question: Which contaminants are hardest to remove from Titanium?
-        word_count: 35
-      - answer: Titanium's high reactivity and low thermal conductivity present significant challenges. Its strong affinity for oxygen causes rapid re-oxidation after cleaning, requiring controlled atmospheres. The material's poor heat dissipation, with a thermal conductivity around 21 W/m·K, also elevates the risk of thermal distortion if laser parameters are not meticulously managed.
-        category: application_challenges
-        question: What challenges does Titanium present in use?
-        word_count: 49
-      - answer: Laser cleaning titanium is safe when proper protocols are followed. The primary hazard is the intense 1064 nm wavelength reflection, requiring certified laser safety eyewear and fume extraction for any generated particles. Always conduct a test pass at a low power setting, such as 100W, to verify parameter efficacy on the specific alloy.
-        category: safety
-        question: Is laser cleaning Titanium safe?
-        word_count: 53
-      - answer: For titanium laser cleaning, a 100W fiber laser typically provides optimal results. This power effectively removes contaminants while preserving the base material's integrity. Excessive power risks surface oxidation, while insufficient power fails to achieve thorough cleaning, especially for aerospace-grade titanium requiring precise ablation thresholds.
-        category: machine_settings
-        question: What laser power works best for Titanium?
-        word_count: 44
-      - answer: For titanium laser cleaning, maximize scan speed while maintaining the 2.5 J/cm² fluence threshold. Optimize throughput by utilizing the highest available power, such as 100W, and a 50μm spot size. This strategy ensures effective oxide removal in a single pass, significantly boosting productivity for aerospace components.
-        category: speed_efficiency
-        question: What's the fastest approach for Titanium?
-        word_count: 46
-      - answer: Cleaning titanium typically requires 3 passes at 500 mm/s scan speed. The process duration depends on oxide layer thickness and the required 50% beam overlap. With a 100 W laser at 1064 nm wavelength, surface areas are processed efficiently while maintaining material integrity.
-        category: time_duration
-        question: How long does cleaning Titanium typically take?
-        word_count: 43
-      total_questions: 9
-      total_words: 370
+    - answer: Titanium is selected for aerospace and chemical applications due to its exceptional strength-to-weight ratio and outstanding corrosion resistance. Its ability to withstand aggressive environments ensures long-term structural integrity and reliability.
+      category: application_advantages
+      question: Why is Titanium chosen for its main applications?
+      word_count: 30
+    - answer: Yes, laser cleaning can damage titanium if the fluence exceeds approximately 2.5 J/cm². This can cause surface oxidation and micro-melting. To prevent this, always optimize your power settings and scan speed, and conduct a preliminary test on a small area.
+      category: damage_risks
+      question: Can laser cleaning damage Titanium?
+      word_count: 40
+    - answer: Verify cleaning efficacy through visual inspection for uniform matte finish and water break test. For aerospace applications, confirm oxygen levels remain below 500 ppm to prevent embrittlement, ensuring surface integrity.
+      category: quality_verification
+      question: How can I verify Titanium was cleaned properly?
+      word_count: 30
+    - answer: Thermal oxide layers and embedded aluminum contaminants present the greatest removal challenge from titanium substrates. Their strong adhesion requires precise fluence control near the 2.5 J/cm² threshold to avoid metallurgical damage while ensuring complete ablation.
+      category: contaminant_removal_difficulty
+      question: Which contaminants are hardest to remove from Titanium?
+      word_count: 35
+    - answer: Titanium's high reactivity and low thermal conductivity present significant challenges. Its strong affinity for oxygen causes rapid re-oxidation after cleaning, requiring controlled atmospheres. The material's poor heat dissipation, with a thermal conductivity around 21 W/m·K, also elevates the risk of thermal distortion if laser parameters are not meticulously managed.
+      category: application_challenges
+      question: What challenges does Titanium present in use?
+      word_count: 49
+    - answer: Laser cleaning titanium is safe when proper protocols are followed. The primary hazard is the intense 1064 nm wavelength reflection, requiring certified laser safety eyewear and fume extraction for any generated particles. Always conduct a test pass at a low power setting, such as 100W, to verify parameter efficacy on the specific alloy.
+      category: safety
+      question: Is laser cleaning Titanium safe?
+      word_count: 53
+    - answer: For titanium laser cleaning, a 100W fiber laser typically provides optimal results. This power effectively removes contaminants while preserving the base material's integrity. Excessive power risks surface oxidation, while insufficient power fails to achieve thorough cleaning, especially for aerospace-grade titanium requiring precise ablation thresholds.
+      category: machine_settings
+      question: What laser power works best for Titanium?
+      word_count: 44
+    - answer: For titanium laser cleaning, maximize scan speed while maintaining the 2.5 J/cm² fluence threshold. Optimize throughput by utilizing the highest available power, such as 100W, and a 50μm spot size. This strategy ensures effective oxide removal in a single pass, significantly boosting productivity for aerospace components.
+      category: speed_efficiency
+      question: What's the fastest approach for Titanium?
+      word_count: 46
+    - answer: Cleaning titanium typically requires 3 passes at 500 mm/s scan speed. The process duration depends on oxide layer thickness and the required 50% beam overlap. With a 100 W laser at 1064 nm wavelength, surface areas are processed efficiently while maintaining material integrity.
+      category: time_duration
+      question: How long does cleaning Titanium typically take?
+      word_count: 43
     images:
       hero:
         alt: Titanium surface undergoing laser cleaning showing precise contamination removal
@@ -36927,6 +36872,11 @@ materials:
       generation_method: ai_research_voice
       word_count: 9
     title: Titanium Laser Cleaning
+    material_metadata:
+      last_updated: '2025-10-27T23:46:20.363552Z'
+      structure_version: '2.0'
+      restructured_date: '2025-10-27T23:46:20.363563Z'
+      normalization_applied: true
   Titanium Carbide:
     applications:
     - Aerospace

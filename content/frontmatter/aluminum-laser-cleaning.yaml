@@ -29,12 +29,6 @@ caption:
   word_count:
     after: 40
     before: 68
-captions:
-  after_text: Bottom line - this cleaning really cleaned up that surface. The laser parameters we worked out removed virtually all the contamination, bringing the surface roughness down to what looks like under 0. 8 microns. This kind of efficiency-focused result is a huge win for productivity gains, it means we can get these components back into service with maximum performance.
-  author: Todd Dunning
-  before_text: Looking at these results, this aluminum's got a pretty significant oxide layer, I'd estimate around 4 to 6 microns thick. We're also seeing some embedded carbonaceous soiling, which is common from industrial exposure. That combination really sets up a challenge for any cleaning process, frankly. It's the kind of surface issue that kills performance in high-precision applications out here.
-  generated: '2025-10-22T00:44:35.403116Z'
-  generation_method: ai_research
 category: metal
 description: Laser cleaning parameters for Aluminum
 environmentalImpact:
@@ -56,50 +50,42 @@ environmentalImpact:
   benefit: Air Quality Improvement
   description: Laser cleaning of aluminum eliminates the use of chemical solvents and abrasive media, preventing the release of volatile organic compounds (VOCs) and particulate matter (PM) into the atmosphere. The process is contained and fume-free, leveraging aluminum's high thermal conductivity for efficient, localized contaminant removal without generating secondary airborne waste.
 faq:
-  author: Todd Dunning
-  author_country: United States (California)
-  avg_words_per_answer: 40.0
-  generated: '2025-10-27T12:56:39.351355Z'
-  generation_method: intelligent_scoring
-  questions:
-  - answer: Aluminum's high thermal conductivity (237 W/m·K) enables rapid heat dissipation during laser cleaning. However, exceeding its 660°C melting point can cause surface melting and microstructural damage, compromising the material's integrity.
-    category: heat_effects
-    question: How does heat affect Aluminum during laser cleaning?
-    word_count: 30
-  - answer: Aluminum's high reflectivity, often exceeding 90% at 1064 nm, dictates laser-material interaction. This necessitates careful wavelength selection and sufficient power density to overcome reflection and ensure efficient energy coupling for effective contaminant removal.
-    category: reflectivity_challenges
-    question: Why does Aluminum's reflectivity matter for laser cleaning?
-    word_count: 33
-  - answer: Yes, contaminants can severely damage aluminum's surface. At 1064 nm wavelength, laser cleaning effectively removes corrosive agents that cause pitting and oxidation. This prevents permanent degradation of the material's structural integrity.
-    category: surface_damage_from_contaminants
-    question: Can contaminants damage Aluminum's surface?
-    word_count: 31
-  - answer: Aluminum's exceptional strength-to-weight ratio, with a density of approximately 2.7 g/cm³, makes it ideal for weight-sensitive applications in aerospace and automotive industries. Its natural corrosion resistance also ensures long-term durability in demanding environments.
-    category: application_advantages
-    question: Why is Aluminum chosen for its main applications?
-    word_count: 33
-  - answer: Yes, laser cleaning can damage aluminum, primarily through excessive energy input. At a 1064 nm wavelength, high power or low scan speeds can cause surface melting and micro-cracking. To prevent this, carefully optimize parameters like the 500 mm/s scan speed to remove contaminants without compromising the base material.
-    category: damage_risks
-    question: Can laser cleaning damage Aluminum?
-    word_count: 48
-  - answer: After laser cleaning, aluminum's freshly exposed surface is highly reactive. Immediate application of a protective coating, such as a chromate conversion or anodized layer, is essential to prevent rapid re-oxidation. For temporary storage, keep the material in a low-humidity, controlled environment to preserve the pristine surface quality for subsequent processes like welding or bonding.
-    category: post_treatment
-    question: What care does Aluminum need after cleaning?
-    word_count: 54
-  - answer: For aluminum, verify cleaning effectiveness through visual inspection for uniform matte finish and water break testing. The 1064 nm wavelength is ideal for removing oxides without damaging the base metal. Quantitative methods like contact angle measurement can confirm the required surface energy for subsequent processes like bonding or coating.
-    category: quality_verification
-    question: How can I verify Aluminum was cleaned properly?
-    word_count: 49
-  - answer: Aluminum is not inherently fragile during laser cleaning when using proper parameters. With a 1064 nm wavelength and controlled energy density, the process removes contaminants without compromising the structural integrity. Precise control prevents heat-affected zone issues, ensuring the metal's ductility is preserved.
-    category: fragility_risks
-    question: Is Aluminum fragile during laser cleaning?
-    word_count: 42
-  - answer: Aluminum's high thermal conductivity of 237 W/m·K necessitates careful management to prevent heat accumulation. Effective cooling between passes is critical to avoid surface oxidation and metallurgical damage. This ensures the integrity of the cleaned substrate is maintained throughout the process.
-    category: thermal_management
-    question: What temperature considerations exist for Aluminum?
-    word_count: 40
-  total_questions: 9
-  total_words: 360
+- answer: Aluminum's high thermal conductivity (237 W/m·K) enables rapid heat dissipation during laser cleaning. However, exceeding its 660°C melting point can cause surface melting and microstructural damage, compromising the material's integrity.
+  category: heat_effects
+  question: How does heat affect Aluminum during laser cleaning?
+  word_count: 30
+- answer: Aluminum's high reflectivity, often exceeding 90% at 1064 nm, dictates laser-material interaction. This necessitates careful wavelength selection and sufficient power density to overcome reflection and ensure efficient energy coupling for effective contaminant removal.
+  category: reflectivity_challenges
+  question: Why does Aluminum's reflectivity matter for laser cleaning?
+  word_count: 33
+- answer: Yes, contaminants can severely damage aluminum's surface. At 1064 nm wavelength, laser cleaning effectively removes corrosive agents that cause pitting and oxidation. This prevents permanent degradation of the material's structural integrity.
+  category: surface_damage_from_contaminants
+  question: Can contaminants damage Aluminum's surface?
+  word_count: 31
+- answer: Aluminum's exceptional strength-to-weight ratio, with a density of approximately 2.7 g/cm³, makes it ideal for weight-sensitive applications in aerospace and automotive industries. Its natural corrosion resistance also ensures long-term durability in demanding environments.
+  category: application_advantages
+  question: Why is Aluminum chosen for its main applications?
+  word_count: 33
+- answer: Yes, laser cleaning can damage aluminum, primarily through excessive energy input. At a 1064 nm wavelength, high power or low scan speeds can cause surface melting and micro-cracking. To prevent this, carefully optimize parameters like the 500 mm/s scan speed to remove contaminants without compromising the base material.
+  category: damage_risks
+  question: Can laser cleaning damage Aluminum?
+  word_count: 48
+- answer: After laser cleaning, aluminum's freshly exposed surface is highly reactive. Immediate application of a protective coating, such as a chromate conversion or anodized layer, is essential to prevent rapid re-oxidation. For temporary storage, keep the material in a low-humidity, controlled environment to preserve the pristine surface quality for subsequent processes like welding or bonding.
+  category: post_treatment
+  question: What care does Aluminum need after cleaning?
+  word_count: 54
+- answer: For aluminum, verify cleaning effectiveness through visual inspection for uniform matte finish and water break testing. The 1064 nm wavelength is ideal for removing oxides without damaging the base metal. Quantitative methods like contact angle measurement can confirm the required surface energy for subsequent processes like bonding or coating.
+  category: quality_verification
+  question: How can I verify Aluminum was cleaned properly?
+  word_count: 49
+- answer: Aluminum is not inherently fragile during laser cleaning when using proper parameters. With a 1064 nm wavelength and controlled energy density, the process removes contaminants without compromising the structural integrity. Precise control prevents heat-affected zone issues, ensuring the metal's ductility is preserved.
+  category: fragility_risks
+  question: Is Aluminum fragile during laser cleaning?
+  word_count: 42
+- answer: Aluminum's high thermal conductivity of 237 W/m·K necessitates careful management to prevent heat accumulation. Effective cooling between passes is critical to avoid surface oxidation and metallurgical damage. This ensures the integrity of the cleaned substrate is maintained throughout the process.
+  category: thermal_management
+  question: What temperature considerations exist for Aluminum?
+  word_count: 40
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
@@ -493,3 +479,8 @@ subtitle_metadata:
   generation_method: ai_research_voice
   word_count: 7
 title: Aluminum Laser Cleaning
+material_metadata:
+  last_updated: '2025-10-27T23:46:20.363334Z'
+  structure_version: '2.0'
+  restructured_date: '2025-10-27T23:46:20.363369Z'
+  normalization_applied: true

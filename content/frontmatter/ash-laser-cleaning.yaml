@@ -52,68 +52,42 @@ environmentalImpact:
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
 faq:
-  author: Todd Dunning
-  author_country: United States (California)
-  avg_words_per_answer: 36.7
-  characteristics:
-    component_type: faq
-    key_traits:
-    - Highly porous and absorbent structure
-    - Variable composition depending on source material
-    - Extremely fragile and prone to surface damage
-    - Can contain embedded unburned carbon particles
-    reasoning: Ash is primarily relevant in conservation contexts (historical documents, fire-damaged artifacts) rather than industrial manufacturing. Its technical complexity is exceptionally high due to extreme fragility and variable composition, requiring delicate laser parameters to avoid destroying the substrate. While inexpensive as a material, the objects it contaminates (art, documents) often have high cultural value. Safety concerns arise from potential inhalation of fine particulate during cleaning, requiring respiratory protection.
-    research_method: ai_web_research
-    researched_date: '2025-10-27T16:44:44.305625Z'
-    scores:
-      aesthetic_importance: 7
-      cost_impact: 1
-      cultural_historical_value: 8
-      environmental_sensitivity: 3
-      industrial_relevance: 2
-      safety_concerns: 6
-      technical_complexity: 9
-  generated: '2025-10-27T15:39:01.436694Z'
-  generation_method: intelligent_scoring
-  questions:
-  - answer: Ash exhibits moderate thermal sensitivity, so your 5.1 J/cm² fluence must be carefully managed. The wood's porous structure aids heat dissipation, but exceeding ~200°C risks irreversible surface charring. With a 50% overlap, monitor for discoloration to stay below this critical temperature threshold.
-    category: heat_effects
-    question: How does heat affect Ash during laser cleaning?
-    word_count: 42
-  - answer: Ash requires careful handling at 5.1 J/cm² due to its open grain structure. The 1064 nm wavelength is well-absorbed, but excessive fluence can compromise its integrity by removing softer earlywood.
-    category: fragility_risks
-    question: Is Ash fragile during laser cleaning?
-    word_count: 30
-  - answer: Yes, contaminants can definitely damage Ash's surface. At 5.1 J/cm², embedded particles can absorb laser energy, leading to localized overheating and potential etching or discoloration of the wood
-    category: surface_damage_from_contaminants
-    question: Can contaminants damage Ash's surface?
-    word_count: 28
-  - answer: Ash is selected for its excellent strength-to-weight ratio and shock resistance, particularly in aerospace and musical instruments. Its open grain structure responds well to 1064 nm laser cleaning at 5.1 J/cm², allowing for precise surface preparation without compromising structural integrity.
-    category: application_advantages
-    question: Why is Ash chosen for its main applications?
-    word_count: 40
-  - answer: Yes, laser cleaning can damage Ash wood. At 5.1 J/cm², the 1064 nm wavelength can easily carbonize its porous surface. Monitor for darkening or a brittle texture, and always begin with a low fluence test on an inconspicuous area to establish a safe parameter window.
-    category: damage_risks
-    question: Can laser cleaning damage Ash?
-    word_count: 45
-  - answer: After laser cleaning at 5.1 J/cm², this wood requires immediate application of a protective oil or lacquer. Proper sealing prevents moisture absorption and preserves its open-grain structure. Store the component in a stable, climate-controlled environment to maintain its integrity.
-    category: post_treatment
-    question: What care does Ash need after cleaning?
-    word_count: 39
-  - answer: Verify proper cleaning by examining the surface under 10x magnification for uniform, undamaged wood grain. With your 5.1 J/cm² fluence, the surface should appear consistent in color and texture, free from any residual contaminants or laser-induced discoloration.
-    category: quality_verification
-    question: How can I verify Ash was cleaned properly?
-    word_count: 37
-  - answer: Ash's moderate density and hardness require careful fluence control around 5.1 J/cm². Its cellular structure can absorb energy efficiently, but excessive power must be avoided to prevent etching the wood grain.
-    category: unique_properties
-    question: What physical properties make Ash unique for cleaning?
-    word_count: 31
-  - answer: Ash has low thermal conductivity, so heat accumulation is a primary concern. With your 5.1 J/cm² fluence, closely monitor the surface temperature to prevent charring. Ensure adequate cooling between passes to manage the energy deposited in the wood.
-    category: thermal_management
-    question: What temperature considerations exist for Ash?
-    word_count: 38
-  total_questions: 9
-  total_words: 330
+- answer: Ash exhibits moderate thermal sensitivity, so your 5.1 J/cm² fluence must be carefully managed. The wood's porous structure aids heat dissipation, but exceeding ~200°C risks irreversible surface charring. With a 50% overlap, monitor for discoloration to stay below this critical temperature threshold.
+  category: heat_effects
+  question: How does heat affect Ash during laser cleaning?
+  word_count: 42
+- answer: Ash requires careful handling at 5.1 J/cm² due to its open grain structure. The 1064 nm wavelength is well-absorbed, but excessive fluence can compromise its integrity by removing softer earlywood.
+  category: fragility_risks
+  question: Is Ash fragile during laser cleaning?
+  word_count: 30
+- answer: Yes, contaminants can definitely damage Ash's surface. At 5.1 J/cm², embedded particles can absorb laser energy, leading to localized overheating and potential etching or discoloration of the wood
+  category: surface_damage_from_contaminants
+  question: Can contaminants damage Ash's surface?
+  word_count: 28
+- answer: Ash is selected for its excellent strength-to-weight ratio and shock resistance, particularly in aerospace and musical instruments. Its open grain structure responds well to 1064 nm laser cleaning at 5.1 J/cm², allowing for precise surface preparation without compromising structural integrity.
+  category: application_advantages
+  question: Why is Ash chosen for its main applications?
+  word_count: 40
+- answer: Yes, laser cleaning can damage Ash wood. At 5.1 J/cm², the 1064 nm wavelength can easily carbonize its porous surface. Monitor for darkening or a brittle texture, and always begin with a low fluence test on an inconspicuous area to establish a safe parameter window.
+  category: damage_risks
+  question: Can laser cleaning damage Ash?
+  word_count: 45
+- answer: After laser cleaning at 5.1 J/cm², this wood requires immediate application of a protective oil or lacquer. Proper sealing prevents moisture absorption and preserves its open-grain structure. Store the component in a stable, climate-controlled environment to maintain its integrity.
+  category: post_treatment
+  question: What care does Ash need after cleaning?
+  word_count: 39
+- answer: Verify proper cleaning by examining the surface under 10x magnification for uniform, undamaged wood grain. With your 5.1 J/cm² fluence, the surface should appear consistent in color and texture, free from any residual contaminants or laser-induced discoloration.
+  category: quality_verification
+  question: How can I verify Ash was cleaned properly?
+  word_count: 37
+- answer: Ash's moderate density and hardness require careful fluence control around 5.1 J/cm². Its cellular structure can absorb energy efficiently, but excessive power must be avoided to prevent etching the wood grain.
+  category: unique_properties
+  question: What physical properties make Ash unique for cleaning?
+  word_count: 31
+- answer: Ash has low thermal conductivity, so heat accumulation is a primary concern. With your 5.1 J/cm² fluence, closely monitor the surface temperature to prevent charring. Ensure adequate cooling between passes to manage the energy deposited in the wood.
+  category: thermal_management
+  question: What temperature considerations exist for Ash?
+  word_count: 38
 images:
   hero:
     alt: Ash surface undergoing laser cleaning showing precise contamination removal
