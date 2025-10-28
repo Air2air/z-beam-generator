@@ -1,6 +1,4 @@
 name: Tempered Glass
-category: glass
-description: Laser cleaning parameters for Tempered Glass
 applications:
 - Aerospace
 - Automotive
@@ -20,47 +18,20 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-machineSettings:
-  dwellTime:
-    value: 100
-    unit: μs
-    description: Optimal dwell time per cleaning spot
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    description: Optimal fluence threshold for contaminant removal without glass damage
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Optimal overlap ratio for complete coverage without excessive energy deposition
-  passCount:
-    value: 2
-    unit: passes
-    description: Optimal number of passes for thorough cleaning
-  powerRange:
-    value: 100
-    unit: W
-    description: Optimal average power for Tempered Glass cleaning without thermal damage
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Optimal pulse width for controlled ablation of contaminants
-  repetitionRate:
-    value: 100
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning with thermal management
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 50
-    unit: μm
-    description: Optimal spot size for precision cleaning on Tempered Glass surface
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Optimal wavelength for Tempered Glass processing with good absorption
+caption:
+  afterText: The cleaned surface of this tempered glass exhibits a pristine, uniform finish, free from residues or micro-defects that could compromise its optical clarity. Restoration via laser-based additive manufacturing achieves exceptional quality, seamlessly reintegrating material layers without altering the inherent compressive stresses. Integrity remains fully intact, ensuring reliability for aerospace, automotive, and electronics applications.
+  author: Alessandro Moretti
+  beforeText: Under microscopic scrutiny, the tempered glass surface displays a heavily contaminated condition, with adherent particulates of irregular morphology. These contaminants—fine silica dust and hydrocarbon residues, ranging 2-15 microns—feature porous textures and clustered formations. Degradation manifests as etched pits and incipient microcracks, undermining durability in aerospace and electronics uses.
+  character_count:
+    after: 442
+    before: 404
+  generated: '2025-10-25T15:28:12.280662Z'
+  generation_method: ai_research
+  word_count:
+    after: 53
+    before: 48
+category: glass
+description: Laser cleaning parameters for Tempered Glass
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -87,114 +58,121 @@ images:
   micro:
     alt: Microscopic view of Tempered Glass surface after laser cleaning showing detailed surface structure
     url: /images/material/tempered-glass-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopic scrutiny, the tempered glass surface displays a heavily contaminated condition, with adherent
-    particulates of irregular morphology. These contaminants—fine silica dust and hydrocarbon residues, ranging 2-15 microns—feature
-    porous textures and clustered formations. Degradation manifests as etched pits and incipient microcracks, undermining
-    durability in aerospace and electronics uses.
-  afterText: The cleaned surface of this tempered glass exhibits a pristine, uniform finish, free from residues or micro-defects
-    that could compromise its optical clarity. Restoration via laser-based additive manufacturing achieves exceptional quality,
-    seamlessly reintegrating material layers without altering the inherent compressive stresses. Integrity remains fully intact,
-    ensuring reliability for aerospace, automotive, and electronics applications.
-  generated: '2025-10-25T15:28:12.280662Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 48
-    after: 53
-  character_count:
-    before: 404
-    after: 442
-subtitle: Precision laser restores tempered glass strength without inducing thermal fractures
-subtitle_metadata:
-  generated: '2025-10-25T21:49:04.920210Z'
-  author_name: Alessandro Moretti
-  author_country: Italy
-  generation_method: ai_research_voice
-  word_count: 10
-  character_count: 83
-subcategory: specialty-glass
-title: Tempered Glass Laser Cleaning
-regulatoryStandards:
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+machineSettings:
+  dwellTime:
+    description: Optimal dwell time per cleaning spot
+    unit: μs
+    value: 100
+  fluenceThreshold:
+    description: Optimal fluence threshold for contaminant removal without glass damage
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  overlapRatio:
+    description: Optimal overlap ratio for complete coverage without excessive energy deposition
+    unit: '%'
+    value: 50
+  passCount:
+    description: Optimal number of passes for thorough cleaning
+    unit: passes
+    value: 2
+  powerRange:
+    description: Optimal average power for Tempered Glass cleaning without thermal damage
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  pulseWidth:
+    description: Optimal pulse width for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 100
+    min: 1
+    max: 200
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Optimal spot size for precision cleaning on Tempered Glass surface
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  wavelength:
+    description: Optimal wavelength for Tempered Glass processing with good absorption
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
   laser_material_interaction:
-    label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    label: Laser-Material Interaction
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    label: Material Characteristics
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from Tempered Glass surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Surface profilometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
     - Laser parameters
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Surface profilometry
+    typicalRanges: 95-99.9% depending on application and material
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+subcategory: specialty-glass
+subtitle: Precision laser restores tempered glass strength without inducing thermal fractures
+subtitle_metadata:
+  author_country: Italy
+  author_name: Alessandro Moretti
+  character_count: 83
+  generated: '2025-10-25T21:49:04.920210Z'
+  generation_method: ai_research_voice
+  word_count: 10
+title: Tempered Glass Laser Cleaning
 faq:
 - question: Can laser cleaning cause tempered glass to shatter due to thermal stress, and how can this be prevented?
-  answer: Yes, laser cleaning risks shattering tempered glass through thermal shock, as rapid heating disrupts its compressive
-    surface stress. Mitigate this with 10 ns pulse widths to limit heat diffusion, maintaining fluence below 2.5 J/cm² at
-    1064 nm wavelength and 100 W power. Air-assisted cooling between passes ensures even dissipation without compromising
-    the material's integrity.
-- question: What laser wavelengths are most effective for removing contaminants from tempered glass without damaging its tempered
-    structure?
-  answer: Unlike UV lasers, which boost absorption in soda-lime tempered glass and heighten subsurface heating risks, IR wavelengths
-    like 1064 nm excel at stripping contaminants while preserving the compressive stress layer. Target a fluence of 2.5 J/cm²
-    with 100 W power for safe, efficient ablation without structural compromise.
+  answer: Yes, laser cleaning risks shattering tempered glass through thermal shock, as rapid heating disrupts its compressive surface stress. Mitigate this with 10 ns pulse widths to limit heat diffusion, maintaining fluence below 2.5 J/cm² at 1064 nm wavelength and 100 W power. Air-assisted cooling between passes ensures even dissipation without compromising the material's integrity.
+- question: What laser wavelengths are most effective for removing contaminants from tempered glass without damaging its tempered structure?
+  answer: Unlike UV lasers, which boost absorption in soda-lime tempered glass and heighten subsurface heating risks, IR wavelengths like 1064 nm excel at stripping contaminants while preserving the compressive stress layer. Target a fluence of 2.5 J/cm² with 100 W power for safe, efficient ablation without structural compromise.
 - question: In automotive applications, how safe is laser cleaning for removing paint or adhesives from tempered windshields?
-  answer: Laser cleaning tempered windshields in automotive repairs is generally safe when using a 1064 nm wavelength and
-    2.5 J/cm² fluence to ablate paint or adhesives without inducing cracks. Vibration risks are minimal at 500 mm/s scan speeds,
-    avoiding edge stress concentrations, as confirmed in repair forum case studies where no shattering occurred post-treatment.
+  answer: Laser cleaning tempered windshields in automotive repairs is generally safe when using a 1064 nm wavelength and 2.5 J/cm² fluence to ablate paint or adhesives without inducing cracks. Vibration risks are minimal at 500 mm/s scan speeds, avoiding edge stress concentrations, as confirmed in repair forum case studies where no shattering occurred post-treatment.
 - question: Does the tempering process alter the optical properties of glass, affecting laser cleaning efficiency?
-  answer: Yes, tempering introduces surface compressive stress that slightly modifies the refractive index, potentially enhancing
-    laser penetration at 1064 nm wavelength. This minimally impacts cleaning efficiency on tempered glass, maintaining optimal
-    fluence around 2.5 J/cm² without residue buildup or damage risk. For aerospace applications, it ensures precise contaminant
-    removal.
+  answer: Yes, tempering introduces surface compressive stress that slightly modifies the refractive index, potentially enhancing laser penetration at 1064 nm wavelength. This minimally impacts cleaning efficiency on tempered glass, maintaining optimal fluence around 2.5 J/cm² without residue buildup or damage risk. For aerospace applications, it ensures precise contaminant removal.
 - question: What are common issues reported when using fiber lasers to clean tempered glass in manufacturing lines?
-  answer: In manufacturing lines, fiber lasers often cause thermal cracking on tempered glass if fluence exceeds 2.5 J/cm²,
-    especially on curves where uneven beam focus leads to patchy contaminant removal. Calibrate for 100 W power and 500 mm/s
-    scan speed to maintain uniform ablation without stressing the brittle structure.
+  answer: In manufacturing lines, fiber lasers often cause thermal cracking on tempered glass if fluence exceeds 2.5 J/cm², especially on curves where uneven beam focus leads to patchy contaminant removal. Calibrate for 100 W power and 500 mm/s scan speed to maintain uniform ablation without stressing the brittle structure.
 - question: Are there specific safety data sheets or guidelines for laser cleaning tempered glass to avoid micro-cracking?
-  answer: Yes, ISO 11553 and OSHA 1910.1096 outline laser safety for brittle materials like tempered glass, emphasizing fluence
-    below 2.5 J/cm² to prevent micro-cracking from thermal stress. Always monitor for fragment hazards during cleaning at
-    100 W power. Consult material-specific SDS for aerospace applications.
+  answer: Yes, ISO 11553 and OSHA 1910.1096 outline laser safety for brittle materials like tempered glass, emphasizing fluence below 2.5 J/cm² to prevent micro-cracking from thermal stress. Always monitor for fragment hazards during cleaning at 100 W power. Consult material-specific SDS for aerospace applications.
 - question: How does laser cleaning compare to chemical methods for restoring tempered glass shower doors?
-  answer: Laser cleaning trumps chemical approaches for tempered glass shower doors, sidestepping etching hazards that solvents
-    inflict on its stress-tempered structure. At 1064 nm wavelength and 2.5 J/cm² fluence, it ablates grime cleanly without
-    surface harm, slashing environmental waste while preserving the glass's robust, shatter-resistant integrity for years.
+  answer: Laser cleaning trumps chemical approaches for tempered glass shower doors, sidestepping etching hazards that solvents inflict on its stress-tempered structure. At 1064 nm wavelength and 2.5 J/cm² fluence, it ablates grime cleanly without surface harm, slashing environmental waste while preserving the glass's robust, shatter-resistant integrity for years.
 - question: What training is recommended for operators handling laser cleaning of tempered glass panels in construction?
-  answer: Operators cleaning tempered glass panels should undergo hands-on simulations to manage heat effectively, maintaining
-    fluence below 2.5 J/cm² to avoid cracking from thermal stress. Training must include spotting tempering defects and obtaining
-    laser safety certification, especially at 100 W power levels.
-- question: Can laser cleaning remove fingerprints or oils from tempered smartphone screens without affecting the oleophobic
-    coating?
-  answer: Yes, with precise low-power settings like 100 W average power and 2.5 J/cm² fluence, laser cleaning effectively
-    removes fingerprints and oils from tempered smartphone screens. This approach minimizes thermal stress on the thin glass,
-    preserving the oleophobic coating's integrity, as confirmed by repair community tests using 1064 nm wavelength.
-- question: What physical properties of tempered glass, like hardness and thermal expansion, must be considered in laser surface
-    treatment?
-  answer: When laser cleaning tempered glass, its Mohs hardness of 5-6 demands fluence below 2.5 J/cm² to prevent surface
-    ablation or micro-cracks. The coefficient of thermal expansion at 9×10^{-6}/°C also requires careful heat management—aim
-    for 100 W power and 500 mm/s scan speed—to avoid thermal stress and shattering.
+  answer: Operators cleaning tempered glass panels should undergo hands-on simulations to manage heat effectively, maintaining fluence below 2.5 J/cm² to avoid cracking from thermal stress. Training must include spotting tempering defects and obtaining laser safety certification, especially at 100 W power levels.
+- question: Can laser cleaning remove fingerprints or oils from tempered smartphone screens without affecting the oleophobic coating?
+  answer: Yes, with precise low-power settings like 100 W average power and 2.5 J/cm² fluence, laser cleaning effectively removes fingerprints and oils from tempered smartphone screens. This approach minimizes thermal stress on the thin glass, preserving the oleophobic coating's integrity, as confirmed by repair community tests using 1064 nm wavelength.
+- question: What physical properties of tempered glass, like hardness and thermal expansion, must be considered in laser surface treatment?
+  answer: When laser cleaning tempered glass, its Mohs hardness of 5-6 demands fluence below 2.5 J/cm² to prevent surface ablation or micro-cracks. The coefficient of thermal expansion at 9×10^{-6}/°C also requires careful heat management—aim for 100 W power and 500 mm/s scan speed—to avoid thermal stress and shattering.

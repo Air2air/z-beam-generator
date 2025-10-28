@@ -1,6 +1,4 @@
 name: Urethane Composites
-category: composite
-description: Laser cleaning parameters for Urethane Composites
 applications:
 - Aerospace
 - Automotive
@@ -20,43 +18,20 @@ author:
   name: Todd Dunning
   sex: m
   title: MA
-machineSettings:
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    description: Fluence threshold for Urethane Composites ablation
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive heating
-  passCount:
-    value: 3
-    unit: passes
-    description: Recommended number of passes for complete contaminant removal
-  powerRange:
-    value: 100
-    unit: W
-    description: Optimal average power for Urethane Composites cleaning without thermal damage
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Nanosecond pulse duration for controlled ablation of composite surface
-  repetitionRate:
-    value: 50
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning with thermal management
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 100
-    unit: μm
-    description: Beam spot diameter for effective cleaning resolution
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR wavelength optimized for Urethane absorption characteristics
+caption:
+  afterText: The cleaned urethane composite surface restores to a smooth, contaminant-free finish, preserving full material integrity and original properties. This quality supports precise aerospace component fabrication.
+  author: Todd Dunning
+  beforeText: Under microscopy, urethane composite surfaces reveal patchy contamination from fine particulates and oily films, causing pitting and micro-cracking that degrade aerospace structural integrity.
+  character_count:
+    after: 208
+    before: 192
+  generated: '2025-10-25T15:37:13.119678Z'
+  generation_method: ai_research
+  word_count:
+    after: 25
+    before: 23
+category: composite
+description: Laser cleaning parameters for Urethane Composites
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -83,107 +58,115 @@ images:
   micro:
     alt: Microscopic view of Urethane Composites surface after laser cleaning showing detailed surface structure
     url: /images/material/urethane-composites-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, urethane composite surfaces reveal patchy contamination from fine particulates and oily films,
-    causing pitting and micro-cracking that degrade aerospace structural integrity.
-  afterText: The cleaned urethane composite surface restores to a smooth, contaminant-free finish, preserving full material
-    integrity and original properties. This quality supports precise aerospace component fabrication.
-  generated: '2025-10-25T15:37:13.119678Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 23
-    after: 25
-  character_count:
-    before: 192
-    after: 208
-subtitle: Precision Lasers Preserve Urethane Composites' Elastic Integrity
-subtitle_metadata:
-  generated: '2025-10-25T21:55:41.067992Z'
-  author_name: Todd Dunning
-  author_country: United States (California)
-  generation_method: ai_research_voice
-  word_count: 7
-  character_count: 64
-subcategory: structural
-title: Urethane Composites Laser Cleaning
-regulatoryStandards:
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+machineSettings:
+  fluenceThreshold:
+    description: Fluence threshold for Urethane Composites ablation
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive heating
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Urethane Composites cleaning without thermal damage
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of composite surface
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  wavelength:
+    description: Near-IR wavelength optimized for Urethane absorption characteristics
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
   laser_material_interaction:
-    label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    label: Laser-Material Interaction
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    label: Material Characteristics
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from Urethane Composites surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Surface profilometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
     - Laser parameters
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Surface profilometry
+    typicalRanges: 95-99.9% depending on application and material
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+subcategory: structural
+subtitle: Precision Lasers Preserve Urethane Composites' Elastic Integrity
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+  character_count: 64
+  generated: '2025-10-25T21:55:41.067992Z'
+  generation_method: ai_research_voice
+  word_count: 7
+title: Urethane Composites Laser Cleaning
 faq:
-- question: What laser parameters, like power density and pulse duration, are recommended to avoid thermal damage when cleaning
-    urethane composites?
-  answer: For urethane composites, keep fluence under 2.5 J/cm² at a 1064 nm wavelength to prevent charring the polyurethane
-    matrix during cleaning. Use 100 W average power with 10 ns pulses at 50 kHz, scanning at 500 mm/s over three passes—this
-    balances contaminant stripping with minimal heat buildup for aerospace or automotive parts.
-- question: Can laser cleaning effectively remove mold release agents from urethane composite surfaces without affecting the
-    underlying material?
-  answer: Yes, laser cleaning excels at removing mold release agents from urethane composites without harming the substrate,
-    thanks to their thermal stability. At a 1064 nm wavelength and 100 W power, with fluence under 2.5 J/cm², it ablates contaminants
-    efficiently, leaving negligible residues and a pristine surface ideal for aerospace or automotive parts.
-- question: What are the main safety concerns, such as fume generation or flammability risks, when using lasers on urethane
-    composites?
-  answer: When processing urethane composites with lasers, thermal breakdown releases toxic isocyanates, so maintain ventilation
-    under 0.005 ppm to protect workers. Flammability spikes above 2.5 J/cm² fluence, making 100 W at 1064 nm ideal to prevent
-    ignition in aerospace or automotive applications.
+- question: What laser parameters, like power density and pulse duration, are recommended to avoid thermal damage when cleaning urethane composites?
+  answer: For urethane composites, keep fluence under 2.5 J/cm² at a 1064 nm wavelength to prevent charring the polyurethane matrix during cleaning. Use 100 W average power with 10 ns pulses at 50 kHz, scanning at 500 mm/s over three passes—this balances contaminant stripping with minimal heat buildup for aerospace or automotive parts.
+- question: Can laser cleaning effectively remove mold release agents from urethane composite surfaces without affecting the underlying material?
+  answer: Yes, laser cleaning excels at removing mold release agents from urethane composites without harming the substrate, thanks to their thermal stability. At a 1064 nm wavelength and 100 W power, with fluence under 2.5 J/cm², it ablates contaminants efficiently, leaving negligible residues and a pristine surface ideal for aerospace or automotive parts.
+- question: What are the main safety concerns, such as fume generation or flammability risks, when using lasers on urethane composites?
+  answer: When processing urethane composites with lasers, thermal breakdown releases toxic isocyanates, so maintain ventilation under 0.005 ppm to protect workers. Flammability spikes above 2.5 J/cm² fluence, making 100 W at 1064 nm ideal to prevent ignition in aerospace or automotive applications.
 - question: How do different laser types, like CO2 vs. fiber lasers, perform on urethane composites for surface treatment?
-  answer: Fiber lasers operating at 1064 nm are ideal for urethane composites, leveraging strong near-IR absorption for controlled
-    ablation starting at 2.5 J/cm² fluence, minimizing subsurface damage in aerospace or automotive parts. CO2 lasers at 10.6
-    μm promote non-ablative surface cleaning but can cause uneven heating in layered materials. Stick to 100 W power for balanced
-    efficiency.
+  answer: Fiber lasers operating at 1064 nm are ideal for urethane composites, leveraging strong near-IR absorption for controlled ablation starting at 2.5 J/cm² fluence, minimizing subsurface damage in aerospace or automotive parts. CO2 lasers at 10.6 μm promote non-ablative surface cleaning but can cause uneven heating in layered materials. Stick to 100 W power for balanced efficiency.
 - question: What thermal stability issues arise during laser cleaning of urethane composites, and how can they be mitigated?
-  answer: Urethane composites risk thermal decomposition starting at 200-250°C during laser cleaning, which can enlarge the
-    heat-affected zone and weaken aerospace or automotive parts. Mitigate this by using a 1064 nm laser at 100 W with 500
-    mm/s scan speed, keeping fluence below 2.5 J/cm² to limit heat accumulation.
+  answer: Urethane composites risk thermal decomposition starting at 200-250°C during laser cleaning, which can enlarge the heat-affected zone and weaken aerospace or automotive parts. Mitigate this by using a 1064 nm laser at 100 W with 500 mm/s scan speed, keeping fluence below 2.5 J/cm² to limit heat accumulation.
 - question: Are there documented case studies or best practices for laser cleaning urethane composite parts in aerospace applications?
-  answer: Yes, Boeing's case studies highlight effective laser cleaning of urethane composite panels in aircraft, using 1064
-    nm systems at 100 W power for 95% contaminant removal over three passes. They emphasize fluence below 2.5 J/cm² to prevent
-    matrix damage, ensuring ASTM compliance in aerospace ops.
+  answer: Yes, Boeing's case studies highlight effective laser cleaning of urethane composite panels in aircraft, using 1064 nm systems at 100 W power for 95% contaminant removal over three passes. They emphasize fluence below 2.5 J/cm² to prevent matrix damage, ensuring ASTM compliance in aerospace ops.
 - question: How does the composite's filler content, like glass fibers in urethane, impact laser cleaning effectiveness?
-  answer: Higher glass fiber content in urethane composites lowers laser absorption at 1064 nm, as fibers are largely transparent,
-    resulting in patchy cleaning and potential surface irregularities. To avoid exposing or damaging reinforcements, keep
-    fluence under 2.5 J/cm² and use 100 W power for even contaminant removal without substrate harm.
+  answer: Higher glass fiber content in urethane composites lowers laser absorption at 1064 nm, as fibers are largely transparent, resulting in patchy cleaning and potential surface irregularities. To avoid exposing or damaging reinforcements, keep fluence under 2.5 J/cm² and use 100 W power for even contaminant removal without substrate harm.
 - question: What environmental factors, such as humidity, affect laser cleaning outcomes on urethane composite surfaces?
-  answer: High humidity promotes moisture uptake in hydrophilic urethane composites, causing surface swelling that hinders
-    consistent ablation during laser cleaning at the 2.5 J/cm² fluence threshold. This can lead to uneven contaminant removal
-    and risks thermal damage with 1064 nm pulses. Keep relative humidity under 40% for reliable results.
-- question: What post-cleaning inspections are needed for urethane composites after laser treatment to ensure no subsurface
-    damage?
-  answer: After laser cleaning urethane composites with a 2.5 J/cm² fluence threshold, perform ultrasonic testing to detect
-    any delamination and optical microscopy to identify microcracks from localized heating. These checks ensure the polymer
-    matrix remains intact, especially in aerospace applications where subsurface integrity is critical. Scanning at 500 mm/s
-    during treatment helps prevent such damage.
+  answer: High humidity promotes moisture uptake in hydrophilic urethane composites, causing surface swelling that hinders consistent ablation during laser cleaning at the 2.5 J/cm² fluence threshold. This can lead to uneven contaminant removal and risks thermal damage with 1064 nm pulses. Keep relative humidity under 40% for reliable results.
+- question: What post-cleaning inspections are needed for urethane composites after laser treatment to ensure no subsurface damage?
+  answer: After laser cleaning urethane composites with a 2.5 J/cm² fluence threshold, perform ultrasonic testing to detect any delamination and optical microscopy to identify microcracks from localized heating. These checks ensure the polymer matrix remains intact, especially in aerospace applications where subsurface integrity is critical. Scanning at 500 mm/s during treatment helps prevent such damage.

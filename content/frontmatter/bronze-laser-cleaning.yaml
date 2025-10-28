@@ -15,48 +15,27 @@ author:
   sex: f
   title: Ph.D.
 caption:
-  beforeText: Under the microscope, the bronze surface shows a heavily contaminated condition, with fine dust particles and
-    greenish oxide deposits clinging tightly. This surface, it reveals pitting from corrosion, and uneven degradation that
-    dulls the metal's natural sheen, signaling material wear.
-  afterText: After laser cleaning, the bronze surface regains its smooth texture and warm golden tone, free from dirt and
-    oxidation. This restoration preserves the material's integrity, with no pitting or discoloration. It demonstrates even
-    coverage, enhancing durability for everyday use and display.
-  generated: '2025-10-25T14:03:34.554739Z'
+  afterText: After laser cleaning, the bronze surface regains its smooth texture and warm golden tone, free from dirt and oxidation. This restoration preserves the material's integrity, with no pitting or discoloration. It demonstrates even coverage, enhancing durability for everyday use and display.
   author: Yi-Chun Lin
+  beforeText: Under the microscope, the bronze surface shows a heavily contaminated condition, with fine dust particles and greenish oxide deposits clinging tightly. This surface, it reveals pitting from corrosion, and uneven degradation that dulls the metal's natural sheen, signaling material wear.
+  character_count:
+    after: 288
+    before: 286
+  generated: '2025-10-25T14:03:34.554739Z'
   generation_method: ai_research
   word_count:
-    before: 40
     after: 41
-  character_count:
-    before: 286
-    after: 288
+    before: 40
 captions:
-  after_text: Analysis indicates a transformative outcome on the bronze surface post-laser cleaning, observed at 500x magnification,
-    with a remarkable reduction in contamination levels compared to the initial state. Initially, 85% of the surface was obscured
-    by carbonaceous residues averaging 12.5 micrometers in thickness; post-treatment, this coverage has diminished to less
-    than 5%, with residual layers measuring under 0.8 micrometers. This substantial improvement, achieved using a pulsed Nd:YAG
-    laser at 1064 nm with a
+  after_text: Analysis indicates a transformative outcome on the bronze surface post-laser cleaning, observed at 500x magnification, with a remarkable reduction in contamination levels compared to the initial state. Initially, 85% of the surface was obscured by carbonaceous residues averaging 12.5 micrometers in thickness; post-treatment, this coverage has diminished to less than 5%, with residual layers measuring under 0.8 micrometers. This substantial improvement, achieved using a pulsed Nd:YAG laser at 1064 nm with a
   author: Yi-Chun Lin
-  before_text: 'Surface analysis reveals a heavily contaminated bronze substrate under 500x magnification, exhibiting a complex
-    matrix of organic and inorganic deposits. Approximately 85% of the surface area displays a heterogeneous layer of carbonaceous
-    residues, with an average thickness of 12.5 micrometers, interspersed with oxide formations ranging from 3 to 7 micrometers
-    in depth. These measurements are critical, as they indicate a significant barrier to achieving uniform laser energy absorption
-    during cleaning, potentially leading to inconsistent ablation rates. Furthermore, the irregular distribution of contaminants,
-    forming dense clusters in 60% of the observed zones, poses a challenge for precise parameter optimization in laser systems.
+  before_text: 'Surface analysis reveals a heavily contaminated bronze substrate under 500x magnification, exhibiting a complex matrix of organic and inorganic deposits. Approximately 85% of the surface area displays a heterogeneous layer of carbonaceous residues, with an average thickness of 12.5 micrometers, interspersed with oxide formations ranging from 3 to 7 micrometers in depth. These measurements are critical, as they indicate a significant barrier to achieving uniform laser energy absorption during cleaning, potentially leading to inconsistent ablation rates. Furthermore, the irregular distribution of contaminants, forming dense clusters in 60% of the observed zones, poses a challenge for precise parameter optimization in laser systems.
 
 
-    Microscopic examination shows that the contamination pattern includes micro-cracks within the oxide layers, averaging
-    1.2 micrometers in width, which may exacerbate surface degradation if not addressed. From a Taiwan technical perspective,
-    where precision in cultural artifact preservation is paramount, such conditions demand a tailored laser cleaning approach—likely
-    involving a pulsed Nd:YAG laser at 1064 nm to minimize thermal damage. Additionally, the presence of embedded particulate
-    matter, covering roughly 30% of the surface, suggests a risk of incomplete removal without iterative scanning, a concern
-    for efficiency in general cleaning applications.
+    Microscopic examination shows that the contamination pattern includes micro-cracks within the oxide layers, averaging 1.2 micrometers in width, which may exacerbate surface degradation if not addressed. From a Taiwan technical perspective, where precision in cultural artifact preservation is paramount, such conditions demand a tailored laser cleaning approach—likely involving a pulsed Nd:YAG laser at 1064 nm to minimize thermal damage. Additionally, the presence of embedded particulate matter, covering roughly 30% of the surface, suggests a risk of incomplete removal without iterative scanning, a concern for efficiency in general cleaning applications.
 
 
-    Consequently, the cleaning challenge lies in balancing ablation depth with substrate integrity, particularly given the
-    bronze’s susceptibility to thermal stress. I must note, um, a slight uncertainty (as is often the case with variable contamination),
-    regarding the exact composition of organic residues, which may necessitate preliminary spectroscopic analysis. This systematic
-    documentation underscores the need for meticulous parameter adjustments to ensure successful decontamination.'
+    Consequently, the cleaning challenge lies in balancing ablation depth with substrate integrity, particularly given the bronze’s susceptibility to thermal stress. I must note, um, a slight uncertainty (as is often the case with variable contamination), regarding the exact composition of organic residues, which may necessitate preliminary spectroscopic analysis. This systematic documentation underscores the need for meticulous parameter adjustments to ensure successful decontamination.'
   generated: '2025-10-21T13:55:41.102733Z'
   generation_method: ai_research
 category: metal
@@ -104,6 +83,8 @@ machineSettings:
     description: Optimal average power for Bronze oxide removal without substrate damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for efficient oxide layer ablation with minimal thermal diffusion
     unit: ns
@@ -112,6 +93,8 @@ machineSettings:
     description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform oxide removal without substrate damage
     unit: mm/s
@@ -120,10 +103,14 @@ machineSettings:
     description: Optimal spot diameter for balancing cleaning efficiency and processing speed
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength with good absorption in Bronze oxides and moderate substrate absorption
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -146,188 +133,255 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      ablationThreshold:
+    ablationThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 2.0
+      max: 8.0
+    absorptionCoefficient:
+      description: Absorption coefficient for near-infrared laser radiation
+      unit: ×10⁵ m⁻¹
+      value: 4.2
+      min: 100000
+      max: 50000000
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.38
+      min: 2.0
+      max: 65.0
+    boilingPoint:
+      source: ai_research
+      unit: °C
+      value: 2300.0
+      min: 907
+      max: 5870
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 38.5
+      min: 0.02
+      max: 100
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 0.1
+      max: 20.0
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 58.2
+      min: 5
+      max: 99.9
+    meltingPoint:
+      source: ai_research
+      unit: °C
+      value: 950.0
+      min: -39
+      max: 3422
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (ratio)
+      value: 0.65
+      min: 85
+      max: 98
+    specificHeat:
+      source: ai_research
+      unit: J/(kg·K)
+      value: 380.0
+      min: 100
+      max: 2000
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 42.0
+      min: 7.0
+      max: 430
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: J/cm²
-        value: 0.45
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.38
-      boilingPoint:
-        source: ai_research
-        unit: °C
-        value: 2300.0
-      laserAbsorption:
-        source: ai_research
-        unit: '%'
-        value: 38.5
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 58.2
-      meltingPoint:
-        source: ai_research
-        unit: °C
-        value: 950.0
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.65
-      specificHeat:
-        source: ai_research
-        unit: J/(kg·K)
-        value: 380.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 42.0
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 1598.15
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        source: ai_research
-        unit: °C
-        value: 1040.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 42.7
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 18.0
-      thermalShockResistance:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 4.2
-      absorptionCoefficient:
-        description: Absorption coefficient for near-infrared laser radiation
-        unit: ×10⁵ m⁻¹
-        value: 4.2
+        unit: K
+        value: 1598.15
+      source: thermal_degradation_standards
+      type: melting
+      unit: °C
+      value: 500.0
+    thermalDestructionPoint:
+      source: ai_research
+      unit: °C
+      value: 1040.0
+      min: 873
+      max: 3695
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 42.7
+      min: 0.06
+      max: 174
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 18.0
+      min: 0.5
+      max: 33
+    thermalShockResistance:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 4.2
+      min: 50
+      max: 400
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (ASM
-          International, 10th edition)'
-        unit: MPa
-        value: 250.0
-      corrosionResistance:
-        ai_verified: true
-        source: Copper Development Association, "Copper Alloy Corrosion Resistance"
-        unit: rating
-        value: 7.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 8.8
-      electricalConductivity:
-        source: ai_research
-        unit: S/m
-        value: 7140000.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 1.8e-07
-      flexuralStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," ASM
-          International, 10th edition, page 398.'
-        unit: MPa
-        value: 310.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: HB
-        value: 70.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Copper
-          and Copper Alloys"'
-        unit: °C
-        value: 260.0
-      porosity:
-        source: ai_research
-        unit: fraction
-        value: 0.015
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 379.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 110.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 35.2
+    compressiveStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (ASM International, 10th edition)'
+      unit: MPa
+      value: 250.0
+      min: 50
+      max: 2000
+    corrosionResistance:
+      ai_verified: true
+      source: Copper Development Association, "Copper Alloy Corrosion Resistance"
+      unit: rating
+      value: 7.0
+      min: 1
+      max: 10
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 8.8
+      min: 0.53
+      max: 22.6
+    electricalConductivity:
+      source: ai_research
+      unit: S/m
+      value: 7140000.0
+      min: 0.67
+      max: 63.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 1.8e-07
+      min: 1.0e-08
+      max: 1.5e-06
+    flexuralStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," ASM International, 10th edition, page 398.'
+      unit: MPa
+      value: 310.0
+      min: 2.5
+      max: 1050.0
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 35.2
+      min: 20
+      max: 200
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: HB
+      value: 70.0
+      min: 0.5
+      max: 3500
+    oxidationResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Copper and Copper Alloys"'
+      unit: °C
+      value: 260.0
+      min: 200
+      max: 1200
+    porosity:
+      source: ai_research
+      unit: fraction
+      value: 0.015
+      min: 0.0
+      max: 15.0
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 379.0
+      min: 3.0
+      max: 3000.0
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 110.0
+      min: 5
+      max: 600
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        source: ai_research
-        unit: m^-1
-        value: 6200000.0
-      fractureToughness: 25.0
-      surfaceRoughness:
-        source: ai_research
-        unit: μm
-        value: 0.85
-      vaporPressure:
-        source: ai_research
-        unit: Pa
-        value: 1.33
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.42
-      electricalConductivity:
-        source: ai_research
-        unit: S/m
-        value: 7140000.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 1.8e-07
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.65
-      thermalDestructionPoint:
-        source: ai_research
-        unit: °C
-        value: 1040.0
-      thermalShockResistance:
-        source: ai_research
-        unit: W/m
-        value: 4.2
+    absorptionCoefficient:
+      source: ai_research
+      unit: m^-1
+      value: 6200000.0
+      min: 100000
+      max: 50000000
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.42
+      min: 2.0
+      max: 65.0
+    electricalConductivity:
+      source: ai_research
+      unit: S/m
+      value: 7140000.0
+      min: 0.67
+      max: 63.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 1.8e-07
+      min: 1.0e-08
+      max: 1.5e-06
+    fractureToughness: 25.0
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 0.1
+      max: 20.0
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (reflectance ratio)
+      value: 0.65
+      min: 85
+      max: 98
+    surfaceRoughness:
+      source: ai_research
+      unit: μm
+      value: 0.85
+      min: 0.4
+      max: 150
+    thermalDestructionPoint:
+      source: ai_research
+      unit: °C
+      value: 1040.0
+      min: 873
+      max: 3695
+    thermalShockResistance:
+      source: ai_research
+      unit: W/m
+      value: 4.2
+      min: 50
+      max: 400
+    vaporPressure:
+      source: ai_research
+      unit: Pa
+      value: 1.33
+      min: 1.0e-10
+      max: 0.001
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -360,81 +414,56 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: non-ferrous
 subtitle: Precision laser cleaning restores Bronze's golden patina without thermal damage
-title: Bronze Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:00:06.718034Z'
-  author_name: Yi-Chun Lin
   author_country: Taiwan
+  author_name: Yi-Chun Lin
+  character_count: 79
+  generated: '2025-10-25T21:00:06.718034Z'
   generation_method: ai_research_voice
   word_count: 10
-  character_count: 79
+title: Bronze Laser Cleaning
 faq:
 - question: What are the optimal laser parameters for cleaning bronze artifacts without damaging the patina?
-  answer: For bronze artifact conservation, employ nanosecond pulses at 1064nm wavelength with 5.1 J/cm² fluence. A scanning
-    speed of 500 mm/s effectively strips corrosion while the patina remains intact due to its higher ablation threshold. This
-    preserves the protective historical surface.
+  answer: For bronze artifact conservation, employ nanosecond pulses at 1064nm wavelength with 5.1 J/cm² fluence. A scanning speed of 500 mm/s effectively strips corrosion while the patina remains intact due to its higher ablation threshold. This preserves the protective historical surface.
 - question: How does laser cleaning affect the different types of bronze corrosion layers (cuprite, malachite, azurite)?
-  answer: Laser cleaning effectively removes bronze corrosion layers through differential ablation. Cuprite requires approximately
-    5.1 J/cm² for removal, while malachite and azurite, being more complex carbonates, need slightly adjusted parameters.
-    The 1064nm wavelength at 100W power enables selective cleaning by targeting these corrosion products' distinct absorption
-    characteristics without damaging the underlying bronze substrate.
+  answer: Laser cleaning effectively removes bronze corrosion layers through differential ablation. Cuprite requires approximately 5.1 J/cm² for removal, while malachite and azurite, being more complex carbonates, need slightly adjusted parameters. The 1064nm wavelength at 100W power enables selective cleaning by targeting these corrosion products' distinct absorption characteristics without damaging the underlying bronze substrate.
 - question: Can laser cleaning cause microstructural changes or phase transformations in bronze alloys?
-  answer: Properly configured 1064nm nanosecond lasers at ~5.1 J/cm² fluence can clean bronze without microstructural alteration.
-    The rapid, localized heating prevents recrystallization or lead-phase changes, preserving the substrate's integrity when
-    using optimal scan speeds.
+  answer: Properly configured 1064nm nanosecond lasers at ~5.1 J/cm² fluence can clean bronze without microstructural alteration. The rapid, localized heating prevents recrystallization or lead-phase changes, preserving the substrate's integrity when using optimal scan speeds.
 - question: What safety precautions are specific to laser cleaning bronze surfaces?
-  answer: Bronze's high reflectivity at 1064nm demands Class 4 laser eyewear. Use industrial fume extraction for copper/tin
-    oxide nanoparticles. Contain lead-containing corrosion products, especially on historical artifacts, using local ventilation
-    during the 100W ablation process.
+  answer: Bronze's high reflectivity at 1064nm demands Class 4 laser eyewear. Use industrial fume extraction for copper/tin oxide nanoparticles. Contain lead-containing corrosion products, especially on historical artifacts, using local ventilation during the 100W ablation process.
 - question: How effective is laser cleaning for removing bronze disease (copper chlorides) compared to traditional methods?
-  answer: Laser cleaning effectively removes bronze disease by selectively ablating copper chlorides at 5.1 J/cm² without
-    spreading contamination. This non-contact method outperforms chemical treatments by preserving the stable patina and ensuring
-    superior long-term stability for the artifact.
+  answer: Laser cleaning effectively removes bronze disease by selectively ablating copper chlorides at 5.1 J/cm² without spreading contamination. This non-contact method outperforms chemical treatments by preserving the stable patina and ensuring superior long-term stability for the artifact.
 - question: Does laser cleaning alter the surface chemistry of bronze in ways that affect subsequent protective coatings?
-  answer: Proper laser parameters like 5.1 J/cm² fluence selectively remove oxides, creating a chemically clean surface with
-    high energy. This significantly improves adhesion for subsequent protective waxes or lacquers compared to mechanically
-    prepared surfaces.
+  answer: Proper laser parameters like 5.1 J/cm² fluence selectively remove oxides, creating a chemically clean surface with high energy. This significantly improves adhesion for subsequent protective waxes or lacquers compared to mechanically prepared surfaces.
 - question: What are the limitations of laser cleaning for heavily corroded or pitted bronze surfaces?
-  answer: For deeply pitted bronze, the 5.1 J/cm² fluence threshold limits effectiveness as laser energy cannot adequately
-    reach recessed areas. This often results in uneven cleaning, leaving residual corrosion within pits that may require supplementary
-    mechanical abrasion for complete removal.
+  answer: For deeply pitted bronze, the 5.1 J/cm² fluence threshold limits effectiveness as laser energy cannot adequately reach recessed areas. This often results in uneven cleaning, leaving residual corrosion within pits that may require supplementary mechanical abrasion for complete removal.
 - question: How does the tin content in bronze affect laser cleaning efficiency and results?
-  answer: 'Higher tin content increases selective removal risk due to differing thermal properties between copper and tin
-    phases. For optimal 5.1 J/cm² fluence, adjust parameters: reduce power for high-tin alloys to prevent preferential tin
-    ablation while maintaining effective oxide removal.'
-- question: Can laser cleaning be used to selectively remove modern graffiti from bronze monuments without damaging the original
-    surface?
-  answer: Using 5.1 J/cm² fluence at 1064 nm wavelength, we can selectively ablate graffiti while preserving the bronze patina.
-    This parameter set, combined with real-time monitoring, ensures complete paint removal without damaging the underlying
-    historical surface.
+  answer: 'Higher tin content increases selective removal risk due to differing thermal properties between copper and tin phases. For optimal 5.1 J/cm² fluence, adjust parameters: reduce power for high-tin alloys to prevent preferential tin ablation while maintaining effective oxide removal.'
+- question: Can laser cleaning be used to selectively remove modern graffiti from bronze monuments without damaging the original surface?
+  answer: Using 5.1 J/cm² fluence at 1064 nm wavelength, we can selectively ablate graffiti while preserving the bronze patina. This parameter set, combined with real-time monitoring, ensures complete paint removal without damaging the underlying historical surface.
 - question: What diagnostic methods are used to verify the success of bronze laser cleaning without damaging the artifact?
-  answer: We employ colorimetry and optical microscopy to verify oxide removal at 5.1 J/cm² fluence. For subsurface analysis,
-    X-ray diffraction confirms the preservation of the bronze substrate. These non-destructive methods ensure complete cleaning
-    without altering the artifact's metallurgical integrity.
+  answer: We employ colorimetry and optical microscopy to verify oxide removal at 5.1 J/cm² fluence. For subsurface analysis, X-ray diffraction confirms the preservation of the bronze substrate. These non-destructive methods ensure complete cleaning without altering the artifact's metallurgical integrity.
 - question: How does laser cleaning compare to abrasive methods for bronze in terms of surface roughness and material loss?
-  answer: Laser cleaning at 5.1 J/cm² selectively ablates oxides while preserving the underlying Bronze, resulting in minimal
-    material loss and surface roughness changes. In contrast, abrasive methods mechanically erode the substrate, typically
-    increasing roughness by 5-15 µm and causing measurable dimensional alteration. This makes laser the superior choice for
-    precision applications like sculpture restoration.
+  answer: Laser cleaning at 5.1 J/cm² selectively ablates oxides while preserving the underlying Bronze, resulting in minimal material loss and surface roughness changes. In contrast, abrasive methods mechanically erode the substrate, typically increasing roughness by 5-15 µm and causing measurable dimensional alteration. This makes laser the superior choice for precision applications like sculpture restoration.

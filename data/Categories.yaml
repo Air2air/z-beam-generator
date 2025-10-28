@@ -40,6 +40,37 @@ universal_regulatory_standards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+machineSettingsRanges:
+  fluenceThreshold:
+    description: Laser fluence range for material ablation
+    max: 4.5
+    min: 0.3
+    unit: J/cm²
+  powerRange:
+    description: Laser power range for industrial cleaning applications
+    max: 120
+    min: 1.0
+    unit: W
+  pulseDuration:
+    description: Pulse duration range for optimal material processing
+    max: 1000
+    min: 0.1
+    unit: ns
+  repetitionRate:
+    description: Pulse repetition frequency range
+    max: 200
+    min: 1
+    unit: Hz
+  spotSize:
+    description: Focused beam spot diameter range
+    max: 500
+    min: 0.1
+    unit: μm
+  wavelength:
+    description: Laser wavelength range for industrial cleaning applications
+    max: 10640
+    min: 355
+    unit: nm
 propertyCategories:
   metadata:
     version: 5.0.0

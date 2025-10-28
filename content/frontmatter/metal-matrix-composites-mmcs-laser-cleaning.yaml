@@ -19,22 +19,17 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  beforeText: Under microscopy, the contaminated MMC surface appears very-very rough and pitted, with contaminants like fine
-    dust particles and oily residues adhering tightly to the metal matrix. These cover and obscure the composite structure,
-    while surface degradation shows small-small cracks and erosion spots, so weakening the material integrity overall.
-  afterText: After ultrafast laser cleaning, the Metal Matrix Composite surface appears very-very smooth and clean, with contaminants
-    removed then polished away effectively. Restoration quality is high-high, so material integrity remains intact—no cracks
-    or weakening occur. The composite properties stay preserved, and the surface shines brightly, ready for general applications
-    like aerospace parts. This process cleans then restores without harm.
-  generated: '2025-10-25T14:44:51.783672Z'
+  afterText: After ultrafast laser cleaning, the Metal Matrix Composite surface appears very-very smooth and clean, with contaminants removed then polished away effectively. Restoration quality is high-high, so material integrity remains intact—no cracks or weakening occur. The composite properties stay preserved, and the surface shines brightly, ready for general applications like aerospace parts. This process cleans then restores without harm.
   author: Ikmanda Roswati
+  beforeText: Under microscopy, the contaminated MMC surface appears very-very rough and pitted, with contaminants like fine dust particles and oily residues adhering tightly to the metal matrix. These cover and obscure the composite structure, while surface degradation shows small-small cracks and erosion spots, so weakening the material integrity overall.
+  character_count:
+    after: 436
+    before: 345
+  generated: '2025-10-25T14:44:51.783672Z'
   generation_method: ai_research
   word_count:
-    before: 48
     after: 58
-  character_count:
-    before: 345
-    after: 436
+    before: 48
 category: composite
 description: Laser cleaning parameters for Metal Matrix Composites MMCs (MMCs)
 environmentalImpact:
@@ -84,6 +79,8 @@ machineSettings:
     description: Optimal average power for MMCs cleaning considering thermal conductivity and matrix integrity
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for controlled ablation without excessive thermal diffusion
     unit: ns
@@ -92,6 +89,8 @@ machineSettings:
     description: High repetition rate for efficient cleaning while maintaining thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
@@ -100,10 +99,14 @@ machineSettings:
     description: Beam spot diameter balancing cleaning efficiency and spatial resolution
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength providing good absorption in metallic matrix while minimizing damage to ceramic reinforcements
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -126,102 +129,132 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 85.7
+      min: 0.05
+      max: 200
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 38.5
+      min: 2
+      max: 80
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 800.0
+      min: 500
+      max: 2500.0
+    thermalConductivity:
+      source: ai_research
+      unit: W/(m·K)
+      value: 180.25
+      min: 0.03
+      max: 400
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 85.7
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 38.5
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 800.0
-      thermalConductivity:
-        source: ai_research
-        unit: W/(m·K)
-        value: 180.25
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 1123.0
-        source: composite_degradation_standards
-        type: decomposition
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 45.2
-      thermalExpansion:
-        source: ai_research
-        unit: 10^-6/K
-        value: 17.2
+        unit: K
+        value: 1123.0
+      source: composite_degradation_standards
+      type: decomposition
+      unit: °C
+      value: 300.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 45.2
+      min: 0.08
+      max: 180
+    thermalExpansion:
+      source: ai_research
+      unit: 10^-6/K
+      value: 17.2
+      min: -1
+      max: 250
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Metal-Matrix Composites"'
-        unit: MPa
-        value: 350.0
-      corrosionResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Corrosion of Metal-Matrix Composites"'
-        unit: rating
-        value: 3.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 2.6
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 4.2e-08
-      flexuralStrength:
-        source: materials_database
-        unit: MPa
-        value: 450.0
-      hardness:
-        source: ai_research
-        unit: HRB
-        value: 55.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Metal-Matrix Composites"'
-        unit: °C
-        value: 450.0
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 580.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 70.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 18.5
+    compressiveStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Metal-Matrix Composites"'
+      unit: MPa
+      value: 350.0
+      min: 50
+      max: 1000
+    corrosionResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Corrosion of Metal-Matrix Composites"'
+      unit: rating
+      value: 3.0
+      min: 5
+      max: 9
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 2.6
+      min: 0.5
+      max: 8
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 4.2e-08
+      min: 0.001
+      max: 100000000000000.0
+    flexuralStrength:
+      source: materials_database
+      unit: MPa
+      value: 450.0
+      min: 100
+      max: 2000
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 18.5
+      min: 20
+      max: 100
+    hardness:
+      source: ai_research
+      unit: HRB
+      value: 55.0
+      min: 5.0
+      max: 120
+    oxidationResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Metal-Matrix Composites"'
+      unit: °C
+      value: 450.0
+      min: 80.0
+      max: 1650.0
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 580.0
+      min: 20
+      max: 6000
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 70.0
+      min: 0.001
+      max: 3000
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness: 25.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 4.2e-08
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 4.2e-08
+      min: 0.001
+      max: 100000000000000.0
+    fractureToughness: 25.0
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -254,83 +287,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: fiber-reinforced
 subtitle: Precision laser cleaning preserves MMCs' reinforcement integrity and reveals pristine hybrid surfaces
-title: MMCs Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:20:51.786675Z'
-  author_name: Ikmanda Roswati
   author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 101
+  generated: '2025-10-25T21:20:51.786675Z'
   generation_method: ai_research_voice
   word_count: 12
-  character_count: 101
+title: MMCs Laser Cleaning
 faq:
-- question: Can laser cleaning be used on Metal Matrix Composites (MMCs) without damaging the reinforcing particles or creating
-    micro-cracks?
-  answer: Laser cleaning of MMCs requires precise parameter control to prevent damage. Using 1064 nm wavelength at 5 J/cm²
-    fluence minimizes thermal stress differences between metal matrix and ceramic reinforcements. This prevents micro-cracks
-    while effectively removing contaminants through controlled ablation with minimal thermal diffusion to the composite structure.
-- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning oxides from silicon carbide
-    (SiC) aluminum MMCs without etching the surface?
-  answer: For SiC-Al MMCs, I recommend 1064 nm wavelength with nanosecond pulses around 10 ns. A fluence of 5 J/cm² effectively
-    removes oxides while the aluminum matrix's high thermal conductivity dissipates energy, preventing damage to the SiC reinforcements.
-    This parameter set ensures selective ablation of the contaminant layer.
-- question: How do you verify that laser cleaning has removed contaminants from an MMC surface without altering its fatigue
-    or corrosion-resistant properties?
-  answer: We verify cleaning efficacy using SEM/EDS to confirm contaminant removal while preserving the MMC's microstructure.
-    Crucially, we employ X-ray diffraction to measure residual stress, ensuring our 5 J/cm² fluence and 50 µm spot size don't
-    compromise fatigue or corrosion resistance.
-- question: What safety hazards are specific to laser cleaning MMCs, such as toxic fume generation from vaporized ceramic
-    or metal particles?
-  answer: Laser cleaning MMCs at 5 J/cm² fluence generates hazardous ceramic nanoparticles like Al₂O₃ and SiC fumes. Effective
-    local exhaust ventilation with HEPA/ULPA filtration is mandatory. Operators require full PPE, including respiratory protection,
-    to mitigate inhalation risks from these ultrafine toxic by-products.
-- question: Is laser cleaning effective for preparing MMC surfaces for subsequent processes like thermal spraying or adhesive
-    bonding?
-  answer: Laser cleaning effectively prepares MMC surfaces using a 5 J/cm² fluence and 50 µm spot size. This removes contaminants
-    while generating optimal roughness for adhesion, with minimal thermal impact on the composite matrix compared to abrasive
-    methods.
+- question: Can laser cleaning be used on Metal Matrix Composites (MMCs) without damaging the reinforcing particles or creating micro-cracks?
+  answer: Laser cleaning of MMCs requires precise parameter control to prevent damage. Using 1064 nm wavelength at 5 J/cm² fluence minimizes thermal stress differences between metal matrix and ceramic reinforcements. This prevents micro-cracks while effectively removing contaminants through controlled ablation with minimal thermal diffusion to the composite structure.
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning oxides from silicon carbide (SiC) aluminum MMCs without etching the surface?
+  answer: For SiC-Al MMCs, I recommend 1064 nm wavelength with nanosecond pulses around 10 ns. A fluence of 5 J/cm² effectively removes oxides while the aluminum matrix's high thermal conductivity dissipates energy, preventing damage to the SiC reinforcements. This parameter set ensures selective ablation of the contaminant layer.
+- question: How do you verify that laser cleaning has removed contaminants from an MMC surface without altering its fatigue or corrosion-resistant properties?
+  answer: We verify cleaning efficacy using SEM/EDS to confirm contaminant removal while preserving the MMC's microstructure. Crucially, we employ X-ray diffraction to measure residual stress, ensuring our 5 J/cm² fluence and 50 µm spot size don't compromise fatigue or corrosion resistance.
+- question: What safety hazards are specific to laser cleaning MMCs, such as toxic fume generation from vaporized ceramic or metal particles?
+  answer: Laser cleaning MMCs at 5 J/cm² fluence generates hazardous ceramic nanoparticles like Al₂O₃ and SiC fumes. Effective local exhaust ventilation with HEPA/ULPA filtration is mandatory. Operators require full PPE, including respiratory protection, to mitigate inhalation risks from these ultrafine toxic by-products.
+- question: Is laser cleaning effective for preparing MMC surfaces for subsequent processes like thermal spraying or adhesive bonding?
+  answer: Laser cleaning effectively prepares MMC surfaces using a 5 J/cm² fluence and 50 µm spot size. This removes contaminants while generating optimal roughness for adhesion, with minimal thermal impact on the composite matrix compared to abrasive methods.
 - question: Why might laser cleaning cause discoloration or a hazy finish on an aluminum MMC part, and how can it be prevented?
-  answer: Discoloration arises from aluminum matrix micro-melting and rapid oxide reformation. To prevent this, maintain fluence
-    below ~5 J/cm² and use a 1064 nm wavelength. This ensures contaminant removal without thermally altering the composite's
-    surface, preserving its uniform appearance.
-- question: For carbon fiber reinforced aluminum MMCs, how do you avoid damaging the carbon fibers during laser cleaning of
-    surface contaminants?
-  answer: Untuk MMC aluminium berpelat serat karbon, gunakan fluence rendah 5 J/cm² dengan spot 50 µm untuk menghilangkan
-    kontaminan. Parameter ini berada di bawah ambang ablasi serat karbon, mencegah kerusakan termal pada material komposit
-    yang sensitif.
-- question: What is the cost-benefit analysis of using laser cleaning for MMCs compared to traditional methods like chemical
-    etching or abrasive blasting?
-  answer: Laser cleaning at 5 J/cm² fluence eliminates chemical disposal costs and abrasive media consumption. For MMCs, this
-    non-contact approach preserves reinforcement integrity, reducing part rejection rates. The initial investment is rapidly
-    offset in high-value aerospace components requiring precision surface preparation.
-- question: Can laser cleaning be automated for complex-shaped MMC components, like turbine blades with cooling channels,
-    without creating thin-edge effects?
-  answer: Untuk komponen MMC kompleks, kami menggunakan robot 6-sumbu dengan pemindaian adaptif untuk menjaga fluence 5 J/cm²
-    pada seluruh kontur. Teknologi penginderaan real-time menyesuaikan daya laser 100W secara dinamis, mencegah akumulasi
-    panas di tepi tipis seperti pada bilah turbin dan memastikan pembersihan yang seragam tanpa merusak substrat.
-- question: How does the high thermal conductivity of an aluminum MMC matrix affect the laser cleaning process and required
-    energy input?
-  answer: Aluminium MMC's high thermal conductivity rapidly dissipates energy, necessitating higher peak powers around 100
-    W and nanosecond pulses to overcome this. This approach confines heat to the surface, preventing bulk substrate damage
-    while effectively removing contaminants at a fluence of 5 J/cm².
+  answer: Discoloration arises from aluminum matrix micro-melting and rapid oxide reformation. To prevent this, maintain fluence below ~5 J/cm² and use a 1064 nm wavelength. This ensures contaminant removal without thermally altering the composite's surface, preserving its uniform appearance.
+- question: For carbon fiber reinforced aluminum MMCs, how do you avoid damaging the carbon fibers during laser cleaning of surface contaminants?
+  answer: Untuk MMC aluminium berpelat serat karbon, gunakan fluence rendah 5 J/cm² dengan spot 50 µm untuk menghilangkan kontaminan. Parameter ini berada di bawah ambang ablasi serat karbon, mencegah kerusakan termal pada material komposit yang sensitif.
+- question: What is the cost-benefit analysis of using laser cleaning for MMCs compared to traditional methods like chemical etching or abrasive blasting?
+  answer: Laser cleaning at 5 J/cm² fluence eliminates chemical disposal costs and abrasive media consumption. For MMCs, this non-contact approach preserves reinforcement integrity, reducing part rejection rates. The initial investment is rapidly offset in high-value aerospace components requiring precision surface preparation.
+- question: Can laser cleaning be automated for complex-shaped MMC components, like turbine blades with cooling channels, without creating thin-edge effects?
+  answer: Untuk komponen MMC kompleks, kami menggunakan robot 6-sumbu dengan pemindaian adaptif untuk menjaga fluence 5 J/cm² pada seluruh kontur. Teknologi penginderaan real-time menyesuaikan daya laser 100W secara dinamis, mencegah akumulasi panas di tepi tipis seperti pada bilah turbin dan memastikan pembersihan yang seragam tanpa merusak substrat.
+- question: How does the high thermal conductivity of an aluminum MMC matrix affect the laser cleaning process and required energy input?
+  answer: Aluminium MMC's high thermal conductivity rapidly dissipates energy, necessitating higher peak powers around 100 W and nanosecond pulses to overcome this. This approach confines heat to the surface, preventing bulk substrate damage while effectively removing contaminants at a fluence of 5 J/cm².

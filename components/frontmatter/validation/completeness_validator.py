@@ -312,9 +312,10 @@ class CompletenessValidator:
     ) -> Tuple[Dict, List[str]]:
         """
         Migrate legacy qualitative properties to material_characteristics.
+        # FLATTENED STRUCTURE - No nested 'properties' key
         
         Args:
-            material_properties: Current materialProperties structure
+            material_properties: Current materialProperties structure (flattened)
             
         Returns:
             Tuple of (updated_material_properties, migration_log)
@@ -322,13 +323,15 @@ class CompletenessValidator:
         migration_log = []
         updated = material_properties.copy()
         
+        # Metadata fields to skip
+        metadata_fields = {'label', 'description', 'percentage'}
+        
         # Ensure material_characteristics category exists
         if 'material_characteristics' not in updated:
             updated['material_characteristics'] = {
                 'label': 'Material Characteristics',
                 'description': 'Intrinsic physical, mechanical, chemical, and structural properties',
-                'percentage': 0,
-                'properties': {}
+                'percentage': 0
             }
         
         # Scan all categories for qualitative properties
@@ -337,18 +340,22 @@ class CompletenessValidator:
                 continue
             
             category_data = updated[category_name]
-            if not isinstance(category_data, dict) or 'properties' not in category_data:
+            if not isinstance(category_data, dict):
                 continue
             
-            # Find and move qualitative properties
+            # Find and move qualitative properties (FLATTENED: direct children of category)
             props_to_move = []
-            for prop_name in list(category_data['properties'].keys()):
+            for prop_name in list(category_data.keys()):
+                # Skip metadata fields
+                if prop_name in metadata_fields:
+                    continue
+                # Check if qualitative
                 if is_qualitative_property(prop_name):
                     props_to_move.append(prop_name)
             
             for prop_name in props_to_move:
-                prop_data = category_data['properties'].pop(prop_name)
-                updated['material_characteristics']['properties'][prop_name] = prop_data
+                prop_data = category_data.pop(prop_name)
+                updated['material_characteristics'][prop_name] = prop_data
                 migration_log.append(
                     f"Migrated {prop_name} from {category_name} to material_characteristics"
                 )
@@ -359,19 +366,26 @@ class CompletenessValidator:
         return updated, migration_log
     
     def _recalculate_percentages(self, material_properties: Dict) -> Dict:
-        """Recalculate category percentages after migration."""
-        total_props = sum(
-            len(cat.get('properties', {}))
-            for cat in material_properties.values()
-            if isinstance(cat, dict)
-        )
+        """Recalculate category percentages after migration (FLATTENED structure)."""
+        # Metadata fields to skip when counting properties
+        metadata_fields = {'label', 'description', 'percentage'}
+        
+        # Count total properties across all categories
+        total_props = 0
+        for cat_data in material_properties.values():
+            if isinstance(cat_data, dict):
+                # Count non-metadata fields as properties
+                prop_count = sum(1 for key in cat_data.keys() if key not in metadata_fields)
+                total_props += prop_count
         
         if total_props == 0:
             return material_properties
         
+        # Recalculate percentages for each category
         for category_data in material_properties.values():
-            if isinstance(category_data, dict) and 'properties' in category_data:
-                prop_count = len(category_data['properties'])
+            if isinstance(category_data, dict):
+                # Count non-metadata fields as properties
+                prop_count = sum(1 for key in category_data.keys() if key not in metadata_fields)
                 category_data['percentage'] = round((prop_count / total_props) * 100, 1)
         
         return material_properties

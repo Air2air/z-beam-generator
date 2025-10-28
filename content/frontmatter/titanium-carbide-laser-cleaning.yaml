@@ -1,6 +1,4 @@
 name: Titanium Carbide
-category: ceramic
-description: Laser cleaning parameters for Titanium Carbide
 applications:
 - Aerospace
 - Automotive
@@ -20,43 +18,20 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-machineSettings:
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    description: Minimum fluence required for effective Titanium Carbide contaminant removal
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
-  passCount:
-    value: 3
-    unit: passes
-    description: Recommended number of passes for complete contaminant removal
-  powerRange:
-    value: 150
-    unit: W
-    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
-  pulseWidth:
-    value: 15
-    unit: ns
-    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
-  repetitionRate:
-    value: 50
-    unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage with thermal management
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    description: Optimal scanning speed for efficient cleaning coverage
-  spotSize:
-    value: 50
-    unit: μm
-    description: Beam spot diameter for precise cleaning of Titanium Carbide surfaces
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
+caption:
+  afterText: In laser-based additive manufacturing, the cleaned surface of Titanium Carbide—a resilient ceramic—presents a pristine, mirror-like finish free from residues or defects. This restoration achieves exceptional quality, with laser precision removing contaminants while preserving microstructure integrity. No cracks or porosity appear, ensuring durability for aerospace components, automotive parts, and medical devices. Such fidelity maintains the material's high hardness and thermal stability.
+  author: Alessandro Moretti
+  beforeText: Under microscopy, the Titanium Carbide surface reveals a contaminated condition marked by irregular pitting and micro-cracks, indicative of degradation from environmental exposure. Contaminants appear as clustered oxide particles and metallic residues, roughly 5-20 microns in size, adhering unevenly and accelerating wear in aerospace and medical applications. This state, it compromises structural integrity.
+  character_count:
+    after: 493
+    before: 410
+  generated: '2025-10-25T15:33:01.311629Z'
+  generation_method: ai_research
+  word_count:
+    after: 60
+    before: 52
+category: ceramic
+description: Laser cleaning parameters for Titanium Carbide
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -83,121 +58,117 @@ images:
   micro:
     alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the Titanium Carbide surface reveals a contaminated condition marked by irregular pitting
-    and micro-cracks, indicative of degradation from environmental exposure. Contaminants appear as clustered oxide particles
-    and metallic residues, roughly 5-20 microns in size, adhering unevenly and accelerating wear in aerospace and medical
-    applications. This state, it compromises structural integrity.
-  afterText: In laser-based additive manufacturing, the cleaned surface of Titanium Carbide—a resilient ceramic—presents a
-    pristine, mirror-like finish free from residues or defects. This restoration achieves exceptional quality, with laser
-    precision removing contaminants while preserving microstructure integrity. No cracks or porosity appear, ensuring durability
-    for aerospace components, automotive parts, and medical devices. Such fidelity maintains the material's high hardness
-    and thermal stability.
-  generated: '2025-10-25T15:33:01.311629Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 52
-    after: 60
-  character_count:
-    before: 410
-    after: 493
-subtitle: Experience gentle laser ablation restoring Titanium Carbide's mirror-like ceramic toughness
-subtitle_metadata:
-  generated: '2025-10-25T21:52:27.568693Z'
-  author_name: Alessandro Moretti
-  author_country: Italy
-  generation_method: ai_research_voice
-  word_count: 10
-  character_count: 91
-subcategory: oxide
-title: Titanium Carbide Laser Cleaning
-regulatoryStandards:
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+machineSettings:
+  fluenceThreshold:
+    description: Minimum fluence required for effective Titanium Carbide contaminant removal
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
+    unit: W
+    value: 150
+    min: 1.0
+    max: 120
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
+    unit: ns
+    value: 15
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  scanSpeed:
+    description: Optimal scanning speed for efficient cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning of Titanium Carbide surfaces
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  wavelength:
+    description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
   laser_material_interaction:
-    label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    label: Laser-Material Interaction
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    label: Material Characteristics
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from Titanium Carbide surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Surface profilometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
     - Laser parameters
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Surface profilometry
+    typicalRanges: 95-99.9% depending on application and material
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+subcategory: oxide
+subtitle: Experience gentle laser ablation restoring Titanium Carbide's mirror-like ceramic toughness
+subtitle_metadata:
+  author_country: Italy
+  author_name: Alessandro Moretti
+  character_count: 91
+  generated: '2025-10-25T21:52:27.568693Z'
+  generation_method: ai_research_voice
+  word_count: 10
+title: Titanium Carbide Laser Cleaning
 faq:
-- question: What laser parameters are optimal for cleaning titanium carbide coatings without causing thermal damage to the
-    underlying substrate?
-  answer: For cleaning titanium carbide coatings, opt for a 1064 nm near-IR laser with 15 ns pulses at 50 kHz to match its
-    strong absorption and high melting point. Target 2.5 J/cm² fluence and 500 mm/s scanning speed, enabling precise ablation
-    of contaminants without overheating the substrate, thanks to TiC's solid thermal conductivity. Three passes with 50% overlap
-    yield thorough results.
-- question: How effective is fiber laser cleaning at removing contaminants from titanium carbide tool surfaces compared to
-    traditional abrasive methods?
-  answer: Fiber laser cleaning excels over abrasive techniques for titanium carbide tools, achieving removal rates up to 5
-    times faster at 150 W power and 500 mm/s scan speed, while delivering a smoother surface finish without micro-scratches.
-    Unlike grinding, which can compromise TiC's inherent hardness of ~3000 HV, this method preserves substrate integrity using
-    2.5 J/cm² fluence, ideal for precision cutting in aerospace applications.
+- question: What laser parameters are optimal for cleaning titanium carbide coatings without causing thermal damage to the underlying substrate?
+  answer: For cleaning titanium carbide coatings, opt for a 1064 nm near-IR laser with 15 ns pulses at 50 kHz to match its strong absorption and high melting point. Target 2.5 J/cm² fluence and 500 mm/s scanning speed, enabling precise ablation of contaminants without overheating the substrate, thanks to TiC's solid thermal conductivity. Three passes with 50% overlap yield thorough results.
+- question: How effective is fiber laser cleaning at removing contaminants from titanium carbide tool surfaces compared to traditional abrasive methods?
+  answer: Fiber laser cleaning excels over abrasive techniques for titanium carbide tools, achieving removal rates up to 5 times faster at 150 W power and 500 mm/s scan speed, while delivering a smoother surface finish without micro-scratches. Unlike grinding, which can compromise TiC's inherent hardness of ~3000 HV, this method preserves substrate integrity using 2.5 J/cm² fluence, ideal for precision cutting in aerospace applications.
 - question: What safety precautions are needed when using lasers to clean titanium carbide parts due to potential fume generation?
-  answer: When laser-cleaning titanium carbide at 150 W and 2.5 J/cm² fluence, prioritize strong local exhaust ventilation
-    to disperse ablation fumes, as TiC MSDS warns of respiratory hazards from inhaled particles. Don NIOSH-approved respirators
-    and full-body suits to mitigate oxidation risks and fine dust exposure.
+  answer: When laser-cleaning titanium carbide at 150 W and 2.5 J/cm² fluence, prioritize strong local exhaust ventilation to disperse ablation fumes, as TiC MSDS warns of respiratory hazards from inhaled particles. Don NIOSH-approved respirators and full-body suits to mitigate oxidation risks and fine dust exposure.
 - question: Can pulsed lasers selectively remove oxide layers from titanium carbide without ablating the carbide itself?
-  answer: Yes, pulsed lasers operating at 1064 nm enable selective oxide removal from titanium carbide by exploiting differing
-    ablation thresholds—oxides vaporize around 1-2 J/cm², while TiC withstands up to 2.5 J/cm². This approach preserves the
-    carbide substrate during aerospace coating maintenance, using 50 kHz repetition for even coverage without thermal damage.
+  answer: Yes, pulsed lasers operating at 1064 nm enable selective oxide removal from titanium carbide by exploiting differing ablation thresholds—oxides vaporize around 1-2 J/cm², while TiC withstands up to 2.5 J/cm². This approach preserves the carbide substrate during aerospace coating maintenance, using 50 kHz repetition for even coverage without thermal damage.
 - question: What are common issues with residue buildup when laser cleaning titanium carbide coated dies in manufacturing?
-  answer: Residue buildup on titanium carbide coated dies during laser cleaning often arises from fluence under 2.5 J/cm²,
-    causing partial ablation and thermal re-deposition. Multiple passes—ideally three at 150 W with gas assist—resolve this,
-    as forum users report via post-cleaning SEM checks revealing residue-free, uniform surfaces.
-- question: How does the high hardness of titanium carbide affect the choice of laser power for surface treatment in cleaning
-    applications?
-  answer: Titanium carbide's exceptional hardness demands a fluence threshold of 2.5 J/cm² to ablate contaminants without
-    substrate harm, influencing laser power choices toward 150 W for balanced energy delivery. This setup at 1064 nm enhances
-    absorption, curbing reflections that might otherwise accelerate equipment erosion.
-- question: In training guides, what best practices are recommended for preparing titanium carbide surfaces before laser cleaning
-    to ensure uniform results?
-  answer: Before laser cleaning titanium carbide, remove common metal residues via ultrasonic agitation in a mild solvent
-    to prevent uneven ablation on its hard ceramic surface. Calibrate the laser to a fluence exceeding 2.5 J/cm² with 50%
-    beam overlap, ensuring uniform contaminant removal without substrate damage.
-- question: Are there regulatory compliance issues when disposing of waste from laser cleaning of titanium carbide in EU manufacturing
-    facilities?
-  answer: In EU facilities, REACH classifies titanium carbide particulates as potentially hazardous, requiring classified
-    waste disposal to prevent environmental leaching of titanium ions from ablated debris generated during laser cleaning
-    at 2.5 J/cm² fluence. Always use sealed collection systems and consult local directives for safe secondary handling, minimizing
-    airborne or waterborne impacts.
+  answer: Residue buildup on titanium carbide coated dies during laser cleaning often arises from fluence under 2.5 J/cm², causing partial ablation and thermal re-deposition. Multiple passes—ideally three at 150 W with gas assist—resolve this, as forum users report via post-cleaning SEM checks revealing residue-free, uniform surfaces.
+- question: How does the high hardness of titanium carbide affect the choice of laser power for surface treatment in cleaning applications?
+  answer: Titanium carbide's exceptional hardness demands a fluence threshold of 2.5 J/cm² to ablate contaminants without substrate harm, influencing laser power choices toward 150 W for balanced energy delivery. This setup at 1064 nm enhances absorption, curbing reflections that might otherwise accelerate equipment erosion.
+- question: In training guides, what best practices are recommended for preparing titanium carbide surfaces before laser cleaning to ensure uniform results?
+  answer: Before laser cleaning titanium carbide, remove common metal residues via ultrasonic agitation in a mild solvent to prevent uneven ablation on its hard ceramic surface. Calibrate the laser to a fluence exceeding 2.5 J/cm² with 50% beam overlap, ensuring uniform contaminant removal without substrate damage.
+- question: Are there regulatory compliance issues when disposing of waste from laser cleaning of titanium carbide in EU manufacturing facilities?
+  answer: In EU facilities, REACH classifies titanium carbide particulates as potentially hazardous, requiring classified waste disposal to prevent environmental leaching of titanium ions from ablated debris generated during laser cleaning at 2.5 J/cm² fluence. Always use sealed collection systems and consult local directives for safe secondary handling, minimizing airborne or waterborne impacts.
 - question: What chemical properties of titanium carbide make it resistant to certain laser wavelengths in cleaning processes?
-  answer: Titanium carbide's metallic-like bonding and narrow bandgap enable strong absorption in the near-IR spectrum, especially
-    at 1064 nm, making it resilient to shorter UV-Vis wavelengths that pass through with minimal interaction. This reduces
-    reactivity with laser-induced plasmas, allowing efficient contaminant removal at fluences as low as 2.5 J/cm² without
-    substrate harm in aerospace components.
-- question: How do manufacturers of laser cleaning equipment recommend adjusting settings for titanium carbide versus steel
-    surfaces?
-  answer: For titanium carbide, which boasts higher reflectivity and lower thermal expansion than steel, manufacturers like
-    those from CleanLaser advise dialing down fluence to 2.5 J/cm² and using a 1064 nm wavelength to boost absorption without
-    substrate damage. This contrasts with steel's need for 3-4 J/cm² and faster scan speeds around 1000 mm/s, per vendor guides
-    and aerospace case studies, ensuring precise contaminant ablation in three passes at 150 W.
+  answer: Titanium carbide's metallic-like bonding and narrow bandgap enable strong absorption in the near-IR spectrum, especially at 1064 nm, making it resilient to shorter UV-Vis wavelengths that pass through with minimal interaction. This reduces reactivity with laser-induced plasmas, allowing efficient contaminant removal at fluences as low as 2.5 J/cm² without substrate harm in aerospace components.
+- question: How do manufacturers of laser cleaning equipment recommend adjusting settings for titanium carbide versus steel surfaces?
+  answer: For titanium carbide, which boasts higher reflectivity and lower thermal expansion than steel, manufacturers like those from CleanLaser advise dialing down fluence to 2.5 J/cm² and using a 1064 nm wavelength to boost absorption without substrate damage. This contrasts with steel's need for 3-4 J/cm² and faster scan speeds around 1000 mm/s, per vendor guides and aerospace case studies, ensuring precise contaminant ablation in three passes at 150 W.

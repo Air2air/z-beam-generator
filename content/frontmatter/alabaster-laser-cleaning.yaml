@@ -19,36 +19,21 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  beforeText: Under microscopic examination, the alabaster surface reveals a network of fine cracks and pitting from prolonged
-    exposure. Contaminants appear as clustered particulate matter—dust, organic residues, and mineral deposits—adhering unevenly,
-    causing localized discoloration and erosion. This degradation, it compromises the stone's natural translucency and structural
-    integrity.
-  afterText: The cleaned alabaster surface gleams with pristine smoothness. Restoration achieves high quality, fully preserving
-    the stone's delicate integrity.
-  generated: '2025-10-25T13:52:28.365357Z'
+  afterText: The cleaned alabaster surface gleams with pristine smoothness. Restoration achieves high quality, fully preserving the stone's delicate integrity.
   author: Alessandro Moretti
+  beforeText: Under microscopic examination, the alabaster surface reveals a network of fine cracks and pitting from prolonged exposure. Contaminants appear as clustered particulate matter—dust, organic residues, and mineral deposits—adhering unevenly, causing localized discoloration and erosion. This degradation, it compromises the stone's natural translucency and structural integrity.
+  character_count:
+    after: 146
+    before: 375
+  generated: '2025-10-25T13:52:28.365357Z'
   generation_method: ai_research
   word_count:
-    before: 45
     after: 18
-  character_count:
-    before: 375
-    after: 146
+    before: 45
 captions:
-  after_text: What strikes me about this material now is the captivating transformation after laser cleaning; the alabaster
-    reveals a beautiful clarity, almost as if it breathes again, with surface contaminants reduced to near imperceptible traces—likely
-    less than 0. 01 mm if I were to guess without precise tools at hand. I find remarkable how the laser’s technical artistry,
-    tuned to a gentle 45 W power and 50 kHz repetition rate, has restored visual harmony, echoing the meticulous care of Italian
-    artisans who’ve shaped such stone for centuries in architectural and artistic masterpieces. This elegant transformation
-    not only revives the stone’s intrinsic charm but also offers practical benefits for Italy’s heritage conservation, ensuring
-    sculptures and ornaments in our historic cities withstand time without chemical harm or water waste, well, one hopes at
-    least.
+  after_text: What strikes me about this material now is the captivating transformation after laser cleaning; the alabaster reveals a beautiful clarity, almost as if it breathes again, with surface contaminants reduced to near imperceptible traces—likely less than 0. 01 mm if I were to guess without precise tools at hand. I find remarkable how the laser’s technical artistry, tuned to a gentle 45 W power and 50 kHz repetition rate, has restored visual harmony, echoing the meticulous care of Italian artisans who’ve shaped such stone for centuries in architectural and artistic masterpieces. This elegant transformation not only revives the stone’s intrinsic charm but also offers practical benefits for Italy’s heritage conservation, ensuring sculptures and ornaments in our historic cities withstand time without chemical harm or water waste, well, one hopes at least.
   author: Alessandro Moretti
-  before_text: Examining this beautiful surface of alabaster, I must confess a deep appreciation for its delicate translucency,
-    yet I’m struck by the uneven layer of contamination—perhaps a mix of organic residues and atmospheric deposits, roughly
-    0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance. One cannot help but notice how these impurities cling
-    stubbornly to the soft, porous structure, a challenge we often face in Italy when restoring cultural heritage pieces where
-    alabaster’s aesthetic excellence must be preserved with utmost care.
+  before_text: Examining this beautiful surface of alabaster, I must confess a deep appreciation for its delicate translucency, yet I’m struck by the uneven layer of contamination—perhaps a mix of organic residues and atmospheric deposits, roughly 0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance. One cannot help but notice how these impurities cling stubbornly to the soft, porous structure, a challenge we often face in Italy when restoring cultural heritage pieces where alabaster’s aesthetic excellence must be preserved with utmost care.
   generated: '2025-10-21T17:18:28.258922Z'
   generation_method: ai_research
 category: stone
@@ -84,6 +69,8 @@ machineSettings:
     description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
     unit: J/cm²
     value: 1.2
+    min: 0.3
+    max: 4.5
   overlapRatio:
     description: Optimal beam overlap percentage for uniform cleaning coverage
     unit: '%'
@@ -96,6 +83,8 @@ machineSettings:
     description: Optimal average power for Alabaster surface cleaning without thermal damage
     unit: W
     value: 45
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
     unit: ns
@@ -104,6 +93,8 @@ machineSettings:
     description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
     unit: mm/s
@@ -112,10 +103,14 @@ machineSettings:
     description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -138,111 +133,137 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
-        ai_verified: true
+    laserAbsorption:
+      ai_verified: true
+      source: ai_research
+      unit: '%'
+      value: 85.0
+      min: 0.1
+      max: 100
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 38.7
+      min: 5
+      max: 80
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 830.0
+      min: 400
+      max: 1200
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 0.35
+      min: 0.2
+      max: 8
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 85.0
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 38.7
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 830.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 0.35
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 1073.15
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 0.52
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 25.0
+        unit: K
+        value: 1073.15
+      source: thermal_degradation_standards
+      type: thermal_shock
+      unit: °C
+      value: 800.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 0.52
+      min: 0.2
+      max: 2.5
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 25.0
+      min: 3
+      max: 30
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: '"The Engineering Properties of Minerals and Rocks" by Obert, L. and Duvall, W.I., 1967; and "CRC Materials
-          Science and Engineering Handbook"'
-        unit: MPa
-        value: 12.0
-      corrosionResistance:
-        ai_verified: true
-        source: 'Geological Society of America Special Paper 407 - "Building Stone Decay: From Diagnosis to Conservation"'
-        unit: rating
-        value: 2.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 2.32
-      flexuralStrength:
-        ai_verified: true
-        source: '"The Flexural Strength and Hardness of Natural and Synthetic Stones," Proceedings of the 11th International
-          Congress on Deterioration and Conservation of Stone, 2008.'
-        unit: MPa
-        value: 15.2
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: Mohs
-        value: 2.0
-      oxidationResistance:
-        ai_verified: true
-        source: ASM International, "Characterization of Minerals, Metals, and Materials" (2016), Section on Calcium Sulfate
-          Minerals
-        unit: °C
-        value: 450.0
-      porosity:
-        source: ai_research
-        unit: dimensionless (volume fraction)
-        value: 0.15
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 3.5
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 31.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.35
+    compressiveStrength:
+      ai_verified: true
+      source: '"The Engineering Properties of Minerals and Rocks" by Obert, L. and Duvall, W.I., 1967; and "CRC Materials Science and Engineering Handbook"'
+      unit: MPa
+      value: 12.0
+      min: 20
+      max: 500
+    corrosionResistance:
+      ai_verified: true
+      source: 'Geological Society of America Special Paper 407 - "Building Stone Decay: From Diagnosis to Conservation"'
+      unit: rating
+      value: 2.0
+      min: 2.0
+      max: 9.0
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 2.32
+      min: 1.5
+      max: 6.0
+    flexuralStrength:
+      ai_verified: true
+      source: '"The Flexural Strength and Hardness of Natural and Synthetic Stones," Proceedings of the 11th International Congress on Deterioration and Conservation of Stone, 2008.'
+      unit: MPa
+      value: 15.2
+      min: 5
+      max: 50
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.35
+      min: 0.5
+      max: 5
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: Mohs
+      value: 2.0
+      min: 1
+      max: 7
+    oxidationResistance:
+      ai_verified: true
+      source: ASM International, "Characterization of Minerals, Metals, and Materials" (2016), Section on Calcium Sulfate Minerals
+      unit: °C
+      value: 450.0
+      min: 400.0
+      max: 870.0
+    porosity:
+      source: ai_research
+      unit: dimensionless (volume fraction)
+      value: 0.15
+      min: 0.5
+      max: 25
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 3.5
+      min: 2
+      max: 25
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 31.0
+      min: 10
+      max: 100
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45, Issue 2, 2008, pp. 167-178, "Mechanical
-          characterization of weathering gypsum rocks (alabaster)" by M. S. Yagiz.
-        unit: MPa·√m
-        value: 0.35
+    fractureToughness:
+      ai_verified: true
+      source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering gypsum rocks (alabaster)" by M. S. Yagiz.
+      unit: MPa·√m
+      value: 0.35
+      min: 0.5
+      max: 5
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -275,82 +296,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: sedimentary
 subtitle: Gentle laser restores alabaster's translucent softness without risking thermal cracks
-title: Alabaster Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T20:53:49.333237Z'
-  author_name: Alessandro Moretti
   author_country: Italy
+  author_name: Alessandro Moretti
+  character_count: 85
+  generated: '2025-10-25T20:53:49.333237Z'
   generation_method: ai_research_voice
   word_count: 10
-  character_count: 85
+title: Alabaster Laser Cleaning
 faq:
-- question: What is the optimal laser wavelength and fluence for cleaning soot and biological growth from alabaster without
-    causing yellowing or a 'burnt' appearance?
-  answer: For alabaster's translucency, use a 1064 nm Nd:YAG laser to minimize subsurface heating. Maintain fluence below
-    1.2 J/cm² with short 15 ns pulses to effectively remove contaminants while preventing yellowing. This approach ablates
-    soot and biological growth without the thermal damage that causes a burnt appearance.
-- question: How do you prevent the laser from altering the polished surface finish or creating a matte patch on alabaster
-    during cleaning?
-  answer: Maintaining alabaster's polished finish requires operating below its 1.2 J/cm² damage threshold. We use a uniform
-    scanning strategy at 500 mm/s with 50% beam overlap to ensure gentle, low-fluence passes. This approach selectively removes
-    contaminants without microscopically ablating the surface, thereby preserving its original light-scattering properties
-    and luster.
-- question: Is laser cleaning safe for thin, delicate alabaster sculptures, or does the risk of thermal stress and microfracturing
-    outweigh the benefits?
-  answer: With controlled parameters like 1.2 J/cm² fluence and 50 kHz repetition rate, laser cleaning is viable for delicate
-    alabaster. The key is managing thermal input to prevent microfracturing in this brittle, low-tensile-strength stone, outperforming
-    mechanical methods.
-- question: What are the specific safety hazards when laser cleaning alabaster, particularly regarding the composition of
-    the resulting dust?
-  answer: The primary hazard is fine gypsum dust, a respiratory irritant. Even with our optimized 1064 nm wavelength at 45
-    W average power, proper HEPA-filtered extraction and PPE are mandatory to protect the operator from the generated calcium
-    sulfate particles.
+- question: What is the optimal laser wavelength and fluence for cleaning soot and biological growth from alabaster without causing yellowing or a 'burnt' appearance?
+  answer: For alabaster's translucency, use a 1064 nm Nd:YAG laser to minimize subsurface heating. Maintain fluence below 1.2 J/cm² with short 15 ns pulses to effectively remove contaminants while preventing yellowing. This approach ablates soot and biological growth without the thermal damage that causes a burnt appearance.
+- question: How do you prevent the laser from altering the polished surface finish or creating a matte patch on alabaster during cleaning?
+  answer: Maintaining alabaster's polished finish requires operating below its 1.2 J/cm² damage threshold. We use a uniform scanning strategy at 500 mm/s with 50% beam overlap to ensure gentle, low-fluence passes. This approach selectively removes contaminants without microscopically ablating the surface, thereby preserving its original light-scattering properties and luster.
+- question: Is laser cleaning safe for thin, delicate alabaster sculptures, or does the risk of thermal stress and microfracturing outweigh the benefits?
+  answer: With controlled parameters like 1.2 J/cm² fluence and 50 kHz repetition rate, laser cleaning is viable for delicate alabaster. The key is managing thermal input to prevent microfracturing in this brittle, low-tensile-strength stone, outperforming mechanical methods.
+- question: What are the specific safety hazards when laser cleaning alabaster, particularly regarding the composition of the resulting dust?
+  answer: The primary hazard is fine gypsum dust, a respiratory irritant. Even with our optimized 1064 nm wavelength at 45 W average power, proper HEPA-filtered extraction and PPE are mandatory to protect the operator from the generated calcium sulfate particles.
 - question: Can laser cleaning effectively remove ingrained iron oxide stains from alabaster without etching the surface?
-  answer: Laser cleaning can remove iron oxide stains from alabaster, but its porous nature presents a challenge. At 1.2 J/cm²
-    fluence, we risk vaporizing the stone matrix around the ingrained stain, potentially causing micro-etching rather than
-    selective removal.
+  answer: Laser cleaning can remove iron oxide stains from alabaster, but its porous nature presents a challenge. At 1.2 J/cm² fluence, we risk vaporizing the stone matrix around the ingrained stain, potentially causing micro-etching rather than selective removal.
 - question: How does the water content and porosity of alabaster affect the laser cleaning process and the final result?
-  answer: Alabaster's hydrous gypsum composition degrades around 47°C, demanding strict thermal control. Its porosity traps
-    contaminants, requiring a precise fluence near 1.2 J/cm² for effective removal without substrate damage. This ensures
-    we vaporize only the unwanted layers.
-- question: What is the best method for testing laser cleaning parameters on an alabaster artifact before proceeding with
-    the full treatment?
-  answer: Begin with a meticulous test in a hidden area using low fluence near 1.2 J/cm². Carefully examine the surface with
-    microscopy and raking light after exposure to detect any subtle textural or gloss changes before proceeding.
-- question: Why might a 'clean' area on a laser-treated alabaster surface appear slightly darker or lighter than the surrounding
-    untreated area?
-  answer: The cleaned zone appears different due to patina removal, revealing the stone's intrinsic color. Our 1.2 J/cm² fluence
-    setting also induces minimal surface roughening, which alters light diffusion and creates this subtle visual contrast
-    with the untreated, aged surface.
-- question: For conservation work, is laser cleaning considered a reversible treatment for alabaster, and what are the ethical
-    considerations?
-  answer: Laser cleaning is not truly reversible, as it ablates material at 1.2 J/cm². Ethically, we must balance contaminant
-    removal with preserving the object's historical patina. Meticulous documentation is therefore essential, as the process
-    permanently alters the surface, removing layers that may hold part of its story.
-- question: How does laser cleaning of alabaster compare to traditional methods like chemical poultices or micro-abrasion
-    in terms of cost, time, and risk?
-  answer: Laser cleaning offers superior precision for alabaster, operating at a safe 1.2 J/cm² fluence to avoid thermal damage,
-    unlike abrasive methods. While initial equipment costs are higher, it eliminates chemical use and reduces overall treatment
-    time. This makes it ideal for delicate heritage conservation where substrate integrity is paramount.
+  answer: Alabaster's hydrous gypsum composition degrades around 47°C, demanding strict thermal control. Its porosity traps contaminants, requiring a precise fluence near 1.2 J/cm² for effective removal without substrate damage. This ensures we vaporize only the unwanted layers.
+- question: What is the best method for testing laser cleaning parameters on an alabaster artifact before proceeding with the full treatment?
+  answer: Begin with a meticulous test in a hidden area using low fluence near 1.2 J/cm². Carefully examine the surface with microscopy and raking light after exposure to detect any subtle textural or gloss changes before proceeding.
+- question: Why might a 'clean' area on a laser-treated alabaster surface appear slightly darker or lighter than the surrounding untreated area?
+  answer: The cleaned zone appears different due to patina removal, revealing the stone's intrinsic color. Our 1.2 J/cm² fluence setting also induces minimal surface roughening, which alters light diffusion and creates this subtle visual contrast with the untreated, aged surface.
+- question: For conservation work, is laser cleaning considered a reversible treatment for alabaster, and what are the ethical considerations?
+  answer: Laser cleaning is not truly reversible, as it ablates material at 1.2 J/cm². Ethically, we must balance contaminant removal with preserving the object's historical patina. Meticulous documentation is therefore essential, as the process permanently alters the surface, removing layers that may hold part of its story.
+- question: How does laser cleaning of alabaster compare to traditional methods like chemical poultices or micro-abrasion in terms of cost, time, and risk?
+  answer: Laser cleaning offers superior precision for alabaster, operating at a safe 1.2 J/cm² fluence to avoid thermal damage, unlike abrasive methods. While initial equipment costs are higher, it eliminates chemical use and reduces overall treatment time. This makes it ideal for delicate heritage conservation where substrate integrity is paramount.

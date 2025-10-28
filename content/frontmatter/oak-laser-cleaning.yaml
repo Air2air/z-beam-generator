@@ -18,6 +18,18 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
+caption:
+  afterText: The cleaned oak surface gleams smoothly, its natural grain restored vividly. Quality restoration preserves full material integrity without compromise.
+  author: Alessandro Moretti
+  beforeText: Under the microscope, the oak surface displays a contaminated condition with irregular topography. Adherent particles—fine dust grains and oily residues—cluster within the porous wood fibers, measuring 1-10 microns in size and exhibiting amorphous shapes. This buildup fosters surface degradation, manifesting as micro-fissures, fiber erosion, and localized discoloration, which undermine the material's structural integrity for cleaning and manufacturing applications.
+  character_count:
+    after: 150
+    before: 469
+  generated: '2025-10-25T14:50:23.235613Z'
+  generation_method: ai_research
+  word_count:
+    after: 19
+    before: 58
 category: wood
 description: Laser cleaning parameters for Oak
 environmentalImpact:
@@ -67,6 +79,8 @@ machineSettings:
     description: Optimal average power for Oak surface cleaning without charring
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for controlled ablation of contaminants
     unit: ns
@@ -75,6 +89,8 @@ machineSettings:
     description: Optimal repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
@@ -83,10 +99,14 @@ machineSettings:
     description: Beam spot diameter for precise cleaning resolution
     unit: μm
     value: 100
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength for optimal absorption in Oak cellulose and lignin
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -109,108 +129,135 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 32.7
+      min: 1
+      max: 50
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 32.5
+      min: 10
+      max: 60
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 2400.0
+      min: 800
+      max: 2500
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 0.17
+      min: 0.04
+      max: 0.4
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 32.7
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 32.5
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 2400.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 0.17
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: °C
-          value: 400.0
-        source: wood_combustion_standards
-        type: carbonization
         unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 0.16
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 54.0
+        value: 400.0
+      source: wood_combustion_standards
+      type: carbonization
+      unit: °C
+      value: 300.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 0.16
+      min: 0.0001
+      max: 0.4
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 54.0
+      min: 3.0
+      max: 60
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: Wood Database (www.wood-database.com) - "Mechanical Properties of Oak"
-        unit: MPa
-        value: 46.0
-      corrosionResistance:
-        ai_verified: true
-        source: 'USDA Forest Service, Wood Handbook: Wood as an Engineering Material (Chapter 3: Physical Properties and Moisture
-          Relations of Wood)'
-        unit: rating
-        value: 7.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 0.68
-      flexuralStrength:
-        ai_verified: true
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table
-          5-3b. Published by the USDA Forest Products Laboratory.'
-        unit: MPa
-        value: 97.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: MPa
-        value: 3.7
-      oxidationResistance:
-        ai_verified: true
-        source: 'Wood Handbook, Chapter 3: "Moisture Relations and Physical Properties of Wood," Table 3-5: "Approximate Strength
-          Temperatures for Wood," USDA Forest Service, Forest Products Laboratory.'
-        unit: °C
-        value: 150.0
-      porosity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.62
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 95.0
-      youngsModulus:
-        source: ai_research
-        unit: GPa
-        value: 2.5025
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.51
+    compressiveStrength:
+      ai_verified: true
+      source: Wood Database (www.wood-database.com) - "Mechanical Properties of Oak"
+      unit: MPa
+      value: 46.0
+      min: 20
+      max: 80
+    corrosionResistance:
+      ai_verified: true
+      source: 'USDA Forest Service, Wood Handbook: Wood as an Engineering Material (Chapter 3: Physical Properties and Moisture Relations of Wood)'
+      unit: rating
+      value: 7.0
+      min: 2.0
+      max: 8.0
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 0.68
+      min: 0.12
+      max: 1.5
+    flexuralStrength:
+      ai_verified: true
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table 5-3b. Published by the USDA Forest Products Laboratory.'
+      unit: MPa
+      value: 97.0
+      min: 40
+      max: 150
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.51
+      min: 0.33
+      max: 4.4
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: MPa
+      value: 3.7
+      min: 1
+      max: 5000
+    oxidationResistance:
+      ai_verified: true
+      source: 'Wood Handbook, Chapter 3: "Moisture Relations and Physical Properties of Wood," Table 3-5: "Approximate Strength Temperatures for Wood," USDA Forest Service, Forest Products Laboratory.'
+      unit: °C
+      value: 150.0
+      min: 82.0
+      max: 204.0
+    porosity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.62
+      min: 12
+      max: 65
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 95.0
+      min: 20
+      max: 200
+    youngsModulus:
+      source: ai_research
+      unit: GPa
+      value: 2.5025
+      min: 5
+      max: 20000
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), pp. 124-126
-        unit: MPa·√m
-        value: 0.39
+    fractureToughness:
+      ai_verified: true
+      source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), pp. 124-126
+      unit: MPa·√m
+      value: 0.39
+      min: 0.33
+      max: 4.4
 material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
@@ -246,95 +293,59 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
-- name: Unknown
-  description: EPA Clean Air Act Compliance
-  url: ''
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+- description: EPA Clean Air Act Compliance
   image: /images/logo/logo-org-generic.png
   longName: Unknown Organization
+  name: Unknown
+  url: ''
 subcategory: hardwood
 subtitle: Precision laser cleaning revives Oak's intricate grain while safeguarding its dense structure
-title: Oak Laser Cleaning
-caption:
-  beforeText: Under the microscope, the oak surface displays a contaminated condition with irregular topography. Adherent
-    particles—fine dust grains and oily residues—cluster within the porous wood fibers, measuring 1-10 microns in size and
-    exhibiting amorphous shapes. This buildup fosters surface degradation, manifesting as micro-fissures, fiber erosion, and
-    localized discoloration, which undermine the material's structural integrity for cleaning and manufacturing applications.
-  afterText: The cleaned oak surface gleams smoothly, its natural grain restored vividly. Quality restoration preserves full
-    material integrity without compromise.
-  generated: '2025-10-25T14:50:23.235613Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 58
-    after: 19
-  character_count:
-    before: 469
-    after: 150
 subtitle_metadata:
-  generated: '2025-10-25T21:23:42.829237Z'
-  author_name: Alessandro Moretti
   author_country: Italy
+  author_name: Alessandro Moretti
+  character_count: 93
+  generated: '2025-10-25T21:23:42.829237Z'
   generation_method: ai_research_voice
   word_count: 12
-  character_count: 93
+title: Oak Laser Cleaning
 faq:
 - question: How do I remove black charring from oak when laser cleaning without damaging the wood?
-  answer: Maintain fluence below 2.5 J/cm² using a 100W source at 500 mm/s to ablate charring without carbonizing the lignin.
-    A 100µm spot size provides precise control. Employ multiple low-power passes, rather than a single aggressive one, to
-    manage thermal input and preserve the wood's integrity.
-- question: What are the ideal laser parameters (wavelength, power, pulse duration) for cleaning soot and dirt from an oak
-    beam?
-  answer: For oak beam cleaning, I recommend nanosecond pulses at 1064 nm wavelength with approximately 100 W average power.
-    Begin testing with a fluence near 2.5 J/cm² and a 100 µm spot size. This combination effectively ablates soot while minimizing
-    thermal diffusion into the wood substrate, preventing charring.
+  answer: Maintain fluence below 2.5 J/cm² using a 100W source at 500 mm/s to ablate charring without carbonizing the lignin. A 100µm spot size provides precise control. Employ multiple low-power passes, rather than a single aggressive one, to manage thermal input and preserve the wood's integrity.
+- question: What are the ideal laser parameters (wavelength, power, pulse duration) for cleaning soot and dirt from an oak beam?
+  answer: For oak beam cleaning, I recommend nanosecond pulses at 1064 nm wavelength with approximately 100 W average power. Begin testing with a fluence near 2.5 J/cm² and a 100 µm spot size. This combination effectively ablates soot while minimizing thermal diffusion into the wood substrate, preventing charring.
 - question: Can a laser safely remove old paint or varnish from an antique oak piece without altering the patina?
-  answer: With precise 2.5 J/cm² fluence and 100 µm spot control, a laser can selectively ablate paint from antique oak. This
-    preserves the patina by avoiding the differential erosion of soft earlywood that plagues mechanical methods.
+  answer: With precise 2.5 J/cm² fluence and 100 µm spot control, a laser can selectively ablate paint from antique oak. This preserves the patina by avoiding the differential erosion of soft earlywood that plagues mechanical methods.
 - question: Is laser cleaning effective for decontaminating mold or biological growth from oak in heritage conservation?
-  answer: UV laser cleaning at 2.5 J/cm² effectively deactivates surface mold spores on oak. However, it cannot eliminate
-    deep hyphal growth, necessitating a combined biocidal treatment. Crucially, proper HEPA filtration is mandatory to manage
-    aerosolized spores during the process.
+  answer: UV laser cleaning at 2.5 J/cm² effectively deactivates surface mold spores on oak. However, it cannot eliminate deep hyphal growth, necessitating a combined biocidal treatment. Crucially, proper HEPA filtration is mandatory to manage aerosolized spores during the process.
 - question: What specific safety hazards exist when laser cleaning oak, especially regarding fumes and particulates?
-  answer: Oak laser cleaning at 100W and 2.5 J/cm² generates hazardous aldehydes and acetic acid fumes. Fine wood dust also
-    presents a significant explosion risk, necessitating robust fume extraction with P3 respiratory protection and integrated
-    spark detection systems for operator safety.
+  answer: Oak laser cleaning at 100W and 2.5 J/cm² generates hazardous aldehydes and acetic acid fumes. Fine wood dust also presents a significant explosion risk, necessitating robust fume extraction with P3 respiratory protection and integrated spark detection systems for operator safety.
 - question: How does the density and grain structure of oak affect the laser cleaning process and final result?
-  answer: Oak's alternating porous and dense grain causes differential ablation at our 2.5 J/cm² fluence. This can create
-    a slightly textured surface, requiring multi-directional passes at 500 mm/s to ensure uniform cleaning across the entire
-    grain structure.
+  answer: Oak's alternating porous and dense grain causes differential ablation at our 2.5 J/cm² fluence. This can create a slightly textured surface, requiring multi-directional passes at 500 mm/s to ensure uniform cleaning across the entire grain structure.
 - question: What is the maximum depth of material removal possible on oak with a laser before structural integrity is compromised?
-  answer: Laser cleaning on oak is inherently superficial, removing just 10-50 microns per pass. Exceeding this risks degrading
-    the cellular structure. The key is using a low fluence, around 2.5 J/cm², and limiting passes to preserve the wood's integrity.
-- question: How do I evaluate the success of a laser cleaning treatment on oak, and what are the acceptable post-treatment
-    changes?
-  answer: Success is confirmed via colorimetry showing ΔE<5 for acceptable lightening, avoiding charring. Microscopy must
-    reveal intact cell walls at 100µm resolution. Maintain 2.5 J/cm² fluence and 100W power to prevent surface roughening.
+  answer: Laser cleaning on oak is inherently superficial, removing just 10-50 microns per pass. Exceeding this risks degrading the cellular structure. The key is using a low fluence, around 2.5 J/cm², and limiting passes to preserve the wood's integrity.
+- question: How do I evaluate the success of a laser cleaning treatment on oak, and what are the acceptable post-treatment changes?
+  answer: Success is confirmed via colorimetry showing ΔE<5 for acceptable lightening, avoiding charring. Microscopy must reveal intact cell walls at 100µm resolution. Maintain 2.5 J/cm² fluence and 100W power to prevent surface roughening.
 - question: Why does my laser leave a white, ashy residue on the oak surface after cleaning, and how can I prevent it?
-  answer: The white residue is micro-charred lignin from excessive fluence above the 2.5 J/cm² threshold. To prevent this,
-    reduce your laser power or increase the scan speed beyond 500 mm/s. A final, gentle pass at lower energy will effectively
-    remove the remaining ash without damaging the oak substrate.
-- question: For which applications is laser cleaning oak most suitable compared to traditional methods like soda blasting
-    or chemical stripping?
-  answer: Laser cleaning excels for delicate oak artifacts like historical furniture or violins, where our 2.5 J/cm² fluence
-    and 100 µm spot size remove contaminants with micron-level precision. This prevents substrate loss, unlike aggressive
-    soda blasting, making it ideal for high-value conservation where the original surface integrity is paramount.
+  answer: The white residue is micro-charred lignin from excessive fluence above the 2.5 J/cm² threshold. To prevent this, reduce your laser power or increase the scan speed beyond 500 mm/s. A final, gentle pass at lower energy will effectively remove the remaining ash without damaging the oak substrate.
+- question: For which applications is laser cleaning oak most suitable compared to traditional methods like soda blasting or chemical stripping?
+  answer: Laser cleaning excels for delicate oak artifacts like historical furniture or violins, where our 2.5 J/cm² fluence and 100 µm spot size remove contaminants with micron-level precision. This prevents substrate loss, unlike aggressive soda blasting, making it ideal for high-value conservation where the original surface integrity is paramount.

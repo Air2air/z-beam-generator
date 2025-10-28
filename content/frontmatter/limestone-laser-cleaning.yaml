@@ -19,21 +19,17 @@ author:
   sex: f
   title: Ph.D.
 caption:
-  beforeText: Under microscopy, the limestone surface reveals a layer of dark, uneven contaminants. Dust and organic residues
-    cling to it, accelerating degradation. Tiny cracks and discoloration appear, showing the stone's vulnerability to environmental
-    damage and wear.
-  afterText: After laser cleaning, the limestone surface looks remarkably renewed. The process gently removed dirt and stains,
-    and the original texture is now visible. This restoration reveals excellent quality, preserving fine details without damage.
-    The material integrity remains intact, ensuring the stone’s durability for cultural heritage and construction applications.
-  generated: '2025-10-26T14:12:57.630917Z'
+  afterText: After laser cleaning, the limestone surface looks remarkably renewed. The process gently removed dirt and stains, and the original texture is now visible. This restoration reveals excellent quality, preserving fine details without damage. The material integrity remains intact, ensuring the stone’s durability for cultural heritage and construction applications.
   author: Yi-Chun Lin
+  beforeText: Under microscopy, the limestone surface reveals a layer of dark, uneven contaminants. Dust and organic residues cling to it, accelerating degradation. Tiny cracks and discoloration appear, showing the stone's vulnerability to environmental damage and wear.
+  character_count:
+    after: 362
+    before: 256
+  generated: '2025-10-26T14:12:57.630917Z'
   generation_method: ai_research
   word_count:
-    before: 35
     after: 48
-  character_count:
-    before: 256
-    after: 362
+    before: 35
 category: stone
 description: Laser cleaning parameters for Limestone
 environmentalImpact:
@@ -79,6 +75,8 @@ machineSettings:
     description: Optimal average power for limestone cleaning without thermal damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     unit: ns
@@ -87,6 +85,8 @@ machineSettings:
     description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform cleaning without excessive overlap
     unit: mm/s
@@ -95,10 +95,14 @@ machineSettings:
     description: Beam spot diameter for balanced cleaning efficiency and resolution
     unit: μm
     value: 100
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength optimized for limestone absorption and minimal scattering
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -121,108 +125,135 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 8.7
+      min: 0.1
+      max: 100
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 38.2
+      min: 5
+      max: 80
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 908.0
+      min: 400
+      max: 1200
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 1.26
+      min: 0.2
+      max: 8
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 8.7
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 38.2
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 908.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 1.26
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: °C
-          value: 825.0
-        source: thermal_degradation_standards
-        type: thermal_shock
         unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 1.32
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 8.0
+        value: 825.0
+      source: thermal_degradation_standards
+      type: thermal_shock
+      unit: °C
+      value: 800.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 1.32
+      min: 0.2
+      max: 2.5
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 8.0
+      min: 3
+      max: 30
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        source: ai_research
-        unit: MPa
-        value: 55.0
-      corrosionResistance:
-        ai_verified: true
-        source: ASTM C615 / ASTM C568 (Standard Specification for Granite Dimension Stone & Standard Specification for Limestone
-          Dimension Stone) - General Durability Classifications
-        unit: rating
-        value: 2.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 2.71
-      flexuralStrength:
-        ai_verified: true
-        source: ASTM C880 / C880M - Standard Test Method for Flexural Strength of Dimension Stone (4-point bend test)
-        unit: MPa
-        value: 10.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: Mohs
-        value: 3.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'National Lime Association, "Lime: An Introduction," and Boynton, R.S., "Chemistry and Technology of Lime
-          and Limestone."'
-        unit: °C
-        value: 600.0
-      porosity:
-        source: ai_research
-        unit: '%'
-        value: 15.2
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 8.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 68.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.9
+    compressiveStrength:
+      source: ai_research
+      unit: MPa
+      value: 55.0
+      min: 20
+      max: 500
+    corrosionResistance:
+      ai_verified: true
+      source: ASTM C615 / ASTM C568 (Standard Specification for Granite Dimension Stone & Standard Specification for Limestone Dimension Stone) - General Durability Classifications
+      unit: rating
+      value: 2.0
+      min: 2.0
+      max: 9.0
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 2.71
+      min: 1.5
+      max: 6.0
+    flexuralStrength:
+      ai_verified: true
+      source: ASTM C880 / C880M - Standard Test Method for Flexural Strength of Dimension Stone (4-point bend test)
+      unit: MPa
+      value: 10.0
+      min: 5
+      max: 50
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.9
+      min: 0.5
+      max: 5
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: Mohs
+      value: 3.0
+      min: 1
+      max: 7
+    oxidationResistance:
+      ai_verified: true
+      source: 'National Lime Association, "Lime: An Introduction," and Boynton, R.S., "Chemistry and Technology of Lime and Limestone."'
+      unit: °C
+      value: 600.0
+      min: 400.0
+      max: 870.0
+    porosity:
+      source: ai_research
+      unit: '%'
+      value: 15.2
+      min: 0.5
+      max: 25
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 8.0
+      min: 2
+      max: 25
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 68.0
+      min: 10
+      max: 100
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness of rocks. In *Fracture Mechanics of Rock*
-          (pp. 111-156). Academic Press.
-        unit: MPa·√m
-        value: 0.8
+    fractureToughness:
+      ai_verified: true
+      source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness of rocks. In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
+      unit: MPa·√m
+      value: 0.8
+      min: 0.5
+      max: 5
 material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
@@ -259,94 +290,64 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
-- name: Unknown
-  description: EPA Clean Air Act Compliance
-  url: ''
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+- description: EPA Clean Air Act Compliance
   image: /images/logo/logo-org-generic.png
   longName: Unknown Organization
-- name: Unknown
-  description: ASTM C568 - Standard Specification for Limestone Dimension Stone
+  name: Unknown
   url: ''
+- description: ASTM C568 - Standard Specification for Limestone Dimension Stone
   image: /images/logo/logo-org-generic.png
   longName: Unknown Organization
+  name: Unknown
+  url: ''
 subcategory: sedimentary
 subtitle: Gentle laser cleaning reveals limestone's unique fossils and porous elegance
-title: Limestone Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:17:33.294940Z'
-  author_name: Yi-Chun Lin
   author_country: Taiwan
+  author_name: Yi-Chun Lin
+  character_count: 76
+  generated: '2025-10-25T21:17:33.294940Z'
   generation_method: ai_research_voice
   word_count: 10
-  character_count: 76
+title: Limestone Laser Cleaning
 faq:
-- question: What laser settings (wavelength, power, pulse duration) are safe and effective for cleaning biological growth
-    from limestone without causing surface damage?
-  answer: For limestone cleaning, I recommend 1064 nm wavelength with 100 W average power and 10 ns pulses. Maintain fluence
-    below 12 J/cm² to prevent yellowing while effectively removing biological growth. Always conduct preliminary tests on
-    small areas to verify the specific limestone's ablation threshold before full-scale treatment.
-- question: How does laser cleaning compare to traditional methods like chemical poultices or micro-abrasion for removing
-    black gypsum crusts from historic limestone buildings?
-  answer: Laser cleaning at 12 J/cm² fluence selectively removes black gypsum crusts with superior control, unlike abrasive
-    methods. This precision preserves the stone's original surface and patina, preventing the sub-surface damage common with
-    micro-sanding. The process is non-contact, eliminating chemical residue risks from poultices.
-- question: Can laser cleaning be used to remove paint or graffiti from porous limestone without driving contaminants deeper
-    into the stone?
-  answer: Laser cleaning effectively removes paint from porous limestone without driving contaminants deeper. Using 1064nm
-    wavelength and 12 J/cm² fluence, the process ablates surface coatings while preserving the substrate. For complete removal
-    of ghosting, a poultice post-treatment is often necessary.
-- question: What are the specific safety hazards when laser cleaning limestone, especially regarding the composition of the
-    resulting dust and fumes?
-  answer: Laser cleaning limestone at 1064 nm wavelength generates fine calcium carbonate dust. While generally less hazardous
-    than silica, proper respiratory protection and industrial fume extraction are mandatory, especially given the 100 W power
-    and 500 mm/s scan speed used.
-- question: Why does laser-cleaned limestone sometimes appear lighter or 'whitened' compared to the surrounding area, and
-    how can this be minimized or avoided?
-  answer: The whitening effect occurs when laser fluence exceeds ~12 J/cm², removing the natural patina and altering surface
-    micro-roughness. To achieve a harmonious blend, carefully control power and scan speed around 500 mm/s to clean without
-    over-processing the underlying stone.
-- question: Is laser cleaning suitable for all types of limestone, and how do variations in density, porosity, and mineral
-    composition affect the cleaning process?
-  answer: Laser cleaning effectively treats most limestone varieties, though high-porosity types require careful fluence control
-    below 12 J/cm² to prevent etching. Iron oxide content can cause discoloration, demanding adjusted parameters like a 500
-    mm/s scan speed for uniform results.
-- question: What is the maximum safe operating power density (fluence) for limestone to prevent etching, melting, or other
-    irreversible surface damage?
-  answer: The ablation threshold for calcite, limestone's primary mineral, typically begins around 12 J/cm². Exceeding this
-    fluence risks vitrification and discoloration, so testing on an inconspicuous area is essential to calibrate your specific
-    laser parameters for safe, effective cleaning.
-- question: How effective is laser cleaning at removing salt efflorescence from within the pore structure of limestone, compared
-    to just surface contamination?
-  answer: Laser cleaning effectively removes surface salts at 12 J/cm², but struggles with deep pore contamination. The 1064
-    nm wavelength has limited penetration into limestone's microstructure. For crystalline salts within pores, combining laser
-    treatment with desalination poultices provides a more comprehensive solution.
-- question: For architectural restoration, what documentation or testing is required before laser cleaning a historically
-    significant limestone facade or sculpture?
-  answer: Before laser cleaning historic limestone, comprehensive analysis including XRD and SEM is essential. Begin with
-    a test patch using 12 J/cm² fluence and 500 mm/s scan speed to verify effectiveness. Continuous spectroscopic monitoring
-    during the process ensures the original 1064 nm wavelength treatment preserves the substrate without thermal alteration.
-- question: What is the typical operational cost and cleaning rate (e.g., m²/hour) for laser cleaning limestone on a large-scale
-    restoration project?
-  answer: For large-scale limestone restoration, expect cleaning rates of 1-2 m²/hour using a 100 W laser at 12 J/cm². Operational
-    costs are initially higher than traditional methods, but lifecycle expenses are often lower due to reduced waste, water
-    usage, and lack of chemical or abrasive media.
+- question: What laser settings (wavelength, power, pulse duration) are safe and effective for cleaning biological growth from limestone without causing surface damage?
+  answer: For limestone cleaning, I recommend 1064 nm wavelength with 100 W average power and 10 ns pulses. Maintain fluence below 12 J/cm² to prevent yellowing while effectively removing biological growth. Always conduct preliminary tests on small areas to verify the specific limestone's ablation threshold before full-scale treatment.
+- question: How does laser cleaning compare to traditional methods like chemical poultices or micro-abrasion for removing black gypsum crusts from historic limestone buildings?
+  answer: Laser cleaning at 12 J/cm² fluence selectively removes black gypsum crusts with superior control, unlike abrasive methods. This precision preserves the stone's original surface and patina, preventing the sub-surface damage common with micro-sanding. The process is non-contact, eliminating chemical residue risks from poultices.
+- question: Can laser cleaning be used to remove paint or graffiti from porous limestone without driving contaminants deeper into the stone?
+  answer: Laser cleaning effectively removes paint from porous limestone without driving contaminants deeper. Using 1064nm wavelength and 12 J/cm² fluence, the process ablates surface coatings while preserving the substrate. For complete removal of ghosting, a poultice post-treatment is often necessary.
+- question: What are the specific safety hazards when laser cleaning limestone, especially regarding the composition of the resulting dust and fumes?
+  answer: Laser cleaning limestone at 1064 nm wavelength generates fine calcium carbonate dust. While generally less hazardous than silica, proper respiratory protection and industrial fume extraction are mandatory, especially given the 100 W power and 500 mm/s scan speed used.
+- question: Why does laser-cleaned limestone sometimes appear lighter or 'whitened' compared to the surrounding area, and how can this be minimized or avoided?
+  answer: The whitening effect occurs when laser fluence exceeds ~12 J/cm², removing the natural patina and altering surface micro-roughness. To achieve a harmonious blend, carefully control power and scan speed around 500 mm/s to clean without over-processing the underlying stone.
+- question: Is laser cleaning suitable for all types of limestone, and how do variations in density, porosity, and mineral composition affect the cleaning process?
+  answer: Laser cleaning effectively treats most limestone varieties, though high-porosity types require careful fluence control below 12 J/cm² to prevent etching. Iron oxide content can cause discoloration, demanding adjusted parameters like a 500 mm/s scan speed for uniform results.
+- question: What is the maximum safe operating power density (fluence) for limestone to prevent etching, melting, or other irreversible surface damage?
+  answer: The ablation threshold for calcite, limestone's primary mineral, typically begins around 12 J/cm². Exceeding this fluence risks vitrification and discoloration, so testing on an inconspicuous area is essential to calibrate your specific laser parameters for safe, effective cleaning.
+- question: How effective is laser cleaning at removing salt efflorescence from within the pore structure of limestone, compared to just surface contamination?
+  answer: Laser cleaning effectively removes surface salts at 12 J/cm², but struggles with deep pore contamination. The 1064 nm wavelength has limited penetration into limestone's microstructure. For crystalline salts within pores, combining laser treatment with desalination poultices provides a more comprehensive solution.
+- question: For architectural restoration, what documentation or testing is required before laser cleaning a historically significant limestone facade or sculpture?
+  answer: Before laser cleaning historic limestone, comprehensive analysis including XRD and SEM is essential. Begin with a test patch using 12 J/cm² fluence and 500 mm/s scan speed to verify effectiveness. Continuous spectroscopic monitoring during the process ensures the original 1064 nm wavelength treatment preserves the substrate without thermal alteration.
+- question: What is the typical operational cost and cleaning rate (e.g., m²/hour) for laser cleaning limestone on a large-scale restoration project?
+  answer: For large-scale limestone restoration, expect cleaning rates of 1-2 m²/hour using a 100 W laser at 12 J/cm². Operational costs are initially higher than traditional methods, but lifecycle expenses are often lower due to reduced waste, water usage, and lack of chemical or abrasive media.

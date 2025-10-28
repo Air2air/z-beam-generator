@@ -1,6 +1,4 @@
 name: Stoneware
-category: ceramic
-description: Laser cleaning parameters for Stoneware
 applications:
 - Cultural Heritage
 - Food Processing
@@ -20,43 +18,20 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-machineSettings:
-  energyDensity:
-    value: 5
-    unit: J/cm²
-    description: Fluence level for effective contaminant removal without substrate damage
-  overlapRatio:
-    value: 50
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning pattern
-  passCount:
-    value: 3
-    unit: passes
-    description: Recommended number of passes for complete contaminant removal
-  powerRange:
-    value: 100
-    unit: W
-    description: Optimal average power for Stoneware surface cleaning without thermal damage
-  pulseWidth:
-    value: 10
-    unit: ns
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-  repetitionRate:
-    value: 50
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 100
-    unit: μm
-    description: Beam spot diameter for precise cleaning control
-  wavelength:
-    value: 1064
-    unit: nm
-    description: Near-infrared wavelength optimized for Stoneware mineral absorption
+caption:
+  afterText: The stoneware surface is cleaned very-very effectively by ultrafast laser process, removing contaminants then revealing original texture smooth-smooth. It appears pristine and clean, with restoration quality high-high, preserving material integrity without cracks or weakening. So, the ceramic maintains durability for cultural heritage preservation and food processing applications, ensuring safe and authentic use.
+  author: Ikmanda Roswati
+  beforeText: Under microscopy, the stoneware surface appears very-very contaminated with clustered particles and oily residues from food processing, sticking tightly and embedding into pores. Degradation shows as micro-cracks, pitting, and discoloration, so the texture becomes rough-rough and uneven, compromising its cultural heritage integrity.
+  character_count:
+    after: 416
+    before: 334
+  generated: '2025-10-25T15:25:10.933691Z'
+  generation_method: ai_research
+  word_count:
+    after: 52
+    before: 42
+category: ceramic
+description: Laser cleaning parameters for Stoneware
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -83,112 +58,113 @@ images:
   micro:
     alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
     url: /images/material/stoneware-laser-cleaning-micro.jpg
-caption:
-  beforeText: Under microscopy, the stoneware surface appears very-very contaminated with clustered particles and oily residues
-    from food processing, sticking tightly and embedding into pores. Degradation shows as micro-cracks, pitting, and discoloration,
-    so the texture becomes rough-rough and uneven, compromising its cultural heritage integrity.
-  afterText: The stoneware surface is cleaned very-very effectively by ultrafast laser process, removing contaminants then
-    revealing original texture smooth-smooth. It appears pristine and clean, with restoration quality high-high, preserving
-    material integrity without cracks or weakening. So, the ceramic maintains durability for cultural heritage preservation
-    and food processing applications, ensuring safe and authentic use.
-  generated: '2025-10-25T15:25:10.933691Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 42
-    after: 52
-  character_count:
-    before: 334
-    after: 416
-subtitle: Precision laser restores stoneware's dense texture without risking thermal cracks
-subtitle_metadata:
-  generated: '2025-10-25T21:46:38.143488Z'
-  author_name: Ikmanda Roswati
-  author_country: Indonesia
-  generation_method: ai_research_voice
-  word_count: 10
-  character_count: 81
-subcategory: oxide
-title: Stoneware Laser Cleaning
-regulatoryStandards:
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+machineSettings:
+  energyDensity:
+    description: Fluence level for effective contaminant removal without substrate damage
+    unit: J/cm²
+    value: 5
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning pattern
+    unit: '%'
+    value: 50
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  powerRange:
+    description: Optimal average power for Stoneware surface cleaning without thermal damage
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    unit: ns
+    value: 10
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  wavelength:
+    description: Near-infrared wavelength optimized for Stoneware mineral absorption
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
   laser_material_interaction:
-    label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    label: Laser-Material Interaction
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    label: Material Characteristics
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from Stoneware surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Surface profilometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
     - Laser parameters
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Surface profilometry
+    typicalRanges: 95-99.9% depending on application and material
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+subcategory: oxide
+subtitle: Precision laser restores stoneware's dense texture without risking thermal cracks
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 81
+  generated: '2025-10-25T21:46:38.143488Z'
+  generation_method: ai_research_voice
+  word_count: 10
+title: Stoneware Laser Cleaning
 faq:
-- question: What laser wavelengths are most effective for cleaning soot and grease from glazed stoneware without affecting
-    the underlying ceramic structure?
-  answer: For glazed stoneware, the 1064 nm near-infrared wavelength excels at ablating soot and grease, thanks to high contaminant
-    absorption and low penetration into the ceramic substrate, preserving its integrity. This beats 532 nm, which could overheat
-    glazes, and avoids abrasive techniques' risk of surface scratching—aim for 5 J/cm² fluence for safe, uniform results.
+- question: What laser wavelengths are most effective for cleaning soot and grease from glazed stoneware without affecting the underlying ceramic structure?
+  answer: For glazed stoneware, the 1064 nm near-infrared wavelength excels at ablating soot and grease, thanks to high contaminant absorption and low penetration into the ceramic substrate, preserving its integrity. This beats 532 nm, which could overheat glazes, and avoids abrasive techniques' risk of surface scratching—aim for 5 J/cm² fluence for safe, uniform results.
 - question: How can thermal shock be prevented when using pulsed lasers to clean antique stoneware pottery?
-  answer: To prevent thermal shock in antique stoneware pottery during pulsed laser cleaning, use 10 ns pulses at 5 J/cm²
-    fluence, which curbs rapid heat spikes on this low-conductivity ceramic with its moderate thermal expansion. Mild pre-heating
-    to 40°C beforehand equalizes surface temperatures, reducing stress risks while ensuring gentle contaminant removal.
-- question: In industrial settings, what are the common challenges in removing metal oxides from stoneware surfaces using
-    laser ablation?
-  answer: Strong adhesion of metal oxides to stoneware's porous ceramic matrix poses a key challenge in industrial laser ablation,
-    demanding precise fluence of 5 J/cm² to vaporize contaminants without fracturing the substrate. Thermal sensitivity requires
-    nanosecond pulses at 50 kHz for control, and post-cleaning spectroscopy analysis often reveals trace residues needing
-    multiple passes for full removal.
-- question: What safety protocols should be followed when laser cleaning stoneware in art restoration workshops to avoid glaze
-    cracking?
-  answer: In art restoration workshops, wear ANSI Z136.1-compliant laser safety goggles rated for 1064 nm wavelengths to shield
-    eyes from stray beams during stoneware cleaning. Ensure robust ventilation systems capture ceramic dust at under 5 mg/m³
-    to prevent inhalation risks. Monitor surface temperatures below 200°C with IR thermography, using 5 J/cm² fluence to avoid
-    thermal stress and glaze cracking on this porous ceramic.
+  answer: To prevent thermal shock in antique stoneware pottery during pulsed laser cleaning, use 10 ns pulses at 5 J/cm² fluence, which curbs rapid heat spikes on this low-conductivity ceramic with its moderate thermal expansion. Mild pre-heating to 40°C beforehand equalizes surface temperatures, reducing stress risks while ensuring gentle contaminant removal.
+- question: In industrial settings, what are the common challenges in removing metal oxides from stoneware surfaces using laser ablation?
+  answer: Strong adhesion of metal oxides to stoneware's porous ceramic matrix poses a key challenge in industrial laser ablation, demanding precise fluence of 5 J/cm² to vaporize contaminants without fracturing the substrate. Thermal sensitivity requires nanosecond pulses at 50 kHz for control, and post-cleaning spectroscopy analysis often reveals trace residues needing multiple passes for full removal.
+- question: What safety protocols should be followed when laser cleaning stoneware in art restoration workshops to avoid glaze cracking?
+  answer: In art restoration workshops, wear ANSI Z136.1-compliant laser safety goggles rated for 1064 nm wavelengths to shield eyes from stray beams during stoneware cleaning. Ensure robust ventilation systems capture ceramic dust at under 5 mg/m³ to prevent inhalation risks. Monitor surface temperatures below 200°C with IR thermography, using 5 J/cm² fluence to avoid thermal stress and glaze cracking on this porous ceramic.
 - question: How does the porosity of unglazed stoneware affect the efficiency of laser cleaning for organic residues?
-  answer: Porosity in unglazed stoneware lets laser beams penetrate deeper, scattering energy into voids and lowering efficiency
-    for removing surface organic residues. Opt for a 1064 nm wavelength at 5 J/cm² fluence to boost targeted absorption, ideal
-    for porous ceramics versus denser ones needing tighter pulse control.
-- question: What are the typical laser power settings recommended by manufacturers for cleaning stoneware tiles in architectural
-    applications?
-  answer: For stoneware tiles in architectural settings, manufacturers suggest 100 W average power at 1064 nm wavelength to
-    gently ablate grime without harming the ceramic matrix. Pair this with 500 mm/s scan speeds and 5 J/cm² fluence, starting
-    with test patches on varied compositions for optimal results.
-- question: In food-grade stoneware cleaning, are there regulatory concerns with laser methods removing contaminants like
-    food oils?
-  answer: Laser cleaning of food-grade stoneware effectively removes oils without chemicals, aligning with FDA guidelines
-    for inert ceramic surfaces that prevent leaching. At 5 J/cm² fluence and 1064 nm wavelength, it ablates contaminants precisely,
-    minimizing thermal stress—validate efficacy via surface residue tests below 10 ppm for compliance.
+  answer: Porosity in unglazed stoneware lets laser beams penetrate deeper, scattering energy into voids and lowering efficiency for removing surface organic residues. Opt for a 1064 nm wavelength at 5 J/cm² fluence to boost targeted absorption, ideal for porous ceramics versus denser ones needing tighter pulse control.
+- question: What are the typical laser power settings recommended by manufacturers for cleaning stoneware tiles in architectural applications?
+  answer: For stoneware tiles in architectural settings, manufacturers suggest 100 W average power at 1064 nm wavelength to gently ablate grime without harming the ceramic matrix. Pair this with 500 mm/s scan speeds and 5 J/cm² fluence, starting with test patches on varied compositions for optimal results.
+- question: In food-grade stoneware cleaning, are there regulatory concerns with laser methods removing contaminants like food oils?
+  answer: Laser cleaning of food-grade stoneware effectively removes oils without chemicals, aligning with FDA guidelines for inert ceramic surfaces that prevent leaching. At 5 J/cm² fluence and 1064 nm wavelength, it ablates contaminants precisely, minimizing thermal stress—validate efficacy via surface residue tests below 10 ppm for compliance.
 - question: How effective is dry laser cleaning compared to wet methods for restoring color on weathered stoneware sculptures?
-  answer: Dry laser cleaning proves more effective for restoring faded colors on weathered stoneware sculptures, using 1064
-    nm wavelength and 5 J/cm² fluence to precisely ablate surface grime without water. This avoids absorption damage in porous
-    ceramics like stoneware, unlike wet techniques that risk cracking or staining, while offering eco-friendly results and
-    better preservation of original textures.
+  answer: Dry laser cleaning proves more effective for restoring faded colors on weathered stoneware sculptures, using 1064 nm wavelength and 5 J/cm² fluence to precisely ablate surface grime without water. This avoids absorption damage in porous ceramics like stoneware, unlike wet techniques that risk cracking or staining, while offering eco-friendly results and better preservation of original textures.
 - question: What chemical properties of stoneware glazes influence the choice of laser for surface treatment in pottery production?
-  answer: Stoneware glazes, rich in silica content around 60-70%, strongly absorb near-infrared light at 1064 nm, making Q-switched
-    Nd:YAG lasers ideal for surface treatment without excessive heating. This minimizes melting risks during pottery production,
-    especially at fluences of 5 J/cm², ensuring precise contaminant removal while preserving the glaze's integrity.
+  answer: Stoneware glazes, rich in silica content around 60-70%, strongly absorb near-infrared light at 1064 nm, making Q-switched Nd:YAG lasers ideal for surface treatment without excessive heating. This minimizes melting risks during pottery production, especially at fluences of 5 J/cm², ensuring precise contaminant removal while preserving the glaze's integrity.

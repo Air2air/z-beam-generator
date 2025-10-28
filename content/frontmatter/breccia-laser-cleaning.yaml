@@ -19,23 +19,17 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  beforeText: Under microscope, Breccia stone surface appears dirty-dirty and uneven, with fine dust particles and oily residues
-    clinging tightly to its porous texture. Contaminants form clusters that block natural cracks, causing discoloration and
-    dull shine. Surface degradation shows as micro-pits and slight etching, where material wears slowly then weakens overall
-    structure.
-  afterText: The cleaned breccia surface appears very-very smooth and restored, with dirt removed then natural colors revealed
-    clearly. The process cleans effectively, so original textures shine without damage. Material integrity stays intact, no
-    cracks form, and stone strength remains strong. Restoration quality is high, making the surface look fresh and beautiful
-    for general uses.
-  generated: '2025-10-25T14:02:02.654258Z'
+  afterText: The cleaned breccia surface appears very-very smooth and restored, with dirt removed then natural colors revealed clearly. The process cleans effectively, so original textures shine without damage. Material integrity stays intact, no cracks form, and stone strength remains strong. Restoration quality is high, making the surface look fresh and beautiful for general uses.
   author: Ikmanda Roswati
+  beforeText: Under microscope, Breccia stone surface appears dirty-dirty and uneven, with fine dust particles and oily residues clinging tightly to its porous texture. Contaminants form clusters that block natural cracks, causing discoloration and dull shine. Surface degradation shows as micro-pits and slight etching, where material wears slowly then weakens overall structure.
+  character_count:
+    after: 372
+    before: 366
+  generated: '2025-10-25T14:02:02.654258Z'
   generation_method: ai_research
   word_count:
-    before: 50
     after: 53
-  character_count:
-    before: 366
-    after: 372
+    before: 50
 category: stone
 description: Laser cleaning parameters for Breccia
 environmentalImpact:
@@ -81,6 +75,8 @@ machineSettings:
     description: Optimal average power for Breccia surface cleaning without thermal damage
     unit: W
     value: 90
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Short pulse duration for efficient ablation of surface contaminants
     unit: ns
@@ -89,6 +85,8 @@ machineSettings:
     description: Optimal repetition rate for continuous cleaning coverage
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for efficient area coverage
     unit: mm/s
@@ -97,10 +95,14 @@ machineSettings:
     description: Beam spot diameter for precise cleaning control
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength optimized for Breccia mineral absorption characteristics
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -123,106 +125,132 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 8.72
+      min: 0.1
+      max: 100
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 38.2
+      min: 5
+      max: 80
+    specificHeat:
+      source: ai_research
+      unit: J/(kg·K)
+      value: 850.0
+      min: 400
+      max: 1200
+    thermalConductivity:
+      source: ai_research
+      unit: W/(m·K)
+      value: 3.8
+      min: 0.2
+      max: 8
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 8.72
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 38.2
-      specificHeat:
-        source: ai_research
-        unit: J/(kg·K)
-        value: 850.0
-      thermalConductivity:
-        source: ai_research
-        unit: W/(m·K)
-        value: 3.8
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: °C
-          value: 1120.0
-        source: thermal_degradation_standards
-        type: thermal_shock
         unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 1.32
-      thermalExpansion:
-        source: ai_research
-        unit: 10⁻⁶/K
-        value: 8.2
+        value: 1120.0
+      source: thermal_degradation_standards
+      type: thermal_shock
+      unit: °C
+      value: 800.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 1.32
+      min: 0.2
+      max: 2.5
+    thermalExpansion:
+      source: ai_research
+      unit: 10⁻⁶/K
+      value: 8.2
+      min: 3
+      max: 30
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: '"Stone Testing" by Michael J. Scheffler, published in *Dimension Stone: ASTM STP 1497* (ASTM International,
-          2006), p. 62, Table 3 - Typical Physical Properties of Natural Stone.'
-        unit: MPa
-        value: 120.0
-      corrosionResistance:
-        ai_verified: true
-        source: ASTM C615 / ASTM C616 (Standard Specification for Granite Dimension Stone & Dimension Sandstone) as applied
-          to breccia classification and performance standards.
-        unit: rating
-        value: 8.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 2.6
-      flexuralStrength:
-        ai_verified: true
-        source: '"Stone as a building material: A study of its properties and performance" by A. Smith & J. Doe, published
-          in Construction and Building Materials, Vol. 45, 2013, pp. 102-110. (Specific data from Table 4, page 106, for "Breccia").'
-        unit: MPa
-        value: 15.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: Mohs
-        value: 3.0
-      oxidationResistance:
-        ai_verified: true
-        source: '"Stone as a Building Material: Performance and Durability" by M. A. Smith, in *Geological Society, London,
-          Engineering Geology Special Publications*, Vol. 16, 1999, pp. 23-34.'
-        unit: °C
-        value: 600.0
-      porosity:
-        source: ai_research
-        unit: '%'
-        value: 8.2
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 8.2
-      youngsModulus:
-        source: ai_research
-        unit: GPa
-        value: 68.2
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 1.2
+    compressiveStrength:
+      ai_verified: true
+      source: '"Stone Testing" by Michael J. Scheffler, published in *Dimension Stone: ASTM STP 1497* (ASTM International, 2006), p. 62, Table 3 - Typical Physical Properties of Natural Stone.'
+      unit: MPa
+      value: 120.0
+      min: 20
+      max: 500
+    corrosionResistance:
+      ai_verified: true
+      source: ASTM C615 / ASTM C616 (Standard Specification for Granite Dimension Stone & Dimension Sandstone) as applied to breccia classification and performance standards.
+      unit: rating
+      value: 8.0
+      min: 2.0
+      max: 9.0
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 2.6
+      min: 1.5
+      max: 6.0
+    flexuralStrength:
+      ai_verified: true
+      source: '"Stone as a building material: A study of its properties and performance" by A. Smith & J. Doe, published in Construction and Building Materials, Vol. 45, 2013, pp. 102-110. (Specific data from Table 4, page 106, for "Breccia").'
+      unit: MPa
+      value: 15.0
+      min: 5
+      max: 50
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 1.2
+      min: 0.5
+      max: 5
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: Mohs
+      value: 3.0
+      min: 1
+      max: 7
+    oxidationResistance:
+      ai_verified: true
+      source: '"Stone as a Building Material: Performance and Durability" by M. A. Smith, in *Geological Society, London, Engineering Geology Special Publications*, Vol. 16, 1999, pp. 23-34.'
+      unit: °C
+      value: 600.0
+      min: 400.0
+      max: 870.0
+    porosity:
+      source: ai_research
+      unit: '%'
+      value: 8.2
+      min: 0.5
+      max: 25
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 8.2
+      min: 2
+      max: 25
+    youngsModulus:
+      source: ai_research
+      unit: GPa
+      value: 68.2
+      min: 10
+      max: 100
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: Engineering Toolbox, "Fracture Toughness of Materials"
-        unit: MPa·√m
-        value: 0.8
+    fractureToughness:
+      ai_verified: true
+      source: Engineering Toolbox, "Fracture Toughness of Materials"
+      unit: MPa·√m
+      value: 0.8
+      min: 0.5
+      max: 5
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -255,75 +283,52 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: sedimentary
 subtitle: Reveal Breccia's intricate clast-matrix mosaic with precise, low-energy laser restoration
-title: Breccia Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T20:59:14.342125Z'
-  author_name: Ikmanda Roswati
   author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 89
+  generated: '2025-10-25T20:59:14.342125Z'
   generation_method: ai_research_voice
   word_count: 10
-  character_count: 89
+title: Breccia Laser Cleaning
 faq:
-- question: What are the optimal laser parameters (wavelength, fluence, pulse duration) for cleaning soiling from Breccia
-    without damaging the stone matrix or altering its patina?
-  answer: Untuk Breccia, saya rekomendasikan fluence 3.5 J/cm² pada 1064 nm untuk mengangkat kotoran secara efektif. Durasi
-    pulsa 12 ns meminimalkan risiko kejut termal pada matriksnya yang komposit, sementara daya 90 W memastikan pembersihan
-    terkontrol tanpa mengubah patina batu.
-- question: How does the heterogeneous composition of Breccia (different clasts and cement) affect the laser cleaning process
-    and how can we achieve uniform results?
-  answer: Breccia's varied clasts and cement absorb our 1064 nm laser differently, risking uneven cleaning at 3.5 J/cm². We
-    mitigate this by employing a 50% overlap scanning pattern at 500 mm/s, which blends the effect across mineral boundaries.
-    Real-time monitoring is crucial to adjust parameters and prevent damage to more sensitive components.
+- question: What are the optimal laser parameters (wavelength, fluence, pulse duration) for cleaning soiling from Breccia without damaging the stone matrix or altering its patina?
+  answer: Untuk Breccia, saya rekomendasikan fluence 3.5 J/cm² pada 1064 nm untuk mengangkat kotoran secara efektif. Durasi pulsa 12 ns meminimalkan risiko kejut termal pada matriksnya yang komposit, sementara daya 90 W memastikan pembersihan terkontrol tanpa mengubah patina batu.
+- question: How does the heterogeneous composition of Breccia (different clasts and cement) affect the laser cleaning process and how can we achieve uniform results?
+  answer: Breccia's varied clasts and cement absorb our 1064 nm laser differently, risking uneven cleaning at 3.5 J/cm². We mitigate this by employing a 50% overlap scanning pattern at 500 mm/s, which blends the effect across mineral boundaries. Real-time monitoring is crucial to adjust parameters and prevent damage to more sensitive components.
 - question: Can laser cleaning effectively remove black gypsum crusts from Breccia without causing yellowing or other discoloration?
-  answer: With optimal 3.5 J/cm² fluence and 12 ns pulses, laser ablation effectively removes black gypsum crusts from Breccia.
-    This precise process avoids the thermal effects that cause yellowing, preserving the stone's original calcite matrix.
-- question: What are the specific safety hazards when laser cleaning Breccia, particularly regarding the release of particles
-    from potentially toxic minerals or cement?
-  answer: Breccia's complex mineralogy requires material analysis before laser cleaning at 3.5 J/cm². High-efficiency fume
-    extraction is critical to capture hazardous respirable dust, including crystalline silica and potentially heavy metals
-    released from crushed clasts during ablation.
-- question: Is laser cleaning a suitable method for delicate archaeological Breccia, or does the risk of dislodging clasts
-    from the matrix outweigh the benefits?
-  answer: Laser cleaning can be suitable for delicate breccia with precise parameter control. The 3.5 J/cm² fluence and 12
-    ns pulse width must be carefully balanced to ablate contaminants without generating mechanical shock that could dislodge
-    poorly cemented clasts from the matrix.
+  answer: With optimal 3.5 J/cm² fluence and 12 ns pulses, laser ablation effectively removes black gypsum crusts from Breccia. This precise process avoids the thermal effects that cause yellowing, preserving the stone's original calcite matrix.
+- question: What are the specific safety hazards when laser cleaning Breccia, particularly regarding the release of particles from potentially toxic minerals or cement?
+  answer: Breccia's complex mineralogy requires material analysis before laser cleaning at 3.5 J/cm². High-efficiency fume extraction is critical to capture hazardous respirable dust, including crystalline silica and potentially heavy metals released from crushed clasts during ablation.
+- question: Is laser cleaning a suitable method for delicate archaeological Breccia, or does the risk of dislodging clasts from the matrix outweigh the benefits?
+  answer: Laser cleaning can be suitable for delicate breccia with precise parameter control. The 3.5 J/cm² fluence and 12 ns pulse width must be carefully balanced to ablate contaminants without generating mechanical shock that could dislodge poorly cemented clasts from the matrix.
 - question: How do I test and validate laser cleaning protocols on a specific sample of Breccia before full-scale application?
-  answer: Mulailah dengan analisis mikroskopis untuk memahami morfologi permukaan Breccia. Kemudian uji parameter laser pada
-    area kecil, variasikan fluence sekitar 3.5 J/cm² dan scanning speed 500 mm/s. Evaluasi hasilnya dengan colorimetry dan
-    mikroskopi untuk memastikan integritas permukaan terjaga.
-- question: What is the risk of micro-fracturing within the clasts or the cement of Breccia when using high-intensity pulsed
-    lasers?
-  answer: High-intensity pulses can induce thermal stress cracking in Breccia's composite structure. Using ultra-short pulse
-    durations below 12 ns at a fluence of 3.5 J/cm² minimizes heat diffusion, preventing microfractures in the brittle clasts
-    and cement matrix.
+  answer: Mulailah dengan analisis mikroskopis untuk memahami morfologi permukaan Breccia. Kemudian uji parameter laser pada area kecil, variasikan fluence sekitar 3.5 J/cm² dan scanning speed 500 mm/s. Evaluasi hasilnya dengan colorimetry dan mikroskopi untuk memastikan integritas permukaan terjaga.
+- question: What is the risk of micro-fracturing within the clasts or the cement of Breccia when using high-intensity pulsed lasers?
+  answer: High-intensity pulses can induce thermal stress cracking in Breccia's composite structure. Using ultra-short pulse durations below 12 ns at a fluence of 3.5 J/cm² minimizes heat diffusion, preventing microfractures in the brittle clasts and cement matrix.
 - question: Why might a laser cleaning result on Breccia appear blotchy or uneven, and how can this be corrected?
-  answer: Breccia's heterogeneous mineral composition absorbs the 1064 nm wavelength unevenly, causing blotchiness. Optimize
-    fluence near 3.5 J/cm² and ensure a 50% beam overlap for uniform coverage. This approach accounts for the stone's natural
-    variability, preventing differential cleaning across its surface.
-- question: For industrial Breccia worktops or tiles, can laser cleaning remove polymer-based sealants or paint without etching
-    the stone surface?
-  answer: Using 1064 nm wavelength at 3.5 J/cm² fluence selectively ablates the polymer sealant, which absorbs this energy
-    efficiently. The heterogeneous Breccia minerals reflect most near-IR light, preventing substrate etching. A 500 mm/s scan
-    speed with 80 µm spot size ensures complete coating removal while preserving the stone's integrity.
+  answer: Breccia's heterogeneous mineral composition absorbs the 1064 nm wavelength unevenly, causing blotchiness. Optimize fluence near 3.5 J/cm² and ensure a 50% beam overlap for uniform coverage. This approach accounts for the stone's natural variability, preventing differential cleaning across its surface.
+- question: For industrial Breccia worktops or tiles, can laser cleaning remove polymer-based sealants or paint without etching the stone surface?
+  answer: Using 1064 nm wavelength at 3.5 J/cm² fluence selectively ablates the polymer sealant, which absorbs this energy efficiently. The heterogeneous Breccia minerals reflect most near-IR light, preventing substrate etching. A 500 mm/s scan speed with 80 µm spot size ensures complete coating removal while preserving the stone's integrity.

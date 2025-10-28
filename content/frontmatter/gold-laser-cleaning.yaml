@@ -19,20 +19,17 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  beforeText: Gold surface looks very-very dirty under microscope. Contaminants appear dark and sticky. Surface is damaged
-    and rough.
-  afterText: The cleaned gold surface appears very-very smooth and shiny. The restoration process removes dirt then makes
-    it look new. Surface is cleaned by laser method, so quality is high. Material integrity stays strong, and gold remains
-    perfect for electronics, aerospace, and medical devices with no damage at all.
-  generated: '2025-10-26T14:11:50.706834Z'
+  afterText: The cleaned gold surface appears very-very smooth and shiny. The restoration process removes dirt then makes it look new. Surface is cleaned by laser method, so quality is high. Material integrity stays strong, and gold remains perfect for electronics, aerospace, and medical devices with no damage at all.
   author: Ikmanda Roswati
+  beforeText: Gold surface looks very-very dirty under microscope. Contaminants appear dark and sticky. Surface is damaged and rough.
+  character_count:
+    after: 306
+    before: 119
+  generated: '2025-10-26T14:11:50.706834Z'
   generation_method: ai_research
   word_count:
-    before: 17
     after: 48
-  character_count:
-    before: 119
-    after: 306
+    before: 17
 category: metal
 description: Laser cleaning parameters for Gold
 environmentalImpact:
@@ -66,6 +63,8 @@ machineSettings:
     description: Fluence threshold for Gold ablation without substrate damage
     unit: J/cm²
     value: 0.8
+    min: 0.3
+    max: 4.5
   overlapRatio:
     description: Optimal beam overlap for uniform Gold surface cleaning
     unit: '%'
@@ -78,6 +77,8 @@ machineSettings:
     description: Optimal average power for Gold surface cleaning without damage
     unit: W
     value: 15
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse width for controlled Gold ablation
     unit: ns
@@ -86,6 +87,8 @@ machineSettings:
     description: Optimal repetition rate for efficient Gold cleaning
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform Gold cleaning
     unit: mm/s
@@ -94,10 +97,14 @@ machineSettings:
     description: Beam spot diameter for precise Gold surface treatment
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   wavelength:
     description: Green wavelength optimized for Gold absorption characteristics
     unit: nm
     value: 532
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -120,194 +127,263 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      ablationThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.017
-      boilingPoint:
-        source: ai_research
-        unit: °C
-        value: 2970.0
-      laserAbsorption:
-        ai_verified: true
-        source: ai_research
-        unit: '%'
-        value: 2.5
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 97.8
-      meltingPoint:
-        source: ai_research
-        unit: °C
-        value: 1064.18
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.985
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 129.1
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 318.0
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 1337.33
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
+    ablationThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 2.0
+      max: 8.0
+    absorptionCoefficient:
+      source: ai_research
+      unit: m⁻¹
+      value: 69000000.0
+      min: 100000
+      max: 50000000
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.017
+      min: 2.0
+      max: 65.0
+    boilingPoint:
+      source: ai_research
+      unit: °C
+      value: 2970.0
+      min: 907
+      max: 5870
+    laserAbsorption:
+      ai_verified: true
+      source: ai_research
+      unit: '%'
+      value: 2.5
+      min: 0.02
+      max: 100
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 0.1
+      max: 20.0
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 97.8
+      min: 5
+      max: 99.9
+    meltingPoint:
+      source: ai_research
+      unit: °C
+      value: 1064.18
+      min: -39
+      max: 3422
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (reflectance ratio)
+      value: 0.985
+      min: 85
+      max: 98
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 129.1
+      min: 100
+      max: 2000
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 318.0
+      min: 7.0
+      max: 430
+    thermalDestruction:
+      point:
         source: ai_research
         unit: K
         value: 1337.33
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 127.0
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 14.2
-      thermalShockResistance:
-        source: ai_research
-        unit: MW/m
-        value: 1.8
-      absorptionCoefficient:
-        source: ai_research
-        unit: m⁻¹
-        value: 69000000.0
+      source: thermal_degradation_standards
+      type: melting
+      unit: °C
+      value: 500.0
+    thermalDestructionPoint:
+      source: ai_research
+      unit: K
+      value: 1337.33
+      min: 873
+      max: 3695
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 127.0
+      min: 0.06
+      max: 174
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 14.2
+      min: 0.5
+      max: 33
+    thermalShockResistance:
+      source: ai_research
+      unit: MW/m
+      value: 1.8
+      min: 50
+      max: 400
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990),
-          Table 1, Page 712.'
-        unit: MPa
-        value: 120.0
-      corrosionResistance:
-        ai_verified: true
-        source: ISO 10289:1999 (Method for corrosion testing of metallic coatings) and general metallurgical consensus
-        unit: rating
-        value: 10.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 19.32
-      electricalConductivity:
-        source: ai_research
-        unit: S/m
-        value: 45200000.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 2.214e-08
-      flexuralStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Gold
-          and Gold Alloys"'
-        unit: MPa
-        value: 120.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: HV
-        value: 25.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990),
-          Section "Gold and Gold Alloys"'
-        unit: °C
-        value: 1064.0
-      porosity:
-        source: ai_research
-        unit: '%'
-        value: 0.0001
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 220.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 79.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.8
+    compressiveStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990), Table 1, Page 712.'
+      unit: MPa
+      value: 120.0
+      min: 50
+      max: 2000
+    corrosionResistance:
+      ai_verified: true
+      source: ISO 10289:1999 (Method for corrosion testing of metallic coatings) and general metallurgical consensus
+      unit: rating
+      value: 10.0
+      min: 1
+      max: 10
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 19.32
+      min: 0.53
+      max: 22.6
+    electricalConductivity:
+      source: ai_research
+      unit: S/m
+      value: 45200000.0
+      min: 0.67
+      max: 63.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 2.214e-08
+      min: 1.0e-08
+      max: 1.5e-06
+    flexuralStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Gold and Gold Alloys"'
+      unit: MPa
+      value: 120.0
+      min: 2.5
+      max: 1050.0
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.8
+      min: 20
+      max: 200
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: HV
+      value: 25.0
+      min: 0.5
+      max: 3500
+    oxidationResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section "Gold and Gold Alloys"'
+      unit: °C
+      value: 1064.0
+      min: 200
+      max: 1200
+    porosity:
+      source: ai_research
+      unit: '%'
+      value: 0.0001
+      min: 0.0
+      max: 15.0
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 220.0
+      min: 3.0
+      max: 3000.0
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 79.0
+      min: 5
+      max: 600
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        source: ai_research
-        unit: m⁻¹
-        value: 69000000.0
-      fractureToughness:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-        unit: MPa·√m
-        value: 0.8
-      surfaceRoughness:
-        source: ai_research
-        unit: μm
-        value: 0.025
-      vaporPressure:
-        source: ai_research
-        unit: Pa
-        value: 0.000172
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.017
-      electricalConductivity:
-        source: ai_research
-        unit: S/m
-        value: 45200000.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 2.214e-08
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.985
-      thermalDestructionPoint:
-        source: ai_research
-        unit: K
-        value: 1337.33
-      thermalShockResistance:
-        source: ai_research
-        unit: MW/m
-        value: 1.8
+    absorptionCoefficient:
+      source: ai_research
+      unit: m⁻¹
+      value: 69000000.0
+      min: 100000
+      max: 50000000
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.017
+      min: 2.0
+      max: 65.0
+    electricalConductivity:
+      source: ai_research
+      unit: S/m
+      value: 45200000.0
+      min: 0.67
+      max: 63.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 2.214e-08
+      min: 1.0e-08
+      max: 1.5e-06
+    fractureToughness:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+      unit: MPa·√m
+      value: 0.8
+      min: 20
+      max: 200
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 0.1
+      max: 20.0
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (reflectance ratio)
+      value: 0.985
+      min: 85
+      max: 98
+    surfaceRoughness:
+      source: ai_research
+      unit: μm
+      value: 0.025
+      min: 0.4
+      max: 150
+    thermalDestructionPoint:
+      source: ai_research
+      unit: K
+      value: 1337.33
+      min: 873
+      max: 3695
+    thermalShockResistance:
+      source: ai_research
+      unit: MW/m
+      value: 1.8
+      min: 50
+      max: 400
+    vaporPressure:
+      source: ai_research
+      unit: Pa
+      value: 0.000172
+      min: 1.0e-10
+      max: 0.001
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -340,80 +416,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: non-ferrous
 subtitle: Gentle laser pulses restore gold's timeless luster without risking its soft surface
-title: Gold Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:11:12.613193Z'
-  author_name: Ikmanda Roswati
   author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 83
+  generated: '2025-10-25T21:11:12.613193Z'
   generation_method: ai_research_voice
   word_count: 12
-  character_count: 83
+title: Gold Laser Cleaning
 faq:
-- question: Can a laser cleaning system remove tarnish or surface contamination from gold without damaging the underlying
-    material?
-  answer: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan fluensi di bawah 0.8 J/cm² dan panjang
-    gelombang 532 nm, kontaminasi permukaan seperti sulfida perak dapat dihilangkan secara selektif. Konduktivitas termal
-    emas yang tinggi memungkinkan pendinginan cepat, mencegah pelelehan material dasar saat menggunakan pulsa nanodetik.
-- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning delicate gold surfaces, such as historical
-    artifacts or electronics contacts?
-  answer: For delicate gold surfaces, the optimal wavelength is 532 nm green light. Gold's reflectivity drops significantly
-    at shorter wavelengths, enabling efficient ablation at lower fluence near 0.8 J/cm². This approach minimizes thermal damage
-    risks to sensitive substrates like historical artifacts or electronics, ensuring precise contaminant removal.
-- question: How do you prevent the high reflectivity of gold from causing safety issues or damaging the laser cleaning equipment
-    itself?
-  answer: We utilize a 532 nm wavelength for enhanced gold absorption, minimizing hazardous reflections. Critical safety measures
-    include optical isolators and beam dumps to protect the 15 W laser source from back-reflected energy. Operators must wear
-    wavelength-specific eyewear.
-- question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after
-    heat treatment or soldering?
-  answer: Laser cleaning can remove oxidation from gold alloys, but selective ablation of alloying elements like copper is
-    a concern. Using a 532 nm wavelength at 0.8 J/cm² fluence minimizes this risk, preserving the surface composition and
-    color integrity.
+- question: Can a laser cleaning system remove tarnish or surface contamination from gold without damaging the underlying material?
+  answer: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan fluensi di bawah 0.8 J/cm² dan panjang gelombang 532 nm, kontaminasi permukaan seperti sulfida perak dapat dihilangkan secara selektif. Konduktivitas termal emas yang tinggi memungkinkan pendinginan cepat, mencegah pelelehan material dasar saat menggunakan pulsa nanodetik.
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning delicate gold surfaces, such as historical artifacts or electronics contacts?
+  answer: For delicate gold surfaces, the optimal wavelength is 532 nm green light. Gold's reflectivity drops significantly at shorter wavelengths, enabling efficient ablation at lower fluence near 0.8 J/cm². This approach minimizes thermal damage risks to sensitive substrates like historical artifacts or electronics, ensuring precise contaminant removal.
+- question: How do you prevent the high reflectivity of gold from causing safety issues or damaging the laser cleaning equipment itself?
+  answer: We utilize a 532 nm wavelength for enhanced gold absorption, minimizing hazardous reflections. Critical safety measures include optical isolators and beam dumps to protect the 15 W laser source from back-reflected energy. Operators must wear wavelength-specific eyewear.
+- question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after heat treatment or soldering?
+  answer: Laser cleaning can remove oxidation from gold alloys, but selective ablation of alloying elements like copper is a concern. Using a 532 nm wavelength at 0.8 J/cm² fluence minimizes this risk, preserving the surface composition and color integrity.
 - question: What are the risks of causing discoloration or a matte finish on a polished gold surface during laser cleaning?
-  answer: Discoloration and matte finishes arise from micro-melting and surface roughening if fluence exceeds ~0.8 J/cm².
-    Maintaining the specular reflection of polished gold requires precise control of parameters like the 50 µm spot size and
-    500 mm/s scan speed to avoid altering its microstructure.
+  answer: Discoloration and matte finishes arise from micro-melting and surface roughening if fluence exceeds ~0.8 J/cm². Maintaining the specular reflection of polished gold requires precise control of parameters like the 50 µm spot size and 500 mm/s scan speed to avoid altering its microstructure.
 - question: Can laser cleaning be used to selectively de-plate gold from a substrate without harming the base material?
-  answer: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa merusak substrat. Dengan fluence terkontrol
-    sekitar 0.8 J/cm² dan panjang gelombang 532 nm, proses ini sangat efektif untuk aplikasi perbaikan PCB dan pemulihan logam
-    mulia dari komponen elektronik bekas.
+  answer: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa merusak substrat. Dengan fluence terkontrol sekitar 0.8 J/cm² dan panjang gelombang 532 nm, proses ini sangat efektif untuk aplikasi perbaikan PCB dan pemulihan logam mulia dari komponen elektronik bekas.
 - question: How does the karat (purity) of gold affect the laser cleaning process and the parameters required?
-  answer: Lower karat gold's higher copper content increases oxidation risk during laser cleaning. We must reduce the fluence
-    below 0.8 J/cm² and adjust the 50 kHz repetition rate to prevent thermal damage to the more susceptible alloy, ensuring
-    a pristine surface.
-- question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable
-    material loss or thinning?
-  answer: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry untuk mengukur topografi permukaan
-    secara non-destruktif. Proses harus dijalankan di bawah fluens ablasi emas 0.8 J/cm² pada 532 nm untuk hanya menghilangkan
-    kontaminan.
+  answer: Lower karat gold's higher copper content increases oxidation risk during laser cleaning. We must reduce the fluence below 0.8 J/cm² and adjust the 50 kHz repetition rate to prevent thermal damage to the more susceptible alloy, ensuring a pristine surface.
+- question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable material loss or thinning?
+  answer: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry untuk mengukur topografi permukaan secara non-destruktif. Proses harus dijalankan di bawah fluens ablasi emas 0.8 J/cm² pada 532 nm untuk hanya menghilangkan kontaminan.
 - question: Are there any hazardous fumes generated when laser cleaning gold, especially from alloys or surface contaminants?
-  answer: Laser cleaning gold at 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel
-    or cadmium. Proper fume extraction with HEPA/ULPA filtration is mandatory. Always consult the specific alloy's MSDS to
-    identify and mitigate risks from vaporized contaminants.
-- question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable
-    to gold?
-  answer: Gold's exceptional thermal conductivity and chemical inertness require distinct laser parameters compared to reactive
-    metals like silver. We must carefully control the fluence near 0.8 J/cm² and use a 532 nm wavelength to ensure efficient
-    energy coupling for contaminant removal without causing microstructural damage to the substrate.
+  answer: Laser cleaning gold at 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel or cadmium. Proper fume extraction with HEPA/ULPA filtration is mandatory. Always consult the specific alloy's MSDS to identify and mitigate risks from vaporized contaminants.
+- question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable to gold?
+  answer: Gold's exceptional thermal conductivity and chemical inertness require distinct laser parameters compared to reactive metals like silver. We must carefully control the fluence near 0.8 J/cm² and use a 532 nm wavelength to ensure efficient energy coupling for contaminant removal without causing microstructural damage to the substrate.

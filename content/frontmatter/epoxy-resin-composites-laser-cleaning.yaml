@@ -19,21 +19,17 @@ author:
   sex: f
   title: Ph.D.
 caption:
-  beforeText: Microscopy shows the epoxy resin composite surface rough and dotted with fine dust particles and oily residues.
-    This causes pitting, and slight degradation appears.
-  afterText: The cleaned surface of the epoxy resin composite now looks smooth and even, free from contaminants like oils
-    or particles. This restoration demonstrates good quality, and it preserves the material's integrity without any damage
-    to its layered structure. The process restores functionality effectively, keeping strength and durability intact for everyday
-    applications.
-  generated: '2025-10-25T14:16:39.057593Z'
+  afterText: The cleaned surface of the epoxy resin composite now looks smooth and even, free from contaminants like oils or particles. This restoration demonstrates good quality, and it preserves the material's integrity without any damage to its layered structure. The process restores functionality effectively, keeping strength and durability intact for everyday applications.
   author: Yi-Chun Lin
+  beforeText: Microscopy shows the epoxy resin composite surface rough and dotted with fine dust particles and oily residues. This causes pitting, and slight degradation appears.
+  character_count:
+    after: 367
+    before: 164
+  generated: '2025-10-25T14:16:39.057593Z'
   generation_method: ai_research
   word_count:
-    before: 24
     after: 51
-  character_count:
-    before: 164
-    after: 367
+    before: 24
 category: composite
 description: Laser cleaning parameters for Epoxy Resin Composites
 environmentalImpact:
@@ -67,6 +63,8 @@ machineSettings:
     description: Minimum fluence required for epoxy resin ablation
     unit: J/cm²
     value: 2.5
+    min: 0.3
+    max: 4.5
   overlapRatio:
     description: Beam overlap percentage for uniform cleaning coverage
     unit: '%'
@@ -79,6 +77,8 @@ machineSettings:
     description: Optimal average power for epoxy resin removal without substrate damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for controlled ablation of epoxy matrix
     unit: ns
@@ -87,6 +87,8 @@ machineSettings:
     description: High repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform epoxy removal
     unit: mm/s
@@ -95,10 +97,14 @@ machineSettings:
     description: Beam spot diameter for precise epoxy removal control
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength providing good absorption in epoxy resins with minimal substrate penetration
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -121,107 +127,139 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 92.7
+      min: 0.05
+      max: 200
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 38.5
+      min: 2
+      max: 80
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 1000.0
+      min: 500
+      max: 2500.0
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 0.2
+      min: 0.03
+      max: 400
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 92.7
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 38.5
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 1000.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 0.2
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 623.0
-        source: composite_degradation_standards
-        type: decomposition
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 0.12
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 30.0
+        unit: K
+        value: 623.0
+      source: composite_degradation_standards
+      type: decomposition
+      unit: °C
+      value: 300.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 0.12
+      min: 0.08
+      max: 180
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 30.0
+      min: -1
+      max: 250
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Matrix Composites"'
-        unit: MPa
-        value: 110.0
-      corrosionResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Environmental Degradation of Composites"'
-        unit: rating
-        value: 8.0
-      density:
-        source: ai_research
-        unit: g/cm³
-        value: 1.25
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 120000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Resin Composites"'
-        unit: MPa
-        value: 100.0
-      hardness:
-        source: ai_research
-        unit: Shore D
-        value: 85.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Polymer Matrix Composites"'
-        unit: °C
-        value: 150.0
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 3100.0
-      youngsModulus:
-        source: ai_research
-        unit: GPa
-        value: 3.2
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.6
+    compressiveStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Matrix Composites"'
+      unit: MPa
+      value: 110.0
+      min: 50
+      max: 1000
+    corrosionResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Environmental Degradation of Composites"'
+      unit: rating
+      value: 8.0
+      min: 5
+      max: 9
+    density:
+      source: ai_research
+      unit: g/cm³
+      value: 1.25
+      min: 0.5
+      max: 8
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 120000000000000.0
+      min: 0.001
+      max: 100000000000000.0
+    flexuralStrength:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Resin Composites"'
+      unit: MPa
+      value: 100.0
+      min: 100
+      max: 2000
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.6
+      min: 20
+      max: 100
+    hardness:
+      source: ai_research
+      unit: Shore D
+      value: 85.0
+      min: 5.0
+      max: 120
+    oxidationResistance:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Polymer Matrix Composites"'
+      unit: °C
+      value: 150.0
+      min: 80.0
+      max: 1650.0
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 3100.0
+      min: 20
+      max: 6000
+    youngsModulus:
+      source: ai_research
+      unit: GPa
+      value: 3.2
+      min: 0.001
+      max: 3000
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite Materials"'
-        unit: MPa·√m
-        value: 0.6
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 120000000000000.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 120000000000000.0
+      min: 0.001
+      max: 100000000000000.0
+    fractureToughness:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite Materials"'
+      unit: MPa·√m
+      value: 0.6
+      min: 20
+      max: 100
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -254,79 +292,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: fiber-reinforced
 subtitle: Gentle pulsed laser cleaning restores epoxy resin composites without thermal matrix damage
-title: Epoxy Resin Composites Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:06:41.021390Z'
-  author_name: Yi-Chun Lin
   author_country: Taiwan
+  author_name: Yi-Chun Lin
+  character_count: 90
+  generated: '2025-10-25T21:06:41.021390Z'
   generation_method: ai_research_voice
   word_count: 12
-  character_count: 90
+title: Epoxy Resin Composites Laser Cleaning
 faq:
-- question: Can you safely remove epoxy resin from a composite surface with a laser without damaging the underlying carbon
-    or glass fibers?
-  answer: Yes, with precise 1064 nm wavelength and 2.5 J/cm² fluence control, you can selectively ablate the epoxy matrix.
-    The key is ensuring the laser's energy is absorbed by the resin before penetrating to the underlying fibers, thus preventing
-    their exposure or thermal degradation.
-- question: What is the best laser wavelength (e.g., 1064nm, 532nm, or 355nm) for cleaning epoxy composite surfaces without
-    causing yellowing or chemical changes?
-  answer: For epoxy composite cleaning, 355nm UV lasers are optimal. This wavelength enables photochemical ablation below
-    the 2.5 J/cm² fluence threshold, efficiently breaking molecular bonds without significant heat generation. This process
-    prevents the thermal degradation that causes yellowing, preserving the chemical integrity of the polymer matrix.
-- question: How do you clean contaminated epoxy composites (e.g., mold release, grease, paint) with a laser without just embedding
-    the contaminants deeper?
-  answer: Using nanosecond pulses at 1064 nm wavelength with fluence above 2.5 J/cm², we selectively ablate contaminants.
-    This process vaporizes surface layers without melting the epoxy, effectively lifting material away to prevent infusion.
+- question: Can you safely remove epoxy resin from a composite surface with a laser without damaging the underlying carbon or glass fibers?
+  answer: Yes, with precise 1064 nm wavelength and 2.5 J/cm² fluence control, you can selectively ablate the epoxy matrix. The key is ensuring the laser's energy is absorbed by the resin before penetrating to the underlying fibers, thus preventing their exposure or thermal degradation.
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm, or 355nm) for cleaning epoxy composite surfaces without causing yellowing or chemical changes?
+  answer: For epoxy composite cleaning, 355nm UV lasers are optimal. This wavelength enables photochemical ablation below the 2.5 J/cm² fluence threshold, efficiently breaking molecular bonds without significant heat generation. This process prevents the thermal degradation that causes yellowing, preserving the chemical integrity of the polymer matrix.
+- question: How do you clean contaminated epoxy composites (e.g., mold release, grease, paint) with a laser without just embedding the contaminants deeper?
+  answer: Using nanosecond pulses at 1064 nm wavelength with fluence above 2.5 J/cm², we selectively ablate contaminants. This process vaporizes surface layers without melting the epoxy, effectively lifting material away to prevent infusion.
 - question: Does laser cleaning epoxy composites release hazardous fumes, and what specific filtration or extraction is required?
-  answer: Yes, laser ablation of epoxy composites at 2.5 J/cm² releases hazardous pyrolysis byproducts like benzene and phenol.
-    You must use a high-efficiency fume extraction system with HEPA and activated carbon filtration, coupled with appropriate
-    respiratory protection for operators.
+  answer: Yes, laser ablation of epoxy composites at 2.5 J/cm² releases hazardous pyrolysis byproducts like benzene and phenol. You must use a high-efficiency fume extraction system with HEPA and activated carbon filtration, coupled with appropriate respiratory protection for operators.
 - question: What laser parameters should I use to ablate a precise depth of epoxy resin for repair or inspection purposes?
-  answer: For controlled epoxy resin ablation, maintain fluence near 2.5 J/cm² with a 50 µm spot size. Adjust the number of
-    passes and a 50% beam overlap to precisely manage depth removal, even on uneven composite surfaces.
-- question: After laser cleaning an epoxy composite, is the surface properly activated for bonding, or does it require a secondary
-    treatment?
-  answer: Laser cleaning at 2.5 J/cm² fluence activates epoxy composites by increasing surface energy and creating micro-roughness.
-    This typically provides excellent adhesion readiness, often eliminating the need for secondary treatments like abrasion,
-    unlike mechanical methods that can leave contaminants.
+  answer: For controlled epoxy resin ablation, maintain fluence near 2.5 J/cm² with a 50 µm spot size. Adjust the number of passes and a 50% beam overlap to precisely manage depth removal, even on uneven composite surfaces.
+- question: After laser cleaning an epoxy composite, is the surface properly activated for bonding, or does it require a secondary treatment?
+  answer: Laser cleaning at 2.5 J/cm² fluence activates epoxy composites by increasing surface energy and creating micro-roughness. This typically provides excellent adhesion readiness, often eliminating the need for secondary treatments like abrasion, unlike mechanical methods that can leave contaminants.
 - question: Why does my laser-cleaned epoxy composite surface sometimes look hazy or have a changed texture?
-  answer: Hazing often results from excessive fluence above 2.5 J/cm², which thermally degrades the epoxy matrix. This creates
-    micro-roughness from selective resin removal. Optimize your scan speed near 500 mm/s and manage overlap to minimize heat
-    accumulation for a clearer surface.
+  answer: Hazing often results from excessive fluence above 2.5 J/cm², which thermally degrades the epoxy matrix. This creates micro-roughness from selective resin removal. Optimize your scan speed near 500 mm/s and manage overlap to minimize heat accumulation for a clearer surface.
 - question: Is laser cleaning effective for removing carbonized epoxy after a fire or thermal event?
-  answer: Laser cleaning can remove carbonized epoxy, but requires precise fluence control near 2.5 J/cm². The char layer's
-    altered absorption risks damaging underlying fibers, demanding careful parameter tuning to selectively ablate residue
-    without harming the composite substrate.
-- question: How does the performance of laser cleaning epoxy composites compare to traditional methods like grit blasting
-    or chemical stripping?
-  answer: Laser cleaning outperforms traditional methods by selectively removing epoxy at 2.5 J/cm² fluence without damaging
-    underlying fibers. This non-contact process eliminates secondary waste from grit or chemicals, offering superior surface
-    preservation. With precise control at 500 mm/s scan speeds, it ensures consistent, high-quality results for critical aerospace
-    and marine components.
-- question: What are the critical safety considerations when using a high-power laser on an epoxy composite, beyond standard
-    laser safety?
-  answer: Beyond standard laser protocols, the primary concern is toxic fume generation from the 1064 nm ablation process.
-    At the 2.5 J/cm² fluence threshold, epoxy decomposes into hazardous compounds, necessitating integrated fume extraction
-    with real-time air monitoring to protect personnel from these carcinogenic byproducts.
+  answer: Laser cleaning can remove carbonized epoxy, but requires precise fluence control near 2.5 J/cm². The char layer's altered absorption risks damaging underlying fibers, demanding careful parameter tuning to selectively ablate residue without harming the composite substrate.
+- question: How does the performance of laser cleaning epoxy composites compare to traditional methods like grit blasting or chemical stripping?
+  answer: Laser cleaning outperforms traditional methods by selectively removing epoxy at 2.5 J/cm² fluence without damaging underlying fibers. This non-contact process eliminates secondary waste from grit or chemicals, offering superior surface preservation. With precise control at 500 mm/s scan speeds, it ensures consistent, high-quality results for critical aerospace and marine components.
+- question: What are the critical safety considerations when using a high-power laser on an epoxy composite, beyond standard laser safety?
+  answer: Beyond standard laser protocols, the primary concern is toxic fume generation from the 1064 nm ablation process. At the 2.5 J/cm² fluence threshold, epoxy decomposes into hazardous compounds, necessitating integrated fume extraction with real-time air monitoring to protect personnel from these carcinogenic byproducts.

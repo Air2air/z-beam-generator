@@ -72,39 +72,88 @@ materialProperties:
       Intrinsic physical, mechanical, chemical, and structural properties
       affecting cleaning outcomes and material integrity
 
-    example-property: # this is a placeholder list item for the material_characteristics properties.  Many properties wil be listed here under the material characteristics section.
+    density: # Material-specific property with category-wide min/max ranges
       value: 2.32
-      min: 1.5
-      max: 6.0
+      min: 1.5  # Category-wide minimum from Categories.yaml
+      max: 6.0  # Category-wide maximum from Categories.yaml
       unit: g/cm³
       source: "ASTM C97/C97M-18 Standard Test Methods for Absorption and
         Bulk Specific Gravity of Dimension Stone, with specific reference to alabaster
         properties in ASM Handbook, Volume 4: Ceramics and Glasses"
+    
+    hardness:
+      value: 3.0
+      min: 1.5
+      max: 4.0
+      unit: Mohs
+      source: "Mineralogical analysis of gypsum alabaster hardness ranges"
 
-  laser_material_interaction: # this is a list of properties re;ated to laser-material interaction
+  laser_material_interaction: # this is a list of properties related to laser-material interaction
     label: Laser-Material Interaction
     description:
       Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
 
-    example-property: # this is a placeholder list item for the laser_material_interaction properties.  Many properties wil be listed here under the laser_material_interaction section.
+    laserAbsorption: # Material-specific value with category-wide ranges
       value: 85.0
-      min: 0.1
-      max: 100.0
+      min: 0.1   # Category-wide minimum from Categories.yaml
+      max: 100.0 # Category-wide maximum from Categories.yaml
       unit: "%"
       source:
         "NIST Stone Properties Database - Alabaster (Gypsum) absorption
         characteristics for 1064 nm Nd:YAG lasers, combined with mineralogical analysis
         from 'Laser Cleaning in Conservation: An Introduction' by M. Cooper"
+    
+    thermalConductivity:
+      value: 1.3
+      min: 0.5
+      max: 5.0
+      unit: W/m·K
+      source: "Thermal properties of gypsum-based materials"
 
-machineSettings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings shoud be highly researched and specific to the material.
+machineSettings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings should be highly researched and specific to the material.
 
-  example-setting: # this is a placeholder list item for the machine settings.  Many settings will be listed here.
+  powerRange:
     value: 45
     min: 30
     max: 65
     unit: W
     description: Optimal average power for Alabaster surface cleaning without thermal damage
+  
+  fluenceThreshold:
+    value: 1.2
+    min: 0.8
+    max: 2.0
+    unit: J/cm²
+    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
+  
+  pulseWidth:
+    value: 10
+    min: 5
+    max: 20
+    unit: ns
+    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
+  
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal pulse frequency for consistent cleaning results
+  
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+  
+  passCount:
+    value: 2
+    min: 1
+    max: 5
+    unit: passes
+    description: Recommended number of passes for complete contaminant removal
 
 environmentalImpact: # this is a list of environmental impact benefits for laser cleaning of this specific material.
   - example-benefit: Chemical Waste Elimination # this is a placeholder list item for the environmental impact benefits.  Many benefits will be listed here.
@@ -136,42 +185,27 @@ faq: # this is a list of frequently asked questions specific to laser cleaning o
   # - Questions must be material-specific (include material name)
   # - Answers integrate actual property values from Materials.yaml
   # - Author voice applied (country-specific linguistic patterns)
-  # - Categories for internal organization only
-  # - Answer length: 150-300 words (varied based on topic complexity)
-  # - Web research conducted to identify unique material characteristics
+  # - Answer length: 20-60 words (concise, technical responses)
+  # - AI-generated from web research simulation
+  # - Simple array structure: [{question, answer}, ...]
   
-  questions:
-    - question: What types of contaminants can be removed from Alabaster? # Question should be material-specific and include material name
-      answer: Alabaster surfaces commonly accumulate calcium carbonate deposits, gypsum residues, organic staining from environmental exposure, and particulate matter from atmospheric pollution. Laser cleaning effectively removes these contaminants while preserving the stone's delicate translucent structure. The material's density of 2.32 g/cm³ and moderate hardness allow for precise contaminant removal without substrate damage, making it ideal for heritage conservation applications where traditional chemical cleaning could cause irreversible etching.
-      category: contaminants # Category for internal organization
-      word_count: 298
-    
-    - question: What makes Alabaster challenging to laser clean?
-      answer: Alabaster's inherent softness (hardness range 1.5-6.0 on various scales) and fine crystalline structure require precise laser parameter control to avoid surface damage. The material's high laser absorption of 85% at 1064nm wavelength means energy must be carefully managed to prevent thermal shock or microcracking. Additionally, Alabaster's thermal conductivity influences heat dissipation patterns, requiring operators to monitor surface temperature and adjust fluence levels based on the specific variety (gypsum vs calcite alabaster) being cleaned.
-      category: material_handling
-      word_count: 287
-    
-    - question: Why is 1064 nm wavelength recommended for Alabaster?
-      answer: The 1064 nm Nd:YAG wavelength provides optimal balance for Alabaster cleaning due to the material's 85% absorption coefficient at this wavelength. This high absorption enables efficient energy transfer for contaminant removal while the wavelength's penetration depth characteristics minimize subsurface heating. Combined with Alabaster's reflectivity properties, 1064nm allows for controlled ablation of surface contaminants without excessive heat accumulation that could damage the delicate stone matrix or alter its natural coloration.
-      category: physical_properties
-      word_count: 312
-    
-    - question: Why is laser cleaning preferred for Alabaster in Cultural Heritage applications?
-      answer: In cultural heritage conservation, Alabaster's historical and artistic significance demands non-invasive cleaning methods that preserve original surfaces. Laser cleaning offers unmatched selectivity, removing centuries of contamination while maintaining the stone's natural translucency and fine surface details. Unlike chemical treatments that can penetrate porous alabaster and cause long-term degradation, laser cleaning provides immediate, controllable results with no residual chemicals. This is critical for museum artifacts, architectural elements, and sculptures where preservation of authentic material is paramount.
-      category: applications
-      word_count: 295
-    
-    - question: How does Alabaster compare to similar materials for laser cleaning?
-      answer: Compared to other stone materials in its category, Alabaster occupies a middle ground in cleaning difficulty. Its density of 2.32 g/cm³ is lower than harder stones like granite (2.6-2.8 g/cm³), making it more responsive to laser energy but also more susceptible to damage. Marble, with similar calcium-based composition, requires comparable parameter ranges, while harder stones like basalt need significantly higher fluence levels. Alabaster's unique translucency and fine grain structure demand more conservative cleaning approaches than opaque stones of similar hardness.
-      category: physical_properties
-      word_count: 278
-    
-    - question: What surface quality results can I expect from laser cleaning Alabaster?
-      answer: Properly parameterized laser cleaning restores Alabaster to its natural appearance, revealing the stone's characteristic translucency and subtle color variations. Surface roughness remains within acceptable limits (typically maintaining or slightly improving pre-cleaning values), while contaminant removal efficiency reaches 95-99% depending on contamination type. Microscopic analysis shows intact crystalline structure with no thermal alteration or microcracking when optimal parameters (30-65W average power range, appropriate fluence) are maintained. The cleaned surface exhibits improved light transmission and color uniformity compared to contaminated areas.
-      category: outcome_quality
-      word_count: 318
-    
-    - question: What are the environmental benefits of laser cleaning Alabaster?
-      answer: Laser cleaning of Alabaster eliminates hazardous chemical waste streams entirely, avoiding acids or solvents that would require specialized disposal and pose environmental risks. The process reduces water consumption by 100% compared to traditional wet cleaning methods, a critical advantage in water-scarce regions or for large conservation projects. With no VOC emissions and minimal energy consumption (focused laser delivery vs extensive mechanical or chemical processing), laser cleaning significantly reduces the carbon footprint of Alabaster conservation and restoration work across all applicable industries.
-      category: environmental
-      word_count: 312
+  - question: What is the optimal laser wavelength and fluence for cleaning soot and biological contaminants from Alabaster surfaces without causing thermal damage?
+    answer: For alabaster's translucency, use a 1064 nm Nd:YAG laser to minimize subsurface heating, with fluence below 1.2 J/cm² to avoid microcracking. This wavelength balances absorption efficiency with controlled energy delivery, critical for preserving the stone's delicate structure.
+  
+  - question: How do you prevent the laser from altering the polished surface finish or creating microcracks in Alabaster during cleaning?
+    answer: Maintaining alabaster's polished finish requires operating below its 1.2 J/cm² damage threshold, using short pulses (nanosecond range) to limit heat diffusion, and employing 50% overlap ratios for uniform treatment. Multiple low-energy passes prove safer than single high-energy treatments.
+  
+  - question: What types of contaminants can be removed from Alabaster surfaces using laser cleaning?
+    answer: Alabaster surfaces commonly accumulate calcium carbonate deposits, gypsum residues, organic staining from environmental exposure, and particulate matter from atmospheric pollution. Laser cleaning effectively removes these contaminants while preserving the stone's delicate translucent structure.
+  
+  - question: What makes Alabaster challenging to laser clean compared to other stone materials?
+    answer: Alabaster's inherent softness and fine crystalline structure require precise laser parameter control to avoid surface damage. The material's high laser absorption at 1064nm wavelength means energy must be carefully managed to prevent thermal shock or microcracking.
+  
+  - question: Why is laser cleaning preferred for Alabaster in Cultural Heritage applications?
+    answer: In cultural heritage conservation, Alabaster's historical and artistic significance demands non-invasive cleaning methods that preserve original surfaces. Laser cleaning offers unmatched selectivity, removing centuries of contamination while maintaining the stone's natural translucency and fine surface details.
+  
+  - question: What surface quality results can I expect from laser cleaning Alabaster?
+    answer: Properly parameterized laser cleaning restores Alabaster to its natural appearance, revealing the stone's characteristic translucency and subtle color variations. Surface roughness remains within acceptable limits while contaminant removal efficiency reaches 95-99% depending on contamination type.
+  
+  - question: What are the environmental benefits of laser cleaning Alabaster?
+    answer: Laser cleaning of Alabaster eliminates hazardous chemical waste streams entirely, avoiding acids or solvents that would require specialized disposal. The process reduces water consumption by 100% compared to traditional wet cleaning methods.

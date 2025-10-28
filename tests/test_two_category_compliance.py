@@ -19,10 +19,12 @@ LASER_MATERIAL_INTERACTION_PROPERTIES = {
     'absorptivity', 'emissivity', 'refractiveIndex', 'laserDamageThreshold',
     'opticalTransmittance', 'thermalConductivity', 'specificHeat',
     'thermalDiffusivity', 'thermalExpansion', 'thermalDestruction',
+    'thermalDestructionPoint',  # Added: thermal destruction temperature
     'boilingPoint', 'heatCapacity', 'glasTransitionTemperature',
     'sinteringTemperature', 'ignitionTemperature', 'autoignitionTemperature',
     'decompositionTemperature', 'sublimationPoint', 'thermalStability',
-    'absorptionCoefficient', 'thermalDegradationPoint', 'photonPenetrationDepth'
+    'absorptionCoefficient', 'thermalDegradationPoint', 'photonPenetrationDepth',
+    'thermalShockResistance'  # Added: thermal shock resistance
 }
 
 MATERIAL_CHARACTERISTICS_PROPERTIES = {
@@ -30,11 +32,11 @@ MATERIAL_CHARACTERISTICS_PROPERTIES = {
     'density', 'viscosity', 'porosity', 'surfaceRoughness', 'permeability',
     'surfaceEnergy', 'wettability', 'crystallineStructure', 'grainSize',
     'moistureContent', 'waterSolubility', 'celluloseContent', 'ligninContent',
-    'degradationPoint', 'softeningPoint', 'surfaceTension',
+    'degradationPoint', 'softeningPoint', 'surfaceTension', 'vaporPressure',
     # Mechanical (10)
     'hardness', 'tensileStrength', 'youngsModulus', 'yieldStrength',
     'elasticity', 'bulkModulus', 'shearModulus', 'compressiveStrength',
-    'flexuralStrength', 'fractureResistance',
+    'flexuralStrength', 'fractureResistance', 'fractureToughness',
     # Electrical (4)
     'electricalResistivity', 'electricalConductivity', 'dielectricConstant',
     'dielectricStrength',
@@ -60,14 +62,14 @@ class TestTwoCategoryCompliance:
     @pytest.fixture(scope="class")
     def cast_iron_frontmatter(self):
         """Load Cast Iron frontmatter"""
-        path = Path('content/components/frontmatter/cast-iron-laser-cleaning.yaml')
+        path = Path('content/frontmatter/cast-iron-laser-cleaning.yaml')
         with open(path, 'r') as f:
             return yaml.safe_load(f)
     
     @pytest.fixture(scope="class")
     def tool_steel_frontmatter(self):
         """Load Tool Steel frontmatter"""
-        path = Path('content/components/frontmatter/tool-steel-laser-cleaning.yaml')
+        path = Path('content/frontmatter/tool-steel-laser-cleaning.yaml')
         with open(path, 'r') as f:
             return yaml.safe_load(f)
     
@@ -111,15 +113,22 @@ class TestTwoCategoryCompliance:
         """All Cast Iron properties must be in correct categories"""
         material_props = cast_iron_frontmatter.get('materialProperties', {})
         
+        # Metadata fields to skip
+        metadata_fields = {'label', 'description', 'percentage'}
+        
         # Check laser_material_interaction
-        laser_props = material_props.get('laser_material_interaction', {}).get('properties', {})
+        laser_props = material_props.get('laser_material_interaction', {})
         for prop in laser_props.keys():
+            if prop in metadata_fields:
+                continue
             assert prop in LASER_MATERIAL_INTERACTION_PROPERTIES, \
                 f"Property '{prop}' incorrectly placed in laser_material_interaction"
         
         # Check material_characteristics
-        char_props = material_props.get('material_characteristics', {}).get('properties', {})
+        char_props = material_props.get('material_characteristics', {})
         for prop in char_props.keys():
+            if prop in metadata_fields:
+                continue
             assert prop in MATERIAL_CHARACTERISTICS_PROPERTIES, \
                 f"Property '{prop}' incorrectly placed in material_characteristics"
     
@@ -127,22 +136,29 @@ class TestTwoCategoryCompliance:
         """All Tool Steel properties must be in correct categories"""
         material_props = tool_steel_frontmatter.get('materialProperties', {})
         
+        # Metadata fields to skip
+        metadata_fields = {'label', 'description', 'percentage'}
+        
         # Check laser_material_interaction
-        laser_props = material_props.get('laser_material_interaction', {}).get('properties', {})
+        laser_props = material_props.get('laser_material_interaction', {})
         for prop in laser_props.keys():
+            if prop in metadata_fields:
+                continue
             assert prop in LASER_MATERIAL_INTERACTION_PROPERTIES, \
                 f"Property '{prop}' incorrectly placed in laser_material_interaction"
         
         # Check material_characteristics
-        char_props = material_props.get('material_characteristics', {}).get('properties', {})
+        char_props = material_props.get('material_characteristics', {})
         for prop in char_props.keys():
+            if prop in metadata_fields:
+                continue
             assert prop in MATERIAL_CHARACTERISTICS_PROPERTIES, \
                 f"Property '{prop}' incorrectly placed in material_characteristics"
     
     def test_cast_iron_has_absorption_coefficient(self, cast_iron_frontmatter):
         """Cast Iron must have absorptionCoefficient in laser_material_interaction"""
         laser_props = cast_iron_frontmatter.get('materialProperties', {}) \
-            .get('laser_material_interaction', {}).get('properties', {})
+            .get('laser_material_interaction', {})
         
         assert 'absorptionCoefficient' in laser_props, \
             "absorptionCoefficient missing from laser_material_interaction"
@@ -150,7 +166,7 @@ class TestTwoCategoryCompliance:
     def test_cast_iron_has_thermal_destruction(self, cast_iron_frontmatter):
         """Cast Iron must have thermalDestruction in laser_material_interaction"""
         laser_props = cast_iron_frontmatter.get('materialProperties', {}) \
-            .get('laser_material_interaction', {}).get('properties', {})
+            .get('laser_material_interaction', {})
         
         assert 'thermalDestruction' in laser_props, \
             "thermalDestruction missing from laser_material_interaction"
@@ -158,7 +174,7 @@ class TestTwoCategoryCompliance:
     def test_tool_steel_has_absorption_coefficient(self, tool_steel_frontmatter):
         """Tool Steel must have absorptionCoefficient in laser_material_interaction"""
         laser_props = tool_steel_frontmatter.get('materialProperties', {}) \
-            .get('laser_material_interaction', {}).get('properties', {})
+            .get('laser_material_interaction', {})
         
         assert 'absorptionCoefficient' in laser_props, \
             "absorptionCoefficient missing from laser_material_interaction"
@@ -166,7 +182,7 @@ class TestTwoCategoryCompliance:
     def test_tool_steel_has_thermal_destruction(self, tool_steel_frontmatter):
         """Tool Steel must have thermalDestruction in laser_material_interaction"""
         laser_props = tool_steel_frontmatter.get('materialProperties', {}) \
-            .get('laser_material_interaction', {}).get('properties', {})
+            .get('laser_material_interaction', {})
         
         assert 'thermalDestruction' in laser_props, \
             "thermalDestruction missing from laser_material_interaction"
@@ -174,7 +190,7 @@ class TestTwoCategoryCompliance:
     def test_tool_steel_has_crystalline_structure(self, tool_steel_frontmatter):
         """Tool Steel must have crystallineStructure in material_characteristics"""
         char_props = tool_steel_frontmatter.get('materialProperties', {}) \
-            .get('material_characteristics', {}).get('properties', {})
+            .get('material_characteristics', {})
         
         assert 'crystallineStructure' in char_props, \
             "crystallineStructure missing from material_characteristics"
@@ -183,13 +199,13 @@ class TestTwoCategoryCompliance:
         """meltingPoint should not exist as a separate property (use thermalDestruction)"""
         # Check Cast Iron
         for category_data in cast_iron_frontmatter.get('materialProperties', {}).values():
-            props = category_data.get('properties', {})
+            props = {k: v for k, v in category_data.items() if k not in ['label', 'description', 'percentage']}
             assert 'meltingPoint' not in props, \
                 "Cast Iron has deprecated 'meltingPoint' property"
         
         # Check Tool Steel
         for category_data in tool_steel_frontmatter.get('materialProperties', {}).values():
-            props = category_data.get('properties', {})
+            props = {k: v for k, v in category_data.items() if k not in ['label', 'description', 'percentage']}
             assert 'meltingPoint' not in props, \
                 "Tool Steel has deprecated 'meltingPoint' property"
     
@@ -197,13 +213,13 @@ class TestTwoCategoryCompliance:
         """thermalDestructionType is metadata only, not a frontmatter property"""
         # Check Cast Iron
         for category_data in cast_iron_frontmatter.get('materialProperties', {}).values():
-            props = category_data.get('properties', {})
+            props = {k: v for k, v in category_data.items() if k not in ['label', 'description', 'percentage']}
             assert 'thermalDestructionType' not in props, \
                 "Cast Iron has metadata-only 'thermalDestructionType' as property"
         
         # Check Tool Steel
         for category_data in tool_steel_frontmatter.get('materialProperties', {}).values():
-            props = category_data.get('properties', {})
+            props = {k: v for k, v in category_data.items() if k not in ['label', 'description', 'percentage']}
             assert 'thermalDestructionType' not in props, \
                 "Tool Steel has metadata-only 'thermalDestructionType' as property"
     

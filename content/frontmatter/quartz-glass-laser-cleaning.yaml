@@ -19,22 +19,17 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  beforeText: 'Under microscopy, the quartz glass surface appears very-very contaminated, with fine dust particles and oily
-    residues scattered everywhere and then clustered in spots. Contaminants show irregular shapes, sizes from nanometers to
-    microns, sticking tightly and blocking transparency. Surface degradation is evident: micro-pits form, edges roughen, and
-    overall smoothness is lost, so the material looks dull and weakened.'
-  afterText: After ultrafast laser cleaning, the quartz glass surface appears very-very smooth and clean, with dirt removed
-    then shine restored quickly. Integrity stays strong, no cracks or damage seen, so material looks like new. Process cleans
-    effectively and preserves optical properties well.
-  generated: '2025-10-25T15:06:48.499784Z'
+  afterText: After ultrafast laser cleaning, the quartz glass surface appears very-very smooth and clean, with dirt removed then shine restored quickly. Integrity stays strong, no cracks or damage seen, so material looks like new. Process cleans effectively and preserves optical properties well.
   author: Ikmanda Roswati
+  beforeText: 'Under microscopy, the quartz glass surface appears very-very contaminated, with fine dust particles and oily residues scattered everywhere and then clustered in spots. Contaminants show irregular shapes, sizes from nanometers to microns, sticking tightly and blocking transparency. Surface degradation is evident: micro-pits form, edges roughen, and overall smoothness is lost, so the material looks dull and weakened.'
+  character_count:
+    after: 283
+    before: 418
+  generated: '2025-10-25T15:06:48.499784Z'
   generation_method: ai_research
   word_count:
-    before: 57
     after: 41
-  character_count:
-    before: 418
-    after: 283
+    before: 57
 category: glass
 description: Laser cleaning parameters for Quartz Glass
 environmentalImpact:
@@ -68,6 +63,8 @@ machineSettings:
     description: Energy density threshold for effective contaminant removal without damaging Quartz Glass substrate
     unit: J/cm²
     value: 2.5
+    min: 0.3
+    max: 4.5
   overlapRatio:
     description: Optimal beam overlap percentage for uniform cleaning coverage
     unit: '%'
@@ -80,6 +77,8 @@ machineSettings:
     description: Optimal average power for Quartz Glass cleaning without thermal damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
     unit: ns
@@ -88,6 +87,8 @@ machineSettings:
     description: Optimal repetition rate for efficient cleaning with controlled thermal accumulation
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
@@ -96,10 +97,14 @@ machineSettings:
     description: Beam spot diameter for precise cleaning with adequate energy density
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-IR wavelength with good transmission through Quartz Glass for selective contaminant removal
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -122,116 +127,149 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      ablationThreshold:
+    ablationThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 2.1
+      min: 2.0
+      max: 6.0
+    laserAbsorption:
+      ai_verified: true
+      source: ai_research
+      unit: 1/m
+      value: 0.999
+      min: 0.001
+      max: 10
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 3.6
+      min: 0.1
+      max: 92
+    specificHeat:
+      ai_verified: true
+      source: ai_research
+      unit: J/(kg·K)
+      value: 741.0
+      min: 120
+      max: 900
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 1.38
+      min: 0.7
+      max: 30
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: J/cm²
-        value: 2.1
-      laserAbsorption:
-        ai_verified: true
-        source: ai_research
-        unit: 1/m
-        value: 0.999
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 3.6
-      specificHeat:
-        ai_verified: true
-        source: ai_research
-        unit: J/(kg·K)
-        value: 741.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 1.38
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: K
-          value: 1683.0
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 8.5
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10⁻⁶/K
-        value: 0.55
+        unit: K
+        value: 1683.0
+      source: thermal_degradation_standards
+      type: melting
+      unit: °C
+      value: 500.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 8.5
+      min: 0.01
+      max: 15
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10⁻⁶/K
+      value: 0.55
+      min: 0.1
+      max: 15
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: '"Handbook of Glass Properties" by Narottam P. Bansal and Robert H. Doremus, Academic Press, 1986, p. 89.'
-        unit: MPa
-        value: 1100.0
-      corrosionResistance:
-        ai_verified: true
-        source: Corning HPFS® Fused Silica (Quartz Glass) Material Properties Datasheet
-        unit: rating
-        value: 9.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 2.2
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 1.5e+18
-      flexuralStrength:
-        ai_verified: true
-        source: '"Handbook of Materials Selection" by Myer Kutz, Chapter 11 - "Ceramics and Glasses", Table 11.2 - Mechanical
-          Properties of Commercial Glasses'
-        unit: MPa
-        value: 50.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: Mohs
-        value: 7.0
-      oxidationResistance:
-        ai_verified: true
-        source: Heraeus Quarzglas, "Properties and Characteristics of Quartz Glass"
-        unit: °C
-        value: 1100.0
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 48.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 72.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 0.79
+    compressiveStrength:
+      ai_verified: true
+      source: '"Handbook of Glass Properties" by Narottam P. Bansal and Robert H. Doremus, Academic Press, 1986, p. 89.'
+      unit: MPa
+      value: 1100.0
+      min: 500
+      max: 2000
+    corrosionResistance:
+      ai_verified: true
+      source: Corning HPFS® Fused Silica (Quartz Glass) Material Properties Datasheet
+      unit: rating
+      value: 9.0
+      min: 9
+      max: 10
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 2.2
+      min: 1.2
+      max: 7.6
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 1.5e+18
+      min: 10000000000.0
+      max: 1000000000000000.0
+    flexuralStrength:
+      ai_verified: true
+      source: '"Handbook of Materials Selection" by Myer Kutz, Chapter 11 - "Ceramics and Glasses", Table 11.2 - Mechanical Properties of Commercial Glasses'
+      unit: MPa
+      value: 50.0
+      min: 50
+      max: 750.0
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 0.79
+      min: 0.5
+      max: 2
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: Mohs
+      value: 7.0
+      min: 3.5
+      max: 9.5
+    oxidationResistance:
+      ai_verified: true
+      source: Heraeus Quarzglas, "Properties and Characteristics of Quartz Glass"
+      unit: °C
+      value: 1100.0
+      min: 400.0
+      max: 1700.0
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 48.0
+      min: 30
+      max: 2000
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 72.0
+      min: 10
+      max: 400
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix Composites" in ASM Handbook, Volume 8
-        unit: MPa·√m
-        value: 0.75
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 1.5e+18
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 1.5e+18
+      min: 10000000000.0
+      max: 1000000000000000.0
+    fractureToughness:
+      ai_verified: true
+      source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix Composites" in ASM Handbook, Volume 8
+      unit: MPa·√m
+      value: 0.75
+      min: 0.5
+      max: 2
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -264,75 +302,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: soda-lime
 subtitle: Precision laser cleaning restores quartz glass transparency without risking thermal fractures
-title: Quartz Glass Laser Cleaning
 subtitle_metadata:
-  generated: '2025-10-25T21:33:52.315353Z'
-  author_name: Ikmanda Roswati
   author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 93
+  generated: '2025-10-25T21:33:52.315353Z'
   generation_method: ai_research_voice
   word_count: 11
-  character_count: 93
+title: Quartz Glass Laser Cleaning
 faq:
 - question: Can quartz glass be damaged by laser cleaning systems, and what power/wavelength settings are safe?
-  answer: Quartz glass withstands up to 2.5 J/cm² fluence without damage. For safe operation, use a 1064 nm near-IR wavelength
-    and maintain average power below 100 W to prevent devitrification. Proper parameter control ensures effective contaminant
-    removal while preserving the substrate's structural integrity.
+  answer: Quartz glass withstands up to 2.5 J/cm² fluence without damage. For safe operation, use a 1064 nm near-IR wavelength and maintain average power below 100 W to prevent devitrification. Proper parameter control ensures effective contaminant removal while preserving the substrate's structural integrity.
 - question: Why is quartz glass used for laser cleaning system components like protective windows and lenses?
-  answer: Quartz glass components maintain optical clarity from UV to IR wavelengths while withstanding intense laser exposure
-    up to 2.5 J/cm². Its exceptionally low thermal expansion coefficient of 0.55 ppm/°C provides remarkable thermal stability,
-    ensuring dimensional integrity during high-power 100W operations. This combination of high transmission and laser damage
-    resistance makes it indispensable for protective windows and focusing lenses in cleaning systems.
+  answer: Quartz glass components maintain optical clarity from UV to IR wavelengths while withstanding intense laser exposure up to 2.5 J/cm². Its exceptionally low thermal expansion coefficient of 0.55 ppm/°C provides remarkable thermal stability, ensuring dimensional integrity during high-power 100W operations. This combination of high transmission and laser damage resistance makes it indispensable for protective windows and focusing lenses in cleaning systems.
 - question: How do you clean laser-contaminated quartz optics without damaging them?
-  answer: For quartz optics, use nanosecond pulses at 1064 nm wavelength with fluence below 2.5 J/cm². This selectively ablates
-    contaminants while the substrate's high transparency prevents damage. Follow with isopropyl alcohol and lint-free wipes
-    for final residue removal.
+  answer: For quartz optics, use nanosecond pulses at 1064 nm wavelength with fluence below 2.5 J/cm². This selectively ablates contaminants while the substrate's high transparency prevents damage. Follow with isopropyl alcohol and lint-free wipes for final residue removal.
 - question: What happens if laser cleaning is performed on contaminated quartz glass surfaces?
-  answer: Contaminants like metallic particles absorb the 1064 nm laser energy far more than quartz, causing intense localized
-    heating. This thermal shock can induce stress exceeding the material's fracture toughness, leading to micro-cracks. Precise
-    fluence control below ~2.5 J/cm² is critical to avoid this damage.
+  answer: Contaminants like metallic particles absorb the 1064 nm laser energy far more than quartz, causing intense localized heating. This thermal shock can induce stress exceeding the material's fracture toughness, leading to micro-cracks. Precise fluence control below ~2.5 J/cm² is critical to avoid this damage.
 - question: Does quartz glass transparency affect laser cleaning effectiveness and safety?
-  answer: Quartz glass's high 1064 nm transparency demands precise fluence control near 2.5 J/cm² to avoid beam transmission
-    through thin sections. This transparency also necessitates stringent eye protection, as the laser energy can pass through
-    the material directly.
+  answer: Quartz glass's high 1064 nm transparency demands precise fluence control near 2.5 J/cm² to avoid beam transmission through thin sections. This transparency also necessitates stringent eye protection, as the laser energy can pass through the material directly.
 - question: How does quartz glass compare to other materials like sapphire for laser system windows?
-  answer: Quartz glass offers superior UV transmission and thermal shock resistance up to 1100°C, while sapphire provides
-    greater hardness. For our standard 1064 nm laser cleaning at 2.5 J/cm², fused silica's lower cost and adequate durability
-    are often optimal.
+  answer: Quartz glass offers superior UV transmission and thermal shock resistance up to 1100°C, while sapphire provides greater hardness. For our standard 1064 nm laser cleaning at 2.5 J/cm², fused silica's lower cost and adequate durability are often optimal.
 - question: What are the signs of quartz optic degradation in laser cleaning systems?
-  answer: Clouding and discoloration indicate cumulative thermal damage from excessive fluence above 2.5 J/cm². This increases
-    scatter, reducing transmission efficiency and cleaning performance. Pitting and coating damage from incorrect 50% overlap
-    also compromise the optic's integrity.
+  answer: Clouding and discoloration indicate cumulative thermal damage from excessive fluence above 2.5 J/cm². This increases scatter, reducing transmission efficiency and cleaning performance. Pitting and coating damage from incorrect 50% overlap also compromise the optic's integrity.
 - question: Can laser cleaning remove coatings or deposits from quartz surfaces without damaging the substrate?
-  answer: Ya, pembersihan laser dapat menghilangkan deposit dari permukaan kuarsa tanpa merusak substrat. Dengan fluence 2,5
-    J/cm² dan panjang gelombang 1064 nm, energi diserap lapisan namun ditransmisikan kaca, mempertahankan sifat optiknya.
-    Kontrol proses yang ketat sangat penting.
+  answer: Ya, pembersihan laser dapat menghilangkan deposit dari permukaan kuarsa tanpa merusak substrat. Dengan fluence 2,5 J/cm² dan panjang gelombang 1064 nm, energi diserap lapisan namun ditransmisikan kaca, mempertahankan sifat optiknya. Kontrol proses yang ketat sangat penting.
 - question: What safety precautions are needed when laser cleaning near quartz components?
-  answer: Maintain fluence below 2.5 J/cm² to prevent quartz substrate damage. Employ beam dumps and full optical enclosures
-    to manage hazardous reflections and contain ejected debris. Continuously monitor for surface degradation, as even minor
-    contamination can lead to localized heating and irreversible optic damage under the 1064 nm wavelength.
+  answer: Maintain fluence below 2.5 J/cm² to prevent quartz substrate damage. Employ beam dumps and full optical enclosures to manage hazardous reflections and contain ejected debris. Continuously monitor for surface degradation, as even minor contamination can lead to localized heating and irreversible optic damage under the 1064 nm wavelength.
 - question: How does quartz glass purity (fused silica vs. natural quartz) affect laser cleaning applications?
-  answer: Fused silica's superior UV transmission and low OH content (<5 ppm) enables efficient 1064 nm laser cleaning at
-    2.5 J/cm² without thermal stress. Natural quartz, with higher impurity inclusions, risks localized absorption and micro-fractures,
-    compromising process integrity and potentially damaging the substrate at standard laser parameters.
+  answer: Fused silica's superior UV transmission and low OH content (<5 ppm) enables efficient 1064 nm laser cleaning at 2.5 J/cm² without thermal stress. Natural quartz, with higher impurity inclusions, risks localized absorption and micro-fractures, compromising process integrity and potentially damaging the substrate at standard laser parameters.

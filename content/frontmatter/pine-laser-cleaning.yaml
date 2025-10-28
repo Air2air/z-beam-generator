@@ -18,6 +18,18 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
+caption:
+  afterText: After laser cleaning, the pine surface gleams with restored natural luster, its grain vividly revealed without blemish. This treatment upholds material integrity, preventing fiber degradation and ensuring superior restoration quality for enduring wood applications.
+  author: Alessandro Moretti
+  beforeText: Under microscopy, the pine surface reveals embedded dirt particles and slight pitting. This contamination erodes its smooth, natural grain.
+  character_count:
+    after: 265
+    before: 139
+  generated: '2025-10-25T14:53:51.861638Z'
+  generation_method: ai_research
+  word_count:
+    after: 34
+    before: 19
 category: wood
 description: Laser cleaning parameters for Pine
 environmentalImpact:
@@ -67,6 +79,8 @@ machineSettings:
     description: Optimal average power for Pine surface cleaning without charring
     unit: W
     value: 90
+    min: 1.0
+    max: 120
   pulseWidth:
     description: Nanosecond pulse duration for controlled ablation of contaminants
     unit: ns
@@ -75,6 +89,8 @@ machineSettings:
     description: Optimal repetition rate for efficient Pine surface cleaning
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   scanSpeed:
     description: Optimal scanning speed for uniform Pine cleaning
     unit: mm/s
@@ -83,10 +99,14 @@ machineSettings:
     description: Beam spot diameter for precise Pine surface treatment
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   wavelength:
     description: Near-infrared wavelength for optimal Pine wood absorption
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
 materialCharacteristics:
   crystallineStructure:
     allowedValues:
@@ -109,106 +129,135 @@ materialProperties:
     description: Optical, thermal, and surface properties governing laser processing behavior
     label: Laser-Material Interaction
     percentage: 40.0
-    properties:
-      laserAbsorption:
+    laserAbsorption:
+      source: ai_research
+      unit: '%'
+      value: 32.7
+      min: 1
+      max: 50
+    laserReflectivity:
+      source: ai_research
+      unit: '%'
+      value: 42.7
+      min: 10
+      max: 60
+    specificHeat:
+      source: ai_research
+      unit: J/(kg·K)
+      value: 1380.0
+      min: 800
+      max: 2500
+    thermalConductivity:
+      ai_verified: true
+      source: ai_research
+      unit: W/(m·K)
+      value: 0.12
+      min: 0.04
+      max: 0.4
+    thermalDestruction:
+      point:
         source: ai_research
-        unit: '%'
-        value: 32.7
-      laserReflectivity:
-        source: ai_research
-        unit: '%'
-        value: 42.7
-      specificHeat:
-        source: ai_research
-        unit: J/(kg·K)
-        value: 1380.0
-      thermalConductivity:
-        ai_verified: true
-        source: ai_research
-        unit: W/(m·K)
-        value: 0.12
-      thermalDestruction:
-        point:
-          source: ai_research
-          unit: °C
-          value: 427.0
-        source: wood_combustion_standards
-        type: carbonization
         unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        source: ai_research
-        unit: mm²/s
-        value: 0.165
-      thermalExpansion:
-        ai_verified: true
-        source: ai_research
-        unit: 10^-6/K
-        value: 27.0
+        value: 427.0
+      source: wood_combustion_standards
+      type: carbonization
+      unit: °C
+      value: 300.0
+    thermalDiffusivity:
+      source: ai_research
+      unit: mm²/s
+      value: 0.165
+      min: 0.0001
+      max: 0.4
+    thermalExpansion:
+      ai_verified: true
+      source: ai_research
+      unit: 10^-6/K
+      value: 27.0
+      min: 3.0
+      max: 60
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        source: Wood Database (www.wood-database.com) - Mechanical Properties for Eastern White Pine
-        unit: MPa
-        value: 40.0
-      corrosionResistance:
-        ai_verified: true
-        source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, 2010)'
-        unit: rating
-        value: 2.0
-      density:
-        ai_verified: true
-        source: ai_research
-        unit: g/cm³
-        value: 0.37
-      flexuralStrength:
-        ai_verified: true
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table
-          4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
-        unit: MPa
-        value: 59.0
-      hardness:
-        ai_verified: true
-        source: ai_research
-        unit: MPa
-        value: 40.0
-      oxidationResistance:
-        ai_verified: true
-        source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
-        unit: °C
-        value: 150.0
-      porosity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.72
-      tensileStrength:
-        source: ai_research
-        unit: MPa
-        value: 97.0
-      youngsModulus:
-        ai_verified: true
-        source: ai_research
-        unit: GPa
-        value: 9.0
-      fractureToughness:
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 2.8
+    compressiveStrength:
+      ai_verified: true
+      source: Wood Database (www.wood-database.com) - Mechanical Properties for Eastern White Pine
+      unit: MPa
+      value: 40.0
+      min: 20
+      max: 80
+    corrosionResistance:
+      ai_verified: true
+      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, 2010)'
+      unit: rating
+      value: 2.0
+      min: 2.0
+      max: 8.0
+    density:
+      ai_verified: true
+      source: ai_research
+      unit: g/cm³
+      value: 0.37
+      min: 0.12
+      max: 1.5
+    flexuralStrength:
+      ai_verified: true
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+      unit: MPa
+      value: 59.0
+      min: 40
+      max: 150
+    fractureToughness:
+      source: ai_research
+      unit: MPa·m¹/²
+      value: 2.8
+      min: 0.33
+      max: 4.4
+    hardness:
+      ai_verified: true
+      source: ai_research
+      unit: MPa
+      value: 40.0
+      min: 1
+      max: 5000
+    oxidationResistance:
+      ai_verified: true
+      source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
+      unit: °C
+      value: 150.0
+      min: 82.0
+      max: 204.0
+    porosity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.72
+      min: 12
+      max: 65
+    tensileStrength:
+      source: ai_research
+      unit: MPa
+      value: 97.0
+      min: 20
+      max: 200
+    youngsModulus:
+      ai_verified: true
+      source: ai_research
+      unit: GPa
+      value: 9.0
+      min: 5
+      max: 20000
   other:
     description: Additional material-specific properties
     label: Other Properties
     percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), p. 45
-        unit: MPa·√m
-        value: 0.37
+    fractureToughness:
+      ai_verified: true
+      source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), p. 45
+      unit: MPa·√m
+      value: 0.37
+      min: 0.33
+      max: 4.4
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -241,89 +290,54 @@ outcomeMetrics:
   metric: Thermal Damage Avoidance
   units: []
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 subcategory: softwood
 subtitle: Unlock Pine's resin-rich grain with gentle laser precision to avoid scorching
-title: Pine Laser Cleaning
-caption:
-  beforeText: Under microscopy, the pine surface reveals embedded dirt particles and slight pitting. This contamination erodes
-    its smooth, natural grain.
-  afterText: After laser cleaning, the pine surface gleams with restored natural luster, its grain vividly revealed without
-    blemish. This treatment upholds material integrity, preventing fiber degradation and ensuring superior restoration quality
-    for enduring wood applications.
-  generated: '2025-10-25T14:53:51.861638Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 19
-    after: 34
-  character_count:
-    before: 139
-    after: 265
 subtitle_metadata:
-  generated: '2025-10-25T21:25:46.924961Z'
-  author_name: Alessandro Moretti
   author_country: Italy
+  author_name: Alessandro Moretti
+  character_count: 77
+  generated: '2025-10-25T21:25:46.924961Z'
   generation_method: ai_research_voice
   word_count: 11
-  character_count: 77
+title: Pine Laser Cleaning
 faq:
 - question: Can laser cleaning effectively remove old paint and varnish from pine wood without damaging the soft wood surface?
-  answer: Yes, laser cleaning effectively removes paint and varnish from pine. Using a 1064 nm wavelength at 1.8 J/cm² fluence
-    and 90 W power prevents damage to the soft wood structure. Precise parameter control is essential to avoid charring, ensuring
-    the delicate surface remains intact.
+  answer: Yes, laser cleaning effectively removes paint and varnish from pine. Using a 1064 nm wavelength at 1.8 J/cm² fluence and 90 W power prevents damage to the soft wood structure. Precise parameter control is essential to avoid charring, ensuring the delicate surface remains intact.
 - question: What laser parameters (wavelength, power, pulse duration) work best for cleaning pine compared to hardwoods?
-  answer: For pine's lower density and resinous structure, I recommend a 1064 nm wavelength at 90 W average power. This setting,
-    combined with a fluence of 1.8 J/cm², effectively removes contaminants while minimizing the charring risk associated with
-    its softer composition compared to hardwoods.
+  answer: For pine's lower density and resinous structure, I recommend a 1064 nm wavelength at 90 W average power. This setting, combined with a fluence of 1.8 J/cm², effectively removes contaminants while minimizing the charring risk associated with its softer composition compared to hardwoods.
 - question: How does the resin content in pine affect laser cleaning results and potential residue issues?
-  answer: Pine's high resin content poses significant melting risks at excessive fluence levels. Maintain energy density below
-    1.8 J/cm² with 90W power to prevent redeposition. The 1064nm wavelength effectively vaporizes contaminants while managing
-    thermal input to the wood substrate.
+  answer: Pine's high resin content poses significant melting risks at excessive fluence levels. Maintain energy density below 1.8 J/cm² with 90W power to prevent redeposition. The 1064nm wavelength effectively vaporizes contaminants while managing thermal input to the wood substrate.
 - question: Is laser cleaning safe for antique pine furniture where preserving the patina is important?
-  answer: With proper 1064nm wavelength and controlled 1.8 J/cm² fluence, laser cleaning safely preserves pine patina. Our
-    90W power and 800mm/s scan speed selectively remove contaminants without damaging the delicate aged wood surface, maintaining
-    its historical integrity.
+  answer: With proper 1064nm wavelength and controlled 1.8 J/cm² fluence, laser cleaning safely preserves pine patina. Our 90W power and 800mm/s scan speed selectively remove contaminants without damaging the delicate aged wood surface, maintaining its historical integrity.
 - question: What safety precautions are needed when laser cleaning pine due to potential VOC emissions from resins?
-  answer: Pine's high resin content releases terpenes when laser cleaned at 1064nm wavelength. You'll need industrial fume
-    extraction rated for VOCs and respiratory protection. Continuous air monitoring for organic compounds is essential during
-    processing.
+  answer: Pine's high resin content releases terpenes when laser cleaned at 1064nm wavelength. You'll need industrial fume extraction rated for VOCs and respiratory protection. Continuous air monitoring for organic compounds is essential during processing.
 - question: Can laser cleaning prepare pine surfaces for refinishing or bonding without creating a weakened surface layer?
-  answer: Properly calibrated laser parameters at 1.8 J/cm² and 90W power effectively remove contaminants from pine. This
-    process enhances surface energy for superior bonding without compromising the delicate cellular structure of the wood
-    fibers, ensuring a sound substrate.
+  answer: Properly calibrated laser parameters at 1.8 J/cm² and 90W power effectively remove contaminants from pine. This process enhances surface energy for superior bonding without compromising the delicate cellular structure of the wood fibers, ensuring a sound substrate.
 - question: How does laser cleaning compare to traditional methods (sanding, chemical stripping) for pine restoration projects?
-  answer: Laser cleaning offers superior precision for pine restoration, operating at 90W average power to avoid charring.
-    Unlike abrasive methods, it preserves delicate wood grain while removing contaminants at 800 mm/s, making it both faster
-    and more environmentally sound than chemical alternatives.
+  answer: Laser cleaning offers superior precision for pine restoration, operating at 90W average power to avoid charring. Unlike abrasive methods, it preserves delicate wood grain while removing contaminants at 800 mm/s, making it both faster and more environmentally sound than chemical alternatives.
 - question: What are the risks of discoloration or charring when laser cleaning pine, and how can they be minimized?
-  answer: Pine's low thermal threshold requires careful fluence control below 1.8 J/cm² to prevent charring. Utilize real-time
-    monitoring to detect discoloration, adjusting the 90W power and 800 mm/s scan speed dynamically. This ensures uniform
-    cleaning while preserving the wood's natural integrity.
+  answer: Pine's low thermal threshold requires careful fluence control below 1.8 J/cm² to prevent charring. Utilize real-time monitoring to detect discoloration, adjusting the 90W power and 800 mm/s scan speed dynamically. This ensures uniform cleaning while preserving the wood's natural integrity.
 - question: Does laser cleaning affect the dimensional stability or moisture content of pine wood?
-  answer: Properly configured laser parameters like 1.8 J/cm² fluence and 90W power avoid significant thermal penetration
-    into pine's cellular structure. This preserves dimensional stability by preventing lignin softening and maintains the
-    wood's inherent moisture equilibrium, ensuring no long-term warping or shrinkage from the cleaning process.
+  answer: Properly configured laser parameters like 1.8 J/cm² fluence and 90W power avoid significant thermal penetration into pine's cellular structure. This preserves dimensional stability by preventing lignin softening and maintains the wood's inherent moisture equilibrium, ensuring no long-term warping or shrinkage from the cleaning process.
 - question: How effective is laser cleaning for removing biological growth (mold, mildew) from pine surfaces?
-  answer: Laser cleaning effectively ablates biological contaminants from pine at 1.8 J/cm², eliminating surface spores without
-    chemical residue. The 1064 nm wavelength and 90 W power ensure thorough decontamination while preserving the wood's structural
-    integrity. This non-contact method significantly reduces the potential for future regrowth on the substrate.
+  answer: Laser cleaning effectively ablates biological contaminants from pine at 1.8 J/cm², eliminating surface spores without chemical residue. The 1064 nm wavelength and 90 W power ensure thorough decontamination while preserving the wood's structural integrity. This non-contact method significantly reduces the potential for future regrowth on the substrate.

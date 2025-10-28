@@ -59,17 +59,21 @@ class TrivialFrontmatterExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory and load Categories.yaml."""
+        """Initialize with output directory, load Categories.yaml for both material and machine ranges."""
         self.output_dir = Path(__file__).resolve().parents[3] / "content" / "frontmatter"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.logger = logging.getLogger(__name__)
         
-        # Load Categories.yaml for category-level data
+        # Load Categories.yaml for category-level material property ranges AND machine settings ranges
         categories_path = Path(__file__).resolve().parents[3] / "data" / "Categories.yaml"
         with open(categories_path, 'r', encoding='utf-8') as f:
             self.categories_data = yaml.safe_load(f)
         
+        # Extract machine settings ranges from Categories.yaml
+        self.machine_settings_ranges = self.categories_data.get('machineSettingsRanges', {})
+        
         self.logger.info(f"✅ Loaded {len(self.categories_data.get('categories', {}))} categories")
+        self.logger.info(f"✅ Loaded {len(self.machine_settings_ranges)} machine settings ranges")
     
     def export_all(self) -> Dict[str, bool]:
         """
@@ -100,29 +104,109 @@ class TrivialFrontmatterExporter:
     
     def export_single(self, material_name: str, material_data: Dict) -> None:
         """
-        Export single material to frontmatter YAML file - TRIVIAL COPY ONLY.
+        Export single material to frontmatter YAML file.
         
-        NO formatting, NO ensuring, NO adding - Materials.yaml must be perfect.
-        Just copy the data exactly as-is from Materials.yaml.
+        Copies data from Materials.yaml and enriches properties and machine settings
+        with min/max ranges from Categories.yaml.
         
         Args:
             material_name: Name of the material
             material_data: Material data from Materials.yaml (100% complete, validated)
         """
-        # TRIVIAL COPY - Add material name to data and copy everything else as-is
-        frontmatter = {
-            'name': material_name,
-            **material_data  # Copy ALL fields exactly as they are in Materials.yaml
-        }
+        # Start with material name
+        frontmatter = {'name': material_name}
         
-        # Write YAML file (simple, fast, no API calls, no transformations)
+        # Get category for range lookups
+        category = material_data.get('category', '')
+        category_ranges = self._get_category_ranges(category)
+        
+        # Copy all fields from Materials.yaml
+        for key, value in material_data.items():
+            if key == 'materialProperties':
+                # Enrich material properties with min/max from category ranges
+                frontmatter[key] = self._enrich_material_properties(value, category_ranges)
+            elif key == 'machineSettings':
+                # Enrich machine settings with min/max from category ranges
+                frontmatter[key] = self._enrich_machine_settings(value, category_ranges)
+            else:
+                # Copy as-is
+                frontmatter[key] = value
+        
+        # Write YAML file
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
         output_path = self.output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
         self.logger.info(f"✅ Exported {material_name} → {filename}")
+    
+    def _get_category_ranges(self, category: str) -> Dict[str, Any]:
+        """Get category-wide ranges from Categories.yaml."""
+        if not category or 'categories' not in self.categories_data:
+            return {}
+        
+        category_data = self.categories_data['categories'].get(category, {})
+        return category_data.get('category_ranges', {})
+    
+    def _enrich_material_properties(self, properties: Dict, category_ranges: Dict) -> Dict:
+        """Add min/max from category ranges to material properties."""
+        if not properties or not isinstance(properties, dict):
+            return properties
+        
+        enriched = {}
+        for category_name, category_data in properties.items():
+            if not isinstance(category_data, dict):
+                enriched[category_name] = category_data
+                continue
+            
+            enriched_category = {}
+            for key, value in category_data.items():
+                # Skip metadata fields
+                if key in ['label', 'description', 'percentage']:
+                    enriched_category[key] = value
+                # All other keys are properties - add min/max
+                else:
+                    enriched_category[key] = self._add_min_max(value, key, category_ranges)
+            
+            enriched[category_name] = enriched_category
+        
+        return enriched
+    
+    def _enrich_machine_settings(self, settings: Dict, category_ranges: Dict) -> Dict:
+        """Add min/max from machine settings ranges to machine settings."""
+        if not settings or not isinstance(settings, dict):
+            return settings
+        
+        enriched = {}
+        for setting_name, setting_value in settings.items():
+            # Use machine settings ranges instead of category ranges
+            enriched[setting_name] = self._add_min_max(setting_value, setting_name, self.machine_settings_ranges)
+        
+        return enriched
+    
+    def _add_min_max(self, prop_value: Any, prop_name: str, category_ranges: Dict) -> Any:
+        """Add min/max fields to a property if available in category ranges."""
+        if not isinstance(prop_value, dict):
+            return prop_value
+        
+        # Already has min/max - don't override
+        if 'min' in prop_value or 'max' in prop_value:
+            return prop_value
+        
+        # Look up category range
+        range_data = category_ranges.get(prop_name, {})
+        if not range_data or not isinstance(range_data, dict):
+            return prop_value
+        
+        # Create enriched property with min/max
+        enriched = dict(prop_value)
+        if 'min' in range_data:
+            enriched['min'] = range_data['min']
+        if 'max' in range_data:
+            enriched['max'] = range_data['max']
+        
+        return enriched
 
 
 def export_all_frontmatter() -> Dict[str, bool]:
