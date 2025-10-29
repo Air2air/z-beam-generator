@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Subtitle Component Generator - Discrete, Simple Subtitle Generation
+Subtitle Component Generator - Subtitle Generation
 
-This component is DISCRETE and FOCUSED:
+This component generates engaging 8-12 word subtitles with clean, efficient architecture.
+
+Architecture:
 - Generates engaging 8-12 word subtitles
-- NO author voice functionality (handled by separate VoicePostProcessor)
-- NO frontmatter dependencies (uses Materials.yaml only)
+- Writes to Materials.yaml only (single source of truth)
+- Single API call per generation (no post-processing)
 - Minimal, clean interface
 """
 
@@ -16,7 +18,7 @@ import random
 import tempfile
 import yaml
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict
 from generators.component_generators import APIComponentGenerator
 
 logger = logging.getLogger(__name__)
@@ -226,9 +228,22 @@ Write the subtitle now:"""
         material_name: str,
         material_data: Dict,
         api_client=None,
+        author: Dict = None,
         **kwargs
     ):
-        """Generate AI-powered subtitle content - FAIL FAST ARCHITECTURE"""
+        """
+        Generate AI-powered subtitle content with optional voice enhancement.
+        
+        Args:
+            material_name: Name of the material
+            material_data: Material properties dictionary
+            api_client: API client for generation (required)
+            author: Author dictionary with 'country' key for voice enhancement (optional)
+            **kwargs: Additional parameters
+            
+        Returns:
+            ComponentResult with generated subtitle content
+        """
         
         # Input validation
         if not api_client:

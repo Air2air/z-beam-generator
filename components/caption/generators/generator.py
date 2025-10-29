@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Caption Component Generator - Discrete, Simple Microscopy Caption Generation
+Caption Component Generator - Microscopy Caption Generation
 
-This component is DISCRETE and FOCUSED:
+This component generates before/after microscopy captions with clean, efficient architecture.
+
+Architecture:
 - Generates before/after microscopy captions
-- NO author voice functionality (handled by separate VoicePostProcessor)
-- NO frontmatter dependencies (uses Materials.yaml only)
+- Writes to Materials.yaml only (single source of truth)
+- Single API call per generation (no post-processing)
 - Minimal, clean interface
 """
 
@@ -269,9 +271,22 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
         material_name: str,
         material_data: Dict,
         api_client=None,
+        author: Dict = None,
         **kwargs
     ):
-        """Generate AI-powered caption content - FAIL FAST ARCHITECTURE"""
+        """
+        Generate AI-powered caption content with optional voice enhancement.
+        
+        Args:
+            material_name: Name of the material
+            material_data: Material properties dictionary
+            api_client: API client for generation (required)
+            author: Author dictionary with 'country' key for voice enhancement (optional)
+            **kwargs: Additional parameters
+            
+        Returns:
+            ComponentResult with generated caption content
+        """
         
         # Input validation
         if not api_client:
@@ -315,7 +330,7 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
             # Extract and validate caption sections
             sections = self._extract_caption_sections(response.content, material_name)
             
-            logger.info(f"✅ Generated caption sections:")
+            logger.info("✅ Generated caption sections:")
             logger.info(f"   Before: '{sections['before'][:80]}...' ({len(sections['before'].split())}w)")
             logger.info(f"   After: '{sections['after'][:80]}...' ({len(sections['after'].split())}w)")
             

@@ -9,7 +9,6 @@ from typing import Dict, Any, Optional, List
 from pathlib import Path
 from datetime import datetime
 from generators.component_generators import APIComponentGenerator
-from voice.post_processor import VoicePostProcessor
 from validation.quality_validator import ContentValidator
 from services.regeneration_service import create_regeneration_service
 
@@ -24,7 +23,6 @@ MATERIALS_DATA_PATH = "data/Materials.yaml"
 # ============================================================================
 FAQ_COUNT_RANGE = "5-10"  # Number of FAQ items to generate
 FAQ_WORD_COUNT_RANGE = "20-50"  # Words per answer (increased from 13-38 for more detail)
-FAQ_VOICE_INTENSITY = 2  # Light voice - subtle authenticity
 FAQ_TECHNICAL_INTENSITY = 3  # Moderate - balanced technical content with readability
 
 # ============================================================================
@@ -396,28 +394,6 @@ Generate the FAQ now:"""
                 return self._create_result("", success=False, error_message=f"FAQ generation failed: {faq_response.error}")
             
             faq_content = faq_response.content.strip()
-            
-            # Apply voice enhancement if author provided
-            if author and 'country' in author:
-                try:
-                    faq_items = yaml.safe_load(faq_content)
-                    voice_processor = VoicePostProcessor(api_client)
-                    
-                    # Use BATCH enhancement to prevent marker repetition
-                    logger.info(f"🎭 Batch enhancing with {author.get('country', 'Unknown')} voice (intensity={FAQ_VOICE_INTENSITY})...")
-                    
-                    faq_items = voice_processor.enhance_batch(
-                        faq_items=faq_items,
-                        author=author,
-                        marker_distribution='varied',
-                        preserve_length=True,
-                        length_tolerance=5,
-                        voice_intensity=FAQ_VOICE_INTENSITY
-                    )
-                    
-                    faq_content = yaml.dump(faq_items, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                except Exception as e:
-                    logger.warning(f"Voice enhancement failed: {e}")
             
             # VALIDATE before writing to Materials.yaml
             try:
