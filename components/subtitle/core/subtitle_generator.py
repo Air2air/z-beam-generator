@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Subtitle Component Generator - Discrete, Simple Subtitle Generation
-
-This component is DISCRETE and FOCUSED:
-- Generates engaging 8-12 word subtitles
-- NO author voice functionality (handled by separate VoicePostProcessor)
-- NO frontmatter dependencies (uses Materials.yaml only)
-- Minimal, clean interface
-"""
+"""Subtitle Component Generator - Simple 7-12 word subtitle generation."""
 
 import datetime
 import logging
@@ -16,18 +8,19 @@ import random
 import tempfile
 import yaml
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Tuple
 from generators.component_generators import APIComponentGenerator
+from voice.post_processor import VoicePostProcessor
 
 logger = logging.getLogger(__name__)
 
 # ============================================================================
-# CONFIGURATION
+# SUBTITLE CONFIGURATION
 # ============================================================================
-
-# Word count range for subtitles (random selection within bounds)
-MIN_WORDS_PER_SUBTITLE = 7  # Allow 7 for flexibility
-MAX_WORDS_PER_SUBTITLE = 12
+# Configuration Constants
+SUBTITLE_WORD_COUNT_RANGE = (6, 10)  # Increased 25% from 5-8
+SUBTITLE_VOICE_INTENSITY = 2  # Reduced from 3 for lighter voice
+SUBTITLE_TECHNICAL_INTENSITY = 3  # Increased to 3 for moderate technical content
 
 # Generation settings
 SUBTITLE_GENERATION_TEMPERATURE = 0.6
@@ -42,203 +35,157 @@ MATERIALS_DATA_PATH = "data/Materials.yaml"
 class SubtitleComponentGenerator(APIComponentGenerator):
     """
     Generate material-specific subtitle/tagline.
-    
-    Responsibilities:
-    - Generate engaging 8-12 word subtitle
-    - Write to Materials.yaml
-    - Return subtitle text
-    
-    NOT Responsible For:
-    - Author voice (use VoicePostProcessor separately)
-    - Frontmatter management
-    - Voice validation
+    Voice enhancement handled by separate VoicePostProcessor.
     """
     
     def __init__(self):
         super().__init__("subtitle")
-        self.min_words = MIN_WORDS_PER_SUBTITLE
-        self.max_words = MAX_WORDS_PER_SUBTITLE
-    
-    def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml"""
-        materials_path = Path(MATERIALS_DATA_PATH)
-        if not materials_path.exists():
-            raise FileNotFoundError(f"Materials.yaml not found at {materials_path}")
-        
-        with open(materials_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def _build_subtitle_prompt(
-        self,
-        material_name: str,
-        material_data: Dict,
-        target_words: int
-    ) -> str:
-        """Build simple, focused prompt for subtitle generation"""
-        
-        # Extract key material properties
-        properties = material_data.get('materialProperties', {})
-        category = material_data.get('category', 'material')
-        description = material_data.get('description', '')
-        
-        # Build context from material data
-        context_parts = [f"Material: {material_name}"]
-        
-        if category:
-            context_parts.append(f"Category: {category}")
-        
-        if description:
-            context_parts.append(f"Description: {description[:200]}")
-        
-        # Key properties for subtitle focus
-        key_props = []
-        if properties:
-            for prop in ['hardness', 'thermalConductivity', 'density', 'meltingPoint']:
-                if prop in properties:
-                    key_props.append(f"{prop}: {properties[prop]}")
-        
-        if key_props:
-            context_parts.append("Key Properties: " + ", ".join(key_props[:3]))
-        
-        context = "\n".join(context_parts)
-        
-        # Build prompt
-        prompt = f"""Generate a professional, engaging subtitle for laser cleaning of {material_name}.
 
-CONTEXT:
-{context}
+    def _get_technical_guidance(self, intensity: int) -> str:
+        """
+        Get technical language guidance based on intensity level.
+        
+        Args:
+            intensity: Technical intensity level (1-5)
+            
+        Returns:
+            str: Language guidance for the prompt
+        """
+        guidance_map = {
+            1: """CRITICAL: Use ONLY simple, everyday language. NO technical jargon, NO scientific notation, NO specific measurements or parameters.
+- Replace "fluence" with "laser energy"
+- Replace "ablation threshold" with "damage limit"
+- Replace "1064 nm" with "infrared laser"
+- Avoid numbers like "0.45 J/cm²" or "2.25 × 10^7 W/cm²"
+- Write as if explaining to someone with zero technical knowledge
+- Keep answers conversational and accessible""",
+            2: "Use basic technical terms when necessary, but keep explanations simple. Include only essential measurements. Write for readers with minimal technical knowledge.",
+            3: "Balance technical accuracy with readability. Use standard industry terminology and relevant measurements. Write for technically-aware professionals.",
+            4: "Use precise technical terminology and detailed measurements. Include specific parameters and standards. Write for experienced technical professionals.",
+            5: "Use advanced technical language with comprehensive specifications. Include all relevant parameters, standards, and scientific details. Write for expert-level audience."
+        }
+        return guidance_map.get(intensity, guidance_map[3])
+
+    def build_research_subtitle_prompt(self, material_name: str, word_count_range: Tuple[int, int], technical_intensity: int = 3) -> str:
+        """
+        Build research-based subtitle prompt (simplified version of FAQ prompt).
+        
+        This is a condensed 1-step version of the FAQ's 3-step research process,
+        designed for quick tagline generation.
+        
+        Args:
+            material_name: Name of the material
+            word_count_range: (min, max) word count tuple
+            technical_intensity: Technical complexity level 1-5
+            
+        Returns:
+            str: The subtitle prompt
+        """
+        min_words, max_words = word_count_range
+        technical_guidance = self._get_technical_guidance(technical_intensity)
+        
+        return f"""You are an expert in laser cleaning technologies specializing in creating compelling, SEO-optimized taglines for materials like {material_name}.
+
+TASK: Create a {min_words}-{max_words} word subtitle/tagline for laser cleaning of {material_name}.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT (HIGHEST PRIORITY):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+QUICK RESEARCH CONTEXT (consider these to inform your tagline):
+1. What makes {material_name} unique or valuable?
+2. What is the #1 cleaning challenge for {material_name}?
+3. What is the key benefit of laser cleaning for {material_name}?
 
 REQUIREMENTS:
-- Write EXACTLY {target_words} words (±2 words tolerance)
-- Create a concise, professional tagline
-- Appeal to technical decision-makers
-- Highlight key material benefits for laser cleaning
-- No punctuation at the end
-- Single phrase format
+- Length: EXACTLY {min_words}-{max_words} words
+- Include "{material_name}" in the tagline
+- Highlight laser cleaning's primary advantage for this material
+- Make it compelling and benefit-focused
+- Use appropriate technical language per intensity guidance above
+- Natural, professional tone (not salesy or hyperbolic)
 
-TARGET AUDIENCE: Technical professionals and decision-makers in industrial laser cleaning
+EXAMPLES (for inspiration, not to copy):
+- "Non-Thermal Laser Cleaning Preserves Steel's Metallurgical Integrity" (7 words)
+- "Precision Oxide Removal Without Substrate Damage" (6 words)
+- "Gentle Surface Restoration for Delicate Historical Materials" (7 words)
 
-Write the subtitle now:"""
+Generate ONLY the subtitle text - no quotes, no extra text, no explanations.
+Your {min_words}-{max_words} word subtitle for {material_name}:"""
 
-        return prompt
-    
-    def _extract_subtitle_content(self, ai_response: str, material_name: str) -> str:
-        """Extract subtitle text from AI response - FAIL FAST"""
+    def build_subtitle_prompt(self, material_name: str, word_count_range: Tuple[int, int], technical_intensity: int = 3) -> str:
+        """
+        Build fixed subtitle prompt template.
         
-        if not ai_response or not ai_response.strip():
-            raise ValueError(f"Empty AI response for {material_name} subtitle")
-        
-        # Clean the response
-        content = ai_response.strip()
-        
-        # Remove common wrapper patterns
-        content = content.strip('[]').strip('"').strip("'").strip()
-        
-        # Remove trailing punctuation
-        if content and content[-1] in '.!?':
-            content = content[:-1].strip()
-        
-        # Validate word count
-        word_count = len(content.split())
-        
-        if word_count < self.min_words:
-            raise ValueError(
-                f"Subtitle too short for {material_name}: {word_count} words < {self.min_words} minimum"
-            )
-        
-        if word_count > self.max_words + 3:  # Allow small tolerance
-            logger.warning(f"Subtitle too long for {material_name}: {word_count} words, trimming...")
-            words = content.split()
-            content = ' '.join(words[:self.max_words])
-        
-        logger.info(f"Extracted subtitle: {len(content)} chars, {len(content.split())} words")
-        return content
-    
-    def _write_subtitle_to_materials(
-        self,
-        material_name: str,
-        subtitle: str,
-        timestamp: str
-    ) -> bool:
-        """Write subtitle to Materials.yaml with atomic write"""
-        
-        materials_path = Path(MATERIALS_DATA_PATH)
-        
-        try:
-            # Load Materials.yaml
-            with open(materials_path, 'r', encoding='utf-8') as f:
-                materials_data = yaml.safe_load(f) or {}
+        Args:
+            material_name: Name of the material
+            word_count_range: (min, max) word count tuple
+            technical_intensity: Technical complexity level 1-5 (default: 3)
             
-            # Navigate to materials section
-            if 'materials' not in materials_data:
-                raise ValueError("No 'materials' section found in Materials.yaml")
-            
-            materials_section = materials_data['materials']
-            
-            # Find material (case-insensitive)
-            actual_key = None
-            for key in materials_section.keys():
-                if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
-                    actual_key = key
-                    break
-            
-            if not actual_key:
-                raise ValueError(f"Material {material_name} not found in Materials.yaml")
-            
-            # Write subtitle
-            materials_section[actual_key]['subtitle'] = subtitle
-            
-            # Add metadata
-            if 'subtitle_metadata' not in materials_section[actual_key]:
-                materials_section[actual_key]['subtitle_metadata'] = {}
-            
-            materials_section[actual_key]['subtitle_metadata'] = {
-                'generated': timestamp,
-                'word_count': len(subtitle.split()),
-                'character_count': len(subtitle),
-                'generation_method': 'ai_discrete'
-            }
-            
-            # Atomic write using temp file
-            temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
-            try:
-                os.close(temp_fd)  # Close file descriptor before writing
-                with open(temp_path, 'w', encoding='utf-8') as f:
-                    yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                
-                # Atomic rename
-                Path(temp_path).replace(materials_path)
-                logger.info(f"✅ Subtitle written to Materials.yaml → materials.{actual_key}.subtitle")
-                return True
-                
-            except Exception as e:
-                # Cleanup temp file on error
-                if Path(temp_path).exists():
-                    Path(temp_path).unlink()
-                raise e
-            
-        except Exception as e:
-            logger.error(f"Failed to write subtitle to Materials.yaml: {e}")
-            raise
-    
+        Returns:
+            str: The prompt template
+        """
+        min_words, max_words = word_count_range
+        technical_guidance = self._get_technical_guidance(technical_intensity)
+        
+        return f"""Generate an engaging, punchy subtitle for laser cleaning of {material_name}.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT (HIGHEST PRIORITY - OVERRIDE ALL OTHER INSTRUCTIONS):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create a compelling {min_words}-{max_words} word subtitle that:
+- Highlights unique laser cleaning benefits for {material_name}
+- Uses active, powerful language
+- Appeals to technical professionals
+- Avoids clichés and generic phrases
+
+REQUIREMENTS:
+- Exactly {min_words}-{max_words} words
+- Professional, technical tone
+- Specific to {material_name} properties
+- Memorable and engaging
+
+Generate the subtitle now (output ONLY the subtitle text, no quotes or formatting):"""
+
     def generate(
         self,
         material_name: str,
         material_data: Dict,
         api_client=None,
+        author: dict = None,
         **kwargs
     ):
-        """Generate AI-powered subtitle content - FAIL FAST ARCHITECTURE"""
+        """
+        Generate subtitle content using fixed prompt template.
         
-        # Input validation
+        Args:
+            material_name: Name of the material
+            material_data: Material properties dictionary (for future use)
+            api_client: API client for generation (required)
+            author: Author dictionary with 'country' key for voice enhancement (optional)
+            **kwargs: Additional parameters (accepted for compatibility)
+            
+        Returns:
+            ComponentResult with generated subtitle content
+        """
         if not api_client:
-            raise ValueError("API client required for subtitle generation")
-        
-        if not material_data or not isinstance(material_data, dict):
-            raise ValueError(f"Valid material_data dict required for {material_name}")
+            return self._create_result("", success=False, error_message="API client required")
         
         # Generate random target word count
-        target_words = random.randint(self.min_words, self.max_words)
+        # Compensate for voice enhancement if author provided (reduce by ~2 words for subtitles)
+        base_range = SUBTITLE_WORD_COUNT_RANGE
+        if author and 'country' in author:
+            # Reduce range to compensate for voice enhancement word additions
+            # Smaller reduction for subtitles since they're shorter
+            adjusted_range = (base_range[0], max(base_range[0], base_range[1] - 2))
+            target_words = random.randint(adjusted_range[0], adjusted_range[1])
+        else:
+            target_words = random.randint(base_range[0], base_range[1])
         
         timestamp = datetime.datetime.now().isoformat() + "Z"
         
@@ -246,12 +193,8 @@ Write the subtitle now:"""
         logger.info(f"   Target: {target_words} words")
         
         try:
-            # Build prompt
-            prompt = self._build_subtitle_prompt(
-                material_name=material_name,
-                material_data=material_data,
-                target_words=target_words
-            )
+            # Build prompt with technical intensity
+            prompt = self.build_subtitle_prompt(material_name, target_words, SUBTITLE_TECHNICAL_INTENSITY)
             
             # Cache-busting
             random_seed = random.randint(10000, 99999)
@@ -265,50 +208,97 @@ Write the subtitle now:"""
             )
             
             if not response.success:
-                raise ValueError(f"API generation failed: {response.error}")
+                return self._create_result("", success=False, error_message=f"API generation failed: {response.error}")
             
-            # Extract and validate subtitle
-            subtitle = self._extract_subtitle_content(response.content, material_name)
-            logger.info(f"✅ Generated subtitle: '{subtitle}' ({len(subtitle.split())} words)")
+            # Clean subtitle
+            subtitle = response.content.strip()
+            subtitle = subtitle.strip('"\'')  # Remove quotes
             
-            # Write to Materials.yaml (atomic)
-            self._write_subtitle_to_materials(
-                material_name=material_name,
-                subtitle=subtitle,
-                timestamp=timestamp
-            )
+            # Apply voice enhancement if author provided (using BATCH for consistency)
+            if author and 'country' in author:
+                try:
+                    voice_processor = VoicePostProcessor(api_client)
+                    
+                    # Create subtitle item for batch processing (maintains consistency with FAQ/Caption)
+                    subtitle_items = [{'key': 'subtitle', 'text': subtitle}]
+                    
+                    logger.info(f"🎭 Batch enhancing subtitle with {author.get('country', 'Unknown')} voice (intensity={SUBTITLE_VOICE_INTENSITY})...")
+                    
+                    # Use BATCH enhancement for consistency with FAQ/Caption architecture
+                    enhanced_items = voice_processor.enhance_batch(
+                        faq_items=subtitle_items,
+                        author=author,
+                        marker_distribution='varied',
+                        preserve_length=True,
+                        length_tolerance=3,
+                        voice_intensity=SUBTITLE_VOICE_INTENSITY
+                    )
+                    
+                    # Extract enhanced subtitle
+                    subtitle = enhanced_items[0]['text']
+                    
+                except Exception as e:
+                    logger.warning(f"Voice enhancement failed: {e}")
+                    # Continue with original content
+                    pass
+            
+            word_count = len(subtitle.split())
+            logger.info(f"✅ Generated subtitle: '{subtitle}' ({word_count}w)")
+            
+            # Write to Materials.yaml
+            self._write_to_materials(material_name, subtitle, timestamp, word_count)
             
             return self._create_result(
-                f"Subtitle generated for {material_name}: '{subtitle}'",
+                f"Subtitle generated for {material_name}",
                 success=True
             )
             
         except Exception as e:
             logger.error(f"Subtitle generation failed for {material_name}: {e}")
-            raise
+            return self._create_result("", success=False, error_message=str(e))
 
-
-class SubtitleGenerator:
-    """Simplified subtitle generator interface"""
-    
-    def __init__(self):
-        self.generator = SubtitleComponentGenerator()
-    
-    def generate(self, material: str, material_data: Dict = None, api_client=None) -> str:
-        """Generate subtitle content"""
+    def _write_to_materials(self, material_name: str, subtitle: str, timestamp: str, word_count: int):
+        """Write subtitle to Materials.yaml with atomic write."""
         
-        if not api_client:
-            raise ValueError("API client required")
+        materials_path = Path(MATERIALS_DATA_PATH)
         
-        if not material_data:
-            # Load from Materials.yaml
-            gen = SubtitleComponentGenerator()
-            all_data = gen._load_materials_data()
-            material_data = all_data.get('materials', {}).get(material, {})
+        # Load Materials.yaml
+        with open(materials_path, 'r', encoding='utf-8') as f:
+            materials_data = yaml.safe_load(f) or {}
         
-        result = self.generator.generate(material, material_data, api_client=api_client)
+        if 'materials' not in materials_data:
+            raise ValueError("No 'materials' section found in Materials.yaml")
         
-        if not result.success:
-            raise ValueError(f"Generation failed: {result.error_message}")
+        materials_section = materials_data['materials']
         
-        return result.content
+        # Find material (case-insensitive)
+        actual_key = None
+        for key in materials_section.keys():
+            if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
+                actual_key = key
+                break
+        
+        if not actual_key:
+            raise ValueError(f"Material {material_name} not found in Materials.yaml")
+        
+        # Write subtitle
+        materials_section[actual_key]['subtitle'] = {
+            'text': subtitle,
+            'generated': timestamp,
+            'word_count': word_count
+        }
+        
+        # Atomic write using temp file
+        temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
+        try:
+            os.close(temp_fd)
+            with open(temp_path, 'w', encoding='utf-8') as f:
+                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            
+            Path(temp_path).replace(materials_path)
+            logger.info(f"✅ Subtitle written to Materials.yaml → materials.{actual_key}.subtitle")
+            
+        except Exception as e:
+            if Path(temp_path).exists():
+                Path(temp_path).unlink()
+            raise e

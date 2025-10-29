@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""
-Caption Component Generator - Discrete, Simple Microscopy Caption Generation
-
-This component is DISCRETE and FOCUSED:
-- Generates before/after microscopy captions
-- NO author voice functionality (handled by separate VoicePostProcessor)
-- NO frontmatter dependencies (uses Materials.yaml only)
-- Minimal, clean interface
-"""
+"""Caption Component Generator - Simple before/after microscopy captions."""
 
 import datetime
 import logging
@@ -19,29 +11,21 @@ import yaml
 from pathlib import Path
 from typing import Dict
 from generators.component_generators import APIComponentGenerator
+from voice.post_processor import VoicePostProcessor
 
 logger = logging.getLogger(__name__)
 
 # ============================================================================
-# CONFIGURATION
+# CAPTION CONFIGURATION
 # ============================================================================
-
-# Word count ranges for caption sections
-MIN_WORDS_BEFORE = 30
-MAX_WORDS_BEFORE = 70
-MIN_WORDS_AFTER = 30
-MAX_WORDS_AFTER = 70
-
-# Total caption constraints
-MIN_TOTAL_WORDS = 60
-MAX_TOTAL_WORDS = 140
+# Configuration Constants
+CAPTION_WORD_COUNT_RANGE = (25, 59)  # Increased 25% from 20-47
+CAPTION_VOICE_INTENSITY = 2  # Reduced from 3 for lighter voice
+CAPTION_TECHNICAL_INTENSITY = 3  # Increased to 3 for moderate technical content
 
 # Generation settings
 CAPTION_GENERATION_TEMPERATURE = 0.6
-CAPTION_MAX_TOKENS = 300  # Enough for both sections
-
-# Word count tolerance
-WORD_COUNT_TOLERANCE = 10
+CAPTION_MAX_TOKENS = 300
 
 # Data file paths
 MATERIALS_DATA_PATH = "data/Materials.yaml"
@@ -51,86 +35,73 @@ MATERIALS_DATA_PATH = "data/Materials.yaml"
 
 class CaptionComponentGenerator(APIComponentGenerator):
     """
-    Generate material-specific microscopy captions (before/after).
-    
-    Responsibilities:
-    - Generate "before" caption (contaminated surface)
-    - Generate "after" caption (cleaned surface)
-    - Write to Materials.yaml
-    - Return caption data structure
-    
-    NOT Responsible For:
-    - Author voice (use VoicePostProcessor separately)
-    - Frontmatter management
-    - Voice validation
+    Generate material-specific before/after microscopy captions.
+    Voice enhancement handled by separate VoicePostProcessor.
     """
-    
+
     def __init__(self):
         super().__init__("caption")
-    
-    def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml"""
-        materials_path = Path(MATERIALS_DATA_PATH)
-        if not materials_path.exists():
-            raise FileNotFoundError(f"Materials.yaml not found at {materials_path}")
-        
-        with open(materials_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def _build_caption_prompt(
-        self,
-        material_name: str,
-        material_data: Dict,
-        target_words_before: int,
-        target_words_after: int
-    ) -> str:
-        """Build simple, focused prompt for caption generation"""
-        
-        # Extract key material properties
-        properties = material_data.get('materialProperties', {})
-        category = material_data.get('category', 'material')
-        description = material_data.get('description', '')
-        
-        # Build context
-        context_parts = [f"Material: {material_name}"]
-        
-        if category:
-            context_parts.append(f"Category: {category}")
-        
-        if description:
-            context_parts.append(f"Description: {description[:300]}")
-        
-        # Key properties for context
-        key_props = []
-        if properties:
-            for prop in ['hardness', 'thermalConductivity', 'density', 'meltingPoint', 'surfaceFinish']:
-                if prop in properties:
-                    key_props.append(f"{prop}: {properties[prop]}")
-        
-        if key_props:
-            context_parts.append("Properties: " + ", ".join(key_props[:5]))
-        
-        context = "\n".join(context_parts)
-        
-        # Build prompt
-        prompt = f"""Generate microscopy image captions for laser cleaning of {material_name}.
 
-CONTEXT:
-{context}
+    def _get_technical_guidance(self, intensity: int) -> str:
+        """
+        Get technical language guidance based on intensity level.
+        
+        Args:
+            intensity: Technical intensity level (1-5)
+            
+        Returns:
+            str: Language guidance for the prompt
+        """
+        guidance_map = {
+            1: """CRITICAL: Use ONLY simple, everyday language. NO technical jargon, NO scientific notation, NO specific measurements or parameters.
+- Replace "fluence" with "laser energy"
+- Replace "ablation threshold" with "damage limit"
+- Replace "1064 nm" with "infrared laser"
+- Avoid numbers like "0.45 J/cm²" or "2.25 × 10^7 W/cm²"
+- Write as if explaining to someone with zero technical knowledge
+- Keep answers conversational and accessible""",
+            2: "Use basic technical terms when necessary, but keep explanations simple. Include only essential measurements. Write for readers with minimal technical knowledge.",
+            3: "Balance technical accuracy with readability. Use standard industry terminology and relevant measurements. Write for technically-aware professionals.",
+            4: "Use precise technical terminology and detailed measurements. Include specific parameters and standards. Write for experienced technical professionals.",
+            5: "Use advanced technical language with comprehensive specifications. Include all relevant parameters, standards, and scientific details. Write for expert-level audience."
+        }
+        return guidance_map.get(intensity, guidance_map[3])
 
-Generate TWO captions:
+    def build_caption_prompt(self, material_name: str, target_words: int, technical_intensity: int = 3) -> str:
+        """
+        Build fixed caption prompt template.
+        
+        Args:
+            material_name: Name of the material
+            target_words: Target word count per section
+            technical_intensity: Technical complexity level 1-5 (default: 3)
+            
+        Returns:
+            str: The prompt template
+        """
+        technical_guidance = self._get_technical_guidance(technical_intensity)
+        
+        return f"""Generate microscopy image captions for laser cleaning of {material_name}.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT (HIGHEST PRIORITY - OVERRIDE ALL OTHER INSTRUCTIONS):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generate TWO captions (each ~{target_words} words):
 
 **BEFORE_TEXT:**
 Describe the contaminated surface BEFORE laser cleaning.
 - Focus on: contaminant type, surface degradation, visible damage
-- Word count: {target_words_before} words (±{WORD_COUNT_TOLERANCE} tolerance)
+- Word count: ~{target_words} words
 - Technical, descriptive tone
 - Single paragraph
 
 **AFTER_TEXT:**
 Describe the cleaned surface AFTER laser cleaning.
 - Focus on: restoration quality, surface condition, material integrity
-- Word count: {target_words_after} words (±{WORD_COUNT_TOLERANCE} tolerance)
+- Word count: ~{target_words} words
 - Technical, descriptive tone
 - Single paragraph
 
@@ -142,161 +113,48 @@ REQUIREMENTS:
 
 Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers):"""
 
-        return prompt
-    
-    def _extract_caption_sections(self, ai_response: str, material_name: str) -> Dict[str, str]:
-        """Extract before/after sections from AI response - FAIL FAST"""
-        
-        if not ai_response or not ai_response.strip():
-            raise ValueError(f"Empty AI response for {material_name} caption")
-        
-        # Try to extract marked sections
-        before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*(.+?)(?=\*\*AFTER_TEXT:|\Z)', ai_response, re.DOTALL)
-        after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*(.+)', ai_response, re.DOTALL)
-        
-        if before_match and after_match:
-            before_text = before_match.group(1).strip()
-            after_text = after_match.group(1).strip()
-        else:
-            # Fallback: try to split by paragraph
-            paragraphs = [p.strip() for p in ai_response.split('\n\n') if p.strip()]
-            
-            if len(paragraphs) >= 2:
-                before_text = paragraphs[0]
-                after_text = paragraphs[1]
-            else:
-                raise ValueError(
-                    f"Could not extract before/after sections for {material_name}. "
-                    f"Response: {ai_response[:200]}..."
-                )
-        
-        # Clean up any remaining markers
-        before_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', before_text).strip()
-        after_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', after_text).strip()
-        
-        # Validate word counts
-        before_words = len(before_text.split())
-        after_words = len(after_text.split())
-        
-        if before_words < MIN_WORDS_BEFORE:
-            raise ValueError(
-                f"Before caption too short for {material_name}: "
-                f"{before_words} words < {MIN_WORDS_BEFORE} minimum"
-            )
-        
-        if after_words < MIN_WORDS_AFTER:
-            raise ValueError(
-                f"After caption too short for {material_name}: "
-                f"{after_words} words < {MIN_WORDS_AFTER} minimum"
-            )
-        
-        total_words = before_words + after_words
-        logger.info(
-            f"Extracted captions: before={before_words}w, after={after_words}w, total={total_words}w"
-        )
-        
-        return {
-            'before': before_text,
-            'after': after_text
-        }
-    
-    def _write_caption_to_materials(
-        self,
-        material_name: str,
-        before_text: str,
-        after_text: str,
-        timestamp: str
-    ) -> bool:
-        """Write caption to Materials.yaml with atomic write"""
-        
-        materials_path = Path(MATERIALS_DATA_PATH)
-        
-        try:
-            # Load Materials.yaml
-            with open(materials_path, 'r', encoding='utf-8') as f:
-                materials_data = yaml.safe_load(f) or {}
-            
-            # Navigate to materials section
-            if 'materials' not in materials_data:
-                raise ValueError("No 'materials' section found in Materials.yaml")
-            
-            materials_section = materials_data['materials']
-            
-            # Find material (case-insensitive)
-            actual_key = None
-            for key in materials_section.keys():
-                if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
-                    actual_key = key
-                    break
-            
-            if not actual_key:
-                raise ValueError(f"Material {material_name} not found in Materials.yaml")
-            
-            # Write caption
-            materials_section[actual_key]['caption'] = {
-                'before': before_text,
-                'after': after_text,
-                'generated': timestamp,
-                'word_count_before': len(before_text.split()),
-                'word_count_after': len(after_text.split()),
-                'total_words': len(before_text.split()) + len(after_text.split())
-            }
-            
-            # Atomic write using temp file
-            temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
-            try:
-                os.close(temp_fd)  # Close file descriptor before writing
-                with open(temp_path, 'w', encoding='utf-8') as f:
-                    yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                
-                # Atomic rename
-                Path(temp_path).replace(materials_path)
-                logger.info(f"✅ Caption written to Materials.yaml → materials.{actual_key}.caption")
-                return True
-                
-            except Exception as e:
-                # Cleanup temp file on error
-                if Path(temp_path).exists():
-                    Path(temp_path).unlink()
-                raise e
-            
-        except Exception as e:
-            logger.error(f"Failed to write caption to Materials.yaml: {e}")
-            raise
-    
     def generate(
         self,
         material_name: str,
         material_data: Dict,
         api_client=None,
+        author: dict = None,
         **kwargs
     ):
-        """Generate AI-powered caption content - FAIL FAST ARCHITECTURE"""
+        """
+        Generate caption content using fixed prompt template.
         
-        # Input validation
+        Args:
+            material_name: Name of the material
+            material_data: Material properties dictionary (for future use)
+            api_client: API client for generation (required)
+            author: Author dictionary with 'country' key for voice enhancement (optional)
+            **kwargs: Additional parameters (accepted for compatibility)
+            
+        Returns:
+            ComponentResult with generated caption content
+        """
         if not api_client:
-            raise ValueError("API client required for caption generation")
+            return self._create_result("", success=False, error_message="API client required")
         
-        if not material_data or not isinstance(material_data, dict):
-            raise ValueError(f"Valid material_data dict required for {material_name}")
-        
-        # Generate random target word counts
-        target_words_before = random.randint(MIN_WORDS_BEFORE, MAX_WORDS_BEFORE)
-        target_words_after = random.randint(MIN_WORDS_AFTER, MAX_WORDS_AFTER)
+        # Generate random target word count
+        # Compensate for voice enhancement if author provided (reduce by ~10 words)
+        base_range = CAPTION_WORD_COUNT_RANGE
+        if author and 'country' in author:
+            # Reduce range to compensate for voice enhancement word additions
+            adjusted_range = (base_range[0], max(base_range[0], base_range[1] - 10))
+            target_words = random.randint(adjusted_range[0], adjusted_range[1])
+        else:
+            target_words = random.randint(base_range[0], base_range[1])
         
         timestamp = datetime.datetime.now().isoformat() + "Z"
         
         logger.info(f"📸 Generating caption for {material_name}")
-        logger.info(f"   Target: before={target_words_before}w, after={target_words_after}w")
+        logger.info(f"   Target: {target_words} words per section")
         
         try:
-            # Build prompt
-            prompt = self._build_caption_prompt(
-                material_name=material_name,
-                material_data=material_data,
-                target_words_before=target_words_before,
-                target_words_after=target_words_after
-            )
+            # Build prompt with technical intensity
+            prompt = self.build_caption_prompt(material_name, target_words, CAPTION_TECHNICAL_INTENSITY)
             
             # Cache-busting
             random_seed = random.randint(10000, 99999)
@@ -310,22 +168,49 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
             )
             
             if not response.success:
-                raise ValueError(f"API generation failed: {response.error}")
+                return self._create_result("", success=False, error_message=f"API generation failed: {response.error}")
             
-            # Extract and validate caption sections
-            sections = self._extract_caption_sections(response.content, material_name)
+            # Extract before/after sections
+            sections = self._extract_sections(response.content, material_name)
             
-            logger.info(f"✅ Generated caption sections:")
-            logger.info(f"   Before: '{sections['before'][:80]}...' ({len(sections['before'].split())}w)")
-            logger.info(f"   After: '{sections['after'][:80]}...' ({len(sections['after'].split())}w)")
+            # Apply voice enhancement if author provided (using BATCH to prevent marker repetition)
+            if author and 'country' in author:
+                try:
+                    voice_processor = VoicePostProcessor(api_client)
+                    
+                    # Create caption items for batch processing
+                    caption_items = [
+                        {'key': 'before', 'text': sections['before']},
+                        {'key': 'after', 'text': sections['after']}
+                    ]
+                    
+                    logger.info(f"🎭 Batch enhancing captions with {author.get('country', 'Unknown')} voice (intensity={CAPTION_VOICE_INTENSITY})...")
+                    
+                    # Use BATCH enhancement to prevent marker repetition
+                    enhanced_items = voice_processor.enhance_batch(
+                        faq_items=caption_items,
+                        author=author,
+                        marker_distribution='varied',
+                        preserve_length=True,
+                        length_tolerance=10,
+                        voice_intensity=CAPTION_VOICE_INTENSITY
+                    )
+                    
+                    # Extract enhanced sections
+                    for item in enhanced_items:
+                        sections[item['key']] = item['text']
+                        
+                except Exception as e:
+                    logger.warning(f"Voice enhancement failed: {e}")
+                    # Continue with original content
+                    pass
             
-            # Write to Materials.yaml (atomic)
-            self._write_caption_to_materials(
-                material_name=material_name,
-                before_text=sections['before'],
-                after_text=sections['after'],
-                timestamp=timestamp
-            )
+            logger.info("✅ Generated captions:")
+            logger.info(f"   Before: {len(sections['before'].split())}w")
+            logger.info(f"   After: {len(sections['after'].split())}w")
+            
+            # Write to Materials.yaml
+            self._write_to_materials(material_name, sections, timestamp)
             
             return self._create_result(
                 f"Caption generated for {material_name}",
@@ -334,40 +219,88 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
             
         except Exception as e:
             logger.error(f"Caption generation failed for {material_name}: {e}")
-            raise
+            return self._create_result("", success=False, error_message=str(e))
 
+    def _extract_sections(self, ai_response: str, material_name: str) -> Dict[str, str]:
+        """Extract before/after sections from AI response."""
+        
+        if not ai_response or not ai_response.strip():
+            raise ValueError(f"Empty AI response for {material_name}")
+        
+        # Try to extract marked sections
+        before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*(.+?)(?=\*\*AFTER_TEXT:|\Z)', ai_response, re.DOTALL)
+        after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*(.+)', ai_response, re.DOTALL)
+        
+        if before_match and after_match:
+            before_text = before_match.group(1).strip()
+            after_text = after_match.group(1).strip()
+        else:
+            # Fallback: split by paragraph
+            paragraphs = [p.strip() for p in ai_response.split('\n\n') if p.strip()]
+            
+            if len(paragraphs) >= 2:
+                before_text = paragraphs[0]
+                after_text = paragraphs[1]
+            else:
+                raise ValueError(
+                    f"Could not extract before/after sections for {material_name}. "
+                    f"Response: {ai_response[:200]}..."
+                )
+        
+        # Clean up markers
+        before_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', before_text).strip()
+        after_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', after_text).strip()
+        
+        return {
+            'before': before_text,
+            'after': after_text
+        }
 
-class CaptionGenerator:
-    """Simplified caption generator interface"""
-    
-    def __init__(self):
-        self.generator = CaptionComponentGenerator()
-    
-    def generate(self, material: str, material_data: Dict = None, api_client=None) -> str:
-        """Generate caption content"""
+    def _write_to_materials(self, material_name: str, sections: Dict[str, str], timestamp: str):
+        """Write caption to Materials.yaml with atomic write."""
         
-        if not api_client:
-            raise ValueError("API client required")
+        materials_path = Path(MATERIALS_DATA_PATH)
         
-        if not material_data:
-            # Load from Materials.yaml
-            gen = CaptionComponentGenerator()
-            all_data = gen._load_materials_data()
-            material_data = all_data.get('materials', {}).get(material, {})
+        # Load Materials.yaml
+        with open(materials_path, 'r', encoding='utf-8') as f:
+            materials_data = yaml.safe_load(f) or {}
         
-        result = self.generator.generate(material, material_data, api_client=api_client)
+        if 'materials' not in materials_data:
+            raise ValueError("No 'materials' section found in Materials.yaml")
         
-        if not result.success:
-            raise ValueError(f"Generation failed: {result.error_message}")
+        materials_section = materials_data['materials']
         
-        return result.content
-
-
-def generate_caption_content(material: str, material_data: Dict = None, api_client=None) -> str:
-    """Generate caption content - FAIL FAST architecture"""
-    
-    if not api_client:
-        raise ValueError("API client required")
-    
-    generator = CaptionGenerator()
-    return generator.generate(material, material_data, api_client)
+        # Find material (case-insensitive)
+        actual_key = None
+        for key in materials_section.keys():
+            if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
+                actual_key = key
+                break
+        
+        if not actual_key:
+            raise ValueError(f"Material {material_name} not found in Materials.yaml")
+        
+        # Write caption
+        materials_section[actual_key]['caption'] = {
+            'before': sections['before'],
+            'after': sections['after'],
+            'generated': timestamp,
+            'word_count_before': len(sections['before'].split()),
+            'word_count_after': len(sections['after'].split()),
+            'total_words': len(sections['before'].split()) + len(sections['after'].split())
+        }
+        
+        # Atomic write using temp file
+        temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
+        try:
+            os.close(temp_fd)
+            with open(temp_path, 'w', encoding='utf-8') as f:
+                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            
+            Path(temp_path).replace(materials_path)
+            logger.info(f"✅ Caption written to Materials.yaml → materials.{actual_key}.caption")
+            
+        except Exception as e:
+            if Path(temp_path).exists():
+                Path(temp_path).unlink()
+            raise e
