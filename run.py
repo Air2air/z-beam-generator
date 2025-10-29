@@ -716,7 +716,7 @@ def handle_subtitle_generation(material_name: str):
     
     try:
         # Import required modules
-        from components.subtitle.generators.generator import SubtitleComponentGenerator
+        from components.subtitle.core.subtitle_generator import SubtitleComponentGenerator
         from data.materials import load_materials, get_material_by_name
         from pathlib import Path
         import yaml
@@ -826,11 +826,11 @@ def handle_faq_generation(material_name: str):
         print(f"✅ Found material: {material_name}")
         print()
         
-        # Initialize DeepSeek API client for FAQ
+        # Initialize Grok API client for FAQ (voice enforcement works better with Grok)
         from api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        deepseek_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
+        print("🔧 Initializing Grok API client...")
+        grok_client = create_api_client('grok')
+        print("✅ Grok client ready")
         print()
         
         # Initialize FAQ generator
@@ -850,7 +850,7 @@ def handle_faq_generation(material_name: str):
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=deepseek_client
+            api_client=grok_client
         )
         
         if not result.success:
@@ -1401,8 +1401,8 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         
         # Initialize researcher - Use AIResearchEnrichmentService (not PropertyValueResearcher)
         from research.services.ai_research_service import AIResearchEnrichmentService
-        researcher = AIResearchEnrichmentService(api_provider="deepseek")
-        print("✅ AI Research Service initialized with DeepSeek API")
+        researcher = AIResearchEnrichmentService(api_provider="grok")
+        print("✅ AI Research Service initialized with Grok API")
         print()
         
         # Research missing properties
@@ -1887,6 +1887,8 @@ def main():
     parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
     parser.add_argument("--caption", help="Generate AI-powered caption for specific material")
     parser.add_argument("--subtitle", help="Generate AI-powered subtitle for specific material")
+    parser.add_argument("--faq", help="Generate AI-powered FAQ for specific material")
+    parser.add_argument("--author", type=int, help="Author ID for content generation")
     # Add minimal args needed for early parsing
     args, _ = parser.parse_known_args()
     
@@ -1899,6 +1901,9 @@ def main():
     
     if args.subtitle:
         return handle_subtitle_generation(args.subtitle)
+    
+    if args.faq:
+        return handle_faq_generation(args.faq)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # 🚨 CONSOLIDATED SERVICE INITIALIZATION
@@ -2086,7 +2091,7 @@ def main():
         from api.client_factory import create_api_client
         
         # Create API client for testing
-        api_client = create_api_client("deepseek")
+        api_client = create_api_client("grok")
         generator = ComponentGeneratorFactory.create_generator("frontmatter", api_client=api_client)
         print(f"✅ Frontmatter generator loaded: {generator.component_type}")
         return True
@@ -2310,8 +2315,8 @@ def main():
             api_client = None
             if requires_api:
                 from api.client_cache import get_cached_api_client
-                # Try to get a working API client
-                for provider in ['deepseek', 'grok', 'winston']:
+                # Try to get a working API client (Grok is default per user request)
+                for provider in ['grok', 'deepseek', 'winston']:
                     try:
                         api_client = get_cached_api_client(provider)
                         if api_client:

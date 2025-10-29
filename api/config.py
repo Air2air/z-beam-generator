@@ -51,9 +51,9 @@ def get_default_config() -> APIConfig:
             "Define API_PROVIDERS dictionary in run.py."
         )
 
-    # Default to DeepSeek if available
-    if "deepseek" in providers:
-        config_data = providers["deepseek"]
+    # Default to Grok if available (per user request)
+    if "grok" in providers:
+        config_data = providers["grok"]
         
         # Validate all required fields are present
         required_fields = ["name", "base_url", "model", "max_tokens", "temperature", 
@@ -79,11 +79,11 @@ def get_default_config() -> APIConfig:
             retry_delay=config_data["retry_delay"],
         )
 
-    # Fail fast if deepseek not configured
+    # Fail fast if grok not configured
     available = list(providers.keys())
     raise RuntimeError(
-        f"CONFIGURATION ERROR: 'deepseek' provider not found in run.py. "
-        f"Available providers: {available}. Configure 'deepseek' in API_PROVIDERS."
+        f"CONFIGURATION ERROR: 'grok' provider not found in run.py. "
+        f"Available providers: {available}. Configure 'grok' in API_PROVIDERS."
     )
 
 
@@ -130,7 +130,7 @@ class ConfigAdapter:
     @staticmethod
     def create_api_config(provider: str) -> APIConfig:
         """Create APIConfig for a specific provider"""
-        if provider == "deepseek":
+        if provider == "grok":
             return get_default_config()
         
         # For other providers, build config from provider data

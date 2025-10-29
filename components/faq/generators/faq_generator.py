@@ -1,447 +1,518 @@
 #!/usr/bin/env python3
-"""
-FAQ Component Generator - Discrete, Simple Material-Specific Q&A Generation
+"""FAQ Component Generator - Research-based SEO-optimized FAQ generation."""
 
-This component is DISCRETE and FOCUSED:
-- Generates material-specific FAQ questions and answers
-- NO author voice functionality (handled by separate post-processor)
-- NO frontmatter dependencies
-- NO voice validation
-- Minimal, clean interface
-"""
-
-import json
-import logging
-import os
-import random
-import tempfile
-import time
 import yaml
+import tempfile
+import os
+import logging
+from typing import Dict, Any, Optional, List
 from pathlib import Path
-from typing import Dict, List
-from generators.component_generators import APIComponentGenerator, ComponentResult
+from datetime import datetime
+from generators.component_generators import APIComponentGenerator
+from voice.post_processor import VoicePostProcessor
+from validation.quality_validator import ContentValidator
+from services.regeneration_service import create_regeneration_service
 
 logger = logging.getLogger(__name__)
 
-
-# ============================================================================
-# CONFIGURATION
-# ============================================================================
-
-# Answer length constraints (words)
-MIN_WORDS_PER_ANSWER = 15
-MAX_WORDS_PER_ANSWER = 50
-
-# Question generation settings
-MIN_QUESTIONS = 5
-MAX_QUESTIONS = 10
-QUESTION_RESEARCH_MAX_TOKENS = 2000
-QUESTION_RESEARCH_TEMPERATURE = 0.7
-
-# Answer generation settings
-ANSWER_GENERATION_TEMPERATURE = 0.6
-TOKEN_ESTIMATION_PER_WORD = 1.3  # Conservative estimate
-TOKEN_SAFETY_MARGIN = 1.5  # Prevent truncation
-
-# API call delays
-API_CALL_DELAY_SECONDS = 0.5
-
-# Data file paths
+# Materials.yaml path
 MATERIALS_DATA_PATH = "data/Materials.yaml"
-CATEGORIES_DATA_PATH = "data/Categories.yaml"
+
+
+# ============================================================================
+# FAQ CONFIGURATION
+# ============================================================================
+FAQ_COUNT_RANGE = "5-10"  # Number of FAQ items to generate
+FAQ_WORD_COUNT_RANGE = "20-50"  # Words per answer (increased from 13-38 for more detail)
+FAQ_VOICE_INTENSITY = 2  # Light voice - subtle authenticity
+FAQ_TECHNICAL_INTENSITY = 3  # Moderate - balanced technical content with readability
 
 # ============================================================================
 
 
 class FAQComponentGenerator(APIComponentGenerator):
     """
-    Generate material-specific FAQ with 7-12 questions.
+    Generate material-specific FAQ using research-based approach.
     
-    Responsibilities:
-    - Generate relevant questions based on material properties
-    - Generate technical answers (20-60 words each)
-    - Return FAQ data structure
+    This generator follows a 3-step process:
+    1. Research the material's composition, applications, and value
+    2. Identify popular positive and negative aspects
+    3. Craft targeted questions addressing user pain points
     
-    NOT Responsible For:
-    - Author voice (use VoicePostProcessor separately)
-    - Frontmatter management
-    - Voice validation
+    Includes inline validation with auto-regeneration on quality failures.
     """
-    
-    def __init__(self):
-        super().__init__("faq")
-        self.min_words_per_answer = MIN_WORDS_PER_ANSWER
-        self.max_words_per_answer = MAX_WORDS_PER_ANSWER
-    
-    def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml"""
-        materials_path = Path(MATERIALS_DATA_PATH)
-        if not materials_path.exists():
-            raise FileNotFoundError(f"Materials.yaml not found at {materials_path}")
-        
-        with open(materials_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def _load_categories_data(self) -> Dict:
-        """Load Categories.yaml for property ranges"""
-        categories_path = Path(CATEGORIES_DATA_PATH)
-        if not categories_path.exists():
-            raise FileNotFoundError(f"Categories.yaml not found at {categories_path}")
-        
-        with open(categories_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
-    
-    def _generate_material_questions(
-        self,
-        material_name: str,
-        material_data: Dict,
-        categories_data: Dict,
-        api_client
-    ) -> List[Dict]:
+
+    def __init__(self, strict_validation: bool = True, max_attempts: int = 3):
         """
-        Generate 7-12 material-specific FAQ questions using AI research.
+        Initialize FAQ generator with validation and regeneration.
+        
+        Args:
+            strict_validation: If True, uses fail-fast validation (blocks bad content)
+            max_attempts: Maximum regeneration attempts on quality failures (default: 3)
+        """
+        super().__init__("faq")
+        self.validator = ContentValidator(strict_mode=strict_validation)
+        self.strict_validation = strict_validation
+        self.regeneration_service = create_regeneration_service(
+            max_attempts=max_attempts,
+            retry_on_quality_failure=True,
+            log_attempts=True
+        )
+
+    def _get_technical_guidance(self, intensity: int) -> str:
+        """
+        Get technical language guidance based on intensity level.
+        
+        Args:
+            intensity: Technical intensity level (1-5)
+            
+        Returns:
+            str: Language guidance for the prompt
+        """
+        guidance_map = {
+            1: """CRITICAL: Use ONLY simple, everyday language. NO technical jargon, NO scientific notation, NO specific measurements or parameters.
+- Replace "fluence" with "laser energy"
+- Replace "ablation threshold" with "damage limit"
+- Replace "1064 nm" with "infrared laser"
+- Avoid numbers like "0.45 J/cm²" or "2.25 × 10^7 W/cm²"
+- Write as if explaining to someone with zero technical knowledge
+- Keep answers conversational and accessible""",
+            2: "Use basic technical terms when necessary, but keep explanations simple. Include only essential measurements. Write for readers with minimal technical knowledge.",
+            3: "Balance technical accuracy with readability. Use standard industry terminology and relevant measurements. Write for technically-aware professionals.",
+            4: "Use precise technical terminology and detailed measurements. Include specific parameters and standards. Write for experienced technical professionals.",
+            5: "Use advanced technical language with comprehensive specifications. Include all relevant parameters, standards, and scientific details. Write for expert-level audience."
+        }
+        return guidance_map.get(intensity, guidance_map[3])
+
+    def build_research_prompt(self, material_name: str, technical_intensity: int = 3) -> str:
+        """
+        Build research prompt for Step 1: Material research.
         
         Args:
             material_name: Name of the material
-            material_data: Material properties from Materials.yaml
-            categories_data: Category ranges (currently unused, reserved for future)
-            api_client: API client for generation
+            technical_intensity: Technical complexity level 1-5
             
         Returns:
-            List of question dictionaries with 'question', 'category', 'focus'
+            str: Research prompt
         """
-        # Validate inputs
-        if not material_data:
-            raise ValueError(f"Empty material_data for {material_name}")
+        technical_guidance = self._get_technical_guidance(technical_intensity)
         
-        # Extract material context
-        category = material_data.get('category', 'material')
-        material_props = material_data.get('materialProperties', {})
-        applications = material_data.get('applications', [])
-        machine_settings = material_data.get('machineSettings', {})
-        
-        # Build comprehensive research prompt
-        research_prompt = f"""You are a laser cleaning expert researching frequently asked questions about {material_name}.
+        return f"""You are an expert in laser cleaning technologies and material restoration, specializing in creating engaging, SEO-optimized FAQ sections for niche websites like Z-Beam.com.
 
-MATERIAL CONTEXT:
-• Category: {category}
-• Key Properties: {', '.join([f"{k}: {v}" for k, v in list(material_props.items())[:5]])}
-• Applications: {', '.join(applications[:3]) if applications else 'General industrial use'}
-• Machine Settings: Wavelength {machine_settings.get('wavelength', 'N/A')} nm, Power {machine_settings.get('power', 'N/A')} W
+STEP 1: Research the Subject Material and Its Uses
 
-TASK: Generate {MIN_QUESTIONS}-{MAX_QUESTIONS} specific, practical questions that professionals ask about laser cleaning {material_name}.
+Conduct detailed research on {material_name} and provide:
 
-REQUIREMENTS:
-1. Questions must be SPECIFIC to {material_name} - not generic
-2. Cover diverse categories: safety, effectiveness, equipment, applications, challenges
-3. Address real-world concerns and technical details
-4. Be practical and actionable
-5. Focus on laser cleaning context specifically
+1. **Composition**: What is {material_name} made of? (e.g., minerals, alloys, organic compounds)
+2. **Common Applications**: Where is {material_name} commonly used? (e.g., construction, heritage sites, manufacturing, art restoration)
+3. **Value Proposition**: Why is {material_name} valued in those contexts? (e.g., durability, aesthetics, historical significance)
 
-Format as JSON:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Provide your research in 2-3 concise bullet points for each category.
+
+OUTPUT FORMAT (JSON):
 {{
-  "questions": [
-    {{
-      "question": "The actual question people ask",
-      "category": "topic_category",
-      "focus": "Key points to address in the answer"
-    }}
-  ]
-}}
+  "composition": ["bullet point 1", "bullet point 2"],
+  "applications": ["application 1", "application 2", "application 3"],
+  "value": ["value proposition 1", "value proposition 2"]
+}}"""
 
-Make questions specific to {material_name}, not generic questions."""
+    def build_aspects_prompt(self, material_name: str, research_summary: dict, technical_intensity: int = 3) -> str:
+        """
+        Build prompt for Step 2: Identify popular aspects (positive/negative).
+        
+        Args:
+            material_name: Name of the material
+            research_summary: Research results from Step 1
+            technical_intensity: Technical complexity level 1-5
             
-        research_result = api_client.generate_simple(
-            research_prompt,
-            max_tokens=QUESTION_RESEARCH_MAX_TOKENS,
-            temperature=QUESTION_RESEARCH_TEMPERATURE
-        )
+        Returns:
+            str: Aspects identification prompt
+        """
+        technical_guidance = self._get_technical_guidance(technical_intensity)
         
-        if not research_result.success:
-            raise ValueError(f"Failed to research questions: {research_result.error}")
-        
-        # Parse JSON response - simplified, fail-fast approach
-        try:
-            content = research_result.content.strip()
-            
-            # Try to extract JSON from markdown code blocks first
-            if '```' in content:
-                import re
-                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', content, re.DOTALL)
-                if json_match:
-                    content = json_match.group(1)
-            
-            # Parse JSON
-            research_data = json.loads(content)
-                
-        except json.JSONDecodeError as e:
-            logger.error(f"Invalid JSON from AI: {e}")
-            logger.debug(f"Raw response: {research_result.content[:500]}...")
-            raise ValueError(f"AI returned invalid JSON for question research: {e}")
-        
-        questions = research_data.get('questions', [])
-        
-        if not questions:
-            raise ValueError("Research returned no questions")
-        
-        logger.info(f"✅ AI generated {len(questions)} questions based on material complexity")
-        return questions
+        return f"""You are an expert in laser cleaning technologies and material restoration.
 
-    
-    def _build_faq_answer_prompt(
-        self,
-        material_name: str,
-        question: str,
-        focus_points: str,
-        material_data: Dict,
-        categories_data: Dict,
-        target_words: int = 45
+Based on this research about {material_name}:
+{yaml.dump(research_summary, default_flow_style=False)}
+
+STEP 2: Identify Popular Aspects (Positive and Negative)
+
+Research and identify:
+
+1. **Positive Traits** (4-6 items): What makes {material_name} popular and desirable?
+   - Examples: durability, aesthetics, workability, resistance to elements, etc.
+
+2. **Negative Aspects/Challenges** (3-4 items): What are common problems or limitations?
+   - Examples: porosity leading to staining, environmental degradation, maintenance difficulty, cost, etc.
+
+Focus on aspects that influence maintenance needs and cleaning challenges.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OUTPUT FORMAT (JSON):
+{{
+  "positive": ["trait 1", "trait 2", "trait 3", "trait 4"],
+  "negative": ["challenge 1", "challenge 2", "challenge 3"]
+}}"""
+
+    def build_questions_prompt(
+        self, 
+        material_name: str, 
+        research_summary: dict,
+        aspects: dict,
+        word_count_range: str,
+        technical_intensity: int = 3
     ) -> str:
         """
-        Build simple, direct prompt for FAQ answer generation.
-        NO voice functionality - just technical accuracy.
+        Build prompt for Step 3: Craft FAQ questions and answers.
         
         Args:
             material_name: Name of the material
-            question: The FAQ question
-            focus_points: Key points to address
-            material_data: Full material data from Materials.yaml
-            categories_data: Category ranges from Categories.yaml
-            target_words: Target word count (20-60)
+            research_summary: Research results from Step 1
+            aspects: Positive/negative aspects from Step 2
+            word_count_range: Word count range for answers
+            technical_intensity: Technical complexity level 1-5
             
         Returns:
-            Complete prompt string for answer generation
+            str: FAQ generation prompt
         """
-        # Extract material properties
-        material_props = material_data.get('materialProperties', {})
-        category = material_data.get('category', 'material')
-        applications = material_data.get('applications', [])
-        machine_settings = material_data.get('machineSettings', {})
+        technical_guidance = self._get_technical_guidance(technical_intensity)
         
-        # Build material context
-        material_context = f"""
-MATERIAL: {material_name}
-CATEGORY: {category}
+        return f"""You are an expert in laser cleaning technologies and material restoration, specializing in creating engaging, SEO-optimized FAQ sections for niche websites like Z-Beam.com.
 
-KEY PROPERTIES:
-{chr(10).join([f"• {k}: {v}" for k, v in material_props.items()])}
+MATERIAL RESEARCH FOR {material_name}:
+{yaml.dump(research_summary, default_flow_style=False)}
 
-MACHINE SETTINGS:
-• Wavelength: {machine_settings.get('wavelength', 'N/A')} nm
-• Power: {machine_settings.get('power', 'N/A')} W
-• Fluence: {machine_settings.get('fluence', 'N/A')} J/cm²
-• Pulse Duration: {machine_settings.get('pulseDuration', 'N/A')} ns
+POPULAR ASPECTS:
+{yaml.dump(aspects, default_flow_style=False)}
 
-APPLICATIONS:
-{chr(10).join([f"• {app}" for app in applications])}
-"""
-        
-        # Build simple, direct prompt
-        prompt = f"""You are a laser cleaning expert answering a technical question about {material_name}.
+STEP 3: Craft {FAQ_COUNT_RANGE} Targeted FAQ Questions and Answers
 
-{material_context}
+Based on the research above, create {FAQ_COUNT_RANGE} user-focused questions that address:
+- Everyday handling and care challenges
+- Real user pain points (e.g., "How do I remove rust from {material_name} without damaging its patina?")
+- Best practices for maintaining {material_name}
+- Advantages of laser cleaning over traditional methods
+- Common concerns about laser cleaning this specific material
 
-QUESTION: {question}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 LANGUAGE COMPLEXITY REQUIREMENT (HIGHEST PRIORITY):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{technical_guidance}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-FOCUS AREAS: {focus_points}
+QUESTION REQUIREMENTS:
+- Phrase questions naturally as users would ask them
+- Tie into the positive/negative aspects identified above
+- Include {material_name} in each question
+- Make questions conversational and SEO-friendly
 
-REQUIREMENTS:
-1. Write EXACTLY {target_words} words (±5 words tolerance)
-2. Be technically accurate - use actual property values from the material data
-3. Be specific to {material_name} - not generic answers
-4. Include concrete numbers and parameters
-5. **ANSWER IN ENGLISH ONLY**
+ANSWER REQUIREMENTS:
+- Word count: {word_count_range} words per answer
+- Address the question directly and helpfully
+- Highlight laser cleaning advantages where relevant
+- Be concise and actionable
+- Apply the language complexity guidance above
 
-ANSWER ({target_words} words):"""
-        
-        return prompt
-    
-    def _write_faq_to_materials(
-        self,
-        material_name: str,
-        faq_items: List[Dict]
-    ) -> bool:
-        """Write FAQ to Materials.yaml with atomic write"""
-        
-        materials_path = Path(MATERIALS_DATA_PATH)
-        
-        try:
-            # Load Materials.yaml
-            with open(materials_path, 'r', encoding='utf-8') as f:
-                materials_data = yaml.safe_load(f) or {}
-            
-            # Navigate to materials section
-            if 'materials' not in materials_data:
-                raise ValueError("No 'materials' section found in Materials.yaml")
-            
-            materials_section = materials_data['materials']
-            
-            # Find material (case-insensitive)
-            actual_key = None
-            for key in materials_section.keys():
-                if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
-                    actual_key = key
-                    break
-            
-            if not actual_key:
-                raise ValueError(f"Material {material_name} not found in Materials.yaml")
-            
-            # Write FAQ
-            materials_section[actual_key]['faq'] = faq_items
-            
-            # Atomic write using tempfile (matches Subtitle/Caption pattern)
-            temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
-            try:
-                os.close(temp_fd)  # Close file descriptor before writing
-                with open(temp_path, 'w', encoding='utf-8') as f:
-                    yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-                
-                # Atomic rename
-                Path(temp_path).replace(materials_path)
-                logger.info(f"✅ FAQ written to Materials.yaml → materials.{actual_key}.faq")
-                return True
-                
-            except Exception as e:
-                # Cleanup temp file on error
-                if Path(temp_path).exists():
-                    Path(temp_path).unlink()
-                raise e
-            
-        except Exception as e:
-            logger.error(f"Failed to write FAQ to Materials.yaml: {e}")
-            raise
-    
+🚫 ABSOLUTE RULE - NO CROSS-CONTAMINATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DO NOT repeat words or phrases from the question in the answer.
+- Questions and answers MUST use different vocabulary
+- Rephrase concepts instead of echoing question words
+- Example BAD: Q: "How do I remove rust?" A: "To remove rust, use..."
+- Example GOOD: Q: "How do I remove rust?" A: "Laser cleaning eliminates oxidation by..."
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OUTPUT FORMAT:
+Return ONLY a YAML array with this exact structure:
+
+- question: [Your first question about {material_name}]
+  answer: [Your concise answer in {word_count_range} words]
+- question: [Your second question about {material_name}]
+  answer: [Your concise answer in {word_count_range} words]
+
+CRITICAL REQUIREMENTS:
+- Output ONLY the YAML array (starting with "- question:")
+- NO markdown code fences, NO extra text, NO introductions
+- Each item has exactly two fields: "question:" and "answer:"
+- Questions MUST include the material name ({material_name})
+- Answers must be {word_count_range} words
+- Use proper YAML formatting with 2-space indentation
+
+Generate the FAQ now:"""
+
     def generate(
         self,
         material_name: str,
-        material_data: Dict,
+        material_data: dict,
         api_client=None,
-        **kwargs  # Accept but ignore extra parameters
-    ) -> ComponentResult:
+        author: dict = None,
+        max_attempts: int = 3,
+        **kwargs
+    ):
         """
-        Generate complete FAQ with 7-12 questions for the material.
+        Generate FAQ content with auto-retry on quality failures.
         
         Args:
             material_name: Name of the material
             material_data: Material properties dictionary
             api_client: API client for generation (required)
-            **kwargs: Extra parameters (ignored - for compatibility)
+            author: Author dictionary with 'country' key for voice enhancement (optional)
+            max_attempts: Maximum regeneration attempts on quality failures (default: 3)
+            **kwargs: Additional parameters (accepted for compatibility)
             
         Returns:
-            ComponentResult with generated FAQ content in YAML format
+            ComponentResult with generated FAQ content
+        """
+        if not api_client:
+            return self._create_result("", success=False, error_message="API client required for FAQ generation")
+        
+        # Auto-regeneration loop - simple and elegant
+        for attempt in range(1, max_attempts + 1):
+            if attempt > 1:
+                logger.warning(f"🔄 Retry attempt {attempt}/{max_attempts} due to quality failure...")
+                logger.warning(f"   📈 Increasing creativity: temperature={0.6 + (attempt * 0.1):.1f}, tokens +{(attempt-1)*20}%")
+            
+            result = self._generate_once(material_name, material_data, api_client, author, attempt_number=attempt)
+            
+            if result.success:
+                return result
+            
+            # Check if it's a quality failure (worth retrying) or hard error (give up)
+            if "Quality validation failed" not in result.error_message:
+                return result  # Hard error - don't retry
+        
+        # All attempts exhausted
+        logger.error(f"❌ Failed to generate quality FAQ after {max_attempts} attempts")
+        return self._create_result("", success=False, error_message=f"Quality validation failed after {max_attempts} attempts")
+    
+    def _generate_once(
+        self,
+        material_name: str,
+        material_data: dict,
+        api_client,
+        author: dict = None,
+        attempt_number: int = 1
+    ):
+        """
+        Single FAQ generation attempt (called by regeneration service).
+        
+        Returns:
+            ComponentResult with generated FAQ content
         """
         try:
-            # Input validation
-            if not api_client:
-                raise ValueError("API client required for FAQ generation")
+            # Progressive temperature/tokens adjustment on retries
+            base_temp = 0.7
+            temp_boost = (attempt_number - 1) * 0.1  # +0.1 per retry
+            temperature = min(0.9, base_temp + temp_boost)  # Cap at 0.9
             
-            if not material_data or not isinstance(material_data, dict):
-                raise ValueError(f"Valid material_data dict required for {material_name}")
+            token_multiplier = 1.0 + ((attempt_number - 1) * 0.2)  # +20% per retry
             
-            logger.info(f"🎯 Generating FAQ for {material_name}...")
-            
-            # Load data files
-            materials_yaml = self._load_materials_data()
-            categories_yaml = self._load_categories_data()
-            
-            # Get full material data from Materials.yaml
-            if 'materials' in materials_yaml and material_name in materials_yaml['materials']:
-                full_material_data = materials_yaml['materials'][material_name]
-            else:
-                full_material_data = material_data
-            
-            # Generate questions - AI determines optimal count
-            logger.info(f"📊 Generating AI-researched questions for {material_name}")
-            
-            questions = self._generate_material_questions(
-                material_name,
-                full_material_data,
-                categories_yaml,
-                api_client
+            # STEP 1: Research the material
+            logger.info(f"📊 Step 1/3: Researching {material_name} composition and applications...")
+            research_prompt = self.build_research_prompt(material_name, FAQ_TECHNICAL_INTENSITY)
+            research_response = api_client.generate_simple(
+                research_prompt,
+                max_tokens=int(1000 * token_multiplier),
+                temperature=temperature
             )
             
-            # Generate answers for each question
-            faq_items = []
-            total_words = 0
-            total_questions = len(questions)
+            if not research_response.success:
+                return self._create_result("", success=False, error_message=f"Research failed: {research_response.error}")
             
-            for idx, q_dict in enumerate(questions, 1):
-                question = q_dict.get('question') or q_dict.get('template')
-                focus = q_dict['focus']
-                
-                # Completely random word count between min and max
-                target_words = random.randint(MIN_WORDS_PER_ANSWER, MAX_WORDS_PER_ANSWER)
-                
-                logger.info(f"  Question {idx}/{total_questions}: {question[:60]}... (target: {target_words}w)")
-                
-                # Build prompt - simple and direct
-                prompt = self._build_faq_answer_prompt(
-                    material_name,
-                    question,
-                    focus,
-                    full_material_data,
-                    categories_yaml,
-                    target_words
-                )
-                
-                # Calculate max_tokens
-                max_tokens = int(target_words * TOKEN_ESTIMATION_PER_WORD * TOKEN_SAFETY_MARGIN)
-                
+            # Parse research results
+            import json
+            research_content = research_response.content.strip()
+            if '```' in research_content:
+                import re
+                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', research_content, re.DOTALL)
+                if json_match:
+                    research_content = json_match.group(1)
+            
+            research_summary = json.loads(research_content)
+            logger.info(f"✅ Research complete: {len(research_summary.get('applications', []))} applications identified")
+            
+            # STEP 2: Identify popular aspects
+            logger.info("🔍 Step 2/3: Identifying positive and negative aspects...")
+            aspects_prompt = self.build_aspects_prompt(material_name, research_summary, FAQ_TECHNICAL_INTENSITY)
+            aspects_response = api_client.generate_simple(
+                aspects_prompt,
+                max_tokens=int(800 * token_multiplier),
+                temperature=temperature
+            )
+            
+            if not aspects_response.success:
+                return self._create_result("", success=False, error_message=f"Aspects identification failed: {aspects_response.error}")
+            
+            # Parse aspects
+            aspects_content = aspects_response.content.strip()
+            if '```' in aspects_content:
+                import re
+                json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', aspects_content, re.DOTALL)
+                if json_match:
+                    aspects_content = json_match.group(1)
+            
+            aspects = json.loads(aspects_content)
+            logger.info(f"✅ Aspects identified: {len(aspects.get('positive', []))} positive, {len(aspects.get('negative', []))} negative")
+            
+            # STEP 3: Generate FAQ questions and answers
+            logger.info("📝 Step 3/3: Crafting FAQ questions and answers...")
+            
+            # Compensate for voice enhancement word additions if author provided
+            word_count_range = FAQ_WORD_COUNT_RANGE
+            if author and 'country' in author:
+                parts = FAQ_WORD_COUNT_RANGE.split('-')
+                if len(parts) == 2:
+                    min_words = int(parts[0])
+                    max_words = int(parts[1])
+                    adjusted_max = max(min_words, max_words - 10)
+                    word_count_range = f"{min_words}-{adjusted_max}"
+            
+            questions_prompt = self.build_questions_prompt(
+                material_name,
+                research_summary,
+                aspects,
+                word_count_range,
+                FAQ_TECHNICAL_INTENSITY
+            )
+            
+            faq_response = api_client.generate_simple(
+                questions_prompt,
+                max_tokens=int(4000 * token_multiplier),
+                temperature=temperature
+            )
+            
+            if not faq_response.success:
+                return self._create_result("", success=False, error_message=f"FAQ generation failed: {faq_response.error}")
+            
+            faq_content = faq_response.content.strip()
+            
+            # Apply voice enhancement if author provided
+            if author and 'country' in author:
                 try:
-                    # Generate answer
-                    response = api_client.generate_simple(
-                        prompt,
-                        system_prompt=None,
-                        max_tokens=max_tokens,
-                        temperature=ANSWER_GENERATION_TEMPERATURE
+                    faq_items = yaml.safe_load(faq_content)
+                    voice_processor = VoicePostProcessor(api_client)
+                    
+                    # Use BATCH enhancement to prevent marker repetition
+                    logger.info(f"🎭 Batch enhancing with {author.get('country', 'Unknown')} voice (intensity={FAQ_VOICE_INTENSITY})...")
+                    
+                    faq_items = voice_processor.enhance_batch(
+                        faq_items=faq_items,
+                        author=author,
+                        marker_distribution='varied',
+                        preserve_length=True,
+                        length_tolerance=5,
+                        voice_intensity=FAQ_VOICE_INTENSITY
                     )
                     
-                    if not response.success:
-                        raise ValueError(f"API generation failed: {response.error}")
-                    
-                    answer = response.content.strip()
-                    word_count = len(answer.split())
-                    total_words += word_count
-                    
-                    # Validate word count
-                    if word_count < self.min_words_per_answer:
-                        logger.warning(f"    ⚠️  Answer too short: {word_count} words (min {self.min_words_per_answer})")
-                    elif word_count > self.max_words_per_answer:
-                        logger.warning(f"    ⚠️  Answer too long: {word_count} words (max {self.max_words_per_answer})")
-                    else:
-                        logger.info(f"    ✅ Answer generated: {word_count} words")
-                    
-                    faq_items.append({
-                        'question': question,
-                        'answer': answer
-                    })
-                    
-                    # Brief delay between API calls
-                    time.sleep(API_CALL_DELAY_SECONDS)
-                    
+                    faq_content = yaml.dump(faq_items, default_flow_style=False, allow_unicode=True, sort_keys=False)
                 except Exception as e:
-                    logger.error(f"    ❌ Failed to generate answer: {e}")
-                    raise
+                    logger.warning(f"Voice enhancement failed: {e}")
             
-            # Build simple FAQ structure - just questions and answers
-            faq_structure = faq_items
+            # VALIDATE before writing to Materials.yaml
+            try:
+                faq_items = yaml.safe_load(faq_content)
+                
+                # Run quality validation
+                if self.strict_validation:
+                    # Extract word count range
+                    parts = FAQ_WORD_COUNT_RANGE.split('-')
+                    min_words, max_words = int(parts[0]), int(parts[1])
+                    
+                    validation_report = self.validator.validate_faq(
+                        faq_items=faq_items,
+                        word_count_range=(min_words, max_words)
+                    )
+                    
+                    if not validation_report.get('valid', True):
+                        # Validation failed - return error to trigger retry
+                        quality_score = validation_report.get('quality_score', 0)
+                        errors = validation_report.get('errors', [])
+                        
+                        logger.warning(f"⚠️  Quality validation failed: {quality_score}/100")
+                        for error in errors[:3]:  # Show first 3
+                            logger.warning(f"   • {error}")
+                        
+                        error_msg = f"Quality validation failed (score: {quality_score}/100). "
+                        if errors:
+                            error_msg += f"Errors: {', '.join(errors[:2])}"
+                        
+                        return self._create_result("", success=False, error_message=error_msg)
+                    else:
+                        logger.info(f"✅ Quality validation passed: {validation_report.get('quality_score')}/100")
+                
+                # Write to Materials.yaml after validation passes
+                timestamp = datetime.now().isoformat()
+                self._write_to_materials(material_name, faq_items, timestamp)
+                logger.info(f"✅ FAQ generated: {len(faq_items)} questions")
+            except Exception as e:
+                logger.warning(f"Failed to validate/write FAQ: {e}")
+                # Still return success if it's just a write error
+                if "validation failed" in str(e).lower():
+                    return self._create_result("", success=False, error_message=str(e))
             
-            # Convert to YAML format
-            faq_yaml = yaml.dump({'faq': faq_structure}, 
-                                default_flow_style=False, 
-                                allow_unicode=True,
-                                sort_keys=False)
-            
-            logger.info(f"✅ FAQ generation complete: {len(faq_items)} questions, {total_words} total words")
-            
-            # Write to Materials.yaml using dedicated method (atomic write)
-            self._write_faq_to_materials(
-                material_name=material_name,
-                faq_items=faq_structure
-            )
-            
-            return self._create_result(faq_yaml, success=True)
+            return self._create_result(faq_content, success=True)
             
         except Exception as e:
             logger.error(f"FAQ generation failed: {e}")
-            return self._create_result("", success=False, error_message=str(e))
+            return self._create_result("", success=False, error_message=f"FAQ generation failed: {str(e)}")
+    
+    def _write_to_materials(self, material_name: str, faq_items: list, timestamp: str):
+        """Write FAQ to Materials.yaml with atomic write."""
+        
+        materials_path = Path(MATERIALS_DATA_PATH)
+        
+        # Load Materials.yaml
+        with open(materials_path, 'r', encoding='utf-8') as f:
+            materials_data = yaml.safe_load(f) or {}
+        
+        if 'materials' not in materials_data:
+            raise ValueError("No 'materials' section found in Materials.yaml")
+        
+        materials_section = materials_data['materials']
+        
+        # Find material (case-insensitive)
+        actual_key = None
+        for key in materials_section.keys():
+            if key.lower().replace('_', ' ') == material_name.lower().replace('_', ' '):
+                actual_key = key
+                break
+        
+        if not actual_key:
+            raise ValueError(f"Material {material_name} not found in Materials.yaml")
+        
+        # Calculate total words across all answers
+        total_words = sum(len(item.get('answer', '').split()) for item in faq_items)
+        
+        # Write FAQ with metadata
+        materials_section[actual_key]['faq'] = {
+            'questions': faq_items,
+            'generated': timestamp,
+            'question_count': len(faq_items),
+            'total_words': total_words
+        }
+        
+        # Atomic write using temp file
+        temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
+        try:
+            os.close(temp_fd)
+            with open(temp_path, 'w', encoding='utf-8') as f:
+                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            
+            Path(temp_path).replace(materials_path)
+            logger.info(f"✅ FAQ written to Materials.yaml → materials.{actual_key}.faq ({len(faq_items)} questions, {total_words} words)")
+            
+        except Exception as e:
+            if Path(temp_path).exists():
+                Path(temp_path).unlink()
+            raise e
