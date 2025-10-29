@@ -654,6 +654,11 @@ def handle_caption_generation(material_name: str):
         print("✅ Generator ready")
         print()
         
+        # Extract author for voice enhancement
+        author = material_data.get('author')
+        if author:
+            print(f"👤 Author: {author.get('name', 'Unknown')} ({author.get('country', 'Unknown')})")
+        
         # Generate caption
         print("🤖 Generating AI-powered caption with author voice...")
         print("   • beforeText: Contaminated surface analysis")
@@ -665,7 +670,8 @@ def handle_caption_generation(material_name: str):
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=grok_client
+            api_client=grok_client,
+            author=author
         )
         
         if not result.success:
@@ -747,6 +753,11 @@ def handle_subtitle_generation(material_name: str):
         print("✅ Generator ready")
         print()
         
+        # Extract author for voice enhancement
+        author = material_data.get('author')
+        if author:
+            print(f"👤 Author: {author.get('name', 'Unknown')} ({author.get('country', 'Unknown')})")
+        
         # Generate subtitle
         print("🤖 Generating AI-powered subtitle with author voice...")
         print("   • Target: 8-12 word professional tagline")
@@ -757,7 +768,8 @@ def handle_subtitle_generation(material_name: str):
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=grok_client
+            api_client=grok_client,
+            author=author
         )
         
         if not result.success:
@@ -881,7 +893,6 @@ def handle_faq_generation(material_name: str):
             print("📝 Preview (first 3 questions):")
             for i, qa in enumerate(questions[:3], 1):
                 print(f"   {i}. {qa['question']}")
-                print(f"      Category: {qa.get('category', 'N/A')}")
                 print(f"      Answer: {qa['answer'][:80]}...")
                 print()
         
