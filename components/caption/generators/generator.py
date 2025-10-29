@@ -178,10 +178,10 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
                 try:
                     voice_processor = VoicePostProcessor(api_client)
                     
-                    # Create caption items for batch processing
+                    # Create caption items for batch processing (using FAQ structure)
                     caption_items = [
-                        {'key': 'before', 'text': sections['before']},
-                        {'key': 'after', 'text': sections['after']}
+                        {'question': 'Before laser cleaning:', 'answer': sections['before'], 'section': 'before'},
+                        {'question': 'After laser cleaning:', 'answer': sections['after'], 'section': 'after'}
                     ]
                     
                     logger.info(f"🎭 Batch enhancing captions with {author.get('country', 'Unknown')} voice (intensity={CAPTION_VOICE_INTENSITY})...")
@@ -196,9 +196,11 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
                         voice_intensity=CAPTION_VOICE_INTENSITY
                     )
                     
-                    # Extract enhanced sections
+                    # Extract enhanced sections (answer field contains the enhanced text)
                     for item in enhanced_items:
-                        sections[item['key']] = item['text']
+                        section_key = item.get('section')
+                        if section_key:
+                            sections[section_key] = item['answer']
                         
                 except Exception as e:
                     logger.warning(f"Voice enhancement failed: {e}")

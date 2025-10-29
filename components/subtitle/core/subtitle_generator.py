@@ -219,8 +219,8 @@ Generate the subtitle now (output ONLY the subtitle text, no quotes or formattin
                 try:
                     voice_processor = VoicePostProcessor(api_client)
                     
-                    # Create subtitle item for batch processing (maintains consistency with FAQ/Caption)
-                    subtitle_items = [{'key': 'subtitle', 'text': subtitle}]
+                    # Create subtitle item for batch processing (using FAQ structure)
+                    subtitle_items = [{'question': 'Subtitle:', 'answer': subtitle}]
                     
                     logger.info(f"🎭 Batch enhancing subtitle with {author.get('country', 'Unknown')} voice (intensity={SUBTITLE_VOICE_INTENSITY})...")
                     
@@ -234,8 +234,8 @@ Generate the subtitle now (output ONLY the subtitle text, no quotes or formattin
                         voice_intensity=SUBTITLE_VOICE_INTENSITY
                     )
                     
-                    # Extract enhanced subtitle
-                    subtitle = enhanced_items[0]['text']
+                    # Extract enhanced subtitle (answer field contains the enhanced text)
+                    subtitle = enhanced_items[0]['answer']
                     
                 except Exception as e:
                     logger.warning(f"Voice enhancement failed: {e}")
