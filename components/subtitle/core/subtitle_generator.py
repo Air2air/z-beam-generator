@@ -284,7 +284,7 @@ Write the subtitle now:"""
             
             # Extract and validate subtitle
             subtitle = self._extract_subtitle_content(response.content, material_name)
-            logger.info(f"✅ Generated subtitle: '{subtitle}' ({len(subtitle.split())} words)")
+            logger.info(f"✅ Generated subtitle: '{subtitle}'")
             
             # Write to Materials.yaml (atomic)
             self._write_subtitle_to_materials(

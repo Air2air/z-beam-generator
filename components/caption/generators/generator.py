@@ -331,8 +331,8 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
             sections = self._extract_caption_sections(response.content, material_name)
             
             logger.info("✅ Generated caption sections:")
-            logger.info(f"   Before: '{sections['before'][:80]}...' ({len(sections['before'].split())}w)")
-            logger.info(f"   After: '{sections['after'][:80]}...' ({len(sections['after'].split())}w)")
+            logger.info(f"   Before: '{sections['before'][:80]}...'")
+            logger.info(f"   After: '{sections['after'][:80]}...'")
             
             # Write to Materials.yaml (atomic)
             self._write_caption_to_materials(

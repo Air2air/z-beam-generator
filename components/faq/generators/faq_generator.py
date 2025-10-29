@@ -430,7 +430,7 @@ Generate the FAQ now:"""
                 # Write to Materials.yaml after validation passes
                 timestamp = datetime.now().isoformat()
                 self._write_to_materials(material_name, faq_items, timestamp)
-                logger.info(f"✅ FAQ generated: {len(faq_items)} questions")
+                logger.info("✅ FAQ generated")
             except Exception as e:
                 logger.warning(f"Failed to validate/write FAQ: {e}")
                 # Still return success if it's just a write error
@@ -486,7 +486,7 @@ Generate the FAQ now:"""
                 yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
             
             Path(temp_path).replace(materials_path)
-            logger.info(f"✅ FAQ written to Materials.yaml → materials.{actual_key}.faq ({len(faq_items)} questions, {total_words} words)")
+            logger.info(f"✅ FAQ written to Materials.yaml → materials.{actual_key}.faq")
             
         except Exception as e:
             if Path(temp_path).exists():
