@@ -197,10 +197,10 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
                     )
                     
                     # Extract enhanced sections (answer field contains the enhanced text)
-                    for item in enhanced_items:
-                        section_key = item.get('section')
-                        if section_key:
-                            sections[section_key] = item['answer']
+                    # Enhanced items returned in same order: [before, after]
+                    if len(enhanced_items) >= 2:
+                        sections['before'] = enhanced_items[0]['answer']
+                        sections['after'] = enhanced_items[1]['answer']
                         
                 except Exception as e:
                     logger.warning(f"Voice enhancement failed: {e}")
