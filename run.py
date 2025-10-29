@@ -881,7 +881,6 @@ def handle_faq_generation(material_name: str):
             print("📝 Preview (first 3 questions):")
             for i, qa in enumerate(questions[:3], 1):
                 print(f"   {i}. {qa['question']}")
-                print(f"      Category: {qa.get('category', 'N/A')}")
                 print(f"      Answer: {qa['answer'][:80]}...")
                 print()
         
