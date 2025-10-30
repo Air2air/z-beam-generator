@@ -101,6 +101,54 @@ GLOBAL_OPERATIONAL_CONFIG = {
     # No circuit breaker fallbacks allowed in fail-fast architecture
 }
 
+# Production Configuration (formerly prod_config.yaml)
+# Consolidated into settings.py for single source of truth
+PRODUCTION_CONFIG = {
+    "TEST_MODE": False,
+    
+    "AI_DETECTION": {
+        "PROVIDER": "real",
+        "ENABLED": True,
+        "TARGET_SCORE": 85.0,
+        "MAX_ITERATIONS": 5,
+        "TIMEOUT": 120,
+    },
+    
+    "API": {
+        "USE_MOCK_CLIENTS": False,
+        "MAX_CONTENT_LENGTH": 5000,
+        "USE_SIMPLE_PROMPTS": False,
+        
+        # API Response Caching Configuration
+        "RESPONSE_CACHE": {
+            "enabled": True,
+            "storage_location": "/tmp/z-beam-response-cache",
+            "ttl_seconds": 86400,  # 24 hours
+            "max_size_mb": 1000,
+            "key_strategy": "prompt_hash_with_model",
+        },
+    },
+    
+    "TEST_DATA": {
+        "MATERIALS": ["Aluminum", "Steel", "Copper", "Brass", "Titanium", "Stainless Steel"],
+        "MAX_CONTENT_LENGTH": 5000,
+        "USE_SIMPLE_PROMPTS": False,
+    },
+    
+    "TIMEOUTS": {
+        "API_CALL": 120,
+        "CONTENT_GENERATION": 300,
+        "TEST_EXECUTION": 600,
+        "FULL_TEST_SUITE": 1800,
+    },
+    
+    "LOGGING": {
+        "LEVEL": "WARNING",
+        "FORMAT": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "DISABLE_WARNINGS": False,
+    },
+}
+
 # API Provider Configuration - USER SETTABLE
 # Configure which API providers to use for different operations
 # FAIL-FAST: Each provider must be explicitly configured with valid credentials
@@ -394,6 +442,16 @@ def get_api_providers():
     return API_PROVIDERS
 
 
+def get_production_config():
+    """Get production configuration (formerly prod_config.yaml)."""
+    return PRODUCTION_CONFIG
+
+
+def get_response_cache_config():
+    """Get API response cache configuration."""
+    return PRODUCTION_CONFIG["API"]["RESPONSE_CACHE"]
+
+
 def get_api_config_fallbacks():
     """Get API configuration fallback values (deprecated - will be removed)."""
     # This function exists for backward compatibility only
@@ -496,8 +554,6 @@ def create_dynamic_ai_detection_config(
 
 def extract_numeric_value(value):
     """Extract numeric value from various formats, including Shore hardness scales."""
-    import re
-    
     if isinstance(value, (int, float)):
         return float(value)
     
@@ -545,3 +601,157 @@ def extract_numeric_value(value):
                 pass
     
     return None
+
+# =============================================================================
+# CONSOLIDATED YAML CONFIGURATIONS
+# =============================================================================
+# These configurations were previously in separate YAML files.
+# Consolidated into settings.py for:
+# - Single source of truth
+# - No YAML parsing overhead  
+# - Type hints and validation in Python
+# - Easier maintenance
+# =============================================================================
+
+# From config/frontmatter_generation.yaml
+FRONTMATTER_GENERATION_CONFIG = {
+    'version': '1.0',
+    'generation': {
+        'mode': 'dynamic',
+        'components': ['frontmatter'],
+        'output_format': 'yaml'
+    },
+    # Material abbreviations for standardized naming
+    'material_abbreviations': {
+        'Fiber Reinforced Polyurethane FRPU': {
+            'abbreviation': 'FRPU',
+            'full_name': 'Fiber Reinforced Polyurethane'
+        },
+        'Glass Fiber Reinforced Polymers GFRP': {
+            'abbreviation': 'GFRP',
+            'full_name': 'Glass Fiber Reinforced Polymers'
+        },
+        'Carbon Fiber Reinforced Polymer': {
+            'abbreviation': 'CFRP',
+            'full_name': 'Carbon Fiber Reinforced Polymer'
+        },
+        'Metal Matrix Composites MMCs': {
+            'abbreviation': 'MMCs',
+            'full_name': 'Metal Matrix Composites'
+        },
+        'Ceramic Matrix Composites CMCs': {
+            'abbreviation': 'CMCs',
+            'full_name': 'Ceramic Matrix Composites'
+        },
+        'MDF': {
+            'abbreviation': 'MDF',
+            'full_name': 'Medium Density Fiberboard'
+        },
+        'Polyvinyl Chloride': {
+            'abbreviation': 'PVC',
+            'full_name': 'Polyvinyl Chloride'
+        },
+        'Polytetrafluoroethylene': {
+            'abbreviation': 'PTFE',
+            'full_name': 'Polytetrafluoroethylene'
+        }
+    },
+    # Category-specific thermal property mapping
+    'thermal_property_mapping': {
+        'wood': {
+            'field': 'thermalDestructionPoint',
+            'label': 'Decomposition Point',
+            'description': 'Temperature where pyrolysis (thermal decomposition) begins',
+            'scientific_process': 'Pyrolysis',
+            'yaml_field': 'thermalDestructionPoint'
+        },
+        'ceramic': {
+            'field': 'sinteringPoint',
+            'label': 'Sintering/Decomposition Point',
+            'description': 'Temperature where ceramic particles fuse or decompose',
+            'scientific_process': 'Sintering or Decomposition',
+            'yaml_field': 'thermalDestruction'
+        },
+        'stone': {
+            'field': 'thermalDegradationPoint',
+            'label': 'Thermal Degradation Point',
+            'description': 'Temperature where mineral structure breaks down',
+            'scientific_process': 'Thermal Degradation',
+            'yaml_field': 'thermalDestructionPoint'
+        },
+        'composite': {
+            'field': 'degradationPoint',
+            'label': 'Degradation Point',
+            'description': 'Temperature where polymer matrix decomposes',
+            'scientific_process': 'Polymer Decomposition',
+            'yaml_field': 'thermalDestructionPoint'
+        },
+        'plastic': {
+            'field': 'degradationPoint',
+            'label': 'Degradation Point',
+            'description': 'Temperature where polymer chains break down',
+            'scientific_process': 'Polymer Decomposition',
+            'yaml_field': 'thermalDestructionPoint'
+        },
+        'glass': {
+            'field': 'softeningPoint',
+            'label': 'Softening Point',
+            'description': 'Temperature where glass transitions from rigid to pliable state',
+            'scientific_process': 'Glass Transition',
+            'yaml_field': 'thermalDestructionPoint'
+        },
+        'metal': {
+            'field': 'thermalDestructionPoint',
+            'label': 'Thermal Destruction Point',
+            'description': 'Temperature where solid metal transitions to liquid phase',
+            'scientific_process': 'Phase Transition',
+            'yaml_field': 'thermalDestruction'
+        },
+        'semiconductor': {
+            'field': 'thermalDestructionPoint',
+            'label': 'Thermal Destruction Point',
+            'description': 'Temperature where crystalline structure melts',
+            'scientific_process': 'Phase Transition',
+            'yaml_field': 'thermalDestruction'
+        },
+        'masonry': {
+            'field': 'thermalDegradationPoint',
+            'label': 'Thermal Degradation Point',
+            'description': 'Temperature where structural integrity fails',
+            'scientific_process': 'Thermal Degradation',
+            'yaml_field': 'thermalDestructionPoint'
+        }
+    }
+}
+
+# From config/metadata_delimiting.yaml
+METADATA_DELIMITING_CONFIG = {
+    'delimiters': {
+        'start': '---',
+        'end': '---'
+    },
+    'format': 'yaml'
+}
+
+# From config/pipeline_config.yaml  
+PIPELINE_CONFIG = {
+    'stages': ['validation', 'generation', 'quality'],
+    'validation': {
+        'pre_generation': True,
+        'post_generation': True
+    }
+}
+
+# Accessor functions for backward compatibility
+def get_frontmatter_generation_config():
+    """Get frontmatter generation configuration."""
+    return FRONTMATTER_GENERATION_CONFIG
+
+def get_metadata_delimiting_config():
+    """Get metadata delimiting configuration."""
+    return METADATA_DELIMITING_CONFIG
+
+def get_pipeline_config():
+    """Get pipeline configuration."""
+    return PIPELINE_CONFIG
+

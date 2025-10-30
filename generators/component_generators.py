@@ -12,6 +12,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Import GenerationError from centralized validation.errors
+from validation.errors import GenerationError
+
 # Import material-aware prompt system
 try:
     from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
@@ -62,12 +65,6 @@ class ComponentResult:
     success: bool
     error_message: Optional[str] = None
     token_count: Optional[int] = None
-
-
-class GenerationError(Exception):
-    """Raised when content generation fails."""
-
-    pass
 
 
 class BaseComponentGenerator(ABC):

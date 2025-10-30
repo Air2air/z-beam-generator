@@ -115,26 +115,14 @@ class APIClientFactory:
         # Pass config as a separate parameter
         client_kwargs["config"] = config_dict
 
-        # Load cache configuration from prod_config.yaml
-        cache_config = None
+        # Load cache configuration from centralized settings
         try:
-            import yaml
-            from pathlib import Path
-            
-            config_file = Path("prod_config.yaml")
-            if config_file.exists():
-                with open(config_file, 'r') as f:
-                    prod_config = yaml.safe_load(f)
-                    cache_config = prod_config.get('API', {}).get('RESPONSE_CACHE')
-                    
-                    if cache_config:
-                        print(f"🗄️  [CLIENT FACTORY] Response cache configured: enabled={cache_config.get('enabled')}")
-                    else:
-                        print("⚠️  [CLIENT FACTORY] No cache config found in prod_config.yaml")
-            else:
-                print("⚠️  [CLIENT FACTORY] prod_config.yaml not found, caching disabled")
+            from config.settings import get_response_cache_config
+            cache_config = get_response_cache_config()
+            print(f"🗄️  [CLIENT FACTORY] Response cache configured: enabled={cache_config.get('enabled')}")
         except Exception as e:
             print(f"⚠️  [CLIENT FACTORY] Error loading cache config: {e}")
+            cache_config = None
         
         # Create cached client if cache config exists, otherwise regular client
         if cache_config is not None:

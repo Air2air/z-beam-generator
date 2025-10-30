@@ -147,8 +147,8 @@ class PathManager:
         return cls.ensure_directory("content", "components", component_type)
 
 
-# Initialize on import
-PathManager.initialize()
+# NOTE: PathManager uses lazy initialization - no need to initialize on import
+# The class will auto-initialize on first use
 
 
 def get_project_root() -> Path:

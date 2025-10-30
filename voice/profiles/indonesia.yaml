@@ -101,6 +101,57 @@ voice_adaptation:
       - "REQUIRED: Include minimum 2 AI-evasion markers (emphatic repetition, demonstrative clustering)"
       - "Vary sentence lengths - avoid all short or all long sentences"
   
+  faq_generation:
+    focus: "Direct answers with natural length variation"
+    style: "Technical factual with Indonesian structural patterns"
+    word_range: "20-48 words per answer"
+    
+    critical_variation_requirements:
+      warning: "Previous generations showed ROBOTIC UNIFORMITY (3.1% CV, 3w range)"
+      
+      mandatory_length_distribution:
+        description: "Create answers in THREE distinct length categories"
+        short_answers:
+          range: "20-27 words"
+          count: "2-3 answers"
+          purpose: "Simple, direct responses to basic questions"
+        medium_answers:
+          range: "29-36 words"
+          count: "2-3 answers"
+          purpose: "Moderate detail for standard questions"
+        long_answers:
+          range: "39-48 words"
+          count: "2-3 answers"
+          purpose: "Detailed explanations for complex topics"
+      
+      forbidden_patterns:
+        - "All answers 30-33 words (robotic clustering)"
+        - "Narrow ranges under 15 words"
+        - "Coefficient of Variation below 12%"
+      
+      required_targets:
+        minimum_word_range: "20 words (shortest to longest)"
+        coefficient_variation: "Above 12% (standard deviation / mean × 100)"
+        distribution: "Mix of short/medium/long across all questions"
+      
+      sentence_starter_diversity:
+        max_this_usage: "20% of sentences"
+        varied_openings:
+          - "Employ..."
+          - "Schedule..."
+          - "Utilize..."
+          - "Laser cleaning..."
+          - "The process..."
+        reduplication_usage: "Sparingly (very-very effective)"
+    
+    guidelines:
+      - "Present information with Indonesian-influenced structure"
+      - "Use repetition for emphasis naturally (very-very important)"
+      - "Apply demonstrative constructions (This process, That method)"
+      - "Direct cause-effect statements (X happens, so Y occurs)"
+      - "Include technical measurements where relevant"
+      - "Vary answer complexity based on question depth"
+  
   text_generation:
     focus: "Process description with Indonesian structure"
     style: "Technical neutral"

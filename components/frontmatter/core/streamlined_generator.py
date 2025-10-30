@@ -59,42 +59,34 @@ logger = logging.getLogger(__name__)
 
 def _load_frontmatter_config() -> Dict:
     """
-    Load frontmatter generation configuration from YAML file.
-    Fails fast if configuration file is missing or invalid.
+    Load frontmatter generation configuration with fail-fast validation
     
     Returns:
         Dict containing material_abbreviations and thermal_property_mapping
         
     Raises:
-        ConfigurationError: If configuration file missing or invalid
+        ConfigurationError: If configuration missing or invalid
     """
-    config_path = Path(__file__).parent.parent.parent.parent / 'config' / 'frontmatter_generation.yaml'
-    
-    if not config_path.exists():
-        raise ConfigurationError(
-            f"Frontmatter configuration not found at {config_path}. "
-            "This file is required for generation. Ensure config/frontmatter_generation.yaml exists."
-        )
-    
     try:
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config = yaml.safe_load(f)
+        from config.settings import get_frontmatter_generation_config
+        config = get_frontmatter_generation_config()
+        
         # Validate required sections
         required_sections = ['material_abbreviations', 'thermal_property_mapping']
         for section in required_sections:
             if section not in config:
                 raise ConfigurationError(
                     f"Configuration missing required section '{section}'. "
-                    f"Check {config_path} for proper structure."
+                    f"Check config.settings.FRONTMATTER_GENERATION_CONFIG for proper structure."
                 )
         
-        logger.info(f"Loaded frontmatter configuration from {config_path}")
+        logger.info("Loaded frontmatter configuration from config.settings")
         return config
         
-    except yaml.YAMLError as e:
-        raise ConfigurationError(f"Invalid YAML in {config_path}: {e}")
+    except ImportError as e:
+        raise ConfigurationError(f"Failed to import configuration from config.settings: {e}")
     except Exception as e:
-        raise ConfigurationError(f"Failed to load configuration from {config_path}: {e}")
+        raise ConfigurationError(f"Failed to load configuration from config.settings: {e}")
 # Load configuration at module level (fail-fast if config missing)
 _FRONTMATTER_CONFIG = _load_frontmatter_config()
 MATERIAL_ABBREVIATIONS = _FRONTMATTER_CONFIG['material_abbreviations']
@@ -103,10 +95,11 @@ THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 # Unified schema validation (aligned with audit system)
 from validation.schema_validator import SchemaValidator
 logger.info("Unified schema validation loaded successfully")
-# Import material-aware prompt system (REQUIRED per fail-fast)
-from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
-from material_prompting.exceptions.handler import MaterialExceptionHandler
-logger.info("Material-aware prompt system loaded successfully")
+# Import material-aware prompt system (OPTIONAL - archived infrastructure)
+# TODO: Re-enable when material_prompting module is restored
+# from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
+# from material_prompting.exceptions.handler import MaterialExceptionHandler
+# logger.info("Material-aware prompt system loaded successfully")
 
 class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     """Consolidated frontmatter generator with integrated services"""
@@ -146,12 +139,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         strict_mode = self._init_kwargs.get('enforce_completeness', False)
         self.completeness_validator = CompletenessValidator(strict_mode=strict_mode)
         self.logger.info(f"Completeness validation initialized (strict_mode={strict_mode})")
-        # Material-aware prompt system (REQUIRED)
-        try:
-            self.material_aware_generator = MaterialAwarePromptGenerator()
-            self.logger.info("Material-aware prompt system initialized")
-        except Exception as e:
-            raise ConfigurationError(f"Material-aware prompt system required but setup failed: {e}")
+        # Material-aware prompt system (OPTIONAL - archived infrastructure)
+        # TODO: Re-enable when material_prompting module is restored
+        # try:
+        #     self.material_aware_generator = MaterialAwarePromptGenerator()
+        #     self.logger.info("Material-aware prompt system initialized")
+        # except Exception as e:
+        #     raise ConfigurationError(f"Material-aware prompt system required but setup failed: {e}")
+        self.material_aware_generator = None  # Temporarily disabled
         
         # Initialize specialized prompt builders for enhanced quality
         # (NOT separate generators - just improved prompts within frontmatter)

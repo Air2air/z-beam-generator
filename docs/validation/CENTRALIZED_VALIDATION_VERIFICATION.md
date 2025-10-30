@@ -43,7 +43,7 @@ services/validation/orchestrator.py  ← MAIN ORCHESTRATOR
 - ✅ **Legacy services deprecated**: Proper deprecation warnings added
 
 ### 3. **Import Standardization**
-- ✅ **Primary imports**: All active code uses `from validation.schema_validator import SchemaValidator`
+- ✅ **Primary imports**: All active code uses `from validation.core import SchemaValidator` (or legacy `from validation.schema_validator import SchemaValidator` with redirect wrapper)
 - ✅ **Orchestrator imports**: `from services.validation import ValidationOrchestrator`
 - ✅ **Requirements imports**: `from utils.requirements_loader import RequirementsLoader`
 - ✅ **No legacy imports**: Deprecated `enhanced_schema_validator` eliminated
@@ -57,7 +57,7 @@ services/validation/orchestrator.py  ← MAIN ORCHESTRATOR
 ## 🔧 **System Integration Verified**
 
 ### **Core Services Using Unified System**
-- ✅ **MaterialAuditor**: Uses `validation.schema_validator.SchemaValidator`
+- ✅ **MaterialAuditor**: Uses `validation.core.SchemaValidator` (via redirect wrapper for backward compatibility)
 - ✅ **StreamlinedFrontmatterGenerator**: Uses `services.validation.ValidationOrchestrator`
 - ✅ **PropertyResearchService**: Uses `services.validation.ValidationOrchestrator`
 - ✅ **Pipeline Integration**: Uses `services.validation.ValidationOrchestrator`

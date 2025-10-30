@@ -270,7 +270,11 @@ if not result.passed:
 1. **Post-Generation** (FAQ, Caption, Subtitle):
    ```python
    # In faq_generator.py, caption/generator.py, subtitle_generator.py
-   from validation.duplication_detector import validate_duplication
+### Schema Validation with Duplication Detection
+
+```python
+   from validation.core import DuplicationDetector
+   # Or legacy: from validation.duplication_detector import validate_duplication
    
    result = validate_duplication(faq_items, 'faq', strict_mode=True)
    if not result.passed:

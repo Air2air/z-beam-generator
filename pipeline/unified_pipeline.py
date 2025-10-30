@@ -27,11 +27,12 @@ from api.client_factory import create_api_client
 from generators.dynamic_generator import DynamicGenerator
 
 # Service imports
-from scripts.pipeline_integration import (
-    get_pre_generation_service,
-    get_research_service,
-    get_quality_service
-)
+# TODO: Restore when pipeline_integration is reimplemented
+# from scripts.pipeline_integration import (
+#     get_pre_generation_service,
+#     get_research_service,
+#     get_quality_service
+# )
 
 # Component imports
 from components.frontmatter.services.material_auditor import MaterialAuditor
@@ -128,10 +129,11 @@ class UnifiedPipeline:
     def _initialize_services(self):
         """Initialize all required services with fail-fast validation"""
         try:
-            # Core services
-            self.pre_gen_service = get_pre_generation_service()
-            self.research_service = get_research_service()
-            self.quality_service = get_quality_service()
+            # Core services (temporarily disabled - archived pipeline_integration)
+            # TODO: Restore when pipeline_integration is reimplemented
+            self.pre_gen_service = None  # get_pre_generation_service()
+            self.research_service = None  # get_research_service()
+            self.quality_service = None  # get_quality_service()
             
             # Specialized services
             self.material_auditor = MaterialAuditor()

@@ -771,6 +771,90 @@ Consider incorporating these natural expressions when appropriate:
         """Get list of signature phrases for this country"""
         return self.profile.get("signature_phrases", [])
     
+    def get_faq_variation_guidance(self) -> str:
+        """
+        Get FAQ-specific variation guidance from voice profile.
+        
+        Returns variation requirements from voice_adaptation.faq_generation
+        section of the profile, formatted as prompt guidance.
+        
+        Returns:
+            str: Formatted variation guidance or empty string if none needed
+        """
+        voice_adaptation = self.profile.get("voice_adaptation", {})
+        faq_config = voice_adaptation.get("faq_generation", {})
+        
+        if not faq_config:
+            return ""
+        
+        variation_reqs = faq_config.get("critical_variation_requirements", {})
+        if not variation_reqs:
+            return ""
+        
+        # Build formatted guidance
+        country_name = self.profile.get("name", self.country_raw).split()[0]  # Get country part
+        guidance_lines = [
+            "━" * 70,
+            f"🎯 CRITICAL: NATURAL VARIATION REQUIREMENT ({country_name} Voice)",
+            "━" * 70
+        ]
+        
+        # Add warning if present
+        if "warning" in variation_reqs:
+            guidance_lines.append(f"⚠️  WARNING: {variation_reqs['warning']}")
+            guidance_lines.append("")
+        
+        # Add length distribution requirements
+        length_dist = variation_reqs.get("mandatory_length_distribution", {})
+        if length_dist:
+            guidance_lines.append("MANDATORY ANSWER LENGTH DISTRIBUTION:")
+            guidance_lines.append(length_dist.get("description", ""))
+            
+            for category in ["short_answers", "concise_answers", "medium_answers", "standard_answers", "long_answers", "comprehensive_answers"]:
+                if category in length_dist:
+                    cat_data = length_dist[category]
+                    cat_name = category.replace("_", " ").title()
+                    guidance_lines.append(f"{len(guidance_lines) - 6}. {cat_name}:")
+                    guidance_lines.append(f"   - Range: {cat_data.get('range', 'N/A')}")
+                    guidance_lines.append(f"   - Count: {cat_data.get('count', 'N/A')}")
+                    guidance_lines.append(f"   - Purpose: {cat_data.get('purpose', 'N/A')}")
+            guidance_lines.append("")
+        
+        # Add forbidden patterns
+        forbidden = variation_reqs.get("forbidden_patterns", [])
+        if forbidden:
+            guidance_lines.append("FORBIDDEN PATTERNS:")
+            for pattern in forbidden:
+                guidance_lines.append(f"- ❌ {pattern}")
+            guidance_lines.append("")
+        
+        # Add required targets
+        targets = variation_reqs.get("required_targets", {})
+        if targets:
+            guidance_lines.append("REQUIRED TARGETS:")
+            for key, value in targets.items():
+                key_formatted = key.replace("_", " ").title()
+                guidance_lines.append(f"- ✅ {key_formatted}: {value}")
+            guidance_lines.append("")
+        
+        # Add sentence starter diversity
+        starters = variation_reqs.get("sentence_starter_diversity", {})
+        if starters:
+            guidance_lines.append("SENTENCE STARTER DIVERSITY:")
+            if "max_this_usage" in starters:
+                guidance_lines.append(f"- Maximum {starters['max_this_usage']} of sentences starting with \"This\"")
+            if "varied_openings" in starters:
+                openings = ", ".join(f"\"{o}\"" for o in starters["varied_openings"])
+                guidance_lines.append(f"- Vary openings: {openings}")
+            for key, value in starters.items():
+                if key not in ["max_this_usage", "varied_openings"]:
+                    key_formatted = key.replace("_", " ").title()
+                    guidance_lines.append(f"- {key_formatted}: {value}")
+        
+        guidance_lines.append("━" * 70)
+        
+        return "\n".join(guidance_lines)
+    
     def get_profile_summary(self) -> Dict[str, Any]:
         """
         Get summary of voice profile.

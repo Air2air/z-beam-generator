@@ -1079,9 +1079,9 @@ def review_main_configs():
     print("\n📋 Main Configuration Review")
     
     main_configs = [
-        'prod_config.yaml',
-        'test_config.yaml',
-        'data/Materials.yaml'
+        'config/settings.py',  # Consolidated configuration
+        'data/Materials.yaml',
+        'data/Categories.yaml'
     ]
     
     for config_file in main_configs:

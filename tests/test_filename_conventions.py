@@ -19,7 +19,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 # Import after path setup to resolve module
-from run import generate_safe_filename  # noqa: E402
+from commands.research import generate_safe_filename  # noqa: E402
 
 
 class TestFilenameConventions(unittest.TestCase):

@@ -36,8 +36,9 @@ from pathlib import Path
 from datetime import datetime
 from enum import Enum
 
-# Import existing schema validation logic (during transition)
-from validation.schema_validator import SchemaValidator, ValidationResult as LegacyValidationResult
+# Import consolidated validation from core (updated October 2025)
+from validation.core import SchemaValidator
+from validation.errors import ValidationResult as LegacyValidationResult
 
 logger = logging.getLogger(__name__)
 

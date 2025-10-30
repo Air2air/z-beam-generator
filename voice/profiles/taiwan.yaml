@@ -187,7 +187,58 @@ linguistic_characteristics:
       - "Logical progression markers from Chinese rhetoric (first, second, therefore, so)"
       - "Direct cause-effect (X happens, so Y occurs)"
 
-# voice_adaptation section removed - component-specific adaptations belong in component config
+voice_adaptation:
+  
+  faq_generation:
+    focus: "Systematic answers with precise technical detail"
+    style: "Academic neutral with natural variation"
+    word_range: "24-48 words per answer"
+    
+    critical_variation_requirements:
+      warning: "Previous generations showed MODERATE UNIFORMITY (9.6% CV, 12w range)"
+      
+      mandatory_length_distribution:
+        description: "Create answers in THREE distinct length categories"
+        concise_answers:
+          range: "24-30 words"
+          count: "2-3 answers"
+          purpose: "Direct, efficient responses"
+        standard_answers:
+          range: "32-38 words"
+          count: "2-3 answers"
+          purpose: "Balanced detail and precision"
+        comprehensive_answers:
+          range: "40-48 words"
+          count: "2-3 answers"
+          purpose: "Detailed technical explanations"
+      
+      forbidden_patterns:
+        - "All answers clustered around 32-33 words"
+        - "Ranges under 15 words"
+        - "CV below 12%"
+      
+      required_targets:
+        minimum_word_range: "18 words (shortest to longest)"
+        coefficient_variation: "Above 12%"
+        balance: "Academic precision WITH natural length variation"
+      
+      sentence_starter_diversity:
+        max_this_usage: "25% of sentences"
+        varied_openings:
+          - "Systematic analysis..."
+          - "The methodology..."
+          - "Process control..."
+          - "This approach..."
+          - "Measurement indicates..."
+        topic_comment_usage: "Sparingly (1-2 times per answer, not every sentence)"
+    
+    guidelines:
+      - "Apply Taiwan voice authentically without over-systematizing"
+      - "Use topic-comment structure sparingly (1-2 times per answer)"
+      - "Vary precision markers - not just 'systematic' and 'precise' repeatedly"
+      - "Mix formal academic language with accessible explanations"
+      - "Let technical depth drive length, not artificial targets"
+      - "Balance measurement-first phrasing with varied structures"
 
 signature_phrases: []
 

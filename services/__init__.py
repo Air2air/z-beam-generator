@@ -16,7 +16,7 @@ from .validation.unified_schema_validator import UnifiedSchemaValidator
 from research.services.ai_research_service import AIResearchEnrichmentService
 
 # Property Services
-from .property.property_manager import PropertyManager
+# PropertyManager moved to components/frontmatter/services/property_manager.py
 from .property.material_auditor import MaterialAuditor
 
 __all__ = [
@@ -28,7 +28,6 @@ __all__ = [
     'AIResearchEnrichmentService',
     
     # Property Services
-    'PropertyManager',
     'MaterialAuditor',
 ]
 
@@ -42,7 +41,6 @@ SERVICE_REGISTRY = {
         'ai_research': AIResearchEnrichmentService,
     },
     'property': {
-        'property_manager': PropertyManager,
         'material_auditor': MaterialAuditor,
     },
 }

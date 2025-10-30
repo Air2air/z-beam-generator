@@ -24,7 +24,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 # Import GenerationError for fail-fast behavior
-from generators.component_generators import GenerationError
+from validation.errors import GenerationError
 
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent.parent.parent
@@ -341,7 +341,8 @@ class PropertyValueResearcher:
                              context: ResearchContext) -> Optional[PropertyResult]:
         """Look up property from Materials.yaml data"""
         try:
-            from data.materials import get_material_by_name
+            from data.materials import get_material_data, get_material_by_name
+            from utils.unit_extractor import extract_unit_from_range, extract_numeric_from_range
             
             material_data = get_material_by_name(material_name)
             if not material_data:

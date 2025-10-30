@@ -71,15 +71,15 @@ Regenerating all 122 materials (second time):
 
 ## Configuration
 
-Cache settings in `prod_config.yaml`:
-```yaml
-API:
-  RESPONSE_CACHE:
-    enabled: true                              # Turn on/off
-    storage_location: "/tmp/z-beam-response-cache"
-    ttl_seconds: 86400                         # 24 hours
-    max_size_mb: 1000                          # 1GB limit
-    key_strategy: "prompt_hash_with_model"     # Recommended
+Cache settings in `config/settings.py`:
+```python
+RESPONSE_CACHE_CONFIG = {
+    'enabled': True,                           # Turn on/off
+    'storage_location': '/tmp/z-beam-response-cache',
+    'ttl_seconds': 86400,                      # 24 hours
+    'max_size_mb': 1000,                       # 1GB limit
+    'key_strategy': 'prompt_hash_with_model'   # Recommended
+}
 ```
 
 ### Change TTL (How Long to Keep Cache):
@@ -112,9 +112,12 @@ client.clear_cache()
 ```
 
 ### Disable Caching Temporarily:
-Edit `prod_config.yaml`:
-```yaml
-enabled: false  # Will use regular API calls
+Edit `config/settings.py`:
+```python
+RESPONSE_CACHE_CONFIG = {
+    'enabled': False,  # Will use regular API calls
+    # ... rest of config
+}
 ```
 
 ---
@@ -210,12 +213,12 @@ Just use the generator normally. The first time you generate something, it makes
 
 ## Key Files
 
-- **Configuration**: `prod_config.yaml`
+- **Configuration**: `config/settings.py` (RESPONSE_CACHE_CONFIG)
 - **Cache Implementation**: `api/response_cache.py`
 - **Cached Client**: `api/cached_client.py`
 - **Factory Integration**: `api/client_factory.py`
-- **Test Suite**: `test_caching.py`
-- **Documentation**: `API_RESPONSE_CACHING_COMPLETE.md`
+- **Test Suite**: `tests/test_caching.py`
+- **Documentation**: `docs/api/API_RESPONSE_CACHING_COMPLETE.md`
 
 ---
 

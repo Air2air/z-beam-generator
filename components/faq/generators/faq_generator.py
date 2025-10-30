@@ -163,13 +163,39 @@ OUTPUT FORMAT (JSON):
   "negative": ["challenge 1", "challenge 2", "challenge 3"]
 }}"""
 
+    def _get_variation_guidance(self, author: Optional[Dict] = None) -> str:
+        """
+        Get content variation guidance from author voice profile.
+        
+        This reads variation requirements from voice/profiles/{country}.yaml
+        using the VoiceOrchestrator to ensure consistency across all components.
+        
+        Args:
+            author: Author dictionary with 'country' key
+            
+        Returns:
+            str: Variation guidance for the prompt (empty if no special guidance needed)
+        """
+        if not author or 'country' not in author:
+            return ""
+        
+        try:
+            from voice.orchestrator import VoiceOrchestrator
+            orchestrator = VoiceOrchestrator(author['country'])
+            return orchestrator.get_faq_variation_guidance()
+        except Exception as e:
+            # Fail gracefully - variation guidance is optional enhancement
+            logger.warning(f"Could not load FAQ variation guidance for {author.get('country')}: {e}")
+            return ""
+
     def build_questions_prompt(
         self, 
         material_name: str, 
         research_summary: dict,
         aspects: dict,
         word_count_range: str,
-        technical_intensity: int = 3
+        technical_intensity: int = 3,
+        author: Optional[Dict] = None
     ) -> str:
         """
         Build prompt for Step 3: Craft FAQ questions and answers.
@@ -180,11 +206,13 @@ OUTPUT FORMAT (JSON):
             aspects: Positive/negative aspects from Step 2
             word_count_range: Word count range for answers
             technical_intensity: Technical complexity level 1-5
+            author: Author dictionary with 'country' key for variation guidance
             
         Returns:
             str: FAQ generation prompt
         """
         technical_guidance = self._get_technical_guidance(technical_intensity)
+        variation_guidance = self._get_variation_guidance(author)
         
         return f"""You are an expert in laser cleaning technologies and material restoration, specializing in creating engaging, SEO-optimized FAQ sections for niche websites like Z-Beam.com.
 
@@ -208,6 +236,7 @@ Based on the research above, create {FAQ_COUNT_RANGE} user-focused questions tha
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {technical_guidance}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{variation_guidance}
 
 QUESTION REQUIREMENTS:
 - Phrase questions naturally as users would ask them
@@ -381,7 +410,8 @@ Generate the FAQ now:"""
                 research_summary,
                 aspects,
                 word_count_range,
-                FAQ_TECHNICAL_INTENSITY
+                FAQ_TECHNICAL_INTENSITY,
+                author
             )
             
             faq_response = api_client.generate_simple(

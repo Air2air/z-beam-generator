@@ -2,13 +2,13 @@
 """
 Z-Beam Configuration Module
 
-CONFIGURATION NOTE: All user configurations are now centralized in run.py
-This module imports from run.py for backward compatibility.
+CONFIGURATION NOTE: All user configurations are now centralized in config/settings.py
+This module imports from settings.py for backward compatibility.
 """
 
-# Import configurations from run.py (centralized location)
+# Import configurations from settings.py (centralized location)
 try:
-    from run import (
+    from .settings import (
         API_PROVIDERS,
         COMPONENT_CONFIG,
         AI_DETECTION_CONFIG,
@@ -23,10 +23,10 @@ try:
         create_dynamic_ai_detection_config,
     )
 except ImportError:
-    # Fail fast if run.py configurations are not available
+    # Fail fast if settings.py configurations are not available
     raise RuntimeError(
-        "CONFIGURATION ERROR: run.py not found or configurations not defined. "
-        "All configurations must be defined in run.py with no fallbacks."
+        "CONFIGURATION ERROR: settings.py not found or configurations not defined. "
+        "All configurations must be defined in config/settings.py with no fallbacks."
     )
 
 __all__ = [
