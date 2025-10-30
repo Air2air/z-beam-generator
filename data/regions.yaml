@@ -1,0 +1,228 @@
+# Regions Database
+# Source of truth for geographic regions and their regulatory requirements
+# Used by RegionFrontmatterGenerator
+
+_metadata:
+  version: 1.0.0
+  created: '2025-10-30'
+  description: Geographic regions with regulatory and market information
+  total_regions: 6
+  scope: Global coverage of major laser cleaning markets
+
+regions:
+  north_america:
+    name: North America
+    countries:
+      - United States
+      - Canada
+      - Mexico
+    description: Leading market for industrial laser cleaning technology
+    market_characteristics:
+      maturity: mature
+      growth_rate: moderate
+      market_size: large
+      technology_adoption: high
+    regulatory_framework:
+      primary_agencies:
+        - OSHA (Occupational Safety and Health Administration)
+        - EPA (Environmental Protection Agency)
+        - FDA (Food and Drug Administration)
+        - ANSI (American National Standards Institute)
+      laser_safety_standard: ANSI Z136.1
+      environmental_regulations:
+        - Clean Air Act
+        - RCRA (Resource Conservation and Recovery Act)
+      worker_safety_requirements:
+        - PPE mandatory
+        - Training certification required
+        - Exposure monitoring
+    common_applications:
+      - Automotive manufacturing
+      - Aerospace maintenance
+      - Historical restoration
+      - Industrial cleaning
+    language: English, Spanish, French
+  
+  europe:
+    name: Europe
+    countries:
+      - Germany
+      - United Kingdom
+      - France
+      - Italy
+      - Spain
+      - Netherlands
+      - Poland
+    description: Highly regulated market with strong environmental focus
+    market_characteristics:
+      maturity: mature
+      growth_rate: stable
+      market_size: large
+      technology_adoption: very high
+    regulatory_framework:
+      primary_agencies:
+        - EU Commission
+        - National health and safety authorities
+      laser_safety_standard: IEC 60825-1, EN 60825-1
+      environmental_regulations:
+        - REACH (Registration, Evaluation, Authorization of Chemicals)
+        - RoHS (Restriction of Hazardous Substances)
+        - Waste Framework Directive
+      worker_safety_requirements:
+        - CE marking mandatory
+        - Training certification required
+        - Risk assessment mandatory
+    common_applications:
+      - Automotive industry
+      - Cultural heritage restoration
+      - Manufacturing
+      - Marine maintenance
+    language: Multiple (German, English, French, Italian, Spanish)
+  
+  asia_pacific:
+    name: Asia Pacific
+    countries:
+      - China
+      - Japan
+      - South Korea
+      - India
+      - Australia
+      - Singapore
+      - Taiwan
+    description: Fastest growing market with diverse regulatory landscapes
+    market_characteristics:
+      maturity: emerging to mature
+      growth_rate: high
+      market_size: very large
+      technology_adoption: rapidly increasing
+    regulatory_framework:
+      primary_agencies:
+        - National standards organizations (varies by country)
+        - Ministry of Labor (varies by country)
+      laser_safety_standard: IEC 60825-1, JIS C6802 (Japan)
+      environmental_regulations:
+        - Varies significantly by country
+        - Increasingly stringent in developed markets
+      worker_safety_requirements:
+        - Training requirements vary
+        - PPE standards vary by country
+    common_applications:
+      - Electronics manufacturing
+      - Shipbuilding
+      - Infrastructure maintenance
+      - Industrial manufacturing
+    language: Multiple (Chinese, Japanese, Korean, English, Hindi)
+  
+  middle_east:
+    name: Middle East
+    countries:
+      - United Arab Emirates
+      - Saudi Arabia
+      - Qatar
+      - Kuwait
+      - Oman
+      - Israel
+    description: Growing market focused on oil & gas and infrastructure
+    market_characteristics:
+      maturity: emerging
+      growth_rate: high
+      market_size: medium
+      technology_adoption: moderate to high
+    regulatory_framework:
+      primary_agencies:
+        - National labor ministries
+        - Environmental protection agencies
+      laser_safety_standard: Typically follows IEC standards
+      environmental_regulations:
+        - Increasingly aligned with international standards
+        - Strong focus on worker safety in oil & gas
+      worker_safety_requirements:
+        - International standards typically required
+        - Training certification varies
+    common_applications:
+      - Oil & gas industry
+      - Petrochemical plants
+      - Infrastructure projects
+      - Marine applications
+    language: Arabic, English
+  
+  south_america:
+    name: South America
+    countries:
+      - Brazil
+      - Argentina
+      - Chile
+      - Colombia
+      - Peru
+    description: Developing market with growing industrial base
+    market_characteristics:
+      maturity: emerging
+      growth_rate: moderate
+      market_size: medium
+      technology_adoption: increasing
+    regulatory_framework:
+      primary_agencies:
+        - National labor ministries
+        - Environmental agencies (varies by country)
+      laser_safety_standard: Typically follows IEC or ANSI standards
+      environmental_regulations:
+        - Varies by country
+        - Growing environmental consciousness
+      worker_safety_requirements:
+        - Basic safety requirements
+        - Training standards developing
+    common_applications:
+      - Mining equipment
+      - Automotive industry
+      - Oil & gas
+      - Manufacturing
+    language: Spanish, Portuguese
+  
+  africa:
+    name: Africa
+    countries:
+      - South Africa
+      - Egypt
+      - Nigeria
+      - Kenya
+      - Morocco
+    description: Emerging market with localized demand
+    market_characteristics:
+      maturity: early stage
+      growth_rate: variable
+      market_size: small to medium
+      technology_adoption: limited but growing
+    regulatory_framework:
+      primary_agencies:
+        - National labor departments
+        - Industrial standards organizations
+      laser_safety_standard: Often follows international standards
+      environmental_regulations:
+        - Developing regulatory frameworks
+        - Varies significantly by country
+      worker_safety_requirements:
+        - Basic requirements in most countries
+        - Advanced requirements in South Africa
+    common_applications:
+      - Mining industry
+      - Infrastructure projects
+      - Manufacturing
+      - Cultural heritage
+    language: English, French, Arabic, local languages
+
+# Regional market trends
+market_trends:
+  automation_adoption:
+    high: [europe, north_america, asia_pacific]
+    medium: [middle_east]
+    low: [south_america, africa]
+  
+  environmental_focus:
+    high: [europe, north_america]
+    medium: [asia_pacific, middle_east]
+    low: [south_america, africa]
+  
+  technology_innovation:
+    leaders: [europe, north_america, asia_pacific]
+    followers: [middle_east, south_america]
+    emerging: [africa]

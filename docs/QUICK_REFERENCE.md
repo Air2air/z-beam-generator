@@ -52,6 +52,21 @@ images:
 
 ## 🎯 Most Common User Questions → Direct Solutions
 
+### "How do I access category data?" / "Where are material property ranges?"
+**→ Use CategoryDataLoader** - Modular access to split category files (NEW Oct 30, 2025)
+**→ Files**: `data/categories/` (8 focused files: machine_settings, material_properties, safety_regulatory, etc.)
+**→ Loader**: `utils/loaders/category_loader.py` with thread-safe caching
+**→ Example**:
+```python
+from utils.loaders.category_loader import CategoryDataLoader
+loader = CategoryDataLoader()
+machine_settings = loader.get_machine_settings()  # 7KB instead of 121KB
+material_properties = loader.get_material_properties()
+safety_data = loader.get_safety_regulatory()
+```
+**→ Benefits**: Load 7-15KB instead of 121KB (~90% improvement), automatic fallback to Categories.yaml
+**→ Documentation**: `docs/data/CATEGORY_DATA_MIGRATION_GUIDE.md`, `docs/data/CATEGORY_REFACTORING_COMPLETE.md`
+
 ### "How do I check if data is complete before generating?" / "How can I see data gaps?"
 **→ Commands**: 
 - `python3 run.py --data-completeness-report` (full status report)

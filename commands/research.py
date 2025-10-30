@@ -550,28 +550,8 @@ def run_data_verification(mode='--all'):
         return False
 
 
-def generate_safe_filename(material_name: str) -> str:
-    """
-    Generate a safe filename from material name by converting spaces and underscores to hyphens.
-    
-    Args:
-        material_name: The material name (e.g., "Stainless Steel")
-        
-    Returns:
-        Safe filename string (e.g., "stainless-steel")
-        
-    Example:
-        >>> generate_safe_filename("Stainless Steel")
-        'stainless-steel'
-        >>> generate_safe_filename("Ti-6Al-4V")
-        'ti-6al-4v'
-    """
-    import re
-    # Convert to lowercase, replace spaces and underscores with hyphens, 
-    # then remove any consecutive hyphens
-    safe_name = material_name.lower().replace(' ', '-').replace('_', '-')
-    # Remove consecutive hyphens and clean up
-    return re.sub(r'-+', '-', safe_name).strip('-')
+# Import from centralized utility
+from utils.filename import generate_safe_filename
 
 
 # =================================================================================

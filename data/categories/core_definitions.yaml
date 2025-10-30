@@ -1,0 +1,618 @@
+# Core Definitions
+# MERGED FILE: material_categories.yaml + material_types.yaml
+# 
+# Purpose: Centralized material category definitions with metadata
+# Contains: Category structure, subcategories, ranges, and metadata
+
+_metadata:
+  merged_from:
+    - material_categories.yaml
+    - material_types.yaml
+  merged_date: '2025-10-30'
+  description: Core material category definitions and structure
+  version: 2.0.0
+  consolidation: Option A - Data Architecture Simplification
+
+metadata:
+  version: 3.0.0
+  generated_date: '2025-10-14T12:00:00.000000'
+  source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
+  research_confidence_threshold: 75
+  total_categories: 10
+  total_subcategories: 0
+  enhancement_applied: true
+  additional_field_categories: 6
+  last_updated: '2025-09-29'
+  last_sync_date: '2025-09-29'
+  frontmatter_sync_applied: true
+  files_synchronized: 121
+  sync_timestamp: '2025-09-29T13:37:05.579878'
+  research_verification_applied: true
+  api_research_provider: deepseek
+  research_confidence_rate: 100.0
+  properties_verified: 9
+  categories_researched: 3
+  material_property_descriptions_enhanced: true
+  property_descriptions_count: 13
+  enhancement_notes: Added machine settings descriptions, material properties definitions,
+    environmental impact templates, and standardized application types. v2.3.0 applied
+    AI-verified property ranges based on materials science research with 100% high-confidence
+    results. v2.4.0 added universal regulatory standards optimization. v2.5.0 applied
+    comprehensive property consolidation eliminating 327 redundant property entries.
+    v2.6.0 enhanced with comprehensive material property descriptions for complete
+    frontmatter generation support. v2.6.0 enhanced with comprehensive material property
+    descriptions for complete frontmatter generation support.
+  priority2_integration_date: '2025-10-14T23:58:54.459430'
+  priority2_properties_updated: 24
+  priority2_categories_modified: 5
+  priority2_validation_status: INTEGRATED
+  authoritative_coverage: 11.1
+  priority2_source_additions: 15
+  source_enhancement_date: '2025-10-15T14:19:43.867334'
+  source_coverage_improved: true
+
+categories:
+  ceramic:
+    name: Ceramic Materials
+    description: Advanced ceramic materials including technical ceramics, porcelain,
+      and ceramic composites used in laser cleaning applications
+    subcategories: {}
+    common_applications:
+    - contamination removal
+    - surface cleaning
+    - restoration
+  
+  composite:
+    name: Composite Materials
+    description: Engineered composite materials including fiber-reinforced polymers,
+      matrix composites, and hybrid materials for specialized cleaning applications
+    subcategories: {}
+    common_applications:
+    - surface preparation
+    - contamination removal
+    - bonding preparation
+  
+  glass:
+    name: Glass Materials
+    description: Various glass types including optical glass, borosilicate, tempered
+      glass, and specialty glass materials for precision laser cleaning
+    subcategories: {}
+    common_applications:
+    - contamination removal
+    - surface preparation
+    - restoration
+  
+  masonry:
+    name: Masonry Materials
+    description: Construction masonry materials including concrete, brick, mortar,
+      stucco, and stone-based building materials for restoration cleaning
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+  
+  metal:
+    name: Metallic Materials
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
+    subcategories:
+      ferrous:
+        name: Ferrous Metals
+        description: Iron-based metals including steel, stainless steel, and cast
+          iron
+        materials:
+        - Steel
+        - Iron
+        - Stainless Steel
+        - Manganese
+        category_ranges:
+          density:
+            min: 7.2
+            max: 8.0
+            unit: g/cm³
+          thermalConductivity:
+            min: 15.0
+            max: 80.0
+            unit: W/m·K
+          thermalDestruction:
+            point:
+              min: 1370
+              max: 1538
+              unit: °C
+          hardness:
+            min: 120
+            max: 700
+            unit: HV
+        special_considerations:
+        - Magnetic properties require special handling
+        - Rust formation accelerated by moisture
+        - Heat-affected zones need monitoring
+      
+      non_ferrous:
+        name: Non-Ferrous Metals
+        description: Common non-iron metals including aluminum, copper, brass, bronze,
+          zinc
+        materials:
+        - Aluminum
+        - Copper
+        - Brass
+        - Bronze
+        - Zinc
+        - Tin
+        - Lead
+        category_ranges:
+          density:
+            min: 2.7
+            max: 11.34
+            unit: g/cm³
+          thermalConductivity:
+            min: 60.0
+            max: 429.0
+            unit: W/m·K
+          thermalDestruction:
+            point:
+              min: 232
+              max: 1085
+              unit: °C
+          laserReflectivity:
+            min: 60
+            max: 98
+            unit: '%'
+        special_considerations:
+        - High reflectivity requires power adjustment
+        - Excellent thermal conductivity enables rapid heat dissipation
+        - Oxidation layers affect cleaning parameters
+      
+      precious:
+        name: Precious Metals
+        description: Noble metals including gold, silver, platinum, palladium
+        materials:
+        - Gold
+        - Silver
+        - Platinum
+        - Palladium
+        - Rhodium
+        - Iridium
+        - Ruthenium
+        - Rhenium
+        category_ranges:
+          density:
+            min: 10.5
+            max: 22.6
+            unit: g/cm³
+          thermalConductivity:
+            min: 70.0
+            max: 429.0
+            unit: W/m·K
+          thermalDestruction:
+            point:
+              min: 962
+              max: 3422
+              unit: °C
+          laserReflectivity:
+            min: 80
+            max: 98
+            unit: '%'
+        special_considerations:
+        - Extremely high reflectivity requires specialized optics
+        - High value materials demand zero-damage cleaning
+        - Biocompatibility critical for medical applications
+      
+      refractory:
+        name: Refractory Metals
+        description: High-temperature resistant metals including tungsten, molybdenum,
+          tantalum
+        materials:
+        - Tungsten
+        - Molybdenum
+        - Tantalum
+        - Hafnium
+        - Niobium
+        - Zirconium
+        - Vanadium
+        category_ranges:
+          density:
+            min: 6.0
+            max: 19.3
+            unit: g/cm³
+          thermalConductivity:
+            min: 22.0
+            max: 174.0
+            unit: W/m·K
+          thermalDestruction:
+            point:
+              min: 1855
+              max: 3422
+              unit: °C
+          hardness:
+            min: 150
+            max: 3500
+            unit: HV
+        special_considerations:
+        - Extremely high melting points allow aggressive cleaning
+        - Oxidation at elevated temperatures
+        - High hardness requires careful parameter selection
+      
+      specialty:
+        name: Specialty Alloys & Reactive Metals
+        description: Advanced alloys and reactive metals including Inconel, Hastelloy,
+          beryllium, titanium
+        materials:
+        - Inconel
+        - Hastelloy
+        - Beryllium
+        - Titanium
+        - Cobalt
+        - Nickel
+        - Chromium
+        - Magnesium
+        - Gallium
+        - Indium
+        category_ranges:
+          density:
+            min: 0.53
+            max: 8.9
+            unit: g/cm³
+          thermalConductivity:
+            min: 6.0
+            max: 100.0
+            unit: W/m·K
+          thermalDestruction:
+            point:
+              min: 30
+              max: 1907
+              unit: °C
+          hardness:
+            min: 0.5
+            max: 1200
+            unit: HV
+        special_considerations:
+        - Beryllium - EXTREME TOXICITY, requires sealed processing
+        - Magnesium - FLAMMABLE, inert atmosphere required
+        - Titanium - High strength-to-weight, biocompatible
+        - Inconel/Hastelloy - Superior corrosion resistance
+        - Special safety protocols for each material
+    common_applications:
+    - rust removal
+    - oxide cleaning
+    - surface preparation
+    - paint stripping
+  
+  plastic:
+    name: Plastic Materials
+    description: Polymeric materials including thermoplastics, thermosets, elastomers,
+      and specialty plastic compounds for delicate cleaning applications
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+  
+  semiconductor:
+    name: Semiconductor Materials
+    description: Electronic semiconductor materials including silicon, gallium compounds,
+      and advanced semiconductor substrates for high-precision cleaning
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+  
+  stone:
+    name: Natural Stone Materials
+    description: Natural stone materials including granite, marble, limestone, slate,
+      and quarried stone for architectural restoration cleaning
+    subcategories:
+      igneous:
+        name: Igneous Stone
+        description: Volcanic and plutonic rocks formed from molten magma
+        materials:
+        - Granite
+        - Basalt
+        - Porphyry
+        category_ranges:
+          density:
+            min: 2.4
+            max: 3.0
+            unit: g/cm³
+          hardness:
+            min: 5
+            max: 7
+            unit: Mohs
+          thermalConductivity:
+            min: 1.7
+            max: 3.5
+            unit: W/m·K
+          compressiveStrength:
+            min: 1000
+            max: 3500
+            unit: MPa
+        special_considerations:
+        - Crystalline structure varies by cooling rate
+        - High hardness requires careful parameter selection
+        - Excellent durability for exterior applications
+        - Mineral composition affects laser absorption
+      
+      sedimentary:
+        name: Sedimentary Stone
+        description: Layered rocks formed from compressed sediments
+        materials:
+        - Limestone
+        - Sandstone
+        - Travertine
+        - Shale
+        category_ranges:
+          density:
+            min: 1.5
+            max: 2.7
+            unit: g/cm³
+          hardness:
+            min: 1
+            max: 4
+            unit: Mohs
+          porosity:
+            min: 5.0
+            max: 35.0
+            unit: '%'
+          thermalConductivity:
+            min: 0.2
+            max: 2.5
+            unit: W/m·K
+        special_considerations:
+        - High porosity absorbs moisture and contaminants
+        - Layered structure prone to delamination
+        - Softer than igneous - gentler cleaning required
+        - Calcite-based stones react to acids
+      
+      metamorphic:
+        name: Metamorphic Stone
+        description: Transformed rocks created under heat and pressure
+        materials:
+        - Marble
+        - Slate
+        - Quartzite
+        - Schist
+        - Serpentine
+        category_ranges:
+          density:
+            min: 2.3
+            max: 3.1
+            unit: g/cm³
+          hardness:
+            min: 3
+            max: 7
+            unit: Mohs
+          thermalConductivity:
+            min: 1.5
+            max: 5.0
+            unit: W/m·K
+          compressiveStrength:
+            min: 500
+            max: 2500
+            unit: MPa
+        special_considerations:
+        - Recrystallization creates unique textures
+        - Marble susceptible to acid etching
+        - Foliated stones (slate, schist) have directional properties
+        - Variable hardness within same piece
+      
+      mineral:
+        name: Mineral & Soft Stone
+        description: Soft, carvable stones and mineral deposits
+        materials:
+        - Alabaster
+        - Calcite
+        - Onyx
+        - Soapstone
+        - Bluestone
+        - Breccia
+        category_ranges:
+          density:
+            min: 1.8
+            max: 3.2
+            unit: g/cm³
+          hardness:
+            min: 1
+            max: 4
+            unit: Mohs
+          thermalConductivity:
+            min: 0.5
+            max: 3.0
+            unit: W/m·K
+          porosity:
+            min: 0.1
+            max: 15.0
+            unit: '%'
+        special_considerations:
+        - Very soft - extremely gentle cleaning required
+        - Often translucent or decorative
+        - Soapstone (talc) softest at Mohs 1
+        - Alabaster (gypsum) water-soluble - dry cleaning only
+        - High value decorative applications
+    common_applications:
+    - restoration
+    - contamination removal
+    - surface cleaning
+  
+  wood:
+    name: Wood Materials
+    description: Natural and engineered wood materials including hardwoods, softwoods,
+      plywood, and composite wood products for gentle cleaning applications
+    subcategories:
+      hardwood:
+        name: Hardwood
+        description: Deciduous trees with dense, slow-growing wood
+        materials:
+        - Oak
+        - Maple
+        - Walnut
+        - Cherry
+        - Mahogany
+        - Teak
+        - Beech
+        - Birch
+        - Hickory
+        - Ash
+        - Poplar
+        category_ranges:
+          density:
+            min: 0.5
+            max: 1.25
+            unit: g/cm³
+          hardness:
+            min: 900
+            max: 5000
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 12.0
+            unit: '%'
+          thermalDestruction:
+            point:
+              min: 300
+              max: 450
+              unit: °C
+        special_considerations:
+        - Dense grain structure requires precise cleaning
+        - Higher value than softwoods - minimize surface damage
+        - Varying hardness affects parameter selection
+        - Hickory/Maple hardest, Poplar softest
+        - Moisture content critical for stability
+      
+      softwood:
+        name: Softwood
+        description: Coniferous trees with faster-growing, lighter wood
+        materials:
+        - Pine
+        - Cedar
+        - Fir
+        - Redwood
+        - Willow
+        category_ranges:
+          density:
+            min: 0.3
+            max: 0.6
+            unit: g/cm³
+          hardness:
+            min: 20
+            max: 900
+            unit: lbf
+          moistureContent:
+            min: 8.0
+            max: 15.0
+            unit: '%'
+          thermalDestruction:
+            point:
+              min: 250
+              max: 380
+              unit: °C
+        special_considerations:
+        - Softer structure - gentler cleaning required
+        - Resin content in pine requires special attention
+        - Cedar naturally rot-resistant
+        - Redwood excellent outdoor durability
+        - Lower density enables faster processing
+      
+      engineered:
+        name: Engineered Wood Products
+        description: Manufactured wood composites and laminates
+        materials:
+        - Plywood
+        - MDF
+        category_ranges:
+          density:
+            min: 0.5
+            max: 0.85
+            unit: g/cm³
+          hardness:
+            min: 500
+            max: 1500
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 10.0
+            unit: '%'
+          thermalDestruction:
+            point:
+              min: 200
+              max: 350
+              unit: °C
+        special_considerations:
+        - Adhesives require careful temperature control
+        - Layered structure (plywood) needs even heating
+        - MDF highly porous - moisture sensitive
+        - Edge sealing critical for MDF
+        - Variable quality affects cleaning parameters
+      
+      exotic:
+        name: Exotic & Specialty Woods
+        description: Rare, high-value woods with unique properties
+        materials:
+        - Bamboo
+        - Rosewood
+        category_ranges:
+          density:
+            min: 0.6
+            max: 1.2
+            unit: g/cm³
+          hardness:
+            min: 1000
+            max: 4500
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 12.0
+            unit: '%'
+          thermalDestruction:
+            point:
+              min: 300
+              max: 450
+              unit: °C
+        special_considerations:
+        - Bamboo technically grass - very hard, fast-growing
+        - Rosewood endangered - CITES regulations apply
+        - Extremely high value - zero-damage requirement
+        - Unique grain patterns must be preserved
+        - Often used in musical instruments and fine furniture
+    common_applications:
+    - laser cleaning
+    - surface preparation
+  
+  rare-earth:
+    name: Rare-Earth Elements
+    description: Lanthanide series elements with unique magnetic and optical properties
+      used in laser cleaning applications
+    subcategories:
+      lanthanide:
+        name: Lanthanides
+        description: Elements 57-71 with f-orbital electron configurations
+        materials:
+        - Neodymium
+        - Dysprosium
+        - Terbium
+        - Praseodymium
+        - Cerium
+        - Lanthanum
+        - Yttrium
+        - Europium
+        category_ranges:
+          density:
+            min: 6.1
+            max: 9.8
+            unit: g/cm³
+          hardness:
+            min: 25
+            max: 60
+            unit: HV
+          thermalDestruction:
+            min: 1000
+            max: 1700
+            unit: K
+        special_considerations:
+        - Highly reactive - oxidize rapidly in air
+        - Magnetic properties critical for applications
+        - Expensive and strategically important materials
+        - Essential for permanent magnets and optical devices
+        - Require inert atmosphere for processing
+    common_applications:
+    - laser cleaning
+    - electronics manufacturing
+    - magnet production

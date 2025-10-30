@@ -124,7 +124,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.field_ordering_service = FieldOrderingService()
         # Unified validation setup (REQUIRED - aligned with audit system)
         try:
-            self.schema_validator = SchemaValidator(validation_mode="enhanced")
+            self.schema_validator = SchemaValidator()
             self.requirements_loader = RequirementsLoader()
             self.logger.info("Unified schema validation initialized")
         except Exception as e:
@@ -165,18 +165,20 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _load_materials_research_data(self):
         """Load materials science research data for accurate range calculations"""
         try:
-            from data.materials import load_materials_cached
-            materials_data = load_materials_cached()  # Use cached version for performance
+            # Use CategoryDataLoader to get machine settings from split files
+            from utils.loaders.category_loader import CategoryDataLoader
+            category_loader = CategoryDataLoader()
             
-            # Store machine settings ranges (from Materials.yaml - machine-specific)
-            if 'machineSettingsRanges' not in materials_data:
-                raise MaterialDataError("machineSettingsRanges section required in materials data - these ranges are easily researched and provide critical value")
-            self.machine_settings_ranges = materials_data['machineSettingsRanges']
-            self.logger.info("Loaded materials research data for enhanced range calculations")
+            # Load machine settings ranges from Categories.yaml (category-level data)
+            machine_settings_data = category_loader.get_machine_settings()
+            if 'machineSettingsRanges' not in machine_settings_data:
+                raise MaterialDataError("machineSettingsRanges section required in category data")
+            self.machine_settings_ranges = machine_settings_data['machineSettingsRanges']
+            self.logger.info("Loaded machine settings ranges from category data (via CategoryDataLoader)")
         except Exception as e:
-            self.logger.error(f"Failed to load materials research data: {e}")
-            # Fail-fast: Materials research data is required for accurate ranges
-            raise ValueError(f"Materials research data required for accurate property ranges: {e}")
+            self.logger.error(f"Failed to load machine settings data: {e}")
+            # Fail-fast: Machine settings data is required for accurate ranges
+            raise ValueError(f"Machine settings data required for accurate ranges: {e}")
         # Initialize PropertyValueResearcher (only if API client available)
         if self.api_client:
             try:
@@ -198,22 +200,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise ValueError(f"Categories.yaml required for enhanced category-level data: {e}")
             
     def _load_categories_data(self):
-        """Load Categories.yaml for enhanced category-level data and ranges"""
+        """Load category data using CategoryDataLoader for modular access"""
         try:
-            import yaml
-            from pathlib import Path
+            from utils.loaders.category_loader import CategoryDataLoader
             
-                        # Load Categories.yaml for enhanced category data
-            base_dir = Path(__file__).resolve().parents[3]
-            categories_enhanced_path = base_dir / "data" / "Categories.yaml"
-            categories_path = base_dir / "data" / "Categories.yaml"
-            categories_file = categories_enhanced_path if categories_enhanced_path.exists() else categories_path
+            # Use CategoryDataLoader to access split category files
+            category_loader = CategoryDataLoader()
             
-            if not categories_file.exists():
-                raise FileNotFoundError(f"Categories file not found: {categories_file}")
-                
-            with open(categories_file, 'r', encoding='utf-8') as file:
-                categories_data = yaml.safe_load(file)
+            # Load all category data (backward compatible - returns full structure)
+            categories_data = category_loader.get_all_categories()
             # Extract category ranges from Categories.yaml structure
             self.category_ranges = {}
             if 'categories' in categories_data:

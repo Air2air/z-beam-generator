@@ -116,8 +116,12 @@ def main():
     # Argument parser setup
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
     
-    # Content Generation Commands
-    parser.add_argument("--material", help="Generate frontmatter for specific material")
+    # Content Generation Commands (Multi-Type Support)
+    parser.add_argument("--content-type", help="Content type: material, region, application, thesaurus")
+    parser.add_argument("--identifier", help="Content identifier (name/ID for any type)")
+    
+    # Legacy Material-Specific Commands (Backward Compatibility)
+    parser.add_argument("--material", help="Generate frontmatter for specific material (legacy)")
     parser.add_argument("--all", action="store_true", help="Generate frontmatter for all materials")
     parser.add_argument("--caption", help="Generate AI-powered caption")
     parser.add_argument("--subtitle", help="Generate AI-powered subtitle")
@@ -191,48 +195,69 @@ def main():
     if args.content_validation_report:
         return generate_content_validation_report(args.content_validation_report)
     
-    # Service initialization for complex commands
-    print("🔧 Initializing services...")
-    
-    try:
-        from scripts.pipeline_integration import (
-            get_pre_generation_service,
-            get_research_service, 
-            get_quality_service
-        )
+    # NEW: Multi-type orchestrator generation (Phase 1 architecture)
+    if args.content_type and args.identifier:
+        from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+        from api.client_factory import create_api_client
         
-        pre_gen_service = get_pre_generation_service()
-        research_service = get_research_service()
-        quality_service = get_quality_service()
+        print(f"🚀 Generating {args.content_type} frontmatter: {args.identifier}")
         
-        print("✅ All services initialized")
-        
-    except Exception as e:
-        print(f"🚨 CRITICAL: Service initialization failed: {e}")
-        return False
-    
-    # Fail-fast validation
-    print("\n🚨 ENFORCING FAIL-FAST VALIDATION")
-    
-    try:
-        validation_result = pre_gen_service.validate_hierarchical()
-        
-        if not validation_result.success:
-            print("🚨 CRITICAL: Validation failure")
-            return False
+        try:
+            # Initialize API client (optional for data-only mode)
+            api_client = create_api_client("grok") if not args.data_only else None
             
-    except Exception as e:
-        print(f"🚨 CRITICAL: Validation failed: {e}")
-        return False
+            # Create orchestrator
+            orchestrator = FrontmatterOrchestrator(
+                api_client=api_client,
+                enforce_completeness=args.enforce_completeness
+            )
+            
+            # Check if content type is supported
+            if not orchestrator.is_type_supported(args.content_type):
+                supported = ', '.join(orchestrator.get_supported_types())
+                print(f"❌ Content type '{args.content_type}' not supported")
+                print(f"   Supported types: {supported}")
+                return False
+            
+            # TODO: Get author data from config or args
+            author_data = {
+                'name': 'Todd Dunning',
+                'country': 'United States'
+            }
+            
+            # Generate content with author voice
+            result = orchestrator.generate(
+                content_type=args.content_type,
+                identifier=args.identifier,
+                author_data=author_data
+            )
+            
+            if result.success:
+                output_path = result.content  # Output path stored in content field
+                print(f"✅ Generated → {output_path}")
+                print(f"   🎯 Author voice applied: {author_data['country']}")
+                return True
+            else:
+                print(f"❌ Generation failed: {result.error_message}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ Generation error: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    # Service initialization is skipped for simple material generation
+    # Pre-generation validation runs automatically within components
     
     # Additional imports for material generation
     from generators.dynamic_generator import DynamicGenerator
     from api.client_factory import create_api_client
     from data.materials import load_materials_cached as load_materials, clear_materials_cache
-    from utils.slugify import generate_safe_filename
+    from utils.filename import generate_safe_filename
     
     try:
-        from scripts.pipeline_integration import (
+        from commands.common import (
             validate_material_pre_generation, 
             validate_and_improve_frontmatter, 
             validate_batch_generation
@@ -273,39 +298,76 @@ def main():
         print(f"🚀 Generating frontmatter for {args.material}")
         
         try:
-            materials_data_dict = load_materials()
-            from data.materials import get_material_by_name
-            material_info = get_material_by_name(args.material, materials_data_dict)
-            
-            if not material_info:
-                print(f"❌ Material '{args.material}' not found")
-                return False
-            
-            api_client = create_api_client("grok") if not args.data_only else None
-            generator = DynamicGenerator()
-            
-            result = generator.generate_component(
-                material=args.material,
-                component_type='frontmatter',
-                api_client=api_client,
-                frontmatter_data=None,
-                material_data=material_info
-            )
-            
-            if result.success:
-                output_dir = "content/frontmatter"
-                os.makedirs(output_dir, exist_ok=True)
-                filename = generate_safe_filename(args.material)
-                output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
+            # Try new orchestrator first (Phase 1 architecture)
+            try:
+                from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
                 
-                with open(output_file, 'w') as f:
-                    f.write(result.content)
+                api_client = create_api_client("grok") if not args.data_only else None
                 
-                print(f"✅ Generated → {output_file}")
-                return True
-            else:
-                print(f"❌ Generation failed: {result.error_message}")
-                return False
+                orchestrator = FrontmatterOrchestrator(
+                    api_client=api_client,
+                    enforce_completeness=args.enforce_completeness
+                )
+                
+                # Author data (TODO: Make configurable)
+                author_data = {
+                    'name': 'Todd Dunning',
+                    'country': 'United States'
+                }
+                
+                result = orchestrator.generate(
+                    content_type='material',
+                    identifier=args.material,
+                    author_data=author_data
+                )
+                
+                if result.success:
+                    output_path = result.content  # Output path stored in content field
+                    print(f"✅ Generated → {output_path}")
+                    print(f"   🎯 Author voice applied: {author_data['country']}")
+                    return True
+                else:
+                    print(f"❌ Generation failed: {result.error_message}")
+                    return False
+                    
+            except ImportError:
+                # Fallback to legacy generator if orchestrator not available
+                print("⚠️  Using legacy generator (orchestrator not available)")
+                
+                materials_data_dict = load_materials()
+                from data.materials import get_material_by_name
+                material_info = get_material_by_name(args.material, materials_data_dict)
+                
+                if not material_info:
+                    print(f"❌ Material '{args.material}' not found")
+                    return False
+                
+                api_client = create_api_client("grok") if not args.data_only else None
+                generator = DynamicGenerator()
+                
+                result = generator.generate_component(
+                    material=args.material,
+                    component_type='frontmatter',
+                    api_client=api_client,
+                    frontmatter_data=None,
+                    material_data=material_info
+                )
+            
+                # Legacy generator result handling
+                if result.success:
+                    output_dir = "content/frontmatter/materials"
+                    os.makedirs(output_dir, exist_ok=True)
+                    filename = generate_safe_filename(args.material)
+                    output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
+                    
+                    with open(output_file, 'w') as f:
+                        f.write(result.content)
+                    
+                    print(f"✅ Generated → {output_file}")
+                    return True
+                else:
+                    print(f"❌ Generation failed: {result.error_message}")
+                    return False
                 
         except Exception as e:
             print(f"❌ Generation failed: {e}")

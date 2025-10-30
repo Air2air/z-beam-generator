@@ -1,0 +1,339 @@
+# Contaminants Database
+# Source of truth for all contaminant types and their properties
+# Used by ContaminantFrontmatterGenerator
+
+_metadata:
+  version: 1.0.0
+  created: '2025-10-30'
+  description: Database of contaminant types for laser cleaning operations
+  total_contaminants: 8
+  categories:
+    - corrosion
+    - coatings
+    - biological
+    - industrial
+    - environmental
+
+contaminants:
+  rust:
+    name: Rust
+    category: corrosion
+    description: Iron oxide corrosion products formed on ferrous metals
+    chemical_composition:
+      - Fe2O3  # Hematite (red rust)
+      - Fe3O4  # Magnetite (black rust)
+      - FeO(OH)  # Goethite (yellow-brown rust)
+    properties:
+      color: reddish-brown to black
+      adhesion_strength: moderate to high
+      typical_thickness:
+        min: 10
+        max: 1000
+        unit: μm
+      porosity: high
+    common_substrates:
+      - Steel
+      - Iron
+      - Cast Iron
+      - Stainless Steel
+    formation_mechanism: Oxidation of iron in presence of water and oxygen
+    removal_difficulty: 3  # 1-5 scale
+    health_hazards:
+      - Respiratory irritation from airborne particles
+      - Skin irritation on contact
+    applications:
+      - Restoration
+      - Surface Preparation
+      - Corrosion Prevention
+  
+  paint:
+    name: Paint
+    category: coatings
+    description: Organic coating layers applied for protection or decoration
+    types:
+      - acrylic
+      - epoxy
+      - alkyd
+      - latex
+      - polyurethane
+      - powder coating
+    properties:
+      adhesion_strength: high
+      typical_thickness:
+        min: 25
+        max: 500
+        unit: μm
+      flexibility: varies by type
+    common_substrates:
+      - Metal
+      - Wood
+      - Concrete
+      - Plastic
+    formation_mechanism: Applied coating layer
+    removal_difficulty: 4  # Varies by paint type and age
+    health_hazards:
+      - VOC exposure during removal
+      - Lead paint hazard (pre-1978)
+      - Heavy metal content in industrial coatings
+    applications:
+      - Restoration
+      - Repainting Preparation
+      - Industrial Cleaning
+  
+  oxide_layer:
+    name: Oxide Layer
+    category: corrosion
+    description: Thin metal oxide surface layers formed through oxidation
+    chemical_composition:
+      - Al2O3  # Aluminum oxide
+      - CuO/Cu2O  # Copper oxide
+      - TiO2  # Titanium oxide
+      - Cr2O3  # Chromium oxide
+    properties:
+      color: varies (clear to dark)
+      adhesion_strength: very high
+      typical_thickness:
+        min: 0.5
+        max: 50
+        unit: μm
+      hardness: high
+    common_substrates:
+      - Aluminum
+      - Copper
+      - Titanium
+      - Stainless Steel
+    formation_mechanism: Natural oxidation or thermal processing
+    removal_difficulty: 4  # Strongly bonded to substrate
+    health_hazards:
+      - Minimal when properly controlled
+      - Metal fume fever risk at high temperatures
+    applications:
+      - Welding Preparation
+      - Bonding Preparation
+      - Surface Activation
+  
+  grease:
+    name: Grease & Oil
+    category: industrial
+    description: Hydrocarbon-based lubricants and industrial residues
+    types:
+      - mineral oil
+      - synthetic lubricants
+      - hydraulic fluid
+      - cutting fluid
+      - silicone grease
+    properties:
+      viscosity: varies
+      typical_thickness:
+        min: 1
+        max: 500
+        unit: μm
+      flash_point: varies by type
+    common_substrates:
+      - Metal
+      - Ceramic
+      - Composite
+      - Plastic
+    formation_mechanism: Lubrication, processing, or contamination
+    removal_difficulty: 2  # Relatively easy but may require multiple passes
+    health_hazards:
+      - Skin irritation
+      - Fire hazard during laser ablation
+      - Toxic fume generation possible
+    applications:
+      - Manufacturing Prep
+      - Precision Cleaning
+      - Electronics Assembly
+  
+  biological_growth:
+    name: Biological Growth
+    category: biological
+    description: Living organisms and organic matter on surfaces
+    types:
+      - algae
+      - mold
+      - lichen
+      - moss
+      - bacterial biofilm
+      - fungal growth
+    properties:
+      color: green to black
+      adhesion_strength: low to moderate
+      typical_thickness:
+        min: 100
+        max: 5000
+        unit: μm
+      moisture_content: high
+    common_substrates:
+      - Stone
+      - Masonry
+      - Wood
+      - Concrete
+    formation_mechanism: Biological colonization in moist environments
+    removal_difficulty: 2  # Easy but may regrow
+    health_hazards:
+      - Allergen exposure
+      - Respiratory irritation
+      - Pathogenic organism risk
+    applications:
+      - Restoration
+      - Conservation
+      - Historical Preservation
+  
+  carbon_deposits:
+    name: Carbon Deposits
+    category: industrial
+    description: Carbonaceous buildup from combustion or high-temperature processes
+    chemical_composition:
+      - Elemental carbon
+      - Polycyclic aromatic hydrocarbons (PAHs)
+      - Soot particles
+    properties:
+      color: black
+      adhesion_strength: moderate to high
+      typical_thickness:
+        min: 10
+        max: 1000
+        unit: μm
+      porosity: high
+    common_substrates:
+      - Metal
+      - Ceramic
+      - Stone
+    formation_mechanism: Incomplete combustion or pyrolysis
+    removal_difficulty: 3
+    health_hazards:
+      - Carcinogenic PAH exposure
+      - Respiratory hazard
+      - Skin absorption risk
+    applications:
+      - Engine Cleaning
+      - Industrial Equipment
+      - Exhaust Systems
+  
+  mineral_deposits:
+    name: Mineral Deposits
+    category: environmental
+    description: Inorganic mineral buildup from water or environmental exposure
+    types:
+      - calcium carbonate (limescale)
+      - calcium sulfate
+      - silica deposits
+      - salt efflorescence
+    properties:
+      color: white to gray
+      adhesion_strength: moderate
+      typical_thickness:
+        min: 10
+        max: 500
+        unit: μm
+      hardness: moderate to high
+    common_substrates:
+      - Metal
+      - Stone
+      - Concrete
+      - Glass
+    formation_mechanism: Precipitation from water or atmospheric exposure
+    removal_difficulty: 3
+    health_hazards:
+      - Minimal
+      - Respiratory irritation from dust
+    applications:
+      - Restoration
+      - Maintenance
+      - Industrial Cleaning
+  
+  adhesive_residue:
+    name: Adhesive Residue
+    category: industrial
+    description: Sticky residues from tapes, labels, and bonding agents
+    types:
+      - pressure-sensitive adhesive
+      - epoxy residue
+      - silicone sealant
+      - construction adhesive
+    properties:
+      color: clear to amber
+      adhesion_strength: very high
+      typical_thickness:
+        min: 10
+        max: 1000
+        unit: μm
+      tackiness: high
+    common_substrates:
+      - Metal
+      - Plastic
+      - Glass
+      - Wood
+    formation_mechanism: Applied adhesive or tape removal
+    removal_difficulty: 4  # Strongly bonded
+    health_hazards:
+      - Chemical exposure during removal
+      - Solvent vapors
+      - Skin irritation
+    applications:
+      - Surface Preparation
+      - Manufacturing
+      - Restoration
+
+# Laser parameter guidelines by contaminant category
+laser_guidelines:
+  corrosion:
+    wavelength_preference: 1064nm (Nd:YAG)
+    typical_power_range:
+      min: 100
+      max: 500
+      unit: W
+    pulse_width_range:
+      min: 50
+      max: 200
+      unit: ns
+    notes: High contrast with substrate enables selective removal
+  
+  coatings:
+    wavelength_preference: 1064nm or 532nm
+    typical_power_range:
+      min: 200
+      max: 1000
+      unit: W
+    pulse_width_range:
+      min: 100
+      max: 300
+      unit: ns
+    notes: Multiple passes often required; avoid substrate damage
+  
+  biological:
+    wavelength_preference: 1064nm
+    typical_power_range:
+      min: 50
+      max: 300
+      unit: W
+    pulse_width_range:
+      min: 100
+      max: 300
+      unit: ns
+    notes: Low power to avoid substrate damage; moisture content affects removal
+  
+  industrial:
+    wavelength_preference: varies by contaminant
+    typical_power_range:
+      min: 100
+      max: 800
+      unit: W
+    pulse_width_range:
+      min: 50
+      max: 250
+      unit: ns
+    notes: Fire hazard monitoring required for flammable residues
+  
+  environmental:
+    wavelength_preference: 1064nm
+    typical_power_range:
+      min: 100
+      max: 500
+      unit: W
+    pulse_width_range:
+      min: 100
+      max: 300
+      unit: ns
+    notes: Hard deposits may require higher energy density

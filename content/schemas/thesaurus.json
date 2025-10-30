@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://z-beam.com/schemas/thesaurus_frontmatter.json",
+  "title": "Thesaurus Frontmatter Schema",
+  "description": "JSON Schema for laser cleaning terminology frontmatter files",
+  "type": "object",
+  "required": [
+    "layout",
+    "title",
+    "term",
+    "definition"
+  ],
+  "properties": {
+    "layout": {
+      "type": "string",
+      "const": "thesaurus",
+      "description": "Layout type for thesaurus pages"
+    },
+    "title": {
+      "type": "string",
+      "description": "Page title"
+    },
+    "term": {
+      "type": "string",
+      "description": "The technical term being defined"
+    },
+    "definition": {
+      "type": "string",
+      "description": "Clear definition of the term"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["process", "physics", "equipment", "measurement", "safety"],
+      "description": "Term category"
+    },
+    "generated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of generation"
+    },
+    "placeholder": {
+      "type": "boolean",
+      "description": "Whether this is placeholder content"
+    },
+    "relatedTerms": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Related terms and concepts"
+    },
+    "synonyms": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Alternative names for this term"
+    },
+    "technicalDetails": {
+      "type": "object",
+      "description": "Technical specifications and details",
+      "properties": {
+        "unit": {"type": "string"},
+        "typical_range": {"type": "string"},
+        "calculation": {"type": "string"},
+        "measurement": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "applications": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Where this term/concept is applied"
+    },
+    "relatedConcepts": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Related scientific concepts"
+    },
+    "author": {
+      "type": "object",
+      "description": "Author information",
+      "properties": {
+        "name": {"type": "string"},
+        "country": {"type": "string"},
+        "expertise": {"type": "string"}
+      }
+    },
+    "_metadata": {
+      "type": "object",
+      "description": "Generation metadata",
+      "properties": {
+        "generator": {"type": "string"},
+        "version": {"type": "string"},
+        "content_type": {"type": "string"},
+        "status": {"type": "string"}
+      }
+    }
+  }
+}

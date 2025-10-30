@@ -37,6 +37,8 @@ Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE_COMPLETE.md**](core/ARCHITECTURE_COMPLETE.md) - ✅ **CONSOLIDATED** Complete system architecture guide *(Oct 22, 2025)*
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
 - [**DATA_STRUCTURE_UPDATE_OCT2025.md**](DATA_STRUCTURE_UPDATE_OCT2025.md) - ✅ **NEW** Complete data structure transformation guide *(Oct 25, 2025)*
+- [**data/CATEGORY_REFACTORING_COMPLETE.md**](data/CATEGORY_REFACTORING_COMPLETE.md) - ✅ **NEW** Category data split into 8 modular files (90% perf improvement) *(Oct 30, 2025)*
+- [**data/CATEGORY_DATA_MIGRATION_GUIDE.md**](data/CATEGORY_DATA_MIGRATION_GUIDE.md) - Complete CategoryDataLoader migration guide with examples *(Oct 30, 2025)*
 - [**DATA_COMPLETENESS_COMPLETE_GUIDE.md**](guides/DATA_COMPLETENESS_COMPLETE_GUIDE.md) - ✅ **CONSOLIDATED** Complete data completeness guide *(Oct 22, 2025)*
 - [**PROPERTY_SYSTEM_COMPLETE.md**](guides/PROPERTY_SYSTEM_COMPLETE.md) - ✅ **CONSOLIDATED** Complete property system guide *(Oct 22, 2025)*
 - [**ZERO_NULL_POLICY.md**](ZERO_NULL_POLICY.md) - ✅ Zero null value policy and AI research methodology *(Oct 16, 2025)*

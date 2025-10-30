@@ -1,0 +1,465 @@
+# Applications Database
+# Source of truth for laser cleaning applications and use cases
+# Used by ApplicationFrontmatterGenerator
+
+_metadata:
+  version: 1.0.0
+  created: '2025-10-30'
+  description: Laser cleaning applications across industries and use cases
+  total_applications: 12
+  categories:
+    - industrial
+    - restoration
+    - maintenance
+    - manufacturing
+    - specialized
+
+applications:
+  automotive_manufacturing:
+    name: Automotive Manufacturing
+    category: manufacturing
+    description: Laser cleaning in automotive production and assembly processes
+    industry: Automotive
+    use_cases:
+      - Weld seam cleaning before painting
+      - Adhesive bonding surface preparation
+      - Paint removal for rework
+      - Rust removal from body panels
+      - Tire mold cleaning
+      - Engine component cleaning
+    common_materials:
+      - Steel
+      - Aluminum
+      - Stainless Steel
+      - Cast Iron
+    common_contaminants:
+      - Oxide layers
+      - Grease and oil
+      - Paint
+      - Rust
+      - Release agents
+    process_requirements:
+      automation_level: high
+      throughput: high
+      precision_level: high
+      quality_standards: [ISO 9001, IATF 16949]
+    benefits:
+      - Zero chemical waste
+      - Improved paint adhesion
+      - Faster processing
+      - Consistent quality
+      - Reduced defect rates
+    challenges:
+      - High initial investment
+      - Integration complexity
+      - Operator training
+  
+  aerospace_maintenance:
+    name: Aerospace Maintenance
+    category: maintenance
+    description: Cleaning and surface preparation for aircraft components
+    industry: Aerospace
+    use_cases:
+      - Paint stripping from aircraft
+      - Corrosion removal
+      - Engine component cleaning
+      - Composite repair preparation
+      - Landing gear maintenance
+      - Turbine blade cleaning
+    common_materials:
+      - Aluminum alloys
+      - Titanium
+      - Stainless Steel
+      - Composites
+      - Nickel alloys
+    common_contaminants:
+      - Paint and coatings
+      - Corrosion products
+      - Carbon deposits
+      - Grease and oil
+    process_requirements:
+      automation_level: medium
+      throughput: medium
+      precision_level: very high
+      quality_standards: [AS9100, FAA regulations]
+    benefits:
+      - No substrate damage
+      - Selective paint removal
+      - Reduced downtime
+      - Environmentally friendly
+      - Precision cleaning
+    challenges:
+      - Strict certification requirements
+      - Material sensitivity
+      - High quality standards
+  
+  historical_restoration:
+    name: Historical Restoration
+    category: restoration
+    description: Conservation and restoration of cultural heritage and monuments
+    industry: Cultural Heritage
+    use_cases:
+      - Stone monument cleaning
+      - Sculpture restoration
+      - Building facade cleaning
+      - Graffiti removal
+      - Artifact conservation
+      - Mural cleaning
+    common_materials:
+      - Stone (marble, granite, limestone)
+      - Masonry
+      - Bronze
+      - Wood
+      - Terracotta
+    common_contaminants:
+      - Biological growth
+      - Environmental pollution
+      - Graffiti
+      - Old coatings
+      - Mineral deposits
+    process_requirements:
+      automation_level: low
+      throughput: low
+      precision_level: very high
+      quality_standards: [UNESCO guidelines, conservation standards]
+    benefits:
+      - Minimal material loss
+      - Selective cleaning
+      - Reversible process
+      - Preserves patina
+      - No chemical damage
+    challenges:
+      - Material fragility
+      - Historical value
+      - Site access
+      - Weather dependency
+  
+  marine_maintenance:
+    name: Marine Maintenance
+    category: maintenance
+    description: Cleaning and maintenance of ships and marine structures
+    industry: Marine
+    use_cases:
+      - Hull cleaning
+      - Deck preparation
+      - Rust removal
+      - Paint stripping
+      - Weld preparation
+      - Propeller cleaning
+    common_materials:
+      - Steel
+      - Stainless Steel
+      - Aluminum
+      - Bronze
+    common_contaminants:
+      - Rust
+      - Marine growth
+      - Paint
+      - Salt deposits
+      - Grease
+    process_requirements:
+      automation_level: low to medium
+      throughput: medium
+      precision_level: medium
+      quality_standards: [IMO regulations, classification society rules]
+    benefits:
+      - No abrasive waste
+      - Reduced dry dock time
+      - Environmentally compliant
+      - Effective rust removal
+    challenges:
+      - Large surface areas
+      - Environmental conditions
+      - Accessibility
+  
+  electronics_manufacturing:
+    name: Electronics Manufacturing
+    category: manufacturing
+    description: Precision cleaning in electronics production
+    industry: Electronics
+    use_cases:
+      - PCB cleaning
+      - Connector cleaning
+      - Lead frame cleaning
+      - Wire bonding preparation
+      - Solder mask removal
+      - Component rework
+    common_materials:
+      - Silicon
+      - Copper
+      - Gold
+      - Aluminum
+      - Ceramics
+    common_contaminants:
+      - Flux residue
+      - Oxidation
+      - Contamination particles
+      - Organic residues
+    process_requirements:
+      automation_level: very high
+      throughput: very high
+      precision_level: extreme
+      quality_standards: [IPC standards, ISO cleanroom]
+    benefits:
+      - Microscopic precision
+      - No substrate damage
+      - Contaminant-free process
+      - Selective cleaning
+    challenges:
+      - Extreme precision required
+      - Heat sensitivity
+      - ESD protection
+  
+  oil_gas_industry:
+    name: Oil & Gas Industry
+    category: industrial
+    description: Cleaning of oil and gas production equipment
+    industry: Oil & Gas
+    use_cases:
+      - Pipeline cleaning
+      - Valve maintenance
+      - Tank cleaning
+      - Drilling equipment
+      - Refinery equipment
+      - Wellhead maintenance
+    common_materials:
+      - Steel
+      - Stainless Steel
+      - Alloy steels
+      - Cast Iron
+    common_contaminants:
+      - Rust
+      - Scale deposits
+      - Hydrocarbons
+      - Paint
+      - Corrosion products
+    process_requirements:
+      automation_level: medium
+      throughput: medium
+      precision_level: medium
+      quality_standards: [API standards, ASME codes]
+    benefits:
+      - No chemical disposal
+      - Safe for petrochemical environments
+      - Effective scale removal
+      - Reduced downtime
+    challenges:
+      - Hazardous environments
+      - Thick deposits
+      - Field conditions
+  
+  medical_device_cleaning:
+    name: Medical Device Cleaning
+    category: specialized
+    description: Cleaning of medical instruments and implants
+    industry: Medical
+    use_cases:
+      - Surgical instrument cleaning
+      - Implant surface preparation
+      - Stent cleaning
+      - Orthopedic implants
+      - Dental instruments
+    common_materials:
+      - Stainless Steel
+      - Titanium
+      - Cobalt-Chromium alloys
+      - Ceramics
+    common_contaminants:
+      - Manufacturing residues
+      - Oxides
+      - Biofilms
+      - Organic contaminants
+    process_requirements:
+      automation_level: high
+      throughput: medium
+      precision_level: very high
+      quality_standards: [FDA, ISO 13485, MDR]
+    benefits:
+      - Biocompatible process
+      - No chemical residue
+      - Precision cleaning
+      - Surface activation
+    challenges:
+      - Regulatory compliance
+      - Validation requirements
+      - Material sensitivity
+  
+  mold_cleaning:
+    name: Mold Cleaning
+    category: industrial
+    description: Cleaning of injection molds and tooling
+    industry: Manufacturing
+    use_cases:
+      - Plastic injection molds
+      - Rubber molds
+      - Die-casting molds
+      - Tire molds
+      - Glass molds
+    common_materials:
+      - Tool steel
+      - Stainless Steel
+      - Aluminum
+      - Chromium-plated surfaces
+    common_contaminants:
+      - Release agents
+      - Rubber residue
+      - Plastic buildup
+      - Carbon deposits
+      - Scale
+    process_requirements:
+      automation_level: medium
+      throughput: medium
+      precision_level: high
+      quality_standards: [ISO 9001]
+    benefits:
+      - No mold damage
+      - Intricate geometry cleaning
+      - Reduced downtime
+      - No disassembly required
+    challenges:
+      - Complex geometries
+      - Temperature sensitivity
+      - Surface finish preservation
+  
+  nuclear_decontamination:
+    name: Nuclear Decontamination
+    category: specialized
+    description: Radioactive contamination removal from nuclear facilities
+    industry: Nuclear
+    use_cases:
+      - Reactor vessel cleaning
+      - Pipe decontamination
+      - Decommissioning
+      - Hot cell maintenance
+      - Waste reduction
+    common_materials:
+      - Stainless Steel
+      - Carbon steel
+      - Concrete
+    common_contaminants:
+      - Radioactive contamination
+      - Oxide layers
+      - Scale deposits
+    process_requirements:
+      automation_level: very high (remote operation)
+      throughput: low
+      precision_level: very high
+      quality_standards: [NRC regulations, IAEA standards]
+    benefits:
+      - Minimal secondary waste
+      - Remote operation capability
+      - Precise depth control
+      - Reduced radiation exposure
+    challenges:
+      - Radiation safety
+      - Remote operation
+      - Waste disposal
+      - Regulatory complexity
+  
+  solar_panel_maintenance:
+    name: Solar Panel Maintenance
+    category: maintenance
+    description: Cleaning of photovoltaic panels and solar collectors
+    industry: Renewable Energy
+    use_cases:
+      - Solar panel cleaning
+      - Concentrated solar collector cleaning
+      - Anti-reflective coating removal
+      - Grid connection cleaning
+    common_materials:
+      - Glass
+      - Silicon
+      - Aluminum frames
+    common_contaminants:
+      - Dust and dirt
+      - Biological growth
+      - Mineral deposits
+      - Environmental pollution
+    process_requirements:
+      automation_level: medium to high
+      throughput: high
+      precision_level: medium
+      quality_standards: [IEC standards]
+    benefits:
+      - No water required
+      - Improved efficiency
+      - No chemical residue
+      - Automated operation
+    challenges:
+      - Large surface areas
+      - Field conditions
+      - Glass sensitivity
+  
+  shipbuilding:
+    name: Shipbuilding
+    category: manufacturing
+    description: Surface preparation and cleaning in ship construction
+    industry: Marine
+    use_cases:
+      - Weld seam cleaning
+      - Surface preparation for coating
+      - Rust removal
+      - Paint removal for repair
+      - Precision cleaning
+    common_materials:
+      - Steel
+      - Aluminum
+      - Stainless Steel
+    common_contaminants:
+      - Mill scale
+      - Rust
+      - Paint
+      - Grease
+      - Weld oxides
+    process_requirements:
+      automation_level: medium
+      throughput: high
+      precision_level: medium
+      quality_standards: [Classification society rules, ISO 12944]
+    benefits:
+      - Improved coating adhesion
+      - Reduced preparation time
+      - No abrasive waste
+      - Better quality control
+    challenges:
+      - Large structures
+      - Production pace
+      - Environmental conditions
+  
+  rail_transport:
+    name: Rail Transport
+    category: maintenance
+    description: Maintenance and restoration of railway equipment
+    industry: Transportation
+    use_cases:
+      - Rolling stock cleaning
+      - Track component maintenance
+      - Graffiti removal
+      - Paint stripping
+      - Brake component cleaning
+      - Wheel cleaning
+    common_materials:
+      - Steel
+      - Stainless Steel
+      - Aluminum
+      - Cast Iron
+    common_contaminants:
+      - Rust
+      - Paint
+      - Graffiti
+      - Brake dust
+      - Grease
+    process_requirements:
+      automation_level: low to medium
+      throughput: medium
+      precision_level: medium
+      quality_standards: [Railway safety standards]
+    benefits:
+      - Fast turnaround
+      - No chemical waste
+      - Effective rust removal
+      - Graffiti prevention
+    challenges:
+      - Large surface areas
+      - Field operations
+      - Weather conditions

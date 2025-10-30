@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://z-beam.com/schemas/contaminant_frontmatter.json",
+  "title": "Contaminant Frontmatter Schema",
+  "description": "JSON Schema for contaminant laser cleaning frontmatter files",
+  "type": "object",
+  "required": [
+    "layout",
+    "title",
+    "contaminant",
+    "description"
+  ],
+  "properties": {
+    "layout": {
+      "type": "string",
+      "const": "contaminant",
+      "description": "Layout type for contaminant pages"
+    },
+    "title": {
+      "type": "string",
+      "description": "Page title"
+    },
+    "contaminant": {
+      "type": "string",
+      "description": "Contaminant name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the contaminant and cleaning process"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["corrosion", "coatings", "biological", "industrial", "environmental"],
+      "description": "Contaminant category"
+    },
+    "generated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of generation"
+    },
+    "placeholder": {
+      "type": "boolean",
+      "description": "Whether this is placeholder content"
+    },
+    "contaminantProperties": {
+      "type": "object",
+      "description": "Contaminant-specific properties",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "chemical_formula": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "adhesion_strength": {
+          "type": "string",
+          "enum": ["low", "moderate", "high", "very high"]
+        },
+        "removal_difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "typical_thickness": {
+          "oneOf": [
+            {"type": "string"},
+            {
+              "type": "object",
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"},
+                "unit": {"type": "string"}
+              }
+            }
+          ]
+        },
+        "common_substrates": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "health_hazards": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "laserParameters": {
+      "type": "object",
+      "description": "Laser parameters for cleaning this contaminant",
+      "properties": {
+        "wavelength": {
+          "type": "object",
+          "properties": {
+            "min": {"type": "number"},
+            "max": {"type": "number"},
+            "unit": {"type": "string"},
+            "note": {"type": "string"}
+          }
+        },
+        "power": {
+          "type": "object",
+          "properties": {
+            "min": {"type": "number"},
+            "max": {"type": "number"},
+            "unit": {"type": "string"},
+            "note": {"type": "string"}
+          }
+        },
+        "pulseWidth": {
+          "type": "object",
+          "properties": {
+            "min": {"type": "number"},
+            "max": {"type": "number"},
+            "unit": {"type": "string"},
+            "note": {"type": "string"}
+          }
+        }
+      }
+    },
+    "applications": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Common applications for this contaminant removal"
+    },
+    "author": {
+      "type": "object",
+      "description": "Author information",
+      "properties": {
+        "name": {"type": "string"},
+        "country": {"type": "string"},
+        "expertise": {"type": "string"}
+      }
+    },
+    "_metadata": {
+      "type": "object",
+      "description": "Generation metadata",
+      "properties": {
+        "generator": {"type": "string"},
+        "version": {"type": "string"},
+        "content_type": {"type": "string"},
+        "status": {"type": "string"}
+      }
+    }
+  }
+}

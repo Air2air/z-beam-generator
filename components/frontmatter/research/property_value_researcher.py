@@ -617,9 +617,9 @@ class PropertyValueResearcher:
                 material_category=material_category or 'unknown'
             )
             
-            # Get research configuration from run.py - FAIL FAST if unavailable
-            from run import get_research_config
-            research_config = get_research_config("property_value_researcher")
+            # Get research configuration from settings - FAIL FAST if unavailable
+            from config.settings import GLOBAL_OPERATIONAL_CONFIG
+            research_config = GLOBAL_OPERATIONAL_CONFIG["research_defaults"]["property_value_researcher"]
             comprehensive_max_tokens = research_config["comprehensive_max_tokens"]
             comprehensive_temperature = research_config["comprehensive_temperature"]
             
@@ -706,9 +706,9 @@ class PropertyValueResearcher:
                 material_category=material_category or 'unknown'
             )
             
-            # Get research configuration from run.py - FAIL FAST if unavailable
-            from run import get_research_config
-            research_config = get_research_config("property_value_researcher")
+            # Get research configuration from settings - FAIL FAST if unavailable
+            from config.settings import GLOBAL_OPERATIONAL_CONFIG
+            research_config = GLOBAL_OPERATIONAL_CONFIG["research_defaults"]["property_value_researcher"]
             validation_max_tokens = research_config["validation_max_tokens"]
             validation_temperature = research_config["validation_temperature"]
             
