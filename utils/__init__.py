@@ -41,12 +41,13 @@ from .core.author_manager import (
     load_authors,
     get_author_by_id,
     list_authors,
-    validate_author_id,
     get_author_info_for_generation,
     extract_author_info_from_frontmatter_file,
     extract_author_info_from_content,
     get_author_info_for_material,
 )
+# validate_author_id now imported from config.authors_registry
+from config.authors_registry import validate_author_id
 # from .core.laser_parameters import *
 # from .core.percentile_calculator import PercentileCalculator
 # from .core.property_enhancer import PropertyEnhancer

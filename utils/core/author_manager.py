@@ -4,71 +4,53 @@ Author Management
 
 Centralized author loading and management functionality.
 Extracted from run.py to reduce bloat and improve testability.
+
+IMPORTANT: This module now delegates to config.authors_registry as the
+single source of truth. The JSON file is kept for backward compatibility
+but the registry is authoritative.
 """
 
-import json
-from pathlib import Path
+import logging
 from typing import Any, Dict, List, Optional
+
+# Import authoritative registry
+from config.authors_registry import (
+    get_author as registry_get_author,
+    get_all_authors as registry_get_all_authors,
+    list_valid_author_ids as registry_list_valid_author_ids,
+)
 
 
 def load_authors() -> List[Dict[str, Any]]:
     """
-    Load author information from JSON file.
+    Load author information - delegates to registry.
+    
+    This function is kept for backward compatibility but now returns
+    data from the authoritative registry instead of parsing JSON.
 
     Returns:
-        List of author dictionaries
-
-    Raises:
-        FileNotFoundError: If authors file doesn't exist
-        json.JSONDecodeError: If authors file is invalid JSON
+        List of author dictionaries from registry
     """
-    authors_file = Path("data/authors/authors.json")
-
-    if not authors_file.exists():
-        raise FileNotFoundError(f"Authors file not found: {authors_file}")
-
-    try:
-        with open(authors_file, "r", encoding="utf-8") as f:
-            authors_data = json.load(f)
-
-        # Handle both formats: direct list or object with "authors" key
-        if isinstance(authors_data, list):
-            return authors_data
-        elif isinstance(authors_data, dict) and "authors" in authors_data:
-            authors_list = authors_data["authors"]
-            if not isinstance(authors_list, list):
-                raise ValueError("Authors data must contain a list of authors")
-            return authors_list
-        else:
-            raise ValueError(
-                "Authors file must contain a list of authors or an object with 'authors' key"
-            )
-
-    except json.JSONDecodeError as e:
-        raise json.JSONDecodeError(f"Invalid JSON in authors file: {e}")
+    return registry_get_all_authors()
 
 
 def get_author_by_id(author_id: int) -> Optional[Dict[str, Any]]:
     """
-    Get author information by ID.
-
+    Get author information by ID - delegates to registry.
+    
     Args:
         author_id: Author ID
 
     Returns:
-        Author dictionary or None if not found
+        Author dictionary from registry, or None if not found
     """
     try:
-        authors = load_authors()
-
-        # Find author by ID field rather than array index
-        for author in authors:
-            if author.get("id") == author_id:
-                return author
-
-        return None
-
-    except (FileNotFoundError, json.JSONDecodeError):
+        return registry_get_author(author_id)
+    except KeyError:
+        logging.warning(
+            f"Author ID {author_id} not in registry. "
+            f"Valid IDs: {registry_list_valid_author_ids()}"
+        )
         return None
 
 
@@ -79,81 +61,74 @@ def list_authors() -> str:
     Returns:
         Formatted string with all authors and their countries
     """
-    try:
-        authors = load_authors()
+    authors = load_authors()
 
-        if not authors:
-            return "No authors found."
+    if not authors:
+        return "No authors found."
 
-        output = ["📝 Available Authors:", "=" * 50]
+    output = ["📝 Available Authors:", "=" * 50]
 
-        for i, author in enumerate(authors, 1):
-            name = author.get("name", "Unknown")
-            country = author.get("country", "Unknown")
-            output.append(f"  {i:2d}. {name} ({country})")
+    for author in authors:
+        author_id = author.get("id", "?")
+        name = author.get("name", "Unknown")
+        country_display = author.get("country_display", author.get("country", "Unknown"))
+        output.append(f"  {author_id:2d}. {name} ({country_display})")
 
-        output.extend(
-            [
-                "=" * 50,
-                f"Total: {len(authors)} authors available",
-                "",
-                "Usage: python3 run.py --material 'Steel'  # Author automatically resolved from Materials.yaml",
-            ]
-        )
+    output.extend(
+        [
+            "=" * 50,
+            f"Total: {len(authors)} authors available",
+            "",
+            "Usage: python3 run.py --material 'Steel'  # Author automatically resolved from Materials.yaml",
+        ]
+    )
 
-        return "\n".join(output)
-
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        return f"Error loading authors: {e}"
+    return "\n".join(output)
 
 
-def validate_author_id(author_id: int) -> bool:
-    """
-    Validate if author ID is valid.
+# validate_author_id is imported directly from registry
 
-    Args:
-        author_id: Author ID to validate
 
-    Returns:
-        True if valid, False otherwise
-    """
-    try:
-        authors = load_authors()
-        return 1 <= author_id <= len(authors)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return False
+# validate_author_id is imported directly from registry
 
 
 def get_author_info_for_generation(author_id: Optional[int] = None) -> Dict[str, Any]:
     """
     Get author information formatted for content generation.
+    
+    DEPRECATED: Use config.authors_registry.get_author() directly instead.
 
     Args:
-        author_id: Optional author ID, if None returns default/empty author info
+        author_id: Author ID (required - no fallbacks)
 
     Returns:
         Dictionary with author information ready for content generation
+        
+    Raises:
+        ValueError: If author_id is None (no fallbacks allowed)
+        KeyError: If author_id not in registry
     """
     if author_id is None:
-        return {
-            "name": "AI Assistant",
-            "country": "International",
-            "bio": "AI-powered content generation system",
-            "expertise": "laser cleaning technology",
-        }
+        raise ValueError(
+            "author_id is required - no fallback authors allowed. "
+            "Ensure Materials.yaml has author.id for all materials."
+        )
 
     author = get_author_by_id(author_id)
     if author is None:
-        # Fallback to default
-        return get_author_info_for_generation(None)
+        raise KeyError(
+            f"Author ID {author_id} not in registry. "
+            f"Valid IDs: {registry_list_valid_author_ids()}"
+        )
 
     return {
-        "name": author.get("name", "Unknown Author"),
-        "country": author.get("country", "Unknown"),
-        "bio": author.get("bio", ""),
-        "expertise": author.get("expertise", "laser cleaning technology"),
-        "experience": author.get("experience", ""),
-        "specialization": author.get("specialization", ""),
+        "name": author["name"],
+        "country": author["country"],  # Normalized key
+        "country_display": author.get("country_display", author["country"]),
+        "expertise": author["expertise"],
+        "title": author.get("title", ""),
+        "sex": author.get("sex", ""),
+        "image": author.get("image", ""),
     }
 
 
@@ -228,8 +203,7 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
                     author_info["country"] = value.lower()
 
         if author_info:
-            author_info.setdefault("id", 1)
-            author_info.setdefault("country", "usa")
+            # NO fallbacks - require explicit values
             return author_info
 
     except Exception as e:
@@ -242,72 +216,63 @@ def get_author_info_for_material(
     material_data_or_name: Any, fallback_author_id: Optional[int] = None
 ) -> Dict[str, Any]:
     """
-    Get author information for a material, prioritizing material data author.id.
-
-    This function first tries to extract author ID from the material data author.id,
-    then falls back to existing frontmatter, and finally to the fallback ID.
+    Get author information for a material using author.id from Materials.yaml.
+    
+    FAIL-FAST: No fallbacks allowed. Material must have author.id defined.
 
     Args:
-        material_data_or_name: Material data dictionary or material name
-        fallback_author_id: Optional author ID to use as fallback
+        material_data_or_name: Material data dictionary with author.id
+        fallback_author_id: DEPRECATED - no fallbacks allowed
 
     Returns:
         Dictionary with author information ready for content generation
-    """
-    # Extract material name for frontmatter lookup
-    material_name = material_data_or_name
-    material_author_id = None
-
-    # Debug print
-    print(f"⚠️ Material data extracted directly: {material_data_or_name}")
-
-    # If material_data_or_name is a dictionary with material data
-    if isinstance(material_data_or_name, dict):
-        # Extract author.id from material data (NEW STANDARD)
-        if "author" in material_data_or_name and isinstance(material_data_or_name["author"], dict):
-            if "id" in material_data_or_name["author"]:
-                material_author_id = material_data_or_name["author"]["id"]
-                import logging
-                logging.info(f"Resolved author.id {material_author_id} to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
         
-        # Extract material name for frontmatter lookup
-        if "name" in material_data_or_name:
-            material_name = material_data_or_name["name"].strip()
-        elif "material_name" in material_data_or_name:
-            material_name = material_data_or_name["material_name"].strip()
+    Raises:
+        ValueError: If material_data_or_name is not a dict or missing author.id
+        KeyError: If author.id not in registry
+    """
+    # Must be a dictionary with author.id
+    if not isinstance(material_data_or_name, dict):
+        raise ValueError(
+            f"material_data_or_name must be dict with author.id, "
+            f"got {type(material_data_or_name).__name__}"
+        )
+
+    # Extract author.id from material data (REQUIRED)
+    if "author" not in material_data_or_name:
+        raise ValueError(
+            "Material missing 'author' field. "
+            "Add author.id to Materials.yaml for this material."
+        )
     
-    # If we found an author_id in the material data, use it
-    if material_author_id is not None:
-        author = get_author_by_id(material_author_id)
-        if author:
-            print(f"👤 Using author {author['name']} (ID: {material_author_id}) from material data")
-            return {
-                "name": author.get("name", "Unknown Author"),
-                "country": author.get("country", "Unknown"),
-                "bio": author.get("bio", ""),
-                "expertise": author.get("expertise", "laser cleaning technology"),
-                "experience": author.get("experience", ""),
-                "specialization": author.get("specialization", ""),
-                "id": material_author_id,
-                "sex": author.get("sex", "unknown"),
-                "title": author.get("title", "Expert"),
-                "image": author.get("image", None)
-            }
-
-    # Try to extract from frontmatter file as a fallback
-    frontmatter_author = extract_author_info_from_frontmatter_file(material_name)
-    if frontmatter_author:
-        print(f"👤 Using author from existing frontmatter: {frontmatter_author.get('name', 'Unknown')}")
-        return {
-            "name": frontmatter_author.get("name", "Unknown Author"),
-            "country": frontmatter_author.get("country", "Unknown"),
-            "bio": "",
-            "expertise": "laser cleaning technology",
-            "experience": "",
-            "specialization": "",
-            "id": frontmatter_author.get("id", 1),
-        }
-
-    # Final fallback to provided author_id or default
-    print(f"👤 Using fallback author ID: {fallback_author_id or 'Default'}")
-    return get_author_info_for_generation(fallback_author_id)
+    author_field = material_data_or_name["author"]
+    if not isinstance(author_field, dict) or "id" not in author_field:
+        raise ValueError(
+            "Material author missing 'id' field. "
+            "Add author.id to Materials.yaml for this material."
+        )
+    
+    material_author_id = author_field["id"]
+    logging.info(
+        f"Resolved author.id {material_author_id} for material {material_data_or_name.get('name', 'Unknown')}"
+    )
+    
+    # Get author from registry - FAIL-FAST if not found
+    author = get_author_by_id(material_author_id)
+    if not author:
+        raise KeyError(
+            f"Author ID {material_author_id} not in registry. "
+            f"Valid IDs: {registry_list_valid_author_ids()}"
+        )
+    
+    logging.info(f"👤 Using author {author['name']} (ID: {material_author_id}) from Materials.yaml")
+    return {
+        "name": author["name"],
+        "country": author["country"],  # Normalized key
+        "country_display": author.get("country_display", author["country"]),
+        "expertise": author["expertise"],
+        "id": material_author_id,
+        "sex": author.get("sex", ""),
+        "title": author.get("title", ""),
+        "image": author.get("image", ""),
+    }
