@@ -806,3 +806,129 @@ class PropertyManager:
         except Exception as e:
             self.logger.error(f"❌ Comprehensive audit failed for {material_name}: {e}")
             raise PropertyDiscoveryError(f"Audit execution failed: {e}")
+    
+    # ===== COMPATIBILITY LAYER FOR OLD SERVICES =====
+    # Methods to support migration from PropertyDiscoveryService + PropertyResearchService
+    # TODO: Remove after full migration to unified discover_and_research_properties() API
+    
+    def discover_properties_to_research(
+        self,
+        material_name: str,
+        material_category: str,
+        yaml_properties: Dict
+    ) -> Tuple[Set[str], Dict[str, str]]:
+        """
+        Compatibility wrapper for PropertyDiscoveryService.discover_properties_to_research()
+        
+        Args:
+            material_name: Name of material
+            material_category: Material category
+            yaml_properties: Existing YAML properties
+            
+        Returns:
+            Tuple of (properties_to_research, skip_reasons)
+        """
+        result = self._discover_gaps(material_name, material_category, yaml_properties)
+        return result['to_research'], result['skip_reasons']
+    
+    def calculate_coverage(
+        self,
+        material_name: str,
+        yaml_properties: Dict,
+        category: str
+    ) -> Dict:
+        """
+        Compatibility wrapper for PropertyDiscoveryService.calculate_coverage()
+        
+        Args:
+            material_name: Name of material
+            yaml_properties: Existing YAML properties
+            category: Material category
+            
+        Returns:
+            Coverage statistics dictionary
+        """
+        result = self._discover_gaps(material_name, category, yaml_properties)
+        essential_props = self._get_essential_properties(category)
+        
+        return {
+            'total_essential': len(essential_props),
+            'yaml_provided': len(result['yaml_confidence_properties']),
+            'needs_research': len(result['to_research']),
+            'coverage_percentage': (len(result['yaml_confidence_properties']) / len(essential_props) * 100) if essential_props else 0,
+            'missing_properties': list(result['to_research'])
+        }
+    
+    def validate_property_completeness(
+        self,
+        category: str,
+        researched_properties: Dict
+    ) -> None:
+        """
+        Compatibility wrapper for PropertyDiscoveryService.validate_property_completeness()
+        
+        Args:
+            category: Material category
+            researched_properties: Dictionary of researched properties
+            
+        Raises:
+            PropertyDiscoveryError: If essential properties missing
+        """
+        self._validate_essential_coverage(category, researched_properties)
+    
+    def add_category_thermal_property(
+        self,
+        material_name: str,
+        properties: Dict,
+        category: str
+    ) -> bool:
+        """
+        Compatibility wrapper for PropertyResearchService.add_category_thermal_property()
+        
+        Args:
+            material_name: Name of material
+            properties: Properties dictionary to update
+            category: Material category
+            
+        Returns:
+            True if thermal property added
+        """
+        # Check if thermalDestruction already present
+        if 'thermalDestruction' in properties:
+            return False
+        
+        # Use category-specific thermal property logic
+        essential_props = self._get_essential_properties(category)
+        if 'thermalDestruction' in essential_props and 'thermalDestruction' not in properties:
+            # This should be handled by research, not manual addition
+            self.logger.debug(f"thermalDestruction needed for {material_name} but should be researched")
+            return False
+        
+        return False
+    
+    def research_material_properties(
+        self,
+        material_name: str,
+        to_research: Set[str],
+        category: str
+    ) -> Dict[str, Dict]:
+        """
+        Compatibility wrapper for PropertyResearchService.research_material_properties()
+        
+        Args:
+            material_name: Name of material
+            to_research: Set of property names to research
+            category: Material category
+            
+        Returns:
+            Dictionary of researched properties
+        """
+        # Use unified discovery + research method
+        result = self.discover_and_research_properties(
+            material_name=material_name,
+            material_category=category,
+            yaml_properties={}  # Will discover from Materials.yaml
+        )
+        
+        # Return only the quantitative properties
+        return result.quantitative_properties

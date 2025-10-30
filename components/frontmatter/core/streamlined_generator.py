@@ -21,12 +21,10 @@ from typing import Dict, Optional, List
 from generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
-from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
-from components.frontmatter.services.property_research_service import PropertyResearchService
 from components.frontmatter.services.template_service import TemplateService
 from components.frontmatter.services.pipeline_process_service import PipelineProcessService
 
-# Refactored services (Step 1 & 2 of refactoring plan)
+# Unified property management service (replaces PropertyDiscoveryService + PropertyResearchService)
 from components.frontmatter.services.property_manager import PropertyManager
 from components.frontmatter.core.property_processor import PropertyProcessor
 
@@ -117,8 +115,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # For YAML-based generation with research enhancement, we can work without it
         
         # Initialize service placeholders (will be set during data loading)
-        self.property_discovery_service = None  # Initialized in _load_categories_data()
-        self.property_research_service = None  # Initialized in _load_categories_data()
         self.template_service = None  # Initialized in _load_categories_data()
         self.pipeline_process_service = None  # Initialized in _load_categories_data()
         # Load materials research data for range calculations
@@ -236,9 +232,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 raise ConfigurationError("machineSettingsDescriptions section required in Categories.yaml")
             self.machine_settings_descriptions = categories_data['machineSettingsDescriptions']
             
-            # Initialize PropertyDiscoveryService with categories data
-            self.property_discovery_service = PropertyDiscoveryService(categories_data=categories_data)
-            self.logger.info("PropertyDiscoveryService initialized with categories data")
             # Initialize TemplateService with configuration and ranges
             self.template_service = TemplateService(
                 material_abbreviations=MATERIAL_ABBREVIATIONS,
@@ -246,18 +239,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 category_ranges=self.category_ranges
             )
             self.logger.info("TemplateService initialized with abbreviations and thermal mappings")
-            # Initialize PropertyResearchService (only if PropertyValueResearcher available)
-            if self.property_researcher:
-                self.property_research_service = PropertyResearchService(
-                    property_researcher=self.property_researcher,
-                    get_category_ranges_func=self.template_service.get_category_ranges_for_property,
-                    enhance_descriptions_func=self.template_service.enhance_with_standardized_descriptions
-                )
-                self.logger.info("PropertyResearchService initialized with property researcher")
-            else:
-                self.property_research_service = None
-                self.logger.info("PropertyResearchService skipped - data-only mode")
-            # Initialize PropertyManager (refactored unified service - Step 1)
+            
+            # Initialize PropertyManager (unified service - replaces PropertyDiscoveryService + PropertyResearchService)
             self.property_manager = PropertyManager(
                 property_researcher=self.property_researcher,  # Can be None in data-only mode
                 categories_data=categories_data,
@@ -878,23 +861,22 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
             # PHASE 1.5: Add category-specific thermal property field (dual-field approach)
             material_category = material_data.get('category', 'metal').lower()
-            if not self.property_research_service:
-                raise PropertyDiscoveryError("PropertyResearchService not initialized")
+            if not self.property_manager:
+                raise PropertyDiscoveryError("PropertyManager not initialized")
             
-            thermal_field_added = self.property_research_service.add_category_thermal_property(
+            thermal_field_added = self.property_manager.add_category_thermal_property(
+                material_name=material_name,
                 properties=properties,
-                yaml_properties=yaml_properties,
-                material_category=material_category,
-                thermal_property_map=THERMAL_PROPERTY_MAP
+                category=material_category
             )
             if thermal_field_added:
                 yaml_count += 1
             
-            # PHASE 2: Use PropertyDiscoveryService to determine what needs research
-            if not self.property_discovery_service:
-                raise PropertyDiscoveryError("PropertyDiscoveryService not initialized")
-            # Discover which properties need AI research
-            to_research, skip_reasons = self.property_discovery_service.discover_properties_to_research(
+            # PHASE 2: Use PropertyManager to determine what needs research
+            if not self.property_manager:
+                raise PropertyDiscoveryError("PropertyManager not initialized")
+            # Discover which properties need AI research (using compatibility method)
+            to_research, skip_reasons = self.property_manager.discover_properties_to_research(
                 material_name=material_name,
                 material_category=material_category,
                 yaml_properties=yaml_properties
@@ -902,14 +884,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Log what we're skipping and why
             for prop, reason in skip_reasons.items():
                 self.logger.info(f"⏭️  Skipping {prop}: {reason}")
-            # Use PropertyResearchService for AI research
-            if not self.property_research_service:
-                raise PropertyDiscoveryError("PropertyResearchService not initialized")
+            # Use PropertyManager for AI research (using compatibility method)
+            if not self.property_manager:
+                raise PropertyDiscoveryError("PropertyManager not initialized")
             
-            researched_properties = self.property_research_service.research_material_properties(
+            researched_properties = self.property_manager.research_material_properties(
                 material_name=material_name,
-                material_category=material_category,
-                existing_properties=properties
+                to_research=to_research,
+                category=material_category
             )
             # Add researched properties to our collection
             properties.update(researched_properties)
@@ -923,10 +905,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise PropertyDiscoveryError(f"No properties found for {material_name}")
         # Calculate and log comprehensive coverage statistics
         ai_properties = {k: v for k, v in properties.items() if k not in yaml_properties or yaml_properties[k].get('confidence', 0) < 0.85}
-        coverage_stats = self.property_discovery_service.calculate_coverage(
-            material_category=material_category,
+        coverage_stats = self.property_manager.calculate_coverage(
+            material_name=material_name,
             yaml_properties=yaml_properties,
-            researched_properties=ai_properties
+            category=material_category
         )
         
         self.logger.info(
@@ -936,8 +918,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             f"Essential coverage: {coverage_stats['essential_coverage']}%"
         )
         # Validate essential properties are present
-        self.property_discovery_service.validate_property_completeness(
-            material_name=material_name,
+        self.property_manager.validate_property_completeness(
+            category=material_category,
             material_category=material_category,
             properties=properties
         )
@@ -1008,12 +990,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
-        # Use PropertyResearchService for comprehensive machine settings discovery
-        if not self.property_research_service:
-            raise PropertyDiscoveryError("PropertyResearchService required for machine settings discovery")
+        # Use PropertyManager for comprehensive machine settings discovery
+        if not self.property_manager:
+            raise PropertyDiscoveryError("PropertyManager required for machine settings discovery")
         
         try:
-            machine_settings = self.property_research_service.research_machine_settings(material_name)
+            machine_settings = self.property_manager.research_machine_settings(material_name)
             return machine_settings
         except Exception as e:
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
@@ -1090,8 +1072,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 )
             
             if 'machineSettings' in parsed_content:
-                # Generate machine settings using PropertyResearchService
-                machine_settings = self.property_research_service.research_machine_settings(material_name)
+                # Generate machine settings using PropertyManager
+                machine_settings = self.property_manager.research_machine_settings(material_name)
                 parsed_content['machineSettings'] = self.property_processor.merge_with_ranges(
                     parsed_content['machineSettings'], machine_settings
                 )
