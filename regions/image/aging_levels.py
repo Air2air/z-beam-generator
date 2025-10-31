@@ -19,23 +19,26 @@ PHOTO_AGING_LEVELS: Dict[int, str] = {
         "Severely aged photograph: extreme yellowing with deep brown sepia toning, pervasive dust and grime, "
         "extensive deep scratches and creases, widespread emulsion cracks with peeling and flaking, "
         "severe water damage with dark stains and mold spots, heavily bent corners with tears and missing pieces, "
-        "tape residue and adhesive marks, prominent fingerprint smudges, severely faded contrast with bleached highlights."
+        "tape residue and adhesive marks, prominent fingerprint smudges, severely faded contrast with bleached highlights. "
+        "Significant focus degradation with overall softness and blur throughout image, loss of sharpness in all areas, "
+        "emulsion deterioration causing blurred edges and indistinct details, optical clarity severely compromised."
     ),
     2: (
         "Heavy aging: deep yellowing with brown toning, thick dust and surface grime, numerous deep scratches and creases, "
         "extensive emulsion cracks with peeling, water damage with dark stains and spots, severe corner wear with bending and tears, "
-        "tape residue and adhesive marks, fingerprint smudges, heavily faded contrast."
+        "tape residue and adhesive marks, fingerprint smudges, heavily faded contrast. "
+        "Noticeable focus problems with soft blurred areas, reduced sharpness and clarity, emulsion damage causing fuzzy indistinct regions."
     ),
     3: (
         "Moderate aging: strong yellowing with brown toning, dust accumulation, many scratches and creases, "
         "water stains and spots, visible emulsion cracks, corner wear and bending, tape marks, "
-        "fingerprint smudges, faded contrast with bleached areas."
+        "fingerprint smudges, faded contrast with bleached areas. Some loss of sharpness with slight overall softness."
     ),
     4: (
-        "Light aging: moderate yellowing, minor scratches and spots, some edge wear, slight fading, overall well-preserved."
+        "Light aging: moderate yellowing, minor scratches and spots, some edge wear, slight fading, overall well-preserved with good sharpness."
     ),
     5: (
-        "Minimal aging: slight yellowing, very faint scratches, well-preserved with good contrast."
+        "Minimal aging: slight yellowing, very faint scratches, well-preserved with good contrast and sharp focus."
     )
 }
 
