@@ -45,18 +45,18 @@ def get_period_focal_characteristics(decade: str) -> str:
     elif year <= 1940:
         # 1920s-1940s: Professional large format common, amateur box cameras
         return (
-            "Period-accurate focal depth: primary subject in sharp focus with gentle transition to softer background, "
-            "characteristic of {decade} large format press cameras at working apertures (f/8-f/11). "
-            "Mid-ground moderately sharp, distant elements progressively softer. "
-            "No extreme shallow depth of field or modern lens effects."
+            f"Period-accurate focal depth: primary subject in sharp focus with gentle transition to softer background, "
+            f"characteristic of {decade} large format press cameras at working apertures (f/8-f/11). "
+            f"Mid-ground moderately sharp, distant elements progressively softer. "
+            f"No extreme shallow depth of field or modern lens effects."
         )
     else:
         # 1940s+: Mix of formats, more 35mm adoption
         return (
-            "Period-accurate focal depth: subject and immediate surroundings in sharp focus, "
-            "background with natural softness typical of {decade} press and field cameras. "
-            "Moderate depth of field reflecting typical working apertures. "
-            "Natural lens characteristics without modern optical corrections."
+            f"Period-accurate focal depth: subject and immediate surroundings in sharp focus, "
+            f"background with natural softness typical of {decade} press and field cameras. "
+            f"Moderate depth of field reflecting typical working apertures. "
+            f"Natural lens characteristics without modern optical corrections."
         )
 
 

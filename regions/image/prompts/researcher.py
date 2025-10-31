@@ -300,9 +300,13 @@ Analyze what characteristics commonly appear in authentic {decade} photographs o
    - Advertisements and commercial signage
    - Work activities and labor scenes
 
-Provide a detailed description of BOTH the visual scene elements AND the photographic aging/deterioration characteristics that would authentically appear in a {decade} photograph of a {scene_type} scene that has aged over the decades. Focus on concrete, specific details.
+CRITICAL: Provide ONLY concrete visual details that would appear in a {decade} photograph. NO meta-analysis, NO research commentary, NO "Here's what I found" statements. Just direct, factual visual descriptions.
 
-Include photo aging effects (yellowing, scratches, wear) AND scene weathering (building deterioration, paint wear, surface damage). 4-6 sentences maximum.
+DO NOT describe photo aging (yellowing, scratches, deterioration) - that is handled separately.
+
+Focus on: scene composition, architecture, business activities, vehicles, people, clothing, equipment, atmospheric elements (smoke, dust, weather).
+
+Format: 4-6 sentences of DIRECT visual facts only. No headers, no bullet points, no analysis.
 
 ADDITIONAL TASK: Based on your analysis of authentic {decade} {scene_type} photographs, identify specific modern elements or effects that would BREAK authenticity. What should absolutely NOT appear in this type of photograph?
 
@@ -339,12 +343,12 @@ Provide 8-12 specific negative prompts that are most critical for this scene typ
                 }
             
             # Check for other common separators
-            for separator in ["**Negative Prompts", "Negative prompts:", "NEGATIVE PROMPTS:", "Avoid:", "Do not include:", "Things to AVOID"]:
+            for separator in ["**Negative Prompts", "Negative prompts:", "NEGATIVE PROMPTS:", "Avoid:", "Do not include:", "Things to AVOID", "Modern elements that would break"]:
                 if separator in response_text:
                     parts = response_text.split(separator, 1)
                     return {
                         "visual_details": parts[0].strip(),
-                        "negative_prompts": parts[1].strip().lstrip("* ").lstrip("(").lstrip(":")
+                        "negative_prompts": parts[1].strip().lstrip("* ").lstrip("(").lstrip(":").lstrip("authenticity:")
                     }
             
             # If no clear separation, return all as visual details

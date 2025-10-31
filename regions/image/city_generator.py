@@ -49,7 +49,8 @@ class CityImageGenerator:
         county_name: str,
         decade: str = "1930s",
         config = None,
-        subject: Optional[str] = None
+        subject: Optional[str] = None,
+        population_data: Optional[Dict[str, Any]] = None
     ) -> str:
         """
         Generate historical image prompt for a city.
@@ -60,6 +61,7 @@ class CityImageGenerator:
             decade: Historical decade (default: "1930s")
             config: Optional HeroImageConfig for aging/condition control
             subject: Optional specific subject to focus on (e.g., "harbor", "barber shop")
+            population_data: Optional pre-fetched population research data (avoids duplicate calls)
             
         Returns:
             Image prompt string optimized for Imagen 4
@@ -68,20 +70,6 @@ class CityImageGenerator:
         if subject and not subject.strip():
             logger.warning("⚠️  Empty subject string provided, treating as None")
             subject = None
-        
-        population_data = None
-        
-        # Research population if researcher available
-        if self.researcher:
-            try:
-                population_data = self.researcher.research_population(
-                    city_name, county_name, decade, subject
-                )
-                pop = population_data.get("population", 0)
-                category = population_data.get("category", "suburb")
-                logger.info(f"📊 {city_name}: {pop:,} population in {decade} ({category})")
-            except Exception as e:
-                logger.warning(f"⚠️  Population research failed, using defaults: {e}")
         
         # Generate prompt with population context, config, and subject
         prompt = get_historical_base_prompt(city_name, county_name, decade, population_data, config, subject)
@@ -127,7 +115,6 @@ class CityImageGenerator:
                 # Remove bullet points, newlines, and numbered lists
                 scene_negatives = scene_negatives.replace("\n", ", ").replace("* ", "").replace("- ", "")
                 # Remove numbered list format (1. 2. 3. etc)
-                import re
                 scene_negatives = re.sub(r'\d+\.\s*', '', scene_negatives)
             base_negative += ", " + scene_negatives
         
@@ -181,18 +168,21 @@ class CityImageGenerator:
                 "safety_filter_level": str
             }
         """
-        # Get population data for both prompt and negative prompt generation
+        # Get population data for both prompt and negative prompt generation (single call)
         population_data = None
         if self.researcher:
             try:
                 population_data = self.researcher.research_population(
                     city_name, county_name, decade, subject
                 )
+                pop = population_data.get("population", 0)
+                category = population_data.get("category", "suburb")
+                logger.info(f"📊 {city_name}: {pop:,} population in {decade} ({category})")
             except Exception as e:
                 logger.warning(f"⚠️  Population research failed: {e}")
         
-        # Generate prompt with population context
-        prompt = get_historical_base_prompt(city_name, county_name, decade, population_data, config, subject)
+        # Generate prompt with population context (pass data to avoid duplicate research)
+        prompt = self.generate_prompt(city_name, county_name, decade, config, subject, population_data)
         
         # Generate negative prompt with scene-specific additions
         negative_prompt = self.get_negative_prompt(decade, subject, population_data)
