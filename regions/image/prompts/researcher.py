@@ -168,16 +168,35 @@ Be specific and historically accurate. Choose the scene that best captures the c
             # Generate research response
             response = self.model.generate_content(prompt)
             
-            # Parse JSON from response
+            # Extract JSON from response
             response_text = response.text.strip()
             
-            # Extract JSON if it's wrapped in markdown code blocks
+            # Remove markdown code blocks if present
             if "```json" in response_text:
                 response_text = response_text.split("```json")[1].split("```")[0].strip()
             elif "```" in response_text:
                 response_text = response_text.split("```")[1].split("```")[0].strip()
             
-            data = json.loads(response_text)
+            # Try to parse JSON, with fallback for common issues
+            try:
+                data = json.loads(response_text)
+            except json.JSONDecodeError as e:
+                # Try to fix common JSON issues (unescaped quotes in strings)
+                logger.warning(f"Initial JSON parse failed, attempting repair: {e}")
+                # Replace unescaped quotes within string values (simple heuristic)
+                import re
+                # Find string values and escape internal quotes
+                fixed_text = re.sub(r'("(?:[^"\\]|\\.)*")', lambda m: m.group(0), response_text)
+                # More aggressive: replace parenthetical quotes with single quotes
+                fixed_text = re.sub(r'\("([^)]+)"\)', r"('\1')", response_text)
+                try:
+                    data = json.loads(fixed_text)
+                    logger.info("✅ JSON repaired successfully")
+                except json.JSONDecodeError:
+                    # Last resort: try json5 or manual extraction
+                    logger.error(f"Failed to parse JSON response: {e}")
+                    logger.error(f"Raw response: {response_text}")
+                    raise
             
             # PHASE 2: Research similar photos from that era for additional details
             scene_type = subject if subject else data.get("iconic_scene", "downtown")
