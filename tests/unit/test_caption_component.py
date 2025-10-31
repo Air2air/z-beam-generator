@@ -9,7 +9,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from components.caption.generators.generator import CaptionComponentGenerator, CaptionGenerator
+from materials.caption.generators.generator import CaptionComponentGenerator, CaptionGenerator
 
 def get_mock_api_client():
     """Create a mock API client for testing."""

@@ -44,7 +44,7 @@ RESEARCH_TEMPLATES = {
 ### ✅ 2. Problem-Solution Database Research
 **Files Modified**:
 - `research/topic_researcher.py` (lines 224-288: `research_problems_solutions()`)
-- `components/faq/generators/faq_generator.py` (lines 653-670: Integration)
+- `materials/faq/generators/faq_generator.py` (lines 653-670: Integration)
 
 **How It Works**:
 ```python
@@ -141,7 +141,7 @@ app_context = researcher.research_for_application("Titanium", "aerospace")
 ## 🔧 Integration Status
 
 ### FAQ Generator
-**File**: `components/faq/generators/faq_generator.py`
+**File**: `materials/faq/generators/faq_generator.py`
 
 **Changes**:
 1. Lines 653-657: Added TopicResearcher import and initialization
@@ -170,7 +170,7 @@ problems_data = researcher.research_problems_solutions("Beryllium", max_problems
 ---
 
 ### Caption Generator
-**File**: `components/caption/generators/generator.py`
+**File**: `materials/caption/generators/generator.py`
 
 **Changes**:
 1. Line 15: Added TopicResearcher import

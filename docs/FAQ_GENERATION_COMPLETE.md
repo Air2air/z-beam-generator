@@ -43,7 +43,7 @@ AI Research → Questions → Voice Integration → Answers → Materials.yaml �
 ```
 
 ### Components
-1. **FAQComponentGenerator** (`components/faq/generators/faq_generator.py`)
+1. **FAQComponentGenerator** (`materials/faq/generators/faq_generator.py`)
    - AI-driven question generation
    - Voice-integrated answer generation
    - Materials.yaml persistence
@@ -64,10 +64,10 @@ AI Research → Questions → Voice Integration → Answers → Materials.yaml �
 - `data/Materials.yaml` - All 132 materials now have FAQ data
 
 ### Frontmatter Files  
-- `content/frontmatter/*.yaml` - All 132 files updated with FAQ section
+- `frontmatter/*.yaml` - All 132 files updated with FAQ section
 
 ### Production Deployment
-- Next.js site (`z-beam/content/frontmatter/`) - All 132 files deployed
+- Next.js site (`z-beam/frontmatter/`) - All 132 files deployed
 
 ## 🔧 Tools Created
 

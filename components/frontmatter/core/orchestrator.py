@@ -44,8 +44,8 @@ import logging
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 
-from generators.component_generators import ComponentResult
-from validation.errors import ConfigurationError, GenerationError
+from shared.generators.component_generators import ComponentResult
+from shared.validation.errors import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
 
@@ -93,8 +93,8 @@ class FrontmatterOrchestrator:
     def _register_default_generators(self):
         """Register default generator types"""
         try:
-            # Import material generator (Phase 1 wrapper)
-            from components.frontmatter.types.material.generator import MaterialFrontmatterGenerator
+            # Import material generator from root /materials folder
+            from materials.generator import MaterialFrontmatterGenerator
             self.register_generator('material', MaterialFrontmatterGenerator)
             self.logger.info("Registered material generator (Phase 1 wrapper with author voice)")
         except ImportError as e:
@@ -107,35 +107,35 @@ class FrontmatterOrchestrator:
             except ImportError as e2:
                 self.logger.warning(f"Material generator not available: {e2}")
         
-        # Register contaminant generator
+        # Register contaminant generator from root /contaminants folder
         try:
-            from components.frontmatter.types.contaminant.generator import ContaminantFrontmatterGenerator
+            from contaminants.generator import ContaminantFrontmatterGenerator
             self.register_generator('contaminant', ContaminantFrontmatterGenerator)
-            self.logger.info("Registered contaminant generator (placeholder mode)")
+            self.logger.info("Registered contaminant generator")
         except ImportError as e:
             self.logger.debug(f"Contaminant generator not available: {e}")
         
-        # Register region generator
+        # Register region generator from root /regions folder
         try:
-            from components.frontmatter.types.region.generator import RegionFrontmatterGenerator
+            from regions.generator import RegionFrontmatterGenerator
             self.register_generator('region', RegionFrontmatterGenerator)
-            self.logger.info("Registered region generator (placeholder mode)")
+            self.logger.info("Registered region generator")
         except ImportError as e:
             self.logger.debug(f"Region generator not available: {e}")
         
-        # Register application generator
+        # Register application generator from root /applications folder
         try:
-            from components.frontmatter.types.application.generator import ApplicationFrontmatterGenerator
+            from applications.generator import ApplicationFrontmatterGenerator
             self.register_generator('application', ApplicationFrontmatterGenerator)
-            self.logger.info("Registered application generator (placeholder mode)")
+            self.logger.info("Registered application generator")
         except ImportError as e:
             self.logger.debug(f"Application generator not available: {e}")
         
-        # Register thesaurus generator
+        # Register thesaurus generator from root /thesaurus folder
         try:
-            from components.frontmatter.types.thesaurus.generator import ThesaurusFrontmatterGenerator
+            from thesaurus.generator import ThesaurusFrontmatterGenerator
             self.register_generator('thesaurus', ThesaurusFrontmatterGenerator)
-            self.logger.info("Registered thesaurus generator (placeholder mode)")
+            self.logger.info("Registered thesaurus generator")
         except ImportError as e:
             self.logger.debug(f"Thesaurus generator not available: {e}")
     

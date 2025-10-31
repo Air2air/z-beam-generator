@@ -290,7 +290,7 @@ class ValidationHelpers:
                             if "Missing required field:" in issue:
                                 field_name = issue.split(": ")[1]
                                 # FAIL-FAST: Cannot proceed with invalid data
-                                from utils.ai.loud_errors import validation_failure
+                                from shared.utils.ai.loud_errors import validation_failure
                                 validation_failure(
                                     "frontmatter_generator",
                                     f"Missing required field '{field_name}' in generated frontmatter - fail-fast architecture requires complete data",

@@ -18,21 +18,21 @@ import yaml
 from pathlib import Path
 from typing import Dict, Optional, List
 
-from generators.component_generators import APIComponentGenerator, ComponentResult
+from shared.generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
-from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
-from components.frontmatter.services.template_service import TemplateService
-from components.frontmatter.services.pipeline_process_service import PipelineProcessService
+from materials.research.property_value_researcher import PropertyValueResearcher
+from materials.services.template_service import TemplateService
+from materials.services.pipeline_process_service import PipelineProcessService
 
 # Unified property management service (replaces PropertyDiscoveryService + PropertyResearchService)
-from components.frontmatter.services.property_manager import PropertyManager
+from materials.services.property_manager import PropertyManager
 from components.frontmatter.core.property_processor import PropertyProcessor
 
 # Completeness validation (100% data coverage enforcement)
-from components.frontmatter.validation.completeness_validator import CompletenessValidator
+from materials.validation.completeness_validator import CompletenessValidator
 
 # Import unified exception classes from validation system
-from validation.errors import (
+from shared.validation.errors import (
     PropertyDiscoveryError,
     ConfigurationError,
     MaterialDataError,
@@ -46,12 +46,12 @@ from components.frontmatter.qualitative_properties import (
     is_qualitative_property
 )
 # Unified validation system for confidence normalization and validation
-from services.validation import ValidationOrchestrator
+from shared.services.validation import ValidationOrchestrator
 
 # Requirements loader for consistency with audit system
-from utils.requirements_loader import RequirementsLoader
+from shared.utils.requirements_loader import RequirementsLoader
 # Property categorizer for analysis and validation (REQUIRED per fail-fast)
-from utils.core.property_categorizer import get_property_categorizer
+from materials.utils.property_categorizer import get_property_categorizer
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +66,7 @@ def _load_frontmatter_config() -> Dict:
         ConfigurationError: If configuration missing or invalid
     """
     try:
-        from config.settings import get_frontmatter_generation_config
+        from shared.config.settings import get_frontmatter_generation_config
         config = get_frontmatter_generation_config()
         
         # Validate required sections
@@ -78,20 +78,20 @@ def _load_frontmatter_config() -> Dict:
                     f"Check config.settings.FRONTMATTER_GENERATION_CONFIG for proper structure."
                 )
         
-        logger.info("Loaded frontmatter configuration from config.settings")
+        logger.info("Loaded frontmatter configuration from shared.config.settings")
         return config
         
     except ImportError as e:
-        raise ConfigurationError(f"Failed to import configuration from config.settings: {e}")
+        raise ConfigurationError(f"Failed to import configuration from shared.config.settings: {e}")
     except Exception as e:
-        raise ConfigurationError(f"Failed to load configuration from config.settings: {e}")
+        raise ConfigurationError(f"Failed to load configuration from shared.config.settings: {e}")
 # Load configuration at module level (fail-fast if config missing)
 _FRONTMATTER_CONFIG = _load_frontmatter_config()
 MATERIAL_ABBREVIATIONS = _FRONTMATTER_CONFIG['material_abbreviations']
 THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 
 # Unified schema validation (aligned with audit system)
-from validation.schema_validator import SchemaValidator
+from shared.validation.schema_validator import SchemaValidator
 logger.info("Unified schema validation loaded successfully")
 # Import material-aware prompt system (OPTIONAL - archived infrastructure)
 # TODO: Re-enable when material_prompting module is restored
@@ -135,6 +135,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         strict_mode = self._init_kwargs.get('enforce_completeness', False)
         self.completeness_validator = CompletenessValidator(strict_mode=strict_mode)
         self.logger.info(f"Completeness validation initialized (strict_mode={strict_mode})")
+        
+        # Enhanced validator (optional - currently unused)
+        self.enhanced_validator = None
         # Material-aware prompt system (OPTIONAL - archived infrastructure)
         # TODO: Re-enable when material_prompting module is restored
         # try:
@@ -166,7 +169,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         """Load materials science research data for accurate range calculations"""
         try:
             # Use CategoryDataLoader to get machine settings from split files
-            from utils.loaders.category_loader import CategoryDataLoader
+            from materials.category_loader import CategoryDataLoader
             category_loader = CategoryDataLoader()
             
             # Load machine settings ranges from Categories.yaml (category-level data)
@@ -202,7 +205,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _load_categories_data(self):
         """Load category data using CategoryDataLoader for modular access"""
         try:
-            from utils.loaders.category_loader import CategoryDataLoader
+            from materials.category_loader import CategoryDataLoader
             
             # Use CategoryDataLoader to access split category files
             category_loader = CategoryDataLoader()
@@ -213,8 +216,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.category_ranges = {}
             if 'categories' in categories_data:
                 for category_name, category_data in categories_data['categories'].items():
-                    if 'properties' in category_data:
-                        self.category_ranges[category_name] = category_data['properties']
+                    if 'category_ranges' in category_data:
+                        self.category_ranges[category_name] = category_data['category_ranges']
                 self.logger.info(f"Loaded category ranges for {len(self.category_ranges)} categories")
             else:
                 raise ConfigurationError("'categories' section missing from Categories.yaml")
@@ -323,7 +326,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         try:
             self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle})")
             # Load material data first (using cached version for performance)
-            from data.materials import get_material_by_name_cached
+            from materials.data.materials import get_material_by_name_cached
             material_data = get_material_by_name_cached(material_name)
             
             if material_data:
@@ -563,7 +566,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Check for existing frontmatter applications as fallback
             if not yaml_industries or not frontmatter.get('applications'):
-                existing_frontmatter_path = f"content/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+                existing_frontmatter_path = f"frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
                 try:
                     import yaml as yaml_lib
                     from pathlib import Path
@@ -676,6 +679,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 self.logger.info("✅ Using caption from Materials.yaml ai_text_fields")
             else:
                 self.logger.info(f"⚠️ No caption found in ai_text_fields for {material_name}")
+            
+            # Add FAQ section if available in Materials.yaml
+            if 'faq' in material_data:
+                frontmatter['faq'] = material_data['faq']
+                faq_count = len(material_data['faq'].get('questions', []))
+                self.logger.info(f"✅ Including FAQ section ({faq_count} questions)")
+            
             return frontmatter
             
         except Exception as e:
@@ -724,7 +734,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             
                             # Use CategoryRangeResearcher to find and populate the missing range
                             try:
-                                from research.category_range_researcher import CategoryRangeResearcher
+                                from materials.research.category_range_researcher import CategoryRangeResearcher
                                 researcher = CategoryRangeResearcher()
                                 
                                 # Research the missing property range for this category
@@ -811,7 +821,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                                 
                                 # Use CategoryRangeResearcher to find and populate the missing range
                                 try:
-                                    from research.category_range_researcher import CategoryRangeResearcher
+                                    from materials.research.category_range_researcher import CategoryRangeResearcher
                                     researcher = CategoryRangeResearcher()
                                     
                                     # Research the missing property range for this category
@@ -1342,7 +1352,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
     def _generate_author(self, material_data: Dict) -> Dict:
         """Generate author from material data author.id"""
         try:
-            from utils.core.author_manager import get_author_by_id
+            from components.frontmatter.utils.author_manager import get_author_by_id
             
             # Use author.id from materials.yaml
             author_id = None
@@ -2180,7 +2190,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         try:
             import yaml
             from pathlib import Path
-            from utils.core.author_manager import get_author_by_id
+            from components.frontmatter.utils.author_manager import get_author_by_id
             
             # Extract context
             applications = material_data.get('applications', [])

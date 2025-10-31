@@ -337,7 +337,7 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Immediate Response**: Intentional verbosity reduction - essential information preserved
 **→ Quick Check**: Verify streamlined sections contain core data (description, industries, metrics)
 **→ Missing Verbose Fields**: This is expected behavior for cleaner output
-**→ Validation**: `python3 -c "import yaml; data=yaml.safe_load(open('content/frontmatter/[material]-laser-cleaning.yaml')); print('✅' if all(len(data.get(s, [])) == 4 for s in ['environmentalImpact', 'applicationTypes', 'outcomeMetrics']) else '❌')"`
+**→ Validation**: `python3 -c "import yaml; data=yaml.safe_load(open('frontmatter/[material]-laser-cleaning.yaml')); print('✅' if all(len(data.get(s, [])) == 4 for s in ['environmentalImpact', 'applicationTypes', 'outcomeMetrics']) else '❌')"`
 **→ Rollback**: If verbose fields are required, revert to Categories.yaml v2.2.0
 
 ### "Test failures after verbosity reduction"

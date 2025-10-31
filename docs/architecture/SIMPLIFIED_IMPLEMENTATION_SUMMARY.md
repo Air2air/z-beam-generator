@@ -194,8 +194,8 @@ environmental = self._generate_environmental_impact(material_name, material_data
 4. `components/frontmatter/prompts/templates/environmental_research_phase.md`
 
 ### Subtitle Component Reorganization
-1. `components/subtitle/core/subtitle_generator.py` (moved from generators/)
-2. `components/subtitle/config/config.yaml` (new)
+1. `materials/subtitle/core/subtitle_generator.py` (moved from generators/)
+2. `components/subtitle/shared/config/config.yaml` (new)
 3. `components/subtitle/ARCHITECTURE.md` (new)
 4. `components/subtitle/__init__.py` (updated)
 

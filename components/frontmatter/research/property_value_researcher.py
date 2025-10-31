@@ -24,7 +24,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 # Import GenerationError for fail-fast behavior
-from validation.errors import GenerationError
+from shared.validation.errors import GenerationError
 
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent.parent.parent
@@ -773,7 +773,8 @@ class PropertyValueResearcher:
         """
         # Direct mapping for known compound properties
         property_mapping = {
-            'meltingpoint': 'meltingPoint',  # First normalize to camelCase
+            'meltingpoint': 'thermalDestruction',  # Melting point maps to thermal destruction for metals
+            'meltingPoint': 'thermalDestruction',  # Also handle camelCase version
             'thermalconductivity': 'thermalConductivity',
             'thermalexpansion': 'thermalExpansion',
             'thermaldiffusivity': 'thermalDiffusivity', 

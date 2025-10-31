@@ -362,7 +362,7 @@ ContentValidationResult
 ### Example 1: FAQ Generator Integration
 
 ```python
-# components/faq/generators/faq_generator.py
+# materials/faq/generators/faq_generator.py
 
 from validation.integration import validate_generated_content
 

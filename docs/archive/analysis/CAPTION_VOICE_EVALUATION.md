@@ -85,7 +85,7 @@ crystalline surface into a mottled, light-absorbing layer."
 ## Prompt Analysis
 
 ### Current Prompt Instructions
-Location: `components/caption/generators/generator.py` lines 80-148
+Location: `materials/caption/generators/generator.py` lines 80-148
 
 #### What the Prompt Says:
 ```python

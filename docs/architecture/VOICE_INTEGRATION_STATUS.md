@@ -246,7 +246,7 @@ versatile for modern engineering challenges.
 python3 run.py --material "Aluminum" --author "Todd Dunning"
 
 # Check voice metadata
-cat content/frontmatter/materials/aluminum-laser-cleaning.yaml | grep -A 5 "_metadata"
+cat frontmatter/materials/aluminum-laser-cleaning.yaml | grep -A 5 "_metadata"
 
 # Output should show:
 # _metadata:

@@ -16,8 +16,8 @@ from typing import Dict, Optional, Tuple
 from pathlib import Path
 import yaml
 
-from validation.errors import PropertyDiscoveryError, ConfigurationError
-from utils.core.property_categorizer import get_property_categorizer
+from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
+from materials.utils.property_categorizer import get_property_categorizer
 
 # Qualitative property definitions
 from components.frontmatter.qualitative_properties import (
@@ -27,7 +27,7 @@ from components.frontmatter.qualitative_properties import (
 )
 
 # Validation utilities for confidence normalization
-from services.validation import ValidationOrchestrator
+from shared.services.validation import ValidationOrchestrator
 
 logger = logging.getLogger(__name__)
 

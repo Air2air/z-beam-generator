@@ -89,31 +89,31 @@ orchestrator.generate_batch(requests)
 **File**: `components/frontmatter/types/material/generator.py`
 **Status**: ✅ Production-ready
 **Wrapper**: Phase 1 compatibility wrapper around StreamlinedFrontmatterGenerator
-**Output**: `content/frontmatter/{material}-laser-cleaning.yaml`
+**Output**: `frontmatter/{material}-laser-cleaning.yaml`
 
 #### 2. Contaminant Generator
 **File**: `components/frontmatter/types/contaminant/generator.py`
 **Status**: ✅ Data-driven implementation
 **Data Source**: `data/contaminants.yaml` (8 types)
-**Output**: `content/frontmatter/contaminants/{contaminant}-laser-cleaning.yaml`
+**Output**: `frontmatter/contaminants/{contaminant}-laser-cleaning.yaml`
 
 #### 3. Region Generator
 **File**: `components/frontmatter/types/region/generator.py`
 **Status**: 🟡 Placeholder mode (ready for integration)
 **Data Source**: `data/regions.yaml` (6 regions defined)
-**Output**: `content/frontmatter/regions/{region}-laser-cleaning.yaml`
+**Output**: `frontmatter/regions/{region}-laser-cleaning.yaml`
 
 #### 4. Application Generator
 **File**: `components/frontmatter/types/application/generator.py`
 **Status**: 🟡 Placeholder mode (ready for integration)
 **Data Source**: `data/applications.yaml` (12 applications defined)
-**Output**: `content/frontmatter/applications/{application}-laser-cleaning.yaml`
+**Output**: `frontmatter/applications/{application}-laser-cleaning.yaml`
 
 #### 5. Thesaurus Generator
 **File**: `components/frontmatter/types/thesaurus/generator.py`
 **Status**: 🟡 Placeholder mode (ready for integration)
 **Data Source**: `data/thesaurus.yaml` (15 terms defined)
-**Output**: `content/frontmatter/thesauruss/{term}-laser-cleaning.yaml`
+**Output**: `frontmatter/thesaurus/{term}-laser-cleaning.yaml`
 
 ---
 
@@ -180,19 +180,19 @@ data/categories/
 
 ## 🎨 JSON Schemas
 
-### `content/schemas/contaminant.json`
+### `contaminants/schema.json`
 **Fields**: layout, contaminant, category, contaminantProperties, laserParameters, applications
 **Validation**: Required fields, enum constraints, type checking
 
-### `content/schemas/region.json`
+### `regions/schema.json`
 **Fields**: layout, region, countries, marketCharacteristics, regulatoryFramework, commonApplications
 **Validation**: Market maturity/size enums, array types
 
-### `content/schemas/application.json`
+### `applications/schema.json`
 **Fields**: layout, application, category, industry, useCases, processRequirements, benefits, challenges
 **Validation**: Category enums, automation/precision level constraints
 
-### `content/schemas/thesaurus.json`
+### `thesaurus/schema.json`
 **Fields**: layout, term, definition, category, relatedTerms, synonyms, technicalDetails
 **Validation**: Category enums (process, physics, equipment, measurement, safety)
 
@@ -442,7 +442,7 @@ pytest tests/test_frontmatter_architecture.py --cov=components/frontmatter
 - **Orchestrator**: `components/frontmatter/core/orchestrator.py`
 - **Test Suite**: `tests/test_frontmatter_architecture.py`
 - **Data Files**: `data/*.yaml`
-- **Schemas**: `content/schemas/*.json`
+- **Schemas**: Content-type specific schemas in respective folders, shared base in `shared/schemas/base.py`
 - **Design Spec**: `docs/architecture/EXTENSIBLE_FRONTMATTER_ARCHITECTURE.md`
 
 ---

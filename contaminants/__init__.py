@@ -1,0 +1,1 @@
+"""Contaminants content type module"""

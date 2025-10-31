@@ -1,0 +1,1 @@
+"""Materials content type module"""

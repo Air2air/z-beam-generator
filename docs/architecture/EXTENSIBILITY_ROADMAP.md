@@ -144,7 +144,7 @@ result = orchestrator.generate(
 python3 run.py --material "Aluminum"
 
 # Verify author voice applied
-cat content/frontmatter/materials/aluminum-laser-cleaning.yaml | grep "_voice_metadata"
+cat frontmatter/materials/aluminum-laser-cleaning.yaml | grep "_voice_metadata"
 
 # Run unit tests
 pytest tests/frontmatter/test_base_generator.py
@@ -301,7 +301,7 @@ if args.region:
 **Command**:
 ```bash
 python3 run.py --region "North America"
-# Output: content/frontmatter/regions/north-america-laser-cleaning-region.yaml
+# Output: frontmatter/regions/north-america-laser-cleaning-region.yaml
 ```
 
 ---
@@ -314,13 +314,13 @@ python3 run.py --region "North America"
 python3 run.py --region "Europe"
 
 # Verify output
-ls -lh content/frontmatter/regions/
+ls -lh frontmatter/regions/
 
 # Validate schema
 python3 scripts/validate_schema.py --type region --file "north-america-laser-cleaning-region.yaml"
 
 # Test author voice
-grep "_voice_metadata" content/frontmatter/regions/*.yaml
+grep "_voice_metadata" frontmatter/regions/*.yaml
 ```
 
 ---

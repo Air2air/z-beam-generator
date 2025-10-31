@@ -596,7 +596,7 @@ z-beam-generator/
 ### Example 1: Generate Material (Current Use Case)
 
 ```python
-from pipeline.content_pipeline import ContentPipeline
+from shared.pipeline.content_pipeline import ContentPipeline
 from content.schemas.material import MaterialContent
 from api.client_factory import create_api_client
 
@@ -666,7 +666,7 @@ python3 cli/generate_content.py --type material --batch materials_list.txt
 ## 🚀 Migration Strategy
 
 ### Phase 1: Foundation (Week 1)
-1. Create `content/schemas/base.py` with ContentSchema
+1. Create `shared/schemas/base.py` with ContentSchema
 2. Refactor MaterialContent to extend ContentSchema
 3. Create ResearcherFactory and base ContentResearcher
 4. Update existing researchers to use new pattern
@@ -756,4 +756,4 @@ python3 cli/generate_content.py --type material --batch materials_list.txt
 ---
 
 **Status**: Ready for implementation  
-**Next Step**: Create `content/schemas/base.py` with ContentSchema base class
+**Next Step**: Create `shared/schemas/base.py` with ContentSchema base class

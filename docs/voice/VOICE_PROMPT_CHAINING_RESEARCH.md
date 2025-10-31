@@ -379,7 +379,7 @@ def generate_faq_with_voice_enforcement(
 
 - **Caption Architecture**: `components/caption/ARCHITECTURE.md` - Proven reusable voice pattern
 - **Voice Service**: `voice/voice_service.py` - Current integration approach
-- **FAQ Component**: `components/faq/generators/faq_generator.py` - Current implementation
+- **FAQ Component**: `materials/faq/generators/faq_generator.py` - Current implementation
 - **Voice Orchestrator**: `voice/orchestrator.py` - Central voice management
 
 ---

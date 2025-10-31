@@ -85,7 +85,7 @@ To modify system behavior, edit config/settings.py:
 """
 
 # Import all configuration from centralized location
-from config.settings import (
+from shared.config.settings import (
     GLOBAL_OPERATIONAL_CONFIG,
     API_PROVIDERS,
     COMPONENT_CONFIG,
@@ -97,7 +97,7 @@ import sys
 import argparse
 
 # Import command handlers from modular structure
-from commands import (
+from shared.commands import (
     handle_caption_generation,
     handle_subtitle_generation,
     handle_faq_generation,
@@ -198,7 +198,7 @@ def main():
     # NEW: Multi-type orchestrator generation (Phase 1 architecture)
     if args.content_type and args.identifier:
         from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
-        from api.client_factory import create_api_client
+        from shared.api.client_factory import create_api_client
         
         print(f"🚀 Generating {args.content_type} frontmatter: {args.identifier}")
         
@@ -251,13 +251,13 @@ def main():
     # Pre-generation validation runs automatically within components
     
     # Additional imports for material generation
-    from generators.dynamic_generator import DynamicGenerator
-    from api.client_factory import create_api_client
-    from data.materials import load_materials_cached as load_materials, clear_materials_cache
-    from utils.filename import generate_safe_filename
+    from shared.generators.dynamic_generator import DynamicGenerator
+    from shared.api.client_factory import create_api_client
+    from materials.data.materials import load_materials_cached as load_materials, clear_materials_cache
+    from shared.utils.filename import generate_safe_filename
     
     try:
-        from commands.common import (
+        from shared.commands.common import (
             validate_material_pre_generation, 
             validate_and_improve_frontmatter, 
             validate_batch_generation
@@ -274,20 +274,20 @@ def main():
     
     # Handle remaining commands
     if args.data is not None:
-        from commands.research import run_data_verification
+        from shared.commands.research import run_data_verification
         return run_data_verification(args.data)
     
     if args.validate or args.validate_report:
-        from commands.validation_data import run_data_validation
+        from shared.commands.validation_data import run_data_validation
         return run_data_validation(args.validate_report)
     
     if args.sanitize or args.sanitize_file:
-        from commands.sanitization import run_frontmatter_sanitization
+        from shared.commands.sanitization import run_frontmatter_sanitization
         return run_frontmatter_sanitization(args.sanitize_file)
     
     if args.test:
         print("🧪 Test mode")
-        from generators.component_generators import ComponentGeneratorFactory
+        from shared.generators.component_generators import ComponentGeneratorFactory
         api_client = create_api_client("grok")
         generator = ComponentGeneratorFactory.create_generator("frontmatter", api_client=api_client)
         print(f"✅ Frontmatter generator loaded: {generator.component_type}")
@@ -335,7 +335,7 @@ def main():
                 print("⚠️  Using legacy generator (orchestrator not available)")
                 
                 materials_data_dict = load_materials()
-                from data.materials import get_material_by_name
+                from materials.data.materials import get_material_by_name
                 material_info = get_material_by_name(args.material, materials_data_dict)
                 
                 if not material_info:
@@ -355,10 +355,14 @@ def main():
             
                 # Legacy generator result handling
                 if result.success:
-                    output_dir = "content/frontmatter/materials"
+                    output_dir = "frontmatter/materials"
                     os.makedirs(output_dir, exist_ok=True)
                     filename = generate_safe_filename(args.material)
                     output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
+                    
+                    # Debug: Check content type
+                    print(f"DEBUG: result.content type = {type(result.content)}")
+                    print(f"DEBUG: result.content first 100 chars = {repr(result.content[:100])}")
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)
@@ -407,7 +411,7 @@ def main():
             
             print(f"📋 Found {len(all_materials)} materials")
             
-            from api.client_cache import get_cached_api_client
+            from shared.api.client_cache import get_cached_api_client
             api_client = get_cached_api_client('grok')
             
             if not api_client:
@@ -431,7 +435,7 @@ def main():
                     )
                     
                     if result.success:
-                        output_dir = "content/frontmatter"
+                        output_dir = "frontmatter"
                         os.makedirs(output_dir, exist_ok=True)
                         filename = generate_safe_filename(material_name)
                         output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"

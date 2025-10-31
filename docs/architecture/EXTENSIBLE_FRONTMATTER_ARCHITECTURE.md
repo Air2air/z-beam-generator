@@ -135,7 +135,7 @@ data/
     ├── synonyms.yaml                  # Synonym mappings
     └── translations.yaml              # Multi-language
 
-content/frontmatter/
+frontmatter/
 ├── materials/                          # Existing (organized)
 │   └── aluminum-laser-cleaning.yaml
 ├── regions/                            # NEW

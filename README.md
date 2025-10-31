@@ -415,7 +415,7 @@ The frontmatter component now generates a unified structure containing:
 - `author` - Author name from frontmatter
 
 #### For All Components
-- Complete frontmatter file at: `content/frontmatter/{material}-laser-cleaning.yaml`
+- Complete frontmatter file at: `frontmatter/{material}-laser-cleaning.yaml`
 
 ### Cascading Failure Behavior
 
@@ -564,7 +564,7 @@ python3 tests/test_frontmatter_validation.py
 #### Debugging Steps
 1. Check frontmatter file:
    ```bash
-   cat content/frontmatter/aluminum-laser-cleaning.yaml
+   cat frontmatter/aluminum-laser-cleaning.yaml
    ```
 
 2. Run dependency tests:
@@ -574,7 +574,7 @@ python3 tests/test_frontmatter_validation.py
 
 3. Validate frontmatter structure:
    ```bash
-   python3 -c "import yaml; print(yaml.safe_load(open('content/frontmatter/aluminum-laser-cleaning.yaml')))"
+   python3 -c "import yaml; print(yaml.safe_load(open('frontmatter/aluminum-laser-cleaning.yaml')))"
    ```
 
 ### Component Configuration Notes

@@ -8,7 +8,7 @@ consistency between validation, research, and generation systems.
 
 import pytest
 from pathlib import Path
-from utils.category_property_cache import get_category_property_cache
+from materials.utils.category_property_cache import get_category_property_cache
 
 
 class TestCategoryPropertyCache:

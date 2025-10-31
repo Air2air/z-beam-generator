@@ -18,9 +18,9 @@
 Files:
 - config_manager.py (ConfigManager class)
 - config/unified_config.py (UnifiedConfigManager class)  
-- utils/config/config_loader.py (ConfigLoader class)
-- utils/config/config_utils.py (Configuration utilities)
-- utils/config/environment_checker.py (Environment validation)
+- utils/shared/config/config_loader.py (ConfigLoader class)
+- utils/shared/config/config_utils.py (Configuration utilities)
+- utils/shared/config/environment_checker.py (Environment validation)
 - cli/api_config.py (API configuration management)
 ```
 **GROK Violation**: Multiple systems doing identical YAML loading and test mode detection  

@@ -100,7 +100,8 @@ class ValidationResult:
 
 def load_faq_from_frontmatter(material_name: str) -> Tuple[List[Dict], Dict]:
     """Load FAQ from frontmatter file"""
-    frontmatter_path = Path(f'content/frontmatter/{material_name.lower()}-laser-cleaning.yaml')
+    # Load frontmatter to get material metadata
+    frontmatter_path = Path(f'frontmatter/materials/{material_name.lower()}-laser-cleaning.yaml')
     
     if not frontmatter_path.exists():
         raise FileNotFoundError(f"Frontmatter file not found: {frontmatter_path}")

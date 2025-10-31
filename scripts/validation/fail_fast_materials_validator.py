@@ -14,14 +14,14 @@ import sys
 import yaml
 from pathlib import Path
 from typing import Dict, List
-from validation.errors import ConfigurationError
+from shared.validation.errors import ConfigurationError
 
 class MaterialsValidationError(Exception):
     """Materials database validation failure - system cannot operate"""
 
 def load_materials_yaml() -> Dict:
     """Load materials YAML with strict validation"""
-    materials_path = Path(__file__).parent.parent.parent / "data" / "Materials.yaml"
+    materials_path = Path(__file__).parent.parent.parent / "materials" / "data" / "Materials.yaml"
     
     if not materials_path.exists():
         raise ConfigurationError(f"CRITICAL: Materials.yaml not found at {materials_path}")

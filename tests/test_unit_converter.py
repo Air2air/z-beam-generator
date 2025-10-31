@@ -10,7 +10,7 @@ Solution: Normalize to 37.7 MS/m before comparison
 """
 
 import pytest
-from validation.helpers.unit_converter import UnitConverter, UnitConversionError
+from shared.validation.helpers.unit_converter import UnitConverter, UnitConversionError
 
 
 class TestElectricalConductivity:

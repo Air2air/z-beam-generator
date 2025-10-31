@@ -1,0 +1,1 @@
+"""Thesaurus content type module"""

@@ -194,7 +194,7 @@ other_props = properties['other']['properties']  # Specific property group
 
 ### Update Propagation Logic
 
-1. **File Discovery**: Find all `*.yaml` files in `content/frontmatter/`
+1. **File Discovery**: Find all `*.yaml` files in `frontmatter/`
 2. **Name Extraction**: Convert filename to material name (`dysprosium-laser-cleaning.yaml` → `Dysprosium`)
 3. **Material Lookup**: Find material in `material_index` to get category
 4. **Property Comparison**: Compare Materials.yaml properties vs frontmatter properties
@@ -219,7 +219,7 @@ other_props = properties['other']['properties']  # Specific property group
 
 3. **Verify frontmatter was updated**:
    ```bash
-   grep -A 3 "other:" content/frontmatter/dysprosium-laser-cleaning.yaml
+   grep -A 3 "other:" frontmatter/dysprosium-laser-cleaning.yaml
    ```
 
 ### Automated Verification

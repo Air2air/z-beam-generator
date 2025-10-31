@@ -17,7 +17,7 @@ from typing import Tuple, List, Dict
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from validation.schema_validator import SchemaValidator
+from shared.validation.schema_validator import SchemaValidator
 
 
 class FrontmatterSchemaValidator:

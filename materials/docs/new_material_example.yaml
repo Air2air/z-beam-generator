@@ -1,0 +1,179 @@
+# Example: How a material file would look in the new system
+# File: data/values/metals/titanium.yaml
+
+metadata:
+  name: "Titanium"
+  category: "metal"
+  subcategory: "Titanium"
+  commonNames: ["Ti", "Titanium Alloy"]
+  casNumber: "7440-32-6"
+  lastUpdated: "2025-10-02"
+  dataQuality: "high"
+  verifiedBy: "AI Research + NIST"
+
+materialProperties:
+  # Notice: NO property definitions here!
+  # Definitions come from data/properties/material_properties.yaml
+  # You only fill in VALUES
+  
+  density:
+    value: 4.51
+    min: 2.33
+    max: 7.13
+    confidence: 98
+    source: "ai_research"
+    notes: "Pure titanium Grade 1 at room temperature"
+  
+  meltingPoint:
+    value: 1668
+    confidence: 99
+    source: "nist"
+    notes: "Pure titanium melting point"
+  
+  thermalConductivity:
+    value: 21.9
+    min: 0.2
+    max: 156
+    confidence: 95
+    source: "ai_research"
+    notes: "Grade 1 titanium at 25°C"
+  
+  hardness:
+    value: 70
+    unit: "HB"
+    min: 2
+    max: 9.5
+    confidence: 92
+    source: "ai_research"
+    notes: "Brinell hardness for pure titanium"
+  
+  youngsModulus:
+    value: 116
+    min: 5
+    max: 190
+    confidence: 94
+    source: "ai_research"
+    notes: "Elastic modulus at room temperature"
+  
+  thermalExpansion:
+    value: 8.6
+    min: 2.6
+    max: 10
+    confidence: 90
+    source: "ai_research"
+  
+  specificHeat:
+    value: 520
+    min: 300
+    max: 900
+    confidence: 92
+    source: "ai_research"
+  
+  reflectivity:
+    value: 65
+    confidence: 85
+    source: "ai_research"
+    notes: "At 1064 nm wavelength"
+  
+  ablationThreshold:
+    value: 0.8
+    confidence: 82
+    source: "ai_research"
+    notes: "For nanosecond pulses at 1064 nm"
+
+machineSettings:
+  # Again: NO setting definitions here!
+  # Definitions come from data/properties/machine_settings.yaml
+  
+  powerRange:
+    value: 150
+    min: 80
+    max: 300
+    confidence: 93
+    source: "ai_research"
+    notes: "Optimal for oxide removal without substrate damage"
+  
+  wavelength:
+    value: 1064
+    min: 532
+    max: 1064
+    confidence: 88
+    source: "ai_research"
+    notes: "Near-IR for good absorption"
+  
+  spotSize:
+    value: 60
+    min: 30
+    max: 100
+    confidence: 84
+    source: "ai_research"
+  
+  repetitionRate:
+    value: 40
+    min: 20
+    max: 100
+    confidence: 87
+    source: "ai_research"
+  
+  pulseWidth:
+    value: 15
+    min: 8
+    max: 20
+    confidence: 85
+    source: "ai_research"
+  
+  scanSpeed:
+    value: 400
+    min: 200
+    max: 1000
+    confidence: 86
+    source: "ai_research"
+  
+  fluence:
+    value: 3.2
+    min: 2.0
+    max: 5.0
+    confidence: 90
+    source: "ai_research"
+  
+  overlapRatio:
+    value: 55
+    min: 40
+    max: 70
+    confidence: 83
+    source: "ai_research"
+  
+  passCount:
+    value: 2
+    min: 1
+    max: 4
+    confidence: 82
+    source: "ai_research"
+
+# Optional material-specific data
+industryTags:
+  - aerospace
+  - medical
+  - automotive
+  - marine
+
+applications:
+  - "Aerospace: Turbine blade restoration"
+  - "Medical: Implant surface preparation"
+  - "Automotive: Exhaust system cleaning"
+  - "Marine: Corrosion removal from components"
+
+author:
+  id: 2
+  name: "Hans Mueller"
+
+---
+# BENEFITS OF THIS APPROACH:
+
+1. File is only 150 lines (vs 500+ in monolithic)
+2. Property definitions NOT duplicated
+3. Easy to read and edit
+4. Automatic validation on load
+5. Self-documenting (schemas provide context)
+6. Git-friendly (small, focused files)
+7. Can be edited independently

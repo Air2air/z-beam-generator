@@ -30,8 +30,8 @@ from pathlib import Path
 from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 
-from generators.component_generators import APIComponentGenerator, ComponentResult
-from validation.errors import (
+from shared.generators.component_generators import APIComponentGenerator, ComponentResult
+from shared.validation.errors import (
     ConfigurationError,
     GenerationError,
     MaterialDataError
@@ -125,7 +125,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
     def _init_schema_validator(self):
         """Initialize unified schema validation system"""
         try:
-            from validation.schema_validator import SchemaValidator
+            from shared.validation.schema_validator import SchemaValidator
             self.schema_validator = SchemaValidator()
             self.logger.info("Schema validator initialized")
         except Exception as e:
@@ -334,7 +334,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             GenerationError: If voice processing fails
         """
         try:
-            from voice.post_processor import VoicePostProcessor
+            from shared.voice.post_processor import VoicePostProcessor
             
             # Initialize voice processor (requires API client for enhancement)
             if not self.api_client:
@@ -464,7 +464,20 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             filename = self._get_output_filename(identifier)
             
             # Determine output directory based on content type
-            output_dir = Path("content/frontmatter") / f"{self.content_type}s"
+            # All frontmatter goes to /frontmatter/{type}/
+            if self.content_type == 'material':
+                output_dir = Path("frontmatter/materials")
+            elif self.content_type == 'region':
+                output_dir = Path("frontmatter/regions")
+            elif self.content_type == 'application':
+                output_dir = Path("frontmatter/applications")
+            elif self.content_type == 'contaminant':
+                output_dir = Path("frontmatter/contaminants")
+            elif self.content_type == 'thesaurus':
+                output_dir = Path("frontmatter/thesaurus")
+            else:
+                # Fallback for any future types
+                output_dir = Path("frontmatter") / f"{self.content_type}s"
             output_dir.mkdir(parents=True, exist_ok=True)
             
             output_path = output_dir / filename

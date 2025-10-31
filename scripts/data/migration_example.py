@@ -28,7 +28,7 @@ def example_old_way():
 
 def example_new_way():
     """✅ NEW WAY: Use CategoryDataLoader (RECOMMENDED)"""
-    from utils.loaders.category_loader import CategoryDataLoader
+    from materials.category_loader import CategoryDataLoader
     
     loader = CategoryDataLoader()
     
@@ -44,7 +44,7 @@ def example_new_way():
 
 def example_convenience():
     """✅ ALTERNATIVE: Use convenience function"""
-    from utils.loaders.category_loader import load_category_data
+    from materials.category_loader import load_category_data
     
     # Quick access for specific data
     settings = load_category_data('machine_settings')
@@ -55,7 +55,7 @@ def example_convenience():
 
 def example_specific_category():
     """✅ BEST: Use specific helper for category ranges"""
-    from utils.loaders.category_loader import CategoryDataLoader
+    from materials.category_loader import CategoryDataLoader
     
     loader = CategoryDataLoader()
     

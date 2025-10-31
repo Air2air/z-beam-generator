@@ -166,7 +166,7 @@ python3 run.py --region "Europe"       # Different pattern
 **Equal output organization**:
 
 ```
-content/frontmatter/
+frontmatter/
 ├── materials/          ← Material frontmatter files
 │   └── aluminum-laser-cleaning.yaml
 │

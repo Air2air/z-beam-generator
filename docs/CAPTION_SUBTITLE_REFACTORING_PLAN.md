@@ -8,7 +8,7 @@
 
 ## 📊 Current State Assessment
 
-### Caption Generator (`components/caption/generators/generator.py`)
+### Caption Generator (`materials/caption/generators/generator.py`)
 - **Size**: 897 lines
 - **Complexity**: HIGH - Multiple integrated services
 - **Voice Integration**: Already has VoiceService (complex integration)
@@ -252,7 +252,7 @@ caption_text = self._generate_caption_content(...)
 ### Before Starting
 1. **Backup current working code**
    ```bash
-   cp components/caption/generators/generator.py components/caption/generators/generator_backup.py
+   cp materials/caption/generators/generator.py materials/caption/generators/generator_backup.py
    ```
 
 2. **Create git branch**

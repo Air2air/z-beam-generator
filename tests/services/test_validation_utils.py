@@ -6,7 +6,7 @@ Verifies confidence normalization, threshold checks, and property validation.
 """
 
 import pytest
-from components.frontmatter.services.validation_utils import ValidationUtils
+from materials.services.validation_utils import ValidationUtils
 
 
 class TestConfidenceNormalization:

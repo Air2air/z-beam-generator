@@ -143,7 +143,7 @@ Single algorithm using only `character_variation.total_range` from voice profile
 
 ### Modified Files
 
-1. **`components/faq/generators/faq_generator.py`**
+1. **`materials/faq/generators/faq_generator.py`**
    - Simplified `_calculate_varied_word_count()` to use only author variation
    - Removed hash bucketing, sinusoidal waves, position multipliers
 
@@ -194,7 +194,7 @@ python3 run.py --faq "Beryllium"
 
 - **Voice Profiles**: `voice/profiles/*.yaml`
 - **Component Config**: `voice/component_config.yaml`
-- **FAQ Generator**: `components/faq/generators/faq_generator.py`
+- **FAQ Generator**: `materials/faq/generators/faq_generator.py`
 - **Voice Service**: `voice/voice_service.py`
 - **Documentation**: This file
 

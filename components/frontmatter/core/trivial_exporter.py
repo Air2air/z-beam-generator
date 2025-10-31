@@ -22,7 +22,7 @@ import logging
 import yaml
 from pathlib import Path
 from typing import Dict, Any
-from data.materials import load_materials_cached
+from materials.data.materials import load_materials_cached
 
 logger = logging.getLogger(__name__)
 

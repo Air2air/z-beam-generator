@@ -62,14 +62,14 @@ class TestTwoCategoryCompliance:
     @pytest.fixture(scope="class")
     def cast_iron_frontmatter(self):
         """Load Cast Iron frontmatter"""
-        path = Path('content/frontmatter/cast-iron-laser-cleaning.yaml')
+        path = Path('frontmatter/cast-iron-laser-cleaning.yaml')
         with open(path, 'r') as f:
             return yaml.safe_load(f)
     
     @pytest.fixture(scope="class")
     def tool_steel_frontmatter(self):
         """Load Tool Steel frontmatter"""
-        path = Path('content/frontmatter/tool-steel-laser-cleaning.yaml')
+        path = Path('frontmatter/tool-steel-laser-cleaning.yaml')
         with open(path, 'r') as f:
             return yaml.safe_load(f)
     

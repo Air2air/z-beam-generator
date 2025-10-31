@@ -79,8 +79,8 @@ if frontmatter_regen_issues:
 ## File Locations
 
 ### Generated Files
-- **Frontmatter**: `content/frontmatter/{material-name}-laser-cleaning.yaml`
-- **Backup Location**: `content/frontmatter/{material-name}-laser-cleaning.backup_audit_{timestamp}.yaml`
+- **Frontmatter**: `frontmatter/{material-name}-laser-cleaning.yaml`
+- **Backup Location**: `frontmatter/{material-name}-laser-cleaning.backup_audit_{timestamp}.yaml`
 
 ### Source Code
 - **Main Implementation**: `components/frontmatter/services/material_auditor.py`
@@ -110,7 +110,7 @@ if frontmatter_regen_issues:
 
 ### Successful Regeneration
 ```
-✅ Frontmatter regenerated: content/frontmatter/steel-laser-cleaning.yaml
+✅ Frontmatter regenerated: frontmatter/steel-laser-cleaning.yaml
 ```
 
 **Audit Result**: INFO severity issue added with "AUTO-REGENERATED" tag
@@ -140,7 +140,7 @@ if frontmatter_regen_issues:
 python3 run.py --audit-all --audit-auto-fix
 
 # Verify results
-ls -la content/frontmatter/*.backup_audit_*
+ls -la frontmatter/*.backup_audit_*
 ```
 
 ## Troubleshooting
@@ -158,7 +158,7 @@ ls -la content/frontmatter/*.backup_audit_*
    - Review generator logs for specific errors
 
 3. **File Permission Issues**
-   - Ensure write permissions on content/frontmatter directory
+   - Ensure write permissions on frontmatter directory
    - Check disk space availability
    - Verify backup directory creation
 
@@ -182,7 +182,7 @@ print(f'Violations: {result.total_issues}')
 ### Default Settings
 - **Frontmatter Generation**: `skip_subtitle=True` (for performance)
 - **Backup Naming**: `{filename}.backup_audit_{timestamp}.yaml`
-- **Directory**: `content/frontmatter/` (auto-created if missing)
+- **Directory**: `frontmatter/` (auto-created if missing)
 
 ### Customization
 Currently not configurable. Contact development team for specific requirements.

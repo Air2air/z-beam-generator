@@ -237,7 +237,7 @@ components/subtitle/
                    ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              Trivial Exporter                                │
-│  (Export to content/frontmatter/*.yaml for Next.js)          │
+│  (Export to frontmatter/*.yaml for Next.js)          │
 └─────────────────────────────────────────────────────────────┘
                    │
                    ▼
@@ -340,7 +340,7 @@ components/subtitle/
 **Use as reference for**: Any component needing multiple AI generations with different contexts.
 
 ### Subtitle Component (Discrete Pattern)
-**File**: `components/subtitle/core/subtitle_generator.py`
+**File**: `materials/subtitle/core/subtitle_generator.py`
 
 **Key Features**:
 - Single voice call with specific constraints (8-12 words)

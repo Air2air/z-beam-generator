@@ -143,7 +143,7 @@ Backup saved: Materials.backup_20251025_223514.yaml
    ↓
 4. export_frontmatter_direct.py (Export)
    ↓
-5. content/frontmatter/*.yaml (Output)
+5. frontmatter/*.yaml (Output)
    ↓
 6. run.py --deploy (Deployment)
    ↓

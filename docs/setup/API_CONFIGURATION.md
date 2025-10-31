@@ -245,7 +245,7 @@ The system now uses strict fail-fast architecture:
 - `cli/component_config.py` - Updated to use centralized configuration
 - `cli/__init__.py` - Updated to use centralized configuration
 - `config/unified_config.py` - Updated to use centralized configuration
-- `utils/config/environment_checker.py` - Updated to use centralized configuration
+- `utils/shared/config/environment_checker.py` - Updated to use centralized configuration
 
 #### **Added Missing Functions**
 - Added `critical_error()` function to `utils/loud_errors.py` for proper error handling

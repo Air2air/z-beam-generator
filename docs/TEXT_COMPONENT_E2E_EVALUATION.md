@@ -83,7 +83,7 @@ Text Generation System
 
 ### 1. FAQ Generator ⭐⭐⭐⭐⭐ (5/5)
 
-**File**: `components/faq/generators/faq_generator.py`  
+**File**: `materials/faq/generators/faq_generator.py`  
 **Lines**: 519  
 **Status**: ✅ EXCELLENT
 
@@ -187,7 +187,7 @@ def enhance_batch(self, faq_items, author, marker_distribution='varied'):
 
 ### 3. Caption Generator ⭐⭐⭐⭐ (4/5)
 
-**File**: `components/caption/generators/generator.py`  
+**File**: `materials/caption/generators/generator.py`  
 **Lines**: 303  
 **Status**: ✅ GOOD - Intentionally Simple
 
@@ -231,7 +231,7 @@ enhanced = voice_processor.enhance_batch(caption_items, author, ...)
 
 ### 4. Subtitle Generator ⭐⭐⭐⭐ (4/5)
 
-**File**: `components/subtitle/core/subtitle_generator.py`  
+**File**: `materials/subtitle/core/subtitle_generator.py`  
 **Lines**: 305  
 **Status**: ✅ GOOD - Intentionally Simple
 

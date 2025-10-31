@@ -30,7 +30,7 @@ def quick_consistency_check():
         
         # Test 2: Materials data loading
         try:
-            from data.materials import load_materials
+            from materials.data.materials import load_materials
             materials_data = load_materials()
             print("   ✅ Materials data loads successfully")
         except Exception as e:
@@ -45,13 +45,13 @@ def quick_consistency_check():
                 'powerRange': {'min': 10, 'max': 1000, 'unit': 'W'}
             }
             
-            import data.materials
+            import materials.data.materials
             original_load = data.materials.load_materials
             data.materials.load_materials = lambda: test_materials_data
             
             try:
                 from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
-                from api.client_factory import create_api_client
+                from shared.api.client_factory import create_api_client
                 
                 # Test without API client first (faster)
                 generator = StreamlinedFrontmatterGenerator()

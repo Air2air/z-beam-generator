@@ -16,7 +16,7 @@ import sys
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from validation.schema_validator import SchemaValidator, ValidationResult
+from shared.validation.schema_validator import SchemaValidator, ValidationResult
 
 
 class EnhancedSchemaValidator:

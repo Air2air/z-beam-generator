@@ -8,7 +8,7 @@ The ComponentGeneratorFactory handles dynamic imports, so this file serves as do
 
 # Note: ComponentGeneratorFactory is in generators.component_generators
 # Import it from there:
-# from generators.component_generators import ComponentGeneratorFactory
+# from shared.generators.component_generators import ComponentGeneratorFactory
 
 # Component generators are loaded dynamically by ComponentGeneratorFactory
 # Available components:
