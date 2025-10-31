@@ -135,34 +135,50 @@ Be specific and historically accurate. Include actual locations, real names, and
         else:
             prompt = f"""Research the historical context of {city_name}, {county_name}, California during the {decade}.
 
-IMPORTANT: Identify the most iconic, representative scene that captures {city_name} in the {decade}. What made this city distinctive? What scene would a photographer choose to show the essence of {city_name} during that era? Consider both famous landmarks AND everyday working scenes that defined the city's character.
+TASK: Identify the most iconic scene that captures {city_name} in the {decade}.
 
-Examples of iconic scenes:
-- San Francisco 1930s: bustling waterfront with Ferry Building, piers, maritime activity
-- Oakland 1920s: downtown commercial district with streetcars
-- Agricultural towns: orchards, packing houses, farmland
-- Industrial cities: factories, rail yards, working districts
+Provide ONLY the essential visual information needed for an image generator:
 
-Provide:
-1. The approximate population in the middle of the decade (around {mid_decade})
-2. The MOST ICONIC location/scene that represents {city_name} in the {decade} (e.g., waterfront, downtown, industrial area, agricultural center, specific landmark)
-3. Rich visual details about that iconic scene: buildings, activities, people, vehicles, atmosphere, distinctive features
-4. What made {city_name} economically and culturally significant in the {decade}
-5. Specific visual elements that would appear in a photograph: architecture styles, business types, street life, period details
+1. Population (number only, no commas)
+2. Iconic scene name (short, e.g., "Ferry Building waterfront", "Main Street downtown")
+3. Exact location/street name
+4. 5-7 KEY VISUAL ELEMENTS as a list (each 10-15 words max):
+   - Most distinctive building/landmark with architectural style
+   - Typical clothing/people (be specific about styles)
+   - Primary vehicles/transportation visible
+   - Street/pavement characteristics
+   - SPECIFIC BUSINESS NAMES with correct spelling (e.g., "Smith's Hardware Store", "Johnson's Bakery", "Martinez Theatre")
+   - Atmospheric qualities (light, activity level)
+   - Any unique defining features
 
-Format your response as JSON (IMPORTANT: Use plain numbers without commas or formatting):
+5. 3-5 scene-specific negative prompts (things that would break authenticity)
+
+CRITICAL FOR SIGNS: Research and provide REAL historical business names with CORRECT SPELLING. 
+Use actual businesses from {decade} {city_name} if known, or create period-authentic names (owner's last name + business type).
+Every business name must be spelled correctly with proper capitalization.
+
+Format as JSON (NO commas in numbers):
 {{
-    "population": <number without commas>,
+    "population": <number>,
     "year": "{mid_decade}",
-    "iconic_scene": "<name of the most representative scene/location, e.g., 'Ferry Building waterfront', 'downtown fruit packing district', 'Main Street commercial center'>",
-    "main_street": "<specific street or location name>",
-    "street_details": "<2-3 sentences about what you would see at this location in {decade}>",
-    "subject_details": "<detailed visual description: architecture, people, activities, vehicles, businesses, atmosphere, colors (in grayscale terms), textures, period details>",
-    "character": "<what made {city_name} distinctive in {decade}>",
-    "source_note": "<historical context>"
+    "iconic_scene": "<short scene name>",
+    "main_street": "<street name>",
+    "street_details": "<1 sentence what's happening here>",
+    "key_visuals": [
+        "Visual element 1",
+        "Visual element 2",
+        "Visual element 3",
+        "Visual element 4",
+        "Visual element 5"
+    ],
+    "scene_negatives": [
+        "Modern element that breaks period",
+        "Another modern element",
+        "..."
+    ]
 }}
 
-Be specific and historically accurate. Choose the scene that best captures the city's essence in that era."""
+CRITICAL: Keep key_visuals SHORT and SPECIFIC. Focus on what makes this scene distinctive in {decade}."""
 
         try:
             # Generate research response
@@ -198,20 +214,21 @@ Be specific and historically accurate. Choose the scene that best captures the c
                     logger.error(f"Raw response: {response_text}")
                     raise
             
-            # PHASE 2: Research similar photos from that era for additional details
-            scene_type = subject if subject else data.get("iconic_scene", "downtown")
-            photo_research = self._research_similar_photos(city_name, decade, scene_type)
+            # Extract and format visual elements
+            key_visuals = data.get("key_visuals", [])
+            if key_visuals:
+                # Join key visuals into a concise description
+                visual_summary = ". ".join(key_visuals)
+                data["subject_details"] = visual_summary
+                logger.info(f"🎨 Key visuals: {len(key_visuals)} elements")
+            else:
+                # Fallback to subject_details if present (for backward compatibility)
+                data["subject_details"] = data.get("subject_details", "")
             
-            # Merge photo research details into subject_details
-            if photo_research:
-                original_details = data.get("subject_details", "")
-                data["subject_details"] = f"{original_details} {photo_research['visual_details']}"
-                logger.info(f"📸 Added details from similar {decade} photos")
-                
-                # Add scene-specific negative prompts
-                if photo_research.get('negative_prompts'):
-                    data["scene_negative_prompts"] = photo_research['negative_prompts']
-                    logger.info("🚫 Added scene-specific negative prompts")
+            # Extract scene-specific negatives
+            if data.get("scene_negatives"):
+                data["scene_negative_prompts"] = ", ".join(data["scene_negatives"])
+                logger.info(f"🚫 Scene negatives: {len(data['scene_negatives'])} items")
             
             # Determine population category
             population = data.get("population", 10000)
@@ -251,188 +268,21 @@ Be specific and historically accurate. Choose the scene that best captures the c
             logger.error(f"❌ Population research failed: {e}")
             raise
     
-    def _research_similar_photos(self, city_name: str, decade: str, scene_type: str) -> Dict[str, str]:
+    def _categorize_population(self, population: int) -> str:
         """
-        Research similar photographs from the era to extract additional visual details,
-        aging characteristics, authentic photo effects, and scene-specific negative prompts.
+        Categorize population into size category.
         
         Args:
-            city_name: Name of the city
-            decade: Decade string (e.g., "1930s")
-            scene_type: Type of scene (e.g., "waterfront", "downtown", "harbor")
+            population: Population number
             
         Returns:
-            Dictionary with:
-            - visual_details: String with visual and aging details
-            - negative_prompts: String with scene-specific negative prompts
+            Category key (small_town, suburb, small_city, medium_city)
         """
-        prompt = f"""Research historical photographs from California {scene_type} scenes in the {decade}, particularly around {city_name} or similar cities.
+        for category, info in self.POPULATION_CATEGORIES.items():
+            if population <= info["max"]:
+                return category
+        raise ValueError(f"Population {population} exceeds all defined categories")
 
-Analyze what characteristics commonly appear in authentic {decade} photographs of {scene_type} scenes:
-
-1. PHOTOGRAPHIC CHARACTERISTICS:
-   - Film type and quality typical of {decade}
-   - Lighting conditions and shadows
-   - Depth of field characteristics
-   - Motion blur patterns
-   - Grain structure and resolution
-
-2. PHOTO AGING & DETERIORATION:
-   - Common deterioration patterns in {decade} photographs that have aged
-   - Yellowing, sepia toning, or fading patterns
-   - Scratches, creases, or emulsion cracks typical of the era's photo paper
-   - Edge wear, corner damage, or handling marks
-   - Water stains, foxing, or discoloration patterns
-   - How {decade} silver gelatin prints age differently than other periods
-
-3. SCENE WEAR & WEATHERING:
-   - Building weathering typical of {decade} structures
-   - Paint conditions on wood, brick, or stucco facades
-   - Awning wear, fading, or tearing patterns
-   - Pavement deterioration and street surface conditions
-   - Signage wear and paint loss on period signs
-   - Natural aging of materials exposed to elements
-
-4. ARCHITECTURAL DETAILS:
-   - Building materials (wood, brick, stucco)
-   - Roof styles and conditions
-   - Window types and arrangements
-   - Signage styles and lettering
-   - Awnings, overhangs, architectural ornaments
-
-5. STREET-LEVEL DETAILS:
-   - Pavement types and conditions
-   - Utility poles and wiring
-   - Street furniture (lampposts, benches, etc.)
-   - Vehicles: makes, models, parking arrangements
-   - Pedestrians: clothing styles, activities
-
-6. ATMOSPHERIC ELEMENTS:
-   - Weather effects visible in photos
-   - Smoke, steam, dust in industrial scenes
-   - Natural elements (trees, landscaping)
-   - Time of day indicators
-
-7. PERIOD-SPECIFIC ELEMENTS:
-   - Business types typical of {decade}
-   - Equipment and machinery visible
-   - Advertisements and commercial signage
-   - Work activities and labor scenes
-
-CRITICAL: Provide ONLY concrete visual details that would appear in a {decade} photograph. NO meta-analysis, NO research commentary, NO "Here's what I found" statements. Just direct, factual visual descriptions.
-
-DO NOT describe photo aging (yellowing, scratches, deterioration) - that is handled separately.
-
-Focus on: scene composition, architecture, business activities, vehicles, people, clothing, equipment, atmospheric elements (smoke, dust, weather).
-
-Format: 4-6 sentences of DIRECT visual facts only. No headers, no bullet points, no analysis.
-
-ADDITIONAL TASK: Based on your analysis of authentic {decade} {scene_type} photographs, identify specific modern elements or effects that would BREAK authenticity. What should absolutely NOT appear in this type of photograph?
-
-Consider:
-- Anachronistic elements specific to {scene_type} (e.g., modern harbor equipment, contemporary signage)
-- Photo effects that didn't exist in {decade} (e.g., digital artifacts, modern lens effects)
-- Scene elements from wrong era (e.g., modern pavement markings, contemporary materials)
-- Artistic effects that would destroy period authenticity
-
-Provide 8-12 specific negative prompts that are most critical for this scene type and era."""
-
-        try:
-            response = self.model.generate_content(prompt)
-            response_text = response.text.strip()
-            
-            # Clean formatting artifacts from response
-            response_text = self._clean_research_output(response_text)
-            
-            # Try to parse as JSON first (in case model provides structured response)
-            try:
-                if "```json" in response_text:
-                    response_text = response_text.split("```json")[1].split("```")[0].strip()
-                    data = json.loads(response_text)
-                    return {
-                        "visual_details": data.get("visual_details", response_text),
-                        "negative_prompts": data.get("negative_prompts", "")
-                    }
-            except Exception:
-                pass
-            
-            # Otherwise, split by looking for negative prompt section
-            parts = response_text.split("**Negative Prompts:**")
-            if len(parts) == 2:
-                return {
-                    "visual_details": parts[0].strip(),
-                    "negative_prompts": parts[1].strip()
-                }
-            
-            # Check for other common separators
-            for separator in ["**Negative Prompts", "Negative prompts:", "NEGATIVE PROMPTS:", "Avoid:", "Do not include:", "Things to AVOID", "Modern elements that would break"]:
-                if separator in response_text:
-                    parts = response_text.split(separator, 1)
-                    return {
-                        "visual_details": parts[0].strip(),
-                        "negative_prompts": parts[1].strip().lstrip("* ").lstrip("(").lstrip(":").lstrip("authenticity:")
-                    }
-            
-            # If no clear separation, return all as visual details
-            return {
-                "visual_details": response_text,
-                "negative_prompts": ""
-            }
-            
-        except Exception as e:
-            logger.warning(f"⚠️  Photo research failed: {e}")
-            return {
-                "visual_details": "",
-                "negative_prompts": ""
-            }
-    
-    def _clean_research_output(self, text: str) -> str:
-        """
-        Remove researcher formatting artifacts from output.
-        
-        Strips markdown headers, numbered lists, bullet points, and other
-        meta-analysis formatting that shouldn't appear in final prompt.
-        
-        Args:
-            text: Raw research output
-            
-        Returns:
-            Cleaned text suitable for prompt inclusion
-        """
-        import re
-        
-        if not text:
-            return text
-        
-        # Remove markdown bold headers (all caps or title case)
-        text = re.sub(r'\*\*[^*]+\*\*\n?', '', text)
-        
-        # Remove numbered list markers at start of lines
-        text = re.sub(r'^\d+\.\s+', '', text, flags=re.MULTILINE)
-        
-        # Remove all bullet point variations
-        text = re.sub(r'^\*\s+', '', text, flags=re.MULTILINE)
-        text = re.sub(r'^-\s+', '', text, flags=re.MULTILINE)
-        text = re.sub(r'^•\s+', '', text, flags=re.MULTILINE)
-        
-        # Remove common meta-phrases and parentheticals
-        text = re.sub(r'\([^)]*to avoid[^)]*\)', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'\([^)]*negative[^)]*\)', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'\(Items to Avoid\)', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'\(Things to Avoid\)', '', text, flags=re.IGNORECASE)
-        
-        # Remove AI meta-language
-        text = re.sub(r'(Okay|Here|So),? let\'?s\s+\w+\.?\s*', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'I\'?ve (analyzed|examined|researched)\w*\.?\s*', '', text, flags=re.IGNORECASE)
-        
-        # Replace all newlines with spaces for continuous text
-        text = re.sub(r'\n+', ' ', text)
-        
-        # Collapse multiple spaces
-        text = re.sub(r'\s{2,}', ' ', text)
-        
-        return text.strip()
-    
     def _categorize_population(self, population: int) -> str:
         """
         Categorize population into size category.
