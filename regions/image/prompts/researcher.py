@@ -179,6 +179,16 @@ Be specific and historically accurate. Choose the scene that best captures the c
             
             data = json.loads(response_text)
             
+            # PHASE 2: Research similar photos from that era for additional details
+            scene_type = subject if subject else data.get("iconic_scene", "downtown")
+            photo_research = self._research_similar_photos(city_name, decade, scene_type)
+            
+            # Merge photo research details into subject_details
+            if photo_research:
+                original_details = data.get("subject_details", "")
+                data["subject_details"] = f"{original_details} {photo_research}"
+                logger.info(f"📸 Added details from similar {decade} photos")
+            
             # Determine population category
             population = data.get("population", 10000)
             category = self._categorize_population(population)
@@ -216,6 +226,83 @@ Be specific and historically accurate. Choose the scene that best captures the c
         except Exception as e:
             logger.error(f"❌ Population research failed: {e}")
             raise
+    
+    def _research_similar_photos(self, city_name: str, decade: str, scene_type: str) -> str:
+        """
+        Research similar photographs from the era to extract additional visual details,
+        aging characteristics, and authentic photo effects.
+        
+        Args:
+            city_name: Name of the city
+            decade: Decade string (e.g., "1930s")
+            scene_type: Type of scene (e.g., "waterfront", "downtown", "harbor")
+            
+        Returns:
+            String with additional visual details found in similar period photographs
+        """
+        prompt = f"""Research historical photographs from California {scene_type} scenes in the {decade}, particularly around {city_name} or similar cities.
+
+Analyze what characteristics commonly appear in authentic {decade} photographs of {scene_type} scenes:
+
+1. PHOTOGRAPHIC CHARACTERISTICS:
+   - Film type and quality typical of {decade}
+   - Lighting conditions and shadows
+   - Depth of field characteristics
+   - Motion blur patterns
+   - Grain structure and resolution
+
+2. PHOTO AGING & DETERIORATION:
+   - Common deterioration patterns in {decade} photographs that have aged
+   - Yellowing, sepia toning, or fading patterns
+   - Scratches, creases, or emulsion cracks typical of the era's photo paper
+   - Edge wear, corner damage, or handling marks
+   - Water stains, foxing, or discoloration patterns
+   - How {decade} silver gelatin prints age differently than other periods
+
+3. SCENE WEAR & WEATHERING:
+   - Building weathering typical of {decade} structures
+   - Paint conditions on wood, brick, or stucco facades
+   - Awning wear, fading, or tearing patterns
+   - Pavement deterioration and street surface conditions
+   - Signage wear and paint loss on period signs
+   - Natural aging of materials exposed to elements
+
+4. ARCHITECTURAL DETAILS:
+   - Building materials (wood, brick, stucco)
+   - Roof styles and conditions
+   - Window types and arrangements
+   - Signage styles and lettering
+   - Awnings, overhangs, architectural ornaments
+
+5. STREET-LEVEL DETAILS:
+   - Pavement types and conditions
+   - Utility poles and wiring
+   - Street furniture (lampposts, benches, etc.)
+   - Vehicles: makes, models, parking arrangements
+   - Pedestrians: clothing styles, activities
+
+6. ATMOSPHERIC ELEMENTS:
+   - Weather effects visible in photos
+   - Smoke, steam, dust in industrial scenes
+   - Natural elements (trees, landscaping)
+   - Time of day indicators
+
+7. PERIOD-SPECIFIC ELEMENTS:
+   - Business types typical of {decade}
+   - Equipment and machinery visible
+   - Advertisements and commercial signage
+   - Work activities and labor scenes
+
+Provide a detailed description of BOTH the visual scene elements AND the photographic aging/deterioration characteristics that would authentically appear in a {decade} photograph of a {scene_type} scene that has aged over the decades. Focus on concrete, specific details.
+
+Include photo aging effects (yellowing, scratches, wear) AND scene weathering (building deterioration, paint wear, surface damage). 4-6 sentences maximum."""
+
+        try:
+            response = self.model.generate_content(prompt)
+            return response.text.strip()
+        except Exception as e:
+            logger.warning(f"⚠️  Photo research failed: {e}")
+            return ""
     
     def _categorize_population(self, population: int) -> str:
         """
