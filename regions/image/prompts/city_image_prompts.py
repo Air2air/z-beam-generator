@@ -91,15 +91,12 @@ def get_historical_base_prompt(
     
     # Build prompt with research-based details (county removed)
     return (
-        f"MONOCHROME black and white grayscale historical photograph, NO COLOR WHATSOEVER, "
-        f"authentic silver gelatin print, photorealistic, low-resolution, full frame, "
-        f"{actual_decade} California {scene_type} in {city_name}.{street_context} "
+        f"Authentic {actual_decade} silver gelatin print on fiber-based paper, "
+        f"low-resolution period photograph, full frame. "
+        f"California {scene_type} in {city_name}.{street_context} "
         f"{subject_context} "
-        f"Period-appropriate motion blur: moving vehicles show slight blur and ghosting from long exposure times typical of {actual_decade} cameras, "
-        f"any people or animals in motion have slight blur, but static structures remain sharp. "
-        f"CRITICAL TEXT ACCURACY: All visible text on signs and buildings MUST be correctly spelled with proper letter formation, "
-        f"authentic {actual_decade} typography and period-appropriate sign painting quality. "
+        f"Long exposure motion blur typical of period cameras: moving elements show slight blur and ghosting, static elements remain sharp. "
+        f"All visible text must be correctly spelled with authentic {actual_decade} typography. "
         f"{scenery_condition} "
-        f"{photo_aging} "
-        f"MUST BE COMPLETELY BLACK AND WHITE with visible aging damage."
+        f"{photo_aging}"
     )
