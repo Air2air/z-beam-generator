@@ -186,8 +186,13 @@ Be specific and historically accurate. Choose the scene that best captures the c
             # Merge photo research details into subject_details
             if photo_research:
                 original_details = data.get("subject_details", "")
-                data["subject_details"] = f"{original_details} {photo_research}"
+                data["subject_details"] = f"{original_details} {photo_research['visual_details']}"
                 logger.info(f"📸 Added details from similar {decade} photos")
+                
+                # Add scene-specific negative prompts
+                if photo_research.get('negative_prompts'):
+                    data["scene_negative_prompts"] = photo_research['negative_prompts']
+                    logger.info("🚫 Added scene-specific negative prompts")
             
             # Determine population category
             population = data.get("population", 10000)
@@ -227,10 +232,10 @@ Be specific and historically accurate. Choose the scene that best captures the c
             logger.error(f"❌ Population research failed: {e}")
             raise
     
-    def _research_similar_photos(self, city_name: str, decade: str, scene_type: str) -> str:
+    def _research_similar_photos(self, city_name: str, decade: str, scene_type: str) -> Dict[str, str]:
         """
         Research similar photographs from the era to extract additional visual details,
-        aging characteristics, and authentic photo effects.
+        aging characteristics, authentic photo effects, and scene-specific negative prompts.
         
         Args:
             city_name: Name of the city
@@ -238,7 +243,9 @@ Be specific and historically accurate. Choose the scene that best captures the c
             scene_type: Type of scene (e.g., "waterfront", "downtown", "harbor")
             
         Returns:
-            String with additional visual details found in similar period photographs
+            Dictionary with:
+            - visual_details: String with visual and aging details
+            - negative_prompts: String with scene-specific negative prompts
         """
         prompt = f"""Research historical photographs from California {scene_type} scenes in the {decade}, particularly around {city_name} or similar cities.
 
@@ -295,14 +302,63 @@ Analyze what characteristics commonly appear in authentic {decade} photographs o
 
 Provide a detailed description of BOTH the visual scene elements AND the photographic aging/deterioration characteristics that would authentically appear in a {decade} photograph of a {scene_type} scene that has aged over the decades. Focus on concrete, specific details.
 
-Include photo aging effects (yellowing, scratches, wear) AND scene weathering (building deterioration, paint wear, surface damage). 4-6 sentences maximum."""
+Include photo aging effects (yellowing, scratches, wear) AND scene weathering (building deterioration, paint wear, surface damage). 4-6 sentences maximum.
+
+ADDITIONAL TASK: Based on your analysis of authentic {decade} {scene_type} photographs, identify specific modern elements or effects that would BREAK authenticity. What should absolutely NOT appear in this type of photograph?
+
+Consider:
+- Anachronistic elements specific to {scene_type} (e.g., modern harbor equipment, contemporary signage)
+- Photo effects that didn't exist in {decade} (e.g., digital artifacts, modern lens effects)
+- Scene elements from wrong era (e.g., modern pavement markings, contemporary materials)
+- Artistic effects that would destroy period authenticity
+
+Provide 8-12 specific negative prompts that are most critical for this scene type and era."""
 
         try:
             response = self.model.generate_content(prompt)
-            return response.text.strip()
+            response_text = response.text.strip()
+            
+            # Try to parse as JSON first (in case model provides structured response)
+            try:
+                if "```json" in response_text:
+                    response_text = response_text.split("```json")[1].split("```")[0].strip()
+                    data = json.loads(response_text)
+                    return {
+                        "visual_details": data.get("visual_details", response_text),
+                        "negative_prompts": data.get("negative_prompts", "")
+                    }
+            except Exception:
+                pass
+            
+            # Otherwise, split by looking for negative prompt section
+            parts = response_text.split("**Negative Prompts:**")
+            if len(parts) == 2:
+                return {
+                    "visual_details": parts[0].strip(),
+                    "negative_prompts": parts[1].strip()
+                }
+            
+            # Check for other common separators
+            for separator in ["**Negative Prompts", "Negative prompts:", "NEGATIVE PROMPTS:", "Avoid:", "Do not include:", "Things to AVOID"]:
+                if separator in response_text:
+                    parts = response_text.split(separator, 1)
+                    return {
+                        "visual_details": parts[0].strip(),
+                        "negative_prompts": parts[1].strip().lstrip("* ").lstrip("(").lstrip(":")
+                    }
+            
+            # If no clear separation, return all as visual details
+            return {
+                "visual_details": response_text,
+                "negative_prompts": ""
+            }
+            
         except Exception as e:
             logger.warning(f"⚠️  Photo research failed: {e}")
-            return ""
+            return {
+                "visual_details": "",
+                "negative_prompts": ""
+            }
     
     def _categorize_population(self, population: int) -> str:
         """

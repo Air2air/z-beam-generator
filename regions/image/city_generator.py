@@ -10,6 +10,7 @@ Date: October 30, 2025
 """
 
 import logging
+import re
 from typing import Dict, Any, Optional
 
 from regions.image.prompts.city_image_prompts import get_historical_base_prompt
@@ -87,7 +88,7 @@ class CityImageGenerator:
         
         return prompt
     
-    def get_negative_prompt(self, decade: str = "1930s", subject: Optional[str] = None) -> str:
+    def get_negative_prompt(self, decade: str = "1930s", subject: Optional[str] = None, population_data: Optional[Dict[str, Any]] = None) -> str:
         """
         Get comprehensive negative prompt for historical image accuracy.
         
@@ -98,10 +99,12 @@ class CityImageGenerator:
         - Composition control
         - Era-specific exclusions
         - Subject-specific exclusions
+        - Scene-specific exclusions from photo research
         
         Args:
             decade: Historical decade for era-specific exclusions
             subject: Optional subject to add subject-specific exclusions
+            population_data: Optional population research data with scene_negative_prompts
         
         Returns:
             Comprehensive negative prompt string
@@ -113,6 +116,20 @@ class CityImageGenerator:
         era_additions = get_era_specific_additions(decade)
         if era_additions:
             base_negative += ", " + ", ".join(era_additions)
+        
+        # Add scene-specific negative prompts from research
+        if population_data and population_data.get("scene_negative_prompts"):
+            scene_negatives = population_data["scene_negative_prompts"]
+            # Clean up formatting if it's a list or has bullet points
+            if isinstance(scene_negatives, list):
+                scene_negatives = ", ".join(scene_negatives)
+            else:
+                # Remove bullet points, newlines, and numbered lists
+                scene_negatives = scene_negatives.replace("\n", ", ").replace("* ", "").replace("- ", "")
+                # Remove numbered list format (1. 2. 3. etc)
+                import re
+                scene_negatives = re.sub(r'\d+\.\s*', '', scene_negatives)
+            base_negative += ", " + scene_negatives
         
         # Add subject-specific exclusions
         if subject:
@@ -164,8 +181,21 @@ class CityImageGenerator:
                 "safety_filter_level": str
             }
         """
-        prompt = self.generate_prompt(city_name, county_name, decade, config, subject)
-        negative_prompt = self.get_negative_prompt(decade, subject)
+        # Get population data for both prompt and negative prompt generation
+        population_data = None
+        if self.researcher:
+            try:
+                population_data = self.researcher.research_population(
+                    city_name, county_name, decade, subject
+                )
+            except Exception as e:
+                logger.warning(f"⚠️  Population research failed: {e}")
+        
+        # Generate prompt with population context
+        prompt = get_historical_base_prompt(city_name, county_name, decade, population_data, config, subject)
+        
+        # Generate negative prompt with scene-specific additions
+        negative_prompt = self.get_negative_prompt(decade, subject, population_data)
         params = self.get_generation_params()
         
         return {
