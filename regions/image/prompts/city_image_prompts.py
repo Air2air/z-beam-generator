@@ -123,7 +123,9 @@ def get_historical_base_prompt(
         f"{subject_context}\n\n"  # Add line break after research
         f"CAMERA: Period camera motion blur: slight blur on moving subjects, static elements sharp. "
         f"{focal_depth} "
-        f"Authentic {actual_decade} typography on all visible text. "
+        f"CRITICAL REQUIREMENT - ALL VISIBLE TEXT MUST BE PERFECTLY SPELLED: Every sign, storefront, advertisement, banner, "
+        f"poster, and any readable text MUST use correct English spelling with authentic {actual_decade} typography. "
+        f"No misspellings, no gibberish, no AI-garbled text, no corrupted letters. Every word must be a real word spelled correctly. "
         f"{scenery_condition}\n\n"  # Add line break before aging
         f"PHOTOGRAPH AGING: {photo_aging}"  # Make aging prominent with label
     )
