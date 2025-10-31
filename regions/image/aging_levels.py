@@ -36,13 +36,17 @@ PHOTO_AGING_LEVELS: Dict[int, str] = {
     3: (
         "Moderate aging: strong yellowing with brown toning, dust accumulation, many scratches and creases, "
         "water stains and spots, visible emulsion cracks, corner wear and bending, tape marks, "
-        "fingerprint smudges, faded contrast with bleached areas. Some loss of sharpness with slight overall softness."
+        "fingerprint smudges, faded contrast with bleached areas. "
+        "Noticeable overall softness and blur, reduced sharpness throughout image, slightly unfocused appearance, "
+        "details lack crispness, gentle haziness over entire photograph."
     ),
     4: (
-        "Light aging: moderate yellowing, minor scratches and spots, some edge wear, slight fading, overall well-preserved with good sharpness."
+        "Light aging: moderate yellowing, minor scratches and spots, some edge wear, slight fading. "
+        "Mild overall softness, slight reduction in sharpness, gentle blur throughout, image appears slightly out of focus."
     ),
     5: (
-        "Minimal aging: slight yellowing, very faint scratches, well-preserved with good contrast and sharp focus."
+        "Minimal aging: slight yellowing, very faint scratches, well-preserved with good contrast. "
+        "Subtle softness with minor blur, slight loss of crispness compared to modern photographs."
     )
 }
 
