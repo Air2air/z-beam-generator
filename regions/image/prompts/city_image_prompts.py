@@ -113,26 +113,27 @@ def get_historical_base_prompt(
     # Extract iconic scene from research
     iconic_scene = population_data.get("iconic_scene", "")
     
-    # Determine effective subject and build context with research
+    # Determine subject and build context with research
     subject_context = ""
-    effective_subject = subject  # Track what subject we're actually using
     
     if subject:
         # User specified subject - must have research
         if not subject_research:
             raise ValueError(f"Research failed to provide details for subject: {subject}")
-        subject_context = f" Focus on the {subject}. {subject_research}"
+        subject_context = f" {subject_research}"
+        scene_type = f"{subject}, {city_name}"
     elif iconic_scene:
         # No explicit subject - use researched iconic scene
         if not subject_research:
             raise ValueError(f"Research failed to provide details for iconic scene: {iconic_scene}")
-        subject_context = f" Focus on {iconic_scene}. {subject_research}"
-        effective_subject = iconic_scene  # Treat iconic scene as the subject
+        subject_context = f" {subject_research}"
+        # If iconic scene is long/complex, just use city name
+        if len(iconic_scene) > 40:
+            scene_type = f"{city_name}"
+        else:
+            scene_type = f"{iconic_scene}, {city_name}"
     else:
         raise ValueError("Research must provide either subject_details or iconic_scene")
-    
-    # Scene type from effective subject
-    scene_type = f"{effective_subject} scene"
     
     # Get period-accurate focal characteristics
     focal_depth = get_period_focal_characteristics(actual_decade)
@@ -141,7 +142,7 @@ def get_historical_base_prompt(
     return (
         f"Authentic {actual_decade} silver gelatin print on fiber-based paper, "
         f"low-resolution period photograph, full frame. "
-        f"California {scene_type} in {city_name}.{street_context} "
+        f"{scene_type}.{street_context} "
         f"{subject_context} "
         f"Long exposure motion blur typical of period cameras: moving elements show slight blur and ghosting, static elements remain sharp. "
         f"{focal_depth} "

@@ -11212,6 +11212,151 @@ materials:
       generation_method: ai_research_voice
       word_count: 8
     title: Copper Laser Cleaning
+    properties:
+      density:
+        value: 8.96
+        unit: "g/cm\xB3"
+        confidence: 98
+        description: "Density of pure copper at 20\xB0C, relevant for substrate in\
+          \ laser cleaning"
+        min: 0.53
+        max: 22.6
+      thermalConductivity:
+        value: 401.0
+        unit: "W/(m\xB7K)"
+        confidence: 95
+        description: "Thermal conductivity of pure copper at 20\xB0C, governs heat\
+          \ spreading in laser surface treatment"
+        min: 7.0
+        max: 430
+      thermalExpansion:
+        value: 16.5
+        unit: 10^{-6}/K
+        confidence: 92
+        description: "Linear thermal expansion coefficient of copper from 20-100\xB0\
+          C, affects thermal stress in laser heating"
+        min: 0.5
+        max: 33
+      thermalDiffusivity:
+        value: 1.17
+        unit: "10^{-4} m\xB2/s"
+        confidence: 90
+        description: Thermal diffusivity of copper at room temperature, critical for
+          pulse duration optimization in laser cleaning
+        min: 0.06
+        max: 174
+      specificHeat:
+        value: 385.0
+        unit: "J/(kg\xB7K)"
+        confidence: 94
+        description: "Specific heat capacity of copper at 20\xB0C, used in heat capacity\
+          \ calculations for laser energy absorption"
+        min: 100
+        max: 2000
+      thermalShockResistance:
+        value: 250
+        unit: "kW/m\xB2"
+        confidence: 85
+        description: Thermal shock resistance parameter for copper, indicating tolerance
+          to rapid heating in pulsed laser applications
+        min: 50
+        max: 400
+      tensileStrength:
+        value: 220.0
+        unit: MPa
+        confidence: 88
+        description: Ultimate tensile strength of annealed pure copper, relevant for
+          assessing mechanical integrity post-laser cleaning
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 117.0
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of copper at room temperature, important for
+          stress analysis during thermal cycling in laser processes
+        min: 5
+        max: 600
+      hardness:
+        value: 0.49
+        unit: GPa
+        confidence: 87
+        description: Vickers hardness of annealed copper, influences surface durability
+          after laser surface preparation
+        min: 0.5
+        max: 3500
+      flexuralStrength:
+        value: 210
+        unit: MPa
+        confidence: 86
+        description: Flexural strength of pure copper, relevant for thin films or
+          substrates in laser cleaning setups
+        min: 2.5
+        max: 1050.0
+      absorptionCoefficient:
+        value: 9.5
+        unit: 10^6 cm^{-1}
+        confidence: 90
+        description: Absorption coefficient of copper at 1064 nm (Nd:YAG laser wavelength),
+          crucial for energy coupling in cleaning
+        min: 100000
+        max: 50000000
+      laserReflectivity:
+        value: 0.98
+        unit: ''
+        confidence: 92
+        description: Normal incidence reflectivity of polished copper at 1064 nm,
+          affects laser energy utilization efficiency
+        min: 5
+        max: 99.9
+      ablationThreshold:
+        value: 1.2
+        unit: "J/cm\xB2"
+        confidence: 85
+        description: Ablation threshold fluence for copper with 10 ns pulses at 1064
+          nm, threshold for contaminant removal without substrate damage
+        min: 2.0
+        max: 8.0
+      laserDamageThreshold:
+        value: 0.8
+        unit: "J/cm\xB2"
+        confidence: 87
+        description: Laser-induced damage threshold for copper surface at 1064 nm
+          ns pulses, critical for safe cleaning parameters
+        min: 0.1
+        max: 20.0
+      oxidationResistance:
+        value: 150
+        unit: "\xB0C"
+        confidence: '80'
+        description: Temperature threshold for significant oxidation onset in air
+          for copper, important for post-laser cleaning stability
+        min: 200
+        max: 1200
+      corrosionResistance:
+        value: 0.05
+        unit: mm/year
+        confidence: 83
+        description: Corrosion rate of copper in neutral seawater, assesses long-term
+          surface integrity after laser preparation
+        min: 1
+        max: 10
+      porosity:
+        value: 0
+        unit: '%'
+        confidence: 96
+        description: Porosity of pure bulk copper, ideal for dense substrates in laser
+          cleaning applications
+        min: 0.0
+        max: 15.0
+      surfaceRoughness:
+        value: 0.1
+        unit: "\u03BCm Ra"
+        confidence: 89
+        description: Typical surface roughness of mechanically polished copper, baseline
+          for laser cleaning efficacy on contaminants
+        min: 0.4
+        max: 150
   Crown Glass:
     applications:
     - Aerospace

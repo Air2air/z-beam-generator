@@ -322,6 +322,9 @@ Provide 8-12 specific negative prompts that are most critical for this scene typ
             response = self.model.generate_content(prompt)
             response_text = response.text.strip()
             
+            # Clean formatting artifacts from response
+            response_text = self._clean_research_output(response_text)
+            
             # Try to parse as JSON first (in case model provides structured response)
             try:
                 if "```json" in response_text:
@@ -363,6 +366,53 @@ Provide 8-12 specific negative prompts that are most critical for this scene typ
                 "visual_details": "",
                 "negative_prompts": ""
             }
+    
+    def _clean_research_output(self, text: str) -> str:
+        """
+        Remove researcher formatting artifacts from output.
+        
+        Strips markdown headers, numbered lists, bullet points, and other
+        meta-analysis formatting that shouldn't appear in final prompt.
+        
+        Args:
+            text: Raw research output
+            
+        Returns:
+            Cleaned text suitable for prompt inclusion
+        """
+        import re
+        
+        if not text:
+            return text
+        
+        # Remove markdown bold headers (all caps or title case)
+        text = re.sub(r'\*\*[^*]+\*\*\n?', '', text)
+        
+        # Remove numbered list markers at start of lines
+        text = re.sub(r'^\d+\.\s+', '', text, flags=re.MULTILINE)
+        
+        # Remove all bullet point variations
+        text = re.sub(r'^\*\s+', '', text, flags=re.MULTILINE)
+        text = re.sub(r'^-\s+', '', text, flags=re.MULTILINE)
+        text = re.sub(r'^•\s+', '', text, flags=re.MULTILINE)
+        
+        # Remove common meta-phrases and parentheticals
+        text = re.sub(r'\([^)]*to avoid[^)]*\)', '', text, flags=re.IGNORECASE)
+        text = re.sub(r'\([^)]*negative[^)]*\)', '', text, flags=re.IGNORECASE)
+        text = re.sub(r'\(Items to Avoid\)', '', text, flags=re.IGNORECASE)
+        text = re.sub(r'\(Things to Avoid\)', '', text, flags=re.IGNORECASE)
+        
+        # Remove AI meta-language
+        text = re.sub(r'(Okay|Here|So),? let\'?s\s+\w+\.?\s*', '', text, flags=re.IGNORECASE)
+        text = re.sub(r'I\'?ve (analyzed|examined|researched)\w*\.?\s*', '', text, flags=re.IGNORECASE)
+        
+        # Replace all newlines with spaces for continuous text
+        text = re.sub(r'\n+', ' ', text)
+        
+        # Collapse multiple spaces
+        text = re.sub(r'\s{2,}', ' ', text)
+        
+        return text.strip()
     
     def _categorize_population(self, population: int) -> str:
         """

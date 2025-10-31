@@ -94,6 +94,34 @@
       "type": "string",
       "description": "Primary languages spoken"
     },
+    "imagePrompts": {
+      "type": "object",
+      "description": "AI image generation prompts for Gemini",
+      "properties": {
+        "historical": {
+          "type": "string",
+          "description": "Prompt for historical city/county photo"
+        },
+        "business": {
+          "type": "string",
+          "description": "Prompt for local business using laser cleaning"
+        }
+      }
+    },
+    "imageFiles": {
+      "type": "object",
+      "description": "Generated image file paths",
+      "properties": {
+        "historical": {
+          "type": "string",
+          "description": "Path to historical photo"
+        },
+        "business": {
+          "type": "string",
+          "description": "Path to business photo"
+        }
+      }
+    },
     "author": {
       "type": "object",
       "description": "Author information",

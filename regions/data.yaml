@@ -3,11 +3,16 @@
 # Used by RegionFrontmatterGenerator
 
 _metadata:
-  version: 1.0.0
+  version: 1.1.0
   created: '2025-10-30'
+  updated: '2025-10-30'
   description: Geographic regions with regulatory and market information
-  total_regions: 6
+  total_regions: 7
   scope: Global coverage of major laser cleaning markets
+  bay_area_coverage:
+    counties: 9
+    major_cities: 100+
+    detail_level: comprehensive
 
 regions:
   north_america:
@@ -42,6 +47,233 @@ regions:
       - Historical restoration
       - Industrial cleaning
     language: English, Spanish, French
+    # San Francisco Bay Area - Comprehensive Coverage
+    bay_area:
+      name: San Francisco Bay Area
+      description: Major technology and manufacturing hub with 9 counties
+      counties:
+        alameda:
+          name: Alameda County
+          county_seat: Oakland
+          major_cities:
+            - Oakland
+            - Fremont
+            - Hayward
+            - Berkeley
+            - San Leandro
+            - Alameda
+            - Union City
+            - Newark
+            - Pleasanton
+            - Dublin
+            - Livermore
+            - Albany
+            - Emeryville
+            - Piedmont
+          industrial_sectors:
+            - Technology manufacturing
+            - Automotive
+            - Aerospace
+            - Food processing
+            - Biotechnology
+        contra_costa:
+          name: Contra Costa County
+          county_seat: Martinez
+          major_cities:
+            - Concord
+            - Richmond
+            - Antioch
+            - Walnut Creek
+            - San Ramon
+            - Pittsburg
+            - Brentwood
+            - Martinez
+            - Pleasant Hill
+            - El Cerrito
+            - Pinole
+            - Hercules
+            - Danville
+            - San Pablo
+            - Lafayette
+            - Orinda
+            - Moraga
+          industrial_sectors:
+            - Oil refining
+            - Chemical manufacturing
+            - Food processing
+            - Distribution centers
+        marin:
+          name: Marin County
+          county_seat: San Rafael
+          major_cities:
+            - San Rafael
+            - Novato
+            - Sausalito
+            - Mill Valley
+            - Tiburon
+            - Larkspur
+            - Corte Madera
+            - San Anselmo
+            - Fairfax
+          industrial_sectors:
+            - Technology
+            - Biotechnology
+            - Marine services
+            - Specialty manufacturing
+        napa:
+          name: Napa County
+          county_seat: Napa
+          major_cities:
+            - Napa
+            - American Canyon
+            - St. Helena
+            - Calistoga
+            - Yountville
+          industrial_sectors:
+            - Wine production
+            - Food processing
+            - Tourism equipment
+            - Agricultural equipment
+        san_francisco:
+          name: San Francisco County
+          county_seat: San Francisco
+          major_cities:
+            - San Francisco
+          districts:
+            - Financial District
+            - SOMA (South of Market)
+            - Mission District
+            - Bayview-Hunters Point
+            - Potrero Hill
+          industrial_sectors:
+            - Technology
+            - Biotechnology
+            - Medical devices
+            - Precision manufacturing
+            - Research & development
+        san_mateo:
+          name: San Mateo County
+          county_seat: Redwood City
+          major_cities:
+            - Daly City
+            - San Mateo
+            - Redwood City
+            - South San Francisco
+            - San Bruno
+            - Pacifica
+            - Burlingame
+            - Millbrae
+            - Foster City
+            - San Carlos
+            - Belmont
+            - Half Moon Bay
+            - Menlo Park
+            - Atherton
+            - Portola Valley
+            - Hillsborough
+          industrial_sectors:
+            - Biotechnology
+            - Aerospace
+            - Electronics manufacturing
+            - Medical devices
+            - Research facilities
+        santa_clara:
+          name: Santa Clara County (Silicon Valley)
+          county_seat: San Jose
+          major_cities:
+            - San Jose
+            - Sunnyvale
+            - Santa Clara
+            - Mountain View
+            - Palo Alto
+            - Milpitas
+            - Cupertino
+            - Campbell
+            - Los Gatos
+            - Saratoga
+            - Los Altos
+            - Morgan Hill
+            - Gilroy
+            - Los Altos Hills
+            - Monte Sereno
+          industrial_sectors:
+            - Semiconductor manufacturing
+            - Electronics
+            - Computer hardware
+            - Solar panel manufacturing
+            - Precision instruments
+            - Aerospace components
+            - Medical devices
+            - Clean technology
+        solano:
+          name: Solano County
+          county_seat: Fairfield
+          major_cities:
+            - Fairfield
+            - Vallejo
+            - Vacaville
+            - Suisun City
+            - Benicia
+            - Dixon
+            - Rio Vista
+          industrial_sectors:
+            - Biotechnology
+            - Food processing
+            - Distribution centers
+            - Military/aerospace (Travis AFB)
+            - Manufacturing
+        sonoma:
+          name: Sonoma County
+          county_seat: Santa Rosa
+          major_cities:
+            - Santa Rosa
+            - Petaluma
+            - Rohnert Park
+            - Sebastopol
+            - Cotati
+            - Cloverdale
+            - Healdsburg
+            - Windsor
+            - Sonoma
+          industrial_sectors:
+            - Wine production
+            - Food processing
+            - Dairy processing
+            - Agricultural equipment
+            - Specialty manufacturing
+      bay_area_regulatory:
+        air_quality: Bay Area Air Quality Management District (BAAQMD)
+        water_quality: San Francisco Bay Regional Water Quality Control Board
+        hazardous_materials: County-level CUPA (Certified Unified Program Agency)
+        business_permits: County and city-level requirements
+        environmental_impact: CEQA (California Environmental Quality Act)
+      key_industries:
+        - Technology and semiconductor manufacturing
+        - Biotechnology and pharmaceuticals
+        - Aerospace and defense
+        - Medical devices
+        - Food and beverage processing
+        - Wine production
+        - Automotive (Tesla, electric vehicles)
+        - Solar and clean energy
+        - Marine and shipbuilding
+      laser_cleaning_applications:
+        - Semiconductor wafer cleaning
+        - Solar panel manufacturing
+        - Aerospace component maintenance
+        - Medical device manufacturing
+        - Historical building restoration
+        - Marine vessel maintenance
+        - Wine barrel cleaning
+        - Food processing equipment
+        - Automotive manufacturing (EV components)
+      market_characteristics:
+        adoption_rate: Very high
+        environmental_consciousness: Extremely high
+        regulatory_stringency: Very strict
+        technology_innovation: Global leader
+        skilled_workforce: Abundant
+        cost_of_operation: Very high
   
   europe:
     name: Europe
@@ -209,6 +441,92 @@ regions:
       - Manufacturing
       - Cultural heritage
     language: English, French, Arabic, local languages
+  
+  san_francisco_bay_area:
+    name: San Francisco Bay Area
+    countries:
+      - United States
+    description: Global technology and innovation hub - 9 counties, 100+ cities
+    parent_region: north_america
+    market_characteristics:
+      maturity: highly mature
+      growth_rate: high
+      market_size: large
+      technology_adoption: highest globally
+    regulatory_framework:
+      primary_agencies:
+        - OSHA (Federal)
+        - Cal/OSHA (California State)
+        - BAAQMD (Bay Area Air Quality Management District)
+        - SF Bay Regional Water Quality Control Board
+        - County-level CUPAs (environmental permits)
+      laser_safety_standard: ANSI Z136.1, California Title 8
+      environmental_regulations:
+        - California Clean Air Act (stricter than federal)
+        - CEQA (California Environmental Quality Act)
+        - Prop 65 (chemical warnings)
+        - BAAQMD regulations (strictest in nation)
+        - Zero-emission requirements for certain sectors
+      worker_safety_requirements:
+        - Cal/OSHA requirements (stricter than federal)
+        - Mandatory training and certification
+        - Exposure monitoring and reporting
+        - Emergency response plans required
+    counties:
+      - Alameda County
+      - Contra Costa County
+      - Marin County
+      - Napa County
+      - San Francisco County
+      - San Mateo County
+      - Santa Clara County (Silicon Valley)
+      - Solano County
+      - Sonoma County
+    major_cities:
+      - San Francisco
+      - San Jose
+      - Oakland
+      - Fremont
+      - Santa Clara
+      - Sunnyvale
+      - Hayward
+      - Concord
+      - Berkeley
+      - Richmond
+      - Vallejo
+      - Daly City
+      - San Mateo
+      - Fairfield
+      - Santa Rosa
+    key_industries:
+      - Semiconductor manufacturing
+      - Biotechnology and pharmaceuticals
+      - Medical devices
+      - Aerospace and defense
+      - Electric vehicle manufacturing
+      - Solar and renewable energy
+      - Food and beverage processing
+      - Wine production
+      - Marine and shipbuilding
+    common_applications:
+      - Semiconductor wafer cleaning
+      - Solar panel manufacturing
+      - Aerospace component restoration
+      - Medical device manufacturing
+      - EV battery component cleaning
+      - Wine barrel maintenance
+      - Historical building restoration (Victorian, Gold Rush era)
+      - Marine vessel maintenance (Port of Oakland, Port of San Francisco)
+      - Food processing equipment
+      - Biotechnology lab equipment
+    language: English, Spanish, Chinese, Vietnamese, Tagalog
+    market_notes:
+      - Highest concentration of tech companies globally
+      - Strictest environmental regulations in North America
+      - Premium pricing acceptable due to quality/compliance demands
+      - Strong demand for automation and Industry 4.0 solutions
+      - Extensive historical preservation requirements
+      - Major ports require marine maintenance solutions
 
 # Regional market trends
 market_trends:

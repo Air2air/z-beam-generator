@@ -213,6 +213,32 @@ API_PROVIDERS = {
         },
         "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
     },
+    "gemini": {
+        "name": "Google Gemini (Imagen)",
+        "type": "gemini_image",
+        "env_var": "GEMINI_API_KEY",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta",
+        "model": "imagen-4.0-generate-001",  # Latest Imagen 4
+        "max_tokens": 480,  # Prompt length limit for Imagen
+        "temperature": 0.0,  # Not used for image generation
+        "timeout_connect": 30,
+        "timeout_read": 120,  # Image generation can take time
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "enabled": True,
+        "timeout": 120,
+        "rate_limit": {
+            "requests_per_minute": 30,
+            "images_per_minute": 30,
+        },
+        "image_config": {
+            "number_of_images": 1,  # Generate 1-4 images per request
+            "aspect_ratio": "16:9",  # Options: 1:1, 3:4, 4:3, 9:16, 16:9
+            "person_generation": "allow_adult",  # Options: dont_allow, allow_adult, allow_all
+            "image_size": "1K",  # Options: 1K, 2K (Standard/Ultra models)
+        },
+        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
+    },
 }
 
 # Component Configuration - FRONTMATTER-ONLY ARCHITECTURE
