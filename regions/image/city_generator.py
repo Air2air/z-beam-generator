@@ -13,7 +13,7 @@ import logging
 from typing import Dict, Any, Optional
 
 from regions.image.prompts.city_image_prompts import get_historical_base_prompt
-from regions.image.prompts.population_researcher import PopulationResearcher
+from regions.image.prompts.researcher import PopulationResearcher
 from regions.image.negative_prompts import get_default_negative_prompt, get_era_specific_additions
 
 logger = logging.getLogger(__name__)
