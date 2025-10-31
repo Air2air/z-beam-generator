@@ -91,7 +91,8 @@ def get_historical_base_prompt(
     
     # Build prompt with research-based details (county removed)
     return (
-        f"photorealistic black and white historical photograph, low-resolution, full frame, "
+        f"MONOCHROME black and white grayscale historical photograph, NO COLOR WHATSOEVER, "
+        f"authentic silver gelatin print, photorealistic, low-resolution, full frame, "
         f"{actual_decade} California {scene_type} in {city_name}.{street_context} "
         f"{subject_context} "
         f"Period-appropriate motion blur: moving vehicles show slight blur and ghosting from long exposure times typical of {actual_decade} cameras, "
@@ -99,5 +100,6 @@ def get_historical_base_prompt(
         f"CRITICAL TEXT ACCURACY: All visible text on signs and buildings MUST be correctly spelled with proper letter formation, "
         f"authentic {actual_decade} typography and period-appropriate sign painting quality. "
         f"{scenery_condition} "
-        f"{photo_aging}"
+        f"{photo_aging} "
+        f"MUST BE COMPLETELY BLACK AND WHITE with visible aging damage."
     )
