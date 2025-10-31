@@ -126,6 +126,10 @@ def get_historical_base_prompt(
         f"CRITICAL REQUIREMENT - ALL VISIBLE TEXT MUST BE PERFECTLY SPELLED: Every sign, storefront, advertisement, banner, "
         f"poster, and any readable text MUST use correct English spelling with authentic {actual_decade} typography. "
         f"No misspellings, no gibberish, no AI-garbled text, no corrupted letters. Every word must be a real word spelled correctly. "
+        f"CRITICAL REQUIREMENT - ALL HUMAN FACES MUST BE ANATOMICALLY CORRECT: Every person must have normal human facial features. "
+        f"Two eyes properly positioned, one nose, one mouth in correct location, properly proportioned face, normal human anatomy. "
+        f"No distorted faces, no extra or missing features, no merged faces, no malformed heads, no wrong number of eyes or mouths. "
+        f"All facial features must be in correct positions and properly formed. Every person must look like a real human being. "
         f"{scenery_condition}\n\n"  # Add line break before aging
         f"PHOTOGRAPH AGING: {photo_aging}"  # Make aging prominent with label
     )
