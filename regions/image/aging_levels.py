@@ -20,14 +20,18 @@ PHOTO_AGING_LEVELS: Dict[int, str] = {
         "extensive deep scratches and creases, widespread emulsion cracks with peeling and flaking, "
         "severe water damage with dark stains and mold spots, heavily bent corners with tears and missing pieces, "
         "tape residue and adhesive marks, prominent fingerprint smudges, severely faded contrast with bleached highlights. "
-        "Significant focus degradation with overall softness and blur throughout image, loss of sharpness in all areas, "
-        "emulsion deterioration causing blurred edges and indistinct details, optical clarity severely compromised."
+        "EXTREME FOCUS DEGRADATION: entire image heavily blurred and out of focus, severe loss of all sharpness and detail clarity, "
+        "nothing in the photograph is sharp or crisp, everything appears soft and unfocused like looking through fog, "
+        "emulsion deterioration causing massive blur and indistinct fuzzy appearance throughout, faces and text barely recognizable, "
+        "optical quality completely destroyed with pervasive haziness, image looks like it was taken with broken lens or badly warped negative."
     ),
     2: (
         "Heavy aging: deep yellowing with brown toning, thick dust and surface grime, numerous deep scratches and creases, "
         "extensive emulsion cracks with peeling, water damage with dark stains and spots, severe corner wear with bending and tears, "
         "tape residue and adhesive marks, fingerprint smudges, heavily faded contrast. "
-        "Noticeable focus problems with soft blurred areas, reduced sharpness and clarity, emulsion damage causing fuzzy indistinct regions."
+        "SEVERE FOCUS PROBLEMS: significant blur and softness throughout most of image, only minimal areas retain any sharpness, "
+        "majority of photograph is out of focus and indistinct, emulsion damage causing widespread fuzzy blurred regions, "
+        "details are unclear and hard to make out, overall hazy unfocused appearance."
     ),
     3: (
         "Moderate aging: strong yellowing with brown toning, dust accumulation, many scratches and creases, "
