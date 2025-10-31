@@ -260,8 +260,22 @@ TECHNICAL_NEGATIVE_PROMPTS = [
     "digital noise that looks modern",
     "chromatic aberration that looks digital",
     "lens flare that looks digital",
+    
+    # Modern depth of field effects
     "artificial bokeh",
     "fake depth of field",
+    "extreme shallow depth of field",
+    "modern lens bokeh",
+    "circular bokeh balls",
+    "creamy bokeh",
+    "portrait mode effect",
+    "computational depth of field",
+    "tilt-shift effect",
+    "selective focus effect",
+    "everything blurred except subject",
+    "background completely out of focus",
+    
+    # Digital processing
     "digital blur",
     "gaussian blur",
     "motion blur on static buildings",

@@ -16,6 +16,51 @@ if TYPE_CHECKING:
     from regions.hero_image_config import HeroImageConfig
 
 
+def get_period_focal_characteristics(decade: str) -> str:
+    """
+    Get period-accurate focal depth and depth of field characteristics.
+    
+    Early cameras had different optical characteristics than modern cameras:
+    - Large format cameras (common 1900s-1940s) had shallow DOF at wide apertures
+    - Box cameras had deep DOF (everything in focus)
+    - View cameras allowed tilt/shift for selective focus
+    - Film sensitivity required different apertures in different lighting
+    
+    Args:
+        decade: Decade string (e.g., "1920s")
+        
+    Returns:
+        Description of period-accurate focal characteristics
+    """
+    year = int(decade.replace("s", ""))
+    
+    if year <= 1920:
+        # Early period: mix of box cameras (deep DOF) and large format (shallow DOF capable)
+        return (
+            "Period-accurate focal depth: sharp focus on main subject with natural falloff to background, "
+            "typical of large format cameras with moderate aperture. "
+            "Foreground and background show gradual softness, not modern bokeh. "
+            "Overall depth of field deeper than modern cameras due to larger format and typical f/8-f/16 apertures."
+        )
+    elif year <= 1940:
+        # 1920s-1940s: Professional large format common, amateur box cameras
+        return (
+            "Period-accurate focal depth: primary subject in sharp focus with gentle transition to softer background, "
+            "characteristic of {decade} large format press cameras at working apertures (f/8-f/11). "
+            "Mid-ground moderately sharp, distant elements progressively softer. "
+            "No extreme shallow depth of field or modern lens effects."
+        )
+    else:
+        # 1940s+: Mix of formats, more 35mm adoption
+        return (
+            "Period-accurate focal depth: subject and immediate surroundings in sharp focus, "
+            "background with natural softness typical of {decade} press and field cameras. "
+            "Moderate depth of field reflecting typical working apertures. "
+            "Natural lens characteristics without modern optical corrections."
+        )
+
+
+
 def get_historical_base_prompt(
     city_name: str, 
     county_name: str, 
@@ -89,6 +134,9 @@ def get_historical_base_prompt(
     # Scene type from effective subject
     scene_type = f"{effective_subject} scene"
     
+    # Get period-accurate focal characteristics
+    focal_depth = get_period_focal_characteristics(actual_decade)
+    
     # Build prompt with research-based details (county removed)
     return (
         f"Authentic {actual_decade} silver gelatin print on fiber-based paper, "
@@ -96,6 +144,7 @@ def get_historical_base_prompt(
         f"California {scene_type} in {city_name}.{street_context} "
         f"{subject_context} "
         f"Long exposure motion blur typical of period cameras: moving elements show slight blur and ghosting, static elements remain sharp. "
+        f"{focal_depth} "
         f"All visible text must be correctly spelled with authentic {actual_decade} typography. "
         f"{scenery_condition} "
         f"{photo_aging}"

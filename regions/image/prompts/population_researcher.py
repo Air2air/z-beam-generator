@@ -135,7 +135,7 @@ Be specific and historically accurate. Include actual locations, real names, and
         else:
             prompt = f"""Research the historical context of {city_name}, {county_name}, California during the {decade}.
 
-IMPORTANT: Identify the most iconic, representative scene that captures {city_name} in the {decade}. What made this city distinctive? What scene would a photographer choose to show the essence of {city_name} during that era?
+IMPORTANT: Identify the most iconic, representative scene that captures {city_name} in the {decade}. What made this city distinctive? What scene would a photographer choose to show the essence of {city_name} during that era? Consider both famous landmarks AND everyday working scenes that defined the city's character.
 
 Examples of iconic scenes:
 - San Francisco 1930s: bustling waterfront with Ferry Building, piers, maritime activity
