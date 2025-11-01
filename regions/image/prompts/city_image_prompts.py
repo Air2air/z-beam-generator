@@ -166,6 +166,8 @@ def get_historical_base_prompt(
         f"{year_constraint}"
         f"{scale_constraint}"
         f"{subject_context}\n\n"
+        f"MANDATORY: Trees visible in scene - mature shade trees lining streets, oaks, elms, sycamores typical for California. "
+        f"Trees are prominent features of the streetscape. Natural growth, varied canopy sizes, realistic branch patterns.\n\n"
         f"CAMERA: Period camera motion blur: slight blur on moving subjects, static elements sharp. "
         f"{focal_depth} "
         f"CRITICAL REQUIREMENT - ALL VISIBLE TEXT MUST BE PERFECTLY SPELLED: Every sign, storefront, advertisement, banner, "
