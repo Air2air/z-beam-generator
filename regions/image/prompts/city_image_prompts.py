@@ -86,16 +86,30 @@ def get_historical_base_prompt(
     street_details = population_data.get("street_details", "")
     street_context = f" Location: {street_name}. {street_details}" if street_details else (f" on {street_name}" if street_name else "")
     
-    # Extract population characteristics to constrain scale
+    # Extract population characteristics to constrain scale - CRITICAL for Imagen
     characteristics = population_data.get("characteristics", {})
+    population = population_data.get('population', 0)
     scale_constraint = ""
     if characteristics:
+        # Build FORCEFUL scale constraints that Imagen cannot ignore
+        buildings = characteristics.get('buildings', '')
+        pedestrians = characteristics.get('pedestrians', '')
+        density = characteristics.get('density', '')
+        
+        # Parse pedestrian range for maximum enforcement
+        import re
+        ped_match = re.search(r"(\d+)-(\d+)", pedestrians)
+        max_people = int(ped_match.group(2)) if ped_match else 10
+        
         scale_constraint = (
-            f" SCALE REQUIREMENTS (population {population_data.get('population', 0):,}): "
-            f"{characteristics.get('buildings', '')}, "
-            f"{characteristics.get('pedestrians', '')}, "
-            f"{characteristics.get('street_width', '')}. "
-            f"{characteristics.get('density', '')}. "
+            f"\n\nCRITICAL SCALE REQUIREMENT - MAXIMUM {max_people} PEOPLE VISIBLE:\n"
+            f"POPULATION CONTEXT: This town has ONLY {population:,} total residents. "
+            f"MANDATORY BUILDING LIMIT: Show {buildings} - NO MORE. "
+            f"MANDATORY PEOPLE LIMIT: Show MAXIMUM {max_people} people visible in frame - COUNT CAREFULLY. "
+            f"DO NOT show crowds, bustling streets, or busy activity. "
+            f"DO NOT make this look populated or busy. "
+            f"This is a SPARSE, QUIET, SMALL settlement. {density}. "
+            f"VERIFY: Count people in your generation - must be {max_people} or fewer.\n"
         )
     
     # Extract iconic scene from research
@@ -126,12 +140,30 @@ def get_historical_base_prompt(
     # Get period-accurate focal characteristics
     focal_depth = get_period_focal_characteristics(actual_decade)
     
+    # Build year-specific technological constraints
+    year = int(actual_decade.replace("s", ""))
+    year_constraint = ""
+    if year <= 1920:
+        year_constraint = (
+            f"YEAR REQUIREMENT - This is {year}, EARLY 1900s technology:\n"
+            f"Automobiles must be primitive early models (Model T era, brass radiators, open tops). "
+            f"Most transportation should be horse-drawn. "
+            f"Telephones rare (if any), no electric streetlights, gas lamps only. "
+            f"Clothing: men in dark wool suits, high collars, derby/bowler hats; women in long dresses to ankles, high-necked blouses, large hats. "
+            f"DO NOT show 1940s/1950s style cars, modern clothing, or technology that didn't exist in {year}.\n\n"
+        )
+    elif year <= 1930:
+        year_constraint = f"YEAR {year}: Early automobiles common but still some horse-drawn. Period-appropriate 1920s clothing and technology only.\n\n"
+    elif year <= 1940:
+        year_constraint = f"YEAR {year}: 1930s automobiles (running boards, spare tire on back). Period-appropriate 1930s clothing and technology only.\n\n"
+    
     # Build prompt with research-based details (county removed)
-    # Structure: Medium → Scene → Scale → Research → Trees → Camera Tech → Aging (CRITICAL)
+    # Structure: Medium → Scene → Year → Scale → Research → Trees → Camera Tech → Aging (CRITICAL)
     return (
         f"Authentic {actual_decade} silver gelatin print on fiber-based paper, "
         f"low-resolution period photograph, full frame. "
-        f"{scene_type}.{street_context} "
+        f"{scene_type}.{street_context}\n\n"
+        f"{year_constraint}"
         f"{scale_constraint}"
         f"{subject_context} "
         f"Period-appropriate trees visible: mature shade trees lining streets (oak, elm, sycamore typical for California), "

@@ -88,6 +88,7 @@ class CityImageGenerator:
         - Era-specific exclusions
         - Subject-specific exclusions
         - Scene-specific exclusions from photo research
+        - Scale exclusions based on population
         
         Args:
             decade: Historical decade for era-specific exclusions
@@ -104,6 +105,23 @@ class CityImageGenerator:
         era_additions = get_era_specific_additions(decade)
         if era_additions:
             base_negative += ", " + ", ".join(era_additions)
+        
+        # Add scale-specific exclusions based on population
+        if population_data:
+            population = population_data.get("population", 0)
+            category = population_data.get("category", "")
+            
+            # For small settlements, explicitly exclude crowded/busy scenes
+            if population < 2000 or category in ["rural_hamlet", "small_village"]:
+                scale_exclusions = [
+                    "crowds", "crowded streets", "busy sidewalks", "bustling activity",
+                    "many people", "lots of pedestrians", "packed streets", "throngs of people",
+                    "dense crowds", "crowded scene", "busy street scene", "urban crowds",
+                    "large city", "metropolis", "downtown bustle", "city crowds",
+                    "many buildings", "skyscrapers", "high-rises", "dense development",
+                    "continuous storefronts", "block after block of buildings"
+                ]
+                base_negative += ", " + ", ".join(scale_exclusions)
         
         # Add scene-specific negative prompts from research
         if population_data and population_data.get("scene_negative_prompts"):
