@@ -20,10 +20,16 @@ logger = logging.getLogger(__name__)
 
 class RegionFrontmatterGenerator(BaseFrontmatterGenerator):
     """
-    Region frontmatter generator (placeholder mode).
+    Region frontmatter generator with author voice processing.
     
-    Future: Full implementation with data-driven content
-    Current: Generates placeholder frontmatter structures
+    Inherits from BaseFrontmatterGenerator:
+    - Outputs to frontmatter/regions/
+    - Mandatory author voice post-processing via _apply_author_voice()
+    - Schema validation
+    - Standardized generation pipeline
+    
+    Future: Full implementation with enhanced AI-generated content
+    Current: Data-driven frontmatter with voice processing
     """
     
     def __init__(
@@ -103,7 +109,7 @@ class RegionFrontmatterGenerator(BaseFrontmatterGenerator):
         Returns:
             Schema name for this content type
         """
-        return f'region_frontmatter'
+        return 'region_frontmatter'
     
     def _get_output_filename(self, identifier: str) -> str:
         """
@@ -179,9 +185,16 @@ class RegionFrontmatterGenerator(BaseFrontmatterGenerator):
             if 'key_industries' in region_data:
                 frontmatter['keyIndustries'] = region_data['key_industries']
             
-            # Add author data if provided
+            # Add author data if provided (mandatory for voice processing)
             if context.author_data:
-                frontmatter['author'] = context.author_data
+                frontmatter['author'] = {
+                    'name': context.author_data.get('name'),
+                    'country': context.author_data.get('country'),
+                    'expertise': context.author_data.get('expertise'),
+                    'title': context.author_data.get('title'),
+                    'image': context.author_data.get('image'),
+                    'sex': context.author_data.get('sex')
+                }
             
             # Add metadata
             frontmatter['_metadata'] = {

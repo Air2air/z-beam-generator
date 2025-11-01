@@ -1,0 +1,585 @@
+# City-Based Laser Cleaning Frontmatter Schema
+# For SEO-optimized pages targeting "Laser Cleaning in {City Name}" queries
+# Version: 1.0.0
+# Created: 2025-10-31
+
+schema_metadata:
+  version: 1.0.0
+  purpose: City-level laser cleaning service pages for local SEO
+  target_queries:
+    - "Laser cleaning in {city_name}"
+    - "Laser cleaning services {city_name}"
+    - "{city_name} laser cleaning"
+    - "Industrial laser cleaning {city_name}"
+  content_type: city_service_page
+  parent_type: region
+  data_source: regions/Cities.yaml
+
+# ============================================================================
+# FRONTMATTER STRUCTURE FOR CITY PAGES
+# ============================================================================
+
+frontmatter_template:
+  # ----- Core Identification -----
+  layout: city-service
+  content_type: city
+  
+  # ----- SEO & Meta -----
+  title: "Laser Cleaning in {city_name}, {state_abbrev} - Industrial & Precision Services"
+  meta_title: "Laser Cleaning Services in {city_name} | Z-Beam Technology"
+  meta_description: "Professional laser cleaning services in {city_name}, {state}. Serving {key_industries}. Non-abrasive, eco-friendly metal, stone & composite cleaning. Free consultation."
+  
+  # ----- Location Data -----
+  city:
+    name: string              # "San Francisco"
+    slug: string              # "san-francisco"
+    state: string             # "California"
+    state_abbrev: string      # "CA"
+    county: string            # "San Francisco County"
+    region: string            # "San Francisco Bay Area"
+    
+  # ----- Geographic Context -----
+  location:
+    latitude: float           # 37.7749
+    longitude: float          # -122.4194
+    population: integer       # Current population
+    population_history:       # From Cities.yaml
+      1900: integer
+      1920: integer
+      1950: integer
+      1980: integer
+      2000: integer
+      2020: integer
+    area_sq_miles: float
+    elevation_feet: integer
+    
+  # ----- Economic & Industry Profile -----
+  economy:
+    primary_industries: array # From Cities.yaml historical_industries + current_industries
+      - "Technology and Software"
+      - "Financial Services"
+      - "Tourism and Hospitality"
+      - "Biotechnology"
+      - "Maritime and Shipping"
+    
+    historical_industries: array # From Cities.yaml - provides context
+      - "Gold Rush shipping hub"
+      - "Cable car manufacturing"
+      - "Shipbuilding and naval yards"
+    
+    laser_cleaning_applications: array # Industry-specific use cases
+      - industry: "Technology Manufacturing"
+        applications:
+          - "Semiconductor wafer cleaning"
+          - "Electronics component restoration"
+          - "Precision optics cleaning"
+        materials:
+          - "Silicon"
+          - "Aluminum"
+          - "Stainless Steel"
+          - "Glass"
+      
+      - industry: "Maritime and Shipping"
+        applications:
+          - "Vessel hull cleaning"
+          - "Marine equipment maintenance"
+          - "Port infrastructure restoration"
+        materials:
+          - "Steel"
+          - "Aluminum"
+          - "Bronze"
+          - "Brass"
+      
+      - industry: "Historic Preservation"
+        applications:
+          - "Victorian architecture restoration"
+          - "Monument and memorial cleaning"
+          - "Historic metal restoration"
+        materials:
+          - "Granite"
+          - "Marble"
+          - "Sandstone"
+          - "Bronze"
+    
+    major_employers: array # Optional - large companies in area
+      - name: string
+        industry: string
+        potential_applications: array
+  
+  # ----- Regulatory Environment -----
+  regulations:
+    state_requirements:
+      agency: "Cal/OSHA"
+      safety_standard: "California Title 8, ANSI Z136.1"
+      additional_requirements:
+        - "Stricter than federal OSHA standards"
+        - "Mandatory operator certification"
+        - "Regular safety audits required"
+    
+    local_requirements:
+      air_quality:
+        agency: "Bay Area Air Quality Management District (BAAQMD)"
+        permit_required: boolean
+        restrictions: array
+      
+      hazardous_materials:
+        agency: "County CUPA"
+        permits: array
+      
+      business_operations:
+        permits: array
+        zoning_considerations: array
+  
+  # ----- Service Information -----
+  services:
+    available_services: array
+      - service_category: "Industrial Cleaning"
+        description: "High-volume production facility cleaning"
+        typical_materials: array
+        typical_contaminants: array
+        turnaround_time: string
+      
+      - service_category: "Precision Cleaning"
+        description: "Medical device and electronics cleaning"
+        typical_materials: array
+        typical_contaminants: array
+        turnaround_time: string
+      
+      - service_category: "Historic Restoration"
+        description: "Cultural heritage and architectural restoration"
+        typical_materials: array
+        typical_contaminants: array
+        turnaround_time: string
+      
+      - service_category: "Marine Services"
+        description: "Vessel and maritime equipment cleaning"
+        typical_materials: array
+        typical_contaminants: array
+        turnaround_time: string
+    
+    mobile_service_available: boolean
+    onsite_available: boolean
+    facility_address: string # If applicable
+  
+  # ----- Materials & Capabilities -----
+  materials_served: array # Subset of materials.yaml relevant to local industries
+    - material_name: "Aluminum"
+      category: "metal"
+      local_applications:
+        - "Aerospace components"
+        - "Automotive parts"
+        - "Marine equipment"
+      common_contaminants:
+        - "Oxidation"
+        - "Coatings"
+        - "Industrial residue"
+    
+    - material_name: "Granite"
+      category: "stone"
+      local_applications:
+        - "Building facades"
+        - "Monuments"
+        - "Architectural elements"
+      common_contaminants:
+        - "Environmental soiling"
+        - "Biological growth"
+        - "Graffiti"
+  
+  # ----- Cultural & Historic Context -----
+  historic_context:
+    founded: integer # Year
+    notable_history: array # From Cities.yaml cultural_significance
+      - "Gold Rush era boom town (1849)"
+      - "Cable car innovation center"
+      - "1906 earthquake and rebuilding"
+    
+    historic_buildings: array # From Cities.yaml notable_buildings
+      - name: string
+        year_built: integer
+        architectural_style: string
+        materials: array
+        cleaning_applications: array
+    
+    preservation_priorities: array
+      - "Victorian architecture"
+      - "Art Deco landmarks"
+      - "Industrial heritage sites"
+  
+  # ----- Transportation & Access -----
+  transportation: # From Cities.yaml transportation_history + current
+    current:
+      major_highways: array
+      airports: array
+      seaports: array
+      rail_access: array
+    
+    service_area_radius: integer # Miles
+    typical_response_time: string
+  
+  # ----- Environmental Benefits -----
+  environmental_benefits:
+    local_impact:
+      - benefit: "Zero VOC emissions"
+        relevance: "Critical for {air_quality_district} compliance"
+      - benefit: "Water conservation"
+        relevance: "Supports California drought management"
+      - benefit: "Chemical waste elimination"
+        relevance: "Reduces hazardous waste disposal costs"
+    
+    sustainability_alignment: array
+      - "California Green Building Standards (CALGreen)"
+      - "LEED certification support"
+      - "Zero Waste goals"
+  
+  # ----- Competitive Advantages -----
+  local_advantages:
+    - advantage: "No water usage"
+      context: "Critical in drought-prone California"
+    - advantage: "Precision cleaning"
+      context: "Essential for Bay Area tech manufacturing"
+    - advantage: "Historic preservation expertise"
+      context: "Rich Victorian and Gold Rush architecture"
+  
+  # ----- Pricing & Economics -----
+  pricing_context:
+    cost_factors:
+      - "Material type and sensitivity"
+      - "Contaminant type and thickness"
+      - "Project size and complexity"
+      - "Location and site access"
+      - "Regulatory compliance requirements"
+    
+    cost_comparison:
+      vs_chemical: "30-50% reduction in total cost"
+      vs_abrasive: "20-40% reduction including damage prevention"
+      vs_manual: "60-80% faster processing time"
+  
+  # ----- Case Studies -----
+  local_case_studies: array # Optional - if available
+    - title: string
+      industry: string
+      material: string
+      challenge: string
+      solution: string
+      results: object
+  
+  # ----- FAQ -----
+  faq:
+    questions: array
+      - question: "Why choose laser cleaning over sandblasting in {city_name}?"
+        answer: string
+        keywords: array
+      
+      - question: "Is laser cleaning approved for use in {city_name}?"
+        answer: string # Include local regulatory info
+        keywords: array
+      
+      - question: "What industries in {city_name} benefit from laser cleaning?"
+        answer: string # Reference local economy
+        keywords: array
+      
+      - question: "Can you clean historic {city_name} buildings without damage?"
+        answer: string # Reference local historic preservation
+        keywords: array
+      
+      - question: "What's the typical turnaround time for laser cleaning in {city_name}?"
+        answer: string
+        keywords: array
+  
+  # ----- Related Content -----
+  related_pages:
+    materials: array # Links to material pages common in this city
+      - slug: "aluminum-laser-cleaning"
+        relevance: "Common in local aerospace industry"
+      
+      - slug: "granite-laser-cleaning"
+        relevance: "Historic building facades"
+    
+    regions: array
+      - slug: "san-francisco-bay-area-laser-cleaning"
+        type: "parent_region"
+      
+      - slug: "oakland-laser-cleaning"
+        type: "nearby_city"
+      
+      - slug: "california-laser-cleaning"
+        type: "parent_state"
+    
+    applications: array
+      - slug: "aerospace-laser-cleaning"
+        relevance: "Major local industry"
+    
+    contaminants: array
+      - slug: "rust-laser-removal"
+        relevance: "Marine environment corrosion"
+  
+  # ----- Schema.org Structured Data -----
+  schema_org:
+    type: "ProfessionalService"
+    service_type: "Laser Cleaning Service"
+    area_served:
+      type: "City"
+      name: string
+      state: string
+      country: "USA"
+    
+    offers:
+      - type: "Service"
+        name: string
+        description: string
+        category: string
+    
+    geo:
+      latitude: float
+      longitude: float
+    
+    opening_hours: string
+    telephone: string
+    email: string
+  
+  # ----- Author & Voice -----
+  author:
+    name: string # From materials.yaml author pattern
+    country: string
+    expertise: string
+    title: string
+    voice_applied: boolean
+  
+  # ----- Generation Metadata -----
+  _metadata:
+    generator: "CityFrontmatterGenerator"
+    version: "1.0.0"
+    generated: datetime
+    data_source: "regions/Cities.yaml"
+    parent_region: string
+    requires_research: boolean
+    research_completed: boolean
+    content_status: string # "placeholder", "researched", "complete"
+    last_updated: datetime
+
+# ============================================================================
+# DATA POPULATION STRATEGY
+# ============================================================================
+
+data_population:
+  # Step 1: Load city data from Cities.yaml
+  primary_source: "regions/Cities.yaml"
+  
+  # Step 2: Enrich with regional context
+  regional_context: "regions/data.yaml"
+  
+  # Step 3: Map industries to materials
+  industry_material_mapping:
+    source: "materials/data/materials.yaml"
+    logic: "Map city industries to relevant materials and applications"
+  
+  # Step 4: Generate city-specific content
+  content_generation:
+    - component: "economic_overview"
+      method: "Research from Cities.yaml population, industries, transportation"
+    
+    - component: "local_applications"
+      method: "Combine industry data with materials database"
+    
+    - component: "regulatory_context"
+      method: "Apply state/county/local regulations from regions data"
+    
+    - component: "historic_preservation"
+      method: "Extract from Cities.yaml notable_buildings + cultural_significance"
+    
+    - component: "faq"
+      method: "Generate city-specific FAQ using template + local context"
+
+# ============================================================================
+# URL STRUCTURE
+# ============================================================================
+
+url_structure:
+  pattern: "/laser-cleaning/{state-slug}/{city-slug}"
+  examples:
+    - "/laser-cleaning/california/san-francisco"
+    - "/laser-cleaning/california/oakland"
+    - "/laser-cleaning/california/martinez"
+  
+  canonical: "https://z-beam.com/laser-cleaning/{state-slug}/{city-slug}"
+  
+  breadcrumb:
+    - "Home"
+    - "Laser Cleaning Services"
+    - "{State}"
+    - "{City}"
+
+# ============================================================================
+# SEO OPTIMIZATION
+# ============================================================================
+
+seo_strategy:
+  primary_keyword: "laser cleaning {city_name}"
+  secondary_keywords:
+    - "laser cleaning services {city_name}"
+    - "industrial laser cleaning {city_name}"
+    - "{city_name} laser cleaning company"
+    - "precision cleaning {city_name}"
+  
+  long_tail_keywords:
+    - "laser cleaning for {specific_industry} in {city_name}"
+    - "historic building cleaning {city_name}"
+    - "eco-friendly cleaning services {city_name}"
+    - "{material} laser cleaning {city_name}"
+  
+  local_seo:
+    google_my_business: true
+    local_citations: true
+    schema_markup: "LocalBusiness + ProfessionalService"
+    geo_targeting: true
+  
+  content_quality:
+    min_word_count: 2000
+    readability_target: "Professional (12th grade)"
+    keyword_density: "1-2%"
+    header_structure: "H1 > H2 > H3"
+    internal_links: "5-10 relevant pages"
+    external_links: "2-3 authoritative sources"
+
+# ============================================================================
+# EXAMPLE: San Francisco
+# ============================================================================
+
+example_san_francisco:
+  layout: city-service
+  content_type: city
+  title: "Laser Cleaning in San Francisco, CA - Industrial & Precision Services"
+  meta_title: "Laser Cleaning Services in San Francisco | Z-Beam Technology"
+  meta_description: "Professional laser cleaning in San Francisco. Serving tech, maritime, and historic preservation industries. Non-abrasive, eco-friendly. Free consultation."
+  
+  city:
+    name: "San Francisco"
+    slug: "san-francisco"
+    state: "California"
+    state_abbrev: "CA"
+    county: "San Francisco County"
+    region: "San Francisco Bay Area"
+  
+  location:
+    latitude: 37.7749
+    longitude: -122.4194
+    population: 873965
+    population_history:
+      1900: 342782
+      1920: 506676
+      1950: 775357
+      1980: 678974
+      2000: 776733
+      2020: 873965
+    area_sq_miles: 46.9
+    elevation_feet: 52
+  
+  economy:
+    primary_industries:
+      - "Technology and Software"
+      - "Financial Services"
+      - "Tourism and Hospitality"
+      - "Biotechnology"
+      - "Maritime and Shipping"
+    
+    historical_industries:
+      - "Gold Rush shipping hub (1849)"
+      - "Cable car manufacturing"
+      - "Shipbuilding and naval yards"
+      - "Food processing and canning"
+    
+    laser_cleaning_applications:
+      - industry: "Technology Manufacturing"
+        applications:
+          - "Semiconductor wafer cleaning"
+          - "Data center equipment maintenance"
+          - "Server component restoration"
+        materials: ["Silicon", "Aluminum", "Copper", "Stainless Steel"]
+      
+      - industry: "Maritime and Shipping"
+        applications:
+          - "Vessel hull cleaning at Port of San Francisco"
+          - "Marine equipment restoration"
+          - "Historic ship preservation (SS Jeremiah O'Brien)"
+        materials: ["Steel", "Bronze", "Brass", "Iron"]
+      
+      - industry: "Historic Preservation"
+        applications:
+          - "Victorian architecture cleaning (Painted Ladies, etc.)"
+          - "Transamerica Pyramid exterior maintenance"
+          - "Golden Gate Bridge component cleaning"
+          - "Ferry Building restoration"
+        materials: ["Granite", "Marble", "Limestone", "Bronze", "Steel"]
+  
+  regulations:
+    state_requirements:
+      agency: "Cal/OSHA"
+      safety_standard: "California Title 8, ANSI Z136.1"
+    
+    local_requirements:
+      air_quality:
+        agency: "BAAQMD"
+        permit_required: true
+        restrictions:
+          - "Strict particulate emission limits"
+          - "VOC-free processes preferred"
+      
+      hazardous_materials:
+        agency: "San Francisco Department of Public Health"
+        permits:
+          - "Hazardous Materials Business Plan"
+          - "Underground Storage Tank permit (if applicable)"
+  
+  materials_served:
+    - material_name: "Aluminum"
+      category: "metal"
+      local_applications: ["Tech hardware", "Marine equipment", "Architectural elements"]
+      common_contaminants: ["Oxidation", "Coatings", "Salt deposits"]
+    
+    - material_name: "Granite"
+      category: "stone"
+      local_applications: ["Building facades", "Ferry Building", "Bank buildings"]
+      common_contaminants: ["Environmental soiling", "Biological growth", "Soot"]
+    
+    - material_name: "Bronze"
+      category: "metal"
+      local_applications: ["Historic monuments", "Door hardware", "Sculptures"]
+      common_contaminants: ["Patina (controlled removal)", "Vandalism", "Bird deposits"]
+  
+  historic_context:
+    founded: 1776
+    notable_history:
+      - "Spanish Mission Dolores founded 1776"
+      - "Gold Rush boom town 1849"
+      - "1906 earthquake and rebuilding"
+      - "Golden Gate Bridge construction 1933-1937"
+      - "Summer of Love 1967"
+      - "Tech boom 1990s-present"
+    
+    historic_buildings:
+      - name: "Ferry Building"
+        year_built: 1898
+        architectural_style: "Beaux-Arts"
+        materials: ["Granite", "Sandstone", "Steel"]
+        cleaning_applications: ["Facade restoration", "Interior stonework"]
+      
+      - name: "Painted Ladies (Alamo Square Victorians)"
+        year_built: 1892
+        architectural_style: "Victorian Queen Anne"
+        materials: ["Wood", "Iron", "Brass"]
+        cleaning_applications: ["Delicate wood restoration", "Hardware cleaning"]
+  
+  author:
+    name: "Todd Dunning"
+    country: "United States (California)"
+    expertise: "Optical Materials for Laser Systems"
+    title: "MA"
+    voice_applied: true
+  
+  _metadata:
+    generator: "CityFrontmatterGenerator"
+    version: "1.0.0"
+    generated: "2025-10-31T00:00:00Z"
+    data_source: "regions/Cities.yaml"
+    parent_region: "san-francisco-bay-area"
+    content_status: "researched"
