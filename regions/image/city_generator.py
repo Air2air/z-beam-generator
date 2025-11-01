@@ -145,16 +145,34 @@ class CityImageGenerator:
         
         return base_negative
     
-    def get_generation_params(self) -> Dict[str, Any]:
+    def get_generation_params(self, population: Optional[int] = None) -> Dict[str, Any]:
         """
         Get generation parameters for Imagen 4.
+        
+        Lower guidance scale for small populations to encourage following
+        strict count constraints over general "quality".
+        
+        Args:
+            population: Optional population to adjust guidance scale
         
         Returns:
             Dictionary with aspect_ratio, guidance_scale, safety_filter_level
         """
+        # HIGHER guidance for small populations forces stricter prompt adherence
+        # Lower guidance gives model more freedom (ignores constraints)
+        guidance_scale = 12.0  # default
+        
+        if population:
+            if population < 1000:  # Rural hamlet/small village
+                guidance_scale = 18.0  # VERY HIGH - force strict constraint adherence
+            elif population < 5000:  # Town
+                guidance_scale = 14.0  # Elevated
+            else:  # Larger settlements
+                guidance_scale = 12.0  # Standard
+        
         return {
             "aspect_ratio": "16:9",
-            "guidance_scale": 12.0,
+            "guidance_scale": guidance_scale,
             "safety_filter_level": "block_few"
         }
     
@@ -204,7 +222,14 @@ class CityImageGenerator:
         
         # Generate negative prompt with scene-specific additions
         negative_prompt = self.get_negative_prompt(decade, subject, population_data)
-        params = self.get_generation_params()
+        
+        # Get generation params with population-adjusted guidance scale
+        population = population_data.get("population", 0) if population_data else None
+        params = self.get_generation_params(population)
+        
+        # Log guidance scale adjustment
+        if population and population < 5000:
+            logger.info(f"📊 Adjusted guidance scale to {params['guidance_scale']} for population {population:,}")
         
         return {
             "prompt": prompt,
