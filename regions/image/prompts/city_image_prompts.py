@@ -165,9 +165,7 @@ def get_historical_base_prompt(
         f"{scene_type}.{street_context}\n\n"
         f"{year_constraint}"
         f"{scale_constraint}"
-        f"{subject_context} "
-        f"Period-appropriate trees visible: mature shade trees lining streets (oak, elm, sycamore typical for California), "
-        f"some bare branches if winter, full foliage if summer, natural growth patterns, not perfectly manicured.\n\n"  # Add trees and line break
+        f"{subject_context}\n\n"
         f"CAMERA: Period camera motion blur: slight blur on moving subjects, static elements sharp. "
         f"{focal_depth} "
         f"CRITICAL REQUIREMENT - ALL VISIBLE TEXT MUST BE PERFECTLY SPELLED: Every sign, storefront, advertisement, banner, "
