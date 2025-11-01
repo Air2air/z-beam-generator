@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from regions.image.city_generator import CityImageGenerator
 from regions.image.presets import get_config, PRESET_CONFIGS
+from regions.image.validator import ImageValidator
 from shared.api.gemini_image_client import GeminiImageClient
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
@@ -84,6 +85,8 @@ Subject examples:
                        help="Display the generated prompt")
     parser.add_argument("--dry-run", action="store_true",
                        help="Generate prompt but don't create image")
+    parser.add_argument("--validate", action="store_true",
+                       help="Validate generated image with Gemini vision analysis")
     
     args = parser.parse_args()
     
@@ -200,6 +203,40 @@ Subject examples:
     except Exception as e:
         logger.error(f"❌ Error generating image: {e}")
         return 1
+    
+    # Validate image if requested
+    if args.validate:
+        print("\n🔍 Validating generated image...")
+        try:
+            validator = ImageValidator(api_key=api_key)
+            
+            # Extract expected characteristics from population data
+            population_data = package.get("population_data", {})
+            characteristics = population_data.get("characteristics", {})
+            
+            validation_result = validator.validate_image(
+                image_path=output_path,
+                population=population_data.get("population", 0),
+                population_category=population_data.get("category", "unknown"),
+                expected_buildings=characteristics.get("buildings", "unknown"),
+                expected_people=characteristics.get("pedestrians", "unknown"),
+                year=config.year,
+                city_name=config.city,
+                prompt=package["prompt"]
+            )
+            
+            # Display validation report
+            print("\n" + validation_result.to_report())
+            
+            # Save validation report
+            report_path = output_path.with_suffix(".validation.json")
+            validator.save_validation_report(validation_result, report_path)
+            
+            print("\n💰 Validation cost: ~$0.0002")
+            
+        except Exception as e:
+            logger.error(f"❌ Validation error: {e}")
+            # Don't fail the whole operation if validation fails
     
     print("\n" + "=" * 70)
     print("✅ COMPLETE!")

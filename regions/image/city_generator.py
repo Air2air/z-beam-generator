@@ -191,5 +191,6 @@ class CityImageGenerator:
         return {
             "prompt": prompt,
             "negative_prompt": negative_prompt,
+            "population_data": population_data,
             **params
         }
