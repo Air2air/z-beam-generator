@@ -13,7 +13,7 @@ Date: October 30, 2025
 from typing import Dict, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from regions.hero_image_config import HeroImageConfig
+    from regions.image.hero_image_config import HeroImageConfig
 
 
 def get_period_focal_characteristics(decade: str) -> str:
@@ -86,6 +86,18 @@ def get_historical_base_prompt(
     street_details = population_data.get("street_details", "")
     street_context = f" Location: {street_name}. {street_details}" if street_details else (f" on {street_name}" if street_name else "")
     
+    # Extract population characteristics to constrain scale
+    characteristics = population_data.get("characteristics", {})
+    scale_constraint = ""
+    if characteristics:
+        scale_constraint = (
+            f" SCALE REQUIREMENTS (population {population_data.get('population', 0):,}): "
+            f"{characteristics.get('buildings', '')}, "
+            f"{characteristics.get('pedestrians', '')}, "
+            f"{characteristics.get('street_width', '')}. "
+            f"{characteristics.get('density', '')}. "
+        )
+    
     # Extract iconic scene from research
     iconic_scene = population_data.get("iconic_scene", "")
     
@@ -115,12 +127,15 @@ def get_historical_base_prompt(
     focal_depth = get_period_focal_characteristics(actual_decade)
     
     # Build prompt with research-based details (county removed)
-    # Structure: Medium → Scene → Research → Camera Tech → Aging (CRITICAL)
+    # Structure: Medium → Scene → Scale → Research → Trees → Camera Tech → Aging (CRITICAL)
     return (
         f"Authentic {actual_decade} silver gelatin print on fiber-based paper, "
         f"low-resolution period photograph, full frame. "
         f"{scene_type}.{street_context} "
-        f"{subject_context}\n\n"  # Add line break after research
+        f"{scale_constraint}"
+        f"{subject_context} "
+        f"Period-appropriate trees visible: mature shade trees lining streets (oak, elm, sycamore typical for California), "
+        f"some bare branches if winter, full foliage if summer, natural growth patterns, not perfectly manicured.\n\n"  # Add trees and line break
         f"CAMERA: Period camera motion blur: slight blur on moving subjects, static elements sharp. "
         f"{focal_depth} "
         f"CRITICAL REQUIREMENT - ALL VISIBLE TEXT MUST BE PERFECTLY SPELLED: Every sign, storefront, advertisement, banner, "
