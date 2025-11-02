@@ -242,23 +242,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: International Journal of Rock Mechanics and Mining Sciences, Vol.
+              45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering
+              gypsum rocks (alabaster)" by M. S. Yagiz.
+            unit: MPa·√m
+            value: 0.35
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: International Journal of Rock Mechanics and Mining Sciences, Vol.
-            45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering
-            gypsum rocks (alabaster)" by M. S. Yagiz.
-          unit: MPa·√m
-          value: 0.35
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -530,26 +527,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 100000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: ASM Handbook, Volume 29, "Mechanical Testing and Evaluation,"
+              ASM International, 2000, p. 783.
+            unit: MPa·√m
+            value: 3.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 100000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: ASM Handbook, Volume 29, "Mechanical Testing and Evaluation," ASM
-            International, 2000, p. 783.
-          unit: MPa·√m
-          value: 3.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -1228,22 +1222,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bodner, A. H. Mayer, and C. D. Mote. "Fracture Characteristics
+              of Hardwoods" in Wood and Fiber Science, Vol. 12, No. 1, 1980.
+            unit: MPa·√m
+            value: 3.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bodner, A. H. Mayer, and C. D. Mote. "Fracture Characteristics
-            of Hardwoods" in Wood and Fiber Science, Vol. 12, No. 1, 1980.
-          unit: MPa·√m
-          value: 3.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -1509,23 +1500,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Osorio, L., Trujillo, E., Lens, F., Ivens, J., & Verpoest, I.
+              (2018). Fracture toughness of bamboo. In *18th International Conference
+              on Composite Materials (ICCM-18)*.
+            unit: MPa·√m
+            value: 3.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Osorio, L., Trujillo, E., Lens, F., Ivens, J., & Verpoest, I. (2018).
-            Fracture toughness of bamboo. In *18th International Conference on Composite
-            Materials (ICCM-18)*.
-          unit: MPa·√m
-          value: 3.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -1774,23 +1762,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence
+              of macro-fractures and micro-fractures on permeability and elastic wave
+              velocities in basalt at elevated pressure. Tectonophysics, 503(1-2),
+              52-59.
+            unit: MPa·√m
+            value: 1.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence
-            of macro-fractures and micro-fractures on permeability and elastic wave
-            velocities in basalt at elevated pressure. Tectonophysics, 503(1-2), 52-59.
-          unit: MPa·√m
-          value: 1.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2062,22 +2048,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Reiterer, A., & Tschegg, S. (2002). The influence of moisture
+              content on the mode I fracture toughness of wood. *Holzforschung*, 56(5),
+              496-500.
+            unit: MPa·√m
+            value: 0.35
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Reiterer, A., & Tschegg, S. (2002). The influence of moisture content
-            on the mode I fracture toughness of wood. *Holzforschung*, 56(5), 496-500.
-          unit: MPa·√m
-          value: 0.35
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2345,62 +2329,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 30800000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 3.6e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials, "Beryllium and Beryllium Alloys"'
+            unit: MPa·√m
+            value: 4.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 133.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: dimensionless (fraction of incident radiation)
-          value: 0.42
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.38
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 30800000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 3.6e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials, "Beryllium and Beryllium Alloys"'
-          unit: MPa·√m
-          value: 4.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 1.8
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.55
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: °C
-          value: 1287.0
-        thermalShockResistance:
-          source: ai_research
-          unit: W/m
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 133.0
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: dimensionless (fraction of incident radiation)
+            value: 0.42
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.38
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 1.8
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.55
+          thermalDestructionPoint:
+            source: ai_research
+            unit: °C
+            value: 1287.0
+          thermalShockResistance:
+            source: ai_research
+            unit: W/m
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2679,23 +2660,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E. Moulin, J.-M. Leban, M. O. de A. Silva, "Fracture properties
+              of European beech (Fagus sylvatica L.) from the French Ardennes," Holzforschung,
+              vol. 53, no. 4, pp. 411-417, 1999.
+            unit: MPa·√m
+            value: 2.1
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E. Moulin, J.-M. Leban, M. O. de A. Silva, "Fracture properties
-            of European beech (Fagus sylvatica L.) from the French Ardennes," Holzforschung,
-            vol. 53, no. 4, pp. 411-417, 1999.
-          unit: MPa·√m
-          value: 2.1
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2965,23 +2943,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: ISRM Suggested Methods for determining fracture toughness of rock
+              (Ulusay & Hudson, 2007), citing typical values for fine-grained sandstones
+              and siltstones.
+            unit: MPa·√m
+            value: 1.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: ISRM Suggested Methods for determining fracture toughness of rock
-            (Ulusay & Hudson, 2007), citing typical values for fine-grained sandstones
-            and siltstones.
-          unit: MPa·√m
-          value: 1.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -3250,26 +3225,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 150000000.0
+          fractureToughness:
+            ai_verified: true
+            source: ASTM E399 / "Fracture Toughness of Borosilicate Glass" in *Engineering
+              Fracture Mechanics*
+            unit: MPa·√m
+            value: 0.77
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 150000000.0
-        fractureToughness:
-          ai_verified: true
-          source: ASTM E399 / "Fracture Toughness of Borosilicate Glass" in *Engineering
-            Fracture Mechanics*
-          unit: MPa·√m
-          value: 0.77
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -3531,62 +3503,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 15000000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 6.5e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation, "Fracture
+              Toughness of Metals"'
+            unit: MPa·√m
+            value: 100.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.32
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 6700000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.38
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 15000000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 6.5e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation, "Fracture
-            Toughness of Metals"'
-          unit: MPa·√m
-          value: 100.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.62
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.32
-        thermalDestructionPoint:
-          source: ai_research
-          unit: °C
-          value: 920.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 180.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 6700000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.38
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.62
+          thermalDestructionPoint:
+            source: ai_research
+            unit: °C
+            value: 920.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 180.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -3850,21 +3819,18 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Engineering Toolbox, "Fracture Toughness of Materials"
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Engineering Toolbox, "Fracture Toughness of Materials"
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -4105,24 +4071,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: '"Fracture and Size Effect in Concrete and Other Quasibrittle
+              Materials" by Zdeněk P. Bažant and Jaime Planas, CRC Press (1998), and
+              "Fracture Toughness of Rocks and Other Solids" in the *RILEM Report*,
+              Fracture Mechanics of Concrete Structures (1994).'
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
-            by Zdeněk P. Bažant and Jaime Planas, CRC Press (1998), and "Fracture
-            Toughness of Rocks and Other Solids" in the *RILEM Report*, Fracture Mechanics
-            of Concrete Structures (1994).'
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -4758,22 +4721,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Atkinson, B.K. (Ed.). Fracture Mechanics of Rock. Academic Press,
+              1987. (Table of fracture toughness values for various rocks and minerals)
+            unit: MPa·√m
+            value: 0.3
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Atkinson, B.K. (Ed.). Fracture Mechanics of Rock. Academic Press,
-            1987. (Table of fracture toughness values for various rocks and minerals)
-          unit: MPa·√m
-          value: 0.3
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -5039,26 +4999,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 0.0015
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Fracture Toughness of Polymer
+              Matrix Composites"'
+            unit: MPa·√m
+            value: 38.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 0.0015
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Fracture Toughness of Polymer
-            Matrix Composites"'
-          unit: MPa·√m
-          value: 38.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -5722,23 +5679,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
+              as an Engineering Material." General Technical Report FPL-GTR-190, 2010.
+              Chapter 4: Mechanical Properties of Wood.'
+            unit: MPa·√m
+            value: 0.37
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
-            as an Engineering Material." General Technical Report FPL-GTR-190, 2010.
-            Chapter 4: Mechanical Properties of Wood.'
-          unit: MPa·√m
-          value: 0.37
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -6008,23 +5962,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'Shah, S. P., & Ouyang, C. (1991). Mechanical Behavior of Cement-Based
+              Materials: The Role of Inhomogeneities. In *Inhomogeneities and Fracture*
+              (pp. 231-248). Springer, Dordrecht.'
+            unit: MPa·√m
+            value: 0.3
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'Shah, S. P., & Ouyang, C. (1991). Mechanical Behavior of Cement-Based
-            Materials: The Role of Inhomogeneities. In *Inhomogeneities and Fracture*
-            (pp. 231-248). Springer, Dordrecht.'
-          unit: MPa·√m
-          value: 0.3
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -6304,27 +6255,24 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 0.0015
+          fractureToughness:
+            ai_verified: true
+            source: 'National Aeronautics and Space Administration (NASA), "Ceramic
+              Matrix Composites (CMCs) for Aerospace Propulsion Systems," Glenn Research
+              Center, and "ASM Handbook, Volume 21: Composites," ASM International.'
+            unit: MPa·√m
+            value: 8.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 0.0015
-        fractureToughness:
-          ai_verified: true
-          source: 'National Aeronautics and Space Administration (NASA), "Ceramic
-            Matrix Composites (CMCs) for Aerospace Propulsion Systems," Glenn Research
-            Center, and "ASM Handbook, Volume 21: Composites," ASM International.'
-          unit: MPa·√m
-          value: 8.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -6603,13 +6551,11 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.62
-        label: Other Properties
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.62
     machineSettings:
       powerRange:
         description: Optimal average power for Cerium oxide removal without substrate
@@ -6942,23 +6888,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook:
+              Wood as an Engineering Material" (Chapter 4: Mechanical Properties of
+              Wood).'
+            unit: MPa·√m
+            value: 0.39
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook:
-            Wood as an Engineering Material" (Chapter 4: Mechanical Properties of
-            Wood).'
-          unit: MPa·√m
-          value: 0.39
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -7227,62 +7170,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 7740000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.25e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals" (Table 1)'
+            unit: MPa·√m
+            value: 15.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.05
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 41200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.415
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 7740000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.25e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals" (Table 1)'
-          unit: MPa·√m
-          value: 15.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.85
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.64
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.05
-        thermalDestructionPoint:
-          source: ai_research
-          unit: °C
-          value: 1863.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 0.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 41200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.415
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.85
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.64
+          thermalDestructionPoint:
+            source: ai_research
+            unit: °C
+            value: 1863.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 0.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -7544,62 +7484,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 16000000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 6.24e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals and Alloys" (Table 1.1 for pure cobalt and cobalt alloys)'
+            unit: MPa·√m
+            value: 100.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.32
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 11200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.35
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 16000000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 6.24e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals and Alloys" (Table 1.1 for pure cobalt and cobalt alloys)'
-          unit: MPa·√m
-          value: 100.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance)
-          value: 0.66
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.32
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1768.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 4.2
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 11200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.35
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance)
+            value: 0.66
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1768.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 4.2
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -7866,22 +7803,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: '"Fracture and Size Effect in Concrete and Other Quasibrittle
+              Materials" by Zdeněk P. Bažant and Jaime Planas (1998), CRC Press, Chapter
+              2.'
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
-            by Zdeněk P. Bažant and Jaime Planas (1998), CRC Press, Chapter 2.'
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -8571,25 +8506,22 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 100000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
+            unit: MPa·√m
+            value: 0.78
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 100000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
-          unit: MPa·√m
-          value: 0.78
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -8868,14 +8800,11 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.72
-        label: Other Properties
-        percentage: 20.0
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.72
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -9171,25 +9100,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite
+              Materials"'
+            unit: MPa·√m
+            value: 0.6
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite Materials"'
-          unit: MPa·√m
-          value: 0.6
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -9455,14 +9382,11 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.72
-        label: Other Properties
-        percentage: 20.0
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.72
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -9773,27 +9697,24 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: '"Fracture toughness of polyurethane composites reinforced with
+              short aramid fibers" - Journal of Materials Science, Vol. 42, Issue
+              14, pp 5517-5525 (2007)'
+            unit: MPa·√m
+            value: 3.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: '"Fracture toughness of polyurethane composites reinforced with
-            short aramid fibers" - Journal of Materials Science, Vol. 42, Issue 14,
-            pp 5517-5525 (2007)'
-          unit: MPa·√m
-          value: 3.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10057,21 +9978,18 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 100000000000000.0
+          fractureToughness: 15.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 100000000000000.0
-        fractureToughness: 15.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10332,17 +10250,14 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness: 3.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness: 3.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10603,25 +10518,22 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
+            unit: MPa·√m
+            value: 0.75
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
-          unit: MPa·√m
-          value: 0.75
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10893,21 +10805,18 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+18
+          fractureToughness: 0.75
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+18
-        fractureToughness: 0.75
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -11178,62 +11087,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 6760000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.708e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials'
+            unit: MPa·√m
+            value: 0.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33e-06
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 11200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 6760000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.708e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials'
-          unit: MPa·√m
-          value: 0.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.15
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.71
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2477.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m²/W
-          value: 0.0021
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33e-06
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 11200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.15
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.71
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2477.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m²/W
+            value: 0.0021
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -11509,21 +11415,18 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 37000000.0
+          fractureToughness: 0.44
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 37000000.0
-        fractureToughness: 0.44
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -11789,25 +11692,22 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: '"Engineering Composite Materials" by Bryan Harris, 1999, p. 198'
+            unit: MPa·√m
+            value: 30.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: '"Engineering Composite Materials" by Bryan Harris, 1999, p. 198'
-          unit: MPa·√m
-          value: 30.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12082,61 +11982,58 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 45200000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 2.214e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+            unit: MPa·√m
+            value: 0.8
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.000172
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 69000000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.017
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 45200000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 2.214e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance ratio)
-          value: 0.985
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1337.33
-        thermalShockResistance:
-          source: ai_research
-          unit: MW/m
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.000172
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 69000000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.017
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance ratio)
+            value: 0.985
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1337.33
+          thermalShockResistance:
+            source: ai_research
+            unit: MW/m
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12400,26 +12297,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1200000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: Corning Incorporated, "Corning Gorilla Glass 3 Product Information
+              Sheet"
+            unit: MPa·√m
+            value: 0.71
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1200000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: Corning Incorporated, "Corning Gorilla Glass 3 Product Information
-            Sheet"
-          unit: MPa·√m
-          value: 0.71
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12693,23 +12587,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical
+              Crack Growth with Applications to Minerals and Rocks. In *Fracture Mechanics
+              of Rock* (pp. 111-166). Academic Press.
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical
-            Crack Growth with Applications to Minerals and Rocks. In *Fracture Mechanics
-            of Rock* (pp. 111-166). Academic Press.
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12951,61 +12842,58 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 3120000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 3.31e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials, "Properties of Pure Hafnium"'
+            unit: MPa·√m
+            value: 15.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.00133
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 3420000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 3120000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 3.31e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials, "Properties of Pure Hafnium"'
-          unit: MPa·√m
-          value: 15.0
-        label: Other Properties
-        laserDamageThreshold:
-          unit: J/cm²
-          value: 3.2
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.56
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2222.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MW/m
-          value: 1.2
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.00133
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 3420000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            unit: J/cm²
+            value: 3.2
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.56
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2222.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MW/m
+            value: 1.2
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -13294,62 +13182,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: MS/m
+            value: 1.22
+          electricalResistivity:
+            source: ai_research
+            unit: μΩ·m
+            value: 1.24
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals" (Table 1, p. 767)'
+            unit: MPa·√m
+            value: 219.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 3800000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: MS/m
-          value: 1.22
-        electricalResistivity:
-          source: ai_research
-          unit: μΩ·m
-          value: 1.24
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals" (Table 1, p. 767)'
-          unit: MPa·√m
-          value: 219.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 2.8
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.62
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1623.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 325.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 3800000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 2.8
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.62
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1623.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 325.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -13625,22 +13510,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology,
+              Vol. 12, pp. 217-226 (1978)
+            unit: MPa·√m
+            value: 4.4
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology,
-            Vol. 12, pp. 217-226 (1978)
-          unit: MPa·√m
-          value: 4.4
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -13894,62 +13776,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: MS/m
+            value: 0.93
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.29e-06
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals" (for Inconel 718 at room temperature)'
+            unit: MPa·√m
+            value: 70.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 3800000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.37
-        electricalConductivity:
-          source: ai_research
-          unit: MS/m
-          value: 0.93
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.29e-06
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals" (for Inconel 718 at room temperature)'
-          unit: MPa·√m
-          value: 70.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 2.1
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.62
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1623.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 275.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 3800000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.37
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 2.1
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.62
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1623.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 275.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -14222,62 +14101,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 11600000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 8.37e-08
+          fractureToughness:
+            ai_verified: true
+            source: The Minerals, Metals & Materials Society (TMS), "Indium and Its
+              Alloys," in proceedings and reference books on electronic materials.
+            unit: MPa·√m
+            value: 0.01
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.00133
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 12400000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.35
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 11600000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 8.37e-08
-        fractureToughness:
-          ai_verified: true
-          source: The Minerals, Metals & Materials Society (TMS), "Indium and Its
-            Alloys," in proceedings and reference books on electronic materials.
-          unit: MPa·√m
-          value: 0.01
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.15
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance)
-          value: 0.935
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 429.75
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m¹/²
-          value: 0.0025
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.00133
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 12400000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.35
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.15
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance)
+            value: 0.935
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 429.75
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m¹/²
+            value: 0.0025
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -14546,62 +14422,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 19700000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 4.71e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials, "Iridium and Iridium Alloys"'
+            unit: MPa·√m
+            value: 103.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.15
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.0001333
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 47200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 19700000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 4.71e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials, "Iridium and Iridium Alloys"'
-          unit: MPa·√m
-          value: 103.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance ratio)
-          value: 0.965
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.15
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2716.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.0001333
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 47200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance ratio)
+            value: 0.965
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2716.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -14860,60 +14733,57 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 10400000.0
+          electricalResistivity:
+            unit: μΩ·cm
+            value: 9.7
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals"'
+            unit: MPa·√m
+            value: 50.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.32
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.000142
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 630000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.35
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 10400000.0
-        electricalResistivity:
-          unit: μΩ·cm
-          value: 9.7
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals"'
-          unit: MPa·√m
-          value: 50.0
-        label: Other Properties
-        laserDamageThreshold:
-          unit: J/cm²
-          value: 2.5
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.65
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.32
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1811.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa√m
-          value: 1.2
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.000142
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 630000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.35
+          laserDamageThreshold:
+            unit: J/cm²
+            value: 2.5
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.65
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1811.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa√m
+            value: 1.2
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -15170,26 +15040,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Fracture Toughness of Polymer
+              Matrix Composites"'
+            unit: MPa·√m
+            value: 44.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Fracture Toughness of Polymer
-            Matrix Composites"'
-          unit: MPa·√m
-          value: 44.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -15462,14 +15329,11 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        label: Other Properties
-        percentage: 20.0
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -15778,57 +15642,54 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 4810000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 2.065e-07
+          fractureToughness: 15.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 2.13e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 12400000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.35
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 4810000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 2.065e-07
-        fractureToughness: 15.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.15
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.65
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 601.0
-        thermalShockResistance:
-          source: ai_research
-          unit: W/m
-          value: 0.0005
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 2.13e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 12400000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.35
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.15
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.65
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 601.0
+          thermalShockResistance:
+            source: ai_research
+            unit: W/m
+            value: 0.0005
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -16095,26 +15956,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: '"Fracture Toughness of Glasses as Measured by the SCF and SEPB
+              Methods" (Journal of the European Ceramic Society, Vol. 26, 2006)'
+            unit: MPa·√m
+            value: 0.75
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: '"Fracture Toughness of Glasses as Measured by the SCF and SEPB
-            Methods" (Journal of the European Ceramic Society, Vol. 26, 2006)'
-          unit: MPa·√m
-          value: 0.75
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -16391,22 +16249,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness
+              of rocks. In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness
-            of rocks. In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -16678,23 +16533,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: B. M. G. C. Z. Wang, "Fracture toughness of medium density fiberboard
+              (MDF) using a tensile test method," Wood Science and Technology, vol.
+              38, pp. 21-30, 2004.
+            unit: MPa·√m
+            value: 0.38
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: B. M. G. C. Z. Wang, "Fracture toughness of medium density fiberboard
-            (MDF) using a tensile test method," Wood Science and Technology, vol.
-            38, pp. 21-30, 2004.
-          unit: MPa·√m
-          value: 0.38
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -16969,62 +16821,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 22400000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 4.45e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials'
+            unit: MPa·√m
+            value: 27.5
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 36.1
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 11200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.12
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 22400000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 4.45e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials'
-          unit: MPa·√m
-          value: 27.5
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.15
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.74
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 923.0
-        thermalShockResistance:
-          source: ai_research
-          unit: W/m
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 36.1
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 11200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.12
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.15
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.74
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 923.0
+          thermalShockResistance:
+            source: ai_research
+            unit: W/m
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -17297,22 +17146,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'E.J. Barbero, "Introduction to Composite Materials Design, Second
+              Edition", Table 5.1: Typical fracture toughness of common materials.'
+            unit: MPa·√m
+            value: 2.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'E.J. Barbero, "Introduction to Composite Materials Design, Second
-            Edition", Table 5.1: Typical fracture toughness of common materials.'
-          unit: MPa·√m
-          value: 2.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -17583,62 +17429,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 694000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.44e-06
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials, "Properties of Pure Metals"'
+            unit: MPa·√m
+            value: 66.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.85
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 121.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 14200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 694000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.44e-06
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials, "Properties of Pure Metals"'
-          unit: MPa·√m
-          value: 66.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.15
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.58
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.85
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1519.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 0.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 121.0
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 14200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.15
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.58
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1519.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 0.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -17921,22 +17764,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites"
+              (1982), and USDA Forest Products Laboratory data.
+            unit: MPa·√m
+            value: 0.54
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites"
-            (1982), and USDA Forest Products Laboratory data.
-          unit: MPa·√m
-          value: 0.54
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -18217,24 +18057,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: ISRM Suggested Methods for determining the fracture toughness
+              of rock, as cited in "Fracture toughness of a soft sandstone" (Ouchterlony,
+              1990) and data compilations in "The Fracture Toughness of Rocks and
+              Its Measurement" (Atkinson, 1987).
+            unit: MPa·√m
+            value: 1.08
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: ISRM Suggested Methods for determining the fracture toughness of
-            rock, as cited in "Fracture toughness of a soft sandstone" (Ouchterlony,
-            1990) and data compilations in "The Fracture Toughness of Rocks and Its
-            Measurement" (Atkinson, 1987).
-          unit: MPa·√m
-          value: 1.08
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -18508,21 +18345,18 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 4.2e-08
+          fractureToughness: 25.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 4.2e-08
-        fractureToughness: 25.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -18796,63 +18630,60 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 18700000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 5.34e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials, "Molybdenum and Molybdenum Alloys"
+              (ASM International, 1990)'
+            unit: MPa·√m
+            value: 13.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m^-1
-          value: 42000000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.41
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 18700000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 5.34e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials, "Molybdenum and Molybdenum Alloys" (ASM
-            International, 1990)'
-          unit: MPa·√m
-          value: 13.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.57
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2896.0
-        thermalShockResistance:
-          source: ai_research
-          unit: W/m
-          value: 515.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m^-1
+            value: 42000000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.41
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.57
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2896.0
+          thermalShockResistance:
+            source: ai_research
+            unit: W/m
+            value: 515.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -19118,23 +18949,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of
+              plain and fiber-reinforced concrete with different water/cement ratios.
+              Advances in Cement Research, 22(1), 15-22.
+            unit: MPa·√m
+            value: 0.35
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of plain
-            and fiber-reinforced concrete with different water/cement ratios. Advances
-            in Cement Research, 22(1), 15-22.
-          unit: MPa·√m
-          value: 0.35
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -19411,14 +19239,11 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.72
-        label: Other Properties
-        percentage: 20.0
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.72
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -19724,62 +19549,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 14300000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 6.99e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals"'
+            unit: MPa·√m
+            value: 125.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.15
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 680000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.36
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 14300000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 6.99e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals"'
-          unit: MPa·√m
-          value: 125.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.68
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.15
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1726.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 450.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 680000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.36
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.68
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1726.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 450.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -20049,62 +19871,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 6930000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.52e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials (ASM International, 10th edition)'
+            unit: MPa·√m
+            value: 38.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.8
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.00133
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 4200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.38
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 6930000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.52e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials (ASM International, 10th edition)'
-          unit: MPa·√m
-          value: 38.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.58
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.8
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2741.0
-        thermalShockResistance:
-          source: ai_research
-          unit: W/m
-          value: 380.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.00133
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 4200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.38
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.58
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2741.0
+          thermalShockResistance:
+            source: ai_research
+            unit: W/m
+            value: 380.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -20388,22 +20207,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons
+              (1979), pp. 124-126
+            unit: MPa·√m
+            value: 0.39
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979),
-            pp. 124-126
-          unit: MPa·√m
-          value: 0.39
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -20666,23 +20482,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness
+              of natural stones in the historical built environment. Environmental
+              Earth Sciences, 75(9), 783.
+            unit: MPa·√m
+            value: 0.7
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness of
-            natural stones in the historical built environment. Environmental Earth
-            Sciences, 75(9), 783.
-          unit: MPa·√m
-          value: 0.7
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -20940,62 +20753,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 9500000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.08e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals" (Table 1)'
+            unit: MPa·√m
+            value: 70.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m^-1
-          value: 52000000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.35
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 9500000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.08e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals" (Table 1)'
-          unit: MPa·√m
-          value: 70.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.71
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1828.05
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m^-1
+            value: 52000000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.35
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.71
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1828.05
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -21267,26 +21077,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Properties of Phenolic-Matrix
+              Composites"'
+            unit: MPa·√m
+            value: 0.6
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Properties of Phenolic-Matrix
-            Composites"'
-          unit: MPa·√m
-          value: 0.6
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -21556,22 +21363,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons
+              (1979), p. 45
+            unit: MPa·√m
+            value: 0.37
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979),
-            p. 45
-          unit: MPa·√m
-          value: 0.37
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -21836,22 +21640,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'Ashby, M.F. (2013). *Materials and the Environment: Eco-Informed
+              Material Choice* (2nd ed.), Butterworth-Heinemann, Table 15.4.'
+            unit: MPa·√m
+            value: 0.15
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'Ashby, M.F. (2013). *Materials and the Environment: Eco-Informed
-            Material Choice* (2nd ed.), Butterworth-Heinemann, Table 15.4.'
-          unit: MPa·√m
-          value: 0.15
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -22122,62 +21923,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 9430000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.06e-07
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+              of Metals"'
+            unit: MPa·√m
+            value: 38.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 2.51e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 42000000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.065
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 9430000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.06e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals"'
-          unit: MPa·√m
-          value: 38.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.73
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2041.15
-        thermalShockResistance:
-          source: ai_research
-          unit: MW/m
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 2.51e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 42000000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.065
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.73
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2041.15
+          thermalShockResistance:
+            source: ai_research
+            unit: MW/m
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -22452,22 +22250,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Barbero, "Introduction to Composite Materials Design", 3rd
+              ed., Table 4.2
+            unit: MPa·√m
+            value: 0.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Barbero, "Introduction to Composite Materials Design", 3rd
-            ed., Table 4.2
-          unit: MPa·√m
-          value: 0.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -22737,24 +22532,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 2.1e+17
+          fractureToughness:
+            source: ai_research
+            unit: MPa·m¹/²
+            value: 2.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 2.1e+17
-        fractureToughness:
-          source: ai_research
-          unit: MPa·m¹/²
-          value: 2.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23023,26 +22815,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Properties of Particulate-Filled
+              Polymer Composites"'
+            unit: MPa·√m
+            value: 0.6
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Properties of Particulate-Filled
-            Polymer Composites"'
-          unit: MPa·√m
-          value: 0.6
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23318,25 +23107,22 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+16
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+            unit: MPa·√m
+            value: 2.5
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+16
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-          unit: MPa·√m
-          value: 2.5
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23606,27 +23392,24 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+16
+          fractureToughness:
+            ai_verified: true
+            source: '"Engineering Materials 1: An Introduction to Properties, Applications
+              and Design," 4th Edition, by Michael F. Ashby and David R.H. Jones,
+              Table 15.7 "Fracture toughness K_IC"'
+            unit: MPa·√m
+            value: 3.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+16
-        fractureToughness:
-          ai_verified: true
-          source: '"Engineering Materials 1: An Introduction to Properties, Applications
-            and Design," 4th Edition, by Michael F. Ashby and David R.H. Jones, Table
-            15.7 "Fracture toughness K_IC"'
-          unit: MPa·√m
-          value: 3.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23904,26 +23687,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+21
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Engineering Plastics and
+              Plastic Composites" (Data Table for Polystyrene)'
+            unit: MPa·√m
+            value: 1.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+21
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Engineering Plastics and
-            Plastic Composites" (Data Table for Polystyrene)'
-          unit: MPa·√m
-          value: 1.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -24190,25 +23970,22 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+18
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 21: Composites, "Properties of PTFE"'
+            unit: MPa·√m
+            value: 0.7
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+18
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Properties of PTFE"'
-          unit: MPa·√m
-          value: 0.7
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -24486,26 +24263,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 100000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+              Section on Plastics and Polymer Matrix Composites'
+            unit: MPa·√m
+            value: 3.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 100000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-            Section on Plastics and Polymer Matrix Composites'
-          unit: MPa·√m
-          value: 3.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -24775,22 +24549,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'E.J. Barbero. "Introduction to Composite Materials Design", Third
+              Edition, Table 4.2: Fracture Toughness of Selected Materials.'
+            unit: MPa·√m
+            value: 0.35
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'E.J. Barbero. "Introduction to Composite Materials Design", Third
-            Edition, Table 4.2: Fracture Toughness of Selected Materials.'
-          unit: MPa·√m
-          value: 0.35
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -25065,26 +24836,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 10000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties,
+              Failure Behaviour, Materials Selection. Springer-Verlag.'
+            unit: MPa·√m
+            value: 1.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 10000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties, Failure
-            Behaviour, Materials Selection. Springer-Verlag.'
-          unit: MPa·√m
-          value: 1.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -25353,23 +25121,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock
+              Characterization, Testing and Monitoring: 2007-2014. Springer International
+              Publishing. (Compilation of data from multiple studies on intact rock)'
+            unit: MPa·√m
+            value: 1.21
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock Characterization,
-            Testing and Monitoring: 2007-2014. Springer International Publishing.
-            (Compilation of data from multiple studies on intact rock)'
-          unit: MPa·√m
-          value: 1.21
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -25643,14 +25408,11 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.72
-        label: Other Properties
-        percentage: 20.0
+        properties:
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.72
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -25965,26 +25727,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 120000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: ASTM International, "Fracture Toughness of Ceramics and Hardmetals,"
+              compiled data for borosilicate glass (Pyrex)
+            unit: MPa·√m
+            value: 0.77
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: ASTM International, "Fracture Toughness of Ceramics and Hardmetals,"
-            compiled data for borosilicate glass (Pyrex)
-          unit: MPa·√m
-          value: 0.77
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -26251,26 +26010,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.5e+18
+          fractureToughness:
+            ai_verified: true
+            source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix
+              Composites" in ASM Handbook, Volume 8
+            unit: MPa·√m
+            value: 0.75
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.5e+18
-        fractureToughness:
-          ai_verified: true
-          source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix
-            Composites" in ASM Handbook, Volume 8
-          unit: MPa·√m
-          value: 0.75
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -26543,23 +26299,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Ulusoy, U., & Yilmazkaya, E. (2011). The effect of mineralogy
+              and textural characteristics on the strength of crystalline rocks. In
+              45th US Rock Mechanics / Geomechanics Symposium. American Rock Mechanics
+              Association.
+            unit: MPa·√m
+            value: 1.4
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Ulusoy, U., & Yilmazkaya, E. (2011). The effect of mineralogy and
-            textural characteristics on the strength of crystalline rocks. In 45th
-            US Rock Mechanics / Geomechanics Symposium. American Rock Mechanics Association.
-          unit: MPa·√m
-          value: 1.4
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -26833,22 +26587,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
+              as an Engineering Material" (Chapter 4: Mechanical Properties of Wood).'
+            unit: MPa·√m
+            value: 0.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
-            as an Engineering Material" (Chapter 4: Mechanical Properties of Wood).'
-          unit: MPa·√m
-          value: 0.33
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -27119,62 +26870,59 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 5420000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.93e-08
+          fractureToughness:
+            ai_verified: true
+            source: Metals Handbook, 9th Edition, Vol. 2, American Society for Metals,
+              1979, p. 788.
+            unit: MPa·√m
+            value: 200.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.32
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33e-07
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: '1'
-          value: 0.42
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 5420000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.93e-08
-        fractureToughness:
-          ai_verified: true
-          source: Metals Handbook, 9th Edition, Vol. 2, American Society for Metals,
-            1979, p. 788.
-          unit: MPa·√m
-          value: 200.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 2.1
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance)
-          value: 0.85
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.32
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 3453.0
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 1.8
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33e-07
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: '1'
+            value: 0.42
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 2.1
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance)
+            value: 0.85
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 3453.0
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 1.8
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -27438,63 +27186,60 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 21100000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 4.3e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+              Alloys and Special-Purpose Materials (1990), page 700, Table 1: Mechanical
+              Properties of Precious Metals and Alloys.'
+            unit: MPa·√m
+            value: 125.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.00133
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 10700000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.21
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 21100000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 4.3e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials (1990), page 700, Table 1: Mechanical Properties
-            of Precious Metals and Alloys.'
-          unit: MPa·√m
-          value: 125.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.85
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.82
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2237.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 380.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.00133
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 10700000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.21
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.85
+          reflectivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.82
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2237.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 380.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -27760,22 +27505,19 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites"
+              (Van Nostrand Reinhold, 1982), pp. 140-142
+            unit: MPa·√m
+            value: 2.1
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites"
-            (Van Nostrand Reinhold, 1982), pp. 140-142
-          unit: MPa·√m
-          value: 2.1
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28053,26 +27795,24 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 10000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: '"Fracture Mechanics of Rubber Materials" in The Science and Technology
+              of Rubber (4th ed.), Chapter 10, J.G. Sommer et al., Academic Press,
+              2013'
+            unit: MPa·√m
+            value: 0.05
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 10000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: '"Fracture Mechanics of Rubber Materials" in The Science and Technology
-            of Rubber (4th ed.), Chapter 10, J.G. Sommer et al., Academic Press, 2013'
-          unit: MPa·√m
-          value: 0.05
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28346,62 +28086,60 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 14100000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 7.1e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'Metals Handbook, 10th Edition, Vol. 2 - Properties and Selection:
+              Nonferrous Alloys and Special-Purpose Materials (ASM International,
+              1990)'
+            unit: MPa·√m
+            value: 40.0
+          surfaceRoughness:
+            source: ai_research
+            unit: µm
+            value: 0.025
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 1.33
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 54200000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.42
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 14100000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 7.1e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'Metals Handbook, 10th Edition, Vol. 2 - Properties and Selection:
-            Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990)'
-          unit: MPa·√m
-          value: 40.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (ratio)
-          value: 0.65
-        surfaceRoughness:
-          source: ai_research
-          unit: µm
-          value: 0.025
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 2523.0
-        thermalShockResistance:
-          source: ai_research
-          unit: °C
-          value: 450.0
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 1.33
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 54200000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.42
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (ratio)
+            value: 0.65
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 2523.0
+          thermalShockResistance:
+            source: ai_research
+            unit: °C
+            value: 450.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28680,23 +28418,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: 'Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness
+              of rocks: a review. In *Fracture Mechanics of Rock* (pp. 477-525). Academic
+              Press.'
+            unit: MPa·√m
+            value: 0.7
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: 'Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness
-            of rocks: a review. In *Fracture Mechanics of Rock* (pp. 477-525). Academic
-            Press.'
-          unit: MPa·√m
-          value: 0.7
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28969,26 +28704,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0e+16
+          fractureToughness:
+            ai_verified: true
+            source: Bradt, R.C. (2011) "The Fracture Toughness of Materials," in *Fracture
+              Mechanics of Ceramics*, pp. 3-19.
+            unit: MPa·√m
+            value: 2.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0e+16
-        fractureToughness:
-          ai_verified: true
-          source: Bradt, R.C. (2011) "The Fracture Toughness of Materials," in *Fracture
-            Mechanics of Ceramics*, pp. 3-19.
-          unit: MPa·√m
-          value: 2.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -29269,24 +29001,21 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Nasseri, M.H.B., Mohanty, B., & Robin, P.-Y.F. (2005). Characterization
+              of microstructures and fracture toughness in five granitic rocks. International
+              Journal of Rock Mechanics and Mining Sciences, 42(3), 450-460. (Data
+              for schistose rocks and foliated metamorphic rocks).
+            unit: MPa·√m
+            value: 1.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Nasseri, M.H.B., Mohanty, B., & Robin, P.-Y.F. (2005). Characterization
-            of microstructures and fracture toughness in five granitic rocks. International
-            Journal of Rock Mechanics and Mining Sciences, 42(3), 450-460. (Data for
-            schistose rocks and foliated metamorphic rocks).
-          unit: MPa·√m
-          value: 1.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -29564,17 +29293,14 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness: 1.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness: 1.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -29844,23 +29570,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture
+              Mechanics Data for Rocks and Minerals." In *Fracture Mechanics of Rock*,
+              Academic Press, Table 1.1.
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture
-            Mechanics Data for Rocks and Minerals." In *Fracture Mechanics of Rock*,
-            Academic Press, Table 1.1.
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -30153,26 +29876,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 2300.0
+          fractureToughness:
+            ai_verified: true
+            source: Fracture of Brittle Solids by Brian Lawn, Table 1.1 (Cambridge
+              University Press, 1993)
+            unit: MPa·√m
+            value: 0.75
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 2300.0
-        fractureToughness:
-          ai_verified: true
-          source: Fracture of Brittle Solids by Brian Lawn, Table 1.1 (Cambridge University
-            Press, 1993)
-          unit: MPa·√m
-          value: 0.75
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -30444,26 +30164,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.0
+          fractureToughness:
+            ai_verified: true
+            source: Munro, R. G. (1997). Material Properties of a Sintered α-SiC.
+              *Journal of Physical and Chemical Reference Data*, 26(5), 1195-1203.
+            unit: MPa·√m
+            value: 3.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.0
-        fractureToughness:
-          ai_verified: true
-          source: Munro, R. G. (1997). Material Properties of a Sintered α-SiC. *Journal
-            of Physical and Chemical Reference Data*, 26(5), 1195-1203.
-          unit: MPa·√m
-          value: 3.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -30739,27 +30456,24 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 0.005
+          fractureToughness:
+            ai_verified: true
+            source: 'Suwannakij, S., et al. "Fracture toughness of thermoelectric
+              materials SiGe." Journal of Materials Science: Materials in Electronics,
+              Vol. 29, 2018, pp. 13989–13996.'
+            unit: MPa·√m
+            value: 0.8
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 0.005
-        fractureToughness:
-          ai_verified: true
-          source: 'Suwannakij, S., et al. "Fracture toughness of thermoelectric materials
-            SiGe." Journal of Materials Science: Materials in Electronics, Vol. 29,
-            2018, pp. 13989–13996.'
-          unit: MPa·√m
-          value: 0.8
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31030,26 +30744,23 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 100000000000000.0
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+              - "Engineering Properties of Silicon Nitrides"'
+            unit: MPa·√m
+            value: 6.0
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 100000000000000.0
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 29: Materials for Specialty Applications -
-            "Engineering Properties of Silicon Nitrides"'
-          unit: MPa·√m
-          value: 6.0
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31328,61 +31039,58 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          electricalConductivity:
+            source: ai_research
+            unit: S/m
+            value: 63000000.0
+          electricalResistivity:
+            source: ai_research
+            unit: Ω·m
+            value: 1.59e-08
+          fractureToughness:
+            ai_verified: true
+            source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+            unit: MPa·√m
+            value: 22.0
+          surfaceRoughness:
+            source: ai_research
+            unit: μm
+            value: 0.12
+          vaporPressure:
+            source: ai_research
+            unit: Pa
+            value: 0.34
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
-        properties: {}
-      other:
-        absorptionCoefficient:
-          source: ai_research
-          unit: m⁻¹
-          value: 12300000.0
-        absorptivity:
-          source: ai_research
-          unit: dimensionless
-          value: 0.04
-        electricalConductivity:
-          source: ai_research
-          unit: S/m
-          value: 63000000.0
-        electricalResistivity:
-          source: ai_research
-          unit: Ω·m
-          value: 1.59e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-          unit: MPa·√m
-          value: 22.0
-        label: Other Properties
-        laserDamageThreshold:
-          source: ai_research
-          unit: J/cm²
-          value: 0.45
-        percentage: 20.0
-        reflectivity:
-          source: ai_research
-          unit: dimensionless (reflectance ratio)
-          value: 0.985
-        surfaceRoughness:
-          source: ai_research
-          unit: μm
-          value: 0.12
-        thermalDestructionPoint:
-          source: ai_research
-          unit: K
-          value: 1234.93
-        thermalShockResistance:
-          source: ai_research
-          unit: MPa·m^0.5
-          value: 1.2
-        vaporPressure:
-          source: ai_research
-          unit: Pa
-          value: 0.34
+        properties:
+          absorptionCoefficient:
+            source: ai_research
+            unit: m⁻¹
+            value: 12300000.0
+          absorptivity:
+            source: ai_research
+            unit: dimensionless
+            value: 0.04
+          laserDamageThreshold:
+            source: ai_research
+            unit: J/cm²
+            value: 0.45
+          reflectivity:
+            source: ai_research
+            unit: dimensionless (reflectance ratio)
+            value: 0.985
+          thermalDestructionPoint:
+            source: ai_research
+            unit: K
+            value: 1234.93
+          thermalShockResistance:
+            source: ai_research
+            unit: MPa·m^0.5
+            value: 1.2
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31681,23 +31389,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: ISRM Suggested Methods for Determining Fracture Toughness of Rock
+              (Ulusay & Hudson, 2007), citing data for anisotropic rocks like slate
+              and schist.
+            unit: MPa·√m
+            value: 1.1
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: ISRM Suggested Methods for Determining Fracture Toughness of Rock
-            (Ulusay & Hudson, 2007), citing data for anisotropic rocks like slate
-            and schist.
-          unit: MPa·√m
-          value: 1.1
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31969,23 +31674,20 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
-        properties: {}
+        properties:
+          fractureToughness:
+            ai_verified: true
+            source: ISRM Suggested Methods for Determining Fracture Toughness of Rock,
+              and "Mechanical Properties of Soapstone Used in Dimension Stone Industry"
+              (Arola et al., 2006, & other rock mechanics compendia)
+            unit: MPa·√m
+            value: 1.2
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
         properties: {}
-      other:
-        fractureToughness:
-          ai_verified: true
-          source: ISRM Suggested Methods for Determining Fracture Toughness of Rock,
-            and "Mechanical Properties of Soapstone Used in Dimension Stone Industry"
-            (Arola et al., 2006, & other rock mechanics compendia)
-          unit: MPa·√m
-          value: 1.2
-        label: Other Properties
-        percentage: 20.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
