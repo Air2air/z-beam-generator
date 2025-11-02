@@ -106,7 +106,7 @@ def handle_data_gaps():
             if not valid_properties:
                 continue  # Skip materials with unknown categories
             
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             total_materials += 1
             
             missing_props = []
@@ -259,7 +259,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                 print(f"⚠️  Warning: Material '{material_name}' has unknown category '{category}'")
                 continue
             
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             missing_props = []
             
             # Only check properties that are valid for this category
@@ -418,11 +418,11 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                 print(f"⚠️  Warning: Material '{material_name}' not found in Materials.yaml, skipping...")
                 continue
                 
-            if 'properties' not in materials_section[material_name]:
-                materials_section[material_name]['properties'] = {}
+            if 'materialProperties' not in materials_section[material_name]:
+                materials_section[material_name]['materialProperties'] = {}
             
             for prop_name, prop_data in properties.items():
-                materials_section[material_name]['properties'][prop_name] = prop_data
+                materials_section[material_name]['materialProperties'][prop_name] = prop_data
                 updates_applied += 1
         
         # Save updated file

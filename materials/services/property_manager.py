@@ -166,24 +166,24 @@ class PropertyManager:
             
             material_entry = materials_data['materials'][material_name]
             
-            # Ensure properties dict exists
-            if 'properties' not in material_entry:
-                material_entry['properties'] = {}
+            # Ensure materialProperties dict exists
+            if 'materialProperties' not in material_entry:
+                material_entry['materialProperties'] = {}
             
             # Update with researched properties
             updates_count = 0
             for prop_name, prop_data in researched_properties.items():
                 # Only persist if not already in YAML or has higher confidence
-                existing = material_entry['properties'].get(prop_name)
+                existing = material_entry['materialProperties'].get(prop_name)
                 
                 if existing is None:
                     # New property - add it
-                    material_entry['properties'][prop_name] = prop_data
+                    material_entry['materialProperties'][prop_name] = prop_data
                     updates_count += 1
                     self.logger.debug(f"  ✅ Added {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
                 elif existing.get('source') != 'ai_research':
                     # Existing property but not from AI - upgrade it
-                    material_entry['properties'][prop_name] = prop_data
+                    material_entry['materialProperties'][prop_name] = prop_data
                     updates_count += 1
                     self.logger.debug(f"  🔄 Updated {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
                 else:

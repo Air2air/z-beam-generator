@@ -3,7 +3,25 @@
 Optimized Field Ordering Service
 
 Provides clean, logical field ordering for frontmatter YAML content.
-Eliminates scattered organization and creates optimal structure.
+Follows canonical structure defined in materials/data/frontmatter_template.yaml
+
+CANONICAL REFERENCE: materials/data/frontmatter_template.yaml
+This is the single source of truth for field order and structure.
+
+Field Order (per template):
+1. name, category, subcategory, title, subtitle, description
+2. author (determines voice)
+3. images (hero, micro)
+4. caption (description, before, after)
+5. regulatoryStandards
+6. applications
+7. materialProperties (GROUPED: material_characteristics, laser_material_interaction)
+8. materialCharacteristics (qualitative properties)
+9. machineSettings
+10. environmentalImpact
+11. outcomeMetrics
+12. faq
+13. _metadata
 """
 
 import logging
@@ -18,26 +36,36 @@ class FieldOrderingService:
     @staticmethod
     def apply_field_ordering(frontmatter_data: Dict) -> Dict:
         """
-        Apply optimal field ordering for maximum readability and logical flow.
+        Apply canonical field ordering per materials/data/frontmatter_template.yaml.
         
-        Reorganized hierarchy:
-        1. Basic Identification (name, category)
-        2. Content Metadata (title, headline, description, keywords)
-        3. Chemical Properties (symbol, formula, materialType)
-        4. Physical Properties (organized grouping with clean structure)
-        5. Composition & Applications (practical information)
-        6. Machine Settings (laser parameters)
-        7. Standards & Compatibility (regulatory, compatibility)
-        8. Author & Visual Assets (metadata)
-        9. Impact Metrics (environmental, outcomes)
+        REFERENCE: materials/data/frontmatter_template.yaml (SINGLE SOURCE OF TRUTH)
+        
+        Canonical hierarchy:
+        1. Basic Identification (name, category, subcategory)
+        2. Content Metadata (title, subtitle, description)
+        3. Author (determines voice generation)
+        4. Visual Assets (images: hero, micro)
+        5. Caption (description, before, after)
+        6. Regulatory Standards
+        7. Applications
+        8. Material Properties (GROUPED: material_characteristics, laser_material_interaction)
+        9. Material Characteristics (qualitative properties)
+        10. Machine Settings
+        11. Environmental Impact
+        12. Outcome Metrics
+        13. FAQ
+        14. Internal Metadata (_metadata)
         
         Args:
             frontmatter_data: Dictionary of frontmatter fields to order
             
         Returns:
-            Dictionary with optimally organized fields
+            Dictionary with fields ordered per canonical template
         """
         ordered_data = {}
+        
+        # === CANONICAL ORDER per materials/data/frontmatter_template.yaml ===
+        # REFERENCE: materials/data/frontmatter_template.yaml is the single source of truth
         
         # === 1. BASIC IDENTIFICATION ===
         for field in ["name", "category", "subcategory"]:
@@ -45,44 +73,65 @@ class FieldOrderingService:
                 ordered_data[field] = frontmatter_data[field]
                 
         # === 2. CONTENT METADATA ===
-        for field in ["title", "headline", "description", "keywords"]:
+        for field in ["title", "subtitle", "description", "headline", "keywords"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 
-        # === 3. CHEMICAL PROPERTIES ===
-        if "chemicalProperties" in frontmatter_data:
-            ordered_data["chemicalProperties"] = frontmatter_data["chemicalProperties"]
+        # === 3. AUTHOR (moved earlier per template) ===
+        if "author" in frontmatter_data:
+            ordered_data["author"] = frontmatter_data["author"]
             
-        # === 4. PHYSICAL PROPERTIES (Clean Structure) ===
+        # === 4. VISUAL ASSETS (moved earlier per template) ===
+        if "images" in frontmatter_data:
+            ordered_data["images"] = frontmatter_data["images"]
+            
+        # === 5. CAPTION (new per template) ===
+        if "caption" in frontmatter_data:
+            ordered_data["caption"] = frontmatter_data["caption"]
+            
+        # === 6. REGULATORY STANDARDS (moved earlier per template) ===
+        if "regulatoryStandards" in frontmatter_data:
+            ordered_data["regulatoryStandards"] = frontmatter_data["regulatoryStandards"]
+            
+        # === 7. APPLICATIONS ===
+        if "applications" in frontmatter_data:
+            ordered_data["applications"] = frontmatter_data["applications"]
+            
+        # === 8. MATERIAL PROPERTIES (GROUPED structure preserved) ===
         if "materialProperties" in frontmatter_data:
             ordered_data["materialProperties"] = FieldOrderingService._create_clean_properties_structure(
                 frontmatter_data["materialProperties"]
             )
             
-        # === 5. COMPOSITION & APPLICATIONS ===
-        for field in ["composition", "applications"]:
-            if field in frontmatter_data:
-                ordered_data[field] = frontmatter_data[field]
-                
-        # === 6. MACHINE SETTINGS ===
+        # === 9. MATERIAL CHARACTERISTICS (qualitative properties) ===
+        if "materialCharacteristics" in frontmatter_data:
+            ordered_data["materialCharacteristics"] = frontmatter_data["materialCharacteristics"]
+            
+        # === 10. MACHINE SETTINGS ===
         if "machineSettings" in frontmatter_data:
             ordered_data["machineSettings"] = FieldOrderingService._create_clean_machine_settings_structure(
                 frontmatter_data["machineSettings"]
             )
             
-        # === 7. STANDARDS & COMPATIBILITY ===
-        for field in ["compatibility", "regulatoryStandards"]:
-            if field in frontmatter_data:
-                ordered_data[field] = frontmatter_data[field]
-                
-        # === 8. AUTHOR & VISUAL ASSETS ===
-        for field in ["author", "images"]:
-            if field in frontmatter_data:
-                ordered_data[field] = frontmatter_data[field]
-                
-        # === 9. IMPACT METRICS ===
-        for field in ["environmentalImpact", "outcomes"]:
-            if field in frontmatter_data:
+        # === 11. ENVIRONMENTAL IMPACT ===
+        if "environmentalImpact" in frontmatter_data:
+            ordered_data["environmentalImpact"] = frontmatter_data["environmentalImpact"]
+            
+        # === 12. OUTCOME METRICS ===
+        if "outcomeMetrics" in frontmatter_data:
+            ordered_data["outcomeMetrics"] = frontmatter_data["outcomeMetrics"]
+            
+        # === 13. FAQ ===
+        if "faq" in frontmatter_data:
+            ordered_data["faq"] = frontmatter_data["faq"]
+            
+        # === 14. METADATA (internal) ===
+        if "_metadata" in frontmatter_data:
+            ordered_data["_metadata"] = frontmatter_data["_metadata"]
+        
+        # Legacy fields (for backward compatibility)
+        for field in ["chemicalProperties", "composition", "compatibility", "outcomes"]:
+            if field in frontmatter_data and field not in ordered_data:
                 ordered_data[field] = frontmatter_data[field]
                 
         # Add any remaining fields that weren't explicitly ordered

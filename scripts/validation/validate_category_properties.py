@@ -73,7 +73,7 @@ def validate_material_properties():
             })
             continue
         
-        material_props = set(material_data.get('properties', {}).keys())
+        material_props = set(material_data.get('materialProperties', {}).keys())
         invalid_props = material_props - valid_props
         
         if invalid_props:

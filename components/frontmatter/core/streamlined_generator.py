@@ -607,7 +607,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             if self.property_manager:
                 material_category = material_data.get('category', 'metal')
                 # Merge unified properties with existing properties from YAML
-                existing_properties = material_data.get('properties', {})
+                existing_properties = material_data.get('materialProperties', {})
                 for prop_type, props in unified_properties.items():
                     if prop_type == 'properties':
                         existing_properties.update(props)
@@ -698,7 +698,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         properties = {}
         
         # OPTIMIZATION: Check Materials.yaml first before calling AI
-        yaml_properties = material_data.get('properties', {})
+        yaml_properties = material_data.get('materialProperties', {})
         yaml_count = 0
         ai_count = 0
         

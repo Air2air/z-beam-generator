@@ -87,7 +87,7 @@ def validate_material(material_name: str, material_data: Dict[str, Any]) -> Dict
         warnings.append(f"Expected category 'metal', got '{material_data.get('category')}'")
     
     # Get properties
-    properties = material_data.get('properties', {})
+    properties = material_data.get('materialProperties', {})
     
     # Check required properties
     for prop in REQUIRED_METAL_PROPERTIES:

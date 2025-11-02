@@ -2,6 +2,8 @@
 """
 Data Completeness Validator
 
+CANONICAL REFERENCE: materials/data/frontmatter_template.yaml (single source of truth)
+
 Enforces 100% data completeness for frontmatter generation:
 1. Validates all essential properties are present and researched
 2. Detects and re-categorizes legacy qualitative properties
@@ -9,7 +11,13 @@ Enforces 100% data completeness for frontmatter generation:
 4. Enforces comprehensive property coverage
 5. Detects empty sections and triggers research
 
+STRUCTURE TERMINOLOGY:
+- 'materialProperties' = Top-level key in materials.yaml (ALWAYS this name)
+- 'properties' = Nested dict within a category group (e.g., material_characteristics.properties)
+- Category groups: material_characteristics, laser_material_interaction
+
 Author: October 17, 2025
+Updated: November 2, 2025 - GROUPED structure migration
 """
 
 import logging
@@ -226,12 +234,35 @@ class CompletenessValidator:
         )
     
     def _extract_all_properties(self, material_properties: Dict) -> Set[str]:
-        """Extract all property names from categorized structure."""
+        """
+        Extract all property names from GROUPED structure.
+        
+        CANONICAL REFERENCE: materials/data/frontmatter_template.yaml
+        
+        GROUPED structure:
+          materialProperties:                          <- Top-level key (ALWAYS 'materialProperties')
+            material_characteristics:                  <- Category group
+              label: "Material Characteristics"
+              description: "..."
+              properties:                              <- Nested properties within group
+                density: { value, min, max, unit }
+                hardness: { value, min, max, unit }
+            laser_material_interaction:                <- Category group
+              label: "Laser-Material Interaction"  
+              description: "..."
+              properties:                              <- Nested properties within group
+                thermalConductivity: { value, min, max, unit }
+                laserReflectivity: { value, min, max, unit }
+        
+        NOTE: 'properties' here refers to the nested dict WITHIN a category group,
+              not the top-level which is ALWAYS 'materialProperties'
+        """
         properties = set()
         
         for category_name, category_data in material_properties.items():
-            if isinstance(category_data, dict) and 'materialProperties' in category_data:
-                for prop_name, prop_data in category_data['materialProperties'].items():
+            # GROUPED structure: category_data has 'properties' key for nested properties
+            if isinstance(category_data, dict) and 'properties' in category_data:
+                for prop_name, prop_data in category_data['properties'].items():
                     properties.add(prop_name)
                     
                     # Handle nested thermalDestruction structure

@@ -284,7 +284,7 @@ class MaterialAuditor:
                 return
             
             # Check for prohibited min/max ranges in material properties
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict):
@@ -381,7 +381,7 @@ class MaterialAuditor:
                 result.architecture_compliance = False
             
             # Check properties are defined in category
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             category_ranges = self.category_definitions.get(category, {}).get('category_ranges', {})
             
             for prop_name in properties:
@@ -451,7 +451,7 @@ class MaterialAuditor:
                     ))
             
             # Validate properties structure
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             if not properties:
                 result.issues.append(AuditIssue(
                     severity=AuditSeverity.HIGH,
@@ -533,7 +533,7 @@ class MaterialAuditor:
             if not category:
                 return
             
-            properties = set(material_data.get('properties', {}).keys())
+            properties = set(material_data.get('materialProperties', {}).keys())
             essential_props = self.essential_properties.get(category, set())
             
             # Calculate coverage
@@ -602,7 +602,7 @@ class MaterialAuditor:
                 return
             
             category = material_data.get('category', '').lower()
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             
             # Basic category validation
             valid_categories = set(self.category_definitions.keys())
@@ -669,7 +669,7 @@ class MaterialAuditor:
             if not material_data:
                 return
             
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             if not properties:
                 return
             
@@ -864,7 +864,7 @@ class MaterialAuditor:
             if not material_data:
                 return
             
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             
             # Check for fail-fast violations
             for prop_name, prop_data in properties.items():
@@ -1247,7 +1247,7 @@ class MaterialAuditor:
                         issue.severity = AuditSeverity.INFO
             
             # Fix 2: Add basic confidence scores where missing
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict) and 'confidence' not in prop_data:
                     source = prop_data.get('source', '').lower()
