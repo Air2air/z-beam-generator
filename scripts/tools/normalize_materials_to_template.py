@@ -61,7 +61,7 @@ CANONICAL_ORDER = [
     'name', 'category', 'subcategory', 'title', 'subtitle', 'description',
     'author', 'images', 'caption', 'regulatoryStandards', 'applications',
     'materialProperties', 'materialCharacteristics', 'machineSettings',
-    'environmentalImpact', 'outcomeMetrics', 'faq', '_metadata'
+    'faq', '_metadata'
 ]
 
 # GROUPED structure requirements
