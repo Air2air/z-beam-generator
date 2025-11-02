@@ -116,11 +116,15 @@ class MachineSettingsResearcher:
         Initialize Machine Settings Researcher.
         
         Args:
-            material_researcher: PropertyValueResearcher instance for material data
+            material_researcher: PropertyValueResearcher instance for material data (REQUIRED for AI-driven research)
             confidence_threshold: Minimum confidence for valid results
             debug_mode: Enable debug logging
         """
-        self.material_researcher = material_researcher or PropertyValueResearcher()
+        if material_researcher is None:
+            # FAIL-FAST: PropertyValueResearcher required for material property lookups
+            raise ValueError("PropertyValueResearcher is required for MachineSettingsResearcher - no fallbacks allowed")
+        
+        self.material_researcher = material_researcher
         self.confidence_threshold = confidence_threshold
         self.debug_mode = debug_mode
         
