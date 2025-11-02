@@ -1,0 +1,279 @@
+#!/usr/bin/env python3
+"""
+Materials.yaml Normalization Script
+
+Normalizes all material entries in materials.yaml to match the frontmatter template structure.
+Ensures consistent field ordering between materials.yaml and exported frontmatter files.
+
+Field Order (canonical):
+1. name, category, subcategory, title, description, subtitle
+2. materialProperties (with proper grouping: material_characteristics, laser_material_interaction, other)
+3. materialCharacteristics (qualitative properties)
+4. applications
+5. machineSettings
+6. regulatoryStandards
+7. author
+8. images
+9. environmentalImpact
+10. outcomeMetrics
+11. faq
+12. caption
+13. _metadata
+
+Usage:
+    python3 scripts/tools/normalize_materials_yaml.py [--dry-run] [--material MATERIAL_NAME]
+"""
+
+import yaml
+import sys
+from pathlib import Path
+from typing import Dict, Any, List
+from collections import OrderedDict
+
+# Add project root to path
+project_root = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+
+# Canonical field order for material entries
+CANONICAL_ORDER = [
+    'name',
+    'category',
+    'subcategory',
+    'title',
+    'description',
+    'subtitle',
+    'materialProperties',
+    'materialCharacteristics',
+    'applications',
+    'machineSettings',
+    'regulatoryStandards',
+    'author',
+    'images',
+    'environmentalImpact',
+    'outcomeMetrics',
+    'faq',
+    'caption',
+    '_metadata',
+]
+
+# Property group order within materialProperties
+PROPERTY_GROUP_ORDER = [
+    'material_characteristics',
+    'laser_material_interaction',
+    'other',
+]
+
+# Property order within each group
+MATERIAL_CHARACTERISTICS_ORDER = [
+    'density', 'porosity', 'surfaceRoughness',
+    'tensileStrength', 'youngsModulus', 'hardness', 'flexuralStrength', 'compressiveStrength',
+    'oxidationResistance', 'corrosionResistance',
+]
+
+LASER_INTERACTION_ORDER = [
+    'thermalConductivity', 'thermalExpansion', 'thermalDiffusivity', 'specificHeat', 'thermalShockResistance',
+    'laserReflectivity', 'absorptionCoefficient', 'ablationThreshold', 'laserDamageThreshold',
+]
+
+MACHINE_SETTINGS_ORDER = [
+    'powerRange', 'wavelength', 'pulseDuration', 'spotSize', 'repetitionRate',
+    'fluenceThreshold', 'energyDensity', 'pulseWidth', 'beamDiameter',
+    'scanSpeed', 'passCount', 'overlapRatio', 'dwellTime',
+]
+
+
+def ordered_dict_representer(dumper, data):
+    """Custom YAML representer for OrderedDict"""
+    return dumper.represent_dict(data.items())
+
+
+def normalize_property_group(group_data: Dict, property_order: List[str]) -> OrderedDict:
+    """Normalize property order within a group"""
+    if not isinstance(group_data, dict):
+        return group_data
+    
+    normalized = OrderedDict()
+    
+    # Add label, description, percentage first if they exist
+    for key in ['label', 'description', 'percentage']:
+        if key in group_data:
+            normalized[key] = group_data[key]
+    
+    # Add properties in canonical order
+    if 'properties' in group_data:
+        properties = group_data['properties']
+        ordered_properties = OrderedDict()
+        
+        # First add properties in canonical order
+        for prop in property_order:
+            if prop in properties:
+                ordered_properties[prop] = properties[prop]
+        
+        # Then add any remaining properties not in the canonical list
+        for prop, value in properties.items():
+            if prop not in ordered_properties:
+                ordered_properties[prop] = value
+        
+        normalized['properties'] = ordered_properties
+    
+    return normalized
+
+
+def normalize_material_properties(mat_props: Dict) -> OrderedDict:
+    """Normalize materialProperties structure"""
+    if not isinstance(mat_props, dict):
+        return mat_props
+    
+    normalized = OrderedDict()
+    
+    # Add groups in canonical order
+    for group in PROPERTY_GROUP_ORDER:
+        if group in mat_props:
+            if group == 'material_characteristics':
+                normalized[group] = normalize_property_group(mat_props[group], MATERIAL_CHARACTERISTICS_ORDER)
+            elif group == 'laser_material_interaction':
+                normalized[group] = normalize_property_group(mat_props[group], LASER_INTERACTION_ORDER)
+            else:
+                normalized[group] = mat_props[group]
+    
+    # Add any remaining groups not in canonical order
+    for group, data in mat_props.items():
+        if group not in normalized:
+            normalized[group] = data
+    
+    return normalized
+
+
+def normalize_machine_settings(settings: Dict) -> OrderedDict:
+    """Normalize machineSettings order"""
+    if not isinstance(settings, dict):
+        return settings
+    
+    normalized = OrderedDict()
+    
+    # Add settings in canonical order
+    for setting in MACHINE_SETTINGS_ORDER:
+        if setting in settings:
+            normalized[setting] = settings[setting]
+    
+    # Add any remaining settings
+    for setting, value in settings.items():
+        if setting not in normalized:
+            normalized[setting] = value
+    
+    return normalized
+
+
+def normalize_material_entry(material_data: Dict) -> OrderedDict:
+    """Normalize a single material entry to canonical field order"""
+    normalized = OrderedDict()
+    
+    # Add fields in canonical order
+    for field in CANONICAL_ORDER:
+        if field in material_data:
+            if field == 'materialProperties':
+                normalized[field] = normalize_material_properties(material_data[field])
+            elif field == 'machineSettings':
+                normalized[field] = normalize_machine_settings(material_data[field])
+            else:
+                normalized[field] = material_data[field]
+    
+    # Add any remaining fields not in canonical order
+    for field, value in material_data.items():
+        if field not in normalized:
+            normalized[field] = value
+    
+    return normalized
+
+
+def normalize_materials_yaml(materials_path: Path, dry_run: bool = False, specific_material: str = None) -> Dict:
+    """
+    Normalize all materials in materials.yaml
+    
+    Args:
+        materials_path: Path to materials.yaml
+        dry_run: If True, print changes without writing
+        specific_material: If provided, only normalize this material
+        
+    Returns:
+        Normalized materials data
+    """
+    print(f"📖 Loading materials from: {materials_path}")
+    
+    with open(materials_path, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f)
+    
+    if 'materials' not in data:
+        print("❌ No 'materials' section found in materials.yaml")
+        return data
+    
+    materials = data['materials']
+    total_count = len(materials)
+    normalized_count = 0
+    
+    print(f"📊 Found {total_count} materials")
+    
+    # Normalize each material
+    normalized_materials = OrderedDict()
+    
+    for material_name, material_data in materials.items():
+        # Skip if specific material requested and this isn't it
+        if specific_material and material_name != specific_material:
+            normalized_materials[material_name] = material_data
+            continue
+        
+        print(f"  🔄 Normalizing: {material_name}")
+        normalized_materials[material_name] = normalize_material_entry(material_data)
+        normalized_count += 1
+    
+    data['materials'] = normalized_materials
+    
+    print(f"\n✅ Normalized {normalized_count} material(s)")
+    
+    if dry_run:
+        print("\n🔍 DRY RUN - No changes written")
+        return data
+    
+    # Write back to file
+    print(f"\n💾 Writing normalized data to: {materials_path}")
+    
+    # Register OrderedDict representer
+    yaml.add_representer(OrderedDict, ordered_dict_representer)
+    
+    with open(materials_path, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=120)
+    
+    print("✅ Normalization complete!")
+    
+    return data
+
+
+def main():
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Normalize materials.yaml structure')
+    parser.add_argument('--dry-run', action='store_true', help='Print changes without writing')
+    parser.add_argument('--material', type=str, help='Normalize only this specific material')
+    parser.add_argument('--materials-yaml', type=str, default='materials/data/materials.yaml',
+                       help='Path to materials.yaml file')
+    
+    args = parser.parse_args()
+    
+    materials_path = project_root / args.materials_yaml
+    
+    if not materials_path.exists():
+        print(f"❌ Materials file not found: {materials_path}")
+        sys.exit(1)
+    
+    try:
+        normalize_materials_yaml(materials_path, dry_run=args.dry_run, specific_material=args.material)
+    except Exception as e:
+        print(f"❌ Error during normalization: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()

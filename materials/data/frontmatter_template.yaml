@@ -1,0 +1,195 @@
+# Frontmatter Template for Materials
+# This template defines the canonical field order and structure for all material entries
+# Materials.yaml entries should follow this order, and exports to frontmatter should match
+
+name: <MaterialName>
+category: <Category>
+subcategory: <Subcategory>
+title: <MaterialName> Laser Cleaning
+description: Laser cleaning parameters for <MaterialName>
+subtitle: Laser cleaning parameters and specifications for <MaterialName>
+
+# Material Properties (grouped by category)
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    percentage: 33.3
+    properties:
+      # Physical properties
+      density: {}
+      porosity: {}
+      surfaceRoughness: {}
+      
+      # Mechanical properties
+      tensileStrength: {}
+      youngsModulus: {}
+      hardness: {}
+      flexuralStrength: {}
+      compressiveStrength: {}
+      
+      # Chemical/Environmental properties
+      oxidationResistance: {}
+      corrosionResistance: {}
+      
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    percentage: 33.3
+    properties:
+      # Thermal properties
+      thermalConductivity: {}
+      thermalExpansion: {}
+      thermalDiffusivity: {}
+      specificHeat: {}
+      thermalShockResistance: {}
+      
+      # Optical/Laser properties
+      laserReflectivity: {}
+      absorptionCoefficient: {}
+      ablationThreshold: {}
+      laserDamageThreshold: {}
+      
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 33.3
+    properties: {}
+
+# Material Characteristics (qualitative)
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues: []
+    value: ''
+
+# Applications
+applications: []
+
+# Machine Settings
+machineSettings:
+  powerRange: {}
+  wavelength: {}
+  pulseDuration: {}
+  spotSize: {}
+  repetitionRate: {}
+  fluenceThreshold: {}
+  energyDensity: {}
+  pulseWidth: {}
+  beamDiameter: {}
+  scanSpeed: {}
+  passCount: {}
+  overlapRatio: {}
+  dwellTime: {}
+
+# Regulatory Standards
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+
+# Author Information
+author:
+  id: <AuthorID>
+  name: <AuthorName>
+  country: <Country>
+  country_display: <CountryDisplay>
+  title: <Title>
+  sex: <Sex>
+  expertise: <Expertise>
+  image: /images/author/<author-slug>.jpg
+  persona_file: <country>_persona.yaml
+  formatting_file: <country>_formatting.yaml
+
+# Images
+images:
+  hero:
+    alt: <MaterialName> surface during precision laser cleaning process
+    url: /images/material/<material-slug>-laser-cleaning-hero.jpg
+  micro:
+    alt: <MaterialName> surface at microscopic magnification
+    url: /images/material/<material-slug>-microscopic-before-after.jpg
+
+# Environmental Impact
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  applicableIndustries: []
+  description: ''
+  quantifiedBenefits: ''
+- benefit: Water Usage Reduction
+  applicableIndustries: []
+  description: ''
+- benefit: Energy Efficiency
+  applicableIndustries: []
+  description: ''
+- benefit: Air Quality Improvement
+  applicableIndustries: []
+  description: ''
+
+# Outcome Metrics
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: ''
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+  typicalRanges: 95-99.9% depending on application and material
+- metric: Processing Speed
+  description: ''
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+- metric: Surface Quality Preservation
+  description: ''
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: ''
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+
+# FAQ
+faq:
+  questions: []
+  generated: ''
+  question_count: 0
+  total_words: 0
+
+# Caption
+caption:
+  before: ''
+  after: ''
+  generated: ''
+  word_count_before: 0
+  word_count_after: 0
+  total_words: 0
+
+# Metadata
+_metadata:
+  voice:
+    author_name: <AuthorName>
+    author_country: <Country>
+    voice_applied: true
+    content_type: material
