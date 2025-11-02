@@ -17,8 +17,7 @@ Each content type is self-contained with all its specific resources:
   │   ├── DATA_MATERIALS_LOADING.md
   │   ├── MATERIAL_DATA_CUSTOMIZATION.md
   │   ├── MATERIAL_FIELDS_ANALYSIS.md
-  │   ├── MATERIAL_REMOVAL_GUIDE.md
-  │   └── new_material_example.yaml
+  │   └── MATERIAL_REMOVAL_GUIDE.md
   └── README.md            # Usage guide
 
 /regions/
@@ -100,7 +99,6 @@ Cross-cutting concerns used by all content types:
 
 - **Docs**:
   - `docs/materials/*` → `materials/docs/`
-  - `docs/examples/new_material_example.yaml` → `materials/docs/`
 
 ### ✅ Centralized Output
 - All generators output to `/frontmatter/{type}/` instead of local output folders

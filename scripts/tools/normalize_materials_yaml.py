@@ -3,21 +3,25 @@
 Materials.yaml Normalization Script
 
 Normalizes all material entries in materials.yaml to match the frontmatter template structure.
-Ensures consistent field ordering between materials.yaml and exported frontmatter files.
+Migrates FLAT structure to GROUPED structure and ensures consistent field ordering.
+
+MIGRATION: FLAT → GROUPED Structure
+- Flat: All properties directly under materialProperties
+- Grouped: Properties organized into material_characteristics and laser_material_interaction
 
 Field Order (canonical):
 1. name, category, subcategory, title, description, subtitle
-2. materialProperties (with proper grouping: material_characteristics, laser_material_interaction, other)
-3. materialCharacteristics (qualitative properties)
-4. applications
-5. machineSettings
-6. regulatoryStandards
-7. author
-8. images
-9. environmentalImpact
-10. outcomeMetrics
-11. faq
-12. caption
+2. author (moved earlier per template)
+3. images
+4. caption
+5. regulatoryStandards
+6. applications
+7. materialProperties (GROUPED: material_characteristics, laser_material_interaction)
+8. materialCharacteristics (qualitative properties)
+9. machineSettings
+10. environmentalImpact
+11. outcomeMetrics
+12. faq
 13. _metadata
 
 Usage:
@@ -27,7 +31,7 @@ Usage:
 import yaml
 import sys
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, List
 from collections import OrderedDict
 
 # Add project root to path
@@ -35,25 +39,25 @@ project_root = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 
-# Canonical field order for material entries
+# Canonical field order for material entries (matches frontmatter_template.yaml)
 CANONICAL_ORDER = [
     'name',
     'category',
     'subcategory',
     'title',
-    'description',
     'subtitle',
-    'materialProperties',
-    'materialCharacteristics',
-    'applications',
-    'machineSettings',
-    'regulatoryStandards',
+    'description',
     'author',
     'images',
+    'caption',
+    'regulatoryStandards',
+    'applications',
+    'materialProperties',
+    'materialCharacteristics',
+    'machineSettings',
     'environmentalImpact',
     'outcomeMetrics',
     'faq',
-    'caption',
     '_metadata',
 ]
 
@@ -64,17 +68,21 @@ PROPERTY_GROUP_ORDER = [
     'other',
 ]
 
-# Property order within each group
-MATERIAL_CHARACTERISTICS_ORDER = [
+# Property classification: which group does each property belong to?
+MATERIAL_CHARACTERISTICS_PROPS = [
     'density', 'porosity', 'surfaceRoughness',
     'tensileStrength', 'youngsModulus', 'hardness', 'flexuralStrength', 'compressiveStrength',
     'oxidationResistance', 'corrosionResistance',
 ]
 
-LASER_INTERACTION_ORDER = [
+LASER_INTERACTION_PROPS = [
     'thermalConductivity', 'thermalExpansion', 'thermalDiffusivity', 'specificHeat', 'thermalShockResistance',
     'laserReflectivity', 'absorptionCoefficient', 'ablationThreshold', 'laserDamageThreshold',
 ]
+
+# Property order within each group
+MATERIAL_CHARACTERISTICS_ORDER = MATERIAL_CHARACTERISTICS_PROPS
+LASER_INTERACTION_ORDER = LASER_INTERACTION_PROPS
 
 MACHINE_SETTINGS_ORDER = [
     'powerRange', 'wavelength', 'pulseDuration', 'spotSize', 'repetitionRate',
@@ -120,8 +128,68 @@ def normalize_property_group(group_data: Dict, property_order: List[str]) -> Ord
     return normalized
 
 
+def migrate_flat_to_grouped(mat_props: Dict) -> OrderedDict:
+    """
+    Migrate FLAT structure to GROUPED structure.
+    
+    FLAT: materialProperties: { density: {...}, thermalConductivity: {...}, ... }
+    GROUPED: materialProperties:
+               material_characteristics:
+                 label: Material Characteristics
+                 description: ...
+                 properties: { density: {...}, ... }
+               laser_material_interaction:
+                 label: Laser-Material Interaction
+                 description: ...
+                 properties: { thermalConductivity: {...}, ... }
+    """
+    if not isinstance(mat_props, dict):
+        return mat_props
+    
+    # Check if already grouped (has material_characteristics or laser_material_interaction keys)
+    if 'material_characteristics' in mat_props or 'laser_material_interaction' in mat_props:
+        # Already grouped, just normalize
+        return normalize_material_properties(mat_props)
+    
+    # Migrate from FLAT to GROUPED
+    grouped = OrderedDict()
+    
+    # Create material_characteristics group
+    material_char_props = OrderedDict()
+    for prop in MATERIAL_CHARACTERISTICS_ORDER:
+        if prop in mat_props:
+            material_char_props[prop] = mat_props[prop]
+    
+    # Add any other properties not in laser interaction list
+    for prop, value in mat_props.items():
+        if prop not in LASER_INTERACTION_PROPS and prop not in material_char_props:
+            material_char_props[prop] = value
+    
+    if material_char_props:
+        grouped['material_characteristics'] = OrderedDict([
+            ('label', 'Material Characteristics'),
+            ('description', 'Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity'),
+            ('properties', material_char_props)
+        ])
+    
+    # Create laser_material_interaction group
+    laser_props = OrderedDict()
+    for prop in LASER_INTERACTION_ORDER:
+        if prop in mat_props:
+            laser_props[prop] = mat_props[prop]
+    
+    if laser_props:
+        grouped['laser_material_interaction'] = OrderedDict([
+            ('label', 'Laser-Material Interaction'),
+            ('description', 'Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds'),
+            ('properties', laser_props)
+        ])
+    
+    return grouped
+
+
 def normalize_material_properties(mat_props: Dict) -> OrderedDict:
-    """Normalize materialProperties structure"""
+    """Normalize materialProperties structure (assumes already grouped)"""
     if not isinstance(mat_props, dict):
         return mat_props
     
@@ -166,14 +234,15 @@ def normalize_machine_settings(settings: Dict) -> OrderedDict:
 
 
 def normalize_material_entry(material_data: Dict) -> OrderedDict:
-    """Normalize a single material entry to canonical field order"""
+    """Normalize a single material entry to canonical field order and GROUPED structure"""
     normalized = OrderedDict()
     
     # Add fields in canonical order
     for field in CANONICAL_ORDER:
         if field in material_data:
             if field == 'materialProperties':
-                normalized[field] = normalize_material_properties(material_data[field])
+                # Migrate FLAT → GROUPED and normalize
+                normalized[field] = migrate_flat_to_grouped(material_data[field])
             elif field == 'machineSettings':
                 normalized[field] = normalize_machine_settings(material_data[field])
             else:

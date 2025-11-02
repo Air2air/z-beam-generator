@@ -1,195 +1,140 @@
 # Frontmatter Template for Materials
-# This template defines the canonical field order and structure for all material entries
-# Materials.yaml entries should follow this order, and exports to frontmatter should match
+# CANONICAL REFERENCE: materials/data/frontmatter_example.yaml
+# This template uses <VariableName> placeholders for values that should be replaced
+# All values shown here are template variables - replace with actual material data
+
+# CRITICAL: This is the GROUPED structure - materialProperties has category groups
+# Each group (material_characteristics, laser_material_interaction) contains properties
 
 name: <MaterialName>
 category: <Category>
 subcategory: <Subcategory>
-title: <MaterialName> Laser Cleaning
-description: Laser cleaning parameters for <MaterialName>
-subtitle: Laser cleaning parameters and specifications for <MaterialName>
+title: <MaterialName> Laser Cleaning  # The title should vary based on special characteristics or requirements the material has
+subtitle: Laser cleaning parameters and specifications for <MaterialName>  # Should highlight unique aspects of this material
 
-# Material Properties (grouped by category)
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    percentage: 33.3
-    properties:
-      # Physical properties
-      density: {}
-      porosity: {}
-      surfaceRoughness: {}
-      
-      # Mechanical properties
-      tensileStrength: {}
-      youngsModulus: {}
-      hardness: {}
-      flexuralStrength: {}
-      compressiveStrength: {}
-      
-      # Chemical/Environmental properties
-      oxidationResistance: {}
-      corrosionResistance: {}
-      
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
-    percentage: 33.3
-    properties:
-      # Thermal properties
-      thermalConductivity: {}
-      thermalExpansion: {}
-      thermalDiffusivity: {}
-      specificHeat: {}
-      thermalShockResistance: {}
-      
-      # Optical/Laser properties
-      laserReflectivity: {}
-      absorptionCoefficient: {}
-      ablationThreshold: {}
-      laserDamageThreshold: {}
-      
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 33.3
-    properties: {}
-
-# Material Characteristics (qualitative)
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues: []
-    value: ''
-
-# Applications
-applications: []
-
-# Machine Settings
-machineSettings:
-  powerRange: {}
-  wavelength: {}
-  pulseDuration: {}
-  spotSize: {}
-  repetitionRate: {}
-  fluenceThreshold: {}
-  energyDensity: {}
-  pulseWidth: {}
-  beamDiameter: {}
-  scanSpeed: {}
-  passCount: {}
-  overlapRatio: {}
-  dwellTime: {}
-
-# Regulatory Standards
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-
-# Author Information
-author:
+author: # this is the author information.  It also determines the Author Voice from the requirements.
   id: <AuthorID>
   name: <AuthorName>
-  country: <Country>
-  country_display: <CountryDisplay>
-  title: <Title>
   sex: <Sex>
+  title: <Title>
+  country: <Country>
   expertise: <Expertise>
   image: /images/author/<author-slug>.jpg
-  persona_file: <country>_persona.yaml
-  formatting_file: <country>_formatting.yaml
 
-# Images
-images:
+images: # this is a list of images related to laser cleaning of this specific material
   hero:
-    alt: <MaterialName> surface during precision laser cleaning process
+    alt: <MaterialName> surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/<material-slug>-laser-cleaning-hero.jpg
   micro:
-    alt: <MaterialName> surface at microscopic magnification
-    url: /images/material/<material-slug>-microscopic-before-after.jpg
+    alt: Microscopic view of <MaterialName> surface showing laser cleaning effects
+    url: /images/material/<material-slug>-laser-cleaning-micro.jpg
 
-# Environmental Impact
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries: []
-  description: ''
-  quantifiedBenefits: ''
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: ''
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: ''
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: ''
+caption: # this is a caption for the micro image above, describing the visual content and context.  It should always highlight special characteristics of the material that set it apart from other materials in the category and subcategory.
+  description: Microscopic analysis of <MaterialName> surface before and after laser cleaning treatment
+  before: <BeforeText>  # Describe contaminated state at microscopic level with specific measurements
+  after: <AfterText>  # Describe cleaned state revealing material microstructure 
 
-# Outcome Metrics
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  description: ''
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  description: ''
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-- metric: Surface Quality Preservation
-  description: ''
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-- metric: Thermal Damage Avoidance
-  description: ''
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
+regulatoryStandards: # this is a list of relevant regulatory standards and guidelines for laser cleaning of this specific material.  Include links and logos.
+  - name: FDA
+    description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    image: /images/logo/logo-org-fda.png
 
-# FAQ
-faq:
-  questions: []
-  generated: ''
-  question_count: 0
-  total_words: 0
+  - name: ANSI
+    description: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    image: /images/logo/logo-org-ansi.png
 
-# Caption
-caption:
-  before: ''
-  after: ''
-  generated: ''
-  word_count_before: 0
-  word_count_after: 0
-  total_words: 0
+  - name: IEC
+    description: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/en/publication/3587
+    image: /images/logo/logo-org-iec.png
 
-# Metadata
-_metadata:
-  voice:
-    author_name: <AuthorName>
-    author_country: <Country>
-    voice_applied: true
-    content_type: material
+  - name: OSHA
+    description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+    image: /images/logo/logo-org-osha.png
+
+applications: # this is a list of typical application areas for laser cleaning of this specific material.  Again, be as specific to the material as possible.
+  - <Application1>
+  - <Application2>
+  - <Application3>
+  # Add more applications as needed
+
+materialProperties:
+  material_characteristics: # this is a list of properties related to the material's physical characteristics
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    
+    <PropertyName1>: # Example: density, porosity, tensileStrength, hardness, etc.
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    
+    <PropertyName2>:
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    # Add more properties as needed
+
+  laser_material_interaction: # this is a list of properties related to laser-material interaction
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    
+    <PropertyName1>: # Example: thermalConductivity, laserReflectivity, ablationThreshold, etc.
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    
+    <PropertyName2>:
+      value: <Value>
+      min: <MinValue>
+      max: <MaxValue>
+      unit: <Unit>
+      research_basis: <ResearchSource>
+    # Add more properties as needed
+
+machineSettings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings should be highly researched and specific to the material.
+  
+  <SettingName1>: # Example: powerRange, wavelength, pulseDuration, spotSize, etc.
+    value: <Value>
+    min: <MinValue>
+    max: <MaxValue>
+    unit: <Unit>
+    description: <SettingDescription>
+  
+  <SettingName2>:
+    value: <Value>
+    min: <MinValue>
+    max: <MaxValue>
+    unit: <Unit>
+    description: <SettingDescription>
+  # Add more settings as needed
+
+environmentalImpact: # Environmental benefits of laser cleaning for this material
+  - benefit: <BenefitName>  # Example: Chemical Waste Elimination, Water Usage Reduction
+    applicableIndustries:
+      - <Industry1>
+      - <Industry2>
+    description: <BenefitDescription>
+    quantifiedBenefits: <QuantifiedMetrics>
+  # Add more benefits as needed
+
+outcomeMetrics: # Measurable outcomes and quality metrics for laser cleaning this material
+  - metric: <MetricName>  # Example: Contaminant Removal Efficiency, Processing Speed
+    description: <MetricDescription>
+    typicalRanges: <RangeDescription>
+    measurementMethods:
+      - <Method1>
+      - <Method2>
+    factorsAffecting:
+      - <Factor1>
+      - <Factor2>
+  # Add more metrics as needed
+
