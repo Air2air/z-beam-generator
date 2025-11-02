@@ -996,6 +996,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
+        # First check if machine settings already exist in materials.yaml
+        if 'machineSettings' in material_data and material_data['machineSettings']:
+            self.logger.info(f"Using existing machine settings from materials.yaml for {material_name}")
+            return material_data['machineSettings']
+        
         # Use PropertyManager for comprehensive machine settings discovery
         if not self.property_manager:
             raise PropertyDiscoveryError("PropertyManager required for machine settings discovery")
@@ -1019,7 +1024,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         import yaml
         from pathlib import Path
         
-        categories_file = Path('data/Categories.yaml')
+        categories_file = Path('materials/data/Categories.yaml')
         # Read current data
         with open(categories_file, 'r', encoding='utf-8') as f:
             categories_data = yaml.safe_load(f)

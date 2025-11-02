@@ -116,8 +116,8 @@ class MaterialAuditor:
     def __init__(self):
         """Initialize the material auditor with all requirement checkers"""
         self.logger = logging.getLogger(__name__)
-        self.materials_file = Path("data/Materials.yaml")
-        self.categories_file = Path("data/Categories.yaml")
+        self.materials_file = Path("materials/data/materials.yaml")
+        self.categories_file = Path("materials/data/Categories.yaml")
         self.frontmatter_dir = Path("frontmatter")
         
         # Load reference data

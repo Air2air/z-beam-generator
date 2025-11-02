@@ -314,6 +314,13 @@ class PropertyManager:
             PropertyDiscoveryError: If research fails or no settings found
         """
         try:
+            # Check if property researcher is available
+            if not self.property_researcher:
+                raise PropertyDiscoveryError(
+                    "PropertyValueResearcher not available. "
+                    "Cannot research machine settings in data-only mode."
+                )
+            
             # Use comprehensive AI discovery
             discovered_settings = self.property_researcher.discover_all_machine_settings(material_name)
             

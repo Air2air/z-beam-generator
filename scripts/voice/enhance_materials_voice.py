@@ -190,7 +190,7 @@ class MaterialsVoiceEnhancer:
                 enhanced_text = self.voice_processor.enhance(
                     text=before_text,
                     author=author_info,
-                    voice_voice_intensity=intensity
+                    voice_intensity=intensity
                 )
                 caption['before'] = enhanced_text
                 modified = True
