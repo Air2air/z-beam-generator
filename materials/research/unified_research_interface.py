@@ -96,17 +96,26 @@ class UnifiedMaterialResearcher:
     """
     
     def __init__(self, 
+                 api_client,  # REQUIRED per GROK - no fallbacks allowed
                  confidence_threshold: int = 50,
                  debug_mode: bool = False):
         """
         Initialize the unified researcher.
         
         Args:
+            api_client: AI API client for property research (REQUIRED)
             confidence_threshold: Minimum confidence for valid results
             debug_mode: Enable debug logging
         """
+        if api_client is None:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise ValueError("API client is required for UnifiedMaterialResearch - no fallbacks allowed")
+        
+        self.api_client = api_client
+        
         # Initialize the specialized researchers
         self.property_researcher = PropertyValueResearcher(
+            api_client=api_client,
             min_confidence_threshold=confidence_threshold,
             debug_mode=debug_mode
         )

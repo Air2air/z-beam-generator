@@ -61,9 +61,21 @@ class RangeValidationResult:
 class CategoryRangeResearcher:
     """Researches and validates category-specific property ranges"""
     
-    def __init__(self):
+    def __init__(self, api_client=None):
+        """
+        Initialize CategoryRangeResearcher.
+        
+        Args:
+            api_client: AI API client for property research (required for AI-driven research)
+        """
         self.materials_data = load_materials()
-        self.property_researcher = UnifiedMaterialResearch()
+        self.api_client = api_client
+        
+        # Initialize property researcher only if api_client is provided
+        if api_client:
+            self.property_researcher = UnifiedMaterialResearch(api_client=api_client)
+        else:
+            self.property_researcher = None
         
         # Load existing category ranges from Materials.yaml
         self.category_ranges = self._load_category_ranges()
