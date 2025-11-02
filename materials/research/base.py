@@ -99,8 +99,8 @@ class ContentResearcher(ABC):
         Returns:
             Formatted prompt string
         """
-        # TODO: Load prompt template from file or use inline
-        # For now, return simple prompt
+        # NOTE: Template system not yet implemented in base class
+        # Subclasses override this method with specific prompt templates
         return f"Research {field_spec.field_name} for {content_name}"
     
     def _parse_response(
@@ -118,8 +118,8 @@ class ContentResearcher(ABC):
         Returns:
             Parsed data in correct type
         """
-        # TODO: Implement robust parsing
-        # For now, return response as-is
+        # NOTE: Parsing logic not implemented in base class
+        # Subclasses override this method with type-specific parsing
         return response
     
     def _calculate_confidence(self, data: Any) -> float:
@@ -132,6 +132,6 @@ class ContentResearcher(ABC):
         Returns:
             Confidence score 0.0 to 1.0
         """
-        # TODO: Implement confidence scoring based on data quality
-        # For now, return default
+        # NOTE: Confidence scoring not implemented in base class
+        # Subclasses override with domain-specific confidence calculations
         return 0.8
