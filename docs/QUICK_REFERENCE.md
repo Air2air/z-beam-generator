@@ -85,9 +85,14 @@ safety_data = loader.get_safety_regulatory()
 **✨ NEW (October 17, 2025)**: 100% completeness validation runs **automatically** during generation:
 - **Legacy Migration**: Auto-moves qualitative properties to material_characteristics
 - **Empty Detection**: Triggers PropertyManager research for missing data
-- **Strict Mode**: `--enforce-completeness` fails generation if incomplete
 - **Auto-Remediation**: Fills gaps automatically via AI research
 - **14 Tests**: Complete test coverage in `tests/test_data_completeness.py`
+
+**⚡ AUTOMATIC (November 1, 2025)**: 
+- **Strict mode enabled by default** - No flags needed!
+- **Automatic inline validation** - Runs during every generation
+- **Fail-fast behavior** - Blocks incomplete data automatically
+- **Disable with**: `--no-completeness-check` (not recommended)
 
 **🚀 NEW (October 22, 2025)**: Unified Pipeline Architecture:
 - **Single Entry Point**: `run_unified.py` consolidates all operations

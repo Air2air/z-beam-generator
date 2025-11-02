@@ -1,0 +1,254 @@
+🗄️  [RESPONSE CACHE] Initialized at /tmp/z-beam-response-cache
+🗄️  [RESPONSE CACHE] TTL: 86400s, Max size: 1000MB
+🗄️  [CACHED API CLIENT] Response caching ENABLED
+
+🔍 Scanning 132 materials frontmatter files...
+
+🔑 Successfully loaded 4 API keys from .env file
+🏭 [CLIENT FACTORY] Creating API client for provider: grok
+🔧 [CLIENT FACTORY] Using real API client
+✅ [CLIENT FACTORY] Provider config loaded: Grok
+🔑 [CLIENT FACTORY] API key found for grok
+🗄️  [CLIENT FACTORY] Response cache configured: enabled=True
+🚀 [CLIENT FACTORY] Initializing CACHED Grok API client...
+✅ [CLIENT FACTORY] Cached API client created successfully
+
+================================================================================
+TRANSLATION ISSUES DETECTION REPORT
+================================================================================
+
+Total Materials Scanned: 132
+  ❌ CRITICAL (wrong language): 18
+  ⚠️  HIGH (translation artifacts): 21
+  📝 MEDIUM (low authenticity): 0
+  ✅ GOOD (authentic voice): 93
+
+--------------------------------------------------------------------------------
+❌ CRITICAL ISSUES (Wrong Language)
+--------------------------------------------------------------------------------
+
+📄 Breccia
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: pada, yang, tanpa, untuk
+      Preview: Untuk Breccia, saya rekomendasikan fluence 3.5 J/cm² pada 1064 nm untuk mengangkat kotoran secara ef...
+   ❌ faq[5].answer: Text in INDONESIAN
+      Detected words: permukaan, untuk, sekitar, dengan, pada
+      Preview: Mulailah dengan analisis mikroskopis untuk memahami morfologi permukaan Breccia. Kemudian uji parame...
+
+📄 Cast Iron
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: kecepatan, tanpa, merusak, untuk, dari
+      Preview: Untuk membersihkan karat dari besi cor tanpa merusak substrat, gunakan laser serat 1064 nm dengan da...
+   ❌ faq[2].answer: Text in INDONESIAN
+      Detected words: dengan, pada, ini, untuk
+      Preview: Untuk mencegah retak pada white cast iron, gunakan fluence rendah mendekati 5 J/cm² dan scan speed t...
+   ❌ faq[3].answer: Text in INDONESIAN
+      Detected words: kecepatan, ini, permukaan, tanpa, sangat
+      Preview: Ya, laser pembersih sangat efektif untuk menghilangkan residu pengecoran dari besi tuang. Dengan flu...
+   ❌ faq[7].answer: Text in INDONESIAN
+      Detected words: kecepatan, untuk, sekitar, substrat, dengan
+      Preview: Untuk scale tebal pada besi cor, laju pembersihan maksimum sekitar 0.3 m²/jam dapat dicapai dengan f...
+
+📄 Copper
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[1].answer: Text in INDONESIAN
+      Detected words: dapat, ini, permukaan, tanpa, merusak
+      Preview: Ya, kontaminan dapat merusak permukaan tembaga melalui oksidasi dan korosi, yang mengancam konduktiv...
+   ❌ faq[2].answer: Text in INDONESIAN
+      Detected words: dapat, kecepatan, merusak, untuk, adalah
+      Preview: Laser cleaning dapat merusak tembaga jika parameter melebihi fluence threshold 2.5 J/cm². Tanda peri...
+   ❌ faq[3].answer: Text in INDONESIAN
+      Detected words: pada, karena, ini, sangat, lapisan
+      Preview: Setelah pembersihan laser, aplikasikan lapisan pelindung seperti lacquer bening atau inhibitor tarni...
+   ❌ faq[6].answer: Text in INDONESIAN
+      Detected words: permukaan, yang, untuk, dari, dapat
+      Preview: Verifikasi pembersihan tembaga yang optimal dapat dilakukan melalui inspeksi visual dan uji water br...
+
+📄 Crown Glass
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: ini, permukaan, untuk, substrat, dengan
+      Preview: Untuk Crown Glass, gunakan laser 1064 nm dengan fluence 1.2 J/cm² dan pulsa 8 ns. Parameter ini meng...
+
+📄 Fir
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: kecepatan, tanpa, untuk, tidak, efektif
+      Preview: Untuk membersihkan Fir, gunakan laser Nd:YAG 1064 nm dengan fluence rendah ~1.2 J/cm² untuk menghind...
+
+📄 Float Glass
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: tanpa, merusak, untuk, sekitar, substrat
+      Preview: Untuk membersihkan float glass dengan aman, gunakan laser 1064nm dengan fluence di bawah 2.5 J/cm² u...
+
+📄 Gallium Arsenide
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: kecepatan, tanpa, merusak, untuk, sekitar
+      Preview: Untuk membersihkan GaAs tanpa merusak struktur kristalnya, gunakan laser hijau 532 nm dengan fluensi...
+
+📄 Glass Fiber Reinforced Polymers Gfrp
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: tanpa, permukaan, merusak, untuk, efektif
+      Preview: Untuk GFRP, gunakan laser 1064 nm dengan fluensi di bawah 2.5 J/cm² untuk menghindari ablasi resin. ...
+   ❌ faq[4].answer: Text in INDONESIAN
+      Detected words: dapat, tanpa, merusak, tidak, dengan
+      Preview: Dengan parameter optimal seperti fluence 2.5 J/cm² dan scanning 500 mm/s, laser cleaning dapat mengh...
+
+📄 Gold
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: dapat, tanpa, permukaan, merusak, menggunakan
+      Preview: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan fluensi di bawah 0.8 J/cm...
+   ❌ faq[5].answer: Text in INDONESIAN
+      Detected words: aplikasi, ini, tanpa, sangat, merusak
+      Preview: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa merusak substrat. Dengan flu...
+   ❌ faq[7].answer: Text in INDONESIAN
+      Detected words: permukaan, untuk, tidak, proses, yang
+      Preview: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry untuk mengukur...
+
+📄 Indium
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: karena, ini, tanpa, lapisan, untuk
+      Preview: Ya, pembersihan laser dapat menghilangkan oksida indium dengan aman. Gunakan parameter terkontrol se...
+   ❌ faq[1].answer: Text in INDONESIAN
+      Detected words: kecepatan, ini, tanpa, merusak, lapisan
+      Preview: Untuk membersihkan ITO dari substrat kaca, gunakan laser 1064 nm dengan fluens ~2.8 J/cm² dan durasi...
+
+📄 Marble
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: dapat, pada, permukaan, menggunakan, untuk
+      Preview: Ya, laser dapat membersihkan graffiti dari marmer dengan aman menggunakan parameter spesifik seperti...
+   ❌ faq[3].answer: Text in INDONESIAN
+      Detected words: ini, permukaan, tanpa, untuk, yang
+      Preview: Untuk mencegah yellowing pada Marmer, gunakan fluence rendah ~2.5 J/cm² dan pulsa nanodetik. Paramet...
+
+📄 Metal Matrix Composites Mmcs
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[6].answer: Text in INDONESIAN
+      Detected words: ini, untuk, dengan, yang, pada
+      Preview: Untuk MMC aluminium berpelat serat karbon, gunakan fluence rendah 5 J/cm² dengan spot 50 µm untuk me...
+   ❌ faq[8].answer: Text in INDONESIAN
+      Detected words: tanpa, merusak, menggunakan, untuk, dengan
+      Preview: Untuk komponen MMC kompleks, kami menggunakan robot 6-sumbu dengan pemindaian adaptif untuk menjaga ...
+
+📄 Platinum
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[5].answer: Text in INDONESIAN
+      Detected words: sangat, untuk, sekitar, dengan, yang
+      Preview: Untuk platinum dengan titik leleh 1768°C, rapat daya aman maksimum sekitar 5 J/cm² pada laser 1064 n...
+
+📄 Polyester Resin Composites
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: ini, untuk, dengan, yang, atau
+      Preview: Untuk komposit resin poliester, gunakan laser 1064 nm dengan fluensi 3.0 J/cm² dan daya 90 W untuk m...
+   ❌ faq[1].answer: Text in INDONESIAN
+      Detected words: dapat, ini, permukaan, tanpa, merusak
+      Preview: Untuk kontaminan permukaan seperti jelaga pada gel coat, gunakan laser 1064 nm dengan fluence 3.0 J/...
+
+📄 Polypropylene
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: dapat, kecepatan, tanpa, menggunakan, substrat
+      Preview: Ya, polypropylene dapat dibersihkan dengan laser secara aman menggunakan parameter terkontrol. Denga...
+   ❌ faq[5].answer: Text in INDONESIAN
+      Detected words: ini, permukaan, dengan, yang, pada
+      Preview: Ya, laser cleaning dengan fluence 1.2 J/cm² pada 1064 nm secara bersamaan meningkatkan energi permuk...
+   ❌ faq[7].answer: Text in INDONESIAN
+      Detected words: tanpa, ini, merusak, lapisan, untuk
+      Preview: Untuk membersihkan oksidasi dari polipropilena tua, gunakan fluens rendah 1.2 J/cm² dengan panjang g...
+
+📄 Porphyry
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: tanpa, ini, untuk, dengan, yang
+      Preview: Untuk membersihkan pertumbuhan biologis pada Porphyry, gunakan laser 1064 nm dengan fluens 12.7 J/cm...
+   ❌ faq[6].answer: Text in INDONESIAN
+      Detected words: untuk, efektif, memerlukan, juga, yang
+      Preview: Validasi keberhasilan pada Porphyry memerlukan spektrofotometri untuk memastikan warna asli tercapai...
+
+📄 Quartz Glass
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[7].answer: Text in INDONESIAN
+      Detected words: dapat, tanpa, permukaan, sangat, merusak
+      Preview: Ya, pembersihan laser dapat menghilangkan deposit dari permukaan kuarsa tanpa merusak substrat. Deng...
+
+📄 Redwood
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: kecepatan, tanpa, merusak, untuk, dengan
+      Preview: Untuk redwood yang lunak, gunakan fluence 1.2 J/cm² dengan spot 100 µm untuk menghilangkan kontamina...
+   ❌ faq[7].answer: Text in INDONESIAN
+      Detected words: dengan, pada, yang, dapat
+      Preview: Dengan parameter optimal seperti fluence 1,2 J/cm² dan spot size 100 μm, pembersihan laser pada redw...
+
+--------------------------------------------------------------------------------
+⚠️  HIGH PRIORITY (Translation Artifacts)
+--------------------------------------------------------------------------------
+
+📄 Bamboo
+   ⚠️  materialProperties.other.fractureToughness.source: minor severity
+      - repetitive_starters: ,
+
+📄 Basalt
+   ⚠️  materialProperties.other.fractureToughness.source: minor severity
+      - repetitive_starters: ,
+
+📄 Calcite
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: very
+
+📄 Ceramic Matrix Composites Cmcs
+   ⚠️  faq[8].question: minor severity
+      - reduplication: carbon
+
+📄 Europium
+   ⚠️  faq[1].answer: minor severity
+      - reduplication: f
+
+📄 Fiberglass
+   ⚠️  faq[6].question: minor severity
+      - excessive_so: 1 uses in 1 sentences
+
+📄 Hafnium
+   ⚠️  faq[5].question: minor severity
+      - excessive_so: 1 uses in 1 sentences
+
+📄 Iridium
+   ⚠️  faq[7].question: minor severity
+      - excessive_so: 1 uses in 1 sentences
+
+📄 Iron
+   ⚠️  caption.afterText: minor severity
+      - reduplication: very
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: deep, very
+
+📄 Polytetrafluoroethylene
+   ⚠️  caption.afterText: minor severity
+      - reduplication: high, very
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: very
+
+   ... and 11 more materials with artifacts
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. IMMEDIATE ACTION: Translate 18 materials to English
+   Cost estimate: ~$1.80
+
+2. HIGH PRIORITY: Reprocess 21 materials to remove artifacts
+   Cost estimate: ~$2.10
+
+Total estimated cost: ~$3.90
+================================================================================
+

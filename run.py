@@ -39,7 +39,9 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --research-properties "porosity,electricalResistivity"  # Specific properties
   python3 run.py --research-materials "Copper,Steel"  # Specific materials
   python3 run.py --research-batch-size 20    # Parallel research (default: 10)
-  python3 run.py --enforce-completeness      # Strict mode - block if incomplete
+  
+  ⚡ NOTE: Data completeness checking is now AUTOMATIC during generation
+           No flags needed - validation runs inline with every generation
 
 � MATERIAL AUDITING SYSTEM (⚡ NEW):
   python3 run.py --audit "Steel"                    # Audit single material compliance
@@ -145,7 +147,7 @@ def main():
     parser.add_argument("--research-materials", help="Research specific materials (comma-separated)")
     parser.add_argument("--research-batch-size", type=int, default=10, help="Batch size (default: 10)")
     parser.add_argument("--research-confidence-threshold", type=int, default=70, help="Min confidence (default: 70)")
-    parser.add_argument("--enforce-completeness", action="store_true", help="Strict mode")
+    parser.add_argument("--no-completeness-check", action="store_true", help="Disable automatic completeness validation")
     
     # Material Auditing Commands
     parser.add_argument("--audit", help="Audit specific material")
@@ -206,10 +208,13 @@ def main():
             # Initialize API client (optional for data-only mode)
             api_client = create_api_client("grok") if not args.data_only else None
             
+            # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
+            enforce_completeness = not args.no_completeness_check
+            
             # Create orchestrator
             orchestrator = FrontmatterOrchestrator(
                 api_client=api_client,
-                enforce_completeness=args.enforce_completeness
+                enforce_completeness=enforce_completeness
             )
             
             # Check if content type is supported
@@ -304,9 +309,12 @@ def main():
                 
                 api_client = create_api_client("grok") if not args.data_only else None
                 
+                # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
+                enforce_completeness = not args.no_completeness_check
+                
                 orchestrator = FrontmatterOrchestrator(
                     api_client=api_client,
-                    enforce_completeness=args.enforce_completeness
+                    enforce_completeness=enforce_completeness
                 )
                 
                 # Author data (TODO: Make configurable)

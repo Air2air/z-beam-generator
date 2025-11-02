@@ -46,24 +46,18 @@ def handle_caption_generation(material_name: str):
         print("✅ Generator ready")
         print()
         
-        # Extract author for voice enhancement
-        author = material_data.get('author')
-        if author:
-            print(f"👤 Author: {author.get('name', 'Unknown')} ({author.get('country', 'Unknown')})")
-        
-        # Generate caption
-        print("🤖 Generating AI-powered caption with author voice...")
+        # Generate caption (no voice - that's done by post-processor)
+        print("🤖 Generating AI-powered caption...")
         print("   • beforeText: Contaminated surface analysis")
         print("   • afterText: Cleaned surface analysis")
-        print("   • Voice: Country-specific authenticity")
-        print("   • Quality: Production-grade validation")
+        print("   • Target: Technical, factual content")
+        print("   • Note: Voice enhancement happens in post-processing")
         print()
         
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=grok_client,
-            author=author
+            api_client=grok_client
         )
         
         if not result.success:
@@ -71,8 +65,7 @@ def handle_caption_generation(material_name: str):
             return False
         
         # Caption was already written to Materials.yaml by the generator
-        # Reload to display statistics
-        print("✅ Caption generated and saved successfully!")
+        print("✅ Caption generated and saved to materials.yaml")
         print()
         
         # Reload materials to show what was written
@@ -145,23 +138,18 @@ def handle_subtitle_generation(material_name: str):
         print("✅ Generator ready")
         print()
         
-        # Extract author for voice enhancement
-        author = material_data.get('author')
-        if author:
-            print(f"👤 Author: {author.get('name', 'Unknown')} ({author.get('country', 'Unknown')})")
-        
-        # Generate subtitle
-        print("🤖 Generating AI-powered subtitle with author voice...")
+        # Generate subtitle (no voice - that's done by post-processor)
+        print("🤖 Generating AI-powered subtitle...")
         print("   • Target: 8-12 word professional tagline")
-        print("   • Voice: Country-specific writing style")
+        print("   • Style: Technical, clear, professional")
         print("   • Audience: Technical professionals and decision-makers")
+        print("   • Note: Voice enhancement happens in post-processing")
         print()
         
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=grok_client,
-            author=author
+            api_client=grok_client
         )
         
         if not result.success:
@@ -243,12 +231,12 @@ def handle_faq_generation(material_name: str):
         print("✅ Generator ready")
         print()
         
-        # Generate FAQ
-        print("🤖 Generating AI-powered FAQ with author voice...")
+        # Generate FAQ (no voice - that's done by post-processor)
+        print("🤖 Generating AI-powered FAQ...")
         print("   • Questions: 7-12 material-specific Q&As")
         print("   • Categories: Based on researched material characteristics")
         print("   • Answers: 20-60 words each with technical precision")
-        print("   • Voice: Country-specific writing style and formality")
+        print("   • Note: Voice enhancement happens in post-processing")
         print()
         
         result = generator.generate(

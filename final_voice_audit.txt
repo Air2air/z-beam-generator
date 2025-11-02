@@ -1,0 +1,112 @@
+🗄️  [RESPONSE CACHE] Initialized at /tmp/z-beam-response-cache
+🗄️  [RESPONSE CACHE] TTL: 86400s, Max size: 1000MB
+🗄️  [CACHED API CLIENT] Response caching ENABLED
+
+🔍 Scanning 132 materials frontmatter files...
+
+🔑 Successfully loaded 4 API keys from .env file
+🏭 [CLIENT FACTORY] Creating API client for provider: grok
+🔧 [CLIENT FACTORY] Using real API client
+✅ [CLIENT FACTORY] Provider config loaded: Grok
+🔑 [CLIENT FACTORY] API key found for grok
+🗄️  [CLIENT FACTORY] Response cache configured: enabled=True
+🚀 [CLIENT FACTORY] Initializing CACHED Grok API client...
+✅ [CLIENT FACTORY] Cached API client created successfully
+
+================================================================================
+TRANSLATION ISSUES DETECTION REPORT
+================================================================================
+
+Total Materials Scanned: 132
+  ❌ CRITICAL (wrong language): 2
+  ⚠️  HIGH (translation artifacts): 35
+  📝 MEDIUM (low authenticity): 0
+  ✅ GOOD (authentic voice): 95
+
+--------------------------------------------------------------------------------
+❌ CRITICAL ISSUES (Wrong Language)
+--------------------------------------------------------------------------------
+
+📄 Metal Matrix Composites Mmcs
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[6].answer: Text in INDONESIAN
+      Detected words: pada, untuk, ini, dengan, yang
+      Preview: Untuk MMC aluminium berpelat serat karbon, gunakan fluence rendah 5 J/cm² dengan spot 50 µm untuk me...
+   ❌ faq[8].answer: Text in INDONESIAN
+      Detected words: pada, untuk, menggunakan, tanpa, dengan
+      Preview: Untuk komponen MMC kompleks, kami menggunakan robot 6-sumbu dengan pemindaian adaptif untuk menjaga ...
+
+📄 Polyester Resin Composites
+   Author: Ikmanda Roswati (Indonesia)
+   ❌ faq[0].answer: Text in INDONESIAN
+      Detected words: untuk, ini, dengan, atau, yang
+      Preview: Untuk komposit resin poliester, gunakan laser 1064 nm dengan fluensi 3.0 J/cm² dan daya 90 W untuk m...
+   ❌ faq[1].answer: Text in INDONESIAN
+      Detected words: dapat, pada, untuk, ini, dalam
+      Preview: Untuk kontaminan permukaan seperti jelaga pada gel coat, gunakan laser 1064 nm dengan fluence 3.0 J/...
+
+--------------------------------------------------------------------------------
+⚠️  HIGH PRIORITY (Translation Artifacts)
+--------------------------------------------------------------------------------
+
+📄 Bamboo
+   ⚠️  materialProperties.other.fractureToughness.source: minor severity
+      - repetitive_starters: ,
+
+📄 Basalt
+   ⚠️  materialProperties.other.fractureToughness.source: minor severity
+      - repetitive_starters: ,
+
+📄 Breccia
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: dirty
+
+📄 Calcite
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: very
+
+📄 Cast Iron
+   ⚠️  caption.afterText: minor severity
+      - reduplication: high, very
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: very
+
+📄 Ceramic Matrix Composites Cmcs
+   ⚠️  faq[8].question: minor severity
+      - reduplication: carbon
+
+📄 Crown Glass
+   ⚠️  caption.afterText: minor severity
+      - reduplication: very
+   ⚠️  caption.beforeText: moderate severity
+      - reduplication: etched, cling, very
+
+📄 Europium
+   ⚠️  faq[1].answer: minor severity
+      - reduplication: f
+
+📄 Fiberglass
+   ⚠️  faq[6].question: minor severity
+      - excessive_so: 1 uses in 1 sentences
+
+📄 Fir
+   ⚠️  caption.afterText: severe severity
+      - reduplication: ready, fresh, high
+   ⚠️  caption.beforeText: minor severity
+      - reduplication: rough
+
+   ... and 25 more materials with artifacts
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. IMMEDIATE ACTION: Translate 2 materials to English
+   Cost estimate: ~$0.20
+
+2. HIGH PRIORITY: Reprocess 35 materials to remove artifacts
+   Cost estimate: ~$3.50
+
+Total estimated cost: ~$3.70
+================================================================================
+

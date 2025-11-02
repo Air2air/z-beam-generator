@@ -19,9 +19,17 @@ author:
   sex: m
   title: Ph.D.
 caption:
-  afterText: The fir wood surface is cleaned thoroughly-thoroughly by the ultrafast laser process, removing contaminants and then restoring its natural appearance. The cleaned surface appears smooth-smooth and fresh-fresh, with grain patterns visible clearly and color even-even. Restoration quality is high-high, as material integrity remains intact-intact—no fibers damaged, so strength preserved well. This method ensures wood suitable for general applications, clean and ready-ready for use.
+  afterText: The fir wood surface is cleaned thoroughly-thoroughly by the ultrafast
+    laser process, removing contaminants and then restoring its natural appearance.
+    The cleaned surface appears smooth-smooth and fresh-fresh, with grain patterns
+    visible clearly and color even-even. Restoration quality is high-high, as material
+    integrity remains intact-intact—no fibers damaged, so strength preserved well.
+    This method ensures wood suitable for general applications, clean and ready-ready
+    for use.
   author: Ikmanda Roswati
-  beforeText: Under microscopy, the fir wood surface appears heavily contaminated by dirt particles and sticky oils that cling tightly then degrade fibers. Rough-rough pits form, so texture worsens and natural protection weakens.
+  beforeText: Under microscopy, the fir wood surface appears heavily contaminated
+    by dirt particles and sticky oils that cling tightly then degrade fibers. Rough-rough
+    pits form, so texture worsens and natural protection weakens.
   character_count:
     after: 482
     before: 215
@@ -56,7 +64,8 @@ images:
     alt: Fir surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/fir-laser-cleaning-hero.jpg
   micro:
-    alt: Fir microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Fir microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/fir-laser-cleaning-micro.jpg
 machineSettings:
   dwellTime:
@@ -72,7 +81,8 @@ machineSettings:
     unit: '%'
     value: 50
   passCount:
-    description: Recommended number of passes for complete contaminant removal from Fir
+    description: Recommended number of passes for complete contaminant removal from
+      Fir
     unit: passes
     value: 2
   powerRange:
@@ -82,7 +92,8 @@ machineSettings:
     min: 1.0
     max: 120
   pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate damage
     unit: ns
     value: 10
   repetitionRate:
@@ -126,7 +137,8 @@ materialCharacteristics:
     value: amorphous
 materialProperties:
   laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
     label: Laser-Material Interaction
     percentage: 40.0
     laserAbsorption:
@@ -180,19 +192,23 @@ materialProperties:
       min: 3.0
       max: 60
   material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     label: Material Characteristics
     percentage: 40.0
     compressiveStrength:
       ai_verified: true
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
+        4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
+        Forest Products Laboratory.'
       unit: MPa
       value: 40.0
       min: 20
       max: 80
     corrosionResistance:
       ai_verified: true
-      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190)'
+      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service,
+        FPL-GTR-190)'
       unit: rating
       value: 2.0
       min: 2.0
@@ -206,7 +222,9 @@ materialProperties:
       max: 1.5
     flexuralStrength:
       ai_verified: true
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table 5-3b. U.S. Department of Agriculture, Forest Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
+        5: Mechanical Properties of Wood, Table 5-3b. U.S. Department of Agriculture,
+        Forest Products Laboratory.'
       unit: MPa
       value: 65.0
       min: 40
@@ -226,7 +244,8 @@ materialProperties:
       max: 5000
     oxidationResistance:
       ai_verified: true
-      source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
+      source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory,
+        2010)'
       unit: °C
       value: 150.0
       min: 82.0
@@ -318,22 +337,55 @@ subtitle_metadata:
   word_count: 12
 title: Fir Laser Cleaning
 faq:
-- question: What are the optimal laser settings (wavelength, power, pulse duration) for cleaning soot or biological growth from Fir wood without causing ablation or yellowing?
-  answer: Untuk membersihkan Fir, gunakan laser Nd:YAG 1064 nm dengan fluence rendah ~1.2 J/cm² untuk menghindari karbonisasi lignin. Pengaturan nanodetik 10 ns dan kecepatan pindai 500 mm/s efektif menghilangkan jelaga tanpa mengabasi substrat. Selalu uji area kecil terlebih dahulu untuk memverifikasi tidak terjadi yellowing.
-- question: How does the variable resin content in Fir wood affect the laser cleaning process and how do we adjust for it?
-  answer: Fir's variable resin content requires careful fluence control around 1.2 J/cm². Resin pockets vaporize faster than wood, risking uneven surfaces. I recommend a lower-power initial scan at 500 mm/s to identify these areas, followed by targeted passes to prevent resin bleed into the cleaned zones.
-- question: Can a fiber laser effectively remove old, lead-based paint from Fir clapboard without damaging the softwood surface underneath?
-  answer: A fiber laser can remove lead paint from Fir clapboard using ~1.2 J/cm² fluence and 100 µm spot size. Precise parameter control is critical to avoid etching the softwood grain, and a HEPA fume extractor is mandatory for hazardous lead particulate.
-- question: What is the maximum safe surface temperature for Fir during laser cleaning to prevent degradation of its structural or aesthetic properties?
-  answer: Fir wood's thermal degradation threshold is approximately 150-200°C, beyond which permanent discoloration and charring occur. Maintain surface temperatures below this range using IR thermography, especially with a 1.2 J/cm² fluence and 100 µm spot size, to preserve its structural integrity.
-- question: What specific safety precautions and fume extraction systems are required when laser cleaning Fir, especially when removing paints or contaminants?
-  answer: When cleaning Fir at 1.2 J/cm², use a HEPA/ULPA extraction system to capture explosive wood dust and lead fumes. A P100 respirator is mandatory for operators due to hazardous pyrolysis by-products generated from the wood substrate.
-- question: How do you evaluate the success of laser cleaning on Fir? What are the acceptable levels of micro-burning or changes to the original patina?
-  answer: Success is determined by maintaining the original patina. We use colorimetry to ensure ΔE remains below 3 and microscopy to confirm the 100 µm spot size avoids micro-charting. Minimal, uniform lightening is acceptable, but any darkening from carbonization is a failure.
-- question: Is laser cleaning a viable method for decontaminating Fir wood affected by mold or fungi without using chemicals?
-  answer: Laser cleaning effectively decontaminates Fir wood by utilizing 1064 nm wavelength light, which is absorbed by mold, causing rapid thermal ablation. With a fluence of 1.2 J/cm² and 100 W power, we can eradicate surface spores without carbonizing the substrate. However, deeply embedded mycelial networks may persist, requiring potential multi-pass treatment.
-- question: Why does laser-cleaned Fir sometimes appear lighter or darker than the surrounding untreated wood, and how can this be minimized?
-  answer: Laser-cleaned Fir appears lighter when removing darkened patina or darker from slight carbonization at excessive fluence. Maintain 1.2 J/cm² fluence and a 500 mm/s scan speed with 50% beam overlap. This ensures uniform contaminant removal while preserving the wood's natural color for a consistent finish.
+- question: What are the optimal laser settings (wavelength, power, pulse duration)
+    for cleaning soot or biological growth from Fir wood without causing ablation
+    or yellowing?
+  answer: To clean Fir, use an Nd:YAG 1064 nm laser with low fluence ~1.2 J/cm² to
+    avoid lignin carbonization. The 10 ns nanosecond setting and 500 mm/s scan speed
+    effectively remove soot without fogging the substrate. Always test a small area
+    first to verify that no yellowing occurs.
+- question: How does the variable resin content in Fir wood affect the laser cleaning
+    process and how do we adjust for it?
+  answer: Fir's variable resin content requires careful fluence control around 1.2
+    J/cm². Resin pockets vaporize faster than wood, risking uneven surfaces. I recommend
+    a lower-power initial scan at 500 mm/s to identify these areas, followed by targeted
+    passes to prevent resin bleed into the cleaned zones.
+- question: Can a fiber laser effectively remove old, lead-based paint from Fir clapboard
+    without damaging the softwood surface underneath?
+  answer: A fiber laser can remove lead paint from Fir clapboard using ~1.2 J/cm²
+    fluence and 100 µm spot size. Precise parameter control is critical to avoid etching
+    the softwood grain, and a HEPA fume extractor is mandatory for hazardous lead
+    particulate.
+- question: What is the maximum safe surface temperature for Fir during laser cleaning
+    to prevent degradation of its structural or aesthetic properties?
+  answer: Fir wood's thermal degradation threshold is approximately 150-200°C, beyond
+    which permanent discoloration and charring occur. Maintain surface temperatures
+    below this range using IR thermography, especially with a 1.2 J/cm² fluence and
+    100 µm spot size, to preserve its structural integrity.
+- question: What specific safety precautions and fume extraction systems are required
+    when laser cleaning Fir, especially when removing paints or contaminants?
+  answer: When cleaning Fir at 1.2 J/cm², use a HEPA/ULPA extraction system to capture
+    explosive wood dust and lead fumes. A P100 respirator is mandatory for operators
+    due to hazardous pyrolysis by-products generated from the wood substrate.
+- question: How do you evaluate the success of laser cleaning on Fir? What are the
+    acceptable levels of micro-burning or changes to the original patina?
+  answer: Success is determined by maintaining the original patina. We use colorimetry
+    to ensure ΔE remains below 3 and microscopy to confirm the 100 µm spot size avoids
+    micro-charting. Minimal, uniform lightening is acceptable, but any darkening from
+    carbonization is a failure.
+- question: Is laser cleaning a viable method for decontaminating Fir wood affected
+    by mold or fungi without using chemicals?
+  answer: Laser cleaning effectively decontaminates Fir wood by utilizing 1064 nm
+    wavelength light, which is absorbed by mold, causing rapid thermal ablation. With
+    a fluence of 1.2 J/cm² and 100 W power, we can eradicate surface spores without
+    carbonizing the substrate. However, deeply embedded mycelial networks may persist,
+    requiring potential multi-pass treatment.
+- question: Why does laser-cleaned Fir sometimes appear lighter or darker than the
+    surrounding untreated wood, and how can this be minimized?
+  answer: Laser-cleaned Fir appears lighter when removing darkened patina or darker
+    from slight carbonization at excessive fluence. Maintain 1.2 J/cm² fluence and
+    a 500 mm/s scan speed with 50% beam overlap. This ensures uniform contaminant
+    removal while preserving the wood's natural color for a consistent finish.
 material_metadata:
   last_updated: '2025-10-27T23:48:40.921921Z'
   structure_version: '2.0'

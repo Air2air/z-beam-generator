@@ -355,7 +355,13 @@ fi
 **✨ NEW Commands** (October 17, 2025):
   - `python3 run.py --data-completeness-report` - Full status report
   - `python3 run.py --data-gaps` - Research priorities
-  - `python3 run.py --enforce-completeness` - Strict mode (blocks if incomplete)
+  
+**⚡ AUTOMATIC (November 1, 2025)**: 
+  - Data completeness validation now runs **automatically inline** during every generation
+  - No flags needed - validation is built into the pipeline (strict mode enabled by default)
+  - Use `--no-completeness-check` to disable if needed (not recommended)
+  - Generation will **fail fast** if data is incomplete, prompting you to run research commands
+  
 **Enforcement**: Automatic linking to action plan when gaps detected
 
 ### Mandatory Documentation Review

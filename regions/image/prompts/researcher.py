@@ -24,42 +24,91 @@ class PopulationResearcher:
     """Research historical population data to inform image generation"""
     
     # Population size categories and their characteristics
+    # Refined to prevent over-representing town size in images
     POPULATION_CATEGORIES = {
-        "small_town": {
+        "rural_hamlet": {
+            "max": 500,
+            "description": "rural hamlet or village",
+            "street_type": "unpaved dirt road or single lane",
+            "development": "1-3 small wooden buildings, general store, possibly a church",
+            "density": "extremely sparse, rural farmland character",
+            "vehicles": "primarily horse-drawn wagons, maybe 1-2 early automobiles",
+            "details": "simple wooden structures, dirt paths, agricultural setting, minimal signage",
+            "buildings": "1-3 simple structures",
+            "pedestrians": "few people (2-5 visible)",
+            "street_width": "narrow single track"
+        },
+        "small_village": {
+            "max": 2000,
+            "description": "small village",
+            "street_type": "unpaved main street, dusty or muddy",
+            "development": "4-8 simple storefronts along one street, mostly wooden construction",
+            "density": "low-density, primarily residential with small commercial center",
+            "vehicles": "mix of horse-drawn and early automobiles (1-3 visible)",
+            "details": "wooden facades, simple painted signs, hitching posts, minimal street activity",
+            "buildings": "4-8 modest storefronts",
+            "pedestrians": "sparse (5-10 people)",
+            "street_width": "two-lane unpaved"
+        },
+        "town": {
             "max": 5000,
             "description": "small town",
-            "street_type": "two-lane main street",
-            "development": "modest commercial district with 4-6 storefronts",
-            "density": "low-density, rural character",
-            "vehicles": "few automobiles",
-            "details": "simple awnings, wooden facades, minimal traffic"
+            "street_type": "main street, possibly partially paved",
+            "development": "10-15 storefronts on main commercial block, mix of wood and brick",
+            "density": "compact town center with surrounding residential areas",
+            "vehicles": "several period automobiles and horse-drawn vehicles",
+            "details": "mix of wooden and brick buildings, awnings, readable business signs, moderate activity",
+            "buildings": "10-15 storefronts",
+            "pedestrians": "moderate (10-20 people)",
+            "street_width": "standard two-lane"
         },
-        "suburb": {
-            "max": 25000,
-            "description": "suburban community",
-            "street_type": "main two-lane road",
-            "development": "clear row of vintage storefronts with flat awnings",
-            "density": "moderate suburban development",
-            "vehicles": "period automobiles parked diagonally",
-            "details": "authentic urban development, residential character"
+        "large_town": {
+            "max": 10000,
+            "description": "large town or small city",
+            "street_type": "paved main commercial street",
+            "development": "15-25 commercial buildings, mostly 2-story brick or stone",
+            "density": "established downtown core with continuous storefronts",
+            "vehicles": "regular automobile traffic, parked cars visible",
+            "details": "substantial brick buildings, prominent signage, active pedestrian traffic, developed infrastructure",
+            "buildings": "15-25 two-story buildings",
+            "pedestrians": "busy (20-40 people)",
+            "street_width": "wide two-lane with parking"
         },
         "small_city": {
-            "max": 100000,
+            "max": 30000,
             "description": "small city",
-            "street_type": "main commercial boulevard",
-            "development": "dense row of two-story commercial buildings",
-            "density": "urban density with commercial core",
-            "vehicles": "busy street with multiple automobiles and pedestrians",
-            "details": "brick buildings, prominent signage, active street life"
+            "street_type": "paved commercial boulevard",
+            "development": "dense continuous row of 2-3 story commercial buildings",
+            "density": "urban density with established commercial district",
+            "vehicles": "steady automobile traffic, possibly streetcars or trolleys",
+            "details": "substantial architecture, multiple prominent businesses, active street life, urban infrastructure",
+            "buildings": "25-40 multi-story buildings",
+            "pedestrians": "crowded (40-80 people)",
+            "street_width": "wide boulevard with streetcar tracks"
         },
-        "medium_city": {
-            "max": float('inf'),
-            "description": "medium to large city",
-            "street_type": "bustling downtown thoroughfare",
-            "development": "tall commercial buildings, 3-4 stories, continuous storefronts",
+        "city": {
+            "max": 100000,
+            "description": "city",
+            "street_type": "major downtown thoroughfare",
+            "development": "tall 3-4 story buildings, continuous urban streetscape",
             "density": "high urban density, city center",
-            "vehicles": "heavy automobile traffic, possible streetcar tracks",
-            "details": "urban architecture, dense pedestrian activity, prominent commercial district"
+            "vehicles": "heavy traffic, streetcars, many parked automobiles",
+            "details": "impressive architecture, large commercial signs, dense pedestrian crowds, prominent civic buildings",
+            "buildings": "40+ three-to-four story buildings",
+            "pedestrians": "very crowded (80-150 people)",
+            "street_width": "major thoroughfare with multiple lanes"
+        },
+        "major_city": {
+            "max": float('inf'),
+            "description": "major city",
+            "street_type": "bustling metropolitan downtown",
+            "development": "tall buildings 4-8+ stories, dense urban canyon effect",
+            "density": "metropolitan density",
+            "vehicles": "congested traffic, multiple streetcar lines, parking difficulties",
+            "details": "grand architecture, large department stores, prominent signage, very crowded sidewalks, urban intensity",
+            "buildings": "dense high-rise district",
+            "pedestrians": "extremely crowded (150+ people)",
+            "street_width": "wide multi-lane thoroughfare"
         }
     }
     
@@ -133,52 +182,65 @@ Format your response as JSON (IMPORTANT: Use plain numbers without commas or for
 
 Be specific and historically accurate. Include actual locations, real names, and authentic period details about the {subject}."""
         else:
-            prompt = f"""Research the historical context of {city_name}, {county_name}, California during the {decade}.
+            prompt = f"""Research the ACTUAL HISTORICAL POPULATION and visual character of {city_name}, {county_name}, California in {mid_decade}.
 
-TASK: Identify the most iconic scene that captures {city_name} in the {decade}.
+CRITICAL REQUIREMENTS:
 
-Provide ONLY the essential visual information needed for an image generator:
+1. VERIFY ACTUAL POPULATION from {mid_decade} census or historical records
+   - Use U.S. Census Bureau data, historical archives, or credible local history sources
+   - If exact {mid_decade} data unavailable, interpolate between nearest census years
+   - Population MUST match actual historical records - this is essential for accurate scene scale
+   - Include your source/reasoning for the population figure
 
-1. Population (number only, no commas)
-2. Iconic scene name (short, e.g., "Ferry Building waterfront", "Main Street downtown")
-3. Exact location/street name
-4. 5-7 KEY VISUAL ELEMENTS as a list (each 10-15 words max):
-   - Most distinctive building/landmark with architectural style
-   - Typical clothing/people (be specific about styles)
-   - Primary vehicles/transportation visible
-   - Street/pavement characteristics
-   - SPECIFIC BUSINESS NAMES with correct spelling (e.g., "Smith's Hardware Store", "Johnson's Bakery", "Martinez Theatre")
-   - Atmospheric qualities (light, activity level)
-   - Any unique defining features
+2. MATCH SCENE SCALE TO ACTUAL POPULATION:
+   - Under 500: Rural hamlet (1-3 buildings, dirt road, minimal activity)
+   - 500-2000: Small village (4-8 simple storefronts, unpaved street, few people)
+   - 2000-5000: Small town (10-15 buildings, possibly paved, moderate activity)
+   - 5000-10000: Large town (15-25 two-story buildings, paved streets, busy)
+   - 10000-30000: Small city (25-40 buildings, continuous storefronts, urban feel)
+   - 30000-100000: City (40+ tall buildings, dense crowds, major infrastructure)
+   - 100000+: Major city (high-rises, metropolitan density, congested)
 
-5. 3-5 scene-specific negative prompts (things that would break authenticity)
+3. IDENTIFY THE MOST ICONIC SCENE for {city_name} in {decade}
 
-CRITICAL FOR SIGNS: Research and provide REAL historical business names with CORRECT SPELLING. 
-Use actual businesses from {decade} {city_name} if known, or create period-authentic names (owner's last name + business type).
-Every business name must be spelled correctly with proper capitalization.
+4. 5-7 KEY VISUAL ELEMENTS (each 10-15 words max):
+   - Most distinctive building/landmark with architectural details
+   - Typical clothing styles (be period-specific)
+   - Transportation type and quantity (match population scale)
+   - Street characteristics (paving, width, condition)
+   - SPECIFIC BUSINESS NAMES with CORRECT SPELLING (real historical businesses if known)
+   - Number of people visible (must match town size - don't show crowds in small villages!)
+   - Atmospheric qualities (light, weather, activity level)
+
+5. 3-5 SCENE-SPECIFIC NEGATIVE PROMPTS (anachronisms that break authenticity)
+
+CRITICAL: The visual scale must match the actual population. A village of 800 people should NOT look like a bustling city with crowds and dozens of buildings. Be historically accurate.
 
 Format as JSON (NO commas in numbers):
 {{
-    "population": <number>,
+    "population": <actual historical number>,
     "year": "{mid_decade}",
-    "iconic_scene": "<short scene name>",
-    "main_street": "<street name>",
-    "street_details": "<1 sentence what's happening here>",
+    "population_source": "<how you verified this - census year, historical record, interpolation method>",
+    "iconic_scene": "<short descriptive name>",
+    "main_street": "<specific street or location name>",
+    "street_details": "<1-2 sentences describing the scene and what's happening>",
     "key_visuals": [
-        "Visual element 1",
-        "Visual element 2",
-        "Visual element 3",
-        "Visual element 4",
-        "Visual element 5"
+        "Building/landmark with architectural style",
+        "Clothing: specific period styles for men and women",
+        "Transportation: type and quantity appropriate to population",
+        "Street: paving, width, and condition",
+        "Businesses: 'Name's Business Type' with correct spelling",
+        "People: specific number visible, activities",
+        "Atmosphere: lighting, weather, activity level"
     ],
     "scene_negatives": [
-        "Modern element that breaks period",
-        "Another modern element",
-        "..."
+        "Specific modern element that breaks period",
+        "Another anachronism to avoid",
+        "Scale mismatch to avoid"
     ]
 }}
 
-CRITICAL: Keep key_visuals SHORT and SPECIFIC. Focus on what makes this scene distinctive in {decade}."""
+VERIFY POPULATION ACCURACY - the entire image authenticity depends on correct historical population data."""
 
         try:
             # Generate research response
@@ -233,21 +295,34 @@ CRITICAL: Keep key_visuals SHORT and SPECIFIC. Focus on what makes this scene di
             # Determine population category
             population = data.get("population", 10000)
             category = self._categorize_population(population)
+            category_info = self.POPULATION_CATEGORIES[category]
+            
+            # Get population source verification
+            pop_source = data.get("population_source", "unverified")
             
             result = {
                 "population": population,
                 "year": data.get("year", mid_decade),
                 "category": category,
-                "characteristics": self.POPULATION_CATEGORIES[category],
+                "characteristics": category_info,
                 "character": data.get("character", ""),
                 "source_note": data.get("source_note", ""),
+                "population_source": pop_source,
                 "main_street": data.get("main_street", "downtown"),
                 "street_details": data.get("street_details", ""),
                 "subject_details": data.get("subject_details", ""),
                 "iconic_scene": data.get("iconic_scene", "")
             }
             
-            logger.info(f"✅ Population: {population:,} ({category})")
+            # Enhanced logging with population validation
+            logger.info(f"✅ Population: {population:,} ({category_info['description']})")
+            logger.info(f"📊 Source: {pop_source}")
+            logger.info(f"🏘️  Scale: {category_info['buildings']}, {category_info['pedestrians']}")
+            
+            # Warn if population seems unrealistic for the year
+            if population > 50000 and int(mid_decade) < 1920:
+                logger.warning(f"⚠️  High population ({population:,}) for early period ({mid_decade}) - verify accuracy")
+            
             if result.get("iconic_scene"):
                 logger.info(f"🌟 Iconic scene: {result['iconic_scene']}")
             if result.get("main_street"):

@@ -36,7 +36,7 @@ SUBTITLE_GENERATION_TEMPERATURE = 0.6
 SUBTITLE_MAX_TOKENS = 100
 
 # Data file paths
-MATERIALS_DATA_PATH = "data/Materials.yaml"
+MATERIALS_DATA_PATH = "materials/data/materials.yaml"
 
 # ============================================================================
 

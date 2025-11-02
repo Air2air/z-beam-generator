@@ -9,7 +9,7 @@ Author: AI Assistant
 Date: October 30, 2025
 """
 
-from regions.hero_image_config import HeroImageConfig
+from regions.image.hero_image_config import HeroImageConfig
 
 
 # Preset configurations for common use cases (without city, added dynamically)

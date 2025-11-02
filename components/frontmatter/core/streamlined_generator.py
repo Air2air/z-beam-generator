@@ -131,8 +131,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise ConfigurationError(f"Unified schema validation required but setup failed: {e}")
         
         # Completeness validation (100% data coverage)
-        # Check for --enforce-completeness flag from kwargs
-        strict_mode = self._init_kwargs.get('enforce_completeness', False)
+        # CHANGED: Default to strict mode (enforce completeness by default)
+        # Can be disabled with enforce_completeness=False if needed
+        strict_mode = self._init_kwargs.get('enforce_completeness', True)
         self.completeness_validator = CompletenessValidator(strict_mode=strict_mode)
         self.logger.info(f"Completeness validation initialized (strict_mode={strict_mode})")
         

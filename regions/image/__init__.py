@@ -6,7 +6,7 @@ prompt generation, and comprehensive negative prompts for historical region imag
 """
 
 from regions.image.city_generator import CityImageGenerator
-from regions.hero_image_config import HeroImageConfig
+from regions.image.hero_image_config import HeroImageConfig
 from regions.image.presets import get_config, PRESET_CONFIGS
 from regions.image.negative_prompts import (
     get_default_negative_prompt,

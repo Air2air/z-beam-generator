@@ -35,9 +35,9 @@ This data model creates location-specific landing pages for laser cleaning servi
 ```yaml
 layout: city-service
 content_type: city
-title: "Laser Cleaning in San Francisco, CA - Industrial & Precision Services"
-meta_title: "Laser Cleaning Services in San Francisco | Z-Beam Technology"
-meta_description: "Professional laser cleaning in San Francisco. Serving tech, maritime, historic preservation. Non-abrasive, eco-friendly. Free consultation."
+title: "San Francisco Laser Cleaning Services | Serving SF County | Z-Beam"
+meta_title: "San Francisco Laser Cleaning Services | Z-Beam Technology"
+meta_description: "Professional laser cleaning in San Francisco and throughout San Francisco County. Industrial, maritime, historic preservation. Non-abrasive, eco-friendly. Free consultation."
 ```
 
 ### 2. Location Data
@@ -48,7 +48,7 @@ city:
   slug: "san-francisco"
   state: "California"
   state_abbrev: "CA"
-  county: "San Francisco County"
+  county: "San Francisco County"  # Used in content, schema, NOT URL
   region: "San Francisco Bay Area"
 
 location:
@@ -680,6 +680,18 @@ schema_org:
   
   priceRange: "$$-$$$"
   
+  areaServed:
+    - "@type": "City"
+      name: "San Francisco"
+      containedIn:
+        "@type": "State"
+        name: "California"
+    - "@type": "AdministrativeArea"
+      name: "San Francisco County"
+      containedIn:
+        "@type": "State"
+        name: "California"
+  
   aggregateRating:
     "@type": "AggregateRating"
     ratingValue: 4.9
@@ -704,7 +716,168 @@ voice_characteristics:
   local_knowledge: "SF maritime history, Victorian architecture, tech manufacturing"
 ```
 
-### 15. Generation Metadata
+### 15. Historical Images
+
+```yaml
+images:
+  historical:
+    # Random selection: 1-3 images per city page
+    # Each image has path, long caption, short caption (alt text)
+    
+    - path: "/images/regions/san_francisco/san_francisco_1935_downtown_streetscape.png"
+      caption: "Market Street, San Francisco, 1935 - Electric streetcars share the road with Model A Fords while pedestrians in fedoras and knee-length dresses browse storefronts. The Ferry Building's clock tower rises above the bustling commercial district."
+      caption_short: "San Francisco, 1935 - Market Street streetcars"
+      year: 1935
+      subject: "downtown streetscape"
+      dimensions:
+        width: 1920
+        height: 1080
+        aspect_ratio: "16:9"
+      generation:
+        photo_condition: 3
+        scenery_condition: 3
+        generated_at: "2025-11-01T10:30:00Z"
+    
+    - path: "/images/regions/san_francisco/san_francisco_1925_harbor.png"
+      caption: "San Francisco waterfront, 1925 - Wooden piers extend into the bay, lined with cargo vessels and fishing boats. Longshoremen in flat caps unload crates as seagulls circle above the fog-shrouded Golden Gate."
+      caption_short: "San Francisco, 1925 - waterfront piers"
+      year: 1925
+      subject: "harbor"
+      dimensions:
+        width: 1920
+        height: 1080
+        aspect_ratio: "16:9"
+      generation:
+        photo_condition: 4
+        scenery_condition: 3
+        generated_at: "2025-11-01T10:32:00Z"
+    
+    - path: "/images/regions/san_francisco/san_francisco_1940_chinatown_district.png"
+      caption: "Grant Avenue, Chinatown, 1948 - Paper lanterns and ornate balconies adorn the street as shoppers examine silk fabrics and porcelain. Chinese characters on shop signs advertise tea merchants and herbal apothecaries."
+      caption_short: "San Francisco, 1948 - Chinatown shops"
+      year: 1948
+      subject: "chinatown district"
+      dimensions:
+        width: 1920
+        height: 1080
+        aspect_ratio: "16:9"
+      generation:
+        photo_condition: 2
+        scenery_condition: 3
+        generated_at: "2025-11-01T10:35:00Z"
+  
+  # Future: Add business/modern images if needed
+  # business:
+  #   - path: "/images/regions/san_francisco/modern_facility.png"
+  #     caption: "Modern laser cleaning facility"
+```
+
+**Data Source:** Imagen 4 generation via `regions/image/generate.py`
+
+**Generation Workflow:** (County-based batch processing)
+1. **User input**: `python3 run.py --region "San Mateo County"`
+2. **Retrieve cities**: Load all cities in county from `Cities.yaml`
+3. **Random assignment**: Each city gets 1-3 images with unique year/subject/aging params
+4. **Image generation**: Generate images to `/public/images/regions/{city_slug}/`
+5. **Caption generation**: Gemini Vision creates long + short captions
+6. **Frontmatter research**: Generate remaining text content per data model
+
+**Generation Strategy:**
+1. **Random selection**: Each city gets 1-3 historical images (randomized per city)
+2. **Diverse subjects**: Vary between downtown, harbor, district, landmark, industry
+3. **Decade variety**: Spread across 1920s-1950s for visual diversity
+4. **Caption quality**: Long (150-200 chars) + short (40-60 chars) captions
+5. **Metadata preservation**: Store generation parameters for reproducibility
+
+**Caption Requirements:**
+- **Long caption** (`caption`): 2-3 sentences (150-200 characters) for figure captions
+  - Specific visual details (what you see in the image)
+  - Period-appropriate context (vehicles, clothing, architecture)
+  - Local landmarks or notable features
+  - Natural, engaging tone (not generic)
+- **Short caption** (`caption_short`): 40-60 characters for alt text
+  - Format: "{City}, {Year} - [key visual element]"
+  - SEO-friendly, concise description
+
+**Image Selection Logic** (to be implemented in CityFrontmatterGenerator):
+```python
+import random
+
+def generate_historical_images(city_name: str, county: str, num_images: int = None):
+    """
+    Generate 1-3 random historical images for city page.
+    
+    Args:
+        city_name: City name
+        county: County name
+        num_images: Optional override (default: random 1-3)
+    
+    Returns:
+        List of image dictionaries with path, caption, metadata
+    """
+    if num_images is None:
+        num_images = random.randint(1, 3)
+    
+    # Possible subjects for variety
+    subjects = [
+        "downtown streetscape",
+        "harbor",
+        "main street",
+        "train station",
+        "industrial district",
+        "residential neighborhood",
+        "city hall",
+        "historic landmark"
+    ]
+    
+    # Decades to sample from
+    decades = ["1920s", "1930s", "1940s", "1950s"]
+    
+    images = []
+    used_subjects = set()
+    
+    for i in range(num_images):
+        # Select unique subject
+        available_subjects = [s for s in subjects if s not in used_subjects]
+        if not available_subjects:
+            available_subjects = subjects  # Reset if exhausted
+        
+        subject = random.choice(available_subjects)
+        used_subjects.add(subject)
+        
+        # Select random decade
+        decade = random.choice(decades)
+        year = int(decade.replace("s", "")) + random.randint(0, 9)
+        
+        # Generate image using existing infrastructure
+        # TODO: Call regions/image/generate.py with subject parameter
+        # image_path, caption, metadata = generate_city_image(
+        #     city_name, county, year, subject
+        # )
+        
+        # Placeholder structure (implement actual generation)
+        images.append({
+            "path": f"/images/regions/{city_name.lower().replace(' ', '_')}/{city_name.lower().replace(' ', '_')}_{year}_{subject.replace(' ', '_')}.png",
+            "caption": "",  # Generated by image validation system
+            "year": year,
+            "subject": subject,
+            "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "aspect_ratio": "16:9"
+            },
+            "generation": {
+                "prompt_used": "",  # Stored during generation
+                "population": 0,  # From population research
+                "category": "",  # From population research
+                "generated_at": ""  # ISO timestamp
+            }
+        })
+    
+    return images
+```
+
+### 16. Generation Metadata
 
 ```yaml
 _metadata:
@@ -731,32 +904,98 @@ _metadata:
     external_links: 3
     faq_count: 8
     material_references: 4
+    historical_images: 3  # Number of images generated
 ```
 
 ---
 
 ## URL Structure
 
-### Pattern
+### Pattern (SEO-Optimized)
 ```
-/{county-slug}/{city-slug}-laser-cleaning
+/services/{city-slug}-laser-cleaning
 ```
 
+**Rationale:**
+- ✅ Matches search behavior: `"{city} laser cleaning"` (not `"{county} laser cleaning"`)
+- ✅ Shorter, more shareable URLs
+- ✅ Service-first hierarchy signals business focus
+- ✅ County included in content, schema, and meta tags (not URL)
+
 ### Examples
-- `/san-francisco-county/san-francisco-laser-cleaning`
-- `/alameda-county/oakland-laser-cleaning`
-- `/contra-costa-county/martinez-laser-cleaning`
-- `/santa-clara-county/palo-alto-laser-cleaning`
+- `/services/san-francisco-laser-cleaning`
+- `/services/oakland-laser-cleaning`
+- `/services/palo-alto-laser-cleaning`
+- `/services/belmont-laser-cleaning`
 
 ### Canonical URL
 ```
-https://z-beam.com/{county-slug}/{city-slug}-laser-cleaning
+https://z-beam.com/services/{city-slug}-laser-cleaning
 ```
 
 ### Breadcrumb Structure
 ```
-Home > Laser Cleaning Services > {County} > {City} Laser Cleaning
+Home > Services > {City} Laser Cleaning
 ```
+
+**Breadcrumb Schema:**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://z-beam.com"},
+    {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://z-beam.com/services"},
+    {"@type": "ListItem", "position": 3, "name": "San Francisco Laser Cleaning"}
+  ]
+}
+```
+
+### County Inclusion Strategy
+
+**Where to Include County (NOT in URL):**
+
+1. **Page Title:**
+   ```
+   San Francisco Laser Cleaning Services | Serving San Francisco County
+   ```
+
+2. **Meta Description:**
+   ```
+   Professional laser cleaning services in San Francisco and throughout 
+   San Francisco County. Industrial, historic preservation, and commercial 
+   applications. Request a quote today.
+   ```
+
+3. **H2 Service Area:**
+   ```html
+   <h2>Serving San Francisco and All of San Francisco County</h2>
+   <p>Our laser cleaning services cover San Francisco and the surrounding 
+   communities throughout San Francisco County, including [nearby cities].</p>
+   ```
+
+4. **Schema Markup (LocalBusiness):**
+   ```json
+   {
+     "@type": "LocalBusiness",
+     "areaServed": [
+       {"@type": "City", "name": "San Francisco"},
+       {"@type": "AdministrativeArea", "name": "San Francisco County", "containedIn": "California"}
+     ]
+   }
+   ```
+
+5. **Service Area Map Description:**
+   ```yaml
+   service_area_map:
+     description: "Serving San Francisco and all surrounding cities in 
+                   San Francisco County within 50 miles"
+   ```
+
+**Why County Is NOT in URL:**
+- Users search "{city} laser cleaning", not "{county} laser cleaning"
+- Shorter URLs improve CTR and mobile sharing
+- County context preserved in content, schema, and metadata where it matters for SEO
 
 ---
 

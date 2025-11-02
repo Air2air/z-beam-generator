@@ -4,6 +4,12 @@ Author Voice Post-Processor
 A discrete, reusable component that enhances text with author voice markers.
 Completely decoupled from content generation - operates purely on text + author.
 
+Enhanced with comprehensive validation to:
+- Detect non-English content (Indonesian, Italian translations)
+- Identify translation artifacts (reduplication patterns)
+- Score voice authenticity (0-100)
+- Prevent over-adjustment of already-voiced content
+
 Usage:
     from shared.voice.post_processor import VoicePostProcessor
     
@@ -18,8 +24,10 @@ Usage:
     )
 """
 
-from typing import Dict
+from typing import Dict, List, Any
 import logging
+import re
+import statistics
 from shared.voice.orchestrator import VoiceOrchestrator
 
 logger = logging.getLogger(__name__)
@@ -50,6 +58,560 @@ class VoicePostProcessor:
         
         self.api_client = api_client
         self.temperature = temperature
+    
+    def detect_language(self, text: str) -> Dict[str, Any]:
+        """
+        Detect if text is in English or another language.
+        
+        Prevents voice enhancement on non-English content (e.g., Indonesian FAQ answers).
+        
+        Args:
+            text: Text content to analyze
+            
+        Returns:
+            {
+                'language': str,  # 'english', 'indonesian', 'italian', 'chinese', 'unknown'
+                'confidence': float,  # 0-1
+                'indicators': List[str]  # Words that triggered detection
+            }
+        """
+        # Common Indonesian words (high-frequency function words)
+        indonesian_indicators = {
+            'yang', 'dengan', 'untuk', 'dari', 'ini', 'dapat', 'sangat',
+            'pada', 'adalah', 'atau', 'akan', 'juga', 'dalam', 'tidak',
+            'memiliki', 'memerlukan', 'menggunakan', 'sebagai', 'karena',
+            'ya', 'sekitar', 'proses', 'aplikasi', 'lapisan', 'tanpa',
+            'merusak', 'substrat', 'efektif', 'permukaan', 'kecepatan'
+        }
+        
+        # Common Italian words
+        italian_indicators = {
+            'che', 'con', 'per', 'della', 'questo', 'molto', 'alla',
+            'essere', 'anche', 'più', 'quando', 'come', 'quindi',
+            'infatti', 'pertanto', 'mediante', 'verso', 'nella', 'degli'
+        }
+        
+        text_lower = text.lower()
+        words = set(text_lower.split())
+        
+        # Count language-specific words
+        indonesian_matches = words & indonesian_indicators
+        italian_matches = words & italian_indicators
+        
+        indonesian_count = len(indonesian_matches)
+        italian_count = len(italian_matches)
+        
+        # Determine language
+        if indonesian_count >= 3:
+            return {
+                'language': 'indonesian',
+                'confidence': min(indonesian_count / 10.0, 1.0),
+                'indicators': list(indonesian_matches)[:5]
+            }
+        elif italian_count >= 3:
+            return {
+                'language': 'italian',
+                'confidence': min(italian_count / 10.0, 1.0),
+                'indicators': list(italian_matches)[:5]
+            }
+        
+        # Check for high proportion of non-ASCII chars (not just scientific symbols)
+        non_ascii_count = sum(1 for c in text if ord(c) > 127)
+        total_chars = len(text)
+        if total_chars > 0 and (non_ascii_count / total_chars) > 0.15:
+            # More than 15% non-ASCII suggests non-English language
+            return {
+                'language': 'unknown',
+                'confidence': 0.6,
+                'indicators': ['high-non-ascii-content']
+            }
+        
+        # Default to English (scientific symbols like ², μ are OK)
+        return {
+            'language': 'english',
+            'confidence': 0.8,
+            'indicators': []
+        }
+    
+    def detect_translation_artifacts(self, text: str) -> Dict[str, Any]:
+        """
+        Detect translation artifacts that indicate poor voice application.
+        
+        Problematic patterns:
+        - Reduplication: "very-very", "clean-clean", "high-high" (Indonesian-style)
+        - Excessive conjunctions: "then...then...then", "so...so...so"
+        - Repetitive sentence starters
+        
+        Args:
+            text: Text to analyze
+            
+        Returns:
+            {
+                'has_artifacts': bool,
+                'artifact_count': int,
+                'patterns_found': List[Dict],  # [{type, examples, count}]
+                'severity': str  # 'none', 'minor', 'moderate', 'severe'
+            }
+        """
+        artifacts = []
+        
+        # 1. Detect reduplication patterns (Indonesian-style)
+        reduplication = re.findall(r'\b(\w+)-\1\b', text.lower())
+        if reduplication:
+            artifacts.append({
+                'type': 'reduplication',
+                'examples': list(set(reduplication))[:5],
+                'count': len(reduplication)
+            })
+        
+        # 2. Detect excessive "then" usage
+        then_count = len(re.findall(r'\bthen\b', text.lower()))
+        sentence_count = len(re.findall(r'[.!?]', text)) or 1
+        if then_count / sentence_count > 0.5:  # More than 50% of sentences
+            artifacts.append({
+                'type': 'excessive_then',
+                'examples': [f"{then_count} uses in {sentence_count} sentences"],
+                'count': then_count
+            })
+        
+        # 3. Detect excessive "so" usage
+        so_count = len(re.findall(r'\bso\b', text.lower()))
+        if so_count / sentence_count > 0.5:
+            artifacts.append({
+                'type': 'excessive_so',
+                'examples': [f"{so_count} uses in {sentence_count} sentences"],
+                'count': so_count
+            })
+        
+        # 4. Detect repetitive sentence starters
+        sentences = re.split(r'[.!?]+', text)
+        starters = [s.strip().split()[0].lower() for s in sentences if s.strip() and len(s.strip().split()) > 0]
+        
+        if len(starters) > 3:
+            starter_counts = {}
+            for starter in starters:
+                starter_counts[starter] = starter_counts.get(starter, 0) + 1
+            
+            repetitive_starters = [
+                starter for starter, count in starter_counts.items()
+                if count >= 3
+            ]
+            
+            if repetitive_starters:
+                artifacts.append({
+                    'type': 'repetitive_starters',
+                    'examples': repetitive_starters[:3],
+                    'count': len(repetitive_starters)
+                })
+        
+        # Calculate severity
+        total_artifacts = sum(a['count'] for a in artifacts)
+        if total_artifacts == 0:
+            severity = 'none'
+        elif total_artifacts <= 2:
+            severity = 'minor'
+        elif total_artifacts <= 5:
+            severity = 'moderate'
+        else:
+            severity = 'severe'
+        
+        return {
+            'has_artifacts': len(artifacts) > 0,
+            'artifact_count': total_artifacts,
+            'patterns_found': artifacts,
+            'severity': severity
+        }
+    
+    def detect_linguistic_patterns(self, text: str, author: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Detect deeper linguistic patterns from voice profiles.
+        
+        Checks country-specific patterns:
+        - USA: Phrasal verbs, active voice, American spelling
+        - Taiwan: Topic-comment structure, article omissions, systematic markers
+        - Italy: Word order inversion, emphatic pronouns, subjunctive influence
+        - Indonesia: Demonstrative clusters, serial verbs, paratactic structure
+        
+        Args:
+            text: Text to analyze
+            author: Author dict with 'country' key
+            
+        Returns:
+            {
+                'pattern_score': float (0-100),
+                'patterns_found': List[str],
+                'pattern_quality': str,  # 'authentic', 'weak', 'absent'
+                'linguistic_issues': List[str]
+            }
+        """
+        country = author.get('country', '').lower()
+        text_lower = text.lower()
+        patterns_found = []
+        issues = []
+        score = 50.0  # Start neutral
+        
+        if 'united states' in country or country == 'usa' or country == 'us':
+            # USA patterns: Phrasal verbs, active voice, direct language
+            phrasal_verbs = ['set up', 'figure out', 'carry out', 'work out', 'pick up', 'come up with']
+            found_phrasal = [pv for pv in phrasal_verbs if pv in text_lower]
+            if found_phrasal:
+                patterns_found.append(f"phrasal_verbs: {len(found_phrasal)}")
+                score += 10
+            
+            # American spelling
+            if 'optimize' in text_lower or 'analyze' in text_lower:
+                patterns_found.append("american_spelling")
+                score += 5
+            
+            # Active voice indicators (strong subjects at sentence start)
+            active_patterns = ['the process', 'the laser', 'the surface', 'the method', 'this approach']
+            found_active = sum(1 for p in active_patterns if p in text_lower)
+            if found_active >= 2:
+                patterns_found.append("active_voice_structure")
+                score += 5
+        
+        elif 'taiwan' in country:
+            # Taiwan patterns: Topic-comment, article omissions, systematic language
+            systematic_markers = ['demonstrates', 'reveals', 'indicates', 'establishes', 'systematic', 'precise']
+            found_systematic = [m for m in systematic_markers if m in text_lower]
+            if found_systematic:
+                patterns_found.append(f"systematic_markers: {len(found_systematic)}")
+                score += 10
+            
+            # Topic-comment structure (pronoun after comma)
+            if re.search(r',\s*(it|they|this|that)\s+(shows?|demonstrates?|indicates?)', text_lower):
+                patterns_found.append("topic_comment_structure")
+                score += 10
+            
+            # Measurement-first phrasing
+            if re.search(r'\d+\.?\d*\s*[μm|nm|cm|mm|micrometers?]', text):
+                patterns_found.append("measurement_first")
+                score += 5
+        
+        elif 'italy' in country or 'italian' in country:
+            # Italy patterns: Word order inversion, emphatic constructions
+            emphatic_markers = ['elegant', 'refined', 'remarkable', 'notable', 'exceptional', 'sophisticated']
+            found_emphatic = [m for m in emphatic_markers if m in text_lower]
+            if found_emphatic:
+                patterns_found.append(f"emphatic_style: {len(found_emphatic)}")
+                score += 10
+            
+            # Inverted word order (adjective before noun in unusual positions)
+            if re.search(r'\b(remarkable|notable|exceptional)\s+is\s+', text_lower):
+                patterns_found.append("word_order_inversion")
+                score += 10
+            
+            # Subjunctive influence ("would seem", "it appears")
+            if 'would seem' in text_lower or 'it appears' in text_lower:
+                patterns_found.append("subjunctive_influence")
+                score += 5
+        
+        elif 'indonesia' in country:
+            # Indonesia patterns: Demonstrative clustering, simple connectors
+            demonstratives = ['this process', 'that method', 'this surface', 'that layer', 'this approach']
+            found_demo = [d for d in demonstratives if d in text_lower]
+            if found_demo:
+                patterns_found.append(f"demonstrative_clusters: {len(found_demo)}")
+                score += 10
+            
+            # Simple connectors
+            simple_connectors = text_lower.count(' so ') + text_lower.count(' because ')
+            if simple_connectors >= 2:
+                patterns_found.append("paratactic_connectors")
+                score += 5
+            
+            # Serial verb constructions
+            if re.search(r'\b(removes?\s+then\s+\w+|cleans?\s+then\s+\w+)', text_lower):
+                patterns_found.append("serial_verb_structure")
+                score += 10
+        
+        # Determine quality
+        if score >= 70:
+            quality = 'authentic'
+        elif score >= 50:
+            quality = 'weak'
+        else:
+            quality = 'absent'
+            issues.append("No country-specific linguistic patterns detected")
+        
+        return {
+            'pattern_score': min(100.0, score),
+            'patterns_found': patterns_found,
+            'pattern_quality': quality,
+            'linguistic_issues': issues
+        }
+    
+    def score_voice_authenticity(
+        self,
+        text: str,
+        author: Dict[str, str],
+        voice_indicators: list
+    ) -> Dict[str, Any]:
+        """
+        Score how authentic the voice application is.
+        
+        Checks for:
+        - Language correctness
+        - Translation artifacts
+        - Voice authenticity scoring
+        - Existing marker count
+        - Deep linguistic patterns (NEW)
+        
+        Args:
+            text: Text to analyze
+            author: Author dict with 'country' key
+            voice_indicators: List of expected voice markers for this country
+            
+        Returns:
+            {
+                'authenticity_score': float (0-100),
+                'is_authentic': bool,  # True if score >= 70
+                'found_markers': List[str],
+                'marker_quality': str,  # 'excellent', 'good', 'fair', 'poor'
+                'issues': List[str],
+                'recommendation': str,  # 'keep', 'reprocess', 'translate'
+                'linguistic_patterns': Dict  # Deep pattern analysis (NEW)
+            }
+        """
+        text_lower = text.lower()
+        
+        # Start at 100 and deduct for issues
+        score = 100.0
+        issues = []
+        
+        # 1. Check language (CRITICAL)
+        language = self.detect_language(text)
+        if language['language'] != 'english':
+            score = 0.0
+            issues.append(f"Text is in {language['language']}, not English")
+            return {
+                'authenticity_score': 0.0,
+                'is_authentic': False,
+                'found_markers': [],
+                'marker_quality': 'poor',
+                'issues': issues,
+                'recommendation': 'translate'
+            }
+        
+        # 2. Check for translation artifacts (HEAVY PENALTY)
+        artifacts = self.detect_translation_artifacts(text)
+        if artifacts['has_artifacts']:
+            penalty = artifacts['artifact_count'] * 15
+            score -= penalty
+            artifact_types = ', '.join([a['type'] for a in artifacts['patterns_found']])
+            issues.append(
+                f"Translation artifacts ({artifacts['severity']}): {artifact_types}"
+            )
+        
+        # 3. Count genuine voice markers
+        found_markers = [m for m in voice_indicators if m in text_lower]
+        
+        if len(found_markers) == 0:
+            score -= 50  # Increased penalty: no markers = not authentic
+            issues.append("No voice markers found")
+        elif len(found_markers) == 1:
+            score -= 35  # Increased penalty: need at least 2 markers (ensures score <70)
+            issues.append("Only 1 voice marker (need 2+)")
+        elif len(found_markers) >= 2 and len(found_markers) <= 4:
+            # Good range - add bonus
+            score += 10
+        elif len(found_markers) >= 5 and len(found_markers) <= 6:
+            # Slightly too many but acceptable
+            score -= 5
+            issues.append(f"Many markers ({len(found_markers)})")
+        elif len(found_markers) > 6:
+            # Too many markers - seems forced or double-enhanced
+            score -= 15
+            issues.append(f"Excessive markers ({len(found_markers)})")
+        
+        # 4. Check for marker repetition
+        marker_counts = {m: text_lower.count(m) for m in found_markers}
+        repeated = [m for m, count in marker_counts.items() if count > 2]
+        if repeated:
+            score -= len(repeated) * 10
+            issues.append(f"Repeated markers: {', '.join(repeated[:3])}")
+        
+        # 5. Check marker distribution (are they clustered or spread?)
+        if found_markers and len(text) > 200:
+            positions = []
+            for marker in found_markers:
+                pos = text_lower.find(marker)
+                if pos != -1:
+                    positions.append(pos / len(text))  # Normalize to 0-1
+            
+            if positions and len(positions) > 1:
+                try:
+                    variance = statistics.variance(positions)
+                    if variance < 0.1:  # Markers clustered in one area
+                        score -= 10
+                        issues.append("Markers clustered (not naturally distributed)")
+                except Exception:
+                    pass  # Skip if variance calculation fails
+        
+        # 6. Check deep linguistic patterns (NEW)
+        linguistic_patterns = self.detect_linguistic_patterns(text, author)
+        
+        # Adjust score based on linguistic pattern quality
+        if linguistic_patterns['pattern_quality'] == 'authentic':
+            score += 10  # Bonus for authentic country-specific patterns
+        elif linguistic_patterns['pattern_quality'] == 'absent':
+            score -= 10  # Penalty for missing expected patterns
+        
+        # Add linguistic issues to main issues list
+        issues.extend(linguistic_patterns['linguistic_issues'])
+        
+        # Ensure score stays in range
+        score = max(0.0, min(100.0, score))
+        
+        # Determine quality
+        if score >= 85:
+            quality = 'excellent'
+        elif score >= 70:
+            quality = 'good'
+        elif score >= 50:
+            quality = 'fair'
+        else:
+            quality = 'poor'
+        
+        # Determine recommendation
+        if score >= 70:
+            recommendation = 'keep'
+        elif score >= 40:
+            recommendation = 'reprocess'
+        else:
+            recommendation = 'translate'
+        
+        return {
+            'authenticity_score': score,
+            'is_authentic': score >= 70,
+            'found_markers': found_markers,
+            'marker_quality': quality,
+            'issues': issues,
+            'recommendation': recommendation,
+            'linguistic_patterns': linguistic_patterns  # NEW: Deep pattern analysis
+        }
+    
+    def validate_before_enhancement(
+        self,
+        text: str,
+        author: Dict[str, str]
+    ) -> Dict[str, Any]:
+        """
+        Comprehensive validation before attempting enhancement.
+        
+        Determines whether text should be enhanced based on:
+        - Language detection (must be English)
+        - Translation artifact detection
+        - Voice authenticity scoring
+        - Existing marker count
+        
+        Args:
+            text: Text to validate
+            author: Author dict with 'name' and 'country'
+            
+        Returns:
+            {
+                'should_enhance': bool,
+                'reason': str,
+                'action_required': str,  # 'none', 'enhance', 'reprocess', 'translate'
+                'details': Dict  # Full analysis results
+            }
+        """
+        # Validate inputs
+        if not text or not text.strip():
+            return {
+                'should_enhance': False,
+                'reason': 'Empty text',
+                'action_required': 'none',
+                'details': {}
+            }
+        
+        if not author or 'country' not in author:
+            return {
+                'should_enhance': False,
+                'reason': 'Invalid author data',
+                'action_required': 'none',
+                'details': {}
+            }
+        
+        # Get voice indicators (signature phrases)
+        try:
+            voice = VoiceOrchestrator(country=author['country'])
+            voice_indicators = voice.get_signature_phrases()
+        except Exception as e:
+            logger.error(f"Failed to load voice indicators: {e}")
+            return {
+                'should_enhance': False,
+                'reason': f'Voice system error: {e}',
+                'action_required': 'none',
+                'details': {}
+            }
+        
+        if not voice_indicators:
+            logger.warning(f"No voice indicators for {author['country']}")
+            return {
+                'should_enhance': False,
+                'reason': f"No voice indicators for {author['country']}",
+                'action_required': 'none',
+                'details': {}
+            }
+        
+        # Run comprehensive analysis
+        language = self.detect_language(text)
+        artifacts = self.detect_translation_artifacts(text)
+        authenticity = self.score_voice_authenticity(text, author, voice_indicators)
+        
+        details = {
+            'language': language,
+            'artifacts': artifacts,
+            'authenticity': authenticity
+        }
+        
+        # Decision logic
+        
+        # CRITICAL: Wrong language
+        if language['language'] != 'english':
+            return {
+                'should_enhance': False,
+                'reason': f"Text is in {language['language']}, needs translation to English",
+                'action_required': 'translate',
+                'details': details
+            }
+        
+        # HIGH: Severe translation artifacts
+        if artifacts['severity'] in ['severe', 'moderate']:
+            return {
+                'should_enhance': True,
+                'reason': f"Translation artifacts detected ({artifacts['severity']}), reprocessing needed",
+                'action_required': 'reprocess',
+                'details': details
+            }
+        
+        # GOOD: Already authentic
+        if authenticity['is_authentic']:
+            return {
+                'should_enhance': False,
+                'reason': f"Voice already authentic (score: {authenticity['authenticity_score']:.1f}/100)",
+                'action_required': 'none',
+                'details': details
+            }
+        
+        # MEDIUM: Low authenticity score
+        if authenticity['authenticity_score'] < 40:
+            return {
+                'should_enhance': True,
+                'reason': f"Low authenticity score ({authenticity['authenticity_score']:.1f}/100)",
+                'action_required': 'reprocess',
+                'details': details
+            }
+        
+        # DEFAULT: Enhancement needed
+        return {
+            'should_enhance': True,
+            'reason': f"Moderate authenticity ({authenticity['authenticity_score']:.1f}/100), enhancement recommended",
+            'action_required': 'enhance',
+            'details': details
+        }
         
     def enhance(
         self,
@@ -90,6 +652,39 @@ class VoicePostProcessor:
             logger.warning("Invalid author object - returning text unchanged")
             return text
         
+        # 🆕 NEW: Comprehensive pre-enhancement validation
+        validation = self.validate_before_enhancement(text, author)
+        
+        if not validation['should_enhance']:
+            logger.info(f"✅ Skipping enhancement: {validation['reason']}")
+            return text
+        
+        if validation['action_required'] == 'translate':
+            logger.error(
+                f"❌ CRITICAL: Text is in {validation['details']['language']['language']}, "
+                f"not English. Translation required before voice enhancement."
+            )
+            logger.error(f"   Detected words: {', '.join(validation['details']['language']['indicators'][:5])}")
+            return text
+        
+        if validation['action_required'] == 'reprocess':
+            logger.warning(
+                f"⚠️  Text has quality issues: {validation['reason']}"
+            )
+            if validation['details']['artifacts']['has_artifacts']:
+                artifacts = validation['details']['artifacts']
+                logger.warning(f"   Artifacts: {artifacts['severity']} severity, {artifacts['artifact_count']} issues")
+            # Continue with enhancement but log the issues
+        
+        # Log validation details
+        if 'details' in validation and 'authenticity' in validation['details']:
+            auth = validation['details']['authenticity']
+            logger.info(
+                f"Voice authenticity: {auth['authenticity_score']:.1f}/100 ({auth['marker_quality']})"
+            )
+            if auth['issues']:
+                logger.info(f"Issues: {'; '.join(auth['issues'][:3])}")
+        
         author_name = author.get('name', 'Unknown')
         author_country = author.get('country', 'Unknown')
         
@@ -100,22 +695,11 @@ class VoicePostProcessor:
             logger.error(f"Failed to initialize VoiceOrchestrator for {author_country}: {e}")
             return text
         
-        # Get voice indicators for this country
-        all_indicators = voice.get_voice_indicators_all_countries()
-        # Use the normalized country name from orchestrator (e.g., "usa" -> "united_states" -> "UNITED_STATES")
-        country_key = voice.country.upper()
-        voice_indicators = all_indicators.get(country_key, [])
+        # Get voice indicators (signature phrases) for this country
+        voice_indicators = voice.get_signature_phrases()
         
         if not voice_indicators:
             logger.warning(f"No voice indicators found for {author_country} - returning text unchanged")
-            return text
-        
-        # Check existing voice markers
-        text_lower = text.lower()
-        found_markers = [ind for ind in voice_indicators if ind in text_lower]
-        
-        if len(found_markers) >= min_markers:
-            logger.info(f"✅ Text already has {len(found_markers)} voice markers - skipping enhancement")
             return text
         
         # Build enhancement prompt
@@ -199,8 +783,13 @@ Write the enhanced text now:"""
             enhanced_lower = enhanced.lower()
             new_markers = [ind for ind in voice_indicators if ind in enhanced_lower]
             
-            if len(new_markers) > len(found_markers):
-                logger.info(f"✅ Voice enhanced: {len(found_markers)} → {len(new_markers)} markers")
+            # Get original marker count from validation details if available
+            original_marker_count = 0
+            if validation and 'details' in validation and 'authenticity' in validation['details']:
+                original_marker_count = len(validation['details']['authenticity'].get('found_markers', []))
+            
+            if len(new_markers) > original_marker_count:
+                logger.info(f"✅ Voice enhanced: {original_marker_count} → {len(new_markers)} markers")
                 return enhanced
             else:
                 logger.warning("⚠️  Enhancement didn't add markers - keeping original")
@@ -212,19 +801,26 @@ Write the enhanced text now:"""
     
     def get_voice_score(self, text: str, author: Dict[str, str]) -> Dict:
         """
-        Analyze text for voice marker presence.
+        Analyze text for voice marker presence AND authenticity.
+        
+        Enhanced to include language detection, artifact detection, and quality scoring.
         
         Args:
             text: Text to analyze
             author: Author dictionary with 'country' key
             
         Returns:
-            Dictionary with marker analysis:
+            Dictionary with comprehensive analysis:
             {
                 'marker_count': int,
                 'markers_found': [str],
                 'country': str,
-                'score': float (0-100)
+                'score': float (0-100),  # Simple marker count score
+                'authenticity_score': float (0-100),  # Quality-adjusted score
+                'authenticity': str,  # 'excellent', 'good', 'fair', 'poor'
+                'language': str,  # Detected language
+                'artifacts': Dict,  # Translation artifacts
+                'recommendation': str  # 'keep', 'enhance', 'reprocess', 'translate'
             }
         """
         if not text or not author or 'country' not in author:
@@ -239,9 +835,7 @@ Write the enhanced text now:"""
         
         try:
             voice = VoiceOrchestrator(country=author_country)
-            all_indicators = voice.get_voice_indicators_all_countries()
-            country_key = author_country.upper()
-            voice_indicators = all_indicators.get(country_key, [])
+            voice_indicators = voice.get_signature_phrases()
             
             text_lower = text.lower()
             found_markers = [ind for ind in voice_indicators if ind in text_lower]
@@ -262,11 +856,25 @@ Write the enhanced text now:"""
             else:
                 score = 100.0
             
+            # 🆕 NEW: Run comprehensive authenticity analysis
+            language = self.detect_language(text)
+            artifacts = self.detect_translation_artifacts(text)
+            authenticity_analysis = self.score_voice_authenticity(
+                text, author, voice_indicators
+            )
+            
             return {
+                # Existing fields
                 'marker_count': marker_count,
                 'markers_found': found_markers,
                 'country': author_country,
-                'score': score
+                'score': score,
+                # New fields
+                'authenticity_score': authenticity_analysis['authenticity_score'],
+                'authenticity': authenticity_analysis['marker_quality'],
+                'language': language['language'],
+                'artifacts': artifacts,
+                'recommendation': authenticity_analysis['recommendation']
             }
             
         except Exception as e:
@@ -275,7 +883,12 @@ Write the enhanced text now:"""
                 'marker_count': 0,
                 'markers_found': [],
                 'country': author_country,
-                'score': 0.0
+                'score': 0.0,
+                'authenticity_score': 0.0,
+                'authenticity': 'poor',
+                'language': 'unknown',
+                'artifacts': {},
+                'recommendation': 'none'
             }
     
     def enhance_batch(
@@ -326,10 +939,8 @@ Write the enhanced text now:"""
             logger.error(f"Failed to initialize VoiceOrchestrator for {author_country}: {e}")
             return faq_items
         
-        # Get voice indicators for this country
-        all_indicators = voice.get_voice_indicators_all_countries()
-        country_key = voice.country.upper()
-        voice_indicators = all_indicators.get(country_key, [])
+        # Get voice indicators (signature phrases) for this country
+        voice_indicators = voice.get_signature_phrases()
         
         if not voice_indicators:
             logger.warning(f"No voice indicators found for {author_country} - returning unchanged")
