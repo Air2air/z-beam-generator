@@ -93,7 +93,5 @@ class AuthorModule:
         self.logger.debug(f"Author validation passed: {author['name']}")
 
 
-# Backward compatibility
-class AuthorGenerator(AuthorModule):
-    """Alias for backward compatibility"""
-    pass
+# Backward compatibility - use base class directly
+AuthorGenerator = AuthorModule

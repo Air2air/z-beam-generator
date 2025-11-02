@@ -10,7 +10,7 @@ def handle_material_audit(args):
     """Handle material auditing requests with comprehensive requirements compliance checking"""
     try:
         from pathlib import Path
-        from materials.services.material_auditor import MaterialAuditor, AuditSeverity
+        from shared.services.property.material_auditor import MaterialAuditor, AuditSeverity
         from materials.data.materials import load_materials
         
         print("🔍 MATERIAL AUDITING SYSTEM")

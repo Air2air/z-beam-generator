@@ -35,7 +35,7 @@ from shared.generators.dynamic_generator import DynamicGenerator
 # )
 
 # Component imports
-from materials.services.material_auditor import MaterialAuditor
+from shared.services.property.material_auditor import MaterialAuditor
 from materials.services.property_manager import PropertyManager
 
 logger = logging.getLogger(__name__)

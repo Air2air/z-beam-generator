@@ -116,15 +116,8 @@ class CharacteristicsModule:
         return characteristics
 
 
-# Backward compatibility aliases
-class ComplianceGenerator(ComplianceModule):
-    pass
-
-class ImpactGenerator(ImpactModule):
-    pass
-
-class MediaGenerator(MediaModule):
-    pass
-
-class CharacteristicsGenerator(CharacteristicsModule):
-    pass
+# Backward compatibility aliases - use base classes directly
+ComplianceGenerator = ComplianceModule
+ImpactGenerator = ImpactModule
+MediaGenerator = MediaModule
+CharacteristicsGenerator = CharacteristicsModule

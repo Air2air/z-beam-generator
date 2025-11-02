@@ -162,7 +162,5 @@ class PropertiesModule:
         return result
 
 
-# Backward compatibility
-class PropertiesGenerator(PropertiesModule):
-    """Alias for backward compatibility"""
-    pass
+# Backward compatibility - use base class directly
+PropertiesGenerator = PropertiesModule

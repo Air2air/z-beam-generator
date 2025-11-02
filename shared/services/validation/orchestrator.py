@@ -118,7 +118,7 @@ class ValidationOrchestrator:
             # Lazy imports to avoid circular dependencies
             from shared.validation.services.pre_generation_service import PreGenerationValidationService
             from shared.validation.content_validator import ContentValidationService
-            from materials.services.material_auditor import MaterialAuditor
+            from shared.services.property.material_auditor import MaterialAuditor
             from materials.services.validation_service import ValidationService
             
             # Core validation services

@@ -138,7 +138,5 @@ class ApplicationsModule:
             return []
 
 
-# Backward compatibility
-class ApplicationsGenerator(ApplicationsModule):
-    """Alias for backward compatibility"""
-    pass
+# Backward compatibility - use base class directly
+ApplicationsGenerator = ApplicationsModule

@@ -207,7 +207,5 @@ class MetadataModule:
         return description
 
 
-# Backward compatibility
-class MetadataGenerator(MetadataModule):
-    """Alias for backward compatibility"""
-    pass
+# Backward compatibility - use base class directly
+MetadataGenerator = MetadataModule

@@ -140,7 +140,5 @@ class SettingsModule:
         return result
 
 
-# Backward compatibility
-class SettingsGenerator(SettingsModule):
-    """Alias for backward compatibility"""
-    pass
+# Backward compatibility - use base class directly
+SettingsGenerator = SettingsModule
