@@ -273,34 +273,57 @@ COMPONENT_TECHNICAL_INTENSITY = N  # 1-5 numeric scale
 
 ## 🎭 Voice Post-Processing
 
-All generators create **neutral content**. Voice enhancement is a **separate step**:
+All generators create **neutral content**. Voice enhancement is a **separate step that OVERWRITES text fields**:
 
 ```python
 from voice.post_processor import VoicePostProcessor
+from materials.data.materials import load_materials, get_material_by_name
 
-# Step 1: Generate content (neutral)
+# Step 1: Generate content (neutral) → saves to materials.yaml
 result = generator.generate(material_name, material_data, api_client)
 
-# Step 2: Load content from Materials.yaml
-content = load_from_materials_yaml(material_name, component_key)
+# Step 2: Voice enhancement (separate command) → OVERWRITES fields in materials.yaml
+materials_data = load_materials()
+material_data = get_material_by_name(material_name, materials_data)
 
-# Step 3: Apply voice (separate)
 voice_processor = VoicePostProcessor(api_client)
-enhanced = voice_processor.enhance(
-    content,
-    author_info,
-    voice_intensity=COMPONENT_VOICE_INTENSITY
-)
 
-# Step 4: Save enhanced version
-save_enhanced_content(material_name, component_key, enhanced)
+# Enhance qualifying text fields (caption, subtitle, FAQ answers)
+for field in ['caption', 'subtitle', 'faq']:
+    if field in material_data:
+        enhanced = voice_processor.enhance(
+            material_data[field],
+            author_info,
+            voice_intensity=3
+        )
+        # OVERWRITE original field with enhanced version
+        material_data[field] = enhanced
+
+# Save back to materials.yaml with atomic write
+save_materials_yaml(materials_data)
+
+# Step 3: Manual export (separate command) → combines materials.yaml + Categories.yaml
+python3 run.py --material "MaterialName" --data-only
 ```
 
 **Benefits**:
 - Generators don't need voice logic
-- Voice can be applied/removed independently
+- Voice can be applied/removed independently (just re-save original or enhanced)
 - Testing simpler (test generation and voice separately)
 - Voice settings can change without regeneration
+- **Overwriting ensures materials.yaml is always the source of truth**
+
+**Commands**:
+```bash
+# Generate → materials.yaml
+python3 run.py --caption "Steel"
+
+# Voice enhance → OVERWRITES in materials.yaml
+python3 scripts/voice/enhance_materials_voice.py --material "Steel"
+
+# Export → combines materials.yaml + Categories.yaml → frontmatter
+python3 run.py --material "Steel" --data-only
+```
 
 ---
 

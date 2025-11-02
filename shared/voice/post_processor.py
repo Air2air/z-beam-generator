@@ -63,14 +63,15 @@ class VoicePostProcessor:
         """
         Detect if text is in English or another language.
         
-        Prevents voice enhancement on non-English content (e.g., Indonesian FAQ answers).
+        Prevents voice enhancement on non-English content.
+        Detects: Indonesian, Italian, Spanish, French, German, Portuguese, Chinese, and more.
         
         Args:
             text: Text content to analyze
             
         Returns:
             {
-                'language': str,  # 'english', 'indonesian', 'italian', 'chinese', 'unknown'
+                'language': str,  # 'english', 'indonesian', 'italian', 'spanish', 'french', etc.
                 'confidence': float,  # 0-1
                 'indicators': List[str]  # Words that triggered detection
             }
@@ -81,15 +82,56 @@ class VoicePostProcessor:
             'pada', 'adalah', 'atau', 'akan', 'juga', 'dalam', 'tidak',
             'memiliki', 'memerlukan', 'menggunakan', 'sebagai', 'karena',
             'ya', 'sekitar', 'proses', 'aplikasi', 'lapisan', 'tanpa',
-            'merusak', 'substrat', 'efektif', 'permukaan', 'kecepatan'
+            'merusak', 'substrat', 'efektif', 'permukaan', 'kecepatan',
+            'oksidasi', 'korosi', 'jika', 'melebihi', 'menjadi', 'warna',
+            'akibat', 'atur', 'setelah', 'pembersihan', 'aplikasikan',
+            'bening', 'mencegah', 'simpan', 'terkontrol', 'rentan',
+            'terhadap', 'kelembapan', 'verifikasi', 'optimal', 'dilakukan',
+            'melalui', 'inspeksi', 'harus', 'bebas', 'residu', 'tetap'
         }
         
         # Common Italian words
         italian_indicators = {
             'che', 'con', 'per', 'della', 'questo', 'molto', 'alla',
             'essere', 'anche', 'più', 'quando', 'come', 'quindi',
-            'infatti', 'pertanto', 'mediante', 'verso', 'nella', 'degli'
+            'infatti', 'pertanto', 'mediante', 'verso', 'nella', 'degli',
+            'sono', 'hanno', 'stato', 'dopo', 'mentre', 'prima'
         }
+        
+        # Common Spanish words
+        spanish_indicators = {
+            'que', 'con', 'para', 'por', 'esto', 'muy', 'como',
+            'cuando', 'donde', 'quien', 'cual', 'también', 'después',
+            'antes', 'durante', 'mediante', 'hasta', 'desde', 'está',
+            'son', 'han', 'sido', 'hace', 'hacer', 'puede', 'sin'
+        }
+        
+        # Common French words
+        french_indicators = {
+            'que', 'avec', 'pour', 'dans', 'sur', 'est', 'sont',
+            'ont', 'cette', 'ces', 'aussi', 'très', 'mais', 'comme',
+            'quand', 'où', 'qui', 'peut', 'faire', 'après', 'avant',
+            'pendant', 'sans', 'sous', 'depuis', 'été', 'être'
+        }
+        
+        # Common German words
+        german_indicators = {
+            'und', 'mit', 'für', 'von', 'auf', 'ist', 'sind',
+            'hat', 'haben', 'wird', 'werden', 'kann', 'muss',
+            'soll', 'dieser', 'diese', 'aber', 'oder', 'wenn',
+            'wann', 'wie', 'was', 'sehr', 'auch', 'nach', 'bei'
+        }
+        
+        # Common Portuguese words
+        portuguese_indicators = {
+            'que', 'com', 'para', 'por', 'este', 'esta', 'muito',
+            'quando', 'onde', 'como', 'também', 'depois', 'antes',
+            'durante', 'mediante', 'até', 'desde', 'está', 'são',
+            'tem', 'têm', 'sido', 'fazer', 'pode', 'sem', 'sobre'
+        }
+        
+        # Common Chinese characters (simplified)
+        chinese_chars = set('的一是在了不和有我这个们中来上大为国地到以说时要就出会可也你他们她它')
         
         text_lower = text.lower()
         words = set(text_lower.split())
@@ -97,39 +139,80 @@ class VoicePostProcessor:
         # Count language-specific words
         indonesian_matches = words & indonesian_indicators
         italian_matches = words & italian_indicators
+        spanish_matches = words & spanish_indicators
+        french_matches = words & french_indicators
+        german_matches = words & german_indicators
+        portuguese_matches = words & portuguese_indicators
+        chinese_char_matches = set(text) & chinese_chars
         
+        # Calculate match counts
         indonesian_count = len(indonesian_matches)
         italian_count = len(italian_matches)
+        spanish_count = len(spanish_matches)
+        french_count = len(french_matches)
+        german_count = len(german_matches)
+        portuguese_count = len(portuguese_matches)
+        chinese_count = len(chinese_char_matches)
         
-        # Determine language
-        if indonesian_count >= 3:
+        # Determine language (prioritize by match count, threshold = 3 matches)
+        language_matches = [
+            (indonesian_count, 'indonesian', indonesian_matches),
+            (italian_count, 'italian', italian_matches),
+            (spanish_count, 'spanish', spanish_matches),
+            (french_count, 'french', french_matches),
+            (german_count, 'german', german_matches),
+            (portuguese_count, 'portuguese', portuguese_matches),
+            (chinese_count, 'chinese', chinese_char_matches)
+        ]
+        
+        # Sort by count (highest first)
+        language_matches.sort(reverse=True, key=lambda x: x[0])
+        
+        # If top match has >= 3 indicators, it's that language
+        if language_matches[0][0] >= 3:
+            count, lang, matches = language_matches[0]
             return {
-                'language': 'indonesian',
-                'confidence': min(indonesian_count / 10.0, 1.0),
-                'indicators': list(indonesian_matches)[:5]
-            }
-        elif italian_count >= 3:
-            return {
-                'language': 'italian',
-                'confidence': min(italian_count / 10.0, 1.0),
-                'indicators': list(italian_matches)[:5]
+                'language': lang,
+                'confidence': min(count / 10.0, 1.0),
+                'indicators': list(matches)[:5]
             }
         
         # Check for high proportion of non-ASCII chars (not just scientific symbols)
-        non_ascii_count = sum(1 for c in text if ord(c) > 127)
+        # Allow some non-ASCII for scientific notation (μ, °, ², etc.)
+        non_ascii_count = sum(1 for c in text if ord(c) > 127 and c not in 'μ°²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉±×÷≤≥≈')
         total_chars = len(text)
         if total_chars > 0 and (non_ascii_count / total_chars) > 0.15:
-            # More than 15% non-ASCII suggests non-English language
+            # More than 15% non-ASCII (excluding scientific symbols) suggests non-English language
             return {
-                'language': 'unknown',
-                'confidence': 0.6,
+                'language': 'unknown_non_english',
+                'confidence': 0.7,
                 'indicators': ['high-non-ascii-content']
             }
         
-        # Default to English (scientific symbols like ², μ are OK)
+        # Check for common English words to confirm it's English
+        english_indicators = {
+            'the', 'this', 'that', 'these', 'those', 'and', 'or', 'but',
+            'for', 'with', 'from', 'about', 'into', 'through', 'during',
+            'before', 'after', 'above', 'below', 'between', 'under',
+            'again', 'further', 'then', 'once', 'here', 'there', 'when',
+            'where', 'why', 'how', 'all', 'each', 'other', 'some', 'such'
+        }
+        
+        english_matches = words & english_indicators
+        english_count = len(english_matches)
+        
+        # If we have English indicators and no other language indicators, it's English
+        if english_count >= 2:
+            return {
+                'language': 'english',
+                'confidence': 0.9,
+                'indicators': []
+            }
+        
+        # Default to English with low confidence (might be technical jargon)
         return {
             'language': 'english',
-            'confidence': 0.8,
+            'confidence': 0.6,
             'indicators': []
         }
     

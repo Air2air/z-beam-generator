@@ -17,7 +17,7 @@ from pathlib import Path
 import yaml
 
 from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
-from materials.utils.property_categorizer import get_property_categorizer
+from materials.utils.property_taxonomy import get_property_taxonomy as get_property_categorizer
 
 # Qualitative property definitions
 from components.frontmatter.qualitative_properties import (

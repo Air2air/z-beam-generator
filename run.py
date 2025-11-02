@@ -10,11 +10,17 @@ For advanced operations, use run_unified.py with the unified pipeline.
 ═══════════════════════════════════════════════════════════════════════════════
 
 🎯 GENERATE CONTENT:
-  python3 run.py --material "Aluminum"     # Specific material (frontmatter-only)
-  python3 run.py --all                     # All materials (frontmatter-only)
-  python3 run.py --caption "Aluminum"      # Generate AI caption (saves to Materials.yaml)
-  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle (saves to Materials.yaml)
-  python3 run.py --faq "Aluminum"          # Generate AI FAQ (saves to Materials.yaml)
+  python3 run.py --caption "Aluminum"      # Generate AI caption (saves to materials.yaml)
+  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle (saves to materials.yaml)
+  python3 run.py --faq "Aluminum"          # Generate AI FAQ (saves to materials.yaml)
+
+🎤 VOICE ENHANCEMENT (Post-Processing):
+  python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Apply voice, OVERWRITES in materials.yaml
+  python3 scripts/voice/enhance_materials_voice.py --all                  # Enhance all materials
+
+📤 MANUAL EXPORT (Combines materials.yaml + Categories.yaml):
+  python3 run.py --material "Aluminum" --data-only  # Export single material to frontmatter
+  python3 run.py --all --data-only                  # Export all materials to frontmatter
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -158,7 +164,7 @@ def main():
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit")
     
     # Other Commands
-    parser.add_argument("--data-only", action="store_true", help="Export frontmatter")
+    parser.add_argument("--data-only", action="store_true", help="Manual export: combine materials.yaml + Categories.yaml → frontmatter")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize frontmatter files")
     parser.add_argument("--sanitize-file", help="Sanitize specific file")
     

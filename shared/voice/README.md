@@ -4,41 +4,48 @@ Centralized voice management for country-specific linguistic variations in conte
 
 ## 🔄 Voice Processing Workflow
 
-**Voice enhancement is a POST-PROCESSING step, not inline generation:**
+**Voice enhancement is a POST-PROCESSING step that OVERWRITES text fields in materials.yaml:**
 
 ```
 1. Generation → materials.yaml (raw content, no voice)
-2. Voice Enhancement → materials.yaml (apply voice, save back)
-3. Export → frontmatter/*.yaml (export enhanced content)
+2. Voice Enhancement → materials.yaml (enhances text fields, OVERWRITES in-place)
+3. Manual Export → frontmatter/*.yaml (combines materials.yaml + Categories.yaml)
 ```
 
 ### Complete Workflow
 
 ```bash
-# Step 1: Generate raw content (no voice)
+# Step 1: Generate raw content (no voice) → Saves to materials.yaml
 python3 run.py --caption "Steel"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Steel"
 
-# Step 2: Apply voice enhancement to materials.yaml
+# Step 2: Apply voice enhancement → OVERWRITES text fields in materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
 
-# Step 3: Export to frontmatter
+# Step 3: Manual export → Combines materials.yaml + Categories.yaml → frontmatter
 python3 run.py --data-only
 ```
 
 ### Batch Processing
 
 ```bash
-# Generate all content
+# Generate all content → materials.yaml
 python3 run.py --all
 
-# Apply voice to all materials
+# Apply voice to all materials → OVERWRITES fields in materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --all
 
-# Export all frontmatter
+# Manual export → Combines with Categories.yaml → frontmatter files
 python3 run.py --data-only
 ```
+
+### Key Points
+
+- ✅ **Voice postprocessor OVERWRITES qualifying text fields** (caption, subtitle, FAQ answers)
+- ✅ **Valid enhanced output replaces original content** in materials.yaml
+- ✅ **Export is a separate manual step** that combines materials.yaml with Categories.yaml
+- ✅ **Categories.yaml provides metadata only** (NO fallback ranges - materials.yaml must be 100% complete)
 
 ## Quick Start - Post-Processing API
 
@@ -191,16 +198,18 @@ python3 scripts/voice/enhance_materials_voice.py --material "Steel" --voice-inte
 ```
 
 **What it does:**
-1. Reads material from `materials/data/materials.yaml`
-2. Applies VoicePostProcessor to caption/subtitle/FAQ
+1. Reads material entry from `materials/data/materials.yaml`
+2. Applies VoicePostProcessor to qualifying text fields (caption, subtitle, FAQ)
 3. Validates voice markers (target: ≥70/100 authenticity)
-4. Writes enhanced content back to materials.yaml
-5. Adds `voice_enhanced` timestamp
+4. **OVERWRITES original text fields** with voice-enhanced versions in materials.yaml
+5. Adds `voice_enhanced` timestamp to track enhancement
 
-**Processing:**
-- Caption: Enhances both `before` and `after` sections
-- Subtitle: Enhances single subtitle text
-- FAQ: Batch enhances all answer texts
+**Processing Details:**
+- **Caption**: Enhances both `before` and `after` sections → **OVERWRITES** in materials.yaml
+- **Subtitle**: Enhances subtitle text → **OVERWRITES** in materials.yaml
+- **FAQ**: Enhances all answer texts → **OVERWRITES** in materials.yaml
+- **Validation**: Only saves if authenticity score ≥70/100
+- **Atomic Writes**: Uses temporary files for safe overwriting
 
 ### Voice Authenticity Scoring
 

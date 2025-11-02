@@ -197,7 +197,7 @@ class TestMaterialsYamlStructure:
             if 'properties' not in mat_data:
                 continue
             
-            for prop_name, prop_data in mat_data['properties'].items():
+            for prop_name, prop_data in mat_data['materialProperties'].items():
                 if not isinstance(prop_data, dict):
                     continue
                 
@@ -333,7 +333,7 @@ class TestFrontmatterRangePropagation:
         fm_density = copper_frontmatter['materialProperties']['material_characteristics']['properties']['density']
         
         # Get material value (should have NO min/max)
-        mat_density = copper_material['properties']['density']
+        mat_density = copper_material['materialProperties']['density']
         
         # Get category ranges
         cat_density = metal_category_ranges['density']
@@ -366,7 +366,7 @@ class TestFrontmatterRangePropagation:
             pytest.skip("thermalDestruction not present in copper frontmatter")
         
         # Get material thermalDestruction (should be nested with NO min/max)
-        mat_td = copper_material['properties']['thermalDestruction']
+        mat_td = copper_material['materialProperties']['thermalDestruction']
         
         # Get category thermalDestruction (nested structure)
         cat_td = metal_category_ranges['thermalDestruction']

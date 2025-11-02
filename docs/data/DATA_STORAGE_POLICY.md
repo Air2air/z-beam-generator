@@ -28,14 +28,21 @@
 │                     SINGLE DIRECTION ONLY                        │
 └─────────────────────────────────────────────────────────────────┘
 
-  Materials.yaml                    Frontmatter Files
-  Categories.yaml     ──────────►   (aluminum-laser-cleaning.yaml)
-                                    (copper-laser-cleaning.yaml)
-  [SOURCE OF TRUTH]                 [OUTPUT ONLY]
+Step 1: Generation
+  Components ──────────► Materials.yaml
+  (AI text generation)   [Raw content, no voice]
+
+Step 2: Voice Enhancement  
+  VoicePostProcessor ──► Materials.yaml
+  (Reads, enhances)      [OVERWRITES text fields with voice-enhanced versions]
+
+Step 3: Manual Export
+  Materials.yaml + Categories.yaml ──────────► Frontmatter Files
+  [SOURCE OF TRUTH]  [METADATA ONLY]           [OUTPUT ONLY]
   
-  ✅ WRITE: Yes                     ✅ WRITE: Yes (generate only)
+  ✅ WRITE: Yes                     ✅ WRITE: Yes (export only)
   ✅ READ: Yes                      ❌ READ: No (for data persistence)
-  ✅ UPDATE: Yes                    ❌ UPDATE: No (regenerate instead)
+  ✅ UPDATE: Yes (voice overwrites) ❌ UPDATE: No (regenerate instead)
 ```
 
 ---
@@ -46,22 +53,37 @@
 
 **All complex operations happen on Materials.yaml:**
 - ✅ AI text generation (captions, descriptions, etc.) → Materials.yaml
+- ✅ Voice enhancement (OVERWRITES text fields) → Materials.yaml
 - ✅ Property research and discovery → Materials.yaml
 - ✅ Completeness validation → Materials.yaml
 - ✅ Quality scoring and thresholds → Materials.yaml
 - ✅ Schema validation → Materials.yaml
 - ✅ Data integrity checks → Materials.yaml
 
-**Frontmatter export is a simple copy operation:**
-- ✅ Read from Materials.yaml (already validated, complete)
-- ✅ Copy fields to frontmatter structure
+**Frontmatter export is a simple copy + combine operation:**
+- ✅ Read from Materials.yaml (already validated, complete, voice-enhanced)
+- ✅ Read from Categories.yaml (metadata only, NO fallback ranges)
+- ✅ Combine both sources
 - ✅ Write YAML file
-- ❌ NO API calls needed (content already generated)
+- ❌ NO API calls needed (content already generated and enhanced)
 - ❌ NO validation needed (already validated)
 - ❌ NO completeness checks needed (already complete)
 - ❌ NO quality scoring needed (already scored)
+- ❌ NO voice enhancement needed (already applied in materials.yaml)
 
 **Result**: Frontmatter export for 132 materials should take **seconds**, not minutes.
+
+**Workflow Commands:**
+```bash
+# Step 1: Generate content → materials.yaml
+python3 run.py --caption "Steel"
+
+# Step 2: Apply voice → OVERWRITES fields in materials.yaml  
+python3 scripts/voice/enhance_materials_voice.py --material "Steel"
+
+# Step 3: Manual export → combines materials.yaml + Categories.yaml → frontmatter
+python3 run.py --material "Steel" --data-only
+```
 
 ### 🚫 Zero Tolerance: No Fallback Ranges
 
@@ -92,7 +114,7 @@ def export_to_frontmatter(material_name):
         raise DataIncompleteError(f"{material_name} missing properties - fix in Materials.yaml")
     
     # Just copy complete data - no fallbacks
-    frontmatter = {'materialProperties': material_data['properties']}
+    frontmatter = {'materialProperties': material_data['materialProperties']}
     return frontmatter
 
 # ❌ WRONG: Using category fallback ranges
@@ -102,8 +124,8 @@ def export_to_frontmatter(material_name):
     
     # NEVER DO THIS - no fallback ranges allowed
     for prop in category_data['properties']:
-        if prop not in material_data['properties']:
-            material_data['properties'][prop] = category_data['properties'][prop]  # ❌ FORBIDDEN
+        if prop not in material_data['materialProperties']:
+            material_data['materialProperties'][prop] = category_data['properties'][prop]  # ❌ FORBIDDEN
 ```
 
 
@@ -116,7 +138,7 @@ def export_to_frontmatter(material_name):
     frontmatter = {
         'title': material_data['title'],
         'caption': material_data['caption'],  # Already generated in Materials.yaml
-        'properties': material_data['properties'],  # Already validated
+        'properties': material_data['materialProperties'],  # Already validated
         'applications': material_data['applications'],  # Already researched
         # ... just copy fields ...
     }
@@ -141,7 +163,7 @@ def export_to_frontmatter(material_name):
 ```python
 # BAD: Reading frontmatter to update Materials.yaml
 frontmatter_data = yaml.safe_load(open('frontmatter/aluminum-laser-cleaning.yaml'))
-material_data['properties']['density'] = frontmatter_data['materialProperties']['density']
+material_data['materialProperties']['density'] = frontmatter_data['materialProperties']['density']
 
 # BAD: Storing new data only in frontmatter
 frontmatter['new_property'] = researched_value
@@ -169,7 +191,7 @@ frontmatter = self.generate_frontmatter(material_name)
 # GOOD: Update Materials.yaml, regenerate frontmatter
 with open('data/Materials.yaml', 'r+') as f:
     materials = yaml.safe_load(f)
-    materials['materials'][material_name]['properties']['density'] = new_value
+    materials['materials'][material_name]['materialProperties']['density'] = new_value
     f.seek(0)
     yaml.dump(materials, f)
     f.truncate()
@@ -234,7 +256,7 @@ class PropertyManager:
         with open(self.materials_file, 'r+') as f:
             materials_data = yaml.safe_load(f)
             # Update material properties
-            materials_data['materials'][material_name]['properties'].update(properties)
+            materials_data['materials'][material_name]['materialProperties'].update(properties)
             f.seek(0)
             yaml.dump(materials_data, f)
             f.truncate()
@@ -288,7 +310,7 @@ def test_researched_properties_saved_to_materials_yaml():
     # CRITICAL: Verify saved to Materials.yaml
     with open('data/Materials.yaml') as f:
         materials = yaml.safe_load(f)
-        material_props = materials['materials']['TestMaterial']['properties']
+        material_props = materials['materials']['TestMaterial']['materialProperties']
         
         # All researched properties MUST be in Materials.yaml
         for prop_name in result.quantitative_properties:
@@ -503,7 +525,7 @@ If you find code that violates this policy:
    ```python
    # Example violation
    frontmatter_data = load_frontmatter(material_name)
-   materials_data['properties'] = frontmatter_data['properties']  # ❌ Wrong direction
+   materials_data['materialProperties'] = frontmatter_data['properties']  # ❌ Wrong direction
    ```
 
 2. **Fix the data flow**

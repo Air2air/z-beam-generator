@@ -285,7 +285,7 @@ data = load_materials()
 # Iterate all materials
 for name, material_data in data['materials'].items():
     print(f"{name}: {material_data['category']}")
-    print(f"  Density: {material_data['properties']['density']}")
+    print(f"  Density: {material_data['materialProperties']['density']}")
 ```
 
 ## Category System

@@ -382,9 +382,9 @@ from data.materials import load_materials_cached, get_material_by_name_cached
 
 # All verified values include metadata
 material = get_material_by_name_cached("Porcelain")
-density = material['properties']['density']['value']  # 2.5 (verified)
-verified = material['properties']['density']['ai_verified']  # True
-confidence = material['properties']['density']['verification_confidence']  # 95
+density = material['materialProperties']['density']['value']  # 2.5 (verified)
+verified = material['materialProperties']['density']['ai_verified']  # True
+confidence = material['materialProperties']['density']['verification_confidence']  # 95
 ```
 
 ## Recommended Workflow

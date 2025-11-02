@@ -84,8 +84,8 @@ after_text = self._extract_single_section_content(after_response.content, "after
 ### Step 4: Caption Combines Results
 ```python
 ai_content = {
-    'beforeText': before_text,
-    'afterText': after_text,
+    'before': before_text,
+    'after': after_text,
     # Caption-specific metadata
     'technicalFocus': 'surface_analysis',
     'contaminationProfile': f'{material_name} contamination'

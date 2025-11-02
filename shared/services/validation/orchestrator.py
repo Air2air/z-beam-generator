@@ -347,12 +347,13 @@ class ValidationOrchestrator:
                         result.medium_issues += 1
             
             # Validate Caption
-            if 'beforeText' in material_info or 'afterText' in material_info:
+            caption_data = material_info.get('caption', {})
+            if isinstance(caption_data, dict) and ('before' in caption_data or 'after' in caption_data):
                 from shared.validation.integration import validate_generated_content
                 caption_result = validate_generated_content(
                     content={
-                        'beforeText': material_info.get('beforeText', ''),
-                        'afterText': material_info.get('afterText', '')
+                        'before': caption_data.get('before', ''),
+                        'after': caption_data.get('after', '')
                     },
                     component_type='caption',
                     material_name=material_name,

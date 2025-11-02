@@ -330,8 +330,13 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Results**: [Implementation Success](../voice/IMPLEMENTATION_SUCCESS.md)
 **→ Authors**: Taiwan (Yi-Chun Lin), Indonesia (Ikmanda Roswati), Italy (Alessandro Moretti), USA (Todd Dunning)
 **→ Features**: Grammatical authenticity, AI-evasion markers, 100% VOICE_RULES compliance
-**→ Testing**: `python3 scripts/test_ai_evasion.py --all`
-**→ Generate**: `python3 scripts/generate_caption_to_frontmatter.py --material "Bronze"`
+
+**→ Workflow (3 Steps)**:
+1. Generate content: `python3 run.py --caption "Steel"` → saves to materials.yaml
+2. Apply voice: `python3 scripts/voice/enhance_materials_voice.py --material "Steel"` → **OVERWRITES** fields in materials.yaml
+3. Export: `python3 run.py --material "Steel" --data-only` → combines materials.yaml + Categories.yaml → frontmatter
+
+**→ Key**: Voice postprocessor **OVERWRITES text fields** in materials.yaml (caption, subtitle, FAQ answers)
 
 ### "Prompt architecture" / "AI detection + localization"
 **→ Immediate Response**: [AI Detection + Localization Architecture](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)

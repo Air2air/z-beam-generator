@@ -23,7 +23,7 @@ from dataclasses import dataclass
 import time
 
 # Import the specialized researchers
-from .property_value_researcher import PropertyValueResearcher, ResearchContext, PropertyResult
+from .unified_material_research import PropertyValueResearcher, ResearchContext, PropertyValue as PropertyResult
 from .machine_settings_researcher import MachineSettingsResearcher, LaserProcessingContext, MachineSettingResult
 
 

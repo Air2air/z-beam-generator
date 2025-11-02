@@ -65,7 +65,7 @@ if material_name in materials_section:
     updated_properties = material_data.get('materialProperties', {})
     # Fallback for older structure where properties were nested under 'properties'
     if not updated_properties and 'properties' in material_data:
-        updated_properties = material_data['properties']
+        updated_properties = material_data['materialProperties']
 ```
 
 ### Key Changes

@@ -98,7 +98,7 @@ def get_material_by_name_cached(material_name: str) -> Optional[Dict]:
     
     Example:
         >>> material = get_material_by_name_cached("Aluminum")
-        >>> density = material['properties']['density']['value']  # 2.70 g/cm³
+        >>> density = material['materialProperties']['density']['value']  # 2.70 g/cm³
     """
     data = load_materials_cached()
     materials = data.get('materials', {})

@@ -39,7 +39,7 @@ class TestMaterialsNoMinMax:
         materials = materials_data.get('materials', {})
         
         for material_name, material_data in materials.items():
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             
             for prop_name, prop_data in properties.items():
                 if not isinstance(prop_data, dict):
@@ -90,7 +90,7 @@ class TestMaterialsNoMinMax:
         materials = materials_data.get('materials', {})
         
         for material_name, material_data in materials.items():
-            properties = material_data.get('properties', {})
+            properties = material_data.get('materialProperties', {})
             
             for prop_name, prop_data in properties.items():
                 if not isinstance(prop_data, dict):
@@ -131,7 +131,7 @@ class TestMaterialsNoMinMax:
                 structural_issues.append(f"{material_name}: Missing 'properties' section")
                 continue
             
-            properties = material_data['properties']
+            properties = material_data['materialProperties']
             
             # Verify properties is a dict
             if not isinstance(properties, dict):

@@ -203,7 +203,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         
         # Import research infrastructure
         sys.path.insert(0, str(Path(__file__).parent))
-        from materials.research.property_value_researcher import PropertyValueResearcher, ResearchContext
+        from materials.research.unified_material_research import PropertyValueResearcher, ResearchContext
         from shared.api.client_factory import create_api_client
         
         print("="*80)

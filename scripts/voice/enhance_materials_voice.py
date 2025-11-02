@@ -2,28 +2,36 @@
 """
 Voice Enhancement for Materials.yaml
 
-This tool reads materials/data/materials.yaml, applies author voice to text content,
-and writes the enhanced content back to materials.yaml.
+This tool reads materials/data/materials.yaml, applies author voice to qualifying text fields,
+and OVERWRITES the original fields with voice-enhanced versions in materials.yaml.
 
 Workflow:
-1. Read materials.yaml
-2. For each material with caption/subtitle/faq
+1. Read material entry from materials.yaml
+2. For each qualifying text field (caption, subtitle, FAQ answers)
 3. Apply VoicePostProcessor to enhance text
-4. Write back to materials.yaml with voice markers
-5. Then frontmatter export reads the enhanced data
+4. Validate enhanced version (authenticity score ≥70/100)
+5. OVERWRITE original field with enhanced version in materials.yaml
+6. Use atomic writes (temp files) for safe overwriting
+7. Separate manual export step combines materials.yaml + Categories.yaml → frontmatter
 
 Usage:
-    # Single material
+    # Single material - OVERWRITES text fields in materials.yaml
     python3 scripts/voice/enhance_materials_voice.py --material "Steel"
     
-    # All materials
+    # All materials - OVERWRITES text fields for all materials
     python3 scripts/voice/enhance_materials_voice.py --all
     
-    # Dry run (no changes)
+    # Dry run (preview changes, no overwriting)
     python3 scripts/voice/enhance_materials_voice.py --material "Steel" --dry-run
     
-    # Validate only
+    # Validate only (check voice markers, no changes)
     python3 scripts/voice/enhance_materials_voice.py --validate-only
+
+Export Step (Separate Manual Command):
+    # After voice enhancement, manually export to frontmatter
+    python3 run.py --material "Steel" --data-only
+    
+    # Combines materials.yaml (voice-enhanced) + Categories.yaml → frontmatter/*.yaml
 """
 
 import argparse
@@ -261,13 +269,66 @@ class MaterialsVoiceEnhancer:
             print(f"   ✅ Already good")
             return False
     
+    def _regenerate_faq_answer_in_english(
+        self,
+        question: str,
+        author_info: Dict,
+        intensity: int
+    ) -> Optional[str]:
+        """
+        Regenerate FAQ answer in English using API.
+        
+        Used when non-English text is detected in FAQ answers.
+        """
+        author_name = author_info.get('name', 'Unknown')
+        author_country = author_info.get('country', 'Unknown')
+        
+        prompt = f"""You are {author_name}, a laser cleaning expert from {author_country}.
+
+Answer this FAQ question in ENGLISH ONLY. Use natural, professional English with subtle influence from your country's communication style, but the answer MUST be in English.
+
+Question: {question}
+
+Requirements:
+- Answer in English (no other languages)
+- 30-50 words
+- Professional and technical
+- Specific to laser cleaning
+- Include country-specific voice markers naturally
+
+Answer:"""
+        
+        try:
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                max_tokens=100,
+                temperature=0.7
+            )
+            
+            if response and hasattr(response, 'content'):
+                answer = response.content.strip()
+                
+                # Validate it's in English
+                lang_check = self.voice_processor.detect_language(answer)
+                if lang_check['language'] == 'english':
+                    return answer
+                else:
+                    logging.warning(f"Regenerated answer still not English: {lang_check['language']}")
+                    return None
+            
+        except Exception as e:
+            logging.error(f"Failed to regenerate FAQ answer: {e}")
+            return None
+        
+        return None
+    
     def _enhance_faq(
         self,
         faq: Dict,
         author_info: Dict,
         intensity: int
     ) -> bool:
-        """Enhance FAQ answers."""
+        """Enhance FAQ answers, regenerating any non-English text."""
         if not isinstance(faq, dict) or 'questions' not in faq:
             return False
         
@@ -277,12 +338,38 @@ class MaterialsVoiceEnhancer:
         
         modified = False
         enhanced_count = 0
+        regenerated_count = 0
         
         for i, qa in enumerate(questions, 1):
             if 'answer' not in qa:
                 continue
             
             answer = qa['answer']
+            
+            # Check if answer is in non-English language
+            lang_result = self.voice_processor.detect_language(answer)
+            
+            if lang_result['language'] != 'english':
+                # CRITICAL: Non-English text detected - must regenerate
+                print(f"   ❌ Q{i}: Non-English ({lang_result['language']}) - regenerating...")
+                
+                # Regenerate answer in English using API
+                question_text = qa.get('question', '')
+                regenerated_answer = self._regenerate_faq_answer_in_english(
+                    question=question_text,
+                    author_info=author_info,
+                    intensity=intensity
+                )
+                
+                if regenerated_answer and regenerated_answer != answer:
+                    qa['answer'] = regenerated_answer
+                    modified = True
+                    regenerated_count += 1
+                else:
+                    print("      ⚠️  Regeneration failed, keeping original")
+                continue
+            
+            # If English, check voice authenticity and enhance if needed
             score = self.voice_processor.get_voice_score(answer, author_info)
             
             if score['authenticity_score'] < 70:
@@ -295,9 +382,11 @@ class MaterialsVoiceEnhancer:
                 modified = True
                 enhanced_count += 1
         
+        if regenerated_count > 0:
+            print(f"   🔄 Regenerated {regenerated_count} non-English answers")
         if enhanced_count > 0:
             print(f"   ✅ Enhanced {enhanced_count}/{len(questions)} answers")
-        else:
+        if regenerated_count == 0 and enhanced_count == 0:
             print(f"   ✅ All {len(questions)} answers already good")
         
         return modified

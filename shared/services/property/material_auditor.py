@@ -125,7 +125,7 @@ class MaterialAuditor:
         
         # Initialize validators
         # Initialize validation system
-        self.schema_validator = SchemaValidator(validation_mode="enhanced")
+        self.schema_validator = SchemaValidator(strict_mode=True)
         
         # Audit metrics
         self.audit_stats = {

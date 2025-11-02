@@ -200,7 +200,7 @@ class YAMLParser:
         
         # Basic validation rules for each component type
         validation_rules = {
-            'caption': lambda d: 'before_text' in d or 'beforeText' in d,
+            'caption': lambda d: 'before' in d or 'after' in d,
             'jsonld': lambda d: '@context' in d or 'structuredData' in d or 'content' in d,
             'metatags': lambda d: 'title' in d or 'meta' in d or 'htmlMeta' in d,
             'tags': lambda d: isinstance(d, list) or 'tags' in d or 'contentTags' in d,

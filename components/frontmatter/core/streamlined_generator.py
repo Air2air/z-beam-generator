@@ -20,7 +20,7 @@ from typing import Dict, Optional, List
 
 from shared.generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
-from materials.research.property_value_researcher import PropertyValueResearcher
+from materials.research.unified_material_research import PropertyValueResearcher
 from materials.services.template_service import TemplateService
 from materials.services.pipeline_process_service import PipelineProcessService
 
@@ -50,8 +50,8 @@ from shared.services.validation import ValidationOrchestrator
 
 # Requirements loader for consistency with audit system
 from shared.utils.requirements_loader import RequirementsLoader
-# Property categorizer for analysis and validation (REQUIRED per fail-fast)
-from materials.utils.property_categorizer import get_property_categorizer
+# Property taxonomy for analysis and validation (REQUIRED per fail-fast)
+from materials.utils.property_taxonomy import get_property_taxonomy as get_property_categorizer
 
 logger = logging.getLogger(__name__)
 

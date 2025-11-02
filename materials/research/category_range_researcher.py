@@ -26,7 +26,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from materials.data.materials import get_material_by_name, load_materials
-from materials.research.material_property_researcher import MaterialPropertyResearcher
+from materials.research.unified_material_research import UnifiedMaterialResearch
 
 
 @dataclass
@@ -63,7 +63,7 @@ class CategoryRangeResearcher:
     
     def __init__(self):
         self.materials_data = load_materials()
-        self.property_researcher = MaterialPropertyResearcher()
+        self.property_researcher = UnifiedMaterialResearch()
         
         # Load existing category ranges from Materials.yaml
         self.category_ranges = self._load_category_ranges()
@@ -565,7 +565,7 @@ class CategoryRangeResearcher:
             )]
         
         category = material_data.get('category', 'unknown')
-        properties = material_data.get('properties', {})
+        properties = material_data.get('materialProperties', {})
         
         # Get research ranges for this category
         research_ranges = self.research_ranges.get(category, {})

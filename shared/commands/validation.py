@@ -76,29 +76,31 @@ def generate_content_validation_report(output_file: str) -> bool:
                 material_results['faq'] = {'error': str(e)}
         
         # Validate Caption if exists
-        before_text = material_info.get('beforeText')
-        after_text = material_info.get('afterText')
-        if before_text or after_text:
-            has_content = True
-            try:
-                result = validate_generated_content(
-                    content={'beforeText': before_text or '', 'afterText': after_text or ''},
-                    component_type='caption',
-                    material_name=material_name,
-                    author_info=author_info,
-                    log_report=False
-                )
-                material_results['caption'] = {
-                    'success': result.success,
-                    'overall_score': result.overall_score,
-                    'grade': result.grade,
-                    'dimensions': get_dimension_scores_dict(result),
-                    'issues': result.critical_issues,
-                    'warnings': result.warnings,
-                    'recommendations': result.recommendations
-                }
-            except Exception as e:
-                material_results['caption'] = {'error': str(e)}
+        caption_data = material_info.get('caption', {})
+        if isinstance(caption_data, dict):
+            before_text = caption_data.get('before')
+            after_text = caption_data.get('after')
+            if before_text or after_text:
+                has_content = True
+                try:
+                    result = validate_generated_content(
+                        content={'before': before_text or '', 'after': after_text or ''},
+                        component_type='caption',
+                        material_name=material_name,
+                        author_info=author_info,
+                        log_report=False
+                    )
+                    material_results['caption'] = {
+                        'success': result.success,
+                        'overall_score': result.overall_score,
+                        'grade': result.grade,
+                        'dimensions': get_dimension_scores_dict(result),
+                        'issues': result.critical_issues,
+                        'warnings': result.warnings,
+                        'recommendations': result.recommendations
+                    }
+                except Exception as e:
+                    material_results['caption'] = {'error': str(e)}
         
         # Validate Subtitle if exists
         subtitle = material_info.get('subtitle')

@@ -334,7 +334,7 @@ class FrontmatterGenerator:
         
         # 2. Inject material properties from Materials.yaml
         material = load_material(material_id)
-        frontmatter['materialProperties'] = self._format_properties(material['properties'])
+        frontmatter['materialProperties'] = self._format_properties(material['materialProperties'])
         
         # 3. Inject category ranges from Categories.yaml
         category = load_category(material['category'])

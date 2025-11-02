@@ -26,32 +26,39 @@
 
 ```
 1. GENERATION (raw content, no voice)
-   └─> Components write to data/*.yaml
+   └─> Components write to materials.yaml
        
-2. VOICE ENHANCEMENT (post-processing)
-   └─> Read data/*.yaml → Apply voice → Write back to data/*.yaml
+2. VOICE ENHANCEMENT (post-processing - OVERWRITES fields)
+   └─> Read materials.yaml → Apply voice → OVERWRITE text fields in materials.yaml
        
-3. EXPORT (enhanced content)
-   └─> Read data/*.yaml → Export to frontmatter/*.yaml
+3. MANUAL EXPORT (combines materials.yaml + Categories.yaml)
+   └─> Read materials.yaml + Categories.yaml → Export to frontmatter/*.yaml
 ```
 
 ### Commands
 
 ```bash
-# Step 1: Generate raw content
+# Step 1: Generate raw content → materials.yaml
 python3 run.py --caption "Steel"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Steel"
 
-# Step 2: Apply voice enhancement
+# Step 2: Apply voice enhancement → OVERWRITES fields in materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
 
-# Step 3: Export to frontmatter
+# Step 3: Manual export → Combines materials.yaml + Categories.yaml → frontmatter
 python3 run.py --data-only
 
 # Or do all materials at once:
 python3 scripts/voice/enhance_materials_voice.py --all
 ```
+
+### Key Behavior
+
+- ✅ **Voice postprocessor OVERWRITES qualifying text fields** in materials.yaml entry
+- ✅ **Valid enhanced output replaces original content** (caption, subtitle, FAQ answers)
+- ✅ **Export is a separate manual command** (--data-only)
+- ✅ **Export combines materials.yaml with Categories.yaml** for complete frontmatter
 
 ---
 
@@ -62,11 +69,12 @@ python3 scripts/voice/enhance_materials_voice.py --all
 **Purpose**: Post-process materials.yaml to apply author voice
 
 ### Features
-- Reads from `materials/data/materials.yaml`
-- Applies VoicePostProcessor to caption/subtitle/FAQ
-- Validates voice markers (target: ≥70/100)
-- Writes enhanced content back to materials.yaml
-- Adds `voice_enhanced` timestamp
+- Reads material entry from `materials/data/materials.yaml`
+- Applies VoicePostProcessor to qualifying text fields (caption, subtitle, FAQ)
+- Validates voice markers (target: ≥70/100 authenticity)
+- **OVERWRITES original text fields** with voice-enhanced versions in materials.yaml
+- Uses atomic writes (temp files) for safe overwriting
+- Adds `voice_enhanced` timestamp to track processing
 
 ### Usage
 
@@ -89,15 +97,48 @@ python3 scripts/voice/enhance_materials_voice.py --material "Steel" --voice-inte
 
 ### Processing Details
 
-**Caption**: Enhances both `before` and `after` sections  
-**Subtitle**: Enhances single subtitle text  
-**FAQ**: Batch enhances all answer texts  
+**Caption**: Enhances both `before` and `after` sections → **OVERWRITES** in materials.yaml  
+**Subtitle**: Enhances subtitle text → **OVERWRITES** in materials.yaml  
+**FAQ**: Enhances all answer texts → **OVERWRITES** in materials.yaml  
 
-**Skipping**: If authenticity score ≥70, content is left as-is
+**Skipping**: If authenticity score ≥70, content is left as-is (no overwrite)  
+**Validation**: Only overwrites if enhanced version passes quality threshold
 
 ---
 
-## 📊 Voice Quality Scoring
+## � Manual Export Step (Combines materials.yaml + Categories.yaml)
+
+The final step is a **separate manual command** that combines data sources:
+
+```bash
+# Export frontmatter (combines materials.yaml + Categories.yaml)
+python3 run.py --data-only
+
+# Or for a single material
+python3 run.py --material "Steel" --data-only
+```
+
+### What --data-only Does
+
+1. **Reads voice-enhanced content** from `materials/data/materials.yaml`
+2. **Reads category metadata** from `materials/data/Categories.yaml`
+3. **Combines both sources** to create complete frontmatter
+4. **Exports to** `frontmatter/materials/*.yaml`
+
+### Key Points
+
+- ✅ **Uses TrivialFrontmatterExporter** - simple YAML-to-YAML copy
+- ✅ **No API calls** - all content already generated and enhanced
+- ✅ **No validation** - already validated in materials.yaml
+- ✅ **Fast performance** - seconds for all 132 materials
+- ✅ **Categories.yaml provides metadata only** (NO fallback ranges)
+- ✅ **materials.yaml must be 100% complete** before export
+
+See: `components/frontmatter/core/trivial_exporter.py` for implementation
+
+---
+
+## �📊 Voice Quality Scoring
 
 Voice authenticity is measured 0-100:
 
@@ -158,9 +199,9 @@ This workflow is identical for:
 - ✅ **Thesaurus** (`thesaurus/data.yaml`)
 
 **Pattern**:
-1. Component generator → writes raw to data file
-2. Voice enhancer → reads, enhances, writes back
-3. Frontmatter export → reads enhanced, exports
+1. Component generator → writes raw content to materials.yaml
+2. Voice enhancer → reads, enhances, **OVERWRITES fields** in materials.yaml
+3. Manual export → combines materials.yaml + Categories.yaml → frontmatter files
 
 ---
 

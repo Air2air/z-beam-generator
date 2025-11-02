@@ -221,7 +221,7 @@ class ValidationService:
             
             # Ensure empty sections exist (safe correction)
             if 'properties' not in corrected_data:
-                corrected_data['properties'] = {}
+                corrected_data['materialProperties'] = {}
                 logger.info("Added missing properties section")
             
             if 'machineSettings' not in corrected_data:

@@ -14,14 +14,14 @@ Usage:
     from materials.utils.property_helpers import PropertyAccessor
     
     # Simple property access
-    value = PropertyAccessor.get_value(material['properties']['density'])
+    value = PropertyAccessor.get_value(material['materialProperties']['density'])
     
     # Nested thermal destruction
     temp = PropertyAccessor.get_thermal_destruction_point(material)
     
     # Pulse-specific ablation
     threshold = PropertyAccessor.get_value(
-        material['properties']['ablationThreshold'],
+        material['materialProperties']['ablationThreshold'],
         pulse_type='femtosecond'
     )
     
@@ -136,7 +136,7 @@ class PropertyAccessor:
             >>> print(f"Melting point: {temp} K")
         """
         try:
-            return float(material['properties']['thermalDestruction']['point']['value'])
+            return float(material['materialProperties']['thermalDestruction']['point']['value'])
         except (KeyError, TypeError, ValueError):
             return None
     
@@ -156,7 +156,7 @@ class PropertyAccessor:
             >>> print(f"Destruction mechanism: {dtype}")
         """
         try:
-            return material['properties']['thermalDestruction']['type']
+            return material['materialProperties']['thermalDestruction']['type']
         except (KeyError, TypeError):
             return None
     
@@ -180,7 +180,7 @@ class PropertyAccessor:
             >>> print(f"Femtosecond ablation: {threshold} J/cm²")
         """
         try:
-            ablation_data = material['properties']['ablationThreshold']
+            ablation_data = material['materialProperties']['ablationThreshold']
             return PropertyAccessor.get_value(
                 ablation_data, 
                 pulse_type=pulse_type,
@@ -209,7 +209,7 @@ class PropertyAccessor:
             >>> print(f"Green laser reflectivity: {refl}%")
         """
         try:
-            refl_data = material['properties']['reflectivity']
+            refl_data = material['materialProperties']['reflectivity']
             return PropertyAccessor.get_value(
                 refl_data,
                 wavelength=wavelength,
@@ -277,7 +277,7 @@ class PropertyAccessor:
             
         Example:
             >>> pattern = PropertyAccessor.detect_property_pattern(
-            ...     material['properties']['ablationThreshold']
+            ...     material['materialProperties']['ablationThreshold']
             ... )
             >>> print(f"Pattern type: {pattern}")
         """
@@ -320,7 +320,7 @@ class PropertyAccessor:
             >>> temp = PropertyAccessor.get_property_safely(copper, 'thermalDestruction')
         """
         try:
-            prop_data = material['properties'].get(property_name)
+            prop_data = material['materialProperties'].get(property_name)
             if prop_data is None:
                 return None
             
@@ -353,7 +353,7 @@ class PropertyAccessor:
             ...     print(f"{prop}: {val}")
         """
         result = {}
-        properties = material.get('properties', {})
+        properties = material.get('materialProperties', {})
         
         for prop_name, prop_data in properties.items():
             value = PropertyAccessor.get_value(

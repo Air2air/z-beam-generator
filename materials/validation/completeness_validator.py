@@ -230,8 +230,8 @@ class CompletenessValidator:
         properties = set()
         
         for category_name, category_data in material_properties.items():
-            if isinstance(category_data, dict) and 'properties' in category_data:
-                for prop_name, prop_data in category_data['properties'].items():
+            if isinstance(category_data, dict) and 'materialProperties' in category_data:
+                for prop_name, prop_data in category_data['materialProperties'].items():
                     properties.add(prop_name)
                     
                     # Handle nested thermalDestruction structure
@@ -261,7 +261,7 @@ class CompletenessValidator:
                 continue
             
             qualitative_props = []
-            for prop_name in category_data['properties'].keys():
+            for prop_name in category_data['materialProperties'].keys():
                 if is_qualitative_property(prop_name):
                     qualitative_props.append(prop_name)
             
@@ -275,10 +275,10 @@ class CompletenessValidator:
         unvalidated = []
         
         for category_name, category_data in material_properties.items():
-            if not isinstance(category_data, dict) or 'properties' not in category_data:
+            if not isinstance(category_data, dict) or 'materialProperties' not in category_data:
                 continue
             
-            for prop_name, prop_data in category_data['properties'].items():
+            for prop_name, prop_data in category_data['materialProperties'].items():
                 if not isinstance(prop_data, dict):
                     continue
                 

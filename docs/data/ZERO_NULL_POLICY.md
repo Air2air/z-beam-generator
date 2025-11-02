@@ -432,7 +432,7 @@ def generate_frontmatter(self, material_name: str):
     
     # Generate properties
     properties = {}
-    for prop_name, prop_data in material_data['properties'].items():
+    for prop_name, prop_data in material_data['materialProperties'].items():
         # Build property structure
         prop_entry = {
             'value': prop_data['value'],

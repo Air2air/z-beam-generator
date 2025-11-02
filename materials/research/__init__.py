@@ -15,15 +15,28 @@ Author: GitHub Copilot
 Date: September 25, 2025
 """
 
-from .property_value_researcher import PropertyValueResearcher, PropertyResult, PropertyDataMetric, ResearchContext
+from .unified_material_research import (
+    UnifiedMaterialResearch,
+    PropertyValueResearcher,
+    MaterialPropertyResearcher,
+    MaterialPropertyResearchSystem,
+    PropertyInfo,
+    PropertyValue,
+    ResearchContext,
+    ResearchResult
+)
 from .machine_settings_researcher import MachineSettingsResearcher, MachineSettingResult, LaserProcessingContext
 from .unified_research_interface import UnifiedMaterialResearcher, UnifiedResearchResult
 
 __all__ = [
+    'UnifiedMaterialResearch',
     'PropertyValueResearcher', 
-    'PropertyResult', 
-    'PropertyDataMetric', 
+    'MaterialPropertyResearcher',
+    'MaterialPropertyResearchSystem',
+    'PropertyInfo',
+    'PropertyValue',
     'ResearchContext',
+    'ResearchResult',
     'MachineSettingsResearcher', 
     'MachineSettingResult', 
     'LaserProcessingContext',

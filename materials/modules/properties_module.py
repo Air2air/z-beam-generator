@@ -108,7 +108,7 @@ class PropertiesModule:
                 f"(material: {material_name})"
             )
         
-        category_props = categories[category].get('properties', {})
+        category_props = categories[category].get('materialProperties', {})
         
         # Apply ranges to each property
         result = {}

@@ -81,7 +81,7 @@ density:
 ```python
 from utils.property_helpers import PropertyAccessor
 
-value = PropertyAccessor.get_value(material['properties']['density'])
+value = PropertyAccessor.get_value(material['materialProperties']['density'])
 # Returns: 8.96
 ```
 
@@ -112,7 +112,7 @@ temp = PropertyAccessor.get_thermal_destruction_point(material)
 dtype = PropertyAccessor.get_thermal_destruction_type(material)
 
 # Manual access
-temp = material['properties']['thermalDestruction']['point']['value']
+temp = material['materialProperties']['thermalDestruction']['point']['value']
 ```
 
 ### Pattern 3: Pulse-Specific
@@ -228,7 +228,7 @@ materials = materials_data['materials']
 copper = materials['Copper']
 
 # Get any property value
-density = PropertyAccessor.get_value(copper['properties']['density'])
+density = PropertyAccessor.get_value(copper['materialProperties']['density'])
 temp = PropertyAccessor.get_thermal_destruction_point(copper)
 threshold = PropertyAccessor.get_ablation_threshold(copper, 'femtosecond')
 ```
@@ -528,7 +528,7 @@ materials = materials_data['materials']
 copper = materials['Copper']
 
 # Simple property
-density = PropertyAccessor.get_value(copper['properties']['density'])
+density = PropertyAccessor.get_value(copper['materialProperties']['density'])
 print(f"Copper density: {density} g/cm³")
 
 # Nested property
@@ -550,7 +550,7 @@ with open('data/Categories.yaml', 'r') as f:
 
 # Get copper density
 copper = materials_data['materials']['Copper']
-copper_density = PropertyAccessor.get_value(copper['properties']['density'])
+copper_density = PropertyAccessor.get_value(copper['materialProperties']['density'])
 
 # Get metal category range
 density_range = PropertyAccessor.get_category_range(
@@ -625,7 +625,7 @@ print(f"Metal properties: {', '.join(sorted(metal_props))}")
 
 **Problem**: Direct access to nested structure fails
 ```python
-temp = material['properties']['thermalDestruction']['point']['value']
+temp = material['materialProperties']['thermalDestruction']['point']['value']
 # KeyError if structure missing
 ```
 
@@ -639,7 +639,7 @@ temp = PropertyAccessor.get_thermal_destruction_point(material)
 
 **Problem**: Need to handle all pulse types
 ```python
-ablation = material['properties']['ablationThreshold']
+ablation = material['materialProperties']['ablationThreshold']
 # Which key? nanosecond? picosecond? femtosecond?
 ```
 
@@ -691,7 +691,7 @@ python3 -m pytest tests/test_category_range_compliance.py -v
 
 # Or write custom validation
 for material_name, material_data in materials.items():
-    for prop_name, prop_data in material_data['properties'].items():
+    for prop_name, prop_data in material_data['materialProperties'].items():
         value = PropertyAccessor.get_value(prop_data)
         range_data = PropertyAccessor.get_category_range(
             categories, material_category, prop_name

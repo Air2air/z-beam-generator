@@ -371,8 +371,8 @@ class PipelineProcessService:
         prompt = f"""Generate a concise technical description (1-2 sentences) for the environmental benefit "{benefit_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Thermal conductivity: {material_data.get('properties', {}).get('thermalConductivity', 'N/A')}
-- Melting point: {material_data.get('properties', {}).get('meltingPoint', 'N/A')}
+- Thermal conductivity: {material_data.get('materialProperties', {}).get('thermalConductivity', 'N/A')}
+- Melting point: {material_data.get('materialProperties', {}).get('meltingPoint', 'N/A')}
 - Material category: {material_data.get('category', 'Metal')}
 
 Applicable industries: {', '.join(industries) if industries else 'General industrial'}
@@ -456,8 +456,8 @@ Output ONLY the statement, no prefix or explanation."""
         prompt = f"""Generate a concise technical description (1-2 sentences) for the outcome metric "{metric_type}" specifically for {material_name} laser cleaning.
 
 Material properties:
-- Hardness: {material_data.get('properties', {}).get('hardness', 'N/A')}
-- Surface properties: {material_data.get('properties', {}).get('surfaceRoughness', 'N/A')}
+- Hardness: {material_data.get('materialProperties', {}).get('hardness', 'N/A')}
+- Surface properties: {material_data.get('materialProperties', {}).get('surfaceRoughness', 'N/A')}
 - Material category: {material_data.get('category', 'Metal')}
 
 Measurement methods available: {', '.join(measurement_methods) if measurement_methods else 'Standard methods'}

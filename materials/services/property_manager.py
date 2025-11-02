@@ -30,7 +30,7 @@ from datetime import datetime
 from typing import Dict, List, Set, Optional, Tuple, Callable
 from dataclasses import dataclass
 
-from materials.research.property_value_researcher import PropertyValueResearcher
+from materials.research.unified_material_research import UnifiedMaterialResearch
 from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
 from shared.validation.helpers.unit_converter import UnitConverter
 
@@ -70,7 +70,7 @@ class PropertyManager:
     
     # Essential properties by category
     # NOTE: thermalDestruction is the unified property (replaces meltingPoint, thermalDegradationPoint, etc.)
-    # PropertyValueResearcher handles alias resolution automatically
+    # UnifiedMaterialResearch handles alias resolution automatically
     ESSENTIAL_PROPERTIES = {
         'universal': {'thermalConductivity', 'density', 'hardness', 'laserReflectivity'},  # Changed reflectivity → laserReflectivity
         'metal': {'thermalConductivity', 'density', 'hardness'},  # Removed thermalDestruction (structured property)
@@ -90,7 +90,7 @@ class PropertyManager:
     
     def __init__(
         self,
-        property_researcher: PropertyValueResearcher,
+        property_researcher: UnifiedMaterialResearch,
         get_category_ranges_func: Optional[Callable] = None,
         enhance_descriptions_func: Optional[Callable] = None,
         categories_data: Optional[Dict] = None
@@ -99,7 +99,7 @@ class PropertyManager:
         Initialize property manager.
         
         Args:
-            property_researcher: PropertyValueResearcher instance for AI research
+            property_researcher: UnifiedMaterialResearch instance for AI research
             get_category_ranges_func: Function to get category ranges for properties
             enhance_descriptions_func: Function to enhance with standardized descriptions
             categories_data: Optional Categories.yaml data for enhanced discovery
@@ -107,9 +107,9 @@ class PropertyManager:
         Raises:
             PropertyDiscoveryError: If property_researcher is None
         """
-        # PropertyValueResearcher can be None in data-only mode (100% complete YAML data)
+        # UnifiedMaterialResearch can be None in data-only mode (100% complete YAML data)
         if not property_researcher:
-            logger.info("PropertyValueResearcher not provided - operating in data-only mode")
+            logger.info("UnifiedMaterialResearch not provided - operating in data-only mode")
         
         self.property_researcher = property_researcher
         self.get_category_ranges = get_category_ranges_func
@@ -317,7 +317,7 @@ class PropertyManager:
             # Check if property researcher is available
             if not self.property_researcher:
                 raise PropertyDiscoveryError(
-                    "PropertyValueResearcher not available. "
+                    "UnifiedMaterialResearch not available. "
                     "Cannot research machine settings in data-only mode."
                 )
             
@@ -464,7 +464,7 @@ class PropertyManager:
         Returns:
             Tuple of (quantitative_properties, qualitative_characteristics)
         """
-        from materials.research.property_value_researcher import PropertyValueResearcher
+        from materials.research.unified_material_research import UnifiedMaterialResearch
         
         # Start with existing YAML properties - but normalize their units first
         quantitative = {}
@@ -496,7 +496,7 @@ class PropertyManager:
         
         for prop_name, prop_data in discovered.items():
             # Resolve property aliases (e.g., meltingPoint → thermalDestruction)
-            canonical_prop_name = PropertyValueResearcher.resolve_property_alias(prop_name)
+            canonical_prop_name = UnifiedMaterialResearch.resolve_property_alias(prop_name)
             
             if canonical_prop_name != prop_name:
                 self.logger.info(

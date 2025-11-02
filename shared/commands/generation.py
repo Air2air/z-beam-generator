@@ -48,8 +48,8 @@ def handle_caption_generation(material_name: str):
         
         # Generate caption (no voice - that's done by post-processor)
         print("🤖 Generating AI-powered caption...")
-        print("   • beforeText: Contaminated surface analysis")
-        print("   • afterText: Cleaned surface analysis")
+        print("   • before: Contaminated surface analysis")
+        print("   • after: Cleaned surface analysis")
         print("   • Target: Technical, factual content")
         print("   • Note: Voice enhancement happens in post-processing")
         print()
@@ -73,17 +73,21 @@ def handle_caption_generation(material_name: str):
         material_data = get_material_by_name(material_name, materials_data)
         
         caption = material_data.get('caption', {})
-        if 'beforeText' in caption and 'afterText' in caption:
-            before_text = caption['beforeText']
-            after_text = caption['afterText']
+        if isinstance(caption, dict) and ('before' in caption or 'after' in caption):
+            before_text = caption.get('before', '')
+            after_text = caption.get('after', '')
             
             print("📊 Statistics:")
-            print(f"   • beforeText: {len(before_text)} characters, {len(before_text.split())} words")
-            print(f"   • afterText: {len(after_text)} characters, {len(after_text.split())} words")
+            if before_text:
+                print(f"   • before: {len(before_text)} characters, {len(before_text.split())} words")
+            if after_text:
+                print(f"   • after: {len(after_text)} characters, {len(after_text.split())} words")
             print()
             print("📝 Preview:")
-            print(f"   • Before: {before_text[:100]}...")
-            print(f"   • After: {after_text[:100]}...")
+            if before_text:
+                print(f"   • Before: {before_text[:100]}...")
+            if after_text:
+                print(f"   • After: {after_text[:100]}...")
             print()
         
         print("💾 Saved to: materials/data/materials.yaml → caption")

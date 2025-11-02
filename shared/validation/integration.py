@@ -29,7 +29,8 @@ def validate_generated_content(
     Args:
         content: Generated content (varies by component):
             - FAQ: dict with 'questions' list
-            - Caption: dict with 'beforeText' and 'afterText'
+            Validates:
+            - Caption: dict with 'before' and 'after'
             - Subtitle: str or dict with 'subtitle'
         component_type: 'faq', 'caption', or 'subtitle'
         material_name: Material name

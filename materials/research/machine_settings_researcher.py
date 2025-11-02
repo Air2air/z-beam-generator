@@ -25,7 +25,7 @@ from enum import Enum
 import time
 
 # Import PropertyValueResearcher for material property lookup
-from .property_value_researcher import PropertyValueResearcher, ResearchContext, PropertyResult
+from .unified_material_research import PropertyValueResearcher, ResearchContext, PropertyValue as PropertyResult
 
 
 class MachineSettingType(Enum):

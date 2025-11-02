@@ -81,7 +81,7 @@ voice = VoiceOrchestrator(country=author_country)
 
 # 1. Caption component
 prompt = voice.get_unified_prompt(
-    component_type="technical_caption_before",
+    component_type="technical_caption",
     focus_points=["contamination layer", "surface structure"],
     material_context={"category": "Metal", "properties": {...}}
 )
