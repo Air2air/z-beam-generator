@@ -386,6 +386,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
                 self.logger.info(
                     f"🔧 Triggering automatic repair in source YAML ({self.content_type})..."
                 )
+                self.logger.info(f"   Found {len(issues)} issues to repair")
                 
                 # Create content-agnostic repairer
                 repairer = SourceDataRepairer.create_for_content_type(
@@ -398,6 +399,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
                 
                 for issue in issues:
                     if issue['failed']:
+                        self.logger.info(f"   Attempting repair of {issue['field_path']}...")
                         fixed_text, success = repairer.repair_field(
                             identifier=context.identifier,
                             field_path=issue['field_path'],
@@ -407,8 +409,18 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
                         
                         if success:
                             repairs_successful += 1
-                            # TODO: Update frontmatter_data with fixed_text
-                            # Requires field path navigation implementation
+                            # Apply fix to frontmatter_data using field path
+                            try:
+                                self._update_field_by_path(
+                                    frontmatter_data,
+                                    issue['field_path'],
+                                    fixed_text
+                                )
+                                self.logger.info(f"   ✅ Applied fix to {issue['field_path']}")
+                            except Exception as e:
+                                self.logger.warning(f"   ⚠️  Failed to apply fix to {issue['field_path']}: {e}")
+                                repairs_failed += 1
+                                repairs_successful -= 1
                         else:
                             repairs_failed += 1
                 
@@ -458,6 +470,55 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             # Log error and return original data
             self.logger.error(f"Author voice processing failed: {e}")
             return frontmatter_data
+    
+    def _update_field_by_path(
+        self,
+        data: Dict,
+        field_path: str,
+        new_value: str
+    ):
+        """
+        Update a field in nested dict using dot-notation path with array indexing.
+        
+        Supports paths like:
+        - "caption" → data['caption'] = new_value
+        - "images.hero.alt" → data['images']['hero']['alt'] = new_value
+        - "faq[0].answer" → data['faq'][0]['answer'] = new_value
+        
+        Args:
+            data: Data dictionary to update
+            field_path: Dot-notation path (e.g., "faq[1].answer", "images.hero.alt")
+            new_value: New value to set
+        """
+        import re
+        
+        # Parse path into parts (handle array indexing)
+        parts = []
+        for part in field_path.split('.'):
+            # Check for array indexing like "faq[0]"
+            match = re.match(r'(\w+)\[(\d+)\]', part)
+            if match:
+                parts.append(match.group(1))  # field name
+                parts.append(int(match.group(2)))  # array index
+            else:
+                parts.append(part)
+        
+        # Navigate to parent object
+        current = data
+        for part in parts[:-1]:
+            if isinstance(part, int):
+                current = current[part]
+            else:
+                if part not in current:
+                    current[part] = {}
+                current = current[part]
+        
+        # Set final value
+        final_key = parts[-1]
+        if isinstance(final_key, int):
+            current[final_key] = new_value
+        else:
+            current[final_key] = new_value
     
     def _process_text_fields(
         self,

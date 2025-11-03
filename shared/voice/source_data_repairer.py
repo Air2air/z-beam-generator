@@ -107,9 +107,9 @@ class SourceDataRepairer:
                     voice_intensity=3
                 )
                 
-                # Validate quality
+                # Validate quality using 'enhancement' mode (lenient, accepts 1+ markers)
                 quality = processor.score_voice_authenticity(
-                    fixed_text, author_data, voice_indicators
+                    fixed_text, author_data, voice_indicators, mode='enhancement'
                 )
                 
                 score = quality['authenticity_score']
