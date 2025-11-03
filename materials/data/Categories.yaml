@@ -41,11 +41,26 @@ universal_regulatory_standards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 machineSettingsRanges:
+  energyDensity:
+    description: Energy density (fluence) for laser cleaning
+    max: 20.0
+    min: 0.1
+    unit: J/cm²
   fluenceThreshold:
     description: Laser fluence range for material ablation
     max: 4.5
     min: 0.3
     unit: J/cm²
+  overlapRatio:
+    description: Overlap ratio between successive laser passes
+    max: 90
+    min: 10
+    unit: '%'
+  passCount:
+    description: Number of cleaning passes over the surface
+    max: 10
+    min: 1
+    unit: passes
   powerRange:
     description: Laser power range for industrial cleaning applications
     max: 120
@@ -56,11 +71,21 @@ machineSettingsRanges:
     max: 1000
     min: 0.1
     unit: ns
+  pulseWidth:
+    description: Pulse width range for laser processing
+    max: 1000
+    min: 0.1
+    unit: ns
   repetitionRate:
     description: Pulse repetition frequency range
     max: 200
     min: 1
-    unit: Hz
+    unit: kHz
+  scanSpeed:
+    description: Laser scanning speed over the surface
+    max: 5000
+    min: 10
+    unit: mm/s
   spotSize:
     description: Focused beam spot diameter range
     max: 500

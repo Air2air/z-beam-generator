@@ -548,110 +548,31 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'category': category,
                 'subcategory': subcategory,
             }
-            # OPTIMIZATION: Check Materials.yaml for industryTags first before calling AI
-            yaml_industries = None
-            if 'material_metadata' in material_data and 'industryTags' in material_data['material_metadata']:
-                yaml_industries = material_data['material_metadata']['industryTags']
-                if isinstance(yaml_industries, list) and len(yaml_industries) > 0:
-                    self.logger.info(f"✅ Using {len(yaml_industries)} applications from Materials.yaml industryTags")
-                    frontmatter['applications'] = yaml_industries
-                elif isinstance(yaml_industries, dict):
-                    # Handle structured industryTags (primary/secondary)
-                    apps = []
-                    if 'primary_industries' in yaml_industries:
-                        apps.extend(yaml_industries['primary_industries'])
-                    if 'secondary_industries' in yaml_industries:
-                        apps.extend(yaml_industries['secondary_industries'])
-                    if apps:
-                        self.logger.info(f"✅ Using {len(apps)} applications from Materials.yaml structured industryTags")
-                        frontmatter['applications'] = apps
-                        yaml_industries = apps
+            # Load materialProperties directly from materials.yaml (data-only mode)
+            # Only copy category groups (material_characteristics, laser_material_interaction, etc.)
+            # Skip individual properties at root level
+            material_props = material_data.get('materialProperties', {})
             
-            # Check for existing frontmatter applications as fallback
-            if not yaml_industries or not frontmatter.get('applications'):
-                existing_frontmatter_path = f"frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
-                try:
-                    import yaml as yaml_lib
-                    from pathlib import Path
-                    fm_path = Path(existing_frontmatter_path)
-                    if fm_path.exists():
-                        with open(fm_path) as f:
-                            existing_fm = yaml_lib.safe_load(f)
-                        if existing_fm and 'applications' in existing_fm:
-                            self.logger.info(f"✅ Using {len(existing_fm['applications'])} applications from existing frontmatter")
-                            frontmatter['applications'] = existing_fm['applications']
-                            yaml_industries = existing_fm['applications']
-                except Exception as e:
-                    self.logger.debug(f"Could not load existing frontmatter: {e}")
-            
-            # If no applications from any source, use empty list and continue
-            if not yaml_industries or not frontmatter.get('applications'):
-                self.logger.warning(
-                    f"⚠️  No applications found for {material_name} "
-                    f"(no industryTags in Materials.yaml and no existing frontmatter). Using empty list."
-                )
-                frontmatter['applications'] = []
-            
-            # OPTIONAL: Enhance industries with 2-phase prompting if available and needed
-            if frontmatter.get('applications'):
-                enhanced_industries = self._enhance_industry_applications_2phase(
-                    material_name=material_name,
-                    material_data=material_data,
-                    existing_industries=frontmatter['applications']
-                )
-                if len(enhanced_industries) > len(frontmatter['applications']):
-                    self.logger.info(f"✨ Enhanced applications: {len(frontmatter['applications'])} → {len(enhanced_industries)}")
-                    frontmatter['applications'] = enhanced_industries
-            
-            # Generate properties with Min/Max ranges using unified inheritance
-            unified_properties = self._get_unified_material_properties(material_name, material_data)
-            # REFACTORED: Use PropertyManager for discovery + research (Step 1)
-            if self.property_manager:
-                material_category = material_data.get('category', 'metal')
-                # Load existing properties from materials.yaml (flattened structure)
-                existing_properties = {}
-                material_props = material_data.get('materialProperties', {})
-                for group_name, group_data in material_props.items():
-                    if isinstance(group_data, dict):
-                        for prop_name, prop_value in group_data.items():
-                            if prop_name != 'label' and isinstance(prop_value, dict):
-                                existing_properties[prop_name] = prop_value
+            if material_props:
+                # Filter to only include category groups (objects with 'label' key)
+                filtered_props = {}
+                for key, value in material_props.items():
+                    if isinstance(value, dict) and 'label' in value:
+                        filtered_props[key] = value
                 
-                self.logger.info(f"📦 Loaded {len(existing_properties)} existing properties from materials.yaml")
-                
-                # Use PropertyManager for complete discovery → research → categorization pipeline
-                research_result = self.property_manager.discover_and_research_properties(
-                    material_name=material_name,
-                    material_category=material_category,
-                    existing_properties=existing_properties
-                )
-                # Use PropertyProcessor to organize and apply ranges (Step 2)
-                categorized_quantitative = self.property_processor.organize_properties_by_category(
-                    research_result.quantitative_properties
-                )
-                # Apply category ranges to quantitative properties
-                frontmatter['materialProperties'] = self.property_processor.apply_category_ranges(
-                    categorized_quantitative,
-                    material_category
-                )
-                # Qualitative characteristics already organized by PropertyManager
-                frontmatter['materialCharacteristics'] = research_result.qualitative_characteristics
-                
-                self.logger.info(
-                    f"✅ Refactored property generation for {material_name}: "
-                    f"{len(frontmatter['materialProperties'])} quantitative categories, "
-                    f"{len(frontmatter.get('materialCharacteristics', {}))} qualitative categories"
-                )
+                self.logger.info(f"📦 Using {len(filtered_props)} property categories from materials.yaml for {material_name}")
+                frontmatter['materialProperties'] = filtered_props
             else:
-                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-                raise PropertyDiscoveryError(f"PropertyManager required for property generation for {material_name}")
+                self.logger.warning(f"⚠️ No materialProperties found in materials.yaml for {material_name}")
+                frontmatter['materialProperties'] = {}
+            
             # Generate machine settings with Min/Max ranges
             frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
             # Generate images section
             frontmatter['images'] = self._generate_images_section(material_name)
-            # Add environmentalImpact and outcomeMetrics from Materials.yaml ai_text_fields with template fallbacks
-            frontmatter['environmentalImpact'] = self._get_environmental_impact_from_ai_fields(material_data, material_name)
-            frontmatter['outcomeMetrics'] = self._get_outcome_metrics_from_ai_fields(material_data, material_name)
+            # REMOVED: environmentalImpact and outcomeMetrics - these are AI-generated content, not data
+            # frontmatter['environmentalImpact'] = self._get_environmental_impact_from_ai_fields(material_data, material_name)
+            # frontmatter['outcomeMetrics'] = self._get_outcome_metrics_from_ai_fields(material_data, material_name)
             # Add regulatory standards (universal + material-specific)
             if self.pipeline_process_service:
                 # AI mode: Generate using PipelineProcessService
@@ -662,10 +583,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 self.logger.info(f"✅ Copied {len(material_data['regulatoryStandards'])} regulatory standards from Materials.yaml")
             else:
                 self.logger.warning(f"⚠️  No regulatoryStandards in Materials.yaml for {material_name}")
-            # Add applications list
-            if 'applications' in material_data:
-                frontmatter['applications'] = material_data['applications']
-                self.logger.info(f"✅ Added {len(material_data['applications'])} applications")
             
             # Generate author
             author_info = self._generate_author(material_data)
@@ -1004,7 +921,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # First check if machine settings already exist in materials.yaml
         if 'machineSettings' in material_data and material_data['machineSettings']:
             self.logger.info(f"Using existing machine settings from materials.yaml for {material_name}")
-            return material_data['machineSettings']
+            settings = material_data['machineSettings']
+            
+            # Add min/max ranges from machineSettingsRanges in Categories.yaml
+            ranges = self.categories_data.get('machineSettingsRanges', {})
+            for setting_name, setting_data in settings.items():
+                if isinstance(setting_data, dict) and setting_name in ranges:
+                    range_data = ranges[setting_name]
+                    if 'min' in range_data:
+                        setting_data['min'] = range_data['min']
+                    if 'max' in range_data:
+                        setting_data['max'] = range_data['max']
+            
+            return settings
         
         # Use PropertyManager for comprehensive machine settings discovery
         if not self.property_manager:
@@ -1377,8 +1306,14 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             if not author_info:
                 # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
                 raise PropertyDiscoveryError(f"Author with ID {author_id} not found - author system required for content generation")
+            
+            # Filter out internal fields (persona_file, formatting_file) before returning
+            # These are for prompt construction only, not for frontmatter export
+            public_fields = {'id', 'name', 'country', 'country_display', 'title', 'sex', 'expertise', 'image'}
+            filtered_author = {k: v for k, v in author_info.items() if k in public_fields}
+            
             return {
-                'author': author_info
+                'author': filtered_author
             }
         except Exception as e:
             self.logger.error(f"Author generation failed: {e}")

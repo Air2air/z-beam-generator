@@ -150,12 +150,14 @@ class FieldOrderingService:
         Per GROK_INSTRUCTIONS.md: No fallbacks. If categorized structure exists, preserve it.
         Only process flat structure if no categories detected.
         """
-        # Check if this is a categorized structure (has category objects with 'label' and 'properties')
+        # Check if this is a categorized structure (has category objects with 'label' key)
+        # Note: materials.yaml uses flattened structure (properties directly under category, not nested under 'properties')
         if properties and isinstance(properties, dict):
             first_key = next(iter(properties.keys()), None)
             if first_key and isinstance(properties[first_key], dict):
                 first_value = properties[first_key]
-                if 'label' in first_value and 'properties' in first_value:
+                # Check for 'label' key which indicates a category group
+                if 'label' in first_value:
                     # CATEGORIZED STRUCTURE - return as-is (already organized by category)
                     logger.debug(f"Preserving categorized material properties structure with {len(properties)} categories")
                     return properties

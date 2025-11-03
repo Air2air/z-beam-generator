@@ -143,12 +143,23 @@ class PropertyProcessor:
         qualitative_by_category = {}
         
         for category_name, category_data in all_properties.items():
-            if not isinstance(category_data, dict) or 'properties' not in category_data:
-                # Keep non-property categories as-is in quantitative
+            if not isinstance(category_data, dict):
+                # Keep non-dict items as-is
+                quantitative[category_name] = category_data
+                continue
+            
+            # Check if this is a category group (has 'label' key) with flattened properties
+            if 'label' not in category_data:
+                # Not a category group - keep as-is
                 quantitative[category_name] = category_data
                 continue
                 
-            properties = category_data['properties']
+            # Extract properties directly from category (flattened structure)
+            # Properties are any dict items that aren't metadata fields
+            metadata_fields = {'label', 'description', 'percentage'}
+            properties = {k: v for k, v in category_data.items() 
+                         if k not in metadata_fields and isinstance(v, dict)}
+            
             quant_props = {}
             qual_props = {}
             
@@ -169,11 +180,12 @@ class PropertyProcessor:
             
             # Keep category in quantitative if it has any quantitative properties
             if quant_props:
+                # Flattened structure - properties directly under category
                 quantitative[category_name] = {
                     'label': category_data.get('label', category_name.replace('_', ' ').title()),
                     'description': category_data.get('description', ''),
                     'percentage': category_data.get('percentage', 0),
-                    'properties': quant_props
+                    **quant_props  # Flatten properties directly under category
                 }
             
             # Organize qualitative properties by their characteristic category
@@ -187,11 +199,11 @@ class PropertyProcessor:
                         cat_metadata = MATERIAL_CHARACTERISTICS_CATEGORIES.get(char_category, {})
                         qualitative_by_category[char_category] = {
                             'label': cat_metadata.get('label', char_category.replace('_', ' ').title()),
-                            'description': cat_metadata.get('description', ''),
-                            'properties': {}
+                            'description': cat_metadata.get('description', '')
                         }
                     
-                    qualitative_by_category[char_category]['properties'][prop_name] = qual_props[prop_name]
+                    # Flattened structure - properties directly under category
+                    qualitative_by_category[char_category][prop_name] = qual_props[prop_name]
         
         self.logger.info(f"Property separation: {len(quantitative)} quantitative categories, "
                         f"{len(qualitative_by_category)} qualitative categories")
@@ -271,22 +283,29 @@ class PropertyProcessor:
         Returns:
             Properties dict with min/max ranges applied
         """
-        # Check if properties are already categorized
+        # Check if properties are already categorized (has category groups with 'label' key)
         is_categorized = any(
-            isinstance(v, dict) and 'properties' in v 
+            isinstance(v, dict) and 'label' in v 
             for v in properties.values()
         )
         
         if is_categorized:
-            # Apply ranges to categorized structure
+            # Apply ranges to categorized structure (flattened - no nested 'properties' key)
             result = {}
             for cat_name, cat_data in properties.items():
-                if isinstance(cat_data, dict) and 'properties' in cat_data:
+                if isinstance(cat_data, dict) and 'label' in cat_data:
                     result[cat_name] = cat_data.copy()
-                    result[cat_name]['properties'] = self._apply_ranges_to_props(
-                        cat_data['properties'], 
-                        material_category
-                    )
+                    # Extract properties (all dict items except metadata)
+                    metadata_fields = {'label', 'description', 'percentage'}
+                    cat_properties = {k: v for k, v in cat_data.items() 
+                                    if k not in metadata_fields and isinstance(v, dict)}
+                    # Apply ranges and flatten back
+                    ranged_props = self._apply_ranges_to_props(cat_properties, material_category)
+                    # Merge back into category
+                    for k in metadata_fields:
+                        if k in cat_data:
+                            result[cat_name][k] = cat_data[k]
+                    result[cat_name].update(ranged_props)
                 else:
                     result[cat_name] = cat_data
             return result

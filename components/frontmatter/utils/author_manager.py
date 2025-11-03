@@ -266,6 +266,9 @@ def get_author_info_for_material(
         )
     
     logging.info(f"👤 Using author {author['name']} (ID: {material_author_id}) from Materials.yaml")
+    
+    # Return only public-facing fields - exclude internal prompt files
+    # persona_file and formatting_file are for internal use only
     return {
         "name": author["name"],
         "country": author["country"],  # Normalized key
@@ -275,4 +278,5 @@ def get_author_info_for_material(
         "sex": author.get("sex", ""),
         "title": author.get("title", ""),
         "image": author.get("image", ""),
+        # Explicitly exclude: persona_file, formatting_file (internal only)
     }
