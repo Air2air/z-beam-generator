@@ -234,14 +234,10 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
             if not actual_key:
                 raise ValueError(f"Material {material_name} not found in Materials.yaml")
             
-            # Write caption
+            # Write caption (template-compliant: only before and after)
             materials_section[actual_key]['caption'] = {
                 'before': before_text,
-                'after': after_text,
-                'generated': timestamp,
-                'word_count_before': len(before_text.split()),
-                'word_count_after': len(after_text.split()),
-                'total_words': len(before_text.split()) + len(after_text.split())
+                'after': after_text
             }
             
             # Atomic write using temp file

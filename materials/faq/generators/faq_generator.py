@@ -470,16 +470,8 @@ Generate the FAQ now:"""
         if not actual_key:
             raise ValueError(f"Material {material_name} not found in Materials.yaml")
         
-        # Calculate total words across all answers
-        total_words = sum(len(item.get('answer', '').split()) for item in faq_items)
-        
-        # Write FAQ with metadata
-        materials_section[actual_key]['faq'] = {
-            'questions': faq_items,
-            'generated': timestamp,
-            'question_count': len(faq_items),
-            'total_words': total_words
-        }
+        # Write FAQ (template-compliant: flat list of {question, answer})
+        materials_section[actual_key]['faq'] = faq_items
         
         # Atomic write using temp file
         temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)

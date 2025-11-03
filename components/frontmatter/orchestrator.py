@@ -4,26 +4,28 @@ FrontmatterOrchestrator - Coordinate module execution
 Orchestrates all frontmatter modules to generate complete frontmatter YAML.
 
 Architecture:
-- Initialize all 9 modules
+- Initialize all modules
 - Execute in logical order
 - Assemble complete frontmatter dict
 - Handle errors gracefully
 - Log progress clearly
+
+REMOVED MODULES (fields removed from template):
+- ApplicationsModule (applications field removed)
+- ImpactModule (environmentalImpact, outcomeMetrics removed)
+- CharacteristicsModule (materialCharacteristics removed)
 """
 
 import logging
 from typing import Dict, Optional
 
-from .modules.metadata_module import MetadataModule
-from .modules.author_module import AuthorModule
-from .modules.applications_module import ApplicationsModule
-from .modules.properties_module import PropertiesModule
-from .modules.settings_module import SettingsModule
-from .modules.simple_modules import (
+from materials.modules.metadata_module import MetadataModule
+from materials.modules.author_module import AuthorModule
+from materials.modules.properties_module import PropertiesModule
+from materials.modules.settings_module import SettingsModule
+from materials.modules.simple_modules import (
     ComplianceModule,
-    ImpactModule,
-    MediaModule,
-    CharacteristicsModule
+    MediaModule
 )
 
 
@@ -42,15 +44,12 @@ class FrontmatterOrchestrator:
         # Initialize modules
         self.metadata_module = MetadataModule()
         self.author_module = AuthorModule()
-        self.applications_module = ApplicationsModule()
         self.properties_module = PropertiesModule(categories_yaml_path)
         self.settings_module = SettingsModule(categories_yaml_path)
         self.compliance_module = ComplianceModule()
-        self.impact_module = ImpactModule()
         self.media_module = MediaModule()
-        self.characteristics_module = CharacteristicsModule()
         
-        self.logger.info("✅ Initialized FrontmatterOrchestrator with 9 modules")
+        self.logger.info("✅ Initialized FrontmatterOrchestrator with 6 modules")
     
     def generate(
         self,
@@ -78,55 +77,37 @@ class FrontmatterOrchestrator:
         
         try:
             # 1. Metadata (name, title, subtitle, description, category, subcategory)
-            self.logger.debug("1/9 Generating metadata...")
+            self.logger.debug("1/6 Generating metadata...")
             metadata = self.metadata_module.generate(material_name, material_data)
             frontmatter.update(metadata)
             
             # 2. Author
-            self.logger.debug("2/9 Extracting author...")
+            self.logger.debug("2/6 Extracting author...")
             frontmatter['author'] = self.author_module.generate(material_data)
             
-            # 3. Applications
-            self.logger.debug("3/9 Extracting applications...")
-            frontmatter['applications'] = self.applications_module.generate(
-                material_name, material_data
-            )
-            
-            # 4. Material Properties (with ranges)
-            self.logger.debug("4/9 Generating material properties...")
+            # 3. Material Properties (with ranges)
+            self.logger.debug("3/6 Generating material properties...")
             frontmatter['materialProperties'] = self.properties_module.generate(
                 material_name, material_data
             )
             
-            # 5. Machine Settings (with ranges)
-            self.logger.debug("5/9 Generating machine settings...")
+            # 4. Machine Settings (with ranges)
+            self.logger.debug("4/6 Generating machine settings...")
             frontmatter['machineSettings'] = self.settings_module.generate(
                 material_name, material_data
             )
             
-            # 6. Compliance (regulatory standards)
-            self.logger.debug("6/9 Extracting compliance...")
+            # 5. Compliance (regulatory standards)
+            self.logger.debug("5/6 Extracting compliance...")
             frontmatter['regulatoryStandards'] = self.compliance_module.generate(
                 material_data
             )
             
-            # 7. Impact (environmental, outcomes)
-            self.logger.debug("7/9 Extracting impact data...")
-            impact_data = self.impact_module.generate(material_data)
-            frontmatter['environmentalImpact'] = impact_data['environmentalImpact']
-            frontmatter['outcomeMetrics'] = impact_data['outcomeMetrics']
-            
-            # 8. Media (images, caption)
-            self.logger.debug("8/9 Extracting media...")
+            # 6. Media (images, caption)
+            self.logger.debug("6/6 Extracting media...")
             media_data = self.media_module.generate(material_data)
             frontmatter['images'] = media_data['images']
             frontmatter['caption'] = media_data['caption']
-            
-            # 9. Characteristics (qualitative properties)
-            self.logger.debug("9/9 Extracting characteristics...")
-            frontmatter['materialCharacteristics'] = self.characteristics_module.generate(
-                material_data
-            )
             
             # Optional: Include FAQ
             if include_faq and 'faq' in material_data:

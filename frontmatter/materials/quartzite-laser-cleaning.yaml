@@ -1,4 +1,60 @@
 name: Quartzite
+category: stone
+subcategory: sedimentary
+title: Quartzite Laser Cleaning
+subtitle: Reveal Quartzite's crystalline resilience with precise laser cleaning to preserve its durable texture
+description: Laser cleaning parameters for Quartzite
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Quartzite surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/quartzite-laser-cleaning-hero.jpg
+  micro:
+    alt: Quartzite microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/quartzite-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, the quartzite surface shows fine dust particles and oily residues, with minor pitting degradation.
+  after: After laser cleaning, the quartzite surface regains its fresh, natural look. Dirt and grime lift away, leaving a
+    smooth texture and vibrant colors intact. This process demonstrates effective restoration without any damage to the stone's
+    hard structure. The material holds its strength and durability, showing no cracks or weakening. Now, it's ready for everyday
+    use in homes or outdoors, preserving quartzite's timeless quality.
+  author: Yi-Chun Lin
+  character_count:
+    after: 428
+    before: 116
+  generated: '2025-10-25T15:07:35.404840Z'
+  generation_method: ai_research
+  word_count:
+    after: 63
+    before: 16
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Aerospace
 - Architectural Restoration
@@ -10,28 +66,82 @@ applications:
 - Automotive Manufacturing
 - Food Processing
 - Research Laboratories
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-caption:
-  afterText: After laser cleaning, the quartzite surface regains its fresh, natural look. Dirt and grime lift away, leaving a smooth texture and vibrant colors intact. This process demonstrates effective restoration without any damage to the stone's hard structure. The material holds its strength and durability, showing no cracks or weakening. Now, it's ready for everyday use in homes or outdoors, preserving quartzite's timeless quality.
-  author: Yi-Chun Lin
-  beforeText: Under microscopy, the quartzite surface shows fine dust particles and oily residues, with minor pitting degradation.
-  character_count:
-    after: 428
-    before: 116
-  generated: '2025-10-25T15:07:35.404840Z'
-  generation_method: ai_research
-  word_count:
-    after: 63
-    before: 16
-category: stone
-description: Laser cleaning parameters for Quartzite
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Ulusoy, U., & Yilmazkaya, E. (2011). The effect of mineralogy and textural characteristics on the strength
+          of crystalline rocks. In 45th US Rock Mechanics / Geomechanics Symposium. American Rock Mechanics Association.
+        unit: MPa·√m
+        value: 1.4
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+machineSettings:
+  powerRange:
+    description: Optimal average power for Quartzite cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Quartzite absorption and minimal scattering
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for balanced cleaning efficiency and coverage area
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective contaminant removal from Quartzite surface
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning and process efficiency
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Optimal dwell time per cleaning spot for effective material removal
+    unit: μs
+    value: 100
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -51,214 +161,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Quartzite surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/quartzite-laser-cleaning-hero.jpg
-  micro:
-    alt: Quartzite microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/quartzite-laser-cleaning-micro.jpg
-machineSettings:
-  dwellTime:
-    description: Optimal dwell time per cleaning spot for effective material removal
-    unit: μs
-    value: 100
-  fluenceThreshold:
-    description: Minimum fluence required for effective contaminant removal from Quartzite surface
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-  powerRange:
-    description: Optimal average power for Quartzite cleaning without thermal damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning and process efficiency
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and coverage area
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-IR wavelength optimized for Quartzite absorption and minimal scattering
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: crystalline crystal structure
-    source: ai_research
-    unit: crystal system
-    value: crystalline
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    laserAbsorption:
-      source: ai_research
-      unit: '%'
-      value: 8.2
-      min: 0.1
-      max: 100
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 38.2
-      min: 5
-      max: 80
-    specificHeat:
-      source: ai_research
-      unit: J/(kg·K)
-      value: 1100.0
-      min: 400
-      max: 1200
-    thermalConductivity:
-      ai_verified: true
-      source: ai_research
-      unit: W/(m·K)
-      value: 5.38
-      min: 0.2
-      max: 8
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: °C
-        value: 1470.0
-      source: thermal_degradation_standards
-      type: thermal_shock
-      unit: °C
-      value: 800.0
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 1.32
-      min: 0.2
-      max: 2.5
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 12.3
-      min: 3
-      max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: ASTM International / "The Complete Guide to Crushed Stone and Gravel" (Aggregates Manager, 2019)
-      unit: MPa
-      value: 200.0
-      min: 20
-      max: 500
-    corrosionResistance:
-      ai_verified: true
-      source: ASTM C615 / C615M-19 Standard Specification for Granite Dimension Stone
-      unit: rating
-      value: 9.0
-      min: 2.0
-      max: 9.0
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 2.65
-      min: 1.5
-      max: 6.0
-    flexuralStrength:
-      source: materials_database
-      unit: MPa
-      value: 15.2
-      min: 5
-      max: 50
-    fractureToughness:
-      source: ai_research
-      unit: MPa·m¹/²
-      value: 1.65
-      min: 0.5
-      max: 5
-    hardness:
-      ai_verified: true
-      source: ai_research
-      unit: Mohs
-      value: 7.0
-      min: 1
-      max: 7
-    oxidationResistance:
-      ai_verified: true
-      source: AZoM (AZoMaterials) - "Quartzite - Sibelco" Material Datasheet
-      unit: °C
-      value: 870.0
-      min: 400.0
-      max: 870.0
-    porosity:
-      source: ai_research
-      unit: dimensionless (volume fraction)
-      value: 0.0085
-      min: 0.5
-      max: 25
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 8.3
-      min: 2
-      max: 25
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 69.0
-      min: 10
-      max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    fractureToughness:
-      ai_verified: true
-      source: Ulusoy, U., & Yilmazkaya, E. (2011). The effect of mineralogy and textural characteristics on the strength of crystalline rocks. In 45th US Rock Mechanics / Geomechanics Symposium. American Rock Mechanics Association.
-      unit: MPa·√m
-      value: 1.4
-      min: 0.5
-      max: 5
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -290,29 +192,61 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: sedimentary
-subtitle: Reveal Quartzite's crystalline resilience with precise laser cleaning to preserve its durable texture
+faq:
+  questions:
+  - answer: For quartzite biological growth removal, employ 1064nm wavelength with 2.5 J/cm² fluence and nanosecond pulses.
+      This effectively ablates organic matter while minimizing thermal shock risk to the crystalline structure. A scanning
+      speed of 500 mm/s ensures thorough cleaning without substrate damage.
+    question: What laser parameters work best for cleaning biological growth (lichens, algae) from quartzite without damaging
+      the crystalline surface?
+  - answer: Properly configured laser cleaning at 2.5 J/cm² fluence and 100W power generates minimal thermal stress. The nanosecond
+      pulses rapidly ablate contaminants without transferring significant heat into quartz grains. This precision prevents
+      micro-fracturing, preserving the stone's interlocking structure and its long-term durability.
+    question: Does laser cleaning cause micro-fracturing in quartzite's interlocking crystalline structure that could accelerate
+      future deterioration?
+  - answer: For quartzite, maintain fluence below 2.5 J/cm² to selectively ablate black crusts while preserving the patina.
+      A 1064 nm wavelength with 100 μm spot size effectively removes gypsum matrices without damaging the underlying stone's
+      integrity.
+    question: How do we effectively remove black crusts (gypsum, carbon particulates) from quartzite without altering the
+      natural patina beneath?
+  - answer: Quartzite's high silica content demands enhanced respiratory protection against respirable crystalline silica.
+      The laser plume requires HEPA filtration, especially with our 100W, 1064nm parameters generating hazardous aerosols.
+      Containment is crucial given the 2.5 J/cm² fluence threshold.
+    question: What safety protocols are specific to laser cleaning quartzite versus other stone types?
+  - answer: Laser cleaning effectively removes iron oxide from quartzite using 1064nm wavelength at 2.5 J/cm² fluence. The
+      process selectively ablates contaminants without chemicals, preserving the stone substrate. Optimal parameters like
+      500 mm/s scan speed ensure complete stain removal in just a few passes.
+    question: Can laser cleaning effectively remove iron oxide stains from quartzite without chemical assistance?
+  - answer: For heavily weathered quartzite with surface friability, the 2.5 J/cm² fluence threshold risks grain dislodgement.
+      A preliminary stability assessment is critical; mechanical methods are often safer for such compromised substrates to
+      prevent irreversible damage.
+    question: What are the limitations of laser cleaning for heavily weathered outdoor quartzite with significant surface
+      friability?
+  - answer: Quartzite's 90%+ silica content creates strong absorption at 1064nm, requiring precise fluence control around
+      2.5 J/cm². This crystalline structure efficiently transfers laser energy to contaminants, enabling effective removal
+      at 500 mm/s without substrate damage.
+    question: How does quartzite's high silica content (often 90%+) affect laser absorption and cleaning efficiency compared
+      to other natural stones?
+  - answer: We employ optical microscopy and surface profilometry to verify cleaning effectiveness while monitoring for subsurface
+      microfractures. For quartzite, maintaining fluence below 2.5 J/cm² with 100 μm spot size prevents thermal degradation,
+      confirmed by consistent color measurements post-treatment.
+    question: What validation methods are used to confirm laser cleaning effectiveness on quartzite without causing subsurface
+      damage?
+  - answer: For quartzite conservation, fiber lasers operating at 1064 nm with fluence around 2.5 J/cm² are optimal. Their
+      superior portability is crucial for architectural projects, while the high efficiency of fiber systems provides the
+      cost-effectiveness required for large-scale industrial cleaning, balancing thorough contaminant removal with substrate
+      safety.
+    question: Are there specific laser systems (fiber, Nd:YAG, etc.) better suited for quartzite conservation projects?
+  - answer: Quartzite's Mohs 7+ hardness demands higher fluence, typically 2.5 J/cm², for effective ablation. Its low density
+      minimizes contaminant penetration but increases reflectivity risks, requiring careful wavelength selection like 1064
+      nm. We must optimize scanning speeds around 500 mm/s to prevent thermal stress on this durable substrate.
+    question: How does quartzite's extreme hardness (Mohs 7+) and low porosity affect laser cleaning strategy compared to
+      softer, more porous stones?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922537Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922542Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
@@ -320,30 +254,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:34:25.644143Z'
   generation_method: ai_research_voice
   word_count: 13
-title: Quartzite Laser Cleaning
-faq:
-- question: What laser parameters work best for cleaning biological growth (lichens, algae) from quartzite without damaging the crystalline surface?
-  answer: For quartzite biological growth removal, employ 1064nm wavelength with 2.5 J/cm² fluence and nanosecond pulses. This effectively ablates organic matter while minimizing thermal shock risk to the crystalline structure. A scanning speed of 500 mm/s ensures thorough cleaning without substrate damage.
-- question: Does laser cleaning cause micro-fracturing in quartzite's interlocking crystalline structure that could accelerate future deterioration?
-  answer: Properly configured laser cleaning at 2.5 J/cm² fluence and 100W power generates minimal thermal stress. The nanosecond pulses rapidly ablate contaminants without transferring significant heat into quartz grains. This precision prevents micro-fracturing, preserving the stone's interlocking structure and its long-term durability.
-- question: How do we effectively remove black crusts (gypsum, carbon particulates) from quartzite without altering the natural patina beneath?
-  answer: For quartzite, maintain fluence below 2.5 J/cm² to selectively ablate black crusts while preserving the patina. A 1064 nm wavelength with 100 μm spot size effectively removes gypsum matrices without damaging the underlying stone's integrity.
-- question: What safety protocols are specific to laser cleaning quartzite versus other stone types?
-  answer: Quartzite's high silica content demands enhanced respiratory protection against respirable crystalline silica. The laser plume requires HEPA filtration, especially with our 100W, 1064nm parameters generating hazardous aerosols. Containment is crucial given the 2.5 J/cm² fluence threshold.
-- question: Can laser cleaning effectively remove iron oxide stains from quartzite without chemical assistance?
-  answer: Laser cleaning effectively removes iron oxide from quartzite using 1064nm wavelength at 2.5 J/cm² fluence. The process selectively ablates contaminants without chemicals, preserving the stone substrate. Optimal parameters like 500 mm/s scan speed ensure complete stain removal in just a few passes.
-- question: What are the limitations of laser cleaning for heavily weathered outdoor quartzite with significant surface friability?
-  answer: For heavily weathered quartzite with surface friability, the 2.5 J/cm² fluence threshold risks grain dislodgement. A preliminary stability assessment is critical; mechanical methods are often safer for such compromised substrates to prevent irreversible damage.
-- question: How does quartzite's high silica content (often 90%+) affect laser absorption and cleaning efficiency compared to other natural stones?
-  answer: Quartzite's 90%+ silica content creates strong absorption at 1064nm, requiring precise fluence control around 2.5 J/cm². This crystalline structure efficiently transfers laser energy to contaminants, enabling effective removal at 500 mm/s without substrate damage.
-- question: What validation methods are used to confirm laser cleaning effectiveness on quartzite without causing subsurface damage?
-  answer: We employ optical microscopy and surface profilometry to verify cleaning effectiveness while monitoring for subsurface microfractures. For quartzite, maintaining fluence below 2.5 J/cm² with 100 μm spot size prevents thermal degradation, confirmed by consistent color measurements post-treatment.
-- question: Are there specific laser systems (fiber, Nd:YAG, etc.) better suited for quartzite conservation projects?
-  answer: For quartzite conservation, fiber lasers operating at 1064 nm with fluence around 2.5 J/cm² are optimal. Their superior portability is crucial for architectural projects, while the high efficiency of fiber systems provides the cost-effectiveness required for large-scale industrial cleaning, balancing thorough contaminant removal with substrate safety.
-- question: How does quartzite's extreme hardness (Mohs 7+) and low porosity affect laser cleaning strategy compared to softer, more porous stones?
-  answer: Quartzite's Mohs 7+ hardness demands higher fluence, typically 2.5 J/cm², for effective ablation. Its low density minimizes contaminant penetration but increases reflectivity risks, requiring careful wavelength selection like 1064 nm. We must optimize scanning speeds around 500 mm/s to prevent thermal stress on this durable substrate.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922537Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922542Z'

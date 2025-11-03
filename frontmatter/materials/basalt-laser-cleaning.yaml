@@ -1,4 +1,60 @@
 name: Basalt
+category: stone
+subcategory: igneous
+title: Basalt Laser Cleaning
+subtitle: Unlock Basalt's enduring volcanic patina with precise low-energy laser restoration techniques
+description: Laser cleaning parameters for Basalt
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/basalt-laser-cleaning-hero.jpg
+  micro:
+    alt: Basalt microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/basalt-laser-cleaning-micro.jpg
+caption:
+  before: Microscopy of the contaminated basalt surface reveals a rough and pitted landscape dotted with fine dust particles
+    and oily residues. These contaminants fill the natural pores, causing discoloration, micro-cracks, and dullness. The surface,
+    it demonstrates early degradation signs, weakening the stone's integrity for general cleaning applications.
+  after: The laser-cleaned basalt surface shows a smooth, even restoration. Material integrity stays strong, and the stone's
+    natural durability remains unchanged.
+  author: Yi-Chun Lin
+  character_count:
+    after: 153
+    before: 348
+  generated: '2025-10-25T13:56:19.528613Z'
+  generation_method: ai_research
+  word_count:
+    after: 20
+    before: 46
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Aerospace
 - Marine Engineering
@@ -10,28 +66,78 @@ applications:
 - Medical Device Manufacturing
 - Industrial Manufacturing
 - Geotechnical Engineering
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-caption:
-  afterText: The laser-cleaned basalt surface shows a smooth, even restoration. Material integrity stays strong, and the stone's natural durability remains unchanged.
-  author: Yi-Chun Lin
-  beforeText: Microscopy of the contaminated basalt surface reveals a rough and pitted landscape dotted with fine dust particles and oily residues. These contaminants fill the natural pores, causing discoloration, micro-cracks, and dullness. The surface, it demonstrates early degradation signs, weakening the stone's integrity for general cleaning applications.
-  character_count:
-    after: 153
-    before: 348
-  generated: '2025-10-25T13:56:19.528613Z'
-  generation_method: ai_research
-  word_count:
-    after: 20
-    before: 46
-category: stone
-description: Laser cleaning parameters for Basalt
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence of macro-fractures and micro-fractures
+          on permeability and elastic wave velocities in basalt at elevated pressure. Tectonophysics, 503(1-2), 52-59.
+        unit: MPa·√m
+        value: 1.5
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: crystalline crystal structure
+    source: ai_research
+    unit: crystal system
+    value: crystalline
+machineSettings:
+  powerRange:
+    description: Optimal average power for Basalt surface cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for Basalt absorption characteristics
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence level for effective contaminant removal without substrate damage
+    unit: J/cm²
+    value: 12
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient ablation of surface contaminants
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform surface treatment
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -51,209 +157,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/basalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Basalt microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/basalt-laser-cleaning-micro.jpg
-machineSettings:
-  energyDensity:
-    description: Fluence level for effective contaminant removal without substrate damage
-    unit: J/cm²
-    value: 12
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 3
-  powerRange:
-    description: Optimal average power for Basalt surface cleaning without thermal damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient ablation of surface contaminants
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform surface treatment
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for effective cleaning resolution
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-infrared wavelength optimized for Basalt absorption characteristics
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: crystalline crystal structure
-    source: ai_research
-    unit: crystal system
-    value: crystalline
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    laserAbsorption:
-      source: ai_research
-      unit: '%'
-      value: 8.7
-      min: 0.1
-      max: 100
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 38.2
-      min: 5
-      max: 80
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 840.0
-      min: 400
-      max: 1200
-    thermalConductivity:
-      source: ai_research
-      unit: W/(m·K)
-      value: 1.7
-      min: 0.2
-      max: 8
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: °C
-        value: 1100.0
-      source: thermal_degradation_standards
-      type: thermal_shock
-      unit: °C
-      value: 800.0
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 0.83
-      min: 0.2
-      max: 2.5
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 8.0
-      min: 3
-      max: 30
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: ASTM D7012-14e1 "Standard Test Methods for Compressive Strength and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress and Temperatures"
-      unit: MPa
-      value: 200.0
-      min: 20
-      max: 500
-    corrosionResistance:
-      ai_verified: true
-      source: National Park Service, "Rock and Mineral Properties for Stone Conservation"
-      unit: rating
-      value: 8.0
-      min: 2.0
-      max: 9.0
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 2.8
-      min: 1.5
-      max: 6.0
-    flexuralStrength:
-      ai_verified: true
-      source: 'American Society of Civil Engineers (ASCE), "Structural Design for Fire Conditions," Chapter 4, Material Properties, Table 4-1: Typical Mechanical Properties of Natural Stone.'
-      unit: MPa
-      value: 45.0
-      min: 5
-      max: 50
-    fractureToughness:
-      source: ai_research
-      unit: MPa·m¹/²
-      value: 2.1
-      min: 0.5
-      max: 5
-    hardness:
-      ai_verified: true
-      source: ai_research
-      unit: Mohs
-      value: 6.0
-      min: 1
-      max: 7
-    oxidationResistance:
-      ai_verified: true
-      source: National Aeronautics and Space Administration (NASA) Technical Memorandum 105593, "Thermal Stability of Selected Ceramic Fiber Materials"
-      unit: °C
-      value: 850.0
-      min: 400.0
-      max: 870.0
-    porosity:
-      source: ai_research
-      unit: m³/m³
-      value: 0.012
-      min: 0.5
-      max: 25
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 10.0
-      min: 2
-      max: 25
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 70.0
-      min: 10
-      max: 100
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    fractureToughness:
-      ai_verified: true
-      source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence of macro-fractures and micro-fractures on permeability and elastic wave velocities in basalt at elevated pressure. Tectonophysics, 503(1-2), 52-59.
-      unit: MPa·√m
-      value: 1.5
-      min: 0.5
-      max: 5
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -285,29 +188,58 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: igneous
-subtitle: Unlock Basalt's enduring volcanic patina with precise low-energy laser restoration techniques
+faq:
+  questions:
+  - answer: For basalt laser cleaning, I recommend 1064 nm wavelength with 100 W average power and 10 ns pulses. Maintain
+      fluence around 12 J/cm² at 500 mm/s scanning speed to effectively remove contaminants while preserving the mineral structure.
+      These parameters ensure thorough cleaning without thermal damage to the stone surface.
+    question: What laser parameters (wavelength, power, pulse duration) work best for cleaning contaminants from basalt without
+      damaging the stone surface?
+  - answer: Properly configured laser cleaning preserves basalt's dark surface. Using 1064 nm wavelength and 12 J/cm² fluence,
+      we selectively ablate contaminants without thermally altering the iron-rich matrix. This prevents the whitening or melting
+      that can occur from excessive energy deposition into the mineral structure.
+    question: Does laser cleaning cause discoloration or thermal damage to basalt's dark surface?
+  - answer: Laser cleaning effectively removes lichen from historic basalt at 12 J/cm², preserving the porous stone matrix.
+      This non-chemical method eliminates biological growth without residual toxins, significantly reducing the potential
+      for future regrowth compared to traditional treatments.
+    question: How effective is laser cleaning for removing lichen and biological growth from historic basalt structures?
+  - answer: Basalt laser cleaning generates respirable crystalline silica dust requiring HEPA filtration. Our 100W, 1064nm
+      process demands industrial-grade extraction systems to maintain airborne particulates below 0.025 mg/m³ OSHA limits.
+      Proper respiratory protection is essential during this ablation procedure.
+    question: What safety considerations are specific to laser cleaning basalt, particularly regarding fume extraction and
+      particulate matter?
+  - answer: Laser cleaning effectively handles rough basalt textures with proper 100 μm spot sizing and 50% overlap. Strategic
+      500 mm/s scanning mitigates shadowing in crevices. The 1064 nm wavelength and 12 J/cm² fluence ensure uniform contaminant
+      removal across natural stone variations without substrate damage.
+    question: Can laser cleaning be used on rough, textured basalt surfaces or is it only effective on smooth finishes?
+  - answer: Laser cleaning at 12 J/cm² fluence offers superior surface preservation versus abrasive methods. This non-contact
+      approach selectively removes contaminants while maintaining basalt's original texture, ensuring long-term durability
+      without chemical residue or micro-fracturing risks.
+    question: How does laser cleaning compare to traditional methods (sandblasting, chemical cleaning) for restoration of
+      basalt monuments?
+  - answer: Industrial basalt's thick contamination layers demand higher fluence—exceeding 12 J/cm²—which reduces throughput.
+      Aged installations often require multiple passes at slower scan speeds below 500 mm/s, making the process less efficient
+      than controlled lab conditions.
+    question: What are the limitations of laser cleaning for heavily soiled industrial basalt surfaces compared to laboratory
+      conditions?
+  - answer: Proper laser parameters like 12 J/cm² fluence maintain basalt's inherent low porosity. This controlled ablation
+      removes contaminants without increasing permeability, preserving the stone's natural weathering resistance for long-term
+      exterior durability.
+    question: Does laser treatment affect the water absorption properties or weathering resistance of basalt surfaces?
+  - answer: For basalt's dark surface, combine visual inspection with optical microscopy to assess contaminant removal. Non-destructive
+      techniques like surface roughness measurement and colorimetric analysis verify cleaning effectiveness without damage.
+      Using a 1064 nm wavelength at 12 J/cm² fluence ensures complete removal while preserving the substrate integrity.
+    question: What diagnostic methods are used to verify cleaning effectiveness on basalt without damaging the surface?
+  - answer: Basalt's heterogeneous mineralogy creates differential absorption at 1064 nm, with plagioclase and pyroxene responding
+      variably to the 12 J/cm² fluence. This necessitates optimized parameters like 500 mm/s scan speed to ensure uniform
+      contaminant removal across all crystalline phases without inducing selective ablation that could etch the surface.
+    question: How does basalt's mineral composition (plagioclase, pyroxene, olivine) affect laser interaction and cleaning
+      efficiency?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921602Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921610Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
@@ -315,30 +247,3 @@ subtitle_metadata:
   generated: '2025-10-25T20:56:06.323437Z'
   generation_method: ai_research_voice
   word_count: 11
-title: Basalt Laser Cleaning
-faq:
-- question: What laser parameters (wavelength, power, pulse duration) work best for cleaning contaminants from basalt without damaging the stone surface?
-  answer: For basalt laser cleaning, I recommend 1064 nm wavelength with 100 W average power and 10 ns pulses. Maintain fluence around 12 J/cm² at 500 mm/s scanning speed to effectively remove contaminants while preserving the mineral structure. These parameters ensure thorough cleaning without thermal damage to the stone surface.
-- question: Does laser cleaning cause discoloration or thermal damage to basalt's dark surface?
-  answer: Properly configured laser cleaning preserves basalt's dark surface. Using 1064 nm wavelength and 12 J/cm² fluence, we selectively ablate contaminants without thermally altering the iron-rich matrix. This prevents the whitening or melting that can occur from excessive energy deposition into the mineral structure.
-- question: How effective is laser cleaning for removing lichen and biological growth from historic basalt structures?
-  answer: Laser cleaning effectively removes lichen from historic basalt at 12 J/cm², preserving the porous stone matrix. This non-chemical method eliminates biological growth without residual toxins, significantly reducing the potential for future regrowth compared to traditional treatments.
-- question: What safety considerations are specific to laser cleaning basalt, particularly regarding fume extraction and particulate matter?
-  answer: Basalt laser cleaning generates respirable crystalline silica dust requiring HEPA filtration. Our 100W, 1064nm process demands industrial-grade extraction systems to maintain airborne particulates below 0.025 mg/m³ OSHA limits. Proper respiratory protection is essential during this ablation procedure.
-- question: Can laser cleaning be used on rough, textured basalt surfaces or is it only effective on smooth finishes?
-  answer: Laser cleaning effectively handles rough basalt textures with proper 100 μm spot sizing and 50% overlap. Strategic 500 mm/s scanning mitigates shadowing in crevices. The 1064 nm wavelength and 12 J/cm² fluence ensure uniform contaminant removal across natural stone variations without substrate damage.
-- question: How does laser cleaning compare to traditional methods (sandblasting, chemical cleaning) for restoration of basalt monuments?
-  answer: Laser cleaning at 12 J/cm² fluence offers superior surface preservation versus abrasive methods. This non-contact approach selectively removes contaminants while maintaining basalt's original texture, ensuring long-term durability without chemical residue or micro-fracturing risks.
-- question: What are the limitations of laser cleaning for heavily soiled industrial basalt surfaces compared to laboratory conditions?
-  answer: Industrial basalt's thick contamination layers demand higher fluence—exceeding 12 J/cm²—which reduces throughput. Aged installations often require multiple passes at slower scan speeds below 500 mm/s, making the process less efficient than controlled lab conditions.
-- question: Does laser treatment affect the water absorption properties or weathering resistance of basalt surfaces?
-  answer: Proper laser parameters like 12 J/cm² fluence maintain basalt's inherent low porosity. This controlled ablation removes contaminants without increasing permeability, preserving the stone's natural weathering resistance for long-term exterior durability.
-- question: What diagnostic methods are used to verify cleaning effectiveness on basalt without damaging the surface?
-  answer: For basalt's dark surface, combine visual inspection with optical microscopy to assess contaminant removal. Non-destructive techniques like surface roughness measurement and colorimetric analysis verify cleaning effectiveness without damage. Using a 1064 nm wavelength at 12 J/cm² fluence ensures complete removal while preserving the substrate integrity.
-- question: How does basalt's mineral composition (plagioclase, pyroxene, olivine) affect laser interaction and cleaning efficiency?
-  answer: Basalt's heterogeneous mineralogy creates differential absorption at 1064 nm, with plagioclase and pyroxene responding variably to the 12 J/cm² fluence. This necessitates optimized parameters like 500 mm/s scan speed to ensure uniform contaminant removal across all crystalline phases without inducing selective ablation that could etch the surface.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921602Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921610Z'

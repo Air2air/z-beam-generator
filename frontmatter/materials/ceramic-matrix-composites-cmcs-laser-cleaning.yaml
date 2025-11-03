@@ -1,4 +1,61 @@
 name: Ceramic Matrix Composites CMCs
+category: composite
+subcategory: fiber-reinforced
+title: CMCs Laser Cleaning
+subtitle: Precision laser cleaning preserves CMCs' fiber integrity and thermal resilience
+description: Laser cleaning parameters for Ceramic Matrix Composites CMCs (CMCs)
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
+  micro:
+    alt: Ceramic Matrix Composites Cmcs microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
+caption:
+  before: The microscopy image of the contaminated Ceramic Matrix Composite surface reveals adhered fine particulates and
+    oily residues on fibers and matrix. These contaminants, sized 5-40 microns, form irregular clusters in pores and low spots,
+    creating uneven coverage. This buildup causes surface degradation, including micro-cracks at interfaces and mild pitting.
+    And it shows the need for cleaning to avoid further wear and preserve integrity.
+  after: After laser cleaning, the CMC surface appears smooth and residue-free. It demonstrates high restoration quality,
+    preserving material integrity.
+  author: Yi-Chun Lin
+  character_count:
+    after: 143
+    before: 438
+  generated: '2025-10-25T14:08:54.172020Z'
+  generation_method: ai_research
+  word_count:
+    after: 18
+    before: 63
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Aerospace
 - Automotive
@@ -10,28 +67,82 @@ applications:
 - Cultural Heritage
 - Defense
 - Research & Development
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-caption:
-  afterText: After laser cleaning, the CMC surface appears smooth and residue-free. It demonstrates high restoration quality, preserving material integrity.
-  author: Yi-Chun Lin
-  beforeText: The microscopy image of the contaminated Ceramic Matrix Composite surface reveals adhered fine particulates and oily residues on fibers and matrix. These contaminants, sized 5-40 microns, form irregular clusters in pores and low spots, creating uneven coverage. This buildup causes surface degradation, including micro-cracks at interfaces and mild pitting. And it shows the need for cleaning to avoid further wear and preserve integrity.
-  character_count:
-    after: 143
-    before: 438
-  generated: '2025-10-25T14:08:54.172020Z'
-  generation_method: ai_research
-  word_count:
-    after: 18
-    before: 63
-category: composite
-description: Laser cleaning parameters for Ceramic Matrix Composites CMCs (CMCs)
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 0.0015
+      fractureToughness:
+        ai_verified: true
+        source: 'National Aeronautics and Space Administration (NASA), "Ceramic Matrix Composites (CMCs) for Aerospace Propulsion
+          Systems," Glenn Research Center, and "ASM Handbook, Volume 21: Composites," ASM International.'
+        unit: MPa·√m
+        value: 8.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: mixed crystal structure
+    source: ai_research
+    unit: crystal system
+    value: mixed
+machineSettings:
+  powerRange:
+    description: Optimal average power for CMC surface contaminant removal without substrate damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength providing optimal absorption balance for CMC ceramic phases and contaminants
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter optimized for precision cleaning of CMC surface features
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: High repetition rate for efficient area coverage while maintaining thermal management
+    unit: kHz
+    value: 100
+  energyDensity:
+    description: Fluence level sufficient for contaminant ablation while below CMC damage threshold
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion into CMC substrate
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform contaminant removal across CMC surfaces
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for thorough contaminant removal with process control
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Beam overlap percentage ensuring complete coverage without excessive heat accumulation
+    unit: '%'
+    value: 50
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -51,213 +162,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Ceramic Matrix Composites Cmcs microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
-machineSettings:
-  energyDensity:
-    description: Fluence level sufficient for contaminant ablation while below CMC damage threshold
-    unit: J/cm²
-    value: 5
-  overlapRatio:
-    description: Beam overlap percentage ensuring complete coverage without excessive heat accumulation
-    unit: '%'
-    value: 50
-  passCount:
-    description: Number of cleaning passes for thorough contaminant removal with process control
-    unit: passes
-    value: 2
-  powerRange:
-    description: Optimal average power for CMC surface contaminant removal without substrate damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion into CMC substrate
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: High repetition rate for efficient area coverage while maintaining thermal management
-    unit: kHz
-    value: 100
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform contaminant removal across CMC surfaces
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter optimized for precision cleaning of CMC surface features
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-IR wavelength providing optimal absorption balance for CMC ceramic phases and contaminants
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: mixed crystal structure
-    source: ai_research
-    unit: crystal system
-    value: mixed
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    laserAbsorption:
-      source: ai_research
-      unit: '%'
-      value: 85.2
-      min: 0.05
-      max: 200
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 38.5
-      min: 2
-      max: 80
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 750.0
-      min: 500
-      max: 2500.0
-    thermalConductivity:
-      source: ai_research
-      unit: W/(m·K)
-      value: 18.5
-      min: 0.03
-      max: 400
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: K
-        value: 1650.0
-      source: composite_degradation_standards
-      type: decomposition
-      unit: °C
-      value: 300.0
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 15.2
-      min: 0.08
-      max: 180
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 3.5
-      min: -1
-      max: 250
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: National Aeronautics and Space Administration (NASA), "Ceramic Matrix Composites (CMCs) for High-Temperature Applications," Glenn Research Center, Materials and Structures Division.
-      unit: MPa
-      value: 350.0
-      min: 50
-      max: 1000
-    corrosionResistance:
-      ai_verified: true
-      source: 'National Aeronautics and Space Administration (NASA), "Ceramic Matrix Composites: Materials, Modeling, and Technology," Chapter 1, 2015.'
-      unit: rating
-      value: 8.0
-      min: 5
-      max: 9
-    density:
-      source: ai_research
-      unit: g/cm³
-      value: 2.7
-      min: 0.5
-      max: 8
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 0.0015
-      min: 0.001
-      max: 100000000000000.0
-    flexuralStrength:
-      ai_verified: true
-      source: National Aeronautics and Space Administration (NASA), "Ceramic Matrix Composites (CMCs) for Aerospace Propulsion Systems," Glenn Research Center, Materials and Structures Division.
-      unit: MPa
-      value: 350.0
-      min: 100
-      max: 2000
-    fractureToughness:
-      source: ai_research
-      unit: MPa·m¹/²
-      value: 15.2
-      min: 20
-      max: 100
-    hardness:
-      source: ai_research
-      unit: GPa
-      value: 22.5
-      min: 5.0
-      max: 120
-    oxidationResistance:
-      ai_verified: true
-      source: National Aeronautics and Space Administration (NASA) Glenn Research Center, "Ceramic Matrix Composites (CMCs) for High Temperature Applications"
-      unit: °C
-      value: 1650.0
-      min: 80.0
-      max: 1650.0
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 325.0
-      min: 20
-      max: 6000
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 150.0
-      min: 0.001
-      max: 3000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 0.0015
-      min: 0.001
-      max: 100000000000000.0
-    fractureToughness:
-      ai_verified: true
-      source: 'National Aeronautics and Space Administration (NASA), "Ceramic Matrix Composites (CMCs) for Aerospace Propulsion Systems," Glenn Research Center, and "ASM Handbook, Volume 21: Composites," ASM International.'
-      unit: MPa·√m
-      value: 8.0
-      min: 20
-      max: 100
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -289,29 +193,60 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: fiber-reinforced
-subtitle: Precision laser cleaning preserves CMCs' fiber integrity and thermal resilience
+faq:
+  questions:
+  - answer: For typical SiC/SiC composites, maintain fluence below 2-4 J/cm² with nanosecond pulses at 1064 nm. This range
+      effectively removes oxides and carbon deposits while preserving the matrix integrity. The precise safe threshold depends
+      on your specific fiber type and the initial surface contamination level.
+    question: What is the maximum safe laser fluence (J/cm²) for cleaning CMCs without damaging the SiC matrix or fiber reinforcement?
+  - answer: Using 1064nm wavelength at 5 J/cm² fluence selectively ablates carbonaceous soot while preserving Yb₂SiO₅ EBC
+      integrity. Maintain 500 mm/s scan speed with 50μm spot size to ensure contaminant removal without thermal alteration.
+      Post-process verification via optical microscopy confirms surface preservation.
+    question: How do I remove environmental contaminants like carbonaceous soot from CMC turbine blades without altering the
+      underlying protective EBC (Environmental Barrier Coating)?
+  - answer: For CMC laser cleaning, 1064nm wavelength at 5 J/cm² fluence provides optimal absorption balance. This effectively
+      removes contaminants while preserving the SiC matrix and carbon fibers, preventing thermal damage to the composite's
+      critical constituents.
+    question: What laser wavelength (e.g., 1064nm, 532nm, or 10.6μm) is most effective for cleaning CMCs, and why?
+  - answer: Yes, laser cleaning can induce micro-cracks in CMCs from thermal shock. Using nanosecond pulses at 10 ns and a
+      fluence of 5 J/cm² minimizes this risk by limiting heat diffusion. Process monitoring is essential to detect any subsurface
+      thermal stress damage.
+    question: Can laser cleaning induce micro-cracks or thermal stress damage in the CMC's brittle ceramic matrix?
+  - answer: The 5 J/cm² fluence generates nanoparticles of SiC and carbon fibers requiring HEPA filtration. Maintain industrial
+      hygiene with proper ventilation and respiratory protection for operators handling these ultrafine byproducts from CMC
+      laser processing.
+    question: What are the best practices for handling the nanoparticles and vapors generated during laser cleaning of CMCs,
+      especially those with carbon fibers?
+  - answer: Properly tuned 1064 nm laser cleaning at 5 J/cm² minimally alters CMC topography. It can slightly increase surface
+      roughness by opening sealed pores, which often enhances coating adhesion but may require NDE signal compensation for
+      accurate inspection.
+    question: How does laser cleaning affect the surface roughness and porosity of a CMC, and what is the impact on subsequent
+      re-coating or re-inspection?
+  - answer: Laser depainting at 5 J/cm² effectively removes organic coatings from CMCs with minimal substrate interaction.
+      The primary risk is incomplete paint pyrolysis, which can leave carbonaceous residues not found with mechanical methods.
+      Proper parameter control is essential to avoid this contamination.
+    question: Is laser cleaning a viable method for depainting CMC components, and what are the risks of leaving residual
+      chemical contaminants from the paint?
+  - answer: For complex CMC airfoils, precise 3D beam delivery is paramount. Galvo scanners enable high-speed contour following
+      at 500 mm/s, while closed-loop monitoring with LIBS prevents hot spots by ensuring the 5 J/cm² fluence remains uniform,
+      thus avoiding thermal damage.
+    question: For automated laser cleaning of complex CMC geometries (like airfoils), how critical is beam delivery and scanning
+      control to ensure uniform cleaning without hot spots?
+  - answer: The fundamental difference lies in carbon's high 1064nm absorption and oxidation risk versus SiC's higher ablation
+      threshold near 5 J/cm². C/C cleaning demands inert gas assist and lower fluence, while SiC/SiC withstands more aggressive
+      ns-pulse parameters. This dictates entirely different laser strategies for each composite system.
+    question: What is the fundamental difference in laser interaction between a SiC/SiC CMC and a C/C (Carbon-Carbon) composite,
+      and how does that change the cleaning strategy?
+  - answer: For CMC surface integrity verification after laser cleaning at 5 J/cm², fluorescent penetrant inspection effectively
+      reveals micro-cracks. Pulsed thermography is also highly reliable for detecting subsurface thermal alterations, as it
+      maps thermal effusivity changes from potential heat-affected zones without contact.
+    question: After laser cleaning, what non-destructive testing (NDE) methods are most reliable for verifying surface integrity
+      and the absence of heat-affected zones on CMCs?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921793Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921799Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
@@ -319,30 +254,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:02:35.086007Z'
   generation_method: ai_research_voice
   word_count: 10
-title: CMCs Laser Cleaning
-faq:
-- question: What is the maximum safe laser fluence (J/cm²) for cleaning CMCs without damaging the SiC matrix or fiber reinforcement?
-  answer: For typical SiC/SiC composites, maintain fluence below 2-4 J/cm² with nanosecond pulses at 1064 nm. This range effectively removes oxides and carbon deposits while preserving the matrix integrity. The precise safe threshold depends on your specific fiber type and the initial surface contamination level.
-- question: How do I remove environmental contaminants like carbonaceous soot from CMC turbine blades without altering the underlying protective EBC (Environmental Barrier Coating)?
-  answer: Using 1064nm wavelength at 5 J/cm² fluence selectively ablates carbonaceous soot while preserving Yb₂SiO₅ EBC integrity. Maintain 500 mm/s scan speed with 50μm spot size to ensure contaminant removal without thermal alteration. Post-process verification via optical microscopy confirms surface preservation.
-- question: What laser wavelength (e.g., 1064nm, 532nm, or 10.6μm) is most effective for cleaning CMCs, and why?
-  answer: For CMC laser cleaning, 1064nm wavelength at 5 J/cm² fluence provides optimal absorption balance. This effectively removes contaminants while preserving the SiC matrix and carbon fibers, preventing thermal damage to the composite's critical constituents.
-- question: Can laser cleaning induce micro-cracks or thermal stress damage in the CMC's brittle ceramic matrix?
-  answer: Yes, laser cleaning can induce micro-cracks in CMCs from thermal shock. Using nanosecond pulses at 10 ns and a fluence of 5 J/cm² minimizes this risk by limiting heat diffusion. Process monitoring is essential to detect any subsurface thermal stress damage.
-- question: What are the best practices for handling the nanoparticles and vapors generated during laser cleaning of CMCs, especially those with carbon fibers?
-  answer: The 5 J/cm² fluence generates nanoparticles of SiC and carbon fibers requiring HEPA filtration. Maintain industrial hygiene with proper ventilation and respiratory protection for operators handling these ultrafine byproducts from CMC laser processing.
-- question: How does laser cleaning affect the surface roughness and porosity of a CMC, and what is the impact on subsequent re-coating or re-inspection?
-  answer: Properly tuned 1064 nm laser cleaning at 5 J/cm² minimally alters CMC topography. It can slightly increase surface roughness by opening sealed pores, which often enhances coating adhesion but may require NDE signal compensation for accurate inspection.
-- question: Is laser cleaning a viable method for depainting CMC components, and what are the risks of leaving residual chemical contaminants from the paint?
-  answer: Laser depainting at 5 J/cm² effectively removes organic coatings from CMCs with minimal substrate interaction. The primary risk is incomplete paint pyrolysis, which can leave carbonaceous residues not found with mechanical methods. Proper parameter control is essential to avoid this contamination.
-- question: For automated laser cleaning of complex CMC geometries (like airfoils), how critical is beam delivery and scanning control to ensure uniform cleaning without hot spots?
-  answer: For complex CMC airfoils, precise 3D beam delivery is paramount. Galvo scanners enable high-speed contour following at 500 mm/s, while closed-loop monitoring with LIBS prevents hot spots by ensuring the 5 J/cm² fluence remains uniform, thus avoiding thermal damage.
-- question: What is the fundamental difference in laser interaction between a SiC/SiC CMC and a C/C (Carbon-Carbon) composite, and how does that change the cleaning strategy?
-  answer: The fundamental difference lies in carbon's high 1064nm absorption and oxidation risk versus SiC's higher ablation threshold near 5 J/cm². C/C cleaning demands inert gas assist and lower fluence, while SiC/SiC withstands more aggressive ns-pulse parameters. This dictates entirely different laser strategies for each composite system.
-- question: After laser cleaning, what non-destructive testing (NDE) methods are most reliable for verifying surface integrity and the absence of heat-affected zones on CMCs?
-  answer: For CMC surface integrity verification after laser cleaning at 5 J/cm², fluorescent penetrant inspection effectively reveals micro-cracks. Pulsed thermography is also highly reliable for detecting subsurface thermal alterations, as it maps thermal effusivity changes from potential heat-affected zones without contact.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921793Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921799Z'

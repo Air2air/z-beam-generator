@@ -1,4 +1,61 @@
 name: Mortar
+category: masonry
+subcategory: general
+title: Mortar Laser Cleaning
+subtitle: Precision Laser Cleaning Revives Mortar's Porous Texture Without Compromising Binders
+description: Laser cleaning parameters for Mortar
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Mortar surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/mortar-laser-cleaning-hero.jpg
+  micro:
+    alt: Mortar microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/mortar-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopic examination, the mortar surface reveals a heavily contaminated condition, with irregular pores
+    clogged by fine particulate matter—likely dust, organic residues, and efflorescent salts. These contaminants, unevenly
+    distributed, exhibit crystalline structures and amorphous aggregates, accelerating degradation through micro-cracks and
+    pitting. This erosion, it weakens the masonry integrity over time.
+  after: After laser cleaning, the mortar surface gleams smooth and restored, with pristine condition and full material integrity
+    intact. Restoration quality excels, preserving original strength.
+  author: Alessandro Moretti
+  character_count:
+    after: 186
+    before: 418
+  generated: '2025-10-25T14:46:42.887551Z'
+  generation_method: ai_research
+  word_count:
+    after: 24
+    before: 50
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Cultural Heritage
 - Construction Restoration
@@ -10,28 +67,78 @@ applications:
 - Archaeological Research
 - Water Treatment Facilities
 - Historical Masonry
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-caption:
-  afterText: After laser cleaning, the mortar surface gleams smooth and restored, with pristine condition and full material integrity intact. Restoration quality excels, preserving original strength.
-  author: Alessandro Moretti
-  beforeText: Under microscopic examination, the mortar surface reveals a heavily contaminated condition, with irregular pores clogged by fine particulate matter—likely dust, organic residues, and efflorescent salts. These contaminants, unevenly distributed, exhibit crystalline structures and amorphous aggregates, accelerating degradation through micro-cracks and pitting. This erosion, it weakens the masonry integrity over time.
-  character_count:
-    after: 186
-    before: 418
-  generated: '2025-10-25T14:46:42.887551Z'
-  generation_method: ai_research
-  word_count:
-    after: 24
-    before: 50
-category: masonry
-description: Laser cleaning parameters for Mortar
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      fractureToughness:
+        ai_verified: true
+        source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of plain and fiber-reinforced concrete with different
+          water/cement ratios. Advances in Cement Research, 22(1), 15-22.
+        unit: MPa·√m
+        value: 0.35
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+machineSettings:
+  powerRange:
+    description: Optimal average power for mortar cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for mortar absorption and minimal substrate damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise mortar cleaning with adequate energy density
+    unit: mm
+    value: 0.1
+  repetitionRate:
+    description: Optimal repetition rate for efficient mortar removal with good surface quality
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective mortar ablation without damaging underlying substrate
+    unit: J/cm²
+    value: 12.7
+  pulseWidth:
+    description: Nanosecond pulse duration for effective mortar ablation with controlled thermal effects
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform mortar removal and processing efficiency
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete mortar removal with quality control
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform mortar removal and surface consistency
+    unit: '%'
+    value: 50
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -51,203 +158,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Mortar surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/mortar-laser-cleaning-hero.jpg
-  micro:
-    alt: Mortar microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/mortar-laser-cleaning-micro.jpg
-machineSettings:
-  energyDensity:
-    description: Fluence threshold for effective mortar ablation without damaging underlying substrate
-    unit: J/cm²
-    value: 12.7
-  overlapRatio:
-    description: Optimal beam overlap for uniform mortar removal and surface consistency
-    unit: '%'
-    value: 50
-  passCount:
-    description: Recommended number of passes for complete mortar removal with quality control
-    unit: passes
-    value: 3
-  powerRange:
-    description: Optimal average power for mortar cleaning without thermal damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for effective mortar ablation with controlled thermal effects
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for efficient mortar removal with good surface quality
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform mortar removal and processing efficiency
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for precise mortar cleaning with adequate energy density
-    unit: mm
-    value: 0.1
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-infrared wavelength optimized for mortar absorption and minimal substrate damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: amorphous crystal structure
-    source: ai_research
-    unit: crystal system
-    value: amorphous
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    laserAbsorption:
-      ai_verified: true
-      source: ai_research
-      unit: 1/cm
-      value: 0.5
-      min: 0.5
-      max: 15
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 35.2
-      min: 10
-      max: 70
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 840.0
-      min: 700
-      max: 1100
-    thermalConductivity:
-      ai_verified: true
-      source: ai_research
-      unit: W/(m·K)
-      value: 1.5
-      min: 0.08
-      max: 2.5
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: °C
-        value: 750.0
-      source: thermal_degradation_standards
-      type: spalling
-      unit: °C
-      value: 500.0
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 0.52
-      min: 0.1
-      max: 1
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 10.0
-      min: 5
-      max: 20
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      source: ai_research
-      unit: MPa
-      value: 17.2
-      min: 5
-      max: 100
-    corrosionResistance:
-      ai_verified: true
-      source: Portland Cement Association - "Corrosion Resistance of Concrete and Mortar"
-      unit: rating
-      value: 3.0
-      min: 2.0
-      max: 8.0
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 2.3
-      min: 0.6
-      max: 3.2
-    flexuralStrength:
-      ai_verified: true
-      source: ASTM C270 - Standard Specification for Mortar for Unit Masonry, Table 2 (Property Specification for Mortar) for Type S mortar.
-      unit: MPa
-      value: 4.3
-      min: 2
-      max: 20
-    fractureToughness:
-      source: ai_research
-      unit: MPa·m¹/²
-      value: 0.25
-      min: 0.15
-      max: 1.1
-    hardness:
-      source: ai_research
-      unit: Mohs
-      value: 3.5
-      min: 1
-      max: 6
-    oxidationResistance:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 13B, Corrosion: Materials (2005), "Corrosion of Concrete and Masonry"'
-      unit: °C
-      value: 600.0
-      min: 300.0
-      max: 1200.0
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 2.8
-      min: 1
-      max: 15
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 22.0
-      min: 3.0
-      max: 50
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    fractureToughness:
-      ai_verified: true
-      source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of plain and fiber-reinforced concrete with different water/cement ratios. Advances in Cement Research, 22(1), 15-22.
-      unit: MPa·√m
-      value: 0.35
-      min: 0.15
-      max: 1.1
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -279,29 +189,56 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: general
-subtitle: Precision Laser Cleaning Revives Mortar's Porous Texture Without Compromising Binders
+faq:
+  questions:
+  - answer: Yes, laser cleaning effectively removes mortar residue while preserving brick integrity. Using 1064 nm wavelength
+      at 12.7 J/cm² fluence ensures selective ablation of the mortar. Optimal parameters like 500 mm/s scan speed and 50%
+      overlap prevent thermal damage to the underlying masonry, making it ideal for sensitive restoration work.
+    question: Can laser cleaning effectively remove mortar residue from brickwork without damaging the bricks?
+  - answer: For historical mortar on delicate stone, use low fluence around 12.7 J/cm² with nanosecond pulses at 10 ns. This
+      provides controlled ablation, preserving the substrate. A 1064 nm wavelength and 50% beam overlap ensure uniform removal
+      of traditional lime-based compositions without thermal damage.
+    question: What laser parameters work best for cleaning historical mortar from delicate stone surfaces?
+  - answer: Laser ablation at 12.7 J/cm² significantly reduces hazardous silica dust compared to mechanical grinding. However,
+      the process still generates fine particulate, requiring local exhaust ventilation and respiratory protection to meet
+      OSHA's permissible exposure limits for crystalline silica.
+    question: Does laser cleaning create hazardous dust when removing mortar containing silica?
+  - answer: Laser cleaning at 12.7 J/cm² selectively ablates contaminants without chemical reactions, preserving the mortar's
+      original composition. This prevents damaging salt crystallization and avoids pH shifts, ensuring superior long-term
+      stability compared to chemical methods which can leave reactive residues.
+    question: How does laser cleaning affect the chemical composition of mortar surfaces compared to chemical cleaning?
+  - answer: Yes, laser cleaning can differentiate materials through selective ablation. At 12.7 J/cm², original mortar and
+      modern repairs, with their distinct compositions, ablate at different rates. This allows precise removal of later cementitious
+      additions while preserving the authentic, historical substrate.
+    question: Can laser cleaning distinguish between original mortar and later repairs during restoration projects?
+  - answer: Laser cleaning effectively removes mortar layers up to 2-3 mm thick per pass at 12.7 J/cm². For thicker residues,
+      a multi-pass strategy is essential to avoid substrate damage, often requiring mechanical pre-cleaning for deposits exceeding
+      5 mm.
+    question: What's the maximum thickness of mortar residue that laser cleaning can effectively remove?
+  - answer: Lime mortar's higher absorption at 1064 nm allows gentler cleaning near 12.7 J/cm². Denser Portland cement requires
+      higher fluence, risking discoloration if its different mineralogy isn't accommodated with adjusted power and scan speed.
+    question: How does mortar composition (lime-based vs. Portland cement) affect laser cleaning results?
+  - answer: For large masonry facades, laser cleaning becomes cost-effective at scale despite higher initial equipment costs.
+      Our 100W systems achieve 500 mm/s scan speeds with 12.7 J/cm² fluence, significantly reducing labor and eliminating
+      abrasive disposal compared to traditional methods.
+    question: Is laser cleaning cost-effective for large-scale mortar removal from masonry facades?
+  - answer: In confined spaces like chimneys, implement aggressive fume extraction to manage hazardous mortar dust. The 1064
+      nm wavelength poses significant reflection risks, requiring careful beam positioning. Continuously monitor oxygen levels
+      and combustible gases to prevent atmospheric hazards.
+    question: What safety precautions are specific to laser cleaning mortar from confined spaces like chimneys or tunnels?
+  - answer: Laser cleaning at 12.7 J/cm² effectively strips contaminants and micro-roughens the mortar surface, creating an
+      ideal adhesion profile for repointing. This method surpasses mechanical abrasion by preserving the substrate's integrity,
+      ensuring superior bond strength for the new mortar without inducing micro-fractures.
+    question: Can laser cleaning prepare mortar surfaces for repointing by creating better adhesion profiles?
+  - answer: Moisture significantly increases steam generation risks during laser cleaning of mortar. For damp historical structures,
+      I recommend reducing the fluence from 12.7 J/cm² and increasing the scan speed above 500 mm/s to manage thermal input.
+      This adjustment helps prevent micro-fracturing while maintaining effective ablation on wet surfaces.
+    question: How does moisture content in mortar affect laser cleaning efficiency and safety?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922234Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922240Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Italy
   author_name: Alessandro Moretti
@@ -309,32 +246,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:21:47.944406Z'
   generation_method: ai_research_voice
   word_count: 10
-title: Mortar Laser Cleaning
-faq:
-- question: Can laser cleaning effectively remove mortar residue from brickwork without damaging the bricks?
-  answer: Yes, laser cleaning effectively removes mortar residue while preserving brick integrity. Using 1064 nm wavelength at 12.7 J/cm² fluence ensures selective ablation of the mortar. Optimal parameters like 500 mm/s scan speed and 50% overlap prevent thermal damage to the underlying masonry, making it ideal for sensitive restoration work.
-- question: What laser parameters work best for cleaning historical mortar from delicate stone surfaces?
-  answer: For historical mortar on delicate stone, use low fluence around 12.7 J/cm² with nanosecond pulses at 10 ns. This provides controlled ablation, preserving the substrate. A 1064 nm wavelength and 50% beam overlap ensure uniform removal of traditional lime-based compositions without thermal damage.
-- question: Does laser cleaning create hazardous dust when removing mortar containing silica?
-  answer: Laser ablation at 12.7 J/cm² significantly reduces hazardous silica dust compared to mechanical grinding. However, the process still generates fine particulate, requiring local exhaust ventilation and respiratory protection to meet OSHA's permissible exposure limits for crystalline silica.
-- question: How does laser cleaning affect the chemical composition of mortar surfaces compared to chemical cleaning?
-  answer: Laser cleaning at 12.7 J/cm² selectively ablates contaminants without chemical reactions, preserving the mortar's original composition. This prevents damaging salt crystallization and avoids pH shifts, ensuring superior long-term stability compared to chemical methods which can leave reactive residues.
-- question: Can laser cleaning distinguish between original mortar and later repairs during restoration projects?
-  answer: Yes, laser cleaning can differentiate materials through selective ablation. At 12.7 J/cm², original mortar and modern repairs, with their distinct compositions, ablate at different rates. This allows precise removal of later cementitious additions while preserving the authentic, historical substrate.
-- question: What's the maximum thickness of mortar residue that laser cleaning can effectively remove?
-  answer: Laser cleaning effectively removes mortar layers up to 2-3 mm thick per pass at 12.7 J/cm². For thicker residues, a multi-pass strategy is essential to avoid substrate damage, often requiring mechanical pre-cleaning for deposits exceeding 5 mm.
-- question: How does mortar composition (lime-based vs. Portland cement) affect laser cleaning results?
-  answer: Lime mortar's higher absorption at 1064 nm allows gentler cleaning near 12.7 J/cm². Denser Portland cement requires higher fluence, risking discoloration if its different mineralogy isn't accommodated with adjusted power and scan speed.
-- question: Is laser cleaning cost-effective for large-scale mortar removal from masonry facades?
-  answer: For large masonry facades, laser cleaning becomes cost-effective at scale despite higher initial equipment costs. Our 100W systems achieve 500 mm/s scan speeds with 12.7 J/cm² fluence, significantly reducing labor and eliminating abrasive disposal compared to traditional methods.
-- question: What safety precautions are specific to laser cleaning mortar from confined spaces like chimneys or tunnels?
-  answer: In confined spaces like chimneys, implement aggressive fume extraction to manage hazardous mortar dust. The 1064 nm wavelength poses significant reflection risks, requiring careful beam positioning. Continuously monitor oxygen levels and combustible gases to prevent atmospheric hazards.
-- question: Can laser cleaning prepare mortar surfaces for repointing by creating better adhesion profiles?
-  answer: Laser cleaning at 12.7 J/cm² effectively strips contaminants and micro-roughens the mortar surface, creating an ideal adhesion profile for repointing. This method surpasses mechanical abrasion by preserving the substrate's integrity, ensuring superior bond strength for the new mortar without inducing micro-fractures.
-- question: How does moisture content in mortar affect laser cleaning efficiency and safety?
-  answer: Moisture significantly increases steam generation risks during laser cleaning of mortar. For damp historical structures, I recommend reducing the fluence from 12.7 J/cm² and increasing the scan speed above 500 mm/s to manage thermal input. This adjustment helps prevent micro-fracturing while maintaining effective ablation on wet surfaces.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922234Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922240Z'

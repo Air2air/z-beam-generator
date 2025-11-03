@@ -1,4 +1,62 @@
 name: Platinum
+category: metal
+subcategory: non-ferrous
+title: Platinum Laser Cleaning
+subtitle: Revive platinum's noble luster through precise laser control preserving its corrosion-free integrity
+description: Laser cleaning parameters for Platinum
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/platinum-laser-cleaning-hero.jpg
+  micro:
+    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/platinum-laser-cleaning-micro.jpg
+caption:
+  before: Under optical microscopy, the platinum surface appears very-very rough and uneven, covered by contaminants that
+    stick and accumulate irregularly. These contaminants, mostly fine particles and oily residues from handling, show clustered
+    shapes around 5-20 micrometers, darkening the metallic sheen. Surface degradation is evident in micro-pits and scratches,
+    so the material looks weakened, affecting its use in aerospace and medical devices.
+  after: The cleaned platinum surface appears very-very smooth and pristine, restored effectively by ultrafast laser process.
+    Restoration quality maintains material integrity fully, so no defects occur, ensuring suitability for aerospace, medical
+    devices, and electronics.
+  author: Ikmanda Roswati
+  character_count:
+    after: 263
+    before: 441
+  generated: '2025-10-28T11:57:23.867433Z'
+  generation_method: ai_research
+  word_count:
+    after: 33
+    before: 60
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Aerospace
 - Medical Devices
@@ -10,32 +68,117 @@ applications:
 - Energy Sector
 - Marine and Offshore
 - Cultural Heritage
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-caption:
-  afterText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm oxide layer, exhibiting\
-    \ reduced thermal conductivity of 71.6 W/(m·K) and compromised laser absorption\
-    \ at 36.5%, requiring precise cleaning to restore properties"
-  author: Ikmanda Roswati
-  beforeText: "{\n  \"beforeText\": \"Platinum surface with 2.5 µm contaminant layer,\
-    \ exhibiting reduced thermal conductivity of 71.6 W/(m·K) and laser absorption\
-    \ at 36.5%, requiring precise cleaning to restore properties.\","
-  character_count:
-    after: 132
-    before: 400
-  generated: '2025-10-25T14:55:42.482579Z'
-  generation_method: ai_research
-  word_count:
-    after: 17
-    before: 56
-category: metal
-description: Laser cleaning parameters for Platinum
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 9430000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.06e-07
+      fractureToughness:
+        ai_verified: true
+        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals"'
+        unit: MPa·√m
+        value: 38.0
+      surfaceRoughness:
+        source: ai_research
+        unit: μm
+        value: 0.025
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 2.51e-07
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 42000000.0
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.065
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.73
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 2041.15
+      thermalShockResistance:
+        source: ai_research
+        unit: MW/m
+        value: 1.8
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+machineSettings:
+  powerRange:
+    description: Optimal average power for Platinum surface cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage with controlled thermal input
+    unit: kHz
+    value: 50
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal while minimizing Platinum substrate heating
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for thorough cleaning of Platinum surfaces
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    unit: '%'
+    value: 50
+  fluence:
+    description: Energy density threshold for effective contaminant removal without Platinum damage
+    unit: J/cm²
+    value: 5
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -55,352 +198,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/platinum-laser-cleaning-hero.jpg
-  micro:
-    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/platinum-laser-cleaning-micro.jpg
-machineSettings:
-  fluence:
-    description: Energy density threshold for effective contaminant removal without
-      Platinum damage
-    unit: J/cm²
-    value: 5
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    unit: '%'
-    value: 50
-  passCount:
-    description: Recommended number of passes for thorough cleaning of Platinum surfaces
-    unit: passes
-    value: 3
-  powerRange:
-    description: Optimal average power for Platinum surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal while
-      minimizing Platinum substrate heating
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage with controlled
-      thermal input
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
-      and thermal processing
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: FCC crystal structure
-    source: ai_research
-    unit: crystal system
-    value: FCC
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    ablationThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.45
-      min: 2.0
-      max: 8.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: 42000000.0
-      min: 100000
-      max: 50000000
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.065
-      min: 2.0
-      max: 65.0
-    boilingPoint:
-      source: ai_research
-      unit: °C
-      value: 3827.0
-      min: 907
-      max: 5870
-    laserAbsorption:
-      ai_verified: true
-      source: ai_research
-      unit: '%'
-      value: 36.5
-      min: 0.02
-      max: 100
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.45
-      min: 0.1
-      max: 20.0
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 73.2
-      min: 5
-      max: 99.9
-    meltingPoint:
-      source: ai_research
-      unit: °C
-      value: 1768.3
-      min: -39
-      max: 3422
-    reflectivity:
-      source: ai_research
-      unit: dimensionless (ratio)
-      value: 0.73
-      min: 85
-      max: 98
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 133.0
-      min: 100
-      max: 2000
-    thermalConductivity:
-      ai_verified: true
-      source: ai_research
-      unit: W/(m·K)
-      value: 71.6
-      min: 7.0
-      max: 430
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: K
-        value: 2041.15
-      source: thermal_degradation_standards
-      type: melting
-      unit: °C
-      value: 500.0
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 2041.15
-      min: 873
-      max: 3695
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 25.9
-      min: 0.06
-      max: 174
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 8.8
-      min: 0.5
-      max: 33
-    thermalShockResistance:
-      source: ai_research
-      unit: MW/m
-      value: 1.8
-      min: 50
-      max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials" (Platinum and Platinum Alloys section)'
-      unit: MPa
-      value: 325.0
-      min: 50
-      max: 2000
-    corrosionResistance:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (ASM International)'
-      unit: rating
-      value: 10.0
-      min: 1
-      max: 10
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 21.45
-      min: 0.53
-      max: 22.6
-    electricalConductivity:
-      source: ai_research
-      unit: S/m
-      value: 9430000.0
-      min: 0.67
-      max: 63.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 1.06e-07
-      min: 1.0e-08
-      max: 1.5e-06
-    flexuralStrength:
-      ai_verified: true
-      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
-        Special-Purpose Materials", Vol. 2, ASM Handbook Committee.'
-      unit: MPa
-      value: 125.0
-      min: 2.5
-      max: 1050.0
-    fractureToughness:
-      source: ai_research
-      unit: MPa√m
-      value: 77.0
-      min: 20
-      max: 200
-    hardness:
-      ai_verified: true
-      source: ai_research
-      unit: HV
-      value: 41.0
-      min: 0.5
-      max: 3500
-    oxidationResistance:
-      ai_verified: true
-      source: 'ASM International, "ASM Handbook, Volume 2: Properties and Selection:
-        Nonferrous Alloys and Special-Purpose Materials" (1990), and Haynes International,
-        "High-Temperature Alloys - Platinum and Platinum Alloys"'
-      unit: °C
-      value: 1000.0
-      min: 200
-      max: 1200
-    porosity:
-      source: ai_research
-      unit: '%'
-      value: 0.0001
-      min: 0.0
-      max: 15.0
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 125.0
-      min: 3.0
-      max: 3000.0
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 168.0
-      min: 5
-      max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: 42000000.0
-      min: 100000
-      max: 50000000
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.065
-      min: 2.0
-      max: 65.0
-    electricalConductivity:
-      source: ai_research
-      unit: S/m
-      value: 9430000.0
-      min: 0.67
-      max: 63.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 1.06e-07
-      min: 1.0e-08
-      max: 1.5e-06
-    fractureToughness:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-        of Metals"'
-      unit: MPa·√m
-      value: 38.0
-      min: 20
-      max: 200
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.45
-      min: 0.1
-      max: 20.0
-    reflectivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.73
-      min: 85
-      max: 98
-    surfaceRoughness:
-      source: ai_research
-      unit: μm
-      value: 0.025
-      min: 0.4
-      max: 150
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 2041.15
-      min: 873
-      max: 3695
-    thermalShockResistance:
-      source: ai_research
-      unit: MW/m
-      value: 1.8
-      min: 50
-      max: 400
-    vaporPressure:
-      source: ai_research
-      unit: Pa
-      value: 2.51e-07
-      min: 1.0e-10
-      max: 0.001
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -432,30 +229,62 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: non-ferrous
-subtitle: Revive platinum's noble luster through precise laser control preserving
-  its corrosion-free integrity
+faq:
+  questions:
+  - answer: Proper laser cleaning won't damage platinum coatings when fluence is carefully controlled below its ablation threshold,
+      typically under 5 J/cm². Using nanosecond pulses at 1064 nm wavelength minimizes thermal stress. Verification via scanning
+      electron microscopy confirms the underlying layer remains intact post-process.
+    question: Can laser cleaning damage the thin platinum coating on medical devices or catalytic converters?
+  - answer: For platinum jewelry, I recommend 1064 nm wavelength fiber lasers with 10 ns pulses at 5 J/cm² fluence. This balances
+      platinum's high reflectivity while minimizing heat penetration. The 50 μm spot size with 500 mm/s scanning prevents
+      micro-pitting by limiting thermal accumulation in the precious metal substrate.
+    question: What laser wavelength (nm) and pulse duration work best for cleaning platinum jewelry without causing micro-pitting?
+  - answer: Laser cleaning at 5 J/cm² fluence effectively removes platinum oxides without chemical residues. This maintains
+      surface purity for high-temperature applications, unlike acid methods that risk contamination. The 1064 nm wavelength
+      ensures minimal thermal impact on the substrate.
+    question: How do you safely remove oxidation layers from platinum crucibles used in laboratory settings without altering
+      their chemical purity?
+  - answer: For platinum components with absorbed contaminants like arsenic, implement Class III fume extraction and full-face
+      respirators. The 1064 nm wavelength at 5 J/cm² efficiently removes hazardous materials while minimizing toxic fume generation.
+      Always conduct material safety analysis before processing.
+    question: What safety precautions are needed when laser cleaning platinum components that may have absorbed hazardous
+      materials in industrial processes?
+  - answer: Properly tuned laser cleaning at 5 J/cm² fluence actually enhances platinum's electrochemical performance. The
+      process removes contaminants while creating beneficial micro-roughness, increasing active surface area without introducing
+      impurities that degrade catalytic activity.
+    question: Does laser cleaning affect the electrochemical properties of platinum electrodes used in scientific instruments?
+  - answer: Untuk platinum dengan titik leleh 1768°C, rapat daya aman maksimum sekitar 5 J/cm² pada laser 1064 nm. Konduktivitas
+      termalnya yang tinggi memungkinkan pendinginan cepat, namun pemindaian di atas 500 mm/s dan monitoring termal real-time
+      sangat penting untuk mencegah deformasi.
+    question: What is the maximum safe laser power density for cleaning platinum spark plug electrodes without melting or
+      deforming them?
+  - answer: Laser cleaning excels for platinum-rhodium thermocouples, using ~5 J/cm² fluence to selectively ablate carbon
+      without altering the alloy. This non-contact method preserves calibration accuracy far better than abrasive techniques,
+      which risk surface damage and compositional changes.
+    question: How effective is laser cleaning for removing carbon buildup from platinum-rhodium thermocouple wires in high-temperature
+      applications?
+  - answer: With optimal 5 J/cm² fluence and 50% overlap, laser cleaning minimizes microstructural changes in platinum. However,
+      improper parameters can induce residual stress, increasing susceptibility to chemical attack. Post-cleaning inspection
+      for micro-cracks is essential for chemical processing equipment integrity.
+    question: Can laser cleaning create surface defects in platinum that lead to stress corrosion cracking in chemical processing
+      equipment?
+  - answer: Laser cleaning preserves over 99.9% of your platinum scrap, unlike chemical refining's significant material loss.
+      With a 100W, 1064nm system operating at 5 J/cm², processing is dramatically faster. This method eliminates hazardous
+      chemical costs while maintaining the metal's intrinsic purity, making it economically superior for high-value recovery.
+    question: What are the economic considerations for laser cleaning platinum recovery scrap versus traditional refining
+      methods?
+  - answer: Laser cleaning excels for intricate platinum jewelry by reaching complex geometries that ultrasonic methods miss.
+      With precise 50 μm spot control at 5 J/cm² fluence, it completely removes polishing compounds without embedding residues.
+      This dry process maintains platinum's premium surface finish while significantly reducing cycle times in manufacturing.
+    question: How does laser cleaning compare to ultrasonic cleaning for removing polishing compounds from intricate platinum
+      jewelry designs?
+material_metadata:
+  caption_corruption_detected: '2025-10-27T23:53:01.654591Z'
+  caption_issue: Truncated JSON structure detected in caption fields
+  last_updated: '2025-10-27T23:48:40.922359Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922364Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Indonesia
   author_name: Ikmanda Roswati
@@ -463,72 +292,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:26:44.565150Z'
   generation_method: ai_research_voice
   word_count: 12
-title: Platinum Laser Cleaning
-faq:
-- question: Can laser cleaning damage the thin platinum coating on medical devices
-    or catalytic converters?
-  answer: Proper laser cleaning won't damage platinum coatings when fluence is carefully
-    controlled below its ablation threshold, typically under 5 J/cm². Using nanosecond
-    pulses at 1064 nm wavelength minimizes thermal stress. Verification via scanning
-    electron microscopy confirms the underlying layer remains intact post-process.
-- question: What laser wavelength (nm) and pulse duration work best for cleaning platinum
-    jewelry without causing micro-pitting?
-  answer: For platinum jewelry, I recommend 1064 nm wavelength fiber lasers with 10
-    ns pulses at 5 J/cm² fluence. This balances platinum's high reflectivity while
-    minimizing heat penetration. The 50 μm spot size with 500 mm/s scanning prevents
-    micro-pitting by limiting thermal accumulation in the precious metal substrate.
-- question: How do you safely remove oxidation layers from platinum crucibles used
-    in laboratory settings without altering their chemical purity?
-  answer: Laser cleaning at 5 J/cm² fluence effectively removes platinum oxides without
-    chemical residues. This maintains surface purity for high-temperature applications,
-    unlike acid methods that risk contamination. The 1064 nm wavelength ensures minimal
-    thermal impact on the substrate.
-- question: What safety precautions are needed when laser cleaning platinum components
-    that may have absorbed hazardous materials in industrial processes?
-  answer: For platinum components with absorbed contaminants like arsenic, implement
-    Class III fume extraction and full-face respirators. The 1064 nm wavelength at
-    5 J/cm² efficiently removes hazardous materials while minimizing toxic fume generation.
-    Always conduct material safety analysis before processing.
-- question: Does laser cleaning affect the electrochemical properties of platinum
-    electrodes used in scientific instruments?
-  answer: Properly tuned laser cleaning at 5 J/cm² fluence actually enhances platinum's
-    electrochemical performance. The process removes contaminants while creating beneficial
-    micro-roughness, increasing active surface area without introducing impurities
-    that degrade catalytic activity.
-- question: What is the maximum safe laser power density for cleaning platinum spark
-    plug electrodes without melting or deforming them?
-  answer: For platinum with a melting point of 1768°C, the maximum safe fluence is
-    around 5 J/cm² for a 1064 nm laser. Its high thermal conductivity allows for rapid
-    cooling, but scanning above 500 mm/s and real-time thermal monitoring are very
-    important to prevent deformation.
-- question: How effective is laser cleaning for removing carbon buildup from platinum-rhodium
-    thermocouple wires in high-temperature applications?
-  answer: Laser cleaning excels for platinum-rhodium thermocouples, using ~5 J/cm²
-    fluence to selectively ablate carbon without altering the alloy. This non-contact
-    method preserves calibration accuracy far better than abrasive techniques, which
-    risk surface damage and compositional changes.
-- question: Can laser cleaning create surface defects in platinum that lead to stress
-    corrosion cracking in chemical processing equipment?
-  answer: With optimal 5 J/cm² fluence and 50% overlap, laser cleaning minimizes microstructural
-    changes in platinum. However, improper parameters can induce residual stress,
-    increasing susceptibility to chemical attack. Post-cleaning inspection for micro-cracks
-    is essential for chemical processing equipment integrity.
-- question: What are the economic considerations for laser cleaning platinum recovery
-    scrap versus traditional refining methods?
-  answer: Laser cleaning preserves over 99.9% of your platinum scrap, unlike chemical
-    refining's significant material loss. With a 100W, 1064nm system operating at
-    5 J/cm², processing is dramatically faster. This method eliminates hazardous chemical
-    costs while maintaining the metal's intrinsic purity, making it economically superior
-    for high-value recovery.
-- question: How does laser cleaning compare to ultrasonic cleaning for removing polishing
-    compounds from intricate platinum jewelry designs?
-  answer: Laser cleaning excels for intricate platinum jewelry by reaching complex
-    geometries that ultrasonic methods miss. With precise 50 μm spot control at 5
-    J/cm² fluence, it completely removes polishing compounds without embedding residues.
-    This dry process maintains platinum's premium surface finish while significantly
-    reducing cycle times in manufacturing.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922359Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922364Z'

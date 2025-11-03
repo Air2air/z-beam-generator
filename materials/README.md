@@ -25,10 +25,10 @@ Each material in `data.yaml` follows the GROUPED structure defined in `data/fron
 
 ### Core Fields
 - **Identification**: name, category, subcategory, title, subtitle
-- **Content**: description, author, caption
-- **Assets**: images (hero, detail, application, safety)
+- **Content**: author, caption
+- **Assets**: images (hero, micro)
 - **Standards**: regulatoryStandards
-- **Applications**: Primary use cases
+- **FAQ**: Frequently asked questions
 
 ### Material Properties (GROUPED Structure)
 

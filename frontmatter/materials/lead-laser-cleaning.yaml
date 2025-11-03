@@ -1,4 +1,60 @@
 name: Lead
+category: metal
+subcategory: non-ferrous
+title: Lead Laser Cleaning
+subtitle: Gently Revive Lead's Soft Luster with Low-Power Precision
+description: Laser cleaning parameters for Lead
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Lead surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/lead-laser-cleaning-hero.jpg
+  micro:
+    alt: Lead microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/lead-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, the lead surface reveals a heavily contaminated condition, with irregular oxide layers and particulate
+    debris adhering tightly, causing pitting, micro-cracks, and overall degradation that dulls its metallic sheen.
+  after: The lead surface, now impeccably cleaned via laser ablation, reveals a smooth, uniform finish free from oxides and
+    residues. This restoration excels in quality, fully preserving the metal's integrity—its density, malleability, and corrosion
+    resistance remain unaltered. Such precision ensures reliable performance in diverse applications.
+  author: Alessandro Moretti
+  character_count:
+    after: 338
+    before: 231
+  generated: '2025-10-25T14:35:08.902574Z'
+  generation_method: ai_research
+  word_count:
+    after: 44
+    before: 30
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Nuclear Energy
 - Battery Manufacturing
@@ -10,28 +66,113 @@ applications:
 - Automotive Manufacturing
 - Aerospace Component Manufacturing
 - Industrial Machinery
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-caption:
-  afterText: The lead surface, now impeccably cleaned via laser ablation, reveals a smooth, uniform finish free from oxides and residues. This restoration excels in quality, fully preserving the metal's integrity—its density, malleability, and corrosion resistance remain unaltered. Such precision ensures reliable performance in diverse applications.
-  author: Alessandro Moretti
-  beforeText: Under microscopy, the lead surface reveals a heavily contaminated condition, with irregular oxide layers and particulate debris adhering tightly, causing pitting, micro-cracks, and overall degradation that dulls its metallic sheen.
-  character_count:
-    after: 338
-    before: 231
-  generated: '2025-10-25T14:35:08.902574Z'
-  generation_method: ai_research
-  word_count:
-    after: 44
-    before: 30
-category: metal
-description: Laser cleaning parameters for Lead
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      electricalConductivity:
+        source: ai_research
+        unit: S/m
+        value: 4810000.0
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 2.065e-07
+      fractureToughness: 15.0
+      surfaceRoughness:
+        source: ai_research
+        unit: µm
+        value: 0.8
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 2.13e-07
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties:
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: 12400000.0
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.35
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.15
+      reflectivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.65
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 601.0
+      thermalShockResistance:
+        source: ai_research
+        unit: W/m
+        value: 0.0005
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: FCC crystal structure
+    source: ai_research
+    unit: crystal system
+    value: FCC
+machineSettings:
+  powerRange:
+    description: Optimal average power range for Lead surface cleaning
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Lead absorption and minimal reflectivity
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise Lead surface treatment
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient Lead cleaning process
+    unit: kHz
+    value: 50
+  fluenceThreshold:
+    description: Minimum fluence required for effective Lead removal
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled Lead ablation
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform Lead cleaning
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete Lead contamination removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform Lead surface cleaning
+    unit: '%'
+    value: 50
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -51,332 +192,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Lead surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/lead-laser-cleaning-hero.jpg
-  micro:
-    alt: Lead microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/lead-laser-cleaning-micro.jpg
-machineSettings:
-  fluenceThreshold:
-    description: Minimum fluence required for effective Lead removal
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  overlapRatio:
-    description: Optimal beam overlap for uniform Lead surface cleaning
-    unit: '%'
-    value: 50
-  passCount:
-    description: Recommended number of passes for complete Lead contamination removal
-    unit: passes
-    value: 3
-  powerRange:
-    description: Optimal average power range for Lead surface cleaning
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled Lead ablation
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for efficient Lead cleaning process
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform Lead cleaning
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for precise Lead surface treatment
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-IR wavelength optimized for Lead absorption and minimal reflectivity
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: FCC crystal structure
-    source: ai_research
-    unit: crystal system
-    value: FCC
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    ablationThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.15
-      min: 2.0
-      max: 8.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: 12500000.0
-      min: 100000
-      max: 50000000
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.35
-      min: 2.0
-      max: 65.0
-    boilingPoint:
-      source: ai_research
-      unit: K
-      value: 2022.0
-      min: 907
-      max: 5870
-    laserAbsorption:
-      source: ai_research
-      unit: '%'
-      value: 38.5
-      min: 0.02
-      max: 100
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.15
-      min: 0.1
-      max: 20.0
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 48.7
-      min: 5
-      max: 99.9
-    meltingPoint:
-      source: ai_research
-      unit: K
-      value: 600.61
-      min: -39
-      max: 3422
-    reflectivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.65
-      min: 85
-      max: 98
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 129.7
-      min: 100
-      max: 2000
-    thermalConductivity:
-      ai_verified: true
-      source: ai_research
-      unit: W/(m·K)
-      value: 35.3
-      min: 7.0
-      max: 430
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: K
-        value: 1745.0
-      source: thermal_degradation_standards
-      type: melting
-      unit: °C
-      value: 500.0
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 601.0
-      min: 873
-      max: 3695
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 24.8
-      min: 0.06
-      max: 174
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 28.9
-      min: 0.5
-      max: 33
-    thermalShockResistance:
-      source: ai_research
-      unit: W/m
-      value: 180.0
-      min: 50
-      max: 400
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (lead and lead alloys section)'
-      unit: MPa
-      value: 15.0
-      min: 50
-      max: 2000
-    corrosionResistance:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (ASM International)'
-      unit: rating
-      value: 2.0
-      min: 1
-      max: 10
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 11.34
-      min: 0.53
-      max: 22.6
-    electricalConductivity:
-      source: ai_research
-      unit: S/m
-      value: 4810000.0
-      min: 0.67
-      max: 63.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 2.065e-07
-      min: 1.0e-08
-      max: 1.5e-06
-    flexuralStrength:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," Table "Typical Mechanical Properties of Wrought Lead and Lead Alloys" for 99.9% Pure Lead.'
-      unit: MPa
-      value: 12.0
-      min: 2.5
-      max: 1050.0
-    fractureToughness:
-      source: ai_research
-      unit: MPa√m
-      value: 15.0
-      min: 20
-      max: 200
-    hardness:
-      ai_verified: true
-      source: ai_research
-      unit: MPa
-      value: 38.0
-      min: 0.5
-      max: 3500
-    oxidationResistance:
-      ai_verified: true
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (ASM International, 1990), Section on Lead and Lead Alloys.'
-      unit: °C
-      value: 400.0
-      min: 200
-      max: 1200
-    porosity:
-      source: ai_research
-      unit: '%'
-      value: 0.0001
-      min: 0.0
-      max: 15.0
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 12.0
-      min: 3.0
-      max: 3000.0
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: GPa
-      value: 14.0
-      min: 5
-      max: 600
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: 12400000.0
-      min: 100000
-      max: 50000000
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.35
-      min: 2.0
-      max: 65.0
-    electricalConductivity:
-      source: ai_research
-      unit: S/m
-      value: 4810000.0
-      min: 0.67
-      max: 63.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 2.065e-07
-      min: 1.0e-08
-      max: 1.5e-06
-    fractureToughness: 15.0
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.15
-      min: 0.1
-      max: 20.0
-    reflectivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.65
-      min: 85
-      max: 98
-    surfaceRoughness:
-      source: ai_research
-      unit: µm
-      value: 0.8
-      min: 0.4
-      max: 150
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 601.0
-      min: 873
-      max: 3695
-    thermalShockResistance:
-      source: ai_research
-      unit: W/m
-      value: 0.0005
-      min: 50
-      max: 400
-    vaporPressure:
-      source: ai_research
-      unit: Pa
-      value: 2.13e-07
-      min: 1.0e-10
-      max: 0.001
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -408,29 +223,54 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: non-ferrous
-subtitle: Gently Revive Lead's Soft Luster with Low-Power Precision
+faq:
+  questions:
+  - answer: Laser cleaning of lead-based paint requires extreme caution due to toxic fume generation. Using a 1064 nm wavelength
+      at a low fluence of 2.5 J/cm² minimizes particulate release. Operators must employ high-efficiency local exhaust ventilation
+      and wear supplied-air respiratory protection to ensure safety.
+    question: Is laser cleaning safe for lead-based paint removal, and what specific safety measures are required?
+  - answer: For lead decontamination, employ nanosecond pulses at 1064 nm wavelength with fluence around 2.5 J/cm². This configuration,
+      using a fiber laser, effectively ablates surface contaminants while the short pulse duration minimizes thermal penetration,
+      thus preventing hazardous vaporization of the underlying lead substrate.
+    question: What laser parameters (wavelength, pulse duration, power) work best for removing lead contamination without
+      vaporizing it?
+  - answer: For lead particle capture, we employ HEPA filtration rated for nanoparticles below 100nm. The vacuum system must
+      maintain high velocity, using our standard 50 μm spot size and 500 mm/s scan speed to contain the toxic plume effectively.
+    question: How do you properly capture and filter lead particles generated during laser cleaning?
+  - answer: Yes, laser ablation of lead at 2.5 J/cm² can generate hazardous aerosols. Continuous air monitoring is mandatory,
+      as particulate levels often surpass the OSHA PEL of 50 μg/m³. Proper local exhaust ventilation is absolutely essential
+      to maintain compliance.
+    question: Does laser cleaning create airborne lead levels that exceed OSHA exposure limits?
+  - answer: Laser cleaning significantly reduces hazardous waste volume compared to traditional methods. Our 1064 nm wavelength
+      and 2.5 J/cm² fluence enable selective removal without media contamination, crucial for sensitive applications like
+      nuclear components. This process minimizes secondary waste generation, enhancing safety and efficiency.
+    question: What are the advantages of laser cleaning over traditional methods (blasting, chemical stripping) for lead removal?
+  - answer: Proper laser parameters like 2.5 J/cm² fluence and 10 ns pulses effectively ablate surface lead without significant
+      substrate penetration. For porous materials like concrete, we recommend initial surface sealing. Post-process verification
+      testing is essential to confirm complete decontamination.
+    question: Can laser cleaning effectively remove lead from porous surfaces like concrete or wood without driving it deeper?
+  - answer: Given lead's toxicity, you must wear a P100 respirator and disposable coveralls. Our 1064 nm laser at 100 W creates
+      hazardous fumes and fine particulates. Strict decontamination protocols for your PPE and equipment are absolutely essential
+      after each session.
+    question: What personal protective equipment (PPE) is specifically needed for laser cleaning of lead-containing materials?
+  - answer: We verify lead removal using XRF analysis and swipe tests, targeting clearance below 10 µg/100 cm². Our 1064 nm
+      laser system, operating at 2.5 J/cm², ensures complete decontamination. Proper documentation of all parameters is essential
+      for regulatory acceptance.
+    question: How do you test and verify that laser cleaning has effectively removed lead to meet regulatory standards?
+  - answer: Laser-ablated lead debris is classified as hazardous waste D008. It must be sealed in certified containers for
+      transport and disposal. The fine particulate generated at 2.5 J/cm² fluence can be recycled by specialized facilities,
+      which is the preferred management route for this toxic metal.
+    question: What waste classification does laser-ablated lead debris fall under, and how should it be disposed?
+  - answer: Cleaning lead in confined spaces demands extreme caution. The 1064 nm wavelength at 100W power generates highly
+      concentrated toxic fumes requiring continuous atmospheric monitoring. You must implement enhanced local exhaust ventilation
+      and emergency protocols, as airborne lead concentrations can rapidly exceed 500 µg/m³, the typical occupational exposure
+      limit.
+    question: Are there specific laser safety considerations when cleaning lead in confined spaces?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922132Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922138Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Italy
   author_name: Alessandro Moretti
@@ -438,30 +278,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:16:41.033036Z'
   generation_method: ai_research_voice
   word_count: 8
-title: Lead Laser Cleaning
-faq:
-- question: Is laser cleaning safe for lead-based paint removal, and what specific safety measures are required?
-  answer: Laser cleaning of lead-based paint requires extreme caution due to toxic fume generation. Using a 1064 nm wavelength at a low fluence of 2.5 J/cm² minimizes particulate release. Operators must employ high-efficiency local exhaust ventilation and wear supplied-air respiratory protection to ensure safety.
-- question: What laser parameters (wavelength, pulse duration, power) work best for removing lead contamination without vaporizing it?
-  answer: For lead decontamination, employ nanosecond pulses at 1064 nm wavelength with fluence around 2.5 J/cm². This configuration, using a fiber laser, effectively ablates surface contaminants while the short pulse duration minimizes thermal penetration, thus preventing hazardous vaporization of the underlying lead substrate.
-- question: How do you properly capture and filter lead particles generated during laser cleaning?
-  answer: For lead particle capture, we employ HEPA filtration rated for nanoparticles below 100nm. The vacuum system must maintain high velocity, using our standard 50 μm spot size and 500 mm/s scan speed to contain the toxic plume effectively.
-- question: Does laser cleaning create airborne lead levels that exceed OSHA exposure limits?
-  answer: Yes, laser ablation of lead at 2.5 J/cm² can generate hazardous aerosols. Continuous air monitoring is mandatory, as particulate levels often surpass the OSHA PEL of 50 μg/m³. Proper local exhaust ventilation is absolutely essential to maintain compliance.
-- question: What are the advantages of laser cleaning over traditional methods (blasting, chemical stripping) for lead removal?
-  answer: Laser cleaning significantly reduces hazardous waste volume compared to traditional methods. Our 1064 nm wavelength and 2.5 J/cm² fluence enable selective removal without media contamination, crucial for sensitive applications like nuclear components. This process minimizes secondary waste generation, enhancing safety and efficiency.
-- question: Can laser cleaning effectively remove lead from porous surfaces like concrete or wood without driving it deeper?
-  answer: Proper laser parameters like 2.5 J/cm² fluence and 10 ns pulses effectively ablate surface lead without significant substrate penetration. For porous materials like concrete, we recommend initial surface sealing. Post-process verification testing is essential to confirm complete decontamination.
-- question: What personal protective equipment (PPE) is specifically needed for laser cleaning of lead-containing materials?
-  answer: Given lead's toxicity, you must wear a P100 respirator and disposable coveralls. Our 1064 nm laser at 100 W creates hazardous fumes and fine particulates. Strict decontamination protocols for your PPE and equipment are absolutely essential after each session.
-- question: How do you test and verify that laser cleaning has effectively removed lead to meet regulatory standards?
-  answer: We verify lead removal using XRF analysis and swipe tests, targeting clearance below 10 µg/100 cm². Our 1064 nm laser system, operating at 2.5 J/cm², ensures complete decontamination. Proper documentation of all parameters is essential for regulatory acceptance.
-- question: What waste classification does laser-ablated lead debris fall under, and how should it be disposed?
-  answer: Laser-ablated lead debris is classified as hazardous waste D008. It must be sealed in certified containers for transport and disposal. The fine particulate generated at 2.5 J/cm² fluence can be recycled by specialized facilities, which is the preferred management route for this toxic metal.
-- question: Are there specific laser safety considerations when cleaning lead in confined spaces?
-  answer: Cleaning lead in confined spaces demands extreme caution. The 1064 nm wavelength at 100W power generates highly concentrated toxic fumes requiring continuous atmospheric monitoring. You must implement enhanced local exhaust ventilation and emergency protocols, as airborne lead concentrations can rapidly exceed 500 µg/m³, the typical occupational exposure limit.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922132Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922138Z'

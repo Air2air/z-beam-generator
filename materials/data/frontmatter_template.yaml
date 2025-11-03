@@ -30,7 +30,6 @@ images: # this is a list of images related to laser cleaning of this specific ma
     url: /images/material/<material-slug>-laser-cleaning-micro.jpg
 
 caption: # this is a caption for the micro image above, describing the visual content and context.  It should always highlight special characteristics of the material that set it apart from other materials in the category and subcategory.
-  description: Microscopic analysis of <MaterialName> surface before and after laser cleaning treatment
   before: <BeforeText>  # Describe contaminated state at microscopic level with specific measurements
   after: <AfterText>  # Describe cleaned state revealing material microstructure 
 
@@ -55,16 +54,10 @@ regulatoryStandards: # this is a list of relevant regulatory standards and guide
     url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
     image: /images/logo/logo-org-osha.png
 
-applications: # this is a list of typical application areas for laser cleaning of this specific material.  Again, be as specific to the material as possible.
-  - <Application1>
-  - <Application2>
-  - <Application3>
-  # Add more applications as needed
 
 materialProperties:
   material_characteristics: # this is a list of properties related to the material's physical characteristics
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     
     <PropertyName1>: # Example: density, porosity, tensileStrength, hardness, etc.
       value: <Value>
@@ -83,7 +76,6 @@ materialProperties:
 
   laser_material_interaction: # this is a list of properties related to laser-material interaction
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     
     <PropertyName1>: # Example: thermalConductivity, laserReflectivity, ablationThreshold, etc.
       value: <Value>
@@ -116,4 +108,13 @@ machineSettings: # this is a list of the machine settings relevant to laser clea
     unit: <Unit>
     description: <SettingDescription>
   # Add more settings as needed
+
+faq: # this is a list of frequently asked questions about laser cleaning of this specific material
+  - question: <Question1>  # Practical question users commonly ask about this material
+    answer: <Answer1>  # Detailed, material-specific answer based on properties and research
+  
+  - question: <Question2>
+    answer: <Answer2>
+  
+  # Add more Q&A pairs as needed (typically 5-10 questions per material)
 

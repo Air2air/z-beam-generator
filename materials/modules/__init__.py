@@ -1,72 +1,42 @@
 """
-Modular Frontmatter Generation Components - Consolidated
+Frontmatter Generation Modules
 
-PHASE 2 CONSOLIDATION:
-Previously 7 small files (author, properties, settings, applications, simple_modules).
-Now 2 focused files:
-- core_modules.py: Author, Properties, Settings, Applications, Compliance, Media, Characteristics
-- metadata_module.py: Metadata (complex logic, kept separate)
-
-Architecture:
+Active Modules (6):
 - MetadataModule: name, title, subtitle, description, category, subcategory
 - AuthorModule: author metadata extraction
-- ApplicationsModule: applications list extraction
 - PropertiesModule: materialProperties with GROUPED structure
 - SettingsModule: machineSettings with ranges
 - ComplianceModule: regulatoryStandards extraction
 - MediaModule: images, caption
-- CharacteristicsModule: materialCharacteristics (qualitative)
 
-Design Principles:
-1. Single Responsibility: Each module handles ONE domain
-2. Data-First: All modules read from Materials.yaml (100% complete)
-3. Fail-Fast: Validate inputs immediately, no fallbacks
-4. Pure Extraction: NO AI calls, NO API dependencies
-5. Testable: Each module can be tested in isolation
+Removed Modules (Nov 2, 2025):
+- ApplicationsModule: applications field removed from template
+- ImpactModule: environmentalImpact/outcomeMetrics fields removed
+- CharacteristicsModule: materialCharacteristics field removed
+
+Architecture:
+- Single Responsibility: Each module handles ONE domain
+- Data-First: All modules read from Materials.yaml
+- Fail-Fast: Validate inputs immediately, no fallbacks
+- Pure Extraction: NO AI calls, NO API dependencies
+- Single Source of Truth: Each module class defined in ONE file only
 """
 
-# Consolidated core modules
-from .core_modules import (
-    AuthorModule,
-    PropertiesModule,
-    SettingsModule,
-    ApplicationsModule,
-    ComplianceModule,
-    MediaModule,
-    CharacteristicsModule,
-    # Backward compatibility aliases
-    AuthorGenerator,
-    PropertiesGenerator,
-    SettingsGenerator,
-    ApplicationsGenerator,
-    ComplianceGenerator,
-    MediaGenerator,
-    CharacteristicsGenerator,
-)
-
-# Metadata module (kept separate - complex logic)
-from .metadata_module import MetadataModule, MetadataGenerator
+# Individual module imports (matches orchestrator pattern)
+from .metadata_module import MetadataModule
+from .author_module import AuthorModule
+from .properties_module import PropertiesModule
+from .settings_module import SettingsModule
+from .simple_modules import ComplianceModule, MediaModule
 
 __all__ = [
-    # Core modules
+    # Active modules
+    'MetadataModule',
     'AuthorModule',
     'PropertiesModule',
     'SettingsModule',
-    'ApplicationsModule',
     'ComplianceModule',
     'MediaModule',
-    'CharacteristicsModule',
-    # Metadata module
-    'MetadataModule',
-    # Backward compatibility
-    'AuthorGenerator',
-    'PropertiesGenerator',
-    'SettingsGenerator',
-    'ApplicationsGenerator',
-    'ComplianceGenerator',
-    'MediaGenerator',
-    'CharacteristicsGenerator',
-    'MetadataGenerator',
 ]
 
-__version__ = '2.0.0'  # Phase 2: Consolidated structure
+__version__ = '3.0.0'  # Post-cleanup: Single source of truth per module

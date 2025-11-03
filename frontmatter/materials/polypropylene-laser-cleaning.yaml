@@ -1,4 +1,60 @@
 name: Polypropylene
+category: plastic
+subcategory: thermoplastic
+title: Polypropylene Laser Cleaning
+subtitle: Precision laser cleaning safeguards Polypropylene's thermal stability
+description: Laser cleaning parameters for Polypropylene
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Polypropylene surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/polypropylene-laser-cleaning-hero.jpg
+  micro:
+    alt: Polypropylene microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/polypropylene-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, the polypropylene surface appears dirty-dirty and uneven, covered by oily contaminants that stick-stick
+    tightly and gritty particles that scatter-scatter across it. These make the texture rough-rough, so degradation shows
+    as small-small pits and micro-cracks, weakening the plastic then reducing its smoothness for cleaning applications.
+  after: The polypropylene surface is cleaned very-very thoroughly by the laser process, restoring smoothness and shine. Material
+    integrity remains intact, appearing pristine and undamaged.
+  author: Ikmanda Roswati
+  character_count:
+    after: 180
+    before: 355
+  generated: '2025-10-25T14:59:44.924266Z'
+  generation_method: ai_research
+  word_count:
+    after: 23
+    before: 46
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 applications:
 - Automotive
 - Medical Devices
@@ -10,34 +66,86 @@ applications:
 - Textile Manufacturing
 - Renewable Energy
 - Consumer Products
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-caption:
-  afterText: The polypropylene surface is cleaned very-very thoroughly by the laser
-    process, restoring smoothness and shine. Material integrity remains intact, appearing
-    pristine and undamaged.
-  author: Ikmanda Roswati
-  beforeText: Under microscopy, the polypropylene surface appears dirty-dirty and
-    uneven, covered by oily contaminants that stick-stick tightly and gritty particles
-    that scatter-scatter across it. These make the texture rough-rough, so degradation
-    shows as small-small pits and micro-cracks, weakening the plastic then reducing
-    its smoothness for cleaning applications.
-  character_count:
-    after: 180
-    before: 355
-  generated: '2025-10-25T14:59:44.924266Z'
-  generation_method: ai_research
-  word_count:
-    after: 23
-    before: 46
-category: plastic
-description: Laser cleaning parameters for Polypropylene
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1.0e+16
+      fractureToughness:
+        ai_verified: true
+        source: '"Engineering Materials 1: An Introduction to Properties, Applications and Design," 4th Edition, by Michael
+          F. Ashby and David R.H. Jones, Table 15.7 "Fracture toughness K_IC"'
+        unit: MPa·√m
+        value: 3.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+machineSettings:
+  powerRange:
+    description: Optimal average power range for Polypropylene surface cleaning without thermal degradation
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength optimized for Polypropylene absorption characteristics and minimal thermal damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for effective cleaning resolution on Polypropylene surfaces
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning while maintaining thermal control
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal while preserving Polypropylene substrate
+    unit: J/cm²
+    value: 1.2
+  pulseWidth:
+    description: Nanosecond pulse duration for controlled ablation of contaminants from Polypropylene surface
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage without excessive thermal buildup
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal from Polypropylene
+    unit: passes
+    value: 2
+  overlapRatio:
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Optimal dwell time per spot for effective cleaning without thermal damage
+    unit: μs
+    value: 100
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -57,237 +165,6 @@ environmentalImpact:
 - applicableIndustries: []
   benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
-images:
-  hero:
-    alt: Polypropylene surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/polypropylene-laser-cleaning-hero.jpg
-  micro:
-    alt: Polypropylene microscopic view of laser cleaning showing detailed precise
-      contamination removal
-    url: /images/material/polypropylene-laser-cleaning-micro.jpg
-machineSettings:
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning without thermal
-      damage
-    unit: μs
-    value: 100
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving
-      Polypropylene substrate
-    unit: J/cm²
-    value: 1.2
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-  passCount:
-    description: Recommended number of passes for complete contaminant removal from
-      Polypropylene
-    unit: passes
-    value: 2
-  powerRange:
-    description: Optimal average power range for Polypropylene surface cleaning without
-      thermal degradation
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-      from Polypropylene surface
-    unit: ns
-    value: 10
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning while maintaining
-      thermal control
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage without excessive
-      thermal buildup
-    unit: mm/s
-    value: 500
-  spotSize:
-    description: Beam spot diameter for effective cleaning resolution on Polypropylene
-      surfaces
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  wavelength:
-    description: Near-infrared wavelength optimized for Polypropylene absorption characteristics
-      and minimal thermal damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: amorphous crystal structure
-    source: ai_research
-    unit: crystal system
-    value: amorphous
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    laserAbsorption:
-      source: ai_research
-      unit: '%'
-      value: 42.7
-      min: 0.1
-      max: 100
-    laserReflectivity:
-      source: ai_research
-      unit: '%'
-      value: 94.5
-      min: 4.0
-      max: 95
-    specificHeat:
-      ai_verified: true
-      source: ai_research
-      unit: J/(kg·K)
-      value: 1880.0
-      min: 1.0
-      max: 2500
-    thermalConductivity:
-      ai_verified: true
-      source: ai_research
-      unit: W/(m·K)
-      value: 0.22
-      min: 0.02
-      max: 3
-    thermalDestruction:
-      point:
-        source: ai_research
-        unit: °C
-        value: 328.0
-      source: thermal_degradation_standards
-      type: decomposition
-      unit: °C
-      value: 500.0
-    thermalDiffusivity:
-      source: ai_research
-      unit: mm²/s
-      value: 0.096
-      min: 0.08
-      max: 1
-    thermalExpansion:
-      ai_verified: true
-      source: ai_research
-      unit: 10^-6/K
-      value: 100.0
-      min: 10
-      max: 200
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    compressiveStrength:
-      ai_verified: true
-      source: AZoMaterials, "Polypropylene (PP) - Properties, Applications & Uses"
-      unit: MPa
-      value: 35.0
-      min: 20
-      max: 200
-    corrosionResistance:
-      ai_verified: true
-      source: AZoMaterials "Polypropylene (PP) - A Commercial Overview" (published
-        by AZoNetwork, a leading materials science publisher)
-      unit: rating
-      value: 8.0
-      min: 5
-      max: 9
-    density:
-      ai_verified: true
-      source: ai_research
-      unit: g/cm³
-      value: 0.905
-      min: 0.85
-      max: 2.2
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 1.0e+16
-      min: 1000000000000.0
-      max: 1.0e+16
-    flexuralStrength:
-      ai_verified: true
-      source: AZoM (AZoMaterials) - Polypropylene (PP) - Material Information
-      unit: MPa
-      value: 35.0
-      min: 30
-      max: 200
-    fractureToughness:
-      source: ai_research
-      unit: MPa·m¹/²
-      value: 3.0
-      min: 1
-      max: 10
-    hardness:
-      ai_verified: true
-      source: ai_research
-      unit: MPa
-      value: 75.0
-      min: Shore A 10
-      max: Shore D 90
-    oxidationResistance:
-      ai_verified: true
-      source: UL 746B "Standard for Safety Polymeric Materials - Long Term Property
-        Evaluations"
-      unit: °C
-      value: 100.0
-      min: 60.0
-      max: 260.0
-    tensileStrength:
-      source: ai_research
-      unit: MPa
-      value: 35.0
-      min: 10
-      max: 400
-    youngsModulus:
-      ai_verified: true
-      source: ai_research
-      unit: MPa
-      value: 1300.0
-      min: 0.01
-      max: 5000
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    electricalResistivity:
-      source: ai_research
-      unit: Ω·m
-      value: 1.0e+16
-      min: 1000000000000.0
-      max: 1.0e+16
-    fractureToughness:
-      ai_verified: true
-      source: '"Engineering Materials 1: An Introduction to Properties, Applications
-        and Design," 4th Edition, by Michael F. Ashby and David R.H. Jones, Table
-        15.7 "Fracture toughness K_IC"'
-      unit: MPa·√m
-      value: 3.0
-      min: 1
-      max: 10
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -319,29 +196,54 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-subcategory: thermoplastic
-subtitle: Precision laser cleaning safeguards Polypropylene's thermal stability
+faq:
+  questions:
+  - answer: Ya, polypropylene dapat dibersihkan dengan laser secara aman menggunakan parameter terkontrol. Dengan fluence
+      1.2 J/cm² dan spot size 100 µm pada 1064 nm, kontaminan terangkat tanpa melelehkan substrat yang titik leburnya 160-170°C.
+      Kecepatan scan 500 mm/s dan overlap 50% mencegah akumulasi panas berlebih.
+    question: Can you safely laser clean polypropylene without melting or damaging the surface?
+  - answer: Polypropylene's transparency at 1μm wavelengths necessitates indirect cleaning via contaminant absorption. We
+      recommend 1064 nm lasers with 1.2 J/cm² fluence and 100 μs dwell time to selectively remove surface layers without substrate
+      degradation. This approach leverages the material's own optical properties for safe, effective cleaning.
+    question: What laser wavelength is most effective for cleaning contaminants from polypropylene?
+  - answer: For silicone-based release agents on polypropylene, we utilize a 1064 nm wavelength with a fluence of 1.2 J/cm².
+      This effectively ablates the thin organic film while the 100 µm spot size ensures the substrate remains undamaged. Verification
+      is then performed via FTIR spectroscopy.
+    question: How do you remove mold release agents from polypropylene surfaces with laser cleaning?
+  - answer: Laser cleaning significantly enhances polypropylene's adhesion through surface activation. At optimal 1.2 J/cm²
+      fluence and 1064 nm wavelength, we achieve improved wettability that often surpasses traditional flame treatment for
+      subsequent bonding applications.
+    question: Does laser cleaning affect the adhesion properties of polypropylene for subsequent painting or bonding?
+  - answer: Polypropylene decomposition at 1.2 J/cm² fluence generates hazardous aldehydes like formaldehyde. You must employ
+      local exhaust ventilation with HEPA/activated carbon filtration. Operators require appropriate respiratory protection
+      to mitigate inhalation risks from these ultrafine particulates and gases.
+    question: What safety precautions are needed when laser cleaning polypropylene due to fume generation?
+  - answer: Ya, laser cleaning dengan fluence 1.2 J/cm² pada 1064 nm secara bersamaan meningkatkan energi permukaan polipropilena.
+      Perlakuan ini menciptakan mikro-roughness yang meningkatkan adhesi cetak, setara dengan korona namun lebih terkontrol
+      dan bebas kimia.
+    question: Can laser cleaning create surface modifications that improve polypropylene's printability?
+  - answer: Polypropylene's yellowing stems from thermal degradation when fluence exceeds ~1.2 J/cm², causing polymer chain
+      scission. Optimize parameters like a 500 mm/s scan speed to minimize localized heating and prevent oxidation that leads
+      to chromophore formation.
+    question: Why does polypropylene sometimes turn yellow or brown after laser cleaning?
+  - answer: Untuk membersihkan oksidasi dari polipropilena tua, gunakan fluens rendah 1.2 J/cm² dengan panjang gelombang 1064
+      nm. Parameter ini mengatasi embrittlement dengan meminimalkan penetrasi termal, secara efektif menghilangkan lapisan
+      terdegradasi UV tanpa merusak substrat.
+    question: What laser parameters work best for removing oxidation layers from aged polypropylene?
+  - answer: Filler materials like talc significantly alter absorption dynamics, requiring parameter adjustments to prevent
+      selective removal. For filled PP composites, reduce fluence to approximately 1.0 J/cm² from the standard 1.2 J/cm² to
+      avoid exposing underlying particles while still achieving effective surface cleaning. This prevents undesirable surface
+      morphology changes.
+    question: How does the presence of fillers (talc, glass) in polypropylene composites affect laser cleaning?
+  - answer: Laser cleaning effectively prepares polypropylene for ultrasonic welding by removing surface contaminants without
+      creating bonding barriers. Using a 1064 nm wavelength at 1.2 J/cm² fluence ensures optimal surface energy modification.
+      This controlled process enhances joint strength by preserving the polymer's integrity while achieving the required cleanliness.
+    question: Is laser cleaning suitable for preparing polypropylene surfaces for ultrasonic welding?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922422Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922429Z'
+  structure_version: '2.0'
 subtitle_metadata:
   author_country: Indonesia
   author_name: Ikmanda Roswati
@@ -349,70 +251,3 @@ subtitle_metadata:
   generated: '2025-10-25T21:29:09.360707Z'
   generation_method: ai_research_voice
   word_count: 7
-title: Polypropylene Laser Cleaning
-faq:
-- question: Can you safely laser clean polypropylene without melting or damaging the
-    surface?
-  answer: Yes, polypropylene can be safely cleaned with a laser using controlled parameters.
-    With fluence 1.2 J/cm² and spot size 100 µm at 1064 nm, contaminants are removed
-    without melting the substrate whose melting point is 160-170°C. Scan speed 500
-    mm/s and 50% overlap prevent excessive heat accumulation.
-- question: What laser wavelength is most effective for cleaning contaminants from
-    polypropylene?
-  answer: Polypropylene's transparency at 1μm wavelengths necessitates indirect cleaning
-    via contaminant absorption. We recommend 1064 nm lasers with 1.2 J/cm² fluence
-    and 100 μs dwell time to selectively remove surface layers without substrate degradation.
-    This approach leverages the material's own optical properties for safe, effective
-    cleaning.
-- question: How do you remove mold release agents from polypropylene surfaces with
-    laser cleaning?
-  answer: For silicone-based release agents on polypropylene, we utilize a 1064 nm
-    wavelength with a fluence of 1.2 J/cm². This effectively ablates the thin organic
-    film while the 100 µm spot size ensures the substrate remains undamaged. Verification
-    is then performed via FTIR spectroscopy.
-- question: Does laser cleaning affect the adhesion properties of polypropylene for
-    subsequent painting or bonding?
-  answer: Laser cleaning significantly enhances polypropylene's adhesion through surface
-    activation. At optimal 1.2 J/cm² fluence and 1064 nm wavelength, we achieve improved
-    wettability that often surpasses traditional flame treatment for subsequent bonding
-    applications.
-- question: What safety precautions are needed when laser cleaning polypropylene due
-    to fume generation?
-  answer: Polypropylene decomposition at 1.2 J/cm² fluence generates hazardous aldehydes
-    like formaldehyde. You must employ local exhaust ventilation with HEPA/activated
-    carbon filtration. Operators require appropriate respiratory protection to mitigate
-    inhalation risks from these ultrafine particulates and gases.
-- question: Can laser cleaning create surface modifications that improve polypropylene's
-    printability?
-  answer: Yes, laser cleaning with fluence 1.2 J/cm² at 1064 nm simultaneously increases
-    the surface energy of polypropylene. This treatment creates micro-roughness that
-    enhances print adhesion, equivalent to corona but more controlled and chemical-free.
-- question: Why does polypropylene sometimes turn yellow or brown after laser cleaning?
-  answer: Polypropylene's yellowing stems from thermal degradation when fluence exceeds
-    ~1.2 J/cm², causing polymer chain scission. Optimize parameters like a 500 mm/s
-    scan speed to minimize localized heating and prevent oxidation that leads to chromophore
-    formation.
-- question: What laser parameters work best for removing oxidation layers from aged
-    polypropylene?
-  answer: To clean oxidation from aged polypropylene, use low fluence 1.2 J/cm² with
-    wavelength 1064 nm. These parameters address embrittlement by minimizing thermal
-    penetration, effectively removing the UV-degraded layer without damaging the substrate.
-- question: How does the presence of fillers (talc, glass) in polypropylene composites
-    affect laser cleaning?
-  answer: Filler materials like talc significantly alter absorption dynamics, requiring
-    parameter adjustments to prevent selective removal. For filled PP composites,
-    reduce fluence to approximately 1.0 J/cm² from the standard 1.2 J/cm² to avoid
-    exposing underlying particles while still achieving effective surface cleaning.
-    This prevents undesirable surface morphology changes.
-- question: Is laser cleaning suitable for preparing polypropylene surfaces for ultrasonic
-    welding?
-  answer: Laser cleaning effectively prepares polypropylene for ultrasonic welding
-    by removing surface contaminants without creating bonding barriers. Using a 1064
-    nm wavelength at 1.2 J/cm² fluence ensures optimal surface energy modification.
-    This controlled process enhances joint strength by preserving the polymer's integrity
-    while achieving the required cleanliness.
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922422Z'
-  structure_version: '2.0'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922429Z'
