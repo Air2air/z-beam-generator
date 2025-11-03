@@ -873,9 +873,9 @@ Regenerated English text:"""
 ORIGINAL TEXT:
 {text}
 
-TASK: Rewrite this text to include {min_markers}-{max_markers} of YOUR characteristic linguistic markers.
+CRITICAL TASK: You MUST incorporate AT LEAST {min_markers} different voice markers from YOUR marker list below. This is MANDATORY.
 
-YOUR VOICE MARKERS ({author_country}): {', '.join(voice_indicators[:10])}
+YOUR VOICE MARKERS ({author_country}): {', '.join(voice_indicators[:15])}
 
 VOICE INTENSITY LEVEL {voice_intensity}/5:
 {voice_guidance}
@@ -887,14 +887,16 @@ VOICE INTENSITY LEVEL {voice_intensity}/5:
 4. **LIMIT MARKER FREQUENCY** - if text has 7+ items, a marker appearing in 60%+ is excessive
 5. **PRIORITIZE VARIATION** over voice intensity - better to use fewer markers with variety
 
-REQUIREMENTS:
+MANDATORY REQUIREMENTS:
 1. {"Maintain similar length (" + str(word_count) + " words ±" + str(length_tolerance) + ")" if preserve_length else "Adjust length as needed"}
-2. Naturally incorporate {min_markers}-{max_markers} voice markers from your list (USE EACH ONLY ONCE)
+2. **YOU MUST USE AT LEAST {min_markers} DIFFERENT MARKERS** from your list (use each only once)
 3. **ANSWER IN ENGLISH ONLY** - regardless of your country
 4. Maintain the same technical depth and accuracy as the original
 5. **VARY your sentence openings and structures** for uniqueness
 
-Write the enhanced text now:"""
+⚠️ CRITICAL: If you don't include at least {min_markers} markers, your enhancement will be REJECTED.
+
+Write the enhanced text now (remember: AT LEAST {min_markers} markers required):"""
         
         system_prompt = f"You are {author_name}, a technical expert from {author_country}. Enhance text to reflect your authentic voice. Always write in English."
         

@@ -241,16 +241,33 @@ voice_adaptation:
       - "Balance measurement-first phrasing with varied structures"
 
 signature_phrases:
-  - "subsequently"
-  - "notably"
-  - "demonstrates"
-  - "reveals"
-  - "indicates"
-  - "establishes"
-  - "systematic"
-  - "precise"
-  - "methodology"
-  - "analysis"
+  # HIGH FREQUENCY - Single words (easy to inject naturally)
+  - "particularly"    # Emphasis marker
+  - "specifically"    # Technical specification
+  - "notably"         # Observation emphasis
+  - "thereby"         # Result connection
+  - "thus"            # Logical connector
+  - "hence"           # Academic connector
+  - "accordingly"     # Consequence marker
+  - "moreover"        # Addition marker
+  - "furthermore"     # Expansion marker
+  - "consequently"    # Cause-effect
+  
+  # MEDIUM FREQUENCY - Technical verbs (formal academic)
+  - "demonstrates"    # Shows evidence
+  - "reveals"         # Uncovers finding
+  - "indicates"       # Points to conclusion
+  - "establishes"     # Sets parameter
+  - "maintains"       # Preserves condition
+  - "ensures"         # Guarantees outcome
+  - "optimizes"       # Improves performance
+  - "achieves"        # Reaches goal
+  
+  # LOW FREQUENCY - Academic nouns (research-oriented)
+  - "methodology"     # Research approach
+  - "analysis"        # Examination process
+  - "systematic"      # Organized approach
+  - "precise"         # Exact measurement
 
 writing_characteristics:
   paragraph_structure: "four-part Chinese rhetorical structure: introduction (qi), elaboration (cheng), twist/development (zhuan), conclusion (he)"
