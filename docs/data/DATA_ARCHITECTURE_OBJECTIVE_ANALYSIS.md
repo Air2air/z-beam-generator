@@ -11,7 +11,7 @@
 
 ```
 data/
-├── materials.yaml                     48,120 lines (94.5% of all data)
+├── Materials.yaml                     48,120 lines (94.5% of all data)
 ├── property_definitions.yaml             286 lines (0.6%)
 ├── applications.yaml                     465 lines (0.9%)
 ├── thesaurus.yaml                        420 lines (0.8%)
@@ -219,7 +219,7 @@ data/
 - `laser_parameters.yaml` (141) - Keep
 
 **Giant File (40K+ lines)** - Already consolidated:
-- `materials.yaml` (48,120) - Keep as single source of truth ✅
+- `Materials.yaml` (48,120) - Keep as single source of truth ✅
 
 ---
 

@@ -266,7 +266,7 @@ All generators must be updated to output GROUPED structure:
 # Verify GROUPED structure
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml', 'r') as f:
+with open('materials/data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
     aluminum = data['materials']['Aluminum']
     print('✅ GROUPED' if 'material_characteristics' in aluminum['materialProperties'] else '❌ FLAT')
@@ -275,7 +275,7 @@ with open('materials/data/materials.yaml', 'r') as f:
 # Count migrated materials
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml', 'r') as f:
+with open('materials/data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
     grouped = sum(1 for m in data['materials'].values() 
                   if 'material_characteristics' in m.get('materialProperties', {}))
@@ -285,7 +285,7 @@ with open('materials/data/materials.yaml', 'r') as f:
 # Verify field order matches template
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml', 'r') as f:
+with open('materials/data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
     fields = list(data['materials']['Aluminum'].keys())[:10]
     expected = ['name', 'category', 'subcategory', 'title', 'subtitle', 

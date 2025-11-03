@@ -15,7 +15,7 @@ from shared.services.regeneration_service import create_regeneration_service
 logger = logging.getLogger(__name__)
 
 # Materials.yaml path
-MATERIALS_DATA_PATH = "materials/data/materials.yaml"
+MATERIALS_DATA_PATH = "materials/data/Materials.yaml"
 
 
 # ============================================================================
@@ -451,9 +451,13 @@ Generate the FAQ now:"""
         
         materials_path = Path(MATERIALS_DATA_PATH)
         
-        # Load Materials.yaml
+        # Load Materials.yaml - FAIL-FAST on empty/invalid file
         with open(materials_path, 'r', encoding='utf-8') as f:
-            materials_data = yaml.safe_load(f) or {}
+            materials_data = yaml.safe_load(f)
+        
+        # FAIL-FAST: Materials.yaml must have valid content
+        if not materials_data:
+            raise ValueError(f"CRITICAL: Materials.yaml at {materials_path} is empty or invalid")
         
         if 'materials' not in materials_data:
             raise ValueError("No 'materials' section found in Materials.yaml")

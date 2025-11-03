@@ -553,7 +553,7 @@ validation_severity:
     fail_fast: true
     examples:
       data_architecture:
-        - "min/max fields in materials.yaml"
+        - "min/max fields in Materials.yaml"
         - "Mock/fallback sources in production"
         - "Silent failure patterns"
         - "Default value bypasses"
@@ -756,7 +756,7 @@ fail_fast:
       enforcement: "Immediate system halt"
     
     architectural_violations:
-      description: "No min/max in materials.yaml"
+      description: "No min/max in Materials.yaml"
       examples:
         - "Property min field in materials"
         - "Property max field in materials"

@@ -151,7 +151,7 @@ class FieldOrderingService:
         Only process flat structure if no categories detected.
         """
         # Check if this is a categorized structure (has category objects with 'label' key)
-        # Note: materials.yaml uses flattened structure (properties directly under category, not nested under 'properties')
+        # Note: Materials.yaml uses flattened structure (properties directly under category, not nested under 'properties')
         if properties and isinstance(properties, dict):
             first_key = next(iter(properties.keys()), None)
             if first_key and isinstance(properties[first_key], dict):

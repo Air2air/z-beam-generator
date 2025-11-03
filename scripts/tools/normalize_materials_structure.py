@@ -105,7 +105,7 @@ def normalize_subtitle(subtitle):
 
 def normalize_materials_yaml(dry_run=False):
     """
-    Normalize all materials in materials.yaml.
+    Normalize all materials in Materials.yaml.
     
     Args:
         dry_run: If True, only show what would change without saving
@@ -113,13 +113,13 @@ def normalize_materials_yaml(dry_run=False):
     Returns:
         Dict with normalization statistics
     """
-    materials_path = Path('materials/data/materials.yaml')
+    materials_path = Path('materials/data/Materials.yaml')
     
-    print('🔧 NORMALIZING materials.yaml STRUCTURE')
+    print('🔧 NORMALIZING Materials.yaml STRUCTURE')
     print('=' * 70)
     print()
     
-    # Load materials.yaml
+    # Load Materials.yaml
     with open(materials_path, 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
     
@@ -181,7 +181,7 @@ def normalize_materials_yaml(dry_run=False):
         return stats
     
     # Save with atomic write
-    print('💾 Saving normalized materials.yaml...')
+    print('💾 Saving normalized Materials.yaml...')
     
     temp_fd, temp_path = tempfile.mkstemp(suffix='.yaml', dir=materials_path.parent)
     try:
@@ -193,7 +193,7 @@ def normalize_materials_yaml(dry_run=False):
         import shutil
         shutil.move(temp_path, materials_path)
         
-        print('✅ Normalization complete - materials.yaml saved')
+        print('✅ Normalization complete - Materials.yaml saved')
         print()
         print(f'📅 Normalized at: {datetime.now(timezone.utc).isoformat()}')
         
@@ -213,7 +213,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(
-        description='Normalize materials.yaml structure for consistency'
+        description='Normalize Materials.yaml structure for consistency'
     )
     parser.add_argument(
         '--dry-run',

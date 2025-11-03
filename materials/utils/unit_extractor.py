@@ -180,21 +180,6 @@ class UnitExtractor:
 unit_extractor = UnitExtractor()
 
 
-def extract_unit(value_string: str) -> Optional[str]:
-    """Convenience function for single unit extraction."""
-    return unit_extractor.extract_unit(value_string)
-
-
-def extract_min_max_units(range_data: Dict) -> Tuple[Optional[str], Optional[str]]:
-    """Convenience function for min/max unit extraction."""
-    return unit_extractor.extract_min_max_units(range_data)
-
-
-def extract_unit_from_range(range_data: Dict) -> Optional[str]:
-    """Convenience function for single unit extraction from range."""
-    return unit_extractor.extract_unit_from_range(range_data)
-
-
 if __name__ == "__main__":
     # Test unit extraction
     test_cases = [

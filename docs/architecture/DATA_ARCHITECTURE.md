@@ -13,7 +13,7 @@ This document describes the **fully normalized** data flow through the Z-Beam Ge
 The system follows a strict **separation of concerns**:
 
 - **Categories.yaml**: Category-wide min/max ranges (comparison context)
-- **materials.yaml**: Material-specific values ONLY (individual material data)
+- **Materials.yaml**: Material-specific values ONLY (individual material data)
 - **Generator**: Combines both sources
 - **Frontmatter**: Displays complete property data (OUTPUT ONLY)
 
@@ -24,13 +24,13 @@ The system follows a strict **separation of concerns**:
 - **Data Flow**: Materials.yaml → Frontmatter (one-way only)
 - **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
 
-**CRITICAL RULE**: Min/max ranges exist **EXCLUSIVELY** in Categories.yaml, **NEVER** in materials.yaml.
+**CRITICAL RULE**: Min/max ranges exist **EXCLUSIVELY** in Categories.yaml, **NEVER** in Materials.yaml.
 
-**Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the source field for context, but min/max fields must never be present at the material level.
+**Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in Materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the source field for context, but min/max fields must never be present at the material level.
 
 **VITAL PROPERTY VALIDATION RULE**: If a property is **NOT** defined in Categories.yaml 
 for a given category, it **MUST NOT** be added to any material in that category in 
-materials.yaml. Only properties that exist in the category's definition are permitted 
+Materials.yaml. Only properties that exist in the category's definition are permitted 
 in materials. This ensures:
 - Consistency across all materials in a category
 - Generator can properly orchestrate data (no orphaned properties)
@@ -41,7 +41,7 @@ in materials. This ensures:
 ratings) MUST be handled differently from quantitative properties:
 
 1. **No min/max ranges**: Qualitative properties have `min: null, max: null` (always)
-2. **Move to materialCharacteristics**: If found in legacy materials.yaml, move them out of numerical property sections
+2. **Move to materialCharacteristics**: If found in legacy Materials.yaml, move them out of numerical property sections
 3. **Separate categorization**: Store qualitative properties in their own section to avoid mixing with numerical data
 4. **Examples**: 
    - `crystallineStructure`: "FCC" → No numerical range
@@ -70,7 +70,7 @@ min/max ranges. If ranges don't exist in Categories.yaml:
 
 **Treatment in Data Files**:
 ```yaml
-# ✅ CORRECT: Qualitative property in materials.yaml
+# ✅ CORRECT: Qualitative property in Materials.yaml
 materials:
   Aluminum:
     properties:
@@ -213,8 +213,8 @@ categories:
 
 ---
 
-### 2. Material Values (materials.yaml)
-**Location**: `data/materials.yaml → materials.[material_name].properties`
+### 2. Material Values (Materials.yaml)
+**Location**: `data/Materials.yaml → materials.[material_name].properties`
 
 **Purpose**: Store **material-specific values** with confidence and metadata.
 
@@ -246,7 +246,7 @@ materials:
 
 **Key Point**: Properties contain value, unit, confidence, description, source - but **NEVER min/max**.
 
-**Enforcement**: Zero tolerance policy - any min/max fields found in materials.yaml properties are **architectural violations** and must be removed immediately. Material variance must be consolidated to a single averaged value.
+**Enforcement**: Zero tolerance policy - any min/max fields found in Materials.yaml properties are **architectural violations** and must be removed immediately. Material variance must be consolidated to a single averaged value.
 
 ---
 
@@ -263,7 +263,7 @@ materials:
                        │
                        ↓
 ┌──────────────────────────────────────────────────────────────────────┐
-│ 2. materials.yaml (Source of Truth for Values)                       │
+│ 2. Materials.yaml (Source of Truth for Values)                       │
 │    materials.[material].properties                                    │
 │    • 122 materials with properties                                    │
 │    • Each property: value, unit, confidence, description, source      │
@@ -276,7 +276,7 @@ materials:
 │ 3. StreamlinedGenerator (Combines Data)                              │
 │    components/frontmatter/core/streamlined_generator.py               │
 │    • Loads Categories.yaml → self.category_ranges                    │
-│    • Loads materials.yaml → material properties                      │
+│    • Loads Materials.yaml → material properties                      │
 │    • Calls _get_category_ranges_for_property()                       │
 │    • Injects category ranges into property min/max                   │
 │    • Special handling for nested thermalDestruction                  │
@@ -292,12 +292,12 @@ materials:
 │        percentage: 47.3                                               │
 │        properties:                                                    │
 │          laserAbsorption:                                             │
-│            value: 47.5     ← From materials.yaml                     │
+│            value: 47.5     ← From Materials.yaml                     │
 │            min: 0.02       ← From Categories.yaml (metal range)      │
 │            max: 100        ← From Categories.yaml (metal range)      │
 │            unit: %                                                    │
 │          thermalConductivity:                                         │
-│            value: 401      ← From materials.yaml                     │
+│            value: 401      ← From Materials.yaml                     │
 │            min: 15         ← From Categories.yaml (metal range)      │
 │            max: 400        ← From Categories.yaml (metal range)      │
 │            unit: W/(m·K)                                              │
@@ -306,12 +306,12 @@ materials:
 │        percentage: 52.7                                               │
 │        properties:                                                    │
 │          density:                                                     │
-│            value: 8.96     ← From materials.yaml                     │
+│            value: 8.96     ← From Materials.yaml                     │
 │            min: 0.53       ← From Categories.yaml (metal range)      │
 │            max: 22.6       ← From Categories.yaml (metal range)      │
 │            unit: g/cm³                                                │
 │          hardness:                                                    │
-│            value: 369      ← From materials.yaml                     │
+│            value: 369      ← From Materials.yaml                     │
 │            min: 2.5        ← From Categories.yaml (metal range)      │
 │            max: 3500       ← From Categories.yaml (metal range)      │
 │            unit: MPa                                                  │
@@ -372,7 +372,7 @@ categories:
         type: melting
 ```
 
-#### materials.yaml:
+#### Materials.yaml:
 ```yaml
 materials:
   Copper:
@@ -413,7 +413,7 @@ materialProperties:
 ### Generator Implementation
 The generator has special handling for nested structures in `_populate_property()` (lines 661-689):
 1. Detects nested property format
-2. Reads value from materials.yaml
+2. Reads value from Materials.yaml
 3. Gets min/max from Categories.yaml via `_get_category_ranges_for_property()`
 4. Builds nested structure in frontmatter
 
@@ -425,27 +425,27 @@ The generator has special handling for nested structures in `_populate_property(
 
 1. **Frontmatter min/max = Category ranges ONLY**
    - Always pull from Categories.yaml
-   - Never from materials.yaml (which has no min/max)
+   - Never from Materials.yaml (which has no min/max)
    - Provides comparison context
 
 2. **Material values stay pure**
-   - materials.yaml contains only: value, unit, confidence, description, source
-   - NO min/max anywhere in materials.yaml
+   - Materials.yaml contains only: value, unit, confidence, description, source
+   - NO min/max anywhere in Materials.yaml
    - Preserves single source of truth
 
 3. **Generator combines both**
-   - Reads value from materials.yaml
+   - Reads value from Materials.yaml
    - Reads ranges from Categories.yaml
    - Outputs complete property data to frontmatter
 
 4. **Category capitalization: lowercase everywhere**
    - Categories.yaml: `category: metal` ✅
-   - materials.yaml: `category: metal` ✅
+   - Materials.yaml: `category: metal` ✅
    - Frontmatter: `category: Metal` ✅ (note: frontmatter capitalizes for display)
 
 ### ❌ INCORRECT Behavior (What We Avoid)
 
-1. **DO NOT add min/max to materials.yaml - ZERO TOLERANCE**
+1. **DO NOT add min/max to Materials.yaml - ZERO TOLERANCE**
    - Violates single source of truth principle
    - Creates ambiguity between category ranges and material values
    - Even if material has inherent variance (alloys, grades), use ONLY averaged value
@@ -478,7 +478,7 @@ categories:
         unit: g/cm³
 ```
 
-**materials.yaml** (Copper):
+**Materials.yaml** (Copper):
 ```yaml
 materials:
   Copper:
@@ -510,9 +510,9 @@ materialProperties:
     label: Physical/Structural Properties
     properties:
       density:
-        value: 8.96          # From materials.yaml
-        unit: g/cm³          # From materials.yaml
-        confidence: 98       # From materials.yaml
+        value: 8.96          # From Materials.yaml
+        unit: g/cm³          # From Materials.yaml
+        confidence: 98       # From Materials.yaml
         description: Pure copper density at room temperature
         min: 0.53            # From Categories.yaml (metal range)
         max: 22.6            # From Categories.yaml (metal range)
@@ -528,11 +528,11 @@ materialProperties:
 - **Category Range Definitions**: 108 (9 categories × 12 properties)
 - **Material Properties with Values**: ~1,220
 - **Material Properties with Min/Max**: **0** (complete normalization achieved)
-- **Frontmatter Files**: 115 generated, 7 skipped (not in materials.yaml)
+- **Frontmatter Files**: 115 generated, 7 skipped (not in Materials.yaml)
 
 ### Normalization Achievement
 - ✅ **Categories.yaml**: Single source of truth for ranges
-- ✅ **materials.yaml**: Single source of truth for values (NO min/max)
+- ✅ **Materials.yaml**: Single source of truth for values (NO min/max)
 - ✅ **Generator**: Combines both correctly
 - ✅ **Frontmatter**: Displays complete data (value + ranges)
 - ✅ **Nested structures**: thermalDestruction properly integrated
@@ -569,7 +569,7 @@ categories:
         # ... etc
 ```
 
-2. **SECOND: Add to materials.yaml** (value only, NO min/max, ONLY if property exists in category):
+2. **SECOND: Add to Materials.yaml** (value only, NO min/max, ONLY if property exists in category):
 ```yaml
 materials:
   Copper:
@@ -615,11 +615,11 @@ materials:
    - Flatten to simple min/max (see "Nested Range Flattening" section above)
    - Store alternative values in `notes` field
    - Use measurement_context to explain primary range choice
-   - Never use nested structures in materials.yaml
+   - Never use nested structures in Materials.yaml
 
 ### Common Pitfalls to Avoid
 
-❌ **DON'T**: Add min/max to materials.yaml properties - EVER
+❌ **DON'T**: Add min/max to Materials.yaml properties - EVER
 ```yaml
 # WRONG - violates exclusive rule
 properties:
@@ -652,7 +652,7 @@ materials:
         unit: custom
 ```
 
-❌ **DON'T**: Use nested structures in materials.yaml
+❌ **DON'T**: Use nested structures in Materials.yaml
 ```yaml
 # WRONG - nested structures only allowed in Categories.yaml (and must be flattened)
 materials:
@@ -664,7 +664,7 @@ materials:
           unit: '%'
 ```
 
-✅ **DO**: Add only single values to materials.yaml
+✅ **DO**: Add only single values to Materials.yaml
 ```yaml
 # CORRECT - exclusive value-only structure
 properties:
@@ -856,13 +856,13 @@ Generators must NOT overwrite pulse-specific or wavelength-specific patterns dur
 ## Migration Notes
 
 ### Pre-October 2025 System
-- Had material-specific min/max in materials.yaml (~1,332 instances)
+- Had material-specific min/max in Materials.yaml (~1,332 instances)
 - Used flat `thermalDestructionPoint` and `thermalDestructionType`
 - Had `meltingPoint` as separate property
 - Mixed category capitalization (Capitalized in frontmatter, lowercase elsewhere)
 
 ### October 2025 Normalization
-- ✅ Removed ALL material min/max from materials.yaml
+- ✅ Removed ALL material min/max from Materials.yaml
 - ✅ Restructured to nested `thermalDestruction` object
 - ✅ Removed `meltingPoint` from all files
 - ✅ Normalized categories to lowercase system-wide

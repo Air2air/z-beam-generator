@@ -221,7 +221,7 @@ def test_property_has_required_fields(self):
 **Why?** Research confidence measures AI research quality, not property data quality. It's used during research to decide if results are good enough to save.
 
 **Key Difference**:
-- ❌ **Material Property Confidence**: Was stored in materials.yaml (REMOVED)
+- ❌ **Material Property Confidence**: Was stored in Materials.yaml (REMOVED)
 - ✅ **Research Quality Confidence**: Internal to research tools (KEPT)
 
 ### Schema Documentation (Preserved)
@@ -240,7 +240,7 @@ These explain what the data structure means, similar to regulatoryStandards desc
 ## Affected Files
 
 ### Data Files
-- ✅ `materials/data/materials.yaml` - 90 confidence + 10 descriptions removed
+- ✅ `materials/data/Materials.yaml` - 90 confidence + 10 descriptions removed
 - ✅ `frontmatter/materials/*.yaml` - 89 confidence fields removed (5 files)
 
 ### Code Files
@@ -265,7 +265,7 @@ These explain what the data structure means, similar to regulatoryStandards desc
 # Verify no confidence in material properties (expect 0)
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml', 'r') as f:
+with open('materials/data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
 count = 0
 for mat, mdata in data.get('materials', {}).items():
@@ -279,7 +279,7 @@ print(f'Non-regulatory confidence fields: {count}')
 # Verify category_metadata has no descriptions (expect 0)
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml', 'r') as f:
+with open('materials/data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
 count = sum(1 for cat, meta in data.get('category_metadata', {}).items() if 'description' in meta)
 print(f'Category metadata descriptions: {count}')
@@ -324,8 +324,8 @@ python3 -m pytest tests/test_materials_uniqueness_requirements.py::TestMaterials
 If you need to restore confidence fields:
 
 ```bash
-# 1. Restore materials.yaml
-cp materials/data/materials_backup_20251102_162956.yaml materials/data/materials.yaml
+# 1. Restore Materials.yaml
+cp materials/data/materials_backup_20251102_162956.yaml materials/data/Materials.yaml
 
 # 2. Restore frontmatter
 rm -rf frontmatter

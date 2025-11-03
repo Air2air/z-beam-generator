@@ -109,7 +109,7 @@ orchestrator.generate(content_type='region', name='Europe')  # Generic method
 ```
 data/
 ├── materials/          ← Material data
-│   └── materials.yaml
+│   └── Materials.yaml
 │
 ├── regions/            ← Region data (equal weight)
 │   └── regions.yaml
@@ -310,7 +310,7 @@ class Orchestrator:
 ```python
 # ❌ WRONG
 data/
-├── materials.yaml          # Root level - seems special
+├── Materials.yaml          # Root level - seems special
 └── other/
     ├── regions.yaml
     └── applications.yaml
@@ -318,7 +318,7 @@ data/
 # ✅ CORRECT
 data/
 ├── materials/
-│   └── materials.yaml
+│   └── Materials.yaml
 ├── regions/
 │   └── regions.yaml
 └── applications/
@@ -338,8 +338,8 @@ data/
 ### What Needs Adjustment ⚠️
 
 1. **Data Structure**
-   - Current: `data/materials.yaml` at root
-   - Better: `data/materials/materials.yaml` (parallel to future types)
+   - Current: `data/Materials.yaml` at root
+   - Better: `data/materials/Materials.yaml` (parallel to future types)
 
 2. **Documentation Emphasis**
    - Current docs might over-emphasize materials

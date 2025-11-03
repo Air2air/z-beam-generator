@@ -34,7 +34,7 @@
 - Location: `components/frontmatter/research/property_value_researcher.py`
 - Purpose: Research individual material property values
 - Features: Multi-strategy fallback, confidence scoring, caching
-- Strategies: materials.yaml → web → literature → estimation
+- Strategies: Materials.yaml → web → literature → estimation
 - **STATUS**: Fully operational, tested
 
 **2. MachineSettingsResearcher**
@@ -65,7 +65,7 @@ result = researcher.research_property_value("Copper", "electricalResistivity")
 if result.is_valid():
     print(f"Value: {result.value} {result.unit}")
     print(f"Confidence: {result.confidence}%")
-    # Save to materials.yaml
+    # Save to Materials.yaml
 ```
 
 ---
@@ -161,10 +161,10 @@ python3 scripts/research/batch_property_research.py \
 # Review results
 cat data/research_results_electrical_resistivity.yaml
 
-# Approve and merge to materials.yaml
+# Approve and merge to Materials.yaml
 python3 scripts/research/merge_research_results.py \
   --input data/research_results_electrical_resistivity.yaml \
-  --output data/materials.yaml \
+  --output data/Materials.yaml \
   --backup
 ```
 
@@ -401,7 +401,7 @@ python3 scripts/research/batch_property_research.py \
 ### Tool 2: Research Results Merger
 **File**: `scripts/research/merge_research_results.py`
 
-**Purpose**: Safely merge research results into materials.yaml
+**Purpose**: Safely merge research results into Materials.yaml
 
 **Features**:
 - Automatic backup before merge
@@ -414,7 +414,7 @@ python3 scripts/research/batch_property_research.py \
 ```bash
 python3 scripts/research/merge_research_results.py \
   --input research_results.yaml \
-  --output data/materials.yaml \
+  --output data/Materials.yaml \
   --backup \
   --validate
 ```

@@ -48,7 +48,7 @@ Each component has ONE clear responsibility and is content-agnostic:
 
 ### Materials (Current Implementation)
 ```python
-# Source YAML: materials/data/materials.yaml
+# Source YAML: materials/data/Materials.yaml
 # Generator: MaterialsFrontmatterGenerator extends BaseFrontmatterGenerator
 # Automatic quality gate: Inherited from base class
 # Repairer: SourceDataRepairer.create_for_content_type(api_client, "material")
@@ -56,7 +56,7 @@ Each component has ONE clear responsibility and is content-agnostic:
 # Usage:
 python3 run.py --material "Aluminum"
 # → Scans voice quality automatically
-# → Repairs materials.yaml if needed
+# → Repairs Materials.yaml if needed
 # → Exports clean frontmatter
 ```
 
@@ -120,7 +120,7 @@ class MyNewContentGenerator(BaseFrontmatterGenerator):
 ```python
 # In shared/voice/source_data_repairer.py
 source_paths = {
-    "material": Path("materials/data/materials.yaml"),
+    "material": Path("materials/data/Materials.yaml"),
     "region": Path("regions/data/regions.yaml"),
     "application": Path("applications/data/applications.yaml"),
     "thesaurus": Path("thesaurus/data/thesaurus.yaml"),
@@ -202,7 +202,7 @@ class AnyContentGenerator(BaseFrontmatterGenerator):
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. Content Generation                                        │
 │    - Text Component generates caption, subtitle, FAQ        │
-│    - Saves to source YAML (materials.yaml, regions.yaml)    │
+│    - Saves to source YAML (Materials.yaml, regions.yaml)    │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐

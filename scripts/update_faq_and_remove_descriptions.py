@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Update materials.yaml to:
+Update Materials.yaml to:
 1. Change faq.questions[] to faq[] (simplified structure)
 2. Remove all 'description' fields throughout
 """
@@ -53,8 +53,8 @@ def main():
     print("=" * 60)
     print()
     
-    # Load materials.yaml
-    materials_file = Path('materials/data/materials.yaml')
+    # Load Materials.yaml
+    materials_file = Path('materials/data/Materials.yaml')
     print(f"Loading {materials_file}...")
     
     with open(materials_file, 'r') as f:

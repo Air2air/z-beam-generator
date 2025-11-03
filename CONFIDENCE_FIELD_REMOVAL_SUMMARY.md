@@ -8,7 +8,7 @@
 ## What Was Removed
 
 ### ✅ Data Layer (Complete)
-1. **materials.yaml**: Removed 90 confidence fields from all 132 materials
+1. **Materials.yaml**: Removed 90 confidence fields from all 132 materials
    - **Backup**: `materials_backup_20251102_162956.yaml`
    - **Verification**: 0 confidence fields remain in materials data
 
@@ -30,7 +30,7 @@
 **IMPORTANT**: The codebase has TWO types of confidence:
 
 ### 1. **Material Property Confidence** (REMOVED ✅)
-- **Location**: `materials.yaml` property data
+- **Location**: `Materials.yaml` property data
 - **Purpose**: Was used to indicate confidence in material property values
 - **Status**: ✅ Completely removed (90 fields deleted)
 - **Example**: `density: {value: 2.7, unit: "g/cm³", confidence: 85}` ← confidence removed
@@ -40,14 +40,14 @@
 - **Purpose**: AI research quality assessment - measures confidence in AI-discovered values
 - **Status**: ✅ Intentionally preserved - this is part of research methodology
 - **Example**: Research system calculates 0.95 confidence when AI finds high-quality sources
-- **Not Exposed**: This confidence is NOT written to materials.yaml, only used internally
+- **Not Exposed**: This confidence is NOT written to Materials.yaml, only used internally
 
 ---
 
 ## Files Modified
 
 ### ✅ Completed Files
-1. **materials/data/materials.yaml**
+1. **materials/data/Materials.yaml**
    - ✅ Removed 90 confidence fields from property data
    - ✅ Backup created: `materials_backup_20251102_162956.yaml`
 
@@ -69,7 +69,7 @@ The following files contain **internal research confidence** scoring - this is p
 - `materials/research/base.py` - BaseResearcher calculates research confidence
 - `shared/commands/research.py` - CLI uses confidence_threshold for research quality
 
-These files use confidence **internally** to assess AI research quality. They do NOT write confidence to materials.yaml anymore.
+These files use confidence **internally** to assess AI research quality. They do NOT write confidence to Materials.yaml anymore.
 
 ### ⚠️ Files Requiring Attention (Optional Cleanup)
 The following files have confidence validation/auditing that may need updates depending on whether you want to preserve research quality validation:
@@ -134,7 +134,7 @@ python3 run.py --research-missing-properties --batch-size 1
 ```
 **Expected**:
 - ✅ Research confidence used internally for quality assessment
-- ✅ No confidence written to materials.yaml
+- ✅ No confidence written to Materials.yaml
 - ✅ Discovered values have value/unit only
 
 ---
@@ -151,15 +151,15 @@ python3 run.py --research-missing-properties --batch-size 1
 The current state is correct:
 - ✅ Material data has no confidence fields
 - ✅ Research components use confidence internally for quality
-- ✅ No confidence written to materials.yaml during research
+- ✅ No confidence written to Materials.yaml during research
 - ✅ Validation doesn't require confidence in data
 
 ---
 
 ## Summary
 
-**Data Cleanup**: ✅ Complete - 90 confidence fields removed from materials.yaml  
-**Description Cleanup**: ✅ Complete - 10 description fields removed from materials.yaml category_metadata (531 preserved in regulatoryStandards)  
+**Data Cleanup**: ✅ Complete - 90 confidence fields removed from Materials.yaml  
+**Description Cleanup**: ✅ Complete - 10 description fields removed from Materials.yaml category_metadata (531 preserved in regulatoryStandards)  
 **PropertyProcessor**: ✅ Complete - 'other' category removed, flattened structure, confidence removed  
 **Validation**: ✅ Complete - confidence checks removed from completeness_validator  
 **Frontmatter Generation**: ✅ Complete - confidence fields removed from streamlined_generator and property_processor  

@@ -1,0 +1,49 @@
+layout: contaminant
+title: Rust Laser Cleaning
+contaminant: Rust
+description: Laser cleaning parameters for Rust removal
+generated: '2025-10-31T02:46:55.849261Z'
+placeholder: true
+contaminantProperties:
+  description: Iron oxide corrosion products formed on ferrous metals
+  removal_difficulty: moderate
+  typical_thickness: varies
+  common_substrates:
+  - Steel
+  - Iron
+  - Cast Iron
+  - Stainless Steel
+laserParameters:
+  wavelength:
+    min: 1064
+    max: 1064
+    unit: nm
+    note: Placeholder - requires research
+  power:
+    min: 100
+    max: 500
+    unit: W
+    note: Placeholder - requires research
+  pulseWidth:
+    min: 100
+    max: 200
+    unit: ns
+    note: Placeholder - requires research
+applications:
+- Surface Cleaning
+- Restoration
+- Industrial Maintenance
+author:
+  name: Todd Dunning
+  country: United States
+_metadata:
+  generator: ContaminantFrontmatterGenerator
+  version: 1.0.0
+  content_type: contaminant
+  status: placeholder
+  requires_research: true
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: contaminant

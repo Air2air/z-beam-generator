@@ -52,8 +52,8 @@ def main():
     print("=" * 60)
     print()
     
-    # Load materials.yaml
-    materials_file = Path('materials/data/materials.yaml')
+    # Load Materials.yaml
+    materials_file = Path('materials/data/Materials.yaml')
     print(f"Loading {materials_file}...")
     
     with open(materials_file, 'r') as f:

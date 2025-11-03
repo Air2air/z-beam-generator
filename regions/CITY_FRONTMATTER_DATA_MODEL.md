@@ -13,7 +13,7 @@ This data model creates location-specific landing pages for laser cleaning servi
 1. **Geographic data** from `Cities.yaml` (population, history, landmarks)
 2. **Economic context** (industries, employers, applications)
 3. **Regulatory environment** (local permits, standards, requirements)
-4. **Material applications** from `materials.yaml` (industry-specific use cases)
+4. **Material applications** from `Materials.yaml` (industry-specific use cases)
 5. **Historic preservation** context (buildings, cultural significance)
 
 ---
@@ -138,7 +138,7 @@ economy:
 
 **Data Sources:**
 - `Cities.yaml`: historical_industries, current_industries
-- `materials.yaml`: Material properties and applications
+- `Materials.yaml`: Material properties and applications
 - Industry mapping logic: Match city industries to relevant materials/applications
 
 ### 4. Regulatory Environment
@@ -315,7 +315,7 @@ materials_served:
       - "Shipyard vessel cleaning"
 ```
 
-**Data Source:** `materials.yaml` + city industry mapping
+**Data Source:** `Materials.yaml` + city industry mapping
 
 ### 7. Historic Context & Preservation
 
@@ -889,7 +889,7 @@ _metadata:
   data_sources:
     primary: "regions/Cities.yaml"
     regional_context: "regions/data.yaml"
-    materials: "materials/data/materials.yaml"
+    materials: "materials/data/Materials.yaml"
   
   parent_region: "san-francisco-bay-area"
   state: "california"

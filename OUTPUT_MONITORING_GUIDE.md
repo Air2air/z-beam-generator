@@ -120,7 +120,7 @@ After successful generation:
 # Check what was saved
 python3 -c "
 import yaml
-data = yaml.safe_load(open('data/materials.yaml'))
+data = yaml.safe_load(open('data/Materials.yaml'))
 titanium = data['materials']['Titanium']
 print(f'FAQ count: {len(titanium.get(\"faq\", []))}')
 print(f'First question: {titanium[\"faq\"][0][\"question\"]}')

@@ -481,7 +481,7 @@ def validate_configuration():
     
     # Check config files
     required_files = [
-        'data/materials.yaml',
+        'data/Materials.yaml',
         'data/Categories.yaml',
         'config/pipeline_config.yaml',
     ]

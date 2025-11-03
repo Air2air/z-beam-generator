@@ -69,19 +69,19 @@ Step 3: Manual Export
 - ❌ NO validation needed (already validated)
 - ❌ NO completeness checks needed (already complete)
 - ❌ NO quality scoring needed (already scored)
-- ❌ NO voice enhancement needed (already applied in materials.yaml)
+- ❌ NO voice enhancement needed (already applied in Materials.yaml)
 
 **Result**: Frontmatter export for 132 materials should take **seconds**, not minutes.
 
 **Workflow Commands:**
 ```bash
-# Step 1: Generate content → materials.yaml
+# Step 1: Generate content → Materials.yaml
 python3 run.py --caption "Steel"
 
-# Step 2: Apply voice → OVERWRITES fields in materials.yaml  
+# Step 2: Apply voice → OVERWRITES fields in Materials.yaml  
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
 
-# Step 3: Manual export → combines materials.yaml + Categories.yaml → frontmatter
+# Step 3: Manual export → combines Materials.yaml + Categories.yaml → frontmatter
 python3 run.py --material "Steel" --data-only
 ```
 
@@ -552,18 +552,131 @@ If you find code that violates this policy:
 
 ---
 
+## � Complete Unified Workflow with Auto-Remediation
+
+**Command**: `python3 run.py --run "MaterialName"`
+
+### 5-Step Inline Workflow
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│  STEP 0: DATA COMPLETENESS VALIDATION + AUTO-REMEDIATION (INLINE) │
+└────────────────────────────────────────────────────────────────────┘
+1. Validate Material Data in Materials.yaml
+   - Check critical sections (materialProperties, machineSettings)
+   - Detect null/missing values
+   - If incomplete → Trigger PropertyManager.discover_and_research_properties()
+   - Auto-remediation saves directly to Materials.yaml
+
+2. Validate Category Ranges in Categories.yaml
+   - Check all category_ranges for null min/max
+   - If incomplete → Trigger CategoryRangeResearcher.research_property_range()
+   - Auto-remediation saves directly to Categories.yaml
+
+Result: Materials.yaml + Categories.yaml = 100% complete
+
+┌────────────────────────────────────────────────────────────────────┐
+│  STEP 1: TEXT CONTENT GENERATION → Materials.yaml                 │
+└────────────────────────────────────────────────────────────────────┘
+- Generate caption (before/after) → Save to Materials.yaml
+- Generate subtitle → Save to Materials.yaml
+- Generate FAQ (2-8 questions) → Save to Materials.yaml
+- Uses UnifiedMaterialsGenerator with prompt templates
+- AI-driven, high variability content
+
+Result: Materials.yaml has raw text content (no voice yet)
+
+┌────────────────────────────────────────────────────────────────────┐
+│  STEP 2: VOICE ENHANCEMENT → OVERWRITES Materials.yaml TEXT       │
+└────────────────────────────────────────────────────────────────────┘
+- Load TEXT fields from Materials.yaml (caption, subtitle, FAQ)
+- Apply author-specific voice markers (Italian, Korean, Taiwan, India)
+- OVERWRITE text fields in Materials.yaml with voice-enhanced versions
+- Voice enhancement is PERMANENT in Materials.yaml
+
+Result: Materials.yaml has voice-enhanced content
+
+┌────────────────────────────────────────────────────────────────────┐
+│  STEP 3: QUALITY VALIDATION                                        │
+└────────────────────────────────────────────────────────────────────┘
+- Check voice markers present in caption/subtitle
+- Validate word counts (10+ words per caption, 2-8 FAQs)
+- Ensure completeness (all required fields present)
+- Quality gates: human believability, tone consistency
+
+Result: Content quality verified
+
+┌────────────────────────────────────────────────────────────────────┐
+│  STEP 4: FRONTMATTER EXPORT (Trivial Copy Operation)              │
+└────────────────────────────────────────────────────────────────────┘
+- Read Materials.yaml (already complete, validated, voice-enhanced)
+- Read Categories.yaml (metadata only, NO fallback ranges)
+- Combine both sources into frontmatter structure
+- Write to frontmatter/materials/{material}-laser-cleaning.yaml
+- OVERWRITES existing file
+- NO API calls, NO validation, NO complex operations
+- Should take seconds for 132 materials
+
+Result: Frontmatter files = exact copy of Materials.yaml + Categories.yaml metadata
+```
+
+### Auto-Remediation Architecture
+
+**Missing Material Properties**:
+```python
+# Triggered by: Missing/null materialProperties or machineSettings
+PropertyManager.discover_and_research_properties(material_name)
+  → Research property values using AI
+  → Validate ranges against Categories.yaml
+  → Save to Materials.yaml immediately
+  → Workflow continues with complete data
+```
+
+**Missing Category Ranges**:
+```python
+# Triggered by: Null min/max in Categories.yaml category_ranges
+CategoryRangeResearcher.research_property_range(property_name, category)
+  → Use pre-researched ranges (confidence 0.92-0.99)
+  → Fallback to default ranges (confidence 0.7)
+  → Save to Categories.yaml immediately
+  → Workflow continues with complete ranges
+```
+
+### Key Architectural Points
+
+1. **All AI operations happen in Steps 0-2** on Materials.yaml
+2. **Frontmatter export (Step 4) is instant** - no AI, no validation
+3. **Auto-remediation is inline** - no manual intervention needed
+4. **Voice enhancement OVERWRITES** text fields in Materials.yaml
+5. **Categories.yaml provides metadata only** - NEVER fallback values
+6. **100% data completeness enforced** before generation proceeds
+
+### Performance Expectations
+
+- **Step 0 (Validation + Auto-Remediation)**: 5-30 seconds (if research needed)
+- **Step 1 (Text Generation)**: 10-30 seconds (3 AI API calls)
+- **Step 2 (Voice Enhancement)**: 5-15 seconds (1 AI API call)
+- **Step 3 (Quality Validation)**: <1 second (local checks)
+- **Step 4 (Frontmatter Export)**: <1 second (simple YAML copy)
+
+**Total Time**: ~20-75 seconds per material (depending on auto-remediation needs)
+**132 Materials**: Should complete in 45-165 minutes (with auto-remediation)
+**Frontmatter Export Only**: Should complete in <2 minutes (132 × <1s)
+
+---
+
 ## 📝 Summary
 
 **The Rule**: Materials.yaml ← Source of Truth → Frontmatter (Output Only)
 
-**The Flow**: Research → Materials.yaml → Frontmatter Generation
+**The Flow**: Validation + Auto-Remediation → Generation → Voice Enhancement → Quality Check → Frontmatter Export
 
-**The Test**: Can I delete all frontmatter files and regenerate them? (Answer must be YES)
+**The Test**: Can I delete all frontmatter files and regenerate them in <2 minutes? (Answer must be YES)
 
-**The Result**: Self-improving system that accumulates knowledge in Materials.yaml
+**The Result**: Self-improving system that accumulates knowledge in Materials.yaml + Categories.yaml
 
 ---
 
-**Last Updated**: October 20, 2025  
+**Last Updated**: October 27, 2025  
 **Policy Owner**: System Architecture  
-**Enforcement**: Automated tests + code review
+**Enforcement**: Automated tests + code review + inline validation

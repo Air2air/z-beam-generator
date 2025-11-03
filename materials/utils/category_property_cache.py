@@ -36,7 +36,7 @@ class CategoryPropertyCache:
             categories_file: Path to Categories.yaml (default: data/Categories.yaml)
             cache_file: Path to cache file (default: .cache/category_properties.json)
         """
-        self.categories_file = categories_file or Path("data/Categories.yaml")
+        self.categories_file = categories_file or Path("materials/data/Categories.yaml")
         self.cache_file = cache_file or Path(".cache/category_properties.json")
         
         # In-memory cache

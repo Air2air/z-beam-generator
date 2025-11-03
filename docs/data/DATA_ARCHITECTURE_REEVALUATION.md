@@ -13,7 +13,7 @@
 ```
 data/
 ├── Categories.yaml (119KB)              # DEPRECATED - Legacy monolithic file
-├── materials.yaml (large)               # ✅ ACTIVE - Material definitions
+├── Materials.yaml (large)               # ✅ ACTIVE - Material definitions
 ├── property_definitions.yaml            # ✅ NEW - Property registry
 ├── materials.py                         # ✅ ACTIVE - Data access functions
 ├── __init__.py                         # ✅ ACTIVE
@@ -98,7 +98,7 @@ data/
 
 ```
 data/
-├── materials.yaml                      # Material data (unchanged)
+├── Materials.yaml                      # Material data (unchanged)
 ├── property_definitions.yaml           # Property registry (unchanged)
 └── categories/
     ├── core_definitions.yaml           # MERGE: category_metadata + material_types
@@ -127,7 +127,7 @@ data/
 
 ```
 data/
-├── materials.yaml
+├── Materials.yaml
 ├── property_definitions.yaml
 └── categories/
     ├── definitions.yaml                # MERGE: category_metadata + material_types
@@ -278,7 +278,7 @@ property_categories:
 ```
 data/
 ├── Categories.yaml (119KB) ❌ DEPRECATED
-├── materials.yaml ✅
+├── Materials.yaml ✅
 ├── property_definitions.yaml ✅
 └── categories/ (8 files)
     ├── category_metadata.yaml
@@ -294,7 +294,7 @@ data/
 ### After Option A (Recommended):
 ```
 data/
-├── materials.yaml ✅
+├── Materials.yaml ✅
 ├── property_definitions.yaml ✅
 └── categories/ (5 files) ⬇️ 37% reduction
     ├── core_definitions.yaml       # MERGED
@@ -309,7 +309,7 @@ data/
 ### After Option C (Minimal):
 ```
 data/
-├── materials.yaml ✅
+├── Materials.yaml ✅
 ├── property_definitions.yaml ✅
 └── categories/ (8 files)
     ├── material_categories.yaml    # RENAMED

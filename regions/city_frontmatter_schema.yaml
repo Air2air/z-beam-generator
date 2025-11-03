@@ -162,7 +162,7 @@ frontmatter_template:
     facility_address: string # If applicable
   
   # ----- Materials & Capabilities -----
-  materials_served: array # Subset of materials.yaml relevant to local industries
+  materials_served: array # Subset of Materials.yaml relevant to local industries
     - material_name: "Aluminum"
       category: "metal"
       local_applications:
@@ -339,7 +339,7 @@ frontmatter_template:
   
   # ----- Author & Voice -----
   author:
-    name: string # From materials.yaml author pattern
+    name: string # From Materials.yaml author pattern
     country: string
     expertise: string
     title: string
@@ -370,7 +370,7 @@ data_population:
   
   # Step 3: Map industries to materials
   industry_material_mapping:
-    source: "materials/data/materials.yaml"
+    source: "materials/data/Materials.yaml"
     logic: "Map city industries to relevant materials and applications"
   
   # Step 4: Generate city-specific content

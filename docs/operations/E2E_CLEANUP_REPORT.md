@@ -75,7 +75,7 @@ find . -type d -name "__pycache__" -exec rm -rf {} +
 
 **Archive** (move to `data/archive/`):
 - All other Materials.backup_* files (84 files)
-- materials.yaml.bak, materials.yaml.backup
+- Materials.yaml.bak, Materials.yaml.backup
 
 **Impact**: 84 files moved, ~45MB saved in data/
 **Risk**: LOW (keeping recent backups)

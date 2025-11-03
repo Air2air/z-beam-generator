@@ -83,9 +83,9 @@ class CategoryDataLoader:
         """Find project root by looking for key markers"""
         current = Path(__file__).resolve()
         for parent in [current] + list(current.parents):
-            if (parent / 'data' / 'materials.yaml').exists():
+            if (parent / 'data' / 'Materials.yaml').exists():
                 return parent
-        raise ConfigurationError("Could not find project root (no data/materials.yaml found)")
+        raise ConfigurationError("Could not find project root (no data/Materials.yaml found)")
     
     def _has_split_files(self) -> bool:
         """Check if split files exist (updated for Option A consolidation)"""
@@ -144,7 +144,7 @@ class CategoryDataLoader:
         """
         Get material name to category mapping.
         
-        NOTE: material_index is actually stored in materials.yaml, not Categories.yaml.
+        NOTE: material_index is actually stored in Materials.yaml, not Categories.yaml.
         Use MaterialsDataLoader to access this data instead.
         
         Returns:
@@ -152,9 +152,9 @@ class CategoryDataLoader:
             Example: {"Aluminum": "metal", "Granite": "stone"}
         """
         # NOTE: material_index.yaml was removed (redundant 226 bytes, Oct 30 2025)
-        # Material index is actually stored in materials.yaml, not Categories.yaml
+        # Material index is actually stored in Materials.yaml, not Categories.yaml
         # This method loads directly from the authoritative source
-        materials_file = self.project_root / 'data' / 'materials.yaml'
+        materials_file = self.project_root / 'data' / 'Materials.yaml'
         if materials_file.exists():
             data = self._load_yaml_file(materials_file)
             return data.get('material_index', {})

@@ -120,7 +120,7 @@ components/frontmatter/
     └── completeness_validator.py
 
 data/
-├── materials.yaml                      # Existing
+├── Materials.yaml                      # Existing
 ├── categories/                         # Existing (enhanced)
 ├── regions/                            # NEW
 │   ├── regions.yaml                   # Region definitions
@@ -654,7 +654,7 @@ class FrontmatterOrchestrator:
 
 ### Adding New Materials
 ```yaml
-# data/materials.yaml
+# data/Materials.yaml
 materials:
   NewMaterial:  # Just add new entry
     category: metal
@@ -741,7 +741,7 @@ applications:
 ## ✅ Success Criteria
 
 - [ ] All frontmatter types support author voice (MANDATORY)
-- [ ] New materials can be added by editing materials.yaml only
+- [ ] New materials can be added by editing Materials.yaml only
 - [ ] New properties auto-classified via property_definitions.yaml
 - [ ] Each content type has independent schema validation
 - [ ] Backward compatibility with existing material frontmatter

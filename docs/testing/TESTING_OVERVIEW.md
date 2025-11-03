@@ -5,7 +5,7 @@ Comprehensive guide to the Z-Beam Generator test framework, test organization, a
 ## Overview
 
 The testing system validates:
-- ✅ Data integrity (materials.yaml, Categories.yaml)
+- ✅ Data integrity (Materials.yaml, Categories.yaml)
 - ✅ Component generation (frontmatter, text, caption, tags)
 - ✅ API connectivity and error handling
 - ✅ Validation and quality control
@@ -30,7 +30,7 @@ tests/
 │   └── test_batch_operations.py
 │
 ├── fixtures/                      # Test data and mocks
-│   ├── sample_materials.yaml
+│   ├── sample_Materials.yaml
 │   ├── expected_outputs/
 │   └── mocks/
 │
@@ -85,7 +85,7 @@ pytest tests/validation/
 ### Data Validation Tests
 
 **`tests/test_materials_yaml.py`**
-- Validates materials.yaml structure
+- Validates Materials.yaml structure
 - Checks flattened format compliance
 - Verifies all 121 materials exist
 - Confirms category embedding
@@ -245,7 +245,7 @@ Located in `tests/conftest.py`:
 ```python
 @pytest.fixture
 def materials_data():
-    """Load actual materials.yaml for testing."""
+    """Load actual Materials.yaml for testing."""
     from data.materials import load_materials
     return load_materials()
 
@@ -283,7 +283,7 @@ def temp_output_dir(tmp_path):
 
 ### Sample Materials
 
-Located in `tests/fixtures/sample_materials.yaml`:
+Located in `tests/fixtures/sample_Materials.yaml`:
 
 ```yaml
 materials:

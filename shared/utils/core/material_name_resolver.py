@@ -117,7 +117,7 @@ class MaterialNameResolver:
                 for full_name_key, abbrev_data in MATERIAL_ABBREVIATIONS.items():
                     abbrev = abbrev_data['abbreviation']
                     
-                    # Find the canonical name in materials.yaml that matches
+                    # Find the canonical name in Materials.yaml that matches
                     # Try exact match first
                     if full_name_key in self.canonical_names:
                         canonical = full_name_key
@@ -143,7 +143,7 @@ class MaterialNameResolver:
                 # If import fails, fall back to parsing from canonical names
                 pass
             
-            # Also parse abbreviations from materials.yaml names
+            # Also parse abbreviations from Materials.yaml names
             # e.g., "Ceramic Matrix Composites CMCs" -> extract "CMCs"
             for canonical_name in self.canonical_names:
                 words = canonical_name.split()

@@ -8,7 +8,7 @@
 
 ## 🎯 Overview
 
-The AI Research Automation system implements the **Stage 0: AI Research & Data Completion** requirement by automatically filling missing property values in `materials.yaml` using the PropertyValueResearcher infrastructure.
+The AI Research Automation system implements the **Stage 0: AI Research & Data Completion** requirement by automatically filling missing property values in `Materials.yaml` using the PropertyValueResearcher infrastructure.
 
 ### Key Features
 
@@ -84,12 +84,12 @@ python3 run.py --research-missing-properties \
 ```
 
 **What Happens**:
-1. ✅ Loads `materials.yaml`
+1. ✅ Loads `Materials.yaml`
 2. ✅ Analyzes all 635 missing values
 3. ✅ Shows top 10 priorities
 4. ⚠️  **Asks for confirmation** (uses AI API calls)
 5. ✅ Researches properties in priority order
-6. ✅ Creates backup of `materials.yaml`
+6. ✅ Creates backup of `Materials.yaml`
 7. ✅ Updates file with successful results
 8. ✅ Shows updated completeness report
 
@@ -171,7 +171,7 @@ Located in `run.py` → `GLOBAL_OPERATIONAL_CONFIG`:
 **Location**: `components/frontmatter/research/property_value_researcher.py`
 
 **Multi-Strategy Approach**:
-1. **materials.yaml lookup** - Check if already present (highest confidence)
+1. **Materials.yaml lookup** - Check if already present (highest confidence)
 2. **Web research** - Search scientific databases and publications
 3. **Literature research** - Academic papers and technical documents
 4. **Estimation fallback** - Physics-based estimation (lowest confidence)
@@ -285,7 +285,7 @@ Next steps:
 
 ### 1. Automatic Backups
 
-Before updating `materials.yaml`, the system creates a timestamped backup:
+Before updating `Materials.yaml`, the system creates a timestamped backup:
 
 ```
 data/Materials.backup_20251017_143052.yaml
@@ -491,7 +491,7 @@ Modify `handle_research_missing_properties()` to skip the update section:
 # Comment out the update code
 # with open(materials_file, 'w') as f:
 #     yaml.dump(materials_data, f, ...)
-print("DRY RUN: Would update materials.yaml with results")
+print("DRY RUN: Would update Materials.yaml with results")
 ```
 
 ---

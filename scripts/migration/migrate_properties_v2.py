@@ -2,7 +2,7 @@
 """
 Atomic Migration Script for Materials Module V2.0
 
-This script performs three critical changes to materials.yaml:
+This script performs three critical changes to Materials.yaml:
 1. Rename 'properties' → 'materialProperties' throughout
 2. Remove all 'description' fields from property dictionaries
 3. Map 'meltingPoint' → 'thermalDestruction' everywhere
@@ -73,7 +73,7 @@ class MigrationStats:
 
 
 class PropertiesMigrator:
-    """Handles atomic migration of materials.yaml"""
+    """Handles atomic migration of Materials.yaml"""
     
     def __init__(self, materials_file: Path, backup_dir: Path = None):
         self.materials_file = materials_file
@@ -84,7 +84,7 @@ class PropertiesMigrator:
         self.backup_dir.mkdir(parents=True, exist_ok=True)
     
     def create_backup(self) -> Path:
-        """Create timestamped backup of materials.yaml"""
+        """Create timestamped backup of Materials.yaml"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         backup_file = self.backup_dir / f"materials_backup_{timestamp}.yaml"
         
@@ -94,7 +94,7 @@ class PropertiesMigrator:
         return backup_file
     
     def load_materials(self) -> Dict:
-        """Load materials.yaml as complete document"""
+        """Load Materials.yaml as complete document"""
         print(f"📂 Loading {self.materials_file}")
         
         with open(self.materials_file, 'r') as f:
@@ -334,7 +334,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(
-        description='Migrate materials.yaml to V2.0 structure'
+        description='Migrate Materials.yaml to V2.0 structure'
     )
     parser.add_argument(
         '--dry-run',
@@ -349,8 +349,8 @@ def main():
     parser.add_argument(
         '--materials-file',
         type=Path,
-        default=Path('materials/data/materials.yaml'),
-        help='Path to materials.yaml file'
+        default=Path('materials/data/Materials.yaml'),
+        help='Path to Materials.yaml file'
     )
     
     args = parser.parse_args()

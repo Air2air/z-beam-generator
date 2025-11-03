@@ -43,7 +43,7 @@ Z-Beam Generator is a **laser cleaning content generation system** built on a **
 │  └──────────────┘  └──────────────┘  └──────────────┘      │
 │         ↓                  ↓                  ↓              │
 │  ┌──────────────────────────────────────────────────────┐  │
-│  │              Data Layer (materials.yaml)              │  │
+│  │              Data Layer (Materials.yaml)              │  │
 │  └──────────────────────────────────────────────────────┘  │
 │                           ↓                                  │
 │  ┌──────────────────────────────────────────────────────┐  │
@@ -132,7 +132,7 @@ User Input → CLI Parser → Material Validation → Component Selection → Ge
 
 **Key Functions**:
 - Parse command-line arguments (`--material`, `--components`, `--all`)
-- Validate material names against `materials.yaml`
+- Validate material names against `Materials.yaml`
 - Select which components to generate
 - Orchestrate generation pipeline
 - Handle errors and display results
@@ -204,7 +204,7 @@ class ComponentGenerator:
 
 ### Layer 4: Data Layer
 
-**Files**: `data/materials.yaml`, `data/materials.py`  
+**Files**: `data/Materials.yaml`, `data/materials.py`  
 **Responsibility**: Material data storage and access
 
 #### Flattened Structure (v2.0)
@@ -352,7 +352,7 @@ class TextComponentGenerator(ComponentGenerator):
    └─> python3 run.py --material "Aluminum" --components frontmatter
 
 2. CLI Validation
-   └─> Validate "Aluminum" exists in materials.yaml
+   └─> Validate "Aluminum" exists in Materials.yaml
    └─> Validate "frontmatter" is valid component
 
 3. Material Loading
@@ -390,7 +390,7 @@ class TextComponentGenerator(ComponentGenerator):
    └─> python3 scripts/tools/batch_regenerate_frontmatter.py --resume
 
 2. Material Discovery
-   └─> Load all materials from materials.yaml (121 items)
+   └─> Load all materials from Materials.yaml (121 items)
    └─> Check existing files for compliance
 
 3. Status Assessment
@@ -498,7 +498,7 @@ Input: Material Name
   ↓
 0. AI RESEARCH & DATA COMPLETION (MANDATORY)
    ⚡ ABSOLUTE REQUIREMENT - NO EXCEPTIONS
-   - Check material completeness in materials.yaml
+   - Check material completeness in Materials.yaml
    - Identify missing property values (635 gaps as of Oct 2025)
    - Run AI research to fill ALL missing properties
    - Validate category ranges complete (100% required)
@@ -508,7 +508,7 @@ Input: Material Name
    ⚠️  FAIL-FAST: Generation blocked if properties incomplete
   ↓
 1. Load Material Data
-   - Get material from materials.yaml
+   - Get material from Materials.yaml
    - Extract properties, characteristics
    - Identify category and industries
   ↓

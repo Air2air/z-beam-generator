@@ -62,9 +62,9 @@ def remove_descriptions_recursive(data, inside_regulatory_standards=False):
 def process_materials_yaml():
     """Process Materials.yaml to remove description fields."""
     
-    # Get materials.yaml path
+    # Get Materials.yaml path
     root_dir = Path(__file__).parent.parent
-    materials_file = root_dir / 'materials' / 'data' / 'materials.yaml'
+    materials_file = root_dir / 'materials' / 'data' / 'Materials.yaml'
     
     if not materials_file.exists():
         print(f"❌ Materials.yaml not found: {materials_file}")

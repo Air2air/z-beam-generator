@@ -195,7 +195,7 @@ def migrate_other_properties(material_data: Dict[str, Any], material_name: str,
 
 
 def save_materials(data: Dict) -> None:
-    """Save materials data back to materials.yaml."""
+    """Save materials data back to Materials.yaml."""
     def convert_to_dict(obj):
         """Recursively convert OrderedDict to regular dict."""
         if hasattr(obj, 'items'):
@@ -206,7 +206,7 @@ def save_materials(data: Dict) -> None:
     
     clean_data = convert_to_dict(data)
     
-    materials_path = project_root / 'materials' / 'data' / 'materials.yaml'
+    materials_path = project_root / 'materials' / 'data' / 'Materials.yaml'
     with open(materials_path, 'w') as f:
         yaml.dump(clean_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
@@ -293,7 +293,7 @@ def main():
     
     if not args.dry_run and materials_migrated > 0:
         print()
-        print('💾 Saving materials.yaml...')
+        print('💾 Saving Materials.yaml...')
         save_materials(materials_data)
         print('✅ Migration complete!')
     

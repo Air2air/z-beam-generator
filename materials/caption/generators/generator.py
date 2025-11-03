@@ -46,7 +46,7 @@ CAPTION_MAX_TOKENS = 300  # Enough for both sections
 WORD_COUNT_TOLERANCE = 10
 
 # Data file paths
-MATERIALS_DATA_PATH = "materials/data/materials.yaml"
+MATERIALS_DATA_PATH = "materials/data/Materials.yaml"
 
 # ============================================================================
 
@@ -214,9 +214,13 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
         materials_path = Path(MATERIALS_DATA_PATH)
         
         try:
-            # Load Materials.yaml
+            # Load Materials.yaml - FAIL-FAST on empty/invalid file
             with open(materials_path, 'r', encoding='utf-8') as f:
-                materials_data = yaml.safe_load(f) or {}
+                materials_data = yaml.safe_load(f)
+            
+            # FAIL-FAST: Materials.yaml must have valid content
+            if not materials_data:
+                raise ValueError(f"CRITICAL: Materials.yaml at {materials_path} is empty or invalid")
             
             # Navigate to materials section
             if 'materials' not in materials_data:

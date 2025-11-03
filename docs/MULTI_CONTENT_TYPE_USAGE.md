@@ -59,7 +59,7 @@ python3 run.py --content-type thesaurus --identifier "fluence"
 ### 1. Material (Production)
 
 **Status**: ✅ Production-ready  
-**Data Source**: `data/materials.yaml`  
+**Data Source**: `data/Materials.yaml`  
 **Generator**: `MaterialFrontmatterGenerator` (wrapper around `StreamlinedFrontmatterGenerator`)  
 **Output**: `frontmatter/{material}-laser-cleaning.yaml`
 
@@ -312,7 +312,7 @@ python3 run.py --content-type contaminant --identifier "rust" --data-only
 
 ### Adding New Identifiers
 Edit the appropriate data file:
-- `data/materials.yaml` - Add material
+- `data/Materials.yaml` - Add material
 - `data/contaminants.yaml` - Add contaminant type
 - `data/regions.yaml` - Add region
 - `data/applications.yaml` - Add application
@@ -324,7 +324,7 @@ Edit the appropriate data file:
 
 ```
 data/
-├── materials.yaml      # 132 materials (48,120 lines)
+├── Materials.yaml      # 132 materials (48,120 lines)
 ├── contaminants.yaml   # 8 types (400+ lines)
 ├── regions.yaml        # 6 regions (300+ lines)
 ├── applications.yaml   # 12 applications (600+ lines)
@@ -337,7 +337,7 @@ data/
 
 | Content Type | Status | Data Source | Count | Output Quality |
 |--------------|--------|-------------|-------|----------------|
-| Material | ✅ Production | `materials.yaml` | 132 | Complete (93.5% data) |
+| Material | ✅ Production | `Materials.yaml` | 132 | Complete (93.5% data) |
 | Contaminant | ✅ Data-Driven | `contaminants.yaml` | 8 | Structured placeholder |
 | Region | ✅ Data-Driven | `regions.yaml` | 6 | Structured placeholder |
 | Application | ✅ Data-Driven | `applications.yaml` | 12 | Structured placeholder |

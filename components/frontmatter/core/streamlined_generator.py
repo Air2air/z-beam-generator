@@ -548,7 +548,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'category': category,
                 'subcategory': subcategory,
             }
-            # Load materialProperties directly from materials.yaml (data-only mode)
+            # Load materialProperties directly from Materials.yaml (data-only mode)
             # Only copy category groups (material_characteristics, laser_material_interaction, etc.)
             # Skip individual properties at root level
             material_props = material_data.get('materialProperties', {})
@@ -560,7 +560,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                     if isinstance(value, dict) and 'label' in value:
                         filtered_props[key] = value
                 
-                self.logger.info(f"📦 Using {len(filtered_props)} property categories from materials.yaml for {material_name}")
+                self.logger.info(f"📦 Using {len(filtered_props)} property categories from Materials.yaml for {material_name}")
                 
                 # Apply category ranges (min/max) to properties
                 material_category = material_data.get('category', 'metal').lower()
@@ -572,7 +572,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 
                 frontmatter['materialProperties'] = filtered_props
             else:
-                self.logger.warning(f"⚠️ No materialProperties found in materials.yaml for {material_name}")
+                self.logger.warning(f"⚠️ No materialProperties found in Materials.yaml for {material_name}")
                 frontmatter['materialProperties'] = {}
             
             # Generate machine settings with Min/Max ranges
@@ -663,7 +663,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         yaml_count += 1
                         point_data = yaml_prop['point']
                         
-                        # Build point structure with value/unit from materials.yaml
+                        # Build point structure with value/unit from Materials.yaml
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
@@ -934,9 +934,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
-        # First check if machine settings already exist in materials.yaml
+        # First check if machine settings already exist in Materials.yaml
         if 'machineSettings' in material_data and material_data['machineSettings']:
-            self.logger.info(f"Using existing machine settings from materials.yaml for {material_name}")
+            self.logger.info(f"Using existing machine settings from Materials.yaml for {material_name}")
             settings = material_data['machineSettings']
             
             # Add min/max ranges from machineSettingsRanges in Categories.yaml
@@ -1310,7 +1310,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         try:
             from components.frontmatter.utils.author_manager import get_author_by_id
             
-            # Use author.id from materials.yaml - FAIL-FAST if missing
+            # Use author.id from Materials.yaml - FAIL-FAST if missing
             if 'author' not in material_data:
                 raise PropertyDiscoveryError(
                     "Material missing 'author' field in Materials.yaml. "

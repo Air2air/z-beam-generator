@@ -9,18 +9,17 @@ For advanced operations, use run_unified.py with the unified pipeline.
 📋 QUICK START GUIDE
 ═══════════════════════════════════════════════════════════════════════════════
 
-🎯 GENERATE CONTENT:
-  python3 run.py --caption "Aluminum"      # Generate AI caption (saves to materials.yaml)
-  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle (saves to materials.yaml)
-  python3 run.py --faq "Aluminum"          # Generate AI FAQ (saves to materials.yaml)
+🚀 UNIFIED WORKFLOW (RECOMMENDED - Single Command Does Everything):
+  python3 run.py --run "Aluminum"          # Complete workflow: Generate → Voice → Export
+  python3 run.py --run-region "North America"    # Region workflow (coming soon)
+  python3 run.py --run-application "Rust Removal"  # Application workflow (coming soon)
 
-🎤 VOICE ENHANCEMENT (Post-Processing):
-  python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Apply voice, OVERWRITES in materials.yaml
-  python3 scripts/voice/enhance_materials_voice.py --all                  # Enhance all materials
-
-📤 MANUAL EXPORT (Combines materials.yaml + Categories.yaml):
-  python3 run.py --material "Aluminum" --data-only  # Export single material to frontmatter
-  python3 run.py --all --data-only                  # Export all materials to frontmatter
+🎯 MANUAL GENERATION (Step-by-Step):
+  python3 run.py --caption "Aluminum"      # Step 1: Generate AI caption → Materials.yaml
+  python3 run.py --subtitle "Aluminum"     # Step 1: Generate AI subtitle → Materials.yaml
+  python3 run.py --faq "Aluminum"          # Step 1: Generate AI FAQ → Materials.yaml
+  python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Step 2: Voice → Materials.yaml
+  python3 run.py --material "Aluminum" --data-only  # Step 3: Export → frontmatter
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -117,12 +116,32 @@ from shared.commands import (
     generate_content_validation_report,
 )
 
+# Import unified workflow commands
+from shared.commands.unified_workflow import (
+    run_material_workflow,
+    run_region_workflow,
+    run_application_workflow,
+    run_thesaurus_workflow,
+)
+
 
 def main():
     """Main application entry point with basic command line interface."""
     
     # Argument parser setup
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
+    
+    # Unified Workflow Commands (RECOMMENDED)
+    parser.add_argument("--run", help="Run complete material workflow: generate → voice → export")
+    parser.add_argument("--run-region", help="Run complete region workflow")
+    parser.add_argument("--run-application", help="Run complete application workflow")
+    parser.add_argument("--run-thesaurus", help="Run complete thesaurus workflow")
+    
+    # Workflow Control Flags
+    parser.add_argument("--skip-validation", action="store_true", help="Skip validation/research step")
+    parser.add_argument("--skip-generation", action="store_true", help="Skip text generation step")
+    parser.add_argument("--skip-voice", action="store_true", help="Skip voice enhancement step")
+    parser.add_argument("--skip-export", action="store_true", help="Skip frontmatter export step")
     
     # Content Generation Commands (Multi-Type Support)
     parser.add_argument("--content-type", help="Content type: material, region, application, thesaurus")
@@ -164,11 +183,41 @@ def main():
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit")
     
     # Other Commands
-    parser.add_argument("--data-only", action="store_true", help="Manual export: combine materials.yaml + Categories.yaml → frontmatter")
+    parser.add_argument("--data-only", action="store_true", help="Manual export: combine Materials.yaml + Categories.yaml → frontmatter")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize frontmatter files")
     parser.add_argument("--sanitize-file", help="Sanitize specific file")
     
     args = parser.parse_args()
+    
+    # ========================================================================
+    # UNIFIED WORKFLOW COMMANDS (Priority - handle first)
+    # ========================================================================
+    
+    if args.run:
+        result = run_material_workflow(
+            args.run,
+            skip_validation=args.skip_validation,
+            skip_generation=args.skip_generation,
+            skip_voice=args.skip_voice,
+            skip_export=args.skip_export
+        )
+        return 0 if result['overall_success'] else 1
+    
+    if args.run_region:
+        result = run_region_workflow(args.run_region)
+        return 0 if result['overall_success'] else 1
+    
+    if args.run_application:
+        result = run_application_workflow(args.run_application)
+        return 0 if result['overall_success'] else 1
+    
+    if args.run_thesaurus:
+        result = run_thesaurus_workflow(args.run_thesaurus)
+        return 0 if result['overall_success'] else 1
+    
+    # ========================================================================
+    # LEGACY COMMANDS (Backward compatibility)
+    # ========================================================================
     
     # Command dispatcher - simple commands first
     if args.deploy:

@@ -116,7 +116,7 @@ class MaterialAuditor:
     def __init__(self):
         """Initialize the material auditor with all requirement checkers"""
         self.logger = logging.getLogger(__name__)
-        self.materials_file = Path("materials/data/materials.yaml")
+        self.materials_file = Path("materials/data/Materials.yaml")
         self.categories_file = Path("materials/data/Categories.yaml")
         self.frontmatter_dir = Path("frontmatter")
         
@@ -294,11 +294,11 @@ class MaterialAuditor:
                             result.issues.append(AuditIssue(
                                 severity=AuditSeverity.CRITICAL,
                                 category="data_storage_policy",
-                                description=f"ARCHITECTURAL VIOLATION: Property '{prop_name}' has '{field}' field in materials.yaml",
+                                description=f"ARCHITECTURAL VIOLATION: Property '{prop_name}' has '{field}' field in Materials.yaml",
                                 field_path=f"materials.{material_name}.properties.{prop_name}.{field}",
                                 actual_value=prop_data[field],
                                 expected_value="REMOVED - ranges belong in Categories.yaml only",
-                                remediation=f"Remove '{field}' from materials.yaml property - ranges come from Categories.yaml",
+                                remediation=f"Remove '{field}' from Materials.yaml property - ranges come from Categories.yaml",
                                 requirement_source="docs/DATA_STORAGE_POLICY.md - ZERO TOLERANCE rule"
                             ))
                             result.data_storage_compliance = False

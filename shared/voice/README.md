@@ -4,36 +4,36 @@ Centralized voice management for country-specific linguistic variations in conte
 
 ## 🔄 Voice Processing Workflow
 
-**Voice enhancement is a POST-PROCESSING step that OVERWRITES text fields in materials.yaml:**
+**Voice enhancement is a POST-PROCESSING step that OVERWRITES text fields in Materials.yaml:**
 
 ```
-1. Generation → materials.yaml (raw content, no voice)
-2. Voice Enhancement → materials.yaml (enhances text fields, OVERWRITES in-place)
-3. Manual Export → frontmatter/*.yaml (combines materials.yaml + Categories.yaml)
+1. Generation → Materials.yaml (raw content, no voice)
+2. Voice Enhancement → Materials.yaml (enhances text fields, OVERWRITES in-place)
+3. Manual Export → frontmatter/*.yaml (combines Materials.yaml + Categories.yaml)
 ```
 
 ### Complete Workflow
 
 ```bash
-# Step 1: Generate raw content (no voice) → Saves to materials.yaml
+# Step 1: Generate raw content (no voice) → Saves to Materials.yaml
 python3 run.py --caption "Steel"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Steel"
 
-# Step 2: Apply voice enhancement → OVERWRITES text fields in materials.yaml
+# Step 2: Apply voice enhancement → OVERWRITES text fields in Materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
 
-# Step 3: Manual export → Combines materials.yaml + Categories.yaml → frontmatter
+# Step 3: Manual export → Combines Materials.yaml + Categories.yaml → frontmatter
 python3 run.py --data-only
 ```
 
 ### Batch Processing
 
 ```bash
-# Generate all content → materials.yaml
+# Generate all content → Materials.yaml
 python3 run.py --all
 
-# Apply voice to all materials → OVERWRITES fields in materials.yaml
+# Apply voice to all materials → OVERWRITES fields in Materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --all
 
 # Manual export → Combines with Categories.yaml → frontmatter files
@@ -43,9 +43,9 @@ python3 run.py --data-only
 ### Key Points
 
 - ✅ **Voice postprocessor OVERWRITES qualifying text fields** (caption, subtitle, FAQ answers)
-- ✅ **Valid enhanced output replaces original content** in materials.yaml
-- ✅ **Export is a separate manual step** that combines materials.yaml with Categories.yaml
-- ✅ **Categories.yaml provides metadata only** (NO fallback ranges - materials.yaml must be 100% complete)
+- ✅ **Valid enhanced output replaces original content** in Materials.yaml
+- ✅ **Export is a separate manual step** that combines Materials.yaml with Categories.yaml
+- ✅ **Categories.yaml provides metadata only** (NO fallback ranges - Materials.yaml must be 100% complete)
 
 ## Quick Start - Post-Processing API
 
@@ -178,7 +178,7 @@ These are **authentic patterns**, not errors to be corrected.
 
 ### enhance_materials_voice.py
 
-Post-processing tool that applies voice to materials.yaml content.
+Post-processing tool that applies voice to Materials.yaml content.
 
 ```bash
 # Single material
@@ -198,16 +198,16 @@ python3 scripts/voice/enhance_materials_voice.py --material "Steel" --voice-inte
 ```
 
 **What it does:**
-1. Reads material entry from `materials/data/materials.yaml`
+1. Reads material entry from `materials/data/Materials.yaml`
 2. Applies VoicePostProcessor to qualifying text fields (caption, subtitle, FAQ)
 3. Validates voice markers (target: ≥70/100 authenticity)
-4. **OVERWRITES original text fields** with voice-enhanced versions in materials.yaml
+4. **OVERWRITES original text fields** with voice-enhanced versions in Materials.yaml
 5. Adds `voice_enhanced` timestamp to track enhancement
 
 **Processing Details:**
-- **Caption**: Enhances both `before` and `after` sections → **OVERWRITES** in materials.yaml
-- **Subtitle**: Enhances subtitle text → **OVERWRITES** in materials.yaml
-- **FAQ**: Enhances all answer texts → **OVERWRITES** in materials.yaml
+- **Caption**: Enhances both `before` and `after` sections → **OVERWRITES** in Materials.yaml
+- **Subtitle**: Enhances subtitle text → **OVERWRITES** in Materials.yaml
+- **FAQ**: Enhances all answer texts → **OVERWRITES** in Materials.yaml
 - **Validation**: Only saves if authenticity score ≥70/100
 - **Atomic Writes**: Uses temporary files for safe overwriting
 
@@ -224,7 +224,7 @@ Voice quality is measured on a 0-100 scale:
 
 The voice system works identically for **all content types**:
 
-- ✅ **Materials** (`materials/data/materials.yaml`)
+- ✅ **Materials** (`materials/data/Materials.yaml`)
 - ✅ **Regions** (`regions/data.yaml`)
 - ✅ **Applications** (`applications/data.yaml`)
 - ✅ **Contaminants** (`contaminants/data.yaml`)

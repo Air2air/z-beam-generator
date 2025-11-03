@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Remove fields from materials.yaml that are not in frontmatter_template.yaml
+Remove fields from Materials.yaml that are not in frontmatter_template.yaml
 
 FIELDS TO REMOVE:
 - voice_enhanced
@@ -53,8 +53,8 @@ TEMPLATE_FIELDS = [
 
 
 def load_materials():
-    """Load materials.yaml"""
-    materials_file = Path('materials/data/materials.yaml')
+    """Load Materials.yaml"""
+    materials_file = Path('materials/data/Materials.yaml')
     with open(materials_file, 'r') as f:
         return yaml.safe_load(f)
 
@@ -70,8 +70,8 @@ def clean_material(mat_data):
 
 
 def save_materials(data, backup=True):
-    """Save materials.yaml with optional backup"""
-    materials_file = Path('materials/data/materials.yaml')
+    """Save Materials.yaml with optional backup"""
+    materials_file = Path('materials/data/Materials.yaml')
     
     if backup:
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -92,7 +92,7 @@ def save_materials(data, backup=True):
 
 
 def main():
-    print('Loading materials.yaml...')
+    print('Loading Materials.yaml...')
     data = load_materials()
     materials = data.get('materials', {})
     
@@ -129,7 +129,7 @@ def main():
                 print(f'  - {m}')
     
     # Save changes
-    print('\nSaving cleaned materials.yaml...')
+    print('\nSaving cleaned Materials.yaml...')
     save_materials(data, backup=True)
     
     print('\n✅ Cleanup complete!')

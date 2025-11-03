@@ -279,10 +279,10 @@ All generators create **neutral content**. Voice enhancement is a **separate ste
 from voice.post_processor import VoicePostProcessor
 from materials.data.materials import load_materials, get_material_by_name
 
-# Step 1: Generate content (neutral) → saves to materials.yaml
+# Step 1: Generate content (neutral) → saves to Materials.yaml
 result = generator.generate(material_name, material_data, api_client)
 
-# Step 2: Voice enhancement (separate command) → OVERWRITES fields in materials.yaml
+# Step 2: Voice enhancement (separate command) → OVERWRITES fields in Materials.yaml
 materials_data = load_materials()
 material_data = get_material_by_name(material_name, materials_data)
 
@@ -299,10 +299,10 @@ for field in ['caption', 'subtitle', 'faq']:
         # OVERWRITE original field with enhanced version
         material_data[field] = enhanced
 
-# Save back to materials.yaml with atomic write
+# Save back to Materials.yaml with atomic write
 save_materials_yaml(materials_data)
 
-# Step 3: Manual export (separate command) → combines materials.yaml + Categories.yaml
+# Step 3: Manual export (separate command) → combines Materials.yaml + Categories.yaml
 python3 run.py --material "MaterialName" --data-only
 ```
 
@@ -311,17 +311,17 @@ python3 run.py --material "MaterialName" --data-only
 - Voice can be applied/removed independently (just re-save original or enhanced)
 - Testing simpler (test generation and voice separately)
 - Voice settings can change without regeneration
-- **Overwriting ensures materials.yaml is always the source of truth**
+- **Overwriting ensures Materials.yaml is always the source of truth**
 
 **Commands**:
 ```bash
-# Generate → materials.yaml
+# Generate → Materials.yaml
 python3 run.py --caption "Steel"
 
-# Voice enhance → OVERWRITES in materials.yaml
+# Voice enhance → OVERWRITES in Materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
 
-# Export → combines materials.yaml + Categories.yaml → frontmatter
+# Export → combines Materials.yaml + Categories.yaml → frontmatter
 python3 run.py --material "Steel" --data-only
 ```
 

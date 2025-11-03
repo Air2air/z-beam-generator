@@ -107,7 +107,7 @@ class MaterialFrontmatterGenerator(BaseFrontmatterGenerator):
             material_data = get_material_by_name_cached(identifier)
             if not material_data:
                 raise MaterialDataError(
-                    f"Material '{identifier}' not found in materials.yaml"
+                    f"Material '{identifier}' not found in Materials.yaml"
                 )
             return True
         except Exception as e:

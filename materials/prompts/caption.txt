@@ -8,16 +8,18 @@ Generate TWO captions:
 **BEFORE_TEXT:**
 Describe the contaminated surface BEFORE laser cleaning.
 - Focus on: contaminant type, surface degradation, visible damage
-- Word count: {target_words_before} words (±10 tolerance)
+- Word count: EXACTLY {target_words_before} words (strict target, high variability across generations)
 - Technical, descriptive tone
 - Single paragraph
+- NOTE: Word count varies randomly between 15-70 words per generation for natural variation
 
 **AFTER_TEXT:**
 Describe the cleaned surface AFTER laser cleaning.
 - Focus on: restoration quality, surface condition, material integrity
-- Word count: {target_words_after} words (±10 tolerance)
+- Word count: EXACTLY {target_words_after} words (strict target, high variability across generations)
 - Technical, descriptive tone
 - Single paragraph
+- NOTE: Word count varies randomly between 15-70 words per generation for natural variation
 
 REQUIREMENTS:
 - Write in technical, professional style

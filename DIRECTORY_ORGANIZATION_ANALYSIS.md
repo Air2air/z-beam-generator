@@ -6,12 +6,12 @@
 ## Analysis Summary
 
 ### 📊 /data - **SPLIT BY CONTENT TYPE**
-**Current**: `materials.yaml`, `regions.yaml`, `applications.yaml`, `contaminants.yaml`, `thesaurus.yaml`
+**Current**: `Materials.yaml`, `regions.yaml`, `applications.yaml`, `contaminants.yaml`, `thesaurus.yaml`
 **Recommendation**: ✅ **Already moved** to content-type folders as `data.yaml`
 **Status**: COMPLETE
 
 **Action Taken**:
-- `data/materials.yaml` → `materials/data.yaml` ✅
+- `data/Materials.yaml` → `materials/data.yaml` ✅
 - `data/regions.yaml` → `regions/data.yaml` ✅
 - `data/applications.yaml` → `applications/data.yaml` ✅
 - `data/contaminants.yaml` → `contaminants/data.yaml` ✅
@@ -46,7 +46,7 @@
 **Why**:
 - Material-specific property discovery
 - Not applicable to regions, applications, contaminants, or thesaurus
-- Tightly coupled to materials.yaml structure
+- Tightly coupled to Materials.yaml structure
 - Part of material generation workflow only
 
 **Note**: There's also `components/frontmatter/research/` which is ALSO material-specific (PropertyValueResearcher, MachineSettingsResearcher). Consider consolidating.

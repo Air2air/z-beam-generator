@@ -62,7 +62,7 @@
 - ✅ `data/authors/` - Author profiles (cross-cutting)
 - ✅ `data/categories/` - Category definitions (cross-cutting)
 - ✅ `data/materials.py` - Material data utilities
-- ✅ `data/materials.yaml` - Material source data
+- ✅ `data/Materials.yaml` - Material source data
 - ✅ `data/Categories.yaml` - **Restored from git** (required by generator)
 
 #### 5. /tests
@@ -165,7 +165,7 @@
   ├── authors/                 # Author profiles
   ├── categories/              # Category definitions (modular)
   ├── materials.py             # Material utilities
-  ├── materials.yaml           # Material source data
+  ├── Materials.yaml           # Material source data
   └── Categories.yaml          # Category data (restored)
 
 /frontmatter/                  # Centralized output

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Remove metadata fields from materials.yaml to match template structure exactly.
+Remove metadata fields from Materials.yaml to match template structure exactly.
 
 Removes:
 - From caption: word_count, character_count, generated, generation_method, author, total_words, word_count_before, word_count_after
@@ -15,8 +15,8 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 
-# Load materials.yaml
-materials_path = Path('materials/data/materials.yaml')
+# Load Materials.yaml
+materials_path = Path('materials/data/Materials.yaml')
 print(f"Loading {materials_path}...")
 
 with open(materials_path, 'r') as f:

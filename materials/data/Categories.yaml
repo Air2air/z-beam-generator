@@ -146,6 +146,11 @@ propertyCategories:
       - thermalStability
       - thermalDegradationPoint
       - photonPenetrationDepth
+      - meltingPoint
+      - thermalDestructionPoint
+      - vaporPressure
+      - absorptionCoefficient
+      - thermalShockResistance
     material_characteristics:
       id: material_characteristics
       label: Material Characteristics
@@ -188,6 +193,7 @@ propertyCategories:
       - compressiveStrength
       - flexuralStrength
       - fractureResistance
+      - fractureToughness
   usage_tiers:
     core:
       description: Present in >100 materials (universal/essential properties)
@@ -426,7 +432,7 @@ materialPropertyDescriptions:
     laser_cleaning_impact: High expansion materials need careful thermal management
   absorptionCoefficient:
     description: Rate of optical energy absorption at specific wavelengths
-    unit: cm⁻¹
+    unit: m⁻¹
     relevance: Determines energy coupling efficiency
     laser_cleaning_impact: Directly affects cleaning effectiveness and penetration
       depth
@@ -1232,11 +1238,9 @@ categories:
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
       thermalDestruction:
-        point:
-          max: 3827
-          min: 1000
-          unit: °C
-        type: thermal_shock
+        min: 273.0
+        max: 3900.0
+        unit: K
       thermalDiffusivity:
         max: 120
         min: 0.005
@@ -1510,11 +1514,9 @@ categories:
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
       thermalDestruction:
-        point:
-          max: 2000
-          min: 150
-          unit: °C
-        type: decomposition
+        min: 273.0
+        max: 900.0
+        unit: K
       thermalDiffusivity:
         max: 180
         min: 0.08
@@ -1691,11 +1693,9 @@ categories:
         phase2_adjustment: Lead crystal at 0.78 W/(m·K)
         adjustment_date: '2025-10-15'
       thermalDestruction:
-        point:
-          max: 1723
-          min: 500
-          unit: °C
-        type: melting
+        min: 273.0
+        max: 2300.0
+        unit: K
       thermalDiffusivity:
         max: 15
         min: 0.01
@@ -1884,11 +1884,9 @@ categories:
           density and moisture
         last_updated: '2025-10-15T14:19:43.867317'
       thermalDestruction:
-        point:
-          max: 1200
-          min: 500
-          unit: °C
-        type: spalling
+        min: 273.0
+        max: 2500.0
+        unit: K
       thermalDiffusivity:
         max: 1
         min: 0.1
@@ -2032,8 +2030,10 @@ categories:
         unit: g/cm³
       hardness:
         max: 3500
-        min: 0.5
-        unit: HV
+        min: 0.2
+        unit: GPa
+        notes: 'Corrected (2025-11-03): Min reduced from 0.5 to 0.2 GPa to accommodate pure/soft aluminum alloys'
+        last_updated: '2025-11-03T00:00:00.000000'
       laserAbsorption:
         max: 100
         min: 0.02
@@ -2052,13 +2052,13 @@ categories:
         min: 100
         unit: J/kg·K
       surfaceRoughness:
-        min: 0.4
+        min: 0.05
         max: 150
         unit: μm Ra
         source: Engineering ToolBox
         confidence: 85
-        notes: Industrial metal finishing processes
-        last_updated: '2025-10-14T23:58:54.459299'
+        notes: 'Corrected (2025-11-03): Min reduced from 0.4 to 0.05 μm Ra to include mirror-polished surfaces. Industrial metal finishing processes range from mirror polish to rough cast.'
+        last_updated: '2025-11-03T00:00:00.000000'
       tensileStrength:
         max: 3000.0
         min: 3.0
@@ -2074,12 +2074,9 @@ categories:
         phase2_adjustment: Manganese at 7.81 W/(m·K)
         adjustment_date: '2025-10-15'
       thermalDestruction:
-        point:
-          min: -38.8
-          max: 3422
-          unit: °C
-        type: melting
-        confidence: 98
+        min: 273.0
+        max: 3695.0
+        unit: K
       thermalDiffusivity:
         max: 174
         min: 0.06
@@ -2095,14 +2092,14 @@ categories:
         min: 5
         unit: GPa
       ablationThreshold:
-        min: 2.0
+        min: 0.8
         max: 8.0
         unit: J/cm²
         source: Marks et al. 2022, Precision Engineering
         confidence: 90
-        notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+        notes: 'Corrected range (2025-11-03): Min reduced from 2.0 to 0.8 to accommodate soft metals like copper (1.2 J/cm²). Nanosecond pulse range for metals (most common industrial laser cleaning)'
         measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
-        last_updated: '2025-10-17T00:00:00.000000'
+        last_updated: '2025-11-03T00:00:00.000000'
       reflectivity:
         min: 85
         max: 98
@@ -2129,12 +2126,13 @@ categories:
         notes: Metals moderate compression
         source: materials_science_literature
       corrosionResistance:
-        min: 1
+        min: 0.01
         max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: 1=poor (steel), 10=excellent (gold, titanium)
+        unit: mm/year
+        description: Corrosion rate - lower is better resistance
+        notes: 'Corrected (2025-11-03): Changed from rating scale to actual corrosion rate. Excellent metals (Al, Cu) ~0.01-0.1 mm/year, poor metals ~1-10 mm/year'
         source: materials_science_literature
+        last_updated: '2025-11-03T00:00:00.000000'
       electricalResistivity:
         min: 1.0e-08
         max: 1.5e-06
@@ -2197,14 +2195,14 @@ categories:
         measurement_context: Standard atmospheric pressure (1 atm)
         last_updated: '2025-10-17T00:00:00.000000'
       absorptionCoefficient:
-        min: 100000
-        max: 50000000
+        min: 1000000
+        max: 100000000
         unit: m⁻¹
         source: Optical Properties of Metals (Palik)
-        confidence: 80
-        notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
+        confidence: 85
+        notes: 'Corrected range: min 1×10⁶ (oxidized/rough surfaces) to max 1×10⁸ (polished surfaces). At 1064nm wavelength - varies with surface oxide, roughness, temperature. Formula: α=4πk/λ where k=7.5-9.5 for aluminum.'
         measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
-        last_updated: '2025-10-17T00:00:00.000000'
+        last_updated: '2025-11-03T00:00:00.000000'
       thermalShockResistance:
         min: 50
         max: 400
@@ -2616,11 +2614,9 @@ categories:
           unfilled polymers 0.15-0.35 W/m·K
         last_updated: '2025-10-15T14:19:43.867225'
       thermalDestruction:
-        point:
-          max: 400
-          min: 80
-          unit: °C
-        type: decomposition
+        min: 273.0
+        max: 700.0
+        unit: K
       thermalDiffusivity:
         max: 1
         min: 0.08
@@ -2798,11 +2794,9 @@ categories:
         notes: Si ~156 W/m·K, GaAs ~55, GaN ~130, temperature and doping dependent
         last_updated: '2025-10-15T14:19:43.867299'
       thermalDestruction:
-        point:
-          max: 1414
-          min: 100
-          unit: °C
-        type: melting
+        min: 273.0
+        max: 1685.0
+        unit: K
       thermalDiffusivity:
         max: 90
         min: 0.1
@@ -3020,11 +3014,9 @@ categories:
         notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
         last_updated: '2025-10-15T14:19:43.867263'
       thermalDestruction:
-        point:
-          max: 1700
-          min: 600
-          unit: °C
-        type: thermal_shock
+        min: 273.0
+        max: 2300.0
+        unit: K
       thermalDiffusivity:
         max: 2.5
         min: 0.2
@@ -3372,11 +3364,9 @@ categories:
           content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
-        point:
-          max: 500
-          min: 200
-          unit: °C
-        type: carbonization
+        min: 273.0
+        max: 600.0
+        unit: K
       thermalDiffusivity:
         max: 0.4
         min: 0.0001
@@ -3721,12 +3711,9 @@ categories:
         unit: GPa
         confidence: 85
       thermalDestruction:
-        point:
-          min: 1000
-          max: 1700
-          unit: K
-        type: melting
-        confidence: 98
+        min: 273.0
+        max: 3520.0
+        unit: K
       boilingPoint:
         min: 2800
         max: 3700

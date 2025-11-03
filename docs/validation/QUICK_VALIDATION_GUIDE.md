@@ -10,7 +10,7 @@
 **Question**: How do we ensure there are no empty or null values in Categories or Materials?
 
 **Answer**:
-1. ✅ **materials.yaml**: Already clean (0 null values)
+1. ✅ **Materials.yaml**: Already clean (0 null values)
 2. ⚠️ **Categories.yaml**: 21 cosmetic nulls (doesn't break generation)
 3. ✅ **Automatic filtering**: Code filters nulls during generation
 4. ✅ **Pre-validation**: Fail-fast checks before generation
@@ -28,7 +28,7 @@ Every generation run validates data first:
 # Automatic validation before generation
 python3 run.py --material "Copper" --components frontmatter
 # ✅ Validates Categories.yaml exists and is valid
-# ✅ Validates materials.yaml has required data
+# ✅ Validates Materials.yaml has required data
 # ✅ Fails immediately if critical issues found
 ```
 
@@ -62,11 +62,11 @@ def _filter_high_confidence_yaml(self, yaml_properties: Dict) -> Dict:
 
 ### 3. Historical Cleanup (Completed)
 
-One-time cleanup removed all nulls from materials.yaml:
+One-time cleanup removed all nulls from Materials.yaml:
 
 ```bash
 # Script already run (September 2025)
-# Result: materials.yaml = 0 null values ✅
+# Result: Materials.yaml = 0 null values ✅
 ```
 
 ### 4. Automated Testing
@@ -83,12 +83,12 @@ pytest tests/test_category_range_compliance.py -v
 
 ## 📊 Current Status
 
-### materials.yaml: ✅ **CLEAN**
+### Materials.yaml: ✅ **CLEAN**
 
 ```bash
-$ python3 -c "import yaml; from pathlib import Path; data = yaml.safe_load(open('data/materials.yaml')); nulls = []; exec('def check(d, p=\"\"):\n for k, v in (d.items() if isinstance(d, dict) else []):\n  if v is None or v == \"\": nulls.append(f\"{p}.{k}\")\n  else: check(v, f\"{p}.{k}\" if p else k)\ncheck(data)'); print(f'✅ materials.yaml: {len(nulls)} null values')"
+$ python3 -c "import yaml; from pathlib import Path; data = yaml.safe_load(open('data/Materials.yaml')); nulls = []; exec('def check(d, p=\"\"):\n for k, v in (d.items() if isinstance(d, dict) else []):\n  if v is None or v == \"\": nulls.append(f\"{p}.{k}\")\n  else: check(v, f\"{p}.{k}\" if p else k)\ncheck(data)'); print(f'✅ Materials.yaml: {len(nulls)} null values')"
 
-✅ materials.yaml: 0 null values
+✅ Materials.yaml: 0 null values
 ```
 
 ### Categories.yaml: ⚠️ **21 COSMETIC NULLS**
@@ -109,8 +109,8 @@ Found 21 null/empty values:
 ### Check for Null Values
 
 ```bash
-# Check materials.yaml
-python3 -c "import yaml; data = yaml.safe_load(open('data/materials.yaml')); print('✅ Clean' if not [v for v in str(data).split() if v == 'null'] else '⚠️ Nulls found')"
+# Check Materials.yaml
+python3 -c "import yaml; data = yaml.safe_load(open('data/Materials.yaml')); print('✅ Clean' if not [v for v in str(data).split() if v == 'null'] else '⚠️ Nulls found')"
 
 # Check Categories.yaml
 python3 scripts/tools/cleanup_categories_nulls.py --dry-run
@@ -140,7 +140,7 @@ python3 run.py --material "Material Name" --components frontmatter
 ### Q: Will null values break generation?
 
 **A**: No, for two reasons:
-1. **materials.yaml has 0 nulls** (already clean)
+1. **Materials.yaml has 0 nulls** (already clean)
 2. **Code filters nulls automatically** during generation
 3. **Categories.yaml nulls are optional** (descriptions/units)
 
@@ -185,7 +185,7 @@ Topics covered:
 ## ✅ Conclusion
 
 **System Guarantees**:
-1. ✅ materials.yaml = 0 null values (verified)
+1. ✅ Materials.yaml = 0 null values (verified)
 2. ✅ Automatic null filtering in code
 3. ✅ Fail-fast validation before generation
 4. ✅ 100% test coverage on critical paths

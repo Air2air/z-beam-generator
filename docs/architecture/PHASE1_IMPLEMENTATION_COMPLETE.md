@@ -121,7 +121,7 @@ orchestrator.generate_batch(requests)
 
 ### Content Type Data Files
 
-#### `data/materials.yaml`
+#### `data/Materials.yaml`
 - **Status**: Existing (enhanced)
 - **Materials**: 132
 - **Properties**: 2,240+ property values

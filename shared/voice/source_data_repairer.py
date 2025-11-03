@@ -25,7 +25,7 @@ class SourceDataRepairer:
     Content-agnostic automatic repair tool for voice quality issues.
     
     Works with ANY YAML source file:
-    - materials/data/materials.yaml
+    - materials/data/Materials.yaml
     - regions/data/regions.yaml  
     - applications/data/applications.yaml
     - thesaurus/data/thesaurus.yaml
@@ -48,7 +48,7 @@ class SourceDataRepairer:
         
         Args:
             api_client: API client for text regeneration
-            source_yaml_path: Path to source YAML file (materials.yaml, regions.yaml, etc.)
+            source_yaml_path: Path to source YAML file (Materials.yaml, regions.yaml, etc.)
             content_type: Content type name for logging (material, region, application, etc.)
         """
         self.api_client = api_client
@@ -224,7 +224,7 @@ class SourceDataRepairer:
         """
         # Map content types to source YAML files
         source_paths = {
-            "material": Path("materials/data/materials.yaml"),
+            "material": Path("materials/data/Materials.yaml"),
             "region": Path("regions/data/regions.yaml"),
             "application": Path("applications/data/applications.yaml"),
             "thesaurus": Path("thesaurus/data/thesaurus.yaml"),

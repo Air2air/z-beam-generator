@@ -2,7 +2,7 @@
 """
 Remove Confidence Fields from Materials.yaml
 
-Removes all 'confidence' fields from property values in materials.yaml.
+Removes all 'confidence' fields from property values in Materials.yaml.
 Per user requirements: confidence tracking is no longer needed.
 
 Date: November 2, 2025
@@ -12,14 +12,14 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 
-materials_file = Path('materials/data/materials.yaml')
+materials_file = Path('materials/data/Materials.yaml')
 backup_file = Path(f'materials/data/materials_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
 
 print("📋 Removing confidence fields from Materials.yaml...")
 print(f"📂 Input: {materials_file}")
 print(f"💾 Backup: {backup_file}\n")
 
-# Load materials.yaml
+# Load Materials.yaml
 with open(materials_file, 'r') as f:
     data = yaml.safe_load(f)
 

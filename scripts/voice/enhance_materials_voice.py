@@ -2,20 +2,20 @@
 """
 Voice Enhancement for Materials.yaml
 
-This tool reads materials/data/materials.yaml, applies author voice to qualifying text fields,
-and OVERWRITES the original fields with voice-enhanced versions in materials.yaml.
+This tool reads materials/data/Materials.yaml, applies author voice to qualifying text fields,
+and OVERWRITES the original fields with voice-enhanced versions in Materials.yaml.
 
 Workflow:
-1. Read material entry from materials.yaml
+1. Read material entry from Materials.yaml
 2. For each qualifying text field (caption, subtitle, FAQ answers)
 3. Apply VoicePostProcessor to enhance text
 4. Validate enhanced version (authenticity score ≥70/100)
-5. OVERWRITE original field with enhanced version in materials.yaml
+5. OVERWRITE original field with enhanced version in Materials.yaml
 6. Use atomic writes (temp files) for safe overwriting
-7. Separate manual export step combines materials.yaml + Categories.yaml → frontmatter
+7. Separate manual export step combines Materials.yaml + Categories.yaml → frontmatter
 
 Usage:
-    # Single material - OVERWRITES text fields in materials.yaml
+    # Single material - OVERWRITES text fields in Materials.yaml
     python3 scripts/voice/enhance_materials_voice.py --material "Steel"
     
     # All materials - OVERWRITES text fields for all materials
@@ -31,7 +31,7 @@ Export Step (Separate Manual Command):
     # After voice enhancement, manually export to frontmatter
     python3 run.py --material "Steel" --data-only
     
-    # Combines materials.yaml (voice-enhanced) + Categories.yaml → frontmatter/*.yaml
+    # Combines Materials.yaml (voice-enhanced) + Categories.yaml → frontmatter/*.yaml
 """
 
 import argparse
@@ -60,9 +60,9 @@ logger = logging.getLogger(__name__)
 
 class MaterialsVoiceEnhancer:
     """
-    Voice enhancement for materials.yaml.
+    Voice enhancement for Materials.yaml.
     
-    Reads materials.yaml, applies voice, writes back.
+    Reads Materials.yaml, applies voice, writes back.
     """
     
     def __init__(self, api_client, dry_run: bool = False):
@@ -84,7 +84,7 @@ class MaterialsVoiceEnhancer:
             'errors': 0
         }
         
-        self.materials_path = Path("materials/data/materials.yaml")
+        self.materials_path = Path("materials/data/Materials.yaml")
     
     def enhance_material(self, material_name: str, intensity: int = 3) -> bool:
         """
@@ -102,7 +102,7 @@ class MaterialsVoiceEnhancer:
             print(f"🎤 VOICE ENHANCEMENT: {material_name}")
             print(f"{'='*80}\n")
             
-            # Load materials.yaml
+            # Load Materials.yaml
             materials_data = load_materials()
             material_data = get_material_by_name(material_name, materials_data)
             
@@ -157,9 +157,9 @@ class MaterialsVoiceEnhancer:
                 self.stats['skipped'] += 1
                 return True
             
-            # Write back to materials.yaml
+            # Write back to Materials.yaml
             if not self.dry_run:
-                print("\n💾 Saving to materials.yaml...")
+                print("\n💾 Saving to Materials.yaml...")
                 self._save_materials(materials_data, material_name, material_data)
                 print("✅ Voice enhancement saved")
             else:
@@ -397,7 +397,7 @@ Answer:"""
         material_name: str,
         material_data: Dict
     ) -> None:
-        """Save enhanced material back to materials.yaml."""
+        """Save enhanced material back to Materials.yaml."""
         
         # Update the material in the full data structure
         # Find the actual key (case-insensitive)
@@ -439,7 +439,7 @@ Answer:"""
             raise e
     
     def enhance_all_materials(self, intensity: int = 3) -> bool:
-        """Enhance all materials in materials.yaml."""
+        """Enhance all materials in Materials.yaml."""
         print(f"\n{'='*80}")
         print("🎤 VOICE ENHANCEMENT: ALL MATERIALS")
         print(f"{'='*80}\n")
@@ -543,7 +543,7 @@ Answer:"""
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Apply voice enhancement to materials.yaml"
+        description="Apply voice enhancement to Materials.yaml"
     )
     
     parser.add_argument(

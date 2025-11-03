@@ -1,0 +1,254 @@
+name: Float Glass
+category: glass
+subcategory: soda-lime
+title: Float Glass Laser Cleaning
+subtitle: Precision Laser Cleaning Maintains Float Glass Flatness and Prevents Distortion
+description: Laser cleaning parameters for Float Glass
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/float-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Float Glass microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/float-glass-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, the float glass surface appears very-very contaminated with fine dust particles and oily residues
+    that stick and spread unevenly. Contaminants show irregular shapes, so surface degradation includes tiny pits and scratches
+    that make texture rough and light-scattering.
+  after: After ultrafast laser cleaning, the float glass surface appears very-very smooth and pristine. Contaminants are removed
+    thoroughly, then the surface is restored to original clarity without scratches. Material integrity is preserved fully,
+    so no structural damage occurs. This ensures high restoration quality for everyday glass applications.
+  author: Ikmanda Roswati
+  character_count:
+    after: 341
+    before: 285
+  generated: '2025-10-25T14:20:44.846170Z'
+  generation_method: ai_research
+  word_count:
+    after: 46
+    before: 39
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+applications:
+- Architectural Glass Manufacturing
+- Solar Panel Manufacturing
+- Automotive Glass Production
+- Electronics Display Manufacturing
+- Aerospace Canopy Maintenance
+- Marine Window Systems
+- Medical Device Manufacturing
+- Cultural Heritage Conservation
+- Food Processing Equipment
+- Energy Sector Instrumentation
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
+      integrity
+    properties:
+      electricalResistivity:
+        source: ai_research
+        unit: Ω·m
+        value: 1000000000000.0
+      fractureToughness:
+        ai_verified: true
+        source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
+        unit: MPa·√m
+        value: 0.75
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    properties: {}
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    description: amorphous crystal structure
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+machineSettings:
+  powerRange:
+    description: Optimal average power for Float Glass surface cleaning without thermal damage
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-IR wavelength optimized for Float Glass absorption and minimal subsurface damage
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    unit: μm
+    value: 100
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence threshold for effective contaminant removal below glass damage threshold
+    unit: J/cm²
+    value: 2.5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal without glass damage
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning coverage
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Number of cleaning passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    unit: '%'
+    value: 50
+  dwellTime:
+    description: Effective dwell time per spot for contaminant ablation
+    unit: μs
+    value: 100
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- description: Percentage of target contaminants successfully removed from surface
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Rate of surface area processed per unit time
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Maintenance of original surface characteristics after cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Prevention of heat-related material alterations during cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []
+faq:
+  questions:
+  - answer: Untuk membersihkan float glass dengan aman, gunakan laser 1064nm dengan fluence di bawah 2.5 J/cm² untuk menghindari
+      microfracture. Durasi pulsa nanosecond sekitar 10ns dan spot size 100μm memberikan energi yang cukup untuk menguapkan
+      kontaminan tanpa merusak substrat kaca, mencegah akumulasi stres termal.
+    question: What laser parameters are safe for cleaning float glass without causing micro-fractures or thermal stress?
+  - answer: For float glass, maintain fluence below 2.5 J/cm² using nanosecond pulses at 1064 nm wavelength. This effectively
+      ablates calcium carbonate deposits while preserving the pristine silicate surface. A 100 µm spot size scanned at 500
+      mm/s ensures uniform stain removal without thermal etching.
+    question: How do I remove mineral deposits and hard water stains from float glass with laser cleaning without etching
+      the surface?
+  - answer: Laser cleaning effectively removes paint overspray from float glass using 2.5 J/cm² fluence and 100 μm spot size.
+      For organic paints, lower pulse energy prevents residue fusion, while inorganic pigments may require optimized 50% beam
+      overlap. Post-cleaning inspection with oblique-angle lighting confirms mark-free surfaces.
+    question: Can laser cleaning effectively remove paint overspray from float glass without creating permanent marks?
+  - answer: Maintain precise beam control near edges using the 100 μm spot size to prevent seal degradation. Our 2.5 J/cm²
+      fluence effectively removes contaminants while fume extraction manages vaporized residues. Always employ appropriate
+      eyewear for the 1064 nm wavelength to ensure operator safety.
+    question: What safety precautions are needed when laser cleaning float glass near sensitive areas like window seals or
+      frames?
+  - answer: Properly configured laser cleaning at 2.5 J/cm² preserves optical clarity. This fluence removes contaminants without
+      inducing surface roughening that would scatter light. Spectrophotometry confirms no measurable transmission loss in
+      float glass when using these optimized parameters.
+    question: Does laser cleaning affect the optical clarity or light transmission properties of float glass?
+  - answer: The tin side requires gentler parameters due to its tin-rich surface. Reduce fluence to ~2.0 J/cm² and increase
+      scan speed to 600 mm/s to prevent damage, while the air side can tolerate the standard 2.5 J/cm². Always verify the
+      side first.
+    question: How do I clean the tin side vs air side of float glass with lasers, and does it require different parameters?
+  - answer: Float glass up to 6mm thick can be safely processed using our 2.5 J/cm² fluence and 100W power settings. For thicker
+      panels, we reduce the repetition rate below 50 kHz to manage thermal conductivity limitations and prevent stress fractures.
+    question: What is the maximum thickness of float glass that can be safely laser cleaned without risk of thermal cracking?
+  - answer: Laser cleaning effectively removes adhesive residues from float glass using 2.5 J/cm² fluence and 100 μm spot
+      size. This vaporizes contaminants below the glass damage threshold, preventing residue redistribution without chemical
+      solvents.
+    question: Can laser cleaning remove adhesive residues and stickers from float glass without leaving marks or residue?
+  - answer: Visual hazing or micro-fractures indicate excessive fluence above the 2.5 J/cm² threshold. For float glass, real-time
+      monitoring should detect localized thermal stress exceeding safe limits. Immediately reduce pulse energy or increase
+      the 500 mm/s scan speed to prevent subsurface damage.
+    question: What are the signs of improper laser cleaning on float glass that indicate parameter adjustment is needed?
+  - answer: Laser cleaning at 2.5 J/cm² fluence and 100 μm spot size removes mortar completely without micro-scratches, unlike
+      abrasive methods. This non-contact process preserves the pristine float glass surface, offering superior efficiency
+      and eliminating chemical residue for high-value construction applications.
+    question: How does laser cleaning compare to traditional methods for removing construction debris and mortar from float
+      glass?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921934Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921939Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+  character_count: 79
+  generated: '2025-10-25T21:08:54.912837Z'
+  generation_method: ai_research_voice
+  word_count: 10

@@ -52,7 +52,7 @@ def save_materials(data):
     
     clean_data = convert_to_dict(data)
     
-    materials_path = project_root / 'materials' / 'data' / 'materials.yaml'
+    materials_path = project_root / 'materials' / 'data' / 'Materials.yaml'
     with open(materials_path, 'w') as f:
         yaml.dump(clean_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 

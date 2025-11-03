@@ -8,33 +8,33 @@
 ## 🎯 Three-Step Workflow
 
 ```
-Step 1: GENERATE → materials.yaml
-Step 2: VOICE ENHANCE → OVERWRITES fields in materials.yaml  
-Step 3: MANUAL EXPORT → combines materials.yaml + Categories.yaml → frontmatter
+Step 1: GENERATE → Materials.yaml
+Step 2: VOICE ENHANCE → OVERWRITES fields in Materials.yaml  
+Step 3: MANUAL EXPORT → combines Materials.yaml + Categories.yaml → frontmatter
 ```
 
 ---
 
 ## 📋 Step-by-Step Commands
 
-### Step 1: Generate Content (Saves to materials.yaml)
+### Step 1: Generate Content (Saves to Materials.yaml)
 
 ```bash
 # Generate individual components
-python3 run.py --caption "Aluminum"     # Caption → materials.yaml
-python3 run.py --subtitle "Aluminum"    # Subtitle → materials.yaml
-python3 run.py --faq "Aluminum"         # FAQ → materials.yaml
+python3 run.py --caption "Aluminum"     # Caption → Materials.yaml
+python3 run.py --subtitle "Aluminum"    # Subtitle → Materials.yaml
+python3 run.py --faq "Aluminum"         # FAQ → Materials.yaml
 
 # Or generate all content for a material at once
-python3 run.py --material "Aluminum"    # All components → materials.yaml
+python3 run.py --material "Aluminum"    # All components → Materials.yaml
 ```
 
 **What this does**:
 - AI generates raw content (no voice markers)
-- Saves directly to `materials/data/materials.yaml`
+- Saves directly to `materials/data/Materials.yaml`
 - Content is technical and neutral
 
-### Step 2: Apply Voice Enhancement (OVERWRITES fields in materials.yaml)
+### Step 2: Apply Voice Enhancement (OVERWRITES fields in Materials.yaml)
 
 ```bash
 # Single material
@@ -51,7 +51,7 @@ python3 scripts/voice/enhance_materials_voice.py --validate-only
 ```
 
 **What this does**:
-- Reads material entry from `materials/data/materials.yaml`
+- Reads material entry from `materials/data/Materials.yaml`
 - Applies voice markers to qualifying text fields:
   - `caption.before`
   - `caption.after`
@@ -62,7 +62,7 @@ python3 scripts/voice/enhance_materials_voice.py --validate-only
 - Only overwrites if authenticity score ≥70/100
 - Adds `voice_enhanced` timestamp
 
-### Step 3: Manual Export (Combines materials.yaml + Categories.yaml → frontmatter)
+### Step 3: Manual Export (Combines Materials.yaml + Categories.yaml → frontmatter)
 
 ```bash
 # Single material
@@ -73,12 +73,12 @@ python3 run.py --all --data-only
 ```
 
 **What this does**:
-- Reads voice-enhanced content from `materials/data/materials.yaml`
+- Reads voice-enhanced content from `materials/data/Materials.yaml`
 - Reads category metadata from `materials/data/Categories.yaml`
 - Combines both sources into complete frontmatter structure
 - Exports to `frontmatter/materials/aluminum-laser-cleaning.yaml`
 - NO API calls (content already generated and enhanced)
-- NO validation (already validated in materials.yaml)
+- NO validation (already validated in Materials.yaml)
 - Fast: seconds for all 132 materials
 
 ---
@@ -87,17 +87,17 @@ python3 run.py --all --data-only
 
 ```bash
 # 1. Generate content
-echo "Step 1: Generate content → materials.yaml"
+echo "Step 1: Generate content → Materials.yaml"
 python3 run.py --caption "Aluminum"
 python3 run.py --subtitle "Aluminum"
 python3 run.py --faq "Aluminum"
 
 # 2. Apply voice enhancement
-echo "Step 2: Apply voice → OVERWRITES fields in materials.yaml"
+echo "Step 2: Apply voice → OVERWRITES fields in Materials.yaml"
 python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"
 
 # 3. Export to frontmatter
-echo "Step 3: Export → combines materials.yaml + Categories.yaml → frontmatter"
+echo "Step 3: Export → combines Materials.yaml + Categories.yaml → frontmatter"
 python3 run.py --material "Aluminum" --data-only
 
 echo "✅ Complete! Check: frontmatter/materials/aluminum-laser-cleaning.yaml"
@@ -141,7 +141,7 @@ The voice enhancement script **only overwrites** if enhanced version scores ≥7
 # Check if voice enhancement was applied
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml') as f:
+with open('materials/data/Materials.yaml') as f:
     data = yaml.safe_load(f)
     material = data['materials']['Aluminum']
     print('voice_enhanced:', material.get('voice_enhanced', 'Not yet enhanced'))
@@ -173,11 +173,11 @@ Author assignment is automatic based on material data.
 
 ## 🔑 Key Principles
 
-1. ✅ **Voice enhancement OVERWRITES fields** in materials.yaml
-2. ✅ **materials.yaml is the single source of truth** for all content
-3. ✅ **Export is a separate manual step** - combines materials.yaml + Categories.yaml
+1. ✅ **Voice enhancement OVERWRITES fields** in Materials.yaml
+2. ✅ **Materials.yaml is the single source of truth** for all content
+3. ✅ **Export is a separate manual step** - combines Materials.yaml + Categories.yaml
 4. ✅ **Categories.yaml provides metadata only** (NO fallback ranges)
-5. ✅ **All complex operations happen on materials.yaml** (generation, voice, validation)
+5. ✅ **All complex operations happen on Materials.yaml** (generation, voice, validation)
 6. ✅ **Frontmatter export is trivial** (simple copy + combine operation)
 
 ---
@@ -214,7 +214,7 @@ python3 scripts/voice/enhance_materials_voice.py --validate-only
 
 ## 📁 File Locations
 
-- **Source Data**: `materials/data/materials.yaml` (single source of truth)
+- **Source Data**: `materials/data/Materials.yaml` (single source of truth)
 - **Category Data**: `materials/data/Categories.yaml` (metadata only)
 - **Voice Script**: `scripts/voice/enhance_materials_voice.py`
 - **Export Output**: `frontmatter/materials/*.yaml`
@@ -226,10 +226,10 @@ python3 scripts/voice/enhance_materials_voice.py --validate-only
 
 ### Voice enhancement not working?
 ```bash
-# Check if material exists in materials.yaml
+# Check if material exists in Materials.yaml
 python3 -c "
 import yaml
-with open('materials/data/materials.yaml') as f:
+with open('materials/data/Materials.yaml') as f:
     materials = yaml.safe_load(f)['materials']
     print('Aluminum' in materials)
 "
@@ -240,8 +240,8 @@ python3 -c "from shared.api.client_factory import create_api_client; print(creat
 
 ### Frontmatter export failing?
 ```bash
-# Verify materials.yaml is valid YAML
-python3 -c "import yaml; yaml.safe_load(open('materials/data/materials.yaml'))"
+# Verify Materials.yaml is valid YAML
+python3 -c "import yaml; yaml.safe_load(open('materials/data/Materials.yaml'))"
 
 # Check if voice enhancement was applied
 python3 scripts/voice/enhance_materials_voice.py --validate-only
@@ -272,8 +272,8 @@ python3 scripts/voice/enhance_materials_voice.py --validate-only
 
 The voice workflow is a clean 3-step process:
 
-1. **Generate** → Save raw content to materials.yaml
-2. **Enhance** → Apply voice, OVERWRITE fields in materials.yaml
-3. **Export** → Combine materials.yaml + Categories.yaml → frontmatter
+1. **Generate** → Save raw content to Materials.yaml
+2. **Enhance** → Apply voice, OVERWRITE fields in Materials.yaml
+3. **Export** → Combine Materials.yaml + Categories.yaml → frontmatter
 
-Each step is independent, can be run separately, and maintains materials.yaml as the single source of truth.
+Each step is independent, can be run separately, and maintains Materials.yaml as the single source of truth.

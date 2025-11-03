@@ -5,7 +5,7 @@
 
 ## Summary
 
-Cleaned up materials.yaml to match the canonical frontmatter_template.yaml structure by:
+Cleaned up Materials.yaml to match the canonical frontmatter_template.yaml structure by:
 1. Adding FAQ field to template
 2. Removing deprecated fields from all 132 materials
 3. Updating all generators, tests, and orchestrators
@@ -193,7 +193,7 @@ pytest tests/test_materials_validation.py -v
 ```bash
 python3 -c "
 import yaml
-data = yaml.safe_load(open('materials/data/materials.yaml'))
+data = yaml.safe_load(open('materials/data/Materials.yaml'))
 materials = data['materials']
 template_fields = ['name', 'category', 'subcategory', 'title', 'subtitle', 
                    'description', 'author', 'images', 'caption', 
@@ -251,7 +251,7 @@ else:
 
 **To restore** (if needed):
 ```bash
-cp materials/data/backups/materials_backup_20251102_125846.yaml materials/data/materials.yaml
+cp materials/data/backups/materials_backup_20251102_125846.yaml materials/data/Materials.yaml
 ```
 
 ---

@@ -332,11 +332,11 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Features**: Grammatical authenticity, AI-evasion markers, 100% VOICE_RULES compliance
 
 **→ Workflow (3 Steps)**:
-1. Generate content: `python3 run.py --caption "Steel"` → saves to materials.yaml
-2. Apply voice: `python3 scripts/voice/enhance_materials_voice.py --material "Steel"` → **OVERWRITES** fields in materials.yaml
-3. Export: `python3 run.py --material "Steel" --data-only` → combines materials.yaml + Categories.yaml → frontmatter
+1. Generate content: `python3 run.py --caption "Steel"` → saves to Materials.yaml
+2. Apply voice: `python3 scripts/voice/enhance_materials_voice.py --material "Steel"` → **OVERWRITES** fields in Materials.yaml
+3. Export: `python3 run.py --material "Steel" --data-only` → combines Materials.yaml + Categories.yaml → frontmatter
 
-**→ Key**: Voice postprocessor **OVERWRITES text fields** in materials.yaml (caption, subtitle, FAQ answers)
+**→ Key**: Voice postprocessor **OVERWRITES text fields** in Materials.yaml (caption, subtitle, FAQ answers)
 
 ### "Prompt architecture" / "AI detection + localization"
 **→ Immediate Response**: [AI Detection + Localization Architecture](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)

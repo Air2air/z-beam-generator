@@ -449,7 +449,7 @@ pytest --cov=components --cov-report=html
 
 ### 8.1 Materials.yaml
 **Status**: ✅ 122 materials  
-**Location**: `data/materials.yaml`
+**Location**: `data/Materials.yaml`
 
 **Structure**:
 - Material name

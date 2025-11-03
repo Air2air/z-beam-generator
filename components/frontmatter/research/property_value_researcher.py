@@ -342,7 +342,6 @@ class PropertyValueResearcher:
         """Look up property from Materials.yaml data"""
         try:
             from data.materials import get_material_data, get_material_by_name
-            from utils.unit_extractor import extract_unit_from_range, extract_numeric_from_range
             
             material_data = get_material_by_name(material_name)
             if not material_data:

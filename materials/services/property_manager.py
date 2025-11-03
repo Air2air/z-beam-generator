@@ -111,10 +111,14 @@ class PropertyManager:
         if not property_researcher:
             logger.info("UnifiedMaterialResearch not provided - operating in data-only mode")
         
+        # FAIL-FAST: categories_data is REQUIRED - no fallback to {}
+        if not categories_data:
+            raise ValueError("CRITICAL: categories_data is required - cannot operate without category definitions")
+        
         self.property_researcher = property_researcher
         self.get_category_ranges = get_category_ranges_func
         self.enhance_descriptions = enhance_descriptions_func
-        self.categories_data = categories_data or {}
+        self.categories_data = categories_data
         self.logger = logger
         self.materials_file = Path("materials/data/Materials.yaml")
     

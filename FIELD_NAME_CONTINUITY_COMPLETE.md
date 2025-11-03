@@ -35,7 +35,7 @@ Ensure full field name continuity throughout `/materials` files including schema
 - ✅ `shared/utils/yaml_parser.py` - Updated validation rules to check for `before`/`after` fields
 
 ### 5. Export System
-- ✅ Verified `components/frontmatter/core/trivial_exporter.py` directly copies from materials.yaml (no transformation)
+- ✅ Verified `components/frontmatter/core/trivial_exporter.py` directly copies from Materials.yaml (no transformation)
 - ✅ Updated sample frontmatter file (`copper-laser-cleaning.yaml`) with normalized field names
 
 ---
@@ -81,7 +81,7 @@ Updated `frontmatter/materials/copper-laser-cleaning.yaml` with normalized capti
 
 **Verification**:
 - ✅ Caption uses `before` / `after` keys
-- ✅ Matches materials.yaml structure exactly
+- ✅ Matches Materials.yaml structure exactly
 - ✅ No field name transformations needed
 
 ---
@@ -136,16 +136,16 @@ subtitle_metadata:
    ↓
    Caption generated with 'before'/'after' structure
    
-2. STORAGE (materials.yaml)
+2. STORAGE (Materials.yaml)
    ↓
-   Saved to materials/data/materials.yaml
+   Saved to materials/data/Materials.yaml
    Uses: caption.before, caption.after
    
 3. VOICE ENHANCEMENT (optional)
    ↓
    Reads caption.before, caption.after
    Enhances with country-specific markers
-   Saves back to materials.yaml (OVERWRITES)
+   Saves back to Materials.yaml (OVERWRITES)
    
 4. EXPORT (frontmatter YAML)
    ↓
@@ -192,7 +192,7 @@ if isinstance(caption, dict) and ('before' in caption or 'after' in caption):
 
 ## 📚 Benefits of Standardization
 
-1. **Single Source of Truth**: materials.yaml uses consistent field names
+1. **Single Source of Truth**: Materials.yaml uses consistent field names
 2. **No Transformations**: Frontmatter export directly copies (no field renaming)
 3. **Clear Documentation**: All docs and tests use the same field names
 4. **Type Safety**: Validation checks for correct structure
@@ -209,11 +209,11 @@ if isinstance(caption, dict) and ('before' in caption or 'after' in caption):
 - [x] Updated utility parsers (1 file)
 - [x] Verified export system (1 file checked)
 - [x] Tested complete pipeline (voice enhancement + export)
-- [x] Verified materials.yaml structure (normalized)
+- [x] Verified Materials.yaml structure (normalized)
 - [x] Verified frontmatter structure (normalized)
 
 **Total Files Updated**: 8 files  
-**Total Files Verified**: 2 files (materials.yaml + frontmatter)
+**Total Files Verified**: 2 files (Materials.yaml + frontmatter)
 
 ---
 

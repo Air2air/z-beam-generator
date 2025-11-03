@@ -42,7 +42,7 @@ tests/
 │   └── test_api_integration.py          # Real API calls (optional)
 │
 └── validation/                    # 5-10 tests (data integrity)
-    ├── test_materials_data.py           # materials.yaml structure
+    ├── test_materials_data.py           # Materials.yaml structure
     ├── test_categories_data.py          # Categories.yaml validity
     └── test_frontmatter_compliance.py   # Format compliance
 ```
@@ -61,7 +61,7 @@ Test **individual functions/classes** in isolation with mocks for external depen
 #### 1. Materials Loading (`test_materials_loading.py`)
 
 ```python
-"""Test flattened materials.yaml loading and access."""
+"""Test flattened Materials.yaml loading and access."""
 
 def test_load_materials():
     """Test materials load correctly from flat structure."""
@@ -367,11 +367,11 @@ Test **data integrity** and **format compliance** of YAML files.
 #### 1. Materials Data (`test_materials_data.py`)
 
 ```python
-"""Validate materials.yaml structure and content."""
+"""Validate Materials.yaml structure and content."""
 
 def test_materials_yaml_structure():
     """Validate flat structure with 121 materials."""
-    with open('data/materials.yaml') as f:
+    with open('data/Materials.yaml') as f:
         data = yaml.safe_load(f)
     
     assert 'materials' in data

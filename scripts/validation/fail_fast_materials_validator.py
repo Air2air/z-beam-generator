@@ -181,6 +181,112 @@ def validate_value_uniqueness_legacy(materials_data: Dict) -> List[str]:
     # Return empty list - duplicates are now allowed as they may be scientifically accurate
     return []
 
+def validate_category_ranges() -> List[str]:
+    """
+    FAIL-FAST VALIDATION: ALL CATEGORY RANGES MUST EXIST
+    
+    Categories.yaml must have complete min/max ranges for all properties.
+    Missing or null ranges are VIOLATIONS.
+    """
+    violations = []
+    
+    categories_path = Path(__file__).parent.parent.parent / "materials" / "data" / "Categories.yaml"
+    
+    if not categories_path.exists():
+        violations.append("CRITICAL: Categories.yaml not found")
+        return violations
+    
+    try:
+        with open(categories_path, 'r', encoding='utf-8') as f:
+            categories_data = yaml.safe_load(f)
+    except Exception as e:
+        violations.append(f"CRITICAL: Failed to load Categories.yaml: {e}")
+        return violations
+    
+    # Check all categories for complete ranges
+    for category_name, category_data in categories_data.get('categories', {}).items():
+        category_ranges = category_data.get('category_ranges', {})
+        
+        if not category_ranges:
+            violations.append(
+                f"MISSING RANGES: Category '{category_name}' has no category_ranges defined"
+            )
+            continue
+        
+        for prop_name, prop_data in category_ranges.items():
+            if not isinstance(prop_data, dict):
+                continue
+            
+            # Check for missing min
+            if 'min' not in prop_data or prop_data['min'] is None:
+                violations.append(
+                    f"NULL RANGE: {category_name}.{prop_name}.min is null or missing"
+                )
+            
+            # Check for missing max
+            if 'max' not in prop_data or prop_data['max'] is None:
+                violations.append(
+                    f"NULL RANGE: {category_name}.{prop_name}.max is null or missing"
+                )
+    
+    return violations
+
+
+def validate_material_completeness(materials_data: Dict) -> List[str]:
+    """
+    FAIL-FAST VALIDATION: MATERIAL PROPERTIES MUST BE COMPLETE
+    
+    Checks that materialProperties sections have actual property values,
+    not just labels or empty sections.
+    """
+    violations = []
+    
+    for material_name, material_data in materials_data.get('materials', {}).items():
+        props = material_data.get('materialProperties', {})
+        
+        if not props:
+            violations.append(
+                f"EMPTY PROPERTIES: {material_name} has no materialProperties defined"
+            )
+            continue
+        
+        # Check if properties only contain labels (meta-fields) but no actual data
+        has_actual_properties = False
+        label_only_properties = []
+        
+        for prop_name, prop_data in props.items():
+            if not isinstance(prop_data, dict):
+                continue
+            
+            # Check if this property has actual value data (not just label/type metadata)
+            has_value = any(key in prop_data for key in ['value', 'min', 'max'])
+            
+            if has_value:
+                has_actual_properties = True
+            else:
+                # Only has metadata fields like 'label', 'type', etc.
+                label_only_properties.append(prop_name)
+        
+        # If ALL properties are label-only (no actual values), it's incomplete
+        if not has_actual_properties and label_only_properties:
+            violations.append(
+                f"INCOMPLETE PROPERTIES: {material_name} has {len(label_only_properties)} "
+                f"properties with labels but no values (e.g., {', '.join(label_only_properties[:3])})"
+            )
+        
+        # Check for null/empty property values
+        for prop_name, prop_data in props.items():
+            if not isinstance(prop_data, dict):
+                continue
+            
+            if 'value' in prop_data and (prop_data['value'] is None or prop_data['value'] == ''):
+                violations.append(
+                    f"NULL VALUE: {material_name}.{prop_name}.value is null or empty"
+                )
+    
+    return violations
+
+
 def fail_fast_validate_materials() -> None:
     """
     FAIL-FAST MATERIALS VALIDATION
@@ -226,6 +332,21 @@ def fail_fast_validate_materials() -> None:
         # 3. Skip duplicate checking (allow legitimate scientific duplicates)
         print("\n🔍 Checking value uniqueness...")
         print("✅ Allowing scientific duplicates - checking sources only")
+        
+        # 4. SKIP material completeness (handled by workflow auto-remediation)
+        # Material completeness is checked in unified_workflow.py where auto-remediation
+        # can trigger property research and populate missing data inline.
+        # Fail-fast validation should ONLY check for mocks/fallbacks/defaults.
+        
+        # 5. Check category ranges (CRITICAL DEPENDENCY)
+        print("\n🔍 Validating category ranges in Categories.yaml...")
+        range_violations = validate_category_ranges()
+        all_violations.extend(range_violations)
+        
+        if range_violations:
+            print(f"❌ Found {len(range_violations)} missing/null category ranges")
+        else:
+            print("✅ All category ranges present and valid")
         
         # FAIL-FAST DECISION
         if all_violations:

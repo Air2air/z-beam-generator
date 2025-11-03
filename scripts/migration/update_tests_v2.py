@@ -3,7 +3,7 @@
 Test Update Script for Materials Module V2.0
 
 Updates all test files to use 'materialProperties' instead of 'properties'
-for materials.yaml structure.
+for Materials.yaml structure.
 
 Usage:
     python3 scripts/migration/update_tests_v2.py [--dry-run]

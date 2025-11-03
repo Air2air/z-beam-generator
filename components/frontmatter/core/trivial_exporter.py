@@ -59,21 +59,59 @@ class TrivialFrontmatterExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory, load Categories.yaml for both material and machine ranges."""
-        self.output_dir = Path(__file__).resolve().parents[3] / "content" / "frontmatter"
+        """Initialize with output directory, load Categories.yaml for taxonomy and ranges."""
+        self.output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "materials"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.logger = logging.getLogger(__name__)
         
-        # Load Categories.yaml for category-level material property ranges AND machine settings ranges
-        categories_path = Path(__file__).resolve().parents[3] / "data" / "Categories.yaml"
+        # Load Categories.yaml for taxonomy, category ranges, and machine settings ranges
+        categories_path = Path(__file__).resolve().parents[3] / "materials" / "data" / "Categories.yaml"
         with open(categories_path, 'r', encoding='utf-8') as f:
             self.categories_data = yaml.safe_load(f)
         
         # Extract machine settings ranges from Categories.yaml
         self.machine_settings_ranges = self.categories_data.get('machineSettingsRanges', {})
         
-        self.logger.info(f"✅ Loaded {len(self.categories_data.get('categories', {}))} categories")
+        # Load property taxonomy for categorization
+        self._load_property_taxonomy()
+        
+        self.logger.info(f"✅ Loaded {len(self.categories_data.get('categories', {}))} material categories")
         self.logger.info(f"✅ Loaded {len(self.machine_settings_ranges)} machine settings ranges")
+        self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
+    
+    def _load_property_taxonomy(self):
+        """Load property taxonomy from Categories.yaml to categorize properties correctly."""
+        # The taxonomy is nested under 'propertyTaxonomy' key in Categories.yaml
+        # Search for it in the data structure
+        taxonomy_data = None
+        
+        for key, value in self.categories_data.items():
+            if isinstance(value, dict) and 'categories' in value:
+                categories = value['categories']
+                if 'material_characteristics' in categories and 'laser_material_interaction' in categories:
+                    taxonomy_data = value
+                    break
+        
+        # If not found in nested structure, check root level
+        if not taxonomy_data:
+            if 'propertyTaxonomy' in self.categories_data:
+                taxonomy_data = self.categories_data['propertyTaxonomy']
+            else:
+                taxonomy_data = self.categories_data
+        
+        # Extract property categories (material_characteristics, laser_material_interaction)
+        categories = taxonomy_data.get('categories', {})
+        
+        # Build taxonomy mapping: property_name -> category_id
+        self.property_taxonomy = {}
+        for cat_id in ['material_characteristics', 'laser_material_interaction']:
+            if cat_id in categories:
+                cat_data = categories[cat_id]
+                props = cat_data.get('properties', [])
+                for prop in props:
+                    self.property_taxonomy[prop] = cat_id
+                    
+        self.logger.info(f"   Taxonomy maps {len(self.property_taxonomy)} properties to categories")
     
     def export_all(self) -> Dict[str, bool]:
         """
@@ -150,28 +188,100 @@ class TrivialFrontmatterExporter:
         return category_data.get('category_ranges', {})
     
     def _enrich_material_properties(self, properties: Dict, category_ranges: Dict) -> Dict:
-        """Add min/max from category ranges to material properties."""
+        """
+        Enrich material properties with min/max ranges from Categories.yaml.
+        
+        Input from Materials.yaml: Already categorized structure
+        Output for frontmatter: Same structure with added min/max from category ranges
+        """
         if not properties or not isinstance(properties, dict):
             return properties
         
-        enriched = {}
-        for category_name, category_data in properties.items():
-            if not isinstance(category_data, dict):
-                enriched[category_name] = category_data
-                continue
-            
-            enriched_category = {}
-            for key, value in category_data.items():
-                # Skip metadata fields
-                if key in ['label', 'description', 'percentage']:
-                    enriched_category[key] = value
-                # All other keys are properties - add min/max
-                else:
-                    enriched_category[key] = self._add_min_max(value, key, category_ranges)
-            
-            enriched[category_name] = enriched_category
+        # Check if already normalized (has category groups)
+        has_categories = ('material_characteristics' in properties or 
+                         'laser_material_interaction' in properties)
         
-        return enriched
+        if has_categories:
+            # Already normalized - just enrich with ranges and flatten nested values
+            enriched = {}
+            for category_name, category_data in properties.items():
+                if category_name not in ['material_characteristics', 'laser_material_interaction']:
+                    continue
+                    
+                if not isinstance(category_data, dict):
+                    enriched[category_name] = category_data
+                    continue
+                
+                enriched_category = {}
+                for key, value in category_data.items():
+                    # Keep metadata fields
+                    if key in ['label', 'description', 'percentage']:
+                        enriched_category[key] = value
+                    # Process properties
+                    else:
+                        flattened_value = self._flatten_property_value(value)
+                        enriched_value = self._add_min_max(flattened_value, key, category_ranges)
+                        enriched_category[key] = enriched_value
+                
+                enriched[category_name] = enriched_category
+            
+            return enriched
+        
+        # Legacy flat structure - categorize using taxonomy
+        else:
+            enriched = {
+                'material_characteristics': {
+                    'label': 'Material Characteristics'
+                },
+                'laser_material_interaction': {
+                    'label': 'Laser-Material Interaction'
+                }
+            }
+            
+            for prop_name, prop_value in properties.items():
+                if prop_name in ['label', 'description', 'percentage']:
+                    continue
+                
+                category_id = self.property_taxonomy.get(prop_name)
+                if not category_id:
+                    self.logger.warning(f"⚠️  Property '{prop_name}' not in taxonomy - skipping")
+                    continue
+                
+                flattened_value = self._flatten_property_value(prop_value)
+                enriched_value = self._add_min_max(flattened_value, prop_name, category_ranges)
+                enriched[category_id][prop_name] = enriched_value
+            
+            return enriched
+    
+    def _flatten_property_value(self, prop_value: Any) -> Dict:
+        """
+        Flatten double-nested property structure from Materials.yaml.
+        
+        Input:  {'value': {'value': 420.0, 'unit': '', 'confidence': 1.0}, 
+                 'unit': 'kg/m³', 'confidence': {'value': 95, ...}, 'source': 'ai_research'}
+        Output: {'value': 420.0, 'unit': 'kg/m³', 'confidence': 95, 'source': 'ai_research'}
+        """
+        if not isinstance(prop_value, dict):
+            return prop_value
+        
+        flattened = {}
+        
+        for key, value in prop_value.items():
+            if key == 'value' and isinstance(value, dict) and 'value' in value:
+                # Extract nested value
+                flattened['value'] = value['value']
+            elif key == 'confidence' and isinstance(value, dict) and 'value' in value:
+                # Extract nested confidence
+                flattened['confidence'] = value['value']
+            elif key not in flattened:
+                # Copy other fields directly
+                flattened[key] = value
+        
+        # Remove confidence from export (per frontmatter_template - not in example)
+        if 'confidence' in flattened:
+            del flattened['confidence']
+        
+        return flattened
     
     def _enrich_machine_settings(self, settings: Dict, category_ranges: Dict) -> Dict:
         """Add min/max from machine settings ranges to machine settings."""
@@ -199,8 +309,8 @@ class TrivialFrontmatterExporter:
         if not range_data or not isinstance(range_data, dict):
             return prop_value
         
-        # Create enriched property with min/max
-        enriched = dict(prop_value)
+        # Create enriched property with min/max - use shallow copy to preserve structure
+        enriched = prop_value.copy()
         if 'min' in range_data:
             enriched['min'] = range_data['min']
         if 'max' in range_data:

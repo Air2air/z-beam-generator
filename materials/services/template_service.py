@@ -57,9 +57,13 @@ class TemplateService:
         if not thermal_property_map:
             raise ConfigurationError("Thermal property map configuration required")
         
+        # FAIL-FAST: category_ranges can be empty dict but must be explicitly provided
+        if category_ranges is None:
+            raise ConfigurationError("CRITICAL: category_ranges must be provided (can be empty dict if not using ranges)")
+        
         self.material_abbreviations = material_abbreviations
         self.thermal_property_map = thermal_property_map
-        self.category_ranges = category_ranges or {}
+        self.category_ranges = category_ranges
         self.logger = logger
     
     def apply_abbreviation_template(self, material_name: str) -> Dict[str, str]:

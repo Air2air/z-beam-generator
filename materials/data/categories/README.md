@@ -240,7 +240,7 @@ This will:
 ## ⚠️ Important Notes
 
 1. **Don't edit manually** - Regenerate from Categories.yaml
-2. **material_index** is in `materials.yaml`, not here
+2. **material_index** is in `Materials.yaml`, not here
 3. **Backup Categories.yaml** before major changes
 4. **Test after regeneration** using test script
 

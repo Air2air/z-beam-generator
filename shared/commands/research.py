@@ -181,18 +181,20 @@ def handle_data_gaps():
 
 
 def handle_research_missing_properties(batch_size=10, confidence_threshold=70, 
-                                       specific_properties=None, specific_materials=None):
+                                       specific_properties=None, specific_materials=None,
+                                       auto_mode=False):
     """
     Run AI research to fill missing property values (Stage 0 requirement)
     
     This function implements the automated AI research system to achieve 100% data completeness.
-    It uses PropertyValueResearcher to fill missing property values in materials.yaml.
+    It uses PropertyValueResearcher to fill missing property values in Materials.yaml.
     
     Args:
         batch_size: Number of properties to research in parallel
         confidence_threshold: Minimum confidence for accepting results
         specific_properties: Optional list of specific properties to research
         specific_materials: Optional list of specific materials to research
+        auto_mode: If True, skip user confirmation (for workflow auto-remediation)
     """
     try:
         import yaml
@@ -227,8 +229,8 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print(f"📋 Cache: {cache_stats['cache_file']} ({'exists' if cache_stats['cache_exists'] else 'created'})")
         print()
         
-        # Load materials.yaml
-        materials_file = Path("data/Materials.yaml")
+        # Load Materials.yaml
+        materials_file = Path("materials/data/Materials.yaml")
         if not materials_file.exists():
             print("❌ Materials.yaml not found")
             return False
@@ -309,12 +311,15 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
             print(f"{i:2d}. {prop_name:30s} - {len(materials):3d} materials ({pct:5.1f}%)")
         print()
         
-        # Confirm before proceeding
-        print("⚠️  This will use AI API calls to research missing properties.")
-        response = input("Continue? (yes/no): ").strip().lower()
-        if response not in ['yes', 'y']:
-            print("❌ Research cancelled by user")
-            return False
+        # Confirm before proceeding (skip in auto mode)
+        if not auto_mode:
+            print("⚠️  This will use AI API calls to research missing properties.")
+            response = input("Continue? (yes/no): ").strip().lower()
+            if response not in ['yes', 'y']:
+                print("❌ Research cancelled by user")
+                return False
+        else:
+            print("🤖 Auto-mode enabled - proceeding with research...")
         
         print()
         print("🚀 Starting AI research...")
@@ -402,7 +407,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
             print("⚠️  No successful research results. Materials.yaml not updated.")
             return False
         
-        # Update materials.yaml
+        # Update Materials.yaml
         print("💾 Updating Materials.yaml...")
         
         # Create backup

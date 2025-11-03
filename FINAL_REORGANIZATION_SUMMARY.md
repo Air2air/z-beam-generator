@@ -126,7 +126,7 @@
 /thesaurus/                      # Thesaurus content type (SIMPLE)
 
 /components/frontmatter/core/    # Frontmatter base classes (shared)
-/data/                           # Shared data (authors, categories, materials.yaml)
+/data/                           # Shared data (authors, categories, Materials.yaml)
 /frontmatter/                    # Output directory
 /docs/                           # Project documentation
 /scripts/                        # Development scripts

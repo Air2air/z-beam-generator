@@ -49,7 +49,7 @@
   └── utils/              ← Material-specific utilities
 
 /data/               ← Mostly materials (NEEDS REORGANIZATION)
-  ├── materials.yaml ← Materials data (SHOULD MOVE)
+  ├── Materials.yaml ← Materials data (SHOULD MOVE)
   ├── materials.py   ← Materials loader (SHOULD MOVE)
   └── authors/       ← Shared author data (CORRECT LOCATION)
 
@@ -62,9 +62,9 @@
 
 ### Priority 1: Critical Moves (Material-Specific)
 
-#### A. `/data/materials.yaml` → `/materials/data/materials.yaml`
-- **Current Location**: `/data/materials.yaml`
-- **Target Location**: `/materials/data/materials.yaml`
+#### A. `/data/Materials.yaml` → `/materials/data/Materials.yaml`
+- **Current Location**: `/data/Materials.yaml`
+- **Target Location**: `/materials/data/Materials.yaml`
 - **Reason**: Material data belongs with material code
 - **Impact**: 🔴 HIGH - Referenced by 40+ files
 - **Dependencies**: materials.py loader, all material generators
@@ -175,7 +175,7 @@ Keep in `/components/frontmatter/core/` (truly shared):
 
 | File | References | Test Files | Doc Files | Risk |
 |------|------------|------------|-----------|------|
-| `data/materials.yaml` | 40+ | 15+ | 25+ | 🔴 HIGH |
+| `data/Materials.yaml` | 40+ | 15+ | 25+ | 🔴 HIGH |
 | `data/materials.py` | 30+ | 10+ | 20+ | 🔴 HIGH |
 | `components/frontmatter/core/streamlined_generator.py` | 20+ | 5+ | 10+ | 🟡 MEDIUM |
 
@@ -194,9 +194,9 @@ Keep in `/components/frontmatter/core/` (truly shared):
 ### Phase 1: Data Consolidation (HIGHEST PRIORITY)
 **Goal**: Consolidate all material data in `/materials/data/`
 
-1. **Move materials.yaml**:
+1. **Move Materials.yaml**:
    ```bash
-   mv data/materials.yaml materials/data/materials.yaml
+   mv data/Materials.yaml materials/data/Materials.yaml
    ```
    - Update 40+ imports: `from data.materials import` → `from materials.data.materials import`
    - Create import update script
@@ -256,7 +256,7 @@ Keep in `/components/frontmatter/core/` (truly shared):
 ### BEFORE (Current - Scattered)
 ```
 /data/
-  ├── materials.yaml          ← Material data
+  ├── Materials.yaml          ← Material data
   └── materials.py            ← Material loader
 
 /materials/
@@ -274,7 +274,7 @@ Keep in `/components/frontmatter/core/` (truly shared):
 ```
 /materials/
   ├── data/
-  │   ├── materials.yaml          ← ALL material data
+  │   ├── Materials.yaml          ← ALL material data
   │   ├── materials.py            ← Material data loader
   │   └── Categories.yaml         ← Material categories
   ├── core/
@@ -348,7 +348,7 @@ For moves affecting 20+ files:
 
 **Key Findings**:
 - ✅ 85% of movable files identified
-- 🔴 HIGH IMPACT: materials.yaml and materials.py moves
+- 🔴 HIGH IMPACT: Materials.yaml and materials.py moves
 - 🟡 MEDIUM EFFORT: 6-9 hours total reorganization time
 - ✅ HIGH BENEFIT: Clear, maintainable architecture
 

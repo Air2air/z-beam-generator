@@ -182,7 +182,7 @@ python3 run.py --all --data-only
 │    )                                                             │
 │    ↓                                                             │
 │    Legacy generator performs ALL existing logic:                │
-│    • Load materials.yaml data                                   │
+│    • Load Materials.yaml data                                   │
 │    • Load Categories.yaml ranges                                │
 │    • Enhance properties (min/max calculations)                  │
 │    • Process templates                                          │
@@ -288,7 +288,7 @@ python3 run.py --all --data-only
 │                     print("❌ Failed after 2 attempts")        │
 │         ↓                                                        │
 │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
-│         💾 STEP 3: UPDATE SOURCE YAML (materials.yaml)          │
+│         💾 STEP 3: UPDATE SOURCE YAML (Materials.yaml)          │
 │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
 │         repairer.update_source_yaml(                            │
 │             item_name='Aluminum',                               │
@@ -299,12 +299,12 @@ python3 run.py --all --data-only
 │             }                                                    │
 │         )                                                        │
 │         ↓                                                        │
-│         Saves to: materials/data/materials.yaml                 │
+│         Saves to: materials/data/Materials.yaml                 │
 │         ↓                                                        │
 │         ⚠️  NOTE: Currently logs but doesn't save              │
 │         TODO: Implement full path navigation (parse "faq[0]")   │
 │         ↓                                                        │
-│         print("✅ Updated materials.yaml with repairs")         │
+│         print("✅ Updated Materials.yaml with repairs")         │
 │     ↓                                                            │
 │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
 │     📊 STEP 4: ADD QUALITY METADATA                             │
@@ -344,7 +344,7 @@ python3 run.py --all --data-only
 |------|------|-------|--------------|
 | **1** | `run.py` | 132-350 | Parse `--material "Aluminum"` command |
 | **2** | `run.py` | 330-355 | Create FrontmatterOrchestrator + API client |
-| **3** | `run.py` | 340-350 | Load author data from materials.yaml |
+| **3** | `run.py` | 340-350 | Load author data from Materials.yaml |
 | **4** | `orchestrator.py` | 204-228 | Route to MaterialFrontmatterGenerator |
 | **5** | `orchestrator.py` | 89-103 | Discover & register material generator |
 | **6** | `materials/generator.py` | 46-75 | Initialize wrapper + legacy generator |
@@ -353,7 +353,7 @@ python3 run.py --all --data-only
 | **9** | `materials/generator.py` | 128-171 | Delegate to legacy for ALL existing logic |
 | **10a** | `base_generator.py` | 310-390 | **🔍 SCAN**: VoiceQualityScanner checks all text fields |
 | **10b** | `base_generator.py` | 390-440 | **🔧 REPAIR**: SourceDataRepairer fixes poor quality text |
-| **10c** | `base_generator.py` | 440-460 | **💾 UPDATE**: Save repairs to materials.yaml |
+| **10c** | `base_generator.py` | 440-460 | **💾 UPDATE**: Save repairs to Materials.yaml |
 | **11** | `base_generator.py` | 505-555 | Save final YAML to frontmatter/materials/ |
 
 ---
@@ -374,7 +374,7 @@ python3 run.py --all --data-only
    - Content-agnostic repairer (works for materials, regions, etc.)
    - Factory pattern: `create_for_content_type('material')`
    - Regenerates poor quality text with retries (max 2)
-   - Updates source YAML (materials.yaml, regions.yaml, etc.)
+   - Updates source YAML (Materials.yaml, regions.yaml, etc.)
 
 4. **VoiceOrchestrator** (`shared/voice/orchestrator.py`)
    - Provides country-specific voice indicators
@@ -414,7 +414,7 @@ python3 run.py --all --data-only
 🔍 Scanning voice quality...
 🚨 Voice quality issues detected: 11/11 fields failed
 
-🔧 Repairing poor quality text in materials.yaml...
+🔧 Repairing poor quality text in Materials.yaml...
    🔧 Regenerating faq[0].answer (attempt 1/2)...
    ⚠️  Quality still low: 50.0/100, retrying...
    🔧 Regenerating faq[0].answer (attempt 2/2)...
@@ -423,7 +423,7 @@ python3 run.py --all --data-only
    🔧 Regenerating faq[1].answer (attempt 1/2)...
    ❌ Failed to fix faq[1].answer after 2 attempts
 
-✅ Updated materials.yaml with 10 repairs (1 failed)
+✅ Updated Materials.yaml with 10 repairs (1 failed)
 ✅ Generated → frontmatter/materials/aluminum-laser-cleaning.yaml
 ```
 
@@ -432,7 +432,7 @@ python3 run.py --all --data-only
 ## 🔄 Data Flow Architecture
 
 ```
-materials.yaml (SOURCE OF TRUTH)
+Materials.yaml (SOURCE OF TRUTH)
        ↓
    [LOAD DATA]
        ↓
@@ -440,7 +440,7 @@ materials.yaml (SOURCE OF TRUTH)
        ↓
    [🔍 AUTOMATIC QUALITY SCAN]
        ↓
-   [🔧 REPAIR IF NEEDED] → Update materials.yaml
+   [🔧 REPAIR IF NEEDED] → Update Materials.yaml
        ↓
    [💾 EXPORT TO FRONTMATTER]
        ↓
@@ -448,7 +448,7 @@ frontmatter/materials/aluminum-laser-cleaning.yaml (OUTPUT)
 ```
 
 **Key Principle**: 
-- ✅ **All generation/validation happens on materials.yaml**
+- ✅ **All generation/validation happens on Materials.yaml**
 - ✅ **Frontmatter export is trivial copy with quality gate**
 - ✅ **Source YAML is always validated and enhanced**
 - ❌ **Never read frontmatter for data persistence**
@@ -463,7 +463,7 @@ This architecture works for **ALL content types**:
 # Materials
 python3 run.py --material "Aluminum"
 # → Uses MaterialFrontmatterGenerator
-# → Source: materials/data/materials.yaml
+# → Source: materials/data/Materials.yaml
 # → Output: frontmatter/materials/aluminum-laser-cleaning.yaml
 
 # Regions (future)
@@ -498,7 +498,7 @@ python3 run.py --application "aerospace-manufacturing"
 5. **🆕 Automatic quality gate**:
    - Scan all text fields for quality issues
    - Repair poor quality text (with retries)
-   - Update materials.yaml with fixes
+   - Update Materials.yaml with fixes
    - Add quality metadata
 6. **Save frontmatter** → Export to frontmatter/materials/
 
@@ -509,6 +509,6 @@ python3 run.py --application "aerospace-manufacturing"
 
 ### Key Innovation:
 ✅ **Automatic repair pipeline** - detects and fixes voice quality issues during export  
-✅ **Source of truth** - all fixes saved to materials.yaml (not frontmatter)  
+✅ **Source of truth** - all fixes saved to Materials.yaml (not frontmatter)  
 ✅ **Fully reusable** - same architecture works for regions, applications, thesaurus  
 ✅ **Zero manual intervention** - automatic scanning, repair, and retry

@@ -80,7 +80,7 @@ Material Name → Research → Materials.yaml → Components → Frontmatter
 │              (Universal Content Storage)                     │
 ├─────────────────────────────────────────────────────────────┤
 │  content/                                                    │
-│    ├── materials.yaml      (Material content)                │
+│    ├── Materials.yaml      (Material content)                │
 │    ├── products.yaml       (Product content)                 │
 │    ├── services.yaml       (Service content)                 │
 │    ├── technologies.yaml   (Technology content)              │
@@ -548,7 +548,7 @@ z-beam-generator/
 │   │   └── technology.py           # TechnologyContent
 │   │
 │   ├── data/                       # Content YAML files
-│   │   ├── materials.yaml
+│   │   ├── Materials.yaml
 │   │   ├── products.yaml
 │   │   ├── services.yaml
 │   │   └── technologies.yaml

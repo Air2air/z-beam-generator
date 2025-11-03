@@ -3,7 +3,7 @@
 Zero Null Value Validator
 
 Comprehensive null value detection across the entire system per ZERO_NULL_POLICY.md.
-Identifies all null values in Categories.yaml, materials.yaml, and frontmatter files.
+Identifies all null values in Categories.yaml, Materials.yaml, and frontmatter files.
 
 Usage:
     python3 scripts/validation/validate_zero_nulls.py --audit
@@ -82,8 +82,8 @@ def validate_categories_yaml() -> Tuple[List[str], Dict[str, List[str]]]:
 
 
 def validate_materials_yaml() -> Tuple[List[str], Dict[str, List[str]]]:
-    """Validate materials.yaml for null values"""
-    materials_path = Path('data/materials.yaml')
+    """Validate Materials.yaml for null values"""
+    materials_path = Path('data/Materials.yaml')
     if not materials_path.exists():
         return [f"ERROR: {materials_path} not found"], {}
     
@@ -183,7 +183,7 @@ def main():
     parser.add_argument(
         '--materials',
         action='store_true',
-        help='Check materials.yaml only'
+        help='Check Materials.yaml only'
     )
     parser.add_argument(
         '--frontmatter',
@@ -205,7 +205,7 @@ def main():
         passed = print_report("CATEGORIES.YAML VALIDATION", cat_nulls, cat_details)
         all_passed = all_passed and passed
     
-    # Validate materials.yaml
+    # Validate Materials.yaml
     if args.audit or args.materials:
         mat_nulls, mat_details = validate_materials_yaml()
         passed = print_report("MATERIALS.YAML VALIDATION", mat_nulls, mat_details)

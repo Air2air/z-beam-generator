@@ -66,7 +66,7 @@ class CategorySplitter:
         
         # 1. Material Index & Category Metadata
         logger.info("📦 1/8: Extracting Material Index...")
-        # Note: material_index is actually in materials.yaml, not Categories.yaml
+        # Note: material_index is actually in Materials.yaml, not Categories.yaml
         # This file will just have category_metadata
         self.save_file('material_index.yaml', {
             'category_metadata': {
@@ -76,7 +76,7 @@ class CategorySplitter:
                 }
                 for cat, info in data.get('category_metadata', {}).items()
             } if 'category_metadata' in data else {}
-        }, 'Category metadata for quick lookups (material_index is in materials.yaml)')
+        }, 'Category metadata for quick lookups (material_index is in Materials.yaml)')
         
         # 2. Property Taxonomy
         logger.info("📦 2/8: Extracting Property Taxonomy...")

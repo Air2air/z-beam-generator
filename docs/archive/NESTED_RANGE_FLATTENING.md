@@ -16,11 +16,11 @@ Generated frontmatter showed `min: null, max: null` for properties that HAD cate
 ```yaml
 properties:
   reflectivity:
-    value: 92          # ✅ From materials.yaml
+    value: 92          # ✅ From Materials.yaml
     min: null          # ❌ Should be from Categories.yaml
     max: null          # ❌ Should be from Categories.yaml
   ablationThreshold:
-    value: 0.8         # ✅ From materials.yaml
+    value: 0.8         # ✅ From Materials.yaml
     min: null          # ❌ Should be from Categories.yaml
     max: null          # ❌ Should be from Categories.yaml
 ```

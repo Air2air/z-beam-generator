@@ -138,7 +138,7 @@ class PropertyEnhancementService:
 
     @staticmethod
     def _extract_unit_from_range(property_config: Dict) -> str:
-        """Extract unit from materials.yaml range configuration."""
+        """Extract unit from Materials.yaml range configuration."""
         min_val = property_config.get("min", "")
         max_val = property_config.get("max", "")
         
@@ -195,7 +195,7 @@ class PropertyEnhancementService:
             max_str = config["max"]
         else:
             # FAIL-FAST: No hardcoded min/max ranges allowed
-            raise ValueError(f"No configuration found for {base_prop} min/max ranges - data must be provided in materials.yaml")
+            raise ValueError(f"No configuration found for {base_prop} min/max ranges - data must be provided in Materials.yaml")
         
         # Add Min/Max properties
         new_properties[f"{base_prop}Min"] = min_str
@@ -265,22 +265,22 @@ class PropertyEnhancementService:
         # Create new ordered properties dict
         new_properties = {}
         
-        # Get material configuration from materials.yaml
+        # Get material configuration from Materials.yaml
         # FAIL-FAST: No hardcoded defaults - require proper material configuration
         material_name = frontmatter_data.get("title", "").strip()
         if not material_name:
             logger.error("Material name (title) is required for property enhancement")
             return
             
-        # Import materials.yaml configuration
+        # Import Materials.yaml configuration
         try:
             import yaml
             import os
-            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/materials.yaml")
+            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/Materials.yaml")
             with open(materials_yaml_path, 'r') as f:
                 materials_config = yaml.safe_load(f)
         except Exception as e:
-            logger.error(f"Failed to load materials.yaml configuration: {e}")
+            logger.error(f"Failed to load Materials.yaml configuration: {e}")
             return
             
         # Find material category and configuration
@@ -291,13 +291,13 @@ class PropertyEnhancementService:
             material_category = material_index[material_name].get("category")
         
         if not material_category:
-            logger.error(f"Material '{material_name}' not found in materials.yaml configuration")
+            logger.error(f"Material '{material_name}' not found in Materials.yaml configuration")
             return
             
         # Get category-based property ranges
         category_config = materials_config.get("category_ranges", {}).get(material_category, {})
         if not category_config:
-            logger.error(f"Category '{material_category}' configuration not found in materials.yaml")
+            logger.error(f"Category '{material_category}' configuration not found in Materials.yaml")
             return        # Process properties in order for comprehensive numeric breakdown
         property_order = [
             "density", "thermalConductivity", "thermalDestructionPoint",
@@ -313,7 +313,7 @@ class PropertyEnhancementService:
                 # Calculate comprehensive numeric breakdown using category configuration
                 property_config = category_config.get(base_prop, {})
                 if property_config:
-                    # Convert materials.yaml format to expected config format
+                    # Convert Materials.yaml format to expected config format
                     formatted_config = {
                         "min": property_config.get("min", ""),
                         "max": property_config.get("max", ""),

@@ -25,15 +25,15 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 
-# Backup materials.yaml first
-materials_file = Path('materials/data/materials.yaml')
+# Backup Materials.yaml first
+materials_file = Path('materials/data/Materials.yaml')
 backup_file = Path(f'materials/data/materials_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
 
 print("📋 Flattening materialProperties structure...")
 print(f"📂 Input: {materials_file}")
 print(f"💾 Backup: {backup_file}\n")
 
-# Load materials.yaml
+# Load Materials.yaml
 with open(materials_file, 'r') as f:
     data = yaml.safe_load(f)
 

@@ -571,7 +571,7 @@ Example: 2.7|g/cm³|95|CRC Handbook
         """
         Backward compatibility method for comprehensive property discovery.
         
-        In data-only mode (materials.yaml complete), returns empty dict.
+        In data-only mode (Materials.yaml complete), returns empty dict.
         Generator will use existing YAML data instead of AI discovery.
         
         Args:
@@ -579,7 +579,7 @@ Example: 2.7|g/cm³|95|CRC Handbook
             material_category: Material category (metal, ceramic, etc.)
             
         Returns:
-            Empty dict (data-only mode - use materials.yaml)
+            Empty dict (data-only mode - use Materials.yaml)
         """
         self.logger.info(f"discover_all_material_properties called for {material_name} - data-only mode, returning empty")
         return {}

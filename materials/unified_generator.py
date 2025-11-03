@@ -37,7 +37,7 @@ from typing import Dict, Any, Optional
 logger = logging.getLogger(__name__)
 
 # Paths
-MATERIALS_DATA_PATH = Path("materials/data/materials.yaml")
+MATERIALS_DATA_PATH = Path("materials/data/Materials.yaml")
 PROMPTS_DIR = Path("materials/prompts")
 
 # Default generation settings
@@ -45,16 +45,17 @@ DEFAULT_SETTINGS = {
     'caption': {
         'temperature': 0.6,
         'max_tokens': 300,
-        'min_words_before': 30,
+        'min_words_before': 15,
         'max_words_before': 70,
-        'min_words_after': 30,
+        'min_words_after': 15,
         'max_words_after': 70,
     },
     'faq': {
         'temperature': 0.7,
         'max_tokens': 2000,
-        'default_count': 8,
-        'word_count_range': '20-50',
+        'min_count': 2,
+        'max_count': 8,
+        'word_count_range': '10-50',  # High variability: some short (10-20), some medium (20-35), some long (35-50)
     },
     'subtitle': {
         'temperature': 0.6,
@@ -180,7 +181,9 @@ class UnifiedMaterialsGenerator:
             )
         
         elif content_type == 'faq':
-            format_params['faq_count'] = kwargs.get('faq_count', settings['default_count'])
+            # Random count between min_count and max_count if not specified
+            default_faq_count = random.randint(settings['min_count'], settings['max_count'])
+            format_params['faq_count'] = kwargs.get('faq_count', default_faq_count)
             format_params['word_count_range'] = settings['word_count_range']
         
         # Override with any kwargs
@@ -286,8 +289,13 @@ class UnifiedMaterialsGenerator:
         
         return caption_data
     
-    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = 8) -> list:
+    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None) -> list:
         """Generate FAQ questions and answers"""
+        # Randomize FAQ count between 2-8 if not specified
+        settings = DEFAULT_SETTINGS['faq']
+        if faq_count is None:
+            faq_count = random.randint(settings['min_count'], settings['max_count'])
+        
         self.logger.info(f"❓ Generating {faq_count} FAQ items for {material_name}")
         
         # Format prompt
@@ -296,13 +304,17 @@ class UnifiedMaterialsGenerator:
         # Generate
         response = self._generate_with_api(prompt, 'faq')
         
-        # Extract JSON
+        # Extract JSON - Look for the final FAQ JSON block specifically
         import json
         try:
-            # Find JSON block
-            json_match = re.search(r'\{.*"faq":\s*\[.*\]\s*\}', response, re.DOTALL)
-            if json_match:
-                data = json.loads(json_match.group())
+            # Find the last JSON block with "faq" key
+            faq_pattern = r'\{\s*"faq"\s*:\s*\[(.*?)\]\s*\}'
+            matches = list(re.finditer(faq_pattern, response, re.DOTALL))
+            
+            if matches:
+                # Use the last match (final FAQ output)
+                json_str = matches[-1].group(0)
+                data = json.loads(json_str)
                 faq_list = data.get('faq', [])
             else:
                 raise ValueError("Could not find FAQ JSON in response")

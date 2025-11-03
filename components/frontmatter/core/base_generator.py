@@ -540,9 +540,9 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             import yaml
             from pathlib import Path
             
-            materials_yaml_path = Path("materials/data/materials.yaml")
+            materials_yaml_path = Path("materials/data/Materials.yaml")
             
-            # Load materials.yaml
+            # Load Materials.yaml
             with open(materials_yaml_path, 'r', encoding='utf-8') as f:
                 materials_data = yaml.safe_load(f)
             
@@ -560,7 +560,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
                 f"implementation pending (full path navigation needed)"
             )
             
-            # Save materials.yaml
+            # Save Materials.yaml
             # with open(materials_yaml_path, 'w', encoding='utf-8') as f:
             #     yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True)
             

@@ -7,7 +7,7 @@ properties that are defined in their category's category_ranges in Categories.ya
 
 Enforces the VITAL PROPERTY VALIDATION RULE from DATA_ARCHITECTURE.md:
 "If a property is NOT defined in Categories.yaml for a given category, it MUST NOT
-be added to any material in that category in materials.yaml."
+be added to any material in that category in Materials.yaml."
 
 Author: GitHub Copilot
 Date: October 17, 2025
@@ -178,7 +178,7 @@ def validate_material_properties():
     print("   • Re-run this validation")
     print()
     print("3. For incorrect properties:")
-    print("   • Remove from materials.yaml")
+    print("   • Remove from Materials.yaml")
     print("   • Update material category if misclassified")
     print()
     

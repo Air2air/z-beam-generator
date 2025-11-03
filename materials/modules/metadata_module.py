@@ -118,7 +118,7 @@ class MetadataModule:
         metadata = {
             'name': template.get('name', material_name) if template else material_name,
             'title': self._generate_title(material_name, template),
-            'subtitle': self._generate_subtitle(material_name, category_display, subcategory, template),
+            'subtitle': self._generate_subtitle(material_name, category_display, subcategory, template, material_data),
             'description': self._generate_description(material_name, material_data, template),
             'category': category_display,
             'subcategory': subcategory,
@@ -155,22 +155,29 @@ class MetadataModule:
         material_name: str, 
         category: str, 
         subcategory: str,
-        template: Optional[Dict]
+        template: Optional[Dict],
+        material_data: Dict = None
     ) -> str:
         """
-        Generate subtitle using template (NO AI calls)
+        Get subtitle from Materials.yaml (voice-enhanced content)
         
-        Format: "Laser cleaning parameters and specifications for {material}"
+        Priority:
+        1. Use subtitle from Materials.yaml if present (voice-enhanced)
+        2. Fall back to template only if missing
         
-        This is deterministic template-based generation following the
-        "trivial export" architecture principle.
+        This ensures voice-enhanced subtitles from Materials.yaml are preserved.
         """
-        display_name = template.get('name', material_name) if template else material_name
+        # Use voice-enhanced subtitle from Materials.yaml if available
+        if material_data and 'subtitle' in material_data and material_data['subtitle']:
+            subtitle = material_data['subtitle']
+            self.logger.debug(f"Using voice-enhanced subtitle from Materials.yaml: {subtitle}")
+            return subtitle
         
-        # Template-based subtitle generation
+        # Fall back to template if subtitle missing
+        display_name = template.get('name', material_name) if template else material_name
         subtitle = f"Laser cleaning parameters and specifications for {display_name}"
         
-        self.logger.debug(f"Generated template subtitle: {subtitle}")
+        self.logger.warning(f"⚠️  No subtitle in Materials.yaml, using template: {subtitle}")
         return subtitle
     
     def _generate_description(

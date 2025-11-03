@@ -12,7 +12,7 @@
 
 | File | Size | Purpose | Status |
 |------|------|---------|--------|
-| **materials.yaml** | 1.9MB | 132 materials with properties | ✅ Primary data source |
+| **Materials.yaml** | 1.9MB | 132 materials with properties | ✅ Primary data source |
 | **Categories.yaml** | 119KB | Legacy monolithic category data | ⚠️ Superseded by split files |
 | **categories/** (8 files) | 131KB | Split category data | ✅ New modular structure |
 | **authors/authors.json** | - | Author persona data | ✅ Voice system |
@@ -20,7 +20,7 @@
 | **materials.py** | - | Data loading utilities | ✅ Active code |
 
 **Total Data Files**: 15 files  
-**Primary Data**: 2.0MB (materials.yaml 1.9MB + categories 131KB)
+**Primary Data**: 2.0MB (Materials.yaml 1.9MB + categories 131KB)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### 1. **Clear Separation of Concerns**
 - **Categories.yaml** → Category-level ranges (min/max for comparison)
-- **materials.yaml** → Material-specific values only (no ranges)
+- **Materials.yaml** → Material-specific values only (no ranges)
 - **Frontmatter** → Generated output (never data storage)
 
 **Rating**: ⭐⭐⭐⭐⭐ Excellent - Clean separation achieved
@@ -44,7 +44,7 @@
 
 #### 3. **Well-Documented Rules**
 - Zero null policy for numerical properties
-- No min/max in materials.yaml (ZERO TOLERANCE)
+- No min/max in Materials.yaml (ZERO TOLERANCE)
 - Qualitative vs quantitative property handling
 - Single source of truth principle
 
@@ -53,7 +53,7 @@
 #### 4. **Data Normalization Complete**
 - Nested structures flattened (Oct 17, 2025)
 - Range propagation working (14 passing tests)
-- Consistent value-only structure in materials.yaml
+- Consistent value-only structure in Materials.yaml
 
 **Rating**: ⭐⭐⭐⭐⭐ Excellent - Recent major achievement
 
@@ -192,7 +192,7 @@ thermalDestruction:
 
 **Current Content**: Minimal category metadata
 
-**Actual Source**: Material index is in materials.yaml, not Categories.yaml
+**Actual Source**: Material index is in Materials.yaml, not Categories.yaml
 
 **Recommendation**: 
 - Remove material_index.yaml (redundant/misleading)
@@ -336,7 +336,7 @@ docs/data/DATA_ARCHITECTURE.md (Master)
 python3 scripts/validate_data_architecture.py
 
 Checks:
-✅ No min/max in materials.yaml
+✅ No min/max in Materials.yaml
 ✅ All numerical properties have category ranges  
 ✅ Qualitative properties in correct section
 ✅ No nested structures (or all nested if policy changes)
@@ -354,7 +354,7 @@ Checks:
 
 ```
 data/
-├── materials.yaml                 # 1.9MB - Primary data (unchanged)
+├── Materials.yaml                 # 1.9MB - Primary data (unchanged)
 ├── materials.py                   # Data loaders (unchanged)
 │
 ├── categories/                    # Modular category data

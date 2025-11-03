@@ -12,7 +12,7 @@ Enforces 100% data completeness for frontmatter generation:
 5. Detects empty sections and triggers research
 
 STRUCTURE TERMINOLOGY:
-- 'materialProperties' = Top-level key in materials.yaml (ALWAYS this name)
+- 'materialProperties' = Top-level key in Materials.yaml (ALWAYS this name)
 - 'properties' = Nested dict within a category group (e.g., material_characteristics.properties)
 - Category groups: material_characteristics, laser_material_interaction
 

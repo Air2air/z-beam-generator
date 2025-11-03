@@ -10,7 +10,7 @@
 
 **ZERO NULL VALUES** anywhere in the system:
 - ❌ No `null` in Categories.yaml
-- ❌ No `null` in materials.yaml  
+- ❌ No `null` in Materials.yaml  
 - ❌ No `null` in frontmatter YAML files
 - ❌ No properties without complete data
 
@@ -185,7 +185,7 @@ def validate_no_nulls(self):
             if ranges.get('min') is None or ranges.get('max') is None:
                 errors.append(f"Category {category}.{prop} missing ranges")
     
-    # Check materials.yaml  
+    # Check Materials.yaml  
     for material, data in self.materials_data.items():
         for prop, prop_data in data.get('properties', {}).items():
             if prop_data.get('value') is None:
@@ -350,12 +350,12 @@ def validate_zero_nulls():
             if ranges.get('max') is None:
                 nulls_found.append(f"Categories.yaml: {category}.{prop}.max")
     
-    # Check materials.yaml
-    materials = load_yaml('data/materials.yaml')
+    # Check Materials.yaml
+    materials = load_yaml('data/Materials.yaml')
     for material, data in materials['materials'].items():
         for prop, prop_data in data.get('properties', {}).items():
             if prop_data.get('value') is None:
-                nulls_found.append(f"materials.yaml: {material}.{prop}.value")
+                nulls_found.append(f"Materials.yaml: {material}.{prop}.value")
     
     # Check frontmatter files
     for yaml_file in Path('content/components/frontmatter').glob('*.yaml'):
@@ -406,7 +406,7 @@ def validate_zero_nulls():
 ### Success Metrics
 
 - **Categories.yaml**: 100% complete ranges for numerical properties
-- **materials.yaml**: 95%+ property coverage per material (numerical properties)
+- **Materials.yaml**: 95%+ property coverage per material (numerical properties)
 - **Frontmatter**: 0 null values for numerical properties
 - **Qualitative Properties**: Null min/max allowed (by design)
 - **Machine Settings**: Null min/max allowed for material-specific parameters
@@ -494,8 +494,8 @@ def test_no_nulls_in_numerical_categories():
     assert len(nulls) == 0, f"Found {len(nulls)} nulls in numerical properties"
 
 def test_no_nulls_in_numerical_materials():
-    """materials.yaml numerical properties must have zero null values"""
-    materials = load_yaml('data/materials.yaml')
+    """Materials.yaml numerical properties must have zero null values"""
+    materials = load_yaml('data/Materials.yaml')
     nulls = find_nulls_excluding_exempt(materials, EXEMPT_PROPERTIES)
     assert len(nulls) == 0, f"Found {len(nulls)} nulls in numerical properties"
 

@@ -7,13 +7,13 @@
 
 ## 🎯 Executive Summary
 
-The Z-Beam Generator system employs **multi-layered validation** to ensure Categories.yaml and materials.yaml contain **no empty or null values** that could break generation pipelines. This document details the validation architecture, automated checks, and remediation procedures.
+The Z-Beam Generator system employs **multi-layered validation** to ensure Categories.yaml and Materials.yaml contain **no empty or null values** that could break generation pipelines. This document details the validation architecture, automated checks, and remediation procedures.
 
 ### Current Status (October 16, 2025)
 
 | File | Status | Null/Empty Values | Action Required |
 |------|--------|-------------------|-----------------|
-| **materials.yaml** | ✅ **CLEAN** | **0 found** | None |
+| **Materials.yaml** | ✅ **CLEAN** | **0 found** | None |
 | **Categories.yaml** | ⚠️ **21 NULLS** | 21 description/unit fields | Optional cleanup |
 
 ---
@@ -112,7 +112,7 @@ def _filter_high_confidence_yaml(self, yaml_properties: Dict) -> Dict:
 
 **File**: `scripts/.archive/one_time_fixes/property_cleanup.py`
 
-A comprehensive cleanup script was run to ensure materials.yaml integrity:
+A comprehensive cleanup script was run to ensure Materials.yaml integrity:
 
 ```python
 def validate_and_fix_property_data(self, properties: Dict[str, Any]) -> Dict[str, Any]:
@@ -138,7 +138,7 @@ def validate_and_fix_property_data(self, properties: Dict[str, Any]) -> Dict[str
     return fixed_properties
 ```
 
-**Result**: materials.yaml now has **0 null/empty values** ✅
+**Result**: Materials.yaml now has **0 null/empty values** ✅
 
 ### 4. **Comprehensive Test Suite**
 
@@ -149,12 +149,12 @@ Automated tests verify data integrity:
 ```python
 class TestMaterialsYamlStructure:
     def test_no_null_values_in_materials(self):
-        """Verify materials.yaml contains no null/empty values"""
-        with open('data/materials.yaml') as f:
+        """Verify Materials.yaml contains no null/empty values"""
+        with open('data/Materials.yaml') as f:
             materials = yaml.safe_load(f)
         
         nulls = self._find_nulls(materials)
-        assert len(nulls) == 0, f"Found {len(nulls)} null values in materials.yaml"
+        assert len(nulls) == 0, f"Found {len(nulls)} null values in Materials.yaml"
     
     def test_all_properties_have_values(self):
         """Verify all material properties have valid values"""
@@ -185,7 +185,7 @@ class TestCategoryRangeCompliance:
 
 ```bash
 $ python3 scripts/tools/validate_materials.py
-✅ materials.yaml: 0 null/empty values found
+✅ Materials.yaml: 0 null/empty values found
 ✅ All 123 materials have valid property data
 ✅ All values are non-null and properly typed
 ```
@@ -255,7 +255,7 @@ python3 run.py --material "Copper" --components frontmatter --validate-only
 
 **What it checks**:
 - Categories.yaml structure
-- materials.yaml structure
+- Materials.yaml structure
 - Required fields present
 - Data types correct
 
@@ -331,11 +331,11 @@ yaml.scanner.ScannerError: mapping values are not allowed here
 **Resolution**:
 ```bash
 # Validate YAML syntax
-yamllint data/materials.yaml
+yamllint data/Materials.yaml
 yamllint data/Categories.yaml
 
 # Restore from backup if corrupted
-cp backups/latest/materials.yaml data/materials.yaml
+cp backups/latest/Materials.yaml data/Materials.yaml
 ```
 
 ---
@@ -452,14 +452,14 @@ python3 scripts/tools/validate_all_frontmatter.py
 
 1. **✅ Pre-Generation Validation**: Fail-fast checks before any generation
 2. **✅ Runtime Filtering**: Automatic filtering of null/empty values during processing
-3. **✅ Historical Cleanup**: One-time cleanup scripts removed all nulls from materials.yaml
+3. **✅ Historical Cleanup**: One-time cleanup scripts removed all nulls from Materials.yaml
 4. **✅ Automated Testing**: Comprehensive test suite validates data integrity
 5. **✅ Validation Tools**: Multiple validation scripts for different scenarios
 6. **✅ Backup System**: Automatic backups before any data modifications
 
 ### Current State
 
-- **materials.yaml**: ✅ **0 null values** (Production-ready)
+- **Materials.yaml**: ✅ **0 null values** (Production-ready)
 - **Categories.yaml**: ⚠️ **21 null values** (Optional cleanup, doesn't break generation)
 - **System Health**: ✅ **100% functional** (All generation pipelines working)
 

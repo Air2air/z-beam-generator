@@ -12,7 +12,7 @@ Successfully reorganized the Z-Beam Generator codebase to use content-type-speci
 ```
 /materials/               # Material frontmatter (132 items)
   ├── generator.py        # MaterialFrontmatterGenerator
-  ├── data.yaml          # materials.yaml data
+  ├── data.yaml          # Materials.yaml data
   ├── output/            # Generated files
   └── README.md
 

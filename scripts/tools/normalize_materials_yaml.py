@@ -2,7 +2,7 @@
 """
 Materials.yaml Normalization Script
 
-Normalizes all material entries in materials.yaml to match the frontmatter template structure.
+Normalizes all material entries in Materials.yaml to match the frontmatter template structure.
 Migrates FLAT structure to GROUPED structure and ensures consistent field ordering.
 
 MIGRATION: FLAT → GROUPED Structure
@@ -258,10 +258,10 @@ def normalize_material_entry(material_data: Dict) -> OrderedDict:
 
 def normalize_materials_yaml(materials_path: Path, dry_run: bool = False, specific_material: str = None) -> Dict:
     """
-    Normalize all materials in materials.yaml
+    Normalize all materials in Materials.yaml
     
     Args:
-        materials_path: Path to materials.yaml
+        materials_path: Path to Materials.yaml
         dry_run: If True, print changes without writing
         specific_material: If provided, only normalize this material
         
@@ -274,7 +274,7 @@ def normalize_materials_yaml(materials_path: Path, dry_run: bool = False, specif
         data = yaml.safe_load(f)
     
     if 'materials' not in data:
-        print("❌ No 'materials' section found in materials.yaml")
+        print("❌ No 'materials' section found in Materials.yaml")
         return data
     
     materials = data['materials']
@@ -321,11 +321,11 @@ def normalize_materials_yaml(materials_path: Path, dry_run: bool = False, specif
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description='Normalize materials.yaml structure')
+    parser = argparse.ArgumentParser(description='Normalize Materials.yaml structure')
     parser.add_argument('--dry-run', action='store_true', help='Print changes without writing')
     parser.add_argument('--material', type=str, help='Normalize only this specific material')
-    parser.add_argument('--materials-yaml', type=str, default='materials/data/materials.yaml',
-                       help='Path to materials.yaml file')
+    parser.add_argument('--materials-yaml', type=str, default='materials/data/Materials.yaml',
+                       help='Path to Materials.yaml file')
     
     args = parser.parse_args()
     

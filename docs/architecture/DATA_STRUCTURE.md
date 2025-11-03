@@ -1,6 +1,6 @@
 # Data Structure Documentation
 
-Complete guide to the Z-Beam Generator data organization, focusing on the flattened materials.yaml structure.
+Complete guide to the Z-Beam Generator data organization, focusing on the flattened Materials.yaml structure.
 
 ## Overview
 
@@ -26,7 +26,7 @@ Materials are now organized as a flat dictionary with direct O(1) access instead
 
 ### File Location
 
-`data/materials.yaml`
+`data/Materials.yaml`
 
 ### Top-Level Structure
 
@@ -185,7 +185,7 @@ python3 scripts/tools/flatten_materials_structure.py --show-comparison
 python3 scripts/tools/flatten_materials_structure.py -o materials_flat.yaml
 ```
 
-**Backup Created**: `data/materials.yaml.backup.20251002_141324`
+**Backup Created**: `data/Materials.yaml.backup.20251002_141324`
 
 ### Code Changes Required
 

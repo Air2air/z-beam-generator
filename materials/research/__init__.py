@@ -26,7 +26,6 @@ from .unified_material_research import (
     ResearchResult
 )
 from .machine_settings_researcher import MachineSettingsResearcher, MachineSettingResult, LaserProcessingContext
-from .unified_research_interface import UnifiedMaterialResearcher, UnifiedResearchResult
 
 __all__ = [
     'UnifiedMaterialResearch',
@@ -39,7 +38,5 @@ __all__ = [
     'ResearchResult',
     'MachineSettingsResearcher', 
     'MachineSettingResult', 
-    'LaserProcessingContext',
-    'UnifiedMaterialResearcher', 
-    'UnifiedResearchResult'
+    'LaserProcessingContext'
 ]
