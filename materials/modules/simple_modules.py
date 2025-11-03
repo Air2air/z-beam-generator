@@ -54,8 +54,9 @@ class MediaModule:
         # Extract caption
         if 'caption' in material_data:
             result['caption'] = material_data['caption']
+            self.logger.info(f"📸 Caption extracted with keys: {list(material_data['caption'].keys())}")
         else:
-            self.logger.warning("No caption found")
+            self.logger.warning("⚠️ No caption found in material_data")
             result['caption'] = {}
         
         self.logger.info("✅ Extracted media data")

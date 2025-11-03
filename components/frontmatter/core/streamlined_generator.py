@@ -597,13 +597,17 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             author_info = self._generate_author(material_data)
             frontmatter.update(author_info)
             
-            # Add caption section - check ai_text_fields first, then generate if needed
-            caption_data = self._get_caption_from_ai_fields(material_data, material_name)
-            if caption_data:
-                frontmatter['caption'] = caption_data
-                self.logger.info("✅ Using caption from Materials.yaml ai_text_fields")
+            # Add caption section - check direct field first, then ai_text_fields
+            if 'caption' in material_data and material_data['caption']:
+                frontmatter['caption'] = material_data['caption']
+                self.logger.info(f"✅ Copied caption from Materials.yaml (keys: {list(material_data['caption'].keys())})")
             else:
-                self.logger.info(f"⚠️ No caption found in ai_text_fields for {material_name}")
+                caption_data = self._get_caption_from_ai_fields(material_data, material_name)
+                if caption_data:
+                    frontmatter['caption'] = caption_data
+                    self.logger.info("✅ Using caption from Materials.yaml ai_text_fields")
+                else:
+                    self.logger.info(f"⚠️ No caption found for {material_name}")
             
             # Add FAQ section if available in Materials.yaml
             if 'faq' in material_data:
