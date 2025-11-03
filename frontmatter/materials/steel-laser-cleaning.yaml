@@ -65,55 +65,46 @@ materialProperties:
       density:
         value: 7.85
         unit: g/cm³
-        confidence: 98
         min: 0.53
         max: 22.6
       porosity:
         value: 0.1
         unit: '%'
-        confidence: 94
         min: 0.0
         max: 15.0
       surfaceRoughness:
         value: 1.6
         unit: μm Ra
-        confidence: 89
         min: 0.4
         max: 150
       tensileStrength:
         value: 400.0
         unit: MPa
-        confidence: 93
         min: 3.0
         max: 3000.0
       youngsModulus:
         value: 200.0
         unit: GPa
-        confidence: 96
         min: 5
         max: 600
       hardness:
         value: 1.47
         unit: GPa
-        confidence: 91
         min: 0.5
         max: 3500
       flexuralStrength:
         value: 350
         unit: MPa
-        confidence: 87
         min: 2.5
         max: 1050.0
       oxidationResistance:
         value: 8
         unit: scale (1-10)
-        confidence: 85
         min: 200
         max: 1200
       corrosionResistance:
         value: 6
         unit: scale (1-10)
-        confidence: 90
         min: 1
         max: 10
   laser_material_interaction:
@@ -123,55 +114,46 @@ materialProperties:
       thermalConductivity:
         value: 50.0
         unit: W/(m·K)
-        confidence: 92
         min: 7.0
         max: 430
       thermalExpansion:
         value: 12
         unit: ×10^{-6}/K
-        confidence: 90
         min: 0.5
         max: 33
       thermalDiffusivity:
         value: 1.4
         unit: ×10^{-5} m²/s
-        confidence: 88
         min: 0.06
         max: 174
       specificHeat:
         value: 486.0
         unit: J/(kg·K)
-        confidence: 94
         min: 100
         max: 2000
       thermalShockResistance:
         value: 250
         unit: W/m
-        confidence: 85
         min: 50
         max: 400
       laserReflectivity:
         value: 0.4
         unit: dimensionless (at 1064 nm)
-        confidence: 90
         min: 5
         max: 99.9
       absorptionCoefficient:
         value: 0.6
         unit: dimensionless (at 1064 nm)
-        confidence: 89
         min: 100000
         max: 50000000
       ablationThreshold:
         value: 1.5
         unit: J/cm²
-        confidence: 86
         min: 2.0
         max: 8.0
       laserDamageThreshold:
         value: 2.0
         unit: J/cm²
-        confidence: 88
         min: 0.1
         max: 20.0
 machineSettings:

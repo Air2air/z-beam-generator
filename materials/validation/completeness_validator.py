@@ -197,7 +197,7 @@ class CompletenessValidator:
         )
         if unvalidated:
             warnings.append(
-                f"Found {len(unvalidated)} properties without confidence scores: "
+                f"Found {len(unvalidated)} properties without value/unit: "
                 f"{', '.join(unvalidated[:3])}{'...' if len(unvalidated) > 3 else ''}"
             )
         
@@ -319,26 +319,9 @@ class CompletenessValidator:
                 if not isinstance(prop_data, dict):
                     continue
                 
-                # Handle nested thermalDestruction structure
-                if prop_name == 'thermalDestruction':
-                    if 'point' in prop_data and isinstance(prop_data['point'], dict):
-                        # Check nested point has confidence
-                        if 'confidence' not in prop_data['point']:
-                            unvalidated.append(f"{category_name}.{prop_name}.point")
-                            continue
-                        confidence = prop_data['point'].get('confidence', 0)
-                        if not isinstance(confidence, (int, float)) or confidence <= 0:
-                            unvalidated.append(f"{category_name}.{prop_name}.point")
-                    continue
-                
-                # Check for confidence score
-                if 'confidence' not in prop_data:
-                    unvalidated.append(f"{category_name}.{prop_name}")
-                    continue
-                
-                # Check confidence is valid
-                confidence = prop_data.get('confidence', 0)
-                if not isinstance(confidence, (int, float)) or confidence <= 0:
+                # Confidence fields removed per user requirements
+                # Properties are considered validated if they have value and unit
+                if 'value' not in prop_data or 'unit' not in prop_data:
                     unvalidated.append(f"{category_name}.{prop_name}")
         
         return unvalidated

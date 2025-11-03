@@ -38,7 +38,7 @@ class PropertyProcessor:
     
     Responsibilities:
     - Apply category ranges to property values
-    - Build DataMetrics structures with min/max/confidence
+    - Build DataMetrics structures with min/max
     - Organize properties by category
     - Separate qualitative from quantitative properties
     - Format properties for frontmatter YAML output
@@ -97,7 +97,6 @@ class PropertyProcessor:
         """
         try:
             categorized = {}
-            uncategorized = {}
             
             # Get category metadata from Categories.yaml
             category_metadata = self._get_category_metadata()
@@ -118,19 +117,8 @@ class PropertyProcessor:
                     # Properties directly under category (flattened)
                     categorized[category_id][prop_name] = prop_data
                 else:
-                    # Track uncategorized properties
-                    uncategorized[prop_name] = prop_data
-            
-            # Add uncategorized properties to 'other' category if any exist (FLATTENED)
-            if uncategorized:
-                categorized['other'] = {
-                    'label': 'Other Properties',
-                    'description': 'Additional material-specific properties',
-                    'percentage': 0
-                }
-                # Add properties directly to category (flattened)
-                categorized['other'].update(uncategorized)
-                self.logger.info(f"Found {len(uncategorized)} uncategorized properties")
+                    # Log uncategorized properties as warning - should not happen
+                    self.logger.warning(f"Property '{prop_name}' has no category mapping - skipping")
             
             self.logger.info(f"Organized {len(properties)} properties into {len(categorized)} categories")
             return categorized
@@ -229,7 +217,6 @@ class PropertyProcessor:
             {
                 'value': float,
                 'unit': str,
-                'confidence': float,
                 'description': str,
                 'min': float,
                 'max': float
@@ -258,14 +245,10 @@ class PropertyProcessor:
         # Get category-based ranges for this property
         min_val, max_val = self._get_category_range(prop_key, material_category, numeric_value)
         
-        # Calculate confidence based on data quality
-        confidence = self._calculate_property_confidence(prop_key, material_category, numeric_value)
-        
         # Create DataMetrics structure
         property_data = {
             'value': numeric_value,
             'unit': unit,
-            'confidence': confidence,
             'description': f'{prop_key} property',
             'min': min_val,
             'max': max_val

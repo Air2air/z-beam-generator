@@ -408,7 +408,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         1. Detect and migrate legacy qualitative properties
         2. Validate all sections are populated
         3. Check essential properties coverage
-        4. Validate all values have confidence scores
+        4. Validate all values have required fields (value, unit, description)
         5. Trigger research for missing properties (if not strict mode)
         
         Args:
@@ -730,11 +730,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         yaml_count += 1
                         point_data = yaml_prop['point']
                         
-                        # Build point structure with value/unit/confidence from materials.yaml
+                        # Build point structure with value/unit from materials.yaml
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
-                            'confidence': self.validation_orchestrator.normalize_confidence(point_data.get('confidence', 0)),
                             'description': point_data.get('description', 'Thermal destruction point')
                         }
                         # Use pre-loaded category ranges (dict lookup)
@@ -795,86 +794,83 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         self.logger.info(f"✅ YAML: {prop_name} = {point_data.get('value')} {point_data.get('unit', '°C')} (type: {yaml_prop.get('type')})")
                         continue
                     
-                    # Regular flat properties
-                    confidence = yaml_prop.get('confidence', 0)
-                    if confidence >= 0.85:  # High confidence threshold
-                        yaml_count += 1
-                        properties[prop_name] = {
-                            'value': yaml_prop.get('value'),
-                            'unit': yaml_prop.get('unit', ''),
-                            'confidence': self.validation_orchestrator.normalize_confidence(confidence),
-                            'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
-                        }
-                        # Use pre-loaded category ranges
-                        # AUTO-REMEDIATION: Research and populate missing ranges instead of failing
-                        # SKIP qualitative properties (string values like 'melting', 'oxidation', etc.)
-                        prop_value = yaml_prop.get('value')
-                        is_qualitative = isinstance(prop_value, str) and not self._is_numeric_string(prop_value)
+                    # Regular flat properties - use all YAML properties
+                    yaml_count += 1
+                    properties[prop_name] = {
+                        'value': yaml_prop.get('value'),
+                        'unit': yaml_prop.get('unit', ''),
+                        'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
+                    }
+                    # Use pre-loaded category ranges
+                    # AUTO-REMEDIATION: Research and populate missing ranges instead of failing
+                    # SKIP qualitative properties (string values like 'melting', 'oxidation', etc.)
+                    prop_value = yaml_prop.get('value')
+                    is_qualitative = isinstance(prop_value, str) and not self._is_numeric_string(prop_value)
+                    
+                    if is_qualitative:
+                        # Qualitative property - OMIT min/max fields entirely (Zero Null Policy)
+                        self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_value}")
+                        # ✅ NO min/max fields at all - complete omission per Zero Null Policy
+                        # Fields are simply not added to the properties dict
+                    else:
+                        # Quantitative property - needs min/max ranges
+                        category_ranges = all_category_ranges.get(prop_name)
                         
-                        if is_qualitative:
-                            # Qualitative property - OMIT min/max fields entirely (Zero Null Policy)
-                            self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_value}")
-                            # ✅ NO min/max fields at all - complete omission per Zero Null Policy
-                            # Fields are simply not added to the properties dict
-                        else:
-                            # Quantitative property - needs min/max ranges
-                            category_ranges = all_category_ranges.get(prop_name)
+                        # Check if ranges are missing or incomplete
+                        needs_research = (
+                            not category_ranges or 
+                            category_ranges.get('min') is None or 
+                            category_ranges.get('max') is None
+                        )
+                        
+                        if needs_research:
+                            self.logger.warning(f"Property '{prop_name}' missing or incomplete in Categories.yaml - researching ranges...")
                             
-                            # Check if ranges are missing or incomplete
-                            needs_research = (
-                                not category_ranges or 
-                                category_ranges.get('min') is None or 
-                                category_ranges.get('max') is None
-                            )
-                            
-                            if needs_research:
-                                self.logger.warning(f"Property '{prop_name}' missing or incomplete in Categories.yaml - researching ranges...")
+                            # Use CategoryRangeResearcher to find and populate the missing range
+                            try:
+                                from materials.research.category_range_researcher import CategoryRangeResearcher
+                                researcher = CategoryRangeResearcher()
                                 
-                                # Use CategoryRangeResearcher to find and populate the missing range
-                                try:
-                                    from materials.research.category_range_researcher import CategoryRangeResearcher
-                                    researcher = CategoryRangeResearcher()
-                                    
-                                    # Research the missing property range for this category
-                                    range_data = researcher.research_property_range(
-                                        property_name=prop_name,
-                                        category=material_category,
-                                        material_name=material_name
-                                    )
-                                    
-                                    if range_data and 'min' in range_data and 'max' in range_data:
-                                        # Update Categories.yaml with the researched range
-                                        self._update_categories_yaml_with_range(
-                                            category=material_category,
-                                            property_name=prop_name,
-                                            range_data=range_data
-                                        )
-                                        
-                                        # Reload category ranges
-                                        all_category_ranges = self.template_service.get_all_category_ranges(material_category)
-                                        category_ranges = all_category_ranges.get(prop_name)
-                                        self.logger.info(f"✅ Researched and populated {prop_name} range for {material_category}")
-                                    else:
-                                        raise PropertyDiscoveryError(
-                                            f"Failed to research range for '{prop_name}' in category '{material_category}'. "
-                                            f"Cannot proceed without valid min/max ranges."
-                                        )
-                                except Exception as e:
-                                    raise PropertyDiscoveryError(
-                                        f"Property '{prop_name}' missing/incomplete in Categories.yaml and auto-research failed: {e}"
-                                    )
-                            
-                            # Final validation - should never fail if auto-remediation worked
-                            if category_ranges.get('min') is None or category_ranges.get('max') is None:
-                                raise PropertyDiscoveryError(
-                                    f"Property '{prop_name}' STILL has incomplete ranges after auto-remediation. "
-                                    f"Found min={category_ranges.get('min')}, max={category_ranges.get('max')}. "
-                                    f"This indicates a bug in auto-remediation logic."
+                                # Research the missing property range for this category
+                                range_data = researcher.research_property_range(
+                                    property_name=prop_name,
+                                    category=material_category,
+                                    material_name=material_name
                                 )
-                            
-                            properties[prop_name]['min'] = category_ranges['min']
-                            properties[prop_name]['max'] = category_ranges['max']
-                        self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
+                                
+                                if range_data and 'min' in range_data and 'max' in range_data:
+                                    # Update Categories.yaml with the researched range
+                                    self._update_categories_yaml_with_range(
+                                        category=material_category,
+                                        property_name=prop_name,
+                                        range_data=range_data
+                                    )
+                                    
+                                    # Reload category ranges
+                                    all_category_ranges = self.template_service.get_all_category_ranges(material_category)
+                                    category_ranges = all_category_ranges.get(prop_name)
+                                    self.logger.info(f"✅ Researched and populated {prop_name} range for {material_category}")
+                                else:
+                                    raise PropertyDiscoveryError(
+                                        f"Failed to research range for '{prop_name}' in category '{material_category}'. "
+                                        f"Cannot proceed without valid min/max ranges."
+                                    )
+                            except Exception as e:
+                                raise PropertyDiscoveryError(
+                                    f"Property '{prop_name}' missing/incomplete in Categories.yaml and auto-research failed: {e}"
+                                )
+                        
+                        # Final validation - should never fail if auto-remediation worked
+                        if category_ranges.get('min') is None or category_ranges.get('max') is None:
+                            raise PropertyDiscoveryError(
+                                f"Property '{prop_name}' STILL has incomplete ranges after auto-remediation. "
+                                f"Found min={category_ranges.get('min')}, max={category_ranges.get('max')}. "
+                                f"This indicates a bug in auto-remediation logic."
+                            )
+                        
+                        properties[prop_name]['min'] = category_ranges['min']
+                        properties[prop_name]['max'] = category_ranges['max']
+                    self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')}")
             # PHASE 1.5: Add category-specific thermal property field (dual-field approach)
             material_category = material_data.get('category', 'metal').lower()
             if not self.property_manager:
@@ -920,7 +916,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # FAIL-FAST - must have at least some properties for valid frontmatter
             raise PropertyDiscoveryError(f"No properties found for {material_name}")
         # Calculate and log comprehensive coverage statistics
-        ai_properties = {k: v for k, v in properties.items() if k not in yaml_properties or yaml_properties[k].get('confidence', 0) < 0.85}
         coverage_stats = self.property_manager.calculate_coverage(
             material_name=material_name,
             yaml_properties=yaml_properties,
@@ -1148,7 +1143,7 @@ CRITICAL REQUIREMENTS:
    - Include: density, thermalConductivity, tensileStrength, hardness, etc.
 
 2. **Machine Settings Structure** (DataMetrics format):
-   - Each setting must have: value, unit, confidence, min, max, description
+   - Each setting must have: value, unit, description, min, max
    - Include: powerRange, wavelength, spotSize, repetitionRate, pulseDuration, etc.
 
 3. **Applications Structure** (CRITICAL - MUST BE STRUCTURED OBJECTS):
@@ -1251,16 +1246,16 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         PROPERTY DATA PATTERNS (as of Oct 2025):
         
         1. LEGACY FORMAT (original AI-generated):
-           {value, unit, confidence, description, min, max}
+           {value, unit, description, min, max}
         
         2. PULSE-SPECIFIC (Priority 2 authoritative data):
            {nanosecond: {min, max, unit}, picosecond: {...}, femtosecond: {...},
-            source, confidence, measurement_context}
+            source, measurement_context}
            Used for: ablationThreshold (45 materials)
         
         3. WAVELENGTH-SPECIFIC (Priority 2 authoritative data):
            {at_1064nm: {min, max, unit}, at_532nm: {...}, at_355nm: {...}, at_10640nm: {...},
-            source, confidence, measurement_context}
+            source, measurement_context}
            Used for: reflectivity (35 metals)
         
         4. AUTHORITATIVE (Priority 2 enhanced legacy):

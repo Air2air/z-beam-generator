@@ -72,55 +72,46 @@ materialProperties:
       density:
         value: 8.8
         unit: g/cm³
-        confidence: 98
         min: 0.53
         max: 22.6
       porosity:
         value: 0.5
         unit: '%'
-        confidence: 85
         min: 0.0
         max: 15.0
       surfaceRoughness:
         value: 0.8
         unit: μm
-        confidence: 80
         min: 0.4
         max: 150
       tensileStrength:
         value: 400.0
         unit: MPa
-        confidence: 92
         min: 3.0
         max: 3000.0
       youngsModulus:
         value: 110.0
         unit: GPa
-        confidence: 95
         min: 5
         max: 600
       hardness:
         value: 100
         unit: HB
-        confidence: 90
         min: 0.5
         max: 3500
       flexuralStrength:
         value: 450
         unit: MPa
-        confidence: 88
         min: 2.5
         max: 1050.0
       oxidationResistance:
         value: 8
         unit: scale 1-10
-        confidence: 88
         min: 200
         max: 1200
       corrosionResistance:
         value: 7
         unit: scale 1-10
-        confidence: 86
         min: 1
         max: 10
   laser_material_interaction:
@@ -130,55 +121,46 @@ materialProperties:
       thermalConductivity:
         value: 60.0
         unit: W/(m·K)
-        confidence: 92
         min: 7.0
         max: 430
       thermalExpansion:
         value: 18
         unit: ×10^{-6}/K
-        confidence: 94
         min: 0.5
         max: 33
       thermalDiffusivity:
         value: 22.0
         unit: mm²/s
-        confidence: 88
         min: 0.06
         max: 174
       specificHeat:
         value: 380.0
         unit: J/(kg·K)
-        confidence: 90
         min: 100
         max: 2000
       thermalShockResistance:
         value: 150
         unit: W/m·K
-        confidence: 85
         min: 50
         max: 400
       laserReflectivity:
         value: 0.65
         unit: ''
-        confidence: 87
         min: 5
         max: 99.9
       absorptionCoefficient:
         value: 5.5
         unit: ×10^6 /m
-        confidence: 85
         min: 100000
         max: 50000000
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 85
         min: 2.0
         max: 8.0
       laserDamageThreshold:
         value: 1.8
         unit: J/cm²
-        confidence: 84
         min: 0.1
         max: 20.0
 materialCharacteristics:

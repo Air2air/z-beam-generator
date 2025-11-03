@@ -50,119 +50,7 @@ regulatoryStandards:
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
   description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
 applications: []
-materialProperties:
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 100.0
-    density:
-      value: 2.7
-      unit: g/cm³
-      confidence: 98
-      min: 0.53
-      max: 22.6
-    porosity:
-      value: 0
-      unit: '%'
-      confidence: 95
-      min: 0.0
-      max: 15.0
-    surfaceRoughness:
-      value: 0.8
-      unit: μm
-      confidence: 84
-      min: 0.4
-      max: 150
-    tensileStrength:
-      value: 90.0
-      unit: MPa
-      confidence: 89
-      min: 3.0
-      max: 3000.0
-    youngsModulus:
-      value: 70.0
-      unit: GPa
-      confidence: 96
-      min: 5
-      max: 600
-    hardness:
-      value: 0.2744
-      unit: GPa
-      confidence: 87
-      min: 0.5
-      max: 3500
-    flexuralStrength:
-      value: 95
-      unit: MPa
-      confidence: 84
-      min: 2.5
-      max: 1050.0
-    oxidationResistance:
-      value: 5
-      unit: μm/year
-      confidence: 85
-      min: 200
-      max: 1200
-    corrosionResistance:
-      value: 0.1
-      unit: mm/year
-      confidence: 90
-      min: 1
-      max: 10
-    thermalConductivity:
-      value: 237.0
-      unit: W/(m·K)
-      confidence: 92
-      min: 7.0
-      max: 430
-    thermalExpansion:
-      value: 23.1
-      unit: ×10^{-6}/K
-      confidence: 90
-      min: 0.5
-      max: 33
-    thermalDiffusivity:
-      value: 9.7
-      unit: ×10^{-5} m²/s
-      confidence: 88
-      min: 0.06
-      max: 174
-    specificHeat:
-      value: 900.0
-      unit: J/(kg·K)
-      confidence: 94
-      min: 100
-      max: 2000
-    thermalShockResistance:
-      value: 250
-      unit: K
-      confidence: 85
-      min: 50
-      max: 400
-    laserReflectivity:
-      value: 0.92
-      unit: ''
-      confidence: 91
-      min: 5
-      max: 99.9
-    absorptionCoefficient:
-      value: 1.2
-      unit: ×10^7 m^{-1}
-      confidence: 82
-      min: 100000
-      max: 50000000
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      confidence: 83
-      min: 2.0
-      max: 8.0
-    laserDamageThreshold:
-      value: 1.8
-      unit: J/cm²
-      confidence: 81
-      min: 0.1
-      max: 20.0
+materialProperties: {}
 materialCharacteristics: {}
 machineSettings:
   powerRange:
@@ -199,56 +87,52 @@ environmentalImpact:
   - Electronics
   - Medical
   - Nuclear
-  description: Laser cleaning aluminum surfaces basically eliminates chemical waste
-    through high-intensity laser pulses that thermally ablate contaminants. It leverages
-    aluminum's high thermal conductivity of 237 W/(m·K) for quick heat dissipation,
-    allowing precise removal without damaging the substrate or relying on solvents
-    and acids. This approach is typically advantageous in semiconductor, electronics,
-    medical, and nuclear industries, actually preventing hazardous chemical runoff
-    while ensuring compliance with strict environmental regulations for metal substrate
-    prep.
+  description: Laser cleaning aluminum basically eliminates chemical waste by tapping
+    into the metal's high thermal conductivity of 237 W/(m·K), allowing precise, non-contact
+    ablation of surface contaminants via localized vaporization. This sidesteps the
+    hazardous solvents or acids that traditional methods typically demand. Pretty
+    advantageous for aluminum parts in semiconductor, electronics, medical, and nuclear
+    sectors, it ensures contamination removal without chemical residues that could
+    undermine material integrity or environmental standards.
   quantifiedBenefits: Laser cleaning for aluminum actually eliminates 100% of chemical
     waste generation, generally reducing environmental disposal costs by up to 75%
     while preventing over 500 liters of hazardous solvents per ton of material processed
     versus traditional chemical methods.
 - benefit: Water Usage Reduction
   applicableIndustries: []
-  description: Laser cleaning of aluminum delivers a pretty significant cut in water
-    usage via a dry ablation process that vaporizes contaminants, bypassing water-based
-    abrasives, chemical rinses, or wet blasting typically seen in traditional methods.
-    With aluminum's thermal conductivity of 237 W/(m·K), heat dissipates rapidly during
-    laser irradiation, allowing precise, non-thermal damage cleaning at lower energy
-    levels and generally eliminating aqueous waste in industrial applications.
+  description: Laser cleaning of aluminum taps into its relatively high thermal conductivity
+    (237 W/(m·K)) for precise, dry ablation of contaminants, skipping water-based
+    solvents or rinsing altogether. This basically eliminates the substantial water
+    consumption tied to traditional aqueous methods like pressure washing or wet blasting
+    in general industrial applications. Pretty much, it prevents wastewater generation
+    and reduces the overall environmental water footprint by up to 100% compared to
+    conventional processes.
 - benefit: Energy Efficiency
   applicableIndustries: []
-  description: Laser cleaning of aluminum takes advantage of its high thermal conductivity—237
-    W/(m·K)—which actually promotes rapid heat dissipation from the ablation zone.
-    This approach minimizes energy loss to the substrate and supports efficient contaminant
-    removal using relatively lower laser power than with less conductive materials.
-    Generally, this property helps reduce energy consumption across industrial applications
-    by fine-tuning localized heating and preventing excessive thermal buildup.
+  description: Aluminum's pretty high thermal conductivity of 237 W/(m·K) supports
+    rapid heat dissipation in laser cleaning, enabling precise energy delivery to
+    ablate surface contaminants with minimal input and avoid substrate heating or
+    melting. Generally, this improves overall process efficiency over abrasive or
+    chemical methods. Essentially, the trait lowers total energy use in industrial
+    applications by optimizing laser pulse parameters and cutting waste heat.
 - benefit: Air Quality Improvement
   applicableIndustries: []
-  description: Aluminum laser cleaning pretty much boosts air quality by allowing
-    precise ablation of surface contaminants via localized vaporization. It leverages
-    the metal's high thermal conductivity of 237 W/(m·K) to quickly dissipate heat,
-    generally preventing excessive substrate melting or fume generation. This approach
-    eliminates volatile organic compound emissions from chemical solvents in traditional
-    methods. As a dry process, it fairly minimizes particulate matter release across
-    industrial applications, cutting down inhalable pollutants versus abrasive or
-    solvent-based techniques.
+  description: Aluminum's high thermal conductivity—actually 237 W/(m·K)—enables pretty
+    precise, localized ablation during laser cleaning, minimizing the generation of
+    fine metal particulates and volatile organic compounds that could otherwise contribute
+    to ambient air pollution. This dry process eliminates the need for chemical solvents
+    or abrasive media, generally reducing emissions of hazardous airborne contaminants
+    in industrial applications.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
-  description: Contaminant Removal Efficiency in aluminum laser cleaning measures
-    the percentage of surface contaminants removed, typically calculated as the ratio
-    of post-cleaning contaminant mass or areal coverage to pre-cleaning levels. This
-    involves before/after microscopy for visual checks and mass spectrometry or chemical
-    analysis for spot-on quantification, since aluminum's low hardness (0.2744 GPa)
-    calls for careful laser parameter tuning to avoid substrate damage. Key factors
-    in measurements generally cover contamination type—like oxides or particulates—adhesion
-    strength tied to the metal's 0.8 μm surface roughness, and overall geometry, all
-    of which influence selective ablation and the risk of re-deposition on that reflective
-    aluminum surface.
+  description: Contaminant removal efficiency in aluminum laser cleaning generally
+    refers to the percentage drop in contaminant mass or surface coverage. We quantify
+    it using pre- and post-treatment mass spectrometry or chemical analysis to spot
+    residual elements, while considering aluminum's fairly low hardness (0.2744 GPa)
+    that caps ablation thresholds and raises substrate damage risks. Microscopy before
+    and after treatment evaluates changes in the 0.8 μm surface roughness, with efficiency
+    influenced by contamination type, adhesion strength, and surface geometry to achieve
+    selective removal without compromising the metal's integrity.
   measurementMethods:
   - Before/after microscopy
   - Chemical analysis
@@ -260,14 +144,15 @@ outcomeMetrics:
   units: []
   typicalRanges: 95-99.9% depending on application and material
 - metric: Processing Speed
-  description: In aluminum laser cleaning, processing speed is typically quantified
-    as the cleaned surface area per unit time (e.g., cm²/s), assessed through standardized
-    optical profilometry or image analysis to monitor contaminant removal on relatively
-    low-hardness (0.2744 GPa) metallic surfaces featuring initial roughness of about
-    0.8 μm Ra. For aluminum specifically, its high thermal conductivity and reflectivity
-    actually demand tweaks to laser parameters such as pulse energy and scan rate,
-    preventing subsurface melting while fine-tuning ablation rates shaped by oxide
-    layer thickness and beam overlap.
+  description: Processing speed in aluminum laser cleaning is typically quantified
+    as the cleaned surface area per unit time (e.g., cm²/s), measured via standard
+    optical profilometry or image analysis to monitor contaminant removal on aluminum's
+    relatively low-hardness (0.2744 GPa) metallic surface with an initial roughness
+    of 0.8 μm. High laser reflectivity actually requires tweaks to process parameters
+    like pulse energy and wavelength, ensuring optimal ablation efficiency without
+    damaging the substrate. Key factors involve aluminum's thermal conductivity, which
+    affects heat-affected zone size and sets the practical speed limits between cleaning
+    and melting.
   measurementMethods: []
   factorsAffecting: []
   units:
@@ -275,26 +160,25 @@ outcomeMetrics:
   - cm²/min
   - mm²/s
 - metric: Surface Quality Preservation
-  description: Surface Quality Preservation in aluminum laser cleaning assesses retention
-    of the initial surface roughness, typically Ra ≈ 0.8 μm post-process. We measure
-    this using standard profilometric techniques like stylus or optical interferometry
-    to identify induced micro-roughness or pitting below 0.4-150 μm thresholds. This
-    accounts for aluminum's fairly low hardness (0.2744 GPa), increasing its vulnerability
-    to thermal distortion from laser fluence and pulse overlap. The metric promotes
-    minimal substrate changes during contaminant removal, actually sustaining high-confidence
-    (84%) surface integrity via optimized controls that prevent melting or oxidation
-    in this reflective metal.
+  description: Surface quality preservation during aluminum laser cleaning is generally
+    assessed via post-process Ra measurements with optical profilometry or stylus
+    methods, keeping deviations from the initial 0.8 μm Ra under 20% to prevent thermal
+    pitting or melting—given aluminum's relatively low hardness (0.2744 GPa) and high
+    reflectivity. Key parameters like pulse energy and fluence (typically 0.5-2 J/cm²)
+    require optimization to reduce subsurface heating and uphold metallurgical integrity,
+    per ASTM E1417 guidelines for contamination-free evaluation.
   measurementMethods: []
   factorsAffecting: []
   units: []
 - metric: Thermal Damage Avoidance
-  description: In aluminum laser cleaning, avoiding thermal damage is basically quantified
-    by checking for no heat-affected zones (HAZ), melt pools, or microcracks in the
-    substrate. We leverage the metal's low hardness (0.2744 GPa) and high thermal
-    conductivity to keep subsurface temperatures well below its 660°C melting point.
-    Typically, measurements use standard metallographic cross-sectioning and SEM analysis
-    of the ~0.8 μm surface roughness after processing, while tuning key parameters
-    like pulse energy and scanning speed to prevent reflectivity-driven overheating.
+  description: To avoid thermal damage in aluminum laser cleaning, we typically evaluate
+    substrate integrity through optical microscopy and Vickers microhardness testing.
+    This confirms no heat-affected zone develops that shifts the baseline hardness
+    from 0.2744 GPa or raises surface roughness above 0.8 μm. Protocols from ASTM
+    E1920 are adapted for aluminum's relatively low thermal conductivity (237 W/m·K)
+    and melting point (660°C). Basically, we fine-tune parameters such as pulse duration
+    (<10 ns) and fluence (<1 J/cm²) to limit thermal diffusion during contaminant
+    removal, with thermal imaging verifying peak temperatures stay under 500°C.
   measurementMethods: []
   factorsAffecting: []
   units: []
