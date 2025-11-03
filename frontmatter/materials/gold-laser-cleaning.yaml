@@ -1,287 +1,239 @@
 name: Gold
-category: metal
+category: Metal
 subcategory: non-ferrous
 title: Gold Laser Cleaning
-subtitle: Gentle laser pulses restore gold's timeless luster without risking its soft surface
+subtitle: Laser cleaning parameters and specifications for Gold
 description: Laser cleaning parameters for Gold
 author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
-  sex: m
+  country: indonesia
+  country_display: Indonesia
   title: Ph.D.
+  sex: m
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Gold surface undergoing laser cleaning showing precise contamination removal
+    alt: Basically, during precision laser cleaning, gold surfaces typically get contamination
+      layers removed at microscopic scales.
     url: /images/material/gold-laser-cleaning-hero.jpg
   micro:
-    alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/gold-laser-cleaning-micro.jpg
-caption:
-  before: Scanning electron microscopy reveals the gold surface prior to laser cleaning as heavily contaminated with irregular
-    particulates, including carbonaceous residues and fine oxide inclusions, adhering to the polycrystalline matrix. Visible
-    degradation manifests as micro-pitting and localized etching along grain boundaries, with surface roughness amplified
-    by adherent debris, compromising the metallic luster and structural integrity under high magnification.
-  after: Post-laser cleaning, optical and electron microscopy illustrate a restored gold surface exhibiting uniform cleanliness
-    and preserved material integrity. The polycrystalline structure remains intact without ablation-induced defects, showcasing
-    smooth grain facets and minimal residual roughness. Enhanced reflectivity and absence of contaminants confirm effective
-    restoration, maintaining the substrate's original morphological characteristics.
-  generated: '2025-10-30T17:07:48.784096Z'
-  word_count_before: 57
-  word_count_after: 49
-  total_words: 106
+    alt: Gold surface at 500x magnification, basically comparing the fairly contaminated
+      state with cleaned substrate showing complete restoration.
+    url: /images/material/gold-microscopic-before-after.jpg
 regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
   name: FDA
   url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
   name: ANSI
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
+  description: ANSI Z136.1 - Safe Use of Lasers
+- image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
   name: IEC
   url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
+  description: IEC 60825 - Safety of Laser Products
+- image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
   name: OSHA
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-applications:
-- Electronics Manufacturing
-- Aerospace
-- Medical Devices
-- Jewelry and Luxury Goods
-- Cultural Heritage
-- Automotive Electronics
-- Energy Sector
-- Telecommunications
-- Semiconductor Manufacturing
-- Marine Electronics
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
-    properties:
-      electricalConductivity:
-        source: ai_research
-        unit: S/m
-        value: 45200000.0
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 2.214e-08
-      fractureToughness:
-        ai_verified: true
-        source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
-        unit: MPa·√m
-        value: 0.8
-      surfaceRoughness:
-        source: ai_research
-        unit: μm
-        value: 0.025
-      vaporPressure:
-        source: ai_research
-        unit: Pa
-        value: 0.000172
+    percentage: 45.5
+    electricalConductivity:
+      source: ai_research
+      unit: S/m
+      value: 45200000.0
+      min: 0.67
+      max: 63.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 2.214e-08
+      min: 1.0e-08
+      max: 1.5e-06
+    fractureToughness:
+      ai_verified: true
+      source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation'
+      unit: MPa·√m
+      value: 0.8
+      min: 20.0
+      max: 200.0
+    surfaceRoughness:
+      source: ai_research
+      unit: μm
+      value: 0.025
+      min: 0.4
+      max: 150.0
+    vaporPressure:
+      source: ai_research
+      unit: Pa
+      value: 0.000172
+      min: 1.0e-10
+      max: 0.001
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 40.0
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
-    properties:
-      absorptionCoefficient:
-        source: ai_research
-        unit: m⁻¹
-        value: 69000000.0
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.017
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (reflectance ratio)
-        value: 0.985
-      thermalDestructionPoint:
-        source: ai_research
-        unit: K
-        value: 1337.33
-      thermalShockResistance:
-        source: ai_research
-        unit: MW/m
-        value: 1.8
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: FCC crystal structure
-    source: ai_research
-    unit: crystal system
-    value: FCC
+    percentage: 54.5
+    absorptionCoefficient:
+      source: ai_research
+      unit: m⁻¹
+      value: 69000000.0
+      min: 100000.0
+      max: 50000000.0
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.017
+      min: 2.0
+      max: 65.0
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.45
+      min: 0.1
+      max: 20.0
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (reflectance ratio)
+      value: 0.985
+      min: 85.0
+      max: 98.0
+    thermalDestructionPoint:
+      source: ai_research
+      unit: K
+      value: 1337.33
+      min: 873.0
+      max: 3695.0
+    thermalShockResistance:
+      source: ai_research
+      unit: MW/m
+      value: 1.8
+      min: 50.0
+      max: 400.0
 machineSettings:
   powerRange:
-    description: Optimal average power for Gold surface cleaning without damage
     unit: W
     value: 15
+    min: 1.0
+    max: 120
   wavelength:
-    description: Green wavelength optimized for Gold absorption characteristics
     unit: nm
     value: 532
+    min: 355
+    max: 10640
   spotSize:
-    description: Beam spot diameter for precise Gold surface treatment
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient Gold cleaning
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   fluenceThreshold:
-    description: Fluence threshold for Gold ablation without substrate damage
     unit: J/cm²
     value: 0.8
+    min: 0.3
+    max: 4.5
   pulseWidth:
-    description: Nanosecond pulse width for controlled Gold ablation
     unit: ns
     value: 8
+    min: 0.1
+    max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform Gold cleaning
     unit: mm/s
     value: 500
+    min: 10
+    max: 5000
   passCount:
-    description: Recommended number of passes for complete Gold surface cleaning
     unit: passes
     value: 3
+    min: 1
+    max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform Gold surface cleaning
     unit: '%'
     value: 50
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- description: Percentage of target contaminants successfully removed from surface
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  metric: Contaminant Removal Efficiency
-  typicalRanges: 95-99.9% depending on application and material
-  units: []
-- description: Rate of surface area processed per unit time
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Processing Speed
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- description: Maintenance of original surface characteristics after cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Surface Quality Preservation
-  units: []
-- description: Prevention of heat-related material alterations during cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Thermal Damage Avoidance
-  units: []
+    min: 10
+    max: 90
 faq:
-  questions:
-  - answer: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan fluensi di bawah 0.8 J/cm² dan panjang
-      gelombang 532 nm, kontaminasi permukaan seperti sulfida perak dapat dihilangkan secara selektif. Konduktivitas termal
-      emas yang tinggi memungkinkan pendinginan cepat, mencegah pelelehan material dasar saat menggunakan pulsa nanodetik.
-    question: Can a laser cleaning system remove tarnish or surface contamination from gold without damaging the underlying
-      material?
-  - answer: For delicate gold surfaces, the optimal wavelength is 532 nm green light. Gold's reflectivity drops significantly
-      at shorter wavelengths, enabling efficient ablation at lower fluence near 0.8 J/cm². This approach minimizes thermal
-      damage risks to sensitive substrates like historical artifacts or electronics, ensuring precise contaminant removal.
-    question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning delicate gold surfaces, such as historical
-      artifacts or electronics contacts?
-  - answer: We utilize a 532 nm wavelength for enhanced gold absorption, minimizing hazardous reflections. Critical safety
-      measures include optical isolators and beam dumps to protect the 15 W laser source from back-reflected energy. Operators
-      must wear wavelength-specific eyewear.
-    question: How do you prevent the high reflectivity of gold from causing safety issues or damaging the laser cleaning equipment
-      itself?
-  - answer: Laser cleaning can remove oxidation from gold alloys, but selective ablation of alloying elements like copper
-      is a concern. Using a 532 nm wavelength at 0.8 J/cm² fluence minimizes this risk, preserving the surface composition
-      and color integrity.
-    question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after
-      heat treatment or soldering?
-  - answer: Discoloration and matte finishes arise from micro-melting and surface roughening if fluence exceeds ~0.8 J/cm².
-      Maintaining the specular reflection of polished gold requires precise control of parameters like the 50 µm spot size
-      and 500 mm/s scan speed to avoid altering its microstructure.
-    question: What are the risks of causing discoloration or a matte finish on a polished gold surface during laser cleaning?
-  - answer: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa merusak substrat. Dengan fluence terkontrol
-      sekitar 0.8 J/cm² dan panjang gelombang 532 nm, proses ini sangat efektif untuk aplikasi perbaikan PCB dan pemulihan
-      logam mulia dari komponen elektronik bekas.
-    question: Can laser cleaning be used to selectively de-plate gold from a substrate without harming the base material?
-  - answer: Lower karat gold's higher copper content increases oxidation risk during laser cleaning. We must reduce the fluence
-      below 0.8 J/cm² and adjust the 50 kHz repetition rate to prevent thermal damage to the more susceptible alloy, ensuring
-      a pristine surface.
-    question: How does the karat (purity) of gold affect the laser cleaning process and the parameters required?
-  - answer: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry untuk mengukur topografi
-      permukaan secara non-destruktif. Proses harus dijalankan di bawah fluens ablasi emas 0.8 J/cm² pada 532 nm untuk hanya
-      menghilangkan kontaminan.
-    question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable
-      material loss or thinning?
-  - answer: Laser cleaning gold at 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like
-      nickel or cadmium. Proper fume extraction with HEPA/ULPA filtration is mandatory. Always consult the specific alloy's
-      MSDS to identify and mitigate risks from vaporized contaminants.
-    question: Are there any hazardous fumes generated when laser cleaning gold, especially from alloys or surface contaminants?
-  - answer: Gold's exceptional thermal conductivity and chemical inertness require distinct laser parameters compared to reactive
-      metals like silver. We must carefully control the fluence near 0.8 J/cm² and use a 532 nm wavelength to ensure efficient
-      energy coupling for contaminant removal without causing microstructural damage to the substrate.
-    question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable
-      to gold?
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921996Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922001Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Indonesia
-  author_name: Ikmanda Roswati
-  character_count: 83
-  generated: '2025-10-25T21:11:12.613193Z'
-  generation_method: ai_research_voice
-  word_count: 12
+- answer: Ya, sistem laser dapat membersihkan emas tanpa merusak substratnya. Dengan
+    fluensi di bawah 0.8 J/cm² dan panjang gelombang 532 nm, kontaminasi permukaan
+    seperti sulfida perak dapat dihilangkan secara selektif. Konduktivitas termal
+    emas yang tinggi memungkinkan pendinginan cepat, mencegah pelelehan material dasar
+    saat menggunakan pulsa nanodetik.
+  question: Can a laser cleaning system typically remove tarnish or surface contamination
+    from gold without actually damaging the underlying material?
+- answer: For delicate gold surfaces, the optimal wavelength is actually 532 nm green
+    light. Gold's reflectivity generally drops a lot at shorter wavelengths, allowing
+    efficient ablation at fairly low fluence around 0.8 J/cm². This method minimizes
+    thermal damage risks to sensitive substrates like historical artifacts or electronics,
+    ensuring precise contaminant removal.
+  question: Generally speaking, what's the best laser wavelength—like 1064nm or 532nm—for
+    cleaning delicate gold surfaces, such as historical artifacts or electronics contacts?
+- answer: We basically opt for a 532 nm wavelength to boost gold absorption fairly
+    effectively, while cutting down on hazardous reflections. Key safety steps involve
+    optical isolators and beam dumps to safeguard the 15 W laser source against back-reflected
+    energy. Operators need to wear eyewear tailored to that wavelength.
+  question: How do you generally keep gold's pretty high reflectivity from actually
+    sparking safety hazards or harming the laser cleaning gear itself?
+- answer: Laser cleaning generally removes oxidation from gold alloys, but selective
+    ablation of elements like copper actually poses a concern. Employing a 532 nm
+    wavelength at 0.8 J/cm² fluence pretty much minimizes this risk, while preserving
+    surface composition and color integrity.
+  question: Is laser cleaning generally suitable for removing oxidation or fire scale
+    from gold alloys, like 14k or 18k, after heat treatment or soldering?
+- answer: Discoloration and matte finishes typically stem from micro-melting and surface
+    roughening when fluence exceeds ~0.8 J/cm². To preserve the specular reflection
+    of polished gold, precise control over parameters like the 50 µm spot size and
+    500 mm/s scan speed is basically essential for avoiding microstructure changes.
+  question: What are the typical risks of basically causing discoloration or a matte
+    finish on a polished gold surface during laser cleaning?
+- answer: Ya, ablasi laser dapat secara selektif menghilangkan lapisan emas tanpa
+    merusak substrat. Dengan fluence terkontrol sekitar 0.8 J/cm² dan panjang gelombang
+    532 nm, proses ini sangat efektif untuk aplikasi perbaikan PCB dan pemulihan logam
+    mulia dari komponen elektronik bekas.
+  question: Can laser cleaning generally be used to pretty selectively de-plate gold
+    from a substrate without actually harming the base material?
+- answer: Lower karat gold's higher copper content actually boosts the oxidation risk
+    during laser cleaning. Pretty much, we need to dial the fluence below 0.8 J/cm²
+    and tweak the 50 kHz repetition rate to avoid thermal damage on this more vulnerable
+    alloy, yielding a pristine surface.
+  question: How does the karat purity of gold generally influence the laser cleaning
+    process and parameters typically required?
+- answer: Untuk memastikan tidak ada penipisan yang terukur, gunakan white light interferometry
+    untuk mengukur topografi permukaan secara non-destruktif. Proses harus dijalankan
+    di bawah fluens ablasi emas 0.8 J/cm² pada 532 nm untuk hanya menghilangkan kontaminan.
+  question: What's typically the recommended method for generally verifying that a
+    laser cleaning process on gold actually hasn't caused any measurable material
+    loss or thinning?
+- answer: Laser cleaning gold at a 532 nm wavelength and 0.8 J/cm² fluence can actually
+    aerosolize hazardous alloying elements like nickel or cadmium. Typically, proper
+    fume extraction with HEPA/ULPA filtration is mandatory. Generally, consult the
+    specific alloy's MSDS to identify and mitigate risks from vaporized contaminants.
+  question: Are there typically any hazardous fumes produced when laser cleaning gold,
+    especially from alloys or surface contaminants?
+- answer: Gold's pretty exceptional thermal conductivity and chemical inertness demand
+    different laser parameters than reactive metals like silver. Generally, we control
+    the fluence around 0.8 J/cm² and apply a 532 nm wavelength to achieve efficient
+    energy coupling for contaminant removal, without risking microstructural damage
+    to the substrate.
+  question: Why might a laser cleaning process that generally works on other precious
+    metals (like silver) actually not apply directly to gold?
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material

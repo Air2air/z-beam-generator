@@ -561,6 +561,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         filtered_props[key] = value
                 
                 self.logger.info(f"📦 Using {len(filtered_props)} property categories from materials.yaml for {material_name}")
+                
+                # Apply category ranges (min/max) to properties
+                material_category = material_data.get('category', 'metal').lower()
+                filtered_props = self.property_processor.apply_category_ranges(
+                    filtered_props, 
+                    material_category
+                )
+                self.logger.info(f"✅ Applied category ranges to {len(filtered_props)} property categories")
+                
                 frontmatter['materialProperties'] = filtered_props
             else:
                 self.logger.warning(f"⚠️ No materialProperties found in materials.yaml for {material_name}")
