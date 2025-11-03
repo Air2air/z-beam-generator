@@ -341,184 +341,34 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
         Raises:
             GenerationError: If voice quality cannot be fixed after retries
         """
-        try:
-            from shared.voice.quality_scanner import VoiceQualityScanner
-            from shared.voice.source_data_repairer import SourceDataRepairer
-            
-            # Initialize scanner and repairer (content-agnostic)
-            if not self.api_client:
-                self.logger.warning(
-                    "API client required for automatic quality gate - "
-                    "skipping voice validation"
-                )
-                return frontmatter_data
-            
-            scanner = VoiceQualityScanner(self.api_client)
-            
-            # STEP 1: Automatic quality scan
-            self.logger.info(
-                f"🔍 Scanning voice quality for {context.identifier}..."
+        # SIMPLIFIED: Materials.yaml should already have voice-enhanced content
+        # This method now just adds voice metadata
+        # Voice enhancement happens BEFORE export via scripts/voice/enhance_materials_voice.py
+        
+        if '_metadata' not in frontmatter_data:
+            frontmatter_data['_metadata'] = {}
+        
+        # Extract country - FAIL-FAST if missing
+        if 'country' not in author_data:
+            raise ValueError(
+                "Author data missing 'country' field. "
+                "All authors must have country defined."
             )
-            
-            issues, total_scanned, failed_count = scanner.scan_text_fields(
-                frontmatter_data,
-                author_data
-            )
-            
-            if failed_count == 0:
-                self.logger.info(
-                    f"✅ Voice quality passed: {total_scanned} fields scanned, all clean"
-                )
-            else:
-                # STEP 2: Automatic repair triggered
-                self.logger.warning(
-                    f"🚨 Voice quality issues detected: {failed_count}/{total_scanned} fields failed"
-                )
-                
-                for issue in issues[:5]:  # Show top 5 issues
-                    self.logger.warning(
-                        f"   - {issue['field_path']}: {issue['score']:.1f}/100"
-                    )
-                    for problem in issue['issues'][:2]:
-                        self.logger.warning(f"     • {problem}")
-                
-                # STEP 3: Automatic repair in source YAML (content-agnostic)
-                self.logger.info(
-                    f"🔧 Triggering automatic repair in source YAML ({self.content_type})..."
-                )
-                self.logger.info(f"   Found {len(issues)} issues to repair")
-                
-                # Create content-agnostic repairer
-                repairer = SourceDataRepairer.create_for_content_type(
-                    api_client=self.api_client,
-                    content_type=self.content_type
-                )
-                
-                repairs_successful = 0
-                repairs_failed = 0
-                
-                for issue in issues:
-                    if issue['failed']:
-                        self.logger.info(f"   Attempting repair of {issue['field_path']}...")
-                        fixed_text, success = repairer.repair_field(
-                            identifier=context.identifier,
-                            field_path=issue['field_path'],
-                            current_text=issue.get('text_preview', ''),
-                            author_data=author_data
-                        )
-                        
-                        if success:
-                            repairs_successful += 1
-                            # Apply fix to frontmatter_data using field path
-                            try:
-                                self._update_field_by_path(
-                                    frontmatter_data,
-                                    issue['field_path'],
-                                    fixed_text
-                                )
-                                self.logger.info(f"   ✅ Applied fix to {issue['field_path']}")
-                            except Exception as e:
-                                self.logger.warning(f"   ⚠️  Failed to apply fix to {issue['field_path']}: {e}")
-                                repairs_failed += 1
-                                repairs_successful -= 1
-                        else:
-                            repairs_failed += 1
-                
-                if repairs_failed > 0:
-                    self.logger.error(
-                        f"❌ {repairs_failed} field(s) could not be repaired automatically"
-                    )
-                    # Continue anyway - some fields may be fixed
-                else:
-                    self.logger.info(
-                        f"✅ All {repairs_successful} field(s) repaired successfully in Materials.yaml"
-                    )
-            
-            validated_data = frontmatter_data  # Return validated/repaired data
-            
-            # Inject voice metadata
-            if '_metadata' not in validated_data:
-                validated_data['_metadata'] = {}
-            
-            # Extract country - FAIL-FAST if missing
-            if 'country' not in author_data:
-                raise ValueError(
-                    "Author data missing 'country' field. "
-                    "All authors must have country defined."
-                )
-            author_country = author_data['country']
-            
-            validated_data['_metadata']['voice'] = {
-                'author_name': author_data.get('name', 'Unknown'),
-                'author_country': author_country,
-                'voice_applied': True,
-                'voice_validated': True,
-                'quality_issues_detected': failed_count,
-                'total_fields_scanned': total_scanned,
-                'content_type': self.content_type
-            }
-            
-            self.logger.info(
-                f"✅ Voice quality gate complete for {context.identifier} "
-                f"({author_country} author, {total_scanned} fields scanned)"
-            )
-            
-            return validated_data
-            
-        except Exception as e:
-            # Voice processing failure should not block generation
-            # Log error and return original data
-            self.logger.error(f"Author voice processing failed: {e}")
-            return frontmatter_data
-    
-    def _update_field_by_path(
-        self,
-        data: Dict,
-        field_path: str,
-        new_value: str
-    ):
-        """
-        Update a field in nested dict using dot-notation path with array indexing.
         
-        Supports paths like:
-        - "caption" → data['caption'] = new_value
-        - "images.hero.alt" → data['images']['hero']['alt'] = new_value
-        - "faq[0].answer" → data['faq'][0]['answer'] = new_value
+        author_country = author_data['country']
         
-        Args:
-            data: Data dictionary to update
-            field_path: Dot-notation path (e.g., "faq[1].answer", "images.hero.alt")
-            new_value: New value to set
-        """
-        import re
+        frontmatter_data['_metadata']['voice'] = {
+            'author_name': author_data.get('name', 'Unknown'),
+            'author_country': author_country,
+            'voice_applied': True,
+            'content_type': self.content_type
+        }
         
-        # Parse path into parts (handle array indexing)
-        parts = []
-        for part in field_path.split('.'):
-            # Check for array indexing like "faq[0]"
-            match = re.match(r'(\w+)\[(\d+)\]', part)
-            if match:
-                parts.append(match.group(1))  # field name
-                parts.append(int(match.group(2)))  # array index
-            else:
-                parts.append(part)
+        self.logger.info(
+            f"✅ Voice metadata added for {context.identifier} ({author_country} author)"
+        )
         
-        # Navigate to parent object
-        current = data
-        for part in parts[:-1]:
-            if isinstance(part, int):
-                current = current[part]
-            else:
-                if part not in current:
-                    current[part] = {}
-                current = current[part]
-        
-        # Set final value
-        final_key = parts[-1]
-        if isinstance(final_key, int):
-            current[final_key] = new_value
-        else:
-            current[final_key] = new_value
+        return frontmatter_data
     
     def _process_text_fields(
         self,
