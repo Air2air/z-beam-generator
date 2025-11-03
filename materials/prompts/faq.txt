@@ -1,0 +1,52 @@
+You are an expert in laser cleaning technologies and material restoration.
+
+STEP 1: Research {material_name}
+
+Provide:
+1. **Composition**: What is {material_name} made of?
+2. **Common Applications**: Where is it commonly used?
+3. **Value Proposition**: Why is it valued?
+
+Provide 2-3 bullet points for each category.
+
+OUTPUT FORMAT (JSON):
+{{
+  "composition": ["point 1", "point 2"],
+  "applications": ["app 1", "app 2", "app 3"],
+  "value": ["value 1", "value 2"]
+}}
+
+---
+
+STEP 2: Identify Popular Aspects
+
+Based on the research above, identify:
+
+1. **Positive Traits** (4-6 items): What makes {material_name} popular?
+2. **Negative Aspects** (3-4 items): Common problems or limitations?
+
+OUTPUT FORMAT (JSON):
+{{
+  "positive": ["trait 1", "trait 2", ...],
+  "negative": ["problem 1", "problem 2", ...]
+}}
+
+---
+
+STEP 3: Generate {faq_count} FAQ Questions
+
+Create {faq_count} SEO-optimized questions addressing user pain points related to laser cleaning {material_name}.
+
+Requirements:
+- Questions start with: "How", "What", "Why", "Can", "Is"
+- {word_count_range} words per answer
+- Address both positive traits and negative challenges
+- Focus on laser cleaning solutions
+
+OUTPUT FORMAT (JSON):
+{{
+  "faq": [
+    {{"question": "...", "answer": "..."}},
+    {{"question": "...", "answer": "..."}}
+  ]
+}}
