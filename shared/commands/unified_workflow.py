@@ -38,12 +38,13 @@ def _validate_material_completeness(material_name: str, material_data: Dict) -> 
     Inline validation of material data completeness.
     
     Returns:
-        Dict with validation results including missing properties
+        Dict with validation results including missing properties and range violations
     """
     validation = {
         'complete': True,
         'missing': [],
-        'warnings': []
+        'warnings': [],
+        'range_violations': []
     }
     
     # Check critical sections
@@ -87,7 +88,128 @@ def _validate_material_completeness(material_name: str, material_data: Dict) -> 
             if value is None or value == '':
                 validation['warnings'].append(f"machineSettings.{setting} is null/empty")
     
+    # NEW: Validate property values are within category min/max ranges
+    range_violations = _validate_property_ranges(material_name, material_data)
+    validation['range_violations'] = range_violations
+    
+    if range_violations:
+        validation['warnings'].append(f"Found {len(range_violations)} properties outside category ranges")
+    
     return validation
+
+
+def _validate_property_ranges(material_name: str, material_data: Dict) -> list:
+    """
+    Validate that property values fall within their category min/max ranges.
+    
+    Returns:
+        List of violations with details
+    """
+    violations = []
+    
+    try:
+        # Load Categories.yaml to get category ranges
+        from pathlib import Path
+        import yaml
+        
+        categories_path = Path("materials/data/Categories.yaml")
+        if not categories_path.exists():
+            return violations
+        
+        with open(categories_path, 'r', encoding='utf-8') as f:
+            categories_data = yaml.safe_load(f)
+        
+        if not categories_data or 'categories' not in categories_data:
+            return violations
+        
+        # Determine material category
+        material_category = material_data.get('category')
+        if not material_category:
+            return violations
+        
+        # Get category ranges for this material type
+        category_info = categories_data['categories'].get(material_category)
+        if not category_info or 'category_ranges' not in category_info:
+            return violations
+        
+        category_ranges = category_info['category_ranges']
+        
+        # Check materialProperties
+        material_props = material_data.get('materialProperties', {})
+        
+        # Check both category groups and root-level properties
+        for category_group in ['material_characteristics', 'laser_material_interaction']:
+            group_data = material_props.get(category_group, {})
+            if isinstance(group_data, dict):
+                for prop_name, prop_value in group_data.items():
+                    if prop_name == 'label':
+                        continue
+                    
+                    _check_property_range(
+                        prop_name, prop_value, category_ranges, 
+                        material_name, violations
+                    )
+        
+        # Also check root-level properties (for materials not yet normalized)
+        for prop_name, prop_value in material_props.items():
+            if prop_name in ['material_characteristics', 'laser_material_interaction']:
+                continue
+            
+            _check_property_range(
+                prop_name, prop_value, category_ranges,
+                material_name, violations
+            )
+        
+    except Exception as e:
+        # Don't fail validation on range check errors
+        print(f"⚠️  Range validation error: {e}")
+    
+    return violations
+
+
+def _check_property_range(prop_name: str, prop_value: Any, category_ranges: Dict, 
+                         material_name: str, violations: list) -> None:
+    """Helper to check a single property against its category range."""
+    if not isinstance(prop_value, dict):
+        return
+    
+    # Get the actual value
+    value = prop_value.get('value')
+    if value is None:
+        return
+    
+    # Check if this property has a category range
+    prop_range = category_ranges.get(prop_name)
+    if not prop_range or not isinstance(prop_range, dict):
+        return
+    
+    range_min = prop_range.get('min')
+    range_max = prop_range.get('max')
+    
+    # Skip if range is null (intentionally unbounded)
+    if range_min is None or range_max is None:
+        return
+    
+    # Convert value to float for comparison
+    try:
+        value_float = float(value)
+        min_float = float(range_min)
+        max_float = float(range_max)
+        
+        # Check if value is outside range
+        if value_float < min_float or value_float > max_float:
+            violations.append({
+                'material': material_name,
+                'property': prop_name,
+                'value': value_float,
+                'min': min_float,
+                'max': max_float,
+                'unit': prop_value.get('unit', ''),
+                'outside_by': min(abs(value_float - min_float), abs(value_float - max_float))
+            })
+    except (ValueError, TypeError):
+        # Skip properties that can't be converted to float
+        pass
 
 
 def _research_missing_properties_inline(material_name: str, missing_sections: list) -> bool:
@@ -309,6 +431,7 @@ def _validate_content_quality_inline(material_name: str, material_data: Dict) ->
 def run_material_workflow(
     material_name: str,
     skip_validation: bool = False,
+    skip_research: bool = False,
     skip_generation: bool = False,
     skip_voice: bool = False,
     skip_export: bool = False
@@ -329,6 +452,7 @@ def run_material_workflow(
     Args:
         material_name: Name of material
         skip_validation: Skip all validation steps (NOT RECOMMENDED)
+        skip_research: Skip property research (validation still runs)
         skip_generation: Skip text generation if already exists
         skip_voice: Skip voice enhancement if already applied
         skip_export: Skip frontmatter export if not needed
@@ -404,6 +528,20 @@ def run_material_workflow(
                 print("✅ All category ranges are complete")
                 step_results['data_validation']['category_ranges_complete'] = True
             
+            # Display range violations
+            if validation.get('range_violations'):
+                print(f"\n⚠️  Found {len(validation['range_violations'])} properties outside category ranges:")
+                for violation in validation['range_violations'][:10]:  # Show first 10
+                    value = violation['value']
+                    min_val = violation['min']
+                    max_val = violation['max']
+                    unit = violation['unit']
+                    prop = violation['property']
+                    print(f"   • {prop}: {value}{unit} (range: {min_val}-{max_val}{unit})")
+                if len(validation['range_violations']) > 10:
+                    print(f"   ... and {len(validation['range_violations']) - 10} more")
+                print("   ℹ️  Range violations may indicate research errors or category range issues")
+            
             if validation['complete']:
                 print("\n✅ All critical material data present")
                 validation_success = True
@@ -412,31 +550,36 @@ def run_material_workflow(
                 for missing in validation['missing']:
                     print(f"   • {missing}")
                 
-                # ====================================================================
-                # STEP 1: AUTO-REMEDIATION RESEARCH (INLINE)
-                # ====================================================================
-                print("\n" + "="*80)
-                print("STEP 1: AUTO-REMEDIATION RESEARCH (INLINE)")
-                print("="*80 + "\n")
-                
-                research_success = _research_missing_properties_inline(
-                    material_name, 
-                    validation['missing']
-                )
-                
-                step_results['research']['triggered'] = True
-                step_results['research']['success'] = research_success
-                
-                if research_success:
-                    print("✅ Property research completed - Materials.yaml updated")
-                    # Reload material data after research
-                    from materials.data.materials import load_materials as reload_materials, get_material_by_name as get_mat
-                    materials = reload_materials()
-                    material_data = get_mat(material_name, materials)
+                if skip_research:
+                    print("\n⏭️  Skipping auto-remediation research (--skip-research flag)")
+                    print("⚠️  Data gaps remain - continuing anyway")
                     validation_success = True
                 else:
-                    print("⚠️  Research had issues - continuing anyway")
-                    validation_success = True  # Don't block workflow
+                    # ====================================================================
+                    # STEP 1: AUTO-REMEDIATION RESEARCH (INLINE)
+                    # ====================================================================
+                    print("\n" + "="*80)
+                    print("STEP 1: AUTO-REMEDIATION RESEARCH (INLINE)")
+                    print("="*80 + "\n")
+                    
+                    research_success = _research_missing_properties_inline(
+                        material_name, 
+                        validation['missing']
+                    )
+                    
+                    step_results['research']['triggered'] = True
+                    step_results['research']['success'] = research_success
+                    
+                    if research_success:
+                        print("✅ Property research completed - Materials.yaml updated")
+                        # Reload material data after research
+                        from materials.data.materials import load_materials as reload_materials, get_material_by_name as get_mat
+                        materials = reload_materials()
+                        material_data = get_mat(material_name, materials)
+                        validation_success = True
+                    else:
+                        print("⚠️  Research had issues - continuing anyway")
+                        validation_success = True  # Don't block workflow
             
             # Show warnings if any
             if validation.get('warnings'):

@@ -139,6 +139,7 @@ def main():
     
     # Workflow Control Flags
     parser.add_argument("--skip-validation", action="store_true", help="Skip validation/research step")
+    parser.add_argument("--skip-research", action="store_true", help="Skip property research (validation still runs)")
     parser.add_argument("--skip-generation", action="store_true", help="Skip text generation step")
     parser.add_argument("--skip-voice", action="store_true", help="Skip voice enhancement step")
     parser.add_argument("--skip-export", action="store_true", help="Skip frontmatter export step")
@@ -197,6 +198,7 @@ def main():
         result = run_material_workflow(
             args.run,
             skip_validation=args.skip_validation,
+            skip_research=args.skip_research,
             skip_generation=args.skip_generation,
             skip_voice=args.skip_voice,
             skip_export=args.skip_export
