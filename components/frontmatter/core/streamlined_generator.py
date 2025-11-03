@@ -597,16 +597,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             author_info = self._generate_author(material_data)
             frontmatter.update(author_info)
             
-            # Apply author voice transformation to text fields
-            try:
-                self.logger.info("🎭 Preparing author voice transformation...")
-                voice_profile = self._get_author_voice_profile(author_info)
-                self.logger.info(f"🎭 Voice profile loaded for {voice_profile['country']}")
-                frontmatter = self._apply_author_voice_to_text_fields(frontmatter, voice_profile)
-                self.logger.info(f"✨ Applied {voice_profile['country']} voice transformation")
-            except Exception as e:
-                self.logger.error(f"❌ Voice transformation failed: {e}", exc_info=True)
-            
             # Add caption section - check ai_text_fields first, then generate if needed
             caption_data = self._get_caption_from_ai_fields(material_data, material_name)
             if caption_data:
@@ -622,6 +612,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 # FAQ is a list of {question, answer} dicts
                 faq_count = len(faq_data) if isinstance(faq_data, list) else len(faq_data.get('questions', []))
                 self.logger.info(f"✅ Including FAQ section ({faq_count} questions)")
+            
+            # Apply author voice transformation to text fields (including FAQ)
+            try:
+                self.logger.info("🎭 Preparing author voice transformation...")
+                voice_profile = self._get_author_voice_profile(author_info)
+                self.logger.info(f"🎭 Voice profile loaded for {voice_profile['country']}")
+                frontmatter = self._apply_author_voice_to_text_fields(frontmatter, voice_profile)
+                self.logger.info(f"✨ Applied {voice_profile['country']} voice transformation")
+                
+                # Note: Voice metadata is added by base_generator.apply_author_voice()
+                # This ensures consistent metadata handling across all content types
+            except Exception as e:
+                self.logger.error(f"❌ Voice transformation failed: {e}", exc_info=True)
             
             return frontmatter
             
@@ -1303,13 +1306,21 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         try:
             from components.frontmatter.utils.author_manager import get_author_by_id
             
-            # Use author.id from materials.yaml
-            author_id = None
-            if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
-                author_id = material_data['author']['id']
-            else:
-                author_id = 3  # Default to Ikmanda Roswati
+            # Use author.id from materials.yaml - FAIL-FAST if missing
+            if 'author' not in material_data:
+                raise PropertyDiscoveryError(
+                    "Material missing 'author' field in Materials.yaml. "
+                    "All materials must have author.id defined."
+                )
             
+            author_field = material_data['author']
+            if not isinstance(author_field, dict) or 'id' not in author_field:
+                raise PropertyDiscoveryError(
+                    "Material author must be dict with 'id' field. "
+                    "Add author.id to Materials.yaml for this material."
+                )
+            
+            author_id = author_field['id']
             author_info = get_author_by_id(author_id)
             
             if not author_info:
@@ -1318,7 +1329,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             
             # Filter out internal fields (persona_file, formatting_file) before returning
             # These are for prompt construction only, not for frontmatter export
-            public_fields = {'id', 'name', 'country', 'country_display', 'title', 'sex', 'expertise', 'image'}
+            public_fields = {'id', 'name', 'country', 'title', 'sex', 'expertise', 'image'}
             filtered_author = {k: v for k, v in author_info.items() if k in public_fields}
             
             return {
@@ -1340,7 +1351,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             Voice profile dictionary with country and linguistic characteristics
         """
         author = author_info.get('author', {})
-        country = author.get('country', 'United States')
+        # Extract country - FAIL-FAST if missing
+        if 'country' not in author:
+            raise ValueError(
+                "Author missing 'country' field. "
+                "All authors must have country defined in registry."
+            )
+        country = author['country']
         
         # Map country to voice profiles
         voice_profiles = {
@@ -1451,6 +1468,21 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                             metric_item['description'],
                             voice_profile
                         )
+            
+            # Transform FAQ questions and answers
+            if 'faq' in frontmatter and isinstance(frontmatter['faq'], list):
+                for faq_item in frontmatter['faq']:
+                    if isinstance(faq_item, dict):
+                        if 'question' in faq_item:
+                            faq_item['question'] = self._voice_transform_text(
+                                faq_item['question'],
+                                voice_profile
+                            )
+                        if 'answer' in faq_item:
+                            faq_item['answer'] = self._voice_transform_text(
+                                faq_item['answer'],
+                                voice_profile
+                            )
             
             self.logger.info("✅ Author voice applied successfully")
             return frontmatter

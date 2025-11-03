@@ -26,8 +26,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
     1: {
         "id": 1,
         "name": "Yi-Chun Lin",
-        "country": "taiwan",  # Normalized key for persona/formatting lookup
-        "country_display": "Taiwan",  # For display in frontmatter
+        "country": "Taiwan",  # Title case for voice profile lookup and display
         "title": "Ph.D.",
         "sex": "f",
         "expertise": "Laser Materials Processing",
@@ -38,8 +37,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
     2: {
         "id": 2,
         "name": "Alessandro Moretti",
-        "country": "italy",
-        "country_display": "Italy",
+        "country": "Italy",
         "title": "Ph.D.",
         "sex": "m",
         "expertise": "Laser-Based Additive Manufacturing",
@@ -50,8 +48,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
     3: {
         "id": 3,
         "name": "Ikmanda Roswati",
-        "country": "indonesia",
-        "country_display": "Indonesia",
+        "country": "Indonesia",
         "title": "Ph.D.",
         "sex": "m",
         "expertise": "Ultrafast Laser Physics and Material Interactions",
@@ -62,8 +59,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
     4: {
         "id": 4,
         "name": "Todd Dunning",
-        "country": "usa",
-        "country_display": "United States",
+        "country": "United States",
         "title": "MA",
         "sex": "m",
         "expertise": "Optical Materials for Laser Systems",
@@ -111,22 +107,6 @@ def get_country_normalized(author_id: int) -> AuthorCountry:
         KeyError: If author_id not in registry
     """
     return get_author(author_id)["country"]
-
-
-def get_country_display(author_id: int) -> str:
-    """
-    Get display-friendly country name for frontmatter.
-    
-    Args:
-        author_id: Author ID from Materials.yaml
-        
-    Returns:
-        Display country name: "Taiwan", "Italy", "Indonesia", or "United States"
-        
-    Raises:
-        KeyError: If author_id not in registry
-    """
-    return get_author(author_id)["country_display"]
 
 
 def get_persona_files(author_id: int) -> Tuple[str, str]:
@@ -235,7 +215,6 @@ __all__ = [
     "AUTHOR_REGISTRY",
     "get_author",
     "get_country_normalized",
-    "get_country_display",
     "get_persona_files",
     "validate_author_id",
     "list_valid_author_ids",

@@ -71,8 +71,8 @@ def list_authors() -> str:
     for author in authors:
         author_id = author.get("id", "?")
         name = author.get("name", "Unknown")
-        country_display = author.get("country_display", author.get("country", "Unknown"))
-        output.append(f"  {author_id:2d}. {name} ({country_display})")
+        country = author.get("country", "Unknown")
+        output.append(f"  {author_id:2d}. {name} ({country})")
 
     output.extend(
         [
@@ -123,8 +123,7 @@ def get_author_info_for_generation(author_id: Optional[int] = None) -> Dict[str,
 
     return {
         "name": author["name"],
-        "country": author["country"],  # Normalized key
-        "country_display": author.get("country_display", author["country"]),
+        "country": author["country"],
         "expertise": author["expertise"],
         "title": author.get("title", ""),
         "sex": author.get("sex", ""),
@@ -271,8 +270,7 @@ def get_author_info_for_material(
     # persona_file and formatting_file are for internal use only
     return {
         "name": author["name"],
-        "country": author["country"],  # Normalized key
-        "country_display": author.get("country_display", author["country"]),
+        "country": author["country"],
         "expertise": author["expertise"],
         "id": material_author_id,
         "sex": author.get("sex", ""),

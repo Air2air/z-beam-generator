@@ -230,13 +230,27 @@ def main():
                 print(f"   Supported types: {supported}")
                 return False
             
-            # TODO: Get author data from config or args
-            author_data = {
-                'name': 'Todd Dunning',
-                'country': 'United States'
-            }
+            # Get author data based on content type
+            # Reusable approach: Check content data first, then enrich from registry
+            author_data = None
+            if args.content_type == 'material':
+                # For materials, load author from material data and enrich from registry
+                from materials.data.materials import get_material_by_name_cached
+                from components.frontmatter.utils.author_manager import get_author_info_for_material
+                
+                material_data = get_material_by_name_cached(args.identifier)
+                if material_data:
+                    try:
+                        # This handles extraction + registry enrichment automatically
+                        author_data = get_author_info_for_material(material_data)
+                    except (ValueError, KeyError) as e:
+                        print(f"⚠️  Author assignment failed: {e}")
+                        # Let generator handle missing author (fail-fast)
+            # For other content types (region, application, thesaurus):
+            # Each can implement similar logic by checking their data files for author info
+            # then enriching with get_author_by_id() from registry
             
-            # Generate content with author voice
+            # Generate content with author voice (if author_data available)
             result = orchestrator.generate(
                 content_type=args.content_type,
                 identifier=args.identifier,
@@ -246,7 +260,8 @@ def main():
             if result.success:
                 output_path = result.content  # Output path stored in content field
                 print(f"✅ Generated → {output_path}")
-                print(f"   🎯 Author voice applied: {author_data['country']}")
+                if author_data:
+                    print(f"   🎯 Author voice applied: {author_data.get('country', 'Unknown')}")
                 return True
             else:
                 print(f"❌ Generation failed: {result.error_message}")
@@ -323,11 +338,18 @@ def main():
                     enforce_completeness=enforce_completeness
                 )
                 
-                # Author data (TODO: Make configurable)
-                author_data = {
-                    'name': 'Todd Dunning',
-                    'country': 'United States'
-                }
+                # Get author data from material data (reusable approach)
+                from materials.data.materials import get_material_by_name_cached
+                from components.frontmatter.utils.author_manager import get_author_info_for_material
+                
+                author_data = None
+                material_data = get_material_by_name_cached(args.material)
+                if material_data:
+                    try:
+                        author_data = get_author_info_for_material(material_data)
+                    except (ValueError, KeyError) as e:
+                        print(f"⚠️  Author assignment failed: {e}")
+                        # Let generator handle missing author (fail-fast)
                 
                 result = orchestrator.generate(
                     content_type='material',
@@ -338,7 +360,8 @@ def main():
                 if result.success:
                     output_path = result.content  # Output path stored in content field
                     print(f"✅ Generated → {output_path}")
-                    print(f"   🎯 Author voice applied: {author_data['country']}")
+                    if author_data:
+                        print(f"   🎯 Author voice applied: {author_data.get('country', 'Unknown')}")
                     return True
                 else:
                     print(f"❌ Generation failed: {result.error_message}")

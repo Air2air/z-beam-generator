@@ -695,6 +695,64 @@ class VoicePostProcessor:
             'action_required': 'enhance',
             'details': details
         }
+    
+    def _regenerate_in_english(self, text: str, author: Dict[str, str]) -> str:
+        """
+        Regenerate non-English text in English using AI.
+        
+        This is a FAIL-FAST approach: If text is not in English, we regenerate it
+        entirely using AI rather than attempting translation. This ensures:
+        1. Content is factually accurate (not mistranslated)
+        2. Text flows naturally in English
+        3. Technical terminology is correct
+        
+        Args:
+            text: Non-English text to regenerate
+            author: Author dict with country info (for context)
+            
+        Returns:
+            Regenerated English text
+            
+        Raises:
+            ValueError: If regeneration fails
+        """
+        prompt = f"""The following text was written in a non-English language, but must be in English.
+Regenerate this text in clear, professional English while preserving the technical accuracy and meaning.
+
+CRITICAL REQUIREMENTS:
+- Output MUST be in English only
+- Preserve all technical details, numbers, and specifications
+- Maintain professional technical writing style
+- Do NOT include any non-English words or phrases
+- Keep similar length to original ({len(text.split())} words)
+
+Original text:
+{text}
+
+Regenerated English text:"""
+
+        try:
+            response = self.api_client.generate_text(
+                prompt=prompt,
+                temperature=self.temperature,
+                max_tokens=len(text.split()) * 3  # Allow flexibility
+            )
+            
+            if not response or not response.strip():
+                raise ValueError("API returned empty response")
+            
+            # Validate the regenerated text is actually English
+            validation = self.detect_language(response)
+            if validation['language'] != 'english':
+                raise ValueError(
+                    f"AI regeneration failed: Output is still in {validation['language']}, not English"
+                )
+            
+            return response.strip()
+            
+        except Exception as e:
+            logger.error(f"Failed to regenerate text in English: {e}")
+            raise ValueError(f"English regeneration failed: {e}")
         
     def enhance(
         self,
@@ -743,12 +801,23 @@ class VoicePostProcessor:
             return text
         
         if validation['action_required'] == 'translate':
-            logger.error(
-                f"❌ CRITICAL: Text is in {validation['details']['language']['language']}, "
-                f"not English. Translation required before voice enhancement."
+            detected_lang = validation['details']['language']['language']
+            logger.warning(
+                f"⚠️  Text is in {detected_lang}, not English. "
+                f"Regenerating in English using AI..."
             )
-            logger.error(f"   Detected words: {', '.join(validation['details']['language']['indicators'][:5])}")
-            return text
+            logger.info(f"   Detected words: {', '.join(validation['details']['language']['indicators'][:5])}")
+            
+            # Regenerate text in English using AI
+            try:
+                text = self._regenerate_in_english(text, author)
+                logger.info(f"✅ Successfully regenerated text in English")
+            except Exception as e:
+                logger.error(f"❌ Failed to regenerate text in English: {e}")
+                raise ValueError(
+                    f"Text is in {detected_lang} and automatic translation failed. "
+                    f"Manual intervention required."
+                )
         
         if validation['action_required'] == 'reprocess':
             logger.warning(
@@ -871,8 +940,31 @@ Write the enhanced text now:"""
             if validation and 'details' in validation and 'authenticity' in validation['details']:
                 original_marker_count = len(validation['details']['authenticity'].get('found_markers', []))
             
+            # 🆕 POST-ENHANCEMENT QUALITY VALIDATION
+            # Check if enhanced text meets quality standards (no excessive duplication)
+            quality_check = self.score_voice_authenticity(
+                enhanced, author, voice_indicators
+            )
+            
+            quality_score = quality_check['authenticity_score']
+            quality_issues = quality_check.get('issues', [])
+            
+            # Quality threshold: minimum 70 points
+            # This catches: repeated markers, excessive markers, clustering, etc.
+            if quality_score < 70:
+                logger.warning(
+                    f"🚨 POST-ENHANCEMENT QUALITY CHECK FAILED: {quality_score:.1f}/100"
+                )
+                logger.warning("   Issues detected:")
+                for issue in quality_issues[:5]:  # Show top 5 issues
+                    logger.warning(f"   - {issue}")
+                logger.warning("   ⚠️  Rejecting enhanced text due to quality violations")
+                logger.warning("   ✅ Keeping original text instead")
+                return text
+            
             if len(new_markers) > original_marker_count:
                 logger.info(f"✅ Voice enhanced: {original_marker_count} → {len(new_markers)} markers")
+                logger.info(f"✅ Quality score: {quality_score:.1f}/100 ({quality_check['marker_quality']})")
                 return enhanced
             else:
                 logger.warning("⚠️  Enhancement didn't add markers - keeping original")
