@@ -73,19 +73,20 @@ class PropertyProcessor:
     
     def organize_properties_by_category(self, properties: Dict) -> Dict:
         """
-        Organize flat properties dict into hierarchical category structure.
+        Organize flat properties dict into flattened category structure.
         
         Args:
             properties: Flat dict of property_name -> property_data
             
         Returns:
-            Hierarchical structure:
+            Flattened structure (properties directly under category):
             {
                 'thermal': {
                     'label': 'Thermal Properties',
                     'description': '...',
                     'percentage': 29.1,
-                    'properties': { thermalConductivity: {...}, meltingPoint: {...} }
+                    'thermalConductivity': {...},
+                    'meltingPoint': {...}
                 },
                 'mechanical': { ... },
                 ...
@@ -106,28 +107,29 @@ class PropertyProcessor:
                 category_id = self.categorizer.get_category(prop_name)
                 
                 if category_id:
-                    # Add to appropriate category
+                    # Add to appropriate category (FLATTENED structure)
                     if category_id not in categorized:
                         categorized[category_id] = {
                             'label': category_metadata.get(category_id, {}).get('label', 
                                                           category_id.replace('_', ' ').title()),
                             'description': category_metadata.get(category_id, {}).get('description', ''),
-                            'percentage': category_metadata.get(category_id, {}).get('percentage', 0),
-                            'properties': {}
+                            'percentage': category_metadata.get(category_id, {}).get('percentage', 0)
                         }
-                    categorized[category_id]['properties'][prop_name] = prop_data
+                    # Properties directly under category (flattened)
+                    categorized[category_id][prop_name] = prop_data
                 else:
                     # Track uncategorized properties
                     uncategorized[prop_name] = prop_data
             
-            # Add uncategorized properties to 'other' category if any exist
+            # Add uncategorized properties to 'other' category if any exist (FLATTENED)
             if uncategorized:
                 categorized['other'] = {
                     'label': 'Other Properties',
                     'description': 'Additional material-specific properties',
-                    'percentage': 0,
-                    'properties': uncategorized
+                    'percentage': 0
                 }
+                # Add properties directly to category (flattened)
+                categorized['other'].update(uncategorized)
                 self.logger.info(f"Found {len(uncategorized)} uncategorized properties")
             
             self.logger.info(f"Organized {len(properties)} properties into {len(categorized)} categories")

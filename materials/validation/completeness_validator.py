@@ -260,9 +260,11 @@ class CompletenessValidator:
         properties = set()
         
         for category_name, category_data in material_properties.items():
-            # GROUPED structure: category_data has 'properties' key for nested properties
-            if isinstance(category_data, dict) and 'properties' in category_data:
-                for prop_name, prop_data in category_data['properties'].items():
+            # FLATTENED structure: properties are directly under category_data
+            if isinstance(category_data, dict):
+                for prop_name, prop_data in category_data.items():
+                    if prop_name == 'label':  # Skip label field
+                        continue
                     properties.add(prop_name)
                     
                     # Handle nested thermalDestruction structure
@@ -284,7 +286,7 @@ class CompletenessValidator:
         legacy = {}
         
         for category_name, category_data in material_properties.items():
-            if not isinstance(category_data, dict) or 'properties' not in category_data:
+            if not isinstance(category_data, dict):
                 continue
             
             # Skip if already in material_characteristics
@@ -292,8 +294,9 @@ class CompletenessValidator:
                 continue
             
             qualitative_props = []
-            for prop_name in category_data['materialProperties'].keys():
-                if is_qualitative_property(prop_name):
+            # Properties are directly under category_data (flattened structure)
+            for prop_name in category_data.keys():
+                if prop_name != 'label' and is_qualitative_property(prop_name):
                     qualitative_props.append(prop_name)
             
             if qualitative_props:
@@ -306,10 +309,13 @@ class CompletenessValidator:
         unvalidated = []
         
         for category_name, category_data in material_properties.items():
-            if not isinstance(category_data, dict) or 'materialProperties' not in category_data:
+            if not isinstance(category_data, dict):
                 continue
             
-            for prop_name, prop_data in category_data['materialProperties'].items():
+            # Properties are directly under category_data (flattened structure)
+            for prop_name, prop_data in category_data.items():
+                if prop_name == 'label':  # Skip label field
+                    continue
                 if not isinstance(prop_data, dict):
                     continue
                 

@@ -186,7 +186,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Initialize PropertyValueResearcher (only if API client available)
         if self.api_client:
             try:
-                self.property_researcher = PropertyValueResearcher(api_client=self.api_client, debug_mode=False)
+                self.property_researcher = PropertyValueResearcher(api_client=self.api_client)
                 self.logger.info("PropertyValueResearcher initialized for comprehensive property discovery (GROK compliant - no fallbacks)")
             except Exception as e:
                 self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
@@ -378,7 +378,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 success=True
             )
         except Exception as e:
+            import traceback
             self.logger.error(f"Frontmatter generation failed for {material_name}: {str(e)}")
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
             return ComponentResult(
                 component_type="frontmatter",
                 content="",
@@ -606,11 +608,17 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # REFACTORED: Use PropertyManager for discovery + research (Step 1)
             if self.property_manager:
                 material_category = material_data.get('category', 'metal')
-                # Merge unified properties with existing properties from YAML
-                existing_properties = material_data.get('materialProperties', {})
-                for prop_type, props in unified_properties.items():
-                    if prop_type == 'properties':
-                        existing_properties.update(props)
+                # Load existing properties from materials.yaml (flattened structure)
+                existing_properties = {}
+                material_props = material_data.get('materialProperties', {})
+                for group_name, group_data in material_props.items():
+                    if isinstance(group_data, dict):
+                        for prop_name, prop_value in group_data.items():
+                            if prop_name != 'label' and isinstance(prop_value, dict):
+                                existing_properties[prop_name] = prop_value
+                
+                self.logger.info(f"📦 Loaded {len(existing_properties)} existing properties from materials.yaml")
+                
                 # Use PropertyManager for complete discovery → research → categorization pipeline
                 research_result = self.property_manager.discover_and_research_properties(
                     material_name=material_name,
@@ -684,7 +692,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Add FAQ section if available in Materials.yaml
             if 'faq' in material_data:
                 frontmatter['faq'] = material_data['faq']
-                faq_count = len(material_data['faq'].get('questions', []))
+                faq_data = material_data['faq']
+                # FAQ is a list of {question, answer} dicts
+                faq_count = len(faq_data) if isinstance(faq_data, list) else len(faq_data.get('questions', []))
                 self.logger.info(f"✅ Including FAQ section ({faq_count} questions)")
             
             return frontmatter

@@ -566,6 +566,23 @@ Example: 2.7|g/cm³|95|CRC Handbook
         }
         
         return aliases.get(property_name, property_name)
+    
+    def discover_all_material_properties(self, material_name: str, material_category: str = None) -> Dict[str, Dict[str, Any]]:
+        """
+        Backward compatibility method for comprehensive property discovery.
+        
+        In data-only mode (materials.yaml complete), returns empty dict.
+        Generator will use existing YAML data instead of AI discovery.
+        
+        Args:
+            material_name: Name of material to research
+            material_category: Material category (metal, ceramic, etc.)
+            
+        Returns:
+            Empty dict (data-only mode - use materials.yaml)
+        """
+        self.logger.info(f"discover_all_material_properties called for {material_name} - data-only mode, returning empty")
+        return {}
 
 
 # ============================================================================
