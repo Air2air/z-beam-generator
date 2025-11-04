@@ -296,7 +296,14 @@ class PropertyTaxonomy:
             Tier string: 'core', 'common', or 'specialized'
         """
         for tier, tier_data in self.usage_tiers.items():
-            if property_name in tier_data.get('properties', []):
+            # Tier data is just a list of property names, not nested
+            if isinstance(tier_data, dict):
+                props = tier_data.get('properties', [])
+            elif isinstance(tier_data, list):
+                props = tier_data
+            else:
+                props = []
+            if property_name in props:
                 return tier
         return 'specialized'  # Default for properties not in core/common
     

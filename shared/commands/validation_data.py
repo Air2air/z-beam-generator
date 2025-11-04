@@ -131,14 +131,23 @@ def run_data_validation(report_file = None) -> bool:
                 for material_item in materials_in_category:
                     material_name = material_item.get('name')
                     
-                    # Ensure properties exist
-                    if 'properties' not in material_item:
-                        material_item['properties'] = {}
+                    # Ensure materialProperties structure exists (flat, per frontmatter_template.yaml)
+                    if 'materialProperties' not in material_item:
+                        material_item['materialProperties'] = {
+                            'material_characteristics': {'label': 'Material Characteristics'},
+                            'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                        }
                         materials_updated = True
+                    
+                    # Determine target category group for this property (simplified - use material_characteristics)
+                    target_group = 'material_characteristics'
+                    mat_props = material_item['materialProperties']
+                    if target_group not in mat_props:
+                        mat_props[target_group] = {'label': 'Material Characteristics'}
                     
                     # Add missing critical properties with default values from category ranges
                     for prop_name, range_data in category_ranges.items():
-                        if prop_name not in material_item['properties']:
+                        if prop_name not in mat_props[target_group] or prop_name in ['label', 'description', 'percentage']:
                             try:
                                 # Handle different range data formats
                                 if isinstance(range_data, dict):
@@ -162,7 +171,8 @@ def run_data_validation(report_file = None) -> bool:
                                 
                                 default_value = (min_val + max_val) / 2
                                 
-                                material_item['properties'][prop_name] = {
+                                # Add directly to target_group (flat structure)
+                                mat_props[target_group][prop_name] = {
                                     'value': default_value,
                                     'unit': unit,
                                     'min': min_val,
@@ -209,13 +219,20 @@ def run_data_validation(report_file = None) -> bool:
                     
                     category = material_index[material_name]
                     
-                    # Find material properties in Materials.yaml
+                    # Find material properties in Materials.yaml (flat structure)
                     updated_properties = {}
+                    metadata_keys = {'label', 'description', 'percentage'}
                     materials_section = updated_materials_data['materials']
                     if category in materials_section:
                         for item in materials_section[category]['items']:
                             if item['name'] == material_name:
-                                updated_properties = item.get('properties', {})
+                                # Extract from materialProperties (flat structure)
+                                mat_props = item.get('materialProperties', {})
+                                for cat in ['material_characteristics', 'laser_material_interaction']:
+                                    cat_data = mat_props.get(cat, {})
+                                    if isinstance(cat_data, dict):
+                                        updated_properties.update({k: v for k, v in cat_data.items() 
+                                                                  if k not in metadata_keys})
                                 break
                     
                     if not updated_properties:
