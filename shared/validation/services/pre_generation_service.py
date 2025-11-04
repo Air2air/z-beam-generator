@@ -339,10 +339,10 @@ class PreGenerationValidationService:
                 # Two-category system validation
                 material_name = frontmatter_data.get('name', file_path.stem)
                 
-                # Extract property categories (look for laser_material_interaction, material_characteristics, other)
+                # Extract property categories (ONLY laser_material_interaction, material_characteristics per template)
                 property_categories = {}
                 for key in frontmatter_data.keys():
-                    if key in ['laser_material_interaction', 'material_characteristics', 'other']:
+                    if key in ['laser_material_interaction', 'material_characteristics']:
                         property_categories[key] = frontmatter_data[key]
                 
                 if property_categories:

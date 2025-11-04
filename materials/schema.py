@@ -198,13 +198,30 @@ class MaterialContent(ContentSchema):
             if value is None or (isinstance(value, (list, dict, str)) and not value):
                 errors.append(f"Missing required field: {field_name}")
         
-        # Validate materialProperties structure
+        # Validate materialProperties structure (category groups per frontmatter_template.yaml)
         if self.materialProperties:
-            for prop_name, prop_data in self.materialProperties.items():
-                if not isinstance(prop_data, dict):
-                    errors.append(f"Invalid materialProperties.{prop_name}: must be dict")
-                elif 'value' not in prop_data and 'min' not in prop_data:
-                    errors.append(f"Invalid materialProperties.{prop_name}: missing value/min")
+            VALID_CATEGORIES = {'material_characteristics', 'laser_material_interaction'}
+            metadata_keys = {'label', 'description', 'percentage'}
+            
+            for category_name, category_data in self.materialProperties.items():
+                # Validate category names
+                if category_name not in VALID_CATEGORIES:
+                    errors.append(f"Invalid category '{category_name}' in materialProperties. Only {VALID_CATEGORIES} allowed")
+                    continue
+                
+                if not isinstance(category_data, dict):
+                    errors.append(f"Invalid materialProperties.{category_name}: must be dict")
+                    continue
+                
+                # Validate properties within category (exclude metadata)
+                for prop_name, prop_data in category_data.items():
+                    if prop_name in metadata_keys:
+                        continue  # Skip metadata keys
+                    
+                    if not isinstance(prop_data, dict):
+                        errors.append(f"Invalid materialProperties.{category_name}.{prop_name}: must be dict")
+                    elif 'value' not in prop_data and 'min' not in prop_data:
+                        errors.append(f"Invalid materialProperties.{category_name}.{prop_name}: missing value/min")
         
         # Validate machineSettings structure  
         if self.machineSettings:
