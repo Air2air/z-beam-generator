@@ -122,6 +122,40 @@ class PropertyManager:
         self.logger = logger
         self.materials_file = Path("materials/data/Materials.yaml")
     
+    # ===== HELPER METHODS =====
+    
+    def _determine_property_category(self, property_name: str) -> str:
+        """
+        Determine which category group a property belongs to.
+        
+        Uses Categories.yaml taxonomy to map properties to the 2 valid groups
+        per frontmatter_template.yaml:
+        - material_characteristics
+        - laser_material_interaction
+        
+        Args:
+            property_name: Name of the property (e.g., 'density', 'thermalConductivity')
+            
+        Returns:
+            Category group name ('material_characteristics' or 'laser_material_interaction')
+        """
+        try:
+            from materials.utils.property_categorizer import get_property_categorizer
+            categorizer = get_property_categorizer()
+            category_id = categorizer.get_category(property_name)
+            
+            # Map category IDs to materialProperties group names
+            # Laser-related categories -> laser_material_interaction
+            if category_id in ['laser_material_interaction', 'optical', 'laser_absorption']:
+                return 'laser_material_interaction'
+            # Everything else -> material_characteristics
+            else:
+                return 'material_characteristics'
+        except Exception as e:
+            self.logger.warning(f"Could not categorize property '{property_name}': {e}")
+            # Default to material_characteristics if categorization fails
+            return 'material_characteristics'
+    
     # ===== PERSISTENCE METHODS =====
     
     def persist_researched_properties(
@@ -170,26 +204,37 @@ class PropertyManager:
             
             material_entry = materials_data['materials'][material_name]
             
-            # Ensure materialProperties dict exists
+            # Ensure materialProperties has category groups (per frontmatter_template.yaml)
             if 'materialProperties' not in material_entry:
-                material_entry['materialProperties'] = {}
+                material_entry['materialProperties'] = {
+                    'material_characteristics': {'label': 'Material Characteristics'},
+                    'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                }
             
             # Update with researched properties
             updates_count = 0
             for prop_name, prop_data in researched_properties.items():
+                # Determine which category group this property belongs to
+                category_group = self._determine_property_category(prop_name)
+                
+                # Ensure category group exists
+                if category_group not in material_entry['materialProperties']:
+                    label = 'Material Characteristics' if category_group == 'material_characteristics' else 'Laser-Material Interaction'
+                    material_entry['materialProperties'][category_group] = {'label': label}
+                
                 # Only persist if not already in YAML or has higher confidence
-                existing = material_entry['materialProperties'].get(prop_name)
+                existing = material_entry['materialProperties'][category_group].get(prop_name)
                 
                 if existing is None:
-                    # New property - add it
-                    material_entry['materialProperties'][prop_name] = prop_data
+                    # New property - add it to correct category group
+                    material_entry['materialProperties'][category_group][prop_name] = prop_data
                     updates_count += 1
-                    self.logger.debug(f"  ✅ Added {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                    self.logger.debug(f"  ✅ Added {prop_name} to {category_group}: {prop_data.get('value')} {prop_data.get('unit')}")
                 elif existing.get('source') != 'ai_research':
                     # Existing property but not from AI - upgrade it
-                    material_entry['materialProperties'][prop_name] = prop_data
+                    material_entry['materialProperties'][category_group][prop_name] = prop_data
                     updates_count += 1
-                    self.logger.debug(f"  🔄 Updated {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                    self.logger.debug(f"  🔄 Updated {prop_name} in {category_group}: {prop_data.get('value')} {prop_data.get('unit')}")
                 else:
                     self.logger.debug(f"  ⏭️  Skipped {prop_name} (already has AI research)")
             

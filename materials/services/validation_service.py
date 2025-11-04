@@ -219,10 +219,13 @@ class ValidationService:
                 corrected_data['name'] = material_name
                 logger.info(f"Added missing name field: {material_name}")
             
-            # Ensure empty sections exist (safe correction)
-            if 'properties' not in corrected_data:
-                corrected_data['materialProperties'] = {}
-                logger.info("Added missing properties section")
+            # Ensure empty sections exist with correct structure (safe correction)
+            if 'materialProperties' not in corrected_data:
+                corrected_data['materialProperties'] = {
+                    'material_characteristics': {'label': 'Material Characteristics'},
+                    'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                }
+                logger.info("Added missing materialProperties section with category groups")
             
             if 'machineSettings' not in corrected_data:
                 corrected_data['machineSettings'] = {}
