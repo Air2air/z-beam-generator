@@ -1,7 +1,7 @@
 #!/bin/bash
 # Monitor the research progress in real-time
 
-LOG_FILE="/tmp/full_research_incremental.log"
+LOG_FILE="/tmp/research_restart_20251104_102110.log"
 
 echo "=== Research Process Monitor ==="
 echo ""
