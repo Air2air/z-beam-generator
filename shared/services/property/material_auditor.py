@@ -993,12 +993,13 @@ class MaterialAuditor:
                     if group_desc:
                         text_fields_to_check.append((f'materialProperties.{prop_group}.description', group_desc))
                     
-                    properties = group_data.get('properties', {})
-                    for prop_name, prop_data in properties.items():
-                        if isinstance(prop_data, dict):
+                    # Properties are directly in group_data (flat structure, excluding metadata)
+                    metadata_keys = {'label', 'description', 'percentage'}
+                    for prop_name, prop_data in group_data.items():
+                        if prop_name not in metadata_keys and isinstance(prop_data, dict):
                             prop_desc = prop_data.get('description', '')
                             if prop_desc:
-                                text_fields_to_check.append((f'materialProperties.{prop_group}.properties.{prop_name}.description', prop_desc))
+                                text_fields_to_check.append((f'materialProperties.{prop_group}.{prop_name}.description', prop_desc))
             
             # Analyze each text field
             for field_path, text_content in text_fields_to_check:

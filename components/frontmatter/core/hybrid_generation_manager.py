@@ -234,14 +234,20 @@ class HybridFrontmatterManager:
         frontmatter['category'] = material_data.get('category', 'materials').title()
         frontmatter['subcategory'] = material_data.get('subcategory', material_name.lower())
         
-        # Physical properties
-        if 'properties' in material_data:
+        # Physical properties from materialProperties (flat structure)
+        mat_props = material_data.get('materialProperties', {})
+        if mat_props:
             if 'properties' not in frontmatter:
                 frontmatter['properties'] = {}
             
-            for prop_name, prop_value in material_data['properties'].items():
-                if isinstance(prop_value, (int, float)):
-                    frontmatter['properties'][prop_name] = prop_value
+            # Collect properties from both category groups (excluding metadata)
+            metadata_keys = {'label', 'description', 'percentage'}
+            for category in ['material_characteristics', 'laser_material_interaction']:
+                cat_data = mat_props.get(category, {})
+                if isinstance(cat_data, dict):
+                    for prop_name, prop_value in cat_data.items():
+                        if prop_name not in metadata_keys and isinstance(prop_value, (int, float)):
+                            frontmatter['properties'][prop_name] = prop_value
         
         # Applications from industryTags
         if 'material_metadata' in material_data:
@@ -369,13 +375,23 @@ Generate only the subtitle text, no quotes or explanations."""
     def _build_description_prompt(self, material_name: str, material_data: Dict, context: Dict) -> str:
         """Build prompt for description generation"""
         category = material_data.get('category', 'material')
+        
+        # Extract properties from materialProperties (flat structure)
+        mat_props = material_data.get('materialProperties', {})
+        properties = {}
+        metadata_keys = {'label', 'description', 'percentage'}
+        for cat in ['material_characteristics', 'laser_material_interaction']:
+            cat_data = mat_props.get(cat, {})
+            if isinstance(cat_data, dict):
+                properties.update({k: v for k, v in cat_data.items() if k not in metadata_keys})
+        
         return f"""Generate a professional description for laser cleaning {material_name}.
 
 Context:
 - Material: {material_name}
 - Category: {category}
 - Applications: {context.get('applications', [])}
-- Properties: {material_data.get('properties', {})}
+- Properties: {properties}
 
 Requirements:
 - 20-40 words

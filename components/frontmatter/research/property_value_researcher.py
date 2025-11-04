@@ -346,8 +346,19 @@ class PropertyValueResearcher:
             material_data = get_material_by_name(material_name)
             if not material_data:
                 return None
-                
-            properties = material_data.get('properties', {})
+            
+            # Properties are in materialProperties → category groups (flat structure)
+            mat_props = material_data.get('materialProperties', {})
+            properties = {}
+            
+            # Collect all properties from both category groups (excluding metadata)
+            metadata_keys = {'label', 'description', 'percentage'}
+            for category in ['material_characteristics', 'laser_material_interaction']:
+                cat_data = mat_props.get(category, {})
+                if isinstance(cat_data, dict):
+                    properties.update({k: v for k, v in cat_data.items() 
+                                     if k not in metadata_keys})
+            
             if property_name not in properties:
                 return None
                 

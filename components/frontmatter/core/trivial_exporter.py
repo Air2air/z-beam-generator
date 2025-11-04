@@ -104,12 +104,15 @@ class TrivialFrontmatterExporter:
         
         # Build taxonomy mapping: property_name -> category_id
         self.property_taxonomy = {}
+        metadata_keys = {'label', 'description', 'percentage'}
         for cat_id in ['material_characteristics', 'laser_material_interaction']:
             if cat_id in categories:
                 cat_data = categories[cat_id]
-                props = cat_data.get('properties', [])
-                for prop in props:
-                    self.property_taxonomy[prop] = cat_id
+                # Properties are directly in category (flat structure, excluding metadata)
+                if isinstance(cat_data, dict):
+                    for prop in cat_data.keys():
+                        if prop not in metadata_keys:
+                            self.property_taxonomy[prop] = cat_id
                     
         self.logger.info(f"   Taxonomy maps {len(self.property_taxonomy)} properties to categories")
     
