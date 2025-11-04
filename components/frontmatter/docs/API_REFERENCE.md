@@ -111,7 +111,7 @@ images = generator._generate_images_section("Aluminum")
 #   },
 #   'micro': {
 #     'alt': 'Microscopic view of Aluminum surface after laser cleaning showing detailed surface structure', 
-#     #     'url': '/images/material/aluminum-laser-cleaning-micro.jpg'
+#     #     'url': '/images/material/aluminum--laser-cleaning-micro.jpg'
 # }
 #   }
 # }
@@ -119,7 +119,7 @@ images = generator._generate_images_section("Aluminum")
 
 **Image URL Patterns:**
 - Hero images: `/images/{material-name}-laser-cleaning-hero.jpg`
-- Micro images: `/images/{material-name}-laser-cleaning-micro.jpg`
+- Micro images: `/images/{material-name}--laser-cleaning-micro.jpg`
 - Material names are converted to lowercase and spaces become hyphens
 
 **Alt Text Patterns:**

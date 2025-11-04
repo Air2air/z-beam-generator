@@ -1,62 +1,57 @@
 name: Bronze
-category: Metal
+category: metal
 subcategory: non-ferrous
 title: Bronze Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Bronze
+subtitle: Precision laser cleaning restores Bronze's golden patina without thermal damage
 description: Laser cleaning parameters for Bronze
 author:
-  id: 1
-  name: Yi-Chun Lin
   country: Taiwan
-  title: Ph.D.
-  sex: f
-  expertise: Laser Materials Processing
+  expertise: Precision Laser Engineering
+  id: 1
   image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
 images:
   hero:
-    alt: Bronze surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Bronze surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/bronze-laser-cleaning-hero.jpg
   micro:
-    alt: Bronze surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
-    url: /images/material/bronze-microscopic-before-after.jpg
+    alt: Bronze microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/bronze--laser-cleaning-micro.jpg
 caption:
-  before: High-resolution scanning electron micrograph depicting a contaminated bronze
-    surface before laser cleaning, which reveals a thick, heterogeneous layer of adherent
-    particulates—particularly silica dust, organic residues, and copper oxide corrosion
-    products. Notably, pronounced pitting, microcracking, and irregular topography
-    indicate prolonged environmental degradation.
-  after: The scanning electron micrograph of the bronze surface after laser cleaning
-    notably reveals a uniformly restored, contaminant-free morphology, featuring smooth
-    topography, preserved alloy microstructure, intact grain boundaries, and minimal
-    thermal alteration, thereby confirming high-fidelity restoration and structural
-    integrity at the sub-micron scale.
+  before: Under the microscope, the bronze surface shows a heavily contaminated condition, with fine dust particles and greenish oxide deposits clinging tightly. This surface, it reveals pitting from corrosion, and uneven degradation that dulls the metal's natural sheen, signaling material wear.
+  after: After laser cleaning, the bronze surface regains its smooth texture and warm golden tone, free from dirt and oxidation. This restoration preserves the material's integrity, with no pitting or discoloration. It demonstrates even coverage, enhancing durability for everyday use and display.
+  author: Yi-Chun Lin
+  character_count:
+    after: 288
+    before: 286
+  generated: '2025-10-25T14:03:34.554739Z'
+  generation_method: ai_research
+  word_count:
+    after: 41
+    before: 40
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- image: /images/logo/logo-org-fda.png
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
   name: FDA
   url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- image: /images/logo/logo-org-ansi.png
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
   name: ANSI
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  description: ANSI Z136.1 - Safe Use of Lasers
-- image: /images/logo/logo-org-iec.png
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
   longName: International Electrotechnical Commission
   name: IEC
   url: https://webstore.iec.ch/publication/3587
-  description: IEC 60825 - Safety of Laser Products
-- image: /images/logo/logo-org-osha.png
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
   longName: Occupational Safety and Health Administration
   name: OSHA
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -105,7 +100,6 @@ materialProperties:
       unit: scale 1-10
       min: 1
       max: 10
-    percentage: 50.0
   laser_material_interaction:
     label: Laser-Material Interaction
     thermalConductivity:
@@ -153,7 +147,6 @@ materialProperties:
       unit: J/cm²
       min: 0.1
       max: 20.0
-    percentage: 50.0
 machineSettings:
   powerRange:
     unit: W
@@ -201,50 +194,35 @@ machineSettings:
     min: 10
     max: 90
 faq:
-- question: How can I clean rust from bronze statues without damaging the natural
-    patina?
-  answer: Laser ablation precisely targets oxidation layers on copper-tin alloys,
-    vaporizing contaminants while preserving the protective oxide film. This non-contact
-    method avoids abrasives or harsh chemicals, maintaining structural integrity and
-    aesthetic value in heritage pieces up to 800 MPa tensile strength.
-- question: What's the best way to maintain bronze marine hardware exposed to saltwater?
-  answer: Regular laser cleaning removes salt deposits and pitting from aluminum variants,
-    enhancing corrosion resistance without residue. It outperforms manual scrubbing
-    by preventing crevice buildup, ensuring longevity for fittings like propellers
-    in harsh marine conditions.
-- question: Why use laser cleaning for bronze sculptures instead of traditional methods?
-  answer: Pulsed laser systems offer micron-level precision, eliminating dirt and
-    stains from cast surfaces without mechanical stress or chemical residue. Unlike
-    sandblasting, it safeguards the alloy's wear-resistant properties and golden hue
-    in historical restorations.
-- question: Is laser cleaning safe for delicate bronze artifacts in museums?
-  answer: Yes, low-fluence lasers selectively ablate surface impurities from phosphor
-    bronze compositions, avoiding thermal damage to underlying conductivity and strength.
-    This technique minimizes porosity risks, ideal for preserving electrical connectors
-    and ornate elements in controlled environments.
-- question: How do I remove dirt accumulation from porous bronze architectural elements?
-  answer: Advanced laser technology vaporizes embedded particles in tin-enhanced alloys,
-    restoring smoothness without altering the solid solution matrix. It provides superior
-    control over traditional wiping, reducing staining and enhancing durability in
-    outdoor heritage sites.
-- question: Can laser cleaning address uneven patina on bronze monuments?
-  answer: Targeted irradiation normalizes oxide layers on high-tin bronzes, promoting
-    uniform protective coatings while removing pollutants. This method excels over
-    acids by preserving tensile strengths to 800 MPa and the material's warm aesthetic
-    in polluted atmospheres.
-- question: What's effective for treating pitting corrosion on bronze boat components?
-  answer: Fiber laser systems efficiently dissolve localized corrosion in copper-aluminum
-    blends, halting further degradation without invasive tools. It boosts resistance
-    in saltwater exposure, outperforming electrolysis by maintaining precision for
-    gears and bearings in industrial use.
-- question: How to clean bronze gears in machinery without causing wear?
-  answer: Non-ablative laser pulses clear contaminants from phosphor-enhanced surfaces,
-    upholding electrical conductivity and friction resistance. This approach surpasses
-    solvents by preventing porosity issues, ensuring reliable performance in high-load
-    applications up to 800 MPa.
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+  questions:
+  - question: How can I clean rust from bronze statues without damaging the natural patina?
+    answer: Laser ablation precisely targets oxidation layers on copper-tin alloys, vaporizing contaminants while preserving the protective oxide film. This non-contact method avoids abrasives or harsh chemicals, maintaining structural integrity and aesthetic value in heritage pieces up to 800 MPa tensile strength.
+  - question: What's the best way to maintain bronze marine hardware exposed to saltwater?
+    answer: Regular laser cleaning removes salt deposits and pitting from aluminum variants, enhancing corrosion resistance without residue. It outperforms manual scrubbing by preventing crevice buildup, ensuring longevity for fittings like propellers in harsh marine conditions.
+  - question: Why use laser cleaning for bronze sculptures instead of traditional methods?
+    answer: Pulsed laser systems offer micron-level precision, eliminating dirt and stains from cast surfaces without mechanical stress or chemical residue. Unlike sandblasting, it safeguards the alloy's wear-resistant properties and golden hue in historical restorations.
+  - question: Is laser cleaning safe for delicate bronze artifacts in museums?
+    answer: Yes, low-fluence lasers selectively ablate surface impurities from phosphor bronze compositions, avoiding thermal damage to underlying conductivity and strength. This technique minimizes porosity risks, ideal for preserving electrical connectors and ornate elements in controlled environments.
+  - question: How do I remove dirt accumulation from porous bronze architectural elements?
+    answer: Advanced laser technology vaporizes embedded particles in tin-enhanced alloys, restoring smoothness without altering the solid solution matrix. It provides superior control over traditional wiping, reducing staining and enhancing durability in outdoor heritage sites.
+  - question: Can laser cleaning address uneven patina on bronze monuments?
+    answer: Targeted irradiation normalizes oxide layers on high-tin bronzes, promoting uniform protective coatings while removing pollutants. This method excels over acids by preserving tensile strengths to 800 MPa and the material's warm aesthetic in polluted atmospheres.
+  - question: What's effective for treating pitting corrosion on bronze boat components?
+    answer: Fiber laser systems efficiently dissolve localized corrosion in copper-aluminum blends, halting further degradation without invasive tools. It boosts resistance in saltwater exposure, outperforming electrolysis by maintaining precision for gears and bearings in industrial use.
+  - question: How to clean bronze gears in machinery without causing wear?
+    answer: Non-ablative laser pulses clear contaminants from phosphor-enhanced surfaces, upholding electrical conductivity and friction resistance. This approach surpasses solvents by preventing porosity issues, ensuring reliable performance in high-load applications up to 800 MPa.
+  generated: '2025-10-29T12:36:16.695994'
+  question_count: 8
+  total_words: 276
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921726Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921734Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+  character_count: 79
+  generated: '2025-10-25T21:00:06.718034Z'
+  generation_method: ai_research_voice
+  word_count: 10

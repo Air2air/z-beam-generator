@@ -72,7 +72,7 @@ images:
   micro:
     alt: Bronze microscopic view of laser cleaning showing detailed precise contamination
       removal
-    url: /images/material/bronze-laser-cleaning-micro.jpg
+    url: /images/material/bronze--laser-cleaning-micro.jpg
 machineSettings:
   energyDensity:
     confidence: 1.0

@@ -20,6 +20,32 @@
 5. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
 6. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
 
+---
+
+## 🚨 CRITICAL: Fix Root Causes, Not Symptoms
+
+**If frontmatter files have issues, fix the GENERATOR, not the GENERATED files.**
+
+### The Problem with Temporary Fixes
+Creating "fix scripts" that patch frontmatter files directly is **TEMPORARY** because:
+- Frontmatter is **GENERATED FROM** Materials.yaml + Categories.yaml via trivial_exporter.py
+- Every `--deploy` regenerates all files from source
+- Patches get **OVERWRITTEN** on next deployment
+
+### The Correct Approach
+1. ✅ Fix `components/frontmatter/core/trivial_exporter.py` to generate correct structure
+2. ✅ Run `python3 run.py --deploy --no-completeness-check` to regenerate ALL files
+3. ✅ Verify fixes persist after regeneration
+4. ❌ NEVER create one-off scripts that modify frontmatter/*.yaml directly
+
+### Example: Machine Settings Missing Min/Max
+- ❌ WRONG: Script that adds min/max to 112 frontmatter files → next deploy overwrites
+- ✅ RIGHT: Fix `_enrich_machine_settings()` in exporter → redeploy → permanent fix
+
+**Documentation**: See "Fix Root Causes, Not Symptoms" section in `.github/copilot-instructions.md`
+
+---
+
 ### 🆕 Data Structure Update (October 25, 2025)
 
 **Regulatory Standards**: Now structured objects instead of strings

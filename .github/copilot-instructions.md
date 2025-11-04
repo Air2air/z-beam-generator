@@ -415,6 +415,27 @@ When suggesting code changes:
 7. Prioritize changing existing components, not creating new ones
 8. **ASK PERMISSION before removing any existing code**
 
+### 🚨 CRITICAL: Fix Root Causes, Not Symptoms
+
+**THE PROBLEM WITH TEMPORARY FIXES:**
+If you create a "fix script" that patches frontmatter files directly, the fix will be **OVERWRITTEN** on the next `--deploy` because:
+1. Frontmatter is **GENERATED FROM** Materials.yaml + Categories.yaml
+2. The exporter code runs on every deployment
+3. Patching output files is **TEMPORARY** - they get regenerated
+
+**THE CORRECT APPROACH:**
+1. ✅ **Fix the exporter code** (`components/frontmatter/core/trivial_exporter.py`) to ALWAYS generate correct structure
+2. ✅ **Regenerate all frontmatter** with `--deploy` to apply the fix
+3. ✅ **Verify the fix persists** by checking files after regeneration
+4. ❌ **NEVER create one-off patch scripts** that modify frontmatter files directly
+
+**EXAMPLE - Machine Settings Missing Min/Max:**
+- ❌ WRONG: Create script to add min/max to existing frontmatter files
+- ✅ RIGHT: Fix `_enrich_machine_settings()` in trivial_exporter.py, then redeploy
+- WHY: Next deployment would overwrite the patched files with incomplete data
+
+**RULE: If frontmatter has an issue, fix the GENERATOR, not the GENERATED files.**
+
 ---
 
 ## 🤖 AI-Specific Guidance
@@ -451,12 +472,14 @@ When suggesting code changes:
 - [ ] I've explored the existing architecture
 - [ ] I've checked git history for context
 - [ ] I've planned the minimal fix needed
+- [ ] **I've identified if this is a GENERATOR issue or DATA issue**
 
 **During implementation:**
 - [ ] I'm making only the requested changes
 - [ ] I'm preserving all working functionality
 - [ ] I'm following existing patterns and conventions
 - [ ] I'm including proper error handling
+- [ ] **If fixing frontmatter: I'm fixing the EXPORTER, not patching files**
 
 **For text component work:**
 - [ ] I've read the documentation in `components/text/docs/`
@@ -470,3 +493,4 @@ When suggesting code changes:
 - [ ] The solution is complete and secure
 - [ ] I haven't expanded beyond the requested scope
 - [ ] No production mocks or fallbacks were introduced
+- [ ] **If I fixed a generator: I've regenerated the output and verified persistence**

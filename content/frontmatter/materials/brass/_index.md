@@ -50,7 +50,7 @@ images:
   micro:
     alt: Brass microscopic view of laser cleaning showing detailed precise contamination
       removal
-    url: /images/material/brass-laser-cleaning-micro.jpg
+    url: /images/material/brass--laser-cleaning-micro.jpg
 machineSettings:
   energyDensity:
     confidence: 1.0

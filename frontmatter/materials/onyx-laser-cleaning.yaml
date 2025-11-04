@@ -18,14 +18,10 @@ images:
     url: /images/material/onyx-laser-cleaning-hero.jpg
   micro:
     alt: Onyx microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/onyx-laser-cleaning-micro.jpg
+    url: /images/material/onyx--laser-cleaning-micro.jpg
 caption:
-  before: Microscopy of the contaminated Onyx surface shows a layer of fine dust particles and oily residues clinging to its
-    pores. These contaminants, mostly mineral-based and unevenly distributed, cause subtle discoloration and block natural
-    sheen. The stone exhibits early degradation with micro-pitting and faint scratches, and this affects its durability in
-    everyday cleaning uses.
-  after: This cleaned Onyx surface reveals a restored polish and even texture. It maintains strong material integrity, and
-    the restoration quality supports long-term durability.
+  before: Microscopy of the contaminated Onyx surface shows a layer of fine dust particles and oily residues clinging to its pores. These contaminants, mostly mineral-based and unevenly distributed, cause subtle discoloration and block natural sheen. The stone exhibits early degradation with micro-pitting and faint scratches, and this affects its durability in everyday cleaning uses.
+  after: This cleaned Onyx surface reveals a restored polish and even texture. It maintains strong material integrity, and the restoration quality supports long-term durability.
   author: Yi-Chun Lin
   character_count:
     after: 168
@@ -56,179 +52,87 @@ regulatoryStandards:
   longName: Occupational Safety and Health Administration
   name: OSHA
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-applications:
-- Cultural Heritage
-- Architecture and Construction
-- Luxury Goods Manufacturing
-- Art and Sculpture
-- Interior Design
-- Museum Conservation
-- Religious Artifacts
-- Lapidary and Gemology
-- Furniture Manufacturing
-- Monument Restoration
 materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness of natural stones in the historical built environment.
-          Environmental Earth Sciences, 75(9), 783.
-        unit: MPa·√m
-        value: 0.7
+    fractureToughness:
+      ai_verified: true
+      source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness of natural stones in the historical built environment. Environmental Earth Sciences, 75(9), 783.
+      unit: MPa·√m
+      value: 0.7
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
-    properties: {}
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: crystalline crystal structure
-    source: ai_research
-    unit: crystal system
-    value: crystalline
 machineSettings:
   powerRange:
-    description: Optimal average power for Onyx surface cleaning without thermal damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   wavelength:
-    description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface damage
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
-    description: Beam spot diameter for precise cleaning resolution
     unit: μm
     value: 50
+    min: 0.1
+    max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate damage
     unit: J/cm²
     value: 5.1
+    min: 0.1
+    max: 20.0
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     unit: ns
     value: 10
+    min: 0.1
+    max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
     value: 500
+    min: 10
+    max: 5000
   passCount:
-    description: Recommended number of passes for complete contaminant removal
     unit: passes
     value: 3
+    min: 1
+    max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     unit: '%'
     value: 50
+    min: 10
+    max: 90
   dwellTime:
-    description: Optimal dwell time per spot for effective cleaning
     unit: μs
     value: 200
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- description: Percentage of target contaminants successfully removed from surface
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  metric: Contaminant Removal Efficiency
-  typicalRanges: 95-99.9% depending on application and material
-  units: []
-- description: Rate of surface area processed per unit time
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Processing Speed
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- description: Maintenance of original surface characteristics after cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Surface Quality Preservation
-  units: []
-- description: Prevention of heat-related material alterations during cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Thermal Damage Avoidance
-  units: []
 faq:
   questions:
-  - answer: Laser cleaning Onyx, a nylon composite with carbon fiber, requires careful fluence control near 5.1 J/cm². The
-      process risks generating hazardous hydrogen cyanide gas from the polymer matrix. Therefore, robust fume extraction and
-      certified respiratory protection are absolutely mandatory for operator safety during this procedure.
+  - answer: Laser cleaning Onyx, a nylon composite with carbon fiber, requires careful fluence control near 5.1 J/cm². The process risks generating hazardous hydrogen cyanide gas from the polymer matrix. Therefore, robust fume extraction and certified respiratory protection are absolutely mandatory for operator safety during this procedure.
     question: Is Onyx safe to laser clean, or does it produce hazardous fumes?
-  - answer: For Onyx, use a 1064nm wavelength at 100W average power with 10ns pulses. Maintain fluence below 5.1 J/cm² to
-      ablate soot while preserving the stone's integrity. A 50μm spot size scanned at 500mm/s effectively removes contaminants
-      without thermal damage.
-    question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning soot or oxidation from
-      Onyx without damaging the surface?
-  - answer: Yes, laser cleaning effectively removes support material from Onyx parts. Using a 1064 nm wavelength at 5.1 J/cm²
-      selectively ablates the polymer interface without etching the stone substrate, offering a significant advantage over
-      abrasive methods that risk surface scarring.
+  - answer: For Onyx, use a 1064nm wavelength at 100W average power with 10ns pulses. Maintain fluence below 5.1 J/cm² to ablate soot while preserving the stone's integrity. A 50μm spot size scanned at 500mm/s effectively removes contaminants without thermal damage.
+    question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning soot or oxidation from Onyx without damaging the surface?
+  - answer: Yes, laser cleaning effectively removes support material from Onyx parts. Using a 1064 nm wavelength at 5.1 J/cm² selectively ablates the polymer interface without etching the stone substrate, offering a significant advantage over abrasive methods that risk surface scarring.
     question: Can laser cleaning remove support material from 3D printed Onyx parts effectively?
-  - answer: For SLS Onyx, use 5.1 J/cm² to remove trapped powder from its porous surface. For FFF parts, a lower fluence at
-      500 mm/s effectively cleans layer lines without melting the polymer matrix. The key is adjusting energy for their distinct
-      surface topographies.
+  - answer: For SLS Onyx, use 5.1 J/cm² to remove trapped powder from its porous surface. For FFF parts, a lower fluence at 500 mm/s effectively cleans layer lines without melting the polymer matrix. The key is adjusting energy for their distinct surface topographies.
     question: How do you clean a laser-sintered Onyx (SLS) part versus a FFF-printed Onyx part with laser?
-  - answer: Properly controlled laser cleaning preserves Onyx's structural integrity. Using a 5.1 J/cm² fluence and 50 µm
-      spot size, we effectively ablate contaminants without inducing thermal stress or dimensional changes that could compromise
-      mechanical strength.
+  - answer: Properly controlled laser cleaning preserves Onyx's structural integrity. Using a 5.1 J/cm² fluence and 50 µm spot size, we effectively ablate contaminants without inducing thermal stress or dimensional changes that could compromise mechanical strength.
     question: Does laser cleaning affect the dimensional accuracy or mechanical strength of an Onyx part?
-  - answer: For Onyx, the carbon fibers readily absorb laser energy, requiring conservative settings like 5.1 J/cm² fluence
-      to prevent charring. This is more critical than for pure nylon, where higher energy can often be tolerated without such
-      thermal damage.
+  - answer: For Onyx, the carbon fibers readily absorb laser energy, requiring conservative settings like 5.1 J/cm² fluence to prevent charring. This is more critical than for pure nylon, where higher energy can often be tolerated without such thermal damage.
     question: What is the best way to clean carbon fiber-filled materials like Onyx compared to unfilled nylons?
-  - answer: Properly tuned laser cleaning with ~5.1 J/cm² fluence preserves Onyx's original polish. However, excessive energy
-      can induce a localized matte texture from micro-ablation. This purely cosmetic change may affect subsequent finishing
-      steps, requiring a light repolish for high-gloss applications.
+  - answer: Properly tuned laser cleaning with ~5.1 J/cm² fluence preserves Onyx's original polish. However, excessive energy can induce a localized matte texture from micro-ablation. This purely cosmetic change may affect subsequent finishing steps, requiring a light repolish for high-gloss applications.
     question: After laser cleaning Onyx, is the surface left with a different texture or color?
-  - answer: For Onyx laser cleaning, consult MSDS for silica content and adhere to OSHA 29 CFR 1910.134 for respiratory protection.
-      The 1064 nm wavelength at 5.1 J/cm² minimizes subsurface damage, but air monitoring is essential for crystalline silica
-      fume exposure, which requires specific PELs.
-    question: Are there any specific certifications or regulatory guidelines for laser cleaning composite materials like Onyx
-      in an industrial setting?
+  - answer: For Onyx laser cleaning, consult MSDS for silica content and adhere to OSHA 29 CFR 1910.134 for respiratory protection. The 1064 nm wavelength at 5.1 J/cm² minimizes subsurface damage, but air monitoring is essential for crystalline silica fume exposure, which requires specific PELs.
+    question: Are there any specific certifications or regulatory guidelines for laser cleaning composite materials like Onyx in an industrial setting?
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922296Z'
   normalization_applied: true

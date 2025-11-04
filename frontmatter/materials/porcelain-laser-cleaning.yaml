@@ -18,15 +18,10 @@ images:
     url: /images/material/porcelain-laser-cleaning-hero.jpg
   micro:
     alt: Porcelain microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/porcelain-laser-cleaning-micro.jpg
+    url: /images/material/porcelain--laser-cleaning-micro.jpg
 caption:
-  before: Under microscopy, the porcelain surface appears very-very rough and contaminated heavily. Fine particles scatter
-    and cluster, forming irregular layers that obscure the original smooth glaze. Contaminants show as dark, amorphous deposits—mostly
-    organic residues and mineral dusts—that adhere tightly, causing discoloration. Surface degradation is evident in micro-cracks
-    and pitting, where etching weakens the ceramic structure, so porosity increases then invites further soiling.
-  after: After ultrafast laser cleaning, the porcelain surface appears very-very smooth and glossy, restoring its original
-    clean-clean condition so well. The process removes contaminants then preserves the ceramic's fine texture, and material
-    integrity stays intact without cracks or alterations. Restoration quality is excellent for general applications.
+  before: Under microscopy, the porcelain surface appears very-very rough and contaminated heavily. Fine particles scatter and cluster, forming irregular layers that obscure the original smooth glaze. Contaminants show as dark, amorphous deposits—mostly organic residues and mineral dusts—that adhere tightly, causing discoloration. Surface degradation is evident in micro-cracks and pitting, where etching weakens the ceramic structure, so porosity increases then invites further soiling.
+  after: After ultrafast laser cleaning, the porcelain surface appears very-very smooth and glossy, restoring its original clean-clean condition so well. The process removes contaminants then preserves the ceramic's fine texture, and material integrity stays intact without cracks or alterations. Restoration quality is excellent for general applications.
   author: Ikmanda Roswati
   character_count:
     after: 346
@@ -57,192 +52,95 @@ regulatoryStandards:
   longName: Occupational Safety and Health Administration
   name: OSHA
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-applications:
-- Cultural Heritage
-- Medical Devices
-- Electronics Manufacturing
-- Aerospace
-- Energy Sector
-- Automotive Manufacturing
-- Food Processing
-- Chemical Processing
-- Semiconductor Manufacturing
 materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
-    properties:
-      electricalResistivity:
-        source: ai_research
-        unit: Ω·m
-        value: 10000000000000.0
-      fractureToughness:
-        ai_verified: true
-        source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties, Failure Behaviour, Materials Selection. Springer-Verlag.'
-        unit: MPa·√m
-        value: 1.0
+    electricalResistivity:
+      source: ai_research
+      unit: Ω·m
+      value: 10000000000000.0
+      min: 10000000000.0
+      max: 1.0e+16
+    fractureToughness:
+      ai_verified: true
+      source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties, Failure Behaviour, Materials Selection. Springer-Verlag.'
+      unit: MPa·√m
+      value: 1.0
+      min: 2
+      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
-    properties: {}
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: cubic crystal structure
-    source: ai_research
-    unit: crystal system
-    value: cubic
 machineSettings:
   powerRange:
-    description: Optimal average power for Porcelain surface cleaning without thermal damage
     unit: W
     value: 100
+    min: 1.0
+    max: 120
   wavelength:
-    description: Near-infrared wavelength optimized for Porcelain absorption and minimal substrate damage
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
-    description: Beam spot diameter for precise cleaning control on Porcelain surfaces
     unit: μm
     value: 100
+    min: 0.1
+    max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving Porcelain substrate
     unit: J/cm²
     value: 2.5
+    min: 0.1
+    max: 20.0
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     unit: ns
     value: 10
+    min: 0.1
+    max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning efficiency
     unit: mm/s
     value: 500
+    min: 10
+    max: 5000
   passCount:
-    description: Recommended number of passes for complete contaminant removal
     unit: passes
     value: 3
+    min: 1
+    max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
     unit: '%'
     value: 50
+    min: 10
+    max: 90
   dwellTime:
-    description: Optimal dwell time per spot for effective cleaning with thermal control
     unit: μs
     value: 100
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- description: Percentage of target contaminants successfully removed from surface
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  metric: Contaminant Removal Efficiency
-  typicalRanges: 95-99.9% depending on application and material
-  units: []
-- description: Rate of surface area processed per unit time
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Processing Speed
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- description: Maintenance of original surface characteristics after cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Surface Quality Preservation
-  units: []
-- description: Prevention of heat-related material alterations during cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Thermal Damage Avoidance
-  units: []
 faq:
   questions:
-  - answer: For historical porcelain, employ a 1064 nm wavelength with fluence below 2.5 J/cm² and nanosecond pulses. This
-      effectively ablates contaminants like soot while preserving the delicate glaze. Always validate these parameters on
-      a hidden area first to preclude any micro-cracking or gloss alteration.
-    question: What laser settings (wavelength, power, pulse duration) are safe and effective for cleaning soot, grime, or
-      biological growth from historical porcelain without damaging the glaze?
-  - answer: With optimal 2.5 J/cm² fluence and 100 µm spot size, a 1064 nm laser can selectively ablate metal staining from
-      porcelain. The glaze's high thermal shock resistance allows contaminants to be removed via rapid vaporization, avoiding
-      substrate etching that chemical poultices risk through prolonged contact.
-    question: Can a laser safely remove metal staining (like rust or bronze drips) from a porcelain surface without etching
-      or discoloring it?
-  - answer: Glazed porcelain's high reflectivity at 1064 nm creates significant stray radiation risks. Operators must use
-      wavelength-specific laser safety glasses, as the 2.5 J/cm² fluence needed for contaminant removal is largely reflected,
-      not absorbed, by the substrate.
-    question: How does the high reflectivity of a glazed porcelain surface affect the laser cleaning process and operator
-      safety?
-  - answer: Laser cleaning on crazed porcelain risks thermal stress propagation at fluences above 2.5 J/cm², potentially fusing
-      contaminants within micro-fractures. For such delicate pieces, I recommend alternative non-thermal methods to avoid
-      exacerbating existing hairline cracks.
-    question: Is laser cleaning suitable for porcelain with existing hairline cracks (crazing), or does it risk worsening
-      the damage?
-  - answer: Over-cleaning risks glaze ablation if fluence exceeds ~2.5 J/cm². Monitor for a high-pitched acoustic shift and
-      irreversible surface matting, indicating damage. The 1064 nm wavelength helps maintain this delicate threshold between
-      contaminant removal and preserving the substrate.
-    question: What is the risk of 'over-cleaning' or ablating the actual porcelain glaze when trying to remove a tenacious
-      contaminant?
-  - answer: Laser cleaning at 2.5 J/cm² with nanosecond pulses typically leaves a stable, non-invasive surface on porcelain.
-      For archaeological pieces exposed to weathering, a silica-based consolidant may be applied to ensure long-term stability
-      of the cleaned glaze.
+  - answer: For historical porcelain, employ a 1064 nm wavelength with fluence below 2.5 J/cm² and nanosecond pulses. This effectively ablates contaminants like soot while preserving the delicate glaze. Always validate these parameters on a hidden area first to preclude any micro-cracking or gloss alteration.
+    question: What laser settings (wavelength, power, pulse duration) are safe and effective for cleaning soot, grime, or biological growth from historical porcelain without damaging the glaze?
+  - answer: With optimal 2.5 J/cm² fluence and 100 µm spot size, a 1064 nm laser can selectively ablate metal staining from porcelain. The glaze's high thermal shock resistance allows contaminants to be removed via rapid vaporization, avoiding substrate etching that chemical poultices risk through prolonged contact.
+    question: Can a laser safely remove metal staining (like rust or bronze drips) from a porcelain surface without etching or discoloring it?
+  - answer: Glazed porcelain's high reflectivity at 1064 nm creates significant stray radiation risks. Operators must use wavelength-specific laser safety glasses, as the 2.5 J/cm² fluence needed for contaminant removal is largely reflected, not absorbed, by the substrate.
+    question: How does the high reflectivity of a glazed porcelain surface affect the laser cleaning process and operator safety?
+  - answer: Laser cleaning on crazed porcelain risks thermal stress propagation at fluences above 2.5 J/cm², potentially fusing contaminants within micro-fractures. For such delicate pieces, I recommend alternative non-thermal methods to avoid exacerbating existing hairline cracks.
+    question: Is laser cleaning suitable for porcelain with existing hairline cracks (crazing), or does it risk worsening the damage?
+  - answer: Over-cleaning risks glaze ablation if fluence exceeds ~2.5 J/cm². Monitor for a high-pitched acoustic shift and irreversible surface matting, indicating damage. The 1064 nm wavelength helps maintain this delicate threshold between contaminant removal and preserving the substrate.
+    question: What is the risk of 'over-cleaning' or ablating the actual porcelain glaze when trying to remove a tenacious contaminant?
+  - answer: Laser cleaning at 2.5 J/cm² with nanosecond pulses typically leaves a stable, non-invasive surface on porcelain. For archaeological pieces exposed to weathering, a silica-based consolidant may be applied to ensure long-term stability of the cleaned glaze.
     question: After laser cleaning porcelain, is any post-treatment or protective coating required to stabilize the surface?
-  - answer: Laser cleaning at 2.5 J/cm² effectively strips conductive salt layers from porcelain, restoring dielectric integrity.
-      Verification is achieved through leakage current measurements and hydrophobicity tests, offering a non-abrasive alternative
-      to traditional sandblasting that preserves the substrate.
-    question: For industrial porcelain (e.g., electrical insulators), can laser cleaning restore dielectric strength by removing
-      all conductive pollution, and how is effectiveness verified?
-  - answer: Hard-paste porcelain's superior thermal stability allows for higher fluence up to 2.5 J/cm². In contrast, soft-paste's
-      lower vitrification point and higher thermal expansion necessitate a more cautious approach with reduced power and meticulous
-      thermal control to prevent glaze damage and micro-fracturing. Material identification is therefore a critical first
-      step.
-    question: How do the different compositions of hard-paste vs. soft-paste porcelain affect the laser cleaning strategy
-      and risk assessment?
-  - answer: Laser cleaning excels for porcelain due to its non-contact precision, vital for intricate relief work. With a
-      fluence of 2.5 J/cm² and a 100 µm spot, we selectively ablate contaminants without mechanical abrasion or chemical residues.
-      This ensures the delicate ceramic substrate remains completely undamaged, preserving its structural and aesthetic integrity.
-    question: What are the key advantages of using a laser over chemical or mechanical (abrasive) methods for cleaning delicate
-      porcelain artifacts?
+  - answer: Laser cleaning at 2.5 J/cm² effectively strips conductive salt layers from porcelain, restoring dielectric integrity. Verification is achieved through leakage current measurements and hydrophobicity tests, offering a non-abrasive alternative to traditional sandblasting that preserves the substrate.
+    question: For industrial porcelain (e.g., electrical insulators), can laser cleaning restore dielectric strength by removing all conductive pollution, and how is effectiveness verified?
+  - answer: Hard-paste porcelain's superior thermal stability allows for higher fluence up to 2.5 J/cm². In contrast, soft-paste's lower vitrification point and higher thermal expansion necessitate a more cautious approach with reduced power and meticulous thermal control to prevent glaze damage and micro-fracturing. Material identification is therefore a critical first step.
+    question: How do the different compositions of hard-paste vs. soft-paste porcelain affect the laser cleaning strategy and risk assessment?
+  - answer: Laser cleaning excels for porcelain due to its non-contact precision, vital for intricate relief work. With a fluence of 2.5 J/cm² and a 100 µm spot, we selectively ablate contaminants without mechanical abrasion or chemical residues. This ensures the delicate ceramic substrate remains completely undamaged, preserving its structural and aesthetic integrity.
+    question: What are the key advantages of using a laser over chemical or mechanical (abrasive) methods for cleaning delicate porcelain artifacts?
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922474Z'
   normalization_applied: true

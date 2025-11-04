@@ -2130,7 +2130,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                 },
                 'micro': {
                     'alt': micro_alt,
-                    'url': f'/images/material/{material_slug}-microscopic-before-after.jpg'
+                    'url': f'/images/material/{material_slug}-laser-cleaning-micro.jpg'
                 }
             }
         except Exception as e:

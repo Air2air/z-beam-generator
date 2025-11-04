@@ -161,17 +161,36 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')
         category_ranges = self._get_category_ranges(category)
         
-        # Copy all fields from Materials.yaml
+        # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
+        EXPORTABLE_FIELDS = {
+            'category', 'subcategory', 'title', 'subtitle', 'description',
+            'author', 'images', 'caption', 'regulatoryStandards',
+            'materialProperties', 'machineSettings', 'faq',
+            'material_metadata', 'subtitle_metadata'
+        }
+        
+        # Copy only exportable fields from Materials.yaml
         for key, value in material_data.items():
+            if key not in EXPORTABLE_FIELDS:
+                # Skip fields that shouldn't be in frontmatter (applications, materialCharacteristics, environmentalImpact, outcomeMetrics, etc.)
+                continue
+            
             if key == 'materialProperties':
                 # Enrich material properties with min/max from category ranges
-                frontmatter[key] = self._enrich_material_properties(value, category_ranges)
+                enriched = self._enrich_material_properties(value, category_ranges)
+                # Remove description fields except from regulatoryStandards
+                frontmatter[key] = self._remove_descriptions(enriched, preserve_regulatory=False)
             elif key == 'machineSettings':
-                # Enrich machine settings with min/max from category ranges
-                frontmatter[key] = self._enrich_machine_settings(value, category_ranges)
-            else:
-                # Copy as-is
+                # Enrich machine settings with min/max from machine settings ranges
+                enriched = self._enrich_machine_settings(value, category_ranges)
+                # Remove description fields
+                frontmatter[key] = self._remove_descriptions(enriched, preserve_regulatory=False)
+            elif key == 'regulatoryStandards':
+                # Keep descriptions in regulatoryStandards
                 frontmatter[key] = value
+            else:
+                # Copy as-is but remove description fields
+                frontmatter[key] = self._remove_descriptions(value, preserve_regulatory=(key == 'regulatoryStandards'))
         
         # Write YAML file
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
@@ -320,6 +339,35 @@ class TrivialFrontmatterExporter:
             enriched['max'] = range_data['max']
         
         return enriched
+    
+    def _remove_descriptions(self, data: Any, preserve_regulatory: bool = False) -> Any:
+        """
+        Recursively remove 'description' fields from data structures.
+        
+        Args:
+            data: Data to process (dict, list, or other)
+            preserve_regulatory: If True, preserve descriptions (for regulatoryStandards only)
+        
+        Returns:
+            Data with description fields removed (except when preserve_regulatory=True)
+        """
+        if preserve_regulatory:
+            # Don't remove descriptions from regulatoryStandards
+            return data
+        
+        if isinstance(data, dict):
+            # Remove 'description' key and recurse into nested structures
+            return {
+                k: self._remove_descriptions(v, preserve_regulatory=False)
+                for k, v in data.items()
+                if k != 'description'
+            }
+        elif isinstance(data, list):
+            # Recurse into list items
+            return [self._remove_descriptions(item, preserve_regulatory=False) for item in data]
+        else:
+            # Return primitives as-is
+            return data
 
 
 def export_all_frontmatter() -> Dict[str, bool]:

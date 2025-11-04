@@ -18,16 +18,10 @@ images:
     url: /images/material/alabaster-laser-cleaning-hero.jpg
   micro:
     alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/alabaster-laser-cleaning-micro.jpg
+    url: /images/material/alabaster--laser-cleaning-micro.jpg
 caption:
-  before: Microscopic examination of the alabaster surface before laser cleaning discloses dense accumulation of fine carbonaceous
-    soot and siliceous particulates, inducing pronounced surface degradation with irregular pitting, microcracks, and localized
-    delamination. Embedded contaminants cause severe discoloration and erosion of the gypsum matrix, compromising structural
-    integrity at the grain interfaces.
-  after: Microscopy of the alabaster surface post-laser cleaning demonstrates high-fidelity restoration, featuring a smooth,
-    contaminant-free topography with preserved gypsum crystallite morphology and negligible thermal effects. The material
-    exhibits enhanced clarity, uniform reflectance, and intact microstructural integrity, validating effective conservation
-    without subsurface damage.
+  before: Microscopic examination of the alabaster surface before laser cleaning discloses dense accumulation of fine carbonaceous soot and siliceous particulates, inducing pronounced surface degradation with irregular pitting, microcracks, and localized delamination. Embedded contaminants cause severe discoloration and erosion of the gypsum matrix, compromising structural integrity at the grain interfaces.
+  after: Microscopy of the alabaster surface post-laser cleaning demonstrates high-fidelity restoration, featuring a smooth, contaminant-free topography with preserved gypsum crystallite morphology and negligible thermal effects. The material exhibits enhanced clarity, uniform reflectance, and intact microstructural integrity, validating effective conservation without subsurface damage.
   generated: '2025-10-29T15:24:23.205559Z'
   word_count_before: 48
   word_count_after: 41
@@ -53,173 +47,84 @@ regulatoryStandards:
   longName: Occupational Safety and Health Administration
   name: OSHA
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-applications:
-- Cultural Heritage
-- Aerospace
-- Medical
-- Electronics
-- Automotive
-- Marine
-- Manufacturing
-- Energy
-- Architecture
-- Art Conservation
 materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material
-      integrity
-    properties:
-      fractureToughness:
-        ai_verified: true
-        source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45, Issue 2, 2008, pp. 167-178, "Mechanical
-          characterization of weathering gypsum rocks (alabaster)" by M. S. Yagiz.
-        unit: MPa·√m
-        value: 0.35
+    fractureToughness:
+      ai_verified: true
+      source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering gypsum rocks (alabaster)" by M. S. Yagiz.
+      unit: MPa·√m
+      value: 0.35
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
-    properties: {}
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    description: crystalline crystal structure
-    source: ai_research
-    unit: crystal system
-    value: crystalline
 machineSettings:
   powerRange:
-    description: Optimal average power for Alabaster surface cleaning without thermal damage
     unit: W
     value: 45
+    min: 1.0
+    max: 120
   wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
-    description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
     unit: J/cm²
     value: 1.2
+    min: 0.3
+    max: 4.5
   pulseWidth:
-    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
     unit: ns
     value: 15
+    min: 0.1
+    max: 1000
   scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
     unit: mm/s
     value: 500
+    min: 10
+    max: 5000
   passCount:
-    description: Recommended number of passes for complete contaminant removal
     unit: passes
     value: 2
+    min: 1
+    max: 10
   overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
     unit: '%'
     value: 50
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- description: Percentage of target contaminants successfully removed from surface
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  metric: Contaminant Removal Efficiency
-  typicalRanges: 95-99.9% depending on application and material
-  units: []
-- description: Rate of surface area processed per unit time
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Processing Speed
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- description: Maintenance of original surface characteristics after cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Surface Quality Preservation
-  units: []
-- description: Prevention of heat-related material alterations during cleaning
-  factorsAffecting: []
-  measurementMethods: []
-  metric: Thermal Damage Avoidance
-  units: []
+    min: 10
+    max: 90
 faq:
   questions:
   - question: How can I safely clean dirt from my Alabaster sculpture without causing scratches?
-    answer: Employ laser ablation techniques to gently vaporize surface contaminants, preserving the material's low hardness
-      integrity. This non-contact method avoids mechanical abrasion, ensuring the artifact's smooth texture remains undamaged
-      while achieving precise restoration.
+    answer: Employ laser ablation techniques to gently vaporize surface contaminants, preserving the material's low hardness integrity. This non-contact method avoids mechanical abrasion, ensuring the artifact's smooth texture remains undamaged while achieving precise restoration.
   - question: What are effective ways to prevent moisture damage on Alabaster architectural elements?
-    answer: Store items in controlled humidity environments below 50% RH to mitigate dissolution risks from calcium sulfate.
-      For cleaning, opt for dry laser processes that eliminate pollutants without introducing liquids, maintaining structural
-      stability over time.
+    answer: Store items in controlled humidity environments below 50% RH to mitigate dissolution risks from calcium sulfate. For cleaning, opt for dry laser processes that eliminate pollutants without introducing liquids, maintaining structural stability over time.
   - question: How do I remove rust stains from Alabaster artifacts without harming their natural patina?
-    answer: Utilize pulsed laser systems at low fluence levels to selectively ablate iron oxide deposits, retaining the original
-      surface sheen. This approach outperforms solvents by preventing chemical reactions that could alter translucency or
-      cause discoloration.
+    answer: Utilize pulsed laser systems at low fluence levels to selectively ablate iron oxide deposits, retaining the original surface sheen. This approach outperforms solvents by preventing chemical reactions that could alter translucency or cause discoloration.
   - question: What best practices should I follow for handling Alabaster during restoration projects?
-    answer: Use padded supports and minimize direct contact to protect against abrasion due to Mohs 1.5-2 rating. Integrate
-      fiber laser cleaning for debris removal, offering superior precision over manual brushing and reducing handling-induced
-      fractures.
+    answer: Use padded supports and minimize direct contact to protect against abrasion due to Mohs 1.5-2 rating. Integrate fiber laser cleaning for debris removal, offering superior precision over manual brushing and reducing handling-induced fractures.
   - question: Is laser cleaning a good option for maintaining the translucency of oriental Alabaster carvings?
-    answer: Yes, short-pulse lasers effectively target impurities like silica without affecting the calcite structure's Mohs
-      3 hardness. Compared to traditional polishing, it preserves optical clarity and veined patterns, ideal for conservation
-      in museum settings.
+    answer: Yes, short-pulse lasers effectively target impurities like silica without affecting the calcite structure's Mohs 3 hardness. Compared to traditional polishing, it preserves optical clarity and veined patterns, ideal for conservation in museum settings.
   - question: How can I address discoloration in Alabaster from environmental pollutants?
-    answer: Apply Q-switched Nd:YAG lasers to break down oxide layers at 1064 nm wavelength, restoring uniform pigmentation.
-      This technique surpasses wet methods by avoiding porosity exacerbation, ensuring long-term aesthetic enhancement in
-      heritage sites.
+    answer: Apply Q-switched Nd:YAG lasers to break down oxide layers at 1064 nm wavelength, restoring uniform pigmentation. This technique surpasses wet methods by avoiding porosity exacerbation, ensuring long-term aesthetic enhancement in heritage sites.
   - question: What advantages does laser technology offer over chemical cleaners for Alabaster care?
-    answer: Laser methods provide non-invasive, residue-free surface renewal, bypassing solubility issues of gypsum varieties.
-      With adjustable energy densities, they enable targeted treatment for banded impurities, promoting durability without
-      the hazards of harsh reagents.
+    answer: Laser methods provide non-invasive, residue-free surface renewal, bypassing solubility issues of gypsum varieties. With adjustable energy densities, they enable targeted treatment for banded impurities, promoting durability without the hazards of harsh reagents.
   - question: Can Alabaster facade panels withstand laser restoration without structural weakening?
-    answer: Absolutely, controlled laser parameters under 1 J/cm² prevent thermal stress on soft sulfates, unlike abrasive
-      techniques that risk cracking. This preserves historical integrity for medieval elements while effectively removing
-      accumulated grime.
+    answer: Absolutely, controlled laser parameters under 1 J/cm² prevent thermal stress on soft sulfates, unlike abrasive techniques that risk cracking. This preserves historical integrity for medieval elements while effectively removing accumulated grime.
   generated: '2025-10-29T15:24:14.320608'
   question_count: 8
   total_words: 261
