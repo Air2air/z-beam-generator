@@ -163,7 +163,7 @@ class TrivialFrontmatterExporter:
         
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
-            'category', 'subcategory', 'title', 'subtitle', 'description',
+            'category', 'subcategory', 'title', 'subtitle',
             'author', 'images', 'caption', 'regulatoryStandards',
             'materialProperties', 'machineSettings', 'faq',
             'material_metadata', 'subtitle_metadata'

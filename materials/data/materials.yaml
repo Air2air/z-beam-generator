@@ -243,12 +243,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: International Journal of Rock Mechanics and Mining Sciences, Vol.
-            45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering
-            gypsum rocks (alabaster)" by M. S. Yagiz.
-          unit: MPa·√m
-          value: 0.35
+          value: 0.22
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 423.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2.32
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 0.98
+          unit: dimensionless (normalized scale 0-1)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.42
+          unit: ''
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 1.4e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.86
+          unit: W/(m·K)
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 12.5
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 2.0
+          unit: Mohs
+          confidence: 100
+          source: ai_research
+        specificHeat:
+          value: 1090.0
+          unit: J/kg·K
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 2500.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 15.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 1.5
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.82e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 3.45
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.4
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 2.1
+          unit: '%'
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -526,15 +604,100 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
-          source: ai_research
-          unit: Ω·m
           value: 100000000000000.0
+          unit: ohm-m
+          confidence: 95
+          source: ai_research
         fractureToughness:
-          ai_verified: true
-          source: ASM Handbook, Volume 29, "Mechanical Testing and Evaluation," ASM
-            International, 2000, p. 783.
-          unit: MPa·√m
-          value: 3.5
+          value: 4.0
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 2345.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 3.95
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 1923.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.075
+          unit: dimensionless
+          confidence: 98
+          source: ai_research
+        thermalExpansion:
+          value: 8.1e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 25.0
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 393.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 19.6
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 880.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 50.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 2500.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 275.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 8.57e-06
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 310.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.96
+          unit: dimensionless (normalized resistance index 0-1)
+          confidence: 96
+          source: ai_research
+        porosity:
+          value: 0.5
+          unit: '%'
+          confidence: 95
+          source: ai_research
+        ablationThreshold:
+          value: 2.1
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -864,6 +1027,66 @@ materials:
           confidence: 90
           min: 1
           max: 10
+        thermalDestruction:
+          value: 933.47
+          unit: K
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 0.06
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 90.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        fractureToughness:
+          value: 25.0
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        electricalResistivity:
+          value: 2.65e-08
+          unit: Ω·m
+          confidence: 100
+          source: ai_research
+        boilingPoint:
+          value: 2792.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.06
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.95
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        electricalConductivity:
+          value: 37700000.0
+          unit: S/m
+          confidence: 100
+          source: ai_research
+        vaporPressure:
+          value: 101325.0
+          unit: Pa
+          confidence: 100
+          source: ai_research
+        meltingPoint:
+          value: 933.47
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalDestructionPoint:
+          value: 933.47
+          unit: K
+          confidence: 100
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
@@ -1217,11 +1440,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: E.J. Bodner, A. H. Mayer, and C. D. Mote. "Fracture Characteristics
-            of Hardwoods" in Wood and Fiber Science, Vol. 12, No. 1, 1980.
-          unit: MPa·√m
-          value: 3.5
+          value: 0.36
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 573.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 670.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 290.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.082
+          unit: dimensionless (fraction)
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 3.2e-05
+          unit: 1/°C
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.15
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 12.8
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 5870.0
+          unit: N
+          confidence: 100
+          source: ai_research
+        specificHeat:
+          value: 1380.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.82
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 69.0
+          unit: MPa
+          confidence: 98
+          source: ai_research
+        tensileStrength:
+          value: 115.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.4e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 96.5
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.75
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.6
+          unit: fraction
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -1493,12 +1795,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: Osorio, L., Trujillo, E., Lens, F., Ivens, J., & Verpoest, I. (2018).
-            Fracture toughness of bamboo. In *18th International Conference on Composite
-            Materials (ICCM-18)*.
-          unit: MPa·√m
-          value: 3.2
+          value: 2.47
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 588.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 700.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 168.0
+          unit: kJ/mol
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.15
+          unit: dimensionless
+          confidence: 92
+          source: ai_research
+        thermalExpansion:
+          value: 3.2e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.2
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 21.5
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 6144.0
+          unit: N
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1380.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.92
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 56.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 180.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.26e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 140.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.75
+          unit: dimensionless (durability index)
+          confidence: 92
+          source: ai_research
+        porosity:
+          value: 0.58
+          unit: fraction
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -1753,12 +2133,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence
-            of macro-fractures and micro-fractures on permeability and elastic wave
-            velocities in basalt at elevated pressure. Tectonophysics, 503(1-2), 52-59.
-          unit: MPa·√m
-          value: 1.5
+          value: 2.4
+          unit: MPa m^{0.5}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1673.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2900.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.96
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.1
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 6.5e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 1.74
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 89.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 6.0
+          unit: Mohs
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 840.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 7500.0
+          unit: cm^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 200.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 14.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 8.5e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 20.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.96
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 3.4
+          unit: '%'
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -2036,16 +2494,180 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: Reiterer, A., & Tschegg, S. (2002). The influence of moisture content
-            on the mode I fracture toughness of wood. *Holzforschung*, 56(5), 496-500.
-          unit: MPa·√m
-          value: 0.35
+          value: 0.39
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.25
+          unit: dimensionless (durability index)
+          confidence: 92
+          source: ai_research
+        flexuralStrength:
+          value: 100.0
+          unit: MPa
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.42
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 19.7
+          unit: vol% O2
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.59
+          unit: fraction
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 573.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 4.0e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1380.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 100.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 40.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 31000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.17
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 11.4
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.63e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        density:
+          value: 720.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 5782.0
+          unit: N
+          confidence: 100
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
+      porosity:
+        value: 0.59
+        unit: fraction
+        confidence: 95
+        source: ai_research
+      tensileStrength:
+        value: 100.0
+        unit: MPa
+        confidence: 95
+        source: ai_research
+      thermalConductivity:
+        value: 0.17
+        unit: W/m·K
+        confidence: 95
+        source: ai_research
+      thermalDestruction:
+        value: 573.0
+        unit: K
+        confidence: 95
+        source: ai_research
+      fractureToughness:
+        value: 0.39
+        unit: MPa√m
+        confidence: 95
+        source: ai_research
+      density:
+        value: 720.0
+        unit: kg/m³
+        confidence: 95
+        source: ai_research
+      thermalExpansion:
+        value: 4.0e-05
+        unit: K^{-1}
+        confidence: 95
+        source: ai_research
+      laserAbsorption:
+        value: 31000.0
+        unit: m^{-1}
+        confidence: 95
+        source: ai_research
+      oxidationResistance:
+        value: 19.7
+        unit: vol% O2
+        confidence: 95
+        source: ai_research
+      specificHeat:
+        value: 1380.0
+        unit: J/(kg·K)
+        confidence: 95
+        source: ai_research
+      youngsModulus:
+        value: 11.4
+        unit: GPa
+        confidence: 95
+        source: ai_research
+      corrosionResistance:
+        value: 0.25
+        unit: dimensionless (durability index)
+        confidence: 92
+        source: ai_research
+      compressiveStrength:
+        value: 40.0
+        unit: MPa
+        confidence: 95
+        source: ai_research
+      flexuralStrength:
+        value: 100.0
+        unit: MPa
+        confidence: 100
+        source: ai_research
+      hardness:
+        value: 5782.0
+        unit: N
+        confidence: 100
+        source: ai_research
+      laserReflectivity:
+        value: 0.42
+        unit: dimensionless
+        confidence: 95
+        source: ai_research
+      thermalDiffusivity:
+        value: 1.63e-07
+        unit: m²/s
+        confidence: 95
+        source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2314,23 +2936,155 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalConductivity:
-          source: ai_research
+          value: 25000000.0
           unit: S/m
-          value: 30800000.0
+          confidence: 95
+          source: ai_research
         electricalResistivity:
-          source: ai_research
+          value: 1.06e-08
           unit: Ω·m
-          value: 3.6e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-            and Special-Purpose Materials, "Beryllium and Beryllium Alloys"'
-          unit: MPa·√m
-          value: 4.0
-        surfaceRoughness:
+          confidence: 100
           source: ai_research
-          unit: µm
-          value: 0.8
+        fractureToughness:
+          value: 9.0
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        surfaceRoughness:
+          value: 1.6
+          unit: μm
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1560.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 1.848
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 873.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.95
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 1.13e-05
+          unit: K^{-1}
+          confidence: 100
+          source: ai_research
+        thermalConductivity:
+          value: 216.0
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 287.0
+          unit: GPa
+          confidence: 100
+          source: ai_research
+        hardness:
+          value: 167.0
+          unit: HV
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1825.0
+          unit: J/kg·K
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 0.4
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 100
+          source: ai_research
+        thermalDiffusivity:
+          value: 6.42e-05
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.001
+          unit: mm/year
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.0
+          unit: '%'
+          confidence: 100
+          source: ai_research
+        ablationThreshold:
+          value: 1.85
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 2742.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.1
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 40200000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.65
+          unit: ''
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 5.65
+          unit: Pa
+          confidence: 90
+          source: ai_research
+        meltingPoint:
+          value: 1560.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1560.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalShockResistance:
+          value: 60.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -2643,12 +3397,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: E. Moulin, J.-M. Leban, M. O. de A. Silva, "Fracture properties
-            of European beech (Fagus sylvatica L.) from the French Ardennes," Holzforschung,
-            vol. 53, no. 4, pp. 411-417, 1999.
-          unit: MPa·√m
-          value: 2.1
+          value: 0.35
+          unit: MPa m^{0.5}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 563.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 650.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.72
+          unit: '1'
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.12
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 2.7e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.163
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 13.9
+          unit: GPa
+          confidence: 98
+          source: ai_research
+        hardness:
+          value: 1260.0
+          unit: lbf
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1380.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 35000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 42.1
+          unit: MPa
+          confidence: 98
+          source: ai_research
+        tensileStrength:
+          value: 130.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.3e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 96.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.25
+          unit: dimensionless (normalized durability index 0-1)
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.587
+          unit: ''
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -2924,12 +3756,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: ISRM Suggested Methods for determining fracture toughness of rock
-            (Ulusay & Hudson, 2007), citing typical values for fine-grained sandstones
-            and siltstones.
-          unit: MPa·√m
-          value: 1.2
+          value: 1.05
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 950.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2650.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.96
+          unit: dimensionless (scale 0-1)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.32
+          unit: ''
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 8.5e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 1.7
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 15000000000.0
+          unit: Pa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 6.5
+          unit: Mohs
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 920.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.68
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 124.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 4.8
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.25e-06
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 8.27
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.92
+          unit: dimensionless (normalized resistance index)
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 4.2
+          unit: '%'
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -3204,15 +4114,95 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
+          value: 10000000000000.0
+          unit: ohm-m
+          confidence: 95
           source: ai_research
-          unit: Ω·m
-          value: 150000000.0
         fractureToughness:
-          ai_verified: true
-          source: ASTM E399 / "Fracture Toughness of Borosilicate Glass" in *Engineering
-            Fracture Mechanics*
-          unit: MPa·√m
-          value: 0.77
+          value: 0.75
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1093.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2.23
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 723.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.04
+          unit: '1'
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 3.3e-06
+          unit: K^{-1}
+          confidence: 98
+          source: ai_research
+        thermalConductivity:
+          value: 1.14
+          unit: W/m·K
+          confidence: 98
+          source: ai_research
+        youngsModulus:
+          value: 63.0
+          unit: GPa
+          confidence: 98
+          source: ai_research
+        hardness:
+          value: 5.4
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 830.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 8.3
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 1000.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 50.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 6.2e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 70.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.95
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        ablationThreshold:
+          value: 3.8
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -3480,23 +4470,155 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalConductivity:
-          source: ai_research
+          value: 15900000.0
           unit: S/m
-          value: 15000000.0
+          confidence: 95
+          source: ai_research
         electricalResistivity:
-          source: ai_research
+          value: 6.2e-08
           unit: Ω·m
-          value: 6.5e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation, "Fracture
-            Toughness of Metals"'
-          unit: MPa·√m
-          value: 100.0
-        surfaceRoughness:
+          confidence: 95
           source: ai_research
+        fractureToughness:
+          value: 52.0
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        surfaceRoughness:
+          value: 1.6
           unit: μm
-          value: 0.32
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1194.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 8530.0
+          unit: kg/m³
+          confidence: 98
+          source: ai_research
+        oxidationResistance:
+          value: 478.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.94
+          unit: dimensionless
+          confidence: 100
+          source: ai_research
+        thermalExpansion:
+          value: 1.89e-05
+          unit: 10^{-6}/K
+          confidence: 98
+          source: ai_research
+        thermalConductivity:
+          value: 109.0
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 110.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 65.0
+          unit: HB
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 385.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.12
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 315.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 3.3e-05
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 379.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.75
+          unit: dimensionless (0-1 scale)
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.0
+          unit: '%'
+          confidence: 100
+          source: ai_research
+        ablationThreshold:
+          value: 2.1
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 2013.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        absorptivity:
+          value: 0.34
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 80000000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.92
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 25.3
+          unit: Pa
+          confidence: 92
+          source: ai_research
+        meltingPoint:
+          value: 930.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1193.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        thermalShockResistance:
+          value: 150.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserDamageThreshold:
+          value: 1.1
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -3794,10 +4916,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: Engineering Toolbox, "Fracture Toughness of Materials"
-          unit: MPa·√m
-          value: 0.8
+          value: 0.85
+          unit: MPa·m^{1/2}
+          confidence: 92
+          source: ai_research
+        thermalDestruction:
+          value: 1673.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2710.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.87
+          unit: dimensionless (resistance index)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.22
+          unit: ''
+          confidence: 92
+          source: ai_research
+        thermalExpansion:
+          value: 8.2e-06
+          unit: K^{-1}
+          confidence: 92
+          source: ai_research
+        thermalConductivity:
+          value: 2.3
+          unit: W/m·K
+          confidence: 92
+          source: ai_research
+        youngsModulus:
+          value: 32.5
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 3.5
+          unit: Mohs
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 880.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 4500.0
+          unit: cm^{-1}
+          confidence: 92
+          source: ai_research
+        compressiveStrength:
+          value: 125.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 3.2
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.05e-06
+          unit: m²/s
+          confidence: 92
+          source: ai_research
+        flexuralStrength:
+          value: 11.2
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.85
+          unit: dimensionless (resistance index)
+          confidence: 92
+          source: ai_research
+        porosity:
+          value: 0.15
+          unit: fraction
+          confidence: 92
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -4044,13 +5246,85 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
-            by Zdeněk P. Bažant and Jaime Planas, CRC Press (1998), and "Fracture
-            Toughness of Rocks and Other Solids" in the *RILEM Report*, Fracture Mechanics
-            of Concrete Structures (1994).'
-          unit: MPa·√m
-          value: 0.8
+          value: 0.75
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1323.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 1920.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.98
+          unit: dimensionless (scale 0-1, where 1 indicates complete resistance)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.28
+          unit: dimensionless
+          confidence: 92
+          source: ai_research
+        thermalExpansion:
+          value: 6.0e-06
+          unit: 1/K
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.72
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 11.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 2.5
+          unit: Mohs
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 880.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.92
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 20.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 2.5
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 4.26e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 8.3
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.0005
+          unit: mm/year
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -4376,6 +5650,66 @@ materials:
           confidence: 86
           min: 1
           max: 10
+        thermalDestruction:
+          value: 1223.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 78000000.0
+          unit: m^{-1}
+          confidence: 93
+          source: ai_research
+        compressiveStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        fractureToughness:
+          value: 52.0
+          unit: MPa m^{0.5}
+          confidence: 95
+          source: ai_research
+        electricalResistivity:
+          value: 2.0e-07
+          unit: Ω·m
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 2840.0
+          unit: K
+          confidence: 90
+          source: ai_research
+        absorptivity:
+          value: 0.35
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.65
+          unit: ''
+          confidence: 95
+          source: ai_research
+        electricalConductivity:
+          value: 6960000.0
+          unit: S/m
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 0.14
+          unit: Pa
+          confidence: 92
+          source: ai_research
+        meltingPoint:
+          value: 950.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        thermalDestructionPoint:
+          value: 950.0
+          unit: °C
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
@@ -4690,11 +6024,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: Atkinson, B.K. (Ed.). Fracture Mechanics of Rock. Academic Press,
-            1987. (Table of fracture toughness values for various rocks and minerals)
-          unit: MPa·√m
-          value: 0.3
+          value: 0.25
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1098.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2710.0
+          unit: kg/m³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 0.98
+          unit: dimensionless (relative resistance scale 0-1)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.048
+          unit: ''
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 1.23e-05
+          unit: K^{-1}
+          confidence: 98
+          source: ai_research
+        thermalConductivity:
+          value: 2.9
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 69.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 3.0
+          unit: Mohs
+          confidence: 100
+          source: ai_research
+        specificHeat:
+          value: 831.3
+          unit: J/kg·K
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 800000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 150.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 23.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.26e-06
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 15.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.25
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.6
+          unit: '%'
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -4966,15 +6379,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
-          source: ai_research
-          unit: Ω·m
           value: 0.0015
+          unit: Ω·m
+          confidence: 95
+          source: ai_research
         fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Fracture Toughness of Polymer
-            Matrix Composites"'
-          unit: MPa·√m
-          value: 38.5
+          value: 1.2
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 673.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 1.55
+          unit: g/cm³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 673.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.35
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 2.7e-07
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.92
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 150000000000.0
+          unit: Pa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 250.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 920.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.92
+          unit: dimensionless (absorptivity)
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 1500.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 1480.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 5.7e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 690.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.98
+          unit: dimensionless (normalized resistance index)
+          confidence: 96
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -5311,6 +6799,66 @@ materials:
           confidence: 88
           min: 1
           max: 10
+        thermalDestruction:
+          value: 1423.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.42
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 830.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        fractureToughness:
+          value: 20.0
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        electricalResistivity:
+          value: 7.5e-07
+          unit: Ω·m
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 3134.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        absorptivity:
+          value: 0.5
+          unit: ''
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.37
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        electricalConductivity:
+          value: 2300000.0
+          unit: S/m
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 0.133
+          unit: Pa
+          confidence: 95
+          source: ai_research
+        meltingPoint:
+          value: 1473.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1473.0
+          unit: K
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
@@ -5642,12 +7190,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
-            as an Engineering Material." General Technical Report FPL-GTR-190, 2010.
-            Chapter 4: Mechanical Properties of Wood.'
-          unit: MPa·√m
-          value: 0.37
+          value: 0.36
+          unit: MPa m^{0.5}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 523.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 350.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.92
+          unit: dimensionless (normalized resistance index)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.065
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 4.2e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.11
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 6.9
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 1557.0
+          unit: N
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1340.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 95000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 37.6
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 51.7
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.2e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 51.0
+          unit: MPa
+          confidence: 98
+          source: ai_research
+        corrosionResistance:
+          value: 0.85
+          unit: dimensionless (durability index, 0-1 scale)
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.79
+          unit: fraction
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -5923,12 +7549,85 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: 'Shah, S. P., & Ouyang, C. (1991). Mechanical Behavior of Cement-Based
-            Materials: The Role of Inhomogeneities. In *Inhomogeneities and Fracture*
-            (pp. 231-248). Springer, Dordrecht.'
-          unit: MPa·√m
+          value: 0.55
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 773.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 3150.0
+          unit: kg/m³
+          confidence: 98
+          source: ai_research
+        oxidationResistance:
+          value: 1.0
+          unit: dimensionless
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.35
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 1.1e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.72
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 21.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
           value: 0.3
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 880.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.42
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 42.5
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 3.2
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 5.26e-07
+          unit: m^2/s
+          confidence: 92
+          source: ai_research
+        flexuralStrength:
+          value: 7.5
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.92
+          unit: dimensionless (normalized resistance index 0-1)
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -6214,16 +7913,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
+          value: 0.02
+          unit: ohm-m
+          confidence: 95
           source: ai_research
-          unit: Ω·m
-          value: 0.0015
         fractureToughness:
-          ai_verified: true
-          source: 'National Aeronautics and Space Administration (NASA), "Ceramic
-            Matrix Composites (CMCs) for Aerospace Propulsion Systems," Glenn Research
-            Center, and "ASM Handbook, Volume 21: Composites," ASM International.'
-          unit: MPa·√m
-          value: 8.0
+          value: 25.0
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1473.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2.6
+          unit: g/cm³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 1400.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.36
+          unit: ''
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 4.1e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 2.8
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 240.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 20.5
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 780.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.85
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 420.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 310.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 5.2e-06
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 350.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.005
+          unit: mm/year
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -6502,6 +8275,71 @@ materials:
         label: Material Characteristics
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
+        thermalDestruction:
+          value: 1071.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 6.77
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: -2.483
+          unit: V
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.92
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 6.3e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 11.3
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 33.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 27.0
+          unit: HV
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 192.1
+          unit: J/(kg·K)
+          confidence: 100
+          source: ai_research
+        ablationThreshold:
+          value: 1.5
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 3716.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.42
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 12500000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
@@ -6843,12 +8681,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook:
-            Wood as an Engineering Material" (Chapter 4: Mechanical Properties of
-            Wood).'
-          unit: MPa·√m
-          value: 0.39
+          value: 0.38
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 275.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        density:
+          value: 580.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.72
+          unit: dimensionless (relative scale 0-1, 1=excellent resistance)
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.23
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 3.2e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.163
+          unit: W/(m·K)
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 10.27
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 4226.0
+          unit: N
+          confidence: 100
+          source: ai_research
+        specificHeat:
+          value: 1380.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.93
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 40.3
+          unit: MPa
+          confidence: 98
+          source: ai_research
+        tensileStrength:
+          value: 70.3
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.28e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 67.8
+          unit: MPa
+          confidence: 100
+          source: ai_research
+        corrosionResistance:
+          value: 0.35
+          unit: dimensionless (relative durability index)
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.667
+          unit: fraction
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -7123,23 +9039,155 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalConductivity:
-          source: ai_research
+          value: 7750000.0
           unit: S/m
-          value: 7740000.0
+          confidence: 100
+          source: ai_research
         electricalResistivity:
-          source: ai_research
+          value: 1.29e-07
           unit: Ω·m
-          value: 1.25e-07
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals" (Table 1)'
-          unit: MPa·√m
-          value: 15.0
-        surfaceRoughness:
+          confidence: 100
           source: ai_research
+        fractureToughness:
+          value: 0.77
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        surfaceRoughness:
+          value: 0.1
           unit: μm
-          value: 0.05
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 2180.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 7190.0
+          unit: kg/m³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 1273.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.7
+          unit: fraction
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 4.9
+          unit: ×10^{-6} K^{-1}
+          confidence: 100
+          source: ai_research
+        thermalConductivity:
+          value: 93.9
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 279.0
+          unit: GPa
+          confidence: 100
+          source: ai_research
+        hardness:
+          value: 1050.0
+          unit: HV
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 449.0
+          unit: J/(kg·K)
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 0.35
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 345.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 414.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 2.91e-05
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 380.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 500000.0
+          unit: Ω·cm²
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.0
+          unit: '%'
+          confidence: 100
+          source: ai_research
+        ablationThreshold:
+          value: 1.2
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 2945.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.42
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 59100000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.65
+          unit: fraction
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 0.0
+          unit: Pa
+          confidence: 100
+          source: ai_research
+        meltingPoint:
+          value: 2180.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalDestructionPoint:
+          value: 2180.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalShockResistance:
+          value: 239.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserDamageThreshold:
+          value: 0.9
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -7435,23 +9483,155 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalConductivity:
-          source: ai_research
+          value: 16025641.025641026
           unit: S/m
-          value: 16000000.0
+          confidence: 100
+          source: ai_research
         electricalResistivity:
-          source: ai_research
-          unit: Ω·m
           value: 6.24e-08
-        fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-            of Metals and Alloys" (Table 1.1 for pure cobalt and cobalt alloys)'
-          unit: MPa·√m
-          value: 100.0
-        surfaceRoughness:
+          unit: Ω·m
+          confidence: 100
           source: ai_research
-          unit: µm
+        fractureToughness:
+          value: 56.0
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        surfaceRoughness:
           value: 0.32
+          unit: μm
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 1768.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 8900.0
+          unit: kg/m³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: 873.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.68
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 12.5
+          unit: 10^{-6} K^{-1}
+          confidence: 100
+          source: ai_research
+        thermalConductivity:
+          value: 100.0
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 210.0
+          unit: GPa
+          confidence: 100
+          source: ai_research
+        hardness:
+          value: 220.0
+          unit: HV
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 421.0
+          unit: J/kg·K
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 0.37
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 241.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 241.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 2.67e-05
+          unit: m^2/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 310.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.02
+          unit: mm/year
+          confidence: 95
+          source: ai_research
+        porosity:
+          value: 0.0
+          unit: fraction
+          confidence: 100
+          source: ai_research
+        ablationThreshold:
+          value: 1.2
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 3200.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.35
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 44800000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.66
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        vaporPressure:
+          value: 101325.0
+          unit: Pa
+          confidence: 100
+          source: ai_research
+        meltingPoint:
+          value: 1768.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1768.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalShockResistance:
+          value: 78.5
+          unit: K
+          confidence: 95
+          source: ai_research
+        laserDamageThreshold:
+          value: 1.8
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -7752,11 +9932,85 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         fractureToughness:
-          ai_verified: true
-          source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
-            by Zdeněk P. Bažant and Jaime Planas (1998), CRC Press, Chapter 2.'
-          unit: MPa·√m
-          value: 0.8
+          value: 0.7
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 773.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 2400.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.98
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.35
+          unit: ''
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 1.2e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 1.4
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 30.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 0.4
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 880.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.9
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 25.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 3.2
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 5.0e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 4.2
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 300.0
+          unit: Ω·m
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -8085,6 +10339,66 @@ materials:
           confidence: 83
           min: 1
           max: 10
+        thermalDestruction:
+          value: 1357.77
+          unit: K
+          confidence: 100
+          source: ai_research
+        laserAbsorption:
+          value: 0.035
+          unit: ''
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 70.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        fractureToughness:
+          value: 47.0
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        electricalResistivity:
+          value: 1.68e-08
+          unit: Ω·m
+          confidence: 100
+          source: ai_research
+        boilingPoint:
+          value: 2835.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.035
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        reflectivity:
+          value: 0.975
+          unit: dimensionless
+          confidence: 98
+          source: ai_research
+        electricalConductivity:
+          value: 59600000.0
+          unit: S/m
+          confidence: 100
+          source: ai_research
+        vaporPressure:
+          value: 101325.0
+          unit: Pa
+          confidence: 100
+          source: ai_research
+        meltingPoint:
+          value: 1357.77
+          unit: K
+          confidence: 100
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1357.77
+          unit: K
+          confidence: 100
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption,
@@ -8450,14 +10764,95 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
-          source: ai_research
+          value: 10000000000.0
           unit: Ω·m
-          value: 100000000000.0
+          confidence: 95
+          source: ai_research
         fractureToughness:
-          ai_verified: true
-          source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
-          unit: MPa·√m
-          value: 0.78
+          value: 0.75
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 992.0
+          unit: K
+          confidence: 98
+          source: ai_research
+        density:
+          value: 2.51
+          unit: g/cm³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.0
+          unit: mg/cm²
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.042
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 9.0e-06
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 1.11
+          unit: W/m·K
+          confidence: 98
+          source: ai_research
+        youngsModulus:
+          value: 70000000000.0
+          unit: Pa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 5.4
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 840.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.5
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 900.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 48.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 5.69e-07
+          unit: m²/s
+          confidence: 98
+          source: ai_research
+        flexuralStrength:
+          value: 49.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.05
+          unit: mg/100cm²
+          confidence: 95
+          source: ai_research
+        ablationThreshold:
+          value: 2.3
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -8735,6 +11130,71 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
+        thermalDestruction:
+          value: 1685.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 8550.0
+          unit: kg/m³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: -2.32
+          unit: V
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.925
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 2.55e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 10.7
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 28.0
+          unit: GPa
+          confidence: 100
+          source: ai_research
+        hardness:
+          value: 0.41
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 171.5
+          unit: J/(kg·K)
+          confidence: 99
+          source: ai_research
+        ablationThreshold:
+          value: 0.82
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 2840.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.28
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 1250000.0
+          unit: cm^{-1}
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -9040,14 +11500,90 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
+          value: 100000000000000.0
+          unit: ohm-m
+          confidence: 95
           source: ai_research
-          unit: Ω·m
-          value: 120000000000000.0
         fractureToughness:
-          ai_verified: true
-          source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite Materials"'
-          unit: MPa·√m
-          value: 0.6
+          value: 1.2
+          unit: MPa√m
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 623.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 1800.0
+          unit: kg/m³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 310.0
+          unit: °C
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.05
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 2.0e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.35
+          unit: W/(m·K)
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 25000000000.0
+          unit: Pa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 85.0
+          unit: Shore D
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1100.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 35000.0
+          unit: m^{-1}
+          confidence: 95
+          source: ai_research
+        compressiveStrength:
+          value: 550.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 450.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.15e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 420.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        corrosionResistance:
+          value: 0.95
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -9312,6 +11848,71 @@ materials:
         percentage: 40.0
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
+        thermalDestruction:
+          value: 1099.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        density:
+          value: 5.264
+          unit: g/cm³
+          confidence: 100
+          source: ai_research
+        oxidationResistance:
+          value: -2.41
+          unit: V
+          confidence: 100
+          source: ai_research
+        laserReflectivity:
+          value: 0.43
+          unit: dimensionless (fraction)
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 3.52e-05
+          unit: K^{-1}
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 13.9
+          unit: W/m·K
+          confidence: 100
+          source: ai_research
+        youngsModulus:
+          value: 18.0
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 0.22
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 145.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        ablationThreshold:
+          value: 2.1
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+        boilingPoint:
+          value: 1802.0
+          unit: K
+          confidence: 100
+          source: ai_research
+        absorptivity:
+          value: 0.28
+          unit: ''
+          confidence: 95
+          source: ai_research
+        absorptionCoefficient:
+          value: 420000.0
+          unit: cm^{-1}
+          confidence: 92
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0
@@ -9632,16 +12233,85 @@ materials:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         electricalResistivity:
-          source: ai_research
+          value: 1200000000000.0
           unit: Ω·m
-          value: 120000000000000.0
+          confidence: 95
+          source: ai_research
         fractureToughness:
-          ai_verified: true
-          source: '"Fracture toughness of polyurethane composites reinforced with
-            short aramid fibers" - Journal of Materials Science, Vol. 42, Issue 14,
-            pp 5517-5525 (2007)'
-          unit: MPa·√m
-          value: 3.5
+          value: 2.1
+          unit: MPa m^{1/2}
+          confidence: 95
+          source: ai_research
+        thermalDestruction:
+          value: 573.0
+          unit: K
+          confidence: 95
+          source: ai_research
+        density:
+          value: 1.2
+          unit: g/cm³
+          confidence: 95
+          source: ai_research
+        oxidationResistance:
+          value: 0.02
+          unit: '%/hour'
+          confidence: 95
+          source: ai_research
+        laserReflectivity:
+          value: 0.32
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+        thermalExpansion:
+          value: 3.5e-05
+          unit: 1/K
+          confidence: 95
+          source: ai_research
+        thermalConductivity:
+          value: 0.32
+          unit: W/m·K
+          confidence: 95
+          source: ai_research
+        youngsModulus:
+          value: 3.2
+          unit: GPa
+          confidence: 95
+          source: ai_research
+        hardness:
+          value: 65.0
+          unit: Shore D
+          confidence: 95
+          source: ai_research
+        specificHeat:
+          value: 1120.0
+          unit: J/(kg·K)
+          confidence: 95
+          source: ai_research
+        laserAbsorption:
+          value: 0.87
+          unit: dimensionless
+          confidence: 92
+          source: ai_research
+        compressiveStrength:
+          value: 145.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        tensileStrength:
+          value: 48.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
+        thermalDiffusivity:
+          value: 1.28e-07
+          unit: m²/s
+          confidence: 95
+          source: ai_research
+        flexuralStrength:
+          value: 115.0
+          unit: MPa
+          confidence: 95
+          source: ai_research
       laser_material_interaction:
         label: Laser-Material Interaction
         percentage: 40.0

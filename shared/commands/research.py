@@ -6,6 +6,28 @@ Handles AI research commands for data completion and gap analysis.
 """
 
 
+def _determine_property_category(property_name: str) -> str:
+    """
+    Determine which category group a property belongs to.
+    
+    Returns 'material_characteristics' or 'laser_material_interaction'
+    based on property name taxonomy.
+    """
+    try:
+        from materials.utils.property_categorizer import get_property_categorizer
+        categorizer = get_property_categorizer()
+        category_id = categorizer.get_category(property_name)
+        
+        # Map category IDs to materialProperties group names
+        if category_id in ['laser_material_interaction', 'optical', 'laser_absorption']:
+            return 'laser_material_interaction'
+        else:
+            return 'material_characteristics'
+    except Exception:
+        # Default to material_characteristics if categorization fails
+        return 'material_characteristics'
+
+
 def handle_data_completeness_report():
     """Generate comprehensive data completeness report"""
     try:
@@ -208,6 +230,14 @@ def should_research_property(prop_value, confidence_threshold=70):
     # Note: confidence might be stored as 'confidence' (0-1) or already as percentage
     confidence = prop_value.get('confidence', 1.0)
     
+    # Convert to float if it's a string
+    if isinstance(confidence, str):
+        try:
+            confidence = float(confidence)
+        except (ValueError, TypeError):
+            # If conversion fails, treat as missing confidence
+            return True
+    
     # Handle both formats: 0-1 scale and percentage
     if confidence < 1.0:
         confidence_pct = confidence * 100
@@ -401,109 +431,119 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print("✅ AI Research Service initialized with Grok API")
         print()
         
-        # Research missing properties
-        research_results = {}
+        # Research missing properties - Save incrementally per material
         successful_research = 0
         failed_research = 0
         research_count = 0
+        materials_updated = set()
         
-        # Process by priority (most missing first)
+        # Group properties by material for incremental saving
+        properties_by_material = {}
         for prop_name, materials in sorted_props:
-            print(f"\n📊 Researching {prop_name} for {len(materials)} materials...")
-            print("-"*80)
-            
             for material_name in materials:
+                if material_name not in properties_by_material:
+                    properties_by_material[material_name] = []
+                properties_by_material[material_name].append(prop_name)
+        
+        # Process each material completely, then save
+        for mat_idx, (material_name, properties) in enumerate(properties_by_material.items(), 1):
+            print(f"\n{'='*80}")
+            print(f"📦 Material {mat_idx}/{len(properties_by_material)}: {material_name} ({len(properties)} properties)")
+            print('='*80)
+            
+            material_results = {}
+            category = missing_by_material[material_name]['category']
+            valid_properties = valid_properties_by_category.get(category, set())
+            
+            for prop_name in properties:
                 research_count += 1
-                print(f"[{research_count}/{total_gaps}] Researching {material_name}.{prop_name}...", end=" ")
+                print(f"  [{research_count}/{total_gaps}] {prop_name}...", end=" ")
                 
                 try:
-                    # Get material category for context
-                    category = missing_by_material[material_name]['category']
-                    
-                    # ⚡ CRITICAL VALIDATION: Verify property is valid for this category
-                    valid_properties = valid_properties_by_category.get(category, set())
+                    # Validate property is valid for this category
                     if prop_name not in valid_properties:
-                        print(f"⚠️  SKIPPED (property not defined for {category} category)")
+                        print(f"⚠️  SKIPPED (not valid for {category})")
                         failed_research += 1
                         continue
                     
-                    # Research the property using AIResearchEnrichmentService
+                    # Research the property
                     result = researcher.research_property(
                         material_name=material_name,
                         property_name=prop_name,
                         category=category,
-                        confidence_threshold=confidence_threshold / 100.0  # Convert to 0-1 scale
+                        confidence_threshold=confidence_threshold / 100.0
                     )
                     
                     if result.success and result.confidence >= (confidence_threshold / 100.0):
-                        # Store result in format compatible with Materials.yaml
-                        if material_name not in research_results:
-                            research_results[material_name] = {}
-                        research_results[material_name][prop_name] = {
+                        material_results[prop_name] = {
                             'value': result.researched_value,
                             'unit': result.unit,
                             'confidence': int(result.confidence * 100),
                             'source': result.source
                         }
-                        
-                        print(f"✅ {result.researched_value} {result.unit} (confidence: {int(result.confidence * 100)}%)")
+                        print(f"✅ {result.researched_value} {result.unit} ({int(result.confidence * 100)}%)")
                         successful_research += 1
                     else:
                         error_msg = result.error_message if hasattr(result, 'error_message') and result.error_message else "Unknown error"
-                        print(f"❌ Low confidence ({int(result.confidence * 100)}%) or failed: {error_msg}")
+                        print(f"❌ Low confidence or failed: {error_msg}")
                         failed_research += 1
                 
                 except Exception as e:
                     print(f"❌ Error: {str(e)}")
                     failed_research += 1
+            
+            # SAVE IMMEDIATELY after each material completes
+            if material_results:
+                print(f"\n💾 Saving {len(material_results)} properties for {material_name}...")
                 
-                # Progress update every 10 items
-                if research_count % 10 == 0:
-                    pct = (successful_research / research_count * 100) if research_count > 0 else 0
-                    print(f"\n   Progress: {research_count}/{total_gaps} ({pct:.1f}% success rate)")
+                # Ensure category groups exist
+                if 'materialProperties' not in materials_section[material_name]:
+                    materials_section[material_name]['materialProperties'] = {}
+                
+                mat_props = materials_section[material_name]['materialProperties']
+                if 'material_characteristics' not in mat_props:
+                    mat_props['material_characteristics'] = {
+                        'label': 'Material Characteristics',
+                        'description': 'Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity'
+                    }
+                if 'laser_material_interaction' not in mat_props:
+                    mat_props['laser_material_interaction'] = {
+                        'label': 'Laser-Material Interaction',
+                        'description': 'Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds'
+                    }
+                
+                # Write properties to correct category groups
+                for prop_name, prop_data in material_results.items():
+                    category_group = _determine_property_category(prop_name)
+                    mat_props[category_group][prop_name] = prop_data
+                
+                # Save to file immediately
+                with open(materials_file, 'w') as f:
+                    yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+                
+                materials_updated.add(material_name)
+                print(f"✅ Saved to Materials.yaml")
+            
+            # Progress update
+            pct = (successful_research / research_count * 100) if research_count > 0 else 0
+            print(f"\n📊 Progress: {research_count}/{total_gaps} ({pct:.1f}% success), {len(materials_updated)} materials updated")
         
         print()
         print("="*80)
-        print("📊 RESEARCH SUMMARY")
+        print("📊 FINAL RESEARCH SUMMARY")
         print("="*80)
-        print(f"Total researched: {research_count}")
+        print(f"Total properties researched: {research_count}")
         print(f"✅ Successful: {successful_research}")
         print(f"❌ Failed: {failed_research}")
         print(f"Success rate: {(successful_research/research_count*100):.1f}%")
+        print(f"📦 Materials updated: {len(materials_updated)}")
         print()
         
         if successful_research == 0:
-            print("⚠️  No successful research results. Materials.yaml not updated.")
+            print("⚠️  No successful research results.")
             return False
         
-        # Update Materials.yaml
-        print("💾 Updating Materials.yaml...")
-        
-        # Create backup
-        backup_file = materials_file.with_suffix(f'.backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
-        import shutil
-        shutil.copy2(materials_file, backup_file)
-        print(f"   Backup created: {backup_file.name}")
-        
-        # Apply updates
-        updates_applied = 0
-        for material_name, properties in research_results.items():
-            if material_name not in materials_section:
-                print(f"⚠️  Warning: Material '{material_name}' not found in Materials.yaml, skipping...")
-                continue
-                
-            if 'materialProperties' not in materials_section[material_name]:
-                materials_section[material_name]['materialProperties'] = {}
-            
-            for prop_name, prop_data in properties.items():
-                materials_section[material_name]['materialProperties'][prop_name] = prop_data
-                updates_applied += 1
-        
-        # Save updated file
-        with open(materials_file, 'w') as f:
-            yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-        
-        print(f"   Applied {updates_applied} property updates")
+        print("✅ All updates saved incrementally to Materials.yaml")
         print()
         
         # Run completeness report
@@ -535,12 +575,12 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print("="*80)
         print()
         print(f"📊 Researched {successful_research} property values")
-        print(f"💾 Updated Materials.yaml")
-        print(f"🔒 Backup saved: {backup_file.name}")
+        print(f"� Updated {len(materials_updated)} materials")
+        print("� All changes saved incrementally")
         print()
         print("Next steps:")
-        print("  1. Review updated data: data/Materials.yaml")
-        print("  2. Verify zero nulls: python3 scripts/validation/validate_zero_nulls.py --materials")
+        print("  1. Review updated data: materials/data/materials.yaml")
+        print("  2. Verify completeness: python3 run.py --data-completeness-report")
         print("  3. Generate content: python3 run.py --material \"MaterialName\"")
         print()
         

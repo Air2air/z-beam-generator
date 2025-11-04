@@ -248,7 +248,8 @@ def main():
             batch_size=args.research_batch_size,
             confidence_threshold=args.research_confidence_threshold,
             specific_properties=args.research_properties.split(',') if args.research_properties else None,
-            specific_materials=args.research_materials.split(',') if args.research_materials else None
+            specific_materials=args.research_materials.split(',') if args.research_materials else None,
+            auto_mode=True  # Skip confirmation prompt
         )
     
     if args.content_validation_report:
