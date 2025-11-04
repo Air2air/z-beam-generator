@@ -1,49 +1,34 @@
 name: Magnesium
-category: Metal
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+category: metal
 subcategory: non-ferrous
 title: Magnesium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Magnesium
+subtitle: Safely clean reactive magnesium with precise low-energy laser parameters
 description: Laser cleaning parameters for Magnesium
 author:
-  id: 1
-  name: Yi-Chun Lin
   country: Taiwan
-  title: Ph.D.
-  sex: f
-  expertise: Laser Materials Processing
+  expertise: Precision Laser Engineering
+  id: 1
   image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
 images:
   hero:
-    alt: Magnesium surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Magnesium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/magnesium-laser-cleaning-hero.jpg
   micro:
-    alt: Magnesium surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Magnesium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/magnesium-laser-cleaning-micro.jpg
 caption:
-  before: Microscopy of the contaminated magnesium surface shows scattered dark spots
-    of oxide particles and dust residues. These cling tightly to the metal, causing
-    localized pitting and uneven degradation in texture.
-  after: After precision laser cleaning, the magnesium surface restores to a spotless,
-    smooth condition with its natural luster fully revived. Contaminants like oxides
-    and residues are completely removed, and no heat damage occurs. This demonstrates
-    high restoration quality. Material integrity stays intact, showing no pitting
-    or structural changes, making it ideal for general metal applications.
-  author: Yi-Chun Lin
-  character_count:
-    after: 389
-    before: 208
-  generated: '2025-10-25T14:39:52.128808Z'
-  generation_method: ai_research
-  word_count:
-    after: 54
-    before: 30
+  before: Microscopy of the contaminated magnesium surface shows scattered dark spots of oxide particles and dust residues. These cling tightly to the metal, causing localized pitting and uneven degradation in texture.
+  after: After precision laser cleaning, the magnesium surface restores to a spotless, smooth condition with its natural luster fully revived. Contaminants like oxides and residues are completely removed, and no heat damage occurs. This demonstrates high restoration quality. Material integrity stays intact, showing no pitting or structural changes, making it ideal for general metal applications.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -67,230 +52,196 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 81.1
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalConductivity:
       value: 22470000.0
       unit: S/m
-      confidence: 100
       source: ai_research
       min: 0.67
       max: 63.0
     electricalResistivity:
       value: 4.45e-08
       unit: Ω·m
-      confidence: 100
       source: ai_research
       min: 1.0e-08
       max: 1.5e-06
     fractureToughness:
       value: 23.0
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 20
+      max: 200
     surfaceRoughness:
       value: 1.6
       unit: μm
-      confidence: 95
       source: ai_research
       min: 0.05
-      max: 150.0
+      max: 150
     thermalDestruction:
       value: 923.0
       unit: K
-      confidence: 100
       source: ai_research
       min: 273.0
       max: 3695.0
     specificHeat:
       value: 1023.0
       unit: J/kg·K
-      confidence: 100
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 100
+      max: 2000
     youngsModulus:
       value: 45.0
       unit: GPa
-      confidence: 100
       source: ai_research
-      min: 5.0
-      max: 600.0
+      min: 5
+      max: 600
     oxidationResistance:
       value: 0.81
       unit: dimensionless
-      confidence: 100
       source: ai_research
-      min: 200.0
-      max: 1200.0
+      min: 200
+      max: 1200
     laserReflectivity:
       value: 0.94
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 5.0
+      min: 5
       max: 99.9
     thermalConductivity:
       value: 156.0
       unit: W/m·K
-      confidence: 100
       source: ai_research
       min: 7.0
-      max: 430.0
+      max: 430
     thermalExpansion:
       value: 2.5e-05
       unit: K^{-1}
-      confidence: 100
       source: ai_research
       min: 0.5
-      max: 33.0
+      max: 33
     density:
       value: 1738.0
       unit: kg/m³
-      confidence: 100
       source: ai_research
       min: 0.53
       max: 22.6
     hardness:
       value: 38.0
       unit: HV
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 3500.0
+      max: 3500
     corrosionResistance:
       value: -2.37
       unit: V
-      confidence: 100
       source: ai_research
       min: 0.01
-      max: 10.0
+      max: 10
     laserAbsorption:
       value: 0.058
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 0.02
-      max: 100.0
+      max: 100
     compressiveStrength:
       value: 160.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 2000.0
+      min: 50
+      max: 2000
     thermalDiffusivity:
       value: 8.78e-05
       unit: m²/s
-      confidence: 100
       source: ai_research
       min: 0.06
-      max: 174.0
+      max: 174
     flexuralStrength:
       value: 170.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 2.5
       max: 1050.0
     tensileStrength:
       value: 160.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 3.0
       max: 3000.0
     porosity:
       value: 0.0
       unit: fraction
-      confidence: 100
       source: ai_research
       min: 0.0
       max: 15.0
     ablationThreshold:
       value: 1.8
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.8
       max: 8.0
     absorptivity:
       value: 0.09
       unit: ''
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 65.0
     boilingPoint:
       value: 1363.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: 907.0
-      max: 5870.0
+      min: 907
+      max: 5870
     absorptionCoefficient:
       value: 59000000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     meltingPoint:
       value: 923.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: -39.0
-      max: 3422.0
+      min: -39
+      max: 3422
     vaporPressure:
       value: 398.0
       unit: Pa
-      confidence: 95
       source: ai_research
       min: 1.0e-10
       max: 0.001
     thermalDestructionPoint:
       value: 923.15
       unit: K
-      confidence: 100
       source: ai_research
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     reflectivity:
       value: 0.92
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 52.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     laserDamageThreshold:
       value: 1.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.1
       max: 20.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 18.9
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptionCoefficient:
       source: ai_research
       unit: m⁻¹
       value: 11200000.0
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     absorptivity:
       source: ai_research
       unit: dimensionless
@@ -307,20 +258,20 @@ materialProperties:
       source: ai_research
       unit: dimensionless (ratio)
       value: 0.74
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     thermalDestructionPoint:
       source: ai_research
       unit: K
       value: 923.0
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     thermalShockResistance:
       source: ai_research
       unit: W/m
       value: 1.8
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     vaporPressure:
       source: ai_research
       unit: Pa
@@ -329,124 +280,77 @@ materialProperties:
       max: 0.001
 machineSettings:
   powerRange:
-    description: Optimal average power range for Magnesium oxide layer removal
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Optimal wavelength considering Magnesium's optical properties
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Optimal beam spot diameter for Magnesium surface treatment
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient Magnesium cleaning process
     unit: kHz
     value: 50
     min: 1
     max: 200
   fluenceThreshold:
-    description: Minimum fluence required for effective Magnesium surface cleaning
     unit: J/cm²
     value: 1.2
     min: 0.3
     max: 4.5
   pulseWidth:
-    description: Optimal pulse duration for controlled ablation of Magnesium oxides
     unit: ns
     value: 10
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform Magnesium surface cleaning
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of passes for thorough Magnesium cleaning
     unit: passes
     value: 2
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal pulse overlap for complete Magnesium surface coverage
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: For magnesium alloy cleaning, employ a 1064nm wavelength with 10ns pulses
-      at 1.2 J/cm² fluence. Maintain a 50kHz repetition rate and 500 mm/s scan speed
-      to prevent thermal damage. This parameter set effectively ablates oxides while
-      preserving the underlying substrate integrity.
-    question: What are the specific laser settings and parameters for cleaning magnesium
-      alloys without causing damage?
-  - answer: For magnesium oxide removal, we employ 1064nm wavelength lasers at 1.2
-      J/cm² fluence. This selectively ablates MgO without damaging the base metal.
-      To prevent immediate re-oxidation, an inert argon gas shield is essential during
-      the 500 mm/s scanning process, ensuring a pristine, corrosion-free surface.
-    question: How do you safely remove oxide layers and corrosion from magnesium surfaces
-      using laser cleaning?
-  - answer: Mandatory inert gas shielding prevents magnesium's ignition at 1064nm
-      wavelength. Maintain fluence below 1.2 J/cm² to avoid excessive heat input.
-      Use robust fume extraction for highly reactive MgO particles, which pose explosion
-      risks.
-    question: What special safety precautions are needed when laser cleaning magnesium
-      due to fire risk?
-  - answer: Laser cleaning effectively prepares magnesium surfaces using 1064nm wavelength
-      at 1.2 J/cm² fluence. This process removes oxides without thermal damage, creating
-      an ideal surface profile for superior coating adhesion and high-integrity welds
-      in aerospace and medical applications.
-    question: Can laser cleaning be used to prepare magnesium surfaces for welding
-      or coating applications?
-  - answer: Cast magnesium alloys present greater challenges due to their inherent
-      porosity, which can trap contaminants and requires careful fluence control below
-      ~1.2 J/cm² to prevent subsurface damage. Their varied surface texture also demands
-      more precise parameter tuning compared to wrought forms.
-    question: What are the challenges with laser cleaning cast magnesium alloys versus
-      wrought forms?
-  - answer: Laser cleaning effectively removes organic oils from magnesium using 1064nm
-      wavelength and 1.2 J/cm² fluence. This process vaporizes contaminants without
-      chemical residue, offering a superior, environmentally friendly alternative
-      to traditional solvent-based methods for precision components.
-    question: How effective is laser cleaning for removing contaminants like oils
-      and lubricants from magnesium parts?
-  - answer: Properly configured laser cleaning at 1.2 J/cm² fluence preserves magnesium's
-      integrity. The 10 ns pulse width minimizes thermal input, preventing micro-cracking
-      and significant alterations to fatigue strength, ensuring component service
-      life remains uncompromised.
-    question: Does laser cleaning affect the fatigue strength or mechanical properties
-      of magnesium components?
-  - answer: Validate magnesium laser cleaning using microscopic inspection and surface
-      roughness measurement. Confirm complete oxide removal while maintaining the
-      base material integrity, ensuring parameters like 1.2 J/cm² fluence do not induce
-      thermal damage.
+  - answer: For magnesium alloy cleaning, employ a 1064nm wavelength with 10ns pulses at 1.2 J/cm² fluence. Maintain a 50kHz repetition rate and 500 mm/s scan speed to prevent thermal damage. This parameter set effectively ablates oxides while preserving the underlying substrate integrity.
+    question: What are the specific laser settings and parameters for cleaning magnesium alloys without causing damage?
+  - answer: For magnesium oxide removal, we employ 1064nm wavelength lasers at 1.2 J/cm² fluence. This selectively ablates MgO without damaging the base metal. To prevent immediate re-oxidation, an inert argon gas shield is essential during the 500 mm/s scanning process, ensuring a pristine, corrosion-free surface.
+    question: How do you safely remove oxide layers and corrosion from magnesium surfaces using laser cleaning?
+  - answer: Mandatory inert gas shielding prevents magnesium's ignition at 1064nm wavelength. Maintain fluence below 1.2 J/cm² to avoid excessive heat input. Use robust fume extraction for highly reactive MgO particles, which pose explosion risks.
+    question: What special safety precautions are needed when laser cleaning magnesium due to fire risk?
+  - answer: Laser cleaning effectively prepares magnesium surfaces using 1064nm wavelength at 1.2 J/cm² fluence. This process removes oxides without thermal damage, creating an ideal surface profile for superior coating adhesion and high-integrity welds in aerospace and medical applications.
+    question: Can laser cleaning be used to prepare magnesium surfaces for welding or coating applications?
+  - answer: Cast magnesium alloys present greater challenges due to their inherent porosity, which can trap contaminants and requires careful fluence control below ~1.2 J/cm² to prevent subsurface damage. Their varied surface texture also demands more precise parameter tuning compared to wrought forms.
+    question: What are the challenges with laser cleaning cast magnesium alloys versus wrought forms?
+  - answer: Laser cleaning effectively removes organic oils from magnesium using 1064nm wavelength and 1.2 J/cm² fluence. This process vaporizes contaminants without chemical residue, offering a superior, environmentally friendly alternative to traditional solvent-based methods for precision components.
+    question: How effective is laser cleaning for removing contaminants like oils and lubricants from magnesium parts?
+  - answer: Properly configured laser cleaning at 1.2 J/cm² fluence preserves magnesium's integrity. The 10 ns pulse width minimizes thermal input, preventing micro-cracking and significant alterations to fatigue strength, ensuring component service life remains uncompromised.
+    question: Does laser cleaning affect the fatigue strength or mechanical properties of magnesium components?
+  - answer: Validate magnesium laser cleaning using microscopic inspection and surface roughness measurement. Confirm complete oxide removal while maintaining the base material integrity, ensuring parameters like 1.2 J/cm² fluence do not induce thermal damage.
     question: What is the best way to validate the success of magnesium laser cleaning?
-  - answer: Magnesium's low melting point (~650°C) and high reactivity demand extremely
-      precise laser parameters. We must carefully control fluence near 1.2 J/cm² to
-      ablate oxides without melting the base material, a much narrower process window
-      than for steel or aluminum. This requires meticulous parameter tuning for successful,
-      damage-free results.
-    question: Why is magnesium considered more difficult to laser clean than aluminum
-      or steel?
-  - answer: For magnesium cleaning, pulsed fiber lasers operating at 1064 nm are optimal.
-      With a fluence of 1.2 J/cm² and a 10 ns pulse width, this setup minimizes thermal
-      input, preventing damage to the sensitive substrate. A scanning speed of 500
-      mm/s ensures efficient and uniform oxide layer removal.
-    question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium
-      cleaning applications?
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+  - answer: Magnesium's low melting point (~650°C) and high reactivity demand extremely precise laser parameters. We must carefully control fluence near 1.2 J/cm² to ablate oxides without melting the base material, a much narrower process window than for steel or aluminum. This requires meticulous parameter tuning for successful, damage-free results.
+    question: Why is magnesium considered more difficult to laser clean than aluminum or steel?
+  - answer: For magnesium cleaning, pulsed fiber lasers operating at 1064 nm are optimal. With a fluence of 1.2 J/cm² and a 10 ns pulse width, this setup minimizes thermal input, preventing damage to the sensitive substrate. A scanning speed of 500 mm/s ensures efficient and uniform oxide layer removal.
+    question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922179Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922187Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin

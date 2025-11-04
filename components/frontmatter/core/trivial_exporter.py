@@ -161,12 +161,23 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')
         category_ranges = self._get_category_ranges(category)
         
+        # Add _metadata for voice tracking
+        author_data = material_data.get('author', {})
+        frontmatter['_metadata'] = {
+            'voice': {
+                'author_name': author_data.get('name', 'Unknown'),
+                'author_country': author_data.get('country', 'Unknown'),
+                'voice_applied': True,
+                'content_type': 'material'
+            }
+        }
+        
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
-            'category', 'subcategory', 'title', 'subtitle',
+            'category', 'subcategory', 'title', 'subtitle', 'description',
             'author', 'images', 'caption', 'regulatoryStandards',
             'materialProperties', 'machineSettings', 'faq',
-            'material_metadata', 'subtitle_metadata'
+            '_metadata', 'material_metadata', 'subtitle_metadata'
         }
         
         # Copy only exportable fields from Materials.yaml
@@ -179,18 +190,40 @@ class TrivialFrontmatterExporter:
                 # Enrich material properties with min/max from category ranges
                 enriched = self._enrich_material_properties(value, category_ranges)
                 # Remove description fields except from regulatoryStandards
-                frontmatter[key] = self._remove_descriptions(enriched, preserve_regulatory=False)
+                cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
+                # Strip generation metadata
+                frontmatter[key] = self._strip_generation_metadata(cleaned)
             elif key == 'machineSettings':
                 # Enrich machine settings with min/max from machine settings ranges
                 enriched = self._enrich_machine_settings(value, category_ranges)
                 # Remove description fields
-                frontmatter[key] = self._remove_descriptions(enriched, preserve_regulatory=False)
+                cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
+                # Strip generation metadata
+                frontmatter[key] = self._strip_generation_metadata(cleaned)
             elif key == 'regulatoryStandards':
-                # Keep descriptions in regulatoryStandards
-                frontmatter[key] = value
+                # Keep descriptions in regulatoryStandards but strip generation metadata
+                frontmatter[key] = self._strip_generation_metadata(value)
+            elif key == 'caption':
+                # Strip generation metadata from caption (timestamps, word counts, author duplication, etc.)
+                # Caption should only have 'before' and 'after' fields
+                cleaned = self._remove_descriptions(value, preserve_regulatory=False)
+                stripped = self._strip_generation_metadata(cleaned)
+                # Ensure only before/after remain
+                if isinstance(stripped, dict):
+                    frontmatter[key] = {
+                        k: v for k, v in stripped.items()
+                        if k in ['before', 'after']
+                    }
+                else:
+                    frontmatter[key] = stripped
+            elif key == 'faq':
+                # Strip generation metadata from FAQ (timestamps, word counts, question counts)
+                cleaned = self._remove_descriptions(value, preserve_regulatory=False)
+                frontmatter[key] = self._strip_generation_metadata(cleaned)
             else:
-                # Copy as-is but remove description fields
-                frontmatter[key] = self._remove_descriptions(value, preserve_regulatory=(key == 'regulatoryStandards'))
+                # Copy as-is but remove description fields and strip generation metadata
+                cleaned = self._remove_descriptions(value, preserve_regulatory=(key == 'regulatoryStandards'))
+                frontmatter[key] = self._strip_generation_metadata(cleaned)
         
         # Write YAML file
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
@@ -367,6 +400,44 @@ class TrivialFrontmatterExporter:
             return [self._remove_descriptions(item, preserve_regulatory=False) for item in data]
         else:
             # Return primitives as-is
+            return data
+    
+    def _strip_generation_metadata(self, data: Any) -> Any:
+        """
+        Remove generation metadata fields that should not persist in frontmatter.
+        
+        Strips:
+        - generated (timestamp)
+        - word_count, word_count_before, word_count_after, total_words
+        - question_count, character_count
+        - author (in caption - redundant with top-level author)
+        - generation_method (tracking field)
+        
+        These fields are useful during generation for quality tracking but should
+        not be exported to production frontmatter files.
+        
+        Args:
+            data: Data to process (dict, list, or other)
+        
+        Returns:
+            Data with generation metadata removed
+        """
+        # Fields to remove from all structures
+        METADATA_FIELDS = {
+            'generated', 'word_count', 'word_count_before', 'word_count_after',
+            'total_words', 'question_count', 'character_count',
+            'author', 'generation_method'  # Caption-specific metadata
+        }
+        
+        if isinstance(data, dict):
+            return {
+                k: self._strip_generation_metadata(v)
+                for k, v in data.items()
+                if k not in METADATA_FIELDS
+            }
+        elif isinstance(data, list):
+            return [self._strip_generation_metadata(item) for item in data]
+        else:
             return data
 
 

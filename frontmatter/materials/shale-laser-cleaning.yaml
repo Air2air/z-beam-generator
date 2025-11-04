@@ -1,49 +1,34 @@
 name: Shale
-category: Stone
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+category: stone
 subcategory: sedimentary
 title: Shale Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Shale
+subtitle: Gently revive shale's delicate layers with precise laser finesse
 description: Laser cleaning parameters for Shale
 author:
-  id: 1
-  name: Yi-Chun Lin
   country: Taiwan
-  title: Ph.D.
-  sex: f
   expertise: Laser Materials Processing
+  id: 1
   image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
 images:
   hero:
-    alt: Shale surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Shale surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/shale-laser-cleaning-hero.jpg
   micro:
-    alt: Shale surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Shale microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/shale-laser-cleaning-micro.jpg
 caption:
-  before: Under the microscope, the shale surface looks rough and uneven, covered
-    in fine dust particles and oily residues that cling tightly. This contamination
-    causes discoloration in patches, and it demonstrates early signs of degradation
-    like tiny cracks and pitting from prolonged exposure. Cleaning can restore its
-    natural texture.
-  after: After laser cleaning, the shale surface shows a smooth, even restoration.
-    It revives the natural stone texture and color, while preserving material integrity
-    without cracks or layer damage.
-  author: Yi-Chun Lin
-  character_count:
-    after: 189
-    before: 327
-  generated: '2025-10-25T15:16:30.296315Z'
-  generation_method: ai_research
-  word_count:
-    after: 28
-    before: 48
+  before: Under the microscope, the shale surface looks rough and uneven, covered in fine dust particles and oily residues that cling tightly. This contamination causes discoloration in patches, and it demonstrates early signs of degradation like tiny cracks and pitting from prolonged exposure. Cleaning can restore its natural texture.
+  after: After laser cleaning, the shale surface shows a smooth, even restoration. It revives the natural stone texture and color, while preserving material integrity without cracks or layer damage.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -67,260 +52,185 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.92
       unit: MPa m^{1/2}
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 5.0
+      max: 5
     thermalDestruction:
       value: 1173.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2300.0
     specificHeat:
       value: 920.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1200.0
+      min: 400
+      max: 1200
     youngsModulus:
       value: 25000000000.0
       unit: Pa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 100.0
+      min: 10
+      max: 100
     oxidationResistance:
       value: 0.88
       unit: dimensionless
-      confidence: 92
       source: ai_research
       min: 400.0
       max: 870.0
     laserReflectivity:
       value: 0.12
       unit: dimensionless (fraction)
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 80.0
+      min: 5
+      max: 80
     thermalConductivity:
       value: 1.8
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 8.0
+      max: 8
     thermalExpansion:
       value: 8.0e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 30.0
+      min: 3
+      max: 30
     density:
       value: 2650.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
       min: 1.5
       max: 6.0
     hardness:
       value: 3.0
       unit: Mohs
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 7.0
+      min: 1
+      max: 7
     corrosionResistance:
       value: 0.92
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 9.0
     laserAbsorption:
       value: 250000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
       min: 0.1
-      max: 100.0
+      max: 100
     compressiveStrength:
       value: 35.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 500.0
+      min: 20
+      max: 500
     thermalDiffusivity:
       value: 5.73e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.2
       max: 2.5
     flexuralStrength:
       value: 10.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 50.0
+      min: 5
+      max: 50
     tensileStrength:
       value: 5.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 25.0
+      min: 2
+      max: 25
     porosity:
       value: 0.1
       unit: fraction
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 25.0
+      max: 25
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
 machineSettings:
   powerRange:
-    description: Optimal average power for Shale surface cleaning without thermal
-      damage
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Near-IR wavelength optimized for Shale mineral absorption characteristics
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Beam spot diameter for effective Shale cleaning resolution
     unit: μm
     value: 80
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for continuous Shale surface processing
     unit: kHz
     value: 50
     min: 1
     max: 200
   energyDensity:
-    description: Fluence threshold for effective Shale material removal
     unit: J/cm²
     value: 2.5
     min: 0.1
     max: 20.0
   pulseWidth:
-    description: Nanosecond pulse duration for efficient Shale ablation with minimal
-      heat diffusion
     unit: ns
     value: 12
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform Shale surface treatment
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of passes for complete Shale surface cleaning
     unit: passes
     value: 2
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform Shale surface cleaning
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: For cleaning organic residues from shale surfaces, which has low thermal
-      conductivity prone to cracking, a 1064 nm Nd:YAG laser works best with 12 ns
-      pulses to minimize heat buildup. Aim for 2.5 J/cm² fluence and 100 W average
-      power, scanning at 500 mm/s for precise ablation without damaging the stone.
-    question: What laser wavelengths and power settings are most effective for cleaning
-      organic residues from shale rock surfaces without causing thermal cracking?
-  - answer: Shale's inherent porosity reduces laser ablation efficiency for hydrocarbon
-      removal in oil processing, as the 1064 nm beam at 2.5 J/cm² fluence vaporizes
-      surface contaminants swiftly but fails to penetrate deep pores, risking incomplete
-      cleaning. Petroleum industry forums highlight cases where adding mechanical
-      agitation improved yields by up to 25%, often needing two passes at 50 kHz.
-    question: How does the high porosity of shale affect the efficiency of laser ablation
-      in removing hydrocarbon contaminants during oil shale processing?
-  - answer: When ablating shale with 1064 nm fiber lasers at 100 W, its quartz content
-      generates hazardous silica dust, so use NIOSH-approved respirators to stay below
-      OSHA's 50 μg/m³ exposure limit. Deploy local exhaust ventilation to capture
-      particulates, and don ANSI Z136.1-compliant goggles for eye safety against reflections.
-    question: What safety precautions are necessary when using fiber lasers to clean
-      shale in archaeological sites to avoid silica dust inhalation?
-  - answer: After laser cleaning shale formations at 2.5 J/cm² fluence using 1064
-      nm wavelength, re-contamination frequently stems from clay minerals' strong
-      adhesion, trapping airborne particles. Employ surface spectroscopy for real-time
-      monitoring to spot residues. From manufacturer insights, apply post-scan sealing
-      or adjust speeds to 500 mm/s for better protection.
-    question: In laser cleaning of shale formations for fracking preparation, what
-      are common issues with surface re-contamination after treatment?
-  - answer: Clay-rich shales, with their silicate dominance, exhibit higher thermal
-      stability, enabling effective cleaning at 2.5 J/cm² fluence and 1064 nm wavelength
-      to ablate contaminants without substrate harm. Carbonate-rich variants, prone
-      to quicker decomposition, demand reduced energy densities to prevent unwanted
-      reactions, ensuring uniform results in archaeological restorations.
-    question: How do the mineral compositions in different shale types (e.g., clay-rich
-      vs. carbonate-rich) influence the choice of laser cleaning methods?
-  - answer: Laser cleaning shale in mining can liberate VOCs from kerogen during ablation,
-      especially at fluences above 2.5 J/cm², potentially exceeding EPA limits if
-      unchecked. With 100 W power and 50 kHz repetition rates, emissions stay below
-      50 ppm, as noted in industry guides—pair it with local exhaust to maintain compliance.
-    question: What are the environmental impacts of laser cleaning shale surfaces
-      in mining operations, particularly regarding volatile organic compound emissions?
-  - answer: Pulsed lasers work well for cleaning micro-fractures in brittle shale
-      without spreading cracks, thanks to short 12 ns pulses that curb shock waves
-      and heat diffusion. Keep fluence below 2.5 J/cm² and scan at 500 mm/s, as engineering
-      forums highlight, to ensure precise ablation without damage.
-    question: Can pulsed lasers effectively clean micro-fractures in shale without
-      propagating cracks, and what parameters prevent this?
-  - answer: Shale's low tensile strength makes it vulnerable to cracking, so prioritize
-      portable laser systems for field restoration to maintain surface integrity.
-      Select equipment with a 1064 nm wavelength and 100 W power, keeping fluence
-      under 2.5 J/cm² for precise, damage-free cleaning.
-    question: What physical properties of shale, like its low tensile strength, should
-      be considered when selecting laser cleaning equipment for restoration projects?
-  - answer: High moisture in shale can trigger steam generation during laser cleaning
-      at 2.5 J/cm² fluence, risking micro-cracks or uneven biofilm removal in remediation
-      efforts. Pre-drying samples to below 5% humidity enhances efficacy, allowing
-      stable ablation with 100 W power and minimal thermal damage to hydrated minerals.
-      This ensures safer, more uniform surface treatment.
-    question: How does moisture content in shale samples impact the laser cleaning
-      process for removing surface biofilms in environmental remediation?
-  - answer: In petroleum geochemistry labs, validate laser-cleaned shale surfaces
-      with XPS to confirm organic residues below 100 ppm and SEM for debris-free morphology.
-      Manufacturer protocols accept treatment at 2.5 J/cm² fluence and 1064 nm wavelength
-      if no particulates disrupt mineral analysis, preserving shale's integrity for
-      accurate hydrocarbon evaluation.
-    question: What are standard protocols for validating the cleanliness of laser-treated
-      shale surfaces in laboratory testing for petroleum geochemistry?
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+  - answer: For cleaning organic residues from shale surfaces, which has low thermal conductivity prone to cracking, a 1064 nm Nd:YAG laser works best with 12 ns pulses to minimize heat buildup. Aim for 2.5 J/cm² fluence and 100 W average power, scanning at 500 mm/s for precise ablation without damaging the stone.
+    question: What laser wavelengths and power settings are most effective for cleaning organic residues from shale rock surfaces without causing thermal cracking?
+  - answer: Shale's inherent porosity reduces laser ablation efficiency for hydrocarbon removal in oil processing, as the 1064 nm beam at 2.5 J/cm² fluence vaporizes surface contaminants swiftly but fails to penetrate deep pores, risking incomplete cleaning. Petroleum industry forums highlight cases where adding mechanical agitation improved yields by up to 25%, often needing two passes at 50 kHz.
+    question: How does the high porosity of shale affect the efficiency of laser ablation in removing hydrocarbon contaminants during oil shale processing?
+  - answer: When ablating shale with 1064 nm fiber lasers at 100 W, its quartz content generates hazardous silica dust, so use NIOSH-approved respirators to stay below OSHA's 50 μg/m³ exposure limit. Deploy local exhaust ventilation to capture particulates, and don ANSI Z136.1-compliant goggles for eye safety against reflections.
+    question: What safety precautions are necessary when using fiber lasers to clean shale in archaeological sites to avoid silica dust inhalation?
+  - answer: After laser cleaning shale formations at 2.5 J/cm² fluence using 1064 nm wavelength, re-contamination frequently stems from clay minerals' strong adhesion, trapping airborne particles. Employ surface spectroscopy for real-time monitoring to spot residues. From manufacturer insights, apply post-scan sealing or adjust speeds to 500 mm/s for better protection.
+    question: In laser cleaning of shale formations for fracking preparation, what are common issues with surface re-contamination after treatment?
+  - answer: Clay-rich shales, with their silicate dominance, exhibit higher thermal stability, enabling effective cleaning at 2.5 J/cm² fluence and 1064 nm wavelength to ablate contaminants without substrate harm. Carbonate-rich variants, prone to quicker decomposition, demand reduced energy densities to prevent unwanted reactions, ensuring uniform results in archaeological restorations.
+    question: How do the mineral compositions in different shale types (e.g., clay-rich vs. carbonate-rich) influence the choice of laser cleaning methods?
+  - answer: Laser cleaning shale in mining can liberate VOCs from kerogen during ablation, especially at fluences above 2.5 J/cm², potentially exceeding EPA limits if unchecked. With 100 W power and 50 kHz repetition rates, emissions stay below 50 ppm, as noted in industry guides—pair it with local exhaust to maintain compliance.
+    question: What are the environmental impacts of laser cleaning shale surfaces in mining operations, particularly regarding volatile organic compound emissions?
+  - answer: Pulsed lasers work well for cleaning micro-fractures in brittle shale without spreading cracks, thanks to short 12 ns pulses that curb shock waves and heat diffusion. Keep fluence below 2.5 J/cm² and scan at 500 mm/s, as engineering forums highlight, to ensure precise ablation without damage.
+    question: Can pulsed lasers effectively clean micro-fractures in shale without propagating cracks, and what parameters prevent this?
+  - answer: Shale's low tensile strength makes it vulnerable to cracking, so prioritize portable laser systems for field restoration to maintain surface integrity. Select equipment with a 1064 nm wavelength and 100 W power, keeping fluence under 2.5 J/cm² for precise, damage-free cleaning.
+    question: What physical properties of shale, like its low tensile strength, should be considered when selecting laser cleaning equipment for restoration projects?
+  - answer: High moisture in shale can trigger steam generation during laser cleaning at 2.5 J/cm² fluence, risking micro-cracks or uneven biofilm removal in remediation efforts. Pre-drying samples to below 5% humidity enhances efficacy, allowing stable ablation with 100 W power and minimal thermal damage to hydrated minerals. This ensures safer, more uniform surface treatment.
+    question: How does moisture content in shale samples impact the laser cleaning process for removing surface biofilms in environmental remediation?
+  - answer: In petroleum geochemistry labs, validate laser-cleaned shale surfaces with XPS to confirm organic residues below 100 ppm and SEM for debris-free morphology. Manufacturer protocols accept treatment at 2.5 J/cm² fluence and 1064 nm wavelength if no particulates disrupt mineral analysis, preserving shale's integrity for accurate hydrocarbon evaluation.
+    question: What are standard protocols for validating the cleanliness of laser-treated shale surfaces in laboratory testing for petroleum geochemistry?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922668Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922674Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin

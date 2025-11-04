@@ -1,48 +1,34 @@
 name: Calcite
-category: Stone
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+category: stone
 subcategory: sedimentary
 title: Calcite Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Calcite
+subtitle: Precision laser cleaning unveils Calcite's inherent translucency while preventing thermal decomposition
 description: Laser cleaning parameters for Calcite
 author:
-  id: 3
-  name: Ikmanda Roswati
   country: Indonesia
-  title: Ph.D.
-  sex: m
   expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
   image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
 images:
   hero:
-    alt: Calcite surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Calcite surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/calcite-laser-cleaning-hero.jpg
   micro:
-    alt: Calcite surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Calcite microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/calcite-laser-cleaning-micro.jpg
 caption:
-  before: Under microscopy, the calcite surface appears very-very rough and contaminated,
-    with fine dust particles scattered and adhered tightly. Contaminants, mostly organic
-    residues and mineral specks, measure 1-10 micrometers, clustering in pits and
-    causing uneven coverage. Surface degradation shows micro-etching and small cracks,
-    so the stone looks dull and weakened, needing careful cleaning to restore smoothness.
-  after: Calcite surface is cleaned very-very effectively by laser process, appearing
-    smooth and restored. Material integrity remains fully intact.
-  author: Ikmanda Roswati
-  character_count:
-    after: 138
-    before: 411
-  generated: '2025-10-25T14:04:21.136236Z'
-  generation_method: ai_research
-  word_count:
-    after: 18
-    before: 55
+  before: Under microscopy, the calcite surface appears very-very rough and contaminated, with fine dust particles scattered and adhered tightly. Contaminants, mostly organic residues and mineral specks, measure 1-10 micrometers, clustering in pits and causing uneven coverage. Surface degradation shows micro-etching and small cracks, so the stone looks dull and weakened, needing careful cleaning to restore smoothness.
+  after: Calcite surface is cleaned very-very effectively by laser process, appearing smooth and restored. Material integrity remains fully intact.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -66,258 +52,185 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.25
       unit: MPa√m
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 5.0
+      max: 5
     thermalDestruction:
       value: 1098.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2300.0
     density:
       value: 2710.0
       unit: kg/m³
-      confidence: 100
       source: ai_research
       min: 1.5
       max: 6.0
     oxidationResistance:
       value: 0.98
       unit: dimensionless (relative resistance scale 0-1)
-      confidence: 95
       source: ai_research
       min: 400.0
       max: 870.0
     laserReflectivity:
       value: 0.048
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 80.0
+      min: 5
+      max: 80
     thermalExpansion:
       value: 1.23e-05
       unit: K^{-1}
-      confidence: 98
       source: ai_research
-      min: 3.0
-      max: 30.0
+      min: 3
+      max: 30
     thermalConductivity:
       value: 2.9
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 8.0
+      max: 8
     youngsModulus:
       value: 69.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 100.0
+      min: 10
+      max: 100
     hardness:
       value: 3.0
       unit: Mohs
-      confidence: 100
       source: ai_research
-      min: 1.0
-      max: 7.0
+      min: 1
+      max: 7
     specificHeat:
       value: 831.3
       unit: J/kg·K
-      confidence: 100
       source: ai_research
-      min: 400.0
-      max: 1200.0
+      min: 400
+      max: 1200
     laserAbsorption:
       value: 800000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
       min: 0.1
-      max: 100.0
+      max: 100
     compressiveStrength:
       value: 150.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 500.0
+      min: 20
+      max: 500
     tensileStrength:
       value: 23.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 25.0
+      min: 2
+      max: 25
     thermalDiffusivity:
       value: 1.26e-06
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.2
       max: 2.5
     flexuralStrength:
       value: 15.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 50.0
+      min: 5
+      max: 50
     corrosionResistance:
       value: 0.25
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 9.0
     porosity:
       value: 0.6
       unit: '%'
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 25.0
+      max: 25
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
 machineSettings:
   powerRange:
-    description: Optimal average power for Calcite cleaning without thermal damage
     unit: W
     value: 45
     min: 1.0
     max: 120
   wavelength:
-    description: Near-IR wavelength for efficient Calcite absorption with minimal
-      transmission
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Beam spot diameter for precise cleaning resolution on Calcite surfaces
     unit: μm
     value: 80
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 50
     min: 1
     max: 200
   fluenceThreshold:
-    description: Minimum fluence required for effective contaminant removal from Calcite
     unit: J/cm²
     value: 2.5
     min: 0.3
     max: 4.5
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface
-      contaminants
     unit: ns
     value: 12
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of passes for complete contaminant removal
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Laser cleaning effectively removes calcite scale using 1064 nm wavelength
-      and ~2.5 J/cm² fluence, which the mineral readily absorbs. This process preserves
-      underlying metals like steel or aluminum by operating below their ablation thresholds.
-      It offers a precise, chemical-free alternative to traditional descaling methods.
-    question: Can laser cleaning effectively remove calcite scale from industrial
-      equipment without damaging the underlying metal?
-  - answer: For calcite, I recommend 1064 nm wavelength with fluence below 2.5 J/cm²
-      to prevent surface damage. A 50 kHz repetition rate and 500 mm/s scan speed
-      effectively remove deposits while preserving the original patina. These parameters
-      ensure controlled ablation of contaminants without affecting the underlying
-      stone structure.
-    question: What laser wavelength and parameters work best for cleaning calcite
-      deposits from marble and limestone sculptures?
-  - answer: Thermal decomposition occurs above 2.5 J/cm², converting CaCO₃ to CaO.
-      Using ultrashort pulses below 12 ns prevents this by minimizing heat diffusion.
-      Real-time LIBS monitoring detects calcium oxide formation, allowing immediate
-      parameter adjustment.
-    question: Does laser cleaning cause thermal decomposition of calcite into calcium
-      oxide, and how can this be prevented?
-  - answer: Crystal orientation significantly alters calcite's absorption at 1064
-      nm, requiring fluence adjustments from the baseline 2.5 J/cm². For heterogeneous
-      specimens, I recommend a lower 45 W power and rapid 500 mm/s scanning to prevent
-      differential etching across grain boundaries.
-    question: How do different calcite crystal sizes and orientations affect laser
-      cleaning efficiency on geological specimens?
-  - answer: When cleaning calcite at 1064 nm with 2.5 J/cm² fluence, nanoparticle
-      release necessitates robust respiratory protection. Use a P100 filter and implement
-      local exhaust ventilation to contain the generated calcium carbonate and contaminant
-      aerosols, ensuring operator safety.
-    question: What safety precautions are needed when laser cleaning calcite due to
-      potential nanoparticle release?
-  - answer: Yes, selective removal is achievable by exploiting differential absorption
-      at 1064 nm. Optimal parameters around 2.5 J/cm² fluence and 500 mm/s scan speed
-      effectively ablate biological growth while preserving the calcite substrate,
-      verified through spectroscopic analysis.
-    question: Can laser cleaning selectively remove biological growth from calcite
-      surfaces without etching the mineral itself?
-  - answer: White residue typically results from calcite decomposition into calcium
-      oxide at excessive fluence above 2.5 J/cm². To prevent this, optimize scanning
-      speed near 500 mm/s and use minimal passes to avoid thermal degradation of the
-      surface.
-    question: Why does calcite sometimes develop a white residue after laser cleaning,
-      and how is this avoided?
-  - answer: Laser cleaning achieves superior economic viability for large-scale calcite
-      processing. With a 45 W average power and 500 mm/s scan speed, its throughput
-      surpasses mechanical methods while eliminating recurring chemical costs and
-      abrasive waste disposal, significantly reducing operational expenditure.
-    question: What is the economic feasibility of using laser cleaning for large-scale
-      calcite removal compared to traditional methods?
-  - answer: Iron oxide's strong 1064 nm absorption requires careful fluence control
-      below 2.5 J/cm² to prevent preferential removal that could etch the calcite.
-      I recommend reducing power to 45 W and adjusting scan speed to manage this differential
-      absorption, preventing subsurface damage to the mineral matrix.
-    question: How does the presence of iron oxide staining within calcite affect laser
-      cleaning parameters and outcomes?
-  - answer: Laser-Induced Breakdown Spectroscopy (LIBS) verifies complete decontamination
-      by detecting elemental traces below 2.5 J/cm², the ablation threshold for Calcite.
-      Raman spectroscopy then confirms no structural phase change, ensuring the 1064
-      nm wavelength cleaning preserved the crystal lattice. These non-destructive
-      methods provide definitive quality control.
-    question: What diagnostic methods are used to verify complete calcite contamination
-      removal without surface damage?
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+  - answer: Laser cleaning effectively removes calcite scale using 1064 nm wavelength and ~2.5 J/cm² fluence, which the mineral readily absorbs. This process preserves underlying metals like steel or aluminum by operating below their ablation thresholds. It offers a precise, chemical-free alternative to traditional descaling methods.
+    question: Can laser cleaning effectively remove calcite scale from industrial equipment without damaging the underlying metal?
+  - answer: For calcite, I recommend 1064 nm wavelength with fluence below 2.5 J/cm² to prevent surface damage. A 50 kHz repetition rate and 500 mm/s scan speed effectively remove deposits while preserving the original patina. These parameters ensure controlled ablation of contaminants without affecting the underlying stone structure.
+    question: What laser wavelength and parameters work best for cleaning calcite deposits from marble and limestone sculptures?
+  - answer: Thermal decomposition occurs above 2.5 J/cm², converting CaCO₃ to CaO. Using ultrashort pulses below 12 ns prevents this by minimizing heat diffusion. Real-time LIBS monitoring detects calcium oxide formation, allowing immediate parameter adjustment.
+    question: Does laser cleaning cause thermal decomposition of calcite into calcium oxide, and how can this be prevented?
+  - answer: Crystal orientation significantly alters calcite's absorption at 1064 nm, requiring fluence adjustments from the baseline 2.5 J/cm². For heterogeneous specimens, I recommend a lower 45 W power and rapid 500 mm/s scanning to prevent differential etching across grain boundaries.
+    question: How do different calcite crystal sizes and orientations affect laser cleaning efficiency on geological specimens?
+  - answer: When cleaning calcite at 1064 nm with 2.5 J/cm² fluence, nanoparticle release necessitates robust respiratory protection. Use a P100 filter and implement local exhaust ventilation to contain the generated calcium carbonate and contaminant aerosols, ensuring operator safety.
+    question: What safety precautions are needed when laser cleaning calcite due to potential nanoparticle release?
+  - answer: Yes, selective removal is achievable by exploiting differential absorption at 1064 nm. Optimal parameters around 2.5 J/cm² fluence and 500 mm/s scan speed effectively ablate biological growth while preserving the calcite substrate, verified through spectroscopic analysis.
+    question: Can laser cleaning selectively remove biological growth from calcite surfaces without etching the mineral itself?
+  - answer: White residue typically results from calcite decomposition into calcium oxide at excessive fluence above 2.5 J/cm². To prevent this, optimize scanning speed near 500 mm/s and use minimal passes to avoid thermal degradation of the surface.
+    question: Why does calcite sometimes develop a white residue after laser cleaning, and how is this avoided?
+  - answer: Laser cleaning achieves superior economic viability for large-scale calcite processing. With a 45 W average power and 500 mm/s scan speed, its throughput surpasses mechanical methods while eliminating recurring chemical costs and abrasive waste disposal, significantly reducing operational expenditure.
+    question: What is the economic feasibility of using laser cleaning for large-scale calcite removal compared to traditional methods?
+  - answer: Iron oxide's strong 1064 nm absorption requires careful fluence control below 2.5 J/cm² to prevent preferential removal that could etch the calcite. I recommend reducing power to 45 W and adjusting scan speed to manage this differential absorption, preventing subsurface damage to the mineral matrix.
+    question: How does the presence of iron oxide staining within calcite affect laser cleaning parameters and outcomes?
+  - answer: Laser-Induced Breakdown Spectroscopy (LIBS) verifies complete decontamination by detecting elemental traces below 2.5 J/cm², the ablation threshold for Calcite. Raman spectroscopy then confirms no structural phase change, ensuring the 1064 nm wavelength cleaning preserved the crystal lattice. These non-destructive methods provide definitive quality control.
+    question: What diagnostic methods are used to verify complete calcite contamination removal without surface damage?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921740Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921746Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati

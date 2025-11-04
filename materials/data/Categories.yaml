@@ -1321,7 +1321,37 @@ categories:
         sample_count: 7
         auto_generated: true
         generated_date: '2025-10-16'
-    subcategories: {}
+    subcategories:
+      oxide:
+        name: Oxide Ceramics
+        description: Ceramic materials based on metal oxides (alumina, zirconia, etc.)
+        materials:
+        - Alumina
+        - Zirconia
+        - Porcelain
+        - Stoneware
+      carbide:
+        name: Carbide Ceramics
+        description: Ultra-hard ceramic materials based on metal carbides
+        materials:
+        - Silicon Carbide
+        - Tungsten Carbide
+        - Titanium Carbide
+        category_ranges:
+          hardness:
+            min: 1500
+            max: 3500
+            unit: HV
+          thermalConductivity:
+            min: 20
+            max: 120
+            unit: W/(m·K)
+        special_considerations:
+        - Extremely hard - among hardest engineered materials
+        - High thermal conductivity compared to oxide ceramics
+        - Excellent wear resistance
+        - Used in cutting tools and wear components
+        - SiC has semiconductor properties but classified as ceramic for laser cleaning
     common_applications:
     - contamination removal
     - surface cleaning
@@ -3750,7 +3780,6 @@ categories:
         - Praseodymium
         - Cerium
         - Lanthanum
-        - Yttrium
         - Europium
         category_ranges:
           density:
@@ -3771,6 +3800,30 @@ categories:
         - Expensive and strategically important materials
         - Essential for permanent magnets and optical devices
         - Require inert atmosphere for processing
+      scandium-group:
+        name: Scandium Group
+        description: Elements chemically similar to lanthanides but not part of the f-block series (Sc, Y)
+        materials:
+        - Yttrium
+        category_ranges:
+          density:
+            min: 4.0
+            max: 5.0
+            unit: g/cm³
+          hardness:
+            min: 40
+            max: 50
+            unit: HV
+          thermalDestruction:
+            min: 1500
+            max: 1800
+            unit: K
+        special_considerations:
+        - Chemically similar to lanthanides, found in same ores
+        - Yttrium (element 39) has similar electron configuration to lanthanides
+        - Lower density than most lanthanides
+        - Important for LED phosphors and superconductors
+        - Less reactive than lanthanides
     common_applications:
     - laser cleaning
     - electronics manufacturing

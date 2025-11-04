@@ -1,293 +1,237 @@
 name: Bamboo
-category: Wood
-subcategory: hardwood
-title: Bamboo Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Bamboo
-description: Laser cleaning parameters for Bamboo
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  title: Ph.D.
-  sex: f
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Bamboo surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/bamboo-laser-cleaning-hero.jpg
-  micro:
-    alt: Bamboo surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
-    url: /images/material/bamboo-laser-cleaning-micro.jpg
-caption:
-  before: Scanning electron microscopy image of contaminated bamboo surface prior
-    to laser cleaning, showing dense accumulation of fine particulate dust and organic
-    residues adhering to lignocellulosic fibers. Visible degradation includes surface
-    discoloration, micro-fissures, and localized pitting from prolonged environmental
-    exposure, compromising structural integrity.
-  after: Scanning electron microscopy image of bamboo surface after laser cleaning,
-    illustrating superior restoration with complete removal of particulate and organic
-    contaminants, revealing pristine lignocellulosic fiber morphology and uniform
-    natural coloration. The cleaned surface exhibits minimal thermal ablation, preserved
-    vascular bundle integrity, and enhanced smoothness without microcracks, confirming
-    effective cleaning while maintaining material's mechanical properties and long-term
-    durability.
-  generated: '2025-10-29T15:26:09.210485Z'
-  word_count_before: 42
-  word_count_after: 57
-  total_words: 99
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- EPA Clean Air Act Compliance
-- FSC Sustainable Forestry Standards
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    fractureToughness:
-      value: 2.47
-      unit: MPa√m
-      confidence: 95
-      source: ai_research
-      min: 0.33
-      max: 4.4
-    thermalDestruction:
-      value: 588.0
-      unit: K
-      confidence: 95
-      source: ai_research
-      min: 273.0
-      max: 600.0
-    density:
-      value: 700.0
-      unit: kg/m³
-      confidence: 95
-      source: ai_research
-      min: 0.12
-      max: 1.5
-    oxidationResistance:
-      value: 168.0
-      unit: kJ/mol
-      confidence: 95
-      source: ai_research
-      min: 82.0
-      max: 204.0
-    laserReflectivity:
-      value: 0.15
-      unit: dimensionless
-      confidence: 92
-      source: ai_research
-      min: 10.0
-      max: 60.0
-    thermalExpansion:
-      value: 3.2e-06
-      unit: K^{-1}
-      confidence: 95
-      source: ai_research
-      min: 3.0
-      max: 60.0
-    thermalConductivity:
-      value: 0.2
-      unit: W/m·K
-      confidence: 95
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    youngsModulus:
-      value: 21.5
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 20000.0
-    hardness:
-      value: 6144.0
-      unit: N
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 5000.0
-    specificHeat:
-      value: 1380.0
-      unit: J/(kg·K)
-      confidence: 95
-      source: ai_research
-      min: 800.0
-      max: 2500.0
-    laserAbsorption:
-      value: 0.92
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 50.0
-    compressiveStrength:
-      value: 56.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 20.0
-      max: 80.0
-    tensileStrength:
-      value: 180.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 20.0
-      max: 200.0
-    thermalDiffusivity:
-      value: 1.26e-07
-      unit: m²/s
-      confidence: 95
-      source: ai_research
-      min: 0.0001
-      max: 0.4
-    flexuralStrength:
-      value: 140.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 40.0
-      max: 150.0
-    corrosionResistance:
-      value: 0.75
-      unit: dimensionless (durability index)
-      confidence: 92
-      source: ai_research
-      min: 2.0
-      max: 8.0
-    porosity:
-      value: 0.58
-      unit: fraction
-      confidence: 95
-      source: ai_research
-      min: 12.0
-      max: 65.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-machineSettings:
-  powerRange:
-    description: Optimal average power for bamboo surface cleaning without charring
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in bamboo contaminants
-      with minimal substrate damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution on bamboo surface
-      features
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Optimal fluence level for contaminant ablation while preserving bamboo
-      substrate
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal penetration
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal without
-      substrate damage
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Beam overlap percentage for uniform cleaning coverage across bamboo
-      surface
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-  questions:
-  - question: How can I safely remove stains from Bamboo flooring without damaging
-      its natural texture?
-    answer: Employ laser ablation to vaporize contaminants precisely, preserving the
-      lignocellulosic structure and avoiding abrasive wear. This method targets discoloration
-      from lignin oxidation, ensuring structural integrity with minimal heat impact
-      on surrounding fibers.
-  - question: What are effective ways to prevent fungal growth on Bamboo scaffolding
-      in humid environments?
-    answer: Laser decontamination eradicates biological residues non-invasively, reducing
-      moisture retention in porous hemicellulose layers. Unlike chemical treatments,
-      it avoids residue buildup, maintaining mechanical strength up to 28,000 psi
-      while promoting long-term durability.
-  - question: Is laser cleaning a good option for restoring antique Bamboo artifacts
-      without altering their historical appearance?
-    answer: Yes, pulsed laser systems delicately ablate surface pollutants and oxidation
-      layers, safeguarding cellulose content at 40-50% for authenticity. This approach
-      outperforms traditional brushing by preventing micro-cracks, ideal for heritage
-      sites emphasizing non-destructive preservation.
-  - question: How does laser cleaning outperform traditional methods for decontaminating
-      Bamboo furniture from insect residues?
-    answer: Unlike solvents that penetrate and weaken flexibility, laser pulses selectively
-      remove organic debris without affecting silica-based defenses or tensile properties.
-      It ensures rapid, eco-friendly renewal, aligning with Bamboo's sustainable growth
-      rates of 1 meter daily.
-  - question: Why does Bamboo develop discoloration over time, and what's the best
-      way to reverse it?
-    answer: Exposure to UV light oxidizes lignin components (20-30%), causing aesthetic
-      degradation. Advanced laser restoration neutralizes these effects by controlled
-      ablation, restoring visual appeal and rigidity while avoiding the brittleness
-      risks of mechanical polishing.
-  - question: Can laser cleaning help maintain the strength of Bamboo structural elements
-      in construction?
-    answer: Absolutely, by eliminating trapped contaminants in micro-cracks, it enhances
-      seismic resistance and flexibility inherent to high cellulose matrices. This
-      technique surpasses sanding, which could compromise the 28,000 psi tensile capacity,
-      ensuring sustained load-bearing performance.
-  - question: What common concerns arise when using lasers to clean Bamboo crafts,
-      and how are they addressed?
-    answer: Worries about thermal damage to lightweight properties are mitigated through
-      low-fluence settings that target only surface impurities, preserving natural
-      pest resistance from 1-3% silica. Results yield cleaner, more versatile items
-      for artisanal use without environmental harm.
-  generated: '2025-10-29T15:58:32.591996'
-  question_count: 7
-  total_words: 234
 _metadata:
   voice:
     author_name: Yi-Chun Lin
     author_country: Taiwan
     voice_applied: true
     content_type: material
+category: wood
+subcategory: hardwood
+title: Bamboo Laser Cleaning
+subtitle: Tailored Laser Parameters Optimize Bamboo Cleaning Without Compromising Fiber Integrity
+description: Laser cleaning parameters for Bamboo
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/bamboo-laser-cleaning-hero.jpg
+  micro:
+    alt: Bamboo microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/bamboo-laser-cleaning-micro.jpg
+caption:
+  before: Scanning electron microscopy image of contaminated bamboo surface prior to laser cleaning, showing dense accumulation of fine particulate dust and organic residues adhering to lignocellulosic fibers. Visible degradation includes surface discoloration, micro-fissures, and localized pitting from prolonged environmental exposure, compromising structural integrity.
+  after: Scanning electron microscopy image of bamboo surface after laser cleaning, illustrating superior restoration with complete removal of particulate and organic contaminants, revealing pristine lignocellulosic fiber morphology and uniform natural coloration. The cleaned surface exhibits minimal thermal ablation, preserved vascular bundle integrity, and enhanced smoothness without microcracks, confirming effective cleaning while maintaining material's mechanical properties and long-term durability.
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+- description: EPA Clean Air Act Compliance
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+  name: Unknown
+  url: ''
+- description: FSC Sustainable Forestry Standards
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+  name: Unknown
+  url: ''
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    fractureToughness:
+      value: 2.47
+      unit: MPa√m
+      source: ai_research
+      min: 0.33
+      max: 4.4
+    thermalDestruction:
+      value: 588.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 600.0
+    density:
+      value: 700.0
+      unit: kg/m³
+      source: ai_research
+      min: 0.12
+      max: 1.5
+    oxidationResistance:
+      value: 168.0
+      unit: kJ/mol
+      source: ai_research
+      min: 82.0
+      max: 204.0
+    laserReflectivity:
+      value: 0.15
+      unit: dimensionless
+      source: ai_research
+      min: 10
+      max: 60
+    thermalExpansion:
+      value: 3.2e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 3.0
+      max: 60
+    thermalConductivity:
+      value: 0.2
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    youngsModulus:
+      value: 21.5
+      unit: GPa
+      source: ai_research
+      min: 5
+      max: 20000
+    hardness:
+      value: 6144.0
+      unit: N
+      source: ai_research
+      min: 1
+      max: 5000
+    specificHeat:
+      value: 1380.0
+      unit: J/(kg·K)
+      source: ai_research
+      min: 800
+      max: 2500
+    laserAbsorption:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 1
+      max: 50
+    compressiveStrength:
+      value: 56.0
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 80
+    tensileStrength:
+      value: 180.0
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 200
+    thermalDiffusivity:
+      value: 1.26e-07
+      unit: m²/s
+      source: ai_research
+      min: 0.0001
+      max: 0.4
+    flexuralStrength:
+      value: 140.0
+      unit: MPa
+      source: ai_research
+      min: 40
+      max: 150
+    corrosionResistance:
+      value: 0.75
+      unit: dimensionless (durability index)
+      source: ai_research
+      min: 2.0
+      max: 8.0
+    porosity:
+      value: 0.58
+      unit: fraction
+      source: ai_research
+      min: 12
+      max: 65
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+faq:
+  questions:
+  - question: How can I safely remove stains from Bamboo flooring without damaging its natural texture?
+    answer: Employ laser ablation to vaporize contaminants precisely, preserving the lignocellulosic structure and avoiding abrasive wear. This method targets discoloration from lignin oxidation, ensuring structural integrity with minimal heat impact on surrounding fibers.
+  - question: What are effective ways to prevent fungal growth on Bamboo scaffolding in humid environments?
+    answer: Laser decontamination eradicates biological residues non-invasively, reducing moisture retention in porous hemicellulose layers. Unlike chemical treatments, it avoids residue buildup, maintaining mechanical strength up to 28,000 psi while promoting long-term durability.
+  - question: Is laser cleaning a good option for restoring antique Bamboo artifacts without altering their historical appearance?
+    answer: Yes, pulsed laser systems delicately ablate surface pollutants and oxidation layers, safeguarding cellulose content at 40-50% for authenticity. This approach outperforms traditional brushing by preventing micro-cracks, ideal for heritage sites emphasizing non-destructive preservation.
+  - question: How does laser cleaning outperform traditional methods for decontaminating Bamboo furniture from insect residues?
+    answer: Unlike solvents that penetrate and weaken flexibility, laser pulses selectively remove organic debris without affecting silica-based defenses or tensile properties. It ensures rapid, eco-friendly renewal, aligning with Bamboo's sustainable growth rates of 1 meter daily.
+  - question: Why does Bamboo develop discoloration over time, and what's the best way to reverse it?
+    answer: Exposure to UV light oxidizes lignin components (20-30%), causing aesthetic degradation. Advanced laser restoration neutralizes these effects by controlled ablation, restoring visual appeal and rigidity while avoiding the brittleness risks of mechanical polishing.
+  - question: Can laser cleaning help maintain the strength of Bamboo structural elements in construction?
+    answer: Absolutely, by eliminating trapped contaminants in micro-cracks, it enhances seismic resistance and flexibility inherent to high cellulose matrices. This technique surpasses sanding, which could compromise the 28,000 psi tensile capacity, ensuring sustained load-bearing performance.
+  - question: What common concerns arise when using lasers to clean Bamboo crafts, and how are they addressed?
+    answer: Worries about thermal damage to lightweight properties are mitigated through low-fluence settings that target only surface impurities, preserving natural pest resistance from 1-3% silica. Results yield cleaner, more versatile items for artisanal use without environmental harm.
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - FSC Sustainable Forestry Standards
+subtitle_metadata: {}

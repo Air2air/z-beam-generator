@@ -1,49 +1,34 @@
 name: Gorilla Glass
-category: Glass
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States (California)
+    voice_applied: true
+    content_type: material
+category: glass
 subcategory: soda-lime
 title: Gorilla Glass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Gorilla Glass
+subtitle: Gentle Laser Parameters Preserve Gorilla Glass Strength and Clarity
 description: Laser cleaning parameters for Gorilla Glass
 author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  title: MA
-  sex: m
+  country: United States (California)
   expertise: Optical Materials for Laser Systems
+  id: 4
   image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
 images:
   hero:
-    alt: Gorilla Glass surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
   micro:
-    alt: Gorilla Glass surface at 500x magnification comparing contaminated state
-      with cleaned substrate showing complete restoration
+    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
 caption:
-  before: Under microscopic view, Gorilla Glass exhibits a contaminated surface dotted
-    with fine particulate debris and oily smudges, forming uneven clusters that scatter
-    light. These contaminants induce subtle pitting and haze, eroding the material's
-    pristine optical performance vital for smartphone screens in everyday use.
-  after: Following cleaning, the Gorilla Glass surface restores to a pristine, residue-free
-    state with enhanced clarity and smoothness. Restoration quality excels, fully
-    preserving material integrity without scratches or haze. In laser optics manufacturing,
-    this ensures reliable beam transmission for high-precision applications.
-  author: Todd Dunning
-  character_count:
-    after: 321
-    before: 316
-  generated: '2025-10-25T14:25:39.458096Z'
-  generation_method: ai_research
-  word_count:
-    after: 40
-    before: 43
+  before: Under microscopic view, Gorilla Glass exhibits a contaminated surface dotted with fine particulate debris and oily smudges, forming uneven clusters that scatter light. These contaminants induce subtle pitting and haze, eroding the material's pristine optical performance vital for smartphone screens in everyday use.
+  after: Following cleaning, the Gorilla Glass surface restores to a pristine, residue-free state with enhanced clarity and smoothness. Restoration quality excels, fully preserving material integrity without scratches or haze. In laser optics manufacturing, this ensures reliable beam transmission for high-precision applications.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -67,261 +52,191 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 1000000000000.0
       unit: ohm m
-      confidence: 95
       source: ai_research
       min: 10000000000.0
       max: 1000000000000000.0
     fractureToughness:
       value: 0.75
       unit: MPa√m
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 2.0
+      max: 2
     thermalDestruction:
       value: 1743.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2300.0
     specificHeat:
       value: 840.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 120.0
-      max: 900.0
+      min: 120
+      max: 900
     youngsModulus:
       value: 70.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 400.0
+      min: 10
+      max: 400
     oxidationResistance:
       value: 0.98
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 400.0
       max: 1700.0
     laserReflectivity:
       value: 0.0415
       unit: ''
-      confidence: 95
       source: ai_research
       min: 0.1
-      max: 92.0
+      max: 92
     thermalConductivity:
       value: 1.05
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.7
-      max: 30.0
+      max: 30
     thermalExpansion:
       value: 9.0e-06
       unit: K^{-1}
-      confidence: 100
       source: ai_research
       min: 0.1
-      max: 15.0
+      max: 15
     density:
       value: 2.42
       unit: g/cm³
-      confidence: 95
       source: ai_research
       min: 1.2
       max: 7.6
     hardness:
       value: 6.2
       unit: GPa
-      confidence: 95
       source: ai_research
       min: 3.5
       max: 9.5
     corrosionResistance:
       value: 5.0e-08
       unit: mol/m²/s
-      confidence: 95
       source: ai_research
-      min: 9.0
-      max: 10.0
+      min: 9
+      max: 10
     laserAbsorption:
       value: 10.5
       unit: m^{-1}
-      confidence: 95
       source: ai_research
       min: 0.001
-      max: 10.0
+      max: 10
     compressiveStrength:
       value: 700.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 500.0
-      max: 2000.0
+      min: 500
+      max: 2000
     thermalDiffusivity:
       value: 5.81e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.01
-      max: 15.0
+      max: 15
     flexuralStrength:
       value: 700.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
+      min: 50
       max: 750.0
     tensileStrength:
       value: 900.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 30.0
-      max: 2000.0
+      min: 30
+      max: 2000
     ablationThreshold:
       value: 3.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 6.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
 machineSettings:
   powerRange:
-    description: Optimal power range for Gorilla Glass cleaning without thermal damage
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Optimal wavelength for Gorilla Glass processing with good absorption
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 100
     min: 1
     max: 200
   fluenceThreshold:
-    description: Optimal fluence threshold for contaminant removal without glass damage
     unit: J/cm²
     value: 2.5
     min: 0.3
     max: 4.5
   pulseWidth:
-    description: Optimal pulse width for controlled ablation of surface contaminants
     unit: ns
     value: 10
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Optimal number of passes for complete contaminant removal
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap ratio for uniform cleaning coverage
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Yes, laser cleaning of Gorilla Glass is feasible while preserving its
-      oleophobic coating. The key is using a carefully controlled 1064 nm wavelength
-      with a fluence below ~2.5 J/cm². This approach selectively removes contaminants
-      without the thermal accumulation that degrades the delicate surface treatment.
-    question: Can you use a laser to clean Gorilla Glass without damaging the oleophobic
-      coating?
-  - answer: For Gorilla Glass, a 1064nm wavelength is optimal. It provides sufficient
-      absorption by most contaminants while transmitting through the glass matrix,
-      minimizing heat buildup in the chemically strengthened layer. Maintain fluence
-      below 2.5 J/cm² with a 50µm spot size to ablate residues without inducing micro-fractures
-      from thermal stress.
-    question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning
-      contaminants from Gorilla Glass without causing micro-fractures?
-  - answer: The ion-exchange creates a deep compressive layer, but exceeding the 2.5
-      J/cm² fluence threshold can locally overcome this stress. This leads to pinpoint
-      failures as the stored compressive energy is catastrophically released, compromising
-      the glass's structural integrity.
-    question: How does the ion-exchange process and resulting compressive stress layer
-      in Gorilla Glass affect its susceptibility to laser-induced damage?
-  - answer: For Gorilla Glass, start with a 1064 nm wavelength and a conservative
-      fluence under 2.5 J/cm². Use a 10 ns pulse width and 100 kHz repetition rate,
-      but always validate these settings on scrap components first to prevent surface
-      damage.
-    question: What are the safe operating parameters (fluence, pulse width, repetition
-      rate) for laser cleaning Gorilla Glass on consumer electronics like smartphones?
-  - answer: When properly cleaned below the 2.5 J/cm² threshold, Gorilla Glass maintains
-      its optical clarity. We verify this by measuring surface topology and haze,
-      ensuring no change to touch sensitivity occurs from laser-induced micromelting.
-    question: After laser cleaning, is there a change in the surface roughness or
-      optical clarity of Gorilla Glass that could affect touch sensitivity or display
-      quality?
-  - answer: Yes, with precise 1064 nm laser parameters, you can ablate these coatings.
-      The key is maintaining fluence below 2.5 J/cm² to remove the polymer layers
-      without affecting the ion-exchanged glass substrate.
-    question: Can laser cleaning be used to selectively remove hard coatings (like
-      anti-glare or anti-fingerprint) from Gorilla Glass without damaging the substrate?
-  - answer: Laser cleaning Gorilla Glass at 1064 nm generates hazardous silica nanoparticles
-      and toxic metal fumes from coatings. Proper fume extraction is mandatory, and
-      I'd recommend using a fully enclosed Class 1 laser system with appropriate respiratory
-      PPE to mitigate these inhalation risks.
-    question: What specific safety hazards are associated with laser cleaning Gorilla
-      Glass, such as toxic fumes from ablated coatings or glass particulates?
-  - answer: We verify cleaning effectiveness using high-magnification microscopy to
-      check for micro-fractures and spectrophotometry to confirm optical performance.
-      Visual inspection alone is insufficient, as it misses subsurface damage from
-      improper fluence above 2.5 J/cm².
-    question: How do you verify the effectiveness of laser cleaning on Gorilla Glass?
-      What non-destructive testing methods are suitable?
-  - answer: Laser cleaning operates via ablation at ~2.5 J/cm², which is ideal for
-      removing surface contaminants. For a scratch, this process would simply etch
-      the entire surface, enlarging the defect rather than repairing it. The technique
-      fundamentally removes material and cannot fill or polish out such imperfections.
-    question: Is laser cleaning a viable method for removing scratches from Gorilla
-      Glass, or does it primarily target surface contaminants?
-  - answer: For Gorilla Glass edges, a galvo scanner with dynamic focus is essential.
-      This system maintains the required 2.5 J/cm² fluence across complex 2.5D contours
-      by continuously adjusting the focal plane. A 50 µm spot size provides the precision
-      needed to clean these curved surfaces effectively without inducing thermal stress.
-    question: For laser cleaning systems, what type of beam delivery (galvo scanner,
-      fixed optic) and spot size are recommended for treating the curved edges of
-      Gorilla Glass?
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+  - answer: Yes, laser cleaning of Gorilla Glass is feasible while preserving its oleophobic coating. The key is using a carefully controlled 1064 nm wavelength with a fluence below ~2.5 J/cm². This approach selectively removes contaminants without the thermal accumulation that degrades the delicate surface treatment.
+    question: Can you use a laser to clean Gorilla Glass without damaging the oleophobic coating?
+  - answer: For Gorilla Glass, a 1064nm wavelength is optimal. It provides sufficient absorption by most contaminants while transmitting through the glass matrix, minimizing heat buildup in the chemically strengthened layer. Maintain fluence below 2.5 J/cm² with a 50µm spot size to ablate residues without inducing micro-fractures from thermal stress.
+    question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning contaminants from Gorilla Glass without causing micro-fractures?
+  - answer: The ion-exchange creates a deep compressive layer, but exceeding the 2.5 J/cm² fluence threshold can locally overcome this stress. This leads to pinpoint failures as the stored compressive energy is catastrophically released, compromising the glass's structural integrity.
+    question: How does the ion-exchange process and resulting compressive stress layer in Gorilla Glass affect its susceptibility to laser-induced damage?
+  - answer: For Gorilla Glass, start with a 1064 nm wavelength and a conservative fluence under 2.5 J/cm². Use a 10 ns pulse width and 100 kHz repetition rate, but always validate these settings on scrap components first to prevent surface damage.
+    question: What are the safe operating parameters (fluence, pulse width, repetition rate) for laser cleaning Gorilla Glass on consumer electronics like smartphones?
+  - answer: When properly cleaned below the 2.5 J/cm² threshold, Gorilla Glass maintains its optical clarity. We verify this by measuring surface topology and haze, ensuring no change to touch sensitivity occurs from laser-induced micromelting.
+    question: After laser cleaning, is there a change in the surface roughness or optical clarity of Gorilla Glass that could affect touch sensitivity or display quality?
+  - answer: Yes, with precise 1064 nm laser parameters, you can ablate these coatings. The key is maintaining fluence below 2.5 J/cm² to remove the polymer layers without affecting the ion-exchanged glass substrate.
+    question: Can laser cleaning be used to selectively remove hard coatings (like anti-glare or anti-fingerprint) from Gorilla Glass without damaging the substrate?
+  - answer: Laser cleaning Gorilla Glass at 1064 nm generates hazardous silica nanoparticles and toxic metal fumes from coatings. Proper fume extraction is mandatory, and I'd recommend using a fully enclosed Class 1 laser system with appropriate respiratory PPE to mitigate these inhalation risks.
+    question: What specific safety hazards are associated with laser cleaning Gorilla Glass, such as toxic fumes from ablated coatings or glass particulates?
+  - answer: We verify cleaning effectiveness using high-magnification microscopy to check for micro-fractures and spectrophotometry to confirm optical performance. Visual inspection alone is insufficient, as it misses subsurface damage from improper fluence above 2.5 J/cm².
+    question: How do you verify the effectiveness of laser cleaning on Gorilla Glass? What non-destructive testing methods are suitable?
+  - answer: Laser cleaning operates via ablation at ~2.5 J/cm², which is ideal for removing surface contaminants. For a scratch, this process would simply etch the entire surface, enlarging the defect rather than repairing it. The technique fundamentally removes material and cannot fill or polish out such imperfections.
+    question: Is laser cleaning a viable method for removing scratches from Gorilla Glass, or does it primarily target surface contaminants?
+  - answer: For Gorilla Glass edges, a galvo scanner with dynamic focus is essential. This system maintains the required 2.5 J/cm² fluence across complex 2.5D contours by continuously adjusting the focal plane. A 50 µm spot size provides the precision needed to clean these curved surfaces effectively without inducing thermal stress.
+    question: For laser cleaning systems, what type of beam delivery (galvo scanner, fixed optic) and spot size are recommended for treating the curved edges of Gorilla Glass?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922008Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922014Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning

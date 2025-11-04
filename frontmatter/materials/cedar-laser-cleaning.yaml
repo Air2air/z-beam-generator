@@ -1,309 +1,239 @@
 name: Cedar
-category: Wood
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States (California)
+    voice_applied: true
+    content_type: material
+category: wood
 subcategory: softwood
 title: Cedar Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Cedar
+subtitle: Revive Cedar's rich grain with gentle low-power laser precision
 description: Laser cleaning parameters for Cedar
 author:
-  id: 4
-  name: Todd Dunning
-  country: United States
-  title: MA
-  sex: m
+  country: United States (California)
   expertise: Optical Materials for Laser Systems
+  id: 4
   image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
 images:
   hero:
-    alt: Cedar surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Cedar surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/cedar-laser-cleaning-hero.jpg
   micro:
-    alt: Cedar surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Cedar microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/cedar-laser-cleaning-micro.jpg
 caption:
-  before: Under microscopy, cedar's porous surface traps dirt particles and oils,
-    degrading fibers with roughening and staining in cleaning tasks.
-  after: After cleaning Cedar wood surfaces, the restoration yields a smooth, even
-    finish that revives the natural grain without compromising integrity. Pores remain
-    intact, free of residues, ensuring durability for applications like furniture
-    refinishing at companies such as Restoration Hardware. This process enhances aesthetic
-    appeal while maintaining the wood's structural strength, preventing warping or
-    discoloration over time.
-  author: Todd Dunning
-  character_count:
-    after: 425
-    before: 136
-  generated: '2025-10-25T14:06:48.311007Z'
-  generation_method: ai_research
-  word_count:
-    after: 56
-    before: 19
+  before: Under microscopy, cedar's porous surface traps dirt particles and oils, degrading fibers with roughening and staining in cleaning tasks.
+  after: After cleaning Cedar wood surfaces, the restoration yields a smooth, even finish that revives the natural grain without compromising integrity. Pores remain intact, free of residues, ensuring durability for applications like furniture refinishing at companies such as Restoration Hardware. This process enhances aesthetic appeal while maintaining the wood's structural strength, preventing warping or discoloration over time.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- EPA Clean Air Act Compliance
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+- description: EPA Clean Air Act Compliance
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+  name: Unknown
+  url: ''
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.36
       unit: MPa m^{0.5}
-      confidence: 95
       source: ai_research
       min: 0.33
       max: 4.4
     thermalDestruction:
       value: 523.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 600.0
     density:
       value: 350.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
       min: 0.12
       max: 1.5
     oxidationResistance:
       value: 0.92
       unit: dimensionless (normalized resistance index)
-      confidence: 95
       source: ai_research
       min: 82.0
       max: 204.0
     laserReflectivity:
       value: 0.065
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 60.0
+      min: 10
+      max: 60
     thermalExpansion:
       value: 4.2e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
       min: 3.0
-      max: 60.0
+      max: 60
     thermalConductivity:
       value: 0.11
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.04
       max: 0.4
     youngsModulus:
       value: 6.9
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 20000.0
+      min: 5
+      max: 20000
     hardness:
       value: 1557.0
       unit: N
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 5000.0
+      min: 1
+      max: 5000
     specificHeat:
       value: 1340.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 800.0
-      max: 2500.0
+      min: 800
+      max: 2500
     laserAbsorption:
       value: 95000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 50.0
+      min: 1
+      max: 50
     compressiveStrength:
       value: 37.6
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 80.0
+      min: 20
+      max: 80
     tensileStrength:
       value: 51.7
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 20
+      max: 200
     thermalDiffusivity:
       value: 1.2e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.0001
       max: 0.4
     flexuralStrength:
       value: 51.0
       unit: MPa
-      confidence: 98
       source: ai_research
-      min: 40.0
-      max: 150.0
+      min: 40
+      max: 150
     corrosionResistance:
       value: 0.85
       unit: dimensionless (durability index, 0-1 scale)
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 8.0
     porosity:
       value: 0.79
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 12.0
-      max: 65.0
+      min: 12
+      max: 65
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
 machineSettings:
   powerRange:
-    description: Optimal average power for Cedar surface cleaning without charring
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Near-infrared wavelength for optimal Cedar absorption and minimal
-      penetration
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Optimal beam diameter for precision cleaning of Cedar grain patterns
     unit: μm
     value: 80
     min: 0.1
     max: 500
   repetitionRate:
-    description: High repetition rate for uniform cleaning coverage on Cedar surfaces
     unit: kHz
     value: 50
     min: 1
     max: 200
   energyDensity:
-    description: Fluence threshold for effective contaminant removal without damaging
-      Cedar substrate
     unit: J/cm²
     value: 2.5
     min: 0.1
     max: 20.0
   pulseWidth:
-    description: Short pulse duration for efficient ablation of contaminants without
-      excessive heat diffusion
     unit: ns
     value: 12
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Scanning speed for efficient area coverage while maintaining cleaning
-      effectiveness
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Number of cleaning passes for complete contaminant removal from Cedar
-      surface
     unit: passes
     value: 2
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Yes, cedar can be safely laser cleaned with precise parameters to prevent
-      charring. We recommend a 1064 nm wavelength at 2.5 J/cm² fluence to effectively
-      remove contaminants while preserving the wood's natural resins. This approach
-      minimizes heat diffusion, protecting the delicate surface from discoloration.
-    question: Can cedar wood be safely laser cleaned without causing surface damage
-      or discoloration?
-  - answer: For cedar siding, I recommend 1064 nm wavelength at 100 W average power
-      with 12 ns pulses. Maintain fluence around 2.5 J/cm² for effective soot and
-      mildew removal without damaging the wood substrate. This combination provides
-      sufficient energy for contaminant ablation while minimizing heat diffusion into
-      the delicate cedar surface.
-    question: What laser settings (wavelength, power, pulse duration) work best for
-      cleaning soot and mildew from cedar siding?
-  - answer: Properly tuned 1064nm laser cleaning at 2.5 J/cm² fluence effectively
-      removes contaminants while preserving cedar's natural protective oils. This
-      minimally invasive process maintains the wood's inherent rot resistance without
-      compromising the integrity of surface-applied sealants.
-    question: How does laser cleaning affect cedar's natural weather-resistant properties
-      and preservative treatments?
-  - answer: Yes, laser cleaning effectively removes old paint from cedar shingles
-      while preserving the delicate grain. Using a 1064 nm wavelength at 2.5 J/cm²
-      fluence selectively ablates the paint layer without damaging the underlying
-      wood substrate, unlike abrasive mechanical methods.
-    question: Is laser cleaning effective for removing old paint from cedar shingles
-      without damaging the wood grain?
-  - answer: Cedar's natural resins generate significant toxic fumes when ablated at
-      100W. You'll need industrial ventilation and a P100 respirator to handle both
-      the fine wood particulates and volatile organic compounds. Maintain a 2.5 J/cm²
-      fluence to minimize charring and fire risk.
-    question: What safety precautions are needed when laser cleaning cedar, particularly
-      regarding fumes and particulates?
-  - answer: Proper laser cleaning at 2.5 J/cm² fluence opens cedar's surface porosity,
-      enhancing coating adhesion. This creates an ideal, contaminant-free substrate
-      that doesn't require immediate sealing but should be coated within a standard
-      preparation window for optimal bond strength.
-    question: Does laser cleaning cedar create surface conditions that require immediate
-      re-sealing or protective coating?
-  - answer: Laser cleaning preserves cedar's delicate patina far better than abrasive
-      methods. Our 2.5 J/cm² fluence threshold selectively removes contaminants without
-      harming the wood grain, making it ideal for intricate carvings where sanding
-      would destroy original surface details.
-    question: How does laser cleaning compare to traditional methods (sanding, chemical
-      strippers) for restoring antique cedar furniture?
-  - answer: Yes, laser systems effectively remove biological growth from cedar shakes
-      using 2.5 J/cm² fluence. This near-infrared wavelength at 1064 nm ablates moss
-      and lichen while minimizing heat penetration into the wood's porous structure,
-      preventing damage.
-    question: Can laser systems effectively remove biological growth (moss, algae,
-      lichen) from cedar roofs without damaging the shakes?
-  - answer: Severely degraded cedar with compromised structural integrity poses a
-      significant risk. At our standard 2.5 J/cm² fluence, friable wood fibers may
-      be ablated, causing surface loss. For wood where the substrate itself is the
-      contaminant, mechanical methods are often more appropriate to preserve the remaining
-      sound material.
-    question: What are the limitations of laser cleaning for heavily weathered or
-      degraded cedar surfaces?
-  - answer: Cedar's variable density between earlywood and latewood requires precise
-      fluence control around 2.5 J/cm² to avoid differential etching along the grain.
-      Knotty areas demand lower power settings than clear vertical grain to prevent
-      charring, while a 500 mm/s scan speed helps manage this heterogeneity for uniform
-      cleaning.
-    question: How does cedar's density and grain pattern affect laser cleaning efficiency
-      and results?
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+  - answer: Yes, cedar can be safely laser cleaned with precise parameters to prevent charring. We recommend a 1064 nm wavelength at 2.5 J/cm² fluence to effectively remove contaminants while preserving the wood's natural resins. This approach minimizes heat diffusion, protecting the delicate surface from discoloration.
+    question: Can cedar wood be safely laser cleaned without causing surface damage or discoloration?
+  - answer: For cedar siding, I recommend 1064 nm wavelength at 100 W average power with 12 ns pulses. Maintain fluence around 2.5 J/cm² for effective soot and mildew removal without damaging the wood substrate. This combination provides sufficient energy for contaminant ablation while minimizing heat diffusion into the delicate cedar surface.
+    question: What laser settings (wavelength, power, pulse duration) work best for cleaning soot and mildew from cedar siding?
+  - answer: Properly tuned 1064nm laser cleaning at 2.5 J/cm² fluence effectively removes contaminants while preserving cedar's natural protective oils. This minimally invasive process maintains the wood's inherent rot resistance without compromising the integrity of surface-applied sealants.
+    question: How does laser cleaning affect cedar's natural weather-resistant properties and preservative treatments?
+  - answer: Yes, laser cleaning effectively removes old paint from cedar shingles while preserving the delicate grain. Using a 1064 nm wavelength at 2.5 J/cm² fluence selectively ablates the paint layer without damaging the underlying wood substrate, unlike abrasive mechanical methods.
+    question: Is laser cleaning effective for removing old paint from cedar shingles without damaging the wood grain?
+  - answer: Cedar's natural resins generate significant toxic fumes when ablated at 100W. You'll need industrial ventilation and a P100 respirator to handle both the fine wood particulates and volatile organic compounds. Maintain a 2.5 J/cm² fluence to minimize charring and fire risk.
+    question: What safety precautions are needed when laser cleaning cedar, particularly regarding fumes and particulates?
+  - answer: Proper laser cleaning at 2.5 J/cm² fluence opens cedar's surface porosity, enhancing coating adhesion. This creates an ideal, contaminant-free substrate that doesn't require immediate sealing but should be coated within a standard preparation window for optimal bond strength.
+    question: Does laser cleaning cedar create surface conditions that require immediate re-sealing or protective coating?
+  - answer: Laser cleaning preserves cedar's delicate patina far better than abrasive methods. Our 2.5 J/cm² fluence threshold selectively removes contaminants without harming the wood grain, making it ideal for intricate carvings where sanding would destroy original surface details.
+    question: How does laser cleaning compare to traditional methods (sanding, chemical strippers) for restoring antique cedar furniture?
+  - answer: Yes, laser systems effectively remove biological growth from cedar shakes using 2.5 J/cm² fluence. This near-infrared wavelength at 1064 nm ablates moss and lichen while minimizing heat penetration into the wood's porous structure, preventing damage.
+    question: Can laser systems effectively remove biological growth (moss, algae, lichen) from cedar roofs without damaging the shakes?
+  - answer: Severely degraded cedar with compromised structural integrity poses a significant risk. At our standard 2.5 J/cm² fluence, friable wood fibers may be ablated, causing surface loss. For wood where the substrate itself is the contaminant, mechanical methods are often more appropriate to preserve the remaining sound material.
+    question: What are the limitations of laser cleaning for heavily weathered or degraded cedar surfaces?
+  - answer: Cedar's variable density between earlywood and latewood requires precise fluence control around 2.5 J/cm² to avoid differential etching along the grain. Knotty areas demand lower power settings than clear vertical grain to prevent charring, while a 500 mm/s scan speed helps manage this heterogeneity for uniform cleaning.
+    question: How does cedar's density and grain pattern affect laser cleaning efficiency and results?
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning

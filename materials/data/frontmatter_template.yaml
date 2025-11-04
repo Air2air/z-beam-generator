@@ -6,11 +6,22 @@
 # CRITICAL: This is the GROUPED structure - materialProperties has category groups
 # Each group (material_characteristics, laser_material_interaction) contains properties
 
+# NOTE: The exporter automatically strips generation metadata (generated timestamps,
+# word_count, question_count, character_count) - these should NOT appear in final files
+
 name: <MaterialName>
 category: <Category>
 subcategory: <Subcategory>
 title: <MaterialName> Laser Cleaning  # The title should vary based on special characteristics or requirements the material has
 subtitle: Laser cleaning parameters and specifications for <MaterialName>  # Should highlight unique aspects of this material
+description: <SEO Meta Description>  # Short description for search engines (50-160 chars)
+
+_metadata: # Internal metadata for tracking
+  voice:
+    author_name: <AuthorName>
+    author_country: <Country>
+    voice_applied: true
+    content_type: material
 
 author: # this is the author information.  It also determines the Author Voice from the requirements.
   id: <AuthorID>
@@ -109,12 +120,14 @@ machineSettings: # this is a list of the machine settings relevant to laser clea
     description: <SettingDescription>
   # Add more settings as needed
 
-faq: # this is a list of frequently asked questions about laser cleaning of this specific material
-  - question: <Question1>  # Practical question users commonly ask about this material
-    answer: <Answer1>  # Detailed, material-specific answer based on properties and research
-  
-  - question: <Question2>
-    answer: <Answer2>
-  
-  # Add more Q&A pairs as needed (typically 5-10 questions per material)
+faq: # Nested structure: questions is a list of Q&A pairs
+  questions:
+    - question: <Question1>  # Practical question users commonly ask about this material
+      answer: <Answer1>  # Detailed, material-specific answer based on properties and research
+    
+    - question: <Question2>
+      answer: <Answer2>
+    
+    # Add more Q&A pairs as needed (typically 5-10 questions per material)
+    # Note: Generation metadata (generated, question_count, total_words) is automatically stripped during export
 

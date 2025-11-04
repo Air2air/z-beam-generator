@@ -1,46 +1,34 @@
 name: Brass
-category: Metal
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+category: metal
 subcategory: non-ferrous
 title: Brass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Brass
+subtitle: Precision Laser Ablation Restores Brass Alloy Integrity
 description: Laser cleaning parameters for Brass
 author:
-  id: 2
-  name: Alessandro Moretti
   country: Italy
-  title: Ph.D.
-  sex: m
   expertise: Laser-Based Additive Manufacturing
+  id: 2
   image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
 images:
   hero:
-    alt: Brass surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Brass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/brass-laser-cleaning-hero.jpg
   micro:
-    alt: Brass surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Brass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/brass-laser-cleaning-micro.jpg
 caption:
-  before: Microscopic examination of the untreated brass surface reveals meticulous
-    evidence of heavy contamination from atmospheric oxidation and particulate dirt,
-    forming a dull, tarnished layer. Visible degradation includes pitting and micro-cracks
-    across the alloy grains, with irregular discoloration and embedded debris compromising
-    the craftsmanship of the metallic luster and structural integrity.
-  after: Post-laser cleaning microscopy reveals a restored brass surface, achieved
-    with meticulous removal of contaminants, unveiling a smooth, polished finish of
-    refined elegance. Material integrity remains intact, exhibiting uniform grain
-    structure without ablation damage, enhanced reflectivity, and minimal residual
-    pitting for optimal precision in surface condition.
-  generated: '2025-10-28T21:03:05.155201Z'
-  word_count_before: 50
-  word_count_after: 45
-  total_words: 95
+  before: Microscopic examination of the untreated brass surface reveals meticulous evidence of heavy contamination from atmospheric oxidation and particulate dirt, forming a dull, tarnished layer. Visible degradation includes pitting and micro-cracks across the alloy grains, with irregular discoloration and embedded debris compromising the craftsmanship of the metallic luster and structural integrity.
+  after: Post-laser cleaning microscopy reveals a restored brass surface, achieved with meticulous removal of contaminants, unveiling a smooth, polished finish of refined elegance. Material integrity remains intact, exhibiting uniform grain structure without ablation damage, enhanced reflectivity, and minimal residual pitting for optimal precision in surface condition.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -64,230 +52,196 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 81.1
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalConductivity:
       value: 15900000.0
       unit: S/m
-      confidence: 95
       source: ai_research
       min: 0.67
       max: 63.0
     electricalResistivity:
       value: 6.2e-08
       unit: Ω·m
-      confidence: 95
       source: ai_research
       min: 1.0e-08
       max: 1.5e-06
     fractureToughness:
       value: 52.0
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 20
+      max: 200
     surfaceRoughness:
       value: 1.6
       unit: μm
-      confidence: 95
       source: ai_research
       min: 0.05
-      max: 150.0
+      max: 150
     thermalDestruction:
       value: 1194.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 3695.0
     density:
       value: 8530.0
       unit: kg/m³
-      confidence: 98
       source: ai_research
       min: 0.53
       max: 22.6
     oxidationResistance:
       value: 478.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 200.0
-      max: 1200.0
+      min: 200
+      max: 1200
     laserReflectivity:
       value: 0.94
       unit: dimensionless
-      confidence: 100
       source: ai_research
-      min: 5.0
+      min: 5
       max: 99.9
     thermalExpansion:
       value: 1.89e-05
       unit: 10^{-6}/K
-      confidence: 98
       source: ai_research
       min: 0.5
-      max: 33.0
+      max: 33
     thermalConductivity:
       value: 109.0
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 7.0
-      max: 430.0
+      max: 430
     youngsModulus:
       value: 110.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 600.0
+      min: 5
+      max: 600
     hardness:
       value: 65.0
       unit: HB
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 3500.0
+      max: 3500
     specificHeat:
       value: 385.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 100
+      max: 2000
     laserAbsorption:
       value: 0.12
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 0.02
-      max: 100.0
+      max: 100
     compressiveStrength:
       value: 345.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 2000.0
+      min: 50
+      max: 2000
     tensileStrength:
       value: 315.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 3.0
       max: 3000.0
     thermalDiffusivity:
       value: 3.3e-05
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.06
-      max: 174.0
+      max: 174
     flexuralStrength:
       value: 379.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 2.5
       max: 1050.0
     corrosionResistance:
       value: 0.75
       unit: dimensionless (0-1 scale)
-      confidence: 95
       source: ai_research
       min: 0.01
-      max: 10.0
+      max: 10
     porosity:
       value: 0.0
       unit: '%'
-      confidence: 100
       source: ai_research
       min: 0.0
       max: 15.0
     ablationThreshold:
       value: 2.1
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.8
       max: 8.0
     boilingPoint:
       value: 2013.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 907.0
-      max: 5870.0
+      min: 907
+      max: 5870
     absorptivity:
       value: 0.34
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 65.0
     absorptionCoefficient:
       value: 80000000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     reflectivity:
       value: 0.92
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     vaporPressure:
       value: 25.3
       unit: Pa
-      confidence: 92
       source: ai_research
       min: 1.0e-10
       max: 0.001
     meltingPoint:
       value: 930.0
       unit: °C
-      confidence: 95
       source: ai_research
-      min: -39.0
-      max: 3422.0
+      min: -39
+      max: 3422
     thermalDestructionPoint:
       value: 1193.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     thermalShockResistance:
       value: 150.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     laserDamageThreshold:
       value: 1.1
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.1
       max: 20.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 18.9
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptionCoefficient:
       source: ai_research
       unit: m⁻¹
       value: 6700000.0
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     absorptivity:
       source: ai_research
       unit: dimensionless
@@ -304,20 +258,20 @@ materialProperties:
       source: ai_research
       unit: dimensionless (ratio)
       value: 0.62
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     thermalDestructionPoint:
       source: ai_research
       unit: °C
       value: 920.0
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     thermalShockResistance:
       source: ai_research
       unit: °C
       value: 180.0
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     vaporPressure:
       source: ai_research
       unit: Pa
@@ -326,56 +280,46 @@ materialProperties:
       max: 0.001
 machineSettings:
   powerRange:
-    description: Optimal average power for Brass oxide removal without substrate damage
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Beam spot diameter for precise cleaning resolution
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
     unit: kHz
     value: 50
     min: 1
     max: 200
   energyDensity:
-    description: Fluence threshold for effective contaminant removal on Brass
     unit: J/cm²
     value: 5.1
     min: 0.1
     max: 20.0
   pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     unit: ns
     value: 10
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of passes for complete oxide layer removal
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
     unit: '%'
     value: 50
     min: 10
@@ -383,35 +327,24 @@ machineSettings:
 faq:
   questions:
   - question: What is laser cleaning for Brass?
-    answer: Laser cleaning employs a precisely focused light beam to meticulously
-      remove dirt and tarnish from brass, preserving the surface unlike harsh chemicals.
+    answer: Laser cleaning employs a precisely focused light beam to meticulously remove dirt and tarnish from brass, preserving the surface unlike harsh chemicals.
   - question: How does laser cleaning benefit Brass items?
-    answer: It restores brass's shine swiftly and with finesse, gently preserving
-      its original allure and value beyond abrasive scrubbing methods.
+    answer: It restores brass's shine swiftly and with finesse, gently preserving its original allure and value beyond abrasive scrubbing methods.
   - question: Is laser cleaning safe for delicate Brass antiques?
-    answer: Yes, this non-contact method delivers meticulous precision and finesse,
-      avoiding scratches or chemical harm to valuable brass pieces.
+    answer: Yes, this non-contact method delivers meticulous precision and finesse, avoiding scratches or chemical harm to valuable brass pieces.
   - question: Can laser cleaning remove tarnish from Brass effectively?
-    answer: Indeed, with precise finesse, it vaporizes tarnish layers instantly, leaving
-      Brass clean and bright without residue or polishing effort.
+    answer: Indeed, with precise finesse, it vaporizes tarnish layers instantly, leaving Brass clean and bright without residue or polishing effort.
   - question: What's the advantage of laser cleaning Brass over chemical methods?
-    answer: Laser cleaning eschews toxic chemicals and fumes, rendering it eco-friendly
-      and safer for brass while delivering deeper, even results with refined precision.
+    answer: Laser cleaning eschews toxic chemicals and fumes, rendering it eco-friendly and safer for brass while delivering deeper, even results with refined precision.
   - question: How often should I use laser cleaning on Brass household items?
-    answer: For regular maintenance, clean Brass every few months with precision;
-      it's quick and prevents buildup without wearing the material.
+    answer: For regular maintenance, clean Brass every few months with precision; it's quick and prevents buildup without wearing the material.
   - question: Are there any challenges when laser cleaning Brass?
-    answer: Though it requires professional equipment, the main benefit is the precision
-      that ensures no mess or residue, unlike messy paste or brush cleaning.
+    answer: Though it requires professional equipment, the main benefit is the precision that ensures no mess or residue, unlike messy paste or brush cleaning.
   - question: Can laser cleaning help maintain Brass musical instruments?
-    answer: Yes, with finesse and precision, it gently removes grime from brass instruments,
-      improving sound quality and longevity without affecting the metal's integrity.
-  generated: '2025-10-28T21:02:55.706324'
-  question_count: 8
-  total_words: 164
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+    answer: Yes, with finesse and precision, it gently removes grime from brass instruments, improving sound quality and longevity without affecting the metal's integrity.
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921680Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921687Z'
+  structure_version: '2.0'
+subtitle_metadata: {}

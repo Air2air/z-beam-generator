@@ -1,52 +1,34 @@
 name: Pyrex
-category: Glass
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+category: glass
 subcategory: soda-lime
 title: Pyrex Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Pyrex
+subtitle: Unlike ordinary glass, Pyrex endures precise laser cleaning without thermal damage
 description: Laser cleaning parameters for Pyrex
 author:
-  id: 2
-  name: Alessandro Moretti
   country: Italy
-  title: Ph.D.
-  sex: m
   expertise: Laser-Based Additive Manufacturing
+  id: 2
   image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
 images:
   hero:
-    alt: Pyrex surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/pyrex-laser-cleaning-hero.jpg
   micro:
-    alt: Pyrex surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/pyrex-laser-cleaning-micro.jpg
 caption:
-  before: Under the microscope, the Pyrex surface displays a contaminated condition
-    marked by clustered particulates and oily residues. These contaminants, fine dust
-    and hydrocarbon films, adhere unevenly, forming hazy domains that obscure the
-    glass's clarity. Surface degradation manifests in micro-pitting and faint cracks,
-    eroding the material's smooth integrity and signaling potential long-term weakening.
-  after: After meticulous cleaning, the Pyrex surface emerges pristine, with its inherent
-    transparency fully restored. This clarity, it reveals no residual contaminants
-    or micro-abrasions, ensuring optical purity akin to the original state. The restoration
-    quality excels, preserving the glass's thermal resistance and structural integrity
-    without compromising its borosilicate composition. For general applications, such
-    as laboratory use, this condition guarantees reliable performance and longevity.
-  author: Alessandro Moretti
-  character_count:
-    after: 493
-    before: 400
-  generated: '2025-10-25T15:06:03.609899Z'
-  generation_method: ai_research
-  word_count:
-    after: 62
-    before: 52
+  before: Under the microscope, the Pyrex surface displays a contaminated condition marked by clustered particulates and oily residues. These contaminants, fine dust and hydrocarbon films, adhere unevenly, forming hazy domains that obscure the glass's clarity. Surface degradation manifests in micro-pitting and faint cracks, eroding the material's smooth integrity and signaling potential long-term weakening.
+  after: After meticulous cleaning, the Pyrex surface emerges pristine, with its inherent transparency fully restored. This clarity, it reveals no residual contaminants or micro-abrasions, ensuring optical purity akin to the original state. The restoration quality excels, preserving the glass's thermal resistance and structural integrity without compromising its borosilicate composition. For general applications, such as laboratory use, this condition guarantees reliable performance and longevity.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -70,260 +52,189 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 1000000000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
       min: 10000000000.0
       max: 1000000000000000.0
     fractureToughness:
       value: 0.75
       unit: MPa√m
-      confidence: 95
       source: ai_research
       min: 0.5
-      max: 2.0
+      max: 2
     thermalDestruction:
       value: 821.0
       unit: °C
-      confidence: 100
       source: ai_research
       min: 273.0
       max: 2300.0
     specificHeat:
       value: 835.0
       unit: J/kg·K
-      confidence: 95
       source: ai_research
-      min: 120.0
-      max: 900.0
+      min: 120
+      max: 900
     youngsModulus:
       value: 63.0
       unit: GPa
-      confidence: 100
       source: ai_research
-      min: 10.0
-      max: 400.0
+      min: 10
+      max: 400
     oxidationResistance:
       value: 500.0
       unit: °C
-      confidence: 95
       source: ai_research
       min: 400.0
       max: 1700.0
     laserReflectivity:
       value: 0.036
       unit: fraction
-      confidence: 95
       source: ai_research
       min: 0.1
-      max: 92.0
+      max: 92
     thermalConductivity:
       value: 1.14
       unit: W/m·K
-      confidence: 100
       source: ai_research
       min: 0.7
-      max: 30.0
+      max: 30
     thermalExpansion:
       value: 3.3e-06
       unit: K^{-1}
-      confidence: 100
       source: ai_research
       min: 0.1
-      max: 15.0
+      max: 15
     density:
       value: 2.23
       unit: g/cm³
-      confidence: 100
       source: ai_research
       min: 1.2
       max: 7.6
     hardness:
       value: 530.0
       unit: HV
-      confidence: 95
       source: ai_research
       min: 3.5
       max: 9.5
     corrosionResistance:
       value: 0.0008
       unit: mg/cm²/day
-      confidence: 95
       source: ai_research
-      min: 9.0
-      max: 10.0
+      min: 9
+      max: 10
     laserAbsorption:
       value: 8.76
       unit: m^{-1}
-      confidence: 95
       source: ai_research
       min: 0.001
-      max: 10.0
+      max: 10
     compressiveStrength:
       value: 1000.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 500.0
-      max: 2000.0
+      min: 500
+      max: 2000
     thermalDiffusivity:
       value: 5.8e-07
       unit: m^2/s
-      confidence: 95
       source: ai_research
       min: 0.01
-      max: 15.0
+      max: 15
     flexuralStrength:
       value: 69.0
       unit: MPa
-      confidence: 98
       source: ai_research
-      min: 50.0
+      min: 50
       max: 750.0
     tensileStrength:
       value: 70.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 30.0
-      max: 2000.0
+      min: 30
+      max: 2000
     ablationThreshold:
       value: 5.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 6.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
 machineSettings:
   powerRange:
-    description: Optimal average power for Pyrex surface cleaning without thermal
-      damage
     unit: W
     value: 25
     min: 1.0
     max: 120
   wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk Pyrex absorption
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Beam spot diameter for precise cleaning with adequate energy density
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
     unit: kHz
     value: 50
     min: 1
     max: 200
   fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without
-      damaging Pyrex substrate
     unit: J/cm²
     value: 2.5
     min: 0.3
     max: 4.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
     unit: ns
     value: 100
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of cleaning passes for complete contaminant removal
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      thermal buildup
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: For Pyrex cleaning, employ a 1064 nm wavelength with ~25 W average power
-      and 100 ns pulses. Maintain fluence below 2.5 J/cm² to selectively remove organics
-      and particulates without micro-cracking the substrate, as this wavelength is
-      poorly absorbed by the pristine glass. A 50 μm spot size scanned at 500 mm/s
-      ensures effective, non-damaging results.
-    question: What are the optimal laser parameters (wavelength, power, pulse duration)
-      for cleaning contaminants from Pyrex without damaging the surface?
-  - answer: Yes, Pyrex's low thermal expansion makes it vulnerable to microfractures
-      from excessive fluence. We prevent this using nanosecond pulses at 2.5 J/cm²
-      and a 50 μm spot size. A defocused beam or thin water film further manages thermal
-      stress, ensuring the integrity of your precision components.
-    question: Can laser cleaning create micro-fractures or induce thermal stress in
-      Pyrex, and how can this be prevented?
-  - answer: Properly configured laser cleaning at 1064nm wavelength and 2.5 J/cm²
-      fluence safely removes labels from Pyrex. This process vaporizes adhesives without
-      chemical residue, preserving the material's optical clarity and structural integrity
-      for laboratory applications.
-    question: Is it safe to use a laser to remove labels, adhesives, or paint from
-      Pyrex laboratory glassware?
-  - answer: Properly calibrated laser cleaning at 2.5 J/cm² fluence maintains Pyrex's
-      optical clarity. This process avoids surface hazing and minimizes roughness
-      changes, ensuring high transmission with negligible light scattering for demanding
-      optical applications.
-    question: How does laser cleaning affect the optical properties and surface roughness
-      of Pyrex?
-  - answer: Thermal shock from exceeding 2.5 J/cm² can shatter Pyrex. The 1064 nm
-      wavelength requires IR-specific laser safety eyewear. Hazardous glass and coating
-      particulates necessitate a properly fitted respirator to protect against inhalation.
-    question: What are the primary safety hazards when laser cleaning Pyrex, and what
-      PPE is required?
-  - answer: Yes, laser cleaning effectively prepares Pyrex for high-vacuum applications.
-      Using a 1064 nm wavelength at ~2.5 J/cm² removes contaminants and activates
-      the surface without subsurface damage, outperforming solvent methods for superior
-      thin-film adhesion.
-    question: Can laser cleaning be used to prepare a Pyrex surface for high-vacuum
-      or thin-film deposition applications?
-  - answer: Pulsed fiber lasers, typically at 1064 nm wavelength, provide nanosecond
-      pulses that enable precise thermal control. This prevents heat diffusion into
-      the Pyrex bulk, crucial as its low thermal conductivity makes it susceptible
-      to thermal shock from continuous-wave exposure.
-    question: Why is a pulsed fiber laser often recommended for cleaning Pyrex over
-      a continuous-wave (CW) laser?
-  - answer: First, inspect under 50× magnification for micro-cracks. For critical
-      flatness in optics, use white-light interferometry to verify surface roughness
-      remains below 10 nm Ra. Finally, conduct a helium leak test to ensure integrity
-      for vacuum systems, confirming the 2.5 J/cm² fluence didn't compromise the material.
-    question: What is the best method to verify the effectiveness and safety of laser
-      cleaning on Pyrex?
-  - answer: For deeply embedded metallic stains in Pyrex, we use a multi-step approach.
-      First, a 1064 nm wavelength at 2.5 J/cm² fluence selectively vaporizes the surface
-      contaminant. A subsequent, gentler pass then removes any remaining diffusion
-      layer without exceeding the ablation threshold of the Pyrex substrate itself.
-    question: How do you clean deeply embedded metallic stains or diffusion layers
-      from Pyrex with a laser?
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+  - answer: For Pyrex cleaning, employ a 1064 nm wavelength with ~25 W average power and 100 ns pulses. Maintain fluence below 2.5 J/cm² to selectively remove organics and particulates without micro-cracking the substrate, as this wavelength is poorly absorbed by the pristine glass. A 50 μm spot size scanned at 500 mm/s ensures effective, non-damaging results.
+    question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning contaminants from Pyrex without damaging the surface?
+  - answer: Yes, Pyrex's low thermal expansion makes it vulnerable to microfractures from excessive fluence. We prevent this using nanosecond pulses at 2.5 J/cm² and a 50 μm spot size. A defocused beam or thin water film further manages thermal stress, ensuring the integrity of your precision components.
+    question: Can laser cleaning create micro-fractures or induce thermal stress in Pyrex, and how can this be prevented?
+  - answer: Properly configured laser cleaning at 1064nm wavelength and 2.5 J/cm² fluence safely removes labels from Pyrex. This process vaporizes adhesives without chemical residue, preserving the material's optical clarity and structural integrity for laboratory applications.
+    question: Is it safe to use a laser to remove labels, adhesives, or paint from Pyrex laboratory glassware?
+  - answer: Properly calibrated laser cleaning at 2.5 J/cm² fluence maintains Pyrex's optical clarity. This process avoids surface hazing and minimizes roughness changes, ensuring high transmission with negligible light scattering for demanding optical applications.
+    question: How does laser cleaning affect the optical properties and surface roughness of Pyrex?
+  - answer: Thermal shock from exceeding 2.5 J/cm² can shatter Pyrex. The 1064 nm wavelength requires IR-specific laser safety eyewear. Hazardous glass and coating particulates necessitate a properly fitted respirator to protect against inhalation.
+    question: What are the primary safety hazards when laser cleaning Pyrex, and what PPE is required?
+  - answer: Yes, laser cleaning effectively prepares Pyrex for high-vacuum applications. Using a 1064 nm wavelength at ~2.5 J/cm² removes contaminants and activates the surface without subsurface damage, outperforming solvent methods for superior thin-film adhesion.
+    question: Can laser cleaning be used to prepare a Pyrex surface for high-vacuum or thin-film deposition applications?
+  - answer: Pulsed fiber lasers, typically at 1064 nm wavelength, provide nanosecond pulses that enable precise thermal control. This prevents heat diffusion into the Pyrex bulk, crucial as its low thermal conductivity makes it susceptible to thermal shock from continuous-wave exposure.
+    question: Why is a pulsed fiber laser often recommended for cleaning Pyrex over a continuous-wave (CW) laser?
+  - answer: First, inspect under 50× magnification for micro-cracks. For critical flatness in optics, use white-light interferometry to verify surface roughness remains below 10 nm Ra. Finally, conduct a helium leak test to ensure integrity for vacuum systems, confirming the 2.5 J/cm² fluence didn't compromise the material.
+    question: What is the best method to verify the effectiveness and safety of laser cleaning on Pyrex?
+  - answer: For deeply embedded metallic stains in Pyrex, we use a multi-step approach. First, a 1064 nm wavelength at 2.5 J/cm² fluence selectively vaporizes the surface contaminant. A subsequent, gentler pass then removes any remaining diffusion layer without exceeding the ablation threshold of the Pyrex substrate itself.
+    question: How do you clean deeply embedded metallic stains or diffusion layers from Pyrex with a laser?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922512Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922518Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Italy
+  author_name: Alessandro Moretti
