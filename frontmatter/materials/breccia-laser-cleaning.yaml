@@ -1,31 +1,49 @@
 name: Breccia
-category: stone
+category: Stone
 subcategory: sedimentary
 title: Breccia Laser Cleaning
-subtitle: Achieve Precision Restoration for Breccia Stone with Lasers
+subtitle: Laser cleaning parameters and specifications for Breccia
+description: Laser cleaning parameters for Breccia
 author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
-  sex: m
+  country: Indonesia
   title: Ph.D.
+  sex: m
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Breccia surface undergoing laser cleaning showing precise contamination removal
+    alt: Breccia surface during precision laser cleaning process removing contamination
+      layer at microscopic scale
     url: /images/material/breccia-laser-cleaning-hero.jpg
   micro:
-    alt: Breccia microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Breccia surface at 500x magnification comparing contaminated state with cleaned
+      substrate showing complete restoration
     url: /images/material/breccia-laser-cleaning-micro.jpg
 caption:
-  before: Optical microscopy of the untreated Breccia stone surface reveals dense accumulation of carbonaceous soot, silica particulates, and biological encrustations, manifesting as irregular layering and voids. Accompanying degradation includes surface pitting, micro-fissures, and localized discoloration, evidencing prolonged exposure to atmospheric pollutants and mechanical abrasion, compromising the heterogeneous clast-matrix structure.
-  after: Scanning electron microscopy post-laser cleaning illustrates the Breccia surface with exceptional restoration, exhibiting complete ablation of contaminants and exposure of the pristine angular clasts embedded in the fine-grained calcareous matrix. Surface topography displays uniform micro-relief with negligible thermal alteration, preserved binder integrity, and enhanced clarity of mineral boundaries, affirming optimal material conservation and structural fidelity without subsurface damage or residue persistence.
+  before: Optical microscopy of the untreated Breccia stone surface reveals dense
+    accumulation of carbonaceous soot, silica particulates, and biological encrustations,
+    manifesting as irregular layering and voids. Accompanying degradation includes
+    surface pitting, micro-fissures, and localized discoloration, evidencing prolonged
+    exposure to atmospheric pollutants and mechanical abrasion, compromising the heterogeneous
+    clast-matrix structure.
+  after: Scanning electron microscopy post-laser cleaning illustrates the Breccia
+    surface with exceptional restoration, exhibiting complete ablation of contaminants
+    and exposure of the pristine angular clasts embedded in the fine-grained calcareous
+    matrix. Surface topography displays uniform micro-relief with negligible thermal
+    alteration, preserved binder integrity, and enhanced clarity of mineral boundaries,
+    affirming optimal material conservation and structural fidelity without subsurface
+    damage or residue persistence.
   generated: '2025-10-29T15:26:57.697066Z'
   word_count_before: 48
   word_count_after: 61
   total_words: 109
 regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
   longName: Food and Drug Administration
@@ -49,89 +67,238 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 100.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     fractureToughness:
-      ai_verified: true
-      source: Engineering Toolbox, "Fracture Toughness of Materials"
-      unit: MPa·√m
-      value: 0.8
+      value: 0.85
+      unit: MPa·m^{1/2}
+      confidence: 92
+      source: ai_research
       min: 0.5
-      max: 5
+      max: 5.0
+    thermalDestruction:
+      value: 1673.0
+      unit: K
+      confidence: 95
+      source: ai_research
+      min: 273.0
+      max: 2300.0
+    density:
+      value: 2710.0
+      unit: kg/m³
+      confidence: 95
+      source: ai_research
+      min: 1.5
+      max: 6.0
+    oxidationResistance:
+      value: 0.87
+      unit: dimensionless (resistance index)
+      confidence: 95
+      source: ai_research
+      min: 400.0
+      max: 870.0
+    laserReflectivity:
+      value: 0.22
+      unit: ''
+      confidence: 92
+      source: ai_research
+      min: 5.0
+      max: 80.0
+    thermalExpansion:
+      value: 8.2e-06
+      unit: K^{-1}
+      confidence: 92
+      source: ai_research
+      min: 3.0
+      max: 30.0
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      confidence: 92
+      source: ai_research
+      min: 0.2
+      max: 8.0
+    youngsModulus:
+      value: 32.5
+      unit: GPa
+      confidence: 95
+      source: ai_research
+      min: 10.0
+      max: 100.0
+    hardness:
+      value: 3.5
+      unit: Mohs
+      confidence: 95
+      source: ai_research
+      min: 1.0
+      max: 7.0
+    specificHeat:
+      value: 880.0
+      unit: J/(kg·K)
+      confidence: 95
+      source: ai_research
+      min: 400.0
+      max: 1200.0
+    laserAbsorption:
+      value: 4500.0
+      unit: cm^{-1}
+      confidence: 92
+      source: ai_research
+      min: 0.1
+      max: 100.0
+    compressiveStrength:
+      value: 125.0
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 20.0
+      max: 500.0
+    tensileStrength:
+      value: 3.2
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 2.0
+      max: 25.0
+    thermalDiffusivity:
+      value: 1.05e-06
+      unit: m²/s
+      confidence: 92
+      source: ai_research
+      min: 0.2
+      max: 2.5
+    flexuralStrength:
+      value: 11.2
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 5.0
+      max: 50.0
+    corrosionResistance:
+      value: 0.85
+      unit: dimensionless (resistance index)
+      confidence: 92
+      source: ai_research
+      min: 2.0
+      max: 9.0
+    porosity:
+      value: 0.15
+      unit: fraction
+      confidence: 92
+      source: ai_research
+      min: 0.5
+      max: 25.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 40.0
+    percentage: 0.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
 machineSettings:
   powerRange:
+    description: Optimal average power for Breccia surface cleaning without thermal
+      damage
     unit: W
     value: 90
     min: 1.0
     max: 120
   wavelength:
+    description: Near-IR wavelength optimized for Breccia mineral absorption characteristics
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
+    description: Beam spot diameter for precise cleaning control
     unit: μm
     value: 80
     min: 0.1
     max: 500
   repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
     unit: kHz
     value: 50
     min: 1
     max: 200
   energyDensity:
+    description: Fluence threshold for effective contaminant removal
     unit: J/cm²
     value: 3.5
     min: 0.1
     max: 20.0
   pulseWidth:
+    description: Short pulse duration for efficient ablation of surface contaminants
     unit: ns
     value: 12
     min: 0.1
     max: 1000
   scanSpeed:
+    description: Optimal scanning speed for efficient area coverage
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
+    description: Recommended number of cleaning passes for complete surface treatment
     unit: passes
     value: 2
     min: 1
     max: 10
   overlapRatio:
+    description: Optimal beam overlap for uniform cleaning results
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - question: How can I safely remove rust stains from Breccia surfaces without harming the natural patina?
-    answer: Employ precise laser ablation to vaporize oxidation layers selectively, preserving underlying textures and colors. This non-contact method avoids mechanical abrasion, ensuring structural integrity remains intact during the process. (24 words)
-  - question: What are the best practices for maintaining Breccia in outdoor architectural features?
-    answer: Schedule regular inspections to monitor moisture retention in porous areas, applying protective sealants annually to mitigate absorption issues. Combine with gentle dry brushing for surface debris removal. (25 words)
-  - question: Is laser cleaning effective for Breccia used in heritage restoration projects?
-    answer: Laser technology excels by targeting contaminants at the surface level without penetrating the fragile cementation, unlike abrasive techniques that risk fragment displacement. It maintains historical authenticity while enhancing visual appeal through even cleaning. (32 words)
-  - question: How does differential weathering affect Breccia countertops, and what can be done?
-    answer: Variations in clast durability lead to uneven erosion over time, creating rough patches. Utilize controlled laser treatments to smooth discrepancies gently, promoting uniform resistance to further environmental degradation without compromising overall strength. (29 words)
-  - question: Why is Breccia prone to staining in urban environments, and how to prevent it?
-    answer: The matrix's openness allows pollutant infiltration, causing discoloration from acidic exposures. Opt for hydrophobic coatings post-installation and periodic laser decontamination to eliminate residues, safeguarding the material's variegated patterns and longevity. (30 words)
-  - question: What advantages does laser cleaning offer over traditional methods for Breccia sculptures?
-    answer: Unlike chemical solvents that may seep into pores and cause etching, or mechanical tools risking clast loosening, laser cleaning provides precise, dry removal of grime. It preserves textural depth and compressive robustness, ideal for delicate artistic elements in landscaping. (41 words)
-  - question: Can Breccia flooring handle heavy foot traffic, and how to clean it routinely?
-    answer: Its robust bonding supports loads up to 200 MPa, but accumulated dirt exacerbates porosity concerns. Recommend vacuuming followed by low-power laser passes to dislodge particles efficiently, avoiding water-based methods that promote biological colonization. (33 words)
+  - question: How can I safely remove rust stains from Breccia surfaces without harming
+      the natural patina?
+    answer: Employ precise laser ablation to vaporize oxidation layers selectively,
+      preserving underlying textures and colors. This non-contact method avoids mechanical
+      abrasion, ensuring structural integrity remains intact during the process. (24
+      words)
+  - question: What are the best practices for maintaining Breccia in outdoor architectural
+      features?
+    answer: Schedule regular inspections to monitor moisture retention in porous areas,
+      applying protective sealants annually to mitigate absorption issues. Combine
+      with gentle dry brushing for surface debris removal. (25 words)
+  - question: Is laser cleaning effective for Breccia used in heritage restoration
+      projects?
+    answer: Laser technology excels by targeting contaminants at the surface level
+      without penetrating the fragile cementation, unlike abrasive techniques that
+      risk fragment displacement. It maintains historical authenticity while enhancing
+      visual appeal through even cleaning. (32 words)
+  - question: How does differential weathering affect Breccia countertops, and what
+      can be done?
+    answer: Variations in clast durability lead to uneven erosion over time, creating
+      rough patches. Utilize controlled laser treatments to smooth discrepancies gently,
+      promoting uniform resistance to further environmental degradation without compromising
+      overall strength. (29 words)
+  - question: Why is Breccia prone to staining in urban environments, and how to prevent
+      it?
+    answer: The matrix's openness allows pollutant infiltration, causing discoloration
+      from acidic exposures. Opt for hydrophobic coatings post-installation and periodic
+      laser decontamination to eliminate residues, safeguarding the material's variegated
+      patterns and longevity. (30 words)
+  - question: What advantages does laser cleaning offer over traditional methods for
+      Breccia sculptures?
+    answer: Unlike chemical solvents that may seep into pores and cause etching, or
+      mechanical tools risking clast loosening, laser cleaning provides precise, dry
+      removal of grime. It preserves textural depth and compressive robustness, ideal
+      for delicate artistic elements in landscaping. (41 words)
+  - question: Can Breccia flooring handle heavy foot traffic, and how to clean it
+      routinely?
+    answer: Its robust bonding supports loads up to 200 MPa, but accumulated dirt
+      exacerbates porosity concerns. Recommend vacuuming followed by low-power laser
+      passes to dislodge particles efficiently, avoiding water-based methods that
+      promote biological colonization. (33 words)
   generated: '2025-10-29T15:58:03.146313'
   question_count: 7
   total_words: 236
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921694Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921700Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  generated: '2025-10-29T15:27:12.801746Z'
-  word_count: 8
-  character_count: 59
-  generation_method: ai_discrete
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material

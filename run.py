@@ -507,7 +507,14 @@ def main():
                 print("❌ Failed to initialize API client")
                 return False
             
-            generator = DynamicGenerator()
+            # Use orchestrator with completeness control
+            from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+            enforce_completeness = not args.no_completeness_check
+            orchestrator = FrontmatterOrchestrator(
+                api_client=api_client,
+                enforce_completeness=enforce_completeness
+            )
+            
             success_count = 0
             failure_count = 0
             
@@ -515,12 +522,18 @@ def main():
                 print(f"\n📋 Processing {material_name}...")
                 
                 try:
-                    result = generator.generate_component(
-                        material=material_name,
-                        component_type='frontmatter',
-                        api_client=api_client,
-                        frontmatter_data=None,
-                        material_data=material_info
+                    # Get author data
+                    from components.frontmatter.utils.author_manager import get_author_info_for_material
+                    author_data = None
+                    try:
+                        author_data = get_author_info_for_material(material_info)
+                    except (ValueError, KeyError):
+                        pass  # Let orchestrator handle missing author
+                    
+                    result = orchestrator.generate(
+                        content_type='material',
+                        identifier=material_name,
+                        author_data=author_data
                     )
                     
                     if result.success:

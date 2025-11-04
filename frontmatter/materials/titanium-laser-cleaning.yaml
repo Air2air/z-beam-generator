@@ -1,26 +1,35 @@
 name: Titanium
-category: metal
+category: Metal
 subcategory: aerospace
 title: Titanium Laser Cleaning
-subtitle: Unlocking titanium's brilliant, oxide-rich finish with precision laser parameters
+subtitle: Laser cleaning parameters and specifications for Titanium
+description: Laser cleaning parameters for Titanium
 author:
-  country: Taiwan
-  expertise: Precision Laser Engineering
   id: 1
-  image: /images/author/yi-chun-lin.jpg
   name: Yi-Chun Lin
-  sex: f
+  country: Taiwan
   title: Ph.D.
+  sex: f
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Titanium surface undergoing laser cleaning showing precise contamination removal
+    alt: Titanium surface during precision laser cleaning process removing contamination
+      layer at microscopic scale
     url: /images/material/titanium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Titanium surface after laser cleaning showing detailed surface structure
+    alt: Titanium surface at 500x magnification comparing contaminated state with
+      cleaned substrate showing complete restoration
     url: /images/material/titanium-laser-cleaning-micro.jpg
 caption:
-  before: This titanium surface shows significant contamination with scattered particulate deposits. The contaminants appear as irregular clusters and reveal embedded oxide particles. We observe localized pitting corrosion and micro-cracks propagating from defect sites. The surface degradation demonstrates how foreign materials compromise titanium's protective oxide layer, leading to accelerated material breakdown in critical applications.
-  after: The cleaned titanium surface reveals its original metallic luster. All contaminants are removed, and the material integrity remains fully intact.
+  before: This titanium surface shows significant contamination with scattered particulate
+    deposits. The contaminants appear as irregular clusters and reveal embedded oxide
+    particles. We observe localized pitting corrosion and micro-cracks propagating
+    from defect sites. The surface degradation demonstrates how foreign materials
+    compromise titanium's protective oxide layer, leading to accelerated material
+    breakdown in critical applications.
+  after: The cleaned titanium surface reveals its original metallic luster. All contaminants
+    are removed, and the material integrity remains fully intact.
   author: Yi-Chun Lin
   character_count:
     after: 145
@@ -31,6 +40,10 @@ caption:
     after: 20
     before: 52
 regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
   longName: American National Standards Institute
@@ -49,92 +62,341 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    thermalDestruction:
+      value: 1941.0
+      unit: K
+      confidence: 100
+      source: ai_research
+      min: 273.0
+      max: 3695.0
+    specificHeat:
+      value: 522.0
+      unit: J/kg·K
+      confidence: 100
+      source: ai_research
+      min: 100.0
+      max: 2000.0
+    youngsModulus:
+      value: 110.0
+      unit: GPa
+      confidence: 100
+      source: ai_research
+      min: 5.0
+      max: 600.0
+    oxidationResistance:
+      value: 698.0
+      unit: K
+      confidence: 95
+      source: ai_research
+      min: 200.0
+      max: 1200.0
+    laserReflectivity:
+      value: 0.66
+      unit: dimensionless
+      confidence: 95
+      source: ai_research
+      min: 5.0
+      max: 99.9
+    thermalConductivity:
+      value: 21.9
+      unit: W/m·K
+      confidence: 100
+      source: ai_research
+      min: 7.0
+      max: 430.0
+    thermalExpansion:
+      value: 8.6e-06
+      unit: K^{-1}
+      confidence: 100
+      source: ai_research
+      min: 0.5
+      max: 33.0
+    density:
+      value: 4510.0
+      unit: kg/m³
+      confidence: 100
+      source: ai_research
+      min: 0.53
+      max: 22.6
+    hardness:
+      value: 160.0
+      unit: HV
+      confidence: 95
+      source: ai_research
+      min: 0.2
+      max: 3500.0
+    corrosionResistance:
+      value: 0.001
+      unit: mm/year
+      confidence: 95
+      source: ai_research
+      min: 0.01
+      max: 10.0
+    laserAbsorption:
+      value: 0.42
+      unit: dimensionless
+      confidence: 95
+      source: ai_research
+      min: 0.02
+      max: 100.0
+    compressiveStrength:
+      value: 414.0
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 50.0
+      max: 2000.0
+    thermalDiffusivity:
+      value: 9.29e-06
+      unit: m²/s
+      confidence: 99
+      source: ai_research
+      min: 0.06
+      max: 174.0
+    flexuralStrength:
+      value: 345.0
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 2.5
+      max: 1050.0
+    tensileStrength:
+      value: 345.0
+      unit: MPa
+      confidence: 95
+      source: ai_research
+      min: 3.0
+      max: 3000.0
+    fractureToughness:
+      value: 55.0
+      unit: MPa√m
+      confidence: 95
+      source: ai_research
+      min: 20.0
+      max: 200.0
+    porosity:
+      value: 0.0
+      unit: fraction
+      confidence: 100
+      source: ai_research
+      min: 0.0
+      max: 15.0
+    electricalResistivity:
+      value: 4.2e-07
+      unit: Ω·m
+      confidence: 100
+      source: ai_research
+      min: 1.0e-08
+      max: 1.5e-06
+    ablationThreshold:
+      value: 1.5
+      unit: J/cm²
+      confidence: 95
+      source: ai_research
+      min: 0.8
+      max: 8.0
+    absorptivity:
+      value: 0.36
+      unit: dimensionless
+      confidence: 95
+      source: ai_research
+      min: 2.0
+      max: 65.0
+    boilingPoint:
+      value: 3560.0
+      unit: K
+      confidence: 100
+      source: ai_research
+      min: 907.0
+      max: 5870.0
+    absorptionCoefficient:
+      value: 43700000.0
+      unit: m^{-1}
+      confidence: 95
+      source: ai_research
+      min: 1000000.0
+      max: 100000000.0
+    electricalConductivity:
+      value: 2380000.0
+      unit: S/m
+      confidence: 100
+      source: ai_research
+      min: 0.67
+      max: 63.0
+    meltingPoint:
+      value: 1941.0
+      unit: K
+      confidence: 100
+      source: ai_research
+      min: -39.0
+      max: 3422.0
+    vaporPressure:
+      value: 1.24e-62
+      unit: Pa
+      confidence: 90
+      source: ai_research
+      min: 1.0e-10
+      max: 0.001
+    thermalDestructionPoint:
+      value: 1941.0
+      unit: K
+      confidence: 100
+      source: ai_research
+      min: 873.0
+      max: 3695.0
+    reflectivity:
+      value: 0.462
+      unit: ''
+      confidence: 95
+      source: ai_research
+      min: 85.0
+      max: 98.0
+    thermalShockResistance:
+      value: 252.0
+      unit: K
+      confidence: 95
+      source: ai_research
+      min: 50.0
+      max: 400.0
+    surfaceRoughness:
+      value: 1.6
+      unit: μm
+      confidence: 95
+      source: ai_research
+      min: 0.05
+      max: 150.0
+    laserDamageThreshold:
+      value: 2.1
+      unit: J/cm²
+      confidence: 95
+      source: ai_research
+      min: 0.1
+      max: 20.0
+    percentage: 100.0
   laser_material_interaction:
     label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 0.0
 machineSettings:
   powerRange:
+    description: Optimal average power for Titanium oxide layer removal
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
+    description: Optimal wavelength for Titanium absorption characteristics
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
+    description: Optimal beam spot diameter for Titanium surface treatment
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
+    description: Optimal repetition rate for efficient Titanium cleaning process
     unit: kHz
     value: 100
     min: 1
     max: 200
   fluenceThreshold:
+    description: Minimum fluence required for effective Titanium surface cleaning
     unit: J/cm²
     value: 2.5
     min: 0.3
     max: 4.5
   pulseWidth:
+    description: Optimal pulse duration for Titanium ablation without thermal damage
     unit: ns
     value: 10
     min: 0.1
     max: 1000
   scanSpeed:
+    description: Optimal scanning speed for uniform Titanium cleaning
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
+    description: Optimal number of passes for thorough Titanium cleaning
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
+    description: Optimal beam overlap for complete Titanium surface coverage
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Titanium is selected for aerospace and chemical applications due to its exceptional strength-to-weight ratio and outstanding corrosion resistance. Its ability to withstand aggressive environments ensures long-term structural integrity and reliability.
+  - answer: Titanium is selected for aerospace and chemical applications due to its
+      exceptional strength-to-weight ratio and outstanding corrosion resistance. Its
+      ability to withstand aggressive environments ensures long-term structural integrity
+      and reliability.
     question: Why is Titanium chosen for its main applications?
     word_count: 30
-  - answer: Yes, laser cleaning can damage titanium if the fluence exceeds approximately 2.5 J/cm². This can cause surface oxidation and micro-melting. To prevent this, always optimize your power settings and scan speed, and conduct a preliminary test on a small area.
+  - answer: Yes, laser cleaning can damage titanium if the fluence exceeds approximately
+      2.5 J/cm². This can cause surface oxidation and micro-melting. To prevent this,
+      always optimize your power settings and scan speed, and conduct a preliminary
+      test on a small area.
     question: Can laser cleaning damage Titanium?
     word_count: 40
-  - answer: Verify cleaning efficacy through visual inspection for uniform matte finish and water break test. For aerospace applications, confirm oxygen levels remain below 500 ppm to prevent embrittlement, ensuring surface integrity.
+  - answer: Verify cleaning efficacy through visual inspection for uniform matte finish
+      and water break test. For aerospace applications, confirm oxygen levels remain
+      below 500 ppm to prevent embrittlement, ensuring surface integrity.
     question: How can I verify Titanium was cleaned properly?
     word_count: 30
-  - answer: Thermal oxide layers and embedded aluminum contaminants present the greatest removal challenge from titanium substrates. Their strong adhesion requires precise fluence control near the 2.5 J/cm² threshold to avoid metallurgical damage while ensuring complete ablation.
+  - answer: Thermal oxide layers and embedded aluminum contaminants present the greatest
+      removal challenge from titanium substrates. Their strong adhesion requires precise
+      fluence control near the 2.5 J/cm² threshold to avoid metallurgical damage while
+      ensuring complete ablation.
     question: Which contaminants are hardest to remove from Titanium?
     word_count: 35
-  - answer: Titanium's high reactivity and low thermal conductivity present significant challenges. Its strong affinity for oxygen causes rapid re-oxidation after cleaning, requiring controlled atmospheres. The material's poor heat dissipation, with a thermal conductivity around 21 W/m·K, also elevates the risk of thermal distortion if laser parameters are not meticulously managed.
+  - answer: Titanium's high reactivity and low thermal conductivity present significant
+      challenges. Its strong affinity for oxygen causes rapid re-oxidation after cleaning,
+      requiring controlled atmospheres. The material's poor heat dissipation, with
+      a thermal conductivity around 21 W/m·K, also elevates the risk of thermal distortion
+      if laser parameters are not meticulously managed.
     question: What challenges does Titanium present in use?
     word_count: 49
-  - answer: Laser cleaning titanium is safe when proper protocols are followed. The primary hazard is the intense 1064 nm wavelength reflection, requiring certified laser safety eyewear and fume extraction for any generated particles. Always conduct a test pass at a low power setting, such as 100W, to verify parameter efficacy on the specific alloy.
+  - answer: Laser cleaning titanium is safe when proper protocols are followed. The
+      primary hazard is the intense 1064 nm wavelength reflection, requiring certified
+      laser safety eyewear and fume extraction for any generated particles. Always
+      conduct a test pass at a low power setting, such as 100W, to verify parameter
+      efficacy on the specific alloy.
     question: Is laser cleaning Titanium safe?
     word_count: 53
-  - answer: For titanium laser cleaning, a 100W fiber laser typically provides optimal results. This power effectively removes contaminants while preserving the base material's integrity. Excessive power risks surface oxidation, while insufficient power fails to achieve thorough cleaning, especially for aerospace-grade titanium requiring precise ablation thresholds.
+  - answer: For titanium laser cleaning, a 100W fiber laser typically provides optimal
+      results. This power effectively removes contaminants while preserving the base
+      material's integrity. Excessive power risks surface oxidation, while insufficient
+      power fails to achieve thorough cleaning, especially for aerospace-grade titanium
+      requiring precise ablation thresholds.
     question: What laser power works best for Titanium?
     word_count: 44
-  - answer: For titanium laser cleaning, maximize scan speed while maintaining the 2.5 J/cm² fluence threshold. Optimize throughput by utilizing the highest available power, such as 100W, and a 50μm spot size. This strategy ensures effective oxide removal in a single pass, significantly boosting productivity for aerospace components.
+  - answer: For titanium laser cleaning, maximize scan speed while maintaining the
+      2.5 J/cm² fluence threshold. Optimize throughput by utilizing the highest available
+      power, such as 100W, and a 50μm spot size. This strategy ensures effective oxide
+      removal in a single pass, significantly boosting productivity for aerospace
+      components.
     question: What's the fastest approach for Titanium?
     word_count: 46
-  - answer: Cleaning titanium typically requires 3 passes at 500 mm/s scan speed. The process duration depends on oxide layer thickness and the required 50% beam overlap. With a 100 W laser at 1064 nm wavelength, surface areas are processed efficiently while maintaining material integrity.
+  - answer: Cleaning titanium typically requires 3 passes at 500 mm/s scan speed.
+      The process duration depends on oxide layer thickness and the required 50% beam
+      overlap. With a 100 W laser at 1064 nm wavelength, surface areas are processed
+      efficiently while maintaining material integrity.
     question: How long does cleaning Titanium typically take?
     word_count: 43
-material_metadata:
-  last_updated: '2025-10-27T23:46:20.363552Z'
-  normalization_applied: true
-  restructured_date: '2025-10-27T23:46:20.363563Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Taiwan
-  author_name: Yi-Chun Lin
-  character_count: 81
-  generated: '2025-10-27T11:07:12.449821Z'
-  generation_method: ai_research_voice
-  word_count: 9
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
