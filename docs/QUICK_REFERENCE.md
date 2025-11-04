@@ -10,13 +10,15 @@
 
 ---
 
-## � Critical Documentation for AI Assistants
+## 📚 Critical Documentation for AI Assistants
 
 **BEFORE** any data-related work, review these files:
 1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions (⭐ START HERE)
-2. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
-3. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
-4. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
+2. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - 🔥 Materials.yaml structure (NO 'properties' wrapper!)
+3. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
+4. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
+5. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+6. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
 
 ### 🆕 Data Structure Update (October 25, 2025)
 
@@ -47,6 +49,46 @@ images:
 **Script**: `scripts/fix_materials_structure.py`
 **Testing**: `tests/test_data_structure_oct2025.py` - 10/10 tests passing ✅
 **Coverage**: Hero 132/132 (100%), Micro 132/132 (100%), RegulatoryStandards 106/132 (80.3%)
+
+---
+
+## 🔥 CRITICAL: Materials.yaml Structure (November 3, 2025)
+
+**⚠️ Properties are FLAT - NO 'properties' wrapper!**
+
+```yaml
+# ✅ CORRECT (per frontmatter_template.yaml):
+materialProperties:
+  material_characteristics:
+    label: "..."
+    density:           # ← Property DIRECTLY here
+      value: 8.8
+      unit: "g/cm³"
+
+# ❌ WRONG (causes bugs):
+materialProperties:
+  material_characteristics:
+    label: "..."
+    properties:        # ❌ NO! This wrapper should NOT exist
+      density:
+        value: 8.8
+```
+
+**In Code:**
+```python
+# ✅ CORRECT:
+mc = mat_props['material_characteristics']
+density = mc.get('density')  # Direct access
+
+# ❌ WRONG:
+mc_props = mc.get('properties', {})  # Don't do this!
+density = mc_props.get('density')
+```
+
+**Metadata Keys (exclude from property counts):** `label`, `description`, `percentage`
+
+**Full Documentation:** `docs/data/MATERIALS_STRUCTURE_CANONICAL.md`  
+**Migration Tool:** `scripts/tools/flatten_properties_structure.py`
 
 ---
 

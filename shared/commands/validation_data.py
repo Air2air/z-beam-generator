@@ -63,11 +63,23 @@ def run_data_validation(report_file = None) -> bool:
                     if category in materials_section:
                         for item in materials_section[category]['items']:
                             if item['name'] == material_name:
-                                # Ensure properties section exists
-                                if 'properties' not in item:
-                                    item['properties'] = {}
+                                # Ensure materialProperties exists with flat structure
+                                if 'materialProperties' not in item:
+                                    item['materialProperties'] = {
+                                        'material_characteristics': {'label': 'Material Characteristics'},
+                                        'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                                    }
                                 
-                                if prop_name in item['properties'] or True:  # Fix regardless
+                                # Determine which category this property belongs to
+                                # For now, put physical properties in material_characteristics
+                                target_category = 'material_characteristics'
+                                mat_props = item['materialProperties']
+                                
+                                if target_category not in mat_props:
+                                    mat_props[target_category] = {'label': 'Material Characteristics'}
+                                
+                                # Check if property exists (directly in category group)
+                                if prop_name in mat_props[target_category] or True:  # Fix regardless
                                     # Get range bounds
                                     range_parts = range_info.split('-')
                                     if len(range_parts) == 2:

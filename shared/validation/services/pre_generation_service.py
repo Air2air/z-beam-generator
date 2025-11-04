@@ -399,7 +399,14 @@ class PreGenerationValidationService:
             
             for material_name_key, material_data in materials_section.items():
                 if material_name_key == material_name:
-                    material_properties = material_data.get('properties', {})
+                    # Extract properties from materialProperties (flat structure)
+                    mat_props = material_data.get('materialProperties', {})
+                    metadata_keys = {'label', 'description', 'percentage'}
+                    for cat in ['material_characteristics', 'laser_material_interaction']:
+                        cat_data = mat_props.get(cat, {})
+                        if isinstance(cat_data, dict):
+                            material_properties.update({k: v for k, v in cat_data.items() 
+                                                       if k not in metadata_keys})
                     break
             
             # Check for missing required properties based on category
@@ -633,7 +640,14 @@ class PreGenerationValidationService:
             if category in materials_section:
                 for item in materials_section[category].get('items', []):
                     if item.get('name') == material_name:
-                        material_properties = item.get('properties', {})
+                        # Extract from materialProperties (flat structure)
+                        mat_props = item.get('materialProperties', {})
+                        metadata_keys = {'label', 'description', 'percentage'}
+                        for cat in ['material_characteristics', 'laser_material_interaction']:
+                            cat_data = mat_props.get(cat, {})
+                            if isinstance(cat_data, dict):
+                                material_properties.update({k: v for k, v in cat_data.items() 
+                                                           if k not in metadata_keys})
                         break
             
             # Validate each relationship rule
@@ -746,7 +760,16 @@ class PreGenerationValidationService:
             for category_name, category_items in materials_section.items():
                 for item in category_items.get('items', []):
                     material_name = item.get('name')
-                    properties = item.get('properties', {})
+                    
+                    # Extract from materialProperties (flat structure)
+                    mat_props = item.get('materialProperties', {})
+                    metadata_keys = {'label', 'description', 'percentage'}
+                    properties = {}
+                    for cat in ['material_characteristics', 'laser_material_interaction']:
+                        cat_data = mat_props.get(cat, {})
+                        if isinstance(cat_data, dict):
+                            properties.update({k: v for k, v in cat_data.items() 
+                                             if k not in metadata_keys})
                     
                     total_materials += 1
                     
@@ -853,7 +876,14 @@ class PreGenerationValidationService:
             if category in materials_section:
                 for item in materials_section[category].get('items', []):
                     if item.get('name') == material_name:
-                        material_properties = set(item.get('properties', {}).keys())
+                        # Extract from materialProperties (flat structure)
+                        mat_props = item.get('materialProperties', {})
+                        metadata_keys = {'label', 'description', 'percentage'}
+                        for cat in ['material_characteristics', 'laser_material_interaction']:
+                            cat_data = mat_props.get(cat, {})
+                            if isinstance(cat_data, dict):
+                                material_properties.update(k for k in cat_data.keys() 
+                                                         if k not in metadata_keys)
                         break
             
             # Check required properties

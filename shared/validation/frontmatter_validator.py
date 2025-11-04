@@ -193,20 +193,25 @@ class CascadingFailurePreventer:
 
     def _recover_incomplete_properties(self, frontmatter_data: Dict) -> Dict:
         """Recover from incomplete properties"""
-        if "properties" not in frontmatter_data:
-            frontmatter_data["properties"] = {}
+                # Ensure materialProperties structure exists per frontmatter_template.yaml
+        if "materialProperties" not in frontmatter_data:
+            frontmatter_data["materialProperties"] = {
+                "material_characteristics": {"label": "Material Characteristics"},
+                "laser_material_interaction": {"label": "Laser-Material Interaction"}
+            }
 
-        # Add default properties
+        # Add default properties to material_characteristics if needed
         defaults = {
-            "density": "Unknown",
-            "melting_point": "Unknown",
-            "thermal_conductivity": "Unknown",
+            "density": {"value": "Unknown", "unit": "g/cm³"},
+            "thermalConductivity": {"value": "Unknown", "unit": "W/(m·K)"},
         }
 
+        mat_char = frontmatter_data["materialProperties"].get("material_characteristics", {})
         for key, value in defaults.items():
-            if key not in frontmatter_data["properties"]:
-                frontmatter_data["properties"][key] = value
-
+            if key not in mat_char or key in ['label', 'description', 'percentage']:
+                mat_char[key] = value
+        
+        frontmatter_data["materialProperties"]["material_characteristics"] = mat_char
         return frontmatter_data
 
     def _recover_invalid_category(self, frontmatter_data: Dict) -> Dict:

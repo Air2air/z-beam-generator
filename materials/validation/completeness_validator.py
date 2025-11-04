@@ -11,13 +11,19 @@ Enforces 100% data completeness for frontmatter generation:
 4. Enforces comprehensive property coverage
 5. Detects empty sections and triggers research
 
-STRUCTURE TERMINOLOGY:
-- 'materialProperties' = Top-level key in Materials.yaml (ALWAYS this name)
-- 'properties' = Nested dict within a category group (e.g., material_characteristics.properties)
-- Category groups: material_characteristics, laser_material_interaction
+STRUCTURE (per materials/data/frontmatter_template.yaml):
+- 'materialProperties' = Top-level key containing category groups
+- Category groups: 'material_characteristics', 'laser_material_interaction'
+- Properties are DIRECTLY under category groups (FLAT structure)
+- Example: materialProperties.material_characteristics.density (NOT .properties.density)
+
+METADATA KEYS (excluded from property counts):
+- 'label' = Display name for category group
+- 'description' = Category description
+- 'percentage' = Legacy metadata (being removed)
 
 Author: October 17, 2025
-Updated: November 2, 2025 - GROUPED structure migration
+Updated: November 3, 2025 - Flattened structure per canonical template
 """
 
 import logging

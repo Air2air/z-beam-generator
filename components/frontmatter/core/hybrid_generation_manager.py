@@ -234,20 +234,11 @@ class HybridFrontmatterManager:
         frontmatter['category'] = material_data.get('category', 'materials').title()
         frontmatter['subcategory'] = material_data.get('subcategory', material_name.lower())
         
-        # Physical properties from materialProperties (flat structure)
+        # Copy materialProperties structure directly (flat structure per frontmatter_template.yaml)
         mat_props = material_data.get('materialProperties', {})
         if mat_props:
-            if 'properties' not in frontmatter:
-                frontmatter['properties'] = {}
-            
-            # Collect properties from both category groups (excluding metadata)
-            metadata_keys = {'label', 'description', 'percentage'}
-            for category in ['material_characteristics', 'laser_material_interaction']:
-                cat_data = mat_props.get(category, {})
-                if isinstance(cat_data, dict):
-                    for prop_name, prop_value in cat_data.items():
-                        if prop_name not in metadata_keys and isinstance(prop_value, (int, float)):
-                            frontmatter['properties'][prop_name] = prop_value
+            # Copy the entire materialProperties structure to frontmatter
+            frontmatter['materialProperties'] = mat_props
         
         # Applications from industryTags
         if 'material_metadata' in material_data:

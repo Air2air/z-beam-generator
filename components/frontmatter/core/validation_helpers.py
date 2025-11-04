@@ -92,14 +92,17 @@ class ValidationHelpers:
             frontmatter_data: Dictionary of frontmatter fields to validate
         """
         try:
-            # Ensure chemical formula is present
+            # Ensure technical specifications exist
             if 'chemicalFormula' not in frontmatter_data:
                 logger.warning("Missing chemical formula in frontmatter data")
                 
-            # Ensure material properties exist
-            if 'properties' not in frontmatter_data:
-                logger.warning("Missing properties section in frontmatter data")
-                frontmatter_data['properties'] = {}
+            # Ensure materialProperties structure exists per frontmatter_template.yaml
+            if 'materialProperties' not in frontmatter_data:
+                logger.warning("Missing materialProperties section in frontmatter data")
+                frontmatter_data['materialProperties'] = {
+                    'material_characteristics': {'label': 'Material Characteristics'},
+                    'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                }
                 
             # Ensure basic material info
             required_fields = ['name', 'category']
@@ -133,10 +136,13 @@ class ValidationHelpers:
                 corrected_data['name'] = material_name
                 logger.info(f"Added missing name field: {material_name}")
             
-            # Ensure properties section exists
-            if 'properties' not in corrected_data:
-                corrected_data['properties'] = {}
-                logger.info("Added missing properties section")
+            # Ensure materialProperties structure exists per frontmatter_template.yaml
+            if 'materialProperties' not in corrected_data:
+                corrected_data['materialProperties'] = {
+                    'material_characteristics': {'label': 'Material Characteristics'},
+                    'laser_material_interaction': {'label': 'Laser-Material Interaction'}
+                }
+                logger.info("Added missing materialProperties section")
             
             # Ensure machine settings section exists
             if 'machineSettings' not in corrected_data:

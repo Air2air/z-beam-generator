@@ -307,25 +307,28 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
             properties = material_data.get('materialProperties', {})
             missing_props = []
             
-            # Check inside category groups (normalized structure)
+            # Check inside category groups (FLAT structure per frontmatter_template.yaml)
+            # Properties are DIRECTLY under material_characteristics/laser_material_interaction
+            # NOT nested under a 'properties' key
             material_characteristics = properties.get('material_characteristics', {})
             laser_material_interaction = properties.get('laser_material_interaction', {})
             
             # Only check properties that are valid for this category
             for prop_name in valid_properties:
-                # Check in category groups first (normalized structure)
-                in_mc = isinstance(material_characteristics, dict) and prop_name in material_characteristics
-                in_lmi = isinstance(laser_material_interaction, dict) and prop_name in laser_material_interaction
-                in_root = prop_name in properties
+                # Check directly in category groups (excluding metadata keys)
+                in_mc = (isinstance(material_characteristics, dict) and 
+                        prop_name in material_characteristics and
+                        prop_name not in ['label', 'description', 'percentage'])
+                in_lmi = (isinstance(laser_material_interaction, dict) and 
+                         prop_name in laser_material_interaction and
+                         prop_name not in ['label', 'description', 'percentage'])
                 
-                # Find property value in hierarchy
+                # Find property value
                 prop_value = None
                 if in_mc:
                     prop_value = material_characteristics.get(prop_name)
                 elif in_lmi:
                     prop_value = laser_material_interaction.get(prop_name)
-                elif in_root:
-                    prop_value = properties.get(prop_name)
                 
                 # Use smart skip logic to determine if research needed
                 if should_research_property(prop_value, confidence_threshold):
