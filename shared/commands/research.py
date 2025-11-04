@@ -180,6 +180,47 @@ def handle_data_gaps():
         return False
 
 
+def should_research_property(prop_value, confidence_threshold=70):
+    """
+    Determine if a property should be researched based on smart skip logic.
+    
+    Args:
+        prop_value: The property value (could be None, dict, or scalar)
+        confidence_threshold: Minimum confidence to skip research
+        
+    Returns:
+        bool: True if property should be researched, False to skip
+    """
+    # Always research if value is None or missing
+    if prop_value is None:
+        return True
+    
+    # If it's not a dict, assume it's a simple value that exists
+    if not isinstance(prop_value, dict):
+        return False
+    
+    # Check if value field is missing or None
+    value = prop_value.get('value')
+    if value is None:
+        return True
+    
+    # Check confidence - re-research if below threshold
+    # Note: confidence might be stored as 'confidence' (0-1) or already as percentage
+    confidence = prop_value.get('confidence', 1.0)
+    
+    # Handle both formats: 0-1 scale and percentage
+    if confidence < 1.0:
+        confidence_pct = confidence * 100
+    else:
+        confidence_pct = confidence
+    
+    if confidence_pct < confidence_threshold:
+        return True
+    
+    # Value exists and confidence is good - skip research
+    return False
+
+
 def handle_research_missing_properties(batch_size=10, confidence_threshold=70, 
                                        specific_properties=None, specific_materials=None,
                                        auto_mode=False):
@@ -244,9 +285,11 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         materials_section = materials_data.get('materials', {})
         
         # Find missing values (only for properties valid in each material's category)
+        # SMART SKIP: Uses confidence thresholds and value checks
         missing_by_material = {}
         missing_by_property = defaultdict(list)
         total_gaps = 0
+        skipped_good_values = 0
         skipped_invalid = 0
         
         for material_name, material_data in materials_section.items():
@@ -264,12 +307,34 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
             properties = material_data.get('materialProperties', {})
             missing_props = []
             
+            # Check inside category groups (normalized structure)
+            material_characteristics = properties.get('material_characteristics', {})
+            laser_material_interaction = properties.get('laser_material_interaction', {})
+            
             # Only check properties that are valid for this category
             for prop_name in valid_properties:
-                if prop_name not in properties or properties[prop_name] is None:
+                # Check in category groups first (normalized structure)
+                in_mc = isinstance(material_characteristics, dict) and prop_name in material_characteristics
+                in_lmi = isinstance(laser_material_interaction, dict) and prop_name in laser_material_interaction
+                in_root = prop_name in properties
+                
+                # Find property value in hierarchy
+                prop_value = None
+                if in_mc:
+                    prop_value = material_characteristics.get(prop_name)
+                elif in_lmi:
+                    prop_value = laser_material_interaction.get(prop_name)
+                elif in_root:
+                    prop_value = properties.get(prop_name)
+                
+                # Use smart skip logic to determine if research needed
+                if should_research_property(prop_value, confidence_threshold):
                     missing_props.append(prop_name)
                     missing_by_property[prop_name].append(material_name)
                     total_gaps += 1
+                else:
+                    # Property exists with good value/confidence - skip
+                    skipped_good_values += 1
             
             if missing_props:
                 missing_by_material[material_name] = {
@@ -278,7 +343,8 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                 }
         
         print(f"📊 Found {total_gaps} missing property values across {len(missing_by_material)} materials")
-        print(f"✅ All properties validated against category definitions")
+        print(f"✅ Skipped {skipped_good_values} properties with good values (confidence ≥ {confidence_threshold}%)")
+        print("✅ All properties validated against category definitions")
         print()
         
         # Filter by specific properties/materials if requested
