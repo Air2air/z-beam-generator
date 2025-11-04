@@ -40,11 +40,13 @@ class RemainingErrorsFixer:
         for prop_name, fix_data in fixes.items():
             if 'materialProperties' in data:
                 for group_name, group_data in data['materialProperties'].items():
-                    if 'properties' not in group_data:
+                    # Properties are directly in group_data (flat structure)
+                    metadata_keys = {'label', 'description', 'percentage'}
+                    if not isinstance(group_data, dict):
                         continue
                     
-                    if prop_name in group_data['properties']:
-                        prop_data = group_data['properties'][prop_name]
+                    if prop_name in group_data and prop_name not in metadata_keys:
+                        prop_data = group_data[prop_name]
                         
                         # Apply fix
                         if 'value' in fix_data:

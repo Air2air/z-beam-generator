@@ -329,11 +329,12 @@ class TestFrontmatterRangePropagation:
         self, copper_frontmatter, copper_material, metal_category_ranges
     ):
         """Copper density in frontmatter should use metal category ranges from Categories.yaml"""
-        # Get density from frontmatter (in material_characteristics category)
-        fm_density = copper_frontmatter['materialProperties']['material_characteristics']['properties']['density']
+        # Get density from frontmatter (flat structure - properties directly in category group)
+        fm_density = copper_frontmatter['materialProperties']['material_characteristics']['density']
         
-        # Get material value (should have NO min/max)
-        mat_density = copper_material['materialProperties']['density']
+        # Get material value from Materials.yaml (should have NO min/max)
+        mat_props = copper_material['materialProperties']['material_characteristics']
+        mat_density = mat_props['density']
         
         # Get category ranges
         cat_density = metal_category_ranges['density']
@@ -358,15 +359,16 @@ class TestFrontmatterRangePropagation:
         self, copper_frontmatter, copper_material, metal_category_ranges
     ):
         """Verify thermalDestruction uses nested structure correctly"""
-        # Get thermalDestruction from frontmatter (in laser_material_interaction category)
-        fm_td = copper_frontmatter['materialProperties']['laser_material_interaction']['properties'].get('thermalDestruction')
+        # Get thermalDestruction from frontmatter (flat structure - directly in category group)
+        fm_td = copper_frontmatter['materialProperties']['laser_material_interaction'].get('thermalDestruction')
         
         # Skip test if thermalDestruction not present in this material
         if not fm_td:
             pytest.skip("thermalDestruction not present in copper frontmatter")
         
-        # Get material thermalDestruction (should be nested with NO min/max)
-        mat_td = copper_material['materialProperties']['thermalDestruction']
+        # Get material thermalDestruction from Materials.yaml (should be nested with NO min/max)
+        mat_lmi = copper_material['materialProperties']['laser_material_interaction']
+        mat_td = mat_lmi.get('thermalDestruction')
         
         # Get category thermalDestruction (nested structure)
         cat_td = metal_category_ranges['thermalDestruction']
@@ -445,11 +447,15 @@ class TestFrontmatterRangePropagation:
             if 'materialProperties' not in fm_data:
                 continue
             
+            # Flat structure - properties directly in category groups
+            metadata_keys = {'label', 'description', 'percentage'}
             for prop_group in fm_data['materialProperties'].values():
-                if 'properties' not in prop_group:
+                if not isinstance(prop_group, dict):
                     continue
                 
-                for prop_name, prop_data in prop_group['properties'].items():
+                for prop_name, prop_data in prop_group.items():
+                    if prop_name in metadata_keys:
+                        continue
                     if not isinstance(prop_data, dict):
                         continue
                     if 'min' not in prop_data or 'max' not in prop_data:

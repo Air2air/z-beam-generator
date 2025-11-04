@@ -943,12 +943,13 @@ class DataQualityValidationAgent:
         
         rule = CATEGORY_RULES[category]
         
-        # Get all properties in material
+        # Get all properties in material (flat structure)
         all_props = set()
+        metadata_keys = {'label', 'description', 'percentage'}
         if 'materialProperties' in material_data:
             for group_name, group_data in material_data['materialProperties'].items():
-                if 'properties' in group_data:
-                    all_props.update(group_data['properties'].keys())
+                if isinstance(group_data, dict):
+                    all_props.update(k for k in group_data.keys() if k not in metadata_keys)
         
         # Check required properties
         missing_required = set(rule.required_properties) - all_props
@@ -1014,21 +1015,26 @@ class DataQualityValidationAgent:
                     for issue in issues:
                         all_issues[issue['severity']].append(issue)
                     
-                    # Property validation
+                    # Property validation (flat structure)
+                    metadata_keys = {'label', 'description', 'percentage'}
                     for group_name, group_data in data['materialProperties'].items():
-                        if 'properties' not in group_data:
+                        if not isinstance(group_data, dict):
                             continue
                         
-                        for prop_name, prop_data in group_data['properties'].items():
+                        for prop_name, prop_data in group_data.items():
+                            if prop_name in metadata_keys:
+                                continue
                             issues = self.validate_property_value(
                                 material, category, prop_name, prop_data
                             )
                             for issue in issues:
                                 all_issues[issue['severity']].append(issue)
                     
-                    # Level 2: Relationship validation
-                    laser_props = data['materialProperties'].get('laser_material_interaction', {}).get('properties', {})
-                    char_props = data['materialProperties'].get('material_characteristics', {}).get('properties', {})
+                    # Level 2: Relationship validation (flat structure)
+                    laser_int = data['materialProperties'].get('laser_material_interaction', {})
+                    char_group = data['materialProperties'].get('material_characteristics', {})
+                    laser_props = {k: v for k, v in laser_int.items() if k not in metadata_keys} if isinstance(laser_int, dict) else {}
+                    char_props = {k: v for k, v in char_group.items() if k not in metadata_keys} if isinstance(char_group, dict) else {}
                     
                     # Optical energy conservation
                     issues = self.validate_optical_energy_conservation(material, category, laser_props)
