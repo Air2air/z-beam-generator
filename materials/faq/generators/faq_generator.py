@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
-"""FAQ Component Generator - Research-based SEO-optimized FAQ generation."""
+"""
+FAQ Component Generator - Research-based SEO-optimized FAQ generation.
+
+⚠️ LEGACY COMPONENT - For Backward Compatibility Only
+
+NEW CODE SHOULD USE: materials.unified_generator.UnifiedMaterialsGenerator
+This generator is maintained for existing tests and ComponentGeneratorFactory compatibility.
+
+Migration Path:
+- Use UnifiedMaterialsGenerator for new implementations
+- This will be deprecated in future major version
+"""
 
 import yaml
 import tempfile

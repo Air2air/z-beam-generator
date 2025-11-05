@@ -104,3 +104,31 @@ Inherits from `components/frontmatter/core/base_generator.py` and uses shared in
 - `shared/validation/` - Schema validation
 - `shared/api/` - AI client management
 - `components/frontmatter/research/` - Property research tools
+
+## Future Improvements
+
+### Generator Migration (If Needed)
+- Migrate remaining references from legacy component generators to `unified_generator.py`
+- Remove `caption/`, `subtitle/`, `faq/` subdirectories
+- Update tests and ComponentGeneratorFactory
+- **Trigger**: When legacy generators cause maintenance burden
+- **Effort**: 1-2 days
+- **Impact**: -1,214 lines, simpler architecture
+
+### Property Manager Refactoring (If Issues Arise)
+- Split `services/property_manager.py` (991 lines) if it becomes hard to maintain:
+  - `property_loader.py` - Loading and persistence
+  - `property_validator.py` - Validation and normalization  
+  - `property_enricher.py` - Enhancement and categorization
+- **Trigger**: Specific maintenance pain points
+- **Effort**: 2-3 days
+- **Impact**: Better maintainability, smaller files
+
+### Research Layer Consolidation (Low Priority)
+- Merge `unified_material_research.py` + `unified_research_interface.py` if redundant
+- Review need for `factory.py` + `base.py` abstractions
+- **Trigger**: Confusion about which research file to use
+- **Effort**: 1-2 days
+- **Impact**: -200-300 lines
+
+**Philosophy**: Address issues reactively when they cause real problems, not preemptively based on metrics alone.

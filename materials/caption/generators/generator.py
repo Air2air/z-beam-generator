@@ -2,13 +2,20 @@
 """
 Caption Component Generator - Microscopy Caption Generation
 
-This component generates before/after microscopy captions with clean, efficient architecture.
+⚠️ LEGACY COMPONENT - For Backward Compatibility Only
+
+NEW CODE SHOULD USE: materials.unified_generator.UnifiedMaterialsGenerator
+This generator is maintained for existing tests and ComponentGeneratorFactory compatibility.
 
 Architecture:
 - Generates before/after microscopy captions
 - Writes to Materials.yaml only (single source of truth)
 - Single API call per generation (no post-processing)
 - Minimal, clean interface
+
+Migration Path:
+- Use UnifiedMaterialsGenerator for new implementations
+- This will be deprecated in future major version
 """
 
 import datetime
