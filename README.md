@@ -37,7 +37,15 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## 🔄 Recent Updates
 
-### October 30, 2025: Phase 1 Multi-Content Type Architecture ✅ **NEW**
+### November 4, 2025: Subcategory Reconciliation & Bug Fix ✅ **NEW**
+- **🔧 RECONCILED**: 7 specialty metals updated (Cobalt, Gallium, Hastelloy, Inconel, Indium, Magnesium, Nickel)
+- **🐛 BUG FIX**: Fixed duplicate file write causing corrupt frontmatter (45-73 bytes → 9-15KB)
+- **✅ REGENERATED**: All 132 materials with correct subcategories and complete YAML structure
+- **🚀 DEPLOYED**: 139 files to production (materials + thesaurus + applications)
+- **📦 SPECIALTY METALS**: 10 total (Beryllium, Chromium, Titanium + 7 updated)
+- **📚 DOCS**: Complete report at `SUBCATEGORY_RECONCILIATION_COMPLETE.md`
+
+### October 30, 2025: Phase 1 Multi-Content Type Architecture ✅
 - **🏗️ IMPLEMENTED**: Extensible frontmatter architecture with 5 equal-weight content types
 - **📦 CONTENT TYPES**: Material (132), Contaminant (8), Region (6), Application (12), Thesaurus (15)
 - **🔄 DATA CONSOLIDATION**: 30% file reduction in category data (10 files → 7 files)
@@ -45,7 +53,7 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 - **✅ TESTING**: Comprehensive test suite with 35+ tests covering all components
 - **📚 DOCS**: Complete architecture documentation at `docs/architecture/PHASE1_IMPLEMENTATION_COMPLETE.md`
 
-### October 27, 2025: FAQ Generation Complete ✅ **NEW**
+### October 27, 2025: FAQ Generation Complete ✅
 - **🎉 COMPLETED**: Generated FAQs for all 132 materials (100% coverage)
 - **📊 METRICS**: Average 9.7 FAQs per material (range: 8-12 questions)
 - **🤖 AI MODEL**: Grok (grok-4-fast) for question/answer generation
