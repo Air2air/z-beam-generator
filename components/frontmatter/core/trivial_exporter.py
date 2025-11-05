@@ -201,8 +201,12 @@ class TrivialFrontmatterExporter:
                 # Strip generation metadata
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
             elif key == 'regulatoryStandards':
-                # Keep descriptions in regulatoryStandards but strip generation metadata
-                frontmatter[key] = self._strip_generation_metadata(value)
+                # Normalize regulatoryStandards to template format:
+                # - Remove string entries (legacy universal standards)
+                # - Keep only dict format with: name, description, url, image
+                # - Remove longName field (not in template)
+                normalized = self._normalize_regulatory_standards(value)
+                frontmatter[key] = self._strip_generation_metadata(normalized)
             elif key == 'caption':
                 # Strip generation metadata from caption (timestamps, word counts, author duplication, etc.)
                 # Caption should only have 'before' and 'after' fields
@@ -439,6 +443,58 @@ class TrivialFrontmatterExporter:
             return [self._strip_generation_metadata(item) for item in data]
         else:
             return data
+    
+    def _normalize_regulatory_standards(self, standards: Any) -> list:
+        """
+        Normalize regulatoryStandards to template format.
+        
+        Per frontmatter_template.yaml, regulatory standards should be:
+        - List of dicts only (no strings)
+        - Each dict has: name, description, url, image
+        - No longName field
+        - No duplicate entries
+        
+        Args:
+            standards: Raw regulatoryStandards from Materials.yaml
+            
+        Returns:
+            Normalized list of regulatory standards dicts
+        """
+        if not isinstance(standards, list):
+            return []
+        
+        normalized = []
+        seen_descriptions = set()
+        
+        for item in standards:
+            # Skip string entries (legacy universal standards)
+            if isinstance(item, str):
+                continue
+            
+            # Keep only dict entries
+            if isinstance(item, dict):
+                description = item.get('description', '')
+                
+                # Skip duplicates based on description
+                if description in seen_descriptions:
+                    continue
+                
+                seen_descriptions.add(description)
+                
+                # Keep only template fields: name, description, url, image
+                normalized_item = {
+                    'name': item.get('name', ''),
+                    'description': description,
+                    'url': item.get('url', ''),
+                    'image': item.get('image', '')
+                }
+                
+                # Remove longName (not in template)
+                # Already excluded by only including template fields
+                
+                normalized.append(normalized_item)
+        
+        return normalized
 
 
 def export_all_frontmatter() -> Dict[str, bool]:

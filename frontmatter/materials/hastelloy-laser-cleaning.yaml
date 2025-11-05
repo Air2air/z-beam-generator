@@ -29,26 +29,22 @@ caption:
   before: Under microscopic scrutiny, the Hastelloy surface displays heavy contamination with clustered particulates—oily residues and metallic debris—ranging 10-100 microns, embedding into the nickel alloy matrix. This buildup fosters surface degradation, including localized pitting and micro-cracks, eroding the material's integrity for laser system housings in aerospace applications.
   after: After cleaning Hastelloy surfaces in laser systems, restoration delivers a smooth, contaminant-free condition. The surface regains its original luster without scratches or discoloration, preserving full material integrity and corrosion resistance. This high-quality outcome supports reliable performance in optical housings, as seen in applications at Lawrence Livermore National Laboratory.
 regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics

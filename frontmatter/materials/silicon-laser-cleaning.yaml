@@ -29,41 +29,34 @@ caption:
   before: In microscopy of the contaminated silicon surface, a patchwork of micron-sized particles and oily residues dominates the view. Contaminants, mainly silica dust and organic films, adhere unevenly, forming clusters up to 5 microns thick that obscure underlying structure. Surface degradation appears as faint pitting and haze, eroding smoothness. In semiconductor laser fabrication, this impairs beam quality, demanding targeted cleaning.
   after: After thorough cleaning, the silicon semiconductor surface restores to a pristine, contaminant-free state, exhibiting nanoscale smoothness and uniform reflectivity. This high-quality restoration maintains material integrity, preserving inherent electrical and optical properties without inducing defects or stress. In laser system optics, such conditioning ensures optimal beam transmission and device reliability for precision applications.
 regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-- description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-  image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-  name: Unknown
+  image: /images/logo/logo-org-osha.png
+- name: Unknown
+  description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
   url: ''
-- description: ASTM F1188 - Standard Specification for Single Crystal Silicon
   image: /images/logo/logo-org-generic.png
-  longName: Unknown Organization
-  name: Unknown
+- name: Unknown
+  description: ASTM F1188 - Standard Specification for Single Crystal Silicon
   url: ''
-- description: ISO 14644 - Cleanroom and Associated Controlled Environments
-  image: /images/logo/logo-org-iso.png
-  longName: International Organization for Standardization
-  name: ISO
+  image: /images/logo/logo-org-generic.png
+- name: ISO
+  description: ISO 14644 - Cleanroom and Associated Controlled Environments
   url: https://www.iso.org/standard/60426.html
+  image: /images/logo/logo-org-iso.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics

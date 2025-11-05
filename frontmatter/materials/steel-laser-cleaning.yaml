@@ -29,21 +29,18 @@ caption:
   before: A microscopic look at the untreated steel surface uncovers a pretty heterogeneous layer of reddish-brown iron oxide (rust) contaminants, roughly 50-100 μm thick, mixed with carbonaceous residues and particulate debris. Fairly pronounced pitting corrosion, reaching depths up to 20 μm, along with microcracks at grain boundaries, signals severe surface degradation that hides the underlying ferritic microstructure and encourages more oxidative damage in normal ambient conditions.
   after: After laser cleaning with optimized parameters—like a 1064 nm wavelength and 10 J/cm² fluence—the steel surface ends up pretty pristine and contaminant-free, regaining its metallic luster along with a uniform topography. Microscopy reveals intact grain boundaries and relatively minimal ablation pits (<5 μm), which basically preserves bulk material integrity while removing oxide layers; subtle recast features indicate selective vaporization absent subsurface thermal distortion, delivering high-fidelity restoration for better corrosion resistance.
 regulatoryStandards:
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics

@@ -29,21 +29,18 @@ caption:
   before: Under microscopy, the vanadium surface shows widespread contamination from oxide layers and particulate debris, likely from chemical processing exposure. Dark, irregular patches cluster unevenly, causing pitting and micro-cracks that roughen the texture. This degradation weakens the metal's integrity for aerospace and nuclear uses, as it promotes further corrosion and reduces precision in high-stakes environments.
   after: After laser cleaning, the vanadium surface looks smooth and even, free from oxides and residues. This treatment restores its natural metallic luster, and it maintains the material's core properties like high strength and heat resistance. The process shows no signs of thermal distortion or weakening, ensuring full integrity for uses in aerospace, nuclear energy, and chemical processing. Overall, restoration quality is precise and reliable.
 regulatoryStandards:
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics

@@ -6,7 +6,7 @@ _metadata:
     voice_applied: true
     content_type: material
 category: metal
-subcategory: aerospace
+subcategory: specialty
 title: Titanium Laser Cleaning
 subtitle: Unlocking titanium's brilliant, oxide-rich finish with precision laser parameters
 description: Laser cleaning parameters for Titanium
@@ -29,21 +29,18 @@ caption:
   before: This titanium surface shows significant contamination with scattered particulate deposits. The contaminants appear as irregular clusters and reveal embedded oxide particles. We observe localized pitting corrosion and micro-cracks propagating from defect sites. The surface degradation demonstrates how foreign materials compromise titanium's protective oxide layer, leading to accelerated material breakdown in critical applications.
   after: The cleaned titanium surface reveals its original metallic luster. All contaminants are removed, and the material integrity remains fully intact.
 regulatoryStandards:
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics

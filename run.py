@@ -537,7 +537,7 @@ def main():
                     )
                     
                     if result.success:
-                        output_dir = "frontmatter"
+                        output_dir = "frontmatter/materials"
                         os.makedirs(output_dir, exist_ok=True)
                         filename = generate_safe_filename(material_name)
                         output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
