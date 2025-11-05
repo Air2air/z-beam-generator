@@ -128,7 +128,24 @@ def handle_data_gaps():
             if not valid_properties:
                 continue  # Skip materials with unknown categories
             
-            properties = material_data.get('materialProperties', {})
+            # Extract properties from GROUPED structure
+            # materialProperties contains exactly two category groups:
+            # - material_characteristics: Physical/thermal properties
+            # - laser_material_interaction: Laser-specific properties
+            # Each group has: label, description, and actual properties
+            material_properties_section = material_data.get('materialProperties', {})
+            
+            # Flatten properties from both standard category groups
+            properties = {}
+            for group_name in ['material_characteristics', 'laser_material_interaction']:
+                group_data = material_properties_section.get(group_name, {})
+                if isinstance(group_data, dict):
+                    for key, value in group_data.items():
+                        # Skip metadata fields
+                        if key in ('label', 'description', 'percentage'):
+                            continue
+                        properties[key] = value
+            
             total_materials += 1
             
             missing_props = []

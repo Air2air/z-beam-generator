@@ -76,7 +76,7 @@ class CompletenessValidator:
             # Thermal properties (unified thermalDestruction replaces meltingPoint)
             'thermalDestruction', 'thermalConductivity',
             # Physical properties
-            'density', 'hardness', 'elasticModulus', 'tensileStrength',
+            'density', 'hardness', 'youngsModulus', 'tensileStrength',
             # Optical properties
             'reflectivity', 'absorptionCoefficient',
             # Surface properties
@@ -86,17 +86,17 @@ class CompletenessValidator:
         },
         'ceramic': {
             'thermalDestruction', 'thermalConductivity', 'density', 'hardness',  # Changed sinteringPoint → thermalDestruction
-            'elasticModulus', 'compressiveStrength', 'reflectivity',
+            'youngsModulus', 'compressiveStrength', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'plastic': {
             'thermalDestruction', 'thermalConductivity', 'density',  # Changed degradationPoint/meltingPoint → thermalDestruction
-            'tensileStrength', 'elasticModulus', 'reflectivity',
+            'tensileStrength', 'youngsModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'composite': {
             'thermalDestruction', 'thermalConductivity', 'density',  # Changed degradationPoint → thermalDestruction
-            'tensileStrength', 'elasticModulus', 'reflectivity',
+            'tensileStrength', 'youngsModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'wood': {
@@ -110,7 +110,7 @@ class CompletenessValidator:
         },
         'glass': {
             'thermalDestruction', 'thermalConductivity', 'density',  # Changed softeningPoint → thermalDestruction
-            'hardness', 'elasticModulus', 'reflectivity',
+            'hardness', 'youngsModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'semiconductor': {
@@ -269,7 +269,8 @@ class CompletenessValidator:
             # FLATTENED structure: properties are directly under category_data
             if isinstance(category_data, dict):
                 for prop_name, prop_data in category_data.items():
-                    if prop_name == 'label':  # Skip label field
+                    # Skip metadata fields
+                    if prop_name in ('label', 'description', 'percentage'):
                         continue
                     properties.add(prop_name)
                     
