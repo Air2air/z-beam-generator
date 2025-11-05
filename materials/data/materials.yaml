@@ -38601,6 +38601,13 @@ materials:
           unit: kg/m³
           confidence: 100
           source: ai_research
+        hardness:
+          value: 9.3
+          unit: GPa
+          confidence: 95
+          source: ai_research
+          min: 7.0
+          max: 12.0
         corrosionResistance:
           value: 0.98
           unit: dimensionless (resistance index)
@@ -38997,6 +39004,20 @@ materials:
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption,
           reflection, propagation, and ablation thresholds
+        porosity:
+          value: 0.005
+          unit: dimensionless
+          confidence: 95
+          source: ai_research
+          min: 0.0
+          max: 0.05
+        ablationThreshold:
+          value: 3.0
+          unit: J/cm²
+          confidence: 95
+          source: ai_research
+          min: 2.0
+          max: 5.0
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
