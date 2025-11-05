@@ -1354,6 +1354,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 500
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -1662,6 +1704,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.12
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 500
+          unit: K
+          min: 450
+          max: 550
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -2255,6 +2339,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 1000000
+          unit: m⁻¹
+          min: 500000
+          max: 2000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 1.5
+          unit: J/cm²
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 523
+          unit: K
+          min: 473
+          max: 573
+          source: ai_research
+        vaporPressure:
+          value: 1000
+          unit: Pa
+          min: 100
+          max: 5000
+          source: ai_research
       porosity:
         value: 0.59
         unit: fraction
@@ -3034,6 +3160,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.8
+          max: 0.92
+          source: ai_research
+        absorptionCoefficient:
+          value: 400000
+          unit: m⁻¹
+          min: 300000
+          max: 500000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.5
+          max: 4.0
+          source: ai_research
+        thermalShockResistance:
+          value: 0.8
+          unit: MW/m
+          min: 0.5
+          max: 1.2
+          source: ai_research
+        reflectivity:
+          value: 0.12
+          unit: dimensionless
+          min: 0.08
+          max: 0.18
+          source: ai_research
+        thermalDestructionPoint:
+          value: 573
+          unit: K
+          min: 523
+          max: 623
+          source: ai_research
+        vaporPressure:
+          value: 500
+          unit: Pa
+          min: 100
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -3633,6 +3801,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 1000
+          unit: m⁻¹
+          min: 100
+          max: 10000
+          source: ai_research
+        laserDamageThreshold:
+          value: 15
+          unit: J/cm²
+          min: 10
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 1
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.1
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1400
+          unit: K
+          min: 1300
+          max: 1500
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -5562,6 +5772,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.3
+          unit: dimensionless
+          min: 0.1
+          max: 0.5
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3
+          unit: J/cm²
+          min: 1
+          max: 5
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.7
+          unit: dimensionless
+          min: 0.5
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 700
+          unit: K
+          min: 500
+          max: 900
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 1
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -6248,6 +6500,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 573
+          unit: K
+          min: 473
+          max: 673
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -6841,6 +7135,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.4
+          unit: dimensionless
+          min: 0.2
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 1000000
+          unit: m⁻¹
+          min: 100000
+          max: 10000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2
+          unit: J/cm²
+          min: 0.5
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.6
+          unit: dimensionless
+          min: 0.1
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1700
+          unit: K
+          min: 1400
+          max: 2000
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 0.1
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -7447,6 +7783,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 10000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 0.5
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 500
+          unit: K
+          min: 450
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 1
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -9211,6 +9589,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 50
+          unit: m⁻¹
+          min: 10
+          max: 200
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.0
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.04
+          unit: dimensionless
+          min: 0.03
+          max: 0.05
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1000
+          unit: K
+          min: 900
+          max: 1100
+          source: ai_research
+        vaporPressure:
+          value: 0.001
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -9783,6 +10203,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.1
+          max: 0.5
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 200000
+          source: ai_research
+        laserDamageThreshold:
+          value: 4.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.03
+          max: 0.1
+          source: ai_research
+        thermalDestructionPoint:
+          value: 600
+          unit: K
+          min: 500
+          max: 700
+          source: ai_research
+        vaporPressure:
+          value: 200
+          unit: Pa
+          min: 50
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10368,6 +10830,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.2
+          unit: dimensionless
+          min: 0.1
+          max: 0.4
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 2
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1
+          unit: MW/m
+          min: 0.5
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.7
+          unit: dimensionless
+          min: 0.5
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 600
+          unit: K
+          min: 500
+          max: 700
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10660,6 +11164,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 1000000
+          unit: m⁻¹
+          min: 100000
+          max: 10000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.15
+          source: ai_research
+        thermalDestructionPoint:
+          value: 650
+          unit: K
+          min: 500
+          max: 800
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 10
+          max: 500
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -10956,6 +11502,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 10000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 500
+          unit: K
+          min: 450
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -11259,6 +11847,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 20
+          unit: m⁻¹
+          min: 10
+          max: 100
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1
+          unit: MW/m
+          min: 0.5
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.1
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1700
+          unit: K
+          min: 1600
+          max: 1800
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -11562,6 +12192,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.03
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 10
+          unit: m⁻¹
+          min: 1
+          max: 100
+          source: ai_research
+        laserDamageThreshold:
+          value: 15
+          unit: J/cm²
+          min: 5
+          max: 25
+          source: ai_research
+        thermalShockResistance:
+          value: 2
+          unit: MW/m
+          min: 1
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.04
+          unit: dimensionless
+          min: 0.03
+          max: 0.05
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1800
+          unit: K
+          min: 1700
+          max: 2000
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12247,6 +12919,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.68
+          unit: dimensionless
+          min: 0.5
+          max: 0.9
+          source: ai_research
+        absorptionCoefficient:
+          value: 10000000
+          unit: m⁻¹
+          min: 1000000
+          max: 100000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 4.5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.8
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.32
+          unit: dimensionless
+          min: 0.3
+          max: 0.35
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1511
+          unit: K
+          min: 1400
+          max: 1600
+          source: ai_research
+        vaporPressure:
+          value: 5
+          unit: Pa
+          min: 0.1
+          max: 50
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -12543,6 +13257,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000
+          unit: m⁻¹
+          min: 1000
+          max: 10000
+          source: ai_research
+        laserDamageThreshold:
+          value: 15
+          unit: J/cm²
+          min: 5
+          max: 25
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.04
+          max: 0.06
+          source: ai_research
+        thermalDestructionPoint:
+          value: 673
+          unit: K
+          min: 573
+          max: 773
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -13240,6 +13996,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.15
+          source: ai_research
+        absorptionCoefficient:
+          value: 2000
+          unit: m⁻¹
+          min: 1000
+          max: 5000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1
+          unit: MW/m
+          min: 0.5
+          max: 1.5
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.1
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1073
+          unit: K
+          min: 1000
+          max: 1200
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -14615,6 +15413,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 1
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 700
+          unit: K
+          min: 600
+          max: 800
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -16468,6 +17308,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.1
+          max: 0.4
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.75
+          unit: dimensionless
+          min: 0.6
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 773
+          unit: K
+          min: 723
+          max: 823
+          source: ai_research
+        vaporPressure:
+          value: 5
+          unit: Pa
+          min: 0.1
+          max: 50
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -17449,6 +18331,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000
+          unit: m⁻¹
+          min: 1000
+          max: 20000
+          source: ai_research
+        laserDamageThreshold:
+          value: 8
+          unit: J/cm²
+          min: 5
+          max: 15
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.12
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1100
+          unit: K
+          min: 900
+          max: 1300
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -18047,6 +18971,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 450
+          max: 650
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -18752,6 +19718,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.9
+          unit: dimensionless
+          min: 0.8
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3
+          unit: J/cm²
+          min: 1
+          max: 5
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 500
+          unit: K
+          min: 450
+          max: 550
+          source: ai_research
+        vaporPressure:
+          value: 500
+          unit: Pa
+          min: 100
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -19456,6 +20464,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 100000
+          unit: m⁻¹
+          min: 50000
+          max: 200000
+          source: ai_research
+        laserDamageThreshold:
+          value: 1.5
+          unit: J/cm²
+          min: 0.5
+          max: 3
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 1.8
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 673
+          unit: K
+          min: 573
+          max: 773
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 10
+          max: 200
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -20057,6 +21107,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000
+          unit: m⁻¹
+          min: 100000
+          max: 10000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 0.5
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.8
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1200
+          unit: K
+          min: 900
+          max: 2000
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 0.1
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -22102,6 +23194,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.88
+          unit: dimensionless
+          min: 0.8
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 450000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.0
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 1.0
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.12
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 650
+          unit: K
+          min: 600
+          max: 700
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 500
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23095,6 +24229,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000.0
+          unit: m⁻¹
+          min: 1000000.0
+          max: 10000000.0
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.8
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 723
+          unit: K
+          min: 573
+          max: 873
+          source: ai_research
+        vaporPressure:
+          value: 100
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -23393,6 +24569,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 25000
+          unit: m⁻¹
+          min: 10000
+          max: 50000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 523
+          unit: K
+          min: 473
+          max: 623
+          source: ai_research
+        vaporPressure:
+          value: 5
+          unit: Pa
+          min: 0.1
+          max: 50
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -24381,6 +25599,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 4500000
+          unit: m⁻¹
+          min: 1000000
+          max: 10000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.12
+          unit: dimensionless
+          min: 0.05
+          max: 0.25
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 450
+          max: 650
+          source: ai_research
+        vaporPressure:
+          value: 150
+          unit: Pa
+          min: 10
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -24981,6 +26241,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.05
+          max: 0.5
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 10000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.0
+          unit: J/cm²
+          min: 0.5
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.7
+          unit: dimensionless
+          min: 0.4
+          max: 0.9
+          source: ai_research
+        thermalDestructionPoint:
+          value: 673
+          unit: K
+          min: 600
+          max: 750
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 0.1
+          max: 1000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -26787,6 +28089,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.9
+          unit: dimensionless
+          min: 0.85
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 100000
+          unit: m⁻¹
+          min: 50000
+          max: 200000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 1.8
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.15
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 500
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 1000
+          unit: Pa
+          min: 100
+          max: 5000
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -27438,6 +28782,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.75
+          unit: dimensionless
+          min: 0.6
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000.0
+          unit: m⁻¹
+          min: 1000000.0
+          max: 10000000.0
+          source: ai_research
+        laserDamageThreshold:
+          value: 8.5
+          unit: J/cm²
+          min: 5.0
+          max: 15.0
+          source: ai_research
+        thermalShockResistance:
+          value: 2.5
+          unit: MW/m
+          min: 1.0
+          max: 4.0
+          source: ai_research
+        reflectivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.05
+          max: 0.4
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1473
+          unit: K
+          min: 1273
+          max: 1673
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.001
+          max: 1.0
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28025,6 +29411,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 50
+          unit: m⁻¹
+          min: 10
+          max: 1000
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 2
+          unit: MW/m
+          min: 1
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.04
+          max: 0.1
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1500
+          unit: K
+          min: 1400
+          max: 1600
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28326,6 +29754,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.02
+          unit: dimensionless
+          min: 0.01
+          max: 0.05
+          source: ai_research
+        absorptionCoefficient:
+          value: 10
+          unit: m⁻¹
+          min: 1
+          max: 100
+          source: ai_research
+        laserDamageThreshold:
+          value: 20
+          unit: J/cm²
+          min: 10
+          max: 40
+          source: ai_research
+        thermalShockResistance:
+          value: 2.5
+          unit: MW/m
+          min: 1
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.04
+          unit: dimensionless
+          min: 0.035
+          max: 0.045
+          source: ai_research
+        thermalDestructionPoint:
+          value: 2000
+          unit: K
+          min: 1900
+          max: 2100
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28624,6 +30094,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.2
+          unit: dimensionless
+          min: 0.1
+          max: 0.4
+          source: ai_research
+        absorptionCoefficient:
+          value: 10000
+          unit: m⁻¹
+          min: 1000
+          max: 50000
+          source: ai_research
+        laserDamageThreshold:
+          value: 8.5
+          unit: J/cm²
+          min: 5
+          max: 15
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.15
+          max: 0.4
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1700
+          unit: K
+          min: 1400
+          max: 2000
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -28926,6 +30438,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.9
+          unit: dimensionless
+          min: 0.8
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 5
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1
+          unit: MW/m
+          min: 0.5
+          max: 2
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.15
+          source: ai_research
+        thermalDestructionPoint:
+          value: 600
+          unit: K
+          min: 500
+          max: 700
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -30006,6 +31560,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.1
+          unit: dimensionless
+          min: 0.05
+          max: 0.2
+          source: ai_research
+        thermalDestructionPoint:
+          value: 550
+          unit: K
+          min: 500
+          max: 600
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 10
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -30308,6 +31904,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.6
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 0.5
+          max: 5
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.12
+          unit: dimensionless
+          min: 0.05
+          max: 0.35
+          source: ai_research
+        thermalDestructionPoint:
+          value: 673
+          unit: K
+          min: 573
+          max: 773
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 1
+          max: 500
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31003,6 +32641,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.65
+          unit: dimensionless
+          min: 0.4
+          max: 0.85
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 10000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 8.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.35
+          unit: dimensionless
+          min: 0.15
+          max: 0.6
+          source: ai_research
+        thermalDestructionPoint:
+          value: 950
+          unit: K
+          min: 700
+          max: 1200
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.001
+          max: 10
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31305,6 +32985,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.03
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 5
+          unit: m⁻¹
+          min: 1
+          max: 10
+          source: ai_research
+        laserDamageThreshold:
+          value: 12
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 2.5
+          unit: MW/m
+          min: 1
+          max: 5
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.12
+          source: ai_research
+        thermalDestructionPoint:
+          value: 2300
+          unit: K
+          min: 2200
+          max: 2400
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.001
+          max: 10
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31607,6 +33329,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.75
+          unit: dimensionless
+          min: 0.6
+          max: 0.9
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3
+          unit: J/cm²
+          min: 1
+          max: 10
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.1
+          max: 0.4
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1273
+          unit: K
+          min: 1073
+          max: 1473
+          source: ai_research
+        vaporPressure:
+          value: 1
+          unit: Pa
+          min: 0.1
+          max: 10
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -31901,6 +33665,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.8
+          unit: dimensionless
+          min: 0.6
+          max: 0.9
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3
+          unit: J/cm²
+          min: 1
+          max: 5
+          source: ai_research
+        thermalShockResistance:
+          value: 2
+          unit: MW/m
+          min: 1
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.1
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1000
+          unit: K
+          min: 900
+          max: 1100
+          source: ai_research
+        vaporPressure:
+          value: 1
+          unit: Pa
+          min: 0.1
+          max: 10
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -32199,6 +34005,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000.0
+          unit: m⁻¹
+          min: 100000.0
+          max: 10000000.0
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.8
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 873
+          unit: K
+          min: 773
+          max: 1073
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -32514,6 +34362,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.65
+          unit: dimensionless
+          min: 0.5
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 1.0
+          unit: J/cm²
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.8
+          max: 1.5
+          source: ai_research
+        reflectivity:
+          value: 0.35
+          unit: dimensionless
+          min: 0.3
+          max: 0.4
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1687
+          unit: K
+          min: 1600
+          max: 1800
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.01
+          max: 1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -33120,6 +35010,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.6
+          unit: dimensionless
+          min: 0.4
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.0
+          unit: J/cm²
+          min: 0.5
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.4
+          unit: dimensionless
+          min: 0.2
+          max: 0.6
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1400
+          unit: K
+          min: 1200
+          max: 1600
+          source: ai_research
+        vaporPressure:
+          value: 1.0
+          unit: Pa
+          min: 0.01
+          max: 10.0
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -34173,6 +36105,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 100000
+          unit: m⁻¹
+          min: 10000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 8
+          unit: J/cm²
+          min: 5
+          max: 15
+          source: ai_research
+        thermalShockResistance:
+          value: 2.5
+          unit: MW/m
+          min: 1
+          max: 4
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1300
+          unit: K
+          min: 1200
+          max: 1500
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -34470,6 +36444,48 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000.0
+          unit: m⁻¹
+          min: 1000000.0
+          max: 10000000.0
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.8
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1100
+          unit: K
+          min: 900
+          max: 1300
+          source: ai_research
+        vaporPressure:
+          value: 0.05
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     materialCharacteristics:
       crystallineStructure:
         allowedValues:
@@ -34766,6 +36782,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.02
+          unit: dimensionless
+          min: 0.01
+          max: 0.05
+          source: ai_research
+        absorptionCoefficient:
+          value: 500
+          unit: m⁻¹
+          min: 100
+          max: 1000
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.0
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.04
+          unit: dimensionless
+          min: 0.035
+          max: 0.05
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1400
+          unit: K
+          min: 1300
+          max: 1500
+          source: ai_research
+        vaporPressure:
+          value: 0.001
+          unit: Pa
+          min: 0.001
+          max: 0.01
+          source: ai_research
     machineSettings:
       energyDensity:
         description: Fluence threshold for effective contaminant removal below glass damage threshold
@@ -36629,6 +38687,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3.0
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 673
+          unit: K
+          min: 500
+          max: 800
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Teak surface cleaning without charring
@@ -36894,6 +38994,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.05
+          unit: dimensionless
+          min: 0.01
+          max: 0.1
+          source: ai_research
+        absorptionCoefficient:
+          value: 80000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 10
+          unit: J/cm²
+          min: 5
+          max: 20
+          source: ai_research
+        thermalShockResistance:
+          value: 1.5
+          unit: MW/m
+          min: 0.5
+          max: 3
+          source: ai_research
+        reflectivity:
+          value: 0.04
+          unit: dimensionless
+          min: 0.03
+          max: 0.06
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1673
+          unit: K
+          min: 1600
+          max: 1800
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 1
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Tempered Glass cleaning without thermal damage
@@ -37685,6 +39827,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.6
+          unit: dimensionless
+          min: 0.4
+          max: 0.8
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.0
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 0.8
+          unit: MW/m
+          min: 0.5
+          max: 1.5
+          source: ai_research
+        reflectivity:
+          value: 0.3
+          unit: dimensionless
+          min: 0.1
+          max: 0.5
+          source: ai_research
+        thermalDestructionPoint:
+          value: 523
+          unit: K
+          min: 473
+          max: 573
+          source: ai_research
+        vaporPressure:
+          value: 0.01
+          unit: Pa
+          min: 0.001
+          max: 0.1
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Thermoplastic Elastomer surface cleaning without thermal damage
@@ -39351,6 +41535,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.65
+          unit: dimensionless
+          min: 0.4
+          max: 0.9
+          source: ai_research
+        absorptionCoefficient:
+          value: 5000000.0
+          unit: m⁻¹
+          min: 100000.0
+          max: 10000000.0
+          source: ai_research
+        laserDamageThreshold:
+          value: 8.5
+          unit: J/cm²
+          min: 2
+          max: 15
+          source: ai_research
+        thermalShockResistance:
+          value: 1.8
+          unit: MW/m
+          min: 0.8
+          max: 3.5
+          source: ai_research
+        reflectivity:
+          value: 0.35
+          unit: dimensionless
+          min: 0.1
+          max: 0.6
+          source: ai_research
+        thermalDestructionPoint:
+          value: 1098
+          unit: K
+          min: 1000
+          max: 1200
+          source: ai_research
+        vaporPressure:
+          value: 0.1
+          unit: Pa
+          min: 0.001
+          max: 10
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Travertine surface cleaning without thermal damage
@@ -40279,6 +42505,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.25
+          unit: dimensionless
+          min: 0.1
+          max: 0.4
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.7
+          unit: dimensionless
+          min: 0.6
+          max: 0.8
+          source: ai_research
+        thermalDestructionPoint:
+          value: 523
+          unit: K
+          min: 473
+          max: 573
+          source: ai_research
+        vaporPressure:
+          value: 50
+          unit: Pa
+          min: 10
+          max: 200
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Urethane Composites cleaning without thermal damage
@@ -40898,6 +43166,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.85
+          unit: dimensionless
+          min: 0.7
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 500000
+          unit: m⁻¹
+          min: 100000
+          max: 1000000
+          source: ai_research
+        laserDamageThreshold:
+          value: 3.5
+          unit: J/cm²
+          min: 1.0
+          max: 10.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.5
+          source: ai_research
+        reflectivity:
+          value: 0.15
+          unit: dimensionless
+          min: 0.05
+          max: 0.3
+          source: ai_research
+        thermalDestructionPoint:
+          value: 523
+          unit: K
+          min: 473
+          max: 673
+          source: ai_research
+        vaporPressure:
+          value: 500
+          unit: Pa
+          min: 100
+          max: 2000
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for walnut surface cleaning without charring
@@ -41154,6 +43464,48 @@ materials:
         label: Laser-Material Interaction
         description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
         percentage: 40.0
+        absorptivity:
+          value: 0.9
+          unit: dimensionless
+          min: 0.8
+          max: 0.95
+          source: ai_research
+        absorptionCoefficient:
+          value: 50000
+          unit: m⁻¹
+          min: 10000
+          max: 100000
+          source: ai_research
+        laserDamageThreshold:
+          value: 2.5
+          unit: J/cm²
+          min: 1.0
+          max: 5.0
+          source: ai_research
+        thermalShockResistance:
+          value: 1.2
+          unit: MW/m
+          min: 0.5
+          max: 2.0
+          source: ai_research
+        reflectivity:
+          value: 0.08
+          unit: dimensionless
+          min: 0.05
+          max: 0.15
+          source: ai_research
+        thermalDestructionPoint:
+          value: 600
+          unit: K
+          min: 500
+          max: 700
+          source: ai_research
+        vaporPressure:
+          value: 10
+          unit: Pa
+          min: 1
+          max: 100
+          source: ai_research
     machineSettings:
       powerRange:
         description: Optimal average power for Willow surface cleaning without thermal damage

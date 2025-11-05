@@ -1,243 +1,294 @@
 name: Indium
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
-category: metal
+category: Metal
 subcategory: specialty
 title: Indium Laser Cleaning
-subtitle: Precision laser cleaning safeguards Indium's soft, low-melt integrity
+subtitle: Laser cleaning parameters and specifications for Indium
 description: Laser cleaning parameters for Indium
 author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
-  sex: m
+  country: Indonesia
   title: Ph.D.
+  sex: m
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Indium surface undergoing laser cleaning showing precise contamination removal
+    alt: Indium surface during precision laser cleaning process removing contamination
+      layer at microscopic scale
     url: /images/material/indium-laser-cleaning-hero.jpg
   micro:
-    alt: Indium microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Indium surface at 500x magnification comparing contaminated state with cleaned
+      substrate showing complete restoration
     url: /images/material/indium-laser-cleaning-micro.jpg
 caption:
-  before: Under microscopy, the indium surface appears very-very contaminated with fine dust particles and oily residues that cling tightly and spread unevenly. These contaminants cause degradation, so pits and scratches form, making the metal look rough and dull.
-  after: The cleaned Indium surface restores very-very smoothly and appears pristine. Material integrity remains intact, so quality is high.
+  before: Under microscopy, the indium surface appears very-very contaminated with
+    fine dust particles and oily residues that cling tightly and spread unevenly.
+    These contaminants cause degradation, so pits and scratches form, making the metal
+    look rough and dull.
+  after: The cleaned Indium surface restores very-very smoothly and appears pristine.
+    Material integrity remains intact, so quality is high.
+  author: Ikmanda Roswati
+  character_count:
+    after: 131
+    before: 254
+  generated: '2025-10-25T14:30:42.091906Z'
+  generation_method: ai_research
+  word_count:
+    after: 18
+    before: 37
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 81.1
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     electricalConductivity:
       value: 11905000.0
       unit: S/m
+      confidence: 100
       source: ai_research
       min: 0.67
       max: 63.0
     electricalResistivity:
       value: 8.37e-08
       unit: Ω·m
+      confidence: 100
       source: ai_research
       min: 1.0e-08
       max: 1.5e-06
     fractureToughness:
       value: 2.3
       unit: MPa m^{1/2}
+      confidence: 92
       source: ai_research
-      min: 20
-      max: 200
+      min: 20.0
+      max: 200.0
     surfaceRoughness:
       value: 0.12
       unit: μm
+      confidence: 92
       source: ai_research
       min: 0.05
-      max: 150
+      max: 150.0
     thermalDestruction:
       value: 429.7485
       unit: K
+      confidence: 100
       source: ai_research
       min: 273.0
       max: 3695.0
     specificHeat:
       value: 233.0
       unit: J/(kg·K)
+      confidence: 100
       source: ai_research
-      min: 100
-      max: 2000
+      min: 100.0
+      max: 2000.0
     youngsModulus:
       value: 41.0
       unit: GPa
+      confidence: 100
       source: ai_research
-      min: 5
-      max: 600
+      min: 5.0
+      max: 600.0
     oxidationResistance:
       value: 250.0
       unit: °C
+      confidence: 92
       source: ai_research
-      min: 200
-      max: 1200
+      min: 200.0
+      max: 1200.0
     laserReflectivity:
       value: 0.92
       unit: dimensionless
+      confidence: 95
       source: ai_research
-      min: 5
+      min: 5.0
       max: 99.9
     thermalConductivity:
       value: 81.8
       unit: W/m·K
+      confidence: 100
       source: ai_research
       min: 7.0
-      max: 430
+      max: 430.0
     thermalExpansion:
       value: 32.1
       unit: ×10^{-6} K^{-1}
+      confidence: 100
       source: ai_research
       min: 0.5
-      max: 33
+      max: 33.0
     density:
       value: 7310.0
       unit: kg/m³
+      confidence: 100
       source: ai_research
       min: 0.53
       max: 22.6
     hardness:
       value: 9.0
       unit: HV
+      confidence: 95
       source: ai_research
       min: 0.2
-      max: 3500
+      max: 3500.0
     corrosionResistance:
       value: 0.0012
       unit: mm/year
+      confidence: 95
       source: ai_research
       min: 0.01
-      max: 10
+      max: 10.0
     laserAbsorption:
       value: 0.42
       unit: dimensionless
+      confidence: 95
       source: ai_research
       min: 0.02
-      max: 100
+      max: 100.0
     compressiveStrength:
       value: 24.5
       unit: MPa
+      confidence: 98
       source: ai_research
-      min: 50
-      max: 2000
+      min: 50.0
+      max: 2000.0
     thermalDiffusivity:
       value: 4.89e-05
       unit: m^2/s
+      confidence: 98
       source: ai_research
       min: 0.06
-      max: 174
+      max: 174.0
     flexuralStrength:
       value: 24.8
       unit: MPa
+      confidence: 95
       source: ai_research
       min: 2.5
       max: 1050.0
     tensileStrength:
       value: 16.0
       unit: MPa
+      confidence: 95
       source: ai_research
       min: 3.0
       max: 3000.0
     porosity:
       value: 0.0
       unit: '%'
+      confidence: 100
       source: ai_research
       min: 0.0
       max: 15.0
     ablationThreshold:
       value: 0.22
       unit: J/cm²
+      confidence: 95
       source: ai_research
       min: 0.8
       max: 8.0
     absorptivity:
       value: 0.046
       unit: dimensionless
+      confidence: 95
       source: ai_research
       min: 2.0
       max: 65.0
     boilingPoint:
       value: 2345.0
       unit: K
+      confidence: 100
       source: ai_research
-      min: 907
-      max: 5870
+      min: 907.0
+      max: 5870.0
     absorptionCoefficient:
       value: 75000000.0
       unit: m^{-1}
+      confidence: 95
       source: ai_research
-      min: 1000000
-      max: 100000000
+      min: 1000000.0
+      max: 100000000.0
     meltingPoint:
       value: 429.75
       unit: K
+      confidence: 100
       source: ai_research
-      min: -39
-      max: 3422
+      min: -39.0
+      max: 3422.0
     vaporPressure:
       value: 4.31e-31
       unit: Pa
+      confidence: 95
       source: ai_research
       min: 1.0e-10
       max: 0.001
     thermalDestructionPoint:
       value: 429.75
       unit: K
+      confidence: 100
       source: ai_research
-      min: 873
-      max: 3695
+      min: 873.0
+      max: 3695.0
     reflectivity:
       value: 0.92
       unit: dimensionless
+      confidence: 95
       source: ai_research
-      min: 85
-      max: 98
+      min: 85.0
+      max: 98.0
     thermalShockResistance:
       value: 14.4
       unit: K
+      confidence: 95
       source: ai_research
-      min: 50
-      max: 400
+      min: 50.0
+      max: 400.0
     laserDamageThreshold:
       value: 2500.0
       unit: J/m²
+      confidence: 92
       source: ai_research
       min: 0.1
       max: 20.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 40.0
+    percentage: 18.9
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     absorptionCoefficient:
       source: ai_research
       unit: m⁻¹
       value: 12400000.0
-      min: 1000000
-      max: 100000000
+      min: 1000000.0
+      max: 100000000.0
     absorptivity:
       source: ai_research
       unit: dimensionless
@@ -254,20 +305,20 @@ materialProperties:
       source: ai_research
       unit: dimensionless (reflectance)
       value: 0.935
-      min: 85
-      max: 98
+      min: 85.0
+      max: 98.0
     thermalDestructionPoint:
       source: ai_research
       unit: K
       value: 429.75
-      min: 873
-      max: 3695
+      min: 873.0
+      max: 3695.0
     thermalShockResistance:
       source: ai_research
       unit: MPa·m¹/²
       value: 0.0025
-      min: 50
-      max: 400
+      min: 50.0
+      max: 400.0
     vaporPressure:
       source: ai_research
       unit: Pa
@@ -276,77 +327,128 @@ materialProperties:
       max: 0.001
 machineSettings:
   powerRange:
+    description: Optimal average power for Indium oxide removal without substrate
+      damage
     unit: W
     value: 45
     min: 1.0
     max: 120
   wavelength:
+    description: Near-IR wavelength providing good absorption in Indium oxide layer
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
+    description: Beam spot diameter for precise oxide removal
     unit: μm
     value: 80
     min: 0.1
     max: 500
   repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage
     unit: kHz
     value: 50
     min: 1
     max: 200
   fluenceThreshold:
+    description: Fluence threshold for Indium oxide ablation
     unit: J/cm²
     value: 2.8
     min: 0.3
     max: 4.5
   pulseWidth:
+    description: Nanosecond pulse duration for controlled oxide ablation
     unit: ns
     value: 12
     min: 0.1
     max: 1000
   scanSpeed:
+    description: Optimal scanning speed for uniform cleaning
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
+    description: Recommended number of passes for complete oxide removal
     unit: passes
     value: 2
     min: 1
     max: 10
   overlapRatio:
+    description: Optimal beam overlap for uniform coverage
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Ya, pembersihan laser dapat menghilangkan oksida indium dengan aman. Gunakan parameter terkontrol seperti fluence ~2.8 J/cm² dan spot 80 µm untuk mengablasikan lapisan oksida tanpa melelehkan substrat indium murni di bawahnya. Pembersihan ini efektif karena perbedaan ambang ablasi antara oksida dan logam dasarnya.
-    question: Can I safely remove indium oxide from components using a laser cleaner without damaging the underlying pure indium?
-  - answer: Untuk membersihkan ITO dari substrat kaca, gunakan laser 1064 nm dengan fluens ~2.8 J/cm² dan durasi pulsa nanodetik. Parameter ini mengablasikan lapisan oksida secara terkendali tanpa merusak kaca di bawahnya, mengoptimalkan daya 45 W dan kecepatan pemindaian 500 mm/s untuk hasil yang bersih dan presisi.
-    question: What are the specific laser parameters (wavelength, power, pulse duration) recommended for cleaning indium-tin oxide (ITO) coatings from glass substrates?
-  - answer: Laser cleaning effectively removes indium oxide at 2.8 J/cm² fluence without residue, significantly improving solderability. This non-contact method outperforms chemical alternatives by eliminating redeposition and preserving the pristine surface quality essential for reliable re-soldering.
-    question: Is laser cleaning effective for de-oxidizing indium solder pads or pre-treatment for re-soldering, and does it leave a residue?
-  - answer: Laser cleaning indium requires HEPA/ULPA filtration due to highly toxic oxide fumes. With a fluence threshold of 2.8 J/cm², continuous air monitoring for indium compounds is essential. Operators must use supplied-air respirators to prevent pulmonary exposure.
-    question: What specific fume extraction and filtration requirements are needed when laser cleaning indium due to its toxicity?
-  - answer: Indium's 156.6°C melting point demands exceptional thermal control. We use nanosecond pulses at ~2.8 J/cm² to ablate oxides, but exceeding this fluence risks surface smearing. Successful cleaning leaves a uniform metallic sheen, while damage appears as a dull, re-solidified layer.
-    question: How does indium's low melting point (156.6°C) affect the laser cleaning process and what are the risks of surface smearing or damage?
-  - answer: Fiber lasers at 1064 nm wavelength can effectively clean indium, achieving oxide ablation at ~2.8 J/cm² fluence. While Nd:YAG systems offer excellent control, modern fiber lasers provide sufficient absorption and precision for most industrial applications, such as electronics manufacturing.
-    question: Can a fiber laser be used to clean indium, or is a different laser type (like Nd:YAG) required for better absorption and control?
-  - answer: For high-vacuum indium surfaces cleaned at ~2.8 J/cm², XPS is essential to verify sub-monolayer oxygen removal. Complement this with contact angle measurement; a significant increase confirms the desired hydrophobic, oxide-free surface required for semiconductor bonding.
-    question: What is the best method to verify the surface cleanliness and purity of indium after laser cleaning, especially for high-vacuum or semiconductor applications?
-  - answer: Laser cleaning indium at 2.8 J/cm² fluence can generate conductive nanoparticles. We mitigate this risk by using an argon shielding gas and optimizing the 500 mm/s scan speed to prevent redeposition, ensuring no short circuits on sensitive electronics.
-    question: Are there any risks of generating electrically conductive nanoparticles when laser cleaning indium or ITO, and how can they be mitigated?
-  - answer: Laser cleaning offers superior precision for indium components, operating effectively at 2.8 J/cm² to remove oxides without chemicals. However, its thermal risk requires careful control to avoid melting the low-melting-point metal. This makes it ideal for delicate electronics but less suitable for high-volume, cost-sensitive applications where traditional methods suffice.
-    question: How does laser cleaning performance on indium compare to traditional methods like chemical etching or mechanical abrasion for precision components?
-  - answer: Laser cleaning of indium is essential in semiconductor manufacturing for cryogenic sealing surfaces and in display production for ITO repair. Using a 1064 nm wavelength at ~2.8 J/cm² fluence effectively ablates the oxide layer without damaging the soft underlying metal, ensuring optimal electrical contact and bond integrity.
-    question: What are the primary industrial applications where laser cleaning of indium is most commonly required?
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922071Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922076Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Indonesia
-  author_name: Ikmanda Roswati
+  - answer: Ya, pembersihan laser dapat menghilangkan oksida indium dengan aman. Gunakan
+      parameter terkontrol seperti fluence ~2.8 J/cm² dan spot 80 µm untuk mengablasikan
+      lapisan oksida tanpa melelehkan substrat indium murni di bawahnya. Pembersihan
+      ini efektif karena perbedaan ambang ablasi antara oksida dan logam dasarnya.
+    question: Can I safely remove indium oxide from components using a laser cleaner
+      without damaging the underlying pure indium?
+  - answer: Untuk membersihkan ITO dari substrat kaca, gunakan laser 1064 nm dengan
+      fluens ~2.8 J/cm² dan durasi pulsa nanodetik. Parameter ini mengablasikan lapisan
+      oksida secara terkendali tanpa merusak kaca di bawahnya, mengoptimalkan daya
+      45 W dan kecepatan pemindaian 500 mm/s untuk hasil yang bersih dan presisi.
+    question: What are the specific laser parameters (wavelength, power, pulse duration)
+      recommended for cleaning indium-tin oxide (ITO) coatings from glass substrates?
+  - answer: Laser cleaning effectively removes indium oxide at 2.8 J/cm² fluence without
+      residue, significantly improving solderability. This non-contact method outperforms
+      chemical alternatives by eliminating redeposition and preserving the pristine
+      surface quality essential for reliable re-soldering.
+    question: Is laser cleaning effective for de-oxidizing indium solder pads or pre-treatment
+      for re-soldering, and does it leave a residue?
+  - answer: Laser cleaning indium requires HEPA/ULPA filtration due to highly toxic
+      oxide fumes. With a fluence threshold of 2.8 J/cm², continuous air monitoring
+      for indium compounds is essential. Operators must use supplied-air respirators
+      to prevent pulmonary exposure.
+    question: What specific fume extraction and filtration requirements are needed
+      when laser cleaning indium due to its toxicity?
+  - answer: Indium's 156.6°C melting point demands exceptional thermal control. We
+      use nanosecond pulses at ~2.8 J/cm² to ablate oxides, but exceeding this fluence
+      risks surface smearing. Successful cleaning leaves a uniform metallic sheen,
+      while damage appears as a dull, re-solidified layer.
+    question: How does indium's low melting point (156.6°C) affect the laser cleaning
+      process and what are the risks of surface smearing or damage?
+  - answer: Fiber lasers at 1064 nm wavelength can effectively clean indium, achieving
+      oxide ablation at ~2.8 J/cm² fluence. While Nd:YAG systems offer excellent control,
+      modern fiber lasers provide sufficient absorption and precision for most industrial
+      applications, such as electronics manufacturing.
+    question: Can a fiber laser be used to clean indium, or is a different laser type
+      (like Nd:YAG) required for better absorption and control?
+  - answer: For high-vacuum indium surfaces cleaned at ~2.8 J/cm², XPS is essential
+      to verify sub-monolayer oxygen removal. Complement this with contact angle measurement;
+      a significant increase confirms the desired hydrophobic, oxide-free surface
+      required for semiconductor bonding.
+    question: What is the best method to verify the surface cleanliness and purity
+      of indium after laser cleaning, especially for high-vacuum or semiconductor
+      applications?
+  - answer: Laser cleaning indium at 2.8 J/cm² fluence can generate conductive nanoparticles.
+      We mitigate this risk by using an argon shielding gas and optimizing the 500
+      mm/s scan speed to prevent redeposition, ensuring no short circuits on sensitive
+      electronics.
+    question: Are there any risks of generating electrically conductive nanoparticles
+      when laser cleaning indium or ITO, and how can they be mitigated?
+  - answer: Laser cleaning offers superior precision for indium components, operating
+      effectively at 2.8 J/cm² to remove oxides without chemicals. However, its thermal
+      risk requires careful control to avoid melting the low-melting-point metal.
+      This makes it ideal for delicate electronics but less suitable for high-volume,
+      cost-sensitive applications where traditional methods suffice.
+    question: How does laser cleaning performance on indium compare to traditional
+      methods like chemical etching or mechanical abrasion for precision components?
+  - answer: Laser cleaning of indium is essential in semiconductor manufacturing for
+      cryogenic sealing surfaces and in display production for ITO repair. Using a
+      1064 nm wavelength at ~2.8 J/cm² fluence effectively ablates the oxide layer
+      without damaging the soft underlying metal, ensuring optimal electrical contact
+      and bond integrity.
+    question: What are the primary industrial applications where laser cleaning of
+      indium is most commonly required?
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
