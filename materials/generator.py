@@ -2,18 +2,24 @@
 """
 Material Frontmatter Generator
 
-Adapter for StreamlinedFrontmatterGenerator that provides compatibility with
-the new BaseFrontmatterGenerator architecture while preserving all existing functionality.
+PRIMARY ENTRY POINT for complete material frontmatter generation.
+Used by components/frontmatter/core/orchestrator.py for full YAML generation.
 
-This is Phase 1 - creating a thin wrapper that allows both architectures to coexist.
-Full refactoring to inherit from BaseFrontmatterGenerator will happen in Phase 2.
+NOT TO BE CONFUSED WITH:
+- unified_generator.py: Text content generator (caption/FAQ/subtitle only)
+- Component generators: Legacy caption/subtitle/FAQ generators
 
-Design:
+Architecture:
+- Adapter for StreamlinedFrontmatterGenerator 
+- Provides compatibility with BaseFrontmatterGenerator interface
 - Wraps existing StreamlinedFrontmatterGenerator
 - Implements BaseFrontmatterGenerator interface methods
 - Delegates to legacy generator for actual work
 - Adds author voice post-processing layer
 - Maintains 100% backward compatibility
+
+This is Phase 1 - creating a thin wrapper that allows both architectures to coexist.
+Full refactoring to inherit from BaseFrontmatterGenerator will happen in Phase 2.
 """
 
 import logging

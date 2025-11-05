@@ -2,15 +2,27 @@
 """
 Unified Materials Content Generator
 
-Single generator for all material content types (caption, FAQ, subtitle, etc.)
-Uses simple prompt templates instead of separate generator classes.
+TEXT CONTENT GENERATOR for caption, FAQ, and subtitle generation ONLY.
+Used by shared/commands/generation.py (--caption, --subtitle, --faq commands).
+
+NOT TO BE CONFUSED WITH:
+- generator.py: Main frontmatter generator (full YAML generation)
+- Component generators (caption/subtitle/faq subdirs): Legacy generators
 
 Architecture:
+- Single generator for all material text content types (caption, FAQ, subtitle)
+- Uses simple prompt templates instead of separate generator classes
 - Load prompt templates from materials/prompts/
 - Substitute variables with material data
 - Generate content via API
 - Write to Materials.yaml
 - No voice processing (handled separately)
+
+Advantage over old system:
+- 391 lines vs 1,214 lines (caption+FAQ+subtitle component generators)
+- Single file to maintain
+- Consistent prompt structure
+- Simpler debugging
 
 Usage:
     generator = UnifiedMaterialsGenerator(api_client)

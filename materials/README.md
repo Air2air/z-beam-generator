@@ -2,11 +2,43 @@
 
 Material frontmatter generation for laser cleaning applications.
 
+## Architecture Overview
+
+The materials module has TWO generation systems:
+
+### 1. **Frontmatter Generation** (`generator.py`)
+- **Purpose**: Complete material frontmatter generation
+- **Entry Point**: MaterialFrontmatterGenerator class
+- **Used By**: components/frontmatter/core/orchestrator.py
+- **Function**: Wraps StreamlinedFrontmatterGenerator, generates full YAML files
+- **Size**: 246 lines
+
+### 2. **Text Content Generation** (Dual System)
+
+**A. NEW System** (`unified_generator.py` - 391 lines)
+- **Purpose**: Caption, FAQ, and Subtitle generation
+- **Used By**: shared/commands/generation.py (--caption, --subtitle, --faq flags)
+- **Approach**: Single generator with prompt templates
+- **Status**: ✅ Active, modern approach
+
+**B. OLD System** (Component generators in subdirectories)
+- **Caption**: `caption/generators/generator.py` (388 lines)
+- **Subtitle**: `subtitle/core/subtitle_generator.py` (333 lines)
+- **FAQ**: `faq/generators/faq_generator.py` (493 lines)
+- **Used By**: Tests, ComponentGeneratorFactory, batch scripts
+- **Status**: ⚠️ Legacy, maintained for backward compatibility
+
 ## Structure
 
-- `generator.py` - MaterialFrontmatterGenerator class
-- `data.yaml` - 132 material definitions with properties
-- `output/` - Generated frontmatter files
+- `generator.py` - Main frontmatter generator (orchestrator entry point)
+- `unified_generator.py` - Text content generator (caption/FAQ/subtitle)
+- `data/materials.yaml` - 132 material definitions with properties
+- `caption/`, `subtitle/`, `faq/` - Legacy component generators
+- `modules/` - 6 active modules for frontmatter assembly
+- `services/` - Property management and validation
+- `research/` - AI-powered property research tools
+- `utils/` - Property taxonomy and helpers
+- `validation/` - Completeness validator
 
 ## Usage
 
