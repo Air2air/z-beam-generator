@@ -82,20 +82,40 @@ def main():
     print("RESEARCH: LASER_MATERIAL_INTERACTION PROPERTIES")
     print("=" * 70)
     
-    # Materials to research
-    materials_to_research = [
-        ('Stainless Steel', 'metal'),
-        ('Tantalum', 'metal'),
-        ('Tin', 'metal'),
-        ('Titanium', 'metal'),
-        ('Tool Steel', 'metal'),
-        ('Tungsten', 'metal'),
-        ('Vanadium', 'metal'),
-        ('Zinc', 'metal'),
-        ('Zirconium', 'metal'),
-        ('Terbium', 'rare-earth'),
-        ('Yttrium', 'rare-earth')
-    ]
+    # Get materials from command line or use defaults
+    if len(sys.argv) > 1:
+        # Load materials.yaml to look up categories
+        materials_file = Path('materials/data/materials.yaml')
+        with open(materials_file, 'r') as f:
+            data = yaml.safe_load(f)
+        all_materials = data['materials']
+        
+        materials_to_research = []
+        for mat_name in sys.argv[1:]:
+            if mat_name in all_materials:
+                category = all_materials[mat_name].get('category', 'unknown')
+                materials_to_research.append((mat_name, category))
+            else:
+                print(f"⚠️  Material not found: {mat_name}")
+    else:
+        # Default materials (from previous session)
+        materials_to_research = [
+            ('Stainless Steel', 'metal'),
+            ('Tantalum', 'metal'),
+            ('Tin', 'metal'),
+            ('Titanium', 'metal'),
+            ('Tool Steel', 'metal'),
+            ('Tungsten', 'metal'),
+            ('Vanadium', 'metal'),
+            ('Zinc', 'metal'),
+            ('Zirconium', 'metal'),
+            ('Terbium', 'rare-earth'),
+            ('Yttrium', 'rare-earth')
+        ]
+    
+    if not materials_to_research:
+        print("❌ No materials to research")
+        sys.exit(1)
     
     print(f"\nTarget: {len(materials_to_research)} materials")
     print(f"Properties per material: 7 (core laser interaction properties)\n")

@@ -149,6 +149,48 @@ materialProperties:
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
+    absorptivity:
+      value: 0.68
+      unit: dimensionless
+      min: 0.5
+      max: 0.9
+      source: ai_research
+    absorptionCoefficient:
+      value: 10000000
+      unit: m⁻¹
+      min: 1000000
+      max: 100000000
+      source: ai_research
+    laserDamageThreshold:
+      value: 4.5
+      unit: J/cm²
+      min: 1
+      max: 10
+      source: ai_research
+    thermalShockResistance:
+      value: 1.5
+      unit: MW/m
+      min: 0.8
+      max: 2.5
+      source: ai_research
+    reflectivity:
+      value: 0.32
+      unit: dimensionless
+      min: 0.3
+      max: 0.35
+      source: ai_research
+    thermalDestructionPoint:
+      value: 1511
+      unit: K
+      min: 1400
+      max: 1600
+      source: ai_research
+    vaporPressure:
+      value: 5
+      unit: Pa
+      min: 0.1
+      max: 50
+      source: ai_research
 machineSettings:
   powerRange:
     unit: W
