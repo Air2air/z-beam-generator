@@ -86,8 +86,9 @@ class CompletenessValidator:
         },
         'ceramic': {
             'thermalDestruction', 'thermalConductivity', 'density', 'hardness',  # Changed sinteringPoint → thermalDestruction
-            'youngsModulus', 'compressiveStrength', 'reflectivity',
-            'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
+            'youngsModulus', 'compressiveStrength', 'laserReflectivity',  # Use laserReflectivity, not reflectivity
+            'laserAbsorption', 'ablationThreshold', 'surfaceRoughness',  # Use laserAbsorption, not absorptionCoefficient
+            'porosity'  # Added porosity for ceramics
         },
         'plastic': {
             'thermalDestruction', 'thermalConductivity', 'density',  # Changed degradationPoint/meltingPoint → thermalDestruction
@@ -115,8 +116,8 @@ class CompletenessValidator:
         },
         'semiconductor': {
             'thermalDestruction', 'thermalConductivity', 'density',
-            'hardness', 'bandGap', 'reflectivity',
-            'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
+            'hardness', 'bandGap', 'laserReflectivity',  # Use laserReflectivity, not reflectivity
+            'laserAbsorption', 'ablationThreshold', 'surfaceRoughness'  # Use laserAbsorption, not absorptionCoefficient
         },
         'masonry': {
             'thermalDestruction', 'density', 'hardness',  # Changed thermalDegradationPoint → thermalDestruction
