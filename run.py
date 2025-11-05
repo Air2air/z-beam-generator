@@ -537,15 +537,8 @@ def main():
                     )
                     
                     if result.success:
-                        output_dir = "frontmatter/materials"
-                        os.makedirs(output_dir, exist_ok=True)
-                        filename = generate_safe_filename(material_name)
-                        output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
-                        
-                        with open(output_file, 'w') as f:
-                            f.write(result.content)
-                        
-                        print(f"  ✅ → {output_file}")
+                        # Generator already saved the file - result.content contains the path
+                        print(f"  ✅ → {result.content}")
                         success_count += 1
                     else:
                         print(f"  ❌ Failed: {result.error_message}")
