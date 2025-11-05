@@ -1,326 +1,235 @@
 name: Redwood
-category: Wood
-subcategory: hardwood
-title: Redwood Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Redwood
-description: Laser cleaning parameters for Redwood
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  title: Ph.D.
-  sex: m
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Redwood surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/redwood-laser-cleaning-hero.jpg
-  micro:
-    alt: Redwood surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
-    url: /images/material/redwood-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, redwood's surface shows heavy-heavy contamination by dirt
-    particles and organic residues. These cling tightly, degrading wood with pitting
-    and discoloration. Surface appears rough-rough and damaged.
-  after: After ultrafast laser cleaning, the redwood surface appears very-very smooth
-    and clean, with dirt removed then contaminants eliminated thoroughly. The process
-    restores natural grain patterns beautifully, so the wood looks renewed and vibrant.
-    Material integrity remains intact, no burns or cracks appear, and strength stays
-    preserved for long-lasting applications.
-  author: Ikmanda Roswati
-  character_count:
-    after: 364
-    before: 216
-  generated: '2025-10-25T15:08:21.525499Z'
-  generation_method: ai_research
-  word_count:
-    after: 49
-    before: 27
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    fractureToughness:
-      value: 0.32
-      unit: MPa m^{0.5}
-      confidence: 95
-      source: ai_research
-      min: 0.33
-      max: 4.4
-    thermalDestruction:
-      value: 573.0
-      unit: K
-      confidence: 95
-      source: ai_research
-      min: 273.0
-      max: 600.0
-    specificHeat:
-      value: 1385.0
-      unit: J/(kg·K)
-      confidence: 96
-      source: ai_research
-      min: 800.0
-      max: 2500.0
-    youngsModulus:
-      value: 9.6
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 20000.0
-    oxidationResistance:
-      value: 0.85
-      unit: dimensionless (scale 0-1)
-      confidence: 92
-      source: ai_research
-      min: 82.0
-      max: 204.0
-    laserReflectivity:
-      value: 0.032
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 10.0
-      max: 60.0
-    thermalConductivity:
-      value: 0.11
-      unit: W/m·K
-      confidence: 95
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: 3.6e-06
-      unit: 1/K
-      confidence: 95
-      source: ai_research
-      min: 3.0
-      max: 60.0
-    density:
-      value: 450.0
-      unit: kg/m³
-      confidence: 95
-      source: ai_research
-      min: 0.12
-      max: 1.5
-    hardness:
-      value: 1868.0
-      unit: N
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 5000.0
-    corrosionResistance:
-      value: 0.92
-      unit: dimensionless (relative durability index)
-      confidence: 95
-      source: ai_research
-      min: 2.0
-      max: 8.0
-    laserAbsorption:
-      value: 0.88
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 50.0
-    compressiveStrength:
-      value: 33.1
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 20.0
-      max: 80.0
-    thermalDiffusivity:
-      value: 1.25e-07
-      unit: m²/s
-      confidence: 95
-      source: ai_research
-      min: 0.0001
-      max: 0.4
-    flexuralStrength:
-      value: 54.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 40.0
-      max: 150.0
-    tensileStrength:
-      value: 51.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 20.0
-      max: 200.0
-    porosity:
-      value: 0.752
-      unit: fraction
-      confidence: 95
-      source: ai_research
-      min: 12.0
-      max: 65.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-machineSettings:
-  powerRange:
-    description: Optimal power range for Redwood surface cleaning without charring
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Redwood lignin absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse width for controlled ablation of contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete cleaning
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning pattern
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Optimal dwell time per cleaning spot
-    unit: μs
-    value: 100
-faq:
-  questions:
-  - answer: Untuk redwood yang lunak, gunakan fluence 1.2 J/cm² dengan spot 100 µm
-      untuk menghilangkan kontaminan tanpa merusak struktur selulernya. Kecepatan
-      scan 500 mm/s dan overlap 50% memastikan pembersihan seragam, sementara pulsa
-      10 ns memberikan kontrol ablasi yang optimal untuk material berpori ini.
-    question: What laser settings work best for cleaning redwood without damaging
-      the soft wood surface?
-  - answer: Laser cleaning effectively eliminates mildew and biological growth from
-      redwood surfaces through precise ablation at 1.2 J/cm². This process removes
-      spores and surface contaminants without damaging the wood's lignin structure.
-      Unlike chemical treatments, this dry method prevents immediate regrowth by thoroughly
-      sanitizing the substrate at a microscopic level.
-    question: How effectively does laser cleaning remove mildew and biological growth
-      from redwood decks and siding?
-  - answer: With optimal 1.2 J/cm² fluence and 1064 nm wavelength, laser cleaning
-      selectively removes contaminants while preserving redwood's protective tannins.
-      This non-abrasive process maintains the wood's inherent weather resistance,
-      ensuring long-term durability for architectural and marine applications.
-    question: Does laser cleaning affect redwood's natural weather resistance and
-      tannin content?
-  - answer: Laser cleaning with 1.2 J/cm² fluence and 100 μm spot size effectively
-      removes contaminants from redwood without hydrating the fibers. This non-contact
-      process avoids grain raising, unlike sanding, creating an ideal porous surface
-      for uniform stain or sealant adhesion.
-    question: Can laser cleaning prepare redwood surfaces for staining or sealing
-      without raising the grain?
-  - answer: Redwood's natural resins require robust fume extraction due to hazardous
-      particulates. At the optimal 1.2 J/cm² fluence, use local ventilation with HEPA/activated
-      carbon filtration to capture volatile organic compounds and sub-micron aerosols
-      generated during ablation.
-    question: What safety precautions are needed when laser cleaning redwood due to
-      its resin content?
-  - answer: Laser cleaning at 1.2 J/cm² selectively ablates grayed surface contaminants
-      from Redwood, preserving the sound wood beneath. This non-contact method offers
-      superior control over traditional abrasives, safeguarding the material's historical
-      integrity with 100 µm precision.
-    question: How does laser cleaning compare to traditional methods for restoring
-      aged redwood structures?
-  - answer: Deep iron-tannate staining poses significant challenges as the 1.2 J/cm²
-      fluence threshold can be insufficient for complete removal. Embedded metallic
-      particles may reflect the 1064 nm wavelength, risking localized thermal damage
-      and requiring meticulous parameter adjustment to avoid wood substrate charring.
-    question: What are the limitations of laser cleaning for redwood with deep staining
-      or embedded metal particles?
-  - answer: Dengan parameter optimal seperti fluence 1,2 J/cm² dan spot size 100 μm,
-      pembersihan laser pada redwood dapat mempertahankan warna alaminya. Pengaturan
-      termal yang tepat mencegah perubahan warna dengan mengablasikan kontaminan sebelum
-      panas meresap ke serat kayu.
-    question: Does laser cleaning alter the color of redwood or cause any discoloration
-      effects?
-  - answer: Redwood's poor thermal conductivity, typically 0.1 W/m·K, severely restricts
-      heat dissipation, elevating charring risks. We mitigate this by using a 1.2
-      J/cm² fluence threshold and rapid 500 mm/s scanning to limit energy deposition.
-      This strategy prevents thermal degradation in the low-density cellular structure.
-    question: How does redwood's low thermal conductivity affect laser cleaning efficiency
-      and heat buildup?
-  - answer: Clear heartwood responds well to 1.2 J/cm² fluence, effectively removing
-      contaminants without damage. Knotty areas, being denser and resinous, require
-      careful power modulation below 100 W to prevent localized charring. The 1064
-      nm wavelength is optimal for lignin interaction, ensuring uniform cleaning across
-      these distinct grain structures.
-    question: What laser cleaning results can be expected on different redwood grades
-      (clear vs. knotty)?
 _metadata:
   voice:
     author_name: Ikmanda Roswati
     author_country: Indonesia
     voice_applied: true
     content_type: material
+category: wood
+subcategory: hardwood
+title: Redwood Laser Cleaning
+subtitle: Reveal Redwood's Rich Grain with Gentle Laser Care
+description: Laser cleaning parameters for Redwood
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Redwood surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/redwood-laser-cleaning-hero.jpg
+  micro:
+    alt: Redwood microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/redwood-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, redwood's surface shows heavy-heavy contamination by dirt particles and organic residues. These cling tightly, degrading wood with pitting and discoloration. Surface appears rough-rough and damaged.
+  after: After ultrafast laser cleaning, the redwood surface appears very-very smooth and clean, with dirt removed then contaminants eliminated thoroughly. The process restores natural grain patterns beautifully, so the wood looks renewed and vibrant. Material integrity remains intact, no burns or cracks appear, and strength stays preserved for long-lasting applications.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    fractureToughness:
+      value: 0.32
+      unit: MPa m^{0.5}
+      source: ai_research
+      min: 0.33
+      max: 4.4
+    thermalDestruction:
+      value: 573.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 600.0
+    specificHeat:
+      value: 1385.0
+      unit: J/(kg·K)
+      source: ai_research
+      min: 800
+      max: 2500
+    youngsModulus:
+      value: 9.6
+      unit: GPa
+      source: ai_research
+      min: 5
+      max: 20000
+    oxidationResistance:
+      value: 0.85
+      unit: dimensionless (scale 0-1)
+      source: ai_research
+      min: 82.0
+      max: 204.0
+    laserReflectivity:
+      value: 0.032
+      unit: dimensionless
+      source: ai_research
+      min: 10
+      max: 60
+    thermalConductivity:
+      value: 0.11
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: 3.6e-06
+      unit: 1/K
+      source: ai_research
+      min: 3.0
+      max: 60
+    density:
+      value: 450.0
+      unit: kg/m³
+      source: ai_research
+      min: 0.12
+      max: 1.5
+    hardness:
+      value: 1868.0
+      unit: N
+      source: ai_research
+      min: 1
+      max: 5000
+    corrosionResistance:
+      value: 0.92
+      unit: dimensionless (relative durability index)
+      source: ai_research
+      min: 2.0
+      max: 8.0
+    laserAbsorption:
+      value: 0.88
+      unit: dimensionless
+      source: ai_research
+      min: 1
+      max: 50
+    compressiveStrength:
+      value: 33.1
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 80
+    thermalDiffusivity:
+      value: 1.25e-07
+      unit: m²/s
+      source: ai_research
+      min: 0.0001
+      max: 0.4
+    flexuralStrength:
+      value: 54.0
+      unit: MPa
+      source: ai_research
+      min: 40
+      max: 150
+    tensileStrength:
+      value: 51.0
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 200
+    porosity:
+      value: 0.752
+      unit: fraction
+      source: ai_research
+      min: 12
+      max: 65
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 1.2
+    min: 0.1
+    max: 20.0
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+  dwellTime:
+    unit: μs
+    value: 100
+faq:
+  questions:
+  - answer: Untuk redwood yang lunak, gunakan fluence 1.2 J/cm² dengan spot 100 µm untuk menghilangkan kontaminan tanpa merusak struktur selulernya. Kecepatan scan 500 mm/s dan overlap 50% memastikan pembersihan seragam, sementara pulsa 10 ns memberikan kontrol ablasi yang optimal untuk material berpori ini.
+    question: What laser settings work best for cleaning redwood without damaging the soft wood surface?
+  - answer: Laser cleaning effectively eliminates mildew and biological growth from redwood surfaces through precise ablation at 1.2 J/cm². This process removes spores and surface contaminants without damaging the wood's lignin structure. Unlike chemical treatments, this dry method prevents immediate regrowth by thoroughly sanitizing the substrate at a microscopic level.
+    question: How effectively does laser cleaning remove mildew and biological growth from redwood decks and siding?
+  - answer: With optimal 1.2 J/cm² fluence and 1064 nm wavelength, laser cleaning selectively removes contaminants while preserving redwood's protective tannins. This non-abrasive process maintains the wood's inherent weather resistance, ensuring long-term durability for architectural and marine applications.
+    question: Does laser cleaning affect redwood's natural weather resistance and tannin content?
+  - answer: Laser cleaning with 1.2 J/cm² fluence and 100 μm spot size effectively removes contaminants from redwood without hydrating the fibers. This non-contact process avoids grain raising, unlike sanding, creating an ideal porous surface for uniform stain or sealant adhesion.
+    question: Can laser cleaning prepare redwood surfaces for staining or sealing without raising the grain?
+  - answer: Redwood's natural resins require robust fume extraction due to hazardous particulates. At the optimal 1.2 J/cm² fluence, use local ventilation with HEPA/activated carbon filtration to capture volatile organic compounds and sub-micron aerosols generated during ablation.
+    question: What safety precautions are needed when laser cleaning redwood due to its resin content?
+  - answer: Laser cleaning at 1.2 J/cm² selectively ablates grayed surface contaminants from Redwood, preserving the sound wood beneath. This non-contact method offers superior control over traditional abrasives, safeguarding the material's historical integrity with 100 µm precision.
+    question: How does laser cleaning compare to traditional methods for restoring aged redwood structures?
+  - answer: Deep iron-tannate staining poses significant challenges as the 1.2 J/cm² fluence threshold can be insufficient for complete removal. Embedded metallic particles may reflect the 1064 nm wavelength, risking localized thermal damage and requiring meticulous parameter adjustment to avoid wood substrate charring.
+    question: What are the limitations of laser cleaning for redwood with deep staining or embedded metal particles?
+  - answer: Dengan parameter optimal seperti fluence 1,2 J/cm² dan spot size 100 μm, pembersihan laser pada redwood dapat mempertahankan warna alaminya. Pengaturan termal yang tepat mencegah perubahan warna dengan mengablasikan kontaminan sebelum panas meresap ke serat kayu.
+    question: Does laser cleaning alter the color of redwood or cause any discoloration effects?
+  - answer: Redwood's poor thermal conductivity, typically 0.1 W/m·K, severely restricts heat dissipation, elevating charring risks. We mitigate this by using a 1.2 J/cm² fluence threshold and rapid 500 mm/s scanning to limit energy deposition. This strategy prevents thermal degradation in the low-density cellular structure.
+    question: How does redwood's low thermal conductivity affect laser cleaning efficiency and heat buildup?
+  - answer: Clear heartwood responds well to 1.2 J/cm² fluence, effectively removing contaminants without damage. Knotty areas, being denser and resinous, require careful power modulation below 100 W to prevent localized charring. The 1064 nm wavelength is optimal for lignin interaction, ensuring uniform cleaning across these distinct grain structures.
+    question: What laser cleaning results can be expected on different redwood grades (clear vs. knotty)?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922549Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922559Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati

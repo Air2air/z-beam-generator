@@ -1,320 +1,226 @@
 name: Plaster
-category: Masonry
-subcategory: general
-title: Plaster Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Plaster
-description: Laser cleaning parameters for Plaster
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  title: Ph.D.
-  sex: f
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Plaster surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/plaster-laser-cleaning-hero.jpg
-  micro:
-    alt: Plaster surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
-    url: /images/material/plaster-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the plaster surface displays fine cracks and pitting
-    from degradation, with dark dust particles and oily residues embedded in porous
-    areas. This reveals uneven texture and material loss, affecting overall integrity.
-  after: The laser-cleaned plaster surface shows a smooth, even finish free of residues.
-    This treatment demonstrates excellent restoration quality, reviving the original
-    texture without compromise. Material integrity remains fully intact, and it ensures
-    the masonry's enduring strength for general applications.
-  author: Yi-Chun Lin
-  character_count:
-    after: 302
-    before: 237
-  generated: '2025-10-25T14:54:46.925161Z'
-  generation_method: ai_research
-  word_count:
-    after: 39
-    before: 34
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    fractureToughness:
-      value: 0.22
-      unit: MPa m^{1/2}
-      confidence: 95
-      source: ai_research
-      min: 0.15
-      max: 1.1
-    thermalDestruction:
-      value: 773.0
-      unit: K
-      confidence: 95
-      source: ai_research
-      min: 273.0
-      max: 2500.0
-    specificHeat:
-      value: 1090.0
-      unit: J/(kg·K)
-      confidence: 95
-      source: ai_research
-      min: 700.0
-      max: 1100.0
-    youngsModulus:
-      value: 10.3
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 3.0
-      max: 50.0
-    oxidationResistance:
-      value: 0.98
-      unit: dimensionless (0-1 scale)
-      confidence: 95
-      source: ai_research
-      min: 300.0
-      max: 1200.0
-    laserReflectivity:
-      value: 0.42
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 10.0
-      max: 70.0
-    thermalConductivity:
-      value: 0.25
-      unit: W/(m·K)
-      confidence: 95
-      source: ai_research
-      min: 0.08
-      max: 2.5
-    thermalExpansion:
-      value: 1.4e-05
-      unit: /K
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 20.0
-    density:
-      value: 800.0
-      unit: kg/m³
-      confidence: 95
-      source: ai_research
-      min: 0.6
-      max: 3.2
-    hardness:
-      value: 2.0
-      unit: Mohs
-      confidence: 100
-      source: ai_research
-      min: 1.0
-      max: 6.0
-    corrosionResistance:
-      value: 0.92
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 2.0
-      max: 8.0
-    laserAbsorption:
-      value: 118000.0
-      unit: m^{-1}
-      confidence: 95
-      source: ai_research
-      min: 0.5
-      max: 15.0
-    compressiveStrength:
-      value: 5.2
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 100.0
-    thermalDiffusivity:
-      value: 2.1e-07
-      unit: m²/s
-      confidence: 95
-      source: ai_research
-      min: 0.1
-      max: 1.0
-    flexuralStrength:
-      value: 2.07
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 2.0
-      max: 20.0
-    tensileStrength:
-      value: 0.69
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 15.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-machineSettings:
-  powerRange:
-    description: Optimal average power for plaster surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for plaster absorption and minimal
-      substrate damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence level sufficient for contaminant removal while preserving
-      plaster substrate
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning without excessive dwell
-      time
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage and efficiency
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-  questions:
-  - answer: Yes, laser cleaning can remove paint from plaster walls while preserving
-      the substrate. Using a 1064 nm wavelength at ~2.5 J/cm² fluence effectively
-      ablates the coating with minimal heat transfer. The key is employing nanosecond
-      pulses to avoid the subsurface thermal damage that would weaken the porous plaster
-      structure.
-    question: Can a laser cleaner remove paint from a plaster wall without damaging
-      the underlying surface?
-  - answer: For historic plaster, begin testing at 2.5 J/cm² fluence with a 100W laser.
-      Excessive power can cause permanent discoloration or vitrification, altering
-      the surface. Always validate parameters on a concealed area first to ensure
-      the soot is removed without damaging the delicate substrate.
-    question: What is the safe laser power and fluence level for cleaning soot or
-      smoke residue from historic plaster?
-  - answer: Laser ablation at 2.5 J/cm² generates significantly less bulk dust than
-      mechanical methods. However, it produces fine particulate, necessitating HEPA-filtered
-      extraction and respiratory PPE, especially for historic plasters containing
-      unknown contaminants.
-    question: Does laser cleaning create hazardous dust when used on plaster, and
-      how does it compare to traditional methods?
-  - answer: Low power can carbonize embedded organics, while excessive fluence above
-      2.5 J/cm² alters plaster's mineral hydrates. Optimize your 1064 nm laser's parameters
-      to avoid these thermal effects, ensuring contaminant removal without inducing
-      yellowing from substrate damage.
-    question: Why does my laser sometimes leave a darkened or yellowed stain on the
-      plaster surface after cleaning?
-  - answer: Yes, laser cleaning effectively removes biological growth from plaster
-      using 2.5 J/cm² fluence without adding moisture. However, the porous substrate
-      often retains spores, so a subsequent chemical treatment is essential for complete
-      remediation and to prevent rapid regrowth.
-    question: Is laser cleaning effective for removing biological growth like mold
-      or algae from exterior plaster (stucco)?
-  - answer: For plaster cleaning, the 10600nm CO₂ laser wavelength is most effective.
-      This infrared light is strongly absorbed by the hydrates in gypsum, enabling
-      efficient contaminant removal at 2.5 J/cm² while minimizing thermal damage to
-      the delicate substrate.
-    question: What wavelength (e.g., 1064nm, 10600nm) is most effective for laser
-      cleaning plaster, and why?
-  - answer: Lime plaster requires gentle ~2.5 J/cm² fluence due to its softness, while
-      harder cement-based types tolerate slightly higher energy. Always identify your
-      material first, as incorrect 1064 nm settings can thermally degrade sensitive
-      substrates.
-    question: How do I clean different types of plaster (e.g., gypsum, lime, cement-based)
-      with a laser? Do the settings change?
-  - answer: Laser cleaning excels for delicate plaster conservation using 2.5 J/cm²
-      fluence and 100 µm spot size. This non-contact method with nanosecond pulses
-      selectively removes contaminants while preserving fragile historic details without
-      abrasion.
-    question: Can laser cleaning be used to delicately clean fragile, historic plaster
-      moldings and ornaments?
-  - answer: Laser cleaning offers superior selectivity for plaster, removing contaminants
-      at 2.5 J/cm² without eroding the fragile substrate. This non-contact process
-      eliminates chemical residues and avoids the mechanical stress caused by abrasives,
-      preserving original surfaces. Our 1064 nm wavelength ensures effective cleaning
-      with minimal thermal impact.
-    question: What are the main advantages of using laser cleaning over chemical or
-      abrasive methods for plaster restoration?
-  - answer: Plaster's high porosity allows contaminants to penetrate deeply, requiring
-      multiple passes at 2.5 J/cm² for complete removal. The structure can trap ablation
-      byproducts, complicating the process. Consequently, a 'clean' surface is defined
-      by the successful extraction of these deeply embedded particles without causing
-      substrate damage.
-    question: How does the high porosity of plaster affect the laser cleaning process
-      and the final result?
 _metadata:
   voice:
     author_name: Yi-Chun Lin
     author_country: Taiwan
     voice_applied: true
     content_type: material
+category: masonry
+subcategory: general
+title: Plaster Laser Cleaning
+subtitle: Preserve plaster's fragile porosity with precise low-power laser restoration techniques
+description: Laser cleaning parameters for Plaster
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Plaster surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/plaster-laser-cleaning-hero.jpg
+  micro:
+    alt: Plaster microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/plaster-laser-cleaning-micro.jpg
+caption:
+  before: Under the microscope, the plaster surface displays fine cracks and pitting from degradation, with dark dust particles and oily residues embedded in porous areas. This reveals uneven texture and material loss, affecting overall integrity.
+  after: The laser-cleaned plaster surface shows a smooth, even finish free of residues. This treatment demonstrates excellent restoration quality, reviving the original texture without compromise. Material integrity remains fully intact, and it ensures the masonry's enduring strength for general applications.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    fractureToughness:
+      value: 0.22
+      unit: MPa m^{1/2}
+      source: ai_research
+      min: 0.15
+      max: 1.1
+    thermalDestruction:
+      value: 773.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 2500.0
+    specificHeat:
+      value: 1090.0
+      unit: J/(kg·K)
+      source: ai_research
+      min: 700
+      max: 1100
+    youngsModulus:
+      value: 10.3
+      unit: GPa
+      source: ai_research
+      min: 3.0
+      max: 50
+    oxidationResistance:
+      value: 0.98
+      unit: dimensionless (0-1 scale)
+      source: ai_research
+      min: 300.0
+      max: 1200.0
+    laserReflectivity:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 10
+      max: 70
+    thermalConductivity:
+      value: 0.25
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: 1.4e-05
+      unit: /K
+      source: ai_research
+      min: 5
+      max: 20
+    density:
+      value: 800.0
+      unit: kg/m³
+      source: ai_research
+      min: 0.6
+      max: 3.2
+    hardness:
+      value: 2.0
+      unit: Mohs
+      source: ai_research
+      min: 1
+      max: 6
+    corrosionResistance:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 2.0
+      max: 8.0
+    laserAbsorption:
+      value: 118000.0
+      unit: m^{-1}
+      source: ai_research
+      min: 0.5
+      max: 15
+    compressiveStrength:
+      value: 5.2
+      unit: MPa
+      source: ai_research
+      min: 5
+      max: 100
+    thermalDiffusivity:
+      value: 2.1e-07
+      unit: m²/s
+      source: ai_research
+      min: 0.1
+      max: 1
+    flexuralStrength:
+      value: 2.07
+      unit: MPa
+      source: ai_research
+      min: 2
+      max: 20
+    tensileStrength:
+      value: 0.69
+      unit: MPa
+      source: ai_research
+      min: 1
+      max: 15
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 2.5
+    min: 0.1
+    max: 20.0
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+faq:
+  questions:
+  - answer: Yes, laser cleaning can remove paint from plaster walls while preserving the substrate. Using a 1064 nm wavelength at ~2.5 J/cm² fluence effectively ablates the coating with minimal heat transfer. The key is employing nanosecond pulses to avoid the subsurface thermal damage that would weaken the porous plaster structure.
+    question: Can a laser cleaner remove paint from a plaster wall without damaging the underlying surface?
+  - answer: For historic plaster, begin testing at 2.5 J/cm² fluence with a 100W laser. Excessive power can cause permanent discoloration or vitrification, altering the surface. Always validate parameters on a concealed area first to ensure the soot is removed without damaging the delicate substrate.
+    question: What is the safe laser power and fluence level for cleaning soot or smoke residue from historic plaster?
+  - answer: Laser ablation at 2.5 J/cm² generates significantly less bulk dust than mechanical methods. However, it produces fine particulate, necessitating HEPA-filtered extraction and respiratory PPE, especially for historic plasters containing unknown contaminants.
+    question: Does laser cleaning create hazardous dust when used on plaster, and how does it compare to traditional methods?
+  - answer: Low power can carbonize embedded organics, while excessive fluence above 2.5 J/cm² alters plaster's mineral hydrates. Optimize your 1064 nm laser's parameters to avoid these thermal effects, ensuring contaminant removal without inducing yellowing from substrate damage.
+    question: Why does my laser sometimes leave a darkened or yellowed stain on the plaster surface after cleaning?
+  - answer: Yes, laser cleaning effectively removes biological growth from plaster using 2.5 J/cm² fluence without adding moisture. However, the porous substrate often retains spores, so a subsequent chemical treatment is essential for complete remediation and to prevent rapid regrowth.
+    question: Is laser cleaning effective for removing biological growth like mold or algae from exterior plaster (stucco)?
+  - answer: For plaster cleaning, the 10600nm CO₂ laser wavelength is most effective. This infrared light is strongly absorbed by the hydrates in gypsum, enabling efficient contaminant removal at 2.5 J/cm² while minimizing thermal damage to the delicate substrate.
+    question: What wavelength (e.g., 1064nm, 10600nm) is most effective for laser cleaning plaster, and why?
+  - answer: Lime plaster requires gentle ~2.5 J/cm² fluence due to its softness, while harder cement-based types tolerate slightly higher energy. Always identify your material first, as incorrect 1064 nm settings can thermally degrade sensitive substrates.
+    question: How do I clean different types of plaster (e.g., gypsum, lime, cement-based) with a laser? Do the settings change?
+  - answer: Laser cleaning excels for delicate plaster conservation using 2.5 J/cm² fluence and 100 µm spot size. This non-contact method with nanosecond pulses selectively removes contaminants while preserving fragile historic details without abrasion.
+    question: Can laser cleaning be used to delicately clean fragile, historic plaster moldings and ornaments?
+  - answer: Laser cleaning offers superior selectivity for plaster, removing contaminants at 2.5 J/cm² without eroding the fragile substrate. This non-contact process eliminates chemical residues and avoids the mechanical stress caused by abrasives, preserving original surfaces. Our 1064 nm wavelength ensures effective cleaning with minimal thermal impact.
+    question: What are the main advantages of using laser cleaning over chemical or abrasive methods for plaster restoration?
+  - answer: Plaster's high porosity allows contaminants to penetrate deeply, requiring multiple passes at 2.5 J/cm² for complete removal. The structure can trap ablation byproducts, complicating the process. Consequently, a 'clean' surface is defined by the successful extraction of these deeply embedded particles without causing substrate damage.
+    question: How does the high porosity of plaster affect the laser cleaning process and the final result?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922346Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922352Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin

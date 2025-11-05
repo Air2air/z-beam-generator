@@ -1,311 +1,239 @@
 name: Slate
-category: Stone
-subcategory: metamorphic
-title: Slate Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Slate
-description: Laser cleaning parameters for Slate
-author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  title: Ph.D.
-  sex: m
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Slate surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/slate-laser-cleaning-hero.jpg
-  micro:
-    alt: Slate surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
-    url: /images/material/slate-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, slate surface appears very-very rough, covered by fine
-    dust particles and sticky organic residues. These contaminants cling tightly,
-    causing pitting degradation and discoloration.
-  after: The cleaned slate surface shows very-very good restoration, appearing smooth
-    and fresh after dirt removal then gentle polishing. Contaminants are eliminated
-    completely, so natural stone texture returns without damage. Surface is treated
-    softly, maintaining integrity fully—no cracks or weakening seen, and hardness
-    preserved. Quality is high, making material look new for general uses.
-  author: Ikmanda Roswati
-  character_count:
-    after: 385
-    before: 197
-  generated: '2025-10-25T15:21:16.495868Z'
-  generation_method: ai_research
-  word_count:
-    after: 53
-    before: 25
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- EPA Clean Air Act Compliance
-- ASTM C629 - Standard Specification for Slate Dimension Stone
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 100.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    fractureToughness:
-      value: 0.92
-      unit: MPa√m
-      confidence: 95
-      source: ai_research
-      min: 0.5
-      max: 5.0
-    thermalDestruction:
-      value: 1273.0
-      unit: K
-      confidence: 95
-      source: ai_research
-      min: 273.0
-      max: 2300.0
-    specificHeat:
-      value: 880.0
-      unit: J/(kg·K)
-      confidence: 95
-      source: ai_research
-      min: 400.0
-      max: 1200.0
-    youngsModulus:
-      value: 45.0
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 10.0
-      max: 100.0
-    oxidationResistance:
-      value: 0.002
-      unit: mm/year
-      confidence: 92
-      source: ai_research
-      min: 400.0
-      max: 870.0
-    laserReflectivity:
-      value: 0.12
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 80.0
-    thermalConductivity:
-      value: 2.0
-      unit: W/m·K
-      confidence: 95
-      source: ai_research
-      min: 0.2
-      max: 8.0
-    thermalExpansion:
-      value: 8.5e-06
-      unit: K^{-1}
-      confidence: 95
-      source: ai_research
-      min: 3.0
-      max: 30.0
-    density:
-      value: 2750.0
-      unit: kg/m³
-      confidence: 95
-      source: ai_research
-      min: 1.5
-      max: 6.0
-    hardness:
-      value: 3.5
-      unit: Mohs
-      confidence: 95
-      source: ai_research
-      min: 1.0
-      max: 7.0
-    corrosionResistance:
-      value: 0.95
-      unit: dimensionless
-      confidence: 96
-      source: ai_research
-      min: 2.0
-      max: 9.0
-    laserAbsorption:
-      value: 0.88
-      unit: dimensionless (absorptivity at 1064 nm)
-      confidence: 95
-      source: ai_research
-      min: 0.1
-      max: 100.0
-    compressiveStrength:
-      value: 150.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 20.0
-      max: 500.0
-    thermalDiffusivity:
-      value: 9.6e-07
-      unit: m²/s
-      confidence: 95
-      source: ai_research
-      min: 0.2
-      max: 2.5
-    flexuralStrength:
-      value: 42.5
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 50.0
-    tensileStrength:
-      value: 14.0
-      unit: MPa
-      confidence: 95
-      source: ai_research
-      min: 2.0
-      max: 25.0
-    porosity:
-      value: 0.8
-      unit: '%'
-      confidence: 95
-      source: ai_research
-      min: 0.5
-      max: 25.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 0.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-machineSettings:
-  powerRange:
-    description: Optimal average power for Slate surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Slate mineral absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal from Slate
-    unit: J/cm²
-    value: 12.7
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of cleaning passes for thorough removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-  questions:
-  - answer: For slate roofing tiles, with their low thermal conductivity and mineral
-      makeup, a 1064 nm Nd:YAG laser works best at 100 W average power and 10 ns pulses.
-      Target a fluence of 12.7 J/cm² while scanning at 500 mm/s to ablate dirt and
-      moss without cracking. Apply two passes with 50% beam overlap for even results.
-    question: What laser parameters are recommended for cleaning dirt and moss from
-      slate roofing tiles without causing thermal cracking?
-  - answer: Laser cleaning proves safe for historic slate facades if parameters stay
-      conservative, like 1064 nm wavelength and 12.7 J/cm² fluence, to avoid excessive
-      ablation that could induce micro-fractures in fine-grained stone. Risks escalate
-      with overexposure, potentially eroding surface integrity, so adhere to ICOMOS
-      conservation standards and conduct non-destructive tests pre- and post-treatment
-      for optimal preservation.
-    question: Is laser cleaning safe for historic slate surfaces, such as heritage
-      building facades, and what are the risks of surface ablation?
-  - answer: Iron oxide in slate heightens absorption of 1064 nm laser light, boosting
-      cleaning efficiency in iron-rich Welsh types over lighter Vermont slate, where
-      quartz and mica dominate lower uptake. This variation demands 12.7 J/cm² fluence
-      to remove contaminants without harming the stone. For color inconsistencies,
-      tweak scan speed to 500 mm/s for even coverage.
-    question: How does the iron oxide content in slate affect its absorption of laser
-      light during cleaning processes?
-  - answer: Uneven pigment removal from graffiti on slate tiles can yield patchy results;
-      achieve uniformity with 50% beam overlap and 500 mm/s scan speed at 1064 nm
-      wavelength. Organic binder residues persist, so employ two passes at 12.7 J/cm²
-      fluence. Seal the porous stone afterward to block future stains.
-    question: What are common issues encountered when using fiber lasers to remove
-      graffiti from slate tiles, and how to mitigate them?
-  - answer: Yes, laser cleaning surpasses pressure washing for reviving weathered
-      outdoor slate's natural patina. It precisely ablates embedded pollutants using
-      12.7 J/cm² fluence at 1064 nm wavelength, sparing the stone's layered structure
-      from water-driven delamination risks. In humid climates, this dry approach yields
-      more enduring, unblemished surfaces.
-    question: Compared to pressure washing, does laser cleaning provide better results
-      for restoring the natural patina on weathered outdoor slate?
-  - answer: Operators must use laser safety goggles certified for 1064 nm and 532
-      nm harmonics to guard against eye exposure during Q-switched cleaning of slate
-      floors at 12.7 J/cm² fluence. Respirators are essential to prevent inhaling
-      fine dust from vaporized contaminants, while adhering to ANSI Z136 standards
-      ensures safe, tailored setups without thermal risks to the stone.
-    question: What safety precautions should operators take when using Q-switched
-      lasers for industrial cleaning of slate floors?
-  - answer: Yes, short-pulse lasers at 1064 nm effectively target algae biofilms on
-      slate with 10 ns pulses and 12.7 J/cm² fluence, vaporizing growth without altering
-      the stone's mineral composition. Charring risk stays low on slate's durable
-      surface at 100 W power. Seal with biocide coatings post-cleaning to curb regrowth.
-    question: Can laser cleaning effectively remove biological growth like algae from
-      slate without altering its chemical composition?
-  - answer: EPA guidelines mandate airborne particulates from slate ablation stay
-      below 50 μg/m³ to curb environmental impact. For construction sites, deploy
-      mobile laser units certified by OSHA, operating at 12.7 J/cm² fluence and 100
-      W power to minimize dust while adhering to noise limits under 85 dB and vibration
-      thresholds.
-    question: What are the regulatory requirements for using laser systems to clean
-      slate in construction sites, particularly regarding environmental impact?
-  - answer: Slate's thermal expansion coefficient of 6-8 × 10^{-6}/°C makes it prone
-      to internal stresses from rapid heating during 1064 nm laser cleaning at 12.7
-      J/cm² fluence, increasing delamination risks in its foliated layers—especially
-      in cold climates where low ambient temperatures amplify contraction shocks.
-      To safeguard structural integrity, pause 1-2 minutes between passes for even
-      cooling.
-    question: How do temperature variations in slate during laser cleaning affect
-      its structural integrity, especially in cold climates?
-  - answer: Regularly wipe the laser lens with isopropyl alcohol to clear slate dust,
-      which accumulates quickly on quarry surfaces due to the stone's Mohs 3-6 hardness
-      and can distort the 1064 nm beam. Recalibrate fluence to 12.7 J/cm² after every
-      shift for hardness variations, keeping downtime under 10% in high-volume work
-      with 100 W power settings.
-    question: What equipment maintenance is required for lasers used in cleaning large
-      slate quarry surfaces?
 _metadata:
   voice:
     author_name: Ikmanda Roswati
     author_country: Indonesia
     voice_applied: true
     content_type: material
+category: stone
+subcategory: metamorphic
+title: Slate Laser Cleaning
+subtitle: Preserve Slate's Delicate Foliation with Precision Laser Cleaning Techniques
+description: Laser cleaning parameters for Slate
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Slate surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/slate-laser-cleaning-hero.jpg
+  micro:
+    alt: Slate microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/slate-laser-cleaning-micro.jpg
+caption:
+  before: Under microscopy, slate surface appears very-very rough, covered by fine dust particles and sticky organic residues. These contaminants cling tightly, causing pitting degradation and discoloration.
+  after: The cleaned slate surface shows very-very good restoration, appearing smooth and fresh after dirt removal then gentle polishing. Contaminants are eliminated completely, so natural stone texture returns without damage. Surface is treated softly, maintaining integrity fully—no cracks or weakening seen, and hardness preserved. Quality is high, making material look new for general uses.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: Unknown
+  description: EPA Clean Air Act Compliance
+  url: ''
+  image: /images/logo/logo-org-generic.png
+- name: Unknown
+  description: ASTM C629 - Standard Specification for Slate Dimension Stone
+  url: ''
+  image: /images/logo/logo-org-generic.png
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    fractureToughness:
+      value: 0.92
+      unit: MPa√m
+      source: ai_research
+      min: 0.5
+      max: 5
+    thermalDestruction:
+      value: 1273.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 2300.0
+    specificHeat:
+      value: 880.0
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    youngsModulus:
+      value: 45.0
+      unit: GPa
+      source: ai_research
+      min: 10
+      max: 100
+    oxidationResistance:
+      value: 0.002
+      unit: mm/year
+      source: ai_research
+      min: 400.0
+      max: 870.0
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 5
+      max: 80
+    thermalConductivity:
+      value: 2.0
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: 8.5e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 3
+      max: 30
+    density:
+      value: 2750.0
+      unit: kg/m³
+      source: ai_research
+      min: 1.5
+      max: 6.0
+    hardness:
+      value: 3.5
+      unit: Mohs
+      source: ai_research
+      min: 1
+      max: 7
+    corrosionResistance:
+      value: 0.95
+      unit: dimensionless
+      source: ai_research
+      min: 2.0
+      max: 9.0
+    laserAbsorption:
+      value: 0.88
+      unit: dimensionless (absorptivity at 1064 nm)
+      source: ai_research
+      min: 0.1
+      max: 100
+    compressiveStrength:
+      value: 150.0
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 500
+    thermalDiffusivity:
+      value: 9.6e-07
+      unit: m²/s
+      source: ai_research
+      min: 0.2
+      max: 2.5
+    flexuralStrength:
+      value: 42.5
+      unit: MPa
+      source: ai_research
+      min: 5
+      max: 50
+    tensileStrength:
+      value: 14.0
+      unit: MPa
+      source: ai_research
+      min: 2
+      max: 25
+    porosity:
+      value: 0.8
+      unit: '%'
+      source: ai_research
+      min: 0.5
+      max: 25
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 12.7
+    min: 0.1
+    max: 20.0
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+faq:
+  questions:
+  - answer: For slate roofing tiles, with their low thermal conductivity and mineral makeup, a 1064 nm Nd:YAG laser works best at 100 W average power and 10 ns pulses. Target a fluence of 12.7 J/cm² while scanning at 500 mm/s to ablate dirt and moss without cracking. Apply two passes with 50% beam overlap for even results.
+    question: What laser parameters are recommended for cleaning dirt and moss from slate roofing tiles without causing thermal cracking?
+  - answer: Laser cleaning proves safe for historic slate facades if parameters stay conservative, like 1064 nm wavelength and 12.7 J/cm² fluence, to avoid excessive ablation that could induce micro-fractures in fine-grained stone. Risks escalate with overexposure, potentially eroding surface integrity, so adhere to ICOMOS conservation standards and conduct non-destructive tests pre- and post-treatment for optimal preservation.
+    question: Is laser cleaning safe for historic slate surfaces, such as heritage building facades, and what are the risks of surface ablation?
+  - answer: Iron oxide in slate heightens absorption of 1064 nm laser light, boosting cleaning efficiency in iron-rich Welsh types over lighter Vermont slate, where quartz and mica dominate lower uptake. This variation demands 12.7 J/cm² fluence to remove contaminants without harming the stone. For color inconsistencies, tweak scan speed to 500 mm/s for even coverage.
+    question: How does the iron oxide content in slate affect its absorption of laser light during cleaning processes?
+  - answer: Uneven pigment removal from graffiti on slate tiles can yield patchy results; achieve uniformity with 50% beam overlap and 500 mm/s scan speed at 1064 nm wavelength. Organic binder residues persist, so employ two passes at 12.7 J/cm² fluence. Seal the porous stone afterward to block future stains.
+    question: What are common issues encountered when using fiber lasers to remove graffiti from slate tiles, and how to mitigate them?
+  - answer: Yes, laser cleaning surpasses pressure washing for reviving weathered outdoor slate's natural patina. It precisely ablates embedded pollutants using 12.7 J/cm² fluence at 1064 nm wavelength, sparing the stone's layered structure from water-driven delamination risks. In humid climates, this dry approach yields more enduring, unblemished surfaces.
+    question: Compared to pressure washing, does laser cleaning provide better results for restoring the natural patina on weathered outdoor slate?
+  - answer: Operators must use laser safety goggles certified for 1064 nm and 532 nm harmonics to guard against eye exposure during Q-switched cleaning of slate floors at 12.7 J/cm² fluence. Respirators are essential to prevent inhaling fine dust from vaporized contaminants, while adhering to ANSI Z136 standards ensures safe, tailored setups without thermal risks to the stone.
+    question: What safety precautions should operators take when using Q-switched lasers for industrial cleaning of slate floors?
+  - answer: Yes, short-pulse lasers at 1064 nm effectively target algae biofilms on slate with 10 ns pulses and 12.7 J/cm² fluence, vaporizing growth without altering the stone's mineral composition. Charring risk stays low on slate's durable surface at 100 W power. Seal with biocide coatings post-cleaning to curb regrowth.
+    question: Can laser cleaning effectively remove biological growth like algae from slate without altering its chemical composition?
+  - answer: EPA guidelines mandate airborne particulates from slate ablation stay below 50 μg/m³ to curb environmental impact. For construction sites, deploy mobile laser units certified by OSHA, operating at 12.7 J/cm² fluence and 100 W power to minimize dust while adhering to noise limits under 85 dB and vibration thresholds.
+    question: What are the regulatory requirements for using laser systems to clean slate in construction sites, particularly regarding environmental impact?
+  - answer: Slate's thermal expansion coefficient of 6-8 × 10^{-6}/°C makes it prone to internal stresses from rapid heating during 1064 nm laser cleaning at 12.7 J/cm² fluence, increasing delamination risks in its foliated layers—especially in cold climates where low ambient temperatures amplify contraction shocks. To safeguard structural integrity, pause 1-2 minutes between passes for even cooling.
+    question: How do temperature variations in slate during laser cleaning affect its structural integrity, especially in cold climates?
+  - answer: Regularly wipe the laser lens with isopropyl alcohol to clear slate dust, which accumulates quickly on quarry surfaces due to the stone's Mohs 3-6 hardness and can distort the 1064 nm beam. Recalibrate fluence to 12.7 J/cm² after every shift for hardness variations, keeping downtime under 10% in high-volume work with 100 W power settings.
+    question: What equipment maintenance is required for lasers used in cleaning large slate quarry surfaces?
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - ASTM C629 - Standard Specification for Slate Dimension Stone
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
