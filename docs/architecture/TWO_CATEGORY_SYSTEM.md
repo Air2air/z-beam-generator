@@ -287,11 +287,42 @@ materialProperties:
 
 ---
 
+## Metal Subcategories
+
+### Specialty Metals (10 Materials)
+
+The `specialty` subcategory includes high-performance metals with exceptional properties:
+
+| Material | Key Characteristics |
+|----------|---------------------|
+| Beryllium | Lightweight, high stiffness, toxic |
+| Chromium | Corrosion resistant, hardening element |
+| Titanium | High strength-to-weight, biocompatible |
+| Cobalt | High-temperature strength, magnetic |
+| Gallium | Low melting point, liquid at body temp |
+| Hastelloy | Superalloy, extreme corrosion resistance |
+| Inconel | Superalloy, high-temperature applications |
+| Indium | Soft, ductile, semiconductor applications |
+| Magnesium | Lightest structural metal |
+| Nickel | Corrosion resistant, superalloy base |
+
+**Last Updated**: November 4, 2025  
+**Reconciliation**: All specialty metals verified in Materials.yaml and Categories.yaml
+
+### Other Metal Subcategories
+- **ferrous**: Iron-based metals (steel, cast iron, etc.)
+- **non-ferrous**: Common non-iron metals (aluminum, copper, bronze, brass, etc.)
+- **precious**: Gold, silver, platinum group metals
+- **reactive**: Highly reactive metals (various categories)
+
+---
+
 ## Related Documentation
 
 - **Data Architecture**: `docs/DATA_ARCHITECTURE.md`
 - **Consolidation Plan**: `TWO_CATEGORY_CONSOLIDATION_PLAN.md`
 - **Completion Report**: `TWO_CATEGORY_CONSOLIDATION_COMPLETE.md`
+- **Subcategory Reconciliation**: `SUBCATEGORY_RECONCILIATION_COMPLETE.md` (Nov 4, 2025)
 - **Migration Script**: `scripts/tools/update_frontmatter_categories.py`
 - **Categories.yaml**: `data/Categories.yaml` (v5.0.0)
 
