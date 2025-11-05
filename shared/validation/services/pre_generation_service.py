@@ -718,7 +718,10 @@ class PreGenerationValidationService:
             for cat in categories:
                 cat_id = cat.get('id', '')
                 if cat_id:
-                    material_properties[cat_id] = cat.get('properties', [])
+                    # Properties are directly in the category dict, not under 'properties' key
+                    # Extract all keys that are not metadata (label, description, etc.)
+                    cat_props = {k: v for k, v in cat.items() if k not in ['id', 'label', 'description', 'percentage']}
+                    material_properties[cat_id] = list(cat_props.keys())
             
             return RelationshipValidators.validate_two_category_system(material_name, material_properties)
         except Exception as e:

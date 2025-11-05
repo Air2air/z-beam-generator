@@ -905,11 +905,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 self.logger.error(f"Category '{category}' not found in Categories.yaml")
                 return False
             
-            if 'properties' not in categories_data['categories'][category]:
-                categories_data['categories'][category]['properties'] = {}
-            
-            # Add the new property range
-            categories_data['categories'][category]['properties'][property_name] = {
+            # Add the new property range directly to category (no 'properties' wrapper)
+            categories_data['categories'][category][property_name] = {
                 'min': min_val,
                 'max': max_val,
                 'unit': unit
@@ -983,13 +980,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             categories_data['categories'] = {}
         
         if category not in categories_data['categories']:
-            categories_data['categories'][category] = {'properties': {}}
+            categories_data['categories'][category] = {}
         
-        if 'properties' not in categories_data['categories'][category]:
-            categories_data['categories'][category]['properties'] = {}
-        
-        # Add the researched range
-        categories_data['categories'][category]['properties'][property_name] = {
+        # Add the researched range directly to category (no 'properties' wrapper)
+        categories_data['categories'][category][property_name] = {
             'min': range_data['min'],
             'max': range_data['max'],
             'unit': range_data.get('unit', '')

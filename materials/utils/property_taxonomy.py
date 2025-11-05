@@ -297,10 +297,11 @@ class PropertyTaxonomy:
         """
         for tier, tier_data in self.usage_tiers.items():
             # Tier data is just a list of property names, not nested
-            if isinstance(tier_data, dict):
-                props = tier_data.get('properties', [])
-            elif isinstance(tier_data, list):
+            if isinstance(tier_data, list):
                 props = tier_data
+            elif isinstance(tier_data, dict):
+                # If it's a dict, extract property names directly (no 'properties' key)
+                props = list(tier_data.keys())
             else:
                 props = []
             if property_name in props:
