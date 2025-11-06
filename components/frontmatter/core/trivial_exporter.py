@@ -161,6 +161,12 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')
         category_ranges = self._get_category_ranges(category)
         
+        # Generate breadcrumb navigation (before field copying)
+        filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+        slug = filename.replace('.yaml', '')
+        breadcrumb = self._generate_breadcrumb(material_data, slug)
+        frontmatter['breadcrumb'] = breadcrumb
+        
         # Enrich author data from registry (Materials.yaml only has author.id)
         author_field = material_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
@@ -188,8 +194,9 @@ class TrivialFrontmatterExporter:
         
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
+            'breadcrumb',
             'category', 'subcategory', 'title', 'subtitle', 'description',
-            'images', 'caption', 'regulatoryStandards',
+            'images', 'caption', 'regulatoryStandards', 'eeat',
             'materialProperties', 'machineSettings', 'faq',
             '_metadata', 'material_metadata', 'subtitle_metadata'
         }
@@ -509,6 +516,50 @@ class TrivialFrontmatterExporter:
                 normalized.append(normalized_item)
         
         return normalized
+    
+    def _generate_breadcrumb(self, material_data: Dict, slug: str) -> list:
+        """
+        Generate breadcrumb navigation for materials.
+        
+        Hierarchy: Home → Materials → Category → Subcategory → Material
+        
+        Args:
+            material_data: Material data from Materials.yaml
+            slug: URL slug for the material (e.g., "aluminum-laser-cleaning")
+            
+        Returns:
+            List of breadcrumb dicts with label and href
+        """
+        breadcrumb = [{"label": "Home", "href": "/"}]
+        
+        # Add Materials level
+        breadcrumb.append({"label": "Materials", "href": "/materials"})
+        
+        # Add Category level
+        category = material_data.get('category', '').title()
+        if category:
+            breadcrumb.append({
+                "label": category,
+                "href": f"/materials/{category.lower()}"
+            })
+        
+        # Add Subcategory level (if present)
+        subcategory = material_data.get('subcategory', '')
+        if subcategory:
+            breadcrumb.append({
+                "label": subcategory.replace('-', ' ').replace('_', ' ').title(),
+                "href": f"/materials/{category.lower()}/{subcategory.lower()}"
+            })
+        
+        # Add current material
+        name = material_data.get('name', '')
+        if name:
+            breadcrumb.append({
+                "label": name,
+                "href": f"/materials/{slug}"
+            })
+        
+        return breadcrumb
 
 
 def export_all_frontmatter() -> Dict[str, bool]:

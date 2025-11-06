@@ -43,9 +43,9 @@ class MaterialContent(ContentSchema):
     applications: List[str] = field(default_factory=list)
     industryTags: List[str] = field(default_factory=list)
     regulatoryStandards: List[Dict] = field(default_factory=list)
-    environmentalImpact: List[str] = field(default_factory=list)
-    outcomeMetrics: List[str] = field(default_factory=list)
     materialCharacteristics: List[str] = field(default_factory=list)
+    eeat: Optional[Dict] = None
+    breadcrumb: Optional[List[Dict]] = None
     
     # Generated components (populated during generation)
     faq: Optional[Dict] = None
@@ -135,18 +135,6 @@ class MaterialContent(ContentSchema):
                 },
                 priority=2  # Important
             ),
-            'environmentalImpact': FieldResearchSpec(
-                field_name='environmentalImpact',
-                field_type=FieldType.ATTRIBUTE,
-                data_type='list',
-                research_method=ResearchMethod.WEB_SEARCH,
-                prompt_template='research/prompts/environmental_impact.txt',
-                validation_rules={
-                    'min_items': 2,
-                    'max_items': 6
-                },
-                priority=3  # Optional
-            ),
             'materialCharacteristics': FieldResearchSpec(
                 field_name='materialCharacteristics',
                 field_type=FieldType.ATTRIBUTE,
@@ -158,18 +146,6 @@ class MaterialContent(ContentSchema):
                     'max_items': 8
                 },
                 priority=2  # Important
-            ),
-            'outcomeMetrics': FieldResearchSpec(
-                field_name='outcomeMetrics',
-                field_type=FieldType.ATTRIBUTE,
-                data_type='list',
-                research_method=ResearchMethod.INFERENCE,
-                prompt_template='research/prompts/outcome_metrics.txt',
-                validation_rules={
-                    'min_items': 2,
-                    'max_items': 6
-                },
-                priority=3  # Optional
             )
         }
     
@@ -272,12 +248,12 @@ class MaterialContent(ContentSchema):
             data['industryTags'] = self.industryTags
         if self.regulatoryStandards:
             data['regulatoryStandards'] = self.regulatoryStandards
-        if self.environmentalImpact:
-            data['environmentalImpact'] = self.environmentalImpact
-        if self.outcomeMetrics:
-            data['outcomeMetrics'] = self.outcomeMetrics
         if self.materialCharacteristics:
             data['materialCharacteristics'] = self.materialCharacteristics
+        if self.eeat:
+            data['eeat'] = self.eeat
+        if self.breadcrumb:
+            data['breadcrumb'] = self.breadcrumb
         if self.faq:
             data['faq'] = self.faq
         if self.caption:
@@ -314,9 +290,9 @@ class MaterialContent(ContentSchema):
             applications=data.get('applications', []),
             industryTags=data.get('industryTags', []),
             regulatoryStandards=data.get('regulatoryStandards', []),
-            environmentalImpact=data.get('environmentalImpact', []),
-            outcomeMetrics=data.get('outcomeMetrics', []),
             materialCharacteristics=data.get('materialCharacteristics', []),
+            eeat=data.get('eeat'),
+            breadcrumb=data.get('breadcrumb'),
             faq=data.get('faq'),
             caption=data.get('caption'),
             generated_date=data.get('generated_date'),
