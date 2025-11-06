@@ -1,299 +1,266 @@
 name: Chromium
-category: Metal
-subcategory: specialty
-title: Chromium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Chromium
-description: Laser cleaning parameters for Chromium
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
-  expertise: Optical Materials for Laser Systems
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  - Thin-Film Coatings
+  - Laser Optics Design
+  - Photonics Integration
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: todd.dunning@z-beam.com
   image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+category: metal
+subcategory: specialty
+title: Chromium Laser Cleaning
+subtitle: Precision laser restores Chromium's reflective shine without base damage
+description: Laser cleaning parameters for Chromium
 images:
   hero:
-    alt: Chromium surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
   micro:
-    alt: Chromium surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Chromium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/chromium-laser-cleaning-micro.jpg
 caption:
-  before: Under microscopic examination, the chromium surface reveals a pitted and
-    uneven topography, marred by adherent contaminants like fine dust particles and
-    organic residues that form irregular clusters. These contaminants, often sub-micron
-    in size, promote localized oxidation, leading to surface degradation through micro-cracks
-    and tarnish layers. This compromises reflectivity in laser optics cleaning applications,
-    necessitating precise removal to restore integrity.
-  after: Post-cleaning, the chromium surface restores to a pristine, mirror-like condition,
-    free of residues and defects. In laser optics manufacturing, like at Coherent
-    Inc., this yields high restoration quality, fully preserving material integrity—including
-    the metal's hardness, reflectivity, and corrosion resistance—without any pitting
-    or degradation.
-  author: Todd Dunning
-  character_count:
-    after: 347
-    before: 467
-  generated: '2025-10-25T14:11:43.759603Z'
-  generation_method: ai_research
-  word_count:
-    after: 43
-    before: 59
+  before: Under microscopic examination, the chromium surface reveals a pitted and uneven topography, marred by adherent contaminants like fine dust particles and organic residues that form irregular clusters. These contaminants, often sub-micron in size, promote localized oxidation, leading to surface degradation through micro-cracks and tarnish layers. This compromises reflectivity in laser optics cleaning applications, necessitating precise removal to restore integrity.
+  after: Post-cleaning, the chromium surface restores to a pristine, mirror-like condition, free of residues and defects. In laser optics manufacturing, like at Coherent Inc., this yields high restoration quality, fully preserving material integrity—including the metal's hardness, reflectivity, and corrosion resistance—without any pitting or degradation.
 regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
   url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 81.1
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalConductivity:
       value: 7750000.0
       unit: S/m
-      confidence: 100
       source: ai_research
       min: 0.67
       max: 63.0
     electricalResistivity:
       value: 1.29e-07
       unit: Ω·m
-      confidence: 100
       source: ai_research
       min: 1.0e-08
       max: 1.5e-06
     fractureToughness:
       value: 0.77
       unit: MPa m^{1/2}
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 20
+      max: 200
     surfaceRoughness:
       value: 0.1
       unit: μm
-      confidence: 95
       source: ai_research
       min: 0.05
-      max: 150.0
+      max: 150
     thermalDestruction:
       value: 2180.0
       unit: K
-      confidence: 100
       source: ai_research
       min: 273.0
       max: 3695.0
     density:
       value: 7190.0
       unit: kg/m³
-      confidence: 100
       source: ai_research
       min: 0.53
       max: 22.6
     oxidationResistance:
       value: 1273.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 200.0
-      max: 1200.0
+      min: 200
+      max: 1200
     laserReflectivity:
       value: 0.7
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 5.0
+      min: 5
       max: 99.9
     thermalExpansion:
       value: 4.9
       unit: ×10^{-6} K^{-1}
-      confidence: 100
       source: ai_research
       min: 0.5
-      max: 33.0
+      max: 33
     thermalConductivity:
       value: 93.9
       unit: W/m·K
-      confidence: 100
       source: ai_research
       min: 7.0
-      max: 430.0
+      max: 430
     youngsModulus:
       value: 279.0
       unit: GPa
-      confidence: 100
       source: ai_research
-      min: 5.0
-      max: 600.0
+      min: 5
+      max: 600
     hardness:
       value: 1050.0
       unit: HV
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 3500.0
+      max: 3500
     specificHeat:
       value: 449.0
       unit: J/(kg·K)
-      confidence: 100
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 100
+      max: 2000
     laserAbsorption:
       value: 0.35
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 0.02
-      max: 100.0
+      max: 100
     compressiveStrength:
       value: 345.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 2000.0
+      min: 50
+      max: 2000
     tensileStrength:
       value: 414.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 3.0
       max: 3000.0
     thermalDiffusivity:
       value: 2.91e-05
       unit: m²/s
-      confidence: 95
       source: ai_research
       min: 0.06
-      max: 174.0
+      max: 174
     flexuralStrength:
       value: 380.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 2.5
       max: 1050.0
     corrosionResistance:
       value: 500000.0
       unit: Ω·cm²
-      confidence: 95
       source: ai_research
       min: 0.01
-      max: 10.0
+      max: 10
     porosity:
       value: 0.0
       unit: '%'
-      confidence: 100
       source: ai_research
       min: 0.0
       max: 15.0
     ablationThreshold:
       value: 1.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.8
       max: 8.0
     boilingPoint:
       value: 2945.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: 907.0
-      max: 5870.0
+      min: 907
+      max: 5870
     absorptivity:
       value: 0.42
       unit: dimensionless
-      confidence: 95
       source: ai_research
       min: 2.0
       max: 65.0
     absorptionCoefficient:
       value: 59100000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     reflectivity:
       value: 0.65
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     vaporPressure:
       value: 0.0
       unit: Pa
-      confidence: 100
       source: ai_research
       min: 1.0e-10
       max: 0.001
     meltingPoint:
       value: 2180.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: -39.0
-      max: 3422.0
+      min: -39
+      max: 3422
     thermalDestructionPoint:
       value: 2180.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     thermalShockResistance:
       value: 239.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     laserDamageThreshold:
       value: 0.9
       unit: J/cm²
-      confidence: 95
       source: ai_research
       min: 0.1
       max: 20.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 18.9
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptionCoefficient:
       source: ai_research
       unit: m⁻¹
       value: 41200000.0
-      min: 1000000.0
-      max: 100000000.0
+      min: 1000000
+      max: 100000000
     absorptivity:
       source: ai_research
       unit: dimensionless
@@ -310,20 +277,20 @@ materialProperties:
       source: ai_research
       unit: dimensionless (ratio)
       value: 0.64
-      min: 85.0
-      max: 98.0
+      min: 85
+      max: 98
     thermalDestructionPoint:
       source: ai_research
       unit: °C
       value: 1863.0
-      min: 873.0
-      max: 3695.0
+      min: 873
+      max: 3695
     thermalShockResistance:
       source: ai_research
       unit: MPa·m^0.5
       value: 0.8
-      min: 50.0
-      max: 400.0
+      min: 50
+      max: 400
     vaporPressure:
       source: ai_research
       unit: Pa
@@ -332,126 +299,77 @@ materialProperties:
       max: 0.001
 machineSettings:
   powerRange:
-    description: Optimal average power for Chromium oxide removal without substrate
-      damage
     unit: W
     value: 100
     min: 1.0
     max: 120
   wavelength:
-    description: Near-IR wavelength with good Chromium absorption for efficient cleaning
     unit: nm
     value: 1064
     min: 355
     max: 10640
   spotSize:
-    description: Beam spot diameter for precise Chromium surface cleaning
     unit: μm
     value: 50
     min: 0.1
     max: 500
   repetitionRate:
-    description: Optimal repetition rate for efficient Chromium cleaning throughput
     unit: kHz
     value: 50
     min: 1
     max: 200
   fluenceThreshold:
-    description: Minimum fluence required for effective Chromium oxide removal
     unit: J/cm²
     value: 2.5
     min: 0.3
     max: 4.5
   pulseWidth:
-    description: Nanosecond pulse duration for effective Chromium oxide ablation
     unit: ns
     value: 10
     min: 0.1
     max: 1000
   scanSpeed:
-    description: Optimal scanning speed for uniform Chromium surface treatment
     unit: mm/s
     value: 500
     min: 10
     max: 5000
   passCount:
-    description: Recommended number of passes for complete Chromium oxide removal
     unit: passes
     value: 3
     min: 1
     max: 10
   overlapRatio:
-    description: Optimal beam overlap for uniform Chromium surface cleaning
     unit: '%'
     value: 50
     min: 10
     max: 90
 faq:
   questions:
-  - answer: Yes, laser systems can safely strip chrome plating using precise parameters
-      like 2.5 J/cm² fluence and 50 µm spot size. This selectively ablates the coating
-      without damaging softer substrates like aluminum, offering a significant advantage
-      over aggressive mechanical or chemical stripping methods.
-    question: Can laser cleaning safely remove chromium-containing coatings like chrome
-      plating without damaging the base metal?
-  - answer: Laser cleaning chromium generates hazardous hexavalent chromium fumes,
-      especially at fluences above 2.5 J/cm². You must use a fume extractor with both
-      HEPA and activated carbon filtration. This is a critical OSHA concern requiring
-      strict respiratory protection due to the toxic plume.
-    question: What are the specific safety hazards of laser cleaning chromium or chromium-containing
-      materials like stainless steel?
-  - answer: For chromium-nickel steel, use a 1064 nm wavelength and nanosecond pulses.
-      This combination effectively ablates chromium oxide at ~2.5 J/cm² while minimizing
-      heat input to preserve the underlying passive layer, ensuring a clean, passivated
-      surface.
-    question: What laser parameters (wavelength, pulse duration, power) are most effective
-      for cleaning rust and contaminants from chromium-nickel stainless steel (e.g.,
-      304, 316)?
-  - answer: We verify chromium's restored passive layer using water break and ferroxyl
-      tests. The surface must be chemically clean after laser processing at ~2.5 J/cm²
-      to enable proper repassivation, which is critical for corrosion resistance in
-      demanding applications.
-    question: How do you verify that laser cleaning has successfully restored the
-      passive chromium oxide layer on stainless steel for corrosion resistance?
-  - answer: Laser cleaning effectively prepares chromium-alloy surfaces when using
-      ~2.5 J/cm² fluence and 50 µm spot size. This removes oxides without embedding
-      contaminants, achieving the proper surface profile for adhesion while avoiding
-      thermal damage that compromises fatigue life.
-    question: Is laser cleaning suitable for preparing chromium-alloy surfaces (like
-      tool steels) for subsequent processes like welding or thermal spraying?
-  - answer: With proper parameter selection, you can avoid micro-cracks in high-chromium
-      alloys. Using nanosecond pulses at 1064 nm wavelength and controlling fluence
-      near 2.5 J/cm² minimizes thermal stress, preventing surface hardening alterations
-      in materials like D2 steel.
-    question: What is the risk of creating micro-cracks or altering the surface hardness
-      when laser cleaning high-chromium content materials like D2 tool steel or Stellite?
-  - answer: Yes, with precise 1064 nm parameters like 2.5 J/cm² fluence, you can exploit
-      the higher absorption of chromium oxide to remove corrosion. This selectively
-      ablates the oxide layer while preserving the underlying alloy's composition.
-    question: Can laser cleaning be used to selectively remove corrosion products
-      from chromium-copper alloys without depleting the chromium from the surface?
-  - answer: Chromium's oxide layer strongly absorbs near-IR wavelengths like 1064
-      nm, making Fiber lasers highly effective. Pulsed systems, with fluence around
-      2.5 J/cm², provide the controlled ablation needed to remove contaminants without
-      thermally damaging the underlying alloy.
-    question: How does the presence of chromium in an alloy affect the choice of laser
-      type (Fiber, Pulsed Nd:YAG) for cleaning?
-  - answer: Laser cleaning chromium generates hazardous Cr(VI) particulate, requiring
-      classification as toxic metal waste. The 1064 nm wavelength effectively liberates
-      these particles, which are captured by HEPA filters. You must dispose of these
-      filters per EPA regulations for hazardous waste, typically through permitted
-      facilities handling toxic metals.
-    question: What are the waste disposal considerations for the debris and filters
-      from laser cleaning chromium-contaminated surfaces?
-  - answer: The rainbow tint on laser-cleaned chromium is thin-film interference from
-      a reformed oxide layer. This is cosmetic and indicates a healthy, self-passivating
-      surface, not damage. It occurs with controlled heat input below the ~2.5 J/cm²
-      ablation threshold, which preserves the substrate.
-    question: Why does laser-cleaned stainless steel sometimes show a rainbow-colored
-      effect or tint, and does it indicate surface damage?
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+  - answer: Yes, laser systems can safely strip chrome plating using precise parameters like 2.5 J/cm² fluence and 50 µm spot size. This selectively ablates the coating without damaging softer substrates like aluminum, offering a significant advantage over aggressive mechanical or chemical stripping methods.
+    question: Can laser cleaning safely remove chromium-containing coatings like chrome plating without damaging the base metal?
+  - answer: Laser cleaning chromium generates hazardous hexavalent chromium fumes, especially at fluences above 2.5 J/cm². You must use a fume extractor with both HEPA and activated carbon filtration. This is a critical OSHA concern requiring strict respiratory protection due to the toxic plume.
+    question: What are the specific safety hazards of laser cleaning chromium or chromium-containing materials like stainless steel?
+  - answer: For chromium-nickel steel, use a 1064 nm wavelength and nanosecond pulses. This combination effectively ablates chromium oxide at ~2.5 J/cm² while minimizing heat input to preserve the underlying passive layer, ensuring a clean, passivated surface.
+    question: What laser parameters (wavelength, pulse duration, power) are most effective for cleaning rust and contaminants from chromium-nickel stainless steel (e.g., 304, 316)?
+  - answer: We verify chromium's restored passive layer using water break and ferroxyl tests. The surface must be chemically clean after laser processing at ~2.5 J/cm² to enable proper repassivation, which is critical for corrosion resistance in demanding applications.
+    question: How do you verify that laser cleaning has successfully restored the passive chromium oxide layer on stainless steel for corrosion resistance?
+  - answer: Laser cleaning effectively prepares chromium-alloy surfaces when using ~2.5 J/cm² fluence and 50 µm spot size. This removes oxides without embedding contaminants, achieving the proper surface profile for adhesion while avoiding thermal damage that compromises fatigue life.
+    question: Is laser cleaning suitable for preparing chromium-alloy surfaces (like tool steels) for subsequent processes like welding or thermal spraying?
+  - answer: With proper parameter selection, you can avoid micro-cracks in high-chromium alloys. Using nanosecond pulses at 1064 nm wavelength and controlling fluence near 2.5 J/cm² minimizes thermal stress, preventing surface hardening alterations in materials like D2 steel.
+    question: What is the risk of creating micro-cracks or altering the surface hardness when laser cleaning high-chromium content materials like D2 tool steel or Stellite?
+  - answer: Yes, with precise 1064 nm parameters like 2.5 J/cm² fluence, you can exploit the higher absorption of chromium oxide to remove corrosion. This selectively ablates the oxide layer while preserving the underlying alloy's composition.
+    question: Can laser cleaning be used to selectively remove corrosion products from chromium-copper alloys without depleting the chromium from the surface?
+  - answer: Chromium's oxide layer strongly absorbs near-IR wavelengths like 1064 nm, making Fiber lasers highly effective. Pulsed systems, with fluence around 2.5 J/cm², provide the controlled ablation needed to remove contaminants without thermally damaging the underlying alloy.
+    question: How does the presence of chromium in an alloy affect the choice of laser type (Fiber, Pulsed Nd:YAG) for cleaning?
+  - answer: Laser cleaning chromium generates hazardous Cr(VI) particulate, requiring classification as toxic metal waste. The 1064 nm wavelength effectively liberates these particles, which are captured by HEPA filters. You must dispose of these filters per EPA regulations for hazardous waste, typically through permitted facilities handling toxic metals.
+    question: What are the waste disposal considerations for the debris and filters from laser cleaning chromium-contaminated surfaces?
+  - answer: The rainbow tint on laser-cleaned chromium is thin-film interference from a reformed oxide layer. This is cosmetic and indicates a healthy, self-passivating surface, not damage. It occurs with controlled heat input below the ~2.5 J/cm² ablation threshold, which preserves the substrate.
+    question: Why does laser-cleaned stainless steel sometimes show a rainbow-colored effect or tint, and does it indicate surface damage?
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921807Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921812Z'
+  structure_version: '2.0'
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning

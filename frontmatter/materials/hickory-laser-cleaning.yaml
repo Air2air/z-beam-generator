@@ -2,22 +2,45 @@ name: Hickory
 _metadata:
   voice:
     author_name: Todd Dunning
-    author_country: United States (California)
+    author_country: United States
     voice_applied: true
     content_type: material
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  - Thin-Film Coatings
+  - Laser Optics Design
+  - Photonics Integration
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: todd.dunning@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
 category: wood
 subcategory: hardwood
 title: Hickory Laser Cleaning
 subtitle: Revive Hickory's dense interlocking grain with precise laser cleaning techniques
 description: Laser cleaning parameters for Hickory
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
 images:
   hero:
     alt: Hickory surface undergoing laser cleaning showing precise contamination removal
@@ -154,6 +177,48 @@ materialProperties:
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
+    absorptivity:
+      value: 0.85
+      unit: dimensionless
+      min: 0.7
+      max: 0.95
+      source: ai_research
+    absorptionCoefficient:
+      value: 500000
+      unit: m⁻¹
+      min: 100000
+      max: 1000000
+      source: ai_research
+    laserDamageThreshold:
+      value: 10
+      unit: J/cm²
+      min: 5
+      max: 20
+      source: ai_research
+    thermalShockResistance:
+      value: 1.5
+      unit: MW/m
+      min: 1
+      max: 2
+      source: ai_research
+    reflectivity:
+      value: 0.1
+      unit: dimensionless
+      min: 0.05
+      max: 0.2
+      source: ai_research
+    thermalDestructionPoint:
+      value: 700
+      unit: K
+      min: 600
+      max: 800
+      source: ai_research
+    vaporPressure:
+      value: 100
+      unit: Pa
+      min: 10
+      max: 1000
+      source: ai_research
 machineSettings:
   powerRange:
     unit: W

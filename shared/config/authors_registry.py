@@ -27,10 +27,35 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "id": 1,
         "name": "Yi-Chun Lin",
         "country": "Taiwan",  # Title case for voice profile lookup and display
+        "country_display": "Taiwan",
         "title": "Ph.D.",
         "sex": "f",
-        "expertise": "Laser Materials Processing",
+        "jobTitle": "Laser Processing Engineer",
+        "expertise": [
+            "Laser Materials Processing",
+            "Semiconductor Laser Etching",
+            "Photonics in Manufacturing",
+            "Advanced Alloy Fabrication"
+        ],
+        "affiliation": {
+            "name": "National Taiwan University",
+            "type": "EducationalOrganization"
+        },
+        "credentials": [
+            "Ph.D. Materials Engineering, National Taiwan University, 2018",
+            "Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020",
+            "3+ years in laser processing R&D",
+            "Assisted in projects on ultrafast laser applications"
+        ],
+        "email": "yi-chun.lin@z-beam.com",
         "image": "/images/author/yi-chun-lin.jpg",
+        "imageAlt": "Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting",
+        "url": "https://z-beam.com/authors/yi-chun-lin",
+        "sameAs": [
+            "https://scholar.google.com/citations?user=ghi789",
+            "https://linkedin.com/in/yi-chun-lin-engineer",
+            "https://www.researchgate.net/profile/Yi-Chun-Lin-2"
+        ],
         "persona_file": "taiwan_persona.yaml",
         "formatting_file": "taiwan_formatting.yaml",
     },
@@ -38,10 +63,37 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "id": 2,
         "name": "Alessandro Moretti",
         "country": "Italy",
+        "country_display": "Italy",
         "title": "Ph.D.",
         "sex": "m",
-        "expertise": "Laser-Based Additive Manufacturing",
+        "jobTitle": "Materials Engineer",
+        "expertise": [
+            "Laser-Based Additive Manufacturing",
+            "Ceramic Materials Processing",
+            "Surface Engineering",
+            "High-Temperature Materials"
+        ],
+        "affiliation": {
+            "name": "Politecnico di Milano's Materials Dept.",
+            "type": "EducationalOrganization"
+        },
+        "alumniOf": {
+            "name": "University of Bologna",
+            "type": "EducationalOrganization"
+        },
+        "credentials": [
+            "Ph.D. Materials Science, TU Milano, 2015",
+            "5+ years industrial ceramics experience",
+            "Assisted in EU Horizon 2020 laser additive projects, 2016-2019"
+        ],
+        "email": "alessandro.moretti@z-beam.com",
         "image": "/images/author/alessandro-moretti.jpg",
+        "imageAlt": "Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab",
+        "url": "https://z-beam.com/authors/alessandro-moretti-phd",
+        "sameAs": [
+            "https://scholar.google.com/citations?user=def456",
+            "https://linkedin.com/in/alessandro-moretti-engineer"
+        ],
         "persona_file": "italy_persona.yaml",
         "formatting_file": "italy_formatting.yaml",
     },
@@ -49,10 +101,37 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "id": 3,
         "name": "Ikmanda Roswati",
         "country": "Indonesia",
+        "country_display": "Indonesia",
         "title": "Ph.D.",
         "sex": "m",
-        "expertise": "Ultrafast Laser Physics and Material Interactions",
+        "jobTitle": "Junior Research Scientist in Laser Physics",
+        "expertise": [
+            "Ultrafast Laser Physics and Material Interactions",
+            "Nonlinear Optics",
+            "Laser Ablation Techniques",
+            "Material Characterization"
+        ],
+        "affiliation": {
+            "name": "Bandung Institute of Technology",
+            "type": "EducationalOrganization"
+        },
+        "credentials": [
+            "Ph.D. Physics, ITB, 2020",
+            "2+ years in ultrafast laser research including ASEAN optics workshops",
+            "Assisted in international optics projects"
+        ],
+        "languages": [
+            "English",
+            "Bahasa Indonesia"
+        ],
+        "email": "ikmanda.roswati@z-beam.com",
         "image": "/images/author/ikmanda-roswati.jpg",
+        "imageAlt": "Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup",
+        "url": "https://z-beam.com/authors/ikmanda-roswati",
+        "sameAs": [
+            "https://linkedin.com/in/ikmanda-roswati-physicist",
+            "https://www.academia.edu/profile/IkmandaRoswati"
+        ],
         "persona_file": "indonesia_persona.yaml",
         "formatting_file": "indonesia_formatting.yaml",
     },
@@ -60,10 +139,35 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "id": 4,
         "name": "Todd Dunning",
         "country": "United States",
+        "country_display": "United States",
         "title": "MA",
         "sex": "m",
-        "expertise": "Optical Materials for Laser Systems",
+        "jobTitle": "Junior Optical Materials Specialist",
+        "expertise": [
+            "Optical Materials for Laser Systems",
+            "Thin-Film Coatings",
+            "Laser Optics Design",
+            "Photonics Integration"
+        ],
+        "affiliation": {
+            "name": "Coherent Inc.",
+            "type": "Organization"
+        },
+        "credentials": [
+            "BA Physics, UC Irvine, 2017",
+            "Hands-on at JPL optics internship, 2018",
+            "MA Optics and Photonics, UC Irvine, 2019",
+            "3+ years in laser systems development",
+            "Hands-on experience with optical fabrication"
+        ],
+        "email": "todd.dunning@z-beam.com",
         "image": "/images/author/todd-dunning.jpg",
+        "imageAlt": "Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools",
+        "url": "https://z-beam.com/authors/todd-dunning",
+        "sameAs": [
+            "https://linkedin.com/in/todd-dunning-optics",
+            "https://spie.org/profile/Todd.Dunning"
+        ],
         "persona_file": "usa_persona.yaml",
         "formatting_file": "usa_formatting.yaml",
     },

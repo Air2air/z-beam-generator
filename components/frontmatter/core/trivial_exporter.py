@@ -161,8 +161,19 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')
         category_ranges = self._get_category_ranges(category)
         
+        # Enrich author data from registry (Materials.yaml only has author.id)
+        author_field = material_data.get('author', {})
+        author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
+        
+        # Get full author data from registry
+        from shared.config.authors_registry import get_author
+        try:
+            author_data = get_author(author_id)
+        except KeyError:
+            self.logger.error(f"❌ Invalid author ID {author_id} in material {material_data.get('name', 'Unknown')}")
+            raise
+        
         # Add _metadata for voice tracking
-        author_data = material_data.get('author', {})
         frontmatter['_metadata'] = {
             'voice': {
                 'author_name': author_data.get('name', 'Unknown'),
@@ -172,18 +183,21 @@ class TrivialFrontmatterExporter:
             }
         }
         
+        # Add enriched author data to frontmatter (from registry, not Materials.yaml)
+        frontmatter['author'] = author_data.copy()
+        
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
             'category', 'subcategory', 'title', 'subtitle', 'description',
-            'author', 'images', 'caption', 'regulatoryStandards',
+            'images', 'caption', 'regulatoryStandards',
             'materialProperties', 'machineSettings', 'faq',
             '_metadata', 'material_metadata', 'subtitle_metadata'
         }
         
-        # Copy only exportable fields from Materials.yaml
+        # Copy only exportable fields from Materials.yaml (exclude 'author' - it's enriched from registry above)
         for key, value in material_data.items():
             if key not in EXPORTABLE_FIELDS:
-                # Skip fields that shouldn't be in frontmatter (applications, materialCharacteristics, environmentalImpact, outcomeMetrics, etc.)
+                # Skip fields that shouldn't be in frontmatter (author, applications, materialCharacteristics, environmentalImpact, outcomeMetrics, etc.)
                 continue
             
             if key == 'materialProperties':

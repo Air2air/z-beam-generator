@@ -5,19 +5,42 @@ _metadata:
     author_country: Taiwan
     voice_applied: true
     content_type: material
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  - Semiconductor Laser Etching
+  - Photonics in Manufacturing
+  - Advanced Alloy Fabrication
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: yi-chun.lin@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
 category: composite
 subcategory: fiber-reinforced
 title: CFRP Laser Cleaning
 subtitle: Precision laser cleaning safeguards CFRP fibers, preventing delamination for pristine composite restoration
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (CFRP)
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
 images:
   hero:
     alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
@@ -154,6 +177,48 @@ materialProperties:
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
+    absorptivity:
+      value: 0.3
+      unit: dimensionless
+      min: 0.1
+      max: 0.5
+      source: ai_research
+    absorptionCoefficient:
+      value: 50000
+      unit: m⁻¹
+      min: 10000
+      max: 100000
+      source: ai_research
+    laserDamageThreshold:
+      value: 3
+      unit: J/cm²
+      min: 1
+      max: 5
+      source: ai_research
+    thermalShockResistance:
+      value: 1.5
+      unit: MW/m
+      min: 0.5
+      max: 3
+      source: ai_research
+    reflectivity:
+      value: 0.7
+      unit: dimensionless
+      min: 0.5
+      max: 0.9
+      source: ai_research
+    thermalDestructionPoint:
+      value: 700
+      unit: K
+      min: 500
+      max: 900
+      source: ai_research
+    vaporPressure:
+      value: 100
+      unit: Pa
+      min: 1
+      max: 1000
+      source: ai_research
 machineSettings:
   powerRange:
     unit: W

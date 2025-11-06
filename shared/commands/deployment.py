@@ -11,6 +11,11 @@ def deploy_to_production():
     import shutil
     import os
     
+    # Clear materials cache to ensure fresh data is used
+    from materials.data.materials import clear_materials_cache
+    clear_materials_cache()
+    print("🔄 Cleared materials cache to ensure fresh data")
+    
     # Define source and target paths - ONLY FRONTMATTER
     source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/frontmatter"
     target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter"

@@ -5,19 +5,43 @@ _metadata:
     author_country: Italy
     voice_applied: true
     content_type: material
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  - Ceramic Materials Processing
+  - Surface Engineering
+  - High-Temperature Materials
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: alessandro.moretti@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
 category: masonry
 subcategory: general
 title: Mortar Laser Cleaning
 subtitle: Precision Laser Cleaning Revives Mortar's Porous Texture Without Compromising Binders
 description: Laser cleaning parameters for Mortar
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
 images:
   hero:
     alt: Mortar surface undergoing laser cleaning showing precise contamination removal
@@ -148,6 +172,48 @@ materialProperties:
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
+    absorptivity:
+      value: 0.7
+      unit: dimensionless
+      min: 0.5
+      max: 0.9
+      source: ai_research
+    absorptionCoefficient:
+      value: 1000000
+      unit: m⁻¹
+      min: 500000
+      max: 2000000
+      source: ai_research
+    laserDamageThreshold:
+      value: 3
+      unit: J/cm²
+      min: 1
+      max: 10
+      source: ai_research
+    thermalShockResistance:
+      value: 1.2
+      unit: MW/m
+      min: 0.5
+      max: 2.5
+      source: ai_research
+    reflectivity:
+      value: 0.3
+      unit: dimensionless
+      min: 0.1
+      max: 0.5
+      source: ai_research
+    thermalDestructionPoint:
+      value: 800
+      unit: K
+      min: 600
+      max: 1000
+      source: ai_research
+    vaporPressure:
+      value: 1
+      unit: Pa
+      min: 0.01
+      max: 10
+      source: ai_research
 machineSettings:
   powerRange:
     unit: W
