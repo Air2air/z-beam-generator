@@ -1,0 +1,127 @@
+# Variation Research for Titanium
+# Category: unknown
+# Generated: 2025-11-07T12:41:01.116119
+
+```yaml
+titanium_variations:
+  - designation: Commercially Pure Titanium Grade 1
+    standard_specification: ASTM B348, ASTM F67 (medical), UNS R50250
+    composition_characteristics: >-
+      99.0%+ Ti with very low interstitials (O ≤ 0.18%, Fe ≤ 0.20%, C ≤ 0.08%, N ≤ 0.03%, H ≤ 0.015%);
+      highest purity among CP grades, excellent corrosion resistance, high ductility
+    common_names_trade_names: CP Ti Grade 1, Unalloyed Titanium Grade 1
+    primary_applications: Chemical processing equipment, medical implants (non-load bearing), desalination plants, anodizing applications
+    key_properties_differ_from_base: Higher ductility and formability than higher grades; lower strength (yield ~240 MPa) but superior corrosion resistance in reducing acids compared to pure Ti (which is hypothetical 100% Ti); more forgiving in welding
+    laser_cleaning_implications: Easier due to high purity and thin passive oxide layer; standard Nd:YAG or fiber laser parameters (1064 nm, pulse energy 1-10 mJ, fluence 1-5 J/cm²) suffice; minimal risk of subsurface heating or embrittlement
+
+  - designation: Commercially Pure Titanium Grade 2
+    standard_specification: ASTM B348, ASTM F67, AMS 4902, UNS R50400
+    composition_characteristics: >-
+      99.0%+ Ti with moderate interstitials (O ≤ 0.25%, Fe ≤ 0.30%, C ≤ 0.08%, N ≤ 0.03%, H ≤ 0.015%);
+      balanced purity for strength and corrosion resistance
+    common_names_trade_names: CP Ti Grade 2, Industrial Grade Titanium
+    primary_applications: Heat exchangers, pressure vessels, marine hardware, architectural panels, most common CP grade for general use
+    key_properties_differ_from_base: Moderate strength increase (yield ~275 MPa) over Grade 1 with retained ductility; better weldability than higher oxygen grades; excellent resistance to pitting and crevice corrosion vs. pure Ti
+    laser_cleaning_implications: Similar to Grade 1, straightforward with low fluence (0.5-3 J/cm²) to ablate surface oxides without altering microstructure; high reflectivity requires higher pulse overlap
+
+  - designation: Commercially Pure Titanium Grade 3
+    standard_specification: ASTM B348, ASTM F67, UNS R50550
+    composition_characteristics: >-
+      99.0%+ Ti with higher interstitials (O ≤ 0.35%, Fe ≤ 0.30%, C ≤ 0.08%, N ≤ 0.05%, H ≤ 0.015%);
+      increased oxygen for higher strength
+    common_names_trade_names: CP Ti Grade 3
+    primary_applications: Cryogenic vessels, sour gas service, hydraulic tubing where moderate strength is needed
+    key_properties_differ_from_base: Higher strength (yield ~380 MPa) and reduced ductility compared to lower grades; still excellent corrosion resistance but slightly lower formability than pure Ti baseline
+    laser_cleaning_implications: Slightly harder due to thicker oxide scale from higher oxygen; may require increased fluence (2-6 J/cm²) or shorter pulses to avoid thermal effects on interstitial-rich surface
+
+  - designation: Commercially Pure Titanium Grade 4
+    standard_specification: ASTM B348, ASTM F67, UNS R50700
+    composition_characteristics: >-
+      99.0%+ Ti with highest interstitials in CP series (O ≤ 0.40%, Fe ≤ 0.50%, C ≤ 0.08%, N ≤ 0.05%, H ≤ 0.015%);
+      highest strength among CP grades
+    common_names_trade_names: CP Ti Grade 4, High-Strength Unalloyed Titanium
+    primary_applications: Airframes, engine components, high-pressure vessels, medical prosthetics requiring strength
+    key_properties_differ_from_base: Highest strength in CP (yield ~480 MPa) but lowest ductility; good corrosion resistance, more prone to embrittlement during welding than purer forms
+    laser_cleaning_implications: Harder due to robust oxide layer; needs optimized parameters like 532 nm wavelength for better absorption or higher energy (5-10 J/cm²) to prevent recalescence and alpha case formation
+
+  - designation: Commercially Pure Titanium Grade 7
+    standard_specification: ASTM B348, UNS R52400
+    composition_characteristics: >-
+      99.0%+ Ti with 0.12-0.25% Pd (or Ru equivalent); low interstitials similar to Grade 2 but with noble metal for enhanced corrosion resistance
+    common_names_trade_names: CP Ti Grade 7, Palladium-Stabilized Titanium
+    primary_applications: Severe corrosive environments like wet chlorine gas handling, flue gas desulfurization, chemical reactors
+    key_properties_differ_from_base: Superior resistance to reducing acids (e.g., sulfuric, hydrochloric) compared to pure Ti; similar mechanicals to Grade 2 (yield ~275 MPa) but galvanic protection from Pd
+    laser_cleaning_implications: Easier in corrosive residues due to Pd aiding oxide removal; standard IR laser parameters work well, but monitor for Pd enrichment on surface post-cleaning
+
+  - designation: Commercially Pure Titanium Grade 12
+    standard_specification: ASTM B348, UNS R53400
+    composition_characteristics: >-
+      Ti-0.25-0.4Mo-0.6-0.9Ni; interstitials like Grade 2; alpha alloy with stabilizers for improved corrosion
+    common_names_trade_names: CP Ti Grade 12, Ti-0.3Mo-0.8Ni
+    primary_applications: Condenser tubing, shell-and-tube heat exchangers in power plants, offshore platforms
+    key_properties_differ_from_base: Better creep resistance and strength at elevated temps (yield ~345 MPa) than pure Ti; enhanced resistance to crevice corrosion in hot brines
+    laser_cleaning_implications: Moderate difficulty; Mo/Ni may alter absorption—use pulsed lasers with 1-4 J/cm² to avoid alloy segregation during ablation
+
+  - designation: Titanium Grade 5 (Ti-6Al-4V)
+    standard_specification: ASTM B348, AMS 4928, ASTM F1472 (medical), UNS R56400
+    composition_characteristics: >-
+      Ti-6%Al-4%V (balance Ti); alpha-beta alloy; Al as alpha stabilizer, V as beta stabilizer; O ≤ 0.20%
+    common_names_trade_names: Ti-6-4, 6Al-4V
+    primary_applications: Aerospace airframes, turbine blades, biomedical implants (hips, knees), automotive (connecting rods)
+    key_properties_differ_from_base: Significantly higher strength (yield ~830 MPa annealed) and hardness than CP Ti; good fatigue resistance but lower ductility and corrosion resistance in certain acids
+    laser_cleaning_implications: Harder due to alloyed surface and potential alpha case; requires higher fluence (3-8 J/cm²) and shorter pulses to prevent vanadium-rich residue or thermal cracking
+
+  - designation: Titanium Grade 23 (Ti-6Al-4V ELI)
+    standard_specification: ASTM F136, AMS 4907, UNS R56407
+    composition_characteristics: >-
+      Ti-6%Al-4%V Extra Low Interstitial (ELI); O ≤ 0.13%, lower Fe than standard Grade 5; improved fracture toughness
+    common_names_trade_names: Ti-6Al-4V ELI, Grade 23
+    primary_applications: Surgical implants, prosthetics, cryogenic applications, high-purity aerospace parts
+    key_properties_differ_from_base: Better ductility and fracture toughness (K_IC ~60 MPa√m) than standard Grade 5; similar strength but reduced notch sensitivity vs. CP Ti
+    laser_cleaning_implications: Easier than standard Grade 5 due to lower interstitials; standard parameters (1-5 J/cm²) effective for oxide removal without inclusions; ideal for medical sterility prep
+
+  - designation: Titanium Grade 9 (Ti-3Al-2.5V)
+    standard_specification: ASTM B348, AMS 4943, UNS R56320
+    composition_characteristics: >-
+      Ti-3%Al-2.5%V; near-alpha alloy; good balance of strength and cold formability; O ≤ 0.15%
+    common_names_trade_names: Ti-3-2.5, Near-Alpha Titanium
+    primary_applications: Hydraulic tubing, springs, bellows in aerospace, bicycle frames
+    key_properties_differ_from_base: Higher strength (yield ~620 MPa) and better formability than CP Ti; excellent resistance to stress corrosion cracking
+    laser_cleaning_implications: Moderate; Al content increases reflectivity—use green laser (532 nm) for better efficiency; fluence 2-6 J/cm² to handle thin oxide layers
+
+  - designation: Titanium Grade 6 (Ti-5Al-2.5Sn)
+    standard_specification: ASTM B348, AMS 4911, UNS R54520
+    composition_characteristics: >-
+      Ti-5%Al-2.5%Sn; alpha alloy; Sn as neutral stabilizer; O ≤ 0.20%; stable at high temperatures
+    common_names_trade_names: Ti-5-2.5, 5Al-2.5Sn
+    primary_applications: Airframe skins, compressor blades, cryogenic components
+    key_properties_differ_from_base: Excellent creep resistance up to 480°C and weldability over CP Ti; moderate strength (yield ~790 MPa) with good toughness
+    laser_cleaning_implications: Similar to Grade 5 but easier at high temps; standard IR parameters; Sn may volatilize, requiring ventilation and adjusted pulse duration
+
+  - designation: Titanium Grade 8 (Ti-8Al-1Mo-1V)
+    standard_specification: ASTM B348, AMS 4919, UNS R54810
+    composition_characteristics: >-
+      Ti-8%Al-1%Mo-1%V; near-alpha alloy; high Al for strength; O ≤ 0.12%
+    common_names_trade_names: Ti-8-1-1, High-Temperature Alpha Titanium
+    primary_applications: Jet engine parts, fasteners, high-temp airframes
+    key_properties_differ_from_base: High strength (yield ~900 MPa) and oxidation resistance up to 540°C vs. CP Ti; lower ductility
+    laser_cleaning_implications: Harder due to high Al oxide formation; needs high-power lasers (fluence 4-10 J/cm²) and cooling to avoid alpha stabilization
+
+  - designation: Beta-C Titanium (Ti-3Al-8V-6Cr-4Mo-4Zr)
+    standard_specification: AMS 4959, UNS R58650
+    composition_characteristics: >-
+      Ti-3%Al-8%V-6%Cr-4%Mo-4%Zr; metastable beta alloy; multiple beta stabilizers; O ≤ 0.12%
+    common_names_trade_names: Beta-C, Ti-38-6-4-4-0.4
+    primary_applications: Springs, fasteners, high-strength forgings in aerospace
+    key_properties_differ_from_base: Very high strength (yield >1100 MPa after aging) and deep hardenability vs. CP Ti; excellent cold formability in solution state
+    laser_cleaning_implications: Challenging due to complex alloying; beta phase alters thermal conductivity—use ultra-short pulses (ns) at 2-7 J/cm² to prevent phase transformation
+
+  - designation: Ti-10V-2Fe-3Al
+    standard_specification: AMS 4983, UNS R56410
+    composition_characteristics: >-
+      Ti-10%V-2%Fe-3%Al; beta alloy; Fe as beta stabilizer for age hardening; O ≤ 0.13%
+    common_names_trade_names: Ti-10-2-3, Beta Titanium Alloy
+    primary_applications: Aerospace forgings, landing gear, high-strength tubing
+    key_properties_differ_from_base: Exceptional strength (yield ~1200 MPa aged) and fatigue life over CP Ti; good machinability in beta condition
+    laser_cleaning_implications: Harder with potential Fe segregation; requires precise fluence (3-8 J/cm²) and scanning speed to avoid omega phase precipitation on surface
+```

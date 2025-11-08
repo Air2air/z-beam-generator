@@ -1,21 +1,34 @@
 # Z-Beam Generator - Makefile
 # Data quality validation and automation
 
-.PHONY: help validate validate-strict test clean install-hooks
+.PHONY: help validate validate-strict test clean install-hooks generate-frontmatter deploy
 
 # Default target
 help:
-	@echo "Z-Beam Generator - Data Quality Commands"
+	@echo "Z-Beam Generator - Available Commands"
 	@echo ""
-	@echo "Available targets:"
+	@echo "📦 FRONTMATTER WORKFLOW:"
+	@echo "  make generate-frontmatter  - Regenerate frontmatter files from Materials.yaml"
+	@echo "  make deploy               - Deploy frontmatter to Next.js production site"
+	@echo "  make generate-and-deploy  - Generate + Deploy in one command"
+	@echo ""
+	@echo "✅ DATA VALIDATION:"
 	@echo "  make validate        - Run data validation (warnings allowed)"
 	@echo "  make validate-strict - Run validation (fail on any errors)"
 	@echo "  make validate-report - Generate detailed validation report"
+	@echo ""
+	@echo "🔧 DATA FIXES:"
 	@echo "  make fix-units       - Auto-fix unit standardization issues"
 	@echo "  make fix-values      - Auto-fix qualitative value issues"
-	@echo "  make install-hooks   - Install pre-commit validation hook"
+	@echo ""
+	@echo "🧪 TESTING:"
 	@echo "  make test            - Run all tests including validation"
 	@echo "  make clean           - Clean generated reports and caches"
+	@echo ""
+	@echo "💡 WORKFLOW EXAMPLE:"
+	@echo "  1. Edit Materials.yaml with new data"
+	@echo "  2. make generate-frontmatter  (converts to YAML frontmatter)"
+	@echo "  3. make deploy                (copies to production site)"
 	@echo ""
 
 # Run validation (allow warnings)
@@ -159,6 +172,37 @@ install-hooks:
 test: validate
 	@echo "Running pytest..."
 	@pytest tests/ -v
+
+# Frontmatter Generation and Deployment
+generate-frontmatter:
+	@echo "📦 Regenerating frontmatter files from Materials.yaml..."
+	@echo ""
+	@python3 << 'EOF'
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+from components.frontmatter.core.trivial_exporter import TrivialFrontmatterExporter
+
+print("🔄 Loading Materials.yaml and exporting to frontmatter/...")
+exporter = TrivialFrontmatterExporter()
+results = exporter.export_all()
+success_count = sum(1 for v in results.values() if v)
+total_count = len(results)
+print(f"\n✅ Generated {success_count}/{total_count} frontmatter files")
+print(f"📁 Location: frontmatter/materials/")
+print(f"\n💡 Next: Run 'make deploy' to copy to production")
+EOF
+
+deploy:
+	@echo "🚀 Deploying frontmatter to Next.js production site..."
+	@echo ""
+	@python3 run.py --deploy
+	@echo ""
+	@echo "✅ Deployment complete!"
+
+generate-and-deploy: generate-frontmatter deploy
+	@echo ""
+	@echo "🎉 Frontmatter generated and deployed to production!"
 
 # Clean generated files
 clean:

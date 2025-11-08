@@ -1,0 +1,70 @@
+# Variation Research for Mahogany
+# Category: unknown
+# Generated: 2025-11-07T12:42:10.190404
+
+```yaml
+variations:
+  - name: "Honduras Mahogany FAS kiln-dried"
+    standard: NHLA (National Hardwood Lumber Association) grading; Botanical name: Swietenia macrophylla; CITES Appendix II (regulated trade)
+    composition_characteristics: True mahogany from Central/South America; heartwood reddish-brown with interlocking grain; density 500-600 kg/m³; contains natural oils and gums; kiln-dried to 6-8% moisture content; FAS grade requires minimum 6" width, 8' length, 83.3% clear face
+    common_names_trade_names: Genuine Mahogany, Big-Leaf Mahogany, Brazilian Mahogany
+    primary_applications: High-end furniture, cabinetry, boat interiors, musical instruments, interior trim
+    key_properties_differing_from_base: Higher durability and rot resistance than look-alikes; finer, more uniform grain; superior workability and stability; darker, richer color over time; Janka hardness ~800-900 lbf (softer than oak but harder than pine)
+    laser_cleaning_implications: Easier due to uniform density and low resin variability; standard wood parameters (e.g., 1064 nm Nd:YAG laser, 1-5 J/cm² fluence, short pulses <10 ns) suffice; minimal charring risk, but interlocking grain may require scanning adjustments to avoid surface checking
+
+  - name: "Honduras Mahogany Select kiln-dried"
+    standard: NHLA grading; Botanical name: Swietenia macrophylla; CITES Appendix II
+    composition_characteristics: Similar to FAS but higher quality with nearly defect-free boards; heartwood color varies from salmon to deep red; straight to interlocked grain; kiln-dried to 6-8% moisture; Select grade emphasizes appearance with minimal knots or defects
+    common_names_trade_names: Genuine Mahogany, True Mahogany Select
+    primary_applications: Veneers, fine woodworking, architectural millwork, luxury flooring
+    key_properties_differing_from_base: Enhanced aesthetic appeal with clearer, more consistent color; slightly higher stability post-drying; better finishing properties due to fewer defects; comparable hardness to FAS (~800 lbf)
+    laser_cleaning_implications: Easier than lower grades due to fewer defects absorbing unevenly; low risk of hidden resin pockets causing flare-ups; use moderate fluence (2-4 J/cm²) for surface contaminants without altering grain pattern
+
+  - name: "Cuban Mahogany No.1 Common air-dried"
+    standard: NHLA grading; Botanical name: Swietenia mahagoni; CITES Appendix II (highly restricted)
+    composition_characteristics: True mahogany from Caribbean/Florida; lighter reddish-brown heartwood; coarser grain than Honduras; density 450-550 kg/m³; air-dried to 10-12% moisture; No.1 Common allows some defects like small knots but sound
+    common_names_trade_names: West Indian Mahogany, Spanish Mahogany
+    primary_applications: Antique restoration, boat building, turned items, specialty furniture
+    key_properties_differing_from_base: Lighter weight and color; more prone to shrinkage (up to 8% tangential); less rot-resistant than Honduras; Janka hardness ~700-800 lbf (slightly softer)
+    laser_cleaning_implications: Moderately harder due to variable moisture and coarser grain leading to uneven ablation; requires lower fluence (1-3 J/cm²) and longer wavelengths to prevent splintering; air-dried state may increase hygroscopic absorption, needing pre-scan drying
+
+  - name: "African Mahogany FAS kiln-dried"
+    standard: NHLA or similar international grading (e.g., ATIBT); Botanical name: Khaya ivorensis or Khaya anthotheca; Not CITES-restricted
+    composition_characteristics: Look-alike from West Africa; heartwood pinkish to red-brown; interlocked grain with coarse texture; density 500-650 kg/m³; higher silica content; kiln-dried to 6-8% moisture; FAS grade for clear cutting
+    common_names_trade_names: Khaya Mahogany, Acajou d'Afrique
+    primary_applications: Furniture, joinery, boat building, plywood; cost-effective alternative to true mahogany
+    key_properties_differing_from_base: Higher density and hardness (Janka ~900-1,000 lbf); more blunting to tools due to silica; less color stability (fades faster); good durability but inferior to true mahogany in rot resistance
+    laser_cleaning_implications: Harder due to silica inclusions causing scattering and hotspots; needs higher pulse energy (3-6 J/cm²) or shorter wavelengths (e.g., 532 nm) for efficient removal; risk of micro-cracking in interlocked grain, requiring multi-pass low-fluence approach
+
+  - name: "African Mahogany Select air-dried"
+    standard: ATIBT (Association Technique Internationale des Bois Tropicaux) grading; Botanical name: Khaya spp.
+    composition_characteristics: Premium grade with minimal defects; similar composition to FAS but clearer; air-dried to 10-12% moisture allowing natural seasoning; grain straight to wavy
+    common_names_trade_names: Ivorian Mahogany, Nigerian Mahogany
+    primary_applications: Interior paneling, cabinetry, musical instrument bodies
+    key_properties_differing_from_base: Better surface quality for finishing; slightly lower density variability; comparable hardness but more dimensional instability from air-drying (shrinkage 6-9%)
+    laser_cleaning_implications: Similar to FAS but easier on clear surfaces; air-drying increases moisture-related absorption, potentially easier initial cleaning but risk of warping post-laser; adjust parameters for 10-15% higher humidity tolerance (e.g., 2-5 J/cm²)
+
+  - name: "Sapele Mahogany FAS kiln-dried"
+    standard: NHLA grading; Botanical name: Entandrophragma cylindricum; Not CITES-restricted
+    composition_characteristics: African look-alike; heartwood dark red-brown with ribbon-like grain; interlocked and wavy; density 600-700 kg/m³; kiln-dried to 6-8% moisture; FAS for high yield clear wood
+    common_names_trade_names: Sapele, Penkye, Aboudikro
+    primary_applications: Veneers, furniture, cabinet doors, guitar bodies, boat planking
+    key_properties_differing_from_base: Denser and harder (Janka ~1,000-1,200 lbf); more pronounced figuring for aesthetics; higher stability but prone to splitting if not dried properly; good decay resistance
+    laser_cleaning_implications: Harder due to high density and wavy grain causing irregular energy distribution; requires precise scanning and higher fluence (4-7 J/cm²) to penetrate; ribbon stripe may reflect laser, needing matte pre-treatment or angled incidence to avoid glare-induced damage
+
+  - name: "Philippine Mahogany No.1 Common kiln-dried"
+    standard: PHLPA (Philippine Lumber Producers Association) or NHLA equivalent; Botanical name: Shorea spp. (e.g., Shorea negrosa, Parashorea malaanonan); Not CITES-restricted
+    composition_characteristics: Southeast Asian light red meranti group; heartwood pale red to brown; straight grain, coarse texture; density 400-550 kg/m³; kiln-dried to 6-8% moisture; No.1 Common allows minor defects
+    common_names_trade_names: Lauan Mahogany, White Lauan, Red Lauan
+    primary_applications: Plywood, construction lumber, furniture frames, interior molding
+    key_properties_differing_from_base: Lighter and softer (Janka ~600-800 lbf); less durable in moist environments; easier to work but poorer finishing without filler; more affordable
+    laser_cleaning_implications: Easier due to lower density and straight grain for uniform ablation; standard parameters (1-4 J/cm², 1064 nm) work well with low charring; coarse texture may trap contaminants, needing higher repetition rates for thorough cleaning
+
+  - name: "Philippine Mahogany Select air-dried"
+    standard: PHLPA grading; Botanical name: Shorea spp.
+    composition_characteristics: Higher grade with fewer defects; similar pale to red heartwood; air-dried to 10-12% moisture; finer selection for appearance
+    common_names_trade_names: Meranti Mahogany, Dark Red Meranti
+    primary_applications: Veneer facing, light furniture, decorative paneling
+    key_properties_differing_from_base: Improved clarity and color consistency; slightly higher moisture variability leading to more warp potential; comparable softness but better for bending applications
+    laser_cleaning_implications: Moderately easy but air-drying complicates with potential steam generation; use lower fluence (1-3 J/cm²) to avoid blistering; straight grain allows efficient linear scanning
+```

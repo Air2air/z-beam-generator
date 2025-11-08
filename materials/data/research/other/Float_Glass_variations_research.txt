@@ -1,0 +1,86 @@
+# Variation Research for Float Glass
+# Category: unknown
+# Generated: 2025-11-07T12:47:09.402627
+
+```yaml
+variations:
+  - name: Standard Clear Float Glass
+    standard: ASTM C1036 (Standard Specification for Flat Glass); ISO 12543 (Glass in Building); EN 572-2 (Float Glass)
+    composition_characteristics: Soda-lime-silica glass with typical iron content (0.08-0.12% Fe2O3); produced via float process on molten tin bath; available in thicknesses from 1.5 mm to 19 mm; annealed unless specified otherwise.
+    common_names_trade_names: Clear float glass; Pilkington Optiwhite (basic clear variant); generic soda-lime float.
+    primary_applications: Windows, doors, mirrors, tabletops, general glazing in residential and commercial buildings; automotive windshields (pre-tempered).
+    key_properties_differing_from_base: Higher visible light transmittance (88-90%) compared to tinted variants; standard solar heat gain coefficient (SHGC ~0.8-0.9); prone to greenish tint at edges due to iron content; thermal expansion coefficient ~9 x 10^-6 /K.
+    laser_cleaning_implications: Easier due to smooth, non-porous surface; standard Nd:YAG or CO2 lasers (1064 nm or 10.6 μm) at low fluence (0.5-2 J/cm²) effectively remove dust, oils, or residues without substrate damage; no special parameters needed beyond avoiding thermal cracking.
+
+  - name: Low-Iron Float Glass
+    standard: ASTM C1036 Type I (Class 1, low-iron); EN 572-4 (Low-Iron Float Glass); GANA (Glass Association of North America) guidelines.
+    composition_characteristics: Soda-lime-silica with reduced iron oxide (<0.02% Fe2O3); float process yields ultra-clear sheets; thicknesses 2-12 mm; minimal color distortion.
+    common_names_trade_names: Ultra-clear float glass; Starphire (PPG); Optiwhite (Pilkington); Diamant (Saint-Gobain).
+    primary_applications: High-end architectural glazing, display cases, furniture, aquariums, solar panels where color neutrality is required; premium shower enclosures.
+    key_properties_differing_from_base: Superior visible light transmittance (91-92%) vs. standard clear (88-90%); reduced UV absorption; clearer appearance without green tint; slightly higher cost but better aesthetics.
+    laser_cleaning_implications: Similar ease to standard clear; low-iron purity reduces absorption at common laser wavelengths, allowing slightly higher fluence (1-3 J/cm²) without heating; ideal for precise cleaning of optical surfaces, but monitor for micro-cracks in thin sheets.
+
+  - name: Tinted Float Glass (Gray)
+    standard: ASTM C1036 Type II (Tinted); EN 572-3 (Tinted Float Glass); ANSI Z97.1 for safety glazing.
+    composition_characteristics: Soda-lime-silica base with added metal oxides (e.g., iron, cobalt for gray hue); float process; solar energy transmittance reduced; thicknesses 3-12 mm.
+    common_names_trade_names: Gray float glass; Solargray (PPG); Satinovo Gray (Saint-Gobain); neutral density glass.
+    primary_applications: Building facades, skylights, automotive side/rear windows; energy-efficient glazing to reduce glare and heat.
+    key_properties_differing_from_base: Lower visible transmittance (40-70%) and SHGC (0.4-0.6) vs. clear; increased UV blocking; subtle color shift affects aesthetics but enhances privacy.
+    laser_cleaning_implications: Moderately harder due to tint absorption; requires lower fluence (0.3-1.5 J/cm²) with shorter pulses to avoid uneven heating or color fading; CO2 lasers preferred over Nd:YAG for surface contaminants without penetrating tint layer.
+
+  - name: Tinted Float Glass (Bronze)
+    standard: ASTM C1036 Type II; EN 572-3; ASTM E1980 for tint evaluation.
+    composition_characteristics: Soda-lime-silica with iron and copper oxides for bronze tone; float process; balanced light and heat rejection; thicknesses 4-10 mm.
+    common_names_trade_names: Bronze float glass; Solarbronze (PPG); Bronze tint (Guardian Industries).
+    primary_applications: Commercial building envelopes, decorative partitions, greenhouse glazing; heat control in warm climates.
+    key_properties_differing_from_base: Visible transmittance 40-60%, SHGC 0.4-0.5; warmer color tone vs. clear neutrality; better infrared reflection than clear.
+    laser_cleaning_implications: Slightly harder; metallic oxides increase absorption at 1064 nm, necessitating pulse energies <1 J/cm² and scanning speeds >100 mm/s to prevent thermal discoloration; effective for removing construction residues but test for tint stability.
+
+  - name: Tinted Float Glass (Blue-Green)
+    standard: ASTM C1036 Type II; EN 572-3; ISO 9050 for optical properties.
+    composition_characteristics: Soda-lime-silica with chromium and copper oxides for blue-green hue; float process; thicknesses 3-8 mm; moderate solar control.
+    common_names_trade_names: Blue-green float glass; Ocean tint (Pilkington); Azure (Saint-Gobain).
+    primary_applications: Office buildings, automotive glass, pool enclosures; aesthetic and functional shading.
+    key_properties_differing_from_base: Visible transmittance 50-70%, SHGC 0.5-0.7; cooler color vs. clear; enhanced glare reduction without heavy darkening.
+    laser_cleaning_implications: Comparable to other tints; higher absorption in visible-NIR requires adjusted parameters (fluence 0.4-1.8 J/cm², 532 nm green laser optional for better contrast); easier on non-metallic contaminants but avoid overexposure to prevent subtle hue shifts.
+
+  - name: Low-Emissivity (Low-E) Coated Float Glass
+    standard: ASTM E1980 (Low-E Coatings); EN 1096-1 (Coated Glass); NFRC 100 for thermal performance.
+    composition_characteristics: Clear or low-iron float base with vacuum-deposited thin films (e.g., silver, tin oxide layers, 10-100 nm thick); float process followed by coating; hard or soft coat types; thicknesses 4-12 mm.
+    common_names_trade_names: Low-E float glass; ClimaGuard (Guardian); Planitherm (Saint-Gobain); SunGuard (Guardian).
+    primary_applications: Energy-efficient windows, IGUs (insulated glass units), curtain walls; residential/commercial fenestration for thermal insulation.
+    key_properties_differing_from_base: Low emittance (0.04-0.2) reduces heat transfer (U-value 0.2-0.5 W/m²K vs. 5.8 for clear); high solar heat gain selectivity; reflective appearance on one side.
+    laser_cleaning_implications: Harder due to sensitive coatings; soft coats (pyrolytic) tolerate Nd:YAG at low fluence (0.2-1 J/cm²) but silver-based hard coats risk delamination—use non-ablative modes or 10.6 μm CO2 for surface cleaning only; pre-test to avoid voiding warranties.
+
+  - name: Reflective Coated Float Glass
+    standard: ASTM C1376 (Solar Heat Gain); EN 1096-2 (Reflectivity); ASTM F1945 for thin films.
+    composition_characteristics: Float glass base with metallic oxide coatings (e.g., bronze or chrome for reflectivity); float process with sputtering; thicknesses 4-10 mm; high external reflection.
+    common_names_trade_names: Solar reflective glass; Reflectasol (Pilkington); Spectratherm (Viracon).
+    primary_applications: High-rise buildings, commercial facades; glare and heat control in sunny regions.
+    key_properties_differing_from_base: High visible reflectance (20-40%) and low transmittance (10-30%); SHGC <0.3; mirror-like exterior vs. clear transparency.
+    laser_cleaning_implications: More challenging; reflective coatings scatter laser energy, requiring higher power (1-4 J/cm²) but risking ablation—use defocused beams or fiber lasers (1070 nm) for uniform cleaning; coatings may peel if overheated, complicating residue removal.
+
+  - name: Tempered Float Glass
+    standard: ASTM C1048 (Heat-Treated Flat Glass); ANSI Z97.1 (Safety Glazing); EN 12150 (Thermally Toughened Glass).
+    composition_characteristics: Annealed float glass (clear or tinted) rapidly heated to 600-700°C then quenched; creates compressive surface stress (69-103 MPa); thicknesses 3-19 mm; breaks into small granules.
+    common_names_trade_names: Toughened float glass; Tempered soda-lime glass; Pilkington Toughened.
+    primary_applications: Shower doors, balustrades, tabletops, automotive side windows; safety glazing where impact resistance is needed.
+    key_properties_differing_from_base: 4-5x greater strength and thermal shock resistance (up to 200°C delta vs. 40°C for annealed); safer fragmentation; slightly warped if not fully annealed.
+    laser_cleaning_implications: Easier for intact surfaces but risk of spontaneous breakage if stressed; use low-fluence pulses (0.5-2 J/cm²) to avoid inducing cracks—CO2 lasers safer as they don't penetrate deeply; post-cleaning inspection for micro-fractures essential.
+
+  - name: Heat-Strengthened Float Glass
+    standard: ASTM C1048 Condition B; EN 1863 (Heat-Strengthened Glass); GANA standards.
+    composition_characteristics: Float glass heated and slowly cooled to induce moderate compressive stress (24-52 MPa); thicknesses 6-12 mm; larger break patterns than tempered.
+    common_names_trade_names: Heat-toughened glass; Semi-tempered float; HS glass.
+    primary_applications: Large frameless glazing, spandrel panels, floors; where moderate strength without full tempering is sufficient.
+    key_properties_differing_from_base: 2x strength of annealed (thermal shock ~100°C delta); less distortion than tempered; not safety glazing certified.
+    laser_cleaning_implications: Similar to annealed but with added caution for stress; standard parameters work (0.5-2.5 J/cm²), but avoid edge cleaning to prevent stress concentration; easier than tempered due to lower residual stresses.
+
+  - name: Patterned Float Glass
+    standard: ASTM C1036 Type III (Patterned); EN 572-5 (Patterned Float Glass); ISO 12543.
+    composition_characteristics: Soda-lime float glass with textured patterns rolled into surface during float process (e.g., obscure, fluted); thicknesses 3-10 mm; one or both sides patterned.
+    common_names_trade_names: Obscure float glass; Kasumi (Pilkington); Mastercraft patterns (various).
+    primary_applications: Privacy windows, bathroom glass, decorative partitions; light diffusion in interiors.
+    key_properties_differing_from_base: Reduced transmittance (70-85% diffused vs. direct); textured surface increases light scattering; slightly lower strength due to patterns.
+    laser_cleaning_implications: Harder on patterned side due to texture trapping residues; requires angled scanning or higher fluence (1-3 J/cm²) for crevices—Nd:YAG effective but may need multiple passes; smooth side cleans like standard float.
+```

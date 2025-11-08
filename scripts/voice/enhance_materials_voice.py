@@ -329,10 +329,14 @@ Answer:"""
         intensity: int
     ) -> bool:
         """Enhance FAQ answers, regenerating any non-English text."""
-        if not isinstance(faq, dict) or 'questions' not in faq:
+        # Handle both old dict format {'questions': [...]} and new list format [...]
+        if isinstance(faq, list):
+            questions = faq
+        elif isinstance(faq, dict) and 'questions' in faq:
+            questions = faq['questions']
+        else:
             return False
         
-        questions = faq['questions']
         if not isinstance(questions, list):
             return False
         

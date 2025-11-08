@@ -1,0 +1,70 @@
+# Variation Research for Oak
+# Category: unknown
+# Generated: 2025-11-07T12:41:41.894797
+
+```yaml
+variations:
+  - designation: White Oak FAS grade kiln-dried
+    standard: NHLA (National Hardwood Lumber Association) grading rules; Botanical name: Quercus alba; ASTM D3023 (for lumber grading practices)
+    composition_characteristics: Quarter-sawn or plain-sawn boards from heartwood of White Oak; tight grain, prominent rays; kiln-dried to 6-8% moisture content; FAS grade requires minimum 6" x 8" clear face with few defects like knots or checks
+    common_names_trade_names: American White Oak, Quartersawn White Oak; Trade names: "Classic White Oak"
+    primary_applications: High-end furniture, cabinetry, flooring, boatbuilding, barrel staves for whiskey aging
+    key_properties_differing_from_base: Higher density (0.68 g/cm³ vs. base Oak average 0.65 g/cm³); excellent rot and water resistance due to tyloses in vessels; straighter grain and greater hardness (Janka 1360 lbf) than Red Oak variants; lower porosity reduces absorption
+    laser_cleaning_implications: Easier due to higher density and lower porosity, allowing precise removal of surface contaminants without deep penetration; requires lower fluence (1-5 J/cm²) to avoid charring; kiln-drying reduces steam explosion risk compared to green wood
+
+  - designation: White Oak No.1 Common grade air-dried
+    standard: NHLA grading rules; Botanical name: Quercus alba; USDA Forest Service specifications for export lumber
+    composition_characteristics: Plain-sawn lumber with allowable defects like small knots and pin holes; air-dried to 8-12% moisture content; heartwood dominant with light to medium brown color
+    common_names_trade_names: Common White Oak, Rustic White Oak
+    primary_applications: Construction framing, paneling, rough furniture components, cooperage for non-food barrels
+    key_properties_differing_from_base: Moderate density (0.65 g/cm³); good durability but more defects lead to variable strength (compressive strength ~7000 psi); higher moisture than kiln-dried increases dimensional instability
+    laser_cleaning_implications: Moderately harder due to higher residual moisture causing potential steam-induced surface roughening; needs pulsed lasers with 10-20 ns pulse width and fluence 2-6 J/cm²; defects like knots may require adjusted scanning to prevent uneven cleaning
+
+  - designation: Red Oak FAS grade kiln-dried
+    standard: NHLA grading rules; Botanical name: Quercus rubra (Northern Red Oak) or Quercus falcata (Southern Red Oak); ASTM D1990 (for structural wood)
+    composition_characteristics: Plain-sawn or rift-sawn from Red Oak heartwood; coarse texture, prominent grain; kiln-dried to 6-8% moisture; FAS grade with minimal defects and uniform pinkish-red to reddish-brown color
+    common_names_trade_names: American Red Oak, Northern Red Oak; Trade names: "Select Red Oak"
+    primary_applications: Flooring, furniture, millwork, veneer, cabinetry
+    key_properties_differing_from_base: Lower density (0.63 g/cm³) and hardness (Janka 1290 lbf) than White Oak; more open grain structure increases stain absorption but reduces natural water resistance; higher tannin content can cause color variation
+    laser_cleaning_implications: Harder due to porous structure allowing deeper laser penetration and risk of fiber damage; requires shorter wavelengths (e.g., 1064 nm Nd:YAG) and lower energy (1-4 J/cm²) to minimize thermal spread; kiln-drying aids uniform cleaning
+
+  - designation: Red Oak Select grade kiln-dried
+    standard: NHLA grading rules; Botanical name: Quercus rubra; AWI (Architectural Woodwork Institute) standards for premium millwork
+    composition_characteristics: High-quality boards with almost no defects, often quarter-sawn for stability; kiln-dried to 4-6% moisture; even color and fine grain
+    common_names_trade_names: Premium Red Oak, Select Northern Red Oak
+    primary_applications: Architectural millwork, high-end interior trim, custom furniture
+    key_properties_differing_from_base: Enhanced stability and uniformity over common grades; similar density to FAS Red Oak but fewer defects improve overall strength (modulus of rupture ~14,000 psi); better finishing properties
+    laser_cleaning_implications: Easier than lower grades due to fewer defects and uniform surface; standard parameters (fluence 2-5 J/cm², 532 nm green laser for better absorption) work well; low moisture prevents bubbling
+
+  - designation: White Oak Green (undried)
+    standard: USDA Forest Service green lumber specs; Botanical name: Quercus alba; No formal NHLA grade for green, but used in log form
+    composition_characteristics: Freshly harvested logs or rough lumber; high moisture content (30-50%+); sapwood and heartwood mix with greenish tint in sapwood
+    common_names_trade_names: Green White Oak, Live White Oak (for Southern variants)
+    primary_applications: On-site milling, bentwood furniture, immediate processing for veneer or cooperage
+    key_properties_differing_from_base: Very high moisture leads to shrinkage (up to 10% tangential); softer initial hardness but prone to warping; higher biological vulnerability until dried
+    laser_cleaning_implications: Harder; excess moisture causes explosive vaporization and surface splintering; requires very low fluence (<1 J/cm²) and defocused beam; often avoided for laser cleaning until partially dried to prevent damage
+
+  - designation: Red Oak No.2 Common grade air-dried
+    standard: NHLA grading rules; Botanical name: Quercus rubra; ASTM D245 (for appearance grading)
+    composition_characteristics: Lower quality with more knots, splits, and color variation; air-dried to 10-14% moisture; coarser texture
+    common_names_trade_names: Economy Red Oak, Industrial Red Oak
+    primary_applications: Pallets, crates, subflooring, particleboard feedstock
+    key_properties_differing_from_base: Reduced strength due to defects (shear strength ~1200 psi); higher variability in density (0.60-0.65 g/cm³); more susceptible to decay without treatment
+    laser_cleaning_implications: Harder due to defects trapping contaminants; irregular surfaces may need multiple passes with higher repetition rates (20-50 kHz); air-drying moisture can lead to inconsistent ablation
+
+  - designation: Oak (White) Pressure-treated
+    standard: AWPA (American Wood Protection Association) U1 standards; Botanical name: Quercus alba; Often kiln-dried after treatment to 19% MC max
+    composition_characteristics: White Oak lumber impregnated with preservatives like CCA or ACQ; retains natural grain but color shifts to greenish-brown; typically kiln-dried post-treatment
+    common_names_trade_names: Treated White Oak, Preserved Oak
+    primary_applications: Outdoor decking, fencing, marine pilings, landscape timbers
+    key_properties_differing_from_base: Enhanced rot and insect resistance; slight increase in weight from chemicals; maintains density but chemicals can affect machinability
+    laser_cleaning_implications: Moderately harder; chemical residues may volatilize toxically, requiring ventilation and specific wavelengths (e.g., 248 nm excimer for surface layers); treatment seals pores, making contaminant removal easier but risking chemical release
+
+  - designation: Red Oak Rift-sawn kiln-dried
+    standard: NHLA grading rules with rift-sawn specification; Botanical name: Quercus rubra; AITC (American Institute of Timber Construction) for dimensional stability
+    composition_characteristics: Sawn at 30-60° angle to reduce expansion; straight grain, less ray fleck; kiln-dried to 6-8% moisture; available in FAS or Select grades
+    common_names_trade_names: Rift Red Oak, Quartered Red Oak (approximate)
+    primary_applications: Stable flooring, paneling, musical instruments
+    key_properties_differing_from_base: Improved dimensional stability (shrinkage <5%) over plain-sawn; similar density but straighter grain enhances strength along length
+    laser_cleaning_implications: Easier due to uniform, less porous cut; allows tighter beam focus (spot size 0.5-1 mm) and standard fluence (3-5 J/cm²); reduced ray exposure minimizes color inconsistencies in cleaning
+```

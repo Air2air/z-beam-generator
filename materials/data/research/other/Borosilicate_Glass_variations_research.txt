@@ -1,0 +1,54 @@
+# Variation Research for Borosilicate Glass
+# Category: unknown
+# Generated: 2025-11-07T12:47:20.713609
+
+```yaml
+variations:
+  - name: Borosilicate Glass Type 3.3 (Standard Laboratory Grade)
+    standard: ISO 3585; DIN 12217; ASTM E438 Type I (Class A equivalent); USP <660> Type I
+    composition_characteristics: Approximately 81% SiO2, 13% B2O3, 4% Na2O, 2% Al2O3; low alkali leaching; thermal expansion coefficient ~3.3 × 10^-6 K^-1; high hydrolytic resistance (Type I per ISO 719)
+    common_names_trade_names: Pyrex® (original Corning formulation); Duran® (Schott); Simax® (Preciosa); KG-33 (Kimble)
+    primary_applications: Laboratory glassware (beakers, flasks, pipettes); pharmaceutical containers; cookware; telescope mirrors
+    key_properties_differ_from_base: Higher chemical durability and thermal shock resistance compared to soda-lime glass (base for many glasses); expansion coefficient lower than standard borosilicate variants (~3.3 vs. 3.8 for some); better resistance to acids/bases than non-borosilicate glasses
+    laser_cleaning_implications: Easier due to low thermal expansion reducing risk of cracking from heat buildup; requires UV or short-pulse lasers (e.g., 355 nm) for better absorption on clean surfaces; higher fluence tolerable (up to 1-2 J/cm²) without substrate damage, but avoid prolonged exposure to prevent micro-fractures
+
+  - name: Borofloat® 33 (Float Sheet Borosilicate)
+    standard: EN 1748-1; ISO 3585; Schott internal spec; ASTM C1036 (adapted for borosilicate)
+    composition_characteristics: 80.6% SiO2, 12.9% B2O3, 3.8% Na2O + K2O, 2.2% Al2O3; float process for flat sheets; thickness 0.7-25 mm; optical clarity with parallel surfaces
+    common_names_trade_names: Borofloat® 33 (Schott); equivalent to Pyrex 7740
+    primary_applications: Optical components (windows, lenses); solar panels; display covers; architectural glazing; medical devices
+    key_properties_differ_from_base: Superior flatness and surface quality from float process (parallelism <0.2 mm over 1 m); higher optical transmission (91% at 400-2500 nm) than tube-drawn borosilicates; similar thermal properties but better homogeneity
+    laser_cleaning_implications: Moderately easier on flat surfaces allowing uniform beam scanning; low absorption in visible/IR requires excimer or Nd:YAG lasers (193-1064 nm) with pulse energies 0.1-0.5 J/cm²; thermal shock resistance permits higher repetition rates (up to 100 Hz) without distortion
+
+  - name: Borosilicate Glass Type I (Pharmaceutical Tubing/Neutral Glass)
+    standard: USP <660> Type I; EP 3.2.1 Type I; ISO 9187; ASTM E438 Type I, Class A
+    composition_characteristics: 74-81% SiO2, 7-13% B2O3, 4-8% Na2O, 2-5% Al2O3; internally treated for enhanced hydrolytic resistance; expansion ~3.3-5.0 × 10^-6 K^-1; low extractables (<0.1 mg/ml)
+    common_names_trade_names: Neutral Glass Type I; Wheaton 180, 200 series (Wheaton); Schott Fiolax®
+    primary_applications: Ampoules, vials, syringes for pharmaceuticals; injectable drug packaging; biotech containers
+    key_properties_differ_from_base: Enhanced chemical inertness (hydrolytic class HGB 1 per ISO 720); lower ion release than standard borosilicate; slightly higher expansion in some formulations for better sealing with metals
+    laser_cleaning_implications: Harder due to thin-walled tubing geometry risking uneven heating; needs precise low-fluence scanning (0.05-0.2 J/cm²) with fiber lasers (1064 nm) to avoid devitrification; high resistance to thermal gradients makes it forgiving for contaminant removal without leaching concerns
+
+  - name: High-Purity Borosilicate Glass (Optical Grade)
+    standard: MIL-G-174 (military spec, adapted); ISO 8255; Schott N-BK7 equivalent but borosilicate-based; ASTM F675
+    composition_characteristics: >99% purity in oxides (81% SiO2, 13% B2O3 core); minimal impurities (<50 ppm Fe2O3); annealed for low stress; refractive index ~1.47; Abbe number 64-65
+    common_names_trade_names: BK7 (Schott, though technically crown glass, borosilicate variants exist); Tempax® Float (Schott high-clarity); Pyrex 7979
+    primary_applications: Precision optics (prisms, achromats); laser windows; photomasks; scientific instruments
+    key_properties_differ_from_base: Ultra-low bubble/inclusion count (<10 per kg); higher homogeneity (Δn <10^-5); better UV transmission (down to 350 nm) than standard grades; reduced fluorescence under UV
+    laser_cleaning_implications: Easier for optical surfaces as high purity minimizes scattering; use femtosecond lasers (e.g., 800 nm, <100 fs pulses) at low fluence (0.01-0.1 J/cm²) to prevent ablation-induced defects; thermal stability allows cleaning without altering refractive index
+
+  - name: Borosilicate Glass 4.0 (Eagle XG Variant or Equivalent)
+    standard: ISO 3585 (adapted); Corning internal spec; ASTM C336 (thermal shock test compliant); EN 10204
+    composition_characteristics: ~80% SiO2, 10-12% B2O3, 5% Na2O, 2-3% Al2O3; expansion ~4.0 × 10^-6 K^-1; fusion process for thin sheets; alkali-free variants available
+    common_names_trade_names: Eagle XG® (Corning, borosilicate-like); Borofloat® 40 (Schott equivalent); Ilmabor®
+    primary_applications: LCD/OLED substrates; touchscreens; thin-film deposition; electronics packaging
+    key_properties_differ_from_base: Higher expansion than 3.3 types for better compatibility with semiconductors; thinner achievable (0.03-1.1 mm); improved electrical insulation (>10^14 Ω·cm); lower density (~2.23 g/cm³)
+    laser_cleaning_implications: Harder on thin substrates due to flexure risks; requires IR lasers (e.g., CO2 at 10.6 μm) with defocused beams (fluence 0.5-1 J/cm²) to avoid warping; good thermal conductivity aids rapid cooling, reducing residue adhesion post-cleaning
+
+  - name: Colored Borosilicate Glass (Filter Grade)
+    standard: ASTM E903 (optical); ISO 9802; Schott internal color specs; MIL-STD-1241
+    composition_characteristics: Base 3.3 composition + 0.1-5% metal oxides (e.g., CoO for blue, Cr2O3 for green); transmission tailored (e.g., 80% in passband); heat-treated for color stability
+    common_names_trade_names: Pyrex Colored (Corning); Duran Color® (Schott); KG-33 filters
+    primary_applications: Optical filters; lighting (heat-resistant colored bulbs); decorative labware; sensors
+    key_properties_differ_from_base: Selective wavelength absorption (e.g., blocks UV/IR); slightly reduced thermal shock resistance due to additives; higher density (2.25-2.4 g/cm³); color-dependent chemical stability
+    laser_cleaning_implications: Varies by color—darker pigments absorb more, making cleaning easier/faster (e.g., 532 nm green laser at 0.2 J/cm² for blue filters) but risks fading; lighter colors need higher energy, increasing thermal stress; avoid resonant wavelengths to prevent discoloration
+```

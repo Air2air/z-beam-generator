@@ -443,9 +443,40 @@ Write the subtitle now:"""
         formality = linguistic.get('formality_level', 'professional')
         country_formality = linguistic.get('formality_indicators', {}).get('style', 'neutral')
         
+        # Get language policy from country profile (support both old and new field names)
+        output_language = country_profile.get('output_language', 'English')
+        language_instruction = country_profile.get('language_instruction', '')
+        language_policy = country_profile.get('language_policy', language_instruction or 'All content must be in English.')
+        forbidden_langs = country_profile.get('forbidden_output_languages', country_profile.get('forbidden_languages', []))
+        
+        # Build language enforcement section
+        language_warning = ""
+        if forbidden_langs:
+            forbidden_list = ', '.join(forbidden_langs)
+            language_warning = f"""
+🚫 CRITICAL LANGUAGE REQUIREMENT:
+- OUTPUT LANGUAGE: {output_language} ONLY
+- FORBIDDEN: {forbidden_list}
+- {language_policy}
+- Use linguistic PATTERNS from {author_country} culture in ENGLISH text
+- NEVER write in {forbidden_langs[0] if forbidden_langs else 'non-English languages'}
+"""
+        
+        # Extract voice examples from profile (new structure)
+        voice_examples = country_profile.get('voice_examples', {}).get('faq', [])
+        if not voice_examples:
+            # Fallback to general examples if FAQ-specific not available
+            voice_examples = country_profile.get('voice_examples', {}).get('general', [])
+        
+        # Build voice-specific pattern guidance from examples
+        voice_patterns = ""
+        if voice_examples:
+            # Show 2-3 concrete examples from the profile
+            voice_patterns = "\n".join([f"  • {example}" for example in voice_examples[:3]])
+        
         # Build prompt with material specificity and property values
         prompt = f"""You are {author_name} from {author_country}, a {author_expertise} expert answering a technical FAQ about {material_name} laser cleaning.
-
+{language_warning}
 MATERIAL CONTEXT:
 - Material: {material_name}
 - Category: {material_category}
@@ -463,31 +494,34 @@ MATERIAL PROPERTIES:
 MACHINE SETTINGS:
 {settings_str if settings_str else 'Standard laser cleaning parameters'}
 
-VOICE GUIDANCE ({author_country.upper()}):
-- Formality: {formality} (style: {country_formality})
-- Author Expertise: {author_expertise}
+VOICE & STYLE - MANDATORY ({author_country.upper()}):
+✅ REQUIRED: Write in the style of these examples from your voice profile:
+{voice_patterns}
 
-STRICT LENGTH REQUIREMENTS:
-- Target: {target_words} words (20-60 word range - HARD LIMIT)
+📋 VOICE REQUIREMENTS:
+- MATCH the linguistic patterns shown in the examples above
+- Use the same sentence structures and phrasing style
+- Apply {author_country} language patterns naturally (1-2 per answer)
+- Formality level: {formality}
+
+LENGTH REQUIREMENTS:
+- Target: {target_words} words (20-60 word range)
 - Write 1-3 sentences maximum
-- Vary your language naturally - never repeat the same phrases or sentence patterns
-- Use diverse vocabulary and phrasing throughout your answer
+- Natural length variation across different questions
 
-NATURAL WRITING REQUIREMENTS:
-- Avoid robotic patterns - write like a human expert would speak
-- Don't repeat key terms more than once unless absolutely necessary
-- Use synonyms, varied sentence structure, and natural transitions
+WRITING STYLE:
 - Reference specific values (fluence, power, wavelength) when relevant
-- Avoid formulaic phrases like "It's important to note" or "Always ensure"
+- Focus on technical accuracy while maintaining your voice
+- Avoid formulaic phrases like "It's important to note"
 
 CONTENT REQUIREMENTS:
 - Cite 1-2 specific technical values when relevant (J/cm², W, mm/s, μm, °C, ppm)
 - Address {material_name} specifically - use material properties in context
-- Balance precision with readability - explain technical terms briefly
+- Balance precision with readability
 - Focus on actionable, practical information
 - Connect recommendations to material behavior or characteristics
 
-Write a NATURAL, CONVERSATIONAL answer (1-3 sentences, 20-60 words):"""
+Write a technical answer using your natural voice patterns (1-3 sentences, 20-60 words):"""
         
         return prompt
     

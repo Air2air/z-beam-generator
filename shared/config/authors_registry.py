@@ -47,7 +47,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "3+ years in laser processing R&D",
             "Assisted in projects on ultrafast laser applications"
         ],
-        "email": "yi-chun.lin@z-beam.com",
+        "email": "info@z-beam.com",
         "image": "/images/author/yi-chun-lin.jpg",
         "imageAlt": "Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting",
         "url": "https://z-beam.com/authors/yi-chun-lin",
@@ -86,7 +86,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "5+ years industrial ceramics experience",
             "Assisted in EU Horizon 2020 laser additive projects, 2016-2019"
         ],
-        "email": "alessandro.moretti@z-beam.com",
+        "email": "info@z-beam.com",
         "image": "/images/author/alessandro-moretti.jpg",
         "imageAlt": "Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab",
         "url": "https://z-beam.com/authors/alessandro-moretti-phd",
@@ -124,7 +124,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "English",
             "Bahasa Indonesia"
         ],
-        "email": "ikmanda.roswati@z-beam.com",
+        "email": "info@z-beam.com",
         "image": "/images/author/ikmanda-roswati.jpg",
         "imageAlt": "Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup",
         "url": "https://z-beam.com/authors/ikmanda-roswati",
@@ -160,7 +160,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
             "3+ years in laser systems development",
             "Hands-on experience with optical fabrication"
         ],
-        "email": "todd.dunning@z-beam.com",
+        "email": "info@z-beam.com",
         "image": "/images/author/todd-dunning.jpg",
         "imageAlt": "Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools",
         "url": "https://z-beam.com/authors/todd-dunning",

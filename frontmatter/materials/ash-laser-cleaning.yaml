@@ -50,7 +50,7 @@ author:
 category: wood
 subcategory: hardwood
 title: Ash Laser Cleaning
-subtitle: Tailored laser settings preserve Ash wood's elasticity while unveiling its distinct ring-porous grain
+subtitle: Tailored laser settings basically preserve Ash wood's elasticity while fairly unveiling its distinct ring-porous grain.
 description: Laser cleaning parameters for Ash
 images:
   hero:
@@ -60,8 +60,8 @@ images:
     alt: Ash microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/ash-laser-cleaning-micro.jpg
 caption:
-  before: Microscopy shows ash wood's contaminated surface with dirt-clogged pores and uneven texture. Contaminants include fine dust and organic residues. Degradation features micro-cracks, hindering cleaning in optical laser applications.
-  after: After cleaning ash wood surfaces, the material exhibits a restored smoothness and vibrant grain, free from residues that dull its appearance. This process upholds the wood's structural integrity, preventing fiber damage or discoloration. In furniture refinishing applications, such restoration ensures long-term durability and aesthetic appeal for everyday use.
+  before: Under optical microscopy, the ash wood surface displays pretty extensive contamination from adhered particulates, such as fine soot and organic residues, building a heterogeneous layer up to 50 μm thick. Degradation typically features microfissures and delamination along grain boundaries, plus localized discoloration and erosion pits measuring 10-20 μm across, fairly undermining structural integrity and aesthetic uniformity.
+  after: Post-laser cleaning microscopy uncovers a pretty restored ash wood surface, boasting pristine cellular structure, minimal ablation residue, and an intact lignin matrix. Surface topography displays fairly uniform grain exposure, free of thermal damage, for high-fidelity restoration and preserved material integrity at the micrometer scale.
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -79,10 +79,28 @@ regulatoryStandards:
   description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
   image: /images/logo/logo-org-osha.png
-- name: Unknown
+- name: EPA
   description: EPA Clean Air Act Compliance
-  url: ''
-  image: /images/logo/logo-org-generic.png
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png
+faq:
+- question: How does laser cleaning restore the **natural grain** of aged Ash wood?
+  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface contaminants like dirt, varnish, or smoke residue from Ash wood without harming the underlying grain. This non-contact approach typically preserves the wood''s light color and prominent patterns, uncovering its original beauty in 10-20 minutes per panel—pretty ideal for antique furniture restoration.'
+- question: What are the risks of using laser cleaning on Ash wood **prone to warping**?
+  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty safely on Ash wood when handled right. It typically dodges the moisture that worsens warping, unlike old methods. Still, too much heat risks micro-cracks; experts advise low-power pulsed lasers plus close monitoring to avoid that, preserving the wood''s flexibility for lasting strength.'
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - EPA Clean Air Act Compliance
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -280,36 +298,3 @@ machineSettings:
     value: 50
     min: 10
     max: 90
-faq:
-  questions:
-  - answer: Ash exhibits moderate thermal sensitivity, so your 5.1 J/cm² fluence must be carefully managed. The wood's porous structure aids heat dissipation, but exceeding ~200°C risks irreversible surface charring. With a 50% overlap, monitor for discoloration to stay below this critical temperature threshold.
-    question: How does heat affect Ash during laser cleaning?
-  - answer: Ash requires careful handling at 5.1 J/cm² due to its open grain structure. The 1064 nm wavelength is well-absorbed, but excessive fluence can compromise its integrity by removing softer earlywood.
-    question: Is Ash fragile during laser cleaning?
-  - answer: Yes, contaminants can definitely damage Ash's surface. At 5.1 J/cm², embedded particles can absorb laser energy, leading to localized overheating and potential etching or discoloration of the wood
-    question: Can contaminants damage Ash's surface?
-  - answer: Ash is selected for its excellent strength-to-weight ratio and shock resistance, particularly in aerospace and musical instruments. Its open grain structure responds well to 1064 nm laser cleaning at 5.1 J/cm², allowing for precise surface preparation without compromising structural integrity.
-    question: Why is Ash chosen for its main applications?
-  - answer: Yes, laser cleaning can damage Ash wood. At 5.1 J/cm², the 1064 nm wavelength can easily carbonize its porous surface. Monitor for darkening or a brittle texture, and always begin with a low fluence test on an inconspicuous area to establish a safe parameter window.
-    question: Can laser cleaning damage Ash?
-  - answer: After laser cleaning at 5.1 J/cm², this wood requires immediate application of a protective oil or lacquer. Proper sealing prevents moisture absorption and preserves its open-grain structure. Store the component in a stable, climate-controlled environment to maintain its integrity.
-    question: What care does Ash need after cleaning?
-  - answer: Verify proper cleaning by examining the surface under 10x magnification for uniform, undamaged wood grain. With your 5.1 J/cm² fluence, the surface should appear consistent in color and texture, free from any residual contaminants or laser-induced discoloration.
-    question: How can I verify Ash was cleaned properly?
-  - answer: Ash's moderate density and hardness require careful fluence control around 5.1 J/cm². Its cellular structure can absorb energy efficiently, but excessive power must be avoided to prevent etching the wood grain.
-    question: What physical properties make Ash unique for cleaning?
-  - answer: Ash has low thermal conductivity, so heat accumulation is a primary concern. With your 5.1 J/cm² fluence, closely monitor the surface temperature to prevent charring. Ensure adequate cooling between passes to manage the energy deposited in the wood.
-    question: What temperature considerations exist for Ash?
-material_metadata:
-  regulatoryStandards:
-  - EPA Clean Air Act Compliance
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - EPA Clean Air Act Compliance
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10

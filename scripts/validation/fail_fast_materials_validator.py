@@ -185,35 +185,39 @@ def validate_category_ranges() -> List[str]:
     """
     FAIL-FAST VALIDATION: ALL CATEGORY RANGES MUST EXIST
     
-    Categories.yaml must have complete min/max ranges for all properties.
+    MaterialProperties.yaml must have complete min/max ranges for all properties.
     Missing or null ranges are VIOLATIONS.
+    
+    Note: Updated to use new multi-file architecture (MaterialProperties.yaml)
+    instead of deprecated Categories.yaml.
     """
     violations = []
     
-    categories_path = Path(__file__).parent.parent.parent / "materials" / "data" / "Categories.yaml"
-    
-    if not categories_path.exists():
-        violations.append("CRITICAL: Categories.yaml not found")
-        return violations
-    
     try:
-        with open(categories_path, 'r', encoding='utf-8') as f:
-            categories_data = yaml.safe_load(f)
+        from materials.data.loader import get_category_ranges
+        
+        # Get category ranges from new architecture
+        category_ranges_data = get_category_ranges()
+        
+        if not category_ranges_data:
+            violations.append("CRITICAL: No category ranges found in MaterialProperties.yaml")
+            return violations
+        
     except Exception as e:
-        violations.append(f"CRITICAL: Failed to load Categories.yaml: {e}")
+        violations.append(f"CRITICAL: Failed to load category ranges: {e}")
         return violations
     
     # Check all categories for complete ranges
-    for category_name, category_data in categories_data.get('categories', {}).items():
-        category_ranges = category_data.get('category_ranges', {})
+    for category_name, category_data in category_ranges_data.items():
+        ranges = category_data.get('ranges', {})
         
-        if not category_ranges:
+        if not ranges:
             violations.append(
-                f"MISSING RANGES: Category '{category_name}' has no category_ranges defined"
+                f"MISSING RANGES: Category '{category_name}' has no ranges defined"
             )
             continue
         
-        for prop_name, prop_data in category_ranges.items():
+        for prop_name, prop_data in ranges.items():
             if not isinstance(prop_data, dict):
                 continue
             
@@ -339,7 +343,7 @@ def fail_fast_validate_materials() -> None:
         # Fail-fast validation should ONLY check for mocks/fallbacks/defaults.
         
         # 5. Check category ranges (CRITICAL DEPENDENCY)
-        print("\n🔍 Validating category ranges in Categories.yaml...")
+        print("\n🔍 Validating category ranges in MaterialProperties.yaml...")
         range_violations = validate_category_ranges()
         all_violations.extend(range_violations)
         

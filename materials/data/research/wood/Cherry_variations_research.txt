@@ -1,0 +1,70 @@
+# Variation Research for Cherry
+# Category: unknown
+# Generated: 2025-11-07T12:42:25.325345
+
+```yaml
+cherry_variations:
+  - designation_name: "American Black Cherry FAS grade kiln-dried"
+    standard_specification: "NHLA (National Hardwood Lumber Association) FAS grade; Botanical name: Prunus serotina; USDA Forest Service specifications for hardwood lumber"
+    composition_characteristics: "Heartwood predominant (reddish-brown color); straight grain with fine, even texture; kiln-dried to 6-8% moisture content; minimal defects (knots, checks <1/3 board width); density ~0.57 g/cm³ at 12% MC"
+    common_names_trade_names: "Black Cherry, American Cherry, Wild Cherry; Trade names: Appalachian Cherry (regional variant)"
+    primary_applications: "High-end furniture, cabinetry, millwork, musical instruments, interior paneling"
+    key_properties_differ_from_base: "Higher uniformity and fewer defects than lower grades; improved stability and reduced warping compared to air-dried or green wood; Janka hardness ~950 lbf (medium); richer color depth post-drying"
+    laser_cleaning_implications: "Easier due to uniform density and low moisture – requires lower fluence (1-5 J/cm²) to avoid charring; even absorption across grain reduces parameter adjustments; kiln-drying minimizes steam explosion risks during ablation"
+
+  - designation_name: "American Black Cherry Select grade kiln-dried"
+    standard_specification: "NHLA Select grade; Botanical name: Prunus serotina; ASTM D143 for wood properties testing"
+    composition_characteristics: "Primarily clear (defect-free) boards; heartwood-focused with subtle grain figuring; kiln-dried to 6-8% moisture; finer texture than FAS; density ~0.55-0.60 g/cm³"
+    common_names_trade_names: "Cherry Select, Fine Cherry; Trade names: Premium American Cherry"
+    primary_applications: "Custom furniture, veneers, decorative inlays, high-value flooring"
+    key_properties_differ_from_base: "Superior clarity and minimal color variation vs. FAS (fewer allowable defects); slightly higher dimensional stability; similar hardness but better machinability due to fewer inclusions"
+    laser_cleaning_implications: "Easier than FAS due to fewer defects causing uneven ablation; standard parameters (Nd:YAG laser, 1064 nm, 2-4 J/cm²) suffice; low moisture prevents subsurface damage, but monitor for figuring-induced hotspots"
+
+  - designation_name: "American Black Cherry No.1 Common grade air-dried"
+    standard_specification: "NHLA No.1 Common grade; Botanical name: Prunus serotina; Allows up to 1/3 defects; Air-dried to 10-12% moisture per USDA guidelines"
+    composition_characteristics: "Mix of heartwood and sapwood (lighter pinkish tones); some knots and pin holes; coarser texture; higher moisture variability; density ~0.50-0.58 g/cm³"
+    common_names_trade_names: "Common Cherry, Utility Cherry; Trade names: Rustic Black Cherry"
+    primary_applications: "Economical furniture, framing, turned items, craft wood"
+    key_properties_differ_from_base: "More defects lead to variable strength (modulus of rupture ~8,000 psi vs. 10,000 psi for FAS); higher moisture increases shrinkage risk; slightly softer (Janka ~900 lbf) and more workable but prone to checking"
+    laser_cleaning_implications: "Harder due to higher moisture and defects – requires pulsed lasers with higher repetition rates (10-20 Hz) to control vaporization; air-drying may cause inconsistent absorption, needing pre-scan adjustments to avoid deep burns on sapwood"
+
+  - designation_name: "American Black Cherry No.2 Common grade kiln-dried"
+    standard_specification: "NHLA No.2 Common grade; Botanical name: Prunus serotina; ASTM D245 for grading; Kiln-dried to 6-8% moisture"
+    composition_characteristics: "Higher defect allowance (knots up to 1/2 width, splits); blend of heart and sapwood; wavy grain possible; density ~0.52 g/cm³ with more variability"
+    common_names_trade_names: "Economy Cherry, Industrial Cherry; Trade names: Builder's Cherry"
+    primary_applications: "Secondary wood products, boxes, crates, low-cost paneling, particleboard substrate"
+    key_properties_differ_from_base: "Lower structural integrity (higher defect rate reduces load-bearing capacity by 20-30%); more color inconsistency; easier to source but higher waste factor"
+    laser_cleaning_implications: "Harder overall – defects scatter laser energy, requiring higher fluence (5-8 J/cm²) and multiple passes; kiln-drying helps uniformity, but knots may need defocused beams to prevent cracking during cleaning"
+
+  - designation_name: "Curly Figured American Black Cherry kiln-dried"
+    standard_specification: "NHLA premium figured grade; Botanical name: Prunus serotina; Specialty grading per Wood Mizer or custom mill standards; Kiln-dried to 6-8% moisture"
+    composition_characteristics: "Heartwood with curly or tiger-stripe grain pattern due to growth stress; enhanced chatoyancy; similar base composition but irregular fiber orientation; density ~0.58 g/cm³"
+    common_names_trade_names: "Curly Cherry, Figured Cherry; Trade names: Quilted Cherry (variant with bubble-like figuring)"
+    primary_applications: "High-end musical instruments (guitars, violins), custom cabinetry, artistic veneers"
+    key_properties_differ_from_base: "Increased aesthetic value but similar mechanical properties; slightly higher stiffness in figured areas; more prone to tear-out during machining"
+    laser_cleaning_implications: "Harder due to irregular grain – requires wavelength tuning (e.g., 532 nm green laser for better contrast) and lower pulse energy (1-3 J/cm²) to preserve figuring; figuring can cause refractive hotspots, needing angular adjustments"
+
+  - designation_name: "American Black Cherry green (undried)"
+    standard_specification: "USDA Forest Products Laboratory specs for green lumber; Botanical name: Prunus serotina; Moisture content >20% (freshly harvested)"
+    composition_characteristics: "Full sapwood inclusion (white to pink); high moisture (30-50%); soft, wet texture; green color before oxidation; density ~0.45 g/cm³ wet"
+    common_names_trade_names: "Green Cherry, Fresh Cut Cherry"
+    primary_applications: "On-site milling, rough lumber for drying, bioenergy feedstock"
+    key_properties_differ_from_base: "Much softer and more pliable (Janka <500 lbf wet); high shrinkage potential (up to 12% tangential); faster fungal decay risk"
+    laser_cleaning_implications: "Significantly harder – high moisture causes steam bursts and subsurface boiling, requiring very low fluence (<1 J/cm²) and IR wavelengths (1064 nm) for evaporation control; multiple sessions post-drying recommended to avoid structural weakening"
+
+  - designation_name: "Stained American Black Cherry FAS grade kiln-dried"
+    standard_specification: "NHLA FAS base with AWS (Architectural Woodwork Standards) for finishing; Botanical name: Prunus serotina; Kiln-dried to 6-8% moisture; Water- or oil-based stains per manufacturer specs (e.g., Minwax Cherry stain)"
+    composition_characteristics: "Base wood stained for uniform reddish hue; sealed surface; grain enhanced; density unchanged but surface porosity reduced"
+    common_names_trade_names: "Finished Cherry, Stained Black Cherry; Trade names: Red Cherry Stain variant"
+    primary_applications: "Pre-finished furniture, architectural millwork, retail cabinetry"
+    key_properties_differ_from_base: "Enhanced color fastness and UV resistance vs. untreated; slightly reduced breathability; similar hardness but smoother surface"
+    laser_cleaning_implications: "Easier for surface contaminants but harder for stain removal – tuned CO2 lasers (10.6 μm) at 0.5-2 J/cm² effectively ablate finishes without base damage; staining may require higher thresholds to avoid color bleeding"
+
+  - designation_name: "Sealed American Black Cherry Select grade kiln-dried"
+    standard_specification: "NHLA Select base; AWI (Architectural Woodwork Institute) standards for sealing; Botanical name: Prunus serotina; Kiln-dried to 6-8% moisture; Polyurethane or lacquer seal per ASTM D3023"
+    composition_characteristics: "Clear or tinted sealant coating (2-4 mils thick); protects against moisture; maintains natural grain; density ~0.57 g/cm³ with coated surface"
+    common_names_trade_names: "Protected Cherry, Lacquered Cherry; Trade names: UV-Sealed Cherry"
+    primary_applications: "Kitchen cabinets, tabletops, exterior trim (if UV-sealed)"
+    key_properties_differ_from_base: "Improved moisture resistance (absorption <5% vs. 15% untreated); enhanced durability; minimal change in hardness"
+    laser_cleaning_implications: "Moderately harder – sealant vaporizes cleanly at 3-6 J/cm² (excimer laser preferred for thin films), but underlying wood may need parameter reduction to prevent exposure; sealing reduces dust but increases reflectivity, aiding cleaner ablation"
+```

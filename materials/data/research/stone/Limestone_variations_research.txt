@@ -1,0 +1,70 @@
+# Variation Research for Limestone
+# Category: unknown
+# Generated: 2025-11-07T12:47:05.211699
+
+```yaml
+variations:
+  - name: "Indiana Limestone Buff"
+    standard: "ASTM C568/C568M Type I (High-Calcium Limestone); ANSI/NAPVS 50.01"
+    composition_characteristics: "Predominantly calcite (CaCO3 >95%); buff/beige color from iron oxide impurities; low porosity (2-5%); dense and uniform grain structure; quarry-sourced from Bedford, Indiana, USA"
+    common_names_trade_names: "Bedford Limestone; Buff Indiana Stone; Trade names: Bethel Gray (variant), Center Gray"
+    primary_applications: "Architectural cladding, facades, carvings, and interior flooring in commercial buildings; historical restoration (e.g., Empire State Building)"
+    key_properties_differing_from_base: "Higher density (2.6-2.7 g/cm³) and compressive strength (up to 10,000 psi) than average limestone; better weathering resistance due to low porosity; lighter color and finer texture compared to darker, more porous limestones"
+    laser_cleaning_implications: "Easier due to low porosity and uniform surface, allowing precise ablation of dirt/soiling with lower fluence (1-3 J/cm², 1064 nm Nd:YAG laser); minimal risk of subsurface damage, but requires controlled pulse duration to avoid micro-cracking in dense structure"
+
+  - name: "Indiana Limestone Gray"
+    standard: "ASTM C568/C568M Type I; EN 1469 (European dimension stone equivalent)"
+    composition_characteristics: "Calcite-dominant (>92% CaCO3) with minor silica and clay impurities causing gray hue; porosity 3-6%; slightly coarser grain than buff variant; sourced from southern Indiana quarries"
+    common_names_trade_names: "Gray Indiana Stone; Trade names: Dark Gray Bedford, Indiana Gray"
+    primary_applications: "Exterior veneers, monuments, and paving stones; used in modern and neoclassical architecture for durability"
+    key_properties_differing_from_base: "Moderate density (2.5-2.6 g/cm³) and strength (8,000-9,000 psi); higher absorption of pollutants due to subtle color variations from impurities, leading to faster surface soiling than buff types"
+    laser_cleaning_implications: "Moderately easy; gray color may require adjusted wavelength (e.g., 532 nm for better contrast on dark soiling), with fluence 2-4 J/cm²; higher impurity content can lead to uneven ablation if not scanned uniformly, potentially needing multiple passes"
+
+  - name: "Texas Lueders Limestone"
+    standard: "ASTM C568/C568M Type I; TTX 001 (Texas industry spec for limestone)"
+    composition_characteristics: "High-calcium calcite (>94% CaCO3) with trace fossils and shell fragments; rough, textured surface; porosity 5-8%; quarried from Lueders, Texas, USA; available in gray, buff, or cream shades"
+    common_names_trade_names: "Lueders Gray; Trade names: Lueders Roughback, Texas Buff Limestone"
+    primary_applications: "Landscape walls, retaining walls, and rustic facades; commercial landscaping and residential hardscaping"
+    key_properties_differing_from_base: "Lower density (2.4-2.5 g/cm³) and compressive strength (6,000-8,000 psi) due to higher porosity; more fossil inclusions provide unique aesthetic but reduce uniformity and increase water absorption (up to 5%)"
+    laser_cleaning_implications: "Harder due to porosity trapping residues; requires higher fluence (3-5 J/cm²) and longer wavelengths (1064 nm) to penetrate pores without thermal spalling; fossil textures may need lower energy to avoid selective damage to softer inclusions"
+
+  - name: "Cordova Cream Limestone"
+    standard: "ASTM C568/C568M Type I; ISO 14688 (geotechnical classification)"
+    composition_characteristics: "Calcite base (>95% CaCO3) with subtle cream coloring from iron and manganese oxides; low porosity (1-4%); fine-grained and smooth; sourced from Hill Country, Texas, USA"
+    common_names_trade_names: "Cordova Cream; Trade names: Texas Cream Limestone, Hill Country Stone"
+    primary_applications: "Interior tiles, countertops, and decorative elements; high-end residential and commercial interiors"
+    key_properties_differing_from_base: "Higher polishability and density (2.6 g/cm³) than rougher limestones; superior stain resistance due to low absorption (<2%); cream tone offers warmer aesthetics than standard grays"
+    laser_cleaning_implications: "Easier on polished surfaces; low porosity allows efficient cleaning at 1-2 J/cm² with short pulses (ns regime); cream color contrasts well with urban grime, enabling visual monitoring, but avoid over-heating to prevent yellowing from impurities"
+
+  - name: "Portland Stone Ashlar"
+    standard: "ASTM C568/C568M Type I equivalent; BS EN 12418 (UK dimension stone); Geological: Jurassic oolitic limestone"
+    composition_characteristics: "Oolitic calcite (>90% CaCO3) with shell fragments; light gray-beige; porosity 10-15%; quarried from Isle of Portland, UK; weather-resistant due to recrystallized structure"
+    common_names_trade_names: "Portland Whitbed; Trade names: Portland Basebed, Whitbed Ashlar"
+    primary_applications: "Iconic British architecture (e.g., St. Paul's Cathedral); facades, columns, and public monuments"
+    key_properties_differing_from_base: "Good durability with compressive strength (7,000-9,000 psi) but higher porosity leads to greater freeze-thaw vulnerability; oolitic texture provides self-cleaning via rain but accumulates algae faster"
+    laser_cleaning_implications: "Moderately challenging due to porosity; needs 2-4 J/cm² fluence with 1064 nm laser and scanning to avoid pitting in oolites; historical sensitivity requires low repetition rates to prevent surface roughening"
+
+  - name: "Travertine Classic Polished"
+    standard: "ASTM C568/C568M Type II (Travertine); EN 1469"
+    composition_characteristics: "Calcite with banded deposition layers (>85% CaCO3); high porosity (15-30%) from hot spring formation; filled or unfilled veins; colors from white to red-brown; quarried globally (e.g., Italy, Turkey)"
+    common_names_trade_names: "Classic Travertine; Trade names: Turkish Travertine, Roman Travertine"
+    primary_applications: "Flooring, wall tiles, and bathroom vanities; luxury interiors and spas"
+    key_properties_differing_from_base: "Much higher porosity and lower density (2.3-2.5 g/cm³) than dense limestones; softer (Mohs 3) with natural veining for aesthetics, but prone to staining and lower strength (4,000-6,000 psi)"
+    laser_cleaning_implications: "Harder due to open pores absorbing contaminants deeply; requires pre-wetting or higher energy (4-6 J/cm², 1064 nm) with multiple passes; vein fillings may ablate differently, needing parameter tuning to avoid discoloration"
+
+  - name: "Chalk Limestone (Soft White)"
+    standard: "ASTM C568/C568M Type I variant; EN 12670 (for chalk-based stones); Geological: Cretaceous chalk"
+    composition_characteristics: "Very pure calcite (>98% CaCO3) with minimal impurities; extremely soft and fine-grained; high porosity (20-30%); sourced from UK (e.g., Dover) or French regions"
+    common_names_trade_names: "Cliff Chalk; Trade names: Dover White Chalk, French Champagne Chalk"
+    primary_applications: "Cement production raw material; lightweight fillers in paints and plastics; limited dimension stone for carvings"
+    key_properties_differing_from_base: "Lowest density (1.8-2.2 g/cm³) and strength (<3,000 psi); highly absorbent and friable, differing from harder limestones by being more easily eroded"
+    laser cleaning_implications: "Very hard; soft matrix risks vaporization or crumbling at low fluence (0.5-2 J/cm²); use ultra-short pulses (fs/ps) and low energy to gently remove surface dust without structural compromise; high purity reduces residue but increases dusting"
+
+  - name: "Dolomitic Limestone Gray"
+    standard: "ASTM C568/C568M Type III (Dolomitic Limestone); ASTM C657 for dolomite"
+    composition_characteristics: "Dolomite (CaMg(CO3)2 >50%) with calcite; gray from magnesium content; porosity 5-10%; denser crystallization; quarried from Midwest USA or Europe"
+    common_names_trade_names: "Dolomite Limestone; Trade names: Salem Dolomite, Belgian Dolomitic Stone"
+    primary_applications: "Crushed aggregate for roads and concrete; dimension stone for durable exteriors"
+    key_properties_differing_from_base: "Higher hardness (Mohs 3.5-4) and density (2.7-2.85 g/cm³) due to magnesium; better acid resistance than pure calcite limestones, but similar strength (8,000 psi)"
+    laser_cleaning_implications: "Easier than pure limestone; magnesium enhances thermal stability, allowing higher fluence (3-5 J/cm²) without decomposition; gray tone may need green laser (532 nm) for optimal soiling contrast, with less risk of cracking"
+```

@@ -129,7 +129,7 @@ def invalidate_material_cache():
 
 def load_materials():
     """
-    Load materials data from YAML file with optimization support.
+    Load materials data using centralized loader that merges all YAML files.
     
     FAIL-FAST VALIDATION: Per GROK_INSTRUCTIONS.md, system must fail immediately
     if materials database contains defaults/fallbacks/mocks.
@@ -146,17 +146,10 @@ def load_materials():
             f"Error: {e}"
         )
     
-    materials_file = Path(__file__).parent / "Materials.yaml"
-
+    # Use centralized loader that merges Materials.yaml + MaterialProperties.yaml + MachineSettings.yaml
     try:
-        with open(materials_file, "r", encoding="utf-8") as f:
-            # Use faster CLoader if available (2x performance boost)
-            try:
-                from yaml import CLoader as Loader
-            except ImportError:
-                from yaml import Loader
-            
-            data = yaml.load(f, Loader=Loader)
+        from materials.data.loader import load_materials_data
+        data = load_materials_data()
         
         # If optimized format detected, expand it for compatibility
         if 'parameter_templates' in data:

@@ -1,0 +1,86 @@
+# Variation Research for Brass
+# Category: unknown
+# Generated: 2025-11-07T12:41:37.024640
+
+```yaml
+variations:
+  - name: "Cartridge Brass C26000"
+    standard: "ASTM B36 / UNS C26000 / SAE 77"
+    composition: "70% Cu, 30% Zn; alpha phase structure; annealed or cold-worked tempers (e.g., H01 half-hard)"
+    common_names: "70/30 Brass, Riveting Brass"
+    primary_applications: "Ammunition casings, automotive radiators, hardware fasteners, musical instruments"
+    key_properties_differences: "Higher ductility and formability than Muntz metal; good cold workability; tensile strength 300-500 MPa (annealed); elongation 45-65%; more corrosion-resistant than high-zinc brasses due to balanced Cu/Zn ratio"
+    laser_cleaning_implications: "Moderately easy due to high reflectivity and uniform composition; uses 1064 nm Nd:YAG lasers at 1-5 J/cm² fluence; zinc content may cause slight vaporization plumes, requiring ventilation; similar parameters to base brass but avoid overheating to prevent dezincification"
+
+  - name: "Muntz Metal C28000"
+    standard: "ASTM B135 / UNS C28000 / SAE 78"
+    composition: "60% Cu, 40% Zn; duplex alpha-beta phase; hot-worked or annealed tempers"
+    common_names: "60/40 Brass, Hot-Working Brass"
+    primary_applications: "Condenser tubes, marine hardware, architectural trim, valves and fittings"
+    key_properties_differences: "Higher strength and hardness than cartridge brass (tensile 400-600 MPa); less ductile (elongation 20-40%); excellent hot formability but prone to stress corrosion cracking in chloride environments compared to lower-zinc brasses"
+    laser_cleaning_implications: "Slightly harder due to beta phase increasing thermal conductivity variability; requires higher fluence (3-7 J/cm²) to ablate contaminants without phase separation; beta phase may lead to uneven ablation, necessitating pulse optimization; more ventilation needed for zinc oxide fumes"
+
+  - name: "Free-Cutting Brass C36000"
+    standard: "ASTM B16 / UNS C36000 / SAE 41"
+    composition: "61.5% Cu, 35.5% Zn, 3% Pb; alpha phase with lead inclusions for machinability; annealed temper"
+    common_names: "360 Brass, Lead-Free Alternative C38500 (reduced Pb)"
+    primary_applications: "Screw machine products, gears, pinions, plumbing fittings, valves"
+    key_properties_differences: "Superior machinability (best in brass family) due to Pb lubricant effect; moderate strength (tensile 300-450 MPa); lower corrosion resistance than unleaded brasses because of Pb segregation; elongation 25-40%"
+    laser_cleaning_implications: "Easier for surface contaminants but harder for Pb inclusions which vaporize at lower temperatures; use 532 nm green lasers at 2-4 J/cm² to minimize Pb fume hazards; parameters adjusted for lower melting point (around 900°C vs. 950°C for base); requires post-cleaning inspection for Pb residue"
+
+  - name: "Admiralty Brass C44300"
+    standard: "ASTM B111 / UNS C44300 / BS CZ111"
+    composition: "71% Cu, 28% Zn, 1% Sn; alpha phase; arsenical variant (C44300A with 0.02-0.06% As for dezincification resistance); annealed"
+    common_names: "Inhibited Admiralty, Arsenical Admiralty"
+    primary_applications: "Heat exchanger tubes, condensers, marine piping, desalination equipment"
+    key_properties_differences: "Enhanced corrosion resistance in seawater due to Sn addition (better than plain 70/30 brass); tensile strength 300-500 MPa; good ductility (elongation 50-60%); Sn improves resistance to dezincification compared to standard cartridge brass"
+    laser_cleaning_implications: "Similar ease to cartridge brass but Sn increases melting point slightly (to 950-1000°C); 1064 nm lasers at 1-5 J/cm² effective; As variant may produce toxic fumes, requiring enhanced safety; uniform ablation but monitor for Sn oxide formation affecting surface finish"
+
+  - name: "Naval Brass C46400"
+    standard: "ASTM B21 / UNS C46400 / BS CZ133"
+    composition: "59-62% Cu, 0.75-1.25% Sn, remainder Zn; alpha-beta phase; hot-forged or extruded"
+    common_names: "Tobin Bronze, Naval Brass"
+    primary_applications: "Marine propellers, shafts, valve stems, fasteners in shipbuilding"
+    key_properties_differences: "Higher strength and toughness than admiralty brass (tensile 400-550 MPa); better resistance to impingement corrosion; lower ductility (elongation 20-35%) due to beta phase; Sn enhances seawater performance over base brass"
+    laser_cleaning_implications: "Harder due to duplex structure causing variable absorption; higher fluence (4-8 J/cm²) and shorter pulses needed to avoid cracking beta phase; Sn/Zn vapors more corrosive, so use inert gas assist; parameters differ from base by 20-30% higher energy to penetrate surface oxides"
+
+  - name: "Red Brass C23000"
+    standard: "ASTM B36 / UNS C23000 / SAE 72"
+    composition: "85% Cu, 15% Zn; nearly single alpha phase; annealed or cold-rolled tempers"
+    common_names: "85/15 Brass, Low Zinc Brass"
+    primary_applications: "Architectural decorative items, plumbing, lighting fixtures, costume jewelry"
+    key_properties_differences: "Higher corrosion resistance and color similarity to copper than yellow brasses; excellent cold formability; tensile strength 300-400 MPa; elongation 50-70%; less prone to dezincification due to low Zn"
+    laser_cleaning_implications: "Easier than high-Zn brasses due to higher Cu content increasing reflectivity; low fluence (0.5-3 J/cm²) with 1064 nm lasers sufficient; minimal zinc fumes; parameters similar to base but reduced risk of selective Zn removal, preserving color"
+
+  - name: "Yellow Brass C27000"
+    standard: "ASTM B36 / UNS C27000 / SAE 75"
+    composition: "65% Cu, 35% Zn; alpha phase; deep drawn or annealed tempers"
+    common_names: "65/35 Brass, Deep Drawing Brass"
+    primary_applications: "Sheet metal work, deep-drawn components, radiator cores, hardware"
+    key_properties_differences: "Balanced strength and ductility (tensile 350-500 MPa, elongation 40-55%); brighter yellow color than red brass; good corrosion resistance but more susceptible to stress cracking than low-Zn variants"
+    laser_cleaning_implications: "Moderately easy, similar to cartridge brass; 1-4 J/cm² fluence effective; higher Zn may lead to more oxide formation, requiring multiple passes; standard parameters for base brass apply, but watch for color alteration from Zn volatilization"
+
+  - name: "Leaded Red Brass C31400"
+    standard: "ASTM B121 / UNS C31400"
+    composition: "87.5-90% Cu, 7.5-10% Zn, 1.3-2.5% Pb; alpha phase with Pb dispersoids"
+    common_names: "Leaded Commercial Bronze, Free-Machining Red Brass"
+    primary_applications: "Valves, fittings, ornamental hardware, machined decorative parts"
+    key_properties_differences: "Improved machinability over unleaded red brass due to Pb; similar corrosion resistance to C23000; tensile 300-400 MPa; slightly reduced ductility (elongation 40-50%) from Pb inclusions"
+    laser_cleaning_implications: "Similar to free-cutting brass; Pb lowers local melting points, making contaminant removal easier but increasing fume risks; use 2-5 J/cm² with filtration; parameters adjusted for potential Pb segregation, avoiding high heat to prevent cracking"
+
+  - name: "Gilding Metal C21000"
+    standard: "ASTM B36 / UNS C21000 / SAE 70"
+    composition: "95% Cu, 5% Zn; single alpha phase; soft annealed temper"
+    common_names: "95/5 Brass, Coining Brass"
+    primary_applications: "Ammunition jackets, coins, medals, engraving plates"
+    key_properties_differences: "Extremely ductile and soft (tensile 200-300 MPa, elongation >60%); closest to pure copper in appearance and corrosion resistance; superior formability for coining compared to higher-Zn brasses"
+    laser_cleaning_implications: "Easiest among brasses due to high Cu reflectivity and low melting aids; low fluence (0.5-2 J/cm²) with continuous wave lasers possible; minimal fumes; parameters simpler than base, with less risk of surface distortion"
+
+  - name: "Architectural Bronze C38500 (Leaded)"
+    standard: "ASTM B455 / UNS C38500"
+    composition: "57-61% Cu, 35-39% Zn, 2-3% Pb, 1-2.5% Fe/Al; alpha phase"
+    common_names: "Leaded Yellow Brass, Extruded Brass"
+    primary_applications: "Door hardware, trim, forgings, architectural castings"
+    key_properties_differences: "Good castability and machinability from Pb/Fe; higher strength (tensile 350-450 MPa) than pure yellow brass; moderate corrosion resistance; Fe improves hot workability"
+    laser_cleaning_implications: "Moderately hard due to alloying elements causing heterogeneous ablation; 3-6 J/cm² fluence needed; Pb and Fe may create denser residues, requiring chemical post-treatment; parameters differ by increasing pulse duration to handle varied thermal expansion"
+```

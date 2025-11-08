@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""
+Extract materialProperties and machineSettings from Materials.yaml
+
+This script:
+1. Reads Materials.yaml
+2. Extracts all materialProperties into MaterialProperties.yaml
+3. Extracts all machineSettings into MachineSettings.yaml
+4. Creates updated Materials.yaml without those fields
+5. Preserves all associations via material names
+6. Creates backup of original file
+
+Data Structure:
+- MaterialProperties.yaml: { material_name: { ...properties } }
+- MachineSettings.yaml: { material_name: { ...settings } }
+- Materials.yaml: All other fields except materialProperties and machineSettings
+"""
+
+import yaml
+from pathlib import Path
+from datetime import datetime
+import shutil
+from typing import Dict, Any
+
+# Paths
+MATERIALS_FILE = Path("materials/data/Materials.yaml")
+PROPERTIES_FILE = Path("materials/data/MaterialProperties.yaml")
+SETTINGS_FILE = Path("materials/data/MachineSettings.yaml")
+BACKUP_DIR = Path("materials/data/backups")
+
+
+def load_yaml(file_path: Path) -> Dict[str, Any]:
+    """Load YAML file"""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return yaml.safe_load(f)
+
+
+def save_yaml(data: Dict[str, Any], file_path: Path) -> None:
+    """Save data to YAML file with proper formatting"""
+    with open(file_path, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f, 
+                 default_flow_style=False,
+                 allow_unicode=True,
+                 sort_keys=False,
+                 width=120,
+                 indent=2)
+
+
+def create_backup(file_path: Path) -> Path:
+    """Create timestamped backup of file"""
+    BACKUP_DIR.mkdir(exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_path = BACKUP_DIR / f"{file_path.stem}_{timestamp}.yaml"
+    shutil.copy2(file_path, backup_path)
+    print(f"📦 Created backup: {backup_path}")
+    return backup_path
+
+
+def extract_data() -> None:
+    """Main extraction function"""
+    
+    print("🔄 EXTRACTING MATERIAL PROPERTIES AND MACHINE SETTINGS")
+    print("=" * 80)
+    
+    # Load Materials.yaml
+    print(f"\n📖 Loading {MATERIALS_FILE}...")
+    materials_data = load_yaml(MATERIALS_FILE)
+    
+    if 'materials' not in materials_data:
+        raise ValueError("No 'materials' key found in Materials.yaml")
+    
+    materials = materials_data['materials']
+    print(f"   Found {len(materials)} materials")
+    
+    # Extract materialProperties and machineSettings
+    print("\n🔍 Extracting data...")
+    material_properties = {}
+    machine_settings = {}
+    materials_without_extracted = {}
+    
+    extracted_props_count = 0
+    extracted_settings_count = 0
+    
+    for material_name, material_data in materials.items():
+        # Extract materialProperties
+        if 'materialProperties' in material_data:
+            material_properties[material_name] = material_data.pop('materialProperties')
+            extracted_props_count += 1
+        
+        # Extract machineSettings
+        if 'machineSettings' in material_data:
+            machine_settings[material_name] = material_data.pop('machineSettings')
+            extracted_settings_count += 1
+        
+        # Store cleaned material data
+        materials_without_extracted[material_name] = material_data
+    
+    print(f"   ✅ Extracted materialProperties from {extracted_props_count} materials")
+    print(f"   ✅ Extracted machineSettings from {extracted_settings_count} materials")
+    
+    # Create backup of original Materials.yaml
+    print(f"\n💾 Creating backup...")
+    create_backup(MATERIALS_FILE)
+    
+    # Save MaterialProperties.yaml
+    print(f"\n📝 Saving {PROPERTIES_FILE}...")
+    properties_output = {
+        '_metadata': {
+            'description': 'Material properties extracted from Materials.yaml',
+            'extracted_date': datetime.now().isoformat(),
+            'total_materials': len(material_properties),
+            'structure': 'Each material name maps to its materialProperties data'
+        },
+        'properties': material_properties
+    }
+    save_yaml(properties_output, PROPERTIES_FILE)
+    print(f"   ✅ Saved {len(material_properties)} material property sets")
+    
+    # Save MachineSettings.yaml
+    print(f"\n📝 Saving {SETTINGS_FILE}...")
+    settings_output = {
+        '_metadata': {
+            'description': 'Machine settings extracted from Materials.yaml',
+            'extracted_date': datetime.now().isoformat(),
+            'total_materials': len(machine_settings),
+            'structure': 'Each material name maps to its machineSettings data'
+        },
+        'settings': machine_settings
+    }
+    save_yaml(settings_output, SETTINGS_FILE)
+    print(f"   ✅ Saved {len(machine_settings)} machine setting sets")
+    
+    # Update Materials.yaml with cleaned data
+    print(f"\n📝 Updating {MATERIALS_FILE}...")
+    materials_data['materials'] = materials_without_extracted
+    
+    # Add extraction metadata
+    if 'category_metadata' not in materials_data:
+        materials_data['category_metadata'] = {}
+    
+    materials_data['_extraction_metadata'] = {
+        'extracted_date': datetime.now().isoformat(),
+        'extracted_fields': ['materialProperties', 'machineSettings'],
+        'new_files': ['MaterialProperties.yaml', 'MachineSettings.yaml'],
+        'note': 'Use materials.data.loader module to load complete material data'
+    }
+    
+    save_yaml(materials_data, MATERIALS_FILE)
+    print(f"   ✅ Updated Materials.yaml (removed extracted fields)")
+    
+    # Summary
+    print("\n" + "=" * 80)
+    print("✨ EXTRACTION COMPLETE")
+    print(f"\n📊 Summary:")
+    print(f"   • {PROPERTIES_FILE}: {len(material_properties)} materials")
+    print(f"   • {SETTINGS_FILE}: {len(machine_settings)} materials")
+    print(f"   • {MATERIALS_FILE}: Updated (extraction metadata added)")
+    print(f"\n📂 File sizes:")
+    print(f"   • {PROPERTIES_FILE}: {PROPERTIES_FILE.stat().st_size:,} bytes")
+    print(f"   • {SETTINGS_FILE}: {SETTINGS_FILE.stat().st_size:,} bytes")
+    print(f"   • {MATERIALS_FILE}: {MATERIALS_FILE.stat().st_size:,} bytes")
+    print(f"\n💡 Next step: Create materials/data/loader.py to merge data on load")
+
+
+if __name__ == '__main__':
+    try:
+        extract_data()
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        raise

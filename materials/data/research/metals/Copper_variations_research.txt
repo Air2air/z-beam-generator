@@ -1,0 +1,123 @@
+# Variation Research for Copper
+# Category: unknown
+# Generated: 2025-11-07T12:41:20.783730
+
+```yaml
+variations:
+  # Commercially Pure Copper Variations
+  - name: "C11000 Electrolytic Tough Pitch (ETP) Copper"
+    standard: "ASTM B187 (Bars, Rods, Shapes), ASTM B152 (Sheet, Plate), ASTM B5 (Wire), UNS C11000"
+    composition: "99.90% Cu minimum, 0.04% oxygen (phosphorus not intentionally added); high electrical conductivity"
+    common_names: "ETP Copper, Tough Pitch Copper"
+    applications: "Electrical wiring, busbars, transformers, plumbing pipes, heat exchangers"
+    key_properties: "Higher oxygen content than OFHC (reduces conductivity slightly to 97-101% IACS vs 100-102% for OFE); excellent ductility and formability; lower purity leads to minor embrittlement risk in hydrogen atmospheres compared to oxygen-free variants"
+    laser_cleaning: "High reflectivity in IR wavelengths (requires green or UV lasers for better absorption); high thermal conductivity dissipates heat quickly, necessitating higher pulse energies or shorter pulses to avoid substrate melting; easier for surface oxides but harder for deep contaminants due to rapid heat diffusion"
+
+  - name: "C10100 Oxygen-Free Electronic (OFE) Copper"
+    standard: "ASTM B170 (Oxygen-Free Electrolytic), ASTM B152, ASTM B5, UNS C10100"
+    composition: "99.99% Cu minimum, <5 ppm oxygen; no deoxidants; ultra-high purity"
+    common_names: "OFE Copper, 4N Copper"
+    applications: "High-vacuum electronics, semiconductors, superconducting magnets, microwave tubes"
+    key_properties: "Superior electrical (101% IACS) and thermal conductivity; excellent resistance to hydrogen embrittlement; higher cost and better corrosion resistance in reducing environments compared to ETP"
+    laser_cleaning: "Similar high IR reflectivity as ETP but slightly better absorption due to purity; very high thermal conductivity requires precise control of fluence (e.g., 1-5 J/cm²) and short nanosecond pulses to prevent overheating; easier for clean surfaces but parameters must be tuned for minimal recast layer formation"
+
+  - name: "C10200 Oxygen-Free (OF) Copper"
+    standard: "ASTM B170, ASTM B152, ASTM B5, UNS C10200"
+    composition: "99.95% Cu minimum, 10-30 ppm oxygen; no deoxidants"
+    common_names: "OF Copper, Oxygen-Free Without Residual Deoxidants"
+    applications: "RF components, waveguides, vacuum seals, audio equipment"
+    key_properties: "Electrical conductivity 100-101% IACS; good ductility; intermediate between OFE and ETP in purity and hydrogen embrittlement resistance"
+    laser_cleaning: "Reflectivity and conductivity similar to C10100; uses comparable parameters (green laser at 10-20 Hz, 50-100 mJ/pulse); slightly harder than ETP for oxide removal due to lower oxygen aiding cleaner ablation thresholds"
+
+  - name: "C12000 Deoxidized High Phosphorus (DHP) Copper"
+    standard: "ASTM B280 (Tube), ASTM B188 (Seamless Pipe), ASTM B152, UNS C12000"
+    composition: "99.90% Cu, 0.015-0.040% phosphorus (deoxidant); low residual oxygen"
+    common_names: "DHP Copper, Phosphorous Deoxidized Copper"
+    applications: "Plumbing tubes, refrigeration tubing, evaporators, architectural flashing"
+    key_properties: "Improved weldability and resistance to hydrogen embrittlement vs ETP; electrical conductivity 85-95% IACS (lower due to P); better corrosion resistance in water systems"
+    laser_cleaning: "Phosphorus enhances absorption slightly, making it easier than pure Cu variants (lower fluence needed, e.g., 0.5-2 J/cm²); high conductivity still requires pulsed lasers to localize heat; harder for scale removal if P forms phosphates"
+
+  # Copper Alloys: Brasses (Cu-Zn)
+  - name: "C26000 Cartridge Brass 70/30"
+    standard: "ASTM B36 (Brass Pipe), ASTM B135 (Seamless Tube), ASTM B19 (Sheet), UNS C26000; tempers: annealed (O), half-hard (H01)"
+    composition: "68.5-71.5% Cu, 28.0-31.5% Zn; alpha brass structure"
+    common_names: "70/30 Brass, Yellow Brass"
+    applications: "Ammunition casings, plumbing fittings, hardware, musical instruments"
+    key_properties: "Higher strength and hardness than pure Cu (yield strength 50-300 MPa depending on temper); good cold workability; lower conductivity (28% IACS); improved machinability and corrosion resistance vs pure Cu"
+    laser_cleaning: "Zinc volatilizes easier (lower boiling point ~907°C vs Cu 2562°C), making selective cleaning of contaminants feasible but risking Zn loss and dezincification; requires lower energies (0.2-1 J/cm²) and IR lasers; harder than pure Cu due to alloy reflectivity variations"
+
+  - name: "C23000 Red Brass 85/15"
+    standard: "ASTM B36, ASTM B135, ASTM B152, UNS C23000; tempers: soft (O60), hard (H04)"
+    composition: "84.0-86.0% Cu, 13.0-16.0% Zn; low zinc for red color"
+    common_names: "85/15 Brass, Red Brass"
+    applications: "Decorative hardware, low-pressure plumbing, radiator cores, jewelry"
+    key_properties: "Better corrosion resistance and color retention than higher-Zn brasses; moderate strength (yield 30-200 MPa); thermal conductivity ~150 W/mK (lower than pure Cu's 400 W/mK)"
+    laser_cleaning: "Lower Zn content reduces volatilization issues vs C26000; easier ablation of surface patina due to softer matrix; parameters similar to pure Cu but with adjusted wavelength for brass absorption bands (green laser preferred)"
+
+  - name: "C36000 Free-Cutting Brass"
+    standard: "ASTM B16 (Free-Cutting Rod), ASTM B121, UNS C36000; tempers: half-hard (H02)"
+    composition: "60.0-63.0% Cu, 35.0-37.0% Zn, 2.5-3.7% Pb (for machinability)"
+    common_names: "Leaded Brass, Free-Machining Brass"
+    applications: "Screw machine products, gears, valves, fasteners"
+    key_properties: "Excellent machinability due to Pb; strength similar to C26000 (yield ~100-400 MPa); lower corrosion resistance in some environments; conductivity ~26% IACS"
+    laser_cleaning: "Lead inclusions can melt and smear (melting point 327°C), complicating cleaning and requiring low-fluence, high-repetition pulses to avoid toxicity risks; harder overall, needs specialized ventilation and UV lasers for precision"
+
+  - name: "C44300 Admiralty Brass"
+    standard: "ASTM B111 (Condenser Tube), ASTM B135, UNS C44300; tempers: light-drawn (H55)"
+    composition: "70.0-73.0% Cu, 26.0-30.0% Zn, 0.8-1.2% As (inhibits dezincification)"
+    common_names: "Admiralty Metal, Arsenical Brass"
+    applications: "Heat exchanger tubes, condensers, marine hardware"
+    key_properties: "Enhanced resistance to dezincification and stress corrosion vs plain brass; good strength (yield 50-250 MPa); suitable for seawater"
+    laser_cleaning: "Arsenic improves surface stability but may form toxic vapors during ablation; easier for biofouling removal in marine apps; parameters: moderate fluence (1-3 J/cm²) with caution for As volatilization"
+
+  # Copper Alloys: Bronzes (Cu-Sn primarily)
+  - name: "C51000 Phosphor Bronze 5% A"
+    standard: "ASTM B139 (Strip), ASTM B152, UNS C51000; tempers: spring (H04), annealed (O25)"
+    composition: "94.0-96.0% Cu, 4.0-6.0% Sn, 0.03-0.35% P"
+    common_names: "5% Phosphor Bronze, PB1"
+    applications: "Bellows, diaphragms, springs, electrical connectors"
+    key_properties: "High fatigue strength and wear resistance (yield 200-600 MPa in spring temper); lower conductivity (15% IACS); better than pure Cu for wear but more brittle"
+    laser_cleaning: "Tin enhances absorption, making it easier than pure Cu (lower threshold ~0.5 J/cm²); high hardness requires higher peak powers; risk of Sn oxidation products affecting subsequent passes"
+
+  - name: "C95400 Aluminum Bronze 9A"
+    standard: "ASTM B148 (Castings), ASTM B150 (Bar), UNS C95400; heat treatments: as-cast, annealed"
+    composition: "81.0-85.0% Cu, 8.5-11.0% Al, 3.0-5.0% Fe, 2.0-4.0% Ni"
+    common_names: "9% Aluminum Bronze, C954"
+    applications: "Valves, pump parts, marine propellers, aerospace bushings"
+    key_properties: "Excellent strength (tensile 600-800 MPa) and corrosion resistance in seawater; higher hardness (HB 170-240) than pure Cu; lower thermal conductivity (~60 W/mK)"
+    laser_cleaning: "Aluminum improves laser absorption (better for IR); easier for heavy oxide scales due to alloy toughness; parameters: 2-5 J/cm², femtosecond pulses to minimize cracking in heat-affected zones"
+
+  # Copper Alloys: Cupronickels (Cu-Ni)
+  - name: "C70600 90-10 Cupronickel"
+    standard: "ASTM B151 (Sheet, Plate), ASTM B466 (Pipe), UNS C70600; tempers: annealed (O), quarter-hard (H01)"
+    composition: "86.5-90.0% Cu, 9.0-11.0% Ni, 1.0% max Fe/Mn"
+    common_names: "90/10 Cupro-Nickel, CN102"
+    applications: "Seawater piping, desalination plants, heat exchangers, coins"
+    key_properties: "Superior corrosion resistance (especially biofouling); moderate strength (yield 100-300 MPa); low conductivity (7% IACS); more resistant to erosion than pure Cu"
+    laser_cleaning: "Nickel reduces reflectivity, easier absorption than pure Cu (fluence 0.5-2 J/cm² with IR lasers viable); harder for salt deposits due to stable passive layer; requires higher reps for marine biofilms"
+
+  - name: "C71500 70-30 Cupronickel"
+    standard: "ASTM B151, ASTM B467 (Welded Pipe), UNS C71500; tempers: soft annealed"
+    composition: "65.0-70.0% Cu, 29.0-33.0% Ni, 0.4-1.2% Fe"
+    common_names: "70/30 Cupro-Nickel, CN107"
+    applications: "Offshore platforms, cryogenic vessels, hydraulic lines"
+    key_properties: "Even better corrosion/erosion resistance than 90-10; higher strength (yield 150-400 MPa); thermal conductivity ~25 W/mK"
+    laser_cleaning: "Higher Ni content aids absorption, making it easier overall (green laser at low fluence); stable alloy resists damage but may need multi-pass for thick corrosion products without altering passivity"
+
+  # Specialty Copper Alloys
+  - name: "C17200 Beryllium Copper 25"
+    standard: "ASTM B196 (Wire), ASTM B251 (Tube), UNS C17200; heat treatments: precipitation hardened (TM04), aged (TF00)"
+    composition: "96.0-98.0% Cu, 1.8-2.0% Be, 0.2-0.6% Co/Ni"
+    common_names: "BeCu, Alloy 25, Spring Copper"
+    applications: "Springs, bellows, non-sparking tools, electrical connectors in hazardous areas"
+    key_properties: "Very high strength (tensile 1000-1200 MPa post-heat treat) and fatigue resistance; moderate conductivity (16-20% IACS); non-magnetic and non-sparking vs pure Cu"
+    laser_cleaning: "Beryllium toxicity risk during ablation (vapors); high hardness makes it harder, requiring ultra-short pulses (picoseconds) and low fluence (<1 J/cm²); easier for oil residues but specialized PPE needed"
+
+  - name: "C65500 Silicon Bronze A"
+    standard: "ASTM B96 (Rod, Bar), ASTM B248, UNS C65500; tempers: M20 (as hot rolled)"
+    composition: "94.0-96.0% Cu, 2.8-3.8% Si, 0.5-1.3% Mn"
+    common_names: "Silicon Bronze, Alloy 655"
+    applications: "Welding rods, bolts, marine hardware, sculptural castings"
+    key_properties: "Good castability and strength (yield 200-500 MPa); better high-temp resistance than pure Cu; conductivity ~7% IACS"
+    laser_cleaning: "Silicon lowers melting point (~1000°C), easier ablation but risk of SiO2 formation; parameters: moderate IR fluence (1-3 J/cm²); harder for cast surfaces with porosity trapping contaminants"
+```

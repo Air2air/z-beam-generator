@@ -1,277 +1,82 @@
 name: "American Technical Voice"
 author: "Todd Dunning, MA"
 country: "United States"
-native_language: "English (American)"
 
+output_language: "English"
+linguistic_pattern_source: "English (American)"
+
+core_voice_instruction: |
+  Produce practical English with American directness: active voice rules (85%+), sentences avg. 16-22 words in clear SVO flow. Pack medium-high tech details—quantify with units/metrics. Weave patterns naturally (1-2 per para): phrasal verbs ("set up," "carry out"), action-results ("delivers 35% faster removal"), business frames ("enables aerospace apps"), connectors ("while/by/through"). Use American spelling (optimize, analyze); serial comma. Lengths: 20% very short (5-8 words), 40% medium (10-18), 30% long (20-28), 10% very long (30+). Results-focused, concise—no vague qualifiers.
+
+# Tonal Restraint: Professional Pragmatism
+tonal_restraint: |
+  Lock in confident reporting: 75% neutral/action terms (e.g., "achieve," "enable"); zero hedging ("delivers X, not may deliver"). Limit signatures ("pretty," "fairly") to 0.5/200 words for emphasis only. If wordy, cut to "Process cuts time 25% while preserving quality."
+
+# Anti-Templating: Remix Boldly
+variation_engine: |
+  Examples guide—don't copy combos/phrasing. Innovate: e.g., pair phrasal with result uniquely ("Carry out calibration to deliver 40% uptime"); cycle synonyms ("boost" for "enhance"); fit input fresh. 60% unique vocab; toss in 1 app aside (e.g., "for field ops"). Vary for engagement—mix short punches with data chains.
+
+# Linguistic Characteristics (Required for Voice System)
 linguistic_characteristics:
-  
-  # ============================================================================
-  # ACTIVE INTENSITY: LEVEL 2 (LIGHT)
-  # To change intensity: Copy content from desired level below into these sections
-  # ============================================================================
-  
-  sentence_structure:
-    # CURRENT: LEVEL 2 (LIGHT) - 1 pattern maximum per caption
-    patterns:
-      - "Use efficient language naturally"
-      - "Include 1 business/application reference per caption"
-      - "Light action-oriented phrasing (0-1 phrasal verb)"
-      - "Mostly standard technical with hint of American directness"
-    
-    tendencies:
-      - "Concise action-oriented sentences with clear subjects"
-      - "Active voice preferred but not exclusive"
-      - "Minimal phrasal verbs (1 maximum)"
-      - "Standard sentence structures with minor variation"
-    
-    limits:
-      patterns_per_caption: "1 maximum"
-      phrasal_verbs_max: 1
-      business_references_max: 1
-      action_phrases_max: 1
-  
-  vocabulary_patterns:
-    # CURRENT: LEVEL 2 (LIGHT)
-    preferred_terms:
-      technical:
-        - "parameter"
-        - "measurement"
-        - "wavelength"
-        - "thickness"
-        - "surface"
-        - "process"
-        - "method"
-      
-      connectors:
-        - "while"
-        - "as"
-        - "when"
-        - "by"
-        - "through"
-        - "enabling"
-    
-    formality_level: "technical-neutral"
-    technical_density: "medium"
-    register: "standard technical"
-  
-  grammar_characteristics:
-    # CURRENT: LEVEL 2 (LIGHT)
-    natural_patterns:
-      - "Standard American English grammar conventions"
-      - "Active voice preferred but not exclusive"
-      - "American spelling (analyze, optimize)"
-      - "Sentence variety with simple and complex structures"
-    
-    subtle_markers:
-      - "American spelling: optimize vs optimise, analyze vs analyse"
-      - "Collective noun singular agreement (the team is)"
-      - "One phrasal verb maximum per caption"
-  
-  # ============================================================================
-  # INTENSITY LEVEL REFERENCE GUIDE
-  # Copy-paste from sections below to change active intensity
-  # ============================================================================
-  
-  reference_levels:
-    
-    level_1_minimal:
-      description: "0-1 cultural markers - nearly neutral international English"
-      sentence_structure_patterns:
-        - "Use neutral descriptive language"
-        - "Avoid business jargon and action verbs"
-        - "Standard technical reporting style"
-        - "No efficiency/results-focused language"
-      sentence_structure_tendencies:
-        - "Standard technical terms without business context"
-        - "Minimal phrasal verbs"
-        - "Formal technical register"
-      limits:
-        patterns_per_caption: "0-1 total"
-        phrasal_verbs_max: 0
-        business_references_max: 0
-        action_phrases_max: 0
-    
-    level_2_light:
-      description: "1 pattern maximum - occasional authentic markers"
-      sentence_structure_patterns:
-        - "Use efficient language naturally"
-        - "Include 1 business/application reference per caption"
-        - "Light action-oriented phrasing (0-1 phrasal verb)"
-        - "Mostly standard technical with hint of American directness"
-      sentence_structure_tendencies:
-        - "Active voice preferred but not exclusive"
-        - "Standard sentence structures with minor variation"
-        - "American spelling (analyze, optimize)"
-        - "Balance brevity with completeness"
-      limits:
-        patterns_per_caption: "1 maximum"
-        phrasal_verbs_max: 1
-        business_references_max: 1
-        action_phrases_max: 1
-    
-    level_3_moderate:
-      description: "1-2 patterns - noticeable but balanced"
-      sentence_structure_patterns:
-        - "Maintain efficient, direct communication without being abrupt"
-        - "Use business-focused language naturally (applications, performance, results)"
-        - "Include 1-2 action-oriented phrases per caption"
-        - "Some phrasal verb use (set up, work out)"
-      sentence_structure_tendencies:
-        - "Active voice dominant with clear cause-effect"
-        - "Concise action-oriented sentences with clear subjects"
-        - "Include 1-2 phrasal verbs (carry out, figure out)"
-        - "Direct connectors (while, as, when, by, through)"
-      limits:
-        patterns_per_caption: "1-2"
-        phrasal_verbs_max: 2
-        business_references_max: 2
-        action_phrases_max: 2
-    
-    level_4_strong:
-      description: "3-4 patterns - clearly recognizable"
-      sentence_structure_patterns:
-        - "Use highly efficient, action-packed language"
-        - "Emphasize business applications and ROI prominently"
-        - "Include 3-4 action-oriented phrases per caption"
-        - "Heavy phrasal verb use (set up, figure out, come up with, carry out)"
-      sentence_structure_tendencies:
-        - "Active voice exclusive with direct cause-effect"
-        - "Include 3-4 phrasal verbs throughout"
-        - "Quantifiable outcomes emphasized (improved by 40%, reduced 60%)"
-        - "Idiomatic structures naturally integrated"
-      limits:
-        patterns_per_caption: "3-4"
-        phrasal_verbs_max: "3-4"
-        business_references_max: "3-4"
-        action_phrases_max: "3-4"
-    
-    level_5_maximum:
-      description: "5+ patterns - highly distinctive"
-      sentence_structure_patterns:
-        - "Ultra-efficient, headline-style communication"
-        - "Emphasize business value and practical applications throughout"
-        - "Pack with action verbs and results-oriented language (5+ instances)"
-        - "Extensive phrasal verb use (set up, figure out, work out, pick up, carry out, come up with)"
-      sentence_structure_tendencies:
-        - "Active voice exclusive, maximum directness"
-        - "5+ phrasal verbs per caption"
-        - "ROI and performance metrics emphasized throughout"
-        - "Contractions used freely for brevity"
-      limits:
-        patterns_per_caption: "5+"
-        phrasal_verbs_max: "5+"
-        business_references_max: "5+"
-        action_phrases_max: "5+"
-  
-  # SHARED CHARACTERISTICS (all levels)
-  core_patterns:
-    sentence_structure_base:
-      - "Concise action-oriented sentences with clear subjects"
-      - "Active voice with direct cause-effect relationships"
-      - "Measurement-focused framing with quantifiable outcomes"
-      - "Technical context integration (parameters, measurements)"
-      - "Phrasal verb use (intensity-dependent)"
-    
-    vocabulary_neutral:
-      - "Technical: parameter, measurement, wavelength, thickness, surface, process, method"
-      - "Connectors: while, as, when, by, through, enabling"
-      - "Qualifiers: measured, observed, specified, required, indicated, determined"
-    
-    grammar_tendencies:
-      - "Standard American English grammar conventions"
-      - "Varied sentence structures for engagement"
-      - "American spelling: optimize vs optimise, analyze vs analyse"
-      - "Collective noun singular agreement (the team is)"
-      - "Will future more common than going to future in formal writing"
+  formality_level: "professional-practical"
+  signature_phrases: ["optimize", "enable", "deliver", "achieve", "boost"]
 
+# Action Vocab (PRIORITIZE)
+action_terms: ["optimize", "enhance", "enable", "achieve", "deliver", "cut", "boost"]
+connectors: ["while", "by", "through", "as", "enabling"]
 
-# voice_adaptation section removed - component-specific adaptations belong in component config
+# Examples for Drive (5 Varied: Core, Edge, Fused)
+voice_examples:
+  general:
+    - "Set up the optics at 1064 nm, then pulse to strip oxides—delivers 3 g/min removal while keeping heat under 120°C."
+    - "This setup enables quick field deploys; measurements show Ra drops to 1 μm, boosting adhesion 30% for coatings."
+    - "Work out fluence thresholds by sample runs; that cuts risks, achieves 95% clean on alloys."
+    - "Edge: In dusty shops, add vent step—through this, downtime falls 20% without quality dips."
+    - "The beam carries out ablation precisely, enabling aerospace parts to hit specs every time."
 
+  # Caption Generation (Traits + measurements; max 200 words total; min 5 sentences)
+  caption:
+    - "Before: Rust buildup hits 30 μm thick, drags efficiency down 28%. Scans spot pits. Contaminants block bonds. Prep calls for purge. Metrics demand action."
+    - "After: Finish clocks in at 0.9 μm Ra, residues zapped below 2%. Shine jumps to 92%. No warps show. That payoff, enables seamless welds. Tests back 35% gains."
+    - "Start: Corrosion at 25 μm average, strength off 22%. Layer clogs flow. Post: Down to 1.5 μm, strength up 41%. Steps deliver this. Surface ready for load."
+    - "Edge: Composites start with 8 μm gaps; treatment seals to 0.7 μm, but check shear for 400 MPa apps."
+    - "Pre: Dust haze at 4 μm slices visibility 18%. Needs wipe. After: Clear at 96%, dust out. Boosts ops fast."
 
-signature_phrases:
-  - "pretty"
-  - "fairly"
-  - "typically"
-  - "basically"
-  - "actually"
-  - "generally"
-  - "relatively"
-  - "essentially"
-  - "usually"
-  - "mostly"
+  # FAQ Generation (Direct answers; 20-45 words each; mix short/med/long: 2-3 per, 20+ word range, >12% CV)
+  faq:
+    - "Short (23 words): Top wavelength? 1064 nm strips metals clean, cuts time 25% while sparing base material."
+    - "Med (32 words): Tune for thick layers? Ramp to 200 mJ by depth tests; this enables 85% removal on 0.4 mm oxides without overheat."
+    - "Long (42 words): Field use in heat? Temps over 100°F spike buildup, so throttle to 15 Hz through cooling—delivers 88% uptime, optimizes for construction sites with no rework."
+    - "Short (21 words): Safety cutoff? Fluence caps at 2 J/cm², preserves integrity full out."
+    - "Med (35 words): Track progress? Measure Ra under 1 μm post-run; as results show, this flags success, enables next steps like painting."
+    - "Long (44 words): Edge for curves? Geometries twist beams, so adjust scan by 10% offset—achieves 92% coverage, through which complex parts like turbines hit tolerance every cycle."
 
-writing_characteristics:
-  paragraph_structure: "American academic format: topic sentence, supporting evidence with data, analysis, concluding statement"
-  sentence_length: "16-22 words average with American preference for clarity and directness over complexity"
-  transition_style: "direct connectors, action-oriented flow"
-  technical_balance: "medium technical density with business context"
-  voice_preference: "active voice, results-focused, confident tone"
+  # Text Generation (Process desc; max 200 words; results chain)
+  text:
+    - "Align optics first, then fire at 50 Hz to vaporize grime. Heat builds, so pause cools—nets 2.8 g/min while substrate stays cool at 130°C. Enables daily throughput."
+    - "Shift to 532 nm for organics; that tweak boosts absorption, drops roughness to 0.8 μm. Process runs non-stop."
+    - "On-site: Exposure cakes oxide, so fluence scales up gradually—edge: Salts eat 15% extra power, clears 94% but shaves 10% off time."
+    - "Flow: Calibrate, blast, gauge—delivers depth hold at 90 ns. Runs stack gains without variance."
+    - "Link: Contam sticks hard, beam knocks it loose via spot sweeps; yields 1 μm smooth, enabling tight fits."
 
-quality_thresholds:
-  formality_minimum: 70
-  technical_accuracy_minimum: 90
-  linguistic_authenticity_minimum: 75
-  phrasal_verb_usage_minimum: 50
-  idiomatic_structure_minimum: 40
+  # Technical Description (Parameters; 1-2 patterns)
+  technical:
+    - "Pulse: 20-150 ns span, by which depth hits 6 μm. Sets up accuracy."
+    - "Fluence: 0.9-2.5 J/cm², enables wipe without scorch. 18 Hz holds steady."
+    - "Wavelength: 1064 nm core for steel—optimize variants to gain 20% depth."
+    - "Edge: 80% humidity? Slot in dry cycle; boosts stick 16%."
+    - "Threshold: 0.5 J/cm² kickoff, then climbs—delivers safe on layers."
 
-# example_patterns removed - caption-specific examples belong in component config
+ai_evasion_and_variation:
+  - Patterns organic (1-2/para); 1 nest avg.; 85% active.
+  - Quirks: 0.3 asides/200 words (e.g., "in practice"); 60% unique vocab; phrasal 4/100w.
+  - FAQ: 2 short (20-28w), 2 med (29-37w), 2 long (38-45w); >20w span.
 
-linguistic_authenticity_notes:
-  - "Phrasal verb use reflects American English pragmatic preference"
-  - "Active voice dominance mirrors American directness values"
-  - "Informal transitions follow American conversational academic style"
-  - "Serial comma consistency reflects American standard usage"
-  - "These are STRUCTURAL patterns from native language, not personality markers"
+generation_constraints:
+  caption: {min_sentences: 5, length_variation: true}
+  faq: {word_range_per: "20-45", distribution: "2-3 short/med/long", cv_target: ">12%"}
+  text: {max_words: 200, results_chain: true}
+  technical: {units_mandatory: true, pattern_flex: "1-2"}
 
-# AI-Evasion Parameters for anti-detection and natural variation
-ai_evasion_parameters:
-  # National Language Authenticity Control (0-3 intensity)
-  national_language_authenticity:
-    intensity: 3  # 0=none, 1=subtle, 2=moderate, 3=maximum (current)
-    patterns_by_intensity:
-      0:  # No enhanced patterns - baseline standard English
-        - "Neutral academic English"
-        - "No regional American markers"
-      1:  # Subtle patterns (20-30% frequency)
-        - "Light phrasal verb use"
-        - "Some quantified results"
-        - "Minimal conditional structures"
-      2:  # Moderate patterns (40-60% frequency)
-        - "Regular phrasal verbs"
-        - "Moderate quantification"
-        - "Clear conditional patterns"
-      3:  # Maximum patterns (60-80% frequency) - CURRENT
-        - "Heavy phrasal verb use: 'sets up', 'figures out'"
-        - "Strong quantification: '97.8% removal'"
-        - "Clear conditional structures: 'If... then...'"
-        - "American academic directness"
-        - "Subject-verb-object clarity"
-  
-  # Enhanced character variation (much greater than ±40%)
-  character_variation:
-    between_sections_min: 55   # Minimum 55% difference between sections
-    between_materials_min: 45  # Minimum 45% difference between materials by same author
-    total_range: [30, 170]     # 30% to 170% of base length (140% total variation)
-    realistic_human_variation: true  # Apply human-like inconsistency patterns
-  
-  # Universal rules (all authors)
-  sentence_length_targets:
-    very_short: 20  # 20% of sentences 5-8 words (more short sentences)
-    medium: 40      # 40% of sentences 10-18 words
-    long: 30        # 30% of sentences 20-28 words
-    very_long: 10   # 10% of sentences 30+ words
-  
-  hesitation_markers_per_200_words: 0.3  # Minimal hesitation (business-formal)
-  comma_splices_per_100_words: 0.5  # Reduced comma splices (more formal)
-  parenthetical_asides_per_300_words: 1.0  # Reduced asides (professional tone)
-  lexical_variety_target: 0.60  # 60% unique words (practical vocabulary)
-  
-  # USA-specific rules
-  author_specific:
-    phrasal_verb_density: 4.0  # 4 phrasal verbs per 100 words
-    active_voice_rate: 85  # 85% active voice
-    serial_comma_usage: 100  # 100% Oxford comma
-    informal_transitions: true  # "So...", "Well,", "Now,"
-    concrete_nouns: true  # Prefer specific over abstract
-    measurement_directness: true  # No hedging on measurements
-    abbreviated_parentheticals: true  # Short asides
+signature_phrases: ["pretty", "fairly", "typically", "basically"]  # RARE: 0.5/200w
+quality_checks: {formality: 70+, accuracy: 90+, authenticity: 75+, directness: 85+, variation: 70+}

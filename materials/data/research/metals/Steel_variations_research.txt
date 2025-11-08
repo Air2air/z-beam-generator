@@ -1,0 +1,163 @@
+# Variation Research for Steel
+# Category: unknown
+# Generated: 2025-11-07T12:40:31.007681
+
+```yaml
+variations:
+  # Carbon Steels (Low Carbon)
+  - name: "AISI 1010"
+    standard: "ASTM A109 / SAE 1010"
+    composition: "Carbon 0.08-0.13%, Manganese 0.30-0.60%, Iron balance; low carbon content for ductility"
+    common_names_trade_names: "Cold-rolled sheet steel; trade names like Armco 1010"
+    primary_applications: "Automotive body panels, appliances, deep drawing, cold forming"
+    key_properties_differ_from_base: "Higher ductility and formability than medium/high carbon steels; lower strength (yield ~200 MPa) but excellent weldability and machinability"
+    laser_cleaning_implications: "Easier due to low carbon content reducing surface hardness; standard Nd:YAG or fiber laser parameters (1064 nm, 1-10 J/cm²) effective for rust/paint removal without substrate damage; high reflectivity requires higher fluence"
+
+  - name: "AISI 1018"
+    standard: "ASTM A108 / SAE 1018"
+    composition: "Carbon 0.15-0.20%, Manganese 0.60-0.90%, Iron balance; slightly higher carbon than 1010 for balanced strength"
+    common_names_trade_names: "Mild steel; trade names like Merchant Bar 1018"
+    primary_applications: "Shafts, pins, machinery parts, structural components, fasteners"
+    key_properties_differ_from_base: "Better machinability and moderate strength (tensile ~440 MPa) than pure iron; good balance of strength and ductility compared to higher carbon variants"
+    laser_cleaning_implications: "Straightforward with similar parameters to low carbon steels; low alloying minimizes thermal effects; effective for oxide scale removal, but avoid overheating to prevent warping due to ductility"
+
+  # Carbon Steels (Medium Carbon)
+  - name: "AISI 1045"
+    standard: "ASTM A29 / SAE 1045"
+    composition: "Carbon 0.43-0.50%, Manganese 0.60-0.90%, Iron balance; medium carbon for hardenability"
+    common_names_trade_names: "Medium carbon steel; trade names like 1045 HR (hot-rolled)"
+    primary_applications: "Gears, axles, crankshafts, bolts, machinery parts requiring moderate strength"
+    key_properties_differ_from_base: "Higher strength (tensile ~600 MPa) and hardness than low carbon; improved wear resistance but reduced ductility and weldability"
+    laser_cleaning_implications: "Slightly harder due to carbon content; may require higher pulse energy (5-20 J/cm²) for scale ablation; heat-treated variants need lower fluence to avoid altering microstructure"
+
+  # Carbon Steels (High Carbon)
+  - name: "AISI 1095"
+    standard: "ASTM A684 / SAE 1095"
+    composition: "Carbon 0.90-1.03%, Manganese 0.30-0.50%, Iron balance; high carbon for hardness"
+    common_names_trade_names: "Spring steel; trade names like Blue Tempered 1095"
+    primary_applications: "Springs, blades, cutting tools, wire, high-wear parts"
+    key_properties_differ_from_base: "Excellent hardness (up to 65 HRC when hardened) and edge retention vs. low carbon; brittle, poor weldability, lower toughness"
+    laser_cleaning_implications: "Harder surface makes cleaning tougher; use short pulses (ns) at 1064 nm to prevent cracking; high carbon increases absorption, reducing required fluence but risking carbonization"
+
+  # Structural Carbon Steel
+  - name: "ASTM A36"
+    standard: "ASTM A36 / AASHTO M270"
+    composition: "Carbon ≤0.26%, Manganese 0.80-1.20% (if C>0.25%), Phosphorus ≤0.04%, Sulfur ≤0.05%, Iron balance; mild structural steel"
+    common_names_trade_names: "Common structural steel; trade names like A36 plate"
+    primary_applications: "Buildings, bridges, general construction, plates, bars"
+    key_properties_differ_from_base: "Good weldability and moderate strength (yield 250 MPa) for structural use; better corrosion resistance in painted forms than high carbon"
+    laser_cleaning_implications: "Easy for rust removal on structural surfaces; standard parameters suffice; mill scale cleans well but watch for galvanizing if coated, requiring lower power to avoid zinc vapor"
+
+  # Alloy Steels (Low Alloy)
+  - name: "AISI 4130"
+    standard: "ASTM A29 / SAE 4130"
+    composition: "Carbon 0.28-0.33%, Chromium 0.80-1.10%, Molybdenum 0.15-0.25%, Manganese 0.40-0.60%, Iron balance; chromoly alloy"
+    common_names_trade_names: "Chromoly; trade names like 4130 normalized"
+    primary_applications: "Aircraft tubing, racing frames, automotive roll cages, pressure vessels"
+    key_properties_differ_from_base: "Higher strength (tensile ~700 MPa) and toughness than carbon steels; better fatigue resistance due to alloying"
+    laser_cleaning_implications: "Alloying elements improve absorption; easier than plain carbon for oxide removal; adjust for heat-affected zone in normalized state to prevent softening"
+
+  - name: "AISI 4140"
+    standard: "ASTM A29 / SAE 4140"
+    composition: "Carbon 0.38-0.43%, Chromium 0.80-1.10%, Molybdenum 0.15-0.25%, Manganese 0.75-1.00%, Iron balance"
+    common_names_trade_names: "Chromoly 4140; trade names like 4140 HT (heat-treated)"
+    primary_applications: "Tooling, axles, gears, spindles, oilfield equipment"
+    key_properties_differ_from_base: "Enhanced hardenability and wear resistance (up to 55 HRC); higher creep resistance than 1045 carbon steel"
+    laser_cleaning_implications: "Moderate difficulty; chromium aids laser interaction; use 10-30 J/cm² for heavy contamination; heat-treated versions may need defocusing to avoid tempering effects"
+
+  # Alloy Steels (High Alloy)
+  - name: "AISI 4340"
+    standard: "ASTM A29 / SAE 4340"
+    composition: "Carbon 0.38-0.43%, Nickel 1.65-2.00%, Chromium 0.70-0.90%, Molybdenum 0.20-0.30%, Iron balance"
+    common_names_trade_names: "Nickel-chromium-moly steel; trade names like 4340 Q&T (quenched & tempered)"
+    primary_applications: "Aerospace landing gear, shafts, heavy-duty pins, military components"
+    key_properties_differ_from_base: "Superior toughness and fatigue strength (tensile ~1000 MPa); deep hardening capability vs. low alloy steels"
+    laser_cleaning_implications: "Nickel content increases reflectivity, making it harder; higher fluence (15-40 J/cm²) needed; effective for aerospace grime but monitor for alloy segregation"
+
+  # Stainless Steels (Austenitic)
+  - name: "AISI 304"
+    standard: "ASTM A240 / UNS S30400"
+    composition: "Chromium 18-20%, Nickel 8-10.5%, Carbon ≤0.08%, Iron balance; 18/8 stainless"
+    common_names_trade_names: "18/8 stainless; trade names like 304L (low carbon variant)"
+    primary_applications: "Food processing, kitchen equipment, piping, architectural panels"
+    key_properties_differ_from_base: "Excellent corrosion resistance in mild environments; non-magnetic, good formability vs. carbon steels; lower strength (yield ~215 MPa) but higher ductility"
+    laser_cleaning_implications: "Easier due to passive oxide layer; 1064 nm lasers effective for fingerprints/scale; low carbon variant (304L) cleans without weld sensitization risk; avoid high heat to preserve passivation"
+
+  - name: "AISI 316"
+    standard: "ASTM A240 / UNS S31600"
+    composition: "Chromium 16-18%, Nickel 10-14%, Molybdenum 2-3%, Carbon ≤0.08%, Iron balance; 16/10/2 stainless"
+    common_names_trade_names: "Marine stainless; trade names like 316L"
+    primary_applications: "Marine hardware, chemical processing, pharmaceuticals, surgical instruments"
+    key_properties_differ_from_base: "Superior pitting/chloride corrosion resistance than 304; similar strength but better in harsh environments"
+    laser_cleaning_implications: "Molybdenum enhances stability; cleans well for salt deposits; parameters similar to 304 but higher tolerance to fluence (up to 20 J/cm²) without discoloration"
+
+  # Stainless Steels (Ferritic)
+  - name: "AISI 430"
+    standard: "ASTM A240 / UNS S43000"
+    composition: "Chromium 16-18%, Carbon ≤0.12%, Iron balance; straight chromium ferritic"
+    common_names_trade_names: "Ferritic stainless; trade names like 430 sheet"
+    primary_applications: "Automotive trim, appliances, architectural, exhaust systems"
+    key_properties_differ_from_base: "Good corrosion resistance in mild settings; magnetic, lower cost than austenitic; moderate strength (yield ~240 MPa), poor weldability"
+    laser_cleaning_implications: "Straightforward for decorative surfaces; high chromium aids absorption; use lower energy (5-15 J/cm²) to avoid embrittlement in welded areas"
+
+  # Stainless Steels (Martensitic)
+  - name: "AISI 410"
+    standard: "ASTM A240 / UNS S41000"
+    composition: "Chromium 11.5-13.5%, Carbon 0.08-0.15%, Iron balance; hardenable martensitic"
+    common_names_trade_names: "Cutlery stainless; trade names like 410 annealed"
+    primary_applications: "Cutlery, valves, pumps, turbine blades"
+    key_properties_differ_from_base: "Hardenable to 40 HRC; good strength/toughness balance vs. austenitic; moderate corrosion resistance"
+    laser_cleaning_implications: "Harder after heat treatment; requires pulsed lasers for scale; carbon content may cause easier ablation but risk of martensite cracking if overheated"
+
+  # Stainless Steels (Duplex)
+  - name: "UNS S31803 (2205)"
+    standard: "ASTM A240 / UNS S31803"
+    composition: "Chromium 21-23%, Nickel 4.5-6.5%, Molybdenum 2.5-3.5%, Nitrogen 0.08-0.20%, Iron balance; duplex ferritic-austenitic"
+    common_names_trade_names: "Duplex 2205; trade names like SAF 2205"
+    primary_applications: "Oil/gas pipelines, desalination, chemical tanks, structural offshore"
+    key_properties_differ_from_base: "High strength (yield ~450 MPa) and corrosion resistance; better stress corrosion cracking resistance than austenitic"
+    laser_cleaning_implications: "Dual phase affects uniformity; harder cleaning due to higher strength; use 1064-532 nm for balanced ablation; nitrogen aids in preventing pitting during process"
+
+  # Tool Steels (Cold Work)
+  - name: "AISI D2"
+    standard: "ASTM A681 / UNS T30402"
+    composition: "Carbon 1.40-1.60%, Chromium 11-13%, Molybdenum 0.70-1.20%, Vanadium 0.80-1.20%, Iron balance; high chromium tool steel"
+    common_names_trade_names: "D2 tool steel; trade names like SKD-11"
+    primary_applications: "Dies, punches, shear blades, plastic molds"
+    key_properties_differ_from_base: "High wear resistance and dimensional stability (hardness 58-62 HRC); deep hardening vs. carbon tool steels"
+    laser_cleaning_implications: "Very hard surface complicates cleaning; high chromium requires UV or green lasers (532 nm) for better absorption; high fluence risks carbide precipitation"
+
+  # Tool Steels (High Speed)
+  - name: "AISI M2"
+    standard: "ASTM A600 / UNS T11302"
+    composition: "Carbon 0.78-0.88%, Tungsten 5.50-6.75%, Molybdenum 4.90-5.30%, Chromium 3.75-4.50%, Vanadium 1.75-2.20%, Iron balance"
+    common_names_trade_names: "M2 high-speed steel; trade names like HS-6-5-2"
+    primary_applications: "Drills, mills, taps, broaches, cutting tools"
+    key_properties_differ_from_base: "Red hardness up to 600°C; high hot hardness and abrasion resistance vs. water-hardening tools"
+    laser_cleaning_implications: "Tungsten increases melting point, making it harder; use short pulses at high energy (20-50 J/cm²); effective for coolant residue but avoid tempering the cutting edge"
+
+  # Heat Treatment Variations (Applicable across steels, exemplified on common base like 1045)
+  - name: "1045 Annealed"
+    standard: "ASTM A29 (annealed condition)"
+    composition: "Same as AISI 1045; softened by full annealing (slow cool from 800°C)"
+    common_names_trade_names: "Soft annealed 1045"
+    primary_applications: "Machining stock, pre-forming operations"
+    key_properties_differ_from_base: "Lower hardness (HB 170-200) and strength for better machinability; more ductile than normalized"
+    laser_cleaning_implications: "Easiest among heat treatments; soft surface allows low fluence (1-5 J/cm²); minimal risk of distortion"
+
+  - name: "1045 Normalized"
+    standard: "ASTM A29 (normalized condition)"
+    composition: "Same as AISI 1045; air-cooled from 870°C for uniform structure"
+    common_names_trade_names: "Normalized medium carbon steel"
+    primary_applications: "Weldments, forgings, general fabrication"
+    key_properties_differ_from_base: "Improved uniformity and strength (tensile ~650 MPa) over annealed; better than as-rolled for toughness"
+    laser_cleaning_implications: "Moderate; uniform grain aids even cleaning; standard parameters; finer structure reduces heat penetration depth"
+
+  - name: "4140 Quenched and Tempered (Q&T)"
+    standard: "ASTM A29 (Q&T at 540°C temper)"
+    composition: "Same as AISI 4140; oil quenched from 845°C, tempered for toughness"
+    common_names_trade_names: "4140 30-35 HRC Q&T"
+    primary_applications: "High-stress components like gears, axles"
+    key_properties_differ_from_base: "Balanced high strength (tensile ~950 MPa) and toughness; martensitic structure vs. pearlitic in normalized"
+    laser_cleaning_implications: "Harder martensite requires higher energy; risk of untempering if overheated—use scanned beams; alloying helps absorption"
+```

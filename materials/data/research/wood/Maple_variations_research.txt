@@ -1,0 +1,70 @@
+# Variation Research for Maple
+# Category: unknown
+# Generated: 2025-11-07T12:41:57.189467
+
+```yaml
+variations:
+  - name: "Hard Maple FAS kiln-dried"
+    standard: "NHLA (National Hardwood Lumber Association) grading rules; Botanical name: Acer saccharum"
+    composition_characteristics: "Dense hardwood from Sugar Maple; Janka hardness ~1450 lbf; pale cream to light reddish-brown heartwood, straight grain, fine even texture; kiln-dried to 6-8% moisture content; FAS (Firsts and Seconds) grade requires minimum 6x8 inch clear face, few defects"
+    common_names_trade_names: "Sugar Maple, Rock Maple, Northern Hard Maple"
+    primary_applications: "High-end furniture, cabinetry, flooring, butcher blocks, tool handles, musical instruments (e.g., guitar necks)"
+    key_properties_differing_from_base: "Higher density and hardness compared to soft maples (base generic maple averages ~1100 lbf Janka); better wear resistance and stability; less prone to warping than green wood"
+    laser_cleaning_implications: "Easier due to uniform pale color and density; lower fluence (e.g., 1-5 J/cm² at 1064 nm) for surface contaminants; even ablation, but higher power needed for dense grain to avoid charring; kiln-drying reduces steam explosion risks"
+
+  - name: "Hard Maple Select kiln-dried"
+    standard: "NHLA grading rules; Botanical name: Acer saccharum"
+    composition_characteristics: "Similar to Hard Maple FAS but Select grade allows smaller clear cuttings (min 4x6 inch); uniform color, minimal knots or defects; kiln-dried to 6-8% MC for interior use"
+    common_names_trade_names: "Sugar Maple Select, Premium Hard Maple"
+    primary_applications: "Interior millwork, moldings, fine joinery, decorative panels"
+    key_properties_differing_from_base: "Slightly more allowable defects than FAS, reducing cost; comparable hardness (~1450 lbf) but potentially less uniform strength; better aesthetic consistency than common grades"
+    laser_cleaning_implications: "Similar to FAS; straightforward for finish removal; may require parameter adjustments for minor defects (e.g., higher pulse energy on knots); pale surface aids visibility during cleaning"
+
+  - name: "Hard Maple No.1 Common air-dried"
+    standard: "NHLA grading rules; Botanical name: Acer saccharum"
+    composition_characteristics: "Hard Maple with more defects (knots, splits); air-dried to 10-12% MC; heartwood light brown, allows up to 25% defect coverage on face"
+    common_names_trade_names: "Sugar Maple Common, Utility Hard Maple"
+    primary_applications: "Framing, subflooring, crates, lower-grade furniture components"
+    key_properties_differing_from_base: "Lower cost due to defects; similar hardness but reduced structural integrity; higher moisture leads to more shrinkage potential than kiln-dried"
+    laser_cleaning_implications: "Harder due to defects and higher moisture; uneven ablation on knots (use scanned beam, 2-10 J/cm²); risk of deeper penetration on splits; air-drying may cause variable absorption"
+
+  - name: "Soft Maple FAS kiln-dried"
+    standard: "NHLA grading rules; Botanical name: Acer rubrum (Red Maple) or Acer saccharinum (Silver Maple)"
+    composition_characteristics: "Softer hardwood; Janka hardness ~950 lbf (Red) or ~700 lbf (Silver); pinkish to reddish heartwood, interlocked grain possible; FAS grade with minimal defects; kiln-dried to 6-8% MC"
+    common_names_trade_names: "Red Maple, Silver Maple, Soft Maple"
+    primary_applications: "Furniture, cabinets, plywood veneers, turned items, particleboard"
+    key_properties_differing_from_base: "Lower density and hardness than hard maple (base ~1100 lbf); more workable but less durable; Red Maple darker and more figured than Silver"
+    laser_cleaning_implications: "Easier than hard maple due to lower density; lower fluence (0.5-3 J/cm²) suffices; reddish tones may absorb more at 532 nm; uniform cleaning but watch for interlocked grain causing fiber pull"
+
+  - name: "Soft Maple No.2 Common green"
+    standard: "NHLA grading rules; Botanical name: Acer rubrum or Acer saccharinum"
+    composition_characteristics: "Green (fresh-cut, >20% MC) soft maple with significant defects (e.g., 50% clear face); lighter sapwood dominant, prone to staining; No.2 Common allows more knots and checks"
+    common_names_trade_names: "Green Red Maple, Utility Soft Maple"
+    primary_applications: "Pulpwood, firewood, rough lumber for drying, low-end construction"
+    key_properties_differing_from_base: "High moisture causes shrinkage (up to 10%) and warping; softer (~800 lbf average) and less stable than dried variants; cheaper but higher defect rate"
+    laser_cleaning_implications: "Harder due to high moisture; steam generation risks explosion-like effects (use low power, <1 J/cm², dry first if possible); uneven due to sap; parameters need IR wavelengths to minimize water interference"
+
+  - name: "Birdseye Maple kiln-dried"
+    standard: "NHLA grading rules with figured wood premiums; Botanical name: Acer saccharum (primarily)"
+    composition_characteristics: "Figured hard maple with distinctive 'eyes' from growth interruptions; Janka ~1450 lbf; small tight knots create unique pattern; kiln-dried to 6-8% MC; often Select or better grade"
+    common_names_trade_names: "Bird's Eye Maple, Eye Maple"
+    primary_applications: "High-value furniture, gunstocks, decorative veneers, instrument tops"
+    key_properties_differing_from_base: "Same hardness as hard maple but unique figuring increases aesthetic value; slightly more brittle in figured areas; premium pricing"
+    laser_cleaning_implications: "Moderately harder due to figuring; uneven surface requires adaptive scanning (1-6 J/cm²); eyes may clean faster, risking over-ablation; pale base aids precision but pattern visibility post-clean"
+
+  - name: "Curly Maple kiln-dried"
+    standard: "NHLA grading rules with figured premiums; Botanical name: Acer saccharum or Acer rubrum"
+    composition_characteristics: "Wavy, curly grain pattern from genetic growth; hard maple base (~1450 lbf) or soft (~950 lbf); chatoyant figure; kiln-dried to 6-8% MC; graded FAS or Select for figure quality"
+    common_names_trade_names: "Tiger Maple, Fiddleback Maple"
+    primary_applications: "Violin backs, fine furniture, architectural paneling, custom woodwork"
+    key_properties_differing_from_base: "Enhanced optical effects (3D wave appearance); similar mechanical properties to base species but figuring can cause slight anisotropy in strength"
+    laser_cleaning_implications: "Challenging due to wavy grain; variable absorption leads to inconsistent ablation (use 3-8 J/cm² with pulse shaping); easier on flat areas, harder on curls; post-clean figure may enhance or distort"
+
+  - name: "Bigleaf Maple FAS kiln-dried"
+    standard: "NHLA grading rules; Botanical name: Acer macrophyllum (Western species)"
+    composition_characteristics: "Western soft maple; Janka ~800 lbf; light cream sapwood, darker heartwood with possible quilted figure; straight to irregular grain; FAS grade; kiln-dried to 6-8% MC"
+    common_names_trade_names: "Oregon Maple, West Coast Maple"
+    primary_applications: "Guitar bodies, furniture, turning stock, veneer for Pacific Northwest markets"
+    key_properties_differing_from_base: "Larger growth rings lead to coarser texture than Eastern maples; lower hardness but good shock resistance; more prone to checking in heartwood"
+    laser_cleaning_implications: "Easier on sapwood due to lightness; coarser grain may trap contaminants, needing higher fluence (2-7 J/cm²); quilted areas similar to curly—adaptive parameters for figure; regional variability in density affects uniformity"
+```

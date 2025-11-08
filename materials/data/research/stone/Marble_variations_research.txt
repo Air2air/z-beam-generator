@@ -1,0 +1,94 @@
+# Variation Research for Marble
+# Category: unknown
+# Generated: 2025-11-07T12:46:51.746342
+
+```yaml
+marble_variations:
+  - designation: Carrara Marble Polished Premium Grade
+    standard_specification: ASTM C503 (Standard Specification for Marble Dimension Stone); EN 1469 (Natural Stone - Slabs for Cladding); Quarry origin: Apuan Alps, Italy
+    composition_characteristics: Fine-grained white metamorphic limestone with subtle gray veining; primarily calcite (CaCO3 >95%); low porosity (0.5-2%); Mohs hardness 3
+    common_names_trade_names: Bianco Carrara; Carrera Marble
+    primary_applications: Countertops, flooring, wall cladding, sculptures; industrial: architectural facades, interior design elements
+    key_properties_differing_from_base_marble: Higher purity and finer grain than coarser marbles; better translucency and uniformity; slightly lower porosity reduces stain absorption compared to more porous varieties like Travertine-influenced marbles
+    laser_cleaning_implications: Easier due to uniform surface and low porosity; polished finish increases reflectivity, requiring shorter pulse durations (e.g., 10-50 ns Nd:YAG laser at 1-2 J/cm²) to avoid specular reflection; minimal risk of discoloration if fluence kept below 3 J/cm²
+
+  - designation: Carrara Marble Honed Standard Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Apuan Alps, Italy
+    composition_characteristics: Same as polished variant but with matte finish; calcite-dominant with gray-blue veins; porosity similar (0.5-2%)
+    common_names_trade_names: Carrara Honed; Italian White Marble
+    primary_applications: Bathroom vanities, shower walls, commercial flooring; industrial: laboratory bench tops requiring non-slip surfaces
+    key_properties_differing_from_base_marble: Reduced gloss (honed finish at 20-40 sheen units vs. 80+ for polished); slightly higher friction coefficient for safety; same durability but easier to clean daily
+    laser_cleaning_implications: Moderately easier than polished due to lower reflectivity; absorbs laser energy better, allowing higher fluence (2-4 J/cm²) with CO2 lasers; honed texture may trap residues, needing multiple passes
+
+  - designation: Calacatta Marble Polished Select Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Apuan Alps, Italy (distinct from Carrara quarries)
+    composition_characteristics: White base with bold, thick gold/gray veining; calcite >98%; slightly higher silica impurities (1-2%) causing veining; porosity 1-3%
+    common_names_trade_names: Calacatta Gold; Italian Calacatta
+    primary_applications: High-end kitchen islands, luxury flooring, fireplace surrounds; industrial: decorative architectural panels
+    key_properties_differing_from_base_marble: More dramatic veining increases aesthetic value but slightly higher porosity leads to greater water absorption (0.2-0.5%); comparable hardness but veins may be more fracture-prone
+    laser_cleaning_implications: Harder due to veining variations causing uneven absorption; requires scanned beam patterns to avoid over-heating veins (e.g., 1064 nm Nd:YAG at 1.5-3 J/cm²); polished surface demands pulse optimization to prevent micro-cracking in impure areas
+
+  - designation: Statuario Marble Polished Premium Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Apuan Alps, Italy
+    composition_characteristics: Pure white with minimal fine gray veining; highest calcite purity (>99%); very low porosity (<1%); dense structure
+    common_names_trade_names: Statuario White; Michelangelo Marble (used in sculptures)
+    primary_applications: Statues, columns, high-end countertops; industrial: precision-cut facades, monumental architecture
+    key_properties_differing_from_base_marble: Superior whiteness and density provide better polish retention and resistance to etching (pH sensitivity lower); higher compressive strength (150-200 MPa vs. 100-150 MPa for standard marble)
+    laser_cleaning_implications: Easiest among whites due to uniformity and low porosity; high reflectivity on polish necessitates UV or green wavelengths (e.g., 532 nm at 0.5-2 J/cm²); low thermal damage risk, allowing efficient cleaning of soot or biological growth
+
+  - designation: Emperador Marble Polished Commercial Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Novelda, Spain
+    composition_characteristics: Dark brown base with white veining; calcite with iron oxide impurities (5-10%) for color; porosity 1-4%; Mohs 3
+    common_names_trade_names: Dark Emperador; Spanish Brown Marble
+    primary_applications: Flooring, wall tiles, exterior cladding; industrial: heavy-traffic commercial spaces, outdoor paving
+    key_properties_differing_from_base_marble: Darker color from oxides increases UV resistance but higher porosity raises stain risk; slightly lower hardness in veined areas, more susceptible to abrasion
+    laser_cleaning_implications: Harder due to color absorption differences; dark base absorbs more energy, risking thermal cracking—use low-fluence long pulses (e.g., 10.6 μm CO2 at 0.5-1.5 J/cm²); veining may require selective cleaning to avoid bleaching
+
+  - designation: Crema Marfil Marble Honed Select Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Pinoso, Spain
+    composition_characteristics: Creamy beige with subtle golden veining; calcite >95% with dolomite traces (2-5%); porosity 0.5-2.5%
+    common_names_trade_names: Crema Marfil; Ivory Marble
+    primary_applications: Interior walls, bathroom tiles, furniture; industrial: hotel lobbies, office interiors
+    key_properties_differing_from_base_marble: Warmer tone from dolomite enhances warmth but increases sensitivity to acids; better flexibility in thin slabs due to minor dolomite content
+    laser_cleaning_implications: Moderate difficulty; beige color moderate absorption, honed finish aids energy uptake—optimal with 1064 nm lasers at 1-3 J/cm²; porosity may lead to residue re-deposition, needing post-clean sealing
+
+  - designation: Botticino Marble Polished Standard Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Brescia, Italy
+    composition_characteristics: Light beige with linear fossil markings; calcite-dominant with shell fragments; porosity 2-4%
+    common_names_trade_names: Botticino Classico; Italian Beige Marble
+    primary_applications: Bookmatched walls, altars, classical architecture; industrial: restoration projects, decorative veneers
+    key_properties_differing_from_base_marble: Fossil inclusions add texture but increase porosity and potential weak points; softer overall (compressive strength 120 MPa), more prone to scratching
+    laser_cleaning_implications: Harder due to fossils causing uneven surfaces; requires adaptive parameters (e.g., lower fluence 0.8-2 J/cm² on Nd:YAG) to prevent damage to inclusions; higher porosity demands vacuum-assisted cleaning to remove debris
+
+  - designation: Thassos Marble Polished Premium Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Thassos Island, Greece
+    composition_characteristics: Snow-white crystalline marble; pure calcite (>99%); very low porosity (<0.5%); high luster potential
+    common_names_trade_names: Thassos White; Greek White Marble
+    primary_applications: Luxury countertops, sculptures, backlit panels; industrial: high-end facade systems
+    key_properties_differing_from_base_marble: Exceptional purity yields superior translucency and weather resistance; highest density (2.7 g/cm³) among marbles, reducing efflorescence
+    laser_cleaning_implications: Very easy; uniform purity allows standard parameters (e.g., 1064 nm at 1-2.5 J/cm²); polished high reflectivity may need defocusing or shorter wavelengths to optimize ablation of contaminants without substrate heating
+
+  - designation: Nero Marquina Marble Polished Commercial Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Markina, Spain
+    composition_characteristics: Jet black with white pyrites flecks; calcite with high carbon inclusions (10-15%); porosity 1-3%
+    common_names_trade_names: Black Marquina; Spanish Black Marble
+    primary_applications: Modern flooring, accents, memorials; industrial: corporate lobbies, exterior monuments
+    key_properties_differing_from_base_marble: Black color from amorphous carbon provides dramatic contrast but increases heat absorption; pyrites add metallic sheen but can corrode in humid environments
+    laser_cleaning_implications: Challenging; high absorption leads to rapid heating—use ultra-short pulses (ps/fs lasers at <1 J/cm²) or CO2 for surface ablation; flecks may scatter light, requiring higher energy thresholds and risking pyrite oxidation
+
+  - designation: Arabescato Marble Honed Select Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Alpi Apuane, Italy
+    composition_characteristics: White with intricate dark green/gray arabesque veining; calcite >97%; porosity 1-2.5%
+    common_names_trade_names: Arabescato Vagli; Carrara Arabesque
+    primary_applications: Artistic installations, vanity tops, wall art; industrial: bespoke architectural features
+    key_properties_differing_from_base_marble: Complex veining patterns offer unique aesthetics but variable density in veins reduces uniformity; slightly higher flexural strength (15-20 MPa) for curved applications
+    laser_cleaning_implications: Moderately hard; veining causes differential ablation rates—scan at variable speeds with 532 nm lasers (1.5-3 J/cm²) to match absorption; honed finish eases process but intricate patterns may need manual parameter adjustments
+
+  - designation: Volakas Marble Polished Standard Grade
+    standard_specification: ASTM C503; EN 1469; Quarry origin: Drama, Greece
+    composition_characteristics: White base with dramatic angular gray veins; calcite with quartz impurities (3-5%); porosity 2-4%
+    common_names_trade_names: Volakas White; Greek Volakas
+    primary_applications: Large slab flooring, bookmatched walls; industrial: public space cladding
+    key_properties_differing_from_base_marble: Angular veins from quartz add boldness but increase brittleness; higher porosity than pure whites leads to more sealing needs
+    laser_cleaning_implications: Harder due to quartz veins reflecting or absorbing differently; requires dual-wavelength approach (e.g., 1064 nm for calcite, 355 nm for quartz at 2-4 J/cm²); porosity traps particles, prolonging cleaning time
+```

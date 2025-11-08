@@ -1,0 +1,5164 @@
+_metadata:
+  version: 2.0.0
+  description: Machine settings with parameter ranges and optimization guidance
+  extracted_date: '2025-11-07T11:22:52.851666'
+  total_materials: 132
+  structure: Settings with min/max ranges and category-specific optimization
+  last_updated: '2025-11-07T11:57:59.763292'
+  reconciled_from_categories: true
+  categories_version: 3.0.0
+parameterRanges:
+  energyDensity:
+    description: Energy density (fluence) for laser cleaning
+    max: 20.0
+    min: 0.1
+    unit: J/cm²
+  fluenceThreshold:
+    description: Laser fluence range for material ablation
+    max: 4.5
+    min: 0.3
+    unit: J/cm²
+  overlapRatio:
+    description: Overlap ratio between successive laser passes
+    max: 90
+    min: 10
+    unit: '%'
+  passCount:
+    description: Number of cleaning passes over the surface
+    max: 10
+    min: 1
+    unit: passes
+  powerRange:
+    description: Laser power range for industrial cleaning applications
+    max: 120
+    min: 1.0
+    unit: W
+  pulseDuration:
+    description: Pulse duration range for optimal material processing
+    max: 1000
+    min: 0.1
+    unit: ns
+  pulseWidth:
+    description: Pulse width range for laser processing
+    max: 1000
+    min: 0.1
+    unit: ns
+  repetitionRate:
+    description: Pulse repetition frequency range
+    max: 200
+    min: 1
+    unit: kHz
+  scanSpeed:
+    description: Laser scanning speed over the surface
+    max: 5000
+    min: 10
+    unit: mm/s
+  spotSize:
+    description: Focused beam spot diameter range
+    max: 500
+    min: 0.1
+    unit: μm
+  wavelength:
+    description: Laser wavelength range for industrial cleaning applications
+    max: 10640
+    min: 355
+    unit: nm
+parameterDescriptions:
+  ablationThreshold:
+    description: Minimum energy density required to initiate material removal from the surface
+    unit: J/cm²
+    selection_criteria: Based on material thermal properties and bond strength
+    typical_range_guidance: Lower for organic materials, higher for metals and ceramics
+  fluenceThreshold:
+    description: Energy density threshold for effective contaminant removal without substrate damage
+    unit: J/cm²
+    selection_criteria: Material damage threshold and contamination type
+    optimization_note: Critical for selective cleaning applications
+  powerRange:
+    description: Laser output power range for effective cleaning without thermal damage
+    unit: W
+    selection_criteria: Material thermal conductivity, thickness, and heat dissipation
+    scaling_factors:
+    - Spot size
+    - Processing speed
+    - Material thermal properties
+  processingSpeed:
+    description: Rate of laser beam movement across the surface during cleaning
+    unit: mm/min
+    selection_criteria: Power density, material response time, and quality requirements
+    trade_offs: Speed vs. cleaning thoroughness and surface quality
+  pulseDuration:
+    description: Duration of individual laser pulses for controlled energy delivery
+    unit: ns, ps, fs
+    selection_criteria: Material thermal response time and precision requirements
+    regime_guidance: Femtosecond for precision, nanosecond for general cleaning
+  repetitionRate:
+    description: Frequency of laser pulses for consistent material processing
+    unit: Hz, kHz, MHz
+    selection_criteria: Material cooling time and processing speed requirements
+    thermal_considerations: Must allow adequate cooling between pulses
+  scanningSpeed:
+    description: Linear speed of laser beam scanning across the surface
+    unit: mm/s
+    selection_criteria: Power density requirements and material response
+    pattern_optimization: Affects overlap and uniformity of cleaning
+  spotSize:
+    description: Diameter of focused laser beam on the material surface
+    unit: mm, μm
+    selection_criteria: Feature size, precision requirements, and power density
+    resolution_impact: Smaller spots enable higher precision but slower processing
+  thermalDamageThreshold:
+    description: Maximum energy density before irreversible thermal damage occurs
+    unit: J/cm²
+    safety_margin: Typically operate at 70-80% of this threshold
+    material_dependency: Varies significantly with thermal properties
+  wavelength:
+    description: Laser wavelength for optimal material interaction and cleaning efficiency
+    unit: nm
+    selection_criteria: Material absorption characteristics, cleaning requirements, and safety considerations
+    typical_range_guidance: 355nm (UV) for organics/coatings, 1064nm (NIR) for metals, 10640nm (CO2) for plastics
+    optimization_factors:
+    - Material absorption coefficient
+    - Penetration depth requirements
+    - Thermal vs. photochemical ablation
+    category_specific_ranges:
+      metal:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: High absorption at 1064nm, UV for precision, CO2 for aggressive cleaning
+      ceramic:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Ceramic absorption increases with wavelength, avoid UV damage
+      glass:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Glass transparent to UV, moderate NIR absorption, strong CO2 absorption
+      plastic:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: UV excellent for organics, NIR safe, CO2 very effective but thermal
+      composite:
+        range: 355-1080 nm
+        optimal: 1064 nm
+        rationale: Mixed materials need careful wavelength selection, avoid thermal CO2
+      wood:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: Organic material, UV very effective, NIR balanced, CO2 for heavy removal
+      stone:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Natural materials, avoid UV to prevent discoloration, NIR/CO2 effective
+      masonry:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Mixed cement/stone materials, avoid UV, NIR safe, CO2 for paint removal
+      semiconductor:
+        range: 355-1080 nm
+        optimal: 532 nm
+        rationale: High precision required, avoid thermal damage, shorter wavelengths preferred
+settings:
+  Alabaster:
+    powerRange:
+      description: Optimal average power for Alabaster surface cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Alumina:
+    powerRange:
+      description: Optimal average power for Alumina surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing good absorption in Alumina with minimal reflection
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution and energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate balancing cleaning efficiency and thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Alumina surface cleaning
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient material removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Aluminum:
+    powerRange:
+      description: Optimal average power for Aluminum oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal Aluminum absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution and energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for Aluminum oxide removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide removal without excessive thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient coverage and cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Ash:
+    powerRange:
+      description: Optimal average power for efficient Ash removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Ash absorption and minimal substrate interaction
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective Ash removal resolution and processing efficiency
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal recovery
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for Ash ablation while preserving underlying substrate
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Ash ablation and thermal management
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Ash removal and process throughput
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Ash removal with process control
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Bamboo:
+    powerRange:
+      description: Optimal average power for bamboo surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in bamboo contaminants with minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution on bamboo surface features
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Optimal fluence level for contaminant ablation while preserving bamboo substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal without substrate damage
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning coverage across bamboo surface
+      unit: '%'
+      value: 50
+  Basalt:
+    powerRange:
+      description: Optimal average power for Basalt surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Basalt absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 12
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Beech:
+    powerRange:
+      description: Optimal average power for Beech surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Beech absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Focused spot size for precise cleaning resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective contaminant removal from Beech surface
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without thermal damage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Beryllium:
+    powerRange:
+      description: Optimal average power range for Beryllium oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Beryllium thermal absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning with minimal thermal damage
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Fluence threshold for Beryllium oxide removal without substrate damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning pattern
+      unit: '%'
+      value: 50
+  Birch:
+    powerRange:
+      description: Optimal average power for Birch surface cleaning without charring
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for optimal Birch wood absorption and minimal subsurface damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution on Birch surface features
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without damaging Birch substrate
+      unit: J/cm²
+      value: 4.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants without excessive heat diffusion
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage without excessive dwell time
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Bluestone:
+    powerRange:
+      description: Optimal average power for Bluestone cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Bluestone mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse width for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform coverage
+      unit: '%'
+      value: 50
+  Borosilicate Glass:
+    powerRange:
+      description: Optimal average power for Borosilicate Glass surface cleaning without thermal damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength providing good transmission control for surface contamination removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on glass surface
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for contaminant removal without glass damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+      unit: '%'
+      value: 50
+  Brass:
+    powerRange:
+      description: Optimal average power for Brass oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal on Brass
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide layer removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Breccia:
+    powerRange:
+      description: Optimal average power for Breccia surface cleaning without thermal damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-IR wavelength optimized for Breccia mineral absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal
+      unit: J/cm²
+      value: 3.5
+    pulseWidth:
+      description: Short pulse duration for efficient ablation of surface contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete surface treatment
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning results
+      unit: '%'
+      value: 50
+  Brick:
+    powerRange:
+      description: Optimal average power for brick surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal brick absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution on brick surface texture
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving brick substrate
+      unit: J/cm²
+      value: 12
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal from porous brick surface
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning without excessive thermal accumulation
+      unit: '%'
+      value: 50
+  Bronze:
+    powerRange:
+      description: Optimal average power for Bronze oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good absorption in Bronze oxides and moderate substrate absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Bronze oxide removal while preserving substrate
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation with minimal thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform oxide removal without substrate damage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal with safety margin
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Calcite:
+    powerRange:
+      description: Optimal average power for Calcite cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for efficient Calcite absorption with minimal transmission
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution on Calcite surfaces
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective contaminant removal from Calcite
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+      unit: '%'
+      value: 50
+  Carbon Fiber Reinforced Polymer:
+    powerRange:
+      description: Optimal average power for CFRP cleaning without matrix damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal carbon absorption and minimal polymer damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Focused spot size for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 100
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without CFRP damage
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heating
+      unit: '%'
+      value: 50
+  Cast Iron:
+    powerRange:
+      description: Optimal average power for Cast Iron oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Cast Iron absorption and rust removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for Cast Iron oxide removal
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform surface treatment
+      unit: '%'
+      value: 50
+  Cedar:
+    powerRange:
+      description: Optimal average power for Cedar surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal Cedar absorption and minimal penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precision cleaning of Cedar grain patterns
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: High repetition rate for uniform cleaning coverage on Cedar surfaces
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without damaging Cedar substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Short pulse duration for efficient ablation of contaminants without excessive heat diffusion
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Scanning speed for efficient area coverage while maintaining cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal from Cedar surface
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+      unit: '%'
+      value: 50
+  Cement:
+    powerRange:
+      description: Optimal average power for cement surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for cement absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution
+      unit: mm
+      value: 0.2
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from cement surfaces
+      unit: J/cm²
+      value: 3.2
+    pulseWidth:
+      description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Ceramic Matrix Composites CMCs:
+    powerRange:
+      description: Optimal average power for CMC surface contaminant removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing optimal absorption balance for CMC ceramic phases and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter optimized for precision cleaning of CMC surface features
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient area coverage while maintaining thermal management
+      unit: kHz
+      value: 100
+    energyDensity:
+      description: Fluence level sufficient for contaminant ablation while below CMC damage threshold
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion into CMC substrate
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform contaminant removal across CMC surfaces
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for thorough contaminant removal with process control
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage ensuring complete coverage without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Cerium:
+    powerRange:
+      description: Optimal average power for Cerium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal Cerium absorption and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Cerium surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective Cerium cleaning
+      unit: J/cm²
+      value: 5.1
+    energyDensity:
+      description: Fluence threshold for effective Cerium oxide removal
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of Cerium oxides
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning without excessive heating
+      unit: '%'
+      value: 50
+  Cherry:
+    powerRange:
+      description: Optimal average power for Cherry surface cleaning without thermal damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-infrared wavelength for optimal absorption in Cherry organic compounds
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning process
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal
+      unit: J/cm²
+      value: 1.8
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient ablation of contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete surface treatment
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 30
+    dwellTime:
+      description: Effective dwell time per spot for contaminant removal
+      unit: μs
+      value: 100
+  Chromium:
+    powerRange:
+      description: Optimal average power for Chromium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good Chromium absorption for efficient cleaning
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Chromium surface cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Chromium cleaning throughput
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Chromium oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective Chromium oxide ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Chromium surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Chromium oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Chromium surface cleaning
+      unit: '%'
+      value: 50
+  Cobalt:
+    powerRange:
+      description: Optimal average power for Cobalt oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal Cobalt absorption and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precision cleaning of Cobalt components
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage on Cobalt surfaces
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Fluence threshold for Cobalt oxide removal without substrate damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient Cobalt oxide ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scanning speed for efficient Cobalt surface cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete Cobalt oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Cobalt surface cleaning
+      unit: '%'
+      value: 50
+  Concrete:
+    powerRange:
+      description: Optimal average power for concrete surface cleaning and contaminant removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for concrete absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning coverage and energy density control
+      unit: mm
+      value: 0.8
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage without thermal buildup
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving concrete integrity
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Pulse duration balancing efficient contaminant removal with concrete substrate preservation
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning with sufficient energy deposition
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Copper:
+    powerRange:
+      description: Optimal average power for Copper oxide removal and surface cleaning
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Copper absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage while maintaining process control
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Minimum fluence required for effective Copper oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective oxide removal without excessive thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning with adequate energy deposition
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Crown Glass:
+    powerRange:
+      description: Optimal average power for Crown Glass surface cleaning without thermal damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate
+        damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate balancing cleaning efficiency and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal below glass damage threshold
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal thermal diffusion into glass substrate
+      unit: ns
+      value: 8
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Dysprosium:
+    powerRange:
+      description: Optimal average power for Dysprosium oxide removal without substrate damage
+      unit: W
+      value: 95
+    wavelength:
+      description: Near-IR wavelength optimized for Dysprosium's absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Dysprosium oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for complete surface coverage
+      unit: '%'
+      value: 50
+  Epoxy Resin Composites:
+    powerRange:
+      description: Optimal average power for epoxy resin removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing good absorption in epoxy resins with minimal substrate penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise epoxy removal control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for epoxy resin ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of epoxy matrix
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform epoxy removal
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete epoxy removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Europium:
+    powerRange:
+      description: Optimal average power for Europium oxide layer removal
+      unit: W
+      value: 45
+    wavelength:
+      description: Green wavelength for optimal Europium absorption
+      unit: nm
+      value: 532
+    spotSize:
+      description: Beam spot diameter for precise cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Threshold fluence for Europium oxide removal
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse width for controlled ablation
+      unit: ns
+      value: 8
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes required
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for complete coverage
+      unit: '%'
+      value: 50
+  Fiber Reinforced Polyurethane FRPU:
+    powerRange:
+      description: Optimal average power for FRPU cleaning without thermal damage to fiber reinforcement
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for polyurethane absorption while minimizing fiber damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on FRPU surface
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: High repetition rate for efficient cleaning with minimal thermal accumulation
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective polyurethane removal while preserving fibers
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of polyurethane matrix
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient coverage without excessive dwell time
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal input
+      unit: '%'
+      value: 50
+  Fiberglass:
+    powerRange:
+      description: Optimal average power for Fiberglass surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal Fiberglass absorption and minimal transmission
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot diameter for precision cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scanning speed for efficient area coverage without thermal buildup
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per spot for contaminant ablation
+      unit: μs
+      value: 100
+  Fir:
+    powerRange:
+      description: Optimal average power for Fir surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Fir wood contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Fir wood grain
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage on Fir surfaces
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Fir wood
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning of Fir surfaces
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal from Fir
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot on Fir wood surface
+      unit: μs
+      value: 100
+  Float Glass:
+    powerRange:
+      description: Optimal average power for Float Glass surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Float Glass absorption and minimal subsurface damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal below glass damage threshold
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal without glass damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per spot for contaminant ablation
+      unit: μs
+      value: 100
+  Fused Silica:
+    powerRange:
+      description: Optimal average power range for Fused Silica surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing optimal absorption balance for Fused Silica contamination removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for precision cleaning with sufficient energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage while maintaining thermal management
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Critical fluence threshold for effective contaminant removal without Fused Silica damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant ablation with minimal substrate heating
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning without excessive energy deposition
+      unit: '%'
+      value: 50
+  Gallium:
+    powerRange:
+      description: Optimal average power for Gallium oxide removal without excessive melting
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for moderate Gallium absorption with good penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot diameter for precise cleaning of Gallium surfaces
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Balanced repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Gallium oxide removal
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulses for controlled ablation of surface contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Scan speed for efficient area coverage while maintaining cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of passes for complete contaminant removal without substrate damage
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal overlap between adjacent laser tracks for uniform cleaning
+      unit: '%'
+      value: 50
+  Gallium Arsenide:
+    powerRange:
+      description: Optimal average power for GaAs surface cleaning without thermal damage
+      unit: W
+      value: 8
+    wavelength:
+      description: Green wavelength optimized for GaAs absorption characteristics
+      unit: nm
+      value: 532
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for GaAs surface cleaning without substrate damage
+      unit: J/cm²
+      value: 0.8
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Glass Fiber Reinforced Polymers GFRP:
+    powerRange:
+      description: Optimal average power for GFRP surface cleaning without matrix damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in surface contaminants with minimal GFRP damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise surface cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Threshold fluence for effective contaminant removal without fiber damage
+      unit: J/cm²
+      value: 2.5
+    energyDensity:
+      description: Optimal energy density for GFRP surface processing
+      unit: J/cm²
+      value: 3.0
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning
+      unit: ms
+      value: 0.2
+  Gold:
+    powerRange:
+      description: Optimal average power for Gold surface cleaning without damage
+      unit: W
+      value: 15
+    wavelength:
+      description: Green wavelength optimized for Gold absorption characteristics
+      unit: nm
+      value: 532
+    spotSize:
+      description: Beam spot diameter for precise Gold surface treatment
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Gold cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for Gold ablation without substrate damage
+      unit: J/cm²
+      value: 0.8
+    pulseWidth:
+      description: Nanosecond pulse width for controlled Gold ablation
+      unit: ns
+      value: 8
+    scanSpeed:
+      description: Optimal scanning speed for uniform Gold cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Gold surface cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Gold surface cleaning
+      unit: '%'
+      value: 50
+  Gorilla Glass:
+    powerRange:
+      description: Optimal power range for Gorilla Glass cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Optimal wavelength for Gorilla Glass processing with good absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Optimal fluence threshold for contaminant removal without glass damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Optimal pulse width for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap ratio for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Granite:
+    powerRange:
+      description: Optimal average power for granite surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for granite mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective contaminant removal from granite
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Hafnium:
+    powerRange:
+      description: Optimal average power for Hafnium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Hafnium's absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Hafnium oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Hastelloy:
+    powerRange:
+      description: Optimal average power for Hastelloy surface cleaning without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Hastelloy absorption and minimal reflectivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant removal while preserving Hastelloy substrate
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage with effective cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning with thermal control
+      unit: μs
+      value: 100
+  Hickory:
+    powerRange:
+      description: Optimal average power for Hickory surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Hickory absorption and minimal penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precision cleaning resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Hickory
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scanning speed for efficient area coverage without thermal damage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without over-processing
+      unit: '%'
+      value: 50
+  Inconel:
+    powerRange:
+      description: Optimal average power for Inconel oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Inconel absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Inconel oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Indium:
+    powerRange:
+      description: Optimal average power for Indium oxide removal without substrate damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength providing good absorption in Indium oxide layer
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise oxide removal
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for Indium oxide ablation
+      unit: J/cm²
+      value: 2.8
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled oxide ablation
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform coverage
+      unit: '%'
+      value: 50
+  Iridium:
+    powerRange:
+      description: Optimal average power for Iridium surface cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Fundamental Nd:YAG wavelength with good Iridium absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Iridium surface cleaning
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Short pulse duration for efficient ablation with minimal heat diffusion
+      unit: ns
+      value: 8
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contamination removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning results
+      unit: '%'
+      value: 50
+  Iron:
+    powerRange:
+      description: Optimal average power for Iron oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good absorption in Iron oxides and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for efficient cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective oxide removal from Iron surface
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer removal
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Kevlar-Reinforced Polymer:
+    powerRange:
+      description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength providing optimal absorption balance between Kevlar fibers and polymer matrix
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 4.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 40
+  Lanthanum:
+    powerRange:
+      description: Optimal average power for Lanthanum oxide removal without substrate damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Lanthanum oxides
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise oxide removal control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective Lanthanum cleaning
+      unit: J/cm²
+      value: 2.5
+    energyDensity:
+      description: Fluence threshold for Lanthanum oxide ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer removal
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Lead:
+    powerRange:
+      description: Optimal average power range for Lead surface cleaning
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Lead absorption and minimal reflectivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Lead surface treatment
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Lead cleaning process
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Lead removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Lead ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Lead cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Lead contamination removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Lead surface cleaning
+      unit: '%'
+      value: 50
+  Lead Crystal:
+    powerRange:
+      description: Optimal average power for Lead Crystal surface cleaning without thermal damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Lead Crystal with minimal transmission
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Lead Crystal surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 20
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+  Limestone:
+    powerRange:
+      description: Optimal average power for limestone cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for limestone absorption and minimal scattering
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving limestone surface
+      unit: J/cm²
+      value: 12
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without excessive overlap
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough cleaning of limestone surfaces
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  MDF:
+    powerRange:
+      description: Optimal average power for MDF surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal MDF absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: High repetition rate for efficient surface cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Energy density threshold for MDF surface ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled material removal
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for thorough contamination removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage for complete surface coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Beam dwell time per spot for effective material removal
+      unit: μs
+      value: 100
+  Magnesium:
+    powerRange:
+      description: Optimal average power range for Magnesium oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Optimal wavelength considering Magnesium's optical properties
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for Magnesium surface treatment
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Magnesium cleaning process
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Magnesium surface cleaning
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Optimal pulse duration for controlled ablation of Magnesium oxides
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Magnesium surface cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough Magnesium cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal pulse overlap for complete Magnesium surface coverage
+      unit: '%'
+      value: 50
+  Mahogany:
+    powerRange:
+      description: Optimal average power for Mahogany surface cleaning without charring
+      unit: W
+      value: 40
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Mahogany lignin and cellulose
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise surface cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 20
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete surface treatment
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning pattern
+      unit: '%'
+      value: 30
+    dwellTime:
+      description: Effective dwell time per spot for contaminant removal
+      unit: μs
+      value: 50
+  Manganese:
+    powerRange:
+      description: Optimal average power for Manganese oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Manganese oxides
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for Manganese oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Maple:
+    powerRange:
+      description: Optimal average power for surface cleaning without charring
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for controlled wood ablation with minimal thermal damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precise cleaning control on wood surface
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Balanced repetition rate for efficient cleaning with controlled thermal input
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 2.8
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete surface cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Marble:
+    powerRange:
+      description: Optimal average power for Marble surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Marble absorption and minimal subsurface damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Marble surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving Marble substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without excessive thermal buildup
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough cleaning with progressive contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage and processing efficiency
+      unit: '%'
+      value: 50
+  Metal Matrix Composites MMCs:
+    powerRange:
+      description: Optimal average power for MMCs cleaning considering thermal conductivity and matrix integrity
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing good absorption in metallic matrix while minimizing damage to ceramic reinforcements
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter balancing cleaning efficiency and spatial resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning while maintaining thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant removal without damaging MMC substrate
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation without excessive thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for thorough contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Beam overlap percentage ensuring complete coverage without excessive energy deposition
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective interaction time per spot location
+      unit: μs
+      value: 100
+  Molybdenum:
+    powerRange:
+      description: Optimal average power for Molybdenum oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength providing good absorption for Molybdenum surface contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution and energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Molybdenum surface
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning with adequate overlap
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Mortar:
+    powerRange:
+      description: Optimal average power for mortar cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for mortar absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise mortar cleaning with adequate energy density
+      unit: mm
+      value: 0.1
+    repetitionRate:
+      description: Optimal repetition rate for efficient mortar removal with good surface quality
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective mortar ablation without damaging underlying substrate
+      unit: J/cm²
+      value: 12.7
+    pulseWidth:
+      description: Nanosecond pulse duration for effective mortar ablation with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform mortar removal and processing efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete mortar removal with quality control
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform mortar removal and surface consistency
+      unit: '%'
+      value: 50
+  Neodymium:
+    powerRange:
+      description: Optimal average power for Neodymium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Fundamental Nd:YAG wavelength with good Neodymium absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete surface cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Nickel:
+    powerRange:
+      description: Optimal average power for Nickel oxide and contaminant removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for efficient Nickel processing with good absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precision cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Minimum fluence required for effective Nickel contaminant removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant ablation without substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal overlap between adjacent scan lines for uniform cleaning
+      unit: '%'
+      value: 50
+  Niobium:
+    powerRange:
+      description: Optimal average power for Niobium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Niobium's absorption characteristics and oxide layer removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise oxide removal with adequate cleaning efficiency
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Niobium oxide ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide ablation with minimal thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform oxide removal and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Oak:
+    powerRange:
+      description: Optimal average power for Oak surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Oak cellulose and lignin
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete surface cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot
+      unit: μs
+      value: 100
+  Onyx:
+    powerRange:
+      description: Optimal average power for Onyx surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning
+      unit: μs
+      value: 200
+  Palladium:
+    powerRange:
+      description: Optimal average power for Palladium oxide removal without substrate damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-IR wavelength for efficient absorption by Palladium oxides and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Palladium surfaces
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Threshold fluence for effective contaminant removal from Palladium
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per cleaning spot for optimal results
+      unit: μs
+      value: 100
+  Phenolic Resin Composites:
+    powerRange:
+      description: Optimal average power for phenolic resin composite cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for phenolic resin absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on composite surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective phenolic resin removal
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of phenolic resin matrix
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Pine:
+    powerRange:
+      description: Optimal average power for Pine surface cleaning without charring
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-infrared wavelength for optimal Pine wood absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Pine surface treatment
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient Pine surface cleaning
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Pine
+      unit: J/cm²
+      value: 1.8
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform Pine cleaning
+      unit: mm/s
+      value: 800
+    passCount:
+      description: Number of cleaning passes for complete Pine surface treatment
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage for uniform Pine surface coverage
+      unit: '%'
+      value: 30
+    dwellTime:
+      description: Optimal dwell time per spot for Pine cleaning efficiency
+      unit: μs
+      value: 120
+  Plaster:
+    powerRange:
+      description: Optimal average power for plaster surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for plaster absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant removal while preserving plaster substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without excessive dwell time
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage and efficiency
+      unit: '%'
+      value: 50
+  Platinum:
+    powerRange:
+      description: Optimal average power for Platinum surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage with controlled thermal input
+      unit: kHz
+      value: 50
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal while minimizing Platinum substrate heating
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough cleaning of Platinum surfaces
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+      unit: '%'
+      value: 50
+    fluence:
+      description: Energy density threshold for effective contaminant removal without Platinum damage
+      unit: J/cm²
+      value: 5
+  Plywood:
+    powerRange:
+      description: Optimal average power for Plywood surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal Plywood absorption and minimal penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Plywood surface treatment
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient Plywood cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Plywood contaminant removal
+      unit: J/cm²
+      value: 2.0
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Plywood surface ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Plywood cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Plywood cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform Plywood surface treatment
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for Plywood processing
+      unit: μs
+      value: 100
+  Polycarbonate:
+    powerRange:
+      description: Optimal average power for Polycarbonate surface cleaning without thermal damage
+      unit: W
+      value: 15
+    wavelength:
+      description: Near-IR wavelength providing good absorption in contaminants while minimizing Polycarbonate substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with sufficient energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
+      unit: kHz
+      value: 20
+    fluenceThreshold:
+      description: Fluence threshold for contaminant removal while preserving Polycarbonate substrate
+      unit: J/cm²
+      value: 0.8
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Polyester Resin Composites:
+    powerRange:
+      description: Optimal average power for polyester resin composite cleaning without thermal damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-infrared wavelength optimal for polyester resin composite processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for precision cleaning
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning process
+      unit: kHz
+      value: 50
+    pulseWidth:
+      description: Optimal pulse duration for efficient material removal with minimal heat affected zone
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for efficient coverage and material removal
+      unit: mm/s
+      value: 800
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning
+      unit: '%'
+      value: 50
+    fluence:
+      description: Energy density threshold for effective Polyester Resin Composites cleaning - Energy density threshold for
+        composite material cleaning considering matrix and reinforcement properties
+      unit: J/cm²
+      value: 3.0
+  Polyethylene:
+    powerRange:
+      description: Optimal average power for Polyethylene surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good Polyethylene absorption for efficient cleaning
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Polyethylene removal
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled material removal
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Polypropylene:
+    powerRange:
+      description: Optimal average power range for Polypropylene surface cleaning without thermal degradation
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Polypropylene absorption characteristics and minimal thermal damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution on Polypropylene surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning while maintaining thermal control
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving Polypropylene substrate
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants from Polypropylene surface
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage without excessive thermal buildup
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal from Polypropylene
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning without thermal damage
+      unit: μs
+      value: 100
+  Polystyrene:
+    powerRange:
+      description: Optimal average power for Polystyrene surface cleaning without thermal damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength providing good absorption in Polystyrene with minimal thermal penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Polystyrene surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 20
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of Polystyrene surface contaminants
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+  Polytetrafluoroethylene:
+    powerRange:
+      description: Optimal average power range for Polytetrafluoroethylene surface cleaning without thermal degradation
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Polytetrafluoroethylene absorption characteristics and minimal subsurface
+        damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Polytetrafluoroethylene surface cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Polytetrafluoroethylene cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Polytetrafluoroethylene contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of Polytetrafluoroethylene surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Polytetrafluoroethylene surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Polytetrafluoroethylene surface cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Polytetrafluoroethylene surface coverage
+      unit: '%'
+      value: 50
+  Polyvinyl Chloride:
+    powerRange:
+      description: Optimal average power for PVC cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal PVC absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise PVC cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient PVC removal
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective PVC ablation
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled PVC ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform PVC removal
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete PVC removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform PVC cleaning
+      unit: '%'
+      value: 50
+  Poplar:
+    powerRange:
+      description: Optimal average power for Poplar surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal Poplar absorption and minimal subsurface damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Poplar grain structure
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage on Poplar surfaces
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood substrate damage
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal wood damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient Poplar surface cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal from Poplar
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage on Poplar surfaces
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning without thermal accumulation
+      unit: μs
+      value: 100
+  Porcelain:
+    powerRange:
+      description: Optimal average power for Porcelain surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Porcelain absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Porcelain surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal while preserving Porcelain substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning with thermal control
+      unit: μs
+      value: 100
+  Porphyry:
+    powerRange:
+      description: Optimal average power for Porphyry surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Porphyry mineral absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning of Porphyry surface features
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 12.7
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Praseodymium:
+    powerRange:
+      description: Optimal average power for Praseodymium oxide removal
+      unit: W
+      value: 90
+    wavelength:
+      description: Optimal wavelength for Praseodymium absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for Praseodymium surface processing
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient Praseodymium cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Praseodymium surface cleaning
+      unit: J/cm²
+      value: 2.5
+    energyDensity:
+      description: Optimal energy density for controlled Praseodymium ablation
+      unit: J/cm²
+      value: 3.2
+    pulseWidth:
+      description: Optimal pulse duration for Praseodymium thermal management
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform Praseodymium cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for complete Praseodymium surface cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Praseodymium processing
+      unit: '%'
+      value: 40
+    dwellTime:
+      description: Optimal dwell time per spot for Praseodymium material interaction
+      unit: μs
+      value: 120
+  Pyrex:
+    powerRange:
+      description: Optimal average power for Pyrex surface cleaning without thermal damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk Pyrex absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Energy density threshold for effective contaminant removal without damaging Pyrex substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Quartz Glass:
+    powerRange:
+      description: Optimal average power for Quartz Glass cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good transmission through Quartz Glass for selective contaminant removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with controlled thermal accumulation
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Energy density threshold for effective contaminant removal without damaging Quartz Glass substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Quartzite:
+    powerRange:
+      description: Optimal average power for Quartzite cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Quartzite absorption and minimal scattering
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and coverage area
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective contaminant removal from Quartzite surface
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot for effective material removal
+      unit: μs
+      value: 100
+  Redwood:
+    powerRange:
+      description: Optimal power range for Redwood surface cleaning without charring
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Redwood lignin absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse width for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot
+      unit: μs
+      value: 100
+  Rhenium:
+    powerRange:
+      description: Optimal average power for Rhenium oxide removal without substrate damage
+      unit: W
+      value: 150
+    wavelength:
+      description: Near-IR wavelength for efficient Rhenium oxide absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot size for precision Rhenium cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient Rhenium surface cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for Rhenium oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Rhenium oxide ablation
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Scan speed for efficient Rhenium surface coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of passes for complete Rhenium oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal overlap for uniform Rhenium surface cleaning
+      unit: '%'
+      value: 50
+  Rhodium:
+    powerRange:
+      description: Optimal average power for Rhodium surface cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength optimized for Rhodium's moderate reflectivity and thermal absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for precision cleaning resolution
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective contaminant removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning results
+      unit: '%'
+      value: 50
+  Rosewood:
+    powerRange:
+      description: Optimal average power for Rosewood surface cleaning without charring
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-infrared wavelength for optimal absorption in Rosewood lignin and cellulose
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 20
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 4.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled material removal
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete surface cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective material interaction
+      unit: ms
+      value: 0.2
+  Rubber:
+    powerRange:
+      description: Optimal average power for rubber cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal rubber absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise rubber removal with adequate cleaning area
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient rubber cleaning with good process control
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective rubber ablation while preserving substrate integrity
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for effective rubber ablation with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform rubber removal without excessive heat accumulation
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete rubber removal with process control
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform rubber removal without excessive processing time
+      unit: '%'
+      value: 50
+  Ruthenium:
+    powerRange:
+      description: Optimal average power for Ruthenium oxide removal without substrate damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for efficient Ruthenium oxide absorption with minimal substrate interaction
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Ruthenium surface cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for Ruthenium oxide removal without bulk material damage
+      unit: J/cm²
+      value: 2.3
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Ruthenium oxide ablation
+      unit: ns
+      value: 8
+    scanSpeed:
+      description: Optimal scanning speed for uniform Ruthenium surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Ruthenium oxide removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform Ruthenium surface cleaning
+      unit: '%'
+      value: 50
+  Sandstone:
+    powerRange:
+      description: Optimal average power for sandstone cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for sandstone mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective sandstone cleaning
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform coverage
+      unit: '%'
+      value: 50
+  Sapphire Glass:
+    powerRange:
+      description: Optimal power range for Sapphire Glass cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Optimal wavelength for Sapphire Glass processing with good absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot size for precision cleaning of Sapphire Glass surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 100
+    energyDensity:
+      description: Optimal energy density for effective contaminant removal
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Optimal pulse width for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal overlap ratio between adjacent laser tracks
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot location
+      unit: μs
+      value: 100
+  Schist:
+    powerRange:
+      description: Optimal average power for Schist surface cleaning without thermal damage
+      unit: W
+      value: 90
+    wavelength:
+      description: Near-IR wavelength optimized for Schist mineral absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Schist mineral layers
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage on Schist surfaces
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant ablation without damaging Schist substrate
+      unit: J/cm²
+      value: 4.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning across Schist surface variations
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for thorough cleaning of Schist mineral layers
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for complete coverage on uneven Schist surfaces
+      unit: '%'
+      value: 50
+  Serpentine:
+    powerRange:
+      description: Optimal average power for Serpentine cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Serpentine mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Serpentine surface cleaning
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Serpentine ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient ablation of Serpentine layers
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient Serpentine removal
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Serpentine removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform Serpentine cleaning
+      unit: '%'
+      value: 50
+  Shale:
+    powerRange:
+      description: Optimal average power for Shale surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Shale mineral absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective Shale cleaning resolution
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for continuous Shale surface processing
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Shale material removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient Shale ablation with minimal heat diffusion
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform Shale surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Shale surface cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform Shale surface cleaning
+      unit: '%'
+      value: 50
+  Silicon:
+    powerRange:
+      description: Optimal average power for Silicon surface cleaning without substrate damage
+      unit: W
+      value: 25
+    wavelength:
+      description: Near-IR wavelength with good Silicon absorption for contaminant removal
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and process control
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective contaminant removal without Silicon damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant ablation with minimal thermal diffusion
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Silicon Carbide:
+    powerRange:
+      description: Optimal average power for SiC surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal SiC absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective contaminant removal from SiC surface
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Silicon Germanium:
+    powerRange:
+      description: Optimal average power for SiGe surface cleaning without thermal damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for optimal SiGe absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective contaminant removal on SiGe
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Silicon Nitride:
+    powerRange:
+      description: Optimal average power for Silicon Nitride surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Silicon Nitride absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per cleaning spot
+      unit: μs
+      value: 100
+  Silver:
+    powerRange:
+      description: Optimal average power range for Silver cleaning considering thermal conductivity
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Silver's moderate reflectivity and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot size for precision cleaning of Silver surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning while managing heat accumulation
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence optimized for Silver ablation threshold and cleaning effectiveness
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation without excessive thermal damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scan speed balancing cleaning efficiency and process control
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of passes for complete contaminant removal without substrate damage
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal overlap between adjacent scan lines for uniform cleaning
+      unit: '%'
+      value: 50
+  Slate:
+    powerRange:
+      description: Optimal average power for Slate surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Slate mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Slate
+      unit: J/cm²
+      value: 12.7
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for thorough removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Soapstone:
+    powerRange:
+      description: Optimal average power for Soapstone cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Soapstone mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse width for controlled ablation of Soapstone surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Soda-Lime Glass:
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal below glass damage threshold
+      unit: J/cm²
+      value: 5
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Stainless Steel:
+    powerRange:
+      description: Optimal average power for Stainless Steel oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Stainless Steel absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with minimal heat accumulation
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive processing
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per spot for contaminant ablation
+      unit: μs
+      value: 100
+  Steel:
+    powerRange:
+      description: Optimal average power for Steel surface cleaning and oxide removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength with good absorption in Steel oxides and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and coverage area
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant ablation while preserving Steel substrate
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal without substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Stoneware:
+    powerRange:
+      description: Optimal average power for Stoneware surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Stoneware mineral absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 50
+  Stucco:
+    powerRange:
+      description: Optimal average power for Stucco surface cleaning without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Stucco absorption and minimal substrate interaction
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and resolution
+      unit: mm
+      value: 0.2
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and process speed
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective Stucco surface cleaning
+      unit: J/cm²
+      value: 3.2
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without thermal accumulation
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage
+      unit: '%'
+      value: 50
+  Tantalum:
+    powerRange:
+      description: Optimal average power for Tantalum oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Tantalum's high reflectivity and thermal conductivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise oxide layer removal
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for uniform cleaning coverage on Tantalum surfaces
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for Tantalum oxide ablation threshold
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide ablation with minimal heat affected zone
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage without thermal buildup
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning without excessive heat input
+      unit: '%'
+      value: 50
+  Teak:
+    powerRange:
+      description: Optimal average power for Teak surface cleaning without charring
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for optimal absorption in Teak lignin and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 2.8
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete surface cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning pattern
+      unit: '%'
+      value: 40
+    dwellTime:
+      description: Effective dwell time per cleaning spot
+      unit: μs
+      value: 120
+  Tempered Glass:
+    powerRange:
+      description: Optimal average power for Tempered Glass cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Optimal wavelength for Tempered Glass processing with good absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal spot size for precision cleaning on Tempered Glass surface
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Optimal fluence threshold for contaminant removal without glass damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Optimal pulse width for controlled ablation of contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for thorough cleaning
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal overlap ratio for complete coverage without excessive energy deposition
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per cleaning spot
+      unit: μs
+      value: 100
+  Terbium:
+    powerRange:
+      description: Optimal average power for Terbium oxide layer removal
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for optimal Terbium absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for Terbium oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for complete coverage
+      unit: '%'
+      value: 50
+  Terracotta:
+    powerRange:
+      description: Optimal average power for Terracotta surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Terracotta absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control and adequate energy density
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant removal while preserving Terracotta substrate
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning and process efficiency
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective dwell time per spot for contaminant ablation without substrate damage
+      unit: μs
+      value: 100
+  Thermoplastic Elastomer:
+    powerRange:
+      description: Optimal average power for Thermoplastic Elastomer surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Thermoplastic Elastomer absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on Thermoplastic Elastomer surfaces
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without damaging Thermoplastic Elastomer substrate
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning
+      unit: μs
+      value: 100
+  Tin:
+    powerRange:
+      description: Optimal average power for Tin oxide removal without substrate damage
+      unit: W
+      value: 45
+    wavelength:
+      description: Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Tin surface cleaning
+      unit: μm
+      value: 80
+    repetitionRate:
+      description: Optimal repetition rate for efficient Tin cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for Tin oxide ablation threshold
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled Tin oxide ablation
+      unit: ns
+      value: 12
+    scanSpeed:
+      description: Optimal scanning speed for uniform Tin oxide removal
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete Tin oxide removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform Tin surface cleaning
+      unit: '%'
+      value: 50
+  Titanium:
+    powerRange:
+      description: Optimal average power for Titanium oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Optimal wavelength for Titanium absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for Titanium surface treatment
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient Titanium cleaning process
+      unit: kHz
+      value: 100
+    fluenceThreshold:
+      description: Minimum fluence required for effective Titanium surface cleaning
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Optimal pulse duration for Titanium ablation without thermal damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Titanium cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for thorough Titanium cleaning
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for complete Titanium surface coverage
+      unit: '%'
+      value: 50
+  Titanium Carbide:
+    powerRange:
+      description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
+      unit: W
+      value: 150
+    wavelength:
+      description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning of Titanium Carbide surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Titanium Carbide contaminant removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
+      unit: ns
+      value: 15
+    scanSpeed:
+      description: Optimal scanning speed for efficient cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Tool Steel:
+    powerRange:
+      description: Optimal average power for Tool Steel oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good absorption in Tool Steel oxides and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution and energy density control
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage with controlled thermal input
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without damaging Tool Steel substrate
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal from Tool Steel surfaces
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Travertine:
+    powerRange:
+      description: Optimal average power for Travertine surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Travertine absorption and minimal substrate damage
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for balanced cleaning efficiency and resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and process speed
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence level sufficient for contaminant removal below Travertine damage threshold
+      unit: J/cm²
+      value: 1.5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning without overlapping damage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for complete coverage without excessive energy deposition
+      unit: '%'
+      value: 30
+  Tungsten:
+    powerRange:
+      description: Optimal average power for Tungsten oxide and contaminant removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Tungsten absorption and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Focused spot size for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Minimum fluence required for effective Tungsten oxide removal
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without thermal damage
+      unit: '%'
+      value: 50
+  Tungsten Carbide:
+    powerRange:
+      description: Optimal average power for Tungsten Carbide oxide layer removal
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength for optimal Tungsten Carbide absorption
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning without thermal damage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform surface treatment
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for thorough contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for complete surface coverage
+      unit: '%'
+      value: 50
+  Urethane Composites:
+    powerRange:
+      description: Optimal average power for Urethane Composites cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Urethane absorption characteristics
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective cleaning resolution
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for Urethane Composites ablation
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of composite surface
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive heating
+      unit: '%'
+      value: 50
+  Vanadium:
+    powerRange:
+      description: Optimal average power for Vanadium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength for optimal Vanadium absorption and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning resolution
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for Vanadium oxide removal
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal pulse overlap for uniform cleaning
+      unit: '%'
+      value: 50
+  Walnut:
+    powerRange:
+      description: Optimal average power for walnut surface cleaning without charring
+      unit: W
+      value: 40
+    wavelength:
+      description: Near-infrared wavelength for optimal absorption in walnut lignin and contaminants
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning control on walnut surface
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning with thermal management
+      unit: kHz
+      value: 20
+    fluenceThreshold:
+      description: Fluence threshold for effective contaminant removal without wood damage
+      unit: J/cm²
+      value: 2.5
+    pulseWidth:
+      description: Nanosecond pulse duration for controlled ablation of surface contaminants
+      unit: ns
+      value: 100
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+      unit: '%'
+      value: 50
+  Willow:
+    powerRange:
+      description: Optimal average power for Willow surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-infrared wavelength optimized for Willow absorption and minimal penetration
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise cleaning with adequate energy density
+      unit: μm
+      value: 100
+    repetitionRate:
+      description: Optimal repetition rate for efficient cleaning coverage and thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal without substrate damage
+      unit: J/cm²
+      value: 1.2
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient area coverage and effective cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Optimal number of passes for complete cleaning without excessive processing
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Beam overlap percentage for uniform cleaning coverage
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Optimal dwell time per spot for effective cleaning action
+      unit: μs
+      value: 100
+  Yttrium:
+    powerRange:
+      description: Optimal average power for Yttrium surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Yttrium absorption and minimal reflectivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for precise Yttrium surface cleaning with adequate energy density
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning coverage on Yttrium surfaces
+      unit: kHz
+      value: 50
+    fluenceThreshold:
+      description: Fluence threshold for effective Yttrium cleaning
+      unit: J/cm²
+      value: 5.1
+    energyDensity:
+      description: Fluence threshold for effective Yttrium contaminant removal without substrate damage
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient Yttrium ablation with controlled thermal effects
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for efficient Yttrium surface coverage without excessive overlap
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete Yttrium surface treatment
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform Yttrium surface cleaning
+      unit: '%'
+      value: 30
+  Zinc:
+    powerRange:
+      description: Optimal average power for Zinc oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good Zinc absorption and minimal reflectivity
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Beam spot diameter for effective Zinc oxide removal
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: Optimal repetition rate for continuous cleaning with thermal management
+      unit: kHz
+      value: 50
+    energyDensity:
+      description: Fluence threshold for Zinc oxide ablation without melting substrate
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient Zinc ablation with thermal control
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform Zinc surface cleaning
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of passes for thorough Zinc oxide removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap for complete Zinc surface coverage
+      unit: '%'
+      value: 50
+  Zirconia:
+    powerRange:
+      description: Optimal average power for Zirconia surface cleaning without thermal damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength with good absorption in Zirconia for efficient cleaning
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam spot diameter for precision cleaning of Zirconia surfaces
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient cleaning coverage while maintaining thermal control
+      unit: kHz
+      value: 100
+    energyDensity:
+      description: Fluence threshold for effective contaminant removal from Zirconia
+      unit: J/cm²
+      value: 5
+    pulseWidth:
+      description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Optimal scanning speed for uniform cleaning coverage
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Recommended number of cleaning passes for complete contaminant removal
+      unit: passes
+      value: 3
+    overlapRatio:
+      description: Optimal beam overlap percentage for uniform cleaning without excessive heat accumulation
+      unit: '%'
+      value: 50
+  Zirconium:
+    powerRange:
+      description: Optimal average power for Zirconium oxide removal without substrate damage
+      unit: W
+      value: 100
+    wavelength:
+      description: Near-IR wavelength optimized for Zirconium's moderate absorption and thermal processing
+      unit: nm
+      value: 1064
+    spotSize:
+      description: Optimal beam diameter for balancing cleaning efficiency and processing speed
+      unit: μm
+      value: 50
+    repetitionRate:
+      description: High repetition rate for efficient surface coverage while maintaining thermal control
+      unit: kHz
+      value: 100
+    energyDensity:
+      description: Fluence optimized for Zirconium oxide ablation threshold while preserving base material
+      unit: J/cm²
+      value: 5.1
+    pulseWidth:
+      description: Nanosecond pulse duration for efficient oxide layer ablation with minimal heat affected zone
+      unit: ns
+      value: 10
+    scanSpeed:
+      description: Scanning speed providing effective oxide removal with controlled thermal input
+      unit: mm/s
+      value: 500
+    passCount:
+      description: Number of cleaning passes for thorough oxide removal with minimal substrate impact
+      unit: passes
+      value: 2
+    overlapRatio:
+      description: Beam overlap percentage ensuring complete surface coverage without excessive thermal buildup
+      unit: '%'
+      value: 50
+    dwellTime:
+      description: Effective interaction time per spot for controlled material removal
+      unit: μs
+      value: 100

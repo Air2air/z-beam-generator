@@ -46,6 +46,8 @@ import yaml
 from pathlib import Path
 from typing import Dict, Any, Optional
 
+from materials.research.faq_topic_researcher import FAQTopicResearcher
+
 logger = logging.getLogger(__name__)
 
 # Paths
@@ -120,12 +122,9 @@ class UnifiedMaterialsGenerator:
         self.logger.info("UnifiedMaterialsGenerator initialized")
     
     def _load_materials_data(self) -> Dict:
-        """Load Materials.yaml"""
-        if not MATERIALS_DATA_PATH.exists():
-            raise FileNotFoundError(f"Materials.yaml not found at {MATERIALS_DATA_PATH}")
-        
-        with open(MATERIALS_DATA_PATH, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
+        """Load Materials.yaml using centralized loader"""
+        from materials.data import load_materials_data
+        return load_materials_data()
     
     def _build_context(self, material_data: Dict) -> str:
         """Build context string from material data"""
@@ -301,8 +300,19 @@ class UnifiedMaterialsGenerator:
         
         return caption_data
     
-    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None) -> list:
-        """Generate FAQ questions and answers"""
+    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
+        """
+        Generate FAQ questions and answers with optional topic enhancement.
+        
+        Args:
+            material_name: Name of material
+            material_data: Material data from Materials.yaml
+            faq_count: Number of FAQ items to generate (2-8 if not specified)
+            enhance_topics: Whether to enhance FAQ with topic keywords/statements
+            
+        Returns:
+            List of FAQ dicts with question, answer, and optionally topic_keyword, topic_statement
+        """
         # Randomize FAQ count between 2-8 if not specified
         settings = DEFAULT_SETTINGS['faq']
         if faq_count is None:
@@ -339,6 +349,17 @@ class UnifiedMaterialsGenerator:
         
         self.logger.info(f"   Generated {len(faq_list)} FAQ items")
         
+        # INLINE TOPIC ENHANCEMENT (before Materials.yaml write)
+        if enhance_topics:
+            try:
+                self.logger.info(f"🔍 Enhancing FAQ topics inline...")
+                topic_researcher = FAQTopicResearcher(self.api_client)
+                faq_list = topic_researcher.enhance_faq_topics(material_name, faq_list)
+                self.logger.info(f"   ✅ Topic enhancement complete")
+            except Exception as e:
+                self.logger.warning(f"   ⚠️  Topic enhancement failed: {e}")
+                self.logger.warning(f"   Continuing with non-enhanced FAQ")
+        
         return faq_list
     
     def generate_subtitle(self, material_name: str, material_data: Dict) -> str:
@@ -367,17 +388,74 @@ class UnifiedMaterialsGenerator:
         
         return subtitle
     
+    def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
+        """
+        Generate EEAT section from regulatoryStandards (pure Python, no AI).
+        
+        EEAT (Experience, Expertise, Authoritativeness, Trustworthiness):
+        - reviewedBy: Fixed string "Z-Beam Quality Assurance Team"
+        - citations: 1-3 random regulatoryStandards descriptions
+        - isBasedOn: 1 random regulatoryStandard with name and url
+        
+        Args:
+            material_name: Name of material
+            material_data: Material data from Materials.yaml
+            
+        Returns:
+            EEAT dict or None if no regulatoryStandards available
+        """
+        self.logger.info(f"📊 Generating EEAT section for {material_name}")
+        
+        # Get regulatoryStandards
+        regulatory_standards = material_data.get('regulatoryStandards', [])
+        
+        # Filter to dict entries only (skip any legacy string entries)
+        dict_standards = [
+            std for std in regulatory_standards 
+            if isinstance(std, dict) and 'description' in std and 'url' in std
+        ]
+        
+        if not dict_standards:
+            self.logger.warning(f"No valid regulatoryStandards found for {material_name}")
+            return None
+        
+        # Select 1-3 random standards for citations
+        num_citations = random.randint(1, min(3, len(dict_standards)))
+        citation_standards = random.sample(dict_standards, num_citations)
+        
+        # Convert to citation strings (just the description)
+        citations = [std['description'] for std in citation_standards]
+        
+        # Select 1 random standard for isBasedOn
+        based_on_standard = random.choice(dict_standards)
+        is_based_on = {
+            'name': based_on_standard['description'],
+            'url': based_on_standard['url']
+        }
+        
+        eeat_data = {
+            'reviewedBy': 'Z-Beam Quality Assurance Team',
+            'citations': citations,
+            'isBasedOn': is_based_on
+        }
+        
+        self.logger.info(f"   reviewedBy: {eeat_data['reviewedBy']}")
+        self.logger.info(f"   citations: {num_citations} selected from {len(dict_standards)} standards")
+        self.logger.info(f"   isBasedOn: {is_based_on['name'][:60]}...")
+        
+        return eeat_data
+    
     def generate(self, material_name: str, content_type: str, **kwargs):
         """
         Generate content for material.
         
         Args:
             material_name: Name of material
-            content_type: Type of content ('caption', 'faq', 'subtitle')
+            content_type: Type of content ('caption', 'faq', 'subtitle', 'eeat')
             **kwargs: Additional parameters (e.g., faq_count=8)
             
         Returns:
-            Generated content (dict for caption/faq, str for subtitle)
+            Generated content (dict for caption/faq/eeat, str for subtitle)
         """
         # Load material data
         materials_data = self._load_materials_data()
@@ -394,6 +472,8 @@ class UnifiedMaterialsGenerator:
             content_data = self.generate_faq(material_name, material_data, **kwargs)
         elif content_type == 'subtitle':
             content_data = self.generate_subtitle(material_name, material_data)
+        elif content_type == 'eeat':
+            content_data = self.generate_eeat(material_name, material_data)
         else:
             raise ValueError(f"Unknown content type: {content_type}")
         

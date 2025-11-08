@@ -59,60 +59,52 @@ class TrivialFrontmatterExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory, load Categories.yaml for taxonomy and ranges."""
+        """Initialize with output directory, load metadata from new multi-file architecture."""
         self.output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "materials"
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.logger = logging.getLogger(__name__)
         
-        # Load Categories.yaml for taxonomy, category ranges, and machine settings ranges
-        categories_path = Path(__file__).resolve().parents[3] / "materials" / "data" / "Categories.yaml"
-        with open(categories_path, 'r', encoding='utf-8') as f:
-            self.categories_data = yaml.safe_load(f)
+        # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml)
+        from materials.data.loader import (
+            get_parameter_ranges,
+            get_property_categories,
+            get_category_ranges,
+            get_category_definitions
+        )
         
-        # Extract machine settings ranges from Categories.yaml
-        self.machine_settings_ranges = self.categories_data.get('machineSettingsRanges', {})
+        # Get machine settings ranges
+        self.machine_settings_ranges = get_parameter_ranges()
+        
+        # Get property categories for taxonomy
+        property_cats = get_property_categories()
+        self.property_categories_metadata = property_cats
+        
+        # Get category definitions and ranges
+        self.category_definitions = get_category_definitions()
+        self.category_ranges = get_category_ranges()
         
         # Load property taxonomy for categorization
         self._load_property_taxonomy()
         
-        self.logger.info(f"✅ Loaded {len(self.categories_data.get('categories', {}))} material categories")
+        self.logger.info(f"✅ Loaded {len(self.category_definitions)} material categories")
         self.logger.info(f"✅ Loaded {len(self.machine_settings_ranges)} machine settings ranges")
         self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
     
     def _load_property_taxonomy(self):
-        """Load property taxonomy from Categories.yaml to categorize properties correctly."""
-        # The taxonomy is nested under 'propertyTaxonomy' key in Categories.yaml
-        # Search for it in the data structure
-        taxonomy_data = None
-        
-        for key, value in self.categories_data.items():
-            if isinstance(value, dict) and 'categories' in value:
-                categories = value['categories']
-                if 'material_characteristics' in categories and 'laser_material_interaction' in categories:
-                    taxonomy_data = value
-                    break
-        
-        # If not found in nested structure, check root level
-        if not taxonomy_data:
-            if 'propertyTaxonomy' in self.categories_data:
-                taxonomy_data = self.categories_data['propertyTaxonomy']
-            else:
-                taxonomy_data = self.categories_data
-        
-        # Extract property categories (material_characteristics, laser_material_interaction)
-        categories = taxonomy_data.get('categories', {})
+        """Load property taxonomy from MaterialProperties.yaml to categorize properties correctly."""
+        # Extract property categories from the new schema
+        categories = self.property_categories_metadata.get('categories', {})
         
         # Build taxonomy mapping: property_name -> category_id
         self.property_taxonomy = {}
-        metadata_keys = {'label', 'description', 'percentage'}
+        
         for cat_id in ['material_characteristics', 'laser_material_interaction']:
             if cat_id in categories:
                 cat_data = categories[cat_id]
-                # Properties are directly in category (flat structure, excluding metadata)
-                if isinstance(cat_data, dict):
-                    for prop in cat_data.keys():
-                        if prop not in metadata_keys:
-                            self.property_taxonomy[prop] = cat_id
+                # Properties are in 'properties' list
+                properties_list = cat_data.get('properties', [])
+                for prop in properties_list:
+                    self.property_taxonomy[prop] = cat_id
                     
         self.logger.info(f"   Taxonomy maps {len(self.property_taxonomy)} properties to categories")
     
@@ -242,9 +234,12 @@ class TrivialFrontmatterExporter:
                 else:
                     frontmatter[key] = stripped
             elif key == 'faq':
-                # Strip generation metadata from FAQ (timestamps, word counts, question counts)
+                # Format FAQ with HTML topic highlighting and strip metadata
+                # Reads topic_keyword/topic_statement from Materials.yaml
+                # Applies <strong> tags and exports only question/answer
                 cleaned = self._remove_descriptions(value, preserve_regulatory=False)
-                frontmatter[key] = self._strip_generation_metadata(cleaned)
+                formatted_faq = self._format_faq_with_topics(cleaned)
+                frontmatter[key] = self._strip_generation_metadata(formatted_faq)
             else:
                 # Copy as-is but remove description fields and strip generation metadata
                 cleaned = self._remove_descriptions(value, preserve_regulatory=(key == 'regulatoryStandards'))
@@ -260,12 +255,13 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Exported {material_name} → {filename}")
     
     def _get_category_ranges(self, category: str) -> Dict[str, Any]:
-        """Get category-wide ranges from Categories.yaml."""
-        if not category or 'categories' not in self.categories_data:
+        """Get category-wide ranges from MaterialProperties.yaml."""
+        if not category or not self.category_ranges:
             return {}
         
-        category_data = self.categories_data['categories'].get(category, {})
-        return category_data.get('category_ranges', {})
+        # Use new category_ranges structure
+        category_data = self.category_ranges.get(category, {})
+        return category_data.get('ranges', {})
     
     def _enrich_material_properties(self, properties: Dict, category_ranges: Dict) -> Dict:
         """
@@ -474,6 +470,7 @@ class TrivialFrontmatterExporter:
         - Each dict has: name, description, url, image
         - No longName field
         - No duplicate entries
+        - Enriched organization metadata for SEMI and ASTM standards
         
         Args:
             standards: Raw regulatoryStandards from Materials.yaml
@@ -510,12 +507,202 @@ class TrivialFrontmatterExporter:
                     'image': item.get('image', '')
                 }
                 
+                # Enrich organization metadata for SEMI and ASTM standards
+                normalized_item = self._enrich_organization_metadata(normalized_item)
+                
                 # Remove longName (not in template)
                 # Already excluded by only including template fields
                 
                 normalized.append(normalized_item)
         
         return normalized
+    
+    def _enrich_organization_metadata(self, standard: Dict[str, str]) -> Dict[str, str]:
+        """
+        Enrich regulatory standard metadata for known organizations.
+        
+        Detects SEMI and ASTM patterns in description and populates:
+        - Proper organization name
+        - Organization-specific URL pattern
+        - Organization-specific logo
+        
+        Args:
+            standard: Standard dict with name, description, url, image
+            
+        Returns:
+            Enriched standard dict
+        """
+        description = standard.get('description', '')
+        current_name = standard.get('name', '')
+        
+        # Only enrich if current metadata is incomplete (Unknown or empty)
+        if current_name not in ['Unknown', '', 'unknown']:
+            return standard
+        
+        # SEMI standards detection and enrichment
+        if 'SEMI' in description or description.startswith('SEMI '):
+            standard['name'] = 'SEMI'
+            standard['image'] = '/images/logo/logo-org-semi.png'
+            
+            # Extract SEMI standard ID for URL generation (e.g., "SEMI M1")
+            # Pattern: "SEMI M1", "SEMI E10", etc.
+            import re
+            semi_match = re.search(r'SEMI\s+([A-Z]\d+)', description)
+            if semi_match:
+                semi_id = semi_match.group(1).lower()  # e.g., "m1"
+                # Generate SEMI store URL
+                # Format: https://store-us.semi.org/products/m00100-semi-m1-specification-for-...
+                # Use simplified format since we don't have full product codes
+                standard['url'] = f'https://store-us.semi.org/products/semi-{semi_id}'
+            else:
+                # Fallback to SEMI store homepage if pattern not matched
+                standard['url'] = 'https://store-us.semi.org/'
+        
+        # ASTM standards detection and enrichment
+        elif 'ASTM' in description or description.startswith('ASTM '):
+            standard['name'] = 'ASTM'
+            standard['image'] = '/images/logo/logo-org-astm.png'
+            
+            # Extract ASTM standard ID for URL generation (e.g., "ASTM F1188", "ASTM C848")
+            # Pattern: "ASTM C848", "ASTM F1188-00", etc.
+            import re
+            astm_match = re.search(r'ASTM\s+([A-Z]\d+)', description)
+            if astm_match:
+                astm_id = astm_match.group(1).lower()  # e.g., "c848", "f1188"
+                # Generate ASTM store URL
+                # Format: https://store.astm.org/f1188-00.html (simplified - using base ID)
+                standard['url'] = f'https://store.astm.org/{astm_id}.html'
+            else:
+                # Fallback to ASTM store homepage if pattern not matched
+                standard['url'] = 'https://www.astm.org/standards'
+        
+        # EPA standards detection and enrichment
+        elif 'EPA' in description or description.startswith('EPA '):
+            standard['name'] = 'EPA'
+            standard['image'] = '/images/logo/logo-org-epa.png'
+            
+            # EPA standards typically reference acts/regulations
+            # Common patterns: "EPA Clean Air Act", "EPA 40 CFR", etc.
+            if 'Clean Air Act' in description:
+                standard['url'] = 'https://www.epa.gov/clean-air-act-overview'
+            elif 'Clean Water Act' in description:
+                standard['url'] = 'https://www.epa.gov/laws-regulations/summary-clean-water-act'
+            elif '40 CFR' in description:
+                # Extract CFR part number if available
+                import re
+                cfr_match = re.search(r'40\s*CFR\s*(?:Part\s*)?(\d+)', description)
+                if cfr_match:
+                    part = cfr_match.group(1)
+                    standard['url'] = f'https://www.ecfr.gov/current/title-40/part-{part}'
+                else:
+                    standard['url'] = 'https://www.epa.gov/laws-regulations'
+            else:
+                # Fallback to EPA laws and regulations homepage
+                standard['url'] = 'https://www.epa.gov/laws-regulations'
+        
+        # USDA standards detection and enrichment
+        elif 'USDA' in description or description.startswith('USDA '):
+            standard['name'] = 'USDA'
+            standard['image'] = '/images/logo/logo-org-usda.png'
+            
+            # USDA standards typically reference food safety
+            if 'Food Safety' in description:
+                standard['url'] = 'https://www.usda.gov/topics/food-and-nutrition/food-safety'
+            else:
+                standard['url'] = 'https://www.usda.gov/'
+        
+        # FSC standards detection and enrichment
+        elif 'FSC' in description or description.startswith('FSC '):
+            standard['name'] = 'FSC'
+            standard['image'] = '/images/logo/logo-org-fsc.png'
+            
+            # FSC (Forest Stewardship Council) standards
+            if 'Sustainable Forestry' in description or 'Forestry' in description:
+                standard['url'] = 'https://fsc.org/en/forest-management-certification'
+            else:
+                standard['url'] = 'https://fsc.org/'
+        
+        # UNESCO standards detection and enrichment
+        elif 'UNESCO' in description or description.startswith('UNESCO '):
+            standard['name'] = 'UNESCO'
+            standard['image'] = '/images/logo/logo-org-unesco.png'
+            
+            # UNESCO (United Nations Educational, Scientific and Cultural Organization)
+            if 'Cultural Heritage' in description or 'Heritage Conservation' in description:
+                standard['url'] = 'https://whc.unesco.org/en/conservation/'
+            else:
+                standard['url'] = 'https://www.unesco.org/'
+        
+        # CITES standards detection and enrichment
+        elif 'CITES' in description or description.startswith('CITES '):
+            standard['name'] = 'CITES'
+            standard['image'] = '/images/logo/logo-org-cites.png'
+            
+            # CITES (Convention on International Trade in Endangered Species)
+            standard['url'] = 'https://cites.org/'
+        
+        return standard
+    
+    def _format_faq_with_topics(self, faq_list: list) -> list:
+        """
+        Format FAQ entries with Markdown topic highlighting.
+        
+        Reads topic_keyword and topic_statement from Materials.yaml FAQ entries.
+        Applies **bold** Markdown syntax at export time:
+        - Wraps topic_keyword in question with **keyword**
+        - Prepends **topic_statement**. to answer
+        
+        Only exports question and answer fields (strips topic metadata).
+        
+        Args:
+            faq_list: List of FAQ dicts from Materials.yaml (may have topic_keyword, topic_statement)
+            
+        Returns:
+            List of FAQ dicts with only question and answer (Markdown formatted)
+        """
+        if not faq_list:
+            return []
+        
+        formatted_faqs = []
+        
+        for faq_item in faq_list:
+            if not isinstance(faq_item, dict):
+                formatted_faqs.append(faq_item)
+                continue
+            
+            question = faq_item.get('question', '')
+            answer = faq_item.get('answer', '')
+            topic_keyword = faq_item.get('topic_keyword', '')
+            topic_statement = faq_item.get('topic_statement', '')
+            
+            # Format question with **keyword** Markdown bold syntax
+            if topic_keyword and question:
+                # Case-insensitive replacement (preserve original case)
+                import re
+                pattern = re.escape(topic_keyword)
+                question_formatted = re.sub(
+                    f'({pattern})',
+                    r'**\1**',
+                    question,
+                    count=1,
+                    flags=re.IGNORECASE
+                )
+            else:
+                question_formatted = question
+            
+            # Format answer with prepended **topic_statement**.
+            if topic_statement and answer:
+                answer_formatted = f"**{topic_statement}**. {answer}"
+            else:
+                answer_formatted = answer
+            
+            # Export only question and answer (strip topic metadata)
+            formatted_faqs.append({
+                'question': question_formatted,
+                'answer': answer_formatted
+            })
+        
+        return formatted_faqs
     
     def _generate_breadcrumb(self, material_data: Dict, slug: str) -> list:
         """

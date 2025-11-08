@@ -1,0 +1,62 @@
+# Variation Research for Sandstone
+# Category: unknown
+# Generated: 2025-11-07T12:47:20.200939
+
+```yaml
+variations:
+  - name: "Dholpur Beige Sandstone Natural Cleft"
+    standard: ASTM C616/C616M (Standard Specification for Quartz-Based Dimension Stone); Indian Standard IS 3316 (Specification for Sandstone Blocks, Slabs, and Tiles)
+    composition_characteristics: Fine to medium-grained quartz sandstone with silica cement; beige to light brown color; low porosity (2-5%); composed primarily of 90-95% quartz grains with minor feldspar and iron oxide impurities; Mohs hardness 6-7.
+    common_names_trade_names: "Dholpur Cream", "Beige Indian Sandstone", "Teakwood Beige"
+    primary_applications: Exterior cladding, paving, garden landscaping, wall veneers in residential and commercial buildings; suitable for moderate traffic areas.
+    key_properties_differing_from_base: Higher compressive strength (80-120 MPa vs. base 50-100 MPa); better weather resistance due to silica-rich cement; lower water absorption (1-3% vs. base 5-10%); more uniform color and texture than generic sandstone.
+    laser_cleaning_implications: Easier due to low porosity and high silica content, which allows efficient ablation of surface contaminants at lower fluences (0.5-1.5 J/cm²); uniform beige color provides consistent absorption; minimal risk of discoloration, but avoid high pulse energies to prevent micro-cracking in fine grains.
+
+  - name: "Jaisalmer Yellow Sandstone Honed"
+    standard: ASTM C616/C616M; Indian Standard IS 3316
+    composition_characteristics: Medium-grained quartz arenite with iron oxide staining; yellow to golden hue; porosity 3-6%; 85-95% quartz with calcite and clay matrix; Mohs hardness 5-6.
+    common_names_trade_names: "Jaisalmer Gold", "Yellow Desert Sandstone", "Ranni Yellow"
+    primary_applications: Interior flooring, decorative facades, monuments, and sculptures; used in heritage restoration due to warm aesthetic.
+    key_properties_differing_from_base: Softer texture with slightly higher porosity leading to moderate freeze-thaw resistance; compressive strength 60-90 MPa (lower than silica-cemented types); enhanced color vibrancy from iron oxides, but more prone to efflorescence.
+    laser_cleaning_implications: Moderately easy; yellow pigmentation increases absorption at 1064 nm wavelengths, requiring adjusted fluences (1-2 J/cm²) to avoid yellowing or fading; higher porosity may trap residues, necessitating multiple passes; honed finish reduces scattering for better cleaning efficiency.
+
+  - name: "Agra Red Sandstone Polished"
+    standard: ASTM C616/C616M; Indian Standard IS 3316
+    composition_characteristics: Coarse-grained arkosic sandstone with hematite cement; red to reddish-brown color; porosity 4-8%; 70-85% quartz and feldspar with iron oxide binders; Mohs hardness 5-6.5.
+    common_names_trade_names: "Agra Red", "Bansi Pink", "Red Indian Sandstone"
+    primary_applications: Architectural facades, balustrades, paving in historical and modern buildings; popular in Mughal-style architecture and outdoor features.
+    key_properties_differing_from_base: Higher iron content provides natural UV resistance but increases staining susceptibility; compressive strength 70-100 MPa; greater color depth and warmth compared to neutral sandstones, with moderate durability in wet climates.
+    laser_cleaning_implications: Harder due to iron oxides causing higher thermal absorption, risking surface pitting at fluences >1.5 J/cm²; red color absorbs Nd:YAG lasers efficiently but may lead to selective heating of cement; polished finish aids in uniform cleaning but requires shorter pulses (ns range) to minimize damage to coarser grains.
+
+  - name: "Raj Green Sandstone Sawn"
+    standard: ASTM C616/C616M; Indian Standard IS 3316
+    composition_characteristics: Fine-grained quartz sandstone with chlorite and glauconite impurities; greenish-gray tone; low porosity (2-4%); 90%+ quartz with minor mica; Mohs hardness 6.
+    common_names_trade_names: "Raj Green", "Green Slate Sandstone", "Mandla Green"
+    primary_applications: Roofing tiles, wall cladding, and paving in coastal or humid environments; used for eco-friendly building projects.
+    key_properties_differing_from_base: Superior acid resistance from chlorite content; compressive strength 90-130 MPa (higher than average); greener hue offers better camouflage in natural settings, with low water absorption for enhanced longevity.
+    laser_cleaning_implications: Easier for biological growth removal due to low porosity; green pigments have moderate absorption, allowing standard parameters (0.8-1.8 J/cm² at 532 nm for better selectivity); sawn finish may require pre-scanning to avoid uneven ablation on natural veins.
+
+  - name: "York Buff Sandstone Flamed"
+    standard: ASTM C616/C616M; British Standard BS EN 1469 (Natural Stone Products for Both Exterior and Interior Cladding); UK Quarry Association guidelines
+    composition_characteristics: Medium to coarse-grained quartz sandstone with silica and clay cement; buff to light yellow color; porosity 5-7%; 85-90% quartz with feldspar; Mohs hardness 6-7.
+    common_names_trade_names: "York Stone", "Huddlestone Buff", "Millstone Grit"
+    primary_applications: Paving slabs, steps, and curbs in urban landscaping; traditional UK architecture for paths and patios.
+    key_properties_differing_from_base: Excellent slip resistance from textured surface; compressive strength 100-150 MPa; higher abrasion resistance than softer sandstones, but more susceptible to lichen growth in damp climates.
+    laser_cleaning_implications: Moderately easy; buff color provides balanced absorption, effective at 1-2 J/cm²; flamed texture increases surface area, potentially requiring higher repetition rates for thorough cleaning; low risk of thermal spalling due to robust silica matrix.
+
+  - name: "Sydney Yellow Block Sandstone Natural"
+    standard: ASTM C616/C616M; Australian Standard AS 4456 (Dimension Stone - Testing); Sydney Quarry specifications
+    composition_characteristics: Coarse-grained quartz sandstone with iron-stained quartz; yellow to ochre color; porosity 6-10%; 80-90% quartz with kaolinite cement; Mohs hardness 5.5-6.5.
+    common_names_trade_names: "Sydney Sandstone", "Hawkesbury Yellow", "Botany Bay Stone"
+    primary_applications: Building facades, bridges, and monuments in Australia; historical restorations like Sydney Opera House elements.
+    key_properties_differing_from_base: Higher porosity leads to better thermal insulation but reduced strength (50-80 MPa compressive); distinctive yellow from iron leaching, with good coastal durability despite salt exposure.
+    laser_cleaning_implications: Harder due to higher porosity trapping salts and dirt, necessitating lower fluences (0.5-1 J/cm²) and vacuum assistance; yellow staining absorbs well but may cause efflorescence during cleaning; natural finish benefits from diffuse laser beams to avoid hot spots on coarse grains.
+
+  - name: "Connecticut Brownstone Sawn"
+    standard: ASTM C616/C616M; US Dimension Stone Association guidelines
+    composition_characteristics: Arkosic sandstone with feldspar and mica; brown to reddish-brown; porosity 7-12%; 70-80% quartz/feldspar with iron oxide cement; Mohs hardness 5-6.
+    common_names_trade_names: "Connecticut Brownstone", "Portland Brown", "New England Brownstone"
+    primary_applications: Historic building restoration, rowhouse facades, and landscaping in the northeastern US; interior trim.
+    key_properties_differing_from_base: Softer and more porous than quartz-rich types, with compressive strength 40-70 MPa; prone to weathering but offers warm, aged patina; higher feldspar content increases chemical reactivity.
+    laser_cleaning_implications: Harder; high porosity and iron content lead to potential crumbling at >1 J/cm², requiring very low fluences (0.3-0.8 J/cm²) and IR wavelengths; brown color enhances absorption but risks uneven cleaning on mica flakes; sawn surfaces clean faster but may expose weaknesses.
+```
