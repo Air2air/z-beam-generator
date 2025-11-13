@@ -16,9 +16,6 @@ author:
   jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
-  - Nonlinear Optics
-  - Laser Ablation Techniques
-  - Material Characterization
   affiliation:
     name: Bandung Institute of Technology
     type: EducationalOrganization
@@ -105,3 +102,54 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Thermal shock and microcracking
+    severity: critical
+    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
+    impact: Natural stone contains microfissures that propagate under thermal stress
+    solutions:
+    - Use pulse mode with 8-12 second cooling between passes
+    - Reduce power by 40-50% for weathered or damaged stone
+    - Preheat substrate if possible to reduce thermal gradients
+    - Granite more resistant than marble; sandstone most vulnerable
+    - Monitor for surface crazing; stop immediately if cracks appear
+  - challenge: Moisture-induced spalling
+    severity: high
+    threshold_temperature: Steam formation >100°C with trapped moisture
+    impact: Porous stone traps moisture that explosively converts to steam
+    solutions:
+    - Test moisture content before cleaning (>3% requires drying)
+    - Allow 48-72 hours drying after rain before laser cleaning
+    - Reduce power by 50% for damp stone
+    - Use pulse mode with extended cooling (15-20 seconds)
+    - Heritage stone requires especially gentle approach
+  surface_characteristics:
+  - challenge: Weathering and surface degradation
+    severity: high
+    impact: Aged stone has weaker surface layer more susceptible to damage
+    solutions:
+    - Reduce power 40-60% for weathered stone vs fresh stone
+    - Test on inconspicuous area first
+    - Multiple gentle passes (4-6 at 40-60W) preferred
+    - Monitor for powdering or flaking; adjust power immediately
+    - Heritage conservation requires documentation and testing
+  - challenge: Mineral composition heterogeneity
+    severity: medium
+    impact: Mixed minerals have different absorption and damage thresholds
+    solutions:
+    - Use moderate power (60-80W) suitable for both light and dark minerals
+    - Crosshatch scan pattern for uniform coverage
+    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
+    - Quartzite and marble more homogeneous than granite
+  contamination_challenges:
+  - challenge: Biological growth and deep staining
+    severity: medium
+    porosity_range: 0.5-25% (sandstone highly porous)
+    impact: Algae, lichen, and pollution penetrate deep into porous structure
+    solutions:
+    - First pass 80W fast (1200 mm/s) for surface growth
+    - Second pass 60W slow (700 mm/s) for roots and stains
+    - Third pass 40W very slow (400 mm/s) for deep staining
+    - Chemical biocide pre-treatment kills roots and reduces laser exposure
+    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones

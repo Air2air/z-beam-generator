@@ -32,10 +32,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "sex": "f",
         "jobTitle": "Laser Processing Engineer",
         "expertise": [
-            "Laser Materials Processing",
-            "Semiconductor Laser Etching",
-            "Photonics in Manufacturing",
-            "Advanced Alloy Fabrication"
+            "Laser Materials Processing"
         ],
         "affiliation": {
             "name": "National Taiwan University",
@@ -68,10 +65,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "sex": "m",
         "jobTitle": "Materials Engineer",
         "expertise": [
-            "Laser-Based Additive Manufacturing",
-            "Ceramic Materials Processing",
-            "Surface Engineering",
-            "High-Temperature Materials"
+            "Laser-Based Additive Manufacturing"
         ],
         "affiliation": {
             "name": "Politecnico di Milano's Materials Dept.",
@@ -106,10 +100,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "sex": "m",
         "jobTitle": "Junior Research Scientist in Laser Physics",
         "expertise": [
-            "Ultrafast Laser Physics and Material Interactions",
-            "Nonlinear Optics",
-            "Laser Ablation Techniques",
-            "Material Characterization"
+            "Ultrafast Laser Physics and Material Interactions"
         ],
         "affiliation": {
             "name": "Bandung Institute of Technology",
@@ -144,10 +135,7 @@ AUTHOR_REGISTRY: Dict[int, Dict[str, str]] = {
         "sex": "m",
         "jobTitle": "Junior Optical Materials Specialist",
         "expertise": [
-            "Optical Materials for Laser Systems",
-            "Thin-Film Coatings",
-            "Laser Optics Design",
-            "Photonics Integration"
+            "Optical Materials for Laser Systems"
         ],
         "affiliation": {
             "name": "Coherent Inc.",

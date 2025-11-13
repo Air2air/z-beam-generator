@@ -16,9 +16,6 @@ author:
   jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
-  - Nonlinear Optics
-  - Laser Ablation Techniques
-  - Material Characterization
   affiliation:
     name: Bandung Institute of Technology
     type: EducationalOrganization
@@ -110,3 +107,61 @@ machineSettings:
     value: 30
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Rapid oxidation and pyrophoricity
+    severity: critical
+    threshold_temperature: Above 150-300°C causes spontaneous ignition in air
+    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
+    solutions:
+    - Process in inert atmosphere (argon or nitrogen) or high vacuum
+    - Use pulse mode with 10-15 second cooling to prevent sustained heating
+    - Keep surface temperature below 150°C monitored with IR camera
+    - Have fire suppression ready for pyrophoric materials
+    - Immediate passivation after cleaning to prevent further oxidation
+  - challenge: Variable thermal properties across series
+    severity: medium
+    property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
+    impact: Different lanthanides require different cooling strategies
+    solutions:
+    - Light lanthanides (La, Ce, Pr) require more cooling time
+    - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
+    - Adjust parameters by specific element, not just category
+    - Test on small area to determine optimal cooling requirements
+  surface_characteristics:
+  - challenge: Oxide layer formation and removal
+    severity: high
+    impact: Surface oxidizes within seconds to minutes forming opaque layer
+    solutions:
+    - Clean in controlled atmosphere to prevent immediate reoxidation
+    - Multiple passes may be required as oxide reforms between passes
+    - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
+    - Chemical passivation immediately after cleaning
+    - Store in inert atmosphere or vacuum after processing
+  - challenge: Magnetic property sensitivity
+    severity: high
+    impact: Heating above Curie temperature permanently alters magnetic properties
+    solutions:
+    - Monitor temperature strictly; Nd magnets lose magnetism above 310-400°C
+    - Use ultrashort pulses (picosecond) for minimal heat-affected zone
+    - Reduce power by 60-70% compared to non-magnetic metals
+    - Test magnetic properties before and after cleaning to verify preservation
+  contamination_challenges:
+  - challenge: High-value material recovery
+    severity: medium
+    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
+    solutions:
+    - First pass 15W very slow (500 mm/s) for assessment
+    - Gradual power increase (15W → 25W → 35W) across multiple passes
+    - Collect all ablated material for potential recovery
+    - Document process for traceability and quality control
+    - Consider chemical pre-treatment to reduce laser exposure
+  - challenge: Strategic material handling requirements
+    severity: medium
+    impact: Export-controlled materials require documentation and secure handling
+    solutions:
+    - Clean in controlled access facility
+    - Document all processing parameters and material quantities
+    - Secure storage of cleaned materials
+    - Follow applicable export control regulations
+    - Chain of custody documentation for high-value materials

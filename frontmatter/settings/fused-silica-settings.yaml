@@ -16,9 +16,6 @@ author:
   jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
-  - Thin-Film Coatings
-  - Laser Optics Design
-  - Photonics Integration
   affiliation:
     name: Coherent Inc.
     type: Organization
@@ -104,3 +101,51 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Thermal shock and catastrophic failure
+    severity: critical
+    threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
+    impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
+    solutions:
+    - Use pulse mode with 5-8 second cooling between passes
+    - Preheat substrate to room temperature before cleaning
+    - Avoid cold spots (air vents, cold backing) during processing
+    - Tempered glass more resistant but still susceptible to thermal shock
+    - Monitor for stress fractures; stop immediately if cracks appear
+  - challenge: Low thermal diffusivity
+    severity: high
+    property_value: 0.01-15 mm²/s (most glasses 0.5-1.0 mm²/s)
+    impact: Heat accumulates in localized zones creating thermal gradients
+    solutions:
+    - Reduce power by 30-40% compared to metals
+    - Increase scan speed to distribute heat (1000-2000 mm/s)
+    - Use defocused beam to spread energy over larger area
+    - Optical-grade glass (fused silica) tolerates higher power
+  surface_characteristics:
+  - challenge: Surface defects and stress concentrators
+    severity: high
+    impact: Scratches, chips, and inclusions dramatically lower damage threshold
+    solutions:
+    - Inspect surface with magnification before cleaning
+    - Reduce power 40-50% for scratched or damaged glass
+    - Clean around defects with extreme caution
+    - Polished optical glass requires different parameters than rough architectural glass
+  - challenge: Coating and film removal
+    severity: medium
+    impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
+    solutions:
+    - Test on edge first to determine coating removal threshold
+    - Coated glass may require 40-60W initial pass
+    - Bare glass requires 20-30% lower power after coating removal
+    - AR coatings very sensitive - use 30-40W maximum
+  contamination_challenges:
+  - challenge: Adhesive and paint removal
+    severity: medium
+    impact: Thick coatings require multiple passes and generate debris that can scratch glass
+    solutions:
+    - First pass 60W fast (1800 mm/s) for bulk removal
+    - Second pass 40W slow (1000 mm/s) for residue
+    - Use air assist to blow debris away from surface
+    - Chemical pre-treatment reduces laser exposure time
+    - Avoid dragging ablated material across clean areas

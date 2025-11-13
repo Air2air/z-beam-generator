@@ -23,6 +23,7 @@ import yaml
 from pathlib import Path
 from typing import Dict, Any
 from materials.data.materials import load_materials_cached
+from materials.data.loader import get_material_challenges
 
 logger = logging.getLogger(__name__)
 
@@ -69,7 +70,7 @@ class TrivialFrontmatterExporter:
         
         self.logger = logging.getLogger(__name__)
         
-        # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml)
+        # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml, Categories.yaml)
         from materials.data.loader import (
             get_parameter_ranges,
             get_property_categories,
@@ -303,6 +304,16 @@ class TrivialFrontmatterExporter:
             normalized = self._normalize_regulatory_standards(regulatory_data)
             frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
         
+        # Add material_challenges from Categories.yaml (category-level diagnostic guidance)
+        if category:
+            material_challenges = get_material_challenges(category)
+            if material_challenges:
+                # Strip generation metadata and add to frontmatter
+                frontmatter['material_challenges'] = self._strip_generation_metadata(material_challenges)
+                self.logger.info(f"✅ Added material_challenges for {material_name} from {category} category")
+            else:
+                self.logger.debug(f"No material_challenges found for category: {category}")
+        
         # Export dual-file structure: materials page and settings page
         self._export_materials_page(material_name, frontmatter)
         self._export_settings_page(material_name, frontmatter)
@@ -419,9 +430,8 @@ class TrivialFrontmatterExporter:
         # Content (settings page specific)
         settings_page['machineSettings'] = full_frontmatter.get('machineSettings')
         
-        # Future: diagnostics and challenges will be added here
-        # settings_page['diagnostics'] = full_frontmatter.get('diagnostics')
-        # settings_page['challenges'] = full_frontmatter.get('challenges')
+        # Add material_challenges (category-level diagnostic guidance)
+        settings_page['material_challenges'] = full_frontmatter.get('material_challenges')
         
         # Write settings page YAML
         filename = f"{material_name.lower().replace(' ', '-')}-settings.yaml"

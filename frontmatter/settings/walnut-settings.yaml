@@ -16,9 +16,6 @@ author:
   jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
-  - Semiconductor Laser Etching
-  - Photonics in Manufacturing
-  - Advanced Alloy Fabrication
   affiliation:
     name: National Taiwan University
     type: EducationalOrganization
@@ -104,3 +101,48 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Charring and carbonization
+    severity: high
+    threshold_temperature: 250-300°C
+    impact: Wood chars at low temperatures leaving black marks and structural damage
+    solutions:
+    - Use pulse mode with 2-5 second cooling between passes
+    - Reduce power by 30-40% compared to metals
+    - Increase scan speed to reduce dwell time
+    - Monitor surface for discoloration; stop if browning occurs
+  - challenge: Slow thermal diffusivity
+    severity: medium
+    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
+    impact: Heat accumulates rapidly causing thermal damage zones
+    solutions:
+    - Increase cooling time between passes
+    - Use lower repetition rates (<20 kHz)
+    - Apply crosshatch patterns to distribute heat
+  surface_characteristics:
+  - challenge: Grain direction sensitivity
+    severity: medium
+    variation: 20-40% absorption variation by grain orientation
+    impact: Laser absorption varies significantly with grain direction
+    solutions:
+    - Scan parallel to grain for consistent results
+    - Use crosshatch pattern (0° and 90°) for uniform cleaning
+    - Test on scrap to determine optimal scan direction
+  - challenge: Porous structure with deep contamination
+    severity: medium
+    porosity_range: 12-65% (softwoods highest)
+    impact: Contaminants penetrate deep into wood structure
+    solutions:
+    - Multiple passes with progressive power increase
+    - Reduce scan speed for deeper penetration (600 mm/s)
+    - Chemical pre-treatment for deep-seated contamination
+  contamination_challenges:
+  - challenge: Varnish and coating removal
+    severity: medium
+    impact: Thick coatings require multiple passes and generate smoke/fumes
+    solutions:
+    - First pass 80W fast (1500 mm/s) for bulk removal
+    - Second pass 60W slow (800 mm/s) for residue
+    - Use fume extraction to prevent redeposition
+    - Limit to 2-3 passes maximum to avoid substrate damage

@@ -44,6 +44,7 @@ MATERIALS_FILE = DATA_DIR / "Materials.yaml"
 PROPERTIES_FILE = DATA_DIR / "MaterialProperties.yaml"
 SETTINGS_FILE = DATA_DIR / "MachineSettings.yaml"
 METADATA_FILE = DATA_DIR / "CategoryMetadata.yaml"
+CATEGORIES_FILE = DATA_DIR / "Categories.yaml"
 
 
 class MaterialDataError(Exception):
@@ -650,6 +651,50 @@ def get_category_definitions() -> Dict[str, Any]:
     """
     metadata = load_category_metadata_yaml()
     return metadata.get('categoryDefinitions', {})
+
+
+@lru_cache(maxsize=1)
+def load_categories_yaml() -> Dict[str, Any]:
+    """
+    Load Categories.yaml (complete category data with ranges and challenges)
+    
+    Returns:
+        Dict with category data including material_challenges
+    
+    Raises:
+        MaterialDataError: If Categories.yaml cannot be loaded
+    """
+    if not CATEGORIES_FILE.exists():
+        raise MaterialDataError(f"Categories.yaml not found at {CATEGORIES_FILE}")
+    
+    try:
+        with open(CATEGORIES_FILE, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+            return data.get('categories', {})
+    except Exception as e:
+        raise MaterialDataError(f"Failed to load Categories.yaml: {e}")
+
+
+def get_material_challenges(category: str) -> Dict[str, Any]:
+    """
+    Get material_challenges for a specific category from Categories.yaml
+    
+    Args:
+        category: Category name (e.g., 'wood', 'metal', 'ceramic')
+    
+    Returns:
+        Dict with material_challenges structure:
+        {
+            "thermal_management": [...],
+            "surface_characteristics": [...],
+            "contamination_challenges": [...]
+        }
+        
+        Returns empty dict if category not found or no challenges defined.
+    """
+    categories = load_categories_yaml()
+    category_data = categories.get(category, {})
+    return category_data.get('material_challenges', {})
 
 
 # ============================================================================

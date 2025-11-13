@@ -16,9 +16,6 @@ author:
   jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
-  - Semiconductor Laser Etching
-  - Photonics in Manufacturing
-  - Advanced Alloy Fabrication
   affiliation:
     name: National Taiwan University
     type: EducationalOrganization
@@ -104,3 +101,49 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Matrix degradation and delamination
+    severity: critical
+    threshold_temperature: Polymer matrix 150-350°C, ceramic matrix >1000°C
+    impact: Heat causes matrix decomposition, fiber-matrix debonding, and layer separation
+    solutions:
+    - Use pulse mode with 5-10 second cooling for polymer-matrix composites
+    - Reduce power by 40-50% compared to monolithic materials
+    - Monitor for discoloration, bubbling, or layer lifting
+    - Ceramic and metal-matrix composites tolerate higher power
+  - challenge: Anisotropic thermal properties
+    severity: high
+    property_value: 10-100x variation parallel vs perpendicular to fibers
+    impact: Heat conducts rapidly along fibers but poorly across layers
+    solutions:
+    - Scan parallel to fiber direction for best heat dissipation
+    - Use crosshatch pattern (0° and 90°) to identify fiber orientation
+    - Increase cooling time 2-3x when scanning perpendicular to fibers
+    - Carbon fiber composites require special attention due to electrical conductivity
+  surface_characteristics:
+  - challenge: Fiber exposure and damage
+    severity: high
+    impact: Aggressive cleaning exposes or damages reinforcing fibers
+    solutions:
+    - Use low energy density (0.5-2 J/cm²) to protect matrix
+    - Multiple gentle passes preferred over single aggressive pass
+    - Stop immediately if fibers become visible
+    - Fiber-rich surfaces (woven cloth) more sensitive than particle-filled
+  - challenge: Surface finish variability
+    severity: medium
+    impact: Gel coat, paint, or protective layers alter absorption and damage threshold
+    solutions:
+    - Test on edge or hidden area first
+    - Coated surfaces may require 50-100W initial pass for coating removal
+    - Bare composite requires 30-50% lower power
+    - Adjust parameters when transitioning between coated and uncoated areas
+  contamination_challenges:
+  - challenge: Resin-based contaminant removal
+    severity: medium
+    impact: Adhesives, sealants, and coatings chemically bond to matrix
+    solutions:
+    - First pass 80W fast (1500 mm/s) for bulk removal
+    - Second pass 50W slow (800 mm/s) for residue
+    - Chemical pre-treatment improves results for stubborn adhesives
+    - Monitor for matrix damage; stop if surface texture changes

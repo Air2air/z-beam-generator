@@ -16,9 +16,6 @@ author:
   jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
-  - Thin-Film Coatings
-  - Laser Optics Design
-  - Photonics Integration
   affiliation:
     name: Coherent Inc.
     type: Organization
@@ -104,3 +101,53 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination

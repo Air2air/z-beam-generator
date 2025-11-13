@@ -16,9 +16,6 @@ author:
   jobTitle: Materials Engineer
   expertise:
   - Laser-Based Additive Manufacturing
-  - Ceramic Materials Processing
-  - Surface Engineering
-  - High-Temperature Materials
   affiliation:
     name: Politecnico di Milano's Materials Dept.
     type: EducationalOrganization
@@ -105,3 +102,52 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+material_challenges:
+  thermal_management:
+  - challenge: Moisture-induced spalling and explosive failure
+    severity: critical
+    threshold_temperature: Steam formation >100°C with trapped moisture
+    impact: Trapped moisture converts to steam causing explosive surface spalling
+    solutions:
+    - Test moisture content before cleaning (>5% moisture requires drying)
+    - Use pulse mode with 10-15 second cooling for wet materials
+    - Reduce power by 50-60% for damp masonry
+    - Allow 24-48 hours drying after rain before laser cleaning
+    - Monitor for popping sounds or surface lifting; stop immediately
+  - challenge: Low thermal diffusivity and heat accumulation
+    severity: high
+    property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
+    impact: Heat concentrates in surface layer causing thermal stress
+    solutions:
+    - Increase cooling time between passes (8-12 seconds)
+    - Use low repetition rates (<20 kHz)
+    - Defocused beam reduces peak intensity
+    - Multiple gentle passes preferred over aggressive single pass
+  surface_characteristics:
+  - challenge: High porosity and deep contamination
+    severity: high
+    porosity_range: 10-25% (brick and concrete highly porous)
+    impact: Contaminants penetrate deep into porous structure
+    solutions:
+    - Multiple progressive passes with power increase (50W → 80W → 100W)
+    - Reduce scan speed for deeper penetration (400-600 mm/s)
+    - Chemical pre-treatment for biological growth (algae, lichen)
+    - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
+  - challenge: Surface heterogeneity and aggregate exposure
+    severity: medium
+    impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
+    solutions:
+    - Use moderate power (70-90W) suitable for both matrix and aggregates
+    - Crosshatch scan pattern for uniform coverage
+    - Monitor for differential ablation; adjust power if aggregates become prominent
+    - Aged masonry more challenging than new construction
+  contamination_challenges:
+  - challenge: Paint and coating removal from porous substrate
+    severity: medium
+    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+    solutions:
+    - First pass 100W fast (1500 mm/s) for surface paint layer
+    - Second pass 70W slow (800 mm/s) for paint in pores
+    - Third pass 50W very slow (500 mm/s) for residual staining
+    - Chemical stripping pre-treatment reduces laser exposure
+    - Heritage masonry requires gentler approach (max 60W)
