@@ -1,21 +1,11 @@
 name: Ash
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Ash
-  href: /materials/ash-laser-cleaning
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+slug: ash
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 4
   name: Todd Dunning
@@ -47,11 +37,29 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-category: wood
-subcategory: hardwood
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
 title: Ash Laser Cleaning
 subtitle: Tailored laser settings basically preserve Ash wood's elasticity while fairly unveiling its distinct ring-porous grain.
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
 description: Laser cleaning parameters for Ash
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Ash
+  href: /materials/ash-laser-cleaning
 images:
   hero:
     alt: Ash surface undergoing laser cleaning showing precise contamination removal
@@ -59,19 +67,35 @@ images:
   micro:
     alt: Ash microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/ash-laser-cleaning-micro.jpg
-material_metadata:
-  regulatoryStandards:
-  - EPA Clean Air Act Compliance
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - EPA Clean Air Act Compliance
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+caption:
+  before: Under optical microscopy, the ash wood surface displays pretty extensive contamination from adhered particulates, such as fine soot and organic residues, building a heterogeneous layer up to 50 μm thick. Degradation typically features microfissures and delamination along grain boundaries, plus localized discoloration and erosion pits measuring 10-20 μm across, fairly undermining structural integrity and aesthetic uniformity.
+  after: Post-laser cleaning microscopy uncovers a pretty restored ash wood surface, boasting pristine cellular structure, minimal ablation residue, and an intact lignin matrix. Surface topography displays fairly uniform grain exposure, free of thermal damage, for high-fidelity restoration and preserved material integrity at the micrometer scale.
+faq:
+- question: How does laser cleaning restore the **natural grain** of aged Ash wood?
+  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface contaminants like dirt, varnish, or smoke residue from Ash wood without harming the underlying grain. This non-contact approach typically preserves the wood''s light color and prominent patterns, uncovering its original beauty in 10-20 minutes per panel—pretty ideal for antique furniture restoration.'
+- question: What are the risks of using laser cleaning on Ash wood **prone to warping**?
+  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty safely on Ash wood when handled right. It typically dodges the moisture that worsens warping, unlike old methods. Still, too much heat risks micro-cracks; experts advise low-power pulsed lasers plus close monitoring to avoid that, preserving the wood''s flexibility for lasting strength.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: EPA
+  description: EPA Clean Air Act Compliance
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -223,80 +247,13 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under optical microscopy, the ash wood surface displays pretty extensive contamination from adhered particulates, such as fine soot and organic residues, building a heterogeneous layer up to 50 μm thick. Degradation typically features microfissures and delamination along grain boundaries, plus localized discoloration and erosion pits measuring 10-20 μm across, fairly undermining structural integrity and aesthetic uniformity.
-  after: Post-laser cleaning microscopy uncovers a pretty restored ash wood surface, boasting pristine cellular structure, minimal ablation residue, and an intact lignin matrix. Surface topography displays fairly uniform grain exposure, free of thermal damage, for high-fidelity restoration and preserved material integrity at the micrometer scale.
-faq:
-- question: How does laser cleaning restore the **natural grain** of aged Ash wood?
-  answer: '**Preserves light color and patterns**. Laser cleaning gently ablates surface contaminants like dirt, varnish, or smoke residue from Ash wood without harming the underlying grain. This non-contact approach typically preserves the wood''s light color and prominent patterns, uncovering its original beauty in 10-20 minutes per panel—pretty ideal for antique furniture restoration.'
-- question: What are the risks of using laser cleaning on Ash wood **prone to warping**?
-  answer: '**Low-power pulses prevent micro-cracks**. Yeah, laser cleaning works pretty safely on Ash wood when handled right. It typically dodges the moisture that worsens warping, unlike old methods. Still, too much heat risks micro-cracks; experts advise low-power pulsed lasers plus close monitoring to avoid that, preserving the wood''s flexibility for lasting strength.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-  url: https://www.epa.gov/clean-air-act-overview
-  image: /images/logo/logo-org-epa.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - EPA Clean Air Act Compliance
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance

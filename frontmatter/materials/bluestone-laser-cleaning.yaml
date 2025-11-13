@@ -1,21 +1,11 @@
 name: Bluestone
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Bluestone
-  href: /materials/bluestone-laser-cleaning
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+slug: bluestone
+category: stone
+subcategory: sedimentary
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 2
   name: Alessandro Moretti
@@ -48,11 +38,29 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-category: stone
-subcategory: sedimentary
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
 title: Bluestone Laser Cleaning
 subtitle: Revive Bluestone's distinct subtle blue patina via essential laser targeting
+subtitle_metadata:
+  author_country: Italy
+  author_name: Alessandro Moretti
 description: Laser cleaning parameters for Bluestone
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Bluestone
+  href: /materials/bluestone-laser-cleaning
 images:
   hero:
     alt: Bluestone surface undergoing laser cleaning showing precise contamination removal
@@ -60,21 +68,39 @@ images:
   micro:
     alt: Bluestone microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/bluestone-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921645Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921651Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Italy
-  author_name: Alessandro Moretti
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
+caption:
+  before: Under microscopic examination, the bluestone surface reveals a densely contaminated condition, with irregular pores packed by fine dust particles and organic biofilms. These contaminants exhibit notable adhesive qualities, promoting microbial growth. Thus, degradation emerges as etched micro-fissures and subtle discoloration, undermining the stone's essential durability.
+  after: After laser cleaning, the bluestone surface emerges restored to its original luster, contaminants removed precisely without altering the stone's distinct natural patina. This treatment delivers a smooth, even condition, free from residues or discoloration, while preserving material integrity—no microcracks or erosion observed. Notably, the restoration quality proves exceptional, enhancing durability for architectural applications.
+faq:
+- question: How does laser cleaning restore **stained Bluestone surfaces**?
+  answer: '**Vaporizes stains without texture damage**. Laser cleaning employs precise pulsed lasers to vaporize dirt, grime, and stains without harming the stone''s distinct texture. This essential technique suits Bluestone patios perfectly, clearing years of buildup in one efficient pass.'
+- question: What makes Bluestone a good candidate for **laser restoration**?
+  answer: '**quartz-rich composition withstands laser**. Bluestone''s notable quartz-rich makeup endures laser energy effectively, enabling essential contaminant removal while safeguarding its inherent color and resilience—ideal for weathered paving stones.'
+- question: Why choose laser cleaning over chemical methods for **Bluestone maintenance**?
+  answer: '**Avoids chemical seepage into pores**. Laser cleaning stands out as eco-friendly, steering clear of harsh chemicals that could seep into Bluestone''s pores and inflict long-term damage. Essentially, it focuses solely on surface issues, minimizing environmental impact and health risks for users.'
+- question: Can laser cleaning fix **efflorescence on Bluestone** walls?
+  answer: '**Prevents moisture wicking**. Indeed, lasers ablate salt deposits from efflorescence in a notable manner, avoiding any stone abrasion. This essential non-contact technique halts further moisture wicking—a typical Bluestone challenge—while yielding a clean, dry surface.'
+- question: Is laser cleaning safe for porous Bluestone materials?
+  answer: Indeed. Adjustable laser wavelengths provide an essential advantage, penetrating only surface layers to gently remove stains from Bluestone's porous structure without etching or weakening it—unlike abrasive techniques that risk notable micro-cracks.
+- question: How long does laser cleaning last on **outdoor Bluestone applications**?
+  answer: '**Endures 5-10 years sealed**. Results can last a notable 5-10 years on well-sealed Bluestone, influenced by traffic and weather exposure. It''s essential to perform regular inspections, proactively tackling Bluestone''s staining vulnerability with minimal downtime.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -226,84 +252,15 @@ materialProperties:
       min: 0.1
       max: 10.0
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under microscopic examination, the bluestone surface reveals a densely contaminated condition, with irregular pores packed by fine dust particles and organic biofilms. These contaminants exhibit notable adhesive qualities, promoting microbial growth. Thus, degradation emerges as etched micro-fissures and subtle discoloration, undermining the stone's essential durability.
-  after: After laser cleaning, the bluestone surface emerges restored to its original luster, contaminants removed precisely without altering the stone's distinct natural patina. This treatment delivers a smooth, even condition, free from residues or discoloration, while preserving material integrity—no microcracks or erosion observed. Notably, the restoration quality proves exceptional, enhancing durability for architectural applications.
-faq:
-- question: How does laser cleaning restore **stained Bluestone surfaces**?
-  answer: '**Vaporizes stains without texture damage**. Laser cleaning employs precise pulsed lasers to vaporize dirt, grime, and stains without harming the stone''s distinct texture. This essential technique suits Bluestone patios perfectly, clearing years of buildup in one efficient pass.'
-- question: What makes Bluestone a good candidate for **laser restoration**?
-  answer: '**quartz-rich composition withstands laser**. Bluestone''s notable quartz-rich makeup endures laser energy effectively, enabling essential contaminant removal while safeguarding its inherent color and resilience—ideal for weathered paving stones.'
-- question: Why choose laser cleaning over chemical methods for **Bluestone maintenance**?
-  answer: '**Avoids chemical seepage into pores**. Laser cleaning stands out as eco-friendly, steering clear of harsh chemicals that could seep into Bluestone''s pores and inflict long-term damage. Essentially, it focuses solely on surface issues, minimizing environmental impact and health risks for users.'
-- question: Can laser cleaning fix **efflorescence on Bluestone** walls?
-  answer: '**Prevents moisture wicking**. Indeed, lasers ablate salt deposits from efflorescence in a notable manner, avoiding any stone abrasion. This essential non-contact technique halts further moisture wicking—a typical Bluestone challenge—while yielding a clean, dry surface.'
-- question: Is laser cleaning safe for porous Bluestone materials?
-  answer: Indeed. Adjustable laser wavelengths provide an essential advantage, penetrating only surface layers to gently remove stains from Bluestone's porous structure without etching or weakening it—unlike abrasive techniques that risk notable micro-cracks.
-- question: How long does laser cleaning last on **outdoor Bluestone applications**?
-  answer: '**Endures 5-10 years sealed**. Results can last a notable 5-10 years on well-sealed Bluestone, influenced by traffic and weather exposure. It''s essential to perform regular inspections, proactively tackling Bluestone''s staining vulnerability with minimal downtime.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921645Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921651Z'
+  structure_version: '2.0'

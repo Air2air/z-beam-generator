@@ -1,0 +1,106 @@
+name: Concrete
+slug: concrete
+category: masonry
+subcategory: general
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  - Thin-Film Coatings
+  - Laser Optics Design
+  - Photonics Integration
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+title: Concrete Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration and Troubleshooting for Concrete Laser Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing concrete laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Masonry
+  href: /settings/masonry
+- label: General
+  href: /settings/masonry/general
+- label: Concrete
+  href: /settings/concrete
+images:
+  hero:
+    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/concrete-laser-cleaning-hero.jpg
+  micro:
+    alt: Concrete microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/concrete-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: mm
+    value: 0.8
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 2.5
+    min: 0.1
+    max: 20.0
+  pulseWidth:
+    unit: ns
+    value: 12
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90

@@ -1,0 +1,107 @@
+name: Marble
+slug: marble
+category: stone
+subcategory: metamorphic
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  - Nonlinear Optics
+  - Laser Ablation Techniques
+  - Material Characterization
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Marble Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration and Troubleshooting for Marble Laser Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing marble laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Stone
+  href: /settings/stone
+- label: Metamorphic
+  href: /settings/stone/metamorphic
+- label: Marble
+  href: /settings/marble
+images:
+  hero:
+    alt: Marble surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/marble-laser-cleaning-hero.jpg
+  micro:
+    alt: Marble microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/marble-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 2.5
+    min: 0.1
+    max: 20.0
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90

@@ -1,21 +1,11 @@
 name: Borosilicate Glass
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glass
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Borosilicate Glass
-  href: /materials/borosilicate-glass-laser-cleaning
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+slug: borosilicate-glass
+category: glass
+subcategory: soda-lime
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -47,11 +37,29 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-category: glass
-subcategory: soda-lime
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
 title: Borosilicate Glass Laser Cleaning
 subtitle: Precision laser cleaning notably preserves borosilicate glass's thermal resilience, thus its clarity.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
 description: Laser cleaning parameters for Borosilicate Glass
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Glass
+  href: /materials/glass
+- label: Soda Lime
+  href: /materials/glass/soda-lime
+- label: Borosilicate Glass
+  href: /materials/borosilicate-glass-laser-cleaning
 images:
   hero:
     alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination removal
@@ -59,23 +67,33 @@ images:
   micro:
     alt: Borosilicate Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/borosilicate-glass-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921658Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921664Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Taiwan
-  author_name: Yi-Chun Lin
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  - IEC 60825 - Safety of Laser Products
-  - ANSI Z136.1 - Safe Use of Lasers
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+caption:
+  before: Under the microscope, the borosilicate glass surface displays contamination, particularly from scattered fine dust particles and oily residues due to handling. These form irregular clusters and streaks that adhere firmly, causing minor pitting and reduced transparency. Thus, this degradation impairs optical clarity, though cleaning restores surface integrity.
+  after: Following laser cleaning, the borosilicate glass surface regains its original clarity and smoothness. This process removes contaminants without altering the material's thermal stability or optical properties, thus preserving overall integrity. Notably, the restoration quality remains high, free of micro-cracks or haze, making it ideal for everyday applications like labware and optics. It displays a uniform shine, primed for dependable performance.
+faq:
+- question: How does laser cleaning restore borosilicate glass without causing **thermal damage**?
+  answer: '**Short-pulse ablation avoids cracks**. Laser cleaning employs precise, short-pulse lasers to ablate contaminants from borosilicate glass, particularly leveraging its low thermal expansion to prevent cracks. This non-contact approach thus maintains material integrity, effectively clearing residues in 10-20 seconds per spot.'
+- question: What challenges arise when laser cleaning **borosilicate glass surfaces**?
+  answer: '**Calibrate wavelengths carefully**. Challenges, particularly micro-cracking when laser intensity surpasses the glass''s thermal limits, along with residue re-deposition on porous edges, pose key risks. Thus, operators should precisely calibrate wavelengths (e.g., 1064 nm) to balance cleaning efficiency against the material''s inherent brittleness.'
+- question: Can laser cleaning improve the **optical clarity** of contaminated borosilicate labware?
+  answer: '**Enhances optical clarity**. Yes, this approach notably boosts clarity by vaporizing organic and metallic contaminants without abrasives, thus restoring borosilicate''s inherent transparency. Particularly effective against haze from chemical exposure, it prolongs lab equipment lifespan while curbing environmental harm through dry methods. Suited for precision optics. (47 words)'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -233,78 +251,17 @@ materialProperties:
       min: 0.001
       max: 0.1
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 25
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under the microscope, the borosilicate glass surface displays contamination, particularly from scattered fine dust particles and oily residues due to handling. These form irregular clusters and streaks that adhere firmly, causing minor pitting and reduced transparency. Thus, this degradation impairs optical clarity, though cleaning restores surface integrity.
-  after: Following laser cleaning, the borosilicate glass surface regains its original clarity and smoothness. This process removes contaminants without altering the material's thermal stability or optical properties, thus preserving overall integrity. Notably, the restoration quality remains high, free of micro-cracks or haze, making it ideal for everyday applications like labware and optics. It displays a uniform shine, primed for dependable performance.
-faq:
-- question: How does laser cleaning restore borosilicate glass without causing **thermal damage**?
-  answer: '**Short-pulse ablation avoids cracks**. Laser cleaning employs precise, short-pulse lasers to ablate contaminants from borosilicate glass, particularly leveraging its low thermal expansion to prevent cracks. This non-contact approach thus maintains material integrity, effectively clearing residues in 10-20 seconds per spot.'
-- question: What challenges arise when laser cleaning **borosilicate glass surfaces**?
-  answer: '**Calibrate wavelengths carefully**. Challenges, particularly micro-cracking when laser intensity surpasses the glass''s thermal limits, along with residue re-deposition on porous edges, pose key risks. Thus, operators should precisely calibrate wavelengths (e.g., 1064 nm) to balance cleaning efficiency against the material''s inherent brittleness.'
-- question: Can laser cleaning improve the **optical clarity** of contaminated borosilicate labware?
-  answer: '**Enhances optical clarity**. Yes, this approach notably boosts clarity by vaporizing organic and metallic contaminants without abrasives, thus restoring borosilicate''s inherent transparency. Particularly effective against haze from chemical exposure, it prolongs lab equipment lifespan while curbing environmental harm through dry methods. Suited for precision optics. (47 words)'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - IEC 60825 - Safety of Laser Products
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921658Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921664Z'
+  structure_version: '2.0'

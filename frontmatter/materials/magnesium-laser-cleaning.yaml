@@ -1,21 +1,11 @@
 name: Magnesium
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: Magnesium
-  href: /materials/magnesium-laser-cleaning
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+slug: magnesium
+category: metal
+subcategory: specialty
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -47,11 +37,29 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-category: metal
-subcategory: specialty
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
 title: Magnesium Laser Cleaning
 subtitle: To safely clean reactive magnesium, particularly with precise low-energy laser parameters, thus ensuring minimal risk
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
 description: Laser cleaning parameters for Magnesium
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Specialty
+  href: /materials/metal/specialty
+- label: Magnesium
+  href: /materials/magnesium-laser-cleaning
 images:
   hero:
     alt: Magnesium surface undergoing laser cleaning showing precise contamination removal
@@ -59,23 +67,47 @@ images:
   micro:
     alt: Magnesium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/magnesium-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922179Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922187Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Taiwan
-  author_name: Yi-Chun Lin
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - ANSI Z136.1 - Safe Use of Lasers
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+caption:
+  before: Examination via microscopy reveals scattered dark spots on the contaminated magnesium surface, from oxide particles and dust residues. Particularly, these adhere firmly to the metal, thus promoting localized pitting and uneven textural degradation.
+  after: Following precision laser cleaning, the magnesium surface returns to a pristine, smooth state, particularly with its natural luster fully revived. Contaminants such as oxides and residues are thoroughly eliminated, without any heat damage. This notably highlights superior restoration quality. Thus, material integrity remains preserved, free from pitting or structural changes, ideal for broad metal uses.
+faq:
+- question: What are the specific laser settings and parameters for cleaning **magnesium alloys** without causing damage?
+  answer: '**10ns pulses prevent thermal damage**. For cleaning magnesium alloys, use a 1064 nm wavelength with 10 ns pulses at 1.2 J/cm² fluence. Specifically, keep the repetition rate at 50 kHz and scan speed at 500 mm/s to avoid thermal damage. Thus, these parameters ablate oxides effectively while preserving substrate integrity.'
+- question: How do you safely remove **oxide layers and corrosion** from magnesium surfaces using laser cleaning?
+  answer: '**Argon shielding prevents re-oxidation**. In the removal of magnesium oxide, we utilize 1064 nm wavelength lasers at 1.2 J/cm² fluence. Specifically, this ablates MgO selectively without harming the base metal. Thus, an inert argon gas shield during the 500 mm/s scan prevents immediate re-oxidation, delivering a pristine, corrosion-free surface.'
+- question: What special safety precautions are needed when laser cleaning magnesium due to **fire risk**?
+  answer: '**Requires inert gas shielding**. Mandatory inert gas shielding, particularly at the 1064 nm wavelength, prevents magnesium ignition. Thus, keep fluence below 1.2 J/cm² to avoid excessive heat input. Employ robust fume extraction for highly reactive MgO particles, which pose explosion risks.'
+- question: Can laser cleaning be used to prepare magnesium surfaces for **welding or coating applications**?
+  answer: '**removes oxides without thermal damage**. Using a 1064 nm wavelength at 1.2 J/cm² fluence, laser cleaning effectively prepares magnesium surfaces. Specifically, this approach removes oxides without thermal damage, thus yielding an ideal surface profile for enhanced coating adhesion and robust welds, notably in aerospace and medical fields.'
+- question: What are the challenges with laser cleaning **cast magnesium alloys** versus wrought forms?
+  answer: '**Porosity requires fluence <1.2 J/cm²**. Notably, cast magnesium alloys pose greater challenges from their inherent porosity, which can trap contaminants and thus requires careful fluence control below ~1.2 J/cm² to avoid subsurface damage. Their varied surface texture, particularly compared to wrought forms, demands more precise parameter tuning.'
+- question: How effective is laser cleaning for removing contaminants like **oils and lubricants** from magnesium parts?
+  answer: '**Vaporizes oils without residue**. Laser cleaning, specifically employing a 1064nm wavelength and 1.2 J/cm² fluence, effectively removes organic oils from magnesium surfaces. Notably, this method vaporizes contaminants without chemical residue, thus serving as a superior, eco-friendly alternative to solvent-based approaches for precision parts.'
+- question: Does laser cleaning affect the **fatigue strength** or mechanical properties of magnesium components?
+  answer: '**Preserves fatigue strength integrity**. When laser cleaning is properly configured at 1.2 J/cm² fluence, it particularly preserves magnesium''s structural integrity. Notably, the 10 ns pulse width limits thermal input, thus avoiding micro-cracking and notable shifts in fatigue strength to sustain component longevity.'
+- question: What is the best way to **validate the success** of magnesium laser cleaning?
+  answer: '**Confirm oxide removal integrity**. Validate magnesium laser cleaning through microscopic inspection and surface roughness measurement. Particularly, confirm complete oxide removal while preserving base material integrity, thus ensuring parameters like 1.2 J/cm² fluence avoid inducing thermal damage.'
+- question: Why is magnesium considered more difficult to laser clean than aluminum or steel?
+  answer: Magnesium's low melting point (~650°C) and high reactivity particularly require precise laser parameters. Specifically, we must control fluence around 1.2 J/cm² to remove oxides without melting the substrate—a far narrower window than for steel or aluminum. Thus, meticulous tuning ensures damage-free outcomes.
+- question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
+  answer: For cleaning magnesium surfaces, pulsed fiber lasers at 1064 nm prove particularly optimal. Specifically, employing a fluence of 1.2 J/cm² alongside a 10 ns pulse width minimizes thermal input, thus preventing harm to the delicate substrate. Scanning at 500 mm/s then delivers efficient, uniform oxide layer removal.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -305,92 +337,17 @@ materialProperties:
       value: 36.1
       min: 1.0e-10
       max: 0.001
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Examination via microscopy reveals scattered dark spots on the contaminated magnesium surface, from oxide particles and dust residues. Particularly, these adhere firmly to the metal, thus promoting localized pitting and uneven textural degradation.
-  after: Following precision laser cleaning, the magnesium surface returns to a pristine, smooth state, particularly with its natural luster fully revived. Contaminants such as oxides and residues are thoroughly eliminated, without any heat damage. This notably highlights superior restoration quality. Thus, material integrity remains preserved, free from pitting or structural changes, ideal for broad metal uses.
-faq:
-- question: What are the specific laser settings and parameters for cleaning **magnesium alloys** without causing damage?
-  answer: '**10ns pulses prevent thermal damage**. For cleaning magnesium alloys, use a 1064 nm wavelength with 10 ns pulses at 1.2 J/cm² fluence. Specifically, keep the repetition rate at 50 kHz and scan speed at 500 mm/s to avoid thermal damage. Thus, these parameters ablate oxides effectively while preserving substrate integrity.'
-- question: How do you safely remove **oxide layers and corrosion** from magnesium surfaces using laser cleaning?
-  answer: '**Argon shielding prevents re-oxidation**. In the removal of magnesium oxide, we utilize 1064 nm wavelength lasers at 1.2 J/cm² fluence. Specifically, this ablates MgO selectively without harming the base metal. Thus, an inert argon gas shield during the 500 mm/s scan prevents immediate re-oxidation, delivering a pristine, corrosion-free surface.'
-- question: What special safety precautions are needed when laser cleaning magnesium due to **fire risk**?
-  answer: '**Requires inert gas shielding**. Mandatory inert gas shielding, particularly at the 1064 nm wavelength, prevents magnesium ignition. Thus, keep fluence below 1.2 J/cm² to avoid excessive heat input. Employ robust fume extraction for highly reactive MgO particles, which pose explosion risks.'
-- question: Can laser cleaning be used to prepare magnesium surfaces for **welding or coating applications**?
-  answer: '**removes oxides without thermal damage**. Using a 1064 nm wavelength at 1.2 J/cm² fluence, laser cleaning effectively prepares magnesium surfaces. Specifically, this approach removes oxides without thermal damage, thus yielding an ideal surface profile for enhanced coating adhesion and robust welds, notably in aerospace and medical fields.'
-- question: What are the challenges with laser cleaning **cast magnesium alloys** versus wrought forms?
-  answer: '**Porosity requires fluence <1.2 J/cm²**. Notably, cast magnesium alloys pose greater challenges from their inherent porosity, which can trap contaminants and thus requires careful fluence control below ~1.2 J/cm² to avoid subsurface damage. Their varied surface texture, particularly compared to wrought forms, demands more precise parameter tuning.'
-- question: How effective is laser cleaning for removing contaminants like **oils and lubricants** from magnesium parts?
-  answer: '**Vaporizes oils without residue**. Laser cleaning, specifically employing a 1064nm wavelength and 1.2 J/cm² fluence, effectively removes organic oils from magnesium surfaces. Notably, this method vaporizes contaminants without chemical residue, thus serving as a superior, eco-friendly alternative to solvent-based approaches for precision parts.'
-- question: Does laser cleaning affect the **fatigue strength** or mechanical properties of magnesium components?
-  answer: '**Preserves fatigue strength integrity**. When laser cleaning is properly configured at 1.2 J/cm² fluence, it particularly preserves magnesium''s structural integrity. Notably, the 10 ns pulse width limits thermal input, thus avoiding micro-cracking and notable shifts in fatigue strength to sustain component longevity.'
-- question: What is the best way to **validate the success** of magnesium laser cleaning?
-  answer: '**Confirm oxide removal integrity**. Validate magnesium laser cleaning through microscopic inspection and surface roughness measurement. Particularly, confirm complete oxide removal while preserving base material integrity, thus ensuring parameters like 1.2 J/cm² fluence avoid inducing thermal damage.'
-- question: Why is magnesium considered more difficult to laser clean than aluminum or steel?
-  answer: Magnesium's low melting point (~650°C) and high reactivity particularly require precise laser parameters. Specifically, we must control fluence around 1.2 J/cm² to remove oxides without melting the substrate—a far narrower window than for steel or aluminum. Thus, meticulous tuning ensures damage-free outcomes.
-- question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
-  answer: For cleaning magnesium surfaces, pulsed fiber lasers at 1064 nm prove particularly optimal. Specifically, employing a fluence of 1.2 J/cm² alongside a 10 ns pulse width minimizes thermal input, thus preventing harm to the delicate substrate. Scanning at 500 mm/s then delivers efficient, uniform oxide layer removal.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922179Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922187Z'
+  structure_version: '2.0'

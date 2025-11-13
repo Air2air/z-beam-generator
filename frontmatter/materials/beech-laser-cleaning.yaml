@@ -1,21 +1,11 @@
 name: Beech
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Beech
-  href: /materials/beech-laser-cleaning
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+slug: beech
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 2
   name: Alessandro Moretti
@@ -48,11 +38,29 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-category: wood
-subcategory: hardwood
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
 title: Beech Laser Cleaning
 subtitle: Discover Beech's essential fine grain via distinct laser precision
+subtitle_metadata:
+  author_country: Italy
+  author_name: Alessandro Moretti
 description: Laser cleaning parameters for Beech
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Beech
+  href: /materials/beech-laser-cleaning
 images:
   hero:
     alt: Beech surface undergoing laser cleaning showing precise contamination removal
@@ -60,21 +68,44 @@ images:
   micro:
     alt: Beech microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/beech-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921618Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921624Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Italy
-  author_name: Alessandro Moretti
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+caption:
+  before: 'Examining the Beech wood surface under the microscope uncovers a notable level of contamination, marked by irregular dark particulate deposits—likely organic residues and fine dust—adhering to the porous grain. These uneven contaminants veil the distinct cellular patterns while generating micro-roughness.
+
+
+    Such degradation appears in softened fibers and subtle pitting, where extended exposure has eroded the protective lignin layer, undermining the wood''s structural integrity and visual consistency.'
+  after: Now, the cleaned beech wood surface displays a smooth, pristine state, free of residues and imperfections. This restoration achieves notable quality by safeguarding the material's essential natural integrity and structural strength, suiting it for broad applications.
+faq:
+- question: How does laser cleaning restore **aged beech furniture**?
+  answer: '**Preserves wood grain integrity**. The distinct benefit of laser cleaning comes from its precise pulses, which strip away dirt, varnish, and oxidation from beech while sparing the wood grain. This essential non-abrasive approach uncovers the natural beauty, upholding the wood''s integrity during restoration.'
+- question: What makes **beech wood ideal** for laser cleaning applications?
+  answer: '**Fine grain enables accurate targeting**. Beech wood features a distinct fine grain and even texture, allowing precise laser targeting of surface contaminants. Its density plays an essential role in minimizing heat absorption, thus curbing charring risks during cleaning.'
+- question: Why is laser cleaning better than chemical methods for beech?
+  answer: In contrast to chemicals that penetrate and discolor beech's porous structure, laser cleaning delivers a distinct, contactless, and eco-friendly alternative. It evaporates grime instantly, avoiding residue while ensuring an essential, safe restoration of the wood's original luster without swelling risks.
+- question: Can laser cleaning fix **moisture damage** on beech flooring?
+  answer: '**Addresses surface effects, not warping**. Yes, but laser notably addresses surface effects like mold or moisture stains. It removes contaminants essential to preventing further decay, though underlying warping may require additional structural repairs for full restoration.'
+- question: Is beech susceptible to **laser-induced burning** during cleaning?
+  answer: '**Minimal risk with low-fluence**. With proper settings, risk stays minimal; low-fluence lasers gently ablate just the surface layers of beech, avoiding deep penetration. Experts make it essential to tweak wavelengths for beech''s light hue, yielding clean results.'
+- question: How to prepare **beech items** for effective laser cleaning?
+  answer: '**Calibrate for beech''s hardness**. First off, confirm the surface is dry and clear of loose debris—essential precaution. Trial laser settings on a small patch to adjust for beech''s notable hardness, then advance methodically to prevent uneven results while preserving the wood''s smooth finish.'
+- question: What are the benefits of laser cleaning for **preserving beech's value**?
+  answer: '**Restores grain and enhances durability**. It notably boosts beech''s durability by eliminating pollutants that hasten decay, while restoring its appealing grain and inherent strength. This essential, non-invasive method prolongs the life of prized items like antique furniture, elevating aesthetic and market value without altering the wood''s natural qualities.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -226,89 +257,15 @@ materialProperties:
       min: 100
       max: 5000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: 'Examining the Beech wood surface under the microscope uncovers a notable level of contamination, marked by irregular dark particulate deposits—likely organic residues and fine dust—adhering to the porous grain. These uneven contaminants veil the distinct cellular patterns while generating micro-roughness.
-
-
-    Such degradation appears in softened fibers and subtle pitting, where extended exposure has eroded the protective lignin layer, undermining the wood''s structural integrity and visual consistency.'
-  after: Now, the cleaned beech wood surface displays a smooth, pristine state, free of residues and imperfections. This restoration achieves notable quality by safeguarding the material's essential natural integrity and structural strength, suiting it for broad applications.
-faq:
-- question: How does laser cleaning restore **aged beech furniture**?
-  answer: '**Preserves wood grain integrity**. The distinct benefit of laser cleaning comes from its precise pulses, which strip away dirt, varnish, and oxidation from beech while sparing the wood grain. This essential non-abrasive approach uncovers the natural beauty, upholding the wood''s integrity during restoration.'
-- question: What makes **beech wood ideal** for laser cleaning applications?
-  answer: '**Fine grain enables accurate targeting**. Beech wood features a distinct fine grain and even texture, allowing precise laser targeting of surface contaminants. Its density plays an essential role in minimizing heat absorption, thus curbing charring risks during cleaning.'
-- question: Why is laser cleaning better than chemical methods for beech?
-  answer: In contrast to chemicals that penetrate and discolor beech's porous structure, laser cleaning delivers a distinct, contactless, and eco-friendly alternative. It evaporates grime instantly, avoiding residue while ensuring an essential, safe restoration of the wood's original luster without swelling risks.
-- question: Can laser cleaning fix **moisture damage** on beech flooring?
-  answer: '**Addresses surface effects, not warping**. Yes, but laser notably addresses surface effects like mold or moisture stains. It removes contaminants essential to preventing further decay, though underlying warping may require additional structural repairs for full restoration.'
-- question: Is beech susceptible to **laser-induced burning** during cleaning?
-  answer: '**Minimal risk with low-fluence**. With proper settings, risk stays minimal; low-fluence lasers gently ablate just the surface layers of beech, avoiding deep penetration. Experts make it essential to tweak wavelengths for beech''s light hue, yielding clean results.'
-- question: How to prepare **beech items** for effective laser cleaning?
-  answer: '**Calibrate for beech''s hardness**. First off, confirm the surface is dry and clear of loose debris—essential precaution. Trial laser settings on a small patch to adjust for beech''s notable hardness, then advance methodically to prevent uneven results while preserving the wood''s smooth finish.'
-- question: What are the benefits of laser cleaning for **preserving beech's value**?
-  answer: '**Restores grain and enhances durability**. It notably boosts beech''s durability by eliminating pollutants that hasten decay, while restoring its appealing grain and inherent strength. This essential, non-invasive method prolongs the life of prized items like antique furniture, elevating aesthetic and market value without altering the wood''s natural qualities.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921618Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921624Z'
+  structure_version: '2.0'

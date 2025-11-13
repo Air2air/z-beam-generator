@@ -1,21 +1,11 @@
 name: Hastelloy
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: Hastelloy
-  href: /materials/hastelloy-laser-cleaning
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+slug: hastelloy
+category: metal
+subcategory: specialty
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 4
   name: Todd Dunning
@@ -47,11 +37,29 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-category: metal
-subcategory: specialty
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
 title: Hastelloy Laser Cleaning
 subtitle: Precision Laser Cleaning Typically Preserves Hastelloy's Fairly Robust Corrosion
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
 description: Laser cleaning parameters for Hastelloy
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Specialty
+  href: /materials/metal/specialty
+- label: Hastelloy
+  href: /materials/hastelloy-laser-cleaning
 images:
   hero:
     alt: Hastelloy surface undergoing laser cleaning showing precise contamination removal
@@ -59,23 +67,47 @@ images:
   micro:
     alt: Hastelloy microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/hastelloy-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922033Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922039Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  - IEC 60825 - Safety of Laser Products
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption:
+  before: Under microscopic examination, the Hastelloy surface reveals fairly heavy contamination from clustered particulates—oily residues and metallic debris—measuring 10-100 microns and embedding into the nickel alloy matrix. This buildup typically promotes surface degradation, like localized pitting and micro-cracks, undermining the material's integrity for aerospace laser system housings.
+  after: After cleaning Hastelloy surfaces in laser systems, restoration typically yields a smooth, contaminant-free finish. The surface regains its original luster, free from scratches or discoloration, while basically preserving full material integrity and corrosion resistance. This solid outcome fairly ensures reliable performance in optical housings, as demonstrated in applications at Lawrence Livermore National Laboratory.
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning oxides and contaminants from Hastelloy C-276 without causing micro-cracking or **elemental depletion**?
+  answer: '**5.1 J/cm² prevents depletion**. For Hastelloy C-276, go with a 1064 nm fiber laser using nanosecond pulses to pretty much avoid micro-cracking. Aim for a fluence around 5.1 J/cm², which ablates oxides without stripping the protective Cr and Mo. Basically, that controlled heat input keeps the alloy''s corrosion resistance intact.'
+- question: Can laser cleaning induce sensitization in Hastelloy by precipitating carbides at grain boundaries, and how can this be prevented?
+  answer: Yes, sensitization can pretty much occur if Hastelloy lingers between 550-850°C, leading to harmful chromium carbide precipitation. Our fine-tuned 5.1 J/cm² fluence and 100 µs dwell time fairly guarantee the substrate temperature stays well under that key limit, thus avoiding this kind of microstructural harm in laser ablation of surface contaminants.
+- question: Is laser cleaning effective for removing stubborn heat tint and oxide scale from welded Hastelloy joints without thinning the base metal?
+  answer: Laser cleaning pretty effectively strips away stubborn weld oxides from Hastelloy, all without thinning the base metal. By employing a 1064 nm wavelength and 5.1 J/cm² fluence, the process basically ablates heat tint with precision, while safeguarding the parent material's integrity and thickness.
+- question: What specific safety hazards are posed by the fumes generated during laser cleaning of Hastelloy, particularly concerning **nickel and molybdenum**?
+  answer: '**Requires P100 respirator extraction**. The 5.1 J/cm² fluence basically vaporizes surface contaminants, producing respirable nickel and molybdenum oxide fumes. To meet OSHA PELs for these hazardous metallic particulates, you''ll pretty much need a NIOSH-approved P100 respirator plus high-efficiency fume extraction.'
+- question: How does the **surface roughness (Ra)** of Hastelloy change after laser cleaning, and does it affect performance in high-purity or corrosive service?
+  answer: '**Reduces Ra, enhances corrosion resistance**. A well-tuned 1064nm laser cleaning at ~5 J/cm² typically lowers Hastelloy''s Ra by trimming peaks, yielding a fairly uniform surface. This profile boosts passive oxide layer formation, enhancing corrosion resistance in harsh environments while creating a solid foundation for coatings.'
+- question: After laser cleaning, is passivation of Hastelloy still required to restore the **protective chromium oxide layer**?
+  answer: '**Passivation reforms protective oxide film**. Yes, laser cleaning at 5.1 J/cm² pretty much removes the passive layer, leaving an active surface. Passivation using a nitric acid bath is basically essential to reform the protective chromium oxide film. Typically, verify the restored layer''s integrity via electrochemical testing.'
+- question: What is the risk of **galvanic corrosion** when laser cleaning a Hastelloy component that is assembled with other metals like carbon steel or stainless steel?
+  answer: '**Creates more noble surface**. Laser cleaning at 5.1 J/cm² pretty much creates an extremely passive Hastelloy surface, making it more noble. This can accelerate galvanic corrosion of adjacent carbon steel. Typically, mitigate this by masking joint interfaces or using isolation techniques during the 1064 nm laser process.'
+- question: Why is Hastelloy often considered **more challenging to clean** with lasers compared to standard stainless steels like 304 or 316?
+  answer: '**Tenacious oxides narrow window**. Hastelloy''s high molybdenum and tungsten content basically creates pretty tenacious oxides, demanding precise fluence above 5 J/cm² for effective removal. Plus, its unique thermal properties form a fairly narrow processing window, so parameter control proves far more critical than with typical stainless steels.'
+- question: Can laser cleaning be used to selectively remove a coating or contamination from a Hastelloy part without damaging the underlying substrate?
+  answer: Yes, laser cleaning can pretty selectively remove coatings from Hastelloy. We tune the 1064 nm wavelength and 5.1 J/cm² fluence to basically target the contaminant's absorption, as the substrate's thermal conductivity dissipates energy. Controlling the 10 ns pulse width precisely stays critical to prevent changes in the underlying material's metallurgy.
+- question: What non-destructive testing (NDT) methods are recommended to inspect Hastelloy for **subsurface damage** after an aggressive laser cleaning process?
+  answer: '**Liquid penetrant detects micro-cracks**. For Hastelloy cleaned at 5.1 J/cm², visual inspection is basically insufficient. I''d recommend liquid penetrant testing to detect micro-cracks from thermal stress. When evaluating near-surface property changes, especially from the 100 µs dwell time, eddy current testing provides pretty excellent sensitivity.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -305,95 +337,17 @@ materialProperties:
       value: 1.33e-07
       min: 1.0e-10
       max: 0.001
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
-caption:
-  before: Under microscopic examination, the Hastelloy surface reveals fairly heavy contamination from clustered particulates—oily residues and metallic debris—measuring 10-100 microns and embedding into the nickel alloy matrix. This buildup typically promotes surface degradation, like localized pitting and micro-cracks, undermining the material's integrity for aerospace laser system housings.
-  after: After cleaning Hastelloy surfaces in laser systems, restoration typically yields a smooth, contaminant-free finish. The surface regains its original luster, free from scratches or discoloration, while basically preserving full material integrity and corrosion resistance. This solid outcome fairly ensures reliable performance in optical housings, as demonstrated in applications at Lawrence Livermore National Laboratory.
-faq:
-- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning oxides and contaminants from Hastelloy C-276 without causing micro-cracking or **elemental depletion**?
-  answer: '**5.1 J/cm² prevents depletion**. For Hastelloy C-276, go with a 1064 nm fiber laser using nanosecond pulses to pretty much avoid micro-cracking. Aim for a fluence around 5.1 J/cm², which ablates oxides without stripping the protective Cr and Mo. Basically, that controlled heat input keeps the alloy''s corrosion resistance intact.'
-- question: Can laser cleaning induce sensitization in Hastelloy by precipitating carbides at grain boundaries, and how can this be prevented?
-  answer: Yes, sensitization can pretty much occur if Hastelloy lingers between 550-850°C, leading to harmful chromium carbide precipitation. Our fine-tuned 5.1 J/cm² fluence and 100 µs dwell time fairly guarantee the substrate temperature stays well under that key limit, thus avoiding this kind of microstructural harm in laser ablation of surface contaminants.
-- question: Is laser cleaning effective for removing stubborn heat tint and oxide scale from welded Hastelloy joints without thinning the base metal?
-  answer: Laser cleaning pretty effectively strips away stubborn weld oxides from Hastelloy, all without thinning the base metal. By employing a 1064 nm wavelength and 5.1 J/cm² fluence, the process basically ablates heat tint with precision, while safeguarding the parent material's integrity and thickness.
-- question: What specific safety hazards are posed by the fumes generated during laser cleaning of Hastelloy, particularly concerning **nickel and molybdenum**?
-  answer: '**Requires P100 respirator extraction**. The 5.1 J/cm² fluence basically vaporizes surface contaminants, producing respirable nickel and molybdenum oxide fumes. To meet OSHA PELs for these hazardous metallic particulates, you''ll pretty much need a NIOSH-approved P100 respirator plus high-efficiency fume extraction.'
-- question: How does the **surface roughness (Ra)** of Hastelloy change after laser cleaning, and does it affect performance in high-purity or corrosive service?
-  answer: '**Reduces Ra, enhances corrosion resistance**. A well-tuned 1064nm laser cleaning at ~5 J/cm² typically lowers Hastelloy''s Ra by trimming peaks, yielding a fairly uniform surface. This profile boosts passive oxide layer formation, enhancing corrosion resistance in harsh environments while creating a solid foundation for coatings.'
-- question: After laser cleaning, is passivation of Hastelloy still required to restore the **protective chromium oxide layer**?
-  answer: '**Passivation reforms protective oxide film**. Yes, laser cleaning at 5.1 J/cm² pretty much removes the passive layer, leaving an active surface. Passivation using a nitric acid bath is basically essential to reform the protective chromium oxide film. Typically, verify the restored layer''s integrity via electrochemical testing.'
-- question: What is the risk of **galvanic corrosion** when laser cleaning a Hastelloy component that is assembled with other metals like carbon steel or stainless steel?
-  answer: '**Creates more noble surface**. Laser cleaning at 5.1 J/cm² pretty much creates an extremely passive Hastelloy surface, making it more noble. This can accelerate galvanic corrosion of adjacent carbon steel. Typically, mitigate this by masking joint interfaces or using isolation techniques during the 1064 nm laser process.'
-- question: Why is Hastelloy often considered **more challenging to clean** with lasers compared to standard stainless steels like 304 or 316?
-  answer: '**Tenacious oxides narrow window**. Hastelloy''s high molybdenum and tungsten content basically creates pretty tenacious oxides, demanding precise fluence above 5 J/cm² for effective removal. Plus, its unique thermal properties form a fairly narrow processing window, so parameter control proves far more critical than with typical stainless steels.'
-- question: Can laser cleaning be used to selectively remove a coating or contamination from a Hastelloy part without damaging the underlying substrate?
-  answer: Yes, laser cleaning can pretty selectively remove coatings from Hastelloy. We tune the 1064 nm wavelength and 5.1 J/cm² fluence to basically target the contaminant's absorption, as the substrate's thermal conductivity dissipates energy. Controlling the 10 ns pulse width precisely stays critical to prevent changes in the underlying material's metallurgy.
-- question: What non-destructive testing (NDT) methods are recommended to inspect Hastelloy for **subsurface damage** after an aggressive laser cleaning process?
-  answer: '**Liquid penetrant detects micro-cracks**. For Hastelloy cleaned at 5.1 J/cm², visual inspection is basically insufficient. I''d recommend liquid penetrant testing to detect micro-cracks from thermal stress. When evaluating near-surface property changes, especially from the 100 µs dwell time, eddy current testing provides pretty excellent sensitivity.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922033Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922039Z'
+  structure_version: '2.0'

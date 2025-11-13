@@ -1,0 +1,107 @@
+name: Gallium Arsenide
+slug: gallium-arsenide
+category: semiconductor
+subcategory: elemental
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  - Nonlinear Optics
+  - Laser Ablation Techniques
+  - Material Characterization
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Gallium Arsenide Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration and Troubleshooting for Gallium Arsenide Laser Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing gallium arsenide laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Semiconductor
+  href: /settings/semiconductor
+- label: Elemental
+  href: /settings/semiconductor/elemental
+- label: Gallium Arsenide
+  href: /settings/gallium-arsenide
+images:
+  hero:
+    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
+  micro:
+    alt: Gallium Arsenide microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 8
+    min: 1.0
+    max: 120
+  wavelength:
+    unit: nm
+    value: 532
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 0.8
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    unit: ns
+    value: 15
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90

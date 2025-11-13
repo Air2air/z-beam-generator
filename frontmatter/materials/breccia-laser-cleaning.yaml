@@ -1,21 +1,11 @@
 name: Breccia
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Breccia
-  href: /materials/breccia-laser-cleaning
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+slug: breccia
+category: stone
+subcategory: sedimentary
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-10-22T00:27:17-07:00'
 author:
   id: 3
   name: Ikmanda Roswati
@@ -48,11 +38,27 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-category: stone
-subcategory: sedimentary
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
 title: Breccia Laser Cleaning
 subtitle: Achieve Straightforward Precision Restoration of Breccia Stone Efficiently with Lasers
+subtitle_metadata: {}
 description: Laser cleaning parameters for Breccia
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Breccia
+  href: /materials/breccia-laser-cleaning
 images:
   hero:
     alt: Breccia surface undergoing laser cleaning showing precise contamination removal
@@ -60,21 +66,41 @@ images:
   micro:
     alt: Breccia microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/breccia-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921694Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921700Z'
-  structure_version: '2.0'
-subtitle_metadata: {}
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - ANSI Z136.1 - Safe Use of Lasers
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption:
+  before: Optical microscopy on the untreated Breccia stone surface shows a straightforward buildup of carbonaceous soot, silica particles, and biological crusts, appearing as uneven layers and gaps. This process of degradation features surface pits, micro-cracks, and spotty discoloration, indicating long-term exposure to air pollutants and frictional wear that weakens the mixed clast-matrix framework.
+  after: Post-laser cleaning, scanning electron microscopy reveals the Breccia surface's exceptional restoration through this process, with complete ablation of contaminants and clear exposure of pristine angular clasts in the fine-grained calcareous matrix. Surface topography shows uniform micro-relief, negligible thermal alteration, preserved binder integrity, and enhanced mineral boundary clarity, confirming practical material conservation and structural fidelity without subsurface damage or residue persistence.
+faq:
+- question: How can I safely remove rust stains from Breccia surfaces without harming the **natural patina**?
+  answer: '**Preserves underlying textures and colors**. Use precise laser ablation straightforwardly to selectively vaporize oxidation layers, while preserving the underlying textures and colors. That method, being non-contact, efficiently sidesteps mechanical abrasion and keeps structural integrity intact during this process.'
+- question: What are the best practices for maintaining Breccia in **outdoor architectural features**?
+  answer: '**Mitigate porous moisture absorption**. Keep it straightforward: Schedule regular inspections to monitor moisture in porous areas, applying annual protective sealants to mitigate absorption. Combine that method with gentle dry brushing for surface debris removal.'
+- question: Is laser cleaning effective for Breccia used in **heritage restoration projects**?
+  answer: '**Preserves fragile cementation**. Laser technology provides a straightforward approach to targeting surface contaminants without harming the fragile cementation, unlike abrasive methods that could displace fragments. This process efficiently upholds historical authenticity while boosting visual appeal via uniform cleaning.'
+- question: How does **differential weathering** affect Breccia countertops, and what can be done?
+  answer: '**Smooths clast durability discrepancies**. Differences in clast durability result in uneven erosion, forming rough patches over time. This process involves applying controlled laser treatments that efficiently smooth out discrepancies, fostering uniform resistance to environmental damage while preserving overall strength.'
+- question: Why is Breccia prone to **staining in urban environments**, and how to prevent it?
+  answer: '**Open matrix enables pollutant infiltration**. The open matrix structure permits pollutant entry, resulting in discoloration from acidic contact. A practical approach is applying hydrophobic coatings after installation. This process, paired with periodic laser decontamination, efficiently clears residues while preserving variegated patterns and material durability.'
+- question: What advantages does laser cleaning offer over traditional methods for **Breccia sculptures**?
+  answer: '**Prevents clast loosening**. Unlike chemical solvents that seep into pores and cause etching, or mechanical tools risking clast loosening, laser cleaning offers a straightforward, dry removal of grime. This process preserves textural depth and compressive robustness, making it practical for delicate artistic elements in landscaping.'
+- question: Can Breccia flooring handle **heavy foot traffic**, and how to clean it routinely?
+  answer: '**Supports 200 MPa loads**. Its robust bonding straightforwardly handles loads up to 200 MPa, yet dirt buildup intensifies porosity issues. For practical cleaning, vacuum first, then apply low-power laser passes to efficiently dislodge particles—skip water-based options that invite biological growth.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -226,86 +252,17 @@ materialProperties:
       min: 0.1
       max: 100
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-10-22T00:27:17-07:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 90
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 3.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Optical microscopy on the untreated Breccia stone surface shows a straightforward buildup of carbonaceous soot, silica particles, and biological crusts, appearing as uneven layers and gaps. This process of degradation features surface pits, micro-cracks, and spotty discoloration, indicating long-term exposure to air pollutants and frictional wear that weakens the mixed clast-matrix framework.
-  after: Post-laser cleaning, scanning electron microscopy reveals the Breccia surface's exceptional restoration through this process, with complete ablation of contaminants and clear exposure of pristine angular clasts in the fine-grained calcareous matrix. Surface topography shows uniform micro-relief, negligible thermal alteration, preserved binder integrity, and enhanced mineral boundary clarity, confirming practical material conservation and structural fidelity without subsurface damage or residue persistence.
-faq:
-- question: How can I safely remove rust stains from Breccia surfaces without harming the **natural patina**?
-  answer: '**Preserves underlying textures and colors**. Use precise laser ablation straightforwardly to selectively vaporize oxidation layers, while preserving the underlying textures and colors. That method, being non-contact, efficiently sidesteps mechanical abrasion and keeps structural integrity intact during this process.'
-- question: What are the best practices for maintaining Breccia in **outdoor architectural features**?
-  answer: '**Mitigate porous moisture absorption**. Keep it straightforward: Schedule regular inspections to monitor moisture in porous areas, applying annual protective sealants to mitigate absorption. Combine that method with gentle dry brushing for surface debris removal.'
-- question: Is laser cleaning effective for Breccia used in **heritage restoration projects**?
-  answer: '**Preserves fragile cementation**. Laser technology provides a straightforward approach to targeting surface contaminants without harming the fragile cementation, unlike abrasive methods that could displace fragments. This process efficiently upholds historical authenticity while boosting visual appeal via uniform cleaning.'
-- question: How does **differential weathering** affect Breccia countertops, and what can be done?
-  answer: '**Smooths clast durability discrepancies**. Differences in clast durability result in uneven erosion, forming rough patches over time. This process involves applying controlled laser treatments that efficiently smooth out discrepancies, fostering uniform resistance to environmental damage while preserving overall strength.'
-- question: Why is Breccia prone to **staining in urban environments**, and how to prevent it?
-  answer: '**Open matrix enables pollutant infiltration**. The open matrix structure permits pollutant entry, resulting in discoloration from acidic contact. A practical approach is applying hydrophobic coatings after installation. This process, paired with periodic laser decontamination, efficiently clears residues while preserving variegated patterns and material durability.'
-- question: What advantages does laser cleaning offer over traditional methods for **Breccia sculptures**?
-  answer: '**Prevents clast loosening**. Unlike chemical solvents that seep into pores and cause etching, or mechanical tools risking clast loosening, laser cleaning offers a straightforward, dry removal of grime. This process preserves textural depth and compressive robustness, making it practical for delicate artistic elements in landscaping.'
-- question: Can Breccia flooring handle **heavy foot traffic**, and how to clean it routinely?
-  answer: '**Supports 200 MPa loads**. Its robust bonding straightforwardly handles loads up to 200 MPa, yet dirt buildup intensifies porosity issues. For practical cleaning, vacuum first, then apply low-power laser passes to efficiently dislodge particles—skip water-based options that invite biological growth.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921694Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921700Z'
+  structure_version: '2.0'

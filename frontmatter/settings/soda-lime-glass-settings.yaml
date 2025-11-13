@@ -1,0 +1,76 @@
+name: Soda-Lime Glass
+slug: soda-lime-glass
+category: glass
+subcategory: specialty-glass
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-10-22T00:27:17-07:00'
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  - Semiconductor Laser Etching
+  - Photonics in Manufacturing
+  - Advanced Alloy Fabrication
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+title: Soda-Lime Glass Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration and Troubleshooting for Soda-Lime Glass Laser Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing soda-lime glass laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Glass
+  href: /settings/glass
+- label: Specialty Glass
+  href: /settings/glass/specialty-glass
+- label: Soda-Lime Glass
+  href: /settings/soda-lime-glass
+images:
+  hero:
+    alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/soda-lime-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Soda-Lime Glass microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/soda-lime-glass-laser-cleaning-micro.jpg
+machineSettings:
+  energyDensity:
+    unit: J/cm²
+    value: 5
+    min: 0.1
+    max: 20.0
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90

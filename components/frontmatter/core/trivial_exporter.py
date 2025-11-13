@@ -59,9 +59,14 @@ class TrivialFrontmatterExporter:
     """
     
     def __init__(self):
-        """Initialize with output directory, load metadata from new multi-file architecture."""
-        self.output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "materials"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        """Initialize with output directories for dual-file architecture."""
+        # Output directories for materials and settings pages
+        self.materials_output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "materials"
+        self.settings_output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "settings"
+        
+        self.materials_output_dir.mkdir(parents=True, exist_ok=True)
+        self.settings_output_dir.mkdir(parents=True, exist_ok=True)
+        
         self.logger = logging.getLogger(__name__)
         
         # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml)
@@ -298,14 +303,134 @@ class TrivialFrontmatterExporter:
             normalized = self._normalize_regulatory_standards(regulatory_data)
             frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
         
-        # Write YAML file
+        # Export dual-file structure: materials page and settings page
+        self._export_materials_page(material_name, frontmatter)
+        self._export_settings_page(material_name, frontmatter)
+    
+    def _export_materials_page(self, material_name: str, full_frontmatter: Dict) -> None:
+        """
+        Export materials page frontmatter: /materials/{material}-laser-cleaning.yaml
+        
+        Includes: caption, FAQ, regulatory standards, material properties, images, author
+        """
+        materials_page = {}
+        
+        # Core metadata
+        materials_page['name'] = full_frontmatter.get('name')
+        materials_page['slug'] = material_name.lower().replace(' ', '-')
+        materials_page['category'] = full_frontmatter.get('category')
+        materials_page['subcategory'] = full_frontmatter.get('subcategory')
+        materials_page['content_type'] = 'unified_material'
+        materials_page['schema_version'] = '4.0.0'
+        
+        # Dates
+        materials_page['datePublished'] = full_frontmatter.get('datePublished')
+        materials_page['dateModified'] = full_frontmatter.get('dateModified')
+        
+        # Author and metadata
+        materials_page['author'] = full_frontmatter.get('author')
+        materials_page['_metadata'] = full_frontmatter.get('_metadata')
+        
+        # Page-specific metadata
+        materials_page['title'] = full_frontmatter.get('title')
+        materials_page['subtitle'] = full_frontmatter.get('subtitle')
+        materials_page['subtitle_metadata'] = full_frontmatter.get('subtitle_metadata', {})
+        materials_page['description'] = full_frontmatter.get('description')
+        materials_page['breadcrumb'] = full_frontmatter.get('breadcrumb')
+        
+        # Images
+        materials_page['images'] = full_frontmatter.get('images')
+        
+        # Content (materials page specific)
+        materials_page['caption'] = full_frontmatter.get('caption')
+        materials_page['faq'] = full_frontmatter.get('faq')
+        materials_page['regulatoryStandards'] = full_frontmatter.get('regulatoryStandards')
+        materials_page['materialProperties'] = full_frontmatter.get('materialProperties')
+        materials_page['eeat'] = full_frontmatter.get('eeat')
+        materials_page['material_metadata'] = full_frontmatter.get('material_metadata')
+        
+        # Write materials page YAML
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
-        output_path = self.output_dir / filename
+        output_path = self.materials_output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(materials_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
-        self.logger.info(f"✅ Exported {material_name} → {filename}")
+        self.logger.info(f"✅ Exported materials page: {material_name} → {filename}")
+    
+    def _export_settings_page(self, material_name: str, full_frontmatter: Dict) -> None:
+        """
+        Export settings page frontmatter: /settings/{material}-settings.yaml
+        
+        Includes: machine settings, diagnostics (future), challenges (future)
+        """
+        settings_page = {}
+        
+        # Core metadata
+        settings_page['name'] = full_frontmatter.get('name')
+        settings_page['slug'] = material_name.lower().replace(' ', '-')
+        settings_page['category'] = full_frontmatter.get('category')
+        settings_page['subcategory'] = full_frontmatter.get('subcategory')
+        settings_page['content_type'] = 'unified_settings'
+        settings_page['schema_version'] = '4.0.0'
+        
+        # Dates
+        settings_page['datePublished'] = full_frontmatter.get('datePublished')
+        settings_page['dateModified'] = full_frontmatter.get('dateModified')
+        
+        # Author (settings pages use professional tone, but same author attribution)
+        settings_page['author'] = full_frontmatter.get('author')
+        
+        # Settings page metadata
+        settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
+        settings_page['subtitle'] = f"Advanced Parameter Configuration and Troubleshooting for {full_frontmatter.get('name')} Laser Cleaning Systems"
+        settings_page['description'] = f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations."
+        
+        # Settings-specific breadcrumb
+        category = full_frontmatter.get('category', '')
+        subcategory = full_frontmatter.get('subcategory', '')
+        breadcrumb = [
+            {'label': 'Home', 'href': '/'},
+            {'label': 'Settings', 'href': '/settings'}
+        ]
+        
+        if category:
+            breadcrumb.append({
+                'label': category.replace('_', ' ').title(),
+                'href': f'/settings/{category}'
+            })
+        
+        if subcategory:
+            breadcrumb.append({
+                'label': subcategory.replace('_', ' ').replace('-', ' ').title(),
+                'href': f'/settings/{category}/{subcategory}'
+            })
+        
+        breadcrumb.append({
+            'label': full_frontmatter.get('name'),
+            'href': f'/settings/{settings_page["slug"]}'
+        })
+        
+        settings_page['breadcrumb'] = breadcrumb
+        
+        # Images (shared between pages)
+        settings_page['images'] = full_frontmatter.get('images')
+        
+        # Content (settings page specific)
+        settings_page['machineSettings'] = full_frontmatter.get('machineSettings')
+        
+        # Future: diagnostics and challenges will be added here
+        # settings_page['diagnostics'] = full_frontmatter.get('diagnostics')
+        # settings_page['challenges'] = full_frontmatter.get('challenges')
+        
+        # Write settings page YAML
+        filename = f"{material_name.lower().replace(' ', '-')}-settings.yaml"
+        output_path = self.settings_output_dir / filename
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            yaml.dump(settings_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+        
+        self.logger.info(f"✅ Exported settings page: {material_name} → {filename}")
     
     def _get_category_ranges(self, category: str) -> Dict[str, Any]:
         """Get category-wide ranges from MaterialProperties.yaml."""

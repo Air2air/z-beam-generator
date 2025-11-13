@@ -1,21 +1,11 @@
 name: Birch
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Birch
-  href: /materials/birch-laser-cleaning
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+slug: birch
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 4
   name: Todd Dunning
@@ -47,11 +37,29 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-category: wood
-subcategory: hardwood
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
 title: Birch Laser Cleaning
 subtitle: Pretty gentle laser cleaning typically unveils Birch's fine light grain without charring risks.
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
 description: Laser cleaning parameters for Birch
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Birch
+  href: /materials/birch-laser-cleaning
 images:
   hero:
     alt: Birch surface undergoing laser cleaning showing precise contamination removal
@@ -59,19 +67,35 @@ images:
   micro:
     alt: Birch microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/birch-laser-cleaning-micro.jpg
-material_metadata:
-  regulatoryStandards:
-  - EPA Clean Air Act Compliance
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - EPA Clean Air Act Compliance
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+caption:
+  before: When examined under a microscope, the birch wood surface reveals pretty severe contamination from clustered dust particles and oily residues that seep into the porous grain. These contaminants, with their jagged edges and sub-micron scale, basically speed up degradation via micro-pitting and fiber erosion, roughening the formerly smooth finish. Such a degraded condition complicates routine cleaning in laser optics production, where clean surfaces ensure precise beam control.
+  after: After restoration, the birch wood surface appears pretty smooth and residue-free, showcasing its natural grain. The work delivers excellent quality, preserving full material integrity without fiber damage or discoloration. This technique basically enables precise prep for laser optics in California photonics labs.
+faq:
+- question: How can laser cleaning restore birch wood surfaces without **damaging the grain**?
+  answer: '**Uses non-abrasive pulses**. Laser cleaning basically employs precise, non-abrasive pulses to strip dirt, old finishes, or contaminants from birch, while preserving its fine grain and natural color. This technique pretty much skips mechanical abrasion, delivering fairly minimal structural impact for a clean, restored finish.'
+- question: What are the **challenges of cleaning birch** with traditional methods, and why choose laser instead?
+  answer: '**Laser avoids damage, residues**. Birch wood is pretty sensitive to moisture and abrasion, so traditional methods like sanding or chemicals typically risk warping or discoloring it. Laser cleaning addresses this effectively by precisely vaporizing surface grime, avoiding any heat damage or residues. This preserves the wood''s natural grain, lightweight structure, and aesthetic appeal during delicate restorations. Best of all, it''s fairly eco-friendly, minimizing chemical use and waste overall.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: EPA
+  description: EPA Clean Air Act Compliance
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -223,80 +247,13 @@ materialProperties:
       min: 100
       max: 1000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 4.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: When examined under a microscope, the birch wood surface reveals pretty severe contamination from clustered dust particles and oily residues that seep into the porous grain. These contaminants, with their jagged edges and sub-micron scale, basically speed up degradation via micro-pitting and fiber erosion, roughening the formerly smooth finish. Such a degraded condition complicates routine cleaning in laser optics production, where clean surfaces ensure precise beam control.
-  after: After restoration, the birch wood surface appears pretty smooth and residue-free, showcasing its natural grain. The work delivers excellent quality, preserving full material integrity without fiber damage or discoloration. This technique basically enables precise prep for laser optics in California photonics labs.
-faq:
-- question: How can laser cleaning restore birch wood surfaces without **damaging the grain**?
-  answer: '**Uses non-abrasive pulses**. Laser cleaning basically employs precise, non-abrasive pulses to strip dirt, old finishes, or contaminants from birch, while preserving its fine grain and natural color. This technique pretty much skips mechanical abrasion, delivering fairly minimal structural impact for a clean, restored finish.'
-- question: What are the **challenges of cleaning birch** with traditional methods, and why choose laser instead?
-  answer: '**Laser avoids damage, residues**. Birch wood is pretty sensitive to moisture and abrasion, so traditional methods like sanding or chemicals typically risk warping or discoloring it. Laser cleaning addresses this effectively by precisely vaporizing surface grime, avoiding any heat damage or residues. This preserves the wood''s natural grain, lightweight structure, and aesthetic appeal during delicate restorations. Best of all, it''s fairly eco-friendly, minimizing chemical use and waste overall.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-  url: https://www.epa.gov/clean-air-act-overview
-  image: /images/logo/logo-org-epa.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - EPA Clean Air Act Compliance
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance

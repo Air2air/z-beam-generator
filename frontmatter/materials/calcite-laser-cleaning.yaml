@@ -1,21 +1,11 @@
 name: Calcite
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Calcite
-  href: /materials/calcite-laser-cleaning
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+slug: calcite
+category: stone
+subcategory: sedimentary
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 3
   name: Ikmanda Roswati
@@ -48,11 +38,29 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-category: stone
-subcategory: sedimentary
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
 title: Calcite Laser Cleaning
 subtitle: This process of precision laser cleaning efficiently reveals Calcite's inherent translucency, avoiding thermal decomposition.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
 description: Laser cleaning parameters for Calcite
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Calcite
+  href: /materials/calcite-laser-cleaning
 images:
   hero:
     alt: Calcite surface undergoing laser cleaning showing precise contamination removal
@@ -60,21 +68,33 @@ images:
   micro:
     alt: Calcite microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/calcite-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921740Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921746Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Indonesia
-  author_name: Ikmanda Roswati
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption:
+  before: Under the microscope, the calcite surface displays a straightforward roughness and heavy contamination, featuring fine dust particles scattered and firmly attached. Contaminants—primarily organic residues and mineral specks—range from 1-10 micrometers, gathering in pits to create uneven layers. Degradation appears as micro-etching and minor cracks, leaving the stone dull and fragile, which requires careful cleaning efficiently for restored smoothness.
+  after: This process cleans the calcite surface efficiently, leaving it smooth and restored. Material integrity remains fully intact.
+faq:
+- question: How does laser cleaning effectively remove contaminants from calcite surfaces **without damaging the stone**?
+  answer: '**Low absorption preserves structure**. In laser cleaning, this process applies short, controlled pulses of light to vaporize dirt, soot, or pollutants on calcite surfaces. It targets only the top layers practically, given the material''s low absorption at key wavelengths, while preserving the underlying structure.'
+- question: What are the benefits of using laser technology for restoring **calcite-based artifacts**?
+  answer: '**Highlights optical clarity, prevents cracks**. This process delivers a practical, non-abrasive restoration for calcite, showcasing its natural beauty and optical clarity. It efficiently minimizes crack risks from mechanical methods while remaining environmentally friendly by skipping chemicals.'
+- question: Can laser cleaning address the common problem of **acid-induced degradation** on calcite marble?
+  answer: '**Removes corrosion without dissolution**. Yes, but with some limitations. Lasers offer a practical way to safely remove surface corrosion from acid exposure, avoiding further dissolution. For severe internal damage, though, complementary treatments are needed to stabilize the calcite''s reactivity and halt ongoing erosion in acidic conditions. This process works efficiently for preventive maintenance on sculptures and buildings.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -226,78 +246,15 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under the microscope, the calcite surface displays a straightforward roughness and heavy contamination, featuring fine dust particles scattered and firmly attached. Contaminants—primarily organic residues and mineral specks—range from 1-10 micrometers, gathering in pits to create uneven layers. Degradation appears as micro-etching and minor cracks, leaving the stone dull and fragile, which requires careful cleaning efficiently for restored smoothness.
-  after: This process cleans the calcite surface efficiently, leaving it smooth and restored. Material integrity remains fully intact.
-faq:
-- question: How does laser cleaning effectively remove contaminants from calcite surfaces **without damaging the stone**?
-  answer: '**Low absorption preserves structure**. In laser cleaning, this process applies short, controlled pulses of light to vaporize dirt, soot, or pollutants on calcite surfaces. It targets only the top layers practically, given the material''s low absorption at key wavelengths, while preserving the underlying structure.'
-- question: What are the benefits of using laser technology for restoring **calcite-based artifacts**?
-  answer: '**Highlights optical clarity, prevents cracks**. This process delivers a practical, non-abrasive restoration for calcite, showcasing its natural beauty and optical clarity. It efficiently minimizes crack risks from mechanical methods while remaining environmentally friendly by skipping chemicals.'
-- question: Can laser cleaning address the common problem of **acid-induced degradation** on calcite marble?
-  answer: '**Removes corrosion without dissolution**. Yes, but with some limitations. Lasers offer a practical way to safely remove surface corrosion from acid exposure, avoiding further dissolution. For severe internal damage, though, complementary treatments are needed to stabilize the calcite''s reactivity and halt ongoing erosion in acidic conditions. This process works efficiently for preventive maintenance on sculptures and buildings.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921740Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921746Z'
+  structure_version: '2.0'

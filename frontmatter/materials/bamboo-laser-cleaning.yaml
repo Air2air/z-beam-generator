@@ -1,21 +1,11 @@
 name: Bamboo
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/wood
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Bamboo
-  href: /materials/bamboo-laser-cleaning
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+slug: bamboo
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 1
   name: Yi-Chun Lin
@@ -47,11 +37,27 @@ author:
   - https://www.researchgate.net/profile/Yi-Chun-Lin-2
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
-category: wood
-subcategory: hardwood
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
 title: Bamboo Laser Cleaning
 subtitle: Specifically Tailored Laser Parameters Optimize Bamboo Cleaning, Thus Preserving Fiber Integrity
+subtitle_metadata: {}
 description: Laser cleaning parameters for Bamboo
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Bamboo
+  href: /materials/bamboo-laser-cleaning
 images:
   hero:
     alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
@@ -59,19 +65,45 @@ images:
   micro:
     alt: Bamboo microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/bamboo-laser-cleaning-micro.jpg
-material_metadata:
-  regulatoryStandards:
-  - EPA Clean Air Act Compliance
-  - FSC Sustainable Forestry Standards
-subtitle_metadata: {}
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - ANSI Z136.1 - Safe Use of Lasers
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+caption:
+  before: The scanning electron microscopy image reveals a contaminated bamboo surface before laser cleaning, featuring notably dense buildup of fine particulate dust and organic residues on the lignocellulosic fibers. Degradation appears particularly in surface discoloration, micro-fissures, and localized pitting from extended environmental exposure, thus undermining structural integrity.
+  after: The scanning electron microscopy image depicts the bamboo surface following laser cleaning, particularly highlighting superior restoration via complete removal of particulate and organic contaminants. This process uncovers pristine lignocellulosic fiber morphology alongside uniform natural coloration. Notably, the treated surface shows minimal thermal ablation, intact vascular bundle structure, and improved smoothness free of microcracks, thus ensuring effective cleaning that preserves the material's mechanical integrity and enduring durability.
+faq:
+- question: How does laser cleaning **restore aged bamboo surfaces** effectively?
+  answer: '**Removes contaminants without damage**. Laser cleaning employs precise pulsed lasers, particularly effective at removing dirt, mold, and oxidation from bamboo. Notably, this process avoids damage to underlying fibers, thus preserving natural texture and strength in mere minutes.'
+- question: What makes bamboo ideal for **laser restoration** in furniture?
+  answer: '**Use non-ablative settings**. Notably, bamboo''s cellulose-rich structure responds effectively to non-ablative laser treatments, enabling safe stain and varnish removal while accentuating its natural grain. Thus, this chemical-free technique extends furniture lifespan in an eco-friendly way.'
+- question: Why choose laser cleaning over traditional methods for **bamboo textiles**?
+  answer: '**Preserves breathability and qualities**. Unlike abrasive sanding or chemicals that weaken fibers, laser cleaning specifically targets contaminants on bamboo fabrics, thus preserving breathability and antibacterial qualities. Notably, it''s dry, fast, and prevents shrinkage.'
+- question: Can laser cleaning address bamboo's **pest damage issues**?
+  answer: '**Vaporizes residues without degradation**. Yes, lasers particularly vaporize insect residues and larvae from bamboo structures without spreading heat, thus sanitizing effectively while preventing fiber degradation typical of chemical treatments. This quickly restores structural integrity.'
+- question: Is laser cleaning safe for restoring bamboo in **humid environments**?
+  answer: '**Safe, eliminates mold residue-free**. Yes, this approach particularly eradicates mold and moisture-related discoloration in bamboo, avoiding any added water or residues that might intensify humidity challenges. Notably, it bolsters inherent resistance for extended durability in humid conditions, while minimizing ecological effects and producing no toxic residues.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: EPA
+  description: EPA Clean Air Act Compliance
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png
+- name: FSC
+  description: FSC Sustainable Forestry Standards
+  url: https://fsc.org/en/forest-management-certification
+  image: /images/logo/logo-org-fsc.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -223,90 +255,15 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: The scanning electron microscopy image reveals a contaminated bamboo surface before laser cleaning, featuring notably dense buildup of fine particulate dust and organic residues on the lignocellulosic fibers. Degradation appears particularly in surface discoloration, micro-fissures, and localized pitting from extended environmental exposure, thus undermining structural integrity.
-  after: The scanning electron microscopy image depicts the bamboo surface following laser cleaning, particularly highlighting superior restoration via complete removal of particulate and organic contaminants. This process uncovers pristine lignocellulosic fiber morphology alongside uniform natural coloration. Notably, the treated surface shows minimal thermal ablation, intact vascular bundle structure, and improved smoothness free of microcracks, thus ensuring effective cleaning that preserves the material's mechanical integrity and enduring durability.
-faq:
-- question: How does laser cleaning **restore aged bamboo surfaces** effectively?
-  answer: '**Removes contaminants without damage**. Laser cleaning employs precise pulsed lasers, particularly effective at removing dirt, mold, and oxidation from bamboo. Notably, this process avoids damage to underlying fibers, thus preserving natural texture and strength in mere minutes.'
-- question: What makes bamboo ideal for **laser restoration** in furniture?
-  answer: '**Use non-ablative settings**. Notably, bamboo''s cellulose-rich structure responds effectively to non-ablative laser treatments, enabling safe stain and varnish removal while accentuating its natural grain. Thus, this chemical-free technique extends furniture lifespan in an eco-friendly way.'
-- question: Why choose laser cleaning over traditional methods for **bamboo textiles**?
-  answer: '**Preserves breathability and qualities**. Unlike abrasive sanding or chemicals that weaken fibers, laser cleaning specifically targets contaminants on bamboo fabrics, thus preserving breathability and antibacterial qualities. Notably, it''s dry, fast, and prevents shrinkage.'
-- question: Can laser cleaning address bamboo's **pest damage issues**?
-  answer: '**Vaporizes residues without degradation**. Yes, lasers particularly vaporize insect residues and larvae from bamboo structures without spreading heat, thus sanitizing effectively while preventing fiber degradation typical of chemical treatments. This quickly restores structural integrity.'
-- question: Is laser cleaning safe for restoring bamboo in **humid environments**?
-  answer: '**Safe, eliminates mold residue-free**. Yes, this approach particularly eradicates mold and moisture-related discoloration in bamboo, avoiding any added water or residues that might intensify humidity challenges. Notably, it bolsters inherent resistance for extended durability in humid conditions, while minimizing ecological effects and producing no toxic residues.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-  url: https://www.epa.gov/clean-air-act-overview
-  image: /images/logo/logo-org-epa.png
-- name: FSC
-  description: FSC Sustainable Forestry Standards
-  url: https://fsc.org/en/forest-management-certification
-  image: /images/logo/logo-org-fsc.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - FSC Sustainable Forestry Standards

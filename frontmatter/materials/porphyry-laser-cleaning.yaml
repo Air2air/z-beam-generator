@@ -1,21 +1,11 @@
 name: Porphyry
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Porphyry
-  href: /materials/porphyry-laser-cleaning
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+slug: porphyry
+category: stone
+subcategory: sedimentary
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 3
   name: Ikmanda Roswati
@@ -48,11 +38,29 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-category: stone
-subcategory: sedimentary
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
 title: Porphyry Laser Cleaning
 subtitle: Revive Porphyry's crystalline texture efficiently with practical laser care.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
 description: Laser cleaning parameters for Porphyry
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Porphyry
+  href: /materials/porphyry-laser-cleaning
 images:
   hero:
     alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
@@ -60,23 +68,47 @@ images:
   micro:
     alt: Porphyry microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/porphyry-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922486Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922492Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Indonesia
-  author_name: Ikmanda Roswati
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  - IEC 60825 - Safety of Laser Products
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+caption:
+  before: When examined under microscopy, the contaminated porphyry surface looks extremely rough and degraded. In this process, fine dust particles and organic residues adhere tightly, causing pitting and fading the natural shine.
+  after: After cleaning, the porphyry surface looks very smooth and clean. Restoration quality stays high, preserving material integrity fully. This process removes stains efficiently while restoring the original texture undamaged.
+faq:
+- question: What are the best laser settings (wavelength, power, pulse duration) for cleaning biological growth like lichen and moss from Porphyry without damaging the **crystalline matrix**?
+  answer: '**Avoids thermal shock to feldspar**. As a laser cleaning specialist from Indonesia, I recommend using a 1064 nm Nd:YAG laser wavelength for gentle ablation of lichen and moss on Porphyry. Set power to 20-50 W with 10-20 ns pulse duration to remove biological growth without harming the crystalline matrix—precise control is key in our tropical heritage sites.'
+- question: Can laser cleaning effectively remove black gypsum crusts from Porphyry surfaces, and what are the risks of leaving behind **altered mineral phases**?
+  answer: '**Risks anhydrite formation**. Laser cleaning effectively removes black gypsum crusts from Porphyry at 12.7 J/cm² through this process, but risks forming altered mineral phases like anhydrite. That method with the 1064 nm wavelength minimizes sub-surface damage to phenocrysts. Verify complete removal using Raman spectroscopy to detect residual sulfates without surface etching.'
+- question: How does the **variable composition and porosity** of Porphyry affect the consistency of laser cleaning results across a single slab or facade?
+  answer: '**Demands power and scan adjustments**. Porphyry''s variable crystal distribution and porous groundmass lead to inconsistent absorption of our 12.7 J/cm² fluence. Practically, this process requires constant power and scan speed adjustments to avoid uneven cleaning, since denser areas resist ablation while pores may overheat.'
+- question: Is there a risk of thermal cracking or micro-fracturing in Porphyry's large feldspar phenocrysts during laser cleaning, especially with high-power or continuous-wave lasers?
+  answer: The risk of thermal cracking stands out significantly, stemming from mismatched expansion coefficients between feldspar phenocrysts and groundmass. Practically speaking, apply nanosecond pulses at 12.7 J/cm² to contain thermal stress and avoid micro-fractures in the crystalline structure. That method guarantees efficient, controlled contaminant ablation.
+- question: What is the recommended method for post-laser cleaning residue removal from the rough, often pitted, surface of Porphyry?
+  answer: For Porphyry's pitted surface, a practical recommendation is to pair low-pressure water rinsing with soft nylon brushing after laser ablation at 12.7 J/cm². That method efficiently clears trapped particles from vesicles, sidestepping the micro-fracture risks that air abrasion often brings.
+- question: For historical Porphyry monuments, does laser cleaning cause any irreversible color changes, particularly to the characteristic **purplish-red hues**?
+  answer: '**Preserves purplish-red hematite pigments**. At 12.7 J/cm² fluence, ns-pulsed 1064 nm lasers efficiently remove contaminants from Porphyry without damaging its purplish-red hematite pigments. That method''s mineral-specific interaction at this wavelength preserves the stone''s chromatic integrity, as shown in European monument conservation projects.'
+- question: How do we validate the success of a laser cleaning process on Porphyry? What non-destructive testing (NDT) methods are most effective?
+  answer: To validate laser cleaning success on porphyry, assess surface cleanliness and substrate integrity through visual inspection and colorimetry for residue removal. Effective NDT methods include Raman spectroscopy for molecular analysis and portable XRF for elemental composition, ensuring no damage—key in our Indonesian heritage preservation projects.
+- question: Why might laser cleaning be preferred over chemical or abrasive methods for **sensitive Porphyry restoration**?
+  answer: '**Preserves delicate arrises patina**. Laser cleaning offers a practical way to preserve Porphyry''s delicate arrises and patina, unlike abrasive methods. This process applies precise parameters, such as a 12.7 J/cm² fluence threshold, to selectively remove contaminants without chemical runoff or substrate damage, safeguarding the stone''s integrity.'
+- question: What are the specific safety considerations (e.g., fume extraction, PPE) when laser cleaning Porphyry, given its potential metal oxide content?
+  answer: Porphyry's metal oxide content demands HEPA filtration to manage hazardous aerosols like crystalline silica. Operating at 100 W and 1064 nm wavelength requires efficient fume extraction. For safety, operators should use P3-rated respiratory protection against fine particulates from this process.
+- question: Can laser cleaning be used to prepare a Porphyry surface for subsequent treatments like **consolidation or protective coatings**?
+  answer: '**Creates micro-rough surface adhesion**. Laser cleaning at 12.7 J/cm² efficiently prepares Porphyry by stripping away contaminants, resulting in a micro-rough, chemically clean surface that improves coating adhesion. Yet, we need careful parameter control to avoid surface glazing, which could hinder permeability for later consolidation. This process works well with the 1064 nm wavelength, matching the stone''s mineralogy.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -228,92 +260,17 @@ materialProperties:
       min: 0.001
       max: 1.0
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 12.7
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: When examined under microscopy, the contaminated porphyry surface looks extremely rough and degraded. In this process, fine dust particles and organic residues adhere tightly, causing pitting and fading the natural shine.
-  after: After cleaning, the porphyry surface looks very smooth and clean. Restoration quality stays high, preserving material integrity fully. This process removes stains efficiently while restoring the original texture undamaged.
-faq:
-- question: What are the best laser settings (wavelength, power, pulse duration) for cleaning biological growth like lichen and moss from Porphyry without damaging the **crystalline matrix**?
-  answer: '**Avoids thermal shock to feldspar**. As a laser cleaning specialist from Indonesia, I recommend using a 1064 nm Nd:YAG laser wavelength for gentle ablation of lichen and moss on Porphyry. Set power to 20-50 W with 10-20 ns pulse duration to remove biological growth without harming the crystalline matrix—precise control is key in our tropical heritage sites.'
-- question: Can laser cleaning effectively remove black gypsum crusts from Porphyry surfaces, and what are the risks of leaving behind **altered mineral phases**?
-  answer: '**Risks anhydrite formation**. Laser cleaning effectively removes black gypsum crusts from Porphyry at 12.7 J/cm² through this process, but risks forming altered mineral phases like anhydrite. That method with the 1064 nm wavelength minimizes sub-surface damage to phenocrysts. Verify complete removal using Raman spectroscopy to detect residual sulfates without surface etching.'
-- question: How does the **variable composition and porosity** of Porphyry affect the consistency of laser cleaning results across a single slab or facade?
-  answer: '**Demands power and scan adjustments**. Porphyry''s variable crystal distribution and porous groundmass lead to inconsistent absorption of our 12.7 J/cm² fluence. Practically, this process requires constant power and scan speed adjustments to avoid uneven cleaning, since denser areas resist ablation while pores may overheat.'
-- question: Is there a risk of thermal cracking or micro-fracturing in Porphyry's large feldspar phenocrysts during laser cleaning, especially with high-power or continuous-wave lasers?
-  answer: The risk of thermal cracking stands out significantly, stemming from mismatched expansion coefficients between feldspar phenocrysts and groundmass. Practically speaking, apply nanosecond pulses at 12.7 J/cm² to contain thermal stress and avoid micro-fractures in the crystalline structure. That method guarantees efficient, controlled contaminant ablation.
-- question: What is the recommended method for post-laser cleaning residue removal from the rough, often pitted, surface of Porphyry?
-  answer: For Porphyry's pitted surface, a practical recommendation is to pair low-pressure water rinsing with soft nylon brushing after laser ablation at 12.7 J/cm². That method efficiently clears trapped particles from vesicles, sidestepping the micro-fracture risks that air abrasion often brings.
-- question: For historical Porphyry monuments, does laser cleaning cause any irreversible color changes, particularly to the characteristic **purplish-red hues**?
-  answer: '**Preserves purplish-red hematite pigments**. At 12.7 J/cm² fluence, ns-pulsed 1064 nm lasers efficiently remove contaminants from Porphyry without damaging its purplish-red hematite pigments. That method''s mineral-specific interaction at this wavelength preserves the stone''s chromatic integrity, as shown in European monument conservation projects.'
-- question: How do we validate the success of a laser cleaning process on Porphyry? What non-destructive testing (NDT) methods are most effective?
-  answer: To validate laser cleaning success on porphyry, assess surface cleanliness and substrate integrity through visual inspection and colorimetry for residue removal. Effective NDT methods include Raman spectroscopy for molecular analysis and portable XRF for elemental composition, ensuring no damage—key in our Indonesian heritage preservation projects.
-- question: Why might laser cleaning be preferred over chemical or abrasive methods for **sensitive Porphyry restoration**?
-  answer: '**Preserves delicate arrises patina**. Laser cleaning offers a practical way to preserve Porphyry''s delicate arrises and patina, unlike abrasive methods. This process applies precise parameters, such as a 12.7 J/cm² fluence threshold, to selectively remove contaminants without chemical runoff or substrate damage, safeguarding the stone''s integrity.'
-- question: What are the specific safety considerations (e.g., fume extraction, PPE) when laser cleaning Porphyry, given its potential metal oxide content?
-  answer: Porphyry's metal oxide content demands HEPA filtration to manage hazardous aerosols like crystalline silica. Operating at 100 W and 1064 nm wavelength requires efficient fume extraction. For safety, operators should use P3-rated respiratory protection against fine particulates from this process.
-- question: Can laser cleaning be used to prepare a Porphyry surface for subsequent treatments like **consolidation or protective coatings**?
-  answer: '**Creates micro-rough surface adhesion**. Laser cleaning at 12.7 J/cm² efficiently prepares Porphyry by stripping away contaminants, resulting in a micro-rough, chemically clean surface that improves coating adhesion. Yet, we need careful parameter control to avoid surface glazing, which could hinder permeability for later consolidation. This process works well with the 1064 nm wavelength, matching the stone''s mineralogy.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922486Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922492Z'
+  structure_version: '2.0'

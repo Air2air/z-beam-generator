@@ -1,21 +1,11 @@
 name: Alabaster
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stone
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Alabaster
-  href: /materials/alabaster-laser-cleaning
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+slug: alabaster
+category: stone
+subcategory: sedimentary
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-10-22T00:27:17-07:00'
 author:
   id: 2
   name: Alessandro Moretti
@@ -48,11 +38,27 @@ author:
   - https://linkedin.com/in/alessandro-moretti-engineer
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
-category: stone
-subcategory: sedimentary
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
 title: Alabaster Laser Cleaning
 subtitle: Precise Laser Cleaning Distinctly Preserves Alabaster's Delicate Texture, Essential for Prolong
+subtitle_metadata: {}
 description: Laser cleaning parameters for Alabaster
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Alabaster
+  href: /materials/alabaster-laser-cleaning
 images:
   hero:
     alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
@@ -60,20 +66,39 @@ images:
   micro:
     alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/alabaster-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921556Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921587Z'
-  structure_version: '2.0'
-subtitle_metadata: {}
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
+caption:
+  before: Under microscopic examination before laser cleaning, the alabaster surface exhibits a dense layer of fine carbonaceous soot and siliceous particulates, essential to provoking severe degradation via irregular pitting, microcracks, and localized delamination. These embedded impurities distinctly foster profound discoloration and erosion in the gypsum matrix, thus eroding structural integrity at grain interfaces with precise impact.
+  after: Microscopic examination of the alabaster surface post-laser cleaning unveils a notable high-fidelity restoration, featuring smooth, contaminant-free topography that safeguards gypsum crystallite morphology with negligible thermal effects. This material exhibits enhanced clarity, uniform reflectance, and distinct microstructural integrity, affirming effective conservation without subsurface damage through precise intervention.
+faq:
+- question: How does laser cleaning **safely remove dirt** from alabaster sculptures?
+  answer: '**Precise non-contact ablation**. Laser cleaning employs precise, non-contact ablation to vaporize surface contaminants, safeguarding the essential soft alabaster substrate from damage while preserving its delicate texture and notable translucency in just a few sessions.'
+- question: What makes alabaster **ideal for restoration** using laser technology?
+  answer: '**Softness and low conductivity**. Alabaster''s essential softness, paired with its low thermal conductivity, proves notable for laser use, which delicately clears grime while dodging the fracture hazards of mechanical techniques.'
+- question: Why is alabaster **prone to staining** and how can laser cleaning help?
+  answer: '**Removes stains without chemicals**. Due to its porous structure, alabaster readily absorbs oils and pollutants, resulting in notable discoloration. Laser cleaning, an essential method, precisely targets and removes these stains at the molecular level, without chemicals that could heighten porosity.'
+- question: Can laser cleaning **restore the translucency** of aged alabaster?
+  answer: '**Revives natural translucency**. Indeed, laser cleaning precisely eliminates surface buildup and oxidation layers, thereby restoring alabaster''s essential light-diffusing qualities. This distinct method boosts its visual charm without modifying the material''s core makeup.'
+- question: Is laser cleaning suitable for **fragile alabaster artifacts**?
+  answer: '**Non-abrasive prevents chipping**. Absolutely; its non-abrasive quality is essential for preventing chipping or further fragility issues, which are notable in traditional cleaning, rendering it ideal for museum-grade restorations of delicate pieces.'
+- question: How to **prevent water damage** in alabaster after laser cleaning?
+  answer: '**Apply breathable sealant**. After cleaning, it''s essential to apply a breathable sealant for protection against moisture uptake, given alabaster''s notable vulnerability to dissolution; routine laser maintenance can tackle any subsequent soiling before deep penetration.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -225,84 +250,16 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-10-22T00:27:17-07:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under microscopic examination before laser cleaning, the alabaster surface exhibits a dense layer of fine carbonaceous soot and siliceous particulates, essential to provoking severe degradation via irregular pitting, microcracks, and localized delamination. These embedded impurities distinctly foster profound discoloration and erosion in the gypsum matrix, thus eroding structural integrity at grain interfaces with precise impact.
-  after: Microscopic examination of the alabaster surface post-laser cleaning unveils a notable high-fidelity restoration, featuring smooth, contaminant-free topography that safeguards gypsum crystallite morphology with negligible thermal effects. This material exhibits enhanced clarity, uniform reflectance, and distinct microstructural integrity, affirming effective conservation without subsurface damage through precise intervention.
-faq:
-- question: How does laser cleaning **safely remove dirt** from alabaster sculptures?
-  answer: '**Precise non-contact ablation**. Laser cleaning employs precise, non-contact ablation to vaporize surface contaminants, safeguarding the essential soft alabaster substrate from damage while preserving its delicate texture and notable translucency in just a few sessions.'
-- question: What makes alabaster **ideal for restoration** using laser technology?
-  answer: '**Softness and low conductivity**. Alabaster''s essential softness, paired with its low thermal conductivity, proves notable for laser use, which delicately clears grime while dodging the fracture hazards of mechanical techniques.'
-- question: Why is alabaster **prone to staining** and how can laser cleaning help?
-  answer: '**Removes stains without chemicals**. Due to its porous structure, alabaster readily absorbs oils and pollutants, resulting in notable discoloration. Laser cleaning, an essential method, precisely targets and removes these stains at the molecular level, without chemicals that could heighten porosity.'
-- question: Can laser cleaning **restore the translucency** of aged alabaster?
-  answer: '**Revives natural translucency**. Indeed, laser cleaning precisely eliminates surface buildup and oxidation layers, thereby restoring alabaster''s essential light-diffusing qualities. This distinct method boosts its visual charm without modifying the material''s core makeup.'
-- question: Is laser cleaning suitable for **fragile alabaster artifacts**?
-  answer: '**Non-abrasive prevents chipping**. Absolutely; its non-abrasive quality is essential for preventing chipping or further fragility issues, which are notable in traditional cleaning, rendering it ideal for museum-grade restorations of delicate pieces.'
-- question: How to **prevent water damage** in alabaster after laser cleaning?
-  answer: '**Apply breathable sealant**. After cleaning, it''s essential to apply a breathable sealant for protection against moisture uptake, given alabaster''s notable vulnerability to dissolution; routine laser maintenance can tackle any subsequent soiling before deep penetration.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921556Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921587Z'
+  structure_version: '2.0'

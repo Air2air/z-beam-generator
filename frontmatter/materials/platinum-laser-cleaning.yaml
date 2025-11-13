@@ -1,21 +1,11 @@
 name: Platinum
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Platinum
-  href: /materials/platinum-laser-cleaning
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+slug: platinum
+category: metal
+subcategory: non-ferrous
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 3
   name: Ikmanda Roswati
@@ -48,11 +38,29 @@ author:
   - https://www.academia.edu/profile/IkmandaRoswati
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
-category: metal
-subcategory: non-ferrous
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
 title: Platinum Laser Cleaning
 subtitle: Restore platinum's elegant shine with a practical laser method, efficiently safeguarding its corrosion-resistant essence.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
 description: Laser cleaning parameters for Platinum
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Non Ferrous
+  href: /materials/metal/non-ferrous
+- label: Platinum
+  href: /materials/platinum-laser-cleaning
 images:
   hero:
     alt: Platinum surface undergoing laser cleaning showing precise contamination removal
@@ -60,25 +68,47 @@ images:
   micro:
     alt: Platinum microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/platinum-laser-cleaning-micro.jpg
-material_metadata:
-  caption_corruption_detected: '2025-10-27T23:53:01.654591Z'
-  caption_issue: Truncated JSON structure detected in caption fields
-  last_updated: '2025-10-27T23:48:40.922359Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922364Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: Indonesia
-  author_name: Ikmanda Roswati
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - ANSI Z136.1 - Safe Use of Lasers
-  isBasedOn:
-    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+caption:
+  before: Under optical microscopy, the platinum surface looks straightforwardly rough and uneven, blanketed by contaminants that cling and build up in irregular patterns. Mostly fine particles and oily residues from handling, these form clusters about 5-20 micrometers across, dulling the metal's natural sheen. That method of exposure reveals clear degradation through micro-pits and scratches, weakening the material for aerospace or medical uses.
+  after: This process using ultrafast laser restores the platinum surface straightforwardly, yielding a very smooth and pristine appearance. It fully maintains material integrity without defects, ensuring practical suitability for aerospace, medical devices, and electronics.
+faq:
+- question: Can laser cleaning damage the **thin platinum coating** on medical devices or catalytic converters?
+  answer: '**Fluence below ablation threshold**. In a practical way, laser cleaning avoids damaging platinum coatings by keeping fluence below the ablation threshold, typically under 5 J/cm². This process employs nanosecond pulses at 1064 nm to minimize thermal stress effectively. Scanning electron microscopy then verifies the underlying layer stays intact afterward.'
+- question: What laser wavelength (nm) and pulse duration work best for cleaning platinum jewelry without **causing micro-pitting**?
+  answer: '**1064 nm 10 ns pulses**. For platinum jewelry, a practical choice is 1064 nm wavelength fiber lasers with 10 ns pulses at 5 J/cm² fluence. This process balances the metal''s high reflectivity while minimizing heat penetration. A 50 μm spot size paired with 500 mm/s scanning prevents micro-pitting by limiting thermal buildup in the substrate.'
+- question: How do you safely remove oxidation layers from platinum crucibles used in laboratory settings without altering their **chemical purity**?
+  answer: '**maintains surface purity**. Laser cleaning at 5 J/cm² fluence efficiently removes platinum oxides, leaving no chemical residues behind. This process keeps surface purity intact for high-temperature uses, unlike that method of acid treatment, which can introduce contamination. The 1064 nm wavelength minimizes thermal effects on the substrate.'
+- question: What safety precautions are needed when laser cleaning platinum components that may have absorbed hazardous materials in industrial processes?
+  answer: For platinum parts contaminated with arsenic, a practical setup involves Class III fume extraction and full-face respirators. This process uses the 1064 nm wavelength at 5 J/cm² to efficiently remove hazards while cutting down toxic fumes. Always run a material safety analysis first.
+- question: Does laser cleaning affect the **electrochemical properties** of platinum electrodes used in scientific instruments?
+  answer: '**Enhances via micro-roughness**. Actually, laser cleaning tuned to 5 J/cm² fluence boosts platinum''s electrochemical performance in a straightforward manner. This process clears contaminants while generating useful micro-roughness, thereby expanding the active surface area without adding impurities that impair catalytic activity.'
+- question: What is the maximum safe laser power density for cleaning platinum spark plug electrodes without melting or deforming them?
+  answer: As a laser cleaning expert from Indonesia, I've found that for platinum spark plug electrodes, the maximum safe power density is around 150-200 W/cm² using a pulsed Nd:YAG laser at 1064 nm. This prevents melting or deformation while effectively removing deposits—always test on samples first, ya.
+- question: How effective is laser cleaning for removing carbon buildup from platinum-rhodium thermocouple wires in high-temperature applications?
+  answer: Laser cleaning offers a practical solution for platinum-rhodium thermocouples, applying ~5 J/cm² fluence to remove carbon selectively without affecting the alloy. That method, non-contact by nature, maintains calibration accuracy far superior to abrasive approaches, which often cause surface harm and alloy shifts.
+- question: Can laser cleaning create surface defects in platinum that lead to **stress corrosion cracking** in chemical processing equipment?
+  answer: '**Optimal parameters minimize residual stress**. Using optimal 5 J/cm² fluence and 50% overlap, this process efficiently minimizes microstructural changes in platinum. Yet, improper parameters may induce residual stress, heightening vulnerability to chemical attack. Practical post-cleaning checks for micro-cracks are vital to safeguard chemical processing equipment integrity.'
+- question: What are the economic considerations for laser cleaning **platinum recovery scrap** versus traditional refining methods?
+  answer: '**Preserves 99.9% scrap material**. Laser cleaning offers a practical way to preserve over 99.9% of your platinum scrap, avoiding the heavy material losses from chemical refining. A 100W, 1064nm system at 5 J/cm² makes this process dramatically faster. It skips hazardous chemical costs, upholds the metal''s purity, and delivers economic advantages for high-value recovery.'
+- question: How does laser cleaning compare to ultrasonic cleaning for removing polishing compounds from **intricate platinum jewelry designs**?
+  answer: '**Maintains premium surface finish**. Laser cleaning proves practical for intricate platinum jewelry, accessing complex geometries that ultrasonic methods overlook. With precise 50 μm spot control at 5 J/cm² fluence, it efficiently removes polishing compounds without embedding residues. This process preserves platinum''s premium surface finish while cutting manufacturing cycle times substantially.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -308,90 +338,19 @@ materialProperties:
       value: 2.51e-07
       min: 1.0e-10
       max: 0.001
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  fluence:
-    unit: J/cm²
-    value: 5
-caption:
-  before: Under optical microscopy, the platinum surface looks straightforwardly rough and uneven, blanketed by contaminants that cling and build up in irregular patterns. Mostly fine particles and oily residues from handling, these form clusters about 5-20 micrometers across, dulling the metal's natural sheen. That method of exposure reveals clear degradation through micro-pits and scratches, weakening the material for aerospace or medical uses.
-  after: This process using ultrafast laser restores the platinum surface straightforwardly, yielding a very smooth and pristine appearance. It fully maintains material integrity without defects, ensuring practical suitability for aerospace, medical devices, and electronics.
-faq:
-- question: Can laser cleaning damage the **thin platinum coating** on medical devices or catalytic converters?
-  answer: '**Fluence below ablation threshold**. In a practical way, laser cleaning avoids damaging platinum coatings by keeping fluence below the ablation threshold, typically under 5 J/cm². This process employs nanosecond pulses at 1064 nm to minimize thermal stress effectively. Scanning electron microscopy then verifies the underlying layer stays intact afterward.'
-- question: What laser wavelength (nm) and pulse duration work best for cleaning platinum jewelry without **causing micro-pitting**?
-  answer: '**1064 nm 10 ns pulses**. For platinum jewelry, a practical choice is 1064 nm wavelength fiber lasers with 10 ns pulses at 5 J/cm² fluence. This process balances the metal''s high reflectivity while minimizing heat penetration. A 50 μm spot size paired with 500 mm/s scanning prevents micro-pitting by limiting thermal buildup in the substrate.'
-- question: How do you safely remove oxidation layers from platinum crucibles used in laboratory settings without altering their **chemical purity**?
-  answer: '**maintains surface purity**. Laser cleaning at 5 J/cm² fluence efficiently removes platinum oxides, leaving no chemical residues behind. This process keeps surface purity intact for high-temperature uses, unlike that method of acid treatment, which can introduce contamination. The 1064 nm wavelength minimizes thermal effects on the substrate.'
-- question: What safety precautions are needed when laser cleaning platinum components that may have absorbed hazardous materials in industrial processes?
-  answer: For platinum parts contaminated with arsenic, a practical setup involves Class III fume extraction and full-face respirators. This process uses the 1064 nm wavelength at 5 J/cm² to efficiently remove hazards while cutting down toxic fumes. Always run a material safety analysis first.
-- question: Does laser cleaning affect the **electrochemical properties** of platinum electrodes used in scientific instruments?
-  answer: '**Enhances via micro-roughness**. Actually, laser cleaning tuned to 5 J/cm² fluence boosts platinum''s electrochemical performance in a straightforward manner. This process clears contaminants while generating useful micro-roughness, thereby expanding the active surface area without adding impurities that impair catalytic activity.'
-- question: What is the maximum safe laser power density for cleaning platinum spark plug electrodes without melting or deforming them?
-  answer: As a laser cleaning expert from Indonesia, I've found that for platinum spark plug electrodes, the maximum safe power density is around 150-200 W/cm² using a pulsed Nd:YAG laser at 1064 nm. This prevents melting or deformation while effectively removing deposits—always test on samples first, ya.
-- question: How effective is laser cleaning for removing carbon buildup from platinum-rhodium thermocouple wires in high-temperature applications?
-  answer: Laser cleaning offers a practical solution for platinum-rhodium thermocouples, applying ~5 J/cm² fluence to remove carbon selectively without affecting the alloy. That method, non-contact by nature, maintains calibration accuracy far superior to abrasive approaches, which often cause surface harm and alloy shifts.
-- question: Can laser cleaning create surface defects in platinum that lead to **stress corrosion cracking** in chemical processing equipment?
-  answer: '**Optimal parameters minimize residual stress**. Using optimal 5 J/cm² fluence and 50% overlap, this process efficiently minimizes microstructural changes in platinum. Yet, improper parameters may induce residual stress, heightening vulnerability to chemical attack. Practical post-cleaning checks for micro-cracks are vital to safeguard chemical processing equipment integrity.'
-- question: What are the economic considerations for laser cleaning **platinum recovery scrap** versus traditional refining methods?
-  answer: '**Preserves 99.9% scrap material**. Laser cleaning offers a practical way to preserve over 99.9% of your platinum scrap, avoiding the heavy material losses from chemical refining. A 100W, 1064nm system at 5 J/cm² makes this process dramatically faster. It skips hazardous chemical costs, upholds the metal''s purity, and delivers economic advantages for high-value recovery.'
-- question: How does laser cleaning compare to ultrasonic cleaning for removing polishing compounds from **intricate platinum jewelry designs**?
-  answer: '**Maintains premium surface finish**. Laser cleaning proves practical for intricate platinum jewelry, accessing complex geometries that ultrasonic methods overlook. With precise 50 μm spot control at 5 J/cm² fluence, it efficiently removes polishing compounds without embedding residues. This process preserves platinum''s premium surface finish while cutting manufacturing cycle times substantially.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+material_metadata:
+  caption_corruption_detected: '2025-10-27T23:53:01.654591Z'
+  caption_issue: Truncated JSON structure detected in caption fields
+  last_updated: '2025-10-27T23:48:40.922359Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922364Z'
+  structure_version: '2.0'

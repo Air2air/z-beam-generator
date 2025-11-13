@@ -1,21 +1,11 @@
 name: Fused Silica
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glass
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Fused Silica
-  href: /materials/fused-silica-laser-cleaning
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+slug: fused-silica
+category: glass
+subcategory: soda-lime
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: '2025-11-12T21:10:30-08:00'
+dateModified: '2025-11-02T11:19:28-08:00'
 author:
   id: 4
   name: Todd Dunning
@@ -47,11 +37,29 @@ author:
   - https://spie.org/profile/Todd.Dunning
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
-category: glass
-subcategory: soda-lime
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
 title: Fused Silica Laser Cleaning
 subtitle: Basically, Precision Laser Cleaning Typically Restores Fused Silica's Optical Purity
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
 description: Laser cleaning parameters for Fused Silica
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Glass
+  href: /materials/glass
+- label: Soda Lime
+  href: /materials/glass/soda-lime
+- label: Fused Silica
+  href: /materials/fused-silica-laser-cleaning
 images:
   hero:
     alt: Fused Silica surface undergoing laser cleaning showing precise contamination removal
@@ -59,21 +67,47 @@ images:
   micro:
     alt: Fused Silica microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/fused-silica-laser-cleaning-micro.jpg
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921946Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921952Z'
-  structure_version: '2.0'
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
-    url: https://webstore.iec.ch/publication/3587
+caption:
+  before: Under microscopy, fused silica's contaminated surface shows clustered particulates and oily residues that form fairly hazy films. Contaminants appear as submicron to 5-micron irregular specks, typically from airborne dust or handling oils. Surface degradation reveals micro-pitting and subtle etching, cutting optical clarity in laser diode assembly.
+  after: After cleaning, fused silica surfaces typically restore to pretty much pristine optical clarity, preserving full material integrity and smoothness. This basically supports reliable performance in laser system optics for precision manufacturing.
+faq:
+- question: Can fused silica be laser cleaned without causing **damage or micro-cracks**?
+  answer: '**Low fluence minimizes thermal shock**. Yes, fused silica can be pretty safely laser cleaned with careful parameter control. A 1064 nm wavelength, fluence below 2.5 J/cm², and nanosecond pulses typically minimize thermal shock risks to its amorphous structure. This method effectively removes contaminants while preventing subsurface damage and micro-crack formation in the glass.'
+- question: What is the best laser wavelength for cleaning contaminants from **fused silica optics**?
+  answer: '**355nm UV below damage threshold**. For fused silica optics, UV wavelengths around 355 nm are pretty superior. Most contaminants absorb them fairly strongly, enabling effective ablation at fluences below the substrate''s ~2.5 J/cm² damage threshold. This separation ensures thorough cleaning without harming the optic''s surface.'
+- question: How do you remove thin film coatings from fused silica using a laser **without etching the surface**?
+  answer: '**Fluence below substrate etch threshold**. We basically employ 1064 nm nanosecond pulses at around 2.5 J/cm² for selective ablation of thin films. This fluence sits fairly above the coating''s ablation threshold, while remaining safely below the point that could etch the pristine fused silica substrate.'
+- question: What are the LIDT (Laser-Induced Damage Threshold) concerns when laser cleaning fused silica optics?
+  answer: Operating laser cleaning close to the 2.5 J/cm² threshold can pretty much generate microscopic damage precursors, potentially reducing Fused Silica's LIDT. Typically, follow-up measurements uncover a lowered threshold from these subsurface alterations, undermining reliability in high-power applications.
+- question: Does laser cleaning create **OH group contamination** or other chemical changes on the fused silica surface?
+  answer: '**Below threshold avoids OH formation**. When laser cleaning is properly configured below the 2.5 J/cm² threshold, it typically avoids OH group formation. But excessive fluence can induce surface chemistry changes, potentially boosting hydrogen bonding and degrading UV transmission. Keeping optimal parameters is basically critical for long-term optical stability.'
+- question: What safety precautions are specific to laser cleaning fused silica **compared to metals**?
+  answer: '**Below 2.5 J/cm² threshold**. The main precaution here is keeping things below fused silica''s 2.5 J/cm² damage threshold to avoid subsurface cracking. Pretty much unlike metals, its fairly low thermal conductivity causes those stress fractures. Always wear respiratory PPE for the fine silica particulates it generates.'
+- question: How effective is laser cleaning for removing **sub-surface damage** (SSD) in fused silica?
+  answer: '**Mitigates SSD below 2.5 J/cm²**. Laser cleaning can fairly effectively mitigate existing sub-surface damage when operated below fused silica''s ~2.5 J/cm² damage threshold. Yet, exceeding this fluence with 10 ns pulses will pretty reliably introduce new microfractures, undermining the conditioning goal.'
+- question: Can laser cleaning replace traditional methods like CO2 snow or solvent cleaning for fused silica in cleanroom environments?
+  answer: Laser cleaning pretty much replaces traditional methods for fused silica, delivering superior particle removal below 2.5 J/cm². This non-contact process relies on a 1064 nm wavelength to fairly eliminate organics without solvents, boosting throughput while enabling validation through light scatter testing for critical optics.
+- question: What is the maximum allowable surface temperature during laser cleaning of fused silica to prevent **thermal stress failure**?
+  answer: '**Allows up to 300°C**. Fused silica''s pretty low 0.55 ppm/°C thermal expansion coefficient lets it handle surface temperatures up to around 300°C before any stress failure kicks in. To keep things stable, stay below the 2.5 J/cm² fluence damage threshold and go with fairly high 500 mm/s scan speeds to cut localized heating and dodge harmful thermal gradients.'
+- question: How do you verify the success of a laser cleaning process on a **fused silica optic**?
+  answer: '**Verifies transmission without degradation**. Verification employs several techniques. Typically, we assess surface integrity via white-light interferometry, confirming no profile shifts beyond 2 nm. Scatterometry spots residual particles, while 1064 nm transmission measurements indicate no baseline degradation. Basically, this approach fully restores the optic''s performance.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -226,92 +260,15 @@ materialProperties:
       min: 0.001
       max: 1
       source: ai_research
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 100
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-caption:
-  before: Under microscopy, fused silica's contaminated surface shows clustered particulates and oily residues that form fairly hazy films. Contaminants appear as submicron to 5-micron irregular specks, typically from airborne dust or handling oils. Surface degradation reveals micro-pitting and subtle etching, cutting optical clarity in laser diode assembly.
-  after: After cleaning, fused silica surfaces typically restore to pretty much pristine optical clarity, preserving full material integrity and smoothness. This basically supports reliable performance in laser system optics for precision manufacturing.
-faq:
-- question: Can fused silica be laser cleaned without causing **damage or micro-cracks**?
-  answer: '**Low fluence minimizes thermal shock**. Yes, fused silica can be pretty safely laser cleaned with careful parameter control. A 1064 nm wavelength, fluence below 2.5 J/cm², and nanosecond pulses typically minimize thermal shock risks to its amorphous structure. This method effectively removes contaminants while preventing subsurface damage and micro-crack formation in the glass.'
-- question: What is the best laser wavelength for cleaning contaminants from **fused silica optics**?
-  answer: '**355nm UV below damage threshold**. For fused silica optics, UV wavelengths around 355 nm are pretty superior. Most contaminants absorb them fairly strongly, enabling effective ablation at fluences below the substrate''s ~2.5 J/cm² damage threshold. This separation ensures thorough cleaning without harming the optic''s surface.'
-- question: How do you remove thin film coatings from fused silica using a laser **without etching the surface**?
-  answer: '**Fluence below substrate etch threshold**. We basically employ 1064 nm nanosecond pulses at around 2.5 J/cm² for selective ablation of thin films. This fluence sits fairly above the coating''s ablation threshold, while remaining safely below the point that could etch the pristine fused silica substrate.'
-- question: What are the LIDT (Laser-Induced Damage Threshold) concerns when laser cleaning fused silica optics?
-  answer: Operating laser cleaning close to the 2.5 J/cm² threshold can pretty much generate microscopic damage precursors, potentially reducing Fused Silica's LIDT. Typically, follow-up measurements uncover a lowered threshold from these subsurface alterations, undermining reliability in high-power applications.
-- question: Does laser cleaning create **OH group contamination** or other chemical changes on the fused silica surface?
-  answer: '**Below threshold avoids OH formation**. When laser cleaning is properly configured below the 2.5 J/cm² threshold, it typically avoids OH group formation. But excessive fluence can induce surface chemistry changes, potentially boosting hydrogen bonding and degrading UV transmission. Keeping optimal parameters is basically critical for long-term optical stability.'
-- question: What safety precautions are specific to laser cleaning fused silica **compared to metals**?
-  answer: '**Below 2.5 J/cm² threshold**. The main precaution here is keeping things below fused silica''s 2.5 J/cm² damage threshold to avoid subsurface cracking. Pretty much unlike metals, its fairly low thermal conductivity causes those stress fractures. Always wear respiratory PPE for the fine silica particulates it generates.'
-- question: How effective is laser cleaning for removing **sub-surface damage** (SSD) in fused silica?
-  answer: '**Mitigates SSD below 2.5 J/cm²**. Laser cleaning can fairly effectively mitigate existing sub-surface damage when operated below fused silica''s ~2.5 J/cm² damage threshold. Yet, exceeding this fluence with 10 ns pulses will pretty reliably introduce new microfractures, undermining the conditioning goal.'
-- question: Can laser cleaning replace traditional methods like CO2 snow or solvent cleaning for fused silica in cleanroom environments?
-  answer: Laser cleaning pretty much replaces traditional methods for fused silica, delivering superior particle removal below 2.5 J/cm². This non-contact process relies on a 1064 nm wavelength to fairly eliminate organics without solvents, boosting throughput while enabling validation through light scatter testing for critical optics.
-- question: What is the maximum allowable surface temperature during laser cleaning of fused silica to prevent **thermal stress failure**?
-  answer: '**Allows up to 300°C**. Fused silica''s pretty low 0.55 ppm/°C thermal expansion coefficient lets it handle surface temperatures up to around 300°C before any stress failure kicks in. To keep things stable, stay below the 2.5 J/cm² fluence damage threshold and go with fairly high 500 mm/s scan speeds to cut localized heating and dodge harmful thermal gradients.'
-- question: How do you verify the success of a laser cleaning process on a **fused silica optic**?
-  answer: '**Verifies transmission without degradation**. Verification employs several techniques. Typically, we assess surface integrity via white-light interferometry, confirming no profile shifts beyond 2 nm. Scatterometry spots residual particles, while 1064 nm transmission measurements indicate no baseline degradation. Basically, this approach fully restores the optic''s performance.'
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921946Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921952Z'
+  structure_version: '2.0'
