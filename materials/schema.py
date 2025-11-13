@@ -151,6 +151,10 @@ class MaterialContent(ContentSchema):
     eeat: Optional[Dict] = None
     breadcrumb: Optional[List[Dict]] = None
     
+    # Schema.org date fields (from git history)
+    datePublished: Optional[str] = None  # ISO8601 - First commit date of Materials.yaml
+    dateModified: Optional[str] = None  # ISO8601 - Last modification date per material
+    
     # Generated components (populated during generation)
     faq: Optional[Dict] = None
     caption: Optional[Dict] = None

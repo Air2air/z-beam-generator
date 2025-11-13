@@ -188,6 +188,7 @@ class TrivialFrontmatterExporter:
         EXPORTABLE_FIELDS = {
             'breadcrumb',
             'category', 'subcategory', 'title', 'subtitle', 'description',
+            'datePublished', 'dateModified',  # Schema.org date fields from git history
             'images', 'caption', 'regulatoryStandards', 'eeat',
             'materialProperties', 'machineSettings', 'faq',
             '_metadata', 'material_metadata', 'subtitle_metadata'
