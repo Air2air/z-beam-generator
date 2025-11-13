@@ -1,0 +1,1428 @@
+# ==============================================================================
+# GRANITE MATERIAL COMPARISON - CROSS-MATERIAL ANALYSIS PAGE
+# ==============================================================================
+# This page type compares Granite against similar materials across multiple
+# properties and laser settings to help users select optimal materials.
+# URL: /materials/granite/comparison
+# Alternative: /research/comparisons/granite-vs-stone-materials
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# SECTION 1: CORE METADATA
+# ------------------------------------------------------------------------------
+layout: material-comparison
+pageType: cross-material-analysis
+primary_material: Granite
+comparison_category: stone
+comparison_scope: construction_materials
+
+title: "Granite vs. Other Materials: Comprehensive Laser Cleaning Comparison"
+subtitle: "Compare Granite's Properties and Laser Settings Against Marble, Limestone, Concrete, and Steel"
+description: "Side-by-side comparison of granite against 8 common construction materials. Analyze density, thermal properties, laser absorption, and optimal cleaning parameters to select the best material for your application."
+
+generated: '2025-11-07T15:00:00Z'
+last_updated: '2025-11-07T15:00:00Z'
+comparison_version: 1.0.0
+
+# ------------------------------------------------------------------------------
+# SECTION 2: BREADCRUMB
+# ------------------------------------------------------------------------------
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Granite
+  href: /materials/granite-laser-cleaning
+- label: Material Comparison
+  href: /materials/granite/comparison
+
+# ------------------------------------------------------------------------------
+# SECTION 3: AUTHOR & VOICE
+# ------------------------------------------------------------------------------
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  - Comparative Materials Analysis
+  - Laser-Material Interactions
+  - Construction Materials Science
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  url: https://z-beam.com/authors/todd-dunning
+
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material-comparison
+
+# ------------------------------------------------------------------------------
+# SECTION 4: PRIMARY MATERIAL DATA (Granite - Reference Point)
+# ------------------------------------------------------------------------------
+granite_baseline:
+  name: Granite
+  category: stone
+  subcategory: igneous
+  url: /materials/granite-laser-cleaning
+  
+  summary:
+    description: "Dense, hard igneous rock composed of quartz, feldspar, and mica. Excellent durability for monuments, countertops, and architectural facades."
+    typical_applications:
+    - "Monument construction and restoration"
+    - "Kitchen and bathroom countertops"
+    - "Building facades and cladding"
+    - "Flooring and paving"
+    - "Historical structure conservation"
+  
+  # Key properties for comparison baseline
+  properties:
+    # Physical Properties
+    density:
+      value: 2700
+      unit: kg/m³
+      percentile: 67  # Within stone category
+      rank: 3  # Among compared materials
+      
+    hardness:
+      value: 6.5
+      unit: Mohs
+      percentile: 93
+      rank: 1  # Hardest among compared stones
+      
+    porosity:
+      value: 0.6
+      unit: "%"
+      percentile: 18  # Low porosity = good
+      rank: 2
+      
+    compressive_strength:
+      value: 211
+      unit: MPa
+      percentile: 89
+      rank: 2
+    
+    # Thermal Properties
+    thermal_conductivity:
+      value: 2.79
+      unit: W/m·K
+      percentile: 35  # Lower is typical for stone
+      rank: 6
+      
+    thermal_expansion:
+      value: 8.0e-06
+      unit: K^-1
+      percentile: 60
+      rank: 4
+      
+    specific_heat:
+      value: 790
+      unit: J/kg·K
+      percentile: 55
+      rank: 5
+    
+    # Laser-Material Interaction
+    laser_absorption:
+      value: 0.42
+      unit: dimensionless
+      percentile: 65
+      rank: 4
+      
+    reflectivity:
+      value: 0.9
+      unit: dimensionless
+      percentile: 92  # High reflectivity
+      rank: 1
+      
+    laser_damage_threshold:
+      value: 8.0
+      unit: J/cm²
+      percentile: 80
+      rank: 2
+  
+  # Laser settings for comparison baseline
+  laser_settings:
+    power_range:
+      value: 100
+      min: 80
+      max: 150
+      unit: W
+      
+    wavelength:
+      primary: 1064
+      alternative: 532
+      unit: nm
+      
+    fluence:
+      value: 2.5
+      min: 1.5
+      max: 3.5
+      unit: J/cm²
+      
+    scan_speed:
+      value: 500
+      min: 300
+      max: 800
+      unit: mm/s
+      
+    pulse_width:
+      value: 10
+      unit: ns
+
+# ------------------------------------------------------------------------------
+# SECTION 5: COMPARISON MATERIALS DATA
+# ------------------------------------------------------------------------------
+comparison_materials:
+
+# --- STONE MATERIALS ---
+- name: Marble
+  category: stone
+  subcategory: metamorphic
+  url: /materials/marble-laser-cleaning
+  
+  summary:
+    description: "Metamorphic limestone with crystalline structure. Softer than granite but prized for sculpture and luxury applications."
+    similarity_to_granite: 85%  # Very similar
+    key_differences:
+    - "Softer (Mohs 3-4 vs 6.5)"
+    - "More reactive to acids"
+    - "Lower thermal conductivity"
+    typical_applications:
+    - "Sculpture and fine art"
+    - "Luxury countertops and flooring"
+    - "Decorative architectural elements"
+  
+  properties:
+    density:
+      value: 2650
+      unit: kg/m³
+      vs_granite: -1.9%
+      advantage: neutral
+      
+    hardness:
+      value: 3.5
+      unit: Mohs
+      vs_granite: -46.2%
+      advantage: granite
+      notes: "Granite significantly harder, more durable"
+      
+    porosity:
+      value: 0.4
+      unit: "%"
+      vs_granite: -33.3%
+      advantage: marble
+      notes: "Lower porosity = better stain resistance"
+      
+    compressive_strength:
+      value: 130
+      unit: MPa
+      vs_granite: -38.4%
+      advantage: granite
+      
+    thermal_conductivity:
+      value: 2.70
+      unit: W/m·K
+      vs_granite: -3.2%
+      advantage: neutral
+      
+    thermal_expansion:
+      value: 5.5e-06
+      unit: K^-1
+      vs_granite: -31.3%
+      advantage: marble
+      notes: "Lower expansion = less thermal stress"
+      
+    laser_absorption:
+      value: 0.35
+      unit: dimensionless
+      vs_granite: -16.7%
+      advantage: granite
+      notes: "Granite absorbs more = easier cleaning"
+      
+    reflectivity:
+      value: 0.92
+      unit: dimensionless
+      vs_granite: +2.2%
+      advantage: marble
+      
+    laser_damage_threshold:
+      value: 6.0
+      unit: J/cm²
+      vs_granite: -25.0%
+      advantage: granite
+  
+  laser_settings:
+    power_range:
+      value: 80
+      vs_granite: -20%
+      reasoning: "Softer material requires less power"
+      
+    fluence:
+      value: 2.0
+      vs_granite: -20%
+      reasoning: "Lower damage threshold necessitates gentler approach"
+      
+    scan_speed:
+      value: 600
+      vs_granite: +20%
+      reasoning: "Faster processing possible due to softness"
+
+- name: Limestone
+  category: stone
+  subcategory: sedimentary
+  url: /materials/limestone-laser-cleaning
+  
+  summary:
+    description: "Sedimentary calcium carbonate rock. Softer and more porous than granite, easier to clean but less durable."
+    similarity_to_granite: 60%
+    key_differences:
+    - "Much softer (Mohs 3)"
+    - "Higher porosity (3-5%)"
+    - "Acid-reactive (CaCO3)"
+    typical_applications:
+    - "Building facades"
+    - "Historical monument restoration"
+    - "Interior wall cladding"
+  
+  properties:
+    density:
+      value: 2300
+      unit: kg/m³
+      vs_granite: -14.8%
+      advantage: granite
+      
+    hardness:
+      value: 3.0
+      unit: Mohs
+      vs_granite: -53.8%
+      advantage: granite
+      
+    porosity:
+      value: 4.0
+      unit: "%"
+      vs_granite: +566.7%
+      advantage: granite
+      notes: "High porosity = more contamination penetration"
+      
+    compressive_strength:
+      value: 90
+      unit: MPa
+      vs_granite: -57.3%
+      advantage: granite
+      
+    thermal_conductivity:
+      value: 2.0
+      unit: W/m·K
+      vs_granite: -28.3%
+      advantage: neutral
+      
+    laser_absorption:
+      value: 0.38
+      unit: dimensionless
+      vs_granite: -9.5%
+      advantage: granite
+      
+    laser_damage_threshold:
+      value: 4.0
+      unit: J/cm²
+      vs_granite: -50.0%
+      advantage: granite
+      notes: "CRITICAL: Much lower threshold, requires gentle parameters"
+  
+  laser_settings:
+    power_range:
+      value: 60
+      vs_granite: -40%
+      reasoning: "Soft, porous material requires very low power"
+      
+    fluence:
+      value: 1.5
+      vs_granite: -40%
+      reasoning: "Risk of substrate damage above 2 J/cm²"
+      
+    scan_speed:
+      value: 700
+      vs_granite: +40%
+      reasoning: "Faster scanning prevents heat buildup in porous substrate"
+
+- name: Sandstone
+  category: stone
+  subcategory: sedimentary
+  url: /materials/sandstone-laser-cleaning
+  
+  summary:
+    description: "Sedimentary quartz-based rock. Highly porous and variable in hardness depending on cementation."
+    similarity_to_granite: 55%
+    key_differences:
+    - "Much more porous (5-25%)"
+    - "Softer (Mohs 5-6)"
+    - "Lower density"
+    typical_applications:
+    - "Architectural facades"
+    - "Paving and landscaping"
+    - "Historical building restoration"
+  
+  properties:
+    density:
+      value: 2200
+      unit: kg/m³
+      vs_granite: -18.5%
+      advantage: granite
+      
+    hardness:
+      value: 6.0
+      unit: Mohs
+      vs_granite: -7.7%
+      advantage: granite
+      
+    porosity:
+      value: 12.0
+      unit: "%"
+      vs_granite: +1900%
+      advantage: granite
+      notes: "Extremely high porosity = deep contamination"
+      
+    compressive_strength:
+      value: 70
+      unit: MPa
+      vs_granite: -66.8%
+      advantage: granite
+      
+    thermal_conductivity:
+      value: 2.5
+      unit: W/m·K
+      vs_granite: -10.4%
+      advantage: neutral
+      
+    laser_absorption:
+      value: 0.45
+      unit: dimensionless
+      vs_granite: +7.1%
+      advantage: sandstone
+      notes: "Higher absorption = easier contaminant removal"
+      
+    laser_damage_threshold:
+      value: 3.0
+      unit: J/cm²
+      vs_granite: -62.5%
+      advantage: granite
+      notes: "Very fragile, requires extremely gentle cleaning"
+  
+  laser_settings:
+    power_range:
+      value: 50
+      vs_granite: -50%
+      reasoning: "Highest porosity requires lowest power"
+      
+    fluence:
+      value: 1.2
+      vs_granite: -52%
+      reasoning: "Risk of grain ejection above 1.5 J/cm²"
+      
+    scan_speed:
+      value: 400
+      vs_granite: -20%
+      reasoning: "Slower to allow gentle cleaning of porous surface"
+
+- name: Basalt
+  category: stone
+  subcategory: igneous
+  url: /materials/basalt-laser-cleaning
+  
+  summary:
+    description: "Dense mafic igneous rock. Harder and denser than granite, common in volcanic regions."
+    similarity_to_granite: 75%
+    key_differences:
+    - "Denser (2900 kg/m³)"
+    - "Darker color (higher absorption)"
+    - "Finer grain structure"
+    typical_applications:
+    - "Road construction (aggregate)"
+    - "Building foundations"
+    - "Railway ballast"
+  
+  properties:
+    density:
+      value: 2900
+      unit: kg/m³
+      vs_granite: +7.4%
+      advantage: basalt
+      notes: "Higher density = better structural integrity"
+      
+    hardness:
+      value: 6.5
+      unit: Mohs
+      vs_granite: 0%
+      advantage: neutral
+      
+    porosity:
+      value: 1.0
+      unit: "%"
+      vs_granite: +66.7%
+      advantage: granite
+      
+    compressive_strength:
+      value: 300
+      unit: MPa
+      vs_granite: +42.2%
+      advantage: basalt
+      
+    thermal_conductivity:
+      value: 1.7
+      unit: W/m·K
+      vs_granite: -39.1%
+      advantage: granite
+      notes: "Lower conductivity = more careful thermal management"
+      
+    laser_absorption:
+      value: 0.65
+      unit: dimensionless
+      vs_granite: +54.8%
+      advantage: basalt
+      notes: "Dark color = much higher absorption"
+      
+    laser_damage_threshold:
+      value: 10.0
+      unit: J/cm²
+      vs_granite: +25.0%
+      advantage: basalt
+  
+  laser_settings:
+    power_range:
+      value: 90
+      vs_granite: -10%
+      reasoning: "Higher absorption allows lower power despite higher density"
+      
+    fluence:
+      value: 3.0
+      vs_granite: +20%
+      reasoning: "Higher damage threshold permits more aggressive cleaning"
+      
+    scan_speed:
+      value: 450
+      vs_granite: -10%
+      reasoning: "Slower due to low thermal conductivity"
+
+# --- CONSTRUCTION MATERIALS ---
+- name: Concrete
+  category: masonry
+  subcategory: composite
+  url: /materials/concrete-laser-cleaning
+  
+  summary:
+    description: "Cement-based composite material. Highly variable properties depending on mix design and curing."
+    similarity_to_granite: 45%
+    key_differences:
+    - "More porous (5-15%)"
+    - "Lower hardness (Mohs 3-5)"
+    - "Composite structure"
+    typical_applications:
+    - "Structural elements"
+    - "Building facades"
+    - "Bridge and infrastructure cleaning"
+  
+  properties:
+    density:
+      value: 2400
+      unit: kg/m³
+      vs_granite: -11.1%
+      advantage: granite
+      
+    hardness:
+      value: 4.0
+      unit: Mohs
+      vs_granite: -38.5%
+      advantage: granite
+      
+    porosity:
+      value: 10.0
+      unit: "%"
+      vs_granite: +1566.7%
+      advantage: granite
+      
+    compressive_strength:
+      value: 40
+      unit: MPa
+      vs_granite: -81.0%
+      advantage: granite
+      notes: "Much weaker than natural stone"
+      
+    thermal_conductivity:
+      value: 1.4
+      unit: W/m·K
+      vs_granite: -49.8%
+      advantage: granite
+      
+    laser_absorption:
+      value: 0.50
+      unit: dimensionless
+      vs_granite: +19.0%
+      advantage: concrete
+      
+    laser_damage_threshold:
+      value: 2.5
+      unit: J/cm²
+      vs_granite: -68.8%
+      advantage: granite
+      notes: "CRITICAL: Weak composite structure easily damaged"
+  
+  laser_settings:
+    power_range:
+      value: 70
+      vs_granite: -30%
+      reasoning: "Composite structure requires careful power control"
+      
+    fluence:
+      value: 1.8
+      vs_granite: -28%
+      reasoning: "Risk of cement matrix degradation"
+      
+    scan_speed:
+      value: 550
+      vs_granite: +10%
+      reasoning: "Faster scanning prevents aggregate exposure"
+
+- name: Brick
+  category: masonry
+  subcategory: ceramic
+  url: /materials/brick-laser-cleaning
+  
+  summary:
+    description: "Fired clay ceramic. Common in historical buildings, moderate hardness and high porosity."
+    similarity_to_granite: 40%
+    key_differences:
+    - "Much more porous (8-20%)"
+    - "Lower compressive strength"
+    - "Variable properties by firing"
+    typical_applications:
+    - "Historical building facades"
+    - "Graffiti removal"
+    - "Soot and carbon deposit cleaning"
+  
+  properties:
+    density:
+      value: 1900
+      unit: kg/m³
+      vs_granite: -29.6%
+      advantage: granite
+      
+    hardness:
+      value: 5.5
+      unit: Mohs
+      vs_granite: -15.4%
+      advantage: granite
+      
+    porosity:
+      value: 15.0
+      unit: "%"
+      vs_granite: +2400%
+      advantage: granite
+      notes: "Very high porosity = deep contamination penetration"
+      
+    compressive_strength:
+      value: 35
+      unit: MPa
+      vs_granite: -83.4%
+      advantage: granite
+      
+    thermal_conductivity:
+      value: 0.6
+      unit: W/m·K
+      vs_granite: -78.5%
+      advantage: granite
+      notes: "Very low conductivity = thermal stress risk"
+      
+    laser_absorption:
+      value: 0.55
+      unit: dimensionless
+      vs_granite: +31.0%
+      advantage: brick
+      
+    laser_damage_threshold:
+      value: 2.0
+      unit: J/cm²
+      vs_granite: -75.0%
+      advantage: granite
+      notes: "Easily damaged, requires very gentle approach"
+  
+  laser_settings:
+    power_range:
+      value: 60
+      vs_granite: -40%
+      reasoning: "Porous ceramic requires low power"
+      
+    fluence:
+      value: 1.5
+      vs_granite: -40%
+      reasoning: "Thermal shock risk due to low conductivity"
+      
+    scan_speed:
+      value: 600
+      vs_granite: +20%
+      reasoning: "Fast scanning prevents thermal buildup"
+
+# --- METAL COMPARISON ---
+- name: Steel
+  category: metal
+  subcategory: ferrous
+  url: /materials/steel-laser-cleaning
+  
+  summary:
+    description: "Iron-carbon alloy. Completely different material class - high density, conductivity, and laser absorption."
+    similarity_to_granite: 15%
+    key_differences:
+    - "Much denser (7850 kg/m³)"
+    - "High thermal conductivity (50 W/m·K)"
+    - "Metallic substrate behavior"
+    typical_applications:
+    - "Industrial equipment cleaning"
+    - "Rust removal"
+    - "Weld seam cleaning"
+  
+  properties:
+    density:
+      value: 7850
+      unit: kg/m³
+      vs_granite: +190.7%
+      advantage: steel
+      notes: "2.9x denser = massive thermal mass"
+      
+    hardness:
+      value: 4.0
+      unit: GPa (converted)
+      vs_granite: N/A
+      advantage: steel
+      notes: "Different scale - metals use GPa, stones use Mohs"
+      
+    porosity:
+      value: 0.1
+      unit: "%"
+      vs_granite: -83.3%
+      advantage: steel
+      
+    compressive_strength:
+      value: 250
+      unit: MPa
+      vs_granite: +18.5%
+      advantage: steel
+      
+    thermal_conductivity:
+      value: 50.0
+      unit: W/m·K
+      vs_granite: +1691.4%
+      advantage: steel
+      notes: "17.9x higher = rapid heat dissipation"
+      
+    laser_absorption:
+      value: 0.35
+      unit: dimensionless
+      vs_granite: -16.7%
+      advantage: granite
+      
+    laser_damage_threshold:
+      value: 2.0
+      unit: J/cm²
+      vs_granite: -75.0%
+      advantage: granite
+      notes: "Lower threshold due to thermal effects, not structural weakness"
+  
+  laser_settings:
+    power_range:
+      value: 100
+      vs_granite: 0%
+      reasoning: "Similar power but for different reasons - high thermal mass vs low conductivity"
+      
+    fluence:
+      value: 5.0
+      vs_granite: +100%
+      reasoning: "High thermal conductivity allows more aggressive parameters"
+      
+    scan_speed:
+      value: 500
+      vs_granite: 0%
+      reasoning: "Similar speed but different thermal dynamics"
+
+- name: Aluminum
+  category: metal
+  subcategory: non-ferrous
+  url: /materials/aluminum-laser-cleaning
+  
+  summary:
+    description: "Lightweight metal with excellent thermal conductivity. Highly reflective, requires careful wavelength selection."
+    similarity_to_granite: 20%
+    key_differences:
+    - "Equal density but metal"
+    - "Very high thermal conductivity (237 W/m·K)"
+    - "High reflectivity (92%)"
+    typical_applications:
+    - "Aerospace component cleaning"
+    - "Aluminum facade restoration"
+    - "Pre-weld surface preparation"
+  
+  properties:
+    density:
+      value: 2700
+      unit: kg/m³
+      vs_granite: 0%
+      advantage: neutral
+      notes: "Same density, completely different material behavior"
+      
+    hardness:
+      value: 0.274
+      unit: GPa
+      vs_granite: N/A
+      advantage: granite
+      notes: "Softer than granite (different scales)"
+      
+    porosity:
+      value: 0.0
+      unit: "%"
+      vs_granite: -100%
+      advantage: aluminum
+      
+    thermal_conductivity:
+      value: 237.0
+      unit: W/m·K
+      vs_granite: +8494.6%
+      advantage: aluminum
+      notes: "85x higher = extreme heat dissipation"
+      
+    laser_absorption:
+      value: 0.06
+      unit: dimensionless
+      vs_granite: -85.7%
+      advantage: granite
+      notes: "Very low absorption = difficult laser processing"
+      
+    reflectivity:
+      value: 0.95
+      unit: dimensionless
+      vs_granite: +5.6%
+      advantage: aluminum
+      notes: "Highly reflective = safety concern"
+      
+    laser_damage_threshold:
+      value: 1.8
+      unit: J/cm²
+      vs_granite: -77.5%
+      advantage: granite
+  
+  laser_settings:
+    power_range:
+      value: 100
+      vs_granite: 0%
+      reasoning: "Same power but poor absorption requires higher intensity"
+      
+    fluence:
+      value: 5.1
+      vs_granite: +104%
+      reasoning: "Low absorption requires higher fluence"
+      
+    scan_speed:
+      value: 500
+      vs_granite: 0%
+      reasoning: "High conductivity allows faster processing"
+
+# ------------------------------------------------------------------------------
+# SECTION 6: MULTI-DIMENSIONAL COMPARISON CHARTS
+# ------------------------------------------------------------------------------
+comparison_charts:
+
+  # Chart 1: Physical Properties Radar Chart
+  physical_properties_radar:
+    type: radar
+    title: "Physical Properties Comparison"
+    description: "Multi-dimensional view of density, hardness, strength, and porosity"
+    dimensions:
+    - property: density_normalized
+      label: "Density (0-100)"
+      granite: 34  # (2700/7850) * 100
+      marble: 34
+      limestone: 29
+      sandstone: 28
+      basalt: 37
+      concrete: 31
+      brick: 24
+      steel: 100
+      aluminum: 34
+      
+    - property: hardness_normalized
+      label: "Hardness (0-100)"
+      granite: 100  # Mohs 6.5 = hardest stone
+      marble: 54   # Mohs 3.5
+      limestone: 46  # Mohs 3
+      sandstone: 92  # Mohs 6
+      basalt: 100  # Mohs 6.5
+      concrete: 62  # Mohs 4
+      brick: 85  # Mohs 5.5
+      steel: N/A  # Different scale
+      aluminum: N/A
+      
+    - property: compressive_strength_normalized
+      label: "Compressive Strength (0-100)"
+      granite: 70  # 211 MPa
+      marble: 43  # 130 MPa
+      limestone: 30  # 90 MPa
+      sandstone: 23  # 70 MPa
+      basalt: 100  # 300 MPa
+      concrete: 13  # 40 MPa
+      brick: 12  # 35 MPa
+      steel: 83  # 250 MPa
+      aluminum: 30  # 90 MPa (6061-T6)
+      
+    - property: porosity_inverted
+      label: "Low Porosity (0-100, higher=better)"
+      granite: 99  # 0.6%
+      marble: 99  # 0.4%
+      limestone: 73  # 4%
+      sandstone: 25  # 12%
+      basalt: 93  # 1%
+      concrete: 33  # 10%
+      brick: 6  # 15%
+      steel: 100  # 0.1%
+      aluminum: 100  # 0%
+    
+    visualization_note: "Larger area = better overall physical properties for laser cleaning"
+
+  # Chart 2: Thermal Properties Bar Chart
+  thermal_properties_comparison:
+    type: grouped_bar
+    title: "Thermal Properties: Impact on Laser Cleaning"
+    description: "How different materials handle heat during laser processing"
+    
+    properties:
+    - property: thermal_conductivity
+      label: "Thermal Conductivity (W/m·K)"
+      unit: W/m·K
+      granite: 2.79
+      marble: 2.70
+      limestone: 2.0
+      sandstone: 2.5
+      basalt: 1.7
+      concrete: 1.4
+      brick: 0.6
+      steel: 50.0
+      aluminum: 237.0
+      interpretation: "Higher = faster heat dissipation = can use higher power"
+      
+    - property: specific_heat
+      label: "Specific Heat (J/kg·K)"
+      unit: J/kg·K
+      granite: 790
+      marble: 880
+      limestone: 900
+      sandstone: 850
+      basalt: 840
+      concrete: 880
+      brick: 920
+      steel: 486
+      aluminum: 900
+      interpretation: "Lower = heats up faster = requires less energy"
+      
+    - property: thermal_expansion
+      label: "Thermal Expansion (×10⁻⁶ K⁻¹)"
+      unit: "×10⁻⁶ K⁻¹"
+      granite: 8.0
+      marble: 5.5
+      limestone: 8.0
+      sandstone: 11.0
+      basalt: 5.4
+      concrete: 12.0
+      brick: 5.5
+      steel: 12.0
+      aluminum: 23.1
+      interpretation: "Lower = less thermal stress = less cracking risk"
+
+  # Chart 3: Laser-Material Interaction Comparison
+  laser_interaction_comparison:
+    type: scatter_plot
+    title: "Laser Absorption vs. Damage Threshold"
+    description: "Material positioning for laser cleaning difficulty"
+    x_axis: laser_absorption
+    y_axis: laser_damage_threshold
+    
+    quadrants:
+      easy_cleaning:
+        label: "Easy Cleaning"
+        description: "High absorption + High threshold = Ideal"
+        position: "upper right"
+        materials: [basalt, concrete]
+        
+      careful_power:
+        label: "Careful Power Control"
+        description: "High absorption + Low threshold = Gentle approach"
+        position: "lower right"
+        materials: [brick, sandstone]
+        
+      challenging_reflective:
+        label: "Challenging (Reflective)"
+        description: "Low absorption + High threshold = Need high power"
+        position: "upper left"
+        materials: [granite, marble, aluminum]
+        
+      very_difficult:
+        label: "Very Difficult"
+        description: "Low absorption + Low threshold = Narrow parameter window"
+        position: "lower left"
+        materials: [limestone, steel]
+    
+    data_points:
+    - material: Granite
+      x: 0.42  # absorption
+      y: 8.0   # damage threshold
+      size: 2700  # density (bubble size)
+      color: "#8B4513"
+      highlight: true
+      
+    - material: Marble
+      x: 0.35
+      y: 6.0
+      size: 2650
+      color: "#F5F5DC"
+      
+    - material: Limestone
+      x: 0.38
+      y: 4.0
+      size: 2300
+      color: "#FFFACD"
+      
+    - material: Sandstone
+      x: 0.45
+      y: 3.0
+      size: 2200
+      color: "#DEB887"
+      
+    - material: Basalt
+      x: 0.65
+      y: 10.0
+      size: 2900
+      color: "#2F4F4F"
+      
+    - material: Concrete
+      x: 0.50
+      y: 2.5
+      size: 2400
+      color: "#A9A9A9"
+      
+    - material: Brick
+      x: 0.55
+      y: 2.0
+      size: 1900
+      color: "#B22222"
+      
+    - material: Steel
+      x: 0.35
+      y: 2.0
+      size: 7850
+      color: "#708090"
+      
+    - material: Aluminum
+      x: 0.06
+      y: 1.8
+      size: 2700
+      color: "#C0C0C0"
+
+  # Chart 4: Laser Parameter Requirements
+  laser_parameters_heatmap:
+    type: heatmap
+    title: "Optimal Laser Settings by Material"
+    description: "Color intensity shows relative power/fluence requirements"
+    
+    rows: [Granite, Marble, Limestone, Sandstone, Basalt, Concrete, Brick, Steel, Aluminum]
+    columns: [Power, Fluence, Speed, Wavelength_Preference]
+    
+    data:
+      Granite:
+        Power: 100  # Watts
+        Fluence: 2.5  # J/cm²
+        Speed: 500  # mm/s
+        Wavelength_Preference: "1064nm"
+        
+      Marble:
+        Power: 80
+        Fluence: 2.0
+        Speed: 600
+        Wavelength_Preference: "1064nm"
+        
+      Limestone:
+        Power: 60
+        Fluence: 1.5
+        Speed: 700
+        Wavelength_Preference: "1064nm"
+        
+      Sandstone:
+        Power: 50
+        Fluence: 1.2
+        Speed: 400
+        Wavelength_Preference: "532nm"
+        
+      Basalt:
+        Power: 90
+        Fluence: 3.0
+        Speed: 450
+        Wavelength_Preference: "1064nm"
+        
+      Concrete:
+        Power: 70
+        Fluence: 1.8
+        Speed: 550
+        Wavelength_Preference: "1064nm"
+        
+      Brick:
+        Power: 60
+        Fluence: 1.5
+        Speed: 600
+        Wavelength_Preference: "532nm"
+        
+      Steel:
+        Power: 100
+        Fluence: 5.0
+        Speed: 500
+        Wavelength_Preference: "1064nm"
+        
+      Aluminum:
+        Power: 100
+        Fluence: 5.1
+        Speed: 500
+        Wavelength_Preference: "1064nm"
+    
+    color_scale:
+      low: "#4CAF50"  # Green = easier/gentler
+      medium: "#FFC107"  # Amber = moderate
+      high: "#F44336"  # Red = more difficult/aggressive
+
+  # Chart 5: Cost-Performance Analysis
+  cost_performance_matrix:
+    type: bubble_chart
+    title: "Material Selection: Durability vs. Laser Cleaning Ease"
+    description: "Help users choose materials based on long-term performance"
+    x_axis: cleaning_difficulty_score
+    y_axis: material_durability_score
+    bubble_size: typical_cost_index
+    
+    quadrants:
+      optimal:
+        label: "Optimal Choice"
+        description: "Durable + Easy to clean"
+        position: "upper left"
+        
+      high_maintenance:
+        label: "High Maintenance"
+        description: "Durable but difficult to clean"
+        position: "upper right"
+        
+      budget_friendly:
+        label: "Budget-Friendly"
+        description: "Easy to clean but less durable"
+        position: "lower left"
+        
+      challenging:
+        label: "Challenging"
+        description: "Low durability + Difficult cleaning"
+        position: "lower right"
+    
+    data:
+    - material: Granite
+      x: 4  # cleaning difficulty (1-10, lower=easier)
+      y: 9  # durability (1-10, higher=better)
+      bubble: 7  # cost index (1-10, higher=more expensive)
+      quadrant: optimal
+      recommendation: "Excellent choice for monuments and high-traffic areas"
+      
+    - material: Marble
+      x: 3
+      y: 7
+      bubble: 8
+      quadrant: optimal
+      recommendation: "Good for sculptures and luxury applications"
+      
+    - material: Limestone
+      x: 6
+      y: 5
+      bubble: 4
+      quadrant: high_maintenance
+      recommendation: "Requires frequent maintenance but economical"
+      
+    - material: Sandstone
+      x: 7
+      y: 4
+      bubble: 3
+      quadrant: challenging
+      recommendation: "Consider alternatives for high-contamination environments"
+      
+    - material: Basalt
+      x: 5
+      y: 10
+      bubble: 5
+      quadrant: optimal
+      recommendation: "Best durability, moderate cleaning difficulty"
+      
+    - material: Concrete
+      x: 6
+      y: 6
+      bubble: 2
+      quadrant: high_maintenance
+      recommendation: "Economical but requires careful laser parameters"
+      
+    - material: Brick
+      x: 8
+      y: 5
+      bubble: 3
+      quadrant: challenging
+      recommendation: "Historical restoration only - very fragile"
+
+# ------------------------------------------------------------------------------
+# SECTION 7: DECISION MATRIX
+# ------------------------------------------------------------------------------
+decision_support:
+  title: "Material Selection Guide for Laser Cleaning Applications"
+  
+  scenarios:
+  - scenario: "Outdoor Monument or Sculpture"
+    priority_factors:
+    - "Weather resistance"
+    - "Long-term durability"
+    - "Maintenance frequency"
+    
+    ranking:
+    1:
+      material: Granite
+      score: 9.5
+      reasoning: "Excellent weather resistance, low porosity, easy to maintain with laser cleaning"
+      laser_advantage: "Moderate power requirements, predictable results"
+      
+    2:
+      material: Basalt
+      score: 9.3
+      reasoning: "Superior durability but slightly more difficult thermal management"
+      laser_advantage: "High damage threshold allows aggressive cleaning"
+      
+    3:
+      material: Marble
+      score: 8.0
+      reasoning: "Good for sculptures but acid-reactive in polluted environments"
+      laser_advantage: "Gentle parameters work well, fast processing"
+  
+  - scenario: "Historical Building Facade Restoration"
+    priority_factors:
+    - "Material authenticity"
+    - "Gentle cleaning requirements"
+    - "Substrate preservation"
+    
+    ranking:
+    1:
+      material: Limestone
+      score: 8.5
+      reasoning: "Common in historical buildings, requires gentle approach"
+      laser_advantage: "Low power parameters preserve substrate integrity"
+      
+    2:
+      material: Brick
+      score: 8.0
+      reasoning: "Historically accurate but very fragile"
+      laser_advantage: "Good absorption aids cleaning, but requires expertise"
+      
+    3:
+      material: Sandstone
+      score: 7.5
+      reasoning: "Beautiful but highly porous, challenging to clean"
+      laser_advantage: "Multiple gentle passes prevent damage"
+  
+  - scenario: "High-Traffic Commercial Flooring"
+    priority_factors:
+    - "Wear resistance"
+    - "Stain resistance (low porosity)"
+    - "Easy maintenance"
+    
+    ranking:
+    1:
+      material: Granite
+      score: 9.8
+      reasoning: "Hardest stone, lowest porosity, excellent wear resistance"
+      laser_advantage: "Standard parameters, consistent results"
+      
+    2:
+      material: Basalt
+      score: 9.0
+      reasoning: "Excellent durability, slightly higher porosity"
+      laser_advantage: "Dark color shows less staining"
+      
+    3:
+      material: Concrete
+      score: 6.5
+      reasoning: "Economical but requires sealing and frequent maintenance"
+      laser_advantage: "Easy to clean but weak substrate"
+  
+  - scenario: "Kitchen Countertop (Food-Safe)"
+    priority_factors:
+    - "Low porosity"
+    - "Stain resistance"
+    - "Easy cleaning"
+    
+    ranking:
+    1:
+      material: Granite
+      score: 9.5
+      reasoning: "0.6% porosity, excellent stain resistance when sealed"
+      laser_advantage: "Can restore damaged surfaces effectively"
+      
+    2:
+      material: Marble
+      score: 7.0
+      reasoning: "Beautiful but acid-reactive (lemon juice, vinegar)"
+      laser_advantage: "Gentle cleaning maintains polish"
+      
+    3:
+      material: Concrete
+      score: 5.0
+      reasoning: "Modern aesthetic but high porosity requires thick sealer"
+      laser_advantage: "Difficult to restore without damaging sealer"
+
+# ------------------------------------------------------------------------------
+# SECTION 8: FAQs (Voice-Enhanced)
+# ------------------------------------------------------------------------------
+faq:
+- question: "Why is granite better than marble for outdoor monuments?"
+  answer: "Granite basically outperforms marble outdoors due to its superior hardness (Mohs 6.5 vs 3.5) and pretty minimal acid reactivity. While marble looks elegant, it's fairly vulnerable to acid rain that causes surface pitting. For laser cleaning, granite typically handles higher fluences (2.5 J/cm² vs 2.0 J/cm²), making restoration more efficient over the stone's longer lifespan."
+  topic_keyword: "better than marble"
+  topic_statement: "Hardness and acid resistance"
+  
+- question: "Can I use the same laser settings for granite and limestone?"
+  answer: "No, that's pretty risky—limestone basically requires 40% less power (60W vs 100W) and lower fluence (1.5 J/cm² vs 2.5 J/cm²) compared to granite. Limestone's much higher porosity (4% vs 0.6%) and lower compressive strength (90 MPa vs 211 MPa) mean it's fairly easy to damage with granite parameters. Our systematic approach is to always measure hardness and porosity first."
+  topic_keyword: "same laser settings"
+  topic_statement: "Material properties require different parameters"
+  
+- question: "Why is sandstone so difficult to laser clean compared to granite?"
+  answer: "Sandstone's basically a nightmare due to its extreme porosity (12% vs granite's 0.6%)—that's pretty much 20 times more porous. Contaminants penetrate deeply into the grain structure, so you're looking at fairly long cleaning times with very gentle parameters (1.2 J/cm² vs 2.5 J/cm²). The weak cementation between grains means aggressive laser cleaning typically causes grain ejection, not just contamination removal."
+  topic_keyword: "difficult to laser clean"
+  topic_statement: "High porosity and weak structure"
+  
+- question: "How does granite compare to steel for laser cleaning applications?"
+  answer: "They're pretty much opposite ends of the spectrum—steel has 2.9x higher density (7850 kg/m³ vs 2700 kg/m³) and 18x higher thermal conductivity (50 W/m·K vs 2.79 W/m·K). Steel basically dissipates heat super fast, so it can typically handle much higher fluence (5.0 J/cm² vs 2.5 J/cm²). But granite's lower reflectivity (0.9 vs steel's metallic reflection) makes it fairly easier to predict laser absorption patterns."
+  topic_keyword: "compare to steel"
+  topic_statement: "Different thermal dynamics"
+  
+- question: "Is concrete a good alternative to granite for outdoor installations requiring laser cleaning?"
+  answer: "Not really—concrete's basically way less durable with 10x higher porosity (10% vs 0.6%) and much lower compressive strength (40 MPa vs 211 MPa). While it's pretty economical initially, the composite structure is fairly vulnerable to laser damage above 1.8 J/cm². For outdoor monuments needing periodic laser restoration, granite typically delivers better long-term value despite the higher upfront cost."
+  topic_keyword: "good alternative"
+  topic_statement: "Lower durability and laser sensitivity"
+  
+- question: "Why does black granite (basalt) need different laser settings than light granite?"
+  answer: "Black granite basically absorbs 55% more laser energy (0.65 vs 0.42 absorption) due to its darker color from mafic minerals. While it's pretty tough with higher compressive strength (300 MPa vs 211 MPa), the increased absorption means we typically reduce power by 10% (90W vs 100W) to prevent localized overheating. The lower thermal conductivity (1.7 W/m·K vs 2.79 W/m·K) makes heat management fairly critical."
+  topic_keyword: "different laser settings"
+  topic_statement: "Higher absorption requires power reduction"
+
+# ------------------------------------------------------------------------------
+# SECTION 9: RELATED PAGES
+# ------------------------------------------------------------------------------
+related_pages:
+  parent_material:
+    title: "Granite Laser Cleaning"
+    url: /materials/granite-laser-cleaning
+    description: "Return to main granite page"
+  
+  property_research:
+  - title: "Granite Density Research"
+    url: /materials/granite/research/density
+    description: "Deep dive into granite density with geological variations"
+    
+  - title: "Granite Thermal Conductivity Analysis"
+    url: /materials/granite/research/thermal-conductivity
+    description: "How granite's low thermal conductivity affects laser processing"
+  
+  similar_comparisons:
+  - title: "Marble vs. Limestone: Stone Comparison"
+    url: /research/comparisons/marble-vs-limestone
+    description: "Compare sedimentary vs. metamorphic stones"
+    
+  - title: "Metal vs. Stone: Laser Cleaning Differences"
+    url: /research/comparisons/metal-vs-stone-laser-cleaning
+    description: "Fundamental differences in laser-material interactions"
+  
+  application_guides:
+  - title: "Monument Restoration Material Selection"
+    url: /guides/monument-material-selection
+    description: "Choose optimal materials for outdoor monuments"
+    
+  - title: "Historical Building Facade Cleaning"
+    url: /guides/historical-facade-laser-cleaning
+    description: "Best practices for fragile historical materials"
+
+# ------------------------------------------------------------------------------
+# SECTION 10: E-E-A-T & SEO
+# ------------------------------------------------------------------------------
+eeat:
+  reviewedBy: "Z-Beam Comparative Materials Analysis Team"
+  expertise:
+  - "Materials Science & Engineering"
+  - "Comparative Property Analysis"
+  - "Laser-Material Interactions"
+  - "Construction Materials Selection"
+  
+  methodology: "Multi-material cross-validation using standardized test methods (ASTM, ISO) and direct laser cleaning experiments"
+  
+  citations:
+  - "ASTM C615 - Granite Specification"
+  - "ASTM C503 - Marble and Limestone Specification"
+  - "ASTM C616 - Sandstone Specification"
+  - "ACI 318 - Building Code Requirements for Concrete"
+  
+  isBasedOn:
+    name: "Comparative Materials Database - 132 Materials"
+    url: https://www.z-beam.com/research/materials-database
+
+seo:
+  canonical: https://www.z-beam.com/materials/granite/comparison
+  keywords:
+  - granite vs marble laser cleaning
+  - stone material comparison
+  - granite vs limestone
+  - construction material selection laser cleaning
+  - granite properties comparison
+  - best stone for monuments
+  - granite vs concrete laser cleaning
+  - material selection guide
+  
+  og_title: "Granite vs. 8 Materials: Laser Cleaning Comparison | Z-Beam"
+  og_description: "Compare granite against marble, limestone, steel, and more. See density, thermal properties, and optimal laser parameters side-by-side."
+  og_image: /images/research/granite-material-comparison-chart.png
+
+# ------------------------------------------------------------------------------
+# SECTION 11: DATASET DOWNLOAD
+# ------------------------------------------------------------------------------
+dataset:
+  enabled: true
+  title: "Granite Multi-Material Comparison Dataset"
+  description: "Complete comparison data for 9 materials across 25+ properties"
+  
+  variables_count: 25
+  materials_count: 9
+  chart_types: 5
+  
+  formats:
+  - format: JSON
+    filename: granite-material-comparison.json
+    
+  - format: CSV
+    filename: granite-comparison-matrix.csv
+    
+  - format: YAML
+    filename: granite-comparison-full.yaml
+
+  license:
+    name: "Creative Commons BY 4.0"
+    url: https://creativecommons.org/licenses/by/4.0/

@@ -492,13 +492,20 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
                     )
                     
                     if result.success and result.confidence >= (confidence_threshold / 100.0):
+                        # Write full citation schema to Materials.yaml
                         material_results[prop_name] = {
                             'value': result.researched_value,
                             'unit': result.unit,
+                            'source': result.source,
+                            'source_type': result.source_type,
+                            'source_name': result.source_name,
+                            'citation': result.citation,
+                            'context': result.context,
                             'confidence': int(result.confidence * 100),
-                            'source': result.source
+                            'researched_date': result.research_date,
+                            'needs_validation': result.needs_validation
                         }
-                        print(f"✅ {result.researched_value} {result.unit} ({int(result.confidence * 100)}%)")
+                        print(f"✅ {result.researched_value} {result.unit} ({int(result.confidence * 100)}%) - {result.source_name}")
                         successful_research += 1
                     else:
                         error_msg = result.error_message if hasattr(result, 'error_message') and result.error_message else "Unknown error"

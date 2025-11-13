@@ -49,6 +49,12 @@ class ResearchResult:
     max_value: Optional[float] = None
     success: bool = True
     error_message: Optional[str] = None
+    # Full citation schema fields (MaterialPropertyValue)
+    source_type: str = "ai_research"
+    source_name: str = ""
+    citation: str = ""
+    context: str = ""
+    needs_validation: bool = True
 
 
 @dataclass
@@ -266,14 +272,28 @@ RESPONSE FORMAT (JSON only):
     "value": <precise_numeric_value>,
     "unit": "<standard_SI_unit>",
     "confidence": <0.9_to_1.0>,
-    "research_basis": "<authoritative_source_citation>",
-    "validation_method": "<how_value_was_validated>",
+    "source_type": "reference_handbook|journal_article|materials_database|industry_standard|textbook",
+    "source_name": "<Full name of authoritative source>",
+    "citation": "<Complete citation: Author/Publisher, Year, ISBN/DOI/URL>",
+    "context": "<Specific conditions: purity, temperature, measurement method>",
+    "research_basis": "<Brief summary of research methodology>",
+    "validation_method": "<How value was cross-validated>",
     "min_typical": <minimum_typical_value>,
     "max_typical": <maximum_typical_value>
 }}
 
+CITATION EXAMPLES:
+- reference_handbook: "CRC Handbook of Chemistry and Physics, 104th Ed., 2023, ISBN 978-1-138-56163-2"
+- journal_article: "Smith et al., Journal of Materials Science, 2022, DOI: 10.1007/example"
+- materials_database: "MatWeb Materials Database, http://www.matweb.com, accessed 2025"
+
+CONTEXT EXAMPLES:
+- "Pure aluminum (99.999% purity), 25°C, measured via pycnometry"
+- "Commercial grade steel (AISI 304), room temperature, standard atmospheric pressure"
+
 CRITICAL: Ensure the value is UNIQUE and SPECIFIC to {material_name}.
-CRITICAL: Confidence must be >= 0.9 or the research will be rejected."""
+CRITICAL: Confidence must be >= 0.9 or the research will be rejected.
+CRITICAL: Provide COMPLETE citations with ISBN/DOI/URL."""
     
     def _parse_research_response(
         self,
@@ -309,6 +329,12 @@ CRITICAL: Confidence must be >= 0.9 or the research will be rejected."""
             research_basis = research_data.get('research_basis', '')
             validation_method = research_data.get('validation_method', '')
             
+            # Extract full citation fields
+            source_type = research_data.get('source_type', 'ai_research')
+            source_name = research_data.get('source_name', '')
+            citation = research_data.get('citation', '')
+            context = research_data.get('context', '')
+            
             if value is None:
                 raise ResearchError("Missing required 'value' field")
             
@@ -318,12 +344,18 @@ CRITICAL: Confidence must be >= 0.9 or the research will be rejected."""
                 researched_value=float(value),
                 unit=str(unit),
                 confidence=float(confidence),
-                source='ai_research',
+                source='scientific_literature',  # Changed from 'ai_research'
                 research_basis=str(research_basis),
                 research_date=datetime.now().isoformat(),
                 validation_method=str(validation_method),
                 min_value=research_data.get('min_typical'),
-                max_value=research_data.get('max_typical')
+                max_value=research_data.get('max_typical'),
+                # Full citation schema
+                source_type=str(source_type),
+                source_name=str(source_name),
+                citation=str(citation),
+                context=str(context),
+                needs_validation=True
             )
             
             return result
@@ -343,6 +375,16 @@ CRITICAL: Confidence must be >= 0.9 or the research will be rejected."""
         
         if not result.validation_method:
             validations.append("Missing validation_method")
+        
+        # Validate full citation schema fields
+        if not result.source_name:
+            validations.append("Missing source_name (required for MaterialPropertyValue schema)")
+        
+        if not result.citation:
+            validations.append("Missing citation (required for MaterialPropertyValue schema)")
+        
+        if not result.context:
+            validations.append("Missing context (required for MaterialPropertyValue schema)")
         
         # Allow negative values for properties like thermal expansion (composites can have negative coefficients)
         # Only reject truly invalid values (None, NaN, extreme outliers)

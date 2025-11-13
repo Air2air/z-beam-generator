@@ -4,8 +4,11 @@ Material Content Schema
 Defines structure and research requirements for laser cleaning materials.
 Extends ContentSchema with material-specific fields and validation.
 
+Includes citation architecture per OPTIMAL_FRONTMATTER_ARCHITECTURE.md
+
 Author: AI Assistant  
 Date: October 29, 2025
+Updated: November 12, 2025 - Added citation schema
 """
 
 from dataclasses import dataclass, field
@@ -16,6 +19,107 @@ from shared.schemas.base import (
     ResearchMethod,
     FieldType
 )
+
+
+@dataclass
+class MaterialPropertyValue:
+    """
+    Schema for material property value with comprehensive citations.
+    
+    Enforces zero-fallback policy: all non-null values MUST have complete citations.
+    Null values MUST have needs_research flag.
+    
+    Example:
+        density = MaterialPropertyValue(
+            value=2.7,
+            unit="g/cm³",
+            source="scientific_literature",
+            source_type="reference_handbook",
+            source_name="CRC Handbook of Chemistry and Physics",
+            citation="ISBN 978-1-138-56163-2 (104th Ed., 2023)",
+            context="Pure aluminum at 25°C via pycnometry",
+            confidence=98,
+            researched_date="2025-11-07T12:51:40Z",
+            needs_validation=False
+        )
+    """
+    # Primary value (can be None only if needs_research=True)
+    value: Optional[float]
+    unit: str
+    
+    # Citation fields (REQUIRED for non-null values)
+    source: str  # scientific_literature | materials_database | industry_standard | government_database
+    source_type: str  # reference_handbook | journal_article | materials_database | industry_standard
+    source_name: str  # Full source name
+    citation: str  # Complete citation with ISBN/DOI/URL
+    context: str  # Measurement conditions and methodology
+    confidence: int  # 0-100 scale
+    
+    # Research metadata
+    researched_date: str  # ISO8601 format
+    needs_validation: bool  # True if AI-generated, False if authoritative
+    
+    # NULL handling (required if value is None)
+    needs_research: bool = False
+    research_priority: Optional[str] = None  # high | medium | low
+    last_research_attempt: Optional[str] = None
+    notes: Optional[str] = None
+
+
+@dataclass
+class CategoryRangeValue:
+    """
+    Schema for category-level property range with citations.
+    
+    Used in Categories.yaml for category_ranges.
+    
+    Example:
+        density_range = CategoryRangeValue(
+            min=2.3,
+            max=16.0,
+            unit="g/cm³",
+            source="materials_database",
+            source_type="reference_database",
+            source_name="MatWeb Materials Database",
+            citation="MatWeb LLC. http://www.matweb.com (2023)",
+            range_determination_method="statistical_analysis",
+            sample_size=15,
+            confidence=85,
+            last_updated="2025-10-15T14:19:43Z"
+        )
+    """
+    # Range values (can be None only if needs_research=True)
+    min: Optional[float]
+    max: Optional[float]
+    unit: str
+    
+    # Citation fields (REQUIRED for non-null ranges)
+    source: str
+    source_type: str
+    source_name: str
+    citation: str
+    
+    # Range methodology
+    range_determination_method: str  # statistical_analysis | literature_review | expert_consensus
+    sample_size: Optional[int] = None  # Number of materials analyzed
+    confidence: int = 85  # 0-100 scale
+    
+    # Metadata
+    last_updated: str  # ISO8601 format
+    researched_by: Optional[str] = None
+    needs_validation: bool = False
+    
+    # Optional adjustment tracking
+    adjustment_note: Optional[str] = None
+    adjustment_date: Optional[str] = None
+    adjustment_source: Optional[str] = None
+    
+    # Material-specific citations (optional)
+    material_citations: Optional[Dict[str, Dict]] = None
+    
+    # NULL handling (required if min/max is None)
+    needs_research: bool = False
+    research_priority: Optional[str] = None
 
 
 @dataclass
