@@ -59,47 +59,6 @@ images:
   micro:
     alt: Schist microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/schist-laser-cleaning-micro.jpg
-caption:
-  before: When examined under a microscope, the schist surface displays a foliated texture pretty much ruined by irregular contaminants, such as fine particulate dust and organic residues adhering to mica flakes and quartz grains. These contaminants, typically measuring 5-50 microns, create patchy films that hasten degradation via micro-pitting and layer delamination. For heritage restoration, such buildup undermines stone integrity, requiring precise cleaning to maintain optical clarity essential for laser alignment in surveying tools.
-  after: After cleaning, the schist surface basically shows a smooth, even texture with restored natural luster, free from embedded grime and minor fissures. Restoration quality remains fairly high, preserving the stone's foliated structure without chemical degradation. Material integrity stays intact, since the process skips abrasion that might weaken its compressive strength. For architectural uses, like heritage building facades, this delivers durable, aesthetically revived stonework.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: What laser wavelengths are most effective for cleaning biological growth like lichen from schist stone without **causing delamination**?
-  answer: '**1064 nm minimizes delamination risk**. For cleaning lichen from schist, the 1064 nm near-IR wavelength basically outperforms 532 nm by targeting organic growth with fairly minimal absorption in the stone''s foliated mica layers, thus reducing delamination risk. Keep fluence below 4.5 J/cm² at 90 W power to ablate contaminants while preserving substrate integrity.'
-- question: How do I adjust laser power settings to remove soot and pollutants from historical schist facades while preserving the natural mica sheen?
-  answer: For those historical schist facades, set the fluence at 4.5 J/cm² to pretty much vaporize soot and grime without etching the substrate, preserving that subtle mica luster. Pair it with a 50 kHz repetition rate and 500 mm/s scan speed, which fairly handles the stone's irregular hardness and layered minerals for even, gentle coverage.
-- question: Is there a risk of thermal cracking in schist during laser cleaning due to its anisotropic structure?
-  answer: Yes, the foliated anisotropy in schist pretty much leads to uneven thermal expansion, risking cracks during laser cleaning. I'd recommend sticking to 4.5 J/cm² fluence at 90 W power with 1064 nm wavelength, plus air cooling, to basically minimize heat buildup. A Venice canal project successfully avoided damage this way on historic facades.
-- question: What precautions should be taken when laser cleaning schist surfaces that may contain **quartz inclusions** to avoid silica dust hazards?
-  answer: '**Low fluence prevents silica release**. When laser cleaning schist with quartz inclusions, operate at a fluence of 4.5 J/cm² using 1064 nm wavelength to basically ablate surface contaminants without excessive substrate vaporization that could release respirable silica particles. Typically mandate N95 respirators or better for workers, plus local exhaust ventilation to capture dust, ensuring OSHA compliance with the 50 µg/m³ limit for crystalline silica in mineral-rich stones like schist.'
-- question: Can Nd:YAG lasers effectively strip old coatings from schist without altering its **metamorphic texture**?
-  answer: '**Preserves metamorphic texture integrity**. Yes, Nd:YAG lasers at 1064 nm fairly effectively remove old coatings from schist via layered ablation, employing 4.5 J/cm² fluence for selective targeting that spares the substrate. Typically, this preserves the stone''s metamorphic texture, with post-cleaning microscopy showing no structural changes in its foliated layers.'
-- question: In laser cleaning forums, users mention schist's variable composition—how does the **mica content** affect cleaning efficiency?
-  answer: '**Mica boosts reflectivity, slows efficiency**. Higher mica content in schist pretty much boosts reflectivity at 1064 nm, reducing laser absorption and slowing contaminant removal efficiency. Mica-rich varieties typically need fluence dialed up to 4.5 J/cm² for compensation, while chlorite schist cleans faster on baseline settings with better uptake. Scan at 500 mm/s either way for even coverage.'
-- question: What are common issues with laser cleaning equipment when treating outdoor schist monuments **exposed to weathering**?
-  answer: '**Adjust fluence for uneven surfaces**. Outdoor laser cleaning of weathered schist monuments typically runs into portability challenges from bulky setups and limited weather resistance, which can lead to moisture damaging the optics. For schist''s rough, uneven surfaces, adjust the equipment to 4.5 J/cm² fluence and 500 mm/s scan speed for even ablation without harming the substrate. Pretty routine dust filters assist as well.'
-- question: For schist in architectural restoration, what training is recommended for operators to avoid over-ablation on **fragile layers**?
-  answer: '**ICOMOS-guided low fluence training**. Operators working on laser cleaning for schist''s pretty fragile foliated layers need ICOMOS-guided training that stresses hands-on practice using fairly low fluence around 4.5 J/cm² to avoid over-ablation. Essential steps cover test patches on comparable stone plus real-time visual checks through magnification, while tuning scan speeds to 500 mm/s for even coverage without heating up delicate minerals.'
-- question: How does schist's **low porosity** impact the removal of salt efflorescence using laser methods compared to sandstone?
-  answer: '**Confines energy for superficial ablation**. Schist''s low porosity basically confines laser energy to the surface, cutting penetration depth versus sandstone''s deeper salt absorption. That pretty much improves residue removal efficiency for efflorescence, since contaminants remain superficial. So we use lower fluence, like 4.5 J/cm² at 1064 nm, to ablate salts cleanly without substrate damage.'
-- question: What physical properties of schist, like its hardness and cleavage, should be considered before selecting a laser cleaning method?
-  answer: Schist's Mohs hardness, spanning 3-7, basically calls for laser settings that protect softer mica layers from over-ablation. Those strong cleavage planes fairly amplify crack risks under heat, so aim at 4.5 J/cm² fluence using 1064 nm to strip surface grime cleanly without spreading fissures.
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922643Z'
   normalization_applied: true
@@ -314,3 +273,44 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: When examined under a microscope, the schist surface displays a foliated texture pretty much ruined by irregular contaminants, such as fine particulate dust and organic residues adhering to mica flakes and quartz grains. These contaminants, typically measuring 5-50 microns, create patchy films that hasten degradation via micro-pitting and layer delamination. For heritage restoration, such buildup undermines stone integrity, requiring precise cleaning to maintain optical clarity essential for laser alignment in surveying tools.
+  after: After cleaning, the schist surface basically shows a smooth, even texture with restored natural luster, free from embedded grime and minor fissures. Restoration quality remains fairly high, preserving the stone's foliated structure without chemical degradation. Material integrity stays intact, since the process skips abrasion that might weaken its compressive strength. For architectural uses, like heritage building facades, this delivers durable, aesthetically revived stonework.
+faq:
+- question: What laser wavelengths are most effective for cleaning biological growth like lichen from schist stone without **causing delamination**?
+  answer: '**1064 nm minimizes delamination risk**. For cleaning lichen from schist, the 1064 nm near-IR wavelength basically outperforms 532 nm by targeting organic growth with fairly minimal absorption in the stone''s foliated mica layers, thus reducing delamination risk. Keep fluence below 4.5 J/cm² at 90 W power to ablate contaminants while preserving substrate integrity.'
+- question: How do I adjust laser power settings to remove soot and pollutants from historical schist facades while preserving the natural mica sheen?
+  answer: For those historical schist facades, set the fluence at 4.5 J/cm² to pretty much vaporize soot and grime without etching the substrate, preserving that subtle mica luster. Pair it with a 50 kHz repetition rate and 500 mm/s scan speed, which fairly handles the stone's irregular hardness and layered minerals for even, gentle coverage.
+- question: Is there a risk of thermal cracking in schist during laser cleaning due to its anisotropic structure?
+  answer: Yes, the foliated anisotropy in schist pretty much leads to uneven thermal expansion, risking cracks during laser cleaning. I'd recommend sticking to 4.5 J/cm² fluence at 90 W power with 1064 nm wavelength, plus air cooling, to basically minimize heat buildup. A Venice canal project successfully avoided damage this way on historic facades.
+- question: What precautions should be taken when laser cleaning schist surfaces that may contain **quartz inclusions** to avoid silica dust hazards?
+  answer: '**Low fluence prevents silica release**. When laser cleaning schist with quartz inclusions, operate at a fluence of 4.5 J/cm² using 1064 nm wavelength to basically ablate surface contaminants without excessive substrate vaporization that could release respirable silica particles. Typically mandate N95 respirators or better for workers, plus local exhaust ventilation to capture dust, ensuring OSHA compliance with the 50 µg/m³ limit for crystalline silica in mineral-rich stones like schist.'
+- question: Can Nd:YAG lasers effectively strip old coatings from schist without altering its **metamorphic texture**?
+  answer: '**Preserves metamorphic texture integrity**. Yes, Nd:YAG lasers at 1064 nm fairly effectively remove old coatings from schist via layered ablation, employing 4.5 J/cm² fluence for selective targeting that spares the substrate. Typically, this preserves the stone''s metamorphic texture, with post-cleaning microscopy showing no structural changes in its foliated layers.'
+- question: In laser cleaning forums, users mention schist's variable composition—how does the **mica content** affect cleaning efficiency?
+  answer: '**Mica boosts reflectivity, slows efficiency**. Higher mica content in schist pretty much boosts reflectivity at 1064 nm, reducing laser absorption and slowing contaminant removal efficiency. Mica-rich varieties typically need fluence dialed up to 4.5 J/cm² for compensation, while chlorite schist cleans faster on baseline settings with better uptake. Scan at 500 mm/s either way for even coverage.'
+- question: What are common issues with laser cleaning equipment when treating outdoor schist monuments **exposed to weathering**?
+  answer: '**Adjust fluence for uneven surfaces**. Outdoor laser cleaning of weathered schist monuments typically runs into portability challenges from bulky setups and limited weather resistance, which can lead to moisture damaging the optics. For schist''s rough, uneven surfaces, adjust the equipment to 4.5 J/cm² fluence and 500 mm/s scan speed for even ablation without harming the substrate. Pretty routine dust filters assist as well.'
+- question: For schist in architectural restoration, what training is recommended for operators to avoid over-ablation on **fragile layers**?
+  answer: '**ICOMOS-guided low fluence training**. Operators working on laser cleaning for schist''s pretty fragile foliated layers need ICOMOS-guided training that stresses hands-on practice using fairly low fluence around 4.5 J/cm² to avoid over-ablation. Essential steps cover test patches on comparable stone plus real-time visual checks through magnification, while tuning scan speeds to 500 mm/s for even coverage without heating up delicate minerals.'
+- question: How does schist's **low porosity** impact the removal of salt efflorescence using laser methods compared to sandstone?
+  answer: '**Confines energy for superficial ablation**. Schist''s low porosity basically confines laser energy to the surface, cutting penetration depth versus sandstone''s deeper salt absorption. That pretty much improves residue removal efficiency for efflorescence, since contaminants remain superficial. So we use lower fluence, like 4.5 J/cm² at 1064 nm, to ablate salts cleanly without substrate damage.'
+- question: What physical properties of schist, like its hardness and cleavage, should be considered before selecting a laser cleaning method?
+  answer: Schist's Mohs hardness, spanning 3-7, basically calls for laser settings that protect softer mica layers from over-ablation. Those strong cleavage planes fairly amplify crack risks under heat, so aim at 4.5 J/cm² fluence using 1064 nm to strip surface grime cleanly without spreading fissures.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

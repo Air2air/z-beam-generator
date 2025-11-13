@@ -59,41 +59,6 @@ images:
   micro:
     alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
     url: /images/material/teak-laser-cleaning-micro.jpg
-caption:
-  before: Looking closely under a microscope, teak wood's contaminated surface typically reveals irregular pitting and micro-cracks from extended marine exposure, like saltwater corrosion on yacht decking. Fine particulate contaminants—salt crystals and organic residues—fairly cling to fiber bundles, hastening degradation by weakening lignin bonds and fostering fungal hyphae growth. That causes surface erosion, undermining structural integrity in aerospace paneling uses.
-  after: The laser-cleaned teak surface shows a pretty smooth, even finish, with the natural grain restored and free of contaminants. Restoration quality is fairly high, preserving material integrity for marine decking without fiber damage.
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: Is laser cleaning safe for teak wood decks on boats without causing charring or discoloration?
-  answer: Yes, laser cleaning is fairly safe for teak boat decks using nanosecond pulses at 12 ns duration and 2.8 J/cm² fluence. It ablates grime without exceeding teak's thermal threshold around 200°C. This near-IR 1064 nm approach basically targets lignin selectively, preventing charring or yellowing. Marine forum users typically report pristine results after two 500 mm/s passes at 45 W.
-- question: What laser parameters are recommended for removing old varnish from teak furniture without damaging the **underlying grain**?
-  answer: '**Spares dense grain structure**. For varnish removal on teak furniture, I''d recommend a 1064 nm near-IR laser at 2.8 J/cm² fluence to basically ablate the coating selectively, sparing the dense grain structure. Pretty much pair this with 45 W power and 500 mm/s scan speed over two passes for uniform results without charring the lignin-rich surface.'
-- question: How do **teak's natural oils** impact the effectiveness of laser ablation during surface cleaning?
-  answer: '**Degrease to prevent recondensation**. Teak''s inherent oils typically volatilize under 1064 nm laser exposure, helping with contaminant removal but risking uneven ablation and residue if they recondense. To optimize results at 2.8 J/cm² fluence, degrease surfaces first—this basically prevents buildup and delivers uniform cleaning without charring the wood.'
-- question: In laser cleaning applications, what are the fire risks associated with teak's high oil content and how to mitigate them?
-  answer: Teak wood's oily resins lower its ignition point to about 250°C, which pretty much amps up fire risks in laser cleaning from volatile vapors at 1064 nm. To handle this, basically purge with inert nitrogen gas and cap fluence at 2.8 J/cm² using 45 W power, per safety protocols, avoiding thermal runaway.
-- question: Can fiber lasers effectively clean teak surfaces contaminated with **saltwater and mildew** in outdoor settings?
-  answer: '**Ablates contaminants without scorching**. Yeah, fiber lasers do a pretty effective job removing saltwater and mildew from teak''s porous grain in outdoor marine settings, using 1064 nm wavelength and 2.8 J/cm² fluence to ablate contaminants without scorching the wood. Their corrosion-resistant enclosures fairly ensure reliability outdoors. Seal the surface after treatment to prevent recontamination.'
-- question: What differences in laser cleaning outcomes are reported for old-growth teak versus plantation teak?
-  answer: Basically, old-growth teak packs a higher density and richer oil content, so it absorbs the 1064 nm laser pretty intensely, calling for a lower fluence of about 2.8 J/cm² in controlled cleaning to avoid charring while holding scan speeds at 500 mm/s. Plantation teak, less dense yet oilier, cleans faster but needs careful 40% overlap for even contaminant removal without substrate exposure.
-- question: How does laser cleaning compare to chemical stripping for preserving teak's **natural color and texture** in restoration projects?
-  answer: '**Safeguards warm tones and grain**. Laser cleaning basically outperforms chemical stripping in teak restoration, precisely zapping away grime at 2.8 J/cm² fluence with a 1064 nm wavelength. This method safeguards the wood''s warm tones and intricate grain, skipping chemical discoloration altogether. Pretty eco-friendlier too, it ditches hazardous wastes, while marine project woodworkers rave about those crisp, authentic finishes in community case studies.'
-- question: What fume extraction systems are necessary when laser cleaning teak in enclosed workshops due to its **volatile compounds**?
-  answer: '**Install HEPA local exhaust**. When laser cleaning teak with 2.8 J/cm² fluence and 45 W power, ablation releases volatile oils and fine dust that fairly pose respiratory risks like sensitization. Basically, in enclosed areas, set up local exhaust ventilation using HEPA filters to trap particulates down to 0.3 μm, aligning with OSHA standards for clean air.'
-- question: Are there specific laser wavelengths that minimize damage to teak's lignin structure during surface treatment?
-  answer: Typically, near-IR lasers at 1064 nm are the best for teak cleaning, as they align with its lignin absorption to efficiently remove contaminants without deep structural damage—UV options absorb too strongly and risk degrading polymer bonds. Stick to 2.8 J/cm² fluence for pretty safe ablation that avoids charring the wood's surface.
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922827Z'
   normalization_applied: true
@@ -311,3 +276,38 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 120
+caption:
+  before: Looking closely under a microscope, teak wood's contaminated surface typically reveals irregular pitting and micro-cracks from extended marine exposure, like saltwater corrosion on yacht decking. Fine particulate contaminants—salt crystals and organic residues—fairly cling to fiber bundles, hastening degradation by weakening lignin bonds and fostering fungal hyphae growth. That causes surface erosion, undermining structural integrity in aerospace paneling uses.
+  after: The laser-cleaned teak surface shows a pretty smooth, even finish, with the natural grain restored and free of contaminants. Restoration quality is fairly high, preserving material integrity for marine decking without fiber damage.
+faq:
+- question: Is laser cleaning safe for teak wood decks on boats without causing charring or discoloration?
+  answer: Yes, laser cleaning is fairly safe for teak boat decks using nanosecond pulses at 12 ns duration and 2.8 J/cm² fluence. It ablates grime without exceeding teak's thermal threshold around 200°C. This near-IR 1064 nm approach basically targets lignin selectively, preventing charring or yellowing. Marine forum users typically report pristine results after two 500 mm/s passes at 45 W.
+- question: What laser parameters are recommended for removing old varnish from teak furniture without damaging the **underlying grain**?
+  answer: '**Spares dense grain structure**. For varnish removal on teak furniture, I''d recommend a 1064 nm near-IR laser at 2.8 J/cm² fluence to basically ablate the coating selectively, sparing the dense grain structure. Pretty much pair this with 45 W power and 500 mm/s scan speed over two passes for uniform results without charring the lignin-rich surface.'
+- question: How do **teak's natural oils** impact the effectiveness of laser ablation during surface cleaning?
+  answer: '**Degrease to prevent recondensation**. Teak''s inherent oils typically volatilize under 1064 nm laser exposure, helping with contaminant removal but risking uneven ablation and residue if they recondense. To optimize results at 2.8 J/cm² fluence, degrease surfaces first—this basically prevents buildup and delivers uniform cleaning without charring the wood.'
+- question: In laser cleaning applications, what are the fire risks associated with teak's high oil content and how to mitigate them?
+  answer: Teak wood's oily resins lower its ignition point to about 250°C, which pretty much amps up fire risks in laser cleaning from volatile vapors at 1064 nm. To handle this, basically purge with inert nitrogen gas and cap fluence at 2.8 J/cm² using 45 W power, per safety protocols, avoiding thermal runaway.
+- question: Can fiber lasers effectively clean teak surfaces contaminated with **saltwater and mildew** in outdoor settings?
+  answer: '**Ablates contaminants without scorching**. Yeah, fiber lasers do a pretty effective job removing saltwater and mildew from teak''s porous grain in outdoor marine settings, using 1064 nm wavelength and 2.8 J/cm² fluence to ablate contaminants without scorching the wood. Their corrosion-resistant enclosures fairly ensure reliability outdoors. Seal the surface after treatment to prevent recontamination.'
+- question: What differences in laser cleaning outcomes are reported for old-growth teak versus plantation teak?
+  answer: Basically, old-growth teak packs a higher density and richer oil content, so it absorbs the 1064 nm laser pretty intensely, calling for a lower fluence of about 2.8 J/cm² in controlled cleaning to avoid charring while holding scan speeds at 500 mm/s. Plantation teak, less dense yet oilier, cleans faster but needs careful 40% overlap for even contaminant removal without substrate exposure.
+- question: How does laser cleaning compare to chemical stripping for preserving teak's **natural color and texture** in restoration projects?
+  answer: '**Safeguards warm tones and grain**. Laser cleaning basically outperforms chemical stripping in teak restoration, precisely zapping away grime at 2.8 J/cm² fluence with a 1064 nm wavelength. This method safeguards the wood''s warm tones and intricate grain, skipping chemical discoloration altogether. Pretty eco-friendlier too, it ditches hazardous wastes, while marine project woodworkers rave about those crisp, authentic finishes in community case studies.'
+- question: What fume extraction systems are necessary when laser cleaning teak in enclosed workshops due to its **volatile compounds**?
+  answer: '**Install HEPA local exhaust**. When laser cleaning teak with 2.8 J/cm² fluence and 45 W power, ablation releases volatile oils and fine dust that fairly pose respiratory risks like sensitization. Basically, in enclosed areas, set up local exhaust ventilation using HEPA filters to trap particulates down to 0.3 μm, aligning with OSHA standards for clean air.'
+- question: Are there specific laser wavelengths that minimize damage to teak's lignin structure during surface treatment?
+  answer: Typically, near-IR lasers at 1064 nm are the best for teak cleaning, as they align with its lignin absorption to efficiently remove contaminants without deep structural damage—UV options absorb too strongly and risk degrading polymer bonds. Stick to 2.8 J/cm² fluence for pretty safe ablation that avoids charring the wood's surface.
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png

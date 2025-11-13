@@ -60,55 +60,6 @@ images:
   micro:
     alt: Maple microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/maple-laser-cleaning-micro.jpg
-caption:
-  before: Examining the maple wood under a microscope uncovers its porous texture, distinctly marred by contaminants. Fine particles such as dust and organic residues cling unevenly to the fibers, triggering localized discoloration alongside subtle erosion. This degradation notably undermines the material's inherent strength, emphasizing essential cleaning for lasting preservation.
-  after: After laser cleaning, the maple surface shines with notable smoothness, its natural grain revived without abrasion. This restoration proves essential, banishing contaminants while upholding the wood's inherent hardness and density. Material integrity remains wholly preserved, promising durability for future woodworking or finishing tasks.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-  url: https://www.epa.gov/clean-air-act-overview
-  image: /images/logo/logo-org-epa.png
-- name: USDA
-  description: USDA Food Safety Guidelines (for food-contact surfaces)
-  url: https://www.usda.gov/topics/food-and-nutrition/food-safety
-  image: /images/logo/logo-org-usda.png
-faq:
-- question: What laser settings work best for cleaning soot and smoke residue from **maple cabinets** without damaging the wood?
-  answer: '**2.8 J/cm² prevents yellowing**. For maple cabinet restoration, I suggest the 1064nm wavelength at 45W average power with 12ns pulses. It''s essential to hold fluence at 2.8 J/cm² and scan speed at 500mm/s, lifting soot effectively while avoiding yellowing. A distinct 80μm spot size ensures precise control for full residue removal without etching the delicate wood.'
-- question: Can laser cleaning remove old finishes and paint from maple wood while **preserving the grain pattern**?
-  answer: '**Preserves delicate grain structure**. Indeed, laser cleaning notably strips finishes from maple, preserving its delicate grain. With 1064nm wavelength at 2.8 J/cm² fluence, it selectively ablates varnish and paint layers. The essential 12ns pulse duration limits thermal input, preventing damage to the wood''s porous structure and avoiding charring.'
-- question: How does laser cleaning affect the **natural color and tannins** in maple compared to other woods like oak or walnut?
-  answer: '**Requires precise 2.8 J/cm² fluence**. Maple''s low tannin content and dense structure demand a precise 2.8 J/cm² fluence—essential to prevent discoloration. Distinct from porous oak or walnut, its uniform grain enables excellent color preservation at 500 mm/s, curbing thermal shifts in its natural light hue.'
-- question: What safety precautions are needed when laser cleaning maple due to potential VOC release from **embedded finishes**?
-  answer: '**Requires HEPA/carbon filtration**. When laser cleaning Maple''s embedded finishes at 2.8 J/cm², they release hazardous VOCs. It''s essential to deploy a high-efficiency fume extraction system with HEPA and activated carbon filtration. Notably, operators need respiratory protection compliant with EN 143 for fine particulates and organic vapors.'
-- question: Is laser cleaning effective for removing **biological growth like mold** from maple without leaving chemical residues?
-  answer: '**Eliminates spores from wood pores**. Laser cleaning notably excels at removing mold from maple with a 2.8 J/cm² fluence and 500 mm/s scan speed, clearing spores from wood pores sans chemicals. Unlike conventional approaches, it avoids spore spread while yielding a residue-free finish—essential for fine musical instruments.'
-- question: How do different maple varieties (**hard vs. soft maple**) respond to laser cleaning treatments?
-  answer: '**Adjust fluence by hardness**. The notable density of hard maple calls for higher fluence around 2.8 J/cm², whereas softer woods demand power below 45W to avert thermal damage. It''s essential to fine-tune scan speed and overlap ratio according to the wood''s hardness, preventing any surface charring.'
-- question: Can laser cleaning restore antique maple furniture without compromising **structural integrity** or patina?
-  answer: '**Preserves structural integrity and patina**. Utilizing a precise 45W power and 2.8 J/cm² fluence, laser cleaning effectively eliminates contaminants from antique maple while safeguarding its structural integrity. The 1064nm wavelength offers essential selective patina retention, enabling controlled ablation that spares delicate wood substrates.'
-- question: What are the limitations of laser cleaning for **heavily charred maple** after fire damage?
-  answer: '**Limited to surface char removal**. Laser cleaning notably removes surface char at 2.8 J/cm² fluence, yet it fails to tackle deep-seated damage. When char layers exceed ~500 µm, mechanical methods prove essential to safeguard the wood''s structural integrity. Additionally, the technique reveals subsurface thermal degradation through material interaction.'
-- question: How does **moisture content** in maple affect laser cleaning efficiency and safety?
-  answer: '**Excessive moisture risks steam damage**. Excessive moisture above ~12% in maple generates steam rapidly under 1064 nm laser irradiation, risking surface checking. For optimal 45W cleaning efficiency, kiln-dried stock below 8% moisture is ideal. Green wood requires pre-drying to prevent subsurface steam pressure from causing mechanical damage to the cellular structure.'
-- question: What post-treatment is recommended for maple after laser cleaning to protect the exposed wood surface?
-  answer: After laser cleaning maple at 2.8 J/cm², lightly sand the surface—it's essential to address any micro-porosity. For protection, apply a thin sealant such as water-based polyurethane or hard-wax oil, which penetrates the prepared wood effectively. These finishes notably enhance the natural grain while preserving its distinct light color without darkening.
 material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
@@ -323,3 +274,52 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Examining the maple wood under a microscope uncovers its porous texture, distinctly marred by contaminants. Fine particles such as dust and organic residues cling unevenly to the fibers, triggering localized discoloration alongside subtle erosion. This degradation notably undermines the material's inherent strength, emphasizing essential cleaning for lasting preservation.
+  after: After laser cleaning, the maple surface shines with notable smoothness, its natural grain revived without abrasion. This restoration proves essential, banishing contaminants while upholding the wood's inherent hardness and density. Material integrity remains wholly preserved, promising durability for future woodworking or finishing tasks.
+faq:
+- question: What laser settings work best for cleaning soot and smoke residue from **maple cabinets** without damaging the wood?
+  answer: '**2.8 J/cm² prevents yellowing**. For maple cabinet restoration, I suggest the 1064nm wavelength at 45W average power with 12ns pulses. It''s essential to hold fluence at 2.8 J/cm² and scan speed at 500mm/s, lifting soot effectively while avoiding yellowing. A distinct 80μm spot size ensures precise control for full residue removal without etching the delicate wood.'
+- question: Can laser cleaning remove old finishes and paint from maple wood while **preserving the grain pattern**?
+  answer: '**Preserves delicate grain structure**. Indeed, laser cleaning notably strips finishes from maple, preserving its delicate grain. With 1064nm wavelength at 2.8 J/cm² fluence, it selectively ablates varnish and paint layers. The essential 12ns pulse duration limits thermal input, preventing damage to the wood''s porous structure and avoiding charring.'
+- question: How does laser cleaning affect the **natural color and tannins** in maple compared to other woods like oak or walnut?
+  answer: '**Requires precise 2.8 J/cm² fluence**. Maple''s low tannin content and dense structure demand a precise 2.8 J/cm² fluence—essential to prevent discoloration. Distinct from porous oak or walnut, its uniform grain enables excellent color preservation at 500 mm/s, curbing thermal shifts in its natural light hue.'
+- question: What safety precautions are needed when laser cleaning maple due to potential VOC release from **embedded finishes**?
+  answer: '**Requires HEPA/carbon filtration**. When laser cleaning Maple''s embedded finishes at 2.8 J/cm², they release hazardous VOCs. It''s essential to deploy a high-efficiency fume extraction system with HEPA and activated carbon filtration. Notably, operators need respiratory protection compliant with EN 143 for fine particulates and organic vapors.'
+- question: Is laser cleaning effective for removing **biological growth like mold** from maple without leaving chemical residues?
+  answer: '**Eliminates spores from wood pores**. Laser cleaning notably excels at removing mold from maple with a 2.8 J/cm² fluence and 500 mm/s scan speed, clearing spores from wood pores sans chemicals. Unlike conventional approaches, it avoids spore spread while yielding a residue-free finish—essential for fine musical instruments.'
+- question: How do different maple varieties (**hard vs. soft maple**) respond to laser cleaning treatments?
+  answer: '**Adjust fluence by hardness**. The notable density of hard maple calls for higher fluence around 2.8 J/cm², whereas softer woods demand power below 45W to avert thermal damage. It''s essential to fine-tune scan speed and overlap ratio according to the wood''s hardness, preventing any surface charring.'
+- question: Can laser cleaning restore antique maple furniture without compromising **structural integrity** or patina?
+  answer: '**Preserves structural integrity and patina**. Utilizing a precise 45W power and 2.8 J/cm² fluence, laser cleaning effectively eliminates contaminants from antique maple while safeguarding its structural integrity. The 1064nm wavelength offers essential selective patina retention, enabling controlled ablation that spares delicate wood substrates.'
+- question: What are the limitations of laser cleaning for **heavily charred maple** after fire damage?
+  answer: '**Limited to surface char removal**. Laser cleaning notably removes surface char at 2.8 J/cm² fluence, yet it fails to tackle deep-seated damage. When char layers exceed ~500 µm, mechanical methods prove essential to safeguard the wood''s structural integrity. Additionally, the technique reveals subsurface thermal degradation through material interaction.'
+- question: How does **moisture content** in maple affect laser cleaning efficiency and safety?
+  answer: '**Excessive moisture risks steam damage**. Excessive moisture above ~12% in maple generates steam rapidly under 1064 nm laser irradiation, risking surface checking. For optimal 45W cleaning efficiency, kiln-dried stock below 8% moisture is ideal. Green wood requires pre-drying to prevent subsurface steam pressure from causing mechanical damage to the cellular structure.'
+- question: What post-treatment is recommended for maple after laser cleaning to protect the exposed wood surface?
+  answer: After laser cleaning maple at 2.8 J/cm², lightly sand the surface—it's essential to address any micro-porosity. For protection, apply a thin sealant such as water-based polyurethane or hard-wax oil, which penetrates the prepared wood effectively. These finishes notably enhance the natural grain while preserving its distinct light color without darkening.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: EPA
+  description: EPA Clean Air Act Compliance
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png
+- name: USDA
+  description: USDA Food Safety Guidelines (for food-contact surfaces)
+  url: https://www.usda.gov/topics/food-and-nutrition/food-safety
+  image: /images/logo/logo-org-usda.png

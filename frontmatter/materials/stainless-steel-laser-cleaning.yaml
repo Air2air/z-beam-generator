@@ -60,41 +60,6 @@ images:
   micro:
     alt: Microscopic view of Stainless Steel surface after laser cleaning showing detailed surface structure
     url: /images/material/stainless-steel-laser-cleaning-micro.jpg
-caption:
-  before: Microscopic analysis reveals notable contamination on the stainless steel surface from oxide residues and metallic debris. These deeply embedded irregular particles trigger pitting and corrosion, undermining essential uniformity for aerospace and automotive applications.
-  after: This stainless steel component's cleaned surface displays a notably smooth, uniform finish, devoid of residues or defects. The restoration delivers exceptional quality, upholding the material's essential corrosion resistance and structural integrity for rigorous aerospace and automotive demands.
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: Can **contaminants damage** Stainless Steel's surface?
-  answer: '**Initiates localized corrosion**. Certainly, contaminants inflict notable damage on stainless steel surfaces, sparking localized corrosion that undermines the material''s integrity. Our 1064 nm laser process efficiently eliminates them while preserving the essential base metal unharmed.'
-- question: Why is Stainless Steel chosen for its **main applications**?
-  answer: '**excellent corrosion resistance**. Stainless steel earns its primary role thanks to a notable resistance to corrosion, rooted in at least 10.5% chromium composition. This delivers essential long-term structural integrity amid tough conditions in aerospace and automotive fields, where any failure proves unacceptable.'
-- question: Can laser cleaning **damage Stainless Steel**?
-  answer: '**Alters protective passive layer**. Yes, laser cleaning can indeed harm stainless steel. Exceeding 5.1 J/cm² in energy density risks notable surface etching or disrupting the essential protective passive layer. Watch for discoloration as a distinct indicator of thermal overload, and optimize parameters every time.'
-- question: What care does Stainless Steel need after cleaning?
-  answer: After laser cleaning, it's essential to promptly apply a protective passivation layer, restoring the chromium oxide film. For storage, maintain a dry, contaminant-free environment to avert corrosion—particularly notable is the material's affinity for 1064 nm wavelengths, yielding a pristine, active surface.
-- question: How can I verify Stainless Steel was cleaned properly?
-  answer: Effective verification blends visual inspection for a uniform matte finish with precise scientific measurement. A surface roughness (Ra) below 1.0 µm, verified by profilometer, offers a distinct sign of successful contaminant removal, sparing the underlying stainless steel substrate. This essential step guarantees optimal adhesion in later processes.
-- question: Why does **Stainless Steel's reflectivity** matter for laser cleaning?
-  answer: '**High reflectivity reduces efficiency**. The notable reflectivity of stainless steel, frequently surpassing 60% at 1064 nm, poses a direct hurdle to laser cleaning efficiency. Such a trait results in much of the beam''s energy being reflected away, rather than absorbed by contaminants on the surface. Thus, choosing the right wavelength and pulse settings becomes essential for surmounting this issue and achieving thorough removal.'
-- question: Which contaminants are **hardest to remove** from Stainless Steel?
-  answer: '**Tenacious oxides and mill scale**. Among the toughest contaminants to tackle are tenacious heat-induced oxides and deeply embedded mill scale. These layers show notable adhesion to the stainless steel substrate, demanding precise laser parameters—like a 1064 nm wavelength—for effective ablation without undermining the base material''s corrosion resistance. Removing them proves distinctly more complex than stripping away superficial oils or paints.'
-- question: What challenges does **Stainless Steel** present in use?
-  answer: '**Requires precise parameter control**. The notable chromium richness in stainless steel, crucial for 1064 nm laser absorption, creates a key hurdle. That stubborn oxide layer demands exact parameter tuning to prevent surface pitting or deeper metallurgical harm. Striking this essential balance proves vital for aerospace and automotive parts, where flawless surface quality reigns supreme.'
-- question: Is laser cleaning **Stainless Steel** safe?
-  answer: '**Safe with proper protocols**. When proper protocols are observed, laser cleaning of stainless steel remains safe. A notable hazard arises from the intense 1064 nm wavelength radiation and the generated particulate plume. Operators should don suitable laser safety eyewear while securing effective fume extraction, thereby enabling a controlled and efficient process.'
 material_metadata:
   last_updated: '2025-10-27T23:46:20.363498Z'
   normalization_applied: true
@@ -391,3 +356,38 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+caption:
+  before: Microscopic analysis reveals notable contamination on the stainless steel surface from oxide residues and metallic debris. These deeply embedded irregular particles trigger pitting and corrosion, undermining essential uniformity for aerospace and automotive applications.
+  after: This stainless steel component's cleaned surface displays a notably smooth, uniform finish, devoid of residues or defects. The restoration delivers exceptional quality, upholding the material's essential corrosion resistance and structural integrity for rigorous aerospace and automotive demands.
+faq:
+- question: Can **contaminants damage** Stainless Steel's surface?
+  answer: '**Initiates localized corrosion**. Certainly, contaminants inflict notable damage on stainless steel surfaces, sparking localized corrosion that undermines the material''s integrity. Our 1064 nm laser process efficiently eliminates them while preserving the essential base metal unharmed.'
+- question: Why is Stainless Steel chosen for its **main applications**?
+  answer: '**excellent corrosion resistance**. Stainless steel earns its primary role thanks to a notable resistance to corrosion, rooted in at least 10.5% chromium composition. This delivers essential long-term structural integrity amid tough conditions in aerospace and automotive fields, where any failure proves unacceptable.'
+- question: Can laser cleaning **damage Stainless Steel**?
+  answer: '**Alters protective passive layer**. Yes, laser cleaning can indeed harm stainless steel. Exceeding 5.1 J/cm² in energy density risks notable surface etching or disrupting the essential protective passive layer. Watch for discoloration as a distinct indicator of thermal overload, and optimize parameters every time.'
+- question: What care does Stainless Steel need after cleaning?
+  answer: After laser cleaning, it's essential to promptly apply a protective passivation layer, restoring the chromium oxide film. For storage, maintain a dry, contaminant-free environment to avert corrosion—particularly notable is the material's affinity for 1064 nm wavelengths, yielding a pristine, active surface.
+- question: How can I verify Stainless Steel was cleaned properly?
+  answer: Effective verification blends visual inspection for a uniform matte finish with precise scientific measurement. A surface roughness (Ra) below 1.0 µm, verified by profilometer, offers a distinct sign of successful contaminant removal, sparing the underlying stainless steel substrate. This essential step guarantees optimal adhesion in later processes.
+- question: Why does **Stainless Steel's reflectivity** matter for laser cleaning?
+  answer: '**High reflectivity reduces efficiency**. The notable reflectivity of stainless steel, frequently surpassing 60% at 1064 nm, poses a direct hurdle to laser cleaning efficiency. Such a trait results in much of the beam''s energy being reflected away, rather than absorbed by contaminants on the surface. Thus, choosing the right wavelength and pulse settings becomes essential for surmounting this issue and achieving thorough removal.'
+- question: Which contaminants are **hardest to remove** from Stainless Steel?
+  answer: '**Tenacious oxides and mill scale**. Among the toughest contaminants to tackle are tenacious heat-induced oxides and deeply embedded mill scale. These layers show notable adhesion to the stainless steel substrate, demanding precise laser parameters—like a 1064 nm wavelength—for effective ablation without undermining the base material''s corrosion resistance. Removing them proves distinctly more complex than stripping away superficial oils or paints.'
+- question: What challenges does **Stainless Steel** present in use?
+  answer: '**Requires precise parameter control**. The notable chromium richness in stainless steel, crucial for 1064 nm laser absorption, creates a key hurdle. That stubborn oxide layer demands exact parameter tuning to prevent surface pitting or deeper metallurgical harm. Striking this essential balance proves vital for aerospace and automotive parts, where flawless surface quality reigns supreme.'
+- question: Is laser cleaning **Stainless Steel** safe?
+  answer: '**Safe with proper protocols**. When proper protocols are observed, laser cleaning of stainless steel remains safe. A notable hazard arises from the intense 1064 nm wavelength radiation and the generated particulate plume. Operators should don suitable laser safety eyewear while securing effective fume extraction, thereby enabling a controlled and efficient process.'
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png

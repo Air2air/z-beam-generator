@@ -60,49 +60,6 @@ images:
   micro:
     alt: Polyethylene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polyethylene-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the polyethylene surface displays a notable rugged landscape, scarred by contaminants—fine dust particles and oily residues scattered unevenly. Ranging 5-20 microns, these impurities lodge in micro-cracks, triggering localized pitting. This breakdown undermines the plastic's structural strength, accelerating wear during cleaning tasks where surface smoothness remains essential for performance.
-  after: After laser cleaning, the polyethylene surface returns to a smooth, contaminant-free condition, echoing its initial shine. Notably, this method fully safeguards the material's integrity, avoiding any thermal damage or reduction in flexibility and chemical resistance. Such quality proves essential for repeated cleaning uses.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: Can you safely laser clean polyethylene surfaces **without melting or damaging** the material?
-  answer: '**Below melting point parameters**. Yes, polyethylene can be safely cleaned by laser with precise parameters. Employing a 1064 nm wavelength at 5.1 J/cm² fluence and 500 mm/s scan speed, we effectively eliminate contaminants while remaining well below the material''s notable 105-130°C melting point. This essential approach prevents any surface deformation or thermal damage to the polymer.'
-- question: What laser wavelength is most effective for cleaning contaminants from polyethylene **without affecting the substrate**?
-  answer: '**1064nm optimal for selective absorption**. For cleaning polyethylene, 1064nm fiber lasers stand out as optimal, offering sufficient absorption without undue substrate heating. It''s essential to keep fluence under 5.1 J/cm² at 100W average power, ensuring contaminant removal while safeguarding material integrity. The polymer''s distinct transparency to alternative wavelengths renders near-IR perfect for targeted cleaning.'
-- question: How do you remove oxidation or **UV degradation** from polyethylene surfaces using laser cleaning?
-  answer: '**1064nm 5.1 J/cm² ablation**. For removing oxidation from polyethylene, I suggest the notable 1064nm wavelength at 5.1 J/cm² fluence. It ablates the degraded surface layer effectively, while safeguarding the essential integrity of the underlying material. Use a 500 mm/s scan speed to ensure uniform cleaning without thermal harm.'
-- question: What safety precautions are needed when laser cleaning polyethylene due to **potential fume generation**?
-  answer: '**Requires high-efficiency fume extraction**. Decomposition of polyethylene at 5.1 J/cm² fluence produces notable hazardous aldehydes and ketones. Essential safety demands a high-efficiency fume extraction system plus suitable respiratory protection, since standard ventilation fails against these concentrated toxic byproducts.'
-- question: Can laser cleaning prepare polyethylene surfaces for bonding or painting by **increasing surface energy**?
-  answer: '**Micro-textures enhance wettability**. Certainly. Our 1064nm laser, at 5.1 J/cm² fluence, produces distinct micro-textures that markedly elevate Polyethylene''s surface energy. This notable improvement boosts wettability, yielding superior paint adhesion and bonding strength versus conventional techniques.'
-- question: What are the challenges with laser cleaning colored or **carbon-black-filled polyethylene**?
-  answer: '**Requires fluence below 5.1 J/cm²**. For colored polyethylene, it''s essential to fine-tune parameters carefully, as the notable high absorption of carbon black at 1064 nm requires fluence below 5.1 J/cm² to avert thermal damage. You''ll need to drop power substantially from the usual 100 W, preventing material breakdown.'
-- question: How does laser cleaning compare to traditional methods for cleaning polyethylene in **industrial applications**?
-  answer: '**eliminates chemical residues**. Laser cleaning at 5.1 J/cm² provides a notable, non-abrasive option superior to solvents for polyethylene. Essential in this dry approach, it removes chemical residues entirely, suiting medical and food packaging needs where surface purity matters most—unlike mechanical or plasma techniques.'
-- question: What laser parameters work best for removing **biological contaminants** from polyethylene without leaving residues?
-  answer: '**Prevents surface melting**. For decontaminating polyethylene biologically, I suggest a fluence of 5.1 J/cm² at 100W average power. This method effectively eliminates microbial films without risking surface melting. Notably, the 1064 nm wavelength delivers essential absorption for residue-free sterilization.'
-- question: Can laser cleaning restore **electrical properties** to contaminated polyethylene insulators?
-  answer: '**Restores dielectric strength**. Yes, laser cleaning notably restores dielectric strength in contaminated polyethylene insulators. Employing a 1064 nm wavelength at 5.1 J/cm² fluence eliminates conductive surface contaminants, while safeguarding the polymer''s essential bulk electrical properties to prevent surface tracking.'
-- question: How do you verify that laser cleaning hasn't compromised the **chemical resistance** of polyethylene surfaces?
-  answer: '**FTIR detects oxidation integrity**. We verify chemical resistance integrity via FTIR spectroscopy to detect any notable oxidation, ensuring our essential 5.1 J/cm² fluence and 100W power settings do not degrade the polymer. Follow-up immersion testing in relevant solvents then confirms the surface''s inertness stays uncompromised after cleaning.'
-- question: What are the limitations for laser cleaning **ultra-high-molecular-weight polyethylene** (UHMWPE) compared to standard PE?
-  answer: '**Requires reduced fluence faster scan**. UHMWPE exhibits a notably higher melting point (~135°C) and distinct molecular chain entanglement, necessitating more conservative laser parameters than standard PE. It''s essential to lower fluence below 5.1 J/cm² while raising scan speed, avoiding surface degradation crucial for medical implant cleaning where structural integrity is paramount.'
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922409Z'
   normalization_applied: true
@@ -318,3 +275,46 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Under the microscope, the polyethylene surface displays a notable rugged landscape, scarred by contaminants—fine dust particles and oily residues scattered unevenly. Ranging 5-20 microns, these impurities lodge in micro-cracks, triggering localized pitting. This breakdown undermines the plastic's structural strength, accelerating wear during cleaning tasks where surface smoothness remains essential for performance.
+  after: After laser cleaning, the polyethylene surface returns to a smooth, contaminant-free condition, echoing its initial shine. Notably, this method fully safeguards the material's integrity, avoiding any thermal damage or reduction in flexibility and chemical resistance. Such quality proves essential for repeated cleaning uses.
+faq:
+- question: Can you safely laser clean polyethylene surfaces **without melting or damaging** the material?
+  answer: '**Below melting point parameters**. Yes, polyethylene can be safely cleaned by laser with precise parameters. Employing a 1064 nm wavelength at 5.1 J/cm² fluence and 500 mm/s scan speed, we effectively eliminate contaminants while remaining well below the material''s notable 105-130°C melting point. This essential approach prevents any surface deformation or thermal damage to the polymer.'
+- question: What laser wavelength is most effective for cleaning contaminants from polyethylene **without affecting the substrate**?
+  answer: '**1064nm optimal for selective absorption**. For cleaning polyethylene, 1064nm fiber lasers stand out as optimal, offering sufficient absorption without undue substrate heating. It''s essential to keep fluence under 5.1 J/cm² at 100W average power, ensuring contaminant removal while safeguarding material integrity. The polymer''s distinct transparency to alternative wavelengths renders near-IR perfect for targeted cleaning.'
+- question: How do you remove oxidation or **UV degradation** from polyethylene surfaces using laser cleaning?
+  answer: '**1064nm 5.1 J/cm² ablation**. For removing oxidation from polyethylene, I suggest the notable 1064nm wavelength at 5.1 J/cm² fluence. It ablates the degraded surface layer effectively, while safeguarding the essential integrity of the underlying material. Use a 500 mm/s scan speed to ensure uniform cleaning without thermal harm.'
+- question: What safety precautions are needed when laser cleaning polyethylene due to **potential fume generation**?
+  answer: '**Requires high-efficiency fume extraction**. Decomposition of polyethylene at 5.1 J/cm² fluence produces notable hazardous aldehydes and ketones. Essential safety demands a high-efficiency fume extraction system plus suitable respiratory protection, since standard ventilation fails against these concentrated toxic byproducts.'
+- question: Can laser cleaning prepare polyethylene surfaces for bonding or painting by **increasing surface energy**?
+  answer: '**Micro-textures enhance wettability**. Certainly. Our 1064nm laser, at 5.1 J/cm² fluence, produces distinct micro-textures that markedly elevate Polyethylene''s surface energy. This notable improvement boosts wettability, yielding superior paint adhesion and bonding strength versus conventional techniques.'
+- question: What are the challenges with laser cleaning colored or **carbon-black-filled polyethylene**?
+  answer: '**Requires fluence below 5.1 J/cm²**. For colored polyethylene, it''s essential to fine-tune parameters carefully, as the notable high absorption of carbon black at 1064 nm requires fluence below 5.1 J/cm² to avert thermal damage. You''ll need to drop power substantially from the usual 100 W, preventing material breakdown.'
+- question: How does laser cleaning compare to traditional methods for cleaning polyethylene in **industrial applications**?
+  answer: '**eliminates chemical residues**. Laser cleaning at 5.1 J/cm² provides a notable, non-abrasive option superior to solvents for polyethylene. Essential in this dry approach, it removes chemical residues entirely, suiting medical and food packaging needs where surface purity matters most—unlike mechanical or plasma techniques.'
+- question: What laser parameters work best for removing **biological contaminants** from polyethylene without leaving residues?
+  answer: '**Prevents surface melting**. For decontaminating polyethylene biologically, I suggest a fluence of 5.1 J/cm² at 100W average power. This method effectively eliminates microbial films without risking surface melting. Notably, the 1064 nm wavelength delivers essential absorption for residue-free sterilization.'
+- question: Can laser cleaning restore **electrical properties** to contaminated polyethylene insulators?
+  answer: '**Restores dielectric strength**. Yes, laser cleaning notably restores dielectric strength in contaminated polyethylene insulators. Employing a 1064 nm wavelength at 5.1 J/cm² fluence eliminates conductive surface contaminants, while safeguarding the polymer''s essential bulk electrical properties to prevent surface tracking.'
+- question: How do you verify that laser cleaning hasn't compromised the **chemical resistance** of polyethylene surfaces?
+  answer: '**FTIR detects oxidation integrity**. We verify chemical resistance integrity via FTIR spectroscopy to detect any notable oxidation, ensuring our essential 5.1 J/cm² fluence and 100W power settings do not degrade the polymer. Follow-up immersion testing in relevant solvents then confirms the surface''s inertness stays uncompromised after cleaning.'
+- question: What are the limitations for laser cleaning **ultra-high-molecular-weight polyethylene** (UHMWPE) compared to standard PE?
+  answer: '**Requires reduced fluence faster scan**. UHMWPE exhibits a notably higher melting point (~135°C) and distinct molecular chain entanglement, necessitating more conservative laser parameters than standard PE. It''s essential to lower fluence below 5.1 J/cm² while raising scan speed, avoiding surface degradation crucial for medical implant cleaning where structural integrity is paramount.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

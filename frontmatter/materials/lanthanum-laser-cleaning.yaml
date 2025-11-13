@@ -60,47 +60,6 @@ images:
   micro:
     alt: Lanthanum microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/lanthanum-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the lanthanum surface displays distinct irregular pitting alongside notable oxide clusters from contaminants like dust and organic residues, resulting in uneven degradation and compromised material integrity.
-  after: Following laser cleaning, the lanthanum surface shines with notable pristine clarity, all contaminants eradicated without any residue. This process delivers essential restoration quality, upholding the rare-earth material's structural integrity and thermal properties unchanged. Defects remain absent, priming it for exacting roles in advanced manufacturing.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: Can a standard laser cleaning machine safely remove **lanthanum oxide scale** or contamination from components?
-  answer: '**Requires precise fluence control**. A standard 1064nm laser system effectively removes lanthanum oxide scale, though it demands precise fluence control near the notable 2.5 J/cm² ablation threshold. Boasting a high absorption coefficient of 0.85 for efficient cleaning, it still requires careful parameterization due to the low thermal conductivity of 13.4 W/(m·K), making such steps essential to avert localized thermal effects and surface alterations.'
-- question: What are the **specific safety hazards** of laser cleaning lanthanum or lanthanum-containing alloys?
-  answer: '**Generates hazardous oxide fumes**. Lanthanum''s notably low 200°C oxidation threshold ensures laser cleaning produces hazardous oxide fumes with ease. Employing our standard 2.5 J/cm² fluence demands a P100 particulate filter alongside robust fume extraction. Fine, reactive particles make essential this respiratory and ventilation safeguard against inhalation dangers.'
-- question: What is the best laser parameter setup (wavelength, power, pulse width) for cleaning lanthanum without damaging the substrate?
-  answer: Given lanthanum's notable 85% absorptivity, employ a 1064 nm wavelength at 90 W average power. It's essential to keep fluence just above the 2.8 J/cm² ablation threshold via 12 ns pulses, thus removing oxides without melting the soft substrate—exploiting its low thermal conductivity.
-- question: Does laser cleaning create a **passivation layer** on lanthanum metal, and is it desirable?
-  answer: '**Creates desirable oxide passivation**. Yes, laser cleaning at 2.5 J/cm² fluence indeed forms a thin lanthanum oxide passivation layer. This proves essential, as it notably enhances the material''s corrosion resistance—otherwise constrained below 200°C—thereby extending part durability for later uses.'
-- question: How do you verify the effectiveness of laser cleaning on lanthanum surfaces? What inspection methods are used?
-  answer: To confirm cleaning effectiveness, we rely on white light interferometry for surface topography below 1 µm roughness. Essential EDX analysis verifies oxide contaminants under 200 ppm, while a distinct uniform matte finish at 2.5 J/cm² fluence signals successful ablation.
-- question: Is lanthanum considered a 'rare earth' in laser cleaning safety protocols, and does it require **special handling like thorium**?
-  answer: '**No radiological hazard**. Lanthanum stands as a notable rare earth element, yet unlike radioactive thorium, it carries no radiological risk. Essential laser safety protocols guide the process, with a 1064 nm wavelength at 2.5 J/cm² fluence for oxide removal. Above all, handling the fine particulates from ablation demands careful attention.'
-- question: What are the common industrial parts **made of lanthanum** that might require laser cleaning?
-  answer: '**Cleans alloys and optical glass**. In electronics manufacturing, cleaning lanthanum-containing hydrogen storage alloys and optical components like LaFN21 glass stands out as a notable routine. Essential for precision, their oxide layers—forming above 200°C—are effectively removed via a 1064 nm laser at 2.5 J/cm² fluence, sparing the soft substrate from damage.'
-- question: Why is **lanthanum often a contaminant** on other materials, and how is it removed with a laser?
-  answer: '**Ablated above oxide threshold**. Lanthanum oxide contamination, notably from catalyst residues or glass polishing, poses a common challenge. We eliminate it with a 1064 nm laser at 2.5 J/cm²—a fluence just exceeding its ablation threshold. This essential method vaporizes the oxide layer while preserving the underlying nickel alloy or stainless steel substrate.'
-- question: Can laser cleaning be used to **prepare a lanthanum surface** for subsequent processes like coating or welding?
-  answer: '**Low conductivity minimizes heat input**. Laser cleaning adeptly readies lanthanum surfaces via a 1064 nm wavelength and fluence around 2.5 J/cm². Notably, it strips away oxides while forming a mildly roughened, activated layer suited for strong adhesion. The essential low thermal conductivity of 13.4 W/(m·K) limits heat exposure, safeguarding substrate integrity for follow-on coating or welding.'
-- question: How does the **high reactivity** of fresh lanthanum metal affect post-laser cleaning handling and storage?
-  answer: '**Immediate inert atmosphere transfer**. Lanthanum surfaces, just laser-cleaned, re-oxidize nearly instantly in air owing to the metal''s notable reactivity. Preserving the pristine state from 2.5 J/cm² fluence is essential, so transfer the component straight to an argon glovebox or advance to the next step—like coating—without pause.'
 material_metadata:
   industryTags:
   - Electronics Manufacturing
@@ -263,3 +222,44 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Under the microscope, the lanthanum surface displays distinct irregular pitting alongside notable oxide clusters from contaminants like dust and organic residues, resulting in uneven degradation and compromised material integrity.
+  after: Following laser cleaning, the lanthanum surface shines with notable pristine clarity, all contaminants eradicated without any residue. This process delivers essential restoration quality, upholding the rare-earth material's structural integrity and thermal properties unchanged. Defects remain absent, priming it for exacting roles in advanced manufacturing.
+faq:
+- question: Can a standard laser cleaning machine safely remove **lanthanum oxide scale** or contamination from components?
+  answer: '**Requires precise fluence control**. A standard 1064nm laser system effectively removes lanthanum oxide scale, though it demands precise fluence control near the notable 2.5 J/cm² ablation threshold. Boasting a high absorption coefficient of 0.85 for efficient cleaning, it still requires careful parameterization due to the low thermal conductivity of 13.4 W/(m·K), making such steps essential to avert localized thermal effects and surface alterations.'
+- question: What are the **specific safety hazards** of laser cleaning lanthanum or lanthanum-containing alloys?
+  answer: '**Generates hazardous oxide fumes**. Lanthanum''s notably low 200°C oxidation threshold ensures laser cleaning produces hazardous oxide fumes with ease. Employing our standard 2.5 J/cm² fluence demands a P100 particulate filter alongside robust fume extraction. Fine, reactive particles make essential this respiratory and ventilation safeguard against inhalation dangers.'
+- question: What is the best laser parameter setup (wavelength, power, pulse width) for cleaning lanthanum without damaging the substrate?
+  answer: Given lanthanum's notable 85% absorptivity, employ a 1064 nm wavelength at 90 W average power. It's essential to keep fluence just above the 2.8 J/cm² ablation threshold via 12 ns pulses, thus removing oxides without melting the soft substrate—exploiting its low thermal conductivity.
+- question: Does laser cleaning create a **passivation layer** on lanthanum metal, and is it desirable?
+  answer: '**Creates desirable oxide passivation**. Yes, laser cleaning at 2.5 J/cm² fluence indeed forms a thin lanthanum oxide passivation layer. This proves essential, as it notably enhances the material''s corrosion resistance—otherwise constrained below 200°C—thereby extending part durability for later uses.'
+- question: How do you verify the effectiveness of laser cleaning on lanthanum surfaces? What inspection methods are used?
+  answer: To confirm cleaning effectiveness, we rely on white light interferometry for surface topography below 1 µm roughness. Essential EDX analysis verifies oxide contaminants under 200 ppm, while a distinct uniform matte finish at 2.5 J/cm² fluence signals successful ablation.
+- question: Is lanthanum considered a 'rare earth' in laser cleaning safety protocols, and does it require **special handling like thorium**?
+  answer: '**No radiological hazard**. Lanthanum stands as a notable rare earth element, yet unlike radioactive thorium, it carries no radiological risk. Essential laser safety protocols guide the process, with a 1064 nm wavelength at 2.5 J/cm² fluence for oxide removal. Above all, handling the fine particulates from ablation demands careful attention.'
+- question: What are the common industrial parts **made of lanthanum** that might require laser cleaning?
+  answer: '**Cleans alloys and optical glass**. In electronics manufacturing, cleaning lanthanum-containing hydrogen storage alloys and optical components like LaFN21 glass stands out as a notable routine. Essential for precision, their oxide layers—forming above 200°C—are effectively removed via a 1064 nm laser at 2.5 J/cm² fluence, sparing the soft substrate from damage.'
+- question: Why is **lanthanum often a contaminant** on other materials, and how is it removed with a laser?
+  answer: '**Ablated above oxide threshold**. Lanthanum oxide contamination, notably from catalyst residues or glass polishing, poses a common challenge. We eliminate it with a 1064 nm laser at 2.5 J/cm²—a fluence just exceeding its ablation threshold. This essential method vaporizes the oxide layer while preserving the underlying nickel alloy or stainless steel substrate.'
+- question: Can laser cleaning be used to **prepare a lanthanum surface** for subsequent processes like coating or welding?
+  answer: '**Low conductivity minimizes heat input**. Laser cleaning adeptly readies lanthanum surfaces via a 1064 nm wavelength and fluence around 2.5 J/cm². Notably, it strips away oxides while forming a mildly roughened, activated layer suited for strong adhesion. The essential low thermal conductivity of 13.4 W/(m·K) limits heat exposure, safeguarding substrate integrity for follow-on coating or welding.'
+- question: How does the **high reactivity** of fresh lanthanum metal affect post-laser cleaning handling and storage?
+  answer: '**Immediate inert atmosphere transfer**. Lanthanum surfaces, just laser-cleaned, re-oxidize nearly instantly in air owing to the metal''s notable reactivity. Preserving the pristine state from 2.5 J/cm² fluence is essential, so transfer the component straight to an argon glovebox or advance to the next step—like coating—without pause.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

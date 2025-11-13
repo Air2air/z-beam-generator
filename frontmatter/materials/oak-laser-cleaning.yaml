@@ -60,51 +60,6 @@ images:
   micro:
     alt: Oak microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/oak-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopic scrutiny, the oak surface reveals a contaminated state marked by irregular topography. Adherent particles—fine dust grains and oily residues—cluster in the porous wood fibers, sized 1-10 microns with amorphous forms. Notably, this accumulation drives surface degradation through micro-fissures, fiber erosion, and localized discoloration, undermining the essential structural integrity for cleaning and manufacturing uses.
-  after: The cleaned oak surface gleams with notable smoothness, its natural grain restored in vivid detail. Essential quality restoration maintains full material integrity without any compromise.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-  url: https://www.epa.gov/clean-air-act-overview
-  image: /images/logo/logo-org-epa.png
-faq:
-- question: How do I remove **black charring** from oak when laser cleaning without damaging the wood?
-  answer: '**multi-pass low fluence ablation**. Keep fluence under 2.5 J/cm² with a 100W source at 500 mm/s, ablating charring while avoiding lignin carbonization. The notable 100µm spot size ensures precise control. For best results, opt for multiple low-power passes over a single aggressive one to regulate thermal input and safeguard wood integrity.'
-- question: What are the ideal laser parameters (wavelength, power, pulse duration) for cleaning soot and dirt from an **oak beam**?
-  answer: '**Nanosecond pulses prevent charring**. For cleaning oak beams, I suggest nanosecond pulses at 1064 nm wavelength and about 100 W average power. Start testing with a fluence around 2.5 J/cm² plus a 100 µm spot size. This approach effectively ablates soot, while essential minimization of thermal diffusion into the wood substrate notably prevents charring.'
-- question: Can a laser safely remove old paint or varnish from an antique oak piece without **altering the patina**?
-  answer: '**Avoids earlywood differential erosion**. Employing precise 2.5 J/cm² fluence and 100 µm spot control, a laser selectively ablates paint from antique oak. Notably, this preserves the patina by sidestepping the essential differential erosion of soft earlywood that hampers mechanical methods.'
-- question: Is laser cleaning effective for decontaminating mold or **biological growth** from oak in heritage conservation?
-  answer: '**Deactivates surface mold only**. UV laser cleaning at 2.5 J/cm² notably deactivates surface mold spores on oak. Yet, it fails to eradicate deep hyphal growth, thus requiring an integrated biocidal treatment. Essentially, proper HEPA filtration remains vital to control aerosolized spores during the procedure.'
-- question: What specific safety hazards exist when laser cleaning oak, especially regarding fumes and particulates?
-  answer: Laser cleaning of oak at 100W and 2.5 J/cm² notably produces hazardous aldehydes and acetic acid fumes. Fine wood dust, meanwhile, creates an essential explosion risk, demanding robust fume extraction, P3 respiratory protection, and spark detection systems to safeguard operators.
-- question: How does the density and grain structure of oak affect the laser cleaning process and final result?
-  answer: The distinct alternating porous and dense grain of oak leads to differential ablation at our 2.5 J/cm² fluence. Such variation can yield a slightly textured surface, making it essential to apply multi-directional passes at 500 mm/s for uniform cleaning throughout the grain structure.
-- question: What is the maximum depth of material removal possible on oak with a laser before **structural integrity** is compromised?
-  answer: '**10-50 microns per pass**. Laser cleaning of oak remains notably superficial, stripping away only 10-50 microns per pass. Pushing beyond that endangers the cellular structure. Essential here is applying low fluence at roughly 2.5 J/cm² while capping passes to uphold the wood''s integrity.'
-- question: How do I evaluate the success of a laser cleaning treatment on oak, and what are the **acceptable post-treatment changes**?
-  answer: '**ΔE<5 lightening, intact cell walls**. Success is notably confirmed through colorimetry indicating ΔE<5, ensuring acceptable lightening without charring. It''s essential that microscopy reveals intact cell walls at 100µm resolution. Hold fluence at 2.5 J/cm² and power at 100W to avoid surface roughening.'
-- question: Why does my laser leave a **white, ashy residue** on the oak surface after cleaning, and how can I prevent it?
-  answer: '**Excessive fluence chars lignin**. This white residue consists of distinct micro-charred lignin, caused by fluence exceeding the 2.5 J/cm² threshold. To prevent it, it''s essential to lower your laser power or raise the scan speed above 500 mm/s. A final gentle pass at reduced energy will remove leftover ash without harming the oak substrate.'
-- question: For which applications is laser **cleaning oak** most suitable compared to traditional methods like soda blasting or chemical stripping?
-  answer: '**Preserves surface integrity**. For delicate oak artifacts such as historical furniture or violins, laser cleaning stands out as essential. Our 2.5 J/cm² fluence and 100 µm spot size deliver micron-level precision in contaminant removal, preventing substrate loss unlike aggressive soda blasting. This distinct method suits high-value conservation, safeguarding original surface integrity above all.'
 material_metadata:
   regulatoryStandards:
   - EPA Clean Air Act Compliance
@@ -322,3 +277,48 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+caption:
+  before: Under microscopic scrutiny, the oak surface reveals a contaminated state marked by irregular topography. Adherent particles—fine dust grains and oily residues—cluster in the porous wood fibers, sized 1-10 microns with amorphous forms. Notably, this accumulation drives surface degradation through micro-fissures, fiber erosion, and localized discoloration, undermining the essential structural integrity for cleaning and manufacturing uses.
+  after: The cleaned oak surface gleams with notable smoothness, its natural grain restored in vivid detail. Essential quality restoration maintains full material integrity without any compromise.
+faq:
+- question: How do I remove **black charring** from oak when laser cleaning without damaging the wood?
+  answer: '**multi-pass low fluence ablation**. Keep fluence under 2.5 J/cm² with a 100W source at 500 mm/s, ablating charring while avoiding lignin carbonization. The notable 100µm spot size ensures precise control. For best results, opt for multiple low-power passes over a single aggressive one to regulate thermal input and safeguard wood integrity.'
+- question: What are the ideal laser parameters (wavelength, power, pulse duration) for cleaning soot and dirt from an **oak beam**?
+  answer: '**Nanosecond pulses prevent charring**. For cleaning oak beams, I suggest nanosecond pulses at 1064 nm wavelength and about 100 W average power. Start testing with a fluence around 2.5 J/cm² plus a 100 µm spot size. This approach effectively ablates soot, while essential minimization of thermal diffusion into the wood substrate notably prevents charring.'
+- question: Can a laser safely remove old paint or varnish from an antique oak piece without **altering the patina**?
+  answer: '**Avoids earlywood differential erosion**. Employing precise 2.5 J/cm² fluence and 100 µm spot control, a laser selectively ablates paint from antique oak. Notably, this preserves the patina by sidestepping the essential differential erosion of soft earlywood that hampers mechanical methods.'
+- question: Is laser cleaning effective for decontaminating mold or **biological growth** from oak in heritage conservation?
+  answer: '**Deactivates surface mold only**. UV laser cleaning at 2.5 J/cm² notably deactivates surface mold spores on oak. Yet, it fails to eradicate deep hyphal growth, thus requiring an integrated biocidal treatment. Essentially, proper HEPA filtration remains vital to control aerosolized spores during the procedure.'
+- question: What specific safety hazards exist when laser cleaning oak, especially regarding fumes and particulates?
+  answer: Laser cleaning of oak at 100W and 2.5 J/cm² notably produces hazardous aldehydes and acetic acid fumes. Fine wood dust, meanwhile, creates an essential explosion risk, demanding robust fume extraction, P3 respiratory protection, and spark detection systems to safeguard operators.
+- question: How does the density and grain structure of oak affect the laser cleaning process and final result?
+  answer: The distinct alternating porous and dense grain of oak leads to differential ablation at our 2.5 J/cm² fluence. Such variation can yield a slightly textured surface, making it essential to apply multi-directional passes at 500 mm/s for uniform cleaning throughout the grain structure.
+- question: What is the maximum depth of material removal possible on oak with a laser before **structural integrity** is compromised?
+  answer: '**10-50 microns per pass**. Laser cleaning of oak remains notably superficial, stripping away only 10-50 microns per pass. Pushing beyond that endangers the cellular structure. Essential here is applying low fluence at roughly 2.5 J/cm² while capping passes to uphold the wood''s integrity.'
+- question: How do I evaluate the success of a laser cleaning treatment on oak, and what are the **acceptable post-treatment changes**?
+  answer: '**ΔE<5 lightening, intact cell walls**. Success is notably confirmed through colorimetry indicating ΔE<5, ensuring acceptable lightening without charring. It''s essential that microscopy reveals intact cell walls at 100µm resolution. Hold fluence at 2.5 J/cm² and power at 100W to avoid surface roughening.'
+- question: Why does my laser leave a **white, ashy residue** on the oak surface after cleaning, and how can I prevent it?
+  answer: '**Excessive fluence chars lignin**. This white residue consists of distinct micro-charred lignin, caused by fluence exceeding the 2.5 J/cm² threshold. To prevent it, it''s essential to lower your laser power or raise the scan speed above 500 mm/s. A final gentle pass at reduced energy will remove leftover ash without harming the oak substrate.'
+- question: For which applications is laser **cleaning oak** most suitable compared to traditional methods like soda blasting or chemical stripping?
+  answer: '**Preserves surface integrity**. For delicate oak artifacts such as historical furniture or violins, laser cleaning stands out as essential. Our 2.5 J/cm² fluence and 100 µm spot size deliver micron-level precision in contaminant removal, preventing substrate loss unlike aggressive soda blasting. This distinct method suits high-value conservation, safeguarding original surface integrity above all.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+- name: EPA
+  description: EPA Clean Air Act Compliance
+  url: https://www.epa.gov/clean-air-act-overview
+  image: /images/logo/logo-org-epa.png

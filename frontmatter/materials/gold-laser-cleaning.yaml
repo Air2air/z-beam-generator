@@ -60,47 +60,6 @@ images:
   micro:
     alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/gold-laser-cleaning-micro.jpg
-caption:
-  before: Scanning electron microscopy makes it straightforward to see the gold surface before laser cleaning, heavily laden with irregular particulates like carbonaceous residues and fine oxide inclusions adhering to the polycrystalline matrix. This process uncovers degradation through micro-pitting and etching at grain boundaries, as the clinging debris practically escalates roughness, dulling the metallic luster and endangering structural integrity at high magnification.
-  after: After laser cleaning, optical and electron microscopy straightforwardly reveal a restored gold surface with uniform cleanliness and intact material integrity. The polycrystalline structure remains whole, free of ablation defects, showing smooth grain facets and minimal roughness. This process boosts reflectivity efficiently, with no contaminants, confirming effective restoration while preserving the substrate's original morphology.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: Can a laser cleaning system remove **tarnish or surface contamination** from gold without damaging the underlying material?
-  answer: '**High conductivity enables rapid cooling**. Yes, as a laser cleaning expert from Indonesia, I can confirm that pulsed laser systems work efficiently to remove tarnish and surface contaminants from gold. This process precisely targets just the top layer, preserving the underlying material without heat damage—ideal for jewelry and artifacts, ya.'
-- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning **delicate gold surfaces**, such as historical artifacts or electronics contacts?
-  answer: '**532 nm reduces reflectivity**. For delicate gold surfaces, that method relies on 532 nm green light as the optimal wavelength. Gold''s reflectivity decreases sharply at shorter wavelengths, allowing ablation efficiently at low fluence around 0.8 J/cm². This approach cuts thermal damage risks to sensitive substrates like historical artifacts or electronics, while precisely removing contaminants.'
-- question: How do you prevent the **high reflectivity of gold** from causing safety issues or damaging the laser cleaning equipment itself?
-  answer: '**Utilizes 532 nm for absorption**. We use a 532 nm wavelength practically to improve gold absorption and cut down on hazardous reflections. This process includes optical isolators and beam dumps for safeguarding the 15 W laser source against back-reflected energy. Operators need to wear wavelength-specific eyewear.'
-- question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after heat treatment or soldering?
-  answer: Laser cleaning removes oxidation from gold alloys in a straightforward way, though selective ablation of elements like copper poses a concern. That method, with a 532 nm wavelength at 0.8 J/cm² fluence, efficiently minimizes the risk while preserving surface composition and color integrity.
-- question: What are the risks of causing discoloration or a matte finish on a polished gold surface during laser cleaning?
-  answer: Discoloration and matte finishes occur straightforwardly due to micro-melting and surface roughening when fluence surpasses ~0.8 J/cm². This process demands precise control of parameters, such as the 50 µm spot size and 500 mm/s scan speed, to preserve polished gold's specular reflection without altering its microstructure.
-- question: Can laser cleaning be used to **selectively de-plate gold** from a substrate without harming the base material?
-  answer: '**Controlled 0.8 J/cm² fluence**. Absolutely, laser cleaning offers a practical way to strip gold plating from substrates like ceramics or metals, sparing the base material entirely. We fine-tune the wavelength and pulse energy—typically nanosecond pulses at 1064 nm—to ablate just the gold layer with precision. That method has worked well in our Indonesian restoration projects.'
-- question: How does the **karat (purity)** of gold affect the laser cleaning process and the parameters required?
-  answer: '**Reduces fluence for oxidation risk**. In this process, lower karat gold''s higher copper content raises oxidation risk during laser cleaning. To handle it efficiently, we reduce fluence below 0.8 J/cm² and tweak the 50 kHz repetition rate, preventing thermal damage to the more vulnerable alloy while achieving a pristine surface.'
-- question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable material loss or thinning?
-  answer: As an Indonesian laser cleaning expert, I suggest high-precision weighing on a microbalance before and after this process to detect mass loss in gold artifacts. Pair it efficiently with non-contact optical profilometry for verifying surface integrity and preventing thinning, thus preserving the material's original thickness.
-- question: Are there any hazardous fumes generated when laser cleaning gold, especially from **alloys or surface contaminants**?
-  answer: '**Aerosolizes hazardous alloying elements**. Laser cleaning gold with a 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel or cadmium. This process demands proper fume extraction using HEPA/ULPA filtration for safety. Always consult the alloy''s MSDS in a straightforward way to identify and mitigate risks from vaporized contaminants.'
-- question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable to gold?
-  answer: Gold's high thermal conductivity and chemical inertness call for specific laser settings, unlike those for reactive metals like silver. In this process, we precisely manage fluence around 0.8 J/cm² with a 532 nm wavelength to efficiently couple energy, removing contaminants while avoiding substrate microstructure damage.
 material_metadata:
   last_updated: '2025-10-27T23:48:40.921996Z'
   normalization_applied: true
@@ -394,3 +353,44 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Scanning electron microscopy makes it straightforward to see the gold surface before laser cleaning, heavily laden with irregular particulates like carbonaceous residues and fine oxide inclusions adhering to the polycrystalline matrix. This process uncovers degradation through micro-pitting and etching at grain boundaries, as the clinging debris practically escalates roughness, dulling the metallic luster and endangering structural integrity at high magnification.
+  after: After laser cleaning, optical and electron microscopy straightforwardly reveal a restored gold surface with uniform cleanliness and intact material integrity. The polycrystalline structure remains whole, free of ablation defects, showing smooth grain facets and minimal roughness. This process boosts reflectivity efficiently, with no contaminants, confirming effective restoration while preserving the substrate's original morphology.
+faq:
+- question: Can a laser cleaning system remove **tarnish or surface contamination** from gold without damaging the underlying material?
+  answer: '**High conductivity enables rapid cooling**. Yes, as a laser cleaning expert from Indonesia, I can confirm that pulsed laser systems work efficiently to remove tarnish and surface contaminants from gold. This process precisely targets just the top layer, preserving the underlying material without heat damage—ideal for jewelry and artifacts, ya.'
+- question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning **delicate gold surfaces**, such as historical artifacts or electronics contacts?
+  answer: '**532 nm reduces reflectivity**. For delicate gold surfaces, that method relies on 532 nm green light as the optimal wavelength. Gold''s reflectivity decreases sharply at shorter wavelengths, allowing ablation efficiently at low fluence around 0.8 J/cm². This approach cuts thermal damage risks to sensitive substrates like historical artifacts or electronics, while precisely removing contaminants.'
+- question: How do you prevent the **high reflectivity of gold** from causing safety issues or damaging the laser cleaning equipment itself?
+  answer: '**Utilizes 532 nm for absorption**. We use a 532 nm wavelength practically to improve gold absorption and cut down on hazardous reflections. This process includes optical isolators and beam dumps for safeguarding the 15 W laser source against back-reflected energy. Operators need to wear wavelength-specific eyewear.'
+- question: Is laser cleaning suitable for removing oxidation or fire scale from gold alloys (like 14k or 18k gold) after heat treatment or soldering?
+  answer: Laser cleaning removes oxidation from gold alloys in a straightforward way, though selective ablation of elements like copper poses a concern. That method, with a 532 nm wavelength at 0.8 J/cm² fluence, efficiently minimizes the risk while preserving surface composition and color integrity.
+- question: What are the risks of causing discoloration or a matte finish on a polished gold surface during laser cleaning?
+  answer: Discoloration and matte finishes occur straightforwardly due to micro-melting and surface roughening when fluence surpasses ~0.8 J/cm². This process demands precise control of parameters, such as the 50 µm spot size and 500 mm/s scan speed, to preserve polished gold's specular reflection without altering its microstructure.
+- question: Can laser cleaning be used to **selectively de-plate gold** from a substrate without harming the base material?
+  answer: '**Controlled 0.8 J/cm² fluence**. Absolutely, laser cleaning offers a practical way to strip gold plating from substrates like ceramics or metals, sparing the base material entirely. We fine-tune the wavelength and pulse energy—typically nanosecond pulses at 1064 nm—to ablate just the gold layer with precision. That method has worked well in our Indonesian restoration projects.'
+- question: How does the **karat (purity)** of gold affect the laser cleaning process and the parameters required?
+  answer: '**Reduces fluence for oxidation risk**. In this process, lower karat gold''s higher copper content raises oxidation risk during laser cleaning. To handle it efficiently, we reduce fluence below 0.8 J/cm² and tweak the 50 kHz repetition rate, preventing thermal damage to the more vulnerable alloy while achieving a pristine surface.'
+- question: What is the recommended method for verifying that a laser cleaning process on gold has not caused any measurable material loss or thinning?
+  answer: As an Indonesian laser cleaning expert, I suggest high-precision weighing on a microbalance before and after this process to detect mass loss in gold artifacts. Pair it efficiently with non-contact optical profilometry for verifying surface integrity and preventing thinning, thus preserving the material's original thickness.
+- question: Are there any hazardous fumes generated when laser cleaning gold, especially from **alloys or surface contaminants**?
+  answer: '**Aerosolizes hazardous alloying elements**. Laser cleaning gold with a 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel or cadmium. This process demands proper fume extraction using HEPA/ULPA filtration for safety. Always consult the alloy''s MSDS in a straightforward way to identify and mitigate risks from vaporized contaminants.'
+- question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable to gold?
+  answer: Gold's high thermal conductivity and chemical inertness call for specific laser settings, unlike those for reactive metals like silver. In this process, we precisely manage fluence around 0.8 J/cm² with a 532 nm wavelength to efficiently couple energy, removing contaminants while avoiding substrate microstructure damage.
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

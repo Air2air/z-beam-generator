@@ -59,33 +59,6 @@ images:
   micro:
     alt: Borosilicate Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/borosilicate-glass-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the borosilicate glass surface displays contamination, particularly from scattered fine dust particles and oily residues due to handling. These form irregular clusters and streaks that adhere firmly, causing minor pitting and reduced transparency. Thus, this degradation impairs optical clarity, though cleaning restores surface integrity.
-  after: Following laser cleaning, the borosilicate glass surface regains its original clarity and smoothness. This process removes contaminants without altering the material's thermal stability or optical properties, thus preserving overall integrity. Notably, the restoration quality remains high, free of micro-cracks or haze, making it ideal for everyday applications like labware and optics. It displays a uniform shine, primed for dependable performance.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: How does laser cleaning restore borosilicate glass without causing **thermal damage**?
-  answer: '**Short-pulse ablation avoids cracks**. Laser cleaning employs precise, short-pulse lasers to ablate contaminants from borosilicate glass, particularly leveraging its low thermal expansion to prevent cracks. This non-contact approach thus maintains material integrity, effectively clearing residues in 10-20 seconds per spot.'
-- question: What challenges arise when laser cleaning **borosilicate glass surfaces**?
-  answer: '**Calibrate wavelengths carefully**. Challenges, particularly micro-cracking when laser intensity surpasses the glass''s thermal limits, along with residue re-deposition on porous edges, pose key risks. Thus, operators should precisely calibrate wavelengths (e.g., 1064 nm) to balance cleaning efficiency against the material''s inherent brittleness.'
-- question: Can laser cleaning improve the **optical clarity** of contaminated borosilicate labware?
-  answer: '**Enhances optical clarity**. Yes, this approach notably boosts clarity by vaporizing organic and metallic contaminants without abrasives, thus restoring borosilicate''s inherent transparency. Particularly effective against haze from chemical exposure, it prolongs lab equipment lifespan while curbing environmental harm through dry methods. Suited for precision optics. (47 words)'
 material_metadata:
   last_updated: '2025-10-27T23:48:40.921658Z'
   normalization_applied: true
@@ -308,3 +281,30 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Under the microscope, the borosilicate glass surface displays contamination, particularly from scattered fine dust particles and oily residues due to handling. These form irregular clusters and streaks that adhere firmly, causing minor pitting and reduced transparency. Thus, this degradation impairs optical clarity, though cleaning restores surface integrity.
+  after: Following laser cleaning, the borosilicate glass surface regains its original clarity and smoothness. This process removes contaminants without altering the material's thermal stability or optical properties, thus preserving overall integrity. Notably, the restoration quality remains high, free of micro-cracks or haze, making it ideal for everyday applications like labware and optics. It displays a uniform shine, primed for dependable performance.
+faq:
+- question: How does laser cleaning restore borosilicate glass without causing **thermal damage**?
+  answer: '**Short-pulse ablation avoids cracks**. Laser cleaning employs precise, short-pulse lasers to ablate contaminants from borosilicate glass, particularly leveraging its low thermal expansion to prevent cracks. This non-contact approach thus maintains material integrity, effectively clearing residues in 10-20 seconds per spot.'
+- question: What challenges arise when laser cleaning **borosilicate glass surfaces**?
+  answer: '**Calibrate wavelengths carefully**. Challenges, particularly micro-cracking when laser intensity surpasses the glass''s thermal limits, along with residue re-deposition on porous edges, pose key risks. Thus, operators should precisely calibrate wavelengths (e.g., 1064 nm) to balance cleaning efficiency against the material''s inherent brittleness.'
+- question: Can laser cleaning improve the **optical clarity** of contaminated borosilicate labware?
+  answer: '**Enhances optical clarity**. Yes, this approach notably boosts clarity by vaporizing organic and metallic contaminants without abrasives, thus restoring borosilicate''s inherent transparency. Particularly effective against haze from chemical exposure, it prolongs lab equipment lifespan while curbing environmental harm through dry methods. Suited for precision optics. (47 words)'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

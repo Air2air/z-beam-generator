@@ -89,6 +89,51 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Loaded {len(self.category_definitions)} material categories")
         self.logger.info(f"✅ Loaded {len(self.machine_settings_ranges)} machine settings ranges")
         self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
+        
+        # Load separated content files for orchestration
+        self.captions = self._load_captions()
+        self.faqs = self._load_faqs()
+        self.regulatory_standards = self._load_regulatory_standards()
+        
+        self.logger.info(f"✅ Loaded {len(self.captions)} captions from content files")
+        self.logger.info(f"✅ Loaded {len(self.faqs)} FAQ sets from content files")
+        self.logger.info(f"✅ Loaded {len(self.regulatory_standards)} regulatory standards from content files")
+    
+    def _load_captions(self) -> Dict[str, Any]:
+        """Load Captions.yaml and return captions dict."""
+        captions_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "Captions.yaml"
+        if not captions_file.exists():
+            self.logger.warning(f"Captions.yaml not found at {captions_file}")
+            return {}
+        
+        with open(captions_file, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        
+        return data.get('captions', {})
+    
+    def _load_faqs(self) -> Dict[str, Any]:
+        """Load FAQs.yaml and return faqs dict."""
+        faqs_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "FAQs.yaml"
+        if not faqs_file.exists():
+            self.logger.warning(f"FAQs.yaml not found at {faqs_file}")
+            return {}
+        
+        with open(faqs_file, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        
+        return data.get('faqs', {})
+    
+    def _load_regulatory_standards(self) -> Dict[str, Any]:
+        """Load RegulatoryStandards.yaml and return regulatory_standards dict."""
+        regulatory_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "RegulatoryStandards.yaml"
+        if not regulatory_file.exists():
+            self.logger.warning(f"RegulatoryStandards.yaml not found at {regulatory_file}")
+            return {}
+        
+        with open(regulatory_file, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        
+        return data.get('regulatory_standards', {})
     
     def _load_property_taxonomy(self):
         """Load property taxonomy from MaterialProperties.yaml to categorize properties correctly."""
@@ -214,37 +259,44 @@ class TrivialFrontmatterExporter:
                 cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
                 # Strip generation metadata
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
-            elif key == 'regulatoryStandards':
-                # Normalize regulatoryStandards to template format:
-                # - Remove string entries (legacy universal standards)
-                # - Keep only dict format with: name, description, url, image
-                # - Remove longName field (not in template)
-                normalized = self._normalize_regulatory_standards(value)
-                frontmatter[key] = self._strip_generation_metadata(normalized)
-            elif key == 'caption':
-                # Strip generation metadata from caption (timestamps, word counts, author duplication, etc.)
-                # Caption should only have 'before' and 'after' fields
-                cleaned = self._remove_descriptions(value, preserve_regulatory=False)
-                stripped = self._strip_generation_metadata(cleaned)
-                # Ensure only before/after remain
-                if isinstance(stripped, dict):
-                    frontmatter[key] = {
-                        k: v for k, v in stripped.items()
-                        if k in ['before', 'after']
-                    }
-                else:
-                    frontmatter[key] = stripped
-            elif key == 'faq':
-                # Format FAQ with HTML topic highlighting and strip metadata
-                # Reads topic_keyword/topic_statement from Materials.yaml
-                # Applies <strong> tags and exports only question/answer
-                cleaned = self._remove_descriptions(value, preserve_regulatory=False)
-                formatted_faq = self._format_faq_with_topics(cleaned)
-                frontmatter[key] = self._strip_generation_metadata(formatted_faq)
+            elif key in ['caption', 'faq', 'regulatoryStandards']:
+                # These fields are orchestrated from separate content files - skip in this loop
+                # Will be added after the loop from self.captions, self.faqs, self.regulatory_standards
+                continue
             else:
                 # Copy as-is but remove description fields and strip generation metadata
-                cleaned = self._remove_descriptions(value, preserve_regulatory=(key == 'regulatoryStandards'))
+                cleaned = self._remove_descriptions(value, preserve_regulatory=False)
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
+        
+        # Orchestrate content from separated content files (Captions.yaml, FAQs.yaml, RegulatoryStandards.yaml)
+        # These files were extracted from Materials.yaml for better organization while maintaining single-file output
+        
+        # Add caption from Captions.yaml
+        if material_name in self.captions:
+            caption_data = self.captions[material_name]
+            cleaned = self._remove_descriptions(caption_data, preserve_regulatory=False)
+            stripped = self._strip_generation_metadata(cleaned)
+            # Ensure only before/after remain
+            if isinstance(stripped, dict):
+                frontmatter['caption'] = {
+                    k: v for k, v in stripped.items()
+                    if k in ['before', 'after']
+                }
+            else:
+                frontmatter['caption'] = stripped
+        
+        # Add FAQ from FAQs.yaml
+        if material_name in self.faqs:
+            faq_data = self.faqs[material_name]
+            cleaned = self._remove_descriptions(faq_data, preserve_regulatory=False)
+            formatted_faq = self._format_faq_with_topics(cleaned)
+            frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
+        
+        # Add regulatory standards from RegulatoryStandards.yaml
+        if material_name in self.regulatory_standards:
+            regulatory_data = self.regulatory_standards[material_name]
+            normalized = self._normalize_regulatory_standards(regulatory_data)
+            frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
         
         # Write YAML file
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"

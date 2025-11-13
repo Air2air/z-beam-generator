@@ -59,47 +59,6 @@ images:
   micro:
     alt: Rosewood microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/rosewood-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, the rosewood surface particularly reveals fine dust particles and oily residues adhering to wood fibers. These contaminants thus fill pores, leading to slight degradation, including fiber swelling and minor discoloration.
-  after: After laser cleaning, the rosewood surface emerges smooth and vibrant, with all dirt and grime thoroughly eliminated. Notably, natural grain patterns become clearly visible, while the original reddish-brown hue revives without any fading. Restoration quality proves high, showing no burns or cracks; thus, the wood's density and strength remain preserved. Overall material integrity holds firm, enabling safe applications in furniture or decor.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: What laser parameters, like wavelength and pulse energy, are recommended to safely clean contaminants from rosewood surfaces without causing **charring or discoloration**?
-  answer: '**1064 nm 4.5 J/cm² fluence**. For rosewood''s dense, oil-rich structure that chars easily under heat, particularly when processing, apply a 1064 nm wavelength at 4.5 J/cm² fluence to selectively remove contaminants. Combine this with 100 ns pulses of 45 W power, scanned at 500 mm/s with 50% overlap over two passes, thus preventing discoloration.'
-- question: How does the natural oil in rosewood affect the efficiency of laser ablation during surface cleaning, and what adjustments are needed?
-  answer: The inherent oils in rosewood particularly shield the underlying lignin and cellulose, reducing laser absorption at 1064 nm and leading to spotty ablation during cleaning. Such inefficiency calls for boosting energy density to 4.5 J/cm² with 50% beam overlap and two passes at 45 W, thus enabling even contaminant removal without charring the wood.
-- question: Is a CO2 laser suitable for removing old varnish from antique rosewood furniture, and what risks are involved for the **wood grain**?
-  answer: '**Risks charring delicate grain**. CO2 lasers prove unsuitable for removing old varnish from antique rosewood furniture, particularly due to their 10.6 μm wavelength generating excessive heat, which endangers the wood''s delicate grain with charring. Notably, restoration experts highlight how vaporization unevenly erodes the fine structure, risking a loss of luster. Thus, select 1064 nm pulses at 4.5 J/cm² to reduce damage.'
-- question: What safety precautions should be taken when using fiber lasers to clean rosewood musical instruments, such as guitars, to avoid **toxic fume release**?
-  answer: '**Ventilate VOCs from wood oils**. For lasering rosewood guitars with a 1064 nm fiber laser at 45 W, particularly prioritize robust local exhaust ventilation to capture volatile organic compounds from the wood''s oils during ablation. Specifically, maintain energy density below 4.5 J/cm² while scanning at 500 mm/s to reduce thermal vaporization. Thus, always don N95 respirators in a well-sealed workspace.'
-- question: In laser cleaning rosewood artifacts, how can operators prevent fading or color shifts in the wood's **reddish-brown hue**?
-  answer: '**Low fluence curbs heat-induced fading**. To protect rosewood''s reddish-brown pigments in laser cleaning, particularly by setting fluence to 4.5 J/cm² and power near 45 W at 1064 nm wavelength, this curbs heat accumulation that dulls colors. Scan evenly at 500 mm/s for coverage, then seal the surface afterward, thus stabilizing hues against oxidation.'
-- question: What are common challenges in using pulsed lasers to remove pollutants from outdoor rosewood sculptures, and how to mitigate **humidity effects**?
-  answer: '**Pre-dry to stabilize moisture**. Rosewood''s hygroscopic properties particularly absorb ambient humidity, resulting in swelling and variable laser uptake during pulsed cleaning, which may cause uneven pollutant removal or substrate harm. Thus, to counteract this, sustain energy density at 4.5 J/cm² with a 500 mm/s scan speed for even ablation, while pre-drying surfaces to steady moisture levels.'
-- question: For small-scale workshops, which affordable laser cleaning systems are best for treating **rosewood veneers** without substrate damage?
-  answer: '**Preserves delicate lignin structure**. For small workshops dealing with rosewood veneers, consider portable 1064 nm fiber lasers, particularly IPG or Raycus models under $10,000 that deliver 45 W average power. Adjust energy density to 4.5 J/cm² and scan speed to 500 mm/s, which notably ablates contaminants gently without damaging the delicate lignin structure. Two passes with 50% overlap thus guarantee uniform outcomes.'
-- question: How does **rosewood's high density** compare to other woods in terms of laser cleaning thresholds, and what fluence levels should be avoided?
-  answer: '**Safe up to 4.5 J/cm²**. Notably, rosewood''s density—around 950 kg/m³—surpasses that of softer woods like pine by almost double. This elevates its ablation threshold, thus allowing cleaner material removal at fluences up to 4.5 J/cm² without substrate damage. Specifically, steer clear of levels exceeding 6 J/cm² to prevent charring the dense lignin structure.'
-- question: What regulatory standards apply to laser cleaning rosewood in conservation projects, especially regarding **endangered species protections**?
-  answer: '**Mandates CITES sourcing permits**. In rosewood conservation through laser cleaning, CITES Appendix II listings require permits for sourcing endangered species, particularly, along with detailed treatment records to track provenance. Specifically, apply parameters like 4.5 J/cm² fluence at 1064 nm wavelength to remove contaminants gently without damaging the wood''s lignin structure, thus ensuring regulatory compliance in cultural heritage projects.'
-- question: In laser surface treatment of rosewood, how can **pre-cleaning preparation** like degreasing improve outcomes and reduce multiple passes?
-  answer: '**Removes oils for optimal absorption**. Rosewood''s natural oils particularly block contaminants from laser penetration, thus necessitating degreasing with solvents like acetone to reveal the surface for better absorption. Notably, this preparation improves efficacy at 4.5 J/cm² fluence, usually reducing passes from two to one while avoiding uneven charring in 45 W treatments.'
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922592Z'
   normalization_applied: true
@@ -318,3 +277,44 @@ machineSettings:
   dwellTime:
     unit: ms
     value: 0.2
+caption:
+  before: Under microscopy, the rosewood surface particularly reveals fine dust particles and oily residues adhering to wood fibers. These contaminants thus fill pores, leading to slight degradation, including fiber swelling and minor discoloration.
+  after: After laser cleaning, the rosewood surface emerges smooth and vibrant, with all dirt and grime thoroughly eliminated. Notably, natural grain patterns become clearly visible, while the original reddish-brown hue revives without any fading. Restoration quality proves high, showing no burns or cracks; thus, the wood's density and strength remain preserved. Overall material integrity holds firm, enabling safe applications in furniture or decor.
+faq:
+- question: What laser parameters, like wavelength and pulse energy, are recommended to safely clean contaminants from rosewood surfaces without causing **charring or discoloration**?
+  answer: '**1064 nm 4.5 J/cm² fluence**. For rosewood''s dense, oil-rich structure that chars easily under heat, particularly when processing, apply a 1064 nm wavelength at 4.5 J/cm² fluence to selectively remove contaminants. Combine this with 100 ns pulses of 45 W power, scanned at 500 mm/s with 50% overlap over two passes, thus preventing discoloration.'
+- question: How does the natural oil in rosewood affect the efficiency of laser ablation during surface cleaning, and what adjustments are needed?
+  answer: The inherent oils in rosewood particularly shield the underlying lignin and cellulose, reducing laser absorption at 1064 nm and leading to spotty ablation during cleaning. Such inefficiency calls for boosting energy density to 4.5 J/cm² with 50% beam overlap and two passes at 45 W, thus enabling even contaminant removal without charring the wood.
+- question: Is a CO2 laser suitable for removing old varnish from antique rosewood furniture, and what risks are involved for the **wood grain**?
+  answer: '**Risks charring delicate grain**. CO2 lasers prove unsuitable for removing old varnish from antique rosewood furniture, particularly due to their 10.6 μm wavelength generating excessive heat, which endangers the wood''s delicate grain with charring. Notably, restoration experts highlight how vaporization unevenly erodes the fine structure, risking a loss of luster. Thus, select 1064 nm pulses at 4.5 J/cm² to reduce damage.'
+- question: What safety precautions should be taken when using fiber lasers to clean rosewood musical instruments, such as guitars, to avoid **toxic fume release**?
+  answer: '**Ventilate VOCs from wood oils**. For lasering rosewood guitars with a 1064 nm fiber laser at 45 W, particularly prioritize robust local exhaust ventilation to capture volatile organic compounds from the wood''s oils during ablation. Specifically, maintain energy density below 4.5 J/cm² while scanning at 500 mm/s to reduce thermal vaporization. Thus, always don N95 respirators in a well-sealed workspace.'
+- question: In laser cleaning rosewood artifacts, how can operators prevent fading or color shifts in the wood's **reddish-brown hue**?
+  answer: '**Low fluence curbs heat-induced fading**. To protect rosewood''s reddish-brown pigments in laser cleaning, particularly by setting fluence to 4.5 J/cm² and power near 45 W at 1064 nm wavelength, this curbs heat accumulation that dulls colors. Scan evenly at 500 mm/s for coverage, then seal the surface afterward, thus stabilizing hues against oxidation.'
+- question: What are common challenges in using pulsed lasers to remove pollutants from outdoor rosewood sculptures, and how to mitigate **humidity effects**?
+  answer: '**Pre-dry to stabilize moisture**. Rosewood''s hygroscopic properties particularly absorb ambient humidity, resulting in swelling and variable laser uptake during pulsed cleaning, which may cause uneven pollutant removal or substrate harm. Thus, to counteract this, sustain energy density at 4.5 J/cm² with a 500 mm/s scan speed for even ablation, while pre-drying surfaces to steady moisture levels.'
+- question: For small-scale workshops, which affordable laser cleaning systems are best for treating **rosewood veneers** without substrate damage?
+  answer: '**Preserves delicate lignin structure**. For small workshops dealing with rosewood veneers, consider portable 1064 nm fiber lasers, particularly IPG or Raycus models under $10,000 that deliver 45 W average power. Adjust energy density to 4.5 J/cm² and scan speed to 500 mm/s, which notably ablates contaminants gently without damaging the delicate lignin structure. Two passes with 50% overlap thus guarantee uniform outcomes.'
+- question: How does **rosewood's high density** compare to other woods in terms of laser cleaning thresholds, and what fluence levels should be avoided?
+  answer: '**Safe up to 4.5 J/cm²**. Notably, rosewood''s density—around 950 kg/m³—surpasses that of softer woods like pine by almost double. This elevates its ablation threshold, thus allowing cleaner material removal at fluences up to 4.5 J/cm² without substrate damage. Specifically, steer clear of levels exceeding 6 J/cm² to prevent charring the dense lignin structure.'
+- question: What regulatory standards apply to laser cleaning rosewood in conservation projects, especially regarding **endangered species protections**?
+  answer: '**Mandates CITES sourcing permits**. In rosewood conservation through laser cleaning, CITES Appendix II listings require permits for sourcing endangered species, particularly, along with detailed treatment records to track provenance. Specifically, apply parameters like 4.5 J/cm² fluence at 1064 nm wavelength to remove contaminants gently without damaging the wood''s lignin structure, thus ensuring regulatory compliance in cultural heritage projects.'
+- question: In laser surface treatment of rosewood, how can **pre-cleaning preparation** like degreasing improve outcomes and reduce multiple passes?
+  answer: '**Removes oils for optimal absorption**. Rosewood''s natural oils particularly block contaminants from laser penetration, thus necessitating degreasing with solvents like acetone to reveal the surface for better absorption. Notably, this preparation improves efficacy at 4.5 J/cm² fluence, usually reducing passes from two to one while avoiding uneven charring in 45 W treatments.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

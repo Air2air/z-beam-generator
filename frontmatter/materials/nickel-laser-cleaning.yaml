@@ -59,47 +59,6 @@ images:
   micro:
     alt: Nickel microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/nickel-laser-cleaning-micro.jpg
-caption:
-  before: As a laser materials processing expert, microscopic analysis of nickel reveals contamination, particularly dark particulates and thin oxide films. The surface exhibits pitting and rough textures from degradation. Contaminants, likely from chemical processing, induce micro-cracks and discoloration, thus compromising structural integrity for aerospace and electronics uses while diminishing overall smoothness.
-  after: Following laser cleaning, the nickel surface appears notably smooth and uniform, devoid of contaminants like oxides and residues. This process thus preserves the metal's integrity without damage, upholding high quality. It guarantees reliability specifically for aerospace parts, chemical processing, and electronics manufacturing.
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: What are the best laser parameters (wavelength, power, pulse duration) for cleaning rust or oxide from a nickel surface without **damaging the base metal**?
-  answer: '**Fluence 2.5 J/cm² preserves substrate**. For nickel oxide removal, I recommend a 1064 nm wavelength with 100 W average power and 10 ns pulses. Specifically, maintain fluence near 2.5 J/cm² to selectively ablate contaminants while preserving the substrate. Thus, employing a 50 μm spot size at 500 mm/s scan speed delivers optimal cleaning efficiency without thermal damage to the base metal.'
-- question: Can a fiber laser effectively remove **nickel plating** from a substrate like copper or steel?
-  answer: '**Tune fluence for selective ablation**. Yes, particularly at around 100 W and 1064 nm, a fiber laser can effectively strip nickel plating. Tuning parameters like a 2.5 J/cm² fluence presents the main challenge, thus ensuring complete ablation of the nickel layer without thermally harming the underlying copper or steel substrate, which has a distinct ablation threshold.'
-- question: What **specific safety hazards** are associated with laser cleaning nickel and nickel alloys?
-  answer: '**Generates toxic carcinogenic fumes**. Nickel''s ablation threshold of 2.5 J/cm² notably produces highly toxic, carcinogenic fumes. Specifically, these respiratory risks demand efficient fume extraction and suitable PPE, as the resulting aerosols represent a key safety issue in 1064 nm laser cleaning operations.'
-- question: Why does laser cleaning sometimes leave a discolored or rainbow-like pattern on a nickel surface?
-  answer: Notably, the rainbow discoloration stems from a thin oxide layer caused by residual heat. Thus, shorter 10 ns pulses at higher 500 mm/s scan speeds, or an argon shield, prevent this tint by limiting thermal input to the nickel surface.
-- question: Is laser cleaning suitable for **preparing a nickel surface** for subsequent processes like welding or coating?
-  answer: '**Removes oxides leaving activated surface**. Particularly suited for nickel surface preparation, laser cleaning delivers chemical purity sans abrasives. Specifically, using 2.5 J/cm² fluence and 1064 nm wavelength, it removes oxides effectively, thus yielding an activated surface primed for welding or coating adhesion.'
-- question: How do you clean a nickel-based superalloy (like Inconel) with a laser without **inducing micro-cracks** or altering its material properties?
-  answer: '**Nanosecond pulses below 2.5 J/cm²**. For nickel superalloys, particularly with nanosecond pulses of 10 ns duration and fluence under 2.5 J/cm², this method minimizes thermal input. Thus, it prevents micro-cracks by limiting the heat-affected zone and preserving sensitive material properties.'
-- question: What is the best way to verify that a nickel surface is clean after laser processing and not just visually clean?
-  answer: For nickel surfaces, particularly in demanding scenarios, pair white glove wipe tests with contact angle measurements. Notably, for critical aerospace applications, techniques like XPS verify sub-monolayer contaminant removal, thus optimizing surface energy for later processes.
-- question: Can laser cleaning be used on **porous or cast** nickel surfaces without trapping contaminants?
-  answer: '**Precise fluence prevents trapping**. Laser cleaning of porous nickel demands precise fluence control around 2.5 J/cm², particularly to avoid contaminant entrapment. Thus, pairing a 100 kHz pulse rate with gas assist proficiently ejects loosened particles from intricate cast structures, ensuring thorough surface purification.'
-- question: How does the **high reflectivity** of nickel affect the efficiency and safety of the laser cleaning process?
-  answer: '**Absorption increases post-threshold**. Notably, nickel''s high reflectivity at 1064 nm reduces process efficiency and generates hazardous reflections. Yet, as ablation initiates at the 2.5 J/cm² threshold fluence, surface absorption surges dramatically. We counter this initial hazard particularly via angled beam delivery and protective enclosures that contain stray energy.'
-- question: What are the regulatory (OSHA, NIOSH) exposure limits for **nickel fumes**, and how do they impact laser cleaning operations?
-  answer: '**Requires effective fume extraction**. The OSHA PEL for nickel metal fumes stands at 1 mg/m³, a level readily surpassed during laser ablation with 100W average power. Particularly, effective fume extraction proves essential, since the 1064 nm wavelength readily produces inhalable particulates. Thus, ongoing air monitoring helps maintain compliance with these rigorous exposure limits in your nickel processing tasks.'
 material_metadata:
   caption_corruption_detected: '2025-10-27T23:53:01.654571Z'
   caption_issue: Truncated JSON structure detected in caption fields
@@ -395,3 +354,44 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: As a laser materials processing expert, microscopic analysis of nickel reveals contamination, particularly dark particulates and thin oxide films. The surface exhibits pitting and rough textures from degradation. Contaminants, likely from chemical processing, induce micro-cracks and discoloration, thus compromising structural integrity for aerospace and electronics uses while diminishing overall smoothness.
+  after: Following laser cleaning, the nickel surface appears notably smooth and uniform, devoid of contaminants like oxides and residues. This process thus preserves the metal's integrity without damage, upholding high quality. It guarantees reliability specifically for aerospace parts, chemical processing, and electronics manufacturing.
+faq:
+- question: What are the best laser parameters (wavelength, power, pulse duration) for cleaning rust or oxide from a nickel surface without **damaging the base metal**?
+  answer: '**Fluence 2.5 J/cm² preserves substrate**. For nickel oxide removal, I recommend a 1064 nm wavelength with 100 W average power and 10 ns pulses. Specifically, maintain fluence near 2.5 J/cm² to selectively ablate contaminants while preserving the substrate. Thus, employing a 50 μm spot size at 500 mm/s scan speed delivers optimal cleaning efficiency without thermal damage to the base metal.'
+- question: Can a fiber laser effectively remove **nickel plating** from a substrate like copper or steel?
+  answer: '**Tune fluence for selective ablation**. Yes, particularly at around 100 W and 1064 nm, a fiber laser can effectively strip nickel plating. Tuning parameters like a 2.5 J/cm² fluence presents the main challenge, thus ensuring complete ablation of the nickel layer without thermally harming the underlying copper or steel substrate, which has a distinct ablation threshold.'
+- question: What **specific safety hazards** are associated with laser cleaning nickel and nickel alloys?
+  answer: '**Generates toxic carcinogenic fumes**. Nickel''s ablation threshold of 2.5 J/cm² notably produces highly toxic, carcinogenic fumes. Specifically, these respiratory risks demand efficient fume extraction and suitable PPE, as the resulting aerosols represent a key safety issue in 1064 nm laser cleaning operations.'
+- question: Why does laser cleaning sometimes leave a discolored or rainbow-like pattern on a nickel surface?
+  answer: Notably, the rainbow discoloration stems from a thin oxide layer caused by residual heat. Thus, shorter 10 ns pulses at higher 500 mm/s scan speeds, or an argon shield, prevent this tint by limiting thermal input to the nickel surface.
+- question: Is laser cleaning suitable for **preparing a nickel surface** for subsequent processes like welding or coating?
+  answer: '**Removes oxides leaving activated surface**. Particularly suited for nickel surface preparation, laser cleaning delivers chemical purity sans abrasives. Specifically, using 2.5 J/cm² fluence and 1064 nm wavelength, it removes oxides effectively, thus yielding an activated surface primed for welding or coating adhesion.'
+- question: How do you clean a nickel-based superalloy (like Inconel) with a laser without **inducing micro-cracks** or altering its material properties?
+  answer: '**Nanosecond pulses below 2.5 J/cm²**. For nickel superalloys, particularly with nanosecond pulses of 10 ns duration and fluence under 2.5 J/cm², this method minimizes thermal input. Thus, it prevents micro-cracks by limiting the heat-affected zone and preserving sensitive material properties.'
+- question: What is the best way to verify that a nickel surface is clean after laser processing and not just visually clean?
+  answer: For nickel surfaces, particularly in demanding scenarios, pair white glove wipe tests with contact angle measurements. Notably, for critical aerospace applications, techniques like XPS verify sub-monolayer contaminant removal, thus optimizing surface energy for later processes.
+- question: Can laser cleaning be used on **porous or cast** nickel surfaces without trapping contaminants?
+  answer: '**Precise fluence prevents trapping**. Laser cleaning of porous nickel demands precise fluence control around 2.5 J/cm², particularly to avoid contaminant entrapment. Thus, pairing a 100 kHz pulse rate with gas assist proficiently ejects loosened particles from intricate cast structures, ensuring thorough surface purification.'
+- question: How does the **high reflectivity** of nickel affect the efficiency and safety of the laser cleaning process?
+  answer: '**Absorption increases post-threshold**. Notably, nickel''s high reflectivity at 1064 nm reduces process efficiency and generates hazardous reflections. Yet, as ablation initiates at the 2.5 J/cm² threshold fluence, surface absorption surges dramatically. We counter this initial hazard particularly via angled beam delivery and protective enclosures that contain stray energy.'
+- question: What are the regulatory (OSHA, NIOSH) exposure limits for **nickel fumes**, and how do they impact laser cleaning operations?
+  answer: '**Requires effective fume extraction**. The OSHA PEL for nickel metal fumes stands at 1 mg/m³, a level readily surpassed during laser ablation with 100W average power. Particularly, effective fume extraction proves essential, since the 1064 nm wavelength readily produces inhalable particulates. Thus, ongoing air monitoring helps maintain compliance with these rigorous exposure limits in your nickel processing tasks.'
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png

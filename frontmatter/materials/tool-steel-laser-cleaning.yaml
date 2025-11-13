@@ -60,41 +60,6 @@ images:
   micro:
     alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed surface structure
     url: /images/material/tool-steel-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopic examination, the tool steel surface reveals contamination from oxide particles and process residues, forming notable irregular clusters. This adherent, fine-grained debris induces pitting and micro-cracks, thereby essential in degrading the topography for machining applications.
-  after: Through precise laser ablation, the cleaned surface of this tool steel achieves a notable, mirror-like flawlessness, free from oxidation or debris. Such restoration revives the material's original luster and topography with exceptional fidelity. The alloy's integrity stays fully intact, safeguarding its hardness and fatigue resistance—essential for rigorous tooling and machining demands.
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-faq:
-- question: What laser parameters are best for cleaning oxidized tool steel like D2 without **causing microcracking**?
-  answer: '**Fiber lasers curb heat-affected zones**. For cleaning oxidized D2 tool steel without microcracking, I favor fiber lasers at 1064 nm wavelength, 10 ns pulse duration, and 5.1 J/cm² fluence to ablate oxides while curbing heat-affected zones in its high-chromium makeup—a notable edge. CO2 lasers absorb poorly on metals, risking greater thermal damage, so it''s essential to stick with 100 W power and 500 mm/s scans over two passes at 50% overlap.'
-- question: Does laser cleaning restore the **surface hardness** of heat-treated tool steel tools, or does it require re-tempering?
-  answer: '**Preserves martensitic hardness**. Laser cleaning tool steels such as A2 or O1 at 5.1 J/cm² fluence notably preserves Rockwell hardness, by limiting thermal diffusion within the martensitic structure and preventing unintended tempering. Yet, should local surface temperatures surpass 200°C, essential re-tempering at 180-220°C could be required to regain full properties. Our 100 W setup delivers distinct precise control for most applications.'
-- question: How do I safely remove **carbide buildup** from tool steel cutting inserts using laser cleaning?
-  answer: '**Target 5.1 J/cm² ablation**. To safely remove tungsten carbide buildup from tool steel inserts, aim for an essential ablation threshold of 5.1 J/cm² using a 1064 nm laser at 100 W power, thus avoiding substrate damage on materials like M2 high-speed steel. Forum case studies notably stress strong ventilation for metal vapors, with two passes at 500 mm/s yielding clean results.'
-- question: What are the risks of **laser-induced phase transformations** in water-hardening tool steels during cleaning?
-  answer: '**Triggers austenite softening martensite**. When working with water-hardening W-series tool steels, it''s notable how excessive laser heat in cleaning can induce austenite formation above 727°C, which softens the martensitic structure and undermines hardness critical for die and mold uses. It''s essential to stay under 5.1 J/cm² fluences with 10 ns pulses at 1064 nm, curbing thermal diffusion and phase changes.'
-- question: In laser cleaning of tool steel molds, how do **alloying elements like vanadium** affect the cleaning efficiency?
-  answer: '**Vanadium enhances laser absorption**. In tool steel molds, the notable vanadium content forms tough carbides that boost laser absorption at 1064 nm, accelerating contaminant removal. With shock-resistant alloys like S7, it''s essential to set fluence at 5.1 J/cm² for efficient oxide stripping without damaging the substrate—molders in injection circles praise this adjustment for cleaner finishes.'
-- question: What safety precautions are needed when laser cleaning tool steel parts that contain **cobalt or molybdenum**?
-  answer: '**Mitigate toxic vaporization fumes**. When cleaning tool steel alloys containing cobalt or molybdenum via a 1064 nm laser at 5.1 J/cm² fluence, it''s notable that toxic fumes such as cobalt oxide may arise from vaporization. It''s essential to don NIOSH-approved respirators with HEPA filters, eye protection, and gloves, while providing robust ventilation to adhere to OSHA exposure limits.'
-- question: Can pulsed laser cleaning remove rust from hot-work tool steel dies without **warping the substrate**?
-  answer: '**Modest thermal expansion limits distortion**. Yes, pulsed laser cleaning serves as a notable approach to strip rust from H13 hot-work tool steel dies, preventing warping thanks to its modest thermal expansion of 11.5 × 10⁻⁶/K that essentially curbs distortion. Employing 5.1 J/cm² fluence, 500 mm/s scan speed, and 50% overlap keeps heat buildup low—die-casting forums affirm consistent results over repeated passes.'
-- question: How does the **high thermal conductivity** of oil-hardening tool steel impact laser cleaning process times?
-  answer: '**Extends cleaning times 20-30%**. Oil-hardening tool steels, such as O-series alloys, exhibit a notable thermal conductivity of around 40 W/m·K, leading to swift heat dissipation that requires elevated laser power—up to 100 W—to maintain ablation without substrate damage. This distinct challenge typically prolongs cleaning times by 20-30%, necessitating reduced scan speeds of 500 mm/s for even contaminant removal at 5.1 J/cm² fluence.'
-- question: What are common issues with laser cleaning tool steel blades, like **edge chipping** or recast layer formation?
-  answer: '**Low fluence high scan speed**. In tool steel blades, edge chipping during laser cleaning arises from notable localized overheating that cracks sharp edges. Recast layers—molten residue resolidifying—manifest as distinct uneven surfaces under SEM examination. For high-speed tool steels, it''s essential to apply 5.1 J/cm² fluence and 500 mm/s scan speed to limit thermal buildup, as knifemakers frequently recommend in forums.'
 material_metadata:
   last_updated: '2025-10-27T23:48:40.922915Z'
   normalization_applied: true
@@ -387,3 +352,38 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+caption:
+  before: Under microscopic examination, the tool steel surface reveals contamination from oxide particles and process residues, forming notable irregular clusters. This adherent, fine-grained debris induces pitting and micro-cracks, thereby essential in degrading the topography for machining applications.
+  after: Through precise laser ablation, the cleaned surface of this tool steel achieves a notable, mirror-like flawlessness, free from oxidation or debris. Such restoration revives the material's original luster and topography with exceptional fidelity. The alloy's integrity stays fully intact, safeguarding its hardness and fatigue resistance—essential for rigorous tooling and machining demands.
+faq:
+- question: What laser parameters are best for cleaning oxidized tool steel like D2 without **causing microcracking**?
+  answer: '**Fiber lasers curb heat-affected zones**. For cleaning oxidized D2 tool steel without microcracking, I favor fiber lasers at 1064 nm wavelength, 10 ns pulse duration, and 5.1 J/cm² fluence to ablate oxides while curbing heat-affected zones in its high-chromium makeup—a notable edge. CO2 lasers absorb poorly on metals, risking greater thermal damage, so it''s essential to stick with 100 W power and 500 mm/s scans over two passes at 50% overlap.'
+- question: Does laser cleaning restore the **surface hardness** of heat-treated tool steel tools, or does it require re-tempering?
+  answer: '**Preserves martensitic hardness**. Laser cleaning tool steels such as A2 or O1 at 5.1 J/cm² fluence notably preserves Rockwell hardness, by limiting thermal diffusion within the martensitic structure and preventing unintended tempering. Yet, should local surface temperatures surpass 200°C, essential re-tempering at 180-220°C could be required to regain full properties. Our 100 W setup delivers distinct precise control for most applications.'
+- question: How do I safely remove **carbide buildup** from tool steel cutting inserts using laser cleaning?
+  answer: '**Target 5.1 J/cm² ablation**. To safely remove tungsten carbide buildup from tool steel inserts, aim for an essential ablation threshold of 5.1 J/cm² using a 1064 nm laser at 100 W power, thus avoiding substrate damage on materials like M2 high-speed steel. Forum case studies notably stress strong ventilation for metal vapors, with two passes at 500 mm/s yielding clean results.'
+- question: What are the risks of **laser-induced phase transformations** in water-hardening tool steels during cleaning?
+  answer: '**Triggers austenite softening martensite**. When working with water-hardening W-series tool steels, it''s notable how excessive laser heat in cleaning can induce austenite formation above 727°C, which softens the martensitic structure and undermines hardness critical for die and mold uses. It''s essential to stay under 5.1 J/cm² fluences with 10 ns pulses at 1064 nm, curbing thermal diffusion and phase changes.'
+- question: In laser cleaning of tool steel molds, how do **alloying elements like vanadium** affect the cleaning efficiency?
+  answer: '**Vanadium enhances laser absorption**. In tool steel molds, the notable vanadium content forms tough carbides that boost laser absorption at 1064 nm, accelerating contaminant removal. With shock-resistant alloys like S7, it''s essential to set fluence at 5.1 J/cm² for efficient oxide stripping without damaging the substrate—molders in injection circles praise this adjustment for cleaner finishes.'
+- question: What safety precautions are needed when laser cleaning tool steel parts that contain **cobalt or molybdenum**?
+  answer: '**Mitigate toxic vaporization fumes**. When cleaning tool steel alloys containing cobalt or molybdenum via a 1064 nm laser at 5.1 J/cm² fluence, it''s notable that toxic fumes such as cobalt oxide may arise from vaporization. It''s essential to don NIOSH-approved respirators with HEPA filters, eye protection, and gloves, while providing robust ventilation to adhere to OSHA exposure limits.'
+- question: Can pulsed laser cleaning remove rust from hot-work tool steel dies without **warping the substrate**?
+  answer: '**Modest thermal expansion limits distortion**. Yes, pulsed laser cleaning serves as a notable approach to strip rust from H13 hot-work tool steel dies, preventing warping thanks to its modest thermal expansion of 11.5 × 10⁻⁶/K that essentially curbs distortion. Employing 5.1 J/cm² fluence, 500 mm/s scan speed, and 50% overlap keeps heat buildup low—die-casting forums affirm consistent results over repeated passes.'
+- question: How does the **high thermal conductivity** of oil-hardening tool steel impact laser cleaning process times?
+  answer: '**Extends cleaning times 20-30%**. Oil-hardening tool steels, such as O-series alloys, exhibit a notable thermal conductivity of around 40 W/m·K, leading to swift heat dissipation that requires elevated laser power—up to 100 W—to maintain ablation without substrate damage. This distinct challenge typically prolongs cleaning times by 20-30%, necessitating reduced scan speeds of 500 mm/s for even contaminant removal at 5.1 J/cm² fluence.'
+- question: What are common issues with laser cleaning tool steel blades, like **edge chipping** or recast layer formation?
+  answer: '**Low fluence high scan speed**. In tool steel blades, edge chipping during laser cleaning arises from notable localized overheating that cracks sharp edges. Recast layers—molten residue resolidifying—manifest as distinct uneven surfaces under SEM examination. For high-speed tool steels, it''s essential to apply 5.1 J/cm² fluence and 500 mm/s scan speed to limit thermal buildup, as knifemakers frequently recommend in forums.'
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
