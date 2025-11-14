@@ -1,1 +1,0 @@
-"""Material frontmatter generation components"""
