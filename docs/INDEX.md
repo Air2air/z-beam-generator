@@ -6,6 +6,7 @@
 
 | I want to... | Go to |
 |--------------|-------|
+| **Use the new processing pipeline** | [architecture/PROCESSING_PIPELINE.md](architecture/PROCESSING_PIPELINE.md) ✨ NEW |
 | **Fix missing property data** | [DATA_COMPLETION_ACTION_PLAN.md](DATA_COMPLETION_ACTION_PLAN.md) ✨ NEW |
 | **Get started immediately** | [setup/INSTALLATION.md](setup/INSTALLATION.md) |
 | **Check project status** | [../PROJECT_STATUS.md](../PROJECT_STATUS.md) |
@@ -34,6 +35,7 @@
 
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
+- [**architecture/PROCESSING_PIPELINE.md**](architecture/PROCESSING_PIPELINE.md) - ✅ **NEW** Unified content generation pipeline *(Nov 13, 2025)*
 - [**ARCHITECTURE_COMPLETE.md**](core/ARCHITECTURE_COMPLETE.md) - ✅ **CONSOLIDATED** Complete system architecture guide *(Oct 22, 2025)*
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
 - [**DATA_STRUCTURE_UPDATE_OCT2025.md**](DATA_STRUCTURE_UPDATE_OCT2025.md) - ✅ **NEW** Complete data structure transformation guide *(Oct 25, 2025)*

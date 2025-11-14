@@ -37,7 +37,17 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## 🔄 Recent Updates
 
-### November 4, 2025: Subcategory Reconciliation & Bug Fix ✅ **NEW**
+### November 13, 2025: Processing Pipeline Architecture ✅ **NEW**
+- **🏗️ IMPLEMENTED**: Unified `/processing` module for flexible content generation
+- **📦 COMPONENTS**: 5 types supported (subtitle, caption, description, faq, troubleshooter)
+- **🌐 DOMAINS**: 2 domains (materials, settings) with easy extension
+- **🎯 ARCHITECTURE**: Specification-driven design (ComponentRegistry + DomainContext)
+- **🤖 AI DETECTION**: Ensemble detection (pattern + optional ML) with < 30% target
+- **📊 VALIDATION**: Automatic readability scoring (Flesch-Kincaid)
+- **✅ BENEFITS**: No code duplication, single-pass generation, extensible
+- **📚 DOCS**: Complete guides at `processing/QUICKSTART.md` and `docs/architecture/PROCESSING_PIPELINE.md`
+
+### November 4, 2025: Subcategory Reconciliation & Bug Fix ✅
 - **🔧 RECONCILED**: 7 specialty metals updated (Cobalt, Gallium, Hastelloy, Inconel, Indium, Magnesium, Nickel)
 - **🐛 BUG FIX**: Fixed duplicate file write causing corrupt frontmatter (45-73 bytes → 9-15KB)
 - **✅ REGENERATED**: All 132 materials with correct subcategories and complete YAML structure
