@@ -748,6 +748,27 @@ def load_setting_research_yaml() -> Dict[str, Any]:
         raise MaterialDataError(f"Failed to load SettingResearch.yaml: {e}")
 
 
+@lru_cache(maxsize=1)
+def load_parameter_definitions_yaml() -> Dict[str, Any]:
+    """
+    Load ParameterDefinitions.yaml (universal parameter definitions with ranges)
+    
+    Returns:
+        Dict with parameter ranges, definitions, relationships, safety parameters
+    
+    Raises:
+        MaterialDataError: If ParameterDefinitions.yaml cannot be loaded
+    """
+    if not PARAMETER_DEFS_FILE.exists():
+        raise MaterialDataError(f"ParameterDefinitions.yaml not found at {PARAMETER_DEFS_FILE}")
+    
+    try:
+        with open(PARAMETER_DEFS_FILE, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    except Exception as e:
+        raise MaterialDataError(f"Failed to load ParameterDefinitions.yaml: {e}")
+
+
 def get_property_research(material_name: str, property_name: str) -> Optional[Dict[str, Any]]:
     """
     Get deep research data for a specific material property.

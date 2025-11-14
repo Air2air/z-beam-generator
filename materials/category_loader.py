@@ -78,13 +78,13 @@ class CategoryDataLoader:
         """Find project root by looking for key markers"""
         current = Path(__file__).resolve()
         for parent in [current] + list(current.parents):
-            # Look for materials/data/Materials.yaml as marker of project root
-            if (parent / 'materials' / 'data' / 'Materials.yaml').exists():
+            # Look for data/materials/Materials.yaml as marker of project root (normalized architecture)
+            if (parent / 'data' / 'materials' / 'Materials.yaml').exists():
                 return parent
             # Fallback: Look for run.py (main entry point)
             if (parent / 'run.py').exists():
                 return parent
-        raise ConfigurationError("Could not find project root (no materials/data/Materials.yaml or run.py found)")
+        raise ConfigurationError("Could not find project root (no data/materials/Materials.yaml or run.py found)")
     
     def _load_yaml_file(self, filepath: Path) -> Dict[str, Any]:
         """Load and cache a YAML file"""
@@ -154,14 +154,19 @@ class CategoryDataLoader:
     
     def get_machine_settings(self) -> Dict[str, Any]:
         """
-        Get machine settings ranges and descriptions.
+        Get machine settings ranges and descriptions from ParameterDefinitions.yaml.
         
         Returns:
             Dict with machineSettingsRanges and machineSettingsDescriptions
         """
+        # Load from ParameterDefinitions.yaml via loader (normalized architecture)
+        from data.materials.loader import load_parameter_definitions_yaml
+        
+        param_defs = load_parameter_definitions_yaml()
+        
         return {
-            'machineSettingsRanges': self._get_key('machineSettingsRanges'),
-            'machineSettingsDescriptions': self._get_key('machineSettingsDescriptions')
+            'machineSettingsRanges': param_defs.get('parameter_ranges', {}),
+            'machineSettingsDescriptions': param_defs.get('parameter_definitions', {})
         }
     
     def get_material_properties(self) -> Dict[str, Any]:
@@ -235,12 +240,47 @@ class CategoryDataLoader:
     
     def get_all_categories(self) -> Dict[str, Any]:
         """
-        Load complete Categories.yaml file.
+        Load complete Categories.yaml file with machine settings from ParameterDefinitions.yaml.
         
         Returns:
-            Complete category data structure
+            Complete category data structure (backward compatible)
         """
-        return self._load_categories_data()
+        categories_data = self._load_categories_data()
+        
+        # Merge in machine settings from ParameterDefinitions.yaml for backward compatibility
+        machine_settings = self.get_machine_settings()
+        categories_data['machineSettingsRanges'] = machine_settings['machineSettingsRanges']
+        categories_data['machineSettingsDescriptions'] = machine_settings['machineSettingsDescriptions']
+        
+        # Merge in property descriptions from PropertyDefinitions.yaml for backward compatibility
+        import yaml
+        
+        prop_defs_file = self.project_root / "data" / "materials" / "PropertyDefinitions.yaml"
+        if prop_defs_file.exists():
+            with open(prop_defs_file, 'r', encoding='utf-8') as f:
+                prop_defs = yaml.safe_load(f)
+                if 'definitions' in prop_defs:
+                    categories_data['materialPropertyDescriptions'] = prop_defs['definitions']
+        
+        # Merge in industry application data from IndustryApplications.yaml for backward compatibility
+        industry_file = self.project_root / "data" / "materials" / "IndustryApplications.yaml"
+        if industry_file.exists():
+            with open(industry_file, 'r', encoding='utf-8') as f:
+                industry_data = yaml.safe_load(f)
+                # Merge in the sections that were moved from Categories.yaml
+                for key in ['environmentalImpactTemplates', 'applicationTypeDefinitions', 'standardOutcomeMetrics']:
+                    if key in industry_data:
+                        categories_data[key] = industry_data[key]
+        
+        # Merge in regulatory standards from RegulatoryStandards.yaml for backward compatibility
+        regulatory_file = self.project_root / "data" / "materials" / "RegulatoryStandards.yaml"
+        if regulatory_file.exists():
+            with open(regulatory_file, 'r', encoding='utf-8') as f:
+                regulatory_data = yaml.safe_load(f)
+                if 'universal_standards' in regulatory_data:
+                    categories_data['universal_regulatory_standards'] = regulatory_data['universal_standards']
+        
+        return categories_data
     
     def get_category_ranges(self, category: str) -> Dict[str, Any]:
         """

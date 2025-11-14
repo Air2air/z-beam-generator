@@ -93,21 +93,23 @@ class PropertyTaxonomy:
         """
         # Auto-detect paths if not provided
         if categories_path is None or registry_path is None:
-            materials_dir = Path(__file__).resolve().parent.parent
+            # Navigate to project root, then to data/materials (normalized architecture)
+            materials_dir = Path(__file__).resolve().parent.parent.parent
             if categories_path is None:
-                categories_path = materials_dir / "data" / "Categories.yaml"
+                # Load from PropertyDefinitions.yaml (normalized architecture)
+                categories_path = materials_dir / "data" / "materials" / "PropertyDefinitions.yaml"
             if registry_path is None:
-                registry_path = materials_dir / "data" / "categories" / "property_system.yaml"
+                registry_path = materials_dir / "data" / "materials" / "categories" / "property_system.yaml"
         
         self._load_categories(categories_path)
         self._load_registry(registry_path)
     
     def _load_categories(self, path: Path):
         """
-        Load property categories from Categories.yaml - FAIL FAST
+        Load property categories from PropertyDefinitions.yaml - FAIL FAST
         
         Args:
-            path: Path to Categories.yaml
+            path: Path to PropertyDefinitions.yaml (normalized architecture)
             
         Raises:
             PropertyTaxonomyError: If file missing or invalid
@@ -115,34 +117,55 @@ class PropertyTaxonomy:
         try:
             if not path.exists():
                 raise PropertyTaxonomyError(
-                    f"Categories.yaml required for property taxonomy: {path}"
+                    f"PropertyDefinitions.yaml required for property taxonomy: {path}"
                 )
             
             with open(path, 'r', encoding='utf-8') as f:
                 data = yaml.safe_load(f)
             
-            if 'propertyCategories' not in data:
+            if 'property_categories' not in data:
                 raise PropertyTaxonomyError(
-                    "propertyCategories section required in Categories.yaml"
+                    "property_categories section required in PropertyDefinitions.yaml"
                 )
             
-            taxonomy = data['propertyCategories']
-            self.categories = taxonomy.get('categories', {})
-            self.usage_tiers = taxonomy.get('usage_tiers', {})
-            self.category_metadata = taxonomy.get('metadata', {})
+            # Map old propertyCategories structure to new property_categories structure
+            taxonomy = data['property_categories']
+            
+            # Extract the actual categories (nested under 'categories' key)
+            if 'categories' in taxonomy:
+                categories_data = taxonomy['categories']
+            else:
+                categories_data = {k: v for k, v in taxonomy.items() if k != 'metadata' and not k.startswith('_')}
+            
+            # Convert from new format to old format for backward compatibility
+            self.categories = {}
+            for cat_id, cat_data in categories_data.items():
+                if not isinstance(cat_data, dict):
+                    continue
+                    
+                # Extract properties list from nested structure
+                if 'properties' in cat_data:
+                    prop_list = cat_data['properties']
+                else:
+                    prop_list = cat_data.get('materialProperties', [])
+                    
+                self.categories[cat_id] = {
+                    'materialProperties': prop_list,
+                    'id': cat_id
+                }
+            
+            # Usage tiers and metadata are not in PropertyDefinitions.yaml
+            self.usage_tiers = {}
+            self.category_metadata = {}
             
             if not self.categories:
                 raise PropertyTaxonomyError(
-                    "No categories found in propertyCategories section"
+                    "No categories found in property_categories section"
                 )
             
             # Build reverse lookup: property -> category (O(1) access)
             self._property_to_category = {}
             for cat_id, cat_data in self.categories.items():
-                if not isinstance(cat_data, dict):
-                    raise PropertyTaxonomyError(
-                        f"Invalid category data for {cat_id}: must be dict"
-                    )
                 properties = cat_data.get('materialProperties', [])
                 if not isinstance(properties, list):
                     raise PropertyTaxonomyError(
@@ -153,13 +176,13 @@ class PropertyTaxonomy:
             
             logger.info(
                 f"Loaded {len(self.categories)} property categories "
-                f"with {len(self._property_to_category)} properties"
+                f"with {len(self._property_to_category)} properties from PropertyDefinitions.yaml"
             )
             
         except yaml.YAMLError as e:
-            raise PropertyTaxonomyError(f"Invalid YAML in Categories.yaml: {e}")
+            raise PropertyTaxonomyError(f"Invalid YAML in PropertyDefinitions.yaml: {e}")
         except Exception as e:
-            raise PropertyTaxonomyError(f"Failed to load Categories.yaml: {e}")
+            raise PropertyTaxonomyError(f"Failed to load PropertyDefinitions.yaml: {e}")
     
     def _load_registry(self, path: Path):
         """
