@@ -1,75 +1,147 @@
 # Processing Pipeline Configuration
+# Simple 10-slider control system for content generation
+#
+# ⚠️ TROUBLESHOOTING GUIDE:
+#   Content too robotic?      → Increase: rhythm (60+), imperfection (55+), structural (55+)
+#   Output too informal?      → Decrease: personality (35), engagement (25), imperfection (40)
+#   Not technical enough?     → Increase: technical (65+), context (65+)
+#   Too inconsistent?         → Decrease: rhythm (40), imperfection (40), ai (40)
+#   Failing AI detection?     → Increase: rhythm (70+), imperfection (60+), ai (75+), structural (60+)
+#
+# 📊 SCALE: 0-30 = Low | 31-60 = Moderate (default) | 61-100 = High
 
-# AI Detection Thresholds
+# ==============================================================================
+# 1. AUTHOR VOICE INTENSITY (0-100)
+# ==============================================================================
+# Controls: How much author personality/regional characteristics show through
+#   0-30:   Minimal voice, nearly standard English
+#   31-60:  Balanced voice, noticeable but professional (DEFAULT: 50)
+#   61-100: Strong voice, authentic regional characteristics
+author_voice_intensity: 50
+
+# ==============================================================================
+# 2. TECHNICAL LANGUAGE INTENSITY (0-100)
+# ==============================================================================
+# Controls: Technical jargon, measurements, data density
+#   0-30:   Accessible, minimal jargon, explain concepts
+#   31-60:  Balanced, some technical terms with context (DEFAULT: 50)
+#   61-100: Expert, dense technical language and metrics
+technical_language_intensity: 50
+
+# ==============================================================================
+# 3. LENGTH VARIATION RANGE (0-100)
+# ==============================================================================
+# Controls: How much output length varies from target
+#   0-30:   Tight range, very consistent length (±10%)
+#   31-60:  Moderate variation for natural flow (DEFAULT: 50, ±20%)
+#   61-100: Wide variation, prioritize content over length (±40%)
+length_variation_range: 50
+
+# ==============================================================================
+# 4. AI AVOIDANCE INTENSITY (0-100)
+# ==============================================================================
+# Controls: How aggressively to avoid AI-like patterns
+#   0-30:   Relaxed, natural patterns OK
+#   31-60:  Moderate avoidance, balanced approach (DEFAULT: 50)
+#   61-100: Aggressive, maximum human-like variation
+ai_avoidance_intensity: 50
+
+# ==============================================================================
+# 5. SENTENCE RHYTHM VARIATION (0-100)
+# ==============================================================================
+# Controls: How much sentence lengths vary (key human marker)
+#   0-30:   Uniform rhythm, consistent lengths (robotic)
+#   31-60:  Natural variation, mixed short/medium/long (DEFAULT: 50)
+#   61-100: High variation, dramatic shifts for emphasis
+sentence_rhythm_variation: 50
+
+# ==============================================================================
+# 6. IMPERFECTION TOLERANCE (0-100)
+# ==============================================================================
+# Controls: Allow minor human-like imperfections for authenticity
+#   0-30:   Perfect, polished, flawless (AI-like)
+#   31-60:  Subtle natural variations (DEFAULT: 50)
+#   61-100: Noticeable quirks, character-building flaws
+imperfection_tolerance: 50
+
+# ==============================================================================
+# 7. PERSONALITY INTENSITY (0-100)
+# ==============================================================================
+# Controls: How much personal opinion/experience shows through
+#   0-30:   Neutral observer, purely factual
+#   31-60:  Subtle professional opinions (DEFAULT: 40)
+#   61-100: Strong viewpoints, clear preferences
+personality_intensity: 40
+
+# ==============================================================================
+# 8. CONTEXT SPECIFICITY (0-100)
+# ==============================================================================
+# Controls: How concrete and situation-specific vs. generic
+#   0-30:   Abstract principles, general statements
+#   31-60:  Mix of principles and examples (DEFAULT: 55)
+#   61-100: Highly specific scenarios, edge cases, real constraints
+context_specificity: 55
+
+# ==============================================================================
+# 9. STRUCTURAL PREDICTABILITY (0-100)
+# ==============================================================================
+# Controls: How much content follows predictable templates
+#   0-30:   Highly formulaic, template-driven (AI-like)
+#   31-60:  Flexible structure, occasional patterns (DEFAULT: 45)
+#   61-100: Unpredictable, breaks conventions, organic flow
+structural_predictability: 45
+
+# ==============================================================================
+# 10. ENGAGEMENT STYLE (0-100)
+# ==============================================================================
+# Controls: How much text acknowledges/addresses reader
+#   0-30:   Detached, pure exposition (journal article)
+#   31-60:  Professional-friendly (DEFAULT: 35)
+#   61-100: Conversational, direct address ("you'll find")
+engagement_style: 35
+
+# ==============================================================================
+# ADVANCED SETTINGS (rarely need adjustment)
+# ==============================================================================
+
+# AI Detection
 ai_detection:
-  threshold: 0.3  # Reject if AI score > 30%
-  use_ml_model: false  # Enable for Hugging Face model
-  ml_model_name: "roberta-base-openai-detector"
+  threshold: 0.3
+  use_ml_model: false
 
-# Readability Requirements
+# Readability
 readability:
-  min_flesch_score: 60.0  # Minimum Flesch Reading Ease
-  max_flesch_score: 100.0  # Maximum (prevent oversimplification)
-  target_grade_level: 10.0  # Target Flesch-Kincaid grade
+  min_flesch_score: 60.0
+  max_flesch_score: 100.0
 
-# Retry Configuration
-retry:
+# Generation
+generation:
+  base_temperature: 0.8
   max_attempts: 5
-  backoff_seconds: 1.0  # Optional: add delay between retries
 
-# Content Length by Component Type
+# Component Lengths (target word counts)
 component_lengths:
-  subtitle: 15  # words
+  subtitle: 15
   caption: 25
   description: 150
   faq: 100
   troubleshooter: 120
 
-# Forbidden Patterns (AI-like phrases to avoid)
-forbidden_patterns:
-  - "results suggest"
-  - "data indicate"
-  - "process achieves"
-  - "testing shows"
-  - "measurements confirm"
-  - "analysis reveals"
-  - "findings demonstrate"
-  - "precision laser"
-  - "laser cleaning removes"
-  - "while preserving"
-  - "while maintaining"
-  - "without compromising"
-  - "ensures optimal"
-  - "advanced technology"
-  - "state-of-the-art"
-  - "cutting-edge"
-  - "innovative solution"
-  - "comprehensive approach"
-  - "versatile method"
-  - "efficient process"
-
-# Voice Configuration
+# Author Mapping
 voice:
-  # Author ID to country mapping
   authors:
     1: "united_states"
     2: "italy"
     3: "indonesia"
     4: "taiwan"
-  
-  # ESL intensity levels
-  intensity_levels:
-    light: "Subtle regional patterns, mostly standard English"
-    moderate: "Noticeable ESL traits while maintaining clarity"
-    strong: "Pronounced regional characteristics, authentic voice"
 
-# Material Data Sources
+# Data Sources
 data_sources:
-  materials_yaml: "materials/data/Materials.yaml"
-  categories_yaml: "materials/data/Categories.yaml"
+  materials_yaml: "data/materials/Materials.yaml"
+  categories_yaml: "data/materials/Categories.yaml"
 
-# Output Configuration
+# Output
 output:
-  frontmatter_dir: "materials/frontmatter"
-  backup_dir: "materials/frontmatter/.backup"
+  frontmatter_dir: "frontmatter/materials"
+  backup_dir: "frontmatter/materials/.backup"
   create_backup: true

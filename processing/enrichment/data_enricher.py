@@ -26,10 +26,10 @@ class DataEnricher:
         Initialize enricher.
         
         Args:
-            materials_path: Path to Materials.yaml (default: materials/data/Materials.yaml)
+            materials_path: Path to Materials.yaml (default: data/materials/Materials.yaml)
         """
         if materials_path is None:
-            materials_path = Path(__file__).parent.parent.parent / "materials" / "data" / "Materials.yaml"
+            materials_path = Path(__file__).parent.parent.parent / "data" / "materials" / "Materials.yaml"
         
         self.materials_path = Path(materials_path)
         self._materials = None
@@ -74,17 +74,20 @@ class DataEnricher:
             'key_challenges': ''
         }
         
-        # Extract property values
-        properties = material_data.get('properties', {})
-        for prop_name, prop_data in properties.items():
-            if isinstance(prop_data, dict):
+        # Extract property values from nested structure
+        material_props = material_data.get('materialProperties', {})
+        material_chars = material_props.get('material_characteristics', {})
+        for prop_name, prop_data in material_chars.items():
+            if isinstance(prop_data, dict) and 'value' in prop_data:
                 value = prop_data.get('value')
                 unit = prop_data.get('unit', '')
-                if value:
+                if value is not None:
                     facts['properties'][prop_name] = f"{value} {unit}".strip()
         
-        # Extract machine settings
-        settings = material_data.get('machineSettings', {})
+        # Extract machine settings from nested structure
+        settings_section = material_data.get('machineSettings', {})
+        laser_settings = settings_section.get('laser_settings', {})
+        settings = laser_settings if laser_settings else settings_section
         for setting_name, setting_data in settings.items():
             if isinstance(setting_data, dict):
                 value = setting_data.get('value')

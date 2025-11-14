@@ -108,16 +108,22 @@ class Orchestrator:
         
         # Step 3: Generation loop with retry
         for attempt in range(1, self.max_attempts + 1):
-            logger.info(f"Attempt {attempt}/{self.max_attempts} for {material} {component_type}")
+            logger.info(f"Attempt {attempt}/{self.max_attempts} for {topic} {component_type}")
+            
+            # Generate variation seed using timestamp to defeat caching
+            import time
+            variation_seed = int(time.time() * 1000) + attempt
             
             # Build prompt
             prompt = PromptBuilder.build_unified_prompt(
-                material=material,
+                topic=topic,
                 voice=voice,
                 length=length,
                 facts=facts_str,
                 context=context,
-                component_type=component_type
+                component_type=component_type,
+                domain=domain,
+                variation_seed=variation_seed
             )
             
             # Adjust prompt on retry
@@ -128,9 +134,9 @@ class Orchestrator:
                     attempt=attempt
                 )
             
-            # Generate content
+            # Generate content with increasing temperature for variation
             try:
-                text = self._call_api(prompt)
+                text = self._call_api(prompt, attempt=attempt)
             except Exception as e:
                 logger.error(f"API call failed: {e}")
                 if attempt == self.max_attempts:
@@ -181,32 +187,40 @@ class Orchestrator:
             'last_readability': readability
         }
     
-    def _call_api(self, prompt: str) -> str:
+    def _call_api(self, prompt: str, attempt: int = 1) -> str:
         """
-        Call AI API with error handling.
+        Call AI API with error handling and dynamic temperature.
         
         Args:
             prompt: Prompt to send
+            attempt: Attempt number (affects temperature for variation)
             
         Returns:
             Generated text
         """
-        # Use existing API client interface
-        # Assumes api_client has generate() or similar method
-        if hasattr(self.api_client, 'generate_content'):
-            response = self.api_client.generate_content(prompt)
-        elif hasattr(self.api_client, 'generate'):
-            response = self.api_client.generate(prompt)
-        else:
-            raise AttributeError("API client missing generate method")
+        # Increase temperature with each attempt for more variation
+        # Attempt 1: 0.8 (higher than before for more creativity)
+        # Attempt 2: 0.9 (more variation)
+        # Attempt 3+: 1.0 (maximum variation)
+        base_temperature = 0.8
+        temperature = min(1.0, base_temperature + (attempt - 1) * 0.1)
         
-        # Extract text from response
-        if isinstance(response, dict):
-            text = response.get('text', response.get('content', ''))
-        else:
-            text = str(response)
+        logger.info(f"🌡️  Temperature: {temperature:.1f} (attempt {attempt})")
         
-        return text.strip()
+        # Use the standard API client interface: generate_simple()
+        # which requires max_tokens and temperature
+        response = self.api_client.generate_simple(
+            prompt=prompt,
+            system_prompt="You are a professional technical writer creating concise, clear content.",
+            max_tokens=200,  # Subtitles are short
+            temperature=temperature  # Dynamic temperature for variation
+        )
+        
+        # Handle APIResponse object
+        if not response.success:
+            raise RuntimeError(f"API call failed: {response.error}")
+        
+        return response.content.strip()
     
     def batch_generate(
         self,

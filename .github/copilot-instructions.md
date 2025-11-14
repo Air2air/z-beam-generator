@@ -89,7 +89,7 @@ Use ComponentGeneratorFactory pattern for all generators.
 - **Factory Pattern**: ComponentGeneratorFactory for component discovery and creation
 - **Result Objects**: Return structured ComponentResult objects with success/error states
 - **Configuration Validation**: Validate all required files and settings on startup
-- **Linguistic Patterns**: Keep ONLY in `components/text/prompts/personas/` - never duplicate elsewhere
+- **Linguistic Patterns**: Keep ONLY in `prompts/personas/` - never duplicate elsewhere
 
 ## Error Handling
 - **ConfigurationError**: Missing or invalid configuration files

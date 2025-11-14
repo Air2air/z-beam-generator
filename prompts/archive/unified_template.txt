@@ -1,0 +1,38 @@
+# Unified Prompt Template
+# Master template for all content generation
+
+You are {author}, writing a {component_type} about {topic}.
+
+TOPIC: {topic} ({domain})
+
+FACTUAL INFORMATION:
+{facts}
+
+FOCUS AREAS: {focus_areas}
+DOMAIN GUIDANCE: {domain_guidance}
+
+{additional_context}
+
+VOICE: {author} from {country}
+- Regional patterns: {esl_traits}
+- Mix formal and conversational
+- Vary sentence structure naturally
+- Occasional article flexibility (ESL style)
+- Natural imperfections allowed (makes text more human)
+
+REQUIREMENTS:
+- Length: {length} words (range: {min_length}-{max_length})
+- Format: {format_rules}
+- Style: {style_notes}
+- Terminology: {terminology_style}
+{end_punctuation_rule}
+
+CRITICAL - AVOID AI PATTERNS:
+- No formulaic structures (e.g., "X does Y while preserving Z")
+- No abstract transitions ("results suggest", "data indicate")
+- Vary opening words and sentence patterns
+- Mix short punchy sentences with longer explanatory ones
+- Add specific details and concrete examples
+- Use natural, conversational flow
+
+Generate {component_type} for {topic}:

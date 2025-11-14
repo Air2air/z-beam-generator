@@ -1,0 +1,47 @@
+# Component Specifications
+# Defines parameters for different content types
+
+subtitle:
+  default_length: 15
+  min_length: 10
+  max_length: 20
+  format_rules: "No period at end; concise and punchy"
+  focus_areas: "Unique characteristics, key benefits, practical applications"
+  style_notes: "Professional but natural; vary sentence structure; avoid formulaic patterns"
+  end_punctuation: false
+
+caption:
+  default_length: 25
+  min_length: 20
+  max_length: 30
+  format_rules: "Technical description with measurements when relevant"
+  focus_areas: "Surface analysis details, microscopy observations, specific data points"
+  style_notes: "Technical but accessible; include 1-2 measurements; mix short and long sentences"
+  end_punctuation: true
+
+description:
+  default_length: 150
+  min_length: 140
+  max_length: 160
+  format_rules: "Comprehensive overview with multiple paragraphs"
+  focus_areas: "Properties, applications, cleaning process details, benefits"
+  style_notes: "Informative and detailed; balance technical accuracy with readability"
+  end_punctuation: true
+
+faq:
+  default_length: 100
+  min_length: 80
+  max_length: 120
+  format_rules: "Question-and-answer format; direct and helpful response"
+  focus_areas: "Common user concerns, practical guidance, troubleshooting tips, best practices"
+  style_notes: "Conversational yet authoritative; answer completely but concisely; use second person"
+  end_punctuation: true
+
+troubleshooter:
+  default_length: 120
+  min_length: 100
+  max_length: 140
+  format_rules: "Problem diagnosis and solution steps; actionable guidance"
+  focus_areas: "Issue identification, root causes, step-by-step solutions, prevention tips"
+  style_notes: "Clear and methodical; use numbered steps when appropriate; focus on actionable fixes"
+  end_punctuation: true

@@ -1,305 +1,300 @@
 name: Manganese
-slug: manganese
-category: metal
+category: Metal
 subcategory: non-ferrous
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
+title: Manganese Laser Cleaning
+subtitle: Laser cleaning parameters and specifications for Manganese
+description: Laser cleaning parameters for Manganese
 author:
   id: 4
   name: Todd Dunning
   country: United States
-  country_display: United States
   title: MA
   sex: m
-  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
-  affiliation:
-    name: Coherent Inc.
-    type: Organization
-  credentials:
-  - BA Physics, UC Irvine, 2017
-  - Hands-on at JPL optics internship, 2018
-  - MA Optics and Photonics, UC Irvine, 2019
-  - 3+ years in laser systems development
-  - Hands-on experience with optical fabrication
-  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-  url: https://z-beam.com/authors/todd-dunning
-  sameAs:
-  - https://linkedin.com/in/todd-dunning-optics
-  - https://spie.org/profile/Todd.Dunning
-  persona_file: usa_persona.yaml
-  formatting_file: usa_formatting.yaml
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
-title: Manganese Laser Cleaning
-subtitle: Basically, tailored low-fluence lasers restore manganese's fairly pristine, oxidation-free metallic surface
-subtitle_metadata:
-  author_country: United States (California)
-  author_name: Todd Dunning
-description: Laser cleaning parameters for Manganese
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Non Ferrous
-  href: /materials/metal/non-ferrous
-- label: Manganese
-  href: /materials/manganese-laser-cleaning
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
+    alt: Manganese surface during precision laser cleaning process removing contamination
+      layer at microscopic scale
     url: /images/material/manganese-laser-cleaning-hero.jpg
   micro:
-    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Manganese surface at 500x magnification comparing contaminated state with
+      cleaned substrate showing complete restoration
     url: /images/material/manganese-laser-cleaning-micro.jpg
 caption:
-  before: Under the microscope, the manganese surface looks pretty marred by irregular contaminants, like fine oxide particles and organic residues that cluster in pits and scratches. These contaminants, typically stemming from industrial handling, display jagged edges and varying densities, which speed up localized corrosion. Surface degradation manifests as etched micro-voids, cutting reflectivity in laser optics setups such as precision beam delivery systems.
-  after: After a solid cleaning, the manganese surface bounces back to a pretty smooth, contaminant-free finish, much like its original state. The restoration turns out fairly uniform, free of pitting or oxidation traces, while safeguarding the metal's natural hardness and corrosion resistance. This upholds structural integrity for tough applications, like precision laser optics at firms such as Coherent Inc., delivering dependable optical system performance.
-faq:
-- question: Does laser cleaning manganese-containing steel (like Hadfield steel) create **hazardous manganese oxide fumes**?
-  answer: '**Generates hazardous MnO fumes**. Yeah, laser cleaning manganese alloys typically generates hazardous MnO and Mn3O4 fumes that demand strict controls. With our 100W, 1064nm system running at 2.5 J/cm² fluence, proper fume extraction is basically non-negotiable. Operators need NIOSH-approved P100 respirators plus engineered local exhaust ventilation to hold airborne concentrations under the 5 mg/m³ OSHA ceiling limit.'
-- question: What laser parameters (wavelength, pulse duration, power) work best for removing rust from **manganese steel** without damaging the base material?
-  answer: '**Prevents micro-cracking substrate**. For manganese steel rust removal, I''d typically go with a 1064nm wavelength using 10ns pulses at 2.5 J/cm² fluence. Hold average power steady at 100W and scan speed at 500mm/s to ablate oxides effectively, all while avoiding micro-cracking in that fairly tough substrate. This setup basically balances contaminant removal with the base material''s structural integrity.'
-- question: Can laser cleaning effectively remove **manganese phosphate coatings** from metal surfaces?
-  answer: '**Ablates layer without damage**. Yes, laser cleaning pretty effectively removes manganese phosphate coatings using around 100W at 1064nm. The process typically ablates the conversion layer at about 2.5 J/cm², avoiding damage to the underlying metal and ditching chemical residue issues altogether.'
-- question: How does the **high hardness** of manganese steel affect laser cleaning efficiency and potential for surface damage?
-  answer: '**Precise fluence avoids micro-cracking**. Manganese''s pretty high hardness calls for precise fluence control around 2.5 J/cm² to prevent micro-cracking from thermal stress. Typically, we apply a 50 µm spot at 500 mm/s to control heat input, ablating oxides while safeguarding the substrate''s tough integrity.'
-- question: What are the OSHA exposure limits for **manganese fumes** during laser cleaning operations?
-  answer: '**5 mg/m³ ceiling limit**. OSHA basically sets the permissible exposure limit for manganese fumes at 5 mg/m³ as a ceiling. With the pretty high fluence of 2.5 J/cm² needed for oxide removal, you''ll want to perform initial air monitoring and keep exposure records to meet this strict action level.'
-- question: Does laser cleaning affect the **work-hardening properties** of austenitic manganese steel surfaces?
-  answer: '**Preserves work-hardening characteristics**. A properly configured laser cleaning at 2.5 J/cm² fluence fairly minimizes thermal input, preserving the austenitic structure. This setup typically prevents altering the work-hardening characteristics essential for manganese steel''s wear resistance. The process avoids annealing effects that would soften the surface.'
-- question: What filtration systems are recommended for capturing **manganese oxide nanoparticles** generated during laser cleaning?
-  answer: '**HEPA H14/ULPA filters essential**. For manganese oxide nanoparticles produced at a 1064 nm wavelength and 2.5 J/cm² fluence, a HEPA H14 or ULPA filter is basically essential. These systems fairly effectively trap submicron particles, stopping hazardous fume spread in the laser ablation process.'
-- question: Can laser cleaning be used on manganese-based alloys in the railroad industry (frogs, crossings) without compromising **fatigue strength**?
-  answer: '**Preserves underlying microstructure**. Laser cleaning, properly calibrated at 2.5 J/cm² fluence, fairly effectively removes oxides from manganese alloys. Pretty much, this approach preserves the underlying microstructure, which is vital for sustaining fatigue strength in railroad parts like frogs and crossings.'
-- question: How do you verify complete removal of **manganese-rich corrosion products** without leaving surface contamination?
-  answer: '**EDS confirms manganese oxide removal**. We typically verify complete manganese oxide removal using a 2.5 J/cm² fluence through visual inspection and surface roughness analysis. For critical applications, EDS basically confirms no residual contamination, ensuring the substrate stays pristine.'
-- question: What personal protective equipment (PPE) is specifically required for laser cleaning **manganese alloys** compared to regular steel?
-  answer: '**Requires P100/N100 filter**. Manganese fume risks call for ramped-up respiratory protection that goes beyond basic steel guidelines. Opt for a NIOSH-approved P100 or N100 filter, since the manganese oxide particles we typically produce at 100W, 1064nm settings pose a pretty serious inhalation threat. This cartridge proves essential for filtering the fine particulate waste effectively.'
-- question: Does laser cleaning create any surface oxidation or **discoloration on manganese steels** that requires post-treatment?
-  answer: '**No new discoloration induced**. Well-tuned 1064nm laser systems at roughly 2.5 J/cm² fluence pretty much ablate manganese oxides effectively, without causing new discoloration. At optimal parameters like 500 mm/s scan speed, the process delivers a clean, passivated surface that typically needs no extra finishing for industrial applications.'
+  before: Under the microscope, the manganese surface looks pretty marred by irregular
+    contaminants, like fine oxide particles and organic residues that cluster in pits
+    and scratches. These contaminants, typically stemming from industrial handling,
+    display jagged edges and varying densities, which speed up localized corrosion.
+    Surface degradation manifests as etched micro-voids, cutting reflectivity in laser
+    optics setups such as precision beam delivery systems.
+  after: After a solid cleaning, the manganese surface bounces back to a pretty smooth,
+    contaminant-free finish, much like its original state. The restoration turns out
+    fairly uniform, free of pitting or oxidation traces, while safeguarding the metal's
+    natural hardness and corrosion resistance. This upholds structural integrity for
+    tough applications, like precision laser optics at firms such as Coherent Inc.,
+    delivering dependable optical system performance.
+  author: Todd Dunning
+  character_count:
+    after: 451
+    before: 437
+  generated: '2025-10-25T14:41:49.222003Z'
+  generation_method: ai_research
+  word_count:
+    after: 59
+    before: 55
 regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- laser_safety
+- occupational_safety
+- environmental_safety
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
   image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
   image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
   image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 40.0
+    percentage: 81.1
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     electricalConductivity:
       value: 694444.0
       unit: S/m
+      confidence: 98
       source: ai_research
       min: 0.67
       max: 63.0
     electricalResistivity:
       value: 1.44e-06
       unit: Ω·m
+      confidence: 100
       source: ai_research
       min: 1.0e-08
       max: 1.5e-06
     fractureToughness:
       value: 18.0
       unit: MPa m^{1/2}
+      confidence: 95
       source: ai_research
-      min: 20
-      max: 200
+      min: 20.0
+      max: 200.0
     surfaceRoughness:
       value: 0.35
       unit: μm
+      confidence: 92
       source: ai_research
       min: 0.05
-      max: 150
+      max: 150.0
     thermalDestruction:
       value: 1519.0
       unit: K
+      confidence: 100
       source: ai_research
       min: 273.0
       max: 3695.0
     specificHeat:
       value: 479.0
       unit: J/kg·K
+      confidence: 100
       source: ai_research
-      min: 100
-      max: 2000
+      min: 100.0
+      max: 2000.0
     youngsModulus:
       value: 117.0
       unit: GPa
+      confidence: 95
       source: ai_research
-      min: 5
-      max: 600
+      min: 5.0
+      max: 600.0
     oxidationResistance:
       value: 923.0
       unit: K
+      confidence: 95
       source: ai_research
-      min: 200
-      max: 1200
+      min: 200.0
+      max: 1200.0
     laserReflectivity:
       value: 0.62
       unit: ''
+      confidence: 95
       source: ai_research
-      min: 5
+      min: 5.0
       max: 99.9
     thermalConductivity:
       value: 7.82
       unit: W/m·K
+      confidence: 98
       source: ai_research
       min: 7.0
-      max: 430
+      max: 430.0
     thermalExpansion:
       value: 21.7
       unit: 10^{-6} K^{-1}
+      confidence: 100
       source: ai_research
       min: 0.5
-      max: 33
+      max: 33.0
     density:
       value: 7.44
       unit: g/cm³
+      confidence: 100
       source: ai_research
       min: 0.53
       max: 22.6
     hardness:
       value: 2.75
       unit: GPa
+      confidence: 95
       source: ai_research
       min: 0.2
-      max: 3500
+      max: 3500.0
     corrosionResistance:
       value: -1.185
       unit: V
+      confidence: 100
       source: ai_research
       min: 0.01
-      max: 10
+      max: 10.0
     laserAbsorption:
       value: 0.35
       unit: dimensionless
+      confidence: 95
       source: ai_research
       min: 0.02
-      max: 100
+      max: 100.0
     compressiveStrength:
       value: 310.0
       unit: MPa
+      confidence: 95
       source: ai_research
-      min: 50
-      max: 2000
+      min: 50.0
+      max: 2000.0
     thermalDiffusivity:
       value: 2.19e-06
       unit: m²/s
+      confidence: 95
       source: ai_research
       min: 0.06
-      max: 174
+      max: 174.0
     flexuralStrength:
       value: 320.0
       unit: MPa
+      confidence: 92
       source: ai_research
       min: 2.5
       max: 1050.0
     tensileStrength:
       value: 345.0
       unit: MPa
+      confidence: 95
       source: ai_research
       min: 3.0
       max: 3000.0
     porosity:
       value: 0.0
       unit: fraction
+      confidence: 100
       source: ai_research
       min: 0.0
       max: 15.0
     ablationThreshold:
       value: 1.05
       unit: J/cm²
+      confidence: 95
       source: ai_research
       min: 0.8
       max: 8.0
     absorptivity:
       value: 0.45
       unit: dimensionless
+      confidence: 95
       source: ai_research
       min: 2.0
       max: 65.0
     boilingPoint:
       value: 2334.0
       unit: K
+      confidence: 100
       source: ai_research
-      min: 907
-      max: 5870
+      min: 907.0
+      max: 5870.0
     absorptionCoefficient:
       value: 280000000.0
       unit: m^{-1}
+      confidence: 95
       source: ai_research
-      min: 1000000
-      max: 100000000
+      min: 1000000.0
+      max: 100000000.0
     meltingPoint:
       value: 1519.0
       unit: K
+      confidence: 100
       source: ai_research
-      min: -39
-      max: 3422
+      min: -39.0
+      max: 3422.0
     vaporPressure:
       value: 101325.0
       unit: Pa
+      confidence: 100
       source: ai_research
       min: 1.0e-10
       max: 0.001
     thermalDestructionPoint:
       value: 1519.0
       unit: K
+      confidence: 100
       source: ai_research
-      min: 873
-      max: 3695
+      min: 873.0
+      max: 3695.0
     reflectivity:
       value: 0.65
       unit: ''
+      confidence: 95
       source: ai_research
-      min: 85
-      max: 98
+      min: 85.0
+      max: 98.0
     thermalShockResistance:
       value: 85.0
       unit: K
+      confidence: 92
       source: ai_research
-      min: 50
-      max: 400
+      min: 50.0
+      max: 400.0
     laserDamageThreshold:
       value: 1.25
       unit: J/cm²
+      confidence: 95
       source: ai_research
       min: 0.1
       max: 20.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 40.0
+    percentage: 18.9
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     absorptionCoefficient:
       source: ai_research
       unit: m⁻¹
       value: 14200000.0
-      min: 1000000
-      max: 100000000
+      min: 1000000.0
+      max: 100000000.0
     absorptivity:
       source: ai_research
       unit: dimensionless
@@ -316,35 +311,188 @@ materialProperties:
       source: ai_research
       unit: dimensionless (ratio)
       value: 0.58
-      min: 85
-      max: 98
+      min: 85.0
+      max: 98.0
     thermalDestructionPoint:
       source: ai_research
       unit: K
       value: 1519.0
-      min: 873
-      max: 3695
+      min: 873.0
+      max: 3695.0
     thermalShockResistance:
       source: ai_research
       unit: MPa·m^0.5
       value: 0.8
-      min: 50
-      max: 400
+      min: 50.0
+      max: 400.0
     vaporPressure:
       source: ai_research
       unit: Pa
       value: 121.0
       min: 1.0e-10
       max: 0.001
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922195Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922201Z'
-  structure_version: '2.0'
+machineSettings:
+  powerRange:
+    description: Optimal average power for Manganese oxide removal without substrate
+      damage
+    unit: W
+    value: 100
+    min: 1.0
+    max: 120
+  wavelength:
+    description: Near-IR wavelength for optimal absorption in Manganese oxides
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    description: Beam spot diameter for precise cleaning control
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    description: Optimal repetition rate for continuous cleaning coverage
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    description: Minimum fluence required for Manganese oxide removal
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    description: Recommended number of passes for complete oxide removal
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+faq:
+- answer: Yeah, laser cleaning manganese alloys typically generates hazardous MnO
+    and Mn3O4 fumes that demand strict controls. With our 100W, 1064nm system running
+    at 2.5 J/cm² fluence, proper fume extraction is basically non-negotiable. Operators
+    need NIOSH-approved P100 respirators plus engineered local exhaust ventilation
+    to hold airborne concentrations under the 5 mg/m³ OSHA ceiling limit.
+  question: Does laser cleaning manganese-containing steel (like Hadfield steel) create
+    hazardous manganese oxide fumes?
+  topic_keyword: hazardous manganese oxide fumes
+  topic_statement: Generates hazardous MnO fumes
+- answer: For manganese steel rust removal, I'd typically go with a 1064nm wavelength
+    using 10ns pulses at 2.5 J/cm² fluence. Hold average power steady at 100W and
+    scan speed at 500mm/s to ablate oxides effectively, all while avoiding micro-cracking
+    in that fairly tough substrate. This setup basically balances contaminant removal
+    with the base material's structural integrity.
+  question: What laser parameters (wavelength, pulse duration, power) work best for
+    removing rust from manganese steel without damaging the base material?
+  topic_keyword: manganese steel
+  topic_statement: Prevents micro-cracking substrate
+- answer: Yes, laser cleaning pretty effectively removes manganese phosphate coatings
+    using around 100W at 1064nm. The process typically ablates the conversion layer
+    at about 2.5 J/cm², avoiding damage to the underlying metal and ditching chemical
+    residue issues altogether.
+  question: Can laser cleaning effectively remove manganese phosphate coatings from
+    metal surfaces?
+  topic_keyword: manganese phosphate coatings
+  topic_statement: Ablates layer without damage
+- answer: Manganese's pretty high hardness calls for precise fluence control around
+    2.5 J/cm² to prevent micro-cracking from thermal stress. Typically, we apply a
+    50 µm spot at 500 mm/s to control heat input, ablating oxides while safeguarding
+    the substrate's tough integrity.
+  question: How does the high hardness of manganese steel affect laser cleaning efficiency
+    and potential for surface damage?
+  topic_keyword: high hardness
+  topic_statement: Precise fluence avoids micro-cracking
+- answer: OSHA basically sets the permissible exposure limit for manganese fumes at
+    5 mg/m³ as a ceiling. With the pretty high fluence of 2.5 J/cm² needed for oxide
+    removal, you'll want to perform initial air monitoring and keep exposure records
+    to meet this strict action level.
+  question: What are the OSHA exposure limits for manganese fumes during laser cleaning
+    operations?
+  topic_keyword: manganese fumes
+  topic_statement: 5 mg/m³ ceiling limit
+- answer: A properly configured laser cleaning at 2.5 J/cm² fluence fairly minimizes
+    thermal input, preserving the austenitic structure. This setup typically prevents
+    altering the work-hardening characteristics essential for manganese steel's wear
+    resistance. The process avoids annealing effects that would soften the surface.
+  question: Does laser cleaning affect the work-hardening properties of austenitic
+    manganese steel surfaces?
+  topic_keyword: work-hardening properties
+  topic_statement: Preserves work-hardening characteristics
+- answer: For manganese oxide nanoparticles produced at a 1064 nm wavelength and 2.5
+    J/cm² fluence, a HEPA H14 or ULPA filter is basically essential. These systems
+    fairly effectively trap submicron particles, stopping hazardous fume spread in
+    the laser ablation process.
+  question: What filtration systems are recommended for capturing manganese oxide
+    nanoparticles generated during laser cleaning?
+  topic_keyword: manganese oxide nanoparticles
+  topic_statement: HEPA H14/ULPA filters essential
+- answer: Laser cleaning, properly calibrated at 2.5 J/cm² fluence, fairly effectively
+    removes oxides from manganese alloys. Pretty much, this approach preserves the
+    underlying microstructure, which is vital for sustaining fatigue strength in railroad
+    parts like frogs and crossings.
+  question: Can laser cleaning be used on manganese-based alloys in the railroad industry
+    (frogs, crossings) without compromising fatigue strength?
+  topic_keyword: fatigue strength
+  topic_statement: Preserves underlying microstructure
+- answer: We typically verify complete manganese oxide removal using a 2.5 J/cm² fluence
+    through visual inspection and surface roughness analysis. For critical applications,
+    EDS basically confirms no residual contamination, ensuring the substrate stays
+    pristine.
+  question: How do you verify complete removal of manganese-rich corrosion products
+    without leaving surface contamination?
+  topic_keyword: manganese-rich corrosion products
+  topic_statement: EDS confirms manganese oxide removal
+- answer: Manganese fume risks call for ramped-up respiratory protection that goes
+    beyond basic steel guidelines. Opt for a NIOSH-approved P100 or N100 filter, since
+    the manganese oxide particles we typically produce at 100W, 1064nm settings pose
+    a pretty serious inhalation threat. This cartridge proves essential for filtering
+    the fine particulate waste effectively.
+  question: What personal protective equipment (PPE) is specifically required for
+    laser cleaning manganese alloys compared to regular steel?
+  topic_keyword: manganese alloys
+  topic_statement: Requires P100/N100 filter
+- answer: Well-tuned 1064nm laser systems at roughly 2.5 J/cm² fluence pretty much
+    ablate manganese oxides effectively, without causing new discoloration. At optimal
+    parameters like 500 mm/s scan speed, the process delivers a clean, passivated
+    surface that typically needs no extra finishing for industrial applications.
+  question: Does laser cleaning create any surface oxidation or discoloration on manganese
+    steels that requires post-treatment?
+  topic_keyword: discoloration on manganese steels
+  topic_statement: No new discoloration induced
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metals
+- label: Non Ferrous
+  href: /materials/metal/non-ferrous
+- label: Manganese
+  href: /materials/metal/non-ferrous/manganese
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material

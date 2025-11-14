@@ -43,7 +43,8 @@ class PromptBuilder:
         facts: str = "",
         context: str = "",
         component_type: str = "subtitle",
-        domain: str = "materials"
+        domain: str = "materials",
+        variation_seed: Optional[int] = None
     ) -> str:
         """
         Build unified prompt combining all elements.
@@ -56,6 +57,7 @@ class PromptBuilder:
             context: Additional domain-specific context
             component_type: Type of content (subtitle, caption, description, etc.)
             domain: Content domain (materials, history, recipes, etc.)
+            variation_seed: Optional seed for variation (defeats caching)
             
         Returns:
             Complete prompt string
@@ -97,7 +99,8 @@ class PromptBuilder:
                 facts=facts,
                 context=context,
                 spec=spec,
-                domain_ctx=domain_ctx
+                domain_ctx=domain_ctx,
+                variation_seed=variation_seed
             )
         else:
             # Fallback to legacy generic prompt
@@ -115,7 +118,8 @@ class PromptBuilder:
         facts: str,
         context: str,
         spec,  # ComponentSpec
-        domain_ctx  # DomainContext
+        domain_ctx,  # DomainContext
+        variation_seed: Optional[int] = None
     ) -> str:
         """
         Build prompt using component specification and domain context.
@@ -156,14 +160,48 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
 - Occasional article flexibility (ESL style)
 - Natural imperfections allowed (makes text more human)"""
         
-        # Build anti-AI section
-        anti_ai = """CRITICAL - AVOID AI PATTERNS:
-- No formulaic structures (e.g., "X does Y while preserving Z")
-- No abstract transitions ("results suggest", "data indicate")
-- Vary opening words and sentence patterns
-- Mix short punchy sentences with longer explanatory ones
-- Add specific details and concrete examples
-- Use natural, conversational flow"""
+        # Build anti-AI section with emphasis on variation and natural language
+        anti_ai = """CRITICAL - AVOID AI PATTERNS & ADD VARIATION:
+- BANNED PHRASES: "facilitates", "enables", "leverages", "demonstrates", "exhibits", "optimal", "enhanced", "robust", "comprehensive"
+- BANNED CONNECTORS: "paired with", "relies on", "thrives on", "swear by", "testament to"
+- BANNED STRUCTURES: "while maintaining/preserving/ensuring", "across diverse/various/multiple"
+- NO formulaic structures (e.g., "X does Y while preserving Z")
+- NO abstract transitions ("results suggest", "data indicate")
+- VARY opening words dramatically - start each sentence differently
+- VARY sentence structures - mix questions, statements, fragments
+- BALANCE technical data with accessible language (don't frontload numbers)
+- ADD conversational elements but NATURALLY (occasional "though", "but", "yet" for flow)
+- USE active voice predominantly
+- MIX precision with approximation ("around 2.7", "roughly 237")
+- INCLUDE qualitative descriptions alongside quantitative data
+- PREFER concrete verbs: "use", "need", "work", "choose", "apply" over abstract ones"""
+        
+        # Add component-specific enrichment hints
+        enrichment_hints = ""
+        if spec.name == "subtitle":
+            enrichment_hints = """
+SUBTITLE-SPECIFIC:
+- Lead with benefit or application, NOT raw specs
+- Vary structure: try questions, comparisons, or surprising facts
+- Balance technical precision with readability
+- Examples of good variation:
+  * "Why does aerospace choose aluminum? That 2.7 g/cm³ density..."
+  * "Aluminum bridges lightweight design with thermal performance..."
+  * "From aircraft to packaging, aluminum's versatility stems from..."
+- Avoid starting every subtitle with the material name"""
+        elif spec.name == "troubleshooter":
+            enrichment_hints = """
+TROUBLESHOOTER-SPECIFIC:
+- Start with the problem's impact, not just the technical cause
+- Use conversational problem-solving language
+- Vary diagnostic approaches (visual inspection, measurement, testing)
+- Include "why this happens" explanations, not just "what to do"
+- Mix preventive and reactive solutions"""
+        
+        # Add variation seed to defeat caching (if provided)
+        variation_note = ""
+        if variation_seed is not None:
+            variation_note = f"\n\n[Generation ID: {variation_seed} - ignore this, just for tracking]"
         
         # Assemble complete prompt
         prompt = f"""You are {author}, writing a {spec.name} about {topic}.
@@ -175,7 +213,9 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
 REQUIREMENTS:
 {requirements_section}
 
-{anti_ai}
+{anti_ai}{enrichment_hints}
+
+REMEMBER: Every generation should feel unique. Vary your approach, opening, and structure.{variation_note}
 
 Generate {spec.name} for {topic}:"""
         
@@ -285,18 +325,31 @@ Generate text:"""
         """
         adjustments = []
         
-        if "too uniform" in failure_reason or "repetitive" in failure_reason:
-            adjustments.append("CRITICAL: Vary your sentence structures more. Start some sentences differently.")
-            adjustments.append("Mix short punchy sentences with longer explanatory ones.")
+        if "too uniform" in failure_reason or "repetitive" in failure_reason or attempt > 1:
+            adjustments.append("🚨 CRITICAL - OUTPUT TOO UNIFORM:")
+            adjustments.append("- Start with a COMPLETELY different approach (question? comparison? surprising fact?)")
+            adjustments.append("- Avoid leading with material name + technical specs")
+            adjustments.append("- Try: benefit-first, application-first, or problem-solution structure")
+            adjustments.append("- Mix sentence lengths: one short (5 words), one medium (10-12), one longer")
         
-        if "ai score" in failure_reason or attempt > 2:
-            adjustments.append("Add more natural imperfections:")
-            adjustments.append("- Occasional article omissions (ESL style)")
-            adjustments.append("- Varied punctuation")
-            adjustments.append("- Mix of formal/casual tone")
-            adjustments.append("- Unique opening that breaks from patterns")
+        if "ai score" in failure_reason or "formulaic" in failure_reason or attempt > 2:
+            adjustments.append("🚨 AI PATTERNS DETECTED:")
+            adjustments.append("- BANNED phrases: 'enables', 'facilitates', 'leverages', 'demonstrates', 'provides'")
+            adjustments.append("- BANNED structure: 'X with Y property for Z application'")
+            adjustments.append("- ADD conversational connectors: 'though', 'but', 'yet', 'while'")
+            adjustments.append("- USE approximations: 'around', 'roughly', 'nearly', 'about'")
+            adjustments.append("- INCLUDE qualitative: 'lightweight yet strong', 'surprisingly durable'")
+            adjustments.append("- TRY unexpected opening: Don't start with the obvious")
+        
+        if attempt >= 3:
+            adjustments.append("🔥 FINAL ATTEMPT - MAXIMUM VARIATION:")
+            adjustments.append("- Completely break from previous patterns")
+            adjustments.append("- Use fragment sentences if natural")
+            adjustments.append("- Add rhetorical elements")
+            adjustments.append("- Consider contrarian or unexpected angle")
+            adjustments.append("- Prioritize readability over technical precision")
         
         if adjustments:
-            return prompt + "\n\n🚨 ADDITIONAL REQUIREMENTS:\n" + "\n".join(adjustments)
+            return prompt + "\n\n" + "\n".join(adjustments) + "\n"
         
         return prompt

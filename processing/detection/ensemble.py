@@ -11,6 +11,14 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+# Import the advanced AI detector
+try:
+    from processing.detection.ai_detection import AIDetector
+    ADVANCED_DETECTOR_AVAILABLE = True
+except ImportError:
+    ADVANCED_DETECTOR_AVAILABLE = False
+    logger.warning("Advanced AI detector not available")
+
 
 class AIDetectorEnsemble:
     """
@@ -23,25 +31,37 @@ class AIDetectorEnsemble:
     Composite score = weighted average of all detectors.
     """
     
-    def __init__(self, patterns_file: str = None, use_ml: bool = False):
+    def __init__(self, patterns_file: str = None, use_ml: bool = False, use_advanced: bool = True):
         """
         Initialize ensemble.
         
         Args:
             patterns_file: Path to AI detection patterns
             use_ml: Whether to use ML model (requires transformers)
+            use_advanced: Whether to use advanced pattern detector (default True)
         """
         self.patterns_file = patterns_file or self._default_patterns_file()
         self.use_ml = use_ml
+        self.use_advanced = use_advanced and ADVANCED_DETECTOR_AVAILABLE
         self._patterns = self._load_patterns()
         self._model = None
+        self._advanced_detector = None
+        
+        # Initialize advanced detector if available
+        if self.use_advanced and ADVANCED_DETECTOR_AVAILABLE:
+            try:
+                self._advanced_detector = AIDetector(strict_mode=False)
+                logger.info("Advanced AI detector initialized")
+            except Exception as e:
+                logger.warning(f"Failed to initialize advanced detector: {e}")
+                self.use_advanced = False
         
         if use_ml:
             self._load_ml_model()
     
     def _default_patterns_file(self) -> str:
         """Get default patterns file path"""
-        return str(Path(__file__).parent.parent.parent / "shared" / "voice" / "ai_detection_patterns.txt")
+        return str(Path(__file__).parent.parent.parent / "prompts" / "ai_detection_patterns.txt")
     
     def _load_patterns(self) -> List[str]:
         """Load detection patterns from file"""
@@ -83,13 +103,23 @@ class AIDetectorEnsemble:
         Returns:
             Dict with:
             - ai_score: Composite score (0-1, higher = more AI-like)
-            - is_ai_like: Boolean threshold check (>0.3)
-            - pattern_score: Pattern-based score
+            - is_ai_like: Boolean threshold check
+            - pattern_score: Simple pattern score
+            - advanced_score: Advanced pattern score (if enabled)
             - ml_score: ML model score (if enabled)
             - detected_patterns: List of matched patterns
+            - details: Advanced detector details (if available)
         """
-        # Pattern-based detection
+        # Simple pattern-based detection
         pattern_result = self._pattern_detection(text)
+        
+        # Advanced detection (if enabled)
+        advanced_score = 0.0
+        advanced_details = None
+        if self.use_advanced and self._advanced_detector:
+            advanced_result = self._advanced_detector.detect(text)
+            advanced_score = advanced_result['ai_score']
+            advanced_details = advanced_result.get('details')
         
         # ML detection (if enabled)
         ml_score = 0.0
@@ -97,18 +127,38 @@ class AIDetectorEnsemble:
             ml_score = self._ml_detection(text)
         
         # Composite score (weighted average)
-        if self.use_ml:
-            ai_score = (0.4 * pattern_result['score']) + (0.6 * ml_score)
+        if self.use_advanced and self.use_ml:
+            # All three: advanced (50%), ML (30%), simple (20%)
+            ai_score = (0.5 * advanced_score) + (0.3 * ml_score) + (0.2 * pattern_result['score'])
+        elif self.use_advanced:
+            # Advanced + simple: advanced (70%), simple (30%)
+            ai_score = (0.7 * advanced_score) + (0.3 * pattern_result['score'])
+        elif self.use_ml:
+            # ML + simple: ML (60%), simple (40%)
+            ai_score = (0.6 * ml_score) + (0.4 * pattern_result['score'])
         else:
+            # Simple only
             ai_score = pattern_result['score']
+        
+        # Determine method
+        if self.use_advanced and self.use_ml:
+            method = 'ensemble_advanced_ml'
+        elif self.use_advanced:
+            method = 'ensemble_advanced'
+        elif self.use_ml:
+            method = 'ensemble_ml'
+        else:
+            method = 'pattern_only'
         
         return {
             'ai_score': round(ai_score, 3),
             'is_ai_like': ai_score > 0.3,
             'pattern_score': pattern_result['score'],
+            'advanced_score': advanced_score,
             'ml_score': ml_score,
             'detected_patterns': pattern_result['patterns'],
-            'method': 'ensemble' if self.use_ml else 'pattern_only'
+            'details': advanced_details,
+            'method': method
         }
     
     def _pattern_detection(self, text: str) -> Dict:
