@@ -644,7 +644,7 @@ class VoicePostProcessor:
         # Get voice indicators (signature phrases)
         try:
             voice = VoiceOrchestrator(country=author['country'])
-            voice_indicators = voice.get_signature_phrases()
+            voice_indicators = voice.get_signature_phrases() or []  # Empty list is OK
         except Exception as e:
             logger.error(f"Failed to load voice indicators: {e}")
             return {
@@ -654,14 +654,9 @@ class VoicePostProcessor:
                 'details': {}
             }
         
-        if not voice_indicators:
-            logger.warning(f"No voice indicators for {author['country']}")
-            return {
-                'should_enhance': False,
-                'reason': f"No voice indicators for {author['country']}",
-                'action_required': 'none',
-                'details': {}
-            }
+        # Voice indicators are optional - proceed with enhancement even if empty
+        # We use the full voice profile (sentence structure, linguistic characteristics)
+        # not just signature phrases
         
         # Run comprehensive analysis
         language = self.detect_language(text)
@@ -1264,3 +1259,126 @@ Generate the enhanced FAQ array now:"""
         except Exception as e:
             logger.error(f"Batch voice enhancement error: {e}")
             return faq_items
+    
+    def transform_subtitle_structure(
+        self,
+        subtitle: str,
+        material_name: str,
+        max_attempts: int = 3
+    ) -> Dict[str, Any]:
+        """
+        Transform subtitle structure for AI detection avoidance.
+        
+        Applies structural variation patterns programmatically:
+        - Varies sentence starters (verb-first, material-first, property-first)
+        - Rotates connectors (without, during, via, through, in, with)
+        - Changes voice (active/passive)
+        - Maintains word count and meaning
+        
+        Args:
+            subtitle: Original subtitle text
+            material_name: Material name for context
+            max_attempts: Maximum transformation attempts (default 3)
+            
+        Returns:
+            {
+                'success': bool,
+                'content': str,  # Transformed subtitle
+                'attempts': int,
+                'ai_score': float,
+                'quality_score': float,
+                'transformation': str  # Pattern used
+            }
+        """
+        from shared.voice.ai_detection import AIDetector
+        
+        detector = AIDetector()
+        
+        # Check original AI score
+        original_check = detector.detect_ai_patterns(subtitle)
+        
+        # Structural transformation templates
+        patterns = [
+            "verb_material_connector",  # "Preserve [material]'s [property] without [risk]"
+            "material_verb_property",    # "[Material] maintains [property] during cleaning"
+            "property_preserved_via",    # "[Property] preserved via precise laser control"
+            "connector_first",           # "Without damage, restore [material]'s [property]"
+            "gerund_focus",              # "Restoring [material] integrity through laser precision"
+        ]
+        
+        for attempt in range(max_attempts):
+            pattern = patterns[attempt % len(patterns)]
+            
+            logger.info(f"🔄 Subtitle transformation attempt {attempt + 1}/{max_attempts} using pattern: {pattern}")
+            
+            # Build transformation prompt
+            prompt = f"""Transform this subtitle using the "{pattern}" pattern while preserving meaning and word count:
+
+Original: "{subtitle}"
+Material: {material_name}
+
+Transformation patterns:
+- verb_material_connector: "[Verb] [material]'s [property] [connector] [benefit/risk]"
+- material_verb_property: "[Material] [verb] [property] [connector] [context]"
+- property_preserved_via: "[Property] preserved/maintained via [method]"
+- connector_first: "[Connector] [risk/damage], [verb] [material]'s [property]"
+- gerund_focus: "[Gerund] [material] [property] through [method]"
+
+Requirements:
+- Use pattern: {pattern}
+- Same word count (±1 word): {len(subtitle.split())} words
+- Preserve core meaning
+- Professional tone
+- No period at end
+
+Generate transformed subtitle:"""
+
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                system_prompt="You are a text transformation specialist. Transform structure while preserving meaning.",
+                temperature=0.7,
+                max_tokens=50
+            )
+            
+            if not response.success:
+                logger.warning(f"Transformation attempt {attempt + 1} API failed")
+                continue
+            
+            transformed = response.content.strip().strip('"\'')
+            
+            # Validate
+            word_count = len(transformed.split())
+            target_count = len(subtitle.split())
+            
+            if abs(word_count - target_count) > 2:
+                logger.warning(f"❌ Word count off: {word_count} vs {target_count} target")
+                continue
+            
+            # Check AI score
+            ai_check = detector.detect_ai_patterns(transformed)
+            
+            logger.info(f"   AI score: {ai_check['ai_score']:.1f} (original: {original_check['ai_score']:.1f})")
+            
+            # Success if AI score improved or acceptable
+            if ai_check['ai_score'] < original_check['ai_score'] or ai_check['ai_score'] < 40:
+                return {
+                    'success': True,
+                    'content': transformed,
+                    'attempts': attempt + 1,
+                    'ai_score': ai_check['ai_score'],
+                    'quality_score': 100 - ai_check['ai_score'],  # Inverse
+                    'transformation': pattern,
+                    'original_ai_score': original_check['ai_score']
+                }
+        
+        # If all attempts fail, return original
+        logger.warning(f"⚠️  All {max_attempts} transformation attempts failed, using original")
+        return {
+            'success': False,
+            'content': subtitle,
+            'attempts': max_attempts,
+            'ai_score': original_check['ai_score'],
+            'quality_score': 100 - original_check['ai_score'],
+            'transformation': 'none',
+            'original_ai_score': original_check['ai_score']
+        }

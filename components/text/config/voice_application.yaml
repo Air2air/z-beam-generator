@@ -3,17 +3,28 @@
 # ==============================================================================
 # Defines which fields receive voice enhancement (author persona markers).
 # 
-# CRITICAL POLICY:
-# - Subtitles: NO voice (keep technical/professional)
-# - Captions: YES voice (human believability for image descriptions)
-# - FAQs: YES voice (engagement and relatability)
+# UNIVERSAL TEXT GENERATION APPROACH:
+# All text is generated using a two-step process:
+#   1. Generate context-only prompt (neutral professional tone)
+#   2. Apply voice postprocessor to add author-specific markers
+#
+# This clean separation ensures:
+#   - Prompts focus only on context and requirements
+#   - Voice is consistently applied via postprocessor
+#   - Easy to adjust voice intensity per component type
+#
+# VOICE POLICY BY COMPONENT:
+# - Subtitles: GENTLE voice (light markers for approachability)
+# - Captions: MODERATE voice (human believability for image descriptions)
+# - FAQs: STRONG voice (engagement and relatability)
 # - Technical content: NO voice (credibility and authority)
 #
-# Voice markers: "pretty", "basically", "fairly", "typically", "straightforwardly"
+# Voice markers: "helps", "ensures", "offers", "maintains" (gentle)
+#                "pretty", "basically", "fairly", "typically" (strong)
 # ==============================================================================
 
-version: 1.0.0
-updated: 2025-11-12
+version: 1.1.0
+updated: 2025-11-13
 
 # ----------------------------------------------------------------------------
 # MATERIALS PAGE - Standard material information pages
@@ -22,24 +33,32 @@ materials_page:
   # Title: Always technical, no voice
   title: false
   
-  # Subtitle: DISABLED - Keep professional and technical
-  # Example: "High-Strength Non-Ferrous Metal for Aerospace Applications"
-  # NOT: "Pretty versatile metal basically used in aerospace"
-  subtitle: false
+  # Subtitle: ENABLED - Gentle voice markers for approachability
+  # Universal text approach: context prompt → API → voice postprocessor
+  # Example: "Laser cleaning helps remove rust from Copper while keeping its conductivity intact"
+  # Uses gentle markers: "helps", "ensures", "offers", "maintains" (NOT "pretty", "basically")
+  # Intensity: 2 (light voice enhancement)
+  subtitle: true
   
   # Description: Meta description, keep technical for SEO
   description: false
   
-  # Caption Before: ENABLED - Voice markers for human believability
+  # Caption Before: ENABLED - Moderate voice for human believability
+  # Universal text approach: context prompt → API → voice postprocessor
   # Example: "Surface shows pretty heavy contamination from years of exposure"
+  # Intensity: 3 (moderate voice enhancement)
   caption_before: true
   
-  # Caption After: ENABLED - Voice markers for human believability
+  # Caption After: ENABLED - Moderate voice for human believability
+  # Universal text approach: context prompt → API → voice postprocessor
   # Example: "Surface is basically pristine after laser cleaning treatment"
+  # Intensity: 3 (moderate voice enhancement)
   caption_after: true
   
-  # FAQ Answers: ENABLED - Voice for engagement and relatability
+  # FAQ Answers: ENABLED - Strong voice for engagement and relatability
+  # Universal text approach: context prompt → API → voice postprocessor
   # Example: "Aluminum is pretty reflective, so you basically need higher power..."
+  # Intensity: 4 (strong voice enhancement)
   faq_answers: true
   
   # FAQ Questions: NO voice (keep questions direct and searchable)

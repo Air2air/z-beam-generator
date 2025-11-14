@@ -233,7 +233,9 @@ class VoiceOrchestrator:
             )
         # Build layered prompt for subtitle/tagline
         elif component_type == 'subtitle':
-            return self._build_subtitle_prompt(
+            # DEPRECATED: Use shared.prompts.text_prompt_builder.TextPromptBuilder instead
+            # This legacy method is kept for backwards compatibility only
+            return self._build_subtitle_prompt_legacy(
                 base_voice=base_voice,
                 country_profile=country_profile,
                 material_context=material_context,
@@ -335,7 +337,7 @@ Generate {section_focus} description now."""
         
         return prompt
     
-    def _build_subtitle_prompt(
+    def _build_subtitle_prompt_legacy(
         self,
         base_voice: Dict,
         country_profile: Dict,
@@ -344,69 +346,36 @@ Generate {section_focus} description now."""
         **kwargs
     ) -> str:
         """
-        Build subtitle/tagline prompt with country-specific voice.
+        DEPRECATED: Legacy subtitle prompt builder.
         
-        Uses component_config.yaml to determine intensity and formality.
+        Use shared.prompts.text_prompt_builder.TextPromptBuilder instead.
+        This method is kept for backwards compatibility only.
         """
-        # Get component-specific configuration
+        # Get component-specific configuration for target word count
         config = self.get_component_config('subtitle')
-        
-        # Extract parameters (kwargs override config)
         target_words = kwargs.get('target_words', config.get('word_count_range', [8, 12])[0])
-        
-        # Get intensity level from config
-        intensity_level = config.get('intensity_level', 'level_2_light')
-        formality = config.get('formality', 'professional-engaging')
-        target_audience = config.get('target_audience', 'technical professionals')
-        
-        # Get material specificity requirement from component config
-        material_specificity = self.component_config.get('material_specificity_requirement', '')
-        
-        # Author context
-        author_name = author.get('name', 'Expert')
-        author_country = author.get('country', 'usa')
         
         # Material context
         material_name = material_context.get('material_name', 'material')
         material_category = material_context.get('category', '')
         material_subcategory = material_context.get('subcategory', '')
         
-        # Get country-specific style
-        linguistic = country_profile.get('linguistic_characteristics', {})
-        vocab = linguistic.get('vocabulary_patterns', {})
-        country_formality = vocab.get('formality_level', 'professional')
-        
-        # Get intensity instructions from voice_base.yaml
-        intensity_rules = base_voice.get('technical_authority_intensity', {}).get(intensity_level, {})
-        intensity_desc = intensity_rules.get('description', 'Balanced technical communication')
-        
-        # Build prompt with material specificity requirement
-        prompt = f"""You are {author_name} from {author_country}, writing a subtitle for {material_name} laser cleaning content.
+        # Build simple prompt - context only (variation handled by post-processor)
+        prompt = f"""Write a professional {target_words}-word subtitle for laser cleaning {material_name}.
 
 MATERIAL CONTEXT:
 - Material: {material_name}
 - Category: {material_category}
 - Subcategory: {material_subcategory}
 
-MATERIAL SPECIFICITY REQUIREMENT:
-{material_specificity}
-
-TASK: Write a {target_words}-word professional subtitle/tagline.
-
-VOICE GUIDANCE ({author_country.upper()}):
-- Formality: {formality} (country style: {country_formality})
-- Target Audience: {target_audience}
-- Technical Intensity: {intensity_level}
-  {intensity_desc}
-
 REQUIREMENTS:
 - Exactly {target_words} words (±2 tolerance)
-- Single phrase (no period at end)
-- Professional tone suitable for industrial audience
-- Reveal something UNIQUE and SPECIFIC about {material_name}
-- Compare to related materials if relevant ({material_category}/{material_subcategory})
+- Single phrase, no period at end
+- Professional tone
+- Focus on {material_name}'s specific characteristics
+- Mention laser cleaning application
 
-Write the subtitle now:"""
+Generate subtitle:"""
         
         return prompt
     

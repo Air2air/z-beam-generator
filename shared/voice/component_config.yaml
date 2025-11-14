@@ -80,6 +80,20 @@ subtitle:
     - "No period at end"
     - "Use sentence case, not title case (avoid capitalizing every word)"
     - "Academic style: capitalize only first word and proper nouns"
+  
+  # CRITICAL: Avoid AI detection through structural variation
+  anti_ai_requirements:
+    - "NEVER use formula: 'Laser cleaning [verb] [material] while [benefit]'"
+    - "VARY sentence structure: Start with material name sometimes, action sometimes, benefit sometimes"
+    - "MIX sentence types: statements, commands (implied subject), descriptive phrases"
+    - "USE different verbs: revive, restore, preserve, protect, renew, refresh, maintain, safeguard"
+    - "AVOID repetitive 'while' clauses - use different connectors or no connector"
+    - "Examples of varied structures:"
+    - "  - 'Gentle precision removes [X] from [material]'"
+    - "  - '[Material] stays intact during contaminant removal'"
+    - "  - 'Preserve [material] character without harsh chemicals'"
+    - "  - 'Remove buildup, keep structural integrity'"
+    - "  - '[Material] cleaning without thermal damage'"
 
 # FAQ: Technical question/answer pairs
 faq:

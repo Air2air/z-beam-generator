@@ -311,7 +311,8 @@ class HybridFrontmatterManager:
         
         # Get base prompt
         if field_name == 'subtitle':
-            base_prompt = self._build_subtitle_prompt(material_name, material_data, context_frontmatter)
+            # DEPRECATED: Use shared.prompts.text_prompt_builder.TextPromptBuilder instead
+            base_prompt = self._build_subtitle_prompt_legacy(material_name, material_data, context_frontmatter)
         elif field_name == 'description':
             base_prompt = self._build_description_prompt(material_name, material_data, context_frontmatter)
         elif field_name in ['notes', 'explanation', 'methodology']:
@@ -345,8 +346,11 @@ class HybridFrontmatterManager:
             self.logger.error(f"API generation failed for {field_path}: {e}")
             return f"Generated content for {field_name}"  # Fallback
 
-    def _build_subtitle_prompt(self, material_name: str, material_data: Dict, context: Dict) -> str:
-        """Build prompt for subtitle generation"""
+    def _build_subtitle_prompt_legacy(self, material_name: str, material_data: Dict, context: Dict) -> str:
+        """
+        DEPRECATED: Legacy subtitle prompt builder.
+        Use shared.prompts.text_prompt_builder.TextPromptBuilder instead.
+        """
         category = material_data.get('category', 'material')
         return f"""Generate a concise, professional subtitle for laser cleaning {material_name} ({category}).
 

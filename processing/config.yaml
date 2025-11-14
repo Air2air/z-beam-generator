@@ -1,0 +1,75 @@
+# Processing Pipeline Configuration
+
+# AI Detection Thresholds
+ai_detection:
+  threshold: 0.3  # Reject if AI score > 30%
+  use_ml_model: false  # Enable for Hugging Face model
+  ml_model_name: "roberta-base-openai-detector"
+
+# Readability Requirements
+readability:
+  min_flesch_score: 60.0  # Minimum Flesch Reading Ease
+  max_flesch_score: 100.0  # Maximum (prevent oversimplification)
+  target_grade_level: 10.0  # Target Flesch-Kincaid grade
+
+# Retry Configuration
+retry:
+  max_attempts: 5
+  backoff_seconds: 1.0  # Optional: add delay between retries
+
+# Content Length by Component Type
+component_lengths:
+  subtitle: 15  # words
+  caption: 25
+  description: 150
+  faq: 100
+  troubleshooter: 120
+
+# Forbidden Patterns (AI-like phrases to avoid)
+forbidden_patterns:
+  - "results suggest"
+  - "data indicate"
+  - "process achieves"
+  - "testing shows"
+  - "measurements confirm"
+  - "analysis reveals"
+  - "findings demonstrate"
+  - "precision laser"
+  - "laser cleaning removes"
+  - "while preserving"
+  - "while maintaining"
+  - "without compromising"
+  - "ensures optimal"
+  - "advanced technology"
+  - "state-of-the-art"
+  - "cutting-edge"
+  - "innovative solution"
+  - "comprehensive approach"
+  - "versatile method"
+  - "efficient process"
+
+# Voice Configuration
+voice:
+  # Author ID to country mapping
+  authors:
+    1: "united_states"
+    2: "italy"
+    3: "indonesia"
+    4: "taiwan"
+  
+  # ESL intensity levels
+  intensity_levels:
+    light: "Subtle regional patterns, mostly standard English"
+    moderate: "Noticeable ESL traits while maintaining clarity"
+    strong: "Pronounced regional characteristics, authentic voice"
+
+# Material Data Sources
+data_sources:
+  materials_yaml: "materials/data/Materials.yaml"
+  categories_yaml: "materials/data/Categories.yaml"
+
+# Output Configuration
+output:
+  frontmatter_dir: "materials/frontmatter"
+  backup_dir: "materials/frontmatter/.backup"
+  create_backup: true

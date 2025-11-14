@@ -533,7 +533,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 subtitle_text = f"Laser cleaning parameters and specifications for {abbreviation_format['name']}"
                 self.logger.info(f"⏭️  Skipping AI subtitle generation for {material_name}")
             else:
-                subtitle_text = self._generate_subtitle(
+                # DEPRECATED: Use shared.prompts.text_prompt_builder.TextPromptBuilder instead
+                subtitle_text = self._generate_subtitle_legacy(
                     material_name=abbreviation_format['name'],
                     category=category,
                     subcategory=subcategory,
@@ -2170,8 +2171,12 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             self.logger.error(f"Failed to get unified properties for {material_name}: {str(e)}")
             raise PropertyDiscoveryError(f"Property inheritance failed for {material_name}: {str(e)}")
     
-    def _generate_subtitle(self, material_name: str, category: str, subcategory: str, material_data: Dict) -> str:
-        """Generate AI-powered subtitle highlighting material-specific characteristics and treatment differences"""
+    def _generate_subtitle_legacy(self, material_name: str, category: str, subcategory: str, material_data: Dict) -> str:
+        """
+        DEPRECATED: Legacy subtitle generation with complex anti-AI-detection rules.
+        Use shared.prompts.text_prompt_builder.TextPromptBuilder instead.
+        This method is kept for backwards compatibility only.
+        """
         try:
             import yaml
             from pathlib import Path
