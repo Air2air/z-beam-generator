@@ -12,8 +12,8 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 
-materials_file = Path('materials/data/Materials.yaml')
-backup_file = Path(f'materials/data/materials_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
+materials_file = Path('data/materials/Materials.yaml')
+backup_file = Path(f'data/materials/materials_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
 
 print("📋 Removing confidence fields from Materials.yaml...")
 print(f"📂 Input: {materials_file}")

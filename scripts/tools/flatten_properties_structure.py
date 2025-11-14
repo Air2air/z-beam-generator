@@ -63,7 +63,7 @@ def flatten_material_properties(material_data):
     return material_data, changes_made
 
 def main():
-    materials_file = Path("materials/data/Materials.yaml")
+    materials_file = Path("data/materials/Materials.yaml")
     
     if not materials_file.exists():
         print("❌ Materials.yaml not found")

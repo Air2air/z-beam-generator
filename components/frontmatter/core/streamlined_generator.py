@@ -327,7 +327,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         try:
             self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle})")
             # Load material data first (using cached version for performance)
-            from materials.data.materials import get_material_by_name_cached
+            from data.materials.materials import get_material_by_name_cached
             material_data = get_material_by_name_cached(material_name)
             
             if material_data:
@@ -972,7 +972,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         import yaml
         from pathlib import Path
         
-        categories_file = Path('materials/data/Categories.yaml')
+        categories_file = Path('data/materials/Categories.yaml')
         # Read current data
         with open(categories_file, 'r', encoding='utf-8') as f:
             categories_data = yaml.safe_load(f)

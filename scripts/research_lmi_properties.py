@@ -85,7 +85,7 @@ def main():
     # Get materials from command line or use defaults
     if len(sys.argv) > 1:
         # Load materials.yaml to look up categories
-        materials_file = Path('materials/data/materials.yaml')
+        materials_file = Path('data/materials/materials.yaml')
         with open(materials_file, 'r') as f:
             data = yaml.safe_load(f)
         all_materials = data['materials']
@@ -129,7 +129,7 @@ def main():
         sys.exit(1)
     
     # Load current materials.yaml
-    materials_file = Path('materials/data/materials.yaml')
+    materials_file = Path('data/materials/materials.yaml')
     with open(materials_file, 'r') as f:
         data = yaml.safe_load(f)
     

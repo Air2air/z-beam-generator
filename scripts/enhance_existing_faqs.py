@@ -31,7 +31,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from materials.research.faq_topic_researcher import FAQTopicResearcher
 from shared.api.client_factory import create_api_client
-from materials.data.materials import load_materials_cached
+from data.materials.materials import load_materials_cached
 import yaml
 
 # Configure logging

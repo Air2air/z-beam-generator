@@ -51,7 +51,7 @@ from materials.research.faq_topic_researcher import FAQTopicResearcher
 logger = logging.getLogger(__name__)
 
 # Paths
-MATERIALS_DATA_PATH = Path("materials/data/Materials.yaml")
+MATERIALS_DATA_PATH = Path("data/materials/Materials.yaml")
 PROMPTS_DIR = Path("materials/prompts")
 
 # Default generation settings
@@ -123,7 +123,7 @@ class UnifiedMaterialsGenerator:
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
-        from materials.data import load_materials_data
+        from data.materials import load_materials_data
         return load_materials_data()
     
     def _build_context(self, material_data: Dict) -> str:

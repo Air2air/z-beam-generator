@@ -23,7 +23,7 @@ from typing import Dict, Set
 
 def load_property_categorization() -> Dict[str, str]:
     """Load property-to-category mapping from Categories.yaml."""
-    categories_file = Path('materials/data/Categories.yaml')
+    categories_file = Path('data/materials/Categories.yaml')
     
     with open(categories_file) as f:
         data = yaml.safe_load(f)
@@ -53,7 +53,7 @@ def map_category_to_group(category_id: str) -> str:
 def remove_other_category():
     """Remove 'other' category and recategorize its properties."""
     
-    materials_file = Path('materials/data/materials.yaml')
+    materials_file = Path('data/materials/materials.yaml')
     
     # Create backup
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')

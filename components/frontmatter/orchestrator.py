@@ -32,7 +32,7 @@ from materials.modules.simple_modules import (
 class FrontmatterOrchestrator:
     """Orchestrate frontmatter generation using modular components"""
     
-    def __init__(self, categories_yaml_path: str = "materials/data/Categories.yaml"):
+    def __init__(self, categories_yaml_path: str = "data/materials/Categories.yaml"):
         """
         Initialize orchestrator with all modules
         

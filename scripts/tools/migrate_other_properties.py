@@ -26,7 +26,7 @@ from typing import Dict, Any, Set
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from materials.data.materials import load_materials
+from data.materials.materials import load_materials
 
 # Property classification based on material science categories
 MATERIAL_CHARACTERISTICS_PROPERTIES = {

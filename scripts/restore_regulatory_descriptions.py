@@ -53,7 +53,7 @@ def main():
     print()
     
     # Load Materials.yaml
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     print(f"Loading {materials_file}...")
     
     with open(materials_file, 'r') as f:
@@ -90,7 +90,7 @@ def main():
     
     # Create backup
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    backup_file = Path(f'materials/data/backups/materials_backup_{timestamp}.yaml')
+    backup_file = Path(f'data/materials/backups/materials_backup_{timestamp}.yaml')
     backup_file.parent.mkdir(parents=True, exist_ok=True)
     
     with open(materials_file, 'r') as f:

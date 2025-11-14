@@ -12,7 +12,7 @@ def deploy_to_production():
     import os
     
     # Clear materials cache to ensure fresh data is used
-    from materials.data.materials import clear_materials_cache
+    from data.materials.materials import clear_materials_cache
     clear_materials_cache()
     print("🔄 Cleared materials cache to ensure fresh data")
     

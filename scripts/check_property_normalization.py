@@ -15,13 +15,13 @@ from typing import Dict, Set, List, Tuple
 
 def load_materials() -> dict:
     """Load Materials.yaml"""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     with open(materials_file, 'r') as f:
         return yaml.safe_load(f)
 
 def load_category_ranges() -> dict:
     """Load MaterialProperties.yaml for category ranges"""
-    properties_file = Path('materials/data/MaterialProperties.yaml')
+    properties_file = Path('data/materials/MaterialProperties.yaml')
     with open(properties_file, 'r') as f:
         return yaml.safe_load(f)
 

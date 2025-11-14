@@ -12,12 +12,12 @@ Validates that:
 
 import yaml
 from pathlib import Path
-from materials.data import load_materials_data, load_material, get_material_names
-from materials.data.materials import load_materials_cached
+from data.materials import load_materials_data, load_material, get_material_names
+from data.materials.materials import load_materials_cached
 
 def load_backup() -> dict:
     """Load backup Materials.yaml for comparison"""
-    backup_dir = Path("materials/data/backups")
+    backup_dir = Path("data/materials/backups")
     backups = sorted(backup_dir.glob("Materials_*.yaml"), reverse=True)
     if not backups:
         raise FileNotFoundError("No backup found!")
@@ -125,9 +125,9 @@ def main():
     
     # File sizes
     print("\n💾 FILE SIZES:")
-    materials_file = Path("materials/data/Materials.yaml")
-    properties_file = Path("materials/data/MaterialProperties.yaml")
-    settings_file = Path("materials/data/MachineSettings.yaml")
+    materials_file = Path("data/materials/Materials.yaml")
+    properties_file = Path("data/materials/MaterialProperties.yaml")
+    settings_file = Path("data/materials/MachineSettings.yaml")
     
     print(f"   • Materials.yaml: {materials_file.stat().st_size:,} bytes")
     print(f"   • MaterialProperties.yaml: {properties_file.stat().st_size:,} bytes")

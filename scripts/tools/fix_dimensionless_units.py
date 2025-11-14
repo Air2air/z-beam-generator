@@ -21,8 +21,8 @@ from pathlib import Path
 from datetime import datetime
 
 # Backup file
-MATERIALS_FILE = Path("materials/data/Materials.yaml")
-BACKUP_FILE = Path(f"materials/data/Materials.backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml")
+MATERIALS_FILE = Path("data/materials/Materials.yaml")
+BACKUP_FILE = Path(f"data/materials/Materials.backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml")
 
 def fix_dimensionless_units():
     """Replace 'dimensionless' with empty string for unit field"""

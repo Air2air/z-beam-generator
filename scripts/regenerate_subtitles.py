@@ -81,7 +81,7 @@ SUBTITLE_FOCUS_AREAS = [
 
 def load_materials() -> Dict:
     """Load Materials.yaml"""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     with open(materials_file, 'r') as f:
         return yaml.safe_load(f)
 
@@ -399,15 +399,15 @@ def main():
     
     if not test_mode:
         # Create backup
-        backup_file = Path('materials/data/Materials_backup_before_subtitle_regen.yaml')
-        with open('materials/data/Materials.yaml', 'r') as f:
+        backup_file = Path('data/materials/Materials_backup_before_subtitle_regen.yaml')
+        with open('data/materials/Materials.yaml', 'r') as f:
             backup_content = f.read()
         with open(backup_file, 'w') as bf:
             bf.write(backup_content)
         print(f"💾 Backup created: {backup_file}")
         
         # Save updated materials
-        with open('materials/data/Materials.yaml', 'w') as f:
+        with open('data/materials/Materials.yaml', 'w') as f:
             yaml.dump(materials_data, f, default_flow_style=False, sort_keys=False, 
                       allow_unicode=True, width=1000)
         print("💾 Saved to materials/data/Materials.yaml")

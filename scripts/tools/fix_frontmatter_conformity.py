@@ -19,7 +19,7 @@ import sys
 
 def load_categories_yaml():
     """Load Categories.yaml for category ranges."""
-    categories_path = Path('materials/data/Categories.yaml')
+    categories_path = Path('data/materials/Categories.yaml')
     with open(categories_path, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 

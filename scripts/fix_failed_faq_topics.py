@@ -22,7 +22,7 @@ def find_failed_faqs() -> List[Tuple[str, List[int]]]:
     Returns:
         List of (material_name, [faq_indices]) tuples
     """
-    materials_path = Path('materials/data/Materials.yaml')
+    materials_path = Path('data/materials/Materials.yaml')
     
     with open(materials_path, 'r', encoding='utf-8') as f:
         materials_data = yaml.safe_load(f)
@@ -76,7 +76,7 @@ def enhance_failed_faqs(dry_run: bool = False) -> Dict:
     print(f"   Found {total_failed} FAQs across {len(failed_faqs)} materials\n")
     
     # Load Materials.yaml
-    materials_path = Path('materials/data/Materials.yaml')
+    materials_path = Path('data/materials/Materials.yaml')
     with open(materials_path, 'r', encoding='utf-8') as f:
         materials_data = yaml.safe_load(f)
     

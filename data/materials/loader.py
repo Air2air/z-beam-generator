@@ -12,7 +12,7 @@ by merging data from all files based on material names, plus accessor
 functions for category-level metadata.
 
 Usage:
-    from materials.data.loader import load_materials_data, load_material
+    from data.materials.loader import load_materials_data, load_material
     
     # Load all materials (merged from all files)
     all_materials = load_materials_data()

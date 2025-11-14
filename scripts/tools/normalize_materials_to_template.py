@@ -29,7 +29,7 @@ from collections import OrderedDict
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from materials.data.materials import load_materials
+from data.materials.materials import load_materials
 
 def dict_representer(dumper, data):
     """Custom representer to convert OrderedDict to regular dict for YAML."""

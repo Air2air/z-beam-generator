@@ -49,7 +49,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from shared.voice.post_processor import VoicePostProcessor
 from shared.api.client_factory import create_api_client
 from components.frontmatter.utils.author_manager import get_author_info_for_material
-from materials.data.materials import load_materials, get_material_by_name
+from data.materials.materials import load_materials, get_material_by_name
 
 logging.basicConfig(
     level=logging.INFO,
@@ -84,7 +84,7 @@ class MaterialsVoiceEnhancer:
             'errors': 0
         }
         
-        self.materials_path = Path("materials/data/Materials.yaml")
+        self.materials_path = Path("data/materials/Materials.yaml")
     
     def enhance_material(self, material_name: str, intensity: int = 3) -> bool:
         """

@@ -9,7 +9,7 @@ All author lookups MUST use this registry. Any missing author ID is a configurat
 error and should fail immediately with a clear error message.
 
 Usage:
-    from shared.config.authors_registry import get_author, get_country_normalized
+    from data.authors.registry import get_author, get_country_normalized
     
     author = get_author(author_id)  # Raises KeyError if invalid
     country = get_country_normalized(author_id)  # Returns normalized key

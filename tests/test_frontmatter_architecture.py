@@ -78,13 +78,13 @@ class TestMaterialGenerator:
     def test_material_validation_copper(self):
         """Test material validation for Copper"""
         # Direct validation without initializing full generator
-        from materials.data.materials import get_material_by_name_cached
+        from data.materials.materials import get_material_by_name_cached
         material_data = get_material_by_name_cached('Copper')
         assert material_data is not None
     
     def test_material_validation_invalid(self):
         """Test material validation for invalid material"""
-        from materials.data.materials import get_material_by_name_cached
+        from data.materials.materials import get_material_by_name_cached
         material_data = get_material_by_name_cached('NonExistentMaterial123')
         assert material_data is None
     
@@ -328,7 +328,7 @@ class TestDataArchitecture:
     
     def test_categories_yaml_exists(self):
         """Test monolithic Categories.yaml exists and is used"""
-        categories_file = Path('materials/data/Categories.yaml')
+        categories_file = Path('data/materials/Categories.yaml')
         assert categories_file.exists(), "Categories.yaml should exist as single source of truth"
         
         # Verify it's not empty
@@ -336,7 +336,7 @@ class TestDataArchitecture:
     
     def test_split_category_files_removed(self):
         """Test split category files are removed (monolithic approach)"""
-        categories_dir = Path('materials/data/categories')
+        categories_dir = Path('data/materials/categories')
         assert not categories_dir.exists(), "Split categories/ directory should not exist - using monolithic Categories.yaml"
 
 

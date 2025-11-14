@@ -120,7 +120,7 @@ class PropertyManager:
         self.enhance_descriptions = enhance_descriptions_func
         self.categories_data = categories_data
         self.logger = logger
-        self.materials_file = Path("materials/data/Materials.yaml")
+        self.materials_file = Path("data/materials/Materials.yaml")
     
     # ===== HELPER METHODS =====
     

@@ -22,8 +22,8 @@ import logging
 import yaml
 from pathlib import Path
 from typing import Dict, Any
-from materials.data.materials import load_materials_cached
-from materials.data.loader import get_material_challenges
+from data.materials.materials import load_materials_cached
+from data.materials.loader import get_material_challenges
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +71,7 @@ class TrivialFrontmatterExporter:
         self.logger = logging.getLogger(__name__)
         
         # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml, Categories.yaml)
-        from materials.data.loader import (
+        from data.materials.loader import (
             get_parameter_ranges,
             get_property_categories,
             get_category_ranges,
@@ -215,7 +215,7 @@ class TrivialFrontmatterExporter:
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
         # Get full author data from registry
-        from shared.config.authors_registry import get_author
+        from data.authors.registry import get_author
         try:
             author_data = get_author(author_id)
         except KeyError:

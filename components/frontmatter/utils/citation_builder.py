@@ -30,8 +30,8 @@ class CitationBuilder:
     
     def __init__(
         self,
-        property_research_path: str = "materials/data/PropertyResearch.yaml",
-        setting_research_path: str = "materials/data/SettingResearch.yaml"
+        property_research_path: str = "data/materials/PropertyResearch.yaml",
+        setting_research_path: str = "data/materials/SettingResearch.yaml"
     ):
         """
         Initialize citation builder with research data paths.

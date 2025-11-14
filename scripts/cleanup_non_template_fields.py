@@ -54,7 +54,7 @@ TEMPLATE_FIELDS = [
 
 def load_materials():
     """Load Materials.yaml"""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     with open(materials_file, 'r') as f:
         return yaml.safe_load(f)
 
@@ -71,11 +71,11 @@ def clean_material(mat_data):
 
 def save_materials(data, backup=True):
     """Save Materials.yaml with optional backup"""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     
     if backup:
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        backup_file = Path(f'materials/data/backups/materials_backup_{timestamp}.yaml')
+        backup_file = Path(f'data/materials/backups/materials_backup_{timestamp}.yaml')
         backup_file.parent.mkdir(parents=True, exist_ok=True)
         
         # Copy current file to backup

@@ -113,7 +113,7 @@ def normalize_materials_yaml(dry_run=False):
     Returns:
         Dict with normalization statistics
     """
-    materials_path = Path('materials/data/Materials.yaml')
+    materials_path = Path('data/materials/Materials.yaml')
     
     print('🔧 NORMALIZING Materials.yaml STRUCTURE')
     print('=' * 70)

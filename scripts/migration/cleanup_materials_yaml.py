@@ -61,7 +61,7 @@ def remove_extracted_fields(materials_data: Dict[str, Any]) -> Dict[str, Any]:
 
 def main():
     """Main cleanup function."""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     
     if not materials_file.exists():
         print(f"❌ Materials.yaml not found at {materials_file}")

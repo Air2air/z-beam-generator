@@ -224,7 +224,7 @@ class SourceDataRepairer:
         """
         # Map content types to source YAML files
         source_paths = {
-            "material": Path("materials/data/Materials.yaml"),
+            "material": Path("data/materials/Materials.yaml"),
             "region": Path("regions/data/regions.yaml"),
             "application": Path("applications/data/applications.yaml"),
             "thesaurus": Path("thesaurus/data/thesaurus.yaml"),

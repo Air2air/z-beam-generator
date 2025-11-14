@@ -324,7 +324,7 @@ def main():
     parser = argparse.ArgumentParser(description='Normalize Materials.yaml structure')
     parser.add_argument('--dry-run', action='store_true', help='Print changes without writing')
     parser.add_argument('--material', type=str, help='Normalize only this specific material')
-    parser.add_argument('--materials-yaml', type=str, default='materials/data/Materials.yaml',
+    parser.add_argument('--materials-yaml', type=str, default='data/materials/Materials.yaml',
                        help='Path to Materials.yaml file')
     
     args = parser.parse_args()

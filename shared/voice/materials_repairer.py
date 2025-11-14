@@ -31,7 +31,7 @@ class MaterialsYamlRepairer:
     4. Creating backup before modifications
     """
     
-    def __init__(self, api_client, materials_yaml_path: str = "materials/data/Materials.yaml"):
+    def __init__(self, api_client, materials_yaml_path: str = "data/materials/Materials.yaml"):
         """
         Initialize repairer.
         

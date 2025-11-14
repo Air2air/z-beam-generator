@@ -26,7 +26,7 @@ from shared.services.regeneration_service import create_regeneration_service
 logger = logging.getLogger(__name__)
 
 # Materials.yaml path
-MATERIALS_DATA_PATH = "materials/data/Materials.yaml"
+MATERIALS_DATA_PATH = "data/materials/Materials.yaml"
 
 
 # ============================================================================

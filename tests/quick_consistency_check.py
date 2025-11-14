@@ -30,7 +30,7 @@ def quick_consistency_check():
         
         # Test 2: Materials data loading
         try:
-            from materials.data.materials import load_materials
+            from data.materials.materials import load_materials
             materials_data = load_materials()
             print("   ✅ Materials data loads successfully")
         except Exception as e:
@@ -45,7 +45,7 @@ def quick_consistency_check():
                 'powerRange': {'min': 10, 'max': 1000, 'unit': 'W'}
             }
             
-            import materials.data.materials
+            import data.materials.materials
             original_load = data.materials.load_materials
             data.materials.load_materials = lambda: test_materials_data
             

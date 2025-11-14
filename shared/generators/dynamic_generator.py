@@ -15,7 +15,7 @@ import yaml
 
 from shared.api.client_manager import get_api_client_for_component
 from shared.generators.component_generators import ComponentGeneratorFactory, ComponentResult
-from materials.data.materials import load_materials  # Use materials.py directly
+from data.materials.materials import load_materials  # Use materials.py directly
 
 
 @dataclass

@@ -59,7 +59,7 @@ def main():
     print("="*80 + "\n")
     
     # Load Materials.yaml
-    materials_path = Path('materials/data/Materials.yaml')
+    materials_path = Path('data/materials/Materials.yaml')
     
     print("📂 Loading Materials.yaml...")
     with open(materials_path, 'r', encoding='utf-8') as f:

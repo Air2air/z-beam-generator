@@ -35,8 +35,8 @@ from datetime import datetime
 from typing import Dict, Any, Set
 
 # Load property taxonomy
-CATEGORIES_PATH = Path("materials/data/Categories.yaml")
-MATERIALS_PATH = Path("materials/data/Materials.yaml")
+CATEGORIES_PATH = Path("data/materials/Categories.yaml")
+MATERIALS_PATH = Path("data/materials/Materials.yaml")
 
 def load_property_taxonomy() -> Dict[str, str]:
     """Load property taxonomy: property_name -> category_id"""

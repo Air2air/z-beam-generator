@@ -13,13 +13,13 @@ from typing import Dict, List, Any
 
 def load_materials() -> dict:
     """Load Materials.yaml"""
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     with open(materials_file, 'r') as f:
         return yaml.safe_load(f)
 
 def load_material_properties() -> dict:
     """Load MaterialProperties.yaml"""
-    properties_file = Path('materials/data/MaterialProperties.yaml')
+    properties_file = Path('data/materials/MaterialProperties.yaml')
     with open(properties_file, 'r') as f:
         return yaml.safe_load(f)
 
@@ -154,13 +154,13 @@ def update_material_properties_file(calculated_ranges):
                 print(f"  Added: {category_key}.{prop_name}")
     
     # Save updated file
-    backup_file = Path('materials/data/MaterialProperties_backup_before_range_update.yaml')
-    with open('materials/data/MaterialProperties.yaml', 'r') as f:
+    backup_file = Path('data/materials/MaterialProperties_backup_before_range_update.yaml')
+    with open('data/materials/MaterialProperties.yaml', 'r') as f:
         backup_content = f.read()
     with open(backup_file, 'w') as bf:
         bf.write(backup_content)
     
-    with open('materials/data/MaterialProperties.yaml', 'w') as f:
+    with open('data/materials/MaterialProperties.yaml', 'w') as f:
         yaml.dump(properties_data, f, default_flow_style=False, sort_keys=False, 
                   allow_unicode=True, width=1000)
     

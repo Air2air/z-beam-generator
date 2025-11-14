@@ -16,7 +16,7 @@ from pathlib import Path
 from collections import defaultdict
 
 def main():
-    materials_file = Path("materials/data/Materials.yaml")
+    materials_file = Path("data/materials/Materials.yaml")
     
     with open(materials_file) as f:
         data = yaml.safe_load(f)

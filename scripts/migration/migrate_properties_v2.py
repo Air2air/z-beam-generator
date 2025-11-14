@@ -349,7 +349,7 @@ def main():
     parser.add_argument(
         '--materials-file',
         type=Path,
-        default=Path('materials/data/Materials.yaml'),
+        default=Path('data/materials/Materials.yaml'),
         help='Path to Materials.yaml file'
     )
     

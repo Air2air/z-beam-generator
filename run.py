@@ -287,7 +287,7 @@ def main():
             author_data = None
             if args.content_type == 'material':
                 # For materials, load author from material data and enrich from registry
-                from materials.data.materials import get_material_by_name_cached
+                from data.materials.materials import get_material_by_name_cached
                 from components.frontmatter.utils.author_manager import get_author_info_for_material
                 
                 material_data = get_material_by_name_cached(args.identifier)
@@ -331,7 +331,7 @@ def main():
     # Additional imports for material generation
     from shared.generators.dynamic_generator import DynamicGenerator
     from shared.api.client_factory import create_api_client
-    from materials.data.materials import load_materials_cached as load_materials, clear_materials_cache
+    from data.materials.materials import load_materials_cached as load_materials, clear_materials_cache
     from shared.utils.filename import generate_safe_filename
     
     try:
@@ -391,7 +391,7 @@ def main():
                 )
                 
                 # Get author data from material data (reusable approach)
-                from materials.data.materials import get_material_by_name_cached
+                from data.materials.materials import get_material_by_name_cached
                 from components.frontmatter.utils.author_manager import get_author_info_for_material
                 
                 author_data = None
@@ -424,7 +424,7 @@ def main():
                 print("⚠️  Using legacy generator (orchestrator not available)")
                 
                 materials_data_dict = load_materials()
-                from materials.data.materials import get_material_by_name
+                from data.materials.materials import get_material_by_name
                 material_info = get_material_by_name(args.material, materials_data_dict)
                 
                 if not material_info:

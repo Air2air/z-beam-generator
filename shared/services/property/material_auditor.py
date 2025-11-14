@@ -41,7 +41,7 @@ project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from shared.validation.schema_validator import SchemaValidator
-from materials.data.materials import load_materials
+from data.materials.materials import load_materials
 from shared.utils.requirements_loader import (
     RequirementsLoader, 
     is_prohibited_field_in_materials,
@@ -116,8 +116,8 @@ class MaterialAuditor:
     def __init__(self):
         """Initialize the material auditor with all requirement checkers"""
         self.logger = logging.getLogger(__name__)
-        self.materials_file = Path("materials/data/Materials.yaml")
-        self.categories_file = Path("materials/data/Categories.yaml")
+        self.materials_file = Path("data/materials/Materials.yaml")
+        self.categories_file = Path("data/materials/Categories.yaml")
         self.frontmatter_dir = Path("frontmatter")
         
         # Load reference data

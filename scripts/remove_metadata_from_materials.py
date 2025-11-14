@@ -16,7 +16,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Load Materials.yaml
-materials_path = Path('materials/data/Materials.yaml')
+materials_path = Path('data/materials/Materials.yaml')
 print(f"Loading {materials_path}...")
 
 with open(materials_path, 'r') as f:

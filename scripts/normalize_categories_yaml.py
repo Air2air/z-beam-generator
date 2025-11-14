@@ -23,8 +23,8 @@ import yaml
 from pathlib import Path
 from datetime import datetime
 
-categories_file = Path('materials/data/categories.yaml')
-backup_file = Path(f'materials/data/categories_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
+categories_file = Path('data/materials/categories.yaml')
+backup_file = Path(f'data/materials/categories_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
 
 print("📋 Normalizing Categories.yaml structure...")
 print(f"📂 Input: {categories_file}")

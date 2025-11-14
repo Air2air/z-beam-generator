@@ -101,7 +101,7 @@ def handle_data_gaps():
         print()
         
         # Load Materials.yaml to analyze gaps
-        materials_file = Path("materials/data/Materials.yaml")
+        materials_file = Path("data/materials/Materials.yaml")
         if not materials_file.exists():
             print("❌ Materials.yaml not found")
             return False
@@ -318,7 +318,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print()
         
         # Load Materials.yaml
-        materials_file = Path("materials/data/Materials.yaml")
+        materials_file = Path("data/materials/Materials.yaml")
         if not materials_file.exists():
             print("❌ Materials.yaml not found")
             return False

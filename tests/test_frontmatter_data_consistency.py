@@ -17,7 +17,7 @@ from typing import Dict, List, Set, Optional, Any
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from materials.data.materials import load_materials
+from data.materials.materials import load_materials
 
 
 class TestFrontmatterDataConsistency(unittest.TestCase):

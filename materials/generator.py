@@ -107,7 +107,7 @@ class MaterialFrontmatterGenerator(BaseFrontmatterGenerator):
             MaterialDataError: If material not found
         """
         # Use materials.py data access functions
-        from materials.data.materials import get_material_by_name_cached
+        from data.materials.materials import get_material_by_name_cached
         
         try:
             material_data = get_material_by_name_cached(identifier)

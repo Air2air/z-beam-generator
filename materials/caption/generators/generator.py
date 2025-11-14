@@ -53,7 +53,7 @@ CAPTION_MAX_TOKENS = 300  # Enough for both sections
 WORD_COUNT_TOLERANCE = 10
 
 # Data file paths
-MATERIALS_DATA_PATH = "materials/data/Materials.yaml"
+MATERIALS_DATA_PATH = "data/materials/Materials.yaml"
 
 # ============================================================================
 

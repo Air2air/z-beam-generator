@@ -112,7 +112,7 @@ def _validate_property_ranges(material_name: str, material_data: Dict) -> list:
         from pathlib import Path
         import yaml
         
-        categories_path = Path("materials/data/Categories.yaml")
+        categories_path = Path("data/materials/Categories.yaml")
         if not categories_path.exists():
             return violations
         
@@ -276,7 +276,7 @@ def _research_missing_category_ranges_inline() -> bool:
         import yaml
         
         # Load Categories.yaml directly (avoid fail_fast validation triggers)
-        categories_path = Path("materials/data/Categories.yaml")
+        categories_path = Path("data/materials/Categories.yaml")
         if not categories_path.exists():
             print("❌ Categories.yaml not found")
             return False
@@ -486,7 +486,7 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Load material data
-            from materials.data.materials import load_materials, get_material_by_name
+            from data.materials.materials import load_materials, get_material_by_name
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -573,7 +573,7 @@ def run_material_workflow(
                     if research_success:
                         print("✅ Property research completed - Materials.yaml updated")
                         # Reload material data after research
-                        from materials.data.materials import load_materials as reload_materials, get_material_by_name as get_mat
+                        from data.materials.materials import load_materials as reload_materials, get_material_by_name as get_mat
                         materials = reload_materials()
                         material_data = get_mat(material_name, materials)
                         validation_success = True
@@ -664,7 +664,7 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Reload material data to get latest content
-            from materials.data.materials import load_materials, get_material_by_name
+            from data.materials.materials import load_materials, get_material_by_name
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -691,7 +691,7 @@ def run_material_workflow(
             
             try:
                 # Load material data from Materials.yaml
-                from materials.data.materials import load_materials, get_material_by_name  # noqa: F811
+                from data.materials.materials import load_materials, get_material_by_name  # noqa: F811
                 materials = load_materials()
                 material_data = get_material_by_name(material_name, materials)
                 

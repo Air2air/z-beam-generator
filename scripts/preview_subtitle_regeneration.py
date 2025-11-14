@@ -36,7 +36,7 @@ def main():
     print()
     
     # Load materials
-    materials_file = Path('materials/data/Materials.yaml')
+    materials_file = Path('data/materials/Materials.yaml')
     with open(materials_file, 'r') as f:
         materials_data = yaml.safe_load(f)
     

@@ -16,7 +16,7 @@ def handle_caption_generation(material_name: str):
     try:
         # Import required modules
         from materials.unified_generator import UnifiedMaterialsGenerator
-        from materials.data.materials import load_materials, get_material_by_name
+        from data.materials.materials import load_materials, get_material_by_name
         
         # Initialize Grok API client for captions
         from shared.api.client_factory import create_api_client

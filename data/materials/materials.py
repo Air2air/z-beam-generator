@@ -68,7 +68,7 @@ def clear_materials_cache():
     - Merging verified data
     
     Example:
-        >>> from materials.data.materials import clear_materials_cache
+        >>> from data.materials.materials import clear_materials_cache
         >>> # Update Materials.yaml
         >>> clear_materials_cache()  # Force reload on next access
     """
@@ -148,7 +148,7 @@ def load_materials():
     
     # Use centralized loader that merges Materials.yaml + MaterialProperties.yaml + MachineSettings.yaml
     try:
-        from materials.data.loader import load_materials_data
+        from data.materials.loader import load_materials_data
         data = load_materials_data()
         
         # If optimized format detected, expand it for compatibility

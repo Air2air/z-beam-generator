@@ -11,7 +11,7 @@ def handle_material_audit(args):
     try:
         from pathlib import Path
         from shared.services.property.material_auditor import MaterialAuditor, AuditSeverity
-        from materials.data.materials import load_materials
+        from data.materials.materials import load_materials
         
         print("🔍 MATERIAL AUDITING SYSTEM")
         print("=" * 70)

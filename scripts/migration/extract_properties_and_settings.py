@@ -23,10 +23,10 @@ import shutil
 from typing import Dict, Any
 
 # Paths
-MATERIALS_FILE = Path("materials/data/Materials.yaml")
-PROPERTIES_FILE = Path("materials/data/MaterialProperties.yaml")
-SETTINGS_FILE = Path("materials/data/MachineSettings.yaml")
-BACKUP_DIR = Path("materials/data/backups")
+MATERIALS_FILE = Path("data/materials/Materials.yaml")
+PROPERTIES_FILE = Path("data/materials/MaterialProperties.yaml")
+SETTINGS_FILE = Path("data/materials/MachineSettings.yaml")
+BACKUP_DIR = Path("data/materials/backups")
 
 
 def load_yaml(file_path: Path) -> Dict[str, Any]:
