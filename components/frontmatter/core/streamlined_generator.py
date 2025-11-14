@@ -543,12 +543,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             frontmatter = {
                 'name': abbreviation_format['name'],
+                'category': category,
+                'subcategory': subcategory,
                 'title': material_data['title'] if 'title' in material_data else abbreviation_format['title'],
                 'subtitle': subtitle_text,
                 'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
-                'category': category,
-                'subcategory': subcategory,
             }
+            
+            # Generate breadcrumb navigation
+            frontmatter['breadcrumb'] = self._generate_breadcrumb(material_name, material_data)
             # Load materialProperties directly from Materials.yaml (data-only mode)
             # Only copy category groups (material_characteristics, laser_material_interaction, etc.)
             # Skip individual properties at root level
@@ -2467,6 +2470,68 @@ Generate exactly two text blocks:
             self.logger.error(f"Failed to add caption section for {material_name}: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - caption is required
             raise GenerationError(f"Caption generation failed for {material_name}: {e}")
+
+    def _generate_breadcrumb(self, material_name: str, material_data: Dict) -> list:
+        """
+        Generate breadcrumb navigation for materials.
+        
+        Hierarchy: Home → Materials → Category → Subcategory → Material
+        
+        Example for Aluminum (category: metal, subcategory: non-ferrous):
+          - Home → /
+          - Materials → /materials
+          - Metal → /materials/metals
+          - Non Ferrous → /materials/metal/non-ferrous
+          - Aluminum → /materials/metal/non-ferrous/aluminum
+        
+        Args:
+            material_name: Name of the material
+            material_data: Material data from Materials.yaml
+            
+        Returns:
+            List of breadcrumb dicts with label and href
+        """
+        breadcrumb = [{"label": "Home", "href": "/"}]
+        
+        # Add Materials level
+        breadcrumb.append({"label": "Materials", "href": "/materials"})
+        
+        # Get category and subcategory
+        category = material_data.get('category', '')  # e.g., "metal"
+        subcategory = material_data.get('subcategory', '')  # e.g., "non-ferrous"
+        
+        # Add Category level (pluralized for listing page)
+        if category:
+            category_label = category.replace('-', ' ').replace('_', ' ').title()
+            breadcrumb.append({
+                "label": category_label,
+                "href": f"/materials/{category.lower()}s"  # Pluralized: /materials/metals
+            })
+        
+        # Add Subcategory level (if present)
+        if subcategory:
+            subcategory_label = subcategory.replace('-', ' ').replace('_', ' ').title()
+            breadcrumb.append({
+                "label": subcategory_label,
+                "href": f"/materials/{category.lower()}/{subcategory.lower()}"
+            })
+        
+        # Add current material (use material name)
+        if material_name:
+            # Build final href based on whether there's a subcategory
+            if subcategory:
+                material_slug = material_name.lower().replace(' ', '-')
+                final_href = f"/materials/{category.lower()}/{subcategory.lower()}/{material_slug}"
+            else:
+                material_slug = material_name.lower().replace(' ', '-')
+                final_href = f"/materials/{category.lower()}/{material_slug}"
+            
+            breadcrumb.append({
+                "label": material_name,
+                "href": final_href
+            })
+        
+        return breadcrumb
 
 
 

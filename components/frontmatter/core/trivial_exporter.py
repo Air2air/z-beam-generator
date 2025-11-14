@@ -898,6 +898,13 @@ class TrivialFrontmatterExporter:
         
         Hierarchy: Home → Materials → Category → Subcategory → Material
         
+        Example for Aluminum (category: metal, subcategory: non-ferrous):
+          - Home → /
+          - Materials → /materials
+          - Metal → /materials/metals
+          - Non Ferrous → /materials/metal/non-ferrous
+          - Aluminum → /materials/metal/non-ferrous/aluminum
+        
         Args:
             material_data: Material data from Materials.yaml
             slug: URL slug for the material (e.g., "aluminum-laser-cleaning")
@@ -910,28 +917,40 @@ class TrivialFrontmatterExporter:
         # Add Materials level
         breadcrumb.append({"label": "Materials", "href": "/materials"})
         
-        # Add Category level
-        category = material_data.get('category', '').title()
+        # Get category and subcategory
+        category = material_data.get('category', '')  # e.g., "metal"
+        subcategory = material_data.get('subcategory', '')  # e.g., "non-ferrous"
+        
+        # Add Category level (pluralized for listing page)
         if category:
+            category_label = category.replace('-', ' ').replace('_', ' ').title()
             breadcrumb.append({
-                "label": category,
-                "href": f"/materials/{category.lower()}"
+                "label": category_label,
+                "href": f"/materials/{category.lower()}s"  # Pluralized: /materials/metals
             })
         
         # Add Subcategory level (if present)
-        subcategory = material_data.get('subcategory', '')
         if subcategory:
+            subcategory_label = subcategory.replace('-', ' ').replace('_', ' ').title()
             breadcrumb.append({
-                "label": subcategory.replace('-', ' ').replace('_', ' ').title(),
+                "label": subcategory_label,
                 "href": f"/materials/{category.lower()}/{subcategory.lower()}"
             })
         
-        # Add current material
+        # Add current material (use material name from slug without "laser-cleaning")
         name = material_data.get('name', '')
         if name:
+            # Build final href based on whether there's a subcategory
+            if subcategory:
+                material_slug = name.lower().replace(' ', '-')
+                final_href = f"/materials/{category.lower()}/{subcategory.lower()}/{material_slug}"
+            else:
+                material_slug = name.lower().replace(' ', '-')
+                final_href = f"/materials/{category.lower()}/{material_slug}"
+            
             breadcrumb.append({
                 "label": name,
-                "href": f"/materials/{slug}"
+                "href": final_href
             })
         
         return breadcrumb
