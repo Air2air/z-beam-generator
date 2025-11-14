@@ -21,7 +21,7 @@ class MaterialsValidationError(Exception):
 
 def load_materials_yaml() -> Dict:
     """Load materials YAML with strict validation"""
-    materials_path = Path(__file__).parent.parent.parent / "materials" / "data" / "Materials.yaml"
+    materials_path = Path(__file__).parent.parent.parent / "data" / "materials" / "Materials.yaml"
     
     if not materials_path.exists():
         raise ConfigurationError(f"CRITICAL: Materials.yaml not found at {materials_path}")

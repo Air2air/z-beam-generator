@@ -62,12 +62,12 @@ class CategoryDataLoader:
             project_root: Path to project root. Auto-detected if not provided.
         """
         self.project_root = project_root or self._find_project_root()
-        self.materials_data_dir = self.project_root / 'materials' / 'data'
-        self.categories_file = self.materials_data_dir / 'Categories.yaml'
+        self.materials_data_dir = self.project_root / 'data' / 'materials'
+        self.categories_file = self.materials_data_dir / 'CategoryTaxonomy.yaml'  # Updated from Categories.yaml
         
         if not self.categories_file.exists():
             raise ConfigurationError(
-                f"Categories.yaml not found at: {self.categories_file}\n"
+                f"CategoryTaxonomy.yaml not found at: {self.categories_file}\n"
                 f"Per GROK_INSTRUCTIONS.md: No fallbacks allowed."
             )
         
