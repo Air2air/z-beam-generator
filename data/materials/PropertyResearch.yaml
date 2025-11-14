@@ -1,10 +1,24 @@
 _metadata:
-  version: 1.0.0
+  version: 2.0.0
   description: Deep research data for material properties with multiple sources and contexts
   schema_version: 3.0.0
   created_date: '2025-11-07'
   purpose: Enable drill-down pages with comparative analysis
-  last_updated: '2025-11-07T13:13:24.223333'
+  last_updated: '2025-11-13'
+  normalized_architecture: true
+
+# Cross-references to related data files
+_references:
+  property_definitions: PropertyDefinitions.yaml  # Property schemas, units, ranges
+  primary_data: MaterialProperties.yaml           # Current property values for all materials
+  category_taxonomy: CategoryTaxonomy.yaml        # Category ranges and classifications
+
+# Research Data Structure:
+# Each material.property contains:
+#   - primary: Current best value (also in MaterialProperties.yaml)
+#   - research: Multiple source values with confidence levels
+#   - metadata: Research tracking information
+
 Aluminum:
   density:
     primary:

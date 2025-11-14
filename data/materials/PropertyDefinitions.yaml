@@ -1,0 +1,583 @@
+# Property Definitions - Single Source of Truth
+# This file defines all material properties used across the system
+# Version: 1.0.0
+# Created: 2025-11-13
+# Purpose: Eliminate duplication by centralizing property schemas, units, ranges, and definitions
+
+_metadata:
+  version: 1.0.0
+  description: Universal property definitions for all materials
+  created_date: '2025-11-13'
+  purpose: Single source of truth for property schemas, units, ranges, and laser cleaning impact
+  used_by:
+    - MaterialProperties.yaml
+    - PropertyResearch.yaml
+  total_properties: 55
+
+# Property Definitions - Individual Properties
+definitions:
+  # Optical Properties
+  laserAbsorption:
+    description: Fraction of incident laser energy absorbed by the material surface
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Determines energy coupling efficiency and cleaning effectiveness
+    laser_cleaning_impact: Higher absorption enables lower power requirements and faster cleaning
+    typical_ranges:
+      metal: 0.05-0.30
+      ceramic: 0.60-0.95
+      glass: 0.02-0.10
+      plastic: 0.70-0.95
+      composite: 0.40-0.80
+      wood: 0.85-0.95
+      stone: 0.70-0.90
+      masonry: 0.75-0.90
+      semiconductor: 0.30-0.70
+
+  laserReflectivity:
+    description: Fraction of incident laser energy reflected from the material surface
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Affects energy coupling and safety considerations
+    laser_cleaning_impact: High reflectivity requires adjusted power settings and safety measures
+    typical_ranges:
+      metal: 0.70-0.95
+      ceramic: 0.05-0.40
+      glass: 0.04-0.10
+      plastic: 0.05-0.30
+      composite: 0.20-0.60
+      wood: 0.05-0.15
+      stone: 0.10-0.30
+      masonry: 0.10-0.25
+      semiconductor: 0.30-0.70
+
+  reflectivity:
+    description: Fraction of incident light reflected from the surface
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Affects energy coupling and safety considerations
+    laser_cleaning_impact: High reflectivity requires adjusted power settings
+
+  absorptivity:
+    description: Fraction of incident radiation absorbed by the material
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Determines how efficiently laser energy couples into the material
+    laser_cleaning_impact: Higher absorptivity allows for more efficient energy transfer
+
+  emissivity:
+    description: Efficiency of thermal radiation emission relative to a black body
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Affects radiative cooling and thermal equilibrium
+    laser_cleaning_impact: Influences heat dissipation during laser processing
+
+  refractiveIndex:
+    description: Ratio of light velocity in vacuum to velocity in material
+    unit: ''
+    relevance: Affects light propagation and reflection at interfaces
+    laser_cleaning_impact: Influences beam focusing and energy distribution
+
+  absorptionCoefficient:
+    description: Rate of optical energy absorption at specific wavelengths
+    unit: m⁻¹
+    relevance: Determines energy coupling efficiency
+    laser_cleaning_impact: Directly affects cleaning effectiveness and penetration depth
+
+  opticalTransmittance:
+    description: Fraction of incident light transmitted through the material
+    unit: ''
+    value_range: [0.0, 1.0]
+    relevance: Critical for transparent and semi-transparent materials
+    laser_cleaning_impact: Affects energy deposition depth and surface vs bulk heating
+
+  photonPenetrationDepth:
+    description: Distance light travels before intensity drops to 1/e of initial value
+    unit: μm
+    relevance: Determines depth of energy absorption
+    laser_cleaning_impact: Affects whether cleaning is surface-only or penetrates into material
+
+  # Thermal Properties
+  ablationThreshold:
+    description: Minimum energy density required to initiate material removal from the surface
+    unit: J/cm²
+    relevance: Critical threshold for laser cleaning process design
+    laser_cleaning_impact: Determines minimum fluence for effective cleaning
+    typical_ranges:
+      metal: 0.5-5.0
+      ceramic: 1.0-8.0
+      glass: 2.0-10.0
+      plastic: 0.1-2.0
+      composite: 0.5-4.0
+      wood: 0.2-1.5
+      stone: 1.5-8.0
+      masonry: 1.0-6.0
+      semiconductor: 0.5-3.0
+
+  laserDamageThreshold:
+    description: Maximum laser fluence material can withstand without permanent damage
+    unit: J/cm²
+    relevance: Defines safe operating window for laser cleaning
+    laser_cleaning_impact: Upper limit for fluence selection to prevent substrate damage
+    typical_ranges:
+      metal: 2.0-20.0
+      ceramic: 5.0-30.0
+      glass: 10.0-50.0
+      plastic: 0.5-5.0
+      composite: 2.0-15.0
+      wood: 1.0-8.0
+      stone: 5.0-25.0
+      masonry: 3.0-20.0
+      semiconductor: 1.0-10.0
+
+  thermalConductivity:
+    description: Rate of heat transfer through the material
+    unit: W/m·K
+    relevance: Affects heat dissipation and thermal stress development
+    laser_cleaning_impact: High conductivity materials require adjusted parameters
+    optimization_factor: Critical for pulse duration and repetition rate selection
+    typical_ranges:
+      metal: 10.0-429.0
+      ceramic: 1.0-30.0
+      glass: 0.8-1.4
+      plastic: 0.1-0.5
+      composite: 0.5-10.0
+      wood: 0.1-0.2
+      stone: 1.0-3.5
+      masonry: 0.5-1.5
+      semiconductor: 1.0-150.0
+
+  thermalDiffusivity:
+    description: Rate of thermal energy transfer through material
+    unit: mm²/s
+    relevance: Affects heat spread and cooling rates
+    laser_cleaning_impact: Influences pulse timing and thermal damage prevention
+
+  thermalExpansion:
+    description: Rate of dimensional change with temperature variation
+    unit: μm/m·°C
+    relevance: Critical for thermal stress calculation
+    laser_cleaning_impact: High expansion materials need careful thermal management
+
+  thermalDestruction:
+    description: Comprehensive thermal failure characteristics including temperature threshold and mechanism type
+    structure:
+      point:
+        description: Temperature at which thermal damage begins (replaces melting point for accuracy)
+        unit: °C or K
+        relevance: Critical threshold for thermal damage assessment across all material types
+      type:
+        description: Primary mechanism of thermal failure for this material category
+        unit: categorical
+        valid_values:
+          - melting
+          - decomposition
+          - carbonization
+          - oxidation
+          - sublimation
+          - thermal_shock
+          - softening
+          - spalling
+          - calcination
+          - delamination
+    laser_cleaning_impact: Determines safe operating temperature limits and appropriate damage assessment methods
+    safety_considerations: Stay well below destruction point; different destruction types require different preventive measures
+    scientific_accuracy: Accounts for various thermal destruction mechanisms beyond simple melting
+
+  meltingPoint:
+    description: Temperature at which solid transitions to liquid phase
+    unit: °C
+    relevance: Defines upper temperature limit for solid-state processing
+    laser_cleaning_impact: Must avoid reaching melting point to prevent surface damage
+
+  boilingPoint:
+    description: Temperature at which liquid transitions to gas phase
+    unit: °C
+    relevance: Defines vaporization threshold
+    laser_cleaning_impact: Critical for understanding material removal mechanisms
+
+  specificHeat:
+    description: Energy required to raise temperature of unit mass by one degree
+    unit: J/kg·K
+    relevance: Affects temperature rise rate during laser irradiation
+    laser_cleaning_impact: High specific heat materials heat more slowly
+
+  heatCapacity:
+    description: Amount of heat needed to change temperature by one degree
+    unit: J/K
+    relevance: Determines thermal response to laser energy input
+    laser_cleaning_impact: Affects heating and cooling dynamics
+
+  thermalStability:
+    description: Ability to maintain properties at elevated temperatures
+    unit: °C
+    relevance: Indicates safe operating temperature range
+    laser_cleaning_impact: Determines maximum allowable process temperatures
+
+  thermalShockResistance:
+    description: Ability to withstand rapid temperature changes without damage
+    unit: categorical or °C/s
+    relevance: Critical for pulsed laser operations
+    laser_cleaning_impact: Low resistance requires gentler heating profiles
+
+  glasTransitionTemperature:
+    description: Temperature at which amorphous material transitions from rigid to rubbery state
+    unit: °C
+    relevance: Critical for polymers and glasses
+    laser_cleaning_impact: Must stay below Tg to avoid deformation
+
+  sinteringTemperature:
+    description: Temperature at which powder particles bond together
+    unit: °C
+    relevance: Important for porous and sintered materials
+    laser_cleaning_impact: Avoid temperatures that could alter sintered structure
+
+  ignitionTemperature:
+    description: Minimum temperature for sustained combustion
+    unit: °C
+    relevance: Safety critical for combustible materials
+    laser_cleaning_impact: Must stay well below ignition point
+
+  autoignitionTemperature:
+    description: Temperature at which material spontaneously ignites without external ignition source
+    unit: °C
+    relevance: Safety critical threshold
+    laser_cleaning_impact: Absolute upper temperature limit for combustible materials
+
+  decompositionTemperature:
+    description: Temperature at which chemical breakdown begins
+    unit: °C
+    relevance: Defines chemical stability limit
+    laser_cleaning_impact: Must avoid decomposition to prevent material alteration
+
+  sublimationPoint:
+    description: Temperature at which solid transitions directly to gas phase
+    unit: °C
+    relevance: Important for materials that sublime
+    laser_cleaning_impact: Can enable surface removal without melting
+
+  thermalDegradationPoint:
+    description: Temperature at which material properties begin to degrade
+    unit: °C
+    relevance: Indicates onset of property changes
+    laser_cleaning_impact: Safe operating limit for process design
+
+  vaporPressure:
+    description: Pressure exerted by vapor in equilibrium with its condensed phase
+    unit: Pa
+    relevance: Affects vaporization and material removal
+    laser_cleaning_impact: Higher vapor pressure facilitates ablation
+
+  # Physical Properties
+  density:
+    description: Mass per unit volume of the material
+    unit: g/cm³
+    relevance: Affects thermal mass and energy distribution during cleaning
+    laser_cleaning_impact: Influences heat diffusion rates and required energy density
+    typical_ranges:
+      metal: 0.53-22.6
+      ceramic: 1.8-15.7
+      glass: 2.2-4.8
+      plastic: 0.9-2.3
+      composite: 1.1-2.5
+      wood: 0.3-1.2
+      stone: 1.5-3.2
+      masonry: 1.8-2.8
+      semiconductor: 2.3-19.3
+
+  viscosity:
+    description: Resistance to flow and deformation
+    unit: Pa·s
+    relevance: Important for liquid and semi-solid materials
+    laser_cleaning_impact: Affects contaminant removal mechanisms
+
+  porosity:
+    description: Fraction of void space in the material
+    unit: '%'
+    value_range: [0, 100]
+    relevance: Affects absorption and contaminant penetration
+    laser_cleaning_impact: Porous materials may trap contaminants deeper
+
+  surfaceRoughness:
+    description: Deviation of surface from ideal flatness
+    unit: μm (Ra)
+    relevance: Affects light scattering and absorption
+    laser_cleaning_impact: Rough surfaces require adjusted parameters
+
+  permeability:
+    description: Ability to allow fluids to pass through
+    unit: m²
+    relevance: Affects contaminant penetration
+    laser_cleaning_impact: Permeable materials may have deep contamination
+
+  surfaceEnergy:
+    description: Excess energy at material surface compared to bulk
+    unit: mJ/m²
+    relevance: Affects wetting and adhesion
+    laser_cleaning_impact: Influences contaminant adhesion strength
+
+  wettability:
+    description: Ability of liquid to maintain contact with solid surface
+    unit: contact angle (°)
+    relevance: Affects cleaning and coating adhesion
+    laser_cleaning_impact: Influences post-cleaning surface chemistry
+
+  surfaceTension:
+    description: Elastic tendency of fluid surface
+    unit: N/m
+    relevance: Affects wetting and droplet behavior
+    laser_cleaning_impact: Influences contaminant spreading
+
+  grainSize:
+    description: Average size of crystalline grains in polycrystalline material
+    unit: μm
+    relevance: Affects mechanical and optical properties
+    laser_cleaning_impact: Fine grains may have different absorption characteristics
+
+  # Mechanical Properties
+  hardness:
+    description: Resistance to deformation and surface indentation
+    unit: HV, Mohs
+    relevance: Indicates surface durability and cleaning difficulty
+    laser_cleaning_impact: Harder materials may require higher energy densities
+
+  tensileStrength:
+    description: Maximum stress material can withstand while being stretched
+    unit: MPa
+    relevance: Indicates mechanical robustness during cleaning
+    laser_cleaning_impact: Affects susceptibility to thermal stress damage
+
+  youngsModulus:
+    description: Measure of material stiffness and elastic deformation
+    unit: GPa
+    relevance: Affects thermal expansion and stress response
+    laser_cleaning_impact: Influences crack propagation and damage thresholds
+
+  yieldStrength:
+    description: Stress at which material begins permanent deformation
+    unit: MPa
+    relevance: Indicates onset of plastic deformation
+    laser_cleaning_impact: Thermal stresses must stay below yield strength
+
+  elasticity:
+    description: Ability to return to original shape after deformation
+    unit: ''
+    relevance: Affects response to thermal stress
+    laser_cleaning_impact: Elastic materials better tolerate thermal cycling
+
+  bulkModulus:
+    description: Resistance to uniform compression
+    unit: GPa
+    relevance: Indicates compressibility
+    laser_cleaning_impact: Affects stress wave propagation
+
+  shearModulus:
+    description: Resistance to shear deformation
+    unit: GPa
+    relevance: Indicates stiffness in shear
+    laser_cleaning_impact: Affects stress distribution patterns
+
+  # Electrical Properties
+  electricalResistivity:
+    description: Measure of material's opposition to electric current flow
+    unit: Ω·m
+    relevance: Indicates electrical properties
+    laser_cleaning_impact: May affect plasma formation and ionization
+
+  electricalConductivity:
+    description: Ability to conduct electric current
+    unit: S/m
+    relevance: Related to thermal conductivity in metals
+    laser_cleaning_impact: Conductive materials may have different plasma dynamics
+
+  dielectricConstant:
+    description: Relative permittivity of material
+    unit: ''
+    relevance: Indicates electrical insulation properties
+    laser_cleaning_impact: Affects electromagnetic field interactions
+
+  dielectricStrength:
+    description: Maximum electric field material can withstand without breakdown
+    unit: kV/mm
+    relevance: Important for insulating materials
+    laser_cleaning_impact: May affect high-intensity laser interactions
+
+  magneticPermeability:
+    description: Degree of magnetization in response to magnetic field
+    unit: H/m
+    relevance: Indicates magnetic properties
+    laser_cleaning_impact: May affect certain laser-plasma interactions
+
+  bandgap:
+    description: Electronic energy gap between valence and conduction bands
+    unit: eV
+    relevance: Determines optical absorption and electrical conductivity
+    laser_cleaning_impact: Affects wavelength selection and energy coupling
+
+  # Chemical Properties
+  oxidationResistance:
+    description: Ability to resist reaction with oxygen at elevated temperatures
+    unit: categorical
+    relevance: Indicates surface stability during laser heating
+    laser_cleaning_impact: Poor resistance may require inert atmosphere
+
+  corrosionResistance:
+    description: Ability to resist chemical degradation
+    unit: categorical
+    relevance: Indicates durability after cleaning
+    laser_cleaning_impact: May affect choice of assist gases
+
+  moistureContent:
+    description: Amount of water present in the material
+    unit: '%'
+    value_range: [0, 100]
+    relevance: Affects laser absorption and material response
+    laser_cleaning_impact: High moisture requires drying or adjusted parameters
+
+  waterSolubility:
+    description: Ability to dissolve in water
+    unit: g/L or categorical
+    relevance: Affects post-cleaning treatment options
+    laser_cleaning_impact: May enable wet cleaning methods
+
+  weatherResistance:
+    description: Ability to withstand environmental degradation
+    unit: categorical
+    relevance: Indicates long-term durability
+    laser_cleaning_impact: Weathered surfaces may have altered properties
+
+  # Material-Specific Properties
+  celluloseContent:
+    description: Percentage of cellulose in wood-based materials
+    unit: '%'
+    value_range: [0, 100]
+    relevance: Determines thermal and chemical behavior of wood
+    laser_cleaning_impact: High cellulose content affects ablation characteristics
+
+  ligninContent:
+    description: Percentage of lignin in wood-based materials
+    unit: '%'
+    value_range: [0, 100]
+    relevance: Affects thermal stability and color
+    laser_cleaning_impact: Lignin content influences darkening and charring
+
+  crystal_structure:
+    description: Three-dimensional arrangement of atoms in the crystalline lattice
+    common_types:
+      - face-centered cubic
+      - body-centered cubic
+      - hexagonal close-packed
+      - diamond cubic
+    relevance: Influences mechanical properties, thermal conductivity, and optical behavior
+    cleaning_considerations: Affects stress patterns and damage mechanisms
+
+  # Process Properties
+  difficulty_score:
+    description: Laser cleaning complexity rating on 1-5 scale
+    scale_definition: 1=Easy, 2=Moderate, 3=Standard, 4=Challenging, 5=Expert
+    factors:
+      - Thermal sensitivity
+      - Damage threshold
+      - Contamination adhesion
+      - Surface complexity
+    selection_guidance: Higher scores require more precise parameter control
+
+  degradationPoint:
+    description: Temperature or condition at which material begins to degrade
+    unit: °C or categorical
+    relevance: Indicates process safety limits
+    laser_cleaning_impact: Must stay below degradation point
+
+  softeningPoint:
+    description: Temperature at which material begins to soften
+    unit: °C
+    relevance: Important for polymers and glasses
+    laser_cleaning_impact: Avoid temperatures above softening point to prevent deformation
+
+# Category Taxonomy for Property Organization
+property_categories:
+  metadata:
+    version: 1.0.0
+    total_categories: 2
+    total_properties: 55
+    description: Two-category taxonomy for laser cleaning operations based on fundamental physics
+    consolidation_note: Categories distinguish laser-material interaction from intrinsic material characteristics
+
+  categories:
+    laser_material_interaction:
+      id: laser_material_interaction
+      label: Laser-Material Interaction
+      description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+      process_stage: Energy Input & Propagation
+      percentage: 47.3
+      property_count: 26
+      properties:
+        - laserAbsorption
+        - laserReflectivity
+        - reflectivity
+        - ablationThreshold
+        - absorptivity
+        - emissivity
+        - refractiveIndex
+        - laserDamageThreshold
+        - opticalTransmittance
+        - thermalConductivity
+        - specificHeat
+        - thermalDiffusivity
+        - thermalExpansion
+        - thermalDestruction
+        - boilingPoint
+        - heatCapacity
+        - glasTransitionTemperature
+        - sinteringTemperature
+        - ignitionTemperature
+        - autoignitionTemperature
+        - decompositionTemperature
+        - sublimationPoint
+        - thermalStability
+        - thermalDegradationPoint
+        - photonPenetrationDepth
+        - meltingPoint
+        - thermalDestructionPoint
+        - vaporPressure
+        - absorptionCoefficient
+        - thermalShockResistance
+
+    material_characteristics:
+      id: material_characteristics
+      label: Material Characteristics
+      description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+      process_stage: Material Properties
+      percentage: 52.7
+      property_count: 29
+      properties:
+        - density
+        - viscosity
+        - porosity
+        - surfaceRoughness
+        - permeability
+        - surfaceEnergy
+        - wettability
+        - electricalResistivity
+        - electricalConductivity
+        - dielectricConstant
+        - dielectricStrength
+        - oxidationResistance
+        - corrosionResistance
+        - moistureContent
+        - waterSolubility
+        - weatherResistance
+        - celluloseContent
+        - grainSize
+        - magneticPermeability
+        - ligninContent
+        - degradationPoint
+        - softeningPoint
+        - surfaceTension
+        - hardness
+        - tensileStrength
+        - youngsModulus
+        - yieldStrength
+        - elasticity
+        - bulkModulus
+        - shearModulus

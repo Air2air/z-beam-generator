@@ -1,10 +1,24 @@
 _metadata:
-  version: 1.0.0
+  version: 2.0.0
   description: Deep research for laser machine settings with application contexts
   schema_version: 3.0.0
   created_date: '2025-11-07'
   purpose: Enable context-aware parameter selection and drill-down pages
-  last_updated: '2025-11-07T13:15:10.718245'
+  last_updated: '2025-11-13'
+  normalized_architecture: true
+
+# Cross-references to related data files
+_references:
+  parameter_definitions: ParameterDefinitions.yaml  # Parameter schemas, units, ranges
+  primary_data: MachineSettings.yaml                # Current settings for all materials
+  category_taxonomy: CategoryTaxonomy.yaml          # Category-specific wavelength ranges
+
+# Research Data Structure:
+# Each material.parameter contains:
+#   - primary: Current best value (also in MachineSettings.yaml)
+#   - research: Multiple source values with application contexts
+#   - metadata: Research tracking information
+
 Aluminum:
   wavelength:
     primary:

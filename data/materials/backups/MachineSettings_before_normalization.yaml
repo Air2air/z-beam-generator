@@ -1,9 +1,3 @@
-# Machine Settings - Material-Specific Laser Parameters
-# Parameter definitions and ranges → ParameterDefinitions.yaml
-# This file contains ONLY material-specific parameter values
-# Version: 3.0.0 (Normalized Architecture)
-# Last Updated: 2025-11-13
-
 _metadata:
   version: 3.0.0
   description: Machine settings with parameter ranges and optimization guidance
@@ -5520,3 +5514,107 @@ settings:
       description: Effective interaction time per spot for controlled material removal
       unit: μs
       value: 100
+parameterDescriptions:
+  ablationThreshold:
+    description: Minimum energy density required to initiate material removal from
+      the surface
+    unit: J/cm²
+    selection_criteria: Based on material thermal properties and bond strength
+    typical_range_guidance: Lower for organic materials, higher for metals and ceramics
+  fluenceThreshold:
+    description: Energy density threshold for effective contaminant removal without
+      substrate damage
+    unit: J/cm²
+    selection_criteria: Material damage threshold and contamination type
+    optimization_note: Critical for selective cleaning applications
+  powerRange:
+    description: Laser output power range for effective cleaning without thermal damage
+    unit: W
+    selection_criteria: Material thermal conductivity, thickness, and heat dissipation
+    scaling_factors:
+    - Spot size
+    - Processing speed
+    - Material thermal properties
+  processingSpeed:
+    description: Rate of laser beam movement across the surface during cleaning
+    unit: mm/min
+    selection_criteria: Power density, material response time, and quality requirements
+    trade_offs: Speed vs. cleaning thoroughness and surface quality
+  pulseDuration:
+    description: Duration of individual laser pulses for controlled energy delivery
+    unit: ns, ps, fs
+    selection_criteria: Material thermal response time and precision requirements
+    regime_guidance: Femtosecond for precision, nanosecond for general cleaning
+  repetitionRate:
+    description: Frequency of laser pulses for consistent material processing
+    unit: Hz, kHz, MHz
+    selection_criteria: Material cooling time and processing speed requirements
+    thermal_considerations: Must allow adequate cooling between pulses
+  scanningSpeed:
+    description: Linear speed of laser beam scanning across the surface
+    unit: mm/s
+    selection_criteria: Power density requirements and material response
+    pattern_optimization: Affects overlap and uniformity of cleaning
+  spotSize:
+    description: Diameter of focused laser beam on the material surface
+    unit: mm, μm
+    selection_criteria: Feature size, precision requirements, and power density
+    resolution_impact: Smaller spots enable higher precision but slower processing
+  thermalDamageThreshold:
+    description: Maximum energy density before irreversible thermal damage occurs
+    unit: J/cm²
+    safety_margin: Typically operate at 70-80% of this threshold
+    material_dependency: Varies significantly with thermal properties
+  wavelength:
+    description: Laser wavelength for optimal material interaction and cleaning efficiency
+    unit: nm
+    selection_criteria: Material absorption characteristics, cleaning requirements,
+      and safety considerations
+    typical_range_guidance: 355nm (UV) for organics/coatings, 1064nm (NIR) for metals,
+      10640nm (CO2) for plastics
+    optimization_factors:
+    - Material absorption coefficient
+    - Penetration depth requirements
+    - Thermal vs. photochemical ablation
+    category_specific_ranges:
+      metal:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: High absorption at 1064nm, UV for precision, CO2 for aggressive
+          cleaning
+      ceramic:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Ceramic absorption increases with wavelength, avoid UV damage
+      glass:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Glass transparent to UV, moderate NIR absorption, strong CO2 absorption
+      plastic:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: UV excellent for organics, NIR safe, CO2 very effective but thermal
+      composite:
+        range: 355-1080 nm
+        optimal: 1064 nm
+        rationale: Mixed materials need careful wavelength selection, avoid thermal
+          CO2
+      wood:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: Organic material, UV very effective, NIR balanced, CO2 for heavy
+          removal
+      stone:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Natural materials, avoid UV to prevent discoloration, NIR/CO2 effective
+      masonry:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Mixed cement/stone materials, avoid UV, NIR safe, CO2 for paint
+          removal
+      semiconductor:
+        range: 355-1080 nm
+        optimal: 532 nm
+        rationale: High precision required, avoid thermal damage, shorter wavelengths
+          preferred

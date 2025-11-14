@@ -43,8 +43,11 @@ DATA_DIR = Path(__file__).parent
 MATERIALS_FILE = DATA_DIR / "Materials.yaml"
 PROPERTIES_FILE = DATA_DIR / "MaterialProperties.yaml"
 SETTINGS_FILE = DATA_DIR / "MachineSettings.yaml"
-METADATA_FILE = DATA_DIR / "CategoryMetadata.yaml"
-CATEGORIES_FILE = DATA_DIR / "Categories.yaml"
+METADATA_FILE = DATA_DIR / "IndustryApplications.yaml"  # Renamed from CategoryMetadata.yaml
+CATEGORIES_FILE = DATA_DIR / "CategoryTaxonomy.yaml"     # Renamed from Categories.yaml
+PROPERTY_DEFS_FILE = DATA_DIR / "PropertyDefinitions.yaml"  # NEW - Normalized architecture
+PARAMETER_DEFS_FILE = DATA_DIR / "ParameterDefinitions.yaml"  # NEW - Normalized architecture
+REGULATORY_FILE = DATA_DIR / "RegulatoryStandards.yaml"  # NEW - Normalized architecture
 
 
 class MaterialDataError(Exception):

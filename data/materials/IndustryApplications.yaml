@@ -1,9 +1,15 @@
 _metadata:
-  version: 1.0.0
+  version: 2.0.0
   description: Category-level metadata, templates, and regulatory frameworks
   created_date: '2025-11-07T11:57:59.763331'
+  last_updated: '2025-11-13'
   source: Extracted from Categories.yaml
   categories_version: 3.0.0
+  normalized_architecture: true
+  regulatory_standards_ref: RegulatoryStandards.yaml
+
+# NOTE: Detailed regulatory standards moved to RegulatoryStandards.yaml
+# standards_required lists below reference full standards in RegulatoryStandards.yaml
 industryGuidance:
   aerospace:
     typical_materials:

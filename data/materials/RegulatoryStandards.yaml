@@ -1,0 +1,486 @@
+# Regulatory Standards - Single Source of Truth
+# This file contains all regulatory standards, compliance requirements, and certifications
+# Version: 1.0.0
+# Created: 2025-11-13
+# Purpose: Centralize regulatory requirements across industries and applications
+
+_metadata:
+  version: 1.0.0
+  description: Comprehensive regulatory standards and compliance requirements for laser cleaning
+  created_date: '2025-11-13'
+  purpose: Single source of truth for regulatory compliance, standards, and certifications
+  used_by:
+    - CategoryTaxonomy.yaml
+    - IndustryApplications.yaml
+    - Materials.yaml (frontmatter generation)
+  scope: Global regulatory framework for laser cleaning operations
+  total_industries: 8
+  total_standards: 50+
+
+# Universal Regulatory Standards (Apply to ALL laser cleaning operations)
+universal_standards:
+  laser_safety:
+    - id: std_fda_21cfr1040
+      standard: FDA 21 CFR 1040.10
+      title: Laser Product Performance Standards
+      region: United States
+      authority: Food and Drug Administration
+      scope: Laser product manufacturing and safety requirements
+      applicability: All laser cleaning equipment
+      
+    - id: std_ansi_z136_1
+      standard: ANSI Z136.1
+      title: Safe Use of Lasers
+      region: United States
+      authority: American National Standards Institute
+      scope: Safe use of lasers in all applications
+      applicability: All laser operators and facilities
+      key_requirements:
+        - Laser safety officer designation
+        - Hazard evaluation and control
+        - Personal protective equipment
+        - Safety training programs
+      
+    - id: std_iec_60825_1
+      standard: IEC 60825-1
+      title: Safety of Laser Products - Part 1 Equipment Classification and Requirements
+      region: International
+      authority: International Electrotechnical Commission
+      scope: Laser equipment classification and safety requirements
+      applicability: All laser cleaning equipment
+      laser_classes:
+        - Class 1 (Safe under normal use)
+        - Class 2 (Visible lasers - blink reflex protection)
+        - Class 3R (Low risk - visible continuous lasers)
+        - Class 3B (Dangerous to eyes - direct/specular reflection)
+        - Class 4 (Dangerous to eyes and skin - fire hazard)
+      
+    - id: std_iec_60825_4
+      standard: IEC 60825-4
+      title: Safety of Laser Products - Part 4 Laser Guards
+      region: International
+      authority: International Electrotechnical Commission
+      scope: Protective enclosures and guards for laser systems
+      applicability: Industrial laser cleaning systems
+      
+  occupational_safety:
+    - id: std_osha_1926_95
+      standard: OSHA 29 CFR 1926.95
+      title: Personal Protective Equipment
+      region: United States
+      authority: Occupational Safety and Health Administration
+      scope: PPE requirements for laser operations
+      applicability: All laser cleaning workers
+      
+    - id: std_osha_1910_1200
+      standard: OSHA 29 CFR 1910.1200
+      title: Hazard Communication Standard
+      region: United States
+      authority: OSHA
+      scope: Communication of chemical hazards
+      applicability: Operations involving hazardous materials or fumes
+      
+    - id: std_iso_45001
+      standard: ISO 45001
+      title: Occupational Health and Safety Management Systems
+      region: International
+      authority: International Organization for Standardization
+      scope: OH&S management system requirements
+      applicability: All industrial facilities
+
+  environmental_safety:
+    - id: std_epa_40cfr261
+      standard: EPA 40 CFR Part 261
+      title: Hazardous Waste Identification
+      region: United States
+      authority: Environmental Protection Agency
+      scope: Hazardous waste classification and handling
+      applicability: Removal of hazardous coatings or contaminants
+      
+    - id: std_iso_14001
+      standard: ISO 14001
+      title: Environmental Management Systems
+      region: International
+      authority: ISO
+      scope: Environmental management requirements
+      applicability: All industrial operations
+
+# Industry-Specific Standards
+industry_standards:
+  aerospace:
+    quality_management:
+      - id: std_as9100
+        standard: AS9100
+        title: Quality Management Systems - Requirements for Aviation, Space and Defense Organizations
+        revision: Rev D
+        scope: Quality management for aerospace manufacturing
+        key_requirements:
+          - Configuration management
+          - Risk management
+          - Product safety
+          - Counterfeit parts prevention
+        
+      - id: std_nadcap
+        standard: NADCAP
+        title: National Aerospace and Defense Contractors Accreditation Program
+        scope: Special process accreditation
+        processes_covered:
+          - Surface enhancement (laser cleaning)
+          - Non-destructive testing
+          - Heat treating
+          - Chemical processing
+        
+    cleaning_specifications:
+      - id: std_ams_2644
+        standard: AMS 2644
+        title: Laser Cleaning of Metal Parts
+        scope: Aerospace-grade laser cleaning procedures
+        material_coverage: Aluminum, titanium, steel alloys
+        
+      - standard: MIL-STD-171
+        title: Finishing of Metal and Wood Surfaces
+        scope: Surface preparation standards for military applications
+        
+      - standard: ASTM E1444
+        title: Standard Practice for Magnetic Particle Testing
+        scope: Post-cleaning inspection for ferromagnetic materials
+        
+    cleanliness_standards:
+      - standard: ISO 8501-1
+        title: Preparation of Steel Substrates Before Application of Paints and Related Products
+        scope: Visual cleanliness assessment
+        required_level: SA 3 (Very thorough blast cleaning)
+        
+      - standard: ISO 14644-1
+        title: Classification of Air Cleanliness by Particle Concentration
+        scope: Cleanroom classification
+        required_class: Class 5 (< 100 particles/m³ ≥ 0.1 μm)
+
+  automotive:
+    quality_management:
+      - standard: IATF 16949
+        title: Quality Management System Requirements for Automotive Production
+        scope: Automotive quality management
+        based_on: ISO 9001
+        
+      - standard: ISO 9001
+        title: Quality Management Systems - Requirements
+        scope: General quality management
+        
+    surface_preparation:
+      - standard: SAE J2334
+        title: Automotive Coatings Surface Preparation Standard
+        scope: Surface preparation for coating adhesion
+        test_methods:
+          - Cross-hatch adhesion
+          - Pull-off adhesion
+          - Impact resistance
+        
+    technical_cleanliness:
+      - standard: VDA 19
+        title: Inspection of Technical Cleanliness - Particulate Contamination of Functionally Relevant Automotive Components
+        scope: Particle contamination measurement
+        cleanliness_class: CCC (< 50 mg/m² residual contamination)
+        
+      - standard: ISO 16232
+        title: Road Vehicles - Cleanliness of Components and Systems
+        scope: Component cleanliness specification and verification
+
+  medical_devices:
+    quality_management:
+      - standard: ISO 13485
+        title: Medical Devices - Quality Management Systems
+        scope: Quality management for medical device manufacturing
+        regulatory_emphasis: Design controls, risk management, traceability
+        
+      - standard: FDA 21 CFR Part 820
+        title: Quality System Regulation
+        region: United States
+        scope: Medical device quality systems
+        
+    risk_management:
+      - standard: ISO 14971
+        title: Medical Devices - Application of Risk Management
+        scope: Risk management for medical device lifecycle
+        
+    biocompatibility:
+      - standard: ISO 10993
+        title: Biological Evaluation of Medical Devices
+        parts: 18 parts covering different aspects
+        key_tests:
+          - Cytotoxicity
+          - Sensitization
+          - Irritation
+          - Systemic toxicity
+        
+    sterilization:
+      - standard: ISO 11737
+        title: Sterilization of Health Care Products - Microbiological Methods
+        scope: Bioburden determination and sterility testing
+        
+      - standard: EN 556
+        title: Sterilization of Medical Devices
+        scope: Requirements for terminally sterilized devices
+        
+    surface_preparation:
+      - standard: ASTM F86
+        title: Standard Practice for Surface Preparation and Marking of Metallic Surgical Implants
+        scope: Implant surface treatment requirements
+        
+    cleanroom_requirements:
+      - standard: ISO 14644-1
+        title: Classification of Air Cleanliness
+        required_class: Class 7 or better (< 352,000 particles/m³ ≥ 0.5 μm)
+        bioburden_limit: < 10 CFU per device
+        endotoxin_limit: < 0.5 EU/mL
+
+  marine:
+    coating_standards:
+      - standard: ISO 8501-1
+        title: Preparation of Steel Substrates
+        scope: Surface cleanliness before coating
+        
+      - standard: ISO 12944
+        title: Paints and Varnishes - Corrosion Protection of Steel Structures
+        parts: 9 parts covering coating systems
+        
+      - standard: NACE SP0108
+        title: Laser Cleaning of Metal Substrates
+        scope: Marine-grade laser cleaning procedures
+        
+    environmental_compliance:
+      - standard: IMO MARPOL Annex VI
+        title: Prevention of Air Pollution from Ships
+        scope: Emissions control during cleaning operations
+
+  electronics:
+    cleanliness_standards:
+      - standard: IPC-CH-65
+        title: Guidelines for Cleaning of Printed Boards and Assemblies
+        scope: PCB cleaning requirements
+        
+      - standard: IPC-A-610
+        title: Acceptability of Electronic Assemblies
+        scope: Visual inspection criteria post-cleaning
+        
+      - standard: J-STD-001
+        title: Requirements for Soldered Electrical and Electronic Assemblies
+        scope: Flux residue removal requirements
+        
+    contamination_control:
+      - standard: MIL-STD-1246
+        title: Product Cleanliness Levels and Contamination Control Program
+        scope: Military electronics cleanliness
+        
+      - standard: ISO 14644 Series
+        title: Cleanroom Standards
+        required_class: Class 6-7 for general electronics
+
+  semiconductor:
+    contamination_control:
+      - standard: SEMI Standards
+        title: Semiconductor Equipment and Materials International Standards
+        key_standards:
+          - SEMI E49.7 (Wafer cleaning)
+          - SEMI C1 (Specifications for chemicals)
+          - SEMI F21 (Wafer surface contamination)
+        
+      - standard: ISO 14644-1
+        title: Cleanroom Classification
+        required_class: Class 1-5 (< 10-3,520 particles/m³)
+        
+    quality_control:
+      - standard: ASTM F1372
+        title: Standard Specification for Uncoated Monocrystalline Silicon Wafers
+        scope: Wafer surface quality requirements
+
+  heritage_conservation:
+    conservation_standards:
+      - standard: EN 16085
+        title: Conservation of Cultural Property - Methodology for Sampling from Materials of Cultural Property
+        scope: Sample collection and testing
+        
+      - standard: ISO 21571
+        title: Foodstuffs - Methods of Analysis for the Detection of Genetically Modified Organisms
+        note: Referenced for analytical rigor in conservation
+        
+      - standard: AIC Code of Ethics
+        title: American Institute for Conservation Code of Ethics and Guidelines for Practice
+        scope: Professional standards for conservation work
+        
+    laser_cleaning_guidance:
+      - standard: COST G7
+        title: Laser Cleaning for Stone Conservation
+        scope: European research guidelines for laser cleaning of cultural heritage
+        
+      - standard: LACONA Proceedings
+        title: Lasers in the Conservation of Artworks
+        scope: International conference proceedings and best practices
+
+  nuclear:
+    decontamination_standards:
+      - standard: IAEA Safety Standards
+        title: International Atomic Energy Agency Safety Standards
+        series: GSR Part 3 (Radiation Protection)
+        
+      - standard: ISO 7503
+        title: Evaluation of Surface Contamination
+        parts: 5 parts covering alpha, beta, gamma contamination
+        
+      - standard: ANSI N13.12
+        title: Surface and Volume Radioactivity Standards
+        scope: Measurement and reporting of radioactive contamination
+        
+    waste_management:
+      - standard: 10 CFR Part 61
+        title: Licensing Requirements for Land Disposal of Radioactive Waste
+        region: United States
+        authority: Nuclear Regulatory Commission
+
+# Compliance Frameworks by Application
+application_compliance:
+  precision_cleaning:
+    primary_standards:
+      - ISO 14644-1 (Cleanroom classification)
+      - ANSI Z136.1 (Laser safety)
+      - ISO 9001 (Quality management)
+    documentation_required:
+      - Process validation protocols
+      - Particle count reports
+      - Surface analysis certificates
+      
+  surface_preparation:
+    primary_standards:
+      - ISO 8501-1 (Visual cleanliness)
+      - ASTM D7127 (Surface roughness)
+      - ISO 4287 (Surface texture)
+    documentation_required:
+      - Surface profile measurements
+      - Adhesion test results
+      - Coating compatibility certificates
+      
+  restoration:
+    primary_standards:
+      - EN 16085 (Conservation methodology)
+      - AIC Code of Ethics
+      - COST G7 (Laser cleaning guidance)
+    documentation_required:
+      - Conservation treatment reports
+      - Before/after documentation
+      - Material compatibility testing
+      
+  decontamination:
+    primary_standards:
+      - ISO 7503 (Surface contamination evaluation)
+      - IAEA Safety Standards
+      - OSHA 29 CFR 1910.1200 (Hazard communication)
+    documentation_required:
+      - Contamination survey reports
+      - Decontamination protocols
+      - Waste disposal certificates
+      - Personnel dosimetry records
+
+# Testing and Certification Standards
+testing_standards:
+  material_testing:
+    - standard: ASTM E8
+      title: Standard Test Methods for Tension Testing of Metallic Materials
+      
+    - standard: ASTM E384
+      title: Standard Test Method for Microindentation Hardness of Materials
+      
+    - standard: ASTM D3359
+      title: Standard Test Methods for Rating Adhesion by Tape Test
+      
+  surface_analysis:
+    - standard: ISO 4287
+      title: Geometrical Product Specifications - Surface Texture Profile Method
+      
+    - standard: ASTM D7127
+      title: Standard Test Method for Measurement of Surface Roughness
+      
+    - standard: ISO 8501-1
+      title: Visual Assessment of Surface Cleanliness
+      
+  contamination_analysis:
+    - standard: ISO 16232
+      title: Particulate Contamination Analysis
+      
+    - standard: ASTM E1508
+      title: Standard Guide for Quantitative Analysis by Energy-Dispersive Spectroscopy
+      
+    - standard: ISO 14644-1
+      title: Particle Count Classification
+
+# Regional Regulatory Authorities
+regulatory_authorities:
+  united_states:
+    - authority: FDA (Food and Drug Administration)
+      scope: Medical devices, laser products
+      
+    - authority: OSHA (Occupational Safety and Health Administration)
+      scope: Workplace safety
+      
+    - authority: EPA (Environmental Protection Agency)
+      scope: Environmental compliance, waste management
+      
+    - authority: NRC (Nuclear Regulatory Commission)
+      scope: Nuclear material handling
+      
+  european_union:
+    - authority: CE Marking
+      directives:
+        - Medical Device Regulation (MDR 2017/745)
+        - Machinery Directive (2006/42/EC)
+        - Electromagnetic Compatibility (EMC) Directive
+      
+    - authority: REACH
+      title: Registration, Evaluation, Authorization and Restriction of Chemicals
+      scope: Chemical substance management
+      
+  international:
+    - authority: ISO (International Organization for Standardization)
+      scope: International standards development
+      
+    - authority: IEC (International Electrotechnical Commission)
+      scope: Electrical and electronic standards
+      
+    - authority: IAEA (International Atomic Energy Agency)
+      scope: Nuclear safety standards
+
+# Certification Requirements
+certifications:
+  operator_certifications:
+    - certification: Laser Safety Officer (LSO)
+      required_by: ANSI Z136.1
+      training_topics:
+        - Laser hazard evaluation
+        - Control measures
+        - Safety protocols
+        - Emergency procedures
+      
+    - certification: Certified Laser Operator
+      providers: Various industry associations
+      scope: Safe laser system operation
+      
+  facility_certifications:
+    - certification: ISO 9001
+      title: Quality Management System Certification
+      applicable_to: All manufacturing facilities
+      
+    - certification: ISO 14001
+      title: Environmental Management System Certification
+      applicable_to: All industrial operations
+      
+    - certification: NADCAP
+      title: Special Process Accreditation
+      applicable_to: Aerospace suppliers
+      
+  equipment_certifications:
+    - certification: IEC 60825 Classification
+      scope: Laser equipment safety classification
+      required_marking: Laser class label, warning signs
+      
+    - certification: CE Marking
+      region: European Union
+      scope: Equipment safety and conformity

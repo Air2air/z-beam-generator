@@ -3,8 +3,18 @@ _metadata:
   source_file: Materials.yaml
   total_materials: 132
   schema_version: 1.0.0
-  description: Material-specific regulatory standards extracted from Materials.yaml
+  description: Material-specific regulatory standards extracted from Materials.yaml for frontmatter generation
   total_entries: 132
+  parent_framework: ../RegulatoryStandards.yaml
+  purpose: Display data for website (logos, links, descriptions) - references universal standards by standard ID
+  note: "For detailed standard requirements, see parent RegulatoryStandards.yaml. This file maps materials to display-ready standard info."
+  
+# Standard ID Mapping (references to ../RegulatoryStandards.yaml)
+# FDA 21 CFR 1040.10 → std_fda_21cfr1040
+# ANSI Z136.1 → std_ansi_z136_1
+# IEC 60825 → std_iec_60825_1
+# OSHA 29 CFR 1926.95 → std_osha_1926_95
+
 regulatory_standards:
   Alabaster:
   - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards

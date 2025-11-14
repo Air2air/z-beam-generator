@@ -1,0 +1,343 @@
+# Parameter Definitions - Single Source of Truth
+# This file defines all laser machine settings/parameters used across the system
+# Version: 1.0.0
+# Created: 2025-11-13
+# Purpose: Eliminate duplication by centralizing parameter schemas, ranges, and optimization guidance
+
+_metadata:
+  version: 1.0.0
+  description: Universal parameter definitions for laser machine settings
+  created_date: '2025-11-13'
+  purpose: Single source of truth for parameter schemas, units, ranges, and selection criteria
+  used_by:
+    - MachineSettings.yaml
+    - SettingResearch.yaml
+  total_parameters: 11
+
+# Universal Parameter Ranges (apply across all materials unless overridden)
+parameter_ranges:
+  energyDensity:
+    description: Energy density (fluence) for laser cleaning
+    unit: J/cm²
+    min: 0.1
+    max: 20.0
+    typical_operating_range: [0.5, 10.0]
+    selection_criteria: Based on material ablation threshold and damage threshold
+
+  fluenceThreshold:
+    description: Laser fluence range for material ablation
+    unit: J/cm²
+    min: 0.3
+    max: 4.5
+    typical_operating_range: [0.5, 3.0]
+    selection_criteria: Material damage threshold and contamination type
+
+  overlapRatio:
+    description: Overlap ratio between successive laser passes
+    unit: '%'
+    min: 10
+    max: 90
+    typical_operating_range: [30, 70]
+    selection_criteria: Surface quality requirements and processing speed
+    optimization_note: Higher overlap improves uniformity but reduces throughput
+
+  passCount:
+    description: Number of cleaning passes over the surface
+    unit: passes
+    min: 1
+    max: 10
+    typical_operating_range: [1, 4]
+    selection_criteria: Contamination thickness and required cleanliness level
+    optimization_note: Multiple passes with lower energy safer than single high-energy pass
+
+  powerRange:
+    description: Laser power range for industrial cleaning applications
+    unit: W
+    min: 1.0
+    max: 120
+    typical_operating_range: [20, 100]
+    selection_criteria: Material thermal conductivity, thickness, and heat dissipation
+    scaling_factors:
+      - Spot size
+      - Processing speed
+      - Material thermal properties
+
+  pulseDuration:
+    description: Pulse duration range for optimal material processing
+    unit: ns
+    min: 0.1
+    max: 1000
+    typical_operating_range: [10, 200]
+    selection_criteria: Material thermal response time and precision requirements
+    regime_guidance: Femtosecond for precision, nanosecond for general cleaning
+    thermal_considerations: Shorter pulses reduce heat-affected zone
+
+  pulseWidth:
+    description: Pulse width range for laser processing (synonym for pulseDuration)
+    unit: ns
+    min: 0.1
+    max: 1000
+    typical_operating_range: [10, 200]
+    note: This is an alias for pulseDuration - same parameter with different name
+
+  repetitionRate:
+    description: Pulse repetition frequency range
+    unit: kHz
+    min: 1
+    max: 200
+    typical_operating_range: [10, 100]
+    selection_criteria: Material cooling time and processing speed requirements
+    thermal_considerations: Must allow adequate cooling between pulses
+    formula: Optimal rate ≈ 1 / (pulse duration + required cooling time)
+
+  scanSpeed:
+    description: Laser scanning speed over the surface
+    unit: mm/s
+    min: 10
+    max: 5000
+    typical_operating_range: [50, 500]
+    selection_criteria: Power density requirements and material response
+    pattern_optimization: Affects overlap and uniformity of cleaning
+    trade_offs: Speed vs. cleaning thoroughness and surface quality
+
+  spotSize:
+    description: Focused beam spot diameter range
+    unit: μm
+    min: 0.1
+    max: 500
+    typical_operating_range: [50, 200]
+    selection_criteria: Feature size, precision requirements, and power density
+    resolution_impact: Smaller spots enable higher precision but slower processing
+    calculation: Fluence = 4 * Power / (π * spotSize²)
+
+  wavelength:
+    description: Laser wavelength range for industrial cleaning applications
+    unit: nm
+    min: 355
+    max: 10640
+    common_wavelengths:
+      - 355  # UV (Nd:YAG 3rd harmonic)
+      - 532  # Green (Nd:YAG 2nd harmonic)
+      - 1064 # NIR (Nd:YAG fundamental)
+      - 1080 # NIR (Fiber laser)
+      - 10640 # Far-IR (CO2 laser)
+    selection_criteria: Material absorption characteristics, cleaning requirements, and safety considerations
+    typical_range_guidance: 355nm (UV) for organics/coatings, 1064nm (NIR) for metals, 10640nm (CO2) for plastics
+    optimization_factors:
+      - Material absorption coefficient
+      - Penetration depth requirements
+      - Thermal vs. photochemical ablation
+      - Safety and eye protection requirements
+
+# Detailed Parameter Descriptions and Selection Guidance
+parameter_definitions:
+  ablationThreshold:
+    description: Minimum energy density required to initiate material removal from the surface
+    unit: J/cm²
+    parameter_type: threshold
+    selection_criteria: Based on material thermal properties and bond strength
+    typical_range_guidance: Lower for organic materials, higher for metals and ceramics
+    safety_considerations: Operating fluence should be above this threshold for effective cleaning
+    material_dependency: High - varies by orders of magnitude between materials
+
+  fluenceThreshold:
+    description: Energy density threshold for effective contaminant removal without substrate damage
+    unit: J/cm²
+    parameter_type: threshold
+    selection_criteria: Material damage threshold and contamination type
+    optimization_note: Critical for selective cleaning applications
+    operating_window: Between ablation threshold and damage threshold
+    typical_range: 0.3-4.5 J/cm²
+
+  powerRange:
+    description: Laser output power range for effective cleaning without thermal damage
+    unit: W
+    parameter_type: input
+    selection_criteria: Material thermal conductivity, thickness, and heat dissipation
+    scaling_factors:
+      - Spot size (larger spots need more power)
+      - Processing speed (faster scanning needs more power)
+      - Material thermal properties (high conductivity needs more power)
+    calculation: Average power = fluence × area × repetition rate
+
+  processingSpeed:
+    description: Rate of laser beam movement across the surface during cleaning
+    unit: mm/min
+    parameter_type: output
+    selection_criteria: Power density, material response time, and quality requirements
+    trade_offs: Speed vs. cleaning thoroughness and surface quality
+    optimization: Balance between throughput and quality
+
+  pulseDuration:
+    description: Duration of individual laser pulses for controlled energy delivery
+    unit: ns, ps, fs
+    parameter_type: temporal
+    selection_criteria: Material thermal response time and precision requirements
+    regime_guidance: Femtosecond for precision, nanosecond for general cleaning
+    thermal_regimes:
+      femtosecond: < 1 ps (non-thermal ablation)
+      picosecond: 1-100 ps (minimal thermal effects)
+      nanosecond: 1-1000 ns (thermal ablation)
+    typical_industrial: 10-200 ns
+
+  repetitionRate:
+    description: Frequency of laser pulses for consistent material processing
+    unit: Hz, kHz, MHz
+    parameter_type: temporal
+    selection_criteria: Material cooling time and processing speed requirements
+    thermal_considerations: Must allow adequate cooling between pulses
+    formula: Optimal rate ≈ 1 / (pulse duration + required cooling time)
+    typical_range: 1-200 kHz for industrial cleaning
+
+  scanningSpeed:
+    description: Linear speed of laser beam scanning across the surface
+    unit: mm/s
+    parameter_type: kinematic
+    selection_criteria: Power density requirements and material response
+    pattern_optimization: Affects overlap and uniformity of cleaning
+    relationship: Scan speed = repetition rate × (spot size / overlap ratio)
+
+  spotSize:
+    description: Diameter of focused laser beam on the material surface
+    unit: mm, μm
+    parameter_type: geometric
+    selection_criteria: Feature size, precision requirements, and power density
+    resolution_impact: Smaller spots enable higher precision but slower processing
+    calculation: Fluence = 4 × Power / (π × spotSize²)
+    typical_range: 50-200 μm for precision cleaning
+
+  thermalDamageThreshold:
+    description: Maximum energy density before irreversible thermal damage occurs
+    unit: J/cm²
+    parameter_type: threshold
+    safety_margin: Typically operate at 70-80% of this threshold
+    material_dependency: Varies significantly with thermal properties
+    relationship: Always higher than ablation threshold (defines safe operating window)
+
+  wavelength:
+    description: Laser wavelength for optimal material interaction and cleaning efficiency
+    unit: nm
+    parameter_type: spectral
+    selection_criteria: Material absorption characteristics, cleaning requirements, and safety considerations
+    category_specific_ranges:
+      metal:
+        range: [355, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: High absorption at 1064nm, UV for precision, CO2 for aggressive cleaning
+        common_wavelengths: [355, 532, 1064, 10640]
+      ceramic:
+        range: [532, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: Ceramic absorption increases with wavelength, avoid UV damage
+        common_wavelengths: [532, 1064, 10640]
+      glass:
+        range: [532, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: Glass transparent to UV, moderate NIR absorption, strong CO2 absorption
+        common_wavelengths: [532, 1064, 10640]
+      plastic:
+        range: [355, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: UV excellent for organics, NIR safe, CO2 very effective but thermal
+        common_wavelengths: [355, 1064, 10640]
+      composite:
+        range: [355, 1080]
+        optimal: 1064
+        unit: nm
+        rationale: Mixed materials need careful wavelength selection, avoid thermal CO2
+        common_wavelengths: [355, 532, 1064]
+      wood:
+        range: [355, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: Organic material, UV very effective, NIR balanced, CO2 for heavy removal
+        common_wavelengths: [355, 1064, 10640]
+      stone:
+        range: [532, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: Natural absorption characteristics, NIR balanced, CO2 for aggressive cleaning
+        common_wavelengths: [532, 1064, 10640]
+      masonry:
+        range: [532, 10640]
+        optimal: 1064
+        unit: nm
+        rationale: Porous structure, NIR penetration, CO2 for surface cleaning
+        common_wavelengths: [532, 1064, 10640]
+      semiconductor:
+        range: [355, 1080]
+        optimal: 532
+        unit: nm
+        rationale: Bandgap-dependent absorption, shorter wavelengths for precision
+        common_wavelengths: [355, 532, 1064]
+      rare-earth:
+        range: [355, 1080]
+        optimal: 1064
+        unit: nm
+        rationale: Complex optical properties, NIR generally safe
+        common_wavelengths: [532, 1064]
+
+# Parameter Relationships and Dependencies
+parameter_relationships:
+  fluence:
+    formula: "Fluence (J/cm²) = 4 × Power (W) / (π × spotSize² (cm²) × repetitionRate (Hz))"
+    dependencies: [powerRange, spotSize, repetitionRate]
+    description: Energy density per pulse
+
+  processing_area_rate:
+    formula: "Area Rate (cm²/s) = scanSpeed (cm/s) × spotSize (cm) × (1 - overlapRatio)"
+    dependencies: [scanSpeed, spotSize, overlapRatio]
+    description: Surface area processed per unit time
+
+  pulse_overlap:
+    formula: "Overlap (%) = 100 × (1 - scanSpeed / (spotSize × repetitionRate))"
+    dependencies: [scanSpeed, spotSize, repetitionRate]
+    description: Degree of pulse overlap during scanning
+
+  thermal_accumulation:
+    formula: "Accumulation Factor = repetitionRate × pulseWidth / thermalDiffusionTime"
+    dependencies: [repetitionRate, pulseDuration]
+    description: Degree of heat buildup between pulses
+
+# Safety Considerations
+safety_parameters:
+  maximum_pulse_energy:
+    formula: "Max Energy (J) = powerRange (W) / repetitionRate (Hz)"
+    safety_limit: Material damage threshold
+    typical_limit: "< 10 mJ per pulse for most materials"
+
+  nominal_ocular_hazard_distance:
+    formula: "NOHD ∝ √(powerRange / wavelength)"
+    safety_standard: ANSI Z136.1
+    note: Varies by wavelength - UV and IR more hazardous than visible
+
+  average_power_density:
+    formula: "Power Density (W/cm²) = powerRange / (π × spotSize² / 4)"
+    safety_threshold: Material thermal damage limit
+    typical_safe_range: "10³ - 10⁶ W/cm² for most cleaning applications"
+
+# Optimization Guidelines
+optimization_strategies:
+  maximize_throughput:
+    priority_parameters: [scanSpeed, spotSize, repetitionRate]
+    constraints: [fluenceThreshold, thermalDamageThreshold]
+    approach: Maximize scan speed while maintaining effective fluence
+
+  maximize_precision:
+    priority_parameters: [spotSize, pulseDuration, overlapRatio]
+    constraints: [ablationThreshold]
+    approach: Use smallest spot size with shortest pulse duration
+
+  minimize_thermal_damage:
+    priority_parameters: [pulseDuration, repetitionRate, scanSpeed]
+    constraints: [ablationThreshold, thermalDamageThreshold]
+    approach: Use short pulses with adequate cooling time between pulses
+
+  optimize_cost:
+    priority_parameters: [powerRange, wavelength]
+    constraints: [fluenceThreshold, material_absorption]
+    approach: Select most affordable laser system meeting cleaning requirements

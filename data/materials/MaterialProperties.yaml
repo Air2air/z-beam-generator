@@ -1,13 +1,20 @@
 _metadata:
-  version: 2.0.0
+  version: 3.0.0
   description: Material properties with category metadata and research tracking
   extracted_date: '2025-11-07T11:22:52.152170'
   total_materials: 132
   structure: Properties organized by category taxonomy with ranges and definitions
   research_confidence_threshold: 75
-  last_updated: '2025-11-07T11:57:59.763172'
+  last_updated: '2025-11-13'
   reconciled_from_categories: true
   categories_version: 3.0.0
+  normalized_architecture: true
+  property_definitions_ref: PropertyDefinitions.yaml
+
+# NOTE: propertyDefinitions section kept here for backward compatibility
+# Canonical definitions now in PropertyDefinitions.yaml
+# Future: Consider removing this section and referencing PropertyDefinitions.yaml only
+
 propertyDefinitions:
   bandgap:
     description: Electronic energy gap between valence and conduction bands
