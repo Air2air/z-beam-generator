@@ -68,9 +68,9 @@ class SentenceCalculator:
         # Calculate base sentence count from word count and average
         base_sentences = word_count / avg_words
         
-        # Add MORE dramatic variation range (±20-30% for structural variety)
-        # This creates 2-4 sentence ranges instead of ±1
-        variation_pct = 0.25  # ±25% variation
+        # Add EXTREME variation range (±50% for maximum structural variety)
+        # This creates dramatic sentence count ranges (e.g., 30w → 1-3 sentences)
+        variation_pct = 0.50  # ±50% variation (increased from 25%)
         variation_range = max(1, int(base_sentences * variation_pct))
         
         min_sentences = max(1, math.floor(base_sentences - variation_range))
