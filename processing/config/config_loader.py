@@ -127,8 +127,8 @@ class ProcessingConfig:
         """
         detection = self.config.get('detection', {})
         if strict_mode:
-            return detection.get('strict_mode_threshold', 30)
-        return detection.get('ai_threshold', 40)
+            return detection.get('strict_mode_threshold', 25)
+        return detection.get('ai_threshold', 30)  # Lowered from 40 to 30 based on phrasely.ai validation
     
     def get_confidence_thresholds(self) -> Dict[str, float]:
         """Get AI confidence thresholds."""

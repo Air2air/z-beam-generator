@@ -20,7 +20,7 @@ grammar|overuse_passive_voice|\bis\s+(achieved|maintained|preserved|restored|rem
 # ============================================================================
 # UNNATURAL PHRASING PATTERNS (Increased severities, added more patterns)
 # ============================================================================
-phrasing|abstract_verbs|(achieves?|performs?|executes?|conducts?|facilitates?|enables?|harnesses?|leverages?|demonstrates?|exhibits?|provides?|gains?|boosts?)\s+(enhanced?|optimal|superior|excellent|effective|efficient|advanced|innovative|robust|comprehensive|significant|substantial|considerable|notable|exceptional)|critical|facilitates enhanced|Abstract verb + generic adjective - very AI-like
+phrasing|abstract_verbs|(achieves?|performs?|executes?|conducts?|facilitates?|enables?|harnesses?|leverages?|demonstrates?|exhibits?|provides?|gains?|boosts?|offers?|delivers?)\s+(enhanced?|optimal|superior|excellent|effective|efficient|advanced|innovative|robust|comprehensive|significant|substantial|considerable|notable|exceptional|unmatched?|unparalleled|unprecedented)|critical|facilitates enhanced|Abstract verb + generic adjective - very AI-like
 phrasing|abstract_pairing|(achieves|performs|executes|conducts|facilitates|enables|harnesses)\s+(removal|restoration|preservation|cleaning|optimization|enhancement|efficiency|performance|integrity|capability)|critical|harnesses efficiency|Formal; added "harnesses" from LLM news text contrasts
 phrasing|maintaining_while|\b(while|whilst)\s+(maintaining|preserving|ensuring|retaining)\b|severe|while maintaining|Classic AI hedge pattern
 phrasing|across_diverse|\bacross\s+(diverse|various|multiple|numerous)\b|severe|across diverse|Vague AI generalization
@@ -30,7 +30,7 @@ phrasing|demonstrative_overuse|\b(this|that)\s+(process|method|approach|techniqu
 phrasing|gerund_stacking|\b\w+ing\s+\w+ing\b(?!process|method|system)|severe|analyzing processing|Downgraded; exclude tech compounds
 phrasing|llm_phrases|\b(delve into|pivotal role|realm of|testament to|in the ever-evolving|as we navigate|landscape of|unparalleled potential|cutting-edge|state-of-the-art)\b|critical|unparalleled potential|Added from 2025 CACM survey on stylistic features
 phrasing|paired_with|\bpaired\s+with\b|severe|paired with|Common AI linking phrase - too formal
-phrasing|relies_on|\brelies\s+on\b|severe|relies on|Overused AI connector - abstract relationship
+phrasing|relies_on|\b(rely|relies)\s+on\b|critical|rely on / relies on|Critical AI pattern - forces abstract relationships (appears in 50%+ of failed outputs)
 phrasing|thrives_on|\bthrives\s+on\b|severe|thrives on|Anthropomorphic AI pattern
 phrasing|swear_by|\bswear\s+by\b|moderate|swear by|Forced colloquialism attempts
 phrasing|gerund_opening|^(Galvanizing|Processing|Manufacturing|Fabricating|Utilizing|Leveraging)\s+(with|of|in)|critical|Galvanizing with zinc|Gerund phrase openings - very AI-like

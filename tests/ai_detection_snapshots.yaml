@@ -331,3 +331,71 @@ snapshot_2025_11_15_with_banned_patterns:
     pass_rate: null
   verdict: TBD
   notes: Fill in after phrasely.ai testing
+
+# ==============================================================================
+# SNAPSHOT: threshold_30
+# ==============================================================================
+snapshot_2025_11_15_threshold_30:
+  timestamp: '2025-11-15T00:49:22.964626'
+  commit_hash: 687b4d6b
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.5
+  prompt_version: primary_advantage_with_banned_patterns
+  test_results:
+  - material: Tungsten
+    word_count: 32
+    sentence_count: 1
+    output: High-temperature filaments rely on tungsten for unmatched thermal stability
+      that outlasts alternatives by orders of magnitude in extreme environments like
+      welding electrodes and rocket nozzles, enduring up to 3695 K without deformation
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Vanadium
+    word_count: 19
+    sentence_count: 1
+    output: Construction steels with vanadium additions withstand heavier loads and
+      last longer than standard carbon variants in bridges and pipelines
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Beryllium
+    word_count: 16
+    sentence_count: 1
+    output: In precision optics, beryllium curbs thermal distortion far better than
+      aluminum while slashing overall component weight
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Zirconium
+    word_count: 20
+    sentence_count: 1
+    output: Nuclear fuel cladding relies on zirconium's superior corrosion resistance
+      to extend operational life in high-radiation environments compared to steel
+      alloys
+    pipeline_ai_score: 0.122
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  summary:
+    total_tested: 4
+    passed: null
+    failed: null
+    pass_rate: null
+  verdict: TBD
+  notes: Fill in after phrasely.ai testing
