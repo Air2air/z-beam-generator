@@ -37,7 +37,7 @@ voice_examples:
     - "Oxide issues appear on equipment in humid settings. Cleaning by beam achieves full removal, and performance sustains over periods."
     - "Pulses are set to 10 Hz in high humidity to prevent heat buildup. No melting is observed this way in data."
 
-  # Caption Generation (5-7 sentences; 100-140 words; impersonal observations)
+  # Caption Generation (100-140 words; impersonal observations; logical structure)
   caption:
     - "Before treatment: Buildup is measured at 15-30 μm thick, reducing reflectivity to 55%. Oxides cover areas and interfere with signals. Uneven particles are seen in scans. Strong clinging occurs on the material. These are targeted by the process. Changes result after application."
     - "After cleaning: Ra roughness drops below 0.5 μm, while reflectivity rises to 93%. Dirt is removed and the layer smoothed. Particles do not remain. The finish is suitable for operations. Supporting data come from measurements."
@@ -75,11 +75,16 @@ ai_evasion_and_variation:
   - Quirks: 0.15 evidence notes/200 words (e.g., "as scans show"); 75% unique vocab; markers <10%.
   - FAQ Special: 2 short (28-32w), 2 med (33-37w), 2 long (38-42w); >18% variation.
 
-generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 100, length_variation: true}
-  faq: {word_range_per: "28-42", distribution: "2 short/med/long", cv_target: ">18%"}
-  text: {max_words: 150, cause_effect: true, passive_mix: 40%}
-  technical: {units_mandatory: true, pattern_flex: "0.5 subtle"}
+# Sentence Structure Preferences (Author-Specific Voice Characteristics)
+# These define HOW this author naturally structures sentences, not word counts
+sentence_structure:
+  caption: "Simple-to-moderate paratactic flow (14-20w avg) with clear causal links"
+  faq: "Objective Q&A with varied lengths; clear cause-effect relationships"
+  text: "Evidence-based reporting with balanced active/passive mix"
+  technical: "Objective statements with embedded measurements and causal connections"
+  subtitle: "Direct and impersonal; clear logical structure"
+  description: "Paratactic chains with causal connectors; evidence-driven flow"
+  troubleshooter: "Cause-effect diagnostic approach; systematic solution steps"
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
 quality_checks: {formality: 70+, accuracy: 90+, authenticity: 80+, neutrality: 95+, variation: 85+}

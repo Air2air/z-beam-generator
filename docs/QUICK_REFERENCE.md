@@ -135,6 +135,28 @@ safety_data = loader.get_safety_regulatory()
 **→ Benefits**: Load 7-15KB instead of 121KB (~90% improvement), automatic fallback to Categories.yaml
 **→ Documentation**: `docs/data/CATEGORY_DATA_MIGRATION_GUIDE.md`, `docs/data/CATEGORY_REFACTORING_COMPLETE.md`
 
+### "How do I detect AI-generated content?" / "What AI detection system do we use?"
+**→ System**: `processing/detection/ai_detection.py` - Local pattern-based detection (NO external APIs)
+**→ Detection Methods**:
+  - Grammar errors (subject-verb agreement, tense errors)
+  - Repetitive patterns (word/phrase repetition, structural repetition)
+  - Unnatural phrasing (awkward constructions, non-idiomatic expressions)
+  - Statistical anomalies (uniform sentence length, predictable rhythms)
+  - Linguistic dimensions (dependency structure, lexical diversity, formality)
+**→ Usage**:
+```python
+from processing.detection.ai_detection import AIDetector
+detector = AIDetector(strict_mode=False)
+result = detector.detect_ai_patterns(text)
+if result['is_ai_like']:
+    print(f"AI score: {result['ai_score']}/100")
+    print(f"Issues: {result['issues']}")
+```
+**→ Configuration**: `prompts/ai_detection_patterns.txt` - Pattern definitions, weights, thresholds
+**→ Integration**: Works with `processing/detection/ensemble.py` for multi-method validation
+**→ Note**: We do NOT use Winston API or other external detection services
+**→ Documentation**: See module docstring in `processing/detection/ai_detection.py`
+
 ### "How do I check if data is complete before generating?" / "How can I see data gaps?"
 **→ Commands**: 
 - `python3 run.py --data-completeness-report` (full status report)
@@ -276,6 +298,19 @@ threshold = PropertyAccessor.get_ablation_threshold(material, 'femtosecond')
 **→ Examples**: `python3 examples/property_access_examples.py` (9 complete examples)
 **→ Tests**: `python3 -m pytest tests/test_property_helpers.py -v` (23 tests)
 **→ Documentation**: [Data System Complete Guide](DATA_SYSTEM_COMPLETE_GUIDE.md)
+
+### "Need distinct author voices" / "How to ensure authors sound different?"
+**→ Immediate Response**: ✅ **SOLVED November 14, 2025** - Author-specific config offsets implemented
+**→ Architecture**: Base sliders (global) + Author offsets (personality) = Distinct styles
+**→ Quick View**: `python3 processing/author_comparison_matrix.py`
+**→ Comparison**: `python3 -c "from processing.author_config_loader import compare_author_configs; print(compare_author_configs(1, 3, 'subtitle'))"`
+**→ Results**: 
+  - Yi-Chun (Taiwan): Precise, high technical (65), low imperfection (35), formal
+  - Alessandro (Italy): Sophisticated, high variation (70), balanced (55)
+  - Ikmanda (Indonesia): Accessible, low technical (35), high imperfection (70)
+  - Todd (USA): Conversational, high rhythm variation (70), balanced engagement
+**→ Documentation**: [Author Profiles System](../processing/AUTHOR_PROFILES_SYSTEM.md)
+**→ Integration**: `get_author_config(author_id)` automatically applies offsets
 **→ Features**: Handles all 4 property patterns (simple, nested, pulse-specific, wavelength-specific)
 
 ### "Property format questions" / "What property data formats are supported?"

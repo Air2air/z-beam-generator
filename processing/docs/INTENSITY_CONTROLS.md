@@ -1,14 +1,16 @@
-# Centralized Intensity Controls
+# 10-Slider Intensity Control System
 
 **Location:** `/processing/config.yaml`  
-**Manager:** `/processing/intensity_manager.py`  
-**CLI Tool:** `/processing/intensity_cli.py`
+**CLI Tool:** `python3 -m processing.intensity.intensity_cli`  
+**Architecture:** Slider-driven with dynamic calculation
 
 ---
 
 ## Overview
 
-All voice and technical intensity controls are now centralized in a single configuration file at the top level of the `/processing` directory. This eliminates the need to edit individual voice profile files and provides a simple interface for adjusting content generation characteristics.
+All voice and technical intensity controls are centralized in **10 user-facing sliders** (0-100 scale) in `processing/config.yaml`. These sliders automatically calculate all downstream technical parameters - no hardcoded values, no separate profile system.
+
+**Key Concept:** Change a slider → 30+ technical parameters recalculate automatically.
 
 ---
 
@@ -16,87 +18,60 @@ All voice and technical intensity controls are now centralized in a single confi
 
 ### View Current Settings
 ```bash
-python3 processing/intensity_cli.py status
+python3 -m processing.intensity.intensity_cli status
 ```
 
-### Change Voice Intensity
+### Change Individual Sliders
 ```bash
-# Light: Minimal regional voice patterns
-python3 processing/intensity_cli.py set voice light
+# Increase human realism markers
+python3 -m processing.intensity.intensity_cli set rhythm 70
+python3 -m processing.intensity.intensity_cli set imperfection 60
 
-# Moderate: Balanced, noticeable but clear (DEFAULT)
-python3 processing/intensity_cli.py set voice moderate
+# Adjust author voice
+python3 -m processing.intensity.intensity_cli set voice 65
 
-# Strong: Pronounced, authentic regional characteristics
-python3 processing/intensity_cli.py set voice strong
+# Reduce AI patterns
+python3 -m processing.intensity.intensity_cli set ai 75
 ```
 
-### Change Technical Intensity
+### Test Settings
 ```bash
-# Accessible: Minimal jargon, focus on clarity
-python3 processing/intensity_cli.py set technical accessible
-
-# Balanced: Technical precision + readability (DEFAULT)
-python3 processing/intensity_cli.py set technical balanced
-
-# Expert: Dense technical content for specialists
-python3 processing/intensity_cli.py set technical expert
-```
-
-### Apply Preset Combinations
-```bash
-# Conversational: light voice + accessible tech
-python3 processing/intensity_cli.py preset conversational
-
-# Professional: moderate voice + balanced tech (DEFAULT)
-python3 processing/intensity_cli.py preset professional
-
-# Academic: strong voice + expert tech
-python3 processing/intensity_cli.py preset academic
-
-# Authentic: strong voice + balanced tech
-python3 processing/intensity_cli.py preset authentic
-
-# Clinical: light voice + expert tech
-python3 processing/intensity_cli.py preset clinical
+python3 -m processing.intensity.intensity_cli test
 ```
 
 ---
 
 ## Configuration Structure
 
-### Voice Intensity Profiles
+### The 10 Sliders (0-100 scale)
 
-Located in `config.yaml` under `voice_intensity`:
+Located in `config.yaml` under **USER CONFIGS** section:
 
-| Profile | Trait Frequency | Quirk Rate | Formality | Vocabulary |
-|---------|----------------|------------|-----------|------------|
-| **light** | 0.1-0.2 per ¶ | 0.05 per 200w | 80% | 70% unique |
-| **moderate** | 0.2-0.4 per ¶ | 0.15 per 200w | 85% | 80% unique |
-| **strong** | 0.5-0.7 per ¶ | 0.25 per 200w | 90% | 85% unique |
+#### **Content Characteristics (1-4)**
 
-**Controls:**
-- `trait_frequency_per_paragraph`: How often regional language patterns appear
-- `quirk_rate_per_200_words`: Frequency of cultural/linguistic quirks
-- `formality_percentage`: How formal/objective the tone is
-- `unique_vocabulary_target`: Percentage of unique vocabulary (vs. repetition)
+| # | Slider | What It Controls | Default |
+|---|--------|------------------|---------|
+| **1** | `author_voice_intensity` | Regional voice patterns, cultural markers, linguistic traits | 50 |
+| **2** | `personality_intensity` | Personal opinions, evaluative language, subjective assessments | 40 |
+| **3** | `engagement_style` | Reader awareness, direct address, conversational tone | 35 |
+| **4** | `technical_language_intensity` | Jargon density, measurements per sentence, technical depth | 50 |
 
-### Technical Intensity Profiles
+#### **Human Realism Markers (5-10)**
 
-Located in `config.yaml` under `technical_intensity`:
+| # | Slider | What It Controls | Default |
+|---|--------|------------------|---------|
+| **5** | `context_specificity` | Detail level, concrete scenarios, practical examples | 55 |
+| **6** | `sentence_rhythm_variation` | Sentence structure variety, length diversity (KEY) | 80 |
+| **7** | `imperfection_tolerance` | Human-like quirks, minor flaws, authentic imperfections | 80 |
+| **8** | `structural_predictability` | Template adherence vs. organic flow, pattern-breaking | 45 |
+| **9** | `ai_avoidance_intensity` | Pattern variation intensity, detection avoidance | 50 |
+| **10** | `length_variation_range` | Length flexibility (±% from target), word count tolerance | 50 |
 
-| Profile | Units/Sentence | Jargon | Complexity | Active Voice | Data Density |
-|---------|---------------|--------|------------|--------------|--------------|
-| **accessible** | 0.3 | minimal | simple (12-16w) | 80% | low |
-| **balanced** | 0.6 | moderate | moderate (14-20w) | 65% | medium |
-| **expert** | 1.0 | full | complex (18-24w) | 50% | high |
+### Scale Interpretation
 
-**Controls:**
-- `units_per_sentence`: How many measurements/units per sentence
-- `jargon_level`: Technical terminology density
-- `sentence_complexity`: Average sentence length and structure
-- `active_voice_percentage`: Ratio of active to passive voice
-- `data_density`: How many numbers/metrics per paragraph
+- **0-30:** Low intensity (minimal effect, more AI-like/polished)
+- **31-60:** Moderate intensity (balanced, default ~50)
+- **61-100:** High intensity (pronounced effect, maximum authenticity)
 
 ---
 
@@ -105,56 +80,50 @@ Located in `config.yaml` under `technical_intensity`:
 ### In Python Code
 
 ```python
-from processing.intensity_manager import IntensityManager
+from processing.config.dynamic_config import DynamicConfig
+from processing.config.author_config_loader import get_author_config
 
-# Get intensity manager
-manager = IntensityManager()
+# Get base configuration
+config = DynamicConfig()
 
-# Check current settings
-print(manager.get_summary())
+# Calculate technical parameters from sliders
+temperature = config.calculate_temperature('subtitle')  # 0.7-1.0
+max_tokens = config.calculate_max_tokens('subtitle')    # 150-250
+retry_behavior = config.calculate_retry_behavior()     # {'max_attempts': 3-7, ...}
+threshold = config.calculate_detection_threshold()     # 0.25-0.40
 
-# Get specific settings
-voice_settings = manager.get_voice_intensity_settings()
-tech_settings = manager.get_technical_intensity_settings()
+# Get author-specific configuration (applies personality offsets)
+author_config = get_author_config(author_id=2)  # Alessandro
+author_dynamic = DynamicConfig(base_config=author_config)
 
-# Get all modifiers as dict
-modifiers = manager.get_intensity_modifiers()
-
-# Apply intensity to a prompt
-base_prompt = "Write about laser cleaning of aluminum..."
-enhanced_prompt = manager.apply_intensity_to_prompt(base_prompt)
-
-# Change settings programmatically
-manager.set_active_voice_profile('strong')
-manager.set_active_technical_profile('expert')
-
-# Get generation parameters (temperature, retries, etc.)
-gen_params = manager.get_generation_params()
-temperature = manager.calculate_temperature(attempt=3)
+# Alessandro's calculated values differ from base due to offsets
+alessandro_temp = author_dynamic.calculate_temperature('subtitle')
 ```
 
 ### Integration with Orchestrator
 
-The orchestrator can now access centralized intensity settings:
-
 ```python
 from processing.orchestrator import Orchestrator
-from processing.intensity_manager import get_intensity_manager
+from processing.config.dynamic_config import DynamicConfig
+from processing.config.author_config_loader import get_author_config
 
-# Get intensity manager
-intensity_mgr = get_intensity_manager()
+# Get author-specific config
+author_config = get_author_config(author_id=2)
+dynamic_config = DynamicConfig(base_config=author_config)
 
-# Initialize orchestrator with intensity-aware settings
-orchestrator = Orchestrator(api_client=api_client)
+# Initialize orchestrator with dynamic settings
+orchestrator = Orchestrator(
+    api_client=api_client,
+    dynamic_config=dynamic_config
+)
 
-# Generate with current intensity settings
+# Generate - automatically uses calculated parameters
 result = orchestrator.generate(
     topic="Aluminum",
     component_type="subtitle",
-    author_id=1,
-    length=25
+    author_id=2
 )
-# Intensity settings are automatically applied from config.yaml
+# Uses: dynamic temperature, dynamic tokens, dynamic thresholds
 ```
 
 ---

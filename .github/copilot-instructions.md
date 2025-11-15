@@ -2,7 +2,20 @@
 
 **For**: GitHub Copilot, Grok AI, and all AI development assistants  
 **System**: Laser cleaning content generation with strict fail-fast architecture  
-**Last Updated**: October 14, 2025
+**Last Updated**: November 14, 2025
+
+---
+
+## 📖 **Quick Navigation for AI Assistants**
+
+### **User Requests Content Generation?**
+→ **READ THIS FIRST**: `.github/COPILOT_GENERATION_GUIDE.md`
+- Handles: "Generate subtitle for Aluminum", "Create caption for Steel", etc.
+- Shows: Exact commands to run, terminal output handling, result reporting
+- Covers: All component types (subtitle, caption, FAQ, description)
+
+### **Working on Code/Architecture?**
+→ **Continue below** for development guidelines and system rules
 
 ---
 

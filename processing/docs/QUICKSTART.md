@@ -54,19 +54,20 @@ Readability: pass (Flesch: 72.3)
 
 ```python
 from processing.orchestrator import Orchestrator
+from processing.config.dynamic_config import DynamicConfig
 from shared.api.grok_client import GrokClient
 
-# Initialize
+# Initialize with dynamic configuration
+# All parameters calculated from config.yaml sliders
+dynamic_config = DynamicConfig()
 orchestrator = Orchestrator(
     api_client=GrokClient(),
-    max_attempts=5,
-    ai_threshold=0.3,
-    readability_min=60.0
+    dynamic_config=dynamic_config  # Uses slider-driven parameters
 )
 
-# Generate content
+# Generate content - uses dynamic temperature, tokens, retries
 result = orchestrator.generate(
-    material="Aluminum",
+    topic="Aluminum",
     component_type="subtitle",
     author_id=2,  # Italian author
     length=15
@@ -131,26 +132,30 @@ Ensures content remains accessible:
 
 ## ⚙️ Configuration
 
-Edit `processing/config.yaml`:
+Edit `processing/config.yaml` - **10 user-facing sliders** (0-100 scale):
 
 ```yaml
-# AI detection threshold (reject if above)
-ai_detection:
-  threshold: 0.3  # 30%
+# USER CONFIGS - The ONLY section you adjust
+# All technical parameters calculated dynamically from these sliders
 
-# Readability requirements
-readability:
-  min_flesch_score: 60.0
+author_voice_intensity: 50        # Regional voice patterns strength
+personality_intensity: 40          # Personal opinions and style
+engagement_style: 35               # Reader engagement level
+technical_language_intensity: 50   # Technical terminology density
+context_specificity: 55            # Detail and specificity level
+sentence_rhythm_variation: 80      # Sentence structure variety
+imperfection_tolerance: 80         # Human-like imperfections
+structural_predictability: 45      # Template adherence
+ai_avoidance_intensity: 50         # AI pattern avoidance
+length_variation_range: 50         # Length flexibility (±%)
 
-# Retry settings
-retry:
-  max_attempts: 5
+# Everything else (component lengths, paths) is static infrastructure
+```
 
-# Forbidden patterns (AI-like phrases)
-forbidden_patterns:
-  - "results suggest"
-  - "data indicate"
-  # ... 20+ patterns
+**Adjust sliders via CLI:**
+```bash
+python3 -m processing.intensity.intensity_cli status
+python3 -m processing.intensity.intensity_cli set rhythm 70
 ```
 
 ## 📊 Expected Results

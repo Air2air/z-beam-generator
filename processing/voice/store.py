@@ -69,7 +69,9 @@ class AuthorVoiceStore:
             4: "taiwan"
         }
         
-        country = author_map.get(author_id, "united_states")
+        if author_id not in author_map:
+            raise ValueError(f"Author ID {author_id} not found in voice map. Available: {list(author_map.keys())}")
+        country = author_map[author_id]
         profile = self._profiles.get(country, {})
         
         if not profile:

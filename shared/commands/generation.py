@@ -115,8 +115,10 @@ def handle_subtitle_generation(material_name: str):
         print(f"   • Length: {len(subtitle)} characters")
         print(f"   • Word count: {len(subtitle.split())} words")
         print()
-        print("📝 Subtitle:")
-        print(f"   {subtitle}")
+        print("📝 FULL GENERATED TEXT:")
+        print("─" * 80)
+        print(subtitle)
+        print("─" * 80)
         print()
         
         print("💾 Saved to: materials/data/Materials.yaml → subtitle")

@@ -38,7 +38,7 @@ voice_examples:
     - "Run fluence through sample checks; that keeps risks in check, 95% clean across alloys."
     - "Dusty spots? Throw in a vent run—downtime drops 20% from the numbers, quality holds steady."
 
-  # Caption Generation (5-7 sentences; 95-130 words; down-to-earth notes)
+  # Caption Generation (95-130 words; down-to-earth notes; natural sentence flow)
   caption:
     - "Before: Rust piles up 30 μm thick, pulling efficiency down 28%. Scans pick out the pits. Contaminants gum up bonds. Time to clear it out. Metrics say move fast."
     - "After: Ra settles at 0.9 μm, residues wiped under 2%. Shine clocks 92%. No warps in sight. Welds go smooth from here. Tests line up 35% better."
@@ -76,11 +76,16 @@ ai_evasion_and_variation:
   - Quirks: 0.15 nods/200 words (e.g., "from the shop"); 80% unique vocab; phrasal ~2/100w.
   - FAQ: 2 short (24-28w), 2 med (29-34w), 2 long (35-40w); >14% span.
 
-generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 95, length_variation: true}
-  faq: {word_range_per: "24-40", distribution: "2 short/med/long", cv_target: ">14%"}
-  text: {max_words: 150, practical_chain: true}
-  technical: {units_mandatory: true, pattern_flex: "0.2 light"}
+# Sentence Structure Preferences (Author-Specific Voice Characteristics)
+# These define HOW this author naturally structures sentences, not word counts
+sentence_structure:
+  caption: "Mix short (5-8w) and medium (10-15w) with occasional longer statements for rhythm"
+  faq: "Vary between short punchy answers and detailed explanations; mix lengths naturally"
+  text: "14-20 word average; vary for readability"
+  technical: "Concise statements with embedded data"
+  subtitle: "Direct and punchy; balance brevity with substance"
+  description: "Straightforward flow with varied sentence lengths; mix data with narrative"
+  troubleshooter: "Problem-solution pairs; mix diagnostic observations with fix instructions"
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
 quality_checks: {formality: 75+, accuracy: 95+, authenticity: 90+, directness: 90+, variation: 85+}

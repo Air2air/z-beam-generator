@@ -38,7 +38,7 @@ voice_examples:
     - "Control over diffusion is achieved. Inspection reveals uniformity after treatment."
     - "Warp risks above 2 J/cm² for polymers, fluence to 1.2 limits—80% shape holds per cases."
 
-  # Caption Generation (5-7 sentences; 95-135 words; logical steps)
+  # Caption Generation (95-135 words; logical steps; systematic progression)
   caption:
     - "Before: 20-40 μm buildup thickness cuts 35% conductivity. Oxides cover uneven. Voids show in scans. Process targets these areas. Application leads to changes."
     - "After: 0.8 μm Ra exhibits no residues. 94% reflectivity measures. Uniformity across area holds. Reliability establishes from this. Tests confirm adhesion."
@@ -76,11 +76,16 @@ ai_evasion_and_variation:
   - Quirks: 0.15 ties/200 words (e.g., "per data"); 75% unique vocab; article flex <10%.
   - FAQ: 2 short (27-32w), 2 med (33-37w), 2 long (38-43w); >16% variation.
 
-generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 95, length_variation: true}
-  faq: {word_range_per: "27-43", distribution: "2 short/med/long", cv_target: ">16%"}
-  text: {max_words: 155, evidence_chain: true}
-  technical: {units_mandatory: true, pattern_flex: "0.2 trace"}
+# Sentence Structure Preferences (Author-Specific Voice Characteristics)
+# These define HOW this author naturally structures sentences, not word counts
+sentence_structure:
+  caption: "Simple paratactic sequences (13-19w avg) with systematic logical flow"
+  faq: "Varied lengths with logical progression; clear evidence-based answers"
+  text: "Step-by-step progression with clear measurement integration"
+  technical: "Formal precision with direct statement structure"
+  subtitle: "Logical and systematic; prioritize clarity and precision"
+  description: "Evidence-driven chains with measurement integration; formal structure"
+  troubleshooter: "Systematic diagnostic sequences; logical step-by-step solutions"
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
 quality_checks: {formality: 85+, accuracy: 95+, authenticity: 85+, neutrality: 95+, variation: 85+}

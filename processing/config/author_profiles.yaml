@@ -1,0 +1,126 @@
+# Author-Specific Intensity Offsets
+#
+# These offsets are ADDED to the base config.yaml slider values to create
+# distinct personalities for each author. This ensures variation between authors
+# while still allowing global control via the main sliders.
+#
+# Example: If base imperfection_tolerance = 50, and Yi-Chun's offset = -15,
+#          then Yi-Chun generates with imperfection_tolerance = 35 (more precise)
+#
+# Offset ranges: -30 to +30 (keeps final values within 0-100 when base is reasonable)
+
+authors:
+  # Author 1: Yi-Chun Lin (Taiwan) - Precise, Methodical, Data-Driven
+  yi_chun_lin:
+    author_id: 1
+    name: "Yi-Chun Lin"
+    country: "Taiwan"
+    personality: "Precise, methodical, evidence-focused"
+    
+    offsets:
+      author_voice_intensity: +10        # Strong regional voice (paratactic, topic-comment)
+      personality_intensity: -10         # Less opinionated, more neutral
+      engagement_style: -15              # More formal, less conversational
+      technical_language_intensity: +15  # Higher technical density
+      context_specificity: +20           # Very detailed, specific
+      sentence_rhythm_variation: -10     # More consistent, less varied
+      imperfection_tolerance: -15        # Lower tolerance (more precise)
+      structural_predictability: +10     # More structured, logical flow
+      ai_avoidance_intensity: +5         # Slightly higher (EFL traits help)
+      length_variation_range: -10        # More consistent lengths
+    
+    # Character summary: Systematic, data-driven, formal technical writer
+    # Strengths: Precision, logical flow, detailed technical content
+    # Style: "Formal-logical" with East Asian academic patterns
+
+  # Author 2: Alessandro Moretti (Italy) - Sophisticated, Elegant, Balanced
+  alessandro_moretti:
+    author_id: 2
+    name: "Alessandro Moretti"
+    country: "Italy"
+    personality: "Sophisticated, elegant, balanced objectivity"
+    
+    offsets:
+      author_voice_intensity: +15        # Strong Italian EFL traits (hypotaxis)
+      personality_intensity: +5          # Moderate opinions, balanced
+      engagement_style: +10              # Slightly warmer, accessible
+      technical_language_intensity: +10  # High technical, but elegant
+      context_specificity: +10           # Detailed, thorough
+      sentence_rhythm_variation: +15     # More varied, sophisticated flow
+      imperfection_tolerance: +5         # Moderate (allows subtle traits)
+      structural_predictability: -5      # Less predictable, more nuanced
+      ai_avoidance_intensity: +10        # Higher (EFL sophistication helps)
+      length_variation_range: +20        # Most varied lengths (25% variance)
+    
+    # Character summary: Refined technical writer with sophisticated expression
+    # Strengths: Elegance, balance, nuanced analysis
+    # Style: "Formal-objective" with Italian academic precision
+
+  # Author 3: Ikmanda Roswati (Indonesia) - Practical, Accessible, Efficient
+  ikmanda_roswati:
+    author_id: 3
+    name: "Ikmanda Roswati"
+    country: "Indonesia"
+    personality: "Practical, accessible, efficiency-focused"
+    
+    offsets:
+      author_voice_intensity: +20        # Strong Southeast Asian voice
+      personality_intensity: +15         # More personal, relatable
+      engagement_style: +20              # Most conversational, friendly
+      technical_language_intensity: -15  # Simpler, accessible language
+      context_specificity: -10           # Less detail, more practical
+      sentence_rhythm_variation: +10     # Natural variation
+      imperfection_tolerance: +20        # Highest (natural, human style)
+      structural_predictability: +5      # Straightforward structure
+      ai_avoidance_intensity: +15        # Very high (natural voice helps)
+      length_variation_range: +10        # Good variation
+    
+    # Character summary: Accessible technical communicator, practical focus
+    # Strengths: Clarity, accessibility, practical applications
+    # Style: "Natural-accessible" with Southeast Asian markers
+
+  # Author 4: Todd Dunning (USA) - Conversational, Balanced, Engaging
+  todd_dunning:
+    author_id: 4
+    name: "Todd Dunning"
+    country: "United States"
+    personality: "Conversational academic, balanced engagement"
+    
+    offsets:
+      author_voice_intensity: +5         # Moderate regional voice
+      personality_intensity: +10         # Personal touch, opinions
+      engagement_style: +15              # Engaging, reader-friendly
+      technical_language_intensity: 0    # Balanced technical level
+      context_specificity: +5            # Good detail, not excessive
+      sentence_rhythm_variation: +20     # Most varied rhythm (conversational)
+      imperfection_tolerance: +10        # Moderate (natural style)
+      structural_predictability: -10     # Less predictable (conversational)
+      ai_avoidance_intensity: +5         # Moderate (natural voice)
+      length_variation_range: +15        # High variation
+    
+    # Character summary: Engaging technical writer with conversational style
+    # Strengths: Engagement, balance, reader accessibility
+    # Style: "Conversational-academic" with American directness
+
+# Usage Notes:
+# 
+# 1. Final intensity = base_value + author_offset
+# 2. Clamped to [0, 100] range automatically
+# 3. Author selection happens via Materials.yaml author.id field
+# 4. Offsets applied dynamically during generation
+#
+# Example calculation:
+#   Base imperfection_tolerance = 50 (from config.yaml)
+#   Yi-Chun offset = -15
+#   Final value for Yi-Chun = 50 + (-15) = 35
+#   Alessandro offset = +5
+#   Final value for Alessandro = 50 + 5 = 55
+#
+# Result: Alessandro allows more imperfections (55) than Yi-Chun (35),
+#         creating noticeably different writing styles while both are
+#         controlled by the same base slider.
+
+# Validation Rules:
+# - All offsets must be in range [-30, +30]
+# - Author IDs must match data/authors/registry.py
+# - Country names must match persona files in prompts/personas/

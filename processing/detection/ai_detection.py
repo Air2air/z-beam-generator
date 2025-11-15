@@ -29,6 +29,9 @@ from collections import Counter
 import logging
 import os
 
+# Import centralized config loader
+from processing.config.config_loader import get_config
+
 logger = logging.getLogger(__name__)
 
 # Get the directory containing this file (processing/detection/)
@@ -183,13 +186,21 @@ class AIDetector:
         self.strict_mode = strict_mode
         self.config = load_patterns(patterns_file)
         
-        # Use thresholds from config if available, otherwise defaults
-        if self.config['thresholds']:
-            default_threshold = self.config['thresholds'].get('ai_detection', 40)
-            strict_threshold = self.config['thresholds'].get('strict_mode', 30)
-            self.ai_threshold = strict_threshold if strict_mode else default_threshold
-        else:
-            self.ai_threshold = 30.0 if strict_mode else 40.0  # Fallback defaults
+        # Load threshold from centralized config if available, otherwise use patterns file
+        try:
+            from processing.config.config_loader import get_config
+            proc_config = get_config()
+            self.ai_threshold = proc_config.get_ai_threshold(strict_mode=strict_mode)
+            logger.info(f"Using AI threshold from processing/config.yaml: {self.ai_threshold}")
+        except Exception as e:
+            logger.warning(f"Could not load from processing/config.yaml: {e}, using patterns file")
+            # Fallback to patterns file or hardcoded defaults
+            if self.config['thresholds']:
+                default_threshold = self.config['thresholds'].get('ai_detection', 40)
+                strict_threshold = self.config['thresholds'].get('strict_mode', 30)
+                self.ai_threshold = strict_threshold if strict_mode else default_threshold
+            else:
+                self.ai_threshold = 30.0 if strict_mode else 40.0  # Last resort defaults
     
     def detect(self, text: str) -> Dict:
         """
@@ -264,14 +275,26 @@ class AIDetector:
             'of', 'to', 'in', 'for', 'on', 'with', 'from', 'by', 'at', 'as'
         }
         
+        # Get thresholds from centralized config, fallback to patterns file
+        try:
+            from processing.config.config_loader import get_config
+            proc_config = get_config()
+            thresholds = proc_config.get_repetition_thresholds()
+            word_freq_threshold = thresholds['word_frequency']
+            word_freq_critical = thresholds['word_frequency_critical']
+        except Exception:
+            # Fallback to patterns file defaults
+            word_freq_threshold = 3  # Default from patterns file
+            word_freq_critical = 5   # Critical threshold from patterns file
+        
         content_word_counts = {
             word: count for word, count in word_counts.items()
-            if word not in common_words and count >= 3
+            if word not in common_words and count >= word_freq_threshold
         }
         
         if content_word_counts:
             max_repetition = max(content_word_counts.values())
-            if max_repetition >= 3:  # Stricter threshold
+            if max_repetition >= word_freq_threshold:
                 top_repeated = [
                     f"{word}({count})"
                     for word, count in sorted(
@@ -283,7 +306,7 @@ class AIDetector:
                 patterns.append({
                     'type': 'word_repetition',
                     'details': f"Words repeated 3+ times: {', '.join(top_repeated)}",
-                    'severity': 'severe' if max_repetition >= 5 else 'moderate'
+                    'severity': 'severe' if max_repetition >= word_freq_critical else 'moderate'
                 })
         
         # Sentence structure repetition
@@ -299,9 +322,18 @@ class AIDetector:
                     sentence_patterns.append(pattern)
             
             pattern_counts = Counter(sentence_patterns)
-            repeated_structures = sum(1 for count in pattern_counts.values() if count >= 2)
+            # Get threshold from centralized config, fallback to default
+            try:
+                from processing.config.config_loader import get_config
+                proc_config = get_config()
+                thresholds = proc_config.get_repetition_thresholds()
+                struct_repetition_threshold = thresholds['structural_repetition']
+            except Exception:
+                struct_repetition_threshold = 2  # Fallback default
             
-            if repeated_structures >= 2:
+            repeated_structures = sum(1 for count in pattern_counts.values() if count >= struct_repetition_threshold)
+            
+            if repeated_structures >= struct_repetition_threshold:
                 patterns.append({
                     'type': 'structural_repetition',
                     'details': f"{repeated_structures} repeated sentence openings",
@@ -365,6 +397,68 @@ class AIDetector:
             'severity': severity
         }
     
+    def detect_linguistic_dimensions(self, text: str) -> Dict[str, Any]:
+        """
+        Detect linguistic dimension patterns using loaded patterns.
+        
+        Checks for:
+        - Dependency minimization (over-optimized syntax)
+        - Pronoun bias (gender imbalance)
+        - Lexical diversity (MTLD scores)
+        - Stylistic formality (over-formal word choice)
+        """
+        issues = []
+        text_lower = text.lower()
+        
+        # Use loaded linguistic dimension patterns
+        for pattern_def in self.config['linguistic_patterns']:
+            pattern_name = pattern_def['name']
+            
+            try:
+                # For regex-based patterns
+                if 'formal_words' in pattern_name or 'pronoun' in pattern_name:
+                    matches = re.findall(pattern_def['pattern'], text_lower)
+                    if matches:
+                        issues.append({
+                            'type': pattern_name,
+                            'example': pattern_def['example'],
+                            'reason': pattern_def['reason'],
+                            'severity': pattern_def['severity'],
+                            'count': len(matches)
+                        })
+                # For MTLD/dependency patterns (would need specialized calculation)
+                # Note: These require external libraries or scripts, so we flag for manual review
+                elif 'lexical_diversity' in pattern_name or 'dependency' in pattern_name:
+                    # Placeholder: Would need textstat or spacy for actual calculation
+                    # For now, just load the pattern definition for documentation
+                    pass
+            except re.error as e:
+                logger.warning(f"Invalid regex pattern '{pattern_def['pattern']}': {e}")
+                continue
+        
+        # Calculate severity
+        critical_count = sum(1 for i in issues if i['severity'] == 'critical')
+        severe_count = sum(1 for i in issues if i['severity'] == 'severe')
+        moderate_count = sum(1 for i in issues if i['severity'] == 'moderate')
+        
+        if critical_count >= 1:
+            severity = 'critical'
+        elif severe_count >= 1:
+            severity = 'severe'
+        elif moderate_count >= 1:
+            severity = 'moderate'
+        elif len(issues) >= 1:
+            severity = 'minor'
+        else:
+            severity = 'none'
+        
+        return {
+            'has_linguistic_issues': len(issues) > 0,
+            'issue_count': len(issues),
+            'issues': issues,
+            'severity': severity
+        }
+    
     def detect_ai_patterns(self, text: str) -> Dict[str, Any]:
         """
         Comprehensive AI pattern detection.
@@ -377,6 +471,7 @@ class AIDetector:
                 'grammar': Dict,
                 'repetition': Dict,
                 'phrasing': Dict,
+                'linguistic': Dict,
                 'issues': List[str],
                 'recommendation': str,
                 'severity': str
@@ -386,6 +481,7 @@ class AIDetector:
         grammar = self.detect_grammatical_errors(text)
         repetition = self.detect_repetitive_patterns(text)
         phrasing = self.detect_unnatural_phrasing(text)
+        linguistic = self.detect_linguistic_dimensions(text)
         
         # Calculate AI score using weights from config
         score = 0.0
@@ -417,15 +513,30 @@ class AIDetector:
         if phrasing['severity'] in severity_scores:
             score += severity_scores[phrasing['severity']] * (weights.get('phrasing', 35) / 100)
         
+        # Linguistic dimensions
+        if linguistic['severity'] in severity_scores:
+            score += severity_scores[linguistic['severity']] * (weights.get('linguistic_dimensions', 15) / 100)
+        
         score = min(100.0, score)
         
-        # Determine if AI-like
+        # Determine if AI-like (use threshold from centralized config)
         is_ai_like = score >= self.ai_threshold
         
-        # Determine confidence
-        if score >= 70:
+        # Determine confidence (use thresholds from centralized config if available)
+        try:
+            from processing.config.config_loader import get_config
+            proc_config = get_config()
+            conf_thresholds = proc_config.get_confidence_thresholds()
+            high_conf_threshold = conf_thresholds['high']
+            medium_conf_threshold = conf_thresholds['medium']
+        except Exception:
+            # Fallback to patterns file or defaults
+            high_conf_threshold = self.config.get('thresholds', {}).get('quality_minimum', 70)
+            medium_conf_threshold = 50
+        
+        if score >= high_conf_threshold:
             confidence = 'high'
-        elif score >= 50:
+        elif score >= medium_conf_threshold:
             confidence = 'medium'
         else:
             confidence = 'low'
@@ -438,9 +549,11 @@ class AIDetector:
             issues.append(f"[Repetition] {pattern['details']}")
         for example in phrasing['examples']:
             issues.append(f"[Phrasing] {example['example']}")
+        for issue in linguistic['issues']:
+            issues.append(f"[Linguistic] {issue['example']}")
         
         # Overall severity
-        severities = [grammar['severity'], repetition['severity'], phrasing['severity']]
+        severities = [grammar['severity'], repetition['severity'], phrasing['severity'], linguistic['severity']]
         if 'critical' in severities:
             overall_severity = 'critical'
         elif 'severe' in severities:
@@ -452,10 +565,21 @@ class AIDetector:
         else:
             overall_severity = 'none'
         
-        # Recommendation
-        if score >= 70:
+        # Recommendation (use thresholds from centralized config if available)
+        try:
+            from processing.config.config_loader import get_config
+            proc_config = get_config()
+            rec_thresholds = proc_config.get_recommendation_thresholds()
+            regenerate_threshold = rec_thresholds['regenerate']
+            revise_threshold = rec_thresholds['revise']
+        except Exception:
+            # Fallback to patterns file or defaults
+            regenerate_threshold = self.config.get('thresholds', {}).get('quality_minimum', 70)
+            revise_threshold = 50
+        
+        if score >= regenerate_threshold:
             recommendation = 'regenerate'
-        elif score >= 50:
+        elif score >= revise_threshold:
             recommendation = 'revise'
         else:
             recommendation = 'accept'
@@ -467,7 +591,9 @@ class AIDetector:
             'grammar': grammar,
             'repetition': repetition,
             'phrasing': phrasing,
+            'linguistic': linguistic,
             'issues': issues,
             'recommendation': recommendation,
             'severity': overall_severity
         }
+

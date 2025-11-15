@@ -6,11 +6,13 @@ Main workflow coordinator for AI-resistant content generation.
 Flow:
 1. Enrich material data with real facts
 2. Build unified prompt (voice + facts + anti-AI)
-3. Generate content via API
-4. Validate with ensemble detection
-5. Check readability
+3. Generate content via API (with dynamic settings from config sliders)
+4. Validate with ensemble detection (dynamic thresholds)
+5. Check readability (dynamic thresholds)
 6. Retry with adjusted prompt on failure
 7. Output to frontmatter
+
+All technical parameters calculated dynamically from 10 user-facing sliders.
 """
 
 import logging
@@ -21,6 +23,7 @@ from processing.generation.prompt_builder import PromptBuilder
 from processing.detection.ensemble import AIDetectorEnsemble
 from processing.validation.readability import ReadabilityValidator
 from processing.voice.store import AuthorVoiceStore
+from processing.config.dynamic_config import DynamicConfig
 
 logger = logging.getLogger(__name__)
 
@@ -29,40 +32,41 @@ class Orchestrator:
     """
     Main workflow orchestrator for content generation.
     
-    Coordinates all processing steps with retry logic and
-    dynamic prompt adjustment.
+    Uses DynamicConfig to calculate all parameters from user-facing sliders.
+    NO hardcoded technical values - everything adapts to slider changes.
     """
     
     def __init__(
         self,
         api_client,
-        max_attempts: int = 5,
-        ai_threshold: float = 0.3,
-        readability_min: float = 60.0,
-        use_ml_detection: bool = False
+        dynamic_config: DynamicConfig = None
     ):
         """
-        Initialize orchestrator.
+        Initialize orchestrator with dynamic configuration.
         
         Args:
             api_client: AI API client (e.g., GrokClient)
-            max_attempts: Maximum retry attempts
-            ai_threshold: AI score threshold (reject if above)
-            readability_min: Minimum readability score
-            use_ml_detection: Whether to use ML-based detection
+            dynamic_config: Optional DynamicConfig instance (creates new if None)
         """
         self.api_client = api_client
-        self.max_attempts = max_attempts
-        self.ai_threshold = ai_threshold
-        self.readability_min = readability_min
+        self.dynamic_config = dynamic_config if dynamic_config else DynamicConfig()
         
-        # Initialize components
+        # Calculate parameters dynamically from sliders
+        readability_thresholds = self.dynamic_config.calculate_readability_thresholds()
+        detection_threshold = self.dynamic_config.calculate_detection_threshold()
+        
+        # Initialize components with dynamic parameters
         self.enricher = DataEnricher()
         self.voice_store = AuthorVoiceStore()
-        self.detector = AIDetectorEnsemble(use_ml=use_ml_detection)
-        self.validator = ReadabilityValidator(min_score=readability_min)
+        self.detector = AIDetectorEnsemble(use_ml=False)
+        self.validator = ReadabilityValidator(min_score=readability_thresholds['min'])
         
-        logger.info("Orchestrator initialized")
+        # Store dynamically calculated values
+        self.ai_threshold = detection_threshold / 100.0  # Convert to 0-1 scale
+        
+        logger.info("Orchestrator initialized with dynamic config")
+        logger.info(f"  AI threshold: {self.ai_threshold:.3f} (calculated from sliders)")
+        logger.info(f"  Readability min: {readability_thresholds['min']:.1f} (calculated)")
     
     def generate(
         self,
@@ -101,20 +105,29 @@ class Orchestrator:
         
         # Step 1: Enrich with real facts
         facts = self.enricher.fetch_real_facts(topic)
-        facts_str = self.enricher.format_facts_for_prompt(facts)
+        
+        # Phase 2: Get all parameters from dynamic config (includes voice_params)
+        all_params = self.dynamic_config.get_all_generation_params(component_type)
+        voice_params = all_params['voice_params']
+        enrichment_params = all_params['enrichment_params']  # Phase 3A
+        facts_str = self.enricher.format_facts_for_prompt(facts, enrichment_params=enrichment_params)
         
         # Step 2: Get voice profile
         voice = self.voice_store.get_voice(author_id)
         
-        # Step 3: Generation loop with retry
-        for attempt in range(1, self.max_attempts + 1):
-            logger.info(f"Attempt {attempt}/{self.max_attempts} for {topic} {component_type}")
+        # Step 3: Calculate dynamic retry behavior for this generation
+        retry_config = self.dynamic_config.calculate_retry_behavior()
+        max_attempts = retry_config['max_attempts']
+        
+        # Step 4: Generation loop with dynamic retry
+        for attempt in range(1, max_attempts + 1):
+            logger.info(f"Attempt {attempt}/{max_attempts} for {topic} {component_type}")
             
             # Generate variation seed using timestamp to defeat caching
             import time
             variation_seed = int(time.time() * 1000) + attempt
             
-            # Build prompt
+            # Build prompt with voice parameters (Phase 2: personality control)
             prompt = PromptBuilder.build_unified_prompt(
                 topic=topic,
                 voice=voice,
@@ -123,6 +136,7 @@ class Orchestrator:
                 context=context,
                 component_type=component_type,
                 domain=domain,
+                voice_params=voice_params,  # NEW: Pass voice parameters
                 variation_seed=variation_seed
             )
             
@@ -134,12 +148,12 @@ class Orchestrator:
                     attempt=attempt
                 )
             
-            # Generate content with increasing temperature for variation
+            # Generate content with dynamic temperature
             try:
-                text = self._call_api(prompt, attempt=attempt)
+                text = self._call_api(prompt, attempt=attempt, component_type=component_type)
             except Exception as e:
                 logger.error(f"API call failed: {e}")
-                if attempt == self.max_attempts:
+                if attempt == max_attempts:
                     return {
                         'success': False,
                         'reason': f'API error: {e}',
@@ -147,13 +161,13 @@ class Orchestrator:
                     }
                 continue
             
-            # Step 4: AI detection
+            # Step 5: AI detection with dynamic threshold
             detection = self.detector.detect(text)
             ai_score = detection['ai_score']
             
-            logger.info(f"AI score: {ai_score:.3f} (threshold: {self.ai_threshold})")
+            logger.info(f"AI score: {ai_score:.3f} (threshold: {self.ai_threshold:.3f})")
             
-            # Step 5: Readability check
+            # Step 6: Readability check with dynamic threshold
             readability = self.validator.validate(text)
             
             logger.info(f"Readability: {readability['status']} (Flesch: {readability.get('flesch_score', 'N/A')})")
@@ -177,43 +191,46 @@ class Orchestrator:
                 logger.warning(f"❌ Readability failed: {readability['status']}")
         
         # Max attempts reached
-        logger.error(f"Failed after {self.max_attempts} attempts")
+        logger.error(f"Failed after {max_attempts} attempts")
         return {
             'success': False,
             'reason': f'Max attempts reached. Last AI score: {ai_score:.3f}',
-            'attempts': self.max_attempts,
+            'attempts': max_attempts,
             'last_text': text,
             'last_ai_score': ai_score,
             'last_readability': readability
         }
     
-    def _call_api(self, prompt: str, attempt: int = 1) -> str:
+    def _call_api(self, prompt: str, attempt: int = 1, component_type: str = 'subtitle') -> str:
         """
         Call AI API with error handling and dynamic temperature.
         
         Args:
             prompt: Prompt to send
             attempt: Attempt number (affects temperature for variation)
+            component_type: Component type for max_tokens lookup
             
         Returns:
             Generated text
         """
-        # Increase temperature with each attempt for more variation
-        # Attempt 1: 0.8 (higher than before for more creativity)
-        # Attempt 2: 0.9 (more variation)
-        # Attempt 3+: 1.0 (maximum variation)
-        base_temperature = 0.8
-        temperature = min(1.0, base_temperature + (attempt - 1) * 0.1)
+        # Calculate dynamic temperature and tokens from sliders
+        base_temperature = self.dynamic_config.calculate_temperature(component_type)
+        retry_config = self.dynamic_config.calculate_retry_behavior()
+        retry_temp_increase = retry_config['retry_temperature_increase']
+        max_tokens = self.dynamic_config.calculate_max_tokens(component_type)
         
-        logger.info(f"🌡️  Temperature: {temperature:.1f} (attempt {attempt})")
+        # Increase temperature with each attempt for more variation
+        temperature = min(1.0, base_temperature + (attempt - 1) * retry_temp_increase)
+        
+        logger.info(f"🌡️  Temperature: {temperature:.2f} (base: {base_temperature:.2f}, +{retry_temp_increase:.2f}/attempt)")
+        logger.info(f"🎯  Max tokens: {max_tokens} (calculated from sliders)")
         
         # Use the standard API client interface: generate_simple()
-        # which requires max_tokens and temperature
         response = self.api_client.generate_simple(
             prompt=prompt,
             system_prompt="You are a professional technical writer creating concise, clear content.",
-            max_tokens=200,  # Subtitles are short
-            temperature=temperature  # Dynamic temperature for variation
+            max_tokens=max_tokens,
+            temperature=temperature
         )
         
         # Handle APIResponse object

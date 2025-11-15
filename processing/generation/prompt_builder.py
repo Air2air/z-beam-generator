@@ -11,6 +11,7 @@ ComponentRegistry and DomainContext.
 """
 
 import logging
+import os
 from typing import Dict, Optional
 
 from processing.generation.component_specs import ComponentRegistry, DomainContext
@@ -36,6 +37,21 @@ class PromptBuilder:
     """
     
     @staticmethod
+    def _load_anti_ai_rules() -> str:
+        """
+        Load anti-AI rules from prompts/anti_ai_rules.txt.
+        
+        Returns:
+            Anti-AI rules string
+            
+        Raises:
+            FileNotFoundError: If prompts/anti_ai_rules.txt doesn't exist
+        """
+        rules_path = os.path.join('prompts', 'anti_ai_rules.txt')
+        with open(rules_path, 'r', encoding='utf-8') as f:
+            return f.read().strip()
+    
+    @staticmethod
     def build_unified_prompt(
         topic: str,  # Renamed from 'material' for generality
         voice: Dict,
@@ -44,6 +60,7 @@ class PromptBuilder:
         context: str = "",
         component_type: str = "subtitle",
         domain: str = "materials",
+        voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters from config
         variation_seed: Optional[int] = None
     ) -> str:
         """
@@ -88,6 +105,17 @@ class PromptBuilder:
         sentence_patterns = linguistic.get('sentence_structure', {}).get('patterns', [])
         esl_traits = "; ".join(sentence_patterns[:2]) if sentence_patterns else "Natural regional patterns"
         
+        # Extract sentence style guidance from voice profile for this component
+        # NEW LOCATION: voice.sentence_structure.{component_type}
+        sentence_structure = voice.get('sentence_structure', {})
+        sentence_style = sentence_structure.get(component_type, '')
+        
+        # Fallback to old location for backward compatibility
+        if not sentence_style:
+            generation_constraints = voice.get('generation_constraints', {})
+            component_constraints = generation_constraints.get(component_type, {})
+            sentence_style = component_constraints.get('sentence_style', '')
+        
         # Build prompt using spec-driven template
         if spec:
             return PromptBuilder._build_spec_driven_prompt(
@@ -95,11 +123,13 @@ class PromptBuilder:
                 author=author,
                 country=country,
                 esl_traits=esl_traits,
+                sentence_style=sentence_style,
                 length=length,
                 facts=facts,
                 context=context,
                 spec=spec,
                 domain_ctx=domain_ctx,
+                voice_params=voice_params,  # NEW: Pass to spec builder
                 variation_seed=variation_seed
             )
         else:
@@ -114,11 +144,13 @@ class PromptBuilder:
         author: str,
         country: str,
         esl_traits: str,
+        sentence_style: str,
         length: int,
         facts: str,
         context: str,
         spec,  # ComponentSpec
         domain_ctx,  # DomainContext
+        voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters
         variation_seed: Optional[int] = None
     ) -> str:
         """
@@ -139,7 +171,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         if context:
             context_section += f"\n\nADDITIONAL CONTEXT:\n{context}"
         
-        # Build requirements section
+        # Build requirements section with dynamic sentence structure guidance
         requirements = [
             f"- Length: {length} words (range: {spec.min_length}-{spec.max_length})",
             f"- Format: {spec.format_rules}",
@@ -152,16 +184,112 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         
         requirements_section = "\n".join(requirements)
         
-        # Build voice section
+        # Build voice section with dynamic sentence structure guidance from author profile
+        # Phase 2: Apply voice_params to control personality intensity
         voice_section = f"""VOICE: {author} from {country}
-- Regional patterns: {esl_traits}
+- Regional patterns: {esl_traits}"""
+        
+        # Apply voice parameter intensity if provided
+        if voice_params:
+            trait_freq = voice_params.get('trait_frequency', 0.5)
+            if trait_freq < 0.3:
+                voice_section += "\n- Voice intensity: Subtle - minimize author personality, keep neutral"
+            elif trait_freq < 0.7:
+                voice_section += "\n- Voice intensity: Moderate - apply traits naturally"
+            else:
+                voice_section += "\n- Voice intensity: Strong - emphasize author personality throughout"
+        
+        # Add sentence structure guidance if available from voice profile
+        if sentence_style:
+            voice_section += f"\n- Sentence structure: {sentence_style}"
+        else:
+            # Fallback to config.yaml sentence_variation or generic guidance
+            try:
+                from processing.generation.component_specs import ComponentRegistry
+                config = ComponentRegistry._load_config()
+                sentence_variation = config.get('sentence_variation', {})
+                component_variation = sentence_variation.get(spec.name, {})
+                fallback_style = component_variation.get('style', '')
+                
+                if fallback_style:
+                    voice_section += f"\n- Sentence structure: {fallback_style}"
+                else:
+                    # Ultimate fallback based on word count
+                    if length <= 30:
+                        voice_section += "\n- Sentence structure: Keep sentences concise and punchy; mix very short (3-5 words) with slightly longer statements"
+                    elif length <= 100:
+                        voice_section += "\n- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
+                    else:
+                        voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow; avoid uniform length"
+            except (FileNotFoundError, KeyError, ImportError) as e:
+                # If config loading fails, log warning and use basic fallback
+                logger.warning(f"Failed to load sentence variation config: {e}. Using length-based fallback.")
+                if length <= 30:
+                    voice_section += "\n- Sentence structure: Keep sentences concise and punchy; mix very short (3-5 words) with slightly longer statements"
+                elif length <= 100:
+                    voice_section += "\n- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
+                else:
+                    voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow; avoid uniform length"
+            except Exception as e:
+                # Unexpected error - should not be silently swallowed
+                logger.error(f"Unexpected error in sentence structure calculation: {e}")
+                raise
+        
+        voice_section += """
 - Mix formal and conversational
-- Vary sentence structure naturally
+- Vary sentence openings and structures naturally
 - Occasional article flexibility (ESL style)
 - Natural imperfections allowed (makes text more human)"""
         
-        # Build anti-AI section with emphasis on variation and natural language
-        anti_ai = """CRITICAL - AVOID AI PATTERNS & ADD VARIATION:
+        # Phase 2: Add personality guidance based on voice_params
+        personality_guidance = ""
+        if voice_params:
+            opinion_rate = voice_params.get('opinion_rate', 0.0)
+            reader_address = voice_params.get('reader_address_rate', 0.0)
+            colloquial = voice_params.get('colloquialism_frequency', 0.0)
+            
+            if opinion_rate > 0.5:
+                personality_guidance += "\n- Include personal perspective or insight where appropriate (\"I find...\", \"In my experience...\")"
+            if reader_address > 0.5:
+                personality_guidance += "\n- Address reader directly using 'you' naturally (\"you'll notice\", \"you can\")"
+            if colloquial > 0.6:
+                personality_guidance += "\n- Use informal language and colloquialisms fitting the voice"
+            
+            # Add to voice section if any guidance generated
+            if personality_guidance:
+                voice_section += "\n\nPERSONALITY GUIDANCE:" + personality_guidance
+        
+        # Phase 3B: Build anti-AI section with structural_predictability control
+        try:
+            anti_ai_full = PromptBuilder._load_anti_ai_rules()
+            
+            # Apply structural_predictability to vary rule strictness
+            if voice_params:
+                structural = voice_params.get('structural_predictability', 0.5)
+                
+                if structural < 0.3:
+                    # Low = predictable = STRICT rules (all guidance)
+                    anti_ai = f"""CRITICAL - STRICT AI AVOIDANCE (High Constraint):
+{anti_ai_full}
+- ADDITIONAL: Avoid all formulaic patterns listed above
+- ADDITIONAL: Every sentence must start differently
+- ADDITIONAL: Mix sentence lengths dramatically (3-20+ words)"""
+                elif structural < 0.7:
+                    # Medium = balanced (standard rules)
+                    anti_ai = anti_ai_full
+                else:
+                    # High = unpredictable = MINIMAL rules (creative freedom)
+                    anti_ai = """AVOID OBVIOUS AI PATTERNS:
+- Vary sentence openings naturally
+- Mix sentence lengths and structures
+- Use conversational flow when appropriate"""
+            else:
+                # No voice_params = use standard rules
+                anti_ai = anti_ai_full
+                
+        except Exception as e:
+            logger.warning(f"Failed to load anti_ai_rules.txt: {e}. Using embedded fallback.")
+            anti_ai = """CRITICAL - AVOID AI PATTERNS & ADD VARIATION:
 - BANNED PHRASES: "facilitates", "enables", "leverages", "demonstrates", "exhibits", "optimal", "enhanced", "robust", "comprehensive"
 - BANNED CONNECTORS: "paired with", "relies on", "thrives on", "swear by", "testament to"
 - BANNED STRUCTURES: "while maintaining/preserving/ensuring", "across diverse/various/multiple"

@@ -38,7 +38,7 @@ voice_examples:
     - "Tolerances under 0.3 mm are key for 90% reflectance over 5 cm². Distribution of fluence remains even."
     - "Thick films above 50 μm use multi-passes to cut re-deposition, with times up 15% per trials."
 
-  # Caption Generation (5-7 sentences; 90-120 words; evidence-led)
+  # Caption Generation (90-120 words; evidence-led; structured flow)
   caption:
     - "Pre-treatment: Depths of pitting at 30-55 μm lower reflectance to 60%. Oxide covers zones at 12% porosity. Scans note irregularity. Potential for adhesion persists. Intervention adjusts these through metrics."
     - "Post-process: Ra reaches 1.0 μm, with residues under 5%. Uniformity shows in scans. Damage is absent. Reflectance hits 92%. Improvement of 32% comes from tests."
@@ -67,10 +67,16 @@ ai_evasion_and_variation:
   - Quirks: 0.1 notes/200 words (e.g., "per trials"); 85% unique vocab.
   - Outputs: 1 evidence per section; smooth progression.
 
-generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 90, length_variation: true}
-  text: {max_words: 150, data_progression: true}
-  technical: {units_mandatory: true, pattern_flex: "0.3 trace"}
+# Sentence Structure Preferences (Author-Specific Voice Characteristics)
+# These define HOW this author naturally structures sentences, not word counts
+sentence_structure:
+  caption: "Balanced moderate length (15-22w avg) with natural hypotactic flow"
+  text: "Evidence-based progression; mix concise observations with detailed analysis"
+  technical: "Formal precision with embedded measurements"
+  subtitle: "Formal yet accessible; favor clarity over brevity"
+  description: "Structured progression with logical flow; balanced sentence complexity"
+  faq: "Objective responses with supporting evidence; moderate formality"
+  troubleshooter: "Systematic diagnostic approach; evidence-led solutions"
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
 quality_checks: {formality: 80+, accuracy: 95+, authenticity: 85+, restraint: 95+, variation: 85+}

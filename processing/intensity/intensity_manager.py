@@ -5,7 +5,7 @@ Loads settings from config.yaml and converts 0-100 intensity values
 into specific generation parameters.
 
 Usage:
-    from processing.intensity_manager import IntensityManager
+    from processing.intensity.intensity_manager import IntensityManager
     
     manager = IntensityManager()
     settings = manager.get_all_settings()
@@ -39,7 +39,7 @@ class IntensityManager:
             config_path: Path to config.yaml (default: processing/config.yaml)
         """
         if config_path is None:
-            config_path = Path(__file__).parent / "config.yaml"
+            config_path = Path(__file__).parent.parent / "config.yaml"
         
         self.config_path = Path(config_path)
         self.config = self._load_config()
@@ -111,6 +111,30 @@ class IntensityManager:
     def get_engagement_style(self) -> int:
         """Get engagement style (0-100)"""
         return self.config.get('engagement_style', 35)
+    
+    # ============================================================================
+    # ALIAS METHODS (for backward compatibility with _intensity suffix)
+    # ============================================================================
+    
+    def get_author_voice_intensity(self) -> int:
+        """Alias for get_author_voice()"""
+        return self.get_author_voice()
+    
+    def get_technical_language_intensity(self) -> int:
+        """Alias for get_technical_language()"""
+        return self.get_technical_language()
+    
+    def get_length_variation_range(self) -> int:
+        """Alias for get_length_variation()"""
+        return self.get_length_variation()
+    
+    def get_ai_avoidance_intensity(self) -> int:
+        """Alias for get_ai_avoidance()"""
+        return self.get_ai_avoidance()
+    
+    def get_sentence_rhythm_variation(self) -> int:
+        """Alias for get_sentence_rhythm()"""
+        return self.get_sentence_rhythm()
     
     # ============================================================================
     # SLIDER VALUE SETTERS

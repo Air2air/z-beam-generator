@@ -4,7 +4,7 @@
 
 ## 📊 View Current Settings
 ```bash
-python3 processing/intensity_cli.py status
+python3 -m processing.intensity.intensity_cli status
 ```
 
 ## 🎛️ The 10 Sliders (0-100 scale)
@@ -36,21 +36,21 @@ python3 processing/intensity_cli.py status
 ### Change Individual Sliders
 ```bash
 # Boost human realism markers
-python3 processing/intensity_cli.py set rhythm 70
-python3 processing/intensity_cli.py set imperfection 60
-python3 processing/intensity_cli.py set personality 55
+python3 -m processing.intensity.intensity_cli set rhythm 70
+python3 -m processing.intensity.intensity_cli set imperfection 60
+python3 -m processing.intensity.intensity_cli set personality 55
 
 # Increase author voice authenticity
-python3 processing/intensity_cli.py set voice 65
+python3 -m processing.intensity.intensity_cli set voice 65
 
 # Reduce AI-like patterns
-python3 processing/intensity_cli.py set ai 75
-python3 processing/intensity_cli.py set structural 60
+python3 -m processing.intensity.intensity_cli set ai 75
+python3 -m processing.intensity.intensity_cli set structural 60
 ```
 
 ### Test Current Settings
 ```bash
-python3 processing/intensity_cli.py test
+python3 -m processing.intensity.intensity_cli test
 ```
 
 ---
@@ -60,11 +60,11 @@ python3 processing/intensity_cli.py test
 ### **For Subtitles (15-30 words)**
 **Goal:** Punchy, memorable, human-authentic
 ```bash
-python3 processing/intensity_cli.py set rhythm 70        # Varied sentence structure
-python3 processing/intensity_cli.py set personality 60   # Evaluative language
-python3 processing/intensity_cli.py set imperfection 55  # Slight quirks OK
-python3 processing/intensity_cli.py set voice 55         # Noticeable voice
-python3 processing/intensity_cli.py set structural 60    # Break templates
+python3 -m processing.intensity.intensity_cli set rhythm 70        # Varied sentence structure
+python3 -m processing.intensity.intensity_cli set personality 60   # Evaluative language
+python3 -m processing.intensity.intensity_cli set imperfection 55  # Slight quirks OK
+python3 -m processing.intensity.intensity_cli set voice 55         # Noticeable voice
+python3 -m processing.intensity.intensity_cli set structural 60    # Break templates
 ```
 
 **Example output at these settings:**
@@ -73,32 +73,32 @@ python3 processing/intensity_cli.py set structural 60    # Break templates
 ### **For Descriptions (150 words)**
 **Goal:** Informative, technical, but human
 ```bash
-python3 processing/intensity_cli.py set technical 60     # More data
-python3 processing/intensity_cli.py set context 65       # Specific scenarios
-python3 processing/intensity_cli.py set rhythm 55        # Natural flow
-python3 processing/intensity_cli.py set personality 45   # Subtle opinions
-python3 processing/intensity_cli.py set engagement 40    # Professional-friendly
+python3 -m processing.intensity.intensity_cli set technical 60     # More data
+python3 -m processing.intensity.intensity_cli set context 65       # Specific scenarios
+python3 -m processing.intensity.intensity_cli set rhythm 55        # Natural flow
+python3 -m processing.intensity.intensity_cli set personality 45   # Subtle opinions
+python3 -m processing.intensity.intensity_cli set engagement 40    # Professional-friendly
 ```
 
 ### **For Maximum Human Authenticity**
 **Goal:** Pass AI detection with flying colors
 ```bash
-python3 processing/intensity_cli.py set rhythm 75        # High variation
-python3 processing/intensity_cli.py set imperfection 65  # Visible quirks
-python3 processing/intensity_cli.py set personality 60   # Strong voice
-python3 processing/intensity_cli.py set structural 65    # Organic flow
-python3 processing/intensity_cli.py set ai 80            # Aggressive avoidance
-python3 processing/intensity_cli.py set voice 70         # Authentic regional
+python3 -m processing.intensity.intensity_cli set rhythm 75        # High variation
+python3 -m processing.intensity.intensity_cli set imperfection 65  # Visible quirks
+python3 -m processing.intensity.intensity_cli set personality 60   # Strong voice
+python3 -m processing.intensity.intensity_cli set structural 65    # Organic flow
+python3 -m processing.intensity.intensity_cli set ai 80            # Aggressive avoidance
+python3 -m processing.intensity.intensity_cli set voice 70         # Authentic regional
 ```
 
 ### **For Clean, Professional Content**
 **Goal:** Polished but still human
 ```bash
-python3 processing/intensity_cli.py set imperfection 35  # Minimal quirks
-python3 processing/intensity_cli.py set personality 30   # Neutral tone
-python3 processing/intensity_cli.py set engagement 25    # Detached
-python3 processing/intensity_cli.py set voice 45         # Light voice
-python3 processing/intensity_cli.py set rhythm 45        # Moderate variation
+python3 -m processing.intensity.intensity_cli set imperfection 35  # Minimal quirks
+python3 -m processing.intensity.intensity_cli set personality 30   # Neutral tone
+python3 -m processing.intensity.intensity_cli set engagement 25    # Detached
+python3 -m processing.intensity.intensity_cli set voice 45         # Light voice
+python3 -m processing.intensity.intensity_cli set rhythm 45        # Moderate variation
 ```
 
 ---
@@ -285,7 +285,7 @@ After adjusting sliders, test them:
 
 ```bash
 # See the prompt instructions that will be sent to AI
-python3 processing/intensity_cli.py test
+python3 -m processing.intensity.intensity_cli test
 
 # Generate actual content to verify
 python3 run.py --material "Aluminum" --component subtitle
