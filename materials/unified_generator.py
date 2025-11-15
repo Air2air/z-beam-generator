@@ -277,9 +277,11 @@ class UnifiedMaterialsGenerator:
             word_count = len(response.split())
             self.logger.info(f"   ✅ Generated caption ({word_count} words)")
         else:
-            self.logger.error(f"   ❌ Generation failed: {result['reason']}")
-            # Fallback to legacy method if orchestrator fails
-            return self._generate_caption_legacy(material_name, material_data)
+            # Fail explicitly - no legacy fallback
+            # Orchestrator failures should be fixed, not bypassed
+            raise ValueError(f"Caption generation failed: {result['reason']}. "
+                           f"Orchestrator completed {result.get('attempts', 0)} attempts. "
+                           f"This is a quality check failure - fix the issue rather than bypassing validation.")
         
         # Extract sections
         before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*(.+?)(?=\*\*AFTER_TEXT:|\Z)', response, re.DOTALL)
@@ -309,35 +311,6 @@ class UnifiedMaterialsGenerator:
         self.logger.info(f"   After: {len(after_text.split())} words")
         
         return caption_data
-    
-    def _generate_caption_legacy(self, material_name: str, material_data: Dict) -> Dict[str, str]:
-        """Legacy caption generation as fallback (direct API, no orchestrator)"""
-        self.logger.warning("Using legacy caption generation (orchestrator failed)")
-        
-        # Format prompt
-        prompt = self._format_prompt('caption', material_name, material_data)
-        
-        # Generate
-        response = self._generate_with_api(prompt, 'caption')
-        
-        # Extract sections
-        before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*(.+?)(?=\*\*AFTER_TEXT:|\Z)', response, re.DOTALL)
-        after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*(.+)', response, re.DOTALL)
-        
-        if not before_match or not after_match:
-            paragraphs = [p.strip() for p in response.split('\n\n') if p.strip()]
-            if len(paragraphs) < 2:
-                raise ValueError(f"Could not extract before/after sections: {response[:200]}")
-            before_text = paragraphs[0]
-            after_text = paragraphs[1]
-        else:
-            before_text = before_match.group(1).strip()
-            after_text = after_match.group(1).strip()
-        
-        before_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', before_text).strip()
-        after_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', after_text).strip()
-        
-        return {'before': before_text, 'after': after_text}
     
     def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
         """
