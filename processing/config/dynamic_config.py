@@ -300,8 +300,8 @@ class DynamicConfig:
         length_variation = self.base_config.get_length_variation_range()  # 0-100
         target = self.base_config.get_component_length(component_type)
         
-        # Calculate variation percentage (10% to 40%)
-        variation_pct = 0.10 + (length_variation / 100.0 * 0.30)
+        # Calculate variation percentage (10% to 60%)
+        variation_pct = 0.10 + (length_variation / 100.0 * 0.50)
         
         variation_words = int(target * variation_pct)
         
@@ -319,43 +319,50 @@ class DynamicConfig:
     def calculate_voice_parameters(self) -> Dict[str, Any]:
         """
         Calculate voice-related parameters for prompt building.
+        Uses 1-3 scale: 1→0.0, 2→0.5, 3→1.0
         
         Returns:
-            Dict with trait frequencies, quirk rates, structural_predictability, etc.
+            Dict with trait frequencies, quirk rates, structural_predictability, emotional_tone, etc.
         """
-        author_voice = self.base_config.get_author_voice_intensity()  # 0-100
-        personality = self.base_config.get_personality_intensity()  # 0-100
-        engagement = self.base_config.get_engagement_style()  # 0-100
-        structural = self.base_config.get_structural_predictability()  # 0-100 (Phase 3B)
+        author_voice = self.base_config.get_author_voice_intensity()  # 1-3
+        personality = self.base_config.get_personality_intensity()  # 1-3
+        engagement = self.base_config.get_engagement_style()  # 1-3
+        structural = self.base_config.get_structural_predictability()  # 1-3
+        emotional = self.base_config.get_emotional_intensity()  # 1-3
         
-        # These map directly to intensity_manager parameters
+        # Map 1-3 to 0.0/0.5/1.0
+        def map_to_float(value: int) -> float:
+            return (value - 1) * 0.5  # 1→0.0, 2→0.5, 3→1.0
+        
         return {
-            'trait_frequency': author_voice / 100.0,  # 0.0-1.0
-            'opinion_rate': personality / 100.0,  # 0.0-1.0
-            'reader_address_rate': engagement / 100.0,  # 0.0-1.0
-            'colloquialism_frequency': (author_voice + personality) / 200.0,  # 0.0-1.0
-            'structural_predictability': structural / 100.0  # 0.0-1.0 (Phase 3B)
+            'trait_frequency': map_to_float(author_voice),
+            'opinion_rate': map_to_float(personality),
+            'reader_address_rate': map_to_float(engagement),
+            'colloquialism_frequency': map_to_float(max(author_voice, personality)),  # Max of voice and personality
+            'structural_predictability': map_to_float(structural),
+            'emotional_tone': map_to_float(emotional)
         }
     
     def calculate_enrichment_params(self) -> Dict[str, Any]:
         """
         Calculate all parameters for DataEnricher fact formatting.
+        Uses 1-3 scale: 1→0.0, 2→0.5, 3→1.0
         
         Returns:
             Dict with:
-            - technical_intensity: 0-100 (controls spec density)
-            - context_detail_level: 0-100 (controls description length)
+            - technical_intensity: 1-3 (controls spec density)
+            - context_detail_level: 1-3 (controls description length)
             - fact_formatting_style: 'formal' | 'balanced' | 'conversational'
-            - engagement_level: 0-100 (for future use)
+            - engagement_level: 1-3
         """
-        technical = self.base_config.get_technical_language_intensity()
-        context = self.base_config.get_context_specificity()
-        engagement = self.base_config.get_engagement_style()
+        technical = self.base_config.get_technical_language_intensity()  # 1-3
+        context = self.base_config.get_context_specificity()  # 1-3
+        engagement = self.base_config.get_engagement_style()  # 1-3
         
-        # Determine fact formatting style based on engagement
-        if engagement < 40:
+        # Determine fact formatting style based on engagement (1-3)
+        if engagement == 1:
             formatting = 'formal'  # "2.7 g/cm³"
-        elif engagement < 70:
+        elif engagement == 2:
             formatting = 'balanced'  # "roughly 2.7 g/cm³"
         else:
             formatting = 'conversational'  # "around 2.7 g/cm³ (pretty dense!)"

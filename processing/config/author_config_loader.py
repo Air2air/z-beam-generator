@@ -115,11 +115,12 @@ class AuthorConfigLoader:
         with open(base_config.config_path, 'r') as f:
             config_data = yaml.safe_load(f)
         
-        # Apply offsets (with clamping to [0, 100])
+        # Apply offsets (with clamping to [1, 3] for 1-3 scale)
         slider_fields = [
             'author_voice_intensity',
             'personality_intensity',
             'engagement_style',
+            'emotional_intensity',  # Phase 4
             'technical_language_intensity',
             'context_specificity',
             'sentence_rhythm_variation',
@@ -132,11 +133,13 @@ class AuthorConfigLoader:
         applied_offsets = []
         for field in slider_fields:
             if field in offsets:
-                # Default to 50 (moderate) if field missing - INTENTIONAL
+                # Default to 2 (moderate) if field missing - INTENTIONAL
                 # Authors inherit balanced baseline, then offsets are applied
-                base_value = config_data.get(field, 50)
+                base_value = config_data.get(field, 2)  # Changed from 50 to 2 for 1-3 scale
                 offset = offsets[field]
-                new_value = max(0, min(100, base_value + offset))
+                
+                # Clamp to [1, 3] for 1-3 scale (NOT [0, 100])
+                new_value = max(1, min(3, base_value + offset))
                 
                 if new_value != base_value:
                     config_data[field] = new_value

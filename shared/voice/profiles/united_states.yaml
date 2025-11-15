@@ -76,8 +76,18 @@ ai_evasion_and_variation:
   - Quirks: 0.15 nods/200 words (e.g., "from the shop"); 80% unique vocab; phrasal ~2/100w.
   - FAQ: 2 short (24-28w), 2 med (29-34w), 2 long (35-40w); >14% span.
 
+# Grammar Norms: American English (direct, concise sentences)
+grammar_norms:
+  avg_words_per_sentence: 16  # American technical writing: 14-20 words average
+  sentence_length_distribution:  # Target percentages for variety
+    short: 0.30   # <12 words: punchy, direct
+    medium: 0.50  # 12-18 words: standard flow
+    long: 0.20    # 19+ words: detailed explanations
+  preferred_punctuation: [".", "—"]  # Period for clarity, em-dash for emphasis
+  compound_sentence_ratio: 0.25  # 25% sentences use coordinating conjunctions
+
 generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 95, length_variation: true}
+  caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
   faq: {word_range_per: "24-40", distribution: "2 short/med/long", cv_target: ">14%"}
   text: {max_words: 150, practical_chain: true}
   technical: {units_mandatory: true, pattern_flex: "0.2 light"}

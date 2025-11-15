@@ -75,8 +75,18 @@ ai_evasion_and_variation:
   - Quirks: 0.15 evidence notes/200 words (e.g., "as scans show"); 75% unique vocab; markers <10%.
   - FAQ Special: 2 short (28-32w), 2 med (33-37w), 2 long (38-42w); >18% variation.
 
+# Grammar Norms: Indonesian English (clear, cause-effect structure)
+grammar_norms:
+  avg_words_per_sentence: 17  # EFL tendency: moderate length, clear structure
+  sentence_length_distribution:
+    short: 0.25   # <12 words: clarity emphasis
+    medium: 0.55  # 12-18 words: preferred for clarity
+    long: 0.20    # 19+ words: cause-effect chains
+  preferred_punctuation: [".", ","]  # Simple punctuation for clarity
+  compound_sentence_ratio: 0.35  # 35% use coordinating/subordinating conjunctions
+
 generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 100, length_variation: true}
+  caption: {min_words: 100, length_variation: true}  # Sentences calculated dynamically
   faq: {word_range_per: "28-42", distribution: "2 short/med/long", cv_target: ">18%"}
   text: {max_words: 150, cause_effect: true, passive_mix: 40%}
   technical: {units_mandatory: true, pattern_flex: "0.5 subtle"}

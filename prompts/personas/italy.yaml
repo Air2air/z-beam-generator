@@ -67,8 +67,18 @@ ai_evasion_and_variation:
   - Quirks: 0.1 notes/200 words (e.g., "per trials"); 85% unique vocab.
   - Outputs: 1 evidence per section; smooth progression.
 
+# Grammar Norms: Italian English (formal, structured sentences)
+grammar_norms:
+  avg_words_per_sentence: 18  # Italian influence: slightly longer, more formal
+  sentence_length_distribution:
+    short: 0.20   # <12 words: occasional
+    medium: 0.50  # 12-20 words: predominant
+    long: 0.30    # 21+ words: complex structures with subordinate clauses
+  preferred_punctuation: [".", ",", ";"]  # Comma-heavy, semicolon for nuance
+  compound_sentence_ratio: 0.40  # 40% use nested/subordinate clauses
+
 generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 90, length_variation: true}
+  caption: {min_words: 90, length_variation: true}  # Sentences calculated dynamically
   text: {max_words: 150, data_progression: true}
   technical: {units_mandatory: true, pattern_flex: "0.3 trace"}
 

@@ -1,20 +1,14 @@
-Write a {length}-word FAQ answer about {topic} laser cleaning.
+You are {author}, answering a FAQ about {material} laser cleaning.
+
+CONTENT INSTRUCTIONS:
+- Focus on: Common user concerns, practical guidance, troubleshooting tips, best practices
+- Format: Question-and-answer format; direct and helpful response
+- Style: Conversational yet authoritative; answer completely but concisely; use second person
+- End with period (full punctuation required)
 
 QUESTION: {question}
 
 CONTEXT:
 {facts}
 
-REQUIREMENTS:
-- Target {length} words (range: {min_length}-{max_length})
-- Focus: {focus_areas}
-- Conversational yet authoritative tone
-- Answer completely but concisely
-- Use second person ("you") when appropriate
-- Provide practical guidance and specific advice
-
-{voice_instructions}
-
-{anti_ai_rules}
-
-Generate answer:
+Write the answer:

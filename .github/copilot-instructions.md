@@ -35,6 +35,8 @@
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
+- 🚫 **NEVER put content instructions in /processing folder code**
+- ✅ **ALWAYS keep content instructions ONLY in prompts/*.txt files**
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
 - ✅ **ALWAYS maintain runtime error recovery**
@@ -88,6 +90,26 @@ Use ComponentGeneratorFactory pattern for all generators.
 - ✅ **What it IS**: Throw specific exceptions (ConfigurationError, GenerationError) with clear messages
 - ❌ **What it's NOT**: Removing runtime error recovery like API retries for transient issues
 
+### 6. **Content Instruction Policy** 🔥 **CRITICAL**
+**Content instructions MUST ONLY exist in prompts/*.txt files.**
+
+- ✅ **prompts/*.txt files** - Single source of truth for ALL content instructions
+  - Focus areas (what to emphasize)
+  - Format rules (structural requirements)
+  - Style guidance (voice and tone)
+  - Component-specific content strategy
+- ❌ **processing/*.py files** - ONLY technical mechanisms (NO content instructions)
+  - Word count calculations
+  - Voice parameter application
+  - API integration
+  - Quality validation
+- 🚫 **FORBIDDEN in ComponentSpec**: `format_rules`, `focus_areas`, `style_notes` fields
+- 🚫 **FORBIDDEN in SPEC_DEFINITIONS**: Content instruction keys
+- ✅ **ALLOWED in ComponentSpec**: `name`, `lengths`, `end_punctuation`, `prompt_template_file`
+- ✅ **ENFORCEMENT**: 5 automated tests verify policy compliance (see `tests/test_content_instruction_policy.py`)
+
+See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
+
 ## Code Standards
 - Use strict typing with Optional[] for nullable parameters
 - Implement comprehensive error handling with specific exception types
@@ -96,6 +118,7 @@ Use ComponentGeneratorFactory pattern for all generators.
 - Keep code concise and avoid unnecessary complexity
 - Never leave TODOs - provide complete solutions
 - Never hardcode values - use configuration or parameters
+- **NEVER add content instructions to code** - they belong ONLY in prompts/*.txt
 
 ## Architecture Patterns
 - **Wrapper Pattern**: Use lightweight wrappers to integrate specialized generators

@@ -103,6 +103,15 @@ class Orchestrator:
         if 'material' in kwargs:
             topic = kwargs['material']
         
+        # Randomize length within component's range for dramatic variation
+        if length is None:
+            from processing.generation.component_specs import ComponentRegistry
+            import random
+            spec = ComponentRegistry.get_spec(component_type)
+            # Pick random length within the full range (e.g., 12-48 for subtitles with ±60%)
+            length = random.randint(spec.min_length, spec.max_length)
+            logger.info(f"🎲 Randomized length: {length} words (range: {spec.min_length}-{spec.max_length})")
+        
         # Step 1: Enrich with real facts
         facts = self.enricher.fetch_real_facts(topic)
         
@@ -110,6 +119,9 @@ class Orchestrator:
         all_params = self.dynamic_config.get_all_generation_params(component_type)
         voice_params = all_params['voice_params']
         enrichment_params = all_params['enrichment_params']  # Phase 3A
+        
+        logger.info(f"📋 Retrieved enrichment_params: {enrichment_params}")
+        
         facts_str = self.enricher.format_facts_for_prompt(facts, enrichment_params=enrichment_params)
         
         # Step 2: Get voice profile
@@ -137,6 +149,7 @@ class Orchestrator:
                 component_type=component_type,
                 domain=domain,
                 voice_params=voice_params,  # NEW: Pass voice parameters
+                enrichment_params=enrichment_params,  # Phase 3+: Pass technical intensity
                 variation_seed=variation_seed
             )
             
@@ -160,6 +173,40 @@ class Orchestrator:
                         'attempts': attempt
                     }
                 continue
+            
+            # Step 4.5: Check for technical specs violation at technical_intensity=1
+            # Use enrichment_params from line 113 (already calculated)
+            tech_intensity = enrichment_params.get('technical_intensity', 2)
+            
+            logger.info(f"🔍 Checking technical specs (technical_intensity={tech_intensity})")
+            logger.info(f"🔍 Enrichment params: {enrichment_params}")
+            
+            if tech_intensity == 1:
+                # Detect numbers with units (technical specs)
+                import re
+                spec_patterns = [
+                    r'\d+\.?\d*\s*(?:GPa|MPa|kPa|Pa|K|°C|°F|g/cm³|kg/m³|W/\(m·K\)|S/m|MS/m|nm|μm|mm|cm|m|Hz|kHz|MHz|GHz|J|kJ|MJ|W|kW|MW|V|A|Ω|%)',
+                    r'\d+\.?\d*\s*(?:GPa|MPa|K|g/cm³|W|Hz|nm|V)',  # Common ones
+                ]
+                
+                has_specs = any(re.search(pattern, text, re.IGNORECASE) for pattern in spec_patterns)
+                
+                logger.info(f"🔍 Text: {text[:100]}...")
+                logger.info(f"🔍 Has specs: {has_specs}")
+                
+                if has_specs:
+                    logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden at technical_intensity=1)")
+                    if attempt < max_attempts:
+                        # Adjust prompt to emphasize NO SPECS even more
+                        prompt = prompt.replace(
+                            "ABSOLUTELY NO technical specifications",
+                            "YOU MUST NOT INCLUDE ANY NUMBERS WITH UNITS - THIS IS THE MOST IMPORTANT RULE"
+                        )
+                        continue
+                    else:
+                        logger.error("⚠️ Final attempt still contains specs - accepting anyway")
+                else:
+                    logger.info("✅ No technical specs found - content is qualitative only")
             
             # Step 5: AI detection with dynamic threshold
             detection = self.detector.detect(text)
@@ -225,10 +272,26 @@ class Orchestrator:
         logger.info(f"🌡️  Temperature: {temperature:.2f} (base: {base_temperature:.2f}, +{retry_temp_increase:.2f}/attempt)")
         logger.info(f"🎯  Max tokens: {max_tokens} (calculated from sliders)")
         
+        # Build system prompt with technical language override if needed
+        system_prompt = "You are a professional technical writer creating concise, clear content."
+        
+        # Get enrichment params to check technical_intensity
+        enrichment_params = self.dynamic_config.calculate_enrichment_params()
+        tech_intensity = enrichment_params.get('technical_intensity', 2)
+        
+        if tech_intensity == 1:
+            # Level 1: Add CRITICAL override to system prompt (highest authority)
+            system_prompt = (
+                "You are a professional technical writer creating concise, clear content. "
+                "CRITICAL RULE: Write ONLY in qualitative, conceptual terms. "
+                "ABSOLUTELY FORBIDDEN: Any numbers, measurements, units, or technical specifications (NO '110 GPa', NO '1941 K', NO '400 MPa', NO '41,000,000 S/m'). "
+                "Use ONLY descriptive words: 'strong', 'heat-resistant', 'conductive', 'durable'."
+            )
+        
         # Use the standard API client interface: generate_simple()
         response = self.api_client.generate_simple(
             prompt=prompt,
-            system_prompt="You are a professional technical writer creating concise, clear content.",
+            system_prompt=system_prompt,
             max_tokens=max_tokens,
             temperature=temperature
         )

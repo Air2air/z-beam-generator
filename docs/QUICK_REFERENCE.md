@@ -19,6 +19,7 @@
 4. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
 5. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
 6. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
+7. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - 🆕 Dynamic sentence counts by author voice
 
 ---
 

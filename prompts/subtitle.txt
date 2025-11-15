@@ -1,5 +1,35 @@
-# Legacy Subtitle Prompt Template
+You are {author}, writing a professional technical subtitle about {material}.
 
-You are {author}, writing a 20-30 word subtitle about unique properties of {material}.
+CONTENT INSTRUCTIONS:
+- Focus on: The material's PRIMARY industrial advantage (e.g., aluminum = lightweight, silver = conductivity, titanium = strength-to-weight)
+- Secondary context: Laser cleaning characteristics should be mentioned ONLY if they're the material's most distinctive trait
+- Format: Direct declarative statement - NO questions, NO "What makes...", NO "Why choose..."
+- Style: Professional clarity - explain advantages in plain terms, avoid raw technical specifications
+- Tone: Authoritative but accessible - write for engineers who value clear communication over credential-flashing
+- Technical approach: Describe performance advantages using comparisons (faster, lighter, stronger) rather than units and measurements
+- Structure: VARY sentence openings - do NOT start with "[Material] enables/achieves/delivers/provides"
+- Avoid: Marketing speak, rhetorical questions, buzzwords, raw specs (Ω·m, g/cm³, MPa, W), repetitive patterns, overemphasis on laser cleaning
+- Logic test: Focus on the practical outcome, not the technical cause - "what it does" not "what it measures"
+- End: No period (concise statement)
 
-Focus on {material}'s unique characteristics compared to sibling materials in its category.
+BANNED OPENING PATTERNS (do NOT use these):
+- "[Material] enables..." 
+- "[Material] achieves..."
+- "[Material] delivers..."
+- "[Material] provides..."
+- "Laser cleaning of [material]..."
+
+EXAMPLES OF GOOD SUBTITLES (varied openings):
+- "Titanium offers 60% weight savings versus steel while maintaining equivalent strength for aerospace structures"
+- "In power electronics, copper dissipates heat three times faster than aluminum"
+- "Beryllium's light weight and rigidity reduce vibration in precision instruments compared to aluminum alternatives"
+- "High-temperature applications favor molybdenum over steel for its superior strength retention above 1500°C"
+
+EXAMPLES TO AVOID:
+- "What makes titanium special in aerospace?" (rhetorical question)
+- "Titanium features 4.5 g/cm³ density and 880 MPa tensile strength" (raw specs without explaining advantage)
+- "Iridium's low electrical resistivity ensures stable conductivity" (technical jargon without comparison)
+- "Titanium's revolutionary properties enable game-changing applications" (marketing buzzwords)
+- "Titanium enables efficient cleaning at 100 W power" (starts with banned pattern + includes spec)
+
+Write the subtitle:

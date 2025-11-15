@@ -16,24 +16,23 @@ class ComponentSpec:
     """
     Specification for a component type.
     
+    CRITICAL: Content instructions (focus, format, style) are ONLY defined in prompts/*.txt files.
+    This class contains ONLY structural metadata (lengths, punctuation).
+    
     Attributes:
         name: Component identifier (subtitle, caption, etc.)
         default_length: Target word count
-        format_rules: Specific formatting requirements
-        focus_areas: What to emphasize in content
-        style_notes: Additional style guidance
         end_punctuation: Whether to include period at end
         min_length: Minimum word count (from config)
         max_length: Maximum word count (from config)
+        prompt_template_file: Path to prompt template file (e.g., 'prompts/subtitle.txt')
     """
     name: str
     default_length: int
-    format_rules: str
-    focus_areas: str
-    style_notes: str
     end_punctuation: bool = True
     min_length: Optional[int] = None
     max_length: Optional[int] = None
+    prompt_template_file: Optional[str] = None
     
     def __post_init__(self):
         # Set defaults if not provided (backward compatibility)
@@ -102,9 +101,18 @@ class ComponentRegistry:
         try:
             if 'length_variation_range' not in config:
                 raise ValueError("Config missing 'length_variation_range' - required for dynamic length calculation")
-            length_variation = config['length_variation_range']  # 0-100
-            # Map slider to percentage: 0→10%, 50→25%, 100→40%
-            variation_pct = 0.10 + (length_variation / 100.0 * 0.30)
+            length_variation = config['length_variation_range']  # 1-3 scale
+            
+            # Map 1-3 scale to variation percentages:
+            # 1 = ±10% (tight)
+            # 2 = ±20% (moderate)  
+            # 3 = ±60% (loose/dramatic)
+            variation_map = {
+                1: 0.10,  # ±10%
+                2: 0.20,  # ±20%
+                3: 0.60   # ±60%
+            }
+            variation_pct = variation_map.get(length_variation, 0.20)  # Default to moderate
             variation_words = int(default * variation_pct)
             
             return {
@@ -120,41 +128,32 @@ class ComponentRegistry:
                 'max': min(int(default * 1.1), default + 5)
             }
     
-    # Component specifications (content characteristics only - lengths come from config)
+    # Component specifications (lengths and punctuation ONLY - content instructions in prompts/*.txt)
+    # ALL content instructions (focus, format, style) MUST be defined in prompts/{component}.txt
     SPEC_DEFINITIONS = {
         'subtitle': {
-            'format_rules': 'No period at end; concise and punchy',
-            'focus_areas': 'Unique characteristics, key benefits, practical applications',
-            'style_notes': 'Professional but natural; vary sentence structure; avoid formulaic patterns',
-            'end_punctuation': False
+            'end_punctuation': False,
+            'prompt_template_file': 'prompts/subtitle.txt'
         },
         
         'caption': {
-            'format_rules': 'Technical description with measurements when relevant',
-            'focus_areas': 'Surface analysis details, microscopy observations, specific data points',
-            'style_notes': 'Technical but accessible; include 1-2 measurements; mix short and long sentences',
-            'end_punctuation': True
+            'end_punctuation': True,
+            'prompt_template_file': 'prompts/caption.txt'
         },
         
         'description': {
-            'format_rules': 'Comprehensive overview with multiple paragraphs',
-            'focus_areas': 'Properties, applications, cleaning process details, benefits',
-            'style_notes': 'Informative and detailed; balance technical accuracy with readability',
-            'end_punctuation': True
+            'end_punctuation': True,
+            'prompt_template_file': 'prompts/description.txt'
         },
         
         'faq': {
-            'format_rules': 'Question-and-answer format; direct and helpful response',
-            'focus_areas': 'Common user concerns, practical guidance, troubleshooting tips, best practices',
-            'style_notes': 'Conversational yet authoritative; answer completely but concisely; use second person',
-            'end_punctuation': True
+            'end_punctuation': True,
+            'prompt_template_file': 'prompts/faq.txt'
         },
         
         'troubleshooter': {
-            'format_rules': 'Problem diagnosis and solution steps; actionable guidance',
-            'focus_areas': 'Issue identification, root causes, step-by-step solutions, prevention tips',
-            'style_notes': 'Clear and methodical; use numbered steps when appropriate; focus on actionable fixes',
-            'end_punctuation': True
+            'end_punctuation': True,
+            'prompt_template_file': 'prompts/troubleshooter.txt'
         }
     }
     
@@ -168,7 +167,7 @@ class ComponentRegistry:
             component_type: Component identifier
             
         Returns:
-            ComponentSpec object with lengths from config
+            ComponentSpec object with lengths from config and prompt template file
             
         Raises:
             KeyError: If component type not registered
@@ -181,16 +180,14 @@ class ComponentRegistry:
         # Get lengths from config
         lengths = cls._get_component_lengths(component_type)
         
-        # Build ComponentSpec with config lengths
+        # Build ComponentSpec with config lengths and prompt template file
         return ComponentSpec(
             name=component_type,
             default_length=lengths['default'],
             min_length=lengths['min'],
             max_length=lengths['max'],
-            format_rules=spec_def['format_rules'],
-            focus_areas=spec_def['focus_areas'],
-            style_notes=spec_def['style_notes'],
-            end_punctuation=spec_def['end_punctuation']
+            end_punctuation=spec_def['end_punctuation'],
+            prompt_template_file=spec_def.get('prompt_template_file')
         )
     
     @classmethod
@@ -203,10 +200,8 @@ class ComponentRegistry:
             spec: ComponentSpec to register
         """
         cls.SPEC_DEFINITIONS[spec.name] = {
-            'format_rules': spec.format_rules,
-            'focus_areas': spec.focus_areas,
-            'style_notes': spec.style_notes,
-            'end_punctuation': spec.end_punctuation
+            'end_punctuation': spec.end_punctuation,
+            'prompt_template_file': spec.prompt_template_file
         }
     
     @classmethod

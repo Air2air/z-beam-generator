@@ -68,36 +68,40 @@ class ProcessingConfig:
     # =========================================================================
     
     def get_author_voice_intensity(self) -> int:
-        """Get author voice intensity (0-100)."""
-        return self.config.get('author_voice_intensity', 50)
+        """Get author voice intensity (1-3)."""
+        return self.config.get('author_voice_intensity', 2)
     
     def get_personality_intensity(self) -> int:
-        """Get personality intensity (0-100)."""
-        return self.config.get('personality_intensity', 40)
+        """Get personality intensity (1-3)."""
+        return self.config.get('personality_intensity', 2)
     
     def get_engagement_style(self) -> int:
-        """Get engagement style (0-100)."""
-        return self.config.get('engagement_style', 35)
+        """Get engagement style (1-3)."""
+        return self.config.get('engagement_style', 2)
+    
+    def get_emotional_intensity(self) -> int:
+        """Get emotional intensity (1-3)."""
+        return self.config.get('emotional_intensity', 2)
     
     def get_technical_language_intensity(self) -> int:
-        """Get technical language intensity (0-100)."""
-        return self.config.get('technical_language_intensity', 50)
+        """Get technical language intensity (1-3)."""
+        return self.config.get('technical_language_intensity', 2)
     
     def get_context_specificity(self) -> int:
-        """Get context specificity (0-100)."""
-        return self.config.get('context_specificity', 55)
+        """Get context specificity (1-3)."""
+        return self.config.get('context_specificity', 2)
     
     def get_sentence_rhythm_variation(self) -> int:
-        """Get sentence rhythm variation (0-100)."""
-        return self.config.get('sentence_rhythm_variation', 50)
+        """Get sentence rhythm variation (1-3)."""
+        return self.config.get('sentence_rhythm_variation', 2)
     
     def get_imperfection_tolerance(self) -> int:
-        """Get imperfection tolerance (0-100)."""
-        return self.config.get('imperfection_tolerance', 50)
+        """Get imperfection tolerance (1-3)."""
+        return self.config.get('imperfection_tolerance', 2)
     
     def get_structural_predictability(self) -> int:
-        """Get structural predictability (0-100)."""
-        return self.config.get('structural_predictability', 45)
+        """Get structural predictability (1-3)."""
+        return self.config.get('structural_predictability', 2)
     
     def get_ai_avoidance_intensity(self) -> int:
         """Get AI avoidance intensity (0-100)."""

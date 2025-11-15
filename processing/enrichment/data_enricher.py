@@ -117,39 +117,39 @@ class DataEnricher:
         """
         # Phase 3A: Extract params from enrichment_params or fall back to technical_intensity
         if enrichment_params:
-            tech_intensity = enrichment_params.get('technical_intensity', 50)
-            context_detail = enrichment_params.get('context_detail_level', 50)
+            tech_intensity = enrichment_params.get('technical_intensity', 2)  # 1-3
+            context_detail = enrichment_params.get('context_detail_level', 2)  # 1-3
             fact_style = enrichment_params.get('fact_formatting_style', 'balanced')
-            engagement = enrichment_params.get('engagement_level', 50)
+            engagement = enrichment_params.get('engagement_level', 2)  # 1-3
         else:
             # Backward compatibility
             tech_intensity = technical_intensity
-            context_detail = 50
+            context_detail = 2  # 1-3 scale
             fact_style = 'balanced'
-            engagement = 50
+            engagement = 2  # 1-3 scale
         lines = []
         
         # Always include category with context detail
         if facts.get('category'):
             category_line = f"Category: {facts['category']}"
             # Add subcategory based on context_detail_level
-            if context_detail > 50 and facts.get('subcategory'):
+            if context_detail >= 2 and facts.get('subcategory'):
                 category_line += f" ({facts['subcategory']})"
             lines.append(category_line)
         
-        # Calculate how many specs to include based on technical_intensity
-        if tech_intensity <= 30:
-            # Low: Minimal specs - just highlight 1-2 key properties
+        # Calculate how many specs to include based on technical_intensity (1-3 scale)
+        if tech_intensity == 1:
+            # Level 1: Conceptual only, NO technical specs
+            max_props = 0
+            max_settings = 0
+            include_apps = False
+        elif tech_intensity == 2:
+            # Level 2: Minimal specs - 1-2 key properties
             max_props = 2
             max_settings = 1
             include_apps = False
-        elif tech_intensity <= 60:
-            # Moderate: Balanced specs
-            max_props = 3
-            max_settings = 2
-            include_apps = True
-        else:
-            # High: Full technical detail
+        else:  # tech_intensity == 3
+            # Level 3: Full technical detail
             max_props = 5
             max_settings = 3
             include_apps = True
@@ -167,13 +167,13 @@ class DataEnricher:
                 lines.append(f"  - {setting}: {value}")
         
         if include_apps and facts.get('applications'):
-            # Truncate based on context_detail_level
-            if context_detail < 30:
-                max_chars = 100
-            elif context_detail < 60:
-                max_chars = 200
-            else:
-                max_chars = 300
+            # Truncate based on context_detail_level (1-3)
+            if context_detail == 1:
+                max_chars = 100  # Brief
+            elif context_detail == 2:
+                max_chars = 200  # Moderate
+            else:  # context_detail == 3
+                max_chars = 300  # Full
             lines.append(f"Applications: {facts['applications'][:max_chars]}")
         
         return "\n".join(lines)
@@ -185,7 +185,7 @@ class DataEnricher:
         Args:
             value: Original value (e.g., "2.7 g/cm³")
             style: 'formal', 'balanced', or 'conversational'
-            engagement: 0-100 engagement level
+            engagement: 1-3 engagement level
             
         Returns:
             Formatted value string

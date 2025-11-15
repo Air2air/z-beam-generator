@@ -15,6 +15,7 @@ import os
 from typing import Dict, Optional
 
 from processing.generation.component_specs import ComponentRegistry, DomainContext
+from processing.generation.sentence_calculator import SentenceCalculator
 
 logger = logging.getLogger(__name__)
 
@@ -52,6 +53,23 @@ class PromptBuilder:
             return f.read().strip()
     
     @staticmethod
+    def _load_component_template(component_type: str) -> Optional[str]:
+        """
+        Load component-specific prompt template from prompts/{component}.txt.
+        
+        Args:
+            component_type: Component type (subtitle, caption, etc.)
+            
+        Returns:
+            Template string or None if file doesn't exist
+        """
+        template_path = os.path.join('prompts', f'{component_type}.txt')
+        if os.path.exists(template_path):
+            with open(template_path, 'r', encoding='utf-8') as f:
+                return f.read().strip()
+        return None
+    
+    @staticmethod
     def build_unified_prompt(
         topic: str,  # Renamed from 'material' for generality
         voice: Dict,
@@ -61,6 +79,7 @@ class PromptBuilder:
         component_type: str = "subtitle",
         domain: str = "materials",
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters from config
+        enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity control
         variation_seed: Optional[int] = None
     ) -> str:
         """
@@ -130,7 +149,9 @@ class PromptBuilder:
                 spec=spec,
                 domain_ctx=domain_ctx,
                 voice_params=voice_params,  # NEW: Pass to spec builder
-                variation_seed=variation_seed
+                enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
+                variation_seed=variation_seed,
+                voice=voice  # NEW: Pass full voice profile for grammar_norms access
             )
         else:
             # Fallback to legacy generic prompt
@@ -151,7 +172,9 @@ class PromptBuilder:
         spec,  # ComponentSpec
         domain_ctx,  # DomainContext
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters
-        variation_seed: Optional[int] = None
+        enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity
+        variation_seed: Optional[int] = None,
+        voice: Optional[Dict] = None  # NEW: Full voice profile for grammar_norms access
     ) -> str:
         """
         Build prompt using component specification and domain context.
@@ -165,19 +188,75 @@ class PromptBuilder:
 FACTUAL INFORMATION:
 {facts if facts else f"[{domain_ctx.example_facts}]"}
 
-FOCUS AREAS: {spec.focus_areas}
 DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
 
         if context:
             context_section += f"\n\nADDITIONAL CONTEXT:\n{context}"
         
+        # Load component-specific template if available
+        component_template = PromptBuilder._load_component_template(spec.name)
+        if component_template:
+            # Replace placeholders in template
+            component_context = component_template.format(
+                author=author,
+                material=topic,
+                country=country
+            )
+            # Template contains all content instructions (focus, format, style)
+            context_section = f"""{component_context}
+
+{context_section}"""
+        
         # Build requirements section with dynamic sentence structure guidance
+        # Override terminology based on technical_intensity
+        tech_intensity = enrichment_params.get('technical_intensity', 2) if enrichment_params else 2
+        
+        if tech_intensity == 1:
+            # Level 1: Override to prevent any specs
+            terminology = "Qualitative descriptions only; NO numbers, units, or measurements"
+        else:
+            # Level 2-3: Use domain default
+            terminology = domain_ctx.terminology_style
+        
         requirements = [
             f"- Length: {length} words (range: {spec.min_length}-{spec.max_length})",
-            f"- Format: {spec.format_rules}",
-            f"- Style: {spec.style_notes}",
-            f"- Terminology: {domain_ctx.terminology_style}"
+            f"- Terminology: {terminology}"
         ]
+        
+        # Phase 3+: Add CRITICAL technical language requirement based on enrichment_params
+        if enrichment_params:
+            tech_intensity = enrichment_params.get('technical_intensity', 2)  # 1-3 scale
+            if tech_intensity == 1:
+                # Level 1: NO technical specs at all - REINFORCE THIS MULTIPLE TIMES
+                requirements.append("\n🚫 CRITICAL REQUIREMENT - TECHNICAL LANGUAGE:")
+                requirements.append("- ABSOLUTELY NO technical specifications, measurements, numbers with units, or property values")
+                requirements.append("- Examples of FORBIDDEN content: '1941 K', '8.8 g/cm³', '500 J/kg·K', '19.3 g/cm³', '110 GPa', '400 MPa', '41,000,000 S/m'")
+                requirements.append("- ONLY use qualitative descriptions: 'heat-resistant', 'dense', 'strong', 'conductive', 'durable'")
+                requirements.append("- Focus on benefits, applications, and characteristics WITHOUT precise values")
+                requirements.append("- ⚠️ THIS OVERRIDES ALL OTHER INSTRUCTIONS - NO EXCEPTIONS")
+            elif tech_intensity == 2:
+                # Level 2: Minimal specs (1-2 max)
+                requirements.append("\n⚠️ TECHNICAL LANGUAGE: Minimal specs only (1-2 max, prefer conceptual)")
+            # Level 3: Allow 3-5 specs (no restriction needed)
+        
+        # Phase 4: Add EMOTIONAL TONE requirement based on voice_params
+        if voice_params:
+            emotional_tone = voice_params.get('emotional_tone', 0.5)  # 0.0/0.5/1.0
+            if emotional_tone == 0.0:
+                # Level 1: Clinical, neutral
+                requirements.append("\n🔬 EMOTIONAL TONE:")
+                requirements.append("- Use clinical, objective, neutral language")
+                requirements.append("- Focus on facts and practical benefits")
+                requirements.append("- Avoid enthusiasm, excitement, or emotional appeals")
+                requirements.append("- Examples: 'provides', 'offers', 'enables' NOT 'unlocks!', 'discover', 'amazing'")
+            elif emotional_tone == 1.0:
+                # Level 3: Evocative, enthusiastic
+                requirements.append("\n✨ EMOTIONAL TONE:")
+                requirements.append("- Use evocative, enthusiastic, emotionally engaging language")
+                requirements.append("- Create excitement and emotional connection")
+                requirements.append("- Use powerful verbs and vivid descriptions")
+                requirements.append("- Examples: 'unlock', 'transform', 'discover', 'revolutionize', 'marvel at'")
+            # Level 2 (0.5): Balanced - no specific guidance, AI decides naturally
         
         if not spec.end_punctuation:
             requirements.append("- NO period at end")
@@ -199,8 +278,15 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             else:
                 voice_section += "\n- Voice intensity: Strong - emphasize author personality throughout"
         
-        # Add sentence structure guidance if available from voice profile
-        if sentence_style:
+        # DYNAMIC SENTENCE CALCULATION: Extract grammar_norms from voice profile
+        grammar_norms = voice.get('grammar_norms', {}) if voice else {}
+        if grammar_norms:
+            # Calculate dynamic sentence target based on word count and grammar norms
+            sentence_guidance = SentenceCalculator.get_sentence_guidance(length, grammar_norms)
+            voice_section += f"\n- {sentence_guidance}"
+            logger.debug(f"Using dynamic sentence calculation: {sentence_guidance}")
+        elif sentence_style:
+            # Fallback to explicit sentence_style from voice profile (backward compatibility)
             voice_section += f"\n- Sentence structure: {sentence_style}"
         else:
             # Fallback to config.yaml sentence_variation or generic guidance
@@ -258,6 +344,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             # Add to voice section if any guidance generated
             if personality_guidance:
                 voice_section += "\n\nPERSONALITY GUIDANCE:" + personality_guidance
+        
+        # Phase 3+: Technical language guidance moved to REQUIREMENTS section for higher priority
         
         # Phase 3B: Build anti-AI section with structural_predictability control
         try:

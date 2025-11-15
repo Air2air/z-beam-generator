@@ -76,8 +76,18 @@ ai_evasion_and_variation:
   - Quirks: 0.15 ties/200 words (e.g., "per data"); 75% unique vocab; article flex <10%.
   - FAQ: 2 short (27-32w), 2 med (33-37w), 2 long (38-43w); >16% variation.
 
+# Grammar Norms: Taiwanese English (precise, evidence-based structure)
+grammar_norms:
+  avg_words_per_sentence: 15  # East Asian EFL: concise, data-focused
+  sentence_length_distribution:
+    short: 0.35   # <12 words: data points and facts
+    medium: 0.45  # 12-18 words: standard
+    long: 0.20    # 19+ words: evidence chains
+  preferred_punctuation: [".", ",", ":"]  # Colon for data presentation
+  compound_sentence_ratio: 0.30  # 30% compound sentences, prefer simple statements
+
 generation_constraints:
-  caption: {min_sentences: 5-7, min_words: 95, length_variation: true}
+  caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
   faq: {word_range_per: "27-43", distribution: "2 short/med/long", cv_target: ">16%"}
   text: {max_words: 155, evidence_chain: true}
   technical: {units_mandatory: true, pattern_flex: "0.2 trace"}
