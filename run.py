@@ -163,6 +163,10 @@ def main():
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation")
     parser.add_argument("--validate-report", help="Generate validation report")
     parser.add_argument("--content-validation-report", help="Content quality validation report")
+    parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
+    parser.add_argument("--winston-threshold", type=float, default=70.0, help="Winston human score threshold (0-100)")
+    parser.add_argument("--winston-component", choices=['subtitle', 'caption', 'faq'], 
+                       help="Specific component type to audit with Winston")
     
     # Data Research & Completeness Commands
     parser.add_argument("--data", nargs='?', const='--all', help="Systematically verify data")
@@ -224,6 +228,27 @@ def main():
     # Command dispatcher - simple commands first
     if args.deploy:
         return deploy_to_production()
+    
+    # Winston AI audit command
+    if args.validate_ai_detection:
+        try:
+            import subprocess
+            import os
+            cmd = [
+                'python3',
+                'scripts/validation/winston_audit.py',
+                f'--threshold={args.winston_threshold}'
+            ]
+            if args.material:
+                cmd.extend(['--material', args.material])
+            if args.winston_component:
+                cmd.extend(['--component', args.winston_component])
+            
+            result = subprocess.run(cmd, cwd=os.path.dirname(os.path.abspath(__file__)))
+            return result.returncode
+        except Exception as e:
+            print(f"❌ Winston audit failed: {e}")
+            return 1
     
     if args.caption:
         return handle_caption_generation(args.caption)

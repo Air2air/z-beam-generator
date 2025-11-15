@@ -58,11 +58,35 @@ class Orchestrator:
         # Initialize components with dynamic parameters
         self.enricher = DataEnricher()
         self.voice_store = AuthorVoiceStore()
-        self.detector = AIDetectorEnsemble(use_ml=False)
+        
+        # Initialize Winston client for AI detection
+        winston_client = None
+        try:
+            from shared.api.client_factory import create_api_client
+            winston_client = create_api_client('winston')
+            logger.info("Winston API client initialized for AI detection")
+        except Exception as e:
+            logger.warning(f"Winston API client not available: {e} - using pattern-based detection only")
+        
+        # Initialize detector with Winston client
+        self.detector = AIDetectorEnsemble(use_ml=False, winston_client=winston_client)
         self.validator = ReadabilityValidator(min_score=readability_thresholds['min'])
         
         # Store dynamically calculated values
         self.ai_threshold = detection_threshold / 100.0  # Convert to 0-1 scale
+        
+        # Initialize Winston feedback database if configured
+        self.feedback_db = None
+        try:
+            from processing.config.config_loader import get_config
+            config = get_config()
+            db_path = config.config.get('winston_feedback_db_path')
+            if db_path:
+                from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+                self.feedback_db = WinstonFeedbackDatabase(db_path)
+                logger.info(f"Winston feedback database initialized at {db_path}")
+        except Exception as e:
+            logger.warning(f"Winston feedback database unavailable: {e}")
         
         logger.info("Orchestrator initialized with dynamic config")
         logger.info(f"  AI threshold: {self.ai_threshold:.3f} (calculated from sliders)")
@@ -127,12 +151,17 @@ class Orchestrator:
         # Step 2: Get voice profile
         voice = self.voice_store.get_voice(author_id)
         
-        # Step 3: Calculate dynamic retry behavior for this generation
-        retry_config = self.dynamic_config.calculate_retry_behavior()
-        max_attempts = retry_config['max_attempts']
+        # Step 3: Determine max attempts based on Winston mode
+        # Adaptive retry can extend this dynamically based on feedback
+        max_attempts = self._get_max_attempts_for_mode()
+        absolute_max = 3  # Safety limit for adaptive retry
         
-        # Step 4: Generation loop with dynamic retry
-        for attempt in range(1, max_attempts + 1):
+        # Track Winston feedback for adaptive decisions
+        last_winston_result = None
+        
+        # Step 4: Generation loop with adaptive retry
+        attempt = 1
+        while attempt <= max_attempts and attempt <= absolute_max:
             logger.info(f"Attempt {attempt}/{max_attempts} for {topic} {component_type}")
             
             # Generate variation seed using timestamp to defeat caching
@@ -161,17 +190,32 @@ class Orchestrator:
                     attempt=attempt
                 )
             
-            # Generate content with dynamic temperature
+            # Generate content with adaptive temperature
             try:
-                text = self._call_api(prompt, attempt=attempt, component_type=component_type)
+                # Use adaptive temperature if we have Winston feedback
+                base_temp = self.dynamic_config.calculate_temperature(component_type)
+                if attempt > 1 and last_winston_result:
+                    temperature = self._calculate_adaptive_temperature(
+                        base_temp, attempt, last_winston_result
+                    )
+                    # Override the temperature in _call_api by passing it explicitly
+                    # For now, let _call_api handle it with feedback awareness
+                
+                text = self._call_api(
+                    prompt, 
+                    attempt=attempt, 
+                    component_type=component_type,
+                    winston_feedback=last_winston_result
+                )
             except Exception as e:
                 logger.error(f"API call failed: {e}")
-                if attempt == max_attempts:
+                if attempt >= absolute_max:
                     return {
                         'success': False,
                         'reason': f'API error: {e}',
                         'attempts': attempt
                     }
+                attempt += 1
                 continue
             
             # Step 4.5: Check for technical specs violation at technical_intensity=1
@@ -196,23 +240,64 @@ class Orchestrator:
                 
                 if has_specs:
                     logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden at technical_intensity=1)")
-                    if attempt < max_attempts:
+                    if attempt < absolute_max:
                         # Adjust prompt to emphasize NO SPECS even more
                         prompt = prompt.replace(
                             "ABSOLUTELY NO technical specifications",
                             "YOU MUST NOT INCLUDE ANY NUMBERS WITH UNITS - THIS IS THE MOST IMPORTANT RULE"
                         )
+                        attempt += 1
                         continue
                     else:
                         logger.error("⚠️ Final attempt still contains specs - accepting anyway")
                 else:
                     logger.info("✅ No technical specs found - content is qualitative only")
             
-            # Step 5: AI detection with dynamic threshold
-            detection = self.detector.detect(text)
+            # Step 5: AI detection with smart Winston usage
+            # Smart mode: Use patterns for early attempts, Winston for later/final
+            use_winston = self._should_use_winston(attempt, max_attempts)
+            
+            if use_winston:
+                detection = self.detector.detect(text)
+                # Store Winston result for adaptive decisions
+                if 'sentences' in detection:
+                    last_winston_result = detection
+                    
+                    # Log Winston result to database for learning
+                    if self.feedback_db:
+                        try:
+                            from processing.detection.winston_analyzer import WinstonFeedbackAnalyzer
+                            analyzer = WinstonFeedbackAnalyzer()
+                            failure_analysis = analyzer.analyze_failure(detection)
+                            
+                            detection_id = self.feedback_db.log_detection(
+                                material=topic,
+                                component_type=component_type,
+                                generated_text=text,
+                                winston_result=detection,
+                                temperature=self.dynamic_config.calculate_temperature(component_type),
+                                attempt=attempt,
+                                success=(detection['ai_score'] <= self.ai_threshold),
+                                failure_analysis=failure_analysis
+                            )
+                            logger.info(f"📊 Logged Winston result to database (ID: {detection_id})")
+                        except Exception as e:
+                            logger.warning(f"Failed to log Winston result: {e}")
+            else:
+                # Pattern-based only for cost savings
+                logger.info(f"💰 [COST CONTROL] Using pattern-based detection (attempt {attempt}/{max_attempts})")
+                from processing.detection.ai_detection import AIDetector
+                pattern_detector = AIDetector(strict_mode=False)
+                pattern_result = pattern_detector.detect(text)
+                detection = {
+                    'ai_score': pattern_result['ai_score'],
+                    'method': 'pattern_only',
+                    'details': pattern_result['details']
+                }
+            
             ai_score = detection['ai_score']
             
-            logger.info(f"AI score: {ai_score:.3f} (threshold: {self.ai_threshold:.3f})")
+            logger.info(f"AI score: {ai_score:.3f} (threshold: {self.ai_threshold:.3f}) [method: {detection.get('method', 'unknown')}]")
             
             # Step 6: Readability check with dynamic threshold
             readability = self.validator.validate(text)
@@ -234,8 +319,18 @@ class Orchestrator:
             # Log failure reason
             if ai_score > self.ai_threshold:
                 logger.warning(f"❌ AI score too high: {ai_score:.3f} > {self.ai_threshold}")
+                
+                # Check if we should extend attempts based on Winston feedback
+                # Do this BEFORE checking if we're at max_attempts
+                if last_winston_result and attempt >= max_attempts and attempt < absolute_max:
+                    if self._should_extend_attempts_adaptive(attempt, last_winston_result):
+                        max_attempts += 1
+                        logger.info(f"📈 [ADAPTIVE] Extended max_attempts to {max_attempts} (attempt {attempt}/{absolute_max})")
+                        
             if not readability['is_readable']:
                 logger.warning(f"❌ Readability failed: {readability['status']}")
+            
+            attempt += 1
         
         # Max attempts reached
         logger.error(f"Failed after {max_attempts} attempts")
@@ -248,7 +343,153 @@ class Orchestrator:
             'last_readability': readability
         }
     
-    def _call_api(self, prompt: str, attempt: int = 1, component_type: str = 'subtitle') -> str:
+    def _should_use_winston(self, attempt: int, max_attempts: int) -> bool:
+        """
+        Determine if Winston API should be used for this attempt.
+        
+        Args:
+            attempt: Current attempt number (1-based)
+            max_attempts: Maximum attempts allowed
+            
+        Returns:
+            True if Winston should be used, False for pattern-only
+        """
+        # Get Winston usage mode from config
+        try:
+            from processing.config.config_loader import get_config
+            config = get_config()
+            mode = config.config.get('winston_usage_mode', 'smart')
+        except Exception:
+            mode = 'smart'  # Default to smart mode
+        
+        if mode == 'disabled':
+            return False
+        elif mode == 'always':
+            return True
+        elif mode == 'final_only':
+            return attempt == max_attempts
+        elif mode == 'smart':
+            # Smart: pattern-based for attempts 1-2, Winston for 3+ and final
+            return attempt >= 3 or attempt == max_attempts
+        else:
+            logger.warning(f"Unknown winston_usage_mode '{mode}', defaulting to smart")
+            return attempt >= 3 or attempt == max_attempts
+    
+    def _get_max_attempts_for_mode(self) -> int:
+        """Get max attempts based on Winston usage mode."""
+        try:
+            from processing.config.config_loader import get_config
+            config = get_config()
+            mode = config.config.get('winston_usage_mode', 'smart')
+            
+            # In 'always' mode, start with 1 attempt (can extend based on feedback)
+            if mode == 'always':
+                return 1
+            
+            # Default for other modes
+            return 3
+        except Exception:
+            return 3
+    
+    def _should_extend_attempts_adaptive(self, attempt: int, winston_result: Dict) -> bool:
+        """Check if attempts should be extended based on Winston feedback."""
+        try:
+            from processing.config.config_loader import get_config
+            from processing.detection.winston_analyzer import WinstonFeedbackAnalyzer
+            
+            config = get_config()
+            
+            # Check if adaptive retry is enabled
+            if not config.config.get('winston_adaptive_retry', True):
+                return False
+            
+            # Only in 'always' mode
+            mode = config.config.get('winston_usage_mode', 'smart')
+            if mode != 'always':
+                return False
+            
+            # Get configuration
+            max_extensions = config.config.get('winston_max_extensions', 2)
+            absolute_max = 3  # Safety limit
+            
+            # Use analyzer to decide
+            analyzer = WinstonFeedbackAnalyzer()
+            should_extend = analyzer.should_extend_attempts(
+                current_attempt=attempt,
+                winston_result=winston_result,
+                max_extensions=max_extensions,
+                absolute_max=absolute_max
+            )
+            
+            if should_extend:
+                analysis = analyzer.analyze_failure(winston_result)
+                logger.info(f"🔄 [ADAPTIVE RETRY] Extending attempts based on feedback")
+                logger.info(f"   Type: {analysis['failure_type']}")
+                logger.info(f"   Guidance: {analysis['guidance']}")
+            
+            return should_extend
+            
+        except Exception as e:
+            logger.warning(f"[ADAPTIVE RETRY] Failed to analyze: {e}")
+            return False
+    
+    def _calculate_adaptive_temperature(
+        self, 
+        base_temp: float, 
+        attempt: int, 
+        winston_feedback: Dict = None
+    ) -> float:
+        """Calculate temperature with Winston feedback adaptation."""
+        try:
+            from processing.detection.winston_analyzer import WinstonFeedbackAnalyzer
+            
+            # No feedback? Use normal progression
+            if not winston_feedback:
+                retry_config = self.dynamic_config.calculate_retry_behavior()
+                retry_temp_increase = retry_config['retry_temperature_increase']
+                return min(1.0, base_temp + (attempt - 1) * retry_temp_increase)
+            
+            # Analyze feedback
+            analyzer = WinstonFeedbackAnalyzer()
+            analysis = analyzer.analyze_failure(winston_feedback)
+            failure_type = analysis['failure_type']
+            
+            if failure_type == 'uniform':
+                # All sentences bad: INCREASE temperature significantly
+                # Need more creative variation
+                temp = base_temp + 0.15
+                logger.info(f"🌡️  [ADAPTIVE] Uniform failure → High temp ({temp:.2f}) for variation")
+                return min(1.0, temp)
+                
+            elif failure_type == 'borderline':
+                # Close to passing: DECREASE temperature slightly
+                # Need more control/consistency
+                temp = base_temp - 0.05
+                logger.info(f"🌡️  [ADAPTIVE] Borderline → Lower temp ({temp:.2f}) for control")
+                return max(0.5, temp)
+                
+            else:  # partial or other
+                # Mixed results: Normal progression
+                retry_config = self.dynamic_config.calculate_retry_behavior()
+                retry_temp_increase = retry_config['retry_temperature_increase']
+                temp = base_temp + (attempt - 1) * retry_temp_increase
+                logger.info(f"🌡️  [ADAPTIVE] {failure_type} → Normal progression ({temp:.2f})")
+                return min(1.0, temp)
+                
+        except Exception as e:
+            logger.warning(f"[ADAPTIVE] Temperature calculation failed: {e}")
+            # Fallback to normal progression
+            retry_config = self.dynamic_config.calculate_retry_behavior()
+            retry_temp_increase = retry_config['retry_temperature_increase']
+            return min(1.0, base_temp + (attempt - 1) * retry_temp_increase)
+    
+    def _call_api(
+        self, 
+        prompt: str, 
+        attempt: int = 1, 
+        component_type: str = 'subtitle',
+        winston_feedback: Dict = None
+    ) -> str:
         """
         Call AI API with error handling and dynamic temperature.
         
@@ -256,20 +497,24 @@ class Orchestrator:
             prompt: Prompt to send
             attempt: Attempt number (affects temperature for variation)
             component_type: Component type for max_tokens lookup
+            winston_feedback: Optional Winston feedback for adaptive temperature
             
         Returns:
             Generated text
         """
-        # Calculate dynamic temperature and tokens from sliders
+        # Calculate dynamic temperature from sliders OR adaptive from Winston feedback
         base_temperature = self.dynamic_config.calculate_temperature(component_type)
-        retry_config = self.dynamic_config.calculate_retry_behavior()
-        retry_temp_increase = retry_config['retry_temperature_increase']
         max_tokens = self.dynamic_config.calculate_max_tokens(component_type)
         
-        # Increase temperature with each attempt for more variation
-        temperature = min(1.0, base_temperature + (attempt - 1) * retry_temp_increase)
-        
-        logger.info(f"🌡️  Temperature: {temperature:.2f} (base: {base_temperature:.2f}, +{retry_temp_increase:.2f}/attempt)")
+        # Use adaptive temperature if we have Winston feedback
+        if winston_feedback:
+            temperature = self._calculate_adaptive_temperature(base_temperature, attempt, winston_feedback)
+        else:
+            # Normal temperature progression
+            retry_config = self.dynamic_config.calculate_retry_behavior()
+            retry_temp_increase = retry_config['retry_temperature_increase']
+            temperature = min(1.0, base_temperature + (attempt - 1) * retry_temp_increase)
+            logger.info(f"🌡️  Temperature: {temperature:.2f} (base: {base_temperature:.2f}, +{retry_temp_increase:.2f}/attempt)")
         logger.info(f"🎯  Max tokens: {max_tokens} (calculated from sliders)")
         
         # Build system prompt with technical language override if needed

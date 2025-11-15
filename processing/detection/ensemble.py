@@ -25,13 +25,14 @@ class AIDetectorEnsemble:
     Ensemble of AI detection methods.
     
     Combines:
-    1. Pattern-based detection (fast, rule-based)
-    2. Optional: Hugging Face model (accurate, ML-based)
+    1. Winston API (primary, external service)
+    2. Pattern-based detection (fallback if Winston unavailable)
+    3. Optional: Hugging Face model (accurate, ML-based)
     
-    Composite score = weighted average of all detectors.
+    Composite score uses Winston as primary with pattern-based backup.
     """
     
-    def __init__(self, patterns_file: str = None, use_ml: bool = False, use_advanced: bool = True):
+    def __init__(self, patterns_file: str = None, use_ml: bool = False, use_advanced: bool = True, winston_client=None):
         """
         Initialize ensemble.
         
@@ -39,6 +40,7 @@ class AIDetectorEnsemble:
             patterns_file: Path to AI detection patterns
             use_ml: Whether to use ML model (requires transformers)
             use_advanced: Whether to use advanced pattern detector (default True)
+            winston_client: Winston API client (if available)
         """
         self.patterns_file = patterns_file or self._default_patterns_file()
         self.use_ml = use_ml
@@ -46,6 +48,7 @@ class AIDetectorEnsemble:
         self._patterns = self._load_patterns()
         self._model = None
         self._advanced_detector = None
+        self._winston_client = winston_client
         
         # Initialize advanced detector if available
         if self.use_advanced and ADVANCED_DETECTOR_AVAILABLE:
@@ -58,6 +61,12 @@ class AIDetectorEnsemble:
         
         if use_ml:
             self._load_ml_model()
+        
+        # Log Winston availability
+        if self._winston_client:
+            logger.info("Winston API client available for primary detection")
+        else:
+            logger.warning("Winston API client not available - using pattern-based detection only")
     
     def _default_patterns_file(self) -> str:
         """Get default patterns file path"""
@@ -104,13 +113,30 @@ class AIDetectorEnsemble:
             Dict with:
             - ai_score: Composite score (0-1, higher = more AI-like)
             - is_ai_like: Boolean threshold check
+            - winston_score: Winston API score (if available)
             - pattern_score: Simple pattern score
             - advanced_score: Advanced pattern score (if enabled)
             - ml_score: ML model score (if enabled)
             - detected_patterns: List of matched patterns
             - details: Advanced detector details (if available)
+            - method: Detection method used
         """
-        # Simple pattern-based detection
+        # Primary: Winston API detection
+        winston_score = 0.0
+        winston_success = False
+        if self._winston_client:
+            try:
+                winston_result = self._winston_client.detect_ai_content(text)
+                if winston_result.get('success'):
+                    winston_score = winston_result['ai_score']
+                    winston_success = True
+                    logger.info(f"Winston API detection: {winston_score:.3f} (human: {winston_result.get('human_score', 0):.1f}%)")
+                else:
+                    logger.warning(f"Winston API failed: {winston_result.get('error', 'Unknown error')}")
+            except Exception as e:
+                logger.error(f"Winston API exception: {e}")
+        
+        # Fallback: Pattern-based detection
         pattern_result = self._pattern_detection(text)
         
         # Advanced detection (if enabled)
@@ -126,33 +152,33 @@ class AIDetectorEnsemble:
         if self.use_ml and self._model:
             ml_score = self._ml_detection(text)
         
-        # Composite score (weighted average)
-        if self.use_advanced and self.use_ml:
-            # All three: advanced (50%), ML (30%), simple (20%)
+        # Composite score with Winston as primary
+        if winston_success:
+            # Winston available: use it as primary (80%) with pattern backup (20%)
+            ai_score = (0.8 * winston_score) + (0.2 * pattern_result['score'])
+            method = 'winston_api_primary'
+        elif self.use_advanced and self.use_ml:
+            # Fallback: advanced (50%), ML (30%), simple (20%)
             ai_score = (0.5 * advanced_score) + (0.3 * ml_score) + (0.2 * pattern_result['score'])
-        elif self.use_advanced:
-            # Advanced + simple: advanced (70%), simple (30%)
-            ai_score = (0.7 * advanced_score) + (0.3 * pattern_result['score'])
-        elif self.use_ml:
-            # ML + simple: ML (60%), simple (40%)
-            ai_score = (0.6 * ml_score) + (0.4 * pattern_result['score'])
-        else:
-            # Simple only
-            ai_score = pattern_result['score']
-        
-        # Determine method
-        if self.use_advanced and self.use_ml:
             method = 'ensemble_advanced_ml'
         elif self.use_advanced:
+            # Fallback: advanced (70%), simple (30%)
+            ai_score = (0.7 * advanced_score) + (0.3 * pattern_result['score'])
             method = 'ensemble_advanced'
         elif self.use_ml:
+            # Fallback: ML (60%), simple (40%)
+            ai_score = (0.6 * ml_score) + (0.4 * pattern_result['score'])
             method = 'ensemble_ml'
         else:
+            # Fallback: simple only
+            ai_score = pattern_result['score']
             method = 'pattern_only'
         
         return {
             'ai_score': round(ai_score, 3),
             'is_ai_like': ai_score > 0.3,
+            'winston_score': winston_score,
+            'winston_success': winston_success,
             'pattern_score': pattern_result['score'],
             'advanced_score': advanced_score,
             'ml_score': ml_score,

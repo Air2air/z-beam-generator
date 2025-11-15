@@ -14,6 +14,22 @@ structural_predictability: 1         # 1=Strict, 2=Standard, 3=Minimal
 ai_avoidance_intensity: 3            # 1=Relaxed, 2=Standard, 3=Aggressive
 length_variation_range: 3            # 1=Tight (±10%), 2=Moderate (±20%), 3=Loose (±60%)
 
+# Winston AI Detection Cost Control
+winston_usage_mode: 'always'          # 'always', 'smart', 'final_only', 'disabled'
+                                     # smart: Pattern-based attempts 1-2, Winston on 3+ and final
+                                     # always: Every attempt (expensive)
+                                     # final_only: Only validate successful content
+                                     # disabled: Pattern-based only (free)
+
+# Winston Adaptive Retry (Intelligent retry extension based on feedback)
+winston_adaptive_retry: true         # Enable intelligent retry extension based on sentence scores
+winston_max_extensions: 2            # Allow up to 2 additional attempts beyond base (absolute max: 3)
+winston_retry_threshold: 50          # Only extend if some sentences score > 50% human
+
+# Winston Feedback Database (Learning from corrections)
+winston_feedback_db_path: 'data/winston_feedback.db'  # SQLite database for logging results and corrections
+                                                        # Set to null to disable database logging
+
 # Component base lengths (targets - actual ranges calculated from length_variation_range)
 component_lengths:
   subtitle:

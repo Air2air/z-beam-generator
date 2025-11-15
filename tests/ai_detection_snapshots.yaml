@@ -399,3 +399,71 @@ snapshot_2025_11_15_threshold_30:
     pass_rate: null
   verdict: TBD
   notes: Fill in after phrasely.ai testing
+
+# ==============================================================================
+# SNAPSHOT: banned_phrases_enforced
+# ==============================================================================
+snapshot_2025_11_15_banned_phrases_enforced:
+  timestamp: '2025-11-15T00:54:23.751439'
+  commit_hash: 9dd7a54d
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.5
+  prompt_version: primary_advantage_with_banned_patterns
+  test_results:
+  - material: Hafnium
+    word_count: 11
+    sentence_count: 1
+    output: High-temperature applications leverage hafnium's robust electrical conductivity
+      over alternatives like tungsten
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Indium
+    word_count: 24
+    sentence_count: 1
+    output: Indium alloys excel in lead-free solders, forming reliable bonds at much
+      lower temperatures than tin alternatives while preserving strong electrical
+      performance in delicate electronics
+    pipeline_ai_score: 0.122
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Rhodium
+    word_count: 15
+    sentence_count: 1
+    output: Contact points coated with rhodium resist sulfur corrosion, preserving
+      signal integrity longer than uncoated versions
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Iridium
+    word_count: 25
+    sentence_count: 1
+    output: Chemical processors turn to iridium for components that resist corrosion
+      from acids far more effectively than platinum alloys, ensuring longer operational
+      life in aggressive environments
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  summary:
+    total_tested: 4
+    passed: null
+    failed: null
+    pass_rate: null
+  verdict: TBD
+  notes: Fill in after phrasely.ai testing

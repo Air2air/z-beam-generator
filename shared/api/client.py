@@ -592,6 +592,187 @@ class APIClient:
 
         return stats
 
+    def detect_ai_content(self, text: str) -> Dict[str, Any]:
+        """Detect AI-generated content using Winston API
+        
+        Args:
+            text: Text to analyze for AI detection
+            
+        Returns:
+            Dict with:
+            - success: bool
+            - ai_score: float (0-1, normalized)
+            - human_score: float (0-100, Winston's raw score)
+            - is_ai_like: bool
+            - error: Optional error message
+        """
+        start_time = time.time()
+        
+        # Validate text length (Winston requires minimum 300 characters)
+        if len(text) < 300:
+            return {
+                'success': False,
+                'error': f'Text too short for Winston API (minimum 300 chars, got {len(text)})',
+                'ai_score': 0.5,  # Neutral score for short text
+                'is_ai_like': False,
+                'skip_reason': 'text_too_short'
+            }
+        
+        # Validate API configuration for Winston
+        if not self.base_url or 'winston' not in self.base_url.lower():
+            return {
+                'success': False,
+                'error': 'Winston API not configured - base_url must contain winston',
+                'ai_score': 1.0,  # Fail-safe: assume AI-like on error
+                'is_ai_like': True
+            }
+        
+        # Get API key from various sources
+        api_key = None
+        if hasattr(self, 'api_key') and self.api_key:
+            api_key = self.api_key
+        elif hasattr(self.config, 'api_key') and self.config.api_key:
+            api_key = self.config.api_key
+        elif hasattr(self.config, 'get'):
+            api_key = self.config.get('api_key')
+        
+        if not api_key:
+            return {
+                'success': False,
+                'error': 'Winston API key not configured',
+                'ai_score': 1.0,
+                'is_ai_like': True
+            }
+        
+        try:
+            # Winston API v2 endpoint for detection
+            endpoint = f"{self.base_url}/v2/ai-content-detection"
+            
+            headers = {
+                'Authorization': f'Bearer {api_key}',
+                'Content-Type': 'application/json'
+            }
+            
+            payload = {
+                'text': text,
+                'version': 'latest',  # Use latest model version
+                'sentences': True,     # Get sentence-level scores for detailed analysis
+                'language': 'en'
+            }
+            
+            print(f"🔍 [WINSTON API] Detecting AI content ({len(text)} chars)...")
+            
+            response = self.session.post(
+                endpoint,
+                json=payload,
+                headers=headers,
+                timeout=(self.timeout_connect, self.timeout_read)
+            )
+            
+            response_time = time.time() - start_time
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                # Winston returns a 'score' field representing human probability (0-100)
+                # Higher score = more human-like
+                human_score = data.get('score', 0)
+                
+                # Convert to AI score (0-1 scale, inverted)
+                # 100 human = 0 AI, 0 human = 1 AI
+                ai_score = (100 - human_score) / 100.0
+                
+                # Extract detailed analysis
+                sentences = data.get('sentences', [])
+                attack_detected = data.get('attack_detected', {})
+                readability_score = data.get('readability_score')
+                
+                print(f"✅ [WINSTON API] Detection complete in {response_time:.2f}s")
+                print(f"   Human Score: {human_score:.1f}%")
+                print(f"   AI Score: {ai_score:.3f}")
+                print(f"   Credits Used: {data.get('credits_used', 'N/A')}")
+                print(f"   Credits Remaining: {data.get('credits_remaining', 'N/A')}")
+                
+                # Display sentence-level analysis if available
+                if sentences and len(sentences) > 0:
+                    print(f"   📊 Sentence Analysis ({len(sentences)} sentences):")
+                    
+                    # Find most AI-like sentences (lowest human scores)
+                    sorted_sentences = sorted(sentences, key=lambda s: s.get('score', 100))
+                    worst_sentences = sorted_sentences[:3]  # Show 3 most AI-like
+                    
+                    for i, sent in enumerate(worst_sentences, 1):
+                        score = sent.get('score', 0)
+                        text = sent.get('text', '')[:60]  # Truncate long sentences
+                        if score < 50:  # Flag AI-like sentences
+                            print(f"      🚨 #{i}: {score}% human - \"{text}...\"")
+                        else:
+                            print(f"      ⚠️  #{i}: {score}% human - \"{text}...\"")
+                
+                # Display attack detection if any attacks found
+                if attack_detected:
+                    if attack_detected.get('zero_width_space'):
+                        print(f"   🚨 ATTACK DETECTED: Zero-width spaces found!")
+                    if attack_detected.get('homoglyph_attack'):
+                        print(f"   🚨 ATTACK DETECTED: Homoglyph characters found!")
+                
+                # Display readability if available
+                if readability_score is not None:
+                    print(f"   📖 Readability: {readability_score}/100")
+                
+                return {
+                    'success': True,
+                    'ai_score': ai_score,
+                    'human_score': human_score,
+                    'is_ai_like': ai_score > 0.3,  # Threshold: >70% AI detection
+                    'response_time': response_time,
+                    'method': 'winston_api',
+                    'credits_used': data.get('credits_used'),
+                    'credits_remaining': data.get('credits_remaining'),
+                    'version': data.get('version'),
+                    'language': data.get('language'),
+                    # Enhanced detailed analysis
+                    'sentences': sentences,
+                    'attack_detected': attack_detected,
+                    'readability_score': readability_score,
+                    'input_type': data.get('input')
+                }
+            else:
+                error_msg = f"Winston API returned status {response.status_code}"
+                try:
+                    error_data = response.json()
+                    error_msg += f": {error_data.get('error', error_data)}"
+                except:
+                    error_msg += f": {response.text}"
+                
+                print(f"❌ [WINSTON API] {error_msg}")
+                
+                return {
+                    'success': False,
+                    'error': error_msg,
+                    'ai_score': 1.0,  # Fail-safe: assume AI-like on error
+                    'is_ai_like': True,
+                    'response_time': response_time
+                }
+                
+        except requests.exceptions.Timeout:
+            print(f"⏰ [WINSTON API] Request timeout after {time.time() - start_time:.1f}s")
+            return {
+                'success': False,
+                'error': 'Request timeout',
+                'ai_score': 1.0,
+                'is_ai_like': True
+            }
+        except Exception as e:
+            print(f"💥 [WINSTON API] Error: {str(e)}")
+            logger.error(f"Winston API detection failed: {e}")
+            return {
+                'success': False,
+                'error': str(e),
+                'ai_score': 1.0,
+                'is_ai_like': True
+            }
+    
     def reset_statistics(self):
         """Reset usage statistics"""
         self.stats = {
