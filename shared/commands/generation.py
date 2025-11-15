@@ -74,46 +74,79 @@ def handle_caption_generation(material_name: str):
 
 
 def handle_subtitle_generation(material_name: str):
-    """Generate AI-powered subtitle for a material and save to Materials.yaml"""
+    """Generate AI-powered subtitle for a material using processing pipeline"""
     print("="*80)
     print(f"📝 SUBTITLE GENERATION: {material_name}")
     print("="*80)
     print()
     
     try:
-        # Import required modules
-        from materials.unified_generator import UnifiedMaterialsGenerator
-        
-        # Initialize Grok API client for subtitles
+        # Initialize API client
         from shared.api.client_factory import create_api_client
         print("🔧 Initializing Grok API client...")
         grok_client = create_api_client('grok')
         print("✅ Grok client ready")
         print()
         
-        # Initialize unified generator
-        print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(grok_client)
-        print("✅ Generator ready")
+        # Initialize processing orchestrator
+        from processing.orchestrator import Orchestrator
+        from processing.config.dynamic_config import DynamicConfig
+        
+        print("🔧 Initializing processing pipeline...")
+        config = DynamicConfig()
+        orchestrator = Orchestrator(grok_client, config)
+        print("✅ Pipeline ready")
         print()
         
-        # Generate subtitle (no voice - that's done by post-processor)
-        print("🤖 Generating AI-powered subtitle...")
-        print("   • Target: 8-15 word professional tagline")
-        print("   • Style: Technical, clear, professional")
-        print("   • Audience: Technical professionals and decision-makers")
-        print("   • Note: Voice enhancement happens in post-processing")
+        # Generate subtitle through processing pipeline (includes AI detection)
+        print("🤖 Generating AI-powered subtitle with quality validation...")
+        print("   • Target: Professional technical subtitle")
+        print("   • Pipeline: Enrichment → Generation → AI Detection → Validation")
         print()
         
-        subtitle = generator.generate(material_name, 'subtitle')
+        result = orchestrator.generate(
+            topic=material_name,
+            component_type='subtitle',
+            author_id=1,  # Will be randomly selected by orchestrator
+            domain='materials'
+        )
         
-        print("✅ Subtitle generated and saved successfully!")
+        if not result.get('success'):
+            print(f"❌ Generation failed: {result.get('reason', 'Unknown error')}")
+            if 'last_ai_score' in result:
+                print(f"   Last AI score: {result['last_ai_score']:.3f}")
+            return False
+        
+        subtitle = result['text']  # Orchestrator returns 'text' not 'content'
+        ai_score = result.get('ai_score', 0)
+        attempts = result.get('attempts', 1)
+        
+        # Save to Materials.yaml
+        import yaml
+        from pathlib import Path
+        materials_path = Path('data/materials/Materials.yaml')
+        with open(materials_path, 'r') as f:
+            data = yaml.safe_load(f)
+        
+        # Materials are under 'materials' key
+        if 'materials' not in data or material_name not in data['materials']:
+            print(f"❌ Material '{material_name}' not found in Materials.yaml")
+            return False
+        
+        data['materials'][material_name]['subtitle'] = subtitle
+        
+        with open(materials_path, 'w') as f:
+            yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        
+        print("✅ Subtitle generated and validated successfully!")
         print()
         
         # Show statistics
         print("📊 Statistics:")
         print(f"   • Length: {len(subtitle)} characters")
         print(f"   • Word count: {len(subtitle.split())} words")
+        print(f"   • AI Score: {ai_score:.3f} (threshold: {orchestrator.ai_threshold:.3f})")
+        print(f"   • Attempts: {attempts}")
         print()
         print("📝 FULL GENERATED TEXT:")
         print("─" * 80)
@@ -121,7 +154,7 @@ def handle_subtitle_generation(material_name: str):
         print("─" * 80)
         print()
         
-        print("💾 Saved to: materials/data/Materials.yaml → subtitle")
+        print("💾 Saved to: data/materials/Materials.yaml → subtitle")
         print("✨ Subtitle generation complete!")
         
         return True

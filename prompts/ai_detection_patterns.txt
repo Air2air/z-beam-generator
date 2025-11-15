@@ -33,6 +33,8 @@ phrasing|paired_with|\bpaired\s+with\b|severe|paired with|Common AI linking phra
 phrasing|relies_on|\brelies\s+on\b|severe|relies on|Overused AI connector - abstract relationship
 phrasing|thrives_on|\bthrives\s+on\b|severe|thrives on|Anthropomorphic AI pattern
 phrasing|swear_by|\bswear\s+by\b|moderate|swear by|Forced colloquialism attempts
+phrasing|gerund_opening|^(Galvanizing|Processing|Manufacturing|Fabricating|Utilizing|Leveraging)\s+(with|of|in)|critical|Galvanizing with zinc|Gerund phrase openings - very AI-like
+phrasing|abstract_process_subject|^(Electronics assembly|Manufacturing process|Production system|Fabrication method)\s+(gains|achieves|enables)|critical|Electronics assembly gains|Abstract process subjects - formal AI pattern
 phrasing|low_hedges|(perhaps|maybe|possibly|likely|could|might|seems|appears)|moderate|Few hedges (<3/200 words)|LLMs underuse uncertainty; length-normalized
 # REMOVED: results_patterns - These phrases hurt quality and conflicted with voice markers
 # New: Low Emotional Variance (Uniform sentiment; count positive/negative shifts)
@@ -77,8 +79,8 @@ severity|low|5|Subtle; bias-check if triggered
 # ============================================================================
 # THRESHOLDS (Calibrated; Added Length Adjustment)
 # ============================================================================
-threshold|ai_detection|30|Score >=30 AI-like; stricter detection for subtitles
-threshold|strict_mode|20|Even stricter for short content
+threshold|ai_detection|25|Score >=25 AI-like; very strict for subtitles (Nov 15, 2025: 50% phrasely.ai failure rate at 30)
+threshold|strict_mode|15|Even stricter for short content
 threshold|quality_minimum|70|To pass
 threshold|hybrid_suggest|25-49|ML check (e.g., perplexity)
 threshold|text_length_adjust|if len<100 multiply score by 1.2|For short texts; reduce over-flags

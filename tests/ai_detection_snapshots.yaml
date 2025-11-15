@@ -1,0 +1,266 @@
+# AI Detection Test Snapshots
+# Track config settings + AI detection results for systematic testing
+#
+# Format:
+#   snapshot_name:
+#     timestamp: ISO8601
+#     commit_hash: git commit
+#     config:
+#       author_voice_intensity: 1-3
+#       personality_intensity: 1-3
+#       engagement_style: 1-3
+#       emotional_intensity: 1-3
+#       technical_language_intensity: 1-3
+#       context_specificity: 1-3
+#       sentence_rhythm_variation: 1-3
+#       imperfection_tolerance: 1-3
+#       structural_predictability: 1-3
+#       ai_avoidance_intensity: 1-3
+#       length_variation_range: 1-3
+#     sentence_calculator:
+#       variation_pct: 0.25 or 0.50
+#     prompt_version: "primary_advantage_v1" or "simple_legacy" etc
+#     test_results:
+#       - material: "MaterialName"
+#         word_count: 20
+#         sentence_count: 1
+#         output: "Full generated text..."
+#         phrasely_ai_score: "4/4 AI-like" or "0/4 AI-like"
+#         human_readable: true/false
+#         notes: "Optional observations"
+#     summary:
+#       total_tested: 4
+#       passed: 4
+#       failed: 0
+#       pass_rate: 100%
+#     verdict: "BEST" or "FAILED" or "MIXED"
+#     notes: "Overall observations"
+
+# ==============================================================================
+# SNAPSHOT 1: Current HEAD (84202b9c) - Mixed Results
+# ==============================================================================
+snapshot_2025_11_15_current_head:
+  timestamp: "2025-11-15T00:00:00Z"
+  commit_hash: "84202b9c"
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.50  # ±50% variation
+  prompt_version: "primary_advantage_with_banned_patterns"
+  test_results:
+    - material: "Titanium"
+      word_count: 19
+      sentence_count: 1
+      output: "Aerospace designs leverage titanium's exceptional strength-to-weight balance to cut structural mass in half compared to steel without sacrificing robustness"
+      phrasely_ai_score: "TBD"
+      human_readable: true
+      notes: "Good - focuses on primary advantage"
+    - material: "Copper"
+      word_count: 20
+      sentence_count: 1
+      output: "In electrical systems, copper outperforms aluminum by conducting electricity with far less resistance, ensuring efficient power delivery across vast networks"
+      phrasely_ai_score: "TBD"
+      human_readable: true
+      notes: "Good - focuses on conductivity"
+    - material: "Stainless Steel"
+      word_count: 25
+      sentence_count: 1
+      output: "Harsh environments like chemical plants favor stainless steel because it resists corrosion far longer than carbon steel, ensuring reliable performance without frequent replacements or coatings"
+      phrasely_ai_score: "TBD"
+      human_readable: true
+      notes: "Good - focuses on corrosion resistance"
+    - material: "Polycarbonate"
+      word_count: 17
+      sentence_count: 1
+      output: "Safety shields benefit from polycarbonate's exceptional impact resistance, outperforming glass by hundreds of times without added weight"
+      phrasely_ai_score: "TBD"
+      human_readable: true
+      notes: "Good - focuses on impact resistance"
+  summary:
+    total_tested: 4
+    passed: null  # Fill in after phrasely.ai testing
+    failed: null
+    pass_rate: null
+  verdict: "TBD"
+  notes: "User reported first batch (Titanium-Polycarbonate) as A- grade. Later batches (Aluminum-Zinc, Chromium-Tin) all failed AI detection."
+
+# ==============================================================================
+# SNAPSHOT TEMPLATE (copy this for new tests)
+# ==============================================================================
+# snapshot_YYYY_MM_DD_description:
+#   timestamp: "2025-11-15T00:00:00Z"
+#   commit_hash: "xxxxxxxx"
+#   config:
+#     author_voice_intensity: 1
+#     personality_intensity: 1
+#     engagement_style: 1
+#     emotional_intensity: 1
+#     technical_language_intensity: 2
+#     context_specificity: 2
+#     sentence_rhythm_variation: 3
+#     imperfection_tolerance: 3
+#     structural_predictability: 1
+#     ai_avoidance_intensity: 3
+#     length_variation_range: 3
+#   sentence_calculator:
+#     variation_pct: 0.50
+#   prompt_version: "description_here"
+#   test_results:
+#     - material: "MaterialName"
+#       word_count: 20
+#       sentence_count: 1
+#       output: "Full text..."
+#       phrasely_ai_score: "X/Y AI-like"
+#       human_readable: true/false
+#       notes: ""
+#   summary:
+#     total_tested: 4
+#     passed: 4
+#     failed: 0
+#     pass_rate: 100%
+#   verdict: "BEST/FAILED/MIXED"
+#   notes: ""
+
+# ==============================================================================
+# SNAPSHOT: current_baseline
+# ==============================================================================
+snapshot_2025_11_15_current_baseline:
+  timestamp: '2025-11-15T00:26:12.832043'
+  commit_hash: 84202b9c
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.5
+  prompt_version: primary_advantage_with_banned_patterns
+  test_results:
+  - material: Titanium
+    word_count: 12
+    sentence_count: 1
+    output: Aerospace components gain unmatched durability from titanium's strength-to-weight
+      edge against heavier steels
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Copper
+    word_count: 18
+    sentence_count: 1
+    output: In electrical systems, copper transmits current with far less resistance
+      than aluminum, boosting efficiency across wiring and motors
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Stainless Steel
+    word_count: 27
+    sentence_count: 1
+    output: Resisting corrosion in moist and chemical-laden settings far better than
+      carbon steel, stainless steel ensures prolonged durability for pipelines, surgical
+      implements, and architectural facades in demanding industries
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Polycarbonate
+    word_count: 14
+    sentence_count: 1
+    output: Polycarbonate withstands severe impacts better than glass, enabling lighter
+      transparent barriers for industrial use
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  summary:
+    total_tested: 4
+    passed: null
+    failed: null
+    pass_rate: null
+  verdict: TBD
+  notes: Fill in after phrasely.ai testing
+
+# ==============================================================================
+# SNAPSHOT: with_ai_detection
+# ==============================================================================
+snapshot_2025_11_15_with_ai_detection:
+  timestamp: '2025-11-15T00:36:41.999368'
+  commit_hash: 84202b9c
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.5
+  prompt_version: primary_advantage_with_banned_patterns
+  test_results:
+  - material: Bronze
+    word_count: 17
+    sentence_count: 1
+    output: Bronze alloys balance superior wear resistance with corrosion protection,
+      outlasting steel in marine hardware and pump components
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Lead
+    word_count: 14
+    sentence_count: 1
+    output: Engineers prefer lead for dense radiation shielding that outperforms lighter
+      metals in compact designs
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Tin
+    word_count: 22
+    sentence_count: 1
+    output: Electronics assembly gains efficiency from tin's low melting point, enabling
+      secure joints at gentle heats that spare delicate circuits unlike higher-fusion
+      metals
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Zinc
+    word_count: 17
+    sentence_count: 1
+    output: Galvanizing with zinc shields steel from corrosion far longer than paints
+      or coatings alone in harsh environments
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  summary:
+    total_tested: 4
+    passed: null
+    failed: null
+    pass_rate: null
+  verdict: TBD
+  notes: Fill in after phrasely.ai testing
