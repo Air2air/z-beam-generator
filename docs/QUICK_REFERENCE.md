@@ -121,6 +121,33 @@ python3 scripts/winston/analyze_patterns.py --material "Aluminum"
 
 ---
 
+### 🔗 Chain Verification System (November 15, 2025)
+
+**Runtime Verification**: Ensures no modules accidentally skipped from orchestration chain
+
+**Key Features**:
+- ✅ Automatic phase tracking via `@track_phase` decorator
+- ✅ Fail-fast on incomplete chains with `ChainIncompleteError`
+- ✅ Statistics and monitoring for chain health
+- ✅ 18/18 tests passing
+
+**Documentation**:
+- `processing/chain_verification.py` - Core system (398 LOC)
+- `processing/docs/CHAIN_VERIFICATION_GUIDE.md` - Complete guide (437 lines)
+- `processing/CHAIN_VERIFICATION_COMPLETE.md` - Summary and roadmap
+- `processing/CHAIN_VERIFICATION_QUICK_REFERENCE.md` - Quick integration guide
+
+**CLI Commands**:
+```bash
+# Run chain verification tests
+python3 -m pytest processing/tests/test_chain_verification.py -v
+
+# Generate chain verification report (after integration)
+python3 -c "from processing.chain_verification import generate_chain_verification_report; generate_chain_verification_report()"
+```
+
+---
+
 ## 🔥 CRITICAL: Materials.yaml Structure (November 3, 2025)
 
 **⚠️ Properties are FLAT - NO 'properties' wrapper!**
@@ -598,6 +625,10 @@ python3 run.py --optimize text --material copper
 
 ### System Health Checks
 ```bash
+# Run system integrity check (NEW - November 15, 2025)
+python3 run.py --integrity-check          # Full check (5 categories)
+python3 run.py --integrity-check --quick  # Fast check (~20ms)
+
 # Check overall system health
 python3 run.py --check-env
 
@@ -607,6 +638,34 @@ python3 run.py --test-api
 # Diagnose specific API issues
 python3 scripts/tools/api_terminal_diagnostics.py winston
 ```
+
+### System Integrity Module (November 15, 2025)
+
+**Automatic Validation**: Integrity checks now run **by default** before every generation:
+
+```bash
+# Integrity check runs automatically (~20ms overhead)
+python3 run.py --caption "Aluminum"
+
+# Skip integrity check if needed (not recommended)
+python3 run.py --caption "Aluminum" --skip-integrity-check
+```
+
+**What It Validates:**
+1. **Configuration Mapping**: Slider ranges (1-10), normalization (0.0-1.0), parameter ranges
+2. **Parameter Propagation**: Bundle completeness, value stability, API penalties inclusion
+3. **API Health**: Winston/Grok connectivity (when enabled)
+4. **Documentation Alignment**: Config docs, module existence, code-to-docs match
+5. **Test Validity**: Test file existence, pass rates, coverage thresholds
+
+**Performance**: Quick checks complete in ~20ms with minimal overhead (<2% of generation time)
+
+**Exit Codes**:
+- `0`: All checks passed
+- `1`: One or more checks failed
+- `2`: Warnings detected (with `--fail-on-warn`)
+
+**Documentation**: `processing/integrity/README.md`
 
 ### Content Generation
 ```bash

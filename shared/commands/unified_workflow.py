@@ -440,12 +440,13 @@ def run_material_workflow(
     COMPLETE INLINE WORKFLOW for material content generation.
     
     Everything orchestrated inline - no manual steps required:
-    0. Data completeness validation (inline)
-    1. Auto-remediation research (inline, if needed)
-    2. Content generation (caption, subtitle, FAQ)
-    3. Voice enhancement with validation
-    4. Content quality validation (inline)
-    5. Frontmatter export
+    0. System integrity check (inline)
+    1. Data completeness validation (inline)
+    2. Auto-remediation research (inline, if needed)
+    3. Content generation (caption, subtitle, FAQ)
+    4. Voice enhancement with validation
+    5. Content quality validation (inline)
+    6. Frontmatter export
     
     User experience: "run Brass" → Complete validated frontmatter
     
@@ -463,6 +464,7 @@ def run_material_workflow(
     results = {
         'material': material_name,
         'steps': {
+            'integrity_check': {},
             'data_validation': {},
             'research': {},
             'generation': {},
@@ -477,11 +479,32 @@ def run_material_workflow(
     
     try:
         # ========================================================================
-        # STEP 0: DATA COMPLETENESS VALIDATION (INLINE)
+        # STEP 0: SYSTEM INTEGRITY CHECK (INLINE)
         # ========================================================================
         if not skip_validation:
             print("\n" + "="*80)
-            print("STEP 0: DATA COMPLETENESS VALIDATION (INLINE)")
+            print("STEP 0: SYSTEM INTEGRITY CHECK (INLINE)")
+            print("Verifying system health before generation")
+            print("="*80 + "\n")
+            
+            from shared.commands.integrity_helper import run_pre_generation_check
+            integrity_passed = run_pre_generation_check(skip_check=False, quick=True)
+            step_results['integrity_check']['passed'] = integrity_passed
+            
+            if not integrity_passed:
+                print("❌ System integrity check FAILED")
+                print("   Fix integrity issues before generating content.")
+                print("   Run: python3 run.py --integrity-check --quick")
+                return results
+            
+            print("✅ System integrity verified\n")
+        
+        # ========================================================================
+        # STEP 1: DATA COMPLETENESS VALIDATION (INLINE)
+        # ========================================================================
+        if not skip_validation:
+            print("\n" + "="*80)
+            print("STEP 1: DATA COMPLETENESS VALIDATION (INLINE)")
             print("Material: " + material_name)
             print("="*80 + "\n")
             

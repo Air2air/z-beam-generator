@@ -1,21 +1,27 @@
 
 # USER CONFIGS (The ONLY section you need to adjust)
 # ==============================================================================
+# 🎚️ ALL SLIDERS NOW USE 1-10 SCALE for granular control
+# Lower = More controlled/conservative, Higher = More varied/aggressive
 
-author_voice_intensity: 1            # 1=Subtle, 2=Moderate, 3=Strong
-personality_intensity: 1             # 1=None, 2=Occasional, 3=Frequent
-engagement_style: 1                  # 1=Formal, 2=Balanced, 3=Conversational
-emotional_intensity: 1               # 1=Clinical, 2=Balanced, 3=Evocative
-technical_language_intensity: 2      # 1=None, 2=Minimal, 3=Detailed
-context_specificity: 2               # 1=Brief, 2=Moderate, 3=Full
-sentence_rhythm_variation: 3         # 1=Consistent, 2=Varied, 3=Dramatic
-imperfection_tolerance: 3            # 1=Perfect, 2=Natural, 3=Human-like
-structural_predictability: 1         # 1=Strict, 2=Standard, 3=Minimal
-ai_avoidance_intensity: 3            # 1=Relaxed, 2=Standard, 3=Aggressive
-length_variation_range: 3            # 1=Tight (±10%), 2=Moderate (±20%), 3=Loose (±60%)
+author_voice_intensity: 5            # 1=Minimal voice traits → 10=Maximum personality
+personality_intensity: 5             # 1=No opinions/addresses → 10=Frequent personal touches
+engagement_style: 5                  # 1=Purely formal → 10=Highly conversational
+emotional_intensity: 5               # 1=Clinical/neutral → 10=Evocative/enthusiastic
+technical_language_intensity: 5      # 1=No specs → 10=Detailed measurements throughout
+context_specificity: 5               # 1=Brief context → 10=Full comprehensive detail
+sentence_rhythm_variation: 8         # 1=Uniform length → 10=Dramatic variation
+imperfection_tolerance: 8            # 1=Perfect grammar → 10=Natural human imperfections
+structural_predictability: 5         # 1=Strict patterns → 10=Unpredictable structure
+ai_avoidance_intensity: 3            # 1=Relaxed (faster) → 10=Aggressive (more human-like)
+length_variation_range: 8            # 1=Tight ±10% → 10=Loose ±60%
+
+# 🤖 Human-Likeness Control (Master setting for AI evasion)
+humanness_intensity: 7               # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold)
+                                     # Affects: API penalties, temperature aggression, max attempts, Winston threshold
 
 # Winston AI Detection Cost Control
-winston_usage_mode: 'always'          # 'always', 'smart', 'final_only', 'disabled'
+winston_usage_mode: 'final_only'     # 'always', 'smart', 'final_only', 'disabled'
                                      # smart: Pattern-based attempts 1-2, Winston on 3+ and final
                                      # always: Every attempt (expensive)
                                      # final_only: Only validate successful content
@@ -25,6 +31,12 @@ winston_usage_mode: 'always'          # 'always', 'smart', 'final_only', 'disabl
 winston_adaptive_retry: true         # Enable intelligent retry extension based on sentence scores
 winston_max_extensions: 2            # Allow up to 2 additional attempts beyond base (absolute max: 3)
 winston_retry_threshold: 50          # Only extend if some sentences score > 50% human
+
+# Learning Target (for continuous improvement)
+human_score_learning_target: 20      # Target human score (0-100) for learning system
+                                     # System will retry with adapted parameters until human_score >= target
+                                     # Separate from ai_avoidance_intensity acceptance threshold
+                                     # Starting at 20% to gather initial training data, gradually increase to 40-50%
 
 # Winston Feedback Database (Learning from corrections)
 winston_feedback_db_path: 'data/winston_feedback.db'  # SQLite database for logging results and corrections

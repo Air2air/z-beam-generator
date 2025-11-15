@@ -15,11 +15,14 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --run-application "Rust Removal"  # Application workflow (coming soon)
 
 🎯 MANUAL GENERATION (Step-by-Step):
-  python3 run.py --caption "Aluminum"      # Step 1: Generate AI caption → Materials.yaml
-  python3 run.py --subtitle "Aluminum"     # Step 1: Generate AI subtitle → Materials.yaml
-  python3 run.py --faq "Aluminum"          # Step 1: Generate AI FAQ → Materials.yaml
+  python3 run.py --caption "Aluminum"      # Step 1: Generate AI caption → Materials.yaml (with integrity check)
+  python3 run.py --subtitle "Aluminum"     # Step 1: Generate AI subtitle → Materials.yaml (with integrity check)
+  python3 run.py --faq "Aluminum"          # Step 1: Generate AI FAQ → Materials.yaml (with integrity check)
   python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Step 2: Voice → Materials.yaml
   python3 run.py --material "Aluminum" --data-only  # Step 3: Export → frontmatter
+  
+  # Skip integrity check (not recommended):
+  python3 run.py --caption "Aluminum" --skip-integrity-check
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -31,6 +34,8 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --validate-report report.md  # Generate validation report
   python3 run.py --content-validation-report report.md  # Content quality validation (FAQ, Caption, Subtitle)
   python3 run.py --check-env               # Health check
+  python3 run.py --integrity-check         # System integrity check (values, propagation, APIs)
+  python3 run.py --integrity-check --quick # Fast integrity check (skip slow tests)
   python3 run.py --list-materials          # List available materials
 
 🔍 DATA VALIDATION & INTEGRITY:
@@ -191,6 +196,9 @@ def main():
     parser.add_argument("--data-only", action="store_true", help="Manual export: combine Materials.yaml + Categories.yaml → frontmatter")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize frontmatter files")
     parser.add_argument("--sanitize-file", help="Sanitize specific file")
+    parser.add_argument("--integrity-check", action="store_true", help="Run system integrity checks")
+    parser.add_argument("--skip-integrity-check", action="store_true", help="Skip automatic integrity checks before generation")
+    parser.add_argument("--quick", action="store_true", help="Quick mode (with --integrity-check, skips slow checks)")
     
     args = parser.parse_args()
     
@@ -225,6 +233,30 @@ def main():
     # LEGACY COMMANDS (Backward compatibility)
     # ========================================================================
     
+    # System Integrity Check (runs before generation if enabled)
+    if args.integrity_check:
+        from processing.integrity import IntegrityChecker
+        
+        print("\n🔍 Running System Integrity Checks...")
+        checker = IntegrityChecker()
+        
+        if args.quick:
+            results = checker.run_quick_checks()
+        else:
+            results = checker.run_all_checks()
+        
+        checker.print_report(results, verbose=True)
+        
+        if checker.has_failures(results):
+            print("\n❌ System integrity check FAILED. Fix issues before generating content.")
+            return 1
+        elif checker.has_warnings(results):
+            print("\n⚠️  System integrity check passed with warnings.")
+            return 0
+        else:
+            print("\n✅ System integrity check PASSED. All systems healthy.")
+            return 0
+    
     # Command dispatcher - simple commands first
     if args.deploy:
         return deploy_to_production()
@@ -251,13 +283,13 @@ def main():
             return 1
     
     if args.caption:
-        return handle_caption_generation(args.caption)
+        return handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
     
     if args.subtitle:
-        return handle_subtitle_generation(args.subtitle)
+        return handle_subtitle_generation(args.subtitle, skip_integrity_check=args.skip_integrity_check)
     
     if args.faq:
-        return handle_faq_generation(args.faq)
+        return handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
     
     if args.audit or args.audit_batch or args.audit_all:
         return handle_material_audit(args)

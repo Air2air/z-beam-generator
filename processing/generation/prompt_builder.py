@@ -201,7 +201,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
                 author=author,
                 material=topic,
                 country=country,
-                facts=facts
+                facts=facts,
+                context=facts if facts else context  # Use facts as context for template
             )
             # Template contains all content instructions (focus, format, style)
             context_section = f"""{component_context}

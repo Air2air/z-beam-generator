@@ -64,52 +64,70 @@ class ProcessingConfig:
             raise RuntimeError(f"Failed to load config from {self.config_path}: {e}")
     
     # =========================================================================
-    # INTENSITY SLIDERS (User-facing controls)
+    # INTENSITY SLIDERS (User-facing controls) - NOW 1-10 SCALE
     # =========================================================================
     
     def get_author_voice_intensity(self) -> int:
-        """Get author voice intensity (1-3)."""
-        return self.config.get('author_voice_intensity', 2)
+        """Get author voice intensity (1-10)."""
+        return self.config.get('author_voice_intensity', 5)
     
     def get_personality_intensity(self) -> int:
-        """Get personality intensity (1-3)."""
-        return self.config.get('personality_intensity', 2)
+        """Get personality intensity (1-10)."""
+        return self.config.get('personality_intensity', 5)
     
     def get_engagement_style(self) -> int:
-        """Get engagement style (1-3)."""
-        return self.config.get('engagement_style', 2)
+        """Get engagement style (1-10)."""
+        return self.config.get('engagement_style', 5)
     
     def get_emotional_intensity(self) -> int:
-        """Get emotional intensity (1-3)."""
-        return self.config.get('emotional_intensity', 2)
+        """Get emotional intensity (1-10)."""
+        return self.config.get('emotional_intensity', 5)
     
     def get_technical_language_intensity(self) -> int:
-        """Get technical language intensity (1-3)."""
-        return self.config.get('technical_language_intensity', 2)
+        """Get technical language intensity (1-10)."""
+        return self.config.get('technical_language_intensity', 5)
     
     def get_context_specificity(self) -> int:
-        """Get context specificity (1-3)."""
-        return self.config.get('context_specificity', 2)
+        """Get context specificity (1-10)."""
+        return self.config.get('context_specificity', 5)
     
     def get_sentence_rhythm_variation(self) -> int:
-        """Get sentence rhythm variation (1-3)."""
-        return self.config.get('sentence_rhythm_variation', 2)
+        """Get sentence rhythm variation (1-10)."""
+        return self.config.get('sentence_rhythm_variation', 5)
     
     def get_imperfection_tolerance(self) -> int:
-        """Get imperfection tolerance (1-3)."""
-        return self.config.get('imperfection_tolerance', 2)
+        """Get imperfection tolerance (1-10)."""
+        return self.config.get('imperfection_tolerance', 5)
     
     def get_structural_predictability(self) -> int:
-        """Get structural predictability (1-3)."""
-        return self.config.get('structural_predictability', 2)
+        """Get structural predictability (1-10)."""
+        return self.config.get('structural_predictability', 5)
     
     def get_ai_avoidance_intensity(self) -> int:
-        """Get AI avoidance intensity (0-100)."""
-        return self.config.get('ai_avoidance_intensity', 50)
+        """Get AI avoidance intensity (1-10)."""
+        return self.config.get('ai_avoidance_intensity', 5)
     
     def get_length_variation_range(self) -> int:
-        """Get length variation range (0-100)."""
-        return self.config.get('length_variation_range', 50)
+        """Get length variation range (1-10)."""
+        return self.config.get('length_variation_range', 5)
+    
+    def get_learning_target(self) -> float:
+        """
+        Get human score learning target for adaptive improvement.
+        
+        Returns:
+            Target human score (0-100) that system tries to achieve through learning
+        """
+        return self.config.get('human_score_learning_target', 50)
+    
+    def get_humanness_intensity(self) -> int:
+        """
+        Get humanness_intensity (1-10 scale) for AI evasion control.
+        
+        Returns:
+            1 = Minimal (fast, weak penalties) → 10 = Maximum (aggressive, high penalties)
+        """
+        return self.config.get('humanness_intensity', 5)
     
     # =========================================================================
     # DETECTION SETTINGS

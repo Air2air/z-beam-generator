@@ -28,6 +28,7 @@ pytest tests/test_processing_pipeline.py --cov=processing --cov-report=html
 - ✅ **DataEnricher**: Fact fetching, prompt formatting
 - ✅ **AIDetectorEnsemble**: Pattern detection, batch processing
 - ✅ **ReadabilityValidator**: Flesch scoring, improvement suggestions
+- ✅ **ChainVerification**: Phase tracking, completeness validation, statistics (18 tests) 🆕
 - ✅ **Integration**: End-to-end workflows
 
 ## Test Files
@@ -35,6 +36,15 @@ pytest tests/test_processing_pipeline.py --cov=processing --cov-report=html
 Main test file location (may be gitignored):
 ```
 tests/test_processing_pipeline.py  # 400+ lines, 35+ tests
+```
+
+Processing-specific tests:
+```
+processing/tests/test_chain_verification.py     # 18 tests - Chain verification system
+processing/tests/test_e2e_pipeline.py           # E2E pipeline tests
+processing/tests/test_method_chain_robustness.py # Method chain tests
+processing/tests/test_phase2_voice_integration.py # Voice integration tests
+processing/tests/test_phase3_enrichment_structural.py # Enrichment tests
 ```
 
 ## Writing New Tests

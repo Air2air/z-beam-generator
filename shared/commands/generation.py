@@ -6,12 +6,17 @@ Handles AI-powered content generation commands (caption, subtitle, FAQ).
 """
 
 
-def handle_caption_generation(material_name: str):
+def handle_caption_generation(material_name: str, skip_integrity_check: bool = False):
     """Generate AI-powered caption for a material and save to Materials.yaml"""
     print("="*80)
     print(f"📝 CAPTION GENERATION: {material_name}")
     print("="*80)
     print()
+    
+    # Run pre-generation integrity check
+    from shared.commands.integrity_helper import run_pre_generation_check
+    if not run_pre_generation_check(skip_check=skip_integrity_check, quick=True):
+        return False
     
     try:
         # Import required modules
@@ -56,9 +61,9 @@ def handle_caption_generation(material_name: str):
         print()
         print("📝 Preview:")
         if before_text:
-            print(f"   • Before: {before_text[:100]}...")
+            print(f"   • Before: {before_text}")
         if after_text:
-            print(f"   • After: {after_text[:100]}...")
+            print(f"   • After: {after_text}")
         print()
         
         print("💾 Saved to: materials/data/Materials.yaml → caption")
@@ -73,12 +78,17 @@ def handle_caption_generation(material_name: str):
         return False
 
 
-def handle_subtitle_generation(material_name: str):
+def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = False):
     """Generate AI-powered subtitle for a material using processing pipeline"""
     print("="*80)
     print(f"📝 SUBTITLE GENERATION: {material_name}")
     print("="*80)
     print()
+    
+    # Run pre-generation integrity check
+    from shared.commands.integrity_helper import run_pre_generation_check
+    if not run_pre_generation_check(skip_check=skip_integrity_check, quick=True):
+        return False
     
     try:
         # Initialize API client
@@ -166,12 +176,17 @@ def handle_subtitle_generation(material_name: str):
         return False
 
 
-def handle_faq_generation(material_name: str):
+def handle_faq_generation(material_name: str, skip_integrity_check: bool = False):
     """Generate AI-powered FAQ for a material and save to Materials.yaml"""
     print("="*80)
     print(f"❓ FAQ GENERATION: {material_name}")
     print("="*80)
     print()
+    
+    # Run pre-generation integrity check
+    from shared.commands.integrity_helper import run_pre_generation_check
+    if not run_pre_generation_check(skip_check=skip_integrity_check, quick=True):
+        return False
     
     try:
         # Import required modules
@@ -211,10 +226,10 @@ def handle_faq_generation(material_name: str):
         print(f"   • Total words: {total_words}")
         print(f"   • Avg words/answer: {total_words / len(faq_list):.1f}")
         print()
-        print("📝 Preview (first 3 questions):")
-        for i, qa in enumerate(faq_list[:3], 1):
+        print("📝 Questions & Answers:")
+        for i, qa in enumerate(faq_list, 1):
             print(f"   {i}. {qa['question']}")
-            print(f"      Answer: {qa['answer'][:80]}...")
+            print(f"      {qa['answer']}")
             print()
         
         print("💾 Saved to: materials/data/Materials.yaml → faq")

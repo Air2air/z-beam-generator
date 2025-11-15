@@ -31,6 +31,7 @@
 | **[ARCHITECTURE_RATIONALE.md](ARCHITECTURE_RATIONALE.md)** | Why specification-driven architecture | Flexibility without redundancy |
 | **[FLEXIBLE_ARCHITECTURE_GUIDE.md](FLEXIBLE_ARCHITECTURE_GUIDE.md)** | Component types and content domains | Adding new types, usage examples |
 | **[IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md)** | What was built and how | Module descriptions, migration path |
+| **[CHAIN_VERIFICATION_GUIDE.md](CHAIN_VERIFICATION_GUIDE.md)** | 🆕 Runtime chain completeness verification | Phase tracking, fail-fast, statistics |
 
 ---
 
@@ -42,7 +43,8 @@
 
 ### "I want to understand the system architecture"
 → **[ARCHITECTURE.md](ARCHITECTURE.md)** - Visual diagrams and data flow  
-→ **[ARCHITECTURE_RATIONALE.md](ARCHITECTURE_RATIONALE.md)** - Design decisions
+→ **[ARCHITECTURE_RATIONALE.md](ARCHITECTURE_RATIONALE.md)** - Design decisions  
+→ **[CHAIN_VERIFICATION_GUIDE.md](CHAIN_VERIFICATION_GUIDE.md)** - 🆕 Chain completeness verification
 
 ### "I want to generate content programmatically"
 → **[QUICKSTART.md](QUICKSTART.md)** - Code examples  

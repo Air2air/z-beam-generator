@@ -124,12 +124,14 @@ class AIDetectorEnsemble:
         # Primary: Winston API detection
         winston_score = 0.0
         winston_success = False
+        winston_full_result = None  # Store full Winston response for sentence analysis
         if self._winston_client:
             try:
                 winston_result = self._winston_client.detect_ai_content(text)
                 if winston_result.get('success'):
                     winston_score = winston_result['ai_score']
                     winston_success = True
+                    winston_full_result = winston_result  # Preserve full response
                     logger.info(f"Winston API detection: {winston_score:.3f} (human: {winston_result.get('human_score', 0):.1f}%)")
                 else:
                     logger.warning(f"Winston API failed: {winston_result.get('error', 'Unknown error')}")
@@ -184,7 +186,10 @@ class AIDetectorEnsemble:
             'ml_score': ml_score,
             'detected_patterns': pattern_result['patterns'],
             'details': advanced_details,
-            'method': method
+            'method': method,
+            # Preserve Winston sentence data for failure analysis
+            'sentences': winston_full_result.get('sentences', []) if winston_full_result else [],
+            'human_score': winston_full_result.get('human_score', 0) if winston_full_result else 0
         }
     
     def _pattern_detection(self, text: str) -> Dict:

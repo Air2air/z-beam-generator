@@ -9,6 +9,9 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## ✨ Features
 
+- **🔍 NEW: System Integrity Module**: Automatic pre-generation validation (November 15, 2025)
+- **⚡ NEW: Quick Checks**: ~20ms integrity validation with 5 critical areas
+- **🛡️ NEW: Fail-Fast Validation**: Configuration mapping, parameter propagation, API health
 - **🏗️ NEW: Multi-Content Type Architecture**: 5 equal-weight content types (Material, Contaminant, Region, Application, Thesaurus) - October 30, 2025
 - **📦 NEW: Extensible Design**: BaseFrontmatterGenerator + FrontmatterOrchestrator for unified content generation
 - **🔄 NEW: Data Architecture Consolidation**: 30% file reduction (10 files → 7 files) in category data
@@ -39,6 +42,16 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 **📖 Complete Feature Catalog**: See [docs/COMPLETE_FEATURE_INVENTORY.md](docs/COMPLETE_FEATURE_INVENTORY.md) for exhaustive feature list
 
 ## 🔄 Recent Updates
+
+### November 15, 2025: System Integrity Module ✅ **NEW**
+- **🔍 INTEGRATED**: Automatic pre-generation integrity validation
+- **⚡ PERFORMANCE**: Quick checks complete in ~20ms (minimal overhead)
+- **🛡️ VALIDATION**: 5 categories (config mapping, parameter propagation, API health, docs alignment, test validity)
+- **✅ COVERAGE**: Integrated in caption, subtitle, FAQ, and unified workflow
+- **🚀 CLI FLAGS**: `--integrity-check` for standalone, `--skip-integrity-check` to bypass
+- **📊 RESULTS**: 4 passed, 1 warning (penalties not in bundle - expected with legacy system)
+- **🧪 TESTING**: 15+ unit tests + 3 integration tests covering all functionality
+- **📚 DOCS**: Complete guide at `processing/integrity/README.md`
 
 ### November 15, 2025: Winston AI Learning System ✅ **NEW**
 - **🤖 WINSTON PRIMARY**: Winston AI v2 as primary detector (80% weight in composite scoring)
@@ -251,7 +264,12 @@ safetyClass: "Class 4 laser safety requirements with fume extraction"  # AI-rese
 ## 🚀 Quick Start
 
 ```bash
+# System integrity check (NEW - November 15, 2025)
+python3 run.py --integrity-check          # Full system validation
+python3 run.py --integrity-check --quick  # Fast check (~20ms)
+
 # Generate content for a single material (case-insensitive)
+# Note: Integrity check runs automatically before generation
 python3 run.py --material "Aluminum"  # or "aluminum", "ALUMINUM", etc.
 - **Applications**: Research-based uses (aerospace turbine blades, medical dental implants)
 - **Zero Fallbacks**: Complete audit confirmed no remaining hardcoded defaults

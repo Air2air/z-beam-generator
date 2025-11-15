@@ -16,9 +16,10 @@ Fail-fast design: Requires database connection, no fallbacks.
 """
 
 import logging
+import random
 import sqlite3
 import statistics
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 from pathlib import Path
 from collections import defaultdict
 
@@ -58,6 +59,44 @@ class TemperatureAdvisor:
             logger.warning(f"Database not found: {db_path}. TemperatureAdvisor will work once data exists.")
         
         logger.info(f"[TEMPERATURE ADVISOR] Initialized (min_samples={min_samples})")
+    
+    def recommend_temperature(
+        self,
+        material: Optional[str] = None,
+        component_type: Optional[str] = None,
+        attempt: int = 1,
+        fallback_temp: float = 0.7
+    ) -> float:
+        """
+        Recommend optimal temperature (primary API for generators).
+        
+        Args:
+            material: Optional material name
+            component_type: Optional component type
+            attempt: Current attempt number (for exploration)
+            fallback_temp: Fallback if no data available
+            
+        Returns:
+            Recommended temperature as float
+        """
+        result = self.get_optimal_temperature(material, component_type)
+        
+        if result['confidence'] == 'none':
+            # No data yet - use fallback
+            return fallback_temp
+        
+        optimal = result['recommended_temp']
+        
+        # Add exploration on later attempts (15% of the time)
+        if attempt > 1 and random.random() < 0.15:
+            # Explore: try slightly different temperature
+            exploration_range = 0.1
+            explored = optimal + random.uniform(-exploration_range, exploration_range)
+            explored = max(0.3, min(1.0, explored))  # Clamp to valid range
+            logger.info(f"🔍 [TEMPERATURE ADVISOR] Exploring: {explored:.2f} (optimal: {optimal:.2f})")
+            return explored
+        
+        return optimal
     
     def get_optimal_temperature(
         self, 
