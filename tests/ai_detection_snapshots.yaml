@@ -264,3 +264,70 @@ snapshot_2025_11_15_with_ai_detection:
     pass_rate: null
   verdict: TBD
   notes: Fill in after phrasely.ai testing
+
+# ==============================================================================
+# SNAPSHOT: with_banned_patterns
+# ==============================================================================
+snapshot_2025_11_15_with_banned_patterns:
+  timestamp: '2025-11-15T00:43:30.085268'
+  commit_hash: dc70b4fb
+  config:
+    author_voice_intensity: 1
+    personality_intensity: 1
+    engagement_style: 1
+    emotional_intensity: 1
+    technical_language_intensity: 2
+    context_specificity: 2
+    sentence_rhythm_variation: 3
+    imperfection_tolerance: 3
+    structural_predictability: 1
+    ai_avoidance_intensity: 3
+    length_variation_range: 3
+  sentence_calculator:
+    variation_pct: 0.5
+  prompt_version: primary_advantage_with_banned_patterns
+  test_results:
+  - material: Chromium
+    word_count: 17
+    sentence_count: 1
+    output: In alloy steels, chromium boosts corrosion resistance and hardness far
+      beyond carbon steel equivalents for harsh environments
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Molybdenum
+    word_count: 18
+    sentence_count: 1
+    output: "High-temperature alloys gain exceptional strength from molybdenum, outperforming\
+      \ steel in furnaces and aerospace parts where heat exceeds 1500\xB0C"
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Palladium
+    word_count: 27
+    sentence_count: 1
+    output: Unlike other metals, palladium absorbs vast quantities of hydrogen reversibly
+      at ambient temperatures, enabling purer separation in fuel cells and industrial
+      refining than diffusion barriers like silica
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  - material: Tantalum
+    word_count: 14
+    sentence_count: 1
+    output: In chemical processing, tantalum resists corrosion from acids far longer
+      than stainless steel alternatives
+    pipeline_ai_score: null
+    phrasely_ai_score: TBD
+    human_readable: null
+    notes: ''
+  summary:
+    total_tested: 4
+    passed: null
+    failed: null
+    pass_rate: null
+  verdict: TBD
+  notes: Fill in after phrasely.ai testing

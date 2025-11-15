@@ -20,7 +20,7 @@ grammar|overuse_passive_voice|\bis\s+(achieved|maintained|preserved|restored|rem
 # ============================================================================
 # UNNATURAL PHRASING PATTERNS (Increased severities, added more patterns)
 # ============================================================================
-phrasing|abstract_verbs|(achieves?|performs?|executes?|conducts?|facilitates?|enables?|harnesses?|leverages?|demonstrates?|exhibits?|provides?)\s+(enhanced?|optimal|superior|excellent|effective|efficient|advanced|innovative|robust|comprehensive|significant|substantial|considerable|notable)|critical|facilitates enhanced|Abstract verb + generic adjective - very AI-like
+phrasing|abstract_verbs|(achieves?|performs?|executes?|conducts?|facilitates?|enables?|harnesses?|leverages?|demonstrates?|exhibits?|provides?|gains?|boosts?)\s+(enhanced?|optimal|superior|excellent|effective|efficient|advanced|innovative|robust|comprehensive|significant|substantial|considerable|notable|exceptional)|critical|facilitates enhanced|Abstract verb + generic adjective - very AI-like
 phrasing|abstract_pairing|(achieves|performs|executes|conducts|facilitates|enables|harnesses)\s+(removal|restoration|preservation|cleaning|optimization|enhancement|efficiency|performance|integrity|capability)|critical|harnesses efficiency|Formal; added "harnesses" from LLM news text contrasts
 phrasing|maintaining_while|\b(while|whilst)\s+(maintaining|preserving|ensuring|retaining)\b|severe|while maintaining|Classic AI hedge pattern
 phrasing|across_diverse|\bacross\s+(diverse|various|multiple|numerous)\b|severe|across diverse|Vague AI generalization
