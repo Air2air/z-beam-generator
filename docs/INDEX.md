@@ -6,6 +6,7 @@
 
 | I want to... | Go to |
 |--------------|-------|
+| **Use Winston AI learning system** | [../WINSTON_LEARNING_SYSTEM_COMPLETE.md](../WINSTON_LEARNING_SYSTEM_COMPLETE.md) ✨ NEW |
 | **Use the new processing pipeline** | [architecture/PROCESSING_PIPELINE.md](architecture/PROCESSING_PIPELINE.md) ✨ NEW |
 | **Fix missing property data** | [DATA_COMPLETION_ACTION_PLAN.md](DATA_COMPLETION_ACTION_PLAN.md) ✨ NEW |
 | **Get started immediately** | [setup/INSTALLATION.md](setup/INSTALLATION.md) |
@@ -36,6 +37,9 @@
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
 - [**architecture/PROCESSING_PIPELINE.md**](architecture/PROCESSING_PIPELINE.md) - ✅ **NEW** Unified content generation pipeline *(Nov 13, 2025)*
+- [**WINSTON_LEARNING_SYSTEM_COMPLETE.md**](../WINSTON_LEARNING_SYSTEM_COMPLETE.md) - ✅ **NEW** ML learning system with 4 modules *(Nov 15, 2025)*
+- [**WINSTON_INTEGRATION_COMPLETE.md**](../WINSTON_INTEGRATION_COMPLETE.md) - ✅ **NEW** Winston AI primary detector (80% weight) *(Nov 15, 2025)*
+- [**WINSTON_FEEDBACK_DATABASE_COMPLETE.md**](../WINSTON_FEEDBACK_DATABASE_COMPLETE.md) - ✅ **NEW** SQLite feedback database *(Nov 15, 2025)*
 - [**ARCHITECTURE_COMPLETE.md**](core/ARCHITECTURE_COMPLETE.md) - ✅ **CONSOLIDATED** Complete system architecture guide *(Oct 22, 2025)*
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
 - [**DATA_STRUCTURE_UPDATE_OCT2025.md**](DATA_STRUCTURE_UPDATE_OCT2025.md) - ✅ **NEW** Complete data structure transformation guide *(Oct 25, 2025)*

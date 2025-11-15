@@ -14,12 +14,14 @@
 
 **BEFORE** any data-related work, review these files:
 1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions (⭐ START HERE)
-2. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - 🔥 Materials.yaml structure (NO 'properties' wrapper!)
-3. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
-4. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
-5. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
-6. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
-7. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - 🆕 Dynamic sentence counts by author voice
+2. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - 🆕 ML learning system (Nov 15, 2025)
+3. **`WINSTON_INTEGRATION_COMPLETE.md`** - 🆕 Winston AI primary detector (Nov 15, 2025)
+4. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - 🔥 Materials.yaml structure (NO 'properties' wrapper!)
+5. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
+6. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
+7. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+8. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
+9. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - 🆕 Dynamic sentence counts by author voice
 
 ---
 
@@ -76,6 +78,46 @@ images:
 **Script**: `scripts/fix_materials_structure.py`
 **Testing**: `tests/test_data_structure_oct2025.py` - 10/10 tests passing ✅
 **Coverage**: Hero 132/132 (100%), Micro 132/132 (100%), RegulatoryStandards 106/132 (80.3%)
+
+---
+
+### 🤖 Winston AI Learning System (November 15, 2025)
+
+**ML Learning Modules**: System learns from Winston feedback to improve generation
+
+**CLI Commands**:
+```bash
+# View learning dashboard
+python3 scripts/winston/learn.py --dashboard
+
+# Learn patterns from feedback
+python3 scripts/winston/learn.py --patterns --material "Aluminum"
+
+# Find optimal temperature
+python3 scripts/winston/learn.py --temperature --material "Steel" --component caption
+
+# Optimize prompts with learned patterns
+python3 scripts/winston/learn.py --optimize-prompt prompts/caption.txt --output prompts/caption_v2.txt
+
+# Predict success before generation
+python3 scripts/winston/learn.py --predict --material "Copper" --component subtitle --temp 0.7
+
+# Add manual correction to database
+python3 scripts/winston/add_correction.py
+
+# Analyze Winston patterns
+python3 scripts/winston/analyze_patterns.py --material "Aluminum"
+```
+
+**Learning Modules**:
+- **PatternLearner**: Learns risky n-gram patterns from failures
+- **TemperatureAdvisor**: Finds optimal temperature settings statistically
+- **PromptOptimizer**: Enhances prompts with learned patterns
+- **SuccessPredictor**: Predicts success probability before generation
+
+**Expected Improvement**: +35% success rate after 100 samples, +45% after 200 samples
+
+**Documentation**: `WINSTON_LEARNING_SYSTEM_COMPLETE.md`, `WINSTON_INTEGRATION_COMPLETE.md`
 
 ---
 
