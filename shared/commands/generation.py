@@ -38,10 +38,10 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         
         # Generate caption (no voice - that's done by post-processor)
         print("🤖 Generating AI-powered caption...")
-        print("   • before: Contaminated surface analysis")
-        print("   • after: Cleaned surface analysis")
-        print("   • Target: Technical, factual content")
-        print("   • Note: Voice enhancement happens in post-processing")
+        print("   before: Contaminated surface analysis")
+        print("   after: Cleaned surface analysis")
+        print("   Target: Technical, factual content")
+        print("   Note: Voice enhancement happens in post-processing")
         print()
         
         caption_data = generator.generate(material_name, 'caption')
@@ -55,15 +55,15 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         
         print("📊 Statistics:")
         if before_text:
-            print(f"   • before: {len(before_text)} characters, {len(before_text.split())} words")
+            print(f"   before: {len(before_text)} characters, {len(before_text.split())} words")
         if after_text:
-            print(f"   • after: {len(after_text)} characters, {len(after_text.split())} words")
+            print(f"   after: {len(after_text)} characters, {len(after_text.split())} words")
         print()
         print("📝 Preview:")
         if before_text:
-            print(f"   • Before: {before_text}")
+            print(f"   Before: {before_text}")
         if after_text:
-            print(f"   • After: {after_text}")
+            print(f"   After: {after_text}")
         print()
         
         print("💾 Saved to: materials/data/Materials.yaml → caption")
