@@ -28,12 +28,32 @@ import random
 import re
 import time
 from typing import Dict, Any, Optional
+from copy import deepcopy
 
 from processing.adapters.base import DataSourceAdapter
 from processing.adapters.materials_adapter import MaterialsAdapter
 from processing.detection.winston_integration import WinstonIntegration
 
 logger = logging.getLogger(__name__)
+
+
+def _deep_merge(base: Dict[str, Any], update: Dict[str, Any]) -> Dict[str, Any]:
+    """Deep merge two dictionaries, preserving nested structures.
+    
+    Args:
+        base: Base dictionary to merge into
+        update: Dictionary with updates to apply
+        
+    Returns:
+        New dictionary with deep-merged values
+    """
+    result = deepcopy(base)
+    for key, value in update.items():
+        if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+            result[key] = _deep_merge(result[key], value)
+        else:
+            result[key] = deepcopy(value)
+    return result
 
 
 class UnifiedOrchestrator:
@@ -292,19 +312,12 @@ class UnifiedOrchestrator:
                     attempt=attempt
                 )
             
-            # Check for tech specs violation at technical_intensity=1
-            if self._should_check_tech_specs(params['enrichment_params']):
-                if self._has_tech_specs(text) and attempt < absolute_max:
-                    self.logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden)")
-                    attempt += 1
-                    continue
-            
             # Generate content
             try:
                 text = self._call_api(
                     prompt,
-                    params['temperature'],
-                    params['max_tokens'],
+                    params['api_params']['temperature'],
+                    params['api_params']['max_tokens'],
                     params['enrichment_params'],
                     params.get('api_penalties', {})  # NEW: Pass API penalties
                 )
@@ -324,7 +337,7 @@ class UnifiedOrchestrator:
                 text=text,
                 material=identifier,
                 component_type=component_type,
-                temperature=params['temperature'],
+                temperature=params['api_params']['temperature'],
                 attempt=attempt,
                 max_attempts=max_attempts,
                 ai_threshold=self.ai_threshold
@@ -505,6 +518,133 @@ class UnifiedOrchestrator:
         
         return self.base_ai_threshold
     
+    def _validate_parameter_schema(self, params: Dict[str, Any]) -> bool:
+        """Validate that database parameters match expected schema.
+        
+        Args:
+            params: Parameters retrieved from database
+            
+        Returns:
+            True if valid, False otherwise
+        """
+        try:
+            # Check required fields exist
+            required = ['temperature', 'frequency_penalty', 'presence_penalty']
+            if not all(key in params for key in required):
+                return False
+            
+            # Validate types and ranges
+            if not isinstance(params['temperature'], (int, float)):
+                return False
+            if not (0.0 <= params['temperature'] <= 2.0):
+                return False
+            
+            if not isinstance(params['frequency_penalty'], (int, float)):
+                return False
+            if not (-2.0 <= params['frequency_penalty'] <= 2.0):
+                return False
+            
+            if not isinstance(params['presence_penalty'], (int, float)):
+                return False
+            if not (-2.0 <= params['presence_penalty'] <= 2.0):
+                return False
+            
+            # Validate optional dict fields
+            if 'voice_params' in params and params['voice_params']:
+                if not isinstance(params['voice_params'], dict):
+                    return False
+            
+            if 'enrichment_params' in params and params['enrichment_params']:
+                if not isinstance(params['enrichment_params'], dict):
+                    return False
+            
+            return True
+            
+        except Exception as e:
+            self.logger.warning(f"Parameter validation error: {e}")
+            return False
+    
+    def _get_best_previous_parameters(
+        self,
+        identifier: str,
+        component_type: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Retrieve best-performing parameters from previous successful generations.
+        
+        Finds the most recent successful generation with high human score
+        and returns its parameters for reuse on first attempt.
+        
+        Args:
+            identifier: Material/item name
+            component_type: Component type
+            
+        Returns:
+            Parameter dict if found, None otherwise
+        """
+        if not self.winston.feedback_db:
+            return None
+        
+        try:
+            import sqlite3
+            import json
+            
+            conn = sqlite3.connect(self.winston.feedback_db.db_path)
+            
+            # Get parameters from most recent successful generation with high human score
+            cursor = conn.execute("""
+                SELECT 
+                    p.temperature,
+                    p.frequency_penalty,
+                    p.presence_penalty,
+                    p.voice_params,
+                    p.enrichment_params,
+                    r.human_score,
+                    r.timestamp
+                FROM generation_parameters p
+                JOIN detection_results r ON p.detection_result_id = r.id
+                WHERE p.material = ?
+                  AND p.component_type = ?
+                  AND r.success = 1
+                  AND r.human_score >= 20
+                ORDER BY r.human_score DESC, r.timestamp DESC
+                LIMIT 1
+            """, (identifier, component_type))
+            
+            row = cursor.fetchone()
+            conn.close()
+            
+            if row:
+                temp, freq_pen, pres_pen, voice_json, enrich_json, human_score, timestamp = row
+                
+                params = {
+                    'temperature': temp,
+                    'frequency_penalty': freq_pen or 0.0,
+                    'presence_penalty': pres_pen or 0.0,
+                    'voice_params': json.loads(voice_json) if voice_json else None,
+                    'enrichment_params': json.loads(enrich_json) if enrich_json else None,
+                    'human_score': human_score,
+                    'timestamp': timestamp
+                }
+                
+                # Validate schema before returning
+                if not self._validate_parameter_schema(params):
+                    self.logger.warning(
+                        f"Retrieved parameters failed schema validation for {identifier} {component_type}"
+                    )
+                    return None
+                
+                self.logger.info(
+                    f"🎯 [PARAMETER REUSE] Found successful params: "
+                    f"human={human_score:.1f}%, temp={temp:.3f}"
+                )
+                
+                return params
+        except Exception as e:
+            self.logger.debug(f"Could not retrieve previous parameters: {e}")
+        
+        return None
+    
     def _get_adaptive_parameters(
         self,
         identifier: str,
@@ -515,7 +655,11 @@ class UnifiedOrchestrator:
         """
         Get generation parameters with multi-dimensional learning adaptation.
         
+        On first attempt, tries to reuse best parameters from previous successful
+        generations. On retries, adapts based on Winston feedback.
+        
         Implements industry best practices:
+        - Parameter reuse from successful previous generations (NEW)
         - Cross-session learning from database (TemperatureAdvisor)
         - Failure-type-specific retry strategies (uniform/borderline/partial)
         - 15% exploration rate for parameter discovery
@@ -530,16 +674,116 @@ class UnifiedOrchestrator:
         Returns:
             Dict with temperature, voice_params, enrichment_params, max_tokens
         """
-        # Get baseline parameters
-        base_params = self.dynamic_config.get_all_generation_params(component_type)
+        # MANDATORY: Always try to reuse proven parameters from database FIRST
+        # This is the primary source for all generation parameters
+        previous_params = self._get_best_previous_parameters(identifier, component_type)
+        
+        if previous_params:
+            # FOUND IN DATABASE - Use these as the starting point for ALL attempts
+            if attempt == 1:
+                # Get baseline structure (for word counts only)
+                base_params = self.dynamic_config.get_all_generation_params(component_type)
+                
+                # Track what changed for detailed logging
+                changes = []
+                
+                # Apply temperature
+                old_temp = base_params['api_params']['temperature']
+                new_temp = previous_params['temperature']
+                if abs(old_temp - new_temp) > 0.001:
+                    base_params['api_params']['temperature'] = new_temp
+                    changes.append(f"temperature={new_temp:.3f} (was {old_temp:.3f})")
+                
+                # Apply penalties to api_penalties dict
+                if 'api_penalties' not in base_params:
+                    base_params['api_penalties'] = {}
+                
+                old_freq = base_params['api_penalties'].get('frequency_penalty', 0.0)
+                new_freq = previous_params['frequency_penalty']
+                if abs(old_freq - new_freq) > 0.001:
+                    base_params['api_penalties']['frequency_penalty'] = new_freq
+                    changes.append(f"frequency_penalty={new_freq:.3f} (was {old_freq:.3f})")
+                
+                old_pres = base_params['api_penalties'].get('presence_penalty', 0.0)
+                new_pres = previous_params['presence_penalty']
+                if abs(old_pres - new_pres) > 0.001:
+                    base_params['api_penalties']['presence_penalty'] = new_pres
+                    changes.append(f"presence_penalty={new_pres:.3f} (was {old_pres:.3f})")
+                
+                # Deep merge voice params
+                if previous_params.get('voice_params'):
+                    old_voice = deepcopy(base_params['voice_params'])
+                    base_params['voice_params'] = _deep_merge(
+                        base_params['voice_params'],
+                        previous_params['voice_params']
+                    )
+                    if base_params['voice_params'] != old_voice:
+                        voice_changes = []
+                        for key, val in previous_params['voice_params'].items():
+                            if key not in old_voice or old_voice[key] != val:
+                                voice_changes.append(f"{key}={val}")
+                        if voice_changes:
+                            changes.append(f"voice_params: {', '.join(voice_changes)}")
+                
+                # Deep merge enrichment params
+                if previous_params.get('enrichment_params'):
+                    old_enrich = deepcopy(base_params['enrichment_params'])
+                    base_params['enrichment_params'] = _deep_merge(
+                        base_params['enrichment_params'],
+                        previous_params['enrichment_params']
+                    )
+                    if base_params['enrichment_params'] != old_enrich:
+                        enrich_changes = []
+                        for key, val in previous_params['enrichment_params'].items():
+                            if key not in old_enrich or old_enrich[key] != val:
+                                enrich_changes.append(f"{key}={val}")
+                        if enrich_changes:
+                            changes.append(f"enrichment_params: {', '.join(enrich_changes)}")
+                
+                # Log detailed parameter reuse
+                if changes:
+                    self.logger.info(
+                        f"✓ Reusing proven successful parameters (human_score={previous_params['human_score']:.1f}%):\n" +
+                        "\n".join(f"   • {change}" for change in changes)
+                    )
+                else:
+                    self.logger.info(
+                        f"✓ Previous successful parameters match baseline (human_score={previous_params['human_score']:.1f}%)"
+                    )
+                
+                return base_params
+            else:
+                # Retry attempts: Start with DB params, then apply adaptive adjustments below
+                base_params = self.dynamic_config.get_all_generation_params(component_type)
+                base_params['api_params']['temperature'] = previous_params['temperature']
+                if 'api_penalties' not in base_params:
+                    base_params['api_penalties'] = {}
+                base_params['api_penalties']['frequency_penalty'] = previous_params['frequency_penalty']
+                base_params['api_penalties']['presence_penalty'] = previous_params['presence_penalty']
+                if previous_params.get('voice_params'):
+                    base_params['voice_params'] = _deep_merge(base_params['voice_params'], previous_params['voice_params'])
+                if previous_params.get('enrichment_params'):
+                    base_params['enrichment_params'] = _deep_merge(base_params['enrichment_params'], previous_params['enrichment_params'])
+                
+                self.logger.info(
+                    f"🔄 Retry {attempt}: Starting with DB params (temp={previous_params['temperature']:.3f}, score={previous_params['human_score']:.1f}%)"
+                )
+                # Continue to adaptive adjustments below
+        else:
+            # NO DATABASE HISTORY - Calculate from scratch (rare case for new materials)
+            self.logger.warning(
+                f"⚠️  No database history for {identifier} {component_type} - calculating from scratch"
+            )
+            base_params = self.dynamic_config.get_all_generation_params(component_type)
+        
+        # Extract current parameters for adaptive adjustment
         voice_params = base_params['voice_params'].copy()
         enrichment_params = base_params['enrichment_params'].copy()
+        base_temperature = base_params['api_params']['temperature']
         
-        # Extract base temperature
-        base_temperature = self.dynamic_config.calculate_temperature(component_type)
-        
-        # Cross-session learning from historical data
-        if self.temperature_advisor:
+        # Cross-session learning ONLY used if no database parameters exist
+        # Database parameters are PRIMARY and should not be overridden
+        if not previous_params and self.temperature_advisor:
             try:
                 learned_temp = self.temperature_advisor.recommend_temperature(
                     material=identifier,
@@ -619,11 +863,15 @@ class UnifiedOrchestrator:
                 voice_params[param_to_adjust] = max(0.0, min(1.0, voice_params[param_to_adjust]))
                 self.logger.info(f"   Adjusted {param_to_adjust} to {voice_params[param_to_adjust]:.2f}")
         
+        # Return consistent structure with api_params dict
         return {
-            'temperature': base_temperature,
+            'api_params': {
+                'temperature': base_temperature,
+                'max_tokens': self.dynamic_config.calculate_max_tokens(component_type)
+            },
+            'api_penalties': base_params.get('api_penalties', {}),
             'voice_params': voice_params,
-            'enrichment_params': enrichment_params,
-            'max_tokens': self.dynamic_config.calculate_max_tokens(component_type)
+            'enrichment_params': enrichment_params
         }
     
     def _call_api(

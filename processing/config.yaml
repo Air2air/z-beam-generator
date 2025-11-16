@@ -51,11 +51,18 @@ component_lengths:
   subtitle:
     default: 30
   caption:
-    default: 50  
+    default: 80
+    min_words_before: 60
+    max_words_before: 100
+    min_words_after: 60
+    max_words_after: 100
+    word_count_tolerance: 10
   description:
     default: 200
   faq:
     default: 120
+    min_words: 20
+    max_words: 50
   troubleshooter:
     default: 150
 

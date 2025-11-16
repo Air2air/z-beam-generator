@@ -27,30 +27,36 @@ import tempfile
 import yaml
 from pathlib import Path
 from typing import Dict
+
+from processing.config.config_loader import get_config
 from shared.generators.component_generators import APIComponentGenerator
 
 logger = logging.getLogger(__name__)
 
 # ============================================================================
-# CONFIGURATION
+# CONFIGURATION - Load from config.yaml
 # ============================================================================
 
-# Word count ranges for caption sections
-MIN_WORDS_BEFORE = 30
-MAX_WORDS_BEFORE = 70
-MIN_WORDS_AFTER = 30
-MAX_WORDS_AFTER = 70
+# Load config once at module level
+_config = get_config()
+_caption_config = _config.config.get('component_lengths', {}).get('caption', {})
 
-# Total caption constraints
-MIN_TOTAL_WORDS = 60
-MAX_TOTAL_WORDS = 140
+# Word count ranges for caption sections (from config)
+MIN_WORDS_BEFORE = _caption_config.get('min_words_before', 30)
+MAX_WORDS_BEFORE = _caption_config.get('max_words_before', 70)
+MIN_WORDS_AFTER = _caption_config.get('min_words_after', 30)
+MAX_WORDS_AFTER = _caption_config.get('max_words_after', 70)
 
-# Generation settings
-CAPTION_GENERATION_TEMPERATURE = 0.6
-CAPTION_MAX_TOKENS = 300  # Enough for both sections
+# Total caption constraints (calculated from config)
+MIN_TOTAL_WORDS = MIN_WORDS_BEFORE + MIN_WORDS_AFTER
+MAX_TOTAL_WORDS = MAX_WORDS_BEFORE + MAX_WORDS_AFTER
 
-# Word count tolerance
-WORD_COUNT_TOLERANCE = 10
+# Generation settings (from config)
+CAPTION_GENERATION_TEMPERATURE = _caption_config.get('generation_temperature', 0.6)
+CAPTION_MAX_TOKENS = _caption_config.get('max_tokens', 300)
+
+# Word count tolerance (from config)
+WORD_COUNT_TOLERANCE = _caption_config.get('word_count_tolerance', 10)
 
 # Data file paths
 MATERIALS_DATA_PATH = "data/materials/Materials.yaml"

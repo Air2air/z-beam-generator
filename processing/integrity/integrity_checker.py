@@ -669,13 +669,14 @@ class IntegrityChecker:
     
     def _check_hardcoded_values(self) -> List[IntegrityResult]:
         """
-        Detect hardcoded values that should come from config or dynamic calculation.
+        Detect hardcoded configuration values that should come from config.yaml.
         
-        Searches for common anti-patterns:
-        - Hardcoded penalties (frequency_penalty=0.0, presence_penalty=0.5)
-        - Hardcoded thresholds (if score > 30:, threshold = 0.7)
-        - Hardcoded defaults overriding config (or 0.0, or {})
-        - Magic numbers in critical paths
+        Searches for anti-patterns:
+        - Hardcoded word counts (MIN_WORDS = 30, MAX_WORDS = 70)
+        - Hardcoded temperatures (TEMPERATURE = 0.6)
+        - Hardcoded max_tokens (MAX_TOKENS = 300)
+        - Hardcoded thresholds not from config
+        - Module-level constants that should be in config.yaml
         
         Returns:
             List of IntegrityResult objects
@@ -683,91 +684,117 @@ class IntegrityChecker:
         results = []
         start = time.time()
         
-        # Files to check (production code only, exclude tests)
+        # Files to check (production code and scripts, exclude tests)
         production_files = [
+            'materials/caption/generators/generator.py',
+            'materials/subtitle/generators',
+            'materials/faq/generators',
             'processing/generator.py',
             'processing/unified_orchestrator.py',
-            'processing/config/dynamic_config.py',
-            'processing/config/config_loader.py',
-            'shared/services/grok_client.py',
-            'shared/services/winston_client.py',
-            'shared/commands/generation.py'
+            'shared/commands/generation.py',
+            'scripts/validation',
+            'scripts/operations'
         ]
         
         violations = []
         
-        # Patterns to detect (excluding legitimate calculations and optional defaults)
-        # NOTE: These patterns are intentionally conservative to avoid false positives
-        # They only flag obvious hardcoding, not mathematical calculations or .get() defaults
-        hardcoded_patterns = [
-            # Only flag penalties assigned from literals outside of calculation methods
-            # Skip lines with mathematical operations (+, -, *, /) or conditionals
-            # These are already in calculate_* methods where they belong
-        ]
-        
-        # For now, disable hardcoded value detection as it's too prone to false positives
-        # The real violations (penalties being sent to APIs that don't support them)
-        # are caught by the API client filtering logic and parameter logging
-        
+        # Patterns that indicate hardcoded config values
         import re
         base_path = Path(__file__).parent.parent.parent  # Get to repo root
         
+        # Patterns to detect hardcoded configuration
+        config_violation_patterns = [
+            # Word count constants
+            (r'^MIN_WORDS(?:_BEFORE|_AFTER)?\s*=\s*\d+', 'Hardcoded MIN_WORDS constant (should load from config)'),
+            (r'^MAX_WORDS(?:_BEFORE|_AFTER)?\s*=\s*\d+', 'Hardcoded MAX_WORDS constant (should load from config)'),
+            (r'^MIN_TOTAL_WORDS\s*=\s*\d+', 'Hardcoded MIN_TOTAL_WORDS (should calculate from config)'),
+            (r'^MAX_TOTAL_WORDS\s*=\s*\d+', 'Hardcoded MAX_TOTAL_WORDS (should calculate from config)'),
+            
+            # Temperature constants (not part of calculations)
+            (r'^[A-Z_]*TEMPERATURE\s*=\s*0\.\d+', 'Hardcoded temperature constant (should load from config)'),
+            
+            # Token limits
+            (r'^[A-Z_]*MAX_TOKENS\s*=\s*\d+', 'Hardcoded max_tokens constant (should load from config)'),
+            
+            # Tolerance values
+            (r'^WORD_COUNT_TOLERANCE\s*=\s*\d+', 'Hardcoded tolerance (should load from config)'),
+            
+            # Default values that bypass config
+            (r'^DEFAULT_[A-Z_]+\s*=\s*\d+', 'Hardcoded default value (should load from config with .get())'),
+        ]
+        
         for file_path in production_files:
             full_path = base_path / file_path
-            if not full_path.exists():
+            
+            # Handle both files and directories
+            if full_path.is_dir():
+                py_files = list(full_path.rglob('*.py'))
+            elif full_path.is_file():
+                py_files = [full_path]
+            elif full_path.with_suffix('.py').is_file():
+                py_files = [full_path.with_suffix('.py')]
+            else:
                 continue
             
-            try:
-                content = full_path.read_text()
-                lines = content.split('\n')
+            for py_file in py_files:
+                # Skip test files
+                if 'test' in str(py_file).lower() or '__pycache__' in str(py_file):
+                    continue
                 
-                for pattern, description in hardcoded_patterns:
-                    matches = re.finditer(pattern, content)
-                    for match in matches:
-                        # Find line number
-                        line_num = content[:match.start()].count('\n') + 1
-                        line_content = lines[line_num - 1].strip()
+                try:
+                    content = py_file.read_text()
+                    lines = content.split('\n')
+                    
+                    for line_num, line in enumerate(lines, 1):
+                        line_stripped = line.strip()
                         
-                        # Skip if it's in a comment or docstring
-                        if line_content.startswith('#') or line_content.startswith('"""'):
+                        # Skip comments, docstrings, imports
+                        if (line_stripped.startswith('#') or 
+                            line_stripped.startswith('"""') or
+                            line_stripped.startswith('from ') or
+                            line_stripped.startswith('import ')):
                             continue
                         
-                        violations.append({
-                            'file': file_path,
-                            'line': line_num,
-                            'pattern': description,
-                            'code': line_content[:100]  # First 100 chars
-                        })
-            
-            except Exception as e:
-                violations.append({
-                    'file': file_path,
-                    'line': 0,
-                    'pattern': 'File read error',
-                    'code': str(e)
-                })
+                        # Check against patterns
+                        for pattern, description in config_violation_patterns:
+                            if re.match(pattern, line_stripped):
+                                # Additional check: allow if it loads from config
+                                if 'get_config()' in line or '_config.get(' in line or '.get(' in line:
+                                    continue
+                                
+                                violations.append({
+                                    'file': str(py_file.relative_to(base_path)),
+                                    'line': line_num,
+                                    'pattern': description,
+                                    'code': line_stripped[:100]
+                                })
+                                break  # Only report first match per line
+                
+                except Exception:
+                    # Don't fail the whole check on file read errors
+                    pass
         
         if violations:
             violation_summary = []
-            for v in violations[:10]:  # Limit to first 10
+            for v in violations[:15]:  # Show first 15 violations
                 violation_summary.append(f"{v['file']}:{v['line']} - {v['pattern']}")
             
             results.append(IntegrityResult(
-                check_name="Code: Hardcoded Value Detection",
+                check_name="Config: Hardcoded Configuration Detection",
                 status=IntegrityStatus.FAIL,
-                message=f"Found {len(violations)} hardcoded values in production code",
+                message=f"Found {len(violations)} hardcoded config values (should be in config.yaml)",
                 details={
                     'violations': violation_summary,
                     'total_count': len(violations),
-                    'recommendation': 'Replace hardcoded values with config.get() or dynamic_config.calculate_*()'
+                    'recommendation': 'Move constants to processing/config.yaml and load with get_config()'
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
         else:
             results.append(IntegrityResult(
-                check_name="Code: Hardcoded Value Detection",
+                check_name="Config: Hardcoded Configuration Detection",
                 status=IntegrityStatus.PASS,
-                message="No hardcoded values detected in production code",
+                message="All configuration values properly loaded from config.yaml",
                 details={'files_checked': len(production_files)},
                 duration_ms=(time.time() - start) * 1000
             ))

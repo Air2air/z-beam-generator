@@ -379,12 +379,16 @@ class DynamicConfig:
         Get ALL parameters needed for generation in one call.
         Orchestrator should call this once and pass bundles to components.
         
+        ⚠️  IMPORTANT: Temperature and penalties returned here are FALLBACK ONLY.
+        UnifiedOrchestrator ALWAYS uses database parameters as primary source.
+        These calculated values are only used when NO database history exists.
+        
         Args:
             component_type: Component being generated (subtitle, caption, faq, etc.)
             
         Returns:
             Dict containing all parameter bundles:
-            - api_params: temperature, max_tokens, retry_behavior, penalties
+            - api_params: temperature, max_tokens, retry_behavior, penalties (FALLBACK VALUES)
             - enrichment_params: technical_intensity, context_detail_level, etc.
             - voice_params: trait_frequency, opinion_rate, etc.
             - validation_params: readability, grammar, detection thresholds

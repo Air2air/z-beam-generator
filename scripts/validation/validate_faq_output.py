@@ -19,20 +19,27 @@ Usage:
 
 import sys
 import yaml
+import argparse
 from pathlib import Path
 from collections import Counter
 from typing import Dict, List, Tuple
-import argparse
 
+# Add project root to path for imports
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+from processing.config.config_loader import get_config
 
 # ============================================================================
-# CONFIGURATION - Match project settings
+# CONFIGURATION - Load from config.yaml
 # ============================================================================
 
-# Word count requirements (from FAQ_WORD_COUNT_RANGE)
-MIN_WORDS = 20
-MAX_WORDS = 50
-TARGET_AVG_WORDS = 35  # Middle of range
+# Load FAQ config from config.yaml
+_config = get_config()
+_faq_config = _config.config.get('component_lengths', {}).get('faq', {})
+MIN_WORDS = _faq_config.get('min_words', 20)
+MAX_WORDS = _faq_config.get('max_words', 50)
+TARGET_AVG_WORDS = (MIN_WORDS + MAX_WORDS) // 2  # Middle of range
 
 # Question count requirements (from FAQ_COUNT_RANGE)
 MIN_QUESTIONS = 5

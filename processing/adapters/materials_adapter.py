@@ -118,16 +118,45 @@ class MaterialsAdapter(DataSourceAdapter):
     
     def get_author_id(self, item_data: Dict[str, Any]) -> int:
         """
-        Extract author ID from material data.
+        Extract author ID from material data with rotation for variety.
+        
+        If author is not specified in data, rotates through all 4 authors
+        based on material name hash to ensure distribution and consistency.
         
         Args:
             item_data: Material data dict
             
         Returns:
-            Author ID (1-4), defaults to 2 if not specified
+            Author ID (1-4)
         """
         author_data = item_data.get('author', {})
-        return author_data.get('id', 2)
+        if isinstance(author_data, dict) and 'id' in author_data:
+            return author_data['id']
+        elif isinstance(author_data, int):
+            return author_data
+        
+        # If no author specified, rotate based on material name for consistency
+        # This ensures each material consistently gets the same author
+        # but distributes all 4 authors across materials
+        material_name = item_data.get('name', '')
+        if not material_name:
+            # Try to infer from data structure
+            all_data = self.load_all_data()
+            materials = all_data.get('materials', {})
+            # Find this material in the list
+            for name, data in materials.items():
+                if data is item_data:
+                    material_name = name
+                    break
+        
+        # Use hash of material name for consistent rotation (1-4)
+        if material_name:
+            name_hash = hash(material_name)
+            author_id = (abs(name_hash) % 4) + 1  # Maps to 1, 2, 3, or 4
+            return author_id
+        
+        # Fallback to author 2 (Italy - Alessandro) if can't determine
+        return 2
     
     def write_component(
         self,

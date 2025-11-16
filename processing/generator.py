@@ -764,26 +764,18 @@ class DynamicGenerator:
             return text.strip()
     
     def _extract_caption(self, text: str) -> Dict[str, str]:
-        """Extract before/after sections from caption"""
-        before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*(.+?)(?=\*\*AFTER_TEXT:|\Z)', text, re.DOTALL)
-        after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*(.+)', text, re.DOTALL)
+        """Extract caption from generated text (single caption for BEFORE analysis)"""
+        # Clean up the text
+        cleaned = text.strip()
         
-        if not before_match or not after_match:
-            paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
-            if len(paragraphs) < 2:
-                raise ValueError(f"Could not extract before/after sections: {text[:200]}")
-            before_text = paragraphs[0]
-            after_text = paragraphs[1]
-        else:
-            before_text = before_match.group(1).strip()
-            after_text = after_match.group(1).strip()
+        # Remove any remaining markers if present
+        cleaned = re.sub(r'\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', cleaned).strip()
         
-        before_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', before_text).strip()
-        after_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', after_text).strip()
-        
+        # For now, use the single caption as 'before' text
+        # The 'after' can be generated separately or left empty
         return {
-            'before': before_text,
-            'after': after_text
+            'before': cleaned,
+            'after': ''  # Empty for now since prompt only generates before caption
         }
     
     def _extract_faq(self, text: str) -> list:

@@ -37,6 +37,9 @@
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
 - [**architecture/PROCESSING_PIPELINE.md**](architecture/PROCESSING_PIPELINE.md) - ✅ **NEW** Unified content generation pipeline *(Nov 13, 2025)*
+- [**development/DATABASE_PARAMETER_PRIORITY.md**](development/DATABASE_PARAMETER_PRIORITY.md) - ✅ **NEW** Database-first parameter policy *(Nov 15, 2025)*
+- [**../MANDATORY_REQUIREMENTS_COMPLETE.md**](../MANDATORY_REQUIREMENTS_COMPLETE.md) - ✅ **NEW** Mandatory requirements implementation *(Nov 15, 2025)*
+- [**../PARAMETER_REUSE_COMPLETE.md**](../PARAMETER_REUSE_COMPLETE.md) - ✅ **NEW** Complete parameter reuse system *(Nov 15, 2025)*
 - [**../processing/CHAIN_VERIFICATION_COMPLETE.md**](../processing/CHAIN_VERIFICATION_COMPLETE.md) - ✅ **NEW** Chain verification system (18 tests) *(Nov 15, 2025)*
 - [**WINSTON_LEARNING_SYSTEM_COMPLETE.md**](../WINSTON_LEARNING_SYSTEM_COMPLETE.md) - ✅ **NEW** ML learning system with 4 modules *(Nov 15, 2025)*
 - [**WINSTON_INTEGRATION_COMPLETE.md**](../WINSTON_INTEGRATION_COMPLETE.md) - ✅ **NEW** Winston AI primary detector (80% weight) *(Nov 15, 2025)*
