@@ -430,14 +430,26 @@ class IntegrityChecker:
             has_init = 'self.prompt_optimizer = PromptOptimizer' in content
             has_call = 'self.prompt_optimizer.optimize_prompt' in content
             
+            # CRITICAL: Check that optimizer runs on EVERY attempt, not just attempt 1
+            runs_on_attempt_1_only = 'attempt == 1' in content and 'self.prompt_optimizer' in content
+            
             if has_import and has_init and has_call:
-                results.append(IntegrityResult(
-                    check_name="Learning: DynamicGenerator Integration",
-                    status=IntegrityStatus.PASS,
-                    message="PromptOptimizer fully integrated in DynamicGenerator",
-                    details={'import': has_import, 'init': has_init, 'call': has_call},
-                    duration_ms=(time.time() - start) * 1000
-                ))
+                if runs_on_attempt_1_only:
+                    results.append(IntegrityResult(
+                        check_name="Learning: DynamicGenerator Integration",
+                        status=IntegrityStatus.FAIL,
+                        message="PromptOptimizer only runs on attempt 1 - NOT iterative! Should run on ALL attempts for continuous learning",
+                        details={'import': has_import, 'init': has_init, 'call': has_call, 'iterative': False},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                else:
+                    results.append(IntegrityResult(
+                        check_name="Learning: DynamicGenerator Integration",
+                        status=IntegrityStatus.PASS,
+                        message="PromptOptimizer fully integrated and runs iteratively on all attempts",
+                        details={'import': has_import, 'init': has_init, 'call': has_call, 'iterative': True},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
             else:
                 results.append(IntegrityResult(
                     check_name="Learning: DynamicGenerator Integration",

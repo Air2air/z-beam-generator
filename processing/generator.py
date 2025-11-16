@@ -509,8 +509,8 @@ class DynamicGenerator:
             )
             
             # SELF-LEARNING: Optimize prompt with learned patterns from Winston feedback
-            if self.prompt_optimizer and attempt == 1:
-                # Only optimize on first attempt (retry uses adjust_on_failure)
+            # Run on EVERY attempt to continuously learn and adapt
+            if self.prompt_optimizer:
                 optimization_result = self.prompt_optimizer.optimize_prompt(
                     base_prompt=prompt,
                     material=material_name,
@@ -521,16 +521,16 @@ class DynamicGenerator:
                 
                 if optimization_result['confidence'] != 'none':
                     prompt = optimization_result['optimized_prompt']
-                    self.logger.info("🧠 Prompt optimized with learned patterns:")
+                    self.logger.info(f"🧠 Attempt {attempt}: Prompt optimized with learned patterns:")
                     self.logger.info(f"   Confidence: {optimization_result['confidence']}")
                     self.logger.info(f"   Patterns analyzed: {optimization_result.get('patterns_analyzed', 0)}")
                     self.logger.info(f"   Expected improvement: {optimization_result['expected_improvement']*100:.1f}%")
                     for addition in optimization_result['additions']:
                         self.logger.info(f"   + {addition}")
                 else:
-                    self.logger.info(f"🧠 Prompt optimizer: {optimization_result.get('reason', 'Insufficient data')}")
+                    self.logger.info(f"🧠 Attempt {attempt}: Prompt optimizer: {optimization_result.get('reason', 'Insufficient data')}")
             
-            # Adjust prompt on retry
+            # ADDITIONAL adjustment on retry (stacks with prompt optimizer)
             if attempt > 1:
                 prompt = self.prompt_builder.adjust_on_failure(
                     prompt,
