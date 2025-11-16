@@ -104,6 +104,9 @@ class IntegrityChecker:
         results.extend(self._check_configuration_mapping())
         results.extend(self._check_parameter_propagation())
         
+        # Cache configuration check (fast)
+        results.extend(self._check_cache_configuration())
+        
         # Hardcoded value detection (fast)
         results.extend(self._check_hardcoded_values())
         
@@ -664,7 +667,129 @@ class IntegrityChecker:
         return results
     
     # =========================================================================
-    # 3. HARDCODED VALUE DETECTION
+    # 2.5. CACHE CONFIGURATION
+    # =========================================================================
+    
+    def _check_cache_configuration(self) -> List[IntegrityResult]:
+        """
+        Verify cache key strategy includes all parameters that affect generation.
+        
+        CRITICAL: If cache uses 'prompt_hash_with_model', parameter changes
+        (temperature, max_tokens, penalties) will be ignored because the cache
+        returns old responses based only on prompt+model+temperature.
+        
+        REQUIRED: Must use 'full_request_hash' to ensure parameter changes
+        actually affect generation output.
+        
+        Returns:
+            List of IntegrityResult objects
+        """
+        results = []
+        start = time.time()
+        
+        try:
+            # Load cache configuration from requirements.yaml
+            requirements_path = Path(__file__).parent.parent.parent / 'shared' / 'config' / 'requirements.yaml'
+            
+            if not requirements_path.exists():
+                results.append(IntegrityResult(
+                    check_name="Cache: Configuration File Exists",
+                    status=IntegrityStatus.FAIL,
+                    message="requirements.yaml not found",
+                    details={'expected_path': str(requirements_path)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+                return results
+            
+            # Load requirements.yaml and search for key_strategy
+            with open(requirements_path, 'r') as f:
+                content = f.read()
+            
+            # Search for key_strategy in the file
+            key_strategy = None
+            for line in content.split('\n'):
+                if 'key_strategy:' in line and not line.strip().startswith('#'):
+                    # Extract value from line like: key_strategy: "full_request_hash"
+                    parts = line.split(':', 1)
+                    if len(parts) == 2:
+                        value = parts[1].strip()
+                        # Remove inline comments first
+                        if '#' in value:
+                            value = value.split('#')[0].strip()
+                        # Remove quotes
+                        value = value.strip('"').strip("'")
+                        key_strategy = value
+                        break
+            
+            if key_strategy is None:
+                results.append(IntegrityResult(
+                    check_name="Cache: Key Strategy Configured",
+                    status=IntegrityStatus.FAIL,
+                    message="cache.key_strategy not found in requirements.yaml",
+                    details={'file_path': str(requirements_path)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            elif key_strategy == 'prompt_hash':
+                results.append(IntegrityResult(
+                    check_name="Cache: Key Strategy Includes Parameters",
+                    status=IntegrityStatus.FAIL,
+                    message="Cache key strategy 'prompt_hash' ignores ALL parameters (temperature, max_tokens, penalties)",
+                    details={
+                        'current_strategy': key_strategy,
+                        'required_strategy': 'full_request_hash',
+                        'impact': 'Parameter changes will have NO effect - cache returns old responses',
+                        'fix': "Change key_strategy to 'full_request_hash' in shared/config/requirements.yaml"
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            elif key_strategy == 'prompt_hash_with_model':
+                results.append(IntegrityResult(
+                    check_name="Cache: Key Strategy Includes Parameters",
+                    status=IntegrityStatus.FAIL,
+                    message="Cache key strategy 'prompt_hash_with_model' ignores max_tokens and penalties",
+                    details={
+                        'current_strategy': key_strategy,
+                        'required_strategy': 'full_request_hash',
+                        'included_in_key': ['prompt', 'model', 'temperature'],
+                        'ignored_parameters': ['max_tokens', 'frequency_penalty', 'presence_penalty', 'top_p'],
+                        'impact': 'Changes to max_tokens/penalties have NO effect - cache returns old responses',
+                        'fix': "Change key_strategy to 'full_request_hash' in shared/config/requirements.yaml"
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            elif key_strategy == 'full_request_hash':
+                results.append(IntegrityResult(
+                    check_name="Cache: Key Strategy Includes Parameters",
+                    status=IntegrityStatus.PASS,
+                    message="Cache key strategy correctly includes ALL request parameters",
+                    details={
+                        'strategy': key_strategy,
+                        'included_parameters': ['prompt', 'model', 'temperature', 'max_tokens', 'penalties', 'top_p']
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Cache: Key Strategy Valid",
+                    status=IntegrityStatus.WARN,
+                    message=f"Unknown cache key strategy: {key_strategy}",
+                    details={'strategy': key_strategy},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+                
+        except Exception as e:
+            results.append(IntegrityResult(
+                check_name="Cache: Configuration Check",
+                status=IntegrityStatus.WARN,
+                message=f"Failed to check cache configuration: {str(e)}",
+                details={'error': str(e)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        return results
+    
+    # =========================================================================
+    # 3. PARAMETER PROPAGATION
     # =========================================================================
     
     def _check_hardcoded_values(self) -> List[IntegrityResult]:

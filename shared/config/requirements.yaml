@@ -1006,7 +1006,7 @@ system_integration:
         storage_location: "/tmp/z-beam-response-cache"
         ttl_seconds: 86400              # 24 hours cache lifetime
         max_size_mb: 1000               # Maximum cache size
-        key_strategy: "prompt_hash_with_model" # Cache key generation
+        key_strategy: "full_request_hash" # Cache key generation - includes ALL parameters (temperature, max_tokens, penalties)
       
       cache_key_strategies:
         prompt_hash: "Cache by prompt only (highest hit rate)"
