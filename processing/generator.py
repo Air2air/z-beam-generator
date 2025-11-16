@@ -864,7 +864,46 @@ class DynamicGenerator:
         
         # Strategy 2: Split by double newline or period followed by newline (two paragraphs/sentences)
         # Look for natural breaks that might separate before/after
-        parts = re.split(r'\n\n+|\. +(?=[A-Z])', cleaned, maxsplit=1)
+        
+        # First try: Double newline (proper paragraph break)
+        if '\n\n' in cleaned:
+            parts = cleaned.split('\n\n', 1)
+            before = parts[0].strip()
+            after = parts[1].strip()
+            
+            # Ensure proper period endings
+            if before and not before.endswith('.'):
+                before += '.'
+            if after and not after.endswith('.'):
+                after += '.'
+            
+            return {
+                'before': before,
+                'after': after
+            }
+        
+        # Second try: Look for explicit "After" keyword marking the transition
+        # Common patterns: "After laser cleaning", "After the cleaning", "After cleaning"
+        after_split = re.split(r'\.\s+(After (?:laser )?cleaning[^.]*,?\s+)', cleaned, maxsplit=1, flags=re.IGNORECASE)
+        
+        if len(after_split) == 3:
+            # Found "After cleaning" marker
+            before = after_split[0].strip()
+            after = after_split[1].strip() + after_split[2].strip()
+            
+            # Ensure proper period endings
+            if before and not before.endswith('.'):
+                before += '.'
+            if after and not after.endswith('.'):
+                after += '.'
+            
+            return {
+                'before': before,
+                'after': after
+            }
+        
+        # Third try: Split at sentence boundary if we have 2+ sentences
+        parts = re.split(r'\.\s+(?=[A-Z])', cleaned, maxsplit=1)
         
         if len(parts) == 2:
             # Two distinct parts - likely before and after
