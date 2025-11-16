@@ -12,24 +12,35 @@
 
 ## 📚 Critical Documentation for AI Assistants
 
-**BEFORE** any data-related work, review these files:
-1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions (⭐ START HERE)
-2. **`docs/system/E2E_SYSTEM_REQUIREMENTS.md`** - 🔥 7 critical system requirements (Nov 15, 2025)
-3. **`MANDATORY_REQUIREMENTS_COMPLETE.md`** - 🔥 Database-first parameter priority (Nov 15, 2025)
-4. **`PARAMETER_REUSE_COMPLETE.md`** - 🔥 Complete parameter reuse system (Nov 15, 2025)
-5. **`docs/development/DATABASE_PARAMETER_PRIORITY.md`** - 🔥 Parameter source policy (Nov 15, 2025)
-6. **`DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md`** - Fixed Winston 100% AI issue (Nov 15, 2025)
-7. **`docs/development/PARAMETER_LOGGING_QUICK_START.md`** - Query generation parameters for ML (Nov 15, 2025)
-8. **`docs/development/HARDCODED_VALUE_POLICY.md`** - Zero hardcoded values policy (Nov 15, 2025)
-9. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective eval (Nov 15, 2025)
-10. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - ML learning system (Nov 15, 2025)
-11. **`WINSTON_INTEGRATION_COMPLETE.md`** - Winston AI primary detector (Nov 15, 2025)
+**BEFORE** any work, review these files organized by category:
+
+### 🎯 Start Here
+1. **`docs/QUICK_REFERENCE.md`** - ⭐ Fastest path to common solutions (THIS FILE)
+2. **`SYSTEM_FLOW_VERIFICATION_COMPLETE.md`** - ✅ All 3 critical data flows verified (Nov 15, 2025)
+
+### 🏗️ System Architecture (Nov 15, 2025)
+3. **`docs/system/E2E_SYSTEM_REQUIREMENTS.md`** - 🔥 7 critical system requirements + 35 tests
+4. **`MANDATORY_REQUIREMENTS_COMPLETE.md`** - 🔥 Database-first parameter priority
+5. **`PARAMETER_REUSE_COMPLETE.md`** - 🔥 Complete parameter reuse system
+6. **`docs/development/DATABASE_PARAMETER_PRIORITY.md`** - 🔥 Parameter source policy (470+ lines)
+7. **`docs/development/PARAMETER_LOGGING_QUICK_START.md`** - Query generation parameters for ML
+
+### 🤖 Winston AI & Learning
+8. **`DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md`** - Fixed Winston 100% AI issue
+9. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - ML learning system (173 generations)
+10. **`WINSTON_INTEGRATION_COMPLETE.md`** - Winston AI primary detector
+11. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective evaluation
+
+### 📊 Data & Content
 12. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - Materials.yaml structure (NO 'properties' wrapper!)
 13. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
-14. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
-15. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+14. **`docs/reference/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup (ALWAYS case-insensitive)
+15. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to 100% data coverage
 16. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
-17. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - Dynamic sentence counts by author voice
+
+### 📝 Content Generation
+17. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - Dynamic sentence counts by author
+18. **`docs/development/HARDCODED_VALUE_POLICY.md`** - Zero hardcoded values policy
 
 ---
 
