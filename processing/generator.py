@@ -829,18 +829,66 @@ class DynamicGenerator:
             return text.strip()
     
     def _extract_caption(self, text: str) -> Dict[str, str]:
-        """Extract caption from generated text (single caption for BEFORE analysis)"""
+        """
+        Extract caption from generated text.
+        
+        The prompt asks for BEFORE and AFTER descriptions. We need to parse
+        the generated text to extract both parts.
+        
+        Expected formats:
+        1. Single caption (treat as 'before', leave 'after' empty)
+        2. Two sentences/paragraphs (first = before, second = after)
+        3. Explicit markers like "Before:" or "After:"
+        
+        Returns:
+            Dict with 'before' and 'after' keys
+        """
         # Clean up the text
         cleaned = text.strip()
         
-        # Remove any remaining markers if present
-        cleaned = re.sub(r'\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', cleaned).strip()
+        # Remove any markdown or formatting markers
+        cleaned = re.sub(r'\*\*(?:BEFORE_TEXT|AFTER_TEXT|Before|After):\*\*\s*', '', cleaned).strip()
         
-        # For now, use the single caption as 'before' text
-        # The 'after' can be generated separately or left empty
+        # Strategy 1: Look for explicit "Before:" and "After:" markers
+        before_match = re.search(r'(?:^|\n)(?:Before|BEFORE):\s*(.+?)(?=\n(?:After|AFTER):|$)', cleaned, re.DOTALL | re.IGNORECASE)
+        after_match = re.search(r'(?:^|\n)(?:After|AFTER):\s*(.+?)$', cleaned, re.DOTALL | re.IGNORECASE)
+        
+        if before_match and after_match:
+            return {
+                'before': before_match.group(1).strip(),
+                'after': after_match.group(1).strip()
+            }
+        
+        # Remove line-start markers that weren't caught by regex
+        cleaned = re.sub(r'^(?:BEFORE|AFTER|Before|After):\s*', '', cleaned, flags=re.MULTILINE).strip()
+        
+        # Strategy 2: Split by double newline or period followed by newline (two paragraphs/sentences)
+        # Look for natural breaks that might separate before/after
+        parts = re.split(r'\n\n+|\. +(?=[A-Z])', cleaned, maxsplit=1)
+        
+        if len(parts) == 2:
+            # Two distinct parts - likely before and after
+            before = parts[0].strip()
+            after = parts[1].strip()
+            
+            # Ensure 'before' ends with period
+            if before and not before.endswith('.'):
+                before += '.'
+            
+            # Ensure 'after' ends with period  
+            if after and not after.endswith('.'):
+                after += '.'
+            
+            return {
+                'before': before,
+                'after': after
+            }
+        
+        # Strategy 3: Single caption - use as 'before', leave 'after' empty
+        # This handles cases where only one caption is generated
         return {
-            'before': cleaned,
-            'after': ''  # Empty for now since prompt only generates before caption
+            'before': cleaned if cleaned.endswith('.') else cleaned + '.',
+            'after': ''
         }
     
     def _extract_faq(self, text: str) -> list:
