@@ -370,18 +370,24 @@ class DynamicGenerator:
                 self.logger.info(f"   Adjusted {param_to_adjust} to {voice_params[param_to_adjust]:.2f}")
         
         # Build final params dict with adapted multi-parameter values
-        # Extract API penalties from base_params
-        api_penalties = base_params.get('api_params', {}).get('penalties', {
-            'frequency_penalty': 0.0,
-            'presence_penalty': 0.0
-        })
+        # Extract API penalties from base_params - FAIL FAST if missing
+        # NOTE: Grok doesn't support penalties, but we calculate and log them for:
+        #   1. Learning system (parameter correlation analysis)
+        #   2. Future provider switching (OpenAI, Anthropic support penalties)
+        #   3. Research (understanding what would work with penalty-capable models)
+        if 'api_params' not in base_params:
+            raise ValueError("Missing 'api_params' in base_params - configuration error")
+        if 'penalties' not in base_params['api_params']:
+            raise ValueError("Missing 'penalties' in api_params - configuration error")
+        
+        api_penalties = base_params['api_params']['penalties']
         
         return {
             'temperature': base_temperature,
             'voice_params': voice_params,
             'enrichment_params': enrichment_params,
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
-            'api_penalties': api_penalties  # NEW: Include API penalties
+            'api_penalties': api_penalties  # Logged but not sent to Grok (filtered in API client)
         }
     
     def _write_to_materials_yaml(self, material_name: str, component_type: str, content_data: Any):
@@ -502,6 +508,28 @@ class DynamicGenerator:
                 variation_seed=variation_seed
             )
             
+            # SELF-LEARNING: Optimize prompt with learned patterns from Winston feedback
+            if self.prompt_optimizer and attempt == 1:
+                # Only optimize on first attempt (retry uses adjust_on_failure)
+                optimization_result = self.prompt_optimizer.optimize_prompt(
+                    base_prompt=prompt,
+                    material=material_name,
+                    component_type=component_type,
+                    include_patterns=True,
+                    include_recommendations=True
+                )
+                
+                if optimization_result['confidence'] != 'none':
+                    prompt = optimization_result['optimized_prompt']
+                    self.logger.info("🧠 Prompt optimized with learned patterns:")
+                    self.logger.info(f"   Confidence: {optimization_result['confidence']}")
+                    self.logger.info(f"   Patterns analyzed: {optimization_result.get('patterns_analyzed', 0)}")
+                    self.logger.info(f"   Expected improvement: {optimization_result['expected_improvement']*100:.1f}%")
+                    for addition in optimization_result['additions']:
+                        self.logger.info(f"   + {addition}")
+                else:
+                    self.logger.info(f"🧠 Prompt optimizer: {optimization_result.get('reason', 'Insufficient data')}")
+            
             # Adjust prompt on retry
             if attempt > 1:
                 prompt = self.prompt_builder.adjust_on_failure(
@@ -555,6 +583,41 @@ class DynamicGenerator:
                     failure_analysis=failure_analysis
                 )
                 self.logger.info(f"📊 Logged result to database (ID: {detection_id})")
+                
+                # Log generation parameters for machine learning
+                try:
+                    # Restructure params to match expected format
+                    structured_params = {
+                        'material_name': material_name,
+                        'component_type': component_type,
+                        'attempt': attempt,
+                        'api': {
+                            'temperature': params['temperature'],
+                            'max_tokens': params['max_tokens'],
+                            'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
+                            'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0)
+                        },
+                        'voice': params.get('voice_params', {}),
+                        'enrichment': params.get('enrichment_params', {}),
+                        'validation': {
+                            'detection_threshold': self.ai_threshold,
+                            'readability_min': 0.0,
+                            'readability_max': 100.0,
+                            'grammar_strictness': 0.8,
+                            'confidence_high': 0.9,
+                            'confidence_medium': 0.7
+                        },
+                        'retry': {
+                            'max_attempts': max_attempts,
+                            'retry_temperature_increase': 0.05
+                        }
+                    }
+                    param_id = self.feedback_db.log_generation_parameters(detection_id, structured_params)
+                    self.logger.info(f"📊 Logged parameters #{param_id} for detection #{detection_id}")
+                except Exception as param_error:
+                    self.logger.error(f"❌ Failed to log generation parameters: {param_error}")
+                    import traceback
+                    self.logger.error(traceback.format_exc())
             except Exception as e:
                 self.logger.warning(f"Failed to log to database: {e}")
             
@@ -620,14 +683,18 @@ class DynamicGenerator:
         api_penalties: Dict = None
     ) -> str:
         """
-        Call AI API with dynamic parameters including penalties.
+        Call AI API with dynamic parameters.
+        
+        NOTE: Penalties are calculated and logged for research/learning but NOT sent to Grok.
+        Grok API rejects frequency_penalty/presence_penalty (returns 400 error).
+        API client automatically filters these parameters for Grok models.
         
         Args:
             prompt: Prompt to send
             temperature: Generation temperature
             max_tokens: Token limit
             enrichment_params: Enrichment parameters for system prompt
-            api_penalties: Optional frequency/presence penalties
+            api_penalties: Frequency/presence penalties (logged but not sent to Grok)
             
         Returns:
             Generated text
@@ -644,10 +711,16 @@ class DynamicGenerator:
                 "Use ONLY descriptive words: 'strong', 'heat-resistant', 'conductive', 'durable'."
             )
         
-        # Extract penalties
-        api_penalties = api_penalties or {}
-        frequency_penalty = api_penalties.get('frequency_penalty', 0.0)
-        presence_penalty = api_penalties.get('presence_penalty', 0.0)
+        # Extract penalties - FAIL FAST if missing
+        if not api_penalties:
+            raise ValueError("Missing api_penalties parameter - configuration error")
+        if 'frequency_penalty' not in api_penalties:
+            raise ValueError("Missing 'frequency_penalty' in api_penalties - configuration error")
+        if 'presence_penalty' not in api_penalties:
+            raise ValueError("Missing 'presence_penalty' in api_penalties - configuration error")
+            
+        frequency_penalty = api_penalties['frequency_penalty']
+        presence_penalty = api_penalties['presence_penalty']
         
         self.logger.info(f"🌡️  Temperature: {temperature:.3f}, Max tokens: {max_tokens}")
         self.logger.info(f"⚖️  Penalties: frequency={frequency_penalty:.2f}, presence={presence_penalty:.2f}")

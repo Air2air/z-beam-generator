@@ -384,16 +384,40 @@ class DynamicConfig:
             
         Returns:
             Dict containing all parameter bundles:
-            - api_params: temperature, max_tokens, retry_behavior
+            - api_params: temperature, max_tokens, retry_behavior, penalties
             - enrichment_params: technical_intensity, context_detail_level, etc.
             - voice_params: trait_frequency, opinion_rate, etc.
             - validation_params: readability, grammar, detection thresholds
         """
+        # Calculate API penalties dynamically based on humanness_intensity
+        # Higher humanness = higher penalties to reduce repetition (which AI detectors flag)
+        humanness = self.base_config.get_humanness_intensity()  # 1-10
+        
+        # Map humanness to penalty range
+        # Low humanness (1-3): 0.0 penalties (fast, predictable)
+        # Medium humanness (4-7): 0.3-0.6 penalties (balanced)
+        # High humanness (8-10): 0.8-1.2 penalties (aggressive, varied)
+        if humanness <= 3:
+            frequency_penalty = 0.0
+            presence_penalty = 0.0
+        elif humanness <= 7:
+            # Linear scale from 0.0 to 0.6
+            frequency_penalty = (humanness - 3) / 4.0 * 0.6
+            presence_penalty = (humanness - 3) / 4.0 * 0.6
+        else:
+            # Linear scale from 0.6 to 1.2
+            frequency_penalty = 0.6 + (humanness - 7) / 3.0 * 0.6
+            presence_penalty = 0.6 + (humanness - 7) / 3.0 * 0.6
+        
         return {
             'api_params': {
                 'temperature': self.calculate_temperature(component_type),
                 'max_tokens': self.calculate_max_tokens(component_type),
-                'retry_behavior': self.calculate_retry_behavior()
+                'retry_behavior': self.calculate_retry_behavior(),
+                'penalties': {
+                    'frequency_penalty': round(frequency_penalty, 2),
+                    'presence_penalty': round(presence_penalty, 2)
+                }
             },
             'enrichment_params': self.calculate_enrichment_params(),
             'voice_params': self.calculate_voice_parameters(),

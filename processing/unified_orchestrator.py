@@ -120,6 +120,7 @@ class UnifiedOrchestrator:
         
         # Winston feedback database
         feedback_db = None
+        db_path = None
         try:
             from processing.config.config_loader import get_config
             config = get_config()
@@ -137,6 +138,16 @@ class UnifiedOrchestrator:
             feedback_db=feedback_db,
             config=self.config
         )
+        
+        # Initialize PromptOptimizer for self-learning prompt enhancement
+        self.prompt_optimizer = None
+        if db_path:
+            try:
+                from processing.learning.prompt_optimizer import PromptOptimizer
+                self.prompt_optimizer = PromptOptimizer(db_path)
+                self.logger.info("🧠 PromptOptimizer enabled - dynamic prompt learning active")
+            except Exception as e:
+                self.logger.warning(f"PromptOptimizer unavailable: {e}")
         
         # Readability validator
         from processing.validation.readability import ReadabilityValidator
@@ -250,6 +261,28 @@ class UnifiedOrchestrator:
                 enrichment_params=params['enrichment_params'],
                 variation_seed=variation_seed
             )
+            
+            # SELF-LEARNING: Optimize prompt with learned patterns from Winston feedback
+            if self.prompt_optimizer and attempt == 1:
+                # Only optimize on first attempt (retry uses adjust_on_failure)
+                optimization_result = self.prompt_optimizer.optimize_prompt(
+                    base_prompt=prompt,
+                    material=identifier,
+                    component_type=component_type,
+                    include_patterns=True,
+                    include_recommendations=True
+                )
+                
+                if optimization_result['confidence'] != 'none':
+                    prompt = optimization_result['optimized_prompt']
+                    self.logger.info("🧠 Prompt optimized with learned patterns:")
+                    self.logger.info(f"   Confidence: {optimization_result['confidence']}")
+                    self.logger.info(f"   Patterns analyzed: {optimization_result.get('patterns_analyzed', 0)}")
+                    self.logger.info(f"   Expected improvement: {optimization_result['expected_improvement']*100:.1f}%")
+                    for addition in optimization_result['additions']:
+                        self.logger.info(f"   + {addition}")
+                else:
+                    self.logger.info(f"🧠 Prompt optimizer: {optimization_result.get('reason', 'Insufficient data')}")
             
             # Adjust prompt on retry
             if attempt > 1:

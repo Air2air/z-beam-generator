@@ -23,16 +23,16 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         from materials.unified_generator import UnifiedMaterialsGenerator
         from data.materials.materials import load_materials, get_material_by_name
         
-        # Initialize Grok API client for captions
+        # Initialize DeepSeek API client for captions
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        grok_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        api_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize unified generator
         print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(grok_client)
+        generator = UnifiedMaterialsGenerator(api_client)
         print("✅ Generator ready")
         print()
         
@@ -67,6 +67,62 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print()
         
         print("💾 Saved to: materials/data/Materials.yaml → caption")
+        print()
+        
+        # Run Subjective evaluation as final quality check
+        print("🤖 Running subjective content evaluation...")
+        from shared.commands.subjective_evaluation_helper import evaluate_after_generation
+        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from processing.config.config_loader import get_config
+        
+        try:
+            # Initialize feedback database if configured
+            config = get_config()
+            db_path = config.config.get('winston_feedback_db_path')
+            feedback_db = None
+            if db_path:
+                feedback_db = WinstonFeedbackDatabase(db_path)
+            
+            # Evaluate both before and after captions
+            print()
+            if before_text:
+                print("   Evaluating 'before' caption...")
+                before_eval = evaluate_after_generation(
+                    content=before_text,
+                    topic=material_name,
+                    component_type='caption_before',
+                    domain='materials',
+                    feedback_db=feedback_db,
+                    verbose=False
+                )
+                if before_eval:
+                    print(f"   ✅ Before: {before_eval.overall_score:.1f}/10 - {'PASS' if before_eval.passes_quality_gate else 'FAIL'}")
+            
+            if after_text:
+                print("   Evaluating 'after' caption...")
+                after_eval = evaluate_after_generation(
+                    content=after_text,
+                    topic=material_name,
+                    component_type='caption_after',
+                    domain='materials',
+                    feedback_db=feedback_db,
+                    verbose=False
+                )
+                if after_eval:
+                    print(f"   ✅ After: {after_eval.overall_score:.1f}/10 - {'PASS' if after_eval.passes_quality_gate else 'FAIL'}")
+                    
+                    # Show dimension breakdown for 'after' caption
+                    print()
+                    print("   📊 Quality Dimensions (After):")
+                    for score in after_eval.dimension_scores:
+                        status = "✅" if score.score >= 7.0 else "⚠️"
+                        print(f"      {status} {score.dimension.value.replace('_', ' ').title()}: {score.score:.1f}/10")
+            
+            print()
+        except Exception as e:
+            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
+            print()
+        
         print("✨ Caption generation complete!")
         
         return True
@@ -93,9 +149,9 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
     try:
         # Initialize API client
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        grok_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        api_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize processing orchestrator
@@ -104,7 +160,7 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         
         print("🔧 Initializing processing pipeline...")
         config = DynamicConfig()
-        orchestrator = Orchestrator(grok_client, config)
+        orchestrator = Orchestrator(api_client, config)
         print("✅ Pipeline ready")
         print()
         
@@ -165,6 +221,45 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print()
         
         print("💾 Saved to: data/materials/Materials.yaml → subtitle")
+        print()
+        
+        # Run Subjective evaluation as final quality check
+        print("🤖 Running subjective content evaluation...")
+        from shared.commands.subjective_evaluation_helper import evaluate_after_generation
+        
+        try:
+            # Use existing feedback_db from orchestrator if available
+            feedback_db = orchestrator.feedback_db if hasattr(orchestrator, 'feedback_db') else None
+            
+            evaluation = evaluate_after_generation(
+                content=subtitle,
+                topic=material_name,
+                component_type='subtitle',
+                domain='materials',
+                feedback_db=feedback_db,
+                verbose=False
+            )
+            
+            if evaluation:
+                print(f"   Overall Quality Score: {evaluation.overall_score:.1f}/10")
+                print(f"   Quality Gate: {'✅ PASS' if evaluation.passes_quality_gate else '❌ FAIL'}")
+                print()
+                print("   📊 Quality Dimensions:")
+                for score in evaluation.dimension_scores:
+                    status = "✅" if score.score >= 7.0 else "⚠️"
+                    print(f"      {status} {score.dimension.value.replace('_', ' ').title()}: {score.score:.1f}/10")
+                print()
+                
+                # Show top strength and weakness
+                if evaluation.strengths:
+                    print(f"   💪 Top Strength: {evaluation.strengths[0]}")
+                if evaluation.weaknesses:
+                    print(f"   ⚠️  Area for Improvement: {evaluation.weaknesses[0]}")
+                print()
+        except Exception as e:
+            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
+            print()
+        
         print("✨ Subtitle generation complete!")
         
         return True
@@ -192,16 +287,16 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         # Import required modules
         from materials.unified_generator import UnifiedMaterialsGenerator
         
-        # Initialize Grok API client for FAQ
+        # Initialize DeepSeek API client for FAQ
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        grok_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        api_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize unified generator
         print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(grok_client)
+        generator = UnifiedMaterialsGenerator(api_client)
         print("✅ Generator ready")
         print()
         
@@ -233,6 +328,65 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
             print()
         
         print("💾 Saved to: materials/data/Materials.yaml → faq")
+        print()
+        
+        # Run Subjective evaluation as final quality check
+        print("🤖 Running subjective content evaluation...")
+        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
+        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from processing.config.config_loader import get_config
+        
+        try:
+            # Initialize feedback database if configured
+            config = get_config()
+            db_path = config.config.get('winston_feedback_db_path')
+            feedback_db = None
+            if db_path:
+                feedback_db = WinstonFeedbackDatabase(db_path)
+            
+            helper = SubjectiveEvaluationHelper(
+                feedback_db=feedback_db,
+                verbose=False
+            )
+            
+            # Evaluate each FAQ entry
+            print()
+            total_score = 0
+            pass_count = 0
+            
+            for i, qa in enumerate(faq_list, 1):
+                # Combine question and answer for evaluation
+                faq_content = f"Q: {qa['question']}\nA: {qa['answer']}"
+                
+                evaluation = helper.evaluate_generation(
+                    content=faq_content,
+                    topic=material_name,
+                    component_type='faq',
+                    domain='materials'
+                )
+                
+                if evaluation:
+                    total_score += evaluation.overall_score
+                    if evaluation.passes_quality_gate:
+                        pass_count += 1
+                    
+                    status = "✅" if evaluation.passes_quality_gate else "⚠️"
+                    print(f"   {status} Q{i}: {evaluation.overall_score:.1f}/10")
+            
+            # Show summary
+            if len(faq_list) > 0:
+                avg_score = total_score / len(faq_list)
+                pass_rate = (pass_count / len(faq_list)) * 100
+                
+                print()
+                print("   📊 FAQ Quality Summary:")
+                print(f"      Average Score: {avg_score:.1f}/10")
+                print(f"      Quality Gate Pass Rate: {pass_rate:.0f}% ({pass_count}/{len(faq_list)})")
+                print()
+        except Exception as e:
+            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
+            print()
+        
         print("✨ FAQ generation complete!")
         
         return True

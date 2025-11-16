@@ -77,6 +77,7 @@ class Orchestrator:
         
         # Initialize Winston feedback database if configured
         self.feedback_db = None
+        self.prompt_optimizer = None  # Will be initialized if feedback_db available
         try:
             from processing.config.config_loader import get_config
             config = get_config()
@@ -85,6 +86,11 @@ class Orchestrator:
                 from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
                 self.feedback_db = WinstonFeedbackDatabase(db_path)
                 logger.info(f"Winston feedback database initialized at {db_path}")
+                
+                # Initialize PromptOptimizer for self-learning prompt enhancement
+                from processing.learning.prompt_optimizer import PromptOptimizer
+                self.prompt_optimizer = PromptOptimizer(db_path)
+                logger.info("🧠 PromptOptimizer enabled - dynamic prompt learning active")
         except Exception as e:
             logger.warning(f"Winston feedback database unavailable: {e}")
         
@@ -181,6 +187,28 @@ class Orchestrator:
                 enrichment_params=enrichment_params,  # Phase 3+: Pass technical intensity
                 variation_seed=variation_seed
             )
+            
+            # SELF-LEARNING: Optimize prompt with learned patterns from Winston feedback
+            if self.prompt_optimizer and attempt == 1:
+                # Only optimize on first attempt (retry uses adjust_on_failure)
+                optimization_result = self.prompt_optimizer.optimize_prompt(
+                    base_prompt=prompt,
+                    material=topic,
+                    component_type=component_type,
+                    include_patterns=True,
+                    include_recommendations=True
+                )
+                
+                if optimization_result['confidence'] != 'none':
+                    prompt = optimization_result['optimized_prompt']
+                    logger.info(f"🧠 Prompt optimized with learned patterns:")
+                    logger.info(f"   Confidence: {optimization_result['confidence']}")
+                    logger.info(f"   Patterns analyzed: {optimization_result.get('patterns_analyzed', 0)}")
+                    logger.info(f"   Expected improvement: {optimization_result['expected_improvement']*100:.1f}%")
+                    for addition in optimization_result['additions']:
+                        logger.info(f"   + {addition}")
+                else:
+                    logger.info(f"🧠 Prompt optimizer: {optimization_result.get('reason', 'Insufficient data')}")
             
             # Adjust prompt on retry
             if attempt > 1:

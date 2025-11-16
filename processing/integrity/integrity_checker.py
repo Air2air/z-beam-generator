@@ -15,17 +15,23 @@ Checks:
    - No value loss or mutation during handoffs
    - API penalties reach API client correctly
 
-3. API Health
+3. Hardcoded Value Detection
+   - No hardcoded penalties (0.0, 0.5, etc.) in production code
+   - No hardcoded thresholds bypassing config
+   - No hardcoded defaults overriding dynamic calculation
+   - All values sourced from config or dynamic calculation
+
+4. API Health
    - Winston API reachable and responding
    - Grok API reachable and responding
    - Rate limits not exceeded
 
-4. Documentation Alignment
+5. Documentation Alignment
    - Code matches documented behavior
    - Configuration docs match actual config structure
    - Examples in docs are executable
 
-5. Test Validity
+6. Test Validity
    - All tests passing
    - Test coverage meets thresholds
    - Integration tests verify E2E flows
@@ -98,6 +104,12 @@ class IntegrityChecker:
         results.extend(self._check_configuration_mapping())
         results.extend(self._check_parameter_propagation())
         
+        # Hardcoded value detection (fast)
+        results.extend(self._check_hardcoded_values())
+        
+        # Subjective evaluation module check (fast)
+        results.extend(self._check_subjective_evaluation_module())
+        
         if not quick:
             # API health checks (slow - network calls)
             results.extend(self._check_api_health())
@@ -125,6 +137,8 @@ class IntegrityChecker:
         # Check 1.1: Slider values in valid range (1-10)
         start = time.time()
         slider_values = {
+            'jargon_removal': self.config.config.get('jargon_removal', 7),
+            'professional_voice': self.config.config.get('professional_voice', 7),
             'rhythm': self.config.get_sentence_rhythm_variation(),
             'structural': self.config.get_structural_predictability(),
             'imperfection': self.config.get_imperfection_tolerance(),
@@ -146,7 +160,7 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Config: Slider Range Validation",
                 status=IntegrityStatus.PASS,
-                message=f"All {len(slider_values)} sliders in valid range (1-10)",
+                message=f"All {len(slider_values)} sliders in valid range (1-10) [includes jargon_removal={slider_values.get('jargon_removal')}, professional_voice={slider_values.get('professional_voice')}]",
                 details={'slider_values': slider_values},
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -317,16 +331,15 @@ class IntegrityChecker:
         # Check 3.1: Winston API health
         start = time.time()
         try:
-            from shared.services.winston_client import WinstonClient
+            import os
             
-            client = WinstonClient()
-            # Simple connectivity test - don't burn credits
-            # Just verify the client can be instantiated and has API key
-            if client.api_key:
+            # Check if Winston API key exists
+            api_key = os.getenv('WINSTON_API_KEY')
+            if api_key:
                 results.append(IntegrityResult(
                     check_name="API: Winston Connectivity",
                     status=IntegrityStatus.PASS,
-                    message="Winston client configured with API key",
+                    message="Winston API key configured",
                     details={'has_api_key': True},
                     duration_ms=(time.time() - start) * 1000
                 ))
@@ -334,7 +347,7 @@ class IntegrityChecker:
                 results.append(IntegrityResult(
                     check_name="API: Winston Connectivity",
                     status=IntegrityStatus.WARN,
-                    message="Winston client has no API key configured",
+                    message="Winston API key not configured",
                     details={'has_api_key': False},
                     duration_ms=(time.time() - start) * 1000
                 ))
@@ -342,7 +355,7 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="API: Winston Connectivity",
                 status=IntegrityStatus.FAIL,
-                message=f"Winston client initialization failed: {str(e)}",
+                message=f"Winston connectivity check failed: {str(e)}",
                 details={'error': str(e)},
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -350,14 +363,15 @@ class IntegrityChecker:
         # Check 3.2: Grok API health
         start = time.time()
         try:
-            from shared.services.grok_client import GrokClient
+            import os
             
-            client = GrokClient()
-            if client.api_key:
+            # Check if Grok API key exists
+            api_key = os.getenv('XAI_API_KEY')
+            if api_key:
                 results.append(IntegrityResult(
                     check_name="API: Grok Connectivity",
                     status=IntegrityStatus.PASS,
-                    message="Grok client configured with API key",
+                    message="Grok API key configured",
                     details={'has_api_key': True},
                     duration_ms=(time.time() - start) * 1000
                 ))
@@ -365,7 +379,7 @@ class IntegrityChecker:
                 results.append(IntegrityResult(
                     check_name="API: Grok Connectivity",
                     status=IntegrityStatus.WARN,
-                    message="Grok client has no API key configured",
+                    message="Grok API key not configured",
                     details={'has_api_key': False},
                     duration_ms=(time.time() - start) * 1000
                 ))
@@ -373,15 +387,209 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="API: Grok Connectivity",
                 status=IntegrityStatus.FAIL,
-                message=f"Grok client initialization failed: {str(e)}",
+                message=f"Grok connectivity check failed: {str(e)}",
                 details={'error': str(e)},
                 duration_ms=(time.time() - start) * 1000
             ))
         
         return results
     
+    def _check_prompt_optimizer_integration(self) -> List[IntegrityResult]:
+        """Verify PromptOptimizer is properly initialized and called in generation flow"""
+        results = []
+        
+        # Check 1: PromptOptimizer module exists
+        start = time.time()
+        optimizer_path = Path('processing/learning/prompt_optimizer.py')
+        
+        if not optimizer_path.exists():
+            results.append(IntegrityResult(
+                check_name="Learning: PromptOptimizer Module",
+                status=IntegrityStatus.FAIL,
+                message="PromptOptimizer module not found",
+                details={'expected_path': str(optimizer_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            return results  # Can't check integration if module doesn't exist
+        
+        results.append(IntegrityResult(
+            check_name="Learning: PromptOptimizer Module",
+            status=IntegrityStatus.PASS,
+            message="PromptOptimizer module exists",
+            details={'module_path': str(optimizer_path)},
+            duration_ms=(time.time() - start) * 1000
+        ))
+        
+        # Check 2: DynamicGenerator initializes PromptOptimizer
+        start = time.time()
+        generator_path = Path('processing/generator.py')
+        
+        if generator_path.exists():
+            content = generator_path.read_text()
+            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
+            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
+            has_call = 'self.prompt_optimizer.optimize_prompt' in content
+            
+            if has_import and has_init and has_call:
+                results.append(IntegrityResult(
+                    check_name="Learning: DynamicGenerator Integration",
+                    status=IntegrityStatus.PASS,
+                    message="PromptOptimizer fully integrated in DynamicGenerator",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Learning: DynamicGenerator Integration",
+                    status=IntegrityStatus.FAIL,
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 3: Orchestrator initializes PromptOptimizer
+        start = time.time()
+        orchestrator_path = Path('processing/orchestrator.py')
+        
+        if orchestrator_path.exists():
+            content = orchestrator_path.read_text()
+            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
+            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
+            has_call = 'self.prompt_optimizer.optimize_prompt' in content or 'self.prompt_optimizer and attempt == 1' in content
+            
+            if has_import and has_init and has_call:
+                results.append(IntegrityResult(
+                    check_name="Learning: Orchestrator Integration",
+                    status=IntegrityStatus.PASS,
+                    message="PromptOptimizer fully integrated in Orchestrator",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Learning: Orchestrator Integration",
+                    status=IntegrityStatus.WARN,
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 4: UnifiedOrchestrator initializes PromptOptimizer
+        start = time.time()
+        unified_path = Path('processing/unified_orchestrator.py')
+        
+        if unified_path.exists():
+            content = unified_path.read_text()
+            has_import = 'from processing.learning.prompt_optimizer import PromptOptimizer' in content
+            has_init = 'self.prompt_optimizer = PromptOptimizer' in content
+            has_call = 'self.prompt_optimizer.optimize_prompt' in content or 'self.prompt_optimizer and attempt == 1' in content
+            
+            if has_import and has_init and has_call:
+                results.append(IntegrityResult(
+                    check_name="Learning: UnifiedOrchestrator Integration",
+                    status=IntegrityStatus.PASS,
+                    message="PromptOptimizer fully integrated in UnifiedOrchestrator",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Learning: UnifiedOrchestrator Integration",
+                    status=IntegrityStatus.WARN,
+                    message=f"PromptOptimizer not fully integrated (import={has_import}, init={has_init}, call={has_call})",
+                    details={'import': has_import, 'init': has_init, 'call': has_call},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 5: PromptOptimizer has training data and is actively learning
+        start = time.time()
+        db_path = Path('data/winston_feedback.db')
+        
+        if not db_path.exists():
+            results.append(IntegrityResult(
+                check_name="Learning: Training Data Availability",
+                status=IntegrityStatus.WARN,
+                message="Winston feedback database not found - no training data for learning",
+                details={'expected_path': str(db_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            # Check database has sufficient data
+            try:
+                import sqlite3
+                conn = sqlite3.connect(str(db_path))
+                cursor = conn.cursor()
+                
+                # Get total samples
+                cursor.execute("SELECT COUNT(*) FROM detection_results")
+                total_samples = cursor.fetchone()[0]
+                
+                # Get materials with 5+ samples (threshold for optimization)
+                cursor.execute("""
+                    SELECT material, COUNT(*) as count 
+                    FROM detection_results 
+                    WHERE material IS NOT NULL 
+                    GROUP BY material 
+                    HAVING count >= 5
+                """)
+                ready_materials = cursor.fetchall()
+                
+                # Get learned patterns count (patterns appearing in multiple failed detections)
+                cursor.execute("""
+                    SELECT COUNT(DISTINCT pattern) 
+                    FROM ai_patterns
+                """)
+                learned_patterns = cursor.fetchone()[0]
+                
+                conn.close()
+                
+                if total_samples >= 20 and len(ready_materials) >= 3:
+                    results.append(IntegrityResult(
+                        check_name="Learning: Training Data Availability",
+                        status=IntegrityStatus.PASS,
+                        message=f"Sufficient training data: {total_samples} samples, {len(ready_materials)} materials ready, {learned_patterns} patterns learned",
+                        details={
+                            'total_samples': total_samples,
+                            'ready_materials': len(ready_materials),
+                            'learned_patterns': learned_patterns,
+                            'materials': [m[0] for m in ready_materials[:5]]
+                        },
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                elif total_samples > 0:
+                    results.append(IntegrityResult(
+                        check_name="Learning: Training Data Availability",
+                        status=IntegrityStatus.WARN,
+                        message=f"Limited training data: {total_samples} samples, {len(ready_materials)} materials ready (need 20+ samples, 3+ materials)",
+                        details={
+                            'total_samples': total_samples,
+                            'ready_materials': len(ready_materials),
+                            'learned_patterns': learned_patterns
+                        },
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                else:
+                    results.append(IntegrityResult(
+                        check_name="Learning: Training Data Availability",
+                        status=IntegrityStatus.FAIL,
+                        message="No training data - prompt optimizer cannot learn",
+                        details={'total_samples': 0},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                    
+            except Exception as e:
+                results.append(IntegrityResult(
+                    check_name="Learning: Training Data Availability",
+                    status=IntegrityStatus.WARN,
+                    message=f"Could not check training data: {e}",
+                    details={'error': str(e)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        return results
+    
     # =========================================================================
-    # 4. DOCUMENTATION ALIGNMENT
+    # 5. DOCUMENTATION ALIGNMENT
     # =========================================================================
     
     def _check_documentation_alignment(self) -> List[IntegrityResult]:
@@ -438,6 +646,234 @@ class IntegrityChecker:
                 status=IntegrityStatus.PASS,
                 message="scale_mapper.py module exists",
                 details={'module_path': str(mapper_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        return results
+    
+    # =========================================================================
+    # 3. HARDCODED VALUE DETECTION
+    # =========================================================================
+    
+    def _check_hardcoded_values(self) -> List[IntegrityResult]:
+        """
+        Detect hardcoded values that should come from config or dynamic calculation.
+        
+        Searches for common anti-patterns:
+        - Hardcoded penalties (frequency_penalty=0.0, presence_penalty=0.5)
+        - Hardcoded thresholds (if score > 30:, threshold = 0.7)
+        - Hardcoded defaults overriding config (or 0.0, or {})
+        - Magic numbers in critical paths
+        
+        Returns:
+            List of IntegrityResult objects
+        """
+        results = []
+        start = time.time()
+        
+        # Files to check (production code only, exclude tests)
+        production_files = [
+            'processing/generator.py',
+            'processing/unified_orchestrator.py',
+            'processing/config/dynamic_config.py',
+            'processing/config/config_loader.py',
+            'shared/services/grok_client.py',
+            'shared/services/winston_client.py',
+            'shared/commands/generation.py'
+        ]
+        
+        violations = []
+        
+        # Patterns to detect
+        hardcoded_patterns = [
+            # Penalty assignments
+            (r"frequency_penalty\s*=\s*0\.\d+", "Hardcoded frequency_penalty"),
+            (r"presence_penalty\s*=\s*0\.\d+", "Hardcoded presence_penalty"),
+            (r"'frequency_penalty':\s*0\.\d+", "Hardcoded frequency_penalty in dict"),
+            (r"'presence_penalty':\s*0\.\d+", "Hardcoded presence_penalty in dict"),
+            
+            # Temperature assignments
+            (r"temperature\s*=\s*0\.\d+(?!.*calculate)", "Hardcoded temperature"),
+            (r"'temperature':\s*0\.\d+(?!.*calculate)", "Hardcoded temperature in dict"),
+            
+            # Threshold assignments
+            (r"threshold\s*=\s*\d+(?!.*config|.*calculate|.*get_)", "Hardcoded threshold"),
+            (r"ai_threshold\s*=\s*\d+", "Hardcoded AI threshold"),
+            
+            # Fallback defaults that bypass config
+            (r"\.get\([^)]+,\s*0\.0\)(?!.*test)", "Fallback to 0.0 instead of required value"),
+            (r"\.get\([^)]+,\s*{}\)(?!.*test)", "Fallback to empty dict instead of required value"),
+            (r"or\s+0\.0(?!.*test)", "Default to 0.0 instead of failing fast"),
+            (r"or\s+{}(?!.*test)", "Default to empty dict instead of failing fast")
+        ]
+        
+        import re
+        base_path = Path(__file__).parent.parent.parent  # Get to repo root
+        
+        for file_path in production_files:
+            full_path = base_path / file_path
+            if not full_path.exists():
+                continue
+            
+            try:
+                content = full_path.read_text()
+                lines = content.split('\n')
+                
+                for pattern, description in hardcoded_patterns:
+                    matches = re.finditer(pattern, content)
+                    for match in matches:
+                        # Find line number
+                        line_num = content[:match.start()].count('\n') + 1
+                        line_content = lines[line_num - 1].strip()
+                        
+                        # Skip if it's in a comment or docstring
+                        if line_content.startswith('#') or line_content.startswith('"""'):
+                            continue
+                        
+                        violations.append({
+                            'file': file_path,
+                            'line': line_num,
+                            'pattern': description,
+                            'code': line_content[:100]  # First 100 chars
+                        })
+            
+            except Exception as e:
+                violations.append({
+                    'file': file_path,
+                    'line': 0,
+                    'pattern': 'File read error',
+                    'code': str(e)
+                })
+        
+        if violations:
+            violation_summary = []
+            for v in violations[:10]:  # Limit to first 10
+                violation_summary.append(f"{v['file']}:{v['line']} - {v['pattern']}")
+            
+            results.append(IntegrityResult(
+                check_name="Code: Hardcoded Value Detection",
+                status=IntegrityStatus.FAIL,
+                message=f"Found {len(violations)} hardcoded values in production code",
+                details={
+                    'violations': violation_summary,
+                    'total_count': len(violations),
+                    'recommendation': 'Replace hardcoded values with config.get() or dynamic_config.calculate_*()'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Code: Hardcoded Value Detection",
+                status=IntegrityStatus.PASS,
+                message="No hardcoded values detected in production code",
+                details={'files_checked': len(production_files)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        return results
+    
+    # =========================================================================
+    # 4.5 SUBJECTIVE EVALUATION MODULE
+    # =========================================================================
+    
+    def _check_subjective_evaluation_module(self) -> List[IntegrityResult]:
+        """Verify Subjective evaluation module is properly integrated"""
+        results = []
+        
+        # Check 4.5.1: Claude evaluator module exists
+        start = time.time()
+        evaluator_path = Path('processing/evaluation/subjective_evaluator.py')
+        
+        if not evaluator_path.exists():
+            results.append(IntegrityResult(
+                check_name="Claude: Evaluator Module",
+                status=IntegrityStatus.FAIL,
+                message="subjective_evaluator.py module not found",
+                details={'expected_path': str(evaluator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Claude: Evaluator Module",
+                status=IntegrityStatus.PASS,
+                message="Claude evaluator module exists",
+                details={'module_path': str(evaluator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 4.5.2: Integration helper exists
+        start = time.time()
+        helper_path = Path('shared/commands/subjective_evaluation_helper.py')
+        
+        if not helper_path.exists():
+            results.append(IntegrityResult(
+                check_name="Claude: Integration Helper",
+                status=IntegrityStatus.FAIL,
+                message="subjective_evaluation_helper.py not found",
+                details={'expected_path': str(helper_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Claude: Integration Helper",
+                status=IntegrityStatus.PASS,
+                message="Claude integration helper exists",
+                details={'helper_path': str(helper_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 4.5.3: Database schema includes subjective_evaluations table
+        start = time.time()
+        db_module_path = Path('processing/detection/winston_feedback_db.py')
+        
+        if not db_module_path.exists():
+            results.append(IntegrityResult(
+                check_name="Claude: Database Integration",
+                status=IntegrityStatus.WARN,
+                message="Feedback database module not found",
+                details={'expected_path': str(db_module_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            content = db_module_path.read_text()
+            if 'subjective_evaluations' in content and 'log_subjective_evaluation' in content:
+                results.append(IntegrityResult(
+                    check_name="Claude: Database Integration",
+                    status=IntegrityStatus.PASS,
+                    message="Subjective evaluation logging integrated in feedback database",
+                    details={'db_module': str(db_module_path)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Claude: Database Integration",
+                    status=IntegrityStatus.FAIL,
+                    message="Database missing Subjective evaluation support",
+                    details={'db_module': str(db_module_path)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 4.5.4: Self-Learning Prompt System Integration
+        results.extend(self._check_prompt_optimizer_integration())
+        
+        # Check 4.5.5: Tests exist for Subjective evaluation
+        start = time.time()
+        test_path = Path('tests/test_subjective_evaluation.py')
+        
+        if not test_path.exists():
+            results.append(IntegrityResult(
+                check_name="Claude: Test Coverage",
+                status=IntegrityStatus.WARN,
+                message="Subjective evaluation tests not found",
+                details={'expected_path': str(test_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Claude: Test Coverage",
+                status=IntegrityStatus.PASS,
+                message="Subjective evaluation tests exist",
+                details={'test_path': str(test_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
         

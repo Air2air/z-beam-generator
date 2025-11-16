@@ -1,0 +1,286 @@
+# Hardcoded Value Policy
+
+**Status**: Active  
+**Last Updated**: November 15, 2025  
+**Enforcement**: Automatic via Integrity Checker
+
+---
+
+## 🎯 Policy Overview
+
+**ALL configuration values MUST come from config files or dynamic calculation.**
+
+The system uses a fully dynamic configuration architecture where user-facing sliders (1-10 scale) automatically calculate all technical parameters. Hardcoding values bypasses this system and creates:
+
+1. **Configuration drift** - Code values diverge from config
+2. **Maintenance burden** - Multiple places to update
+3. **Debugging difficulty** - Hidden values that aren't tracked
+4. **System fragility** - Changes don't propagate correctly
+
+---
+
+## 🚫 Prohibited Patterns
+
+### 1. Hardcoded API Penalties
+
+❌ **WRONG**:
+```python
+frequency_penalty = 0.0
+presence_penalty = 0.5
+
+api_params = {
+    'frequency_penalty': 0.0,
+    'presence_penalty': 0.0
+}
+```
+
+✅ **CORRECT**:
+```python
+penalties = dynamic_config.calculate_penalties()
+frequency_penalty = penalties['frequency_penalty']
+presence_penalty = penalties['presence_penalty']
+
+api_params = {
+    'penalties': dynamic_config.calculate_penalties()
+}
+```
+
+### 2. Hardcoded Thresholds
+
+❌ **WRONG**:
+```python
+if ai_score > 30:
+    print("Failed detection")
+
+threshold = 0.7
+if confidence < threshold:
+    retry()
+```
+
+✅ **CORRECT**:
+```python
+threshold = dynamic_config.calculate_detection_threshold()
+if ai_score > threshold:
+    print("Failed detection")
+
+confidence_thresholds = dynamic_config.calculate_confidence_thresholds()
+if confidence < confidence_thresholds['high']:
+    retry()
+```
+
+### 3. Hardcoded Temperatures
+
+❌ **WRONG**:
+```python
+temperature = 0.8
+
+response = api.call(
+    prompt=prompt,
+    temperature=0.7
+)
+```
+
+✅ **CORRECT**:
+```python
+temperature = dynamic_config.calculate_temperature(component_type)
+
+response = api.call(
+    prompt=prompt,
+    temperature=temperature
+)
+```
+
+### 4. Fallback Defaults Bypassing Config
+
+❌ **WRONG**:
+```python
+# These silently fail instead of alerting to missing config
+penalties = config.get('penalties', {'frequency_penalty': 0.0})
+threshold = params.get('threshold', 0.7)
+temperature = api_params.get('temperature') or 0.8
+max_tokens = config.get('max_tokens', {})
+```
+
+✅ **CORRECT**:
+```python
+# Fail-fast if config is missing
+penalties = config['penalties']  # KeyError if missing
+threshold = dynamic_config.calculate_detection_threshold()  # Always works
+
+# OR with explicit validation
+temperature = api_params.get('temperature')
+if temperature is None:
+    raise ConfigurationError("Temperature not configured")
+```
+
+### 5. Magic Numbers
+
+❌ **WRONG**:
+```python
+for i in range(5):  # Why 5?
+    attempt = generate()
+
+if word_count > 100:  # Why 100?
+    truncate()
+```
+
+✅ **CORRECT**:
+```python
+max_attempts = config.get_max_attempts()
+for i in range(max_attempts):
+    attempt = generate()
+
+max_words = dynamic_config.calculate_target_length_range(component_type)['max']
+if word_count > max_words:
+    truncate()
+```
+
+---
+
+## ✅ Allowed Use Cases
+
+### Configuration Constants
+
+These are OK because they're not technical parameters:
+```python
+DEFAULT_COMPONENT_TYPE = 'subtitle'  # User-facing default
+FILE_EXTENSION = '.yaml'  # System constant
+API_TIMEOUT_SECONDS = 120  # Infrastructure constant
+```
+
+### Test Code
+
+Mocks and hardcoded values are **ALLOWED in test code**:
+```python
+# tests/test_generator.py
+def test_temperature_calculation():
+    # OK - this is test code
+    mock_config = {'temperature': 0.8}
+    result = calculate_something(mock_config)
+```
+
+### Documentation Examples
+
+Hardcoded values in docstrings and comments:
+```python
+def calculate_temperature(component_type: str) -> float:
+    """
+    Calculate temperature for component.
+    
+    Example:
+        >>> calculate_temperature('subtitle')
+        0.628  # This hardcoded example is OK
+    """
+```
+
+---
+
+## 🔍 Enforcement
+
+### Automatic Detection
+
+The integrity checker automatically scans production code for:
+
+1. **Penalty patterns**: `frequency_penalty=0.0`, `'presence_penalty': 0.5`
+2. **Temperature patterns**: `temperature = 0.8`
+3. **Threshold patterns**: `threshold = 30`, `if score > 0.7:`
+4. **Fallback patterns**: `.get('key', 0.0)`, `or 0.0`, `or {}`
+
+Run check:
+```bash
+python3 -c "
+from processing.integrity.integrity_checker import IntegrityChecker
+checker = IntegrityChecker()
+results = checker.run_quick_checks()
+"
+```
+
+### Pre-Generation Validation
+
+The integrity check runs automatically before every generation:
+```bash
+python3 run.py --caption "Aluminum"
+# 🔍 Running pre-generation integrity check...
+# ❌ Integrity check FAILED - Found 36 hardcoded values
+```
+
+### Continuous Integration
+
+Tests verify zero hardcoded values:
+```bash
+pytest tests/test_hardcoded_value_detection.py
+```
+
+---
+
+## 🛠️ Migration Guide
+
+### Step 1: Identify Hardcoded Values
+
+Run the integrity checker:
+```bash
+python3 -c "
+from processing.integrity.integrity_checker import IntegrityChecker
+checker = IntegrityChecker()
+results = checker._check_hardcoded_values()
+for v in results[0].details.get('violations', []):
+    print(v)
+"
+```
+
+### Step 2: Replace with Config/Dynamic Calculation
+
+For each violation:
+
+1. **API penalties** → `dynamic_config.calculate_penalties()`
+2. **Thresholds** → `dynamic_config.calculate_detection_threshold()`
+3. **Temperature** → `dynamic_config.calculate_temperature(component_type)`
+4. **Max tokens** → `dynamic_config.calculate_max_tokens(component_type)`
+5. **Retry behavior** → `dynamic_config.calculate_retry_behavior()`
+
+### Step 3: Verify Fix
+
+Run tests and integrity check:
+```bash
+pytest tests/test_hardcoded_value_detection.py
+python3 -c "from processing.integrity.integrity_checker import IntegrityChecker; IntegrityChecker().run_quick_checks()"
+```
+
+---
+
+## 📋 Checklist for Code Review
+
+Before merging any PR:
+
+- [ ] No `frequency_penalty=0.0` or `presence_penalty=0.5` in production code
+- [ ] No `temperature = 0.X` assignments outside config/dynamic_config
+- [ ] No `threshold = X` assignments bypassing config
+- [ ] No `.get('key', default_value)` in critical paths (use fail-fast)
+- [ ] No `or default_value` patterns bypassing validation
+- [ ] All configuration values trace back to config.yaml or dynamic calculation
+- [ ] Integrity check passes with zero hardcoded value violations
+- [ ] Tests pass: `pytest tests/test_hardcoded_value_detection.py`
+
+---
+
+## 🔗 Related Documentation
+
+- **Integrity Checker**: `processing/integrity/integrity_checker.py`
+- **Dynamic Config**: `processing/config/dynamic_config.py`
+- **Config Loader**: `processing/config/config_loader.py`
+- **Fail-Fast Policy**: `.github/copilot-instructions.md`
+- **Test Suite**: `tests/test_hardcoded_value_detection.py`
+
+---
+
+## 📞 Questions?
+
+If you're unsure whether a value should be hardcoded:
+
+1. Ask: "Could this value ever change based on user settings?"
+2. If YES → Use dynamic_config
+3. If NO → Ask: "Is this a technical parameter that affects generation quality?"
+4. If YES → Use config.yaml
+5. If NO → Hardcoded constant is OK (but document why)
+
+**When in doubt, use dynamic config.**

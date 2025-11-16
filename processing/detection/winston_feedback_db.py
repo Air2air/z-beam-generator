@@ -125,10 +125,94 @@ class WinstonFeedbackDatabase:
                     materials TEXT
                 );
                 
+                CREATE TABLE IF NOT EXISTS subjective_evaluations (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp TEXT NOT NULL,
+                    topic TEXT NOT NULL,
+                    component_type TEXT NOT NULL,
+                    domain TEXT DEFAULT 'materials',
+                    generated_text TEXT NOT NULL,
+                    overall_score REAL NOT NULL,
+                    clarity_score REAL NOT NULL,
+                    professionalism_score REAL NOT NULL,
+                    technical_accuracy_score REAL NOT NULL,
+                    human_likeness_score REAL NOT NULL,
+                    engagement_score REAL NOT NULL,
+                    jargon_free_score REAL NOT NULL,
+                    passes_quality_gate BOOLEAN NOT NULL,
+                    quality_threshold REAL NOT NULL,
+                    evaluation_time_ms REAL,
+                    strengths TEXT,
+                    weaknesses TEXT,
+                    recommendations TEXT,
+                    author_id INTEGER,
+                    attempt_number INTEGER,
+                    has_claude_api BOOLEAN DEFAULT 0
+                );
+                
+                CREATE TABLE IF NOT EXISTS generation_parameters (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    detection_result_id INTEGER UNIQUE NOT NULL,
+                    timestamp TEXT NOT NULL,
+                    material TEXT NOT NULL,
+                    component_type TEXT NOT NULL,
+                    attempt_number INTEGER NOT NULL,
+                    
+                    -- API Parameters
+                    temperature REAL NOT NULL,
+                    max_tokens INTEGER NOT NULL,
+                    frequency_penalty REAL NOT NULL,
+                    presence_penalty REAL NOT NULL,
+                    
+                    -- Voice Parameters (0.0-1.0 range)
+                    trait_frequency REAL NOT NULL,
+                    opinion_rate REAL NOT NULL,
+                    reader_address_rate REAL NOT NULL,
+                    colloquialism_frequency REAL NOT NULL,
+                    structural_predictability REAL NOT NULL,
+                    emotional_tone REAL NOT NULL,
+                    imperfection_tolerance REAL,
+                    sentence_rhythm_variation REAL,
+                    
+                    -- Enrichment Parameters (1-3 scale)
+                    technical_intensity INTEGER NOT NULL,
+                    context_detail_level INTEGER NOT NULL,
+                    fact_formatting_style TEXT NOT NULL,
+                    engagement_level INTEGER NOT NULL,
+                    
+                    -- Validation Parameters
+                    detection_threshold REAL NOT NULL,
+                    readability_min REAL NOT NULL,
+                    readability_max REAL NOT NULL,
+                    grammar_strictness REAL NOT NULL,
+                    confidence_high REAL NOT NULL,
+                    confidence_medium REAL NOT NULL,
+                    
+                    -- Retry Behavior
+                    max_attempts INTEGER NOT NULL,
+                    retry_temperature_increase REAL NOT NULL,
+                    
+                    -- Full JSON snapshot
+                    full_params_json TEXT NOT NULL,
+                    param_hash TEXT NOT NULL,
+                    
+                    FOREIGN KEY (detection_result_id) REFERENCES detection_results(id) ON DELETE CASCADE
+                );
+                
                 CREATE INDEX IF NOT EXISTS idx_material ON detection_results(material);
                 CREATE INDEX IF NOT EXISTS idx_component ON detection_results(component_type);
                 CREATE INDEX IF NOT EXISTS idx_success ON detection_results(success);
                 CREATE INDEX IF NOT EXISTS idx_timestamp ON detection_results(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_claude_topic ON subjective_evaluations(topic);
+                CREATE INDEX IF NOT EXISTS idx_claude_component ON subjective_evaluations(component_type);
+                CREATE INDEX IF NOT EXISTS idx_claude_quality ON subjective_evaluations(passes_quality_gate);
+                CREATE INDEX IF NOT EXISTS idx_claude_timestamp ON subjective_evaluations(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_params_material ON generation_parameters(material);
+                CREATE INDEX IF NOT EXISTS idx_params_component ON generation_parameters(component_type);
+                CREATE INDEX IF NOT EXISTS idx_params_temperature ON generation_parameters(temperature);
+                CREATE INDEX IF NOT EXISTS idx_params_penalties ON generation_parameters(frequency_penalty, presence_penalty);
+                CREATE INDEX IF NOT EXISTS idx_params_hash ON generation_parameters(param_hash);
+                CREATE INDEX IF NOT EXISTS idx_params_timestamp ON generation_parameters(timestamp);
             """)
             
             conn.commit()
@@ -379,6 +463,161 @@ class WinstonFeedbackDatabase:
             
             return results
     
+    def log_subjective_evaluation(
+        self,
+        topic: str,
+        component_type: str,
+        generated_text: str,
+        evaluation_result,
+        domain: str = "materials",
+        author_id: Optional[int] = None,
+        attempt_number: Optional[int] = None
+    ) -> int:
+        """
+        Log subjective content evaluation to learning database.
+        
+        Args:
+            topic: Subject matter (material name, historical event, etc.)
+            component_type: Content type (caption, subtitle, etc.)
+            generated_text: The generated text that was evaluated
+            evaluation_result: SubjectiveEvaluationResult object
+            domain: Content domain (materials, history, recipes, etc.)
+            author_id: Optional author ID (1-4)
+            attempt_number: Optional attempt number
+            
+        Returns:
+            evaluation_id for reference
+        """
+        timestamp = datetime.utcnow().isoformat()
+        
+        # Extract dimension scores
+        dimension_scores = {
+            score.dimension.value: score.score 
+            for score in evaluation_result.dimension_scores
+        }
+        
+        # Convert lists to JSON strings
+        strengths_json = json.dumps(evaluation_result.strengths)
+        weaknesses_json = json.dumps(evaluation_result.weaknesses)
+        recommendations_json = json.dumps(evaluation_result.recommendations)
+        
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO subjective_evaluations
+                (timestamp, topic, component_type, domain, generated_text,
+                 overall_score, clarity_score, professionalism_score,
+                 technical_accuracy_score, human_likeness_score,
+                 engagement_score, jargon_free_score,
+                 passes_quality_gate, quality_threshold, evaluation_time_ms,
+                 strengths, weaknesses, recommendations,
+                 author_id, attempt_number, has_claude_api)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                timestamp,
+                topic,
+                component_type,
+                domain,
+                generated_text,
+                evaluation_result.overall_score,
+                dimension_scores.get('clarity', 0.0),
+                dimension_scores.get('professionalism', 0.0),
+                dimension_scores.get('technical_accuracy', 0.0),
+                dimension_scores.get('human_likeness', 0.0),
+                dimension_scores.get('engagement', 0.0),
+                dimension_scores.get('jargon_free', 0.0),
+                evaluation_result.passes_quality_gate,
+                7.0,  # Default threshold (can be parameterized)
+                evaluation_result.evaluation_time_ms,
+                strengths_json,
+                weaknesses_json,
+                recommendations_json,
+                author_id,
+                attempt_number,
+                evaluation_result.raw_response is not None  # Has Claude API if raw response exists
+            ))
+            
+            evaluation_id = cursor.lastrowid
+            conn.commit()
+            
+            logger.info(f"✅ [CLAUDE EVAL] Logged evaluation #{evaluation_id} for {topic}/{component_type}")
+            
+            return evaluation_id
+    
+    def get_subjective_evaluation_stats(
+        self,
+        topic: Optional[str] = None,
+        component_type: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Get Subjective evaluation statistics.
+        
+        Args:
+            topic: Optional filter by topic
+            component_type: Optional filter by component type
+            
+        Returns:
+            Statistics dict with averages and trends
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            # Build query with filters
+            base_query = "SELECT COUNT(*), AVG(overall_score), AVG(passes_quality_gate) FROM subjective_evaluations"
+            filters = []
+            params = []
+            
+            if topic:
+                filters.append("topic = ?")
+                params.append(topic)
+            
+            if component_type:
+                filters.append("component_type = ?")
+                params.append(component_type)
+            
+            if filters:
+                base_query += " WHERE " + " AND ".join(filters)
+            
+            cursor.execute(base_query, params)
+            row = cursor.fetchone()
+            
+            total_evals = row[0] or 0
+            avg_score = row[1] or 0.0
+            pass_rate = (row[2] or 0.0) * 100
+            
+            # Get dimension averages
+            dim_query = """
+                SELECT 
+                    AVG(clarity_score),
+                    AVG(professionalism_score),
+                    AVG(technical_accuracy_score),
+                    AVG(human_likeness_score),
+                    AVG(engagement_score),
+                    AVG(jargon_free_score)
+                FROM subjective_evaluations
+            """
+            
+            if filters:
+                dim_query += " WHERE " + " AND ".join(filters)
+            
+            cursor.execute(dim_query, params)
+            dim_row = cursor.fetchone()
+            
+            return {
+                'total_evaluations': total_evals,
+                'avg_overall_score': avg_score,
+                'quality_gate_pass_rate': pass_rate,
+                'dimension_averages': {
+                    'clarity': dim_row[0] or 0.0,
+                    'professionalism': dim_row[1] or 0.0,
+                    'technical_accuracy': dim_row[2] or 0.0,
+                    'human_likeness': dim_row[3] or 0.0,
+                    'engagement': dim_row[4] or 0.0,
+                    'jargon_free': dim_row[5] or 0.0
+                }
+            }
+    
     def get_stats(self) -> Dict[str, Any]:
         """Get database statistics."""
         with sqlite3.connect(self.db_path) as conn:
@@ -404,11 +643,292 @@ class WinstonFeedbackDatabase:
             cursor.execute("SELECT AVG(human_score) FROM detection_results")
             avg_human_score = cursor.fetchone()[0] or 0
             
+            # Subjective evaluation stats
+            cursor.execute("SELECT COUNT(*) FROM subjective_evaluations")
+            total_claude_evals = cursor.fetchone()[0]
+            
+            cursor.execute("SELECT AVG(overall_score) FROM subjective_evaluations")
+            avg_claude_score = cursor.fetchone()[0] or 0
+            
+            cursor.execute("SELECT COUNT(*) FROM subjective_evaluations WHERE passes_quality_gate = 1")
+            claude_passes = cursor.fetchone()[0]
+            
+            # Generation parameters stats
+            cursor.execute("SELECT COUNT(*) FROM generation_parameters")
+            total_params = cursor.fetchone()[0]
+            
+            cursor.execute("SELECT AVG(temperature), AVG(frequency_penalty), AVG(presence_penalty) FROM generation_parameters")
+            param_avgs = cursor.fetchone()
+            avg_temperature = param_avgs[0] or 0
+            avg_freq_penalty = param_avgs[1] or 0
+            avg_pres_penalty = param_avgs[2] or 0
+            
             return {
                 'total_detections': total_detections,
                 'successful_detections': successful,
                 'success_rate': (successful / total_detections * 100) if total_detections > 0 else 0,
                 'total_corrections': total_corrections,
                 'approved_corrections': approved_corrections,
-                'avg_human_score': avg_human_score
+                'avg_human_score': avg_human_score,
+                'total_subjective_evaluations': total_claude_evals,
+                'avg_claude_score': avg_claude_score,
+                'claude_pass_rate': (claude_passes / total_claude_evals * 100) if total_claude_evals > 0 else 0,
+                'total_generation_parameters': total_params,
+                'avg_temperature': avg_temperature,
+                'avg_frequency_penalty': avg_freq_penalty,
+                'avg_presence_penalty': avg_pres_penalty
             }
+    
+    def log_generation_parameters(
+        self,
+        detection_result_id: int,
+        params: Dict[str, Any]
+    ) -> int:
+        """
+        Log complete parameter set used for generation.
+        
+        Links parameters to detection result for analysis and learning.
+        Enables queries like "what temperature works best?" and
+        "does increasing penalties improve human scores?"
+        
+        Args:
+            detection_result_id: ID from detection_results table
+            params: Parameters dict with structure:
+                {
+                    'material_name': str,
+                    'component_type': str,
+                    'attempt': int,
+                    'api': {
+                        'temperature': float,
+                        'max_tokens': int,
+                        'frequency_penalty': float,
+                        'presence_penalty': float
+                    },
+                    'voice': {
+                        'trait_frequency': float,
+                        'opinion_rate': float,
+                        'reader_address_rate': float,
+                        'colloquialism_frequency': float,
+                        'structural_predictability': float,
+                        'emotional_tone': float,
+                        'imperfection_tolerance': float (optional),
+                        'sentence_rhythm_variation': float (optional)
+                    },
+                    'enrichment': {
+                        'technical_intensity': int,
+                        'context_detail_level': int,
+                        'fact_formatting_style': str,
+                        'engagement_level': int
+                    },
+                    'validation': {
+                        'detection_threshold': float,
+                        'readability_min': float,
+                        'readability_max': float,
+                        'grammar_strictness': float,
+                        'confidence_high': float,
+                        'confidence_medium': float
+                    },
+                    'retry': {
+                        'max_attempts': int,
+                        'retry_temperature_increase': float
+                    }
+                }
+            
+        Returns:
+            Row ID of inserted parameters
+            
+        Raises:
+            KeyError: If required parameter fields are missing
+        """
+        import hashlib
+        
+        # Calculate hash for deduplication and tracking
+        param_str = json.dumps(params, sort_keys=True)
+        param_hash = hashlib.sha256(param_str.encode()).hexdigest()[:16]
+        
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO generation_parameters (
+                    detection_result_id,
+                    timestamp,
+                    material,
+                    component_type,
+                    attempt_number,
+                    temperature,
+                    max_tokens,
+                    frequency_penalty,
+                    presence_penalty,
+                    trait_frequency,
+                    opinion_rate,
+                    reader_address_rate,
+                    colloquialism_frequency,
+                    structural_predictability,
+                    emotional_tone,
+                    imperfection_tolerance,
+                    sentence_rhythm_variation,
+                    technical_intensity,
+                    context_detail_level,
+                    fact_formatting_style,
+                    engagement_level,
+                    detection_threshold,
+                    readability_min,
+                    readability_max,
+                    grammar_strictness,
+                    confidence_high,
+                    confidence_medium,
+                    max_attempts,
+                    retry_temperature_increase,
+                    full_params_json,
+                    param_hash
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                detection_result_id,
+                datetime.now().isoformat(),
+                params['material_name'],
+                params['component_type'],
+                params['attempt'],
+                params['api']['temperature'],
+                params['api']['max_tokens'],
+                params['api']['frequency_penalty'],
+                params['api']['presence_penalty'],
+                params['voice']['trait_frequency'],
+                params['voice']['opinion_rate'],
+                params['voice']['reader_address_rate'],
+                params['voice']['colloquialism_frequency'],
+                params['voice']['structural_predictability'],
+                params['voice']['emotional_tone'],
+                params['voice'].get('imperfection_tolerance'),
+                params['voice'].get('sentence_rhythm_variation'),
+                params['enrichment']['technical_intensity'],
+                params['enrichment']['context_detail_level'],
+                params['enrichment']['fact_formatting_style'],
+                params['enrichment']['engagement_level'],
+                params['validation']['detection_threshold'],
+                params['validation']['readability_min'],
+                params['validation']['readability_max'],
+                params['validation']['grammar_strictness'],
+                params['validation']['confidence_high'],
+                params['validation']['confidence_medium'],
+                params['retry']['max_attempts'],
+                params['retry']['retry_temperature_increase'],
+                json.dumps(params),
+                param_hash
+            ))
+            conn.commit()
+            
+            row_id = cursor.lastrowid
+            logger.info(f"📊 [WINSTON DB] Logged generation parameters #{row_id} for detection result #{detection_result_id}")
+            
+            return row_id
+    
+    def get_best_parameters_for_material(
+        self,
+        material: str,
+        component_type: str,
+        limit: int = 5
+    ) -> List[Dict[str, Any]]:
+        """
+        Get best-performing parameter sets for a material/component.
+        
+        Useful for learning what parameter combinations work best.
+        
+        Args:
+            material: Material name (e.g., "Aluminum")
+            component_type: Component type (e.g., "caption")
+            limit: Number of top results to return
+            
+        Returns:
+            List of parameter dicts ordered by human_score DESC
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT 
+                    p.full_params_json,
+                    d.human_score,
+                    d.ai_score,
+                    d.timestamp
+                FROM generation_parameters p
+                JOIN detection_results d ON p.detection_result_id = d.id
+                WHERE d.material = ?
+                  AND d.component_type = ?
+                  AND d.success = 1
+                ORDER BY d.human_score DESC
+                LIMIT ?
+            """, (material, component_type, limit))
+            
+            results = []
+            for row in cursor.fetchall():
+                results.append({
+                    'params': json.loads(row[0]),
+                    'human_score': row[1],
+                    'ai_score': row[2],
+                    'timestamp': row[3]
+                })
+            
+            return results
+    
+    def get_parameter_correlation(
+        self,
+        parameter_path: str,
+        component_type: Optional[str] = None,
+        days: int = 30
+    ) -> Dict[str, Any]:
+        """
+        Analyze correlation between a parameter and success.
+        
+        Args:
+            parameter_path: Parameter to analyze (e.g., "temperature", "frequency_penalty")
+            component_type: Optional filter by component type
+            days: Number of days to look back
+            
+        Returns:
+            Dict with correlation analysis
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            query = f"""
+                SELECT 
+                    p.{parameter_path},
+                    AVG(d.human_score) as avg_human_score,
+                    AVG(d.ai_score) as avg_ai_score,
+                    COUNT(*) as samples,
+                    SUM(CASE WHEN d.success = 1 THEN 1 ELSE 0 END) as successes
+                FROM generation_parameters p
+                JOIN detection_results d ON p.detection_result_id = d.id
+                WHERE d.timestamp > datetime('now', '-{days} days')
+            """
+            
+            if component_type:
+                query += f" AND d.component_type = '{component_type}'"
+            
+            query += f"""
+                GROUP BY ROUND(p.{parameter_path}, 2)
+                HAVING samples >= 2
+                ORDER BY avg_human_score DESC
+            """
+            
+            cursor.execute(query)
+            
+            results = []
+            for row in cursor.fetchall():
+                results.append({
+                    'value': row[0],
+                    'avg_human_score': row[1],
+                    'avg_ai_score': row[2],
+                    'samples': row[3],
+                    'success_rate': (row[4] / row[3] * 100) if row[3] > 0 else 0
+                })
+            
+            return {
+                'parameter': parameter_path,
+                'component_type': component_type or 'all',
+                'days_analyzed': days,
+                'data_points': results
+            }
+
+

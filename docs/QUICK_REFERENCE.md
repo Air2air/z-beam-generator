@@ -14,14 +14,18 @@
 
 **BEFORE** any data-related work, review these files:
 1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions (⭐ START HERE)
-2. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - 🆕 ML learning system (Nov 15, 2025)
-3. **`WINSTON_INTEGRATION_COMPLETE.md`** - 🆕 Winston AI primary detector (Nov 15, 2025)
-4. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - 🔥 Materials.yaml structure (NO 'properties' wrapper!)
-5. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
-6. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
-7. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
-8. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
-9. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - 🆕 Dynamic sentence counts by author voice
+2. **`DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md`** - 🆕 Fixed Winston 100% AI issue (Nov 15, 2025)
+3. **`docs/development/PARAMETER_LOGGING_QUICK_START.md`** - 🆕 Query generation parameters for ML (Nov 15, 2025)
+4. **`docs/development/HARDCODED_VALUE_POLICY.md`** - 🆕 Zero hardcoded values policy (Nov 15, 2025)
+5. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - 🆕 Claude AI subjective eval (Nov 15, 2025)
+6. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - 🆕 ML learning system (Nov 15, 2025)
+7. **`WINSTON_INTEGRATION_COMPLETE.md`** - 🆕 Winston AI primary detector (Nov 15, 2025)
+8. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - 🔥 Materials.yaml structure (NO 'properties' wrapper!)
+9. **`materials/data/frontmatter_template.yaml`** - Single source of truth for structure
+10. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
+11. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+12. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
+13. **`docs/prompts/DYNAMIC_SENTENCE_CALCULATION.md`** - 🆕 Dynamic sentence counts by author voice
 
 ---
 
@@ -753,6 +757,95 @@ find content/components -name "*.md" -exec grep -l "before significant" {} \;
 **Tool**: `scripts/tools/api_terminal_diagnostics.py`
 **Documentation**: [Terminal Diagnostics](api/ERROR_HANDLING.md#terminal-reading)
 
+### 4. Claude AI Subjective Evaluation (November 15, 2025) 🆕
+**Purpose**: Post-generation quality assessment with learning database integration
+**Status**: ✅ Fully integrated (20/20 tests passing)
+**Components**:
+- `processing/evaluation/claude_evaluator.py` - Core 6-dimension evaluation engine
+- `shared/commands/claude_evaluation_helper.py` - Reusable integration helper
+- Learning database: `claude_evaluations` table in winston_feedback.db
+- Integrity checks: 4 automatic validations
+
+**CLI Commands**:
+```bash
+# Run demo to see evaluation in action
+PYTHONPATH=$PWD:$PYTHONPATH python3 processing/evaluation/demo_claude_evaluation.py
+
+# Run tests
+python3 -m pytest tests/test_claude_evaluation.py -v
+
+# Check integrity (includes Claude module validation)
+python3 run.py --integrity-check --quick
+```
+
+**Usage Example**:
+```python
+from shared.commands.claude_evaluation_helper import evaluate_after_generation
+
+# Evaluate generated content (reusable for ANY component/domain)
+result = evaluate_after_generation(
+    content=generated_text,
+    topic="Aluminum",           # Any subject (material, event, recipe, etc.)
+    component_type="caption",   # Any component (caption, subtitle, FAQ, etc.)
+    domain="materials",         # Any domain (materials, history, recipes, etc.)
+    feedback_db=feedback_db     # Optional: logs to learning database
+)
+
+# Check quality
+print(f"Overall Score: {result.overall_score:.1f}/10")
+print(f"Quality Gate: {'PASS' if result.passes_quality_gate else 'FAIL'}")
+```
+
+**Key Features**:
+- ✅ **Reusable workflow** - Works across all components and domains
+- ✅ **6-dimension evaluation** - Clarity, Professionalism, Technical Accuracy, Human-likeness, Engagement, Jargon-free
+- ✅ **Learning database** - All evaluations logged for continuous improvement
+- ✅ **Integrity system** - Automatic health validation (4 checks)
+- ✅ **Fallback mode** - Works without Claude API (rule-based evaluation)
+- ✅ **Quality gate** - Configurable threshold (default: 7.0/10)
+
+**Documentation**: `CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`
+**Module README**: `processing/evaluation/README.md`
+
+---
+
+### 📊 Parameter Logging & ML Learning (November 15, 2025)
+
+**Automatic Tracking**: Every generation logs 31 parameter fields to database for ML learning
+
+**Key Features**:
+- ✅ **Complete parameter tracking** - API, voice, enrichment, validation, retry params
+- ✅ **1:1 linking** - Parameters linked to detection results via `detection_result_id`
+- ✅ **Deduplication** - SHA-256 hash identifies identical parameter sets
+- ✅ **ML-ready queries** - Best performers, correlation analysis, historical optimization
+- ✅ **Fixed Winston 100% AI issue** - Dynamic penalties (0.6) instead of hardcoded 0.0
+
+**Quick Queries**:
+```python
+from processing.detection.winston_feedback_db import WinstonFeedbackDB
+
+# Find best parameters for material
+db = WinstonFeedbackDB()
+best = db.get_best_parameters_for_material('Steel', 'caption', limit=5)
+for p in best:
+    print(f"Temp: {p['temperature']:.2f}, Human: {p['human_score']:.1f}%")
+
+# Analyze parameter correlation
+correlation = db.get_parameter_correlation('api.temperature', 'caption', days=30)
+for temp, stats in correlation.items():
+    print(f"{temp:.2f}: {stats['avg_human_score']:.1f}% human")
+```
+
+**Results**:
+- **Before**: 100% AI detection (all failures)
+- **After**: 61.9-89.8% human scores (dynamic penalties working)
+- **Hardcoded values**: Reduced from 36 to 30 violations
+
+**Documentation**: 
+- `DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md` - Complete implementation
+- `docs/development/PARAMETER_LOGGING_QUICK_START.md` - Quick queries and examples
+- `docs/development/HARDCODED_VALUE_POLICY.md` - Zero hardcoded values policy
+
 ## 📋 AI Assistant Response Patterns
 
 ### When User Reports Error Messages
@@ -767,11 +860,18 @@ find content/components -name "*.md" -exec grep -l "before significant" {} \;
 3. **Use diagnostic tools**: `python3 scripts/tools/api_terminal_diagnostics.py winston`
 4. **Provide quick commands**: Use the essential commands above
 
+### When User Needs Quality Evaluation
+1. **Use Claude evaluation**: Point to `CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`
+2. **Run demo**: `PYTHONPATH=$PWD:$PYTHONPATH python3 processing/evaluation/demo_claude_evaluation.py`
+3. **Check learning stats**: Use `feedback_db.get_claude_evaluation_stats()`
+4. **View integration examples**: Reference module README
+
 ### When User Has Generation Issues
 1. **Check API connectivity first**: Use diagnostic tools
 2. **Identify component type**: Direct to appropriate component docs
 3. **Check for known patterns**: Reference content impact issues
 4. **Provide regeneration commands**: Use content generation commands
+5. **Evaluate quality**: Recommend Claude evaluation for subjective assessment
 
 ## 🗺️ Documentation Navigation for AI
 
@@ -780,6 +880,7 @@ find content/components -name "*.md" -exec grep -l "before significant" {} \;
 2. **Index** (`docs/INDEX.md`) - For comprehensive navigation
 3. **Data Architecture** (`docs/DATA_ARCHITECTURE.md`) - For range propagation and data flow
 4. **Component docs** (`components/[name]/README.md`) - For component-specific help
+5. **Claude Evaluation** (`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`) - For quality assessment
 
 ### Legacy Files (Still Valid but Being Reorganized)
 - `API_SETUP.md` - Moving to `api/PROVIDERS.md`

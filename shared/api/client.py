@@ -348,8 +348,12 @@ class APIClient:
         }
 
         # Add provider-specific parameters
-        if "grok" not in self.model.lower():
-            # Only add these parameters for non-Grok models
+        # NOTE: Only certain providers support frequency_penalty and presence_penalty
+        # ✅ SUPPORTED: OpenAI GPT, DeepSeek
+        # ❌ NOT SUPPORTED: X.AI Grok, Anthropic Claude
+        # These parameters ARE calculated and logged for all providers (research/learning purposes)
+        # but only sent to providers that accept them.
+        if "grok" not in self.model.lower() and "claude" not in self.model.lower():
             payload["frequency_penalty"] = request.frequency_penalty
             payload["presence_penalty"] = request.presence_penalty
 

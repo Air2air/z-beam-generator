@@ -1,0 +1,86 @@
+================================================================================
+E2E PROCESSING SYSTEM EVALUATION
+================================================================================
+
+📝 DIMENSION 1: Generation Quality & AI Detection
+--------------------------------------------------------------------------------
+  Total Attempts (7 days): 65
+  Success Rate: 7.7%
+  Avg Human Score: 7.0%
+  Avg AI Score: 0.744
+  Human Score Range: 0.0% - 100.0%
+  Avg Successful Human Score: 89.8%
+
+  Grade: F (55/100)
+  Assessment: Failing: Unable to produce human-like content
+
+  Dynamic Penalties Impact:
+    Dynamic (>0.0): 6.1% human, 6.2% success (n=64)
+
+🧠 DIMENSION 2: Self-Learning & Knowledge Storage
+--------------------------------------------------------------------------------
+  Parameter Sets: 64 logged, 39 unique
+  AI Patterns Learned: 18
+  Sentences Analyzed: 348 (avg 9.9% human)
+  Subjective Evaluations: 0 (avg 0.0/10)
+  Claude Pass Rate: 0.0%
+
+  Grade: D (65/100)
+  Assessment: Poor: Limited learning data
+
+🔍 DIMENSION 3: Self-Diagnosis & Error Detection
+--------------------------------------------------------------------------------
+  Total Checks: 19
+  Passed: 14
+  Failed: 1
+  Warned: 4
+  Duration: 8.5ms
+
+  Failures:
+    ❌ Code: Hardcoded Value Detection: Found 36 hardcoded values in production code...
+
+  Grade: C (70/100)
+  Assessment: Acceptable: Basic health checks
+
+📊 DIMENSION 4: Feedback Collection & Analytics
+--------------------------------------------------------------------------------
+  Winston Detections: 65
+  Manual Corrections: 0
+  Subjective Evaluations: 0
+  Sentence Analyses: 348
+  Material Coverage: 3 materials
+  Component Coverage: 1 component types
+  Parameter Logging Coverage: 98.5%
+
+  Grade: C (75.0/100)
+  Assessment: Acceptable: Basic feedback mechanisms
+
+🏗️  DIMENSION 5: Codebase Quality & Robustness
+--------------------------------------------------------------------------------
+  Processing Files: 52
+  Total LOC: 14,982
+  Documentation Files: 300
+  Test Files: 129
+  Architectural Patterns: Factory Pattern, Database Abstraction, Dynamic Configuration, Integrity Validation
+  Error Handling Score: 9/10
+
+  Grade: A (99/100)
+  Assessment: Excellent: Clean, well-organized codebase
+
+================================================================================
+OVERALL SYSTEM ASSESSMENT
+================================================================================
+
+  Generation Quality       : F  ( 55/100) [weight: 25%]
+  Learning Systems         : D  ( 65/100) [weight: 20%]
+  Self-Diagnosis           : C  ( 70/100) [weight: 20%]
+  Feedback Practices       : C  ( 75/100) [weight: 20%]
+  Codebase Quality         : A  ( 99/100) [weight: 15%]
+
+  Overall Score: 70.6/100
+  Overall Grade: C
+  Status: ⚠️  ACCEPTABLE
+  Recommendation: System works but requires attention
+
+  📄 Full report saved to: E2E_EVALUATION_REPORT.json
+

@@ -36,6 +36,7 @@
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
 - 🚫 **NEVER put content instructions in /processing folder code**
+- 🚫 **NEVER hardcode values in production code** - use config or dynamic calculation
 - ✅ **ALWAYS keep content instructions ONLY in prompts/*.txt files**
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
@@ -59,7 +60,23 @@ System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for
 
 **🔍 TESTING REQUIREMENT**: Part of testing should include verifying ZERO presence of mocks and fallbacks in production code.
 
-### 2. **Explicit Dependencies**
+### 2. **No Hardcoded Values in Production Code** 🔥 **NEW POLICY**
+All configuration values MUST come from config files or dynamic calculation. **ZERO TOLERANCE** for:
+- **Hardcoded API penalties** (`frequency_penalty=0.0`, `presence_penalty=0.5`)
+- **Hardcoded thresholds** (`if score > 30:`, `threshold = 0.7`)
+- **Hardcoded temperatures** (`temperature = 0.8`)
+- **Hardcoded defaults** (`.get('key', 0.0)`, `or {}` in production paths)
+- **Magic numbers** (`attempts = 5`, `max_length = 100`)
+
+**✅ CORRECT APPROACH**:
+- Use `config.get_temperature()` not `temperature = 0.8`
+- Use `dynamic_config.calculate_penalties()` not `frequency_penalty = 0.0`
+- Use `config.get_threshold()` not `if score > 30:`
+- Fail fast if config missing, don't use defaults
+
+**🔍 ENFORCEMENT**: Integrity checker automatically detects hardcoded values in production code.
+
+### 3. **Explicit Dependencies**
 All required components must be explicitly provided - no silent degradation.
 
 ### 3. **Data Storage Policy** 🔥 **CRITICAL**
