@@ -36,6 +36,7 @@
 
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
+- [**system/E2E_SYSTEM_REQUIREMENTS.md**](system/E2E_SYSTEM_REQUIREMENTS.md) - ✅ **NEW** 7 Critical System Requirements *(Nov 15, 2025)*
 - [**architecture/PROCESSING_PIPELINE.md**](architecture/PROCESSING_PIPELINE.md) - ✅ **NEW** Unified content generation pipeline *(Nov 13, 2025)*
 - [**development/DATABASE_PARAMETER_PRIORITY.md**](development/DATABASE_PARAMETER_PRIORITY.md) - ✅ **NEW** Database-first parameter policy *(Nov 15, 2025)*
 - [**../MANDATORY_REQUIREMENTS_COMPLETE.md**](../MANDATORY_REQUIREMENTS_COMPLETE.md) - ✅ **NEW** Mandatory requirements implementation *(Nov 15, 2025)*
