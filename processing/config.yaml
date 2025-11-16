@@ -12,7 +12,7 @@ author_voice_intensity: 5            # 1=Minimal voice traits → 10=Maximum per
 personality_intensity: 5             # 1=No opinions/addresses → 10=Frequent personal touches
 engagement_style: 5                  # 1=Purely formal → 10=Highly conversational
 emotional_intensity: 5               # 1=Clinical/neutral → 10=Evocative/enthusiastic
-technical_language_intensity: 5      # 1=No specs → 10=Detailed measurements throughout
+technical_language_intensity: 6      # 1=No specs → 10=Detailed measurements throughout
 context_specificity: 5               # 1=Brief context → 10=Full comprehensive detail
 sentence_rhythm_variation: 8         # 1=Uniform length → 10=Dramatic variation
 imperfection_tolerance: 8            # 1=Perfect grammar → 10=Natural human imperfections
@@ -25,7 +25,7 @@ humanness_intensity: 7               # 1=Minimal (fast, 85% threshold) → 10=Ma
                                      # Affects: API penalties, temperature aggression, max attempts, Winston threshold
 
 # Winston AI Detection Cost Control
-winston_usage_mode: 'final_only'     # 'always', 'smart', 'final_only', 'disabled'
+winston_usage_mode: 'smart'          # 'always', 'smart', 'final_only', 'disabled'
                                      # smart: Pattern-based attempts 1-2, Winston on 3+ and final
                                      # always: Every attempt (expensive)
                                      # final_only: Only validate successful content

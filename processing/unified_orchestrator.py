@@ -572,8 +572,10 @@ class UnifiedOrchestrator:
         """
         Retrieve best-performing parameters from previous successful generations.
         
-        Finds the most recent successful generation with high human score
-        and returns its parameters for reuse on first attempt.
+        Priority order:
+        1. Most recent successful generation with high human score
+        2. Sweet spot recommendations (statistical analysis of top performers)
+        3. None (fallback to calculated parameters)
         
         Args:
             identifier: Material/item name
@@ -591,14 +593,17 @@ class UnifiedOrchestrator:
             
             conn = sqlite3.connect(self.winston.feedback_db.db_path)
             
-            # Get parameters from most recent successful generation with high human score
+            # Strategy 1: Get parameters from most recent successful generation with high human score
             cursor = conn.execute("""
                 SELECT 
                     p.temperature,
                     p.frequency_penalty,
                     p.presence_penalty,
-                    p.voice_params,
-                    p.enrichment_params,
+                    p.trait_frequency,
+                    p.technical_intensity,
+                    p.imperfection_tolerance,
+                    p.sentence_rhythm_variation,
+                    p.full_params_json,
                     r.human_score,
                     r.timestamp
                 FROM generation_parameters p
@@ -612,34 +617,92 @@ class UnifiedOrchestrator:
             """, (identifier, component_type))
             
             row = cursor.fetchone()
-            conn.close()
             
             if row:
-                temp, freq_pen, pres_pen, voice_json, enrich_json, human_score, timestamp = row
+                (temp, freq_pen, pres_pen, trait_freq, tech_int, 
+                 imperf_tol, rhythm_var, full_json, human_score, timestamp) = row
+                
+                full_params = json.loads(full_json) if full_json else {}
                 
                 params = {
                     'temperature': temp,
                     'frequency_penalty': freq_pen or 0.0,
                     'presence_penalty': pres_pen or 0.0,
-                    'voice_params': json.loads(voice_json) if voice_json else None,
-                    'enrichment_params': json.loads(enrich_json) if enrich_json else None,
+                    'voice_params': full_params.get('voice'),
+                    'enrichment_params': full_params.get('enrichment'),
                     'human_score': human_score,
                     'timestamp': timestamp
                 }
                 
                 # Validate schema before returning
-                if not self._validate_parameter_schema(params):
+                if self._validate_parameter_schema(params):
+                    self.logger.info(
+                        f"🎯 [PARAMETER REUSE] Found successful params: "
+                        f"human={human_score:.1f}%, temp={temp:.3f}"
+                    )
+                    conn.close()
+                    return params
+                else:
                     self.logger.warning(
                         f"Retrieved parameters failed schema validation for {identifier} {component_type}"
                     )
-                    return None
+            
+            # Strategy 2: Use sweet spot recommendations if no successful generation found
+            cursor = conn.execute("""
+                SELECT 
+                    temperature_median,
+                    frequency_penalty_median,
+                    presence_penalty_median,
+                    trait_frequency_median,
+                    technical_intensity_median,
+                    imperfection_tolerance_median,
+                    sentence_rhythm_variation_median,
+                    max_human_score,
+                    confidence_level,
+                    last_updated
+                FROM sweet_spot_recommendations
+                WHERE material = ? AND component_type = ?
+            """, (identifier, component_type))
+            
+            sweet_row = cursor.fetchone()
+            conn.close()
+            
+            if sweet_row:
+                (temp_med, freq_med, pres_med, trait_med, tech_med,
+                 imperf_med, rhythm_med, max_score, confidence, updated) = sweet_row
                 
-                self.logger.info(
-                    f"🎯 [PARAMETER REUSE] Found successful params: "
-                    f"human={human_score:.1f}%, temp={temp:.3f}"
-                )
-                
-                return params
+                # Only use if we have high or medium confidence
+                if confidence in ('high', 'medium') and temp_med is not None:
+                    params = {
+                        'temperature': temp_med,
+                        'frequency_penalty': freq_med or 0.0,
+                        'presence_penalty': pres_med or 0.0,
+                        'voice_params': {
+                            'trait_frequency': trait_med,
+                            'imperfection_tolerance': imperf_med,
+                            'sentence_rhythm_variation': rhythm_med
+                        } if trait_med is not None else None,
+                        'enrichment_params': {
+                            'technical_intensity': int(tech_med)
+                        } if tech_med is not None else None,
+                        'human_score': max_score,
+                        'timestamp': updated
+                    }
+                    
+                    # Remove None values from voice_params
+                    if params['voice_params']:
+                        params['voice_params'] = {
+                            k: v for k, v in params['voice_params'].items() 
+                            if v is not None
+                        }
+                    
+                    self.logger.info(
+                        f"📊 [SWEET SPOT] Using statistical recommendations: "
+                        f"confidence={confidence}, max_score={max_score:.1f}%, temp={temp_med:.3f}"
+                    )
+                    
+                    return params
+        
         except Exception as e:
             self.logger.debug(f"Could not retrieve previous parameters: {e}")
         

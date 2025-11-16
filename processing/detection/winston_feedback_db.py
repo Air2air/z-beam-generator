@@ -199,6 +199,50 @@ class WinstonFeedbackDatabase:
                     FOREIGN KEY (detection_result_id) REFERENCES detection_results(id) ON DELETE CASCADE
                 );
                 
+                CREATE TABLE IF NOT EXISTS sweet_spot_recommendations (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    material TEXT NOT NULL,
+                    component_type TEXT NOT NULL,
+                    last_updated TEXT NOT NULL,
+                    
+                    -- Sweet spot parameter ranges (NULL if insufficient data)
+                    temperature_min REAL,
+                    temperature_max REAL,
+                    temperature_median REAL,
+                    frequency_penalty_min REAL,
+                    frequency_penalty_max REAL,
+                    frequency_penalty_median REAL,
+                    presence_penalty_min REAL,
+                    presence_penalty_max REAL,
+                    presence_penalty_median REAL,
+                    trait_frequency_min REAL,
+                    trait_frequency_max REAL,
+                    trait_frequency_median REAL,
+                    technical_intensity_min INTEGER,
+                    technical_intensity_max INTEGER,
+                    technical_intensity_median INTEGER,
+                    imperfection_tolerance_min REAL,
+                    imperfection_tolerance_max REAL,
+                    imperfection_tolerance_median REAL,
+                    sentence_rhythm_variation_min REAL,
+                    sentence_rhythm_variation_max REAL,
+                    sentence_rhythm_variation_median REAL,
+                    
+                    -- Statistics
+                    sample_count INTEGER NOT NULL,
+                    max_human_score REAL NOT NULL,
+                    avg_human_score REAL NOT NULL,
+                    confidence_level TEXT NOT NULL,  -- 'high', 'medium', 'low'
+                    
+                    -- Top correlations (JSON array)
+                    parameter_correlations TEXT,
+                    
+                    -- Recommendations (JSON array)
+                    recommendations TEXT,
+                    
+                    UNIQUE(material, component_type)
+                );
+                
                 CREATE INDEX IF NOT EXISTS idx_material ON detection_results(material);
                 CREATE INDEX IF NOT EXISTS idx_component ON detection_results(component_type);
                 CREATE INDEX IF NOT EXISTS idx_success ON detection_results(success);
@@ -213,6 +257,7 @@ class WinstonFeedbackDatabase:
                 CREATE INDEX IF NOT EXISTS idx_params_penalties ON generation_parameters(frequency_penalty, presence_penalty);
                 CREATE INDEX IF NOT EXISTS idx_params_hash ON generation_parameters(param_hash);
                 CREATE INDEX IF NOT EXISTS idx_params_timestamp ON generation_parameters(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_sweet_spot_lookup ON sweet_spot_recommendations(material, component_type);
             """)
             
             conn.commit()
@@ -929,6 +974,218 @@ class WinstonFeedbackDatabase:
                 'component_type': component_type or 'all',
                 'days_analyzed': days,
                 'data_points': results
+            }
+    
+    def upsert_sweet_spot(
+        self,
+        material: str,
+        component_type: str,
+        sweet_spots: Dict[str, Any],
+        correlations: List[Dict],
+        max_human_score: float,
+        avg_human_score: float,
+        sample_count: int,
+        confidence: str,
+        recommendations: List[str]
+    ) -> int:
+        """
+        Insert or update sweet spot recommendations for a material/component.
+        
+        Args:
+            material: Material name
+            component_type: Component type
+            sweet_spots: Dict of {parameter_name: SweetSpot}
+            correlations: List of parameter correlations
+            max_human_score: Best human score achieved
+            avg_human_score: Average human score
+            sample_count: Number of samples analyzed
+            confidence: 'high', 'medium', or 'low'
+            recommendations: List of recommendation strings
+            
+        Returns:
+            Row ID of the upserted record
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            # Extract parameter ranges from sweet_spots dict
+            def get_param(name: str, field: str) -> Optional[float]:
+                spot = sweet_spots.get(name)
+                if spot:
+                    return getattr(spot, field, None)
+                return None
+            
+            cursor.execute("""
+                INSERT INTO sweet_spot_recommendations (
+                    material,
+                    component_type,
+                    last_updated,
+                    temperature_min,
+                    temperature_max,
+                    temperature_median,
+                    frequency_penalty_min,
+                    frequency_penalty_max,
+                    frequency_penalty_median,
+                    presence_penalty_min,
+                    presence_penalty_max,
+                    presence_penalty_median,
+                    trait_frequency_min,
+                    trait_frequency_max,
+                    trait_frequency_median,
+                    technical_intensity_min,
+                    technical_intensity_max,
+                    technical_intensity_median,
+                    imperfection_tolerance_min,
+                    imperfection_tolerance_max,
+                    imperfection_tolerance_median,
+                    sentence_rhythm_variation_min,
+                    sentence_rhythm_variation_max,
+                    sentence_rhythm_variation_median,
+                    sample_count,
+                    max_human_score,
+                    avg_human_score,
+                    confidence_level,
+                    parameter_correlations,
+                    recommendations
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(material, component_type) DO UPDATE SET
+                    last_updated = excluded.last_updated,
+                    temperature_min = excluded.temperature_min,
+                    temperature_max = excluded.temperature_max,
+                    temperature_median = excluded.temperature_median,
+                    frequency_penalty_min = excluded.frequency_penalty_min,
+                    frequency_penalty_max = excluded.frequency_penalty_max,
+                    frequency_penalty_median = excluded.frequency_penalty_median,
+                    presence_penalty_min = excluded.presence_penalty_min,
+                    presence_penalty_max = excluded.presence_penalty_max,
+                    presence_penalty_median = excluded.presence_penalty_median,
+                    trait_frequency_min = excluded.trait_frequency_min,
+                    trait_frequency_max = excluded.trait_frequency_max,
+                    trait_frequency_median = excluded.trait_frequency_median,
+                    technical_intensity_min = excluded.technical_intensity_min,
+                    technical_intensity_max = excluded.technical_intensity_max,
+                    technical_intensity_median = excluded.technical_intensity_median,
+                    imperfection_tolerance_min = excluded.imperfection_tolerance_min,
+                    imperfection_tolerance_max = excluded.imperfection_tolerance_max,
+                    imperfection_tolerance_median = excluded.imperfection_tolerance_median,
+                    sentence_rhythm_variation_min = excluded.sentence_rhythm_variation_min,
+                    sentence_rhythm_variation_max = excluded.sentence_rhythm_variation_max,
+                    sentence_rhythm_variation_median = excluded.sentence_rhythm_variation_median,
+                    sample_count = excluded.sample_count,
+                    max_human_score = excluded.max_human_score,
+                    avg_human_score = excluded.avg_human_score,
+                    confidence_level = excluded.confidence_level,
+                    parameter_correlations = excluded.parameter_correlations,
+                    recommendations = excluded.recommendations
+            """, (
+                material,
+                component_type,
+                datetime.now().isoformat(),
+                get_param('temperature', 'optimal_min'),
+                get_param('temperature', 'optimal_max'),
+                get_param('temperature', 'optimal_median'),
+                get_param('frequency_penalty', 'optimal_min'),
+                get_param('frequency_penalty', 'optimal_max'),
+                get_param('frequency_penalty', 'optimal_median'),
+                get_param('presence_penalty', 'optimal_min'),
+                get_param('presence_penalty', 'optimal_max'),
+                get_param('presence_penalty', 'optimal_median'),
+                get_param('trait_frequency', 'optimal_min'),
+                get_param('trait_frequency', 'optimal_max'),
+                get_param('trait_frequency', 'optimal_median'),
+                get_param('technical_intensity', 'optimal_min'),
+                get_param('technical_intensity', 'optimal_max'),
+                get_param('technical_intensity', 'optimal_median'),
+                get_param('imperfection_tolerance', 'optimal_min'),
+                get_param('imperfection_tolerance', 'optimal_max'),
+                get_param('imperfection_tolerance', 'optimal_median'),
+                get_param('sentence_rhythm_variation', 'optimal_min'),
+                get_param('sentence_rhythm_variation', 'optimal_max'),
+                get_param('sentence_rhythm_variation', 'optimal_median'),
+                sample_count,
+                max_human_score,
+                avg_human_score,
+                confidence,
+                json.dumps(correlations),
+                json.dumps(recommendations)
+            ))
+            
+            return cursor.lastrowid
+    
+    def get_sweet_spot(
+        self,
+        material: str,
+        component_type: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Retrieve sweet spot recommendations for a material/component.
+        
+        Returns:
+            Dict with sweet spot data or None if not found
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT * FROM sweet_spot_recommendations
+                WHERE material = ? AND component_type = ?
+            """, (material, component_type))
+            
+            row = cursor.fetchone()
+            
+            if not row:
+                return None
+            
+            return {
+                'material': row['material'],
+                'component_type': row['component_type'],
+                'last_updated': row['last_updated'],
+                'parameters': {
+                    'temperature': {
+                        'min': row['temperature_min'],
+                        'max': row['temperature_max'],
+                        'median': row['temperature_median']
+                    } if row['temperature_min'] is not None else None,
+                    'frequency_penalty': {
+                        'min': row['frequency_penalty_min'],
+                        'max': row['frequency_penalty_max'],
+                        'median': row['frequency_penalty_median']
+                    } if row['frequency_penalty_min'] is not None else None,
+                    'presence_penalty': {
+                        'min': row['presence_penalty_min'],
+                        'max': row['presence_penalty_max'],
+                        'median': row['presence_penalty_median']
+                    } if row['presence_penalty_min'] is not None else None,
+                    'trait_frequency': {
+                        'min': row['trait_frequency_min'],
+                        'max': row['trait_frequency_max'],
+                        'median': row['trait_frequency_median']
+                    } if row['trait_frequency_min'] is not None else None,
+                    'technical_intensity': {
+                        'min': row['technical_intensity_min'],
+                        'max': row['technical_intensity_max'],
+                        'median': row['technical_intensity_median']
+                    } if row['technical_intensity_min'] is not None else None,
+                    'imperfection_tolerance': {
+                        'min': row['imperfection_tolerance_min'],
+                        'max': row['imperfection_tolerance_max'],
+                        'median': row['imperfection_tolerance_median']
+                    } if row['imperfection_tolerance_min'] is not None else None,
+                    'sentence_rhythm_variation': {
+                        'min': row['sentence_rhythm_variation_min'],
+                        'max': row['sentence_rhythm_variation_max'],
+                        'median': row['sentence_rhythm_variation_median']
+                    } if row['sentence_rhythm_variation_min'] is not None else None,
+                },
+                'statistics': {
+                    'sample_count': row['sample_count'],
+                    'max_human_score': row['max_human_score'],
+                    'avg_human_score': row['avg_human_score'],
+                    'confidence_level': row['confidence_level']
+                },
+                'correlations': json.loads(row['parameter_correlations']) if row['parameter_correlations'] else [],
+                'recommendations': json.loads(row['recommendations']) if row['recommendations'] else []
             }
 
 
