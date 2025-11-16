@@ -37,6 +37,7 @@ from .research import (
     handle_data_completeness_report,
     handle_data_gaps,
     handle_research_missing_properties,
+    handle_fix_analysis,
 )
 
 # Validation commands
@@ -61,6 +62,7 @@ __all__ = [
     'handle_data_completeness_report',
     'handle_data_gaps',
     'handle_research_missing_properties',
+    'handle_fix_analysis',
     # Validation
     'generate_content_validation_report',
 ]

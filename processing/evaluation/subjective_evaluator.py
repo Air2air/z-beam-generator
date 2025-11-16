@@ -85,16 +85,13 @@ class SubjectiveEvaluator:
         self._check_claude_availability()
     
     def _check_claude_availability(self):
-        """Check if Claude API is available"""
-        if self.api_client is None:
-            try:
-                import anthropic
-                # Will be initialized on first use
-                self.has_claude = True
-            except ImportError:
-                self.has_claude = False
-                if self.verbose:
-                    print("⚠️  Claude API not available - evaluations will be limited")
+        """Check if Grok API is available"""
+        if self.api_client is not None:
+            self.has_claude = True  # Using Grok API client
+        else:
+            self.has_claude = False
+            if self.verbose:
+                print("⚠️  Grok API not available - evaluations will be limited")
     
     def evaluate(
         self,
@@ -119,7 +116,7 @@ class SubjectiveEvaluator:
         
         if self.verbose:
             print(f"\n{'='*70}")
-            print(f"  CLAUDE SUBJECTIVE EVALUATION")
+            print(f"  GROK SUBJECTIVE EVALUATION")
             print(f"{'='*70}\n")
             print(f"Material: {material_name}")
             print(f"Component: {component_type}")
@@ -195,13 +192,18 @@ Provide your evaluation in this format:
         prompt: str,
         content: str
     ) -> SubjectiveEvaluationResult:
-        """Get evaluation from Claude AI"""
+        """Get evaluation from Grok AI"""
         
         try:
-            # Call Claude API (implementation depends on API client)
-            response = self.api_client.generate(prompt)
+            # Call Grok API
+            response = self.api_client.generate(
+                prompt=prompt,
+                system_prompt="You are an expert content quality evaluator.",
+                max_tokens=1000,
+                temperature=0.3
+            )
             
-            # Parse Claude's response
+            # Parse Grok's response
             return self._parse_claude_response(response)
             
         except Exception as e:

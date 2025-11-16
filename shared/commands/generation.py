@@ -74,6 +74,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         from shared.commands.subjective_evaluation_helper import evaluate_after_generation
         from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from processing.config.config_loader import get_config
+        from shared.api.client_factory import create_api_client
         
         try:
             # Initialize feedback database if configured
@@ -82,6 +83,9 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             feedback_db = None
             if db_path:
                 feedback_db = WinstonFeedbackDatabase(db_path)
+            
+            # Initialize Grok API client for subjective evaluation
+            grok_client = create_api_client('grok')
             
             # Evaluate both before and after captions
             print()
@@ -92,6 +96,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                     topic=material_name,
                     component_type='caption_before',
                     domain='materials',
+                    api_client=grok_client,
                     feedback_db=feedback_db,
                     verbose=True  # Show detailed evaluation
                 )
@@ -105,6 +110,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                     topic=material_name,
                     component_type='caption_after',
                     domain='materials',
+                    api_client=grok_client,
                     feedback_db=feedback_db,
                     verbose=False
                 )

@@ -692,6 +692,128 @@ def run_data_verification(mode='--all'):
 from shared.utils.filename import generate_safe_filename
 
 
+def handle_fix_analysis(material=None, failure_type=None):
+    """
+    Generate fix strategy effectiveness report.
+    
+    Args:
+        material: Optional material filter
+        failure_type: Optional failure type filter (uniform, borderline, partial, poor)
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from processing.learning.fix_strategy_manager import FixStrategyManager
+        from pathlib import Path
+        
+        print("=" * 80)
+        print("🔧 FIX STRATEGY EFFECTIVENESS REPORT")
+        print("=" * 80)
+        print()
+        
+        # Get database path
+        from processing.config.config_loader import get_config
+        config = get_config()
+        db_path = config.config.get('winston_feedback_db_path', 'data/winston_feedback.db')
+        
+        if not Path(db_path).exists():
+            print(f"❌ Winston feedback database not found: {db_path}")
+            print("   Run some generations first to collect data")
+            return False
+        
+        # Initialize database and fix manager
+        db = WinstonFeedbackDatabase(db_path)
+        fix_manager = FixStrategyManager(db)
+        
+        # Generate report
+        report = fix_manager.get_fix_effectiveness_report(
+            material=material,
+            failure_type=failure_type
+        )
+        
+        if 'error' in report:
+            print(f"❌ Error generating report: {report['error']}")
+            return False
+        
+        # Display overall statistics
+        overall = report.get('overall', {})
+        print("📊 Overall Statistics:")
+        print(f"   • Total fix attempts: {overall.get('total_fixes', 0)}")
+        print(f"   • Successful fixes: {overall.get('total_successes', 0)}")
+        print(f"   • Failed fixes: {overall.get('total_failures', 0)}")
+        
+        if overall.get('total_fixes', 0) > 0:
+            success_pct = (overall.get('total_successes', 0) / overall['total_fixes']) * 100
+            print(f"   • Success rate: {success_pct:.1f}%")
+            print(f"   • Avg improvement: {overall.get('avg_improvement', 0):.1f}% human score")
+        
+        print()
+        
+        # Display top strategies
+        top_strategies = report.get('top_strategies', [])
+        
+        if not top_strategies:
+            print("⚠️  No fix strategies found in database")
+            print("   Run some failed generations to collect fix data")
+            return True
+        
+        print("🎯 Most Effective Strategies:")
+        print()
+        
+        for i, strategy in enumerate(top_strategies, 1):
+            status_icon = "✅" if strategy['success_rate'] > 0.7 else "⚠️" if strategy['success_rate'] > 0.4 else "❌"
+            
+            print(f"{i}. {strategy['failure_type'].upper()} → \"{strategy['name']}\"")
+            print(f"   {status_icon} Success rate: {strategy['success_rate']*100:.1f}%")
+            print(f"   📈 Avg improvement: {strategy['avg_improvement']:.1f}% human score")
+            print(f"   🔢 Used: {strategy['times_used']} times")
+            print()
+        
+        # Show filters applied
+        if material or failure_type:
+            print("=" * 80)
+            print("📋 Filters Applied:")
+            if material:
+                print(f"   • Material: {material}")
+            if failure_type:
+                print(f"   • Failure type: {failure_type}")
+            print()
+        
+        # Recommendations
+        print("=" * 80)
+        print("💡 Recommendations:")
+        print()
+        
+        if overall.get('total_fixes', 0) < 10:
+            print("⚠️  Limited data - run more generations to build learning database")
+        else:
+            # Find strategies with low success rates
+            poor_strategies = [s for s in top_strategies if s['success_rate'] < 0.4]
+            if poor_strategies:
+                print("🔄 Consider alternative strategies for:")
+                for strategy in poor_strategies[:3]:
+                    print(f"   • {strategy['failure_type']}: {strategy['name']} ({strategy['success_rate']*100:.1f}% success)")
+            else:
+                print("✅ All strategies performing well!")
+        
+        print()
+        print("To view more details, query the database tables:")
+        print("   • fix_attempts: Every fix applied")
+        print("   • fix_outcomes: Success/failure results")
+        print("   • fix_statistics: Aggregated learning data")
+        print()
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Fix analysis error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 # =================================================================================
 # MAIN ENTRY POINT
 # =================================================================================

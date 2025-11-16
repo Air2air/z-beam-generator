@@ -53,6 +53,11 @@ For advanced operations, use run_unified.py with the unified pipeline.
   ⚡ NOTE: Data completeness checking is now AUTOMATIC during generation
            No flags needed - validation runs inline with every generation
 
+🔧 FIX STRATEGY ANALYSIS:
+  python3 run.py --fix-analysis                                    # Overall effectiveness report
+  python3 run.py --fix-analysis --fix-analysis-material "Brass"   # Material-specific insights
+  python3 run.py --fix-analysis --fix-analysis-failure-type uniform  # By failure type
+
 � MATERIAL AUDITING SYSTEM (⚡ NEW):
   python3 run.py --audit "Steel"                    # Audit single material compliance
   python3 run.py --audit-batch "Steel,Aluminum"    # Batch audit multiple materials  
@@ -118,6 +123,7 @@ from shared.commands import (
     handle_data_completeness_report,
     handle_data_gaps,
     handle_research_missing_properties,
+    handle_fix_analysis,
     generate_content_validation_report,
 )
 
@@ -191,6 +197,11 @@ def main():
     parser.add_argument("--audit-auto-fix", action="store_true", help="Apply automatic fixes")
     parser.add_argument("--audit-report", action="store_true", help="Generate audit reports")
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit")
+    
+    # Fix Strategy Analysis Commands
+    parser.add_argument("--fix-analysis", action="store_true", help="Generate fix strategy effectiveness report")
+    parser.add_argument("--fix-analysis-material", help="Filter fix analysis by material")
+    parser.add_argument("--fix-analysis-failure-type", help="Filter fix analysis by failure type (uniform, borderline, partial, poor)")
     
     # Other Commands
     parser.add_argument("--data-only", action="store_true", help="Manual export: combine Materials.yaml + Categories.yaml → frontmatter")
@@ -299,6 +310,12 @@ def main():
     
     if args.data_gaps:
         return handle_data_gaps()
+    
+    if args.fix_analysis:
+        return handle_fix_analysis(
+            material=args.fix_analysis_material,
+            failure_type=args.fix_analysis_failure_type
+        )
     
     if args.research_missing_properties:
         return handle_research_missing_properties(

@@ -137,11 +137,13 @@ class DynamicGenerator:
         from processing.learning.temperature_advisor import TemperatureAdvisor
         from processing.learning.prompt_optimizer import PromptOptimizer
         from processing.learning.success_predictor import SuccessPredictor
+        from processing.learning.fix_strategy_manager import FixStrategyManager
         
         self.pattern_learner = PatternLearner(db_path)
         self.temperature_advisor = TemperatureAdvisor(db_path)
         self.prompt_optimizer = PromptOptimizer(db_path)
         self.success_predictor = SuccessPredictor(db_path)
+        self.fix_manager = FixStrategyManager(self.feedback_db)
         
         # AI detection threshold (base - will adapt based on learning phase)
         self.base_ai_threshold = self.dynamic_config.calculate_detection_threshold() / 100.0
@@ -314,47 +316,50 @@ class DynamicGenerator:
         except Exception as e:
             self.logger.warning(f"Failed to get learned temperature: {e}")
         
-        # BEST PRACTICE 2: Failure-type-specific retry strategies
+        # BEST PRACTICE 2: Use standardized fix strategy system
         if last_winston_result and attempt > 1:
             failure_analysis = self.analyzer.analyze_failure(last_winston_result)
-            failure_type = failure_analysis['failure_type']
             
-            if failure_type == 'uniform':
-                # All sentences bad: INCREASE randomness across all parameters
-                base_temperature = min(1.0, base_temperature + 0.15)
-                voice_params['imperfection_tolerance'] = min(1.0, voice_params.get('imperfection_tolerance', 0.5) + 0.20)
-                voice_params['colloquialism_frequency'] = min(1.0, voice_params.get('colloquialism_frequency', 0.3) + 0.15)
-                enrichment_params['fact_density'] = max(0.3, enrichment_params.get('fact_density', 0.7) - 0.15)
-                self.logger.info(
-                    f"🌡️  UNIFORM failure → Increase randomness: "
-                    f"temp={base_temperature:.2f}, imperfection={voice_params['imperfection_tolerance']:.2f}"
+            # Get fix strategy from standardized system
+            fix_strategy = self.fix_manager.get_fix_strategy(
+                failure_analysis=failure_analysis,
+                attempt=attempt,
+                material=material_name,
+                component_type=component_type,
+                previous_strategy_id=getattr(self, '_last_strategy_id', None)
+            )
+            
+            # Apply temperature adjustment
+            base_temperature = min(1.0, base_temperature + fix_strategy['temperature_adjustment'])
+            
+            # Apply voice adjustments
+            for param, adjustment in fix_strategy['voice_adjustments'].items():
+                current_value = voice_params.get(param, 0.5)
+                voice_params[param] = max(0.0, min(1.0, current_value + adjustment))
+            
+            # Apply enrichment adjustments
+            for param, adjustment in fix_strategy['enrichment_adjustments'].items():
+                current_value = enrichment_params.get(param, 0.5)
+                enrichment_params[param] = max(0.0, min(1.0, current_value + adjustment))
+            
+            # Log fix attempt to database
+            if hasattr(self, '_last_detection_id'):
+                fix_attempt_id = self.fix_manager.log_fix_attempt(
+                    detection_id=self._last_detection_id,
+                    attempt_number=attempt,
+                    strategy=fix_strategy,
+                    material=material_name,
+                    component_type=component_type
                 )
-                
-            elif failure_type == 'borderline':
-                # Close to passing: FINE-TUNE with small adjustments
-                base_temperature = max(0.5, base_temperature - 0.03)
-                voice_params['sentence_rhythm_variation'] = min(1.0, voice_params.get('sentence_rhythm_variation', 0.5) + 0.10)
-                self.logger.info(
-                    f"🌡️  BORDERLINE → Fine-tune: "
-                    f"temp={base_temperature:.2f}, rhythm={voice_params['sentence_rhythm_variation']:.2f}"
-                )
-                
-            elif failure_type == 'partial':
-                # Some sentences human: MODERATE adjustments
-                base_temperature = min(1.0, base_temperature + 0.08)
-                voice_params['reader_address_rate'] = min(1.0, voice_params.get('reader_address_rate', 0.2) + 0.10)
-                enrichment_params['context_depth'] = min(1.0, enrichment_params.get('context_depth', 0.5) + 0.10)
-                self.logger.info(
-                    f"🌡️  PARTIAL → Moderate boost: "
-                    f"temp={base_temperature:.2f}, context={enrichment_params['context_depth']:.2f}"
-                )
-                
-            else:
-                # Normal/unknown failure: Standard progression
-                retry_config = self.dynamic_config.calculate_retry_behavior()
-                base_temperature += (attempt - 1) * retry_config['retry_temperature_increase']
-                base_temperature = min(1.0, base_temperature)
-                self.logger.info(f"🌡️  Standard progression: temp={base_temperature:.2f}")
+                self._last_fix_attempt_id = fix_attempt_id
+            
+            # Remember strategy for next attempt
+            self._last_strategy_id = fix_strategy['strategy_id']
+            
+            self.logger.info(
+                f"🌡️  {fix_strategy['strategy_name']}: "
+                f"temp={base_temperature:.2f}"
+            )
         
         # BEST PRACTICE 3: Exploration rate (15% of time, try random variations)
         if attempt > 1 and random.random() < 0.15:
@@ -583,6 +588,24 @@ class DynamicGenerator:
                     failure_analysis=failure_analysis
                 )
                 self.logger.info(f"📊 Logged result to database (ID: {detection_id})")
+                
+                # Track detection ID for fix outcome logging
+                self._last_detection_id = detection_id
+                
+                # If we had a previous fix attempt, log the outcome
+                if hasattr(self, '_last_fix_attempt_id') and hasattr(self, '_previous_human_score'):
+                    self.fix_manager.log_fix_outcome(
+                        fix_attempt_id=self._last_fix_attempt_id,
+                        next_detection_id=detection_id,
+                        success=(ai_score <= self.ai_threshold and readability['is_readable']),
+                        human_score_before=self._previous_human_score,
+                        human_score_after=detection.get('human_score', 0.0),
+                        material=material_name,
+                        component_type=component_type
+                    )
+                
+                # Store human score for next iteration
+                self._previous_human_score = detection.get('human_score', 0.0)
                 
                 # Log generation parameters for machine learning
                 try:
