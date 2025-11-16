@@ -478,6 +478,8 @@ class DynamicGenerator:
         max_attempts = 5  # Increased for learning phase to gather more training data
         attempt = 1
         last_winston_result = None
+        regeneration_triggered = False  # Track if we've already done a fresh regeneration
+        improvement_history = []  # Track human score improvements to detect stuck patterns
         
         while attempt <= max_attempts:
             self.logger.info(f"\nAttempt {attempt}/{max_attempts}")
@@ -687,6 +689,46 @@ class DynamicGenerator:
                 self.logger.warning(f"📚 Learning target not met: human {human_score:.1f}% < {learning_target}%")
             if not readability['is_readable']:
                 self.logger.warning(f"❌ Readability failed: {readability['status']}")
+            
+            # SMART REGENERATION: Track improvement to detect stuck patterns
+            improvement_history.append(human_score)
+            
+            # If we have 3+ attempts and zero improvement detected, trigger fresh regeneration
+            if attempt >= 3 and not regeneration_triggered:
+                # Check if stuck (no improvement across last 3 attempts)
+                if len(improvement_history) >= 3:
+                    recent_improvements = [
+                        improvement_history[i] - improvement_history[i-1] 
+                        for i in range(len(improvement_history)-2, len(improvement_history))
+                    ]
+                    
+                    # All improvements are 0 or negative = stuck
+                    if all(improvement <= 0.0 for improvement in recent_improvements):
+                        self.logger.warning(
+                            f"🔄 STUCK PATTERN DETECTED: Zero improvement across {len(recent_improvements)} attempts "
+                            f"({improvement_history[-3]:.1f}% → {improvement_history[-2]:.1f}% → {improvement_history[-1]:.1f}%)"
+                        )
+                        
+                        if attempt < max_attempts:
+                            self.logger.info("🆕 Triggering FRESH REGENERATION with new random seed...")
+                            regeneration_triggered = True
+                            last_winston_result = None  # Reset to trigger new generation path
+                            improvement_history = []  # Reset tracking
+                            # Continue to next attempt with fresh start
+                        else:
+                            self.logger.error("❌ Cannot trigger regeneration - already at max attempts")
+            
+            # SAFETY: If regeneration was triggered and still failing, stop immediately
+            if regeneration_triggered and attempt >= max_attempts:
+                self.logger.error(
+                    f"❌ REGENERATION FAILED: Fresh generation attempt also failed after {attempt} total attempts"
+                )
+                raise ValueError(
+                    f"{component_type.capitalize()} generation failed after fresh regeneration. "
+                    f"Last AI score: {ai_score:.3f}, Human score: {human_score:.1f}%. "
+                    f"Both original and regenerated content failed quality checks. "
+                    f"This material may require manual review or prompt adjustments."
+                )
             
             attempt += 1
         
