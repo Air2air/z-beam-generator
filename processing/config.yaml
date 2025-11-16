@@ -5,23 +5,23 @@
 # Lower = More controlled/conservative, Higher = More varied/aggressive
 
 # Content Quality Parameters (NEW - November 15, 2025)
-jargon_removal: 7                    # 1=Allow jargon → 10=Remove all jargon (use plain language)
-professional_voice: 7                # 1=Casual → 10=Highly professional tone
+jargon_removal: 9                    # 1=Allow jargon → 10=Remove all jargon (use plain language)
+professional_voice: 5                # 1=Casual → 10=Highly professional tone
 
-author_voice_intensity: 5            # 1=Minimal voice traits → 10=Maximum personality
-personality_intensity: 5             # 1=No opinions/addresses → 10=Frequent personal touches
-engagement_style: 5                  # 1=Purely formal → 10=Highly conversational
+author_voice_intensity: 8            # 1=Minimal voice traits → 10=Maximum personality
+personality_intensity: 1             # 1=No opinions/addresses → 10=Frequent personal touches
+engagement_style: 2                  # 1=Purely formal → 10=Highly conversational
 emotional_intensity: 5               # 1=Clinical/neutral → 10=Evocative/enthusiastic
-technical_language_intensity: 6      # 1=No specs → 10=Detailed measurements throughout
+technical_language_intensity: 3      # 1=No specs → 10=Detailed measurements throughout
 context_specificity: 5               # 1=Brief context → 10=Full comprehensive detail
 sentence_rhythm_variation: 8         # 1=Uniform length → 10=Dramatic variation
 imperfection_tolerance: 8            # 1=Perfect grammar → 10=Natural human imperfections
 structural_predictability: 5         # 1=Strict patterns → 10=Unpredictable structure
-ai_avoidance_intensity: 3            # 1=Relaxed (faster) → 10=Aggressive (more human-like)
+ai_avoidance_intensity: 8            # 1=Relaxed (faster) → 10=Aggressive (more human-like)
 length_variation_range: 8            # 1=Tight ±10% → 10=Loose ±60%
 
 # 🤖 Human-Likeness Control (Master setting for AI evasion)
-humanness_intensity: 7               # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold)
+humanness_intensity: 9               # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold)
                                      # Affects: API penalties, temperature aggression, max attempts, Winston threshold
 
 # Winston AI Detection Cost Control
@@ -37,10 +37,10 @@ winston_max_extensions: 2            # Allow up to 2 additional attempts beyond 
 winston_retry_threshold: 50          # Only extend if some sentences score > 50% human
 
 # Learning Target (for continuous improvement)
-human_score_learning_target: 20      # Target human score (0-100) for learning system
+human_score_learning_target: 10      # Target human score (0-100) for learning system
                                      # System will retry with adapted parameters until human_score >= target
                                      # Separate from ai_avoidance_intensity acceptance threshold
-                                     # Starting at 20% to gather initial training data, gradually increase to 40-50%
+                                     # Starting at 10% to gather initial training data, gradually increase to 40-50%
 
 # Winston Feedback Database (Learning from corrections)
 winston_feedback_db_path: 'data/winston_feedback.db'  # SQLite database for logging results and corrections

@@ -1118,7 +1118,7 @@ class WinstonFeedbackDatabase:
         component_type: str
     ) -> Optional[Dict[str, Any]]:
         """
-        Retrieve sweet spot recommendations for a material/component.
+        Retrieve sweet spot recommendations - GENERIC LEARNING (params ignored).
         
         Returns:
             Dict with sweet spot data or None if not found
@@ -1129,8 +1129,9 @@ class WinstonFeedbackDatabase:
             
             cursor.execute("""
                 SELECT * FROM sweet_spot_recommendations
-                WHERE material = ? AND component_type = ?
-            """, (material, component_type))
+                ORDER BY max_human_score DESC, last_updated DESC
+                LIMIT 1
+            """)
             
             row = cursor.fetchone()
             

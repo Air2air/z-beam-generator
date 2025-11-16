@@ -43,7 +43,7 @@ class APIClientFactory:
 
     @staticmethod
     def create_client(
-        provider: str = "deepseek",
+        provider: str = "grok",
         use_mock: Optional[bool] = None,
         **kwargs
     ) -> APIClient:
@@ -51,7 +51,7 @@ class APIClientFactory:
         Create an API client with standardized behavior.
 
         Args:
-            provider: API provider name (deepseek, grok, winston)
+            provider: API provider name (grok, deepseek, winston)
             use_mock: Force mock usage (auto-detected in test mode)
             **kwargs: Additional client configuration
 

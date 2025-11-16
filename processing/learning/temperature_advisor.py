@@ -107,8 +107,8 @@ class TemperatureAdvisor:
         Get optimal temperature recommendation.
         
         Args:
-            material: Optional filter by material
-            component_type: Optional filter by component type
+            material: IGNORED - learning is generic across all materials
+            component_type: IGNORED - learning is generic across all components
             
         Returns:
             Dict containing:
@@ -123,7 +123,7 @@ class TemperatureAdvisor:
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         
-        # Build query
+        # Build query - NO material/component filtering (generic learning)
         query = """
             SELECT 
                 temperature,
@@ -135,14 +135,6 @@ class TemperatureAdvisor:
             WHERE temperature IS NOT NULL
         """
         params = []
-        
-        if material:
-            query += " AND material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND component_type = ?"
-            params.append(component_type)
         
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()

@@ -65,8 +65,8 @@ class PatternLearner:
         Learn problematic patterns from database.
         
         Args:
-            material: Optional filter by material name
-            component_type: Optional filter by component type
+            material: IGNORED - learning is generic across all materials
+            component_type: IGNORED - learning is generic across all components
             
         Returns:
             Dict containing:
@@ -78,7 +78,7 @@ class PatternLearner:
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         
-        # Build query with filters
+        # Build query - NO material/component filtering (generic learning)
         query = """
             SELECT 
                 dr.generated_text,
@@ -90,14 +90,6 @@ class PatternLearner:
             WHERE dr.success IS NOT NULL
         """
         params = []
-        
-        if material:
-            query += " AND dr.material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND dr.component_type = ?"
-            params.append(component_type)
         
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()

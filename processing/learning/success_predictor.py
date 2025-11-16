@@ -180,20 +180,16 @@ class SuccessPredictor:
         }
     
     def _get_material_success_rate(self, material: str, component_type: Optional[str] = None) -> Dict:
-        """Get success rate for specific material."""
-        cache_key = f"material:{material}:{component_type}"
+        """Get success rate - GENERIC LEARNING (material param ignored)."""
+        cache_key = "global:success_rate"
         if cache_key in self._cache:
             return self._cache[cache_key]
         
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         
-        query = "SELECT success, human_score FROM detection_results WHERE material = ?"
-        params = [material]
-        
-        if component_type:
-            query += " AND component_type = ?"
-            params.append(component_type)
+        query = "SELECT success, human_score FROM detection_results"
+        params = []
         
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()
@@ -269,14 +265,6 @@ class SuccessPredictor:
         """
         params = [temperature - 0.1, temperature + 0.1]
         
-        if material:
-            query += " AND material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND component_type = ?"
-            params.append(component_type)
-        
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()
         conn.close()
@@ -308,14 +296,6 @@ class SuccessPredictor:
         
         query = "SELECT success, human_score FROM detection_results WHERE attempt_number = ?"
         params = [attempt_number]
-        
-        if material:
-            query += " AND material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND component_type = ?"
-            params.append(component_type)
         
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()

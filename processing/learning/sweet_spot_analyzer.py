@@ -103,14 +103,14 @@ class SweetSpotAnalyzer:
         Find optimal parameter ranges based on top performing generations.
         
         Strategy:
-        1. Get all successful generations (human_score >= threshold)
+        1. Get ALL successful generations (human_score >= threshold) - GENERIC LEARNING
         2. Take top N% by human_score
         3. Calculate parameter ranges from these top performers
         4. Return sweet spot ranges
         
         Args:
-            material: Filter by specific material
-            component_type: Filter by component type
+            material: IGNORED - learning is generic across all materials
+            component_type: IGNORED - learning is generic across all components
             top_n_percent: Consider top N% of successful generations (default 25%)
             
         Returns:
@@ -119,7 +119,7 @@ class SweetSpotAnalyzer:
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         
-        # Build query
+        # Build query - NO material/component filtering (generic learning)
         query = """
             SELECT 
                 gp.*,
@@ -130,18 +130,9 @@ class SweetSpotAnalyzer:
             JOIN detection_results dr ON gp.detection_result_id = dr.id
             WHERE dr.human_score >= ?
               AND dr.success = 1
+            ORDER BY dr.human_score DESC
         """
         params = [self.success_threshold]
-        
-        if material:
-            query += " AND dr.material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND dr.component_type = ?"
-            params.append(component_type)
-        
-        query += " ORDER BY dr.human_score DESC"
         
         cursor = conn.execute(query, params)
         rows = cursor.fetchall()

@@ -594,6 +594,7 @@ class UnifiedOrchestrator:
             conn = sqlite3.connect(self.winston.feedback_db.db_path)
             
             # Strategy 1: Get parameters from most recent successful generation with high human score
+            # GENERIC LEARNING: Use best params from ANY material/component
             cursor = conn.execute("""
                 SELECT 
                     p.temperature,
@@ -608,13 +609,11 @@ class UnifiedOrchestrator:
                     r.timestamp
                 FROM generation_parameters p
                 JOIN detection_results r ON p.detection_result_id = r.id
-                WHERE p.material = ?
-                  AND p.component_type = ?
-                  AND r.success = 1
+                WHERE r.success = 1
                   AND r.human_score >= 20
                 ORDER BY r.human_score DESC, r.timestamp DESC
                 LIMIT 1
-            """, (identifier, component_type))
+            """)
             
             row = cursor.fetchone()
             
@@ -648,6 +647,7 @@ class UnifiedOrchestrator:
                     )
             
             # Strategy 2: Use sweet spot recommendations if no successful generation found
+            # GENERIC LEARNING: Use sweet spots from ALL materials/components
             cursor = conn.execute("""
                 SELECT 
                     temperature_median,
@@ -661,8 +661,9 @@ class UnifiedOrchestrator:
                     confidence_level,
                     last_updated
                 FROM sweet_spot_recommendations
-                WHERE material = ? AND component_type = ?
-            """, (identifier, component_type))
+                ORDER BY max_human_score DESC, last_updated DESC
+                LIMIT 1
+            """)
             
             sweet_row = cursor.fetchone()
             conn.close()

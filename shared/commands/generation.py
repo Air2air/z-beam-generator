@@ -23,11 +23,11 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         from materials.unified_generator import UnifiedMaterialsGenerator
         from data.materials.materials import load_materials, get_material_by_name
         
-        # Initialize DeepSeek API client for captions
+        # Initialize Grok API client for captions
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        api_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
+        print("🔧 Initializing Grok API client...")
+        api_client = create_api_client('grok')
+        print("✅ Grok client ready")
         print()
         
         # Initialize unified generator
@@ -93,7 +93,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                     component_type='caption_before',
                     domain='materials',
                     feedback_db=feedback_db,
-                    verbose=False
+                    verbose=True  # Show detailed evaluation
                 )
                 if before_eval:
                     print(f"   ✅ Before: {before_eval.overall_score:.1f}/10 - {'PASS' if before_eval.passes_quality_gate else 'FAIL'}")
@@ -149,9 +149,9 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
     try:
         # Initialize API client
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        api_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
+        print("🔧 Initializing Grok API client...")
+        api_client = create_api_client('grok')
+        print("✅ Grok client ready")
         print()
         
         # Initialize processing orchestrator
@@ -287,11 +287,11 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         # Import required modules
         from materials.unified_generator import UnifiedMaterialsGenerator
         
-        # Initialize DeepSeek API client for FAQ
+        # Initialize Grok API client for FAQ
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        api_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
+        print("🔧 Initializing Grok API client...")
+        api_client = create_api_client('grok')
+        print("✅ Grok client ready")
         print()
         
         # Initialize unified generator
