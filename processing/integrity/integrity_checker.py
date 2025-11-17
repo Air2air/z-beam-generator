@@ -1450,13 +1450,13 @@ class IntegrityChecker:
         
         # Check 4.5.1: Claude evaluator module exists
         start = time.time()
-        evaluator_path = Path('processing/evaluation/subjective_evaluator.py')
+        evaluator_path = Path('processing/subjective/evaluator.py')
         
         if not evaluator_path.exists():
             results.append(IntegrityResult(
                 check_name="Claude: Evaluator Module",
                 status=IntegrityStatus.FAIL,
-                message="subjective_evaluator.py module not found",
+                message="evaluator.py module not found",
                 details={'expected_path': str(evaluator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -1552,7 +1552,7 @@ class IntegrityChecker:
         Verify SubjectiveValidator is properly integrated (November 16, 2025).
         
         Checks:
-        1. subjective_validator.py module exists
+        1. validator.py module exists
         2. Config contains subjective_violations section
         3. DynamicGenerator imports and initializes validator
         4. Validation is called during content checking
@@ -1563,13 +1563,13 @@ class IntegrityChecker:
         
         # Check 1: Validator module exists
         start = time.time()
-        validator_path = Path('processing/validation/subjective_validator.py')
+        validator_path = Path('processing/subjective/validator.py')
         
         if not validator_path.exists():
             results.append(IntegrityResult(
                 check_name="SubjectiveValidator: Module Exists",
                 status=IntegrityStatus.FAIL,
-                message="❌ CRITICAL: subjective_validator.py module not found - violations won't be caught!",
+                message="❌ CRITICAL: validator.py module not found - violations won't be caught!",
                 details={'expected_path': str(validator_path)},
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -1751,7 +1751,7 @@ class IntegrityChecker:
         
         # Check 8: Validator loads thresholds from config (not hardcoded)
         start = time.time()
-        validator_path = Path('processing/validation/subjective_validator.py')
+        validator_path = Path('processing/subjective/validator.py')
         if validator_path.exists():
             validator_content = validator_path.read_text()
             
@@ -1848,7 +1848,7 @@ class IntegrityChecker:
         
         # Check 11: Dynamic threshold calculation is functional
         start = time.time()
-        validator_path = Path('processing/validation/subjective_validator.py')
+        validator_path = Path('processing/subjective/validator.py')
         if validator_path.exists():
             validator_content = validator_path.read_text()
             
