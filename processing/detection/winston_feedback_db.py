@@ -598,6 +598,64 @@ class WinstonFeedbackDatabase:
             
             return evaluation_id
     
+    def get_latest_subjective_evaluation(
+        self,
+        topic: str,
+        component_type: str
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Get the most recent subjective evaluation for a topic/component.
+        
+        Args:
+            topic: Subject matter (material name, etc.)
+            component_type: Content type (caption, subtitle, etc.)
+            
+        Returns:
+            Dict with evaluation data or None if not found
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT * FROM subjective_evaluations
+                WHERE topic = ? AND component_type = ?
+                ORDER BY timestamp DESC
+                LIMIT 1
+            """, (topic, component_type))
+            
+            row = cursor.fetchone()
+            if not row:
+                return None
+            
+            # Parse JSON fields
+            import json
+            try:
+                strengths = json.loads(row['strengths']) if row['strengths'] else []
+                weaknesses = json.loads(row['weaknesses']) if row['weaknesses'] else []
+                recommendations = json.loads(row['recommendations']) if row['recommendations'] else []
+            except Exception:
+                strengths = []
+                weaknesses = []
+                recommendations = []
+            
+            return {
+                'evaluation_id': row['id'],
+                'timestamp': row['timestamp'],
+                'overall_score': row['overall_score'],
+                'clarity_score': row['clarity_score'],
+                'professionalism_score': row['professionalism_score'],
+                'technical_accuracy_score': row['technical_accuracy_score'],
+                'human_likeness_score': row['human_likeness_score'],
+                'engagement_score': row['engagement_score'],
+                'jargon_free_score': row['jargon_free_score'],
+                'passes_quality_gate': bool(row['passes_quality_gate']),
+                'strengths': strengths,
+                'weaknesses': weaknesses,
+                'recommendations': recommendations,
+                'evaluation_time_ms': row['evaluation_time_ms']
+            }
+    
     def should_update_sweet_spot(self, material: str = '*', component_type: str = '*', min_samples: int = 5) -> bool:
         """Check if global sweet spot should be updated based on sample count.
         

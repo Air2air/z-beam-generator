@@ -44,7 +44,7 @@ def select_test_materials():
 
 
 def run_caption_generation(material_name):
-    """Run caption generation for a single material."""
+    """Run caption generation for a single material and extract full evaluation data."""
     cmd = ['python3', 'run.py', '--caption', material_name]
     
     print(f'\n🚀 Running: {" ".join(cmd)}')
@@ -96,7 +96,7 @@ def run_caption_generation(material_name):
         except Exception:
             pass
         
-        # Extract subjective validation info
+        # Extract subjective validation info (lightweight pattern check)
         subjective_violations = None
         subjective_pass = None
         for line in output.split('\n'):
@@ -117,6 +117,35 @@ def run_caption_generation(material_name):
                 except Exception:
                     pass
         
+        # Extract full Grok subjective evaluation from database
+        subjective_eval = None
+        try:
+            import sys
+            from pathlib import Path
+            sys.path.insert(0, str(Path(__file__).parent.parent))
+            from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            
+            db = WinstonFeedbackDatabase()
+            # Get most recent evaluation for this material
+            eval_data = db.get_latest_subjective_evaluation(material_name, 'caption')
+            if eval_data:
+                subjective_eval = {
+                    'overall_score': eval_data.get('overall_score'),
+                    'clarity': eval_data.get('clarity_score'),
+                    'professionalism': eval_data.get('professionalism_score'),
+                    'technical_accuracy': eval_data.get('technical_accuracy_score'),
+                    'human_likeness': eval_data.get('human_likeness_score'),
+                    'engagement': eval_data.get('engagement_score'),
+                    'jargon_free': eval_data.get('jargon_free_score'),
+                    'strengths': eval_data.get('strengths', []),
+                    'weaknesses': eval_data.get('weaknesses', []),
+                    'recommendations': eval_data.get('recommendations', []),
+                    'passes_quality_gate': eval_data.get('passes_quality_gate', False)
+                }
+        except Exception as e:
+            # Evaluation data not available - that's okay
+            pass
+        
         return {
             'success': success,
             'elapsed': elapsed,
@@ -124,6 +153,7 @@ def run_caption_generation(material_name):
             'caption_text': caption_text,
             'subjective_violations': subjective_violations,
             'subjective_pass': subjective_pass,
+            'subjective_eval': subjective_eval,
             'exit_code': result.returncode,
             'output': output
         }
@@ -191,22 +221,47 @@ def generate_batch_report(test_materials, results, success_count, total_count):
             markdown_lines.append('### 📊 SUBJECTIVE EVALUATION')
             markdown_lines.append('')
             
-            # Always show validation status
+            # Pattern validation status
             if r.get('subjective_violations') is not None:
                 if r['subjective_violations'] == 0:
-                    markdown_lines.append('- **Validation**: ✅ PASS - No violations detected')
+                    markdown_lines.append('- **Pattern Validation**: ✅ PASS - No violations detected')
                 else:
                     status = '✅ PASS' if r.get('subjective_pass') else '❌ FAIL'
-                    markdown_lines.append(f"- **Validation**: {status} - {r['subjective_violations']} violations")
+                    markdown_lines.append(f"- **Pattern Validation**: {status} - {r['subjective_violations']} violations")
             else:
-                # Default to PASS if no validation data captured
-                markdown_lines.append('- **Validation**: ✅ PASS - No violations detected')
+                markdown_lines.append('- **Pattern Validation**: ✅ PASS - No violations detected')
             
-            # Always show Winston score if available
+            # Full Grok AI evaluation (if available)
+            subjective_eval = r.get('subjective_eval')
+            if subjective_eval:
+                markdown_lines.append(f"- **Grok AI Overall**: {subjective_eval['overall_score']:.1f}/10")
+                markdown_lines.append(f"  - Clarity: {subjective_eval['clarity']:.1f}/10")
+                markdown_lines.append(f"  - Professionalism: {subjective_eval['professionalism']:.1f}/10")
+                markdown_lines.append(f"  - Technical Accuracy: {subjective_eval['technical_accuracy']:.1f}/10")
+                markdown_lines.append(f"  - Human-likeness: {subjective_eval['human_likeness']:.1f}/10")
+                markdown_lines.append(f"  - Engagement: {subjective_eval['engagement']:.1f}/10")
+                markdown_lines.append(f"  - Jargon-free: {subjective_eval['jargon_free']:.1f}/10")
+                
+                if subjective_eval['strengths']:
+                    markdown_lines.append('- **Strengths**:')
+                    for strength in subjective_eval['strengths']:
+                        markdown_lines.append(f"  - ✓ {strength}")
+                
+                if subjective_eval['weaknesses']:
+                    markdown_lines.append('- **Weaknesses**:')
+                    for weakness in subjective_eval['weaknesses']:
+                        markdown_lines.append(f"  - ✗ {weakness}")
+                
+                if subjective_eval['recommendations']:
+                    markdown_lines.append('- **Recommendations**:')
+                    for rec in subjective_eval['recommendations']:
+                        markdown_lines.append(f"  - → {rec}")
+            
+            # Winston score
             if r.get('winston_score'):
-                markdown_lines.append(f"- **Winston**: {r['winston_score']:.1f}% human")
+                markdown_lines.append(f"- **Winston AI**: {r['winston_score']:.1f}% human")
             
-            # Always show generation time
+            # Generation time
             markdown_lines.append(f"- **Generation Time**: {r.get('elapsed', 0):.1f}s")
             markdown_lines.append('')
             
@@ -338,22 +393,47 @@ def main():
             print('\n📊 SUBJECTIVE EVALUATION:')
             print('-' * 70)
             
-            # Always show validation status
+            # Pattern validation status (lightweight check)
             if r.get('subjective_violations') is not None:
                 if r['subjective_violations'] == 0:
-                    print('✅ PASS - No violations detected')
+                    print('Pattern Validation: ✅ PASS - No violations detected')
                 else:
                     status = '✅ PASS' if r.get('subjective_pass') else '❌ FAIL'
-                    print(f"{status} - {r['subjective_violations']} violations")
+                    print(f"Pattern Validation: {status} - {r['subjective_violations']} violations")
             else:
-                # Default to PASS if no validation data captured
-                print('✅ PASS - No violations detected')
+                print('Pattern Validation: ✅ PASS - No violations detected')
             
-            # Always show Winston score if available
+            # Full Grok AI evaluation (if available)
+            subjective_eval = r.get('subjective_eval')
+            if subjective_eval:
+                print(f"\nGrok AI Quality Assessment: {subjective_eval['overall_score']:.1f}/10")
+                print(f"  • Clarity: {subjective_eval['clarity']:.1f}/10")
+                print(f"  • Professionalism: {subjective_eval['professionalism']:.1f}/10")
+                print(f"  • Technical Accuracy: {subjective_eval['technical_accuracy']:.1f}/10")
+                print(f"  • Human-likeness: {subjective_eval['human_likeness']:.1f}/10")
+                print(f"  • Engagement: {subjective_eval['engagement']:.1f}/10")
+                print(f"  • Jargon-free: {subjective_eval['jargon_free']:.1f}/10")
+                
+                if subjective_eval['strengths']:
+                    print(f"\nStrengths:")
+                    for strength in subjective_eval['strengths']:
+                        print(f"  ✓ {strength}")
+                
+                if subjective_eval['weaknesses']:
+                    print(f"\nWeaknesses:")
+                    for weakness in subjective_eval['weaknesses']:
+                        print(f"  ✗ {weakness}")
+                
+                if subjective_eval['recommendations']:
+                    print(f"\nRecommendations:")
+                    for rec in subjective_eval['recommendations']:
+                        print(f"  → {rec}")
+            
+            # Winston score
             if r.get('winston_score'):
-                print(f"Winston: {r['winston_score']:.1f}% human")
+                print(f"\nWinston AI: {r['winston_score']:.1f}% human")
             
-            # Always show generation time
+            # Generation time
             print(f"Generation Time: {r.get('elapsed', 0):.1f}s")
             
             # Generated Caption Text
