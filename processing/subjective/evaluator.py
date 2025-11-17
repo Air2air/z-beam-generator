@@ -47,6 +47,7 @@ class SubjectiveEvaluationResult:
     recommendations: List[str]
     passes_quality_gate: bool
     evaluation_time_ms: float
+    narrative_assessment: Optional[str] = None  # Paragraph-form evaluation
     raw_response: Optional[str] = None
 
 
@@ -165,6 +166,9 @@ CONTENT TO EVALUATE:
 {content}
 
 Provide your evaluation in this format:
+
+**Narrative Assessment** (2-3 sentences summarizing overall quality, effectiveness, and key observations):
+
 - Overall Score (0-10):
 - Dimension Scores:
   - Clarity: X/10 - feedback
@@ -233,6 +237,23 @@ Provide your evaluation in this format:
         weaknesses = []
         recommendations = []
         overall_score = 7.0
+        narrative_assessment = None
+        
+        # Extract narrative assessment (first paragraph before structured data)
+        narrative_lines = []
+        in_narrative = False
+        for line in lines:
+            if '**Narrative Assessment**' in line or 'Narrative Assessment' in line:
+                in_narrative = True
+                continue
+            if in_narrative:
+                if line.strip() and not line.strip().startswith('-') and not line.strip().startswith('*'):
+                    narrative_lines.append(line.strip())
+                elif line.strip().startswith('-'):
+                    break  # End of narrative, start of structured data
+        
+        if narrative_lines:
+            narrative_assessment = ' '.join(narrative_lines)
         
         # Parse response (simplified - enhance as needed)
         # This would need actual parsing logic based on Claude's response format
@@ -245,6 +266,7 @@ Provide your evaluation in this format:
             recommendations=recommendations,
             passes_quality_gate=overall_score >= self.quality_threshold,
             evaluation_time_ms=0,
+            narrative_assessment=narrative_assessment,
             raw_response=response
         )
     

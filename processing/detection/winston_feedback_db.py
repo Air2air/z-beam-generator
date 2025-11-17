@@ -565,8 +565,8 @@ class WinstonFeedbackDatabase:
                  engagement_score, jargon_free_score,
                  passes_quality_gate, quality_threshold, evaluation_time_ms,
                  strengths, weaknesses, recommendations,
-                 author_id, attempt_number, has_claude_api)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 author_id, attempt_number, has_claude_api, narrative_assessment)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 timestamp,
                 topic,
@@ -588,7 +588,8 @@ class WinstonFeedbackDatabase:
                 recommendations_json,
                 author_id,
                 attempt_number,
-                evaluation_result.raw_response is not None  # Has Claude API if raw response exists
+                evaluation_result.raw_response is not None,  # Has Claude API if raw response exists
+                evaluation_result.narrative_assessment  # Paragraph-form evaluation
             ))
             
             evaluation_id = cursor.lastrowid
@@ -653,7 +654,8 @@ class WinstonFeedbackDatabase:
                 'strengths': strengths,
                 'weaknesses': weaknesses,
                 'recommendations': recommendations,
-                'evaluation_time_ms': row['evaluation_time_ms']
+                'evaluation_time_ms': row['evaluation_time_ms'],
+                'narrative_assessment': row['narrative_assessment'] if 'narrative_assessment' in row.keys() else None
             }
     
     def should_update_sweet_spot(self, material: str = '*', component_type: str = '*', min_samples: int = 5) -> bool:

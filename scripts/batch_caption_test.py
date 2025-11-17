@@ -140,7 +140,8 @@ def run_caption_generation(material_name):
                     'strengths': eval_data.get('strengths', []),
                     'weaknesses': eval_data.get('weaknesses', []),
                     'recommendations': eval_data.get('recommendations', []),
-                    'passes_quality_gate': eval_data.get('passes_quality_gate', False)
+                    'passes_quality_gate': eval_data.get('passes_quality_gate', False),
+                    'narrative_assessment': eval_data.get('narrative_assessment')  # Paragraph-form evaluation
                 }
         except Exception as e:
             # Evaluation data not available - that's okay
@@ -221,6 +222,12 @@ def generate_batch_report(test_materials, results, success_count, total_count):
             markdown_lines.append('### 📊 SUBJECTIVE EVALUATION')
             markdown_lines.append('')
             
+            # Grok AI Narrative Assessment (paragraph-form evaluation)
+            subjective_eval = r.get('subjective_eval')
+            if subjective_eval and subjective_eval.get('narrative_assessment'):
+                markdown_lines.append(subjective_eval['narrative_assessment'])
+                markdown_lines.append('')
+            
             # Pattern validation status
             if r.get('subjective_violations') is not None:
                 if r['subjective_violations'] == 0:
@@ -230,32 +237,6 @@ def generate_batch_report(test_materials, results, success_count, total_count):
                     markdown_lines.append(f"- **Pattern Validation**: {status} - {r['subjective_violations']} violations")
             else:
                 markdown_lines.append('- **Pattern Validation**: ✅ PASS - No violations detected')
-            
-            # Full Grok AI evaluation (if available)
-            subjective_eval = r.get('subjective_eval')
-            if subjective_eval:
-                markdown_lines.append(f"- **Grok AI Overall**: {subjective_eval['overall_score']:.1f}/10")
-                markdown_lines.append(f"  - Clarity: {subjective_eval['clarity']:.1f}/10")
-                markdown_lines.append(f"  - Professionalism: {subjective_eval['professionalism']:.1f}/10")
-                markdown_lines.append(f"  - Technical Accuracy: {subjective_eval['technical_accuracy']:.1f}/10")
-                markdown_lines.append(f"  - Human-likeness: {subjective_eval['human_likeness']:.1f}/10")
-                markdown_lines.append(f"  - Engagement: {subjective_eval['engagement']:.1f}/10")
-                markdown_lines.append(f"  - Jargon-free: {subjective_eval['jargon_free']:.1f}/10")
-                
-                if subjective_eval['strengths']:
-                    markdown_lines.append('- **Strengths**:')
-                    for strength in subjective_eval['strengths']:
-                        markdown_lines.append(f"  - ✓ {strength}")
-                
-                if subjective_eval['weaknesses']:
-                    markdown_lines.append('- **Weaknesses**:')
-                    for weakness in subjective_eval['weaknesses']:
-                        markdown_lines.append(f"  - ✗ {weakness}")
-                
-                if subjective_eval['recommendations']:
-                    markdown_lines.append('- **Recommendations**:')
-                    for rec in subjective_eval['recommendations']:
-                        markdown_lines.append(f"  - → {rec}")
             
             # Winston score
             if r.get('winston_score'):
@@ -393,6 +374,11 @@ def main():
             print('\n📊 SUBJECTIVE EVALUATION:')
             print('-' * 70)
             
+            # Grok AI Narrative Assessment (paragraph-form evaluation)
+            subjective_eval = r.get('subjective_eval')
+            if subjective_eval and subjective_eval.get('narrative_assessment'):
+                print(f"\n{subjective_eval['narrative_assessment']}\n")
+            
             # Pattern validation status (lightweight check)
             if r.get('subjective_violations') is not None:
                 if r['subjective_violations'] == 0:
@@ -403,13 +389,9 @@ def main():
             else:
                 print('Pattern Validation: ✅ PASS - No violations detected')
             
-            # NOTE: Grok AI Quality Assessment hidden from report display
-            # Full evaluation data is captured and used for parameter tuning in the learning system
-            # See: processing/learning/subjective_parameter_tuner.py
-            
             # Winston score
             if r.get('winston_score'):
-                print(f"\nWinston AI: {r['winston_score']:.1f}% human")
+                print(f"Winston AI: {r['winston_score']:.1f}% human")
             
             # Generation time
             print(f"Generation Time: {r.get('elapsed', 0):.1f}s")
