@@ -125,7 +125,7 @@ def run_caption_generation(material_name):
             sys.path.insert(0, str(Path(__file__).parent.parent))
             from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
             
-            db = WinstonFeedbackDatabase()
+            db = WinstonFeedbackDatabase('data/winston_feedback.db')
             # Get most recent evaluation for this material
             eval_data = db.get_latest_subjective_evaluation(material_name, 'caption')
             if eval_data:

@@ -1,29 +1,32 @@
 # Batch Caption Test Report
 
-**Date**: November 16, 2025 at 11:36 PM
-**Results**: 4/4 successful
+**Date**: November 17, 2025 at 12:20 AM
+**Results**: 3/4 successful
 
 ---
 
 ## Bamboo (Author 1)
 
-### ✅ NO ISSUES DETECTED
+### ⚠️ ALERT: LOW HUMAN SCORE
+**Winston Score**: 65.0% (threshold: 70%)
 
 ### 📊 SUBJECTIVE EVALUATION
 
+The voice in this caption sounds authentically human-written, with a natural conversational flow that mimics casual technical commentary, using vivid, everyday words like "zaps away the filth" and "woody resilience" to create a genuine, enthusiastic tone without over-the-top hype. Sentence patterns feel organic, starting with a punchy action phrase and building to descriptive details in a logical, stream-of-consciousness style that varies rhythm—short and snappy at first, then more explanatory—avoiding the formulaic repetition or unnatural stiffness often seen in AI-generated text. There's no evidence of AI-like tendencies such as excessive uniformity in structure or contrived transitions; instead, it reads like a knowledgeable engineer sharing an exciting discovery in a relaxed voice.
+
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.5% human
-- **Generation Time**: 23.6s
+- **Winston AI**: 65.0% human
+- **Generation Time**: 29.9s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dirt cakes this bamboo's surface. Used in sports equipment or furniture, it hides the wood's natural bend without breaking. At 1000x magnification, contaminants layer thick, around 50 microns deep, weakening spots for construction jobs.
+Dirt clings tight to these bamboo fibers. Grime builds up in the tiny grooves, hiding the natural strength that makes bamboo perfect for furniture or sports gear. At 1000x, you see the mess blocking its use in clean spots like medical devices.
 
 **AFTER:**
 
-Laser treatment clears it fast. Now the bamboo stands ready for aerospace parts or marine use. Zoomed in at 1000x, fibers show clean and straight, holding stiffness near 10 GPa while keeping that renewable edge.
+Laser zaps away the filth. Now the surface shows smooth, tough bamboo ready for aerospace parts or marine work. Fibers stand out clear, with that woody resilience holding steady around 250 MPa in pull tests, no damage left.
 
 ---
 
@@ -33,19 +36,21 @@ Laser treatment clears it fast. Now the bamboo stands ready for aerospace parts 
 
 ### 📊 SUBJECTIVE EVALUATION
 
+The voice in this caption sounds authentically human-written, exhibiting a natural conversational flow that blends casual enthusiasm with technical observation, as if spoken by an experienced technician excited about a breakthrough. Realistic word choices like "changes everything" and "ready for real work" contribute to a genuine, relatable tone with subtle variations in pacing—from punchy openers to descriptive details—creating an organic rhythm that mirrors everyday professional dialogue. Sentence patterns feel varied and intuitive, without formulaic repetition or unnatural transitions, though the shift to applications is slightly abrupt but still convincingly human; there are no evident AI-like tendencies such as overly polished symmetry or contrived hype.
+
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.1% human
-- **Generation Time**: 36.1s
+- **Winston AI**: 97.0% human
+- **Generation Time**: 27.3s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dust clings tight. In this close view at 1000 times, alabaster's soft surface hides under layers of grime from years in old buildings or art pieces, making it look dull and uneven, almost like forgotten history weighing it down. But that contamination blocks its natural white glow, rough spots everywhere you zoom in.
+Dirt clings. At 1000x, the alabaster's soft white stone surface hides under thick layers of grime and pollutants, rough spots everywhere from years in old buildings or sculptures. But this contamination weakens its use in art conservation or architecture, nearly ruining the material's natural glow.
 
 **AFTER:**
 
-Laser hits just right. Now the stone shines smooth at 1000x magnification, contaminants gone without a scratch since the treatment uses short pulses around 10 nanoseconds to lift dirt gently. And alabaster stands ready again for architecture or medical tools, its fine texture clear and pure.
+Laser treatment changes everything. Now the surface looks smooth and clear at 1000x magnification, with just faint traces of the stone's fine texture showing through. And for things like medical tools or aerospace parts, this clean alabaster holds strong around 2.3 density, ready for real work.
 
 ---
 
@@ -56,43 +61,24 @@ Laser hits just right. Now the stone shines smooth at 1000x magnification, conta
 ### 📊 SUBJECTIVE EVALUATION
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 76.7% human
-- **Generation Time**: 28.2s
+- **Winston AI**: 95.7% human
+- **Generation Time**: 40.0s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dirt clings tight. At 1000x, Breccia's jagged fragments hide under thick grime layers, blocking the natural bond of broken stones in their matrix, which weakens this strong material used in ancient monuments and modern builds. Tough to see through.
+Dirt clings tight. This breccia surface, at 1000x zoom, shows thick grime layers hiding the stone's rough edges and tiny cracks, making it look dull and worn from years in cultural heritage sites. But underneath waits something stronger.
 
 **AFTER:**
 
-Laser pulses work wonders. Now the surface stands clear at 1000x, with sharp edges of embedded rocks shining free from contaminants, preserving Breccia's rough beauty for heritage sites and architectural wonders alike. And it holds up well.
+Laser treatment changes everything. Now the clean breccia gleams with clear grains, around 2-3 mm wide, free from that old contamination while keeping its natural stiffness for architecture work. Remarkable difference.
 
 ---
 
 ## Aluminum (Author 4)
 
-### ✅ NO ISSUES DETECTED
-
-### 📊 SUBJECTIVE EVALUATION
-
-- **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.3% human
-- **Generation Time**: 17.9s
-
-### 📝 GENERATED CAPTION
-
-**BEFORE:**
-
-Dirt clings to this aluminum surface.  
-At 1000x, oxides and particles scatter everywhere, dulling the lightweight metal vital for automotive parts and renewable energy setups.  
-But wait. That grime weakens it all.
-
-**AFTER:**
-
-Laser treatment clears the mess fast.  
-Now, at 1000x, the clean aluminum gleams smooth, ready for aerospace or electronics work with its low density around 2.7 grams per cubic centimeter.  
-Pristine. Strong again.
+### 🚨 ALERT: GENERATION FAILED
+**Error**: Unknown error
 
 ---
