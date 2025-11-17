@@ -141,7 +141,11 @@ def run_caption_generation(material_name):
                     'weaknesses': eval_data.get('weaknesses', []),
                     'recommendations': eval_data.get('recommendations', []),
                     'passes_quality_gate': eval_data.get('passes_quality_gate', False),
-                    'narrative_assessment': eval_data.get('narrative_assessment')  # Paragraph-form evaluation
+                    'narrative_assessment': eval_data.get('narrative_assessment'),  # Paragraph-form evaluation
+                    'realism_score': eval_data.get('realism_score'),  # 0-10 scale
+                    'voice_authenticity': eval_data.get('voice_authenticity'),  # 0-10 scale
+                    'tonal_consistency': eval_data.get('tonal_consistency'),  # 0-10 scale
+                    'ai_tendencies': eval_data.get('ai_tendencies')  # JSON array string
                 }
         except Exception as e:
             # Evaluation data not available - that's okay
@@ -227,6 +231,34 @@ def generate_batch_report(test_materials, results, success_count, total_count):
             if subjective_eval and subjective_eval.get('narrative_assessment'):
                 markdown_lines.append(subjective_eval['narrative_assessment'])
                 markdown_lines.append('')
+            
+            # Display realism metrics if available
+            if subjective_eval:
+                realism_score = subjective_eval.get('realism_score')
+                voice_auth = subjective_eval.get('voice_authenticity')
+                tonal_cons = subjective_eval.get('tonal_consistency')
+                ai_tendencies = subjective_eval.get('ai_tendencies')
+                
+                if any([realism_score, voice_auth, tonal_cons, ai_tendencies]):
+                    markdown_lines.append('**Realism Analysis**:')
+                    markdown_lines.append('')
+                    if realism_score is not None:
+                        markdown_lines.append(f'- Realism Score: {realism_score:.1f}/10')
+                    if voice_auth is not None:
+                        markdown_lines.append(f'- Voice Authenticity: {voice_auth:.1f}/10')
+                    if tonal_cons is not None:
+                        markdown_lines.append(f'- Tonal Consistency: {tonal_cons:.1f}/10')
+                    if ai_tendencies:
+                        import json
+                        try:
+                            tendencies_list = json.loads(ai_tendencies) if isinstance(ai_tendencies, str) else ai_tendencies
+                            if tendencies_list and tendencies_list != ['none']:
+                                markdown_lines.append(f"- AI Tendencies Detected: {', '.join(tendencies_list)}")
+                            else:
+                                markdown_lines.append('- AI Tendencies Detected: none')
+                        except:
+                            markdown_lines.append(f'- AI Tendencies Detected: {ai_tendencies}')
+                    markdown_lines.append('')
             
             # Pattern validation status
             if r.get('subjective_violations') is not None:
@@ -378,6 +410,33 @@ def main():
             subjective_eval = r.get('subjective_eval')
             if subjective_eval and subjective_eval.get('narrative_assessment'):
                 print(f"\n{subjective_eval['narrative_assessment']}\n")
+            
+            # Display realism metrics if available
+            if subjective_eval:
+                realism_score = subjective_eval.get('realism_score')
+                voice_auth = subjective_eval.get('voice_authenticity')
+                tonal_cons = subjective_eval.get('tonal_consistency')
+                ai_tendencies = subjective_eval.get('ai_tendencies')
+                
+                if any([realism_score, voice_auth, tonal_cons, ai_tendencies]):
+                    print('\n**Realism Analysis**:')
+                    if realism_score is not None:
+                        print(f'- Realism Score: {realism_score:.1f}/10')
+                    if voice_auth is not None:
+                        print(f'- Voice Authenticity: {voice_auth:.1f}/10')
+                    if tonal_cons is not None:
+                        print(f'- Tonal Consistency: {tonal_cons:.1f}/10')
+                    if ai_tendencies:
+                        import json
+                        try:
+                            tendencies_list = json.loads(ai_tendencies) if isinstance(ai_tendencies, str) else ai_tendencies
+                            if tendencies_list and tendencies_list != ['none']:
+                                print(f"- AI Tendencies Detected: {', '.join(tendencies_list)}")
+                            else:
+                                print('- AI Tendencies Detected: none')
+                        except:
+                            print(f'- AI Tendencies Detected: {ai_tendencies}')
+                    print('')
             
             # Pattern validation status (lightweight check)
             if r.get('subjective_violations') is not None:

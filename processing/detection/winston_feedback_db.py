@@ -149,6 +149,10 @@ class WinstonFeedbackDatabase:
                     weaknesses TEXT,
                     recommendations TEXT,
                     narrative_assessment TEXT,
+                    realism_score REAL,
+                    voice_authenticity REAL,
+                    tonal_consistency REAL,
+                    ai_tendencies TEXT,
                     author_id INTEGER,
                     attempt_number INTEGER,
                     has_claude_api BOOLEAN DEFAULT 0,
@@ -248,6 +252,48 @@ class WinstonFeedbackDatabase:
                     
                     UNIQUE(material, component_type)
                 );
+                
+                CREATE TABLE IF NOT EXISTS realism_learning (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp TEXT NOT NULL,
+                    material TEXT NOT NULL,
+                    component_type TEXT NOT NULL,
+                    domain TEXT DEFAULT 'materials',
+                    
+                    -- Original state
+                    original_realism_score REAL,
+                    original_voice_authenticity REAL,
+                    original_tonal_consistency REAL,
+                    detected_ai_tendencies TEXT,  -- JSON array
+                    original_parameters TEXT,  -- JSON object
+                    
+                    -- Adjustment made
+                    parameter_adjustments TEXT,  -- JSON array of RealismAdjustment objects
+                    adjustment_rationale TEXT,
+                    
+                    -- Outcome (after retry)
+                    new_realism_score REAL,
+                    new_voice_authenticity REAL,
+                    new_tonal_consistency REAL,
+                    improvement REAL,  -- new_realism_score - original_realism_score
+                    success BOOLEAN,  -- improvement > 0
+                    
+                    -- Combined scores
+                    original_winston_score REAL,
+                    new_winston_score REAL,
+                    original_combined_score REAL,
+                    new_combined_score REAL,
+                    
+                    -- Metadata
+                    subjective_evaluation_id INTEGER,
+                    attempt_number INTEGER,
+                    FOREIGN KEY (subjective_evaluation_id) REFERENCES subjective_evaluations(id)
+                );
+                
+                CREATE INDEX IF NOT EXISTS idx_realism_material ON realism_learning(material);
+                CREATE INDEX IF NOT EXISTS idx_realism_component ON realism_learning(component_type);
+                CREATE INDEX IF NOT EXISTS idx_realism_success ON realism_learning(success);
+                CREATE INDEX IF NOT EXISTS idx_realism_timestamp ON realism_learning(timestamp);
                 
                 CREATE INDEX IF NOT EXISTS idx_material ON detection_results(material);
                 CREATE INDEX IF NOT EXISTS idx_component ON detection_results(component_type);
@@ -572,8 +618,9 @@ class WinstonFeedbackDatabase:
                  engagement_score, jargon_free_score,
                  passes_quality_gate, quality_threshold, evaluation_time_ms,
                  strengths, weaknesses, recommendations,
-                 author_id, attempt_number, has_claude_api, narrative_assessment)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 author_id, attempt_number, has_claude_api, narrative_assessment,
+                 realism_score, voice_authenticity, tonal_consistency, ai_tendencies)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 timestamp,
                 topic,
@@ -596,7 +643,11 @@ class WinstonFeedbackDatabase:
                 author_id,
                 attempt_number,
                 evaluation_result.raw_response is not None,  # Has Claude API if raw response exists
-                evaluation_result.narrative_assessment  # Paragraph-form evaluation
+                evaluation_result.narrative_assessment,  # Paragraph-form evaluation
+                evaluation_result.realism_score,
+                evaluation_result.voice_authenticity,
+                evaluation_result.tonal_consistency,
+                json.dumps(evaluation_result.ai_tendencies) if evaluation_result.ai_tendencies else None
             ))
             
             evaluation_id = cursor.lastrowid
@@ -605,6 +656,121 @@ class WinstonFeedbackDatabase:
             logger.info(f"✅ [CLAUDE EVAL] Logged evaluation #{evaluation_id} for {topic}/{component_type}")
             
             return evaluation_id
+    
+    def log_realism_learning(
+        self,
+        material: str,
+        component_type: str,
+        original_realism_score: Optional[float],
+        original_voice_authenticity: Optional[float],
+        original_tonal_consistency: Optional[float],
+        detected_ai_tendencies: Optional[List[str]],
+        original_parameters: Dict,
+        parameter_adjustments: List,
+        adjustment_rationale: str,
+        new_realism_score: Optional[float] = None,
+        new_voice_authenticity: Optional[float] = None,
+        new_tonal_consistency: Optional[float] = None,
+        original_winston_score: Optional[float] = None,
+        new_winston_score: Optional[float] = None,
+        subjective_evaluation_id: Optional[int] = None,
+        attempt_number: int = 1,
+        domain: str = 'materials'
+    ) -> int:
+        """
+        Log realism learning data for parameter optimization analysis.
+        
+        Args:
+            material: Material name
+            component_type: Content type (caption, subtitle, etc.)
+            original_realism_score: Initial realism score (0-10)
+            original_voice_authenticity: Initial voice authenticity (0-10)
+            original_tonal_consistency: Initial tonal consistency (0-10)
+            detected_ai_tendencies: List of AI tendency identifiers
+            original_parameters: Original generation parameters dict
+            parameter_adjustments: List of RealismAdjustment objects (will be serialized)
+            adjustment_rationale: Human-readable explanation of adjustments
+            new_realism_score: Realism score after adjustment (None if not yet retried)
+            new_voice_authenticity: Voice authenticity after adjustment
+            new_tonal_consistency: Tonal consistency after adjustment
+            original_winston_score: Winston score before adjustment
+            new_winston_score: Winston score after adjustment
+            subjective_evaluation_id: Reference to subjective_evaluations table
+            attempt_number: Retry attempt number
+            domain: Content domain
+            
+        Returns:
+            ID of logged realism learning entry
+        """
+        import json
+        from datetime import datetime
+        
+        timestamp = datetime.now().isoformat()
+        
+        # Calculate improvement and success (if new scores available)
+        improvement = None
+        success = None
+        if new_realism_score is not None and original_realism_score is not None:
+            improvement = new_realism_score - original_realism_score
+            success = improvement > 0
+        
+        # Calculate combined scores (Winston 40% + Realism 60%)
+        original_combined = None
+        new_combined = None
+        if original_winston_score is not None and original_realism_score is not None:
+            original_combined = (original_winston_score * 0.4) + (original_realism_score * 10 * 0.6)
+        if new_winston_score is not None and new_realism_score is not None:
+            new_combined = (new_winston_score * 0.4) + (new_realism_score * 10 * 0.6)
+        
+        # Serialize complex objects
+        tendencies_json = json.dumps(detected_ai_tendencies) if detected_ai_tendencies else None
+        params_json = json.dumps(original_parameters)
+        
+        # Convert RealismAdjustment objects to dicts for JSON serialization
+        adjustments_dicts = []
+        for adj in parameter_adjustments:
+            if hasattr(adj, '__dict__'):
+                adjustments_dicts.append(adj.__dict__)
+            else:
+                adjustments_dicts.append(adj)
+        adjustments_json = json.dumps(adjustments_dicts)
+        
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO realism_learning
+                (timestamp, material, component_type, domain,
+                 original_realism_score, original_voice_authenticity, original_tonal_consistency,
+                 detected_ai_tendencies, original_parameters,
+                 parameter_adjustments, adjustment_rationale,
+                 new_realism_score, new_voice_authenticity, new_tonal_consistency,
+                 improvement, success,
+                 original_winston_score, new_winston_score,
+                 original_combined_score, new_combined_score,
+                 subjective_evaluation_id, attempt_number)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                timestamp, material, component_type, domain,
+                original_realism_score, original_voice_authenticity, original_tonal_consistency,
+                tendencies_json, params_json,
+                adjustments_json, adjustment_rationale,
+                new_realism_score, new_voice_authenticity, new_tonal_consistency,
+                improvement, success,
+                original_winston_score, new_winston_score,
+                original_combined, new_combined,
+                subjective_evaluation_id, attempt_number
+            ))
+            
+            learning_id = cursor.lastrowid
+            conn.commit()
+            
+            logger.info(f"✅ [REALISM LEARNING] Logged learning #{learning_id} for {material}/{component_type}")
+            if success is not None:
+                status = "SUCCESS" if success else "FAILED"
+                logger.info(f"   Improvement: {improvement:+.2f} ({status})")
+            
+            return learning_id
     
     def get_latest_subjective_evaluation(
         self,

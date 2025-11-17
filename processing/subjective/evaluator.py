@@ -49,6 +49,11 @@ class SubjectiveEvaluationResult:
     evaluation_time_ms: float
     narrative_assessment: Optional[str] = None  # Paragraph-form evaluation
     raw_response: Optional[str] = None
+    # NEW: Structured realism metrics
+    realism_score: Optional[float] = None  # 0-10
+    voice_authenticity: Optional[float] = None  # 0-10
+    tonal_consistency: Optional[float] = None  # 0-10
+    ai_tendencies: Optional[List[str]] = None  # Detected AI patterns
 
 
 class SubjectiveEvaluator:
@@ -169,6 +174,12 @@ Provide your evaluation in this format:
 
 **Narrative Assessment** (2-3 sentences that MUST specifically address whether the voice sounds authentically human or artificially generated. Comment on natural conversational flow, realistic word choices, genuine tone variations, and whether sentence patterns feel organic. Be explicit about any AI-like tendencies such as formulaic phrasing, excessive enthusiasm, or unnatural transitions):
 
+**Realism Analysis** (Identify specific issues - select ALL that apply):
+- AI Tendencies Detected: [comma-separated list: formulaic_phrasing, unnatural_transitions, excessive_enthusiasm, rigid_structure, overly_polished, mechanical_tone, repetitive_patterns, forced_transitions, artificial_symmetry, generic_language, none]
+- Realism Score (0-10): X (10=perfectly human, 0=obviously AI)
+- Voice Authenticity (0-10): X (natural conversational flow)
+- Tonal Consistency (0-10): X (genuine variations without jarring shifts)
+
 - Overall Score (0-10):
 - Dimension Scores:
   - Clarity: X/10 - feedback
@@ -238,6 +249,11 @@ Provide your evaluation in this format:
         recommendations = []
         overall_score = 7.0
         narrative_assessment = None
+        # NEW: Realism metrics
+        realism_score = None
+        voice_authenticity = None
+        tonal_consistency = None
+        ai_tendencies = []
         
         # Extract narrative assessment - handle both inline and separate line formats
         for i, line in enumerate(lines):
@@ -270,6 +286,59 @@ Provide your evaluation in this format:
                         narrative_assessment = ' '.join(narrative_lines)
                     break
         
+        # Extract realism analysis metrics
+        for i, line in enumerate(lines):
+            if '**Realism Analysis**' in line or 'Realism Analysis:' in line:
+                # Parse the structured realism data in following lines
+                for j in range(i+1, len(lines)):
+                    line_text = lines[j].strip()
+                    
+                    # Extract AI Tendencies
+                    if 'AI Tendencies Detected:' in line_text or 'ai tendencies detected:' in line_text.lower():
+                        # Extract the list portion after the colon
+                        if ':' in line_text:
+                            tendencies_str = line_text.split(':', 1)[1].strip()
+                            # Remove brackets if present
+                            tendencies_str = tendencies_str.strip('[]')
+                            # Split by comma and clean up
+                            if tendencies_str and tendencies_str.lower() != 'none':
+                                ai_tendencies = [t.strip() for t in tendencies_str.split(',') if t.strip()]
+                    
+                    # Extract Realism Score
+                    if 'Realism Score' in line_text:
+                        if ':' in line_text:
+                            score_str = line_text.split(':', 1)[1].strip()
+                            # Extract number (handle "X/10" or just "X" format)
+                            score_str = score_str.split('/')[0].strip()
+                            try:
+                                realism_score = float(score_str)
+                            except ValueError:
+                                pass
+                    
+                    # Extract Voice Authenticity
+                    if 'Voice Authenticity' in line_text:
+                        if ':' in line_text:
+                            score_str = line_text.split(':', 1)[1].strip()
+                            score_str = score_str.split('/')[0].strip()
+                            try:
+                                voice_authenticity = float(score_str)
+                            except ValueError:
+                                pass
+                    
+                    # Extract Tonal Consistency
+                    if 'Tonal Consistency' in line_text:
+                        if ':' in line_text:
+                            score_str = line_text.split(':', 1)[1].strip()
+                            score_str = score_str.split('/')[0].strip()
+                            try:
+                                tonal_consistency = float(score_str)
+                            except ValueError:
+                                pass
+                    
+                    # Stop if we hit another section marker
+                    if line_text.startswith('**') and 'Realism Analysis' not in line_text:
+                        break
+        
         # Parse response (simplified - enhance as needed)
         # This would need actual parsing logic based on Claude's response format
         
@@ -282,6 +351,10 @@ Provide your evaluation in this format:
             passes_quality_gate=overall_score >= self.quality_threshold,
             evaluation_time_ms=0,
             narrative_assessment=narrative_assessment,
+            realism_score=realism_score,
+            voice_authenticity=voice_authenticity,
+            tonal_consistency=tonal_consistency,
+            ai_tendencies=ai_tendencies if ai_tendencies else None,
             raw_response=response
         )
     
