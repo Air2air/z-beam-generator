@@ -148,6 +148,7 @@ class WinstonFeedbackDatabase:
                     strengths TEXT,
                     weaknesses TEXT,
                     recommendations TEXT,
+                    narrative_assessment TEXT,
                     author_id INTEGER,
                     attempt_number INTEGER,
                     has_claude_api BOOLEAN DEFAULT 0,

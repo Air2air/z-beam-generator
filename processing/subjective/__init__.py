@@ -15,7 +15,7 @@ Author: System
 Created: November 16, 2025
 """
 
-from processing.subjective.evaluator import SubjectiveEvaluator
+from processing.subjective.evaluator import SubjectiveEvaluator, SubjectiveEvaluationResult
 from processing.subjective.validator import SubjectiveValidator
 from processing.subjective.parameter_tuner import (
     SubjectiveParameterTuner,
@@ -24,6 +24,7 @@ from processing.subjective.parameter_tuner import (
 
 __all__ = [
     'SubjectiveEvaluator',
+    'SubjectiveEvaluationResult',
     'SubjectiveValidator',
     'SubjectiveParameterTuner',
     'ParameterAdjustment'
