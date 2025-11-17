@@ -101,18 +101,17 @@ class ComponentRegistry:
         try:
             if 'length_variation_range' not in config:
                 raise ValueError("Config missing 'length_variation_range' - required for dynamic length calculation")
-            length_variation = config['length_variation_range']  # 1-3 scale
+            length_variation = config['length_variation_range']  # 1-10 scale (normalized Nov 16, 2025)
             
-            # Map 1-3 scale to variation percentages:
-            # 1 = ±10% (tight)
-            # 2 = ±20% (moderate)  
-            # 3 = ±60% (loose/dramatic)
-            variation_map = {
-                1: 0.10,  # ±10%
-                2: 0.20,  # ±20%
-                3: 0.60   # ±60%
-            }
-            variation_pct = variation_map.get(length_variation, 0.20)  # Default to moderate
+            # Normalize 1-10 scale to variation percentages:
+            # 1 = ±10% (tightest)
+            # 5.5 = ±35% (moderate)
+            # 10 = ±60% (loosest/maximum)
+            # Linear mapping: variation_pct = 0.10 + ((slider - 1) / 9) * 0.50
+            if not isinstance(length_variation, (int, float)) or length_variation < 1 or length_variation > 10:
+                raise ValueError(f"length_variation_range must be 1-10, got: {length_variation}")
+            
+            variation_pct = 0.10 + ((length_variation - 1) / 9.0) * 0.50
             variation_words = int(default * variation_pct)
             
             return {
