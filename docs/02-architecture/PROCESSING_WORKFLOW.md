@@ -336,17 +336,83 @@ print(result['attempt'])   # 1 (success on first try!)
 
 ## 📊 Key Data Flows
 
+### **Parameter Flow: First Batch Iteration**
+```
+INITIAL PARAMETERS (3-tier fallback):
+
+1. 🗄️ DATABASE (PRIMARY) - Most recent successful generation
+   └─ Query: "WHERE success=1 AND human_score >= 20 ORDER BY human_score DESC"
+   └─ Returns: Full parameter set (temp, penalties, voice_params)
+   └─ GENERIC LEARNING: Uses best params from ANY material/component
+   
+2. 📊 SWEET SPOT (SECONDARY) - Statistical recommendations
+   └─ Query: "FROM sweet_spot_recommendations ORDER BY max_human_score DESC"
+   └─ Uses: MEDIAN values from top 20% performers
+   └─ Threshold: Only if 500+ samples & confidence='high'/'medium'
+   └─ Current Status: 110/500 samples (22%), 3 sweet spots exist
+   
+3. 🧮 CALCULATED (FALLBACK) - Dynamic config calculations
+   └─ Used: ONLY if NO database history exists
+   └─ Source: config.yaml (1-10 sliders) → dynamic_config.py (normalize)
+   └─ Returns: Fresh calculations from base configuration
+```
+
+### **Parameter Updates Through Batch**
+```
+WITHIN-BATCH ADAPTATION (Retry Logic):
+Generation fails Winston validation
+  ↓
+Temperature += 0.1 (more creative)
+  ↓
+Voice params += 0.1 (more personality)
+  ↓
+Max retries: 3-7 (based on ai_avoidance slider)
+
+CROSS-BATCH LEARNING (Database Updates):
+After EACH successful generation:
+  ↓
+Store parameters → generation_parameters table
+  ↓
+Store Winston score → detection_results table
+  ↓
+Check if sample count >= 500 (MIN_GLOBAL_SAMPLES)
+  ↓
+If yes: Analyze top 20%, update sweet_spot_recommendations
+  ↓
+Next generation AUTOMATICALLY uses learned params (Priority 1)
+```
+
+### **Learning Triggers**
+```
+Parameters update in response to:
+
+1. Winston AI Scores (human_score field)
+   └─ Threshold: >= 20% = "successful"
+   └─ Effect: Params stored in database
+   └─ Impact: Top performers influence sweet spots
+
+2. Sample Count Milestones
+   └─ 500 samples: Statistical learning begins
+   └─ Sweet spot: Only updates with confidence='high'/'medium'
+   └─ Current: 110/500 (need 390 more for full learning)
+
+3. Composite Quality Score (planned)
+   └─ Winston (60%) + Subjective (30%) + Readability (10%)
+   └─ Status: Not yet integrated
+   └─ See: docs/LEARNING_INTEGRATION_QUICK_START.md
+```
+
 ### **Configuration → Generation**
 ```
-config.yaml (14 params)
+config.yaml (15 params, 1-10 scale)
   ↓
-dynamic_config.py (normalize, calculate tiers)
+dynamic_config.py (normalize to 0.0-1.0, calculate derived values)
   ↓
-voice_params dict (10 params) + enrichment_params (2) + direct usage (2)
+voice_params dict (9 params) + enrichment_params (3) + api_params (3)
   ↓
-prompt_builder.py (orchestrate all into prompt)
+prompt_builder.py (orchestrate all into unified prompt)
   ↓
-API (Grok/GPT/Claude)
+API (Grok/GPT/Claude) with learned temperature/penalties
   ↓
 Generated content
 ```
@@ -381,31 +447,34 @@ Learning system improves future attempts
 
 ---
 
-## 🎛️ Configuration Parameters (14 Total)
+## 🎛️ Configuration Parameters (15 Total)
 
-### **Voice & Style (6 parameters)**
-1. `author_voice_intensity` (1-3) - How strongly author personality shows
-2. `personality_intensity` (1-3) - Opinion, perspective frequency
-3. `engagement_style` (1-3) - Reader address rate
-4. `emotional_intensity` (1-3) - Emotional language vs neutral
-5. `professional_voice` (1-10) - Casual to highly formal vocabulary
-6. `jargon_removal` (1-10) - Technical terms to plain language
+### **Voice Parameters (9 total)**
+1. `sentence_rhythm_variation` (1-10) - Sentence length variation
+2. `imperfection_tolerance` (1-10) - Natural imperfections allowed
+3. `jargon_removal` (1-10) - Technical terms to plain language (FIXED Nov 16: was inverted)
+4. `professional_voice` (1-10) - Casual to highly formal vocabulary
+5. `author_voice_intensity` (1-10) - How strongly author personality shows
+6. `personality_intensity` (1-10) - Opinion, perspective frequency
+7. `engagement_style` (1-10) - Reader address rate
+8. `emotional_intensity` (1-10) - Emotional language vs neutral
 
-### **Technical Content (2 parameters)**
-7. `technical_language_intensity` (1-3) - Spec density in facts
-8. `context_specificity` (1-3) - Detail level in descriptions
+### **Technical Parameters (2 total)**
+9. `technical_language_intensity` (1-10) - Spec density in facts
+10. `context_specificity` (1-10) - Detail level in descriptions
 
-### **Variation & Imperfection (4 parameters)**
-9. `sentence_rhythm_variation` (1-10) - Sentence length variation
-10. `imperfection_tolerance` (1-10) - Natural imperfections allowed
+### **Variation Parameters (2 total)**
 11. `structural_predictability` (1-10) - Pattern predictability
 12. `length_variation_range` (1-10) - Word count flexibility
 
-### **AI Detection Resistance (2 parameters)**
+### **AI Detection Parameters (2 total)**
 13. `ai_avoidance_intensity` (1-10) - Anti-AI strategy strength
 14. `humanness_intensity` (1-10) - Human believability target
 
-**All 14 parameters** flow through `dynamic_config.py` → `prompt_builder.py` → API
+**All 15 parameters** use 1-10 scale, normalized to 0.0-1.0 internally  
+**Flow**: `config.yaml` → `dynamic_config.py` → `prompt_builder.py` → API  
+**Storage**: Database tracks all 15 + derived values (temperature, penalties)  
+**Learning**: Sweet spots calculated from top 20% performers (need 500+ samples)
 
 ---
 
