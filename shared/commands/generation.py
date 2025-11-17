@@ -69,76 +69,20 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("💾 Saved to: materials/data/Materials.yaml → caption")
         print()
         
-        # Run Subjective evaluation as final quality check (reuse existing API client)
-        print("🤖 Running subjective content evaluation...")
-        from shared.commands.subjective_evaluation_helper import evaluate_after_generation
-        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from processing.config.config_loader import get_config
-        
-        try:
-            # Initialize feedback database if configured
-            config = get_config()
-            db_path = config.config.get('winston_feedback_db_path')
-            feedback_db = None
-            if db_path:
-                feedback_db = WinstonFeedbackDatabase(db_path)
-            
-            # Evaluate both before and after captions (reuse api_client from line 29)
-            print()
-            if before_text:
-                print("   Evaluating 'before' caption...")
-                before_eval = evaluate_after_generation(
-                    content=before_text,
-                    topic=material_name,
-                    component_type='caption',
-                    domain='materials',
-                    api_client=api_client,  # Reuse existing client
-                    feedback_db=feedback_db,
-                    verbose=True  # Show detailed evaluation
-                )
-                if before_eval:
-                    print(f"   ✅ Before: {before_eval.overall_score:.1f}/10 - {'PASS' if before_eval.passes_quality_gate else 'FAIL'}")
-                    if before_eval.narrative_assessment:
-                        print(f"      {before_eval.narrative_assessment}")
-            
-            if after_text:
-                print("   Evaluating 'after' caption...")
-                after_eval = evaluate_after_generation(
-                    content=after_text,
-                    topic=material_name,
-                    component_type='caption',
-                    domain='materials',
-                    api_client=api_client,  # Reuse existing client
-                    feedback_db=feedback_db,
-                    verbose=False
-                )
-                if after_eval:
-                    print(f"   ✅ After: {after_eval.overall_score:.1f}/10 - {'PASS' if after_eval.passes_quality_gate else 'FAIL'}")
-                    
-                    # Show narrative assessment
-                    if after_eval.narrative_assessment:
-                        print()
-                        print("   📝 Assessment:")
-                        print(f"      {after_eval.narrative_assessment}")
-                    
-                    # Show dimension breakdown for 'after' caption
-                    print()
-                    print("   📊 Quality Dimensions (After):")
-                    for score in after_eval.dimension_scores:
-                        status = "✅" if score.score >= 7.0 else "⚠️"
-                        print(f"      {status} {score.dimension.value.replace('_', ' ').title()}: {score.score:.1f}/10")
-            
-            print()
-        except Exception as e:
-            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
-            import traceback
-            traceback.print_exc()
-            print()
+        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
+        # This eliminates duplicate evaluation code across handlers
         
         print("✨ Caption generation complete!")
         print()
         
         # Check if we should update sweet spot recommendations (generic learning)
+        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from processing.config.config_loader import get_config
+        
+        config = get_config()
+        db_path = config.config.get('winston_feedback_db_path')
+        feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+        
         if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=5):
             print("📊 Updating generic sweet spot recommendations...")
             try:
@@ -277,50 +221,8 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("💾 Saved to: data/materials/Materials.yaml → subtitle")
         print()
         
-        # Run Subjective evaluation as final quality check (reuse existing API client)
-        print("🤖 Running subjective content evaluation...")
-        from shared.commands.subjective_evaluation_helper import evaluate_after_generation
-        
-        try:
-            # Use existing feedback_db from orchestrator if available
-            feedback_db = orchestrator.feedback_db if hasattr(orchestrator, 'feedback_db') else None
-            
-            evaluation = evaluate_after_generation(
-                content=subtitle,
-                topic=material_name,
-                component_type='subtitle',
-                domain='materials',
-                api_client=api_client,  # Reuse existing client from line 206
-                feedback_db=feedback_db,
-                verbose=False
-            )
-            
-            if evaluation:
-                print(f"   Overall Quality Score: {evaluation.overall_score:.1f}/10")
-                print(f"   Quality Gate: {'✅ PASS' if evaluation.passes_quality_gate else '❌ FAIL'}")
-                
-                # Show narrative assessment
-                if evaluation.narrative_assessment:
-                    print()
-                    print("   📝 Assessment:")
-                    print(f"      {evaluation.narrative_assessment}")
-                
-                print()
-                print("   📊 Quality Dimensions:")
-                for score in evaluation.dimension_scores:
-                    status = "✅" if score.score >= 7.0 else "⚠️"
-                    print(f"      {status} {score.dimension.value.replace('_', ' ').title()}: {score.score:.1f}/10")
-                print()
-                
-                # Show top strength and weakness
-                if evaluation.strengths:
-                    print(f"   💪 Top Strength: {evaluation.strengths[0]}")
-                if evaluation.weaknesses:
-                    print(f"   ⚠️  Area for Improvement: {evaluation.weaknesses[0]}")
-                print()
-        except Exception as e:
-            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
-            print()
+        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
+        # This eliminates duplicate evaluation code across handlers
         
         print("✨ Subtitle generation complete!")
         print()
@@ -415,74 +317,8 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("💾 Saved to: materials/data/Materials.yaml → faq")
         print()
         
-        # Run Subjective evaluation as final quality check (reuse existing API client)
-        print("🤖 Running subjective content evaluation...")
-        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from processing.config.config_loader import get_config
-        
-        try:
-            # Initialize feedback database if configured
-            config = get_config()
-            db_path = config.config.get('winston_feedback_db_path')
-            feedback_db = None
-            if db_path:
-                feedback_db = WinstonFeedbackDatabase(db_path)
-            
-            helper = SubjectiveEvaluationHelper(
-                api_client=api_client,  # Reuse existing client from line 377
-                feedback_db=feedback_db,
-                verbose=False
-            )
-            
-            # Evaluate each FAQ entry
-            print()
-            total_score = 0
-            pass_count = 0
-            narratives = []
-            
-            for i, qa in enumerate(faq_list, 1):
-                # Combine question and answer for evaluation
-                faq_content = f"Q: {qa['question']}\nA: {qa['answer']}"
-                
-                evaluation = helper.evaluate_generation(
-                    content=faq_content,
-                    topic=material_name,
-                    component_type='faq',
-                    domain='materials'
-                )
-                
-                if evaluation:
-                    total_score += evaluation.overall_score
-                    if evaluation.passes_quality_gate:
-                        pass_count += 1
-                    
-                    status = "✅" if evaluation.passes_quality_gate else "⚠️"
-                    print(f"   {status} Q{i}: {evaluation.overall_score:.1f}/10")
-                    
-                    if evaluation.narrative_assessment:
-                        narratives.append((i, evaluation.narrative_assessment))
-            
-            # Show summary
-            if len(faq_list) > 0:
-                avg_score = total_score / len(faq_list)
-                pass_rate = (pass_count / len(faq_list)) * 100
-                
-                print()
-                print("   📊 FAQ Quality Summary:")
-                print(f"      Average Score: {avg_score:.1f}/10")
-                print(f"      Quality Gate Pass Rate: {pass_rate:.0f}% ({pass_count}/{len(faq_list)})")
-                
-                # Show narrative assessments
-                if narratives:
-                    print()
-                    print("   📝 Assessments:")
-                    for idx, narrative in narratives:
-                        print(f"      Q{idx}: {narrative}")
-                print()
-        except Exception as e:
-            print(f"   ⚠️  Subjective evaluation unavailable: {e}")
-            print()
+        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
+        # This eliminates duplicate evaluation code across handlers
         
         print("✨ FAQ generation complete!")
         print()

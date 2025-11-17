@@ -128,6 +128,9 @@ from shared.commands import (
     generate_content_validation_report,
 )
 
+# Import global evaluation system
+from shared.commands.global_evaluation import run_global_subjective_evaluation
+
 # Import unified workflow commands
 from shared.commands.unified_workflow import (
     run_material_workflow,
@@ -315,13 +318,22 @@ def main():
             return 1
     
     if args.caption:
-        return handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
+        result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
+        # Run global subjective evaluation after generation
+        run_global_subjective_evaluation(topic=args.caption, component_type='caption', domain='materials')
+        return result
     
     if args.subtitle:
-        return handle_subtitle_generation(args.subtitle, skip_integrity_check=args.skip_integrity_check)
+        result = handle_subtitle_generation(args.subtitle, skip_integrity_check=args.skip_integrity_check)
+        # Run global subjective evaluation after generation
+        run_global_subjective_evaluation(topic=args.subtitle, component_type='subtitle', domain='materials')
+        return result
     
     if args.faq:
-        return handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
+        result = handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
+        # Run global subjective evaluation after generation
+        run_global_subjective_evaluation(topic=args.faq, component_type='faq', domain='materials')
+        return result
     
     if args.audit or args.audit_batch or args.audit_all:
         return handle_material_audit(args)

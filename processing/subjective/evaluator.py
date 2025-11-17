@@ -167,7 +167,7 @@ CONTENT TO EVALUATE:
 
 Provide your evaluation in this format:
 
-**Narrative Assessment** (2-3 sentences summarizing overall quality, effectiveness, and key observations):
+**Narrative Assessment** (2-3 sentences that MUST specifically address whether the voice sounds authentically human or artificially generated. Comment on natural conversational flow, realistic word choices, genuine tone variations, and whether sentence patterns feel organic. Be explicit about any AI-like tendencies such as formulaic phrasing, excessive enthusiasm, or unnatural transitions):
 
 - Overall Score (0-10):
 - Dimension Scores:
@@ -229,6 +229,10 @@ Provide your evaluation in this format:
     def _parse_claude_response(self, response: str) -> SubjectiveEvaluationResult:
         """Parse Claude's evaluation response"""
         
+        # DEBUG: Log what we received
+        print(f"🔍 [DEBUG PARSER] Response length: {len(response)} chars")
+        print(f"🔍 [DEBUG PARSER] First 500 chars: {response[:500]}")
+        
         # Simple parsing (can be enhanced)
         lines = response.split('\n')
         
@@ -269,6 +273,12 @@ Provide your evaluation in this format:
                     if narrative_lines:
                         narrative_assessment = ' '.join(narrative_lines)
                     break
+        
+        # DEBUG: Log narrative assessment extraction
+        if narrative_assessment:
+            print(f"🔍 [DEBUG] EVALUATOR: Extracted narrative ({len(narrative_assessment)} chars): {narrative_assessment[:100]}...")
+        else:
+            print("⚠️ [DEBUG] EVALUATOR: NO narrative extracted from response")
         
         # Parse response (simplified - enhance as needed)
         # This would need actual parsing logic based on Claude's response format

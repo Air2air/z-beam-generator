@@ -45,6 +45,11 @@ from .validation import (
     generate_content_validation_report,
 )
 
+# Global evaluation
+from .global_evaluation import (
+    run_global_subjective_evaluation,
+)
+
 __all__ = [
     # Generation
     'handle_caption_generation',
@@ -65,4 +70,6 @@ __all__ = [
     'handle_fix_analysis',
     # Validation
     'generate_content_validation_report',
+    # Global Evaluation
+    'run_global_subjective_evaluation',
 ]

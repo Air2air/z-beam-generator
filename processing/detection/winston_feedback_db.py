@@ -555,6 +555,12 @@ class WinstonFeedbackDatabase:
         weaknesses_json = json.dumps(evaluation_result.weaknesses)
         recommendations_json = json.dumps(evaluation_result.recommendations)
         
+        # DEBUG: Log narrative before database insert
+        if evaluation_result.narrative_assessment:
+            logger.info(f"🔍 [DEBUG] DATABASE: About to insert narrative ({len(evaluation_result.narrative_assessment)} chars): {evaluation_result.narrative_assessment[:100]}...")
+        else:
+            logger.warning(f"⚠️ [DEBUG] DATABASE: evaluation_result.narrative_assessment is None/empty")
+        
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             

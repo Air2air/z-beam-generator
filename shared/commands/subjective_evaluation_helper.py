@@ -113,6 +113,12 @@ class SubjectiveEvaluationHelper:
             context=context
         )
         
+        # DEBUG: Log narrative before database insert
+        if result.narrative_assessment:
+            logger.info(f"🔍 [DEBUG] HELPER: Has narrative ({len(result.narrative_assessment)} chars): {result.narrative_assessment[:100]}...")
+        else:
+            logger.warning(f"⚠️ [DEBUG] HELPER: Result has NO narrative_assessment")
+        
         # Log to learning database if available
         if self.feedback_db:
             try:
