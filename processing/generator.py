@@ -786,7 +786,7 @@ class DynamicGenerator:
         system_prompt = "You are a professional technical writer creating concise, clear content."
         
         tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
-        if tech_intensity == 1:
+        if tech_intensity < 0.15:  # Very low (slider 1-2)
             system_prompt = (
                 "You are a professional technical writer creating concise, clear content. "
                 "CRITICAL RULE: Write ONLY in qualitative, conceptual terms. "

@@ -4,12 +4,13 @@
 # distinct personalities for each author. This ensures variation between authors
 # while still allowing global control via the main sliders.
 #
-# UPDATED FOR 1-3 SCALE (November 14, 2025):
-# Offsets now use -1, 0, +1 to move between the 3 levels
-# Example: If base technical_language_intensity = 1 (None), and Yi-Chun's offset = +1,
-#          then Yi-Chun generates with technical_language_intensity = 2 (Minimal)
+# UPDATED FOR 1-10 SCALE (November 16, 2025):
+# Offsets now use -3 to +3 to move across the 1-10 scale meaningfully
+# Example: If base technical_language_intensity = 3 (from config.yaml, low on 1-10 scale), 
+#          and Yi-Chun's offset = +2, then Yi-Chun generates with 
+#          technical_language_intensity = 5 (moderate on 1-10 scale)
 #
-# Offset ranges: -1 to +1 (moves one level up or down within 1-3 scale)
+# Offset ranges: -3 to +3 (meaningful shifts within 1-10 scale)
 
 authors:
   # Author 1: Yi-Chun Lin (Taiwan) - Precise, Methodical, Data-Driven
@@ -20,17 +21,17 @@ authors:
     personality: "Precise, methodical, evidence-focused"
     
     offsets:
-      author_voice_intensity: +1         # Level 3: Strong regional voice
-      personality_intensity: 0           # Level 2: Balanced
-      engagement_style: -1               # Level 1: More formal
-      emotional_intensity: 0             # Level 1: Clinical (Phase 4)
-      technical_language_intensity: 0    # Level 1: Keep NO SPECS (same as base)
-      context_specificity: +1            # Level 3: Very detailed
-      sentence_rhythm_variation: 0       # Level 3: Dramatic (keep as-is)
-      imperfection_tolerance: 0          # Level 3: Human-like (keep as-is)
-      structural_predictability: 0       # Level 3: Minimal (keep as-is)
-      ai_avoidance_intensity: 0          # Level 3: Aggressive (keep as-is)
-      length_variation_range: 0          # Level 3: Loose (keep as-is)
+      author_voice_intensity: +2         # Boost to 7-8: Strong regional voice
+      personality_intensity: 0           # Keep at 5: Balanced
+      engagement_style: -2               # Lower to 3: More formal
+      emotional_intensity: 0             # Keep at base level
+      technical_language_intensity: 0    # Keep at base (NO SPECS when base is low)
+      context_specificity: +2            # Boost to 7-8: Very detailed
+      sentence_rhythm_variation: 0       # Keep at maximum
+      imperfection_tolerance: 0          # Keep at maximum
+      structural_predictability: 0       # Keep at maximum
+      ai_avoidance_intensity: 0          # Keep at maximum
+      length_variation_range: 0          # Keep at maximum
     
     # Character summary: Systematic, data-driven, formal technical writer
     # Strengths: Precision, logical flow, detailed technical content
@@ -44,17 +45,17 @@ authors:
     personality: "Sophisticated, elegant, balanced objectivity"
     
     offsets:
-      author_voice_intensity: +1         # Level 3: Strong Italian EFL traits
-      personality_intensity: 0           # Level 2: Balanced
-      engagement_style: 0                # Level 2: Balanced
-      emotional_intensity: 0             # Level 1: Clinical (Phase 4)
-      technical_language_intensity: 0    # Level 1: Keep clinical (NO SPECS)
-      context_specificity: 0             # Level 3: Full (keep as-is)
-      sentence_rhythm_variation: 0       # Level 3: Dramatic (keep as-is)
-      imperfection_tolerance: 0          # Level 3: Human-like (keep as-is)
-      structural_predictability: 0       # Level 3: Minimal (keep as-is)
-      ai_avoidance_intensity: 0          # Level 3: Aggressive (keep as-is)
-      length_variation_range: 0          # Level 3: Loose (keep as-is)
+      author_voice_intensity: +2         # Boost to 7-8: Strong Italian EFL traits
+      personality_intensity: 0           # Keep at 5: Balanced
+      engagement_style: 0                # Keep at base: Balanced
+      emotional_intensity: 0             # Keep at base level
+      technical_language_intensity: 0    # Keep at base (NO SPECS when base is low)
+      context_specificity: 0             # Keep at maximum
+      sentence_rhythm_variation: 0       # Keep at maximum
+      imperfection_tolerance: 0          # Keep at maximum
+      structural_predictability: 0       # Keep at maximum
+      ai_avoidance_intensity: 0          # Keep at maximum
+      length_variation_range: 0          # Keep at maximum
     
     # Character summary: Refined technical writer with sophisticated expression
     # Strengths: Elegance, balance, nuanced analysis
@@ -68,17 +69,17 @@ authors:
     personality: "Practical, accessible, efficiency-focused"
     
     offsets:
-      author_voice_intensity: +1         # Level 3: Strong Southeast Asian voice
-      personality_intensity: +1          # Level 3: Most personal
-      engagement_style: +1               # Level 3: Most conversational
-      emotional_intensity: 0             # Level 1: Clinical (Phase 4)
-      technical_language_intensity: 0    # Level 1: Keep simple (NO SPECS)
-      context_specificity: 0             # Level 3: Full (keep as-is)
-      sentence_rhythm_variation: 0       # Level 3: Dramatic (keep as-is)
-      imperfection_tolerance: 0          # Level 3: Human-like (keep as-is)
-      structural_predictability: 0       # Level 3: Minimal (keep as-is)
-      ai_avoidance_intensity: 0          # Level 3: Aggressive (keep as-is)
-      length_variation_range: 0          # Level 3: Loose (keep as-is)
+      author_voice_intensity: +2         # Boost to 7-8: Strong Southeast Asian voice
+      personality_intensity: +2          # Boost to 7: More personal
+      engagement_style: +2               # Boost to 7-8: More conversational
+      emotional_intensity: 0             # Keep at base level
+      technical_language_intensity: 0    # Keep at base (NO SPECS when base is low)
+      context_specificity: 0             # Keep at maximum
+      sentence_rhythm_variation: 0       # Keep at maximum
+      imperfection_tolerance: 0          # Keep at maximum
+      structural_predictability: 0       # Keep at maximum
+      ai_avoidance_intensity: 0          # Keep at maximum
+      length_variation_range: 0          # Keep at maximum
     
     # Character summary: Accessible technical communicator, practical focus
     # Strengths: Clarity, accessibility, practical applications
@@ -92,17 +93,17 @@ authors:
     personality: "Conversational academic, balanced engagement"
     
     offsets:
-      author_voice_intensity: 0          # Level 2: Moderate
-      personality_intensity: 0           # Level 2: Balanced
-      engagement_style: +1               # Level 3: Engaging
-      emotional_intensity: 0             # Level 1: Clinical (Phase 4)
-      technical_language_intensity: 0    # Level 1: Keep balanced (NO SPECS)
-      context_specificity: 0             # Level 3: Full (keep as-is)
-      sentence_rhythm_variation: 0       # Level 3: Dramatic (keep as-is)
-      imperfection_tolerance: 0          # Level 3: Human-like (keep as-is)
-      structural_predictability: 0       # Level 3: Minimal (keep as-is)
-      ai_avoidance_intensity: 0          # Level 3: Aggressive (keep as-is)
-      length_variation_range: 0          # Level 3: Loose (keep as-is)
+      author_voice_intensity: 0          # Keep at 5: Moderate
+      personality_intensity: 0           # Keep at 5: Balanced
+      engagement_style: +2               # Boost to 7: Engaging
+      emotional_intensity: 0             # Keep at base level
+      technical_language_intensity: 0    # Keep at base (NO SPECS when base is low)
+      context_specificity: 0             # Keep at maximum
+      sentence_rhythm_variation: 0       # Keep at maximum
+      imperfection_tolerance: 0          # Keep at maximum
+      structural_predictability: 0       # Keep at maximum
+      ai_avoidance_intensity: 0          # Keep at maximum
+      length_variation_range: 0          # Keep at maximum
     
     # Character summary: Engaging technical writer with conversational style
     # Strengths: Engagement, balance, reader accessibility
@@ -111,21 +112,21 @@ authors:
 # Usage Notes:
 # 
 # 1. Final intensity = base_value + author_offset
-# 2. Clamped to [1, 3] range automatically
+# 2. Clamped to [1, 10] range automatically
 # 3. Author selection happens via Materials.yaml author.id field
 # 4. Offsets applied dynamically during generation
 #
-# Example calculation (1-3 scale):
-#   Base technical_language_intensity = 1 (from config.yaml)
-#   Yi-Chun offset = +1
-#   Final value for Yi-Chun = 1 + 1 = 2 (Minimal)
+# Example calculation (1-10 scale):
+#   Base technical_language_intensity = 3 (from config.yaml, slider 3)
+#   Yi-Chun offset = +2
+#   Final value for Yi-Chun = 3 + 2 = 5 (Moderate on 1-10 scale)
 #   Alessandro offset = 0
-#   Final value for Alessandro = 1 + 0 = 1 (None)
+#   Final value for Alessandro = 3 + 0 = 3 (Low on 1-10 scale)
 #
-# Result: Yi-Chun allows minimal specs (1-2 properties) while Alessandro
-#         stays purely qualitative (0 specs), creating distinct writing styles.
+# Result: Yi-Chun allows moderate specs while Alessandro stays more minimal,
+#         creating distinct writing styles while preserving the 1-10 scale.
 
 # Validation Rules:
-# - All offsets must be in range [-30, +30]
+# - All offsets should be in range [-3, +3] for meaningful variation
 # - Author IDs must match data/authors/registry.py
 # - Country names must match persona files in prompts/personas/

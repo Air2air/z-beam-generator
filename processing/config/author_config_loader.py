@@ -133,13 +133,13 @@ class AuthorConfigLoader:
         applied_offsets = []
         for field in slider_fields:
             if field in offsets:
-                # Default to 2 (moderate) if field missing - INTENTIONAL
+                # Default to 5 (moderate) if field missing - INTENTIONAL
                 # Authors inherit balanced baseline, then offsets are applied
-                base_value = config_data.get(field, 2)  # Changed from 50 to 2 for 1-3 scale
+                base_value = config_data.get(field, 5)  # Default to middle of 1-10 scale
                 offset = offsets[field]
                 
-                # Clamp to [1, 3] for 1-3 scale (NOT [0, 100])
-                new_value = max(1, min(3, base_value + offset))
+                # Clamp to [1, 10] for 1-10 scale (normalized Nov 16, 2025)
+                new_value = max(1, min(10, base_value + offset))
                 
                 if new_value != base_value:
                     config_data[field] = new_value

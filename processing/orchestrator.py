@@ -246,14 +246,14 @@ class Orchestrator:
                 attempt += 1
                 continue
             
-            # Step 4.5: Check for technical specs violation at technical_intensity=1
+            # Step 4.5: Check for technical specs violation at very low technical_intensity
             # Use enrichment_params from line 113 (already calculated)
-            tech_intensity = enrichment_params.get('technical_intensity', 2)
+            tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
             
-            logger.info(f"🔍 Checking technical specs (technical_intensity={tech_intensity})")
+            logger.info(f"🔍 Checking technical specs (technical_intensity={tech_intensity:.3f})")
             logger.info(f"🔍 Enrichment params: {enrichment_params}")
             
-            if tech_intensity == 1:
+            if tech_intensity < 0.15:  # Very low (slider 1-2)
                 # Detect numbers with units (technical specs)
                 import re
                 spec_patterns = [
@@ -552,7 +552,7 @@ class Orchestrator:
         enrichment_params = self.dynamic_config.calculate_enrichment_params()
         tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
         
-        if tech_intensity == 1:
+        if tech_intensity < 0.15:  # Very low (slider 1-2)
             # Level 1: Add CRITICAL override to system prompt (highest authority)
             system_prompt = (
                 "You are a professional technical writer creating concise, clear content. "
