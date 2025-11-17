@@ -29,6 +29,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
 
 🧪 TESTING & VALIDATION:
   python3 run.py --test                    # Full test suite
+  python3 run.py --batch-test              # Batch caption test (4 materials, one per author, with report)
   python3 run.py --test-api                # Test API connections
   python3 run.py --validate                # Validate existing data without regeneration
   python3 run.py --validate-report report.md  # Generate validation report
@@ -203,6 +204,9 @@ def main():
     parser.add_argument("--fix-analysis-material", help="Filter fix analysis by material")
     parser.add_argument("--fix-analysis-failure-type", help="Filter fix analysis by failure type (uniform, borderline, partial, poor)")
     
+    # Testing Commands
+    parser.add_argument("--batch-test", action="store_true", help="Run batch caption test (4 materials, one per author)")
+    
     # Other Commands
     parser.add_argument("--data-only", action="store_true", help="Manual export: combine Materials.yaml + Categories.yaml → frontmatter")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize frontmatter files")
@@ -291,6 +295,23 @@ def main():
             return result.returncode
         except Exception as e:
             print(f"❌ Winston audit failed: {e}")
+            return 1
+    
+    # Batch test command
+    if args.batch_test:
+        import os
+        import subprocess
+        
+        print("🎯 Running Batch Caption Test...")
+        print("=" * 70)
+        try:
+            result = subprocess.run(
+                ['python3', 'scripts/batch_caption_test.py'],
+                cwd=os.path.dirname(os.path.abspath(__file__))
+            )
+            return result.returncode
+        except Exception as e:
+            print(f"❌ Batch test failed: {e}")
             return 1
     
     if args.caption:

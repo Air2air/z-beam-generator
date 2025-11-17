@@ -274,10 +274,11 @@ class BatchReport:
                 if r.winston_metrics
             ) / len(success_reports)
             
-            avg_composite = sum(
-                r.composite_scoring.composite_score for r in success_reports 
-                if r.composite_scoring
-            ) / len([r for r in success_reports if r.composite_scoring])
+            # Handle composite scoring (may not be present in all reports)
+            composite_reports = [r for r in success_reports if r.composite_scoring]
+            avg_composite = (
+                sum(r.composite_scoring.composite_score for r in composite_reports) / len(composite_reports)
+            ) if composite_reports else 0.0
             
             total_credits = sum(
                 r.winston_metrics.credits_used for r in self.reports 
