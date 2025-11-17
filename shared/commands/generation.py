@@ -69,12 +69,11 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("💾 Saved to: materials/data/Materials.yaml → caption")
         print()
         
-        # Run Subjective evaluation as final quality check
+        # Run Subjective evaluation as final quality check (reuse existing API client)
         print("🤖 Running subjective content evaluation...")
         from shared.commands.subjective_evaluation_helper import evaluate_after_generation
         from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from processing.config.config_loader import get_config
-        from shared.api.client_factory import create_api_client
         
         try:
             # Initialize feedback database if configured
@@ -84,10 +83,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             if db_path:
                 feedback_db = WinstonFeedbackDatabase(db_path)
             
-            # Initialize Grok API client for subjective evaluation
-            grok_client = create_api_client('grok')
-            
-            # Evaluate both before and after captions
+            # Evaluate both before and after captions (reuse api_client from line 29)
             print()
             if before_text:
                 print("   Evaluating 'before' caption...")
@@ -96,12 +92,14 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                     topic=material_name,
                     component_type='caption',
                     domain='materials',
-                    api_client=grok_client,
+                    api_client=api_client,  # Reuse existing client
                     feedback_db=feedback_db,
                     verbose=True  # Show detailed evaluation
                 )
                 if before_eval:
                     print(f"   ✅ Before: {before_eval.overall_score:.1f}/10 - {'PASS' if before_eval.passes_quality_gate else 'FAIL'}")
+                    if before_eval.narrative_assessment:
+                        print(f"      {before_eval.narrative_assessment}")
             
             if after_text:
                 print("   Evaluating 'after' caption...")
@@ -110,12 +108,18 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                     topic=material_name,
                     component_type='caption',
                     domain='materials',
-                    api_client=grok_client,
+                    api_client=api_client,  # Reuse existing client
                     feedback_db=feedback_db,
                     verbose=False
                 )
                 if after_eval:
                     print(f"   ✅ After: {after_eval.overall_score:.1f}/10 - {'PASS' if after_eval.passes_quality_gate else 'FAIL'}")
+                    
+                    # Show narrative assessment
+                    if after_eval.narrative_assessment:
+                        print()
+                        print("   📝 Assessment:")
+                        print(f"      {after_eval.narrative_assessment}")
                     
                     # Show dimension breakdown for 'after' caption
                     print()
@@ -127,6 +131,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             print()
         except Exception as e:
             print(f"   ⚠️  Subjective evaluation unavailable: {e}")
+            import traceback
+            traceback.print_exc()
             print()
         
         print("✨ Caption generation complete!")
@@ -271,7 +277,7 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("💾 Saved to: data/materials/Materials.yaml → subtitle")
         print()
         
-        # Run Subjective evaluation as final quality check
+        # Run Subjective evaluation as final quality check (reuse existing API client)
         print("🤖 Running subjective content evaluation...")
         from shared.commands.subjective_evaluation_helper import evaluate_after_generation
         
@@ -284,6 +290,7 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
                 topic=material_name,
                 component_type='subtitle',
                 domain='materials',
+                api_client=api_client,  # Reuse existing client from line 206
                 feedback_db=feedback_db,
                 verbose=False
             )
@@ -291,6 +298,13 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
             if evaluation:
                 print(f"   Overall Quality Score: {evaluation.overall_score:.1f}/10")
                 print(f"   Quality Gate: {'✅ PASS' if evaluation.passes_quality_gate else '❌ FAIL'}")
+                
+                # Show narrative assessment
+                if evaluation.narrative_assessment:
+                    print()
+                    print("   📝 Assessment:")
+                    print(f"      {evaluation.narrative_assessment}")
+                
                 print()
                 print("   📊 Quality Dimensions:")
                 for score in evaluation.dimension_scores:
@@ -401,7 +415,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("💾 Saved to: materials/data/Materials.yaml → faq")
         print()
         
-        # Run Subjective evaluation as final quality check
+        # Run Subjective evaluation as final quality check (reuse existing API client)
         print("🤖 Running subjective content evaluation...")
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
         from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
@@ -416,6 +430,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
                 feedback_db = WinstonFeedbackDatabase(db_path)
             
             helper = SubjectiveEvaluationHelper(
+                api_client=api_client,  # Reuse existing client from line 377
                 feedback_db=feedback_db,
                 verbose=False
             )
@@ -424,6 +439,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
             print()
             total_score = 0
             pass_count = 0
+            narratives = []
             
             for i, qa in enumerate(faq_list, 1):
                 # Combine question and answer for evaluation
@@ -443,6 +459,9 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
                     
                     status = "✅" if evaluation.passes_quality_gate else "⚠️"
                     print(f"   {status} Q{i}: {evaluation.overall_score:.1f}/10")
+                    
+                    if evaluation.narrative_assessment:
+                        narratives.append((i, evaluation.narrative_assessment))
             
             # Show summary
             if len(faq_list) > 0:
@@ -453,6 +472,13 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
                 print("   📊 FAQ Quality Summary:")
                 print(f"      Average Score: {avg_score:.1f}/10")
                 print(f"      Quality Gate Pass Rate: {pass_rate:.0f}% ({pass_count}/{len(faq_list)})")
+                
+                # Show narrative assessments
+                if narratives:
+                    print()
+                    print("   📝 Assessments:")
+                    for idx, narrative in narratives:
+                        print(f"      Q{idx}: {narrative}")
                 print()
         except Exception as e:
             print(f"   ⚠️  Subjective evaluation unavailable: {e}")
