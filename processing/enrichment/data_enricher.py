@@ -99,7 +99,7 @@ class DataEnricher:
         
         return facts
     
-    def format_facts_for_prompt(self, facts: Dict, enrichment_params: Optional[Dict] = None, technical_intensity: int = 50) -> str:
+    def format_facts_for_prompt(self, facts: Dict, enrichment_params: Optional[Dict] = None, technical_intensity: int = 50, voice_params: Optional[Dict] = None) -> str:
         """
         Format facts as prompt-friendly string with density and style controlled by enrichment_params.
         
@@ -111,6 +111,8 @@ class DataEnricher:
                 - fact_formatting_style: 'formal'|'balanced'|'conversational'
                 - engagement_level: 0-100 (informal language)
             technical_intensity: Backward compatibility (used if enrichment_params is None)
+            voice_params: Dict from DynamicConfig.calculate_voice_parameters() with:
+                - jargon_removal: 0.0-1.0 (high = remove jargon)
             
         Returns:
             Formatted string for injection into prompts
@@ -137,22 +139,31 @@ class DataEnricher:
                 category_line += f" ({facts['subcategory']})"
             lines.append(category_line)
         
-        # Calculate how many specs to include based on technical_intensity (1-3 scale)
-        if tech_intensity == 1:
-            # Level 1: Conceptual only, NO technical specs
+        # Check jargon_removal level - if high, exclude ALL technical specs
+        jargon_removal = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5
+        if jargon_removal > 0.7:
+            # High jargon removal: NO technical specs at all
+            logger.info(f"High jargon removal ({jargon_removal:.3f}) - excluding all technical specs")
             max_props = 0
             max_settings = 0
-            include_apps = False
-        elif tech_intensity == 2:
-            # Level 2: Minimal specs - 1-2 key properties
-            max_props = 2
-            max_settings = 1
-            include_apps = False
-        else:  # tech_intensity == 3
-            # Level 3: Full technical detail
-            max_props = 5
-            max_settings = 3
-            include_apps = True
+            include_apps = True  # Applications are usually plain language
+        else:
+            # Calculate how many specs to include based on technical_intensity (1-3 scale)
+            if tech_intensity == 1:
+                # Level 1: Conceptual only, NO technical specs
+                max_props = 0
+                max_settings = 0
+                include_apps = False
+            elif tech_intensity == 2:
+                # Level 2: Minimal specs - 1-2 key properties
+                max_props = 2
+                max_settings = 1
+                include_apps = False
+            else:  # tech_intensity == 3
+                # Level 3: Full technical detail
+                max_props = 5
+                max_settings = 3
+                include_apps = True
         
         if facts.get('properties') and max_props > 0:
             lines.append("Properties:")

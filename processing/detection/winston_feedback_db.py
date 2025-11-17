@@ -81,7 +81,10 @@ class WinstonFeedbackDatabase:
                     attempt_number INTEGER,
                     temperature REAL,
                     success BOOLEAN NOT NULL,
-                    failure_type TEXT
+                    failure_type TEXT,
+                    composite_quality_score REAL,
+                    subjective_evaluation_id INTEGER,
+                    FOREIGN KEY (subjective_evaluation_id) REFERENCES subjective_evaluations(id)
                 );
                 
                 CREATE TABLE IF NOT EXISTS sentence_analysis (
@@ -147,7 +150,9 @@ class WinstonFeedbackDatabase:
                     recommendations TEXT,
                     author_id INTEGER,
                     attempt_number INTEGER,
-                    has_claude_api BOOLEAN DEFAULT 0
+                    has_claude_api BOOLEAN DEFAULT 0,
+                    generation_parameters_id INTEGER,
+                    FOREIGN KEY (generation_parameters_id) REFERENCES generation_parameters(id)
                 );
                 
                 CREATE TABLE IF NOT EXISTS generation_parameters (
@@ -247,10 +252,13 @@ class WinstonFeedbackDatabase:
                 CREATE INDEX IF NOT EXISTS idx_component ON detection_results(component_type);
                 CREATE INDEX IF NOT EXISTS idx_success ON detection_results(success);
                 CREATE INDEX IF NOT EXISTS idx_timestamp ON detection_results(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_detection_composite ON detection_results(composite_quality_score);
+                CREATE INDEX IF NOT EXISTS idx_detection_subjective ON detection_results(subjective_evaluation_id);
                 CREATE INDEX IF NOT EXISTS idx_claude_topic ON subjective_evaluations(topic);
                 CREATE INDEX IF NOT EXISTS idx_claude_component ON subjective_evaluations(component_type);
                 CREATE INDEX IF NOT EXISTS idx_claude_quality ON subjective_evaluations(passes_quality_gate);
                 CREATE INDEX IF NOT EXISTS idx_claude_timestamp ON subjective_evaluations(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_subjective_eval_params ON subjective_evaluations(generation_parameters_id);
                 CREATE INDEX IF NOT EXISTS idx_params_material ON generation_parameters(material);
                 CREATE INDEX IF NOT EXISTS idx_params_component ON generation_parameters(component_type);
                 CREATE INDEX IF NOT EXISTS idx_params_temperature ON generation_parameters(temperature);
@@ -278,7 +286,7 @@ class WinstonFeedbackDatabase:
         
         Args:
             material: Material name (e.g., "Steel")
-            component_type: Component type (e.g., "caption", "subtitle")
+            component_type: Component type (defined in prompts/{type}.txt)
             generated_text: The text that was analyzed
             winston_result: Full Winston API response with sentence data
             temperature: Generation temperature used
@@ -523,7 +531,7 @@ class WinstonFeedbackDatabase:
         
         Args:
             topic: Subject matter (material name, historical event, etc.)
-            component_type: Content type (caption, subtitle, etc.)
+            component_type: Content type (from prompts/)
             generated_text: The generated text that was evaluated
             evaluation_result: SubjectiveEvaluationResult object
             domain: Content domain (materials, history, recipes, etc.)
@@ -589,6 +597,45 @@ class WinstonFeedbackDatabase:
             logger.info(f"✅ [CLAUDE EVAL] Logged evaluation #{evaluation_id} for {topic}/{component_type}")
             
             return evaluation_id
+    
+    def should_update_sweet_spot(self, material: str = '*', component_type: str = '*', min_samples: int = 5) -> bool:
+        """Check if global sweet spot should be updated based on sample count.
+        
+        GENERIC LEARNING: Always checks global scope (material='*', component_type='*').
+        
+        Args:
+            material: Ignored (kept for backward compatibility)
+            component_type: Ignored (kept for backward compatibility)
+            min_samples: Minimum samples needed before calculating sweet spot
+            
+        Returns:
+            True if enough samples exist and sweet spot should be updated
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            # Check if global sweet spot already exists
+            cursor.execute("""
+                SELECT last_updated, sample_count FROM sweet_spot_recommendations
+                WHERE material = '*' AND component_type = '*'
+            """)
+            
+            existing = cursor.fetchone()
+            
+            # Check current total sample count across ALL materials/components
+            cursor.execute("""
+                SELECT COUNT(*) FROM detection_results
+                WHERE success = 1
+            """)
+            
+            current_samples = cursor.fetchone()[0]
+            
+            # Update if: no existing sweet spot, or new samples since last update
+            if not existing:
+                return current_samples >= min_samples
+            else:
+                last_sample_count = existing[1] or 0
+                return current_samples > last_sample_count and current_samples >= min_samples
     
     def get_subjective_evaluation_stats(
         self,

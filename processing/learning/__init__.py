@@ -9,16 +9,31 @@ Components:
 - PromptOptimizer: Dynamically adjusts prompts based on feedback
 - TemperatureAdvisor: Recommends optimal temperature settings
 - SuccessPredictor: Predicts success likelihood before generation
+- GranularParameterCorrelator: Fine-grained parameter correlation analysis
+
+Note: For comprehensive quality scoring and parameter correlation analysis,
+see the Scoring Module in processing.evaluation, which includes:
+  - CompositeScorer (unified quality metrics)
+  - GranularParameterCorrelator (parameter-quality relationships)
+  - SubjectiveEvaluator (human-like assessment)
 """
 
 from processing.learning.pattern_learner import PatternLearner
 from processing.learning.prompt_optimizer import PromptOptimizer
 from processing.learning.temperature_advisor import TemperatureAdvisor
 from processing.learning.success_predictor import SuccessPredictor
+from processing.learning.granular_correlator import (
+    GranularParameterCorrelator,
+    ParameterCorrelation,
+    ParameterInteraction
+)
 
 __all__ = [
     'PatternLearner',
     'PromptOptimizer',
     'TemperatureAdvisor',
-    'SuccessPredictor'
+    'SuccessPredictor',
+    'GranularParameterCorrelator',
+    'ParameterCorrelation',
+    'ParameterInteraction'
 ]

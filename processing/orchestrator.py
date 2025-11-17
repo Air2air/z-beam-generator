@@ -152,7 +152,7 @@ class Orchestrator:
         
         logger.info(f"📋 Retrieved enrichment_params: {enrichment_params}")
         
-        facts_str = self.enricher.format_facts_for_prompt(facts, enrichment_params=enrichment_params)
+        facts_str = self.enricher.format_facts_for_prompt(facts, enrichment_params=enrichment_params, voice_params=voice_params)
         
         # Step 2: Get voice profile
         voice = self.voice_store.get_voice(author_id)
@@ -267,7 +267,7 @@ class Orchestrator:
                 logger.info(f"🔍 Has specs: {has_specs}")
                 
                 if has_specs:
-                    logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden at technical_intensity=1)")
+                    logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden at technical_intensity < 0.15)")
                     if attempt < absolute_max:
                         # Adjust prompt to emphasize NO SPECS even more
                         prompt = prompt.replace(
@@ -550,7 +550,7 @@ class Orchestrator:
         
         # Get enrichment params to check technical_intensity
         enrichment_params = self.dynamic_config.calculate_enrichment_params()
-        tech_intensity = enrichment_params.get('technical_intensity', 2)
+        tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
         
         if tech_intensity == 1:
             # Level 1: Add CRITICAL override to system prompt (highest authority)

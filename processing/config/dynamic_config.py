@@ -23,8 +23,10 @@ Usage:
 """
 
 import math
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from processing.config.config_loader import get_config
+from processing.parameters.registry import get_registry
+from processing.parameters.base import BaseParameter
 
 
 class DynamicConfig:
@@ -43,6 +45,8 @@ class DynamicConfig:
             base_config: Optional ProcessingConfig to use (for author-specific configs)
         """
         self.base_config = base_config if base_config is not None else get_config()
+        self.use_modular = self.base_config.config.get('use_modular_parameters', False)
+        self._parameter_instances: Optional[Dict[str, BaseParameter]] = None
     
     # =========================================================================
     # API GENERATION PARAMETERS (Dynamic)
@@ -316,62 +320,157 @@ class DynamicConfig:
     # VOICE INTENSITY PARAMETERS (Dynamic)
     # =========================================================================
     
+    def get_parameter_instances(self) -> Dict[str, BaseParameter]:
+        """
+        Get or create modular parameter instances.
+        
+        Returns:
+            Dict mapping parameter names to instances
+        """
+        if self._parameter_instances is None:
+            registry = get_registry()
+            
+            # Create config dict with all 14 parameters (Phase 3 complete - November 16, 2025)
+            param_config = {
+                # Phase 1 (original 4)
+                'sentence_rhythm_variation': self.base_config.get_sentence_rhythm_variation(),
+                'imperfection_tolerance': self.base_config.get_imperfection_tolerance(),
+                'jargon_removal': self.base_config.config.get('jargon_removal', 7),
+                'professional_voice': self.base_config.config.get('professional_voice', 5),
+                
+                # Phase 3 - Voice parameters (4)
+                'author_voice_intensity': self.base_config.config.get('author_voice_intensity', 5),
+                'personality_intensity': self.base_config.config.get('personality_intensity', 5),
+                'engagement_style': self.base_config.config.get('engagement_style', 5),
+                'emotional_intensity': self.base_config.config.get('emotional_intensity', 5),
+                
+                # Phase 3 - Technical parameters (2)
+                'technical_language_intensity': self.base_config.config.get('technical_language_intensity', 5),
+                'context_specificity': self.base_config.config.get('context_specificity', 5),
+                
+                # Phase 3 - Variation parameters (2)
+                'structural_predictability': self.base_config.config.get('structural_predictability', 5),
+                'length_variation_range': self.base_config.config.get('length_variation_range', 5),
+                
+                # Phase 3 - AI Detection parameters (2)
+                'ai_avoidance_intensity': self.base_config.config.get('ai_avoidance_intensity', 5),
+                'humanness_intensity': self.base_config.config.get('humanness_intensity', 5),
+            }
+            
+            # Create only registered parameters
+            self._parameter_instances = registry.create_all_parameters(param_config)
+        
+        return self._parameter_instances
+    
+    def orchestrate_parameter_prompts(self, content_length: str = 'medium') -> str:
+        """
+        Orchestrate all modular parameter prompts into a single string.
+        
+        Args:
+            content_length: 'short', 'medium', or 'long' for length-sensitive parameters
+            
+        Returns:
+            Combined prompt guidance from all parameter instances
+        """
+        if not self.use_modular:
+            return ""  # Legacy mode - inline logic in prompt_builder
+        
+        param_instances = self.get_parameter_instances()
+        fragments = []
+        
+        context = {'length': content_length}
+        for name, param in sorted(param_instances.items()):
+            try:
+                guidance = param.generate_prompt_guidance(context)
+                if guidance:
+                    fragments.append(guidance)
+            except Exception as e:
+                import logging
+                logging.warning(f"Failed to generate guidance from {name}: {e}")
+        
+        return "\n".join(fragments)
+    
     def calculate_voice_parameters(self) -> Dict[str, Any]:
         """
         Calculate voice-related parameters for prompt building.
-        Uses 1-3 scale: 1→0.0, 2→0.5, 3→1.0
+        All sliders use 1-10 scale, normalized to 0.0-1.0
         
         Returns:
             Dict with trait frequencies, quirk rates, structural_predictability, emotional_tone, etc.
+            
+            If use_modular_parameters=True, includes '_parameter_instances' key with
+            BaseParameter objects that can generate dynamic prompt guidance.
         """
-        author_voice = self.base_config.get_author_voice_intensity()  # 1-3
-        personality = self.base_config.get_personality_intensity()  # 1-3
-        engagement = self.base_config.get_engagement_style()  # 1-3
-        structural = self.base_config.get_structural_predictability()  # 1-3
-        emotional = self.base_config.get_emotional_intensity()  # 1-3
+        author_voice = self.base_config.get_author_voice_intensity()  # 1-10
+        personality = self.base_config.get_personality_intensity()  # 1-10
+        engagement = self.base_config.get_engagement_style()  # 1-10
+        structural = self.base_config.get_structural_predictability()  # 1-10
+        emotional = self.base_config.get_emotional_intensity()  # 1-10
+        sentence_rhythm = self.base_config.get_sentence_rhythm_variation()  # 1-10
+        imperfection = self.base_config.get_imperfection_tolerance()  # 1-10
+        jargon = self.base_config.config.get('jargon_removal', 7)  # 1-10
+        professional = self.base_config.config.get('professional_voice', 5)  # 1-10
         
-        # Map 1-3 to 0.0/0.5/1.0
-        def map_to_float(value: int) -> float:
-            return (value - 1) * 0.5  # 1→0.0, 2→0.5, 3→1.0
+        # Map 1-10 to 0.0-1.0 for all parameters
+        def map_10_to_float(value: int) -> float:
+            return (value - 1) / 9.0  # 1→0.0, 10→1.0
         
-        return {
-            'trait_frequency': map_to_float(author_voice),
-            'opinion_rate': map_to_float(personality),
-            'reader_address_rate': map_to_float(engagement),
-            'colloquialism_frequency': map_to_float(max(author_voice, personality)),  # Max of voice and personality
-            'structural_predictability': map_to_float(structural),
-            'emotional_tone': map_to_float(emotional)
+        result = {
+            'trait_frequency': map_10_to_float(author_voice),
+            'opinion_rate': map_10_to_float(personality),
+            'reader_address_rate': map_10_to_float(engagement),
+            'colloquialism_frequency': map_10_to_float(max(author_voice, personality)),  # Max of voice and personality
+            'structural_predictability': map_10_to_float(structural),
+            'emotional_tone': map_10_to_float(emotional),
+            'sentence_rhythm_variation': map_10_to_float(sentence_rhythm),
+            'imperfection_tolerance': map_10_to_float(imperfection),
+            'jargon_removal': map_10_to_float(jargon),
+            'professional_voice': map_10_to_float(professional)
         }
+        
+        # Add parameter instances if modular mode enabled
+        if self.use_modular:
+            result['_parameter_instances'] = self.get_parameter_instances()
+            result['_use_modular'] = True
+        
+        return result
     
     def calculate_enrichment_params(self) -> Dict[str, Any]:
         """
         Calculate all parameters for DataEnricher fact formatting.
-        Uses 1-3 scale: 1→0.0, 2→0.5, 3→1.0
+        Uses 1-10 scale normalized to 0.0-1.0 (consistent with voice params)
         
         Returns:
             Dict with:
-            - technical_intensity: 1-3 (controls spec density)
-            - context_detail_level: 1-3 (controls description length)
+            - technical_intensity: 0.0-1.0 (controls spec density)
+            - context_detail_level: 0.0-1.0 (controls description length)
             - fact_formatting_style: 'formal' | 'balanced' | 'conversational'
-            - engagement_level: 1-3
+            - engagement_level: 0.0-1.0
         """
-        technical = self.base_config.get_technical_language_intensity()  # 1-3
-        context = self.base_config.get_context_specificity()  # 1-3
-        engagement = self.base_config.get_engagement_style()  # 1-3
+        technical = self.base_config.get_technical_language_intensity()  # 1-10
+        context = self.base_config.get_context_specificity()  # 1-10
+        engagement = self.base_config.get_engagement_style()  # 1-10
         
-        # Determine fact formatting style based on engagement (1-3)
-        if engagement == 1:
+        # Map 1-10 to 0.0-1.0 for all parameters
+        def map_10_to_float(value: int) -> float:
+            return (value - 1) / 9.0  # 1→0.0, 10→1.0
+        
+        technical_normalized = map_10_to_float(technical)
+        engagement_normalized = map_10_to_float(engagement)
+        
+        # Determine fact formatting style based on engagement (0.0-1.0)
+        if engagement_normalized < 0.3:
             formatting = 'formal'  # "2.7 g/cm³"
-        elif engagement == 2:
+        elif engagement_normalized < 0.7:
             formatting = 'balanced'  # "roughly 2.7 g/cm³"
         else:
             formatting = 'conversational'  # "around 2.7 g/cm³ (pretty dense!)"
         
         return {
-            'technical_intensity': technical,
-            'context_detail_level': context,
+            'technical_intensity': technical_normalized,
+            'context_detail_level': map_10_to_float(context),
             'fact_formatting_style': formatting,
-            'engagement_level': engagement
+            'engagement_level': engagement_normalized
         }
     
     def get_all_generation_params(self, component_type: str = 'subtitle') -> Dict[str, Any]:

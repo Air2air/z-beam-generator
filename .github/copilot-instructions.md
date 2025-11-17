@@ -24,10 +24,11 @@
 **READ THIS FIRST - BEFORE ANY CHANGE:**
 
 1. ✅ **Read the request precisely** - What is the *exact* issue?
-2. ✅ **Explore existing architecture** - Understand how it currently works
-3. ✅ **Check git history for context** - See what was working previously
-4. ✅ **Plan minimal fix only** - Address only the specific issue
-5. ✅ **Ask permission for major changes** - Get approval before removing code or rewrites
+2. ✅ **Search documentation FIRST** - Check `docs/` for existing guidance (see Documentation Compliance Checklist below)
+3. ✅ **Explore existing architecture** - Understand how it currently works
+4. ✅ **Check git history for context** - See what was working previously
+5. ✅ **Plan minimal fix only** - Address only the specific issue
+6. ✅ **Ask permission for major changes** - Get approval before removing code or rewrites
 
 **GOLDEN RULES:**
 - 🚫 **NEVER rewrite working code**
@@ -36,8 +37,10 @@
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
 - 🚫 **NEVER put content instructions in /processing folder code**
+- 🚫 **NEVER hardcode component types in /processing code**
 - 🚫 **NEVER hardcode values in production code** - use config or dynamic calculation
 - ✅ **ALWAYS keep content instructions ONLY in prompts/*.txt files**
+- ✅ **ALWAYS define components ONLY in prompts/*.txt and config.yaml**
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
 - ✅ **ALWAYS maintain runtime error recovery**
@@ -127,6 +130,29 @@ Use ComponentGeneratorFactory pattern for all generators.
 
 See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
+### 7. **Component Discovery Policy** 🔥 **NEW (Nov 16, 2025)**
+**Component types MUST ONLY be defined in prompts/*.txt and config.yaml.**
+
+- ✅ **prompts/*.txt files** - Define component types by filename
+  - Create `prompts/caption.txt` to define 'caption' component
+  - Create `prompts/subtitle.txt` to define 'subtitle' component
+  - Each .txt file = one component type
+- ✅ **config.yaml** - Define component word counts
+  ```yaml
+  component_lengths:
+    caption: 25
+    subtitle: 15
+  ```
+- ❌ **processing/*.py files** - NO hardcoded component types
+  - ❌ `if component_type == 'caption':`
+  - ❌ `SPEC_DEFINITIONS = {'caption': {...}}`
+  - ❌ Hardcoded component lists
+- ✅ **Dynamic Discovery**: Components discovered at runtime from prompts/
+- ✅ **Generic Code**: Use `component_type` parameter, iterate `ComponentRegistry.list_types()`
+- ✅ **ENFORCEMENT**: Automated tests verify zero hardcoded components
+
+See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
+
 ## Code Standards
 - Use strict typing with Optional[] for nullable parameters
 - Implement comprehensive error handling with specific exception types
@@ -136,6 +162,8 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 - Never leave TODOs - provide complete solutions
 - Never hardcode values - use configuration or parameters
 - **NEVER add content instructions to code** - they belong ONLY in prompts/*.txt
+- **NEVER hardcode component types** - they're discovered from prompts/*.txt
+- **ALWAYS check documentation before implementing** - see Documentation Compliance Checklist
 
 ## Architecture Patterns
 - **Wrapper Pattern**: Use lightweight wrappers to integrate specialized generators
@@ -143,6 +171,7 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 - **Result Objects**: Return structured ComponentResult objects with success/error states
 - **Configuration Validation**: Validate all required files and settings on startup
 - **Linguistic Patterns**: Keep ONLY in `prompts/personas/` - never duplicate elsewhere
+- **Dynamic Calculation**: Use dynamic_config for all thresholds, penalties, temperatures
 
 ## Error Handling
 - **ConfigurationError**: Missing or invalid configuration files
@@ -162,7 +191,69 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 ---
 
+## 📖 Documentation Compliance Checklist
+
+**MANDATORY BEFORE implementing ANY feature/fix:**
+
+### Step 1: Search Documentation
+```bash
+# Search for existing guidance
+grep -r "feature_name|threshold|validation" docs/**/*.md
+```
+
+### Step 2: Read Applicable Policy Documents
+- [ ] **HARDCODED_VALUE_POLICY.md** - Before adding ANY values/thresholds/temperatures
+- [ ] **CONTENT_INSTRUCTION_POLICY.md** - Before touching prompts/ or content logic
+- [ ] **COMPONENT_DISCOVERY.md** - Before adding/modifying components
+- [ ] **DATA_STORAGE_POLICY.md** - Before data operations
+- [ ] **system-requirements.md** - For quality thresholds and acceptance criteria
+- [ ] **processing-pipeline.md** - For generation flow and validation steps
+
+### Step 3: Check Component-Specific Documentation
+- [ ] `components/[component]/docs/` or `components/[component]/README.md`
+- [ ] `[feature]/README.md` for feature-specific guidance
+
+### Step 4: Verify Approach Matches Architecture
+- [ ] Does implementation follow documented patterns?
+- [ ] Are values dynamically calculated (not hardcoded)?
+- [ ] Does it integrate with existing systems correctly?
+- [ ] Is it consistent with system architecture?
+
+### Step 5: Ask If Unclear
+- [ ] If documentation is missing, contradictory, or unclear: **ASK USER**
+- [ ] Don't assume or guess - get clarification first
+- [ ] Example: "I don't see guidance on X. Should I implement Y approach or Z?"
+
+### Red Flags Requiring Doc Check
+- ⚠️ Adding **thresholds** → Check for dynamic calculation requirements
+- ⚠️ Adding **configuration values** → Check config architecture docs
+- ⚠️ Modifying **validation** → Check validation strategy docs
+- ⚠️ Adding **new component** → Check component discovery policy
+- ⚠️ Changing **data flow** → Check data storage policy
+- ⚠️ Adding **hardcoded values** → STOP - check hardcoded value policy
+
+### Documentation Locations Quick Reference
+- **Quick answers**: `docs/QUICK_REFERENCE.md`
+- **Policies**: `docs/08-development/`
+- **Architecture**: `docs/02-architecture/`
+- **Component docs**: `components/[name]/docs/` or `docs/03-components/`
+- **API guidance**: `docs/07-api/`
+- **Data operations**: `docs/05-data/`
+
+### Enforcement
+- Integrity checker validates code matches documented architecture
+- Pre-commit hooks can check doc compliance
+- Manual review catches documentation violations
+
+---
+
 ## 🔒 Core Rules (Non-Negotiable)
+
+### Rule 0: 📖 Documentation-First Development (NEW - November 16, 2025)
+- **ALWAYS search docs BEFORE coding** - see Documentation Compliance Checklist above
+- **NEVER implement without checking guidance** - docs define system architecture
+- **ASK if documentation unclear** - don't guess or assume
+- **Example violation**: Implementing static thresholds when docs require dynamic calculation
 
 ### Rule 1: 🛡️ Preserve Working Code
 - **NEVER rewrite or replace** functioning code, classes, or modules
@@ -211,13 +302,15 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 | **Mock Removal** | Remove fallbacks | Deleted without understanding | Broke testing infrastructure | Understand purpose first |
 | **Fallback Destruction** | Ensure fail-fast | Removed error recovery | Failed on transient errors | Fail-fast ≠ no retries |
 | **Scope Creep** | Fix specific issue | Expanded beyond request | Integration failures | Stick to exact scope |
+| **Static Thresholds** | Fix validation | Ignored docs requiring dynamic | Violated architecture policy | Read docs first, found dynamic requirement |
 
 ### 🎯 Success Pattern
-1. **Understand** the existing code
-2. **Identify** the minimal change needed
-3. **Implement** only that change
-4. **Verify** the fix works
-5. **Confirm** nothing else broke
+1. **Search documentation** for existing guidance
+2. **Understand** the existing code and design intent
+3. **Identify** the minimal change needed
+4. **Implement** only that change per documented architecture
+5. **Verify** the fix works
+6. **Confirm** nothing else broke
 
 ---
 
@@ -227,12 +320,14 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 ### Step 1: 📖 Read & Understand
 - [ ] **Read request precisely** - What is the *exact* issue?
+- [ ] **Search documentation** - Check `docs/` for existing guidance
 - [ ] **No assumptions** - Ask for clarification if unclear
 
 ### Step 2: 🔍 Explore Architecture
 - [ ] **Read relevant code** - Understand how it currently works
 - [ ] **Check subdirectories** - Don't miss important context
 - [ ] **Verify file existence** - Prevent "Content Not Found" errors
+- [ ] **Read policy docs** - HARDCODED_VALUE_POLICY, CONTENT_INSTRUCTION_POLICY, etc.
 
 ### Step 3: 📜 Check History
 - [ ] **Review git commits** - See what was working previously
@@ -240,6 +335,7 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 ### Step 4: 🎯 Plan Minimal Fix
 - [ ] **Identify smallest change** - Address only the specific issue
+- [ ] **Verify matches documentation** - Implementation follows documented design
 - [ ] **Ensure security** - Include validation and error handling
 - [ ] **Keep it concise** - Avoid unnecessary complexity
 

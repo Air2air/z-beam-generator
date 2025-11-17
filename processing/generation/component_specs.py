@@ -20,12 +20,12 @@ class ComponentSpec:
     This class contains ONLY structural metadata (lengths, punctuation).
     
     Attributes:
-        name: Component identifier (subtitle, caption, etc.)
+        name: Component identifier (matches prompts/{name}.txt)
         default_length: Target word count
         end_punctuation: Whether to include period at end
         min_length: Minimum word count (from config)
         max_length: Maximum word count (from config)
-        prompt_template_file: Path to prompt template file (e.g., 'prompts/subtitle.txt')
+        prompt_template_file: Path to prompt template file
     """
     name: str
     default_length: int
@@ -128,54 +128,72 @@ class ComponentRegistry:
                 'max': min(int(default * 1.1), default + 5)
             }
     
-    # Component specifications (lengths and punctuation ONLY - content instructions in prompts/*.txt)
-    # ALL content instructions (focus, format, style) MUST be defined in prompts/{component}.txt
-    SPEC_DEFINITIONS = {
-        'subtitle': {
-            'end_punctuation': False,
-            'prompt_template_file': 'prompts/subtitle.txt'
-        },
+    # Component specifications discovered dynamically from:
+    # 1. prompts/*.txt files (content instructions)
+    # 2. config.yaml component_lengths section (word counts)
+    # NO hardcoded component types - all defined externally
+    
+    @classmethod
+    def _discover_components(cls) -> Dict[str, Dict]:
+        """Discover available components from prompts/components directory.
         
-        'caption': {
-            'end_punctuation': True,
-            'prompt_template_file': 'prompts/caption.txt'
-        },
+        Returns component specs by scanning prompts/components/*.txt files.
+        Each .txt file defines a component type.
+        """
+        specs = {}
+        components_dir = Path(__file__).parent.parent.parent / 'prompts' / 'components'
         
-        'description': {
-            'end_punctuation': True,
-            'prompt_template_file': 'prompts/description.txt'
-        },
+        if not components_dir.exists():
+            return specs
         
-        'faq': {
-            'end_punctuation': True,
-            'prompt_template_file': 'prompts/faq.txt'
-        },
+        # Scan for .txt files in prompts/components directory
+        for prompt_file in components_dir.glob('*.txt'):
+            component_type = prompt_file.stem  # filename without .txt
+            
+            # Skip system/utility prompts (shouldn't be any, but just in case)
+            if component_type.startswith('_'):
+                continue
+            
+            specs[component_type] = {
+                'end_punctuation': True,  # Default, can be overridden in config
+                'prompt_template_file': f'prompts/components/{prompt_file.name}'
+            }
         
-        'troubleshooter': {
-            'end_punctuation': True,
-            'prompt_template_file': 'prompts/troubleshooter.txt'
-        }
-    }
+        return specs
+    
+    @classmethod
+    def _get_spec_definitions(cls) -> Dict[str, Dict]:
+        """Get component spec definitions, cached for performance."""
+        if not hasattr(cls, '_cached_specs'):
+            cls._cached_specs = cls._discover_components()
+        return cls._cached_specs
     
     @classmethod
     def get_spec(cls, component_type: str) -> ComponentSpec:
-        """
-        Get specification for component type.
-        Dynamically loads lengths from config.yaml.
+        """Get specification for component type.
+        
+        Dynamically discovers components from prompts/*.txt files.
+        Loads lengths from config.yaml component_lengths section.
         
         Args:
-            component_type: Component identifier
+            component_type: Component identifier (must match prompts/{type}.txt)
             
         Returns:
             ComponentSpec object with lengths from config and prompt template file
             
         Raises:
-            KeyError: If component type not registered
+            KeyError: If component type not found in prompts/ or config
         """
-        spec_def = cls.SPEC_DEFINITIONS.get(component_type)
+        spec_defs = cls._get_spec_definitions()
+        spec_def = spec_defs.get(component_type)
+        
         if not spec_def:
-            raise KeyError(f"Unknown component type: {component_type}. "
-                         f"Available: {', '.join(cls.SPEC_DEFINITIONS.keys())}")
+            available = ', '.join(spec_defs.keys())
+            raise KeyError(
+                f"Component type '{component_type}' not found. "
+                f"Create prompts/{component_type}.txt to define it. "
+                f"Available: {available}"
+            )
         
         # Get lengths from config
         lengths = cls._get_component_lengths(component_type)
@@ -192,22 +210,26 @@ class ComponentRegistry:
     
     @classmethod
     def register(cls, spec: ComponentSpec):
-        """
-        Register new component type.
-        Note: This now registers the definition only. Lengths come from config.
+        """Register new component type dynamically.
+        
+        Note: Lengths still come from config.yaml. This only registers
+        the component definition for runtime discovery.
         
         Args:
             spec: ComponentSpec to register
         """
-        cls.SPEC_DEFINITIONS[spec.name] = {
+        if not hasattr(cls, '_cached_specs'):
+            cls._cached_specs = {}
+        
+        cls._cached_specs[spec.name] = {
             'end_punctuation': spec.end_punctuation,
             'prompt_template_file': spec.prompt_template_file
         }
     
     @classmethod
     def list_types(cls) -> list:
-        """Get list of all registered component types"""
-        return list(cls.SPEC_DEFINITIONS.keys())
+        """Get list of all available component types (discovered from prompts/)."""
+        return list(cls._get_spec_definitions().keys())
     
     @classmethod
     def get_default_length(cls, component_type: str) -> int:

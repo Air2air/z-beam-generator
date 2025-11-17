@@ -114,6 +114,10 @@ class DynamicGenerator:
         readability_thresholds = self.dynamic_config.calculate_readability_thresholds()
         self.validator = ReadabilityValidator(min_score=readability_thresholds['min'])
         
+        # Subjective language validator (November 16, 2025 - catch violations during generation)
+        from processing.validation.subjective_validator import SubjectiveValidator
+        self.subjective_validator = SubjectiveValidator()
+        
         # Winston feedback database and analyzer
         try:
             from processing.config.config_loader import get_config
@@ -495,7 +499,8 @@ class DynamicGenerator:
             # Format facts string
             facts_str = self.enricher.format_facts_for_prompt(
                 facts, 
-                enrichment_params=params['enrichment_params']
+                enrichment_params=params['enrichment_params'],
+                voice_params=params['voice_params']
             )
             
             # Build prompt with dynamic parameters
@@ -572,6 +577,16 @@ class DynamicGenerator:
             
             self.logger.info(f"AI score: {ai_score:.3f} (threshold: {self.ai_threshold:.3f})")
             
+            # Check for subjective language violations (November 16, 2025 integration)
+            # Pass Winston human score for dynamic threshold calculation
+            human_score = detection.get('human_score', 0)
+            subjective_valid, subjective_details = self.subjective_validator.validate(text, winston_score=human_score)
+            if not subjective_valid:
+                violation_summary = self.subjective_validator.get_violation_summary(subjective_details)
+                self.logger.warning(f"❌ Subjective language violations detected:\n{violation_summary}")
+            else:
+                self.logger.info(f"✅ No subjective language violations (thresholds: {subjective_details.get('applied_thresholds', {})})")
+            
             # Check readability
             readability = self.validator.validate(text)
             self.logger.info(f"Readability: {readability['status']}")
@@ -586,7 +601,7 @@ class DynamicGenerator:
                     winston_result=detection,
                     temperature=params['temperature'],
                     attempt=attempt,
-                    success=(ai_score <= self.ai_threshold and readability['is_readable']),
+                    success=(ai_score <= self.ai_threshold and readability['is_readable'] and subjective_valid),
                     failure_analysis=failure_analysis
                 )
                 self.logger.info(f"📊 Logged result to database (ID: {detection_id})")
@@ -649,7 +664,8 @@ class DynamicGenerator:
             # Dual-threshold check:
             # 1. Acceptance threshold: ai_score <= threshold (for deployment)
             # 2. Learning target: human_score >= target (for improvement)
-            passes_acceptance = ai_score <= self.ai_threshold and readability['is_readable']
+            # 3. Subjective validation: no violations (for quality)
+            passes_acceptance = ai_score <= self.ai_threshold and readability['is_readable'] and subjective_valid
             human_score = detection.get('human_score', 0)
             learning_target = self.dynamic_config.base_config.get_learning_target()
             meets_learning_target = human_score >= learning_target
@@ -689,6 +705,8 @@ class DynamicGenerator:
                 self.logger.warning(f"📚 Learning target not met: human {human_score:.1f}% < {learning_target}%")
             if not readability['is_readable']:
                 self.logger.warning(f"❌ Readability failed: {readability['status']}")
+            if not subjective_valid:
+                self.logger.warning(f"❌ Subjective validation failed: {subjective_details['total_violations']} violations")
             
             # SMART REGENERATION: Track improvement to detect stuck patterns
             improvement_history.append(human_score)
@@ -767,7 +785,7 @@ class DynamicGenerator:
         # Build system prompt
         system_prompt = "You are a professional technical writer creating concise, clear content."
         
-        tech_intensity = enrichment_params.get('technical_intensity', 2)
+        tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
         if tech_intensity == 1:
             system_prompt = (
                 "You are a professional technical writer creating concise, clear content. "

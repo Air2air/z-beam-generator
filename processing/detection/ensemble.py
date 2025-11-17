@@ -70,7 +70,7 @@ class AIDetectorEnsemble:
     
     def _default_patterns_file(self) -> str:
         """Get default patterns file path"""
-        return str(Path(__file__).parent.parent.parent / "prompts" / "ai_detection_patterns.txt")
+        return str(Path(__file__).parent / "patterns" / "ai_detection_patterns.txt")
     
     def _load_patterns(self) -> List[str]:
         """Load detection patterns from file"""

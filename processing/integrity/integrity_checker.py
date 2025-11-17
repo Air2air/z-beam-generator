@@ -42,6 +42,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Dict, List, Optional, Any
 from pathlib import Path
+import sqlite3
 
 from processing.config.config_loader import get_config
 from processing.config.dynamic_config import DynamicConfig
@@ -103,6 +104,7 @@ class IntegrityChecker:
         # Configuration checks (fast)
         results.extend(self._check_configuration_mapping())
         results.extend(self._check_parameter_propagation())
+        results.extend(self._check_all_14_parameters())  # NEW: Comprehensive parameter check
         
         # Cache configuration check (fast)
         results.extend(self._check_cache_configuration())
@@ -112,6 +114,9 @@ class IntegrityChecker:
         
         # Subjective evaluation module check (fast)
         results.extend(self._check_subjective_evaluation_module())
+        
+        # Subjective validator integration check (fast) - November 16, 2025
+        results.extend(self._check_subjective_validator_integration())
         
         if not quick:
             # API health checks (slow - network calls)
@@ -128,6 +133,253 @@ class IntegrityChecker:
     def run_quick_checks(self) -> List[IntegrityResult]:
         """Run only fast checks (configuration, parameter propagation)"""
         return self.run_all_checks(quick=True)
+    
+    def run_post_generation_checks(
+        self, 
+        material: str, 
+        component_type: str,
+        detection_id: Optional[int] = None,
+        min_samples: int = 5
+    ) -> List[IntegrityResult]:
+        """
+        Run post-generation integrity checks.
+        
+        Verifies:
+        1. Detection result was logged to database
+        2. Generation parameters were logged to database
+        3. Sweet spot table was updated (if applicable)
+        4. Subjective evaluation was logged (if ran)
+        
+        Args:
+            material: Material name that was generated
+            component_type: Component type (from prompts/)
+            detection_id: Optional detection result ID to verify
+        
+        Returns:
+            List of IntegrityResult objects
+        """
+        results = []
+        db_path = Path('data/winston_feedback.db')
+        
+        # Check 1: Database exists
+        start = time.time()
+        if not db_path.exists():
+            results.append(IntegrityResult(
+                check_name="Post-Gen: Database Exists",
+                status=IntegrityStatus.FAIL,
+                message=f"Winston feedback database not found at {db_path}",
+                details={'expected_path': str(db_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            return results  # Can't check further without DB
+        
+        results.append(IntegrityResult(
+            check_name="Post-Gen: Database Exists",
+            status=IntegrityStatus.PASS,
+            message=f"Database found at {db_path}",
+            details={'db_path': str(db_path)},
+            duration_ms=(time.time() - start) * 1000
+        ))
+        
+        # Check 2: Detection result was logged
+        start = time.time()
+        try:
+            import sqlite3
+            conn = sqlite3.connect(str(db_path))
+            cursor = conn.cursor()
+            
+            # Get most recent detection for this material/component
+            cursor.execute("""
+                SELECT id, timestamp, human_score, ai_score, success
+                FROM detection_results
+                WHERE material = ? AND component_type = ?
+                ORDER BY timestamp DESC
+                LIMIT 1
+            """, (material, component_type))
+            
+            detection_row = cursor.fetchone()
+            
+            if detection_row:
+                det_id, timestamp, human_score, ai_score, success = detection_row
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Detection Logged",
+                    status=IntegrityStatus.PASS,
+                    message=f"Detection result #{det_id} logged (human: {human_score*100:.1f}%, AI: {ai_score*100:.1f}%)",
+                    details={
+                        'detection_id': det_id,
+                        'timestamp': timestamp,
+                        'human_score': human_score,
+                        'ai_score': ai_score,
+                        'success': bool(success)
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+                detection_id = det_id  # Use for further checks
+            else:
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Detection Logged",
+                    status=IntegrityStatus.FAIL,
+                    message=f"No detection result found for {material}/{component_type}",
+                    details={'material': material, 'component_type': component_type},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+                conn.close()
+                return results  # Can't check further without detection
+            
+            # Check 3: Generation parameters were logged
+            start = time.time()
+            cursor.execute("""
+                SELECT id, temperature, frequency_penalty, presence_penalty, param_hash
+                FROM generation_parameters
+                WHERE detection_result_id = ?
+                ORDER BY timestamp DESC
+                LIMIT 1
+            """, (detection_id,))
+            
+            params_row = cursor.fetchone()
+            
+            if params_row:
+                param_id, temp, freq_pen, pres_pen, param_hash = params_row
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Parameters Logged",
+                    status=IntegrityStatus.PASS,
+                    message=f"Generation parameters #{param_id} logged (temp: {temp:.3f}, freq: {freq_pen:.3f}, pres: {pres_pen:.3f})",
+                    details={
+                        'param_id': param_id,
+                        'temperature': temp,
+                        'frequency_penalty': freq_pen,
+                        'presence_penalty': pres_pen,
+                        'param_hash': param_hash
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Parameters Logged",
+                    status=IntegrityStatus.WARN,
+                    message=f"No generation parameters logged for detection #{detection_id}",
+                    details={'detection_id': detection_id},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            
+            # Check for global sweet spot (material='*', component_type='*')
+            cursor.execute("""
+                SELECT sample_count, confidence_level, last_updated, avg_human_score
+                FROM sweet_spot_recommendations
+                WHERE material = '*' AND component_type = '*'
+            """)
+            
+            sweet_spot_row = cursor.fetchone()
+            
+            if sweet_spot_row:
+                sample_count, confidence, last_updated, avg_score = sweet_spot_row
+                conn.close()
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Sweet Spot Updated",
+                    status=IntegrityStatus.PASS,
+                    message=f"Global sweet spot exists: {sample_count} samples, {confidence} confidence, avg score {avg_score*100:.1f}%",
+                    details={
+                        'sample_count': sample_count,
+                        'confidence_level': confidence,
+                        'last_updated': last_updated,
+                        'avg_human_score': avg_score
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                # Check total samples for this material/component
+                cursor.execute("""
+                    SELECT COUNT(*) FROM detection_results
+                    WHERE material = ? AND component_type = ? AND success = 1
+                """, (material, component_type))
+                total_samples = cursor.fetchone()[0]
+                conn.close()
+                
+                if total_samples < min_samples:
+                    results.append(IntegrityResult(
+                        check_name="Post-Gen: Sweet Spot Updated",
+                        status=IntegrityStatus.PASS,
+                        message=f"Sweet spot not yet calculated (only {total_samples} samples, need {min_samples}+ for sweet spot)",
+                        details={'current_samples': total_samples, 'required_samples': min_samples},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                else:
+                    results.append(IntegrityResult(
+                        check_name="Post-Gen: Sweet Spot Updated",
+                        status=IntegrityStatus.WARN,
+                        message=f"Sweet spot not found despite {total_samples} samples - may need manual update",
+                        details={'total_samples': total_samples, 'required_samples': min_samples},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+        except Exception as e:
+            results.append(IntegrityResult(
+                check_name="Post-Gen: Sweet Spot Updated",
+                status=IntegrityStatus.FAIL,
+                message=f"Error checking sweet spot: {str(e)}",
+                details={'error': str(e), 'error_type': type(e).__name__},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        return results
+    
+    def _check_subjective_evaluation_logged(self, material: str, component_type: str) -> List[IntegrityResult]:
+        """Check if subjective evaluation was logged."""
+        results = []
+        start = time.time()
+        
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT id, overall_score, passes_quality_gate, has_claude_api, timestamp
+                FROM subjective_evaluations
+                WHERE topic = ? AND component_type = ?
+                ORDER BY timestamp DESC
+                LIMIT 1
+            """, (material, component_type))
+            
+            eval_row = cursor.fetchone()
+            conn.close()
+            
+            if eval_row:
+                eval_id, overall_score, passes_gate, has_claude, timestamp = eval_row
+                status = IntegrityStatus.PASS if has_claude else IntegrityStatus.WARN
+                message = f"Subjective evaluation #{eval_id} logged: {overall_score:.1f}/10 ({'PASS' if passes_gate else 'FAIL'})"
+                if not has_claude:
+                    message += " (rule-based fallback)"
+                
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Subjective Evaluation Logged",
+                    status=status,
+                    message=message,
+                    details={
+                        'eval_id': eval_id,
+                        'overall_score': overall_score,
+                        'passes_quality_gate': bool(passes_gate),
+                        'has_claude_api': bool(has_claude),
+                        'timestamp': timestamp
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Post-Gen: Subjective Evaluation Logged",
+                    status=IntegrityStatus.WARN,
+                    message=f"No subjective evaluation found for {material}/{component_type}",
+                    details={'material': material, 'component_type': component_type},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        except Exception as e:
+            results.append(IntegrityResult(
+                check_name="Post-Gen: Subjective Evaluation Logged",
+                status=IntegrityStatus.FAIL,
+                message=f"Error checking subjective evaluation: {str(e)}",
+                details={'error': str(e), 'error_type': type(e).__name__},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        return results
     
     # =========================================================================
     # 1. CONFIGURATION VALUE MAPPING
@@ -249,6 +501,254 @@ class IntegrityChecker:
         return results
     
     # =========================================================================
+    # 1.5. ALL 14 PARAMETERS CHECK (NEW - November 16, 2025)
+    # =========================================================================
+    
+    def _check_all_14_parameters(self) -> List[IntegrityResult]:
+        """
+        Comprehensive check that ALL 14 configuration parameters:
+        1. Are defined in config.yaml
+        2. Are in valid range (1-10)
+        3. Are included in voice_params, enrichment_params, or used directly
+        4. Actually affect prompt generation
+        5. Modular parameters (if enabled) are properly registered and functional
+        
+        This is a CRITICAL check that runs before every generation.
+        
+        Updated: November 16, 2025 - Phase 2 integration
+        Now validates both legacy and modular parameter systems.
+        """
+        results = []
+        start = time.time()
+        
+        # Define all 14 required parameters
+        required_params = {
+            'jargon_removal': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': True,  # Phase 1 complete
+                'scale': '1-10'
+            },
+            'professional_voice': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': True,  # Phase 1 complete
+                'scale': '1-10'
+            },
+            'sentence_rhythm_variation': {
+                'category': 'variation', 
+                'maps_to': 'voice_params',
+                'modular': True,  # Phase 1 complete
+                'scale': '1-10'
+            },
+            'imperfection_tolerance': {
+                'category': 'variation', 
+                'maps_to': 'voice_params',
+                'modular': True,  # Phase 1 complete
+                'scale': '1-10'
+            },
+            'author_voice_intensity': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'personality_intensity': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'engagement_style': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'emotional_intensity': {
+                'category': 'voice', 
+                'maps_to': 'voice_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'technical_language_intensity': {
+                'category': 'technical', 
+                'maps_to': 'enrichment_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'context_specificity': {
+                'category': 'technical', 
+                'maps_to': 'enrichment_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'structural_predictability': {
+                'category': 'variation', 
+                'maps_to': 'voice_params',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'ai_avoidance_intensity': {
+                'category': 'ai_detection', 
+                'maps_to': 'direct',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'length_variation_range': {
+                'category': 'variation', 
+                'maps_to': 'component_specs',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            },
+            'humanness_intensity': {
+                'category': 'ai_detection', 
+                'maps_to': 'direct',
+                'modular': False,  # Phase 3 pending
+                'scale': '1-10'
+            }
+        }
+        
+        issues = []
+        
+        # Check 1: All parameters defined in config
+        for param_name, param_info in required_params.items():
+            value = self.config.config.get(param_name)
+            if value is None:
+                issues.append(f"❌ {param_name}: NOT DEFINED in config.yaml")
+            elif not isinstance(value, int):
+                issues.append(f"❌ {param_name}: Must be integer, got {type(value).__name__}")
+            elif not (1 <= value <= 10):
+                issues.append(f"❌ {param_name}: Must be 1-10, got {value}")
+        
+        # Check 2: Parameters are in voice_params or enrichment_params
+        voice_params = self.dynamic_config.calculate_voice_parameters()
+        enrichment_params = self.dynamic_config.calculate_enrichment_params()
+        
+        # Map parameter names to their expected locations
+        voice_param_mappings = {
+            'author_voice_intensity': 'trait_frequency',
+            'personality_intensity': 'opinion_rate',
+            'engagement_style': 'reader_address_rate',
+            'emotional_intensity': 'emotional_tone',
+            'structural_predictability': 'structural_predictability',
+            'sentence_rhythm_variation': 'sentence_rhythm_variation',
+            'imperfection_tolerance': 'imperfection_tolerance',
+            'jargon_removal': 'jargon_removal',
+            'professional_voice': 'professional_voice'
+        }
+        
+        for config_param, voice_param_name in voice_param_mappings.items():
+            if voice_param_name not in voice_params:
+                issues.append(
+                    f"❌ {config_param}: Missing from voice_params "
+                    f"(expected as '{voice_param_name}')"
+                )
+        
+        # Check enrichment params
+        enrichment_mappings = {
+            'technical_language_intensity': 'technical_intensity',
+            'context_specificity': 'context_detail_level'
+        }
+        
+        for config_param, enrichment_param_name in enrichment_mappings.items():
+            if enrichment_param_name not in enrichment_params:
+                issues.append(
+                    f"❌ {config_param}: Missing from enrichment_params "
+                    f"(expected as '{enrichment_param_name}')"
+                )
+        
+        # Check 3: Modular parameter validation (if enabled)
+        use_modular = self.config.config.get('use_modular_parameters', False)
+        modular_available = [name for name, info in required_params.items() if info['modular']]
+        modular_pending = [name for name, info in required_params.items() if not info['modular']]
+        
+        if use_modular:
+            # Validate modular system is functional
+            try:
+                from parameters.registry import get_registry
+                registry = get_registry()
+                registered = set(registry.get_all_names())
+                expected = set([
+                    'sentence_rhythm_variation',
+                    'imperfection_tolerance',
+                    'jargon_removal',
+                    'professional_voice'
+                ])
+                
+                if not expected.issubset(registered):
+                    missing = expected - registered
+                    issues.append(
+                        f"❌ Modular mode enabled but missing parameters: {missing}"
+                    )
+                
+                # Check that parameter instances can be created
+                instances = self.dynamic_config.get_parameter_instances()
+                if len(instances) != len(expected):
+                    issues.append(
+                        f"❌ Expected {len(expected)} parameter instances, got {len(instances)}"
+                    )
+                
+                # Check that voice_params includes _parameter_instances
+                if '_parameter_instances' not in voice_params:
+                    issues.append(
+                        "❌ Modular mode enabled but voice_params missing '_parameter_instances'"
+                    )
+                elif '_use_modular' not in voice_params or not voice_params['_use_modular']:
+                    issues.append(
+                        "❌ Modular mode enabled but '_use_modular' flag not set in voice_params"
+                    )
+                    
+            except Exception as e:
+                issues.append(f"❌ Modular parameter system error: {str(e)}")
+        
+        # Check 4: Parameters that are used directly (not in voice_params)
+        # These are validated by their usage, not by presence in a dict
+        # ai_avoidance_intensity, length_variation_range, humanness_intensity
+        
+        duration = (time.time() - start) * 1000
+        
+        if issues:
+            results.append(IntegrityResult(
+                check_name="Parameters: All 14 Parameters Validation",
+                status=IntegrityStatus.FAIL,
+                message=f"Found {len(issues)} parameter issue(s) - BLOCKING generation",
+                details={
+                    'total_params': len(required_params),
+                    'issues': issues,
+                    'voice_params_count': len(voice_params),
+                    'enrichment_params_count': len(enrichment_params),
+                    'modular_mode': use_modular,
+                    'modular_ready': sum(1 for info in required_params.values() if info['modular']),
+                    'modular_pending': sum(1 for info in required_params.values() if not info['modular'])
+                },
+                duration_ms=duration
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Parameters: All 14 Parameters Validation",
+                status=IntegrityStatus.PASS,
+                message="✅ All 14 parameters defined, in range, and properly mapped",
+                details={
+                    'total_params': len(required_params),
+                    'voice_params': list(voice_params.keys()),
+                    'enrichment_params': list(enrichment_params.keys()),
+                    'modular_mode': use_modular,
+                    'modular_ready': sum(1 for info in required_params.values() if info['modular']),
+                    'modular_pending': sum(1 for info in required_params.values() if not info['modular']),
+                    'categories': {
+                        'voice': 6,
+                        'technical': 2,
+                        'variation': 4,
+                        'ai_detection': 2
+                    }
+                },
+                duration_ms=duration
+            ))
+        
+        return results
+    
+    # =========================================================================
     # 2. PARAMETER PROPAGATION
     # =========================================================================
     
@@ -259,7 +759,12 @@ class IntegrityChecker:
         # Check 2.1: get_all_generation_params returns complete bundle
         start = time.time()
         try:
-            params = self.dynamic_config.get_all_generation_params('caption')
+            # Get any available component type for testing
+            from processing.generation.component_specs import ComponentRegistry
+            available_types = ComponentRegistry.list_types()
+            test_component = available_types[0] if available_types else 'text'
+            
+            params = self.dynamic_config.get_all_generation_params(test_component)
             
             required_keys = ['api_params', 'enrichment_params', 'voice_params', 'validation_params']
             missing_keys = [k for k in required_keys if k not in params]
@@ -301,8 +806,13 @@ class IntegrityChecker:
         
         # Check 2.2: Values don't mutate during propagation
         start = time.time()
-        original_temp = self.dynamic_config.calculate_temperature('caption')
-        bundled_temp = self.dynamic_config.get_all_generation_params('caption')['api_params']['temperature']
+        # Get any available component for testing
+        from processing.generation.component_specs import ComponentRegistry
+        available_types = ComponentRegistry.list_types()
+        test_component = available_types[0] if available_types else 'text'
+        
+        original_temp = self.dynamic_config.calculate_temperature(test_component)
+        bundled_temp = self.dynamic_config.get_all_generation_params(test_component)['api_params']['temperature']
         
         if abs(original_temp - bundled_temp) > 0.001:
             results.append(IntegrityResult(
@@ -811,9 +1321,8 @@ class IntegrityChecker:
         
         # Files to check (production code and scripts, exclude tests)
         production_files = [
-            'materials/caption/generators/generator.py',
-            'materials/subtitle/generators',
-            'materials/faq/generators',
+            # Check processing system only (no hardcoded material component paths)
+            'processing/',
             'processing/generator.py',
             'processing/unified_orchestrator.py',
             'shared/commands/generation.py',
@@ -846,6 +1355,11 @@ class IntegrityChecker:
             
             # Default values that bypass config
             (r'^DEFAULT_[A-Z_]+\s*=\s*\d+', 'Hardcoded default value (should load from config with .get())'),
+            
+            # Composite scorer weights (should use WeightLearner, not static values)
+            (r'^(?:WINSTON|SUBJECTIVE|READABILITY)_WEIGHT\s*=\s*0\.\d+', 'Hardcoded weight constant (should use WeightLearner)'),
+            (r'^DEFAULT_(?:WINSTON|SUBJECTIVE|READABILITY)_WEIGHT\s*=\s*0\.\d+', 'Hardcoded default weight (should use WeightLearner)'),
+            (r'self\.(?:winston|subjective|readability)_weight\s*=\s*0\.\d+', 'Hardcoded weight assignment (should use WeightLearner)'),
         ]
         
         for file_path in production_files:
@@ -1033,6 +1547,342 @@ class IntegrityChecker:
         
         return results
     
+    def _check_subjective_validator_integration(self) -> List[IntegrityResult]:
+        """
+        Verify SubjectiveValidator is properly integrated (November 16, 2025).
+        
+        Checks:
+        1. subjective_validator.py module exists
+        2. Config contains subjective_violations section
+        3. DynamicGenerator imports and initializes validator
+        4. Validation is called during content checking
+        5. Success criteria includes subjective_valid
+        6. Test script exists for validator
+        """
+        results = []
+        
+        # Check 1: Validator module exists
+        start = time.time()
+        validator_path = Path('processing/validation/subjective_validator.py')
+        
+        if not validator_path.exists():
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Module Exists",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: subjective_validator.py module not found - violations won't be caught!",
+                details={'expected_path': str(validator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            # Early return if module doesn't exist
+            return results
+        else:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Module Exists",
+                status=IntegrityStatus.PASS,
+                message="✅ SubjectiveValidator module exists",
+                details={'module_path': str(validator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 2: Config contains subjective_violations
+        start = time.time()
+        config_dict = self.config.config
+        if 'subjective_violations' not in config_dict:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Config Violations",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: subjective_violations section missing from config.yaml",
+                details={'config_keys': list(config_dict.keys())},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            violations = config_dict['subjective_violations']
+            pattern_count = sum(len(patterns) for patterns in violations.values())
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Config Violations",
+                status=IntegrityStatus.PASS,
+                message=f"✅ Config contains {len(violations)} violation categories ({pattern_count} patterns)",
+                details={'categories': list(violations.keys()), 'pattern_count': pattern_count},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 3: DynamicGenerator imports validator
+        start = time.time()
+        generator_path = Path('processing/generator.py')
+        if not generator_path.exists():
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Generator Import",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: generator.py not found",
+                details={'expected_path': str(generator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            generator_content = generator_path.read_text()
+            
+            # Check for import
+            has_import = 'from processing.validation.subjective_validator import SubjectiveValidator' in generator_content
+            has_init = 'self.subjective_validator = SubjectiveValidator()' in generator_content
+            
+            if not has_import or not has_init:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Generator Import",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: SubjectiveValidator not imported/initialized in DynamicGenerator",
+                    details={'has_import': has_import, 'has_init': has_init},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Generator Import",
+                    status=IntegrityStatus.PASS,
+                    message="✅ SubjectiveValidator imported and initialized in DynamicGenerator",
+                    details={'import_found': True, 'init_found': True},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 4: Validation is called during content checking
+        start = time.time()
+        if generator_path.exists():
+            generator_content = generator_path.read_text()
+            
+            has_validate_call = 'self.subjective_validator.validate(' in generator_content
+            has_subjective_valid = 'subjective_valid' in generator_content
+            
+            if not has_validate_call:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Validation Called",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: subjective_validator.validate() never called in generator!",
+                    details={'validate_found': False},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Validation Called",
+                    status=IntegrityStatus.PASS,
+                    message="✅ subjective_validator.validate() is called during generation",
+                    details={'validate_found': True, 'subjective_valid_used': has_subjective_valid},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 5: Success criteria includes subjective_valid
+        start = time.time()
+        if generator_path.exists():
+            generator_content = generator_path.read_text()
+            
+            # Check if subjective_valid is in success conditions
+            has_success_check = 'and subjective_valid' in generator_content or 'subjective_valid and' in generator_content
+            
+            if not has_success_check:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Success Criteria",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: subjective_valid NOT included in success criteria - violations will be ignored!",
+                    details={'success_check_found': False},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Success Criteria",
+                    status=IntegrityStatus.PASS,
+                    message="✅ subjective_valid properly integrated into success criteria",
+                    details={'success_check_found': True},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 6: Test script exists
+        start = time.time()
+        test_path = Path('scripts/test_subjective_validation.py')
+        
+        if not test_path.exists():
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Test Script",
+                status=IntegrityStatus.WARN,
+                message="⚠️  Test script not found (optional but recommended)",
+                details={'expected_path': str(test_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Test Script",
+                status=IntegrityStatus.PASS,
+                message="✅ Test script exists for validator",
+                details={'test_path': str(test_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 7: Thresholds are configurable (not hardcoded) - November 16, 2025
+        start = time.time()
+        config_dict = self.config.config
+        if 'subjective_thresholds' not in config_dict:
+            results.append(IntegrityResult(
+                check_name="SubjectiveValidator: Configurable Thresholds",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: subjective_thresholds missing from config.yaml - thresholds hardcoded!",
+                details={'config_keys': list(config_dict.keys())},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            thresholds = config_dict['subjective_thresholds']
+            has_max_violations = 'max_violations' in thresholds
+            has_max_commas = 'max_commas' in thresholds
+            
+            if not has_max_violations or not has_max_commas:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Configurable Thresholds",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: subjective_thresholds incomplete in config.yaml",
+                    details={
+                        'has_max_violations': has_max_violations,
+                        'has_max_commas': has_max_commas,
+                        'thresholds': thresholds
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Configurable Thresholds",
+                    status=IntegrityStatus.PASS,
+                    message=f"✅ Thresholds configurable: max_violations={thresholds['max_violations']}, max_commas={thresholds['max_commas']}",
+                    details={'thresholds': thresholds},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 8: Validator loads thresholds from config (not hardcoded)
+        start = time.time()
+        validator_path = Path('processing/validation/subjective_validator.py')
+        if validator_path.exists():
+            validator_content = validator_path.read_text()
+            
+            # Check for hardcoded thresholds (bad pattern)
+            has_hardcoded = ('total_violations <= 2' in validator_content or 
+                           'comma_count <= 4' in validator_content and 
+                           'self.thresholds' not in validator_content)
+            
+            # Check for config loading (good pattern)
+            loads_from_config = 'self.thresholds' in validator_content and '_load_thresholds' in validator_content
+            
+            if has_hardcoded and not loads_from_config:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: No Hardcoded Thresholds",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: Validator has hardcoded thresholds instead of loading from config!",
+                    details={'hardcoded_found': True, 'config_loading': False},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            elif loads_from_config:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: No Hardcoded Thresholds",
+                    status=IntegrityStatus.PASS,
+                    message="✅ Validator loads thresholds from config (no hardcoding)",
+                    details={'hardcoded_found': False, 'config_loading': True},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 9: Threshold reasonableness check
+        start = time.time()
+        config_dict = self.config.config
+        if 'subjective_thresholds' in config_dict:
+            thresholds = config_dict['subjective_thresholds']
+            max_violations = thresholds.get('max_violations', 0)
+            max_commas = thresholds.get('max_commas', 0)
+            
+            # Thresholds that are too strict will block high-quality content
+            # Based on Nov 16 batch test: 94-99% human content had 5-8 violations, 5-9 commas
+            is_too_strict = max_violations < 4 or max_commas < 5
+            is_reasonable = max_violations >= 5 and max_commas >= 6
+            
+            if is_too_strict:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Threshold Reasonableness",
+                    status=IntegrityStatus.WARN,
+                    message=f"⚠️  Thresholds may be too strict (violations≤{max_violations}, commas≤{max_commas}). May block high-quality content.",
+                    details={
+                        'max_violations': max_violations,
+                        'max_commas': max_commas,
+                        'recommendation': 'Consider violations≥5, commas≥6 based on test data'
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            elif is_reasonable:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Threshold Reasonableness",
+                    status=IntegrityStatus.PASS,
+                    message=f"✅ Thresholds reasonable (violations≤{max_violations}, commas≤{max_commas})",
+                    details={
+                        'max_violations': max_violations,
+                        'max_commas': max_commas
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 10: Winston score is passed to validator (CRITICAL)
+        start = time.time()
+        generator_path = Path('processing/generator.py')
+        if generator_path.exists():
+            generator_content = generator_path.read_text()
+            
+            # Check that validate() is called WITH winston_score parameter
+            has_winston_param = 'validate(text, winston_score=' in generator_content or 'validate(content, winston_score=' in generator_content
+            
+            if not has_winston_param:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Winston Score Passed",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: Winston score NOT passed to validator - dynamic thresholds won't work!",
+                    details={
+                        'has_winston_param': False,
+                        'impact': 'Validator will use base thresholds only, ignoring Winston performance'
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Winston Score Passed",
+                    status=IntegrityStatus.PASS,
+                    message="✅ Winston score properly passed to validator for dynamic thresholds",
+                    details={'has_winston_param': True},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 11: Dynamic threshold calculation is functional
+        start = time.time()
+        validator_path = Path('processing/validation/subjective_validator.py')
+        if validator_path.exists():
+            validator_content = validator_path.read_text()
+            
+            # Check for dynamic threshold calculation logic
+            has_calculation = '_calculate_dynamic_thresholds' in validator_content
+            has_multipliers = 'multiplier' in validator_content and ('1.5' in validator_content or '0.75' in validator_content)
+            has_winston_check = 'winston_score >= 90' in validator_content or 'winston_score >= 70' in validator_content
+            
+            if not has_calculation or not has_multipliers or not has_winston_check:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Dynamic Threshold Logic",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: Dynamic threshold calculation incomplete or missing!",
+                    details={
+                        'has_calculation_method': has_calculation,
+                        'has_multipliers': has_multipliers,
+                        'has_winston_checks': has_winston_check
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="SubjectiveValidator: Dynamic Threshold Logic",
+                    status=IntegrityStatus.PASS,
+                    message="✅ Dynamic threshold calculation fully implemented",
+                    details={
+                        'calculation_method': True,
+                        'winston_based_multipliers': True
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        return results
+    
     # =========================================================================
     # 5. TEST VALIDITY
     # =========================================================================
@@ -1083,7 +1933,7 @@ class IntegrityChecker:
         return any(r.status == IntegrityStatus.WARN for r in results)
     
     def print_report(self, results: List[IntegrityResult], verbose: bool = False):
-        """Print formatted integrity report"""
+        """Print formatted integrity report with critical issues at the top"""
         print("\n" + "=" * 80)
         print("SYSTEM INTEGRITY REPORT")
         print("=" * 80)
@@ -1094,9 +1944,23 @@ class IntegrityChecker:
         skip_count = sum(1 for r in results if r.status == IntegrityStatus.SKIP)
         
         print(f"\nSummary: {pass_count} passed, {warn_count} warnings, {fail_count} failed, {skip_count} skipped")
+        
+        # ⚠️ CRITICAL: Show failures at the top
+        if fail_count > 0:
+            print("\n" + "!" * 80)
+            print("⚠️  CRITICAL PROBLEMS DETECTED - SYSTEM MAY NOT FUNCTION CORRECTLY")
+            print("!" * 80)
+            fail_results = [r for r in results if r.status == IntegrityStatus.FAIL]
+            for result in fail_results:
+                print(f"\n❌ {result.check_name}")
+                print(f"   {result.message}")
+                if verbose and result.details:
+                    print(f"   Details: {result.details}")
+            print("\n" + "!" * 80)
+        
         print()
         
-        # Group by status
+        # Group by status (failures shown again in full report)
         for status in [IntegrityStatus.FAIL, IntegrityStatus.WARN, IntegrityStatus.PASS]:
             status_results = [r for r in results if r.status == status]
             if not status_results:

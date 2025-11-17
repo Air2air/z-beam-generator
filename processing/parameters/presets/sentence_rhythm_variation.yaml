@@ -1,0 +1,34 @@
+# Sentence Rhythm Variation Parameter
+# Controls how much sentence lengths vary within generated content
+
+name: sentence_rhythm_variation
+category: variation
+scale: 1-10
+description: Controls how much sentence lengths vary within generated content
+maps_to: voice_params
+
+# Preset prompts for each tier and content length
+prompts:
+  low:
+    # LOW (1-3): Uniform, consistent sentence lengths
+    short: "- Sentence structure: Keep sentences consistent (8-12 words); maintain uniform rhythm"
+    medium: "- Sentence structure: Use consistent sentence lengths (12-16 words); avoid dramatic variation"
+    long: "- Sentence structure: Maintain steady rhythm (14-18 words per sentence); consistent flow"
+  
+  moderate:
+    # MODERATE (4-7): Mix short and medium sentences
+    short: "- Sentence structure: Mix short (5-8 words) and medium (10-14 words) sentences naturally"
+    medium: "- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
+    long: "- Sentence structure: Mix short, medium, and longer sentences for natural flow"
+  
+  high:
+    # HIGH (8-10): Dramatic variation in sentence lengths
+    short: "- Sentence structure: WILD variation - mix very short (3-5 words) with much longer (15-20 words); unpredictable rhythm"
+    medium: "- Sentence structure: DRAMATIC variation - alternate between very short (3-6 words) and long (18-25 words); avoid patterns"
+    long: "- Sentence structure: EXTREME variation - range from tiny (2-4 words) to extended (25+ words); chaotic, unpredictable rhythm"
+
+# Examples of expected output at each tier
+examples:
+  low: "Uniform, consistent sentence lengths create predictable rhythm"
+  moderate: "Mix short and medium sentences for natural variation"
+  high: "Dramatic differences in length. Some very short. Others much longer and more complex."

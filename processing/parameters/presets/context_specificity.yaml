@@ -1,0 +1,31 @@
+# Context Specificity Parameter
+# Controls level of contextual detail and comprehensiveness
+
+name: context_specificity
+category: technical
+scale: 1-10
+description: Controls depth of contextual information and level of detail
+maps_to: enrichment_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Brief, minimal context
+    default: |-
+      - Context depth: Keep context brief; provide only essential background information
+  
+  moderate:
+    # MODERATE (4-7): Balanced detail level
+    default: |-
+      - Context depth: Provide balanced context; include relevant background and supporting details
+  
+  high:
+    # HIGH (8-10): Comprehensive, thorough detail
+    default: |-
+      - Context depth: Provide comprehensive context; include full background, supporting details, and thorough explanations
+
+# Examples of expected output at each tier
+examples:
+  low: "Laser cleaning removes rust from steel."
+  moderate: "Laser cleaning uses focused light energy to vaporize rust from steel surfaces, leaving clean metal underneath."
+  high: "Laser cleaning employs high-intensity pulsed laser beams that interact with the oxidized surface layer, rapidly heating and vaporizing rust particles through photomechanical and photothermal effects, while the underlying steel substrate remains undamaged due to its different absorption characteristics and higher vaporization temperature."

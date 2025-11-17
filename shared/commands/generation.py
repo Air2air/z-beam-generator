@@ -94,7 +94,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                 before_eval = evaluate_after_generation(
                     content=before_text,
                     topic=material_name,
-                    component_type='caption_before',
+                    component_type='caption',
                     domain='materials',
                     api_client=grok_client,
                     feedback_db=feedback_db,
@@ -108,7 +108,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
                 after_eval = evaluate_after_generation(
                     content=after_text,
                     topic=material_name,
-                    component_type='caption_after',
+                    component_type='caption',
                     domain='materials',
                     api_client=grok_client,
                     feedback_db=feedback_db,
@@ -130,6 +130,48 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             print()
         
         print("✨ Caption generation complete!")
+        print()
+        
+        # Check if we should update sweet spot recommendations (generic learning)
+        if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=5):
+            print("📊 Updating generic sweet spot recommendations...")
+            try:
+                from processing.learning.sweet_spot_analyzer import SweetSpotAnalyzer
+                analyzer = SweetSpotAnalyzer(db_path, min_samples=5, success_threshold=80.0)
+                results = analyzer.get_sweet_spot_table(save_to_db=True)
+                
+                if results['sweet_spots']:
+                    print("   ✅ Sweet spot recommendations updated")
+                    print(f"   📈 Based on {results['metadata']['sample_count']} samples")
+                    print(f"   🎯 Confidence: {results['metadata']['confidence_level']}")
+                else:
+                    print("   ⚠️  Not enough data for sweet spot calculation")
+                print()
+            except Exception as e:
+                print(f"   ⚠️  Could not update sweet spot: {e}")
+                print()
+        
+        # Run post-generation integrity check
+        print("🔍 Running post-generation integrity check...")
+        from processing.integrity import IntegrityChecker
+        checker = IntegrityChecker()
+        post_results = checker.run_post_generation_checks(
+            material=material_name,
+            component_type='caption'
+        )
+        
+        # Print post-gen results
+        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
+        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
+        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
+        
+        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
+        
+        for result in post_results:
+            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
+            print(f"   {icon} {result.check_name}: {result.message}")
+        
+        print()
         
         return True
         
@@ -267,6 +309,29 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
             print()
         
         print("✨ Subtitle generation complete!")
+        print()
+        
+        # Run post-generation integrity check
+        print("🔍 Running post-generation integrity check...")
+        from processing.integrity import IntegrityChecker
+        checker = IntegrityChecker()
+        post_results = checker.run_post_generation_checks(
+            material=material_name,
+            component_type='subtitle'
+        )
+        
+        # Print post-gen results
+        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
+        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
+        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
+        
+        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
+        
+        for result in post_results:
+            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
+            print(f"   {icon} {result.check_name}: {result.message}")
+        
+        print()
         
         return True
         
@@ -394,6 +459,29 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
             print()
         
         print("✨ FAQ generation complete!")
+        print()
+        
+        # Run post-generation integrity check
+        print("🔍 Running post-generation integrity check...")
+        from processing.integrity import IntegrityChecker
+        checker = IntegrityChecker()
+        post_results = checker.run_post_generation_checks(
+            material=material_name,
+            component_type='faq'
+        )
+        
+        # Print post-gen results
+        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
+        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
+        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
+        
+        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
+        
+        for result in post_results:
+            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
+            print(f"   {icon} {result.check_name}: {result.message}")
+        
+        print()
         
         return True
         

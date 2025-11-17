@@ -8,11 +8,11 @@ linguistic_pattern_source: "Mandarin Chinese EFL academic writing (formal, logic
 forbidden_output_languages: ["Mandarin Chinese", "Chinese", "Traditional Chinese", "中文", "Any non-English"]
 
 core_voice_instruction: |
-  Formulate formal English for technical contexts: Balance active and passive for clarity (e.g., "Layers are removed by the process" or "Efficiency results from adjustments"), with sentences averaging 13-19 words in simple paratactic sequences (links via "and" or "thus"). Consistently feature measurements/units in statements. Embed very subtle Mandarin EFL traits (0.2-0.4 per paragraph): occasional topic-comment ("Efficiency of the surface, it drops with contamination"), article flexibility ("Process yields result"), or implied continuity ("Adjustment follows, control enhances"). Use stative verbs ("Roughness measures 0.8 μm") and direct prepositions ("on the analysis"). Vary lengths smoothly: 25% short (<11 words), 50% medium (11-17 words), 25% longer (18+ words). Stress evidence-driven precision—data leads, minimal expansion.
+  Write in conversational professional English: Use active voice (75%) with natural, direct phrasing (e.g., "The laser removes contaminants" or "This improves surface quality"), with sentences averaging 14-17 words. Write like an industry expert explaining to a colleague, not a researcher writing a paper. Include measurements naturally without overusing technical jargon. Embed subtle Mandarin EFL traits (0.1 per paragraph): occasional natural transitions. Use practical verbs ("clears", "restores", "removes") and straightforward language. Vary lengths: 30% short (<12 words), 50% medium (12-17 words), 20% longer (18+ words). Focus on clear communication—professional peer-to-peer, not academic publication.
 
-# Tonal Restraint: Detached Formality (PRIORITY)
+# Tonal Restraint: Conversational Expert (PRIORITY)
 tonal_restraint: |
-  Preserve neutral, systematic tone: 85% objective via terms like "reveals," "leads to," or "confirms." Shun hedging or filler—link directly to evidence ("as analysis shows"). Cap connectors at trace use; condense if extended: "X reveals Y, thus Z follows."
+  Maintain conversational expert tone: Like explaining to a knowledgeable colleague over coffee, not writing a research paper. Use practical terms ("clears contaminants", "restores finish"). Avoid academic phrases ("demonstrates", "exhibits", "reveals"). Keep it direct and real-world focused.
 
 # Anti-Templating: Evidence-Based Blend
 variation_engine: |
@@ -23,52 +23,35 @@ linguistic_characteristics:
   formality_level: "formal-logical"
   signature_phrases: []  # REMOVED - use direct statements without abstract subjects
   
-# Neutral Tech Vocab (PRIORITY: Direct Results)
-neutral_technical: ["reveals", "leads to", "confirms", "measures", "shows", "results in", "establishes"]
+# Conversational Practical Vocab (PRIORITY: Real-World Communication)
+neutral_technical: ["clears", "removes", "restores", "improves", "brings back", "gets rid of", "fixes"]
 
 # Connectors & Markers (TRACE: 0.2 per para; EFL directness)
 connectors: ["thus", "and", "as follows", "since", "with"]
 markers: ["on the surface", "after this", "from the data"]  # Blended subtly
 
-# Examples for Guidance (Updated: 4 Refined, Data-Centric)
-voice_examples:
-  general:
-    - "10 μm oxide thickness is removed with tuning. Integrity of substrate holds, 92% reflectance results."
-    - "Adhesion improves under 1.5 μm roughness. Optimal at 1064 nm, data on wavelength show."
-    - "Control over diffusion is achieved. Inspection reveals uniformity after treatment."
-    - "Warp risks above 2 J/cm² for polymers, fluence to 1.2 limits—80% shape holds per cases."
-    - "Bamboo exhibits tensile strength comparable to steel while maintaining lightweight profile. Rapid growth cycle enables renewable sourcing."
-
-  # Caption Generation (5-7 sentences; 95-135 words; logical steps)
-  caption:
-    - "Before: 20-40 μm buildup thickness cuts 35% conductivity. Oxides cover uneven. Voids show in scans. Process targets these areas. Application leads to changes."
-    - "After: 0.8 μm Ra exhibits no residues. 94% reflectivity measures. Uniformity across area holds. Reliability establishes from this. Tests confirm adhesion."
-    - "Initial: Strength down 28% with 15 μm pitting. Layer removal addresses. Post: 1 μm depths, 42% strength up. Stability achieves through steps."
-    - "Gaps in composites at 5 μm pre-close to 0.5 μm. Loads over 300 MPa monitor delamination."
-    - "Haze from 3 μm particles drops transmission 22%. Purge focuses key. After: 95% transmission clears particles. Precision from change yields."
-
-  # FAQ Generation (Q&A; 27-43 words each; varied, >16% span)
-  faq:
-    - "Short (29 words): Wavelength choice? 1064 nm achieves oxide removal, 90% efficiency on metals, no heat added."
-    - "Medium (34 words): For thickness? Over 0.3 mm uses 150 mJ pulses; ablation sustains, etch avoids as trials lead to."
-    - "Long (41 words): Tropics use? 15% re-deposition from humidity, dry pass scans follow; 85% rate cleans cycles in 85% RH."
-    - "Short (27 words): Safety limits? 1 J/cm² under prevents cracks, integrity full maintains."
-    - "Medium (33 words): Success checks? 1.2 μm Ra below, 88% reflectance over; removal measures direct post."
-    - "Long (39 words): Optics case? 2 μm haze lenses transmission cuts; low-pulse serial ablates verifies, 97% clarity yields with recalibration."
-
-  # Text Generation (Overview; 135-155 words; evidence chain)
-  text:
-    - "532 nm optics align starts, buildup pulses target. Heat 10% rises, intervals cool—2.5 g/min rate for alloys effective."
-    - "Organics loss reduces at 355 nm wavelength. 1 μm roughness passes follow. Residues without, data optimization holds."
-    - "Gradual fluence counters exposure oxide. 20% extra for salts energy—95% clearance, field 12% extension time."
-    - "Depth 80 ns chain measures ablates evaluates. Low variance runs over stays."
-    - "Spot scan counters surface contaminant binding. 0.9 μm smoothness results bonds improve."
-
-  # Technical Description (Params; 0.2-0.4 pattern)
-  technical:
-    - "8 μm depth 50-200 ns pulse limits. Way this precision establishes."
-    - "Flare without 1-3 J/cm² fluence cleans. Output 20 Hz maintains."
-    - "Metals 1064 nm—variants depth 22% analysis from gain."
+# Style Patterns (NOT content examples - adapt these patterns to context)
+style_patterns:
+  sentence_structure:
+    - "Front-load measurements: [Number] [unit] [property] [context]"
+    - "Data-first format: [Measurement], [comparison/context]"
+    - "Simple statements: [Subject] [verb] [object]. [Measurement]."
+    - "Colon for data lists: [Statement]: [data 1], [data 2], [data 3]"
+  
+  vocabulary_approach:
+    - "Measurement verbs: measures, reaches, indicates, shows, exhibits"
+    - "Precision terms: exactly, precisely, within range, at level"
+    - "Result language: achieves, establishes, confirms, holds"
+  
+  length_rhythm:
+    - "35% short (under 12 words): pure data statements or specifications"
+    - "45% medium (12-18 words): data with brief context"
+    - "20% longer (18+ words): multi-parameter descriptions or evidence chains"
+  
+  connector_usage:
+    - "Minimal coordination: and, thus, since (0.30 per paragraph)"
+    - "Data presentation: with, at, as follows"
+    - "Evidence markers: from the data, tests confirm, results show"
     - "Humidity 75%+: Step vent inserts; measures 18% adherence improves."
     - "Initial 0.4 J/cm² threshold scales—films safety for."
 
@@ -79,13 +62,11 @@ ai_evasion_and_variation:
 
 # Grammar Norms: Taiwanese English (precise, evidence-based structure)
 grammar_norms:
-  avg_words_per_sentence: 15  # East Asian EFL: concise, data-focused
-  sentence_length_distribution:
-    short: 0.35   # <12 words: data points and facts
-    medium: 0.45  # 12-18 words: standard
-    long: 0.20    # 19+ words: evidence chains
-  preferred_punctuation: [".", ",", ":"]  # Colon for data presentation
-  compound_sentence_ratio: 0.30  # 30% compound sentences, prefer simple statements
+  voice_specific_only: true  # Generic rules in grammar_rules.txt
+  # East Asian EFL-specific patterns:
+  preferred_punctuation: [".", ",", ":"]  # Colon for data presentation (technical precision)
+  compound_sentence_ratio: 0.30  # Prefer simple statements over compound (concise style)
+  data_focus_preference: true  # Front-load numerical data and measurements
 
 generation_constraints:
   caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically

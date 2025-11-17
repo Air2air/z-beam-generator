@@ -1,0 +1,31 @@
+# Technical Language Intensity Parameter
+# Controls how much technical specification detail is included
+
+name: technical_language_intensity
+category: technical
+scale: 1-10
+description: Controls density of technical specifications and measurements
+maps_to: enrichment_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Minimal technical specs
+    default: |-
+      - Technical specifications: Minimize technical specs; focus on practical benefits over measurements
+  
+  moderate:
+    # MODERATE (4-7): Key specs included
+    default: |-
+      - Technical specifications: Include key specifications where relevant; balance technical detail with readability
+  
+  high:
+    # HIGH (8-10): Detailed measurements throughout
+    default: |-
+      - Technical specifications: Include detailed measurements and specifications throughout; provide comprehensive technical data
+
+# Examples of expected output at each tier
+examples:
+  low: "Aluminum is lightweight and strong."
+  moderate: "Aluminum offers excellent strength with a tensile strength around 70-700 MPa depending on alloy."
+  high: "Aluminum 6061-T6 provides tensile strength of 310 MPa, yield strength of 276 MPa, and density of 2.70 g/cm³ at room temperature (20°C)."

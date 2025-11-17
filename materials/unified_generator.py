@@ -72,17 +72,23 @@ class UnifiedMaterialsGenerator:
         from data.materials import load_materials_data
         return load_materials_data()
     
-    def generate_caption(self, material_name: str, material_data: Dict) -> Dict[str, str]:
-        """Generate before/after microscopy captions using DynamicGenerator"""
+    def generate_caption(self, material_name: str, material_data: Dict) -> Dict:
+        """
+        Generate before/after microscopy captions using DynamicGenerator.
+        
+        Returns:
+            Full result dict with success, content, detection scores, etc.
+        """
         self.logger.info(f"📸 Generating caption for {material_name}")
         
-        # Use DynamicGenerator
+        # Use DynamicGenerator - returns full result with detection scores
         result = self.generator.generate(material_name, 'caption')
         
         if not result['success']:
             raise ValueError(f"Caption generation failed: {result['reason']}")
         
-        return result['content']
+        # Return full result (includes success, content, ai_score, human_score, etc.)
+        return result
     
     def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
         """

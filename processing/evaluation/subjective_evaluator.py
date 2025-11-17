@@ -195,16 +195,25 @@ Provide your evaluation in this format:
         """Get evaluation from Grok AI"""
         
         try:
-            # Call Grok API
-            response = self.api_client.generate(
+            # Import GenerationRequest
+            from shared.api.client import GenerationRequest
+            
+            # Build proper API request
+            request = GenerationRequest(
                 prompt=prompt,
                 system_prompt="You are an expert content quality evaluator.",
                 max_tokens=1000,
                 temperature=0.3
             )
             
+            # Call API with proper request object
+            response = self.api_client.generate(request)
+            
+            if not response.success:
+                raise Exception(f"API call failed: {response.error}")
+            
             # Parse Grok's response
-            return self._parse_claude_response(response)
+            return self._parse_claude_response(response.content)
             
         except Exception as e:
             if self.verbose:

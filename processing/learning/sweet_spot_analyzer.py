@@ -95,22 +95,21 @@ class SweetSpotAnalyzer:
     
     def find_sweet_spots(
         self,
-        material: Optional[str] = None,
-        component_type: Optional[str] = None,
         top_n_percent: int = 25
     ) -> Dict[str, SweetSpot]:
         """
         Find optimal parameter ranges based on top performing generations.
         
+        GENERIC LEARNING: Learns from ALL successful generations regardless of
+        material or component type. Parameters that work well are universal.
+        
         Strategy:
-        1. Get ALL successful generations (human_score >= threshold) - GENERIC LEARNING
+        1. Get ALL successful generations (human_score >= threshold)
         2. Take top N% by human_score
         3. Calculate parameter ranges from these top performers
         4. Return sweet spot ranges
         
         Args:
-            material: IGNORED - learning is generic across all materials
-            component_type: IGNORED - learning is generic across all components
             top_n_percent: Consider top N% of successful generations (default 25%)
             
         Returns:
@@ -232,9 +231,7 @@ class SweetSpotAnalyzer:
     
     def get_maximum_achievements(
         self,
-        material: Optional[str] = None,
-        component_type: Optional[str] = None,
-        limit: int = 10
+        limit: int = 5
     ) -> List[MaximumAchievement]:
         """
         Get the highest human scores ever achieved.
@@ -260,21 +257,11 @@ class SweetSpotAnalyzer:
                 AND dr.component_type = se.component_type
                 AND dr.timestamp = se.timestamp
             WHERE dr.success = 1
+            ORDER BY dr.human_score DESC
+            LIMIT ?
         """
-        params = []
         
-        if material:
-            query += " AND dr.material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND dr.component_type = ?"
-            params.append(component_type)
-        
-        query += " ORDER BY dr.human_score DESC LIMIT ?"
-        params.append(limit)
-        
-        cursor = conn.execute(query, params)
+        cursor = conn.execute(query, [limit])
         rows = cursor.fetchall()
         conn.close()
         
@@ -293,9 +280,7 @@ class SweetSpotAnalyzer:
         return achievements
     
     def analyze_parameter_correlation(
-        self,
-        material: Optional[str] = None,
-        component_type: Optional[str] = None
+        self
     ) -> List[Tuple[str, float]]:
         """
         Analyze which parameters correlate most with human_score.
@@ -315,17 +300,8 @@ class SweetSpotAnalyzer:
             JOIN detection_results dr ON gp.detection_result_id = dr.id
             WHERE dr.success = 1
         """
-        params = []
         
-        if material:
-            query += " AND dr.material = ?"
-            params.append(material)
-        
-        if component_type:
-            query += " AND dr.component_type = ?"
-            params.append(component_type)
-        
-        cursor = conn.execute(query, params)
+        cursor = conn.execute(query)
         rows = cursor.fetchall()
         conn.close()
         
@@ -395,16 +371,15 @@ class SweetSpotAnalyzer:
     
     def get_sweet_spot_table(
         self,
-        material: Optional[str] = None,
-        component_type: Optional[str] = None,
         save_to_db: bool = True
     ) -> Dict[str, Any]:
         """
         Get comprehensive sweet spot analysis.
         
+        GENERIC LEARNING: Analyzes ALL successful generations to find universal
+        parameter patterns that work well regardless of material or component type.
+        
         Args:
-            material: Filter by material
-            component_type: Filter by component type
             save_to_db: If True, save results to sweet_spot_recommendations table
         
         Returns:
@@ -413,10 +388,11 @@ class SweetSpotAnalyzer:
             - maximums: Best ever achievements
             - correlations: Parameter importance ranking
             - recommendations: Actionable suggestions
+            - metadata: Analysis statistics
         """
-        sweet_spots = self.find_sweet_spots(material, component_type)
-        maximums = self.get_maximum_achievements(material, component_type, limit=5)
-        correlations = self.analyze_parameter_correlation(material, component_type)
+        sweet_spots = self.find_sweet_spots()
+        maximums = self.get_maximum_achievements(limit=5)
+        correlations = self.analyze_parameter_correlation()
         
         # Generate recommendations
         recommendations = self._generate_recommendations(
@@ -452,8 +428,9 @@ class SweetSpotAnalyzer:
             ],
             'recommendations': recommendations,
             'metadata': {
-                'material': material or 'all',
-                'component_type': component_type or 'all',
+                'scope': 'global',
+                'material': 'all',
+                'component_type': 'all',
                 'sample_count': sample_count,
                 'max_human_score': max_human_score,
                 'avg_human_score': avg_human_score,
@@ -461,15 +438,15 @@ class SweetSpotAnalyzer:
             }
         }
         
-        # Save to database if requested and we have specific material+component
-        if save_to_db and material and component_type:
+        # Save to database if requested (always saves as global scope)
+        if save_to_db:
             try:
                 from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
                 
                 db = WinstonFeedbackDatabase(str(self.db_path))
                 db.upsert_sweet_spot(
-                    material=material,
-                    component_type=component_type,
+                    material='*',  # Global scope marker
+                    component_type='*',  # Global scope marker
                     sweet_spots=sweet_spots,
                     correlations=result['parameter_correlations'],
                     max_human_score=max_human_score,
@@ -480,7 +457,7 @@ class SweetSpotAnalyzer:
                 )
                 
                 logger.info(
-                    f"[SWEET SPOT] Saved to database: {material} {component_type} "
+                    f"[SWEET SPOT] Saved to database: GLOBAL scope "
                     f"({sample_count} samples, {overall_confidence} confidence)"
                 )
             except Exception as e:

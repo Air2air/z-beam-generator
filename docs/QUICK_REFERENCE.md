@@ -31,6 +31,7 @@
 10. **`WINSTON_INTEGRATION_COMPLETE.md`** - Winston AI primary detector
 11. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective evaluation
 12. **`docs/development/SWEET_SPOT_ANALYZER.md`** - ✨ **NEW** Statistical parameter optimization (Nov 15, 2025)
+13. **`processing/evaluation/SCORING_MODULE_README.md`** - ✨ **NEW** Scoring Module: Composite quality scoring + granular parameter correlation (Nov 16, 2025)
 
 ### 📊 Data & Content
 12. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - Materials.yaml structure (NO 'properties' wrapper!)

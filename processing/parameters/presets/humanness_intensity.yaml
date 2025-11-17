@@ -1,0 +1,31 @@
+# Humanness Intensity Parameter
+# Master AI evasion setting affecting multiple technical parameters
+
+name: humanness_intensity
+category: ai_detection
+scale: 1-10
+description: Master control for overall human-likeness (affects temperature, penalties, thresholds)
+maps_to: enrichment_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Minimal humanness (fast, 85% threshold)
+    default: |-
+      - Human-likeness: Minimal simulation; accept 85% human score threshold for faster generation
+  
+  moderate:
+    # MODERATE (4-7): Balanced humanness (moderate speed, 60% threshold)
+    default: |-
+      - Human-likeness: Balanced approach; target 60% human score with moderate generation time
+  
+  high:
+    # HIGH (8-10): Maximum humanness (slow, 20% threshold)
+    default: |-
+      - Human-likeness: Maximum simulation; pursue 20% AI detection score even if generation takes longer
+
+# Examples of expected output at each tier
+examples:
+  low: "Fast generation with basic human characteristics"
+  moderate: "Balanced generation with good human characteristics"
+  high: "Careful generation with maximum human believability"

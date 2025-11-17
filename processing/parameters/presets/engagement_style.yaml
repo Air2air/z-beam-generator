@@ -1,0 +1,31 @@
+# Engagement Style Parameter
+# Controls how conversational vs formal the writing style is
+
+name: engagement_style
+category: voice
+scale: 1-10
+description: Controls reader engagement level from formal to highly conversational
+maps_to: voice_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Formal, distant, third-person
+    default: |-
+      - Reader engagement: Maintain formal distance; use third-person; avoid direct address
+  
+  moderate:
+    # MODERATE (4-7): Professional but accessible
+    default: |-
+      - Reader engagement: Balance professionalism with accessibility; occasional second-person is fine when natural
+  
+  high:
+    # HIGH (8-10): Highly conversational, frequent direct address
+    default: |-
+      - Reader engagement: Write conversationally; use "you" freely; address reader directly as if having a discussion
+
+# Examples of expected output at each tier
+examples:
+  low: "Laser cleaning systems offer several advantages for industrial applications."
+  moderate: "Laser cleaning systems can provide significant benefits when you're looking for an industrial solution."
+  high: "If you're considering laser cleaning for your shop, you'll love how these systems handle tough jobs without chemicals."

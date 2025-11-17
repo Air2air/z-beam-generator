@@ -3,6 +3,12 @@
 # ==============================================================================
 # 🎚️ ALL SLIDERS NOW USE 1-10 SCALE for granular control
 # Lower = More controlled/conservative, Higher = More varied/aggressive
+# ALL parameters are normalized to 0.0-1.0 internally for consistent calculations
+
+# Modular Parameter System (Phase 2 Integration - November 16, 2025)
+use_modular_parameters: false        # true=Use new modular system, false=Use legacy inline logic
+                                     # Currently 4/14 parameters have modular implementations
+                                     # Set to true to test modular system (outputs should match legacy)
 
 # Content Quality Parameters (NEW - November 15, 2025)
 jargon_removal: 9                    # 1=Allow jargon → 10=Remove all jargon (use plain language)
@@ -14,11 +20,11 @@ engagement_style: 2                  # 1=Purely formal → 10=Highly conversatio
 emotional_intensity: 5               # 1=Clinical/neutral → 10=Evocative/enthusiastic
 technical_language_intensity: 3      # 1=No specs → 10=Detailed measurements throughout
 context_specificity: 5               # 1=Brief context → 10=Full comprehensive detail
-sentence_rhythm_variation: 8         # 1=Uniform length → 10=Dramatic variation
-imperfection_tolerance: 8            # 1=Perfect grammar → 10=Natural human imperfections
-structural_predictability: 5         # 1=Strict patterns → 10=Unpredictable structure
+sentence_rhythm_variation: 10        # 1=Uniform length → 10=Dramatic variation
+imperfection_tolerance: 10           # 1=Perfect grammar → 10=Natural human imperfections
+structural_predictability: 10        # 1=Strict patterns → 10=Unpredictable structure
 ai_avoidance_intensity: 8            # 1=Relaxed (faster) → 10=Aggressive (more human-like)
-length_variation_range: 8            # 1=Tight ±10% → 10=Loose ±60%
+length_variation_range: 10           # 1=Tight ±10% → 10=Loose ±60%
 
 # 🤖 Human-Likeness Control (Master setting for AI evasion)
 humanness_intensity: 9               # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold)
@@ -51,12 +57,12 @@ component_lengths:
   subtitle:
     default: 30
   caption:
-    default: 80
-    min_words_before: 60
-    max_words_before: 100
-    min_words_after: 60
-    max_words_after: 100
-    word_count_tolerance: 10
+    default: 50
+    min_words_before: 20
+    max_words_before: 120
+    min_words_after: 20
+    max_words_after: 120
+    word_count_tolerance: 30
   description:
     default: 200
   faq:
@@ -146,6 +152,58 @@ component_lengths:
 # ==============================================================================
 # INFRASTRUCTURE (Paths and static settings - rarely need adjustment)
 # ==============================================================================
+
+# Composite Scorer Weights (FALLBACK DEFAULTS ONLY)
+# ⚠️  THESE ARE NOT THE ACTUAL WEIGHTS USED IN PRODUCTION ⚠️
+#
+# The system uses WeightLearner to dynamically learn optimal weights from
+# historical correlation data. These config values are ONLY used as fallback
+# defaults when insufficient data exists (< 50 generations).
+#
+# Weight Learning Strategy:
+# - Analyzes which metric combinations best predict actual generation success
+# - Optimizes weights per material/component context (e.g., "Steel + caption")
+# - Continuously adapts as new generations provide more correlation data
+# - Example: Winston weight might be 0.7 for captions but 0.5 for FAQs
+#
+# See: processing/learning/weight_learner.py for learning architecture
+#
+composite_scorer:
+  winston_weight: 0.6        # Fallback: Winston AI detection (primary metric, 60%)
+  subjective_weight: 0.3     # Fallback: Claude subjective evaluation (secondary, 30%)
+  readability_weight: 0.1    # Readability metrics (tertiary, 10%)
+
+# Manual Subjective Language Penalties (November 16, 2025 Batch Test Findings)
+# These patterns were detected in generated content and flagged as AI-like
+# PatternLearner will automatically learn from database, but manual overrides here
+# ensure immediate penalty application before sufficient training data exists
+subjective_violations:
+  # Hedging words (ambiguity that sounds AI-generated)
+  hedging: ['about', 'around', 'roughly', 'approximately', 'nearly', 'almost']
+  
+  # Dramatic/emotional verbs (overly vivid for technical content)
+  dramatic_verbs: ['smother', 'blasts', 'clears', 'stands', 'waits', 'demands', 'risks', 'zaps', 'gleams']
+  
+  # Conversational fillers (too casual for professional content)
+  conversational: ['now', 'but', 'such', 'really', 'just', 'quite', 'very', 'yeah']
+  
+  # Perfection language (AI tends toward absolutes)
+  emotional_adjectives: ['perfect', 'flawless', 'excellent', 'ideal', 'superior', 'outstanding', 'impressive']
+  
+  # Intensity adverbs (AI overuses qualifiers)
+  intensity_adverbs: ['badly', 'extremely', 'highly', 'significantly', 'remarkably', 'notably', 'particularly', 'especially']
+
+# Subjective Validation Thresholds (November 16, 2025 - Dynamic Implementation)
+# Based on batch test analysis: content with 94-99% Winston scores had 5-8 violations
+# These are BASE thresholds - actual thresholds adjust dynamically based on Winston scores:
+#   - Winston ≥90%: thresholds × 1.5 (allow excellent content more flexibility)
+#   - Winston 70-90%: thresholds × 1.0 (standard enforcement)
+#   - Winston <70%: thresholds × 0.75 (strict filtering for poor content)
+subjective_thresholds:
+  max_violations: 6        # Base maximum total violations (dynamically adjusted)
+  max_commas: 8            # Base maximum commas (dynamically adjusted)
+  # Dynamic adjustment ensures high Winston scores aren't blocked by stylistic rules
+  # while poor Winston scores face stricter validation
 
 # Author profile mapping
 voice:

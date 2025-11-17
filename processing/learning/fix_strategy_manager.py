@@ -236,6 +236,7 @@ class FixStrategyManager:
                 if strategy:
                     return {
                         **strategy,
+                        'strategy_name': strategy.get('name', strategy_name),  # Ensure strategy_name key exists
                         'success_rate': success_rate,
                         'avg_improvement': avg_improvement,
                         'times_used': times_used,

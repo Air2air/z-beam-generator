@@ -40,22 +40,22 @@ class PromptBuilder:
     @staticmethod
     def _load_anti_ai_rules() -> str:
         """
-        Load anti-AI rules from prompts/anti_ai_rules.txt.
+        Load anti-AI rules from prompts/rules/anti_ai_rules.txt.
         
         Returns:
             Anti-AI rules string
             
         Raises:
-            FileNotFoundError: If prompts/anti_ai_rules.txt doesn't exist
+            FileNotFoundError: If prompts/rules/anti_ai_rules.txt doesn't exist
         """
-        rules_path = os.path.join('prompts', 'anti_ai_rules.txt')
+        rules_path = os.path.join('prompts', 'rules', 'anti_ai_rules.txt')
         with open(rules_path, 'r', encoding='utf-8') as f:
             return f.read().strip()
     
     @staticmethod
     def _load_component_template(component_type: str) -> Optional[str]:
         """
-        Load component-specific prompt template from prompts/{component}.txt.
+        Load component-specific prompt template from prompts/components/{component}.txt.
         
         Args:
             component_type: Component type (subtitle, caption, etc.)
@@ -63,7 +63,7 @@ class PromptBuilder:
         Returns:
             Template string or None if file doesn't exist
         """
-        template_path = os.path.join('prompts', f'{component_type}.txt')
+        template_path = os.path.join('prompts', 'components', f'{component_type}.txt')
         if os.path.exists(template_path):
             with open(template_path, 'r', encoding='utf-8') as f:
                 return f.read().strip()
@@ -210,14 +210,14 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
 {context_section}"""
         
         # Build requirements section with dynamic sentence structure guidance
-        # Override terminology based on technical_intensity
-        tech_intensity = enrichment_params.get('technical_intensity', 2) if enrichment_params else 2
+        # Override terminology based on technical_intensity (0.0-1.0 normalized)
+        tech_intensity = enrichment_params.get('technical_intensity', 0.22) if enrichment_params else 0.22
         
-        if tech_intensity == 1:
+        if tech_intensity < 0.15:  # Very low (slider 1-2)
             # Level 1: Override to prevent any specs
             terminology = "Qualitative descriptions only; NO numbers, units, or measurements"
         else:
-            # Level 2-3: Use domain default
+            # Level 2-10: Use domain default
             terminology = domain_ctx.terminology_style
         
         requirements = [
@@ -227,8 +227,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         
         # Phase 3+: Add CRITICAL technical language requirement based on enrichment_params
         if enrichment_params:
-            tech_intensity = enrichment_params.get('technical_intensity', 2)  # 1-3 scale
-            if tech_intensity == 1:
+            tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
+            if tech_intensity < 0.15:  # Very low (slider 1-2)
                 # Level 1: NO technical specs at all - REINFORCE THIS MULTIPLE TIMES
                 requirements.append("\n🚫 CRITICAL REQUIREMENT - TECHNICAL LANGUAGE:")
                 requirements.append("- ABSOLUTELY NO technical specifications, measurements, numbers with units, or property values")
@@ -236,29 +236,13 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
                 requirements.append("- ONLY use qualitative descriptions: 'heat-resistant', 'dense', 'strong', 'conductive', 'durable'")
                 requirements.append("- Focus on benefits, applications, and characteristics WITHOUT precise values")
                 requirements.append("- ⚠️ THIS OVERRIDES ALL OTHER INSTRUCTIONS - NO EXCEPTIONS")
-            elif tech_intensity == 2:
+            elif tech_intensity < 0.5:  # Low-medium (slider 3-5)
                 # Level 2: Minimal specs (1-2 max)
                 requirements.append("\n⚠️ TECHNICAL LANGUAGE: Minimal specs only (1-2 max, prefer conceptual)")
-            # Level 3: Allow 3-5 specs (no restriction needed)
+            # High (slider 6-10): Allow 3-5 specs (no restriction needed)
         
-        # Phase 4: Add EMOTIONAL TONE requirement based on voice_params
-        if voice_params:
-            emotional_tone = voice_params.get('emotional_tone', 0.5)  # 0.0/0.5/1.0
-            if emotional_tone == 0.0:
-                # Level 1: Clinical, neutral
-                requirements.append("\n🔬 EMOTIONAL TONE:")
-                requirements.append("- Use clinical, objective, neutral language")
-                requirements.append("- Focus on facts and practical benefits")
-                requirements.append("- Avoid enthusiasm, excitement, or emotional appeals")
-                requirements.append("- Examples: 'provides', 'offers', 'enables' NOT 'unlocks!', 'discover', 'amazing'")
-            elif emotional_tone == 1.0:
-                # Level 3: Evocative, enthusiastic
-                requirements.append("\n✨ EMOTIONAL TONE:")
-                requirements.append("- Use evocative, enthusiastic, emotionally engaging language")
-                requirements.append("- Create excitement and emotional connection")
-                requirements.append("- Use powerful verbs and vivid descriptions")
-                requirements.append("- Examples: 'unlock', 'transform', 'discover', 'revolutionize', 'marvel at'")
-            # Level 2 (0.5): Balanced - no specific guidance, AI decides naturally
+        # NOTE: Emotional tone now controlled by prompts/anti_ai_rules.txt and persona files
+        # Dynamic emotional_tone parameter removed per Option A architecture decision
         
         if not spec.end_punctuation:
             requirements.append("- NO period at end")
@@ -270,9 +254,38 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         voice_section = f"""VOICE: {author} from {country}
 - Regional patterns: {esl_traits}"""
         
-        # Apply voice parameter intensity if provided
-        if voice_params:
-            trait_freq = voice_params.get('trait_frequency', 0.5)
+        # Check if modular parameters are enabled
+        use_modular = voice_params.get('_use_modular', False) if voice_params else False
+        parameter_instances = voice_params.get('_parameter_instances', {}) if voice_params else {}
+        
+        if use_modular and parameter_instances:
+            # MODULAR MODE: Use parameter instances to generate guidance
+            logger.debug(f"Using modular parameters: {list(parameter_instances.keys())}")
+            
+            # Determine content length category for parameters
+            if length <= 30:
+                content_length = 'short'
+            elif length <= 100:
+                content_length = 'medium'
+            else:
+                content_length = 'long'
+            
+            # Collect guidance from each parameter instance
+            for param_name, param_instance in sorted(parameter_instances.items()):
+                try:
+                    guidance = param_instance.generate_prompt_guidance(content_length)
+                    if guidance:
+                        voice_section += f"\n{guidance}"
+                        logger.debug(f"Added modular guidance from {param_name}")
+                except Exception as e:
+                    logger.warning(f"Failed to generate guidance from {param_name}: {e}")
+            
+        else:
+            # LEGACY MODE: Inline parameter logic (original implementation)
+            logger.debug("Using legacy inline parameter logic")
+            
+            # Apply voice parameter intensity if provided
+            trait_freq = voice_params.get('trait_frequency', 0.5) if voice_params else 0.5
             if trait_freq < 0.3:
                 voice_section += "\n- Voice intensity: Subtle - minimize author personality, keep neutral"
             elif trait_freq < 0.7:
@@ -280,102 +293,103 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             else:
                 voice_section += "\n- Voice intensity: Strong - emphasize author personality throughout"
         
-        # DYNAMIC SENTENCE CALCULATION: Extract grammar_norms from voice profile
-        grammar_norms = voice.get('grammar_norms', {}) if voice else {}
-        if grammar_norms:
-            # Calculate dynamic sentence target based on word count and grammar norms
-            sentence_guidance = SentenceCalculator.get_sentence_guidance(length, grammar_norms)
-            voice_section += f"\n- {sentence_guidance}"
-            logger.debug(f"Using dynamic sentence calculation: {sentence_guidance}")
-        elif sentence_style:
-            # Fallback to explicit sentence_style from voice profile (backward compatibility)
-            voice_section += f"\n- Sentence structure: {sentence_style}"
-        else:
-            # Fallback to config.yaml sentence_variation or generic guidance
-            try:
-                from processing.generation.component_specs import ComponentRegistry
-                config = ComponentRegistry._load_config()
-                sentence_variation = config.get('sentence_variation', {})
-                component_variation = sentence_variation.get(spec.name, {})
-                fallback_style = component_variation.get('style', '')
-                
-                if fallback_style:
-                    voice_section += f"\n- Sentence structure: {fallback_style}"
-                else:
-                    # Ultimate fallback based on word count
-                    if length <= 30:
-                        voice_section += "\n- Sentence structure: Keep sentences concise and punchy; mix very short (3-5 words) with slightly longer statements"
-                    elif length <= 100:
-                        voice_section += "\n- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
-                    else:
-                        voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow; avoid uniform length"
-            except (FileNotFoundError, KeyError, ImportError) as e:
-                # If config loading fails, log warning and use basic fallback
-                logger.warning(f"Failed to load sentence variation config: {e}. Using length-based fallback.")
+            # DYNAMIC SENTENCE CALCULATION: Use sentence_rhythm_variation parameter first
+            rhythm_variation = voice_params.get('sentence_rhythm_variation', 0.5) if voice_params else 0.5
+            
+            if rhythm_variation < 0.3:
+                # Low variation: Uniform, consistent sentence lengths
                 if length <= 30:
-                    voice_section += "\n- Sentence structure: Keep sentences concise and punchy; mix very short (3-5 words) with slightly longer statements"
+                    voice_section += "\n- Sentence structure: Keep sentences consistent (8-12 words); maintain uniform rhythm"
+                elif length <= 100:
+                    voice_section += "\n- Sentence structure: Use consistent sentence lengths (12-16 words); avoid dramatic variation"
+                else:
+                    voice_section += "\n- Sentence structure: Maintain steady rhythm (14-18 words per sentence); consistent flow"
+            elif rhythm_variation < 0.7:
+                # Moderate variation: Mix short and medium
+                if length <= 30:
+                    voice_section += "\n- Sentence structure: Mix short (5-8 words) and medium (10-14 words) sentences naturally"
                 elif length <= 100:
                     voice_section += "\n- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
                 else:
-                    voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow; avoid uniform length"
-            except Exception as e:
-                # Unexpected error - should not be silently swallowed
-                logger.error(f"Unexpected error in sentence structure calculation: {e}")
-                raise
+                    voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow"
+            else:
+                # High variation: Dramatic differences in sentence length
+                if length <= 30:
+                    voice_section += "\n- Sentence structure: WILD variation - mix very short (3-5 words) with much longer (15-20 words); unpredictable rhythm"
+                elif length <= 100:
+                    voice_section += "\n- Sentence structure: DRAMATIC variation - alternate between very short (3-6 words) and long (18-25 words); avoid patterns"
+                else:
+                    voice_section += "\n- Sentence structure: EXTREME variation - range from tiny (2-4 words) to extended (25+ words); chaotic, unpredictable rhythm"
+            
+            # Fallback to grammar_norms if available (legacy support)
+            grammar_norms = voice.get('grammar_norms', {}) if voice else {}
+            if grammar_norms and rhythm_variation == 0.5:  # Only use as fallback at default setting
+                sentence_guidance = SentenceCalculator.get_sentence_guidance(length, grammar_norms)
+                logger.debug(f"Using grammar_norms fallback: {sentence_guidance}")
+            
+            # Add jargon removal guidance based on jargon_removal parameter
+            jargon_level = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5
+            
+            # NOTE: jargon_level is "jargon_REMOVAL" so HIGH value = REMOVE jargon
+            if jargon_level > 0.7:
+                # High jargon removal: Plain language only
+                voice_section += "\n- Technical terminology: AVOID jargon completely; use plain language (say 'strong material' not 'MPa', 'laser wavelength' not '1064nm', 'material stiffness' not 'Young's modulus')"
+            elif jargon_level > 0.3:
+                # Moderate: Essential terms only
+                voice_section += "\n- Technical terminology: Use essential terms but explain when needed; prefer clarity over precision"
+            else:
+                # Low jargon removal: Allow technical terminology
+                voice_section += "\n- Technical terminology: Use industry-standard terms (ISO, ASTM, specifications, certifications)"
+            
+            # Add imperfection guidance based on imperfection_tolerance parameter
+            imperfection = voice_params.get('imperfection_tolerance', 0.5) if voice_params else 0.5
+            
+            if imperfection < 0.3:
+                # Low tolerance: Perfect grammar
+                voice_section += "\n- Perfect grammar and structure required; no imperfections"
+            elif imperfection < 0.7:
+                # Moderate: Some natural imperfections
+                voice_section += "\n- Natural imperfections allowed (makes text more human)"
+            else:
+                # High tolerance: Embrace imperfections
+                voice_section += """
+- EMBRACE natural imperfections:
+  * Occasional informal contractions (gonna, wanna)
+  * Minor article quirks ("the steel" vs "steel")
+  * Slight awkward phrasings that feel human
+  * Fragment sentences for emphasis
+  * Starting sentences with And, But, Or
+  * Deliberate informality and speech patterns"""
+            
+            # Add professional voice guidance based on professional_voice parameter
+            professional_level = voice_params.get('professional_voice', 0.5) if voice_params else 0.5
+            
+            if professional_level < 0.3:
+                # Low professional: Casual vocabulary
+                voice_section += "\n- Vocabulary level: CASUAL - use informal language (kinda, stuff, pretty good, sorta, really nice)"
+            elif professional_level < 0.7:
+                # Moderate: Balanced professional
+                voice_section += "\n- Vocabulary level: Professional but accessible; avoid extremes (casual or overly formal)"
+            else:
+                # High professional: Formal vocabulary
+                voice_section += "\n- Vocabulary level: HIGHLY FORMAL - use sophisticated language (consequently, therefore, pursuant to, facilitate, utilize)"
         
+        # Common voice elements (applies to both modular and legacy modes)
         voice_section += """
 - Mix formal and conversational
 - Vary sentence openings and structures naturally
-- Occasional article flexibility (ESL style)
-- Natural imperfections allowed (makes text more human)"""
+- Occasional article flexibility (ESL style)"""
         
-        # Phase 2: Add personality guidance based on voice_params
-        personality_guidance = ""
-        if voice_params:
-            opinion_rate = voice_params.get('opinion_rate', 0.0)
-            reader_address = voice_params.get('reader_address_rate', 0.0)
-            colloquial = voice_params.get('colloquialism_frequency', 0.0)
-            
-            if opinion_rate > 0.5:
-                personality_guidance += "\n- Include personal perspective or insight where appropriate (\"I find...\", \"In my experience...\")"
-            if reader_address > 0.5:
-                personality_guidance += "\n- Address reader directly using 'you' naturally (\"you'll notice\", \"you can\")"
-            if colloquial > 0.6:
-                personality_guidance += "\n- Use informal language and colloquialisms fitting the voice"
-            
-            # Add to voice section if any guidance generated
-            if personality_guidance:
-                voice_section += "\n\nPERSONALITY GUIDANCE:" + personality_guidance
+        # NOTE: Personality traits now controlled by persona files only
+        # Dynamic personality parameters removed per Option A architecture decision
         
         # Phase 3+: Technical language guidance moved to REQUIREMENTS section for higher priority
         
-        # Phase 3B: Build anti-AI section with structural_predictability control
+        # Phase 3B: Load anti-AI rules (static from file)
+        # NOTE: Rule strictness now controlled by prompts/anti_ai_rules.txt only
+        # Dynamic structural_predictability parameter removed per Option A architecture decision
         try:
-            anti_ai_full = PromptBuilder._load_anti_ai_rules()
-            
-            # Apply structural_predictability to vary rule strictness
-            if voice_params:
-                structural = voice_params.get('structural_predictability', 0.5)
-                
-                if structural < 0.3:
-                    # Low = predictable = STRICT rules (all guidance)
-                    anti_ai = f"""CRITICAL - STRICT AI AVOIDANCE (High Constraint):
-{anti_ai_full}
-- ADDITIONAL: Avoid all formulaic patterns listed above
-- ADDITIONAL: Every sentence must start differently
-- ADDITIONAL: Mix sentence lengths dramatically (3-20+ words)"""
-                elif structural < 0.7:
-                    # Medium = balanced (standard rules)
-                    anti_ai = anti_ai_full
-                else:
-                    # High = unpredictable = MINIMAL rules (creative freedom)
-                    anti_ai = """AVOID OBVIOUS AI PATTERNS:
-- Vary sentence openings naturally
-- Mix sentence lengths and structures
-- Use conversational flow when appropriate"""
-            else:
-                # No voice_params = use standard rules
-                anti_ai = anti_ai_full
+            anti_ai = PromptBuilder._load_anti_ai_rules()
                 
         except Exception as e:
             logger.warning(f"Failed to load anti_ai_rules.txt: {e}. Using embedded fallback.")

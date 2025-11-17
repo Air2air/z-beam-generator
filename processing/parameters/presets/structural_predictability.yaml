@@ -1,0 +1,34 @@
+# Structural Predictability Parameter
+# Controls how predictable vs varied the content structure is
+
+name: structural_predictability
+category: variation
+scale: 1-10
+description: Controls structural patterns from strict/consistent to unpredictable
+maps_to: enrichment_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Strict patterns, highly consistent
+    default: |-
+      - Structure: Maintain strict structural patterns; use consistent organization throughout
+      - Opening Variation: CRITICAL - Start each piece differently. BANNED OPENINGS: "Under the microscope", "At 1000x magnification". Use varied approaches: direct observations, property mentions, application contexts, condition descriptions.
+  
+  moderate:
+    # MODERATE (4-7): Some variation, flexible patterns
+    default: |-
+      - Structure: Allow natural structural variation; mix predictable and unexpected patterns
+      - Opening Variation: REQUIRED - Never repeat opening phrases. Alternate between: microscope observations (sparingly), material properties, visual descriptions, contamination focus, comparison contexts. First 8 words must be unique across all content.
+  
+  high:
+    # HIGH (8-10): Unpredictable, highly varied
+    default: |-
+      - Structure: Embrace unpredictable structure; vary organization freely for natural human feel
+      - Opening Variation: MANDATORY - Maximum diversity required. Each opening must be completely distinct. Rotate through: direct observations, rhetorical elements, property statements, condition assessments, contextual references. Zero repeated opening patterns allowed.
+
+# Examples of expected output at each tier
+examples:
+  low: "First, prepare the surface. Second, configure the laser. Third, begin cleaning."
+  moderate: "Start by preparing the surface. You'll want to configure the laser settings next - power, frequency, that sort of thing. Then you can begin the actual cleaning process."
+  high: "Surface prep comes first, obviously. Oh, and don't forget laser configuration (power settings are critical here). Once that's sorted, cleaning itself is straightforward."

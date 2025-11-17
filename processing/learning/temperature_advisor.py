@@ -22,6 +22,7 @@ import statistics
 from typing import Dict, List, Optional
 from pathlib import Path
 from collections import defaultdict
+from processing.learning.weight_learner import WeightLearner
 
 logger = logging.getLogger(__name__)
 
@@ -44,16 +45,18 @@ class TemperatureAdvisor:
     - Performance predictions for different temperatures
     """
     
-    def __init__(self, db_path: str, min_samples: int = 5):
+    def __init__(self, db_path: str, min_samples: int = 5, weight_learner: Optional[WeightLearner] = None):
         """
         Initialize temperature advisor.
         
         Args:
             db_path: Path to Winston feedback database
             min_samples: Minimum samples needed for reliable recommendation
+            weight_learner: WeightLearner for dynamic composite weights (auto-created if None)
         """
         self.db_path = Path(db_path)
         self.min_samples = min_samples
+        self.weight_learner = weight_learner or WeightLearner()
         
         if not self.db_path.exists():
             logger.warning(f"Database not found: {db_path}. TemperatureAdvisor will work once data exists.")
@@ -175,8 +178,15 @@ class TemperatureAdvisor:
             avg_score = statistics.mean(data['human_scores'])
             score_std = statistics.stdev(data['human_scores']) if sample_size > 1 else 0
             
-            # Composite score: success rate + normalized human score
-            composite = (success_rate * 0.6) + (avg_score / 100.0 * 0.4)
+            # Composite score using learned weights (not hardcoded)
+            # Get universal optimal weights from WeightLearner
+            w_winston, w_subjective, w_readability = self.weight_learner.get_optimal_weights()
+            # For temperature analysis, we only have success_rate and avg_score
+            # Normalize: success_rate represents winston (pass/fail), avg_score represents quality
+            # Redistribute readability weight to winston since we don't have readability here
+            winston_weight = w_winston + w_readability
+            subjective_weight = w_subjective
+            composite = (success_rate * winston_weight) + (avg_score / 100.0 * subjective_weight)
             
             temp_analysis.append({
                 'temperature': temp,
@@ -302,7 +312,12 @@ class TemperatureAdvisor:
     
     def _rate_performance(self, success_rate: float, avg_score: float) -> str:
         """Rate performance as excellent/good/fair/poor."""
-        composite = (success_rate * 0.6) + (avg_score / 100.0 * 0.4)
+        # Use learned weights for composite calculation
+        w_winston, w_subjective, w_readability = self.weight_learner.get_optimal_weights()
+        # Redistribute readability to winston since we only have success_rate and avg_score
+        winston_weight = w_winston + w_readability
+        subjective_weight = w_subjective
+        composite = (success_rate * winston_weight) + (avg_score / 100.0 * subjective_weight)
         
         if composite >= 0.8:
             return 'excellent'

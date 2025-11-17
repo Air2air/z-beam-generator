@@ -1,0 +1,31 @@
+# Length Variation Range Parameter
+# Controls word count flexibility and tolerance
+
+name: length_variation_range
+category: variation
+scale: 1-10
+description: Controls how much word count can vary from target length
+maps_to: enrichment_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Tight ±10% tolerance
+    default: |-
+      - Length tolerance: Stay very close to target word count (±10% maximum)
+  
+  moderate:
+    # MODERATE (4-7): Moderate ±30% tolerance
+    default: |-
+      - Length tolerance: Allow moderate word count variation (±30% is acceptable)
+  
+  high:
+    # HIGH (8-10): Loose ±60% tolerance
+    default: |-
+      - Length tolerance: Don't worry about exact word count; natural length takes priority (±60% is fine)
+
+# Examples of expected output at each tier
+examples:
+  low: "Target 100 words → Deliver 90-110 words"
+  moderate: "Target 100 words → Deliver 70-130 words"
+  high: "Target 100 words → Deliver 40-160 words (prioritize natural flow)"

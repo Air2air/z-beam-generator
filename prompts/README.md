@@ -4,34 +4,44 @@
 
 ---
 
-## 📁 Simple Flat Structure
+## 📁 Organized Folder Structure
 
 ```
 prompts/                           # Root-level prompts directory
 ├── README.md                      # This file
 │
-├── subtitle.txt                   # Subtitle generation (15 words)
-├── caption.txt                    # Caption generation (25 words)
-├── description.txt                # Description generation (150 words)
-├── faq.txt                        # FAQ answer generation (100 words)
-├── troubleshooter.txt             # Troubleshooting guide (120 words)
+├── components/                    # WHAT to generate (task specifications)
+│   ├── README.md                  # Component prompt documentation
+│   ├── subtitle.txt               # Subtitle generation (15 words)
+│   ├── caption.txt                # Caption generation (25 words)
+│   ├── description.txt            # Description generation (150 words)
+│   ├── faq.txt                    # FAQ answer generation (100 words)
+│   └── troubleshooter.txt         # Troubleshooting guide (120 words)
 │
-├── anti_ai_rules.txt              # AI pattern avoidance rules
-├── voice_rules.txt                # Voice profile application
-├── ai_detection_patterns.txt      # Advanced AI detection patterns
-├── component_specs.yaml           # Length, focus, style per component
+├── rules/                         # WHAT TO AVOID (universal constraints)
+│   ├── README.md                  # Rule system documentation
+│   ├── anti_ai_rules.txt          # AI pattern avoidance rules
+│   └── grammar_rules.txt          # Grammar and linguistic patterns
 │
-├── personas/                      # Author voice profiles (4 ESL authors)
-│   ├── united_states.yaml
-│   ├── italy.yaml
-│   ├── indonesia.yaml
-│   └── taiwan.yaml
+├── personas/                      # HOW to write (author voice patterns)
+│   ├── README.md                  # Persona system documentation
+│   ├── united_states.yaml         # US author: formal academic style
+│   ├── italy.yaml                 # Italian author: technical with EFL traits
+│   ├── indonesia.yaml             # Indonesian author: natural accessibility
+│   └── taiwan.yaml                # Taiwanese author: concise technical
 │
-└── archive/                       # Legacy templates (reference only)
-    └── unified_template.txt
+└── archive/                       # Deprecated/legacy files (reference only)
+    ├── README.md                  # Archive documentation
+    ├── voice_rules.txt            # Deprecated: Replaced by personas/
+    ├── component_specs.yaml       # Deprecated: Violates content policy
+    └── unified_template.txt       # Legacy: Old template system
 ```
 
-**All prompts at root level** - no subfolders for component files!
+**Separation of Concerns**:
+- **components/** = Task specifications (WHAT to generate)
+- **rules/** = Universal constraints (WHAT TO AVOID)
+- **personas/** = Author voices (HOW to write)
+- **archive/** = Deprecated files (DO NOT USE)
 
 ---
 
@@ -51,10 +61,10 @@ python3 run.py --material "Aluminum" --component subtitle
 ```
 
 **Flow**:
-1. Copilot reads component prompt (e.g., `subtitle.txt`)
+1. Copilot reads component prompt from `prompts/components/` (e.g., `subtitle.txt`)
 2. Loads material facts from `data/materials/Materials.yaml`
-3. Gets author voice from material's `author.id`
-4. Injects shared rules (`anti_ai_rules.txt`, `voice_rules.txt`)
+3. Gets author voice from material's `author.id` (loads from `prompts/personas/`)
+4. Injects shared rules from `prompts/rules/` (`anti_ai_rules.txt`, `grammar_rules.txt`)
 5. Calls processing system (Orchestrator → PromptBuilder → API → Detection)
 6. Saves result to `Materials.yaml`
 
@@ -128,6 +138,8 @@ Ask Copilot to generate content directly:
 
 ## 📝 Component Files
 
+Located in `prompts/components/`:
+
 | File | Purpose | Length | Key Feature |
 |------|---------|--------|-------------|
 | `subtitle.txt` | Short intro | 15 words | No period at end |
@@ -137,39 +149,42 @@ Ask Copilot to generate content directly:
 | `troubleshooter.txt` | Solve problems | 120 words | Numbered steps |
 
 Each file uses template variables:
-- `{length}` - Target word count
+- `{length}` - Target word count (from `processing/config.yaml`)
 - `{topic}` - Material name
 - `{facts}` - Material properties and data
-- `{focus_areas}` - From component spec (unique characteristics, key benefits, etc.)
-- `{voice_instructions}` - Injected from `voice_rules.txt`
-- `{anti_ai_rules}` - Injected from `anti_ai_rules.txt`
+- `{voice_instructions}` - Injected from author persona YAML
+- `{anti_ai_rules}` - Injected from `prompts/rules/anti_ai_rules.txt`
+
+**See**: `prompts/components/README.md` for detailed component documentation
 
 ---
 
 ## 🛠️ Quick Edits
 
 **Want better subtitles?**  
-→ Edit `prompts/subtitle.txt`
+→ Edit `prompts/components/subtitle.txt`
 
 **Want stricter AI avoidance?**  
-→ Edit `prompts/anti_ai_rules.txt`
+→ Edit `prompts/rules/anti_ai_rules.txt`
 
-**Want different voice application?**  
-→ Edit `prompts/voice_rules.txt`
+**Want different author voice?**  
+→ Edit persona YAML in `prompts/personas/` (e.g., `united_states.yaml`)
 
 **Changes apply immediately** - no deployment needed!
 
 ---
 
-## 📊 Component Specs
+## 📊 Component Configuration
 
-From `component_specs.yaml`:
+From `processing/config.yaml` (component_lengths):
 
 - **subtitle**: 15 words, no period, focus on unique characteristics
 - **caption**: 25 words, include measurements, technical but accessible
 - **description**: 150 words (140-160 range), comprehensive coverage
 - **faq**: 100 words (80-120 range), conversational and helpful
 - **troubleshooter**: 120 words (100-140 range), methodical solutions
+
+**Note**: Word counts defined in config, content instructions in component prompts.
 
 ---
 
@@ -184,7 +199,7 @@ From `component_specs.yaml`:
 
 ## 🚫 Anti-AI Instructions
 
-From **anti_ai_rules.txt** - Critical rules to avoid AI detection:
+From **prompts/rules/anti_ai_rules.txt** - Critical rules to avoid AI detection:
 
 1. **No formulaic structures** (e.g., "X does Y while preserving Z")
 2. **No abstract transitions** ("results suggest", "data indicate")
@@ -195,26 +210,22 @@ From **anti_ai_rules.txt** - Critical rules to avoid AI detection:
 
 These instructions are embedded in every prompt to ensure AI-resistant output.
 
+**See**: `prompts/rules/README.md` for complete rule documentation
+
 ---
 
-## 🎤 Voice Instructions
+## 🎤 Voice Profiles
 
-From **voice_rules.txt** - Applied to all generations:
+From **prompts/personas/*.yaml** - 4 ESL author voices:
 
-```
-VOICE: {author} from {country}
-- Regional patterns: {esl_traits}
-- Mix formal and conversational
-- Vary sentence structure naturally
-- Occasional article flexibility (ESL style)
-- Natural imperfections allowed (makes text more human)
-```
+- **United States** (`united_states.yaml`): Formal academic, balanced active-passive
+- **Italy** (`italy.yaml`): Technical precision with subtle EFL traits (0.3-0.5 per para)
+- **Indonesia** (`indonesia.yaml`): Natural accessibility with light Southeast Asian markers
+- **Taiwan** (`taiwan.yaml`): Concise technical with East Asian formal patterns
 
-Voice profiles are loaded from `prompts/personas/*.yaml`:
-- **United States**: Formal academic, balanced active-passive
-- **Italy**: Technical precision with subtle EFL traits (0.3-0.5 per para)
-- **Indonesia**: Natural accessibility with light Southeast Asian markers
-- **Taiwan**: Concise technical with East Asian formal patterns
+Voice profiles are automatically applied based on material's assigned author.
+
+**See**: `prompts/personas/README.md` for persona system documentation
 
 ---
 
@@ -226,10 +237,10 @@ Voice profiles are loaded from `prompts/personas/*.yaml`:
 - `processing/voice/store.py` - Author voice profile loading
 - `processing/detection/ensemble.py` - Composite AI detection (70%+30%)
 - `processing/detection/ai_detection.py` - Advanced pattern detection
+- `processing/detection/patterns/ai_detection_patterns.txt` - Technical detection patterns
 
 ### Configuration
-- `prompts/component_specs.yaml` - Component definitions (this directory)
-- `processing/config.yaml` - System-wide configuration
+- `processing/config.yaml` - System-wide configuration (component lengths, API settings)
 
 ### Testing
 - `processing/tests/test_e2e_pipeline.py` - Full pipeline validation (7 tests)
@@ -238,10 +249,11 @@ Voice profiles are loaded from `prompts/personas/*.yaml`:
 
 ## 📝 Notes
 
-1. **All prompts at root level** - Individual component files for easy editing
+1. **Organized by function** - components/, rules/, personas/, archive/ separation
 2. **Changes propagate immediately** - No deployment needed for prompt updates
 3. **Test after modifications** - Run E2E tests to verify changes
 4. **Regeneration creates backups** - Materials.yaml backed up before save
+5. **Component discovery** - System automatically scans `prompts/components/*.txt`
 
 ---
 
@@ -266,10 +278,15 @@ python3 scripts/processing/regenerate_subtitles_with_processing.py
 python3 processing/tests/test_e2e_pipeline.py
 ```
 
-**Most important files**:
-1. `subtitle.txt` / `caption.txt` / `description.txt` / `faq.txt` / `troubleshooter.txt` - Component prompts
-2. `component_specs.yaml` - Component definitions
-3. `anti_ai_rules.txt` - AI avoidance rules
-4. `voice_rules.txt` - Voice application template
-5. `personas/*.yaml` - Author voice profiles
+**Most important directories**:
+1. `prompts/components/` - Component task specifications (subtitle, caption, etc.)
+2. `prompts/rules/` - Universal constraints (anti-AI rules, grammar rules)
+3. `prompts/personas/` - Author voice profiles (4 ESL authors)
+4. `processing/config.yaml` - Component lengths and system configuration
+
+**See subdirectory READMEs for detailed documentation**:
+- `prompts/components/README.md` - Component prompt system
+- `prompts/rules/README.md` - Rule system documentation
+- `prompts/personas/README.md` - Persona system guide
+- `prompts/archive/README.md` - Deprecated files reference
 

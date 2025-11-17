@@ -1,0 +1,31 @@
+# Professional Voice Parameter
+# Controls vocabulary level from casual to highly formal
+
+name: professional_voice
+category: voice
+scale: 1-10
+description: Controls vocabulary level from casual to highly formal
+maps_to: voice_params
+
+# Preset prompts for each tier
+prompts:
+  low:
+    # LOW (1-3): Casual, conversational vocabulary
+    default: |-
+      - Vocabulary level: CASUAL - use informal language (kinda, stuff, pretty good, sorta, really nice)
+  
+  moderate:
+    # MODERATE (4-7): Balanced professional tone
+    default: |-
+      - Vocabulary level: Professional but accessible; avoid extremes (casual or overly formal)
+  
+  high:
+    # HIGH (8-10): Highly formal, sophisticated vocabulary
+    default: |-
+      - Vocabulary level: HIGHLY FORMAL - use sophisticated language (consequently, therefore, pursuant to, facilitate, utilize)
+
+# Examples of expected output at each tier
+examples:
+  low: "This stuff works pretty good for most things. Really nice material."
+  moderate: "This material works well for various applications. Good performance."
+  high: "This material facilitates optimal performance across diverse applications. Consequently, it demonstrates superior efficacy."

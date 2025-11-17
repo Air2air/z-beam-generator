@@ -203,7 +203,7 @@ class UnifiedOrchestrator:
         
         Args:
             identifier: Item identifier (material name, region name, etc.)
-            component_type: Content type (caption, subtitle, faq, description)
+            component_type: Content type (defined in prompts/{type}.txt)
             **kwargs: Additional parameters
             
         Returns:

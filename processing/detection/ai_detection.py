@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 # Get the directory containing this file (processing/detection/)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Path to centralized patterns file in /prompts
-PATTERNS_FILE = os.path.join(CURRENT_DIR, '..', '..', 'prompts', 'ai_detection_patterns.txt')
+PATTERNS_FILE = os.path.join(CURRENT_DIR, 'patterns', 'ai_detection_patterns.txt')
 
 
 def load_patterns(patterns_file: str = PATTERNS_FILE) -> Dict[str, Any]:
