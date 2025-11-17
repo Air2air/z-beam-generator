@@ -71,7 +71,7 @@ class WeightLearner:
     """
     
     # Minimum samples needed for reliable weight learning
-    MIN_GLOBAL_SAMPLES = 500  # Need 500+ generations for learned weights
+    MIN_GLOBAL_SAMPLES = 110  # Need 110+ generations for learned weights
     
     # Default fallback weights (used only if insufficient data)
     DEFAULT_WEIGHTS = {

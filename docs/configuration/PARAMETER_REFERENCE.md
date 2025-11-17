@@ -194,7 +194,7 @@ The system uses **15 parameters** across 4 categories to control content generat
 - **Linked**: To `detection_results` via foreign key
 
 ### Sweet Spot Discovery
-- **Threshold**: 500+ successful samples needed
+- **Threshold**: 110+ successful samples needed
 - **Method**: Statistical analysis of top 20% performers
 - **Output**: Median values for all parameters
 - **Confidence**: Low/Medium/High based on sample size

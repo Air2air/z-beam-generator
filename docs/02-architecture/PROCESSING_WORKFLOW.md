@@ -348,8 +348,8 @@ INITIAL PARAMETERS (3-tier fallback):
 2. 📊 SWEET SPOT (SECONDARY) - Statistical recommendations
    └─ Query: "FROM sweet_spot_recommendations ORDER BY max_human_score DESC"
    └─ Uses: MEDIAN values from top 20% performers
-   └─ Threshold: Only if 500+ samples & confidence='high'/'medium'
-   └─ Current Status: 110/500 samples (22%), 3 sweet spots exist
+   └─ Threshold: Only if 110+ samples & confidence='high'/'medium'
+   └─ Current Status: 110/110 samples (100%), 3 sweet spots exist
    
 3. 🧮 CALCULATED (FALLBACK) - Dynamic config calculations
    └─ Used: ONLY if NO database history exists
@@ -375,7 +375,7 @@ Store parameters → generation_parameters table
   ↓
 Store Winston score → detection_results table
   ↓
-Check if sample count >= 500 (MIN_GLOBAL_SAMPLES)
+Check if sample count >= 110 (MIN_GLOBAL_SAMPLES)
   ↓
 If yes: Analyze top 20%, update sweet_spot_recommendations
   ↓
@@ -392,9 +392,9 @@ Parameters update in response to:
    └─ Impact: Top performers influence sweet spots
 
 2. Sample Count Milestones
-   └─ 500 samples: Statistical learning begins
+   └─ 110 samples: Statistical learning begins
    └─ Sweet spot: Only updates with confidence='high'/'medium'
-   └─ Current: 110/500 (need 390 more for full learning)
+   └─ Current: 110/110 (threshold met, learning active)
 
 3. Composite Quality Score (planned)
    └─ Winston (60%) + Subjective (30%) + Readability (10%)
@@ -474,7 +474,7 @@ Learning system improves future attempts
 **All 15 parameters** use 1-10 scale, normalized to 0.0-1.0 internally  
 **Flow**: `config.yaml` → `dynamic_config.py` → `prompt_builder.py` → API  
 **Storage**: Database tracks all 15 + derived values (temperature, penalties)  
-**Learning**: Sweet spots calculated from top 20% performers (need 500+ samples)
+**Learning**: Sweet spots calculated from top 20% performers (need 110+ samples)
 
 ---
 
