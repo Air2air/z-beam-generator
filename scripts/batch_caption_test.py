@@ -403,31 +403,9 @@ def main():
             else:
                 print('Pattern Validation: ✅ PASS - No violations detected')
             
-            # Full Grok AI evaluation (if available)
-            subjective_eval = r.get('subjective_eval')
-            if subjective_eval:
-                print(f"\nGrok AI Quality Assessment: {subjective_eval['overall_score']:.1f}/10")
-                print(f"  • Clarity: {subjective_eval['clarity']:.1f}/10")
-                print(f"  • Professionalism: {subjective_eval['professionalism']:.1f}/10")
-                print(f"  • Technical Accuracy: {subjective_eval['technical_accuracy']:.1f}/10")
-                print(f"  • Human-likeness: {subjective_eval['human_likeness']:.1f}/10")
-                print(f"  • Engagement: {subjective_eval['engagement']:.1f}/10")
-                print(f"  • Jargon-free: {subjective_eval['jargon_free']:.1f}/10")
-                
-                if subjective_eval['strengths']:
-                    print(f"\nStrengths:")
-                    for strength in subjective_eval['strengths']:
-                        print(f"  ✓ {strength}")
-                
-                if subjective_eval['weaknesses']:
-                    print(f"\nWeaknesses:")
-                    for weakness in subjective_eval['weaknesses']:
-                        print(f"  ✗ {weakness}")
-                
-                if subjective_eval['recommendations']:
-                    print(f"\nRecommendations:")
-                    for rec in subjective_eval['recommendations']:
-                        print(f"  → {rec}")
+            # NOTE: Grok AI Quality Assessment hidden from report display
+            # Full evaluation data is captured and used for parameter tuning in the learning system
+            # See: processing/learning/subjective_parameter_tuner.py
             
             # Winston score
             if r.get('winston_score'):

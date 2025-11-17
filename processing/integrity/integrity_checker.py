@@ -1621,7 +1621,7 @@ class IntegrityChecker:
             generator_content = generator_path.read_text()
             
             # Check for import
-            has_import = 'from processing.validation.subjective_validator import SubjectiveValidator' in generator_content
+            has_import = 'from processing.subjective import SubjectiveValidator' in generator_content
             has_init = 'self.subjective_validator = SubjectiveValidator()' in generator_content
             
             if not has_import or not has_init:

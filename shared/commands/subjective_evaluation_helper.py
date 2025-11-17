@@ -7,7 +7,7 @@ post-generation quality check step with learning database integration.
 
 from typing import Optional, Dict, Any
 import logging
-from processing.evaluation.subjective_evaluator import SubjectiveEvaluator, SubjectiveEvaluationResult
+from processing.subjective import SubjectiveEvaluator, SubjectiveEvaluationResult
 
 logger = logging.getLogger(__name__)
 

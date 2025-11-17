@@ -115,7 +115,7 @@ class DynamicGenerator:
         self.validator = ReadabilityValidator(min_score=readability_thresholds['min'])
         
         # Subjective language validator (November 16, 2025 - catch violations during generation)
-        from processing.validation.subjective_validator import SubjectiveValidator
+        from processing.subjective import SubjectiveValidator
         self.subjective_validator = SubjectiveValidator()
         
         # Winston feedback database and analyzer

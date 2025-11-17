@@ -6,7 +6,7 @@ Demonstrates the Claude subjective evaluation module in action.
 Shows both basic usage and integration with generation workflows.
 """
 
-from processing.evaluation.subjective_evaluator import evaluate_content
+from processing.subjective.evaluator import evaluate_content
 from shared.commands.claude_evaluation_helper import evaluate_after_generation
 
 
