@@ -214,11 +214,13 @@ Provide your evaluation in this format:
             from shared.api.client import GenerationRequest
             
             # Build proper API request
+            # OPTIMIZED: 600 tokens sufficient for structured evaluation output
+            # OPTIMIZED: temperature=0.2 for consistent scoring (grok-2-fast is deterministic at low temps)
             request = GenerationRequest(
                 prompt=prompt,
-                system_prompt="You are an expert content quality evaluator.",
-                max_tokens=1000,
-                temperature=0.3
+                system_prompt="You are an expert content quality evaluator. Provide concise, structured responses.",
+                max_tokens=600,
+                temperature=0.2
             )
             
             # Call API with proper request object

@@ -595,46 +595,13 @@ class DynamicGenerator:
             readability = self.validator.validate(text)
             self.logger.info(f"Readability: {readability['status']}")
             
-            # NEW: Evaluate realism with Grok (from global_evaluation but inline for retry logic)
+            # NOTE: Realism evaluation happens in global_evaluation.py AFTER generation
+            # No inline evaluation here - avoids redundant API calls
+            # For retry logic, we use Winston-only decision until realism integration in future iteration
             realism_score = None
             voice_authenticity = None
             tonal_consistency = None
             ai_tendencies = None
-            
-            try:
-                from processing.subjective.evaluator import SubjectiveEvaluator
-                from shared.api.client_factory import create_api_client
-                
-                grok_client = create_api_client('grok')
-                realism_evaluator = SubjectiveEvaluator(api_client=grok_client)
-                
-                self.logger.info("🎭 Evaluating realism with Grok...")
-                realism_result = realism_evaluator.evaluate(
-                    content=text,
-                    material_name=material_name,
-                    component_type=component_type,
-                    domain='materials'
-                )
-                
-                realism_score = realism_result.realism_score
-                voice_authenticity = realism_result.voice_authenticity
-                tonal_consistency = realism_result.tonal_consistency
-                ai_tendencies = realism_result.ai_tendencies
-                
-                if realism_score is not None:
-                    self.logger.info(f"📊 Realism: {realism_score:.1f}/10")
-                    if voice_authenticity:
-                        self.logger.info(f"   Voice Authenticity: {voice_authenticity:.1f}/10")
-                    if tonal_consistency:
-                        self.logger.info(f"   Tonal Consistency: {tonal_consistency:.1f}/10")
-                    if ai_tendencies:
-                        self.logger.info(f"   AI Tendencies: {', '.join(ai_tendencies)}")
-                
-                last_realism_result = realism_result
-                
-            except Exception as e:
-                self.logger.warning(f"⚠️  Realism evaluation unavailable: {e}")
-                # Continue without realism - will fall back to Winston-only
             
             # Log to feedback database for learning
             try:
@@ -706,50 +673,28 @@ class DynamicGenerator:
             except Exception as e:
                 self.logger.warning(f"Failed to log to database: {e}")
             
-            # NEW: Dual-objective decision (Winston + Realism)
-            # Calculate combined score if realism available, otherwise use Winston only
+            # Retry loop decision: Winston-only (realism evaluated post-generation)
+            # This keeps retry loop FAST - realism evaluation happens once after success
             human_score = detection.get('human_score', 0)
             learning_target = self.dynamic_config.base_config.get_learning_target()
             
-            if realism_score is not None:
-                # DUAL-OBJECTIVE MODE: Winston 40% + Realism 60%
-                combined_score = self.realism_optimizer.calculate_combined_score(
-                    winston_score=human_score,
-                    realism_score=realism_score,
-                    winston_weight=0.4,
-                    realism_weight=0.6
-                )
-                
-                self.logger.info(
-                    f"📊 Combined Score: {combined_score:.1f}/100 "
-                    f"(Winston {human_score:.1f}% × 0.4 + Realism {realism_score:.1f}/10 × 0.6)"
-                )
-                
-                # Success requires: basic checks pass + combined score meets target
-                passes_acceptance = (
-                    ai_score <= self.ai_threshold and 
-                    readability['is_readable'] and 
-                    subjective_valid
-                )
-                meets_quality_target = combined_score >= learning_target
-                
-            else:
-                # WINSTON-ONLY MODE: Fallback when realism unavailable
-                self.logger.info(f"📊 Winston-Only Mode (realism unavailable)")
-                combined_score = human_score
-                
-                passes_acceptance = (
-                    ai_score <= self.ai_threshold and 
-                    readability['is_readable'] and 
-                    subjective_valid
-                )
-                meets_quality_target = human_score >= learning_target
+            # Winston-only scoring during retry loop for speed
+            combined_score = human_score
+            
+            self.logger.info(f"📊 Winston Score: {human_score:.1f}% (target: {learning_target:.1f}%)")
+            
+            passes_acceptance = (
+                ai_score <= self.ai_threshold and 
+                readability['is_readable'] and 
+                subjective_valid
+            )
+            meets_quality_target = human_score >= learning_target
             
             # Check if successful for BOTH acceptance and quality target
             if passes_acceptance and meets_quality_target:
                 self.logger.info(
                     f"✅ Success on attempt {attempt} "
-                    f"(combined: {combined_score:.1f}/100, target: {learning_target:.1f})"
+                    f"(Winston: {combined_score:.1f}%, target: {learning_target:.1f}%)"
                 )
                 
                 # Extract component-specific content
@@ -774,7 +719,7 @@ class DynamicGenerator:
             if passes_acceptance and not meets_quality_target:
                 self.logger.warning(
                     f"⚠️  Passes acceptance but below quality target "
-                    f"(combined: {combined_score:.1f}/100 < {learning_target:.1f})"
+                    f"(Winston: {combined_score:.1f}% < {learning_target:.1f}%)"
                 )
                 # Continue to retry logic with parameter adjustments
             
@@ -782,13 +727,7 @@ class DynamicGenerator:
             if ai_score > self.ai_threshold:
                 self.logger.warning(f"❌ AI score too high: {ai_score:.3f} > {self.ai_threshold:.3f}")
             elif not meets_quality_target:
-                if realism_score is not None:
-                    self.logger.warning(
-                        f"📚 Quality target not met: combined {combined_score:.1f}/100 < {learning_target:.1f} "
-                        f"(Winston: {human_score:.1f}%, Realism: {realism_score:.1f}/10)"
-                    )
-                else:
-                    self.logger.warning(f"📚 Learning target not met: human {human_score:.1f}% < {learning_target}%")
+                self.logger.warning(f"📚 Learning target not met: Winston {human_score:.1f}% < {learning_target}%")
             if not readability['is_readable']:
                 self.logger.warning(f"❌ Readability failed: {readability['status']}")
             if not subjective_valid:
@@ -796,60 +735,10 @@ class DynamicGenerator:
             
             # SMART REGENERATION: Track improvement to detect stuck patterns
             improvement_history.append(human_score)
-            if realism_score is not None:
-                realism_history.append(realism_score)
             
-            # NEW: Apply realism-based parameter adjustments if AI tendencies detected
-            if ai_tendencies and len(ai_tendencies) > 0 and attempt < max_attempts:
-                self.logger.info(f"\n🎯 REALISM OPTIMIZATION: Analyzing AI tendencies for retry...")
-                
-                # Get current parameters from last generation
-                current_params = {
-                    'temperature': params['temperature'],
-                    'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
-                    'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
-                    'trait_frequency': params.get('voice_params', {}).get('trait_frequency', 0.5),
-                    'opinion_rate': params.get('voice_params', {}).get('opinion_rate', 0.5),
-                    'colloquialism_frequency': params.get('voice_params', {}).get('colloquialism_frequency', 0.5),
-                    'structural_predictability': params.get('voice_params', {}).get('structural_predictability', 0.5),
-                    'emotional_tone': params.get('voice_params', {}).get('emotional_tone', 0.5),
-                    'imperfection_tolerance': params.get('voice_params', {}).get('imperfection_tolerance', 0.5),
-                    'sentence_rhythm_variation': params.get('voice_params', {}).get('sentence_rhythm_variation', 0.5),
-                    'technical_intensity': params.get('enrichment_params', {}).get('technical_intensity', 2),
-                    'context_detail_level': params.get('enrichment_params', {}).get('context_detail_level', 2)
-                }
-                
-                # Get adjusted parameters from RealismOptimizer
-                adjusted_params = self.realism_optimizer.suggest_parameters(
-                    current_params=current_params,
-                    ai_tendencies=ai_tendencies,
-                    realism_score=realism_score
-                )
-                
-                # Log adjustments
-                adjustment_summary = self.realism_optimizer.get_adjustment_summary()
-                self.logger.info(f"\n{adjustment_summary}\n")
-                
-                # Store adjusted params for next iteration (they'll be picked up by _get_adaptive_parameters)
-                # Log realism learning data for future analysis
-                try:
-                    self.feedback_db.log_realism_learning(
-                        material=material_name,
-                        component_type=component_type,
-                        original_realism_score=realism_score,
-                        original_voice_authenticity=voice_authenticity,
-                        original_tonal_consistency=tonal_consistency,
-                        detected_ai_tendencies=ai_tendencies,
-                        original_parameters=current_params,
-                        parameter_adjustments=self.realism_optimizer.adjustment_history[-1]['adjustments'] if self.realism_optimizer.adjustment_history else [],
-                        adjustment_rationale=adjustment_summary,
-                        original_winston_score=human_score,
-                        attempt_number=attempt,
-                        domain='materials'
-                    )
-                    self.logger.info(f"📊 Logged realism learning data")
-                except Exception as e:
-                    self.logger.warning(f"⚠️  Failed to log realism learning: {e}")
+            # NOTE: Realism-based parameter optimization happens AFTER generation
+            # via global_evaluation.py → logs to realism_learning table → future generations learn
+            # This keeps retry loop FAST (Winston-only decision)
             
             # If we have 3+ attempts and zero improvement detected, trigger fresh regeneration
             if attempt >= 3 and not regeneration_triggered:

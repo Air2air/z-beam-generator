@@ -117,6 +117,9 @@ def run_global_subjective_evaluation(
             for score in result.dimension_scores:
                 status = "✅" if score.score >= 7.0 else "⚠️"
                 print(f"      {status} {score.dimension.value.replace('_', ' ').title()}: {score.score:.1f}/10")
+            
+            # Apply realism-based learning for future generations
+            _apply_realism_learning(result, topic, component_type, feedback_db)
         
         print()
         
@@ -178,3 +181,74 @@ def _load_generated_content(topic: str, component_type: str, domain: str) -> Opt
     # Add support for other domains (regions, applications, etc.) here
     
     return None
+
+
+def _apply_realism_learning(
+    result,
+    topic: str,
+    component_type: str,
+    feedback_db
+) -> None:
+    """
+    Apply realism-based learning for future generations.
+    
+    Analyzes realism evaluation results and logs parameter optimization suggestions
+    to the realism_learning table. Future generations will query this table to
+    apply learned adjustments.
+    
+    Args:
+        result: SubjectiveEvaluationResult with realism metrics
+        topic: Material/region/etc. name
+        component_type: 'caption', 'subtitle', etc.
+        feedback_db: WinstonFeedbackDatabase instance
+    """
+    
+    if not feedback_db or not result:
+        return
+    
+    try:
+        from processing.realism.optimizer import RealismOptimizer
+        
+        # Initialize optimizer
+        optimizer = RealismOptimizer()
+        
+        # Get current parameters (simplified - in production would load from context)
+        current_params = {
+            'temperature': 0.8,
+            'frequency_penalty': 0.0,
+            'presence_penalty': 0.5,
+            'voice_params': {}
+        }
+        
+        # Calculate suggested adjustments based on realism scores
+        ai_tendencies = {}
+        for score in result.dimension_scores:
+            dimension = score.dimension.value
+            # Map dimensions to AI tendencies
+            if dimension == 'voice_authenticity':
+                ai_tendencies['generic_language'] = max(0, 7.0 - score.score) / 7.0
+            elif dimension == 'tonal_consistency':
+                ai_tendencies['hedge_words'] = max(0, 7.0 - score.score) / 7.0
+            elif dimension == 'human_believability':
+                ai_tendencies['formal_structure'] = max(0, 7.0 - score.score) / 7.0
+        
+        # Get suggested adjustments from optimizer
+        if ai_tendencies:
+            suggested_params = optimizer.suggest_parameter_adjustments(
+                ai_tendencies=ai_tendencies,
+                current_params=current_params
+            )
+            
+            # Log to realism_learning table
+            feedback_db.log_realism_learning(
+                topic=topic,
+                component_type=component_type,
+                ai_tendencies=ai_tendencies,
+                suggested_params=suggested_params,
+                realism_score=result.overall_score
+            )
+            
+            logger.info(f"📚 [LEARNING] Realism optimization logged for future {component_type} generations")
+    
+    except Exception as e:
+        logger.warning(f"Failed to apply realism learning: {e}")
