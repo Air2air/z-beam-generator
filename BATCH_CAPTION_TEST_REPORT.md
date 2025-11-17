@@ -1,7 +1,7 @@
 # Batch Caption Test Report
 
-**Date**: November 16, 2025 at 11:04 PM
-**Results**: 2/4 successful
+**Date**: November 16, 2025 at 11:28 PM
+**Results**: 3/4 successful
 
 ---
 
@@ -12,53 +12,72 @@
 ### 📊 SUBJECTIVE EVALUATION
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 71.2% human
-- **Generation Time**: 34.2s
+- **Winston AI**: 97.0% human
+- **Generation Time**: 29.5s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Bamboo's tough fibers hide under layers of grime and old varnish. At 1000x, contaminants clog the tiny channels, blocking that natural strength we need for furniture or sports gear. Tough mess to tackle.
+Grime coats this bamboo surface thickly at 1000x magnification.  
+Particles nestle into natural grooves from years exposed in construction or furniture work.  
+And yet, the wood's lightweight strength shines through, hinting at potential in aerospace parts or marine uses once cleaned up.
 
 **AFTER:**
 
-Laser treatment at around 1064 nanometer wavelength clears it right up. Now the surface shows clean, intact wood cells ready for aerospace parts or construction. Impressive turnaround.
+Laser treatment clears away that stubborn dirt in seconds.  
+Now the fibers stand bare and smooth.  
+Bamboo ready for medical devices or automotive interiors, its natural stiffness preserved around 2.7 density without a trace left behind.
 
 ---
 
 ## Alabaster (Author 2)
-
-### 🚨 ALERT: GENERATION FAILED
-**Error**: Unknown error
-
----
-
-## Breccia (Author 3)
 
 ### ✅ NO ISSUES DETECTED
 
 ### 📊 SUBJECTIVE EVALUATION
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 94.5% human
-- **Generation Time**: 27.5s
+- **Winston AI**: 99.3% human
+- **Generation Time**: 34.6s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dirt clings tight. At 1000x, breccia's rough fragments hide under thick grime from city air and rain—pollutants that eat into the stone's natural bonds over decades. But this mess blocks any real study of its layered history in cultural sites.
+Dust cakes the alabaster's face. At 1000x magnification, grime layers thick, tiny specks and cracks mar this stone's soft white essence, used in art conservation and architecture yet hidden under years of neglect. Tough to shift without harm.
 
 **AFTER:**
 
-Laser at around 1064 nanometer wavelength hits just right. Now the surface stands bare, showing clear cracks and embedded pebbles without harm to the stone's core strength. Impressive how it revives breccia for architecture work.
+Laser pulses away the filth. Now the surface gleams pure at 1000x, smooth pores breathe free on this durable stone for medical tools or aerospace parts, restored to its original calm strength. Beautiful work.
+
+---
+
+## Breccia (Author 3)
+
+### 🚨 ALERT: GENERATION FAILED
+**Error**: Unknown error
 
 ---
 
 ## Aluminum (Author 4)
 
-### 🚨 ALERT: GENERATION FAILED
-**Error**: Unknown error
+### ✅ NO ISSUES DETECTED
+
+### 📊 SUBJECTIVE EVALUATION
+
+- **Pattern Validation**: ✅ PASS - No violations detected
+- **Winston AI**: 93.7% human
+- **Generation Time**: 17.9s
+
+### 📝 GENERATED CAPTION
+
+**BEFORE:**
+
+Dirt clings tight. This aluminum surface, vital for aerospace parts or car bodies, shows thick oxide layers and grit under 1000x view—messy buildup from factory handling that weakens joins in construction beams or packaging seals. But cleaning changes everything.
+
+**AFTER:**
+
+Laser treatment smooths it out. Now the metal looks even, with tiny pits gone and that natural shine back, perfect for electronics or marine gear where corrosion fights daily. Around 99% pure after, it holds up strong in renewable energy setups too.
 
 ---

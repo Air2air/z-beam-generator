@@ -239,21 +239,36 @@ Provide your evaluation in this format:
         overall_score = 7.0
         narrative_assessment = None
         
-        # Extract narrative assessment (first paragraph before structured data)
-        narrative_lines = []
-        in_narrative = False
-        for line in lines:
-            if '**Narrative Assessment**' in line or 'Narrative Assessment' in line:
-                in_narrative = True
-                continue
-            if in_narrative:
-                if line.strip() and not line.strip().startswith('-') and not line.strip().startswith('*'):
-                    narrative_lines.append(line.strip())
-                elif line.strip().startswith('-'):
-                    break  # End of narrative, start of structured data
-        
-        if narrative_lines:
-            narrative_assessment = ' '.join(narrative_lines)
+        # Extract narrative assessment - handle both inline and separate line formats
+        for i, line in enumerate(lines):
+            if '**Narrative Assessment**' in line or 'Narrative Assessment:' in line:
+                # Check if narrative is on the same line (after colon)
+                if ':' in line:
+                    parts = line.split(':', 1)
+                    if len(parts) > 1:
+                        narrative_text = parts[1].strip()
+                        if narrative_text:
+                            narrative_assessment = narrative_text
+                            # Continue reading subsequent lines until we hit structured data
+                            for j in range(i+1, len(lines)):
+                                next_line = lines[j].strip()
+                                if next_line and not next_line.startswith('-') and not next_line.startswith('*'):
+                                    narrative_assessment += ' ' + next_line
+                                elif next_line.startswith('-') or next_line.startswith('*'):
+                                    break
+                            break
+                # Otherwise read following lines
+                else:
+                    narrative_lines = []
+                    for j in range(i+1, len(lines)):
+                        next_line = lines[j].strip()
+                        if next_line and not next_line.startswith('-') and not next_line.startswith('*'):
+                            narrative_lines.append(next_line)
+                        elif next_line.startswith('-') or next_line.startswith('*'):
+                            break
+                    if narrative_lines:
+                        narrative_assessment = ' '.join(narrative_lines)
+                    break
         
         # Parse response (simplified - enhance as needed)
         # This would need actual parsing logic based on Claude's response format
