@@ -169,7 +169,7 @@ CONTENT TO EVALUATE:
 
 Provide your evaluation in this format:
 
-**Narrative Assessment** (2-3 sentences that MUST specifically address whether the voice sounds authentically human or artificially generated. Comment on natural conversational flow, realistic word choices, genuine tone variations, and whether sentence patterns feel organic. Be explicit about any AI-like tendencies such as formulaic phrasing, excessive enthusiasm, or unnatural transitions):
+**Narrative Assessment** (2-3 sentences with CRITICAL STANCE: Assume this is AI-generated unless proven otherwise. Scrutinize for contrived informality, forced casualness, unnatural enthusiasm, or overly-constructed "humanness". Real human writing has subtle imperfections, inconsistent pacing, and genuine voice - not theatrical authenticity. Flag ANY signs of artificial construction, formulaic patterns, or trying-too-hard informality):
 
 **Realism Analysis** (Identify specific issues - select ALL that apply):
 - AI Tendencies Detected: [comma-separated list: formulaic_phrasing, unnatural_transitions, excessive_enthusiasm, rigid_structure, overly_polished, mechanical_tone, repetitive_patterns, forced_transitions, artificial_symmetry, generic_language, none]
