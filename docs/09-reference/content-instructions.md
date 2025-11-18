@@ -1,29 +1,70 @@
 # Content Instruction Policy
 
+**Last Updated**: November 18, 2025  
+**Status**: MANDATORY - Zero Tolerance Enforcement
+
 ## 🚨 CRITICAL ARCHITECTURAL REQUIREMENT
 
-**Content instructions MUST ONLY exist in `prompts/*.txt` files.**  
-**They MUST NOT exist anywhere in the `/processing` folder.**
+**Instructions MUST be separated by responsibility:**
+
+1. **Component Templates** (`prompts/components/*.txt`) - Content strategy and formatting ONLY
+2. **Persona Templates** (`prompts/personas/*.yaml`) - Voice, linguistics, and human authenticity ONLY
+3. **Processing Code** (`processing/*.py`) - Technical mechanisms ONLY (NO content instructions)
 
 ---
 
 ## The Rule
 
-### ✅ ALLOWED: Content instructions in prompts/*.txt
+### ✅ CORRECT: Component Templates (Content/Format)
 ```
-prompts/subtitle.txt:
+prompts/components/subtitle.txt:
   CONTENT INSTRUCTIONS:
   - Focus on: Most distinctive characteristics
   - Format: Single compelling statement
-  - Style: Conversational but precise
+  - Structure: One sentence, no period
+  - Include: Material property mention
 ```
 
-### ❌ FORBIDDEN: Content instructions in processing/*.py
+### ✅ CORRECT: Persona Templates (Voice/Linguistics)
+```yaml
+prompts/personas/united_states.yaml:
+  core_voice_instruction: |
+    Write as a materials scientist with objective tone.
+    Use complete sentences. No theatrical elements.
+  
+  forbidden_casual:
+    - "Wow"
+    - "Amazing"
+    - "quick zap"
+  
+  technical_verbs_required:
+    - removes
+    - restores
+    - improves
+```
+
+### ❌ FORBIDDEN: Voice in Component Template
+```
+# NEVER put voice instructions in component templates:
+prompts/components/subtitle.txt:
+  VOICE: Objective tone only  ← WRONG - belongs in persona
+  FORBIDDEN: "Wow", "Amazing"  ← WRONG - belongs in persona
+```
+
+### ❌ FORBIDDEN: Content in Persona Template
+```yaml
+# NEVER put content instructions in persona templates:
+prompts/personas/united_states.yaml:
+  content_requirements: |  ← WRONG - belongs in component
+    Include material property
+    Two sentences structure
+```
+
+### ❌ FORBIDDEN: ANY Instructions in Processing Code
 ```python
 # NEVER do this in processing/ folder:
-format_rules = "Single compelling statement, no period"
-focus_areas = "Most distinctive characteristics"
-style_notes = "Conversational but precise"
+format_rules = "Single statement, no period"  ← WRONG
+forbidden_phrases = ["Wow", "Amazing"]  ← WRONG
 ```
 
 ---
@@ -32,35 +73,45 @@ style_notes = "Conversational but precise"
 
 ### Why This Separation Matters
 
-1. **User Control**: Non-technical users can edit prompt templates without touching code
-2. **Rapid Iteration**: Content strategy changes don't require code deployment
-3. **Clear Separation**: Technical mechanism (code) vs content strategy (prompts)
-4. **Version Control**: Content changes tracked separately from code changes
-5. **Testing Clarity**: Tests verify mechanism, prompts verify content strategy
+1. **Reusability**: Same persona used across all components
+2. **Maintainability**: Voice changes don't require editing every component
+3. **Clear Boundaries**: Content strategy ≠ Voice/linguistics ≠ Technical mechanism
+4. **Version Control**: Track content, voice, and code changes separately
+5. **Testing Clarity**: Validate content strategy, voice, and mechanism independently
 
 ---
 
 ## Architecture
 
-### Two-Layer System
+### Three-Layer System
 
 ```
 ┌─────────────────────────────────────────┐
-│     prompts/*.txt files                 │
-│     (WHAT to write)                     │
-│  - Focus areas                          │
+│  prompts/components/*.txt               │
+│  (WHAT content & structure)             │
+│  - Content focus areas                  │
 │  - Format requirements                  │
-│  - Style guidance                       │
-│  - Content strategy                     │
+│  - Structure rules                      │
+│  - Component-specific logic             │
+└─────────────────────────────────────────┘
+                  +
+┌─────────────────────────────────────────┐
+│  prompts/personas/*.yaml                │
+│  (HOW to write - voice/linguistics)     │
+│  - Core voice instruction               │
+│  - Tonal restraint                      │
+│  - Forbidden phrases                    │
+│  - Required vocabulary                  │
+│  - Linguistic patterns                  │
 └─────────────────────────────────────────┘
                   ▼
 ┌─────────────────────────────────────────┐
-│     processing/*.py files               │
-│     (HOW to generate)                   │
+│  processing/*.py files                  │
+│  (Technical mechanisms)                 │
 │  - API integration                      │
-│  - Length calculation                   │
-│  - Voice modulation                     │
-│  - Technical mechanisms                 │
+│  - Template loading & merging           │
+│  - Parameter calculation                │
+│  - Quality validation                   │
 └─────────────────────────────────────────┘
 ```
 

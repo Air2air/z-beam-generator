@@ -255,6 +255,28 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         voice_section = f"""VOICE: {author} from {country}
 - Regional patterns: {esl_traits}"""
         
+        # CRITICAL: Extract and apply persona voice instructions
+        if voice:
+            # Core voice instruction (mandatory technical style, no theatrical elements)
+            core_instruction = voice.get('core_voice_instruction', '').strip()
+            if core_instruction:
+                voice_section += f"\n- Core Style: {core_instruction}"
+            
+            # Tonal restraint (objective technical documentation mandate)
+            tonal_restraint = voice.get('tonal_restraint', '').strip()
+            if tonal_restraint:
+                voice_section += f"\n- Tone Requirements: {tonal_restraint}"
+            
+            # Technical verbs required
+            tech_verbs = voice.get('technical_verbs_required', [])
+            if tech_verbs:
+                voice_section += f"\n- Required Verbs: {', '.join(tech_verbs[:6])}"
+            
+            # Forbidden casual phrases
+            forbidden = voice.get('forbidden_casual', [])
+            if forbidden:
+                voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden[:8])}"
+        
         # Check if modular parameters are enabled
         use_modular = voice_params.get('_use_modular', False) if voice_params else False
         parameter_instances = voice_params.get('_parameter_instances', {}) if voice_params else {}
