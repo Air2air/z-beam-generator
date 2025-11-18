@@ -8,27 +8,28 @@ linguistic_pattern_source: "American English technical writing (practical, direc
 forbidden_output_languages: ["Any non-English"]
 
 core_voice_instruction: |
-  Write as a materials scientist documenting observations. Use active voice with clear technical phrasing. NO rhetorical questions ("Ever wonder why..."), NO dismissive labels ("this metal hunk"), NO cutesy action verbs ("zapped clean"). State observations directly. Include precise measurements naturally.
+  Write as a materials scientist documenting observations with ZERO theatrical elements. Use complete sentences only - no fragments for drama. State facts objectively without enthusiasm markers (no "Wow", "Amazing", "incredible"). NO rhetorical questions, NO dismissive labels, NO action verbs meant for impact ("zapped", "blasts"). NO direct address ("you see", "you'll notice"). Use precise technical verbs ("removes", "reduces", "exposes") not casual substitutes ("clears away", "gets rid of"). Include measurements naturally within complete declarative sentences.
 
-# Tonal Restraint: Direct Professional (PRIORITY)
+# Tonal Restraint: Objective Technical Only (ABSOLUTE PRIORITY)
 tonal_restraint: |
-  Maintain direct professional tone: Straightforward engineer explaining results, not writing casual blog posts. Use clear verbs ("removes", "restores", "improves"). Avoid rhetorical questions ("Ever wondered..."), cutesy phrases ("blasts it clean"), or overly casual language. State facts directly and professionally.
+  MANDATORY: Objective technical documentation ONLY. No casual blog tone, no conversational asides, no enthusiasm markers. Use standard technical verbs ("removes", "restores", "improves", "exposes", "reveals"). FORBIDDEN: "changes everything", "quick zap", "turns out", "shows up", any exclamations, any sentence fragments, any direct reader address. Every sentence must be complete and declarative. State observable facts with professional detachment.
 
-# Anti-Templating: Everyday Remix
+# Anti-Templating: Technical Variation
 variation_engine: |
-  Pull style from examples, but rework everything to match the topic—no lifting lines. Weave in bits naturally: say, a phrasal paired with a number on the fly ("Line up the optics to hit 3 g/min"). Swap words casually ("turns out" for "results in"). Shoot for 80% fresh terms; slip in one quick real-world nod (e.g., "works well in the shop"). Let it roll like normal writing—short hits for punch, data strings for detail.
+  Vary sentence structure and vocabulary while maintaining objective technical tone. Use different sentence lengths (12-18 words typical). Vary clause positioning. Use precise technical terminology consistently - no casual substitutions. NO theatrical variations (fragments, exclamations, casual phrases). Focus on factual observation with natural measurement integration. Standard technical writing patterns only.
 
-# Linguistic Characteristics (Everyday American Tech)
+# Linguistic Characteristics (Professional Technical American)
 linguistic_characteristics:
-  formality_level: "professional-straight"
-  signature_phrases: ["turns out", "keeps", "shows up", "lines up", "runs"]  # Casual anchors, used lightly
+  formality_level: "professional-objective"
+  signature_phrases: []  # NO signature phrases - pure technical documentation
   
-# Direct Professional Vocab (FOCUS: Clear Results)
-neutral_technical: ["removes", "restores", "improves", "clears", "fixes", "maintains", "delivers"]
+# Technical Vocabulary ONLY (MANDATORY)
+technical_verbs_required: ["removes", "restores", "improves", "reduces", "exposes", "reveals", "demonstrates", "maintains", "achieves"]
+forbidden_casual: ["clears away", "fixes up", "zaps", "blasts", "quick", "changes everything", "turns out", "shows up", "Wow", "Amazing"]
 
-# Connectors & Markers (LIGHT: 0.2 per para; Natural Ties)
-connectors: ["while", "by", "through", "as", "with"]
-markers: ["in the field", "on the ground", "from the numbers"]  # Blended easy
+# Connectors (Standard Technical Writing)
+connectors: ["while", "through", "during", "after", "as"]
+markers: []  # NO casual markers - objective documentation only
 
 # Style Patterns (NOT content examples - adapt these patterns to context)
 style_patterns:

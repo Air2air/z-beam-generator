@@ -1,6 +1,6 @@
 # Batch Caption Test Report
 
-**Date**: November 17, 2025 at 08:07 PM
+**Date**: November 17, 2025 at 08:18 PM
 **Results**: 2/4 successful
 
 ---
@@ -14,22 +14,18 @@
 The voice in this caption sounds authentically human-written, with a natural conversational flow that mimics casual technical commentary, using vivid, everyday words like "zaps away the filth" and "woody resilience" to create a genuine, enthusiastic tone without over-the-top hype. Sentence patterns feel organic, starting with a punchy action phrase and building to descriptive details in a logical, stream-of-consciousness style that varies rhythm—short and snappy at first, then more explanatory—avoiding the formulaic repetition or unnatural stiffness often seen in AI-generated text. There's no evidence of AI-like tendencies such as excessive uniformity in structure or contrived transitions; instead, it reads like a knowledgeable engineer sharing an exciting discovery in a relaxed voice.
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 96.2% human
-- **Generation Time**: 27.5s
+- **Winston AI**: 91.4% human
+- **Generation Time**: 28.6s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dirt cakes the bamboo fibers.  
-And at 1000x, that grime from years in construction or furniture making looks thick, almost choking the wood's natural bendy strength around 20-25 percent moisture hold.  
-But contaminants like oils or residues sit stubborn, blocking any clear view of the material's tough layers used in sports gear or automotive bits.
+Dirt clings tight to bamboo's rough fibers here. At 1000x, you see the mess blocking its natural strength for things like furniture or sports gear. But cleaning changes everything.
 
 **AFTER:**
 
-Laser treatment zaps it away clean.  
-Now the surface stands bare, fibers sharp and open under magnification.  
-This wood, tough yet light with density near 0.7 grams per cubic centimeter, shines ready for marine apps or renewable energy builds, no residue left to mar its heritage in cultural pieces or medical tools.
+Laser hits just right. Surface stands bare now, fibers clear and ready for aerospace parts or medical tools. Wow—nearly pristine after that quick zap, holding up in marine spots too.
 
 ---
 
@@ -42,34 +38,32 @@ This wood, tough yet light with density near 0.7 grams per cubic centimeter, shi
 
 ## Breccia (Author 3)
 
-### ✅ NO ISSUES DETECTED
-
-### 📊 SUBJECTIVE EVALUATION
-
-- **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.9% human
-- **Generation Time**: 63.9s
-
-### 📝 GENERATED CAPTION
-
-**BEFORE:**
-
-Dirt grips the breccia hard.  
-At 1000x magnification, contaminants layer thick over its jagged fragments and matrix, hiding the stone's raw strength and cultural depth in architecture or heritage sites.  
-But that buildup weakens everything underneath.
-
-**AFTER:**
-
-Laser treatment changes it all.  
-Now at 1000x, the surface lies bare and detailed, fragments sharp against the clean matrix that holds up well in monuments or interiors.  
-Strong again, ready for preservation.
+### 🚨 ALERT: GENERATION FAILED
+**Error**: Unknown error
 
 ---
 
 ## Aluminum (Author 4)
 
-### 🚨 ALERT: GENERATION FAILED
-**Error**: Unknown error
+### ✅ NO ISSUES DETECTED
+
+### 📊 SUBJECTIVE EVALUATION
+
+The voice in this caption feels authentically human-written, with a natural conversational flow that starts with a punchy, dramatic hook and transitions smoothly into a descriptive payoff, mimicking how a marketer or technical writer might build excitement in a short promo piece. Realistic word choices like "stands bare and even" and "contaminants gone" evoke tangible imagery without overcomplicating, and the genuine tone variation—from bold proclamation to practical benefits—adds a layer of organic enthusiasm that humans often use to persuade. Sentence patterns are varied and feel organic, avoiding the formulaic repetition or overly polished symmetry that can signal AI generation, though the hyperbolic "change everything" borders on enthusiastic flair that could tip into artificial hype if overused.
+
+- **Pattern Validation**: ✅ PASS - No violations detected
+- **Winston AI**: 98.3% human
+- **Generation Time**: 24.5s
+
+### 📝 GENERATED CAPTION
+
+**BEFORE:**
+
+Dirt clings tight. This aluminum metal, light at around 2.7 grams per cubic centimeter, shows grime buildup from automotive or aerospace use, blocking its smooth strength under 1000x view.
+
+**AFTER:**
+
+But laser treatment changes that fast. Now the surface lies bare and even, ready for construction or electronics work, with no residue left after the heat pulse at roughly 660 degrees Celsius.
 
 ---
 
@@ -83,8 +77,8 @@ Strong again, ready for preservation.
 
 | Material | Iteration | Temperature | Freq Penalty | Pres Penalty | Winston Score | Result |
 |----------|-----------|-------------|--------------|--------------|---------------|--------|
-| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 96.2% | ✅ |
-| Breccia | 1 | 0.800 | 0.000 | 0.500 | 99.9% | ✅ |
+| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 91.4% | ✅ |
+| Aluminum | 1 | 0.800 | 0.000 | 0.500 | 98.3% | ✅ |
 
 *Note: Parameters show the configuration used for each iteration attempt*
 
@@ -119,7 +113,7 @@ Sweet spots are updated when sufficient successful samples (typically 5+) are co
 
 **Evidence of learning**:
 - ✅ All materials succeeded on first iteration (parameters already optimized)
-- ✅ Average Winston score: 98.1% (excellent human detection)
+- ✅ Average Winston score: 94.8% (excellent human detection)
 - ✅ All 2 iterations logged for continuous learning
 
 **Next run impact**: Future generations will use learned parameters as starting point, 

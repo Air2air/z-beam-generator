@@ -172,9 +172,10 @@ Provide your evaluation in this format:
 **Narrative Assessment** (2-3 sentences with CRITICAL STANCE: Assume this is AI-generated unless proven otherwise. Scrutinize for contrived informality, forced casualness, unnatural enthusiasm, or overly-constructed "humanness". Real human writing has subtle imperfections, inconsistent pacing, and genuine voice - not theatrical authenticity. Flag ANY signs of artificial construction, formulaic patterns, or trying-too-hard informality):
 
 **Realism Analysis** (Identify specific issues - select ALL that apply):
-- AI Tendencies Detected: [comma-separated list: formulaic_phrasing, unnatural_transitions, excessive_enthusiasm, rigid_structure, overly_polished, mechanical_tone, repetitive_patterns, forced_transitions, artificial_symmetry, generic_language, none]
-- Realism Score (0-10): X (10=perfectly human, 0=obviously AI)
-- Voice Authenticity (0-10): X (natural conversational flow)
+- AI Tendencies Detected: [comma-separated list: formulaic_phrasing, unnatural_transitions, excessive_enthusiasm, rigid_structure, overly_polished, mechanical_tone, repetitive_patterns, forced_transitions, artificial_symmetry, generic_language, theatrical_casualness, sentence_fragments_for_drama, direct_reader_address, exclamation_markers, vague_promises, contrived_informality, none]
+- Theatrical/Casual Penalties: [List ANY: "Wow", "Amazing", exclamations, "you see/notice", fragments for impact, "changes everything", "quick [noun]", "turns out", em-dashes for drama]
+- Realism Score (0-10): X (10=perfectly human, 0=obviously AI) - DEDUCT 2 points per theatrical element
+- Voice Authenticity (0-10): X (natural conversational flow) - DEDUCT 3 points if any casual/theatrical markers
 - Tonal Consistency (0-10): X (genuine variations without jarring shifts)
 
 - Overall Score (0-10):

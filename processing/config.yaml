@@ -27,8 +27,9 @@ ai_avoidance_intensity: 8            # 1=Relaxed (faster) → 10=Aggressive (mor
 length_variation_range: 10           # 1=Tight ±10% → 10=Loose ±60%
 
 # 🤖 Human-Likeness Control (Master setting for AI evasion)
-humanness_intensity: 9               # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold)
+humanness_intensity: 10              # 1=Minimal (fast, 85% threshold) → 10=Maximum (slow, 20% threshold) - SET TO MAX for highest quality
                                      # Affects: API penalties, temperature aggression, max attempts, Winston threshold
+                                     # CRITICAL: At intensity=10, acceptance threshold becomes ~95% human (strict quality gate)
 
 # Winston AI Detection Cost Control
 winston_usage_mode: 'always'         # 'always' = Use Winston API on every attempt (most accurate)
