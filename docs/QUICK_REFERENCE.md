@@ -29,9 +29,11 @@
 8. **`DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md`** - Fixed Winston 100% AI issue
 9. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - ML learning system (173 generations)
 10. **`WINSTON_INTEGRATION_COMPLETE.md`** - Winston AI primary detector
-11. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective evaluation
-12. **`docs/development/SWEET_SPOT_ANALYZER.md`** - ✨ **NEW** Statistical parameter optimization (Nov 15, 2025)
-13. **`processing/evaluation/SCORING_MODULE_README.md`** - ✨ **NEW** Scoring Module: Composite quality scoring + granular parameter correlation (Nov 16, 2025)
+11. **`docs/08-development/WINSTON_ONLY_MODE.md`** - ✨ **NEW** Winston-only detection (Nov 17, 2025)
+12. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective evaluation
+13. **`docs/development/SWEET_SPOT_ANALYZER.md`** - Statistical parameter optimization (Nov 15, 2025)
+14. **`processing/evaluation/SCORING_MODULE_README.md`** - Composite quality scoring (Nov 16, 2025)
+15. **`docs/08-development/SCORE_DISPLAY_STANDARDS.md`** - ✨ **NEW** Score validation & display (Nov 17, 2025)
 
 ### 📊 Data & Content
 12. **`docs/data/MATERIALS_STRUCTURE_CANONICAL.md`** - Materials.yaml structure (NO 'properties' wrapper!)
