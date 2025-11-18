@@ -1,8 +1,8 @@
 # AI Assistant Instructions for Z-Beam Generator
 
-**For**: GitHub Copilot, Grok AI, and all AI development assistants  
+**For**: GitHub Copilot, Grok AI, Claude, and all AI development assistants  
 **System**: Laser cleaning content generation with strict fail-fast architecture  
-**Last Updated**: November 14, 2025
+**Last Updated**: November 17, 2025
 
 ---
 
@@ -13,6 +13,11 @@
 - Handles: "Generate subtitle for Aluminum", "Create caption for Steel", etc.
 - Shows: Exact commands to run, terminal output handling, result reporting
 - Covers: All component types (subtitle, caption, FAQ, description)
+
+### **Need Documentation?**
+→ **START HERE**: Root `/DOCUMENTATION_MAP.md` - Complete map of all documentation
+→ **QUICK ANSWERS**: `docs/QUICK_REFERENCE.md` - Fastest path to solutions
+→ **SYSTEM INDEX**: `docs/INDEX.md` - Comprehensive navigation
 
 ### **Working on Code/Architecture?**
 → **Continue below** for development guidelines and system rules
@@ -44,6 +49,36 @@
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
 - ✅ **ALWAYS maintain runtime error recovery**
+
+---
+
+## 📚 Recent Critical Updates (November 2025)
+
+### ✅ Priority 1 Compliance Fixes (November 17, 2025)
+**Commit**: c5aa1d6c - All critical violations resolved
+
+1. **RealismOptimizer Import Fixed**: Corrected path from `processing.realism.optimizer` to `processing.learning.realism_optimizer`
+2. **SubjectiveEvaluator Temperature**: Now configurable via parameter (no hardcoded values)
+3. **Fail-Fast Architecture Enforced**: Removed non-existent fallback method calls
+
+**Documentation**: 
+- `docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md` - Full evaluation report
+- `docs/archive/2025-11/PRIORITY1_UPDATES_COMPLETE.md` - Implementation summary
+- `tests/test_priority1_fixes.py` - 10 automated tests (all passing ✅)
+
+**Grade**: System upgraded from C+ to B+ (85/100) after fixes
+
+### 🎯 Composite Quality Scoring (November 16, 2025)
+**Architecture**: GENERIC_LEARNING_ARCHITECTURE.md implemented
+- Winston (60%) + Subjective (30%) + Readability (10%)
+- Adaptive threshold learning from 75th percentile of successful content
+- Sweet spot analyzer uses composite scores for parameter optimization
+
+### 🗣️ Content Instruction Policy
+**CRITICAL**: Content instructions ONLY in `prompts/*.txt` files, NEVER in code
+- Format rules, style guidance, focus areas → prompts/
+- Technical mechanisms only → processing/
+- See: `docs/prompts/CONTENT_INSTRUCTION_POLICY.md`
 
 ---
 

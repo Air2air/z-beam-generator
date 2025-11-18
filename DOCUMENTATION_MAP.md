@@ -1,0 +1,343 @@
+# Documentation Map - Z-Beam Generator
+
+**🗺️ Master Navigation for All Documentation**  
+**Last Updated**: November 17, 2025  
+**For**: AI Assistants, Developers, Contributors, and Users
+
+---
+
+## 🎯 Start Here Based on Your Goal
+
+| I Want To... | Go Here |
+|--------------|---------|
+| **Get started immediately** | `README.md` → `docs/01-getting-started/` |
+| **Understand the system** | `.github/copilot-instructions.md` (AI assistants) |
+| **Generate content** | `.github/COPILOT_GENERATION_GUIDE.md` |
+| **Find answers fast** | `docs/QUICK_REFERENCE.md` |
+| **Browse all docs** | `docs/INDEX.md` |
+| **Fix issues** | `TROUBLESHOOTING.md` |
+| **Learn architecture** | `docs/02-architecture/` |
+| **Review recent changes** | `docs/archive/2025-11/` |
+
+---
+
+## 📁 Documentation Structure
+
+### Root Level (Priority Documents)
+```
+/
+├── README.md                           # Project overview & features
+├── DOCUMENTATION_MAP.md               # This file - master navigation
+├── QUICK_START.md                     # Fast setup guide
+├── TROUBLESHOOTING.md                 # Common issues & solutions
+├── .github/
+│   ├── copilot-instructions.md       # 🤖 AI assistant guidelines (PRIMARY)
+│   └── COPILOT_GENERATION_GUIDE.md   # Content generation commands
+```
+
+### Main Documentation (`/docs/`)
+```
+docs/
+├── INDEX.md                           # Comprehensive doc index
+├── QUICK_REFERENCE.md                 # Fast problem resolution
+├── README.md                          # Documentation overview
+│
+├── 01-getting-started/               # Setup & installation
+│   ├── INSTALLATION.md
+│   ├── SETUP_GUIDE.md
+│   ├── VALIDATION.md
+│   ├── ai-assistants.md
+│   └── processing-quickstart.md
+│
+├── 02-architecture/                   # System design
+│   ├── SYSTEM_ARCHITECTURE.md
+│   ├── PROCESSING_WORKFLOW.md
+│   ├── DATA_ARCHITECTURE.md
+│   ├── COMPONENT_ARCHITECTURE.md
+│   ├── COMPONENT_DISCOVERY.md        # NEW: Component type discovery
+│   └── [29 more architecture docs]
+│
+├── 03-components/                     # Component-specific docs
+│   └── [See /components/ directories for detailed docs]
+│
+├── 04-operations/                     # Daily operations
+│   ├── content-generation.md
+│   ├── BATCH_OPERATIONS.md
+│   ├── deployment.md
+│   └── MAINTENANCE.md
+│
+├── 05-data/                          # Data architecture
+│   ├── DATA_STORAGE_POLICY.md
+│   ├── ZERO_NULL_POLICY.md
+│   ├── DATA_ARCHITECTURE.md
+│   └── data-completion-action-plan.md
+│
+├── 06-ai-systems/                    # AI/ML systems
+│   ├── opening-variation.md
+│   ├── post-generation-checks.md
+│   └── self-learning-prompts.md
+│
+├── 07-api/                           # External APIs
+│   ├── ERROR_HANDLING.md
+│   ├── GROK_API_LIMITATIONS.md
+│   └── SUBJECTIVE_EVALUATION_API_FIX.md
+│
+├── 08-development/                    # Development guidelines
+│   ├── HARDCODED_VALUE_POLICY.md     # 🔥 CRITICAL: No hardcoded values
+│   ├── CONTENT_INSTRUCTION_POLICY.md # 🔥 CRITICAL: Prompts-only content rules
+│   ├── WINSTON_ONLY_MODE.md
+│   ├── SCORE_DISPLAY_STANDARDS.md
+│   └── [17 more development docs]
+│
+├── 09-reference/                      # Reference materials
+│   ├── cli-commands.md
+│   ├── GLOSSARY.md
+│   └── FAQ.md
+│
+└── archive/                           # Historical documents
+    └── 2025-11/                       # November 2025 archives
+        ├── E2E_PROCESSING_EVALUATION_NOV17_2025.md
+        ├── PRIORITY1_UPDATES_COMPLETE.md
+        └── test-reports/              # Test completion reports
+```
+
+### Component Documentation (`/components/`)
+```
+components/
+├── text/                              # Text generation
+│   ├── docs/
+│   │   ├── README.md
+│   │   ├── CONTENT_GENERATION_ARCHITECTURE.md
+│   │   ├── PROMPT_SYSTEM.md
+│   │   └── API_REFERENCE.md
+│   └── [source files]
+│
+├── frontmatter/                       # Frontmatter generation
+│   ├── README.md
+│   └── [source files]
+│
+└── [other components]/
+```
+
+### Processing Documentation (`/processing/`)
+```
+processing/
+├── evaluation/
+│   └── SCORING_MODULE_README.md      # Composite quality scoring
+└── [other processing docs]
+```
+
+---
+
+## 🤖 For AI Assistants
+
+### Primary Reference (READ FIRST)
+**`.github/copilot-instructions.md`** - Your complete guide
+- Core principles (no mocks, no hardcoded values, fail-fast)
+- Recent updates (November 2025)
+- Code modification rules
+- Documentation compliance checklist
+- Emergency recovery procedures
+
+### Quick Problem Resolution
+**`docs/QUICK_REFERENCE.md`**
+- Direct problem → solution mappings
+- File location quick map
+- Common user questions with immediate answers
+- Essential commands
+
+### When to Check Documentation
+**ALWAYS before implementing:**
+1. Search `docs/` for existing guidance
+2. Check policy docs:
+   - `HARDCODED_VALUE_POLICY.md` - Before adding ANY values
+   - `CONTENT_INSTRUCTION_POLICY.md` - Before touching prompts
+   - `COMPONENT_DISCOVERY.md` - Before adding/modifying components
+   - `DATA_STORAGE_POLICY.md` - Before data operations
+
+### Red Flags Requiring Doc Check
+- ⚠️ Adding thresholds → Check for dynamic calculation requirements
+- ⚠️ Adding configuration values → Check config architecture docs
+- ⚠️ Modifying validation → Check validation strategy docs
+- ⚠️ Adding new component → Check component discovery policy
+- ⚠️ Changing data flow → Check data storage policy
+- ⚠️ Adding hardcoded values → STOP - check hardcoded value policy
+
+---
+
+## 📊 November 2025 Key Updates
+
+### Priority 1 Compliance Fixes (Nov 17)
+- **Fixed**: RealismOptimizer import path
+- **Fixed**: SubjectiveEvaluator hardcoded temperature
+- **Fixed**: Non-existent fallback method calls
+- **Grade**: C+ → B+ (85/100)
+- **Docs**: `docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md`
+- **Tests**: `tests/test_priority1_fixes.py` (10/10 passing)
+
+### Composite Quality Scoring (Nov 16)
+- Winston (60%) + Subjective (30%) + Readability (10%)
+- Adaptive threshold learning
+- Sweet spot analyzer integration
+- **Docs**: `docs/proposals/GENERIC_LEARNING_ARCHITECTURE.md`
+
+### Content Instruction Policy (Nov 14)
+- Content instructions ONLY in `prompts/*.txt`
+- Technical mechanisms ONLY in `processing/`
+- **Docs**: `docs/prompts/CONTENT_INSTRUCTION_POLICY.md`
+
+### Component Discovery (Nov 16)
+- Components defined dynamically from `prompts/*.txt` files
+- No hardcoded component types in code
+- **Docs**: `docs/architecture/COMPONENT_DISCOVERY.md`
+
+---
+
+## 📖 Critical Policy Documents
+
+These policies are **MANDATORY** reading before related work:
+
+1. **HARDCODED_VALUE_POLICY.md** (`docs/08-development/`)
+   - No hardcoded temperatures, thresholds, penalties
+   - Use config or dynamic calculation
+   - Enforcement via integrity checker
+
+2. **CONTENT_INSTRUCTION_POLICY.md** (`docs/08-development/`)
+   - Content instructions ONLY in prompts/
+   - NO content logic in processing code
+   - 5 automated tests enforce compliance
+
+3. **DATA_STORAGE_POLICY.md** (`docs/05-data/`)
+   - Materials.yaml is single source of truth
+   - All generation happens there
+   - Frontmatter is trivial export only
+
+4. **COMPONENT_DISCOVERY.md** (`docs/02-architecture/`)
+   - Component types discovered from prompts/*.txt
+   - No hardcoded components in code
+   - Generic, dynamic component handling
+
+5. **ZERO_NULL_POLICY.md** (`docs/05-data/`)
+   - Null ranges are correct by design
+   - Range propagation from categories
+   - Complete data completion strategy
+
+---
+
+## 🔍 Finding Specific Information
+
+### By Topic
+| Topic | Location |
+|-------|----------|
+| **API Issues** | `docs/07-api/ERROR_HANDLING.md` |
+| **Winston AI** | `docs/08-development/WINSTON_ONLY_MODE.md` |
+| **Data Gaps** | `docs/05-data/data-completion-action-plan.md` |
+| **Testing** | `tests/` + component-specific `tests/` |
+| **Configuration** | `processing/config.yaml` + `docs/configuration/` |
+| **Commands** | `docs/09-reference/cli-commands.md` |
+| **Recent Changes** | `docs/archive/2025-11/` |
+| **Proposals** | `docs/proposals/` |
+
+### By File Type
+| Need | Extension | Primary Location |
+|------|-----------|------------------|
+| **Python Code** | `.py` | `processing/`, `materials/`, `components/` |
+| **Configuration** | `.yaml`, `.json` | `data/`, `processing/config.yaml` |
+| **Documentation** | `.md` | `docs/`, component `docs/` folders |
+| **Tests** | `test_*.py` | `tests/`, component `tests/` |
+| **Prompts** | `.txt` | `prompts/` |
+| **Data** | `.yaml` | `data/materials/`, `data/authors/`, etc. |
+
+---
+
+## 🎓 Learning Paths
+
+### New to the Project?
+1. `README.md` - Understand what this is
+2. `QUICK_START.md` - Get it running
+3. `docs/01-getting-started/INSTALLATION.md` - Detailed setup
+4. `docs/02-architecture/SYSTEM_ARCHITECTURE.md` - How it works
+5. `.github/copilot-instructions.md` - Development rules
+
+### AI Assistant Onboarding?
+1. `.github/copilot-instructions.md` - PRIMARY REFERENCE
+2. `docs/QUICK_REFERENCE.md` - Fast answers
+3. `docs/INDEX.md` - Full navigation
+4. Policy docs in `docs/08-development/` - Rules
+5. `docs/archive/2025-11/` - Recent changes
+
+### Contributing Code?
+1. `.github/copilot-instructions.md` - Coding rules
+2. `docs/08-development/` - All policies
+3. Component-specific docs in `/components/[name]/docs/`
+4. `tests/test_priority1_fixes.py` - Compliance examples
+5. `processing/integrity/integrity_checker.py` - Validation
+
+### Understanding Data Flow?
+1. `docs/05-data/DATA_STORAGE_POLICY.md` - Data rules
+2. `docs/02-architecture/DATA_ARCHITECTURE.md` - Structure
+3. `docs/05-data/ZERO_NULL_POLICY.md` - Null handling
+4. `data/materials/Materials.yaml` - Single source of truth
+5. `data/materials/Categories.yaml` - Category ranges
+
+---
+
+## 🔗 External Resources
+
+### APIs Used
+- **Grok AI**: Content generation
+- **DeepSeek**: Material property research
+- **Winston AI**: AI detection and scoring
+
+### Key Repositories
+- **Main Repo**: Air2air/z-beam-generator
+- **Branch**: main
+- **CI/CD**: GitHub Actions
+
+---
+
+## 🆘 Getting Help
+
+### Quick Answers
+1. Check `docs/QUICK_REFERENCE.md`
+2. Search this documentation map
+3. Check `TROUBLESHOOTING.md`
+
+### Detailed Investigation
+1. Review relevant policy doc
+2. Check `docs/INDEX.md` for related docs
+3. Search component-specific documentation
+4. Review `docs/archive/2025-11/` for recent changes
+
+### For AI Assistants
+1. Always check `.github/copilot-instructions.md` first
+2. Search documentation before asking user
+3. Follow Documentation Compliance Checklist
+4. When unclear, ASK user instead of guessing
+
+---
+
+## 📝 Maintenance Notes
+
+### When Adding New Documentation
+1. Add entry to this map
+2. Update `docs/INDEX.md`
+3. Update `.github/copilot-instructions.md` if policy-related
+4. Cross-reference from related documents
+
+### When Archiving Documents
+1. Move to appropriate `docs/archive/YYYY-MM/` directory
+2. Update references in this map
+3. Add redirect note in original location if necessary
+
+### When Updating Policies
+1. Update policy document
+2. Update `.github/copilot-instructions.md`
+3. Update this map with "Last Updated" date
+4. Update relevant tests if compliance-related
+
+---
+
+**Last Review**: November 17, 2025  
+**Next Review**: December 2025 (or when major changes occur)  
+**Maintainer**: See git log for recent contributors
