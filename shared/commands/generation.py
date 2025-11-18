@@ -75,6 +75,10 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("✨ Caption generation complete!")
         print()
         
+        # Run post-generation validation
+        from shared.commands.integrity_helper import run_post_generation_validation
+        run_post_generation_validation(material_name, 'caption', quick=True)
+        
         # Check if we should update sweet spot recommendations (generic learning)
         from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from processing.config.config_loader import get_config

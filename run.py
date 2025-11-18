@@ -29,14 +29,17 @@ For advanced operations, use run_unified.py with the unified pipeline.
 
 🧪 TESTING & VALIDATION:
   python3 run.py --test                    # Full test suite
+  python3 run.py --test-learning           # Per-iteration learning architecture tests
+  python3 run.py --test-learning --verbose # Detailed test output
   python3 run.py --batch-test              # Batch caption test (4 materials, one per author, with report)
   python3 run.py --test-api                # Test API connections
   python3 run.py --validate                # Validate existing data without regeneration
   python3 run.py --validate-report report.md  # Generate validation report
   python3 run.py --content-validation-report report.md  # Content quality validation (FAQ, Caption, Subtitle)
   python3 run.py --check-env               # Health check
-  python3 run.py --integrity-check         # System integrity check (values, propagation, APIs)
+  python3 run.py --integrity-check         # System integrity check (values, propagation, APIs, learning)
   python3 run.py --integrity-check --quick # Fast integrity check (skip slow tests)
+  python3 run.py --integrity-check --verbose  # Detailed integrity check output
   python3 run.py --list-materials          # List available materials
 
 🔍 DATA VALIDATION & INTEGRITY:
@@ -218,6 +221,8 @@ def main():
     parser.add_argument("--integrity-check", action="store_true", help="Run system integrity checks")
     parser.add_argument("--skip-integrity-check", action="store_true", help="Skip automatic integrity checks before generation")
     parser.add_argument("--quick", action="store_true", help="Quick mode (with --integrity-check, skips slow checks)")
+    parser.add_argument("--test-learning", action="store_true", help="Run per-iteration learning architecture tests")
+    parser.add_argument("--verbose", action="store_true", help="Show detailed output for tests and checks")
     
     args = parser.parse_args()
     
@@ -264,7 +269,7 @@ def main():
         else:
             results = checker.run_all_checks()
         
-        checker.print_report(results, verbose=True)
+        checker.print_report(results, verbose=args.verbose if hasattr(args, 'verbose') else True)
         
         if checker.has_failures(results):
             print("\n❌ System integrity check FAILED. Fix issues before generating content.")
@@ -275,6 +280,24 @@ def main():
         else:
             print("\n✅ System integrity check PASSED. All systems healthy.")
             return 0
+    
+    # Learning Architecture Tests
+    if args.test_learning:
+        from shared.commands.integrity_helper import run_learning_architecture_tests
+        
+        print("\n🧪 Running Per-Iteration Learning Architecture Tests...")
+        print("=" * 70)
+        
+        success = run_learning_architecture_tests(verbose=args.verbose if hasattr(args, 'verbose') else False)
+        
+        if success:
+            print("\n✅ All learning architecture tests PASSED")
+            print("   System is correctly configured for per-iteration learning")
+            return 0
+        else:
+            print("\n❌ Some learning architecture tests FAILED")
+            print("   Run with --verbose for details")
+            return 1
     
     # Command dispatcher - simple commands first
     if args.deploy:

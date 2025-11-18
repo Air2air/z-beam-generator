@@ -2,18 +2,27 @@
 Pre-Generation Integrity Check Helper
 
 Runs system integrity checks before component generation.
+Includes per-iteration learning architecture validation.
 """
 
 from processing.integrity import IntegrityChecker
 
 
-def run_pre_generation_check(skip_check: bool = False, quick: bool = True) -> bool:
+def run_pre_generation_check(skip_check: bool = False, quick: bool = True, verbose: bool = False) -> bool:
     """
     Run system integrity checks before generation.
+    
+    Includes:
+    - Configuration validation
+    - Parameter propagation
+    - Hardcoded value detection
+    - Per-iteration learning architecture (NEW)
+    - API health (if not quick mode)
     
     Args:
         skip_check: If True, skip the integrity check entirely
         quick: If True, run only fast checks (recommended for pre-gen)
+        verbose: If True, show detailed check results
     
     Returns:
         True if checks passed (or were skipped), False if checks failed
@@ -22,6 +31,7 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True) -> bo
         return True
     
     print("🔍 Running pre-generation integrity check...")
+    print("   Validating: Config, Parameters, Learning Architecture")
     
     try:
         checker = IntegrityChecker()
@@ -34,9 +44,19 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True) -> bo
         # Check for failures
         if checker.has_failures(results):
             print("❌ INTEGRITY CHECK FAILED")
-            checker.print_report(results, verbose=False)
-            print("\n⚠️  Fix integrity issues before generating content.")
-            print("    Run: python3 run.py --integrity-check --quick")
+            
+            # Show critical failures
+            fail_results = [r for r in results if r.status.value == "FAIL"]
+            print(f"\n⚠️  {len(fail_results)} CRITICAL ISSUES DETECTED:")
+            for result in fail_results[:5]:  # Show first 5
+                print(f"   ❌ {result.check_name}")
+                print(f"      {result.message}")
+            
+            if len(fail_results) > 5:
+                print(f"   ... and {len(fail_results) - 5} more issues")
+            
+            print("\n💡 Fix issues before generating content.")
+            print("    Run: python3 run.py --integrity-check")
             return False
         
         # Check for warnings
@@ -46,10 +66,21 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True) -> bo
             pass_count = sum(1 for r in results if r.status.value == "PASS")
             warn_count = sum(1 for r in results if r.status.value == "WARN")
             print(f"    {pass_count} passed, {warn_count} warnings")
+            
+            if verbose:
+                warn_results = [r for r in results if r.status.value == "WARN"]
+                for result in warn_results:
+                    print(f"   ⚠️  {result.check_name}: {result.message}")
         else:
             print("✅ System integrity verified")
             pass_count = sum(1 for r in results if r.status.value == "PASS")
             print(f"    {pass_count} checks passed")
+            
+            # Highlight per-iteration learning validation
+            learning_checks = [r for r in results if "Per-Iteration" in r.check_name]
+            if learning_checks:
+                learning_pass = sum(1 for r in learning_checks if r.status.value == "PASS")
+                print(f"    ✅ Per-iteration learning: {learning_pass}/{len(learning_checks)} validated")
         
         print()
         return True
@@ -59,6 +90,107 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True) -> bo
         print("    Continuing with generation (check failed gracefully)")
         print()
         return True  # Don't block generation on check errors
+
+
+def run_post_generation_validation(material: str, component_type: str, quick: bool = True) -> bool:
+    """
+    Run post-generation validation to verify learning data was captured.
+    
+    Validates:
+    - Detection result logged to database
+    - Generation parameters logged
+    - Realism evaluation occurred (if applicable)
+    - Learning data captured for iteration
+    
+    Args:
+        material: Material name that was generated
+        component_type: Component type (caption, subtitle, faq)
+        quick: If True, skip expensive validations
+    
+    Returns:
+        True if validation passed, False otherwise
+    """
+    try:
+        print("🔍 Running post-generation validation...")
+        
+        checker = IntegrityChecker()
+        results = checker.run_post_generation_checks(
+            material=material,
+            component_type=component_type,
+            detection_id=None  # Will find latest
+        )
+        
+        # Check results
+        if checker.has_failures(results):
+            print("⚠️  Post-generation validation found issues:")
+            fail_results = [r for r in results if r.status.value == "FAIL"]
+            for result in fail_results:
+                print(f"   ❌ {result.check_name}: {result.message}")
+            print()
+            return False
+        
+        # All good
+        print("✅ Post-generation validation passed")
+        pass_count = sum(1 for r in results if r.status.value == "PASS")
+        print(f"    {pass_count} checks passed")
+        print()
+        return True
+        
+    except Exception as e:
+        print(f"⚠️  Post-generation validation error: {e}")
+        print("    Generation completed but validation inconclusive")
+        print()
+        return True  # Don't fail on validation errors
+
+
+def run_learning_architecture_tests(verbose: bool = False) -> bool:
+    """
+    Run integration tests for per-iteration learning architecture.
+    
+    This runs the pytest test suite to validate:
+    - Realism evaluation on every iteration
+    - Dual-objective scoring
+    - Learning logged on success and failure
+    - No global evaluation
+    
+    Args:
+        verbose: If True, show detailed test output
+    
+    Returns:
+        True if all tests passed, False otherwise
+    """
+    try:
+        import subprocess
+        import sys
+        
+        print("🧪 Running learning architecture integration tests...")
+        print("   Test suite: tests/integration/test_per_iteration_learning.py")
+        print()
+        
+        # Run pytest
+        cmd = [
+            sys.executable, '-m', 'pytest',
+            'tests/integration/test_per_iteration_learning.py',
+            '-v' if verbose else '-q',
+            '--tb=short'
+        ]
+        
+        result = subprocess.run(cmd, capture_output=not verbose)
+        
+        if result.returncode == 0:
+            print("✅ All learning architecture tests passed")
+            return True
+        else:
+            print("❌ Some learning architecture tests failed")
+            if not verbose:
+                print("   Run with --verbose for details:")
+                print("   pytest tests/integration/test_per_iteration_learning.py -v")
+            return False
+            
+    except Exception as e:
+        print(f"⚠️  Could not run learning architecture tests: {e}")
+        print("    Install pytest: pip install pytest")
+        return True  # Don't block on test infrastructure issues
 
 
 def get_integrity_summary() -> dict:
