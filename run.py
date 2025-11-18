@@ -328,14 +328,30 @@ def main():
     if args.batch_test:
         import os
         import subprocess
+        from datetime import datetime
+        
+        # Generate timestamped log file
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        log_file = f"/tmp/batch_run_{timestamp}.log"
         
         print("🎯 Running Batch Caption Test...")
         print("=" * 70)
+        print(f"📝 Logging to: {log_file}")
+        print("=" * 70)
+        
         try:
+            # Run with tee to show output AND save to log
+            tee_cmd = f"python3 scripts/batch_caption_test.py 2>&1 | tee {log_file}"
             result = subprocess.run(
-                ['python3', 'scripts/batch_caption_test.py'],
+                tee_cmd,
+                shell=True,
                 cwd=os.path.dirname(os.path.abspath(__file__))
             )
+            
+            print("\n" + "=" * 70)
+            print(f"✅ Log saved to: {log_file}")
+            print("=" * 70)
+            
             return result.returncode
         except Exception as e:
             print(f"❌ Batch test failed: {e}")

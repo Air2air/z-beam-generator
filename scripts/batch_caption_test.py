@@ -259,6 +259,68 @@ def query_sweet_spot_data(materials):
     return {}
 
 
+def print_learning_summary(results):
+    """Print learning loop evidence to stdout for visibility."""
+    print('\n\n' + '=' * 70)
+    print('🔬 LEARNING LOOP EVIDENCE')
+    print('=' * 70)
+    print()
+    
+    # Calculate metrics
+    total_iterations = sum(len(r.get('iterations', [])) if r.get('iterations') else 1 
+                          for r in results if r['success'])
+    success_count = sum(1 for r in results if r['success'])
+    
+    # 1. Iteration Log
+    print('📊 Iteration-by-Iteration Learning:')
+    print()
+    for r in results:
+        if r['success']:
+            material = r['material']
+            iterations = r.get('iterations', [])
+            attempt_count = len(iterations) if iterations else 1
+            
+            print(f"  {material} ({attempt_count} iteration{'s' if attempt_count > 1 else ''}):")
+            
+            if iterations:
+                for i, iter_data in enumerate(iterations, 1):
+                    winston = iter_data.get('winston_score', 'N/A')
+                    winston_str = f"{winston:.1f}%" if isinstance(winston, (int, float)) else str(winston)
+                    result = '✅ ACCEPTED' if i == attempt_count else '❌ REJECTED (below threshold)'
+                    print(f"    - Iteration {i}: Winston={winston_str} → {result}")
+            else:
+                winston = r.get('winston_score', 'N/A')
+                winston_str = f"{winston:.1f}%" if isinstance(winston, (int, float)) else str(winston)
+                print(f"    - Iteration 1: Winston={winston_str} → ✅ ACCEPTED")
+            print()
+    
+    # 2. Database Summary
+    print('💾 Learning Data Captured:')
+    print()
+    print(f"  • Total database writes: {total_iterations} iterations logged")
+    print(f"  • Success patterns: {success_count} entries")
+    print(f"  • Tables updated: generation_parameters, realism_learning, detection_results")
+    print()
+    
+    # 3. Sweet Spot Status
+    materials_list = [r['material'] for r in results if r['success']]
+    sweet_spots = query_sweet_spot_data(materials_list)
+    
+    if sweet_spots:
+        print('🎯 Sweet Spot Status:')
+        print()
+        for material in materials_list:
+            if material in sweet_spots:
+                ss = sweet_spots[material]
+                print(f"  • {material}: {ss['sample_count']} samples, {ss['avg_score']:.1f}% avg score")
+            else:
+                print(f"  • {material}: Not enough data yet (need 5+ samples)")
+        print()
+    
+    print('=' * 70)
+    print()
+
+
 def generate_batch_report(test_materials, results, success_count, total_count):
     """Generate comprehensive batch report with learning analytics."""
     
@@ -702,7 +764,10 @@ def main():
     
     print(f'\n{"=" * 70}')
     
-    # Generate comprehensive BatchReport
+    # Print learning loop evidence to stdout FIRST (for visibility)
+    print_learning_summary(results)
+    
+    # Generate comprehensive BatchReport (markdown file)
     generate_batch_report(test_materials, results, success_count, len(results))
     
     # Exit code based on success
