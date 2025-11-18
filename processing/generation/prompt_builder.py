@@ -249,10 +249,30 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         
         requirements_section = "\n".join(requirements)
         
-        # Build voice section with dynamic sentence structure guidance from author profile
+        # Build voice section with persona instructions from YAML
         # Phase 2: Apply voice_params to control personality intensity
         voice_section = f"""VOICE: {author} from {country}
 - Regional patterns: {esl_traits}"""
+        
+        # Inject core persona instructions if available (GROK_INSTRUCTIONS.md compliance)
+        if voice:
+            # Core voice instruction (most important - defines fundamental tone)
+            if 'core_voice_instruction' in voice:
+                voice_section += f"\n\nCORE VOICE INSTRUCTION:\n{voice['core_voice_instruction']}"
+            
+            # Tonal restraint (enforces objective style)
+            if 'tonal_restraint' in voice:
+                voice_section += f"\n\nTONAL RESTRAINT:\n{voice['tonal_restraint']}"
+            
+            # Forbidden casual phrases (explicit blocklist)
+            if 'forbidden_casual' in voice and voice['forbidden_casual']:
+                forbidden_list = ', '.join(f'"{phrase}"' for phrase in voice['forbidden_casual'])
+                voice_section += f"\n\nFORBIDDEN PHRASES: {forbidden_list}"
+            
+            # Technical verbs requirement
+            if 'technical_verbs_required' in voice and voice['technical_verbs_required']:
+                verbs_list = ', '.join(voice['technical_verbs_required'])
+                voice_section += f"\n\nREQUIRED TECHNICAL VERBS: {verbs_list}"
         
         # Check if modular parameters are enabled
         use_modular = voice_params.get('_use_modular', False) if voice_params else False
