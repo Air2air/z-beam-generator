@@ -119,17 +119,28 @@ class ComponentRegistry:
             variation_pct = 0.10 + ((length_variation - 1) / 9.0) * 0.50
             variation_words = int(default * variation_pct)
             
+            # Get extraction_strategy if specified in config
+            extraction_strategy = 'raw'  # Default
+            if isinstance(lengths, dict) and 'extraction_strategy' in lengths:
+                extraction_strategy = lengths['extraction_strategy']
+            
             return {
                 'default': default,
                 'min': max(1, default - variation_words),
-                'max': default + variation_words
+                'max': default + variation_words,
+                'extraction_strategy': extraction_strategy
             }
         except Exception:
-            # Fallback calculation
+            # Fallback calculation (extraction_strategy defaults to 'raw')
+            extraction_strategy_fallback = 'raw'
+            if isinstance(lengths, dict) and 'extraction_strategy' in lengths:
+                extraction_strategy_fallback = lengths['extraction_strategy']
+            
             return {
                 'default': default,
                 'min': max(int(default * 0.9), default - 5),
-                'max': min(int(default * 1.1), default + 5)
+                'max': min(int(default * 1.1), default + 5),
+                'extraction_strategy': extraction_strategy_fallback
             }
     
     # Component specifications discovered dynamically from:
