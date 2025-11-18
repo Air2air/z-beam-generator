@@ -2285,4 +2285,58 @@ class IntegrityChecker:
                     duration_ms=(time.time() - start) * 1000
                 ))
         
+        # Check 14: Template separation - component vs persona
+        start = time.time()
+        components_dir = Path('prompts/components')
+        personas_dir = Path('prompts/personas')
+        
+        # Voice keywords that should ONLY be in persona templates
+        voice_keywords = [
+            'forbidden', 'tonal_restraint', 'core_voice_instruction',
+            'linguistic_characteristics', 'technical_verbs_required',
+            'forbidden_casual', 'forbidden_phrases'
+        ]
+        
+        # Content keywords that should ONLY be in component templates  
+        content_keywords = [
+            'CONTENT STRATEGY', 'STRUCTURE REQUIREMENTS',
+            'FORMATTING:', 'CONTENT APPROACH'
+        ]
+        
+        violations = []
+        
+        # Check component templates don't have voice instructions
+        if components_dir.exists():
+            for template_file in components_dir.glob('*.txt'):
+                content = template_file.read_text()
+                found_voice_keywords = [kw for kw in voice_keywords if kw in content.lower()]
+                if found_voice_keywords:
+                    violations.append(f"{template_file.name}: has voice keywords {found_voice_keywords}")
+        
+        # Check persona templates don't have content instructions
+        if personas_dir.exists():
+            for persona_file in personas_dir.glob('*.yaml'):
+                content = persona_file.read_text()
+                found_content_keywords = [kw for kw in content_keywords if kw in content]
+                if found_content_keywords:
+                    violations.append(f"{persona_file.name}: has content keywords {found_content_keywords}")
+        
+        if violations:
+            results.append(IntegrityResult(
+                check_name="Template Separation: Component vs Persona",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: Templates violate separation policy",
+                details={'violations': violations},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Template Separation: Component vs Persona",
+                status=IntegrityStatus.PASS,
+                message="✅ Component and persona templates properly separated",
+                details={'components_checked': len(list(components_dir.glob('*.txt'))) if components_dir.exists() else 0,
+                        'personas_checked': len(list(personas_dir.glob('*.yaml'))) if personas_dir.exists() else 0},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
         return results
