@@ -594,7 +594,7 @@ class UnifiedOrchestrator:
             conn = sqlite3.connect(self.winston.feedback_db.db_path)
             
             # Strategy 1: Get parameters from most recent successful generation with high human score
-            # GENERIC LEARNING: Use best params from ANY material/component
+            # Only use Winston-verified results (no pattern-only false positives)
             cursor = conn.execute("""
                 SELECT 
                     p.temperature,
@@ -611,6 +611,7 @@ class UnifiedOrchestrator:
                 JOIN detection_results r ON p.detection_result_id = r.id
                 WHERE r.success = 1
                   AND r.human_score >= 20
+                  AND r.human_score <= 100
                 ORDER BY r.human_score DESC, r.timestamp DESC
                 LIMIT 1
             """)

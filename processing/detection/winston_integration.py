@@ -90,33 +90,25 @@ class WinstonIntegration:
         """
         Determine if Winston API should be used for this attempt.
         
-        Implements smart cost control:
-        - 'disabled': Never use Winston
-        - 'always': Always use Winston
-        - 'final_only': Only on final attempt
-        - 'smart': Pattern-based for attempts 1-2, Winston for 3+ and final
+        Now always returns True to ensure reliable learning data.
+        Pattern-only detection was removed due to false positives polluting
+        the training database.
         
         Args:
             attempt: Current attempt number (1-based)
             max_attempts: Maximum attempts allowed
             
         Returns:
-            True if Winston should be used, False for pattern-only
+            Always True (Winston API on every attempt)
         """
         mode = self.get_usage_mode()
         
         if mode == 'disabled':
+            logger.warning("Winston disabled mode detected - this may create unreliable learning data")
             return False
-        elif mode == 'always':
-            return True
-        elif mode == 'final_only':
-            return attempt == max_attempts
-        elif mode == 'smart':
-            # Smart: pattern-based for attempts 1-2, Winston for 3+ and final
-            return attempt >= 3 or attempt == max_attempts
-        else:
-            logger.warning(f"Unknown winston_usage_mode '{mode}', defaulting to smart")
-            return attempt >= 3 or attempt == max_attempts
+        
+        # Always use Winston for accurate detection and clean learning data
+        return True
     
     def detect_and_log(
         self,
@@ -151,27 +143,22 @@ class WinstonIntegration:
             - failure_analysis: Dict (if analyzer available)
             - method: str ('winston' or 'pattern_only')
         """
-        # Determine if we should use Winston
+        # Always use Winston API for reliable detection
         use_winston = self.should_use_winston(attempt, max_attempts)
         
         # Perform detection
         if use_winston and self.winston_client:
-            # Full Winston detection
+            # Winston API detection (sentence-level analysis)
             detection = self.detector.detect(text)
             method = 'winston' if 'sentences' in detection else 'pattern_only'
             logger.info(f"🔍 Detection method: {method}")
         else:
-            # Pattern-based only for cost savings
-            logger.info(f"💰 [COST CONTROL] Using pattern-based detection (attempt {attempt}/{max_attempts})")
-            from processing.detection.ai_detection import AIDetector
-            pattern_detector = AIDetector(strict_mode=False)
-            pattern_result = pattern_detector.detect(text)
-            detection = {
-                'ai_score': pattern_result['ai_score'],
-                'method': 'pattern_only',
-                'details': pattern_result['details']
-            }
-            method = 'pattern_only'
+            # No Winston client available - fail fast
+            logger.error("❌ Winston API client not available - cannot proceed without reliable detection")
+            raise RuntimeError(
+                "Winston API client required for generation. "
+                "Pattern-only detection has been removed to prevent false positives in learning data."
+            )
         
         ai_score = detection['ai_score']
         

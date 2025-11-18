@@ -31,11 +31,9 @@ humanness_intensity: 9               # 1=Minimal (fast, 85% threshold) → 10=Ma
                                      # Affects: API penalties, temperature aggression, max attempts, Winston threshold
 
 # Winston AI Detection Cost Control
-winston_usage_mode: 'smart'          # 'always', 'smart', 'final_only', 'disabled'
-                                     # smart: Pattern-based attempts 1-2, Winston on 3+ and final
-                                     # always: Every attempt (expensive)
-                                     # final_only: Only validate successful content
-                                     # disabled: Pattern-based only (free)
+winston_usage_mode: 'always'         # 'always' = Use Winston API on every attempt (most accurate)
+                                     # Note: Pattern-only detection removed as it was
+                                     # creating false positives in learning database
 
 # Winston Adaptive Retry (Intelligent retry extension based on feedback)
 winston_adaptive_retry: true         # Enable intelligent retry extension based on sentence scores
