@@ -118,6 +118,9 @@ class IntegrityChecker:
         # Subjective validator integration check (fast) - November 16, 2025
         results.extend(self._check_subjective_validator_integration())
         
+        # Per-iteration learning architecture check (fast) - November 17, 2025
+        results.extend(self._check_per_iteration_learning())
+        
         if not quick:
             # API health checks (slow - network calls)
             results.extend(self._check_api_health())
@@ -2000,3 +2003,282 @@ class IntegrityChecker:
                 for r in results
             ]
         }
+    
+    # =========================================================================
+    # PER-ITERATION LEARNING ARCHITECTURE CHECKS (November 17, 2025)
+    # =========================================================================
+    
+    def _check_per_iteration_learning(self) -> List[IntegrityResult]:
+        """
+        Verify per-iteration learning architecture is correctly implemented.
+        
+        Critical checks to prevent hours of debugging:
+        1. Inline realism evaluation exists in generator retry loop
+        2. Dual-objective scoring (Winston 40% + Realism 60%)
+        3. Learning logged on EVERY iteration (success AND failure)
+        4. No global evaluation calls (removed)
+        5. RealismOptimizer integration
+        6. Database schema supports realism_learning table
+        
+        This prevents the system from silently failing to learn.
+        """
+        results = []
+        
+        # Check 1: Inline realism evaluation exists
+        start = time.time()
+        generator_path = Path('processing/generator.py')
+        
+        if not generator_path.exists():
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Generator Exists",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: generator.py not found",
+                details={'expected_path': str(generator_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+            return results  # Can't proceed without generator
+        
+        generator_content = generator_path.read_text()
+        
+        # Check for SubjectiveEvaluator import
+        has_evaluator_import = 'from processing.subjective import SubjectiveEvaluator' in generator_content
+        has_grok_client = "create_api_client('grok')" in generator_content
+        has_evaluate_call = 'realism_evaluator.evaluate(' in generator_content
+        
+        if not all([has_evaluator_import, has_grok_client, has_evaluate_call]):
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Inline Realism Evaluation",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: Inline realism evaluation missing from retry loop",
+                details={
+                    'has_import': has_evaluator_import,
+                    'creates_grok_client': has_grok_client,
+                    'calls_evaluate': has_evaluate_call,
+                    'issue': 'System will not evaluate realism on every iteration'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Inline Realism Evaluation",
+                status=IntegrityStatus.PASS,
+                message="✅ Inline realism evaluation present in retry loop",
+                details={'evaluates_per_iteration': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 2: Dual-objective scoring
+        start = time.time()
+        has_combined_score = 'combined_score' in generator_content
+        has_winston_weight = '0.4' in generator_content  # Winston 40%
+        has_realism_weight = '0.6' in generator_content  # Realism 60%
+        has_normalization = 'human_score / 10' in generator_content or 'winston_normalized' in generator_content
+        
+        if not all([has_combined_score, has_winston_weight, has_realism_weight]):
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Dual-Objective Scoring",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: Dual-objective scoring (Winston 40% + Realism 60%) not implemented",
+                details={
+                    'has_combined_score': has_combined_score,
+                    'has_winston_weight_40': has_winston_weight,
+                    'has_realism_weight_60': has_realism_weight,
+                    'has_normalization': has_normalization,
+                    'issue': 'System will not properly combine Winston and Realism scores'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Dual-Objective Scoring",
+                status=IntegrityStatus.PASS,
+                message="✅ Dual-objective scoring implemented (Winston 40% + Realism 60%)",
+                details={'combines_scores': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 3: Learning logged on success
+        start = time.time()
+        has_success_learning = 'log_realism_learning' in generator_content
+        has_optimizer_import = 'from processing.realism.optimizer import RealismOptimizer' in generator_content
+        has_ai_tendencies = 'ai_tendencies' in generator_content
+        
+        if not all([has_success_learning, has_ai_tendencies]):
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Success Learning",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: Realism learning not logged on successful iterations",
+                details={
+                    'logs_learning': has_success_learning,
+                    'captures_tendencies': has_ai_tendencies,
+                    'has_optimizer': has_optimizer_import,
+                    'issue': 'System will not learn from successful patterns'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Success Learning",
+                status=IntegrityStatus.PASS,
+                message="✅ Learning logged on successful iterations",
+                details={'logs_success_patterns': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 4: Learning logged on FAILURE (critical!)
+        start = time.time()
+        has_failure_learning = 'success=False' in generator_content
+        has_failure_comment = 'even for FAILURES' in generator_content or 'failure pattern' in generator_content.lower()
+        
+        if not has_failure_learning:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Failure Learning",
+                status=IntegrityStatus.FAIL,
+                message="❌ CRITICAL: Realism learning NOT logged on failed iterations",
+                details={
+                    'logs_failures': has_failure_learning,
+                    'has_documentation': has_failure_comment,
+                    'issue': 'System will not learn from failures (50% of training data lost!)'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Failure Learning",
+                status=IntegrityStatus.PASS,
+                message="✅ Learning logged on failed iterations (builds training data)",
+                details={'logs_failure_patterns': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 5: No global evaluation calls
+        start = time.time()
+        run_path = Path('run.py')
+        
+        if not run_path.exists():
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: No Global Evaluation",
+                status=IntegrityStatus.WARN,
+                message="⚠️  run.py not found, cannot verify global evaluation removal",
+                details={'expected_path': str(run_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            run_content = run_path.read_text()
+            
+            # Check import is commented out
+            import_commented = '# from shared.commands.global_evaluation import run_global_subjective_evaluation' in run_content
+            
+            # Check no active calls
+            active_calls = run_content.count('run_global_subjective_evaluation(')
+            calls_commented = '# run_global_subjective_evaluation' in run_content
+            
+            if not import_commented or (active_calls > 0 and not calls_commented):
+                results.append(IntegrityResult(
+                    check_name="Per-Iteration: No Global Evaluation",
+                    status=IntegrityStatus.FAIL,
+                    message="❌ CRITICAL: Global evaluation still active (doesn't contribute to learning)",
+                    details={
+                        'import_commented': import_commented,
+                        'active_call_count': active_calls,
+                        'issue': 'Wastes API calls without contributing to current generation'
+                    },
+                    duration_ms=(time.time() - start) * 1000
+                ))
+            else:
+                results.append(IntegrityResult(
+                    check_name="Per-Iteration: No Global Evaluation",
+                    status=IntegrityStatus.PASS,
+                    message="✅ Global evaluation removed (per-iteration learning active)",
+                    details={'uses_inline_learning': True},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        # Check 6: Combined score used for quality decision
+        start = time.time()
+        uses_combined_for_decision = 'combined_score_percent >= learning_target' in generator_content
+        
+        if not uses_combined_for_decision:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Combined Score Decision",
+                status=IntegrityStatus.WARN,
+                message="⚠️  Quality decision may not use combined score",
+                details={
+                    'uses_combined': uses_combined_for_decision,
+                    'issue': 'Decisions should be based on Winston+Realism, not just Winston'
+                },
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Combined Score Decision",
+                status=IntegrityStatus.PASS,
+                message="✅ Quality decisions use combined score (Winston + Realism)",
+                details={'uses_dual_objective': True},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        
+        # Check 7: Database supports realism_learning table
+        start = time.time()
+        db_path = Path('data/winston_feedback.db')
+        
+        if not db_path.exists():
+            results.append(IntegrityResult(
+                check_name="Per-Iteration: Database Schema",
+                status=IntegrityStatus.WARN,
+                message="⚠️  Winston feedback database not found",
+                details={'db_path': str(db_path)},
+                duration_ms=(time.time() - start) * 1000
+            ))
+        else:
+            try:
+                conn = sqlite3.connect(str(db_path))
+                cursor = conn.cursor()
+                
+                # Check if realism_learning table exists
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='realism_learning'")
+                table_exists = cursor.fetchone() is not None
+                
+                if table_exists:
+                    # Check columns
+                    cursor.execute("PRAGMA table_info(realism_learning)")
+                    columns = [row[1] for row in cursor.fetchall()]
+                    required_columns = ['detected_ai_tendencies', 'parameter_adjustments', 'original_realism_score', 'success']
+                    missing_columns = [col for col in required_columns if col not in columns]
+                    
+                    if missing_columns:
+                        results.append(IntegrityResult(
+                            check_name="Per-Iteration: Database Schema",
+                            status=IntegrityStatus.FAIL,
+                            message=f"❌ CRITICAL: realism_learning table missing columns: {missing_columns}",
+                            details={'existing_columns': columns, 'missing': missing_columns},
+                            duration_ms=(time.time() - start) * 1000
+                        ))
+                    else:
+                        results.append(IntegrityResult(
+                            check_name="Per-Iteration: Database Schema",
+                            status=IntegrityStatus.PASS,
+                            message="✅ realism_learning table exists with required columns",
+                            details={'columns': columns},
+                            duration_ms=(time.time() - start) * 1000
+                        ))
+                else:
+                    results.append(IntegrityResult(
+                        check_name="Per-Iteration: Database Schema",
+                        status=IntegrityStatus.FAIL,
+                        message="❌ CRITICAL: realism_learning table does not exist",
+                        details={'issue': 'Learning data cannot be persisted'},
+                        duration_ms=(time.time() - start) * 1000
+                    ))
+                
+                conn.close()
+            except Exception as e:
+                results.append(IntegrityResult(
+                    check_name="Per-Iteration: Database Schema",
+                    status=IntegrityStatus.WARN,
+                    message=f"⚠️  Could not verify database schema: {e}",
+                    details={'error': str(e)},
+                    duration_ms=(time.time() - start) * 1000
+                ))
+        
+        return results
