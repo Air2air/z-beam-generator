@@ -122,8 +122,8 @@ class UnifiedOrchestrator:
         self.dynamic_config = DynamicConfig()
         
         # Author voice store
-        from processing.voice.store import AuthorVoiceStore
-        self.voice_store = AuthorVoiceStore()
+        # Load personas from prompts/personas/
+        self.personas = self._load_all_personas()
         
         # Prompt builder
         from processing.generation.prompt_builder import PromptBuilder
@@ -192,6 +192,69 @@ class UnifiedOrchestrator:
         
         self.logger.info(f"Base AI detection threshold: {self.base_ai_threshold:.3f}")
     
+    def _load_all_personas(self) -> Dict[int, Dict]:
+        """
+        Load all persona YAML files from prompts/personas/ directory.
+        Maps author IDs to persona configurations.
+        
+        Returns:
+            Dict mapping author_id to persona configuration
+        """
+        import yaml
+        from pathlib import Path
+        
+        personas_dir = Path("prompts/personas")
+        if not personas_dir.exists():
+            raise ValueError(f"Personas directory not found: {personas_dir}")
+        
+        # Map persona files to author IDs
+        author_id_map = {
+            1: "indonesia",
+            2: "united_states", 
+            3: "taiwan",
+            4: "italy"
+        }
+        
+        personas = {}
+        for author_id, filename in author_id_map.items():
+            yaml_path = personas_dir / f"{filename}.yaml"
+            if not yaml_path.exists():
+                self.logger.warning(f"Persona file not found: {yaml_path}, skipping author_id {author_id}")
+                continue
+            
+            try:
+                with open(yaml_path, 'r', encoding='utf-8') as f:
+                    persona_config = yaml.safe_load(f)
+                    personas[author_id] = persona_config
+                    self.logger.debug(f"Loaded persona for author_id {author_id}: {persona_config.get('name', 'Unknown')}")
+            except Exception as e:
+                self.logger.error(f"Failed to load persona from {yaml_path}: {e}")
+        
+        if not personas:
+            raise ValueError("No personas loaded from prompts/personas/ directory")
+        
+        self.logger.info(f"Loaded {len(personas)} personas from prompts/personas/")
+        return personas
+    
+    def _get_persona_by_author_id(self, author_id: int) -> Dict:
+        """
+        Get persona configuration by author ID.
+        
+        Args:
+            author_id: Author identifier (1-4)
+            
+        Returns:
+            Persona configuration dictionary
+            
+        Raises:
+            ValueError: If author_id not found
+        """
+        if author_id not in self.personas:
+            available = list(self.personas.keys())
+            raise ValueError(f"Author ID {author_id} not found. Available: {available}")
+        
+        return self.personas[author_id]
+    
     def generate(
         self,
         identifier: str,
@@ -228,7 +291,8 @@ class UnifiedOrchestrator:
         
         # Get author voice
         author_id = self.data_adapter.get_author_id(item_data)
-        voice = self.voice_store.get_voice(author_id)
+        # Load persona for author
+        voice = self._get_persona_by_author_id(author_id)
         
         # Get enrichment data via adapter
         facts = self.data_adapter.get_enrichment_data(identifier)
