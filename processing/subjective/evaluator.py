@@ -74,7 +74,8 @@ class SubjectiveEvaluator:
         self,
         api_client,
         quality_threshold: float = 7.0,
-        verbose: bool = False
+        verbose: bool = False,
+        evaluation_temperature: float = 0.2
     ):
         """
         Initialize Subjective evaluator
@@ -83,6 +84,7 @@ class SubjectiveEvaluator:
             api_client: Grok API client (REQUIRED - fail-fast architecture)
             quality_threshold: Minimum acceptable overall score (0-10)
             verbose: Print detailed evaluation output
+            evaluation_temperature: Temperature for subjective evaluation API calls (default 0.2 for consistency)
         
         Raises:
             ValueError: If api_client is None (fail-fast, no fallbacks)
@@ -98,6 +100,7 @@ class SubjectiveEvaluator:
         self.api_client = api_client
         self.quality_threshold = quality_threshold
         self.verbose = verbose
+        self.evaluation_temperature = evaluation_temperature
     
     @validate_scores
     def evaluate(
@@ -218,7 +221,7 @@ Provide your evaluation in this format:
                 prompt=prompt,
                 system_prompt="You are an expert content quality evaluator. Provide concise, structured responses.",
                 max_tokens=600,
-                temperature=0.2
+                temperature=self.evaluation_temperature
             )
             
             # Call API with proper request object
@@ -232,10 +235,9 @@ Provide your evaluation in this format:
             
         except Exception as e:
             if self.verbose:
-                print(f"⚠️  Subjective evaluation failed: {e}")
-                print("   Falling back to rule-based evaluation")
-            
-            return self._fallback_evaluation(content, "")
+                print(f"❌ Subjective evaluation failed: {e}")
+            # FAIL-FAST: No fallback mode per GROK_INSTRUCTIONS.md
+            raise Exception(f"Subjective evaluation failed: {e}") from e
     
     def _parse_claude_response(self, response: str) -> SubjectiveEvaluationResult:
         """Parse Claude's evaluation response"""

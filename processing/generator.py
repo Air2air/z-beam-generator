@@ -849,7 +849,7 @@ class DynamicGenerator:
                 # This happens on SUCCESS to capture what worked
                 if realism_score is not None and ai_tendencies:
                     try:
-                        from processing.realism.optimizer import RealismOptimizer
+                        from processing.learning.realism_optimizer import RealismOptimizer
                         optimizer = RealismOptimizer()
                         
                         # Get suggested parameter adjustments
@@ -912,7 +912,7 @@ class DynamicGenerator:
             # Knowing what NOT to do is as important as knowing what works
             if realism_score is not None and ai_tendencies:
                 try:
-                    from processing.realism.optimizer import RealismOptimizer
+                    from processing.learning.realism_optimizer import RealismOptimizer
                     optimizer = RealismOptimizer()
                     
                     # Get suggested parameter adjustments based on what failed
