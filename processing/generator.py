@@ -394,8 +394,47 @@ class DynamicGenerator:
                 previous_strategy_id=getattr(self, '_last_strategy_id', None)
             )
             
-            # Apply temperature adjustment
-            base_temperature = min(1.0, base_temperature + fix_strategy['temperature_adjustment'])
+            # NEW: Incorporate realism feedback if available from last attempt
+            if hasattr(self, '_last_realism_score') and hasattr(self, '_last_ai_tendencies'):
+                try:
+                    from processing.learning.realism_optimizer import RealismOptimizer
+                    optimizer = RealismOptimizer()
+                    
+                    current_params = {
+                        'temperature': base_temperature,
+                        'frequency_penalty': 0.0,  # Will be calculated by dynamic_config
+                        'presence_penalty': 0.0,
+                        'voice_params': voice_params
+                    }
+                    
+                    # Get realism-based adjustments
+                    realism_adjustments = optimizer.suggest_parameter_adjustments(
+                        ai_tendencies=self._last_ai_tendencies,
+                        current_params=current_params
+                    )
+                    
+                    # Blend Winston-based and Realism-based adjustments (60% realism, 40% winston)
+                    if 'temperature' in realism_adjustments:
+                        realism_temp_adj = realism_adjustments['temperature'] - base_temperature
+                        winston_temp_adj = fix_strategy['temperature_adjustment']
+                        blended_temp_adj = (realism_temp_adj * 0.6) + (winston_temp_adj * 0.4)
+                        base_temperature = min(1.0, base_temperature + blended_temp_adj)
+                        self.logger.info(f"🎯 Blended adjustment: Winston {winston_temp_adj:.3f} + Realism {realism_temp_adj:.3f} = {blended_temp_adj:.3f}")
+                    
+                    # Apply realism voice adjustments
+                    if 'voice_params' in realism_adjustments:
+                        for param, value in realism_adjustments['voice_params'].items():
+                            if param in voice_params:
+                                # Blend: 60% realism suggestion, 40% current
+                                blended_value = (value * 0.6) + (voice_params[param] * 0.4)
+                                voice_params[param] = max(0.0, min(1.0, blended_value))
+                
+                except Exception as e:
+                    self.logger.warning(f"Failed to apply realism adjustments: {e}")
+            
+            # Apply temperature adjustment (may have been modified by realism feedback above)
+            if 'temperature_adjustment' in fix_strategy and not hasattr(self, '_last_realism_score'):
+                base_temperature = min(1.0, base_temperature + fix_strategy['temperature_adjustment'])
             
             # Apply voice adjustments
             for param, adjustment in fix_strategy['voice_adjustments'].items():
@@ -683,7 +722,9 @@ class DynamicGenerator:
                 if realism_result:
                     realism_score = realism_result.overall_score
                     
-                    # Extract dimension scores
+                    # Extract dimension scores for detailed feedback
+                    voice_authenticity = None
+                    tonal_consistency = None
                     for dim_score in realism_result.dimension_scores:
                         if dim_score.dimension.value == 'voice_authenticity':
                             voice_authenticity = dim_score.score
@@ -699,11 +740,19 @@ class DynamicGenerator:
                         if dim == 'voice_authenticity':
                             ai_tendencies['generic_language'] = tendency_strength
                         elif dim == 'tonal_consistency':
-                            ai_tendencies['hedge_words'] = tendency_strength
-                        elif dim == 'human_believability':
-                            ai_tendencies['formal_structure'] = tendency_strength
+                            ai_tendencies['unnatural_transitions'] = tendency_strength
+                        elif dim == 'human_likeness':
+                            ai_tendencies['ai_patterns'] = tendency_strength
+                    
+                    # Store for next iteration's parameter adjustments
+                    self._last_realism_score = realism_score
+                    self._last_ai_tendencies = ai_tendencies
                     
                     self.logger.info(f"🤖 Realism Score: {realism_score:.1f}/10")
+                    if voice_authenticity:
+                        self.logger.info(f"   Voice Authenticity: {voice_authenticity:.1f}/10")
+                    if tonal_consistency:
+                        self.logger.info(f"   Tonal Consistency: {tonal_consistency:.1f}/10")
                     if ai_tendencies:
                         self.logger.info(f"📊 AI Tendencies: {ai_tendencies}")
                         
@@ -824,10 +873,21 @@ class DynamicGenerator:
                 combined_score_percent = human_score
                 self.logger.info(f"📊 Winston Score: {human_score:.1f}% (target: {learning_target:.1f}%)")
             
+            # CRITICAL: Realism score must pass quality gate (7.0/10 minimum)
+            passes_realism_gate = True  # Default if no realism evaluation
+            if realism_score is not None:
+                realism_threshold = 7.0  # Minimum quality threshold
+                passes_realism_gate = realism_score >= realism_threshold
+                if not passes_realism_gate:
+                    self.logger.warning(
+                        f"❌ Realism score below threshold: {realism_score:.1f}/10 < {realism_threshold}/10"
+                    )
+            
             passes_acceptance = (
                 ai_score <= self.ai_threshold and 
                 readability['is_readable'] and 
-                subjective_valid
+                subjective_valid and
+                passes_realism_gate  # NEW: Realism is now a quality gate
             )
             # Use combined score (Winston + Realism) for quality target decision
             meets_quality_target = combined_score_percent >= learning_target
@@ -898,11 +958,21 @@ class DynamicGenerator:
                 )
                 # Continue to retry logic with parameter adjustments
             
-            # Log failure reasons
+            # Log failure reasons with specific guidance
+            failure_reasons = []
             if ai_score > self.ai_threshold:
-                self.logger.warning(f"❌ AI score too high: {ai_score:.3f} > {self.ai_threshold:.3f}")
-            elif not meets_quality_target:
-                self.logger.warning(f"📚 Learning target not met: Winston {human_score:.1f}% < {learning_target}%")
+                failure_reasons.append(f"AI score too high: {ai_score:.3f} > {self.ai_threshold:.3f}")
+            if not readability['is_readable']:
+                failure_reasons.append("Readability check failed")
+            if not subjective_valid:
+                failure_reasons.append("Subjective language violations detected")
+            if not passes_realism_gate:
+                failure_reasons.append(f"Realism score too low: {realism_score:.1f}/10 < 7.0/10")
+            if not meets_quality_target:
+                failure_reasons.append(f"Quality target not met: {combined_score_percent:.1f}% < {learning_target}%")
+            
+            if failure_reasons:
+                self.logger.warning(f"❌ Attempt {attempt} failed: {', '.join(failure_reasons)}")
             if not readability['is_readable']:
                 self.logger.warning(f"❌ Readability failed: {readability['status']}")
             if not subjective_valid:
