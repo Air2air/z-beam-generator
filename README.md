@@ -1,11 +1,206 @@
 # Z-Beam Generator
 
-**🔬 AI-Researched Material Property Validation System**  
-**✅ Production-Ready: 98.1% Accuracy | 1.9% Error Rate | 1,351 Values Validated**  
-**🏗️ NEW: Multi-Content Type Architecture** - Extensible frontmatter generation for 5 content types  
-**🔍 NEW: Invisible Quality Pipeline** - Automatic validation and improvement during content generation
+**🔬 AI-Powered Laser Cleaning Content Generation System**  
+**✅ Production-Ready**: 98.1% Accuracy | B+ Code Quality (85/100) | 132 Materials  
+**🤖 Intelligent Learning**: Composite Quality Scoring + Adaptive Thresholds + Sweet Spot Optimization
 
-A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, comprehensive range verification, industry-grade accuracy, and extensible multi-content type architecture.
+A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, intelligent quality learning, and strict fail-fast architecture.
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure APIs (see docs/01-getting-started/SETUP_GUIDE.md)
+cp .env.example .env
+# Add your API keys: GROK_API_KEY, DEEPSEEK_API_KEY
+
+# Generate content
+python3 run.py --caption "Aluminum"
+python3 run.py --subtitle "Steel"
+python3 run.py --faq "Copper"
+
+# Batch operations
+python3 run.py --batch-test
+python3 run.py --deploy
+```
+
+**📖 Full Setup Guide**: [docs/01-getting-started/](docs/01-getting-started/) | **🗺️ Documentation Map**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+
+---
+
+## ✨ Core Features
+
+### 🤖 AI-Powered Generation
+- **Composite Quality Scoring**: Winston (60%) + Subjective (30%) + Readability (10%)
+- **Adaptive Learning**: Thresholds learned from 75th percentile of successful content
+- **Sweet Spot Optimization**: Statistical parameter optimization from historical success
+- **Multi-Provider AI**: Grok (generation), DeepSeek (research), Winston (detection)
+
+### 🏗️ Architecture
+- **Fail-Fast Design**: Explicit validation, no fallbacks or mocks in production
+- **Component Factory**: Dynamic component discovery from `prompts/*.txt` files
+- **Schema-Driven**: Fully dynamic content generation using JSON schemas
+- **Zero Hardcoded Values**: All configuration from files or dynamic calculation
+
+### 📊 Data & Quality
+- **132 Materials**: Complete database with AI-researched properties
+- **98.1% Property Accuracy**: AI-validated ranges for 9 material categories
+- **Real-Time Validation**: Integrity checks + quality scoring + AI detection
+- **Data Completeness**: Automatic enforcement with strict mode
+
+### 🧪 Testing & Compliance
+- **Comprehensive Test Suite**: 10+ compliance tests, integration tests for all components
+- **Code Quality**: B+ grade (85/100) with zero critical violations
+- **Automated Enforcement**: Integrity checker validates all policies
+- **Documentation Coverage**: Complete documentation for all systems
+
+---
+
+## 🔄 Recent Updates (November 2025)
+
+### ✅ November 17: Priority 1 Compliance Fixes
+- **Fixed**: RealismOptimizer import path correction
+- **Fixed**: SubjectiveEvaluator configurable temperature (no hardcoded values)
+- **Fixed**: Removed non-existent fallback method calls
+- **Grade**: C+ → B+ (85/100)
+- **Tests**: 10/10 automated compliance tests passing
+- **Docs**: [docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md](docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md)
+
+### ✅ November 16: Composite Quality Scoring
+- **Architecture**: Winston (60%) + Subjective (30%) + Readability (10%)
+- **Adaptive Learning**: Thresholds from 75th percentile of successful content  
+- **Sweet Spot Integration**: Uses composite scores for parameter optimization
+- **Docs**: [docs/proposals/GENERIC_LEARNING_ARCHITECTURE.md](docs/proposals/GENERIC_LEARNING_ARCHITECTURE.md)
+
+### ✅ November 15: System Integrity Module
+- **Quick Checks**: ~20ms integrity validation with 5 critical areas
+- **Fail-Fast Validation**: Config mapping, parameter propagation, API health
+- **Auto-Enforcement**: Runs before every generation
+- **Docs**: [processing/integrity/README.md](processing/integrity/README.md)
+
+**📜 Full Changelog**: See [docs/archive/2025-11/](docs/archive/2025-11/) for detailed reports
+
+---
+
+## 📖 Documentation
+
+### 🗺️ **Start Here**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+Complete navigation for all documentation with quick links by goal.
+
+### 🤖 For AI Assistants
+- **Primary Reference**: [.github/copilot-instructions.md](.github/copilot-instructions.md) - Complete development guidelines
+- **Quick Answers**: [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) - Fast problem resolution
+- **Content Generation**: [.github/COPILOT_GENERATION_GUIDE.md](.github/COPILOT_GENERATION_GUIDE.md) - Generation commands
+
+### 📚 Main Documentation
+- **Getting Started**: [docs/01-getting-started/](docs/01-getting-started/) - Setup, installation, validation
+- **Architecture**: [docs/02-architecture/](docs/02-architecture/) - System design, data flow, components
+- **Operations**: [docs/04-operations/](docs/04-operations/) - Content generation, batch ops, deployment
+- **Development**: [docs/08-development/](docs/08-development/) - Policies, standards, contribution guides
+- **API Integration**: [docs/07-api/](docs/07-api/) - API setup, error handling, limitations
+
+### 🔑 Critical Policies
+1. **No Mocks/Fallbacks**: [.github/copilot-instructions.md#no-mocks-or-fallbacks](.github/copilot-instructions.md) - Zero tolerance in production
+2. **No Hardcoded Values**: [docs/08-development/HARDCODED_VALUE_POLICY.md](docs/08-development/HARDCODED_VALUE_POLICY.md) - Use config/dynamic calculation
+3. **Content Instructions**: [docs/08-development/CONTENT_INSTRUCTION_POLICY.md](docs/08-development/CONTENT_INSTRUCTION_POLICY.md) - Prompts only, never in code
+4. **Data Storage**: [docs/05-data/DATA_STORAGE_POLICY.md](docs/05-data/DATA_STORAGE_POLICY.md) - Materials.yaml as single source of truth
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+Z-Beam Generator
+├── Content Generation
+│   ├── Components: caption, subtitle, faq, description
+│   ├── AI Providers: Grok, DeepSeek
+│   └── Quality: Winston detection + Subjective evaluation
+│
+├── Learning Systems
+│   ├── Composite Scoring: 60% Winston + 30% Subjective + 10% Readability
+│   ├── Adaptive Thresholds: Learn from successful content
+│   └── Sweet Spot Analyzer: Statistical parameter optimization
+│
+├── Data Management
+│   ├── Materials.yaml: Single source of truth (132 materials)
+│   ├── Categories.yaml: AI-researched property ranges
+│   └── Frontmatter: Auto-exported from Materials.yaml
+│
+└── Quality Assurance
+    ├── Integrity Checker: Pre-generation validation
+    ├── Fail-Fast Design: No fallbacks or degraded operation
+    └── Test Suite: Comprehensive automated testing
+```
+
+**Detailed Architecture**: [docs/02-architecture/SYSTEM_ARCHITECTURE.md](docs/02-architecture/SYSTEM_ARCHITECTURE.md)
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run specific test suites
+pytest tests/test_priority1_fixes.py         # Compliance tests
+pytest tests/test_e2e_subjective_evaluation.py  # Quality system tests
+pytest tests/integration/                    # Integration tests
+
+# Run with coverage
+pytest --cov=processing --cov=materials --cov=components
+```
+
+**Testing Docs**: [docs/08-development/TESTING_GUIDE.md](docs/08-development/TESTING_GUIDE.md)
+
+---
+
+## 🤝 Contributing
+
+1. **Read First**: [.github/copilot-instructions.md](.github/copilot-instructions.md) - Development guidelines
+2. **Check Policies**: [docs/08-development/](docs/08-development/) - All development policies
+3. **Run Tests**: Ensure all tests pass before committing
+4. **Follow Conventions**: Preserve existing patterns, fail-fast architecture
+
+**Development Guide**: [docs/08-development/CONTRIBUTING.md](docs/08-development/CONTRIBUTING.md)
+
+---
+
+## 📊 Project Status
+
+| Metric | Status |
+|--------|--------|
+| **Code Quality** | 🟢 B+ (85/100) |
+| **Materials Coverage** | 🟢 132/132 (100%) |
+| **Property Accuracy** | 🟢 98.1% |
+| **Test Suite** | 🟢 10/10 compliance tests passing |
+| **Documentation** | 🟢 Comprehensive + organized |
+| **Production Ready** | ✅ Yes |
+
+---
+
+## 📞 Support & Resources
+
+- **🗺️ Documentation Map**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md) - Master navigation
+- **🚨 Troubleshooting**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Common issues
+- **❓ Quick Reference**: [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) - Fast answers
+- **📋 Index**: [docs/INDEX.md](docs/INDEX.md) - Complete documentation index
+
+---
+
+## 📜 License
+
+See LICENSE file for details.
+
+---
+
+**Last Updated**: November 17, 2025  
+**Version**: 3.0.0  
+**Repository**: Air2air/z-beam-generator
 
 ## ✨ Features
 

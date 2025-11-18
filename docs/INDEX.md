@@ -1,7 +1,35 @@
 # Z-Beam Generator Documentation Index
 
-**Last Updated**: November 16, 2025  
+**Last Updated**: November 17, 2025  
 **Structure**: Numbered directories (01-09) for AI-friendly navigation
+
+---
+
+## 🎯 Start Here
+
+**🗺️ NEW: Complete Navigation**: See [DOCUMENTATION_MAP.md](../DOCUMENTATION_MAP.md) for comprehensive directory structure and quick links.
+
+---
+
+## 📰 Recent Updates (November 2025)
+
+### ✅ November 17: Priority 1 Compliance Fixes
+- Fixed RealismOptimizer import path
+- Made SubjectiveEvaluator temperature configurable
+- Removed non-existent fallback method calls
+- **Grade**: C+ → B+ (85/100)
+- **Docs**: [archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md](archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md)
+
+### ✅ November 16: Composite Quality Scoring
+- Implemented Winston (60%) + Subjective (30%) + Readability (10%)
+- Adaptive threshold learning from 75th percentile
+- Sweet spot analyzer uses composite scores
+- **Docs**: [proposals/GENERIC_LEARNING_ARCHITECTURE.md](proposals/GENERIC_LEARNING_ARCHITECTURE.md)
+
+### ✅ November 15: System Integrity Module
+- ~20ms pre-generation validation
+- 5 critical areas: config, parameters, API, readability, sweet spot
+- **Docs**: [../processing/integrity/README.md](../processing/integrity/README.md)
 
 ---
 

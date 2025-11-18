@@ -14,15 +14,12 @@
 
 ## 🚀 Installation
 
-### 1. Clone & Setup Environment
+### 1. Clone & Install
 
 ```bash
 git clone https://github.com/Air2air/z-beam-generator.git
 cd z-beam-generator
-
-# Create virtual environment (optional but recommended)
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ### 2. Configure API Keys
@@ -31,11 +28,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Copy example environment file
 cp .env.example .env
 
-# Edit .env with your API keys
-# Required keys:
-# - DEEPSEEK_API_KEY
-# - GROK_API_KEY  
-# - WINSTON_API_KEY
+# Edit .env with your API keys (required):
+#   DEEPSEEK_API_KEY=your_key_here
+#   GROK_API_KEY=your_key_here  
+#   WINSTON_API_KEY=your_key_here
 ```
 
 ### 3. Validate Setup
@@ -44,117 +40,80 @@ cp .env.example .env
 # Test API connections
 python3 run.py --test-api
 
-# Check environment
-python3 run.py --check-env
+# Run integrity check
+python3 run.py --integrity-check
 ```
 
 ---
 
 ## 🎯 First Generation
 
-### Generate a Caption
+### Single Component
 
 ```bash
-# Basic caption generation
+# Generate a caption
 python3 run.py --caption "Aluminum"
 
-# With specific author voice
-python3 run.py --caption "Steel" --author canadian
+# Generate a subtitle
+python3 run.py --subtitle "Steel"
+
+# Generate an FAQ
+python3 run.py --faq "Copper"
 ```
 
-### Generate Other Components
+### Full Material
 
 ```bash
-# Generate subtitle
-python3 run.py --subtitle "Brass"
-
-# Generate FAQ
-python3 run.py --faq "Titanium"
-
-# Generate description
-python3 run.py --description "Copper"
-```
-
-### Deploy All Components
-
-```bash
-# Generate and export everything for a material
+# Generate and export all components for a material
 python3 run.py --material "Stainless Steel" --deploy
 ```
 
 ---
 
-## 📊 Check Quality
-
-### View Generation Results
+## 📊 Batch Operations
 
 ```bash
-# Check Winston.ai human scores
-python3 run.py --data-completeness-report
+# Test batch generation (10 materials)
+python3 run.py --batch-test
 
-# View recent generations
-sqlite3 data/winston_feedback.db "SELECT material, component_type, human_score, timestamp FROM detection_results ORDER BY timestamp DESC LIMIT 10"
+# Full deployment (all materials)
+python3 run.py --deploy
 ```
 
-### Integrity Checks
+---
+
+## 🔍 Quality Checks
 
 ```bash
-# Run pre-generation integrity check
-python3 run.py --integrity-check
+# View completeness report
+python3 run.py --data-completeness-report
 
-# Post-generation checks run automatically after each generation
+# Check recent Winston scores
+sqlite3 data/winston_feedback.db "SELECT material, component_type, human_score, timestamp FROM detection_results ORDER BY timestamp DESC LIMIT 10"
 ```
 
 ---
 
 ## 🆘 Troubleshooting
 
-### Common Issues
-
 | Problem | Solution |
 |---------|----------|
-| **API connection fails** | Check keys in `.env` file |
-| **Winston SSL errors** | Fixed - using `https://api.gowinston.ai` |
+| **API connection fails** | Check `.env` has valid API keys |
 | **Generation fails** | Run `--integrity-check` for diagnostics |
 | **Missing material** | Check `data/materials/Materials.yaml` |
 
-### Get Help
-
-```bash
-# View all commands
-python3 run.py --help
-
-# Diagnostic tools
-python3 scripts/tools/api_terminal_diagnostics.py winston
-```
+**Full Troubleshooting**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 
 ## 📖 Next Steps
 
-1. **Read Documentation**: `docs/INDEX.md` - Complete navigation hub
-2. **Understand System**: `docs/QUICK_REFERENCE.md` - Fast problem resolution
-3. **Configure Voice**: `docs/06-ai-systems/voice-system.md` - Author profiles
-4. **Batch Operations**: `docs/04-operations/batch-operations.md` - Generate multiple materials
+- **📖 Documentation Map**: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md) - Complete navigation
+- **🤖 AI Assistant Guide**: [.github/copilot-instructions.md](.github/copilot-instructions.md) - Development guidelines
+- **❓ Quick Reference**: [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md) - Fast problem resolution
+- **🏗️ Architecture**: [docs/02-architecture/](docs/02-architecture/) - System design
 
 ---
 
-## 🤖 For AI Assistants
-
-If you're an AI assistant (Copilot, Grok, Claude):
-1. Read `AI_ASSISTANT_GUIDE.md` first
-2. Check `docs/01-getting-started/ai-assistants.md` for specific guidance
-3. Use `docs/QUICK_REFERENCE.md` for common issues
-
----
-
-## 📞 Support
-
-- **Documentation**: `/docs/INDEX.md`
-- **Issues**: GitHub Issues
-- **Quick Ref**: `/docs/QUICK_REFERENCE.md`
-
----
-
-**Last Updated**: November 16, 2025  
-**Version**: 2.0 (Post-cleanup)
+**Last Updated**: November 17, 2025  
+**Version**: 3.0.0
