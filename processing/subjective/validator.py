@@ -110,14 +110,12 @@ class SubjectiveValidator:
         """
         Validate content for subjective language violations.
         
-        Uses dynamic thresholds based on Winston AI score when available:
-        - Winston > 90%: Allow more violations (high-quality content)
-        - Winston 70-90%: Standard thresholds
-        - Winston < 70%: Strict thresholds
+        Uses FIXED thresholds defined in config - operates independently of Winston.
+        Winston score is logged for reference but does not affect validation.
         
         Args:
             content: Text content to validate
-            winston_score: Optional Winston human score (0-100) for dynamic thresholds
+            winston_score: Optional Winston human score (0-100) - logged only, not used for validation
         
         Returns:
             Tuple of (is_valid, details_dict)
@@ -156,73 +154,32 @@ class SubjectiveValidator:
             'severity': self._calculate_severity(total_violations, comma_count)
         }
         
-        # Calculate dynamic thresholds based on Winston score
-        dynamic_thresholds = self._calculate_dynamic_thresholds(winston_score)
+        # Use FIXED thresholds from config - no dynamic adjustment
+        fixed_thresholds = {
+            'max_violations': self.thresholds['max_violations'],
+            'max_commas': self.thresholds['max_commas'],
+            'mode': 'fixed (independent of Winston)'
+        }
         
-        # Validation passes if violations are below dynamic threshold
+        # Validation passes if violations are below fixed threshold
         is_valid = (
-            total_violations <= dynamic_thresholds['max_violations'] and 
-            comma_count <= dynamic_thresholds['max_commas']
+            total_violations <= fixed_thresholds['max_violations'] and 
+            comma_count <= fixed_thresholds['max_commas']
         )
         
-        # Add dynamic threshold info to details
-        details['applied_thresholds'] = dynamic_thresholds
-        details['winston_score'] = winston_score
+        # Add threshold info to details (Winston score logged for reference only)
+        details['applied_thresholds'] = fixed_thresholds
+        details['winston_score'] = winston_score  # Logged but not used
         
         if not is_valid:
             logger.warning(
                 f"Content failed subjective validation: {total_violations} violations "
-                f"(max: {dynamic_thresholds['max_violations']}), {comma_count} commas "
-                f"(max: {dynamic_thresholds['max_commas']}) "
-                f"[Winston: {winston_score if winston_score else 'N/A'}%]"
+                f"(max: {fixed_thresholds['max_violations']}), {comma_count} commas "
+                f"(max: {fixed_thresholds['max_commas']}) "
+                f"[Winston: {winston_score if winston_score else 'N/A'}% - reference only]"
             )
         
         return is_valid, details
-    
-    def _calculate_dynamic_thresholds(self, winston_score: Optional[float] = None) -> Dict[str, int]:
-        """
-        Calculate dynamic thresholds based on Winston AI score.
-        
-        Strategy: High Winston scores indicate human-like content, so allow more
-        stylistic violations. Low Winston scores need strict filtering.
-        
-        Args:
-            winston_score: Winston human score (0-100), None if not available
-        
-        Returns:
-            Dict with 'max_violations' and 'max_commas' thresholds
-        """
-        base_violations = self.thresholds['max_violations']
-        base_commas = self.thresholds['max_commas']
-        
-        # If no Winston score, use base thresholds from config
-        if winston_score is None:
-            return {
-                'max_violations': base_violations,
-                'max_commas': base_commas,
-                'adjustment': 'none (no Winston score)'
-            }
-        
-        # Dynamic adjustment based on Winston score
-        # High Winston score (>90%) = Allow 50% more violations
-        if winston_score >= 90:
-            multiplier = 1.5
-            adjustment = 'relaxed (Winston ≥90%)'
-        # Good Winston score (70-90%) = Use base thresholds
-        elif winston_score >= 70:
-            multiplier = 1.0
-            adjustment = 'standard (Winston 70-90%)'
-        # Poor Winston score (<70%) = Reduce threshold by 25%
-        else:
-            multiplier = 0.75
-            adjustment = 'strict (Winston <70%)'
-        
-        return {
-            'max_violations': int(base_violations * multiplier),
-            'max_commas': int(base_commas * multiplier),
-            'adjustment': adjustment,
-            'multiplier': multiplier
-        }
     
     def _calculate_severity(self, violation_count: int, comma_count: int) -> str:
         """Calculate severity level based on violations"""

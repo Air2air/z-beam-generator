@@ -192,17 +192,15 @@ subjective_violations:
   # Intensity adverbs (AI overuses qualifiers)
   intensity_adverbs: ['badly', 'extremely', 'highly', 'significantly', 'remarkably', 'notably', 'particularly', 'especially']
 
-# Subjective Validation Thresholds (November 16, 2025 - Dynamic Implementation)
-# Based on batch test analysis: content with 94-99% Winston scores had 5-8 violations
-# These are BASE thresholds - actual thresholds adjust dynamically based on Winston scores:
-#   - Winston ≥90%: thresholds × 1.5 (allow excellent content more flexibility)
-#   - Winston 70-90%: thresholds × 1.0 (standard enforcement)
-#   - Winston <70%: thresholds × 0.75 (strict filtering for poor content)
+# Subjective Validation Thresholds (November 17, 2025 - Fixed Independent Thresholds)
+# These thresholds operate INDEPENDENTLY of Winston scores for strict enforcement.
+# Subjective validator catches theatrical/casual language regardless of AI detection score.
+# Lower thresholds = stricter enforcement (reject more content for regeneration)
 subjective_thresholds:
-  max_violations: 6        # Base maximum total violations (dynamically adjusted)
-  max_commas: 8            # Base maximum commas (dynamically adjusted)
-  # Dynamic adjustment ensures high Winston scores aren't blocked by stylistic rules
-  # while poor Winston scores face stricter validation
+  max_violations: 3        # Maximum total subjective violations allowed (STRICT)
+  max_commas: 6            # Maximum commas allowed (AI pattern indicator)
+  # Fixed thresholds ensure consistent quality regardless of Winston score
+  # Content must pass BOTH Winston detection AND subjective validation independently
 
 # Author profile mapping
 voice:
