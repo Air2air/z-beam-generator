@@ -4,15 +4,17 @@
 
 ---
 
-# Quick Reference for AI Assistants
-
-**🤖 Optimized for AI assistant navigation and problem resolution**
-
----
-
 ## 📚 Critical Documentation for AI Assistants
 
 **BEFORE** any work, review these files organized by category:
+
+### ⚡ Recent Updates (November 18, 2025)
+- **Processing Module Consolidation**: 79 → 52 files (-34%), parameters: 16 → 4 files (-75%)
+- **Documentation Consolidation**: 14 → 10 directories (-29%), duplicate directories merged
+- **Architecture**: `docs/02-architecture/` now contains ALL architecture docs (merged from `docs/architecture/`)
+- **Components**: `docs/03-components/` now contains ALL component docs (merged from `docs/components/`)
+- **Parameters**: All in `processing/parameters/` as 4 category files (ai_detection, voice, variation, technical)
+- **See**: `PROCESSING_MODULE_UTILIZATION_ANALYSIS_NOV18_2025.md` for full analysis
 
 ### 🎯 Start Here
 1. **`docs/QUICK_REFERENCE.md`** - ⭐ Fastest path to common solutions (THIS FILE)

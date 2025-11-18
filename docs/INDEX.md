@@ -1,6 +1,6 @@
 # Z-Beam Generator Documentation Index
 
-**Last Updated**: November 17, 2025  
+**Last Updated**: November 18, 2025  
 **Structure**: Numbered directories (01-09) for AI-friendly navigation
 
 ---
@@ -12,6 +12,18 @@
 ---
 
 ## 📰 Recent Updates (November 2025)
+
+### ✅ November 18: Module & Documentation Consolidation 🧹
+- **Processing modules**: 79 → 52 files (-34%)
+- **Documentation**: 14 → 10 directories (-29%)
+- **Parameters**: Consolidated 16 → 4 category files (ai_detection, voice, variation, technical)
+- **Docs structure**: Merged duplicate directories into numbered hierarchy
+  - `docs/architecture/` → `docs/02-architecture/`
+  - `docs/components/` → `docs/03-components/`
+  - `docs/proposals/` → `docs/08-development/proposals/`
+  - `docs/configuration/` → `docs/09-reference/`
+- **Analysis**: See [PROCESSING_MODULE_UTILIZATION_ANALYSIS_NOV18_2025.md](../PROCESSING_MODULE_UTILIZATION_ANALYSIS_NOV18_2025.md)
+- **Result**: Cleaner structure, easier navigation, zero breaking changes
 
 ### ✅ November 18: Realism Quality Gate Enforcement 🔥 **CRITICAL**
 - Realism score (7.0/10 minimum) now enforced as rejection gate
@@ -77,13 +89,29 @@
 - `component-architecture.md` - Component system design
 - `fail-fast-principles.md` - Design philosophy and constraints
 - `parameter-system.md` - Parameter architecture and flow
-- Plus 29 more architecture documents
+- **NEW**: Merged from `docs/architecture/` (6 additional files):
+  - `COMPONENT_DISCOVERY.md` - Component discovery patterns
+  - `E2E_PARAMETER_FLOW.md` - End-to-end parameter flow
+  - `PROMPT_OVERRIDE_ANALYSIS.md` - Prompt override analysis
+  - `PROMPT_SEPARATION_ANALYSIS.md` - Prompt separation concerns
+  - `SCORING_SYSTEM_E2E_FLOW.md` - Scoring system flow
+  - `UNIFIED_LEARNING_ARCHITECTURE.md` - Learning architecture
+- Plus 29 more architecture documents (41 total)
 
 ### 03-components/
 **Purpose**: Individual component documentation  
 **For**: Component developers, maintainers
 
-**Note**: Component-specific docs remain in `/components/` directory for proximity to code.
+- **NEW**: Merged from `docs/components/` (7 additional files):
+  - `AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md`
+  - `OPTIMIZER_CONSOLIDATED_GUIDE.md`
+  - `README.md` - Component overview
+  - `SMART_OPTIMIZER_ARCHITECTURE.md`
+  - `SMART_OPTIMIZER_COMPREHENSIVE_GUIDE.md`
+  - `generator_base.md`
+  - `text/README.md` - Text component documentation
+
+**Note**: Component-specific docs also remain in `/components/` directory for proximity to code.
 
 See `/components/` for:
 - Text generation (`text/`)
@@ -134,12 +162,15 @@ See `/components/` for:
 **Purpose**: Development and contribution  
 **For**: Contributors, developers
 
-- `LEARNED_EVALUATION_PROPOSAL.md` - 🎯 **PROPOSAL** Learned subjective evaluation system (Nov 18, 2025)
+- `LEARNED_EVALUATION_PROPOSAL.md` - 🎯 **IMPLEMENTED** Learned subjective evaluation system (Nov 18, 2025)
 - `PROMPT_PURITY_POLICY.md` - 🔥 **NEW** Zero prompt text in generators (Nov 18, 2025)
 - `REALISM_QUALITY_GATE.md` - 🔥 **NEW** Realism quality gate policy (mandatory 7.0/10 minimum)
 - `chain-verification.md` - Chain verification guide
 - `database-parameter-priority.md` - Database-first parameter policy
 - `sweet-spot-analyzer.md` - Statistical parameter optimization
+- **NEW**: `proposals/` subdirectory (merged from `docs/proposals/`):
+  - `COMPREHENSIVE_LEARNING_INTEGRATION.md` - Learning integration proposal
+  - `GENERIC_LEARNING_ARCHITECTURE.md` - Generic learning architecture
 - Plus 6 more development guides
 
 ### 09-reference/
@@ -150,6 +181,7 @@ See `/components/` for:
 - `content-instructions.md` - Content instruction policy
 - `property-categories.md` - Property categorization
 - `property-terminology.md` - Property terminology reference
+- **NEW**: `PARAMETER_REFERENCE.md` - Complete parameter reference (moved from docs/configuration/)
 - Plus 14 more reference documents
 
 ---
