@@ -326,7 +326,8 @@ class WinstonFeedbackDatabase:
         temperature: float,
         attempt: int,
         success: bool,
-        failure_analysis: Optional[Dict] = None
+        failure_analysis: Optional[Dict] = None,
+        composite_quality_score: Optional[float] = None
     ) -> int:
         """
         Log a Winston detection result.
@@ -340,6 +341,7 @@ class WinstonFeedbackDatabase:
             attempt: Attempt number
             success: Whether it passed AI detection threshold
             failure_analysis: Optional WinstonFeedbackAnalyzer results
+            composite_quality_score: Composite score (Winston + Subjective + Readability)
             
         Returns:
             detection_result_id for linking corrections
@@ -354,8 +356,8 @@ class WinstonFeedbackDatabase:
                 INSERT INTO detection_results 
                 (timestamp, material, component_type, generated_text, 
                  human_score, ai_score, readability_score, credits_used,
-                 attempt_number, temperature, success, failure_type)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 attempt_number, temperature, success, failure_type, composite_quality_score)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 timestamp,
                 material,
@@ -368,7 +370,8 @@ class WinstonFeedbackDatabase:
                 attempt,
                 temperature,
                 success,
-                failure_analysis.get('failure_type') if failure_analysis else None
+                failure_analysis.get('failure_type') if failure_analysis else None,
+                composite_quality_score
             ))
             
             result_id = cursor.lastrowid

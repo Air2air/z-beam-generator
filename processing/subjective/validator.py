@@ -4,9 +4,13 @@ Subjective Language Validator
 Detects and penalizes subjective language patterns that trigger AI detection.
 Based on violations identified in November 16, 2025 batch caption test.
 
-Uses dynamic thresholds based on Winston AI scores - if content scores well
-on Winston, allow more stylistic violations. Implements weighted validation
-per system architecture requirements.
+ADAPTIVE LEARNING ARCHITECTURE (November 17, 2025):
+Thresholds are dynamically learned from composite quality scores in the database.
+The system analyzes which violation levels correlate with high-quality content,
+then adapts thresholds to match actual success patterns.
+
+Static config thresholds (config.yaml) are ONLY fallback defaults when insufficient
+data exists. System learns optimal thresholds as generations accumulate.
 
 Integration: Should be called during content validation in DynamicGenerator
 before accepting generated content as successful.
@@ -14,6 +18,7 @@ before accepting generated content as successful.
 
 import re
 import logging
+import sqlite3
 from typing import Dict, List, Tuple, Any, Optional
 from pathlib import Path
 
@@ -22,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 class SubjectiveValidator:
     """
-    Validates content against subjective language patterns.
+    Validates content against subjective language patterns with adaptive thresholds.
     
     Checks for:
     - Hedging words (around, about, roughly)
@@ -30,22 +35,39 @@ class SubjectiveValidator:
     - Conversational fillers (now, but, such, just)
     - Emotional adjectives (perfect, flawless, excellent)
     - Intensity adverbs (badly, extremely, highly)
+    
+    ADAPTIVE THRESHOLDS:
+    Learns from database which violation counts produce high composite quality scores.
+    Thresholds adjust automatically based on empirical success patterns.
     """
     
-    def __init__(self, config_path: str = "processing/config.yaml"):
+    def __init__(
+        self, 
+        config_path: str = "processing/config.yaml",
+        db_path: str = "data/winston_feedback.db",
+        min_samples_for_learning: int = 20
+    ):
         """
-        Initialize validator with violation patterns from config.
+        Initialize validator with adaptive learning capabilities.
         
         Args:
-            config_path: Path to config.yaml containing subjective_violations
+            config_path: Path to config.yaml containing fallback thresholds
+            db_path: Path to learning database for threshold adaptation
+            min_samples_for_learning: Minimum samples before using learned thresholds
         """
         self.config_path = Path(config_path)
+        self.db_path = Path(db_path)
+        self.min_samples = min_samples_for_learning
         self.violations_patterns = self._load_violation_patterns()
-        self.thresholds = self._load_thresholds()
+        
+        # Load thresholds (learned or fallback to config)
+        self.thresholds = self._load_adaptive_thresholds()
         
         logger.info(
             f"SubjectiveValidator initialized with {self._count_patterns()} violation patterns, "
-            f"thresholds: violations≤{self.thresholds['max_violations']}, commas≤{self.thresholds['max_commas']}"
+            f"thresholds: violations≤{self.thresholds['max_violations']}, "
+            f"commas≤{self.thresholds['max_commas']}, "
+            f"source: {self.thresholds.get('source', 'unknown')}"
         )
     
     def _load_violation_patterns(self) -> Dict[str, List[str]]:
@@ -75,8 +97,94 @@ class SubjectiveValidator:
             'intensity_adverbs': ['badly', 'extremely', 'highly', 'significantly', 'remarkably', 'notably', 'particularly', 'especially']
         }
     
-    def _load_thresholds(self) -> Dict[str, int]:
-        """Load validation thresholds from config.yaml"""
+    def _load_adaptive_thresholds(self) -> Dict[str, Any]:
+        """
+        Load thresholds adaptively from learning database.
+        
+        Strategy:
+        1. Query successful generations (high composite quality scores)
+        2. Analyze violation patterns in successful content
+        3. Set thresholds at 75th percentile of successful content
+        4. Fallback to config defaults if insufficient data
+        
+        Returns:
+            Dict with max_violations, max_commas, source
+        """
+        if not self.db_path.exists():
+            logger.info("Database not found, using config defaults")
+            return self._load_config_thresholds()
+        
+        try:
+            import sqlite3
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            # Get successful generations with high composite quality scores
+            # Use composite score if available, fallback to human_score
+            cursor.execute("""
+                SELECT 
+                    generated_text,
+                    COALESCE(composite_quality_score, human_score) as quality_score
+                FROM detection_results
+                WHERE success = 1
+                  AND COALESCE(composite_quality_score, human_score) >= 70.0
+                ORDER BY quality_score DESC
+                LIMIT 100
+            """)
+            
+            rows = cursor.fetchall()
+            conn.close()
+            
+            if len(rows) < self.min_samples:
+                logger.info(
+                    f"Insufficient samples for learning ({len(rows)}/{self.min_samples}), "
+                    f"using config defaults"
+                )
+                return self._load_config_thresholds()
+            
+            # Analyze violations in successful content
+            violation_counts = []
+            comma_counts = []
+            
+            for text, score in rows:
+                # Count violations in this successful content
+                words = re.findall(r'\b\w+\b', text.lower())
+                violations = 0
+                
+                for category, patterns in self.violations_patterns.items():
+                    for pattern in patterns:
+                        violations += words.count(pattern)
+                
+                violation_counts.append(violations)
+                comma_counts.append(text.count(','))
+            
+            # Set thresholds at 75th percentile of successful content
+            # This means "allow violation levels that 75% of successes had"
+            violation_counts.sort()
+            comma_counts.sort()
+            
+            percentile_75 = int(len(violation_counts) * 0.75)
+            learned_max_violations = violation_counts[percentile_75]
+            learned_max_commas = comma_counts[percentile_75]
+            
+            logger.info(
+                f"📚 Learned thresholds from {len(rows)} successful generations: "
+                f"violations≤{learned_max_violations}, commas≤{learned_max_commas}"
+            )
+            
+            return {
+                'max_violations': learned_max_violations,
+                'max_commas': learned_max_commas,
+                'source': f'learned from {len(rows)} samples',
+                'percentile': 75
+            }
+            
+        except Exception as e:
+            logger.warning(f"Failed to learn thresholds: {e}, using config defaults")
+            return self._load_config_thresholds()
+    
+    def _load_config_thresholds(self) -> Dict[str, Any]:
+        """Load fallback thresholds from config.yaml"""
         try:
             import yaml
             with open(self.config_path) as f:
@@ -89,11 +197,16 @@ class SubjectiveValidator:
             
             return {
                 'max_violations': thresholds.get('max_violations', 6),
-                'max_commas': thresholds.get('max_commas', 8)
+                'max_commas': thresholds.get('max_commas', 8),
+                'source': 'config.yaml (fallback)'
             }
         except Exception as e:
             logger.warning(f"Failed to load thresholds from config: {e}, using defaults")
             return self._get_default_thresholds()
+    
+    def _load_thresholds(self) -> Dict[str, int]:
+        """Deprecated: Use _load_adaptive_thresholds instead"""
+        return self._load_adaptive_thresholds()
     
     def _get_default_thresholds(self) -> Dict[str, int]:
         """Default thresholds if config unavailable"""
@@ -110,7 +223,7 @@ class SubjectiveValidator:
         """
         Validate content for subjective language violations.
         
-        Uses FIXED thresholds defined in config - operates independently of Winston.
+        Uses ADAPTIVE thresholds learned from successful generations in database.
         Winston score is logged for reference but does not affect validation.
         
         Args:
@@ -154,29 +267,31 @@ class SubjectiveValidator:
             'severity': self._calculate_severity(total_violations, comma_count)
         }
         
-        # Use FIXED thresholds from config - no dynamic adjustment
-        fixed_thresholds = {
+        # Use ADAPTIVE thresholds from learning
+        adaptive_thresholds = {
             'max_violations': self.thresholds['max_violations'],
             'max_commas': self.thresholds['max_commas'],
-            'mode': 'fixed (independent of Winston)'
+            'mode': 'adaptive (learned from successful content)',
+            'source': self.thresholds.get('source', 'unknown')
         }
         
-        # Validation passes if violations are below fixed threshold
+        # Validation passes if violations are below learned threshold
         is_valid = (
-            total_violations <= fixed_thresholds['max_violations'] and 
-            comma_count <= fixed_thresholds['max_commas']
+            total_violations <= adaptive_thresholds['max_violations'] and 
+            comma_count <= adaptive_thresholds['max_commas']
         )
         
         # Add threshold info to details (Winston score logged for reference only)
-        details['applied_thresholds'] = fixed_thresholds
+        details['applied_thresholds'] = adaptive_thresholds
         details['winston_score'] = winston_score  # Logged but not used
         
         if not is_valid:
             logger.warning(
                 f"Content failed subjective validation: {total_violations} violations "
-                f"(max: {fixed_thresholds['max_violations']}), {comma_count} commas "
-                f"(max: {fixed_thresholds['max_commas']}) "
-                f"[Winston: {winston_score if winston_score else 'N/A'}% - reference only]"
+                f"(max: {adaptive_thresholds['max_violations']}), {comma_count} commas "
+                f"(max: {adaptive_thresholds['max_commas']}) "
+                f"[Winston: {winston_score if winston_score else 'N/A'}% - reference only] "
+                f"[Thresholds: {adaptive_thresholds['source']}]"
             )
         
         return is_valid, details

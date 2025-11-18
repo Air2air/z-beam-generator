@@ -711,6 +711,30 @@ class DynamicGenerator:
                 self.logger.warning(f"Realism evaluation unavailable: {e}")
                 # Continue without realism - Winston still works
             
+            # Calculate composite quality score (Winston + Subjective + Readability)
+            composite_score = None
+            try:
+                from processing.evaluation.composite_scorer import CompositeScorer
+                scorer = CompositeScorer()  # Uses learned weights
+                
+                composite_result = scorer.calculate(
+                    winston_human_score=human_score,
+                    subjective_overall_score=realism_score,  # 0-10 scale
+                    readability_score=readability.get('score')  # 0-100 scale
+                )
+                composite_score = composite_result['composite_score']
+                
+                self.logger.info(
+                    f"📊 Composite Quality: {composite_score:.1f}/100 "
+                    f"(Winston: {composite_result['winston_contribution']:.1f}, "
+                    f"Subjective: {composite_result.get('subjective_contribution', 0):.1f}, "
+                    f"Readability: {composite_result.get('readability_contribution', 0):.1f})"
+                )
+                self.logger.info(f"   Weights: {composite_result['weights_source']}")
+            except Exception as e:
+                self.logger.warning(f"Composite scoring failed: {e}, using Winston only")
+                composite_score = human_score  # Fallback to Winston score
+            
             # Log to feedback database for learning
             try:
                 failure_analysis = self.analyzer.analyze_failure(detection)
@@ -722,7 +746,8 @@ class DynamicGenerator:
                     temperature=params['temperature'],
                     attempt=attempt,
                     success=(ai_score <= self.ai_threshold and readability['is_readable'] and subjective_valid),
-                    failure_analysis=failure_analysis
+                    failure_analysis=failure_analysis,
+                    composite_quality_score=composite_score  # NEW: Store composite score
                 )
                 self.logger.info(f"📊 Logged result to database (ID: {detection_id})")
                 

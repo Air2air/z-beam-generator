@@ -104,8 +104,8 @@ class SweetSpotAnalyzer:
         material or component type. Parameters that work well are universal.
         
         Strategy:
-        1. Get ALL successful generations (human_score >= threshold)
-        2. Take top N% by human_score
+        1. Get ALL successful generations (composite_score or human_score >= threshold)
+        2. Take top N% by quality score (composite if available, human_score fallback)
         3. Calculate parameter ranges from these top performers
         4. Return sweet spot ranges
         
@@ -118,18 +118,21 @@ class SweetSpotAnalyzer:
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         
-        # Build query - NO material/component filtering (generic learning)
+        # Build query - Use composite_quality_score when available, fallback to human_score
+        # NO material/component filtering (generic learning)
         query = """
             SELECT 
                 gp.*,
                 dr.human_score,
+                dr.composite_quality_score,
+                COALESCE(dr.composite_quality_score, dr.human_score) as quality_score,
                 dr.material,
                 dr.component_type
             FROM generation_parameters gp
             JOIN detection_results dr ON gp.detection_result_id = dr.id
-            WHERE dr.human_score >= ?
+            WHERE COALESCE(dr.composite_quality_score, dr.human_score) >= ?
               AND dr.success = 1
-            ORDER BY dr.human_score DESC
+            ORDER BY quality_score DESC
         """
         params = [self.success_threshold]
         
@@ -143,6 +146,13 @@ class SweetSpotAnalyzer:
                 f"(need {self.min_samples})"
             )
             return {}
+        
+        # Log quality score usage
+        composite_count = sum(1 for row in rows if row['composite_quality_score'] is not None)
+        logger.info(
+            f"[SWEET SPOT] Using quality scores: {composite_count}/{len(rows)} with composite, "
+            f"{len(rows)-composite_count} fallback to Winston only"
+        )
         
         # Take top N%
         top_n = max(self.min_samples, int(len(rows) * (top_n_percent / 100)))
