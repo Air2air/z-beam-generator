@@ -13,6 +13,8 @@ Updated: November 15, 2025 (renamed from claude_evaluator to subjective_evaluato
 """
 
 import time
+from pathlib import Path
+import yaml
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
@@ -101,6 +103,11 @@ class SubjectiveEvaluator:
         self.quality_threshold = quality_threshold
         self.verbose = verbose
         self.evaluation_temperature = evaluation_temperature
+        
+        # Template and pattern file paths
+        self.template_file = Path('prompts/evaluation/subjective_quality.txt')
+        self.patterns_file = Path('prompts/evaluation/learned_patterns.yaml')
+        self._pattern_learner = None
     
     @validate_scores
     def evaluate(
@@ -154,54 +161,78 @@ class SubjectiveEvaluator:
         component_type: str,
         context: Optional[Dict]
     ) -> str:
-        """Build evaluation prompt for Claude"""
+        """Build evaluation prompt using template and learned patterns"""
         
-        prompt = f"""You are an expert content evaluator specializing in technical writing quality assessment.
-
-Evaluate this {component_type} for {material_name} laser cleaning across these dimensions:
-
-1. **Clarity** (0-10): Is the content clear, concise, and easy to understand?
-2. **Professionalism** (0-10): Does it maintain appropriate professional tone?
-3. **Technical Accuracy** (0-10): Are technical details correct and appropriate?
-4. **Human-likeness** (0-10): Does it sound naturally human-written (not AI-generated)?
-5. **Engagement** (0-10): Is it interesting and engaging to read?
-6. **Jargon-free** (0-10): Does it avoid unnecessary jargon and use plain language?
-
-CONTENT TO EVALUATE:
-{content}
-
-Provide your evaluation in this format:
-
-**Narrative Assessment** (2-3 sentences with CRITICAL STANCE: Assume this is AI-generated unless proven otherwise. Scrutinize for contrived informality, forced casualness, unnatural enthusiasm, or overly-constructed "humanness". Real human writing has subtle imperfections, inconsistent pacing, and genuine voice - not theatrical authenticity. Flag ANY signs of artificial construction, formulaic patterns, or trying-too-hard informality):
-
-**Realism Analysis** (Identify specific issues - select ALL that apply):
-- AI Tendencies Detected: [comma-separated list: formulaic_phrasing, unnatural_transitions, excessive_enthusiasm, rigid_structure, overly_polished, mechanical_tone, repetitive_patterns, forced_transitions, artificial_symmetry, generic_language, theatrical_casualness, sentence_fragments_for_drama, direct_reader_address, exclamation_markers, vague_promises, contrived_informality, none]
-- Theatrical/Casual Penalties: [List ANY: "Wow", "Amazing", exclamations, "you see/notice", fragments for impact, "changes everything", "quick [noun]", "turns out", em-dashes for drama]
-- Realism Score (0-10): X (10=perfectly human, 0=obviously AI) - DEDUCT 2 points per theatrical element
-- Voice Authenticity (0-10): X (natural conversational flow) - DEDUCT 3 points if any casual/theatrical markers
-- Tonal Consistency (0-10): X (genuine variations without jarring shifts)
-
-- Overall Score (0-10):
-- Dimension Scores:
-  - Clarity: X/10 - feedback
-  - Professionalism: X/10 - feedback
-  - Technical Accuracy: X/10 - feedback
-  - Human-likeness: X/10 - feedback
-  - Engagement: X/10 - feedback
-  - Jargon-free: X/10 - feedback
-- Strengths: [list 2-3 key strengths]
-- Weaknesses: [list 2-3 areas for improvement]
-- Recommendations: [2-3 specific actionable suggestions]
-"""
+        # Load template and patterns
+        template = self._load_template()
+        patterns = self._load_learned_patterns()
         
+        # Format theatrical phrases for prompt
+        high_penalty_phrases = ', '.join(patterns['theatrical_phrases']['high_penalty'][:10])
+        medium_penalty_phrases = ', '.join(patterns['theatrical_phrases'].get('medium_penalty', [])[:10])
+        theatrical_phrases_text = f"HIGH PENALTY: {high_penalty_phrases}\nMEDIUM PENALTY: {medium_penalty_phrases}"
+        
+        # Format AI tendencies for prompt
+        ai_tendencies_list = list(patterns['ai_tendencies']['common'].keys())
+        ai_tendencies_text = ', '.join(ai_tendencies_list)
+        
+        # Get realism threshold
+        realism_threshold = patterns['scoring_adjustments'].get('realism_threshold', 7.0)
+        
+        # Format template with learned patterns
+        prompt = template.format(
+            component_type=component_type,
+            material_name=material_name,
+            content=content,
+            theatrical_phrases=theatrical_phrases_text,
+            ai_tendencies=ai_tendencies_text,
+            realism_threshold=realism_threshold
+        )
+        
+        # Add context if provided
         if context:
-            prompt += f"\n\nADDITIONAL CONTEXT:\n"
+            prompt += "\n\nADDITIONAL CONTEXT:\n"
             if 'author' in context:
                 prompt += f"- Author: {context['author']}\n"
             if 'properties' in context:
                 prompt += f"- Key Properties: {', '.join(context['properties'][:5])}\n"
         
         return prompt
+    
+    def _load_template(self) -> str:
+        """Load evaluation prompt template from file"""
+        try:
+            if not self.template_file.exists():
+                raise FileNotFoundError(f"Template file not found: {self.template_file}")
+            return self.template_file.read_text(encoding='utf-8')
+        except Exception as e:
+            raise Exception(f"Failed to load evaluation template: {e}") from e
+    
+    def _load_learned_patterns(self) -> Dict:
+        """Load learned patterns from YAML file"""
+        try:
+            if not self.patterns_file.exists():
+                # Create default patterns file if missing
+                from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
+                learner = SubjectivePatternLearner(self.patterns_file)
+                # Will create default file
+            
+            with open(self.patterns_file, 'r', encoding='utf-8') as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            # Fallback to minimal patterns if file can't be loaded
+            return {
+                'theatrical_phrases': {'high_penalty': ['zaps away', 'And yeah', 'Wow']},
+                'ai_tendencies': {'common': {'formulaic_phrasing': 0}},
+                'scoring_adjustments': {'realism_threshold': 7.0}
+            }
+    
+    def _get_pattern_learner(self):
+        """Lazy load pattern learner"""
+        if self._pattern_learner is None:
+            from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
+            self._pattern_learner = SubjectivePatternLearner(self.patterns_file)
+        return self._pattern_learner
     
     def _get_subjective_evaluation(
         self,

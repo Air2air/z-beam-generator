@@ -755,6 +755,37 @@ class DynamicGenerator:
                         self.logger.info(f"   Tonal Consistency: {tonal_consistency:.1f}/10")
                     if ai_tendencies:
                         self.logger.info(f"📊 AI Tendencies: {ai_tendencies}")
+                    
+                    # Update learned patterns from evaluation result
+                    # This happens IMMEDIATELY after evaluation to capture learnings
+                    try:
+                        from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
+                        from pathlib import Path
+                        
+                        learner = SubjectivePatternLearner(
+                            patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
+                        )
+                        
+                        # Update patterns based on this evaluation
+                        learner.update_from_evaluation(
+                            evaluation_result={
+                                'overall_score': realism_score,
+                                'dimension_scores': {
+                                    'voice_authenticity': voice_authenticity,
+                                    'tonal_consistency': tonal_consistency
+                                },
+                                'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
+                                'violations': []  # Extract from realism_result if available
+                            },
+                            content=text,
+                            accepted=False,  # Will update to True later if accepted
+                            component_type=component_type,
+                            material_name=material_name
+                        )
+                        
+                        self.logger.info("📚 [LEARNING] Updated subjective evaluation patterns")
+                    except Exception as learn_error:
+                        self.logger.warning(f"Failed to update learned patterns: {learn_error}")
                         
             except Exception as e:
                 self.logger.warning(f"Realism evaluation unavailable: {e}")
@@ -937,6 +968,37 @@ class DynamicGenerator:
                         self.logger.info(f"📚 [LEARNING] Realism data logged for successful iteration {attempt}")
                     except Exception as learn_error:
                         self.logger.warning(f"Failed to log realism learning: {learn_error}")
+                
+                # Update learned patterns to mark as accepted (success patterns)
+                if realism_score is not None:
+                    try:
+                        from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
+                        from pathlib import Path
+                        
+                        learner = SubjectivePatternLearner(
+                            patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
+                        )
+                        
+                        # Update patterns with successful acceptance
+                        learner.update_from_evaluation(
+                            evaluation_result={
+                                'overall_score': realism_score,
+                                'dimension_scores': {
+                                    'voice_authenticity': voice_authenticity,
+                                    'tonal_consistency': tonal_consistency
+                                },
+                                'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
+                                'violations': []
+                            },
+                            content=text,
+                            accepted=True,  # Mark as accepted for success pattern learning
+                            component_type=component_type,
+                            material_name=material_name
+                        )
+                        
+                        self.logger.info("📚 [LEARNING] Updated patterns with successful acceptance")
+                    except Exception as learn_error:
+                        self.logger.warning(f"Failed to update learned patterns on success: {learn_error}")
                 
                 return {
                     'success': True,

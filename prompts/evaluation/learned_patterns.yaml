@@ -1,0 +1,68 @@
+# Learned Subjective Evaluation Patterns
+# Auto-updated by learning system based on rejection analysis
+# DO NOT EDIT MANUALLY - System maintains this file
+
+version: "1.0.0"
+last_updated: "2025-11-18T00:00:00Z"
+total_evaluations: 0
+
+# Theatrical phrases that triggered rejection (Realism < 7.0)
+theatrical_phrases:
+  high_penalty:
+    - "zaps away"
+    - "And yeah"
+    - "changes everything"
+    - "Wow"
+    - "quick zap"
+    - "pretty effective"
+    - "turns out"
+    - "you see"
+    - "notice how"
+    - "Amazing"
+    - "revolutionary"
+    - "game-changing"
+  
+  medium_penalty:
+    - "really"
+    - "very"
+    - "quite"
+    - "actually"
+    - "literally"
+
+# AI tendencies frequently detected (last 100 evaluations)
+ai_tendencies:
+  common:
+    formulaic_phrasing: 0
+    unnatural_transitions: 0
+    excessive_enthusiasm: 0
+    rigid_structure: 0
+    theatrical_casualness: 0
+    generic_language: 0
+  
+  emerging: []
+
+# Learned scoring adjustments
+scoring_adjustments:
+  theatrical_element_penalty: -2.0  # Per element
+  casual_marker_penalty: -3.0      # For voice authenticity
+  realism_threshold: 7.0            # Minimum acceptance
+  voice_authenticity_floor: 4.0     # After penalties
+
+# Success patterns from accepted content (Realism >= 7.0)
+success_patterns:
+  sample_count: 0
+  average_realism_score: 7.0
+  average_voice_authenticity: 7.0
+  average_tonal_consistency: 7.0
+  
+  professional_verbs:
+    - "removes"
+    - "restores"
+    - "improves"
+    - "provides"
+    - "eliminates"
+    - "preserves"
+  
+  technical_precision: true
+  neutral_tone: true
+  objective_documentation: true

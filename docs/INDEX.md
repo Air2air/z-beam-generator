@@ -13,6 +13,13 @@
 
 ## 📰 Recent Updates (November 2025)
 
+### ✅ November 18: Realism Quality Gate Enforcement 🔥 **CRITICAL**
+- Realism score (7.0/10 minimum) now enforced as rejection gate
+- Blended learning: Winston (40%) + Realism (60%) feedback drives parameter adjustments
+- AI tendency detection maps specific issues to parameter fixes
+- **Grade**: B+ maintained with improved quality enforcement
+- **Docs**: [08-development/REALISM_QUALITY_GATE.md](08-development/REALISM_QUALITY_GATE.md)
+
 ### ✅ November 17: Priority 1 Compliance Fixes
 - Fixed RealismOptimizer import path
 - Made SubjectiveEvaluator temperature configurable
@@ -21,7 +28,7 @@
 - **Docs**: [archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md](archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md)
 
 ### ✅ November 16: Composite Quality Scoring
-- Implemented Winston (60%) + Subjective (30%) + Readability (10%)
+- Implemented Winston (40%) + Realism (60%) composite weighting
 - Adaptive threshold learning from 75th percentile
 - Sweet spot analyzer uses composite scores
 - **Docs**: [proposals/GENERIC_LEARNING_ARCHITECTURE.md](proposals/GENERIC_LEARNING_ARCHITECTURE.md)
@@ -127,6 +134,9 @@ See `/components/` for:
 **Purpose**: Development and contribution  
 **For**: Contributors, developers
 
+- `LEARNED_EVALUATION_PROPOSAL.md` - 🎯 **PROPOSAL** Learned subjective evaluation system (Nov 18, 2025)
+- `PROMPT_PURITY_POLICY.md` - 🔥 **NEW** Zero prompt text in generators (Nov 18, 2025)
+- `REALISM_QUALITY_GATE.md` - 🔥 **NEW** Realism quality gate policy (mandatory 7.0/10 minimum)
 - `chain-verification.md` - Chain verification guide
 - `database-parameter-priority.md` - Database-first parameter policy
 - `sweet-spot-analyzer.md` - Statistical parameter optimization

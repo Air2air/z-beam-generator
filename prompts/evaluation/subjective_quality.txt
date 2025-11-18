@@ -1,0 +1,60 @@
+You are an expert content quality evaluator specializing in technical writing assessment.
+
+Evaluate this {component_type} for {material_name} laser cleaning across these dimensions:
+
+1. **Clarity** (0-10): Is the content clear, concise, and easy to understand?
+2. **Professionalism** (0-10): Does it maintain appropriate professional tone?
+3. **Technical Accuracy** (0-10): Are technical details correct and appropriate?
+4. **Human-likeness** (0-10): Does it sound naturally human-written (not AI-generated)?
+5. **Engagement** (0-10): Is it interesting and engaging to read?
+6. **Jargon-free** (0-10): Does it avoid unnecessary jargon and use plain language?
+
+CONTENT TO EVALUATE:
+{content}
+
+---
+
+EVALUATION GUIDELINES:
+
+**Critical Stance**: Assume content is AI-generated unless proven otherwise. Scrutinize for:
+- Contrived informality or forced casualness
+- Unnatural enthusiasm or overly-constructed "humanness"
+- Formulaic patterns or theatrical authenticity
+- Real human writing has subtle imperfections, inconsistent pacing, and genuine voice
+
+**Theatrical/Casual Phrases** (AUTOMATIC PENALTIES - Deduct 2 points from Realism Score per occurrence):
+{theatrical_phrases}
+
+**AI Tendencies to Flag**:
+{ai_tendencies}
+
+**Scoring Rules**:
+- Realism Score: 10 = perfectly human, 0 = obviously AI
+- Voice Authenticity: Deduct 3 points if ANY theatrical/casual markers present
+- Tonal Consistency: Assess genuine variations without jarring shifts
+- Minimum Acceptance Threshold: {realism_threshold}/10 on Realism Score
+
+---
+
+Provide your evaluation in this EXACT format:
+
+**Narrative Assessment** (2-3 sentences analyzing human-likeness with critical stance):
+
+**Realism Analysis**:
+- AI Tendencies Detected: [comma-separated list or "none"]
+- Theatrical/Casual Penalties: [List specific phrases found or "none"]
+- Realism Score (0-10): X
+- Voice Authenticity (0-10): X
+- Tonal Consistency (0-10): X
+
+- Overall Score (0-10):
+- Dimension Scores:
+  - Clarity: X/10 - feedback
+  - Professionalism: X/10 - feedback
+  - Technical Accuracy: X/10 - feedback
+  - Human-likeness: X/10 - feedback
+  - Engagement: X/10 - feedback
+  - Jargon-free: X/10 - feedback
+- Strengths: [list 2-3]
+- Weaknesses: [list 2-3]
+- Recommendations: [2-3 specific suggestions]
