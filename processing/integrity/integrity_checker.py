@@ -1849,37 +1849,41 @@ class IntegrityChecker:
                     duration_ms=(time.time() - start) * 1000
                 ))
         
-        # Check 11: Dynamic threshold calculation is functional
+        # Check 11: Adaptive threshold learning is functional
         start = time.time()
         validator_path = Path('processing/subjective/validator.py')
         if validator_path.exists():
             validator_content = validator_path.read_text()
             
-            # Check for dynamic threshold calculation logic
-            has_calculation = '_calculate_dynamic_thresholds' in validator_content
-            has_multipliers = 'multiplier' in validator_content and ('1.5' in validator_content or '0.75' in validator_content)
-            has_winston_check = 'winston_score >= 90' in validator_content or 'winston_score >= 70' in validator_content
+            # Check for adaptive threshold learning logic (no hardcoded values)
+            has_adaptive_method = '_load_adaptive_thresholds' in validator_content
+            has_database_learning = 'composite_quality_score' in validator_content and 'percentile' in validator_content
+            has_config_fallback = '_load_config_thresholds' in validator_content
+            no_hardcoded_multipliers = '1.5' not in validator_content and '0.75' not in validator_content
             
-            if not has_calculation or not has_multipliers or not has_winston_check:
+            if not has_adaptive_method or not has_database_learning or not has_config_fallback:
                 results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Dynamic Threshold Logic",
+                    check_name="SubjectiveValidator: Adaptive Threshold Learning",
                     status=IntegrityStatus.FAIL,
-                    message="❌ CRITICAL: Dynamic threshold calculation incomplete or missing!",
+                    message="❌ CRITICAL: Adaptive threshold learning incomplete or missing!",
                     details={
-                        'has_calculation_method': has_calculation,
-                        'has_multipliers': has_multipliers,
-                        'has_winston_checks': has_winston_check
+                        'has_adaptive_method': has_adaptive_method,
+                        'has_database_learning': has_database_learning,
+                        'has_config_fallback': has_config_fallback,
+                        'no_hardcoded_values': no_hardcoded_multipliers
                     },
                     duration_ms=(time.time() - start) * 1000
                 ))
             else:
                 results.append(IntegrityResult(
-                    check_name="SubjectiveValidator: Dynamic Threshold Logic",
+                    check_name="SubjectiveValidator: Adaptive Threshold Learning",
                     status=IntegrityStatus.PASS,
-                    message="✅ Dynamic threshold calculation fully implemented",
+                    message="✅ Adaptive threshold learning fully implemented",
                     details={
-                        'calculation_method': True,
-                        'winston_based_multipliers': True
+                        'adaptive_method': True,
+                        'database_learning': True,
+                        'config_fallback': True,
+                        'no_hardcoded_values': no_hardcoded_multipliers
                     },
                     duration_ms=(time.time() - start) * 1000
                 ))
