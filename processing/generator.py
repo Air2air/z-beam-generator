@@ -1203,17 +1203,13 @@ class DynamicGenerator:
         Returns:
             Extracted content in appropriate format
         """
-        if component_type == 'caption':
-            return self._extract_caption(text)
-        elif component_type == 'faq':
-            return self._extract_faq(text)
-        elif component_type == 'subtitle':
-            return text.strip()
-        else:
-            return text.strip()
+        # Delegate all extraction to domain adapter
+        # This keeps the generator fully generic and reusable
+        return self.adapter.extract_content(text, component_type)
     
-    def _extract_caption(self, text: str) -> Dict[str, str]:
+    def _extract_caption_DEPRECATED(self, text: str) -> Dict[str, str]:
         """
+        DEPRECATED: Moved to materials_adapter._extract_before_after()
         Extract caption from generated text.
         
         The prompt asks for BEFORE and AFTER descriptions. We need to parse
@@ -1314,8 +1310,8 @@ class DynamicGenerator:
             'after': ''
         }
     
-    def _extract_faq(self, text: str) -> list:
-        """Extract FAQ items from JSON"""
+    def _extract_faq_DEPRECATED(self, text: str) -> list:
+        """DEPRECATED: Moved to materials_adapter._extract_json_list()"""
         import json
         
         faq_pattern = r'\{\s*"faq"\s*:\s*\[(.*?)\]\s*\}'

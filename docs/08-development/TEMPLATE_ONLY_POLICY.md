@@ -1,0 +1,452 @@
+# Template-Only Policy (Component Reusability)
+**Effective Date**: November 18, 2025  
+**Status**: ACTIVE REQUIREMENT  
+**Related Policies**: Component Discovery Policy, Content Instruction Policy, Prompt Purity Policy
+
+---
+
+## Policy Statement
+
+**ALL content instructions and formatting rules MUST exist ONLY in prompt template files (`prompts/*.txt`). The `/processing` system MUST be completely reusable across all domains with ZERO component-specific code.**
+
+---
+
+## Core Principles
+
+### 1. Template-Driven Content
+- **ALL** content instructions → `prompts/components/{component}.txt`
+- **ALL** format requirements → `prompts/components/{component}.txt`
+- **ALL** style guidelines → `prompts/components/{component}.txt`
+- **ALL** structural rules → `prompts/components/{component}.txt`
+
+### 2. Generic Processing Code
+- **NO** `if component_type == 'caption':` checks
+- **NO** component-specific methods (`_build_caption_prompt()`)
+- **NO** hardcoded component lists
+- **NO** component-specific extraction logic in generators
+- **USE** registry-based discovery: `ComponentRegistry.get_spec(component_type)`
+- **USE** strategy pattern: `adapter.extract_content(text, component_type)`
+
+### 3. Configuration-Based Extraction
+- Extraction strategies defined in `config.yaml`
+- Strategies: `raw`, `before_after`, `json_list`
+- Domain adapters implement extraction strategies
+- Generators delegate to adapters (no extraction code)
+
+---
+
+## What Goes Where
+
+### ✅ In Prompt Templates (`prompts/components/*.txt`)
+- Content focus areas (what to emphasize)
+- Format requirements (structure, length, punctuation)
+- Style guidelines (voice, tone, formality)
+- Forbidden phrases or patterns
+- Required terminology
+- Structural variations
+- Example outputs
+
+**Example** (`prompts/components/caption.txt`):
+```
+# Caption Generation Template
+
+## Voice & Tone
+- Professional technical documentation
+- Objective, factual descriptions
+- NO theatrical language
+- NO casual phrases ("Wow", "quick zap")
+
+## Structure
+- Write before/after descriptions
+- Format: BEFORE_TEXT: ... AFTER_TEXT: ...
+- Technical verbs only (removes, restores, improves)
+- Include 1-2 measurements when relevant
+
+## Forbidden Phrases
+- "changes everything"
+- "game-changer"
+- "quick zap"
+- "perfectly clean"
+
+## Generation Task
+{material_context}
+{generation_instructions}
+```
+
+### ✅ In Config Files (`processing/config.yaml`)
+- Component word counts (default, min, max)
+- Extraction strategies (raw, before_after, json_list)
+- End punctuation settings
+- Length variation ranges
+
+**Example**:
+```yaml
+component_lengths:
+  caption:
+    default: 50
+    min_words_before: 20
+    max_words_before: 120
+    extraction_strategy: before_after
+  subtitle:
+    default: 30
+    extraction_strategy: raw
+```
+
+### ✅ In Code (`processing/*.py`)
+- Generic template loading
+- Parameter application (temperature, penalties)
+- Strategy-based extraction dispatch
+- Registry pattern for component discovery
+- Domain-specific data enrichment (material properties)
+
+**Example** (Generic):
+```python
+def generate(self, identifier: str, component_type: str):
+    # Load template (generic)
+    template = self._load_prompt_template(component_type)
+    
+    # Apply parameters (generic)
+    params = self.config.get_parameters(component_type)
+    
+    # Generate (generic)
+    text = self.api_client.generate(template, params)
+    
+    # Extract (delegated to adapter)
+    return self.adapter.extract_content(text, component_type)
+```
+
+### ❌ FORBIDDEN in Code
+- `if component_type == 'caption':`
+- `def _build_caption_prompt():`
+- `def _extract_caption():`
+- Inline content instructions: `"Write ONLY technical descriptions..."`
+- Component-specific enrichment hints
+- Hardcoded component lists: `['caption', 'subtitle', 'faq']`
+
+---
+
+## Implementation Requirements
+
+### For Generators (`processing/generator.py`, etc.)
+
+**✅ REQUIRED**:
+```python
+def _extract_content(self, text: str, component_type: str):
+    """Delegate extraction to domain adapter."""
+    return self.adapter.extract_content(text, component_type)
+```
+
+**❌ FORBIDDEN**:
+```python
+def _extract_content(self, text: str, component_type: str):
+    if component_type == 'caption':
+        return self._extract_caption(text)  # ❌ HARDCODED DISPATCH
+    elif component_type == 'faq':
+        return self._extract_faq(text)      # ❌ HARDCODED DISPATCH
+```
+
+### For Prompt Builders (`processing/generation/prompt_builder.py`)
+
+**✅ REQUIRED**:
+```python
+def build_prompt(self, component_type: str, **kwargs):
+    """Generic template loading."""
+    template = self._load_prompt_template(component_type)
+    return template.format(**kwargs)
+```
+
+**❌ FORBIDDEN**:
+```python
+def build_prompt(self, component_type: str, **kwargs):
+    if component_type == 'caption':
+        return self._build_caption_prompt(**kwargs)  # ❌ COMPONENT-SPECIFIC METHOD
+```
+
+### For Domain Adapters (`processing/adapters/*.py`)
+
+**✅ REQUIRED**:
+```python
+def extract_content(self, text: str, component_type: str):
+    """Strategy-based extraction."""
+    registry = ComponentRegistry()
+    spec = registry.get_spec(component_type)
+    strategy = spec.extraction_strategy
+    
+    if strategy == 'raw':
+        return text.strip()
+    elif strategy == 'before_after':
+        return self._extract_before_after(text)  # Generic method name
+    elif strategy == 'json_list':
+        return self._extract_json_list(text)     # Generic method name
+```
+
+**❌ FORBIDDEN**:
+```python
+def extract_content(self, text: str, component_type: str):
+    if component_type == 'caption':
+        return self._extract_caption(text)  # ❌ HARDCODED DISPATCH
+```
+
+---
+
+## Adding New Components
+
+### Before (NON-COMPLIANT - Required Code Changes)
+```bash
+# To add "description" component
+1. ❌ Edit generator.py - add elif component_type == 'description'
+2. ❌ Edit materials_adapter.py - add _extract_description() method
+3. ❌ Edit prompt_builder.py - add _build_description_prompt() method
+4. ❌ Add content instructions to code
+5. ✅ Create prompts/components/description.txt
+Result: 4 code files + 1 template = NOT REUSABLE
+```
+
+### After (COMPLIANT - Zero Code Changes)
+```bash
+# To add "description" component
+1. ✅ Create prompts/components/description.txt (all content instructions)
+2. ✅ Add to config.yaml:
+   component_lengths:
+     description:
+       default: 200
+       extraction_strategy: raw
+Result: 1 config file + 1 template = FULLY REUSABLE
+```
+
+---
+
+## Validation
+
+### Automated Checks (Integrity Checker)
+```bash
+python3 run.py --integrity-check
+```
+
+**Checks**:
+- ✅ No `if component_type ==` in processing/*.py
+- ✅ No component-specific methods in generators
+- ✅ No hardcoded component lists
+- ✅ All content instructions in prompts/*.txt
+- ✅ All extraction strategies in config.yaml
+
+### Manual Review Checklist
+- [ ] All component types discoverable from `prompts/components/*.txt`
+- [ ] Zero hardcoded component names in `/processing`
+- [ ] All content instructions in template files
+- [ ] All extraction strategies in config.yaml
+- [ ] Generic method names (`_extract_before_after`, not `_extract_caption`)
+- [ ] Registry pattern used for component discovery
+- [ ] Strategy pattern used for extraction
+
+---
+
+## Benefits
+
+### 1. Full Reusability
+- `/processing` works for **ANY** domain:
+  - ✅ Materials (caption, subtitle, faq, description)
+  - ✅ Contaminants (subtitle, troubleshooter)
+  - ✅ Applications (description, use_case)
+  - ✅ Regions (overview, regulations)
+- Add new domain = zero /processing changes
+
+### 2. Easy Extension
+- New component = create template + config entry
+- No code changes required
+- No testing of /processing code
+- Instant availability across all domains
+
+### 3. Maintainability
+- Content changes = edit templates only
+- No code deployment required
+- Clear separation of concerns
+- Single source of truth for content rules
+
+### 4. Policy Compliance
+- ✅ Component Discovery Policy
+- ✅ Content Instruction Policy
+- ✅ Prompt Purity Policy
+- ✅ DRY Principle
+
+---
+
+## Migration Guide
+
+### Phase 1: Remove Extraction from Generators
+**Before**:
+```python
+def _extract_content(self, text, component_type):
+    if component_type == 'caption':
+        return self._extract_caption(text)
+```
+
+**After**:
+```python
+def _extract_content(self, text, component_type):
+    return self.adapter.extract_content(text, component_type)
+```
+
+### Phase 2: Make Adapter Extraction Generic
+**Before**:
+```python
+def extract_content(self, text, component_type):
+    if component_type == 'caption':
+        return self._extract_caption(text)
+```
+
+**After**:
+```python
+def extract_content(self, text, component_type):
+    registry = ComponentRegistry()
+    spec = registry.get_spec(component_type)
+    strategy = spec.extraction_strategy
+    
+    if strategy == 'before_after':
+        return self._extract_before_after(text)
+```
+
+### Phase 3: Remove Component-Specific Prompt Methods
+**Before**:
+```python
+def _build_caption_prompt(self, ...):
+    return f"""You are {author}, describing...
+    CAPTION-SPECIFIC INSTRUCTIONS...
+    """
+```
+
+**After**:
+```python
+# REMOVED - Use generic template loading
+# Content instructions now in prompts/components/caption.txt
+```
+
+### Phase 4: Move Content Instructions to Templates
+**Before** (in code):
+```python
+if spec.name == "subtitle":
+    enrichment_hints = """
+- Lead with benefit, NOT raw specs
+- Vary structure
+"""
+```
+
+**After** (in template):
+```
+# prompts/components/subtitle.txt
+## Structure Guidelines
+- Lead with benefit, NOT raw specs
+- Vary structure: questions, comparisons, facts
+```
+
+---
+
+## Enforcement
+
+### Pre-Commit Hooks
+- Scan for `if component_type ==` in processing/*.py
+- Scan for component-specific method names
+- Verify no content instructions in code
+
+### Code Review Requirements
+- All new components must follow template-only pattern
+- No component-specific code in /processing
+- All content rules in template files
+
+### Documentation
+- Update this policy when patterns change
+- Document new extraction strategies
+- Maintain examples of compliant code
+
+---
+
+## Examples
+
+### ✅ COMPLIANT: Adding "troubleshooter" Component
+
+**Step 1**: Create template with ALL content instructions
+```bash
+# File: prompts/components/troubleshooter.txt
+# Troubleshooter Generation Template
+
+## Voice & Tone
+- Conversational problem-solving language
+- Start with problem impact
+- Mix preventive and reactive solutions
+
+## Structure
+- Problem identification (what's wrong)
+- Root cause explanation (why it happens)
+- Solution steps (how to fix)
+- Prevention tips (avoid in future)
+
+## Required Format
+- 150-200 words
+- Use bullet points for steps
+- Include diagnostic indicators
+
+## Generation Task
+{material_context}
+Write troubleshooting guide...
+```
+
+**Step 2**: Add config entry
+```yaml
+# File: processing/config.yaml
+component_lengths:
+  troubleshooter:
+    default: 150
+    extraction_strategy: raw
+```
+
+**Step 3**: Generate!
+```bash
+python3 run.py --material "Aluminum" --component troubleshooter
+```
+
+**Result**: Works immediately, zero code changes! ✅
+
+---
+
+### ❌ NON-COMPLIANT: Old Pattern
+
+**Problem**: Component-specific code in generator
+```python
+# ❌ WRONG - Hardcoded component dispatch
+def _extract_content(self, text, component_type):
+    if component_type == 'caption':
+        return self._extract_caption(text)
+    elif component_type == 'faq':
+        return self._extract_faq(text)
+```
+
+**Problem**: Content instructions in code
+```python
+# ❌ WRONG - Content rules in code
+if spec.name == "caption":
+    instructions = """
+    - Write ONLY technical descriptions
+    - NO theatrical language
+    """
+```
+
+**Problem**: Component-specific prompt methods
+```python
+# ❌ WRONG - Component-specific method
+def _build_caption_prompt(self, ...):
+    return f"""Caption-specific prompt..."""
+```
+
+---
+
+## Conclusion
+
+**The Template-Only Policy ensures:**
+- ✅ `/processing` is **fully reusable** across all domains
+- ✅ New components require **ZERO code changes**
+- ✅ Content instructions exist **ONLY in templates**
+- ✅ Complete separation of concerns
+- ✅ Easy maintenance and extension
+- ✅ Full policy compliance
+
+**To add a new component**: Create template + config entry = Done! 🎉

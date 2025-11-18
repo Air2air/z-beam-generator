@@ -431,27 +431,9 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
 - INCLUDE qualitative descriptions alongside quantitative data
 - PREFER concrete verbs: "use", "need", "work", "choose", "apply" over abstract ones"""
         
-        # Add component-specific enrichment hints
+        # Component-specific enrichment hints are in prompt templates
+        # NO content instructions in code - see Content Instruction Policy
         enrichment_hints = ""
-        if spec.name == "subtitle":
-            enrichment_hints = """
-SUBTITLE-SPECIFIC:
-- Lead with benefit or application, NOT raw specs
-- Vary structure: try questions, comparisons, or surprising facts
-- Balance technical precision with readability
-- Examples of good variation:
-  * "Why does aerospace choose aluminum? That 2.7 g/cm³ density..."
-  * "Aluminum bridges lightweight design with thermal performance..."
-  * "From aircraft to packaging, aluminum's versatility stems from..."
-- Avoid starting every subtitle with the material name"""
-        elif spec.name == "troubleshooter":
-            enrichment_hints = """
-TROUBLESHOOTER-SPECIFIC:
-- Start with the problem's impact, not just the technical cause
-- Use conversational problem-solving language
-- Vary diagnostic approaches (visual inspection, measurement, testing)
-- Include "why this happens" explanations, not just "what to do"
-- Mix preventive and reactive solutions"""
         
         # Add variation seed to defeat caching (if provided)
         variation_note = ""
@@ -507,32 +489,10 @@ REQUIREMENTS:
 
 Generate 3 different variations and pick the most natural-sounding one:"""
     
-    @staticmethod
-    def _build_caption_prompt(
-        material: str,
-        author: str,
-        country: str,
-        esl_traits: str,
-        length: int,
-        facts: str
-    ) -> str:
-        """Build microscopy caption prompt"""
-        return f"""You are {author} from {country}, describing microscopy of {material} laser cleaning.
-
-MATERIAL DATA:
-{facts}
-
-VOICE TRAITS:
-- {esl_traits}
-- Technical but accessible
-- Mix short and long sentences
-- Add subtle regional expressions
-- Natural imperfections allowed
-
-TASK: Write {length}-word description of surface analysis. Be specific, technical, but human.
-Vary your phrasing - avoid repetitive patterns. Include 1-2 measurements when relevant.
-
-Write description:"""
+    # Component-specific prompt methods REMOVED (November 18, 2025)
+    # All content instructions now ONLY in prompts/*.txt templates
+    # Use _load_prompt_template(component_type) for generic template loading
+    # See: Component Discovery Policy + Content Instruction Policy
     
     @staticmethod
     def _build_generic_prompt(

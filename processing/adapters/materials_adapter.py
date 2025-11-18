@@ -288,9 +288,9 @@ class MaterialsAdapter(DataSourceAdapter):
             # Default: return as-is
             return text.strip()
     
-    def _extract_caption(self, text: str) -> Dict[str, str]:
+    def _extract_before_after(self, text: str) -> Dict[str, str]:
         """
-        Extract before/after sections from caption text.
+        Extract before/after sections from text (used by caption component).
         
         Looks for **BEFORE_TEXT:** and **AFTER_TEXT:** markers,
         falls back to paragraph splitting if markers not found.
@@ -344,9 +344,9 @@ class MaterialsAdapter(DataSourceAdapter):
             'after': after_text
         }
     
-    def _extract_faq(self, text: str) -> list:
+    def _extract_json_list(self, text: str) -> list:
         """
-        Extract FAQ items from JSON structure in text.
+        Extract list items from JSON structure in text (used by faq component).
         
         Args:
             text: Generated FAQ text (should contain JSON)

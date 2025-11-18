@@ -55,6 +55,7 @@ winston_feedback_db_path: 'data/winston_feedback.db'  # SQLite database for logg
 component_lengths:
   subtitle:
     default: 30
+    extraction_strategy: raw  # Return text as-is
   caption:
     default: 50
     min_words_before: 20
@@ -62,14 +63,18 @@ component_lengths:
     min_words_after: 20
     max_words_after: 120
     word_count_tolerance: 30
+    extraction_strategy: before_after  # Parse before/after sections
   description:
     default: 200
+    extraction_strategy: raw  # Return text as-is
   faq:
     default: 120
     min_words: 20
     max_words: 50
+    extraction_strategy: json_list  # Parse JSON array
   troubleshooter:
     default: 150
+    extraction_strategy: raw  # Return text as-is
 
 
 

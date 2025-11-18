@@ -26,6 +26,10 @@ class ComponentSpec:
         min_length: Minimum word count (from config)
         max_length: Maximum word count (from config)
         prompt_template_file: Path to prompt template file
+        extraction_strategy: How to extract content from generated text
+            - 'raw': Return text as-is (subtitle, description)
+            - 'before_after': Parse before/after sections (caption)
+            - 'json_list': Parse JSON array (faq)
     """
     name: str
     default_length: int
@@ -33,6 +37,7 @@ class ComponentSpec:
     min_length: Optional[int] = None
     max_length: Optional[int] = None
     prompt_template_file: Optional[str] = None
+    extraction_strategy: str = 'raw'
     
     def __post_init__(self):
         # Set defaults if not provided (backward compatibility)
@@ -197,6 +202,11 @@ class ComponentRegistry:
         # Get lengths from config
         lengths = cls._get_component_lengths(component_type)
         
+        # Get extraction strategy from config (default to 'raw')
+        extraction_strategy = 'raw'
+        if 'extraction_strategy' in lengths:
+            extraction_strategy = lengths['extraction_strategy']
+        
         # Build ComponentSpec with config lengths and prompt template file
         return ComponentSpec(
             name=component_type,
@@ -204,7 +214,8 @@ class ComponentRegistry:
             min_length=lengths['min'],
             max_length=lengths['max'],
             end_punctuation=spec_def['end_punctuation'],
-            prompt_template_file=spec_def.get('prompt_template_file')
+            prompt_template_file=spec_def.get('prompt_template_file'),
+            extraction_strategy=extraction_strategy
         )
     
     @classmethod

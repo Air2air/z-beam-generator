@@ -247,7 +247,51 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 
-### 8. **Prompt Purity Policy** 🔥 **NEW (Nov 18, 2025)**
+### 8. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
+**ONLY prompt templates determine content and formatting. NO component-specific methods.**
+
+- ✅ **prompts/components/*.txt** - ALL content instructions and formatting rules
+  - Structure guidelines, style requirements, forbidden phrases
+  - Format specifications, example outputs, voice/tone rules
+  - COMPLETE content strategy for each component type
+- ❌ **processing/*.py** - ZERO component-specific code
+  - ❌ NO `if component_type == 'caption':` checks
+  - ❌ NO component-specific methods (`_build_caption_prompt()`, `_extract_caption()`)
+  - ❌ NO hardcoded content instructions in code
+  - ❌ NO component-specific extraction logic in generators
+- ✅ **Strategy Pattern**: Use `extraction_strategy` in config.yaml
+  ```yaml
+  component_lengths:
+    caption:
+      default: 50
+      extraction_strategy: before_after  # Strategy-based extraction
+    subtitle:
+      default: 30
+      extraction_strategy: raw  # Return text as-is
+  ```
+- ✅ **Generic Methods**: Use strategy dispatch, not component checks
+  - ✅ `adapter.extract_content(text, component_type)` - delegates to strategy
+  - ✅ `_load_prompt_template(component_type)` - loads generic template
+  - ❌ `_extract_caption(text)` - component-specific method
+- ✅ **Full Reusability**: /processing works for ANY domain (materials, contaminants, regions)
+- ✅ **Zero Code Changes**: Add new component = create template + config entry only
+
+**Adding New Component**:
+```bash
+# OLD WAY (NON-COMPLIANT): 4 code files + 1 template
+1. ❌ Edit generator.py - add elif component_type == 'new_component'
+2. ❌ Edit adapter.py - add _extract_new_component() method
+3. ❌ Edit prompt_builder.py - add _build_new_component_prompt()
+4. ❌ Add content instructions to code
+
+# NEW WAY (COMPLIANT): 1 config + 1 template = ZERO CODE CHANGES
+1. ✅ Create prompts/components/new_component.txt (all instructions)
+2. ✅ Add to config.yaml: component_lengths: { new_component: {default: 100, extraction_strategy: raw} }
+```
+
+See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
+
+### 9. **Prompt Purity Policy** 🔥 **NEW (Nov 18, 2025)**
 **ALL content generation instructions MUST exist ONLY in prompt template files.**
 
 - ✅ **prompts/*.txt files** - Single source of truth for ALL prompts
