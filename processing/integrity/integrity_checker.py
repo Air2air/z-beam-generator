@@ -2100,7 +2100,7 @@ class IntegrityChecker:
         # Check 3: Learning logged on success
         start = time.time()
         has_success_learning = 'log_realism_learning' in generator_content
-        has_optimizer_import = 'from processing.realism.optimizer import RealismOptimizer' in generator_content
+        has_optimizer_import = 'from processing.learning.realism_optimizer import RealismOptimizer' in generator_content
         has_ai_tendencies = 'ai_tendencies' in generator_content
         
         if not all([has_success_learning, has_ai_tendencies]):

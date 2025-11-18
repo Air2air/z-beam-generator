@@ -213,6 +213,43 @@ pytest tests/test_hardcoded_value_detection.py
 
 ---
 
+## ✅ Recent Compliance Fixes (November 17, 2025)
+
+### SubjectiveEvaluator Temperature Fix
+
+**Issue**: Hardcoded `temperature=0.2` in subjective evaluation API calls violated policy.
+
+**Fix Applied** (Commit: c5aa1d6c):
+```python
+# BEFORE (❌ VIOLATION):
+request = GenerationRequest(
+    prompt=prompt,
+    system_prompt="...",
+    temperature=0.2  # ❌ Hardcoded
+)
+
+# AFTER (✅ COMPLIANT):
+class SubjectiveEvaluator:
+    def __init__(self, api_client, quality_threshold=7.0, 
+                 verbose=False, evaluation_temperature=0.2):
+        self.evaluation_temperature = evaluation_temperature
+    
+    def evaluate(self, content, context):
+        request = GenerationRequest(
+            prompt=prompt,
+            system_prompt="...",
+            temperature=self.evaluation_temperature  # ✅ Configurable
+        )
+```
+
+**Benefits**:
+- ✅ Temperature now configurable via constructor parameter
+- ✅ Can be connected to dynamic_config for adaptive learning
+- ✅ Maintains sensible default (0.2 for consistency)
+- ✅ Complies with policy without breaking existing code
+
+---
+
 ## 🛠️ Migration Guide
 
 ### Step 1: Identify Hardcoded Values

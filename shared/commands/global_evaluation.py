@@ -207,7 +207,7 @@ def _apply_realism_learning(
         return
     
     try:
-        from processing.realism.optimizer import RealismOptimizer
+        from processing.learning.realism_optimizer import RealismOptimizer
         
         # Initialize optimizer
         optimizer = RealismOptimizer()

@@ -25,6 +25,11 @@
 6. **`docs/development/DATABASE_PARAMETER_PRIORITY.md`** - 🔥 Parameter source policy (470+ lines)
 7. **`docs/development/PARAMETER_LOGGING_QUICK_START.md`** - Query generation parameters for ML
 
+### 🔍 Code Quality & Compliance (Nov 17, 2025)
+8. **`E2E_PROCESSING_EVALUATION_NOV17_2025.md`** - ✅ **NEW** E2E evaluation report + Priority 1 fixes
+9. **`tests/test_priority1_fixes.py`** - ✅ **NEW** Automated tests for critical compliance fixes
+10. **`.github/copilot-instructions.md`** - GROK_INSTRUCTIONS.md policies & fail-fast architecture
+
 ### 🤖 Winston AI & Learning
 8. **`DYNAMIC_PENALTIES_AND_PARAMETER_LOGGING_COMPLETE.md`** - Fixed Winston 100% AI issue
 9. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - ML learning system (173 generations)
