@@ -129,7 +129,8 @@ from shared.commands import (
 )
 
 # Import global evaluation system
-from shared.commands.global_evaluation import run_global_subjective_evaluation
+# Global evaluation removed - per-iteration learning happens in retry loop
+# from shared.commands.global_evaluation import run_global_subjective_evaluation
 
 # Import unified workflow commands
 from shared.commands.unified_workflow import (
@@ -319,20 +320,17 @@ def main():
     
     if args.caption:
         result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
-        # Run global subjective evaluation after generation
-        run_global_subjective_evaluation(topic=args.caption, component_type='caption', domain='materials')
+        # Per-iteration learning happens inline - no global evaluation needed
         return result
     
     if args.subtitle:
         result = handle_subtitle_generation(args.subtitle, skip_integrity_check=args.skip_integrity_check)
-        # Run global subjective evaluation after generation
-        run_global_subjective_evaluation(topic=args.subtitle, component_type='subtitle', domain='materials')
+        # Per-iteration learning happens inline - no global evaluation needed
         return result
     
     if args.faq:
         result = handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
-        # Run global subjective evaluation after generation
-        run_global_subjective_evaluation(topic=args.faq, component_type='faq', domain='materials')
+        # Per-iteration learning happens inline - no global evaluation needed
         return result
     
     if args.audit or args.audit_batch or args.audit_all:
