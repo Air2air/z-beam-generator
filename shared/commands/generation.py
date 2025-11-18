@@ -50,8 +50,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print()
         
         # Show statistics
-        before_text = caption_data.get('before', '')
-        after_text = caption_data.get('after', '')
+        before_text = caption_data.get('content', {}).get('before', '')
+        after_text = caption_data.get('content', {}).get('after', '')
         
         print("📊 Statistics:")
         if before_text:
@@ -69,8 +69,31 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("💾 Saved to: materials/data/Materials.yaml → caption")
         print()
         
-        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
-        # This eliminates duplicate evaluation code across handlers
+        # Run subjective evaluation
+        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
+        print("🔍 Running subjective evaluation...")
+        helper = SubjectiveEvaluationHelper(
+            api_client=api_client,
+            verbose=True
+        )
+        
+        # Combine before and after for evaluation
+        full_content = f"BEFORE:\n{before_text}\n\nAFTER:\n{after_text}"
+        eval_result = helper.evaluate_generation(
+            content=full_content,
+            topic=material_name,
+            component_type='caption',
+            domain='materials'
+        )
+        
+        # Display narrative assessment if available
+        if eval_result and eval_result.narrative_assessment:
+            print()
+            print("📊 SUBJECTIVE EVALUATION:")
+            print("-" * 80)
+            print(eval_result.narrative_assessment)
+            print()
+        print()
         
         print("✨ Caption generation complete!")
         print()
@@ -225,8 +248,29 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("💾 Saved to: data/materials/Materials.yaml → subtitle")
         print()
         
-        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
-        # This eliminates duplicate evaluation code across handlers
+        # Run subjective evaluation
+        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
+        print("🔍 Running subjective evaluation...")
+        helper = SubjectiveEvaluationHelper(
+            api_client=api_client,
+            verbose=True
+        )
+        
+        eval_result = helper.evaluate_generation(
+            content=subtitle,
+            topic=material_name,
+            component_type='subtitle',
+            domain='materials'
+        )
+        
+        # Display narrative assessment if available
+        if eval_result and eval_result.narrative_assessment:
+            print()
+            print("📊 SUBJECTIVE EVALUATION:")
+            print("-" * 80)
+            print(eval_result.narrative_assessment)
+            print()
+        print()
         
         print("✨ Subtitle generation complete!")
         print()
@@ -321,8 +365,35 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("💾 Saved to: materials/data/Materials.yaml → faq")
         print()
         
-        # NOTE: Subjective evaluation now runs globally in run.py after handler returns
-        # This eliminates duplicate evaluation code across handlers
+        # Run subjective evaluation on all Q&A pairs
+        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
+        print("🔍 Running subjective evaluation...")
+        helper = SubjectiveEvaluationHelper(
+            api_client=api_client,
+            verbose=True
+        )
+        
+        # Combine all Q&As for evaluation
+        all_content = []
+        for qa in faq_list:
+            all_content.append(f"Q: {qa['question']}\nA: {qa['answer']}")
+        full_content = "\n\n".join(all_content)
+        
+        eval_result = helper.evaluate_generation(
+            content=full_content,
+            topic=material_name,
+            component_type='faq',
+            domain='materials'
+        )
+        
+        # Display narrative assessment if available
+        if eval_result and eval_result.narrative_assessment:
+            print()
+            print("📊 SUBJECTIVE EVALUATION:")
+            print("-" * 80)
+            print(eval_result.narrative_assessment)
+            print()
+        print()
         
         print("✨ FAQ generation complete!")
         print()

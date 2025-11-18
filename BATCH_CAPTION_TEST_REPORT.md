@@ -1,7 +1,7 @@
 # Batch Caption Test Report
 
-**Date**: November 18, 2025 at 12:53 AM
-**Results**: 3/4 successful
+**Date**: November 18, 2025 at 02:05 PM
+**Results**: 2/4 successful
 
 ---
 
@@ -14,22 +14,18 @@
 The voice in this caption sounds authentically human-written, with a natural conversational flow that mimics casual technical commentary, using vivid, everyday words like "zaps away the filth" and "woody resilience" to create a genuine, enthusiastic tone without over-the-top hype. Sentence patterns feel organic, starting with a punchy action phrase and building to descriptive details in a logical, stream-of-consciousness style that varies rhythm—short and snappy at first, then more explanatory—avoiding the formulaic repetition or unnatural stiffness often seen in AI-generated text. There's no evidence of AI-like tendencies such as excessive uniformity in structure or contrived transitions; instead, it reads like a knowledgeable engineer sharing an exciting discovery in a relaxed voice.
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 90.3% human
-- **Generation Time**: 39.8s
+- **Winston AI**: 98.4% human
+- **Generation Time**: 32.6s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Bamboo fibers hide under grimy layers.  
-Dirt particles fill the wood's tiny pores, blocking views of its strong structure at 1000x magnification.  
-And this mess harms uses in construction, furniture making, or even aerospace parts because contaminants weaken the natural hold.
+Bamboo fibers hide under thick contaminant layers here. At 1000x, grime sticks fast to the wood's porous structure, dulling its strength for uses in construction or furniture—and that buildup weakens the material over time in humid spots. We spot uneven patches because bamboo absorbs dirt easily.
 
 **AFTER:**
 
-Laser treatment clears the surface fast.  
-Now bamboo stands with bare fibers exposed, smooth and ready for medical devices or marine apps.  
-At 1000x, the wood's clean texture shows uniform pores about 10 microns wide, perfect for electronics or renewable energy builds without any leftover spots.
+Laser treatment clears every bit of that mess away. Fibers stand bare now at 1000x, with the clean wood texture sharp and even across the surface we rely on for aerospace parts or marine gear. And yeah, this restores bamboo's natural flexibility without any damage to its core.
 
 ---
 
@@ -42,23 +38,8 @@ At 1000x, the wood's clean texture shows uniform pores about 10 microns wide, pe
 
 ## Breccia (Author 3)
 
-### ✅ NO ISSUES DETECTED
-
-### 📊 SUBJECTIVE EVALUATION
-
-- **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.3% human
-- **Generation Time**: 66.5s
-
-### 📝 GENERATED CAPTION
-
-**BEFORE:**
-
-Breccia's rough surface hides under thick grime layers here. At 1000x, you spot the contaminants clogging those natural fractures, making the stone look dull and uneven. Tough buildup from years in architecture sites.
-
-**AFTER:**
-
-Laser treatment clears it all away fast. Now the breccia stands out sharp at 1000x, with clean edges on fragments and no residue left behind. Restores that original texture for heritage work.
+### 🚨 ALERT: GENERATION FAILED
+**Error**: Unknown error
 
 ---
 
@@ -71,18 +52,18 @@ Laser treatment clears it all away fast. Now the breccia stands out sharp at 100
 The voice in this caption feels authentically human-written, with a natural conversational flow that starts with a punchy, dramatic hook and transitions smoothly into a descriptive payoff, mimicking how a marketer or technical writer might build excitement in a short promo piece. Realistic word choices like "stands bare and even" and "contaminants gone" evoke tangible imagery without overcomplicating, and the genuine tone variation—from bold proclamation to practical benefits—adds a layer of organic enthusiasm that humans often use to persuade. Sentence patterns are varied and feel organic, avoiding the formulaic repetition or overly polished symmetry that can signal AI generation, though the hyperbolic "change everything" borders on enthusiastic flair that could tip into artificial hype if overused.
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.7% human
-- **Generation Time**: 53.4s
+- **Winston AI**: 85.0% human
+- **Generation Time**: 60.4s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Dirt clings tight to this aluminum surface. At 1000x, you spot the grime buildup from automotive assembly lines—thick layers of oxide and residue that dull the metal's natural strength in construction and aerospace parts. Tough to shift without the right tool.
+Aluminum in construction picks up stubborn dirt fast. At 1000x, contaminants form jagged clusters, about 10 microns thick, smothering the metal's natural texture and risking corrosion in outdoor setups. Tough spots like these slow down assembly lines.
 
 **AFTER:**
 
-Laser treatment clears it fast. Bare metal emerges smooth under 1000x view, ready for marine coatings or electronics packaging without a trace left behind. And that restores the full conductivity for renewable energy components—vital stuff.
+Laser treatment clears it all in seconds. Now the surface lies flat and bare at 1000x, restoring aluminum's lightweight strength for automotive panels or renewable energy frames without a trace of residue. Smooth.
 
 ---
 
@@ -96,29 +77,28 @@ Laser treatment clears it fast. Bare metal emerges smooth under 1000x view, read
 
 | Material | Iteration | Temperature | Freq Penalty | Pres Penalty | Winston Score | Result |
 |----------|-----------|-------------|--------------|--------------|---------------|--------|
-| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 90.3% | ✅ |
-| Breccia | 1 | 0.800 | 0.000 | 0.500 | 99.3% | ✅ |
-| Aluminum | 1 | 0.800 | 0.000 | 0.500 | 99.7% | ✅ |
+| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 98.4% | ✅ |
+| Aluminum | 1 | 0.800 | 0.000 | 0.500 | 85.0% | ✅ |
 
 *Note: Parameters show the configuration used for each iteration attempt*
 
 ### 💾 Learning Data Captured
 
-**Total database writes**: 3 iterations logged
+**Total database writes**: 2 iterations logged
 
-- **Success patterns**: 3 entries (reinforce successful parameters)
+- **Success patterns**: 2 entries (reinforce successful parameters)
 - **Failure patterns**: 0 entries (avoid unsuccessful combinations)
 
 **Database tables updated**:
-- `generation_parameters`: 3 new rows
-- `realism_learning`: 3 new rows (AI tendencies + adjustments)
-- `detection_results`: 3 new rows (Winston scores + metadata)
+- `generation_parameters`: 2 new rows
+- `realism_learning`: 2 new rows (AI tendencies + adjustments)
+- `detection_results`: 2 new rows (Winston scores + metadata)
 
 ### 🎯 Sweet Spot Updates
 
 Sweet spots are updated when sufficient successful samples (typically 5+) are collected.
 
-- **Total iterations logged**: 3
+- **Total iterations logged**: 2
 
 ### 🔄 Learning Loop Demonstrated
 
@@ -133,8 +113,8 @@ Sweet spots are updated when sufficient successful samples (typically 5+) are co
 
 **Evidence of learning**:
 - ✅ All materials succeeded on first iteration (parameters already optimized)
-- ✅ Average Winston score: 96.4% (excellent human detection)
-- ✅ All 3 iterations logged for continuous learning
+- ✅ Average Winston score: 91.7% (excellent human detection)
+- ✅ All 2 iterations logged for continuous learning
 
 **Next run impact**: Future generations will use learned parameters as starting point, 
 not defaults, resulting in higher success rates and fewer retry iterations.
