@@ -16,6 +16,7 @@ import time
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
+from shared.validation.score_validator import validate_scores, ScoreValidationError
 
 
 class EvaluationDimension(Enum):
@@ -71,34 +72,34 @@ class SubjectiveEvaluator:
     
     def __init__(
         self,
-        api_client = None,
+        api_client,
         quality_threshold: float = 7.0,
         verbose: bool = False
     ):
         """
-        Initialize Claude evaluator
+        Initialize Subjective evaluator
         
         Args:
-            api_client: Claude API client (optional - will use Anthropic if available)
+            api_client: Grok API client (REQUIRED - fail-fast architecture)
             quality_threshold: Minimum acceptable overall score (0-10)
             verbose: Print detailed evaluation output
+        
+        Raises:
+            ValueError: If api_client is None (fail-fast, no fallbacks)
         """
+        # FAIL-FAST: No fallback mode allowed per GROK_INSTRUCTIONS.md
+        if api_client is None:
+            raise ValueError(
+                "SubjectiveEvaluator requires api_client. "
+                "Cannot operate in fallback mode per fail-fast architecture. "
+                "Ensure Grok API is properly configured before initializing."
+            )
+        
         self.api_client = api_client
         self.quality_threshold = quality_threshold
         self.verbose = verbose
-        
-        # Check if Claude/Anthropic is available
-        self._check_claude_availability()
     
-    def _check_claude_availability(self):
-        """Check if Grok API is available"""
-        if self.api_client is not None:
-            self.has_claude = True  # Using Grok API client
-        else:
-            self.has_claude = False
-            if self.verbose:
-                print("⚠️  Grok API not available - evaluations will be limited")
-    
+    @validate_scores
     def evaluate(
         self,
         content: str,
@@ -133,12 +134,8 @@ class SubjectiveEvaluator:
             content, material_name, component_type, context
         )
         
-        # Get Claude's evaluation
-        if self.has_claude and self.api_client:
-            evaluation = self._get_subjective_evaluation(prompt, content)
-        else:
-            # Fallback to rule-based evaluation
-            evaluation = self._fallback_evaluation(content, material_name)
+        # Get Grok evaluation (no fallback - fail fast per GROK_INSTRUCTIONS.md)
+        evaluation = self._get_subjective_evaluation(prompt, content)
         
         evaluation.evaluation_time_ms = (time.time() - start) * 1000
         
@@ -360,66 +357,9 @@ Provide your evaluation in this format:
             raw_response=response
         )
     
-    def _fallback_evaluation(
-        self,
-        content: str,
-        material_name: str
-    ) -> SubjectiveEvaluationResult:
-        """
-        Rule-based fallback evaluation when Claude is unavailable
-        
-        Provides basic quality checks without AI subjective judgment
-        """
-        
-        dimension_scores = []
-        
-        # 1. Clarity - based on readability metrics
-        word_count = len(content.split())
-        avg_word_length = sum(len(w) for w in content.split()) / max(word_count, 1)
-        clarity_score = min(10, max(5, 10 - (avg_word_length - 5)))
-        
-        dimension_scores.append(SubjectiveScore(
-            dimension=EvaluationDimension.CLARITY,
-            score=clarity_score,
-            feedback=f"Average word length: {avg_word_length:.1f} chars",
-            suggestions=["Consider shorter words for better clarity"] if avg_word_length > 6 else []
-        ))
-        
-        # 2. Professionalism - basic tone check
-        casual_words = ['gonna', 'wanna', 'yeah', 'cool', 'awesome']
-        has_casual = any(word in content.lower() for word in casual_words)
-        prof_score = 7.0 if not has_casual else 5.0
-        
-        dimension_scores.append(SubjectiveScore(
-            dimension=EvaluationDimension.PROFESSIONALISM,
-            score=prof_score,
-            feedback="Professional tone maintained" if not has_casual else "Some casual language detected",
-            suggestions=["Remove casual language"] if has_casual else []
-        ))
-        
-        # 3-6. Default scores for other dimensions
-        for dim in [EvaluationDimension.TECHNICAL_ACCURACY,
-                   EvaluationDimension.HUMAN_LIKENESS,
-                   EvaluationDimension.ENGAGEMENT,
-                   EvaluationDimension.JARGON_FREE]:
-            dimension_scores.append(SubjectiveScore(
-                dimension=dim,
-                score=7.0,
-                feedback="Unable to evaluate without Claude AI",
-                suggestions=[]
-            ))
-        
-        overall_score = sum(s.score for s in dimension_scores) / len(dimension_scores)
-        
-        return SubjectiveEvaluationResult(
-            overall_score=overall_score,
-            dimension_scores=dimension_scores,
-            strengths=["Content generated successfully"],
-            weaknesses=["Subjective evaluation not available"],
-            recommendations=["Enable Claude API for detailed subjective evaluation"],
-            passes_quality_gate=overall_score >= self.quality_threshold,
-            evaluation_time_ms=0
-        )
+    # REMOVED: _fallback_evaluation() method
+    # REASON: Violates GROK_INSTRUCTIONS.md no-mocks/fallbacks policy
+    # REPLACEMENT: Fail-fast in __init__ if api_client is None
     
     def _print_evaluation(self, evaluation: SubjectiveEvaluationResult):
         """Print formatted evaluation results"""
@@ -474,15 +414,18 @@ def evaluate_content(
         content: Text content to evaluate
         material_name: Material name (e.g., "Aluminum")
         component_type: Component type (caption, subtitle, etc.)
-        api_client: Optional Claude API client
+        api_client: REQUIRED Grok API client (fail-fast if None)
         verbose: Print detailed output
     
     Returns:
         SubjectiveEvaluationResult
+    
+    Raises:
+        ValueError: If api_client is None
     """
     
     evaluator = SubjectiveEvaluator(
-        api_client=api_client,
+        api_client=api_client,  # Will raise ValueError if None
         quality_threshold=7.0,
         verbose=verbose
     )
