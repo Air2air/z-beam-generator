@@ -112,7 +112,7 @@ class MaterialNameResolver:
             
             # Extract from MATERIAL_ABBREVIATIONS constant
             try:
-                from components.frontmatter.core.streamlined_generator import MATERIAL_ABBREVIATIONS
+                from export.core.streamlined_generator import MATERIAL_ABBREVIATIONS
                 
                 for full_name_key, abbrev_data in MATERIAL_ABBREVIATIONS.items():
                     abbrev = abbrev_data['abbreviation']

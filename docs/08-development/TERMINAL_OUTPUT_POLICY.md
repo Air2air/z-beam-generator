@@ -68,13 +68,13 @@ Attempt 2/5
 
 #### D. Quality Validation Results
 ```
-Winston Score: 98.6% human (threshold: 80%) ✅ PASS
+Winston Score: 98.6% human (threshold: 69%) ✅ PASS
 Realism Score: 5.0/10 (threshold: 5.5) ❌ FAIL
 Subjective Language: ✅ PASS - No violations detected
 Readability: ✅ PASS
 ```
 - Each quality gate with score
-- Threshold comparison
+- Threshold comparison (Winston threshold is dynamic based on humanness_intensity config)
 - Pass/fail status with visual indicators
 
 #### E. Learning Activity

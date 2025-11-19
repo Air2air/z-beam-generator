@@ -17,11 +17,11 @@ from pathlib import Path
 from unittest.mock import Mock
 
 # Import learning modules
-from processing.learning.pattern_learner import PatternLearner
-from processing.learning.temperature_advisor import TemperatureAdvisor
-from processing.learning.prompt_optimizer import PromptOptimizer
-from processing.learning.success_predictor import SuccessPredictor
-from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+from learning.pattern_learner import PatternLearner
+from learning.temperature_advisor import TemperatureAdvisor
+from learning.prompt_optimizer import PromptOptimizer
+from learning.success_predictor import SuccessPredictor
+from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
 from shared.api.client import APIClient
 
 

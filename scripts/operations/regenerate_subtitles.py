@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from shared.api.client_factory import create_api_client
 from shared.prompts.text_prompt_builder import TextPromptBuilder, FocusArea as FocusAreaClass
 from shared.voice.post_processor import VoicePostProcessor
-from components.frontmatter.utils.author_manager import get_author_by_id
+from export.utils.author_manager import get_author_by_id
 
 # Subtitle focus areas (randomly selected for each material)
 SUBTITLE_FOCUS_AREAS = [

@@ -259,7 +259,7 @@ def main():
     
     # System Integrity Check (runs before generation if enabled)
     if args.integrity_check:
-        from processing.integrity import IntegrityChecker
+        from generation.integrity import IntegrityChecker
         
         print("\n🔍 Running System Integrity Checks...")
         checker = IntegrityChecker()
@@ -390,7 +390,7 @@ def main():
     
     # NEW: Multi-type orchestrator generation (Phase 1 architecture)
     if args.content_type and args.identifier:
-        from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+        from export.core.orchestrator import FrontmatterOrchestrator
         from shared.api.client_factory import create_api_client
         
         print(f"🚀 Generating {args.content_type} frontmatter: {args.identifier}")
@@ -421,7 +421,7 @@ def main():
             if args.content_type == 'material':
                 # For materials, load author from material data and enrich from registry
                 from data.materials.materials import get_material_by_name_cached
-                from components.frontmatter.utils.author_manager import get_author_info_for_material
+                from export.utils.author_manager import get_author_info_for_material
                 
                 material_data = get_material_by_name_cached(args.identifier)
                 if material_data:
@@ -511,7 +511,7 @@ def main():
         try:
             # Try new orchestrator first (Phase 1 architecture)
             try:
-                from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+                from export.core.orchestrator import FrontmatterOrchestrator
                 
                 api_client = create_api_client("grok") if not args.data_only else None
                 
@@ -525,7 +525,7 @@ def main():
                 
                 # Get author data from material data (reusable approach)
                 from data.materials.materials import get_material_by_name_cached
-                from components.frontmatter.utils.author_manager import get_author_info_for_material
+                from export.utils.author_manager import get_author_info_for_material
                 
                 author_data = None
                 material_data = get_material_by_name_cached(args.material)
@@ -603,7 +603,7 @@ def main():
         
         if args.data_only:
             try:
-                from components.frontmatter.core.trivial_exporter import export_all_frontmatter
+                from export.core.trivial_exporter import export_all_frontmatter
                 import time
                 
                 start_time = time.time()
@@ -637,7 +637,7 @@ def main():
                 return False
             
             # Use orchestrator with completeness control
-            from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+            from export.core.orchestrator import FrontmatterOrchestrator
             enforce_completeness = not args.no_completeness_check
             orchestrator = FrontmatterOrchestrator(
                 api_client=api_client,
@@ -652,7 +652,7 @@ def main():
                 
                 try:
                     # Get author data
-                    from components.frontmatter.utils.author_manager import get_author_info_for_material
+                    from export.utils.author_manager import get_author_info_for_material
                     author_data = None
                     try:
                         author_data = get_author_info_for_material(material_info)

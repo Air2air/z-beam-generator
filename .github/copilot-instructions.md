@@ -202,11 +202,11 @@ Use ComponentGeneratorFactory pattern for all generators.
 ### 5. **Fail-Fast Design with Quality Gates**
 - ✅ **What it IS**: Validate inputs, configurations, and dependencies immediately at startup
 - ✅ **What it IS**: Throw specific exceptions (ConfigurationError, GenerationError) with clear messages
-- ✅ **What it IS**: Enforce quality gates (Winston 80%+, Realism 7.0+, Readability pass)
+- ✅ **What it IS**: Enforce quality gates (Winston 69%+, Realism 7.0+, Readability pass)
 - ❌ **What it's NOT**: Removing runtime error recovery like API retries for transient issues
 
 **Quality Gates (ALL must pass)**:
-1. Winston AI Detection: 80%+ human score
+1. Winston AI Detection: 69%+ human score (configurable via humanness_intensity, currently at level 7)
 2. Readability Check: Pass status
 3. Subjective Language: No violations
 4. **Realism Score: 7.0/10 minimum** ← NEW (Nov 18, 2025)

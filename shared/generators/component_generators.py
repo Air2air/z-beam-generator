@@ -310,7 +310,7 @@ class APIComponentGenerator(BaseComponentGenerator):
         # Special handling for frontmatter enhancement
         if self.component_type == "frontmatter":
             try:
-                from materials.utils.property_enhancer import enhance_generated_frontmatter
+                from domains.materials.utils.property_enhancer import enhance_generated_frontmatter
 
                 category = material_data.get("category", "")
                 content = enhance_generated_frontmatter(content, category)
@@ -339,7 +339,7 @@ class ComponentGeneratorFactory:
         try:
             # Import API generators dynamically
             if component_type == "frontmatter":
-                from components.frontmatter.core.streamlined_generator import (
+                from export.core.streamlined_generator import (
                     StreamlinedFrontmatterGenerator,
                 )
 

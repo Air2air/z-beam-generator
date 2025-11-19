@@ -93,7 +93,7 @@ class DualObjectiveValidator:
     def check_realism_optimizer_exists(self):
         """Check RealismOptimizer class exists and is importable."""
         try:
-            from processing.learning.realism_optimizer import RealismOptimizer
+            from learning.realism_optimizer import RealismOptimizer
             optimizer = RealismOptimizer()
             
             # Check required methods
@@ -130,7 +130,7 @@ class DualObjectiveValidator:
     def check_database_schema(self):
         """Check realism_learning table exists in database."""
         try:
-            from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             import tempfile
             import sqlite3
             import os
@@ -201,7 +201,7 @@ class DualObjectiveValidator:
     def check_subjective_evaluator_fields(self):
         """Check SubjectiveEvaluationResult has realism fields."""
         try:
-            from processing.subjective.evaluator import SubjectiveEvaluationResult
+            from postprocessing.evaluation.evaluator import SubjectiveEvaluationResult
             import inspect
             
             sig = inspect.signature(SubjectiveEvaluationResult)
@@ -240,7 +240,7 @@ class DualObjectiveValidator:
     def check_generator_integration(self):
         """Check DynamicGenerator initializes RealismOptimizer."""
         try:
-            from processing.generator import DynamicGenerator
+            from generation.core.generator import DynamicGenerator
             import inspect
             
             source = inspect.getsource(DynamicGenerator._init_components)
@@ -276,7 +276,7 @@ class DualObjectiveValidator:
     def check_realism_optimizer_logic(self):
         """Test RealismOptimizer produces valid adjustments."""
         try:
-            from processing.learning.realism_optimizer import RealismOptimizer
+            from learning.realism_optimizer import RealismOptimizer
             
             optimizer = RealismOptimizer()
             
@@ -313,7 +313,7 @@ class DualObjectiveValidator:
     def check_tendency_mappings(self):
         """Verify AI tendency mappings are comprehensive."""
         try:
-            from processing.learning.realism_optimizer import RealismOptimizer
+            from learning.realism_optimizer import RealismOptimizer
             
             optimizer = RealismOptimizer()
             
@@ -359,7 +359,7 @@ class DualObjectiveValidator:
     def check_combined_scoring(self):
         """Test combined score calculation logic."""
         try:
-            from processing.learning.realism_optimizer import RealismOptimizer
+            from learning.realism_optimizer import RealismOptimizer
             
             optimizer = RealismOptimizer()
             
@@ -391,7 +391,7 @@ class DualObjectiveValidator:
     def check_retry_loop_integration(self):
         """Verify realism evaluation is integrated in retry loop."""
         try:
-            from processing.generator import DynamicGenerator
+            from generation.core.generator import DynamicGenerator
             import inspect
             
             source = inspect.getsource(DynamicGenerator.generate)
@@ -433,8 +433,8 @@ class DualObjectiveValidator:
     def check_database_logging(self):
         """Verify generator logs realism learning data."""
         try:
-            from processing.generator import DynamicGenerator
-            from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from generation.core.generator import DynamicGenerator
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             import inspect
             
             # Check generator calls log_realism_learning

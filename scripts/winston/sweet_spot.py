@@ -22,8 +22,8 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from processing.learning.sweet_spot_analyzer import SweetSpotAnalyzer
-from processing.config.config_loader import get_config
+from learning.sweet_spot_analyzer import SweetSpotAnalyzer
+from generation.config.config_loader import get_config
 import logging
 
 logging.basicConfig(

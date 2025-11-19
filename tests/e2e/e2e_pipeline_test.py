@@ -26,7 +26,7 @@ from materials.faq.generators.faq_generator import FAQComponentGenerator
 from data.materials.materials import load_materials, get_material_by_name
 from shared.api.client_factory import create_api_client
 from shared.voice.post_processor import VoicePostProcessor
-from components.frontmatter.utils.author_manager import get_author_info_for_material
+from export.utils.author_manager import get_author_info_for_material
 import yaml
 
 logging.basicConfig(
@@ -328,7 +328,7 @@ class E2EPipelineTester:
         print("="*80)
         
         try:
-            from components.frontmatter.core.trivial_exporter import TrivialFrontmatterExporter
+            from export.core.trivial_exporter import TrivialFrontmatterExporter
             
             print("\n📤 Exporting to frontmatter...")
             

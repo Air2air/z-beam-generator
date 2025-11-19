@@ -130,7 +130,7 @@ Successfully integrated learned evaluation pipeline that allows the system to:
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. QUALITY GATES                                            │
 │    Check if content passes:                                 │
-│    • Winston AI Detection (80%+ human)                      │
+│    • Winston AI Detection (69%+ human, configurable)        │
 │    • Readability Check (passes)                             │
 │    • Subjective Validation (no violations)                  │
 │    • Realism Score (7.0/10 minimum)                         │

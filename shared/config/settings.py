@@ -41,7 +41,7 @@ GLOBAL_OPERATIONAL_CONFIG = {
         "enabled": True,              # Enable invisible pipeline during content generation
         "silent_mode": False,         # Show verbose AI research logging by default
         "max_validation_time": 15,    # Maximum time to spend on validation (seconds) - increased for AI
-        "cache_validations": True,    # Cache validation results to avoid redundant work
+        "cache_validations": False,   # DISABLED: No caching for fresh evaluations
         "auto_improve_frontmatter": True,  # Automatically improve frontmatter quality
         "batch_validation": True,     # Run batch validation for --all operations
         "quality_threshold": 0.6,     # Minimum quality score to pass validation
@@ -120,8 +120,9 @@ PRODUCTION_CONFIG = {
         "USE_SIMPLE_PROMPTS": False,
         
         # API Response Caching Configuration
+        # DISABLED: Fresh evaluations every time to see critical tone changes
         "RESPONSE_CACHE": {
-            "enabled": True,
+            "enabled": False,
             "storage_location": "/tmp/z-beam-response-cache",
             "ttl_seconds": 86400,  # 24 hours
             "max_size_mb": 1000,
@@ -159,14 +160,14 @@ API_PROVIDERS = {
         "env_var": "DEEPSEEK_API_KEY",
         "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat",
-        "max_tokens": 4000,  # Default - will be overridden by component-specific settings
-        "temperature": 0.1,  # Default - will be overridden by component-specific settings
-        "timeout_connect": 30,  # Increased for better reliability with large prompts
-        "timeout_read": 120,    # Increased for better reliability with complex content
+        "max_tokens": 500,  # Increased for caption generation
+        "temperature": 0.9,  # Match simple_mode fixed temperature
+        "timeout_connect": 60,  # Increased significantly to prevent hangs
+        "timeout_read": 180,    # Increased significantly for reliability
         "max_retries": 5,       # More retries for robustness
-        "retry_delay": 2.0,     # Longer delays between retries
+        "retry_delay": 3.0,     # Longer delays between retries
         "enabled": True,
-        "timeout": 30,
+        "timeout": 60,
         "rate_limit": {
             "requests_per_minute": 60,
             "tokens_per_minute": 30000,
@@ -247,14 +248,14 @@ API_PROVIDERS = {
 COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text fields)
-        "text_api_provider": "grok",  # ✅ TEXT-ONLY COMPONENT (for text fields with linguistic technicalities)
+        "text_api_provider": "deepseek",  # ✅ SWITCHED TO DEEPSEEK (avoiding Grok API hang)
         "priority": 1,
         "enabled": True,  # ENABLED - Only component in frontmatter-only architecture
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
         "generation_modes": {
             "data_only": {"api_provider": "none", "description": "Refresh non-text data from Materials.yaml only"},
-            "text_only": {"api_provider": "grok", "description": "Update text fields with Grok AI"},
-            "hybrid": {"api_provider": "grok", "description": "Data from Materials.yaml + Grok text generation"},
+            "text_only": {"api_provider": "deepseek", "description": "Update text fields with DeepSeek AI"},
+            "hybrid": {"api_provider": "deepseek", "description": "Data from Materials.yaml + DeepSeek text generation"},
             "full": {"api_provider": "deepseek", "description": "Complete AI generation with DeepSeek"}
         },
         "default_mode": "hybrid",  # Recommended mode for most use cases

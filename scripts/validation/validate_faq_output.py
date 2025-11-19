@@ -28,7 +28,7 @@ from typing import Dict, List, Tuple
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from processing.config.config_loader import get_config
+from generation.config.config_loader import get_config
 
 # ============================================================================
 # CONFIGURATION - Load from config.yaml

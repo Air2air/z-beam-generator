@@ -37,12 +37,13 @@
 9. **`WINSTON_LEARNING_SYSTEM_COMPLETE.md`** - ML learning system (173 generations)
 10. **`WINSTON_INTEGRATION_COMPLETE.md`** - Winston AI primary detector
 11. **`docs/08-development/WINSTON_ONLY_MODE.md`** - ✨ **NEW** Winston-only detection (Nov 17, 2025)
-12. **`CLAUDE_EVALUATION_INTEGRATION_COMPLETE.md`** - Claude AI subjective evaluation
-13. **Realism Quality Gate** - ✨ **NEW** 7.0/10 minimum enforced (Nov 18, 2025)
-14. **`docs/08-development/REALISM_QUALITY_GATE.md`** - ✨ **NEW** Realism enforcement documentation (Nov 18, 2025)
-15. **`docs/08-development/PROMPT_PURITY_POLICY.md`** - ✨ **NEW** Zero prompt text in generators (Nov 18, 2025)
-16. **`LEARNED_EVALUATION_INTEGRATION_NOV18_2025.md`** - ✨ **NEW** Template-based learning pipeline (Nov 18, 2025)
-17. **`docs/08-development/LEARNED_EVALUATION_PROPOSAL.md`** - ✨ IMPLEMENTED - Learned evaluation architecture (Nov 18, 2025)
+12. **`docs/08-development/COPILOT_EVALUATION_SYSTEM.md`** - ✨ **NEW** Copilot-based evaluation (Nov 18, 2025) 🔥
+13. **`tests/test_copilot_evaluation.py`** - ✨ **NEW** 26 tests for Copilot evaluation (Nov 18, 2025)
+14. **Realism Quality Gate** - ✨ **NEW** 7.0/10 minimum enforced (Nov 18, 2025)
+15. **`docs/08-development/REALISM_QUALITY_GATE.md`** - ✨ **NEW** Realism enforcement documentation (Nov 18, 2025)
+16. **`docs/08-development/PROMPT_PURITY_POLICY.md`** - ✨ **NEW** Zero prompt text in generators (Nov 18, 2025)
+17. **`LEARNED_EVALUATION_INTEGRATION_NOV18_2025.md`** - ✨ **NEW** Template-based learning pipeline (Nov 18, 2025)
+18. **`docs/08-development/LEARNED_EVALUATION_PROPOSAL.md`** - ✨ IMPLEMENTED - Learned evaluation architecture (Nov 18, 2025)
 18. **`docs/development/SWEET_SPOT_ANALYZER.md`** - Statistical parameter optimization (Nov 15, 2025)
 19. **`processing/evaluation/SCORING_MODULE_README.md`** - Composite quality scoring (Nov 16, 2025)
 20. **`docs/08-development/SCORE_DISPLAY_STANDARDS.md`** - ✨ **NEW** Score validation & display (Nov 17, 2025)

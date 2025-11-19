@@ -131,9 +131,10 @@ Failure: Retry with adjusted parameters
 - ⚠️ Adding new required gates (causes failures)
 - ⚠️ Removing existing gates (degrades quality)
 
-**Example**: Winston threshold is 30% (0.30)
-- If increased to 20%: More content rejected → more retries → slower
-- If decreased to 40%: More content accepted → lower quality → defeats purpose
+**Example**: Winston threshold dynamically calculated (currently 30.9% AI / 69.1% human at humanness_intensity=7)
+- If humanness_intensity increased to 9: More content rejected → more retries → slower
+- If humanness_intensity decreased to 5: More content accepted → lower quality → defeats purpose
+- Threshold formula: Higher humanness_intensity = stricter detection (lower AI tolerance)
 
 ### When You Change Learning Systems
 

@@ -38,11 +38,11 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from processing.learning.pattern_learner import PatternLearner
-from processing.learning.temperature_advisor import TemperatureAdvisor
-from processing.learning.prompt_optimizer import PromptOptimizer
-from processing.learning.success_predictor import SuccessPredictor
-from processing.config.config_loader import get_config
+from learning.pattern_learner import PatternLearner
+from learning.temperature_advisor import TemperatureAdvisor
+from learning.prompt_optimizer import PromptOptimizer
+from learning.success_predictor import SuccessPredictor
+from generation.config.config_loader import get_config
 
 logging.basicConfig(
     level=logging.INFO,

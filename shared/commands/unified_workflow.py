@@ -27,7 +27,7 @@ from shared.commands import (
 from scripts.voice.enhance_materials_voice import MaterialsVoiceEnhancer
 
 # Import frontmatter export
-from components.frontmatter.orchestrator import FrontmatterOrchestrator
+from export.orchestrator import FrontmatterOrchestrator
 
 # Import API client
 from shared.api.client_factory import create_api_client

@@ -46,7 +46,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from shared.voice.post_processor import VoicePostProcessor
 from shared.api.client_factory import create_api_client
-from components.frontmatter.utils.author_manager import get_author_info_for_material
+from export.utils.author_manager import get_author_info_for_material
 
 logging.basicConfig(
     level=logging.INFO,

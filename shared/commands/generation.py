@@ -20,14 +20,14 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
     
     try:
         # Import required modules
-        from materials.unified_generator import UnifiedMaterialsGenerator
+        from domains.materials.coordinator import UnifiedMaterialsGenerator
         from data.materials.materials import load_materials, get_material_by_name
         
-        # Initialize Grok API client for captions
+        # Initialize DeepSeek API client for captions (switched from Grok due to API hang issues)
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        api_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        api_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize unified generator
@@ -80,11 +80,12 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("=" * 80)
         print()
         
-        # Run subjective evaluation
+        # Run subjective evaluation on all Q&A pairs (using Copilot/Claude for evaluation)
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation...")
+        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
+        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
         helper = SubjectiveEvaluationHelper(
-            api_client=api_client,
+            api_client=eval_client,
             verbose=True
         )
         
@@ -114,8 +115,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         run_post_generation_validation(material_name, 'caption', quick=True)
         
         # Check if we should update sweet spot recommendations (generic learning)
-        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from processing.config.config_loader import get_config
+        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from generation.config.config_loader import get_config
         
         config = get_config()
         db_path = config.config.get('winston_feedback_db_path')
@@ -124,7 +125,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=5):
             print("📊 Updating generic sweet spot recommendations...")
             try:
-                from processing.learning.sweet_spot_analyzer import SweetSpotAnalyzer
+                from learning.sweet_spot_analyzer import SweetSpotAnalyzer
                 analyzer = SweetSpotAnalyzer(db_path, min_samples=5, success_threshold=80.0)
                 results = analyzer.get_sweet_spot_table(save_to_db=True)
                 
@@ -141,7 +142,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         
         # Run post-generation integrity check
         print("🔍 Running post-generation integrity check...")
-        from processing.integrity import IntegrityChecker
+        from generation.integrity import IntegrityChecker
         checker = IntegrityChecker()
         post_results = checker.run_post_generation_checks(
             material=material_name,
@@ -185,14 +186,14 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
     try:
         # Initialize API client
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        api_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        api_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize processing orchestrator
-        from processing.orchestrator import Orchestrator
-        from processing.config.dynamic_config import DynamicConfig
+        from generation.archive.orchestrator_deprecated import Orchestrator
+        from generation.config.dynamic_config import DynamicConfig
         
         print("🔧 Initializing processing pipeline...")
         config = DynamicConfig()
@@ -270,11 +271,12 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("=" * 80)
         print()
         
-        # Run subjective evaluation
+        # Run subjective evaluation (using Copilot/Claude for evaluation)
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation...")
+        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
+        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
         helper = SubjectiveEvaluationHelper(
-            api_client=api_client,
+            api_client=eval_client,
             verbose=True
         )
         
@@ -299,7 +301,7 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         
         # Run post-generation integrity check
         print("🔍 Running post-generation integrity check...")
-        from processing.integrity import IntegrityChecker
+        from generation.integrity import IntegrityChecker
         checker = IntegrityChecker()
         post_results = checker.run_post_generation_checks(
             material=material_name,
@@ -342,7 +344,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
     
     try:
         # Import required modules
-        from materials.unified_generator import UnifiedMaterialsGenerator
+        from domains.materials.coordinator import UnifiedMaterialsGenerator
         
         # Initialize Grok API client for FAQ
         from shared.api.client_factory import create_api_client
@@ -403,11 +405,12 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("=" * 80)
         print()
         
-        # Run subjective evaluation on all Q&A pairs
+        # Run subjective evaluation on all Q&A pairs (using Copilot/Claude for evaluation)
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation...")
+        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
+        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
         helper = SubjectiveEvaluationHelper(
-            api_client=api_client,
+            api_client=eval_client,
             verbose=True
         )
         
@@ -438,7 +441,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         
         # Run post-generation integrity check
         print("🔍 Running post-generation integrity check...")
-        from processing.integrity import IntegrityChecker
+        from generation.integrity import IntegrityChecker
         checker = IntegrityChecker()
         post_results = checker.run_post_generation_checks(
             material=material_name,

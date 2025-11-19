@@ -18,8 +18,8 @@ import logging
 from typing import Optional
 from shared.api.client_factory import create_api_client
 from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
-from processing.config.config_loader import get_config
+from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+from generation.config.config_loader import get_config
 from data.materials.loader import load_material
 
 logger = logging.getLogger(__name__)
@@ -206,7 +206,7 @@ def _apply_realism_learning(
         return
     
     try:
-        from processing.learning.realism_optimizer import RealismOptimizer
+        from learning.realism_optimizer import RealismOptimizer
         
         # Initialize optimizer
         optimizer = RealismOptimizer()

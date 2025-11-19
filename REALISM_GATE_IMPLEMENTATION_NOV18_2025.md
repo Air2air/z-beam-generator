@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Implemented critical fix to enforce **Realism Quality Gate** (7.0/10 minimum) as mandatory acceptance criterion. Previously, subjective evaluation identified AI issues (theatrical phrases, casual language) but content was still accepted if Winston AI detection passed. Now, content MUST pass BOTH objective (Winston 80%+) AND subjective (Realism 7.0+) quality gates.
+Implemented critical fix to enforce **Realism Quality Gate** (7.0/10 minimum) as mandatory acceptance criterion. Previously, subjective evaluation identified AI issues (theatrical phrases, casual language) but content was still accepted if Winston AI detection passed. Now, content MUST pass BOTH objective (Winston 69%+ human, configurable via humanness_intensity) AND subjective (Realism 7.0+) quality gates.
 
 ### Key Changes
 

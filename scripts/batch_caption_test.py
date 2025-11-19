@@ -15,11 +15,24 @@ import subprocess
 import sys
 import time
 import yaml
+import signal
 from pathlib import Path
 from datetime import datetime
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Global flag for graceful shutdown
+interrupted = False
+
+def signal_handler(sig, frame):
+    """Handle Ctrl+C gracefully."""
+    global interrupted
+    interrupted = True
+    print('\n\n⚠️  Interrupt received. Finishing current generation and exiting gracefully...')
+    print('   (Press Ctrl+C again to force quit)\n')
+    # Set handler to default for second Ctrl+C
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
 def select_test_materials():
@@ -54,11 +67,13 @@ def run_caption_generation(material_name):
     iterations = []  # Track each iteration's data
     
     try:
+        # Start subprocess with new process group to isolate from terminal signals
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=300  # 5 minute timeout
+            timeout=300,  # 5 minute timeout
+            preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_IGN)  # Ignore Ctrl+C in child
         )
         
         elapsed = time.time() - start_time
@@ -144,7 +159,7 @@ def run_caption_generation(material_name):
             import sys
             from pathlib import Path
             sys.path.insert(0, str(Path(__file__).parent.parent))
-            from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             
             db = WinstonFeedbackDatabase('data/winston_feedback.db')
             # Get most recent evaluation for this material
@@ -609,6 +624,12 @@ def generate_batch_report(test_materials, results, success_count, total_count):
 
 
 def main():
+    """Run batch caption test for 4 materials with graceful interrupt handling."""
+    global interrupted
+    
+    # Install signal handler for graceful shutdown
+    signal.signal(signal.SIGINT, signal_handler)
+    
     print('🎯 BATCH CAPTION GENERATION TEST')
     print('=' * 70)
     print('Testing caption generation with 4 materials (one per author)')
@@ -637,6 +658,11 @@ def main():
     
     # Test each material
     for author_id in sorted(test_materials.keys()):
+        # Check if interrupted
+        if interrupted:
+            print(f'\n⚠️  Batch test interrupted. Completed {len(results)}/4 materials.')
+            break
+            
         material_name = test_materials[author_id]
         if material_name is None:
             continue

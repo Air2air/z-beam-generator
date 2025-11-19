@@ -50,7 +50,7 @@ def quick_consistency_check():
             data.materials.load_materials = lambda: test_materials_data
             
             try:
-                from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
+                from export.core.streamlined_generator import StreamlinedFrontmatterGenerator
                 from shared.api.client_factory import create_api_client
                 
                 # Test without API client first (faster)

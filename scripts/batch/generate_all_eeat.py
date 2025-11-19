@@ -27,7 +27,7 @@ from typing import Dict, List
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from materials.unified_generator import UnifiedMaterialsGenerator
+from domains.materials.coordinator import UnifiedMaterialsGenerator
 from shared.api.client_factory import create_api_client
 
 # Setup logging

@@ -21,7 +21,7 @@ import sys
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from materials.utils.category_property_cache import CategoryPropertyCache
+from domains.materials.utils.category_property_cache import CategoryPropertyCache
 
 
 def validate_material_properties():

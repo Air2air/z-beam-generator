@@ -20,7 +20,7 @@ import pytest
 import yaml
 from pathlib import Path
 
-from components.frontmatter.core.orchestrator import FrontmatterOrchestrator
+from export.core.orchestrator import FrontmatterOrchestrator
 from materials.generator import MaterialFrontmatterGenerator
 from contaminants.generator import ContaminantFrontmatterGenerator
 from regions.generator import RegionFrontmatterGenerator

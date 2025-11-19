@@ -26,7 +26,7 @@ from typing import Any, Dict, List, Optional
 
 from shared.api.client_manager import get_api_client_for_component
 from shared.generators.dynamic_generator import DynamicGenerator
-from components.frontmatter.utils.author_manager import (
+from export.utils.author_manager import (
     get_author_info_for_generation,
     get_author_info_for_material,
 )

@@ -14,7 +14,7 @@ def _determine_property_category(property_name: str) -> str:
     based on property name taxonomy.
     """
     try:
-        from materials.utils.property_categorizer import get_property_categorizer
+        from domains.materials.utils.property_categorizer import get_property_categorizer
         categorizer = get_property_categorizer()
         category_id = categorizer.get_category(property_name)
         
@@ -87,7 +87,7 @@ def handle_data_gaps():
         import yaml
         from pathlib import Path
         from collections import defaultdict
-        from materials.utils.category_property_cache import get_category_property_cache
+        from domains.materials.utils.category_property_cache import get_category_property_cache
         
         print("="*80)
         print("DATA GAPS & RESEARCH PRIORITIES")
@@ -306,7 +306,7 @@ def handle_research_missing_properties(batch_size=10, confidence_threshold=70,
         print()
         
         # Load category property cache (validates property applicability per category)
-        from materials.utils.category_property_cache import get_category_property_cache
+        from domains.materials.utils.category_property_cache import get_category_property_cache
         
         print("📂 Loading category property definitions...")
         cache = get_category_property_cache()
@@ -704,8 +704,8 @@ def handle_fix_analysis(material=None, failure_type=None):
         True if successful, False otherwise
     """
     try:
-        from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from processing.learning.fix_strategy_manager import FixStrategyManager
+        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from learning.fix_strategy_manager import FixStrategyManager
         from pathlib import Path
         
         print("=" * 80)
@@ -714,7 +714,7 @@ def handle_fix_analysis(material=None, failure_type=None):
         print()
         
         # Get database path
-        from processing.config.config_loader import get_config
+        from generation.config.config_loader import get_config
         config = get_config()
         db_path = config.config.get('winston_feedback_db_path', 'data/winston_feedback.db')
         

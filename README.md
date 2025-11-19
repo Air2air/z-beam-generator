@@ -249,7 +249,7 @@ See LICENSE file for details.
 - **📚 DOCS**: Complete guide at `processing/integrity/README.md`
 
 ### November 15, 2025: Winston AI Learning System ✅ **NEW**
-- **🤖 WINSTON PRIMARY**: Winston AI v2 as primary detector (80% weight in composite scoring)
+- **🤖 WINSTON PRIMARY**: Winston AI v2 as primary detector (60% weight in composite scoring, 69%+ human threshold)
 - **📊 SENTENCE ANALYSIS**: Top 3 worst sentences, readability scores, attack detection
 - **🔄 ADAPTIVE RETRY**: Dynamic retry extension based on failure pattern analysis
 - **💾 SQLITE DATABASE**: Feedback database logging all Winston results (5 tables)

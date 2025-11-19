@@ -6,7 +6,7 @@ Wrapper module for author management functions to maintain backward compatibilit
 with existing test patches and imports.
 """
 
-from components.frontmatter.utils.author_manager import (
+from export.utils.author_manager import (
     extract_author_info_from_frontmatter_file,
     get_author_by_id,
     get_author_info_for_material,

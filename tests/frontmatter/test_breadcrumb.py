@@ -12,7 +12,7 @@ Date: November 6, 2025
 import pytest
 import yaml
 from pathlib import Path
-from components.frontmatter.core.trivial_exporter import TrivialFrontmatterExporter
+from export.core.trivial_exporter import TrivialFrontmatterExporter
 
 
 class TestBreadcrumbGeneration:

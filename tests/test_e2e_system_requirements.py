@@ -50,7 +50,7 @@ class TestRequirement1_HumanReadableOutput:
     
     def test_human_score_threshold_enforced(self):
         """Verify human score thresholds are enforced"""
-        from processing.config.config_loader import get_config
+        from generation.config.config_loader import get_config
         config = get_config()
         
         # Verify humanness_intensity exists and is valid
@@ -104,7 +104,7 @@ class TestRequirement2_SelfLearningStorage:
     
     def test_pattern_learner_functional(self):
         """Verify pattern learner is operational"""
-        from processing.learning.pattern_learner import PatternLearner
+        from learning.pattern_learner import PatternLearner
         learner = PatternLearner('data/winston_feedback.db')
         
         # Should be able to get patterns (even if empty initially)
@@ -114,7 +114,7 @@ class TestRequirement2_SelfLearningStorage:
     
     def test_temperature_advisor_functional(self):
         """Verify temperature advisor is operational"""
-        from processing.learning.temperature_advisor import TemperatureAdvisor
+        from learning.temperature_advisor import TemperatureAdvisor
         advisor = TemperatureAdvisor('data/winston_feedback.db')
         
         # Should return a valid temperature
@@ -123,7 +123,7 @@ class TestRequirement2_SelfLearningStorage:
     
     def test_prompt_optimizer_functional(self):
         """Verify prompt optimizer is operational"""
-        from processing.learning.prompt_optimizer import PromptOptimizer
+        from learning.prompt_optimizer import PromptOptimizer
         optimizer = PromptOptimizer('data/winston_feedback.db')
         
         result = optimizer.optimize_prompt(
@@ -137,7 +137,7 @@ class TestRequirement2_SelfLearningStorage:
     
     def test_success_predictor_exists(self):
         """Verify success predictor module exists"""
-        from processing.learning.success_predictor import SuccessPredictor
+        from learning.success_predictor import SuccessPredictor
         predictor = SuccessPredictor('data/winston_feedback.db')
         assert predictor is not None
 
@@ -162,7 +162,7 @@ class TestRequirement3_ProactiveSelfDiagnosis:
     
     def test_configuration_validation(self):
         """Verify configuration validation works"""
-        from processing.config.config_loader import get_config
+        from generation.config.config_loader import get_config
         config = get_config()
         
         # Should not raise exceptions
@@ -280,7 +280,7 @@ class TestRequirement5_ValueDetection:
     
     def test_config_validation_on_load(self):
         """Verify config is validated on load"""
-        from processing.config.config_loader import get_config
+        from generation.config.config_loader import get_config
         
         # Should load without errors
         config = get_config()
@@ -415,12 +415,12 @@ class TestRequirement7_CodebaseQuality:
         """Verify all module imports are valid"""
         # Try importing key modules
         try:
-            from processing.config.config_loader import get_config
-            from processing.config.dynamic_config import DynamicConfig
+            from generation.config.config_loader import get_config
+            from generation.config.dynamic_config import DynamicConfig
             from processing.integrity.integrity_checker import IntegrityChecker
-            from processing.learning.pattern_learner import PatternLearner
-            from processing.learning.temperature_advisor import TemperatureAdvisor
-            from processing.learning.prompt_optimizer import PromptOptimizer
+            from learning.pattern_learner import PatternLearner
+            from learning.temperature_advisor import TemperatureAdvisor
+            from learning.prompt_optimizer import PromptOptimizer
             from processing.unified_orchestrator import UnifiedOrchestrator
         except ImportError as e:
             pytest.fail(f"Import error: {e}")
@@ -458,7 +458,7 @@ class TestE2ECompliance:
         """Verify system is operational end-to-end"""
         # This is a smoke test - just verify key components load
         try:
-            from processing.config.config_loader import get_config
+            from generation.config.config_loader import get_config
             from processing.unified_orchestrator import UnifiedOrchestrator
             
             config = get_config()

@@ -16,7 +16,7 @@ sys.path.insert(0, str(project_root))
 
 # pylint: disable=wrong-import-position
 from data.materials.materials import load_materials_cached
-from components.frontmatter.core.trivial_exporter import TrivialFrontmatterExporter
+from export.core.trivial_exporter import TrivialFrontmatterExporter
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
