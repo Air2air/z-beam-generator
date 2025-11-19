@@ -3,7 +3,7 @@
 
 # Learning Systems Control
 simple_mode:
-  enabled: true                          # Enable simple mode (disables learning)
+  enabled: false                         # DISABLED: Testing full validation with evaluation+learning
   fixed_temperature: 0.9                 # Fixed temperature (proven to work)
   max_attempts: 3                        # Simple retry limit
   temperature_increase_per_retry: 0.1    # Linear temp increase on retry
@@ -17,7 +17,7 @@ winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 # Component Lengths (word counts)
 component_lengths:
   caption:
-    default: 50
+    default: 75                            # Increased to meet Winston 300-char minimum
     extraction_strategy: before_after  # Extract before/after sections
   subtitle:
     default: 30

@@ -24,6 +24,14 @@ For advanced operations, use run_unified.py with the unified pipeline.
   # Skip integrity check (not recommended):
   python3 run.py --caption "Aluminum" --skip-integrity-check
 
+🔄 BATCH GENERATION (Meet Winston Minimums Efficiently):
+  python3 run.py --batch-subtitle "Aluminum,Steel,Copper"  # Batch generate subtitles (2-5 materials)
+  python3 run.py --batch-subtitle --all                     # Batch ALL subtitles (132 materials → ~33 batches)
+  python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate captions (fallback to individual)
+  
+  # Cost savings: 75% reduction vs individual Winston calls
+  # Winston minimum: 300 chars (subtitles ~180 chars each, need batching)
+
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
 
@@ -173,6 +181,10 @@ def main():
     parser.add_argument("--caption", help="Generate AI-powered caption")
     parser.add_argument("--subtitle", help="Generate AI-powered subtitle")
     parser.add_argument("--faq", help="Generate AI-powered FAQ")
+    
+    # Batch Generation Commands
+    parser.add_argument("--batch-subtitle", help="Generate subtitles for multiple materials (comma-separated) or --all")
+    parser.add_argument("--batch-caption", help="Generate captions for multiple materials (comma-separated) or --all")
     
     # Deployment Commands
     parser.add_argument("--deploy", action="store_true", help="Deploy to Next.js production site")
@@ -345,6 +357,16 @@ def main():
         except Exception as e:
             print(f"❌ Batch test failed: {e}")
             return 1
+    
+    if args.batch_subtitle:
+        from shared.commands.batch import handle_batch_subtitle_generation
+        result = handle_batch_subtitle_generation(args.batch_subtitle, skip_integrity_check=args.skip_integrity_check)
+        return result
+    
+    if args.batch_caption:
+        from shared.commands.batch import handle_batch_caption_generation
+        result = handle_batch_caption_generation(args.batch_caption, skip_integrity_check=args.skip_integrity_check)
+        return result
     
     if args.caption:
         result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
