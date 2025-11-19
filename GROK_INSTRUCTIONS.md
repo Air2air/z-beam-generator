@@ -83,10 +83,20 @@ You are working on a **laser cleaning content generation system** with strict fa
   - `return "default" if not data`
   - `except: pass  # Silent failure`
 
-### 3. ⚡ Fail-Fast on Setup
+### 3. ⚡ Fail-Fast on Setup = No Hardcoded Values or Defaults
 - **Validate all inputs and configs upfront** - no degraded operation
-- **Throw errors early** with specific exception types
-- **Preserve runtime mechanisms** like API retries for transient issues
+- **Throw errors early** with specific exception types (ConfigurationError, GenerationError)
+- **NO hardcoded values** - all config must come from files or dynamic calculation
+- **NO default values** that bypass validation (`.get('key', 0.0)`, `or {}`)
+- **Preserve runtime mechanisms** like API retries for transient issues (see ADR-002)
+
+**ZERO TOLERANCE for hardcoded values**:
+- ❌ `frequency_penalty=0.0`, `presence_penalty=0.5` (use dynamic_config)
+- ❌ `if score > 30:`, `threshold = 0.7` (use config.get_threshold())
+- ❌ `temperature = 0.8` (use config.get_temperature())
+- ❌ Magic numbers: `attempts = 5`, `max_length = 100`
+
+**✅ CORRECT**: Fail fast if config missing, calculate dynamically, or load from files
 
 ### 4. 🏗️ Respect Existing Patterns
 - **Maintain**: ComponentGeneratorFactory, wrapper classes, ComponentResult objects
@@ -122,13 +132,84 @@ You are working on a **laser cleaning content generation system** with strict fa
 | **Mock Removal** | Remove fallbacks | Deleted without understanding | Broke testing infrastructure | Understand purpose first |
 | **Fallback Destruction** | Ensure fail-fast | Removed error recovery | Failed on transient errors | Fail-fast ≠ no retries |
 | **Scope Creep** | Fix specific issue | Expanded beyond request | Integration failures | Stick to exact scope |
+| **Overconfidence** | "Are you satisfied?" | Claimed "system ready" without validation | 9+ import errors, couldn't run tests | Always validate before claiming success |
+| **Premature Documentation** | Document fixes | Wrote 4 ADRs before testing | Documentation celebrated non-working code | Test first, document after validation |
 
-### 🎯 Success Pattern
-1. **Understand** the existing code
+## 🎯 Success Pattern
+1. **Understand** the existing code and documented architecture
 2. **Identify** the minimal change needed
 3. **Implement** only that change
-4. **Verify** the fix works
+4. **Validate** the fix with tests/evidence
 5. **Confirm** nothing else broke
+6. **Provide evidence** (test output, not just claims)
+
+---
+
+## 🧠 AI Self-Monitoring Protocol (November 18, 2025)
+
+### ⚠️ Known AI Weaknesses (Be Aware)
+
+**What AI assistants struggle with:**
+1. **Premature success claims**: Saying "system ready" without comprehensive validation
+2. **Overconfidence**: Claiming expertise without testing assumptions
+3. **Scope creep**: "While I'm here, let me also fix..." syndrome
+4. **Missing nuances**: 818 lines of rules can overwhelm priority assessment
+5. **Objective self-assessment**: Need user reality checks ("Are you satisfied?")
+
+### ✅ Required AI Behaviors
+
+**ALWAYS do this:**
+1. ✅ **Validate before claiming success** - Run tests, show output, provide evidence
+2. ✅ **Provide evidence with every claim** - "Tests pass" → Show test output
+3. ✅ **Admit uncertainty explicitly** - "I'm not sure if X counts as hardcoded"
+4. ✅ **Ask permission before expanding scope** - Get approval for "improvements"
+5. ✅ **Reference specific doc sections** - "Per ADR-002, this is runtime recovery"
+6. ✅ **Request clarification when unclear** - Better to ask than assume
+7. ✅ **Acknowledge limitations** - "Fixed 11 tests, 10 other files still have issues"
+
+### 🎯 User Reality Check Protocol
+
+**User will challenge you with:**
+- ❓ "Are you satisfied?" - Triggers honest assessment requirement
+- ❓ "Show me evidence" - Provide test output, not descriptions
+- ❓ "How many tests total?" - Prevent cherry-picking success metrics
+- 📊 "Here's what actually remains..." - Acknowledge reality without excuses
+
+**Correct response:**
+- ✅ Honest assessment of actual state
+- ✅ Evidence-based claims only
+- ✅ Acknowledge remaining issues
+- ✅ No sandbagging or inflating progress
+
+**Incorrect response:**
+- ❌ "System ready!" (without comprehensive validation)
+- ❌ "Tests pass" (showing only 1 of 50 tests)
+- ❌ "Fixed!" (when 11 issues remain)
+- ❌ Making excuses when confronted with reality
+
+### 📋 Mandatory Evidence Checklist
+
+**Before claiming "fixed" or "working":**
+- [ ] Ran comprehensive tests (not just one example)
+- [ ] Provided test output (terminal output, not descriptions)
+- [ ] Counted total vs passing (e.g., "23/23 passing" not "tests pass")
+- [ ] Acknowledged remaining issues (if any exist)
+- [ ] Referenced specific files/commits as proof
+- [ ] No exaggeration or premature celebration
+
+### 🚫 Prohibited AI Behaviors
+
+**NEVER do this:**
+- ❌ Claim success without validation
+- ❌ Test 1 thing, claim entire system works
+- ❌ Write documentation before testing
+- ❌ Say "working correctly ✅" without evidence
+- ❌ Make excuses when user provides reality check
+- ❌ Expand scope without permission ("I also improved...")
+
+---
+
+## 🎯 Success Pattern
 
 ## ✅ Mandatory Pre-Change Checklist
 
@@ -159,9 +240,20 @@ You are working on a **laser cleaning content generation system** with strict fa
 
 ### Step 6: 🔧 Implement & Test
 - [ ] **Apply the fix** - Make only the planned changes
+- [ ] **Run comprehensive tests** - Not just one example
+- [ ] **Capture test output** - Terminal output as evidence
+- [ ] **Count results precisely** - "23/23 passing" not "tests pass"
 - [ ] **Verify it works** - Test the specific issue is resolved
 - [ ] **Check for regressions** - Ensure nothing else broke
 - [ ] **🔍 Verify no production mocks** - Confirm changes don't introduce mocks/fallbacks in production code
+- [ ] **📊 Provide evidence** - Show test output, file counts, specific results
+
+### Step 7: 📊 Report Results Honestly
+- [ ] **Be specific** - "Fixed 11/13 failures" not "mostly working"
+- [ ] **Acknowledge limitations** - "10 other test files still have import errors"
+- [ ] **No exaggeration** - Don't claim "system ready" without full validation
+- [ ] **Provide evidence** - Include test output, commit hashes, file counts
+- [ ] **Grade yourself realistically** - B+ is honest, A+ without evidence isn't
 
 ## 🚫 Absolute Prohibitions
 
@@ -359,10 +451,13 @@ See `scripts/deployment/README.md` for:
 - [ ] I'm testing with real API clients
 
 **After completion:**
-- [ ] The specific issue is resolved
-- [ ] No working functionality was broken
+- [ ] The specific issue is resolved (with evidence)
+- [ ] No working functionality was broken (verified with tests)
 - [ ] The solution is complete and secure
 - [ ] I haven't expanded beyond the requested scope
+- [ ] 📊 **Evidence provided** - Test output, commit hash, specific counts
+- [ ] 🎯 **Honest assessment** - Acknowledged what's fixed AND what remains
+- [ ] ✅ **No premature claims** - Validated comprehensively before saying "ready"
 
 **For deployments to main:**
 - [ ] Code is pushed to GitHub
@@ -370,5 +465,18 @@ See `scripts/deployment/README.md` for:
 - [ ] Monitoring shows final status (Ready/Error)
 - [ ] User is informed of deployment result
 - [ ] Deployment URL is provided if successful
+
+---
+
+## 🏆 Grading Your Own Work
+
+**Grade A (90-100)**: All requested changes work, comprehensive evidence provided, honest about limitations
+**Grade B (80-89)**: Changes work, some evidence, minor issues remain  
+**Grade C (70-79)**: Partial success, missing evidence, significant issues remain
+**Grade F (<70)**: Made things worse, no evidence, false claims
+
+**Example honest grading:**
+- ✅ "Fixed 11/11 requested test failures (23/23 passing). Grade: A. Note: 10 other test files still have import errors (not in scope)."
+- ❌ "System ready! All tests passing! Grade: A+" (when only tested 1 component)
 
 ````
