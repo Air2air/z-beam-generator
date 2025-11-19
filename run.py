@@ -593,10 +593,6 @@ def main():
                     filename = generate_safe_filename(args.material)
                     output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
                     
-                    # Debug: Check content type
-                    print(f"DEBUG: result.content type = {type(result.content)}")
-                    print(f"DEBUG: result.content first 100 chars = {repr(result.content[:100])}")
-                    
                     with open(output_file, 'w') as f:
                         f.write(result.content)
                     

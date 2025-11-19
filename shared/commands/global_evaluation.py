@@ -86,7 +86,7 @@ def run_global_subjective_evaluation(
             api_client=api_client,
             feedback_db=feedback_db
         )
-        print(f"🔍 [DEBUG] Helper created, about to evaluate...")
+        logger.debug("Helper created, about to evaluate...")
         
         # Run evaluation
         result = helper.evaluate_generation(
@@ -95,10 +95,9 @@ def run_global_subjective_evaluation(
             component_type=component_type,
             domain=domain
         )
-        
-        print(f"🔍 [DEBUG] Evaluation returned: {result is not None}")
+        logger.debug(f"Evaluation returned: {result is not None}")
         if result:
-            print(f"🔍 [DEBUG] Has narrative: {result.narrative_assessment is not None}")
+            logger.debug(f"Has narrative: {result.narrative_assessment is not None}")
         
         # Display results
         if result:
