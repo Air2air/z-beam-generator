@@ -271,122 +271,128 @@ class SubjectiveEvaluator:
             raise Exception(f"Subjective evaluation failed: {e}") from e
     
     def _parse_claude_response(self, response: str) -> SubjectiveEvaluationResult:
-        """Parse Claude's evaluation response"""
+        """
+        Parse Grok's three-dimension realism evaluation response
         
-        # Simple parsing (can be enhanced)
+        Expected format (November 18, 2025 - Three Realism Scores):
+        **Overall Realism (0-10)**: X
+        **Voice Authenticity (0-10)**: X
+        **Tonal Consistency (0-10)**: X
+        **Why these scores** (2-3 sentences explaining):
+        **AI Tendencies Found**: [comma-separated list or "none"]
+        **Theatrical Phrases Found**: [specific quotes or "none"]
+        **Pass/Fail**: [PASS/FAIL]
+        """
+        
         lines = response.split('\n')
         
-        dimension_scores = []
-        strengths = []
-        weaknesses = []
-        recommendations = []
-        overall_score = 7.0
-        narrative_assessment = None
-        # NEW: Realism metrics
-        realism_score = None
+        # Initialize variables for three-score format
+        overall_realism = None
         voice_authenticity = None
         tonal_consistency = None
+        narrative_assessment = None
         ai_tendencies = []
+        theatrical_phrases = []
+        pass_fail = None
         
-        # Extract narrative assessment - handle both inline and separate line formats
-        for i, line in enumerate(lines):
-            if '**Narrative Assessment**' in line or 'Narrative Assessment:' in line:
-                # Check if narrative is on the same line (after colon)
+        # Parse response
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            
+            # Extract Overall Realism (primary gate score)
+            if '**Overall Realism' in line or 'Overall Realism' in line:
                 if ':' in line:
-                    parts = line.split(':', 1)
-                    if len(parts) > 1:
-                        narrative_text = parts[1].strip()
-                        if narrative_text:
-                            narrative_assessment = narrative_text
-                            # Continue reading subsequent lines until we hit structured data
-                            for j in range(i+1, len(lines)):
-                                next_line = lines[j].strip()
-                                if next_line and not next_line.startswith('-') and not next_line.startswith('*'):
-                                    narrative_assessment += ' ' + next_line
-                                elif next_line.startswith('-') or next_line.startswith('*'):
-                                    break
-                            break
-                # Otherwise read following lines
-                else:
-                    narrative_lines = []
-                    for j in range(i+1, len(lines)):
-                        next_line = lines[j].strip()
-                        if next_line and not next_line.startswith('-') and not next_line.startswith('*'):
-                            narrative_lines.append(next_line)
-                        elif next_line.startswith('-') or next_line.startswith('*'):
-                            break
-                    if narrative_lines:
-                        narrative_assessment = ' '.join(narrative_lines)
-                    break
-        
-        # Extract realism analysis metrics
-        for i, line in enumerate(lines):
-            if '**Realism Analysis**' in line or 'Realism Analysis:' in line:
-                # Parse the structured realism data in following lines
+                    score_str = line.split(':', 1)[1].strip()
+                    # Extract number (handle "X/10", "X", or just "X" formats)
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        overall_realism = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract Voice Authenticity
+            elif '**Voice Authenticity' in line or 'Voice Authenticity' in line:
+                if ':' in line:
+                    score_str = line.split(':', 1)[1].strip()
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        voice_authenticity = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract Tonal Consistency
+            elif '**Tonal Consistency' in line or 'Tonal Consistency' in line:
+                if ':' in line:
+                    score_str = line.split(':', 1)[1].strip()
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        tonal_consistency = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract narrative explanation ("Why these scores")
+            elif '**Why these scores**' in line or 'Why these scores' in line:
+                # Read following lines until next ** marker
+                narrative_lines = []
                 for j in range(i+1, len(lines)):
-                    line_text = lines[j].strip()
-                    
-                    # Extract AI Tendencies
-                    if 'AI Tendencies Detected:' in line_text or 'ai tendencies detected:' in line_text.lower():
-                        # Extract the list portion after the colon
-                        if ':' in line_text:
-                            tendencies_str = line_text.split(':', 1)[1].strip()
-                            # Remove brackets if present
-                            tendencies_str = tendencies_str.strip('[]')
-                            # Split by comma and clean up
-                            if tendencies_str and tendencies_str.lower() != 'none':
-                                ai_tendencies = [t.strip() for t in tendencies_str.split(',') if t.strip()]
-                    
-                    # Extract Realism Score
-                    if 'Realism Score' in line_text:
-                        if ':' in line_text:
-                            score_str = line_text.split(':', 1)[1].strip()
-                            # Extract number (handle "X/10" or just "X" format)
-                            score_str = score_str.split('/')[0].strip()
-                            try:
-                                realism_score = float(score_str)
-                            except ValueError:
-                                pass
-                    
-                    # Extract Voice Authenticity
-                    if 'Voice Authenticity' in line_text:
-                        if ':' in line_text:
-                            score_str = line_text.split(':', 1)[1].strip()
-                            score_str = score_str.split('/')[0].strip()
-                            try:
-                                voice_authenticity = float(score_str)
-                            except ValueError:
-                                pass
-                    
-                    # Extract Tonal Consistency
-                    if 'Tonal Consistency' in line_text:
-                        if ':' in line_text:
-                            score_str = line_text.split(':', 1)[1].strip()
-                            score_str = score_str.split('/')[0].strip()
-                            try:
-                                tonal_consistency = float(score_str)
-                            except ValueError:
-                                pass
-                    
-                    # Stop if we hit another section marker
-                    if line_text.startswith('**') and 'Realism Analysis' not in line_text:
+                    next_line = lines[j].strip()
+                    if next_line and not next_line.startswith('**'):
+                        narrative_lines.append(next_line)
+                    elif next_line.startswith('**'):
                         break
+                if narrative_lines:
+                    narrative_assessment = ' '.join(narrative_lines)
+            
+            # Extract AI Tendencies
+            elif '**AI Tendencies Found**' in line or 'AI Tendencies Found' in line:
+                if ':' in line:
+                    tendencies_str = line.split(':', 1)[1].strip()
+                    # Remove brackets if present
+                    tendencies_str = tendencies_str.strip('[]')
+                    # Split by comma and clean up
+                    if tendencies_str and tendencies_str.lower() not in ('none', 'n/a', ''):
+                        ai_tendencies = [t.strip() for t in tendencies_str.split(',') if t.strip()]
+            
+            # Extract Theatrical Phrases
+            elif '**Theatrical Phrases Found**' in line or 'Theatrical Phrases Found' in line:
+                if ':' in line:
+                    phrases_str = line.split(':', 1)[1].strip()
+                    # Remove brackets if present
+                    phrases_str = phrases_str.strip('[]')
+                    # Split by comma and clean up
+                    if phrases_str and phrases_str.lower() not in ('none', 'n/a', ''):
+                        theatrical_phrases = [p.strip().strip('"\'') for p in phrases_str.split(',') if p.strip()]
+            
+            # Extract Pass/Fail status
+            elif '**Pass/Fail**' in line or 'Pass/Fail' in line:
+                if ':' in line:
+                    pass_fail = line.split(':', 1)[1].strip().upper()
+            
+            i += 1
         
-        # Parse response (simplified - enhance as needed)
-        # This would need actual parsing logic based on Claude's response format
+        # Use overall_realism as overall_score (primary gate score)
+        overall_score = overall_realism if overall_realism is not None else 7.0
         
+        # Determine pass/fail if not explicitly stated
+        if pass_fail is None:
+            passes = overall_score >= self.quality_threshold
+        else:
+            passes = 'PASS' in pass_fail
+        
+        # Return result with three-score dimensions matching database schema
         return SubjectiveEvaluationResult(
             overall_score=overall_score,
-            dimension_scores=dimension_scores,
-            strengths=strengths,
-            weaknesses=weaknesses,
-            recommendations=recommendations,
-            passes_quality_gate=overall_score >= self.quality_threshold,
+            dimension_scores=[],  # Legacy field - no longer populated
+            strengths=[],  # Simplified format uses narrative instead
+            weaknesses=[],  # Simplified format uses AI tendencies list
+            recommendations=[],  # Simplified format focuses on pass/fail
+            passes_quality_gate=passes,
             evaluation_time_ms=0,
             narrative_assessment=narrative_assessment,
-            realism_score=realism_score,
-            voice_authenticity=voice_authenticity,
-            tonal_consistency=tonal_consistency,
+            realism_score=overall_realism,  # Primary gate score
+            voice_authenticity=voice_authenticity,  # Author voice dimension
+            tonal_consistency=tonal_consistency,  # Professional tone dimension
             ai_tendencies=ai_tendencies if ai_tendencies else None,
             raw_response=response
         )

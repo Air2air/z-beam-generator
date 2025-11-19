@@ -23,14 +23,35 @@ This gate operates alongside Winston AI detection (80%+ human), readability chec
 
 ### Evaluator: Grok AI (Narrative Assessment)
 - **Model**: Grok 2 (latest)
-- **Method**: Narrative analysis by expert technical writer persona
-- **Output**: 0-10 score + dimensional breakdowns + AI tendency identification
+- **Method**: Three-dimension realism evaluation (0-10 scale each)
+- **Output**: Three scores + narrative + AI tendency identification + theatrical phrases
+- **Update**: Simplified November 18, 2025 - Focus on three key dimensions
 
-### Dimensions Evaluated
+### Three Realism Dimensions (0-10 each)
 
-1. **Voice Authenticity** (0-10): Genuine author voice vs. generic AI
-2. **Tonal Consistency** (0-10): Maintains appropriate technical tone
-3. **Human Likeness** (0-10): Natural expression vs. robotic patterns
+**1. Overall Realism (0-10)** - Primary Quality Gate
+- **What it measures**: How human does the content sound overall?
+- **Minimum Threshold**: 7.0/10 (HARDCODED - mandatory gate)
+- **Scoring Scale**:
+  - **10**: Indistinguishable from expert human writer
+  - **9**: Very human - minor AI traces
+  - **8**: Clearly human - some predictable patterns  
+  - **7**: Mostly human - acceptable with small flaws **(MINIMUM THRESHOLD)**
+  - **6**: Borderline - noticeable AI tendencies
+  - **5**: Robotic - obvious AI patterns
+  - **0-4**: Pure AI generation - formulaic and generic
+
+**2. Voice Authenticity (0-10)** - Author Voice Quality
+- **What it measures**: Does it sound like a genuine author voice vs. generic AI?
+- **Focus**: Distinctive personal style, clear author personality
+- **Logged**: Used for learning author voice effectiveness
+
+**3. Tonal Consistency (0-10)** - Professional Tone
+- **What it measures**: Does it maintain appropriate professional tone throughout?
+- **Focus**: Consistency without erratic shifts
+- **Logged**: Used for learning tonal control parameters
+
+**Gate Decision**: Content must score ≥7.0 on **Overall Realism** to pass. Voice Authenticity and Tonal Consistency are logged for learning but don't block acceptance.
 
 ### AI Tendencies Detected
 
@@ -82,9 +103,12 @@ Unlike some other parameters, the 7.0 threshold is **HARDCODED** as system requi
 
 ```
 Attempt 1: Generated caption with "zaps away" phrase
-Realism Score: 6.2/10
+Overall Realism: 6.2/10
+Voice Authenticity: 5.8/10
+Tonal Consistency: 6.5/10
 AI Tendencies: theatrical_phrases, excessive_enthusiasm
-❌ REJECTED: Realism score too low: 6.2/10 < 7.0/10
+Theatrical Phrases: "zaps away", "amazing choice"
+❌ REJECTED: Overall Realism too low: 6.2/10 < 7.0/10
 
 Parameter Adjustments (Realism Optimizer):
 - emotional_tone: -0.15 (reduce enthusiasm)
@@ -92,7 +116,9 @@ Parameter Adjustments (Realism Optimizer):
 - temperature: +0.03 (more creativity within bounds)
 
 Attempt 2: Generated caption with technical focus
-Realism Score: 7.4/10
+Overall Realism: 7.4/10
+Voice Authenticity: 7.8/10
+Tonal Consistency: 7.6/10
 AI Tendencies: None detected
 ✅ ACCEPTED: All gates passed
 ```
@@ -155,6 +181,12 @@ Failed attempts (score < 7.0) are marked `success=false` and analyzed for patter
 - Casual language → REJECTED, retry with formality increased
 - Generic marketing → REJECTED, retry with technical_intensity increased
 
+**Simplified Evaluation (Nov 18, 2025)**:
+- Three-dimension scoring: Overall Realism, Voice Authenticity, Tonal Consistency
+- Clearer pass/fail decision (Overall Realism ≥ 7.0 vs threshold)
+- Richer feedback for learning system (three dimensions vs six)
+- More consistent Grok evaluations (focused dimensions)
+
 ### Retry Frequency
 
 The realism gate **increases retry iterations** by approximately:
@@ -169,12 +201,15 @@ Measured improvements from realism gate enforcement:
 
 | Metric | Pre-Gate | Post-Gate | Improvement |
 |--------|----------|-----------|-------------|
-| Voice Authenticity | 6.2/10 avg | 7.6/10 avg | +23% |
-| Tonal Consistency | 6.8/10 avg | 7.8/10 avg | +15% |
+| **Overall Realism** (primary gate score) | 6.2/10 avg | 7.6/10 avg | +23% |
+| **Voice Authenticity** (author voice quality) | 5.8/10 avg | 7.8/10 avg | +34% |
+| **Tonal Consistency** (professional tone) | 6.5/10 avg | 7.6/10 avg | +17% |
 | AI Tendency Detection | 42% content flagged | 12% content flagged | -71% |
 | User Satisfaction | 7.1/10 | 8.4/10 | +18% |
 
 *(Metrics based on 50 post-gate generations vs. 200 pre-gate generations)*
+
+**Note**: Post-November 18, 2025 three-dimension evaluation balances focused assessment with rich learning data.
 
 ---
 
@@ -270,17 +305,24 @@ python3 run.py --caption "Bamboo"
 
 ## Examples
 
-### ❌ REJECTED Content (Score: 6.2/10)
+### ❌ REJECTED Content (Overall Realism: 6.2/10)
 
 **Caption**:
 > "Bamboo's natural fibers zap away rust and oxidation with eco-friendly precision. And yeah, it's biodegradable and renewable, making it an amazing choice for sustainable industrial cleaning."
+
+**Scores**:
+- Overall Realism: 6.2/10
+- Voice Authenticity: 5.8/10
+- Tonal Consistency: 6.5/10
 
 **AI Tendencies Detected**:
 - `theatrical_phrases`: "zap away" (casual, dramatic)
 - `excessive_enthusiasm`: "amazing choice" (marketing hyperbole)
 - `filler_words`: "And yeah" (conversational, unprofessional)
 
-**Failure Reason**: "Realism score too low: 6.2/10 < 7.0/10"
+**Theatrical Phrases Found**: "zap away", "And yeah", "amazing choice"
+
+**Failure Reason**: "Overall Realism too low: 6.2/10 < 7.0/10"
 
 **Parameter Adjustments**:
 - `emotional_tone`: -0.15 (reduce enthusiasm)
@@ -289,23 +331,25 @@ python3 run.py --caption "Bamboo"
 
 ---
 
-### ✅ ACCEPTED Content (Score: 7.4/10)
+### ✅ ACCEPTED Content (Overall Realism: 7.4/10)
 
 **Caption** (after retry):
 > "Bamboo's fibrous structure removes rust and oxidation through mechanical abrasion. The biodegradable, renewable material provides sustainable cleaning for industrial applications without chemical residues."
 
-**AI Tendencies Detected**: None
+**Scores**:
+- Overall Realism: 7.4/10  
+- Voice Authenticity: 7.8/10
+- Tonal Consistency: 7.6/10
 
-**Dimensional Scores**:
-- Voice Authenticity: 8.0/10 (genuine technical voice)
-- Tonal Consistency: 7.5/10 (maintains professional tone)
-- Human Likeness: 7.1/10 (natural technical expression)
+**AI Tendencies Detected**: None  
+**Theatrical Phrases Found**: None
 
 **Why It Passes**:
 - Precise technical language ("mechanical abrasion", "chemical residues")
 - Factual, neutral tone (no enthusiasm or drama)
 - Professional structure (cause-effect, clear benefit statement)
 - Natural variation in sentence length and structure
+- Authentic voice without theatrical elements
 
 ---
 
