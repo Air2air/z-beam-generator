@@ -777,141 +777,16 @@ class DynamicGenerator:
             # Get human score for later use
             human_score = detection.get('human_score', 0)
             
-            # Check for subjective language violations (November 16, 2025 integration)
-            # DISABLED IN SIMPLE MODE - skip subjective validation
-            subjective_valid = True  # Default to True (pass)
-            subjective_details = {}
-            if hasattr(self, '_simple_mode') and self._simple_mode:
-                self.logger.info("✅ Subjective validation skipped (simple mode enabled)")
-            else:
-                # Note: SubjectiveEvaluator has evaluate() method, not validate()
-                # This code path is disabled in simple mode
-                pass
-            
             # Check readability
             readability = self.validator.validate(text)
             self.logger.info(f"Readability: {readability['status']}")
             
-            # Per-iteration realism evaluation using unified facade (DISABLED IN SIMPLE MODE)
-            realism_score = None
-            voice_authenticity = None
-            tonal_consistency = None
-            ai_tendencies = None
-            realism_threshold = None
-            passes_realism_gate = True
+            # PHASE 3 REFACTOR: Realism evaluation moved to post-generation
+            # Only Winston + Readability used for retry decisions
+            # Realism, composite scoring, and learning happen AFTER final success
             
-            if hasattr(self, '_simple_mode') and self._simple_mode:
-                self.logger.info("⚡ Simple mode: Skipping realism evaluation for speed")
-            else:
-                try:
-                    from postprocessing.evaluation.realism_integration import RealismIntegration
-                    from shared.api.client_factory import create_api_client
-                    
-                    # Create Grok client for realism evaluation
-                    grok_client = create_api_client('grok')
-                    
-                    # Initialize realism integration facade (one-time per generation)
-                    if not hasattr(self, '_realism_integration') or self._realism_integration is None:
-                        self._realism_integration = RealismIntegration(
-                            api_client=grok_client,
-                            feedback_db=self.feedback_db,
-                            config={}
-                        )
-                    
-                    # Evaluate and log with adaptive threshold
-                    current_params = {
-                        'temperature': params['temperature'],
-                        'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
-                        'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
-                        'voice_params': params.get('voice_params', {})
-                    }
-                    
-                    realism_result_dict = self._realism_integration.evaluate_and_log(
-                        text=text,
-                        material=material_name,
-                        component_type=component_type,
-                        attempt=attempt,
-                        current_params=current_params
-                    )
-                    
-                    # Extract results
-                    realism_score = realism_result_dict['realism_score']
-                    realism_threshold = realism_result_dict['threshold']
-                    passes_realism_gate = realism_result_dict['passes_gate']
-                    ai_tendencies = realism_result_dict['ai_tendencies']
-                    voice_authenticity = realism_result_dict.get('voice_authenticity')
-                    tonal_consistency = realism_result_dict.get('tonal_consistency')
-                    
-                    # Apply suggested adjustments if provided
-                    if not passes_realism_gate and realism_result_dict.get('suggested_adjustments'):
-                        if attempt < max_attempts:
-                            suggested_adjustments = realism_result_dict['suggested_adjustments']
-                            self.logger.info("✅ [REALISM FEEDBACK] Parameter adjustments calculated")
-                    
-                    # Store for next iteration's parameter adjustments
-                    self._last_realism_score = realism_score
-                    self._last_ai_tendencies = ai_tendencies
-                    
-                    # Update learned patterns from evaluation result
-                    # This happens IMMEDIATELY after evaluation to capture learnings
-                    try:
-                        from learning.subjective_pattern_learner import SubjectivePatternLearner
-                        from pathlib import Path
-                        
-                        learner = SubjectivePatternLearner(
-                            patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
-                        )
-                        
-                        # Update patterns based on this evaluation
-                        learner.update_from_evaluation(
-                            evaluation_result={
-                                'overall_score': realism_score,
-                                'dimension_scores': {
-                                    'voice_authenticity': voice_authenticity,
-                                    'tonal_consistency': tonal_consistency
-                                },
-                                'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
-                                'violations': []  # Extract from realism_result if available
-                            },
-                            content=text,
-                            accepted=False,  # Will update to True later if accepted
-                            component_type=component_type,
-                            material_name=material_name
-                        )
-                        
-                        self.logger.info("📚 [LEARNING] Updated subjective evaluation patterns")
-                    except Exception as learn_error:
-                        self.logger.warning(f"Failed to update learned patterns: {learn_error}")
-                        
-                except Exception as e:
-                    self.logger.warning(f"Realism evaluation unavailable: {e}")
-                    # Continue without realism - Winston still works
-                    realism_score = None
-                    passes_realism_gate = True  # Don't fail if evaluation unavailable
-            
-            # Calculate composite quality score (Winston + Subjective + Readability)
-            composite_score = None
-            try:
-                from postprocessing.evaluation.composite_scorer import CompositeScorer
-                scorer = CompositeScorer()  # Uses learned weights
-                
-                composite_result = scorer.calculate(
-                    winston_human_score=human_score,
-                    subjective_overall_score=realism_score,  # 0-10 scale
-                    readability_score=readability.get('score')  # 0-100 scale
-                )
-                composite_score = composite_result['composite_score']
-                
-                self.logger.info(
-                    f"📊 Composite Quality: {composite_score:.1f}/100 "
-                    f"(Winston: {composite_result['winston_contribution']:.1f}, "
-                    f"Subjective: {composite_result.get('subjective_contribution', 0):.1f}, "
-                    f"Readability: {composite_result.get('readability_contribution', 0):.1f})"
-                )
-                self.logger.info(f"   Weights: {composite_result['weights_source']}")
-            except Exception as e:
-                self.logger.warning(f"Composite scoring failed: {e}, using Winston only")
-                composite_score = human_score  # Fallback to Winston score
+            # PHASE 3 REFACTOR: Composite scoring moved to post-generation
+            # Retry loop uses only Winston + Readability for decisions
             
             # Log to feedback database for learning
             try:
@@ -923,9 +798,9 @@ class DynamicGenerator:
                     winston_result=detection,
                     temperature=params['temperature'],
                     attempt=attempt,
-                    success=(ai_score <= self.ai_threshold and readability['is_readable'] and subjective_valid),
+                    success=(ai_score <= self.ai_threshold and readability['is_readable']),  # PHASE 3: Simplified
                     failure_analysis=failure_analysis,
-                    composite_quality_score=composite_score  # NEW: Store composite score
+                    composite_quality_score=None  # Will be set in post-generation evaluation
                 )
                 self.logger.info(f"📊 Logged result to database (ID: {detection_id})")
                 
@@ -984,35 +859,19 @@ class DynamicGenerator:
             except Exception as e:
                 self.logger.warning(f"Failed to log to database: {e}")
             
-            # Dual-objective decision: Winston (40%) + Realism (60%)
-            # Both contribute to learning on EVERY iteration (success or failure)
+            # PHASE 3 REFACTOR: Success decision based on Winston + Readability only
+            # Realism evaluation and learning happen AFTER success via helper methods
             human_score = detection.get('human_score', 0)
             learning_target = self.dynamic_config.base_config.get_learning_target()
             
-            # Combined scoring: Winston detection + Realism evaluation
-            if realism_score is not None:
-                # Normalize Winston to 0-10 scale, combine with realism
-                winston_normalized = human_score / 10.0  # 0-100 -> 0-10
-                combined_score = (winston_normalized * 0.4) + (realism_score * 0.6)
-                combined_score_percent = combined_score * 10  # Back to 0-100 scale
-                self.logger.info(f"📊 Combined Score: {combined_score:.1f}/10 (Winston: {human_score:.1f}%, Realism: {realism_score:.1f}/10)")
-            else:
-                # Fallback to Winston-only if realism unavailable
-                combined_score = human_score / 10.0
-                combined_score_percent = human_score
-                self.logger.info(f"📊 Winston Score: {human_score:.1f}% (target: {learning_target:.1f}%)")
-            
-            # NOTE: Adaptive realism threshold logic is now handled by RealismIntegration facade
-            # passes_realism_gate already set by realism_integration.evaluate_and_log()
+            # Winston-only scoring for retry decisions
+            self.logger.info(f"📊 Winston Score: {human_score:.1f}% (target: {learning_target:.1f}%)")
             
             passes_acceptance = (
                 ai_score <= self.ai_threshold and 
-                readability['is_readable'] and 
-                subjective_valid and
-                passes_realism_gate  # Realism is a quality gate
+                readability['is_readable']
             )
-            # Use combined score (Winston + Realism) for quality target decision
-            meets_quality_target = combined_score_percent >= learning_target
+            meets_quality_target = human_score >= learning_target
             
             # SIMPLE MODE: Accept immediately without quality checks
             if hasattr(self, '_simple_mode') and self._simple_mode:
@@ -1036,7 +895,7 @@ class DynamicGenerator:
             if passes_acceptance and meets_quality_target:
                 self.logger.info(
                     f"✅ Success on attempt {attempt} "
-                    f"(Combined: {combined_score_percent:.1f}%, target: {learning_target:.1f}%)"
+                    f"(Winston: {human_score:.1f}%, target: {learning_target:.1f}%)"
                 )
                 
                 # Extract component-specific content
@@ -1045,69 +904,34 @@ class DynamicGenerator:
                 # Write to Materials.yaml
                 self._write_to_materials_yaml(material_name, component_type, content_data)
                 
-                # Log realism-based learning for future parameter optimization
-                # This happens on SUCCESS to capture what worked
-                if realism_score is not None and ai_tendencies:
-                    try:
-                        from learning.realism_optimizer import RealismOptimizer
-                        optimizer = RealismOptimizer()
-                        
-                        # Get suggested parameter adjustments
-                        current_params = {
-                            'temperature': params['temperature'],
-                            'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
-                            'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
-                            'voice_params': params.get('voice_params', {})
-                        }
-                        
-                        suggested = optimizer.suggest_parameters(
-                            ai_tendencies=ai_tendencies,
-                            current_params=current_params
-                        )
-                        
-                        # Log to realism_learning table for future generations
-                        self.feedback_db.log_realism_learning(
-                            topic=material_name,
-                            component_type=component_type,
-                            ai_tendencies=ai_tendencies,
-                            suggested_params=suggested,
-                            realism_score=realism_score
-                        )
-                        
-                        self.logger.info(f"📚 [LEARNING] Realism data logged for successful iteration {attempt}")
-                    except Exception as learn_error:
-                        self.logger.warning(f"Failed to log realism learning: {learn_error}")
+                # PHASE 3 REFACTOR: Post-generation evaluation and learning
+                # This happens AFTER success, not during retry loop
+                self.logger.info("\n" + "="*80)
+                self.logger.info("📊 POST-GENERATION EVALUATION")
+                self.logger.info("="*80)
                 
-                # Update learned patterns to mark as accepted (success patterns)
-                if realism_score is not None:
-                    try:
-                        from learning.subjective_pattern_learner import SubjectivePatternLearner
-                        from pathlib import Path
-                        
-                        learner = SubjectivePatternLearner(
-                            patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
-                        )
-                        
-                        # Update patterns with successful acceptance
-                        learner.update_from_evaluation(
-                            evaluation_result={
-                                'overall_score': realism_score,
-                                'dimension_scores': {
-                                    'voice_authenticity': voice_authenticity,
-                                    'tonal_consistency': tonal_consistency
-                                },
-                                'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
-                                'violations': []
-                            },
-                            content=text,
-                            accepted=True,  # Mark as accepted for success pattern learning
-                            component_type=component_type,
-                            material_name=material_name
-                        )
-                        
-                        self.logger.info("📚 [LEARNING] Updated patterns with successful acceptance")
-                    except Exception as learn_error:
-                        self.logger.warning(f"Failed to update learned patterns on success: {learn_error}")
+                # Run realism evaluation and composite scoring
+                evaluation_result = self._evaluate_final_content(
+                    text=text,
+                    material_name=material_name,
+                    component_type=component_type,
+                    attempt=attempt,
+                    params=params,
+                    detection=detection,
+                    human_score=human_score
+                )
+                
+                # Update all learning systems for future sessions
+                self._update_learning_systems(
+                    text=text,
+                    material_name=material_name,
+                    component_type=component_type,
+                    params=params,
+                    evaluation_result=evaluation_result,
+                    success=True
+                )
+                
+                self.logger.info("="*80 + "\n")
                 
                 return {
                     'success': True,
@@ -1116,8 +940,8 @@ class DynamicGenerator:
                     'attempts': attempt,
                     'ai_score': ai_score,
                     'human_score': human_score,
-                    'realism_score': realism_score,
-                    'combined_score': combined_score,
+                    'realism_score': evaluation_result.get('realism_score'),
+                    'composite_score': evaluation_result.get('composite_score'),
                     'readability': readability
                 }
             
@@ -1125,11 +949,12 @@ class DynamicGenerator:
             if passes_acceptance and not meets_quality_target:
                 self.logger.warning(
                     f"⚠️  Passes acceptance but below quality target "
-                    f"(Winston: {combined_score:.1f}% < {learning_target:.1f}%)"
+                    f"(Winston: {human_score:.1f}% < {learning_target:.1f}%)"
                 )
                 # Continue to retry logic with parameter adjustments
             
-            # Log failure reasons with specific guidance
+            # PHASE 3 REFACTOR: Simplified failure logging (Winston + Readability only)
+            # Realism evaluation and learning moved to post-generation
             failure_reasons = []
             if ai_score > self.ai_threshold:
                 failure_reasons.append(f"AI score too high: {ai_score:.3f} > {self.ai_threshold:.3f}")
@@ -1147,58 +972,13 @@ class DynamicGenerator:
                     
             if not readability['is_readable']:
                 failure_reasons.append("Readability check failed")
-            if not subjective_valid:
-                failure_reasons.append("Subjective language violations detected")
-            if not passes_realism_gate:
-                failure_reasons.append(f"Realism score too low: {realism_score:.1f}/10 < 7.0/10")
             if not meets_quality_target:
-                failure_reasons.append(f"Quality target not met: {combined_score_percent:.1f}% < {learning_target}%")
+                failure_reasons.append(f"Quality target not met: {human_score:.1f}% < {learning_target}%")
             
             if failure_reasons:
                 self.logger.warning(f"❌ Attempt {attempt} failed: {', '.join(failure_reasons)}")
             if not readability['is_readable']:
                 self.logger.warning(f"❌ Readability failed: {readability['status']}")
-            if not subjective_valid:
-                self.logger.warning(f"❌ Subjective validation failed: {subjective_details['total_violations']} violations")
-            
-            # Log realism learning even for FAILURES - they provide valuable training data
-            # Knowing what NOT to do is as important as knowing what works
-            if realism_score is not None and ai_tendencies:
-                try:
-                    from learning.realism_optimizer import RealismOptimizer
-                    optimizer = RealismOptimizer()
-                    
-                    # Get suggested parameter adjustments based on what failed
-                    current_params = {
-                        'temperature': params['temperature'],
-                        'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
-                        'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
-                        'voice_params': params.get('voice_params', {})
-                    }
-                    
-                    suggested = optimizer.suggest_parameters(
-                        ai_tendencies=ai_tendencies,
-                        current_params=current_params
-                    )
-                    
-                    # APPLY IMMEDIATELY: Store adjustments for next attempt
-                    if attempt < max_attempts:
-                        suggested_adjustments = suggested
-                        self.logger.info(f"✅ [FEEDBACK] Calculated parameter adjustments for next attempt")
-                    
-                    # Log to realism_learning table - mark as failure for learning
-                    self.feedback_db.log_realism_learning(
-                        topic=material_name,
-                        component_type=component_type,
-                        ai_tendencies=ai_tendencies,
-                        suggested_params=suggested,
-                        realism_score=realism_score,
-                        success=False  # This iteration failed
-                    )
-                    
-                    self.logger.info(f"📚 [LEARNING] Failure pattern logged for iteration {attempt} (builds training data)")
-                except Exception as learn_error:
-                    self.logger.warning(f"Failed to log failure learning: {learn_error}")
             
             # SMART REGENERATION: Track improvement to detect stuck patterns
             improvement_history.append(human_score)
@@ -1330,6 +1110,231 @@ class DynamicGenerator:
         # Delegate all extraction to domain adapter
         # This keeps the generator fully generic and reusable
         return self.adapter.extract_content(text, component_type)
+    
+    def _evaluate_final_content(
+        self,
+        text: str,
+        material_name: str,
+        component_type: str,
+        attempt: int,
+        params: Dict,
+        detection: Dict,
+        human_score: float
+    ) -> Dict:
+        """
+        Evaluate final content after generation succeeds.
+        Runs realism scoring and composite quality calculation.
+        
+        This runs AFTER generation loop completes, not during retries.
+        
+        Args:
+            text: Generated content
+            material_name: Material name
+            component_type: Component type
+            attempt: Final attempt number
+            params: Generation parameters used
+            detection: Winston detection result
+            human_score: Winston human score
+            
+        Returns:
+            Dict with:
+                - realism_score: Realism score (0-10)
+                - composite_score: Combined quality score (0-100)
+                - ai_tendencies: Detected AI patterns
+                - voice_authenticity: Voice score
+                - tonal_consistency: Tone score
+                - passes_realism_gate: Whether realism threshold met
+        """
+        result = {
+            'realism_score': None,
+            'composite_score': None,
+            'ai_tendencies': None,
+            'voice_authenticity': None,
+            'tonal_consistency': None,
+            'passes_realism_gate': True,
+            'realism_threshold': None
+        }
+        
+        # Skip in simple mode
+        if hasattr(self, '_simple_mode') and self._simple_mode:
+            self.logger.info("⚡ Simple mode: Skipping post-generation evaluation")
+            # Use Winston-only composite score
+            result['composite_score'] = human_score
+            return result
+        
+        # Realism evaluation using unified facade
+        try:
+            from postprocessing.evaluation.realism_integration import RealismIntegration
+            from shared.api.client_factory import create_api_client
+            
+            # Create Grok client for realism evaluation
+            grok_client = create_api_client('grok')
+            
+            # Initialize realism integration facade (one-time)
+            if not hasattr(self, '_realism_integration') or self._realism_integration is None:
+                self._realism_integration = RealismIntegration(
+                    api_client=grok_client,
+                    feedback_db=self.feedback_db,
+                    config={}
+                )
+            
+            # Evaluate with adaptive threshold
+            current_params = {
+                'temperature': params['temperature'],
+                'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
+                'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
+                'voice_params': params.get('voice_params', {})
+            }
+            
+            realism_result_dict = self._realism_integration.evaluate_and_log(
+                text=text,
+                material=material_name,
+                component_type=component_type,
+                attempt=attempt,
+                current_params=current_params
+            )
+            
+            # Extract results
+            result['realism_score'] = realism_result_dict['realism_score']
+            result['realism_threshold'] = realism_result_dict['threshold']
+            result['passes_realism_gate'] = realism_result_dict['passes_gate']
+            result['ai_tendencies'] = realism_result_dict['ai_tendencies']
+            result['voice_authenticity'] = realism_result_dict.get('voice_authenticity')
+            result['tonal_consistency'] = realism_result_dict.get('tonal_consistency')
+            
+            self.logger.info(
+                f"📊 Post-Generation Realism: {result['realism_score']:.1f}/10 "
+                f"(threshold: {result['realism_threshold']:.1f}, "
+                f"gate: {'✅ PASS' if result['passes_realism_gate'] else '❌ FAIL'})"
+            )
+            
+        except Exception as e:
+            self.logger.warning(f"Post-generation realism evaluation unavailable: {e}")
+            # Continue without realism - Winston still works
+        
+        # Calculate composite quality score (Winston + Realism + Readability)
+        try:
+            from postprocessing.evaluation.composite_scorer import CompositeScorer
+            scorer = CompositeScorer()
+            
+            composite_result = scorer.calculate(
+                winston_human_score=human_score,
+                subjective_overall_score=result['realism_score'],
+                readability_score=100.0  # Assume passed if we got here
+            )
+            result['composite_score'] = composite_result['composite_score']
+            
+            self.logger.info(
+                f"📊 Composite Quality: {result['composite_score']:.1f}/100 "
+                f"(Winston: {composite_result['winston_contribution']:.1f}, "
+                f"Subjective: {composite_result.get('subjective_contribution', 0):.1f}, "
+                f"Readability: {composite_result.get('readability_contribution', 0):.1f})"
+            )
+            self.logger.info(f"   Weights: {composite_result['weights_source']}")
+        except Exception as e:
+            self.logger.warning(f"Composite scoring failed: {e}, using Winston only")
+            result['composite_score'] = human_score
+        
+        return result
+    
+    def _update_learning_systems(
+        self,
+        text: str,
+        material_name: str,
+        component_type: str,
+        params: Dict,
+        evaluation_result: Dict,
+        success: bool
+    ) -> None:
+        """
+        Update all learning systems after generation completes.
+        
+        This runs AFTER generation and evaluation, affecting future sessions only.
+        Current session uses stable parameters throughout.
+        
+        Args:
+            text: Generated content
+            material_name: Material name
+            component_type: Component type
+            params: Generation parameters used
+            evaluation_result: Results from _evaluate_final_content()
+            success: Whether generation succeeded
+        """
+        realism_score = evaluation_result.get('realism_score')
+        ai_tendencies = evaluation_result.get('ai_tendencies')
+        voice_authenticity = evaluation_result.get('voice_authenticity')
+        tonal_consistency = evaluation_result.get('tonal_consistency')
+        
+        # Skip in simple mode
+        if hasattr(self, '_simple_mode') and self._simple_mode:
+            self.logger.info("⚡ Simple mode: Skipping learning system updates")
+            return
+        
+        # Update subjective pattern learner
+        if realism_score is not None:
+            try:
+                from learning.subjective_pattern_learner import SubjectivePatternLearner
+                from pathlib import Path
+                
+                learner = SubjectivePatternLearner(
+                    patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
+                )
+                
+                learner.update_from_evaluation(
+                    evaluation_result={
+                        'overall_score': realism_score,
+                        'dimension_scores': {
+                            'voice_authenticity': voice_authenticity,
+                            'tonal_consistency': tonal_consistency
+                        },
+                        'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
+                        'violations': []
+                    },
+                    content=text,
+                    accepted=success,
+                    component_type=component_type,
+                    material_name=material_name
+                )
+                
+                status = "successful acceptance" if success else "failure patterns"
+                self.logger.info(f"📚 [LEARNING] Updated subjective patterns with {status}")
+            except Exception as learn_error:
+                self.logger.warning(f"Failed to update learned patterns: {learn_error}")
+        
+        # Update realism optimizer
+        if realism_score is not None and ai_tendencies:
+            try:
+                from learning.realism_optimizer import RealismOptimizer
+                optimizer = RealismOptimizer()
+                
+                current_params = {
+                    'temperature': params['temperature'],
+                    'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
+                    'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
+                    'voice_params': params.get('voice_params', {})
+                }
+                
+                suggested = optimizer.suggest_parameters(
+                    ai_tendencies=ai_tendencies,
+                    current_params=current_params
+                )
+                
+                # Log to realism_learning table for future generations
+                self.feedback_db.log_realism_learning(
+                    topic=material_name,
+                    component_type=component_type,
+                    ai_tendencies=ai_tendencies,
+                    suggested_params=suggested,
+                    realism_score=realism_score,
+                    success=success
+                )
+                
+                status = "success" if success else "failure"
+                self.logger.info(f"📚 [LEARNING] Realism optimizer updated with {status} data")
+            except Exception as learn_error:
+                self.logger.warning(f"Failed to update realism optimizer: {learn_error}")
+        
+        self.logger.info("✅ All learning systems updated for future sessions")
     
     def _extract_caption_DEPRECATED(self, text: str) -> Dict[str, str]:
         """
