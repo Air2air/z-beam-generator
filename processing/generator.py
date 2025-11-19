@@ -61,19 +61,26 @@ class DynamicGenerator:
     - All learning persists to database for cross-session improvement
     """
     
-    def __init__(self, api_client, adapter=None):
+    def __init__(self, api_client, adapter=None, random_seed=None):
         """
         Initialize dynamic generator.
         
         Args:
             api_client: API client for content generation (required)
             adapter: Domain adapter for extraction (optional, auto-creates MaterialsAdapter if None)
+            random_seed: Random seed for reproducible generation (optional, for batch testing)
         """
         if not api_client:
             raise ValueError("API client required for content generation")
         
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
+        self.random_seed = random_seed
+        
+        # Set random seed for reproducibility if provided
+        if random_seed is not None:
+            random.seed(random_seed)
+            self.logger.info(f"🎲 Random seed set to {random_seed} for reproducible generation")
         
         # Initialize or use provided adapter
         if adapter is None:
@@ -473,8 +480,10 @@ class DynamicGenerator:
                 f"temp={base_temperature:.2f}"
             )
         
-        # BEST PRACTICE 3: Exploration rate (15% of time, try random variations)
-        if attempt > 1 and random.random() < 0.15:
+        # BEST PRACTICE 3: Exploration rate (5% of time, try random variations)
+        # Disable exploration when random_seed is set for reproducibility
+        exploration_enabled = self.random_seed is None
+        if exploration_enabled and attempt > 1 and random.random() < 0.05:
             self.logger.info("🔍 EXPLORATION MODE: Trying random parameter variation")
             base_temperature += random.uniform(-0.10, 0.10)
             base_temperature = max(0.3, min(1.0, base_temperature))
@@ -615,7 +624,11 @@ class DynamicGenerator:
             
             # Build prompt with dynamic parameters
             import time
-            variation_seed = int(time.time() * 1000) + attempt
+            # Use consistent seed for reproducibility if random_seed is set
+            if self.random_seed is not None:
+                variation_seed = self.random_seed + attempt
+            else:
+                variation_seed = int(time.time() * 1000) + attempt
             
             prompt = self.prompt_builder.build_unified_prompt(
                 topic=material_name,
