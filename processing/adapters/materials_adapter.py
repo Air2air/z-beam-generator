@@ -261,12 +261,53 @@ class MaterialsAdapter(DataSourceAdapter):
         
         return facts
     
+    def extract_content(
+        self,
+        text: str,
+        component_type: str
+    ) -> Any:
+        """
+        Extract content using strategy pattern based on component type.
+        
+        Strategy is determined by ComponentRegistry.get_spec(component_type).extraction_strategy
+        
+        Args:
+            text: Generated text
+            component_type: Component type
+            
+        Returns:
+            Extracted content in appropriate format
+            
+        Raises:
+            ValueError: If extraction fails or unknown strategy
+        """
+        from processing.generation.component_specs import ComponentRegistry
+        
+        # Get extraction strategy for this component
+        try:
+            spec = ComponentRegistry.get_spec(component_type)
+            strategy = spec.extraction_strategy
+        except KeyError:
+            # Fallback to 'raw' for unknown components
+            strategy = 'raw'
+        
+        # Apply strategy
+        if strategy == 'raw':
+            return text.strip()
+        elif strategy == 'before_after':
+            return self._extract_before_after(text)
+        elif strategy == 'json_list':
+            return self._extract_json_list(text)
+        else:
+            raise ValueError(f"Unknown extraction strategy: {strategy}")
+    
     def extract_component_content(
         self,
         text: str,
         component_type: str
     ) -> Any:
         """
+        DEPRECATED: Use extract_content() instead.
         Extract component-specific content from generated text.
         
         Args:
@@ -276,17 +317,8 @@ class MaterialsAdapter(DataSourceAdapter):
         Returns:
             Extracted content in appropriate format
         """
-        if component_type == 'caption':
-            return self._extract_caption(text)
-        elif component_type == 'faq':
-            return self._extract_faq(text)
-        elif component_type == 'subtitle':
-            return text.strip()
-        elif component_type == 'description':
-            return text.strip()
-        else:
-            # Default: return as-is
-            return text.strip()
+        # Delegate to new strategy-based method
+        return self.extract_content(text, component_type)
     
     def _extract_before_after(self, text: str) -> Dict[str, str]:
         """
