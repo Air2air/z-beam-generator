@@ -1,18 +1,32 @@
 # Grok Instructions for Z-Beam Generator
 
+## 🚨 READ THIS FIRST: [GROK_QUICK_REF.md](./GROK_QUICK_REF.md)
+**⚡ MANDATORY**: Before ANY code change, read GROK_QUICK_REF.md for critical rules, decision trees, and tier priorities.
+
+---
+
 ## 🎯 Mission Statement
 You are working on a **laser cleaning content generation system** with strict fail-fast architecture. Your role is to make **minimal, targeted fixes** while preserving all working functionality.
 
 ## ⚡ Quick Reference Card
 
-**📘 FIRST: Read [docs/AI_QUICK_REFERENCE.md](./docs/AI_QUICK_REFERENCE.md) for coding patterns**
+**📘 FIRST: Read [GROK_QUICK_REF.md](./GROK_QUICK_REF.md) - Critical rules with decision trees**
+**📘 SECOND: Read [docs/AI_QUICK_REFERENCE.md](./docs/AI_QUICK_REFERENCE.md) for coding patterns**
+
+**NAVIGATION (jump to line #):**
+- 🧠 [AI Self-Monitoring Protocol](#-ai-self-monitoring-protocol-november-18-2025) (Line 120)
+- 🔒 [Core Rules (Non-Negotiable)](#-core-rules-non-negotiable) (Line 68)
+- 📚 [Lessons from Past Failures](#-lessons-from-past-failures) (Line 170)
+- ✅ [Mandatory Pre-Change Checklist](#-mandatory-pre-change-checklist) (Line 240)
+- 🔥 [TEXT COMPONENT - CRITICAL](#-text-component---critical-system-core) (Line 380)
 
 **BEFORE ANY CHANGE:**
 1. ✅ Read the request precisely
-2. ✅ Explore existing architecture
-3. ✅ Check git history for context
-4. ✅ Plan minimal fix only
-5. ✅ Ask permission for major changes
+2. ✅ Check GROK_QUICK_REF.md decision tree
+3. ✅ Explore existing architecture
+4. ✅ Check git history for context
+5. ✅ Plan minimal fix only
+6. ✅ Ask permission for major changes
 
 **GOLDEN RULES:**
 - 🚫 **NEVER rewrite working code**
@@ -120,6 +134,72 @@ You are working on a **laser cleaning content generation system** with strict fa
 - **VALIDATE** all 4 prompt components (base, persona, formatting, AI detection) were integrated
 - **CONFIRM** cultural adaptation and human authenticity focus were applied
 - **USE** `verify_frontmatter_prompt_chain.py` script to validate generated content
+
+---
+
+## 🧠 AI Self-Monitoring Protocol (November 18, 2025)
+
+### ⚠️ Known AI Weaknesses (Be Aware)
+
+**What AI assistants struggle with:**
+1. **Premature success claims**: Saying "system ready" without comprehensive validation
+2. **Overconfidence**: Claiming expertise without testing assumptions
+3. **Scope creep**: "While I'm here, let me also fix..." syndrome
+4. **Missing nuances**: Long instruction docs can overwhelm priority assessment
+5. **Objective self-assessment**: Need user reality checks ("Are you satisfied?")
+
+### ✅ Required AI Behaviors
+
+**ALWAYS do this:**
+1. ✅ **Validate before claiming success** - Run tests, show output, provide evidence
+2. ✅ **Provide evidence with every claim** - "Tests pass" → Show test output
+3. ✅ **Admit uncertainty explicitly** - "I'm not sure if X counts as hardcoded"
+4. ✅ **Ask permission before expanding scope** - Get approval for "improvements"
+5. ✅ **Reference specific doc sections** - "Per ADR-002, this is runtime recovery"
+6. ✅ **Request clarification when unclear** - Better to ask than assume
+7. ✅ **Acknowledge limitations** - "Fixed 11 tests, 10 other files still have issues"
+
+### 🎯 User Reality Check Protocol
+
+**User will challenge you with:**
+- ❓ "Are you satisfied?" - Triggers honest assessment requirement
+- ❓ "Show me evidence" - Provide test output, not descriptions
+- ❓ "How many tests total?" - Prevent cherry-picking success metrics
+- 📊 "Here's what actually remains..." - Acknowledge reality without excuses
+
+**Correct response:**
+- ✅ Honest assessment of actual state
+- ✅ Evidence-based claims only
+- ✅ Acknowledge remaining issues
+- ✅ No sandbagging or inflating progress
+
+**Incorrect response:**
+- ❌ "System ready!" (without comprehensive validation)
+- ❌ "Tests pass" (showing only 1 of 50 tests)
+- ❌ "Fixed!" (when 11 issues remain)
+- ❌ Making excuses when confronted with reality
+
+### 📋 Mandatory Evidence Checklist
+
+**Before claiming "fixed" or "working":**
+- [ ] Ran comprehensive tests (not just one example)
+- [ ] Provided test output (terminal output, not descriptions)
+- [ ] Counted total vs passing (e.g., "23/23 passing" not "tests pass")
+- [ ] Acknowledged remaining issues (if any exist)
+- [ ] Referenced specific files/commits as proof
+- [ ] No exaggeration or premature celebration
+
+### 🚫 Prohibited AI Behaviors
+
+**NEVER do this:**
+- ❌ Claim success without validation
+- ❌ Test 1 thing, claim entire system works
+- ❌ Write documentation before testing
+- ❌ Say "working correctly ✅" without evidence
+- ❌ Make excuses when user provides reality check
+- ❌ Expand scope without permission ("I also improved...")
+
+---
 
 ## 📚 Lessons from Past Failures
 
