@@ -20,7 +20,15 @@
 → **SYSTEM INDEX**: `docs/INDEX.md` - Comprehensive navigation
 
 ### **Working on Code/Architecture?**
+→ **READ FIRST**: `docs/SYSTEM_INTERACTIONS.md` - Understand cascading effects before changing anything
+→ **THEN CHECK**: `docs/decisions/README.md` - Architecture Decision Records (WHY things work this way)
 → **Continue below** for development guidelines and system rules
+
+### **⚠️ Before Making ANY Change**
+1. **Check `docs/SYSTEM_INTERACTIONS.md`**: What will your change affect?
+2. **Check `docs/decisions/`**: Is there an ADR about this?
+3. **Check git history**: Has this been tried and failed before?
+4. **Plan minimal fix**: Address only the specific issue
 
 ---
 
