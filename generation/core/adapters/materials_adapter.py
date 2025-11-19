@@ -352,9 +352,12 @@ class MaterialsAdapter(DataSourceAdapter):
             # Fallback: split by paragraphs
             paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
             if len(paragraphs) < 2:
-                raise ValueError(f"Could not extract before/after sections: {text[:200]}")
-            before_text = paragraphs[0]
-            after_text = paragraphs[1]
+                # Only one paragraph - treat as "before" caption only
+                before_text = paragraphs[0] if paragraphs else text.strip()
+                after_text = ''
+            else:
+                before_text = paragraphs[0]
+                after_text = paragraphs[1]
         else:
             before_text = before_match.group(1).strip()
             after_text = after_match.group(1).strip()
@@ -381,32 +384,85 @@ class MaterialsAdapter(DataSourceAdapter):
         Extract list items from JSON structure in text (used by faq component).
         
         Args:
-            text: Generated FAQ text (should contain JSON)
+            text: Generated FAQ text (should contain JSON or markdown list)
             
         Returns:
             List of FAQ items (dicts with 'question' and 'answer')
             
         Raises:
-            ValueError: If JSON extraction fails
+            ValueError: If extraction fails
         """
-        # Find JSON structure
+        # Try Strategy 1: JSON structure
         faq_pattern = r'\{\s*"faq"\s*:\s*\[(.*?)\]\s*\}'
         matches = list(re.finditer(faq_pattern, text, re.DOTALL))
         
-        if not matches:
-            raise ValueError("Could not find FAQ JSON in response")
-        
-        # Use last match (in case of multiple)
-        json_str = matches[-1].group(0)
-        
-        try:
-            data = json.loads(json_str)
-            faq_list = data.get('faq', [])
+        if matches:
+            # Use last match (in case of multiple)
+            json_str = matches[-1].group(0)
             
-            if not faq_list:
-                raise ValueError("FAQ list is empty")
-            
+            try:
+                data = json.loads(json_str)
+                faq_list = data.get('faq', [])
+                
+                if faq_list:
+                    return faq_list
+            except json.JSONDecodeError:
+                pass  # Fall through to markdown parsing
+        
+        # Try Strategy 2: Markdown Q&A format with **question** markers (Grok pattern)
+        # Grok generates: **[question text]** \n [answer]
+        # Questions can end with ? or . (sometimes statements like "Tell me about...")
+        nested_pattern = r'\*\*([^*]+?[.?])\*\*\s*\n(.+?)(?=\n\*\*|$)'
+        nested_matches = re.findall(nested_pattern, text, re.DOTALL)
+        
+        if nested_matches and len(nested_matches) >= 1:  # Accept even single Q&A if in bold format
+            faq_list = []
+            for question, answer in nested_matches:
+                faq_list.append({
+                    'question': question.strip(),
+                    'answer': answer.strip()
+                })
             return faq_list
-            
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Invalid FAQ JSON: {e}")
+        
+        # Try Strategy 3: Top-level **Q1:** markers  
+        # Look for "**Q1:**" or "**Q:**" followed by answer text
+        qa_pattern = r'\*\*Q\d+:?\*\*\s*(.+?)\n\n(.+?)(?=\*\*Q\d+:?\*\*|$)'
+        qa_matches = re.findall(qa_pattern, text, re.DOTALL)
+        
+        if qa_matches:
+            faq_list = []
+            for question, answer in qa_matches:
+                faq_list.append({
+                    'question': question.strip(),
+                    'answer': answer.strip()
+                })
+            return faq_list
+        
+        # Try Strategy 4: Plain Q: / A: format (fallback)
+        qa_pattern2 = r'(?:Q\d*|Question\d*):\s*(.+?)\s*(?:A\d*|Answer\d*):\s*(.+?)(?=(?:Q\d*|Question\d*|$))'
+        qa_matches2 = re.findall(qa_pattern2, text, re.DOTALL | re.IGNORECASE)
+        
+        if qa_matches2:
+            faq_list = []
+            for question, answer in qa_matches2:
+                faq_list.append({
+                    'question': question.strip(),
+                    'answer': answer.strip()
+                })
+            return faq_list
+        
+        # Try Strategy 3: Markdown with header format (### Title)
+        # Split by headers and look for Q&A pairs
+        header_pattern = r'###\s*(.+?)\n\n(.+?)(?=###|$)'
+        header_matches = re.findall(header_pattern, text, re.DOTALL)
+        
+        if header_matches:
+            faq_list = []
+            for question, answer in header_matches:
+                faq_list.append({
+                    'question': question.strip(),
+                    'answer': answer.strip()
+                })
+            return faq_list
+        
+        raise ValueError("Could not extract FAQ Q&A pairs from response")

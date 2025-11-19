@@ -13,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from processing.config.author_config_loader import get_author_config, get_author_config_loader
+from generation.config.author_config_loader import get_author_config, get_author_config_loader
 from processing.config.dynamic_config import DynamicConfig
 
 

@@ -21,7 +21,7 @@ from shared.schemas.base import (
     ResearchResult,
     FieldResearchSpec
 )
-from materials.research.factory import ResearcherFactory
+from domains.materials.research.factory import ResearcherFactory
 from components.universal.text_generator import UniversalTextGenerator
 from components.universal.faq_generator import UniversalFAQGenerator
 from components.universal.caption_generator import UniversalCaptionGenerator

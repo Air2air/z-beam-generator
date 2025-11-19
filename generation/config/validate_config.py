@@ -18,7 +18,7 @@ from pathlib import Path
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from processing.config.config_loader import ProcessingConfig
+from generation.config.config_loader import ProcessingConfig
 
 
 def main():

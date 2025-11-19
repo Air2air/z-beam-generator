@@ -44,9 +44,9 @@ from typing import Dict, List, Optional, Any
 from pathlib import Path
 import sqlite3
 
-from processing.config.config_loader import get_config
-from processing.config.dynamic_config import DynamicConfig
-from processing.config.scale_mapper import normalize_slider, normalize_sliders
+from generation.config.config_loader import get_config
+from generation.config.dynamic_config import DynamicConfig
+from generation.config.scale_mapper import normalize_slider, normalize_sliders
 
 
 class IntegrityStatus(Enum):

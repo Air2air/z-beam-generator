@@ -20,16 +20,16 @@ from typing import Dict, Optional, List
 
 from shared.generators.component_generators import APIComponentGenerator, ComponentResult
 from export.ordering.field_ordering_service import FieldOrderingService
-from materials.research.unified_material_research import PropertyValueResearcher
-from materials.services.template_service import TemplateService
-from materials.services.pipeline_process_service import PipelineProcessService
+from export.research.property_value_researcher import PropertyValueResearcher
+from domains.materials.services.template_service import TemplateService
+from domains.materials.services.pipeline_process_service import PipelineProcessService
 
 # Unified property management service (replaces PropertyDiscoveryService + PropertyResearchService)
-from materials.services.property_manager import PropertyManager
+from domains.materials.services.property_manager import PropertyManager
 from export.core.property_processor import PropertyProcessor
 
 # Completeness validation (100% data coverage enforcement)
-from materials.validation.completeness_validator import CompletenessValidator
+from domains.materials.validation.completeness_validator import CompletenessValidator
 
 # Import unified exception classes from validation system
 from shared.validation.errors import (
@@ -681,7 +681,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             
                             # Use CategoryRangeResearcher to find and populate the missing range
                             try:
-                                from materials.research.category_range_researcher import CategoryRangeResearcher
+                                from domains.materials.research.category_range_researcher import CategoryRangeResearcher
                                 researcher = CategoryRangeResearcher()
                                 
                                 # Research the missing property range for this category
@@ -765,7 +765,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             
                             # Use CategoryRangeResearcher to find and populate the missing range
                             try:
-                                from materials.research.category_range_researcher import CategoryRangeResearcher
+                                from domains.materials.research.category_range_researcher import CategoryRangeResearcher
                                 researcher = CategoryRangeResearcher()
                                 
                                 # Research the missing property range for this category

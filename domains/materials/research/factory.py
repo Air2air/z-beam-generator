@@ -10,13 +10,13 @@ Date: October 29, 2025
 
 from typing import Dict, Type, Any
 from shared.schemas.base import FieldType
-from materials.research.base import ContentResearcher
-from materials.research.property_researcher import PropertyResearcher
-from materials.research.application_researcher import ApplicationResearcher
-from materials.research.specification_researcher import SpecificationResearcher
-from materials.research.standard_researcher import StandardResearcher
-from materials.research.attribute_researcher import AttributeResearcher
-from materials.research.relationship_researcher import RelationshipResearcher
+from domains.materials.research.base import ContentResearcher
+from domains.materials.research.property_researcher import PropertyResearcher
+from domains.materials.research.application_researcher import ApplicationResearcher
+from domains.materials.research.specification_researcher import SpecificationResearcher
+from domains.materials.research.standard_researcher import StandardResearcher
+from domains.materials.research.attribute_researcher import AttributeResearcher
+from domains.materials.research.relationship_researcher import RelationshipResearcher
 
 
 class ResearcherFactory:

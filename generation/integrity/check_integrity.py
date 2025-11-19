@@ -6,15 +6,15 @@ System Integrity Check CLI
 Standalone tool to verify system health.
 
 Usage:
-    python3 -m processing.integrity.check_integrity        # Run all checks
-    python3 -m processing.integrity.check_integrity --quick # Run fast checks only
-    python3 -m processing.integrity.check_integrity --json  # Output JSON
+    python3 -m generation.integrity.check_integrity        # Run all checks
+    python3 -m generation.integrity.check_integrity --quick # Run fast checks only
+    python3 -m generation.integrity.check_integrity --json  # Output JSON
 """
 
 import sys
 import json
 import argparse
-from processing.integrity import IntegrityChecker
+from generation.integrity import IntegrityChecker
 
 
 def main():

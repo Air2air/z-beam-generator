@@ -12,7 +12,7 @@ Philosophy:
 - No manual tuning of advanced settings needed
 
 Usage:
-    from processing.dynamic_config import DynamicConfig
+    from generation.config.dynamic_config import DynamicConfig
     
     config = DynamicConfig()
     
@@ -24,9 +24,9 @@ Usage:
 
 import math
 from typing import Dict, Any, Optional
-from processing.config.config_loader import get_config
-from processing.parameters.registry import get_registry
-from processing.parameters.base import BaseParameter
+from generation.config.config_loader import get_config
+# from parameters.registry import get_registry  # NOTE: registry removed during reorganization
+# from parameters.base import BaseParameter  # NOTE: not needed for current implementation
 
 
 class DynamicConfig:
@@ -46,7 +46,7 @@ class DynamicConfig:
         """
         self.base_config = base_config if base_config is not None else get_config()
         self.use_modular = self.base_config.config.get('use_modular_parameters', False)
-        self._parameter_instances: Optional[Dict[str, BaseParameter]] = None
+        self._parameter_instances: Optional[Dict[str, Any]] = None  # Changed from BaseParameter to Any
     
     # =========================================================================
     # API GENERATION PARAMETERS (Dynamic)
@@ -321,75 +321,33 @@ class DynamicConfig:
     # VOICE INTENSITY PARAMETERS (Dynamic)
     # =========================================================================
     
-    def get_parameter_instances(self) -> Dict[str, BaseParameter]:
+    def get_parameter_instances(self) -> Dict[str, Any]:
         """
         Get or create modular parameter instances.
         
-        Returns:
-            Dict mapping parameter names to instances
-        """
-        if self._parameter_instances is None:
-            registry = get_registry()
-            
-            # Create config dict with all 14 parameters (Phase 3 complete - November 16, 2025)
-            param_config = {
-                # Phase 1 (original 4)
-                'sentence_rhythm_variation': self.base_config.get_sentence_rhythm_variation(),
-                'imperfection_tolerance': self.base_config.get_imperfection_tolerance(),
-                'jargon_removal': self.base_config.config.get('jargon_removal', 7),
-                'professional_voice': self.base_config.config.get('professional_voice', 5),
-                
-                # Phase 3 - Voice parameters (4)
-                'author_voice_intensity': self.base_config.config.get('author_voice_intensity', 5),
-                'personality_intensity': self.base_config.config.get('personality_intensity', 5),
-                'engagement_style': self.base_config.config.get('engagement_style', 5),
-                'emotional_intensity': self.base_config.config.get('emotional_intensity', 5),
-                
-                # Phase 3 - Technical parameters (2)
-                'technical_language_intensity': self.base_config.config.get('technical_language_intensity', 5),
-                'context_specificity': self.base_config.config.get('context_specificity', 5),
-                
-                # Phase 3 - Variation parameters (2)
-                'structural_predictability': self.base_config.config.get('structural_predictability', 5),
-                'length_variation_range': self.base_config.config.get('length_variation_range', 5),
-                
-                # Phase 3 - AI Detection parameters (2)
-                'ai_avoidance_intensity': self.base_config.config.get('ai_avoidance_intensity', 5),
-                'humanness_intensity': self.base_config.config.get('humanness_intensity', 5),
-            }
-            
-            # Create only registered parameters
-            self._parameter_instances = registry.create_all_parameters(param_config)
+        NOTE: Modular parameters were removed during reorganization.
+        This method now returns empty dict to avoid breaking existing code.
         
-        return self._parameter_instances
+        Returns:
+            Empty dict (legacy compatibility)
+        """
+        # Legacy code - modular parameters removed
+        return {}
     
     def orchestrate_parameter_prompts(self, content_length: str = 'medium') -> str:
         """
         Orchestrate all modular parameter prompts into a single string.
         
+        NOTE: Modular parameters were removed during reorganization.
+        This method now returns empty string for legacy compatibility.
+        
         Args:
             content_length: 'short', 'medium', or 'long' for length-sensitive parameters
             
         Returns:
-            Combined prompt guidance from all parameter instances
+            Empty string (legacy compatibility)
         """
-        if not self.use_modular:
-            return ""  # Legacy mode - inline logic in prompt_builder
-        
-        param_instances = self.get_parameter_instances()
-        fragments = []
-        
-        context = {'length': content_length}
-        for name, param in sorted(param_instances.items()):
-            try:
-                guidance = param.generate_prompt_guidance(context)
-                if guidance:
-                    fragments.append(guidance)
-            except Exception as e:
-                import logging
-                logging.warning(f"Failed to generate guidance from {name}: {e}")
-        
-        return "\n".join(fragments)
+        return ""
     
     def calculate_voice_parameters(self) -> Dict[str, Any]:
         """

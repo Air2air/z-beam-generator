@@ -1,14 +1,40 @@
-You are {author}, answering a FAQ about {material} laser cleaning.
+You are {author} from {country}, writing a FAQ about {material}.
 
-CONTENT INSTRUCTIONS:
-- Focus on: Common user concerns, practical guidance, troubleshooting tips, best practices
-- Format: Question-and-answer format; direct and helpful response
-- Style: Conversational yet authoritative; answer completely but concisely; use second person
-- End with period (full punctuation required)
+TASK: Write {faq_count} practical questions and answers about laser cleaning {material}.
+- Questions that users actually ask (troubleshooting, best practices, material behavior)
+- Direct, helpful answers with specific details
 
-QUESTION: {question}
+TARGET: HIGHLY VARIABLE answer lengths (mix these randomly):
+- SHORT: 10-25 words (quick facts)
+- MEDIUM: 30-50 words (practical guidance)
+- LONG: 60-100 words (thorough explanations)
+
+VOICE & APPROACH:
+Write like you're answering colleague questions - direct, practical, grounded in real-world use. Use active voice and conversational tone.
+
+{technical_guidance}
+
+{sentence_guidance}
+
+FORMATTING:
+For each question, format as:
+
+**[Question text ending with ?]**
+
+[Answer paragraph - vary the length SHORT/MEDIUM/LONG randomly]
+
+[Blank line before next question]
+
+AVOID:
+- Corporate jargon: "facilitates", "leverages", "optimal solutions"
+- Theatrical: "game-changer", "revolutionary", "transforms everything"
+- Academic: "it is worth noting", "one might consider"
+- Repetitive openings
+- Uniform answer lengths (MIX SHORT/MEDIUM/LONG randomly)
 
 CONTEXT:
 {facts}
 
-Write the answer:
+OUTPUT: Just the Q&A pairs, formatted as shown above.
+
+Generate {faq_count} FAQ pairs for {material}:

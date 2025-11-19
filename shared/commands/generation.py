@@ -49,9 +49,20 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("✅ Caption generated and saved to Materials.yaml")
         print()
         
+        # DEBUG: Check what we received
+        print(f"🔍 DEBUG: caption_data type = {type(caption_data)}")
+        print(f"🔍 DEBUG: caption_data = {caption_data}")
+        print()
+        
         # Show statistics
-        before_text = caption_data.get('content', {}).get('before', '')
-        after_text = caption_data.get('content', {}).get('after', '')
+        # Handle both dict (full result) and string (legacy) formats
+        if isinstance(caption_data, dict):
+            before_text = caption_data.get('content', {}).get('before', '')
+            after_text = caption_data.get('content', {}).get('after', '')
+        else:
+            # Legacy format: caption_data is the content string
+            before_text = str(caption_data)
+            after_text = ''
         
         # POLICY: Always show complete generation report after each generation
         print("=" * 80)
@@ -191,58 +202,42 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("✅ DeepSeek client ready")
         print()
         
-        # Initialize processing orchestrator
-        from generation.archive.orchestrator_deprecated import Orchestrator
-        from generation.config.dynamic_config import DynamicConfig
+        # Initialize unified generator
+        from domains.materials.coordinator import UnifiedMaterialsGenerator
         
-        print("🔧 Initializing processing pipeline...")
-        config = DynamicConfig()
-        orchestrator = Orchestrator(api_client, config)
-        print("✅ Pipeline ready")
+        print("🔧 Initializing UnifiedMaterialsGenerator...")
+        generator = UnifiedMaterialsGenerator(api_client)
+        print("✅ Generator ready")
         print()
         
-        # Generate subtitle through processing pipeline (includes AI detection)
-        print("🤖 Generating AI-powered subtitle with quality validation...")
-        print("   • Target: Professional technical subtitle")
-        print("   • Pipeline: Enrichment → Generation → AI Detection → Validation")
+        # Generate subtitle
+        print("🤖 Generating AI-powered subtitle...")
+        print("   Target: Professional technical subtitle")
+        print("   Note: Voice enhancement happens in post-processing")
         print()
         
-        result = orchestrator.generate(
-            topic=material_name,
-            component_type='subtitle',
-            author_id=1,  # Will be randomly selected by orchestrator
-            domain='materials'
-        )
+        subtitle_data = generator.generate(material_name, 'subtitle')
         
-        if not result.get('success'):
-            print(f"❌ Generation failed: {result.get('reason', 'Unknown error')}")
-            if 'last_ai_score' in result:
-                print(f"   Last AI score: {result['last_ai_score']:.3f}")
-            return False
-        
-        subtitle = result['text']  # Orchestrator returns 'text' not 'content'
-        ai_score = result.get('ai_score', 0)
-        attempts = result.get('attempts', 1)
-        
-        # Save to Materials.yaml
-        import yaml
-        from pathlib import Path
-        materials_path = Path('data/materials/Materials.yaml')
-        with open(materials_path, 'r') as f:
-            data = yaml.safe_load(f)
-        
-        # Materials are under 'materials' key
-        if 'materials' not in data or material_name not in data['materials']:
-            print(f"❌ Material '{material_name}' not found in Materials.yaml")
-            return False
-        
-        data['materials'][material_name]['subtitle'] = subtitle
-        
-        with open(materials_path, 'w') as f:
-            yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
-        
-        print("✅ Subtitle generated and validated successfully!")
+        print("✅ Subtitle generated and saved to Materials.yaml")
         print()
+        
+        # DEBUG: Check what we received
+        print(f"🔍 DEBUG: subtitle_data type = {type(subtitle_data)}")
+        print(f"🔍 DEBUG: subtitle_data = {subtitle_data}")
+        print()
+        
+        # Handle both dict (full result) and string (legacy) formats
+        if isinstance(subtitle_data, dict):
+            subtitle = subtitle_data.get('content', '')
+            ai_score = subtitle_data.get('ai_score', 0)
+            attempts = subtitle_data.get('attempts', 1)
+        else:
+            subtitle = str(subtitle_data)
+            ai_score = 0
+            attempts = 1
+        
+        # Show statistics
+        # Unified generator already saved to Materials.yaml, no need to save again
         
         # POLICY: Always show complete generation report after each generation
         print("=" * 80)
@@ -255,8 +250,7 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("-" * 80)
         print()
         print("📈 QUALITY METRICS:")
-        print(f"   • AI Detection Score: {ai_score:.3f} (threshold: {orchestrator.ai_threshold:.3f})")
-        print(f"   • Status: {'✅ PASS' if ai_score <= orchestrator.ai_threshold else '❌ FAIL'}")
+        print(f"   • AI Detection Score: {ai_score:.3f}")
         print(f"   • Attempts: {attempts}")
         print()
         print("📏 STATISTICS:")
@@ -264,8 +258,8 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print(f"   • Word count: {len(subtitle.split())} words")
         print()
         print("💾 STORAGE:")
-        print(f"   • Location: data/materials/Materials.yaml")
-        print(f"   • Component: subtitle")
+        print("   • Location: data/materials/Materials.yaml")
+        print("   • Component: subtitle")
         print(f"   • Material: {material_name}")
         print()
         print("=" * 80)
@@ -372,8 +366,25 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("✅ FAQ generated and saved successfully!")
         print()
         
+        # Handle both dict (full result) and list (legacy) formats
+        if isinstance(faq_list, dict):
+            faq_data = faq_list.get('content', [])
+            ai_score = faq_list.get('ai_score', 0)
+            attempts = faq_list.get('attempts', 1)
+        else:
+            faq_data = faq_list
+            ai_score = 0
+            attempts = 1
+        
+        # Validate extraction succeeded
+        if not faq_data or not isinstance(faq_data, list):
+            print("⚠️  Warning: FAQ extraction returned unexpected format")
+            print(f"   Result type: {type(faq_data)}")
+            print(f"   Result: {faq_data}")
+            return False
+        
         # Show statistics
-        total_words = sum(len(qa['answer'].split()) for qa in faq_list)
+        total_words = sum(len(qa.get('answer', '').split()) for qa in faq_data if isinstance(qa, dict))
         
         # POLICY: Always show complete generation report after each generation
         print("=" * 80)
@@ -382,24 +393,30 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print()
         print("📝 GENERATED CONTENT:")
         print("-" * 80)
-        for i, qa in enumerate(faq_list, 1):
+        for i, qa in enumerate(faq_data, 1):
             print(f"Q{i}: {qa['question']}")
             print(f"A{i}: {qa['answer']}")
-            if i < len(faq_list):
+            if i < len(faq_data):
                 print()
         print("-" * 80)
         print()
-        print("📈 STATISTICS:")
-        print(f"   • Total Questions: {len(faq_list)}")
+        print("📈 QUALITY METRICS:")
+        print(f"   • AI Detection Score: {ai_score:.3f}")
+        print(f"   • Attempts: {attempts}")
+        print()
+        print("📏 STATISTICS:")
+        print(f"   • Total Questions: {len(faq_data)}")
         print(f"   • Total Words: {total_words}")
-        print(f"   • Avg Words/Answer: {total_words / len(faq_list):.1f}")
-        answer_lengths = [len(qa['answer'].split()) for qa in faq_list]
-        print(f"   • Min Answer Length: {min(answer_lengths)} words")
-        print(f"   • Max Answer Length: {max(answer_lengths)} words")
+        if len(faq_data) > 0:
+            print(f"   • Avg Words/Answer: {total_words / len(faq_data):.1f}")
+            answer_lengths = [len(qa.get('answer', '').split()) for qa in faq_data if isinstance(qa, dict)]
+            if answer_lengths:
+                print(f"   • Min Answer Length: {min(answer_lengths)} words")
+                print(f"   • Max Answer Length: {max(answer_lengths)} words")
         print()
         print("💾 STORAGE:")
-        print(f"   • Location: data/materials/Materials.yaml")
-        print(f"   • Component: faq")
+        print("   • Location: data/materials/Materials.yaml")
+        print("   • Component: faq")
         print(f"   • Material: {material_name}")
         print()
         print("=" * 80)
@@ -416,7 +433,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         
         # Combine all Q&As for evaluation
         all_content = []
-        for qa in faq_list:
+        for qa in faq_data:
             all_content.append(f"Q: {qa['question']}\nA: {qa['answer']}")
         full_content = "\n\n".join(all_content)
         

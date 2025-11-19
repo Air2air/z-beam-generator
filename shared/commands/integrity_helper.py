@@ -5,7 +5,7 @@ Runs system integrity checks before component generation.
 Includes per-iteration learning architecture validation.
 """
 
-from processing.integrity import IntegrityChecker
+from generation.integrity import IntegrityChecker
 
 
 def run_pre_generation_check(skip_check: bool = False, quick: bool = True, verbose: bool = False) -> bool:

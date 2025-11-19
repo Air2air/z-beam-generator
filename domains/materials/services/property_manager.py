@@ -30,7 +30,7 @@ from datetime import datetime
 from typing import Dict, List, Set, Optional, Tuple, Callable
 from dataclasses import dataclass
 
-from materials.research.unified_material_research import UnifiedMaterialResearch
+from domains.materials.research.unified_material_research import UnifiedMaterialResearch
 from shared.validation.errors import PropertyDiscoveryError, ConfigurationError
 from shared.validation.helpers.unit_converter import UnitConverter
 
@@ -513,7 +513,7 @@ class PropertyManager:
         Returns:
             Tuple of (quantitative_properties, qualitative_characteristics)
         """
-        from materials.research.unified_material_research import UnifiedMaterialResearch
+        from domains.materials.research.unified_material_research import UnifiedMaterialResearch
         
         # Start with existing YAML properties - but normalize their units first
         quantitative = {}

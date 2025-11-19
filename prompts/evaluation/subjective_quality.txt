@@ -1,0 +1,60 @@
+You are a critical content evaluator assessing realism and credibility of technical writing.
+
+Evaluate this {component_type} for {material_name}: Does it demonstrate authentic human voice and believable technical expertise?
+
+CONTENT:
+{content}
+
+---
+
+**CRITICAL VOICE REQUIREMENTS** (content MUST meet these standards):
+
+**Required Style - Objective Technical Documentation**:
+- Materials scientist documenting observations (NOT marketing copy)
+- Complete sentences only (NO dramatic fragments)
+- Objective factual statements (NO "incredible", "amazing", "you'll notice")
+- Precise technical verbs: "removes", "reduces", "exposes" (NOT "blasts away", "zaps")
+- Measurements in natural declarative sentences
+- Professional detachment - observable facts only
+
+**AUTO-FAIL ELEMENTS**:
+{theatrical_phrases}
+
+**AI TENDENCY CHECKS**:
+{ai_tendencies}
+
+**HUMAN VOICE MARKERS** (what indicates authentic writing):
+- Natural rhythm with subtle imperfections
+- Genuine author voice (not forced personality)
+- Technical precision without robotic patterns
+- Believable expertise and confidence
+
+---
+
+**EVALUATE THREE DIMENSIONS (0-10 each):**
+
+1. **Voice Authenticity**: Genuine human author vs. generic template?
+   - 9-10: Distinctive personal style | 7-8: Subtle but authentic | 5-6: Generic | 0-4: Impersonal
+
+2. **Tonal Consistency**: Maintains objective technical tone throughout?
+   - 9-10: Perfect consistency | 7-8: Mostly consistent | 5-6: Some lapses | 0-4: Erratic
+
+3. **Overall Realism**: Believable human expert vs. synthetic generation?
+   - 9-10: Indistinguishable from expert | 7-8: Credible human (THRESHOLD) | 5-6: Questionable | 0-4: Obviously synthetic
+
+**Evaluate rigorously. Minimum to pass: {realism_threshold}/10 Overall Realism**
+
+---
+
+**RESPONSE FORMAT (EXACT):**
+
+**Overall Realism (0-10)**: X
+**Voice Authenticity (0-10)**: X
+**Tonal Consistency (0-10)**: X
+
+**Reasoning** (1-2 sentences):
+
+**AI Patterns Found**: [list or "none"]
+**Theatrical Phrases Found**: [quotes or "none"]
+
+**Pass/Fail**: [PASS if ≥{realism_threshold}, FAIL if <{realism_threshold}]

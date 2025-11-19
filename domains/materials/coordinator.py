@@ -90,7 +90,7 @@ class UnifiedMaterialsGenerator:
         # Return full result (includes success, content, ai_score, human_score, etc.)
         return result
     
-    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
+    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> Dict:
         """
         Generate FAQ questions and answers using DynamicGenerator.
         
@@ -101,7 +101,7 @@ class UnifiedMaterialsGenerator:
             enhance_topics: Whether to enhance FAQ with topic keywords/statements
             
         Returns:
-            List of FAQ dicts with question, answer, and optionally topic_keyword, topic_statement
+            Full result dict with success, content (list of FAQ dicts), detection scores, etc.
         """
         if faq_count is None:
             faq_count = random.randint(2, 8)
@@ -129,13 +129,16 @@ class UnifiedMaterialsGenerator:
         
         return faq_list
     
-    def generate_subtitle(self, material_name: str, material_data: Dict) -> str:
+    def generate_subtitle(self, material_name: str, material_data: Dict) -> Dict:
         """
         Generate subtitle using DynamicGenerator with parameter learning.
+        
+        Returns:
+            Full result dict with success, content, detection scores, etc.
         """
         self.logger.info(f"📝 Generating subtitle for {material_name}")
         
-        # Use DynamicGenerator
+        # Use DynamicGenerator - returns full result with detection scores
         result = self.generator.generate(material_name, 'subtitle')
         
         if not result['success']:
@@ -145,7 +148,8 @@ class UnifiedMaterialsGenerator:
         word_count = len(subtitle.split())
         self.logger.info(f"   ✅ Generated: {subtitle[:80]}... ({word_count} words)")
         
-        return subtitle
+        # Return full result (includes success, content, ai_score, human_score, etc.)
+        return result
     
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
@@ -245,6 +249,7 @@ class UnifiedMaterialsGenerator:
         material_data = materials_data['materials'][material_name]
         
         # Generate based on type
+        # All components now return full result dict with success, content, scores, etc.
         if content_type == 'caption':
             return self.generate_caption(material_name, material_data)
         elif content_type == 'faq':
@@ -252,6 +257,7 @@ class UnifiedMaterialsGenerator:
         elif content_type == 'subtitle':
             return self.generate_subtitle(material_name, material_data)
         elif content_type == 'eeat':
+            # EEAT is non-AI, returns dict directly (not wrapped in result)
             return self.generate_eeat(material_name, material_data)
         else:
             raise ValueError(f"Unknown content type: {content_type}")

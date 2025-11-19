@@ -36,7 +36,7 @@ from shared.generators.dynamic_generator import DynamicGenerator
 
 # Component imports
 from shared.services.property.material_auditor import MaterialAuditor
-from materials.services.property_manager import PropertyManager
+from domains.materials.services.property_manager import PropertyManager
 
 logger = logging.getLogger(__name__)
 
@@ -139,7 +139,7 @@ class UnifiedPipeline:
             self.material_auditor = MaterialAuditor()
             
             # Initialize PropertyManager with required PropertyValueResearcher
-            from materials.research.unified_material_research import PropertyValueResearcher
+            from domains.materials.research.unified_material_research import PropertyValueResearcher
             from shared.api.client_factory import create_api_client
             api_client = create_api_client("deepseek")
             property_researcher = PropertyValueResearcher(api_client=api_client)

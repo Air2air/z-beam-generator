@@ -2,13 +2,13 @@
 """
 Regenerate All Subtitles Using Processing System
 
-Uses the /processing system to generate AI-resistant subtitles
+Uses the /generation system to generate AI-resistant subtitles
 and saves them to Materials.yaml, then exports to frontmatter.
 
 Flow:
 1. Load materials from Materials.yaml
 2. For each material:
-   - Generate subtitle via processing.Orchestrator
+   - Generate subtitle via generation.Orchestrator
    - Update Materials.yaml with result
 3. Save Materials.yaml (with backup)
 4. Run --deploy to export to frontmatter
@@ -23,7 +23,7 @@ from datetime import datetime
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from processing.orchestrator import Orchestrator
+from generation.core.orchestrator import Orchestrator
 from shared.api.client_factory import create_api_client
 
 

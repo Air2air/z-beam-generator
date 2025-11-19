@@ -13,7 +13,7 @@ from .validation.orchestrator import ValidationOrchestrator
 from .validation.unified_schema_validator import UnifiedSchemaValidator
 
 # Research Services (canonical location: research/services/)
-from materials.research.services.ai_research_service import AIResearchEnrichmentService
+from domains.materials.research.services.ai_research_service import AIResearchEnrichmentService
 
 # Property Services
 # PropertyManager moved to components/frontmatter/services/property_manager.py
