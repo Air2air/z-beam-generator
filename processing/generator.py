@@ -173,10 +173,11 @@ class DynamicGenerator:
     
     def _load_prompt_template(self, component_type: str) -> str:
         """
-        Load prompt template from /prompts/{component_type}.txt
+        Load prompt template from /prompts/{component_type}.txt or /prompts/system/{component_type}
         
         Args:
-            component_type: Type of content (caption, faq, subtitle, etc.)
+            component_type: Type of content (caption, faq, subtitle, etc.) 
+                           or path like 'system/base.txt' for system prompts
             
         Returns:
             Prompt template string
@@ -184,12 +185,17 @@ class DynamicGenerator:
         Raises:
             ValueError: If template file doesn't exist
         """
-        template_path = PROMPTS_DIR / f"{component_type}.txt"
+        # Handle paths with subdirectories (e.g., 'system/base.txt')
+        if '/' in component_type:
+            template_path = PROMPTS_DIR / component_type
+        else:
+            template_path = PROMPTS_DIR / f"{component_type}.txt"
+        
         if not template_path.exists():
             raise ValueError(f"Prompt template not found: {template_path}")
         
         with open(template_path, 'r', encoding='utf-8') as f:
-            template = f.read()
+            template = f.read().strip()
         
         self.logger.debug(f"Loaded prompt template: {template_path}")
         return template
@@ -423,7 +429,7 @@ class DynamicGenerator:
                     }
                     
                     # Get realism-based adjustments
-                    realism_adjustments = optimizer.suggest_parameter_adjustments(
+                    realism_adjustments = optimizer.suggest_parameters(
                         ai_tendencies=self._last_ai_tendencies,
                         current_params=current_params
                     )
@@ -603,6 +609,7 @@ class DynamicGenerator:
         regeneration_triggered = False  # Track if we've already done a fresh regeneration
         improvement_history = []  # Track human score improvements to detect stuck patterns
         realism_history = []  # NEW: Track realism score improvements
+        suggested_adjustments = None  # Track parameter adjustments from feedback
         
         while attempt <= max_attempts:
             self.logger.info(f"\nAttempt {attempt}/{max_attempts}")
@@ -614,6 +621,40 @@ class DynamicGenerator:
                 attempt,
                 last_winston_result
             )
+            
+            # IMMEDIATE FEEDBACK APPLICATION: Apply suggested adjustments from previous attempt
+            if suggested_adjustments and attempt > 1:
+                self.logger.info(f"📊 Applying feedback adjustments from attempt {attempt-1}:")
+                
+                if 'temperature' in suggested_adjustments:
+                    old_temp = params['temperature']
+                    params['temperature'] = suggested_adjustments['temperature']
+                    self.logger.info(f"   🌡️  Temperature: {old_temp:.3f} → {params['temperature']:.3f}")
+                
+                if 'frequency_penalty' in suggested_adjustments:
+                    old_freq = params.get('api_penalties', {}).get('frequency_penalty', 0.0)
+                    if 'api_penalties' not in params:
+                        params['api_penalties'] = {}
+                    params['api_penalties']['frequency_penalty'] = suggested_adjustments['frequency_penalty']
+                    self.logger.info(f"   📉 Frequency penalty: {old_freq:.2f} → {params['api_penalties']['frequency_penalty']:.2f}")
+                
+                if 'presence_penalty' in suggested_adjustments:
+                    old_pres = params.get('api_penalties', {}).get('presence_penalty', 0.0)
+                    if 'api_penalties' not in params:
+                        params['api_penalties'] = {}
+                    params['api_penalties']['presence_penalty'] = suggested_adjustments['presence_penalty']
+                    self.logger.info(f"   📉 Presence penalty: {old_pres:.2f} → {params['api_penalties']['presence_penalty']:.2f}")
+                
+                if 'voice_params' in suggested_adjustments:
+                    for key, value in suggested_adjustments['voice_params'].items():
+                        old_val = params.get('voice_params', {}).get(key, 'N/A')
+                        if 'voice_params' not in params:
+                            params['voice_params'] = {}
+                        params['voice_params'][key] = value
+                        self.logger.info(f"   🎤 Voice {key}: {old_val} → {value}")
+            
+            # Reset adjustments for this attempt
+            suggested_adjustments = None
             
             # Format facts string
             facts_str = self.enricher.format_facts_for_prompt(
@@ -714,103 +755,100 @@ class DynamicGenerator:
             readability = self.validator.validate(text)
             self.logger.info(f"Readability: {readability['status']}")
             
-            # Per-iteration realism evaluation for learning (runs on EVERY iteration)
-            # Even failures provide valuable training data for parameter optimization
+            # Per-iteration realism evaluation using unified facade (runs on EVERY iteration)
+            # Mirrors WinstonIntegration architecture for consistency
             realism_score = None
             voice_authenticity = None
             tonal_consistency = None
             ai_tendencies = None
+            realism_threshold = None
+            passes_realism_gate = True
             
             try:
-                from processing.subjective import SubjectiveEvaluator
+                from processing.subjective.realism_integration import RealismIntegration
                 from shared.api.client_factory import create_api_client
                 
                 # Create Grok client for realism evaluation
                 grok_client = create_api_client('grok')
-                realism_evaluator = SubjectiveEvaluator(
-                    api_client=grok_client,
-                    quality_threshold=7.0,
-                    verbose=False
+                
+                # Initialize realism integration facade (one-time per generation)
+                if not hasattr(self, '_realism_integration') or self._realism_integration is None:
+                    self._realism_integration = RealismIntegration(
+                        api_client=grok_client,
+                        feedback_db=self.feedback_db,
+                        config={}
+                    )
+                
+                # Evaluate and log with adaptive threshold
+                current_params = {
+                    'temperature': params['temperature'],
+                    'frequency_penalty': params.get('api_penalties', {}).get('frequency_penalty', 0.0),
+                    'presence_penalty': params.get('api_penalties', {}).get('presence_penalty', 0.0),
+                    'voice_params': params.get('voice_params', {})
+                }
+                
+                realism_result_dict = self._realism_integration.evaluate_and_log(
+                    text=text,
+                    material=material_name,
+                    component_type=component_type,
+                    attempt=attempt,
+                    current_params=current_params
                 )
                 
-                # Run realism evaluation (parallel with Winston conceptually)
-                realism_result = realism_evaluator.evaluate(
-                    content=text,
-                    material_name=material_name,
-                    component_type=component_type
-                )
+                # Extract results
+                realism_score = realism_result_dict['realism_score']
+                realism_threshold = realism_result_dict['threshold']
+                passes_realism_gate = realism_result_dict['passes_gate']
+                ai_tendencies = realism_result_dict['ai_tendencies']
+                voice_authenticity = realism_result_dict.get('voice_authenticity')
+                tonal_consistency = realism_result_dict.get('tonal_consistency')
                 
-                if realism_result:
-                    realism_score = realism_result.overall_score
+                # Apply suggested adjustments if provided
+                if not passes_realism_gate and realism_result_dict.get('suggested_adjustments'):
+                    if attempt < max_attempts:
+                        suggested_adjustments = realism_result_dict['suggested_adjustments']
+                        self.logger.info("✅ [REALISM FEEDBACK] Parameter adjustments calculated")
+                
+                # Store for next iteration's parameter adjustments
+                self._last_realism_score = realism_score
+                self._last_ai_tendencies = ai_tendencies
+                
+                # Update learned patterns from evaluation result
+                # This happens IMMEDIATELY after evaluation to capture learnings
+                try:
+                    from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
+                    from pathlib import Path
                     
-                    # Extract dimension scores for detailed feedback
-                    voice_authenticity = None
-                    tonal_consistency = None
-                    for dim_score in realism_result.dimension_scores:
-                        if dim_score.dimension.value == 'voice_authenticity':
-                            voice_authenticity = dim_score.score
-                        elif dim_score.dimension.value == 'tonal_consistency':
-                            tonal_consistency = dim_score.score
+                    learner = SubjectivePatternLearner(
+                        patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
+                    )
                     
-                    # Calculate AI tendencies for learning
-                    ai_tendencies = {}
-                    for dim_score in realism_result.dimension_scores:
-                        dim = dim_score.dimension.value
-                        # Higher score = more human, lower = more AI tendency
-                        tendency_strength = max(0, 7.0 - dim_score.score) / 7.0
-                        if dim == 'voice_authenticity':
-                            ai_tendencies['generic_language'] = tendency_strength
-                        elif dim == 'tonal_consistency':
-                            ai_tendencies['unnatural_transitions'] = tendency_strength
-                        elif dim == 'human_likeness':
-                            ai_tendencies['ai_patterns'] = tendency_strength
-                    
-                    # Store for next iteration's parameter adjustments
-                    self._last_realism_score = realism_score
-                    self._last_ai_tendencies = ai_tendencies
-                    
-                    self.logger.info(f"🤖 Realism Score: {realism_score:.1f}/10")
-                    if voice_authenticity:
-                        self.logger.info(f"   Voice Authenticity: {voice_authenticity:.1f}/10")
-                    if tonal_consistency:
-                        self.logger.info(f"   Tonal Consistency: {tonal_consistency:.1f}/10")
-                    if ai_tendencies:
-                        self.logger.info(f"📊 AI Tendencies: {ai_tendencies}")
-                    
-                    # Update learned patterns from evaluation result
-                    # This happens IMMEDIATELY after evaluation to capture learnings
-                    try:
-                        from processing.learning.subjective_pattern_learner import SubjectivePatternLearner
-                        from pathlib import Path
-                        
-                        learner = SubjectivePatternLearner(
-                            patterns_file=Path('prompts/evaluation/learned_patterns.yaml')
-                        )
-                        
-                        # Update patterns based on this evaluation
-                        learner.update_from_evaluation(
-                            evaluation_result={
-                                'overall_score': realism_score,
-                                'dimension_scores': {
-                                    'voice_authenticity': voice_authenticity,
-                                    'tonal_consistency': tonal_consistency
-                                },
-                                'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
-                                'violations': []  # Extract from realism_result if available
+                    # Update patterns based on this evaluation
+                    learner.update_from_evaluation(
+                        evaluation_result={
+                            'overall_score': realism_score,
+                            'dimension_scores': {
+                                'voice_authenticity': voice_authenticity,
+                                'tonal_consistency': tonal_consistency
                             },
-                            content=text,
-                            accepted=False,  # Will update to True later if accepted
-                            component_type=component_type,
-                            material_name=material_name
-                        )
-                        
-                        self.logger.info("📚 [LEARNING] Updated subjective evaluation patterns")
-                    except Exception as learn_error:
-                        self.logger.warning(f"Failed to update learned patterns: {learn_error}")
-                        
+                            'ai_tendencies': list(ai_tendencies.keys()) if ai_tendencies else [],
+                            'violations': []  # Extract from realism_result if available
+                        },
+                        content=text,
+                        accepted=False,  # Will update to True later if accepted
+                        component_type=component_type,
+                        material_name=material_name
+                    )
+                    
+                    self.logger.info("📚 [LEARNING] Updated subjective evaluation patterns")
+                except Exception as learn_error:
+                    self.logger.warning(f"Failed to update learned patterns: {learn_error}")
+                    
             except Exception as e:
                 self.logger.warning(f"Realism evaluation unavailable: {e}")
                 # Continue without realism - Winston still works
+                realism_score = None
+                passes_realism_gate = True  # Don't fail if evaluation unavailable
             
             # Calculate composite quality score (Winston + Subjective + Readability)
             composite_score = None
@@ -925,21 +963,14 @@ class DynamicGenerator:
                 combined_score_percent = human_score
                 self.logger.info(f"📊 Winston Score: {human_score:.1f}% (target: {learning_target:.1f}%)")
             
-            # CRITICAL: Realism score must pass quality gate (7.0/10 minimum)
-            passes_realism_gate = True  # Default if no realism evaluation
-            if realism_score is not None:
-                realism_threshold = 7.0  # Minimum quality threshold
-                passes_realism_gate = realism_score >= realism_threshold
-                if not passes_realism_gate:
-                    self.logger.warning(
-                        f"❌ Realism score below threshold: {realism_score:.1f}/10 < {realism_threshold}/10"
-                    )
+            # NOTE: Adaptive realism threshold logic is now handled by RealismIntegration facade
+            # passes_realism_gate already set by realism_integration.evaluate_and_log()
             
             passes_acceptance = (
                 ai_score <= self.ai_threshold and 
                 readability['is_readable'] and 
                 subjective_valid and
-                passes_realism_gate  # NEW: Realism is now a quality gate
+                passes_realism_gate  # Realism is a quality gate
             )
             # Use combined score (Winston + Realism) for quality target decision
             meets_quality_target = combined_score_percent >= learning_target
@@ -972,7 +1003,7 @@ class DynamicGenerator:
                             'voice_params': params.get('voice_params', {})
                         }
                         
-                        suggested = optimizer.suggest_parameter_adjustments(
+                        suggested = optimizer.suggest_parameters(
                             ai_tendencies=ai_tendencies,
                             current_params=current_params
                         )
@@ -1045,6 +1076,18 @@ class DynamicGenerator:
             failure_reasons = []
             if ai_score > self.ai_threshold:
                 failure_reasons.append(f"AI score too high: {ai_score:.3f} > {self.ai_threshold:.3f}")
+                
+                # WINSTON FEEDBACK: Suggest adjustments when AI detected
+                if attempt < max_attempts and suggested_adjustments is None:
+                    # Calculate Winston-based adjustments
+                    winston_adjustments = {
+                        'temperature': min(params['temperature'] + 0.1, 1.2),  # Increase randomness
+                        'frequency_penalty': max(params.get('api_penalties', {}).get('frequency_penalty', 0.0) + 0.2, 1.5),
+                        'presence_penalty': max(params.get('api_penalties', {}).get('presence_penalty', 0.0) + 0.2, 1.5)
+                    }
+                    suggested_adjustments = winston_adjustments
+                    self.logger.info("✅ [WINSTON FEEDBACK] Calculated adjustments to reduce AI detection")
+                    
             if not readability['is_readable']:
                 failure_reasons.append("Readability check failed")
             if not subjective_valid:
@@ -1076,10 +1119,15 @@ class DynamicGenerator:
                         'voice_params': params.get('voice_params', {})
                     }
                     
-                    suggested = optimizer.suggest_parameter_adjustments(
+                    suggested = optimizer.suggest_parameters(
                         ai_tendencies=ai_tendencies,
                         current_params=current_params
                     )
+                    
+                    # APPLY IMMEDIATELY: Store adjustments for next attempt
+                    if attempt < max_attempts:
+                        suggested_adjustments = suggested
+                        self.logger.info(f"✅ [FEEDBACK] Calculated parameter adjustments for next attempt")
                     
                     # Log to realism_learning table - mark as failure for learning
                     self.feedback_db.log_realism_learning(
@@ -1169,17 +1217,15 @@ class DynamicGenerator:
         Returns:
             Generated text
         """
-        # Build system prompt
-        system_prompt = "You are a professional technical writer creating concise, clear content."
-        
+        # Load system prompt from template based on technical_intensity
         tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
+        
         if tech_intensity < 0.15:  # Very low (slider 1-2)
-            system_prompt = (
-                "You are a professional technical writer creating concise, clear content. "
-                "CRITICAL RULE: Write ONLY in qualitative, conceptual terms. "
-                "ABSOLUTELY FORBIDDEN: Any numbers, measurements, units, or technical specifications. "
-                "Use ONLY descriptive words: 'strong', 'heat-resistant', 'conductive', 'durable'."
-            )
+            # Use low_technical template with CRITICAL override
+            system_prompt = self._load_prompt_template('system/low_technical.txt')
+        else:
+            # Use standard base template
+            system_prompt = self._load_prompt_template('system/base.txt')
         
         # Extract penalties - FAIL FAST if missing
         if not api_penalties:

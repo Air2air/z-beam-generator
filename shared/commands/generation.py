@@ -53,20 +53,31 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         before_text = caption_data.get('content', {}).get('before', '')
         after_text = caption_data.get('content', {}).get('after', '')
         
-        print("📊 Statistics:")
-        if before_text:
-            print(f"   before: {len(before_text)} characters, {len(before_text.split())} words")
-        if after_text:
-            print(f"   after: {len(after_text)} characters, {len(after_text.split())} words")
+        # POLICY: Always show complete generation report after each generation
+        print("=" * 80)
+        print("📊 GENERATION COMPLETE REPORT")
+        print("=" * 80)
         print()
-        print("📝 Preview:")
+        print("📝 GENERATED CONTENT:")
+        print("-" * 80)
         if before_text:
-            print(f"   Before: {before_text}")
+            print(f"BEFORE: {before_text}")
         if after_text:
-            print(f"   After: {after_text}")
+            print(f"AFTER:  {after_text}")
+        print("-" * 80)
         print()
-        
-        print("💾 Saved to: materials/data/Materials.yaml → caption")
+        print("📈 STATISTICS:")
+        if before_text:
+            print(f"   • Before: {len(before_text)} chars, {len(before_text.split())} words")
+        if after_text:
+            print(f"   • After:  {len(after_text)} chars, {len(after_text.split())} words")
+        print()
+        print("💾 STORAGE:")
+        print(f"   • Location: data/materials/Materials.yaml")
+        print(f"   • Component: caption")
+        print(f"   • Material: {material_name}")
+        print()
+        print("=" * 80)
         print()
         
         # Run subjective evaluation
@@ -232,20 +243,31 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("✅ Subtitle generated and validated successfully!")
         print()
         
-        # Show statistics
-        print("📊 Statistics:")
-        print(f"   • Length: {len(subtitle)} characters")
-        print(f"   • Word count: {len(subtitle.split())} words")
-        print(f"   • AI Score: {ai_score:.3f} (threshold: {orchestrator.ai_threshold:.3f})")
+        # POLICY: Always show complete generation report after each generation
+        print("=" * 80)
+        print("📊 GENERATION COMPLETE REPORT")
+        print("=" * 80)
+        print()
+        print("📝 GENERATED CONTENT:")
+        print("-" * 80)
+        print(subtitle)
+        print("-" * 80)
+        print()
+        print("📈 QUALITY METRICS:")
+        print(f"   • AI Detection Score: {ai_score:.3f} (threshold: {orchestrator.ai_threshold:.3f})")
+        print(f"   • Status: {'✅ PASS' if ai_score <= orchestrator.ai_threshold else '❌ FAIL'}")
         print(f"   • Attempts: {attempts}")
         print()
-        print("📝 FULL GENERATED TEXT:")
-        print("─" * 80)
-        print(subtitle)
-        print("─" * 80)
+        print("📏 STATISTICS:")
+        print(f"   • Length: {len(subtitle)} characters")
+        print(f"   • Word count: {len(subtitle.split())} words")
         print()
-        
-        print("💾 Saved to: data/materials/Materials.yaml → subtitle")
+        print("💾 STORAGE:")
+        print(f"   • Location: data/materials/Materials.yaml")
+        print(f"   • Component: subtitle")
+        print(f"   • Material: {material_name}")
+        print()
+        print("=" * 80)
         print()
         
         # Run subjective evaluation
@@ -351,18 +373,34 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         # Show statistics
         total_words = sum(len(qa['answer'].split()) for qa in faq_list)
         
-        print("📊 Statistics:")
-        print(f"   • Questions: {len(faq_list)}")
-        print(f"   • Total words: {total_words}")
-        print(f"   • Avg words/answer: {total_words / len(faq_list):.1f}")
+        # POLICY: Always show complete generation report after each generation
+        print("=" * 80)
+        print("📊 GENERATION COMPLETE REPORT")
+        print("=" * 80)
         print()
-        print("📝 Questions & Answers:")
+        print("📝 GENERATED CONTENT:")
+        print("-" * 80)
         for i, qa in enumerate(faq_list, 1):
-            print(f"   {i}. {qa['question']}")
-            print(f"      {qa['answer']}")
-            print()
-        
-        print("💾 Saved to: materials/data/Materials.yaml → faq")
+            print(f"Q{i}: {qa['question']}")
+            print(f"A{i}: {qa['answer']}")
+            if i < len(faq_list):
+                print()
+        print("-" * 80)
+        print()
+        print("📈 STATISTICS:")
+        print(f"   • Total Questions: {len(faq_list)}")
+        print(f"   • Total Words: {total_words}")
+        print(f"   • Avg Words/Answer: {total_words / len(faq_list):.1f}")
+        answer_lengths = [len(qa['answer'].split()) for qa in faq_list]
+        print(f"   • Min Answer Length: {min(answer_lengths)} words")
+        print(f"   • Max Answer Length: {max(answer_lengths)} words")
+        print()
+        print("💾 STORAGE:")
+        print(f"   • Location: data/materials/Materials.yaml")
+        print(f"   • Component: faq")
+        print(f"   • Material: {material_name}")
+        print()
+        print("=" * 80)
         print()
         
         # Run subjective evaluation on all Q&A pairs

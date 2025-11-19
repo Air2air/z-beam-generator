@@ -12,11 +12,48 @@
 5. ❌ **NO skipping validation** (must test before claiming success) - [Step 6](#)
 6. ✅ **ALWAYS fail-fast on config** (throw exceptions, no silent degradation) - [Rule 3](#)
 7. ✅ **ALWAYS preserve runtime recovery** (API retries are correct) - [ADR-002](#)
+8. ✅ **ALWAYS log to terminal** (all generation attempts, scores, feedback) - See Terminal Output Policy below
 
 ### 🟢 TIER 3: EVIDENCE & HONESTY (Will lose trust)
-8. ✅ **ALWAYS provide evidence** (test output, counts, commits) - [Protocol](#)
-9. ✅ **ALWAYS be honest** (acknowledge what remains broken) - [Protocol](#)
-10. ✅ **ASK before major changes** (get permission for improvements) - [Rule 1](#)
+9. ✅ **ALWAYS provide evidence** (test output, counts, commits) - [Protocol](#)
+10. ✅ **ALWAYS be honest** (acknowledge what remains broken) - [Protocol](#)
+11. ✅ **ASK before major changes** (get permission for improvements) - [Rule 1](#)
+
+---
+
+## 📋 TERMINAL OUTPUT LOGGING POLICY 🔥 **NEW (Nov 18, 2025)**
+
+**ALL generation operations MUST stream comprehensive output to terminal in real-time.**
+
+**Logging Requirements**:
+1. **Stream to stdout/stderr ONLY** - No log files created or saved
+2. **Real-time output** - User sees progress as it happens
+3. **Attempt Progress** - Every retry with attempt number (e.g., "Attempt 2/5")
+4. **Quality Checks** - Winston score, Realism score, thresholds, pass/fail
+5. **Feedback Application** - Parameter adjustments between attempts
+6. **Learning Activity** - Prompt optimization, pattern learning
+7. **Final Report** - Complete generation report (see GROK_INSTRUCTIONS.md)
+
+**Example Streaming Output**:
+```
+Attempt 2/5
+🌡️  Temperature: 0.750 → 0.825
+📉 Frequency penalty: 0.20 → 0.30
+Winston Score: 98.6% human ✅ PASS
+Realism Score: 5.0/10 (threshold: 5.5) ❌ FAIL
+✅ [REALISM FEEDBACK] Parameter adjustments calculated
+```
+
+**Implementation**:
+- Use `print()` for terminal output (not `logger.info()` to files)
+- All subprocess calls inherit stdout/stderr (no capture)
+- Batch tests stream directly (no tee to log files)
+
+**Purpose**: User visibility, debugging, transparency, verification
+**Anti-Patterns**: 
+- ❌ Silent failures, hidden retries, opaque processing
+- ❌ Log files in /tmp/ or elsewhere
+- ❌ Capturing output without displaying it
 
 ---
 

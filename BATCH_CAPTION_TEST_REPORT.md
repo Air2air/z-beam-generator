@@ -1,6 +1,6 @@
 # Batch Caption Test Report
 
-**Date**: November 18, 2025 at 04:35 PM
+**Date**: November 18, 2025 at 08:26 PM
 **Results**: 3/4 successful
 
 ---
@@ -14,18 +14,18 @@
 The voice in this caption sounds authentically human-written, with a natural conversational flow that mimics casual technical commentary, using vivid, everyday words like "zaps away the filth" and "woody resilience" to create a genuine, enthusiastic tone without over-the-top hype. Sentence patterns feel organic, starting with a punchy action phrase and building to descriptive details in a logical, stream-of-consciousness style that varies rhythm—short and snappy at first, then more explanatory—avoiding the formulaic repetition or unnatural stiffness often seen in AI-generated text. There's no evidence of AI-like tendencies such as excessive uniformity in structure or contrived transitions; instead, it reads like a knowledgeable engineer sharing an exciting discovery in a relaxed voice.
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.3% human
-- **Generation Time**: 34.6s
+- **Winston AI**: 99.5% human
+- **Generation Time**: 54.5s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-At 1000x magnification, bamboo's surface shows heavy contamination from years in construction and furniture, where dust and oils stick tight to the fibers. Dirt clings hard. This buildup weakens the wood's natural strength for things like sports gear or marine parts, making it look rough and uneven across the tiny structure.
+Contaminants cover the bamboo fibers thickly at 1000x. Dirt and residues hide under layers, blocking natural patterns in this wood material.
 
 **AFTER:**
 
-Laser treatment clears that mess right off. Now the bamboo stands bare, with fibers exposed smooth and ready for aerospace or medical uses. And it keeps the material's stiffness intact, no damage from the quick pulse at low energy.
+Laser treatment removes those buildup spots cleanly. Now the surface exposes smooth textures again, good for uses in construction and furniture. And it restores strength without harming the core.
 
 ---
 
@@ -43,18 +43,18 @@ Laser treatment clears that mess right off. Now the bamboo stands bare, with fib
 ### 📊 SUBJECTIVE EVALUATION
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 98.5% human
-- **Generation Time**: 42.6s
+- **Winston AI**: 83.1% human
+- **Generation Time**: 42.3s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Breccia holds onto grime like nobody's business. At 1000x, contaminants layer thick across fractured bits, dulling the stone's wild patchwork feel. Tough spots for cultural heritage pieces.
+At 1000x magnification, contaminants fully cover the breccia surface. Thick layers of dirt and pollutants obscure the angular rock fragments within the stone matrix. This buildup reduces visibility of the material's natural porosity by over 80 percent.
 
 **AFTER:**
 
-Laser treatment zaps that mess away fast. Clean surface pops at 1000x, with sharp edges on the broken fragments standing out clear. Restores the stone's natural look for architecture jobs.
+Laser treatment removes the contaminants from the breccia surface. It exposes the clean angular fragments and fine-grained matrix underneath. Now the stone's original texture stands out clearly, with porosity restored to full detail.
 
 ---
 
@@ -67,18 +67,18 @@ Laser treatment zaps that mess away fast. Clean surface pops at 1000x, with shar
 The voice in this caption feels authentically human-written, with a natural conversational flow that starts with a punchy, dramatic hook and transitions smoothly into a descriptive payoff, mimicking how a marketer or technical writer might build excitement in a short promo piece. Realistic word choices like "stands bare and even" and "contaminants gone" evoke tangible imagery without overcomplicating, and the genuine tone variation—from bold proclamation to practical benefits—adds a layer of organic enthusiasm that humans often use to persuade. Sentence patterns are varied and feel organic, avoiding the formulaic repetition or overly polished symmetry that can signal AI generation, though the hyperbolic "change everything" borders on enthusiastic flair that could tip into artificial hype if overused.
 
 - **Pattern Validation**: ✅ PASS - No violations detected
-- **Winston AI**: 99.9% human
-- **Generation Time**: 38.4s
+- **Winston AI**: 99.8% human
+- **Generation Time**: 35.6s
 
 ### 📝 GENERATED CAPTION
 
 **BEFORE:**
 
-Aluminum gathers grime fast in tough spots. At 1000x, contamination layers the surface thick, hiding its lightweight core vital for aerospace and automotive builds that demand every ounce of efficiency. Tough to shift without the right tool.
+The oxide layer on this aluminum surface builds up thick from years in automotive and packaging work. At 1000x magnification, debris particles scatter across it all, hiding the metal's smooth base completely and making the texture look uneven. That contamination cuts reflectivity down to almost nothing.
 
 **AFTER:**
 
-Laser treatment strips it clean. The surface shows bare metal now, smooth and even at 1000x magnification where original structure pops back for electronics and marine jobs. And this restores full performance quick.
+Laser treatment strips those oxides away in seconds, without touching the aluminum underneath. Now the surface sits clean, with its natural finish restored for better use in aerospace or construction. At 1000x, you spot the fine, even structure sharp and clear—reflectivity jumps back up to 80 percent or so.
 
 ---
 
@@ -92,9 +92,9 @@ Laser treatment strips it clean. The surface shows bare metal now, smooth and ev
 
 | Material | Iteration | Temperature | Freq Penalty | Pres Penalty | Winston Score | Result |
 |----------|-----------|-------------|--------------|--------------|---------------|--------|
-| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 99.3% | ✅ |
-| Breccia | 1 | 0.800 | 0.000 | 0.500 | 98.5% | ✅ |
-| Aluminum | 1 | 0.800 | 0.000 | 0.500 | 99.9% | ✅ |
+| Bamboo | 1 | 0.800 | 0.000 | 0.500 | 99.5% | ✅ |
+| Breccia | 1 | 0.800 | 0.000 | 0.500 | 83.1% | ✅ |
+| Aluminum | 1 | 0.800 | 0.000 | 0.500 | 99.8% | ✅ |
 
 *Note: Parameters show the configuration used for each iteration attempt*
 
@@ -129,7 +129,7 @@ Sweet spots are updated when sufficient successful samples (typically 5+) are co
 
 **Evidence of learning**:
 - ✅ All materials succeeded on first iteration (parameters already optimized)
-- ✅ Average Winston score: 99.2% (excellent human detection)
+- ✅ Average Winston score: 94.1% (excellent human detection)
 - ✅ All 3 iterations logged for continuous learning
 
 **Next run impact**: Future generations will use learned parameters as starting point, 

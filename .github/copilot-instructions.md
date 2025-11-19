@@ -317,13 +317,50 @@ See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
   - ✅ Data insertion (material names, properties) allowed
 - ✅ **ENFORCEMENT**: Automated tests verify zero hardcoded prompts
 
-**Current Violations (to be fixed)**:
-- orchestrator.py:614 - Hardcoded system_prompt
-- orchestrator.py:621-626 - Conditional prompt injection
-- orchestrator.py:337-341 - Dynamic prompt.replace()
-- generator.py:1096-1097 - Inline CRITICAL RULE text
-
 See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
+
+### 10. **Generation Report Policy** 🔥 **NEW (Nov 18, 2025)**
+**ALWAYS display complete generation report after EVERY content generation.**
+
+**Required Report Sections**:
+1. **📝 Generated Content** - Full text with clear formatting
+2. **📈 Quality Metrics** - AI scores, validation results, pass/fail status
+3. **📏 Statistics** - Character counts, word counts, length analysis
+4. **💾 Storage** - Exact location, component type, material name
+
+**Format Example**:
+```
+================================================================================
+📊 GENERATION COMPLETE REPORT
+================================================================================
+
+📝 GENERATED CONTENT:
+────────────────────────────────────────────────────────────────────────────────
+[Full generated text here]
+────────────────────────────────────────────────────────────────────────────────
+
+📈 QUALITY METRICS:
+   • AI Detection Score: 0.245 (threshold: 0.303)
+   • Status: ✅ PASS
+   • Attempts: 1
+
+📏 STATISTICS:
+   • Length: 287 characters
+   • Word count: 45 words
+
+💾 STORAGE:
+   • Location: data/materials/Materials.yaml
+   • Component: caption
+   • Material: Aluminum
+
+================================================================================
+```
+
+**Purpose**: Provides complete transparency and verification of generation results.
+**Implementation**: `shared/commands/generation.py` - all generation handlers
+**Compliance**: Mandatory for caption, subtitle, FAQ generation
+
+
 
 ## Code Standards
 - Use strict typing with Optional[] for nullable parameters

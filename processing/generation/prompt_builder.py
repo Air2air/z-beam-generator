@@ -481,7 +481,7 @@ VOICE: {country} technical writer
 - Occasional article flexibility (e.g., "Preserve integrity" vs "Preserve the integrity")
 
 REQUIREMENTS:
-- {length} words (±2)
+- Write EXACTLY {length} words (count carefully)
 - Professional but natural
 - No period at end
 - Focus on {material}'s unique characteristics

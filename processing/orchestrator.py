@@ -143,6 +143,30 @@ class Orchestrator:
         logger.info(f"Loaded {len(personas)} personas from prompts/personas/")
         return personas
     
+    def _load_prompt_template(self, template_name: str) -> str:
+        """
+        Load prompt template from /prompts/system/{template_name}
+        
+        Args:
+            template_name: Name of template file (e.g., 'base.txt', 'low_technical.txt')
+            
+        Returns:
+            Prompt template string
+            
+        Raises:
+            ValueError: If template file doesn't exist
+        """
+        from pathlib import Path
+        template_path = Path("prompts/system") / template_name
+        if not template_path.exists():
+            raise ValueError(f"System prompt template not found: {template_path}")
+        
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template = f.read().strip()
+        
+        logger.debug(f"Loaded system prompt template: {template_path}")
+        return template
+    
     def _get_persona_by_author_id(self, author_id: int) -> Dict:
         """
         Get persona configuration by author ID.
@@ -334,11 +358,7 @@ class Orchestrator:
                 if has_specs:
                     logger.warning(f"❌ Attempt {attempt}: Contains technical specs (forbidden at technical_intensity < 0.15)")
                     if attempt < absolute_max:
-                        # Adjust prompt to emphasize NO SPECS even more
-                        prompt = prompt.replace(
-                            "ABSOLUTELY NO technical specifications",
-                            "YOU MUST NOT INCLUDE ANY NUMBERS WITH UNITS - THIS IS THE MOST IMPORTANT RULE"
-                        )
+                        # Retry with same prompt - low_technical.txt template already emphasizes no specs
                         attempt += 1
                         continue
                     else:
@@ -610,21 +630,16 @@ class Orchestrator:
             logger.info(f"🌡️  Temperature: {temperature:.2f} (base: {base_temperature:.2f}, +{retry_temp_increase:.2f}/attempt)")
         logger.info(f"🎯  Max tokens: {max_tokens} (calculated from sliders)")
         
-        # Build system prompt with technical language override if needed
-        system_prompt = "You are a professional technical writer creating concise, clear content."
-        
-        # Get enrichment params to check technical_intensity
+        # Load system prompt from template based on technical_intensity
         enrichment_params = self.dynamic_config.calculate_enrichment_params()
         tech_intensity = enrichment_params.get('technical_intensity', 0.22)  # 0.0-1.0 normalized
         
         if tech_intensity < 0.15:  # Very low (slider 1-2)
-            # Level 1: Add CRITICAL override to system prompt (highest authority)
-            system_prompt = (
-                "You are a professional technical writer creating concise, clear content. "
-                "CRITICAL RULE: Write ONLY in qualitative, conceptual terms. "
-                "ABSOLUTELY FORBIDDEN: Any numbers, measurements, units, or technical specifications (NO '110 GPa', NO '1941 K', NO '400 MPa', NO '41,000,000 S/m'). "
-                "Use ONLY descriptive words: 'strong', 'heat-resistant', 'conductive', 'durable'."
-            )
+            # Use low_technical template with CRITICAL override
+            system_prompt = self._load_prompt_template('low_technical.txt')
+        else:
+            # Use standard base template
+            system_prompt = self._load_prompt_template('base.txt')
         
         # Use the standard API client interface: generate_simple()
         response = self.api_client.generate_simple(

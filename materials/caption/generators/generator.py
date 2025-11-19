@@ -138,14 +138,14 @@ Generate TWO captions:
 **BEFORE_TEXT:**
 Describe the contaminated surface BEFORE laser cleaning.
 - Focus on: contaminant type, surface degradation, visible damage
-- Word count: {target_words_before} words (±{WORD_COUNT_TOLERANCE} tolerance)
+- Length: Write EXACTLY {target_words_before} words (count carefully - this is important for database matching)
 - Technical, descriptive tone
 - Single paragraph
 
 **AFTER_TEXT:**
 Describe the cleaned surface AFTER laser cleaning.
 - Focus on: restoration quality, surface condition, material integrity
-- Word count: {target_words_after} words (±{WORD_COUNT_TOLERANCE} tolerance)
+- Length: Write EXACTLY {target_words_after} words (count carefully - this is important for database matching)
 - Technical, descriptive tone
 - Single paragraph
 
@@ -189,20 +189,46 @@ Generate both captions now (use the **BEFORE_TEXT:** and **AFTER_TEXT:** markers
         before_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', before_text).strip()
         after_text = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', after_text).strip()
         
-        # Validate word counts
+        # Validate word counts with configurable tolerance
         before_words = len(before_text.split())
         after_words = len(after_text.split())
         
-        if before_words < MIN_WORDS_BEFORE:
+        # Get tolerance from config
+        # WORD_COUNT_TOLERANCE is stored as absolute words (30)
+        # Convert to percentage for flexible min/max calculation
+        # For 20-120 range: 30/(120-20)*100 = 30% tolerance
+        range_span = MAX_WORDS_BEFORE - MIN_WORDS_BEFORE
+        tolerance_pct = WORD_COUNT_TOLERANCE / range_span if range_span > 0 else 0.30
+        
+        # Calculate acceptable ranges using percentage
+        before_min_acceptable = int(MIN_WORDS_BEFORE * (1 - tolerance_pct))
+        before_max_acceptable = int(MAX_WORDS_BEFORE * (1 + tolerance_pct))
+        after_min_acceptable = int(MIN_WORDS_AFTER * (1 - tolerance_pct))
+        after_max_acceptable = int(MAX_WORDS_AFTER * (1 + tolerance_pct))
+        
+        # Strict validation: reject if outside tolerance range
+        if before_words < before_min_acceptable:
             raise ValueError(
                 f"Before caption too short for {material_name}: "
-                f"{before_words} words < {MIN_WORDS_BEFORE} minimum"
+                f"{before_words} words < {before_min_acceptable} minimum (range: {MIN_WORDS_BEFORE}-{MAX_WORDS_BEFORE} ±{int(tolerance_pct*100)}%)"
             )
         
-        if after_words < MIN_WORDS_AFTER:
+        if before_words > before_max_acceptable:
+            raise ValueError(
+                f"Before caption too long for {material_name}: "
+                f"{before_words} words > {before_max_acceptable} maximum (range: {MIN_WORDS_BEFORE}-{MAX_WORDS_BEFORE} ±{int(tolerance_pct*100)}%)"
+            )
+        
+        if after_words < after_min_acceptable:
             raise ValueError(
                 f"After caption too short for {material_name}: "
-                f"{after_words} words < {MIN_WORDS_AFTER} minimum"
+                f"{after_words} words < {after_min_acceptable} minimum (range: {MIN_WORDS_AFTER}-{MAX_WORDS_AFTER} ±{int(tolerance_pct*100)}%)"
+            )
+        
+        if after_words > after_max_acceptable:
+            raise ValueError(
+                f"After caption too long for {material_name}: "
+                f"{after_words} words > {after_max_acceptable} maximum (range: {MIN_WORDS_AFTER}-{MAX_WORDS_AFTER} ±{int(tolerance_pct*100)}%)"
             )
         
         total_words = before_words + after_words

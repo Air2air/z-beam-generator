@@ -2044,21 +2044,23 @@ class IntegrityChecker:
         
         generator_content = generator_path.read_text()
         
-        # Check for SubjectiveEvaluator import
-        has_evaluator_import = 'from processing.subjective import SubjectiveEvaluator' in generator_content
+        # Check for RealismIntegration facade (NEW architecture - Nov 18, 2025)
+        has_integration_import = 'from processing.subjective.realism_integration import RealismIntegration' in generator_content
         has_grok_client = "create_api_client('grok')" in generator_content
-        has_evaluate_call = 'realism_evaluator.evaluate(' in generator_content
+        has_facade_call = '_realism_integration.evaluate_and_log(' in generator_content
+        has_initialization = 'RealismIntegration(' in generator_content
         
-        if not all([has_evaluator_import, has_grok_client, has_evaluate_call]):
+        if not all([has_integration_import, has_grok_client, has_facade_call, has_initialization]):
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Inline Realism Evaluation",
                 status=IntegrityStatus.FAIL,
                 message="❌ CRITICAL: Inline realism evaluation missing from retry loop",
                 details={
-                    'has_import': has_evaluator_import,
+                    'has_integration_import': has_integration_import,
                     'creates_grok_client': has_grok_client,
-                    'calls_evaluate': has_evaluate_call,
-                    'issue': 'System will not evaluate realism on every iteration'
+                    'calls_facade': has_facade_call,
+                    'initializes_integration': has_initialization,
+                    'issue': 'System will not evaluate realism on every iteration via RealismIntegration facade'
                 },
                 duration_ms=(time.time() - start) * 1000
             ))
@@ -2066,8 +2068,8 @@ class IntegrityChecker:
             results.append(IntegrityResult(
                 check_name="Per-Iteration: Inline Realism Evaluation",
                 status=IntegrityStatus.PASS,
-                message="✅ Inline realism evaluation present in retry loop",
-                details={'evaluates_per_iteration': True},
+                message="✅ Inline realism evaluation present via RealismIntegration facade",
+                details={'evaluates_per_iteration': True, 'uses_facade': True},
                 duration_ms=(time.time() - start) * 1000
             ))
         
