@@ -105,7 +105,7 @@ class CategoryRangeValue:
     confidence: int = 85  # 0-100 scale
     
     # Metadata
-    last_updated: str  # ISO8601 format
+    last_updated: str = ""  # ISO8601 format (required field needs default)
     researched_by: Optional[str] = None
     needs_validation: bool = False
     
