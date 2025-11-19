@@ -61,18 +61,26 @@ class DynamicGenerator:
     - All learning persists to database for cross-session improvement
     """
     
-    def __init__(self, api_client):
+    def __init__(self, api_client, adapter=None):
         """
         Initialize dynamic generator.
         
         Args:
             api_client: API client for content generation (required)
+            adapter: Domain adapter for extraction (optional, auto-creates MaterialsAdapter if None)
         """
         if not api_client:
             raise ValueError("API client required for content generation")
         
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
+        
+        # Initialize or use provided adapter
+        if adapter is None:
+            from processing.adapters.materials_adapter import MaterialsAdapter
+            self.adapter = MaterialsAdapter()
+        else:
+            self.adapter = adapter
         
         # Initialize components
         self._init_components()
