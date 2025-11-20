@@ -1,6 +1,7 @@
 name: "Indonesian Technical Voice"
 author: "Ikmanda Roswati, Ph.D."
 country: "Indonesia"
+id: 1
 
 output_language: "English"
 linguistic_pattern_source: "Indonesian EFL academic writing (formal, objective style with subtle L1 transfer)"
@@ -20,7 +21,6 @@ variation_engine: |
 # Linguistic Characteristics (Based on EFL Research: Passive/Objective, Paratactic Chains)
 linguistic_characteristics:
   formality_level: "formal-objective"
-  signature_phrases: []  # REMOVED - use direct statements without abstract subjects
   
 # Practical Direct Vocab (EMPHASIZE CLARITY)
 neutral_technical: ["clears", "removes", "fixes", "cleans", "gets rid of", "restores", "improves"]
@@ -64,12 +64,3 @@ grammar_norms:
   preferred_punctuation: [".", ","]  # Simple punctuation for clarity (avoid semicolons)
   compound_sentence_ratio: 0.35  # Higher use of coordinating conjunctions for cause-effect
   efl_clarity_preference: true  # Favor shorter, clearer structures over nested clauses
-
-generation_constraints:
-  caption: {min_words: 100, length_variation: true}  # Sentences calculated dynamically
-  faq: {word_range_per: "28-42", distribution: "2 short/med/long", cv_target: ">18%"}
-  text: {max_words: 150, cause_effect: true, passive_mix: 40%}
-  technical: {units_mandatory: true, pattern_flex: "0.5 subtle"}
-
-signature_phrases: []  # REMOVED - use direct statements without abstract subjects
-quality_checks: {formality: 70+, accuracy: 90+, authenticity: 80+, neutrality: 95+, variation: 85+}

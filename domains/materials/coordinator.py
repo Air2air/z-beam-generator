@@ -6,19 +6,22 @@ TEXT CONTENT GENERATOR for caption, FAQ, and subtitle generation ONLY.
 Used by shared/commands/generation.py (--caption, --subtitle, --faq commands).
 
 ARCHITECTURE:
-- Wraps /processing/generator.py (DynamicGenerator) for backward compatibility
-- All generation uses single robust generator with learning-based parameter adaptation
+- Wraps /generation/core/simple_generator.py (SimpleGenerator) for single-pass generation
+- All generation uses single-pass API call with NO validation/retry in generation phase
+- Validation and learning happen in post-processing stage (postprocessing/validate_and_improve.py)
 - Starts from /prompts/*.txt templates
-- Uses processing/config.yaml as parameter baseline
-- Parameters learn from Winston feedback across sessions
+- Uses generation/config.yaml for target lengths and global variation
 
 Usage:
     generator = UnifiedMaterialsGenerator(api_client)
     
-    # Generate with dynamic processing
-    generator.generate('Bronze', 'caption')   # Uses DynamicGenerator
-    generator.generate('Bronze', 'subtitle')  # Uses DynamicGenerator
-    generator.generate('Bronze', 'faq')       # Uses DynamicGenerator
+    # Generate with single-pass approach (no validation/retry)
+    generator.generate('Bronze', 'caption')   # Uses SimpleGenerator
+    generator.generate('Bronze', 'subtitle')  # Uses SimpleGenerator
+    generator.generate('Bronze', 'faq')       # Uses SimpleGenerator
+    
+    # Then validate and improve in post-processing:
+    # python run.py --validate "Bronze" "subtitle"
 """
 
 import logging
@@ -27,7 +30,7 @@ from pathlib import Path
 from typing import Dict, Optional
 
 from domains.materials.research.faq_topic_researcher import FAQTopicResearcher
-from generation.core.generator import DynamicGenerator
+from generation.core.simple_generator import SimpleGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -40,11 +43,12 @@ class UnifiedMaterialsGenerator:
     """
     Unified generator for all materials content types.
     
-    Wrapper around DynamicGenerator for backward compatibility.
-    All generation uses single robust generator with parameter learning.
+    Wrapper around SimpleGenerator for single-pass generation.
+    All generation makes ONE API call per material with NO validation/retry.
+    Validation and learning happen in separate post-processing stage.
     
     Responsibilities:
-    - Wrap DynamicGenerator for materials-specific workflow
+    - Wrap SimpleGenerator for materials-specific workflow
     - Handle FAQ topic enhancement (optional)
     - Generate EEAT section (non-AI, random selection from regulatoryStandards)
     """
@@ -62,10 +66,10 @@ class UnifiedMaterialsGenerator:
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
         
-        # Initialize DynamicGenerator (single robust generator)
-        self.generator = DynamicGenerator(api_client)
+        # Initialize SimpleGenerator (single-pass, no validation/retry)
+        self.generator = SimpleGenerator(api_client)
         
-        self.logger.info("UnifiedMaterialsGenerator initialized (wraps DynamicGenerator)")
+        self.logger.info("UnifiedMaterialsGenerator initialized (wraps SimpleGenerator - single-pass generation)")
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
@@ -74,25 +78,22 @@ class UnifiedMaterialsGenerator:
     
     def generate_caption(self, material_name: str, material_data: Dict) -> Dict:
         """
-        Generate before/after microscopy captions using DynamicGenerator.
+        Generate before/after microscopy captions using SimpleGenerator (single-pass).
         
         Returns:
-            Full result dict with success, content, detection scores, etc.
+            Dict with 'before' and 'after' keys (caption content)
         """
         self.logger.info(f"📸 Generating caption for {material_name}")
         
-        # Use DynamicGenerator - returns full result with detection scores
+        # Use SimpleGenerator - returns dict with 'content' key
         result = self.generator.generate(material_name, 'caption')
         
-        if not result['success']:
-            raise ValueError(f"Caption generation failed: {result['reason']}")
-        
-        # Return full result (includes success, content, ai_score, human_score, etc.)
-        return result
+        # Extract content (already in before/after format from adapter)
+        return result['content']
     
-    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> Dict:
+    def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
         """
-        Generate FAQ questions and answers using DynamicGenerator.
+        Generate FAQ questions and answers using SimpleGenerator (single-pass).
         
         Args:
             material_name: Name of material
@@ -101,19 +102,15 @@ class UnifiedMaterialsGenerator:
             enhance_topics: Whether to enhance FAQ with topic keywords/statements
             
         Returns:
-            Full result dict with success, content (list of FAQ dicts), detection scores, etc.
+            List of FAQ dicts with 'question' and 'answer' keys
         """
         if faq_count is None:
             faq_count = random.randint(2, 8)
         
         self.logger.info(f"❓ Generating {faq_count} FAQ items for {material_name}")
         
-        # Use DynamicGenerator
+        # Use SimpleGenerator - returns dict with 'content' key containing FAQ list
         result = self.generator.generate(material_name, 'faq', faq_count=faq_count)
-        
-        if not result['success']:
-            raise ValueError(f"FAQ generation failed: {result['reason']}")
-        
         faq_list = result['content']
         
         # INLINE TOPIC ENHANCEMENT (before Materials.yaml write)
@@ -129,27 +126,24 @@ class UnifiedMaterialsGenerator:
         
         return faq_list
     
-    def generate_subtitle(self, material_name: str, material_data: Dict) -> Dict:
+    def generate_subtitle(self, material_name: str, material_data: Dict) -> str:
         """
-        Generate subtitle using DynamicGenerator with parameter learning.
+        Generate subtitle using SimpleGenerator (single-pass, no parameter learning).
         
         Returns:
-            Full result dict with success, content, detection scores, etc.
+            String (subtitle content)
         """
         self.logger.info(f"📝 Generating subtitle for {material_name}")
         
-        # Use DynamicGenerator - returns full result with detection scores
+        # Use SimpleGenerator - returns dict with 'content' key
         result = self.generator.generate(material_name, 'subtitle')
-        
-        if not result['success']:
-            raise ValueError(f"Subtitle generation failed: {result['reason']}")
         
         subtitle = result['content']
         word_count = len(subtitle.split())
         self.logger.info(f"   ✅ Generated: {subtitle[:80]}... ({word_count} words)")
         
-        # Return full result (includes success, content, ai_score, human_score, etc.)
-        return result
+        # Return content string
+        return subtitle
     
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
@@ -230,7 +224,7 @@ class UnifiedMaterialsGenerator:
     
     def generate(self, material_name: str, content_type: str, **kwargs):
         """
-        Generate content for material.
+        Generate content for material using single-pass approach.
         
         Args:
             material_name: Name of material
@@ -238,7 +232,7 @@ class UnifiedMaterialsGenerator:
             **kwargs: Additional parameters (e.g., faq_count=8)
             
         Returns:
-            Generated content (dict for caption/faq/eeat, str for subtitle)
+            Generated content (string for caption/subtitle, list for faq, dict for eeat)
         """
         # Load material data
         materials_data = self._load_materials_data()
@@ -249,7 +243,7 @@ class UnifiedMaterialsGenerator:
         material_data = materials_data['materials'][material_name]
         
         # Generate based on type
-        # All components now return full result dict with success, content, scores, etc.
+        # SimpleGenerator returns content directly (no result wrapper)
         if content_type == 'caption':
             return self.generate_caption(material_name, material_data)
         elif content_type == 'faq':
@@ -257,10 +251,10 @@ class UnifiedMaterialsGenerator:
         elif content_type == 'subtitle':
             return self.generate_subtitle(material_name, material_data)
         elif content_type == 'eeat':
-            # EEAT is non-AI, returns dict directly (not wrapped in result)
+            # EEAT is non-AI, returns dict directly
             return self.generate_eeat(material_name, material_data)
         else:
             raise ValueError(f"Unknown content type: {content_type}")
         
-        # Note: DynamicGenerator already writes to Materials.yaml
+        # Note: SimpleGenerator already writes to Materials.yaml
         # No need for separate _write_to_materials_yaml call

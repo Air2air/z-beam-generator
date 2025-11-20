@@ -97,9 +97,10 @@ class ComponentRegistry:
             default = lengths
             extraction_strategy = None
         elif isinstance(lengths, dict):
-            if 'default' not in lengths:
-                raise ValueError(f"Component '{component_type}' missing 'default' length in config")
-            default = lengths['default']
+            # Support both 'target' (new) and 'default' (legacy) keys
+            default = lengths.get('target') or lengths.get('default')
+            if default is None:
+                raise ValueError(f"Component '{component_type}' missing 'target' or 'default' length in config")
             extraction_strategy = lengths.get('extraction_strategy')  # May be None
         else:
             raise ValueError(f"Component '{component_type}' has invalid length config format: {type(lengths)}")

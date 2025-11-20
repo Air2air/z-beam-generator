@@ -14,12 +14,21 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --run-region "North America"    # Region workflow (coming soon)
   python3 run.py --run-application "Rust Removal"  # Application workflow (coming soon)
 
-🎯 MANUAL GENERATION (Step-by-Step):
-  python3 run.py --caption "Aluminum"      # Step 1: Generate AI caption → Materials.yaml (with integrity check)
-  python3 run.py --subtitle "Aluminum"     # Step 1: Generate AI subtitle → Materials.yaml (with integrity check)
-  python3 run.py --faq "Aluminum"          # Step 1: Generate AI FAQ → Materials.yaml (with integrity check)
-  python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Step 2: Voice → Materials.yaml
-  python3 run.py --material "Aluminum" --data-only  # Step 3: Export → frontmatter
+🎯 GENERATION & VALIDATION WORKFLOW (NEW - Single-Pass):
+  # Step 1: Generate (single API call, no validation)
+  python3 run.py --caption "Aluminum"      # Generate AI caption → Materials.yaml (single-pass)
+  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle → Materials.yaml (single-pass)
+  python3 run.py --faq "Aluminum"          # Generate AI FAQ → Materials.yaml (single-pass)
+  
+  # Step 2: Validate & Improve (post-processing with learning systems)
+  python3 run.py --validate-content Aluminum subtitle  # Run all quality checks + learning (up to 5 attempts)
+  python3 run.py --validate-content Aluminum caption   # Winston, Realism, Readability, Subjective + DB logging
+  
+  # Step 3: Voice enhancement (optional)
+  python3 scripts/voice/enhance_materials_voice.py --material "Aluminum"  # Apply voice → Materials.yaml
+  
+  # Step 4: Export to frontmatter
+  python3 run.py --material "Aluminum" --data-only  # Export → frontmatter
   
   # Skip integrity check (not recommended):
   python3 run.py --caption "Aluminum" --skip-integrity-check
@@ -192,6 +201,8 @@ def main():
     # Validation Commands
     parser.add_argument("--test", action="store_true", help="Run test mode")
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation")
+    parser.add_argument("--validate-content", nargs=2, metavar=('MATERIAL', 'COMPONENT'), 
+                       help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum subtitle)")
     parser.add_argument("--validate-report", help="Generate validation report")
     parser.add_argument("--content-validation-report", help="Content quality validation report")
     parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
@@ -368,6 +379,64 @@ def main():
         result = handle_batch_caption_generation(args.batch_caption, skip_integrity_check=args.skip_integrity_check)
         return result
     
+    if args.validate_content:
+        material_name, component_type = args.validate_content
+        
+        print("="*80)
+        print(f"🔍 VALIDATE & IMPROVE: {component_type} for {material_name}")
+        print("="*80)
+        print()
+        print("🎯 Running post-processing validation with learning systems...")
+        print()
+        
+        try:
+            from postprocessing.orchestrator import ValidationOrchestrator
+            from shared.api.client_factory import create_api_client
+            from generation.core.simple_generator import SimpleGenerator
+            from postprocessing.detection.ensemble import AIDetectorEnsemble
+            
+            # Initialize API client (same as used for generation)
+            if component_type == 'caption':
+                api_client = create_api_client('deepseek')
+            else:
+                api_client = create_api_client('grok')
+            
+            # Initialize required dependencies
+            # Note: API client has detect_ai_content method for Winston API
+            detector_ensemble = AIDetectorEnsemble(winston_client=api_client)
+            simple_generator = SimpleGenerator(api_client)
+            
+            # Initialize validation orchestrator with 19-step ultra-modular pipeline
+            orchestrator = ValidationOrchestrator(
+                api_client=api_client,
+                winston_client=detector_ensemble,
+                simple_generator=simple_generator
+            )
+            
+            # Run validation and improvement (6 passes: Load → Quality → Gates → Learning → Recording → Regeneration)
+            result = orchestrator.validate_and_improve(material_name, component_type)
+            
+            if result['success']:
+                print()
+                print("✅ VALIDATION COMPLETE")
+                print(f"   • Final Score: {result.get('final_score', 'N/A')}")
+                print(f"   • Attempts: {result.get('attempts', 1)}")
+                print(f"   • Learning Data Saved: {'Yes' if result.get('logged', False) else 'No'}")
+                print()
+                return True
+            else:
+                print()
+                print("❌ VALIDATION FAILED")
+                print(f"   • Reason: {result.get('reason', 'Unknown')}")
+                print()
+                return False
+        
+        except Exception as e:
+            print(f"❌ Error during validation: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
     if args.caption:
         result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
@@ -484,10 +553,8 @@ def main():
     # Pre-generation validation runs automatically within components
     
     # Additional imports for material generation
-    from shared.generators.dynamic_generator import DynamicGenerator
     from shared.api.client_factory import create_api_client
     from data.materials.materials import load_materials_cached as load_materials, clear_materials_cache
-    from shared.utils.filename import generate_safe_filename
     
     try:
         from shared.commands.common import (
@@ -531,87 +598,47 @@ def main():
         print(f"🚀 Generating frontmatter for {args.material}")
         
         try:
-            # Try new orchestrator first (Phase 1 architecture)
-            try:
-                from export.core.orchestrator import FrontmatterOrchestrator
-                
-                api_client = create_api_client("grok") if not args.data_only else None
-                
-                # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
-                enforce_completeness = not args.no_completeness_check
-                
-                orchestrator = FrontmatterOrchestrator(
-                    api_client=api_client,
-                    enforce_completeness=enforce_completeness
-                )
-                
-                # Get author data from material data (reusable approach)
-                from data.materials.materials import get_material_by_name_cached
-                from export.utils.author_manager import get_author_info_for_material
-                
-                author_data = None
-                material_data = get_material_by_name_cached(args.material)
-                if material_data:
-                    try:
-                        author_data = get_author_info_for_material(material_data)
-                    except (ValueError, KeyError) as e:
-                        print(f"⚠️  Author assignment failed: {e}")
-                        # Let generator handle missing author (fail-fast)
-                
-                result = orchestrator.generate(
-                    content_type='material',
-                    identifier=args.material,
-                    author_data=author_data
-                )
-                
-                if result.success:
-                    output_path = result.content  # Output path stored in content field
-                    print(f"✅ Generated → {output_path}")
-                    if author_data:
-                        print(f"   🎯 Author voice applied: {author_data.get('country', 'Unknown')}")
-                    return True
-                else:
-                    print(f"❌ Generation failed: {result.error_message}")
-                    return False
-                    
-            except ImportError:
-                # Fallback to legacy generator if orchestrator not available
-                print("⚠️  Using legacy generator (orchestrator not available)")
-                
-                materials_data_dict = load_materials()
-                from data.materials.materials import get_material_by_name
-                material_info = get_material_by_name(args.material, materials_data_dict)
-                
-                if not material_info:
-                    print(f"❌ Material '{args.material}' not found")
-                    return False
-                
-                api_client = create_api_client("grok") if not args.data_only else None
-                generator = DynamicGenerator()
-                
-                result = generator.generate_component(
-                    material=args.material,
-                    component_type='frontmatter',
-                    api_client=api_client,
-                    frontmatter_data=None,
-                    material_data=material_info
-                )
+            # Use FrontmatterOrchestrator (modern architecture)
+            from export.core.orchestrator import FrontmatterOrchestrator
             
-                # Legacy generator result handling
-                if result.success:
-                    output_dir = "frontmatter/materials"
-                    os.makedirs(output_dir, exist_ok=True)
-                    filename = generate_safe_filename(args.material)
-                    output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
-                    
-                    with open(output_file, 'w') as f:
-                        f.write(result.content)
-                    
-                    print(f"✅ Generated → {output_file}")
-                    return True
-                else:
-                    print(f"❌ Generation failed: {result.error_message}")
-                    return False
+            api_client = create_api_client("grok") if not args.data_only else None
+            
+            # Determine completeness enforcement (enabled by default, disabled with --no-completeness-check)
+            enforce_completeness = not args.no_completeness_check
+            
+            orchestrator = FrontmatterOrchestrator(
+                api_client=api_client,
+                enforce_completeness=enforce_completeness
+            )
+            
+            # Get author data from material data (reusable approach)
+            from data.materials.materials import get_material_by_name_cached
+            from export.utils.author_manager import get_author_info_for_material
+            
+            author_data = None
+            material_data = get_material_by_name_cached(args.material)
+            if material_data:
+                try:
+                    author_data = get_author_info_for_material(material_data)
+                except (ValueError, KeyError) as e:
+                    print(f"⚠️  Author assignment failed: {e}")
+                    # Let generator handle missing author (fail-fast)
+            
+            result = orchestrator.generate(
+                content_type='material',
+                identifier=args.material,
+                author_data=author_data
+            )
+            
+            if result.success:
+                output_path = result.content  # Output path stored in content field
+                print(f"✅ Generated → {output_path}")
+                if author_data:
+                    print(f"   🎯 Author voice applied: {author_data.get('country', 'Unknown')}")
+                return True
+            else:
+                print(f"❌ Generation failed: {result.error_message}")
+                return False
                 
         except Exception as e:
             print(f"❌ Generation failed: {e}")

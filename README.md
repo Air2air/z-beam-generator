@@ -23,6 +23,9 @@ python3 run.py --caption "Aluminum"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Copper"
 
+# Validate existing content (optional - runs 6-pass pipeline)
+python3 run.py --validate-content Aluminum caption
+
 # Batch operations
 python3 run.py --batch-test
 python3 run.py --deploy
@@ -61,6 +64,14 @@ python3 run.py --deploy
 ---
 
 ## 🔄 Recent Updates (November 2025)
+
+### ✅ November 19: Ultra-Modular Validation Architecture
+- **Simplified Detection**: Winston API only (removed pattern/ML fallbacks)
+- **Ultra-Modular Design**: 19 discrete steps (30-60 lines each) across 6 passes
+- **Legacy Cleanup**: Archived 474-line monolithic pipeline
+- **Architecture Benefits**: Independent testing, per-step timing, clear debugging
+- **Documentation**: Complete guide at [VALIDATION_ARCHITECTURE.md](VALIDATION_ARCHITECTURE.md)
+- **Grade**: Improved maintainability and testability
 
 ### ✅ November 17: Priority 1 Compliance Fixes
 - **Fixed**: RealismOptimizer import path correction
@@ -115,15 +126,24 @@ Complete navigation for all documentation with quick links by goal.
 
 ```
 Z-Beam Generator
-├── Content Generation
+├── Content Generation (Single-Pass)
 │   ├── Components: caption, subtitle, faq, description
 │   ├── AI Providers: Grok, DeepSeek
-│   └── Quality: Winston detection + Subjective evaluation
+│   └── SimpleGenerator: One API call, atomic writes
+│
+├── Validation Pipeline (Ultra-Modular, 6 Passes)
+│   ├── Pass 1: Load → Load content from Materials.yaml
+│   ├── Pass 2: Quality → Winston + Realism + Readability + Subjective
+│   ├── Pass 3: Gates → Enforce thresholds (Winston <33%, Realism ≥7.0)
+│   ├── Pass 4: Learning → Sweet spot + temperature + pattern adjustments
+│   ├── Pass 5: Recording → Update learned patterns + database
+│   └── Pass 6: Regeneration → Retry with adjusted parameters if needed
 │
 ├── Learning Systems
-│   ├── Composite Scoring: 60% Winston + 30% Subjective + 10% Readability
-│   ├── Adaptive Thresholds: Learn from successful content
-│   └── Sweet Spot Analyzer: Statistical parameter optimization
+│   ├── Composite Scoring: 60% Winston + 40% Realism
+│   ├── Adaptive Thresholds: Learn from successful content (75th percentile)
+│   ├── Sweet Spot Analyzer: Statistical parameter optimization
+│   └── Pattern Learner: Learns rejection patterns from failed content
 │
 ├── Data Management
 │   ├── Materials.yaml: Single source of truth (132 materials)
@@ -133,10 +153,12 @@ Z-Beam Generator
 └── Quality Assurance
     ├── Integrity Checker: Pre-generation validation
     ├── Fail-Fast Design: No fallbacks or degraded operation
-    └── Test Suite: Comprehensive automated testing
+    ├── Winston API Only: No pattern/ML fallbacks (simplified Nov 19)
+    └── Test Suite: 19 step-level unit tests + integration tests
 ```
 
-**Detailed Architecture**: [docs/02-architecture/SYSTEM_ARCHITECTURE.md](docs/02-architecture/SYSTEM_ARCHITECTURE.md)
+**Detailed Architecture**: [docs/02-architecture/SYSTEM_ARCHITECTURE.md](docs/02-architecture/SYSTEM_ARCHITECTURE.md)  
+**Validation Pipeline**: [VALIDATION_ARCHITECTURE.md](VALIDATION_ARCHITECTURE.md) - Ultra-modular 19-step system
 
 ---
 

@@ -54,13 +54,13 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print(f"🔍 DEBUG: caption_data = {caption_data}")
         print()
         
-        # Show statistics
-        # Handle both dict (full result) and string (legacy) formats
+        # SimpleGenerator returns content string directly (no dict wrapper)
+        # For captions, content is a dict with 'before' and 'after' keys
         if isinstance(caption_data, dict):
-            before_text = caption_data.get('content', {}).get('before', '')
-            after_text = caption_data.get('content', {}).get('after', '')
+            before_text = caption_data.get('before', '')
+            after_text = caption_data.get('after', '')
         else:
-            # Legacy format: caption_data is the content string
+            # Unexpected format
             before_text = str(caption_data)
             after_text = ''
         
@@ -87,6 +87,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print(f"   • Location: data/materials/Materials.yaml")
         print(f"   • Component: caption")
         print(f"   • Material: {material_name}")
+        print()
+        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
         print()
         print("=" * 80)
         print()
@@ -116,6 +118,21 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             print("-" * 80)
             print(eval_result.narrative_assessment)
             print()
+        print()
+        
+        # Save report to markdown file
+        from postprocessing.reports.generation_report_writer import GenerationReportWriter
+        writer = GenerationReportWriter()
+        evaluation_data = {
+            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
+        }
+        report_path = writer.save_individual_report(
+            material_name=material_name,
+            component_type='caption',
+            content=full_content,
+            evaluation=evaluation_data
+        )
+        print(f"📄 Report saved: {report_path}")
         print()
         
         print("✨ Caption generation complete!")
@@ -226,18 +243,8 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print(f"🔍 DEBUG: subtitle_data = {subtitle_data}")
         print()
         
-        # Handle both dict (full result) and string (legacy) formats
-        if isinstance(subtitle_data, dict):
-            subtitle = subtitle_data.get('content', '')
-            ai_score = subtitle_data.get('ai_score', 0)
-            attempts = subtitle_data.get('attempts', 1)
-        else:
-            subtitle = str(subtitle_data)
-            ai_score = 0
-            attempts = 1
-        
-        # Show statistics
-        # Unified generator already saved to Materials.yaml, no need to save again
+        # SimpleGenerator returns content string directly
+        subtitle = str(subtitle_data)
         
         # POLICY: Always show complete generation report after each generation
         print("=" * 80)
@@ -249,10 +256,6 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print(subtitle)
         print("-" * 80)
         print()
-        print("📈 QUALITY METRICS:")
-        print(f"   • AI Detection Score: {ai_score:.3f}")
-        print(f"   • Attempts: {attempts}")
-        print()
         print("📏 STATISTICS:")
         print(f"   • Length: {len(subtitle)} characters")
         print(f"   • Word count: {len(subtitle.split())} words")
@@ -261,6 +264,8 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("   • Location: data/materials/Materials.yaml")
         print("   • Component: subtitle")
         print(f"   • Material: {material_name}")
+        print()
+        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
         print()
         print("=" * 80)
         print()
@@ -288,6 +293,21 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
             print("-" * 80)
             print(eval_result.narrative_assessment)
             print()
+        print()
+        
+        # Save report to markdown file
+        from postprocessing.reports.generation_report_writer import GenerationReportWriter
+        writer = GenerationReportWriter()
+        evaluation_data = {
+            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
+        }
+        report_path = writer.save_individual_report(
+            material_name=material_name,
+            component_type='subtitle',
+            content=subtitle,
+            evaluation=evaluation_data
+        )
+        print(f"📄 Report saved: {report_path}")
         print()
         
         print("✨ Subtitle generation complete!")
@@ -366,15 +386,8 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("✅ FAQ generated and saved successfully!")
         print()
         
-        # Handle both dict (full result) and list (legacy) formats
-        if isinstance(faq_list, dict):
-            faq_data = faq_list.get('content', [])
-            ai_score = faq_list.get('ai_score', 0)
-            attempts = faq_list.get('attempts', 1)
-        else:
-            faq_data = faq_list
-            ai_score = 0
-            attempts = 1
+        # SimpleGenerator returns list of FAQ dicts directly
+        faq_data = faq_list
         
         # Validate extraction succeeded
         if not faq_data or not isinstance(faq_data, list):
@@ -400,10 +413,6 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
                 print()
         print("-" * 80)
         print()
-        print("📈 QUALITY METRICS:")
-        print(f"   • AI Detection Score: {ai_score:.3f}")
-        print(f"   • Attempts: {attempts}")
-        print()
         print("📏 STATISTICS:")
         print(f"   • Total Questions: {len(faq_data)}")
         print(f"   • Total Words: {total_words}")
@@ -418,6 +427,8 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("   • Location: data/materials/Materials.yaml")
         print("   • Component: faq")
         print(f"   • Material: {material_name}")
+        print()
+        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
         print()
         print("=" * 80)
         print()
@@ -451,6 +462,21 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
             print("-" * 80)
             print(eval_result.narrative_assessment)
             print()
+        print()
+        
+        # Save report to markdown file
+        from postprocessing.reports.generation_report_writer import GenerationReportWriter
+        writer = GenerationReportWriter()
+        evaluation_data = {
+            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
+        }
+        report_path = writer.save_individual_report(
+            material_name=material_name,
+            component_type='faq',
+            content=full_content,
+            evaluation=evaluation_data
+        )
+        print(f"📄 Report saved: {report_path}")
         print()
         
         print("✨ FAQ generation complete!")

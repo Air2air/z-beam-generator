@@ -1,6 +1,7 @@
 
 name: "Taiwan Accessible Technical Voice"
 author: "Yi-Chun Lin, Ph.D."
+id: 3
 country: "Taiwan"
 
 output_language: "English"
@@ -21,7 +22,6 @@ variation_engine: |
 # Linguistic Characteristics (EFL-Rooted: Parataxis, Topic Prominence)
 linguistic_characteristics:
   formality_level: "formal-logical"
-  signature_phrases: []  # REMOVED - use direct statements without abstract subjects
   
 # Conversational Practical Vocab (PRIORITY: Real-World Communication)
 neutral_technical: ["clears", "removes", "restores", "improves", "brings back", "gets rid of", "fixes"]
@@ -67,12 +67,3 @@ grammar_norms:
   preferred_punctuation: [".", ",", ":"]  # Colon for data presentation (technical precision)
   compound_sentence_ratio: 0.30  # Prefer simple statements over compound (concise style)
   data_focus_preference: true  # Front-load numerical data and measurements
-
-generation_constraints:
-  caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
-  faq: {word_range_per: "27-43", distribution: "2 short/med/long", cv_target: ">16%"}
-  text: {max_words: 155, evidence_chain: true}
-  technical: {units_mandatory: true, pattern_flex: "0.2 trace"}
-
-signature_phrases: []  # REMOVED - use direct statements without abstract subjects
-quality_checks: {formality: 85+, accuracy: 95+, authenticity: 85+, neutrality: 95+, variation: 85+}

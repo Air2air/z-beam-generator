@@ -532,6 +532,23 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Quick Fix**: `python3 run.py --material "Steel"`
 **→ Batch**: `python3 run.py` (generates all materials)
 
+### "Where are generation reports?" / "How to view generation results?"
+**→ Immediate Response**: ✨ **NEW** (Nov 19, 2025) - Automatic report file in root
+**→ Location**: `GENERATION_REPORT.md` (root directory, gitignored)
+**→ Behavior**: Overwrites on each generation (shows most recent)
+**→ Format**: Markdown with content, statistics, storage location, quality metrics
+**→ Quick View**: `cat GENERATION_REPORT.md`
+**→ Save Important**: `cp GENERATION_REPORT.md docs/archive/aluminum_subtitle_nov19.md`
+**→ Documentation**: `docs/03-components/GENERATION_REPORTS.md`
+**→ Tests**: `tests/test_generation_report_writer.py` (7 tests, all passing ✅)
+
+**Report Contains:**
+- 📝 Full generated content (with code blocks)
+- 📏 Statistics (character/word counts)
+- 💾 Storage info (Materials.yaml location)
+- 📊 Quality metrics (Winston, Realism scores when available)
+- 📊 Subjective evaluation (narrative assessment)
+
 ### "Voice system" / "Author voices" / "AI-evasion"
 **→ Immediate Response**: ✅ **DEPLOYED** - Voice system with 214% AI-evasion improvement
 **→ Complete Guide**: [Voice System Complete](../voice/VOICE_SYSTEM_COMPLETE.md)

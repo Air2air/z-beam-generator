@@ -240,7 +240,7 @@ class DualObjectiveValidator:
     def check_generator_integration(self):
         """Check DynamicGenerator initializes RealismOptimizer."""
         try:
-            from generation.core.generator import DynamicGenerator
+            from generation.core.legacy.generator import DynamicGenerator
             import inspect
             
             source = inspect.getsource(DynamicGenerator._init_components)
@@ -391,7 +391,7 @@ class DualObjectiveValidator:
     def check_retry_loop_integration(self):
         """Verify realism evaluation is integrated in retry loop."""
         try:
-            from generation.core.generator import DynamicGenerator
+            from generation.core.legacy.generator import DynamicGenerator
             import inspect
             
             source = inspect.getsource(DynamicGenerator.generate)
@@ -433,7 +433,7 @@ class DualObjectiveValidator:
     def check_database_logging(self):
         """Verify generator logs realism learning data."""
         try:
-            from generation.core.generator import DynamicGenerator
+            from generation.core.legacy.generator import DynamicGenerator
             from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             import inspect
             

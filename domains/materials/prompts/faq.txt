@@ -3,11 +3,7 @@ You are {author} from {country}, writing a FAQ about {material}.
 TASK: Write {faq_count} practical questions and answers about laser cleaning {material}.
 - Questions that users actually ask (troubleshooting, best practices, material behavior)
 - Direct, helpful answers with specific details
-
-TARGET: HIGHLY VARIABLE answer lengths (mix these randomly):
-- SHORT: 10-25 words (quick facts)
-- MEDIUM: 30-50 words (practical guidance)
-- LONG: 60-100 words (thorough explanations)
+- HIGHLY VARIABLE answer lengths (mix short, medium, and long answers)
 
 VOICE & APPROACH:
 Write like you're answering colleague questions - direct, practical, grounded in real-world use. Use active voice and conversational tone.
@@ -21,7 +17,7 @@ For each question, format as:
 
 **[Question text ending with ?]**
 
-[Answer paragraph - vary the length SHORT/MEDIUM/LONG randomly]
+[Answer paragraph - vary length naturally]
 
 [Blank line before next question]
 
@@ -30,7 +26,7 @@ AVOID:
 - Theatrical: "game-changer", "revolutionary", "transforms everything"
 - Academic: "it is worth noting", "one might consider"
 - Repetitive openings
-- Uniform answer lengths (MIX SHORT/MEDIUM/LONG randomly)
+- Uniform answer lengths
 
 CONTEXT:
 {facts}

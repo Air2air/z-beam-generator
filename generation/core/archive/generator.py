@@ -1,5 +1,19 @@
 """
-Unified Dynamic Content Generator
+LEGACY: Unified Dynamic Content Generator (Superseded by SimpleGenerator)
+
+⚠️ THIS FILE IS LEGACY CODE - MOVED TO generation/core/legacy/ ON NOV 19, 2025
+⚠️ New generation uses SimpleGenerator (generation/core/simple_generator.py)
+⚠️ Validation moved to postprocessing/validate_and_improve.py
+
+This generator combined generation + validation + retry loops in a single class.
+New architecture separates concerns:
+- Generation Phase: SimpleGenerator (single API call, no validation)
+- Post-Processing Phase: ValidationAndImprovementPipeline (quality checks + learning)
+
+KEPT FOR:
+- Backward compatibility with --material command in run.py
+- Reference for learning system integration patterns
+- Historical context for architecture decisions
 
 Single robust generator with fully dynamic parameters that learn from Winston scores.
 Replaces both UnifiedMaterialsGenerator and Orchestrator with integrated learning.
@@ -137,6 +151,7 @@ class DynamicGenerator:
         try:
             from generation.config.config_loader import get_config
             config = get_config()
+            self.config = config.config  # Store config for access throughout generator
             db_path = config.config.get('winston_feedback_db_path')
             if not db_path:
                 raise ValueError("winston_feedback_db_path not configured")
@@ -620,14 +635,14 @@ class DynamicGenerator:
         # Set adaptive quality threshold based on historical success (curriculum learning)
         self.ai_threshold = self._get_adaptive_quality_threshold(material_name, component_type)
         
-        # Generation loop with learning
-        max_attempts = 5  # Increased for learning phase to gather more training data
+        # Generation loop - single-pass in generation phase (max_attempts from config)
+        max_attempts = self.config.get('simple_mode', {}).get('max_attempts', 1)
         attempt = 1
         last_winston_result = None
-        last_realism_result = None  # NEW: Track realism evaluation results
+        last_realism_result = None  # Track realism evaluation results
         regeneration_triggered = False  # Track if we've already done a fresh regeneration
         improvement_history = []  # Track human score improvements to detect stuck patterns
-        realism_history = []  # NEW: Track realism score improvements
+        realism_history = []  # Track realism score improvements
         suggested_adjustments = None  # Track parameter adjustments from feedback
         
         while attempt <= max_attempts:

@@ -1,33 +1,45 @@
-# Simple Mode Configuration - Disable Learning Systems
-# Use for reliable, fast generation without adaptive learning
+# Simple Mode Configuration - Single-Pass Generation
+# Generation phase: ONE request per material (no retries)
+# Quality validation happens in subsequent stages
 
 # Learning Systems Control
 simple_mode:
   enabled: false                         # DISABLED: Testing full validation with evaluation+learning
   fixed_temperature: 0.9                 # Fixed temperature (proven to work)
-  max_attempts: 3                        # Simple retry limit
-  temperature_increase_per_retry: 0.1    # Linear temp increase on retry
+  max_attempts: 1                        # Single-pass generation (no retries in generation phase)
+  temperature_increase_per_retry: 0.0    # N/A - no retries in generation phase
 
-# Length Variation Control (1-10 scale, normalized)
-length_variation_range: 5.5              # Moderate variation: ±35%
+# Length Variation Control (1-10 scale)
+# This SINGLE slider controls variation for ALL components
+# Calculation: variation_pct = 10% + (slider * 5%)
+# Examples:
+#   1 = ±15% (target 100 → range 85-115)
+#   5 = ±35% (target 100 → range 65-135) 
+#   10 = ±60% (target 100 → range 40-160)
+length_variation_range: 10               # Maximum variation: ±60%
   
 # Winston Feedback Database
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 
-# Component Lengths (word counts)
+# Component Lengths (word count targets ONLY)
+# Global length_variation_range applies uniformly to all components
+# min/max calculated dynamically: target ± (target * variation_pct)
 component_lengths:
   caption:
-    default: 75                            # Increased to meet Winston 300-char minimum
+    target: 75                         # Target word count (variation applied from global slider)
     extraction_strategy: before_after  # Extract before/after sections
+  
   subtitle:
-    default: 30
-    extraction_strategy: raw  # Return text as-is
+    target: 25                         # Target word count (variation applied from global slider)
+    extraction_strategy: raw           # Return text as-is
+  
   faq:
-    default: 150
-    extraction_strategy: json_list  # Parse JSON array
+    target: 150                        # Target word count (variation applied from global slider)
+    extraction_strategy: json_list     # Parse JSON array
+  
   description:
-    default: 200
-    extraction_strategy: raw  # Return text as-is
+    target: 200                        # Target word count (variation applied from global slider)
+    extraction_strategy: raw           # Return text as-is
 
 # What gets disabled in simple mode:
 disabled_features:

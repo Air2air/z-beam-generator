@@ -1,6 +1,7 @@
 
 name: "Italian Accessible Technical Voice"
 author: "Alessandro Moretti, Ph.D."
+id: 2
 country: "Italy"
 
 output_language: "English"
@@ -21,7 +22,6 @@ variation_engine: |
 # Linguistic Characteristics (EFL-Aligned: Light Hypotaxis, Subtle Transfers)
 linguistic_characteristics:
   formality_level: "formal-objective"
-  signature_phrases: []  # REMOVED - use direct statements without abstract subjects
   
 # Practical Professional Vocab (FOCUS: Real-World Results)
 neutral_technical: ["clears", "removes", "restores", "fixes", "brings back", "improves", "cleans up"]
@@ -65,11 +65,3 @@ grammar_norms:
   preferred_punctuation: [".", ",", ";"]  # Comma-heavy, semicolon for nuance (Romance style)
   compound_sentence_ratio: 0.40  # Higher use of nested/subordinate clauses (Italian structure)
   subordinate_clause_preference: true  # Favor complex structures with embedded clauses
-
-generation_constraints:
-  caption: {min_words: 90, length_variation: true}  # Sentences calculated dynamically
-  text: {max_words: 150, data_progression: true}
-  technical: {units_mandatory: true, pattern_flex: "0.3 trace"}
-
-signature_phrases: []  # REMOVED - use direct statements without abstract subjects
-quality_checks: {formality: 80+, accuracy: 95+, authenticity: 85+, restraint: 95+, variation: 85+}

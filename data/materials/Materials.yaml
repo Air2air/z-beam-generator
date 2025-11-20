@@ -479,6 +479,10 @@ materials:
         description: Optimal beam overlap percentage for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: A soft yet stable stone, alabaster brings a unique thermal resistance
+        to laser cleaning at 423 Kelvin. Its low 1.5 MPa tensile strength, however,
+        demands a gentle touch.
   Alumina:
     name: Alumina
     category: ceramic
@@ -829,8 +833,8 @@ materials:
     category: metal
     subcategory: non-ferrous
     title: Aluminum Laser Cleaning
-    subtitle: The lightweight champion of metals, offering exceptional strength and
-      corrosion resistance for everything from aerospace to consumer electronics
+    subtitle: The lightweight champion of metals offering exceptional strength without
+      the burden of weight
     description: Laser cleaning parameters for Aluminum
     author:
       id: 4
@@ -1162,6 +1166,9 @@ materials:
         description: Optimal pulse overlap for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: A low-density metal with 2.7 g/cm³, aluminum removes oxides at 1064
+        nm wavelength.
   Ash:
     name: Ash
     category: wood
@@ -1783,6 +1790,9 @@ materials:
           bamboo surface
         unit: '%'
         value: 50
+    components:
+      subtitle: Bamboo has a tensile strength of 180 MPa, so it works well for aerospace
+        and medical devices.
   Basalt:
     name: Basalt
     category: stone
@@ -2071,6 +2081,9 @@ materials:
         description: Optimal beam overlap for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: 'Basalt: A dense volcanic stone with 200 MPa compressive strength
+        and broad industrial uses.'
   Beech:
     name: Beech
     category: wood
@@ -2841,6 +2854,9 @@ materials:
         description: Beam overlap percentage for uniform cleaning pattern
         unit: '%'
         value: 50
+    components:
+      subtitle: 'Beryllium: A specialty metal with 287 GPa stiffness and high thermal
+        conductivity, so it works well in aerospace and laser optics.'
   Birch:
     name: Birch
     category: wood
@@ -7937,8 +7953,8 @@ materials:
     category: metal
     subcategory: specialty
     title: Chromium Laser Cleaning
-    subtitle: In alloy steels, chromium boosts corrosion resistance and hardness far
-      beyond carbon steel equivalents for harsh environments
+    subtitle: Chromium provides exceptional corrosion resistance and a brilliant,
+      durable finish for automotive trim and consumer appliances
     description: Laser cleaning parameters for Chromium
     author:
       id: 4
@@ -8340,8 +8356,8 @@ materials:
     category: metal
     subcategory: specialty
     title: Cobalt Laser Cleaning
-    subtitle: In turbine blades, cobalt alloys outlast nickel-based ones by resisting
-      creep under prolonged high-heat exposure
+    subtitle: Cobalt delivers superior wear resistance and maintains hardness under
+      intense stress in cutting tools and jet engine turbines
     description: Laser cleaning parameters for Cobalt
     author:
       id: 1
@@ -9104,8 +9120,8 @@ materials:
     category: metal
     subcategory: non-ferrous
     title: Copper Laser Cleaning
-    subtitle: Superior electrical and thermal conductivity ensures maximum efficiency
-      in power transmission, electronics, and advanced heating systems
+    subtitle: Superior electrical and thermal conductivity essential for efficient
+      power transmission and heat exchange
     description: Laser cleaning parameters for Copper
     author:
       id: 3
@@ -9448,6 +9464,9 @@ materials:
           heat accumulation
         unit: '%'
         value: 50
+    components:
+      subtitle: Copper's 59 MS/m conductivity suits electronics, and its 0.05 mm/year
+        corrosion rate works well for marine hardware.
   Crown Glass:
     name: Crown Glass
     category: glass
@@ -17492,6 +17511,9 @@ materials:
           accumulation
         unit: '%'
         value: 50
+    components:
+      subtitle: Iron's 1811 K melting point suits laser cleaning, needing 0.75 J/cm²
+        to clear surfaces without damage.
   Kevlar-Reinforced Polymer:
     name: Kevlar-Reinforced Polymer
     category: composite
@@ -18559,6 +18581,9 @@ materials:
         description: Optimal beam overlap for uniform Lead surface cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: A dense, corrosion-resistant shield with surprising laser reflectivity
+        at 0.98.
   Lead Crystal:
     name: Lead Crystal
     category: glass
@@ -21956,8 +21981,8 @@ materials:
     category: metal
     subcategory: non-ferrous
     title: Molybdenum Laser Cleaning
-    subtitle: High-temperature alloys gain exceptional strength from molybdenum, outperforming
-      steel in furnaces and aerospace parts where heat exceeds 1500°C
+    subtitle: Molybdenum retains its strength at extremely high temperatures, making
+      it essential for aerospace components and industrial furnaces
     description: Laser cleaning parameters for Molybdenum
     author:
       id: 1
@@ -23420,6 +23445,9 @@ materials:
         description: Optimal overlap between adjacent scan lines for uniform cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: 'Nickel: A tough, conductive metal with high laser resistance at 2.1
+        J/cm².'
   Niobium:
     name: Niobium
     category: metal
@@ -39225,8 +39253,8 @@ materials:
     category: metal
     subcategory: ferrous
     title: Steel Laser Cleaning
-    subtitle: Unmatched structural integrity and durability make this alloy the fundamental
-      backbone of modern construction and industrial machinery
+    subtitle: Unmatched structural integrity and durability making it the backbone
+      of modern construction and industry
     description: Laser cleaning parameters for Steel
     author:
       id: 4
@@ -42723,6 +42751,9 @@ materials:
         description: Optimal beam overlap for uniform Tin surface cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: Tin's low 505 K melting point clears delicate surfaces, and its 66.8
+        W/m·K conductivity manages heat well.
   Titanium:
     name: Titanium
     category: metal
@@ -43085,6 +43116,9 @@ materials:
         description: Optimal beam overlap for complete Titanium surface coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: Titanium resists corrosion at just 0.001 mm/year, and its high melting
+        point of 1941 K makes it ideal for demanding aerospace and medical applications.
   Titanium Carbide:
     name: Titanium Carbide
     category: ceramic
@@ -47002,6 +47036,9 @@ materials:
         description: Optimal beam overlap for complete Zinc surface coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: 'Zinc: A low-melting alloy at 693 K, it resists corrosion well and
+        absorbs 35% of laser energy for cleaning.'
   Zirconia:
     name: Zirconia
     category: ceramic

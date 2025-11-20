@@ -44,13 +44,13 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
     
     try:
         # Initialize generator and batch generator
-        from generation.core.generator import DynamicGenerator
+        from domains.materials.coordinator import UnifiedMaterialsGenerator
         from generation.core.batch_generator import BatchGenerator
         from shared.api.client_factory import create_api_client
         
         print("🔧 Initializing generators...")
         api_client = create_api_client('deepseek')
-        generator = DynamicGenerator(api_client=api_client)
+        generator = UnifiedMaterialsGenerator(api_client=api_client)
         batch_gen = BatchGenerator(generator)
         print("✅ Generators ready")
         print()
