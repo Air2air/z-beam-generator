@@ -71,20 +71,27 @@ class UnifiedMaterialsGenerator:
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
         
+        # Load config for quality gate settings
+        from generation.config.config_loader import get_config
+        config = get_config()
+        quality_gate_config = config.config.get('quality_gates', {})
+        evaluation_config = config.config.get('evaluation', {})
+        
         # Initialize SubjectiveEvaluator for quality gate
         from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
         self.subjective_evaluator = SubjectiveEvaluator(
             api_client=api_client,
-            quality_threshold=7.0,
-            verbose=True
+            quality_threshold=quality_gate_config.get('realism_threshold', 7.0),
+            verbose=evaluation_config.get('verbose', True),
+            evaluation_temperature=evaluation_config.get('temperature', 0.2)
         )
         
         # Initialize QualityGatedGenerator (evaluate before save, retry on fail)
         self.generator = QualityGatedGenerator(
             api_client=api_client,
             subjective_evaluator=self.subjective_evaluator,
-            max_attempts=5,
-            quality_threshold=7.0
+            max_attempts=quality_gate_config.get('max_retry_attempts', 5),
+            quality_threshold=quality_gate_config.get('realism_threshold', 7.0)
         )
         
         self.logger.info("UnifiedMaterialsGenerator initialized (quality-gated generation with auto-retry)")

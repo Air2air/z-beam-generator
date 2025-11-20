@@ -59,8 +59,8 @@ class QualityGatedGenerator:
         self,
         api_client,
         subjective_evaluator,
-        max_attempts: int = 5,
-        quality_threshold: float = 7.0
+        max_attempts: int = None,
+        quality_threshold: float = None
     ):
         """
         Initialize quality-gated generator.
@@ -68,8 +68,8 @@ class QualityGatedGenerator:
         Args:
             api_client: API client for content generation (required)
             subjective_evaluator: SubjectiveEvaluator instance (required)
-            max_attempts: Maximum generation attempts (default 5)
-            quality_threshold: Minimum realism score required (default 7.0)
+            max_attempts: Maximum generation attempts (default from config)
+            quality_threshold: Minimum realism score required (default from config)
         
         Raises:
             ValueError: If required components missing (fail-fast)
@@ -81,8 +81,15 @@ class QualityGatedGenerator:
         
         self.api_client = api_client
         self.subjective_evaluator = subjective_evaluator
-        self.max_attempts = max_attempts
-        self.quality_threshold = quality_threshold
+        
+        # Load config for quality gate settings
+        from generation.config.config_loader import get_config
+        config = get_config()
+        quality_gate_config = config.config.get('quality_gates', {})
+        
+        # Use config values or fallback to parameters
+        self.max_attempts = max_attempts or quality_gate_config.get('max_retry_attempts', 5)
+        self.quality_threshold = quality_threshold or quality_gate_config.get('realism_threshold', 7.0)
         
         # Initialize SimpleGenerator (does NOT save to YAML)
         from generation.core.simple_generator import SimpleGenerator
@@ -96,7 +103,7 @@ class QualityGatedGenerator:
         from generation.config.dynamic_config import DynamicConfig
         self.dynamic_config = DynamicConfig()
         
-        logger.info(f"QualityGatedGenerator initialized (max_attempts={max_attempts}, threshold={quality_threshold})")
+        logger.info(f"QualityGatedGenerator initialized (max_attempts={self.max_attempts}, threshold={self.quality_threshold})")
     
     def generate(
         self,
@@ -301,21 +308,29 @@ class QualityGatedGenerator:
         )
     
     def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
-        """Get base generation parameters from dynamic config"""
+        """Get base generation parameters from config and dynamic config"""
+        from generation.config.config_loader import get_config
+        config = get_config()
+        
+        # Get voice parameters from config
+        voice_params = config.config.get('voice_parameters', {})
+        
         return {
+            # API parameters (dynamic from DynamicConfig)
             'temperature': self.dynamic_config.calculate_temperature(),
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
             'frequency_penalty': self.dynamic_config.calculate_frequency_penalty(),
             'presence_penalty': self.dynamic_config.calculate_presence_penalty(),
-            # Voice parameters (used by prompt builder)
-            'emotional_tone': 0.3,  # Base: moderate emotion
-            'opinion_rate': 0.2,    # Base: low opinion
-            'structural_predictability': 0.5,  # Base: moderate structure
-            'sentence_rhythm_variation': 0.6,  # Base: moderate variation
-            'imperfection_tolerance': 0.4,     # Base: moderate imperfections
-            'trait_frequency': 0.5,            # Base: moderate personality
-            'colloquialism_frequency': 0.3,    # Base: low casual language
-            'technical_intensity': 2           # Base: moderate technical detail (1-3 scale)
+            
+            # Voice parameters (from config.yaml with fallback defaults)
+            'emotional_tone': voice_params.get('emotional_tone', 0.3),
+            'opinion_rate': voice_params.get('opinion_rate', 0.2),
+            'structural_predictability': voice_params.get('structural_predictability', 0.5),
+            'sentence_rhythm_variation': voice_params.get('sentence_rhythm_variation', 0.6),
+            'imperfection_tolerance': voice_params.get('imperfection_tolerance', 0.4),
+            'trait_frequency': voice_params.get('trait_frequency', 0.5),
+            'colloquialism_frequency': voice_params.get('colloquialism_frequency', 0.3),
+            'technical_intensity': voice_params.get('technical_intensity', 2)
         }
     
     def _generate_content_only(
