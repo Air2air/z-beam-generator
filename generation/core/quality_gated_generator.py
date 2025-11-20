@@ -314,9 +314,19 @@ class QualityGatedGenerator:
         )
     
     def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
-        """Get base generation parameters from config and dynamic config"""
+        """
+        Get base generation parameters from config and sweet spot learning.
+        
+        Now integrates learned parameter ranges from database:
+        1. Load sweet spot recommendations from database
+        2. Use median values from top 25% performers
+        3. Fall back to config.yaml only if insufficient learning data
+        """
         from generation.config.config_loader import get_config
         config = get_config()
+        
+        # Try to load learned sweet spot parameters
+        learned_params = self._load_sweet_spot_parameters()
         
         # Get voice parameters from config (fail-fast if missing)
         voice_params = config.config.get('voice_parameters', {})
@@ -335,19 +345,20 @@ class QualityGatedGenerator:
                     "All voice parameters must be explicitly configured."
                 )
         
+        # Use learned parameters if available, otherwise config defaults
         return {
-            # API parameters (dynamic from DynamicConfig)
-            'temperature': self.dynamic_config.calculate_temperature(component_type),
+            # API parameters - use learned if available, else dynamic calculation
+            'temperature': learned_params.get('temperature') or self.dynamic_config.calculate_temperature(component_type),
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
             
-            # Voice parameters (from config.yaml, no fallbacks)
-            'emotional_tone': voice_params['emotional_tone'],
-            'opinion_rate': voice_params['opinion_rate'],
-            'structural_predictability': voice_params['structural_predictability'],
-            'sentence_rhythm_variation': voice_params['sentence_rhythm_variation'],
-            'imperfection_tolerance': voice_params['imperfection_tolerance'],
-            'trait_frequency': voice_params['trait_frequency'],
-            'colloquialism_frequency': voice_params['colloquialism_frequency'],
+            # Voice parameters - use learned if available, else config
+            'emotional_tone': learned_params.get('emotional_tone') or voice_params['emotional_tone'],
+            'opinion_rate': learned_params.get('opinion_rate') or voice_params['opinion_rate'],
+            'structural_predictability': learned_params.get('structural_predictability') or voice_params['structural_predictability'],
+            'sentence_rhythm_variation': learned_params.get('sentence_rhythm_variation') or voice_params['sentence_rhythm_variation'],
+            'imperfection_tolerance': learned_params.get('imperfection_tolerance') or voice_params['imperfection_tolerance'],
+            'trait_frequency': learned_params.get('trait_frequency') or voice_params['trait_frequency'],
+            'colloquialism_frequency': learned_params.get('colloquialism_frequency') or voice_params['colloquialism_frequency'],
             'technical_intensity': voice_params['technical_intensity']
         }
     
@@ -391,6 +402,41 @@ class QualityGatedGenerator:
         else:
             # String content (subtitle, etc.)
             return str(content)
+    
+    def _load_sweet_spot_parameters(self) -> Dict[str, float]:
+        """
+        Load learned parameter ranges from sweet spot analyzer.
+        
+        Returns dictionary with median values from top performers,
+        or empty dict if insufficient learning data.
+        """
+        try:
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            
+            db = WinstonFeedbackDatabase('z-beam.db')
+            sweet_spot = db.get_sweet_spot('*', '*')  # Global scope
+            
+            if not sweet_spot or not sweet_spot.get('parameters'):
+                logger.info("   No learned parameters available - using config defaults")
+                return {}
+            
+            params = sweet_spot['parameters']
+            learned = {}
+            
+            # Extract median values from sweet spot ranges
+            for param_name, ranges in params.items():
+                if ranges and 'median' in ranges:
+                    learned[param_name] = ranges['median']
+                    logger.info(f"   Using learned {param_name}: {ranges['median']:.3f}")
+            
+            if learned:
+                logger.info(f"   ✅ Loaded {len(learned)} learned parameters from sweet spot")
+            
+            return learned
+            
+        except Exception as e:
+            logger.debug(f"   Could not load sweet spot parameters: {e}")
+            return {}
     
     def _adjust_parameters(
         self,

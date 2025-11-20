@@ -246,8 +246,9 @@ def _run_winston_detection(content, material_name, component_type, api_client):
             config=config.config
         )
         
-        # Use constant threshold from validation constants
-        ai_threshold = ValidationConstants.WINSTON_AI_THRESHOLD
+        # Use dynamic threshold from database learning
+        ai_threshold = ValidationConstants.get_winston_threshold(use_learned=True)
+        print(f"   Using learned Winston threshold: {ai_threshold:.3f}")
         
         # Detect and log
         winston_result = winston.detect_and_log(

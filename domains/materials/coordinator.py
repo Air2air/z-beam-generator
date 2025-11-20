@@ -93,9 +93,13 @@ class UnifiedMaterialsGenerator:
         # Initialize SubjectiveEvaluator for quality gate
         from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
         
-        # Fail-fast if quality gate config missing
-        if 'realism_threshold' not in quality_gate_config:
-            raise ValueError("quality_gates.realism_threshold missing in config.yaml - fail-fast architecture")
+        # Get dynamic realism threshold from database learning
+        from learning.threshold_manager import ThresholdManager
+        threshold_manager = ThresholdManager(db_path='z-beam.db')
+        realism_threshold = threshold_manager.get_realism_threshold(use_learned=True)
+        self.logger.info(f"Using learned realism threshold: {realism_threshold:.1f}/10")
+        
+        # Fail-fast if quality gate config missing (other than threshold)
         if 'verbose' not in evaluation_config:
             raise ValueError("evaluation.verbose missing in config.yaml - fail-fast architecture")
         if 'temperature' not in evaluation_config:
@@ -105,7 +109,7 @@ class UnifiedMaterialsGenerator:
         
         self.subjective_evaluator = SubjectiveEvaluator(
             api_client=evaluation_client,  # Use evaluation-specific client
-            quality_threshold=quality_gate_config['realism_threshold'],
+            quality_threshold=realism_threshold,  # Use learned threshold
             verbose=evaluation_config['verbose'],
             evaluation_temperature=evaluation_config['temperature']
         )
@@ -115,7 +119,7 @@ class UnifiedMaterialsGenerator:
             api_client=api_client,
             subjective_evaluator=self.subjective_evaluator,
             max_attempts=quality_gate_config['max_retry_attempts'],
-            quality_threshold=quality_gate_config['realism_threshold']
+            quality_threshold=realism_threshold  # Use learned threshold
         )
         
         self.logger.info("UnifiedMaterialsGenerator initialized (quality-gated generation with auto-retry)")
