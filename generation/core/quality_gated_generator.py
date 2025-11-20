@@ -87,9 +87,15 @@ class QualityGatedGenerator:
         config = get_config()
         quality_gate_config = config.config.get('quality_gates', {})
         
-        # Use config values or fallback to parameters
-        self.max_attempts = max_attempts or quality_gate_config.get('max_retry_attempts', 5)
-        self.quality_threshold = quality_threshold or quality_gate_config.get('realism_threshold', 7.0)
+        # Fail-fast if config missing and no parameters provided
+        if max_attempts is None and 'max_retry_attempts' not in quality_gate_config:
+            raise ValueError("max_retry_attempts missing from config.yaml and no parameter provided - fail-fast architecture")
+        if quality_threshold is None and 'realism_threshold' not in quality_gate_config:
+            raise ValueError("realism_threshold missing from config.yaml and no parameter provided - fail-fast architecture")
+        
+        # Use config values or parameters (no hardcoded fallbacks)
+        self.max_attempts = max_attempts or quality_gate_config['max_retry_attempts']
+        self.quality_threshold = quality_threshold or quality_gate_config['realism_threshold']
         
         # Initialize SimpleGenerator (does NOT save to YAML)
         from generation.core.simple_generator import SimpleGenerator
@@ -312,23 +318,37 @@ class QualityGatedGenerator:
         from generation.config.config_loader import get_config
         config = get_config()
         
-        # Get voice parameters from config
+        # Get voice parameters from config (fail-fast if missing)
         voice_params = config.config.get('voice_parameters', {})
+        
+        # Fail-fast if any voice parameter missing
+        required_voice_params = [
+            'emotional_tone', 'opinion_rate', 'structural_predictability',
+            'sentence_rhythm_variation', 'imperfection_tolerance', 'trait_frequency',
+            'colloquialism_frequency', 'technical_intensity'
+        ]
+        
+        for param in required_voice_params:
+            if param not in voice_params:
+                raise ValueError(
+                    f"voice_parameters.{param} missing in config.yaml - fail-fast architecture. "
+                    "All voice parameters must be explicitly configured."
+                )
         
         return {
             # API parameters (dynamic from DynamicConfig)
             'temperature': self.dynamic_config.calculate_temperature(component_type),
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
             
-            # Voice parameters (from config.yaml with fallback defaults)
-            'emotional_tone': voice_params.get('emotional_tone', 0.3),
-            'opinion_rate': voice_params.get('opinion_rate', 0.2),
-            'structural_predictability': voice_params.get('structural_predictability', 0.5),
-            'sentence_rhythm_variation': voice_params.get('sentence_rhythm_variation', 0.6),
-            'imperfection_tolerance': voice_params.get('imperfection_tolerance', 0.4),
-            'trait_frequency': voice_params.get('trait_frequency', 0.5),
-            'colloquialism_frequency': voice_params.get('colloquialism_frequency', 0.3),
-            'technical_intensity': voice_params.get('technical_intensity', 2)
+            # Voice parameters (from config.yaml, no fallbacks)
+            'emotional_tone': voice_params['emotional_tone'],
+            'opinion_rate': voice_params['opinion_rate'],
+            'structural_predictability': voice_params['structural_predictability'],
+            'sentence_rhythm_variation': voice_params['sentence_rhythm_variation'],
+            'imperfection_tolerance': voice_params['imperfection_tolerance'],
+            'trait_frequency': voice_params['trait_frequency'],
+            'colloquialism_frequency': voice_params['colloquialism_frequency'],
+            'technical_intensity': voice_params['technical_intensity']
         }
     
     def _generate_content_only(

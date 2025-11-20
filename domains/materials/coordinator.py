@@ -77,21 +77,45 @@ class UnifiedMaterialsGenerator:
         quality_gate_config = config.config.get('quality_gates', {})
         evaluation_config = config.config.get('evaluation', {})
         
+        # Get evaluation API client based on config (respects evaluation.model setting)
+        from shared.api.client_factory import create_api_client
+        
+        # Fail-fast if evaluation config missing
+        if 'model' not in evaluation_config:
+            raise ValueError("evaluation.model missing in config.yaml - fail-fast architecture")
+        
+        evaluation_model = evaluation_config['model']
+        # Extract provider from model name (e.g., "grok-beta" -> "grok")
+        evaluation_provider = evaluation_model.split('-')[0]
+        evaluation_client = create_api_client(evaluation_provider)
+        self.logger.info(f"Using {evaluation_provider} API for subjective evaluation")
+        
         # Initialize SubjectiveEvaluator for quality gate
         from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
+        
+        # Fail-fast if quality gate config missing
+        if 'realism_threshold' not in quality_gate_config:
+            raise ValueError("quality_gates.realism_threshold missing in config.yaml - fail-fast architecture")
+        if 'verbose' not in evaluation_config:
+            raise ValueError("evaluation.verbose missing in config.yaml - fail-fast architecture")
+        if 'temperature' not in evaluation_config:
+            raise ValueError("evaluation.temperature missing in config.yaml - fail-fast architecture")
+        if 'max_retry_attempts' not in quality_gate_config:
+            raise ValueError("quality_gates.max_retry_attempts missing in config.yaml - fail-fast architecture")
+        
         self.subjective_evaluator = SubjectiveEvaluator(
-            api_client=api_client,
-            quality_threshold=quality_gate_config.get('realism_threshold', 7.0),
-            verbose=evaluation_config.get('verbose', True),
-            evaluation_temperature=evaluation_config.get('temperature', 0.2)
+            api_client=evaluation_client,  # Use evaluation-specific client
+            quality_threshold=quality_gate_config['realism_threshold'],
+            verbose=evaluation_config['verbose'],
+            evaluation_temperature=evaluation_config['temperature']
         )
         
         # Initialize QualityGatedGenerator (evaluate before save, retry on fail)
         self.generator = QualityGatedGenerator(
             api_client=api_client,
             subjective_evaluator=self.subjective_evaluator,
-            max_attempts=quality_gate_config.get('max_retry_attempts', 5),
-            quality_threshold=quality_gate_config.get('realism_threshold', 7.0)
+            max_attempts=quality_gate_config['max_retry_attempts'],
+            quality_threshold=quality_gate_config['realism_threshold']
         )
         
         self.logger.info("UnifiedMaterialsGenerator initialized (quality-gated generation with auto-retry)")
