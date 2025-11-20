@@ -46,8 +46,8 @@ class BatchGenerator:
     BATCH_CONFIG = {
         'subtitle': {
             'eligible': True,
-            'chars_per_component': 180,  # Estimated chars per subtitle
-            'min_batch_size': 2,         # Minimum materials per batch
+            'chars_per_component': 150,  # Conservative estimate (actual ~180)
+            'min_batch_size': 3,         # Minimum materials per batch (450 chars > 300)
             'max_batch_size': 5,         # Maximum for quality control
             'winston_min_chars': 300,    # Winston API minimum
         },
@@ -253,12 +253,16 @@ class BatchGenerator:
                 materials
             )
             
+            # Determine if batch passes Winston threshold (AI score < 0.33 = 67%+ human)
+            ai_score = winston_result.get('ai_score', 0.5)
+            passes_threshold = ai_score < 0.33  # Winston threshold for human-like content
+            
             # Apply Winston result to all materials in batch
             for material in materials:
                 individual_results[material].update({
-                    'winston_score': winston_result.get('ai_score', 0.5),
-                    'human_score': winston_result.get('human_score', 50.0),
-                    'passes_winston': winston_result.get('success', False),
+                    'winston_score': ai_score,
+                    'human_score': (1.0 - ai_score) * 100,  # Convert to percentage
+                    'passes_winston': passes_threshold,
                     'batch_validated': True
                 })
             
@@ -483,13 +487,9 @@ BASE PROMPT:
                 'skip_reason': 'text_too_short'
             }
         
-        # Call Winston API through generator's integration
-        winston_result = self.generator.winston_integration.detect_with_fallback(
-            text=concatenated_text,
-            material_name=f"Batch: {', '.join(materials[:3])}{'...' if len(materials) > 3 else ''}",
-            component_type=component_type,
-            attempt=1,
-            params={'temperature': 0.9}
+        # Call Winston API through generator's detector ensemble
+        winston_result = self.generator.detector.detect(
+            text=concatenated_text
         )
         
         return winston_result
