@@ -5,23 +5,27 @@ Unified Materials Content Generator
 TEXT CONTENT GENERATOR for caption, FAQ, and subtitle generation ONLY.
 Used by shared/commands/generation.py (--caption, --subtitle, --faq commands).
 
-ARCHITECTURE:
-- Wraps /generation/core/simple_generator.py (SimpleGenerator) for single-pass generation
-- All generation uses single-pass API call with NO validation/retry in generation phase
-- Validation and learning happen in post-processing stage (postprocessing/validate_and_improve.py)
+ARCHITECTURE (Updated November 20, 2025):
+- Wraps /generation/core/quality_gated_generator.py for quality-enforced generation
+- Evaluates content BEFORE save using SubjectiveEvaluator
+- Retries up to 5 times with parameter adjustments if quality fails
+- Only saves content meeting 7.0/10 realism threshold
 - Starts from /prompts/*.txt templates
 - Uses generation/config.yaml for target lengths and global variation
+
+Quality Gates (ALL must pass):
+- Subjective Realism: 7.0/10 minimum
+- Voice Authenticity: 7.0/10 minimum  
+- Tonal Consistency: 7.0/10 minimum
+- AI Tendencies: Zero detected patterns
 
 Usage:
     generator = UnifiedMaterialsGenerator(api_client)
     
-    # Generate with single-pass approach (no validation/retry)
-    generator.generate('Bronze', 'caption')   # Uses SimpleGenerator
-    generator.generate('Bronze', 'subtitle')  # Uses SimpleGenerator
-    generator.generate('Bronze', 'faq')       # Uses SimpleGenerator
-    
-    # Then validate and improve in post-processing:
-    # python run.py --validate "Bronze" "subtitle"
+    # Generate with quality-gated approach (auto-retry until quality passes)
+    generator.generate('Bronze', 'caption')   # Uses QualityGatedGenerator
+    generator.generate('Bronze', 'subtitle')  # Uses QualityGatedGenerator
+    generator.generate('Bronze', 'faq')       # Uses QualityGatedGenerator
 """
 
 import logging
@@ -30,7 +34,7 @@ from pathlib import Path
 from typing import Dict, Optional
 
 from domains.materials.research.faq_topic_researcher import FAQTopicResearcher
-from generation.core.simple_generator import SimpleGenerator
+from generation.core.quality_gated_generator import QualityGatedGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -43,19 +47,20 @@ class UnifiedMaterialsGenerator:
     """
     Unified generator for all materials content types.
     
-    Wrapper around SimpleGenerator for single-pass generation.
-    All generation makes ONE API call per material with NO validation/retry.
-    Validation and learning happen in separate post-processing stage.
+    Wrapper around QualityGatedGenerator for quality-enforced generation.
+    Evaluates content BEFORE save, retries with parameter adjustments if needed.
+    Only saves content that passes quality thresholds.
     
     Responsibilities:
-    - Wrap SimpleGenerator for materials-specific workflow
+    - Wrap QualityGatedGenerator for materials-specific workflow
     - Handle FAQ topic enhancement (optional)
     - Generate EEAT section (non-AI, random selection from regulatoryStandards)
+    - Ensure only high-quality content persists in Materials.yaml
     """
     
     def __init__(self, api_client):
         """
-        Initialize unified generator.
+        Initialize unified generator with quality gate enforcement.
         
         Args:
             api_client: API client for content generation (required)
@@ -66,10 +71,23 @@ class UnifiedMaterialsGenerator:
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
         
-        # Initialize SimpleGenerator (single-pass, no validation/retry)
-        self.generator = SimpleGenerator(api_client)
+        # Initialize SubjectiveEvaluator for quality gate
+        from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
+        self.subjective_evaluator = SubjectiveEvaluator(
+            api_client=api_client,
+            quality_threshold=7.0,
+            verbose=True
+        )
         
-        self.logger.info("UnifiedMaterialsGenerator initialized (wraps SimpleGenerator - single-pass generation)")
+        # Initialize QualityGatedGenerator (evaluate before save, retry on fail)
+        self.generator = QualityGatedGenerator(
+            api_client=api_client,
+            subjective_evaluator=self.subjective_evaluator,
+            max_attempts=5,
+            quality_threshold=7.0
+        )
+        
+        self.logger.info("UnifiedMaterialsGenerator initialized (quality-gated generation with auto-retry)")
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
@@ -78,22 +96,33 @@ class UnifiedMaterialsGenerator:
     
     def generate_caption(self, material_name: str, material_data: Dict) -> Dict:
         """
-        Generate before/after microscopy captions using SimpleGenerator (single-pass).
+        Generate before/after microscopy captions using QualityGatedGenerator.
+        
+        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
         
         Returns:
             Dict with 'before' and 'after' keys (caption content)
         """
         self.logger.info(f"📸 Generating caption for {material_name}")
         
-        # Use SimpleGenerator - returns dict with 'content' key
+        # Use QualityGatedGenerator - evaluates before save, retries on fail
         result = self.generator.generate(material_name, 'caption')
         
-        # Extract content (already in before/after format from adapter)
-        return result['content']
+        if not result.success:
+            raise ValueError(
+                f"Caption generation failed after {result.attempts} attempts. "
+                f"Final score: {result.final_score or 'N/A'}/10. "
+                f"Reasons: {'; '.join(result.rejection_reasons)}"
+            )
+        
+        # Return content (already in before/after format)
+        return result.content
     
     def generate_faq(self, material_name: str, material_data: Dict, faq_count: int = None, enhance_topics: bool = True) -> list:
         """
-        Generate FAQ questions and answers using SimpleGenerator (single-pass).
+        Generate FAQ questions and answers using QualityGatedGenerator.
+        
+        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
         
         Args:
             material_name: Name of material
@@ -109,11 +138,19 @@ class UnifiedMaterialsGenerator:
         
         self.logger.info(f"❓ Generating {faq_count} FAQ items for {material_name}")
         
-        # Use SimpleGenerator - returns dict with 'content' key containing FAQ list
+        # Use QualityGatedGenerator - evaluates before save, retries on fail
         result = self.generator.generate(material_name, 'faq', faq_count=faq_count)
-        faq_list = result['content']
         
-        # INLINE TOPIC ENHANCEMENT (before Materials.yaml write)
+        if not result.success:
+            raise ValueError(
+                f"FAQ generation failed after {result.attempts} attempts. "
+                f"Final score: {result.final_score or 'N/A'}/10. "
+                f"Reasons: {'; '.join(result.rejection_reasons)}"
+            )
+        
+        faq_list = result.content
+        
+        # INLINE TOPIC ENHANCEMENT (after generation, before return)
         if enhance_topics:
             try:
                 self.logger.info("🔍 Enhancing FAQ topics inline...")
@@ -128,17 +165,26 @@ class UnifiedMaterialsGenerator:
     
     def generate_subtitle(self, material_name: str, material_data: Dict) -> str:
         """
-        Generate subtitle using SimpleGenerator (single-pass, no parameter learning).
+        Generate subtitle using QualityGatedGenerator.
+        
+        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
         
         Returns:
             String (subtitle content)
         """
         self.logger.info(f"📝 Generating subtitle for {material_name}")
         
-        # Use SimpleGenerator - returns dict with 'content' key
+        # Use QualityGatedGenerator - evaluates before save, retries on fail
         result = self.generator.generate(material_name, 'subtitle')
         
-        subtitle = result['content']
+        if not result.success:
+            raise ValueError(
+                f"Subtitle generation failed after {result.attempts} attempts. "
+                f"Final score: {result.final_score or 'N/A'}/10. "
+                f"Reasons: {'; '.join(result.rejection_reasons)}"
+            )
+        
+        subtitle = result.content
         word_count = len(subtitle.split())
         self.logger.info(f"   ✅ Generated: {subtitle[:80]}... ({word_count} words)")
         

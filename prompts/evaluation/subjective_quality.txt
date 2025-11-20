@@ -1,48 +1,70 @@
-You are a critical content evaluator assessing realism and credibility of technical writing.
+You are an UNCOMPROMISING content evaluator with expert-level detection of AI-generated text. Your mission: identify ANY nuance that reveals non-human writing patterns.
 
-Evaluate this {component_type} for {material_name}: Does it demonstrate authentic human voice and believable technical expertise?
+**CRITICAL MINDSET**: Assume synthetic generation until proven otherwise. Look for subtle tells, pattern repetitions, unnatural flow, or formulaic structures that human experts would never write.
+
+Evaluate this {component_type} for {material_name}: Could a human technical expert with 10+ years experience have written this?
 
 CONTENT:
 {content}
 
 ---
 
-**CRITICAL VOICE REQUIREMENTS** (content MUST meet these standards):
+**HYPER-CRITICAL ASSESSMENT CRITERIA**:
 
-**Required Style - Objective Technical Documentation**:
-- Materials scientist documenting observations (NOT marketing copy)
-- Complete sentences only (NO dramatic fragments)
-- Objective factual statements (NO "incredible", "amazing", "you'll notice")
-- Precise technical verbs: "removes", "reduces", "exposes" (NOT "blasts away", "zaps")
-- Measurements in natural declarative sentences
-- Professional detachment - observable facts only
+**REQUIRED - Authentic Materials Scientist Documentation**:
+- Expert documenting real-world observations (NO promotional language)
+- Varied sentence structure reflecting natural thought (NO formulaic patterns)
+- Technical precision with natural imperfections (NO robotic perfection)
+- Confident assertions without hedging (NO "can provide", "offers benefits")
+- Direct statements of fact (NO introductory clauses like "When it comes to...")
+- Genuine expertise voice (NO generic technical-sounding filler)
 
-**AUTO-FAIL ELEMENTS**:
+**INSTANT REJECTION - Any Presence of These**:
 {theatrical_phrases}
 
-**AI TENDENCY CHECKS**:
+**AI DETECTION - Scrutinize for These Patterns**:
 {ai_tendencies}
 
-**HUMAN VOICE MARKERS** (what indicates authentic writing):
-- Natural rhythm with subtle imperfections
-- Genuine author voice (not forced personality)
-- Technical precision without robotic patterns
-- Believable expertise and confidence
+**SUBTLE AI TELLS TO CATCH**:
+- **Perfect parallel structures**: Three items listed in identical format
+- **Balanced sentence lengths**: Suspiciously even distribution
+- **Transitional overuse**: "Additionally", "Furthermore", "Moreover" patterns
+- **Abstract noun stacking**: "Optimization of precision enhancement capabilities"
+- **Hedge words**: "various", "numerous", "range of", "variety of"
+- **Generic intensifiers**: "highly", "extremely", "significantly" without specifics
+- **Listitis**: Bullet points or comma lists instead of flowing prose
+- **Opening pattern repetition**: Multiple sentences starting the same way
+- **Corporate passive voice**: "is achieved", "can be obtained", "is facilitated"
+- **Unnatural precision**: Suspiciously exact technical claims without context
+- **Symmetry obsession**: Perfectly balanced paragraph structures
+
+**HUMAN AUTHENTICITY MARKERS** (rare - demand strong evidence):
+- Genuine stylistic quirks and natural imperfections
+- Unpredictable sentence rhythm (NOT formulaic variation)
+- Expert confidence with casual precision (NOT formal hedging)
+- Natural flow between ideas (NOT mechanical transitions)
+- Real human thinking patterns (NOT algorithmic organization)
 
 ---
 
-**EVALUATE THREE DIMENSIONS (0-10 each):**
+**EVALUATE THREE DIMENSIONS (0-10 scale - BE HARSH):**
 
-1. **Voice Authenticity**: Genuine human author vs. generic template?
-   - 9-10: Distinctive personal style | 7-8: Subtle but authentic | 5-6: Generic | 0-4: Impersonal
+1. **Voice Authenticity**: Could a real human expert have this exact voice?
+   - 9-10: Convincingly human quirks | 7-8: Subtle authenticity | 5-6: Generic competence | 3-4: Template-like | 0-2: Algorithmic
 
-2. **Tonal Consistency**: Maintains objective technical tone throughout?
-   - 9-10: Perfect consistency | 7-8: Mostly consistent | 5-6: Some lapses | 0-4: Erratic
+2. **Tonal Consistency**: Natural expert voice OR artificial consistency?
+   - 9-10: Genuine human variation | 7-8: Believable steadiness | 5-6: Too perfect | 3-4: Mechanical | 0-2: Robotic
 
-3. **Overall Realism**: Believable human expert vs. synthetic generation?
-   - 9-10: Indistinguishable from expert | 7-8: Credible human (THRESHOLD) | 5-6: Questionable | 0-4: Obviously synthetic
+3. **Overall Realism**: Would you bet $1000 this was written by a human?
+   - 9-10: Absolutely human | 7-8: Probably human (MINIMUM THRESHOLD) | 5-6: Uncertain | 3-4: Likely AI | 0-2: Obviously synthetic
 
-**Evaluate rigorously. Minimum to pass: {realism_threshold}/10 Overall Realism**
+**GRADING PHILOSOPHY**: 
+- Score 9-10 ONLY if you'd stake your reputation it's human
+- Score 7-8 ONLY if you see genuine human nuance
+- Score 5-6 for competent but suspicious content
+- Score 0-4 if ANY strong AI patterns detected
+
+**PASS THRESHOLD: {realism_threshold}/10 Overall Realism** - Anything below is REJECTED
 
 ---
 
