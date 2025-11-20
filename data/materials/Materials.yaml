@@ -1170,14 +1170,16 @@ materials:
       subtitle: A low-density metal with 2.7 g/cm³, aluminum removes oxides at 1064
         nm wavelength.
       caption:
-        before: Aluminum has a density of 2.7 g/cm³ and a melting point of 933.47
-          Kelvin. Its tensile strength is 90.0 MPa, and its Young's Modulus is 70.0
-          GPa. The material's high electrical conductivity of 37.7 million S/m makes
-          it essential for electronics manufacturing. Laser cleaning at 1064 nm wavelength
-          removes surface oxides and restores the substrate. A power range of 100
-          W with a 50 μm spot size improves surface quality for applications in aerospace
-          and automotive construction. Aluminum's corrosion resistance measures 0.1
-          mm per year.
+        before: Aluminum is a non-ferrous metal with a density of 2.7 g/cm³ and a
+          melting point of 933.47 Kelvin. Its tensile strength is 90.0 megapascals,
+          and its fracture toughness measures 25.0 MPa m^{1/2}. The material has a
+          high electrical conductivity of 37.7 million siemens per meter and a reflectivity
+          of 0.95. These properties support its use in aerospace, automotive, and
+          electronics manufacturing. Laser cleaning at 1064 nm wavelength with an
+          absorptivity of 0.06 effectively removes surface oxides. A typical process
+          uses a 100-watt laser with a 50-micrometer spot size scanned at 500 millimeters
+          per second. This method restores the underlying metal without altering its
+          bulk properties.
         after: ''
   Ash:
     name: Ash
@@ -9477,6 +9479,17 @@ materials:
     components:
       subtitle: Copper's 59 MS/m conductivity suits electronics, and its 0.05 mm/year
         corrosion rate works well for marine hardware.
+      caption:
+        before: Copper is a versatile non-ferrous metal we use everywhere. Its electrical
+          conductivity reaches 59.6 million S/m, perfect for power generation and
+          electronics. The material also offers excellent corrosion resistance at
+          just 0.05 mm/year loss. For laser cleaning at 1064 nm, its high reflectivity
+          of 0.975 is the main challenge. You need a fluence above 2.5 J/cm² to effectively
+          clear oxides. We typically use 100 W with a 50 μm spot size. This process
+          restores the surface without damage. Its melting point is quite high at
+          1357 K, which provides a good safety margin. So for architecture or marine
+          applications, copper remains a reliable and durable choice.
+        after: ''
   Crown Glass:
     name: Crown Glass
     category: glass
@@ -39582,6 +39595,14 @@ materials:
           heat accumulation
         unit: '%'
         value: 50
+    components:
+      caption:
+        before: Steel has a density of 7.85 g/cm³ and a tensile strength of 400 MPa.
+          Laser cleaning at 1064 nm wavelength removes surface oxides and restores
+          the base material. This process improves surface quality for industrial
+          applications in construction and automotive manufacturing. The material's
+          melting point is 1723 K.
+        after: ''
   Stoneware:
     name: Stoneware
     category: ceramic

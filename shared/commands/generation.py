@@ -93,10 +93,10 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("=" * 80)
         print()
         
-        # Run subjective evaluation on all Q&A pairs (using Copilot/Claude for evaluation)
+        # Run subjective evaluation using Grok API
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
-        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
+        print("🔍 Running subjective evaluation (Grok API)...")
+        eval_client = create_api_client('grok')
         helper = SubjectiveEvaluationHelper(
             api_client=eval_client,
             verbose=True
@@ -135,6 +135,57 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print(f"📄 Report saved: {report_path}")
         print()
         
+        # Run Winston AI detection and log to database
+        print("🤖 Running Winston AI detection...")
+        try:
+            from postprocessing.detection.winston_integration import WinstonIntegration
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from generation.config.config_loader import get_config
+            from generation.config.dynamic_config import DynamicConfig
+            
+            config = get_config()
+            db_path = config.config.get('winston_feedback_db_path')
+            feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+            
+            # Initialize Winston integration
+            winston = WinstonIntegration(
+                winston_client=api_client,  # Use same API client
+                feedback_db=feedback_db,
+                config=config.config
+            )
+            
+            # Get dynamic threshold
+            dynamic_config = DynamicConfig()
+            ai_threshold = dynamic_config.calculate_winston_threshold()
+            
+            # Detect and log
+            winston_result = winston.detect_and_log(
+                text=full_content,
+                material=material_name,
+                component_type='caption',
+                temperature=0.7,  # Default for captions
+                attempt=1,
+                max_attempts=1,
+                ai_threshold=ai_threshold
+            )
+            
+            ai_score = winston_result['ai_score']
+            human_score = 1.0 - ai_score
+            
+            print(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
+            print(f"   👤 Human Score: {human_score*100:.1f}%")
+            
+            if ai_score <= ai_threshold:
+                print("   ✅ Winston check PASSED")
+            else:
+                print("   ⚠️  Winston check FAILED - consider regenerating")
+            print()
+            
+        except Exception as e:
+            print(f"   ⚠️  Winston detection failed: {e}")
+            print("   Continuing without Winston validation...")
+            print()
+        
         print("✨ Caption generation complete!")
         print()
         
@@ -143,19 +194,12 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         run_post_generation_validation(material_name, 'caption', quick=True)
         
         # Check if we should update sweet spot recommendations (generic learning)
-        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-        from generation.config.config_loader import get_config
-        
-        config = get_config()
-        db_path = config.config.get('winston_feedback_db_path')
-        feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
-        
-        if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=5):
+        if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=3):
             print("📊 Updating generic sweet spot recommendations...")
             try:
                 from learning.sweet_spot_analyzer import SweetSpotAnalyzer
                 # Threshold as 0-1.0 scale (database stores normalized scores)
-                analyzer = SweetSpotAnalyzer(db_path, min_samples=5, success_threshold=0.80)
+                analyzer = SweetSpotAnalyzer(db_path, min_samples=3, success_threshold=0.80)
                 results = analyzer.get_sweet_spot_table(save_to_db=True)
                 
                 if results['sweet_spots']:
@@ -271,10 +315,10 @@ def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = 
         print("=" * 80)
         print()
         
-        # Run subjective evaluation (using Copilot/Claude for evaluation)
+        # Run subjective evaluation using Grok API
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
-        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
+        print("🔍 Running subjective evaluation (Grok API)...")
+        eval_client = create_api_client('grok')
         helper = SubjectiveEvaluationHelper(
             api_client=eval_client,
             verbose=True
@@ -434,10 +478,10 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
         print("=" * 80)
         print()
         
-        # Run subjective evaluation on all Q&A pairs (using Copilot/Claude for evaluation)
+        # Run subjective evaluation on all Q&A pairs using Grok API
         from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Copilot - Claude Sonnet 4.5)...")
-        eval_client = create_api_client('grok')  # Placeholder - will use Copilot for actual evaluation
+        print("🔍 Running subjective evaluation (Grok API)...")
+        eval_client = create_api_client('grok')
         helper = SubjectiveEvaluationHelper(
             api_client=eval_client,
             verbose=True

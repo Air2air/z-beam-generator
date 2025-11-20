@@ -3,16 +3,17 @@ Simple Generator - Single-Pass Content Generation
 
 Clean, focused generator for the generation phase:
 - ONE API call per material
-- NO validation loops (validation happens in post-processing)
-- NO retry logic (retries happen in post-processing)
+- Single-pass generation (no automatic retries)
 - Save directly to Materials.yaml with atomic writes
+- Quality validation happens after save
 
 Architecture:
-    Generation Phase: Generate → Save
-    Post-Processing Phase: Validate → Learn → Retry (if needed)
+    Generation Phase: Generate → Evaluate → Save → Learn (single-pass)
+    Learning Phase: Analyze patterns, update recommendations (discrete)
     
-This keeps generation fast and simple, moving complexity to post-processing
-where learning systems can operate on complete datasets.
+Note: No automatic retry loop. Manual re-run required if quality insufficient.
+Quality gates (Winston AI, Subjective Eval, Realism) provide feedback for learning
+but do not trigger automatic regeneration.
 
 Design Principles:
 - Fail fast with clear error messages
