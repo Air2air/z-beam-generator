@@ -55,7 +55,6 @@ class WinstonIntegration:
         # Initialize ensemble detector
         from postprocessing.detection.ensemble import AIDetectorEnsemble
         self.detector = AIDetectorEnsemble(
-            use_ml=False,
             winston_client=winston_client
         )
         
