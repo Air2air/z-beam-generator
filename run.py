@@ -380,62 +380,30 @@ def main():
         return result
     
     if args.validate_content:
-        material_name, component_type = args.validate_content
-        
         print("="*80)
-        print(f"🔍 VALIDATE & IMPROVE: {component_type} for {material_name}")
+        print(f"⚠️  ARCHIVED FEATURE: --validate-content")
         print("="*80)
         print()
-        print("🎯 Running post-processing validation with learning systems...")
+        print("This feature has been archived (Nov 20, 2025).")
         print()
-        
-        try:
-            from postprocessing.orchestrator import ValidationOrchestrator
-            from shared.api.client_factory import create_api_client
-            from generation.core.simple_generator import SimpleGenerator
-            from postprocessing.detection.ensemble import AIDetectorEnsemble
-            
-            # Initialize API client (same as used for generation)
-            if component_type == 'caption':
-                api_client = create_api_client('deepseek')
-            else:
-                api_client = create_api_client('grok')
-            
-            # Initialize required dependencies
-            # Note: API client has detect_ai_content method for Winston API
-            detector_ensemble = AIDetectorEnsemble(winston_client=api_client)
-            simple_generator = SimpleGenerator(api_client)
-            
-            # Initialize validation orchestrator with 19-step ultra-modular pipeline
-            orchestrator = ValidationOrchestrator(
-                api_client=api_client,
-                winston_client=detector_ensemble,
-                simple_generator=simple_generator
-            )
-            
-            # Run validation and improvement (6 passes: Load → Quality → Gates → Learning → Recording → Regeneration)
-            result = orchestrator.validate_and_improve(material_name, component_type)
-            
-            if result['success']:
-                print()
-                print("✅ VALIDATION COMPLETE")
-                print(f"   • Final Score: {result.get('final_score', 'N/A')}")
-                print(f"   • Attempts: {result.get('attempts', 1)}")
-                print(f"   • Learning Data Saved: {'Yes' if result.get('logged', False) else 'No'}")
-                print()
-                return True
-            else:
-                print()
-                print("❌ VALIDATION FAILED")
-                print(f"   • Reason: {result.get('reason', 'Unknown')}")
-                print()
-                return False
-        
-        except Exception as e:
-            print(f"❌ Error during validation: {e}")
-            import traceback
-            traceback.print_exc()
-            return False
+        print("REASON:")
+        print("  • 19-step validation pipeline duplicated main generation flow")
+        print("  • All validation already built into generation commands")
+        print("  • Feature was never used in production")
+        print()
+        print("USE INSTEAD:")
+        print("  • python3 run.py --caption \"Material\"")
+        print("  • python3 run.py --subtitle \"Material\"")
+        print("  • python3 run.py --faq \"Material\"")
+        print()
+        print("These commands include:")
+        print("  ✓ Winston AI detection")
+        print("  ✓ Realism evaluation")
+        print("  ✓ All 5 quality gates")
+        print("  ✓ Sweet spot learning")
+        print("  ✓ Database logging")
+        print()
+        return False
     
     if args.caption:
         result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
