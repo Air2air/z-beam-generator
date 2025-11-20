@@ -49,24 +49,34 @@ api_params = {
 
 ❌ **WRONG**:
 ```python
-if ai_score > 30:
+# Static threshold that never learns
+WINSTON_AI_THRESHOLD = 0.33
+if ai_score > WINSTON_AI_THRESHOLD:
     print("Failed detection")
 
-threshold = 0.7
-if confidence < threshold:
+threshold = 7.0  # Hardcoded
+if realism_score < threshold:
     retry()
 ```
 
-✅ **CORRECT**:
+✅ **CORRECT** (Dynamic Learning):
 ```python
-threshold = dynamic_config.calculate_detection_threshold()
-if ai_score > threshold:
+# Threshold learns from database success patterns
+from learning.threshold_manager import ThresholdManager
+
+threshold_manager = ThresholdManager(db_path='z-beam.db')
+winston_threshold = threshold_manager.get_winston_threshold(use_learned=True)
+if ai_score > winston_threshold:
     print("Failed detection")
 
-confidence_thresholds = dynamic_config.calculate_confidence_thresholds()
-if confidence < confidence_thresholds['high']:
+realism_threshold = threshold_manager.get_realism_threshold(use_learned=True)
+if realism_score < realism_threshold:
     retry()
 ```
+
+**Why this matters**: Thresholds now adapt based on 75th percentile of successful content.
+As system improves, quality standards automatically tighten. Database fallback to config defaults
+ensures system always has sensible values.
 
 ### 3. Hardcoded Temperatures
 
@@ -213,7 +223,48 @@ pytest tests/test_hardcoded_value_detection.py
 
 ---
 
-## ✅ Recent Compliance Fixes (November 17, 2025)
+## ✅ Recent Compliance Fixes
+
+### Dynamic Threshold Learning (November 20, 2025) 🔥 **MAJOR UPDATE**
+
+**Issue**: All quality thresholds were static - Winston (0.33), Realism (7.0), etc.
+Sweet spot analyzer collected learning data but it was **never used**.
+
+**Fix Applied** (Commit: 50244080):
+
+1. **Created ThresholdManager** (`learning/threshold_manager.py`):
+   - Learns Winston threshold from 75th percentile of successful content
+   - Learns realism threshold from 75th percentile of quality scores
+   - Falls back to defaults only when <10 samples
+   - Saves learned values to `learned_thresholds` table
+
+2. **Updated ValidationConstants**:
+   ```python
+   # BEFORE (❌ HARDCODED):
+   WINSTON_AI_THRESHOLD = 0.33
+   
+   # AFTER (✅ DYNAMIC):
+   @classmethod
+   def get_winston_threshold(cls, use_learned=True):
+       manager = cls._get_threshold_manager()
+       return manager.get_winston_threshold(use_learned)
+   ```
+
+3. **Integrated sweet spot parameters** into generation:
+   - Temperature, penalties, voice parameters now use learned values
+   - Falls back to config only if insufficient learning data
+   - **Closes the learning loop**: Sweet spot → Parameters → Generation
+
+**Benefits**:
+- ✅ Thresholds adapt based on actual success patterns
+- ✅ System genuinely self-improving (not just collecting unused data)
+- ✅ Zero hardcoded thresholds in production
+- ✅ Database-driven quality standards
+- ✅ Continuous improvement through 75th percentile learning
+
+**See**: `docs/decisions/ADR-005-dynamic-threshold-learning.md`
+
+### SubjectiveEvaluator Temperature Fix (November 17, 2025)
 
 ### SubjectiveEvaluator Temperature Fix
 

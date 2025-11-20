@@ -8,9 +8,14 @@
 
 **BEFORE** any work, review these files organized by category:
 
-### ⚡ Recent Updates (November 18, 2025)
-- **Processing Module Consolidation**: 79 → 52 files (-34%), parameters: 16 → 4 files (-75%)
-- **Documentation Consolidation**: 14 → 10 directories (-29%), duplicate directories merged
+### ⚡ Recent Updates (November 20, 2025)
+- **🔥 Dynamic Threshold Learning**: Thresholds now adapt from database (Winston, realism, parameters)
+  - See: `docs/decisions/ADR-005-dynamic-threshold-learning.md`
+  - Tests: `tests/test_dynamic_threshold_learning.py`
+  - System learns from top 25% (75th percentile) of successful content
+  - Falls back to sensible defaults when <10 samples
+- **Processing Module Consolidation** (Nov 18): 79 → 52 files (-34%), parameters: 16 → 4 files (-75%)
+- **Documentation Consolidation** (Nov 18): 14 → 10 directories (-29%), duplicate directories merged
 - **Architecture**: `docs/02-architecture/` now contains ALL architecture docs (merged from `docs/architecture/`)
 - **Components**: `docs/03-components/` now contains ALL component docs (merged from `docs/components/`)
 - **Parameters**: All in `processing/parameters/` as 4 category files (ai_detection, voice, variation, technical)
