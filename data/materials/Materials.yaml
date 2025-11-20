@@ -1167,19 +1167,15 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: A low-density metal with 2.7 g/cm³, aluminum removes oxides at 1064
+      subtitle: A non-ferrous metal with 2.7 g/cm³ density, it removes oxides at 1064
         nm wavelength.
       caption:
-        before: Aluminum is a non-ferrous metal with a density of 2.7 g/cm³ and a
-          melting point of 933.47 Kelvin. Its tensile strength is 90.0 megapascals,
-          and its fracture toughness measures 25.0 MPa m^{1/2}. The material has a
-          high electrical conductivity of 37.7 million siemens per meter and a reflectivity
-          of 0.95. These properties support its use in aerospace, automotive, and
-          electronics manufacturing. Laser cleaning at 1064 nm wavelength with an
-          absorptivity of 0.06 effectively removes surface oxides. A typical process
-          uses a 100-watt laser with a 50-micrometer spot size scanned at 500 millimeters
-          per second. This method restores the underlying metal without altering its
-          bulk properties.
+        before: Aluminum has a density of 2.7 g/cm³ and a tensile strength of 90 MPa.
+          Its high electrical conductivity of 37.7 million S/m makes it essential
+          for electronics. The material's natural oxide layer provides a corrosion
+          resistance of 0.1 mm per year. Laser cleaning at 1064 nm wavelength removes
+          contaminants and restores the surface. This process improves adhesion for
+          subsequent manufacturing steps in aerospace and automotive applications.
         after: ''
   Ash:
     name: Ash
@@ -4118,6 +4114,9 @@ materials:
           accumulation
         unit: '%'
         value: 50
+    components:
+      subtitle: A copper-zinc alloy with 315 MPa tensile strength, ideal for marine
+        hardware and laser cleaning.
   Breccia:
     name: Breccia
     category: stone
@@ -5135,6 +5134,9 @@ materials:
           thermal buildup
         unit: '%'
         value: 50
+    components:
+      subtitle: 'Bronze: A 950°C melting point and strong corrosion resistance for
+        marine use.'
   Calcite:
     name: Calcite
     category: stone
@@ -39597,12 +39599,17 @@ materials:
         value: 50
     components:
       caption:
-        before: Steel has a density of 7.85 g/cm³ and a tensile strength of 400 MPa.
-          Laser cleaning at 1064 nm wavelength removes surface oxides and restores
-          the base material. This process improves surface quality for industrial
-          applications in construction and automotive manufacturing. The material's
-          melting point is 1723 K.
-        after: ''
+        before: The contaminated surface at 1000x magnification reveals a dense layer
+          of oxide scale and particulate matter completely obscuring the underlying
+          metal structure. This layer, measuring several micrometers thick, adheres
+          strongly to the steel substrate and fills the natural surface texture. The
+          original 1.6 μm Ra roughness is not visible beneath this contamination.
+        after: Laser treatment at 1064 nm wavelength effectively removes the oxide
+          layer and exposes the clean steel surface. The process restores the metal's
+          inherent grain structure and reduces the surface to its base roughness.
+          We now observe a uniform, reflective surface with the laser's 50 μm spot
+          tracks visible, confirming complete contaminant removal without substrate
+          damage.
   Stoneware:
     name: Stoneware
     category: ceramic

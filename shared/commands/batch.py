@@ -187,16 +187,8 @@ def _generate_individually(materials: list, component_type: str, skip_integrity_
     print(f"📋 Materials: {len(materials)}")
     print()
     
-    # Import generation handlers
-    if component_type == 'caption':
-        from shared.commands.generation import handle_caption_generation as handler
-    elif component_type == 'subtitle':
-        from shared.commands.generation import handle_subtitle_generation as handler
-    elif component_type == 'faq':
-        from shared.commands.generation import handle_faq_generation as handler
-    else:
-        print(f"❌ Unsupported component type: {component_type}")
-        return False
+    # Import generic handler (component-agnostic)
+    from shared.commands.generation import handle_generation
     
     # Process each material
     success_count = 0
@@ -208,7 +200,8 @@ def _generate_individually(materials: list, component_type: str, skip_integrity_
         print(f"{'='*80}")
         
         try:
-            result = handler(material, skip_integrity_check=skip_integrity_check)
+            # Use generic handler with component_type parameter
+            result = handle_generation(material, component_type, skip_integrity_check=skip_integrity_check)
             if result:
                 success_count += 1
                 print(f"✅ Success: {material}")

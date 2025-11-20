@@ -2,14 +2,60 @@
 """
 Generation Command Handlers
 
-Handles AI-powered content generation commands (caption, subtitle, FAQ).
+Handles AI-powered content generation commands.
+
+Architecture: Component-agnostic design - all components use same handler with
+different templates/config. No hardcoded component types or branching logic.
 """
 
 
-def handle_caption_generation(material_name: str, skip_integrity_check: bool = False):
-    """Generate AI-powered caption for a material and save to Materials.yaml"""
+def handle_generation(
+    material_name: str,
+    component_type: str,
+    skip_integrity_check: bool = False,
+    **kwargs
+):
+    """
+    Generate AI-powered content for ANY component type.
+    
+    Component-agnostic handler - behavior determined by:
+    - prompts/components/{component_type}.txt (content instructions)
+    - config.yaml component_lengths (length, extraction strategy)
+    - ComponentRegistry (structural metadata)
+    
+    NO component-specific branching in this code.
+    
+    Args:
+        material_name: Name of material to generate for
+        component_type: Type of component (caption, subtitle, faq, etc.)
+        skip_integrity_check: Skip pre-generation checks
+        **kwargs: Additional parameters (e.g., faq_count for FAQ generation)
+        
+    Returns:
+        bool: True if generation successful, False otherwise
+    """
+    # Get component metadata from registry (icon, etc.)
+    from generation.core.component_specs import ComponentRegistry
+    
+    try:
+        spec = ComponentRegistry.get_spec(component_type)
+    except KeyError as e:
+        print(f"❌ Error: {e}")
+        return False
+    
+    # Display header with component type
+    component_label = component_type.upper().replace('_', ' ')
+    icon_map = {
+        'caption': '📝',
+        'subtitle': '📌',
+        'faq': '❓',
+        'description': '📄',
+        'troubleshooter': '🔧'
+    }
+    icon = icon_map.get(component_type, '📝')
+    
     print("="*80)
-    print(f"📝 CAPTION GENERATION: {material_name}")
+    print(f"{icon} {component_label} GENERATION: {material_name}")
     print("="*80)
     print()
     
@@ -21,9 +67,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
     try:
         # Import required modules
         from domains.materials.coordinator import UnifiedMaterialsGenerator
-        from data.materials.materials import load_materials, get_material_by_name
         
-        # Initialize DeepSeek API client for captions (switched from Grok due to API hang issues)
+        # Initialize API client (DeepSeek for consistency)
         from shared.api.client_factory import create_api_client
         print("🔧 Initializing DeepSeek API client...")
         api_client = create_api_client('deepseek')
@@ -36,529 +81,290 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
         print("✅ Generator ready")
         print()
         
-        # Generate caption (no voice - that's done by post-processor)
-        print("🤖 Generating AI-powered caption...")
-        print("   before: Contaminated surface analysis")
-        print("   after: Cleaned surface analysis")
-        print("   Target: Technical, factual content")
+        # Generate content (component-agnostic)
+        print(f"🤖 Generating AI-powered {component_type}...")
+        print(f"   Component: {component_type}")
+        print(f"   Target: {spec.default_length} words (range: {spec.min_length}-{spec.max_length})")
         print("   Note: Voice enhancement happens in post-processing")
         print()
         
-        caption_data = generator.generate(material_name, 'caption')
+        content_data = generator.generate(material_name, component_type, **kwargs)
         
-        print("✅ Caption generated and saved to Materials.yaml")
+        print(f"✅ {component_label.capitalize()} generated and saved to Materials.yaml")
         print()
         
         # DEBUG: Check what we received
-        print(f"🔍 DEBUG: caption_data type = {type(caption_data)}")
-        print(f"🔍 DEBUG: caption_data = {caption_data}")
+        print(f"🔍 DEBUG: content_data type = {type(content_data)}")
+        print(f"🔍 DEBUG: content_data = {content_data}")
         print()
         
-        # SimpleGenerator returns content string directly (no dict wrapper)
-        # For captions, content is a dict with 'before' and 'after' keys
-        if isinstance(caption_data, dict):
-            before_text = caption_data.get('before', '')
-            after_text = caption_data.get('after', '')
-        else:
-            # Unexpected format
-            before_text = str(caption_data)
-            after_text = ''
+        # Extract content for display (extraction strategy from config)
+        full_content = _extract_content_for_display(content_data, component_type, spec)
         
         # POLICY: Always show complete generation report after each generation
-        print("=" * 80)
-        print("📊 GENERATION COMPLETE REPORT")
-        print("=" * 80)
-        print()
-        print("📝 GENERATED CONTENT:")
-        print("-" * 80)
-        if before_text:
-            print(f"BEFORE: {before_text}")
-        if after_text:
-            print(f"AFTER:  {after_text}")
-        print("-" * 80)
-        print()
-        print("📈 STATISTICS:")
-        if before_text:
-            print(f"   • Before: {len(before_text)} chars, {len(before_text.split())} words")
-        if after_text:
-            print(f"   • After:  {len(after_text)} chars, {len(after_text.split())} words")
-        print()
-        print("💾 STORAGE:")
-        print(f"   • Location: data/materials/Materials.yaml")
-        print(f"   • Component: caption")
-        print(f"   • Material: {material_name}")
-        print()
-        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
-        print()
-        print("=" * 80)
-        print()
+        _show_generation_report(full_content, material_name, component_type)
         
         # Run subjective evaluation using Grok API
-        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Grok API)...")
-        eval_client = create_api_client('grok')
-        helper = SubjectiveEvaluationHelper(
-            api_client=eval_client,
-            verbose=True
-        )
+        _run_subjective_evaluation(full_content, material_name, component_type)
         
-        # Combine before and after for evaluation
-        full_content = f"BEFORE:\n{before_text}\n\nAFTER:\n{after_text}"
-        eval_result = helper.evaluate_generation(
-            content=full_content,
-            topic=material_name,
-            component_type='caption',
-            domain='materials'
-        )
+        # Run Winston AI detection and log to database  
+        _run_winston_detection(full_content, material_name, component_type, api_client)
         
-        # Display narrative assessment if available
-        if eval_result and eval_result.narrative_assessment:
-            print()
-            print("📊 SUBJECTIVE EVALUATION:")
-            print("-" * 80)
-            print(eval_result.narrative_assessment)
-            print()
-        print()
-        
-        # Save report to markdown file
-        from postprocessing.reports.generation_report_writer import GenerationReportWriter
-        writer = GenerationReportWriter()
-        evaluation_data = {
-            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
-        }
-        report_path = writer.save_individual_report(
-            material_name=material_name,
-            component_type='caption',
-            content=full_content,
-            evaluation=evaluation_data
-        )
-        print(f"📄 Report saved: {report_path}")
-        print()
-        
-        # Run Winston AI detection and log to database
-        print("🤖 Running Winston AI detection...")
-        try:
-            from postprocessing.detection.winston_integration import WinstonIntegration
-            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
-            from generation.config.config_loader import get_config
-            from generation.config.dynamic_config import DynamicConfig
-            
-            config = get_config()
-            db_path = config.config.get('winston_feedback_db_path')
-            feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
-            
-            # Initialize Winston integration
-            winston = WinstonIntegration(
-                winston_client=api_client,  # Use same API client
-                feedback_db=feedback_db,
-                config=config.config
-            )
-            
-            # Get dynamic threshold
-            dynamic_config = DynamicConfig()
-            ai_threshold = dynamic_config.calculate_winston_threshold()
-            
-            # Detect and log
-            winston_result = winston.detect_and_log(
-                text=full_content,
-                material=material_name,
-                component_type='caption',
-                temperature=0.7,  # Default for captions
-                attempt=1,
-                max_attempts=1,
-                ai_threshold=ai_threshold
-            )
-            
-            ai_score = winston_result['ai_score']
-            human_score = 1.0 - ai_score
-            
-            print(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
-            print(f"   👤 Human Score: {human_score*100:.1f}%")
-            
-            if ai_score <= ai_threshold:
-                print("   ✅ Winston check PASSED")
-            else:
-                print("   ⚠️  Winston check FAILED - consider regenerating")
-            print()
-            
-        except Exception as e:
-            print(f"   ⚠️  Winston detection failed: {e}")
-            print("   Continuing without Winston validation...")
-            print()
-        
-        print("✨ Caption generation complete!")
+        print(f"✨ {component_label.capitalize()} generation complete!")
         print()
         
         # Run post-generation validation
         from shared.commands.integrity_helper import run_post_generation_validation
-        run_post_generation_validation(material_name, 'caption', quick=True)
+        run_post_generation_validation(material_name, component_type, quick=True)
         
         # Check if we should update sweet spot recommendations (generic learning)
-        if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=3):
-            print("📊 Updating generic sweet spot recommendations...")
-            try:
-                from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-                # Threshold as 0-1.0 scale (database stores normalized scores)
-                analyzer = SweetSpotAnalyzer(db_path, min_samples=3, success_threshold=0.80)
-                results = analyzer.get_sweet_spot_table(save_to_db=True)
-                
-                if results['sweet_spots']:
-                    print("   ✅ Sweet spot recommendations updated")
-                    print(f"   📈 Based on {results['metadata']['sample_count']} samples")
-                    print(f"   🎯 Confidence: {results['metadata']['confidence_level']}")
-                else:
-                    print("   ⚠️  Not enough data for sweet spot calculation")
-                print()
-            except Exception as e:
-                print(f"   ⚠️  Could not update sweet spot: {e}")
-                print()
+        _update_sweet_spot_if_needed(material_name, component_type)
         
         # Run post-generation integrity check
-        print("🔍 Running post-generation integrity check...")
-        from generation.integrity import IntegrityChecker
-        checker = IntegrityChecker()
-        post_results = checker.run_post_generation_checks(
-            material=material_name,
-            component_type='caption'
-        )
-        
-        # Print post-gen results
-        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
-        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
-        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
-        
-        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
-        
-        for result in post_results:
-            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
-            print(f"   {icon} {result.check_name}: {result.message}")
-        
-        print()
+        _run_post_generation_integrity(material_name, component_type)
         
         return True
         
     except Exception as e:
-        print(f"❌ Error during caption generation: {e}")
+        print(f"❌ Error during {component_type} generation: {e}")
         import traceback
         traceback.print_exc()
         return False
+
+
+def _extract_content_for_display(content_data, component_type, spec):
+    """Extract content for display based on component type and extraction strategy."""
+    if spec.extraction_strategy == 'before_after':
+        # Caption: dict with 'before' and 'after'
+        if isinstance(content_data, dict):
+            before_text = content_data.get('before', '')
+            after_text = content_data.get('after', '')
+            return f"BEFORE:\n{before_text}\n\nAFTER:\n{after_text}"
+        return str(content_data)
+    elif spec.extraction_strategy == 'json_list':
+        # FAQ: list of Q&A dicts
+        if isinstance(content_data, list):
+            faq_parts = []
+            for qa in content_data:
+                q = qa.get('question', '')
+                a = qa.get('answer', '')
+                faq_parts.append(f"Q: {q}\nA: {a}")
+            return "\n\n".join(faq_parts)
+        return str(content_data)
+    else:
+        # Raw: return as-is (subtitle, description, etc.)
+        return str(content_data)
+
+
+def _show_generation_report(content, material_name, component_type):
+    """Display complete generation report (policy requirement)."""
+    print("=" * 80)
+    print("📊 GENERATION COMPLETE REPORT")
+    print("=" * 80)
+    print()
+    print("📝 GENERATED CONTENT:")
+    print("-" * 80)
+    print(content)
+    print("-" * 80)
+    print()
+    print("📏 STATISTICS:")
+    print(f"   • Length: {len(content)} characters")
+    print(f"   • Word count: {len(content.split())} words")
+    print()
+    print("💾 STORAGE:")
+    print("   • Location: data/materials/Materials.yaml")
+    print(f"   • Component: {component_type}")
+    print(f"   • Material: {material_name}")
+    print()
+    print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
+    print()
+    print("=" * 80)
+    print()
+
+
+def _run_subjective_evaluation(content, material_name, component_type):
+    """Run subjective evaluation (component-agnostic)."""
+    from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
+    from shared.api.client_factory import create_api_client
+    
+    print("🔍 Running subjective evaluation (Grok API)...")
+    eval_client = create_api_client('grok')
+    helper = SubjectiveEvaluationHelper(
+        api_client=eval_client,
+        verbose=True
+    )
+    
+    eval_result = helper.evaluate_generation(
+        content=content,
+        topic=material_name,
+        component_type=component_type,
+        domain='materials'
+    )
+    
+    # Display narrative assessment if available
+    if eval_result and eval_result.narrative_assessment:
+        print()
+        print("📊 SUBJECTIVE EVALUATION:")
+        print("-" * 80)
+        print(eval_result.narrative_assessment)
+        print()
+    print()
+    
+    # Save report to markdown file
+    from postprocessing.reports.generation_report_writer import GenerationReportWriter
+    writer = GenerationReportWriter()
+    evaluation_data = {
+        'narrative_assessment': eval_result.narrative_assessment if eval_result else None
+    }
+    report_path = writer.save_individual_report(
+        material_name=material_name,
+        component_type=component_type,
+        content=content,
+        evaluation=evaluation_data
+    )
+    print(f"📄 Report saved: {report_path}")
+    print()
+
+
+def _run_winston_detection(content, material_name, component_type, api_client):
+    """Run Winston AI detection (component-agnostic)."""
+    print("🤖 Running Winston AI detection...")
+    try:
+        from postprocessing.detection.winston_integration import WinstonIntegration
+        from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+        from generation.config.config_loader import get_config
+        from generation.config.dynamic_config import DynamicConfig
+        
+        config = get_config()
+        db_path = config.config.get('winston_feedback_db_path')
+        feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+        
+        # Initialize Winston integration
+        winston = WinstonIntegration(
+            winston_client=api_client,
+            feedback_db=feedback_db,
+            config=config.config
+        )
+        
+        # Get dynamic threshold
+        dynamic_config = DynamicConfig()
+        ai_threshold = dynamic_config.calculate_winston_threshold()
+        
+        # Detect and log
+        winston_result = winston.detect_and_log(
+            text=content,
+            material=material_name,
+            component_type=component_type,
+            temperature=0.7,
+            attempt=1,
+            max_attempts=1,
+            ai_threshold=ai_threshold
+        )
+        
+        ai_score = winston_result['ai_score']
+        human_score = 1.0 - ai_score
+        
+        print(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
+        print(f"   👤 Human Score: {human_score*100:.1f}%")
+        
+        if ai_score <= ai_threshold:
+            print("   ✅ Winston check PASSED")
+        else:
+            print("   ⚠️  Winston check FAILED - consider regenerating")
+        print()
+        
+    except Exception as e:
+        print(f"   ⚠️  Winston detection failed: {e}")
+        print("   Continuing without Winston validation...")
+        print()
+
+
+def _update_sweet_spot_if_needed(material_name, component_type):
+    """Update sweet spot recommendations if threshold met (component-agnostic)."""
+    from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+    from generation.config.config_loader import get_config
+    
+    config = get_config()
+    db_path = config.config.get('winston_feedback_db_path')
+    feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+    
+    if feedback_db and feedback_db.should_update_sweet_spot('*', '*', min_samples=3):
+        print("📊 Updating generic sweet spot recommendations...")
+        try:
+            from learning.sweet_spot_analyzer import SweetSpotAnalyzer
+            analyzer = SweetSpotAnalyzer(db_path, min_samples=3, success_threshold=0.80)
+            results = analyzer.get_sweet_spot_table(save_to_db=True)
+            
+            if results['sweet_spots']:
+                print("   ✅ Sweet spot recommendations updated")
+                print(f"   📈 Based on {results['metadata']['sample_count']} samples")
+                print(f"   🎯 Confidence: {results['metadata']['confidence_level']}")
+            else:
+                print("   ⚠️  Not enough data for sweet spot calculation")
+            print()
+        except Exception as e:
+            print(f"   ⚠️  Could not update sweet spot: {e}")
+            print()
+
+
+def _run_post_generation_integrity(material_name, component_type):
+    """Run post-generation integrity check (component-agnostic)."""
+    print("🔍 Running post-generation integrity check...")
+    from generation.integrity import IntegrityChecker
+    checker = IntegrityChecker()
+    post_results = checker.run_post_generation_checks(
+        material=material_name,
+        component_type=component_type
+    )
+    
+    # Print post-gen results
+    post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
+    post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
+    post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
+    
+    print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
+    
+    for result in post_results:
+        icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
+        print(f"   {icon} {result.check_name}: {result.message}")
+    
+    print()
+
+
+# ============================================================================
+# DEPRECATED COMPONENT-SPECIFIC HANDLERS (Backward Compatibility)
+# ============================================================================
+# These handlers are maintained for backward compatibility but are DEPRECATED.
+# All new code should use handle_generation(material, component_type) instead.
+# ============================================================================
+
+def handle_caption_generation(material_name: str, skip_integrity_check: bool = False):
+    """
+    DEPRECATED: Use handle_generation(material_name, 'caption') instead.
+    
+    Generate AI-powered caption for a material and save to Materials.yaml.
+    This is a backward compatibility wrapper around the generic handler.
+    """
+    return handle_generation(material_name, 'caption', skip_integrity_check)
 
 
 def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = False):
-    """Generate AI-powered subtitle for a material using processing pipeline"""
-    print("="*80)
-    print(f"📝 SUBTITLE GENERATION: {material_name}")
-    print("="*80)
-    print()
+    """
+    DEPRECATED: Use handle_generation(material_name, 'subtitle') instead.
     
-    # Run pre-generation integrity check
-    from shared.commands.integrity_helper import run_pre_generation_check
-    if not run_pre_generation_check(skip_check=skip_integrity_check, quick=True):
-        return False
-    
-    try:
-        # Initialize API client
-        from shared.api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        api_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
-        print()
-        
-        # Initialize unified generator
-        from domains.materials.coordinator import UnifiedMaterialsGenerator
-        
-        print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(api_client)
-        print("✅ Generator ready")
-        print()
-        
-        # Generate subtitle
-        print("🤖 Generating AI-powered subtitle...")
-        print("   Target: Professional technical subtitle")
-        print("   Note: Voice enhancement happens in post-processing")
-        print()
-        
-        subtitle_data = generator.generate(material_name, 'subtitle')
-        
-        print("✅ Subtitle generated and saved to Materials.yaml")
-        print()
-        
-        # DEBUG: Check what we received
-        print(f"🔍 DEBUG: subtitle_data type = {type(subtitle_data)}")
-        print(f"🔍 DEBUG: subtitle_data = {subtitle_data}")
-        print()
-        
-        # SimpleGenerator returns content string directly
-        subtitle = str(subtitle_data)
-        
-        # POLICY: Always show complete generation report after each generation
-        print("=" * 80)
-        print("📊 GENERATION COMPLETE REPORT")
-        print("=" * 80)
-        print()
-        print("📝 GENERATED CONTENT:")
-        print("-" * 80)
-        print(subtitle)
-        print("-" * 80)
-        print()
-        print("📏 STATISTICS:")
-        print(f"   • Length: {len(subtitle)} characters")
-        print(f"   • Word count: {len(subtitle.split())} words")
-        print()
-        print("💾 STORAGE:")
-        print("   • Location: data/materials/Materials.yaml")
-        print("   • Component: subtitle")
-        print(f"   • Material: {material_name}")
-        print()
-        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
-        print()
-        print("=" * 80)
-        print()
-        
-        # Run subjective evaluation using Grok API
-        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Grok API)...")
-        eval_client = create_api_client('grok')
-        helper = SubjectiveEvaluationHelper(
-            api_client=eval_client,
-            verbose=True
-        )
-        
-        eval_result = helper.evaluate_generation(
-            content=subtitle,
-            topic=material_name,
-            component_type='subtitle',
-            domain='materials'
-        )
-        
-        # Display narrative assessment if available
-        if eval_result and eval_result.narrative_assessment:
-            print()
-            print("📊 SUBJECTIVE EVALUATION:")
-            print("-" * 80)
-            print(eval_result.narrative_assessment)
-            print()
-        print()
-        
-        # Save report to markdown file
-        from postprocessing.reports.generation_report_writer import GenerationReportWriter
-        writer = GenerationReportWriter()
-        evaluation_data = {
-            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
-        }
-        report_path = writer.save_individual_report(
-            material_name=material_name,
-            component_type='subtitle',
-            content=subtitle,
-            evaluation=evaluation_data
-        )
-        print(f"📄 Report saved: {report_path}")
-        print()
-        
-        print("✨ Subtitle generation complete!")
-        print()
-        
-        # Run post-generation integrity check
-        print("🔍 Running post-generation integrity check...")
-        from generation.integrity import IntegrityChecker
-        checker = IntegrityChecker()
-        post_results = checker.run_post_generation_checks(
-            material=material_name,
-            component_type='subtitle'
-        )
-        
-        # Print post-gen results
-        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
-        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
-        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
-        
-        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
-        
-        for result in post_results:
-            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
-            print(f"   {icon} {result.check_name}: {result.message}")
-        
-        print()
-        
-        return True
-        
-    except Exception as e:
-        print(f"❌ Error during subtitle generation: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
+    Generate AI-powered subtitle for a material and save to Materials.yaml.
+    This is a backward compatibility wrapper around the generic handler.
+    """
+    return handle_generation(material_name, 'subtitle', skip_integrity_check)
 
 
 def handle_faq_generation(material_name: str, skip_integrity_check: bool = False):
-    """Generate AI-powered FAQ for a material and save to Materials.yaml"""
-    print("="*80)
-    print(f"❓ FAQ GENERATION: {material_name}")
-    print("="*80)
-    print()
+    """
+    DEPRECATED: Use handle_generation(material_name, 'faq') instead.
     
-    # Run pre-generation integrity check
-    from shared.commands.integrity_helper import run_pre_generation_check
-    if not run_pre_generation_check(skip_check=skip_integrity_check, quick=True):
-        return False
-    
-    try:
-        # Import required modules
-        from domains.materials.coordinator import UnifiedMaterialsGenerator
-        
-        # Initialize Grok API client for FAQ
-        from shared.api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        api_client = create_api_client('grok')
-        print("✅ Grok client ready")
-        print()
-        
-        # Initialize unified generator
-        print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(api_client)
-        print("✅ Generator ready")
-        print()
-        
-        # Generate FAQ (no voice - that's done by post-processor)
-        print("🤖 Generating AI-powered FAQ...")
-        print("   • Questions: Random 2-8 material-specific Q&As")
-        print("   • Categories: Based on researched material characteristics")
-        print("   • Answers: 10-50 words each with HIGH variability (mixed short/medium/long)")
-        print("   • Note: Voice enhancement happens in post-processing")
-        print()
-        
-        faq_list = generator.generate(material_name, 'faq')  # Random count between 2-8
-        
-        print("✅ FAQ generated and saved successfully!")
-        print()
-        
-        # SimpleGenerator returns list of FAQ dicts directly
-        faq_data = faq_list
-        
-        # Validate extraction succeeded
-        if not faq_data or not isinstance(faq_data, list):
-            print("⚠️  Warning: FAQ extraction returned unexpected format")
-            print(f"   Result type: {type(faq_data)}")
-            print(f"   Result: {faq_data}")
-            return False
-        
-        # Show statistics
-        total_words = sum(len(qa.get('answer', '').split()) for qa in faq_data if isinstance(qa, dict))
-        
-        # POLICY: Always show complete generation report after each generation
-        print("=" * 80)
-        print("📊 GENERATION COMPLETE REPORT")
-        print("=" * 80)
-        print()
-        print("📝 GENERATED CONTENT:")
-        print("-" * 80)
-        for i, qa in enumerate(faq_data, 1):
-            print(f"Q{i}: {qa['question']}")
-            print(f"A{i}: {qa['answer']}")
-            if i < len(faq_data):
-                print()
-        print("-" * 80)
-        print()
-        print("📏 STATISTICS:")
-        print(f"   • Total Questions: {len(faq_data)}")
-        print(f"   • Total Words: {total_words}")
-        if len(faq_data) > 0:
-            print(f"   • Avg Words/Answer: {total_words / len(faq_data):.1f}")
-            answer_lengths = [len(qa.get('answer', '').split()) for qa in faq_data if isinstance(qa, dict)]
-            if answer_lengths:
-                print(f"   • Min Answer Length: {min(answer_lengths)} words")
-                print(f"   • Max Answer Length: {max(answer_lengths)} words")
-        print()
-        print("💾 STORAGE:")
-        print("   • Location: data/materials/Materials.yaml")
-        print("   • Component: faq")
-        print(f"   • Material: {material_name}")
-        print()
-        print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
-        print()
-        print("=" * 80)
-        print()
-        
-        # Run subjective evaluation on all Q&A pairs using Grok API
-        from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
-        print("🔍 Running subjective evaluation (Grok API)...")
-        eval_client = create_api_client('grok')
-        helper = SubjectiveEvaluationHelper(
-            api_client=eval_client,
-            verbose=True
-        )
-        
-        # Combine all Q&As for evaluation
-        all_content = []
-        for qa in faq_data:
-            all_content.append(f"Q: {qa['question']}\nA: {qa['answer']}")
-        full_content = "\n\n".join(all_content)
-        
-        eval_result = helper.evaluate_generation(
-            content=full_content,
-            topic=material_name,
-            component_type='faq',
-            domain='materials'
-        )
-        
-        # Display narrative assessment if available
-        if eval_result and eval_result.narrative_assessment:
-            print()
-            print("📊 SUBJECTIVE EVALUATION:")
-            print("-" * 80)
-            print(eval_result.narrative_assessment)
-            print()
-        print()
-        
-        # Save report to markdown file
-        from postprocessing.reports.generation_report_writer import GenerationReportWriter
-        writer = GenerationReportWriter()
-        evaluation_data = {
-            'narrative_assessment': eval_result.narrative_assessment if eval_result else None
-        }
-        report_path = writer.save_individual_report(
-            material_name=material_name,
-            component_type='faq',
-            content=full_content,
-            evaluation=evaluation_data
-        )
-        print(f"📄 Report saved: {report_path}")
-        print()
-        
-        print("✨ FAQ generation complete!")
-        print()
-        
-        # Run post-generation integrity check
-        print("🔍 Running post-generation integrity check...")
-        from generation.integrity import IntegrityChecker
-        checker = IntegrityChecker()
-        post_results = checker.run_post_generation_checks(
-            material=material_name,
-            component_type='faq'
-        )
-        
-        # Print post-gen results
-        post_pass = sum(1 for r in post_results if r.status.value == 'PASS')
-        post_warn = sum(1 for r in post_results if r.status.value == 'WARN')
-        post_fail = sum(1 for r in post_results if r.status.value == 'FAIL')
-        
-        print(f"   {post_pass} passed, {post_warn} warnings, {post_fail} failed")
-        
-        for result in post_results:
-            icon = {"FAIL": "❌", "WARN": "⚠️", "PASS": "✅"}[result.status.value]
-            print(f"   {icon} {result.check_name}: {result.message}")
-        
-        print()
-        
-        return True
-        
-    except Exception as e:
-        print(f"❌ Error during FAQ generation: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
+    Generate AI-powered FAQ for a material and save to Materials.yaml.
+    This is a backward compatibility wrapper around the generic handler.
+    """
+    return handle_generation(material_name, 'faq', skip_integrity_check)
 
-
-# =================================================================================
-# MATERIAL AUDITING SYSTEM
-# =================================================================================
 
