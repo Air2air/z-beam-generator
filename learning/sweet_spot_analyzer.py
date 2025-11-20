@@ -494,7 +494,7 @@ class SweetSpotAnalyzer:
         # Best achievement recommendation
         best = maximums[0]
         recommendations.append(
-            f"🏆 Best achievement: {best.max_human_score:.1f}% human "
+            f"🏆 Best achievement: {best.max_human_score * 100:.1f}% human "
             f"({best.material} {best.component_type})"
         )
         
