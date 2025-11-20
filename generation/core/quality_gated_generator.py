@@ -317,10 +317,8 @@ class QualityGatedGenerator:
         
         return {
             # API parameters (dynamic from DynamicConfig)
-            'temperature': self.dynamic_config.calculate_temperature(),
+            'temperature': self.dynamic_config.calculate_temperature(component_type),
             'max_tokens': self.dynamic_config.calculate_max_tokens(component_type),
-            'frequency_penalty': self.dynamic_config.calculate_frequency_penalty(),
-            'presence_penalty': self.dynamic_config.calculate_presence_penalty(),
             
             # Voice parameters (from config.yaml with fallback defaults)
             'emotional_tone': voice_params.get('emotional_tone', 0.3),
