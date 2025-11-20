@@ -18,15 +18,19 @@ class CompositeScorer(BaseStep):
             raise ValueError("Missing 'realism_result' in context")
     
     def _execute_logic(self, context: Dict[str, Any]) -> float:
-        winston_human_score = context['winston_result']['human_score']
-        realism_score = context['realism_result']['score']
+        winston_human_score = context['winston_result']['human_score']  # 0-1.0 normalized
+        realism_score = context['realism_result']['score']              # 0-10 scale
         
-        # Winston 60% + Realism 40% (convert realism 0-10 to 0-100)
-        composite = (winston_human_score * 0.6) + (realism_score * 10 * 0.4)
+        # Normalize realism to 0-1.0 (divide by 10)
+        realism_normalized = realism_score / 10.0
+        
+        # Winston 60% + Realism 40% (both now 0-1.0 scale)
+        composite = (winston_human_score * 0.6) + (realism_normalized * 0.4)
         
         self.logger.info(
-            f"📊 Composite: {composite:.1f}% "
-            f"(Winston: {winston_human_score:.1f}%, Realism: {realism_score:.1f}/10)"
+            f"📊 Composite: {composite:.3f} ({composite*100:.1f}%) "
+            f"(Winston: {winston_human_score:.3f}/{winston_human_score*100:.1f}%, "
+            f"Realism: {realism_score:.1f}/10)"
         )
         
-        return round(composite, 2)
+        return round(composite, 4)

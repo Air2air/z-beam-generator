@@ -154,7 +154,8 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
             print("📊 Updating generic sweet spot recommendations...")
             try:
                 from learning.sweet_spot_analyzer import SweetSpotAnalyzer
-                analyzer = SweetSpotAnalyzer(db_path, min_samples=5, success_threshold=80.0)
+                # Threshold as 0-1.0 scale (database stores normalized scores)
+                analyzer = SweetSpotAnalyzer(db_path, min_samples=5, success_threshold=0.80)
                 results = analyzer.get_sweet_spot_table(save_to_db=True)
                 
                 if results['sweet_spots']:

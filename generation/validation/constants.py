@@ -30,15 +30,15 @@ class ValidationConstants:
     Single source of truth for all quality gates and validation rules.
     """
     
-    # Winston AI Detection Thresholds
+    # Winston AI Detection Thresholds (ALL on 0-1.0 normalized scale)
     WINSTON_AI_THRESHOLD = 0.33          # AI score must be < 0.33 (33% AI, 67%+ human)
     WINSTON_HUMAN_THRESHOLD = 0.67       # Human score must be >= 67%
     WINSTON_MIN_CHARS = 300              # Minimum characters for Winston API
     
-    # Default Scores (when validation skipped)
-    DEFAULT_AI_SCORE = 0.0               # Perfect score when skipping
-    DEFAULT_HUMAN_SCORE = 100.0          # Perfect score when skipping
-    DEFAULT_FALLBACK_AI_SCORE = 0.5      # Neutral score on error
+    # Default Scores (when validation skipped) - ALL on 0-1.0 normalized scale
+    DEFAULT_AI_SCORE = 0.0               # Perfect score when skipping (0% AI)
+    DEFAULT_HUMAN_SCORE = 1.0            # Perfect score when skipping (100% human)
+    DEFAULT_FALLBACK_AI_SCORE = 0.5      # Neutral score on error (50%)
     
     # Score Conversions
     @staticmethod

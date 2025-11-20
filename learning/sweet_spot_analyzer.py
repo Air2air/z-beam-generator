@@ -71,7 +71,7 @@ class SweetSpotAnalyzer:
         self,
         db_path: str,
         min_samples: int = 10,
-        success_threshold: float = 50.0
+        success_threshold: float = 0.80
     ):
         """
         Initialize sweet spot analyzer.
@@ -79,7 +79,7 @@ class SweetSpotAnalyzer:
         Args:
             db_path: Path to Winston feedback database
             min_samples: Minimum samples needed for reliable analysis
-            success_threshold: Minimum human_score to consider "successful"
+            success_threshold: Minimum quality score to consider "successful" (0-1.0 normalized scale)
         """
         self.db_path = Path(db_path)
         self.min_samples = min_samples
@@ -90,7 +90,7 @@ class SweetSpotAnalyzer:
         
         logger.info(
             f"[SWEET SPOT] Initialized "
-            f"(min_samples={min_samples}, threshold={success_threshold}%)"
+            f"(min_samples={min_samples}, threshold={success_threshold:.2f} on 0-1.0 scale)"
         )
     
     def find_sweet_spots(

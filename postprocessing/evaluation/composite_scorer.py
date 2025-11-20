@@ -106,42 +106,52 @@ class CompositeScorer:
         regardless of material or component - the system learns ONE optimal
         weight set that maximizes prediction accuracy across all generations.
         
+        ALL scores on 0-1.0 normalized scale for consistency.
+        
         Args:
-            winston_human_score: Winston human score (0-100 scale)
-            subjective_overall_score: Subjective evaluation (0-10 scale)
-            readability_score: Flesch reading ease (0-100 scale)
+            winston_human_score: Winston human score (0-1.0 normalized, NOT 0-100)
+            subjective_overall_score: Subjective evaluation (0-10 scale, will be normalized)
+            readability_score: Flesch reading ease (0-100 scale, will be normalized)
             
         Returns:
             Dict with:
-            - composite_score: Final weighted score (0-100)
-            - winston_contribution: Points from Winston
-            - subjective_contribution: Points from subjective
-            - readability_contribution: Points from readability
+            - composite_score: Final weighted score (0-1.0 normalized)
+            - winston_contribution: Points from Winston (0-1.0)
+            - subjective_contribution: Points from subjective (0-1.0)
+            - readability_contribution: Points from readability (0-1.0)
             - weights_used: Actual weights after redistribution
             - weights_source: "manual" or "learned:global" or "default"
             - all_dimensions_present: Boolean flag
             
         Raises:
-            ValueError: If winston_human_score out of range
+            ValueError: If scores out of expected range
         """
-        # Validate Winston score (required)
-        if not 0.0 <= winston_human_score <= 100.0:
+        # Validate Winston score (required) - now expects 0-1.0 normalized
+        if not 0.0 <= winston_human_score <= 1.0:
             raise ValueError(
-                f"winston_human_score must be 0-100, got {winston_human_score}"
+                f"winston_human_score must be 0-1.0 normalized, got {winston_human_score}"
             )
         
-        # Validate optional scores
+        # Validate and normalize optional scores
         if subjective_overall_score is not None:
             if not 0.0 <= subjective_overall_score <= 10.0:
                 raise ValueError(
                     f"subjective_overall_score must be 0-10, got {subjective_overall_score}"
                 )
+            # Normalize to 0-1.0 (divide by 10)
+            subjective_normalized = subjective_overall_score / 10.0
+        else:
+            subjective_normalized = None
         
         if readability_score is not None:
             if not 0.0 <= readability_score <= 100.0:
                 raise ValueError(
                     f"readability_score must be 0-100, got {readability_score}"
                 )
+            # Normalize to 0-1.0 (divide by 100)
+            readability_normalized = readability_score / 100.0
+        else:
+            readability_normalized = None
         
         # Get weights (manual overrides or learned from data)
         if all(w is not None for w in [self.manual_winston, self.manual_subjective, self.manual_readability]):
@@ -159,19 +169,12 @@ class CompositeScorer:
             # (WeightLearner falls back to defaults if < 50 samples)
             weights_source = "learned:global"  # Could be default fallback internally
         
-        # Normalize subjective to 0-100 scale (multiply by 10)
-        subjective_normalized = (
-            subjective_overall_score * 10.0 
-            if subjective_overall_score is not None 
-            else None
-        )
-        
         # Handle missing scores by redistributing weights
         # Priority: Always redistribute to Winston (primary metric)
         available_weights = {
             'winston': winston_weight,
             'subjective': subjective_weight if subjective_normalized is not None else 0.0,
-            'readability': readability_weight if readability_score is not None else 0.0
+            'readability': readability_weight if readability_normalized is not None else 0.0
         }
         
         # Calculate missing weight and add to Winston
@@ -182,10 +185,10 @@ class CompositeScorer:
             logger.debug(
                 f"Redistributed {missing_weight:.1%} missing weight to Winston "
                 f"(subjective={'present' if subjective_normalized else 'missing'}, "
-                f"readability={'present' if readability_score else 'missing'})"
+                f"readability={'present' if readability_normalized else 'missing'})"
             )
         
-        # Calculate contributions (each dimension * weight * score)
+        # Calculate contributions (each dimension * weight) - ALL on 0-1.0 scale now
         winston_contrib = winston_human_score * available_weights['winston']
         
         subjective_contrib = (
@@ -195,8 +198,8 @@ class CompositeScorer:
         )
         
         readability_contrib = (
-            readability_score * available_weights['readability']
-            if readability_score is not None
+            readability_normalized * available_weights['readability']
+            if readability_normalized is not None
             else 0.0
         )
         

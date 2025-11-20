@@ -348,10 +348,33 @@ class WinstonFeedbackDatabase:
         """
         timestamp = datetime.utcnow().isoformat()
         
+        # Validate scores are 0-1.0 normalized (fail-fast on invalid data)
+        human_score = winston_result.get('human_score', 0)
+        ai_score = winston_result.get('ai_score', 1.0)
+        readability_score = winston_result.get('readability_score')
+        
+        if not 0.0 <= human_score <= 1.0:
+            raise ValueError(
+                f"human_score must be 0-1.0 normalized, got {human_score}. "
+                f"Winston API should return normalized scores."
+            )
+        if not 0.0 <= ai_score <= 1.0:
+            raise ValueError(
+                f"ai_score must be 0-1.0 normalized, got {ai_score}"
+            )
+        if readability_score is not None and not 0.0 <= readability_score <= 1.0:
+            raise ValueError(
+                f"readability_score must be 0-1.0 normalized, got {readability_score}"
+            )
+        if composite_quality_score is not None and not 0.0 <= composite_quality_score <= 1.0:
+            raise ValueError(
+                f"composite_quality_score must be 0-1.0 normalized, got {composite_quality_score}"
+            )
+        
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             
-            # Insert main detection result
+            # Insert main detection result (ALL scores normalized to 0-1.0)
             cursor.execute("""
                 INSERT INTO detection_results 
                 (timestamp, material, component_type, generated_text, 
@@ -363,9 +386,9 @@ class WinstonFeedbackDatabase:
                 material,
                 component_type,
                 generated_text,
-                winston_result.get('human_score', 0),
-                winston_result.get('ai_score', 1.0),
-                winston_result.get('readability_score'),
+                human_score,
+                ai_score,
+                readability_score,
                 winston_result.get('credits_used'),
                 attempt,
                 temperature,

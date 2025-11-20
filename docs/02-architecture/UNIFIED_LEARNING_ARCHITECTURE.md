@@ -286,8 +286,8 @@ CREATE TABLE detection_results (
     material TEXT,
     component_type TEXT,
     generated_text TEXT,
-    human_score REAL,      -- 0-100 scale
-    ai_score REAL,          -- 0-1.0 scale
+    human_score REAL,      -- 0-1.0 normalized (0.85 = 85% human)
+    ai_score REAL,          -- 0-1.0 normalized (0.15 = 15% AI)
     temperature REAL,
     frequency_penalty REAL,
     presence_penalty REAL,

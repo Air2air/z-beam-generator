@@ -680,11 +680,14 @@ class APIClient:
                 
                 # Winston returns a 'score' field representing human probability (0-100)
                 # Higher score = more human-like
-                human_score = data.get('score', 0)
+                human_score_raw = data.get('score', 0)
+                
+                # Normalize to 0-1.0 scale for consistency across system
+                human_score = human_score_raw / 100.0
                 
                 # Convert to AI score (0-1 scale, inverted)
-                # 100 human = 0 AI, 0 human = 1 AI
-                ai_score = (100 - human_score) / 100.0
+                # 1.0 human = 0 AI, 0 human = 1 AI
+                ai_score = 1.0 - human_score
                 
                 # Extract detailed analysis
                 sentences = data.get('sentences', [])
@@ -692,8 +695,8 @@ class APIClient:
                 readability_score = data.get('readability_score')
                 
                 print(f"✅ [WINSTON API] Detection complete in {response_time:.2f}s")
-                print(f"   Human Score: {human_score:.1f}%")
-                print(f"   AI Score: {ai_score:.3f}")
+                print(f"   Human Score: {human_score*100:.1f}% (normalized: {human_score:.3f})")
+                print(f"   AI Score: {ai_score*100:.1f}% (normalized: {ai_score:.3f})")
                 print(f"   Credits Used: {data.get('credits_used', 'N/A')}")
                 print(f"   Credits Remaining: {data.get('credits_remaining', 'N/A')}")
                 
