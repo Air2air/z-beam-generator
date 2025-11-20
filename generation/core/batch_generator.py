@@ -266,7 +266,7 @@ class BatchGenerator:
                     'batch_validated': True
                 })
             
-            # Save successful components to Materials.yaml
+            # Save successful components to Materials.yaml and display individual reports
             saved_count = 0
             for material, result in individual_results.items():
                 if result.get('passes_winston', False):
@@ -276,6 +276,8 @@ class BatchGenerator:
                         result['content']
                     )
                     saved_count += 1
+                    # Display generation report for each successful material
+                    self._display_generation_report(material, component_type, result)
             
             # Calculate cost savings
             individual_cost = batch_size * 0.10  # $0.10 per Winston call
@@ -286,7 +288,8 @@ class BatchGenerator:
             self.logger.info(f"✅ BATCH COMPLETE")
             self.logger.info(f"{'='*80}")
             self.logger.info(f"Success rate: {saved_count}/{batch_size} materials")
-            self.logger.info(f"Winston score: {winston_result.get('ai_score', 0.5):.3f}")
+            self.logger.info(f"Winston AI Score: {winston_result.get('ai_score', 0.5):.3f} (threshold: 0.33)")
+            self.logger.info(f"Human Score: {(1.0 - winston_result.get('ai_score', 0.5)) * 100:.1f}%")
             self.logger.info(f"Concatenated length: {len(concatenated_text)} chars")
             self.logger.info(f"Cost savings: ${cost_savings:.2f}")
             
@@ -523,6 +526,51 @@ BASE PROMPT:
             self.logger.info(f"💾 Saved {component_type} for {material_name}")
         else:
             self.logger.error(f"❌ Material not found: {material_name}")
+    
+    def _display_generation_report(
+        self,
+        material_name: str,
+        component_type: str,
+        result: Dict[str, Any]
+    ) -> None:
+        """
+        Display comprehensive generation report for a single material.
+        
+        Args:
+            material_name: Name of material
+            component_type: Type of component
+            result: Generation result with content and metrics
+        """
+        content = result.get('content', '')
+        winston_score = result.get('winston_score', 0.5)
+        human_score = result.get('human_score', 50.0)
+        passes = result.get('passes_winston', False)
+        
+        print("\n" + "="*80)
+        print(f"📊 GENERATION COMPLETE REPORT: {material_name}")
+        print("="*80)
+        print()
+        print("📝 GENERATED CONTENT:")
+        print("─"*80)
+        print(content)
+        print("─"*80)
+        print()
+        print("📈 QUALITY METRICS:")
+        print(f"   • AI Detection Score: {winston_score:.3f} (threshold: 0.33)")
+        print(f"   • Human Score: {human_score:.1f}%")
+        print(f"   • Status: {'✅ PASS' if passes else '❌ FAIL'}")
+        print(f"   • Validation: Batch Winston validation")
+        print()
+        print("📏 STATISTICS:")
+        print(f"   • Length: {len(content)} characters")
+        print(f"   • Word count: {len(content.split())} words")
+        print()
+        print("💾 STORAGE:")
+        print(f"   • Location: data/materials/Materials.yaml")
+        print(f"   • Component: {component_type}")
+        print(f"   • Material: {material_name}")
+        print()
+        print("="*80)
     
     def _load_material_data(self, material_name: str) -> Dict[str, Any]:
         """
