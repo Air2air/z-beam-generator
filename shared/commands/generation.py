@@ -233,7 +233,7 @@ def _run_winston_detection(content, material_name, component_type, api_client):
         from postprocessing.detection.winston_integration import WinstonIntegration
         from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from generation.config.config_loader import get_config
-        from generation.config.dynamic_config import DynamicConfig
+        from generation.validation.constants import ValidationConstants
         
         config = get_config()
         db_path = config.config.get('winston_feedback_db_path')
@@ -246,9 +246,8 @@ def _run_winston_detection(content, material_name, component_type, api_client):
             config=config.config
         )
         
-        # Get dynamic threshold
-        dynamic_config = DynamicConfig()
-        ai_threshold = dynamic_config.calculate_winston_threshold()
+        # Use constant threshold from validation constants
+        ai_threshold = ValidationConstants.WINSTON_AI_THRESHOLD
         
         # Detect and log
         winston_result = winston.detect_and_log(
