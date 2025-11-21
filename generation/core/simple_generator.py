@@ -152,7 +152,7 @@ class SimpleGenerator:
         faq_count: int = None
     ) -> Dict[str, Any]:
         """
-        Generate content with single API call.
+        Generate content with single API call AND save to Materials.yaml.
         
         Args:
             material_name: Name of material
@@ -161,6 +161,39 @@ class SimpleGenerator:
             
         Returns:
             Dict with 'content', 'length', 'word_count', 'saved', 'temperature'
+            
+        Raises:
+            ValueError: If material not found or generation fails
+            FileNotFoundError: If required files missing
+        """
+        result = self.generate_without_save(material_name, component_type, faq_count)
+        
+        # Save to Materials.yaml
+        self._save_to_yaml(material_name, component_type, result['content'])
+        self.logger.info("💾 Saved to Materials.yaml")
+        result['saved'] = True
+        
+        return result
+    
+    def generate_without_save(
+        self,
+        material_name: str,
+        component_type: str,
+        faq_count: int = None
+    ) -> Dict[str, Any]:
+        """
+        Generate content WITHOUT saving to Materials.yaml.
+        
+        Used by QualityGatedGenerator to generate content that will only be
+        saved if it passes quality gates.
+        
+        Args:
+            material_name: Name of material
+            component_type: Type of component (caption, subtitle, faq)
+            faq_count: Number of FAQ items (ignored for non-FAQ components)
+            
+        Returns:
+            Dict with 'content', 'length', 'word_count', 'saved'=False, 'temperature'
             
         Raises:
             ValueError: If material not found or generation fails
@@ -252,15 +285,11 @@ class SimpleGenerator:
         
         self.logger.info(f"✅ Generated: {char_count} chars, {word_count} words")
         
-        # Save to Materials.yaml (atomic write)
-        self._save_to_yaml(material_name, component_type, content)
-        self.logger.info("💾 Saved to Materials.yaml")
-        
         return {
             'content': content,
             'length': char_count,
             'word_count': word_count,
-            'saved': True,
+            'saved': False,
             'temperature': params['temperature']
         }
     

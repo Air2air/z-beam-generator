@@ -378,18 +378,16 @@ class QualityGatedGenerator:
         """
         Generate content WITHOUT saving to YAML.
         
-        CURRENT DESIGN: SimpleGenerator saves immediately to Materials.yaml.
-        This method calls it normally, accepting the save behavior.
-        If quality fails, we overwrite with retry content.
+        FIXED DESIGN (November 20, 2025):
+        Now uses generate_without_save() to ensure content is NOT saved until
+        after quality gate passes. This enforces:
         
-        RATIONALE: Separating generation from save requires refactoring
-        SimpleGenerator's atomicity guarantees. Current approach maintains
-        data consistency while enforcing quality gates through overwrites.
+        Generate → Evaluate → [Pass? Save : Retry]
         
-        ALTERNATIVE CONSIDERED: Separate generation from save, but this would
-        break atomic write guarantees and complicate rollback on failure.
+        Previous bug: SimpleGenerator.generate() saved immediately, violating
+        the documented quality-gated architecture.
         """
-        result = self.generator.generate(material_name, component_type, **kwargs)
+        result = self.generator.generate_without_save(material_name, component_type, **kwargs)
         return result
     
     def _content_to_text(self, content: Any, component_type: str) -> str:
