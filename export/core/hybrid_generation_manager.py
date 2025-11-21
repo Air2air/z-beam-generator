@@ -37,6 +37,11 @@ class HybridFrontmatterManager:
         self.logger = logger or logging.getLogger(__name__)
         self.classifier = TextFieldClassifier()
         
+        # Initialize DynamicConfig for consistent parameter calculation
+        from generation.config.dynamic_config import DynamicConfig
+        self.dynamic_config = DynamicConfig()
+        self.logger.info("DynamicConfig initialized for hybrid generation - all temperatures calculated dynamically")
+        
     def generate_frontmatter(
         self,
         material_name: str,
@@ -340,7 +345,12 @@ class HybridFrontmatterManager:
         
         # Generate with API client (Grok)
         try:
-            response = api_client.generate_content(prompt, max_tokens=200, temperature=0.3)
+            # Use dynamic temperature calculation from config
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            temperature = dynamic_config.calculate_temperature('description')
+            
+            response = api_client.generate_content(prompt, max_tokens=200, temperature=temperature)
             return response.strip()
         except Exception as e:
             self.logger.error(f"API generation failed for {field_path}: {e}")

@@ -62,8 +62,8 @@ class TrivialFrontmatterExporter:
     def __init__(self):
         """Initialize with output directories for dual-file architecture."""
         # Output directories for materials and settings pages
-        self.materials_output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "materials"
-        self.settings_output_dir = Path(__file__).resolve().parents[3] / "frontmatter" / "settings"
+        self.materials_output_dir = Path(__file__).resolve().parents[2] / "frontmatter" / "materials"
+        self.settings_output_dir = Path(__file__).resolve().parents[2] / "frontmatter" / "settings"
         
         self.materials_output_dir.mkdir(parents=True, exist_ok=True)
         self.settings_output_dir.mkdir(parents=True, exist_ok=True)
@@ -314,6 +314,33 @@ class TrivialFrontmatterExporter:
             else:
                 self.logger.debug(f"No material_challenges found for category: {category}")
         
+        # Override with components if they exist (new generation system saves to components.subtitle, etc.)
+        if 'components' in material_data:
+            components = material_data['components']
+            # Priority order: components > direct fields
+            if 'subtitle' in components:
+                frontmatter['subtitle'] = components['subtitle']
+            if 'description' in components:
+                frontmatter['description'] = components['description']
+            if 'caption' in components:
+                caption = components['caption']
+                cleaned = self._remove_descriptions(caption, preserve_regulatory=False)
+                stripped = self._strip_generation_metadata(cleaned)
+                if isinstance(stripped, dict):
+                    frontmatter['caption'] = {
+                        k: v for k, v in stripped.items()
+                        if k in ['before', 'after']
+                    }
+                else:
+                    frontmatter['caption'] = stripped
+                self.logger.debug(f"Using caption from components")
+            if 'faq' in components:
+                faq = components['faq']
+                cleaned = self._remove_descriptions(faq, preserve_regulatory=False)
+                formatted_faq = self._format_faq_with_topics(cleaned)
+                frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
+                self.logger.debug(f"Using FAQ from components")
+        
         # Export dual-file structure: materials page and settings page
         self._export_materials_page(material_name, frontmatter)
         self._export_settings_page(material_name, frontmatter)
@@ -366,6 +393,15 @@ class TrivialFrontmatterExporter:
         
         with open(output_path, 'w', encoding='utf-8') as f:
             yaml.dump(materials_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+        
+        # Verify what was written
+        if material_name == 'Aluminum':
+            with open(output_path, 'r') as f:
+                content = f.read()
+                for line in content.split('\n')[:10]:
+                    if 'subtitle:' in line:
+                        print(f"✅ [VERIFY] Wrote to file: {line}")
+                        break
         
         self.logger.info(f"✅ Exported materials page: {material_name} → {filename}")
     

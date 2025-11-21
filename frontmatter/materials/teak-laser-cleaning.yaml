@@ -1,195 +1,181 @@
 name: Teak
-category: Wood
+slug: teak
+category: wood
 subcategory: hardwood
-title: Teak Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Teak
-description: Laser cleaning parameters for Teak
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
+  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Teak Laser Cleaning
+subtitle: Basically, restore teak's oily grain using fairly precise gentle laser control.
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+description: Laser cleaning parameters for Teak
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/woods
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Teak
+  href: /materials/wood/hardwood/teak
 images:
   hero:
-    alt: Teak surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Teak surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/teak-laser-cleaning-hero.jpg
   micro:
-    alt: Teak surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
     url: /images/material/teak-laser-cleaning-micro.jpg
-caption:
-  before: Looking closely under a microscope, teak wood's contaminated surface typically
-    reveals irregular pitting and micro-cracks from extended marine exposure, like
-    saltwater corrosion on yacht decking. Fine particulate contaminants—salt crystals
-    and organic residues—fairly cling to fiber bundles, hastening degradation by weakening
-    lignin bonds and fostering fungal hyphae growth. That causes surface erosion,
-    undermining structural integrity in aerospace paneling uses.
-  after: The laser-cleaned teak surface shows a pretty smooth, even finish, with the
-    natural grain restored and free of contaminants. Restoration quality is fairly
-    high, preserving material integrity for marine decking without fiber damage.
-  author: Todd Dunning
-  character_count:
-    after: 225
-    before: 457
-  generated: '2025-10-25T15:27:30.659562Z'
-  generation_method: ai_research
-  word_count:
-    after: 30
-    before: 56
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
     thermalDestruction:
       value: 588.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 600.0
+      min: 226.1
+      max: 641.9
     specificHeat:
       value: 1380.0
       unit: J/kg·K
-      confidence: 95
       source: ai_research
-      min: 800.0
-      max: 2500.0
+      min: 1.311
+      max: 1553.931
     youngsModulus:
       value: 11.17
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 20000.0
+      min: 3.2775
+      max: 11234.8275
     oxidationResistance:
       value: 0.92
       unit: dimensionless (normalized resistance index, 0-1)
-      confidence: 95
       source: ai_research
-      min: 82.0
-      max: 204.0
+      min: 0.095
+      max: 549.145
     laserReflectivity:
       value: 0.12
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 60.0
+      min: 0.01575
+      max: 0.43925
     thermalConductivity:
       value: 0.15
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.04
       max: 0.4
     thermalExpansion:
       value: 3.8e-06
       unit: K^{-1}
-      confidence: 96
       source: ai_research
-      min: 3.0
-      max: 60.0
+      min: 1.0e-06
+      max: 5.8e-05
     density:
       value: 660.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.12
-      max: 1.5
+      min: 0.399
+      max: 955.479
     hardness:
       value: 4760.0
       unit: N
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 5000.0
+      min: 399.0
+      max: 12589.5
     corrosionResistance:
       value: 0.95
       unit: dimensionless (durability index)
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 8.0
+      min: 0.0
+      max: 4.725
     laserAbsorption:
       value: 0.87
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 50.0
+      min: 0.779
+      max: 335999.959
     compressiveStrength:
       value: 54.0
       unit: MPa
-      confidence: 98
       source: ai_research
-      min: 20.0
-      max: 80.0
+      min: 20
+      max: 80
     thermalDiffusivity:
       value: 1.43e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.0001
-      max: 0.4
+      min: 0.0
+      max: 0.0
     flexuralStrength:
       value: 110.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 40.0
-      max: 150.0
+      min: 19.15
+      max: 147.85
     tensileStrength:
       value: 143.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 9.53
+      max: 209.07
     fractureToughness:
       value: 0.42
       unit: MPa·m^{1/2}
-      confidence: 95
       source: ai_research
-      min: 0.33
-      max: 4.4
+      min: 0.259
+      max: 2.041
     porosity:
       value: 0.633
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 12.0
-      max: 65.0
-    percentage: 70.8
+      min: 0.38885
+      max: 0.78815
+    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 29.2
+    percentage: 40.0
     absorptivity:
       value: 0.85
       unit: dimensionless
@@ -232,152 +218,15 @@ materialProperties:
       min: 1
       max: 100
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Teak surface cleaning without charring
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in Teak lignin and contaminants
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning resolution
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    unit: J/cm²
-    value: 2.8
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 12
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete surface cleaning
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning pattern
-    unit: '%'
-    value: 40
-    min: 10
-    max: 90
-  dwellTime:
-    description: Effective dwell time per cleaning spot
-    unit: μs
-    value: 120
-faq:
-- answer: Yes, laser cleaning is fairly safe for teak boat decks using nanosecond
-    pulses at 12 ns duration and 2.8 J/cm² fluence. It ablates grime without exceeding
-    teak's thermal threshold around 200°C. This near-IR 1064 nm approach basically
-    targets lignin selectively, preventing charring or yellowing. Marine forum users
-    typically report pristine results after two 500 mm/s passes at 45 W.
-  question: Is laser cleaning safe for teak wood decks on boats without causing charring
-    or discoloration?
-- answer: For varnish removal on teak furniture, I'd recommend a 1064 nm near-IR laser
-    at 2.8 J/cm² fluence to basically ablate the coating selectively, sparing the
-    dense grain structure. Pretty much pair this with 45 W power and 500 mm/s scan
-    speed over two passes for uniform results without charring the lignin-rich surface.
-  question: What laser parameters are recommended for removing old varnish from teak
-    furniture without damaging the underlying grain?
-  topic_keyword: underlying grain
-  topic_statement: Spares dense grain structure
-- answer: Teak's inherent oils typically volatilize under 1064 nm laser exposure,
-    helping with contaminant removal but risking uneven ablation and residue if they
-    recondense. To optimize results at 2.8 J/cm² fluence, degrease surfaces first—this
-    basically prevents buildup and delivers uniform cleaning without charring the
-    wood.
-  question: How do teak's natural oils impact the effectiveness of laser ablation
-    during surface cleaning?
-  topic_keyword: teak's natural oils
-  topic_statement: Degrease to prevent recondensation
-- answer: Teak wood's oily resins lower its ignition point to about 250°C, which pretty
-    much amps up fire risks in laser cleaning from volatile vapors at 1064 nm. To
-    handle this, basically purge with inert nitrogen gas and cap fluence at 2.8 J/cm²
-    using 45 W power, per safety protocols, avoiding thermal runaway.
-  question: In laser cleaning applications, what are the fire risks associated with
-    teak's high oil content and how to mitigate them?
-- answer: Yeah, fiber lasers do a pretty effective job removing saltwater and mildew
-    from teak's porous grain in outdoor marine settings, using 1064 nm wavelength
-    and 2.8 J/cm² fluence to ablate contaminants without scorching the wood. Their
-    corrosion-resistant enclosures fairly ensure reliability outdoors. Seal the surface
-    after treatment to prevent recontamination.
-  question: Can fiber lasers effectively clean teak surfaces contaminated with saltwater
-    and mildew in outdoor settings?
-  topic_keyword: saltwater and mildew
-  topic_statement: Ablates contaminants without scorching
-- answer: Basically, old-growth teak packs a higher density and richer oil content,
-    so it absorbs the 1064 nm laser pretty intensely, calling for a lower fluence
-    of about 2.8 J/cm² in controlled cleaning to avoid charring while holding scan
-    speeds at 500 mm/s. Plantation teak, less dense yet oilier, cleans faster but
-    needs careful 40% overlap for even contaminant removal without substrate exposure.
-  question: What differences in laser cleaning outcomes are reported for old-growth
-    teak versus plantation teak?
-- answer: Laser cleaning basically outperforms chemical stripping in teak restoration,
-    precisely zapping away grime at 2.8 J/cm² fluence with a 1064 nm wavelength. This
-    method safeguards the wood's warm tones and intricate grain, skipping chemical
-    discoloration altogether. Pretty eco-friendlier too, it ditches hazardous wastes,
-    while marine project woodworkers rave about those crisp, authentic finishes in
-    community case studies.
-  question: How does laser cleaning compare to chemical stripping for preserving teak's
-    natural color and texture in restoration projects?
-  topic_keyword: natural color and texture
-  topic_statement: Safeguards warm tones and grain
-- answer: When laser cleaning teak with 2.8 J/cm² fluence and 45 W power, ablation
-    releases volatile oils and fine dust that fairly pose respiratory risks like sensitization.
-    Basically, in enclosed areas, set up local exhaust ventilation using HEPA filters
-    to trap particulates down to 0.3 μm, aligning with OSHA standards for clean air.
-  question: What fume extraction systems are necessary when laser cleaning teak in
-    enclosed workshops due to its volatile compounds?
-  topic_keyword: volatile compounds
-  topic_statement: Install HEPA local exhaust
-- answer: Typically, near-IR lasers at 1064 nm are the best for teak cleaning, as
-    they align with its lignin absorption to efficiently remove contaminants without
-    deep structural damage—UV options absorb too strongly and risk degrading polymer
-    bonds. Stick to 2.8 J/cm² fluence for pretty safe ablation that avoids charring
-    the wood's surface.
-  question: Are there specific laser wavelengths that minimize damage to teak's lignin
-    structure during surface treatment?
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/woods
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Teak
-  href: /materials/wood/hardwood/teak
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/en/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922827Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922833Z'
+  structure_version: '2.0'

@@ -99,7 +99,7 @@ class APIClient:
         self.model = getattr(self.config, "model", None) or (
             self.config.get("model")
             if hasattr(self.config, "get")
-            else model or "deepseek-chat"
+            else model or "grok-beta"
         )
 
         # Set timeout values - FAIL-FAST: Must be explicitly configured

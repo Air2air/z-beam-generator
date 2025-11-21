@@ -1,194 +1,177 @@
 name: Fir
-category: Wood
+slug: fir
+category: wood
 subcategory: softwood
-title: Fir Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Fir
-description: Laser cleaning parameters for Fir
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Fir Laser Cleaning
+subtitle: Revive Fir's soft grain practically using gentle laser cleaning; this process avoids resin charring.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Fir
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/woods
+- label: Softwood
+  href: /materials/wood/softwood
+- label: Fir
+  href: /materials/wood/softwood/fir
 images:
   hero:
-    alt: Fir surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Fir surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/fir-laser-cleaning-hero.jpg
   micro:
-    alt: Fir surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Fir microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/fir-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the fir wood surface shows heavy contamination from
-    dirt particles and sticky oils that cling tightly, degrading fibers in this process.
-    Rough pits form straightforwardly, worsening texture and weakening natural protection.
-  after: The ultrafast laser cleans the fir wood surface straightforwardly, removing
-    contaminants thoroughly and restoring its natural appearance. This process leaves
-    the surface smooth and fresh, with grain patterns visible clearly and color even.
-    Restoration quality remains high, as material integrity stays intact—no fibers
-    damaged, so strength is preserved well. That method makes the wood practical for
-    general applications, clean and ready for use.
-  author: Ikmanda Roswati
-  character_count:
-    after: 482
-    before: 215
-  generated: '2025-10-25T14:19:57.638999Z'
-  generation_method: ai_research
-  word_count:
-    after: 63
-    before: 31
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness: 3.2
     thermalDestruction:
       value: 573.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 600.0
+      min: 226.1
+      max: 641.9
     density:
       value: 450.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.12
-      max: 1.5
+      min: 0.399
+      max: 955.479
     oxidationResistance:
       value: 20.7
       unit: '%'
-      confidence: 95
       source: ai_research
-      min: 82.0
-      max: 204.0
+      min: 0.095
+      max: 549.145
     laserReflectivity:
       value: 0.065
       unit: dimensionless (fraction)
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 60.0
+      min: 0.01575
+      max: 0.43925
     thermalExpansion:
       value: 5.1e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 60.0
+      min: 1.0e-06
+      max: 5.8e-05
     thermalConductivity:
       value: 0.112
       unit: W/(m·K)
-      confidence: 95
       source: ai_research
       min: 0.04
       max: 0.4
     youngsModulus:
       value: 13.4
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 20000.0
+      min: 3.2775
+      max: 11234.8275
     hardness:
       value: 660.0
       unit: lbf
-      confidence: 100
       source: ai_research
-      min: 1.0
-      max: 5000.0
+      min: 399.0
+      max: 12589.5
     specificHeat:
       value: 1380.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 800.0
-      max: 2500.0
+      min: 1.311
+      max: 1553.931
     laserAbsorption:
       value: 0.88
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 50.0
+      min: 0.779
+      max: 335999.959
     compressiveStrength:
       value: 44.8
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 80.0
+      min: 20
+      max: 80
     tensileStrength:
       value: 85.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 9.53
+      max: 209.07
     thermalDiffusivity:
       value: 1.3e-07
       unit: m^2/s
-      confidence: 95
       source: ai_research
-      min: 0.0001
-      max: 0.4
+      min: 0.0
+      max: 0.0
     flexuralStrength:
       value: 85.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 40.0
-      max: 150.0
+      min: 19.15
+      max: 147.85
     corrosionResistance:
       value: 0.65
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 8.0
+      min: 0.0
+      max: 4.725
     porosity:
       value: 0.7
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 12.0
-      max: 65.0
+      min: 0.38885
+      max: 0.78815
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.85
       unit: dimensionless
@@ -231,148 +214,16 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Fir surface cleaning without charring
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in Fir wood contaminants
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Fir wood grain
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage on Fir surfaces
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal from Fir wood
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning of Fir surfaces
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal from
-      Fir
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Optimal dwell time per cleaning spot on Fir wood surface
-    unit: μs
-    value: 100
-faq:
-- answer: As a laser cleaning expert from Indonesia, where we deeply value our wooden
-    heritage, I recommend a practical 1064 nm Nd:YAG laser with 200-300 mJ pulse energy
-    and 10-20 ns duration. This process gently clears soot or biological growth from
-    Fir wood, preventing ablation or yellowing by limiting fluence to under 1 J/cm².
-  question: What are the optimal laser settings (wavelength, power, pulse duration)
-    for cleaning soot or biological growth from Fir wood without causing ablation
-    or yellowing?
-  topic_keyword: ablation or yellowing
-  topic_statement: Low fluence avoids lignin carbonization
-- answer: Fir wood's varying resin levels require precise fluence management at roughly
-    1.2 J/cm². Those resin pockets vaporize faster than nearby wood fibers, risking
-    irregular finishes. In this process, begin with a practical low-power scan at
-    500 mm/s to pinpoint the issues, followed by targeted passes that methodically
-    prevent resin from seeping into cleared zones.
-  question: How does the variable resin content in Fir wood affect the laser cleaning
-    process and how do we adjust for it?
-  topic_keyword: variable resin content
-  topic_statement: Requires careful fluence control
-- answer: In this process, a fiber laser removes lead paint from Fir clapboard efficiently
-    with ~1.2 J/cm² fluence and 100 µm spot size. Precise parameter control remains
-    straightforward to prevent etching the softwood grain, while a HEPA fume extractor
-    is essential for capturing hazardous lead particulates.
-  question: Can a fiber laser effectively remove old, lead-based paint from Fir clapboard
-    without damaging the softwood surface underneath?
-  topic_keyword: softwood surface
-  topic_statement: Precise control avoids etching grain
-- answer: Fir wood hits its thermal degradation threshold at around 150-200°C, causing
-    permanent discoloration and charring. For practical monitoring, efficiently apply
-    IR thermography to maintain surface temperatures below this range, particularly
-    at 1.2 J/cm² fluence and 100 µm spot size, preserving structural integrity.
-  question: What is the maximum safe surface temperature for Fir during laser cleaning
-    to prevent degradation of its structural or aesthetic properties?
-  topic_keyword: maximum safe surface temperature
-  topic_statement: Threshold 150-200°C prevents degradation
-- answer: For cleaning Fir at 1.2 J/cm², employ a HEPA/ULPA extraction system efficiently
-    to capture explosive wood dust and lead fumes. Operators require a P100 respirator
-    in this process, given the hazardous pyrolysis by-products from the wood substrate.
-  question: What specific safety precautions and fume extraction systems are required
-    when laser cleaning Fir, especially when removing paints or contaminants?
-  topic_keyword: fume extraction systems
-  topic_statement: HEPA/ULPA captures explosive wood dust
-- answer: Assessing success in a straightforward manner involves preserving the original
-    patina. In this process, we apply colorimetry to maintain ΔE below 3, while microscopy
-    confirms the 100 µm spot size avoids micro-charting. Minor, uniform lightening
-    is acceptable, but carbonization-induced darkening indicates failure.
-  question: How do you evaluate the success of laser cleaning on Fir? What are the
-    acceptable levels of micro-burning or changes to the original patina?
-  topic_keyword: original patina
-  topic_statement: Maintain patina with ΔE<3
-- answer: Laser cleaning provides a straightforward decontamination for Fir wood,
-    employing 1064 nm wavelength light absorbed by mold to trigger rapid thermal ablation.
-    At 1.2 J/cm² fluence and 100 W power, this process eradicates surface spores without
-    carbonizing the substrate. Still, deeply embedded mycelial networks might linger,
-    necessitating multi-pass treatment.
-  question: Is laser cleaning a viable method for decontaminating Fir wood affected
-    by mold or fungi without using chemicals?
-  topic_keyword: mold or fungi
-  topic_statement: Requires multi-pass treatment
-- answer: Laser-cleaned Fir wood shows a lighter tone after removing darkened patina,
-    though it may darken slightly from carbonization if fluence exceeds limits. Straightforwardly,
-    set fluence to 1.2 J/cm² with 500 mm/s scan speed and 50% beam overlap. This process
-    achieves uniform contaminant removal, preserving the natural color for even results.
-  question: Why does laser-cleaned Fir sometimes appear lighter or darker than the
-    surrounding untreated wood, and how can this be minimized?
-  topic_keyword: appear lighter or darker
-  topic_statement: Maintain fluence for color preservation
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/woods
-- label: Softwood
-  href: /materials/wood/softwood
-- label: Fir
-  href: /materials/wood/softwood/fir
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921921Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921927Z'
+  structure_version: '2.0'

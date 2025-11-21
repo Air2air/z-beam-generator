@@ -1,193 +1,176 @@
 name: Fiberglass
-category: Composite
+slug: fiberglass
+category: composite
 subcategory: fiber-reinforced
-title: Fiberglass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Fiberglass
-description: Laser cleaning parameters for Fiberglass
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
   country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
   sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Fiberglass Laser Cleaning
+subtitle: Thus, precision lasers specifically restore delicate fiberglass composite surfaces safely.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+description: Laser cleaning parameters for Fiberglass
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Composite
+  href: /materials/composites
+- label: Fiber Reinforced
+  href: /materials/composite/fiber-reinforced
+- label: Fiberglass
+  href: /materials/composite/fiber-reinforced/fiberglass
 images:
   hero:
-    alt: Fiberglass surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/fiberglass-laser-cleaning-hero.jpg
   micro:
-    alt: Fiberglass surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Fiberglass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/fiberglass-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, the fiberglass surface notably displays contaminants,
-    such as fine dust particles and oily residues embedded among the fibers. This
-    accumulation thus causes surface degradation, featuring visible pitting and minor
-    fiber fraying.
-  after: After laser cleaning, the fiberglass surface notably appears smooth and evenly
-    restored to its original luster. No fiber damage or delamination is evident, thus
-    preserving the composite's integrity effectively while retaining full strength
-    for ongoing applications.
-  author: Yi-Chun Lin
-  character_count:
-    after: 240
-    before: 219
-  generated: '2025-10-25T14:19:14.036078Z'
-  generation_method: ai_research
-  word_count:
-    after: 34
-    before: 31
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 1000000000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 100000000000000.0
+      min: 0.0
+      max: 105000000000000.0
     fractureToughness: 15.0
     thermalDestruction:
       value: 673.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 900.0
+      min: 205.6
+      max: 1952.4
     density:
       value: 1800.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 8.0
+      min: 0.9975
+      max: 2519.9475
     oxidationResistance:
       value: 0.0001
       unit: mg/cm²/year
-      confidence: 95
       source: ai_research
-      min: 80.0
-      max: 1650.0
+      min: 0.0
+      max: 1668.45
     laserReflectivity:
       value: 0.04
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 80.0
+      min: 0.0043
+      max: 0.9217
     thermalExpansion:
       value: 1.5e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: -1.0
-      max: 250.0
+      min: -1
+      max: 250
     thermalConductivity:
       value: 0.3
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.03
-      max: 400.0
+      max: 400
     youngsModulus:
       value: 25.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 3000.0
+      min: 0.00475
+      max: 144899999999.99976
     hardness:
       value: 85.0
       unit: Shore D
-      confidence: 95
       source: ai_research
       min: 5.0
-      max: 120.0
+      max: 120
     specificHeat:
       value: 920.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 500.0
+      min: 500
       max: 2500.0
     laserAbsorption:
       value: 0.12
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 0.05
-      max: 200.0
+      min: 0.1425
+      max: 524999.9925
     compressiveStrength:
       value: 240.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 1000.0
+      min: 6.55025
+      max: 1259.65525
     tensileStrength:
       value: 620.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 6000.0
+      min: 16.15
+      max: 1626.65
     thermalDiffusivity:
       value: 1.8e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.08
-      max: 180.0
+      min: 0.0
+      max: 7.6e-05
     flexuralStrength:
       value: 200.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 4.56
+      max: 1196.76
     corrosionResistance:
       value: 0.95
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 9.0
+      min: 0.0
+      max: 4725.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.85
       unit: dimensionless
@@ -230,152 +213,17 @@ materialProperties:
       min: 10
       max: 500
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Fiberglass surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength for optimal Fiberglass absorption and minimal
-      transmission
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Optimal spot diameter for precision cleaning resolution
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: High repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Scanning speed for efficient area coverage without thermal buildup
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Effective dwell time per spot for contaminant ablation
-    unit: μs
-    value: 100
-faq:
-- answer: Laser cleaning is strongly discouraged for fiberglass composites, particularly
-    since the polymer resin absorbs near-infrared energy at 1064 nm so readily. This
-    leads to thermal degradation. Notably, even at a conservative fluence of 5 J/cm²,
-    the resin matrix can burn and vaporize, thus catastrophically compromising the
-    material's structural integrity.
-  question: Can you safely use a laser cleaner to remove paint or contamination from
-    a fiberglass surface?
-  topic_keyword: fiberglass surface
-  topic_statement: Polymer resin thermal degradation
-- answer: The 1064 nm laser energy gets strongly absorbed by the polymer resin, particularly
-    triggering rapid thermal decomposition and ablation at fluences around 5 J/cm².
-    This leaves exposed, frayed glass fibers and a charred surface behind, thus critically
-    undermining the material's structural integrity. The composite simply isn't suited
-    for this cleaning method.
-  question: What happens to fiberglass when it's hit with a laser during cleaning?
-  topic_keyword: hit with a laser
-  topic_statement: Causes thermal decomposition ablation
-- answer: UV lasers at 5 J/cm² particularly minimize thermal effects, yet fiberglass
-    proves highly vulnerable. Even under optimized ns-pulse settings, the resin matrix
-    remains prone to degradation. Thus, most industrial systems face material damage
-    risks, deeming this application largely unsuitable.
-  question: Are there any specific laser types or settings (wavelength, power) that
-    make cleaning fiberglass less destructive?
-  topic_keyword: less destructive
-  topic_statement: resin matrix degrades
-- answer: Particularly for fiberglass restoration, gentle mechanical abrasion using
-    plastic media or chemical stripping is preferred. These approaches notably avoid
-    the thermal risks of laser processing, which requires precise control below 5
-    J/cm² to prevent resin degradation in the composite matrix.
-  question: What is the best alternative to laser cleaning for preparing or restoring
-    fiberglass surfaces?
-  topic_keyword: restoring fiberglass surfaces
-  topic_statement: Prevents resin degradation
-- answer: Examine for visible charring, like brown or black marks, alongside a pitted
-    and bubbled surface texture. Specifically, the 1064 nm wavelength ablates the
-    resin matrix, exposing brittle glass fibers. Thus, it leads to substantial loss
-    of surface gloss and structural integrity.
-  question: If a laser accidentally contacts fiberglass, what kind of damage should
-    I look for?
-  topic_keyword: contacts fiberglass
-  topic_statement: Ablates resin exposing fibers
-- answer: Unlike metal dust, laser cleaning fiberglass at 5 J/cm² particularly generates
-    toxic resin fumes and aerosolizes sharp sub-50μm glass fibers. Notably, these
-    pose a severe inhalation risk, thus often requiring HEPA filtration beyond standard
-    PPE.
-  question: What are the specific health hazards of laser cleaning fiberglass compared
-    to cleaning metal?
-- answer: Notably, unlike steel, fiberglass's polymer resin strongly absorbs 1064
-    nm laser energy. This indicates the substrate itself becomes vulnerable at fluences
-    above ~5 J/cm², beyond just surface contaminants. Thus, precise parameter control
-    remains essential to prevent thermal damage to the composite material.
-  question: Why is fiberglass so problematic for laser cleaning compared to materials
-    like rust or paint on steel?
-  topic_keyword: fiberglass so problematic
-  topic_statement: Polymer resin absorbs 1064 nm
-- answer: Even with ultra-thin mold release, the risk remains extreme. Specifically,
-    the fluence needed for contaminant removal—typically over 5 J/cm²—will almost
-    certainly surpass the damage threshold of the sensitive polymer matrix, thus causing
-    irreversible degradation to the underlying resin.
-  question: Is there any scenario where laser treatment of fiberglass is acceptable,
-    such as for very light surface mold release?
-- answer: Epoxy and polyester resins degrade at varying temperatures, yet notably,
-    both sustain damage from the ~5 J/cm² fluence essential for cleaning. Weave patterns
-    play no role; specifically, the 1064 nm laser energy absorbs into the resin matrix
-    binding the glass fibers, thus undermining the composite's structural integrity
-    irrespective of its design.
-  question: How does the weave and resin type (e.g., epoxy vs. polyester) affect its
-    reaction to a laser?
-  topic_keyword: weave and resin type
-  topic_statement: Compromises structural integrity regardless
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composites
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Fiberglass
-  href: /materials/composite/fiber-reinforced/fiberglass
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921909Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921915Z'
+  structure_version: '2.0'

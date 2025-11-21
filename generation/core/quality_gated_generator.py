@@ -122,7 +122,12 @@ class QualityGatedGenerator:
         from learning.humanness_optimizer import HumannessOptimizer
         self.humanness_optimizer = HumannessOptimizer()
         
+        # Initialize ForbiddenPhraseValidator for pre-flight checks
+        from generation.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
+        self.phrase_validator = ForbiddenPhraseValidator()
+        
         logger.info(f"QualityGatedGenerator initialized (max_attempts={self.max_attempts}, threshold={self.quality_threshold})")
+
     
     def generate(
         self,
@@ -176,11 +181,18 @@ class QualityGatedGenerator:
             
             # Generate humanness instructions (Universal Humanness Layer)
             # Strictness increases with each attempt (1-5)
+            logger.info(f"\n🧠 Generating humanness instructions (strictness level {attempt}/5)...")
+            if previous_ai_tendencies:
+                logger.info(f"   📋 Previous AI tendencies detected: {', '.join(previous_ai_tendencies)}")
+            
             humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
                 component_type=component_type,
                 strictness_level=attempt,  # 1-5 based on attempt number
                 previous_ai_tendencies=previous_ai_tendencies
             )
+            
+            logger.info(f"   ✅ Humanness layer generated ({len(humanness_instructions)} chars)")
+            logger.info(f"   📝 Preview: {humanness_instructions[:200]}...")
             
             # Generate content with humanness layer (does NOT save to YAML yet)
             try:
@@ -207,7 +219,56 @@ class QualityGatedGenerator:
                     error_message=f"Generation error: {e}"
                 )
             
-            # Evaluate BEFORE save
+            # PRE-FLIGHT: Check for forbidden phrases BEFORE expensive evaluations
+            logger.info("\n🔍 Pre-flight: Checking for forbidden phrases...")
+            is_valid, violations = self.phrase_validator.validate(content)
+            
+            if not is_valid:
+                logger.warning(f"   ❌ FORBIDDEN PHRASES DETECTED - Regenerating immediately")
+                for phrase in violations:
+                    logger.warning(f"      • \"{phrase}\"")
+                
+                rejection_reasons.append(f"Forbidden phrases: {', '.join(violations)}")
+                
+                # Skip expensive evaluation, go straight to retry with adjusted params
+                if attempt >= self.max_attempts:
+                    logger.error(f"\n❌ MAX ATTEMPTS REACHED ({self.max_attempts})")
+                    logger.error(f"   Content still contains forbidden phrases")
+                    logger.error(f"   🚫 Content NOT saved to Materials.yaml")
+                    
+                    return QualityGatedResult(
+                        success=False,
+                        content=content,
+                        attempts=attempt,
+                        final_score=None,
+                        evaluation_history=evaluation_history,
+                        parameter_history=parameter_history,
+                        rejection_reasons=rejection_reasons,
+                        error_message=f"Failed after {self.max_attempts} attempts - forbidden phrases persist"
+                    )
+                
+                # Adjust parameters and retry immediately
+                logger.info(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
+                previous_ai_tendencies = violations  # Use violations as AI tendencies
+                logger.info(f"   📋 Forbidden phrases to avoid: {', '.join(violations)}")
+                
+                current_params = self._adjust_parameters(
+                    current_params,
+                    violations,  # Treat as AI tendencies
+                    0.0,  # Low score triggers aggressive adjustment
+                    winston_passed=False  # Trigger Winston-specific adjustments
+                )
+                parameter_history.append(current_params.copy())
+                
+                logger.info(f"\n🔄 Parameter changes for next attempt:")
+                for param, value in current_params.items():
+                    logger.info(f"   • {param}: {value}")
+                
+                continue  # Skip to next attempt WITHOUT running expensive evaluations
+            
+            logger.info("   ✅ No forbidden phrases detected")
+            
+            # Evaluate BEFORE save (only if pre-flight passed)
             logger.info("\n🔍 Evaluating quality BEFORE save...")
             try:
                 # Convert content to string for evaluation
@@ -247,7 +308,9 @@ class QualityGatedGenerator:
                 # Challenge: Current content generation produces 99-100% AI scores
                 # Historical passing samples (12.2%, 24.5% AI) show conversational tone helps
                 # System retries with adjusted parameters when Winston fails
-                winston_passed = self._check_winston_detection(content, material_name, component_type)
+                winston_result = self._check_winston_detection(content, material_name, component_type)
+                winston_passed = winston_result['passed']
+                winston_score = winston_result.get('human_score', 0.0)
                 
                 if realism_score >= self.quality_threshold and not evaluation.ai_tendencies and winston_passed:
                     logger.info(f"\n✅ QUALITY GATE PASSED (≥{self.quality_threshold}/10)")
@@ -272,8 +335,8 @@ class QualityGatedGenerator:
                     )
                 
                 else:
-                    # Quality gate failed
-                    logger.warning(f"\n⚠️  QUALITY GATE FAILED")
+                    # Quality gate failed - RETRY with adjusted parameters
+                    logger.warning(f"\n⚠️  QUALITY GATE FAILED - Will retry with adjusted parameters")
                     
                     if realism_score < self.quality_threshold:
                         reason = f"Realism score too low: {realism_score:.1f}/10 < {self.quality_threshold}/10"
@@ -286,7 +349,7 @@ class QualityGatedGenerator:
                         rejection_reasons.append(reason)
                     
                     if not winston_passed:
-                        reason = "Winston AI detection failed (content flagged as AI-generated)"
+                        reason = f"Winston AI detection failed (human score: {winston_score:.1%})"
                         logger.warning(f"   • {reason}")
                         rejection_reasons.append(reason)
                     
@@ -312,6 +375,8 @@ class QualityGatedGenerator:
                     
                     # Update previous_ai_tendencies for next humanness layer
                     previous_ai_tendencies = evaluation.ai_tendencies or []
+                    if previous_ai_tendencies:
+                        logger.info(f"   📋 AI tendencies to avoid next time: {', '.join(previous_ai_tendencies)}")
                     
                     current_params = self._adjust_parameters(
                         current_params,
@@ -320,7 +385,12 @@ class QualityGatedGenerator:
                         winston_passed=winston_passed
                     )
                     parameter_history.append(current_params.copy())
-                    logger.info(f"   ✅ Parameters adjusted, retrying...")
+                    logger.info(f"   ✅ Parameters adjusted for retry")
+                    
+                    # Log what changed
+                    logger.info(f"\n🔄 Parameter changes for next attempt:")
+                    for param, value in current_params.items():
+                        logger.info(f"   • {param}: {value}")
                 
             except Exception as e:
                 logger.error(f"❌ Evaluation failed: {e}")
@@ -555,17 +625,22 @@ class QualityGatedGenerator:
         
         return adjusted_params
     
-    def _check_winston_detection(self, content: str, material_name: str, component_type: str) -> bool:
+    def _check_winston_detection(self, content: str, material_name: str, component_type: str) -> Dict[str, Any]:
         """
         Run Winston AI detection during quality gate (before save).
         
         Returns:
-            bool: True if Winston passes or is unavailable, False if Winston fails threshold
+            dict: {
+                'passed': bool,
+                'human_score': float,
+                'ai_score': float,
+                'message': str
+            }
         """
         # Winston is optional - if not configured, pass by default
         if not self.winston_client:
             logger.info("   ⚠️  Winston API not configured - skipping AI detection")
-            return True
+            return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Winston not configured'}
         
         try:
             from postprocessing.detection.winston_integration import WinstonIntegration
@@ -613,26 +688,34 @@ class QualityGatedGenerator:
             logger.info(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
             logger.info(f"   👤 Human Score: {human_score*100:.1f}%")
             
-            if ai_score <= ai_threshold:
+            passed = ai_score <= ai_threshold
+            
+            if passed:
                 logger.info("   ✅ Winston check PASSED")
-                return True
             else:
-                logger.warning("   ❌ Winston check FAILED - will retry generation")
-                return False
+                logger.warning("   ❌ Winston check FAILED - will retry with adjusted parameters")
+            
+            return {
+                'passed': passed,
+                'human_score': human_score,
+                'ai_score': ai_score,
+                'threshold': ai_threshold,
+                'message': f"{'Passed' if passed else 'Failed'} Winston detection"
+            }
                 
         except Exception as e:
             # Winston optional for short content
             error_msg = str(e)
             if 'Text too short' in error_msg:
                 logger.info(f"   ⚠️  Winston skipped: {e}")
-                return True  # Don't fail on short content
+                return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Text too short for Winston'}
             elif 'not configured' in error_msg:
                 logger.info(f"   ⚠️  Winston not configured: {e}")
-                return True  # Don't fail if Winston unavailable
+                return {'passed': True, 'human_score': 1.0, 'ai_score': 0.0, 'message': 'Winston not configured'}
             else:
-                # Other errors are failures
+                # Other errors - still retry (treat as Winston fail for safety)
                 logger.error(f"   ❌ Winston detection error: {e}")
-                return False
+                return {'passed': False, 'human_score': 0.0, 'ai_score': 1.0, 'message': f'Winston error: {e}'}
     
     def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
         """Save content to Materials.yaml (atomic write)"""

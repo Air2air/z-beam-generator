@@ -4,8 +4,8 @@ category: composite
 subcategory: fiber-reinforced
 content_type: unified_settings
 schema_version: 4.0.0
-datePublished: '2025-11-12T21:10:30-08:00'
-dateModified: '2025-11-02T11:19:28-08:00'
+datePublished: null
+dateModified: null
 author:
   id: 2
   name: Alessandro Moretti
@@ -60,48 +60,30 @@ machineSettings:
   powerRange:
     unit: W
     value: 45
-    min: 1.0
-    max: 120
   wavelength:
     unit: nm
     value: 1064
-    min: 355
-    max: 10640
   spotSize:
     unit: μm
     value: 80
-    min: 0.1
-    max: 500
   repetitionRate:
     unit: kHz
     value: 50
-    min: 1
-    max: 200
   energyDensity:
     unit: J/cm²
     value: 4.5
-    min: 0.1
-    max: 20.0
   pulseWidth:
     unit: ns
     value: 15
-    min: 0.1
-    max: 1000
   scanSpeed:
     unit: mm/s
     value: 500
-    min: 10
-    max: 5000
   passCount:
     unit: passes
     value: 2
-    min: 1
-    max: 10
   overlapRatio:
     unit: '%'
     value: 40
-    min: 10
-    max: 90
 material_challenges:
   thermal_management:
   - challenge: Matrix degradation and delamination

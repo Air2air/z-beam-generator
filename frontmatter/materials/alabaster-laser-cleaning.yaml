@@ -1,198 +1,180 @@
 name: Alabaster
-category: Stone
+slug: alabaster
+category: stone
 subcategory: sedimentary
-title: Alabaster Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Alabaster
-description: Laser cleaning parameters for Alabaster
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 2
   name: Alessandro Moretti
   country: Italy
+  country_display: Italy
   title: Ph.D.
   sex: m
+  jobTitle: Materials Engineer
   expertise:
   - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+title: Alabaster Laser Cleaning
+subtitle: A low-porosity stone with exceptional thermal stability for precise laser cleaning in art conservation
+subtitle_metadata: {}
+description: Laser cleaning parameters for Alabaster
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stones
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Alabaster
+  href: /materials/stone/sedimentary/alabaster
 images:
   hero:
-    alt: Alabaster surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/alabaster-laser-cleaning-hero.jpg
   micro:
-    alt: Alabaster surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/alabaster-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopic examination before laser cleaning, the alabaster surface
-    exhibits a dense layer of fine carbonaceous soot and siliceous particulates, essential
-    to provoking severe degradation via irregular pitting, microcracks, and localized
-    delamination. These embedded impurities distinctly foster profound discoloration
-    and erosion in the gypsum matrix, thus eroding structural integrity at grain interfaces
-    with precise impact.
-  after: Microscopic examination of the alabaster surface post-laser cleaning unveils
-    a notable high-fidelity restoration, featuring smooth, contaminant-free topography
-    that safeguards gypsum crystallite morphology with negligible thermal effects.
-    This material exhibits enhanced clarity, uniform reflectance, and distinct microstructural
-    integrity, affirming effective conservation without subsurface damage through
-    precise intervention.
-  generated: '2025-10-29T15:24:23.205559Z'
-  word_count_before: 48
-  word_count_after: 41
-  total_words: 89
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.22
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 5.0
+      min: 0.133
+      max: 2.047
     thermalDestruction:
       value: 423.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2300.0
     density:
       value: 2.32
       unit: g/cm³
-      confidence: 100
       source: ai_research
-      min: 1.5
-      max: 6.0
+      min: 2.204
+      max: 3044.884
     oxidationResistance:
       value: 0.98
       unit: dimensionless (normalized scale 0-1)
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 870.0
+      min: 9.5e-05
+      max: 1546.649995
     laserReflectivity:
       value: 0.42
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 80.0
+      min: 0.0252
+      max: 0.4388
     thermalExpansion:
       value: 1.4e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 30.0
+      min: 6.0e-06
+      max: 11.97
     thermalConductivity:
       value: 0.86
       unit: W/(m·K)
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 8.0
+      max: 8
     youngsModulus:
       value: 12.5
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 100.0
+      min: 9.785
+      max: 78749999999.485
     hardness:
       value: 2.0
       unit: Mohs
-      confidence: 100
       source: ai_research
-      min: 1.0
-      max: 7.0
+      min: 0.7
+      max: 7.3
     specificHeat:
       value: 1090.0
       unit: J/kg·K
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1200.0
+      min: 400
+      max: 1200
     laserAbsorption:
       value: 2500.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 100.0
+      min: 0.057
+      max: 1259999.997
     compressiveStrength:
       value: 15.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 500.0
+      min: 2.1
+      max: 219.9
     tensileStrength:
       value: 1.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 25.0
+      min: 1.35
+      max: 15.65
     thermalDiffusivity:
       value: 1.82e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.2
-      max: 2.5
+      min: 0.0
+      max: 2.0e-06
     flexuralStrength:
       value: 3.45
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 50.0
+      min: 2.24
+      max: 36.56
     corrosionResistance:
       value: 0.4
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 9.0
+      min: 6.6e-05
+      max: 20.999997
     porosity:
       value: 2.1
       unit: '%'
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 25.0
+      min: 0.0
+      max: 19.425
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.15
       unit: dimensionless
@@ -235,121 +217,16 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Alabaster surface cleaning without thermal
-      damage
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk material damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter providing sufficient energy density for cleaning
-      with good resolution
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding
-      thermal accumulation
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Energy density threshold for effective contaminant removal without
-      damaging Alabaster substrate
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Short pulse duration for efficient contaminant removal with minimal
-      heat diffusion
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- question: How does laser cleaning safely remove dirt from alabaster sculptures?
-  answer: Laser cleaning employs precise, non-contact ablation to vaporize surface
-    contaminants, safeguarding the essential soft alabaster substrate from damage
-    while preserving its delicate texture and notable translucency in just a few sessions.
-  topic_keyword: safely remove dirt
-  topic_statement: Precise non-contact ablation
-- question: What makes alabaster ideal for restoration using laser technology?
-  answer: Alabaster's essential softness, paired with its low thermal conductivity,
-    proves notable for laser use, which delicately clears grime while dodging the
-    fracture hazards of mechanical techniques.
-  topic_keyword: ideal for restoration
-  topic_statement: Softness and low conductivity
-- question: Why is alabaster prone to staining and how can laser cleaning help?
-  answer: Due to its porous structure, alabaster readily absorbs oils and pollutants,
-    resulting in notable discoloration. Laser cleaning, an essential method, precisely
-    targets and removes these stains at the molecular level, without chemicals that
-    could heighten porosity.
-  topic_keyword: prone to staining
-  topic_statement: Removes stains without chemicals
-- question: Can laser cleaning restore the translucency of aged alabaster?
-  answer: Indeed, laser cleaning precisely eliminates surface buildup and oxidation
-    layers, thereby restoring alabaster's essential light-diffusing qualities. This
-    distinct method boosts its visual charm without modifying the material's core
-    makeup.
-  topic_keyword: restore the translucency
-  topic_statement: Revives natural translucency
-- question: Is laser cleaning suitable for fragile alabaster artifacts?
-  answer: Absolutely; its non-abrasive quality is essential for preventing chipping
-    or further fragility issues, which are notable in traditional cleaning, rendering
-    it ideal for museum-grade restorations of delicate pieces.
-  topic_keyword: fragile alabaster artifacts
-  topic_statement: Non-abrasive prevents chipping
-- question: How to prevent water damage in alabaster after laser cleaning?
-  answer: After cleaning, it's essential to apply a breathable sealant for protection
-    against moisture uptake, given alabaster's notable vulnerability to dissolution;
-    routine laser maintenance can tackle any subsequent soiling before deep penetration.
-  topic_keyword: prevent water damage
-  topic_statement: Apply breathable sealant
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stones
-- label: Sedimentary
-  href: /materials/stone/sedimentary
-- label: Alabaster
-  href: /materials/stone/sedimentary/alabaster
-_metadata:
-  voice:
-    author_name: Alessandro Moretti
-    author_country: Italy
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921556Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921587Z'
+  structure_version: '2.0'

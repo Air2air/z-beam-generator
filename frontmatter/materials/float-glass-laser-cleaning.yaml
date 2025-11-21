@@ -1,207 +1,188 @@
 name: Float Glass
-category: Glass
+slug: float-glass
+category: glass
 subcategory: soda-lime
-title: Float Glass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Float Glass
-description: Laser cleaning parameters for Float Glass
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Float Glass Laser Cleaning
+subtitle: This process ensures precision laser cleaning maintains float glass flatness straightforwardly while preventing distortion efficiently.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Float Glass
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Glass
+  href: /materials/glasss
+- label: Soda Lime
+  href: /materials/glass/soda-lime
+- label: Float Glass
+  href: /materials/glass/soda-lime/float-glass
 images:
   hero:
-    alt: Float Glass surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/float-glass-laser-cleaning-hero.jpg
   micro:
-    alt: Float Glass surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Float Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/float-glass-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the float glass surface displays straightforward contamination
-    from fine dust particles and oily residues that adhere and spread unevenly. These
-    irregular contaminant shapes, through this process, lead to tiny pits and scratches,
-    roughening the texture and promoting light scattering.
-  after: After ultrafast laser cleaning, the float glass surface turns very smooth
-    and pristine. This process removes contaminants thoroughly, restoring original
-    clarity without scratches. Material integrity stays fully preserved efficiently,
-    so no structural damage happens. It delivers high restoration quality for practical
-    everyday glass uses.
-  author: Ikmanda Roswati
-  character_count:
-    after: 341
-    before: 285
-  generated: '2025-10-25T14:20:44.846170Z'
-  generation_method: ai_research
-  word_count:
-    after: 46
-    before: 39
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 72.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 100000000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 10000000000.0
-      max: 1000000000000000.0
+      min: 9500000000.0
+      max: 1.04999995e+16
     fractureToughness:
       value: 0.75
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 2.0
+      min: 0.5575
+      max: 2.5925
     thermalDestruction:
       value: 719.0
       unit: °C
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 2300.0
+      min: 637.7
+      max: 2426.3
     density:
       value: 2500.0
       unit: kg/m³
-      confidence: 100
       source: ai_research
-      min: 1.2
-      max: 7.6
+      min: 2.09285
+      max: 2624.88985
     oxidationResistance:
       value: 1.0
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1700.0
+      min: 0.0
+      max: 2176.65
     laserReflectivity:
       value: 0.04
       unit: dimensionless (fraction)
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 92.0
+      min: 0.03192
+      max: 3.79932
     thermalExpansion:
       value: 9.0e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 15.0
+      min: 1.0e-06
+      max: 9.66
     thermalConductivity:
       value: 1.0
       unit: W/m·K
-      confidence: 95
       source: ai_research
-      min: 0.7
-      max: 30.0
+      min: 0.7695
+      max: 36.7095
     youngsModulus:
       value: 70.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 400.0
+      min: 60.8
+      max: 60899999996.8
     hardness:
       value: 5.5
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 3.5
-      max: 9.5
+      min: 3.99
+      max: 2309.79
     specificHeat:
       value: 837.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 120.0
-      max: 900.0
+      min: 120
+      max: 900
     laserAbsorption:
       value: 10.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 10.0
+      min: 0.01425
+      max: 73499.99925
     compressiveStrength:
       value: 1000.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 500.0
-      max: 2000.0
+      min: 619.5
+      max: 2170.5
     tensileStrength:
       value: 40.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 30.0
-      max: 2000.0
+      min: 7.0
+      max: 733.0
     thermalDiffusivity:
       value: 4.7e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.01
-      max: 15.0
+      min: 0.0
+      max: 1.0e-05
     flexuralStrength:
       value: 50.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 750.0
+      min: 10.0
+      max: 780.0
     corrosionResistance:
       value: 0.92
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 9.0
-      max: 10.0
+      min: 4.8e-05
+      max: 1.574998
     ablationThreshold:
       value: 4.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 6.0
+      min: 0.635
+      max: 13.065
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 28.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.05
       unit: dimensionless
@@ -244,162 +225,16 @@ materialProperties:
       min: 0.001
       max: 1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Float Glass surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength optimized for Float Glass absorption and minimal
-      subsurface damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal below glass damage
-      threshold
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal without
-      glass damage
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Effective dwell time per spot for contaminant ablation
-    unit: μs
-    value: 100
-faq:
-- answer: From my work as a laser cleaning expert in Indonesia, I suggest a straightforward
-    setup with a Q-switched Nd:YAG laser at 1064 nm, featuring pulse durations of
-    5-20 ns, fluences under 0.5 J/cm², and scanning speeds above 100 mm/s. This process,
-    validated in local projects, reliably avoids micro-fractures and thermal stress
-    on float glass.
-  question: What laser parameters are safe for cleaning float glass without causing
-    micro-fractures or thermal stress?
-- answer: For float glass, a practical approach is to keep fluence below 2.5 J/cm²
-    with nanosecond pulses at 1064 nm. This process ablates calcium carbonate deposits
-    while preserving the pristine silicate surface. Scanning a 100 µm spot at 500
-    mm/s ensures uniform stain removal without thermal etching.
-  question: How do I remove mineral deposits and hard water stains from float glass
-    with laser cleaning without etching the surface?
-  topic_keyword: etching the surface
-  topic_statement: Fluence below 2.5 J/cm²
-- answer: Laser cleaning efficiently removes paint overspray from float glass with
-    a straightforward 2.5 J/cm² fluence and 100 μm spot size. For organic paints,
-    lower pulse energy avoids residue fusion, while inorganic pigments often need
-    this process of 50% beam overlap. Oblique-angle lighting inspection afterward
-    verifies mark-free results.
-  question: Can laser cleaning effectively remove paint overspray from float glass
-    without creating permanent marks?
-  topic_keyword: permanent marks
-  topic_statement: Low fluence prevents residue fusion
-- answer: Use a practical approach for precise beam control near edges with the 100
-    μm spot size to avoid seal degradation. Our 2.5 J/cm² fluence efficiently removes
-    contaminants, while fume extraction handles vaporized residues. Always wear suitable
-    eyewear for the 1064 nm wavelength to protect operators.
-  question: What safety precautions are needed when laser cleaning float glass near
-    sensitive areas like window seals or frames?
-- answer: Properly configured laser cleaning at 2.5 J/cm² efficiently preserves optical
-    clarity. This process removes contaminants without inducing surface roughening
-    that scatters light. Spectrophotometry confirms no transmission loss in float
-    glass using these optimized settings.
-  question: Does laser cleaning affect the optical clarity or light transmission properties
-    of float glass?
-  topic_keyword: light transmission properties
-  topic_statement: Preserves optical clarity without roughening
-- answer: The tin side demands practical adjustments for its tin-rich surface. In
-    this process, lower fluence to ~2.0 J/cm² and raise scan speed to 600 mm/s to
-    avoid harm, whereas the air side withstands the usual 2.5 J/cm². Verify the side
-    upfront.
-  question: How do I clean the tin side vs air side of float glass with lasers, and
-    does it require different parameters?
-- answer: For float glass up to 6mm thick, this process safely handles it with our
-    2.5 J/cm² fluence and 100W power settings. With thicker panels, we lower the repetition
-    rate below 50 kHz in a practical manner to address thermal conductivity limits
-    and avoid stress fractures.
-  question: What is the maximum thickness of float glass that can be safely laser
-    cleaned without risk of thermal cracking?
-  topic_keyword: thermal cracking
-  topic_statement: Safe up to 6mm thickness
-- answer: Laser cleaning offers a straightforward way to remove adhesive residues
-    from float glass, applying 2.5 J/cm² fluence and 100 μm spot size. This process
-    vaporizes contaminants below the glass damage threshold, efficiently avoiding
-    residue redistribution without chemical solvents.
-  question: Can laser cleaning remove adhesive residues and stickers from float glass
-    without leaving marks or residue?
-  topic_keyword: adhesive residues and stickers
-  topic_statement: Vaporizes below damage threshold
-- answer: Visual hazing or micro-fractures straightforwardly signal excessive fluence
-    over the 2.5 J/cm² threshold. For float glass, real-time monitoring in this process
-    detects localized thermal stress beyond safe limits. Practically, cut pulse energy
-    right away or boost scan speed to 500 mm/s to avoid subsurface damage.
-  question: What are the signs of improper laser cleaning on float glass that indicate
-    parameter adjustment is needed?
-  topic_keyword: parameter adjustment
-  topic_statement: Excessive fluence causes micro-fractures
-- answer: Laser cleaning at 2.5 J/cm² fluence and 100 μm spot size removes mortar
-    completely without micro-scratches—straightforward and practical, unlike abrasive
-    methods. This process preserves the pristine float glass surface efficiently,
-    eliminating chemical residue for high-value construction applications.
-  question: How does laser cleaning compare to traditional methods for removing construction
-    debris and mortar from float glass?
-  topic_keyword: construction debris and mortar
-  topic_statement: Preserves pristine surface without scratches
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glasss
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Float Glass
-  href: /materials/glass/soda-lime/float-glass
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921934Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921939Z'
+  structure_version: '2.0'

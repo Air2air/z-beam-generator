@@ -114,10 +114,21 @@ class UnifiedMaterialsGenerator:
             evaluation_temperature=evaluation_config['temperature']
         )
         
+        # Create Winston API client for AI detection (optional)
+        winston_client = None
+        try:
+            from shared.api.client_factory import APIClientFactory
+            winston_client = APIClientFactory.create_client(provider="winston")
+            self.logger.info("Winston API client created for quality gate integration")
+        except Exception as e:
+            self.logger.warning(f"Winston API not configured: {e}")
+            self.logger.info("Quality gate will skip Winston detection (Grok evaluation only)")
+        
         # Initialize QualityGatedGenerator (evaluate before save, retry on fail)
         self.generator = QualityGatedGenerator(
             api_client=api_client,
             subjective_evaluator=self.subjective_evaluator,
+            winston_client=winston_client,  # Add Winston for quality gate
             max_attempts=quality_gate_config['max_retry_attempts'],
             quality_threshold=realism_threshold  # Use learned threshold
         )
@@ -226,6 +237,34 @@ class UnifiedMaterialsGenerator:
         # Return content string
         return subtitle
     
+    def generate_description(self, material_name: str, material_data: Dict) -> str:
+        """
+        Generate description using QualityGatedGenerator.
+        
+        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
+        
+        Returns:
+            String (description content)
+        """
+        self.logger.info(f"📝 Generating description for {material_name}")
+        
+        # Use QualityGatedGenerator - evaluates before save, retries on fail
+        result = self.generator.generate(material_name, 'description')
+        
+        if not result.success:
+            raise ValueError(
+                f"Description generation failed after {result.attempts} attempts. "
+                f"Final score: {result.final_score or 'N/A'}/10. "
+                f"Reasons: {'; '.join(result.rejection_reasons)}"
+            )
+        
+        description = result.content
+        word_count = len(description.split())
+        self.logger.info(f"   ✅ Generated: {description[:80]}... ({word_count} words)")
+        
+        # Return content string
+        return description
+    
     def generate_eeat(self, material_name: str, material_data: Dict) -> Optional[Dict]:
         """
         Generate EEAT section from regulatoryStandards (pure Python, no AI).
@@ -331,6 +370,8 @@ class UnifiedMaterialsGenerator:
             return self.generate_faq(material_name, material_data, **kwargs)
         elif content_type == 'subtitle':
             return self.generate_subtitle(material_name, material_data)
+        elif content_type == 'description':
+            return self.generate_description(material_name, material_data)
         elif content_type == 'eeat':
             # EEAT is non-AI, returns dict directly
             return self.generate_eeat(material_name, material_data)

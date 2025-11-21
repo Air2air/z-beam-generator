@@ -1,208 +1,187 @@
 name: Gorilla Glass
-category: Glass
+slug: gorilla-glass
+category: glass
 subcategory: soda-lime
-title: Gorilla Glass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Gorilla Glass
-description: Laser cleaning parameters for Gorilla Glass
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
+  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Gorilla Glass Laser Cleaning
+subtitle: Fairly Gentle Laser Settings Basically Preserve Gorilla Glass Strength and Clarity
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+description: Laser cleaning parameters for Gorilla Glass
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Glass
+  href: /materials/glasss
+- label: Soda Lime
+  href: /materials/glass/soda-lime
+- label: Gorilla Glass
+  href: /materials/glass/soda-lime/gorilla-glass
 images:
   hero:
-    alt: Gorilla Glass surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
   micro:
-    alt: Gorilla Glass surface at 500x magnification comparing contaminated state
-      with cleaned substrate showing complete restoration
+    alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
-caption:
-  before: Under a microscope, Gorilla Glass reveals a pretty contaminated surface
-    speckled with fine particulate debris and oily smudges, creating uneven clusters
-    that scatter light. These contaminants typically cause subtle pitting and haze,
-    eroding the material's pristine optical clarity essential for smartphone screens
-    in daily use.
-  after: After cleaning, the Gorilla Glass surface pretty much returns to a pristine,
-    residue-free condition with boosted clarity and smoothness. Restoration quality
-    is basically top-notch, fully upholding material integrity sans scratches or haze.
-    In laser optics manufacturing, this typically delivers dependable beam transmission
-    for precision work.
-  author: Todd Dunning
-  character_count:
-    after: 321
-    before: 316
-  generated: '2025-10-25T14:25:39.458096Z'
-  generation_method: ai_research
-  word_count:
-    after: 40
-    before: 43
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 72.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 1000000000000.0
       unit: ohm m
-      confidence: 95
       source: ai_research
-      min: 10000000000.0
-      max: 1000000000000000.0
+      min: 9500000000.0
+      max: 1.04999995e+16
     fractureToughness:
       value: 0.75
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 2.0
+      min: 0.5575
+      max: 2.5925
     thermalDestruction:
       value: 1743.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 2300.0
+      min: 637.7
+      max: 2426.3
     specificHeat:
       value: 840.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 120.0
-      max: 900.0
+      min: 120
+      max: 900
     youngsModulus:
       value: 70.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 400.0
+      min: 60.8
+      max: 60899999996.8
     oxidationResistance:
       value: 0.98
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1700.0
+      min: 0.0
+      max: 2176.65
     laserReflectivity:
       value: 0.0415
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 92.0
+      min: 0.03192
+      max: 3.79932
     thermalConductivity:
       value: 1.05
       unit: W/m·K
-      confidence: 95
       source: ai_research
-      min: 0.7
-      max: 30.0
+      min: 0.7695
+      max: 36.7095
     thermalExpansion:
       value: 9.0e-06
       unit: K^{-1}
-      confidence: 100
       source: ai_research
-      min: 0.1
-      max: 15.0
+      min: 1.0e-06
+      max: 9.66
     density:
       value: 2.42
       unit: g/cm³
-      confidence: 95
       source: ai_research
-      min: 1.2
-      max: 7.6
+      min: 2.09285
+      max: 2624.88985
     hardness:
       value: 6.2
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 3.5
-      max: 9.5
+      min: 3.99
+      max: 2309.79
     corrosionResistance:
       value: 5.0e-08
       unit: mol/m²/s
-      confidence: 95
       source: ai_research
-      min: 9.0
-      max: 10.0
+      min: 4.8e-05
+      max: 1.574998
     laserAbsorption:
       value: 10.5
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 10.0
+      min: 0.01425
+      max: 73499.99925
     compressiveStrength:
       value: 700.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 500.0
-      max: 2000.0
+      min: 619.5
+      max: 2170.5
     thermalDiffusivity:
       value: 5.81e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.01
-      max: 15.0
+      min: 0.0
+      max: 1.0e-05
     flexuralStrength:
       value: 700.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 750.0
+      min: 10.0
+      max: 780.0
     tensileStrength:
       value: 900.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 30.0
-      max: 2000.0
+      min: 7.0
+      max: 733.0
     ablationThreshold:
       value: 3.2
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 6.0
+      min: 0.635
+      max: 13.065
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 28.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.1
       unit: dimensionless
@@ -245,154 +224,16 @@ materialProperties:
       min: 0.001
       max: 1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal power range for Gorilla Glass cleaning without thermal damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Optimal wavelength for Gorilla Glass processing with good absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Optimal spot size for precision cleaning of Gorilla Glass surfaces
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 100
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Optimal fluence threshold for contaminant removal without glass damage
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Optimal pulse width for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Optimal number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap ratio for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Yes, laser cleaning of Gorilla Glass is feasible while pretty much preserving
-    its oleophobic coating. The key is basically using a carefully controlled 1064
-    nm wavelength with fluence below ~2.5 J/cm². This approach selectively removes
-    contaminants without the thermal accumulation that degrades the delicate surface
-    treatment.
-  question: Can you use a laser to clean Gorilla Glass without damaging the oleophobic
-    coating?
-  topic_keyword: oleophobic coating
-  topic_statement: Low fluence preserves coating
-- answer: For Gorilla Glass, a 1064nm wavelength is typically optimal. It provides
-    pretty sufficient absorption by most contaminants while transmitting through the
-    glass matrix, minimizing heat buildup in the chemically strengthened layer. Maintain
-    fluence below 2.5 J/cm² with a 50µm spot size to ablate residues without inducing
-    micro-fractures from thermal stress.
-  question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning contaminants
-    from Gorilla Glass without causing micro-fractures?
-  topic_keyword: causing micro-fractures
-  topic_statement: 1064nm minimizes thermal stress
-- answer: The ion-exchange process builds a pretty deep compressive layer, but pushing
-    past the 2.5 J/cm² fluence threshold can locally overcome this stress. That typically
-    sparks pinpoint failures, as the stored compressive energy gets basically unleashed
-    in a catastrophic burst, undermining the glass's structural integrity.
-  question: How does the ion-exchange process and resulting compressive stress layer
-    in Gorilla Glass affect its susceptibility to laser-induced damage?
-  topic_keyword: compressive stress layer
-  topic_statement: Exceeds threshold releasing compressive energy
-- answer: For Gorilla Glass, kick off with a 1064 nm wavelength and a pretty conservative
-    fluence below 2.5 J/cm². Typically, go for a 10 ns pulse width and 100 kHz repetition
-    rate, but validate those settings on scrap parts first to avoid surface damage.
-  question: What are the safe operating parameters (fluence, pulse width, repetition
-    rate) for laser cleaning Gorilla Glass on consumer electronics like smartphones?
-- answer: When cleaned properly below the 2.5 J/cm² threshold, Gorilla Glass typically
-    retains its optical clarity. We confirm this by assessing surface topology and
-    haze, ensuring laser-induced micromelting causes no change to touch sensitivity.
-  question: After laser cleaning, is there a change in the surface roughness or optical
-    clarity of Gorilla Glass that could affect touch sensitivity or display quality?
-  topic_keyword: optical clarity
-  topic_statement: Maintains optical clarity below threshold
-- answer: Yes, basically, with precise 1064 nm laser parameters, you can ablate these
-    coatings. The key is maintaining fluence below 2.5 J/cm² to typically remove the
-    polymer layers without affecting the ion-exchanged glass substrate.
-  question: Can laser cleaning be used to selectively remove hard coatings (like anti-glare
-    or anti-fingerprint) from Gorilla Glass without damaging the substrate?
-  topic_keyword: selectively remove hard coatings
-  topic_statement: fluence below 2.5 J/cm²
-- answer: Laser cleaning of Gorilla Glass at 1064 nm typically generates hazardous
-    silica nanoparticles and toxic metal fumes from coatings. Proper fume extraction
-    is mandatory, and I'd basically recommend a fully enclosed Class 1 laser system
-    with appropriate respiratory PPE to mitigate these inhalation risks.
-  question: What specific safety hazards are associated with laser cleaning Gorilla
-    Glass, such as toxic fumes from ablated coatings or glass particulates?
-  topic_keyword: glass particulates
-  topic_statement: Generates silica nanoparticles and fumes
-- answer: We typically verify cleaning effectiveness with high-magnification microscopy
-    to inspect for micro-fractures and spectrophotometry to ensure optical performance.
-    But visual inspection alone is basically insufficient, since it overlooks subsurface
-    damage from fluence exceeding 2.5 J/cm².
-  question: How do you verify the effectiveness of laser cleaning on Gorilla Glass?
-    What non-destructive testing methods are suitable?
-- answer: Laser cleaning basically relies on ablation at around 2.5 J/cm², making
-    it fairly ideal for stripping away surface contaminants. But with a scratch, the
-    process would just etch the whole surface, worsening the defect instead of mending
-    it. This method essentially removes material and can't fill or polish out those
-    flaws.
-  question: Is laser cleaning a viable method for removing scratches from Gorilla
-    Glass, or does it primarily target surface contaminants?
-  topic_keyword: removing scratches
-  topic_statement: Ablation enlarges defects
-- answer: For Gorilla Glass edges, a galvo scanner with dynamic focus is typically
-    essential. This setup basically maintains the required 2.5 J/cm² fluence across
-    complex 2.5D contours by adjusting the focal plane continuously. A 50 µm spot
-    size delivers the precision to clean curved surfaces effectively, without inducing
-    thermal stress.
-  question: For laser cleaning systems, what type of beam delivery (galvo scanner,
-    fixed optic) and spot size are recommended for treating the curved edges of Gorilla
-    Glass?
-  topic_keyword: curved edges
-  topic_statement: Galvo scanner dynamic focus
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glasss
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Gorilla Glass
-  href: /materials/glass/soda-lime/gorilla-glass
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922008Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922014Z'
+  structure_version: '2.0'

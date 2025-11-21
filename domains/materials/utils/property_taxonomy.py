@@ -94,12 +94,13 @@ class PropertyTaxonomy:
         # Auto-detect paths if not provided
         if categories_path is None or registry_path is None:
             # Navigate to project root, then to data/materials (normalized architecture)
-            materials_dir = Path(__file__).resolve().parent.parent.parent
+            # From domains/materials/utils/ we need to go up 4 levels to reach project root
+            project_root = Path(__file__).resolve().parent.parent.parent.parent
             if categories_path is None:
                 # Load from PropertyDefinitions.yaml (normalized architecture)
-                categories_path = materials_dir / "data" / "materials" / "PropertyDefinitions.yaml"
+                categories_path = project_root / "data" / "materials" / "PropertyDefinitions.yaml"
             if registry_path is None:
-                registry_path = materials_dir / "data" / "materials" / "categories" / "property_system.yaml"
+                registry_path = project_root / "data" / "materials" / "categories" / "property_system.yaml"
         
         self._load_categories(categories_path)
         self._load_registry(registry_path)

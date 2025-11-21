@@ -1,320 +1,51 @@
 name: Neodymium
-category: Rare-Earth
+slug: neodymium
+category: rare-earth
 subcategory: lanthanide
-title: Neodymium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Neodymium
-description: Laser cleaning parameters for Neodymium
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
   country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
   sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Neodymium surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/neodymium-laser-cleaning-hero.jpg
-  micro:
-    alt: Neodymium surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
-    url: /images/material/neodymium-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, the neodymium surface notably exhibits heavy contamination,
-    specifically from oily residues and fine dust particles that cling tightly. This
-    rare-earth material shows pitting and light oxidation, thus degrading its smooth
-    finish and exposing underlying vulnerabilities.
-  after: Laser cleaning effectively restores neodymium surfaces, particularly through
-    gentle contaminant removal. The treated surface emerges smooth and uniform, reclaiming
-    its inherent luster. Notably, this approach delivers superior restoration while
-    upholding material integrity—no cracks or degradation in the rare-earth framework.
-    It fits routine cleaning demands effectively.
-  author: Yi-Chun Lin
-  character_count:
-    after: 338
-    before: 257
-  generated: '2025-10-25T14:47:28.243463Z'
-  generation_method: ai_research
-  word_count:
-    after: 47
-    before: 33
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 92.9
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    thermalDestruction:
-      value: 1294.0
-      unit: K
-      confidence: 100
-      source: ai_research
-      min: 273.0
-      max: 3520.0
-    specificHeat:
-      value: 190.3
-      unit: J/(kg·K)
-      confidence: 100
-      source: ai_research
-      min: 150.0
-      max: 200.0
-    youngsModulus:
-      value: 32.0
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 25.0
-      max: 65.0
-    oxidationResistance:
-      value: -2.323
-      unit: V
-      confidence: 100
-      source: ai_research
-      min: 300.0
-      max: 600.0
-    laserReflectivity:
-      value: 0.68
-      unit: ''
-      confidence: 95
-      source: ai_research
-      min: 40.0
-      max: 75.0
-    thermalConductivity:
-      value: 16.73
-      unit: W/m·K
-      confidence: 98
-      source: ai_research
-      min: 10.0
-      max: 17.0
-    thermalExpansion:
-      value: 12.5
-      unit: 10^{-6} K^{-1}
-      confidence: 98
-      source: ai_research
-      min: 5.0
-      max: 12.0
-    density:
-      value: 7007.0
-      unit: kg/m³
-      confidence: 100
-      source: ai_research
-      min: 6.1
-      max: 9.8
-    hardness:
-      value: 41.0
-      unit: HV
-      confidence: 95
-      source: ai_research
-      min: 25.0
-      max: 60.0
-    ablationThreshold:
-      value: 1.75
-      unit: J/cm²
-      confidence: 95
-      source: ai_research
-      min: 0.5
-      max: 2.0
-    absorptivity:
-      value: 0.37
-      unit: dimensionless
-      confidence: 95
-      source: ai_research
-      min: 0.25
-      max: 0.6
-    boilingPoint:
-      value: 3347.0
-      unit: K
-      confidence: 100
-      source: ai_research
-      min: 2800.0
-      max: 3700.0
-    absorptionCoefficient:
-      value: 32000000.0
-      unit: m^{-1}
-      confidence: 96
-      source: ai_research
-      min: 0.3
-      max: 0.8
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 7.1
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.72
-      min: 0.25
-      max: 0.6
-machineSettings:
-  powerRange:
-    description: Optimal average power for Neodymium oxide removal without substrate
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Fundamental Nd:YAG wavelength with good Neodymium absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete surface cleaning
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Cleaning neodymium magnets with lasers carries high risks, particularly
-    from their intense flammability and the toxic fumes generated by rare earth oxides.
-    Specifically, the 1064 nm wavelength at 5.1 J/cm² readily induces demagnetization
-    via heat—unlike in safer rust removal. Thus, robust fume extraction and precise
-    thermal control are essential to avert ignition.
-  question: Is it safe to laser clean neodymium magnets, and what are the specific
-    risks?
-  topic_keyword: neodymium magnets
-  topic_statement: Extreme flammability and demagnetization risk
-- answer: For cleaning neodymium components, the 1064 nm wavelength proves optimal,
-    particularly due to its strong absorption. Employ a low fluence around 5.1 J/cm²
-    paired with high-frequency pulses to remove oxides effectively, while avoiding
-    substrate damage. Thus, this method harnesses the material's thermal traits to
-    ablate contaminants without excess heat buildup.
-  question: What is the best laser wavelength and parameter settings for cleaning
-    a neodymium component without damaging it?
-  topic_keyword: neodymium component
-  topic_statement: Requires 1064 nm low fluence
-- answer: Removing Ni-Cu-Ni plating from NdFeB magnets proves extremely challenging,
-    particularly since the thermal threshold for magnetic degradation sits at only
-    ~150°C. Effective ablation, meanwhile, demands precise fluence control around
-    5.1 J/cm². Thus, this high-risk process calls for exceptional thermal management
-    to avert irreversible magnetic loss.
-  question: Can laser cleaning remove the nickel-copper-nickel plating from a neodymium
-    magnet without affecting the magnetic properties?
-  topic_keyword: nickel-copper-nickel plating
-  topic_statement: Demands exceptional thermal management
-- answer: Neodymium's oxidation resistance, notably low at 0.15°C, demands effective
-    fume extraction. We apply HEPA/ULPA filtration paired with activated carbon, specifically
-    capturing heavy metal aerosols to maintain airborne particulates below 1 mg/m³
-    for operator safety.
-  question: How do you handle the toxic fumes generated when laser cleaning neodymium
-    alloys?
-  topic_keyword: toxic fumes
-  topic_statement: Low oxidation resistance requires extraction
-- answer: The black discoloration stems from surface oxidation during laser heating.
-    Neodymium, particularly with its low oxidation resistance of 0.15°C, proves highly
-    reactive. This thin oxide layer generally spares magnetic performance. Thus, to
-    curb it, apply a lower fluence around 5.1 J/cm² alongside quicker scan speeds.
-  question: Why does the surface of a neodymium magnet turn black or discolored after
-    laser cleaning?
-  topic_keyword: turn black or discolored
-  topic_statement: Due to low oxidation resistance
-- answer: Neodymium iron boron, particularly its fine particulates, proves pyrophoric
-    and ignites spontaneously. We address this hazard through inert argon shielding
-    at 1064 nm wavelength, along with rigorous housekeeping practices. Thus, a Class
-    D extinguisher remains essential for handling the reactive metal powders produced
-    in laser cleaning.
-  question: What is the risk of a fire when laser cleaning neodymium, and how is it
-    mitigated?
-  topic_keyword: risk of a fire
-  topic_statement: Pyrophoric; mitigated by argon shielding
-- answer: Laser cleaning at 5.1 J/cm² fluence effectively removes contaminants from
-    neodymium, notably creating an ideal surface for recoating. Yet, its low oxidation
-    resistance of 0.15°C thus demands precise thermal control via 50% beam overlap
-    to avoid oxide formation that hinders adhesion.
-  question: Is laser cleaning a viable method for preparing neodymium surfaces for
-    recoating or re-plating?
-- answer: Notably, neodymium's low oxidation resistance means a freshly laser-cleaned
-    surface at 5.1 J/cm² will rapidly re-oxidize. Thus, this cleaning step must immediately
-    precede protective oil or coating application in a controlled environment to prevent
-    corrosion.
-  question: How does the high reactivity and corrosion tendency of neodymium affect
-    the laser cleaning process and post-cleaning handling?
-  topic_keyword: high reactivity
-  topic_statement: Requires immediate protective coating
-- answer: Pure neodymium demands meticulous cleaning, particularly owing to its 0.265
-    HV softness and severe pyrophoricity, necessitating inert atmosphere protection.
-    By contrast, NdFeB magnets remain hazardous yet more resilient; their iron alters
-    fume profiles and supports slightly elevated fluence up to 5.1 J/cm². Thus, both
-    materials carry substantial fire risks in laser operations.
-  question: What are the key differences between laser cleaning a pure neodymium metal
-    versus a common NdFeB magnet?
-  topic_keyword: pure neodymium metal
-  topic_statement: requires inert atmosphere shielding
-- answer: Although precise 5.1 J/cm² fluence control makes selective rust ablation
-    from pinholes theoretically feasible, avoiding damage to intact plating proves
-    extremely challenging. Notably, the magnet's low 0.265 HV hardness and 16.5 W/(m·K)
-    conductivity increase its vulnerability to thermal harm, thus rendering this method
-    impractical for broad corrosion use.
-  question: Can laser cleaning be used to selectively remove corrosion (rust) from
-    a sintered neodymium magnet without damaging the plating?
-  topic_keyword: without damaging the plating
-  topic_statement: Highly susceptible to thermal damage
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Neodymium Laser Cleaning
+subtitle: Discover how gentle laser cleaning, particularly, protects reactive neodymium from oxidation.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+description: Laser cleaning parameters for Neodymium
 breadcrumb:
 - label: Home
   href: /
@@ -326,9 +57,118 @@ breadcrumb:
   href: /materials/rare-earth/lanthanide
 - label: Neodymium
   href: /materials/rare-earth/lanthanide/neodymium
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+images:
+  hero:
+    alt: Neodymium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/neodymium-laser-cleaning-hero.jpg
+  micro:
+    alt: Neodymium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/neodymium-laser-cleaning-micro.jpg
+caption: null
+faq: null
+regulatoryStandards: null
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    thermalDestruction:
+      value: 1294.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 3520.0
+    specificHeat:
+      value: 190.3
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113.4
+      max: 456.6
+    youngsModulus:
+      value: 32.0
+      unit: GPa
+      source: ai_research
+      min: 15.835
+      max: 63.465
+    oxidationResistance:
+      value: -2.323
+      unit: V
+      source: ai_research
+      min: 0.0
+      max: 149.1
+    laserReflectivity:
+      value: 0.68
+      unit: ''
+      source: ai_research
+      min: 0.395
+      max: 0.945
+    thermalConductivity:
+      value: 16.73
+      unit: W/m·K
+      source: ai_research
+      min: 10.375
+      max: 17.525
+    thermalExpansion:
+      value: 12.5
+      unit: 10^{-6} K^{-1}
+      source: ai_research
+      min: 6.0e-06
+      max: 26.25
+    density:
+      value: 7007.0
+      unit: kg/m³
+      source: ai_research
+      min: 4.2681
+      max: 8.7539
+    hardness:
+      value: 41.0
+      unit: HV
+      source: ai_research
+      min: 0.3819
+      max: 906.1299
+    ablationThreshold:
+      value: 1.75
+      unit: J/cm²
+      source: ai_research
+      min: 0.6475
+      max: 2.9025
+    absorptivity:
+      value: 0.37
+      unit: dimensionless
+      source: ai_research
+      min: 0.25
+      max: 0.6
+    boilingPoint:
+      value: 3347.0
+      unit: K
+      source: ai_research
+      min: 1705.25
+      max: 3833.75
+    absorptionCoefficient:
+      value: 32000000.0
+      unit: m^{-1}
+      source: ai_research
+      min: 298300.0
+      max: 65924300.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.72
+      min: 0.25
+      max: 0.6
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922247Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922252Z'
+  structure_version: '2.0'

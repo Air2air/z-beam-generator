@@ -1,180 +1,182 @@
 name: Marble
-category: Stone
+slug: marble
+category: stone
 subcategory: metamorphic
-title: Marble Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Marble
-description: Laser cleaning parameters for Marble
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Marble Laser Cleaning
+subtitle: Revive Marble's Veined Elegance Efficiently Through Practical Laser Precision
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Marble
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stones
+- label: Metamorphic
+  href: /materials/stone/metamorphic
+- label: Marble
+  href: /materials/stone/metamorphic/marble
 images:
   hero:
-    alt: Marble surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Marble surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/marble-laser-cleaning-hero.jpg
   micro:
-    alt: Marble surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Marble microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/marble-laser-cleaning-micro.jpg
-caption:
-  before: Microscopy straightforwardly shows heavy contamination on the untreated
-    marble surface from atmospheric particulates and organic biofilms, appearing as
-    irregular dark encrustations and diffuse soiling. That method uncovers visible
-    degradation, such as surface pitting, microcracks due to weathering, and localized
-    discoloration, pointing to compromised structural integrity and aesthetic deterioration.
-  after: Microscopy following laser cleaning reveals a straightforward restoration
-    of the marble surface, efficiently ablating contaminants to expose the calcite
-    crystalline structure and intergranular porosity beneath. This process yields
-    excellent quality, with smooth topography, preserved material integrity, minimal
-    thermal discoloration, and intact microstructural details—no substrate harm or
-    over-ablation.
-  generated: '2025-10-30T17:08:16.183529Z'
-  word_count_before: 41
-  word_count_after: 48
-  total_words: 89
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- EPA Clean Air Act Compliance
-- ASTM C503 - Standard Specification for Marble Dimension Stone
-- UNESCO Guidelines for Cultural Heritage Conservation
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 1.16
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 5.0
+      min: 0.133
+      max: 2.047
     thermalDestruction:
       value: 825.0
       unit: °C
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2300.0
     specificHeat:
       value: 880.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1200.0
+      min: 400
+      max: 1200
     youngsModulus:
       value: 55.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 100.0
+      min: 9.785
+      max: 78749999999.485
     oxidationResistance:
       value: 0.98
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 870.0
+      min: 9.5e-05
+      max: 1546.649995
     laserReflectivity:
       value: 0.38
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 80.0
+      min: 0.0252
+      max: 0.4388
     thermalConductivity:
       value: 2.8
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.2
-      max: 8.0
+      max: 8
     thermalExpansion:
       value: 6.5e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 30.0
+      min: 6.0e-06
+      max: 11.97
     density:
       value: 2710.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 1.5
-      max: 6.0
+      min: 2.204
+      max: 3044.884
     hardness:
       value: 3.0
       unit: Mohs
-      confidence: 100
       source: ai_research
-      min: 1.0
-      max: 7.0
+      min: 0.7
+      max: 7.3
     corrosionResistance:
       value: 0.65
       unit: dimensionless (resistance index, 0-1 scale)
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 9.0
+      min: 6.6e-05
+      max: 20.999997
     laserAbsorption:
       value: 5000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 100.0
+      min: 0.057
+      max: 1259999.997
     compressiveStrength:
       value: 100.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 500.0
+      min: 2.1
+      max: 219.9
     thermalDiffusivity:
       value: 1.24e-06
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.2
-      max: 2.5
+      min: 0.0
+      max: 2.0e-06
     flexuralStrength:
       value: 11.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 50.0
+      min: 2.24
+      max: 36.56
     tensileStrength:
       value: 10.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 25.0
+      min: 1.35
+      max: 15.65
     porosity:
       value: 0.6
       unit: '%'
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 25.0
+      min: 0.0
+      max: 19.425
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.1
       unit: dimensionless
@@ -217,163 +219,16 @@ materialProperties:
       min: 0.01
       max: 1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Marble surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Marble absorption and minimal
-      subsurface damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Marble surfaces
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving
-      Marble substrate
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning without excessive thermal
-      buildup
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for thorough cleaning with progressive
-      contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage and processing
-      efficiency
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Yes, indeed, as a laser cleaning expert from Indonesia, I can confirm that
-    laser cleaners safely remove graffiti from marble. Using a Q-switched Nd:YAG laser
-    at controlled pulse energies ablates surface contaminants without etching the
-    delicate stone, preserving its integrity—provided parameters are calibrated precisely
-    by professionals.
-  question: Can you safely use a laser cleaner to remove graffiti from marble without
-    damaging the surface?
-- answer: For white Carrara marble, 1064nm at 2.5 J/cm² offers a straightforward optimal
-    setting. Darker marbles and stains, however, absorb shorter wavelengths more efficiently,
-    often requiring 532nm to avoid thermal damage to the calcite substrate. Ultimately,
-    this process depends on the contaminant's absorption profile relative to the stone's
-    mineral composition.
-  question: What is the best laser wavelength (e.g., 1064nm, 532nm) for cleaning different
-    types of marble (e.g., white Carrara vs. dark marble)?
-  topic_keyword: different types of marble
-  topic_statement: Wavelength varies by marble color
-- answer: We apply a 1064 nm wavelength at 2.5 J/cm² for straightforward ablation
-    of black crusts. That method vaporizes iron oxides and biological growth efficiently,
-    staying below the marble's damage threshold to prevent subsurface calcination
-    and shadowing.
-  question: How do you remove black crusts or biological growth (lichens, algae) from
-    marble with a laser without leaving a shadow or etch mark?
-  topic_keyword: shadow or etch mark
-  topic_statement: Prevents subsurface calcination
-- answer: As a laser cleaning specialist from Indonesia, where we often preserve ancient
-    stone heritage, I recommend keeping fluence below 0.5-1 J/cm², pulse durations
-    at 20-50 ns, and repetition rates under 10-20 Hz for marble. This ensures gentle
-    ablation without thermal yellowing or burning.
-  question: What are the critical laser parameters (fluence, pulse duration, repetition
-    rate) to avoid the yellowing or burning of marble during cleaning?
-  topic_keyword: yellowing or burning
-  topic_statement: Low fluence nanosecond pulses
-- answer: Laser cleaning efficiently removes soot in a straightforward way, applying
-    2.5 J/cm² fluence with 50 kHz pulses. Yet, acidic smoke residues can permanently
-    etch the marble surface; that chemical alteration proves irreversible and beyond
-    remedy by this process.
-  question: Is laser cleaning effective for removing smoke or fire damage from marble
-    surfaces, and what are the limitations?
-  topic_keyword: smoke or fire damage
-  topic_statement: Irreversible acidic etching
-- answer: In this process, water assist acts as a heat sink, suppressing plasma shielding
-    and preventing thermal shock in the marble at our typical 2.5 J/cm² fluence. Meanwhile,
-    an air jet efficiently removes ablation debris from the beam path, ensuring consistent
-    cleaning and protecting the delicate calcite matrix.
-  question: Why is water or air-assist often used during laser cleaning of marble,
-    and what are the pros and cons?
-  topic_keyword: water or air-assist
-  topic_statement: Prevents thermal shock, clears debris
-- answer: Veins and fissures build up stress, so drop fluence below 2.5 J/cm² for
-    straightforward results. Steer clear of long exposures on these spots to dodge
-    spalling—go with a larger spot size and quicker scan speeds for practical control
-    of thermal buildup.
-  question: How does the presence of veins, fissures, and existing cracks in marble
-    affect the laser cleaning strategy?
-- answer: In this process, laser ablation of marble at 2.5 J/cm² produces fine calcium
-    carbonate dust and hazardous contaminants. For practical safety, a HEPA-filtered
-    extraction system is essential to capture sub-100µm particles, with operators
-    always wearing respiratory PPE.
-  question: What safety precautions are specific to laser cleaning marble, especially
-    in terms of fume extraction?
-  topic_keyword: fume extraction
-  topic_statement: HEPA extraction for calcium dust
-- answer: Laser cleaning at 2.5 J/cm² efficiently ablates contaminants, but this process
-    inherently produces a micro-rough, matte surface on marble. That method alone
-    fails to restore the original polished finish. For regaining the desired gloss,
-    apply subsequent mechanical polishing like honing once the surface is fully cleaned.
-  question: Can laser cleaning restore the polished finish of marble, or will it leave
-    a matte surface?
-  topic_keyword: polished finish
-  topic_statement: Creates micro-rough matte surface
-- answer: Laser cleaning provides a practical solution with excellent selectivity,
-    stripping black crust at ~2.5 J/cm² yet safeguarding the marble's historical patina.
-    This process, being non-contact, sidesteps chemical residue issues from poultices
-    and delivers precise handling through a 100 µm spot to avoid substrate harm. It's
-    suited for fragile heritage areas prioritizing material wholeness.
-  question: For a conservator, what are the advantages of laser cleaning marble monuments
-    over traditional methods like poultices or chemical gels?
-  topic_keyword: marble monuments
-  topic_statement: Preserves historical patina
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Stone
-  href: /materials/stones
-- label: Metamorphic
-  href: /materials/stone/metamorphic
-- label: Marble
-  href: /materials/stone/metamorphic/marble
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ASTM C503 - Standard Specification for Marble Dimension Stone
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - ASTM C503 - Standard Specification for Marble Dimension Stone
+  - UNESCO Guidelines for Cultural Heritage Conservation

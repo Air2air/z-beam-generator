@@ -1,313 +1,51 @@
 name: Europium
-category: Rare-Earth
+slug: europium
+category: rare-earth
 subcategory: lanthanide
-title: Europium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Europium
-description: Laser cleaning parameters for Europium
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
+  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-images:
-  hero:
-    alt: Europium surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
-    url: /images/material/europium-laser-cleaning-hero.jpg
-  micro:
-    alt: Europium surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
-    url: /images/material/europium-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the Europium-doped optical surface shows clustered
-    dust particles and oily residues as contaminants, typically causing micro-pitting
-    and haze that scatters laser beams. This degradation fairly impacts clarity in
-    laser cleaning tools for industrial optics.
-  after: After cleaning, the Europium surface typically restores to a pristine, contamination-free
-    condition. It preserves full material integrity, basically supporting reliable
-    performance in laser phosphors. Restoration quality stays pretty high.
-  author: Todd Dunning
-  character_count:
-    after: 214
-    before: 258
-  generated: '2025-10-25T14:17:30.780273Z'
-  generation_method: ai_research
-  word_count:
-    after: 26
-    before: 34
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 92.9
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    thermalDestruction:
-      value: 1099.0
-      unit: K
-      confidence: 100
-      source: ai_research
-      min: 273.0
-      max: 3520.0
-    density:
-      value: 5.264
-      unit: g/cm³
-      confidence: 100
-      source: ai_research
-      min: 6.1
-      max: 9.8
-    oxidationResistance:
-      value: -2.41
-      unit: V
-      confidence: 100
-      source: ai_research
-      min: 300.0
-      max: 600.0
-    laserReflectivity:
-      value: 0.43
-      unit: dimensionless (fraction)
-      confidence: 95
-      source: ai_research
-      min: 40.0
-      max: 75.0
-    thermalExpansion:
-      value: 3.52e-05
-      unit: K^{-1}
-      confidence: 95
-      source: ai_research
-      min: 5.0
-      max: 12.0
-    thermalConductivity:
-      value: 13.9
-      unit: W/m·K
-      confidence: 100
-      source: ai_research
-      min: 10.0
-      max: 17.0
-    youngsModulus:
-      value: 18.0
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 25.0
-      max: 65.0
-    hardness:
-      value: 0.22
-      unit: GPa
-      confidence: 95
-      source: ai_research
-      min: 25.0
-      max: 60.0
-    specificHeat:
-      value: 145.0
-      unit: J/(kg·K)
-      confidence: 95
-      source: ai_research
-      min: 150.0
-      max: 200.0
-    ablationThreshold:
-      value: 2.1
-      unit: J/cm²
-      confidence: 95
-      source: ai_research
-      min: 0.5
-      max: 2.0
-    boilingPoint:
-      value: 1802.0
-      unit: K
-      confidence: 100
-      source: ai_research
-      min: 2800.0
-      max: 3700.0
-    absorptivity:
-      value: 0.28
-      unit: ''
-      confidence: 95
-      source: ai_research
-      min: 0.25
-      max: 0.6
-    absorptionCoefficient:
-      value: 420000.0
-      unit: cm^{-1}
-      confidence: 92
-      source: ai_research
-      min: 0.3
-      max: 0.8
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 7.1
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.72
-      min: 0.25
-      max: 0.6
-machineSettings:
-  powerRange:
-    description: Optimal average power for Europium oxide layer removal
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Green wavelength for optimal Europium absorption
-    unit: nm
-    value: 532
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Threshold fluence for Europium oxide removal
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Nanosecond pulse width for controlled ablation
-    unit: ns
-    value: 8
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes required
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for complete coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Europium-doped glass presents pretty significant discoloration risks during
-    laser cleaning, stemming from strong Eu³⁺ ion absorption—especially at 532 nm.
-    A fluence threshold of 1.2 J/cm² means even fairly moderate power can trigger
-    permanent color centers. This remains a key worry for historical optics and electronics
-    relying on europium phosphors.
-  question: Is europium-doped glass a major concern for laser cleaning of historical
-    artifacts or electronics?
-  topic_keyword: europium-doped glass
-  topic_statement: Induces permanent color centers
-- answer: For cleaning europium compounds, I'd typically go with 532 nm green lasers
-    at 1.2 J/cm² fluence. This wavelength sidesteps strong f-f electron transitions
-    in the rare-earth ion, cutting resonant absorption that triggers intense red photoluminescence.
-    The fairly low thermal conductivity of 13.9 W/(m·K) demands this controlled ablation
-    to avoid thermal damage.
-  question: What laser wavelength is safest for cleaning surfaces containing europium
-    compounds without causing fluorescence or damage?
-  topic_keyword: causing fluorescence
-  topic_statement: 532nm avoids f-f transitions
-- answer: Europium oxide features a pretty low ablation threshold of 1.2 J/cm², so
-    fluence control is essential. Its fairly soft 0.167 HV hardness and high thermal
-    expansion of 35 × 10⁻⁶/K mean excessive power can readily cause subsurface damage
-    to the underlying rare earth component.
-  question: Does europium oxide scale on rare earth metal components require special
-    laser cleaning considerations compared to other oxides?
-  topic_keyword: europium oxide scale
-  topic_statement: Requires careful fluence control
-- answer: Laser ablation of europium phosphors at 1.2 J/cm² typically generates highly
-    respirable nanoparticles. With europium's fairly low oxidation resistance (180°C),
-    these aerosols create a significant inhalation hazard. To mitigate this toxic
-    exposure risk, you must use a P100 respirator and robust fume extraction.
-  question: Are there specific safety hazards when laser cleaning europium-containing
-    phosphors from CRT monitors or fluorescent lamps?
-  topic_keyword: europium-containing phosphors
-  topic_statement: Low oxidation resistance inhalation hazard
-- answer: Properly tuned laser cleaning at 1.2 J/cm² basically preserves europium's
-    luminescence by selectively removing surface contaminants. With the 532 nm wavelength
-    and controlled thermal input, it fairly well prevents damage to the host matrix,
-    ensuring the security feature's photoluminescent integrity stays fully functional.
-  question: How does laser cleaning affect the luminescent properties of europium-doped
-    materials used in security markings?
-  topic_keyword: luminescent properties
-  topic_statement: Preserves photoluminescent integrity
-- answer: Keep an eye out for pretty dark gray discoloration or boosted orange fluorescence,
-    signaling thermal oxidation above 180°C. Surface pitting typically points to fluence
-    exceeding the 1.2 J/cm² limit, while haze indicates incomplete contaminant removal.
-  question: What are the signs of improper laser cleaning on europium-containing alloys
-    or coatings?
-  topic_keyword: europium-containing alloys
-  topic_statement: Orange fluorescence indicates oxidation
-- answer: Yes, with pretty precise 532nm wavelength control at 1.2 J/cm² fluence,
-    laser cleaning effectively removes contaminants from europium superconductors.
-    This approach basically minimizes thermal stress below 180°C, preserving the critical
-    current density by preventing surface defect formation.
-  question: Can laser cleaning effectively remove contaminants from europium-based
-    superconductors without degrading their electrical properties?
-  topic_keyword: europium-based superconductors
-  topic_statement: Preserves critical current density
-- answer: Europium's dual oxidation states set it apart, yielding varied colored oxides
-    under laser heating. The Eu³⁺ form creates pretty pale pink compounds, whereas
-    Eu²⁺ produces darker, more intense shades. This variation stands out more than
-    in other rare earths, owing to europium's fairly low oxidation resistance starting
-    around 180°C.
-  question: Why does europium sometimes create different colored residues during laser
-    cleaning compared to other rare earth elements?
-- answer: The europium debris from your 532 nm laser cleaning typically counts as
-    non-hazardous waste in most US jurisdictions, since its compounds lack RCRA-listed
-    toxicity. That said, the fairly low oxidation resistance of 180°C renders ablated
-    particles highly reactive. Just document the waste stream's composition and dispose
-    at a licensed facility for rare earth metals.
-  question: What waste disposal regulations apply to europium-contaminated debris
-    from laser cleaning operations?
-  topic_keyword: europium-contaminated debris
-  topic_statement: Document reactive rare earth waste
-- answer: Leverage europium's inherent luminescence under 532 nm excitation to verify
-    purity. Track the signature red emission peak around 614 nm; dimming signals leftover
-    contaminants. This contactless approach operates fairly below the 1.2 J/cm² ablation
-    threshold, basically keeping the soft substrate intact while confirming cleanliness.
-  question: How do we verify complete contaminant removal from europium surfaces without
-    damaging the substrate?
-  topic_keyword: complete contaminant removal
-  topic_statement: Monitor 614 nm emission attenuation
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Europium Laser Cleaning
+subtitle: Basically, precision laser cleaning reveals Europium's pretty unique fluorescence without surface oxidation.
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+description: Laser cleaning parameters for Europium
 breadcrumb:
 - label: Home
   href: /
@@ -319,9 +57,121 @@ breadcrumb:
   href: /materials/rare-earth/lanthanide
 - label: Europium
   href: /materials/rare-earth/lanthanide/europium
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+images:
+  hero:
+    alt: Europium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/europium-laser-cleaning-hero.jpg
+  micro:
+    alt: Europium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/europium-laser-cleaning-micro.jpg
+caption: null
+faq: null
+regulatoryStandards: null
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    thermalDestruction:
+      value: 1099.0
+      unit: K
+      source: ai_research
+      min: 273.0
+      max: 3520.0
+    density:
+      value: 5.264
+      unit: g/cm³
+      source: ai_research
+      min: 4.2681
+      max: 8.7539
+    oxidationResistance:
+      value: -2.41
+      unit: V
+      source: ai_research
+      min: 0.0
+      max: 149.1
+    laserReflectivity:
+      value: 0.43
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.395
+      max: 0.945
+    thermalExpansion:
+      value: 3.52e-05
+      unit: K^{-1}
+      source: ai_research
+      min: 6.0e-06
+      max: 26.25
+    thermalConductivity:
+      value: 13.9
+      unit: W/m·K
+      source: ai_research
+      min: 10.375
+      max: 17.525
+    youngsModulus:
+      value: 18.0
+      unit: GPa
+      source: ai_research
+      min: 15.835
+      max: 63.465
+    hardness:
+      value: 0.22
+      unit: GPa
+      source: ai_research
+      min: 0.3819
+      max: 906.1299
+    specificHeat:
+      value: 145.0
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113.4
+      max: 456.6
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.6475
+      max: 2.9025
+    boilingPoint:
+      value: 1802.0
+      unit: K
+      source: ai_research
+      min: 1705.25
+      max: 3833.75
+    absorptivity:
+      value: 0.28
+      unit: ''
+      source: ai_research
+      min: 0.25
+      max: 0.6
+    absorptionCoefficient:
+      value: 420000.0
+      unit: cm^{-1}
+      source: ai_research
+      min: 298300.0
+      max: 65924300.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.72
+      min: 0.25
+      max: 0.6
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  industryTags:
+  - Electronics Manufacturing
+  - Permanent Magnet Production
+  - Optical Component Cleaning
+  - Research Laboratory
+  - Precision Manufacturing
+  - Aerospace Components

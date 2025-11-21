@@ -1,189 +1,175 @@
 name: Terracotta
-category: Masonry
+slug: terracotta
+category: masonry
 subcategory: concrete
-title: Terracotta Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Terracotta
-description: Laser cleaning parameters for Terracotta
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
   country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
   sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Terracotta Laser Cleaning
+subtitle: Notably, precision laser cleaning revives terracotta's porous texture, thus eliminating thermal damage risks.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+description: Laser cleaning parameters for Terracotta
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Masonry
+  href: /materials/masonrys
+- label: Concrete
+  href: /materials/masonry/concrete
+- label: Terracotta
+  href: /materials/masonry/concrete/terracotta
 images:
   hero:
-    alt: Terracotta surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/terracotta-laser-cleaning-hero.jpg
   micro:
-    alt: Terracotta surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
     url: /images/material/terracotta-laser-cleaning-micro.jpg
-caption:
-  before: Microscopy examination uncovers a contaminated terracotta surface, rough
-    and porous, particularly with fine dust particles and organic residues adhering
-    to the clay. This accumulation clogs pores, induces discoloration, and fosters
-    minor cracking. Thus, such deterioration undermines its importance in architecture
-    and cultural heritage.
-  after: The restored terracotta surface appears smooth and fresh, particularly as
-    its warm reddish tone regains full vibrancy. Laser treatment gently eliminates
-    dirt and old stains, thus preserving the material's porous texture without inducing
-    cracks. Notably, this reliable restoration suits cultural heritage sites and buildings,
-    reflecting meticulous processing integrity.
-  author: Yi-Chun Lin
-  character_count:
-    after: 345
-    before: 292
-  generated: '2025-10-25T15:29:36.844496Z'
-  generation_method: ai_research
-  word_count:
-    after: 50
-    before: 41
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
     thermalDestruction:
       value: 923.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 2500.0
     specificHeat:
       value: 880.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 700.0
-      max: 1100.0
+      min: 827.5
+      max: 1102.5
     youngsModulus:
       value: 15.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 50.0
+      min: 11.4
+      max: 11759999999.4
     oxidationResistance:
       value: 0.96
       unit: dimensionless (scale 0-1, 1=excellent resistance)
-      confidence: 95
       source: ai_research
-      min: 300.0
-      max: 1200.0
+      min: 0.00095
+      max: 1154.99995
     laserReflectivity:
       value: 0.24
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 70.0
+      min: 0.215
+      max: 0.325
     thermalConductivity:
       value: 0.93
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.08
       max: 2.5
     thermalExpansion:
       value: 6.5e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 20.0
+      min: 6.0e-06
+      max: 1.2e-05
     density:
       value: 2100.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.6
-      max: 3.2
+      min: 682.5
+      max: 3267.5
     hardness:
       value: 2.5
       unit: Mohs
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 6.0
+      min: 0.285
+      max: 36.735
     corrosionResistance:
       value: 0.92
       unit: dimensionless (normalized resistance index)
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 8.0
+      min: 0.019
+      max: 104.999
     laserAbsorption:
       value: 0.72
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 15.0
+      min: 0.114
+      max: 125999.994
     compressiveStrength:
       value: 14.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 100.0
+      min: 5
+      max: 100
     thermalDiffusivity:
       value: 4.08e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 1.0
+      min: 0.0
+      max: 1.0e-06
     flexuralStrength:
       value: 7.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 20.0
+      min: 0.845
+      max: 13.055
     tensileStrength:
       value: 3.5
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 15.0
+      min: 1
+      max: 15
     fractureToughness:
       value: 1.2
       unit: MPa m^{1/2}
-      confidence: 95
       source: ai_research
       min: 0.15
       max: 1.1
-    percentage: 69.6
+    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 30.4
+    percentage: 40.0
     absorptivity:
       value: 0.75
       unit: dimensionless
@@ -226,162 +212,17 @@ materialProperties:
       min: 0.001
       max: 1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Terracotta surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Terracotta absorption and
-      minimal substrate damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control and adequate energy
-      density
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence level sufficient for contaminant removal while preserving
-      Terracotta substrate
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning and process efficiency
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal buildup
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Effective dwell time per spot for contaminant ablation without substrate
-      damage
-    unit: μs
-    value: 100
-faq:
-- answer: For terracotta cleaning, 1064 nm near-infrared lasers notably excel by aligning
-    with the absorption of iron oxides and clays, thus avoiding cracking or discoloration—unlike
-    532 nm, which can lead to deeper heating. Target 2.5 J/cm² fluence, and test on
-    sample tiles first.
-  question: What laser wavelengths are most effective for cleaning terracotta surfaces
-    without causing cracking or discoloration?
-- answer: Terracotta's high porosity, particularly for 1064 nm laser light, enables
-    deeper penetration into pores, thus elevating subsurface heating risks during
-    removal of embedded salts or dirt. To avoid structural weakening, adjust pulse
-    energy to 2.5 J/cm² using 10 ns widths, which balances ablation efficiency with
-    thermal control for effective, safe cleaning.
-  question: How does the high porosity of terracotta impact the laser cleaning process,
-    particularly in removing embedded salts or dirt?
-  topic_keyword: high porosity
-  topic_statement: Low energy pulses prevent weakening
-- answer: When laser-cleaning terracotta artifacts with a 1064 nm beam at 2.5 J/cm²
-    fluence, particularly prioritize robust ventilation systems to capture silica-laden
-    clay particles and fumes. Operators must wear N95 masks, goggles, and gloves for
-    dust protection. Notably, on painted surfaces, monitor temperatures closely to
-    prevent pigment degradation from localized heating.
-  question: What safety precautions are needed when using lasers to clean terracotta
-    artifacts, especially regarding airborne clay particles or fumes?
-  topic_keyword: airborne clay particles
-  topic_statement: Ventilation traps silica-laden particles
-- answer: Yes, laser cleaning effectively removes black crusts from historical terracotta
-    facades via layer-by-layer ablation, particularly sparing the fragile clay matrix.
-    Notably, at 1064 nm wavelength and 2.5 J/cm² fluence, it outperforms mechanical
-    scraping by minimizing erosion, as demonstrated in European architectural restorations.
-  question: Can laser cleaning effectively remove black crusts from historical terracotta
-    facades without damaging the underlying clay matrix?
-  topic_keyword: underlying clay matrix
-  topic_statement: Spares fragile clay matrix
-- answer: For terracotta pottery cleaning in archaeological contexts, I suggest nanosecond
-    pulses of about 10 ns at a fluence of 2.5 J/cm² with 1064 nm wavelength. Particularly,
-    this short-pulse method selectively ablates organic residues while preserving
-    the delicate surface patina, unlike longer pulses that may cause deeper thermal
-    damage. Thus, set scan speed to 500 mm/s for uniform coverage.
-  question: What are the optimal pulse durations and fluences for cleaning terracotta
-    pottery in archaeological contexts?
-  topic_keyword: pulse durations and fluences
-  topic_statement: 10 ns at 2.5 J/cm²
-- answer: Terracotta, particularly with its low thermal conductivity, traps heat during
-    laser treatment and risks localized cracks at 2.5 J/cm² fluence. Notably, scanning
-    at 500 mm/s with 50% overlap promotes dissipation, thus boosting cleaning efficiency
-    equally for glazed and unglazed surfaces using 100 W power.
-  question: How does the low thermal conductivity of terracotta affect heat buildup
-    during laser surface treatment?
-  topic_keyword: low thermal conductivity
-  topic_statement: Traps heat risking localized cracks
-- answer: The inherent porosity of terracotta, particularly after laser cleaning at
-    2.5 J/cm² fluence with a 1064 nm wavelength, can increase re-wetting risks and
-    thus accelerate weathering on roofs. Integrating hydrophobic coatings with this
-    process boosts water repellency, promoting long-term outdoor durability by limiting
-    moisture penetration.
-  question: Are there specific concerns about laser cleaning terracotta roofs, such
-    as potential for water absorption post-treatment?
-  topic_keyword: water absorption post-treatment
-  topic_statement: Mitigate re-wetting with hydrophobic coatings
-- answer: When using a 1064 nm laser at 2.5 J/cm² fluence to clean terracotta, carbonates
-    like calcite in impurities particularly decompose thermally into lime and CO₂,
-    while sulfates release SO₂, thus generating off-gassing risks that demand ventilation.
-    Pre-cleaning spectroscopic scans detect these minerals, enabling parameter adjustments
-    to prevent substrate damage.
-  question: What chemical reactions might occur when lasers interact with mineral
-    impurities in terracotta during cleaning?
-- answer: For terracotta conservation in museums, ICOM-CC guidelines particularly
-    emphasize non-destructive techniques like spectroscopy, applied before and after
-    cleaning, to protect the porous substrate. Notably, EN standards require precise
-    documentation of parameters—such as 1064 nm wavelength and 2.5 J/cm² fluence—for
-    uniform contaminant removal without inducing thermal stress on the delicate material.
-  question: How do industry standards guide the use of laser cleaning for terracotta
-    in museum conservation projects?
-  topic_keyword: museum conservation projects
-  topic_statement: Safeguards porous substrate with testing
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Masonry
-  href: /materials/masonrys
-- label: Concrete
-  href: /materials/masonry/concrete
-- label: Terracotta
-  href: /materials/masonry/concrete/terracotta
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922865Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922871Z'
+  structure_version: '2.0'

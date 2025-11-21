@@ -1,217 +1,194 @@
 name: Porcelain
-category: Ceramic
+slug: porcelain
+category: ceramic
 subcategory: oxide
-title: Porcelain Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Porcelain
-description: Laser cleaning parameters for Porcelain
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Porcelain Laser Cleaning
+subtitle: This process efficiently revives porcelain's delicate translucent glow.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Porcelain
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Ceramic
+  href: /materials/ceramics
+- label: Oxide
+  href: /materials/ceramic/oxide
+- label: Porcelain
+  href: /materials/ceramic/oxide/porcelain
 images:
   hero:
-    alt: Porcelain surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Porcelain surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/porcelain-laser-cleaning-hero.jpg
   micro:
-    alt: Porcelain surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Porcelain microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/porcelain-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the porcelain surface looks very rough and heavily
-    contaminated. Fine particles scatter and cluster, building irregular layers that
-    hide the original smooth glaze. Contaminants appear as dark, amorphous deposits—mostly
-    organic residues and mineral dusts—that cling tightly, resulting in discoloration.
-    From a practical view, surface degradation shows in micro-cracks and pitting,
-    where etching weakens the ceramic structure, boosting porosity and drawing in
-    more soiling.
-  after: After ultrafast laser cleaning, the porcelain surface turns very smooth and
-    glossy, restoring its original clean condition effectively. This process removes
-    contaminants while preserving the ceramic's fine texture; material integrity remains
-    intact, free from cracks or alterations. Restoration quality is excellent for
-    general applications.
-  author: Ikmanda Roswati
-  character_count:
-    after: 346
-    before: 479
-  generated: '2025-10-25T15:03:49.714799Z'
-  generation_method: ai_research
-  word_count:
-    after: 45
-    before: 61
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 73.1
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 10000000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 10000000000.0
-      max: 1.0e+16
+      min: 0.0
+      max: 105000000000000.0
     fractureToughness:
       value: 0.9
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 10.0
+      min: 0.565
+      max: 5.735
     thermalDestruction:
       value: 1573.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 3900.0
     specificHeat:
       value: 880.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 250.0
+      min: 250
       max: 2500.0
     youngsModulus:
       value: 70.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 600.0
+      min: 39.95
+      max: 679.05
     oxidationResistance:
       value: 0.0
       unit: mg/(cm²·h)
-      confidence: 100
       source: ai_research
-      min: 600.0
-      max: 2400.0
+      min: 0.0
+      max: 2310.0
     laserReflectivity:
       value: 0.85
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 90.0
+      min: 0.04925
+      max: 0.39575
     thermalConductivity:
       value: 1.5
       unit: W/m·K
-      confidence: 95
       source: ai_research
-      min: 0.8
-      max: 120.0
+      min: 1.425
+      max: 126.975
     thermalExpansion:
       value: 5.5e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 14.0
+      min: 3.0e-06
+      max: 1.1e-05
     density:
       value: 2.4
       unit: g/cm³
-      confidence: 95
       source: ai_research
-      min: 2.3
-      max: 16.0
+      min: 1.7385
+      max: 16.2915
     hardness:
       value: 620.0
       unit: HV
-      confidence: 95
       source: ai_research
-      min: 6.0
-      max: 2500.0
+      min: 6.65
+      max: 3149.65
     corrosionResistance:
       value: 0.96
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 8.0
-      max: 10.0
+      min: 0.000475
+      max: 262.499975
     laserAbsorption:
       value: 25000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 50.0
+      min: 0.3515
+      max: 2624.9815
     compressiveStrength:
       value: 414.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 7000.0
+      min: 95.0
+      max: 4090.0
     thermalDiffusivity:
       value: 6.9e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.005
-      max: 120.0
+      min: 1.0e-06
+      max: 7.3e-05
     flexuralStrength:
       value: 70.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 2500.0
+      min: 45.6
+      max: 1152.6
     tensileStrength:
       value: 55.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 5.0
-      max: 600.0
+      max: 600
     porosity:
       value: 0.3
       unit: '%'
-      confidence: 95
       source: ai_research
-      min: 0.0
-      max: 30.0
+      min: 0
+      max: 30
     ablationThreshold:
       value: 1.8
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 1.5
-      max: 5.0
+      min: 0.566
+      max: 3.954
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 26.9
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.25
       unit: dimensionless
@@ -254,161 +231,17 @@ materialProperties:
       min: 0.001
       max: 1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Porcelain surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Porcelain absorption and minimal
-      substrate damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Porcelain surfaces
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal while preserving
-      Porcelain substrate
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning efficiency
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal buildup
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning with thermal control
-    unit: μs
-    value: 100
-faq:
-- answer: For historical porcelain, a straightforward choice is the 1064 nm wavelength
-    with fluence under 2.5 J/cm² and nanosecond pulses. That method efficiently removes
-    contaminants like soot while safeguarding the delicate glaze. Test these parameters
-    on a concealed spot first to prevent micro-cracking or gloss changes.
-  question: What laser settings (wavelength, power, pulse duration) are safe and effective
-    for cleaning soot, grime, or biological growth from historical porcelain without
-    damaging the glaze?
-- answer: Using a 2.5 J/cm² fluence and 100 µm spot size, the 1064 nm laser straightforwardly
-    ablates metal staining from porcelain. This process exploits the glaze's strong
-    thermal shock resistance to efficiently vaporize contaminants, sidestepping the
-    substrate etching risks from chemical poultices' extended contact.
-  question: Can a laser safely remove metal staining (like rust or bronze drips) from
-    a porcelain surface without etching or discoloring it?
-  topic_keyword: etching or discoloring
-  topic_statement: Glaze's high thermal shock resistance
-- answer: Glazed porcelain's high reflectivity at 1064 nm poses serious stray radiation
-    risks. For practical safety, operators should wear wavelength-specific laser safety
-    glasses, as this process requires a 2.5 J/cm² fluence that's mostly reflected,
-    not absorbed, by the substrate.
-  question: How does the high reflectivity of a glazed porcelain surface affect the
-    laser cleaning process and operator safety?
-  topic_keyword: high reflectivity
-  topic_statement: Requires wavelength-specific safety glasses
-- answer: This process of laser cleaning on crazed porcelain risks thermal stress
-    propagation at fluences above 2.5 J/cm², potentially fusing contaminants within
-    micro-fractures. For such delicate pieces, practical non-thermal alternatives
-    help avoid worsening existing hairline cracks.
-  question: Is laser cleaning suitable for porcelain with existing hairline cracks
-    (crazing), or does it risk worsening the damage?
-  topic_keyword: hairline cracks (crazing)
-  topic_statement: Risks thermal stress propagation
-- answer: Over-cleaning can straightforwardly cause glaze ablation if fluence tops
-    ~2.5 J/cm². Watch for high-pitched acoustic shifts and permanent surface matting,
-    clear signs of damage. This process at 1064 nm wavelength efficiently balances
-    contaminant removal with substrate protection.
-  question: What is the risk of 'over-cleaning' or ablating the actual porcelain glaze
-    when trying to remove a tenacious contaminant?
-  topic_keyword: porcelain glaze
-  topic_statement: Glaze ablation above 2.5 J/cm²
-- answer: Laser cleaning at 2.5 J/cm² using nanosecond pulses efficiently yields a
-    stable, non-invasive surface on porcelain. For weathered archaeological pieces,
-    this process of applying a silica-based consolidant ensures the long-term stability
-    of the cleaned glaze.
-  question: After laser cleaning porcelain, is any post-treatment or protective coating
-    required to stabilize the surface?
-  topic_keyword: stabilize the surface
-  topic_statement: Silica consolidant for glaze stability
-- answer: Laser cleaning at 2.5 J/cm² straightforwardly removes conductive salt layers
-    from porcelain, efficiently restoring dielectric integrity. This process gets
-    verified via leakage current measurements and hydrophobicity tests, serving as
-    a practical, non-abrasive option over traditional sandblasting that safeguards
-    the substrate.
-  question: For industrial porcelain (e.g., electrical insulators), can laser cleaning
-    restore dielectric strength by removing all conductive pollution, and how is effectiveness
-    verified?
-  topic_keyword: dielectric strength
-  topic_statement: Restores dielectric integrity
-- answer: Hard-paste porcelain delivers superior thermal stability, enabling higher
-    fluence up to 2.5 J/cm² in a straightforward way. Conversely, soft-paste's lower
-    vitrification point and greater thermal expansion call for a practical strategy
-    involving reduced power and precise thermal management to avoid glaze damage and
-    micro-fracturing. Identifying the material thus becomes an essential initial step.
-  question: How do the different compositions of hard-paste vs. soft-paste porcelain
-    affect the laser cleaning strategy and risk assessment?
-  topic_keyword: hard-paste vs. soft-paste
-  topic_statement: Adjusts fluence for thermal stability
-- answer: Laser cleaning stands out for porcelain with its non-contact precision,
-    crucial for detailed relief designs. Applying a fluence of 2.5 J/cm² and a 100
-    µm spot, this process efficiently removes contaminants without mechanical damage
-    or chemical traces. Straightforward results keep the fragile ceramic base fully
-    intact, safeguarding its structure and visual appeal.
-  question: What are the key advantages of using a laser over chemical or mechanical
-    (abrasive) methods for cleaning delicate porcelain artifacts?
-  topic_keyword: delicate porcelain artifacts
-  topic_statement: Non-contact precision preserves integrity
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Ceramic
-  href: /materials/ceramics
-- label: Oxide
-  href: /materials/ceramic/oxide
-- label: Porcelain
-  href: /materials/ceramic/oxide/porcelain
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922474Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922480Z'
+  structure_version: '2.0'

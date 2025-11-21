@@ -111,11 +111,15 @@ class ThresholdManager:
         """
         Get dynamic Winston AI threshold based on learned success patterns.
         
-        Strategy:
-        1. Query top 25% of successful content by composite_quality_score
-        2. Find 75th percentile of their AI scores
-        3. Use that as threshold (with conservative factor)
-        4. Fall back to DEFAULT_WINSTON_THRESHOLD if insufficient data
+        Strategy (ADAPTIVE LEARNING):
+        1. Query ALL samples with valid Winston scores (ai_score > 0)
+        2. Calculate percentiles to understand achievable distribution
+        3. If we have passing samples (ai_score <= 0.25): Use 75th percentile of those
+        4. If no passing samples but have data: Use median + margin (50th percentile * 1.5)
+        5. Fall back to config default only if no data at all
+        
+        This allows the system to learn realistic thresholds from actual content
+        rather than failing against an unachievable static threshold.
         
         Args:
             use_learned: If False, return default (for testing)
@@ -130,50 +134,65 @@ class ThresholdManager:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            # Get top performers (composite_quality_score >= 0.80)
+            # Get ALL samples with valid Winston scores
             query = """
-                SELECT ai_score
+                SELECT ai_score, success
                 FROM detection_results
-                WHERE success = 1
-                  AND composite_quality_score IS NOT NULL
-                  AND composite_quality_score >= 0.80
-                ORDER BY composite_quality_score DESC
+                WHERE ai_score > 0 AND ai_score IS NOT NULL
+                ORDER BY ai_score ASC
             """
             
             cursor.execute(query)
             rows = cursor.fetchall()
             conn.close()
             
-            if len(rows) < self.min_samples:
+            if len(rows) < 2:
                 logger.info(
                     f"[WINSTON THRESHOLD] Insufficient data ({len(rows)} samples), "
                     f"using config fallback {self.fallback_winston}"
                 )
                 return self.fallback_winston
             
-            # Get AI scores from top performers
-            ai_scores = [row[0] for row in rows]
+            # Separate passing and all scores
+            all_scores = [row[0] for row in rows]
+            passing_scores = [row[0] for row in rows if row[1] == 1]  # success = 1
             
-            # Calculate 75th percentile (learn from best 25%)
-            learned_threshold = statistics.quantiles(ai_scores, n=100)[self.PERCENTILE_TARGET - 1]
+            # Strategy 1: Learn from passing samples if we have them
+            if len(passing_scores) >= 2:
+                # Use maximum of passing samples + small margin
+                learned_threshold = max(passing_scores) * 1.1  # 10% margin above best
+                
+                logger.info(
+                    f"[WINSTON THRESHOLD] Learned {learned_threshold:.3f} from {len(passing_scores)} passing samples "
+                    f"(best: {min(passing_scores):.3f}, worst: {max(passing_scores):.3f})"
+                )
+            else:
+                # Strategy 2: No passing samples - use median of all attempts with generous margin
+                median_score = statistics.median(all_scores)
+                learned_threshold = min(median_score, 0.50)  # Cap at 50% AI to remain meaningful
+                
+                logger.info(
+                    f"[WINSTON THRESHOLD] No passing samples, learned {learned_threshold:.3f} from median "
+                    f"of {len(all_scores)} attempts (range: {min(all_scores):.3f}-{max(all_scores):.3f})"
+                )
             
-            # Apply conservative factor (be 95% as strict)
-            adjusted_threshold = learned_threshold * self.CONSERVATIVE_FACTOR
-            
-            # Ensure reasonable bounds (don't be too lenient or too strict)
-            final_threshold = max(0.25, min(0.40, adjusted_threshold))
-            
-            logger.info(
-                f"[WINSTON THRESHOLD] Learned {final_threshold:.3f} from {len(ai_scores)} samples "
-                f"(75th percentile: {learned_threshold:.3f})"
-            )
+            # Ensure reasonable bounds (21.5% to 30% AI maximum based on 2 real successes)
+            # Analysis of successful descriptions (Steel 0.195 AI, Zinc 0.018 AI):
+            # - Maximum successful: 0.195 AI (19.5% AI)
+            # - With 10% margin: 0.215 AI (21.5% AI maximum)
+            # - Upper bound: 0.30 for initial learning phase
+            # 
+            # CRITICAL INSIGHT: Problem is content quality (current: 1.0 AI), not threshold
+            # These 2 successes were conversational ("you must use", "We typically use")
+            # vs current formal technical style ("Lead stands out", "Its thermal conductivity...")
+            final_threshold = max(0.215, min(0.30, learned_threshold))
             
             return final_threshold
             
         except Exception as e:
             logger.warning(
                 f"[WINSTON THRESHOLD] Learning failed: {e}, "
-                f"using default {self.DEFAULT_WINSTON_THRESHOLD}"
+                f"using fallback {self.fallback_winston}"
             )
             return self.fallback_winston
     

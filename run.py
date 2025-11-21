@@ -140,6 +140,7 @@ from shared.commands import (
     handle_caption_generation,
     handle_subtitle_generation,
     handle_faq_generation,
+    handle_description_generation,
     deploy_to_production,
     handle_material_audit,
     handle_data_completeness_report,
@@ -191,6 +192,7 @@ def main():
     parser.add_argument("--caption", help="Generate AI-powered caption")
     parser.add_argument("--subtitle", help="Generate AI-powered subtitle")
     parser.add_argument("--faq", help="Generate AI-powered FAQ")
+    parser.add_argument("--description", help="Generate AI-powered description")
     
     # Batch Generation Commands
     parser.add_argument("--batch-subtitle", help="Generate subtitles for multiple materials (comma-separated) or --all")
@@ -418,6 +420,11 @@ def main():
     
     if args.faq:
         result = handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
+        # Per-iteration learning happens inline - no global evaluation needed
+        return result
+    
+    if args.description:
+        result = handle_description_generation(args.description, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     

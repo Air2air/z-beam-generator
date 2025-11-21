@@ -1,166 +1,157 @@
 name: Terbium
-category: Rare-Earth
+slug: terbium
+category: rare-earth
 subcategory: lanthanide
-title: Terbium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Terbium
-description: Laser cleaning parameters for Terbium
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Terbium Laser Cleaning
+subtitle: Precision Laser Cleaning Efficiently Preserves Terbium's Magnetic Integrity
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Terbium
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Rare Earth
+  href: /materials/rare-earths
+- label: Lanthanide
+  href: /materials/rare-earth/lanthanide
+- label: Terbium
+  href: /materials/rare-earth/lanthanide/terbium
 images:
   hero:
-    alt: Terbium surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Terbium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/terbium-laser-cleaning-hero.jpg
   micro:
-    alt: Terbium surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Microscopic view of Terbium surface after laser cleaning showing detailed surface structure
     url: /images/material/terbium-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the terbium surface looks straightforwardly rough
-    and pitted, with heavy dust particles and oxide layers causing contamination.
-    These impurities stick firmly, creating uneven clusters that obscure the natural
-    rare-earth smoothness. Cracks and dull shine reveal clear degradation, making
-    the material unsuitable for electronics or medical applications. This process
-    of cleaning is essential to revive its original qualities.
-  after: The cleaned Terbium surface looks straightforward very smooth and clean.
-    This process delivers high restoration quality, keeping material integrity intact
-    for electronics and medical applications.
-  author: Ikmanda Roswati
-  character_count:
-    after: 171
-    before: 432
-  generated: '2025-10-25T15:28:55.335529Z'
-  generation_method: ai_research
-  word_count:
-    after: 23
-    before: 60
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
     thermalDestruction:
       value: 1629.0
       unit: K
-      confidence: 100
       source: ai_research
       min: 273.0
       max: 3520.0
     specificHeat:
       value: 182.0
       unit: J/(kg·K)
-      confidence: 99
       source: ai_research
-      min: 150.0
-      max: 200.0
+      min: 113.4
+      max: 456.6
     youngsModulus:
       value: 55.3
       unit: GPa
-      confidence: 100
       source: ai_research
-      min: 25.0
-      max: 65.0
+      min: 15.835
+      max: 63.465
     oxidationResistance:
       value: -2.31
       unit: V
-      confidence: 100
       source: ai_research
-      min: 300.0
-      max: 600.0
+      min: 0.0
+      max: 149.1
     laserReflectivity:
       value: 0.92
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 40.0
-      max: 75.0
+      min: 0.395
+      max: 0.945
     thermalConductivity:
       value: 11.5
       unit: W/m·K
-      confidence: 100
       source: ai_research
-      min: 10.0
-      max: 17.0
+      min: 10.375
+      max: 17.525
     thermalExpansion:
       value: 1.1e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 12.0
+      min: 6.0e-06
+      max: 26.25
     density:
       value: 8.234
       unit: g/cm³
-      confidence: 100
       source: ai_research
-      min: 6.1
-      max: 9.8
+      min: 4.2681
+      max: 8.7539
     hardness:
       value: 863.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 25.0
-      max: 60.0
+      min: 0.3819
+      max: 906.1299
     ablationThreshold:
       value: 1.15
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 2.0
+      min: 0.6475
+      max: 2.9025
     absorptivity:
       value: 0.15
       unit: (dimensionless)
-      confidence: 95
       source: ai_research
       min: 0.25
       max: 0.6
     boilingPoint:
       value: 3503.0
       unit: K
-      confidence: 100
       source: ai_research
-      min: 2800.0
-      max: 3700.0
+      min: 1705.25
+      max: 3833.75
     absorptionCoefficient:
       value: 420000.0
       unit: cm^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.3
-      max: 0.8
-    percentage: 65.0
+      min: 298300.0
+      max: 65924300.0
+    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
     absorptivity:
       value: 0.25
       unit: dimensionless
@@ -203,165 +194,18 @@ materialProperties:
       min: 0.1
       max: 100
       source: ai_research
-    percentage: 35.0
-machineSettings:
-  powerRange:
-    description: Optimal average power for Terbium oxide layer removal
-    unit: W
-    value: 45
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal Terbium absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning
-    unit: μm
-    value: 80
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Fluence threshold for Terbium oxide removal
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete oxide removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for complete coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: When removing Terbium oxide from metal substrates, the 1064 nm near-IR wavelength
-    performs straightforwardly, thanks to strong absorption in Tb compounds. This
-    process enables ablation efficiently at fluences over 2.5 J/cm², sparing the substrate.
-    Shorter 532 nm alternatives are viable but may increase thermal risks; use 50
-    kHz repetition and 500 mm/s scan speed for consistent outcomes.
-  question: What laser wavelengths are most effective for cleaning Terbium oxide contaminants
-    from metal surfaces without damaging the underlying substrate?
-  topic_keyword: Terbium oxide contaminants
-  topic_statement: 1064 nm strong Tb absorption
-- answer: Terbium's melting point around 1356°C demands a practical choice of pulse
-    durations for cleaning its doped alloys, since extended exposures can cause unwanted
-    heat accumulation. Picosecond pulses outperform nanoseconds by minimizing heat-affected
-    zones, enabling precise ablation. At 2.5 J/cm² fluence and 15 ns width, this process
-    delivers efficient oxide removal while preserving the base material.
-  question: How does Terbium's high melting point affect the choice of pulse duration
-    in laser cleaning processes for Terbium-doped alloys?
-- answer: Laser cleaning Terbium-containing materials at 2.5 J/cm² fluence releases
-    toxic rare-earth vapors, mainly oxides, posing serious inhalation risks like lung
-    irritation and long-term respiratory damage. These fumes, as rare earths, accumulate
-    readily in confined spaces. For practical safety, deploy OSHA-compliant local
-    exhaust systems to efficiently capture and vent them at the source, maintaining
-    safe airflow.
-  question: What safety hazards arise from laser-induced vapors when cleaning Terbium-containing
-    materials, and what ventilation is required?
-  topic_keyword: laser-induced vapors
-  topic_statement: Releases toxic rare-earth vapors
-- answer: Yes, you can achieve residue-free cleaning of TGG crystals for Faraday isolators
-    straightforwardly with a 1064 nm laser at fluences below 2.5 J/cm² to avoid cracking.
-    This process involves 50% beam overlap across three passes at 500 mm/s scan speed,
-    then verify via optical microscopy for smooth surfaces and no oxide remnants.
-  question: Is it possible to achieve residue-free laser cleaning of Terbium Gallium
-    Garnet (TGG) crystals used in laser optics?
-  topic_keyword: Terbium Gallium Garnet
-  topic_statement: Low fluence prevents cracking
-- answer: From a practical viewpoint, organic contaminants adhere strongly to Terbium
-    phosphors due to chemical affinity, complicating their removal with 20-50 W fiber
-    lasers at 1064 nm wavelength. Efficiency falls below 45 W, inviting incomplete
-    ablation and surface roughness up to 2.5 J/cm² fluence, so multiple passes at
-    500 mm/s scan speed prove essential in this process.
-  question: What are the common challenges in removing organic contaminants from Terbium-based
-    phosphors using fiber lasers?
-  topic_keyword: Terbium-based phosphors
-  topic_statement: Chemical affinity complicates removal
-- answer: In Tb-Fe alloys, terbium's paramagnetism creates weak fields at room temperature,
-    straightforwardly limiting any disruption to laser scanning in magnet production.
-    Yet, stronger ferromagnetism below 220 K may slightly deflect galvanometer mirrors.
-    For effective oxide removal, this process uses 1064 nm wavelength at 2.5 J/cm²
-    fluence and 45 W power to achieve uniform ablation without magnetic interference.
-  question: How do the magnetic properties of Terbium alloys influence laser cleaning
-    efficacy in surface treatment for magnet manufacturing?
-  topic_keyword: magnetic properties of Terbium
-  topic_statement: Minimal disruption from paramagnetism
-- answer: Handling waste from this process of laser cleaning Terbium surfaces in semiconductor
-    production follows EPA's RCRA rules for rare-earth materials, classifying them
-    as hazardous owing to toxicity risks from ablated particles produced at fluences
-    of 2.5 J/cm². Given its critical nature, focus on recycling these particles efficiently
-    via specialized protocols to cut environmental discharge and reclaim value.
-  question: What environmental regulations apply to disposing of waste from laser
-    cleaning Terbium surfaces in semiconductor production?
-  topic_keyword: Terbium surfaces
-  topic_statement: RCRA hazardous rare-earth waste
-- answer: Femtosecond lasers handle Terbium particle re-deposition in doped glass
-    cleaning efficiently, with ultra-short pulses that confine the ablation plume
-    and curb its expansion—unlike nanosecond systems, whose 15 ns durations scatter
-    debris farther. For Terbium oxides, this process calls for a 1064 nm wavelength
-    and 2.5 J/cm² fluence to keep surfaces pristine in electronics or medical applications.
-  question: Can femtosecond lasers prevent re-deposition of Terbium particles during
-    the cleaning of doped glass substrates?
-  topic_keyword: re-deposition of Terbium particles
-  topic_statement: Femtosecond lasers prevent re-deposition
-- answer: Terbium's density of 8.23 g/cm³ provides practical robustness to its thermal
-    conductivity, shaping heat dissipation under laser exposure. With moderate reflectivity
-    spanning UV-IR wavelengths—particularly at 1064 nm—it enables efficient absorption
-    for ablation. This process hits a key threshold near 2.5 J/cm², permitting precise
-    oxide removal without substrate harm in electronics or aerospace cleaning.
-  question: What are the key physical properties of Terbium that determine its laser
-    ablation threshold in surface treatment applications?
-  topic_keyword: laser ablation threshold
-  topic_statement: Threshold at 2.5 J/cm²
-- answer: In this process, shield Terbium's reactive surfaces with argon gas during
-    1064 nm laser cleaning to curb oxidation from ambient air, preserving its rare-earth
-    integrity. Apply in-situ Raman spectroscopy straightforwardly for real-time detection
-    of oxide layers. Limit fluence to 2.5 J/cm² for precise ablation without sparking
-    further reactions.
-  question: How to monitor and control oxidation of Terbium surfaces during laser
-    cleaning to maintain material integrity?
-  topic_keyword: oxidation of Terbium surfaces
-  topic_statement: Argon shielding curbs oxidation
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Rare Earth
-  href: /materials/rare-earths
-- label: Lanthanide
-  href: /materials/rare-earth/lanthanide
-- label: Terbium
-  href: /materials/rare-earth/lanthanide/terbium
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+    percentage: 40.0
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922852Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922858Z'
+  structure_version: '2.0'

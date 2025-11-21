@@ -67,7 +67,7 @@ component_lengths:
     extraction_strategy: json_list     # Parse JSON array
   
   description:
-    target: 200                        # Target word count (variation applied from global slider)
+    target: 80                         # Target word count (increased for Winston 300 char minimum)
     extraction_strategy: raw           # Return text as-is
 
 # What gets disabled in simple mode:

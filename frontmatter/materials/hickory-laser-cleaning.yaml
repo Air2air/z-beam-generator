@@ -1,199 +1,181 @@
 name: Hickory
-category: Wood
+slug: hickory
+category: wood
 subcategory: hardwood
-title: Hickory Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Hickory
-description: Laser cleaning parameters for Hickory
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
+  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Hickory Laser Cleaning
+subtitle: Basically, revive Hickory's pretty dense interlocking grain using precise laser cleaning techniques.
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+description: Laser cleaning parameters for Hickory
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/woods
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Hickory
+  href: /materials/wood/hardwood/hickory
 images:
   hero:
-    alt: Hickory surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Hickory surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hickory-laser-cleaning-hero.jpg
   micro:
-    alt: Hickory surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Hickory microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/hickory-laser-cleaning-micro.jpg
-caption:
-  before: Microscopy reveals Hickory's surface pretty marred by embedded dust particles,
-    leading to pitting and fiber erosion. Basically, this degrades cleaning in furniture
-    production.
-  after: Once you've cleaned Hickory wood surfaces, the material delivers a fairly
-    smooth, residue-free finish that effectively restores its original grain and warm
-    tones. Restoration quality stays pretty high, with no damage to structural integrity
-    or natural oils. This method typically aids furniture maintenance, yielding long-lasting,
-    vibrant results without surface degradation.
-  author: Todd Dunning
-  character_count:
-    after: 368
-    before: 152
-  generated: '2025-10-25T14:28:56.851088Z'
-  generation_method: ai_research
-  word_count:
-    after: 48
-    before: 20
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.42
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.33
-      max: 4.4
+      min: 0.259
+      max: 2.041
     thermalDestruction:
       value: 613.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 600.0
+      min: 226.1
+      max: 641.9
     specificHeat:
       value: 1380.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 800.0
-      max: 2500.0
+      min: 1.311
+      max: 1553.931
     youngsModulus:
       value: 14.9
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 20000.0
+      min: 3.2775
+      max: 11234.8275
     oxidationResistance:
       value: 18.2
       unit: '% (volume)'
-      confidence: 95
       source: ai_research
-      min: 82.0
-      max: 204.0
+      min: 0.095
+      max: 549.145
     laserReflectivity:
       value: 0.142
       unit: dimensionless
-      confidence: 92
       source: ai_research
-      min: 10.0
-      max: 60.0
+      min: 0.01575
+      max: 0.43925
     thermalConductivity:
       value: 0.163
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.04
       max: 0.4
     thermalExpansion:
       value: 3.4e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 60.0
+      min: 1.0e-06
+      max: 5.8e-05
     density:
       value: 800.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.12
-      max: 1.5
+      min: 0.399
+      max: 955.479
     hardness:
       value: 8096.0
       unit: N
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 5000.0
+      min: 399.0
+      max: 12589.5
     corrosionResistance:
       value: 0.75
       unit: dimensionless (normalized durability index)
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 8.0
+      min: 0.0
+      max: 4.725
     laserAbsorption:
       value: 0.82
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 50.0
+      min: 0.779
+      max: 335999.959
     compressiveStrength:
       value: 51.6
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 80.0
+      min: 20
+      max: 80
     thermalDiffusivity:
       value: 1.25e-07
       unit: m^2/s
-      confidence: 95
       source: ai_research
-      min: 0.0001
-      max: 0.4
+      min: 0.0
+      max: 0.0
     flexuralStrength:
       value: 126.0
       unit: MPa
-      confidence: 100
       source: ai_research
-      min: 40.0
-      max: 150.0
+      min: 19.15
+      max: 147.85
     tensileStrength:
       value: 86.2
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 9.53
+      max: 209.07
     porosity:
       value: 0.52
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 12.0
-      max: 65.0
+      min: 0.38885
+      max: 0.78815
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.85
       unit: dimensionless
@@ -236,145 +218,16 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Hickory surface cleaning without charring
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength optimized for Hickory absorption and minimal penetration
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Optimal beam diameter for precision cleaning resolution
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: High repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal from Hickory
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Scanning speed for efficient area coverage without thermal damage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning without over-processing
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Given Hickory's pretty high lignin content, go with nanosecond pulses at
-    1064 nm wavelength and 1.2 J/cm² fluence. This basically cuts down thermal input
-    to avoid scorching. Keep average power under 100 W and scan speed at 500 mm/s
-    for solid contaminant removal without yellowing the wood.
-  question: What are the optimal laser parameters (wavelength, power, pulse duration)
-    for cleaning contaminants from Hickory without burning or yellowing the surface?
-  topic_keyword: burning or yellowing
-  topic_statement: Nanosecond 1064 nm low fluence
-- answer: For hickory, go with a defocused beam at 1.2 J/cm² and 500 mm/s scan speed.
-    This pretty gently ablates the superficial soot layer, all while minimizing heat
-    transfer to the underlying wood and preventing further damage. Basically, the
-    trick is a high repetition rate paired with very low fluence to steer clear of
-    cooking the compromised surface.
-  question: How do you remove smoke stains or soot from a Hickory surface using a
-    laser without causing further damage?
-  topic_keyword: smoke stains or soot
-  topic_statement: Low fluence prevents cooking
-- answer: This is basically a high-risk application on Hickory. The 1064 nm wavelength
-    and 1.2 J/cm² fluence must ablate the finish without interacting with the wood's
-    lignin, which is fairly critical for preserving its natural color.
-  question: Can a laser effectively clean old, oxidized finish or paint from Hickory
-    while preserving the wood's natural color and grain?
-  topic_keyword: natural color and grain
-  topic_statement: Avoid lignin interaction for preservation
-- answer: Hickory's pretty high density and lignin levels make it prone to carbonization
-    above 1.2 J/cm² energy densities. That's fairly different from less dense woods
-    like pine, which hold fewer organic polymers that char readily under 1064 nm laser
-    irradiation.
-  question: Why does Hickory tend to turn dark or black when laser cleaned, unlike
-    Maple or Pine?
-- answer: Laser cleaning at 1.2 J/cm² will basically ablate the wood's top layer,
-    right where the patina resides. This subtractive process fundamentally alters
-    the antique's character, so it's not recommended for valuable Hickory pieces—preserving
-    that original surface is fairly critical.
-  question: Is laser cleaning safe for restoring antique Hickory furniture or tools,
-    or does it risk removing the patina?
-  topic_keyword: removing the patina
-  topic_statement: Ablates patina top layer
-- answer: When laser cleaning hickory at 1.2 J/cm², it typically produces fine particulates
-    and potentially toxic VOCs from old finishes. A Class I enclosure with HEPA and
-    activated carbon filtration is basically essential for capturing these hazardous
-    byproducts and protecting operators.
-  question: What are the primary fume extraction and safety concerns when laser cleaning
-    Hickory, especially if it has old finishes?
-  topic_keyword: old finishes
-  topic_statement: Generates toxic VOCs particulates
-- answer: Hickory's high density typically causes slower lateral heat diffusion, concentrating
-    thermal energy at the beam's 100 µm spot. This demands fairly precise tuning to
-    our 1.2 J/cm² fluence threshold to avoid charring, unlike more forgiving softwoods.
-  question: How does the high density and Janka hardness of Hickory affect the laser
-    cleaning process compared to softer woods?
-- answer: For Hickory, a fairly light post-treatment sanding effectively strips away
-    the superficial heat-affected layer that often leads to discoloration. In the
-    process, a low-power air assist basically cools the surface to ease thermal stress
-    near the 1.2 J/cm² fluence threshold. Typically, we skip pre-treatments to avoid
-    surface contamination.
-  question: Are there any surface pre-treatments or post-treatment steps recommended
-    when laser cleaning Hickory to prevent discoloration?
-  topic_keyword: prevent discoloration
-  topic_statement: Light sanding removes heat-affected layer
-- answer: Laser cleaning fairly effectively strips surface contaminants from Hickory
-    without changing its texture, via a 100W system at 500 mm/s. That said, the heat-affected
-    zone may block stain absorption, potentially causing an uneven finish. Basically,
-    it won't flatten the surface, so sanding is still needed for deep stains or leveling
-    adjustments.
-  question: For preparing Hickory for a new finish, is laser cleaning a viable alternative
-    to sanding for removing mill scale or embedded dirt?
-  topic_keyword: removing mill scale
-  topic_statement: Heat-affected zone inhibits stain absorption
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/woods
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Hickory
-  href: /materials/wood/hardwood/hickory
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922046Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922052Z'
+  structure_version: '2.0'

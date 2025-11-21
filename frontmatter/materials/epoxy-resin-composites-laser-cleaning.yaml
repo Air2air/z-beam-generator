@@ -1,199 +1,181 @@
 name: Epoxy Resin Composites
-category: Composite
+slug: epoxy-resin-composites
+category: composite
 subcategory: fiber-reinforced
-title: Epoxy Resin Composites Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Epoxy Resin Composites
-description: Laser cleaning parameters for Epoxy Resin Composites
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
   country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
   sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Epoxy Resin Composites Laser Cleaning
+subtitle: Particularly, gentle pulsed laser cleaning restores epoxy resin composites, thus avoiding thermal matrix damage.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+description: Laser cleaning parameters for Epoxy Resin Composites
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Composite
+  href: /materials/composites
+- label: Fiber Reinforced
+  href: /materials/composite/fiber-reinforced
+- label: Epoxy Resin Composites
+  href: /materials/composite/fiber-reinforced/epoxy-resin-composites
 images:
   hero:
-    alt: Epoxy Resin Composites surface during precision laser cleaning process removing
-      contamination layer at microscopic scale
+    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/epoxy-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Epoxy Resin Composites surface at 500x magnification comparing contaminated
-      state with cleaned substrate showing complete restoration
+    alt: Epoxy Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/epoxy-resin-composites-laser-cleaning-micro.jpg
-caption:
-  before: Under microscopy, the epoxy resin composite surface appears rough, notably
-    dotted with fine dust particles and oily residues. Thus, this leads to pitting,
-    alongside slight degradation.
-  after: After cleaning, the epoxy resin composite's surface now appears smooth and
-    even, particularly free from contaminants like oils or particles. This restoration
-    shows solid quality while preserving the material's integrity, with no damage
-    to its layered structure. Thus, the process effectively revives functionality,
-    upholding strength and durability for routine applications.
-  author: Yi-Chun Lin
-  character_count:
-    after: 367
-    before: 164
-  generated: '2025-10-25T14:16:39.057593Z'
-  generation_method: ai_research
-  word_count:
-    after: 51
-    before: 24
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 100000000000000.0
       unit: ohm-m
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 100000000000000.0
+      min: 0.0
+      max: 105000000000000.0
     fractureToughness:
       value: 1.2
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 100.0
+      min: 0.01
+      max: 26.19
     thermalDestruction:
       value: 623.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 900.0
+      min: 205.6
+      max: 1952.4
     density:
       value: 1800.0
       unit: kg/m³
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 8.0
+      min: 0.9975
+      max: 2519.9475
     oxidationResistance:
       value: 310.0
       unit: °C
-      confidence: 95
       source: ai_research
-      min: 80.0
-      max: 1650.0
+      min: 0.0
+      max: 1668.45
     laserReflectivity:
       value: 0.05
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 80.0
+      min: 0.0043
+      max: 0.9217
     thermalExpansion:
       value: 2.0e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: -1.0
-      max: 250.0
+      min: -1
+      max: 250
     thermalConductivity:
       value: 0.35
       unit: W/(m·K)
-      confidence: 95
       source: ai_research
       min: 0.03
-      max: 400.0
+      max: 400
     youngsModulus:
       value: 25000000000.0
       unit: Pa
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 3000.0
+      min: 0.00475
+      max: 144899999999.99976
     hardness:
       value: 85.0
       unit: Shore D
-      confidence: 95
       source: ai_research
       min: 5.0
-      max: 120.0
+      max: 120
     specificHeat:
       value: 1100.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 500.0
+      min: 500
       max: 2500.0
     laserAbsorption:
       value: 35000.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.05
-      max: 200.0
+      min: 0.1425
+      max: 524999.9925
     compressiveStrength:
       value: 550.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 1000.0
+      min: 6.55025
+      max: 1259.65525
     tensileStrength:
       value: 450.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 6000.0
+      min: 16.15
+      max: 1626.65
     thermalDiffusivity:
       value: 1.15e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.08
-      max: 180.0
+      min: 0.0
+      max: 7.6e-05
     flexuralStrength:
       value: 420.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 4.56
+      max: 1196.76
     corrosionResistance:
       value: 0.95
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 9.0
+      min: 0.0
+      max: 4725.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.25
       unit: dimensionless
@@ -236,159 +218,17 @@ materialProperties:
       min: 50
       max: 1000
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for epoxy resin removal without substrate damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength providing good absorption in epoxy resins with
-      minimal substrate penetration
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise epoxy removal control
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: High repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Minimum fluence required for epoxy resin ablation
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of epoxy matrix
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform epoxy removal
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete epoxy removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Yes, by precisely controlling the 1064 nm wavelength and 2.5 J/cm² fluence,
-    selective ablation of the epoxy matrix is achievable. Specifically, the laser's
-    energy needs absorption in the resin first, thus blocking penetration to underlying
-    fibers and averting their exposure or thermal damage.
-  question: Can you safely remove epoxy resin from a composite surface with a laser
-    without damaging the underlying carbon or glass fibers?
-  topic_keyword: carbon or glass fibers
-  topic_statement: Selective epoxy matrix ablation
-- answer: For cleaning epoxy composites, 355 nm UV lasers are particularly optimal.
-    Specifically, this wavelength enables photochemical ablation below the 2.5 J/cm²
-    fluence threshold, efficiently breaking molecular bonds without significant heat
-    generation. Thus, it prevents thermal degradation that causes yellowing, preserving
-    the polymer matrix's chemical integrity.
-  question: What is the best laser wavelength (e.g., 1064nm, 532nm, or 355nm) for
-    cleaning epoxy composite surfaces without causing yellowing or chemical changes?
-  topic_keyword: yellowing or chemical changes
-  topic_statement: 355nm enables photochemical ablation
-- answer: By employing nanosecond pulses at 1064 nm wavelength and fluence exceeding
-    2.5 J/cm², we specifically target contaminants for ablation. Notably, this approach
-    vaporizes surface layers without melting the epoxy, thus lifting material away
-    to avoid infusion.
-  question: How do you clean contaminated epoxy composites (e.g., mold release, grease,
-    paint) with a laser without just embedding the contaminants deeper?
-  topic_keyword: embedding the contaminants deeper
-  topic_statement: Ablates without melting epoxy
-- answer: Yes, specifically at 2.5 J/cm², laser ablation of epoxy composites releases
-    hazardous pyrolysis byproducts, notably benzene and phenol. Thus, operators require
-    a high-efficiency fume extraction system with HEPA and activated carbon filtration,
-    plus proper respiratory protection.
-  question: Does laser cleaning epoxy composites release hazardous fumes, and what
-    specific filtration or extraction is required?
-  topic_keyword: release hazardous fumes
-  topic_statement: Releases benzene phenol byproducts
-- answer: For controlled epoxy resin ablation, particularly maintain fluence around
-    2.5 J/cm² using a 50 µm spot size. Thus, fine-tune the number of passes along
-    with 50% beam overlap to accurately control depth removal on irregular composite
-    surfaces.
-  question: What laser parameters should I use to ablate a precise depth of epoxy
-    resin for repair or inspection purposes?
-  topic_keyword: ablate a precise depth
-  topic_statement: 2.5 J/cm² fluence with overlap
-- answer: Laser cleaning, particularly at 2.5 J/cm² fluence, activates epoxy composites
-    by elevating surface energy and forming micro-roughness. This thus delivers strong
-    adhesion preparation, commonly avoiding extra steps like abrasion, unlike mechanical
-    techniques that typically introduce contaminants.
-  question: After laser cleaning an epoxy composite, is the surface properly activated
-    for bonding, or does it require a secondary treatment?
-  topic_keyword: activated for bonding
-  topic_statement: Eliminates secondary treatments
-- answer: Hazing typically stems from fluence exceeding 2.5 J/cm², which thermally
-    degrades the epoxy matrix. Notably, this generates micro-roughness through selective
-    resin removal. Thus, target a scan speed around 500 mm/s while controlling overlap
-    to curb heat buildup and yield a clearer surface.
-  question: Why does my laser-cleaned epoxy composite surface sometimes look hazy
-    or have a changed texture?
-  topic_keyword: changed texture
-  topic_statement: Excessive fluence degrades epoxy matrix
-- answer: Laser cleaning removes carbonized epoxy effectively, but specifically demands
-    precise fluence control around 2.5 J/cm². The char layer's altered absorption
-    indicates risks to underlying fibers, thus requiring careful parameter tuning
-    for selective ablation of residue while sparing the composite substrate.
-  question: Is laser cleaning effective for removing carbonized epoxy after a fire
-    or thermal event?
-  topic_keyword: carbonized epoxy
-  topic_statement: Requires precise fluence control
-- answer: Laser cleaning surpasses traditional methods, particularly by selectively
-    removing epoxy at 2.5 J/cm² fluence without harming underlying fibers. As a non-contact
-    approach, it avoids secondary waste from grit or chemicals, thus providing better
-    surface preservation. Precise control at 500 mm/s scan speeds delivers consistent,
-    high-quality outcomes for vital aerospace and marine parts.
-  question: How does the performance of laser cleaning epoxy composites compare to
-    traditional methods like grit blasting or chemical stripping?
-  topic_keyword: epoxy composites
-  topic_statement: Selective removal without fiber damage
-- answer: Beyond standard laser protocols, a primary concern involves toxic fume generation
-    during the 1064 nm ablation process. Particularly at the 2.5 J/cm² fluence threshold,
-    epoxy decomposes into hazardous compounds, thus requiring integrated fume extraction
-    with real-time air monitoring to shield personnel from these carcinogenic byproducts.
-  question: What are the critical safety considerations when using a high-power laser
-    on an epoxy composite, beyond standard laser safety?
-  topic_keyword: epoxy composite
-  topic_statement: Toxic fume generation requires extraction
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composites
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Epoxy Resin Composites
-  href: /materials/composite/fiber-reinforced/epoxy-resin-composites
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - IEC 60825 - Safety of Laser Products
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921883Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921889Z'
+  structure_version: '2.0'

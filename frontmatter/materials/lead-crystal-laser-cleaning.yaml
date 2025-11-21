@@ -1,208 +1,187 @@
 name: Lead Crystal
-category: Glass
+slug: lead-crystal
+category: glass
 subcategory: soda-lime
-title: Lead Crystal Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Lead Crystal
-description: Laser cleaning parameters for Lead Crystal
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 1
   name: Yi-Chun Lin
   country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
   sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
   - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Lead Crystal Laser Cleaning
+subtitle: Precision laser cleaning notably revives Lead Crystal's radiant clarity, thus safeguarding its fragile lead-enhanced structure.
+subtitle_metadata:
+  author_country: Taiwan
+  author_name: Yi-Chun Lin
+description: Laser cleaning parameters for Lead Crystal
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Glass
+  href: /materials/glasss
+- label: Soda Lime
+  href: /materials/glass/soda-lime
+- label: Lead Crystal
+  href: /materials/glass/soda-lime/lead-crystal
 images:
   hero:
-    alt: Lead Crystal surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Lead Crystal surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/lead-crystal-laser-cleaning-hero.jpg
   micro:
-    alt: Lead Crystal surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Lead Crystal microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/lead-crystal-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the lead crystal surface particularly reveals scattered
-    dust particles and oily smudges adhering firmly. These contaminants etch micro-pits
-    into the glass, thus dulling its clarity while accelerating degradation over time.
-    This state specifically impedes thorough cleaning for routine use.
-  after: Laser cleaning restores lead crystal surfaces to a smooth, lustrous finish,
-    particularly free from residues and minor scratches. Notably, this outcome indicates
-    superior restoration quality, with the glass reclaiming its original clarity and
-    sparkle. Material integrity holds firm, showing no thermal distortion or refractive
-    alterations. Thus, the method effectively eliminates contaminants while safeguarding
-    the delicate structure for daily decorative purposes.
-  author: Yi-Chun Lin
-  character_count:
-    after: 418
-    before: 290
-  generated: '2025-10-25T14:36:11.473413Z'
-  generation_method: ai_research
-  word_count:
-    after: 60
-    before: 40
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 72.0
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 3160000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 10000000000.0
-      max: 1000000000000000.0
+      min: 9500000000.0
+      max: 1.04999995e+16
     fractureToughness:
       value: 0.78
       unit: MPa m^{1/2}
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 2.0
+      min: 0.5575
+      max: 2.5925
     thermalDestruction:
       value: 873.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 2300.0
+      min: 637.7
+      max: 2426.3
     specificHeat:
       value: 680.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 120.0
-      max: 900.0
+      min: 120
+      max: 900
     youngsModulus:
       value: 58000000000.0
       unit: Pa
-      confidence: 95
       source: ai_research
-      min: 10.0
-      max: 400.0
+      min: 60.8
+      max: 60899999996.8
     oxidationResistance:
       value: 0.98
       unit: dimensionless (normalized scale 0-1)
-      confidence: 95
       source: ai_research
-      min: 400.0
-      max: 1700.0
+      min: 0.0
+      max: 2176.65
     laserReflectivity:
       value: 0.0459
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 92.0
+      min: 0.03192
+      max: 3.79932
     thermalConductivity:
       value: 0.9
       unit: W/m·K
-      confidence: 95
       source: ai_research
-      min: 0.7
-      max: 30.0
+      min: 0.7695
+      max: 36.7095
     thermalExpansion:
       value: 8.9e-06
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 15.0
+      min: 1.0e-06
+      max: 9.66
     density:
       value: 3.08
       unit: g/cm³
-      confidence: 95
       source: ai_research
-      min: 1.2
-      max: 7.6
+      min: 2.09285
+      max: 2624.88985
     hardness:
       value: 4.2
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 3.5
-      max: 9.5
+      min: 3.99
+      max: 2309.79
     corrosionResistance:
       value: 1.2
       unit: ml of 0.01 M HCl / 10 g glass
-      confidence: 95
       source: ai_research
-      min: 9.0
-      max: 10.0
+      min: 4.8e-05
+      max: 1.574998
     laserAbsorption:
       value: 50.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 10.0
+      min: 0.01425
+      max: 73499.99925
     compressiveStrength:
       value: 820.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 500.0
-      max: 2000.0
+      min: 619.5
+      max: 2170.5
     thermalDiffusivity:
       value: 3.33e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.01
-      max: 15.0
+      min: 0.0
+      max: 1.0e-05
     flexuralStrength:
       value: 42.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 750.0
+      min: 10.0
+      max: 780.0
     tensileStrength:
       value: 41.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 30.0
-      max: 2000.0
+      min: 7.0
+      max: 733.0
     ablationThreshold:
       value: 2.1
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 6.0
+      min: 0.635
+      max: 13.065
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 28.0
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.05
       unit: dimensionless
@@ -245,148 +224,15 @@ materialProperties:
       min: 0.001
       max: 0.1
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Lead Crystal surface cleaning without thermal
-      damage
-    unit: W
-    value: 25
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in Lead Crystal with minimal
-      transmission
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Lead Crystal surfaces
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 20
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    unit: J/cm²
-    value: 2.5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 100
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning pattern
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: Safely cleaning lead crystal demands proper 1064nm laser parameters. Specifically,
-    we limit fluence to below 2.5 J/cm² while applying 100µm spot sizes, preventing
-    micro-fractures. This controlled ablation removes contaminants effectively without
-    releasing hazardous lead particles, thus yielding a residue-free surface.
-  question: Can you safely laser clean lead crystal glassware without causing damage
-    or leaving hazardous residue?
-  topic_keyword: hazardous residue
-  topic_statement: Prevents lead particle liberation
-- answer: For lead crystal, particularly, I recommend the 1064 nm wavelength at 2.5
-    J/cm² fluence. This near-IR light absorbs strongly, thus enabling effective contaminant
-    removal at 25 W average power while controlling thermal input. The 100 ns pulse
-    duration and 20 kHz repetition rate deliver precise control to maintain optical
-    clarity and surface brilliance.
-  question: What is the optimal laser wavelength and parameter set (power, pulse duration,
-    repetition rate) for cleaning contaminants from lead crystal without altering
-    its optical clarity?
-  topic_keyword: optical clarity
-  topic_statement: 1064 nm preserves optical clarity
-- answer: Laser cleaning of lead crystal at 1064 nm demands HEPA-filtered fume extraction,
-    particularly to capture lead oxide particulates. Strict OSHA respiratory protection
-    is mandatory, thus mitigating hazardous fumes from the 2.5 J/cm² ablation threshold.
-  question: What specific safety protocols and containment are required when laser
-    cleaning lead crystal due to the risk of lead oxide fumes and particulate?
-  topic_keyword: lead oxide fumes
-  topic_statement: Requires HEPA-filtered extraction
-- answer: With a high lead oxide content of ~30%, lead crystal's melting point drops
-    to ~600°C, while its thermal expansion rises notably. This indicates a lower ablation
-    threshold, requiring careful fluence control below ~2.5 J/cm² to prevent thermal
-    stress cracking.
-  question: How does the high lead oxide content (e.g., 24%-32%) in lead crystal affect
-    its thermal response and ablation threshold compared to standard soda-lime glass?
-- answer: For lead crystal, laser cleaning works well, particularly at 1064 nm wavelength
-    and 2.5 J/cm² fluence. Notably, this non-contact approach ablates tarnish without
-    chemicals, yet demands scanning below 500 mm/s to prevent thermal stress in micro-cracked
-    historical artifacts.
-  question: Is laser cleaning a viable method for removing tarnish or oxidation from
-    antique lead crystal, or does it risk damaging delicate historical pieces?
-- answer: Initially, verify surface integrity via microscopy at the 100μm scale, notably
-    to inspect for micro-cracks. Specifically, for lead residue, apply XRF analysis
-    to identify contamination, thus ensuring levels stay below hazardous thresholds
-    post 2.5 J/cm² laser processing.
-  question: What is the best way to verify the success and safety of a laser cleaning
-    process on lead crystal? How do you test for surface lead residue?
-  topic_keyword: surface lead residue
-  topic_statement: XRF detects lead contamination
-- answer: Yes, laser cleaning employs precise 1064nm wavelength and 2.5 J/cm² fluence
-    control to specifically ablate contaminants from lead crystal. Notably, this approach
-    preserves the sharp, engraved facets, which are highly sensitive to thermal stress,
-    thus ensuring pattern integrity.
-  question: Can laser cleaning be used to selectively remove paint or adhesives from
-    lead crystal objects without affecting the underlying engraved or cut patterns?
-  topic_keyword: engraved or cut patterns
-  topic_statement: Preserves thermal-sensitive engraved facets
-- answer: 'Lead crystal presents dual hazards: particularly, its low thermal shock
-    threshold requires precise fluence control below 2.5 J/cm², whereas laser ablation
-    produces toxic lead oxide fumes. Thus, the interplay of material fragility and
-    hazardous byproducts demands expert parameter tuning alongside strict respiratory
-    protection, marking it as a high-risk endeavor.'
-  question: Why is lead crystal often cited as a 'difficult' or 'high-risk' material
-    in laser cleaning training manuals and equipment guidelines?
-- answer: Debris and filters from laser cleaning of lead crystal at 1064 nm wavelength
-    notably contain hazardous lead particulates. Thus, these materials require classification
-    and disposal under stringent local and federal regulations for lead-containing
-    waste, rather than as standard industrial refuse, due to the inherent toxicity
-    of the ablated surface.
-  question: What are the waste disposal regulations for the debris and filters collected
-    after laser cleaning lead crystal?
-  topic_keyword: waste disposal regulations
-  topic_statement: Regulated as hazardous lead waste
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Glass
-  href: /materials/glasss
-- label: Soda Lime
-  href: /materials/glass/soda-lime
-- label: Lead Crystal
-  href: /materials/glass/soda-lime/lead-crystal
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922145Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922151Z'
+  structure_version: '2.0'

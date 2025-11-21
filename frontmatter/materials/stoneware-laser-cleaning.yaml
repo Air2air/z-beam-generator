@@ -1,211 +1,194 @@
 name: Stoneware
-category: Ceramic
+slug: stoneware
+category: ceramic
 subcategory: oxide
-title: Stoneware Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Stoneware
-description: Laser cleaning parameters for Stoneware
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: Stoneware Laser Cleaning
+subtitle: This process uses precision laser to restore stoneware's dense texture efficiently, avoiding thermal cracks.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Stoneware
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Ceramic
+  href: /materials/ceramics
+- label: Oxide
+  href: /materials/ceramic/oxide
+- label: Stoneware
+  href: /materials/ceramic/oxide/stoneware
 images:
   hero:
-    alt: Stoneware surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/stoneware-laser-cleaning-hero.jpg
   micro:
-    alt: Stoneware surface at 500x magnification comparing contaminated state with
-      cleaned substrate showing complete restoration
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
     url: /images/material/stoneware-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, the stoneware surface shows straightforward contamination
-    from clustered particles and oily food-processing residues, which stick tightly
-    and embed into pores. Degradation manifests as micro-cracks, pitting, and discoloration,
-    rendering the texture rough and uneven via this process, thus undermining its
-    cultural heritage value.
-  after: The ultrafast laser process cleans the stoneware surface straightforwardly,
-    removing contaminants efficiently to reveal the original smooth texture. It looks
-    pristine and clean, delivering high restoration quality that preserves material
-    integrity without cracks or weakening. In this way, the ceramic retains its durability
-    for cultural heritage preservation and food processing applications, ensuring
-    safe and authentic use.
-  author: Ikmanda Roswati
-  character_count:
-    after: 416
-    before: 334
-  generated: '2025-10-25T15:25:10.933691Z'
-  generation_method: ai_research
-  word_count:
-    after: 52
-    before: 42
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/en/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
     thermalDestruction:
       value: 1473.0
       unit: K
-      confidence: 95
       source: ai_research
       min: 273.0
       max: 3900.0
     specificHeat:
       value: 880.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 250.0
+      min: 250
       max: 2500.0
     youngsModulus:
       value: 65.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 600.0
+      min: 39.95
+      max: 679.05
     oxidationResistance:
       value: 1273.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 600.0
-      max: 2400.0
+      min: 0.0
+      max: 2310.0
     laserReflectivity:
       value: 0.15
       unit: fraction
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 90.0
+      min: 0.04925
+      max: 0.39575
     thermalConductivity:
       value: 1.4
       unit: W/m·K
-      confidence: 95
       source: ai_research
-      min: 0.8
-      max: 120.0
+      min: 1.425
+      max: 126.975
     thermalExpansion:
       value: 5.8e-06
       unit: /K
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 14.0
+      min: 3.0e-06
+      max: 1.1e-05
     density:
       value: 2.4
       unit: g/cm³
-      confidence: 95
       source: ai_research
-      min: 2.3
-      max: 16.0
+      min: 1.7385
+      max: 16.2915
     hardness:
       value: 5.7
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 6.0
-      max: 2500.0
+      min: 6.65
+      max: 3149.65
     corrosionResistance:
       value: 0.98
       unit: dimensionless (fractional resistance)
-      confidence: 95
       source: ai_research
-      min: 8.0
-      max: 10.0
+      min: 0.000475
+      max: 262.499975
     laserAbsorption:
       value: 0.82
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 0.1
-      max: 50.0
+      min: 0.3515
+      max: 2624.9815
     compressiveStrength:
       value: 345.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 7000.0
+      min: 95.0
+      max: 4090.0
     thermalDiffusivity:
       value: 7.8e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.005
-      max: 120.0
+      min: 1.0e-06
+      max: 7.3e-05
     flexuralStrength:
       value: 55.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 2500.0
+      min: 45.6
+      max: 1152.6
     tensileStrength:
       value: 35.0
       unit: MPa
-      confidence: 95
       source: ai_research
       min: 5.0
-      max: 600.0
+      max: 600
     fractureToughness:
       value: 1.1
       unit: MPa·m^{1/2}
-      confidence: 92
       source: ai_research
-      min: 2.0
-      max: 10.0
+      min: 0.565
+      max: 5.735
     porosity:
       value: 2.0
       unit: '%'
-      confidence: 95
       source: ai_research
-      min: 0.0
-      max: 30.0
+      min: 0
+      max: 30
     electricalResistivity:
       value: 100000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 10000000000.0
-      max: 1.0e+16
+      min: 0.0
+      max: 105000000000000.0
     ablationThreshold:
       value: 2.1
       unit: J/cm²
-      confidence: 95
       source: ai_research
-      min: 1.5
-      max: 5.0
-    percentage: 73.1
+      min: 0.566
+      max: 3.954
+    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 26.9
+    percentage: 40.0
     absorptivity:
       value: 0.8
       unit: dimensionless
@@ -248,159 +231,17 @@ materialProperties:
       min: 0.01
       max: 1.0
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Stoneware surface cleaning without thermal
-      damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength optimized for Stoneware mineral absorption
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning coverage
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence level for effective contaminant removal without substrate
-      damage
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning pattern
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-faq:
-- answer: For glazed stoneware, the 1064 nm near-infrared wavelength offers a practical
-    way to ablate soot and grease, with high contaminant absorption and low penetration
-    into the ceramic substrate that preserves its integrity. This process outperforms
-    532 nm, which risks overheating glazes, and sidesteps abrasive techniques' chance
-    of surface scratches—target 5 J/cm² fluence for safe, uniform results.
-  question: What laser wavelengths are most effective for cleaning soot and grease
-    from glazed stoneware without affecting the underlying ceramic structure?
-  topic_keyword: underlying ceramic structure
-  topic_statement: 1064 nm preserves integrity
-- answer: For antique stoneware pottery, a practical approach to avoid thermal shock
-    during pulsed laser cleaning involves 10 ns pulses at 5 J/cm² fluence, curbing
-    rapid heat spikes on this low-conductivity ceramic with moderate thermal expansion.
-    Mild pre-heating to 40°C beforehand equalizes surface temperatures efficiently,
-    minimizing stress risks while enabling gentle contaminant removal.
-  question: How can thermal shock be prevented when using pulsed lasers to clean antique
-    stoneware pottery?
-  topic_keyword: thermal shock
-  topic_statement: Short pulses and pre-heating
-- answer: In industrial laser ablation, the strong adhesion of metal oxides to stoneware's
-    porous ceramic matrix presents a major hurdle, requiring a precise fluence of
-    5 J/cm² to vaporize contaminants without substrate fracture. This process demands
-    nanosecond pulses at 50 kHz for thermal control, while post-cleaning spectroscopy
-    efficiently uncovers trace residues that need multiple passes for complete removal.
-  question: In industrial settings, what are the common challenges in removing metal
-    oxides from stoneware surfaces using laser ablation?
-  topic_keyword: removing metal oxides
-  topic_statement: Strong adhesion demands precise fluence
-- answer: In art restoration workshops, it's practical to don ANSI Z136.1-compliant
-    laser safety goggles rated for 1064 nm wavelengths, protecting eyes from stray
-    beams while cleaning stoneware. Set up robust ventilation systems that efficiently
-    capture ceramic dust below 5 mg/m³, minimizing inhalation hazards. With this process,
-    use IR thermography to keep surface temperatures under 200°C at 5 J/cm² fluence,
-    preventing thermal stress and glaze cracks on porous ceramics.
-  question: What safety protocols should be followed when laser cleaning stoneware
-    in art restoration workshops to avoid glaze cracking?
-  topic_keyword: glaze cracking
-  topic_statement: Low fluence prevents thermal stress
-- answer: 'In unglazed stoneware, porosity causes laser beams to penetrate further,
-    dispersing energy into voids and reducing efficiency for clearing surface organic
-    residues. This process works straightforward for porous ceramics: select a 1064
-    nm wavelength at 5 J/cm² fluence to enhance targeted absorption, unlike denser
-    ones demanding precise pulse control.'
-  question: How does the porosity of unglazed stoneware affect the efficiency of laser
-    cleaning for organic residues?
-  topic_keyword: porosity of unglazed stoneware
-  topic_statement: Porosity scatters energy lowering efficiency
-- answer: For stoneware tiles in architectural settings, manufacturers recommend 100
-    W average power at 1064 nm wavelength. This process gently ablates grime without
-    harming the ceramic matrix. For practical application, pair it with 500 mm/s scan
-    speeds and 5 J/cm² fluence, starting test patches on varied compositions for optimal
-    results.
-  question: What are the typical laser power settings recommended by manufacturers
-    for cleaning stoneware tiles in architectural applications?
-  topic_keyword: stoneware tiles
-  topic_statement: 100 W at 1064 nm
-- answer: Laser cleaning provides a straightforward approach to removing oils from
-    food-grade stoneware without chemicals, aligning with FDA guidelines for inert
-    ceramic surfaces that prevent leaching. At 5 J/cm² fluence and 1064 nm wavelength,
-    this process ablates contaminants precisely, minimizing thermal stress—validate
-    efficacy via surface residue tests below 10 ppm for compliance.
-  question: In food-grade stoneware cleaning, are there regulatory concerns with laser
-    methods removing contaminants like food oils?
-  topic_keyword: food-grade stoneware
-  topic_statement: Aligns with FDA guidelines
-- answer: Dry laser cleaning offers a practical approach for restoring faded colors
-    on weathered stoneware sculptures, employing a 1064 nm wavelength and 5 J/cm²
-    fluence to precisely ablate surface grime without water. This process prevents
-    absorption damage in porous ceramics like stoneware, unlike that method of wet
-    techniques that may cause cracking or staining, while delivering eco-friendly
-    outcomes and superior preservation of original textures.
-  question: How effective is dry laser cleaning compared to wet methods for restoring
-    color on weathered stoneware sculptures?
-  topic_keyword: restoring color
-  topic_statement: Avoids absorption damage porosity
-- answer: Stoneware glazes with 60-70% silica content strongly absorb near-infrared
-    light at 1064 nm, making Q-switched Nd:YAG lasers practical for surface treatment
-    without excess heating. This process minimizes melting risks in pottery production
-    at 5 J/cm² fluences, ensuring precise contaminant removal while preserving the
-    glaze's integrity.
-  question: What chemical properties of stoneware glazes influence the choice of laser
-    for surface treatment in pottery production?
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Ceramic
-  href: /materials/ceramics
-- label: Oxide
-  href: /materials/ceramic/oxide
-- label: Stoneware
-  href: /materials/ceramic/oxide/stoneware
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - IEC 60825 - Safety of Laser Products
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922790Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922796Z'
+  structure_version: '2.0'

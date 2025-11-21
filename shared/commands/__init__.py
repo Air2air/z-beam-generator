@@ -10,6 +10,7 @@ from .generation import (
     handle_caption_generation,
     handle_subtitle_generation,
     handle_faq_generation,
+    handle_description_generation,
 )
 
 # Deployment commands
@@ -55,6 +56,7 @@ __all__ = [
     'handle_caption_generation',
     'handle_subtitle_generation',
     'handle_faq_generation',
+    'handle_description_generation',
     # Deployment
     'deploy_to_production',
     # Data Validation

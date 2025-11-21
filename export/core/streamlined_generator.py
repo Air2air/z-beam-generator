@@ -111,6 +111,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Store additional kwargs for completeness validation
         self._init_kwargs = kwargs
         
+        # Initialize DynamicConfig for consistent parameter calculation
+        from generation.config.dynamic_config import DynamicConfig
+        self.dynamic_config = DynamicConfig()
+        self.logger.info("DynamicConfig initialized for export module - all temperatures calculated dynamically")
+        
         # API client is only required for pure AI generation
         # For YAML-based generation with research enhancement, we can work without it
         
@@ -2305,10 +2310,16 @@ TARGET: 25-40 words, two sentences, completely unique structure from previous su
 Generate the subtitle now:"""
             # Call API
             self.logger.info(f"Generating AI subtitle for {material_name}")
+            
+            # Use dynamic temperature calculation from config
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            temperature = dynamic_config.calculate_temperature('subtitle')
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=150,  # Enough for 2 sentences
-                temperature=0.75  # Higher for more variety (was 0.6)
+                temperature=temperature
             )
             # Extract content
             if hasattr(response, 'content'):
@@ -2401,11 +2412,16 @@ Generate exactly two text blocks:
             self.logger.info(f"Generating AI caption for {material_name} (target: before={before_target}, after={after_target})")
             
             try:
+                # Use dynamic temperature calculation from config
+                from generation.config.dynamic_config import DynamicConfig
+                dynamic_config = DynamicConfig()
+                temperature = dynamic_config.calculate_temperature('caption')
+                
                 # Call API for caption generation
                 response = self.api_client.generate_simple(
                     prompt=prompt,
                     max_tokens=2000,  # Enough for both captions
-                    temperature=0.7
+                    temperature=temperature
                 )
                 # Extract content from APIResponse object if needed
                 if hasattr(response, 'content'):

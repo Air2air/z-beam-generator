@@ -168,9 +168,8 @@ materials:
     category: stone
     subcategory: sedimentary
     title: Alabaster Laser Cleaning
-    subtitle: Alabaster's ethereal translucency and velvety softness set it apart
-      from denser siblings like marble, enabling luminous, intricately carved sculptures
-      that capture light like no other stone.
+    subtitle: A low-porosity stone with exceptional thermal stability for precise
+      laser cleaning in art conservation
     description: Laser cleaning parameters for Alabaster
     author:
       id: 2
@@ -480,16 +479,15 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: A soft yet stable stone, alabaster brings a unique thermal resistance
-        to laser cleaning at 423 Kelvin. Its low 1.5 MPa tensile strength, however,
-        demands a gentle touch.
+      subtitle: A low-porosity stone with exceptional thermal stability for precise
+        laser cleaning in art conservation
   Alumina:
     name: Alumina
     category: ceramic
     subcategory: oxide
     title: Alumina Laser Cleaning
-    subtitle: Precision laser distinctly unveils alumina's notable enduring ceramic
-      purity, microcrack-free.
+    subtitle: Alumina's extreme electrical resistivity of 10¹⁴ ohm·m makes it the
+      definitive electrical insulator for high-temperature and corrosive environments
     description: Laser cleaning parameters for Alumina
     author:
       id: 2
@@ -828,14 +826,20 @@ materials:
           buildup
         unit: '%'
         value: 50
+    components:
+      subtitle: Alumina's extreme electrical resistivity of 10¹⁴ ohm·m makes it the
+        definitive electrical insulator for high-temperature and corrosive environments
   Aluminum:
     name: Aluminum
     category: metal
     subcategory: non-ferrous
     title: Aluminum Laser Cleaning
-    subtitle: The lightweight champion of metals offering exceptional strength without
-      the burden of weight
-    description: Laser cleaning parameters for Aluminum
+    subtitle: A lightweight non-ferrous metal with exceptional corrosion resistance
+      and a density of 2.7 g/cm³
+    description: Aluminum's high reflectivity of 0.95 and low laser absorption of
+      0.06 at 1064 nm present a primary challenge for laser cleaning. Its low melting
+      point of 933.47 K requires precise control of energy density to avoid surface
+      melting while still effectively removing oxides.
     author:
       id: 4
     images:
@@ -1167,16 +1171,16 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: Aluminum’s low density makes it the preferred metal for weight-sensitive
-        designs, and its high reflectivity requires specific laser wavelengths for
-        effective surface treatment
+      subtitle: Aluminum's low density of 2.7 g/cm³ and high electrical conductivity
+        of 37.7 million siemens per meter define its industrial utility
       caption:
-        before: The surface shows a dark, uneven layer of contamination that obscures
-          the underlying metal. This coating appears mottled with patches of lighter
-          and darker debris.
-        after: Laser cleaning removes the dark contamination layer and restores the
-          original metallic surface. The process reveals a uniform, light-gray substrate
-          with a consistent texture.
+        before: The surface shows scattered dark oxide spots and a hazy film of contamination.
+          These features obscure the underlying metallic grain structure completely.
+        after: Laser treatment removes the dark oxides and clears the hazy film. This
+          process reveals the uniform, reflective surface of the base aluminum material.
+      description: Aluminum's high reflectivity of about 0.95 and low laser absorption
+        of 0.06 require careful parameter control. We typically use around 100 W at
+        1064 nm wavelength to remove oxides without reaching its 933 K melting point.
   Ash:
     name: Ash
     category: wood
@@ -1475,6 +1479,9 @@ materials:
           thermal buildup
         unit: '%'
         value: 50
+    components:
+      subtitle: Ash offers superior fracture toughness at 0.36 MPa√m and a high laser
+        absorption of 0.82 for controlled material processing
   Bamboo:
     name: Bamboo
     category: wood
@@ -1799,8 +1806,9 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: Bamboo has a tensile strength of 180 MPa, so it works well for aerospace
-        and medical devices.
+      subtitle: Bamboo combines a tensile strength of 180 MPa with a low density of
+        700 kg/m³, offering a remarkable strength-to-weight ratio that outperforms
+        many traditional hardwoods
   Basalt:
     name: Basalt
     category: stone
@@ -2090,8 +2098,9 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: 'Basalt: A dense volcanic stone with 200 MPa compressive strength
-        and broad industrial uses.'
+      subtitle: Basalt offers exceptional thermal stability up to 1673 Kelvin and
+        high corrosion resistance, making it a uniquely durable igneous stone for
+        demanding aerospace and marine applications
   Beech:
     name: Beech
     category: wood
@@ -2496,13 +2505,17 @@ materials:
         description: Optimal beam overlap for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: Beech hardwood combines high fracture toughness with excellent laser
+        absorption, making it ideal for precision manufacturing and restoration work
+        where dimensional stability is critical
   Beryllium:
     name: Beryllium
     category: metal
     subcategory: specialty
     title: Beryllium Laser Cleaning
-    subtitle: In precision optics, beryllium curbs thermal distortion far better than
-      aluminum while slashing overall component weight
+    subtitle: Beryllium’s extreme stiffness and low density make it uniquely dimensionally
+      stable
     description: Laser cleaning parameters for Beryllium
     author:
       id: 1
@@ -2863,8 +2876,8 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: 'Beryllium: A specialty metal with 287 GPa stiffness and high thermal
-        conductivity, so it works well in aerospace and laser optics.'
+      subtitle: Beryllium’s extreme stiffness and low density make it uniquely dimensionally
+        stable
   Birch:
     name: Birch
     category: wood
@@ -3162,12 +3175,17 @@ materials:
         description: Optimal beam overlap percentage for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: Birch combines a high tensile strength of 130 MPa with a low thermal
+        conductivity of 0.163 W/m·K, making it uniquely dimensionally stable for precision
+        manufacturing applications
   Bluestone:
     name: Bluestone
     category: stone
     subcategory: sedimentary
     title: Bluestone Laser Cleaning
-    subtitle: Revive Bluestone's distinct subtle blue patina via essential laser targeting
+    subtitle: A high-density sedimentary stone with exceptional oxidation and corrosion
+      resistance, ideal for laser cleaning at 1064 nm with 68% absorption
     description: Laser cleaning parameters for Bluestone
     author:
       id: 2
@@ -3471,6 +3489,9 @@ materials:
         description: Optimal beam overlap for uniform coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: A high-density sedimentary stone with exceptional oxidation and corrosion
+        resistance, ideal for laser cleaning at 1064 nm with 68% absorption
   Borosilicate Glass:
     name: Borosilicate Glass
     category: glass
@@ -4117,6 +4138,15 @@ materials:
     components:
       subtitle: Its excellent machinability makes brass a preferred choice for high-volume
         precision components
+      description: Brass handles laser cleaning well thanks to its solid thermal conductivity
+        of 109 W/m·K, which spreads heat evenly and cuts down on hotspots. But that
+        high reflectivity—around 0.94 at 1064 nm—means low absorption, only 0.12,
+        so you need to crank up the energy density to about 5.1 J/cm² to ablate buildup
+        without melting the surface at 930°C. Unlike ferrous metals, its non-magnetic
+        nature and corrosion resistance of 0.75 let you clean marine or plumbing parts
+        cleanly. Watch out for thermal expansion at 18.9 × 10^{-6}/K; too many passes
+        can warp thin fittings. We typically run 100 W at 50 kHz, 500 mm/s scan speed,
+        with 50% overlap over three passes to bring back that shine safely.
   Breccia:
     name: Breccia
     category: stone
@@ -5143,6 +5173,10 @@ materials:
           patches hide the original metal underneath and create a rough texture.
         after: Now the laser clears away all that crust and grime. It reveals the
           smooth, clean metal and restores its natural color.
+      description: Bronze has a high reflectivity of 0.65, so we typically use a 1064
+        nm wavelength for better absorption. Its melting point is 950 °C, so we keep
+        the energy density around 5.1 J/cm². This clears contaminants effectively
+        and avoids any thermal damage to the valuable substrate.
   Calcite:
     name: Calcite
     category: stone
@@ -9491,9 +9525,8 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: Copper moves electricity better than any other common metal, a trait
-        that makes it indispensable for everything from power grids to the smallest
-        electronic components
+      subtitle: Copper's exceptional electrical conductivity at 59.6 million S/m makes
+        it the essential metal for power transmission and electronics
       caption:
         before: The surface is covered with dark, splotchy patches and a gritty texture.
           You can see scattered particles embedded in the material. It looks uneven
@@ -18623,6 +18656,10 @@ materials:
       subtitle: Lead's exceptional density provides unmatched shielding against radiation,
         while its natural corrosion resistance ensures long-term structural integrity
         in demanding environments
+      description: Lead's exceptionally low melting point, around 600 K, demands careful
+        thermal control during laser cleaning. Its high laser reflectivity of 0.98
+        requires precise fluence settings, typically near 2.5 J/cm², to avoid surface
+        melting and achieve effective contaminant removal.
   Lead Crystal:
     name: Lead Crystal
     category: glass
@@ -39634,6 +39671,14 @@ materials:
       subtitle: Steel maintains structural integrity under extreme loads, with its
         high tensile strength making it the dominant material for construction and
         heavy machinery
+      description: You'll want to start with steel's high reflectivity at 0.59, which
+        means it absorbs only about 35% of the laser energy, so you need to bump up
+        the power to get effective cleaning without overheating. We typically use
+        100 W at 1064 nm wavelength with a 50 μm spot size and 50 kHz repetition rate
+        to remove oxides from automotive or construction parts. I've found that keeping
+        energy density around 5 J/cm² and scan speed at 500 mm/s prevents warping,
+        but make sure you do 3 passes with 50% overlap. Be careful with the melting
+        point of 1723 K—too much heat can cause surface distortion.
   Stoneware:
     name: Stoneware
     category: ceramic
@@ -43180,6 +43225,10 @@ materials:
         value: 50
     components:
       subtitle: Its strength matches steel at nearly half the weight
+      description: Titanium has excellent corrosion resistance, but its low thermal
+        conductivity of 21.9 W/m·K poses a challenge. For laser cleaning at 1064 nm,
+        we use about 100 W and control the fluence carefully to stay below its 2.5
+        J/cm² threshold and avoid surface oxidation.
   Titanium Carbide:
     name: Titanium Carbide
     category: ceramic
@@ -47104,6 +47153,15 @@ materials:
     components:
       subtitle: Zinc offers exceptional corrosion resistance with a minimal 0.003
         mm/year loss rate
+      description: When setting up laser cleaning for zinc, be careful with its low
+        melting point around 420°C – it'll liquefy fast if your power spikes. We typically
+        use about 100 W at 1064 nm wavelength to strip oxides or galvanizing residue
+        without warping the surface, since its high reflectivity of 0.95 means low
+        absorption at first. I've found that keeps the energy density near 5 J/cm²,
+        with a 50 μm spot size and 500 mm/s scan speed for even passes. But make sure
+        you overlap by 50% so you don't miss spots, and watch for vapor buildup because
+        its good thermal conductivity spreads heat quickly. End with a cool-down check
+        to avoid thermal shock.
   Zirconia:
     name: Zirconia
     category: ceramic

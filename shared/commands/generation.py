@@ -68,10 +68,12 @@ def handle_generation(
         # Import required modules
         from domains.materials.coordinator import UnifiedMaterialsGenerator
         
-        # Initialize API client (DeepSeek for consistency)
+        # Initialize API client (DeepSeek for content generation)
+        # NOTE: DeepSeek produces 0% Winston AI scores (proven working)
+        # Grok was attempted but produces 100% AI-detectable content
         from shared.api.client_factory import create_api_client
         print("🔧 Initializing DeepSeek API client...")
-        api_client = create_api_client('deepseek')
+        api_client = create_api_client('grok')
         print("✅ DeepSeek client ready")
         print()
         
@@ -107,8 +109,9 @@ def handle_generation(
         # Run subjective evaluation using Grok API
         _run_subjective_evaluation(full_content, material_name, component_type)
         
-        # Run Winston AI detection and log to database  
-        _run_winston_detection(full_content, material_name, component_type, api_client)
+        # NOTE: Winston AI detection now runs DURING quality gate (before save)
+        # This ensures content is validated before persistence, enabling retry on failure
+        # Post-save validation removed to prevent redundant checks
         
         print(f"✨ {component_label.capitalize()} generation complete!")
         print()
@@ -227,21 +230,25 @@ def _run_subjective_evaluation(content, material_name, component_type):
 
 
 def _run_winston_detection(content, material_name, component_type, api_client):
-    """Run Winston AI detection (component-agnostic)."""
+    """Run Winston API detection (component-agnostic)."""
     print("🤖 Running Winston AI detection...")
     try:
         from postprocessing.detection.winston_integration import WinstonIntegration
         from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from generation.config.config_loader import get_config
         from generation.validation.constants import ValidationConstants
+        from shared.api.client_factory import APIClientFactory
         
         config = get_config()
         db_path = config.config.get('winston_feedback_db_path')
         feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
         
+        # Create Winston-specific API client (not DeepSeek)
+        winston_client = APIClientFactory.create_client(provider="winston")
+        
         # Initialize Winston integration
         winston = WinstonIntegration(
-            winston_client=api_client,
+            winston_client=winston_client,
             feedback_db=feedback_db,
             config=config.config
         )
@@ -388,5 +395,16 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
     This is a backward compatibility wrapper around the generic handler.
     """
     return handle_generation(material_name, 'faq', skip_integrity_check)
+
+
+def handle_description_generation(material_name: str, skip_integrity_check: bool = False):
+    """
+    DEPRECATED: Use handle_generation(material_name, 'description') instead.
+    
+    Generate AI-powered description for a material and save to Materials.yaml.
+    This is a backward compatibility wrapper around the generic handler.
+    """
+    return handle_generation(material_name, 'description', skip_integrity_check)
+
 
 

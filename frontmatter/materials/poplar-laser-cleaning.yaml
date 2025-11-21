@@ -1,180 +1,181 @@
 name: Poplar
-category: Wood
+slug: poplar
+category: wood
 subcategory: hardwood
-title: Poplar Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Poplar
-description: Laser cleaning parameters for Poplar
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 4
   name: Todd Dunning
   country: United States
+  country_display: United States
   title: MA
   sex: m
+  jobTitle: Junior Optical Materials Specialist
   expertise:
   - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Poplar Laser Cleaning
+subtitle: Precision Laser Cleaning Typically Preserves Poplar's Pretty Delicate Grain Sans Scorching
+subtitle_metadata:
+  author_country: United States (California)
+  author_name: Todd Dunning
+description: Laser cleaning parameters for Poplar
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/woods
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Poplar
+  href: /materials/wood/hardwood/poplar
 images:
   hero:
-    alt: Poplar surface during precision laser cleaning process removing contamination
-      layer at microscopic scale
+    alt: Poplar surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/poplar-laser-cleaning-hero.jpg
   micro:
-    alt: Poplar surface at 500x magnification comparing contaminated state with cleaned
-      substrate showing complete restoration
+    alt: Poplar microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/poplar-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, Poplar wood's surface shows fairly clustered dirt
-    particles and oily smears that erode fibers, causing micro-pitting. This degradation
-    typically hampers effective cleaning in woodworking applications.
-  after: After finishing the cleaning process, the poplar wood surface shows a pretty
-    restored state, featuring a smooth finish, vibrant natural hues, and solid grain
-    structure without any contaminants. Restoration quality turns out fairly exceptional,
-    fully maintaining material integrity while avoiding potential weaknesses. It's
-    especially useful for building durable laser optic mounts in industrial settings.
-  author: Todd Dunning
-  character_count:
-    after: 444
-    before: 204
-  generated: '2025-10-25T15:02:56.940083Z'
-  generation_method: ai_research
-  word_count:
-    after: 59
-    before: 25
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- EPA Clean Air Act Compliance
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     fractureToughness:
       value: 0.35
       unit: MPa√m
-      confidence: 95
       source: ai_research
-      min: 0.33
-      max: 4.4
+      min: 0.259
+      max: 2.041
     thermalDestruction:
       value: 628.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 600.0
+      min: 226.1
+      max: 641.9
     specificHeat:
       value: 1380.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 800.0
-      max: 2500.0
+      min: 1.311
+      max: 1553.931
     youngsModulus:
       value: 10.2
       unit: GPa
-      confidence: 98
       source: ai_research
-      min: 5.0
-      max: 20000.0
+      min: 3.2775
+      max: 11234.8275
     oxidationResistance:
       value: 0.19
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 82.0
-      max: 204.0
+      min: 0.095
+      max: 549.145
     laserReflectivity:
       value: 0.38
       unit: ''
-      confidence: 92
       source: ai_research
-      min: 10.0
-      max: 60.0
+      min: 0.01575
+      max: 0.43925
     thermalConductivity:
       value: 0.13
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.04
       max: 0.4
     thermalExpansion:
       value: 3.125e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: 3.0
-      max: 60.0
+      min: 1.0e-06
+      max: 5.8e-05
     density:
       value: 465.0
       unit: kg/m³
-      confidence: 100
       source: ai_research
-      min: 0.12
-      max: 1.5
+      min: 0.399
+      max: 955.479
     hardness:
       value: 2402.0
       unit: N
-      confidence: 100
       source: ai_research
-      min: 1.0
-      max: 5000.0
+      min: 399.0
+      max: 12589.5
     corrosionResistance:
       value: 0.25
       unit: normalized durability index (0-1)
-      confidence: 92
       source: ai_research
-      min: 2.0
-      max: 8.0
+      min: 0.0
+      max: 4.725
     laserAbsorption:
       value: 0.92
       unit: dimensionless
-      confidence: 95
       source: ai_research
-      min: 1.0
-      max: 50.0
+      min: 0.779
+      max: 335999.959
     compressiveStrength:
       value: 39.2
       unit: MPa
-      confidence: 98
       source: ai_research
-      min: 20.0
-      max: 80.0
+      min: 20
+      max: 80
     thermalDiffusivity:
       value: 1.34e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.0001
-      max: 0.4
+      min: 0.0
+      max: 0.0
     flexuralStrength:
       value: 69.6
       unit: MPa
-      confidence: 100
       source: ai_research
-      min: 40.0
-      max: 150.0
+      min: 19.15
+      max: 147.85
     tensileStrength:
       value: 82.7
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 200.0
+      min: 9.53
+      max: 209.07
     porosity:
       value: 0.72
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 12.0
-      max: 65.0
+      min: 0.38885
+      max: 0.78815
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.9
       unit: dimensionless
@@ -217,165 +218,13 @@ materialProperties:
       min: 100
       max: 5000
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for Poplar surface cleaning without charring
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-infrared wavelength for optimal Poplar absorption and minimal
-      subsurface damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise cleaning control on Poplar grain structure
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for continuous cleaning coverage on Poplar
-      surfaces
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    description: Fluence threshold for effective contaminant removal without wood
-      substrate damage
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal wood damage
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for efficient Poplar surface cleaning
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Recommended number of passes for complete contaminant removal from
-      Poplar
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Optimal beam overlap for uniform cleaning coverage on Poplar surfaces
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning without thermal
-      accumulation
-    unit: μs
-    value: 100
-faq:
-- answer: For poplar wood, I'd go with a 1064nm fiber laser at 1.2 J/cm² fluence to
-    pretty effectively strip away rust while keeping the material intact. A 100µm
-    spot size paired with 500 mm/s scan speed offers fairly precise handling, cutting
-    down on thermal effects. Test these settings on a hidden spot first to ensure
-    the surface holds up.
-  question: What are the optimal laser parameters for cleaning rust or contaminants
-    from Poplar wood without causing surface burning?
-  topic_keyword: surface burning
-  topic_statement: 1.2 J/cm² fluence preserves wood
-- answer: Poplar's fairly low 540 lbf Janka hardness calls for gentle laser settings
-    to avoid damage. Basically, we apply a 1.2 J/cm² fluence threshold and 500 mm/s
-    scan speed, which removes contaminants effectively without etching or raising
-    the grain—issues you don't typically face with harder woods like oak.
-  question: How does Poplar's low density and softness affect laser cleaning compared
-    to harder woods like oak?
-  topic_keyword: low density and softness
-  topic_statement: Requires gentle laser parameters
-- answer: Yeah, laser cleaning effectively strips finishes from Poplar while basically
-    preserving its porous structure. With 1.2 J/cm² fluence and 100W power, it removes
-    contaminants without sealing the wood grain, leaving a pretty ideal surface for
-    uniform stain or paint absorption.
-  question: Can laser cleaning be used to prepare Poplar for painting or staining
-    after removing old finishes?
-  topic_keyword: painting or staining
-  topic_statement: Preserves porous structure
-- answer: Because poplar is pretty combustible, keep laser power under 100W with a
-    fast scan speed of 500 mm/s to avoid ignition. Always employ air assist and keep
-    a fire extinguisher right at hand, as the 1.2 J/cm² fluence threshold remains
-    basically critical for safety.
-  question: What specific safety concerns exist when laser cleaning Poplar, given
-    its combustible nature?
-  topic_keyword: combustible nature
-  topic_statement: Maintain fluence below 1.2 J/cm²
-- answer: Properly tuned near-infrared lasers at 1.2 J/cm² basically ablate biological
-    growth from Poplar pretty effectively. That 10 ns pulse width vaporizes contaminants
-    before much heat reaches the wood's cellulose, delivering a superior, residue-free
-    option over chemical spore treatments.
-  question: Is laser cleaning effective for removing biological growth (mold, mildew)
-    from Poplar without damaging the wood structure?
-  topic_keyword: biological growth (mold, mildew)
-  topic_statement: 10 ns pulse protects cellulose
-- answer: Poplar's mineral streaks pretty much absorb our 1064 nm wavelength more
-    readily than the surrounding wood, leading to differential cleaning effects. Basically,
-    to offset this, dial your fluence back to 1.0 J/cm² and ramp up scan speed to
-    avoid discoloration in the variable grain.
-  question: How does the presence of Poplar's green/brown mineral streaks affect laser
-    absorption and cleaning results?
-  topic_keyword: green/brown mineral streaks
-  topic_statement: Reduces fluence for differential absorption
-- answer: Poplar's delicate cellular structure keeps removal depth pretty limited.
-    Aim to stay below 50-100 μm for preserving integrity. In structural applications,
-    typically hold fluence under 1.2 J/cm² to avoid harming those thin cell walls.
-    Cosmetic cleaning offers fairly more latitude.
-  question: What is the maximum depth of contamination removal possible on Poplar
-    before structural integrity is compromised?
-- answer: When laser ablation is tuned right at 1.2 J/cm², it fairly effectively strips
-    the gray oxidized layer from Poplar, exposing the lighter wood below. Unlike sanding,
-    this non-contact technique basically sidesteps heat-induced discoloration, yielding
-    a truer original surface color.
-  question: Can laser cleaning restore the original color of aged or oxidized Poplar
-    wood surfaces?
-- answer: Both subspecies handle the 1064 nm wavelength pretty well, but Tulip Poplar's
-    fairly higher density calls for precise fluence management around 1.2 J/cm² to
-    avoid subsurface cell wall damage. With its lower resin content, Yellow Poplar
-    provides more flexible parameter ranges, especially using a 100 µm spot size for
-    accurate grain cleaning.
-  question: How do different Poplar subspecies (Yellow Poplar, Tulip Poplar) respond
-    to laser cleaning treatments?
-  topic_keyword: different Poplar subspecies
-  topic_statement: Density requires fluence control
-- answer: After laser cleaning at 1.2 J/cm², poplar's opened grain structure pretty
-    much benefits from a penetrating oil-based sealer. That stabilizes the surface
-    by rehydrating raised fibers and blocking oxidative discoloration. In porous spots,
-    applying a dilute wood consolidant before final sealing typically ensures long-term
-    dimensional stability.
-  question: What post-cleaning treatments are recommended for Poplar after laser cleaning
-    to stabilize the surface?
-  topic_keyword: stabilize the surface
-  topic_statement: Oil-based sealer rehydrates fibers
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Wood
-  href: /materials/woods
-- label: Hardwood
-  href: /materials/wood/hardwood
-- label: Poplar
-  href: /materials/wood/hardwood/poplar
-_metadata:
-  voice:
-    author_name: Todd Dunning
-    author_country: United States
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance

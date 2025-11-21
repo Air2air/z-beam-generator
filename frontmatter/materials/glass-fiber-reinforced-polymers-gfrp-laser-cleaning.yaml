@@ -1,202 +1,182 @@
-name: GFRP
-category: Composite
+name: Glass Fiber Reinforced Polymers GFRP
+slug: glass-fiber-reinforced-polymers-gfrp
+category: composite
 subcategory: fiber-reinforced
-title: GFRP Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for GFRP
-description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
 author:
   id: 3
   name: Ikmanda Roswati
   country: Indonesia
+  country_display: Indonesia
   title: Ph.D.
   sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
   expertise:
   - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: GFRP Laser Cleaning
+subtitle: This process ensures precision laser cleaning preserves GFRP fiber-matrix integrity efficiently.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Composite
+  href: /materials/composites
+- label: Fiber Reinforced
+  href: /materials/composite/fiber-reinforced
+- label: Glass Fiber Reinforced Polymers GFRP
+  href: /materials/composite/fiber-reinforced/glass-fiber-reinforced-polymers-gfrp
 images:
   hero:
-    alt: Glass Fiber Reinforced Polymers Gfrp surface during precision laser cleaning
-      process removing contamination layer at microscopic scale
+    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
   micro:
-    alt: Glass Fiber Reinforced Polymers Gfrp surface at 500x magnification comparing
-      contaminated state with cleaned substrate showing complete restoration
+    alt: Glass Fiber Reinforced Polymers Gfrp microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
-caption:
-  before: Under the microscope, GFRP's surface displays straightforward roughness
-    and unevenness, with fine dust particles and oily residues adhering tightly to
-    the fibers. These contaminants create irregular clusters, obstructing matrix interfaces
-    and leading to discoloration. Degradation appears practically as micro-cracks
-    and fiber pull-outs, rendering the material weakened and porous—inviting further
-    damage unless cleaned promptly.
-  after: The cleaned surface of Glass Fiber Reinforced Polymers (GFRP) looks very
-    smooth and glossy, with contaminants fully removed and the original texture restored.
-    This process cleans efficiently, preserving material integrity without delamination
-    or fiber damage. Restoration turns out straightforward, yielding a pristine finish
-    ready for applications while upholding composite strength and durability.
-  author: Ikmanda Roswati
-  character_count:
-    after: 401
-    before: 420
-  generated: '2025-10-25T14:24:02.124100Z'
-  generation_method: ai_research
-  word_count:
-    after: 53
-    before: 58
-regulatoryStandards:
-- laser_safety
-- occupational_safety
-- environmental_safety
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+caption: null
+faq: null
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    percentage: 70.8
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    percentage: 40.0
     electricalResistivity:
       value: 1000000000000.0
       unit: Ω·m
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 100000000000000.0
+      min: 0.0
+      max: 105000000000000.0
     fractureToughness:
       value: 2.1
       unit: MPa m^{0.5}
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 100.0
+      min: 0.01
+      max: 26.19
     thermalDestruction:
       value: 623.0
       unit: K
-      confidence: 95
       source: ai_research
-      min: 273.0
-      max: 900.0
+      min: 205.6
+      max: 1952.4
     density:
       value: 1.85
       unit: g/cm³
-      confidence: 95
       source: ai_research
-      min: 0.5
-      max: 8.0
+      min: 0.9975
+      max: 2519.9475
     oxidationResistance:
       value: 220.0
       unit: °C
-      confidence: 95
       source: ai_research
-      min: 80.0
-      max: 1650.0
+      min: 0.0
+      max: 1668.45
     laserReflectivity:
       value: 0.05
       unit: ''
-      confidence: 95
       source: ai_research
-      min: 2.0
-      max: 80.0
+      min: 0.0043
+      max: 0.9217
     thermalExpansion:
       value: 1.7e-05
       unit: K^{-1}
-      confidence: 95
       source: ai_research
-      min: -1.0
-      max: 250.0
+      min: -1
+      max: 250
     thermalConductivity:
       value: 0.35
       unit: W/m·K
-      confidence: 95
       source: ai_research
       min: 0.03
-      max: 400.0
+      max: 400
     youngsModulus:
       value: 38.0
       unit: GPa
-      confidence: 95
       source: ai_research
-      min: 0.001
-      max: 3000.0
+      min: 0.00475
+      max: 144899999999.99976
     hardness:
       value: 85.0
       unit: Shore D
-      confidence: 95
       source: ai_research
       min: 5.0
-      max: 120.0
+      max: 120
     specificHeat:
       value: 930.0
       unit: J/(kg·K)
-      confidence: 95
       source: ai_research
-      min: 500.0
+      min: 500
       max: 2500.0
     laserAbsorption:
       value: 4500.0
       unit: m^{-1}
-      confidence: 95
       source: ai_research
-      min: 0.05
-      max: 200.0
+      min: 0.1425
+      max: 524999.9925
     compressiveStrength:
       value: 280.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 50.0
-      max: 1000.0
+      min: 6.55025
+      max: 1259.65525
     tensileStrength:
       value: 570.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 20.0
-      max: 6000.0
+      min: 16.15
+      max: 1626.65
     thermalDiffusivity:
       value: 1.04e-07
       unit: m²/s
-      confidence: 95
       source: ai_research
-      min: 0.08
-      max: 180.0
+      min: 0.0
+      max: 7.6e-05
     flexuralStrength:
       value: 450.0
       unit: MPa
-      confidence: 95
       source: ai_research
-      min: 100.0
-      max: 2000.0
+      min: 4.56
+      max: 1196.76
     corrosionResistance:
       value: 0.95
       unit: dimensionless (retention factor)
-      confidence: 95
       source: ai_research
-      min: 5.0
-      max: 9.0
+      min: 0.0
+      max: 4725.0
   laser_material_interaction:
     label: Laser-Material Interaction
-    percentage: 29.2
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    percentage: 40.0
     absorptivity:
       value: 0.05
       unit: dimensionless
@@ -239,167 +219,16 @@ materialProperties:
       min: 1
       max: 100
       source: ai_research
-machineSettings:
-  powerRange:
-    description: Optimal average power for GFRP surface cleaning without matrix damage
-    unit: W
-    value: 100
-    min: 1.0
-    max: 120
-  wavelength:
-    description: Near-IR wavelength for optimal absorption in surface contaminants
-      with minimal GFRP damage
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    description: Beam spot diameter for precise surface cleaning control
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    description: Threshold fluence for effective contaminant removal without fiber
-      damage
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  energyDensity:
-    description: Optimal energy density for GFRP surface processing
-    unit: J/cm²
-    value: 3.0
-    min: 0.1
-    max: 20.0
-  pulseWidth:
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    description: Optimal scanning speed for uniform cleaning coverage
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    description: Number of cleaning passes for complete contaminant removal
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    description: Beam overlap percentage for uniform cleaning coverage
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    description: Optimal dwell time per spot for effective cleaning
-    unit: ms
-    value: 0.2
-faq:
-- answer: As an Indonesian laser cleaning specialist, I've cleaned GFRP using a 1064
-    nm Nd:YAG laser with 10-50 ns pulse durations, fluences below 1 J/cm², and 10-20
-    Hz repetition rates. This process minimizes thermal damage to the resin matrix
-    and glass fibers, ensuring structural integrity. Test samples first for practical
-    results.
-  question: What laser parameters are safe for cleaning GFRP without damaging the
-    glass fibers or resin matrix?
-- answer: Laser cleaning offers a practical solution for removing silicone, wax, and
-    PVA release agents from GFRP molds. With a 1064 nm wavelength at 2.5 J/cm² fluence,
-    this process ablates contaminants while safeguarding the mold's dimensional integrity.
-    That method upholds surface quality, avoiding thermal damage to the composite
-    matrix.
-  question: Can laser cleaning remove release agents from GFRP molds without affecting
-    the surface quality?
-  topic_keyword: GFRP molds
-  topic_statement: Preserves dimensional integrity
-- answer: Laser cleaning delivers practical surface preparation at 3.0 J/cm², boosting
-    adhesion without subsurface damage from abrasives. This process, non-contact with
-    a 100 µm spot size, safeguards GFRP's mechanical integrity—unlike grit blasting,
-    which weakens the fiber-matrix interface.
-  question: How does laser cleaning compare to abrasive methods for GFRP surface preparation
-    before bonding or painting?
-  topic_keyword: surface preparation before bonding
-  topic_statement: Preserves fiber-matrix interface
-- answer: In this process, keep fluence below 2.5 J/cm² to prevent hazardous fume
-    generation from resin decomposition. Practically, employ local exhaust ventilation
-    and respiratory protection, since thermal degradation releases styrene and formaldehyde
-    exceeding workplace exposure limits.
-  question: What safety precautions are needed when laser cleaning GFRP due to potential
-    hazardous fumes?
-- answer: As a laser cleaning specialist from Indonesia, I can tell you straightforwardly
-    that using controlled parameters like low fluence and short pulses in this process
-    minimizes thermal effects on GFRP matrices. It prevents micro-cracks, thus preserving
-    structural integrity without weakening the composite's strength. In my experience,
-    proper calibration is essential.
-  question: Does laser cleaning create micro-cracks or thermal damage in the GFRP
-    matrix that could compromise structural integrity?
-- answer: Using near-IR wavelengths around 1064 nm offers a straightforward approach
-    for GFRP cleaning. This process ensures strong absorption in surface contaminants,
-    while glass fibers remain highly transparent, enabling efficient removal at ~2.5
-    J/cm² without damaging the composite substrate.
-  question: What laser wavelength (UV, IR, etc.) works best for GFRP cleaning and
-    why?
-  topic_keyword: laser wavelength
-  topic_statement: Near-IR transparent to glass fibers
-- answer: Laser cleaning offers a practical approach to effectively remove surface
-    contaminants from GFRP, employing a 1064 nm wavelength and fluence around 2.5
-    J/cm². This process selectively ablates oils or paints, while safeguarding the
-    underlying composite matrix, as confirmed by microscopic inspection revealing
-    no fiber exposure.
-  question: How effective is laser cleaning for removing contaminants like oils, paints,
-    or carbon deposits from GFRP surfaces?
-- answer: This process of laser treatment at 3.0 J/cm² significantly boosts GFRP adhesion
-    by raising surface energy and generating micro-roughness. That method beats mechanical
-    abrasion through practical functionalization of the polymer surface, avoiding
-    subsurface damage for stronger bonds in composite repairs.
-  question: Can laser surface treatment improve adhesion properties of GFRP for repair
-    applications?
-  topic_keyword: adhesion properties
-  topic_statement: Enhances adhesion via micro-roughness
-- answer: Handling complex GFRP geometries poses straightforward challenges for beam
-    access and focal plane alignment. Keeping the essential 2.5 J/cm² fluence threshold
-    on curved surfaces proves difficult, with stand-off distance shifts risking localized
-    thermal damage or suboptimal cleaning. For practical application, robotic systems
-    with real-time distance monitoring ensure even energy distribution over detailed
-    contours.
-  question: What are the limitations of laser cleaning for complex GFRP geometries
-    and curved surfaces?
-  topic_keyword: complex GFRP geometries
-  topic_statement: Requires robotic distance tracking
-- answer: For epoxy resins, this process of effective ablation demands higher fluence
-    around 2.5 J/cm², owing to their strong thermal stability. In contrast, polyester
-    and vinyl ester matrices break down more readily, emitting styrene and other volatiles,
-    so that method calls for power below 100W to safeguard the composite surface from
-    chemical damage.
-  question: How do different resin systems (epoxy, vinyl ester, polyester) in GFRP
-    respond to laser cleaning?
-  topic_keyword: different resin systems
-  topic_statement: Epoxy requires higher fluence
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composites
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Glass Fiber Reinforced Polymers GFRP
-  href: /materials/composite/fiber-reinforced/glass-fiber-reinforced-polymers-gfrp
-_metadata:
-  voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
-    voice_applied: true
-    content_type: material
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.921983Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.921989Z'
+  structure_version: '2.0'
