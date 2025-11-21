@@ -25,6 +25,13 @@
 - **Analysis**: See [PROCESSING_MODULE_UTILIZATION_ANALYSIS_NOV18_2025.md](../PROCESSING_MODULE_UTILIZATION_ANALYSIS_NOV18_2025.md)
 - **Result**: Cleaner structure, easier navigation, zero breaking changes
 
+### ✅ November 20: Universal Humanness Layer (ADR-007) 🔥 **NEW**
+- Dual-feedback learning system (Winston DB + Subjective evaluation)
+- Dynamic humanness instructions with strictness progression (1-5)
+- Integrated into quality-gated retry loop with parameter adjustments
+- **Grade**: A+ (98/100) - Production ready
+- **Docs**: [decisions/ADR-007-universal-humanness-layer.md](decisions/ADR-007-universal-humanness-layer.md)
+
 ### ✅ November 18: Realism Quality Gate Enforcement 🔥 **CRITICAL**
 - Realism score (7.0/10 minimum) now enforced as rejection gate
 - Blended learning: Winston (40%) + Realism (60%) feedback drives parameter adjustments

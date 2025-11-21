@@ -38,6 +38,7 @@ python3 run.py --deploy
 ## ✨ Core Features
 
 ### 🤖 AI-Powered Generation
+- **Universal Humanness Layer**: Dual-feedback learning (Winston DB + Subjective patterns) with strictness progression
 - **Composite Quality Scoring**: Winston (60%) + Subjective (30%) + Readability (10%)
 - **Adaptive Learning**: Thresholds learned from 75th percentile of successful content
 - **Sweet Spot Optimization**: Statistical parameter optimization from historical success

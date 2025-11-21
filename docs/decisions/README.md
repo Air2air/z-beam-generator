@@ -25,6 +25,8 @@ Each ADR follows this structure:
 - [ADR-002: Fail-Fast vs Runtime Recovery](./ADR-002-fail-fast-vs-runtime-recovery.md)
 - [ADR-003: Exploration Rate and Reproducibility](./ADR-003-exploration-rate-reproducibility.md)
 - [ADR-004: Content Instructions Location](./ADR-004-content-instructions-location.md)
+- [ADR-005: Dynamic Threshold Learning](./ADR-005-dynamic-threshold-learning.md)
+- [ADR-007: Universal Humanness Layer](./ADR-007-universal-humanness-layer.md)
 
 ## When to Create an ADR
 

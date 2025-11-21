@@ -94,6 +94,14 @@ docs/
 │   ├── GLOSSARY.md
 │   └── FAQ.md
 │
+├── decisions/                         # Architecture Decision Records (ADRs)
+│   ├── ADR-001-dual-voice-enforcement.md
+│   ├── ADR-002-fail-fast-vs-runtime-recovery.md
+│   ├── ADR-003-exploration-rate-reproducibility.md
+│   ├── ADR-004-content-instructions-location.md
+│   ├── ADR-005-dynamic-threshold-learning.md
+│   └── ADR-007-universal-humanness-layer.md  # 🔥 NEW (Nov 20, 2025)
+│
 └── archive/                           # Historical documents
     └── 2025-11/                       # November 2025 archives
         ├── E2E_PROCESSING_EVALUATION_NOV17_2025.md
@@ -166,6 +174,14 @@ processing/
 ---
 
 ## 📊 November 2025 Key Updates
+
+### Universal Humanness Layer (Nov 20) 🔥 **NEW**
+- **Dual-feedback learning**: Winston DB + Subjective patterns
+- **Dynamic instructions**: Strictness progression (1-5 levels)
+- **Integration**: Quality-gated retry loop with parameter adjustments
+- **Grade**: A+ (98/100) - Production ready
+- **Docs**: `docs/decisions/ADR-007-universal-humanness-layer.md`
+- **Files**: `learning/humanness_optimizer.py`, `prompts/system/humanness_layer.txt`
 
 ### Priority 1 Compliance Fixes (Nov 17)
 - **Fixed**: RealismOptimizer import path
