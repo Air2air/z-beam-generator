@@ -43,19 +43,40 @@ Subjective: {{subjective_patterns}}
 Strictness {{strictness_level}}: {{strictness_guidance}}
 """)
         
-        # Create patterns file
+        # Create patterns file (match production format)
         patterns_file = prompts_dir.parent / 'evaluation' / 'learned_patterns.yaml'
         patterns_file.parent.mkdir(parents=True, exist_ok=True)
         patterns_file.write_text("""
-rejection_patterns:
-  theatrical_phrases:
-    high_penalty:
-      - "zaps away"
-      - "And yeah"
-  ai_tendencies:
-    common:
-      formulaic_structure: 15
-      technical_manual_tone: 12
+version: 1.0.0
+last_updated: '2025-11-20T00:00:00.000000'
+total_evaluations: 0
+theatrical_phrases:
+  high_penalty:
+    - zaps away
+    - And yeah
+  medium_penalty:
+    - really
+    - very
+ai_tendencies:
+  common:
+    formulaic_structure: 15
+    technical_manual_tone: 12
+  emerging: []
+scoring_adjustments:
+  theatrical_element_penalty: -2.0
+  casual_marker_penalty: -3.0
+  realism_threshold: 7.0
+  voice_authenticity_floor: 4.0
+success_patterns:
+  sample_count: 0
+  average_realism_score: 7.0
+  average_voice_authenticity: 7.0
+  average_tonal_consistency: 7.0
+  professional_verbs:
+    - removes
+    - restores
+  technical_precision: true
+  neutral_tone: true
 """)
         
         # Create Winston DB with sample data
@@ -164,7 +185,8 @@ rejection_patterns:
         assert patterns is not None
         assert hasattr(patterns, 'theatrical_phrases')
         assert hasattr(patterns, 'ai_tendencies')
-        assert len(patterns.theatrical_phrases) > 0  # We defined 2
+        # Theatrical phrases is now a list of dicts/strings from high_penalty
+        assert len(patterns.theatrical_phrases) >= 2  # We defined 2 in high_penalty
     
     def test_previous_ai_tendencies_integration(self, temp_workspace):
         """Should incorporate feedback from previous attempts."""
@@ -185,27 +207,26 @@ rejection_patterns:
         assert instructions is not None
         assert len(instructions) > 0
     
-    def test_fail_fast_on_missing_template(self, temp_workspace):
+    def test_fail_fast_on_missing_template(self):
         """Should fail immediately if template file missing."""
-        # Move template to break the system
-        template_backup = Path(temp_workspace['template'] + '.bak')
-        Path(temp_workspace['template']).rename(template_backup)
+        # The optimizer checks for prompts/system/humanness_layer.txt at init
+        # Temporarily rename the production template to test fail-fast
+        prod_template = Path('prompts/system/humanness_layer.txt')
         
-        # Override the template location to point to temp dir
-        import learning.humanness_optimizer as ho_module
-        original_template = ho_module.Path('prompts/system/humanness_layer.txt')
+        if not prod_template.exists():
+            pytest.skip("Production template doesn't exist yet")
+        
+        backup_path = prod_template.with_suffix('.txt.bak')
+        prod_template.rename(backup_path)
         
         try:
-            # This should fail because template doesn't exist in production location
-            with pytest.raises(FileNotFoundError):
-                optimizer = HumannessOptimizer(
-                    winston_db_path=temp_workspace['winston_db'],
-                    patterns_file=Path(temp_workspace['patterns'])
-                )
+            # Should raise FileNotFoundError when template missing
+            with pytest.raises(FileNotFoundError, match="Humanness layer template not found"):
+                HumannessOptimizer()
         finally:
-            # Restore for other tests
-            if template_backup.exists():
-                template_backup.rename(temp_workspace['template'])
+            # Restore template
+            if backup_path.exists():
+                backup_path.rename(prod_template)
     
     def test_dual_feedback_integration(self, temp_workspace):
         """Should combine Winston and Subjective patterns in output."""
@@ -230,8 +251,14 @@ class TestSystemIntegration:
     
     def test_humanness_layer_files_exist(self):
         """Should have required files in production location."""
-        # Check template exists
+        # Check template exists (critical for fail-fast test to work)
         template_path = Path('prompts/system/humanness_layer.txt')
+        if not template_path.exists():
+            # May have been renamed by fail-fast test
+            backup = template_path.with_suffix('.txt.bak')
+            if backup.exists():
+                backup.rename(template_path)
+        
         assert template_path.exists(), "Humanness layer template missing"
         
         # Check patterns file exists
