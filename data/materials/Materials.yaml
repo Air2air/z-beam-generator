@@ -1178,9 +1178,12 @@ materials:
           These features obscure the underlying metallic grain structure completely.
         after: Laser treatment removes the dark oxides and clears the hazy film. This
           process reveals the uniform, reflective surface of the base aluminum material.
-      description: Aluminum's high reflectivity of about 0.95 and low laser absorption
-        of 0.06 require careful parameter control. We typically use around 100 W at
-        1064 nm wavelength to remove oxides without reaching its 933 K melting point.
+      description: When cleaning aluminum, you'll want to watch its high reflectivity
+        at 0.95 and low laser absorption of 0.06, which make it tougher than ferrous
+        metals like steel. Its low melting point of 933 K means you need to start
+        with 100 W at 1064 nm, 50 kHz, and 500 mm/s scan speed to remove oxides without
+        melting. Keep passes to three at 50% overlap to avoid warping— we've found
+        this restores surfaces effectively.
   Ash:
     name: Ash
     category: wood
@@ -4138,15 +4141,14 @@ materials:
     components:
       subtitle: Its excellent machinability makes brass a preferred choice for high-volume
         precision components
-      description: Brass handles laser cleaning well thanks to its solid thermal conductivity
-        of 109 W/m·K, which spreads heat evenly and cuts down on hotspots. But that
-        high reflectivity—around 0.94 at 1064 nm—means low absorption, only 0.12,
-        so you need to crank up the energy density to about 5.1 J/cm² to ablate buildup
-        without melting the surface at 930°C. Unlike ferrous metals, its non-magnetic
-        nature and corrosion resistance of 0.75 let you clean marine or plumbing parts
-        cleanly. Watch out for thermal expansion at 18.9 × 10^{-6}/K; too many passes
-        can warp thin fittings. We typically run 100 W at 50 kHz, 500 mm/s scan speed,
-        with 50% overlap over three passes to bring back that shine safely.
+      description: When laser cleaning brass, you'll want to account for its high
+        reflectivity—around 0.94—which means low absorption at just 0.12, so the beam
+        bounces off easily compared to ferrous metals. This non-ferrous alloy, with
+        solid thermal conductivity of 109 W/m·K, handles heat well but tarnishes fast
+        above 478 K oxidation point. Watch out for uneven melting at 930°C; start
+        with 100 W at 1064 nm, 50 kHz, and 5.1 J/cm² energy density over 3 passes
+        at 500 mm/s to avoid pitting. We've found 50% overlap clears buildup without
+        warping.
   Breccia:
     name: Breccia
     category: stone
@@ -9534,6 +9536,14 @@ materials:
         after: Now the laser clears all that away, leaving a smooth, reflective finish.
           The underlying metal shines through with a uniform, orange-pink color. The
           surface appears completely clean and restored.
+      description: When cleaning copper with lasers, keep an eye on its sky-high reflectivity—97.5%
+        at 1064 nm—which makes the beam bounce off instead of sticking. That low absorptivity
+        of just 0.035 sets it apart from other non-ferrous metals; you'll need higher
+        fluence, around 2.5 J/cm², to get contaminants off without hitting the melting
+        point of 1358 K. We use 100 W power, 10 ns pulses at 100 kHz, and 500 mm/s
+        scan speed for three passes with 50% overlap. Watch for uneven heating due
+        to its great thermal conductivity; too much power warps the 0.1 μm surface
+        fast.
   Crown Glass:
     name: Crown Glass
     category: glass
@@ -18656,10 +18666,12 @@ materials:
       subtitle: Lead's exceptional density provides unmatched shielding against radiation,
         while its natural corrosion resistance ensures long-term structural integrity
         in demanding environments
-      description: Lead's exceptionally low melting point, around 600 K, demands careful
-        thermal control during laser cleaning. Its high laser reflectivity of 0.98
-        requires precise fluence settings, typically near 2.5 J/cm², to avoid surface
-        melting and achieve effective contaminant removal.
+      description: When cleaning lead with lasers, keep an eye on its low melting
+        point—around 327°C—so you don't melt the surface easily. Its high density,
+        11.34 g/cm³, slows heat spread, but that 0.65 reflectivity means you need
+        higher fluence, up to 2.5 J/cm² at 100 W and 1064 nm, without exceeding the
+        0.42 J/cm² ablation threshold. Watch for deformation on its soft 5 HB hardness;
+        use just 3 passes at 500 mm/s to clear buildup safely.
   Lead Crystal:
     name: Lead Crystal
     category: glass
@@ -39338,6 +39350,15 @@ materials:
         description: Effective dwell time per spot for contaminant ablation
         unit: μs
         value: 100
+    components:
+      description: When laser cleaning stainless steel, keep an eye on its 65% reflectivity
+        at 1064 nm—it bounces back a lot of energy, so start with lower power around
+        100 W to avoid scorching. This metal's low thermal conductivity of 16.2 W/m·K
+        means heat stays put, which helps target rust without warping, unlike milder
+        steels. But watch the melting point at 1425°C; push energy density over 5.1
+        J/cm² and you risk discoloration from oxide formation. We typically run 50
+        kHz pulses at 500 mm/s with 50% overlap—three passes clear buildup nicely
+        without pitting the surface.
   Steel:
     name: Steel
     category: metal
