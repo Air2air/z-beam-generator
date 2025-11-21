@@ -200,7 +200,8 @@ class PromptBuilder:
         domain: str = "materials",
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters from config
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity control
-        variation_seed: Optional[int] = None
+        variation_seed: Optional[int] = None,
+        humanness_layer: Optional[str] = None  # NEW: Universal Humanness Layer instructions
     ) -> str:
         """
         Build unified prompt combining all elements.
@@ -214,6 +215,7 @@ class PromptBuilder:
             component_type: Type of content (subtitle, caption, description, etc.)
             domain: Content domain (materials, history, recipes, etc.)
             variation_seed: Optional seed for variation (defeats caching)
+            humanness_layer: Dynamic humanness instructions from HumannessOptimizer (NEW)
             
         Returns:
             Complete prompt string
@@ -282,7 +284,8 @@ class PromptBuilder:
                 voice_params=voice_params,  # NEW: Pass to spec builder
                 enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
                 variation_seed=variation_seed,
-                voice=voice  # NEW: Pass full voice profile for grammar_norms access
+                voice=voice,  # NEW: Pass full voice profile for grammar_norms access
+                humanness_layer=humanness_layer  # NEW: Universal Humanness Layer
             )
         else:
             # Fallback to legacy generic prompt
@@ -305,13 +308,17 @@ class PromptBuilder:
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity
         variation_seed: Optional[int] = None,
-        voice: Optional[Dict] = None  # NEW: Full voice profile for grammar_norms access
+        voice: Optional[Dict] = None,  # NEW: Full voice profile for grammar_norms access
+        humanness_layer: Optional[str] = None  # NEW: Universal Humanness Layer
     ) -> str:
         """
         Build prompt using component specification and domain context.
         
         This is the new flexible approach that works for any component type
         and content domain without hardcoding templates.
+        
+        Args:
+            humanness_layer: Dynamic humanness instructions from HumannessOptimizer
         """
         # Build context section based on domain
         context_section = f"""TOPIC: {topic} ({domain_ctx.domain})
@@ -587,13 +594,18 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         if variation_seed is not None:
             variation_note = f"\n\n[Generation ID: {variation_seed} - ignore this, just for tracking]"
         
+        # Inject Universal Humanness Layer (between context and requirements)
+        humanness_section = ""
+        if humanness_layer:
+            humanness_section = f"\n\n{humanness_layer}\n"
+        
         # Assemble complete prompt
         prompt = f"""You are {author}, writing a {spec.name} about {topic}.
 
 {context_section}
 
 {voice_section}
-
+{humanness_section}
 REQUIREMENTS:
 {requirements_section}
 

@@ -59,6 +59,7 @@ class QualityGatedGenerator:
         self,
         api_client,
         subjective_evaluator,
+        winston_client=None,
         max_attempts: int = None,
         quality_threshold: float = None
     ):
@@ -68,6 +69,7 @@ class QualityGatedGenerator:
         Args:
             api_client: API client for content generation (required)
             subjective_evaluator: SubjectiveEvaluator instance (required)
+            winston_client: Winston API client for AI detection (optional)
             max_attempts: Maximum generation attempts (default from config)
             quality_threshold: Minimum realism score required (default from config)
         
@@ -81,6 +83,7 @@ class QualityGatedGenerator:
         
         self.api_client = api_client
         self.subjective_evaluator = subjective_evaluator
+        self.winston_client = winston_client
         
         # Load config for quality gate settings
         from generation.config.config_loader import get_config
@@ -115,6 +118,10 @@ class QualityGatedGenerator:
         from generation.config.dynamic_config import DynamicConfig
         self.dynamic_config = DynamicConfig()
         
+        # Initialize HumannessOptimizer for Universal Humanness Layer
+        from learning.humanness_optimizer import HumannessOptimizer
+        self.humanness_optimizer = HumannessOptimizer()
+        
         logger.info(f"QualityGatedGenerator initialized (max_attempts={self.max_attempts}, threshold={self.quality_threshold})")
     
     def generate(
@@ -146,6 +153,9 @@ class QualityGatedGenerator:
         logger.info(f"   Threshold: {self.quality_threshold}/10 | Max Attempts: {self.max_attempts}")
         logger.info(f"{'='*80}\n")
         
+        # Track AI tendencies across attempts for strictness progression
+        previous_ai_tendencies = []
+        
         # Get base parameters
         current_params = self._get_base_parameters(component_type)
         
@@ -164,12 +174,21 @@ class QualityGatedGenerator:
             for param, value in current_params.items():
                 logger.info(f"   • {param}: {value}")
             
-            # Generate content (does NOT save to YAML yet)
+            # Generate humanness instructions (Universal Humanness Layer)
+            # Strictness increases with each attempt (1-5)
+            humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
+                component_type=component_type,
+                strictness_level=attempt,  # 1-5 based on attempt number
+                previous_ai_tendencies=previous_ai_tendencies
+            )
+            
+            # Generate content with humanness layer (does NOT save to YAML yet)
             try:
                 result = self._generate_content_only(
                     material_name, 
                     component_type,
                     current_params,
+                    humanness_layer=humanness_instructions,
                     **kwargs
                 )
                 content = result['content']
@@ -223,7 +242,14 @@ class QualityGatedGenerator:
                 # Check if passed quality gate
                 realism_score = evaluation.realism_score or evaluation.overall_score
                 
-                if realism_score >= self.quality_threshold and not evaluation.ai_tendencies:
+                # Run Winston detection BEFORE save (quality gate)
+                # Winston API confirmed working - detection successful, API responsive
+                # Challenge: Current content generation produces 99-100% AI scores
+                # Historical passing samples (12.2%, 24.5% AI) show conversational tone helps
+                # System retries with adjusted parameters when Winston fails
+                winston_passed = self._check_winston_detection(content, material_name, component_type)
+                
+                if realism_score >= self.quality_threshold and not evaluation.ai_tendencies and winston_passed:
                     logger.info(f"\n✅ QUALITY GATE PASSED (≥{self.quality_threshold}/10)")
                     logger.info(f"   💾 Saving to Materials.yaml...")
                     
@@ -259,6 +285,11 @@ class QualityGatedGenerator:
                         logger.warning(f"   • {reason}")
                         rejection_reasons.append(reason)
                     
+                    if not winston_passed:
+                        reason = "Winston AI detection failed (content flagged as AI-generated)"
+                        logger.warning(f"   • {reason}")
+                        rejection_reasons.append(reason)
+                    
                     # Last attempt? Return failure
                     if attempt >= self.max_attempts:
                         logger.error(f"\n❌ MAX ATTEMPTS REACHED ({self.max_attempts})")
@@ -278,10 +309,15 @@ class QualityGatedGenerator:
                     
                     # Adjust parameters for next attempt
                     logger.info(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
+                    
+                    # Update previous_ai_tendencies for next humanness layer
+                    previous_ai_tendencies = evaluation.ai_tendencies or []
+                    
                     current_params = self._adjust_parameters(
                         current_params,
                         evaluation.ai_tendencies or [],
-                        realism_score
+                        realism_score,
+                        winston_passed=winston_passed
                     )
                     parameter_history.append(current_params.copy())
                     logger.info(f"   ✅ Parameters adjusted, retrying...")
@@ -373,6 +409,7 @@ class QualityGatedGenerator:
         material_name: str,
         component_type: str,
         params: Dict[str, Any],
+        humanness_layer: Optional[str] = None,
         **kwargs
     ) -> Dict[str, Any]:
         """
@@ -386,8 +423,16 @@ class QualityGatedGenerator:
         
         Previous bug: SimpleGenerator.generate() saved immediately, violating
         the documented quality-gated architecture.
+        
+        Args:
+            humanness_layer: Dynamic humanness instructions from HumannessOptimizer
         """
-        result = self.generator.generate_without_save(material_name, component_type, **kwargs)
+        result = self.generator.generate_without_save(
+            material_name, 
+            component_type,
+            humanness_layer=humanness_layer,
+            **kwargs
+        )
         return result
     
     def _content_to_text(self, content: Any, component_type: str) -> str:
@@ -455,9 +500,38 @@ class QualityGatedGenerator:
         self,
         current_params: Dict[str, Any],
         ai_tendencies: List[str],
-        realism_score: float
+        realism_score: float,
+        winston_passed: bool = True
     ) -> Dict[str, Any]:
-        """Adjust parameters based on evaluation feedback"""
+        """
+        Adjust parameters based on evaluation feedback.
+        
+        Args:
+            current_params: Current generation parameters
+            ai_tendencies: Detected AI patterns from realism evaluation
+            realism_score: Current realism score (0-10)
+            winston_passed: Whether Winston detection passed
+        
+        Returns:
+            Adjusted parameters for next attempt
+        """
+        # If Winston failed, apply aggressive adjustments for humanness
+        if not winston_passed:
+            logger.info("   🚨 Winston failure detected - applying aggressive humanness adjustments")
+            adjusted = current_params.copy()
+            
+            # Dramatically increase randomness and imperfection
+            adjusted['temperature'] = min(1.0, adjusted['temperature'] + 0.15)  # Larger jump
+            adjusted['imperfection_tolerance'] = min(1.0, adjusted['imperfection_tolerance'] + 0.2)
+            adjusted['trait_frequency'] = min(1.0, adjusted.get('trait_frequency', 0.5) + 0.15)
+            adjusted['sentence_rhythm_variation'] = 1.0  # Maximum variation
+            
+            logger.info(f"     • temperature: {current_params['temperature']:.3f} → {adjusted['temperature']:.3f} (+0.15)")
+            logger.info(f"     • imperfection_tolerance: {current_params['imperfection_tolerance']:.3f} → {adjusted['imperfection_tolerance']:.3f} (+0.20)")
+            logger.info(f"     • trait_frequency: {current_params.get('trait_frequency', 0.5):.3f} → {adjusted['trait_frequency']:.3f} (+0.15)")
+            
+            return adjusted
+        
         if not ai_tendencies:
             # No specific tendencies - general improvement
             logger.info("   No specific AI tendencies - applying general improvements")
@@ -480,6 +554,85 @@ class QualityGatedGenerator:
                 logger.info(f"     • {param}: {old_value} → {new_value} (Δ{new_value - old_value:+.3f})")
         
         return adjusted_params
+    
+    def _check_winston_detection(self, content: str, material_name: str, component_type: str) -> bool:
+        """
+        Run Winston AI detection during quality gate (before save).
+        
+        Returns:
+            bool: True if Winston passes or is unavailable, False if Winston fails threshold
+        """
+        # Winston is optional - if not configured, pass by default
+        if not self.winston_client:
+            logger.info("   ⚠️  Winston API not configured - skipping AI detection")
+            return True
+        
+        try:
+            from postprocessing.detection.winston_integration import WinstonIntegration
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            from generation.config.config_loader import get_config
+            from generation.validation.constants import ValidationConstants
+            
+            config = get_config()
+            db_path = config.config.get('winston_feedback_db_path')
+            feedback_db = WinstonFeedbackDatabase(db_path) if db_path else None
+            
+            # Initialize Winston integration
+            winston = WinstonIntegration(
+                winston_client=self.winston_client,
+                feedback_db=feedback_db,
+                config=config.config
+            )
+            
+            # Use fully dynamic threshold from database learning (no fallback)
+            from learning.threshold_manager import ThresholdManager
+            threshold_manager = ThresholdManager(db_path='z-beam.db')
+            ai_threshold = threshold_manager.get_winston_threshold(use_learned=True)
+            logger.info(f"\n🤖 Running Winston AI detection...")
+            logger.info(f"   Using learned Winston threshold: {ai_threshold:.3f} (dynamic from DB)")
+            
+            # Calculate temperature for logging (metadata only)
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            generation_temp = dynamic_config.calculate_temperature(component_type)
+            
+            # Detect (don't log yet - that happens post-save if passed)
+            winston_result = winston.detect_and_log(
+                text=content,
+                material=material_name,
+                component_type=component_type,
+                temperature=generation_temp,
+                attempt=1,
+                max_attempts=1,
+                ai_threshold=ai_threshold
+            )
+            
+            ai_score = winston_result['ai_score']
+            human_score = 1.0 - ai_score
+            
+            logger.info(f"   🎯 AI Score: {ai_score*100:.1f}% (threshold: {ai_threshold*100:.1f}%)")
+            logger.info(f"   👤 Human Score: {human_score*100:.1f}%")
+            
+            if ai_score <= ai_threshold:
+                logger.info("   ✅ Winston check PASSED")
+                return True
+            else:
+                logger.warning("   ❌ Winston check FAILED - will retry generation")
+                return False
+                
+        except Exception as e:
+            # Winston optional for short content
+            error_msg = str(e)
+            if 'Text too short' in error_msg:
+                logger.info(f"   ⚠️  Winston skipped: {e}")
+                return True  # Don't fail on short content
+            elif 'not configured' in error_msg:
+                logger.info(f"   ⚠️  Winston not configured: {e}")
+                return True  # Don't fail if Winston unavailable
+            else:
+                # Other errors are failures
+                logger.error(f"   ❌ Winston detection error: {e}")
+                return False
     
     def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
         """Save content to Materials.yaml (atomic write)"""

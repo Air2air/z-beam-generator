@@ -25,7 +25,7 @@ Design Principles:
 import logging
 import random
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 import yaml
 
 logger = logging.getLogger(__name__)
@@ -179,7 +179,8 @@ class SimpleGenerator:
         self,
         material_name: str,
         component_type: str,
-        faq_count: int = None
+        faq_count: int = None,
+        humanness_layer: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         Generate content WITHOUT saving to Materials.yaml.
@@ -191,6 +192,7 @@ class SimpleGenerator:
             material_name: Name of material
             component_type: Type of component (caption, subtitle, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
+            humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
             
         Returns:
             Dict with 'content', 'length', 'word_count', 'saved'=False, 'temperature'
@@ -240,7 +242,8 @@ class SimpleGenerator:
             facts=facts,
             context=context,
             component_type=component_type,
-            domain='materials'
+            domain='materials',
+            humanness_layer=humanness_layer  # NEW: inject humanness instructions
         )
         
         # Make API call

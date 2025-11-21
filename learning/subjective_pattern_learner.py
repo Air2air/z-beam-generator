@@ -10,7 +10,7 @@ Created: November 18, 2025
 import yaml
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 import logging
 
 
@@ -140,6 +140,74 @@ class SubjectivePatternLearner:
     def get_current_patterns(self) -> Dict:
         """Get current learned patterns for use in evaluation prompt"""
         return self._load_patterns()
+    
+    def get_avoidance_patterns(self) -> Dict[str, Any]:
+        """
+        Get patterns to avoid for humanness optimizer.
+        
+        Extracts theatrical phrases and AI tendencies from learned patterns
+        for use in generating humanness layer instructions.
+        
+        Returns:
+            Dictionary with avoidance patterns:
+            {
+                'theatrical_phrases': List[str] - All theatrical phrases (high + medium penalty),
+                'ai_tendencies': List[str] - AI tendency names being tracked,
+                'penalty_weights': Dict[str, float] - Scoring penalties
+            }
+        """
+        patterns = self._load_patterns()
+        
+        # Combine high and medium penalty theatrical phrases
+        theatrical_high = patterns.get('theatrical_phrases', {}).get('high_penalty', [])
+        theatrical_medium = patterns.get('theatrical_phrases', {}).get('medium_penalty', [])
+        all_theatrical = theatrical_high + theatrical_medium
+        
+        # Extract AI tendency names (keys from common dict)
+        ai_common = patterns.get('ai_tendencies', {}).get('common', {})
+        ai_tendency_names = list(ai_common.keys())
+        
+        # Get penalty weights
+        penalty_weights = patterns.get('scoring_adjustments', {})
+        
+        return {
+            'theatrical_phrases': all_theatrical,
+            'ai_tendencies': ai_tendency_names,
+            'penalty_weights': penalty_weights
+        }
+    
+    def get_success_patterns(self) -> Dict[str, Any]:
+        """
+        Get patterns from successful content for humanness optimizer.
+        
+        Extracts characteristics of accepted content (professional verbs,
+        tone markers, average scores) for use in humanness layer.
+        
+        Returns:
+            Dictionary with success patterns:
+            {
+                'professional_verbs': List[str],
+                'average_scores': Dict[str, float],
+                'sample_count': int,
+                'characteristics': List[str]
+            }
+        """
+        patterns = self._load_patterns()
+        success = patterns.get('success_patterns', {})
+        
+        return {
+            'professional_verbs': success.get('professional_verbs', []),
+            'average_scores': {
+                'realism': success.get('average_realism_score', 7.0),
+                'voice_authenticity': success.get('average_voice_authenticity', 7.0),
+                'tonal_consistency': success.get('average_tonal_consistency', 7.0)
+            },
+            'sample_count': success.get('sample_count', 0),
+            'characteristics': [
+                key for key, value in success.items()
+                if isinstance(value, bool) and value
+            ]
+        }
     
     def _load_patterns(self) -> Dict:
         """Load patterns from YAML file"""

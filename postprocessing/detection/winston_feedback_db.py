@@ -1494,5 +1494,103 @@ class WinstonFeedbackDatabase:
                 'correlations': json.loads(row['parameter_correlations']) if row['parameter_correlations'] else [],
                 'recommendations': json.loads(row['recommendations']) if row['recommendations'] else []
             }
+    
+    def get_passing_sample_patterns(self) -> Dict[str, Any]:
+        """
+        Analyze passing Winston samples to extract humanness patterns.
+        
+        Extracts conversational markers, number usage patterns, and sentence structures
+        from content that successfully passed Winston AI detection (success=1).
+        
+        Returns:
+            Dictionary with extracted patterns:
+            {
+                'sample_count': int,
+                'best_score': float (lowest AI score),
+                'average_score': float,
+                'sample_excerpts': List[str],
+                'conversational_markers': List[str],
+                'number_patterns': List[str]
+            }
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            # Query passing samples (success=1) ordered by best (lowest) AI score
+            cursor.execute("""
+                SELECT 
+                    generated_text,
+                    ai_score,
+                    human_score,
+                    material,
+                    component_type
+                FROM detection_results
+                WHERE success = 1
+                ORDER BY ai_score ASC
+                LIMIT 20
+            """)
+            
+            rows = cursor.fetchall()
+            
+            if not rows:
+                # No passing samples yet - return empty patterns
+                return {
+                    'sample_count': 0,
+                    'best_score': 1.0,
+                    'average_score': 1.0,
+                    'sample_excerpts': [],
+                    'conversational_markers': [],
+                    'number_patterns': []
+                }
+            
+            # Extract patterns from passing samples
+            sample_count = len(rows)
+            ai_scores = [row['ai_score'] for row in rows]
+            best_score = min(ai_scores)
+            average_score = sum(ai_scores) / len(ai_scores)
+            
+            # Get sample excerpts (first 150 chars of best samples)
+            sample_excerpts = []
+            for row in rows[:3]:  # Top 3 best samples
+                text = row['generated_text']
+                excerpt = text[:150] if len(text) > 150 else text
+                sample_excerpts.append(excerpt)
+            
+            # Extract conversational markers from all passing samples
+            conversational_markers = set()
+            number_patterns = set()
+            
+            for row in rows:
+                text = row['generated_text'].lower()
+                
+                # Common conversational markers that appear in human-like text
+                markers = [
+                    'we use', 'around', 'roughly', 'about', 'typically',
+                    'generally', 'usually', 'often', 'sometimes', 'tends to',
+                    'stays near', 'close to', 'approximately', 'nearly'
+                ]
+                
+                for marker in markers:
+                    if marker in text:
+                        conversational_markers.add(marker)
+                
+                # Extract number patterns (number + unit combinations)
+                # Examples: "100 W", "8.8 g/cm³", "0.5%"
+                import re
+                number_unit_pattern = r'\d+\.?\d*\s*[A-Za-z/%³²°]+/?[A-Za-z]*³?'
+                matches = re.findall(number_unit_pattern, row['generated_text'])
+                for match in matches[:3]:  # Top 3 from each sample
+                    if len(match) < 20:  # Reasonable length
+                        number_patterns.add(match.strip())
+            
+            return {
+                'sample_count': sample_count,
+                'best_score': best_score,
+                'average_score': average_score,
+                'sample_excerpts': sample_excerpts,
+                'conversational_markers': sorted(list(conversational_markers)),
+                'number_patterns': sorted(list(number_patterns))[:10]  # Top 10 patterns
+            }
 
 
