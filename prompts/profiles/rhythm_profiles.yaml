@@ -1,0 +1,162 @@
+# Rhythm Profiles - Sentence Structure Guidance by Component Type
+# Created: November 20, 2025
+#
+# PURPOSE: Define sentence structure, length variation, and rhythm patterns
+# RESPONSIBILITY: Sentence composition, length targets, structural variety
+#
+# USED BY: PromptBuilder to inject {sentence_guidance} into component templates  
+# CALCULATED FROM: voice_params (rhythm_variation slider), component target length
+
+profiles:
+  # CAPTION: Two-paragraph visual comparison
+  caption:
+    name: "Two-Paragraph Narrative"
+    structure: "Two distinct paragraphs with natural sentence rhythm"
+    
+    rhythm_patterns:
+      consistent: |
+        PARAGRAPH 1 (Before): 2-3 sentences, 10-14 words each
+        PARAGRAPH 2 (After): 2-3 sentences, 10-14 words each
+        
+        Keep sentence lengths consistent within each paragraph.
+        Use parallel structure between paragraphs for comparison.
+      
+      varied: |
+        PARAGRAPH 1 (Before): Mix 1 short (6-10 words) with 1-2 medium (12-16 words)
+        PARAGRAPH 2 (After): Mix 1 short (6-10 words) with 1-2 medium (12-16 words)
+        
+        Vary sentence lengths naturally within each paragraph.
+        Create rhythm through length variation.
+    
+    length_targets:
+      total_words: 40-60
+      total_characters: 250-400
+      paragraph_balance: "Similar length paragraphs (balanced comparison)"
+    
+    structural_guidance:
+      - "Start sentences differently (vary openings)"
+      - "Use active voice for action descriptions"
+      - "Ground observations in specific visual details"
+      - "Avoid repetitive sentence patterns between paragraphs"
+
+  # SUBTITLE: Single impactful sentence
+  subtitle:
+    name: "Hook Sentence"
+    structure: "One declarative statement with punch"
+    
+    rhythm_patterns:
+      consistent: |
+        Single sentence: 12-18 words
+        
+        Maintain moderate sentence length for clarity and impact.
+        Use declarative structure for authority.
+      
+      varied: |
+        Single sentence: 10-20 words (flexible length)
+        
+        Adjust length based on content and rhythm.
+        Short for punch, longer for nuance.
+    
+    length_targets:
+      total_words: 10-20
+      total_characters: 60-130
+      structure: "Subject-verb-object with optional modifier"
+    
+    structural_guidance:
+      - "Lead with the benefit or key point"
+      - "Use concrete verbs (not 'enables', 'delivers')"
+      - "End with impact (no trailing qualifiers)"
+      - "Avoid AI-typical openings"
+
+  # FAQ: Question + Answer format
+  faq:
+    name: "Q&A Technical Exchange"
+    structure: "Question sentence + multi-sentence answer"
+    
+    rhythm_patterns:
+      consistent: |
+        QUESTION: 8-15 words (natural user question)
+        ANSWER: 3-5 sentences, 12-16 words each
+        
+        Keep answer sentences consistent length for readability.
+        Use clear, parallel structure across sentences.
+      
+      varied: |
+        QUESTION: 8-15 words (natural user question)
+        ANSWER: 3-5 sentences, mix short (8-12) with medium (14-18)
+        
+        Vary sentence lengths in answer for natural rhythm.
+        Lead with short answer, expand with details.
+    
+    length_targets:
+      question_words: 8-15
+      answer_words: 40-80
+      total_characters: 250-500
+    
+    structural_guidance:
+      - "Question: Direct, user-focused phrasing"
+      - "Answer: Lead with direct answer, then explain"
+      - "Use numbered steps or bullets if listing"
+      - "Vary sentence openings within answer"
+
+  # DESCRIPTION: Multi-paragraph comprehensive text
+  description:
+    name: "Comprehensive Overview"
+    structure: "Multiple paragraphs with flowing narrative"
+    
+    rhythm_patterns:
+      consistent: |
+        3-5 paragraphs, each 3-4 sentences
+        Sentence length: 12-16 words consistently
+        
+        Maintain steady rhythm across paragraphs.
+        Use consistent sentence structure for clarity.
+      
+      varied: |
+        3-5 paragraphs, each 3-5 sentences
+        Sentence mix: Short (8-12), Medium (14-18), Longer (20-25)
+        
+        Vary sentence lengths within and across paragraphs.
+        Create natural reading rhythm through variety.
+        Lead with shorter opening sentences per paragraph.
+    
+    length_targets:
+      total_words: 150-250
+      total_characters: 900-1500
+      paragraph_balance: "Roughly balanced paragraph lengths"
+    
+    structural_guidance:
+      - "Topic sentence to open each paragraph"
+      - "Vary sentence openings within paragraphs"
+      - "Mix simple, compound, and complex sentences"
+      - "Use transitions between paragraphs naturally"
+      - "Avoid repetitive patterns across paragraphs"
+
+# CALCULATION LOGIC (from DynamicConfig or SentenceCalculator):
+#
+# If rhythm_variation > 0.7:
+#     Use "varied" rhythm pattern
+# Else:
+#     Use "consistent" rhythm pattern
+#
+# Example injection into template:
+#   {sentence_guidance} → profiles.caption.rhythm_patterns.varied
+
+# INTEGRATION WITH VOICE PERSONAS:
+# Voice personas (author_profiles.yaml) define WHO is writing
+# Rhythm profiles define HOW they structure sentences
+# Combined: Author voice + Rhythm pattern = Complete writing style
+
+# AUTHOR-SPECIFIC OVERRIDES:
+# Individual author personas may specify component-specific rhythm preferences
+# Example: Yi-Chun Lin prefers more consistent rhythm (formal academic)
+#          Ikmanda Roswati prefers varied rhythm (conversational)
+
+# INTEGRATION POINTS:
+# 1. PromptBuilder._get_sentence_guidance() reads this file
+# 2. Calculates rhythm level from voice_params or author preferences
+# 3. Retrieves appropriate text from profiles[component_type].rhythm_patterns[level]
+# 4. Injects as {sentence_guidance} placeholder in component template
+
+# TESTING:
+# Run: pytest tests/test_rhythm_profiles.py -v

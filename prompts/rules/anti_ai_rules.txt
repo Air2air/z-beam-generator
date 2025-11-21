@@ -1,41 +1,12 @@
-CRITICAL: Write naturally and avoid AI-typical patterns.
+NOTE: Anti-AI grammar rules have been moved to the global system prompt (prompts/system/base.txt).
+This file is kept for backward compatibility with the prompt_builder.py loading mechanism.
+All text components now inherit these rules automatically from base.txt.
 
-BANNED CORPORATE PHRASES:
-- "facilitates", "leverages", "demonstrates"
-- "enables", "delivers", "provides"
-- "testament to", "showcases"
-- "utilizing", "implementing", "optimizing"
+For the current comprehensive anti-AI rules, see: prompts/system/base.txt
 
-BANNED THEATRICAL LANGUAGE:
-- "zapped clean", "stares back"
-- "changes everything", "transforms"
-- "revolutionary", "game-changing"
-- "cutting-edge", "state-of-the-art"
-
-BANNED ACADEMIC PATTERNS:
-- "results suggest", "findings indicate"
-- "it is noteworthy that"
-- "serves to demonstrate"
-- "it should be noted"
-
-BANNED REPETITIVE OPENINGS:
-- "[Material] enables..."
-- "[Material] achieves..."
-- "Laser cleaning of [material]..."
-- "[Gerund phrase] with [material]..."
-- "The process of..."
-- "When it comes to..."
-
-SENTENCE VARIATION REQUIRED:
-- Start sentences differently
-- Vary sentence lengths naturally
-- Mix structures (simple, compound, complex)
-- Avoid formulaic patterns
+LEGACY FALLBACK (if base.txt unavailable):
+- Avoid: enables, delivers, provides, achieves, demonstrates, facilitates, leverages
+- Vary sentence openings and structures
 - Use active voice predominantly
-
-NATURAL WRITING:
-- Write like explaining to a colleague
-- Use concrete examples
-- Ground content in specific details
-- Vary vocabulary naturally
-- Mix short and longer sentences
+- Mix sentence lengths naturally
+- Ground statements in specific contexts

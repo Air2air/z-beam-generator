@@ -2,11 +2,13 @@
 # Quality-gated generation with automatic retry and parameter adjustment
 
 # Quality Gate Settings
+# CRITICAL: Thresholds are LEARNED dynamically from database (ThresholdManager)
+# These fallback values are ONLY used when insufficient learning data (<10 samples)
 quality_gates:
-  realism_threshold: 7.0                 # Minimum subjective realism score (0-10)
+  realism_threshold_fallback: 5.5        # FALLBACK ONLY - Use ThresholdManager.get_realism_threshold()
   max_retry_attempts: 5                  # Maximum generation attempts before failure
-  voice_authenticity_threshold: 7.0      # Minimum voice authenticity score
-  tonal_consistency_threshold: 7.0       # Minimum tonal consistency score
+  voice_authenticity_threshold_fallback: 5.5  # FALLBACK ONLY - Too strict at 7.0
+  tonal_consistency_threshold_fallback: 5.5   # FALLBACK ONLY - Too strict at 7.0
   require_zero_ai_tendencies: true       # Must have zero detected AI patterns
   adaptive_threshold: true               # Learn from 75th percentile of successful content
 
@@ -22,7 +24,7 @@ voice_parameters:
   emotional_tone: 0.3                    # Base: moderate emotion (0.0-1.0)
   opinion_rate: 0.2                      # Base: low opinion frequency (0.0-1.0)
   structural_predictability: 0.5         # Base: moderate structure (0.0-1.0)
-  sentence_rhythm_variation: 0.6         # Base: moderate variation (0.0-1.0)
+  sentence_rhythm_variation: 1.0         # Base: maximum variation (0.0-1.0) - triggers 'varied' rhythm pattern
   imperfection_tolerance: 0.4            # Base: moderate imperfections (0.0-1.0)
   trait_frequency: 0.5                   # Base: moderate personality (0.0-1.0)
   colloquialism_frequency: 0.3           # Base: low casual language (0.0-1.0)

@@ -39,7 +39,8 @@ MIN_WORDS_PER_SUBTITLE = 7  # Allow 7 for flexibility
 MAX_WORDS_PER_SUBTITLE = 12
 
 # Generation settings
-SUBTITLE_GENERATION_TEMPERATURE = 0.6
+# NOTE: Temperature now comes from dynamic_config.calculate_temperature('subtitle')
+# per GROK_INSTRUCTIONS.md Core Principle #3 (no hardcoded values)
 SUBTITLE_MAX_TOKENS = 100
 
 # Data file paths
@@ -283,11 +284,16 @@ Write the subtitle now:"""
             random_seed = random.randint(10000, 99999)
             prompt = prompt + f"\n\n[Generation ID: {random_seed}]"
             
+            # Get temperature from dynamic config (no hardcoded values per GROK_INSTRUCTIONS.md)
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            temperature = dynamic_config.calculate_temperature('subtitle')
+            
             # Generate with API
             response = api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=SUBTITLE_MAX_TOKENS,
-                temperature=SUBTITLE_GENERATION_TEMPERATURE
+                temperature=temperature
             )
             
             if not response.success:

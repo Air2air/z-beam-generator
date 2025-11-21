@@ -36,10 +36,9 @@ class TestScoreNormalization:
         """ValidationConstants uses consistent 0-1.0 scale"""
         from generation.validation.constants import ValidationConstants
         
-        # All defaults should be 0-1.0
-        assert 0.0 <= ValidationConstants.DEFAULT_AI_SCORE <= 1.0
-        assert 0.0 <= ValidationConstants.DEFAULT_HUMAN_SCORE <= 1.0
-        assert 0.0 <= ValidationConstants.DEFAULT_FALLBACK_AI_SCORE <= 1.0
+        # NOTE: DEFAULT_*_SCORE constants removed per GROK_INSTRUCTIONS.md Core Principle #2
+        # No mock/fallback scores permitted in production - fail-fast architecture only
+        # Tests removed: DEFAULT_AI_SCORE, DEFAULT_HUMAN_SCORE, DEFAULT_FALLBACK_AI_SCORE
         
         # Thresholds should be 0-1.0 (now dynamic, test with use_learned=False for defaults)
         winston_threshold = ValidationConstants.get_winston_threshold(use_learned=False)

@@ -1,0 +1,160 @@
+# Technical Profiles - Content Strategy by Component Type
+# Created: November 20, 2025
+#
+# PURPOSE: Define HOW to approach technical content for each component type
+# RESPONSIBILITY: Technical content strategy, measurement handling, specification depth
+# 
+# USED BY: PromptBuilder to inject {technical_guidance} into component templates
+# CALCULATED FROM: enrichment_params (jargon_removal, technical_intensity sliders)
+
+profiles:
+  # CAPTION: Visual comparison narrative
+  caption:
+    name: "Visual Comparison"
+    purpose: "Describe before/after surface appearance at microscale"
+    
+    technical_approach:
+      minimal: |
+        Describe what you see visually. Use plain everyday language.
+        NO technical specifications or measurements.
+        Focus on observable surface characteristics only.
+      
+      moderate: |
+        Balance visual description with context.
+        Include 1-2 key measurements if they help clarify the difference.
+        Use accessible technical terms when needed.
+      
+      detailed: |
+        Provide comprehensive technical context with visual description.
+        Include relevant measurements and specifications where appropriate.
+        Use precise technical terminology naturally.
+    
+    measurement_handling:
+      guideline: "Only include measurements that enhance understanding of the visual comparison"
+      examples:
+        - "Surface roughness changes from Ra 3.2μm to 0.8μm"
+        - "Contaminant layer thickness reduced from 50μm to surface-clean"
+    
+    specification_depth:
+      minimal: "NO specs - pure visual description"
+      moderate: "1-2 key specs if clarifying"
+      detailed: "Multiple specs as contextually relevant"
+
+  # SUBTITLE: Single-sentence hook
+  subtitle:
+    name: "Hook Statement"
+    purpose: "Single compelling sentence about laser cleaning benefit"
+    
+    technical_approach:
+      minimal: |
+        Focus on the practical benefit in everyday language.
+        NO technical specifications or jargon.
+        Make it accessible and clear.
+      
+      moderate: |
+        Balance benefit with light technical context.
+        May reference one key technical advantage if relevant.
+        Keep accessible while showing expertise.
+      
+      detailed: |
+        Include technical precision in the benefit statement.
+        Reference specific technical advantages naturally.
+        Demonstrate deep technical understanding.
+    
+    measurement_handling:
+      guideline: "Rarely include measurements - focus on benefit statement"
+      examples:
+        - "Removes oxidation while maintaining base material integrity"
+        - "Achieves surface cleanliness without thermal distortion"
+    
+    specification_depth:
+      minimal: "NO specs - pure benefit"
+      moderate: "At most one technical reference"
+      detailed: "May include technical precision"
+
+  # FAQ: Question-answer technical explanation
+  faq:
+    name: "Technical Q&A"
+    purpose: "Answer common technical questions about laser cleaning"
+    
+    technical_approach:
+      minimal: |
+        Provide clear, accessible answers in plain language.
+        Minimize technical jargon and specifications.
+        Focus on practical understanding.
+      
+      moderate: |
+        Balance accessibility with technical accuracy.
+        Include key specifications where they answer the question.
+        Use technical terms with context.
+      
+      detailed: |
+        Provide comprehensive technical explanations.
+        Include relevant specifications and parameters.
+        Use precise technical terminology appropriately.
+    
+    measurement_handling:
+      guideline: "Include measurements when they directly answer the question"
+      examples:
+        - "Q: How deep can it clean? A: Typically removes 10-100μm of contamination"
+        - "Q: Is it safe for thin coatings? A: Yes, with fluence control under damage threshold"
+    
+    specification_depth:
+      minimal: "Specs only if essential to answer"
+      moderate: "Include specs that clarify the answer"
+      detailed: "Comprehensive specs as relevant"
+
+  # DESCRIPTION: Comprehensive material overview
+  description:
+    name: "Material Overview"
+    purpose: "Comprehensive explanation of material and laser cleaning approach"
+    
+    technical_approach:
+      minimal: |
+        Explain the material and cleaning process in accessible terms.
+        Minimize technical specifications and jargon.
+        Focus on practical understanding and applications.
+      
+      moderate: |
+        Balance comprehensive coverage with accessibility.
+        Include key specifications and technical context.
+        Use technical terms naturally with explanations.
+      
+      detailed: |
+        Provide thorough technical coverage of material and process.
+        Include relevant specifications, parameters, and technical details.
+        Use precise technical terminology throughout.
+    
+    measurement_handling:
+      guideline: "Include measurements that characterize material properties and cleaning parameters"
+      examples:
+        - "Thermal conductivity of 237 W/m·K allows rapid heat dissipation"
+        - "Typical fluence range 0.5-2 J/cm² for oxide removal"
+    
+    specification_depth:
+      minimal: "Specs only for key material characteristics"
+      moderate: "Multiple specs across material and process"
+      detailed: "Comprehensive technical specifications"
+
+# CALCULATION LOGIC (from DynamicConfig.calculate_technical_intensity()):
+#
+# If jargon_removal > 0.7:
+#     Use "minimal" approach
+# Elif technical_intensity < 0.3:
+#     Use "minimal" approach  
+# Elif technical_intensity < 0.7:
+#     Use "moderate" approach
+# Else:
+#     Use "detailed" approach
+#
+# Example injection into template:
+#   {technical_guidance} → profiles.caption.technical_approach.moderate
+
+# INTEGRATION POINTS:
+# 1. PromptBuilder._get_technical_guidance() reads this file
+# 2. Calculates intensity level from enrichment_params
+# 3. Retrieves appropriate text from profiles[component_type].technical_approach[level]
+# 4. Injects as {technical_guidance} placeholder in component template
+
+# TESTING:
+# Run: pytest tests/test_technical_profiles.py -v

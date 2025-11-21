@@ -87,15 +87,21 @@ class QualityGatedGenerator:
         config = get_config()
         quality_gate_config = config.config.get('quality_gates', {})
         
-        # Fail-fast if config missing and no parameters provided
+        # CRITICAL: quality_threshold MUST be provided by caller (from ThresholdManager)
+        # Config only has fallback values for when learning data insufficient
+        if quality_threshold is None:
+            raise ValueError(
+                "quality_threshold parameter is REQUIRED (no default allowed). "
+                "Caller must use ThresholdManager.get_realism_threshold(use_learned=True) "
+                "to provide learned threshold. Fail-fast architecture enforces dynamic thresholds only."
+            )
+        
+        # max_attempts can use config (not a learned parameter)
         if max_attempts is None and 'max_retry_attempts' not in quality_gate_config:
             raise ValueError("max_retry_attempts missing from config.yaml and no parameter provided - fail-fast architecture")
-        if quality_threshold is None and 'realism_threshold' not in quality_gate_config:
-            raise ValueError("realism_threshold missing from config.yaml and no parameter provided - fail-fast architecture")
         
-        # Use config values or parameters (no hardcoded fallbacks)
         self.max_attempts = max_attempts or quality_gate_config['max_retry_attempts']
-        self.quality_threshold = quality_threshold or quality_gate_config['realism_threshold']
+        self.quality_threshold = quality_threshold  # MUST be provided, no fallback
         
         # Initialize SimpleGenerator (does NOT save to YAML)
         from generation.core.simple_generator import SimpleGenerator
@@ -372,15 +378,17 @@ class QualityGatedGenerator:
         """
         Generate content WITHOUT saving to YAML.
         
-        Temporarily disables SimpleGenerator's save behavior.
+        CURRENT DESIGN: SimpleGenerator saves immediately to Materials.yaml.
+        This method calls it normally, accepting the save behavior.
+        If quality fails, we overwrite with retry content.
+        
+        RATIONALE: Separating generation from save requires refactoring
+        SimpleGenerator's atomicity guarantees. Current approach maintains
+        data consistency while enforcing quality gates through overwrites.
+        
+        ALTERNATIVE CONSIDERED: Separate generation from save, but this would
+        break atomic write guarantees and complicate rollback on failure.
         """
-        # SimpleGenerator always saves - we need to prevent that
-        # Solution: Generate, but DON'T save (we'll save later if quality passes)
-        
-        # For now, call SimpleGenerator normally - it will save
-        # TODO: Refactor SimpleGenerator to separate generation from save
-        # For immediate implementation, we accept temporary save then overwrite if fail
-        
         result = self.generator.generate(material_name, component_type, **kwargs)
         return result
     
@@ -428,6 +436,13 @@ class QualityGatedGenerator:
                 if ranges and 'median' in ranges:
                     learned[param_name] = ranges['median']
                     logger.info(f"   Using learned {param_name}: {ranges['median']:.3f}")
+            
+            # Override sentence_rhythm_variation to respect config target (Option A+C implementation)
+            # This allows manual config changes to take precedence over learned values
+            # for specific parameters we want to control directly
+            if 'sentence_rhythm_variation' in learned:
+                del learned['sentence_rhythm_variation']
+                logger.info("   ⚡ sentence_rhythm_variation override: using config value (not learned)")
             
             if learned:
                 logger.info(f"   ✅ Loaded {len(learned)} learned parameters from sweet spot")

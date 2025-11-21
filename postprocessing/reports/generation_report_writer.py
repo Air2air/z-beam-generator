@@ -164,7 +164,7 @@ class GenerationReportWriter:
                 "",
             ])
             
-            if 'winston_score' in summary:
+            if 'winston_score' in summary and summary['winston_score'] is not None:
                 winston_score = summary['winston_score']
                 human_score = (1.0 - winston_score) * 100
                 lines.extend([
@@ -175,7 +175,7 @@ class GenerationReportWriter:
             if 'concatenated_length' in summary:
                 lines.append(f"- **Total Length**: {summary['concatenated_length']} characters")
             
-            if 'cost_savings' in summary:
+            if 'cost_savings' in summary and summary['cost_savings'] is not None:
                 lines.append(f"- **Cost Savings**: ${summary['cost_savings']:.2f}")
             
             lines.extend(["", "---", ""])
@@ -209,10 +209,10 @@ class GenerationReportWriter:
                     f"- Words: {len(content.split())} words",
                 ])
                 
-                if 'winston_score' in result:
+                if 'winston_score' in result and result['winston_score'] is not None:
                     lines.append(f"- Winston Score: {result['winston_score']:.3f}")
                 
-                if 'realism_score' in result:
+                if 'realism_score' in result and result['realism_score'] is not None:
                     lines.append(f"- Realism Score: {result['realism_score']:.1f}/10")
             else:
                 error = result.get('error', 'Unknown error')

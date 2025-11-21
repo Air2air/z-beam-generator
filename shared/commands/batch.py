@@ -65,8 +65,25 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
         print(f"📊 Optimal batch size: {batch_size} materials per batch")
         print()
         
-        # Split materials into batches
-        batches = [materials[i:i+batch_size] for i in range(0, len(materials), batch_size)]
+        # Split materials into batches (ensuring minimum batch size)
+        batches = []
+        min_size = batch_gen.BATCH_CONFIG['subtitle']['min_batch_size']
+        i = 0
+        while i < len(materials):
+            # Take batch_size materials
+            batch = materials[i:i+batch_size]
+            
+            # Check if remaining materials after this batch would be below minimum
+            remaining = len(materials) - (i + len(batch))
+            if remaining > 0 and remaining < min_size:
+                # Merge remaining into current batch to avoid undersized final batch
+                batch = materials[i:]
+                i = len(materials)
+            else:
+                i += batch_size
+            
+            batches.append(batch)
+        
         print(f"📦 Split into {len(batches)} batches")
         print()
         

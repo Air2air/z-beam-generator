@@ -47,11 +47,12 @@ class BatchGenerator:
     # Component batch configuration
     BATCH_CONFIG = {
         'subtitle': {
-            'eligible': False,           # Disabled - generates one at a time for length variation
-            'chars_per_component': 150,
-            'min_batch_size': 1,
-            'max_batch_size': 1,
+            'eligible': True,            # ✅ ENABLED - batches 3 materials to meet Winston 300-char min
+            'chars_per_component': 140,  # Actual average (was 175 estimate)
+            'min_batch_size': 3,         # Minimum 3 subtitles = 420+ chars (was 2)
+            'max_batch_size': 4,         # Maximum 4 subtitles = 560+ chars (was 3)
             'winston_min_chars': 300,
+            'separator': '\n\n',         # Clear separation for Winston sentence analysis
         },
         'caption': {
             'eligible': False,           # Already meets minimum individually
@@ -209,58 +210,59 @@ class BatchGenerator:
                 'split_into_batches': True
             }
         
-        # Generate batch prompt
-        batch_prompt = self._build_batch_prompt(materials, component_type)
-        
-        # Generate all subtitles in single API call
+        # Generate each subtitle individually (existing generator pattern)
+        # Then concatenate for batch Winston validation
         try:
-            # Use first material's settings as baseline
-            material_data = self._load_material_data(materials[0])
-            author_id = material_data.get('author', {}).get('id', 2)
+            individual_results = {}
             
-            # Get parameters for first material (shared across batch)
-            params = self.generator._get_adaptive_parameters(
-                materials[0],
-                component_type,
-                attempt=1,
-                last_winston_result=None
-            )
+            self.logger.info(f"\n📝 Generating {len(materials)} subtitles individually...")
             
-            self.logger.info(f"\n📝 Generating batch with shared parameters:")
-            self.logger.info(f"   • Temperature: {params.get('temperature', 0.9):.3f}")
-            self.logger.info(f"   • Author ID: {author_id}")
+            for material in materials:
+                self.logger.info(f"   Generating: {material}")
+                
+                # Generate using existing generator (quality-gated with auto-retry)
+                # Note: Generator may return string (subtitle) or object (caption/faq)
+                try:
+                    result = self.generator.generate(material, component_type)
+                    
+                    # Handle string return (subtitle case)
+                    if isinstance(result, str):
+                        individual_results[material] = {
+                            'content': result,
+                            'success': True
+                        }
+                        self.logger.info(f"   ✅ Generated {len(result)} chars")
+                    # Handle GenerationResult object (caption/faq case)
+                    elif hasattr(result, 'success') and result.success and result.content:
+                        individual_results[material] = {
+                            'content': result.content,
+                            'success': True
+                        }
+                        self.logger.info(f"   ✅ Generated {len(result.content)} chars")
+                    else:
+                        raise ValueError("Generation returned invalid result")
+                        
+                except Exception as e:
+                    individual_results[material] = {
+                        'content': '',
+                        'success': False,
+                        'error': str(e)
+                    }
+                    self.logger.error(f"   ❌ Generation failed: {e}")
             
-            # Generate content
-            response = self._generate_batch_content(
-                batch_prompt,
-                params,
-                materials,
-                component_type
-            )
-            
-            # Extract individual components
-            individual_results = self._extract_batch_components(
-                response,
-                materials,
-                component_type
-            )
-            
-            # Concatenate for potential Winston validation
-            concatenated_text = '\n\n'.join([
-                result['content'] for result in individual_results.values()
+            # Concatenate all generated content for Winston validation
+            concatenated_text = config.get('separator', '\n\n').join([
+                result['content'] for result in individual_results.values() 
+                if result.get('content')
             ])
             
+            self.logger.info(f"\n📏 Batch statistics:")
+            self.logger.info(f"   • Generated: {len(individual_results)}/{len(materials)} materials")
+            self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
+            self.logger.info(f"   • Winston minimum: {config.get('winston_min_chars', 300)} chars")
+            
             # Conditionally validate with Winston based on skip_integrity_check flag
-            if skip_integrity_check:
-                # Skip Winston validation - mark all as passing
-                self.logger.info(f"\n⏭️  Skipping Winston validation (--skip-integrity-check)")
-                winston_result = {
-                    'ai_score': ValidationConstants.DEFAULT_AI_SCORE,
-                    'human_score': ValidationConstants.DEFAULT_HUMAN_SCORE,
-                    'skipped': True
-                }
-                passes_threshold = True  # Auto-pass when skipping
-            else:
+            if not skip_integrity_check:
                 # Validate concatenated text with Winston
                 winston_result = self._validate_batch_with_winston(
                     concatenated_text,
@@ -268,46 +270,63 @@ class BatchGenerator:
                     materials
                 )
                 
-                # Determine if batch passes Winston threshold using centralized constant
-                ai_score = winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE)
+                # Determine if batch passes Winston threshold
+                ai_score = winston_result.get('ai_score')
+                if ai_score is None:
+                    raise RuntimeError("Winston validation returned no AI score - cannot proceed")
                 passes_threshold = ValidationConstants.passes_winston(ai_score)
+                
+                # Apply Winston result to all materials in batch
+                for material in materials:
+                    if material in individual_results:
+                        individual_results[material].update({
+                            'winston_score': ai_score,
+                            'human_score': ValidationConstants.ai_to_human_score(ai_score),
+                            'passes_winston': passes_threshold,
+                            'batch_validated': True
+                        })
+            else:
+                # Skip Winston but mark as validated
+                self.logger.warning("⚠️  Winston validation skipped (--skip-integrity-check)")
+                for material in materials:
+                    if material in individual_results:
+                        individual_results[material].update({
+                            'winston_score': None,
+                            'human_score': None,
+                            'passes_winston': True,  # Allow save without Winston
+                            'batch_validated': False
+                        })
             
-            # Apply Winston result to all materials in batch
-            final_ai_score = winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE)
-            for material in materials:
-                individual_results[material].update({
-                    'winston_score': final_ai_score,
-                    'human_score': ValidationConstants.ai_to_human_score(final_ai_score),
-                    'passes_winston': passes_threshold,
-                    'batch_validated': True,
-                    'validation_skipped': skip_integrity_check
-                })
-            
-            # Save successful components to Materials.yaml and display individual reports
+            # Save successful components to Materials.yaml
             saved_count = 0
             for material, result in individual_results.items():
-                # ALWAYS display generation report (required by Generation Report Policy)
-                self._display_generation_report(material, component_type, result)
-                
-                if result.get('passes_winston', False):
+                if result.get('passes_winston', False) and result.get('content'):
                     self._save_component_to_yaml(
                         material,
                         component_type,
                         result['content']
                     )
                     saved_count += 1
+                    
+                    # Display individual generation report
+                    self._display_generation_report(material, component_type, result)
             
             # Calculate cost savings
             individual_cost = batch_size * 0.10  # $0.10 per Winston call
-            batch_cost = 0.10  # Single Winston call
+            batch_cost = 0.10 if not skip_integrity_check else 0  # Single Winston call
             cost_savings = individual_cost - batch_cost
             
             self.logger.info(f"\n{'='*80}")
             self.logger.info(f"✅ BATCH COMPLETE")
             self.logger.info(f"{'='*80}")
             self.logger.info(f"Success rate: {saved_count}/{batch_size} materials")
-            self.logger.info(f"Winston AI Score: {winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE):.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
-            self.logger.info(f"Human Score: {ValidationConstants.ai_to_human_score(winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE)):.1f}%")
+            
+            if not skip_integrity_check and 'winston_result' in locals():
+                ai_score = winston_result.get('ai_score')
+                if ai_score is not None:
+                    self.logger.info(f"Winston AI Score: {ai_score:.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
+                    self.logger.info(f"Human Score: {ValidationConstants.ai_to_human_score(ai_score):.1f}%")
+            
             self.logger.info(f"Concatenated length: {len(concatenated_text)} chars")
             self.logger.info(f"Cost savings: ${cost_savings:.2f}")
             
@@ -326,10 +345,16 @@ class BatchGenerator:
                     'error': result.get('error')
                 })
             
+            # Determine winston_score for summary
+            winston_score_value = None
+            if not skip_integrity_check:
+                if 'winston_result' in locals() and winston_result:
+                    winston_score_value = winston_result.get('ai_score')
+            
             # Prepare summary for report
             summary = {
                 'success_count': saved_count,
-                'winston_score': winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE),
+                'winston_score': winston_score_value,
                 'concatenated_length': len(concatenated_text),
                 'cost_savings': cost_savings
             }
@@ -346,7 +371,7 @@ class BatchGenerator:
                 'success': saved_count == batch_size,
                 'batch_size': batch_size,
                 'results': individual_results,
-                'winston_score': winston_result.get('ai_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE),
+                'winston_score': winston_score_value,
                 'concatenated_length': len(concatenated_text),
                 'cost_savings': cost_savings,
                 'saved_count': saved_count
@@ -453,12 +478,26 @@ BASE PROMPT:
         # Use generator's API client with GenerationRequest
         from shared.api.client import GenerationRequest
         
+        # Fail-fast: Require proper configuration (GROK_INSTRUCTIONS.md Core Principle #3)
+        if 'temperature' not in params:
+            raise RuntimeError(
+                "Missing temperature in batch generation params. "
+                "Required: params['temperature']"
+            )
+        
+        api_penalties = params.get('api_penalties')
+        if not api_penalties or 'frequency_penalty' not in api_penalties or 'presence_penalty' not in api_penalties:
+            raise RuntimeError(
+                "Missing API penalties in batch generation config. "
+                "Required: frequency_penalty, presence_penalty in params['api_penalties']"
+            )
+        
         request = GenerationRequest(
             prompt=prompt,
             max_tokens=500 * len(materials),  # Scale with batch size
-            temperature=params.get('temperature', 0.9),
-            frequency_penalty=params.get('api_penalties', {}).get('frequency_penalty', 0.0),
-            presence_penalty=params.get('api_penalties', {}).get('presence_penalty', 0.0)
+            temperature=params['temperature'],
+            frequency_penalty=api_penalties['frequency_penalty'],
+            presence_penalty=api_penalties['presence_penalty']
         )
         
         api_response = self.generator.api_client.generate(request)
@@ -530,23 +569,22 @@ BASE PROMPT:
         Returns:
             Winston validation result
         """
-        self.logger.info(f"\n🔍 Winston validation:")
+        self.logger.info("\n🔍 Winston validation:")
         self.logger.info(f"   • Concatenated length: {len(concatenated_text)} chars")
         self.logger.info(f"   • Materials in batch: {len(materials)}")
         
         if len(concatenated_text) < 300:
-            self.logger.warning(f"⚠️  Text below Winston minimum: {len(concatenated_text)}/300 chars")
-            return {
-                'success': False,
-                'error': 'Text too short for Winston validation',
-                'ai_score': ValidationConstants.DEFAULT_FALLBACK_AI_SCORE,
-                'skip_reason': 'text_too_short'
-            }
+            self.logger.error(f"❌ Text below Winston minimum: {len(concatenated_text)}/300 chars")
+            raise RuntimeError(f"Text too short for Winston validation: {len(concatenated_text)}/300 chars required")
         
-        # Call Winston API through generator's detector ensemble
-        winston_result = self.generator.detector.detect(
-            text=concatenated_text
-        )
+        # Create Winston detector for validation
+        from shared.api.client_factory import create_api_client
+        from postprocessing.detection.ensemble import AIDetectorEnsemble
+        
+        winston_client = create_api_client('winston')
+        detector = AIDetectorEnsemble(winston_client=winston_client)
+        
+        winston_result = detector.detect(text=concatenated_text)
         
         return winston_result
     
@@ -595,9 +633,10 @@ BASE PROMPT:
             result: Generation result with content and metrics
         """
         content = result.get('content', '')
-        winston_score = result.get('winston_score', ValidationConstants.DEFAULT_FALLBACK_AI_SCORE)
-        human_score = result.get('human_score', ValidationConstants.ai_to_human_score(ValidationConstants.DEFAULT_FALLBACK_AI_SCORE))
+        winston_score = result.get('winston_score')
+        human_score = result.get('human_score')
         passes = result.get('passes_winston', False)
+        batch_validated = result.get('batch_validated', False)
         
         print("\n" + "="*80)
         print(f"📊 GENERATION COMPLETE REPORT: {material_name}")
@@ -609,17 +648,23 @@ BASE PROMPT:
         print("─"*80)
         print()
         print("📈 QUALITY METRICS:")
-        print(f"   • AI Detection Score: {winston_score:.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
-        print(f"   • Human Score: {human_score:.1f}%")
-        print(f"   • Status: {ValidationConstants.get_status_label(passes)}")
-        print(f"   • Validation: Batch Winston validation")
+        
+        if winston_score is not None and human_score is not None:
+            print(f"   • AI Detection Score: {winston_score:.3f} (threshold: {ValidationConstants.WINSTON_AI_THRESHOLD})")
+            print(f"   • Human Score: {human_score:.1f}%")
+            print(f"   • Status: {ValidationConstants.get_status_label(passes)}")
+            if batch_validated:
+                print("   • Validation: Batch Winston validation")
+        else:
+            print("   • Validation: SKIPPED (--skip-integrity-check)")
+            print(f"   • Status: ⚠️  UNVALIDATED")
         print()
         print("📏 STATISTICS:")
         print(f"   • Length: {len(content)} characters")
         print(f"   • Word count: {len(content.split())} words")
         print()
         print("💾 STORAGE:")
-        print(f"   • Location: data/materials/Materials.yaml")
+        print("   • Location: data/materials/Materials.yaml")
         print(f"   • Component: {component_type}")
         print(f"   • Material: {material_name}")
         print()

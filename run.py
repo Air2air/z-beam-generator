@@ -30,8 +30,9 @@ For advanced operations, use run_unified.py with the unified pipeline.
   # Step 4: Export to frontmatter
   python3 run.py --material "Aluminum" --data-only  # Export → frontmatter
   
-  # Skip integrity check (not recommended):
+  # ⚠️  DEVELOPMENT ONLY - Skip integrity check (bypasses fail-fast validation):
   python3 run.py --caption "Aluminum" --skip-integrity-check
+  # WARNING: Never use --skip flags in production - violates fail-fast architecture
 
 🔄 BATCH GENERATION (Meet Winston Minimums Efficiently):
   python3 run.py --batch-subtitle "Aluminum,Steel,Copper"  # Batch generate subtitles (2-5 materials)
@@ -242,7 +243,7 @@ def main():
     parser.add_argument("--sanitize", action="store_true", help="Sanitize frontmatter files")
     parser.add_argument("--sanitize-file", help="Sanitize specific file")
     parser.add_argument("--integrity-check", action="store_true", help="Run system integrity checks")
-    parser.add_argument("--skip-integrity-check", action="store_true", help="Skip automatic integrity checks before generation")
+    parser.add_argument("--skip-integrity-check", action="store_true", help="[DEV ONLY] Skip integrity checks - bypasses fail-fast validation")
     parser.add_argument("--quick", action="store_true", help="Quick mode (with --integrity-check, skips slow checks)")
     parser.add_argument("--test-learning", action="store_true", help="Run per-iteration learning architecture tests")
     parser.add_argument("--verbose", action="store_true", help="Show detailed output for tests and checks")

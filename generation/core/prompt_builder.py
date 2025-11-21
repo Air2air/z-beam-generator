@@ -12,6 +12,7 @@ ComponentRegistry and DomainContext.
 
 import logging
 import os
+import random
 from typing import Dict, Optional
 
 from generation.core.component_specs import ComponentRegistry, DomainContext
@@ -37,65 +38,124 @@ class PromptBuilder:
     - Flexible prompt building without hardcoding
     """
     
-    @staticmethod
-    def _get_technical_guidance(voice_params: Optional[Dict[str, float]], enrichment_params: Optional[Dict]) -> str:
-        """
-        Returns ONE clear technical instruction based on config.
-        No contradictions - just a single directive.
-        """
-        if not voice_params and not enrichment_params:
-            return "Include measurements naturally when they help explain the result."
-        
-        # Check jargon removal (0.0-1.0, where high = remove jargon)
-        jargon_removal = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5
-        
-        # Check technical intensity (0.0-1.0, where high = more technical)
-        tech_intensity = enrichment_params.get('technical_intensity', 0.22) if enrichment_params else 0.22
-        
-        # PRIORITY: If jargon removal is high, override everything else
-        if jargon_removal > 0.7:  # Slider 8-10
-            return "Use plain everyday language only - no technical specs, no measurements, no jargon. Say 'removes buildup' not '1064nm wavelength'."
-        
-        # Otherwise, check technical intensity
-        if tech_intensity < 0.3:  # Slider 1-3
-            return "Include 1-2 key measurements if they help explain what's happening (e.g., 'removes 50 micron layer')."
-        
-        else:  # Moderate technical (slider 4-10)
-            return "Include measurements naturally when they add useful context (e.g., 'clears 30-micron oxide layer')."
+    _technical_profiles_cache = None  # Cache for technical profiles
+    _rhythm_profiles_cache = None  # Cache for rhythm profiles
     
     @staticmethod
-    def _get_sentence_guidance(voice_params: Optional[Dict[str, float]], length: int) -> str:
+    def _load_technical_profiles() -> Dict:
+        """Load technical profiles from YAML file (cached)."""
+        if PromptBuilder._technical_profiles_cache is None:
+            import yaml
+            profiles_path = os.path.join('prompts', 'profiles', 'technical_profiles.yaml')
+            if os.path.exists(profiles_path):
+                with open(profiles_path, 'r', encoding='utf-8') as f:
+                    PromptBuilder._technical_profiles_cache = yaml.safe_load(f)
+                logger.debug(f"Loaded technical profiles from {profiles_path}")
+            else:
+                logger.warning(f"Technical profiles not found at {profiles_path}, using fallback")
+                PromptBuilder._technical_profiles_cache = {}
+        return PromptBuilder._technical_profiles_cache
+    
+    @staticmethod
+    def _load_rhythm_profiles() -> Dict:
+        """Load rhythm profiles from YAML file (cached)."""
+        if PromptBuilder._rhythm_profiles_cache is None:
+            import yaml
+            profiles_path = os.path.join('prompts', 'profiles', 'rhythm_profiles.yaml')
+            if os.path.exists(profiles_path):
+                with open(profiles_path, 'r', encoding='utf-8') as f:
+                    PromptBuilder._rhythm_profiles_cache = yaml.safe_load(f)
+                logger.debug(f"Loaded rhythm profiles from {profiles_path}")
+            else:
+                logger.warning(f"Rhythm profiles not found at {profiles_path}, using fallback")
+                PromptBuilder._rhythm_profiles_cache = {}
+        return PromptBuilder._rhythm_profiles_cache
+    
+    @staticmethod
+    def _get_technical_guidance(voice_params: Optional[Dict[str, float]], enrichment_params: Optional[Dict], component_type: str = "caption") -> str:
         """
-        Returns ONE clear sentence structure instruction.
-        Based on rhythm variation setting and target length.
+        Returns technical guidance from profiles YAML file.
+        
+        Args:
+            voice_params: Voice parameters (for jargon_removal)
+            enrichment_params: Enrichment parameters (for technical_intensity)
+            component_type: Component type for profile lookup
+            
+        Returns:
+            Technical guidance string from profile
         """
-        if not voice_params:
+        # Load profiles
+        profiles = PromptBuilder._load_technical_profiles()
+        
+        # Fallback if profiles not loaded or component not found
+        if not profiles or 'profiles' not in profiles or component_type not in profiles['profiles']:
+            logger.warning(f"Technical profile not found for {component_type}, using fallback")
+            return "Include measurements naturally when they help explain the result."
+        
+        component_profile = profiles['profiles'][component_type]
+        
+        # Calculate intensity level
+        jargon_removal = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5
+        tech_intensity = enrichment_params.get('technical_intensity', 0.22) if enrichment_params else 0.22
+        
+        # Determine level: minimal, moderate, or detailed
+        if jargon_removal > 0.7 or tech_intensity < 0.3:
+            level = 'minimal'
+        elif tech_intensity < 0.7:
+            level = 'moderate'
+        else:
+            level = 'detailed'
+        
+        # Get guidance from profile
+        technical_approach = component_profile.get('technical_approach', {})
+        guidance = technical_approach.get(level, '')
+        
+        if not guidance:
+            logger.warning(f"No {level} guidance for {component_type}, using fallback")
+            return "Include measurements naturally when they help explain the result."
+        
+        logger.debug(f"Using {level} technical guidance for {component_type}")
+        return guidance.strip()
+    
+    @staticmethod
+    def _get_sentence_guidance(voice_params: Optional[Dict[str, float]], length: int, component_type: str = "caption") -> str:
+        """
+        Returns sentence structure guidance from rhythm profiles YAML file.
+        
+        Args:
+            voice_params: Voice parameters (for rhythm_variation)
+            length: Target content length in words
+            component_type: Component type for profile lookup
+            
+        Returns:
+            Sentence structure guidance string from profile
+        """
+        # Load profiles
+        profiles = PromptBuilder._load_rhythm_profiles()
+        
+        # Fallback if profiles not loaded or component not found
+        if not profiles or 'profiles' not in profiles or component_type not in profiles['profiles']:
+            logger.warning(f"Rhythm profile not found for {component_type}, using fallback")
             return "Mix sentence lengths naturally."
         
-        rhythm_variation = voice_params.get('sentence_rhythm_variation', 0.5)
+        component_profile = profiles['profiles'][component_type]
         
-        # Short captions (under 40 words)
-        if length <= 40:
-            if rhythm_variation > 0.7:
-                return "SENTENCE STRUCTURE: Mix 1 short (6-10 words) with 1-2 medium (12-16 words)."
-            else:
-                return "SENTENCE STRUCTURE: Keep consistent length (10-14 words each)."
+        # Calculate rhythm pattern level
+        rhythm_variation = voice_params.get('sentence_rhythm_variation', 0.5) if voice_params else 0.5
         
-        # Medium captions (40-80 words)
-        elif length <= 80:
-            if rhythm_variation > 0.7:
-                return "SENTENCE STRUCTURE: Vary dramatically - mix very short (5-8 words) with longer (18-25 words)."
-            elif rhythm_variation > 0.3:
-                return "SENTENCE STRUCTURE: Moderate variation - mostly medium (12-18 words) with occasional short or long."
-            else:
-                return "SENTENCE STRUCTURE: Consistent medium-length sentences (12-16 words)."
+        # Determine pattern: consistent or varied
+        pattern = 'varied' if rhythm_variation > 0.7 else 'consistent'
         
-        # Longer captions
-        else:
-            if rhythm_variation > 0.7:
-                return "SENTENCE STRUCTURE: Wide variation - some very short (3-6 words), mostly medium (14-18 words), occasional long (25+ words)."
-            else:
-                return "SENTENCE STRUCTURE: Balanced mix of short (8-12 words) and medium (14-20 words) sentences."
+        # Get guidance from profile
+        rhythm_patterns = component_profile.get('rhythm_patterns', {})
+        guidance = rhythm_patterns.get(pattern, '')
+        
+        if not guidance:
+            logger.warning(f"No {pattern} rhythm pattern for {component_type}, using fallback")
+            return "Mix sentence lengths naturally."
+        
+        logger.debug(f"Using {pattern} rhythm pattern for {component_type} ({length} words)")
+        return guidance.strip()
 
     @staticmethod
     def _load_anti_ai_rules() -> str:
@@ -175,6 +235,17 @@ class PromptBuilder:
         # Use component default length if not specified
         if length is None:
             length = spec.default_length if spec else 100
+        
+        # Option C: Add ±30% randomization to length for natural variation
+        # Use material name hash as seed for consistent but varied results per material
+        if variation_seed is None:
+            # Generate seed from topic name for per-material consistency
+            variation_seed = hash(topic) % (2**31)
+        
+        random.seed(variation_seed)
+        variation_factor = random.uniform(0.7, 1.3)  # ±30% (increased from ±20%)
+        length = int(length * variation_factor)
+        logger.debug(f"Length randomization: base × {variation_factor:.2f} = {length} words (seed={variation_seed})")
         
         # Extract voice characteristics
         country = voice.get('country', 'USA')
@@ -259,12 +330,14 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             # NEW: Build dynamic guidance sections based on config
             technical_guidance = PromptBuilder._get_technical_guidance(
                 voice_params=voice_params,
-                enrichment_params=enrichment_params
+                enrichment_params=enrichment_params,
+                component_type=spec.name
             )
             
             sentence_guidance = PromptBuilder._get_sentence_guidance(
                 voice_params=voice_params,
-                length=length
+                length=length,
+                component_type=spec.name
             )
             
             # Replace placeholders in template

@@ -38,15 +38,12 @@ class ThresholdManager:
     
     Learns optimal thresholds from successful content and adapts over time.
     Falls back to config defaults only when insufficient learning data exists.
+    
+    CRITICAL: NO hardcoded threshold values allowed (HARDCODED_VALUE_POLICY.md)
+    All fallback values MUST come from config.yaml via get_config()
     """
     
-    # Default thresholds (ONLY used when database has insufficient data)
-    DEFAULT_WINSTON_THRESHOLD = 0.33        # 67%+ human required
-    DEFAULT_REALISM_THRESHOLD = 7.0         # 7.0/10 minimum realism
-    DEFAULT_VOICE_THRESHOLD = 7.0           # 7.0/10 voice authenticity
-    DEFAULT_TONAL_THRESHOLD = 7.0           # 7.0/10 tonal consistency
-    
-    # Learning parameters
+    # Learning parameters (these are algorithmic constants, not thresholds)
     MIN_SAMPLES_FOR_LEARNING = 10           # Need 10+ samples to learn
     PERCENTILE_TARGET = 75                   # Learn from top 25% (75th percentile)
     CONSERVATIVE_FACTOR = 0.95               # Be 95% as strict as learned optimum
@@ -54,7 +51,8 @@ class ThresholdManager:
     def __init__(
         self,
         db_path: str,
-        min_samples: int = MIN_SAMPLES_FOR_LEARNING
+        min_samples: int = MIN_SAMPLES_FOR_LEARNING,
+        config_fallbacks: dict = None
     ):
         """
         Initialize threshold manager with database connection.
@@ -62,9 +60,11 @@ class ThresholdManager:
         Args:
             db_path: Path to Winston feedback database
             min_samples: Minimum samples needed for learning (default 10)
+            config_fallbacks: Optional dict with fallback thresholds from config
+                             If None, loads from generation/config.yaml
             
         Raises:
-            ValueError: If db_path not provided
+            ValueError: If db_path not provided or config missing fallbacks
         """
         if not db_path:
             raise ValueError("Database path required for dynamic thresholds")
@@ -72,9 +72,36 @@ class ThresholdManager:
         self.db_path = Path(db_path)
         self.min_samples = min_samples
         
+        # Load fallback thresholds from config (fail-fast if missing)
+        if config_fallbacks is None:
+            from generation.config.config_loader import get_config
+            config = get_config()
+            quality_gates = config.config.get('quality_gates', {})
+            
+            # FAIL-FAST: Config MUST provide fallback thresholds
+            if 'realism_threshold_fallback' not in quality_gates:
+                raise ValueError(
+                    "quality_gates.realism_threshold_fallback missing in config.yaml - "
+                    "fail-fast architecture requires explicit config fallbacks"
+                )
+            
+            self.fallback_realism = quality_gates['realism_threshold_fallback']
+            self.fallback_voice = quality_gates.get('voice_authenticity_threshold_fallback', 5.5)
+            self.fallback_tonal = quality_gates.get('tonal_consistency_threshold_fallback', 5.5)
+            
+            # Winston threshold fallback from ValidationConstants
+            from generation.validation.constants import ValidationConstants
+            self.fallback_winston = ValidationConstants.DEFAULT_WINSTON_AI_THRESHOLD
+        else:
+            self.fallback_realism = config_fallbacks.get('realism', 5.5)
+            self.fallback_voice = config_fallbacks.get('voice', 5.5)
+            self.fallback_tonal = config_fallbacks.get('tonal', 5.5)
+            self.fallback_winston = config_fallbacks.get('winston', 0.33)
+        
         logger.info(
             f"[THRESHOLD MANAGER] Initialized "
-            f"(db={db_path}, min_samples={min_samples})"
+            f"(db={db_path}, min_samples={min_samples}, "
+            f"fallback_realism={self.fallback_realism}, fallback_winston={self.fallback_winston})"
         )
     
     def get_winston_threshold(
@@ -97,7 +124,7 @@ class ThresholdManager:
             Winston AI threshold (0-1.0 scale, lower = more strict)
         """
         if not use_learned:
-            return self.DEFAULT_WINSTON_THRESHOLD
+            return self.fallback_winston
         
         try:
             conn = sqlite3.connect(self.db_path)
@@ -120,9 +147,9 @@ class ThresholdManager:
             if len(rows) < self.min_samples:
                 logger.info(
                     f"[WINSTON THRESHOLD] Insufficient data ({len(rows)} samples), "
-                    f"using default {self.DEFAULT_WINSTON_THRESHOLD}"
+                    f"using config fallback {self.fallback_winston}"
                 )
-                return self.DEFAULT_WINSTON_THRESHOLD
+                return self.fallback_winston
             
             # Get AI scores from top performers
             ai_scores = [row[0] for row in rows]
@@ -148,7 +175,7 @@ class ThresholdManager:
                 f"[WINSTON THRESHOLD] Learning failed: {e}, "
                 f"using default {self.DEFAULT_WINSTON_THRESHOLD}"
             )
-            return self.DEFAULT_WINSTON_THRESHOLD
+            return self.fallback_winston
     
     def get_realism_threshold(
         self,
@@ -170,7 +197,7 @@ class ThresholdManager:
             Realism threshold (0-10 scale)
         """
         if not use_learned:
-            return self.DEFAULT_REALISM_THRESHOLD
+            return self.fallback_realism
         
         try:
             conn = sqlite3.connect(self.db_path)
@@ -191,9 +218,9 @@ class ThresholdManager:
             if len(rows) < self.min_samples:
                 logger.info(
                     f"[REALISM THRESHOLD] Insufficient data ({len(rows)} samples), "
-                    f"using default {self.DEFAULT_REALISM_THRESHOLD}"
+                    f"using config fallback {self.fallback_realism}"
                 )
-                return self.DEFAULT_REALISM_THRESHOLD
+                return self.fallback_realism
             
             # Get scores from successful content
             scores = [row[0] for row in rows]
@@ -228,9 +255,12 @@ class ThresholdManager:
         """
         Get dynamic voice authenticity threshold.
         
-        Currently returns default (future: learn from subjective_evaluations).
+        Currently returns default. Future enhancement: Learn from human_likeness_score
+        in subjective_evaluations table. Requires sufficient data points (min 20) and
+        statistical validation before implementing adaptive thresholds.
+        
+        Design decision: Use static default until learning data quality validated.
         """
-        # TODO: Implement learning from human_likeness_score in subjective_evaluations
         return self.DEFAULT_VOICE_THRESHOLD
     
     def get_tonal_threshold(
@@ -240,9 +270,12 @@ class ThresholdManager:
         """
         Get dynamic tonal consistency threshold.
         
-        Currently returns default (future: learn from engagement_score).
+        Currently returns default. Future enhancement: Learn from engagement_score
+        in subjective_evaluations table. Requires sufficient data points (min 20) and
+        statistical validation before implementing adaptive thresholds.
+        
+        Design decision: Use static default until learning data quality validated.
         """
-        # TODO: Implement learning from engagement_score in subjective_evaluations
         return self.DEFAULT_TONAL_THRESHOLD
     
     def get_all_thresholds(

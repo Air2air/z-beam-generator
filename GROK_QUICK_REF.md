@@ -1,6 +1,14 @@
 # 🚨 GROK QUICK REFERENCE - READ BEFORE EVERY CODE CHANGE
 
-## ⚡ CRITICAL RULES (See GROK_INSTRUCTIONS.md for full details)
+## 📘 PRIMARY DOCUMENTATION
+**➡️ MAIN REFERENCE: [.github/copilot-instructions.md](/.github/copilot-instructions.md)**
+
+This file provides **quick lookup** for tier priorities and decision trees.  
+For complete rules, policies, and guardrails, see **copilot-instructions.md**.
+
+---
+
+## ⚡ CRITICAL RULES (Full details in copilot-instructions.md)
 
 ### 🔴 TIER 1: SYSTEM-BREAKING (Will cause failures)
 1. ❌ **NO mocks/fallbacks in production code** (tests OK) - [Rule 2](#)
@@ -18,6 +26,9 @@
 9. ✅ **ALWAYS provide evidence** (test output, counts, commits) - [Protocol](#)
 10. ✅ **ALWAYS be honest** (acknowledge what remains broken) - [Protocol](#)
 11. ✅ **ASK before major changes** (get permission for improvements) - [Rule 1](#)
+12. ✅ **VERIFY before claiming violations** (check config files, confirm pattern exists) 🔥 **NEW (Nov 20, 2025)**
+
+**🚨 CRITICAL: Claiming violations without verification is a TIER 3 violation itself.**
 
 ---
 
@@ -86,6 +97,20 @@ What type of code is this?
 └─ TEST CODE → ✅ Mocks/fallbacks ALLOWED (testing infrastructure)
 ```
 
+### Decision: Should I report a violation? 🔥 **NEW (Nov 20, 2025)**
+```
+Have I found suspect code pattern (.get with default)?
+├─ NO → Not a violation
+└─ YES → Does the key exist in config?
+    ├─ YES → ✅ NOT A VIOLATION (valid fallback for optional key)
+    └─ NO → Is this key supposed to be required?
+        ├─ UNCLEAR → ⚠️ ASK USER (don't assume violation)
+        └─ YES → ✅ VIOLATION (should fail-fast if missing)
+
+CRITICAL: grep -r "key_name" config.yaml BEFORE reporting violation
+Example: .get('intensity', 5) → Check if 'intensity' exists in config
+```
+
 ### Decision: Should I claim "fixed" or "working"?
 ```
 Have I run comprehensive tests?
@@ -106,12 +131,28 @@ Note: 10 other test files still have import errors."
 
 ## 📋 MANDATORY PRE-CHANGE CHECKLIST
 
-**Before writing ANY code:**
-- [ ] Read request precisely (what EXACTLY is requested?)
-- [ ] Check GROK_INSTRUCTIONS relevant sections
-- [ ] Explore existing architecture (how does it work now?)
-- [ ] Plan minimal fix (smallest change needed)
-- [ ] Ask permission if expanding scope
+**⏱️ PHASE 1-3: Complete research BEFORE coding (7-11 minutes prevents hours of fixing)**
+
+**Phase 1: Verification (2-3 minutes)**
+- [ ] Read request word-by-word (what EXACTLY is requested?)
+- [ ] Check for assumptions (am I assuming anything not stated?)
+- [ ] Verify file paths (do all referenced files exist?)
+- [ ] Check config keys (do claimed violations exist in config files?)
+- [ ] Search for existing solutions (does DynamicConfig/helper already solve this?)
+
+**Phase 2: Research (3-5 minutes)**
+- [ ] grep_search for patterns (how does system currently handle this?)
+- [ ] Read relevant code (understand current implementation)
+- [ ] Check git history (was this tried before? why changed?)
+- [ ] Review docs/ (is there policy documentation?)
+- [ ] Check ADRs (is there an architectural decision?)
+
+**Phase 3: Planning (2-3 minutes)**
+- [ ] Identify exact change needed (one sentence description)
+- [ ] Confirm minimal scope (am I fixing ONLY what was requested?)
+- [ ] Check for side effects (what else might this affect?)
+- [ ] Plan validation (how will I prove it works?)
+- [ ] Get permission if major (ask before removing/rewriting code)
 
 **Before committing:**
 - [ ] Ran comprehensive tests (not just 1 example)
@@ -119,37 +160,56 @@ Note: 10 other test files still have import errors."
 - [ ] Verified no regressions (nothing else broke)
 - [ ] Checked for violations (no mocks in production, no hardcoded values)
 - [ ] Honest assessment (acknowledged limitations)
+- [ ] Graded my work (A/B/C/F with evidence)
 
 ---
 
-## 🚨 WHEN UNCERTAIN
+## 🚨 WHEN UNCERTAIN - STOP SIGNALS
 
 **IF YOU'RE NOT SURE:**
-1. 🛑 **STOP coding**
-2. 📖 **READ** relevant GROK_INSTRUCTIONS section
+1. 🛑 **STOP coding immediately**
+2. 📖 **READ** relevant copilot-instructions.md section
 3. 🤔 **CHECK** decision tree above
 4. ❓ **ASK** user for clarification
 5. 📚 **REFERENCE** specific ADR or doc section
+
+**🚨 STOP SIGNALS - When to ASK instead of CODE:**
+- ❓ Not 100% certain about the requirement
+- ❓ Can't find the config key/file/pattern being referenced
+- ❓ Fixing this requires changing more than 3 files
+- ❓ About to add hardcoded value without finding dynamic config first
+- ❓ Request conflicts with existing architecture
+- ❓ Tests failing and don't understand why
 
 **NEVER assume or guess when uncertain.**
 
 ---
 
-## 🏆 SELF-ASSESSMENT
+## 🏆 SELF-ASSESSMENT (Grade Before Reporting)
 
-**Before reporting results:**
-- [ ] Grade A (90-100): All changes work + comprehensive evidence + honest about limitations
-- [ ] Grade B (80-89): Changes work + some evidence + minor issues remain
-- [ ] Grade C (70-79): Partial success + missing evidence + significant issues
-- [ ] Grade F (<70): Made things worse + no evidence + false claims
+**Grade A (90-100): Excellence**
+- ✅ All changes work + comprehensive evidence + honest about limitations
+- ✅ Zero violations introduced + zero scope creep
+- ✅ Verification completed before claiming violations
+
+**Grade B (80-89): Good**
+- ✅ Changes work + some evidence + minor issues remain
+
+**Grade C (70-79): Needs Improvement**
+- ⚠️ Partial success + missing evidence + significant issues
+
+**Grade F (<70): Unacceptable** 
+- ❌ Made things worse + no evidence + false claims
+- ❌ Reported violations without verification
 
 **Example A-grade report:**
 ```
-✅ Fixed 11/11 requested test failures
-📊 Evidence: 23/23 tests passing (see output below)
-✅ Commit: 3125e555
-⚠️ Note: 10 other test files still have import errors (not in scope)
-🏆 Grade: A (100/100)
+✅ Fixed 3/3 requested violations
+📊 Evidence: 24/24 tests passing (see output below)
+✅ Commit: abc123def
+✅ Verified: grep confirms no config keys missing
+⚠️ Note: 2 TODO comments remain (documented as future work)
+🏆 Grade: A (95/100)
 ```
 
 ---

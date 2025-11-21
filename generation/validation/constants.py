@@ -85,10 +85,13 @@ class ValidationConstants:
     # Keep as class variable for backward compatibility
     WINSTON_HUMAN_THRESHOLD = DEFAULT_WINSTON_HUMAN_THRESHOLD
     
-    # Default Scores (when validation skipped) - ALL on 0-1.0 normalized scale
-    DEFAULT_AI_SCORE = 0.0               # Perfect score when skipping (0% AI)
-    DEFAULT_HUMAN_SCORE = 1.0            # Perfect score when skipping (100% human)
-    DEFAULT_FALLBACK_AI_SCORE = 0.5      # Neutral score on error (50%)
+    # REMOVED: Default/fallback scores violate fail-fast architecture (GROK_INSTRUCTIONS.md)
+    # System must fail immediately if validation cannot run - no mock/placeholder scores
+    # See: Core Principle #2 - No Mocks or Fallbacks in Production Code
+    # OLD CODE (DELETED):
+    #   DEFAULT_AI_SCORE = 0.0               # Perfect score when skipping (0% AI)
+    #   DEFAULT_HUMAN_SCORE = 1.0            # Perfect score when skipping (100% human)
+    #   DEFAULT_FALLBACK_AI_SCORE = 0.5      # Neutral score on error (50%)
     
     # Score Conversions
     @staticmethod

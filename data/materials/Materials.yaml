@@ -1171,13 +1171,12 @@ materials:
         designs, and its high reflectivity requires specific laser wavelengths for
         effective surface treatment
       caption:
-        before: Aluminum has a density of 2.7 g/cm³ and a tensile strength of 90 MPa.
-          Its high electrical conductivity of 37.7 million S/m makes it essential
-          for electronics. The material's natural oxide layer provides a corrosion
-          resistance of 0.1 mm per year. Laser cleaning at 1064 nm wavelength removes
-          contaminants and restores the surface. This process improves adhesion for
-          subsequent manufacturing steps in aerospace and automotive applications.
-        after: ''
+        before: The surface shows a dark, uneven layer of contamination that obscures
+          the underlying metal. This coating appears mottled with patches of lighter
+          and darker debris.
+        after: Laser cleaning removes the dark contamination layer and restores the
+          original metallic surface. The process reveals a uniform, light-gray substrate
+          with a consistent texture.
   Ash:
     name: Ash
     category: wood
@@ -3781,8 +3780,8 @@ materials:
     category: metal
     subcategory: non-ferrous
     title: Brass Laser Cleaning
-    subtitle: In marine hardware, brass resists corrosion far better than steel equivalents,
-      while delivering consistent electrical conductivity for reliable connections
+    subtitle: Its excellent machinability makes brass a preferred choice for high-volume
+      precision components
     description: Laser cleaning parameters for Brass
     author:
       id: 2
@@ -4116,8 +4115,8 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: Brass resists corrosion in marine environments while its low melting
-        point makes it the preferred alloy for intricate castings and musical instruments
+      subtitle: Its excellent machinability makes brass a preferred choice for high-volume
+        precision components
   Breccia:
     name: Breccia
     category: stone
@@ -5139,6 +5138,11 @@ materials:
       subtitle: A durable alloy for marine and artistic use, bronze resists corrosion
         exceptionally well and its low melting point makes casting intricate shapes
         straightforward
+      caption:
+        before: The surface is completely covered with dark, crusty patches. These
+          patches hide the original metal underneath and create a rough texture.
+        after: Now the laser clears away all that crust and grime. It reveals the
+          smooth, clean metal and restores its natural color.
   Calcite:
     name: Calcite
     category: stone
@@ -7969,8 +7973,8 @@ materials:
     category: metal
     subcategory: specialty
     title: Chromium Laser Cleaning
-    subtitle: Chromium provides exceptional corrosion resistance and a brilliant,
-      durable finish for automotive trim and consumer appliances
+    subtitle: Chromium's extreme hardness and corrosion resistance make it essential
+      for durable coatings and stainless steel alloys
     description: Laser cleaning parameters for Chromium
     author:
       id: 4
@@ -8367,6 +8371,9 @@ materials:
         description: Optimal beam overlap for uniform Chromium surface cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: Chromium's extreme hardness and corrosion resistance make it essential
+        for durable coatings and stainless steel alloys
   Cobalt:
     name: Cobalt
     category: metal
@@ -8771,6 +8778,9 @@ materials:
         description: Optimal beam overlap for uniform Cobalt surface cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: Cobalt maintains its structural integrity under extreme heat and stress,
+        a key trait for aerospace superalloys and medical implants
   Concrete:
     name: Concrete
     category: masonry
@@ -9483,18 +9493,14 @@ materials:
     components:
       subtitle: Copper moves electricity better than any other common metal, a trait
         that makes it indispensable for everything from power grids to the smallest
-        electronic circuits
+        electronic components
       caption:
-        before: Copper is a versatile non-ferrous metal we use everywhere. Its electrical
-          conductivity reaches 59.6 million S/m, perfect for power generation and
-          electronics. The material also offers excellent corrosion resistance at
-          just 0.05 mm/year loss. For laser cleaning at 1064 nm, its high reflectivity
-          of 0.975 is the main challenge. You need a fluence above 2.5 J/cm² to effectively
-          clear oxides. We typically use 100 W with a 50 μm spot size. This process
-          restores the surface without damage. Its melting point is quite high at
-          1357 K, which provides a good safety margin. So for architecture or marine
-          applications, copper remains a reliable and durable choice.
-        after: ''
+        before: The surface is covered with dark, splotchy patches and a gritty texture.
+          You can see scattered particles embedded in the material. It looks uneven
+          and heavily soiled.
+        after: Now the laser clears all that away, leaving a smooth, reflective finish.
+          The underlying metal shines through with a uniform, orange-pink color. The
+          surface appears completely clean and restored.
   Crown Glass:
     name: Crown Glass
     category: glass
@@ -14098,6 +14104,10 @@ materials:
         description: Optimal beam overlap for uniform Gold surface cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: Gold's exceptional corrosion resistance ensures reliable performance
+        in harsh environments while its high laser reflectivity demands precise wavelength
+        control for effective surface treatment
   Gorilla Glass:
     name: Gorilla Glass
     category: glass
@@ -18610,8 +18620,9 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: A dense, corrosion-resistant shield with surprising laser reflectivity
-        at 0.98.
+      subtitle: Lead's exceptional density provides unmatched shielding against radiation,
+        while its natural corrosion resistance ensures long-term structural integrity
+        in demanding environments
   Lead Crystal:
     name: Lead Crystal
     category: glass
@@ -20891,6 +20902,9 @@ materials:
         description: Optimal beam overlap for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: Manganese forms essential alloys with steel for enhanced strength
+        and wear resistance
   Maple:
     name: Maple
     category: wood
@@ -22407,6 +22421,9 @@ materials:
         description: Optimal beam overlap percentage for uniform cleaning coverage
         unit: '%'
         value: 50
+    components:
+      subtitle: Molybdenum maintains exceptional strength at white-hot temperatures,
+        so it's the essential alloy for jet engines and industrial furnaces
   Mortar:
     name: Mortar
     category: masonry
@@ -23072,9 +23089,8 @@ materials:
     category: metal
     subcategory: specialty
     title: Nickel Laser Cleaning
-    subtitle: Practical laser cleaning targets nickel surfaces at 100 W, stripping
-      contaminants faster than from copper while safeguarding electrical performance
-      in demanding electronic assemblies
+    subtitle: Nickel’s exceptional corrosion resistance makes it the default choice
+      for harsh chemical and marine environments
     description: Laser cleaning parameters for Nickel
     author:
       id: 1
@@ -23474,8 +23490,8 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: 'Nickel: A tough, conductive metal with high laser resistance at 2.1
-        J/cm².'
+      subtitle: Nickel’s exceptional corrosion resistance makes it the default choice
+        for harsh chemical and marine environments
   Niobium:
     name: Niobium
     category: metal
@@ -25006,6 +25022,9 @@ materials:
         description: Effective dwell time per cleaning spot for optimal results
         unit: μs
         value: 100
+    components:
+      subtitle: Palladium resists oxidation at high temperatures and maintains stable
+        electrical contacts in demanding environments
   Phenolic Resin Composites:
     name: Phenolic Resin Composites
     category: composite
@@ -26489,6 +26508,9 @@ materials:
           Platinum damage
         unit: J/cm²
         value: 5
+    components:
+      subtitle: Platinum maintains its integrity under extreme heat and corrosive
+        environments
   Plywood:
     name: Plywood
     category: wood
@@ -37856,6 +37878,9 @@ materials:
         description: Optimal overlap between adjacent scan lines for uniform cleaning
         unit: '%'
         value: 50
+    components:
+      subtitle: Silver offers unmatched electrical performance while its high reflectivity
+        demands precise laser parameters
   Slate:
     name: Slate
     category: stone
@@ -39602,17 +39627,10 @@ materials:
         value: 50
     components:
       caption:
-        before: The contaminated surface at 1000x magnification reveals a dense layer
-          of oxide scale and particulate matter completely obscuring the underlying
-          metal structure. This layer, measuring several micrometers thick, adheres
-          strongly to the steel substrate and fills the natural surface texture. The
-          original 1.6 μm Ra roughness is not visible beneath this contamination.
-        after: Laser treatment at 1064 nm wavelength effectively removes the oxide
-          layer and exposes the clean steel surface. The process restores the metal's
-          inherent grain structure and reduces the surface to its base roughness.
-          We now observe a uniform, reflective surface with the laser's 50 μm spot
-          tracks visible, confirming complete contaminant removal without substrate
-          damage.
+        before: The contaminated surface shows a thick, dark crust obscuring the base
+          metal. It appears rough and uneven across the entire field of view.
+        after: Laser cleaning removes the dark crust and reveals the underlying steel.
+          The surface now appears uniform and smooth with a consistent metallic luster.
       subtitle: Steel maintains structural integrity under extreme loads, with its
         high tensile strength making it the dominant material for construction and
         heavy machinery
@@ -42803,7 +42821,7 @@ materials:
     category: metal
     subcategory: specialty
     title: Titanium Laser Cleaning
-    subtitle: Laser cleaning titanium needs around 100 W, and it melts near 1940 K.
+    subtitle: Its strength matches steel at nearly half the weight
     description: Laser cleaning parameters for Titanium
     author:
       id: 1
@@ -43161,8 +43179,7 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: Titanium resists corrosion at just 0.001 mm/year, and its high melting
-        point of 1941 K makes it ideal for demanding aerospace and medical applications.
+      subtitle: Its strength matches steel at nearly half the weight
   Titanium Carbide:
     name: Titanium Carbide
     category: ceramic
@@ -44272,9 +44289,9 @@ materials:
     category: metal
     subcategory: alloy
     title: Tungsten Laser Cleaning
-    subtitle: High-temperature filaments rely on tungsten for unmatched thermal stability
-      that outlasts alternatives by orders of magnitude in extreme environments like
-      welding electrodes and rocket nozzles, enduring up to 3695 K without deformation
+    subtitle: Tungsten maintains its structural integrity under extreme heat, so it
+      performs reliably in aerospace and medical applications where other metals would
+      fail
     description: Laser cleaning parameters for Tungsten
     author:
       id: 1
@@ -44670,6 +44687,10 @@ materials:
         description: Optimal beam overlap for uniform cleaning without thermal damage
         unit: '%'
         value: 50
+    components:
+      subtitle: Tungsten maintains its structural integrity under extreme heat, so
+        it performs reliably in aerospace and medical applications where other metals
+        would fail
   Tungsten Carbide:
     name: Tungsten Carbide
     category: ceramic
@@ -47081,8 +47102,8 @@ materials:
         unit: '%'
         value: 50
     components:
-      subtitle: 'Zinc: A low-melting alloy at 693 K, it resists corrosion well and
-        absorbs 35% of laser energy for cleaning.'
+      subtitle: Zinc offers exceptional corrosion resistance with a minimal 0.003
+        mm/year loss rate
   Zirconia:
     name: Zirconia
     category: ceramic

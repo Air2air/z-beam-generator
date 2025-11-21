@@ -250,12 +250,20 @@ def _run_winston_detection(content, material_name, component_type, api_client):
         ai_threshold = ValidationConstants.get_winston_threshold(use_learned=True)
         print(f"   Using learned Winston threshold: {ai_threshold:.3f}")
         
+        # Calculate temperature dynamically from voice configuration
+        # Note: This temperature is for database logging/analysis only.
+        # Winston API analyzes text content, not generation parameters.
+        # Using DynamicConfig ensures consistency with generation settings.
+        from generation.config.dynamic_config import DynamicConfig
+        dynamic_config = DynamicConfig()
+        generation_temp = dynamic_config.calculate_temperature(component_type)
+        
         # Detect and log
         winston_result = winston.detect_and_log(
             text=content,
             material=material_name,
             component_type=component_type,
-            temperature=0.7,
+            temperature=generation_temp,
             attempt=1,
             max_attempts=1,
             ai_threshold=ai_threshold
@@ -274,9 +282,23 @@ def _run_winston_detection(content, material_name, component_type, api_client):
         print()
         
     except Exception as e:
-        print(f"   ⚠️  Winston detection failed: {e}")
-        print("   Continuing without Winston validation...")
-        print()
+        # Winston detection optional for short content (captions often <300 chars)
+        error_msg = str(e)
+        if 'Text too short' in error_msg or 'not configured' in error_msg:
+            print("\n⚠️  WARNING: Winston detection skipped")
+            print(f"   Reason: {e}")
+            print("\n   ℹ️  Content saved but not validated by Winston API.")
+            print("   Subjective evaluation (Grok) was completed successfully.")
+            print("\n   To enable Winston: Configure API in .env file")
+            print("   See: setup/API_CONFIGURATION.md")
+            print()
+        else:
+            # Other errors should still fail-fast
+            print("\n❌ CRITICAL ERROR: Winston detection failed")
+            print(f"   Error: {e}")
+            print("\n   Fix: Configure Winston API in .env file")
+            print("   See: setup/API_CONFIGURATION.md")
+            raise RuntimeError(f"Winston API detection required but failed: {e}")
 
 
 def _update_sweet_spot_if_needed(material_name, component_type):

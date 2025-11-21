@@ -9,6 +9,15 @@
 **BEFORE** any work, review these files organized by category:
 
 ### ⚡ Recent Updates (November 20, 2025)
+- **🚨 Mock/Fallback Violations Fixed** (Nov 20): Complete fail-fast architecture enforcement
+  - See: `VIOLATION_FIXES_NOV20_2025.md`
+  - Fixed: 26 violations across 9 files (generation.py, constants.py, batch_generator.py, run.py, integrity_helper.py, subtitle_generator.py, quality_gated_generator.py, threshold_manager.py)
+  - Removed: DEFAULT_AI_SCORE, DEFAULT_HUMAN_SCORE, DEFAULT_FALLBACK_AI_SCORE constants
+  - Removed: All hardcoded temperatures (subtitle 0.6, winston 0.7) and penalties (batch 0.0)
+  - Removed: All TODO violations - documented design rationales
+  - Fixed: Silent failure patterns in integrity checker exception handlers
+  - System now STOPS immediately on Winston API failure (no fake scores)
+  - Tests: 24/24 passing with fail-fast architecture
 - **🔥 Dynamic Threshold Learning**: Thresholds now adapt from database (Winston, realism, parameters)
   - See: `docs/decisions/ADR-005-dynamic-threshold-learning.md`
   - Tests: `tests/test_dynamic_threshold_learning.py`

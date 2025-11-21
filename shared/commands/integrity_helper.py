@@ -82,14 +82,15 @@ def run_pre_generation_check(skip_check: bool = False, quick: bool = True, verbo
                 learning_pass = sum(1 for r in learning_checks if r.status.value == "PASS")
                 print(f"    ✅ Per-iteration learning: {learning_pass}/{len(learning_checks)} validated")
         
-        print()
-        return True
         
     except Exception as e:
-        print(f"⚠️  Integrity check error: {e}")
-        print("    Continuing with generation (check failed gracefully)")
-        print()
-        return True  # Don't block generation on check errors
+        # FAIL-FAST: Do not continue with generation if integrity check itself fails
+        # per GROK_INSTRUCTIONS.md Core Principle #5
+        raise RuntimeError(
+            f"Integrity check failed to execute: {e}. "
+            f"Cannot proceed with generation. "
+            f"Fix the integrity checker before attempting generation."
+        )
 
 
 def run_post_generation_validation(material: str, component_type: str, quick: bool = True) -> bool:
@@ -133,14 +134,14 @@ def run_post_generation_validation(material: str, component_type: str, quick: bo
         print("✅ Post-generation validation passed")
         pass_count = sum(1 for r in results if r.status.value == "PASS")
         print(f"    {pass_count} checks passed")
-        print()
-        return True
         
     except Exception as e:
-        print(f"⚠️  Post-generation validation error: {e}")
-        print("    Generation completed but validation inconclusive")
-        print()
-        return True  # Don't fail on validation errors
+        # FAIL-FAST: Post-generation validation failure means learning data incomplete
+        # per GROK_INSTRUCTIONS.md Core Principle #5
+        raise RuntimeError(
+            f"Post-generation validation failed: {e}. "
+            f"Learning data may be incomplete or corrupted."
+        )
 
 
 def run_learning_architecture_tests(verbose: bool = False) -> bool:
@@ -185,12 +186,13 @@ def run_learning_architecture_tests(verbose: bool = False) -> bool:
             if not verbose:
                 print("   Run with --verbose for details:")
                 print("   pytest tests/integration/test_per_iteration_learning.py -v")
-            return False
             
     except Exception as e:
         print(f"⚠️  Could not run learning architecture tests: {e}")
-        print("    Install pytest: pip install pytest")
-        return True  # Don't block on test infrastructure issues
+        print("    Note: Test infrastructure unavailable (pytest not installed?)")
+        # Return False to indicate tests didn't pass (even though infrastructure missing)
+        # This is acceptable for optional test validation, but should be documented
+        return False
 
 
 def get_integrity_summary() -> dict:
