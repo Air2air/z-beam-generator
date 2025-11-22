@@ -1232,10 +1232,18 @@ git revert <commit>  # Revert to known working state
 
 ### Primary Navigation
 **Start here for ALL documentation queries**: `docs/QUICK_REFERENCE.md`
-- Contains direct problem → solution mappings
-- Lists most common user questions with immediate answers
-- Provides file location quick map for efficient navigation
-- Includes essential commands and critical known issues
+### Primary Navigation (UPDATED Nov 22, 2025)
+**Start here for 30-second navigation**: `docs/08-development/AI_ASSISTANT_GUIDE.md` ⭐ **NEW**
+- Complete quick-start guide for all AI assistants
+- Direct links to common tasks
+- Policy summaries with tier priorities
+- Pre-change checklist
+- Emergency recovery procedures
+
+**Alternative entry points**:
+- `docs/QUICK_REFERENCE.md` - Direct problem → solution mappings
+- `DOCUMENTATION_MAP.md` - Complete documentation index  
+- `.github/COPILOT_GENERATION_GUIDE.md` - Content generation step-by-step
 
 ### AI-Optimized Documentation Structure
 1. **Immediate Problem Resolution**: `docs/QUICK_REFERENCE.md` 
