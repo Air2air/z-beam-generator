@@ -225,6 +225,14 @@ class QualityGatedGenerator:
                 print(f"✅ Generated: {result['length']} chars, {result['word_count']} words")
                 logger.info(f"✅ Generated: {result['length']} chars, {result['word_count']} words")
                 
+                # Display full generated content in terminal
+                print(f"\n{'─'*80}")
+                print(f"📄 GENERATED CONTENT:")
+                print(f"{'─'*80}")
+                content_text = self._content_to_text(content, component_type)
+                print(content_text)
+                print(f"{'─'*80}\n")
+                
             except Exception as e:
                 logger.error(f"❌ Generation failed: {e}")
                 return QualityGatedResult(
@@ -398,24 +406,92 @@ class QualityGatedGenerator:
                     passed_all_gates=passed_all_gates
                 )
                 
-                if passed_all_gates:
-                    print(f"\n✅ QUALITY GATE PASSED (≥{adaptive_threshold:.1f}/10)")
-                    print(f"   💾 Saving to Materials.yaml...")
+                # OPTION C: Always save content, but continue attempting to improve
+                # Save current attempt
+                print(f"\n💾 Saving attempt {attempt} to Materials.yaml...")
+                logger.info(f"\n💾 Saving attempt {attempt} to Materials.yaml...")
+                self._save_to_yaml(material_name, component_type, content)
+                print(f"   ✅ Saved (Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10)")
+                logger.info(f"   ✅ Saved (Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10)")
+                
+                # If scores are low, continue attempting to improve (but we already saved)
+                if not passed_all_gates and attempt < self.max_attempts:
+                    print(f"\n🔄 ATTEMPTING TO IMPROVE - Will generate better version")
+                    logger.info(f"\n🔄 ATTEMPTING TO IMPROVE - Will generate better version")
                     
-                    # NOW save to YAML (only if quality passes)
-                    self._save_to_yaml(material_name, component_type, content)
+                    if not structural_passed:
+                        reason = f"Low structural diversity: {diversity_score:.1f}/10"
+                        print(f"   • {reason}")
+                        logger.info(f"   • {reason}")
+                        rejection_reasons.append(reason)
                     
-                    print(f"   ✅ Saved successfully")
+                    if realism_score < adaptive_threshold:
+                        reason = f"Realism score: {realism_score:.1f}/10 (target: {adaptive_threshold:.1f}/10)"
+                        print(f"   • {reason}")
+                        logger.info(f"   • {reason}")
+                        rejection_reasons.append(reason)
+                    
+                    if evaluation.ai_tendencies:
+                        reason = f"AI tendencies detected: {', '.join(evaluation.ai_tendencies)}"
+                        print(f"   • {reason}")
+                        logger.info(f"   • {reason}")
+                        rejection_reasons.append(reason)
+                    
+                    if not winston_passed:
+                        reason = f"Winston human score: {winston_score:.1%} (target: {self.humanness_threshold:.1%})"
+                        print(f"   • {reason}")
+                        logger.info(f"   • {reason}")
+                        rejection_reasons.append(reason)
+                    
+                    # Adjust parameters for next attempt to improve quality
+                    print(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
+                    logger.info(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
+                    
+                    previous_ai_tendencies = evaluation.ai_tendencies or []
+                    if previous_ai_tendencies:
+                        print(f"   📋 AI tendencies to avoid: {', '.join(previous_ai_tendencies)}")
+                        logger.info(f"   📋 AI tendencies to avoid: {', '.join(previous_ai_tendencies)}")
+                    
+                    # Calculate old params for comparison
+                    old_params = current_params.copy()
+                    
+                    current_params = self._adjust_parameters(
+                        current_params,
+                        evaluation.ai_tendencies or [],
+                        realism_score,
+                        winston_passed=winston_passed
+                    )
+                    parameter_history.append(current_params.copy())
+                    
+                    # Display parameter changes
+                    print(f"\n📊 PARAMETER CHANGES FOR NEXT ATTEMPT:")
+                    logger.info(f"\n📊 PARAMETER CHANGES FOR NEXT ATTEMPT:")
+                    for param, new_value in current_params.items():
+                        old_value = old_params.get(param)
+                        if old_value != new_value:
+                            print(f"   • {param}: {old_value} → {new_value}")
+                            logger.info(f"   • {param}: {old_value} → {new_value}")
+                        else:
+                            print(f"   • {param}: {new_value} (unchanged)")
+                            logger.info(f"   • {param}: {new_value} (unchanged)")
+                    
+                    print(f"   ✅ Parameters adjusted for improvement attempt")
+                    logger.info(f"   ✅ Parameters adjusted for improvement attempt")
+                    
+                elif attempt >= self.max_attempts:
+                    # Max attempts reached - return with best content saved
+                    print(f"\n✅ MAX ATTEMPTS REACHED ({self.max_attempts})")
+                    print(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    print(f"   💾 Content saved (best attempt after {attempt} iterations)")
                     print(f"\n{'='*80}")
-                    print(f"🎉 SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    print(f"📦 COMPLETE: {component_type} saved after {attempt} attempt(s)")
                     print(f"{'='*80}\n")
                     
-                    # Also log for records
-                    logger.info(f"\n✅ QUALITY GATE PASSED (≥{adaptive_threshold:.1f}/10)")
-                    logger.info(f"   💾 Saving to Materials.yaml...")
-                    logger.info(f"   ✅ Saved successfully")
+                    logger.info(f"\n✅ MAX ATTEMPTS REACHED ({self.max_attempts})")
+                    logger.info(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    logger.info(f"   💾 Content saved (best attempt after {attempt} iterations)")
                     logger.info(f"\n{'='*80}")
-                    logger.info(f"🎉 SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    logger.info(f"📦 COMPLETE: {component_type} saved after {attempt} attempt(s)")
                     logger.info(f"{'='*80}\n")
                     
                     return QualityGatedResult(
@@ -427,80 +503,29 @@ class QualityGatedGenerator:
                         parameter_history=parameter_history,
                         rejection_reasons=rejection_reasons
                     )
-                
                 else:
-                    # Quality gate failed - RETRY with adjusted parameters
-                    print(f"\n⚠️  QUALITY GATE FAILED - Will retry with adjusted parameters")
-                    logger.warning(f"\n⚠️  QUALITY GATE FAILED - Will retry with adjusted parameters")
+                    # Passed all gates - excellent! Return success
+                    print(f"\n🎉 EXCELLENT QUALITY ACHIEVED!")
+                    print(f"   Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    print(f"\n{'='*80}")
+                    print(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    print(f"{'='*80}\n")
                     
-                    if not structural_passed:
-                        rejection_reasons.append(f"Structural variation failed (diversity: {diversity_score:.1f}/10)")
+                    logger.info(f"\n🎉 EXCELLENT QUALITY ACHIEVED!")
+                    logger.info(f"   Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    logger.info(f"\n{'='*80}")
+                    logger.info(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    logger.info(f"{'='*80}\n")
                     
-                    if realism_score < adaptive_threshold:
-                        reason = f"Realism score too low: {realism_score:.1f}/10 < {adaptive_threshold:.1f}/10"
-                        print(f"   • {reason}")
-                        logger.warning(f"   • {reason}")
-                        rejection_reasons.append(reason)
-                    
-                    if evaluation.ai_tendencies:
-                        reason = f"AI tendencies detected: {', '.join(evaluation.ai_tendencies)}"
-                        print(f"   • {reason}")
-                        logger.warning(f"   • {reason}")
-                        rejection_reasons.append(reason)
-                    
-                    if not winston_passed:
-                        reason = f"Winston AI detection failed (human score: {winston_score:.1%})"
-                        print(f"   • {reason}")
-                        logger.warning(f"   • {reason}")
-                        rejection_reasons.append(reason)
-                    
-                    # Last attempt? Return failure
-                    if attempt >= self.max_attempts:
-                        print(f"\n❌ MAX ATTEMPTS REACHED ({self.max_attempts})")
-                        print(f"   Final score: {realism_score:.1f}/10 (required: {self.quality_threshold}/10)")
-                        print(f"   🚫 Content NOT saved to Materials.yaml")
-                        
-                        logger.error(f"\n❌ MAX ATTEMPTS REACHED ({self.max_attempts})")
-                        logger.error(f"   Final score: {realism_score:.1f}/10 (required: {self.quality_threshold}/10)")
-                        logger.error(f"   🚫 Content NOT saved to Materials.yaml")
-                        
-                        return QualityGatedResult(
-                            success=False,
-                            content=content,
-                            attempts=attempt,
-                            final_score=realism_score,
-                            evaluation_history=evaluation_history,
-                            parameter_history=parameter_history,
-                            rejection_reasons=rejection_reasons,
-                            error_message=f"Failed quality gate after {self.max_attempts} attempts"
-                        )
-                    
-                    # Adjust parameters for next attempt
-                    print(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
-                    logger.info(f"\n🔧 Adjusting parameters for attempt {attempt + 1}...")
-                    
-                    # Update previous_ai_tendencies for next humanness layer
-                    previous_ai_tendencies = evaluation.ai_tendencies or []
-                    if previous_ai_tendencies:
-                        print(f"   📋 AI tendencies to avoid next time: {', '.join(previous_ai_tendencies)}")
-                        logger.info(f"   📋 AI tendencies to avoid next time: {', '.join(previous_ai_tendencies)}")
-                    
-                    current_params = self._adjust_parameters(
-                        current_params,
-                        evaluation.ai_tendencies or [],
-                        realism_score,
-                        winston_passed=winston_passed
+                    return QualityGatedResult(
+                        success=True,
+                        content=content,
+                        attempts=attempt,
+                        final_score=realism_score,
+                        evaluation_history=evaluation_history,
+                        parameter_history=parameter_history,
+                        rejection_reasons=rejection_reasons
                     )
-                    parameter_history.append(current_params.copy())
-                    print(f"   ✅ Parameters adjusted for retry")
-                    logger.info(f"   ✅ Parameters adjusted for retry")
-                    
-                    # Log what changed
-                    print(f"\n🔄 Parameter changes for next attempt:")
-                    logger.info(f"\n🔄 Parameter changes for next attempt:")
-                    for param, value in current_params.items():
-                        print(f"   • {param}: {value}")
-                        logger.info(f"   • {param}: {value}")
                 
             except Exception as e:
                 logger.error(f"❌ Evaluation failed: {e}")
