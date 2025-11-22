@@ -8,11 +8,13 @@ Integrates learned patterns from TWO feedback systems:
 Generates dynamic humanness instructions that improve with each retry attempt (1-5 strictness levels).
 
 Created: November 20, 2025
+Updated: November 22, 2025 - Config-driven randomization (zero hardcoded values)
 Policy Compliance: Zero hardcoded values, template-only approach, fail-fast architecture
 """
 
 import re
 import random
+import yaml
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -71,7 +73,8 @@ class HumannessOptimizer:
         self,
         winston_db_path: str = 'z-beam.db',
         patterns_file: Optional[Path] = None,
-        structural_db_path: Optional[str] = None
+        structural_db_path: Optional[str] = None,
+        config_path: str = 'generation/config.yaml'
     ):
         """
         Initialize humanness optimizer with triple feedback sources.
@@ -80,9 +83,11 @@ class HumannessOptimizer:
             winston_db_path: Path to Winston feedback database
             patterns_file: Path to learned_patterns.yaml (default: prompts/evaluation/learned_patterns.yaml)
             structural_db_path: Path to structural patterns database (default: data/winston_feedback.db)
+            config_path: Path to config.yaml for randomization targets (default: generation/config.yaml)
         
         Raises:
             FileNotFoundError: If required files missing (fail-fast)
+            ValueError: If config.yaml missing randomization_targets section
         """
         self.winston_db_path = winston_db_path
         self.structural_db_path = structural_db_path or 'data/winston_feedback.db'
@@ -100,11 +105,28 @@ class HumannessOptimizer:
                 f"Cannot operate without template per template-only policy."
             )
         
+        # Load configuration for randomization targets (fail-fast)
+        self.config_path = Path(config_path)
+        if not self.config_path.exists():
+            raise FileNotFoundError(
+                f"Configuration file not found: {self.config_path}. "
+                f"Cannot operate without randomization_targets config."
+            )
+        
+        with open(self.config_path, 'r', encoding='utf-8') as f:
+            self.config = yaml.safe_load(f)
+        
+        if 'randomization_targets' not in self.config:
+            raise ValueError(
+                f"Missing 'randomization_targets' in {self.config_path}. "
+                f"Zero hardcoded values policy requires config-driven randomization."
+            )
+        
         # Lazy-load dependencies
         self._winston_db = None
         self._pattern_learner = None
         
-        logger.info(f"✅ HumannessOptimizer initialized (Winston DB: {winston_db_path})")
+        logger.info(f"✅ HumannessOptimizer initialized (Winston DB: {winston_db_path}, Config: {config_path})")
     
     def generate_humanness_instructions(
         self,
@@ -363,62 +385,62 @@ class HumannessOptimizer:
         # Load template (fail-fast if missing - already validated in __init__)
         template = self.template_file.read_text(encoding='utf-8')
         
-        # 🎲 RANDOMIZE LENGTH TARGET (dramatic variation)
-        length_targets = {
-            'SHORT': '150-220 words (CONCISE & PUNCHY - 2-3 key points only)',
-            'MEDIUM': '220-300 words (BALANCED - cover 4-5 key aspects)',
-            'DETAILED': '300-380 words (COMPREHENSIVE - thorough exploration)',
-            'DEEP': '380-450 words (DEEP DIVE - exhaustive technical detail)'
-        }
-        selected_length = random.choice(list(length_targets.keys()))
-        length_guidance = length_targets[selected_length]
+        # 🎲 RANDOMIZE LENGTH TARGET (from config - zero hardcoded values)
+        length_config = self.config['randomization_targets']['length']
+        length_options = []
+        length_labels = {}
+        for key, value in length_config.items():
+            length_options.append(key)
+            range_str = f"{value['range'][0]}-{value['range'][1]} words"
+            length_labels[key] = f"{range_str} ({value['description']})"
         
-        # 🎲 RANDOMIZE STRUCTURAL APPROACH (force different structure each time)
-        structure_approaches = [
-            '1. Problem-Focused (20% chance): Start with challenge → explain why → solution',
-            '2. Contrast-Based (20% chance): Compare materials → highlight difference → impact',
-            '3. Process-Focused (20% chance): Walk through setup → embed properties naturally',
-            '4. Experience-Based (20% chance): Share what works → why it works → what to avoid',
-            '5. Property-Driven (20% chance): Lead with ONE property → deep exploration'
-        ]
-        selected_structure = random.choice(structure_approaches)
+        selected_length_key = random.choice(length_options)
+        selected_length = length_labels[selected_length_key]
         
-        # 🎲 RANDOMIZE VOICE STYLE (distinct author personas)
-        voice_styles = [
-            'DIRECT INSTRUCTOR: "You must", "Make sure you", "Start with" (commanding, prescriptive)',
-            'TEAM COLLABORATOR: "We typically", "We\'ve found", "In our experience" (inclusive, shared)',
-            'EXPERIENCE SHARER: "I\'ve seen", "This works when", "Tends to" (observational, practical)'
-        ]
-        selected_voice = random.choice(voice_styles)
+        # 🎲 RANDOMIZE STRUCTURAL APPROACH (from config)
+        structure_config = self.config['randomization_targets']['structures']
+        structure_options = []
+        for idx, (key, value) in enumerate(structure_config.items(), 1):
+            prob_pct = int(value['probability'] * 100)
+            structure_options.append(
+                f"{idx}. {value['label']} ({prob_pct}% chance): {value['description']}"
+            )
+        selected_structure = random.choice(structure_options)
         
-        # 🎲 RANDOMIZE SENTENCE RHYTHM (dramatic variation in sentence length patterns)
-        rhythm_patterns = [
-            'SHORT & PUNCHY: Use mostly 5-10 word sentences. Rapid fire. Direct impact. Build momentum.',
-            'MIXED CADENCE: Alternate short (5-10 word) and long (20-30 word) sentences for natural rhythm.',
-            'COMPLEX COMPOUND: Use longer, detailed sentences (15-30 words) with clauses and technical depth.'
-        ]
-        selected_rhythm = random.choice(rhythm_patterns)
+        # 🎲 RANDOMIZE VOICE STYLE (from config)
+        voice_config = self.config['randomization_targets']['voices']
+        voice_options = []
+        for key, value in voice_config.items():
+            examples = ', '.join(f'"{ex}"' for ex in value['examples'])
+            voice_options.append(
+                f"{value['label']}: {examples} ({value['description']})"
+            )
+        selected_voice = random.choice(voice_options)
         
-        # 🎲 RANDOMIZE PROPERTY INTEGRATION STRATEGY
-        property_strategies = [
-            'SCATTERED INTEGRATION: Distribute properties throughout narrative (never list)',
-            'DEEP DIVE ONE: Focus deeply on ONE property first, mention others briefly later',
-            'COMPARATIVE: Use properties to compare/contrast with similar materials',
-            'PROBLEM-SOLUTION: Present property as solution to specific challenge'
-        ]
-        selected_property_strategy = random.choice(property_strategies)
+        # 🎲 RANDOMIZE SENTENCE RHYTHM (from config)
+        rhythm_config = self.config['randomization_targets']['rhythms']
+        rhythm_options = []
+        for key, value in rhythm_config.items():
+            rhythm_options.append(f"{value['label']}: {value['description']}")
+        selected_rhythm = random.choice(rhythm_options)
         
-        # 🎲 RANDOMIZE WARNING PLACEMENT
-        warning_placements = [
-            'EARLY WARNING: Start with critical safety/setup concern (first 2-3 sentences)',
-            'MID-FLOW WARNING: Embed warning naturally in middle of narrative',
-            'CONCLUDING WARNING: End with key caution or recommendation'
-        ]
-        selected_warning = random.choice(warning_placements)
+        # 🎲 RANDOMIZE PROPERTY INTEGRATION STRATEGY (from config)
+        property_config = self.config['randomization_targets']['property_strategies']
+        property_options = []
+        for key, value in property_config.items():
+            property_options.append(f"{value['label']}: {value['description']}")
+        selected_property_strategy = random.choice(property_options)
+        
+        # 🎲 RANDOMIZE WARNING PLACEMENT (from config)
+        warning_config = self.config['randomization_targets']['warning_placements']
+        warning_options = []
+        for key, value in warning_config.items():
+            warning_options.append(f"{value['label']}: {value['description']}")
+        selected_warning = random.choice(warning_options)
         
         # Log randomization selections for terminal visibility
-        print(f"\n🎲 RANDOMIZATION APPLIED:")
-        print(f"   • Length Target: {selected_length} ({length_guidance})")
+        print("\n🎲 RANDOMIZATION APPLIED:")
+        print(f"   • Length Target: {selected_length_key.upper()} ({selected_length})")
         print(f"   • Structure: {selected_structure}")
         print(f"   • Voice Style: {selected_voice}")
         print(f"   • Sentence Rhythm: {selected_rhythm}")
@@ -473,7 +495,7 @@ class HumannessOptimizer:
 🎲 **YOUR RANDOMIZED TARGETS FOR THIS GENERATION** 🎲
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📏 **LENGTH TARGET**: {length_guidance}
+📏 **LENGTH TARGET**: {selected_length}
 
 🏗️ **STRUCTURAL APPROACH** (pick THIS one from 5 options):
    {selected_structure}

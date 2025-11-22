@@ -58,6 +58,124 @@ length_variation_range: 10               # Maximum variation: ±60%
 #   0.20 = ±20% (target 100 → range 80-120)
 # Recommended: 0.10 (±10%) - supports ≥5% variance requirement
 word_count_variation: 0.50               # ±50% variation for maximum diversity
+
+# Randomization Targets Configuration
+# All randomization options for humanness layer generation
+# Zero hardcoded values policy: ALL variation options configured here
+randomization_targets:
+  
+  # Length variation targets (word counts)
+  length:
+    short:
+      range: [150, 220]
+      description: "CONCISE & PUNCHY - 2-3 key points only"
+      probability: 0.25
+    medium:
+      range: [220, 300]
+      description: "BALANCED - cover 4-5 key aspects"
+      probability: 0.25
+    detailed:
+      range: [300, 380]
+      description: "COMPREHENSIVE - thorough exploration"
+      probability: 0.25
+    deep:
+      range: [380, 450]
+      description: "DEEP DIVE - exhaustive technical detail"
+      probability: 0.25
+  
+  # Structural approaches
+  structures:
+    problem_focused:
+      label: "Problem-Focused"
+      description: "Start with challenge → explain why → solution"
+      probability: 0.20
+    contrast_based:
+      label: "Contrast-Based"
+      description: "Compare materials → highlight difference → impact"
+      probability: 0.20
+    process_focused:
+      label: "Process-Focused"
+      description: "Walk through setup → embed properties naturally"
+      probability: 0.20
+    experience_based:
+      label: "Experience-Based"
+      description: "Share what works → why → what to avoid"
+      probability: 0.20
+    property_driven:
+      label: "Property-Driven"
+      description: "Lead with ONE property → deep exploration"
+      probability: 0.20
+  
+  # Voice styles (author personas)
+  voices:
+    direct_instructor:
+      label: "DIRECT INSTRUCTOR"
+      examples: ["You must", "Make sure you", "Start with"]
+      description: "Commanding, prescriptive"
+      probability: 0.33
+    team_collaborator:
+      label: "TEAM COLLABORATOR"
+      examples: ["We typically", "We've found", "In our experience"]
+      description: "Inclusive, shared experience"
+      probability: 0.33
+    experience_sharer:
+      label: "EXPERIENCE SHARER"
+      examples: ["I've seen", "This works when", "Tends to"]
+      description: "Observational, practical"
+      probability: 0.34
+  
+  # Sentence rhythm patterns
+  rhythms:
+    short_punchy:
+      label: "SHORT & PUNCHY"
+      description: "Use mostly 5-10 word sentences. Rapid fire. Direct impact. Build momentum."
+      sentence_range: [5, 10]
+      probability: 0.33
+    mixed_cadence:
+      label: "MIXED CADENCE"
+      description: "Alternate short (5-10 word) and long (20-30 word) sentences for natural rhythm."
+      short_range: [5, 10]
+      long_range: [20, 30]
+      probability: 0.33
+    complex_compound:
+      label: "COMPLEX COMPOUND"
+      description: "Use longer, detailed sentences (15-30 words) with clauses and technical depth."
+      sentence_range: [15, 30]
+      probability: 0.34
+  
+  # Property integration strategies
+  property_strategies:
+    scattered:
+      label: "SCATTERED INTEGRATION"
+      description: "Distribute properties throughout narrative (never list)"
+      probability: 0.25
+    deep_dive:
+      label: "DEEP DIVE ONE"
+      description: "Focus deeply on ONE property first, mention others briefly later"
+      probability: 0.25
+    comparative:
+      label: "COMPARATIVE"
+      description: "Use properties to compare/contrast with similar materials"
+      probability: 0.25
+    problem_solution:
+      label: "PROBLEM-SOLUTION"
+      description: "Present property as solution to specific challenge"
+      probability: 0.25
+  
+  # Warning placement options
+  warning_placements:
+    early:
+      label: "EARLY WARNING"
+      description: "Start with critical safety/setup concern (first 2-3 sentences)"
+      probability: 0.33
+    mid_flow:
+      label: "MID-FLOW WARNING"
+      description: "Embed warning naturally in middle of narrative"
+      probability: 0.33
+    concluding:
+      label: "CONCLUDING WARNING"
+      description: "End with key caution or recommendation"
+      probability: 0.34
   
 # Winston Feedback Database
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
