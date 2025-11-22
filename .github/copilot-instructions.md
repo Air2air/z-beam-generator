@@ -2,7 +2,63 @@
 
 **For**: GitHub Copilot, Grok AI, Claude, and all AI development assistants  
 **System**: Laser cleaning content generation with strict fail-fast architecture  
-**Last Updated**: November 20, 2025
+**Last Updated**: November 22, 2025
+
+---
+
+## 🚀 **30-SECOND QUICK START** 🔥 **NEW (Nov 22, 2025)**
+
+**⚡ PRIORITY**: Read this section FIRST for immediate navigation, then consult detailed rules below.
+
+### **📖 Full Navigation Guide**
+**Primary Resource**: `docs/08-development/AI_ASSISTANT_GUIDE.md`  
+- 30-second navigation to any documentation
+- Quick lookup tables for common tasks
+- Pre-change checklist
+- Emergency recovery procedures
+
+### **🎯 Common Tasks - Direct Links**
+
+| Task | Resource |
+|------|----------|
+| **Generate content** | `.github/COPILOT_GENERATION_GUIDE.md` (step-by-step) |
+| **Fix bugs/add features** | Pre-Change Checklist (see below) + `docs/SYSTEM_INTERACTIONS.md` |
+| **Check policy compliance** | `docs/08-development/` (HARDCODED_VALUE_POLICY, TERMINAL_LOGGING_POLICY, etc.) |
+| **Understand data flow** | `docs/02-architecture/processing-pipeline.md` |
+| **Find quick answers** | `docs/QUICK_REFERENCE.md` |
+| **Troubleshoot errors** | `TROUBLESHOOTING.md` (root) |
+| **Research implementation history** | `docs/archive/2025-11/` (52 archived docs) |
+
+### **🚦 Critical Policies Summary**
+
+**TIER 1: System-Breaking** (Will cause failures)
+- ❌ NO mocks/fallbacks in production code (tests OK)
+- ❌ NO hardcoded values/defaults (use config/dynamic calc)
+- ❌ NO rewriting working code (minimal surgical fixes only)
+
+**TIER 2: Quality-Critical** (Will cause bugs)
+- ❌ NO expanding scope (fix X means fix ONLY X)
+- ✅ ALWAYS fail-fast on config (throw exceptions)
+- ✅ ALWAYS log to terminal (comprehensive dual logging)
+
+**TIER 3: Evidence & Honesty** (Will lose trust)
+- ✅ ALWAYS provide evidence (test output, commits)
+- ✅ ALWAYS be honest (acknowledge limitations)
+- 🔥 NEVER report success when quality gates fail
+
+**Full Details**: See TIER PRIORITIES section below + `docs/08-development/`
+
+### **📋 Quick Pre-Change Checklist**
+
+Before ANY code change:
+1. [ ] Search `docs/QUICK_REFERENCE.md` for existing guidance
+2. [ ] Check `docs/08-development/` for relevant policy
+3. [ ] Review `docs/SYSTEM_INTERACTIONS.md` for side effects
+4. [ ] Plan minimal fix (one sentence description)
+5. [ ] Verify all file paths exist before coding
+6. [ ] Ask permission before major changes or rewrites
+
+**Full Checklist**: See "Mandatory Pre-Change Checklist" section below (lines ~300)
 
 ---
 
@@ -70,7 +126,9 @@
 
 ---
 
-## 📖 **Quick Navigation for AI Assistants**
+## 📖 **Detailed Navigation for AI Assistants**
+
+**🔍 Already checked 30-SECOND QUICK START above?** If not, scroll to top first.
 
 ### **User Requests Content Generation?**
 → **READ THIS FIRST**: `.github/COPILOT_GENERATION_GUIDE.md`
@@ -79,20 +137,23 @@
 - Covers: All component types (subtitle, caption, FAQ, description)
 
 ### **Need Documentation?**
-→ **START HERE**: Root `/DOCUMENTATION_MAP.md` - Complete map of all documentation
+→ **PRIMARY GUIDE**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation (NEW)
+→ **COMPLETE MAP**: Root `/DOCUMENTATION_MAP.md` - All documentation indexed
 → **QUICK ANSWERS**: `docs/QUICK_REFERENCE.md` - Fastest path to solutions
 → **SYSTEM INDEX**: `docs/INDEX.md` - Comprehensive navigation
 
 ### **Working on Code/Architecture?**
 → **READ FIRST**: `docs/SYSTEM_INTERACTIONS.md` - Understand cascading effects before changing anything
 → **THEN CHECK**: `docs/decisions/README.md` - Architecture Decision Records (WHY things work this way)
-→ **Continue below** for development guidelines and system rules
+→ **CHECK POLICIES**: `docs/08-development/` - All development policies and guidelines
+→ **Continue below** for comprehensive rules and examples
 
 ### **⚠️ Before Making ANY Change**
 1. **Check `docs/SYSTEM_INTERACTIONS.md`**: What will your change affect?
 2. **Check `docs/decisions/`**: Is there an ADR about this?
 3. **Check git history**: Has this been tried and failed before?
-4. **Plan minimal fix**: Address only the specific issue
+4. **Check `docs/08-development/`**: Is there a policy document about this?
+5. **Plan minimal fix**: Address only the specific issue
 
 ---
 
@@ -274,9 +335,11 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 
 ---
 
-## 🛡️ **MANDATORY: Pre-Code Execution Protocol** 🔥 **NEW (Nov 20, 2025)**
+## 🛡️ **MANDATORY: Pre-Code Execution Protocol** 🔥 **UPDATED (Nov 22, 2025)**
 
 **🛑 STOP - Complete ALL checks BEFORE writing any code:**
+
+**📖 Quick Reference**: See `docs/08-development/AI_ASSISTANT_GUIDE.md` for streamlined checklist
 
 ### ✅ Phase 1: Verification (2-3 minutes)
 - [ ] **Read request word-by-word** - What EXACTLY is being asked?
