@@ -1,8 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: November 17, 2025  
-**For**: AI Assistants, Developers, Contributors, and Users
+**Last Updated**: November 22, 2025  
+**For**: AI Assistants, Developers, Contributors, and Users  
+**Recent Cleanup**: 52 implementation docs archived (streamlined from 120 → 70 files)
 
 ---
 
@@ -11,13 +12,14 @@
 | I Want To... | Go Here |
 |--------------|---------|
 | **Get started immediately** | `README.md` → `docs/01-getting-started/` |
+| **AI Assistant Guide (30-sec nav)** | `docs/08-development/AI_ASSISTANT_GUIDE.md` |
 | **Understand the system** | `.github/copilot-instructions.md` (AI assistants) |
 | **Generate content** | `.github/COPILOT_GENERATION_GUIDE.md` |
 | **Find answers fast** | `docs/QUICK_REFERENCE.md` |
 | **Browse all docs** | `docs/INDEX.md` |
 | **Fix issues** | `TROUBLESHOOTING.md` |
 | **Learn architecture** | `docs/02-architecture/` |
-| **Review recent changes** | `docs/archive/2025-11/` |
+| **Review recent changes** | `docs/archive/2025-11/` (52 archived docs) |
 
 ---
 
@@ -30,6 +32,7 @@
 ├── DOCUMENTATION_MAP.md               # This file - master navigation
 ├── QUICK_START.md                     # Fast setup guide
 ├── TROUBLESHOOTING.md                 # Common issues & solutions
+├── GROK_QUICK_REF.md                  # 🤖 Critical policies (TIER system)
 ├── .github/
 │   ├── copilot-instructions.md       # 🤖 AI assistant guidelines (PRIMARY)
 │   └── COPILOT_GENERATION_GUIDE.md   # Content generation commands
