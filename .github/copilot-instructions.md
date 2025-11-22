@@ -269,6 +269,7 @@ Realism Score: 5.0/10 (threshold: 5.5) ❌ FAIL
 6. **Parameter Adjustments** - Changes between attempts
 7. **Learning Activity** - Database logging, pattern learning
 8. **Final Report** - Complete generation report (see Generation Report Policy)
+9. **FULL NON-TRUNCATED OUTPUT** 🔥 **CRITICAL** - NEVER use tail, head, or truncation
 
 **Required Terminal Output**:
 ```
@@ -330,6 +331,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ❌ Hidden retries (no terminal visibility)
 - ❌ Batch output at end (should stream in real-time)
 - ❌ Log files only (user can't see what's happening)
+- ❌ **TRUNCATED OUTPUT** (tail -n, head -n, or any output limiting) 🔥 **CRITICAL**
 
 **Grade**: MANDATORY - Non-compliance is a policy violation
 

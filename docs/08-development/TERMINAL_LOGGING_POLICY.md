@@ -41,6 +41,15 @@ This policy ensures complete visibility into generation operations, enabling:
 - **✅ MUST**: Log ALL API requests and responses 🔥 **NEW (Nov 22, 2025)**
 - **❌ NEVER**: Silent operations or hidden retries
 
+### 4. Full Non-Truncated Output 🔥 **CRITICAL (Nov 22, 2025)**
+- **✅ MUST**: Display COMPLETE output (no tail, head, or truncation)
+- **✅ MUST**: Show ALL attempts from start to finish
+- **✅ MUST**: Include ALL diagnostic information
+- **✅ MUST**: Preserve ALL API request/response details
+- **❌ NEVER**: Pipe to `tail -n`, `head -n`, or similar truncation
+- **❌ NEVER**: Use `2>&1 | tail -150` or any output limiting
+- **❌ NEVER**: Summarize or abbreviate terminal output
+
 ---
 
 ## 📊 Required Logging Sections
@@ -251,6 +260,21 @@ logger.info("Evaluating quality...")
 with open(os.devnull, 'w') as devnull:
     sys.stdout = devnull
     generate()  # Silent!
+```
+
+### ❌ Truncated Output 🔥 **CRITICAL (Nov 22, 2025)**
+```bash
+# WRONG: Truncating terminal output
+python3 run.py --description "Steel" 2>&1 | tail -150
+# User only sees last 150 lines - POLICY VIOLATION
+
+# WRONG: Limiting output
+python3 run.py --description "Steel" | head -100
+# Incomplete visibility - POLICY VIOLATION
+
+# RIGHT: Full output visible
+python3 run.py --description "Steel"
+# User sees EVERYTHING - COMPLIANT
 ```
 
 ---
