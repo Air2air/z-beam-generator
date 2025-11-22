@@ -124,11 +124,20 @@ class UnifiedMaterialsGenerator:
             self.logger.warning(f"Winston API not configured: {e}")
             self.logger.info("Quality gate will skip Winston detection (Grok evaluation only)")
         
+        # Initialize StructuralVariationChecker for diversity enforcement
+        from generation.validation.structural_variation_checker import StructuralVariationChecker
+        structural_checker = StructuralVariationChecker(
+            db_path='data/winston_feedback.db',
+            min_diversity_score=6.0
+        )
+        self.logger.info("StructuralVariationChecker initialized (enforces 6.0/10 diversity)")
+        
         # Initialize QualityGatedGenerator (evaluate before save, retry on fail)
         self.generator = QualityGatedGenerator(
             api_client=api_client,
             subjective_evaluator=self.subjective_evaluator,
             winston_client=winston_client,  # Add Winston for quality gate
+            structural_variation_checker=structural_checker,  # Add structural variation as 5th gate
             max_attempts=quality_gate_config['max_retry_attempts'],
             quality_threshold=realism_threshold  # Use learned threshold
         )

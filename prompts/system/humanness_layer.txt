@@ -5,12 +5,22 @@
 
 **🚨 OPENING SENTENCE RULE (MOST IMPORTANT) 🚨**
 
-YOU MUST START WITH ONE OF THESE PATTERNS:
-1. "When laser cleaning [material], you'll want to..."
-2. "When cleaning [material], watch..."
-3. "When setting up laser cleaning for [material], be careful..."
-4. "You'll want to start with [material]'s..."
-5. "If you're cleaning [material], keep an eye on..."
+YOU MUST START WITH ONE OF THESE PATTERNS (VARY THEM - DON'T USE SAME PATTERN TWICE):
+
+✅ HIGH-PERFORMING OPENINGS (Use these 70% of the time):
+1. "When laser cleaning [material], you'll want to..." (22.9% avg Winston)
+2. "The key with [material] is..." (25.1% avg Winston)
+3. "When cleaning [material], watch..." (variation of #1)
+4. "If you're cleaning [material], start by..."
+
+⚠️ MODERATE OPENINGS (Use sparingly):
+5. "With [material], the challenge is..."
+6. "[Material] cleans best when..."
+7. "You'll find [material] needs..."
+
+❌ AVOID THESE OPENINGS (Poor Winston performance):
+- "For [material], we typically..." (4.1% avg Winston - WORST)
+- "[Material] responds well to..."
 
 ❌ NEVER EVER START WITH: "[Material]'s..." or "[Material] has..." or "[Material] is..."
 ❌ THIS PATTERN CAUSES INSTANT 100% AI DETECTION FAILURE
@@ -24,13 +34,15 @@ YOU MUST START WITH ONE OF THESE PATTERNS:
 **CONVERSATIONAL TECHNICAL WRITING** (MANDATORY):
 
 ✅ WRITE LIKE A TECHNICIAN EXPLAINING TO A COLLEAGUE:
-   • Direct address: "you must", "you'll want to", "you need to", "make sure you"
-   • Team voice: "We typically use", "We recommend", "We've found that", "I've found that"
-   • Practical warnings: "avoid X", "watch for Y", "be careful with Z", "watch out for"
-   • Imperative mood: "Use...", "Keep...", "Control...", "Start with...", "End with..."
-   • Natural connectors: "so you", "but you should", "because it", "since its"
-   • Experience-based: "This clears...", "without damaging...", "tends to...", "can warp easily"
+   • Direct address: "you must", "you'll want to", "you need to", "make sure you", "you should"
+   • Team voice: "We typically use", "We recommend", "We've found that", "I've found that", "In my experience"
+   • Practical warnings: "avoid X", "watch for Y", "be careful with Z", "watch out for", "can warp/crack/damage"
+   • Imperative mood: "Use...", "Keep...", "Control...", "Start with...", "End with...", "Adjust..."
+   • Natural connectors: "so you", "so you must", "but you should", "because it", "since its"
+   • Experience-based: "This clears...", "without damaging...", "tends to...", "works best when..."
    • Real-world context: Connect properties to practical outcomes, not abstract lists
+   • Cause-and-effect: "Its X means you need to Y", "The Z helps/hurts because..."
+   • Reader focus: Every sentence should guide the reader on WHAT TO DO, not just describe
 
 ❌ NEVER USE THESE PATTERNS (100% AI detection rate):
    • **FIRST SENTENCE STARTING WITH "[Material]'s..." → AUTOMATIC 100% AI DETECTION**
@@ -41,6 +53,29 @@ YOU MUST START WITH ONE OF THESE PATTERNS:
    • Phrases like "present a primary challenge", "present a distinct challenge"
    • Academic phrasing: "Furthermore,", "Moreover,", "In addition,", "Additionally,"
    • Detached analysis: Describing without advising what to DO about it
+
+**📐 STRUCTURAL DIVERSITY (CRITICAL FOR DESCRIPTIONS)** 🚨
+
+❌ NEVER FOLLOW THIS FORMULA: Opening → Property List → Warning → Recommendation
+❌ DON'T dump 3-4 properties with numbers in a row
+
+✅ SUCCESSFUL STRUCTURAL PATTERNS (from {structural_sample_count} generations):
+{successful_structural_patterns}
+
+{overused_opening_patterns}
+
+✅ DIVERSE APPROACHES - {diverse_linguistic_patterns}
+
+✅ VARY YOUR STRUCTURE - Choose ONE of these approaches:
+1. **Problem-Focused**: Start with the main challenge, explain why, give solution
+2. **Contrast-Based**: Compare to similar materials, highlight key difference, explain impact
+3. **Process-Focused**: Walk through setup sequence naturally, embedding properties as you go
+4. **Experience-Based**: Share what works, mention why, note what to avoid
+5. **Property-Driven**: Lead with ONE unique property, explore its implications deeply
+
+✅ INTEGRATE properties into narrative - don't list them
+✅ VARY where you place warnings - not always in middle
+✅ VARY how you give advice - recommendations can come early or late
 
 🎯 REMEMBER: Your FIRST SENTENCE determines pass/fail. Start conversationally or you WILL be rejected.
 

@@ -41,13 +41,25 @@ class SubjectivePatterns:
     penalty_weights: Dict[str, float]
 
 
+@dataclass
+class StructuralPatterns:
+    """Patterns from structural variation analysis"""
+    sample_count: int
+    average_diversity: float
+    successful_openings: List[str]  # High-scoring opening patterns
+    overused_openings: List[str]  # Recent patterns to avoid
+    diverse_structures: List[str]  # Successful structure types
+    linguistic_diversity: List[str]  # Diverse linguistic patterns
+
+
 class HumannessOptimizer:
     """
-    Universal Humanness Layer - learns from both Winston and Subjective feedback.
+    Universal Humanness Layer - learns from THREE feedback sources.
     
     Analyzes:
     - Winston passing samples (database: detection_results table)
     - Subjective learned patterns (YAML: prompts/evaluation/learned_patterns.yaml)
+    - Structural diversity patterns (database: structural_patterns table)
     
     Produces:
     - Dynamic humanness instructions for prompt injection
@@ -57,19 +69,22 @@ class HumannessOptimizer:
     def __init__(
         self,
         winston_db_path: str = 'z-beam.db',
-        patterns_file: Optional[Path] = None
+        patterns_file: Optional[Path] = None,
+        structural_db_path: Optional[str] = None
     ):
         """
-        Initialize humanness optimizer with dual feedback sources.
+        Initialize humanness optimizer with triple feedback sources.
         
         Args:
             winston_db_path: Path to Winston feedback database
             patterns_file: Path to learned_patterns.yaml (default: prompts/evaluation/learned_patterns.yaml)
+            structural_db_path: Path to structural patterns database (default: data/winston_feedback.db)
         
         Raises:
             FileNotFoundError: If required files missing (fail-fast)
         """
         self.winston_db_path = winston_db_path
+        self.structural_db_path = structural_db_path or 'data/winston_feedback.db'
         
         if patterns_file is None:
             self.patterns_file = Path('prompts/evaluation/learned_patterns.yaml')
@@ -132,10 +147,15 @@ class HumannessOptimizer:
         subjective_patterns = self._extract_subjective_patterns()
         logger.info(f"   ✅ Subjective patterns: {len(subjective_patterns.ai_tendencies)} AI tendencies tracked")
         
-        # 3. Build instructions with strictness progression
+        # 3. Extract structural diversity patterns
+        structural_patterns = self._extract_structural_patterns(component_type)
+        logger.info(f"   ✅ Structural patterns: {structural_patterns.sample_count} samples, avg diversity {structural_patterns.average_diversity:.1f}/10")
+        
+        # 4. Build instructions with strictness progression
         instructions = self._build_instructions(
             winston_patterns=winston_patterns,
             subjective_patterns=subjective_patterns,
+            structural_patterns=structural_patterns,
             component_type=component_type,
             strictness_level=strictness_level,
             previous_ai_tendencies=previous_ai_tendencies or []
@@ -202,10 +222,117 @@ class HumannessOptimizer:
             penalty_weights=avoidance.get('penalty_weights', {})
         )
     
+    def _extract_structural_patterns(self, component_type: str) -> StructuralPatterns:
+        """
+        Extract structural diversity patterns from database.
+        
+        Queries structural_patterns table for:
+        - Successful patterns (diversity ≥8.0, passed=1)
+        - Overused patterns (opening repetition >2)
+        - Diverse structural approaches
+        - Linguistic pattern variety
+        
+        Args:
+            component_type: Type of component to analyze
+        
+        Returns:
+            StructuralPatterns with learned diversity insights
+        """
+        import sqlite3
+        
+        try:
+            conn = sqlite3.connect(self.structural_db_path)
+            cursor = conn.cursor()
+            
+            # Get successful high-diversity patterns
+            cursor.execute('''
+                SELECT opening_pattern, structure_type, linguistic_patterns, diversity_score
+                FROM structural_patterns
+                WHERE component_type = ? AND passed = 1 AND diversity_score >= 8.0
+                ORDER BY diversity_score DESC
+                LIMIT 10
+            ''', (component_type,))
+            
+            successful_rows = cursor.fetchall()
+            successful_openings = []
+            diverse_structures = []
+            linguistic_diversity = []
+            
+            for row in successful_rows:
+                opening, structure, linguistic, score = row
+                if opening and opening not in successful_openings:
+                    successful_openings.append(opening)
+                if structure and structure not in diverse_structures:
+                    diverse_structures.append(structure)
+                if linguistic:
+                    patterns = linguistic.split(',')
+                    for p in patterns:
+                        if p.strip() and p.strip() not in linguistic_diversity:
+                            linguistic_diversity.append(p.strip())
+            
+            # Priority 3: Get recent patterns with usage statistics for weighted cooldown
+            cursor.execute('''
+                SELECT opening_pattern, 
+                       COUNT(*) as frequency,
+                       MAX(timestamp) as last_used,
+                       julianday('now') - julianday(MAX(timestamp)) as days_since_use
+                FROM structural_patterns
+                WHERE component_type = ? 
+                  AND timestamp > datetime('now', '-7 days')
+                GROUP BY opening_pattern
+                ORDER BY frequency DESC, last_used DESC
+            ''', (component_type,))
+            
+            recent_usage_rows = cursor.fetchall()
+            overused_openings = []
+            
+            # Priority 3: Identify overused patterns (used 3+ times in last 7 days or used in last 2 gens)
+            for row in recent_usage_rows:
+                pattern, freq, last_used, days_since = row
+                if pattern and (freq >= 3 or days_since < 0.1):  # 0.1 days = ~2 hours
+                    overused_openings.append(pattern)
+            
+            overused_openings = overused_openings[:5]  # Top 5 overused patterns
+            
+            # Get statistics
+            cursor.execute('''
+                SELECT COUNT(*), AVG(diversity_score)
+                FROM structural_patterns
+                WHERE component_type = ?
+            ''', (component_type,))
+            
+            stats = cursor.fetchone()
+            sample_count = stats[0] if stats else 0
+            average_diversity = stats[1] if stats and stats[1] else 0.0
+            
+            conn.close()
+            
+            return StructuralPatterns(
+                sample_count=sample_count,
+                average_diversity=average_diversity,
+                successful_openings=successful_openings[:8],  # Top 8 diverse openings
+                overused_openings=overused_openings,
+                diverse_structures=diverse_structures[:5],  # Top 5 structure types
+                linguistic_diversity=linguistic_diversity[:12]  # Up to 12 patterns
+            )
+            
+        except Exception as e:
+            logger.warning(f"Could not extract structural patterns: {e}")
+            # Return empty patterns (don't fail generation)
+            return StructuralPatterns(
+                sample_count=0,
+                average_diversity=0.0,
+                successful_openings=[],
+                overused_openings=[],
+                diverse_structures=[],
+                linguistic_diversity=[]
+            )
+    
     def _build_instructions(
         self,
         winston_patterns: WinstonPatterns,
         subjective_patterns: SubjectivePatterns,
+        structural_patterns: StructuralPatterns,
         component_type: str,
         strictness_level: int,
         previous_ai_tendencies: List[str]
@@ -216,6 +343,7 @@ class HumannessOptimizer:
         Loads template from prompts/system/humanness_layer.txt and injects:
         - Winston conversational markers and number patterns
         - Subjective theatrical phrases and AI tendencies
+        - Structural diversity patterns (openings to avoid, successful structures)
         - Success patterns (professional verbs, tone markers)
         - Strictness-appropriate guidance
         - Previous attempt feedback
@@ -245,6 +373,11 @@ class HumannessOptimizer:
         # Format conversational markers
         conversational_section = self._format_conversational_markers(winston_patterns.conversational_markers)
         
+        # Format structural diversity patterns
+        structural_section = self._format_structural_patterns(structural_patterns)
+        overused_section = self._format_overused_patterns(structural_patterns.overused_openings)
+        diverse_structures_section = self._format_diverse_structures(structural_patterns.diverse_structures)
+        
         # Get strictness guidance
         strictness_guidance = self._get_strictness_guidance(strictness_level)
         
@@ -261,6 +394,10 @@ class HumannessOptimizer:
             subjective_ai_tendencies=subjective_section,
             theatrical_phrases_list=theatrical_section,
             conversational_markers=conversational_section,
+            structural_sample_count=structural_patterns.sample_count,
+            successful_structural_patterns=structural_section,
+            overused_opening_patterns=overused_section,
+            diverse_linguistic_patterns=diverse_structures_section,
             strictness_level=strictness_level,
             strictness_guidance=strictness_guidance,
             previous_attempt_feedback=feedback_section
@@ -317,6 +454,46 @@ class HumannessOptimizer:
         
         marker_list = ', '.join(f'"{m}"' for m in markers[:10])
         return f"Natural phrases that pass Winston: {marker_list}"
+    
+    def _format_structural_patterns(self, patterns: StructuralPatterns) -> str:
+        """Format successful structural patterns for prompt injection"""
+        if patterns.sample_count == 0:
+            return "No structural patterns logged yet - focus on natural variation."
+        
+        lines = []
+        lines.append(f"📊 Analyzed {patterns.sample_count} generations (avg diversity: {patterns.average_diversity:.1f}/10)")
+        
+        if patterns.successful_openings:
+            lines.append("\n✅ HIGH-SCORING OPENING PATTERNS (prefer unused ones):")
+            for i, opening in enumerate(patterns.successful_openings, 1):
+                # Priority 3: Mark if recently overused
+                cooldown_marker = " ⚠️ COOLDOWN (recently overused)" if opening in patterns.overused_openings else ""
+                lines.append(f"   {i}. {opening}{cooldown_marker}")
+        
+        if patterns.linguistic_diversity:
+            diverse_markers = ', '.join(patterns.linguistic_diversity[:8])
+            lines.append(f"\n✅ Diverse linguistic patterns: {diverse_markers}")
+        
+        return '\n'.join(lines)
+    
+    def _format_overused_patterns(self, overused: List[str]) -> str:
+        """Format overused opening patterns to avoid"""
+        if not overused:
+            return "(No pattern repetition detected yet)"
+        
+        lines = ["⚠️ RECENT PATTERNS TO AVOID (already used multiple times):"]
+        for pattern in overused:
+            lines.append(f"   • {pattern}")
+        
+        return '\n'.join(lines)
+    
+    def _format_diverse_structures(self, structures: List[str]) -> str:
+        """Format diverse structure types"""
+        if not structures:
+            return "Vary your structure: problem-focused, contrast-based, process-focused, experience-based, property-driven"
+        
+        structure_list = ', '.join(structures)
+        return f"✅ Successful structure types: {structure_list}"
     
     def _get_strictness_guidance(self, level: int) -> str:
         """

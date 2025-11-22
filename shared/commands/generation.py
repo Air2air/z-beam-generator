@@ -90,43 +90,92 @@ def handle_generation(
         print("   Note: Voice enhancement happens in post-processing")
         print()
         
-        content_data = generator.generate(material_name, component_type, **kwargs)
+        generation_succeeded = True
+        content_data = None
+        generation_error = None
         
-        print(f"✅ {component_label.capitalize()} generated and saved to Materials.yaml")
-        print()
+        try:
+            content_data = generator.generate(material_name, component_type, **kwargs)
+            
+            print(f"✅ {component_label.capitalize()} generated and saved to Materials.yaml")
+            print()
+            
+        except Exception as gen_error:
+            generation_succeeded = False
+            generation_error = str(gen_error)
+            
+            # Try to get the last generated content from database for display
+            print(f"⚠️  Generation failed after multiple attempts")
+            print(f"   Retrieving last attempt for analysis...")
+            print()
+            
+            try:
+                import sqlite3
+                conn = sqlite3.connect('z-beam.db')
+                cursor = conn.cursor()
+                
+                # Get most recent attempt for this material/component
+                cursor.execute("""
+                    SELECT generated_text
+                    FROM detection_results
+                    WHERE material = ? AND component_type = ?
+                    ORDER BY timestamp DESC
+                    LIMIT 1
+                """, (material_name, component_type))
+                
+                result = cursor.fetchone()
+                if result:
+                    content_data = result[0]
+                    print(f"✅ Retrieved last generated attempt for review")
+                    print()
+                conn.close()
+                
+            except Exception as db_error:
+                print(f"⚠️  Could not retrieve last attempt: {db_error}")
+                print()
         
-        # DEBUG: Check what we received
-        print(f"🔍 DEBUG: content_data type = {type(content_data)}")
-        print(f"🔍 DEBUG: content_data = {content_data}")
-        print()
+        # Extract content for display (even on failure)
+        if content_data:
+            full_content = _extract_content_for_display(content_data, component_type, spec)
+            
+            # POLICY: Always show complete generation report after each generation (success OR failure)
+            _show_generation_report(full_content, material_name, component_type, 
+                                   succeeded=generation_succeeded, error=generation_error)
         
-        # Extract content for display (extraction strategy from config)
-        full_content = _extract_content_for_display(content_data, component_type, spec)
-        
-        # POLICY: Always show complete generation report after each generation
-        _show_generation_report(full_content, material_name, component_type)
-        
-        # Run subjective evaluation using Grok API
-        _run_subjective_evaluation(full_content, material_name, component_type)
+        # Run subjective evaluation using Grok API (only on success)
+        if generation_succeeded:
+            _run_subjective_evaluation(full_content, material_name, component_type)
+        else:
+            print("⏭️  Skipping subjective evaluation (generation failed)")
+            print()
         
         # NOTE: Winston AI detection now runs DURING quality gate (before save)
         # This ensures content is validated before persistence, enabling retry on failure
         # Post-save validation removed to prevent redundant checks
         
-        print(f"✨ {component_label.capitalize()} generation complete!")
-        print()
-        
-        # Run post-generation validation
-        from shared.commands.integrity_helper import run_post_generation_validation
-        run_post_generation_validation(material_name, component_type, quick=True)
-        
-        # Check if we should update sweet spot recommendations (generic learning)
-        _update_sweet_spot_if_needed(material_name, component_type)
-        
-        # Run post-generation integrity check
-        _run_post_generation_integrity(material_name, component_type)
-        
-        return True
+        if generation_succeeded:
+            print(f"✨ {component_label.capitalize()} generation complete!")
+            print()
+            
+            # Run post-generation validation
+            from shared.commands.integrity_helper import run_post_generation_validation
+            run_post_generation_validation(material_name, component_type, quick=True)
+            
+            # Check if we should update sweet spot recommendations (generic learning)
+            _update_sweet_spot_if_needed(material_name, component_type)
+            
+            # Run post-generation integrity check
+            _run_post_generation_integrity(material_name, component_type)
+            
+            return True
+        else:
+            print(f"❌ {component_label.capitalize()} generation failed!")
+            print(f"   Error: {generation_error}")
+            print()
+            print("💡 The last generated attempt is shown above for analysis.")
+            print("   Review the content and quality scores to understand why it failed.")
+            print()
+            return False
         
     except Exception as e:
         print(f"❌ Error during {component_type} generation: {e}")
@@ -159,10 +208,17 @@ def _extract_content_for_display(content_data, component_type, spec):
         return str(content_data)
 
 
-def _show_generation_report(content, material_name, component_type):
-    """Display complete generation report (policy requirement)."""
+def _show_generation_report(content, material_name, component_type, succeeded=True, error=None):
+    """
+    Display complete generation report (policy requirement).
+    
+    Shows content even when generation fails quality gates, enabling analysis.
+    """
+    status_emoji = "✅" if succeeded else "⚠️"
+    status_text = "SUCCESS" if succeeded else "FAILED QUALITY GATES"
+    
     print("=" * 80)
-    print("📊 GENERATION COMPLETE REPORT")
+    print(f"📊 GENERATION {status_text} REPORT")
     print("=" * 80)
     print()
     print("📝 GENERATED CONTENT:")
@@ -174,10 +230,34 @@ def _show_generation_report(content, material_name, component_type):
     print(f"   • Length: {len(content)} characters")
     print(f"   • Word count: {len(content.split())} words")
     print()
-    print("💾 STORAGE:")
-    print("   • Location: data/materials/Materials.yaml")
-    print(f"   • Component: {component_type}")
-    print(f"   • Material: {material_name}")
+    
+    if succeeded:
+        print("📈 QUALITY METRICS:")
+        print(f"   • Status: {status_emoji} PASSED all quality gates")
+        print()
+        print("💾 STORAGE:")
+        print("   • Location: data/materials/Materials.yaml")
+        print(f"   • Component: {component_type}")
+        print(f"   • Material: {material_name}")
+        print(f"   • Saved: {status_emoji} YES")
+    else:
+        print("📈 QUALITY METRICS:")
+        print(f"   • Status: {status_emoji} FAILED quality gates")
+        if error:
+            # Extract quality scores from error message
+            print(f"   • Failure reason: {error[:200]}...")
+        print()
+        print("💾 STORAGE:")
+        print("   • Location: NOT SAVED (failed quality gates)")
+        print(f"   • Component: {component_type}")
+        print(f"   • Material: {material_name}")
+        print(f"   • Saved: ❌ NO")
+        print()
+        print("💡 ANALYSIS:")
+        print("   This content failed quality gates but is shown for review.")
+        print("   Check the quality scores above to understand why it was rejected.")
+        print("   The system will continue learning from these attempts.")
+    
     print()
     print("🔔 NOTE: Run --validate to check quality and improve with learning systems")
     print()

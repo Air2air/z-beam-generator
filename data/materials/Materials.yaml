@@ -481,6 +481,12 @@ materials:
     components:
       subtitle: A low-porosity stone with exceptional thermal stability for precise
         laser cleaning in art conservation
+      description: When laser cleaning Alabaster, you'll want to dial in low power
+        around 45 W at 1064 nm to avoid cracking its soft structure—hardness just
+        2 Mohs and tensile strength at 1.5 MPa. Watch the fluence under 1.2 J/cm²;
+        its poor thermal conductivity of 0.86 W/m·K traps heat, risking damage at
+        423 K. We use 50 kHz pulses, 500 mm/s scan, and two passes with 50% overlap
+        to gently strip buildup without etching the porous surface.
   Alumina:
     name: Alumina
     category: ceramic
@@ -829,6 +835,12 @@ materials:
     components:
       subtitle: Alumina's extreme electrical resistivity of 10¹⁴ ohm·m makes it the
         definitive electrical insulator for high-temperature and corrosive environments
+      description: When laser cleaning Alumina, you'll want to leverage its low reflectivity
+        of 0.075, which lets the beam absorb well unlike most ceramics. But watch
+        its brittle fracture toughness at 4 MPa m^{1/2}—it cracks under stress. Start
+        with 100 W at 1064 nm, fluence under 2.5 J/cm² to stay above the 2.1 J/cm²
+        ablation threshold. High thermal conductivity of 25 W/m·K helps, but control
+        scans at 500 mm/s to prevent thermal cracks from 8.1e-6 K^{-1} expansion.
   Aluminum:
     name: Aluminum
     category: metal
@@ -1179,12 +1191,13 @@ materials:
         after: Laser treatment removes the dark oxides and clears the hazy film. This
           process reveals the uniform, reflective surface of the base aluminum material.
       description: When laser cleaning aluminum, you'll want to account for its high
-        reflectivity at 0.95, which limits laser absorption to just 0.06. This non-ferrous
-        metal's low density of 2.7 g/cm³ and melting point of 933 K make it prone
-        to thermal distortion if power exceeds 100 W at 1064 nm. Start with 50 kHz
-        repetition and 500 mm/s scan speed for three passes at 50% overlap to remove
-        oxides without warping; watch for uneven energy buildup that reduces surface
-        integrity.
+        reflectivity at 0.95, which sets it apart from ferrous metals by absorbing
+        only 0.06 of the laser energy. This low density of 2.7 g/cm³ and melting point
+        around 933 K make it lightweight yet prone to warping if power exceeds 100
+        W. Watch for oxidation buildup; use 1064 nm wavelength, 50 kHz repetition,
+        and 3 passes at 500 mm/s to remove contaminants without melting the surface.
+        We've found 5.1 J/cm² energy density restores it effectively in aerospace
+        and automotive apps.
   Ash:
     name: Ash
     category: wood
@@ -1486,6 +1499,16 @@ materials:
     components:
       subtitle: Ash offers superior fracture toughness at 0.36 MPa√m and a high laser
         absorption of 0.82 for controlled material processing
+      description: When laser cleaning Ash, you'll want to account for its high porosity
+        at 0.6 fraction, which allows deeper penetration of laser energy but risks
+        uneven ablation. This hardwood's low thermal conductivity of 0.15 W/m·K slows
+        heat spread, reducing the chance of subsurface damage, yet its thermal destruction
+        temperature sits at 573 K, so you must control energy density to avoid charring.
+        Unlike denser woods, Ash's density of 670 kg/m³ and laser absorption of 0.82
+        make it responsive at 100 W with 1064 nm wavelength. We recommend a 50 μm
+        spot size, 50 kHz repetition rate, and 5.1 J/cm² density over 2 passes at
+        500 mm/s scan speed with 50% overlap. Watch for splintering due to its flexural
+        strength of 96.5 MPa under rapid heating.
   Bamboo:
     name: Bamboo
     category: wood
@@ -1813,6 +1836,14 @@ materials:
       subtitle: Bamboo combines a tensile strength of 180 MPa with a low density of
         700 kg/m³, offering a remarkable strength-to-weight ratio that outperforms
         many traditional hardwoods
+      description: The key with Bamboo is its grass-like structure in the hardwood
+        category, giving it unusual flexural strength around 140 MPa that holds up
+        well under laser stress. We've found it cleans contaminants effectively at
+        100 W with 1064 nm wavelength and 2.5 J/cm² fluence, thanks to high absorption
+        at 92%. But because thermal conductivity sits low at 0.2 W/m·K, heat builds
+        slowly in its porous 0.58 matrix— so keep scan speed to 500 mm/s and overlap
+        passes 50% to avoid charring the fibers. Start with one pass and check; its
+        588 K destruction point leaves little margin if you push too hard.
   Basalt:
     name: Basalt
     category: stone
@@ -2105,6 +2136,13 @@ materials:
       subtitle: Basalt offers exceptional thermal stability up to 1673 Kelvin and
         high corrosion resistance, making it a uniquely durable igneous stone for
         demanding aerospace and marine applications
+      description: When laser cleaning Basalt, you'll want to account for its dense
+        structure at 2900 kg/m³ and low porosity of 3.4%, which help it hold up well
+        under heat up to 1673 K without cracking easily. But watch its low thermal
+        diffusivity of 8.5e-07 m²/s—it heats locally fast, so use 100 W at 1064 nm
+        with 50 kHz pulses and 500 mm/s speed to avoid thermal stress. This clears
+        contaminants cleanly in three passes at 50% overlap, unlike softer stones
+        that warp quicker.
   Beech:
     name: Beech
     category: wood
@@ -2513,6 +2551,11 @@ materials:
       subtitle: Beech hardwood combines high fracture toughness with excellent laser
         absorption, making it ideal for precision manufacturing and restoration work
         where dimensional stability is critical
+      description: When laser cleaning Beech, you'll want to keep its high porosity
+        at 0.59 in mind—it soaks up heat unevenly, unlike denser hardwoods. Start
+        with 100 W at 1064 nm and 50 kHz to avoid charring at 573 K; watch for splintering
+        from low thermal conductivity of 0.17 W/m·K. Two passes at 500 mm/s usually
+        clears buildup without weakening the 11.4 GPa modulus.
   Beryllium:
     name: Beryllium
     category: metal
@@ -2882,6 +2925,16 @@ materials:
     components:
       subtitle: Beryllium’s extreme stiffness and low density make it uniquely dimensionally
         stable
+      description: When laser cleaning Beryllium, you'll want to start with its low
+        density of 1.85 g/cm³ and high thermal conductivity at 216 W/m·K, which help
+        it handle heat without warping easily. But watch its sky-high reflectivity
+        of 0.95—it absorbs only about 5% of the laser energy, so contaminants stick
+        around unless you crank up the fluence just above the 1.85 J/cm² ablation
+        threshold. We typically set 100 W at 1064 nm wavelength, 50 μm spot size,
+        and 100 kHz rep rate, scanning at 500 mm/s with three passes and 50% overlap
+        to avoid damaging the surface. Be careful, though; its melting point hits
+        1560 K fast if you overshoot, and oxidation starts around 873 K, so keep passes
+        controlled to prevent pitting.
   Birch:
     name: Birch
     category: wood
@@ -3183,6 +3236,11 @@ materials:
       subtitle: Birch combines a high tensile strength of 130 MPa with a low thermal
         conductivity of 0.163 W/m·K, making it uniquely dimensionally stable for precision
         manufacturing applications
+      description: When laser cleaning Birch, you'll want to account for its high
+        porosity at 0.587, which can trap residues and lead to uneven ablation. Its
+        low thermal conductivity of 0.163 W/m·K causes localized heating, so use 45
+        W at 1064 nm with 50% overlap to avoid charring. We've found two passes at
+        500 mm/s restore surfaces without cracking the 13.9 GPa modulus wood.
   Bluestone:
     name: Bluestone
     category: stone
@@ -3496,6 +3554,14 @@ materials:
     components:
       subtitle: A high-density sedimentary stone with exceptional oxidation and corrosion
         resistance, ideal for laser cleaning at 1064 nm with 68% absorption
+      description: When laser cleaning Bluestone, you'll want to start with its solid
+        compressive strength at 124 MPa—it holds up well under pressure but cracks
+        easily with low tensile strength of just 4.8 MPa. This sedimentary stone stands
+        out from granites due to 4.2% porosity, which traps dirt but soaks up laser
+        energy at 0.68 absorption, unlike denser rocks. Watch its low thermal conductivity
+        of 1.7 W/m·K; heat builds fast, risking fractures near 950°C destruction point.
+        Use 100 W at 1064 nm, 5 J/cm² density, and 500 mm/s speed over 3 passes with
+        50% overlap to clear buildup without warping.
   Borosilicate Glass:
     name: Borosilicate Glass
     category: glass
@@ -6607,6 +6673,16 @@ materials:
           deposition
         unit: '%'
         value: 50
+    components:
+      description: When laser cleaning cedar, you'll want to start with low energy
+        density around 2.5 J/cm² at 100 W and 1064 nm wavelength to avoid thermal
+        damage, given its low destruction temperature of 523 K. Its high porosity
+        at 0.79 fraction and density of 350 kg/m³ make it absorb laser energy quickly,
+        reducing reflectivity to just 0.065, but the low thermal conductivity of 0.11
+        W/m·K can lead to localized charring if scan speed drops below 500 mm/s. We
+        typically use 50% overlap in two passes to restore surfaces evenly without
+        splintering its modest flexural strength of 51 MPa. Watch for uneven ablation
+        on porous grains.
   Cement:
     name: Cement
     category: masonry

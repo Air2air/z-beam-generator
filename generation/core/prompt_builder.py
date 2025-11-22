@@ -374,8 +374,16 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             # Level 2-10: Use domain default
             terminology = domain_ctx.terminology_style
         
+        # Calculate length range using config word_count_variation
+        from generation.config.config_loader import ProcessingConfig
+        config = ProcessingConfig()
+        variation = config.config.get('word_count_variation', 0.10)  # Default ±10%
+        
+        min_length = int(length * (1.0 - variation))
+        max_length = int(length * (1.0 + variation))
+        
         requirements = [
-            f"- Length: {length} words (range: {spec.min_length}-{spec.max_length})",
+            f"- Length: {min_length}-{max_length} words (natural flow, not exact count)",
             f"- Terminology: {terminology}"
         ]
         
@@ -628,7 +636,15 @@ Generate {spec.name} for {topic}:"""
         facts: str
     ) -> str:
         """Build subtitle-specific prompt"""
-        return f"""You are {author}, writing a {length}-word subtitle about laser cleaning {material}.
+        # Calculate length range using config word_count_variation
+        from generation.config.config_loader import ProcessingConfig
+        config = ProcessingConfig()
+        variation = config.config.get('word_count_variation', 0.10)  # Default ±10%
+        
+        min_length = int(length * (1.0 - variation))
+        max_length = int(length * (1.0 + variation))
+        
+        return f"""You are {author}, writing a subtitle about laser cleaning {material}.
 
 MATERIAL FACTS:
 {facts}
@@ -640,7 +656,7 @@ VOICE: {country} technical writer
 - Occasional article flexibility (e.g., "Preserve integrity" vs "Preserve the integrity")
 
 REQUIREMENTS:
-- Write EXACTLY {length} words (count carefully)
+- Length: {min_length}-{max_length} words (aim for natural flow, not exact count)
 - Professional but natural
 - No period at end
 - Focus on {material}'s unique characteristics
@@ -674,7 +690,7 @@ ADDITIONAL CONTEXT:
 
 VOICE CHARACTERISTICS:
 - {esl_traits}
-- {length} words target
+- Length: Aim for natural expression (length will vary naturally)
 - Mix technical and accessible language
 - Natural flow with varied sentence structures
 - Subtle regional flavor
