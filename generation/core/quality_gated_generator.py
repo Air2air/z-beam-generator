@@ -1,25 +1,26 @@
 """
-Quality-Gated Generator - Retry Loop with Subjective Evaluation
+Quality-Gated Generator - OPTION C: Save All, Improve Continuously
 
-Wraps SimpleGenerator with quality gate enforcement:
-- Evaluates content BEFORE save
-- Retries up to 5 times if quality fails
-- Applies parameter adjustments between retries
-- Only saves content that passes 7.0/10 threshold
+Wraps SimpleGenerator with continuous improvement strategy:
+- Saves EVERY attempt to Materials.yaml (no rejection)
+- Evaluates content and tries to improve if quality low
+- Retries up to 5 times to achieve better quality
+- Learning system collects data from ALL attempts (success + failure)
 
 Architecture:
-    Generate → Evaluate → [Pass? Save : Adjust & Retry] → Learn
+    Generate → Save → Evaluate → [Excellent? Done : Adjust & Retry for Better] → Move On
     
-Quality Gates (ALL must pass):
-    1. Subjective Realism: 7.0/10 minimum
-    2. Voice Authenticity: 7.0/10 minimum
-    3. Tonal Consistency: 7.0/10 minimum
-    4. No AI Tendencies: Zero detected patterns
-    5. Structural Variation: 6.0/10 minimum (no formulaic patterns)
+Quality Evaluation (for improvement, not blocking):
+    1. Subjective Realism: Adaptive threshold (5.5 → 2.0 across attempts)
+    2. Voice Authenticity: Evaluated via 6-dimension subjective evaluation
+    3. Tonal Consistency: Evaluated via 6-dimension subjective evaluation
+    4. AI Tendencies: Zero detected patterns (technical jargon, formulaic, etc.)
+    5. Winston AI Detection: 69%+ human score (configurable via humanness_intensity)
+    6. Structural Variation: 6.0/10 minimum (no formulaic patterns)
 
-Design Change (November 20, 2025):
-    Previous: Generate → Save → Evaluate (low quality persists in Materials.yaml)
-    Current: Generate → Evaluate → Conditional Save (only quality content saved)
+Design: Save-all approach - content persisted immediately, then system attempts improvement
+        If excellent quality achieved, stop early. Otherwise try 5 times then move on.
+        100% completion rate, 5x-50x more learning data than gate-blocking approach.
 """
 
 import logging
@@ -406,16 +407,46 @@ class QualityGatedGenerator:
                     passed_all_gates=passed_all_gates
                 )
                 
-                # OPTION C: Always save content, but continue attempting to improve
-                # Save current attempt
+                # OPTION C: Save EVERY attempt, then try to improve
                 print(f"\n💾 Saving attempt {attempt} to Materials.yaml...")
                 logger.info(f"\n💾 Saving attempt {attempt} to Materials.yaml...")
                 self._save_to_yaml(material_name, component_type, content)
                 print(f"   ✅ Saved (Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10)")
                 logger.info(f"   ✅ Saved (Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10)")
                 
-                # If scores are low, continue attempting to improve (but we already saved)
-                if not passed_all_gates and attempt < self.max_attempts:
+                # Check if we achieved excellent quality - can stop early
+                if passed_all_gates:
+                    print(f"\n✅ EXCELLENT QUALITY ACHIEVED")
+                    print(f"   • Realism: {realism_score:.1f}/10 (threshold: {adaptive_threshold:.1f})")
+                    print(f"   • Winston: {winston_score:.1%}")
+                    print(f"   • Diversity: {diversity_score:.1f}/10")
+                    print(f"   • AI Tendencies: None detected")
+                    logger.info(f"\n✅ EXCELLENT QUALITY ACHIEVED")
+                    logger.info(f"   • Realism: {realism_score:.1f}/10 (threshold: {adaptive_threshold:.1f})")
+                    logger.info(f"   • Winston: {winston_score:.1%}")
+                    logger.info(f"   • Diversity: {diversity_score:.1f}/10")
+                    logger.info(f"   • AI Tendencies: None detected")
+                    
+                    print(f"\n{'='*80}")
+                    print(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    print(f"{'='*80}\n")
+                    
+                    logger.info(f"\n{'='*80}")
+                    logger.info(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    logger.info(f"{'='*80}\n")
+                    
+                    return QualityGatedResult(
+                        success=True,
+                        content=content,
+                        attempts=attempt,
+                        final_score=realism_score,
+                        evaluation_history=evaluation_history,
+                        parameter_history=parameter_history,
+                        rejection_reasons=rejection_reasons
+                    )
+                    
+                elif attempt < self.max_attempts:
+                    # Quality could be better - try to improve on next attempt
                     print(f"\n🔄 ATTEMPTING TO IMPROVE - Will generate better version")
                     logger.info(f"\n🔄 ATTEMPTING TO IMPROVE - Will generate better version")
                     
@@ -438,7 +469,7 @@ class QualityGatedGenerator:
                         rejection_reasons.append(reason)
                     
                     if not winston_passed:
-                        reason = f"Winston human score: {winston_score:.1%} (target: {self.humanness_threshold:.1%})"
+                        reason = f"Winston human score: {winston_score:.1%}"
                         print(f"   • {reason}")
                         logger.info(f"   • {reason}")
                         rejection_reasons.append(reason)
@@ -475,46 +506,24 @@ class QualityGatedGenerator:
                             print(f"   • {param}: {new_value} (unchanged)")
                             logger.info(f"   • {param}: {new_value} (unchanged)")
                     
-                    print(f"   ✅ Parameters adjusted for improvement attempt")
-                    logger.info(f"   ✅ Parameters adjusted for improvement attempt")
+                    print(f"   ✅ Parameters adjusted for next attempt")
+                    logger.info(f"   ✅ Parameters adjusted for next attempt")
                     
-                elif attempt >= self.max_attempts:
-                    # Max attempts reached - return with best content saved
-                    print(f"\n✅ MAX ATTEMPTS REACHED ({self.max_attempts})")
-                    print(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
-                    print(f"   💾 Content saved (best attempt after {attempt} iterations)")
-                    print(f"\n{'='*80}")
-                    print(f"📦 COMPLETE: {component_type} saved after {attempt} attempt(s)")
-                    print(f"{'='*80}\n")
-                    
-                    logger.info(f"\n✅ MAX ATTEMPTS REACHED ({self.max_attempts})")
-                    logger.info(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
-                    logger.info(f"   💾 Content saved (best attempt after {attempt} iterations)")
-                    logger.info(f"\n{'='*80}")
-                    logger.info(f"📦 COMPLETE: {component_type} saved after {attempt} attempt(s)")
-                    logger.info(f"{'='*80}\n")
-                    
-                    return QualityGatedResult(
-                        success=True,
-                        content=content,
-                        attempts=attempt,
-                        final_score=realism_score,
-                        evaluation_history=evaluation_history,
-                        parameter_history=parameter_history,
-                        rejection_reasons=rejection_reasons
-                    )
                 else:
-                    # Passed all gates - excellent! Return success
-                    print(f"\n🎉 EXCELLENT QUALITY ACHIEVED!")
-                    print(f"   Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    # Max attempts reached - final version already saved
+                    print(f"\n🏁 MAX ATTEMPTS REACHED ({self.max_attempts})")
+                    print(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    print(f"   💾 Final version already saved (attempt {attempt})")
+                    logger.info(f"\n🏁 MAX ATTEMPTS REACHED ({self.max_attempts})")
+                    logger.info(f"   Final score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
+                    logger.info(f"   💾 Final version already saved (attempt {attempt})")
+                    
                     print(f"\n{'='*80}")
-                    print(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    print(f"✨ COMPLETE: {component_type} generated in {attempt} attempt(s)")
                     print(f"{'='*80}\n")
                     
-                    logger.info(f"\n🎉 EXCELLENT QUALITY ACHIEVED!")
-                    logger.info(f"   Score: {realism_score:.1f}/10, Winston: {winston_score:.1%}, Diversity: {diversity_score:.1f}/10")
                     logger.info(f"\n{'='*80}")
-                    logger.info(f"✨ SUCCESS: {component_type} generated in {attempt} attempt(s)")
+                    logger.info(f"✨ COMPLETE: {component_type} generated in {attempt} attempt(s)")
                     logger.info(f"{'='*80}\n")
                     
                     return QualityGatedResult(

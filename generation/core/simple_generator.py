@@ -297,7 +297,7 @@ class SimpleGenerator:
         }
     
     def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
-        """Save generated content to Materials.yaml with atomic write."""
+        """Save generated content to Materials.yaml with atomic write + immediate frontmatter sync."""
         materials_path = Path("data/materials/Materials.yaml")
         
         # Load existing data
@@ -310,12 +310,16 @@ class SimpleGenerator:
         if material_name not in data['materials']:
             raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
         
-        # Ensure components section exists
-        if 'components' not in data['materials'][material_name]:
-            data['materials'][material_name]['components'] = {}
-        
-        # Update content
-        data['materials'][material_name]['components'][component_type] = content
+        # Description/subtitle/faq go at ROOT level (not in components)
+        # Caption goes in components (before/after structure)
+        if component_type in ['description', 'subtitle', 'faq']:
+            # Save to root level for consistency with existing structure
+            data['materials'][material_name][component_type] = content
+        else:
+            # Caption and other components go in components section
+            if 'components' not in data['materials'][material_name]:
+                data['materials'][material_name]['components'] = {}
+            data['materials'][material_name]['components'][component_type] = content
         
         # Atomic write: write to temp file, then rename
         try:
@@ -332,6 +336,12 @@ class SimpleGenerator:
             
             # Atomic rename (POSIX guarantees atomicity)
             Path(temp_path).replace(materials_path)
+            
+            # DUAL-WRITE POLICY (Nov 22, 2025): Immediately sync field to frontmatter
+            # Only updated field written to frontmatter, others preserved
+            from generation.utils.frontmatter_sync import sync_field_to_frontmatter
+            sync_field_to_frontmatter(material_name, component_type, content)
+            
         except Exception as e:
             # Clean up temp file on failure
             if 'temp_path' in locals():

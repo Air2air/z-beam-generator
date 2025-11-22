@@ -210,17 +210,33 @@ class ProcessingConfig:
     
     def get_max_tokens(self, component_type: str = 'default') -> int:
         """
-        Get max tokens for component type.
+        Get max tokens for component type based on word count target.
+        
+        Converts component_lengths.target (word count) to tokens.
+        Token estimation: words × 1.3 (approximate tokens per word)
         
         Args:
-            component_type: Component type (subtitle, caption, etc.)
+            component_type: Component type (subtitle, caption, description, faq, etc.)
             
         Returns:
-            Max tokens value
+            Max tokens value (converted from word count)
         """
-        api = self.config.get('api', {})
-        max_tokens = api.get('max_tokens', {})
-        return max_tokens.get(component_type, max_tokens.get('default', 500))
+        # Get target word count from component_lengths
+        lengths = self.config.get('component_lengths', {})
+        component_config = lengths.get(component_type, {})
+        
+        if isinstance(component_config, dict):
+            target_words = component_config.get('target')
+        else:
+            # Legacy: component_config might be int (word count)
+            target_words = component_config
+        
+        if target_words:
+            # Convert words to tokens (1.3 tokens per word approximation)
+            return int(target_words * 1.3)
+        
+        # Fallback for unknown component types
+        return 130  # ~100 words default
     
     def get_max_attempts(self) -> int:
         """Get maximum generation attempts."""

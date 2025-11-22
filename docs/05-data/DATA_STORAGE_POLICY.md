@@ -1,7 +1,7 @@
 # Data Storage Policy - Global Rule
 
 **Status**: Active Policy  
-**Effective Date**: October 20, 2025  
+**Effective Date**: November 22, 2025 (Updated for Dual-Write Architecture)  
 **Applies To**: All code, tests, and documentation
 
 ---
@@ -10,7 +10,7 @@
 
 **ALL data updates MUST be saved to Materials.yaml or Categories.yaml.**
 
-**Frontmatter files are STRICTLY OUTPUT ONLY - never data storage.**
+**Frontmatter files receive IMMEDIATE PARTIAL UPDATES (changed fields only) - never read for data persistence.**
 
 ---
 
@@ -19,30 +19,35 @@
 ### Source of Truth
 - ✅ **Materials.yaml** - Single source of truth for all material-specific data
 - ✅ **Categories.yaml** - Single source of truth for all category-wide data
-- ❌ **Frontmatter YAML files** - Output only, never read for data storage
+- ✅ **Frontmatter YAML files** - Receive immediate field-level updates (write-only mirror)
+- ❌ **Frontmatter** - Never read for data persistence or updates
 
-### Data Flow Direction
+### Data Flow Direction - Dual-Write Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     SINGLE DIRECTION ONLY                        │
+│              DUAL-WRITE: IMMEDIATE FIELD-LEVEL SYNC              │
 └─────────────────────────────────────────────────────────────────┘
 
-Step 1: Generation
-  Components ──────────► Materials.yaml
-  (AI text generation)   [Raw content, no voice]
+Step 1: Generation → Dual Write
+  Components ──────────► Materials.yaml (FULL WRITE)
+  (AI text generation)         ↓
+                              ↓
+                        Frontmatter/{material}.yaml (FIELD UPDATE ONLY)
+                        [Only updated field written, others preserved]
 
-Step 2: Voice Enhancement  
-  VoicePostProcessor ──► Materials.yaml
-  (Reads, enhances)      [OVERWRITES text fields with voice-enhanced versions]
+Step 2: Voice Enhancement → Dual Write
+  VoicePostProcessor ──► Materials.yaml (OVERWRITE text fields)
+  (Reads, enhances)            ↓
+                              ↓
+                        Frontmatter/{material}.yaml (FIELD UPDATE ONLY)
+                        [Only enhanced field written, others preserved]
 
-Step 3: Manual Export
-  Materials.yaml + Categories.yaml ──────────► Frontmatter Files
-  [SOURCE OF TRUTH]  [METADATA ONLY]           [OUTPUT ONLY]
-  
-  ✅ WRITE: Yes                     ✅ WRITE: Yes (export only)
-  ✅ READ: Yes                      ❌ READ: No (for data persistence)
-  ✅ UPDATE: Yes (voice overwrites) ❌ UPDATE: No (regenerate instead)
+Data Flow Rules:
+  Materials.yaml:        Frontmatter:
+  ✅ WRITE: Full update  ✅ WRITE: Changed field only (immediate sync)
+  ✅ READ: Yes           ❌ READ: No (for data persistence)
+  ✅ UPDATE: Yes         ✅ UPDATE: Yes (field-level automatic sync)
 ```
 
 ---

@@ -848,10 +848,41 @@ materials:
     title: Aluminum Laser Cleaning
     subtitle: A lightweight non-ferrous metal with exceptional corrosion resistance
       and a density of 2.7 g/cm³
-    description: Aluminum's high reflectivity of 0.95 and low laser absorption of
-      0.06 at 1064 nm present a primary challenge for laser cleaning. Its low melting
-      point of 933.47 K requires precise control of energy density to avoid surface
-      melting while still effectively removing oxides.
+    description: 'When laser cleaning aluminum, you must address its high reflectivity
+      right away. This property, around 95 percent, bounces most laser energy back.
+      It risks damaging your equipment if you do not start low. Begin with power at
+      100 watts. Keep the spot size at 50 micrometers. This setup reduces reflection
+      risks.
+
+
+      You''ll find aluminum cleans well once you adjust for its low absorption. Only
+      about 6 percent of the energy gets absorbed. So you must increase passes to
+      three. Use a repetition rate of 50 kilohertz. This pulls in more total energy
+      without overheating. Aluminum''s low density, at 2.7 grams per cubic centimeter,
+      helps here. It conducts heat fast but dissipates it quickly. You should scan
+      at 500 millimeters per second. This prevents buildup on thin parts.
+
+
+      Make sure you watch the melting point, around 660 degrees Celsius. Aluminum
+      softens easy under heat. Start with energy density near 5.1 joules per square
+      centimeter. Shorten pulse width to 10 nanoseconds. These steps expose contaminants
+      without warping the surface. Its non-porous nature, zero percent porosity, means
+      dirt sits tight. But the laser reveals it cleanly. Overlap scans by 50 percent.
+      This improves coverage on rough spots, up to 0.8 micrometers deep.
+
+
+      I''ve seen poor results when folks ignore corrosion layers. Aluminum resists
+      rust at 0.1 millimeter per year. Yet oxidation builds thin films. You must tune
+      for that. Raise scan speed slightly on oxidized areas. This removes films and
+      restores shine. Avoid high power on alloys. They have tensile strength around
+      90 megapascals. Extra heat can crack them. Test on scrap first.
+
+
+      In practice, this works for aerospace or automotive parts. Aluminum''s flexural
+      strength, near 95 megapascals, holds shape post-clean. But you need to control
+      every pass. End with a cool-down check. This avoids thermal stress. Its electrical
+      conductivity, high at 37 million siemens per meter, does not affect cleaning
+      much. Focus on optics instead. Clean lenses often.'
     author:
       id: 4
     images:
@@ -1190,39 +1221,43 @@ materials:
           These features obscure the underlying metallic grain structure completely.
         after: Laser treatment removes the dark oxides and clears the hazy film. This
           process reveals the uniform, reflective surface of the base aluminum material.
-      description: 'When laser cleaning aluminum, watch its high reflectivity first.
-        It hits 0.95 across visible and near-infrared wavelengths. This bounces most
-        laser energy away. So the surface absorbs just 0.06 of the pulse. I''ve seen
-        jobs fail fast without tweaks. The beam scatters instead of penetrating. Contaminants
-        stay put. Aluminum''s shine makes it tough.
+      description: 'When laser cleaning aluminum, the high reflectivity around 95
+        percent stands out as the property that demands the most attention from the
+        start. I''ve seen setups fail early because operators overlook how this bounces
+        most of the laser energy away, leaving contaminants like oils or oxides stubbornly
+        in place unless you adjust your parameters thoughtfully. This works best when
+        you begin with a fiber laser at 1064 nanometers, since that wavelength penetrates
+        the reflective surface just enough to initiate ablation without scattering
+        too much power. Tends to require a power level near 100 watts to overcome
+        the low absorptivity of about 6 percent, but you push that only after testing
+        on a scrap piece to confirm the energy density stays around 5.1 joules per
+        square centimeter—anything higher risks heating the underlying metal unevenly.
 
 
-        This property sets aluminum apart from ferrous metals. Steel grabs more energy
-        at 0.4 absorptivity. Aluminum reflects like a mirror. It demands pulsed lasers
-        tuned right. Start with 1064 nm wavelength. That''s near-infrared. It matches
-        aluminum''s absorption peak somewhat. I''ve found this reduces scatter. Energy
-        density stays key. Aim for 5.1 J/cm². Higher risks melting. Aluminum''s melting
-        point sits at 933 K. That''s low for metals. Titanium holds till 1941 K. So
-        heat builds quick on aluminum.
+        Aluminum''s low density at 2.7 grams per cubic centimeter makes it lighter
+        and more responsive to thermal shifts during the process, which reveals clean
+        surfaces faster than denser metals like steel. I''ve found that this lightness
+        helps in applications such as aerospace parts or automotive components, where
+        you need to restore intricate shapes without adding mechanical stress. However,
+        it also means the material conducts heat quickly through its structure, so
+        you must control the pulse width to about 10 nanoseconds to localize the energy
+        and avoid spreading warmth that could warp thin sheets. This approach reduces
+        the chance of subsurface damage, especially in electronics manufacturing where
+        precision matters.
 
 
-        Tends to warp if you overdo it. I''ve cleaned aerospace parts. They need precision.
-        Low density at 2.7 g/cm³ helps. It cools faster than denser stuff. But that
-        shine fights back. Use 100 W power. Keep pulses short at 10 ns. Repetition
-        rate around 50 kHz works. Spot size of 50 μm focuses tight. Scan at 500 mm/s.
-        Overlap by 50%. Do three passes max. This removes oxides without digging in.
+        As you scan at speeds up to 500 millimeters per second with a spot size of
+        50 micrometers, the non-porous nature of aluminum—zero percent porosity—ensures
+        that cleaning exposes a uniform base without trapping residues in hidden voids.
+        Tends to improve adhesion for subsequent coatings in marine or packaging uses,
+        but watch the repetition rate; setting it to 50 kilohertz with 50 percent
+        overlap in three passes removes surface roughness down to 0.8 micrometers
+        effectively. I''ve seen this sequence restore corrosion resistance, which
+        naturally holds at 0.1 millimeters per year, by stripping away the thin oxide
+        layer that forms at about 5 micrometers annually.
 
 
-        Aluminum''s non-porous at 0% porosity. Surface roughness starts smooth at
-        0.8 μm. Laser exposes clean metal easy. It restores conductivity. Electrical
-        resistivity is low at 2.65 × 10^{-8} Ω·m. Good for electronics apps. But watch
-        corrosion layers. They form thin at 0.1 mm/year. Laser reveals them fully.
-        In automotive panels, this improves paint adhesion.
-
-
-        I''ve handled marine fittings. Salt buildup clings. High reflectivity means
-        multiple angles. Tilt the beam 45 degrees. Reduces reflection losses. Aluminum''s
-        Young''s modulus is 70 GPa. It flexes under stress. Flexural strength'
+        That said'
   Ash:
     name: Ash
     category: wood
@@ -9292,7 +9327,12 @@ materials:
     title: Copper Laser Cleaning
     subtitle: Superior electrical and thermal conductivity essential for efficient
       power transmission and heat exchange
-    description: Laser cleaning parameters for Copper
+    description: When laser cleaning copper, we've found it stands out from ferrous
+      metals like steel because of its extreme reflectivity—around 97.5 percent—which
+      bounces most laser energy away instead of soaking it in like steel does at about
+      60 percent. This difference means you can't just crank up the power as you would
+      for rust on iron; it leads to inefficient cleaning or even scattered light risks
+      if you're not careful. So, we typically dial in a
     author:
       id: 3
     images:
@@ -9644,38 +9684,46 @@ materials:
         after: Now the laser clears all that away, leaving a smooth, reflective finish.
           The underlying metal shines through with a uniform, orange-pink color. The
           surface appears completely clean and restored.
-      description: 'I''ve found that laser cleaning copper often shines—pun intended—when
-        you lean into its non-ferrous nature and high electrical conductivity, around
-        59.6 million S/m, which keeps heat from building up too fast during the process.
-        In my experience working with industrial parts from electronics manufacturing
-        or plumbing applications, this conductivity helps the material dissipate energy
-        quickly, so you can push scan speeds up to 500 mm/s without risking warping
-        on those denser sections at 8.96 g/cm³. You''ll get a clean surface that restores
-        the original finish, especially on HVAC components exposed to corrosion rates
-        as low as 0.05 mm/year, but only if you match the setup to its quirks.
+      description: 'When laser cleaning copper, watch out for its extreme reflectivity
+        right away. We''ve found that at around 97.5%, most of the laser energy bounces
+        back. This can damage your optics or even pose safety risks if not handled
+        properly.
 
 
-        What works best, from what I''ve observed over years tweaking parameters for
-        telecom gear or renewable energy fixtures, starts with dialing in a 1064 nm
-        wavelength at 100 W power. This wavelength plays nice with copper''s low absorptivity
-        of just 0.035, meaning the laser doesn''t get absorbed easily—unlike ferrous
-        metals that soak it up more readily. So, you tend to need three passes with
-        a 50% overlap ratio to gradually lift contaminants like oxidation layers without
-        scorching the base metal. The 10 ns pulse width and 100 kHz repetition rate
-        keep things controlled, hitting a fluence threshold around 2.5 J/cm² that
-        clears grime effectively while respecting the metal''s melting point at about
-        1358 K. I''ve seen this approach restore marine-grade copper panels beautifully,
-        preserving their flexural strength near 210 MPa and fracture toughness of
-        47 MPa√m, which makes the material resilient post-cleaning for power generation
-        uses.
+        Start your setup with a thorough surface check. Copper''s non-porous nature
+        and smooth finish—about 0.1 micrometers roughness—mean contaminants sit loosely.
+        But that high shine makes absorption tough. We typically dial in a 1064 nanometer
+        wavelength first. It matches copper''s behavior without wasting power.
 
 
-        Copper stands out from other non-ferrous options because of its sky-high reflectivity
-        at 97.5%, which bounces most of the laser energy away and demands patience
-        in your strategy. That reflectivity, combined with low porosity at 0% and
-        a smooth surface roughness of 0.1 μm Ra, means contaminants sit tight but
-        the metal itself stays intact if you avoid rushing. For instance, its Young''s
-        modulus of 117 GPa gives it some flex'
+        Next, set power to 100 watts. We''ve seen this level penetrate the reflectivity
+        barrier effectively. Go lower if the piece is thin; copper''s density, near
+        9 grams per cubic centimeter, holds heat well but can warp under excess energy.
+        Keep pulse width at 10 nanoseconds. Short bursts prevent melting, since copper
+        softens around 1085 degrees Celsius.
+
+
+        Adjust spot size to 50 micrometers. This focuses the beam tightly. It helps
+        overcome low absorption—only about 3.5% of the light sticks. Scan at 500 millimeters
+        per second. We recommend 50% overlap between passes. Do three passes total.
+        This clears rust or oxides without digging into the base metal.
+
+
+        Copper stands out from ferrous metals here. Its great electrical conductivity—over
+        59 million siemens per meter—means it conducts heat fast. So you must control
+        fluence under 2.5 joules per square centimeter. Exceed that, and you''ll vaporize
+        too much. We''ve avoided pitting by ramping up repetition rate to 100 kilohertz.
+        It spreads energy evenly.
+
+
+        In our experience, copper''s corrosion resistance—losing just 0.05 millimeters
+        per year—keeps it stable post-clean. But watch for oxidation if heated past
+        150 degrees Celsius. Always clean in a controlled environment. This restores
+        its natural luster for uses like electronics or plumbing.
+
+
+        One pitfall: don''t rush passes on large panels. Copper''s moderate strength—220
+        megapascals tensile—flexes under rapid heating. We''ve adjusted scan speeds'
   Crown Glass:
     name: Crown Glass
     category: glass

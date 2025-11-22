@@ -62,7 +62,27 @@ Before ANY code change:
 
 ---
 
-## 🚨 **CRITICAL FAILURE PATTERNS TO AVOID** 🔥 **NEW (Nov 20, 2025)**
+## 🚨 **CRITICAL FAILURE PATTERNS TO AVOID** 🔥 **UPDATED (Nov 22, 2025)**
+
+### **Pattern 0: Documentation Claims Contradicting Code Reality** 🔥 **NEW - MOST CRITICAL**
+**What Happened**: Documentation claimed "Option C implemented - saves all attempts" but code was still blocking saves (10% success rate proved gates were active)
+**Why It's Grade F**: Creates architectural confusion, wastes effort on wrong diagnosis, erodes user trust
+**Impact**: 
+- All Nov 22 analysis based on false assumption (Option C active)
+- Wrong root cause identified (blamed Winston thresholds when real issue was gate blocking)
+- Wasted time on fixes that couldn't help
+**Correct Behavior**:
+```
+✅ VERIFY implementation with tests BEFORE documenting as complete
+✅ Check actual code behavior matches documentation claims
+✅ Use success rate as reality check (10% = gates blocking, 100% = Option C working)
+✅ Write verification tests: test_saves_all_attempts_regardless_of_quality()
+```
+
+**Prevention Checklist**:
+- [ ] Does a test verify this claim? (If no, don't claim "COMPLETE")
+- [ ] Does actual behavior match documentation? (Run live test)
+- [ ] Can I prove it with evidence? (Success rate, terminal output, test results)
 
 ### **Pattern 1: Reporting Success When Quality Gates Fail**
 **What Happened**: AI reported "✅ Description generated" when realism score was 5.0/10 (threshold: 5.5/10)
@@ -124,6 +144,45 @@ Before ANY code change:
 ✅ Test: Does lower temperature produce better results?
 ```
 
+### **Pattern 6: Architectural Documentation Inconsistency** 🔥 **NEW (Nov 22, 2025) - CRITICAL**
+**What Happened**: Multiple documents claimed different architectures were "COMPLETE":
+- `E2E_SYSTEM_ANALYSIS_NOV22_2025.md`: Graded system A+ assuming "Option C" active
+- `OPTION_C_IMPLEMENTATION_NOV22_2025.md`: Documented "quality gates removed"
+- **Reality**: Code still enforced quality gates (10% success rate proved it)
+
+**Why It's Grade F**: 
+- Wastes effort on wrong diagnosis
+- User cannot trust documentation
+- Future work builds on false assumptions
+- Regression goes undetected
+
+**Correct Behavior**:
+```
+✅ MEASURE actual behavior (success rate, terminal output, test results)
+✅ If metrics contradict docs → Documentation is WRONG
+✅ Write verification tests BEFORE claiming "COMPLETE"
+✅ Update ALL related docs when architecture changes
+✅ Never grade system A+ without verifying claims with tests
+```
+
+**How to Detect This Pattern**:
+- 🚩 Success rate doesn't match documented behavior (10% ≠ "saves all")
+- 🚩 Terminal output contradicts documentation claims
+- 🚩 User reports failures but docs claim success
+- 🚩 Multiple documents describe different implementations
+- 🚩 High grade (A+) but low success metrics (10%)
+
+**Prevention**:
+```
+Before documenting as "COMPLETE":
+1. Write test: test_[feature]_actually_works()
+2. Run live test: python3 run.py --[feature]
+3. Measure metrics: Success rate, save count, terminal output
+4. Compare: Do metrics match documentation claims?
+5. If NO → Fix code OR fix docs, then retest
+6. Only claim "COMPLETE" when test + metrics verify it
+```
+
 ---
 
 ## 📖 **Detailed Navigation for AI Assistants**
@@ -181,8 +240,11 @@ Understanding rule severity helps prioritize fixes and avoid introducing worse p
 13. 🔥 **NEVER report success when quality gates fail** (realism < 5.5, Winston fail) - [Pattern 1](#critical-failure-patterns-to-avoid)
 14. 🔥 **ALWAYS read ALL evaluation scores** (pre-save AND post-generation) - [Pattern 2](#critical-failure-patterns-to-avoid)
 15. 🔥 **ALWAYS check for AI-like phrases** ("presents a challenge", formulaic structure) - [Pattern 4](#critical-failure-patterns-to-avoid)
+16. 🔥 **ALWAYS verify implementation before documentation** (write tests, measure success rate) - [Pattern 0](#critical-failure-patterns-to-avoid) **NEW**
+17. 🔥 **NEVER document features without evidence** (tests prove it works) - [Step 6.5](#step-6-5-verify-implementation-matches-documentation) **NEW**
 
 **🚨 CRITICAL: Reporting success when quality fails is a TIER 3 violation - Grade F.**
+**🚨 CRITICAL: Documenting unimplemented features as "COMPLETE" is a TIER 3 violation - Grade F.** 🔥 **NEW**
 
 ---
 
@@ -386,6 +448,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 4. ✅ **Check git history for context** - See what was working previously
 5. ✅ **Plan minimal fix only** - Address only the specific issue
 6. ✅ **Ask permission for major changes** - Get approval before removing code or rewrites
+7. ✅ **🔥 Verify with tests BEFORE claiming complete** - Evidence over assumptions
 
 **GOLDEN RULES:**
 - 🚫 **NEVER rewrite working code**
@@ -396,11 +459,15 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - 🚫 **NEVER put content instructions in /processing folder code**
 - 🚫 **NEVER hardcode component types in /processing code**
 - 🚫 **NEVER hardcode values in production code** - use config or dynamic calculation
+- 🚫 **NEVER claim "COMPLETE" without verification tests** 🔥 **NEW**
+- 🚫 **NEVER document features as implemented without evidence** 🔥 **NEW**
 - ✅ **ALWAYS keep content instructions ONLY in prompts/*.txt files**
 - ✅ **ALWAYS define components ONLY in prompts/*.txt and config.yaml**
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
 - ✅ **ALWAYS maintain runtime error recovery**
+- ✅ **ALWAYS verify documentation matches reality with tests** 🔥 **NEW**
+- ✅ **ALWAYS sync Materials.yaml updates to frontmatter (dual-write)** 🔥 **NEW (Nov 22, 2025)**
 
 ---
 
@@ -594,14 +661,18 @@ All required components must be explicitly provided - no silent degradation.
   - ALL completeness validation
   - ALL quality scoring and thresholds
   - ALL schema validation
+- ✅ **Frontmatter files** - Receive immediate partial field updates (dual-write)
+  - Automatic sync when Materials.yaml updated
+  - Only changed field written (others preserved)
+  - Never read for data persistence
 - ✅ **Categories.yaml** - Single source of truth for category ranges
-- ❌ **Frontmatter files** - Trivial export copies (NO API, NO validation)
-  - Simple YAML-to-YAML field mapping
-  - Should take seconds for 132 materials, not minutes
-  - No complex operations during export
-- ✅ **Data Flow**: Generate → Materials.yaml → Export to Frontmatter
+- ❌ **Frontmatter files** - Never read for data persistence (write-only mirror)
+  - Simple field-level sync from Materials.yaml
+  - Should take milliseconds per update
+  - No complex operations during sync
+- ✅ **Data Flow**: Generate → Materials.yaml (full write) + Frontmatter (field sync)
 - ✅ **Persistence**: All AI research saves to Materials.yaml immediately
-- ❌ **Never read frontmatter** for data persistence (only for output verification)
+- ✅ **Dual-Write**: Every Materials.yaml update triggers frontmatter field sync
 
 See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 
@@ -1076,6 +1147,7 @@ temperature = dynamic_config.calculate_temperature(component_type)
 - [ ] **Read request precisely** - What is the *exact* issue?
 - [ ] **Search documentation** - Check `docs/` for existing guidance
 - [ ] **No assumptions** - Ask for clarification if unclear
+- [ ] **🔥 Check for metric-documentation mismatches** - Does 10% success rate match "saves all" claims? **NEW**
 
 ### Step 2: 🔍 Explore Architecture
 - [ ] **Read relevant code** - Understand how it currently works
@@ -1084,6 +1156,7 @@ temperature = dynamic_config.calculate_temperature(component_type)
 - [ ] **Verify file existence** - Prevent "Content Not Found" errors
 - [ ] **Read policy docs** - HARDCODED_VALUE_POLICY, CONTENT_INSTRUCTION_POLICY, etc.
 - [ ] **Look for similar patterns** - How does the system solve this elsewhere?
+- [ ] **🔥 Test actual behavior** - Run live test to verify documentation claims **NEW**
 
 ### Step 3: 📜 Check History
 - [ ] **Review git commits** - See what was working previously
@@ -1104,16 +1177,113 @@ temperature = dynamic_config.calculate_temperature(component_type)
 - [ ] **Apply the fix** - Make only the planned changes
 - [ ] **Read back your changes** - Use read_file to verify what you wrote
 - [ ] **Check for new violations** - Did you introduce hardcoded values, TODOs, or fallbacks?
+- [ ] **Write verification test FIRST** - Prove the fix works before documenting
 - [ ] **Verify it works** - Test the specific issue is resolved
 - [ ] **Check for regressions** - Ensure nothing else broke
 - [ ] **Run tests** - Confirm test suite still passes
 - [ ] **🔍 Verify no production mocks** - Confirm changes don't introduce mocks/fallbacks
 
+### Step 6.5: 📊 Verify Implementation Matches Documentation 🔥 **NEW (Nov 22, 2025)**
+**MANDATORY before claiming ANY feature "COMPLETE":**
+
+- [ ] **Write verification test** - Create test that proves implementation works
+  ```python
+  def test_option_c_saves_all_attempts():
+      # Generate with terrible quality
+      # Verify ALL attempts saved (not rejected)
+      assert save_count == max_attempts  # Proves Option C working
+  ```
+- [ ] **Run live verification** - Test with real material, check terminal output
+- [ ] **Check success metrics** - Does behavior match claims?
+  - Option C claimed → Expect 100% completion rate
+  - Quality gates claimed → Expect <100% completion rate
+  - If mismatch: Documentation is WRONG, not implementation
+- [ ] **STOP if verification fails** - Do NOT proceed to documentation
+  - ⛔ Success rate ≠ documented behavior → STOP, ASK USER
+  - ⛔ Test fails but claim is "COMPLETE" → STOP, FIX CODE
+  - ⛔ Live test contradicts claim → STOP, INVESTIGATE
+  - ⛔ Multiple docs contradict → STOP, RECONCILE FIRST
+- [ ] **Document with evidence** - Include test results, success rate, terminal output
+- [ ] **Never claim "COMPLETE" without verification test**
+
+**Example of WRONG approach**:
+```markdown
+❌ Option C Implementation: COMPLETE
+   - Saves all attempts ← NO TEST TO VERIFY THIS
+   - 100% completion ← NO MEASUREMENT PROVIDED
+   - Documentation done ← BUT CODE STILL BLOCKS SAVES
+```
+
+**Example of CORRECT approach**:
+```markdown
+✅ Option C Implementation: COMPLETE
+   - test_saves_all_attempts_regardless_of_quality: PASSING ✅
+   - Live test (Copper): All 5 attempts saved ✅
+   - Success rate: 100% (10/10 materials) ✅
+   - Terminal shows: "💾 Saving attempt X" for ALL attempts ✅
+```
+
 ### Step 7: 📊 Honest Reporting
 - [ ] **Count violations accurately** - Test file updates are not violations
 - [ ] **Report what actually changed** - Not what you intended to change
+- [ ] **Provide verification evidence** - Test results, success rates, terminal output
 - [ ] **Acknowledge limitations** - Be honest about architectural constraints
 - [ ] **Don't claim success prematurely** - Verify first, then report
+- [ ] **🔥 Check documentation matches reality** - Run live test to confirm claims
+
+### Step 7.5: 🚨 Documentation-Reality Verification 🔥 **NEW (Nov 22, 2025)**
+**MANDATORY before updating ANY documentation:**
+
+**Reality Check Protocol**:
+1. **Claim**: "Feature X is implemented"
+2. **Test**: Write test that proves feature X works
+3. **Measure**: Run live test, record actual behavior
+4. **Compare**: Does behavior match claim?
+   - ✅ YES → Documentation accurate, proceed
+   - ❌ NO → Documentation WRONG, fix code OR fix docs
+5. **Evidence**: Include metrics that prove reality
+   - Success rates, terminal output, test results
+   - NOT assumptions or intentions
+
+**Red Flags - Stop and Verify**:
+- 🚩 Documentation says "saves all" but success rate is 10%
+- 🚩 Documentation says "quality gates removed" but code has gate checks
+- 🚩 Documentation says "100% completion" but materials are missing content
+- 🚩 Documentation graded A+ but user reports failures
+- 🚩 Multiple documents contradict each other
+
+**When Documentation Contradicts Reality**:
+```
+1. Trust the metrics (success rate, terminal output, tests)
+2. Documentation is WRONG (not reality)
+3. Either:
+   - Fix code to match documentation, OR
+   - Fix documentation to match reality
+4. Add verification test to prevent regression
+5. Never leave contradictory documentation
+```
+
+**⚠️ CRITICAL: When Metrics Contradict Documentation - STOP** 🔥 **NEW**:
+```
+DO NOT PROCEED with analysis or fixes until resolved:
+
+STOP AND ASK USER if:
+❌ Success rate doesn't match docs (10% ≠ "saves all")
+❌ Test verifies X but docs claim Y
+❌ Multiple documents describe different implementations
+❌ Live test output contradicts documentation
+❌ User reports behavior different from docs
+
+HIERARCHY OF TRUTH (when conflict occurs):
+1. Live test results (what actually happens)
+2. Success rate metrics (10% vs 100%)
+3. Terminal output (what system prints)
+4. Test assertions (what tests verify)
+5. Documentation (what we THINK happens)
+
+Never try to "explain away" metrics - if 10% success rate, 
+then Option C is NOT working regardless of what docs say.
+```
 
 ### Step 8: Grade Your Work 🔥 **MANDATORY (Nov 20, 2025)**
 
@@ -1164,8 +1334,16 @@ temperature = dynamic_config.calculate_temperature(component_type)
 - ❌ False claims
 - ❌ Reported violations without verification
 - ❌ Introduced new violations while claiming fixes
+- ❌ **Documentation claims contradict metrics** (10% ≠ "saves all")
+- ❌ **Documented features without verification tests**
+- ❌ **Multiple docs describe different implementations**
 
 **CRITICAL**: Grade F requires immediate rollback and fresh start.
+
+**Documentation Accuracy Penalties**:
+- **-20 points**: Documentation claims contradict measured metrics
+- **-15 points**: Features documented as "COMPLETE" without verification tests
+- **-10 points**: Multiple documents describe conflicting implementations
 
 ---
 

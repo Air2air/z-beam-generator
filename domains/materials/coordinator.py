@@ -153,22 +153,24 @@ class UnifiedMaterialsGenerator:
         """
         Generate before/after microscopy captions using QualityGatedGenerator.
         
-        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
+        Option C: Saves ALL attempts, tries to improve quality.
+        Always returns success=True after max attempts (content saved regardless).
         
         Returns:
             Dict with 'before' and 'after' keys (caption content)
         """
         self.logger.info(f"📸 Generating caption for {material_name}")
         
-        # Use QualityGatedGenerator - evaluates before save, retries on fail
+        # Use QualityGatedGenerator - Option C: saves all, tries to improve
         result = self.generator.generate(material_name, 'caption')
         
+        # Option C: Trust success=True even if quality low
+        # Content already saved to Materials.yaml during generation
         if not result.success:
-            raise ValueError(
-                f"Caption generation failed after {result.attempts} attempts. "
-                f"Final score: {result.final_score or 'N/A'}/10. "
-                f"Reasons: {'; '.join(result.rejection_reasons)}"
-            )
+            # Should never happen with Option C, but handle defensively
+            self.logger.warning(f"⚠️  Unexpected failure from QualityGatedGenerator (Option C should always succeed)")
+            self.logger.warning(f"   Attempts: {result.attempts}, Reasons: {'; '.join(result.rejection_reasons)}")
+            # Don't raise exception - Option C means we accept whatever was saved
         
         # Return content (already in before/after format)
         return result.content
@@ -193,15 +195,16 @@ class UnifiedMaterialsGenerator:
         
         self.logger.info(f"❓ Generating {faq_count} FAQ items for {material_name}")
         
-        # Use QualityGatedGenerator - evaluates before save, retries on fail
+        # Use QualityGatedGenerator - Option C: saves all, tries to improve
         result = self.generator.generate(material_name, 'faq', faq_count=faq_count)
         
+        # Option C: Trust success=True even if quality low
+        # Content already saved to Materials.yaml during generation
         if not result.success:
-            raise ValueError(
-                f"FAQ generation failed after {result.attempts} attempts. "
-                f"Final score: {result.final_score or 'N/A'}/10. "
-                f"Reasons: {'; '.join(result.rejection_reasons)}"
-            )
+            # Should never happen with Option C, but handle defensively
+            self.logger.warning(f"⚠️  Unexpected failure from QualityGatedGenerator (Option C should always succeed)")
+            self.logger.warning(f"   Attempts: {result.attempts}, Reasons: {'; '.join(result.rejection_reasons)}")
+            # Don't raise exception - Option C means we accept whatever was saved
         
         faq_list = result.content
         
@@ -222,22 +225,24 @@ class UnifiedMaterialsGenerator:
         """
         Generate subtitle using QualityGatedGenerator.
         
-        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
+        Option C: Saves ALL attempts, tries to improve quality.
+        Always returns success=True after max attempts (content saved regardless).
         
         Returns:
             String (subtitle content)
         """
         self.logger.info(f"📝 Generating subtitle for {material_name}")
         
-        # Use QualityGatedGenerator - evaluates before save, retries on fail
+        # Use QualityGatedGenerator - Option C: saves all, tries to improve
         result = self.generator.generate(material_name, 'subtitle')
         
+        # Option C: Trust success=True even if quality low
+        # Content already saved to Materials.yaml during generation
         if not result.success:
-            raise ValueError(
-                f"Subtitle generation failed after {result.attempts} attempts. "
-                f"Final score: {result.final_score or 'N/A'}/10. "
-                f"Reasons: {'; '.join(result.rejection_reasons)}"
-            )
+            # Should never happen with Option C, but handle defensively
+            self.logger.warning(f"⚠️  Unexpected failure from QualityGatedGenerator (Option C should always succeed)")
+            self.logger.warning(f"   Attempts: {result.attempts}, Reasons: {'; '.join(result.rejection_reasons)}")
+            # Don't raise exception - Option C means we accept whatever was saved
         
         subtitle = result.content
         word_count = len(subtitle.split())
@@ -250,22 +255,24 @@ class UnifiedMaterialsGenerator:
         """
         Generate description using QualityGatedGenerator.
         
-        Quality-gated: Evaluates BEFORE save, retries if < 7.0/10 realism.
+        Option C: Saves ALL attempts, tries to improve quality.
+        Always returns success=True after max attempts (content saved regardless).
         
         Returns:
             String (description content)
         """
         self.logger.info(f"📝 Generating description for {material_name}")
         
-        # Use QualityGatedGenerator - evaluates before save, retries on fail
+        # Use QualityGatedGenerator - Option C: saves all, tries to improve
         result = self.generator.generate(material_name, 'description')
         
+        # Option C: Trust success=True even if quality low
+        # Content already saved to Materials.yaml during generation
         if not result.success:
-            raise ValueError(
-                f"Description generation failed after {result.attempts} attempts. "
-                f"Final score: {result.final_score or 'N/A'}/10. "
-                f"Reasons: {'; '.join(result.rejection_reasons)}"
-            )
+            # Should never happen with Option C, but handle defensively
+            self.logger.warning(f"⚠️  Unexpected failure from QualityGatedGenerator (Option C should always succeed)")
+            self.logger.warning(f"   Attempts: {result.attempts}, Reasons: {'; '.join(result.rejection_reasons)}")
+            # Don't raise exception - Option C means we accept whatever was saved
         
         description = result.content
         word_count = len(description.split())
