@@ -12,6 +12,7 @@ Policy Compliance: Zero hardcoded values, template-only approach, fail-fast arch
 """
 
 import re
+import random
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -347,6 +348,7 @@ class HumannessOptimizer:
         - Success patterns (professional verbs, tone markers)
         - Strictness-appropriate guidance
         - Previous attempt feedback
+        - RANDOMIZED SELECTIONS: length target, structure approach, voice style
         
         Args:
             winston_patterns: Patterns from Winston passing samples
@@ -356,10 +358,72 @@ class HumannessOptimizer:
             previous_ai_tendencies: AI patterns from last failed attempt
         
         Returns:
-            Formatted humanness instructions
+            Formatted humanness instructions with randomization
         """
         # Load template (fail-fast if missing - already validated in __init__)
         template = self.template_file.read_text(encoding='utf-8')
+        
+        # 🎲 RANDOMIZE LENGTH TARGET (dramatic variation)
+        length_targets = {
+            'SHORT': '150-220 words (CONCISE & PUNCHY - 2-3 key points only)',
+            'MEDIUM': '220-300 words (BALANCED - cover 4-5 key aspects)',
+            'DETAILED': '300-380 words (COMPREHENSIVE - thorough exploration)',
+            'DEEP': '380-450 words (DEEP DIVE - exhaustive technical detail)'
+        }
+        selected_length = random.choice(list(length_targets.keys()))
+        length_guidance = length_targets[selected_length]
+        
+        # 🎲 RANDOMIZE STRUCTURAL APPROACH (force different structure each time)
+        structure_approaches = [
+            '1. Problem-Focused (20% chance): Start with challenge → explain why → solution',
+            '2. Contrast-Based (20% chance): Compare materials → highlight difference → impact',
+            '3. Process-Focused (20% chance): Walk through setup → embed properties naturally',
+            '4. Experience-Based (20% chance): Share what works → why it works → what to avoid',
+            '5. Property-Driven (20% chance): Lead with ONE property → deep exploration'
+        ]
+        selected_structure = random.choice(structure_approaches)
+        
+        # 🎲 RANDOMIZE VOICE STYLE (distinct author personas)
+        voice_styles = [
+            'DIRECT INSTRUCTOR: "You must", "Make sure you", "Start with" (commanding, prescriptive)',
+            'TEAM COLLABORATOR: "We typically", "We\'ve found", "In our experience" (inclusive, shared)',
+            'EXPERIENCE SHARER: "I\'ve seen", "This works when", "Tends to" (observational, practical)'
+        ]
+        selected_voice = random.choice(voice_styles)
+        
+        # 🎲 RANDOMIZE SENTENCE RHYTHM (dramatic variation in sentence length patterns)
+        rhythm_patterns = [
+            'SHORT & PUNCHY: Use mostly 5-10 word sentences. Rapid fire. Direct impact. Build momentum.',
+            'MIXED CADENCE: Alternate short (5-10 word) and long (20-30 word) sentences for natural rhythm.',
+            'COMPLEX COMPOUND: Use longer, detailed sentences (15-30 words) with clauses and technical depth.'
+        ]
+        selected_rhythm = random.choice(rhythm_patterns)
+        
+        # 🎲 RANDOMIZE PROPERTY INTEGRATION STRATEGY
+        property_strategies = [
+            'SCATTERED INTEGRATION: Distribute properties throughout narrative (never list)',
+            'DEEP DIVE ONE: Focus deeply on ONE property first, mention others briefly later',
+            'COMPARATIVE: Use properties to compare/contrast with similar materials',
+            'PROBLEM-SOLUTION: Present property as solution to specific challenge'
+        ]
+        selected_property_strategy = random.choice(property_strategies)
+        
+        # 🎲 RANDOMIZE WARNING PLACEMENT
+        warning_placements = [
+            'EARLY WARNING: Start with critical safety/setup concern (first 2-3 sentences)',
+            'MID-FLOW WARNING: Embed warning naturally in middle of narrative',
+            'CONCLUDING WARNING: End with key caution or recommendation'
+        ]
+        selected_warning = random.choice(warning_placements)
+        
+        # Log randomization selections for terminal visibility
+        print(f"\n🎲 RANDOMIZATION APPLIED:")
+        print(f"   • Length Target: {selected_length} ({length_guidance})")
+        print(f"   • Structure: {selected_structure}")
+        print(f"   • Voice Style: {selected_voice}")
+        print(f"   • Sentence Rhythm: {selected_rhythm}")
+        print(f"   • Property Strategy: {selected_property_strategy}")
+        print(f"   • Warning Placement: {selected_warning}")
         
         # Format Winston success patterns
         winston_section = self._format_winston_patterns(winston_patterns)
@@ -384,7 +448,7 @@ class HumannessOptimizer:
         # Format previous attempt feedback
         feedback_section = self._format_previous_feedback(previous_ai_tendencies, strictness_level)
         
-        # Inject all data into template
+        # Inject all data into template (including randomization)
         instructions = template.format(
             attempt_number=strictness_level,
             component_type=component_type,
@@ -403,7 +467,36 @@ class HumannessOptimizer:
             previous_attempt_feedback=feedback_section
         )
         
-        return instructions
+        # Append randomization selections to instructions (template placeholder approach)
+        randomization_addendum = f"""
+
+🎲 **YOUR RANDOMIZED TARGETS FOR THIS GENERATION** 🎲
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📏 **LENGTH TARGET**: {length_guidance}
+
+🏗️ **STRUCTURAL APPROACH** (pick THIS one from 5 options):
+   {selected_structure}
+
+🗣️ **VOICE STYLE** (use THIS persona):
+   {selected_voice}
+
+🎵 **SENTENCE RHYTHM**:
+   {selected_rhythm}
+
+🔢 **PROPERTY INTEGRATION**:
+   {selected_property_strategy}
+
+⚠️ **WARNING PLACEMENT**:
+   {selected_warning}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 CRITICAL: These randomization targets are MANDATORY - use them to ensure 
+dramatic variation between generations. No two outputs should be similar!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+        
+        return instructions + randomization_addendum
     
     def _format_winston_patterns(self, patterns: WinstonPatterns) -> str:
         """Format Winston patterns for prompt injection"""
