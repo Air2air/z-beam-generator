@@ -52,11 +52,16 @@ class SubjectiveEvaluationResult:
     evaluation_time_ms: float
     narrative_assessment: Optional[str] = None  # Paragraph-form evaluation
     raw_response: Optional[str] = None
-    # NEW: Structured realism metrics
-    realism_score: Optional[float] = None  # 0-10
-    voice_authenticity: Optional[float] = None  # 0-10
-    tonal_consistency: Optional[float] = None  # 0-10
+    # Structured realism metrics (6 comprehensive dimensions)
+    realism_score: Optional[float] = None  # Overall Realism 0-10
+    voice_authenticity: Optional[float] = None  # Voice Authenticity 0-10
+    tonal_consistency: Optional[float] = None  # Tonal Consistency 0-10
+    technical_accessibility: Optional[float] = None  # Technical Accessibility 0-10 (NEW)
+    natural_imperfection: Optional[float] = None  # Natural Imperfection 0-10 (NEW)
+    conversational_flow: Optional[float] = None  # Conversational Flow 0-10 (NEW)
     ai_tendencies: Optional[List[str]] = None  # Detected AI patterns
+    technical_jargon_issues: Optional[List[str]] = None  # Technical jargon problems (NEW)
+    formulaic_structures: Optional[List[str]] = None  # Formulaic patterns (NEW)
 
 
 class SubjectiveEvaluator:
@@ -273,27 +278,37 @@ class SubjectiveEvaluator:
     
     def _parse_claude_response(self, response: str) -> SubjectiveEvaluationResult:
         """
-        Parse Claude's three-dimension realism evaluation response
+        Parse Claude's six-dimension comprehensive human realism evaluation response
         
-        Expected format (November 18, 2025 - Three Realism Scores):
+        Expected format (November 22, 2025 - Six Comprehensive Dimensions):
         **Overall Realism (0-10)**: X
         **Voice Authenticity (0-10)**: X
         **Tonal Consistency (0-10)**: X
-        **Why these scores** (2-3 sentences explaining):
-        **AI Tendencies Found**: [comma-separated list or "none"]
-        **Theatrical Phrases Found**: [specific quotes or "none"]
+        **Technical Accessibility (0-10)**: X
+        **Natural Imperfection (0-10)**: X
+        **Conversational Flow (0-10)**: X
+        **Reasoning** (2-3 sentences covering all dimensions):
+        **Technical Jargon Issues**: [list specific examples or "none"]
+        **AI Patterns Found**: [list or "none"]
+        **Theatrical Phrases Found**: [quotes or "none"]
+        **Formulaic Structures**: [describe or "none"]
         **Pass/Fail**: [PASS/FAIL]
         """
         
         lines = response.split('\n')
         
-        # Initialize variables for three-score format
+        # Initialize variables for six-dimension format
         overall_realism = None
         voice_authenticity = None
         tonal_consistency = None
+        technical_accessibility = None
+        natural_imperfection = None
+        conversational_flow = None
         narrative_assessment = None
         ai_tendencies = []
         theatrical_phrases = []
+        technical_jargon_issues = []
+        formulaic_structures = []
         pass_fail = None
         
         # Parse response
@@ -305,7 +320,6 @@ class SubjectiveEvaluator:
             if '**Overall Realism' in line or 'Overall Realism' in line:
                 if ':' in line:
                     score_str = line.split(':', 1)[1].strip()
-                    # Extract number (handle "X/10", "X", or just "X" formats)
                     score_str = score_str.split('/')[0].strip()
                     try:
                         overall_realism = float(score_str)
@@ -332,8 +346,38 @@ class SubjectiveEvaluator:
                     except ValueError:
                         pass
             
-            # Extract narrative explanation ("Why these scores")
-            elif '**Why these scores**' in line or 'Why these scores' in line:
+            # Extract Technical Accessibility (NEW)
+            elif '**Technical Accessibility' in line or 'Technical Accessibility' in line:
+                if ':' in line:
+                    score_str = line.split(':', 1)[1].strip()
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        technical_accessibility = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract Natural Imperfection (NEW)
+            elif '**Natural Imperfection' in line or 'Natural Imperfection' in line:
+                if ':' in line:
+                    score_str = line.split(':', 1)[1].strip()
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        natural_imperfection = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract Conversational Flow (NEW)
+            elif '**Conversational Flow' in line or 'Conversational Flow' in line:
+                if ':' in line:
+                    score_str = line.split(':', 1)[1].strip()
+                    score_str = score_str.split('/')[0].strip()
+                    try:
+                        conversational_flow = float(score_str)
+                    except ValueError:
+                        pass
+            
+            # Extract narrative explanation ("Reasoning")
+            elif '**Reasoning**' in line or 'Reasoning' in line:
                 # Read following lines until next ** marker
                 narrative_lines = []
                 for j in range(i+1, len(lines)):
@@ -345,13 +389,19 @@ class SubjectiveEvaluator:
                 if narrative_lines:
                     narrative_assessment = ' '.join(narrative_lines)
             
+            # Extract Technical Jargon Issues (NEW)
+            elif '**Technical Jargon Issues**' in line or 'Technical Jargon Issues' in line:
+                if ':' in line:
+                    jargon_str = line.split(':', 1)[1].strip()
+                    jargon_str = jargon_str.strip('[]')
+                    if jargon_str and jargon_str.lower() not in ('none', 'n/a', ''):
+                        technical_jargon_issues = [j.strip() for j in jargon_str.split(',') if j.strip()]
+            
             # Extract AI Tendencies
-            elif '**AI Tendencies Found**' in line or 'AI Tendencies Found' in line:
+            elif '**AI Patterns Found**' in line or 'AI Patterns Found' in line:
                 if ':' in line:
                     tendencies_str = line.split(':', 1)[1].strip()
-                    # Remove brackets if present
                     tendencies_str = tendencies_str.strip('[]')
-                    # Split by comma and clean up
                     if tendencies_str and tendencies_str.lower() not in ('none', 'n/a', ''):
                         ai_tendencies = [t.strip() for t in tendencies_str.split(',') if t.strip()]
             
@@ -359,11 +409,17 @@ class SubjectiveEvaluator:
             elif '**Theatrical Phrases Found**' in line or 'Theatrical Phrases Found' in line:
                 if ':' in line:
                     phrases_str = line.split(':', 1)[1].strip()
-                    # Remove brackets if present
                     phrases_str = phrases_str.strip('[]')
-                    # Split by comma and clean up
                     if phrases_str and phrases_str.lower() not in ('none', 'n/a', ''):
                         theatrical_phrases = [p.strip().strip('"\'') for p in phrases_str.split(',') if p.strip()]
+            
+            # Extract Formulaic Structures (NEW)
+            elif '**Formulaic Structures**' in line or 'Formulaic Structures' in line:
+                if ':' in line:
+                    formulaic_str = line.split(':', 1)[1].strip()
+                    formulaic_str = formulaic_str.strip('[]')
+                    if formulaic_str and formulaic_str.lower() not in ('none', 'n/a', ''):
+                        formulaic_structures = [f.strip() for f in formulaic_str.split(',') if f.strip()]
             
             # Extract Pass/Fail status
             elif '**Pass/Fail**' in line or 'Pass/Fail' in line:
@@ -381,20 +437,25 @@ class SubjectiveEvaluator:
         else:
             passes = 'PASS' in pass_fail
         
-        # Return result with three-score dimensions matching database schema
+        # Return result with six comprehensive dimensions
         return SubjectiveEvaluationResult(
             overall_score=overall_score,
             dimension_scores=[],  # Legacy field - no longer populated
             strengths=[],  # Simplified format uses narrative instead
-            weaknesses=[],  # Simplified format uses AI tendencies list
+            weaknesses=[],  # Simplified format uses detection lists
             recommendations=[],  # Simplified format focuses on pass/fail
             passes_quality_gate=passes,
             evaluation_time_ms=0,
             narrative_assessment=narrative_assessment,
             realism_score=overall_realism,  # Primary gate score
-            voice_authenticity=voice_authenticity,  # Author voice dimension
-            tonal_consistency=tonal_consistency,  # Professional tone dimension
+            voice_authenticity=voice_authenticity,
+            tonal_consistency=tonal_consistency,
+            technical_accessibility=technical_accessibility,  # NEW
+            natural_imperfection=natural_imperfection,  # NEW
+            conversational_flow=conversational_flow,  # NEW
             ai_tendencies=ai_tendencies if ai_tendencies else None,
+            technical_jargon_issues=technical_jargon_issues if technical_jargon_issues else None,  # NEW
+            formulaic_structures=formulaic_structures if formulaic_structures else None,  # NEW
             raw_response=response
         )
     
