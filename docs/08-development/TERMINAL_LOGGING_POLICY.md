@@ -38,11 +38,56 @@ This policy ensures complete visibility into generation operations, enabling:
 - **✅ MUST**: Log ALL quality checks and scores
 - **✅ MUST**: Log ALL parameter adjustments
 - **✅ MUST**: Log ALL learning activities
+- **✅ MUST**: Log ALL API requests and responses 🔥 **NEW (Nov 22, 2025)**
 - **❌ NEVER**: Silent operations or hidden retries
 
 ---
 
 ## 📊 Required Logging Sections
+
+### API Request & Response (Real-Time Status) 🔥 **NEW (Nov 22, 2025)**
+```
+────────────────────────────────────────────────────────────────────────────────
+🌐 [API REQUEST] Calling grok-4-fast
+────────────────────────────────────────────────────────────────────────────────
+📤 [API] Prompt: 12968 chars + System: 0 chars
+⚙️  [API] max_tokens=418 | temperature=0.815 | top_p=1.0
+🔗 [API] Endpoint: https://api.x.ai/v1/chat/completions
+⏳ [API] Timeout: 10s connect, 60s read
+
+🔌 [API] Establishing connection to https://api.x.ai...
+✅ [API] Connected (0.45s), streaming response...
+📥 [API] Response received (HTTP 200)
+📦 [API] Content downloaded (2,345 bytes)
+⚙️  [API] Parsing JSON response...
+✅ [API] JSON parsed successfully
+
+✅ [API SUCCESS] Request completed
+⏱️  [API] Total time: 2.34s
+📊 [API] Tokens: 1,234 total (890 prompt + 344 completion)
+📄 [API] Generated: 1,987 chars, ~312 words
+────────────────────────────────────────────────────────────────────────────────
+```
+
+### API Retry (On Transient Failures)
+```
+🔄 [API RETRY] Attempt 2/3 after 2.0s delay
+✅ [API RETRY] Delay complete, retrying now...
+```
+
+### API Errors
+```
+❌ [API ERROR] HTTP 429
+🚨 [API ERROR] Rate limit exceeded
+   Type: rate_limit_error
+   Code: 429
+```
+
+OR
+
+```
+⏰ [API ERROR] Read timeout after 60s
+```
 
 ### Attempt Progress (Every Retry)
 ```

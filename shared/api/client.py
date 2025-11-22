@@ -233,8 +233,10 @@ class APIClient:
                 if attempt > 0:
                     # Exponential backoff with jitter to avoid thundering herd
                     backoff_delay = retry_delay * (2 ** (attempt - 1))
-                    print(f"🔄 [API CLIENT] Retry attempt {attempt}/{max_retries} after {backoff_delay:.1f}s delay")
+                    print(f"\n🔄 [API RETRY] Attempt {attempt}/{max_retries} after {backoff_delay:.1f}s delay")
+                    logger.info(f"🔄 [API RETRY] Attempt {attempt}/{max_retries} after {backoff_delay:.1f}s delay")
                     time.sleep(backoff_delay)
+                    print(f"✅ [API RETRY] Delay complete, retrying now...")
                 response = self._make_request(request)
                 response.retry_count = attempt
 
@@ -311,23 +313,23 @@ class APIClient:
             messages.append({"role": "system", "content": request.system_prompt})
         messages.append({"role": "user", "content": request.prompt})
 
-        # Log API request details
+        # Log API request details (dual logging: terminal + file)
+        print(f"\n{'─'*80}")
+        print(f"🌐 [API REQUEST] Calling {self.model}")
+        print(f"{'─'*80}")
         logger.info(f"🌐 Making API request to {self.model}")
         logger.info(f"📝 Prompt length: {len(request.prompt)} chars")
         logger.info(
             f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}"
         )
 
-        # API Terminal Messaging - Start
-        print(f"🚀 [API CLIENT] Starting request to {self.model}")
-        print(
-            f"📤 [API CLIENT] Sending prompt ({len(request.prompt)} chars) with system prompt ({len(request.system_prompt) if request.system_prompt else 0} chars)"
-        )
-        print(
-            f"⚙️ [API CLIENT] Config: max_tokens={request.max_tokens}, temperature={request.temperature}"
-        )
-        print(f"🔗 [API CLIENT] Endpoint: {self.base_url}/v1/chat/completions")
-        print(f"⏳ [API CLIENT] Timeout: connect={self.timeout_connect}s, read={self.timeout_read}s")
+        # API Terminal Messaging - Configuration
+        print(f"📤 [API] Prompt: {len(request.prompt)} chars + System: {len(request.system_prompt) if request.system_prompt else 0} chars")
+        print(f"⚙️  [API] max_tokens={request.max_tokens} | temperature={request.temperature} | top_p={request.top_p}")
+        if "grok" not in self.model.lower() and "claude" not in self.model.lower():
+            print(f"⚙️  [API] frequency_penalty={request.frequency_penalty} | presence_penalty={request.presence_penalty}")
+        print(f"🔗 [API] Endpoint: {self.base_url}/v1/chat/completions")
+        print(f"⏳ [API] Timeout: {self.timeout_connect}s connect, {self.timeout_read}s read")
 
         # Debug: Log config type and attributes
         logger.info(f"🔧 Config type: {type(self.config)}")
@@ -359,15 +361,19 @@ class APIClient:
 
         # Make request with enhanced timeout handling
         try:
-            print("🔌 [API CLIENT] Establishing connection...")
+            print(f"\n🔌 [API] Establishing connection to {self.base_url}...")
+            request_start = time.time()
             response = self.session.post(
                 f"{self.base_url}/v1/chat/completions",
                 json=payload,
                 timeout=(self.timeout_connect, self.timeout_read),
             )
-            print("📡 [API CLIENT] Connection established, waiting for response...")
+            connect_time = time.time() - request_start
+            print(f"✅ [API] Connected ({connect_time:.2f}s), streaming response...")
         except requests.exceptions.ReadTimeout:
             # Handle read timeout specifically
+            print(f"\n⏰ [API ERROR] Read timeout after {self.timeout_read}s")
+            logger.error(f"Read timeout after {self.timeout_read}s")
             from shared.utils.ai.loud_errors import network_failure
 
             network_failure("api_client", f"Read timeout after {self.timeout_read}s")
@@ -379,6 +385,8 @@ class APIClient:
             )
         except requests.exceptions.ConnectTimeout:
             # Handle connection timeout specifically
+            print(f"\n⏰ [API ERROR] Connection timeout after {self.timeout_connect}s")
+            logger.error(f"Connection timeout after {self.timeout_connect}s")
             from shared.utils.ai.loud_errors import network_failure
 
             network_failure(
@@ -399,15 +407,17 @@ class APIClient:
         logger.info(f"🌐 Response content preview: {response.text[:200]}...")
 
         # API Terminal Messaging - Response received
-        print(f"📥 [API CLIENT] Received response (Status: {response.status_code})")
+        print(f"📥 [API] Response received (HTTP {response.status_code})")
+        logger.info(f"🌐 Response status: {response.status_code}")
 
         # Simplified content reading without complex threading
         try:
             content_data = response.content
-            print(
-                f"📦 [API CLIENT] Content loaded successfully ({len(content_data)} bytes)"
-            )
+            print(f"📦 [API] Content downloaded ({len(content_data):,} bytes)")
+            print(f"⚙️  [API] Parsing JSON response...")
         except Exception as e:
+            print(f"\n❌ [API ERROR] Content reading failed: {str(e)}")
+            logger.error(f"Content reading error: {e}")
             from shared.utils.ai.loud_errors import network_failure
 
             network_failure(
@@ -424,7 +434,10 @@ class APIClient:
         if response.status_code == 200:
             try:
                 data = response.json()
+                print(f"✅ [API] JSON parsed successfully")
             except json.JSONDecodeError as e:
+                print(f"\n❌ [API ERROR] Invalid JSON response: {str(e)}")
+                logger.error(f"JSON decode error: {e}")
                 from shared.utils.ai.loud_errors import api_failure
 
                 api_failure("api_client", f"JSON decode error: {e}", retry_count=None)
@@ -452,12 +465,14 @@ class APIClient:
             logger.info(f"📄 Content length: {len(content)} chars")
 
             # API Terminal Messaging - Success
-            print("✅ [API CLIENT] Request completed successfully")
-            print(f"⏱️ [API CLIENT] Response time: {response_time:.2f}s")
-            print(
-                f"📊 [API CLIENT] Tokens used: {usage.get('total_tokens', 'N/A')} total"
-            )
-            print(f"📄 [API CLIENT] Content length: {len(content)} chars")
+            print(f"\n✅ [API SUCCESS] Request completed")
+            print(f"⏱️  [API] Total time: {response_time:.2f}s")
+            prompt_tokens = usage.get('prompt_tokens', 0)
+            completion_tokens = usage.get('completion_tokens', 0)
+            total_tokens = usage.get('total_tokens', 0)
+            print(f"📊 [API] Tokens: {total_tokens:,} total ({prompt_tokens:,} prompt + {completion_tokens:,} completion)")
+            print(f"📄 [API] Generated: {len(content):,} chars, ~{len(content.split()):,} words")
+            print(f"{'─'*80}\n")
 
             # Handle empty content from reasoning models like grok-4
             if (
@@ -501,28 +516,26 @@ class APIClient:
         else:
             # Handle error response
             error_msg = f"API request failed with status {response.status_code}"
+            print(f"\n❌ [API ERROR] HTTP {response.status_code}")
             try:
                 error_data = response.json()
                 logger.info(f"📄 Error response data type: {type(error_data)}")
                 logger.info(f"📄 Error response content: {error_data}")
 
-                # API Terminal Messaging - Error
-                print(
-                    f"❌ [API CLIENT] Request failed with status {response.status_code}"
-                )
-
                 # Handle different error response formats
                 if isinstance(error_data, dict):
                     error_details = error_data.get("error", {})
                     if isinstance(error_details, dict):
-                        error_msg += (
-                            f": {error_details.get('message', 'Unknown error')}"
-                        )
+                        detailed_msg = error_details.get('message', 'Unknown error')
+                        error_msg += f": {detailed_msg}"
+                        print(f"🚨 [API ERROR] {detailed_msg}")
                         # Log additional error details
                         if "type" in error_details:
                             logger.error(f"Error type: {error_details['type']}")
+                            print(f"   Type: {error_details['type']}")
                         if "code" in error_details:
                             logger.error(f"Error code: {error_details['code']}")
+                            print(f"   Code: {error_details['code']}")
                     elif isinstance(error_details, str):
                         error_msg += f": {error_details}"
                     else:
