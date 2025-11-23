@@ -241,6 +241,16 @@ class SimpleGenerator:
         params = self._get_base_parameters(component_type)
         self.logger.info(f"🌡️  Temperature: {params['temperature']:.3f}")
         
+        # Get technical intensity from config and normalize to 0.0-1.0 scale
+        # Config uses 1-3 scale, prompt_builder expects 0.0-1.0
+        # Conversion: 1 → 0.0 (no specs), 2 → 0.5 (moderate), 3 → 1.0 (full detail)
+        config_technical_intensity = self.config.get('voice_parameters', {}).get('technical_intensity', 2)
+        normalized_intensity = (config_technical_intensity - 1) / 2.0  # 1→0.0, 2→0.5, 3→1.0
+        
+        enrichment_params = {
+            'technical_intensity': normalized_intensity
+        }
+        
         # Build prompt (humanness_layer already contains length from randomization_targets)
         from generation.core.prompt_builder import PromptBuilder
         prompt = PromptBuilder.build_unified_prompt(
@@ -251,6 +261,7 @@ class SimpleGenerator:
             context=context,
             component_type=component_type,
             domain='materials',
+            enrichment_params=enrichment_params,  # Pass technical_intensity
             humanness_layer=humanness_layer  # Contains length from randomization_targets
         )
         
