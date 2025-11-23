@@ -1,0 +1,242 @@
+name: Metal Matrix Composites MMCs
+slug: metal-matrix-composites-mmcs
+category: composite
+subcategory: fiber-reinforced
+content_type: unified_material
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: material
+title: MMCs Laser Cleaning
+subtitle: Precision laser cleaning, this straightforward process, efficiently preserves
+  MMCs' reinforcement integrity while revealing pristine hybrid surfaces.
+subtitle_metadata:
+  author_country: Indonesia
+  author_name: Ikmanda Roswati
+description: When laser cleaning metal matrix composites, unlike pure metals that
+  heat evenly, watch out for their embedded reinforcements—these can cause uneven
+  heat buildup right from the start, risking cracks if you push power too high. We've
+  found that starting with lower energy pulses helps control this, letting the laser
+  clear contaminants without stressing the matrix. What sets MMCs apart is their hybrid
+  strength from metal and fibers, so you adjust scan speeds slower to match their
+  good heat spreading, avoiding delamination. In our experience, this approach restores
+  surfaces smoothly for aerospace parts, but always test overlaps to prevent hot spots
+  in the tougher zones.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Composite
+  href: /materials/composites
+- label: Fiber Reinforced
+  href: /materials/composite/fiber-reinforced
+- label: Metal Matrix Composites MMCs
+  href: /materials/composite/fiber-reinforced/metal-matrix-composites-mmcs
+images:
+  hero:
+    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise
+      contamination removal
+    url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
+  micro:
+    alt: Metal Matrix Composites Mmcs microscopic view of laser cleaning showing detailed
+      precise contamination removal
+    url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
+caption: null
+faq: null
+regulatoryStandards: null
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    electricalResistivity:
+      value: 4.8e-08
+      unit: Ω·m
+      source: ai_research
+      min: 0.0
+      max: 105000000000000.0
+    fractureToughness: 25.0
+    thermalDestruction:
+      value: 933.0
+      unit: K
+      source: ai_research
+      min: 205.6
+      max: 1952.4
+    specificHeat:
+      value: 850.0
+      unit: J/kg·K
+      source: ai_research
+      min: 500
+      max: 2500.0
+    youngsModulus:
+      value: 105.0
+      unit: GPa
+      source: ai_research
+      min: 0.00475
+      max: 144899999999.99976
+    oxidationResistance:
+      value: 0.015
+      unit: mg/(cm²·h)
+      source: ai_research
+      min: 0.0
+      max: 1668.45
+    laserReflectivity:
+      value: 0.82
+      unit: ''
+      source: ai_research
+      min: 0.0043
+      max: 0.9217
+    thermalConductivity:
+      value: 170.0
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.03
+      max: 400
+    thermalExpansion:
+      value: 15.2
+      unit: ×10^{-6}/K
+      source: ai_research
+      min: -1
+      max: 250
+    density:
+      value: 2740.0
+      unit: kg/m³
+      source: ai_research
+      min: 0.9975
+      max: 2519.9475
+    hardness:
+      value: 120.0
+      unit: HV
+      source: ai_research
+      min: 5.0
+      max: 120
+    corrosionResistance:
+      value: 0.72
+      unit: dimensionless (relative corrosion resistance index)
+      source: ai_research
+      min: 0.0
+      max: 4725.0
+    laserAbsorption:
+      value: 0.28
+      unit: dimensionless (absorptivity)
+      source: ai_research
+      min: 0.1425
+      max: 524999.9925
+    compressiveStrength:
+      value: 420.0
+      unit: MPa
+      source: ai_research
+      min: 6.55025
+      max: 1259.65525
+    thermalDiffusivity:
+      value: 8.5e-05
+      unit: m²/s
+      source: ai_research
+      min: 0.0
+      max: 7.6e-05
+    flexuralStrength:
+      value: 450.0
+      unit: MPa
+      source: ai_research
+      min: 4.56
+      max: 1196.76
+    tensileStrength:
+      value: 420.0
+      unit: MPa
+      source: ai_research
+      min: 16.15
+      max: 1626.65
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptivity:
+      value: 0.15
+      unit: dimensionless
+      min: 0.05
+      max: 0.3
+      source: ai_research
+    absorptionCoefficient:
+      value: 5000000
+      unit: m⁻¹
+      min: 100000
+      max: 10000000
+      source: ai_research
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      min: 0.5
+      max: 10
+      source: ai_research
+    thermalShockResistance:
+      value: 1.8
+      unit: MW/m
+      min: 0.5
+      max: 3
+      source: ai_research
+    reflectivity:
+      value: 0.85
+      unit: dimensionless
+      min: 0.7
+      max: 0.95
+      source: ai_research
+    thermalDestructionPoint:
+      value: 1200
+      unit: K
+      min: 900
+      max: 2000
+      source: ai_research
+    vaporPressure:
+      value: 10
+      unit: Pa
+      min: 0.1
+      max: 1000
+      source: ai_research
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922209Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922215Z'
+  structure_version: '2.0'
