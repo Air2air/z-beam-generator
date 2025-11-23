@@ -4,6 +4,7 @@ category: metal
 subcategory: alloy
 content_type: unified_material
 schema_version: 4.0.0
+active: true
 datePublished: null
 dateModified: null
 author:
@@ -42,8 +43,9 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Tin Laser Cleaning
-subtitle: Tin's low 505 K melting point clears delicate surfaces, and its 66.8 W/m·K
-  conductivity manages heat well.
+subtitle: When laser cleaning tin, you must start with low power to handle its low
+  melting point carefully, unlike tougher metals that withstand higher intensities
+  without deforming.
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
@@ -75,7 +77,14 @@ images:
     alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
       structure
     url: /images/material/tin-laser-cleaning-micro.jpg
-caption: null
+caption:
+  before: When we examine the tin surface before laser cleaning at 1000x magnification,
+    dirty smudges cover most of it unevenly. Grimy particles cling tightly to the
+    rough texture, making the whole area look dull and patchy. Scattered dark spots
+    mar the base metal, hiding its natural shine completely.
+  after: After the laser treatment, the same view shows a smooth and even surface
+    free from all grime. The metal gleams brightly now, with no rough patches or clinging
+    debris left behind
 faq: null
 regulatoryStandards: null
 materialProperties:

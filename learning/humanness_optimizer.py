@@ -386,7 +386,14 @@ class HumannessOptimizer:
         template = self.template_file.read_text(encoding='utf-8')
         
         # 🎲 RANDOMIZE LENGTH TARGET (from config - zero hardcoded values)
-        length_config = self.config['randomization_targets']['length']
+        # Use subtitle_length for subtitle, default to 'length' for others
+        length_config_key = 'subtitle_length' if component_type == 'subtitle' else 'length'
+        if length_config_key in self.config['randomization_targets']:
+            length_config = self.config['randomization_targets'][length_config_key]
+        else:
+            # Fallback to 'length' if component-specific config not found
+            length_config = self.config['randomization_targets']['length']
+        
         length_options = []
         length_labels = {}
         for key, value in length_config.items():

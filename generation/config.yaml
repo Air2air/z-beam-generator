@@ -64,7 +64,7 @@ word_count_variation: 0.50               # ±50% variation for maximum diversity
 # Zero hardcoded values policy: ALL variation options configured here
 randomization_targets:
   
-  # Length variation targets (word counts)
+  # Length variation targets (word counts) - DESCRIPTION
   # Reduced 15% to account for LLM tendency to exceed targets
   length:
     short:
@@ -78,6 +78,22 @@ randomization_targets:
     long:
       range: [93, 127]
       description: "DETAILED - comprehensive coverage"
+      probability: 0.34
+  
+  # Length variation targets for SUBTITLE (50% of description ranges)
+  # Reduced further to account for LLM tendency to exceed targets
+  subtitle_length:
+    short:
+      range: [21, 31]
+      description: "CONCISE - core advantage only"
+      probability: 0.33
+    medium:
+      range: [31, 46]
+      description: "BALANCED - key property with context"
+      probability: 0.33
+    long:
+      range: [46, 63]
+      description: "DETAILED - property with comparison"
       probability: 0.34
   
   # Structural approaches
@@ -186,7 +202,7 @@ component_lengths:
     extraction_strategy: before_after  # Extract before/after sections
   
   subtitle:
-    target: 25                         # Target word count (variation applied from global slider)
+    target: 1000                       # No effective token limit - let prompt instructions control length
     extraction_strategy: raw           # Return text as-is
   
   faq:

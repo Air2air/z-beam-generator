@@ -4,6 +4,7 @@ category: metal
 subcategory: specialty
 content_type: unified_material
 schema_version: 4.0.0
+active: true
 datePublished: null
 dateModified: null
 author:
@@ -42,9 +43,10 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Magnesium Laser Cleaning
-subtitle: Lightweighting strategies in automotive and aerospace lean heavily on magnesium,
-  which trims overall mass more effectively than aluminum while upholding the structural
-  integrity required for high-stress environments
+subtitle: When laser cleaning magnesium, I've found it works best to start with lower
+  power settings because its lightweight structure and high reflectivity differ from
+  denser metals like steel, allowing quick contaminant removal without much heat buildup,
+  but always monitor closely to avoid surface melting at the end.
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
@@ -76,7 +78,15 @@ images:
     alt: Magnesium microscopic view of laser cleaning showing detailed precise contamination
       removal
     url: /images/material/magnesium-laser-cleaning-micro.jpg
-caption: null
+caption:
+  before: When examining the magnesium surface before laser cleaning at 1000x magnification,
+    we see a rough texture covered in scattered dark patches. Grime and oxide layers
+    cling tightly to the uneven contours, blocking any hint of the underlying metal.
+    These contaminants create a mottled appearance that obscures the material's natural
+    form.
+  after: After the laser treatment, the same surface reveals a smooth and even finish
+    under 1000x view. All the grime lifts away cleanly, exposing a bright and uniform
+    gleam
 faq: null
 regulatoryStandards: null
 materialProperties:
