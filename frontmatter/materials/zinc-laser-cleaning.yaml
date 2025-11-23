@@ -47,100 +47,11 @@ subtitle: Zinc offers exceptional corrosion resistance with a minimal 0.003 mm/y
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
-description: '### Laser Cleaning Zinc: Key Settings and Practical Tips
-
-
-  Zinc stands out as a soft, low-melting metal that we often see in galvanizing or
-  die-casting work. When you clean it with a laser, its high shine and quick heat
-  spread make things tricky, but handle it right and you get a clean surface without
-  much damage. Zinc''s big strength here is its even heat flow—once the laser energy
-  gets in, it spreads fast across the surface, so you avoid hot spots that could warp
-  nearby areas. To make use of this, start your cleaning runs slow at first, around
-  500 mm/s, and watch how the heat evens out. That way, you remove rust or oxide layers
-  without digging too deep into the base metal.
-
-
-  On the flip side, zinc reflects most laser light—up to 95% bounces right off—which
-  means the beam struggles to do its job. This low absorption, just about 5%, slows
-  down the cleaning and can waste energy if you''re not careful. What sets zinc apart
-  from tougher metals like steel is this mirror-like surface; steel soaks up more
-  heat right away, but zinc needs a gentler nudge to start absorbing. Because of that,
-  adjust your approach by picking a laser wavelength that zinc grabs onto better,
-  like those in the near-infrared range, and crank up the repetition rate to 50 kHz.
-  This keeps pulses coming steadily, building heat over time without shocking the
-  material. I find that prepping the surface with a light abrasive pass or even a
-  quick chemical etch helps cut down on reflection, letting the laser work faster
-  from the get-go.
-
-
-  Zinc melts at around 420°C, much lower than aluminum or iron, so its unusual low
-  thermal resistance means you have to stay alert to avoid puddling. This property
-  affects your whole setup—high thermal conductivity, about 116 W/m·K, pulls heat
-  away quick, but if you push too hard, that low melting point turns it into a liability.
-  In practice, this means keeping energy density low, say 5 J/cm² or less, especially
-  on thin coatings like galvanized steel where zinc sits on top. I''ve seen teams
-  run into trouble by ignoring this; the zinc layer vaporizes unevenly, leaving pits
-  or re-depositing fumes back on the surface. To dodge that, use short pulses around
-  10 ns and overlap your scans by 50%. This spreads the energy and prevents buildup
-  in one spot. Always test on a scrap piece first—zinc''s softness, with a hardness
-  of just 35 HB, means even minor overheating can scratch or deform it.
-
-
-  One pitfall that catches new users is thermal shock. Zinc handles temperature jumps
-  up to about 28 K without cracking, but its expansion rate, around 30 parts per million
-  per degree, makes it prone to buckling if you cool it too fast after cleaning. So,
-  after your passes—aim for 3 at most—let the piece air cool naturally, and avoid
-  quenching in water. This keeps the surface flat and ready for the next step, like
-  painting or assembly in automotive parts. Another oddity is zinc''s great corrosion
-  resistance, losing thickness at only 0.003 mm per year in normal air, but laser
-  cleaning can strip that protective oxide if you''re not precise. Focus your beam
-  to a tight 50 μm spot size to target just the dirt, and you''ll preserve that natural
-  shield. In my experience from die-casting cleanups, this targeted approach cuts
-  rework by half.
-
-
-  When setting up your machine for zinc, power is your main lever—stick to 100 W as
-  a baseline, but dial it down to 70-80 W if the surface looks extra shiny or if you''re
-  dealing with delicate hardware. High reflectivity throws off the usual rules, so
-  monitor the plume; if it''s weak or sporadic, bump the repetition rate or add an
-  extra pass. Zinc''s density, around 7,140 kg/m³, keeps it stable under the beam,
-  but its low tensile strength of 110 MPa means you can''t blast it like harder alloys.
-  Instead, go for multiple light passes to lift contaminants without stressing the
-  structure. I remember a construction job where we cleaned zinc roof panels—rushing
-  with high power melted edges, but slowing to 300 mm/s with overlaps fixed it, leaving
-  a smooth finish under 2 μm roughness.
-
-
-  What really differentiates zinc cleaning is how its vapor pressure builds fast near
-  the boiling point of 907°C. If you hit that, fumes can scatter and redeposit, gumming
-  up your nozzle or the workpiece. To counter this, work in a well-ventilated area
-  and use a slight assist gas like nitrogen at low pressure—it sweeps away the vapor
-  without cooling the spot too much. Unlike copper, which reflects but conducts even
-  hotter, zinc''s moderate diffusivity, about 4.2 x 10^-5 m²/s, gives you a window
-  to control the process. Start conservative: low power, tight spot, steady speed.
-  If ablation kicks in above 1 J/cm², you''re good for removing buildup, but watch
-  the damage threshold at 2 J/cm²—cross it and you risk subsurface cracks, especially
-  on porous-free but fracture-tough zinc at 15 MPa√m.
-
-
-  In galvanizing applications, where zinc coats steel for rust protection, laser cleaning
-  shines for stripping old layers without harming the base. But here''s a key adjustment:
-  zinc''s electrical conductivity, high at 17 million S/m, doesn''t directly play
-  in, but it hints at even electron flow, so uniform beam delivery matters. Uneven
-  scans can cause hot bands that weaken the coating''s 28 MPa compressive strength.
-  Use software to map your path, ensuring 50% overlap, and you''ll maintain that integrity.
-  For hardware manufacturing, where zinc dies get gunky from use, the low porosity—zero
-  percent—means no hidden traps for residue, but you still need to avoid flexural
-  weak points at 110 MPa.
-
-
-  Pitfalls abound if you treat zinc like stainless steel. Its absorption coefficient
-  is high at 65 million m^-1 once it starts taking the energy, but getting there takes
-  patience. Don''t crank power early; build it gradually over passes. And forget about
-  high-speed blasts—zinc''s thermal shock limit means 500 mm/s is your sweet spot,
-  not faster. In automotive trim cleaning, I''ve adjusted by adding a 3-pass protocol:
-  first to loosen, second to remove, third to polish. This leverages zinc''s fair
-  toughness while'
+description: We've found zinc cleans up nicely with laser settings. It reflects a
+  lot of light, so we start low on power to avoid scattering energy. This keeps the
+  surface cool and removes grime without melting. But watch the heat buildup mid-process—it
+  spreads fast because zinc conducts well. Adjust overlap to stay safe, and you'll
+  get a smooth finish every time.
 breadcrumb:
 - label: Home
   href: /

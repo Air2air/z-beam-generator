@@ -48,87 +48,14 @@ subtitle: Lightweighting strategies in automotive and aerospace lean heavily on 
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
-description: '### Laser Cleaning Magnesium: Key Settings and Practical Tips
-
-
-  Hello, I''m Ikmanda Roswati, a materials engineer from Indonesia with a Ph.D. in
-  laser processing. I''ve handled magnesium in projects for aerospace parts, and it
-  always requires a careful touch during cleaning. Magnesium is a lightweight metal
-  that shines in applications like automotive components and medical devices, but
-  its quirks make laser cleaning tricky. You need to adjust your setup to match its
-  behavior, or you''ll risk damaging the surface. Let''s walk through what works and
-  what to watch for, so you can get clean results without headaches.
-
-
-  Magnesium''s biggest strength for laser cleaning is its low density—about 1.74 g/cm³—which
-  keeps parts light and easy to maneuver during processing. This helps in industries
-  like sports equipment or electronics, where you clean delicate assemblies without
-  adding stress. But its high reflectivity, around 92-94% for common laser beams,
-  is a major weakness. Most of the energy just bounces off, so the laser struggles
-  to remove contaminants like oils or oxides. To fix this, start with a fluence just
-  above the damage threshold, say 1.2 J/cm², and build up slowly. I recommend using
-  a power of 100 W with a small spot size of 50 μm to focus the energy better. This
-  way, you concentrate the beam without wasting power on reflection.
-
-
-  What sets magnesium apart from steels or aluminums is its low absorption rate—only
-  about 6-9% of the laser energy gets soaked in. That means your standard settings
-  for other metals won''t cut it here; the process feels slower because the material
-  doesn''t heat up as quickly. Adjust by increasing the repetition rate to 50 kHz
-  and shortening pulse widths to 10 ns. These short bursts help zap contaminants without
-  letting heat build up in the base metal. In my experience, this prevents warping
-  on thin sheets used in marine or defense parts. Also, magnesium oxidizes fast in
-  air, forming a thin layer that can trap dirt. The laser cleans it well, but you
-  must work in a controlled environment—maybe with inert gas shielding—to avoid re-oxidation
-  right after.
-
-
-  One unusual property is magnesium''s high thermal conductivity, at 156 W/m·K, which
-  spreads heat quickly across the surface. This is great for even cleaning on large
-  panels, like in energy sector tooling, but it can lead to uneven removal if your
-  scan speed is off. Set your speed to 500 mm/s and aim for 50% overlap between passes.
-  Do two passes minimum to ensure you hit all spots without scorching. Because heat
-  dissipates so fast, you get good thermal shock resistance—up to 52 K difference—which
-  means the material handles quick temperature swings better than you might think.
-  Use this to your advantage: ramp up power gradually during the first pass to test
-  absorption on your specific alloy.
-
-
-  Pitfalls? Absolutely, and the main one is ignition risk. Magnesium burns hot if
-  it overheats, especially near its melting point of 650°C. Avoid high fluences over
-  1.8 J/cm², as that''s the ablation threshold where you start vaporizing the metal
-  itself. I''ve seen setups melt edges on automotive prototypes because operators
-  pushed power too hard to compensate for reflectivity. Instead, lower the initial
-  fluence and monitor with a thermal camera. If you''re cleaning cultural heritage
-  items, like old magnesium artifacts, stick to even lower settings—maybe 80% of standard
-  power—to preserve details. Another trap is its low hardness, just 38 HV, so aggressive
-  cleaning can scratch or pit the surface. Counter this by keeping passes light and
-  following with a gentle wipe-down.
-
-
-  Magnesium''s reactivity also affects post-cleaning. It has poor corrosion resistance,
-  with a potential of -2.37 V, so exposed surfaces pick up moisture and degrade fast.
-  After lasering, apply a protective coating right away, especially for marine or
-  outdoor uses. This keeps your clean surface intact longer. In electronics manufacturing,
-  where precision matters, the zero porosity helps—no hidden voids to trap residues—but
-  you still need to verify cleanliness with a simple wipe test or visual check under
-  light.
-
-
-  For scan patterns, go with a raster or zigzag on flat areas to cover evenly, and
-  slow down to 300 mm/s on curves to avoid missing spots. Overlap at 50% ensures no
-  gaps, particularly on porous contaminants like rust from salty environments. If
-  you''re dealing with heavy buildup from manufacturing residues, preheat the part
-  slightly—not over 100°C—to boost absorption without risking damage. This trick works
-  well for defense components that arrive oily.
-
-
-  In summary, cleaning magnesium demands patience and tweaks: low power starts, short
-  pulses, and multiple passes to overcome its shininess and heat spread. Get these
-  right, and you''ll remove contaminants cleanly while keeping the metal''s lightweight
-  benefits. I''ve cleaned batches for medical devices this way, and it saves time
-  in the long run. If your setup varies, test on scraps first—magnesium forgives small
-  mistakes but punishes big ones. Reach out if you need setup specifics for your application.'
+description: I've found that magnesium cleans up nicely with laser settings when you
+  keep the power gentle and the passes multiple, because its shiny surface bounces
+  most of the energy away and it heats up fast due to low thermal mass. This lightweight
+  metal differs from denser ones like steel by reacting quickly to any excess heat,
+  so the process removes contaminants without much buildup risk, but you need to control
+  the beam overlap to avoid uneven spots. Tends to stay smooth after treatment, ideal
+  for aerospace or automotive parts where precision matters. Just watch out at the
+  end—don't push the fluence too high, or it might ignite and ruin your workpiece.
 breadcrumb:
 - label: Home
   href: /
