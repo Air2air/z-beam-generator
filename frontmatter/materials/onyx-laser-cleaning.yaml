@@ -61,7 +61,23 @@ images:
     alt: Onyx microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/onyx-laser-cleaning-micro.jpg
 caption: null
-faq: null
+faq:
+- question: Is Onyx safe to laser clean, or does it produce **hazardous fumes**?
+  answer: '**Generates hydrogen cyanide gas**. Laser cleaning of Onyx, a carbon fiber-reinforced nylon composite, demands precise fluence management around 5.1 J/cm². Notably, the process can release hazardous hydrogen cyanide gas from the polymer matrix. Thus, effective fume extraction and certified respiratory protection remain essential for ensuring operator safety.'
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning soot or oxidation from Onyx **without damaging the surface**?
+  answer: '**Fluence below 5.1 J/cm²**. Specifically for Onyx, employ a 1064nm wavelength at 100W average power with 10ns pulses. Keep fluence below 5.1 J/cm² to ablate soot while preserving the stone''s integrity. Notably, a 50μm spot size scanned at 500mm/s removes contaminants effectively without thermal damage.'
+- question: Can laser cleaning remove support material from **3D printed Onyx parts** effectively?
+  answer: '**Selectively ablates polymer interface**. Yes, laser cleaning effectively removes support material from Onyx parts, particularly at the polymer interface. Specifically, a 1064 nm wavelength at 5.1 J/cm² ablates it without etching the stone substrate, thus offering a significant advantage over abrasive methods that risk surface scarring.'
+- question: How do you clean a laser-sintered Onyx (SLS) part versus a FFF-printed Onyx part with laser?
+  answer: Particularly for SLS Onyx, apply 5.1 J/cm² to clear trapped powder from its porous surface. In FFF parts, a lower fluence at 500 mm/s effectively removes layer lines without melting the polymer matrix. Thus, tailoring energy to their unique surface topographies proves essential.
+- question: Does laser cleaning affect the dimensional accuracy or mechanical strength of an Onyx part?
+  answer: Properly controlled laser cleaning particularly preserves Onyx's structural integrity. Notably, with a 5.1 J/cm² fluence and 50 µm spot size, we ablate contaminants effectively without inducing thermal stress or dimensional changes that could compromise mechanical strength.
+- question: What is the best way to clean carbon fiber-filled materials like Onyx compared to unfilled nylons?
+  answer: For Onyx, the carbon fibers particularly absorb laser energy readily, thus requiring conservative settings like 5.1 J/cm² fluence to avoid charring. This proves more critical than for pure nylon, where higher energies can typically be tolerated without such thermal damage.
+- question: After laser cleaning Onyx, is the surface left with a **different texture or color**?
+  answer: '**Preserves original polish**. When laser cleaning is tuned precisely to ~5.1 J/cm² fluence, it particularly preserves Onyx''s original polish. Yet, excessive energy may create a localized matte texture through micro-ablation. This cosmetic alteration notably influences later finishing processes, thus necessitating a light repolish for high-gloss results.'
+- question: Are there any specific certifications or regulatory guidelines for laser cleaning composite materials like Onyx in an industrial setting?
+  answer: For Onyx laser cleaning, consult the MSDS particularly for silica content while adhering to OSHA 29 CFR 1910.134 on respiratory protection. Notably, the 1064 nm wavelength at 5.1 J/cm² reduces subsurface damage; however, air monitoring proves essential against crystalline silica fume exposure, thus demanding specific PELs.
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -227,3 +243,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922301Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:32.658510'

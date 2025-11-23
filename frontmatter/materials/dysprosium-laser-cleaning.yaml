@@ -62,7 +62,25 @@ images:
     alt: Dysprosium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/dysprosium-laser-cleaning-micro.jpg
 caption: null
-faq: null
+faq:
+- question: Is dysprosium a **common contaminant** in laser cleaning, and what industrial processes create it?
+  answer: '**Oxide requires 2.5 J/cm²**. Dysprosium emerges as a notable atypical contaminant, appearing in essential sectors like rare-earth magnet recycling or nuclear control rod handling. Its oxide layers require ~2.5 J/cm² fluence for removal and form readily above 300°C. You''ll typically encounter its residues when processing end-of-life electronics or specialized aerospace alloys.'
+- question: What is the optimal laser wavelength (e.g., 1064nm, 532nm) for effectively removing **dysprosium oxide layers**?
+  answer: '**1064nm optimal for high absorption**. For Dysprosium oxide removal, the 1064 nm wavelength proves optimal, thanks to its strong absorption in Dy₂O₃. This strategy is essential for effective ablation at the 2.5 J/cm² fluence threshold, capitalizing on the material''s notable low thermal conductivity (10.7 W/(m·K)) to reduce substrate damage. As a result, the oxide layer vaporizes cleanly, sparing the underlying rare-earth metal.'
+- question: Does laser cleaning of dysprosium or its compounds pose a significant **fire or explosion hazard**?
+  answer: '**Pyrophoric fines require inert atmosphere**. Indeed, fine dysprosium particulate shows notable pyrophoricity. Bulk metal stays stable, yet the 80 µm laser ablation process creates reactive fines. Essential mitigation involves an inert argon atmosphere plus robust fume extraction to avert ignition, particularly at the 2.5 J/cm² fluence threshold.'
+- question: What are the specific health risks from **inhaling fumes or nanoparticles** generated during the laser cleaning of dysprosium?
+  answer: '**Poses pulmonary toxicity risks**. Inhaling dysprosium oxide nanoparticles amid 1064 nm laser cleaning at 2.5 J/cm² carries notable pulmonary toxicity risks. SDS requires essential engineering controls like HEPA filtration, plus a P100 respirator, to shield workers from these persistent fine particulates.'
+- question: How do you properly handle and dispose of the waste generated from laser cleaning dysprosium-contaminated surfaces?
+  answer: The dysprosium oxide (Dy₂O₃) powder generated, while not inherently dangerous, requires thorough characterization. Its distinct low specific heat of 170 J/(kg·K) renders it essential to enclose waste in sealed containers, thereby averting dust release and adhering to local metal oxide disposal guidelines.
+- question: Can a standard pulsed fiber laser effectively clean **dysprosium stains** from a stainless steel substrate without causing damage?
+  answer: '**Ablates at 2.5 J/cm² fluence**. Indeed, a standard pulsed fiber laser effectively removes dysprosium from stainless steel. Dysprosium''s notably low thermal conductivity of 10.7 W/(m·K) allows ablation at a fluence of about 2.5 J/cm², while precise parameter control remains essential to avoid damaging the substrate.'
+- question: Why is dysprosium sometimes mentioned in the context of **laser crystals**? Does this relate to laser cleaning?
+  answer: '**72% reflectivity requires 2.5 J/cm²**. Dysprosium plays a notable role as a dopant in laser crystals such as Dy:YAG, facilitating mid-infrared light emission instead of any cleaning purpose. However, found in manufacturing waste with 72% laser reflectivity, it calls for essential, meticulous removal at ~2.5 J/cm² to clear this impurity.'
+- question: What is the best method for verifying that all **dysprosium residue** has been successfully removed by the laser cleaning process?
+  answer: '**XRF detects trace contamination**. To ensure thorough verification of dysprosium residue removal, I suggest pairing visual inspection—distinct for its oxide contrast—with quantitative X-ray Fluorescence (XRF) analysis. This essential non-destructive approach detects trace elemental contamination down to single-digit ppm levels, confirming a clean surface without altering the 8.55 g/cm³ substrate.'
+- question: Are there any **regulatory or compliance issues** specific to laser cleaning operations involving dysprosium?
+  answer: '**Monitor airborne dysprosium aerosols**. A notable compliance issue stems from airborne particulates of the 8.55 g/cm³ dysprosium. Although OSHA''s PEL for nuisance dust applies, the 1064 nm laser''s 2.5 J/cm² ablation threshold generates fine aerosols that essential demand air monitoring. Furthermore, document waste disposal for the gathered metallic dust.'
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -169,3 +187,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.921877Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:31.671198'

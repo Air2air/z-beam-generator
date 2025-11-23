@@ -61,7 +61,27 @@ images:
     alt: Polycarbonate microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polycarbonate-laser-cleaning-micro.jpg
 caption: null
-faq: null
+faq:
+- question: Can you safely laser clean polycarbonate surfaces without causing **yellowing or clouding**?
+  answer: '**Low fluence prevents yellowing**. Yes, polycarbonate can be safely laser cleaned without yellowing, particularly with a 1064 nm wavelength and fluence carefully controlled below 0.8 J/cm². This technique removes contaminants while holding the substrate temperature well under its thermal degradation threshold, thus avoiding photochemical damage and maintaining optical clarity.'
+- question: What **laser wavelength** is safest for cleaning contaminants from polycarbonate without damaging the substrate?
+  answer: '**Near-IR minimizes thermal damage**. Particularly for polycarbonate cleaning, near-IR wavelengths like 1064 nm remain safest, as they experience poor absorption by the substrate and thus minimize thermal damage. Keep fluence below 0.8 J/cm² using nanosecond pulses at 20 kHz. This method removes contaminants effectively while upholding the polymer''s integrity.'
+- question: How do you remove **mold release agents** from polycarbonate components using laser cleaning?
+  answer: '**Low fluence below damage threshold**. For silicone-based mold releases on polycarbonate, we specifically use a 1064 nm laser at ~0.8 J/cm² fluence. Notably, this ablates the thin organic film effectively while keeping the substrate''s temperature safely below its damage threshold, thus ensuring complete removal.'
+- question: What are the maximum safe fluence levels for laser cleaning polycarbonate surfaces?
+  answer: For laser cleaning of polycarbonate, particularly to avoid melting, keep fluence below 1.0 J/cm². Notably, optimal results emerge around 0.8 J/cm² using 1064 nm wavelength, effectively removing contaminants while preserving the polymer's integrity.
+- question: Can laser cleaning create micro-cracks or stress concentrations in polycarbonate components?
+  answer: Yes, laser cleaning can induce micro-cracks in polycarbonate, particularly from its notch sensitivity. Thus, to avoid this, keep fluence below 0.8 J/cm² and apply a 50% overlap ratio, preventing excessive thermal stress that weakens mechanical properties.
+- question: How does laser cleaning affect the **optical clarity** and light transmission of polycarbonate lenses or windows?
+  answer: '**Maintains high light transmission**. By adopting gentle parameters like 0.8 J/cm² fluence and 500 mm/s scan speed, proper laser cleaning particularly safeguards polycarbonate optics. Notably, this technique eliminates contaminants while curbing surface roughness and haze, thus upholding superior light transmission.'
+- question: What safety precautions are needed when laser cleaning polycarbonate due to potential **hazardous fume generation**?
+  answer: '**Requires HEPA fume extraction**. Decomposition of polycarbonate notably releases bisphenol A along with phenolic compounds. For safety, deploy a high-efficiency fume extractor equipped with HEPA and activated carbon filtration, while limiting laser fluence to below 0.8 J/cm² to curb hazardous fume production. Proper ventilation is thus vital for operator protection.'
+- question: Is laser cleaning suitable for preparing polycarbonate surfaces for **adhesion or coating applications**?
+  answer: '**Increases surface energy micro-textures**. Laser cleaning excels at readying polycarbonate for adhesion, particularly through elevating surface energy and generating micro-textures. Notably, a 1064 nm wavelength at 0.8 J/cm² fluence eliminates contaminants and adjusts surface chemistry, thus exceeding solvent wiping in bond strength.'
+- question: How do you remove oxidation or **UV degradation** from aged polycarbonate using laser cleaning?
+  answer: '**Selective ablation below 0.8 J/cm²**. For aged polycarbonate, we apply a 1064 nm laser, with fluence specifically maintained below 0.8 J/cm². This method particularly targets the degraded surface layer for ablation, thus safeguarding the intact substrate underneath. It thereby restores optical clarity and surface integrity, avoiding thermal damage.'
+- question: What **real-time monitoring techniques** work best for laser cleaning polycarbonate to prevent damage?
+  answer: '**Fluorescence detects spectral shifts**. Laser-induced fluorescence monitoring, particularly effective, detects early polycarbonate degradation by tracking spectral shifts around 450-550 nm. These changes indicate molecular breakdown before visible damage appears. Meanwhile, thermal imaging keeps surface temperature below 150°C, thus ensuring the process stays within the safe fluence threshold of 0.8 J/cm² for this sensitive polymer.'
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -227,3 +247,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922389Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:32.829212'

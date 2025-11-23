@@ -61,7 +61,27 @@ images:
     alt: Phenolic Resin Composites microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/phenolic-resin-composites-laser-cleaning-micro.jpg
 caption: null
-faq: null
+faq:
+- question: What are the optimal laser parameters (wavelength, power, pulse duration) for cleaning carbon fiber reinforced phenolic composites without damaging the underlying fibers?
+  answer: For carbon fiber phenolic composites, typically go with a 1064 nm wavelength and about 5.1 J/cm² fluence. Employing a 10 ns pulse width plus 50% beam overlap at 500 mm/s pretty effectively removes the resin matrix without harming the fibers below. These settings basically cut down thermal damage through the differing absorption rates of the polymer versus carbon reinforcement.
+- question: Does laser cleaning of phenolic composites create any hazardous byproducts or **release formaldehyde**?
+  answer: '**Releases formaldehyde; mandates extraction**. Laser ablation of phenolic composites at 5.1 J/cm² can fairly decompose the resin matrix, releasing hazardous byproducts like formaldehyde. Proper fume extraction is basically essential, and operators must wear respiratory protection to reduce exposure risks from these airborne particulates and gases.'
+- question: How do I prevent **yellowing or discoloration** of phenolic resin surfaces during laser cleaning?
+  answer: '**Minimize thermal exposure**. To prevent yellowing in phenolic resin, basically minimize thermal exposure with our optimal 5.1 J/cm² fluence and 500 mm/s scan speed. This fairly controlled ablation via a 1064 nm wavelength laser sidesteps the excessive heat that triggers discoloration.'
+- question: Can laser cleaning effectively remove **carbonized char** from phenolic composites after high-temperature exposure without damaging the undamaged substrate?
+  answer: '**Selective ablation preserves substrate**. Yes, laser cleaning pretty effectively removes carbonized char from phenolic composites at 1064 nm and 5.1 J/cm². This fluence fairly selectively ablates the damaged layer, preserving the undamaged substrate beneath for precise post-fire restoration.'
+- question: What's the **maximum ablation depth** we can achieve on phenolic composites before compromising structural integrity?
+  answer: '**Limit to under 25-50 μm**. For phenolic composites, keep removal pretty much under 25-50 μm to preserve structural integrity. At 5.1 J/cm² fluence, typically monitor depth via optical coherence tomography to avoid damaging underlying reinforcement fibers. Basically, this keeps mechanical properties intact.'
+- question: How does laser cleaning compare to traditional methods like grit blasting or chemical stripping for removing coatings from **phenolic composites**?
+  answer: '**Ablates without substrate damage**. Laser cleaning basically outperforms traditional methods by pretty precisely ablating coatings at 5.1 J/cm² without harming the composite substrate. As a non-contact approach, it eliminates media embedment and hazardous waste, delivering superior surface quality and environmental safety over abrasive or chemical options.'
+- question: What are the challenges with laser cleaning **woven carbon phenolic composites** versus molded phenolic materials?
+  answer: '**Requires precise fluence control**. Woven carbon phenolic poses pretty significant challenges owing to its anisotropic structure. Across the weave, the resin-to-fiber ratio varies fairly, demanding precise fluence control near 5.1 J/cm² to prevent carbon fiber fraying—unlike uniform molded materials.'
+- question: Does laser surface treatment improve adhesion for **subsequent bonding or painting** on phenolic composites?
+  answer: '**Enhances adhesion via micro-roughness**. Yes, laser treatment fairly significantly boosts adhesion on phenolic composites. At 5.1 J/cm², we basically ramp up surface energy and generate micro-roughness for superior mechanical interlocking, outperforming traditional abrasive methods.'
+- question: What real-time monitoring techniques work best for laser cleaning phenolic composites to prevent over-processing?
+  answer: For phenolic composites, laser-induced breakdown spectroscopy (LIBS) typically provides the most precise real-time monitoring. It directly analyzes plasma emissions to distinguish contaminants from the 1064 nm-absorbing resin matrix, preventing damage by confirming the endpoint before exceeding the 5.1 J/cm² ablation threshold. Basically, this ensures you halt the process right upon reaching a clean surface.
+- question: How does the **filler content** (glass fibers, carbon fibers, minerals) in phenolic composites affect laser cleaning efficiency and results?
+  answer: '**Requires absorption-based parameter adjustment**. Filler content can pretty dramatically alter laser cleaning dynamics. Glass fibers typically reflect at 1064 nm, demanding higher fluence around 5.1 J/cm², whereas carbon black absorbs quite aggressively and risks fiber damage. Adjust parameters like the 500 mm/s scan speed according to the composite''s specific absorption profile to prevent thermal degradation of the matrix.'
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -228,3 +248,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922327Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:32.709069'

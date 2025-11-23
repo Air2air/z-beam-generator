@@ -62,7 +62,23 @@ images:
     alt: Fir microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/fir-laser-cleaning-micro.jpg
 caption: null
-faq: null
+faq:
+- question: What are the optimal laser settings (wavelength, power, pulse duration) for cleaning soot or biological growth from Fir wood without causing **ablation or yellowing**?
+  answer: '**Low fluence avoids lignin carbonization**. As a laser cleaning expert from Indonesia, where we deeply value our wooden heritage, I recommend a practical 1064 nm Nd:YAG laser with 200-300 mJ pulse energy and 10-20 ns duration. This process gently clears soot or biological growth from Fir wood, preventing ablation or yellowing by limiting fluence to under 1 J/cm².'
+- question: How does the **variable resin content** in Fir wood affect the laser cleaning process and how do we adjust for it?
+  answer: '**Requires careful fluence control**. Fir wood''s varying resin levels require precise fluence management at roughly 1.2 J/cm². Those resin pockets vaporize faster than nearby wood fibers, risking irregular finishes. In this process, begin with a practical low-power scan at 500 mm/s to pinpoint the issues, followed by targeted passes that methodically prevent resin from seeping into cleared zones.'
+- question: Can a fiber laser effectively remove old, lead-based paint from Fir clapboard without damaging the **softwood surface** underneath?
+  answer: '**Precise control avoids etching grain**. In this process, a fiber laser removes lead paint from Fir clapboard efficiently with ~1.2 J/cm² fluence and 100 µm spot size. Precise parameter control remains straightforward to prevent etching the softwood grain, while a HEPA fume extractor is essential for capturing hazardous lead particulates.'
+- question: What is the **maximum safe surface temperature** for Fir during laser cleaning to prevent degradation of its structural or aesthetic properties?
+  answer: '**Threshold 150-200°C prevents degradation**. Fir wood hits its thermal degradation threshold at around 150-200°C, causing permanent discoloration and charring. For practical monitoring, efficiently apply IR thermography to maintain surface temperatures below this range, particularly at 1.2 J/cm² fluence and 100 µm spot size, preserving structural integrity.'
+- question: What specific safety precautions and **fume extraction systems** are required when laser cleaning Fir, especially when removing paints or contaminants?
+  answer: '**HEPA/ULPA captures explosive wood dust**. For cleaning Fir at 1.2 J/cm², employ a HEPA/ULPA extraction system efficiently to capture explosive wood dust and lead fumes. Operators require a P100 respirator in this process, given the hazardous pyrolysis by-products from the wood substrate.'
+- question: How do you evaluate the success of laser cleaning on Fir? What are the acceptable levels of micro-burning or changes to the **original patina**?
+  answer: '**Maintain patina with ΔE<3**. Assessing success in a straightforward manner involves preserving the original patina. In this process, we apply colorimetry to maintain ΔE below 3, while microscopy confirms the 100 µm spot size avoids micro-charting. Minor, uniform lightening is acceptable, but carbonization-induced darkening indicates failure.'
+- question: Is laser cleaning a viable method for decontaminating Fir wood affected by **mold or fungi** without using chemicals?
+  answer: '**Requires multi-pass treatment**. Laser cleaning provides a straightforward decontamination for Fir wood, employing 1064 nm wavelength light absorbed by mold to trigger rapid thermal ablation. At 1.2 J/cm² fluence and 100 W power, this process eradicates surface spores without carbonizing the substrate. Still, deeply embedded mycelial networks might linger, necessitating multi-pass treatment.'
+- question: Why does laser-cleaned Fir sometimes **appear lighter or darker** than the surrounding untreated wood, and how can this be minimized?
+  answer: '**Maintain fluence for color preservation**. Laser-cleaned Fir wood shows a lighter tone after removing darkened patina, though it may darken slightly from carbonization if fluence exceeds limits. Straightforwardly, set fluence to 1.2 J/cm² with 500 mm/s scan speed and 50% beam overlap. This process achieves uniform contaminant removal, preserving the natural color for even results.'
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -223,3 +239,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.921927Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:31.804400'

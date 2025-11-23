@@ -63,7 +63,11 @@ images:
 caption:
   before: When examining the contaminated zinc surface at 1000x magnification, I've noticed irregular bumps and dark smudges everywhere. Grime layers build up thickly, dulling the metal's natural tone completely. These spots create a patchy, worn look that hides the underlying structure.
   after: After laser treatment on the zinc surface at 1000x magnification, it appears smooth and evenly lit now. The clean areas reflect light brightly without any lingering marks. This polished finish reveals the metal's true clarity
-faq: null
+faq:
+- question: What makes zinc suitable for industrial use?
+  answer: Zinc is a metal we often work with in coatings and alloys. It handles heat well up to around 693 K before it starts to break down. And its specific heat sits at about 389 J/kg·K, so it absorbs energy steadily without big temperature jumps. This helps in applications like galvanizing steel—zinc protects against rust effectively.
+- question: How do we clean zinc surfaces with lasers?
+  answer: For laser cleaning, we use a power range of 100 W. This removes contaminants like oxides or dirt without damaging the zinc underneath. The process heats the surface just enough to vaporize buildup, and since zinc conducts heat evenly, it clears spots quickly. But watch the settings—too much power melts it, so start low and test. We've seen good results on coated parts this way.
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -308,3 +312,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.923031Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:34.193599'

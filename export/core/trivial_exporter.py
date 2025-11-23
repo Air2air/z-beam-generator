@@ -265,9 +265,22 @@ class TrivialFrontmatterExporter:
                 cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
                 # Strip generation metadata
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
-            elif key in ['caption', 'faq', 'regulatoryStandards']:
-                # These fields are orchestrated from separate content files - skip in this loop
-                # Will be added after the loop from self.captions, self.faqs, self.regulatory_standards
+            elif key == 'caption':
+                # Caption is orchestrated from separate Captions.yaml file - skip in this loop
+                # Will be added after the loop from self.captions
+                continue
+            elif key == 'faq':
+                # FAQ may exist in Materials.yaml OR in external FAQs.yaml
+                # Priority: Materials.yaml data first, then FAQs.yaml
+                if value:  # If FAQ exists in Materials.yaml, use it
+                    cleaned = self._remove_descriptions(value, preserve_regulatory=False)
+                    formatted_faq = self._format_faq_with_topics(cleaned)
+                    frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
+                # If no FAQ in Materials.yaml, will try external FAQs.yaml after loop
+                continue
+            elif key == 'regulatoryStandards':
+                # Regulatory standards is orchestrated from separate RegulatoryStandards.yaml file - skip in this loop
+                # Will be added after the loop from self.regulatory_standards
                 continue
             else:
                 # Copy as-is but remove description fields and strip generation metadata
@@ -277,8 +290,8 @@ class TrivialFrontmatterExporter:
         # Orchestrate content from separated content files (Captions.yaml, FAQs.yaml, RegulatoryStandards.yaml)
         # These files were extracted from Materials.yaml for better organization while maintaining single-file output
         
-        # Add caption from Captions.yaml
-        if material_name in self.captions:
+        # Add caption from Captions.yaml (if not already present)
+        if 'caption' not in frontmatter and material_name in self.captions:
             caption_data = self.captions[material_name]
             cleaned = self._remove_descriptions(caption_data, preserve_regulatory=False)
             stripped = self._strip_generation_metadata(cleaned)
@@ -291,8 +304,8 @@ class TrivialFrontmatterExporter:
             else:
                 frontmatter['caption'] = stripped
         
-        # Add FAQ from FAQs.yaml
-        if material_name in self.faqs:
+        # Add FAQ from FAQs.yaml (if not already present from Materials.yaml)
+        if 'faq' not in frontmatter and material_name in self.faqs:
             faq_data = self.faqs[material_name]
             cleaned = self._remove_descriptions(faq_data, preserve_regulatory=False)
             formatted_faq = self._format_faq_with_topics(cleaned)
@@ -385,6 +398,14 @@ class TrivialFrontmatterExporter:
         materials_page['eeat'] = full_frontmatter.get('eeat')
         materials_page['material_metadata'] = full_frontmatter.get('material_metadata')
         
+        # Add preservedData with generation timestamp for metadata sync validation
+        from datetime import datetime
+        materials_page['preservedData'] = {
+            'generationMetadata': {
+                'generated_date': datetime.now().isoformat()
+            }
+        }
+        
         # Write materials page YAML
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
         output_path = self.materials_output_dir / filename
@@ -466,6 +487,14 @@ class TrivialFrontmatterExporter:
         
         # Add material_challenges (category-level diagnostic guidance)
         settings_page['material_challenges'] = full_frontmatter.get('material_challenges')
+        
+        # Add preservedData with generation timestamp for metadata sync validation
+        from datetime import datetime
+        settings_page['preservedData'] = {
+            'generationMetadata': {
+                'generated_date': datetime.now().isoformat()
+            }
+        }
         
         # Write settings page YAML
         filename = f"{material_name.lower().replace(' ', '-')}-settings.yaml"

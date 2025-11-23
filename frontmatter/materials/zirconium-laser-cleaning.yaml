@@ -64,7 +64,27 @@ images:
 caption:
   before: Under 1000x magnification, the zirconium surface appears rough and dotted with dark specks. Contaminants form uneven layers that cling stubbornly to the base metal. We see irregular patches that dull the overall shine.
   after: After laser treatment, the same view shows a smooth and even texture free of spots. The beam clears away all grime to expose a bright, uniform finish. We've restored the metal's natural clarity without any harm.
-faq: null
+faq:
+- question: What laser wavelengths are most effective for cleaning zirconium alloys without causing **thermal damage or oxidation**?
+  answer: '**1064 nm prevents oxidation**. For zirconium alloys, a 1064 nm near-IR wavelength offers a practical cleaning approach, absorbing just enough to strip oxides without sparking unwanted oxidation or heat buildup—unlike shorter UV options that invite deeper thermal risks. This process works best with 10 ns pulses and 5.1 J/cm² fluence to efficiently remove surface layers while preserving the metal''s integrity in nuclear or aerospace applications.'
+- question: Is there a risk of **zirconium ignition** or fire during laser cleaning processes on contaminated surfaces?
+  answer: '**Pyrophoric dust requires inert shielding**. Zirconium''s pyrophoric dust from laser ablation at 5.1 J/cm² fluence ignites spontaneously in air, raising fire risks on contaminated surfaces. In this process, shield with inert gas like argon during 100 W operation to prevent oxidation—a practical step—and follow safety sheets by using Class D extinguishers or dry sand for flare-ups.'
+- question: How does the **high reflectivity** of zirconium affect the efficiency of laser cleaning in nuclear fuel cladding applications?
+  answer: '**Hinders absorption; requires high fluence**. Zirconium''s high reflectivity, exceeding 90% at 1064 nm wavelengths, complicates laser energy absorption when cleaning nuclear fuel cladding, cutting efficiency and risking incomplete oxide removal. Straightforwardly, we tackle this by raising fluence to 5.1 J/cm² and power to 100 W, plus pre-roughening the surface efficiently for better light trapping.'
+- question: What are common contaminants on zirconium surfaces in chemical processing plants, and how does laser cleaning compare to chemical methods?
+  answer: In chemical processing plants, zirconium surfaces commonly accumulate oxide scales, mineral deposits, and organic residues amid corrosive conditions. This process of laser cleaning outperforms that method of chemicals through straightforward, non-contact ablation at 5.1 J/cm² fluence and 100 W power, preserving the metal's natural corrosion resistance without residues or secondary contamination.
+- question: In laser cleaning equipment for zirconium, what monitoring is needed to prevent **hydrogen embrittlement** or phase changes?
+  answer: '**Monitor temperature and hydrogen levels**. For zirconium laser cleaning, a practical approach involves using real-time IR thermography to keep surface temperatures below 400°C, avoiding alpha-to-beta phase transitions, and gas analyzers to maintain hydrogen under 10 ppm, preventing embrittlement. In this process, adhere to manufacturer thresholds like 5.1 J/cm² fluence at 100 W power, then verify via post-process metallographic exams.'
+- question: Are there regulatory guidelines for laser cleaning zirconium in aerospace components to ensure **compliance with ASTM standards**?
+  answer: '**Targets 5.1 J/cm² fluence**. Yes, laser cleaning zirconium for aerospace straightforwardly follows ASTM B353 for alloy specs and ASTM F86 for surface prep, delivering oxide-free finishes. Aim for 5.1 J/cm² fluence at 100 W to precisely ablate contaminants, curbing thermal effects on this reactive metal. This process validation relies on profilometry and detailed logs for certification.'
+- question: What physical properties of zirconium, like its melting point and thermal conductivity, influence the choice of laser cleaning techniques?
+  answer: Zirconium's melting point of 1855°C enables robust thermal processing, yet its low thermal conductivity builds heat quickly, making pulsed lasers preferable to continuous wave for substrate protection. In a practical approach to oxide removal, nanosecond pulses at 1064 nm deliver 5.1 J/cm² fluence and 100 W power, ensuring straightforward ablation control.
+- question: How can laser cleaning remove oxide layers from zirconium without introducing new surface defects or altering its **corrosion resistance**?
+  answer: '**Preserves inherent corrosion resistance**. In a practical approach, a 1064 nm nanosecond laser at 5.1 J/cm² fluence enables selective photothermal ablation to vaporize zirconium oxide layers, leaving the substrate intact and preventing thermal stress from causing microcracks. This process maintains the metal''s corrosion resistance for nuclear or aerospace applications. SEM and XPS analyses verify defect-free surfaces with stable oxide-free chemistry.'
+- question: In training materials for laser operators, what handling precautions are emphasized for zirconium during cleaning to avoid dust generation?
+  answer: In zirconium laser cleaning at 5.1 J/cm² fluence and 100 W power, operators should practically prioritize enclosed dust collection systems to capture reactive airborne particles, thus preventing ignition risks. Full PPE, including respirators and gloves, remains mandatory, paired with local exhaust ventilation meeting 100 fpm standards to efficiently mitigate toxicity from fine dust inhalation.
+- question: What are the environmental and safety benefits of using laser cleaning on zirconium over traditional pickling methods in industry?
+  answer: Laser cleaning zirconium at 5.1 J/cm² fluence and 100 W power provides a practical alternative to acid pickling, cutting chemical waste and minimizing pollution in nuclear and aerospace sectors. That method avoids corrosive fumes, boosting worker safety and ensuring OSHA-EPA compliance, while preserving the metal's integrity for sensitive uses.
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -309,3 +329,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.923056Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:34.239578'

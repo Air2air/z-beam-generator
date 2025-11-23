@@ -64,7 +64,25 @@ images:
 caption:
   before: At 1000x magnification, the rhenium surface appears rough and uneven before cleaning. Dark patches of grime cling tightly to the metal, hiding its true shine. Tiny pits and irregular bumps scatter across the view, making it look worn and dull.
   after: After laser treatment, the same surface gleams smoothly under 1000x magnification. The metal now shows a clean, even texture without any clinging dirt. Bright reflections highlight the restored flatness, free from pits and old buildup
-faq: null
+faq:
+- question: What laser wavelength is most effective for cleaning rhenium surfaces without causing thermal damage, given its **high melting point**?
+  answer: '**1064 nm balances reflectivity absorption**. In rhenium cleaning tasks, the 1064 nm near-IR wavelength stands out notably, balancing the metal''s high reflectivity against strong oxide absorption to achieve the 2.5 J/cm² ablation threshold without thermal risks—due to its essential melting point and conductivity. Operating at 150 W with 15 ns pulses, it delivers precise, undamaged outcomes.'
+- question: How does rhenium's oxide layer affect the laser cleaning process, and what pulse durations are recommended to remove it efficiently?
+  answer: Rhenium's oxide layer offers a notable increase in laser absorption at 1064 nm, supporting initial cleaning while raising re-oxidation risks from thermal buildup. For clean ablation without substrate damage, select 15 ns pulses at 2.5 J/cm² fluence—picosecond options succeed too, but prove less efficient on thicker layers.
+- question: In laser cleaning of **rhenium alloys** used in aerospace, what are the common contaminants and how well does fiber laser ablation handle them?
+  answer: '**Vaporizes contaminants without substrate harm**. In aerospace applications, rhenium-tungsten alloys often accumulate oils and machining residues—a notable issue. Fiber laser ablation proves essential here, employing 1064 nm wavelength and 2.5 J/cm² fluence to vaporize contaminants efficiently, while three passes at 150 W preserve pristine surface integrity without substrate damage.'
+- question: What safety precautions are needed when using lasers to clean rhenium parts, especially regarding **toxic fumes** or dust generation?
+  answer: '**Capture rhenium vapors ventilation**. When performing laser cleaning on rhenium parts at 1064 nm wavelength and 150 W power, rhenium vapors present notable toxicity risks, so implement local exhaust ventilation to capture fumes and dust below 0.1 mg/m³. It''s essential to wear NIOSH-approved respirators, laser safety goggles, and gloves; consult MSDS for particulate handling to avoid inhalation or skin contact.'
+- question: Can CO2 lasers be used for surface treatment of rhenium, or do they risk excessive heating due to its **low specific heat capacity**?
+  answer: '**Amplifies CO2 heating risks**. CO2 lasers at 10.6 μm fall short for rhenium surface treatment, since its low specific heat capacity distinctly heightens heating risks and enlarges heat-affected zones. Essential solid-state choices, such as 1064 nm Nd:YAG, apply 150 W power and 2.5 J/cm² fluence to enable precise oxide ablation without substrate harm.'
+- question: What are the challenges in achieving uniform cleaning on **rhenium films** in electronics manufacturing with pulsed lasers?
+  answer: '**Density ductility cause uneven ablation**. Achieving uniform cleaning of rhenium films in electronics requires meticulous control, given its notable density and ductility that can trigger uneven ablation and surface warping. Pulsed lasers at 1064 nm wavelength with 2.5 J/cm² fluence demand essential 50% overlap and 500 mm/s scan speed to curb variations, verified via profilometry for consistent oxide removal.'
+- question: How does rhenium's **high corrosion resistance** impact the choice of laser cleaning methods compared to other refractory metals?
+  answer: '**Requires multi-pass nanosecond ablation**. Rhenium exhibits notable corrosion resistance, forming a resilient oxide layer that binds contaminants more tightly than on tantalum or molybdenum. This essential protection requires precise nanosecond laser ablation at 2.5 J/cm² fluence and 1064 nm wavelength. Achieving clean removal demands three passes at 150 W, preventing substrate damage. Afterward, the surface shows superior long-term stability with minimal re-corrosion.'
+- question: In training for laser cleaning operators, what key properties of rhenium should be emphasized to avoid **substrate ablation**?
+  answer: '**High melting point thermal expansion**. In training laser cleaning operators for rhenium, highlight its notable melting point of 3186°C to avert unintended substrate melting. It''s essential to cap fluence at 2.5 J/cm², monitoring thermal expansion that risks cracks from uneven heat buildup—use 150 W power and 500 mm/s scans for harmless oxide removal.'
+- question: What regulatory standards apply to laser cleaning of rhenium in medical device production, particularly for biocompatibility?
+  answer: For rhenium in medical devices, FDA's Center for Devices and Radiological Health alongside ISO 10993 oversee biocompatibility, requiring meticulous residue checks with XPS or SEM after cleaning. It's essential to validate procedures that yield oxide-free surfaces via 1064 nm wavelength at 2.5 J/cm² fluence, averting cytotoxic residues while upholding the metal's inert nature.
 regulatoryStandards: null
 materialProperties:
   material_characteristics:
@@ -308,3 +326,6 @@ material_metadata:
   normalization_applied: true
   normalization_date: '2025-10-27T23:48:40.922572Z'
   structure_version: '2.0'
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-22T23:32:33.180203'
