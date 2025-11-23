@@ -119,7 +119,7 @@ def generate_all_eeat(dry_run: bool = False, specific_material: str = None):
     logger.info("\n🔧 Initializing generator...")
     try:
         api_client = create_api_client('winston')
-        generator = UnifiedMaterialsGenerator(api_client)
+        generator = UnifiedMaterialsGenerator(api_client, training_mode=False)
     except Exception as e:
         logger.error(f"❌ Failed to initialize generator: {e}")
         return False

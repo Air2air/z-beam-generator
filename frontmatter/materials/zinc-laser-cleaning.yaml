@@ -26,7 +26,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -41,11 +42,108 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Zinc Laser Cleaning
-subtitle: Zinc offers exceptional corrosion resistance with a minimal 0.003 mm/year loss rate
+subtitle: Zinc offers exceptional corrosion resistance with a minimal 0.003 mm/year
+  loss rate
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
-description: Laser cleaning parameters for Zinc
+description: '### Laser Cleaning Zinc: Key Settings and Practical Tips
+
+
+  Hello, I''m Ikmanda Roswati, a materials engineer from Indonesia with a Ph.D. in
+  metallurgy. I''ve worked on plenty of metal surfaces in industrial settings, like
+  automotive parts and galvanized steel. Today, I want to walk you through laser cleaning
+  zinc—it''s a common material in things like hardware and construction, but it needs
+  careful handling to get the job done right. Zinc cleans up well with lasers because
+  it doesn''t hold onto contaminants tightly, but its low melting point and shiny
+  surface can trip you up if you''re not watching. Let''s break this down so you can
+  set up your machine and avoid common mistakes.
+
+
+  First off, zinc''s biggest strength in laser cleaning is its solid thermal conductivity—around
+  116 W/m·K. That means heat spreads out quickly across the surface, which helps prevent
+  hot spots that could damage the metal underneath. So, when you''re blasting away
+  rust or paint, the energy doesn''t build up in one place. You can push scan speeds
+  up to 500 mm/s without worrying too much about warping, as long as you keep passes
+  to about three. This makes zinc faster to clean compared to something like aluminum,
+  where heat lingers longer. Just overlap your laser paths by 50% to ensure even coverage,
+  and you''ll remove buildup like old galvanizing layers without leaving patches.
+
+
+  But here''s the flip side: zinc reflects a ton of laser light, with reflectivity
+  hitting about 95% in the near-infrared range we usually use for cleaning. That low
+  absorption—only around 5% of the energy sticks—means you waste a lot of power if
+  you crank it too high right away. It makes zinc different from darker metals like
+  steel, which soak up more heat and clean easier. With zinc, the laser bounces off
+  more, so your process feels less efficient at first. To fix this, start with lower
+  power settings, say 100 W, and build up. Use a pulse width of 10 ns and a repetition
+  rate around 50 kHz to deliver short, controlled bursts. This way, you ablate contaminants
+  without the metal itself getting too hot. If you''re cleaning galvanized zinc, watch
+  for the zinc coating melting before the dirt does—adjust energy density to 5.1 J/cm²
+  max to stay under the ablation threshold of about 1.15 J/cm² for the base metal.
+
+
+  One unusual thing about zinc is its low melting point, just 419°C. That''s way lower
+  than iron''s 1538°C, so it acts more like a soft alloy in heat-sensitive jobs. In
+  practice, this means laser cleaning zinc shines in applications like die casting
+  or hardware manufacturing, where you want to strip oxides without deforming the
+  part. But it also raises the risk of vaporizing the surface if you go too fast.
+  I''ve seen teams melt thin zinc layers on car bumpers because they didn''t account
+  for this. The fix? Keep your spot size small, around 50 μm, to focus the beam precisely.
+  And always test on a scrap piece—zinc''s thermal expansion is high at 30.2 × 10^-6
+  per K, so uneven heating can cause buckling. Cool the workpiece with air between
+  passes if it''s a big area, and that keeps things stable.
+
+
+  Zinc also has great corrosion resistance, losing only 0.003 mm per year in humid
+  spots, which is why it''s popular for galvanizing. But during cleaning, that protective
+  oxide layer can reform quickly if oxygen sneaks in. This makes zinc different because
+  contaminants like salts or oils stick to that oxide, not the metal itself. Your
+  approach should target the oxide first—use the laser to vaporize it gently, and
+  the underlying dirt comes off easier. Pitfall here: high humidity in your workspace
+  can cause re-oxidation mid-job, turning a clean surface dull again. Run your setup
+  in a dry area, or add a nitrogen shroud to the laser head. It blocks oxygen and
+  lets you hit higher speeds without the zinc pitting.
+
+
+  Another quirk is zinc''s density at 7140 kg/m³—it''s lightweight for a metal, so
+  parts like construction fittings heat up uniformly but cool fast too. This gives
+  good thermal shock resistance, handling up to 28 K changes without cracking. So,
+  you can ramp power quickly for thick buildup, unlike brittle ceramics. But avoid
+  rapid cooling after cleaning; let it air cool to room temperature to prevent micro-stresses.
+  In my experience with Indonesian shipyards, where zinc coats hulls, we adjusted
+  by doing multiple light passes instead of one heavy one. That keeps the temperature
+  under 200°C on the surface, avoiding the boiling point around 907°C.
+
+
+  Let''s talk settings adjustments head-on, because every job varies. For standard
+  zinc hardware, stick to 100 W power with a 1064 nm wavelength—it''s the sweet spot
+  for metals like this, penetrating just enough without scattering. If you''re dealing
+  with high-reflectivity polished zinc, drop energy density to 1-2 J/cm² initially
+  to test absorption. The laser damage threshold is 2.1 J/cm², so stay below that
+  or you''ll etch the metal instead of cleaning it. Scan at 500 mm/s, but slow to
+  300 mm/s for porous or uneven surfaces, like cast zinc parts. Overlap 50% ensures
+  you don''t miss spots, especially on curved automotive pieces.
+
+
+  Pitfalls to dodge: Don''t ignore the compressive strength—only 28 MPa—so thin zinc
+  sheets can dent under clamping. Secure workpieces loosely, and use a fixture that
+  allows expansion. Also, zinc''s low porosity at 0% means no hidden voids for contaminants
+  to hide, which is a plus, but it also means the surface is smooth (1.6 μm roughness),
+  so lasers glance off easier. Roughen it slightly with a pre-pass if needed, but
+  that''s rare. In galvanizing apps, watch for zinc-iron alloys; they absorb better,
+  so reduce passes to two and up power 20% to match.
+
+
+  Fracture toughness at 15 MPa√m keeps zinc from shattering under pulses, but its
+  Young''s modulus of 108 GPa makes it springy—vibrations from the laser can loosen
+  nearby contaminants too much, scattering debris. Contain the area with shields to
+  avoid inhaling zinc oxide fumes, which irritate lungs. Always vent well; in my lab
+  back in Jakarta, we added exhaust fans after one dusty session.
+
+
+  For electrical conductivity pros like hardware manufacturing, cleaning zinc improves
+  contacts'
 breadcrumb:
 - label: Home
   href: /
@@ -62,7 +160,8 @@ images:
     alt: Zinc surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zinc-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/zinc-laser-cleaning-micro.jpg
 caption: null
 faq: null

@@ -50,9 +50,9 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
         
         print("🔧 Initializing generators...")
         api_client = create_api_client('deepseek')
-        generator = UnifiedMaterialsGenerator(api_client=api_client)
+        generator = UnifiedMaterialsGenerator(api_client=api_client, training_mode=False)
         batch_gen = BatchGenerator(generator)
-        print("✅ Generators ready")
+        print("✅ Generators ready (production mode)")
         print()
         
         # Check if component is batch-eligible

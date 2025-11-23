@@ -2,30 +2,41 @@
 """
 Unified Materials Content Generator
 
-TEXT CONTENT GENERATOR for caption, FAQ, and subtitle generation ONLY.
-Used by shared/commands/generation.py (--caption, --subtitle, --faq commands).
+TEXT CONTENT GENERATOR for all material content (caption, FAQ, subtitle, description).
+Used by shared/commands/generation.py for all generation commands.
 
-ARCHITECTURE (Updated November 20, 2025):
-- Wraps /generation/core/quality_gated_generator.py for quality-enforced generation
-- Evaluates content BEFORE save using SubjectiveEvaluator
-- Retries up to 5 times with parameter adjustments if quality fails
-- Only saves content meeting 7.0/10 realism threshold
-- Starts from /prompts/*.txt templates
-- Uses generation/config.yaml for target lengths and global variation
+ARCHITECTURE (Updated November 22, 2025):
+TWO MODES with single generator:
 
-Quality Gates (ALL must pass):
-- Subjective Realism: 7.0/10 minimum
-- Voice Authenticity: 7.0/10 minimum  
-- Tonal Consistency: 7.0/10 minimum
-- AI Tendencies: Zero detected patterns
+1. PRODUCTION MODE (default, training_mode=False):
+   - Fast single-pass generation (~5-7 seconds)
+   - No quality gates, no evaluation, no retry
+   - Direct API call via SimpleGenerator
+   - Cost: ~$0.015 per description
+   - Use for: Normal content generation
+
+2. TRAINING MODE (training_mode=True):
+   - Quality-gated generation with evaluation (~30-60 seconds)
+   - Evaluates content BEFORE save using SubjectiveEvaluator
+   - Retries up to 5 times with parameter adjustments if quality fails
+   - Learns from feedback to improve future generations
+   - Cost: ~$0.049 per description (includes evaluation API calls)
+   - Use for: Building learning database, quality assurance
+
+Quality Gates in Training Mode (ALL must pass):
+- Subjective Realism: Learned threshold (typically 5.5-7.0/10)
+- Voice Authenticity: Learned threshold
+- Tonal Consistency: Learned threshold
+- AI Tendencies: Configurable (require_zero_ai_tendencies setting)
 
 Usage:
+    # Production mode (default): Fast, no quality gates
     generator = UnifiedMaterialsGenerator(api_client)
+    generator.generate('Bronze', 'caption')
     
-    # Generate with quality-gated approach (auto-retry until quality passes)
-    generator.generate('Bronze', 'caption')   # Uses QualityGatedGenerator
-    generator.generate('Bronze', 'subtitle')  # Uses QualityGatedGenerator
-    generator.generate('Bronze', 'faq')       # Uses QualityGatedGenerator
+    # Training mode: Quality gates, evaluation, retry with feedback learning
+    generator = UnifiedMaterialsGenerator(api_client, training_mode=True)
+    generator.generate('Bronze', 'caption')   # Evaluates before save, retries if needed
 """
 
 import logging
@@ -45,37 +56,48 @@ PROMPTS_DIR = Path("prompts")
 
 class UnifiedMaterialsGenerator:
     """
-    Unified generator for all materials content types.
+    Unified generator for all materials content types with dual-mode operation.
     
-    Wrapper around QualityGatedGenerator for quality-enforced generation.
-    Evaluates content BEFORE save, retries with parameter adjustments if needed.
-    Only saves content that passes quality thresholds.
+    PRODUCTION MODE (default): Fast single-pass generation without quality gates.
+    TRAINING MODE (opt-in): Quality-gated generation with evaluation and retry.
     
     Responsibilities:
-    - Wrap QualityGatedGenerator for materials-specific workflow
+    - Route to SimpleGenerator (production) or QualityGatedGenerator (training)
     - Handle FAQ topic enhancement (optional)
     - Generate EEAT section (non-AI, random selection from regulatoryStandards)
-    - Ensure only high-quality content persists in Materials.yaml
+    - Proper Materials.yaml save in both modes
     """
     
-    def __init__(self, api_client):
+    def __init__(self, api_client, training_mode: bool = False):
         """
-        Initialize unified generator with quality gate enforcement.
+        Initialize unified generator.
         
         Args:
             api_client: API client for content generation (required)
+            training_mode: If True, enable quality gates for learning (slower).
+                          If False, production mode - fast single-pass generation.
         """
         if not api_client:
             raise ValueError("API client required for content generation")
         
+        self.training_mode = training_mode
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
         
-        # Load config for quality gate settings
+        # Load config
         from generation.config.config_loader import get_config
         config = get_config()
         quality_gate_config = config.config.get('quality_gates', {})
         evaluation_config = config.config.get('evaluation', {})
+        
+        # PRODUCTION MODE: Skip quality gate initialization
+        if not training_mode:
+            self.logger.info("🚀 Production mode: Quality gates disabled (fast single-pass)")
+            self.quality_gated_generator = None
+            return
+        
+        # TRAINING MODE: Initialize quality gates for learning
+        self.logger.info("🎓 Training mode: Quality gates enabled (learning from feedback)")
         
         # Get evaluation API client based on config (respects evaluation.model setting)
         from shared.api.client_factory import create_api_client
@@ -360,16 +382,38 @@ class UnifiedMaterialsGenerator:
     
     def generate(self, material_name: str, content_type: str, **kwargs):
         """
-        Generate content for material using single-pass approach.
+        Generate content for material.
+        
+        TRAINING MODE: Uses QualityGatedGenerator with retries and evaluation.
+        PRODUCTION MODE: Direct API call, single-pass, no quality gates.
         
         Args:
             material_name: Name of material
-            content_type: Type of content ('caption', 'faq', 'subtitle', 'eeat')
+            content_type: Type of content ('caption', 'faq', 'subtitle', 'description')
             **kwargs: Additional parameters (e.g., faq_count=8)
             
         Returns:
-            Generated content (string for caption/subtitle, list for faq, dict for eeat)
+            Generated content (string for caption/subtitle/description, list for faq)
         """
+        # PRODUCTION MODE: Fast single-pass generation
+        if not self.training_mode:
+            return self._generate_production(material_name, content_type, **kwargs)
+        
+        # TRAINING MODE: Quality-gated generation with retry
+        return self._generate_training(material_name, content_type, **kwargs)
+    
+    def _generate_production(self, material_name: str, content_type: str, **kwargs):
+        """Production mode: Fast single-pass generation, no quality gates."""
+        from generation.core.simple_generator import SimpleGenerator
+        
+        generator = SimpleGenerator(self.api_client)
+        result = generator.generate(material_name, content_type, **kwargs)
+        
+        # SimpleGenerator returns content directly (not wrapped)
+        return result
+    
+    def _generate_training(self, material_name: str, content_type: str, **kwargs):
+        """Training mode: Quality-gated generation with evaluation and retry."""
         # Load material data
         materials_data = self._load_materials_data()
         
@@ -378,8 +422,7 @@ class UnifiedMaterialsGenerator:
         
         material_data = materials_data['materials'][material_name]
         
-        # Generate based on type
-        # SimpleGenerator returns content directly (no result wrapper)
+        # Generate based on type using quality-gated approach
         if content_type == 'caption':
             return self.generate_caption(material_name, material_data)
         elif content_type == 'faq':
@@ -389,10 +432,6 @@ class UnifiedMaterialsGenerator:
         elif content_type == 'description':
             return self.generate_description(material_name, material_data)
         elif content_type == 'eeat':
-            # EEAT is non-AI, returns dict directly
             return self.generate_eeat(material_name, material_data)
         else:
             raise ValueError(f"Unknown content type: {content_type}")
-        
-        # Note: SimpleGenerator already writes to Materials.yaml
-        # No need for separate _write_to_materials_yaml call
