@@ -47,84 +47,13 @@ subtitle: Nickel’s exceptional corrosion resistance makes it the default choic
 subtitle_metadata:
   author_country: Taiwan
   author_name: Yi-Chun Lin
-description: '### Laser Cleaning Nickel: Key Settings and Practical Tips
-
-
-  Hello, I''m Ikmanda Roswati, a materials engineer from Indonesia with years of hands-on
-  work in laser processing. When it comes to cleaning Nickel surfaces, you face a
-  sturdy metal that''s common in tough environments like aerospace parts or chemical
-  reactors. Nickel holds up well under heat and corrosion, but its shine and heat-spreading
-  ways make laser cleaning tricky. Let''s break this down so you can get clean results
-  without damaging the base material.
-
-
-  Nickel shines in laser cleaning because of its strong thermal shock resistance—around
-  117°C range before issues pop up. This means you can hit it with quick laser pulses
-  without cracking the surface, unlike brittle alloys that splinter easily. So, lean
-  into short pulses to zap contaminants fast. Its zero porosity also helps; dirt and
-  oxides don''t sink in deep, so a single pass often lifts them right off. Just watch
-  the buildup from applications like oil and gas gear—those greasy residues come off
-  cleaner than on porous metals.
-
-
-  But Nickel has weaknesses that demand care. Its high reflectivity, about 65%, sends
-  most laser energy bouncing away, so the beam doesn''t absorb well into the metal.
-  This slows cleaning and risks uneven spots if you''re not patient. To fix this,
-  start with a fluence just above the ablation threshold—aim for 2.5 J/cm²—and use
-  multiple passes to build heat gradually. Don''t crank the power right away; that
-  could overheat thin coatings on medical devices or electronics. Instead, lower the
-  initial power to 100 W and ramp up as you see the contaminants loosen.
-
-
-  What sets Nickel apart from everyday steels is its balanced strength and expansion.
-  With a thermal expansion of 13.3 × 10⁻⁶ per °C, it doesn''t warp much under laser
-  heat, unlike aluminum that buckles fast. This makes your approach more forgiving
-  for large parts in energy storage batteries. But because of its decent thermal conductivity—90.7
-  W/m·K—heat spreads quickly across the surface. You adjust by tightening the spot
-  size to 50 μm; this keeps energy focused and prevents wide heat-affected zones that
-  could soften nearby areas.
-
-
-  An unusual trait is Nickel''s solid oxidation resistance, rated at 1.65 on a simple
-  scale. In humid setups like chemical processing, this means surface oxides form
-  slowly, so contaminants stick less but might need a pre-wipe to expose them fully.
-  Practically, this cuts your cleaning time—run at a scan speed of 500 mm/s to cover
-  big panels without lingering. Just overlap each pass by 50% to catch any stubborn
-  edges; skipping this leaves streaks that corrode faster in salty oil and gas conditions.
-
-
-  Pitfalls lurk if you ignore its melting point around 1455°C. Push too hard, and
-  you hit thermal destruction before the grime fully burns off. Avoid this by sticking
-  to 10 ns pulse widths—they deliver quick energy bursts without deep penetration.
-  High repetition rates like 100 kHz work great here, pulsing often to erode layers
-  without melting the Nickel underneath. I''ve seen teams skip the pass count and
-  end up with pitted surfaces on aerospace components; always do at least three passes,
-  checking between each for even removal.
-
-
-  For settings, tailor to your machine but base it on these: power at 100 W keeps
-  things safe for starters, especially on delicate medical implants. The 1064 nm wavelength
-  suits Nickel well since it matches its absorption band, pulling in that 35-37% of
-  energy effectively without fancy filters. If your contaminants include heavy metals
-  from electronics manufacturing, drop the scan speed to 300 mm/s for the first pass
-  to let the laser dwell a bit longer. And test on a scrap piece—Nickel''s compressive
-  strength of 345 MPa means it resists denting, but over-fluence above 2.1 J/cm² can
-  still etch the surface unnecessarily.
-
-
-  In practice, combine these with your workflow. For corroded Nickel pipes in oil
-  and gas, the low corrosion rate—0.005 mm per year—means you won''t strip much base
-  material, but focus on removing salts to extend life. On energy storage cells, its
-  electrical conductivity of 14.3 million S/m stays intact post-cleaning if you avoid
-  high heat buildup. A quick tip: if reflectivity causes misses, add a thin absorbing
-  layer like graphite spray first—it boosts uptake and cuts passes needed.
-
-
-  Working with Nickel rewards precision over power. Tune your settings as I described,
-  and you''ll clear contaminants reliably while preserving that tough, reliable surface.
-  If you hit snags, like uneven absorption on polished parts, slow the speed and add
-  passes—it''s straightforward once you adjust. Let''s keep those applications running
-  smooth.'
+description: When laser cleaning nickel, the main issue is its moderate reflectivity
+  around 65 percent. This means it absorbs less energy than copper's near-total bounce-back,
+  so cleaning takes more passes to remove contaminants. I've seen setups work best
+  at 100 watts with 2.5 joules per square centimeter fluence. But watch mid-process—its
+  high thermal conductivity spreads heat fast, risking surface melting near 1450°C
+  if you push speed over 500 millimeters per second. Tends to clean smoothly in three
+  passes with 50 percent overlap, unlike slower stainless steels.
 breadcrumb:
 - label: Home
   href: /

@@ -28,7 +28,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -42,11 +43,43 @@ _metadata:
     voice_applied: true
     content_type: material
 title: Iron Laser Cleaning
-subtitle: Iron's 1811 K melting point suits laser cleaning, needing 0.75 J/cm² to clear surfaces without damage.
+subtitle: Iron's 1811 K melting point suits laser cleaning, needing 0.75 J/cm² to
+  clear surfaces without damage.
 subtitle_metadata:
   author_country: Indonesia
   author_name: Ikmanda Roswati
-description: Laser cleaning parameters for Iron
+description: 'Iron stands out among metals for laser cleaning because of its solid
+  thermal conductivity—it spreads heat quickly, which helps prevent localized overheating
+  and warping during the process. This property lets you work faster on large surfaces
+  without risking cracks, so keep scan speeds around 500 mm/s to take full advantage.
+  Start with a power of about 100 W and an energy density of 5 J/cm²; that clears
+  rust and scale effectively while keeping the base material intact.
+
+
+  What sets iron apart is its moderate reflectivity, around 60%, which means it bounces
+  back more laser energy than something like aluminum. To handle this, boost the number
+  of passes to two or three, with 50% overlap between scans, so contaminants absorb
+  the light first and loosen up. Unlike non-ferrous metals, iron''s low porosity—basically
+  zero—ensures a smooth finish after cleaning, but it also makes it prone to re-oxidation
+  if you expose fresh surfaces to air too long. Always follow up with a protective
+  coating right away.
+
+
+  Watch for its decent thermal shock resistance, about 80°C, which is unusual for
+  a heavy industrial metal; it tolerates quick temperature swings better than you
+  might expect. This lets you use short pulses of 10 ns without much distortion, ideal
+  for automotive or rail parts. But a key pitfall is pushing past the ablation threshold
+  of 1.5 J/cm²—too much energy vaporizes the surface unevenly, leaving pits. Dial
+  back the repetition rate to 50 kHz if you see uneven removal, and test on a scrap
+  piece first to fine-tune.
+
+
+  Iron''s high density and strength make it forgiving for restoration work, like in
+  cultural heritage or marine engineering, where you need to strip decades of corrosion
+  without weakening the structure. Avoid high spot sizes over 50 μm, though, as they
+  can scatter heat and dull the edges on precision jobs. In my experience from heavy
+  manufacturing setups, these adjustments restore iron''s natural luster reliably,
+  saving time on post-processing.'
 breadcrumb:
 - label: Home
   href: /
@@ -63,7 +96,8 @@ images:
     alt: Iron surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/iron-laser-cleaning-hero.jpg
   micro:
-    alt: Iron microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Iron microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/iron-laser-cleaning-micro.jpg
 caption: null
 faq: null

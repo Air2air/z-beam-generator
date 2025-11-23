@@ -374,16 +374,9 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             # Level 2-10: Use domain default
             terminology = domain_ctx.terminology_style
         
-        # Calculate length range using config word_count_variation
-        from generation.config.config_loader import ProcessingConfig
-        config = ProcessingConfig()
-        variation = config.config.get('word_count_variation', 0.10)  # Default ±10%
-        
-        min_length = int(length * (1.0 - variation))
-        max_length = int(length * (1.0 + variation))
-        
+        # Length is specified in humanness_layer (when provided), not here
+        # This prevents duplication and conflicting length instructions
         requirements = [
-            f"- Length: {min_length}-{max_length} words (natural flow, not exact count)",
             f"- Terminology: {terminology}"
         ]
         

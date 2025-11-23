@@ -166,7 +166,16 @@ class SimpleGenerator:
             ValueError: If material not found or generation fails
             FileNotFoundError: If required files missing
         """
-        result = self.generate_without_save(material_name, component_type, faq_count)
+        # Generate humanness layer with randomized length from config
+        from learning.humanness_optimizer import HumannessOptimizer
+        humanness_optimizer = HumannessOptimizer()
+        humanness_layer = humanness_optimizer.generate_humanness_instructions(
+            component_type=component_type,
+            strictness_level=1  # Production mode uses level 1 (lowest strictness)
+        )
+        self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+        
+        result = self.generate_without_save(material_name, component_type, faq_count, humanness_layer)
         
         # Save to Materials.yaml
         self._save_to_yaml(material_name, component_type, result['content'])
@@ -225,25 +234,24 @@ class SimpleGenerator:
         facts = self.enricher.fetch_real_facts(material_name)
         context = self._build_context(material_data)
         
-        # Get target length with variation
-        target_length = random.randint(spec.min_length, spec.max_length)
-        self.logger.info(f"🎯 Target: {target_length} words (range: {spec.min_length}-{spec.max_length})")
+        # Length is determined by humanness_layer (uses randomization_targets.length)
+        # No need to calculate target_length here - humanness layer contains it
         
         # Get base parameters
         params = self._get_base_parameters(component_type)
         self.logger.info(f"🌡️  Temperature: {params['temperature']:.3f}")
         
-        # Build prompt (voice_params and enrichment_params come from dynamic_config if needed)
+        # Build prompt (humanness_layer already contains length from randomization_targets)
         from generation.core.prompt_builder import PromptBuilder
         prompt = PromptBuilder.build_unified_prompt(
             topic=material_name,
             voice=voice,
-            length=target_length,
+            length=None,  # Length is in humanness_layer, not passed separately
             facts=facts,
             context=context,
             component_type=component_type,
             domain='materials',
-            humanness_layer=humanness_layer  # NEW: inject humanness instructions
+            humanness_layer=humanness_layer  # Contains length from randomization_targets
         )
         
         # Make API call

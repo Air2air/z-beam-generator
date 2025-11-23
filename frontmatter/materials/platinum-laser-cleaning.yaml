@@ -28,7 +28,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -46,7 +47,38 @@ subtitle: Platinum maintains its integrity under extreme heat and corrosive envi
 subtitle_metadata:
   author_country: Indonesia
   author_name: Ikmanda Roswati
-description: Laser cleaning parameters for Platinum
+description: 'When cleaning platinum with lasers, its high reflectivity stands out
+  as a main hurdle. The metal bounces back about 65% of the laser energy, so contaminants
+  don''t heat up as quickly as on other surfaces. To counter this, start with a fluence
+  around 5 J/cm² and use shorter pulses—about 10 nanoseconds—to build heat gradually
+  without wasting power.
+
+
+  Platinum''s low absorption rate of just 11% sets it apart from ferrous metals, which
+  soak up more energy right away. This means you need to tweak your setup for better
+  coupling: opt for a 1064 nm wavelength, which works well here, and aim for a 50%
+  overlap in scans to ensure even coverage. I find that bumping up the repetition
+  rate to 50 kHz helps maintain steady progress without scorching.
+
+
+  One unusual strength is its excellent corrosion resistance and zero porosity, making
+  it ideal for medical devices or jewelry where you want a pristine finish post-cleaning.
+  But watch the thermal conductivity—it''s high at 72 W/m·K—so heat spreads fast,
+  risking uneven cleaning on thin pieces. Adjust by slowing the scan speed to 500
+  mm/s and doing 3 passes; this lets the laser clear oxides or residues without warping
+  the material.
+
+
+  Avoid the pitfall of pushing power too high, say over 100 W initially, as platinum''s
+  melting point hits 1768°C and it can reflect excess energy into your optics. Instead,
+  test on a scrap piece first. Its low thermal expansion keeps shapes stable, a plus
+  for aerospace parts, but pair that with a small spot size of 50 μm to focus energy
+  precisely and dodge damage thresholds around 2.2 J/cm².
+
+
+  In practice, for electronics or lab tools, this approach restores surfaces cleanly,
+  boosting conductivity without adding roughness. You see, fine-tuning like this turns
+  platinum''s quirks into advantages for reliable results.'
 breadcrumb:
 - label: Home
   href: /
@@ -60,10 +92,12 @@ breadcrumb:
   href: /materials/metal/non-ferrous/platinum
 images:
   hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    alt: Platinum surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/platinum-laser-cleaning-hero.jpg
   micro:
-    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/platinum-laser-cleaning-micro.jpg
 caption: null
 faq: null

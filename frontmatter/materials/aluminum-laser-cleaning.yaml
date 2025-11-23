@@ -3,27 +3,13 @@ category: Metal
 subcategory: non-ferrous
 title: Aluminum Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Aluminum
-description: 'Aluminum, a non-ferrous metal with a density of 2.7 g/cm³, presents
-  unique considerations for laser cleaning due to its high reflectivity of 0.95 and
-  low absorptivity of 0.06. These properties cause most laser energy to reflect away,
-  which reduces cleaning efficiency and demands adjustments in power and pulse settings
-  to achieve effective contaminant removal without damaging the substrate. Operators
-  address this by starting with a power range around 100 W and a repetition rate of
-  50 kHz, which allows gradual energy buildup on the surface.
-
-
-  The material''s low melting point of 660°C sets it apart from ferrous metals like
-  steel, which tolerate higher temperatures during cleaning. This difference requires
-  a cautious approach to prevent thermal distortion or melting, particularly on thin
-  sections used in aerospace or automotive applications. To mitigate this, reduce
-  initial energy density to about 5.1 J/cm² and employ short pulse widths of 10 ns,
-  which minimize heat accumulation while exposing underlying oxides or residues.
-
-
-  Aluminum''s excellent thermal conductivity and corrosion resistance of 0.1 mm per
-  year further influence the process. Heat dissipates quickly across the surface,
-  which helps restore uniformity but can lead to uneven cleaning if scan speeds exceed
-  500 mm/s. Maintain a spot size of 50 μm and an overlap ratio'
+description: When laser cleaning aluminum, unlike ferrous metals like steel that absorb
+  more energy, you must address its high reflectivity around 95 percent right away.
+  This reflection scatters the beam and reduces efficiency, so start with lower power
+  at 100 watts to prevent equipment damage or incomplete cleaning. Adjust to a 1064
+  nm wavelength with 50 micrometer spot size for better coupling, and keep scan speed
+  at 500 mm/s over 3 passes with 50 percent overlap. Its low melting point near 660°C
+  demands careful monitoring to avoid warping.
 author:
   id: 4
   name: Todd Dunning
