@@ -161,29 +161,39 @@ Before ANY code change:
 6. ❌ Never measured actual word counts after each "fix"
 7. ❌ Never questioned why prompt-only approach kept failing
 
-**Root Cause Ignored**: LLMs generate token-by-token without counting words. Prompt instructions alone cannot enforce strict limits. The system uses fixed `max_tokens` regardless of randomized word target (SHORT/MEDIUM/LONG).
+**Root Cause Ignored**: LLMs generate token-by-token without counting words. Prompt instructions alone cannot enforce strict limits.
+
+**Why max_tokens Won't Work**: Lowering max_tokens causes mid-sentence truncation, creating broken/incomplete content. This is WORSE than being over the word count.
+
+**The Fundamental Truth**:
+```
+❌ Prompt instructions alone: LLMs ignore word counts
+❌ Strict max_tokens: Causes truncation and broken sentences
+❌ Post-generation truncation: Also breaks sentences
+✅ Reality: Approximate word counts are inherent to LLM architecture
+```
 
 **Correct Behavior**:
 ```
-✅ Identify the actual mechanism: max_tokens controls length, not prompts
 ✅ Measure results after EACH fix attempt (don't assume it worked)
 ✅ When same approach fails 2+ times, question the approach itself
 ✅ Ask: "Why do prompt instructions keep getting ignored?"
-✅ Research: How does the API actually control output length?
-✅ Implement architectural fix: Dynamic max_tokens based on word target
-   - SHORT (50-75w) → max_tokens ~100-110
-   - MEDIUM (75-110w) → max_tokens ~145-165  
-   - LONG (110-150w) → max_tokens ~195-225
-✅ Pass randomized word target from humanness_optimizer to simple_generator
-✅ Calculate appropriate max_tokens BEFORE API call
+✅ Research: What is ACTUALLY possible with LLM architecture?
+✅ Accept architectural limitations: "approximately X words" not strict limits
+✅ Be honest with user: "LLMs consistently generate 20-30% over target"
+✅ Offer real solutions:
+   - Option A: Accept approximate word counts (150-180w for 150w target)
+   - Option B: Use quality-gated mode with multiple attempts and selection
+   - Option C: Post-generation editing (manual review required)
+✅ DO NOT waste time on solutions that can't work (more prompt keywords)
 ```
 
 **Prevention Checklist**:
 - [ ] Did I measure the actual result after my fix?
 - [ ] Am I repeating the same approach that already failed?
-- [ ] Am I treating a symptom (prompt text) vs root cause (API mechanism)?
-- [ ] Do I understand HOW the system controls this behavior?
-- [ ] Have I verified my mental model matches reality?
+- [ ] Am I treating a symptom (prompt text) vs architectural limitation?
+- [ ] Do I understand what is ACTUALLY POSSIBLE with this technology?
+- [ ] Have I been honest about what can't be fixed?
 
 **Red Flags That You're Treating Symptoms**:
 - 🚩 Adding more "CRITICAL" or "IMPORTANT" keywords to prompts
@@ -192,6 +202,8 @@ Before ANY code change:
 - 🚩 Adding duplicate requirements in multiple places
 - 🚩 Not measuring actual results after each change
 - 🚩 Assuming "this time it will work" without architectural change
+- 🚩 Proposing max_tokens limits (causes truncation)
+- 🚩 Proposing post-generation truncation (also causes truncation)
 
 **Grade**: F - Wasting user time with ineffective solutions violates TIER 3 honesty requirements
 
