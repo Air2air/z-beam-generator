@@ -9,7 +9,7 @@ CANONICAL REFERENCE: materials/data/frontmatter_template.yaml
 This is the single source of truth for field order and structure.
 
 Field Order (per template):
-1. name, category, subcategory, title, subtitle, description
+1. name, category, subcategory, title, material_description, settings_description
 2. author (determines voice)
 3. images (hero, micro)
 4. caption (description, before, after)
@@ -42,7 +42,7 @@ class FieldOrderingService:
         
         Canonical hierarchy:
         1. Basic Identification (name, category, subcategory)
-        2. Content Metadata (title, subtitle, description)
+        2. Content Metadata (title, material_description, settings_description)
         3. Author (determines voice generation)
         4. Visual Assets (images: hero, micro)
         5. Caption (description, before, after)
@@ -73,7 +73,7 @@ class FieldOrderingService:
                 ordered_data[field] = frontmatter_data[field]
                 
         # === 2. CONTENT METADATA ===
-        for field in ["title", "subtitle", "description", "headline", "keywords"]:
+        for field in ["title", "material_description", "settings_description", "headline", "keywords"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 

@@ -51,7 +51,7 @@ The old `--material` command still uses DynamicGenerator for backward compatibil
 
 ```python
 # LEGACY: Using DynamicGenerator for backward compatibility with --material command
-# New commands use SimpleGenerator (see --caption, --subtitle, --faq)
+# New commands use SimpleGenerator (see --caption, --material-description, --faq)
 from generation.core.legacy.generator import DynamicGenerator
 generator = DynamicGenerator()
 ```

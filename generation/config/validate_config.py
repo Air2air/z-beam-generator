@@ -108,7 +108,7 @@ def print_config_summary(config: ProcessingConfig):
     print(f"   Max Attempts:        {config.get_max_attempts()}")
     print(f"   Retry Temp Increase: {config.get_retry_temperature_increase()}")
     print(f"\n   Max Tokens:")
-    for comp_type in ['subtitle', 'caption', 'description', 'faq', 'troubleshooter']:
+    for comp_type in ['material_description', 'caption', 'settings_description', 'faq', 'troubleshooter']:
         tokens = config.get_max_tokens(comp_type)
         print(f"      {comp_type:15s} {tokens}")
     
@@ -120,7 +120,7 @@ def print_config_summary(config: ProcessingConfig):
     
     # Component lengths
     print(f"\n📏 COMPONENT TARGET LENGTHS (words):")
-    for comp_type in ['subtitle', 'caption', 'description', 'faq', 'troubleshooter']:
+    for comp_type in ['material_description', 'caption', 'settings_description', 'faq', 'troubleshooter']:
         length = config.get_component_length(comp_type)
         print(f"   {comp_type:15s} {length}")
     

@@ -68,7 +68,7 @@ python3 run.py --integrity-check --quick
 
 **✅ Integrated Components:**
 - Caption generation (`handle_caption_generation`)
-- Subtitle generation (`handle_subtitle_generation`)
+- Material description generation (`handle_material_description_generation`)
 - FAQ generation (`handle_faq_generation`)
 - Unified workflow (`run_material_workflow` - Step 0)
 

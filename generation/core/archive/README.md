@@ -52,7 +52,7 @@ result = orchestrator.generate('material', material_name)
 ### Commands Affected
 - `--material "Aluminum"`: Now uses FrontmatterOrchestrator (no longer broken)
 - `--caption "Aluminum"`: Already using UnifiedMaterialsGenerator ✅
-- `--subtitle "Aluminum"`: Already using UnifiedMaterialsGenerator ✅
+- `--material-description "Aluminum"`: Already using UnifiedMaterialsGenerator ✅
 - `--faq "Aluminum"`: Already using UnifiedMaterialsGenerator ✅
 
 ### Cleanup Statistics

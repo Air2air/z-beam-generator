@@ -28,7 +28,7 @@ class TextFieldClassifier:
     
     # Pure text fields that benefit from AI generation (Grok)
     TEXT_FIELDS = {
-        'subtitle',
+        'material_description',
         'description', 
         'research_basis',
         'validation_method',
@@ -338,7 +338,7 @@ if __name__ == "__main__":
     # Sample frontmatter structure for testing
     sample_frontmatter = {
         'name': 'Aluminum',
-        'subtitle': 'Advanced laser cleaning parameters for aluminum surfaces',
+        'material_description': 'Advanced laser cleaning parameters for aluminum surfaces',
         'description': 'Comprehensive guide to laser cleaning aluminum materials with optimal settings',
         'category': 'Metal',
         'density': 2.70,

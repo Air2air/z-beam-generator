@@ -21,7 +21,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --faq "Aluminum"          # Generate AI FAQ → Materials.yaml (single-pass)
   
   # Step 2: Validate & Improve (post-processing with learning systems)
-  python3 run.py --validate-content Aluminum subtitle  # Run all quality checks + learning (up to 5 attempts)
+  python3 run.py --validate-content Aluminum material_description  # Run all quality checks + learning (up to 5 attempts)
   python3 run.py --validate-content Aluminum caption   # Winston, Realism, Readability, Subjective + DB logging
   
   # Step 3: Voice enhancement (optional)
@@ -35,12 +35,12 @@ For advanced operations, use run_unified.py with the unified pipeline.
   # WARNING: Never use --skip flags in production - violates fail-fast architecture
 
 🔄 BATCH GENERATION (Meet Winston Minimums Efficiently):
-  python3 run.py --batch-subtitle "Aluminum,Steel,Copper"  # Batch generate subtitles (2-5 materials)
-  python3 run.py --batch-subtitle --all                     # Batch ALL subtitles (132 materials → ~33 batches)
+  python3 run.py --batch-material-description "Aluminum,Steel,Copper"  # Batch generate material descriptions (2-5 materials)
+  python3 run.py --batch-material-description --all                     # Batch ALL material descriptions (132 materials → ~33 batches)
   python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate captions (fallback to individual)
   
   # Cost savings: 75% reduction vs individual Winston calls
-  # Winston minimum: 300 chars (subtitles ~180 chars each, need batching)
+  # Winston minimum: 300 chars (material descriptions ~180 chars each, need batching)
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -53,7 +53,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --test-api                # Test API connections
   python3 run.py --validate                # Validate existing data without regeneration
   python3 run.py --validate-report report.md  # Generate validation report
-  python3 run.py --content-validation-report report.md  # Content quality validation (FAQ, Caption, Subtitle)
+  python3 run.py --content-validation-report report.md  # Content quality validation (FAQ, Caption, Material Description)
   python3 run.py --check-env               # Health check
   python3 run.py --integrity-check         # System integrity check (values, propagation, APIs, learning)
   python3 run.py --integrity-check --quick # Fast integrity check (skip slow tests)
@@ -205,7 +205,7 @@ def main():
     parser.add_argument("--test", action="store_true", help="Run test mode")
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation")
     parser.add_argument("--validate-content", nargs=2, metavar=('MATERIAL', 'COMPONENT'), 
-                       help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum subtitle)")
+                       help="Validate and improve generated content with learning systems (e.g., --validate-content Aluminum material_description)")
     parser.add_argument("--validate-report", help="Generate validation report")
     parser.add_argument("--content-validation-report", help="Content quality validation report")
     parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")

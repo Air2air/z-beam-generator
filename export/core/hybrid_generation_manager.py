@@ -315,9 +315,9 @@ class HybridFrontmatterManager:
         field_name = field_path.split('.')[-1]
         
         # Get base prompt
-        if field_name == 'subtitle':
+        if field_name == 'material_description':
             # DEPRECATED: Use shared.prompts.text_prompt_builder.TextPromptBuilder instead
-            base_prompt = self._build_subtitle_prompt_legacy(material_name, material_data, context_frontmatter)
+            base_prompt = self._build_material_description_prompt_legacy(material_name, material_data, context_frontmatter)
         elif field_name == 'description':
             base_prompt = self._build_description_prompt(material_name, material_data, context_frontmatter)
         elif field_name in ['notes', 'explanation', 'methodology']:
@@ -356,13 +356,13 @@ class HybridFrontmatterManager:
             self.logger.error(f"API generation failed for {field_path}: {e}")
             return f"Generated content for {field_name}"  # Fallback
 
-    def _build_subtitle_prompt_legacy(self, material_name: str, material_data: Dict, context: Dict) -> str:
+    def _build_material_description_prompt_legacy(self, material_name: str, material_data: Dict, context: Dict) -> str:
         """
-        DEPRECATED: Legacy subtitle prompt builder.
+        DEPRECATED: Legacy material_description prompt builder.
         Use shared.prompts.text_prompt_builder.TextPromptBuilder instead.
         """
         category = material_data.get('category', 'material')
-        return f"""Generate a concise, professional subtitle for laser cleaning {material_name} ({category}).
+        return f"""Generate a concise, professional material_description for laser cleaning {material_name} ({category}).
 
 Context:
 - Material: {material_name}
@@ -375,7 +375,7 @@ Requirements:
 - Professional tone
 - No marketing language
 
-Generate only the subtitle text, no quotes or explanations."""
+Generate only the material_description text, no quotes or explanations."""
 
     def _build_description_prompt(self, material_name: str, material_data: Dict, context: Dict) -> str:
         """Build prompt for description generation"""

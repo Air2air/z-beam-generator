@@ -76,7 +76,7 @@ class ComponentRegistry:
                     'component_lengths': {
                         'subtitle': {'default': 15, 'min': 13, 'max': 17},
                         'caption': {'default': 25, 'min': 23, 'max': 27},
-                        'description': {'default': 150, 'min': 140, 'max': 160},
+                        'settings_description': {'default': 150, 'min': 140, 'max': 160},
                         'faq': {'default': 100, 'min': 80, 'max': 120},
                         'troubleshooter': {'default': 120, 'min': 100, 'max': 140}
                     }

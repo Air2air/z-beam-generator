@@ -254,9 +254,9 @@ Before documenting as "COMPLETE":
 
 ### **User Requests Content Generation?**
 → **READ THIS FIRST**: `.github/COPILOT_GENERATION_GUIDE.md`
-- Handles: "Generate subtitle for Aluminum", "Create caption for Steel", etc.
+- Handles: "Generate material description for Aluminum", "Create caption for Steel", etc.
 - Shows: Exact commands to run, terminal output handling, result reporting
-- Covers: All component types (subtitle, caption, FAQ, description)
+- Covers: All component types (material_description, caption, FAQ, settings_description)
 
 ### **Need Documentation?**
 → **PRIMARY GUIDE**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation (NEW)
@@ -791,13 +791,13 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 - ✅ **prompts/*.txt files** - Define component types by filename
   - Create `prompts/caption.txt` to define 'caption' component
-  - Create `prompts/subtitle.txt` to define 'subtitle' component
+  - Create `prompts/material_description.txt` to define 'material_description' component
   - Each .txt file = one component type
 - ✅ **config.yaml** - Define component word counts
   ```yaml
   component_lengths:
     caption: 25
-    subtitle: 15
+    material_description: 15
   ```
 - ❌ **processing/*.py files** - NO hardcoded component types
   - ❌ `if component_type == 'caption':`
@@ -827,7 +827,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
     caption:
       default: 50
       extraction_strategy: before_after  # Strategy-based extraction
-    subtitle:
+    material_description:
       default: 30
       extraction_strategy: raw  # Return text as-is
   ```
@@ -912,7 +912,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
 **Purpose**: Provides complete transparency and verification of generation results.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
-**Compliance**: Mandatory for caption, subtitle, FAQ generation
+**Compliance**: Mandatory for caption, material_description, FAQ generation
 
 
 

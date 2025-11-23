@@ -156,7 +156,7 @@ class SimpleGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (caption, subtitle, faq)
+            component_type: Type of component (caption, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             
         Returns:
@@ -199,7 +199,7 @@ class SimpleGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (caption, subtitle, faq)
+            component_type: Type of component (caption, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
             
@@ -301,7 +301,7 @@ class SimpleGenerator:
             word_count = sum(len(qa.get('answer', '').split()) for qa in content)
             char_count = sum(len(qa.get('answer', '')) for qa in content)
         else:
-            # String content (subtitle, etc.)
+            # String content (material_description, etc.)
             word_count = len(str(content).split())
             char_count = len(str(content))
         

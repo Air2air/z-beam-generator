@@ -428,7 +428,6 @@ class TrivialFrontmatterExporter:
         
         # Settings page metadata
         settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
-        settings_page['subtitle'] = f"Advanced Parameter Configuration and Troubleshooting for {full_frontmatter.get('name')} Laser Cleaning Systems"
         settings_page['settings_description'] = full_frontmatter.get('settings_description', f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations.")
         
         # Settings-specific breadcrumb

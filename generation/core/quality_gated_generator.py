@@ -145,7 +145,7 @@ class QualityGatedGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (caption, subtitle, faq)
+            component_type: Type of component (caption, material_description, faq)
             **kwargs: Additional parameters (e.g., faq_count)
             
         Returns:
@@ -665,7 +665,7 @@ class QualityGatedGenerator:
                 parts.append(f"Q: {q}\nA: {a}")
             return "\n\n".join(parts)
         else:
-            # String content (subtitle, etc.)
+            # String content (material_description, etc.)
             return str(content)
     
     def _load_sweet_spot_parameters(self) -> Dict[str, float]:

@@ -5,7 +5,7 @@ Generates multiple materials' components in batches to meet Winston's 300-charac
 minimum requirement while reducing API costs and maintaining quality.
 
 ARCHITECTURE:
-- Batch generation for short components (subtitles)
+- Batch generation for short components (material descriptions)
 - Single API call generates multiple materials
 - Concatenated validation meets Winston 300-char minimum
 - Individual extraction with structured format
@@ -40,19 +40,18 @@ class BatchGenerator:
     """
     Generate multiple materials' components in batches to meet Winston minimums.
     
-    Optimized for short components like subtitles that don't individually
+    Optimized for short components like material descriptions that don't individually
     meet Winston's 300-character requirement.
     """
     
     # Component batch configuration
     BATCH_CONFIG = {
-        'subtitle': {
+        'material_description': {
             'eligible': True,            # ✅ ENABLED - batches 3 materials to meet Winston 300-char min
             'chars_per_component': 140,  # Actual average (was 175 estimate)
-            'min_batch_size': 3,         # Minimum 3 subtitles = 420+ chars (was 2)
-            'max_batch_size': 4,         # Maximum 4 subtitles = 560+ chars (was 3)
-            'winston_min_chars': 300,
-            'separator': '\n\n',         # Clear separation for Winston sentence analysis
+            'min_batch_size': 3,         # Minimum 3 material descriptions = 420+ chars (was 2)
+            'max_batch_size': 4,         # Maximum 4 material descriptions = 560+ chars (was 3)
+            'winston_min_chars': 300,n            'separator': '\n\n',         # Clear separation for Winston sentence analysis
         },
         'caption': {
             'eligible': False,           # Already meets minimum individually
@@ -93,7 +92,7 @@ class BatchGenerator:
         Check if component type is eligible for batch generation.
         
         Args:
-            component_type: Type of component (caption, subtitle, etc.)
+            component_type: Type of component (caption, material_description, etc.)
             
         Returns:
             True if component should use batch generation
@@ -131,20 +130,20 @@ class BatchGenerator:
         
         return optimal_size
     
-    def batch_generate_subtitles(
+    def batch_generate_material_descriptions(
         self,
         materials: List[str],
         skip_integrity_check: bool = False
     ) -> Dict[str, Any]:
         """
-        Generate subtitles for multiple materials in one batch.
+        Generate material descriptions for multiple materials in one batch.
         
         Strategy:
         1. Calculate batch size to exceed 300 chars
         2. Build batch prompt with material markers
-        3. Generate all subtitles in single API call
+        3. Generate all material descriptions in single API call
         4. Validate concatenated result with Winston (meets 300-char minimum)
-        5. Extract individual subtitles using markers
+        5. Extract individual material descriptions using markers
         6. Apply same Winston feedback to all materials in batch
         7. Save to Materials.yaml individually
         
@@ -166,7 +165,7 @@ class BatchGenerator:
                 'cost_savings': float
             }
         """
-        component_type = 'subtitle'
+        component_type = 'material_description'
         batch_size = len(materials)
         
         self.logger.info(f"\n{'='*80}")
@@ -197,7 +196,7 @@ class BatchGenerator:
             all_results = {}
             for i in range(0, len(materials), max_size):
                 batch = materials[i:i+max_size]
-                batch_result = self.batch_generate_subtitles(batch, skip_integrity_check)
+                batch_result = self.batch_generate_material_descriptions(batch, skip_integrity_check)
                 if batch_result['success']:
                     all_results.update(batch_result['results'])
                 else:
@@ -210,12 +209,12 @@ class BatchGenerator:
                 'split_into_batches': True
             }
         
-        # Generate each subtitle individually (existing generator pattern)
+        # Generate each material description individually (existing generator pattern)
         # Then concatenate for batch Winston validation
         try:
             individual_results = {}
             
-            self.logger.info(f"\n📝 Generating {len(materials)} subtitles individually...")
+            self.logger.info(f"\n📝 Generating {len(materials)} material descriptions individually...")
             
             for material in materials:
                 self.logger.info(f"   Generating: {material}")
@@ -225,7 +224,7 @@ class BatchGenerator:
                 try:
                     result = self.generator.generate(material, component_type)
                     
-                    # Handle string return (subtitle case)
+                    # Handle string return (material_description case)
                     if isinstance(result, str):
                         individual_results[material] = {
                             'content': result,

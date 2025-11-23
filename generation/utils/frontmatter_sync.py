@@ -52,7 +52,7 @@ def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: 
     
     Args:
         material_name: Name of material
-        field_name: Field to update (e.g., 'description', 'subtitle', 'caption')
+        field_name: Field to update (e.g., 'settings_description', 'material_description', 'caption')
         field_value: New value for field
         
     Policy Compliance:

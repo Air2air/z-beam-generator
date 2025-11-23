@@ -54,8 +54,8 @@ python3 run.py --integrity-check
 # Generate a caption
 python3 run.py --caption "Aluminum"
 
-# Generate a subtitle
-python3 run.py --subtitle "Steel"
+# Generate a material description
+python3 run.py --material-description "Steel"
 
 # Generate an FAQ
 python3 run.py --faq "Copper"

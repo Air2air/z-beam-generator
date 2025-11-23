@@ -386,8 +386,8 @@ class HumannessOptimizer:
         template = self.template_file.read_text(encoding='utf-8')
         
         # 🎲 RANDOMIZE LENGTH TARGET (from config - zero hardcoded values)
-        # Use subtitle_length for subtitle, default to 'length' for others
-        length_config_key = 'subtitle_length' if component_type == 'subtitle' else 'length'
+        # Use subtitle_length for material_description, default to 'length' for others
+        length_config_key = 'subtitle_length' if component_type == 'material_description' else 'length'
         if length_config_key in self.config['randomization_targets']:
             length_config = self.config['randomization_targets'][length_config_key]
         else:
@@ -668,7 +668,7 @@ def generate_humanness_layer(
     Generate humanness instructions (convenience function).
     
     Args:
-        component_type: Type of component (caption, subtitle, etc.)
+        component_type: Type of component (caption, material_description, etc.)
         strictness_level: 1-5 (retry attempt number)
         previous_ai_tendencies: AI patterns from previous attempt
         winston_db_path: Path to Winston database
