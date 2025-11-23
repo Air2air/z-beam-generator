@@ -19,7 +19,7 @@ from typing import Dict, Any
 # Import generation commands
 from shared.commands import (
     handle_caption_generation,
-    handle_subtitle_generation,
+    handle_material_description_generation,
     handle_faq_generation,
 )
 
@@ -627,17 +627,17 @@ def run_material_workflow(
             caption_success = handle_caption_generation(material_name)
             step_results['generation']['caption'] = caption_success
             
-            # Generate subtitle
-            print("→ Generating subtitle...")
-            subtitle_success = handle_subtitle_generation(material_name)
-            step_results['generation']['subtitle'] = subtitle_success
+            # Generate material description
+            print("→ Generating material description...")
+            material_desc_success = handle_material_description_generation(material_name)
+            step_results['generation']['material_description'] = material_desc_success
             
             # Generate FAQ
             print("→ Generating FAQ...")
             faq_success = handle_faq_generation(material_name)
             step_results['generation']['faq'] = faq_success
             
-            generation_success = caption_success and subtitle_success and faq_success
+            generation_success = caption_success and material_desc_success and faq_success
             if not generation_success:
                 print("\n⚠️  Some text generation steps failed. Check logs above.")
             else:

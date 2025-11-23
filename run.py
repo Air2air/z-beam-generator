@@ -372,9 +372,9 @@ def main():
             print(f"❌ Batch test failed: {e}")
             return 1
     
-    if args.batch_subtitle:
-        from shared.commands.batch import handle_batch_subtitle_generation
-        result = handle_batch_subtitle_generation(args.batch_subtitle, skip_integrity_check=args.skip_integrity_check)
+    if getattr(args, 'batch_material_description', None):
+        from shared.commands.batch import handle_batch_material_description_generation
+        result = handle_batch_material_description_generation(args.batch_material_description, skip_integrity_check=args.skip_integrity_check)
         return result
     
     if args.batch_caption:
