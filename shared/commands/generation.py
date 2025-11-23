@@ -140,16 +140,9 @@ def handle_generation(
             _show_generation_report(full_content, material_name, component_type, 
                                    succeeded=generation_succeeded, error=generation_error)
         
-        # Run subjective evaluation using Grok API (only on success)
-        if generation_succeeded:
-            _run_subjective_evaluation(full_content, material_name, component_type)
-        else:
-            print("⏭️  Skipping subjective evaluation (generation failed)")
-            print()
-        
-        # NOTE: Winston AI detection now runs DURING quality gate (before save)
-        # This ensures content is validated before persistence, enabling retry on failure
-        # Post-save validation removed to prevent redundant checks
+        # NOTE: Subjective evaluation is ONLY for training mode (quality-gated generation)
+        # Production mode (default) has ZERO evaluation for fast single-pass generation
+        # Evaluation runs during quality gate BEFORE save in training mode only
         
         if generation_succeeded:
             print(f"✨ {component_label.capitalize()} generation complete!")
