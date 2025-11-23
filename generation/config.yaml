@@ -201,17 +201,17 @@ component_lengths:
     target: 75                         # Target word count (variation applied from global slider)
     extraction_strategy: before_after  # Extract before/after sections
   
-  subtitle:
+  material_description:
+    target: 1000                       # No effective token limit - let prompt instructions control length
+    extraction_strategy: raw           # Return text as-is
+  
+  settings_description:
     target: 1000                       # No effective token limit - let prompt instructions control length
     extraction_strategy: raw           # Return text as-is
   
   faq:
     target: 150                        # Target word count (variation applied from global slider)
     extraction_strategy: json_list     # Parse JSON array
-  
-  description:
-    target: 1000                       # No effective token limit - let prompt instructions control length
-    extraction_strategy: raw           # Return text as-is
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

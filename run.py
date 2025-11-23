@@ -17,7 +17,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
 🎯 GENERATION & VALIDATION WORKFLOW (NEW - Single-Pass):
   # Step 1: Generate (single API call, no validation)
   python3 run.py --caption "Aluminum"      # Generate AI caption → Materials.yaml (single-pass)
-  python3 run.py --subtitle "Aluminum"     # Generate AI subtitle → Materials.yaml (single-pass)
+  python3 run.py --material-description "Aluminum"     # Generate AI material description → Materials.yaml (single-pass)
   python3 run.py --faq "Aluminum"          # Generate AI FAQ → Materials.yaml (single-pass)
   
   # Step 2: Validate & Improve (post-processing with learning systems)
@@ -138,9 +138,9 @@ import argparse
 # Import command handlers from modular structure
 from shared.commands import (
     handle_caption_generation,
-    handle_subtitle_generation,
+    handle_material_description_generation,
+    handle_settings_description_generation,
     handle_faq_generation,
-    handle_description_generation,
     deploy_to_production,
     handle_material_audit,
     handle_data_completeness_report,
@@ -190,12 +190,12 @@ def main():
     parser.add_argument("--material", help="Generate frontmatter for specific material (legacy)")
     parser.add_argument("--all", action="store_true", help="Generate frontmatter for all materials")
     parser.add_argument("--caption", help="Generate AI-powered caption")
-    parser.add_argument("--subtitle", help="Generate AI-powered subtitle")
+    parser.add_argument("--material-description", help="Generate AI-powered material description")
+    parser.add_argument("--settings-description", help="Generate AI-powered settings description")
     parser.add_argument("--faq", help="Generate AI-powered FAQ")
-    parser.add_argument("--description", help="Generate AI-powered description")
     
     # Batch Generation Commands
-    parser.add_argument("--batch-subtitle", help="Generate subtitles for multiple materials (comma-separated) or --all")
+    parser.add_argument("--batch-material-description", help="Generate material descriptions for multiple materials (comma-separated) or --all")
     parser.add_argument("--batch-caption", help="Generate captions for multiple materials (comma-separated) or --all")
     
     # Deployment Commands
@@ -210,7 +210,7 @@ def main():
     parser.add_argument("--content-validation-report", help="Content quality validation report")
     parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
     parser.add_argument("--winston-threshold", type=float, default=70.0, help="Winston human score threshold (0-100)")
-    parser.add_argument("--winston-component", choices=['subtitle', 'caption', 'faq'], 
+    parser.add_argument("--winston-component", choices=['material_description', 'caption', 'faq'], 
                        help="Specific component type to audit with Winston")
     
     # Data Research & Completeness Commands
@@ -396,7 +396,7 @@ def main():
         print()
         print("USE INSTEAD:")
         print("  • python3 run.py --caption \"Material\"")
-        print("  • python3 run.py --subtitle \"Material\"")
+        print("  • python3 run.py --material-description \"Material\"")
         print("  • python3 run.py --faq \"Material\"")
         print()
         print("These commands include:")
@@ -413,18 +413,18 @@ def main():
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     
-    if args.subtitle:
-        result = handle_subtitle_generation(args.subtitle, skip_integrity_check=args.skip_integrity_check)
+    if getattr(args, 'material_description', None):
+        result = handle_material_description_generation(args.material_description, skip_integrity_check=args.skip_integrity_check)
+        # Per-iteration learning happens inline - no global evaluation needed
+        return result
+    
+    if getattr(args, 'settings_description', None):
+        result = handle_settings_description_generation(args.settings_description, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     
     if args.faq:
         result = handle_faq_generation(args.faq, skip_integrity_check=args.skip_integrity_check)
-        # Per-iteration learning happens inline - no global evaluation needed
-        return result
-    
-    if args.description:
-        result = handle_description_generation(args.description, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     

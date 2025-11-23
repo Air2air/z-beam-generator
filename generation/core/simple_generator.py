@@ -329,9 +329,9 @@ class SimpleGenerator:
         if material_name not in data['materials']:
             raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
         
-        # Description/subtitle/faq go at ROOT level (not in components)
+        # material_description/settings_description/faq go at ROOT level (not in components)
         # Caption goes in components (before/after structure)
-        if component_type in ['description', 'subtitle', 'faq']:
+        if component_type in ['material_description', 'settings_description', 'faq']:
             # Save to root level for consistency with existing structure
             data['materials'][material_name][component_type] = content
         else:

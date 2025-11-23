@@ -29,7 +29,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -37,8 +38,10 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Tungsten Carbide Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Tungsten Carbide Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing tungsten carbide laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Tungsten Carbide
+  Laser Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing tungsten carbide laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -52,10 +55,12 @@ breadcrumb:
   href: /settings/tungsten-carbide
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -90,7 +95,8 @@ material_challenges:
   - challenge: Thermal shock and cracking
     severity: critical
     threshold_temperature: ΔT > 200-300°C rapid cooling
-    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
+    impact: Ceramics crack catastrophically from rapid temperature changes due to
+      low thermal expansion
     solutions:
     - Use pulse mode with 3-5 second cooling between passes
     - Gradual power ramping (start 50W, increase 10W per pass)
@@ -116,7 +122,8 @@ material_challenges:
   - challenge: Porosity variation
     severity: medium
     porosity_range: 0-30% (dense vs porous ceramics)
-    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
+    impact: Porous ceramics trap contaminants deep in structure and scatter laser
+      energy
     solutions:
     - Dense ceramics (0-5% porosity) clean easily at 100-150W
     - Porous ceramics require multiple progressive passes
@@ -125,9 +132,19 @@ material_challenges:
   contamination_challenges:
   - challenge: Coating and residue removal
     severity: medium
-    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
+    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate
+      damage
     solutions:
     - First pass 120W fast (2000 mm/s) for bulk coating removal
     - Second pass 80W slow (1000 mm/s) for residue
     - Monitor for substrate exposure; adjust power accordingly
     - PVD coatings may require chemical assist for complete removal
+settings_description: "When laser cleaning Tungsten Carbide, we've found you must\
+  \ start low on power to avoid cracking its brittle surface right away. This material's\
+  \ extreme hardness makes contaminants stick tough, so begin with a gentle pass to\
+  \ loosen dirt without scratching the base. We've typically set the beam to a focused\
+  \ spot and slow scan speed, letting its good heat spread evenly so you don't overheat\
+  \ edges. Unlike softer metals, its low expansion keeps shapes stable, but watch\
+  \ for buildup—multiple light passes restore that tool-sharp finish in aerospace\
+  \ parts. Just ease up if you spot any haze; it cleans clean without residue. \n\n\
+  Yi-Chun Lin, Ph.D."

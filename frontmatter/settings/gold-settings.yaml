@@ -29,7 +29,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -37,8 +38,10 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Gold Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Gold Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing gold laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Gold Laser Cleaning
+  Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing gold laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -55,7 +58,8 @@ images:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gold-laser-cleaning-hero.jpg
   micro:
-    alt: Gold microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Gold microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/gold-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -123,7 +127,8 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base
+      metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -135,3 +140,9 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
+settings_description: When laser cleaning gold, unlike copper or silver, its extreme
+  reflectivity bounces most energy away. We typically switch to shorter wavelengths
+  for better absorption. This lets you remove contaminants without melting the surface.
+  Watch out mid-process for uneven heating—dial down power if spots heat up. We've
+  found multiple light passes restore that pristine finish safely. Adjust overlap
+  to avoid warping delicate pieces.

@@ -29,7 +29,8 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -37,8 +38,10 @@ author:
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
 title: Pyrex Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Pyrex Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing pyrex laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Pyrex Laser Cleaning
+  Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing pyrex laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -55,7 +58,8 @@ images:
     alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/pyrex-laser-cleaning-hero.jpg
   micro:
-    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/pyrex-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -90,7 +94,8 @@ material_challenges:
   - challenge: Thermal shock and catastrophic failure
     severity: critical
     threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
-    impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
+    impact: Glass shatters from thermal gradients due to low thermal expansion and
+      brittleness
     solutions:
     - Use pulse mode with 5-8 second cooling between passes
     - Preheat substrate to room temperature before cleaning
@@ -114,10 +119,12 @@ material_challenges:
     - Inspect surface with magnification before cleaning
     - Reduce power 40-50% for scratched or damaged glass
     - Clean around defects with extreme caution
-    - Polished optical glass requires different parameters than rough architectural glass
+    - Polished optical glass requires different parameters than rough architectural
+      glass
   - challenge: Coating and film removal
     severity: medium
-    impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
+    impact: Thin films, anti-reflective coatings, and tints have different damage
+      thresholds than substrate
     solutions:
     - Test on edge first to determine coating removal threshold
     - Coated glass may require 40-60W initial pass
@@ -126,10 +133,20 @@ material_challenges:
   contamination_challenges:
   - challenge: Adhesive and paint removal
     severity: medium
-    impact: Thick coatings require multiple passes and generate debris that can scratch glass
+    impact: Thick coatings require multiple passes and generate debris that can scratch
+      glass
     solutions:
     - First pass 60W fast (1800 mm/s) for bulk removal
     - Second pass 40W slow (1000 mm/s) for residue
     - Use air assist to blow debris away from surface
     - Chemical pre-treatment reduces laser exposure time
     - Avoid dragging ablated material across clean areas
+settings_description: When laser cleaning Pyrex, we've found that starting with lower
+  power settings works best to gently remove contaminants without risking cracks.
+  This glass stands out for its excellent thermal shock resistance, which lets you
+  handle quick heat cycles that might shatter ordinary soda-lime types, so we often
+  use pulsed lasers to control the energy input precisely. But watch out midway through—its
+  low thermal conductivity can trap heat in spots, leading to uneven cleaning if you
+  push the scan speed too high; dial it back and add passes instead. In our experience,
+  this brings back the surface clarity on lab equipment reliably while preserving
+  its integrity for reuse.

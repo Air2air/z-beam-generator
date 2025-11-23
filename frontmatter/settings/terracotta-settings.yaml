@@ -27,7 +27,8 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -36,8 +37,10 @@ author:
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
 title: Terracotta Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Terracotta Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing terracotta laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Terracotta Laser
+  Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing terracotta laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -51,10 +54,12 @@ breadcrumb:
   href: /settings/terracotta
 images:
   hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/terracotta-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/terracotta-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -129,10 +134,27 @@ material_challenges:
   contamination_challenges:
   - challenge: Paint and coating removal from porous substrate
     severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+    impact: Paint penetrates into pores requiring deep cleaning without substrate
+      damage
     solutions:
     - First pass 100W fast (1500 mm/s) for surface paint layer
     - Second pass 70W slow (800 mm/s) for paint in pores
     - Third pass 50W very slow (500 mm/s) for residual staining
     - Chemical stripping pre-treatment reduces laser exposure
     - Heritage masonry requires gentler approach (max 60W)
+settings_description: 'When laser cleaning terracotta, watch out for its porous nature
+  right from the start—it can trap heat unevenly and lead to cracks if you''re not
+  careful. I''ve seen this happen when folks push too hard too soon, so begin by testing
+  a small area with gentle pulses to gauge how the surface responds. This material
+  tends to absorb laser energy moderately well, which helps remove dirt and grime
+  without much effort, but its low heat spreading means you should keep dwell times
+  short to avoid localized overheating.
+
+
+  Move to a multi-pass approach next, starting low on power and building up only as
+  needed. Terracotta''s relative fragility compared to denser stones calls for wider
+  scan overlaps, ensuring even coverage without stressing the structure. What sets
+  it apart is that baked-clay makeup, so it cleans up beautifully for heritage pieces
+  but demands you pause between passes to let it cool. Avoid high speeds early on;
+  slower ones prevent surface pitting. In my experience, this setup preserves the
+  earthy texture while stripping away years of buildup safely.'

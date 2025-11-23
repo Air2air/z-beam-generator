@@ -29,7 +29,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -37,8 +38,10 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Stucco Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Stucco Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing stucco laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Stucco Laser Cleaning
+  Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing stucco laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -55,7 +58,8 @@ images:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/stucco-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/stucco-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,10 +131,19 @@ material_challenges:
   contamination_challenges:
   - challenge: Paint and coating removal from porous substrate
     severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+    impact: Paint penetrates into pores requiring deep cleaning without substrate
+      damage
     solutions:
     - First pass 100W fast (1500 mm/s) for surface paint layer
     - Second pass 70W slow (800 mm/s) for paint in pores
     - Third pass 50W very slow (500 mm/s) for residual staining
     - Chemical stripping pre-treatment reduces laser exposure
     - Heritage masonry requires gentler approach (max 60W)
+settings_description: In our experience, the key with Stucco lies in its porous, cement-based
+  structure that absorbs contaminants deeply while resisting heat buildup effectively
+  during laser cleaning. We've found this makes it different from smoother masonry,
+  so we typically start with controlled, low-intensity passes to gently lift surface
+  grime without cracking the fragile matrix—watch out for overexposure here, as it
+  can dry out and weaken the bonds mid-process. To handle this, we adjust by overlapping
+  scans lightly and adding a damp post-treatment to restore evenness, ensuring clean
+  results for heritage restorations.

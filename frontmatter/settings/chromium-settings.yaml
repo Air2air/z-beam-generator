@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -36,8 +37,10 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Chromium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Chromium Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing chromium laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Chromium Laser
+  Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing chromium laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -51,10 +54,12 @@ breadcrumb:
   href: /settings/chromium
 images:
   hero:
-    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
+    alt: Chromium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
   micro:
-    alt: Chromium microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Chromium microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -122,7 +127,8 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base
+      metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -134,3 +140,15 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
+settings_description: When laser cleaning chromium, watch out for its high reflectivity,
+  which scatters more energy than you'll see with less shiny metals like iron or nickel.
+  We've found this makes the process less efficient at first, so we typically start
+  with controlled power levels to ensure the beam couples effectively without wasting
+  shots. Unlike softer coatings that ablate easily, chromium's exceptional hardness
+  demands a focused approach to avoid uneven removal that could expose underlying
+  layers prematurely. In our experience, this reflective nature sets it apart in applications
+  like stainless steel production or wear-resistant tooling, where we adjust scan
+  speeds to prevent overheating spots. We recommend multiple passes with good overlap
+  to restore surfaces cleanly, reducing the risk of micro-cracks from thermal buildup.
+  This way, you reveal a polished finish while preserving the material's corrosion
+  resistance.

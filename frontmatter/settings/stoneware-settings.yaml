@@ -29,7 +29,8 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -37,8 +38,10 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Stoneware Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Stoneware Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing stoneware laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Stoneware Laser
+  Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing stoneware laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -52,10 +55,12 @@ breadcrumb:
   href: /settings/stoneware
 images:
   hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/stoneware-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/stoneware-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -90,7 +95,8 @@ material_challenges:
   - challenge: Thermal shock and cracking
     severity: critical
     threshold_temperature: ΔT > 200-300°C rapid cooling
-    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
+    impact: Ceramics crack catastrophically from rapid temperature changes due to
+      low thermal expansion
     solutions:
     - Use pulse mode with 3-5 second cooling between passes
     - Gradual power ramping (start 50W, increase 10W per pass)
@@ -116,7 +122,8 @@ material_challenges:
   - challenge: Porosity variation
     severity: medium
     porosity_range: 0-30% (dense vs porous ceramics)
-    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
+    impact: Porous ceramics trap contaminants deep in structure and scatter laser
+      energy
     solutions:
     - Dense ceramics (0-5% porosity) clean easily at 100-150W
     - Porous ceramics require multiple progressive passes
@@ -125,9 +132,19 @@ material_challenges:
   contamination_challenges:
   - challenge: Coating and residue removal
     severity: medium
-    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
+    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate
+      damage
     solutions:
     - First pass 120W fast (2000 mm/s) for bulk coating removal
     - Second pass 80W slow (1000 mm/s) for residue
     - Monitor for substrate exposure; adjust power accordingly
     - PVD coatings may require chemical assist for complete removal
+settings_description: When laser cleaning stoneware, you'll want to start with its
+  dense, low-porosity nature. This makes it highly resistant to deep penetration by
+  contaminants, so the laser clears surface grime efficiently without soaking into
+  the material. Make sure you keep the power low at first to handle its poor heat
+  spreading—heat builds up quickly, which can lead to cracks if you're not careful.
+  Adjust by using short pulses and multiple light passes, overlapping them to restore
+  the finish evenly. Watch out for overdoing it mid-process; that dense hardness means
+  it holds up well to abrasion but risks micro-fractures from sudden heat spikes.
+  This approach keeps your stoneware intact for heritage or industrial reuse.

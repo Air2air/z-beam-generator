@@ -47,9 +47,9 @@ def handle_generation(
     component_label = component_type.upper().replace('_', ' ')
     icon_map = {
         'caption': '📝',
-        'subtitle': '📌',
+        'material_description': '📌',
+        'settings_description': '⚙️',
         'faq': '❓',
-        'description': '📄',
         'troubleshooter': '🔧'
     }
     icon = icon_map.get(component_type, '📝')
@@ -448,34 +448,28 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
     return handle_generation(material_name, 'caption', skip_integrity_check)
 
 
-def handle_subtitle_generation(material_name: str, skip_integrity_check: bool = False):
+def handle_material_description_generation(material_name: str, skip_integrity_check: bool = False):
     """
-    DEPRECATED: Use handle_generation(material_name, 'subtitle') instead.
-    
-    Generate AI-powered subtitle for a material and save to Materials.yaml.
+    Generate AI-powered material description for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'subtitle', skip_integrity_check)
+    return handle_generation(material_name, 'material_description', skip_integrity_check)
+
+
+def handle_settings_description_generation(material_name: str, skip_integrity_check: bool = False):
+    """
+    Generate AI-powered settings description for a material and save to Materials.yaml.
+    This is a backward compatibility wrapper around the generic handler.
+    """
+    return handle_generation(material_name, 'settings_description', skip_integrity_check)
 
 
 def handle_faq_generation(material_name: str, skip_integrity_check: bool = False):
     """
-    DEPRECATED: Use handle_generation(material_name, 'faq') instead.
-    
     Generate AI-powered FAQ for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
     return handle_generation(material_name, 'faq', skip_integrity_check)
-
-
-def handle_description_generation(material_name: str, skip_integrity_check: bool = False):
-    """
-    DEPRECATED: Use handle_generation(material_name, 'description') instead.
-    
-    Generate AI-powered description for a material and save to Materials.yaml.
-    This is a backward compatibility wrapper around the generic handler.
-    """
-    return handle_generation(material_name, 'description', skip_integrity_check)
 
 
 

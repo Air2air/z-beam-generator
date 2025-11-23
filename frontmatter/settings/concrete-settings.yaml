@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -36,8 +37,10 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Concrete Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Concrete Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing concrete laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Concrete Laser
+  Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing concrete laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -51,10 +54,12 @@ breadcrumb:
   href: /settings/concrete
 images:
   hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
+    alt: Concrete surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/concrete-laser-cleaning-hero.jpg
   micro:
-    alt: Concrete microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Concrete microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/concrete-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -126,10 +131,17 @@ material_challenges:
   contamination_challenges:
   - challenge: Paint and coating removal from porous substrate
     severity: medium
-    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+    impact: Paint penetrates into pores requiring deep cleaning without substrate
+      damage
     solutions:
     - First pass 100W fast (1500 mm/s) for surface paint layer
     - Second pass 70W slow (800 mm/s) for paint in pores
     - Third pass 50W very slow (500 mm/s) for residual staining
     - Chemical stripping pre-treatment reduces laser exposure
     - Heritage masonry requires gentler approach (max 60W)
+settings_description: We've found that concrete demands initial low-power passes in
+  laser cleaning to avoid aggregate spalling, a risk not as prevalent in denser stones
+  like granite. Its inherent porosity allows effective absorption of laser energy,
+  which reveals embedded contaminants without excessive heat buildup. We typically
+  follow with multiple overlapping scans to restore surface uniformity in infrastructure
+  settings, reducing the chance of uneven ablation.

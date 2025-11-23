@@ -238,11 +238,11 @@ class TrivialFrontmatterExporter:
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
             'breadcrumb',
-            'category', 'subcategory', 'title', 'subtitle', 'description',
+            'category', 'subcategory', 'title', 'material_description',
             'datePublished', 'dateModified',  # Schema.org date fields from git history
             'images', 'caption', 'regulatoryStandards', 'eeat',
             'materialProperties', 'machineSettings', 'faq',
-            '_metadata', 'material_metadata', 'subtitle_metadata'
+            '_metadata', 'material_metadata'
         }
         
         # Copy only exportable fields from Materials.yaml (exclude 'author' - it's enriched from registry above)
@@ -314,13 +314,13 @@ class TrivialFrontmatterExporter:
             else:
                 self.logger.debug(f"No material_challenges found for category: {category}")
         
-        # Override with components if they exist (new generation system saves to components.subtitle, etc.)
+        # Override with components if they exist (new generation system saves to components)
         if 'components' in material_data:
             components = material_data['components']
             # Priority order: components > direct fields
-            if 'subtitle' in components:
-                frontmatter['subtitle'] = components['subtitle']
-            if 'description' in components:
+            if 'material_description' in components:
+                frontmatter['material_description'] = components['material_description']
+            if 'settings_description' in components:
                 frontmatter['description'] = components['description']
             if 'caption' in components:
                 caption = components['caption']
@@ -371,9 +371,7 @@ class TrivialFrontmatterExporter:
         
         # Page-specific metadata
         materials_page['title'] = full_frontmatter.get('title')
-        materials_page['subtitle'] = full_frontmatter.get('subtitle')
-        materials_page['subtitle_metadata'] = full_frontmatter.get('subtitle_metadata', {})
-        materials_page['description'] = full_frontmatter.get('description')
+        materials_page['material_description'] = full_frontmatter.get('material_description')
         materials_page['breadcrumb'] = full_frontmatter.get('breadcrumb')
         
         # Images
@@ -399,7 +397,7 @@ class TrivialFrontmatterExporter:
             with open(output_path, 'r') as f:
                 content = f.read()
                 for line in content.split('\n')[:10]:
-                    if 'subtitle:' in line:
+                    if 'material_description:' in line:
                         print(f"✅ [VERIFY] Wrote to file: {line}")
                         break
         
@@ -431,7 +429,7 @@ class TrivialFrontmatterExporter:
         # Settings page metadata
         settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
         settings_page['subtitle'] = f"Advanced Parameter Configuration and Troubleshooting for {full_frontmatter.get('name')} Laser Cleaning Systems"
-        settings_page['description'] = f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations."
+        settings_page['settings_description'] = full_frontmatter.get('settings_description', f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations.")
         
         # Settings-specific breadcrumb
         category = full_frontmatter.get('category', '')

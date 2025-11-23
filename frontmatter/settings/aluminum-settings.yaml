@@ -28,7 +28,8 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -36,8 +37,10 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Aluminum Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Aluminum Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing aluminum laser cleaning operations.
+subtitle: Advanced Parameter Configuration and Troubleshooting for Aluminum Laser
+  Cleaning Systems
+description: Detailed machine settings, parameter relationships, diagnostic procedures,
+  and troubleshooting guides for optimizing aluminum laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -51,10 +54,12 @@ breadcrumb:
   href: /settings/aluminum
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/aluminum-laser-cleaning-hero.jpg
   micro:
-    alt: Aluminum microscopic view of laser cleaning showing detailed precise contamination removal
+    alt: Aluminum microscopic view of laser cleaning showing detailed precise contamination
+      removal
     url: /images/material/aluminum-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -122,7 +127,8 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base
+      metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -134,3 +140,15 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
+settings_description: I've seen aluminum respond well to laser cleaning when you begin
+  with controlled power levels to counter its high reflectivity, which tends to bounce
+  away much of the beam's energy. This approach prevents uneven heating that could
+  warp thin sections early in the process. Once set up this way, the laser effectively
+  removes oxides and contaminants without compromising the metal's natural corrosion
+  resistance. Aluminum's low density makes it lighter and more prone to heat buildup
+  compared to denser metals, so you'll want to increase scan speeds gradually to expose
+  clean surfaces evenly across multiple passes. I've found that maintaining good overlap
+  in those passes restores the material's smooth finish reliably. Tends to avoid common
+  pitfalls like localized melting if you monitor for any discoloration during the
+  first run—adjust by slowing the repetition rate slightly if needed to reduce thermal
+  stress.
