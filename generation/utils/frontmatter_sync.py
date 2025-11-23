@@ -75,15 +75,9 @@ def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: 
             }
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
-        # Handle component fields (caption goes in components, others at root)
-        if field_name == 'caption':
-            # Caption stored in components.caption
-            if 'components' not in frontmatter_data:
-                frontmatter_data['components'] = {}
-            frontmatter_data['components']['caption'] = field_value
-            logger.info(f"   ✅ Updated frontmatter components.caption for {material_name}")
-        elif field_name in ['subtitle', 'description', 'faq']:
-            # These fields at root level
+        # Handle component fields - all stored at root level in frontmatter
+        if field_name in ['caption', 'subtitle', 'description', 'faq']:
+            # All text component fields at root level
             frontmatter_data[field_name] = field_value
             logger.info(f"   ✅ Updated frontmatter {field_name} for {material_name}")
         else:

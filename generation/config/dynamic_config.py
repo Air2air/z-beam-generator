@@ -90,28 +90,23 @@ class DynamicConfig:
     
     def calculate_max_tokens(self, component_type: str) -> int:
         """
-        Calculate optimal max tokens based on sliders.
+        Calculate max tokens directly from word count target.
         
-        Higher length_variation = more tokens allowed
-        Higher context_specificity = more tokens needed
+        NO MULTIPLIER - config_loader already converts words × 1.3 = tokens.
+        Previously had 0.8-1.3 multiplier causing double-conversion:
+        - 80 words → 104 tokens → 83 tokens (× 0.8) → truncated at 66 words
+        
+        Now returns tokens directly from config_loader conversion.
         
         Returns:
-            Max tokens for component
+            Max tokens for component (from word target × 1.3)
         """
-        length_variation = self.base_config.get_length_variation_range()  # 0-100
-        context = self.base_config.get_context_specificity()  # 0-100
+        # Get tokens from config (already converted from words)
+        tokens = self.base_config.get_max_tokens(component_type)
         
-        # Base tokens from config
-        base_tokens = self.base_config.get_max_tokens(component_type)
-        
-        # Calculate multiplier (0.8 to 1.3)
-        # High variation + high context = allow more tokens
-        flexibility_factor = (length_variation + context) / 200.0  # 0.0-1.0
-        multiplier = 0.8 + (flexibility_factor * 0.5)  # 0.8 to 1.3
-        
-        calculated_tokens = int(base_tokens * multiplier)
-        
-        return calculated_tokens
+        # Return directly - NO MULTIPLIER
+        # Length variation is handled by config target, not runtime multiplication
+        return tokens
     
     def calculate_retry_behavior(self) -> Dict[str, Any]:
         """
@@ -134,11 +129,18 @@ class DynamicConfig:
         # Less imperfection tolerance → fewer retries (strict, fail fast)
         persistence_factor = (ai_avoidance + imperfection) / 200.0  # 0.0-1.0
         
-        # Adjust attempts (3-7 range)
-        max_attempts = int(3 + (persistence_factor * 4))
+        # Get retry ranges from config
+        retry_config = self.base_config.config.get('dynamic_calculations', {}).get('retry', {})
+        attempts_min = retry_config.get('attempts_min', 3)
+        attempts_max = retry_config.get('attempts_max', 7)
+        temp_min = retry_config.get('temp_increase_min', 0.05)
+        temp_max = retry_config.get('temp_increase_max', 0.15)
         
-        # Adjust temp increase (0.05-0.15 range)
-        temp_increase = 0.05 + (persistence_factor * 0.10)
+        # Adjust attempts using config range
+        max_attempts = int(attempts_min + (persistence_factor * (attempts_max - attempts_min)))
+        
+        # Adjust temp increase using config range
+        temp_increase = temp_min + (persistence_factor * (temp_max - temp_min))
         
         return {
             'max_attempts': max_attempts,
@@ -175,13 +177,19 @@ class DynamicConfig:
         # High imperfection → higher threshold (more lenient)
         strictness_factor = (ai_avoidance - imperfection) / 100.0  # -1.0 to +1.0
         
-        # Adjust threshold (-15 to +15)
-        threshold_adjustment = strictness_factor * 15
+        # Get threshold ranges from config
+        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
+        adjustment_range = threshold_config.get('detection_adjustment_range', 15)
+        min_threshold = threshold_config.get('detection_min', 20)
+        max_threshold = threshold_config.get('detection_max', 60)
+        
+        # Adjust threshold using config range
+        threshold_adjustment = strictness_factor * adjustment_range
         
         calculated_threshold = base_threshold - threshold_adjustment
         
-        # Clamp to reasonable range
-        return max(20, min(60, calculated_threshold))
+        # Clamp using config min/max
+        return max(min_threshold, min(max_threshold, calculated_threshold))
     
     def calculate_repetition_sensitivity(self) -> Dict[str, int]:
         """
@@ -232,8 +240,13 @@ class DynamicConfig:
         
         base = self.base_config.get_confidence_thresholds()
         
+        # Get confidence adjustment range from config
+        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
+        adjustment_range = threshold_config.get('confidence_adjustment_range', 10)
+        
         # Higher AI avoidance → require higher confidence to accept
-        adjustment = (ai_avoidance - 50) / 5  # -10 to +10
+        # Scale ai_avoidance (0-100) to adjustment range (e.g., -10 to +10)
+        adjustment = (ai_avoidance - 50) / 50 * adjustment_range  # -adjustment_range to +adjustment_range
         
         return {
             'high': max(60, min(85, base['high'] + adjustment)),
@@ -259,12 +272,16 @@ class DynamicConfig:
         
         base = self.base_config.get_readability_thresholds()
         
+        # Get readability adjustment range from config
+        threshold_config = self.base_config.config.get('dynamic_calculations', {}).get('thresholds', {})
+        adjustment_range = threshold_config.get('readability_adjustment_range', 10)
+        
         # High technical → lower min score OK (harder text acceptable)
         # High engagement → higher min score wanted (easier text)
         accessibility_factor = (engagement - technical) / 100.0  # -1.0 to +1.0
         
-        # Adjust min score (-10 to +10)
-        min_adjustment = accessibility_factor * 10
+        # Adjust min score using config range
+        min_adjustment = accessibility_factor * adjustment_range
         
         return {
             'min': max(40, min(70, base['min'] + min_adjustment)),
@@ -455,21 +472,27 @@ class DynamicConfig:
         # Higher humanness = higher penalties to reduce repetition (which AI detectors flag)
         humanness = self.base_config.get_humanness_intensity()  # 1-10
         
-        # Map humanness to penalty range
+        # Get penalty ranges from config
+        penalties_config = self.base_config.config.get('dynamic_calculations', {}).get('penalties', {})
+        
+        # Map humanness to penalty range using config values
         # Low humanness (1-3): 0.0 penalties (fast, predictable)
-        # Medium humanness (4-7): 0.3-0.6 penalties (balanced)
-        # High humanness (8-10): 0.8-1.2 penalties (aggressive, varied)
+        # Medium humanness (4-7): 0.0 to medium_max penalties (balanced)
+        # High humanness (8-10): high_min to high_max penalties (aggressive, varied)
         if humanness <= 3:
-            frequency_penalty = 0.0
-            presence_penalty = 0.0
+            frequency_penalty = penalties_config.get('low_humanness', {}).get('frequency', 0.0)
+            presence_penalty = penalties_config.get('low_humanness', {}).get('presence', 0.0)
         elif humanness <= 7:
-            # Linear scale from 0.0 to 0.6
-            frequency_penalty = (humanness - 3) / 4.0 * 0.6
-            presence_penalty = (humanness - 3) / 4.0 * 0.6
+            # Linear scale from 0.0 to medium_max
+            medium_max = penalties_config.get('medium_humanness', {}).get('frequency_max', 0.6)
+            frequency_penalty = (humanness - 3) / 4.0 * medium_max
+            presence_penalty = (humanness - 3) / 4.0 * medium_max
         else:
-            # Linear scale from 0.6 to 1.2
-            frequency_penalty = 0.6 + (humanness - 7) / 3.0 * 0.6
-            presence_penalty = 0.6 + (humanness - 7) / 3.0 * 0.6
+            # Linear scale from high_min to high_max
+            high_min = penalties_config.get('high_humanness', {}).get('frequency_min', 0.6)
+            high_max = penalties_config.get('high_humanness', {}).get('frequency_max', 1.2)
+            frequency_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
+            presence_penalty = high_min + (humanness - 7) / 3.0 * (high_max - high_min)
         
         return {
             'api_params': {

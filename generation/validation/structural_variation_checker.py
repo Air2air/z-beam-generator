@@ -260,7 +260,7 @@ class StructuralVariationChecker:
         
         if repetition_count >= 3:
             issues.append(f"Opening pattern repeated {repetition_count}/{recent_window} recent generations")
-            suggestions.append("Use different opening from humanness layer options (8 available)")
+            suggestions.append("Use different opening from humanness layer options (7 available)")
             logger.info(f"   ⚠️  Opening pattern repeated {repetition_count} times")
         else:
             logger.info(f"   ✅ Opening pattern unique (matches {repetition_count}/10 recent)")

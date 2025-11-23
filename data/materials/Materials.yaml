@@ -848,41 +848,29 @@ materials:
     title: Aluminum Laser Cleaning
     subtitle: A lightweight non-ferrous metal with exceptional corrosion resistance
       and a density of 2.7 g/cm³
-    description: 'When laser cleaning aluminum, you must address its high reflectivity
-      right away. This property, around 95 percent, bounces most laser energy back.
-      It risks damaging your equipment if you do not start low. Begin with power at
-      100 watts. Keep the spot size at 50 micrometers. This setup reduces reflection
-      risks.
+    description: 'Aluminum, a non-ferrous metal with a density of 2.7 g/cm³, presents
+      unique considerations for laser cleaning due to its high reflectivity of 0.95
+      and low absorptivity of 0.06. These properties cause most laser energy to reflect
+      away, which reduces cleaning efficiency and demands adjustments in power and
+      pulse settings to achieve effective contaminant removal without damaging the
+      substrate. Operators address this by starting with a power range around 100
+      W and a repetition rate of 50 kHz, which allows gradual energy buildup on the
+      surface.
 
 
-      You''ll find aluminum cleans well once you adjust for its low absorption. Only
-      about 6 percent of the energy gets absorbed. So you must increase passes to
-      three. Use a repetition rate of 50 kilohertz. This pulls in more total energy
-      without overheating. Aluminum''s low density, at 2.7 grams per cubic centimeter,
-      helps here. It conducts heat fast but dissipates it quickly. You should scan
-      at 500 millimeters per second. This prevents buildup on thin parts.
+      The material''s low melting point of 660°C sets it apart from ferrous metals
+      like steel, which tolerate higher temperatures during cleaning. This difference
+      requires a cautious approach to prevent thermal distortion or melting, particularly
+      on thin sections used in aerospace or automotive applications. To mitigate this,
+      reduce initial energy density to about 5.1 J/cm² and employ short pulse widths
+      of 10 ns, which minimize heat accumulation while exposing underlying oxides
+      or residues.
 
 
-      Make sure you watch the melting point, around 660 degrees Celsius. Aluminum
-      softens easy under heat. Start with energy density near 5.1 joules per square
-      centimeter. Shorten pulse width to 10 nanoseconds. These steps expose contaminants
-      without warping the surface. Its non-porous nature, zero percent porosity, means
-      dirt sits tight. But the laser reveals it cleanly. Overlap scans by 50 percent.
-      This improves coverage on rough spots, up to 0.8 micrometers deep.
-
-
-      I''ve seen poor results when folks ignore corrosion layers. Aluminum resists
-      rust at 0.1 millimeter per year. Yet oxidation builds thin films. You must tune
-      for that. Raise scan speed slightly on oxidized areas. This removes films and
-      restores shine. Avoid high power on alloys. They have tensile strength around
-      90 megapascals. Extra heat can crack them. Test on scrap first.
-
-
-      In practice, this works for aerospace or automotive parts. Aluminum''s flexural
-      strength, near 95 megapascals, holds shape post-clean. But you need to control
-      every pass. End with a cool-down check. This avoids thermal stress. Its electrical
-      conductivity, high at 37 million siemens per meter, does not affect cleaning
-      much. Focus on optics instead. Clean lenses often.'
+      Aluminum''s excellent thermal conductivity and corrosion resistance of 0.1 mm
+      per year further influence the process. Heat dissipates quickly across the surface,
+      which helps restore uniformity but can lead to uneven cleaning if scan speeds
+      exceed 500 mm/s. Maintain a spot size of 50 μm and an overlap ratio'
     author:
       id: 4
     images:
@@ -3933,7 +3921,13 @@ materials:
     title: Brass Laser Cleaning
     subtitle: Its excellent machinability makes brass a preferred choice for high-volume
       precision components
-    description: Laser cleaning parameters for Brass
+    description: When laser cleaning brass, the biggest hurdle I've seen is its high
+      reflectivity, sitting around 92 to 94 percent, which means most of the laser
+      energy just bounces right off instead of heating the surface evenly. This makes
+      the process trickier than with ferrous metals, where absorption is better, so
+      you end up needing more passes to break through tarnish or oxides without wasting
+      power or risking uneven spots. Brass, being a copper-zinc alloy, absorbs only
+      about 12 percent of the light, and that low uptake tends to
     author:
       id: 2
     images:
@@ -4968,7 +4962,18 @@ materials:
     title: Bronze Laser Cleaning
     subtitle: Bronze alloys balance superior wear resistance with corrosion protection,
       outlasting steel in marine hardware and pump components
-    description: Laser cleaning parameters for Bronze
+    description: Bronze cleans up nicely with lasers because of its decent corrosion
+      resistance, but that high reflectivity—around 65%—means it bounces back a lot
+      of the beam's energy. So, start with lower power, like 100 watts, to avoid heating
+      the surface too fast and causing discoloration or melting at about 950°C. This
+      metal's softer than steel, with a hardness of just 100 HB, so it scratches easier
+      if you go too aggressive. Adjust by using a smaller spot size, say 50 micrometers,
+      and a repetition rate of 50 kHz to keep pulses gentle. What sets bronze apart
+      is its alloy mix, mostly copper and tin, which makes it great for art or marine
+      pieces but prone to uneven oxidation layers. Scan at 500 mm per second with
+      50% overlap in two passes, and that energy density of 5.1 joules per square
+      centimeter will lift grime without pitting. Watch for thermal buildup on detailed
+      sculptures—
     author:
       id: 1
     images:
@@ -9327,12 +9332,33 @@ materials:
     title: Copper Laser Cleaning
     subtitle: Superior electrical and thermal conductivity essential for efficient
       power transmission and heat exchange
-    description: When laser cleaning copper, we've found it stands out from ferrous
-      metals like steel because of its extreme reflectivity—around 97.5 percent—which
-      bounces most laser energy away instead of soaking it in like steel does at about
-      60 percent. This difference means you can't just crank up the power as you would
-      for rust on iron; it leads to inefficient cleaning or even scattered light risks
-      if you're not careful. So, we typically dial in a
+    description: 'Copper stands out among metals for laser cleaning because of its
+      shiny surface—it reflects most laser light, absorbing only about 3-4% right
+      off the bat. This high reflectivity means the beam bounces away easily, so you
+      won''t get deep penetration without tweaking your setup. Start by bumping up
+      the fluence a bit, aiming for around 2.5 J/cm², to push through that mirror-like
+      barrier without wasting energy.
+
+
+      What sets copper apart from ferrous metals like steel is its non-ferrous nature
+      and excellent thermal conductivity. Heat spreads fast across the surface, which
+      helps even out cleaning but risks warping thin sheets if you''re not careful.
+      To handle this, keep scan speeds high, like 500 mm/s, and use short pulses around
+      10 ns to localize the energy. That way, you clear contaminants like oxides or
+      grime without letting heat build up and push past 1085°C, where melting kicks
+      in.
+
+
+      One unusual trait is copper''s low porosity—it''s dense at 8.96 g/cm³ with no
+      gaps, so dirt clings tight but cleans off cleanly once the laser grips it. This
+      makes it great for restoring finishes in electronics or plumbing parts, but
+      watch for oxidation starting as low as 150°C. Run multiple passes, say three
+      at 50% overlap, to avoid residue spots. And since it corrodes slowly at 0.05
+      mm/year in harsh environments, laser cleaning preserves that natural resistance
+      better than chemicals.
+
+
+      Pitfalls? Don''t crank power too high—'
     author:
       id: 3
     images:
@@ -39546,7 +39572,54 @@ materials:
     title: Steel Laser Cleaning
     subtitle: Unmatched structural integrity and durability making it the backbone
       of modern construction and industry
-    description: Laser cleaning parameters for Steel
+    description: 'Steel serves as a common substrate in laser cleaning applications
+      across automotive, construction, and manufacturing sectors. Its high density
+      of 7.85 g/cm³ contributes to thermal stability during cleaning processes, which
+      reduces the risk of substrate deformation under moderate energy inputs. This
+      property allows operators to maintain consistent scan speeds around 500 mm/s
+      without excessive heat buildup. However, steel''s reflectivity of 0.59 presents
+      a challenge, as it reflects a significant portion of the laser energy, leading
+      to lower initial absorption rates compared to non-metallic surfaces.
+
+
+      To address this, start with an energy density of 5 J/cm² and increase gradually
+      if surface contaminants like rust or scale persist. The material''s moderate
+      absorptivity of 0.35 means that initial passes may require three or more to
+      fully expose the underlying surface, particularly on oxidized layers. Steel
+      differs from non-ferrous metals like aluminum due to its ferrous composition,
+      which promotes oxide formation during exposure to air. This oxidation resistance
+      rated at 8 on a 1-10 scale supports effective removal of corrosion products,
+      but it also means that cleaning must occur in a controlled environment to prevent
+      re-oxidation immediately after the process.
+
+
+      One unusual property is steel''s melting point of approximately 1450°C, which
+      exceeds that of many alloys and enables the use of pulse widths around 10 ns
+      without risking bulk melting. Operators can leverage this by employing repetition
+      rates of 50 kHz to vaporize contaminants selectively while the substrate remains
+      intact. In practice, this high thermal destruction point near 1500°C improves
+      outcomes for thick rust layers common in shipbuilding or rail transport applications,
+      where a spot size of 50 μm focuses energy precisely.
+
+
+      A key pitfall involves overheating edges during high-power settings, which can
+      reduce the material''s compressive strength of 250 MPa through unintended annealing.
+      To avoid this, limit power to 100 W and apply a 50% overlap ratio between scan
+      lines, ensuring even coverage without localized hot spots. Corrosion resistance
+      at a 6 on the 1-10 scale indicates that post-cleaning protection, such as coatings,
+      becomes essential to maintain surface integrity. For surfaces with roughness
+      around 1.6 μm Ra, adjust the pass count to two if initial cleaning reveals a
+      smooth base, as excessive passes can introduce micro-abrasions that compromise
+      fracture toughness of 60 MPa m^{1/2}.
+
+
+      In oil and gas components, where tensile strength of 400 MPa is critical, monitor
+      for vapor pressure effects at 10 Pa during cleaning to prevent plume interference
+      with the laser path. These adjustments restore surface cleanliness effectively,
+      exposing the metal for inspection or recoating while preserving structural performance.
+      Overall, steel''s combination of hardness at 1.47 GPa and Young''s modulus of
+      200 GPa supports robust handling in laser systems, but success hinges on balancing
+      energy input with environmental controls to minimize rework.'
     author:
       id: 4
     images:
@@ -43081,7 +43154,15 @@ materials:
     subcategory: specialty
     title: Titanium Laser Cleaning
     subtitle: Its strength matches steel at nearly half the weight
-    description: Laser cleaning parameters for Titanium
+    description: 'When laser cleaning titanium, you must watch its moderate reflectivity—around
+      66 percent—which can scatter a lot of the beam if you''re not careful. This
+      means starting with lower power settings to avoid wasting energy or uneven cleaning.
+      Right away, dial in about 100 watts and a spot size of 50 microns to keep things
+      controlled, so you don''t overheat the surface before contaminants even budge.
+
+
+      Titanium''s reflectivity sets it apart from shinier metals like copper, which
+      bounces back nearly everything and demands even more tweaks.'
     author:
       id: 1
     images:

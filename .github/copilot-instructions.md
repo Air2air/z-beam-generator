@@ -674,6 +674,17 @@ All required components must be explicitly provided - no silent degradation.
 - ✅ **Persistence**: All AI research saves to Materials.yaml immediately
 - ✅ **Dual-Write**: Every Materials.yaml update triggers frontmatter field sync
 
+### 🚨 **MANDATORY: Field Isolation During Generation** 🔥 **NEW (Nov 22, 2025)**
+**Component generation flags (--description, --caption, etc.) MUST ONLY update the specified field.**
+
+- ✅ `--description` → Updates ONLY description field (preserves subtitle, caption, faq, author, etc.)
+- ✅ `--caption` → Updates ONLY caption field (preserves description, subtitle, faq, etc.)
+- ✅ `--subtitle` → Updates ONLY subtitle field (preserves description, caption, faq, etc.)
+- ✅ `--faq` → Updates ONLY faq field (preserves description, caption, subtitle, etc.)
+- ❌ **VIOLATION**: Overwriting ANY unrelated field during component generation
+
+**Enforcement**: 15 automated tests verify field isolation (`tests/test_frontmatter_partial_field_sync.py`)
+
 See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 
 ### 4. **Component Architecture**

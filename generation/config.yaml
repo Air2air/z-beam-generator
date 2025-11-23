@@ -65,23 +65,20 @@ word_count_variation: 0.50               # ±50% variation for maximum diversity
 randomization_targets:
   
   # Length variation targets (word counts)
+  # Capped at 150 words maximum
   length:
     short:
-      range: [150, 220]
-      description: "CONCISE & PUNCHY - 2-3 key points only"
-      probability: 0.25
+      range: [50, 75]
+      description: "CONCISE - essential points only"
+      probability: 0.33
     medium:
-      range: [220, 300]
-      description: "BALANCED - cover 4-5 key aspects"
-      probability: 0.25
-    detailed:
-      range: [300, 380]
-      description: "COMPREHENSIVE - thorough exploration"
-      probability: 0.25
-    deep:
-      range: [380, 450]
-      description: "DEEP DIVE - exhaustive technical detail"
-      probability: 0.25
+      range: [75, 110]
+      description: "BALANCED - key aspects covered"
+      probability: 0.33
+    long:
+      range: [110, 150]
+      description: "DETAILED - comprehensive coverage"
+      probability: 0.34
   
   # Structural approaches
   structures:
@@ -197,8 +194,57 @@ component_lengths:
     extraction_strategy: json_list     # Parse JSON array
   
   description:
-    target: 80                         # Target word count (increased for Winston 300 char minimum)
+    target: 1000                       # No effective token limit - let prompt instructions control length
     extraction_strategy: raw           # Return text as-is
+
+# Dynamic Calculation Parameters
+# Zero hardcoded values policy: All calculation factors configured here
+dynamic_calculations:
+  # Completion detection (prevent truncation)
+  completion:
+    incomplete_patterns:
+      - "\\s+$"                    # Trailing whitespace
+      - "[^.!?]$"                 # No ending punctuation
+      - "\\band\\s*$"              # Ends with "and"
+      - "\\bto\\s*$"               # Ends with "to"
+      - "\\bthat\\s*$"             # Ends with "that"
+      - "\\bthe\\s*$"              # Ends with "the"
+    max_retry_attempts: 3        # Try up to 3 times for completion
+    token_increases: [650, 800, 1000]  # Very high token limits - effectively no limit
+  
+  # Token calculation (NO MULTIPLIER - direct word to token conversion)
+  token_conversion:
+    words_to_tokens_ratio: 1.3           # Tokens per word approximation
+    # REMOVED: multiplier_min/max (was causing double-conversion)
+  
+  # API penalty ranges based on humanness_intensity (1-10)
+  penalties:
+    low_humanness:                       # humanness 1-3
+      frequency: 0.0
+      presence: 0.0
+    medium_humanness:                    # humanness 4-7
+      frequency_max: 0.6                 # Scale 0.0 to this
+      presence_max: 0.6
+    high_humanness:                      # humanness 8-10
+      frequency_min: 0.6                 # Start from this
+      frequency_max: 1.2                 # Scale to this
+      presence_min: 0.6
+      presence_max: 1.2
+  
+  # Retry behavior ranges
+  retry:
+    attempts_min: 3
+    attempts_max: 7
+    temp_increase_min: 0.05
+    temp_increase_max: 0.15
+  
+  # Threshold adjustments
+  thresholds:
+    detection_adjustment_range: 15       # ±15 from base
+    detection_min: 20
+    detection_max: 60
+    confidence_adjustment_range: 10      # ±10 from base
+    readability_adjustment_range: 10     # ±10 from base
 
 # What gets disabled in simple mode:
 disabled_features:

@@ -3,40 +3,27 @@ category: Metal
 subcategory: non-ferrous
 title: Aluminum Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Aluminum
-description: 'When laser cleaning aluminum, you must address its high reflectivity
-  right away. This property, around 95 percent, bounces most laser energy back. It
-  risks damaging your equipment if you do not start low. Begin with power at 100 watts.
-  Keep the spot size at 50 micrometers. This setup reduces reflection risks.
+description: 'Aluminum, a non-ferrous metal with a density of 2.7 g/cm³, presents
+  unique considerations for laser cleaning due to its high reflectivity of 0.95 and
+  low absorptivity of 0.06. These properties cause most laser energy to reflect away,
+  which reduces cleaning efficiency and demands adjustments in power and pulse settings
+  to achieve effective contaminant removal without damaging the substrate. Operators
+  address this by starting with a power range around 100 W and a repetition rate of
+  50 kHz, which allows gradual energy buildup on the surface.
 
 
-  You''ll find aluminum cleans well once you adjust for its low absorption. Only about
-  6 percent of the energy gets absorbed. So you must increase passes to three. Use
-  a repetition rate of 50 kilohertz. This pulls in more total energy without overheating.
-  Aluminum''s low density, at 2.7 grams per cubic centimeter, helps here. It conducts
-  heat fast but dissipates it quickly. You should scan at 500 millimeters per second.
-  This prevents buildup on thin parts.
+  The material''s low melting point of 660°C sets it apart from ferrous metals like
+  steel, which tolerate higher temperatures during cleaning. This difference requires
+  a cautious approach to prevent thermal distortion or melting, particularly on thin
+  sections used in aerospace or automotive applications. To mitigate this, reduce
+  initial energy density to about 5.1 J/cm² and employ short pulse widths of 10 ns,
+  which minimize heat accumulation while exposing underlying oxides or residues.
 
 
-  Make sure you watch the melting point, around 660 degrees Celsius. Aluminum softens
-  easy under heat. Start with energy density near 5.1 joules per square centimeter.
-  Shorten pulse width to 10 nanoseconds. These steps expose contaminants without warping
-  the surface. Its non-porous nature, zero percent porosity, means dirt sits tight.
-  But the laser reveals it cleanly. Overlap scans by 50 percent. This improves coverage
-  on rough spots, up to 0.8 micrometers deep.
-
-
-  I''ve seen poor results when folks ignore corrosion layers. Aluminum resists rust
-  at 0.1 millimeter per year. Yet oxidation builds thin films. You must tune for that.
-  Raise scan speed slightly on oxidized areas. This removes films and restores shine.
-  Avoid high power on alloys. They have tensile strength around 90 megapascals. Extra
-  heat can crack them. Test on scrap first.
-
-
-  In practice, this works for aerospace or automotive parts. Aluminum''s flexural
-  strength, near 95 megapascals, holds shape post-clean. But you need to control every
-  pass. End with a cool-down check. This avoids thermal stress. Its electrical conductivity,
-  high at 37 million siemens per meter, does not affect cleaning much. Focus on optics
-  instead. Clean lenses often.'
+  Aluminum''s excellent thermal conductivity and corrosion resistance of 0.1 mm per
+  year further influence the process. Heat dissipates quickly across the surface,
+  which helps restore uniformity but can lead to uneven cleaning if scan speeds exceed
+  500 mm/s. Maintain a spot size of 50 μm and an overlap ratio'
 author:
   id: 4
   name: Todd Dunning

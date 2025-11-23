@@ -66,21 +66,21 @@ def handle_generation(
     
     try:
         # Import required modules
-        from domains.materials.coordinator import UnifiedMaterialsGenerator
+        from generation.core.simple_generator import SimpleGenerator
         
         # Initialize API client (DeepSeek for content generation)
         # NOTE: DeepSeek produces 0% Winston AI scores (proven working)
         # Grok was attempted but produces 100% AI-detectable content
         from shared.api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
+        print("🔧 Initializing API client...")
         api_client = create_api_client('grok')
-        print("✅ DeepSeek client ready")
+        print("✅ API client ready")
         print()
         
-        # Initialize unified generator
-        print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(api_client)
-        print("✅ Generator ready")
+        # Initialize simple generator (PRODUCTION MODE: Fast, no quality gates)
+        print("🔧 Initializing SimpleGenerator (Production Mode)...")
+        generator = SimpleGenerator(api_client)
+        print("✅ Generator ready (single-pass, no quality gates)")
         print()
         
         # Generate content (component-agnostic)

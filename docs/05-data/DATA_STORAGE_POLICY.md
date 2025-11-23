@@ -22,6 +22,26 @@
 - ✅ **Frontmatter YAML files** - Receive immediate field-level updates (write-only mirror)
 - ❌ **Frontmatter** - Never read for data persistence or updates
 
+### 🚨 MANDATORY REQUIREMENT: Field Isolation During Generation
+
+**Component generation with flags (--description, --caption, --subtitle, --faq) MUST ONLY update the specified field in frontmatter.**
+
+**FIELD UPDATE RULES:**
+- ✅ `--description` → Updates ONLY `description` field (preserves subtitle, caption, faq, author, properties, etc.)
+- ✅ `--caption` → Updates ONLY `caption` field (preserves description, subtitle, faq, author, properties, etc.)
+- ✅ `--subtitle` → Updates ONLY `subtitle` field (preserves description, caption, faq, author, properties, etc.)
+- ✅ `--faq` → Updates ONLY `faq` field (preserves description, caption, subtitle, author, properties, etc.)
+
+**VIOLATIONS:**
+- ❌ Overwriting ANY unrelated field during component generation
+- ❌ Full frontmatter rewrite when only one field changed
+- ❌ Modifying author, metadata, properties, or any non-target field
+
+**ENFORCEMENT:**
+- 15 automated tests verify field isolation
+- See: `tests/test_frontmatter_partial_field_sync.py`
+- All tests must pass before deployment
+
 ### Data Flow Direction - Dual-Write Architecture
 
 ```
