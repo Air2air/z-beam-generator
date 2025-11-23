@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,28 +37,24 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Iron Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Iron Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing iron laser cleaning operations.
+settings_description: When laser cleaning iron, watch out for its strong thermal conductivity right from the start—it spreads heat quickly across the surface, so you must use controlled, lower power settings to prevent warping or unintended melting in thicker sections. I've seen this property make iron a solid choice for heavy-duty jobs like restoring marine parts or automotive frames, as it absorbs laser energy well enough to clear rust and scale without deep penetration. What sets iron apart from non-ferrous metals is its tendency to oxidize easily, which means you should follow up with a pass that minimizes re-exposure to air, keeping the beam focused and speed steady. Tends to shine in cultural heritage work too, where its durability lets you strip contaminants gently. Just avoid rushing the process; overlap scans moderately to ensure even coverage without hotspots.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Ferrous
-  href: /settings/metal/ferrous
+  href: /materials/metal/ferrous
 - label: Iron
-  href: /settings/iron
+  href: /materials/iron
 images:
   hero:
     alt: Iron surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/iron-laser-cleaning-hero.jpg
   micro:
-    alt: Iron microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Iron microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/iron-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,14 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning iron, watch out for its strong thermal conductivity
-  right from the start—it spreads heat quickly across the surface, so you must use
-  controlled, lower power settings to prevent warping or unintended melting in thicker
-  sections. I've seen this property make iron a solid choice for heavy-duty jobs like
-  restoring marine parts or automotive frames, as it absorbs laser energy well enough
-  to clear rust and scale without deep penetration. What sets iron apart from non-ferrous
-  metals is its tendency to oxidize easily, which means you should follow up with
-  a pass that minimizes re-exposure to air, keeping the beam focused and speed steady.
-  Tends to shine in cultural heritage work too, where its durability lets you strip
-  contaminants gently. Just avoid rushing the process; overlap scans moderately to
-  ensure even coverage without hotspots.

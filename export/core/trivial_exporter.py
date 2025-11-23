@@ -431,29 +431,29 @@ class TrivialFrontmatterExporter:
         settings_page['title'] = f"{full_frontmatter.get('name')} Laser Cleaning Settings"
         settings_page['settings_description'] = full_frontmatter.get('settings_description', f"Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing {full_frontmatter.get('name').lower()} laser cleaning operations.")
         
-        # Settings-specific breadcrumb
+        # Settings-specific breadcrumb (uses /materials paths)
         category = full_frontmatter.get('category', '')
         subcategory = full_frontmatter.get('subcategory', '')
         breadcrumb = [
             {'label': 'Home', 'href': '/'},
-            {'label': 'Settings', 'href': '/settings'}
+            {'label': 'Materials', 'href': '/materials'}
         ]
         
         if category:
             breadcrumb.append({
                 'label': category.replace('_', ' ').title(),
-                'href': f'/settings/{category}'
+                'href': f'/materials/{category}'
             })
         
         if subcategory:
             breadcrumb.append({
                 'label': subcategory.replace('_', ' ').replace('-', ' ').title(),
-                'href': f'/settings/{category}/{subcategory}'
+                'href': f'/materials/{category}/{subcategory}'
             })
         
         breadcrumb.append({
             'label': full_frontmatter.get('name'),
-            'href': f'/settings/{settings_page["slug"]}'
+            'href': f'/materials/{settings_page["slug"]}'
         })
         
         settings_page['breadcrumb'] = breadcrumb
@@ -935,7 +935,7 @@ class TrivialFrontmatterExporter:
         Example for Aluminum (category: metal, subcategory: non-ferrous):
           - Home → /
           - Materials → /materials
-          - Metal → /materials/metals
+          - Metal → /materials/metal
           - Non Ferrous → /materials/metal/non-ferrous
           - Aluminum → /materials/metal/non-ferrous/aluminum
         
@@ -955,12 +955,12 @@ class TrivialFrontmatterExporter:
         category = material_data.get('category', '')  # e.g., "metal"
         subcategory = material_data.get('subcategory', '')  # e.g., "non-ferrous"
         
-        # Add Category level (pluralized for listing page)
+        # Add Category level (singular for consistency)
         if category:
             category_label = category.replace('-', ' ').replace('_', ' ').title()
             breadcrumb.append({
                 "label": category_label,
-                "href": f"/materials/{category.lower()}s"  # Pluralized: /materials/metals
+                "href": f"/materials/{category.lower()}"  # Singular: /materials/metal
             })
         
         # Add Subcategory level (if present)

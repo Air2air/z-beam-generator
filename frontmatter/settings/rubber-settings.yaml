@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,28 +36,24 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Rubber Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Rubber Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing rubber laser cleaning operations.
+settings_description: When laser cleaning rubber, you'll want to begin with the lowest possible power settings to account for its exceptional flexibility and low heat tolerance. This material absorbs laser energy quickly due to its dark surface properties, which allows contaminants to remove effectively without deep penetration into the base layer. Rubber's elasticity means it deforms under heat rather than cracking, so you must control scan speeds to prevent warping during multiple passes. We've found that short pulses restore surface integrity while exposing underlying fibers cleanly. Make sure you monitor for signs of softening, as excessive energy reduces durability and leads to material breakdown—always test on a small area first to adjust accordingly.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Composite
-  href: /settings/composite
+  href: /materials/composite
 - label: Fiber Reinforced
-  href: /settings/composite/fiber-reinforced
+  href: /materials/composite/fiber-reinforced
 - label: Rubber
-  href: /settings/rubber
+  href: /materials/rubber
 images:
   hero:
     alt: Rubber surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/rubber-laser-cleaning-hero.jpg
   micro:
-    alt: Rubber microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Rubber microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/rubber-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -134,13 +129,3 @@ material_challenges:
     - Second pass 50W slow (800 mm/s) for residue
     - Chemical pre-treatment improves results for stubborn adhesives
     - Monitor for matrix damage; stop if surface texture changes
-settings_description: When laser cleaning rubber, you'll want to begin with the lowest
-  possible power settings to account for its exceptional flexibility and low heat
-  tolerance. This material absorbs laser energy quickly due to its dark surface properties,
-  which allows contaminants to remove effectively without deep penetration into the
-  base layer. Rubber's elasticity means it deforms under heat rather than cracking,
-  so you must control scan speeds to prevent warping during multiple passes. We've
-  found that short pulses restore surface integrity while exposing underlying fibers
-  cleanly. Make sure you monitor for signs of softening, as excessive energy reduces
-  durability and leads to material breakdown—always test on a small area first to
-  adjust accordingly.

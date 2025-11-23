@@ -37,18 +37,19 @@ author:
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
 title: Alumina Laser Cleaning Settings
-settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing alumina laser cleaning operations.
+settings_description: When laser cleaning alumina, watch out for its exceptional hardness right from the start—it can dull tools or abrade the laser optics if you're not careful. I've seen setups where we underpowered the beam, leading to incomplete removal without scratching the surface. Unlike softer metals like aluminum, which yield easily to moderate pulses, alumina's dense, ceramic structure demands a gentler approach to avoid micro-cracks from thermal shock. This works best when you begin with lower power levels, gradually increasing to clear contaminants while preserving its brittle integrity. Tends to heat up unevenly due to moderate conductivity, so keep scan speeds steady to prevent hot spots that weaken its high compressive strength. Compared to porous stones, its low porosity means residues cling tightly, requiring multiple passes with good overlap for thorough coverage. In my experience, this restores the smooth finish in aerospace parts without compromising corrosion resistance—just
+  adjust fluence thresholds carefully to stay below ablation limits.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Ceramic
-  href: /settings/ceramic
+  href: /materials/ceramic
 - label: Oxide
-  href: /settings/ceramic/oxide
+  href: /materials/ceramic/oxide
 - label: Alumina
-  href: /settings/alumina
+  href: /materials/alumina
 images:
   hero:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal

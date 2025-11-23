@@ -29,8 +29,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -38,28 +37,24 @@ author:
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
 title: Rhenium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Rhenium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing rhenium laser cleaning operations.
+settings_description: When laser cleaning rhenium, watch its strong reflectivity first. It bounces back much of the beam, so energy absorption stays low. This makes surface buildup stubborn to remove. I've seen it take extra care to avoid uneven heating. Start with lower power settings to build heat gradually. That prevents hot spots on this dense metal. Rhenium's extreme heat resistance helps here—it won't warp easily. But go slow on passes. Overlap scans to cover fully without stressing the surface. Tends to shine up nicely once clean, restoring that aerospace-grade finish.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Non Ferrous
-  href: /settings/metal/non-ferrous
+  href: /materials/metal/non-ferrous
 - label: Rhenium
-  href: /settings/rhenium
+  href: /materials/rhenium
 images:
   hero:
     alt: Rhenium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/rhenium-laser-cleaning-hero.jpg
   micro:
-    alt: Rhenium microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Rhenium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/rhenium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,10 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning rhenium, watch its strong reflectivity first.
-  It bounces back much of the beam, so energy absorption stays low. This makes surface
-  buildup stubborn to remove. I've seen it take extra care to avoid uneven heating.
-  Start with lower power settings to build heat gradually. That prevents hot spots
-  on this dense metal. Rhenium's extreme heat resistance helps here—it won't warp
-  easily. But go slow on passes. Overlap scans to cover fully without stressing the
-  surface. Tends to shine up nicely once clean, restoring that aerospace-grade finish.

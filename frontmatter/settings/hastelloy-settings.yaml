@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,29 +36,24 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Hastelloy Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Hastelloy Laser
-  Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing hastelloy laser cleaning operations.
+settings_description: When laser cleaning Hastelloy, start with reduced power to manage its low thermal conductivity, which causes heat to build up quickly in treated areas. This approach removes surface contaminants cleanly while preserving the alloy's exceptional corrosion resistance. But watch for uneven heating midway through—adjust scan speeds downward to avoid cracking the protective oxide layer. Multiple passes restore the finish without weakening its high-temperature strength.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Specialty
-  href: /settings/metal/specialty
+  href: /materials/metal/specialty
 - label: Hastelloy
-  href: /settings/hastelloy
+  href: /materials/hastelloy
 images:
   hero:
-    alt: Hastelloy surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Hastelloy surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hastelloy-laser-cleaning-hero.jpg
   micro:
-    alt: Hastelloy microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Hastelloy microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/hastelloy-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -130,8 +124,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -143,9 +136,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning Hastelloy, start with reduced power to manage
-  its low thermal conductivity, which causes heat to build up quickly in treated areas.
-  This approach removes surface contaminants cleanly while preserving the alloy's
-  exceptional corrosion resistance. But watch for uneven heating midway through—adjust
-  scan speeds downward to avoid cracking the protective oxide layer. Multiple passes
-  restore the finish without weakening its high-temperature strength.

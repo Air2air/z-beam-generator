@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,28 +37,24 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Indium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Indium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing indium laser cleaning operations.
+settings_description: When laser cleaning Indium, you must start with a cautious low-power setup to avoid melting its soft surface, unlike tougher metals that handle more heat. Begin by pulsing gently to penetrate its high reflectivity, which reflects energy better than copper does. Slowly increase scan speed across the area, ensuring even passes that restore its conductive finish without warping. This approach clears contaminants while preserving Indium's malleability for electronics use.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Specialty
-  href: /settings/metal/specialty
+  href: /materials/metal/specialty
 - label: Indium
-  href: /settings/indium
+  href: /materials/indium
 images:
   hero:
     alt: Indium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/indium-laser-cleaning-hero.jpg
   micro:
-    alt: Indium microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Indium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/indium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,9 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning Indium, you must start with a cautious low-power
-  setup to avoid melting its soft surface, unlike tougher metals that handle more
-  heat. Begin by pulsing gently to penetrate its high reflectivity, which reflects
-  energy better than copper does. Slowly increase scan speed across the area, ensuring
-  even passes that restore its conductive finish without warping. This approach clears
-  contaminants while preserving Indium's malleability for electronics use.

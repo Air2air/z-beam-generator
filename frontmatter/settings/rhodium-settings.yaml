@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,28 +36,24 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Rhodium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Rhodium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing rhodium laser cleaning operations.
+settings_description: When cleaning rhodium, watch its high reflectivity first—it tends to bounce laser energy away, so start with lower power to avoid scattering heat unevenly. I've seen this works best by scanning slowly across the surface, which exposes contaminants without stressing the dense, heat-resistant layer underneath. Multiple passes restore the shine effectively, reducing any risk of uneven ablation.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Non Ferrous
-  href: /settings/metal/non-ferrous
+  href: /materials/metal/non-ferrous
 - label: Rhodium
-  href: /settings/rhodium
+  href: /materials/rhodium
 images:
   hero:
     alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/rhodium-laser-cleaning-hero.jpg
   micro:
-    alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/rhodium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -126,8 +121,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -139,8 +133,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When cleaning rhodium, watch its high reflectivity first—it
-  tends to bounce laser energy away, so start with lower power to avoid scattering
-  heat unevenly. I've seen this works best by scanning slowly across the surface,
-  which exposes contaminants without stressing the dense, heat-resistant layer underneath.
-  Multiple passes restore the shine effectively, reducing any risk of uneven ablation.

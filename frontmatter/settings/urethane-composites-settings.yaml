@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,29 +36,24 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Urethane Composites Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Urethane Composites
-  Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing urethane composites laser cleaning operations.
+settings_description: When laser cleaning urethane composites, we typically begin by selecting a moderate power level to leverage their high absorption, which efficiently removes surface contaminants without immediate deep penetration. This approach accounts for the material's low thermal conductivity, so heat stays localized and reduces the risk of underlying delamination in these layered structures. We've found that slower scan speeds with multiple overlapping passes restore the surface integrity effectively, as the flexibility of urethane prevents cracking under controlled exposure. Always monitor for excessive buildup, which can degrade the composite's durability if power exceeds safe thresholds.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Composite
-  href: /settings/composite
+  href: /materials/composite
 - label: Structural
-  href: /settings/composite/structural
+  href: /materials/composite/structural
 - label: Urethane Composites
-  href: /settings/urethane-composites
+  href: /materials/urethane-composites
 images:
   hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/urethane-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Urethane Composites surface after laser cleaning showing detailed surface structure
     url: /images/material/urethane-composites-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -135,12 +129,3 @@ material_challenges:
     - Second pass 50W slow (800 mm/s) for residue
     - Chemical pre-treatment improves results for stubborn adhesives
     - Monitor for matrix damage; stop if surface texture changes
-settings_description: When laser cleaning urethane composites, we typically begin
-  by selecting a moderate power level to leverage their high absorption, which efficiently
-  removes surface contaminants without immediate deep penetration. This approach accounts
-  for the material's low thermal conductivity, so heat stays localized and reduces
-  the risk of underlying delamination in these layered structures. We've found that
-  slower scan speeds with multiple overlapping passes restore the surface integrity
-  effectively, as the flexibility of urethane prevents cracking under controlled exposure.
-  Always monitor for excessive buildup, which can degrade the composite's durability
-  if power exceeds safe thresholds.

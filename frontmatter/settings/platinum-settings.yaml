@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,29 +37,24 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Platinum Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Platinum Laser
-  Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing platinum laser cleaning operations.
+settings_description: When laser cleaning platinum, watch its high reflectivity first. It bounces back most laser energy. This scatters the beam and slows contaminant removal. I've seen jobs drag on without adjustments. Start low on power to build heat gradually. Tends to work best with multiple passes. Overlap scans tightly for even coverage. Avoid high fluence early—it risks uneven heating. Platinum's heat resistance helps here. It stays stable under steady pulses. This restores surfaces cleanly without warping. Just keep scans slow to control buildup.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Non Ferrous
-  href: /settings/metal/non-ferrous
+  href: /materials/metal/non-ferrous
 - label: Platinum
-  href: /settings/platinum
+  href: /materials/platinum
 images:
   hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/platinum-laser-cleaning-hero.jpg
   micro:
-    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Platinum microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/platinum-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -128,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -141,10 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning platinum, watch its high reflectivity first.
-  It bounces back most laser energy. This scatters the beam and slows contaminant
-  removal. I've seen jobs drag on without adjustments. Start low on power to build
-  heat gradually. Tends to work best with multiple passes. Overlap scans tightly for
-  even coverage. Avoid high fluence early—it risks uneven heating. Platinum's heat
-  resistance helps here. It stays stable under steady pulses. This restores surfaces
-  cleanly without warping. Just keep scans slow to control buildup.

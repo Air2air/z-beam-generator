@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,28 +37,24 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Yttrium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Yttrium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing yttrium laser cleaning operations.
+settings_description: The key with Yttrium is its high reflectivity, which makes laser cleaning a bit tricky at first. We've found it bounces back most laser energy, so we typically start with multiple passes to gradually remove contaminants without wasting power. This soft metal holds up well for precision work in electronics or magnet production, but its low thermal conductivity means heat lingers in spots—watch out here to avoid localized melting or oxidation during longer sessions. Keep scan speeds steady and overlap low to restore surfaces cleanly. In our experience, this approach clears residues effectively while preserving its optical qualities.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Rare-Earth
-  href: /settings/rare-earth
+  href: /materials/rare-earth
 - label: Scandium Group
-  href: /settings/rare-earth/scandium-group
+  href: /materials/rare-earth/scandium-group
 - label: Yttrium
-  href: /settings/yttrium
+  href: /materials/yttrium
 images:
   hero:
     alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/yttrium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed surface structure
     url: /images/material/yttrium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -97,8 +92,7 @@ material_challenges:
   - challenge: Rapid oxidation and pyrophoricity
     severity: critical
     threshold_temperature: Above 150-300°C causes spontaneous ignition in air
-    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine
-      particles pyrophoric
+    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
     solutions:
     - Process in inert atmosphere (argon or nitrogen) or high vacuum
     - Use pulse mode with 10-15 second cooling to prevent sustained heating
@@ -135,8 +129,7 @@ material_challenges:
   contamination_challenges:
   - challenge: High-value material recovery
     severity: medium
-    impact: Rare-earth elements extremely valuable; contamination removal must preserve
-      material
+    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
     solutions:
     - First pass 15W very slow (500 mm/s) for assessment
     - Gradual power increase (15W → 25W → 35W) across multiple passes
@@ -152,11 +145,3 @@ material_challenges:
     - Secure storage of cleaned materials
     - Follow applicable export control regulations
     - Chain of custody documentation for high-value materials
-settings_description: The key with Yttrium is its high reflectivity, which makes laser
-  cleaning a bit tricky at first. We've found it bounces back most laser energy, so
-  we typically start with multiple passes to gradually remove contaminants without
-  wasting power. This soft metal holds up well for precision work in electronics or
-  magnet production, but its low thermal conductivity means heat lingers in spots—watch
-  out here to avoid localized melting or oxidation during longer sessions. Keep scan
-  speeds steady and overlap low to restore surfaces cleanly. In our experience, this
-  approach clears residues effectively while preserving its optical qualities.

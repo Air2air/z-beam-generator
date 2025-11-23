@@ -29,8 +29,7 @@ author:
   - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
   email: info@z-beam.com
   image: /images/author/alessandro-moretti.jpg
-  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-    Materials Dept., in research lab
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
   url: https://z-beam.com/authors/alessandro-moretti-phd
   sameAs:
   - https://scholar.google.com/citations?user=def456
@@ -38,29 +37,24 @@ author:
   persona_file: italy_persona.yaml
   formatting_file: italy_formatting.yaml
 title: Titanium Carbide Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Titanium Carbide
-  Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing titanium carbide laser cleaning operations.
+settings_description: When laser cleaning titanium carbide, make sure you watch its exceptional hardness compared to softer ceramics like alumina, which can crack under aggressive pulses while this one resists without fracturing. You must start with controlled power to avoid overheating its dense structure, unlike metals that dissipate heat faster. This difference demands slower scan speeds, so you bring back the surface cleanly without compromising its tough, corrosion-resistant finish.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Ceramic
-  href: /settings/ceramic
+  href: /materials/ceramic
 - label: Oxide
-  href: /settings/ceramic/oxide
+  href: /materials/ceramic/oxide
 - label: Titanium Carbide
-  href: /settings/titanium-carbide
+  href: /materials/titanium-carbide
 images:
   hero:
-    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/titanium-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -95,8 +89,7 @@ material_challenges:
   - challenge: Thermal shock and cracking
     severity: critical
     threshold_temperature: ΔT > 200-300°C rapid cooling
-    impact: Ceramics crack catastrophically from rapid temperature changes due to
-      low thermal expansion
+    impact: Ceramics crack catastrophically from rapid temperature changes due to low thermal expansion
     solutions:
     - Use pulse mode with 3-5 second cooling between passes
     - Gradual power ramping (start 50W, increase 10W per pass)
@@ -122,8 +115,7 @@ material_challenges:
   - challenge: Porosity variation
     severity: medium
     porosity_range: 0-30% (dense vs porous ceramics)
-    impact: Porous ceramics trap contaminants deep in structure and scatter laser
-      energy
+    impact: Porous ceramics trap contaminants deep in structure and scatter laser energy
     solutions:
     - Dense ceramics (0-5% porosity) clean easily at 100-150W
     - Porous ceramics require multiple progressive passes
@@ -132,16 +124,9 @@ material_challenges:
   contamination_challenges:
   - challenge: Coating and residue removal
     severity: medium
-    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate
-      damage
+    impact: Hard coatings (PVD, thermal barrier) require high energy but risk substrate damage
     solutions:
     - First pass 120W fast (2000 mm/s) for bulk coating removal
     - Second pass 80W slow (1000 mm/s) for residue
     - Monitor for substrate exposure; adjust power accordingly
     - PVD coatings may require chemical assist for complete removal
-settings_description: When laser cleaning titanium carbide, make sure you watch its
-  exceptional hardness compared to softer ceramics like alumina, which can crack under
-  aggressive pulses while this one resists without fracturing. You must start with
-  controlled power to avoid overheating its dense structure, unlike metals that dissipate
-  heat faster. This difference demands slower scan speeds, so you bring back the surface
-  cleanly without compromising its tough, corrosion-resistant finish.

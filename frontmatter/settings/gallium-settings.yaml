@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,28 +36,24 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Gallium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Gallium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing gallium laser cleaning operations.
+settings_description: When laser cleaning gallium, you'll want to approach it unlike harder metals such as steel or titanium, which handle intense heat without issue. Gallium's unusually low melting point sets it apart, risking surface liquefaction if energy builds up too quickly. Start with reduced power and faster scan speeds to strip away oxides or residues while keeping the material solid. Make sure you avoid prolonged exposure in one spot, as this can cause uneven melting and distort the underlying structure. This method exposes a clean, intact surface ready for semiconductor or medical applications.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Specialty
-  href: /settings/metal/specialty
+  href: /materials/metal/specialty
 - label: Gallium
-  href: /settings/gallium
+  href: /materials/gallium
 images:
   hero:
     alt: Gallium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gallium-laser-cleaning-hero.jpg
   micro:
-    alt: Gallium microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Gallium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/gallium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -126,8 +121,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -139,11 +133,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning gallium, you'll want to approach it unlike
-  harder metals such as steel or titanium, which handle intense heat without issue.
-  Gallium's unusually low melting point sets it apart, risking surface liquefaction
-  if energy builds up too quickly. Start with reduced power and faster scan speeds
-  to strip away oxides or residues while keeping the material solid. Make sure you
-  avoid prolonged exposure in one spot, as this can cause uneven melting and distort
-  the underlying structure. This method exposes a clean, intact surface ready for
-  semiconductor or medical applications.

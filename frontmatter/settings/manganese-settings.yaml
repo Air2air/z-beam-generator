@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,29 +36,25 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Manganese Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Manganese Laser
-  Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing manganese laser cleaning operations.
+settings_description: When laser cleaning manganese, the main challenge lies in its low thermal conductivity, which causes heat to build up quickly in targeted areas. This buildup can lead to uneven ablation if not managed, potentially damaging the underlying structure before contaminants fully remove. I've seen this happen when initial passes use too much power, so start with reduced settings to allow controlled energy delivery that exposes clean surfaces without excess stress. Its moderate reflectivity helps by absorbing enough laser energy for effective cleaning, unlike highly reflective metals that scatter light and demand higher fluences. This property lets you restore manganese components in aerospace or marine applications reliably, as long as you adjust for its brittleness by incorporating overlap in scans to avoid micro-cracks. Tends to work best with shorter pulses that minimize thermal diffusion. Watch out for prolonged exposure at the end, which might compromise its corrosion
+  resistance—always verify surface integrity after the final pass.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Non Ferrous
-  href: /settings/metal/non-ferrous
+  href: /materials/metal/non-ferrous
 - label: Manganese
-  href: /settings/manganese
+  href: /materials/manganese
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/manganese-laser-cleaning-hero.jpg
   micro:
-    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Manganese microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/manganese-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,16 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning manganese, the main challenge lies in its
-  low thermal conductivity, which causes heat to build up quickly in targeted areas.
-  This buildup can lead to uneven ablation if not managed, potentially damaging the
-  underlying structure before contaminants fully remove. I've seen this happen when
-  initial passes use too much power, so start with reduced settings to allow controlled
-  energy delivery that exposes clean surfaces without excess stress. Its moderate
-  reflectivity helps by absorbing enough laser energy for effective cleaning, unlike
-  highly reflective metals that scatter light and demand higher fluences. This property
-  lets you restore manganese components in aerospace or marine applications reliably,
-  as long as you adjust for its brittleness by incorporating overlap in scans to avoid
-  micro-cracks. Tends to work best with shorter pulses that minimize thermal diffusion.
-  Watch out for prolonged exposure at the end, which might compromise its corrosion
-  resistance—always verify surface integrity after the final pass.

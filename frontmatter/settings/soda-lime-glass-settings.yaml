@@ -27,8 +27,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -37,29 +36,24 @@ author:
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
 title: Soda-Lime Glass Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Soda-Lime Glass
-  Laser Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing soda-lime glass laser cleaning operations.
+settings_description: When laser cleaning soda-lime glass, unlike more heat-resistant borosilicates, you must prioritize its quick thermal expansion to avoid cracks. Start with low energy pulses for safe contaminant removal. This everyday glass stays brittle under uneven heating, so keep passes short and overlap minimally midway through. You should always cool the surface between shots—it prevents shattering while clearing buildup effectively.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Glass
-  href: /settings/glass
+  href: /materials/glass
 - label: Specialty Glass
-  href: /settings/glass/specialty-glass
+  href: /materials/glass/specialty-glass
 - label: Soda-Lime Glass
-  href: /settings/soda-lime-glass
+  href: /materials/soda-lime-glass
 images:
   hero:
-    alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/soda-lime-glass-laser-cleaning-hero.jpg
   micro:
-    alt: Soda-Lime Glass microscopic view of laser cleaning showing detailed precise
-      contamination removal
+    alt: Soda-Lime Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/soda-lime-glass-laser-cleaning-micro.jpg
 machineSettings:
   energyDensity:
@@ -76,8 +70,7 @@ material_challenges:
   - challenge: Thermal shock and catastrophic failure
     severity: critical
     threshold_temperature: ΔT > 40-100°C rapid cooling (glass-dependent)
-    impact: Glass shatters from thermal gradients due to low thermal expansion and
-      brittleness
+    impact: Glass shatters from thermal gradients due to low thermal expansion and brittleness
     solutions:
     - Use pulse mode with 5-8 second cooling between passes
     - Preheat substrate to room temperature before cleaning
@@ -101,12 +94,10 @@ material_challenges:
     - Inspect surface with magnification before cleaning
     - Reduce power 40-50% for scratched or damaged glass
     - Clean around defects with extreme caution
-    - Polished optical glass requires different parameters than rough architectural
-      glass
+    - Polished optical glass requires different parameters than rough architectural glass
   - challenge: Coating and film removal
     severity: medium
-    impact: Thin films, anti-reflective coatings, and tints have different damage
-      thresholds than substrate
+    impact: Thin films, anti-reflective coatings, and tints have different damage thresholds than substrate
     solutions:
     - Test on edge first to determine coating removal threshold
     - Coated glass may require 40-60W initial pass
@@ -115,17 +106,10 @@ material_challenges:
   contamination_challenges:
   - challenge: Adhesive and paint removal
     severity: medium
-    impact: Thick coatings require multiple passes and generate debris that can scratch
-      glass
+    impact: Thick coatings require multiple passes and generate debris that can scratch glass
     solutions:
     - First pass 60W fast (1800 mm/s) for bulk removal
     - Second pass 40W slow (1000 mm/s) for residue
     - Use air assist to blow debris away from surface
     - Chemical pre-treatment reduces laser exposure time
     - Avoid dragging ablated material across clean areas
-settings_description: When laser cleaning soda-lime glass, unlike more heat-resistant
-  borosilicates, you must prioritize its quick thermal expansion to avoid cracks.
-  Start with low energy pulses for safe contaminant removal. This everyday glass stays
-  brittle under uneven heating, so keep passes short and overlap minimally midway
-  through. You should always cool the surface between shots—it prevents shattering
-  while clearing buildup effectively.

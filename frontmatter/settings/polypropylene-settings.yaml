@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,29 +37,24 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Polypropylene Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Polypropylene Laser
-  Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing polypropylene laser cleaning operations.
+settings_description: When laser cleaning polypropylene, you'll want to start with the lowest possible power settings to handle its heat sensitivity, which makes it more prone to melting than tougher thermoplastics like ABS. Next, ramp up scan speed gradually while keeping overlaps minimal, as its low thermal conductivity traps heat locally and can cause warping if you linger too long. This approach restores surfaces cleanly without deformation. Just watch out for overexposure—always test on scraps first to avoid softening the material.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Plastic
-  href: /settings/plastic
+  href: /materials/plastic
 - label: Thermoplastic
-  href: /settings/plastic/thermoplastic
+  href: /materials/plastic/thermoplastic
 - label: Polypropylene
-  href: /settings/polypropylene
+  href: /materials/polypropylene
 images:
   hero:
-    alt: Polypropylene surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Polypropylene surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/polypropylene-laser-cleaning-hero.jpg
   micro:
-    alt: Polypropylene microscopic view of laser cleaning showing detailed precise
-      contamination removal
+    alt: Polypropylene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/polypropylene-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -124,10 +118,3 @@ material_challenges:
     solutions:
     - Use UV wavelength (355nm) for better photochemical ablation
     - Multiple gentle passes instead of single high-power pass
-settings_description: When laser cleaning polypropylene, you'll want to start with
-  the lowest possible power settings to handle its heat sensitivity, which makes it
-  more prone to melting than tougher thermoplastics like ABS. Next, ramp up scan speed
-  gradually while keeping overlaps minimal, as its low thermal conductivity traps
-  heat locally and can cause warping if you linger too long. This approach restores
-  surfaces cleanly without deformation. Just watch out for overexposure—always test
-  on scraps first to avoid softening the material.

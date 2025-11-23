@@ -36,18 +36,18 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Aluminum Laser Cleaning Settings
-settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing aluminum laser cleaning operations.
+settings_description: I've seen aluminum respond well to laser cleaning when you begin with controlled power levels to counter its high reflectivity, which tends to bounce away much of the beam's energy. This approach prevents uneven heating that could warp thin sections early in the process. Once set up this way, the laser effectively removes oxides and contaminants without compromising the metal's natural corrosion resistance. Aluminum's low density makes it lighter and more prone to heat buildup compared to denser metals, so you'll want to increase scan speeds gradually to expose clean surfaces evenly across multiple passes. I've found that maintaining good overlap in those passes restores the material's smooth finish reliably. Tends to avoid common pitfalls like localized melting if you monitor for any discoloration during the first run—adjust by slowing the repetition rate slightly if needed to reduce thermal stress.
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Metal
-  href: /settings/metal
+  href: /materials/metal
 - label: Non Ferrous
-  href: /settings/metal/non-ferrous
+  href: /materials/metal/non-ferrous
 - label: Aluminum
-  href: /settings/aluminum
+  href: /materials/aluminum
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination removal

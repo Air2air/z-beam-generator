@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,28 +37,30 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Terbium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Terbium Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing terbium laser cleaning operations.
+settings_description: 'When laser cleaning Terbium, you must first watch out for its high reflectivity, which bounces back most of the laser energy compared to less reflective rare-earth metals like neodymium. This difference means you need to adjust your setup carefully to prevent inefficient cleaning or unintended heating elsewhere. Make sure you start with lower power levels right away, so you avoid scattering the beam and wasting energy on surfaces that won''t absorb it well.
+
+
+  Unlike more absorbent metals in electronics manufacturing, Terbium''s shiny nature demands you increase the number of passes slowly while keeping the spot size tight. You should also control scan speeds to let the laser dwell just long enough for gradual contaminant removal without risking surface damage. Its dense and hard structure holds up well under repeated exposure, but poor thermal conductivity traps heat locally, so monitor for hotspots that could warp delicate aerospace parts.
+
+
+  In my experience with medical applications, this reflective trait sets Terbium apart, requiring you to test absorptivity enhancers if cleaning proves stubborn. Always prioritize overlap in your paths to ensure even coverage, restoring the finish without compromising its oxidation-prone edges. Approach it methodically, and you''ll clear residues effectively for renewable energy components too.'
 breadcrumb:
 - label: Home
   href: /
-- label: Settings
-  href: /settings
+- label: Materials
+  href: /materials
 - label: Rare-Earth
-  href: /settings/rare-earth
+  href: /materials/rare-earth
 - label: Lanthanide
-  href: /settings/rare-earth/lanthanide
+  href: /materials/rare-earth/lanthanide
 - label: Terbium
-  href: /settings/terbium
+  href: /materials/terbium
 images:
   hero:
     alt: Terbium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/terbium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Terbium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Terbium surface after laser cleaning showing detailed surface structure
     url: /images/material/terbium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -94,8 +95,7 @@ material_challenges:
   - challenge: Rapid oxidation and pyrophoricity
     severity: critical
     threshold_temperature: Above 150-300°C causes spontaneous ignition in air
-    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine
-      particles pyrophoric
+    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
     solutions:
     - Process in inert atmosphere (argon or nitrogen) or high vacuum
     - Use pulse mode with 10-15 second cooling to prevent sustained heating
@@ -132,8 +132,7 @@ material_challenges:
   contamination_challenges:
   - challenge: High-value material recovery
     severity: medium
-    impact: Rare-earth elements extremely valuable; contamination removal must preserve
-      material
+    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
     solutions:
     - First pass 15W very slow (500 mm/s) for assessment
     - Gradual power increase (15W → 25W → 35W) across multiple passes
@@ -149,24 +148,3 @@ material_challenges:
     - Secure storage of cleaned materials
     - Follow applicable export control regulations
     - Chain of custody documentation for high-value materials
-settings_description: 'When laser cleaning Terbium, you must first watch out for its
-  high reflectivity, which bounces back most of the laser energy compared to less
-  reflective rare-earth metals like neodymium. This difference means you need to adjust
-  your setup carefully to prevent inefficient cleaning or unintended heating elsewhere.
-  Make sure you start with lower power levels right away, so you avoid scattering
-  the beam and wasting energy on surfaces that won''t absorb it well.
-
-
-  Unlike more absorbent metals in electronics manufacturing, Terbium''s shiny nature
-  demands you increase the number of passes slowly while keeping the spot size tight.
-  You should also control scan speeds to let the laser dwell just long enough for
-  gradual contaminant removal without risking surface damage. Its dense and hard structure
-  holds up well under repeated exposure, but poor thermal conductivity traps heat
-  locally, so monitor for hotspots that could warp delicate aerospace parts.
-
-
-  In my experience with medical applications, this reflective trait sets Terbium apart,
-  requiring you to test absorptivity enhancers if cleaning proves stubborn. Always
-  prioritize overlap in your paths to ensure even coverage, restoring the finish without
-  compromising its oxidation-prone edges. Approach it methodically, and you''ll clear
-  residues effectively for renewable energy components too.'
