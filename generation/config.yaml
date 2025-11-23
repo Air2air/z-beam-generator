@@ -65,18 +65,18 @@ word_count_variation: 0.50               # ±50% variation for maximum diversity
 randomization_targets:
   
   # Length variation targets (word counts)
-  # Capped at 150 words maximum
+  # Reduced 15% to account for LLM tendency to exceed targets
   length:
     short:
-      range: [50, 75]
+      range: [42, 63]
       description: "CONCISE - essential points only"
       probability: 0.33
     medium:
-      range: [75, 110]
+      range: [63, 93]
       description: "BALANCED - key aspects covered"
       probability: 0.33
     long:
-      range: [110, 150]
+      range: [93, 127]
       description: "DETAILED - comprehensive coverage"
       probability: 0.34
   
