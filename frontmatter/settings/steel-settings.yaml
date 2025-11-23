@@ -28,8 +28,7 @@ author:
   - Hands-on experience with optical fabrication
   email: info@z-beam.com
   image: /images/author/todd-dunning.jpg
-  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-    with precision optics tools
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
   url: https://z-beam.com/authors/todd-dunning
   sameAs:
   - https://linkedin.com/in/todd-dunning-optics
@@ -37,10 +36,7 @@ author:
   persona_file: usa_persona.yaml
   formatting_file: usa_formatting.yaml
 title: Steel Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Steel Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing steel laser cleaning operations.
+settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing steel laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -57,8 +53,7 @@ images:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface structure
     url: /images/material/steel-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -126,8 +121,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -139,10 +133,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning steel, start by selecting a moderate power
-  level to account for its reflective surface, which tends to scatter energy and slow
-  initial progress. This works well when you scan slowly across the area, allowing
-  the laser to gradually remove oxidation without stressing the dense structure beneath.
-  Overlap passes slightly to restore even surfaces. Tends to clean efficiently in
-  industrial settings like automotive parts, but watch for uneven heating that could
-  warp thin sections.

@@ -1251,6 +1251,20 @@ materials:
       its exceptional reflectivity that bounces most energy away so you must adjust
       power levels carefully to avoid overheating while revealing clean surfaces without
       warping the lightweight structure beneath
+    settings_description: Aluminum's high reflectivity stands out as the primary property
+      influencing laser cleaning approaches. We've found that this trait requires
+      careful power modulation to ensure the beam interacts effectively without excessive
+      scattering. In our experience, starting with reduced energy levels prevents
+      unintended heating that could deform the surface. This material's lightweight
+      nature and non-porous structure allow for quicker removal of contaminants, but
+      you must monitor for localized melting during prolonged exposure. To address
+      this, we typically employ multiple passes with controlled overlap, which restores
+      the underlying alloy without compromising its corrosion resistance. Watch for
+      uneven cleaning on oxidized layers in the middle of the process, as reflectivity
+      can vary slightly across the surface—adjust scan speeds accordingly to expose
+      a uniform finish. Overall, these adjustments reveal aluminum's durability in
+      applications like aerospace components, making it reliable once settings are
+      optimized.
   Ash:
     name: Ash
     category: wood
@@ -40532,9 +40546,11 @@ materials:
         the dense structure beneath. Overlap passes slightly to restore even surfaces.
         Tends to clean efficiently in industrial settings like automotive parts, but
         watch for uneven heating that could warp thin sections.
-    material_description: When laser cleaning steel, its inherent durability ensures
-      contaminants remove cleanly while preserving structural integrity for industrial
-      reuse, though overheating tends to risk minor surface oxidation
+    material_description: Steel combines exceptional strength and ductility that allow
+      it to withstand heavy loads and impacts far better than most other ferrous metals,
+      making it the go-to choice for robust structures in construction and automotive
+      applications where reliability under stress directly translates to longer service
+      life and reduced maintenance needs
   Stoneware:
     name: Stoneware
     category: ceramic

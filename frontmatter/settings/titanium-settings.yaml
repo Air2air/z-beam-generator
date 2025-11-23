@@ -27,8 +27,7 @@ author:
   - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
   image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-    in lab setting
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
   url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
   - https://scholar.google.com/citations?user=ghi789
@@ -37,10 +36,7 @@ author:
   persona_file: taiwan_persona.yaml
   formatting_file: taiwan_formatting.yaml
 title: Titanium Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Titanium Laser
-  Cleaning Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing titanium laser cleaning operations.
+settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing titanium laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -54,12 +50,10 @@ breadcrumb:
   href: /settings/titanium
 images:
   hero:
-    alt: Titanium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Titanium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/titanium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Titanium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Titanium surface after laser cleaning showing detailed surface structure
     url: /images/material/titanium-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +121,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,13 +133,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning titanium, I've seen it stand out from denser
-  metals like steel because of its lighter weight and strong natural oxide layer that
-  fights corrosion so well. This makes it great for aerospace parts, where you can
-  remove tough contaminants without deep damage, but the layer also means the laser
-  tends to skim the surface gently—start with milder power and slower passes to let
-  heat dissipate evenly and avoid uneven heating. Unlike aluminum, which scatters
-  heat quickly, titanium holds it locally, so building up multiple light passes clears
-  buildup effectively while preserving its durability. Just watch out at the end for
-  any signs of discoloration, and dial back if needed to keep that protective shine
-  intact.

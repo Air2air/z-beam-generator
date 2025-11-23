@@ -29,8 +29,7 @@ author:
   - Bahasa Indonesia
   email: info@z-beam.com
   image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-    Bandung Institute of Technology, fieldwork optics setup
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
   url: https://z-beam.com/authors/ikmanda-roswati
   sameAs:
   - https://linkedin.com/in/ikmanda-roswati-physicist
@@ -38,10 +37,7 @@ author:
   persona_file: indonesia_persona.yaml
   formatting_file: indonesia_formatting.yaml
 title: Copper Laser Cleaning Settings
-subtitle: Advanced Parameter Configuration and Troubleshooting for Copper Laser Cleaning
-  Systems
-description: Detailed machine settings, parameter relationships, diagnostic procedures,
-  and troubleshooting guides for optimizing copper laser cleaning operations.
+settings_description: Detailed machine settings, parameter relationships, diagnostic procedures, and troubleshooting guides for optimizing copper laser cleaning operations.
 breadcrumb:
 - label: Home
   href: /
@@ -58,8 +54,7 @@ images:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/copper-laser-cleaning-hero.jpg
   micro:
-    alt: Copper microscopic view of laser cleaning showing detailed precise contamination
-      removal
+    alt: Copper microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/material/copper-laser-cleaning-micro.jpg
 machineSettings:
   powerRange:
@@ -127,8 +122,7 @@ material_challenges:
   contamination_challenges:
   - challenge: Rust and oxide layer removal
     severity: medium
-    impact: Requires multiple passes; rust/oxide has different absorption than base
-      metal
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
     solutions:
     - First pass at higher power (100-120W) to remove bulk oxide
     - Second pass at lower power (60-80W) for final cleaning
@@ -140,11 +134,3 @@ material_challenges:
     - Use fume extraction to prevent redeposition
     - Higher scan speeds (3000-5000 mm/s) for thin films
     - Chemical pre-cleaning for heavy contamination
-settings_description: When laser cleaning copper, we've found that starting with gentle
-  pulses works best because its shiny surface bounces back most of the energy, so
-  you get even coverage without wasting shots. This high reflectivity sets it apart
-  from duller metals like iron, meaning we adjust our setup to focus on short, repeated
-  passes that gradually lift dirt and oxides while the metal's strong heat-spreading
-  ability prevents hot spots. But watch out midway—push too hard and the surface can
-  soften unevenly, so we dial back intensity and overlap scans to keep things cool
-  and restore that clean, conductive finish for electronics or plumbing jobs.

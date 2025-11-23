@@ -321,7 +321,7 @@ class TrivialFrontmatterExporter:
             if 'material_description' in components:
                 frontmatter['material_description'] = components['material_description']
             if 'settings_description' in components:
-                frontmatter['description'] = components['description']
+                frontmatter['settings_description'] = components['settings_description']
             if 'caption' in components:
                 caption = components['caption']
                 cleaned = self._remove_descriptions(caption, preserve_regulatory=False)
@@ -418,6 +418,7 @@ class TrivialFrontmatterExporter:
         settings_page['subcategory'] = full_frontmatter.get('subcategory')
         settings_page['content_type'] = 'unified_settings'
         settings_page['schema_version'] = '4.0.0'
+        settings_page['active'] = True
         
         # Dates
         settings_page['datePublished'] = full_frontmatter.get('datePublished')
