@@ -55,7 +55,7 @@ Copilot will automatically:
 
 ```
 prompts/
-├── subtitle.txt        ← 15-word subtitle instructions
+├── subtitle.txt        ← 21-63 word subtitle instructions
 ├── caption.txt         ← 25-word caption instructions
 ├── description.txt     ← 150-word description instructions
 ├── faq.txt            ← FAQ generation instructions
