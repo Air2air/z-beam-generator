@@ -144,7 +144,58 @@ Before ANY code change:
 ✅ Test: Does lower temperature produce better results?
 ```
 
-### **Pattern 6: Architectural Documentation Inconsistency** 🔥 **NEW (Nov 22, 2025) - CRITICAL**
+### **Pattern 6: Treating Symptoms Instead of Root Causes** 🔥 **NEW (Nov 22, 2025) - CRITICAL**
+**What Happened**: Word counts consistently 20-50% over target (150-194 words vs 50-150 max). AI added stricter prompt instructions 5+ times instead of fixing the actual mechanism.
+**Why It's Grade F**: 
+- Repeated the same failed approach multiple times
+- Added "CRITICAL" warnings to prompts that were already being ignored
+- Never addressed the real issue: LLMs don't count words during generation
+- Wasted user's time with solutions that couldn't work
+
+**What AI Did Wrong**:
+1. ❌ Fixed hardcoded "150-450 words" in template (good fix, but insufficient)
+2. ❌ Added "CRITICAL: Stay within word count" to prompt (ignored by model)
+3. ❌ Added "DO NOT EXCEED THE MAXIMUM" instruction (also ignored)
+4. ❌ Added placeholder `[TARGET_LENGTH_DISPLAY]` that was never replaced
+5. ❌ Never checked if prompt instructions were even being used
+6. ❌ Never measured actual word counts after each "fix"
+7. ❌ Never questioned why prompt-only approach kept failing
+
+**Root Cause Ignored**: LLMs generate token-by-token without counting words. Prompt instructions alone cannot enforce strict limits. The system uses fixed `max_tokens` regardless of randomized word target (SHORT/MEDIUM/LONG).
+
+**Correct Behavior**:
+```
+✅ Identify the actual mechanism: max_tokens controls length, not prompts
+✅ Measure results after EACH fix attempt (don't assume it worked)
+✅ When same approach fails 2+ times, question the approach itself
+✅ Ask: "Why do prompt instructions keep getting ignored?"
+✅ Research: How does the API actually control output length?
+✅ Implement architectural fix: Dynamic max_tokens based on word target
+   - SHORT (50-75w) → max_tokens ~100-110
+   - MEDIUM (75-110w) → max_tokens ~145-165  
+   - LONG (110-150w) → max_tokens ~195-225
+✅ Pass randomized word target from humanness_optimizer to simple_generator
+✅ Calculate appropriate max_tokens BEFORE API call
+```
+
+**Prevention Checklist**:
+- [ ] Did I measure the actual result after my fix?
+- [ ] Am I repeating the same approach that already failed?
+- [ ] Am I treating a symptom (prompt text) vs root cause (API mechanism)?
+- [ ] Do I understand HOW the system controls this behavior?
+- [ ] Have I verified my mental model matches reality?
+
+**Red Flags That You're Treating Symptoms**:
+- 🚩 Adding more "CRITICAL" or "IMPORTANT" keywords to prompts
+- 🚩 Making text BOLD or adding emoji to existing instructions
+- 🚩 Rephrasing the same instruction in different words
+- 🚩 Adding duplicate requirements in multiple places
+- 🚩 Not measuring actual results after each change
+- 🚩 Assuming "this time it will work" without architectural change
+
+**Grade**: F - Wasting user time with ineffective solutions violates TIER 3 honesty requirements
+
+### **Pattern 7: Architectural Documentation Inconsistency** 🔥 **NEW (Nov 22, 2025) - CRITICAL**
 **What Happened**: Multiple documents claimed different architectures were "COMPLETE":
 - `E2E_SYSTEM_ANALYSIS_NOV22_2025.md`: Graded system A+ assuming "Option C" active
 - `OPTION_C_IMPLEMENTATION_NOV22_2025.md`: Documented "quality gates removed"
