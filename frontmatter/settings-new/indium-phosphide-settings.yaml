@@ -1,0 +1,64 @@
+name: Indium Phosphide
+generatedAt: "2025-11-23T04:06:56.000Z"
+active: false
+slug: indium-phosphide
+category: semiconductor
+subcategory: compound
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  title: MA
+  sex: m
+  expertise:
+  - Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+title: Indium Phosphide Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration for Indium Phosphide Laser Cleaning Systems
+description: Machine settings, parameter relationships, and troubleshooting guides for Indium Phosphide laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Indium Phosphide
+  href: /settings/indium-phosphide
+images:
+  hero:
+    alt: Indium Phosphide laser cleaning parameter optimization
+    url: /images/material/indium-phosphide-laser-cleaning-hero.jpg
+  micro:
+    alt: Indium Phosphide microscopic laser cleaning results
+    url: /images/material/indium-phosphide-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+  wavelength:
+    unit: nm
+    value: 1064
+  spotSize:
+    unit: μm
+    value: 50
+  repetitionRate:
+    unit: kHz
+    value: 50
+  energyDensity:
+    unit: J/cm²
+    value: 5.0
+  pulseWidth:
+    unit: ns
+    value: 10
+  scanSpeed:
+    unit: mm/s
+    value: 500
+  passCount:
+    unit: passes
+    value: 3
+  overlapRatio:
+    unit: '%'
+    value: 50

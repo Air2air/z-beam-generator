@@ -1,0 +1,84 @@
+name: Cork
+generatedAt: "2025-11-23T04:06:56.000Z"
+active: false
+slug: cork
+category: wood
+subcategory: specialty
+content_type: unified_settings
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Cork Laser Cleaning Settings
+subtitle: Advanced Parameter Configuration for Cork Laser Cleaning Systems
+description: Machine settings, parameter relationships, and troubleshooting guides for Cork laser cleaning operations.
+breadcrumb:
+- label: Home
+  href: /
+- label: Settings
+  href: /settings
+- label: Cork
+  href: /settings/cork
+images:
+  hero:
+    alt: Cork laser cleaning parameter optimization
+    url: /images/material/cork-laser-cleaning-hero.jpg
+  micro:
+    alt: Cork microscopic laser cleaning results
+    url: /images/material/cork-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+  wavelength:
+    unit: nm
+    value: 1064
+  spotSize:
+    unit: μm
+    value: 50
+  repetitionRate:
+    unit: kHz
+    value: 50
+  energyDensity:
+    unit: J/cm²
+    value: 5.0
+  pulseWidth:
+    unit: ns
+    value: 10
+  scanSpeed:
+    unit: mm/s
+    value: 500
+  passCount:
+    unit: passes
+    value: 3
+  overlapRatio:
+    unit: '%'
+    value: 50
