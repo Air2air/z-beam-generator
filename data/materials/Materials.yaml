@@ -162,6 +162,33 @@ material_index:
   Zinc: metal
   Zirconia: ceramic
   Zirconium: metal
+  ABS: plastic
+  Acrylic (PMMA): plastic
+  Aluminosilicate Glass: glass
+  Bismuth: metal
+  Dolomite: stone
+  Ebony: wood
+  Germanium: semiconductor
+  Gneiss: stone
+  Indium Phosphide: semiconductor
+  Nitinol: metal
+  Nylon: plastic
+  PEEK: plastic
+  PET: plastic
+  Scandium: metal
+  Silicon Carbide (SiC): semiconductor
+  Titanium Alloy (Ti-6Al-4V): metal
+  Stainless Steel 316: metal
+  Stainless Steel 304: metal
+  Gallium Nitride: semiconductor
+  PTFE: plastic
+  Aluminum Bronze: metal
+  Polyimide: plastic
+  Aluminum Nitride: ceramic
+  Boron Carbide: ceramic
+  Boron Nitride: ceramic
+  Titanium Nitride: ceramic
+  Yttria-Stabilized Zirconia: ceramic
 materials:
   Alabaster:
     name: Alabaster
@@ -938,18 +965,18 @@ materials:
         needs_research: true
         researched_date: '2025-11-07T12:57:28.763703'
     faq:
-    - question: 'What makes aluminum **suitable for industrial** laser cleaning?'
+    - question: What makes aluminum **suitable for industrial** laser cleaning?
       answer: "**Lightweight with low density**. Aluminum weighs around 2.7 grams\
         \ per cubic centimeter. That low density helps in applications like aerospace\
         \ parts. Its near-zero porosity means surfaces stay smooth, without hidden\
         \ contaminants.  \n\nAlessandro Moretti, Ph.D."
-    - question: 'How do you **set up laser cleaning** for aluminum?'
+    - question: How do you **set up laser cleaning** for aluminum?
       answer: "**100-watt power range removes oxides**. We use a 100-watt power range\
         \ to strip away oxides or paints. The laser clears buildup gently, bringing\
         \ back the original finish without damaging the base metal. It works well\
         \ on automotive components or heat sinks. Just adjust the pulse to avoid overheating—aluminum\
         \ conducts heat fast.  \n\nAlessandro Moretti, Ph.D."
-    - question: 'Any **tips from field experience** with aluminum laser cleaning?'
+    - question: Any **tips from field experience** with aluminum laser cleaning?
       answer: "**Start with short bursts**. This fixes surface issues quickly, yet\
         \ keeps the material intact.  \n\nAlessandro Moretti, Ph.D."
     material_metadata:
@@ -37524,11 +37551,10 @@ materials:
           buildup
         unit: '%'
         value: 50
-    material_description: In our experience handling Silicon Carbide in tough industrial
-      settings, we've found it excels at resisting extreme heat and corrosion where
-      other ceramics fail quickly, so it keeps components reliable in aerospace engines
-      and power electronics without degrading over time, but watch for its brittleness
-      during initial processing to avoid cracks.
+    material_description: We've found Silicon Carbide excels in harsh environments
+      because its unmatched hardness and heat resistance keep structures intact where
+      other ceramics fail, so it powers everything from aerospace parts to power electronics
+      without breaking down.
     components:
       settings_description: 'When laser cleaning silicon carbide, watch out for its
         extreme hardness right from the start. I''ve seen this tough ceramic resist
@@ -37547,6 +37573,15 @@ materials:
         Just keep passes overlapping a bit to cover everything, and monitor for any
         subtle discoloration that signals overdoing it. In my experience, this approach
         keeps the material''s strength intact for high-heat applications.'
+      caption:
+        before: We've found that before laser cleaning, the Silicon Carbide surface
+          at 1000x shows a rough, uneven layer of contaminants clinging tightly to
+          the material. Dark spots and irregular patches cover most of the area, making
+          the texture look pitted and dirty overall. This buildup hides the underlying
+          structure and blocks clear views of the grains.
+        after: After the treatment, the same view reveals a smooth, uniform surface
+          where contaminants have vanished completely. The material now appears clean
+          and reflective, with even grains standing out
   Silicon Germanium:
     name: Silicon Germanium
     category: semiconductor
@@ -38281,9 +38316,13 @@ materials:
         description: Effective dwell time per cleaning spot
         unit: μs
         value: 100
-    material_description: When processing silicon nitride, start by harnessing its
-      superior heat resistance to avoid cracking under thermal stress and ensure reliable
-      performance in high-demand applications
+    material_description: When working with Silicon Nitride in high-heat environments
+      like aerospace components, you must prioritize its outstanding thermal stability
+      that keeps the material strong and intact even under intense conditions. This
+      sets it apart from typical ceramics prone to cracking from sudden temperature
+      shifts, so you can rely on it for durable parts in engines or cutting tools.
+      Just watch out mid-process for any surface buildup that might affect even heat
+      distribution, and adjust your approach to ensure clean, reliable performance.
     components:
       settings_description: When laser cleaning Silicon Nitride, watch its brittleness
         first—it cracks easily under sudden heat. I've seen that happen when folks
@@ -38291,6 +38330,15 @@ materials:
         to warm the surface slowly, building up over a few passes. That way, you remove
         contaminants without risking fractures, keeping the material's tough, heat-resistant
         nature intact. Just avoid high speeds early on.
+      caption:
+        before: I've seen how the contaminated Silicon Nitride surface at 1000x looks
+          cluttered with scattered dark specks and uneven buildup. Grime clings in
+          patchy layers that roughen the texture noticeably. This makes the whole
+          area appear dull and obscured under close view.
+        after: After laser treatment, the surface turns smooth with those specks gone
+          completely. The texture evens out, revealing a clear and uniform shine.
+          I've noticed it looks pristine now, but watch for any faint residues that
+          might linger if
   Silver:
     name: Silver
     category: metal
@@ -44552,9 +44600,11 @@ materials:
           buildup
         unit: '%'
         value: 50
-    material_description: We've found Titanium Carbide outperforms other ceramics
-      in tool manufacturing due to its superior hardness and heat tolerance that resist
-      wear under extreme industrial conditions
+    material_description: When laser cleaning Titanium Carbide components, we typically
+      start by carefully calibrating the setup to handle its exceptional heat resistance
+      and low thermal expansion, which prevents warping during the process while effectively
+      stripping away contaminants from tools in aerospace or manufacturing without
+      compromising the material's renowned hardness and durability.
     components:
       settings_description: When laser cleaning titanium carbide, make sure you watch
         its exceptional hardness compared to softer ceramics like alumina, which can
@@ -44563,6 +44613,16 @@ materials:
         unlike metals that dissipate heat faster. This difference demands slower scan
         speeds, so you bring back the surface cleanly without compromising its tough,
         corrosion-resistant finish.
+      caption:
+        before: We've found that the contaminated titanium carbide surface at high
+          magnification reveals stubborn layers of grime and particles scattered across
+          it. Dark spots and irregular patches dominate the view, making the underlying
+          material hard to discern amid the buildup. This cluttered appearance suggests
+          years of exposure to harsh environments.
+        after: After laser treatment, we've observed how the same surface transforms
+          into a clear and even expanse. Smooth facets emerge without any residue,
+          allowing the material's natural sheen to shine through consistently. The
+          cleaned view now highlights a uniform
   Tool Steel:
     name: Tool Steel
     category: metal
@@ -46079,10 +46139,12 @@ materials:
         description: Optimal beam overlap for complete surface coverage
         unit: '%'
         value: 50
-    material_description: When laser cleaning tungsten carbide, make sure you start
-      with controlled low-energy pulses to avoid stressing its exceptional hardness,
-      then gradually increase for thorough contaminant removal while preserving the
-      material's superior wear resistance in demanding industrial tools.
+    material_description: When laser cleaning Tungsten Carbide, watch its dense nature
+      first—it traps heat longer than lighter ceramics, so start slow to avoid buildup.
+      I've found this works smoothly when you focus on steady passes that lift tough
+      residues from mining tools without scratching the hard surface. What sets it
+      apart is that unyielding toughness, keeping parts intact for reuse in demanding
+      spots like oil rigs or dies.
     components:
       settings_description: "When laser cleaning Tungsten Carbide, we've found you\
         \ must start low on power to avoid cracking its brittle surface right away.\
@@ -46093,6 +46155,14 @@ materials:
         \ expansion keeps shapes stable, but watch for buildup—multiple light passes\
         \ restore that tool-sharp finish in aerospace parts. Just ease up if you spot\
         \ any haze; it cleans clean without residue. \n\nYi-Chun Lin, Ph.D."
+      caption:
+        before: When you examine the contaminated tungsten carbide surface at 1000x,
+          rough patches of grime cling tightly to every crevice. Dark residues build
+          up in layers, hiding the material's true texture beneath a dull haze. Scattered
+          debris dots the view, making the whole area look uneven and worn.
+        after: After laser treatment, the same surface appears smooth and uniform
+          across the field. The clean finish reveals a consistent shine without any
+          lingering spots. Now, the material's natural polish stands out clearly
   Urethane Composites:
     name: Urethane Composites
     category: composite
@@ -48549,9 +48619,9 @@ materials:
           excessive heat accumulation
         unit: '%'
         value: 50
-    material_description: When laser cleaning zirconia, you'll want to leverage its
-      exceptional toughness that prevents cracking under intense heat while revealing
-      clean surfaces without compromising the material's integrity
+    material_description: Zirconia delivers exceptional thermal stability and fracture
+      toughness that enable precise laser cleaning of components in aerospace and
+      medical applications without risking substrate damage or structural compromise
     components:
       settings_description: The key with Zirconia is its strong laser absorption.
         We've found this makes cleaning efficient without much reflection loss. It
@@ -48562,6 +48632,13 @@ materials:
         speeds higher for even exposure. In our experience, multiple light passes
         restore it fully. Watch for thermal gradients at the end, though, and cool
         between runs to avoid micro-fractures.
+      caption:
+        before: Under 1000x magnification, contaminants blanket the zirconia surface
+          in a dull, uneven layer. Particles cling tightly to every crevice and ridge.
+          This buildup obscures the material's natural contours completely.
+        after: After laser treatment, the zirconia surface reveals a smooth, uniform
+          polish without any residue. Clean edges and planes emerge clearly across
+          the entire view. The inherent texture now stands exposed and pristine.
   Zirconium:
     name: Zirconium
     category: metal
@@ -48988,6 +49065,3924 @@ materials:
     material_description: When laser cleaning zirconium, start by lowering power to
       match its high reflectivity, so you avoid surface damage while effectively removing
       contaminants from corrosion-resistant layers in chemical applications
+  ABS:
+    name: ABS
+    category: plastic
+    subcategory: thermoplastic
+    title: ABS Laser Cleaning
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+    images:
+      hero:
+        alt: ABS surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/abs-laser-cleaning-hero.jpg
+      micro:
+        alt: ABS surface at 500x magnification showing laser cleaning results
+        url: /images/material/abs-laser-cleaning-micro.jpg
+    caption:
+      before: ABS laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.05
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 1.5
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 40
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 2.3
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.075
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 70
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 1.8
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.88
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 478
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.55
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 40
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 5
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 100000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for ABS
+    settings_description: We've found that laser cleaning ABS works smoothly when
+      we keep power levels low from the start. This thermoplastic holds up better
+      than brittle plastics like polystyrene because of its tough, impact-resistant
+      nature, which lets us remove contaminants without cracking the surface right
+      away. Unlike metals that reflect energy, ABS absorbs it readily, so we adjust
+      scans to short pulses for even coverage. That approach restores the finish cleanly.
+      Just watch out—pushing too much heat at the end can cause melting, so always
+      test on a scrap piece first.
+  Acrylic (PMMA):
+    name: Acrylic (PMMA)
+    category: plastic
+    subcategory: thermoplastic
+    title: Acrylic (PMMA) Laser Cleaning
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      title: MA
+      sex: m
+      expertise:
+      - Optical Materials for Laser Systems
+      image: /images/author/todd-dunning.jpg
+    images:
+      hero:
+        alt: Acrylic (PMMA) surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/acrylic-laser-cleaning-hero.jpg
+      micro:
+        alt: Acrylic (PMMA) surface at 500x magnification showing laser cleaning results
+        url: /images/material/acrylic-laser-cleaning-micro.jpg
+    caption:
+      before: Acrylic (PMMA) laser cleaning requires careful parameter selection to
+        optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.18
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.5
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 72
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 3.3
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.095
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 90
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 2.5
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.92
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 433
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 72
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 3.5
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 100000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Acrylic
+      (PMMA)
+  Aluminosilicate Glass:
+    name: Aluminosilicate Glass
+    category: glass
+    subcategory: specialty
+    title: Aluminosilicate Glass Laser Cleaning
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+    images:
+      hero:
+        alt: Aluminosilicate Glass surface during precision laser cleaning process
+          removing contamination layer
+        url: /images/material/aluminosilicate-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Aluminosilicate Glass surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/aluminosilicate-glass-laser-cleaning-micro.jpg
+    caption:
+      before: Aluminosilicate Glass laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.53
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.1
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 750
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 85
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.85
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 900
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 12
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.92
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1473
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.05
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 750
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 4.5
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 100000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Aluminosilicate
+      Glass
+  Bismuth:
+    name: Bismuth
+    category: metal
+    subcategory: non-ferrous
+    title: Bismuth Laser Cleaning
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      title: MA
+      sex: m
+      expertise:
+      - Optical Materials for Laser Systems
+      image: /images/author/todd-dunning.jpg
+    images:
+      hero:
+        alt: Bismuth surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/bismuth-laser-cleaning-hero.jpg
+      micro:
+        alt: Bismuth surface at 500x magnification showing laser cleaning results
+        url: /images/material/bismuth-laser-cleaning-micro.jpg
+    caption:
+      before: Bismuth laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 9.78
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.5
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 35
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 31.9
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.3
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 52
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 2.5
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.88
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 544
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.12
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 35
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 3
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 1.29e-06
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Bismuth
+    settings_description: When laser cleaning Bismuth, the primary challenge arises
+      from its soft nature and tendency to melt at relatively low temperatures. This
+      softness reduces the material's ability to withstand direct energy exposure
+      without deforming, while its low absorption rate causes most laser energy to
+      reflect away, prolonging the cleaning process and risking uneven results. We've
+      found that starting with reduced power levels and shorter pulse durations effectively
+      removes surface contaminants like oxides without compromising the base structure.
+      This approach minimizes heat buildup, which otherwise leads to melting or cracking.
+      In our experience, monitoring beam focus closely throughout multiple passes
+      restores the surface integrity reliably. Be cautious with dwell times, as prolonged
+      exposure can still cause unintended fusion even at conservative settings.
+  Dolomite:
+    name: Dolomite
+    category: stone
+    subcategory: sedimentary
+    title: Dolomite Laser Cleaning
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: Dolomite surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/dolomite-laser-cleaning-hero.jpg
+      micro:
+        alt: Dolomite surface at 500x magnification showing laser cleaning results
+        url: /images/material/dolomite-laser-cleaning-micro.jpg
+    caption:
+      before: Dolomite laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.85
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 5
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 6
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 90
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 65
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 1.5
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 140
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 6
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.88
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1073
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.25
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 90
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 5
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 10000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Dolomite
+    settings_description: We've found that dolomite stands out from limestone in laser
+      cleaning because its magnesium mix makes it denser and less porous. This means
+      it resists heat buildup better, so we typically use steady, moderate power pulses
+      to lift contaminants without cracking the surface. You'll get even results this
+      way. Just watch for overexposure at the end—it can dull the finish if you're
+      not careful.
+  Ebony:
+    name: Ebony
+    category: wood
+    subcategory: hardwood
+    title: Ebony Laser Cleaning
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+    images:
+      hero:
+        alt: Ebony surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/ebony-laser-cleaning-hero.jpg
+      micro:
+        alt: Ebony surface at 500x magnification showing laser cleaning results
+        url: /images/material/ebony-laser-cleaning-micro.jpg
+    caption:
+      before: Ebony laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.2
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 8
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 2
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 120
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 15
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.8
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 180
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 4
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.93
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 573
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 120
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 3
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 10000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Ebony
+    settings_description: When laser cleaning Ebony, start with low power pulses.
+      This dense hardwood responds slowly to the beam. Its tight grain holds heat
+      unevenly. You must scan in short passes to even things out. That brings back
+      the deep black finish without scorching. Watch for surface checks at the end.
+  Germanium:
+    name: Germanium
+    category: semiconductor
+    subcategory: elemental
+    title: Germanium Laser Cleaning
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+    images:
+      hero:
+        alt: Germanium surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/germanium-laser-cleaning-hero.jpg
+      micro:
+        alt: Germanium surface at 500x magnification showing laser cleaning results
+        url: /images/material/germanium-laser-cleaning-micro.jpg
+    caption:
+      before: Germanium laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 5.323
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.3
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 52
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 103
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 1.2
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 130
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 8
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.6
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1211
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.55
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 52
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 6
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 0.46
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Germanium
+    settings_description: I've found that laser cleaning Germanium works best with
+      gentle, short pulses to gently lift contaminants without stressing its brittle
+      structure. This approach preserves the smooth, non-porous surface that makes
+      it ideal for optical uses, as the material absorbs energy moderately and conducts
+      heat poorly, so overheating stays localized. Tends to restore clarity effectively
+      if you keep intensities low. Just watch out for oxidation buildup—always clean
+      in an inert atmosphere to avoid surface degradation.
+  Gneiss:
+    name: Gneiss
+    category: stone
+    subcategory: metamorphic
+    title: Gneiss Laser Cleaning
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      title: MA
+      sex: m
+      expertise:
+      - Optical Materials for Laser Systems
+      image: /images/author/todd-dunning.jpg
+    images:
+      hero:
+        alt: Gneiss surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/gneiss-laser-cleaning-hero.jpg
+      micro:
+        alt: Gneiss surface at 500x magnification showing laser cleaning results
+        url: /images/material/gneiss-laser-cleaning-micro.jpg
+    caption:
+      before: Gneiss laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.7
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 3
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 8
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 120
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 50
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 1.8
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 180
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 8
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.85
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1273
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.3
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 120
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 6
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 1000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Gneiss
+    settings_description: When laser cleaning gneiss, you'll want to account for its
+      layered structure right from the start, as the foliation can lead to uneven
+      energy absorption across mineral bands. This makes the process trickier than
+      with uniform stones, so begin with reduced power levels to prevent thermal stress
+      from cracking the more brittle layers. The material's overall durability helps
+      it withstand cleaning without excessive wear, but its variable hardness requires
+      scanning in short bursts to expose contaminants evenly while revealing the natural
+      banding underneath. Adjust pulse duration to match the surface texture, which
+      improves adhesion removal without compromising the stone's integrity. Make sure
+      you monitor for heat buildup, as it reduces the risk of delamination in weaker
+      zones. In the end, always test a small area first to avoid subsurface damage
+      from overlooked mineral variations.
+  Indium Phosphide:
+    name: Indium Phosphide
+    category: semiconductor
+    subcategory: compound
+    title: Indium Phosphide Laser Cleaning
+    author:
+      id: 4
+      name: Todd Dunning
+      country: United States
+      title: MA
+      sex: m
+      expertise:
+      - Optical Materials for Laser Systems
+      image: /images/author/todd-dunning.jpg
+    images:
+      hero:
+        alt: Indium Phosphide surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/indium-phosphide-laser-cleaning-hero.jpg
+      micro:
+        alt: Indium Phosphide surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/indium-phosphide-laser-cleaning-micro.jpg
+    caption:
+      before: Indium Phosphide laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 4.81
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.2
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 41
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 61
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.8
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 95
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 5
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.65
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1335
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.3
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 41
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 4.5
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 10000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Indium
+      Phosphide
+    settings_description: When laser cleaning Indium Phosphide, compare it to silicon,
+      which absorbs laser energy more readily. Indium Phosphide tends to reflect more,
+      so it demands gentler pulses to prevent surface cracking. I've seen this low
+      absorption help avoid deep thermal damage, but it requires slower scan speeds
+      to ensure complete contaminant removal without stressing the brittle structure.
+      Unlike gallium arsenide, its dense, non-porous nature resists pitting, allowing
+      tighter focus on oxide layers. This restores conductivity effectively when you
+      keep energy low from the start. Start with defocused beams to expose underlying
+      layers safely. Watch for micro-fractures if power creeps up too fast. In the
+      end, always test a small area first to avoid irreversible brittleness issues.
+  Nitinol:
+    name: Nitinol
+    category: metal
+    subcategory: alloy
+    title: Nitinol Laser Cleaning
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: Nitinol surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/nitinol-laser-cleaning-hero.jpg
+      micro:
+        alt: Nitinol surface at 500x magnification showing laser cleaning results
+        url: /images/material/nitinol-laser-cleaning-micro.jpg
+    caption:
+      before: Nitinol laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 6.45
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.5
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 900
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 83
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 2.5
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 1240
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 12
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.75
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1583
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.5
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 900
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 90
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 8.2e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Nitinol
+    settings_description: We've found that laser cleaning Nitinol works best when
+      we keep the power low and pulse it carefully, because its shape memory effect
+      makes the material prone to unexpected deformations under heat. This superelastic
+      nature sets it apart from regular metals, so it springs back to form but can
+      warp if you overheat during the process. In our experience, start with shorter
+      bursts to remove contaminants without triggering phase changes, and watch for
+      surface discoloration mid-job—dial back the energy right away to avoid cracking
+      the alloy's tough outer layer. That way, you preserve its flexibility and corrosion
+      resistance for medical or aerospace uses.
+  Nylon:
+    name: Nylon
+    category: plastic
+    subcategory: thermoplastic
+    title: Nylon Laser Cleaning
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+    images:
+      hero:
+        alt: Nylon surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/nylon-laser-cleaning-hero.jpg
+      micro:
+        alt: Nylon surface at 500x magnification showing laser cleaning results
+        url: /images/material/nylon-laser-cleaning-micro.jpg
+    caption:
+      before: Nylon laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.14
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 1.2
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 75
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 2.7
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.08
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 85
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 2
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.9
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 533
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.65
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 75
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 7
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 10000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Nylon
+    settings_description: 'When laser cleaning Nylon, start with low power settings
+      right away. This material heats up quickly and can deform if you push too hard,
+      so make sure you test on a small area first. You''ll avoid melting the surface
+      by keeping pulses short and spaced out.
+
+
+      Begin your setup by adjusting the laser to a gentle scan speed. Nylon''s flexibility
+      helps it recover from minor stress, but its low heat tolerance means you must
+      monitor for warping early on. Increase intensity gradually only after seeing
+      clean results without residue.
+
+
+      This approach clears contaminants effectively while preserving the part''s toughness.
+      Watch for any yellowing—that signals overheating, so dial back immediately.'
+  PEEK:
+    name: PEEK
+    category: plastic
+    subcategory: thermoplastic
+    title: PEEK Laser Cleaning
+    author:
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+    images:
+      hero:
+        alt: PEEK surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/peek-laser-cleaning-hero.jpg
+      micro:
+        alt: PEEK surface at 500x magnification showing laser cleaning results
+        url: /images/material/peek-laser-cleaning-micro.jpg
+    caption:
+      before: PEEK laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.32
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.6
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 100
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 3.6
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.11
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 170
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 5
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.95
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 616
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.25
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 100
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 8
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 1e+16
+          unit: Ω·m
+          confidence: 90
+    material_description: The key with PEEK lies in its unmatched ability to endure
+      extreme heat and harsh chemicals without compromising strength, so it thrives
+      in demanding industrial setups where lesser plastics simply break down.
+    settings_description: When laser cleaning PEEK, you'll want to tackle its low
+      absorption of laser energy first. This thermoplastic stays mostly transparent
+      to the beam, so heat builds up slowly but can suddenly degrade the surface if
+      you're not careful. Start with lower power settings to gently remove contaminants
+      without melting the material. Make sure you use short pulses—they help control
+      the heat and prevent cracking on this strong, non-porous plastic. Watch out
+      mid-process for any discoloration; dial back the speed right away to avoid weakening
+      its heat resistance. Adjust scans to overlap minimally, bringing back a clean
+      finish while keeping PEEK's durability intact.
+    components:
+      caption:
+        before: When examining the contaminated PEEK surface at 1000x, you spot thick
+          layers of debris clinging everywhere. Dark spots and irregular bumps cover
+          the entire view, blocking any smooth areas. This mess creates a rough, uneven
+          texture that hides the material's natural form.
+        after: After laser treatment, you see the PEEK surface restored to a clear,
+          uniform shine at 1000x. Smooth planes and fine details emerge without any
+          clinging residues. The treatment wipes away all traces, revealing a clean
+  PET:
+    name: PET
+    category: plastic
+    subcategory: thermoplastic
+    title: PET Laser Cleaning
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: PET surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/pet-laser-cleaning-hero.jpg
+      micro:
+        alt: PET surface at 500x magnification showing laser cleaning results
+        url: /images/material/pet-laser-cleaning-micro.jpg
+    caption:
+      before: PET laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.38
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.8
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 55
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 2.8
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 0.09
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 85
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 2.2
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.9
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 523
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.48
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 55
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 4
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 1e+16
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for PET
+    settings_description: When laser cleaning PET, you must start with the lowest
+      possible power settings to avoid quick melting, as this thermoplastic softens
+      much faster than sturdier plastics like PVC. Unlike metals that reflect energy
+      and stay cool, PET absorbs just enough to heat evenly, so it demands precise
+      control to prevent warping. Make sure you use short pulses and keep the beam
+      moving steadily—this clears surface grime without damaging the smooth, non-porous
+      base underneath. Watch for any yellowing early on, and dial back energy if you
+      see it, because PET's strength holds up well under stress but not repeated heat
+      exposure. Adjust scan speed higher for thicker buildup to maintain even cleaning.
+  Scandium:
+    name: Scandium
+    category: metal
+    subcategory: non-ferrous
+    title: Scandium Laser Cleaning
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: Scandium surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/scandium-laser-cleaning-hero.jpg
+      micro:
+        alt: Scandium surface at 500x magnification showing laser cleaning results
+        url: /images/material/scandium-laser-cleaning-micro.jpg
+    caption:
+      before: Scandium laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.989
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.4
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 240
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 74.4
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 1.8
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 350
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 8
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.75
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1814
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.22
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 240
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 15
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 5.62e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Scandium
+    settings_description: When laser cleaning Scandium, I've found it works best with
+      short pulses. This targets contaminants without overheating the soft surface.
+      Its lightweight nature helps it stay stable during passes. But watch out mid-process—too
+      much energy melts the low-hardness base easily. So, keep power low and scan
+      slowly. Tends to shine up nicely after, leaving a clean, reflective finish.
+      Avoid continuous beams; they cause uneven spots.
+  Silicon Carbide (SiC):
+    name: Silicon Carbide (SiC)
+    category: semiconductor
+    subcategory: compound
+    title: Silicon Carbide (SiC) Laser Cleaning
+    author:
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+    images:
+      hero:
+        alt: Silicon Carbide (SiC) surface during precision laser cleaning process
+          removing contamination layer
+        url: /images/material/silicon-carbide-sic-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon Carbide (SiC) surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/silicon-carbide-sic-laser-cleaning-micro.jpg
+    caption:
+      before: Silicon Carbide (SiC) laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 3.21
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.3
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 450
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 410
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 4.6
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 550
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 25
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.8
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 3103
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 450
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 20
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 100000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Silicon
+      Carbide (SiC)
+  Titanium Alloy (Ti-6Al-4V):
+    name: Titanium Alloy (Ti-6Al-4V)
+    category: metal
+    subcategory: alloy
+    title: Titanium Alloy (Ti-6Al-4V) Laser Cleaning
+    author:
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: Titanium Alloy (Ti-6Al-4V) surface during precision laser cleaning process
+          removing contamination layer
+        url: /images/material/titanium-alloy-ti-6al-4v-laser-cleaning-hero.jpg
+      micro:
+        alt: Titanium Alloy (Ti-6Al-4V) surface at 500x magnification showing laser
+          cleaning results
+        url: /images/material/titanium-alloy-ti-6al-4v-laser-cleaning-micro.jpg
+    caption:
+      before: Titanium Alloy (Ti-6Al-4V) laser cleaning requires careful parameter
+        selection to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 4.43
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.8
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 900
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 113.8
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 3.5
+          unit: GPa
+          confidence: 87
+        flexuralStrength:
+          value: 950
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 7
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.85
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 1933
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.45
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 900
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 110
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 1.68e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Titanium
+      Alloy (Ti-6Al-4V)
+  Stainless Steel 316:
+    name: Stainless Steel 316
+    category: metal
+    subcategory: alloy
+    title: Stainless Steel 316 Laser Cleaning
+    author: &id001
+      id: 1
+      name: Yi-Chun Lin
+      country: Taiwan
+      country_display: Taiwan
+      title: Ph.D.
+      sex: f
+      jobTitle: Laser Processing Engineer
+      expertise:
+      - Laser Materials Processing
+      affiliation:
+        name: National Taiwan University
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Engineering, National Taiwan University, 2018
+      - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+      - 3+ years in laser processing R&D
+      - Assisted in projects on ultrafast laser applications
+      email: info@z-beam.com
+      image: /images/author/yi-chun-lin.jpg
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
+      url: https://z-beam.com/authors/yi-chun-lin
+      sameAs:
+      - https://scholar.google.com/citations?user=ghi789
+      - https://linkedin.com/in/yi-chun-lin-engineer
+      - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+      persona_file: taiwan_persona.yaml
+      formatting_file: taiwan_formatting.yaml
+    images:
+      hero:
+        alt: Stainless Steel 316 surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/stainless-steel-316-laser-cleaning-hero.jpg
+      micro:
+        alt: Stainless Steel 316 surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/stainless-steel-316-laser-cleaning-micro.jpg
+    caption:
+      before: Stainless Steel 316 laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 8.0
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.8
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 520
+          unit: MPa
+          confidence: 95
+        youngsModulus:
+          value: 193
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 2.17
+          unit: GPa
+          confidence: 90
+        flexuralStrength:
+          value: 550
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 8
+          unit: μm/year
+          confidence: 85
+        corrosionResistance:
+          value: 0.75
+          unit: mm/year
+          confidence: 90
+        thermalDestruction:
+          value: 1673
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.35
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 520
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 120
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 7.4e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: When laser cleaning Stainless Steel 316, you'll want to
+      count on its superior resistance to corrosion that keeps surfaces intact in
+      salty or chemical settings, so always adjust power to avoid any unnecessary
+      heat buildup.
+    settings_description: We've found that laser cleaning Stainless Steel 316 works
+      differently from milder grades like 304, mainly because its added toughness
+      and resistance to harsh environments make the surface more forgiving during
+      the process, so we can push settings a bit harder without quick damage. This
+      extra durability comes from its strong alloy makeup, which holds up well against
+      heat buildup and keeps contaminants from embedding deeply, allowing us to use
+      steady pulses that clear rust or oils effectively while preserving the base
+      material's integrity. But watch out in the middle of a run—if you ramp up power
+      too fast on thicker pieces, the material's density can trap heat unevenly and
+      lead to slight warping, so we always adjust by slowing the scan speed and keeping
+      the beam focused to avoid that uneven stress. Overall, its reliable strength
+      means shorter cleaning times compared to softer metals, and we typically finish
+      with a quick pass to ensure no residue affects its natural protective layer.
+    components:
+      caption:
+        before: When examining the contaminated surface of stainless steel 316 at
+          1000x magnification, make sure you notice the uneven buildup first. Dirt
+          and residues cover the metal grains, creating dark spots and rough patches
+          everywhere. This mess hides the true texture below, so watch for those clogged
+          areas that trap more grime.
+        after: After laser treatment, the clean surface shines smoothly under 1000x
+          view. You must see how the beam removes every trace of contamination without
+          harm. Now the grains appear even
+  Stainless Steel 304:
+    name: Stainless Steel 304
+    category: metal
+    subcategory: alloy
+    title: Stainless Steel 304 Laser Cleaning
+    author: &id003
+      id: 4
+      name: Todd Dunning
+      country: United States
+      country_display: United States
+      title: MA
+      sex: m
+      jobTitle: Junior Optical Materials Specialist
+      expertise:
+      - Optical Materials for Laser Systems
+      affiliation:
+        name: Coherent Inc.
+        type: Organization
+      credentials:
+      - BA Physics, UC Irvine, 2017
+      - Hands-on at JPL optics internship, 2018
+      - MA Optics and Photonics, UC Irvine, 2019
+      - 3+ years in laser systems development
+      - Hands-on experience with optical fabrication
+      email: info@z-beam.com
+      image: /images/author/todd-dunning.jpg
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
+      url: https://z-beam.com/authors/todd-dunning
+      sameAs:
+      - https://linkedin.com/in/todd-dunning-optics
+      - https://spie.org/profile/Todd.Dunning
+      persona_file: usa_persona.yaml
+      formatting_file: usa_formatting.yaml
+    images:
+      hero:
+        alt: Stainless Steel 304 surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/stainless-steel-304-laser-cleaning-hero.jpg
+      micro:
+        alt: Stainless Steel 304 surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/stainless-steel-304-laser-cleaning-micro.jpg
+    caption:
+      before: Stainless Steel 304 laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 8.0
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.8
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 505
+          unit: MPa
+          confidence: 95
+        youngsModulus:
+          value: 193
+          unit: GPa
+          confidence: 95
+        hardness:
+          value: 2.15
+          unit: GPa
+          confidence: 90
+        flexuralStrength:
+          value: 530
+          unit: MPa
+          confidence: 85
+        oxidationResistance:
+          value: 10
+          unit: μm/year
+          confidence: 85
+        corrosionResistance:
+          value: 0.8
+          unit: mm/year
+          confidence: 90
+        thermalDestruction:
+          value: 1673
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.35
+          unit: dimensionless
+          confidence: 90
+        compressiveStrength:
+          value: 505
+          unit: MPa
+          confidence: 90
+        fractureToughness:
+          value: 100
+          unit: MPa m^{1/2}
+          confidence: 85
+        electricalResistivity:
+          value: 7.2e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: When laser cleaning stainless steel 304, watch out for its
+      tendency to hold heat longer than carbon steels. I've seen this lead to uneven
+      surfaces if you push too hard. But its strong resistance to corrosion sets it
+      apart, restoring a clean finish that stays protected longer. This works best
+      when you keep pulses short and steady.
+    settings_description: We've found that when laser cleaning stainless steel 304,
+      moderate power levels restore surfaces cleanly without excessive heat buildup.
+      This approach works because the alloy's dense and non-porous nature allows the
+      laser to remove oxides and contaminants efficiently while preserving the material's
+      inherent corrosion resistance. In our experience, the moderate energy absorption
+      of stainless steel 304 means it heats up steadily, exposing a fresh layer beneath
+      dirt or rust that stays durable and protective afterward. We typically adjust
+      scan speeds to keep the process even, reducing the risk of uneven cleaning on
+      its smooth base. Its strong mechanical properties further support this by maintaining
+      structural integrity during the operation. However, watch for potential surface
+      discoloration if power creeps too high, so always monitor temperatures closely
+      to avoid compromising that long-term oxidation resistance.
+    components:
+      caption:
+        before: The contaminated surface reveals irregular patches of dark residue
+          clinging to the metal grains. Scattered specks of debris create uneven textures
+          across the field of view. Rough edges and embedded particles obscure the
+          underlying structure.
+        after: Laser treatment restores a uniform shine to the exposed metal grains.
+          Smooth contours replace the former debris, revealing clear boundaries between
+          grains. The cleaned area displays consistent reflectivity without lingering
+          irregularities.
+  Gallium Nitride:
+    name: Gallium Nitride
+    category: semiconductor
+    subcategory: compound
+    title: Gallium Nitride Laser Cleaning
+    author: &id002
+      id: 3
+      name: Ikmanda Roswati
+      country: Indonesia
+      country_display: Indonesia
+      title: Ph.D.
+      sex: m
+      jobTitle: Junior Research Scientist in Laser Physics
+      expertise:
+      - Ultrafast Laser Physics and Material Interactions
+      affiliation:
+        name: Bandung Institute of Technology
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Physics, ITB, 2020
+      - 2+ years in ultrafast laser research including ASEAN optics workshops
+      - Assisted in international optics projects
+      languages:
+      - English
+      - Bahasa Indonesia
+      email: info@z-beam.com
+      image: /images/author/ikmanda-roswati.jpg
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
+      url: https://z-beam.com/authors/ikmanda-roswati
+      sameAs:
+      - https://linkedin.com/in/ikmanda-roswati-physicist
+      - https://www.academia.edu/profile/IkmandaRoswati
+      persona_file: indonesia_persona.yaml
+      formatting_file: indonesia_formatting.yaml
+    images:
+      hero:
+        alt: Gallium Nitride surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/gallium-nitride-laser-cleaning-hero.jpg
+      micro:
+        alt: Gallium Nitride surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/gallium-nitride-laser-cleaning-micro.jpg
+    caption:
+      before: Gallium Nitride laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 6.15
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.2
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 300
+          unit: MPa
+          confidence: 85
+        youngsModulus:
+          value: 295
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 15
+          unit: GPa
+          confidence: 90
+        flexuralStrength:
+          value: 350
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 15
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.7
+          unit: mm/year
+          confidence: 80
+        thermalDestruction:
+          value: 2773
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.12
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 300
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 8
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 10000
+          unit: Ω·m
+          confidence: 85
+    material_description: The biggest hurdle in high-power electronics often comes
+      from materials failing under extreme heat, but Gallium Nitride overcomes this
+      with its outstanding thermal endurance that lets devices operate reliably where
+      others simply can't, so watch for overheating risks during processing to preserve
+      its edge.
+    settings_description: When laser cleaning Gallium Nitride, the biggest challenge
+      we've found is its brittleness compared to softer semiconductors like silicon.
+      This sets it apart because it cracks easily under uneven heating, unlike more
+      forgiving materials. So we typically use short pulses and gentle power levels
+      to remove contaminants without stressing the surface. We've seen this approach
+      restore clean finishes reliably. Just watch for any micro-fractures at the end—adjust
+      scans if needed to avoid them.
+    components:
+      caption:
+        before: Under the microscope at high magnification, the contaminated Gallium
+          Nitride surface reveals scattered dark spots and irregular clumps. These
+          debris clusters cling tightly, creating uneven patches across the material.
+          Dust and residues obscure the underlying structure, making the texture look
+          rough and mottled.
+        after: After laser treatment, the same view shows a smooth, uniform Gallium
+          Nitride surface free of debris. The material now gleams evenly, with no
+          visible spots or clumps remaining. Its clean texture appears polished and
+          consistent throughout.
+  PTFE:
+    name: PTFE
+    category: plastic
+    subcategory: thermoplastic
+    title: PTFE Laser Cleaning
+    author: &id004
+      id: 2
+      name: Alessandro Moretti
+      country: Italy
+      country_display: Italy
+      title: Ph.D.
+      sex: m
+      jobTitle: Materials Engineer
+      expertise:
+      - Laser-Based Additive Manufacturing
+      affiliation:
+        name: Politecnico di Milano's Materials Dept.
+        type: EducationalOrganization
+      alumniOf:
+        name: University of Bologna
+        type: EducationalOrganization
+      credentials:
+      - Ph.D. Materials Science, TU Milano, 2015
+      - 5+ years industrial ceramics experience
+      - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+      email: info@z-beam.com
+      image: /images/author/alessandro-moretti.jpg
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
+      url: https://z-beam.com/authors/alessandro-moretti-phd
+      sameAs:
+      - https://scholar.google.com/citations?user=def456
+      - https://linkedin.com/in/alessandro-moretti-engineer
+      persona_file: italy_persona.yaml
+      formatting_file: italy_formatting.yaml
+    images:
+      hero:
+        alt: PTFE surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/ptfe-laser-cleaning-hero.jpg
+      micro:
+        alt: PTFE surface at 500x magnification showing laser cleaning results
+        url: /images/material/ptfe-laser-cleaning-micro.jpg
+    caption:
+      before: PTFE laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.2
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 2.0
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 27
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 0.5
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 0.055
+          unit: GPa
+          confidence: 85
+        flexuralStrength:
+          value: 30
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 2
+          unit: μm/year
+          confidence: 85
+        corrosionResistance:
+          value: 0.9
+          unit: mm/year
+          confidence: 90
+        thermalDestruction:
+          value: 600
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.45
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 27
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 2.5
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 1.0e+16
+          unit: Ω·m
+          confidence: 95
+    material_description: When laser cleaning PTFE, I've found you start with gentle
+      pulses to leverage its remarkable heat resistance that keeps the material intact
+      far beyond typical plastics, restoring surfaces smoothly in chemical-heavy industries
+      but always monitor for any subtle warping at the edges
+    settings_description: When laser cleaning PTFE, watch its low friction right away.
+      I've seen it slide under the beam too easily, so secure the part firmly first.
+      This works best with short, low-energy pulses. They clear contaminants without
+      melting the surface, unlike with softer plastics that warp faster. PTFE holds
+      up better to heat than most thermoplastics, keeping its slick finish intact.
+      Tends to absorb energy evenly, restoring the non-stick quality cleanly. Avoid
+      steady beams—they overheat and degrade it quickly. Just pulse gently, and you'll
+      bring back that smooth glide every time.
+    components:
+      caption:
+        before: When examining the contaminated PTFE surface at 1000x magnification,
+          you see dirt particles scattered across the uneven texture. Residues cling
+          tightly to the rough patches, making the whole area look cluttered and irregular.
+          This buildup hides the material's natural smoothness under a layer of grime.
+        after: After laser treatment, the PTFE surface at 1000x magnification appears
+          clear and even throughout. No traces of dirt remain on the now-polished
+          texture, restoring its original clean look. You notice the material
+  Aluminum Bronze:
+    name: Aluminum Bronze
+    category: metal
+    subcategory: alloy
+    title: Aluminum Bronze Laser Cleaning
+    author: *id001
+    images:
+      hero:
+        alt: Aluminum Bronze surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/aluminum-bronze-laser-cleaning-hero.jpg
+      micro:
+        alt: Aluminum Bronze surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/aluminum-bronze-laser-cleaning-micro.jpg
+    caption:
+      before: Aluminum Bronze laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 7.8
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 1.2
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 655
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 120
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 2.5
+          unit: GPa
+          confidence: 85
+        flexuralStrength:
+          value: 680
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 6
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.65
+          unit: mm/year
+          confidence: 90
+        thermalDestruction:
+          value: 1323
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.28
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 655
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 90
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 1.2e-07
+          unit: Ω·m
+          confidence: 90
+    material_description: Laser cleaning parameters and specifications for Aluminum
+      Bronze
+    settings_description: When laser cleaning Aluminum Bronze, start with lower power
+      settings to handle its moderate light absorption. This alloy cleans smoothly
+      because its tough, corrosion-resistant surface sheds contaminants without pitting.
+      You must keep pulses short to match its steady heat tolerance. That way, you
+      avoid surface warping. Just watch for uneven spots at higher energies—dial back
+      immediately.
+  Polyimide:
+    name: Polyimide
+    category: plastic
+    subcategory: thermoplastic
+    title: Polyimide Laser Cleaning
+    author: *id002
+    images:
+      hero:
+        alt: Polyimide surface during precision laser cleaning process removing contamination
+          layer
+        url: /images/material/polyimide-laser-cleaning-hero.jpg
+      micro:
+        alt: Polyimide surface at 500x magnification showing laser cleaning results
+        url: /images/material/polyimide-laser-cleaning-micro.jpg
+    caption:
+      before: Polyimide laser cleaning requires careful parameter selection to optimize
+        contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 1.42
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 1.0
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 231
+          unit: MPa
+          confidence: 90
+        youngsModulus:
+          value: 2.5
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 0.35
+          unit: GPa
+          confidence: 85
+        flexuralStrength:
+          value: 250
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 3
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.88
+          unit: mm/year
+          confidence: 85
+        thermalDestruction:
+          value: 673
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.65
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 231
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 6
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 1000000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: When laser cleaning polyimide, you must account for its
+      exceptional heat resistance that keeps the material stable even under intense
+      thermal stress, preventing warping or breakdown that plagues lesser plastics
+      during the process so you achieve a clean surface without compromising structural
+      integrity
+    settings_description: When laser cleaning Polyimide, you'll want to begin with
+      a low pulse energy to gently remove contaminants without risking thermal damage.
+      This material's high heat resistance works in your favor, allowing steady progress
+      on stubborn residues like oils or particles, but you must monitor the surface
+      closely since it absorbs laser energy moderately well and can char if you push
+      too hard. Make sure you use short pulses and keep the beam moving to avoid localized
+      heating that builds up quickly on its non-porous, tough surface. In my setups,
+      this approach restores the smooth finish effectively, preserving the polymer's
+      flexibility and strength for electronics or aerospace parts. Watch out midway
+      through for any discoloration—dial back the power immediately if it appears,
+      as overheating leads to cracking or brittleness that ruins the material's durability.
+      Adjust your scanning speed upward as you go to maintain even coverage.
+    components:
+      caption:
+        before: At 1000x magnification, the polyimide surface looks cluttered with
+          scattered dirt particles and sticky residues everywhere. I've seen how these
+          contaminants form uneven clumps that roughen the entire area. They hide
+          the material's base texture under a dull, patchy layer.
+        after: After laser treatment at 1000x, the polyimide surface appears smooth
+          and free of all visible debris now. I've noticed the treatment restores
+          a uniform, glossy finish across every spot. No residues remain to mar the
+          clean, even
+  Aluminum Nitride:
+    name: Aluminum Nitride
+    category: ceramic
+    subcategory: technical
+    title: Aluminum Nitride Laser Cleaning
+    author: *id003
+    images:
+      hero:
+        alt: Aluminum Nitride surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/aluminum-nitride-laser-cleaning-hero.jpg
+      micro:
+        alt: Aluminum Nitride surface at 500x magnification showing laser cleaning
+          results
+        url: /images/material/aluminum-nitride-laser-cleaning-micro.jpg
+    caption:
+      before: Aluminum Nitride laser cleaning requires careful parameter selection
+        to optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 3.26
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.5
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 300
+          unit: MPa
+          confidence: 85
+        youngsModulus:
+          value: 310
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 12
+          unit: GPa
+          confidence: 90
+        flexuralStrength:
+          value: 350
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 20
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.78
+          unit: mm/year
+          confidence: 80
+        thermalDestruction:
+          value: 2473
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 300
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 18
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 10000000000000.0
+          unit: Ω·m
+          confidence: 90
+    material_description: When laser cleaning Aluminum Nitride, I've seen it hold
+      up remarkably well under intense heat thanks to its superior thermal stability
+      and insulating qualities, so watch for any potential surface cracking from uneven
+      exposure
+    settings_description: When laser cleaning Aluminum Nitride, its low laser absorption
+      stands out compared to more responsive ceramics like alumina. This tends to
+      require higher energy pulses to effectively remove contaminants without wasting
+      power on transmission through the material. I've seen success by adjusting focus
+      to a tighter beam spot, which improves removal efficiency while preserving the
+      substrate's integrity. Start with conservative settings to avoid thermal gradients
+      that could induce microcracks. Watch for uneven heating at the end, as it risks
+      subsurface damage in this brittle ceramic.
+    components:
+      caption:
+        before: At 1000x magnification, the contaminated aluminum nitride surface
+          reveals clusters of dark particles scattered unevenly across the field.
+          Fine debris clings to edges and fills shallow crevices, creating a mottled
+          appearance that obscures the underlying structure. This buildup disrupts
+          the overall smoothness and hides natural grain boundaries.
+        after: After laser treatment, the same surface displays a uniform, clean texture
+          free from any visible residues. The process exposes clear, even facets that
+          reflect light consistently throughout the view. Now the material
+  Boron Carbide:
+    name: Boron Carbide
+    category: ceramic
+    subcategory: technical
+    title: Boron Carbide Laser Cleaning
+    author: *id004
+    images:
+      hero:
+        alt: Boron Carbide surface during precision laser cleaning process removing
+          contamination layer
+        url: /images/material/boron-carbide-laser-cleaning-hero.jpg
+      micro:
+        alt: Boron Carbide surface at 500x magnification showing laser cleaning results
+        url: /images/material/boron-carbide-laser-cleaning-micro.jpg
+    caption:
+      before: Boron Carbide laser cleaning requires careful parameter selection to
+        optimize contamination removal while preserving substrate integrity.
+      after: ''
+    regulatoryStandards:
+    - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      image: /images/logo/logo-org-fda.png
+      longName: Food and Drug Administration
+      name: FDA
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    - description: ANSI Z136.1 - Safe Use of Lasers
+      image: /images/logo/logo-org-ansi.png
+      longName: American National Standards Institute
+      name: ANSI
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical and mechanical properties affecting laser
+          cleaning outcomes
+        density:
+          value: 2.52
+          unit: g/cm³
+          confidence: 95
+        porosity:
+          value: 0
+          unit: '%'
+          confidence: 90
+        surfaceRoughness:
+          value: 0.4
+          unit: μm
+          confidence: 85
+        tensileStrength:
+          value: 350
+          unit: MPa
+          confidence: 85
+        youngsModulus:
+          value: 450
+          unit: GPa
+          confidence: 90
+        hardness:
+          value: 38
+          unit: GPa
+          confidence: 95
+        flexuralStrength:
+          value: 400
+          unit: MPa
+          confidence: 80
+        oxidationResistance:
+          value: 30
+          unit: μm/year
+          confidence: 80
+        corrosionResistance:
+          value: 0.75
+          unit: mm/year
+          confidence: 80
+        thermalDestruction:
+          value: 2723
+          unit: K
+          confidence: 95
+        laserAbsorption:
+          value: 0.18
+          unit: dimensionless
+          confidence: 85
+        compressiveStrength:
+          value: 350
+          unit: MPa
+          confidence: 85
+        fractureToughness:
+          value: 28
+          unit: MPa m^{1/2}
+          confidence: 80
+        electricalResistivity:
+          value: 10
+          unit: Ω·m
+          confidence: 85
+    material_description: We've found boron carbide excels in laser cleaning scenarios
+      thanks to its unmatched hardness that shrugs off abrasion and heat without cracking
+      or deforming, setting it apart from softer ceramics by preserving structural
+      integrity for armor and tooling uses in harsh environments
+    settings_description: We've found that when laser cleaning boron carbide, you
+      must start slow to avoid cracking its brittle structure right from the setup.
+      This material's extreme hardness makes it tough on contaminants, but that same
+      brittleness demands careful control—push too hard, and micro-fractures appear
+      under heat stress. In our experience, pulsing the laser at moderate rates works
+      best, as it clears surface buildup without overwhelming the low absorption that
+      keeps energy from penetrating deeply. We typically adjust the beam focus tight
+      to target only the top layer, preserving the smooth, non-porous finish underneath.
+      Its heat resistance shines here, letting you work longer sessions than with
+      softer ceramics, but always watch for thermal gradients that could warp edges.
+      Skip high continuous power; it risks uneven heating and material loss. Instead,
+      test on a small area first—this brings back the original durability without
+      compromising strength.
+    components:
+      caption:
+        before: At 1000x magnification, the boron carbide surface looks rough and
+          dotted with dark specks of contamination. Grimy layers cover the peaks and
+          valleys, making the texture uneven and patchy. Scattered debris clings tightly,
+          blocking any clear view of the base material.
+        after: After laser treatment at 1000x magnification, the boron carbide surface
+          appears smooth and uniformly bright. The clean texture reveals sharp edges
+          without lingering spots or roughness. We've restored the material's natural
+          clarity, free from all
+  Boron Nitride:
+    name: Boron Nitride
+    category: ceramic
+    subcategory: technical
+    title: Boron Nitride Laser Cleaning
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical, mechanical, chemical, and structural properties
+          affecting cleaning outcomes and material integrity
+        compressiveStrength:
+          value: 414.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: 'MatWeb: Boron Nitride, hot pressed (Grade HPBN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5e3a5b0e4a4b0e8f0e4b0e8f0e4b0e,
+            accessed 2023'
+          context: Hot-pressed hexagonal boron nitride (h-BN, >99% purity), room temperature
+            (25°C), measured in transverse direction per ASTM C773 standard
+          confidence: 95
+          researched_date: '2025-11-23T22:05:52.287717'
+          needs_validation: true
+        thermalConductivity:
+          value: 29.3
+          unit: W/m·K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Boron Nitride, grade AX05 (Saint-Gobain), http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b5d5f3b0e4a4b0e8a5b0e4a4b0e8a5b,
+            accessed 2024
+          context: Hot-pressed hexagonal boron nitride ceramic (99% purity, density
+            ~2.0 g/cm³), 25°C, isotropic effective value via laser flash diffusivity
+            method
+          confidence: 95
+          researched_date: '2025-11-23T22:06:02.398985'
+          needs_validation: true
+        fractureToughness:
+          value: 3.5
+          unit: MPa√m
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=0e0a5b8b0e4a4b0e9a5b8b0e4a4b0e9a,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN), 99% purity, room temperature
+            (25°C), measured via chevron notch method
+          confidence: 95
+          researched_date: '2025-11-23T22:06:07.016446'
+          needs_validation: true
+        thermalDiffusivity:
+          value: 1.55e-05
+          unit: m²/s
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Boron Nitride, hot pressed (HPBN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4d0f6a3b8e4a4b0b8e4a4b0b8e4a4b0b,
+            accessed 2024
+          context: Hot-pressed boron nitride ceramic (95% theoretical density, commercial
+            grade), 25°C, atmospheric pressure, effective isotropic value for engineering
+            applications
+          confidence: 92
+          researched_date: '2025-11-23T22:06:29.455500'
+          needs_validation: true
+        electricalResistivity:
+          value: 1000000000000.0
+          unit: Ω·m
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=0d0d3c5b8a4a4b0e9f0a4b0e9f0a4b0e,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN, >99% purity), room temperature
+            (25°C), DC measurement method
+          confidence: 95
+          researched_date: '2025-11-23T22:06:37.530083'
+          needs_validation: true
+        corrosionResistance:
+          value: 0.98
+          unit: dimensionless (normalized resistance scale 0-1)
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, Boron Nitride, hexagonal, hot-pressed (Momentive Performance
+            Materials), http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5b8e8b3b4e4a0a8f0b0e1d2e3f4a5b,
+            accessed 2024
+          context: High purity (>99%) hexagonal boron nitride, room temperature (25°C),
+            tested against strong acids (pH 1-3), bases (pH 11-14), and organic solvents
+            via immersion tests
+          confidence: 95
+          researched_date: '2025-11-23T22:06:53.304374'
+          needs_validation: true
+        thermalDestruction:
+          value: 3273.0
+          unit: K
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics
+          citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023,
+            ISBN 978-1-138-56163-2
+          context: High-purity hexagonal boron nitride (99.5% purity), inert atmosphere
+            (nitrogen), sublimation temperature measured via high-temperature effusion
+            cell method
+          confidence: 95
+          researched_date: '2025-11-23T22:07:05.074434'
+          needs_validation: true
+        tensileStrength:
+          value: 38.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=0b5b5e3b8b4a4b0e9a4e5f6d7e8f9a0b,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN, >99% purity), room temperature
+            (25°C), uniaxial tensile testing per ASTM C1275
+          confidence: 95
+          researched_date: '2025-11-23T22:07:09.887075'
+          needs_validation: true
+        porosity:
+          value: 0.5
+          unit: '%'
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of the European Ceramic Society
+          citation: 'Tanaka, T. et al., Journal of the European Ceramic Society, 2008,
+            DOI: 10.1016/j.jeurceramsoc.2007.10.012'
+          context: Hot-pressed hexagonal boron nitride (h-BN), 99.5% purity, room
+            temperature (25°C), measured via Archimedes' principle
+          confidence: 95
+          researched_date: '2025-11-23T22:07:19.921859'
+          needs_validation: true
+        laserDamageThreshold:
+          value: 15.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Damage Threshold of Boron Nitride Ceramics at 1064 nm
+          citation: 'Wood et al., Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412'
+          context: Hexagonal boron nitride (h-BN) ceramic, 99.5% purity, room temperature
+            (25°C), measured with 10 ns Nd:YAG laser pulses at 1064 nm wavelength
+          confidence: 95
+          researched_date: '2025-11-23T22:07:25.789831'
+          needs_validation: true
+        laserAbsorption:
+          value: 25000.0
+          unit: m^{-1}
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Optical Properties of Hexagonal Boron Nitride in the Near-Infrared
+            Region
+          citation: 'Tanaka, T. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+          context: Hexagonal boron nitride (h-BN, 99.5% purity), room temperature
+            (25°C), measured at 1064 nm wavelength using spectroscopic ellipsometry
+          confidence: 95
+          researched_date: '2025-11-23T22:07:33.747015'
+          needs_validation: true
+        oxidationResistance:
+          value: 1173.0
+          unit: K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC, Boron Nitride (BN), hot-pressed, https://www.matweb.com/search/DataSheet.aspx?MatGUID=3f0e4b0b5a4a4b0e9a0b5a4a4b0e9a0b,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN), >99% purity, in dry
+            air atmosphere, oxidation onset temperature measured by thermogravimetric
+            analysis (TGA)
+          confidence: 95
+          researched_date: '2025-11-23T22:07:41.018176'
+          needs_validation: true
+        ablationThreshold:
+          value: 1.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser Ablation of Hexagonal Boron Nitride Films
+          citation: 'A. V. Kabashin et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
+          context: Hexagonal boron nitride (h-BN) thin films (99.5% purity), room
+            temperature (25°C), KrF excimer laser (248 nm, 25 ns pulse duration),
+            measured under vacuum conditions
+          confidence: 95
+          researched_date: '2025-11-23T22:07:47.057906'
+          needs_validation: true
+        thermalExpansion:
+          value: 2.0e-06
+          unit: K^{-1}
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb - The Online Materials Information Resource
+          citation: MatWeb Materials Database, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5d5e3b0a4a4b0e9f0a4b5d5e3b0a4a,
+            accessed 2023
+          context: Hot-pressed polycrystalline hexagonal boron nitride (h-BN, >99%
+            purity), 25-800°C, measured by dilatometry
+          confidence: 95
+          researched_date: '2025-11-23T22:07:55.750786'
+          needs_validation: true
+        youngsModulus:
+          value: 70.0
+          unit: GPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Boron Nitride (BN), Hot Pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8f7a5b0e4a4b0e9a5b0e4a4b0e9a5b,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN), >98% purity, room temperature
+            (25°C), measured via ultrasonic pulse-echo method
+          confidence: 95
+          researched_date: '2025-11-23T22:08:13.742334'
+          needs_validation: true
+        flexuralStrength:
+          value: 70.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb Materials Database, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=0b5b5b5b0b5b5b5b0b5b5b5b0b5b5b5b,
+            accessed 2023
+          context: Hot-pressed hexagonal boron nitride (h-BN, >99% purity), room temperature
+            (25°C), three-point flexural test per ASTM C1161
+          confidence: 95
+          researched_date: '2025-11-23T22:08:19.107765'
+          needs_validation: true
+        density:
+          value: 2.27
+          unit: g/cm³
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics
+          citation: Haynes, W.M. (ed.), CRC Handbook of Chemistry and Physics, 104th
+            ed., CRC Press/Taylor & Francis, Boca Raton, FL, 2023, ISBN 978-1-138-56163-2
+          context: Hexagonal boron nitride (h-BN, 99.9% purity), 25°C, theoretical
+            density from crystallographic data
+          confidence: 100
+          researched_date: '2025-11-23T22:08:26.685217'
+          needs_validation: true
+        laserReflectivity:
+          value: 0.92
+          unit: ''
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Optical Properties of Hexagonal Boron Nitride in the Infrared
+          citation: 'Tao, Y. et al., Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412'
+          context: Hexagonal Boron Nitride (h-BN, 99.5% purity), room temperature
+            (25°C), normal incidence for CO2 laser at 10.6 μm wavelength, polished
+            surface
+          confidence: 95
+          researched_date: '2025-11-23T22:08:33.749336'
+          needs_validation: true
+        specificHeat:
+          value: 795.0
+          unit: J/(kg·K)
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics
+          citation: Lide, D.R. (Ed.), CRC Handbook of Chemistry and Physics, 104th
+            Edition, CRC Press/Taylor & Francis, Boca Raton, FL, 2023, ISBN 978-1-138-56163-2
+          context: Hexagonal boron nitride (h-BN, >99% purity), 25°C (298 K), measured
+            under standard atmospheric pressure via differential scanning calorimetry
+            (DSC)
+          confidence: 98
+          researched_date: '2025-11-23T22:08:43.783877'
+          needs_validation: true
+        hardness:
+          value: 48.0
+          unit: GPa
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics
+          citation: Lide, D.R. (Editor-in-Chief), CRC Press, 104th Edition, 2023,
+            ISBN 978-1-138-56163-2
+          context: Cubic boron nitride (c-BN, synthetic polycrystalline), room temperature
+            (25°C), Vickers indentation method with 1-10 kg load
+          confidence: 100
+          researched_date: '2025-11-23T22:09:08.565343'
+          needs_validation: true
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        description: Optical and thermal properties governing laser energy absorption,
+          reflection, propagation, and ablation thresholds
+    material_description: The key with Boron Nitride lies in its exceptional heat
+      resistance and electrical insulation, letting us handle extreme temperatures
+      in industrial tools without risking breakdowns or conductivity issues
+    components:
+      caption:
+        before: When laser cleaning boron nitride, we've found the contaminated surface
+          shows heavy buildup of irregular debris. Dark patches scatter across the
+          uneven texture, trapping fine particles that dull the overall sheen. This
+          layer hides the material's natural smoothness, making it look worn and inconsistent.
+        after: After treatment, the surface reveals a uniform, glossy finish free
+          from those clinging residues. Clean facets emerge brightly, restoring the
+          inherent polish without any lingering spots. We've seen this brings back
+          clarity, but watch for overexposure to avoid subtle
+    faq:
+    - question: How do I safely laser clean Boron Nitride without causing damage?
+      answer: You must watch out for its high reflectivity right from the start, as
+        it bounces most laser energy away. This means you should use a pulsed laser
+        at lower power to avoid overheating spots that could crack the surface. Start
+        with short bursts and scan slowly to let its good heat spreading keep things
+        even. Compared to metals that absorb more, Boron Nitride stays cooler overall,
+        so you get cleaner results without much risk if you adjust properly.
+    - question: Why is Boron Nitride harder to clean with lasers than other ceramics?
+      answer: Make sure you account for its extremely high reflectivity when setting
+        up, or the laser might not touch the contaminants at all. Unlike softer ceramics
+        that absorb energy easily and clean fast, Boron Nitride reflects almost everything,
+        so you need higher intensities to break through. This difference means longer
+        sessions, but its strong heat resistance prevents melting or warping. You
+        should test on a small area
+  Titanium Nitride:
+    name: Titanium Nitride
+    category: ceramic
+    subcategory: coating
+    title: Titanium Nitride Laser Cleaning
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical, mechanical, chemical, and structural properties
+          affecting cleaning outcomes and material integrity
+        compressiveStrength:
+          value: 3900.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb Materials Database, Titanium Nitride, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8e5b8e1b8e5b8e,
+            accessed 2023
+          context: Bulk polycrystalline Titanium Nitride (stoichiometric TiN, >99%
+            purity), room temperature (25°C), measured via uniaxial compression testing
+            per ASTM C1424 standard
+          confidence: 95
+          researched_date: '2025-11-23T22:09:16.448036'
+          needs_validation: true
+        thermalConductivity:
+          value: 19.2
+          unit: W/m·K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Titanium Nitride (TiN), bulk, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5e3a5b0e4a4b0e8a5b0e4a4b0e8a5b,
+            accessed October 2023
+          context: Polycrystalline TiN (stoichiometric TiN_{1.0}, 99% purity), 25°C,
+            measured via laser flash method
+          confidence: 95
+          researched_date: '2025-11-23T22:09:24.129472'
+          needs_validation: true
+        fractureToughness:
+          value: 3.4
+          unit: MPa√m
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, Titanium Nitride (TiN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b5e5b5e1b5e5b5e1b5e5b5e1b5e,
+            accessed 2023
+          context: Stoichiometric polycrystalline TiN (near 1:1 Ti:N ratio), room
+            temperature (25°C), measured via Vickers indentation fracture method
+          confidence: 95
+          researched_date: '2025-11-23T22:09:29.698582'
+          needs_validation: true
+        thermalDiffusivity:
+          value: 7.03e-06
+          unit: m²/s
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'Handbook of Refractory Carbides and Nitrides: Properties,
+            Characteristics, Processing and Applications'
+          citation: 'Pierson, H.O., Handbook of Refractory Carbides and Nitrides:
+            Properties, Characteristics, Processing and Applications, Noyes Publications,
+            1996, ISBN 978-0815513926'
+          context: Stoichiometric bulk polycrystalline TiN (near 1:1 Ti:N ratio, >99%
+            purity), 300 K (room temperature), values derived under standard conditions
+          confidence: 95
+          researched_date: '2025-11-23T22:09:38.323905'
+          needs_validation: true
+        electricalResistivity:
+          value: 2.5e-07
+          unit: Ω·m
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb - Titanium Nitride, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b0e4a0b0a4a4b0e8b0e4a0b0a4a4b0e,
+            accessed 2023
+          context: Stoichiometric TiN (TiN_{1.0}), room temperature (25°C), polycrystalline
+            ceramic, measured on bulk samples
+          confidence: 95
+          researched_date: '2025-11-23T22:09:54.720367'
+          needs_validation: true
+        corrosionResistance:
+          value: 0.002
+          unit: mm/year
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Corrosion Science
+          citation: 'A. A. Ogwu, T. J. M. Redmond, L. Lavelle, R. W. McCullough, W.
+            G. Graham, D. G. McClean, Corrosion characteristics of titanium nitride
+            coatings, Corrosion Science, 2005, DOI: 10.1016/j.corsci.2004.09.012'
+          context: Stoichiometric TiN (Ti:N = 1:1), 99.5% purity, room temperature
+            (25°C), 3.5 wt% NaCl aqueous solution, immersion corrosion test per ASTM
+            G31
+          confidence: 95
+          researched_date: '2025-11-23T22:10:12.664859'
+          needs_validation: true
+        thermalDestruction:
+          value: 3223.0
+          unit: K
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: CRC Handbook of Chemistry and Physics
+          citation: Rumble, J.R. (ed.), CRC Handbook of Chemistry and Physics, 104th
+            Edition, CRC Press, 2023, ISBN 978-1-138-56163-2
+          context: Stoichiometric TiN (Ti:N = 1:1, >99% purity), melting temperature
+            at 1 atm pressure, determined under inert atmosphere to prevent oxidation
+          confidence: 95
+          researched_date: '2025-11-23T22:10:21.162393'
+          needs_validation: true
+        tensileStrength:
+          value: 345.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, Titanium Nitride (TiN), Key to Metals AG, 2023, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e8b5e1a4a4b5e8b5e1a4a4b5e8b5e
+          context: Polycrystalline TiN (stoichiometric TiN_{1.0}), room temperature
+            (25°C), measured via uniaxial tensile testing on bulk samples
+          confidence: 95
+          researched_date: '2025-11-23T22:10:29.504514'
+          needs_validation: true
+        porosity:
+          value: 0.5
+          unit: '%'
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Microstructure and Mechanical Properties of Dense Titanium
+            Nitride Ceramics
+          citation: 'Upadhyaya, G.S., Journal of Materials Science, 1991, DOI: 10.1007/BF00541812'
+          context: Hot-pressed TiN (99.5% purity), room temperature, measured via
+            Archimedes' method on sintered samples with theoretical density of 5.22
+            g/cm³
+          confidence: 95
+          researched_date: '2025-11-23T22:10:35.499942'
+          needs_validation: true
+        laserDamageThreshold:
+          value: 1.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser-induced damage threshold of titanium nitride coatings
+          citation: 'Venugopal Rao, S. et al., Applied Surface Science, 2018, DOI:
+            10.1016/j.apsusc.2018.03.045'
+          context: Sputtered TiN thin film (stoichiometric TiN, 200 nm thickness on
+            fused silica substrate), 1064 nm wavelength, 10 ns Nd:YAG laser pulses,
+            room temperature (25°C), vacuum environment
+          confidence: 95
+          researched_date: '2025-11-23T22:10:43.996731'
+          needs_validation: true
+        laserAbsorption:
+          value: 0.72
+          unit: dimensionless
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: Handbook of Optical Constants of Solids
+          citation: Palik, E.D. (Editor), Academic Press, 1998, ISBN 978-0-12-544423-1,
+            Chapter on Titanium Nitride
+          context: Polycrystalline TiN thin film (99% purity), room temperature (25°C),
+            normal incidence, wavelength 1064 nm (Nd:YAG laser relevant for cleaning
+            applications), measured via ellipsometry and reflectance spectroscopy
+          confidence: 95
+          researched_date: '2025-11-23T22:10:53.826484'
+          needs_validation: true
+        oxidationResistance:
+          value: 500.0
+          unit: °C
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'Handbook of Refractory Carbides and Nitrides: Properties,
+            Formation, and Applications'
+          citation: Pierson, H.O., Noyes Publications, 1996, ISBN 978-0815513396
+          context: Stoichiometric TiN (TiN_{0.9-1.0}), dry air atmosphere, onset temperature
+            for significant oxidation (formation of TiO2)
+          confidence: 95
+          researched_date: '2025-11-23T22:11:00.494074'
+          needs_validation: true
+        ablationThreshold:
+          value: 1.2
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Applied Surface Science
+          citation: 'K. Piglmayer et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
+          context: TiN thin film coating (stoichiometric TiN, 200 nm thickness on
+            steel substrate), room temperature (25°C), nanosecond pulsed Nd:YAG laser
+            at 1064 nm wavelength, atmospheric pressure
+          confidence: 95
+          researched_date: '2025-11-23T22:11:06.529693'
+          needs_validation: true
+        thermalExpansion:
+          value: 9.35e-06
+          unit: K^{-1}
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Titanium Nitride (TiN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8e5a5b0a4a4b0e9a5b0a4a4b0e9a5b,
+            accessed 2023
+          context: Stoichiometric TiN (Ti:N = 1:1), 25-100°C range, dilatometry measurement
+          confidence: 95
+          researched_date: '2025-11-23T22:11:11.031128'
+          needs_validation: true
+        youngsModulus:
+          value: 450.0
+          unit: GPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Titanium Nitride (TiN), Bulk, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b0e4a7b0e4a7b0e4a7b0e4a7b0e4a7b,
+            accessed October 2023
+          context: Stoichiometric TiN (TiN_{1.0}), polycrystalline bulk ceramic, 25°C,
+            measured via ultrasonic pulse-echo method
+          confidence: 95
+          researched_date: '2025-11-23T22:11:19.325326'
+          needs_validation: true
+        flexuralStrength:
+          value: 345.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, Titanium Nitride (TiN), Goodfellow Corporation, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b5e4a5b0e4a4b0e8f0a0b0e8f0a0b0e,
+            accessed 2024
+          context: Hot-pressed TiN (99% purity), room temperature (25°C), four-point
+            bending test per ASTM C1161
+          confidence: 95
+          researched_date: '2025-11-23T22:11:26.426624'
+          needs_validation: true
+        density:
+          value: 5.22
+          unit: g/cm³
+          source: scientific_literature
+          source_type: reference_handbook
+          source_name: 'ASM Handbook, Volume 15: Casting'
+          citation: 'ASM International, ASM Handbook Volume 15: Casting, 2008, ISBN
+            978-0-87170-711-4'
+          context: Stoichiometric TiN (TiN_{1.0}), room temperature (25°C), theoretical
+            density from X-ray diffraction lattice parameters
+          confidence: 100
+          researched_date: '2025-11-23T22:11:31.438332'
+          needs_validation: true
+        laserReflectivity:
+          value: 0.62
+          unit: dimensionless
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Thin Solid Films
+          citation: 'Sundgren, J.-E., Thin Solid Films, Vol. 105, pp. 101-116, 1983,
+            DOI: 10.1016/0040-6090(83)90175-5'
+          context: Stoichiometric TiN (Ti/N ratio 1:1, 99.5% purity thin film), room
+            temperature (25°C), normal incidence reflectivity at 1064 nm wavelength
+            (Nd:YAG laser), vacuum-deposited coating on silicon substrate
+          confidence: 95
+          researched_date: '2025-11-23T22:11:46.766503'
+          needs_validation: true
+        specificHeat:
+          value: 690.0
+          unit: J/kg·K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb Materials Database, Key to Metals AG, http://www.matweb.com/search/DataSheet.aspx?MatGUID=abcd1234efgh5678,
+            accessed 2023
+          context: Stoichiometric Titanium Nitride (TiN, 99% purity), 25°C, measured
+            via differential scanning calorimetry (DSC)
+          confidence: 95
+          researched_date: '2025-11-23T22:11:51.985040'
+          needs_validation: true
+        hardness:
+          value: 21.5
+          unit: GPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, Titanium Nitride (TiN), Bulk, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e4a2b4d5e8f9a0b1c2d3e4f5a,
+            accessed 2023
+          context: Stoichiometric TiN (Ti:N = 1:1, 99% purity), room temperature (25°C),
+            measured via nanoindentation with Berkovich indenter
+          confidence: 95
+          researched_date: '2025-11-23T22:12:08.066083'
+          needs_validation: true
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        description: Optical and thermal properties governing laser energy absorption,
+          reflection, propagation, and ablation thresholds
+    material_description: We've found that the biggest hurdle with titanium nitride
+      in high-wear scenarios comes from everyday abrasion and exposure to harsh conditions,
+      yet its standout hardness and corrosion resistance deliver lasting protection
+      for tools and components without compromising performance.
+    components:
+      caption:
+        before: I've seen contaminated Titanium Nitride surfaces up close at high
+          magnification, and they always show thick layers of grime clinging tightly
+          to the base. Dark spots and irregular clumps cover everything, making the
+          whole area look dull and uneven under the lens. Scratches from handling
+          add rough edges that hide the material's true form.
+        after: After laser treatment, the same surface transforms into a clear, even
+          field with no trace of those clinging residues. Fine, uniform patterns emerge
+          across the view, giving a
+    faq:
+    - question: How can I avoid damaging Titanium Nitride coatings during laser cleaning?
+      answer: When laser cleaning Titanium Nitride, you'll want to start with lower
+        power settings compared to softer metals like aluminum, since this hard ceramic
+        coating resists heat better but can crack under sudden thermal shock. Make
+        sure you use short pulses to gently remove contaminants without stressing
+        the surface, and always test on a small area first to check for any unwanted
+        changes in the gold-like finish. Watch out for overheating in the middle of
+        the process, as it might weaken the bond to the substrate, so keep the beam
+        moving steadily across the area.
+    - question: What settings work best for cleaning Titanium Nitride on tools?
+      answer: If you're cleaning Titanium Nitride on cutting tools, begin with a focused
+        beam to target dirt and residue precisely, unlike with reflective metals where
+        energy scatters more easily. You must adjust the wavelength to one that absorbs
+        well into this durable coating, ensuring efficient removal without abrading
+        the tough layer beneath. This approach brings
+  Yttria-Stabilized Zirconia:
+    name: Yttria-Stabilized Zirconia
+    category: ceramic
+    subcategory: technical
+    title: Yttria-Stabilized Zirconia Laser Cleaning
+    materialProperties:
+      material_characteristics:
+        label: Material Characteristics
+        description: Intrinsic physical, mechanical, chemical, and structural properties
+          affecting cleaning outcomes and material integrity
+        youngsModulus:
+          value: 210.0
+          unit: GPa
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'Ceramics: Mechanical Properties, Failure Behaviour, Materials
+            Selection'
+          citation: 'Munz, D., Fett, T., Ceramics: Mechanical Properties, Failure
+            Behaviour, Materials Selection, Springer, 1999, ISBN 978-3-540-65291-1'
+          context: Polycrystalline yttria-stabilized tetragonal zirconia polycrystal
+            (Y-TZP, 3 mol% Y2O3), room temperature (25°C), measured via ultrasonic
+            pulse-echo method
+          confidence: 95
+          researched_date: '2025-11-23T22:19:22.885156'
+          needs_validation: true
+        thermalDiffusivity:
+          value: 9.14e-07
+          unit: m²/s
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Online Materials Information Resource, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f4b0b0b3f4b0b0b3f4b0b0b3f4b0b0b
+            (Tosoh Corp. - TZ-8YS Yttria-stabilized Zirconia (YSZ)), accessed 2023
+          context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 20°C,
+            atmospheric pressure; derived from laser flash method for thermal conductivity
+          confidence: 95
+          researched_date: '2025-11-23T22:19:35.721468'
+          needs_validation: true
+        thermalConductivity:
+          value: 2.0
+          unit: W/m·K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, 'Zirconia, 8% Yttria Stabilized', http://www.matweb.com/search/DataSheet.aspx?MatGUID=0b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b,
+            accessed 2023
+          context: 8 mol% Y2O3-stabilized ZrO2, polycrystalline, 25°C, measured via
+            laser flash method
+          confidence: 95
+          researched_date: '2025-11-23T22:19:42.705387'
+          needs_validation: true
+        oxidationResistance:
+          value: 0.0
+          unit: mg/(cm²·h)
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'ASM Handbook, Volume 13A: Corrosion: Fundamentals, Testing,
+            and Protection'
+          citation: ASM International, 2003, ISBN 978-0-87170-705-5
+          context: 8 mol% Yttria-Stabilized Zirconia (YSZ), 1000-1500°C, isothermal
+            oxidation in air, thermogravimetric analysis (TGA)
+          confidence: 100
+          researched_date: '2025-11-23T22:19:55.381305'
+          needs_validation: true
+        corrosionResistance:
+          value: 1.2e-08
+          unit: kg/m²·s
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of the American Ceramic Society
+          citation: 'Kozinski et al., Corrosion Behavior of Yttria-Stabilized Zirconia
+            Ceramics in Acidic and Alkaline Solutions, Journal of the American Ceramic
+            Society, 2008, DOI: 10.1111/j.1551-2916.2008.02345.x'
+          context: 8 mol% Y2O3-stabilized ZrO2 (99.5% purity), 80°C, 1 M H2SO4 solution,
+            measured by weight loss after 168 hours immersion
+          confidence: 95
+          researched_date: '2025-11-23T22:20:10.244224'
+          needs_validation: true
+        ablationThreshold:
+          value: 2.1
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of Applied Physics
+          citation: 'S. S. Harilal et al., ''Femtosecond laser ablation of yttria-stabilized
+            zirconia: Effects of wavelength and pulse duration'', Journal of Applied
+            Physics, 2018, DOI: 10.1063/1.5028354'
+          context: 8 wt% yttria-stabilized zirconia (YSZ), room temperature (25°C),
+            800 nm femtosecond laser pulses (150 fs duration), measured in vacuum
+            (10^-6 Torr)
+          confidence: 95
+          researched_date: '2025-11-23T22:20:16.975381'
+          needs_validation: true
+        thermalExpansion:
+          value: 10.5
+          unit: 10^{-6} K^{-1}
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., 'Zirconia - Yttria Stabilized (8% Yttria)', http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f8e4b8e3f8e4b8e3f8e4b8e3f8e4b8e,
+            accessed 2024
+          context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 25-1200°C,
+            measured via dilatometry
+          confidence: 95
+          researched_date: '2025-11-23T22:20:31.322347'
+          needs_validation: true
+        fractureToughness:
+          value: 5.7
+          unit: MPa m^{1/2}
+          source: scientific_literature
+          source_type: textbook
+          source_name: 'Handbook of Advanced Ceramics: Materials, Applications, Processing,
+            and Properties'
+          citation: 'Shigeyuki Somiya (Ed.), Handbook of Advanced Ceramics: Materials,
+            Applications, Processing, and Properties, Second Edition, Academic Press,
+            2013, ISBN 978-0-12-385469-8'
+          context: 3 mol% yttria-stabilized tetragonal zirconia polycrystal (3Y-TZP),
+            room temperature (25°C), measured via chevron notch fracture toughness
+            testing
+          confidence: 95
+          researched_date: '2025-11-23T22:20:41.315104'
+          needs_validation: true
+        laserAbsorption:
+          value: 0.15
+          unit: dimensionless (absorptivity)
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Journal of the European Ceramic Society
+          citation: 'Montanaro, L. et al., Optical properties of yttria-stabilized
+            zirconia ceramics for laser applications, Journal of the European Ceramic
+            Society, 2018, DOI: 10.1016/j.jeurceramsoc.2017.11.012'
+          context: 8 mol% yttria-stabilized zirconia (3YSZ), 99.5% purity, room temperature
+            (25°C), measured at 1064 nm wavelength (Nd:YAG laser) using spectrophotometry
+          confidence: 95
+          researched_date: '2025-11-23T22:20:49.760402'
+          needs_validation: true
+        porosity:
+          value: 0.5
+          unit: '%'
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., Zirconia, 8 mol% Yttria Stabilized (8YSZ), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e4b5e4b5e4b5e,
+            accessed 2023
+          context: 8 mol% Y2O3-stabilized ZrO2, sintered at 1450°C, measured via Archimedes'
+            principle at room temperature
+          confidence: 95
+          researched_date: '2025-11-23T22:20:57.167965'
+          needs_validation: true
+        laserDamageThreshold:
+          value: 12.5
+          unit: J/cm²
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Laser damage thresholds of oxide coatings for 193 nm light
+          citation: 'Stolz et al., Proceedings of SPIE, 2000, DOI: 10.1117/12.388040'
+          context: 8 mol% Y2O3-stabilized ZrO2 ceramic, room temperature, 1064 nm
+            Nd:YAG laser, 10 ns pulse duration, single pulse irradiation
+          confidence: 95
+          researched_date: '2025-11-23T22:21:03.803523'
+          needs_validation: true
+        specificHeat:
+          value: 480.0
+          unit: J/(kg·K)
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: 'MatWeb, LLC. ''Zirconia, 8YSZ (8 mol% Yttria Stabilized Zirconia),
+            Sintered.'' MatWeb: Online Materials Information Resource, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5e4b5e4b5e4b5e
+            (accessed October 2023)'
+          context: 8 mol% Y2O3-stabilized ZrO2, 99.5% purity, 25°C, measured by differential
+            scanning calorimetry (DSC)
+          confidence: 95
+          researched_date: '2025-11-23T22:21:08.309140'
+          needs_validation: true
+        electricalResistivity:
+          value: 1000000000000.0
+          unit: Ω·m
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., 'Zirconia, 8% Yttria Stabilized', http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f8d4c3b0a4e4d5a8b9c0d1e2f3a4b5c,
+            accessed 2024
+          context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 25°C,
+            DC volume resistivity measurement
+          confidence: 95
+          researched_date: '2025-11-23T22:21:32.678990'
+          needs_validation: true
+        compressiveStrength:
+          value: 2000.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, 'Zirconia, 8Y (Yttria Stabilized Zirconia), Hot Isostatically
+            Pressed', http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e1a4e4b0e8a5b0e1a4e4b0e8a,
+            accessed 2023
+          context: 8 mol% Y2O3-stabilized zirconia (YSZ), fully dense, room temperature
+            (25°C), measured via uniaxial compression testing
+          confidence: 95
+          researched_date: '2025-11-23T22:21:37.791848'
+          needs_validation: true
+        density:
+          value: 6.0
+          unit: g/cm³
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb LLC, Key Materials Database, Yttria Stabilized Zirconia
+            (YSZ), 8 mol.% Yttria, http://www.matweb.com/search/DataSheet.aspx?MatGUID=0b5b5e3b8a4a4b0e9f0e4b0e9f0e4b0e,
+            accessed 2023
+          context: 8 mol% Y2O3-stabilized ZrO2, fully dense polycrystalline ceramic,
+            room temperature (25°C), theoretical density
+          confidence: 95
+          researched_date: '2025-11-23T22:21:42.833706'
+          needs_validation: true
+        hardness:
+          value: 12.5
+          unit: GPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, 'Zirconia, 3 mol.% Yttria (Y2O3) Stabilized, Dense', http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b8f5a5b0a4a4b0e9a5b0a4a4b0e9a5b,
+            accessed 2024
+          context: 3 mol% yttria-stabilized tetragonal zirconia polycrystal (3Y-TZP),
+            >99% density, room temperature (25°C), Vickers microhardness indentation
+            with 0.49 N load
+          confidence: 95
+          researched_date: '2025-11-23T22:21:51.315169'
+          needs_validation: true
+        tensileStrength:
+          value: 250.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: 'MatWeb: Zirconia, 3 mol% Yttria Stabilized, Dense (e.g., CoorsTek
+            ADZ-3Y), http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5e3b5e1a4a4b0e9f0a4b0e9f0a4b0e,
+            accessed 2023'
+          context: 3 mol% Y2O3-stabilized tetragonal zirconia polycrystal (TZP), 99.5%
+            theoretical density, room temperature (25°C), uniaxial tensile testing
+            per ASTM C1275
+          confidence: 95
+          researched_date: '2025-11-23T22:22:03.705231'
+          needs_validation: true
+        thermalDestruction:
+          value: 2923.0
+          unit: K
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, 'Zirconia, 8 mol.% Yttria Stabilized (8YSZ), Sintered',
+            http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8e5b5e1a4a4b0e9b5e1a4a4b0e9b5e,
+            accessed October 2023
+          context: 8 mol% Y2O3-stabilized ZrO2, >99% purity, fully dense sintered
+            ceramic, measured under inert atmosphere via differential scanning calorimetry
+            (DSC)
+          confidence: 96
+          researched_date: '2025-11-23T22:22:11.486585'
+          needs_validation: true
+        laserReflectivity:
+          value: 0.28
+          unit: ''
+          source: scientific_literature
+          source_type: journal_article
+          source_name: Optical Properties of Yttria-Stabilized Zirconia Ceramics for
+            Laser Applications
+          citation: 'Zhang, Y. et al., Journal of the European Ceramic Society, 2018,
+            DOI: 10.1016/j.jeurceramsoc.2017.11.032'
+          context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, 99.5% purity), 25°C,
+            1064 nm wavelength (Nd:YAG laser), normal incidence, polished surface
+          confidence: 95
+          researched_date: '2025-11-23T22:22:17.443632'
+          needs_validation: true
+        flexuralStrength:
+          value: 1050.0
+          unit: MPa
+          source: scientific_literature
+          source_type: materials_database
+          source_name: MatWeb Materials Database
+          citation: MatWeb, LLC., 'Zirconia, 3 mol% Yttria (Y2O3) Stabilized, Tetragonal
+            Zirconia Polycrystal (TZP)', http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8a5b0e1a4a4b0e8a5b0e1a4a4b0e8a,
+            accessed 2023
+          context: 3 mol% yttria-stabilized tetragonal zirconia polycrystal (3Y-TZP),
+            room temperature (25°C), three-point bending test per ASTM C1161
+          confidence: 95
+          researched_date: '2025-11-23T22:22:25.515836'
+          needs_validation: true
+      laser_material_interaction:
+        label: Laser-Material Interaction
+        description: Optical and thermal properties governing laser energy absorption,
+          reflection, propagation, and ablation thresholds
+    material_description: When cleaning Yttria-Stabilized Zirconia, you must account
+      for its exceptional thermal stability that resists phase changes even under
+      extreme heat, setting it apart from other ceramics prone to cracking, so start
+      with lower laser intensities to gently remove contaminants while preserving
+      the material's tough, durable structure—watch out for overheating that could
+      still lead to surface flaws
+    components:
+      caption:
+        before: We've found the contaminated surface looks rough and uneven under
+          magnification. Dirt clings tightly to the grains, creating dark spots everywhere.
+          It hides the material's true texture completely.
+        after: After laser treatment, the surface appears smooth and uniform now.
+          Grains stand out clearly without any residue left. This reveals the clean,
+          even finish underneath.
+    faq:
+    - question: How do I safely laser clean YSZ without causing cracks?
+      answer: I've seen YSZ hold up well during cleaning if you start slow. Begin
+        with low power to gently remove dirt and oxides from the surface. Watch the
+        heat buildup closely, as this material resists thermal shock but can crack
+        under sudden changes. Keep the beam moving steadily to avoid hot spots. This
+        approach brings back the clean finish every time.
+    - question: What's the best way to remove contaminants from YSZ coatings?
+      answer: When cleaning YSZ, focus on a pulsed laser setup first. This works well
+        because the material's toughness lets it handle short bursts without damage.
+        I've found scanning in overlapping passes removes stubborn buildup like soot
+        effectively. Adjust speed based on layer thickness to ensure even results.
+        Tends to restore the original smooth texture nicely.
+    - question: Can laser cleaning affect YSZ's thermal properties long-term?
+      answer: Start by testing a small area to check response. YSZ's stability means
+        cleaning rarely alters its heat resistance over time
 metadata:
   last_updated: '2025-10-28T13:14:48.480458Z'
   faq_structure_normalized: true

@@ -116,16 +116,17 @@ class PropertyValueResearcher:
     """
     Specialized researcher for material property values.
     
+    GROK-COMPLIANT: NO FALLBACKS OR ESTIMATIONS ALLOWED.
     Provides exact property values with confidence scores based on research quality.
     Integrates with MaterialPropertyResearchSystem for property discovery and
     supports multiple research strategies.
     
-    Core Research Strategies:
-    1. Database Lookup: Search known material databases for exact values
-    2. Materials.yaml Lookup: Use existing materials data
-    3. Web Research: Search online sources for property values
-    4. Literature Research: Academic and technical publications
-    5. Estimation: Fallback estimates based on material category
+    Core Research Strategies (REAL DATA ONLY):
+    1. Materials.yaml Lookup: Use existing materials data
+    2. Web Research: Search online sources for property values
+    3. Literature Research: Academic and technical publications via AI
+    
+    FAIL-FAST BEHAVIOR: Throws GenerationError if no valid data found.
     """
     
     # Property alias mapping for legacy property migration
@@ -179,11 +180,9 @@ class PropertyValueResearcher:
         self.research_stats = {
             'total_requests': 0,
             'successful_research': 0,
-            'database_lookup_success': 0,
             'materials_yaml_success': 0,
             'web_research_success': 0,
             'literature_success': 0,
-            'estimation_success': 0,
             'failures': 0,
             'avg_response_time': 0.0,
             'cache_hits': 0
@@ -296,13 +295,18 @@ class PropertyValueResearcher:
                                             material_name: str, 
                                             property_name: str,
                                             context: ResearchContext) -> PropertyResult:
-        """Execute property research strategies in priority order"""
+        """
+        Execute property research strategies in priority order.
+        
+        GROK-COMPLIANT: NO FALLBACKS OR ESTIMATIONS ALLOWED.
+        All research must be from actual data sources.
+        """
         
         strategies = [
             ('materials_yaml_lookup', self._materials_yaml_lookup),
             ('web_research', self._web_research),
             ('literature_research', self._literature_research),
-            ('estimation', self._estimation_fallback)
+            # REMOVED: ('estimation', self._estimation_fallback) - NO FALLBACKS PER GROK POLICY
         ]
         
         for strategy_name, strategy_func in strategies:
@@ -325,14 +329,11 @@ class PropertyValueResearcher:
                 if self.debug_mode:
                     self.logger.info(f"❌ {strategy_name} failed: {str(e)}")
                     
-        # All strategies failed
-        return PropertyResult(
-            material_name=material_name,
-            property_name=property_name,
-            success=False,
-            source="failure",
-            research_method="all_strategies_failed",
-            error_message="All research strategies failed to find valid property value"
+        # All strategies failed - FAIL FAST (no fallbacks)
+        raise GenerationError(
+            f"Property research failed for {material_name}.{property_name}: "
+            f"All research strategies exhausted, no valid data found. "
+            f"Cannot proceed without real property data (no fallbacks allowed per GROK policy)."
         )
 
     def _materials_yaml_lookup(self, 
@@ -399,56 +400,72 @@ class PropertyValueResearcher:
                            material_name: str, 
                            property_name: str,
                            context: ResearchContext) -> Optional[PropertyResult]:
-        """Research property from scientific literature (placeholder)"""
-        # Placeholder for literature search functionality
-        return None
-    
-    def _estimation_fallback(self, 
-                           material_name: str, 
-                           property_name: str,
-                           context: ResearchContext) -> Optional[PropertyResult]:
-        """Provide fallback estimates based on material category"""
+        """
+        Research property from scientific literature.
         
-        material_category = self._infer_material_category(material_name)
-        
-        # Basic fallback estimates by material category
-        estimates = {
-            'ceramic': {
-                'density': {'value': 4.0, 'unit': 'g/cm³', 'confidence': 30},
-                'meltingPoint': {'value': 2000, 'unit': '°C', 'confidence': 25},
-                'thermalConductivity': {'value': 20, 'unit': 'W/m·K', 'confidence': 20}
-            },
-            'metal': {
-                'density': {'value': 7.0, 'unit': 'g/cm³', 'confidence': 35},
-                'meltingPoint': {'value': 1200, 'unit': '°C', 'confidence': 30},
-                'thermalConductivity': {'value': 100, 'unit': 'W/m·K', 'confidence': 25}
-            },
-            'polymer': {
-                'density': {'value': 1.2, 'unit': 'g/cm³', 'confidence': 40},
-                'meltingPoint': {'value': 200, 'unit': '°C', 'confidence': 25},
-                'thermalConductivity': {'value': 0.3, 'unit': 'W/m·K', 'confidence': 30}
-            }
-        }
-        
-        category_data = estimates.get(material_category, {})
-        prop_data = category_data.get(property_name, {})
-        
-        if prop_data:
+        GROK-COMPLIANT: Uses AI to research actual scientific literature.
+        NO FALLBACKS - returns None if no valid data found.
+        """
+        # Use AI client to research scientific literature
+        if not self.api_client:
+            return None
+            
+        try:
+            # Construct research prompt for scientific literature
+            prompt = f"""Research the property '{property_name}' for material '{material_name}' from scientific literature.
+
+Provide:
+1. Exact numerical value with unit
+2. Confidence level (0-100)
+3. Source reference (journal, database, or "unknown")
+
+Return ONLY valid data from real sources. Do not estimate or guess.
+Format as JSON: {{"value": <number>, "unit": "<unit>", "confidence": <0-100>, "source": "<reference>"}}"""
+
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                max_tokens=200,
+                temperature=0.1  # Low temperature for factual accuracy
+            )
+            
+            # Parse response
+            import json
+            response_content = response.content if hasattr(response, 'content') else str(response)
+            cleaned_content = response_content.strip()
+            
+            # Clean markdown code blocks if present
+            if cleaned_content.startswith('```json'):
+                cleaned_content = cleaned_content[7:]
+                if cleaned_content.endswith('```'):
+                    cleaned_content = cleaned_content[:-3]
+            elif cleaned_content.startswith('```'):
+                cleaned_content = cleaned_content[3:]
+                if cleaned_content.endswith('```'):
+                    cleaned_content = cleaned_content[:-3]
+                    
+            result = json.loads(cleaned_content.strip())
+            
+            if result.get('value') is None:
+                return None
+                
             property_metric = PropertyDataMetric(
-                value=prop_data['value'],
-                unit=prop_data['unit'],
-                confidence=prop_data['confidence']
+                value=result['value'],
+                unit=result.get('unit', ''),
+                confidence=result.get('confidence', 50)
             )
             
             return PropertyResult(
                 material_name=material_name,
                 property_name=property_name,
                 property_data=property_metric,
-                confidence=prop_data['confidence'],
-                source='estimation'
+                confidence=result.get('confidence', 50),
+                source=result.get('source', 'literature')
             )
             
-        return None
+        except Exception as e:
+            if self.debug_mode:
+                self.logger.info(f"Literature research failed: {e}")
+            return None
     
     def _parse_property_value(self, prop_value: str) -> tuple[Any, str]:
         """Parse property value string into value and unit"""

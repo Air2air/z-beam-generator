@@ -226,6 +226,7 @@ Before ANY code change:
 ✅ Write verification tests BEFORE claiming "COMPLETE"
 ✅ Update ALL related docs when architecture changes
 ✅ Never grade system A+ without verifying claims with tests
+✅ Use correct data access patterns when verifying (dict vs list)
 ```
 
 **How to Detect This Pattern**:
@@ -234,6 +235,7 @@ Before ANY code change:
 - 🚩 User reports failures but docs claim success
 - 🚩 Multiple documents describe different implementations
 - 🚩 High grade (A+) but low success metrics (10%)
+- 🚩 Verification scripts report failure when direct file inspection shows success
 
 **Prevention**:
 ```
@@ -242,9 +244,12 @@ Before documenting as "COMPLETE":
 2. Run live test: python3 run.py --[feature]
 3. Measure metrics: Success rate, save count, terminal output
 4. Compare: Do metrics match documentation claims?
-5. If NO → Fix code OR fix docs, then retest
-6. Only claim "COMPLETE" when test + metrics verify it
+5. Verify data access patterns match actual structure (dict vs list)
+6. If NO → Fix code OR fix docs, then retest
+7. Only claim "COMPLETE" when test + metrics verify it
 ```
+
+**✅ RESOLVED (Nov 23, 2025)**: Property research verification issue - materials were successfully researched and populated in Materials.yaml. Initial "NOT FOUND" reports were due to verification script bugs using list iteration on dict structure. Correct access pattern: `data['materials'][material_name]` not `next((m for m in materials...))`.
 
 ---
 

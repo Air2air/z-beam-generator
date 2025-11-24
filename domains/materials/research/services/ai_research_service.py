@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent.parent
+workspace_root = project_root.parent  # Go up one more to get actual workspace root
 sys.path.append(str(project_root))
 
 from shared.api.client_factory import create_api_client
@@ -109,7 +110,7 @@ class AIResearchEnrichmentService:
         """
         self.api_client = None
         self.api_provider = api_provider
-        self.materials_file = project_root / "materials" / "data" / "Materials.yaml"
+        self.materials_file = workspace_root / "data" / "materials" / "Materials.yaml"
         
         self.research_stats = {
             'total_researched': 0,

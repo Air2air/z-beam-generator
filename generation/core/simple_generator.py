@@ -262,7 +262,8 @@ class SimpleGenerator:
             component_type=component_type,
             domain='materials',
             enrichment_params=enrichment_params,  # Pass technical_intensity
-            humanness_layer=humanness_layer  # Contains length from randomization_targets
+            humanness_layer=humanness_layer,  # Contains length from randomization_targets
+            faq_count=faq_count  # Pass FAQ count for FAQ templates
         )
         
         # Make API call

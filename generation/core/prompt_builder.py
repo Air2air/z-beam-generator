@@ -201,7 +201,8 @@ class PromptBuilder:
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters from config
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity control
         variation_seed: Optional[int] = None,
-        humanness_layer: Optional[str] = None  # NEW: Universal Humanness Layer instructions
+        humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer instructions
+        faq_count: Optional[int] = None  # For FAQ generation
     ) -> str:
         """
         Build unified prompt combining all elements.
@@ -285,7 +286,8 @@ class PromptBuilder:
                 enrichment_params=enrichment_params,  # Phase 3+: Technical intensity
                 variation_seed=variation_seed,
                 voice=voice,  # NEW: Pass full voice profile for grammar_norms access
-                humanness_layer=humanness_layer  # NEW: Universal Humanness Layer
+                humanness_layer=humanness_layer,  # NEW: Universal Humanness Layer
+                faq_count=faq_count  # Pass FAQ count
             )
         else:
             # Fallback to legacy generic prompt
@@ -309,7 +311,8 @@ class PromptBuilder:
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity
         variation_seed: Optional[int] = None,
         voice: Optional[Dict] = None,  # NEW: Full voice profile for grammar_norms access
-        humanness_layer: Optional[str] = None  # NEW: Universal Humanness Layer
+        humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer
+        faq_count: Optional[int] = None  # For FAQ generation
     ) -> str:
         """
         Build prompt using component specification and domain context.
@@ -348,6 +351,10 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             )
             
             # Replace placeholders in template
+            # Set default FAQ count if not provided
+            if faq_count is None:
+                faq_count = 3  # Default FAQ count
+            
             component_context = component_template.format(
                 author=author,
                 material=topic,
@@ -356,7 +363,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
                 technical_guidance=technical_guidance,
                 sentence_guidance=sentence_guidance,
                 facts=facts,
-                context=facts if facts else context  # Use facts as context for template
+                context=facts if facts else context,  # Use facts as context for template
+                faq_count=faq_count  # Add FAQ count for FAQ templates
             )
             # Template contains all content instructions (focus, format, style)
             context_section = f"""{component_context}
