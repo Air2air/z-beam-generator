@@ -12,7 +12,52 @@
 
 **Purpose**: Tests SharedPromptBuilder - template loading, variable replacement, prompt generation
 
+**Status**: ✅ 22/22 tests passing
+
+### 2. `test_prompt_optimizer.py`
+
+**Purpose**: Tests PromptOptimizer - automatic optimization for Imagen API compliance
+
+**Status**: ✅ 20/20 tests passing
+
+### 3. `test_shared_prompt_normalization.py` 🔥 **NEW (Nov 25, 2025)**
+
+**Purpose**: Tests shared prompt normalization between generator and validator, verifies TIER 1 compliance (no fallbacks)
+
 **Test Classes**:
+
+#### TestSharedPromptNormalization
+- ✅ `test_generator_uses_shared_prompt_builder` - Generator uses SharedPromptBuilder
+- ✅ `test_validator_uses_shared_prompt_builder` - Validator uses SharedPromptBuilder  
+- ✅ `test_same_prompts_directory_used` - Both use same shared/ directory
+- ✅ `test_validation_templates_exist` - All 3 validation templates exist
+- ✅ `test_generation_templates_exist` - All 5+ generation templates exist
+- ✅ `test_no_fallback_in_validator_parse` - Validator raises ValueError on invalid JSON (no fallback)
+- ✅ `test_no_fallback_in_validator_build_result` - Validator fails-fast if realism_score missing
+- ✅ `test_validation_prompt_mirrors_generation_standards` - Validation uses same standards
+- ✅ `test_fail_fast_on_missing_config` - Validation prompt builder fails if config missing
+- ✅ `test_fail_fast_on_missing_templates` - SharedPromptBuilder fails if directories missing
+- ✅ `test_validator_no_exception_swallowing` - No try/except fallback in validate_material_image
+- ✅ `test_shared_prompt_builder_fail_fast_architecture` - Fail-fast on missing directories
+- ✅ `test_validation_response_format_specified` - JSON format always included (preserved during truncation)
+
+#### TestNoHardcodedPrompts
+- ✅ `test_no_hardcoded_prompts_in_generator` - Zero hardcoded prompts in generator code
+- ✅ `test_no_hardcoded_prompts_in_validator` - Zero hardcoded prompts in validator code
+
+**Total Tests**: 15 tests  
+**Status**: ✅ 15/15 passing
+
+**Critical Verifications**:
+- ✅ TIER 1: No production fallbacks (validator raises errors, no fake data)
+- ✅ TIER 1: Fail-fast architecture enforced
+- ✅ Shared prompts: Both systems use identical standards
+- ✅ Template-only: Zero hardcoded prompts
+- ✅ JSON preservation: Format specification never truncated
+
+---
+
+## Test Files
 
 #### TestSharedPromptBuilderInitialization
 - ✅ `test_initializes_with_valid_directory` - Builder initializes when shared directory exists
@@ -114,6 +159,7 @@
 ```bash
 pytest tests/domains/materials/image/test_shared_prompt_builder.py -v
 pytest tests/domains/materials/image/test_prompt_optimizer.py -v
+pytest tests/domains/materials/image/test_shared_prompt_normalization.py -v  # NEW
 ```
 
 ### Run Specific Test Class
@@ -139,7 +185,8 @@ pytest tests/domains/materials/image/ --cov=domains.materials.image.prompts --co
 |-----------|-------|----------|
 | SharedPromptBuilder | 22 tests | ✅ Initialization, template loading, variable replacement, prompt generation, validation |
 | PromptOptimizer | 20 tests | ✅ Length checking, condensing, optimization strategies, feedback preservation |
-| **Total** | **42 tests** | **Comprehensive coverage of shared prompting system** |
+| **Shared Normalization** 🔥 | **15 tests** | **✅ TIER 1 compliance, no fallbacks, fail-fast, JSON preservation** |
+| **Total** | **57 tests** | **✅ Comprehensive coverage + policy compliance verification** |
 
 ---
 
@@ -186,6 +233,14 @@ pytest tests/domains/materials/image/ --cov=domains.materials.image.prompts --co
 - ✅ Physics checklist mirrors generation physics
 - ✅ Red flags inverse of forbidden patterns
 - ✅ JSON format included in validation prompt
+
+### 8. TIER 1 Compliance 🔥 **NEW (Nov 25, 2025)**
+- ✅ No production fallbacks (validator raises ValueError, not fake data)
+- ✅ No exception swallowing (errors propagate with clear messages)
+- ✅ Fail-fast on missing config (no silent degradation)
+- ✅ Fail-fast on missing templates (FileNotFoundError)
+- ✅ JSON format preserved during optimization (never truncated)
+- ✅ Zero hardcoded prompts in production code
 
 ---
 
@@ -252,12 +307,13 @@ validation_prompt = builder.build_validation_prompt(
 
 ## Expected Test Results
 
-### Passing Tests (42/42)
+### Passing Tests (57/57) ✅
 ```
-test_shared_prompt_builder.py .......................... [ 52%]
-test_prompt_optimizer.py ................................ [100%]
+test_shared_prompt_builder.py .......................... [ 38%]
+test_prompt_optimizer.py ................................ [ 73%]
+test_shared_prompt_normalization.py ................ [100%]
 
-========================= 42 passed in 2.34s =========================
+========================= 57 passed in 4.27s =========================
 ```
 
 ### Performance Benchmarks

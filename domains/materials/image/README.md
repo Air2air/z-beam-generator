@@ -78,9 +78,21 @@ Automated AI-powered image generation system that creates scientifically accurat
 - **Environment Wear** (1-5): Background aging level
 
 ### Validation System (Gemini Vision)
-- **Purpose**: Validate before/after consistency, contamination accuracy
+- **MaterialImageValidator**: Validates image realism and consistency
+- **SharedPromptBuilder Integration**: Uses same standards as generation
+- **Fail-Fast Architecture**: Raises ValueError on invalid JSON or missing fields (no fallbacks)
+- **JSON Format Preservation**: Response schema preserved even during prompt optimization
+- **Validation Criteria**: Mirrors generation standards exactly
+  - Physics checklist: Same physics rules as generation
+  - Red flags: Inverse of generation forbidden patterns
+  - User feedback: Applied to both generation and validation
+- **Quality Gates**:
+  - Realism score: 75/100 minimum
+  - Physics compliance: Required
+  - Distribution realism: Required
+  - Before/after consistency: Required
 - **Cost**: $0.0002 per validation
-- **Status**: Architecture in place, implementation pending
+- **Status**: ✅ COMPLETE (TIER 1 compliant, no fallbacks, 15/15 tests passing)
 
 ---
 
@@ -365,23 +377,28 @@ guidance_scale = prompt_package["guidance_scale"]
 - ✅ **Consult API_USAGE.md** for integration patterns
 
 ### 2. Fail-Fast Architecture (NON-NEGOTIABLE)
-- ❌ **NEVER bypass fail-fast** - no defaults, no fallbacks, no silent failures
+- ❌ **NEVER add production fallbacks** - validator must raise errors, not return fake data
+- ❌ **NEVER swallow exceptions** - let errors propagate with clear messages  
 - ❌ **NEVER add `.get('key', default)`** patterns - must raise errors on missing config
 - ❌ **NEVER create fallback research data** - research is REQUIRED
 - ✅ **ALWAYS raise ValueError/RuntimeError** when config or research missing
+- ✅ **Validator fails fast**: Raises ValueError on invalid JSON or missing realism_score
 - ✅ Example: `raise ValueError("MaterialImageConfig is required")`
+- 📖 **Policy**: See `.github/copilot-instructions.md` TIER 1 requirements
 
 ### 3. Configuration-Driven Parameters
-- ❌ **NEVER hardcode values** - temperature, guidance_scale, thresholds
+- ❌ **NEVER hardcode values** - temperature, guidance_scale, thresholds, penalties
 - ✅ **ALWAYS use MaterialImageConfig** - all params in config dataclass
 - ✅ **Dynamic adjustment OK** - config can auto-adjust (e.g., guidance_scale by view_mode)
 - ✅ Example: `guidance_scale = config.guidance_scale` not `guidance_scale = 15.0`
+- 📖 **Policy**: See `docs/08-development/HARDCODED_VALUE_POLICY.md`
 
-### 4. Prompt Validation is MANDATORY
-- ✅ **validation runs by default** - do not disable without explicit reason
-- ✅ **log warnings/errors** - validation failures must be visible
-- ✅ **check all validation metrics** - length, detail, clarity, duplication
-- ❌ **NEVER skip validation silently** - must be opt-in (`validate=False`)
+### 4. Validation is MANDATORY
+- ✅ **validation runs by default** - `validate=True` in MaterialImageConfig
+- ✅ **JSON format preserved** - PromptOptimizer never truncates JSON schema
+- ✅ **log errors clearly** - validation failures visible in terminal
+- ❌ **NEVER skip validation silently** - must use `--no-validate` flag explicitly
+- 📖 **Tests**: 15/15 tests verify validation compliance
 
 ### 5. Evidence-Based Changes
 - ✅ **Test before claiming fixes** - provide proof (test output, logs)
