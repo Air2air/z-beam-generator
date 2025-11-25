@@ -4,7 +4,7 @@ Materials Data Loader
 Centralized loader for materials data across multiple YAML files:
 - Materials.yaml: Core material metadata (name, category, descriptions, etc.)
 - MaterialProperties.yaml: Material properties with category metadata, ranges, and definitions
-- MachineSettings.yaml: Laser machine settings with parameter ranges and descriptions
+- Settings.yaml: Laser machine settings with parameter ranges and descriptions (migrated from MachineSettings.yaml)
 - CategoryMetadata.yaml: Templates, frameworks, and regulatory guidance
 
 This module provides a unified interface to load complete material data
@@ -42,7 +42,7 @@ from functools import lru_cache
 DATA_DIR = Path(__file__).parent
 MATERIALS_FILE = DATA_DIR / "Materials.yaml"
 PROPERTIES_FILE = DATA_DIR / "MaterialProperties.yaml"
-SETTINGS_FILE = DATA_DIR / "MachineSettings.yaml"
+SETTINGS_FILE = DATA_DIR / "Settings.yaml"  # MIGRATED from MachineSettings.yaml (Nov 24, 2025)
 METADATA_FILE = DATA_DIR / "IndustryApplications.yaml"  # Renamed from CategoryMetadata.yaml
 CATEGORIES_FILE = DATA_DIR / "CategoryTaxonomy.yaml"     # Renamed from Categories.yaml
 PROPERTY_DEFS_FILE = DATA_DIR / "PropertyDefinitions.yaml"  # NEW - Normalized architecture
@@ -102,24 +102,34 @@ def load_properties_yaml() -> Dict[str, Dict[str, Any]]:
 @lru_cache(maxsize=1)
 def load_settings_yaml() -> Dict[str, Dict[str, Any]]:
     """
-    Load MachineSettings.yaml
+    Load Settings.yaml (migrated from MachineSettings.yaml on Nov 24, 2025)
     
     Returns:
-        Dict mapping material names to settings data
+        Dict mapping material names to settings data (extracts from nested structure)
         Format: { "Aluminum": { "powerRange": {...}, "wavelength": {...}, ... }, ... }
     
     Raises:
         MaterialDataError: If file cannot be loaded
     """
     if not SETTINGS_FILE.exists():
-        raise MaterialDataError(f"MachineSettings.yaml not found at {SETTINGS_FILE}")
+        raise MaterialDataError(f"Settings.yaml not found at {SETTINGS_FILE}")
     
     try:
         with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
-            return data.get('settings', {})
+            settings = data.get('settings', {})
+            
+            # Extract machineSettings from nested structure
+            # Settings.yaml has: settings.MaterialName.machineSettings.{params}
+            # We need to return: { MaterialName: {params} }
+            extracted = {}
+            for material_name, material_settings in settings.items():
+                if 'machineSettings' in material_settings:
+                    extracted[material_name] = material_settings['machineSettings']
+            
+            return extracted
     except Exception as e:
-        raise MaterialDataError(f"Failed to load MachineSettings.yaml: {e}")
+        raise MaterialDataError(f"Failed to load Settings.yaml: {e}")
 
 
 @lru_cache(maxsize=1)
@@ -162,7 +172,7 @@ def load_materials_data() -> Dict[str, Any]:
                     'name': 'Aluminum',
                     'category': 'metal',
                     'materialProperties': { ... },  # Merged from MaterialProperties.yaml
-                    'machineSettings': { ... },     # Merged from MachineSettings.yaml
+                    'machineSettings': { ... },     # Merged from Settings.yaml
                     ...
                 },
                 ...
@@ -444,7 +454,7 @@ def get_category_ranges() -> Dict[str, Any]:
 
 def get_parameter_ranges() -> Dict[str, Any]:
     """
-    Get machine settings parameter ranges from MachineSettings.yaml
+    Get machine settings parameter ranges from Settings.yaml
     
     Returns min/max ranges and category-specific optimization for laser parameters.
     
@@ -472,10 +482,10 @@ def get_parameter_ranges() -> Dict[str, Any]:
         }
     
     Raises:
-        MaterialDataError: If MachineSettings.yaml cannot be loaded
+        MaterialDataError: If Settings.yaml cannot be loaded
     """
     if not SETTINGS_FILE.exists():
-        raise MaterialDataError("MachineSettings.yaml not found")
+        raise MaterialDataError("Settings.yaml not found")
     
     try:
         with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
@@ -487,7 +497,7 @@ def get_parameter_ranges() -> Dict[str, Any]:
 
 def get_parameter_descriptions() -> Dict[str, Any]:
     """
-    Get machine settings parameter descriptions from MachineSettings.yaml
+    Get machine settings parameter descriptions from Settings.yaml
     
     Returns detailed descriptions, selection criteria, and optimization notes
     for all laser parameters.
@@ -505,10 +515,10 @@ def get_parameter_descriptions() -> Dict[str, Any]:
         }
     
     Raises:
-        MaterialDataError: If MachineSettings.yaml cannot be loaded
+        MaterialDataError: If Settings.yaml cannot be loaded
     """
     if not SETTINGS_FILE.exists():
-        raise MaterialDataError("MachineSettings.yaml not found")
+        raise MaterialDataError("Settings.yaml not found")
     
     try:
         with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:

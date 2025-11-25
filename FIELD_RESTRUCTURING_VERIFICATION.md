@@ -78,11 +78,37 @@
 
 ---
 
-## ✅ Phase 3: Test Updates COMPLETE
+## ✅ Phase 3: Test & Documentation Updates COMPLETE
 
 **Status**: All tests, documentation, and schemas updated  
-**Completed**: November 22, 2025  
-**Commit**: e53c229c
+**Completed**: November 24, 2025  
+**Commits**: e53c229c, 4b2df4e6, 1bcdb77e, 1196afdb
+
+### ✅ Subtitle Resolution Summary
+**Decision**: `subtitle` field **renamed** to `material_description`  
+**Reason**: More semantic and clearer naming for material overview content  
+**Implementation**:
+- Materials.yaml: `subtitle` → `material_description` (132 materials)
+- Frontmatter: `subtitle` → `material_description` (152 files)  
+- CLI: `--subtitle` → `--material-description`
+- Prompts: `subtitle.txt` → `material_description.txt`
+- Code: All references updated to `material_description`
+
+**Status**: ✅ COMPLETE - No "subtitle" field remains in system
+**Tests**: ✅ UPDATED (November 24, 2025)
+
+### ✅ Tests Updated (6 files)
+- [x] `tests/test_frontmatter_partial_field_sync.py` - All subtitle → material_description
+- [x] `tests/test_claude_evaluation.py` - Component type updated
+- [x] `tests/test_winston_learning.py` - Component type updated
+- [x] `tests/test_generation_report_writer.py` - Component type updated
+- [x] `tests/test_dynamic_sentence_calculation.py` - Comments updated
+- [x] `tests/test_audit_frontmatter_regeneration.py` - Parameter name updated
+
+### ✅ Documentation Created
+- [x] `docs/DATA_COMPLETENESS_SUMMARY_NOV24_2025.md` - Complete status report
+- [x] `scripts/data_completeness_check.py` - Comprehensive checker tool
+- [x] `scripts/fill_remaining_gaps.sh` - Quick gap filler script
 
 
 
@@ -302,4 +328,104 @@ python3 -c "from generation.core.component_specs import ComponentRegistry; print
 
 ---
 
-**Status**: ✅ **Phases 1-2 Complete** | **Ready for Phase 3 (Test Updates)**
+**Status**: ✅ **Phases 1-3 Complete** | **Phase 4: machineSettings Migration COMPLETE** ✅
+
+## ✅ Phase 4: machineSettings Migration COMPLETE
+
+**Date**: November 24, 2025  
+**Status**: ✅ COMPLETE - machineSettings fully migrated to Settings.yaml  
+**Commits**: (current session)
+
+### Migration Overview
+**Problem**: machineSettings data was duplicated in both Materials.yaml and Settings.yaml  
+**Solution**: Removed machineSettings from Materials.yaml, now single source of truth in Settings.yaml  
+**Impact**: 132 materials cleaned up, eliminates data duplication and sync issues
+
+### ✅ Changes Completed
+
+**1. Data Layer Migration**
+- [x] Removed machineSettings from all 132 materials in Materials.yaml
+- [x] Verified Settings.yaml has complete machineSettings for all 132 settings
+- [x] Created backup: `Materials.yaml.backup_20251124_230544`
+
+**2. Code Layer Updates**
+- [x] `data/materials/loader.py`:
+  - Updated SETTINGS_FILE path: `MachineSettings.yaml` → `Settings.yaml`
+  - Updated load_settings_yaml() to extract from nested structure
+  - Updated all docstring references to Settings.yaml
+  - All error messages updated
+- [x] `generation/enrichment/data_enricher.py`: ✅ No changes needed (reads from merged material_data)
+- [x] `generation/core/adapters/materials_adapter.py`: ✅ No changes needed (reads from merged material_data)
+- [x] `shared/commands/unified_workflow.py`: ✅ No changes needed (reads from merged material_data)
+
+**3. Data Completeness Checker**
+- [x] `scripts/data_completeness_check.py`:
+  - Removed machineSettings from materials Tier 3 (technical_research)
+  - machineSettings now only in settings Tier 3
+  - Updated field type detection logic
+
+### ✅ Verification Results
+
+**Migration Test**:
+```bash
+✅ Aluminum: 9 parameters loaded (powerRange: 100 W)
+✅ Steel: 9 parameters loaded (powerRange: 100 W)
+✅ Copper: 9 parameters loaded (powerRange: 100 W)
+```
+
+**Data Completeness**:
+```
+Materials Tier 3 (Technical Research):
+  ✅ materialProperties: 159/159 (100.0%)
+  ❌ materialCharacteristics: 0/159 (0.0%)
+  ✅ regulatoryStandards: 156/159 (98.1%)
+  ✅ machineSettings: REMOVED (no longer in materials)
+
+Settings Tier 3 (Technical Research):
+  ✅ machineSettings: 132/132 (100.0%)
+  ✅ material_challenges: 132/132 (100.0%)
+```
+
+**Before Migration**:
+- Materials.yaml: 132 materials WITH machineSettings ❌
+- Settings.yaml: 132 settings WITH machineSettings ❌
+- **Status**: DUPLICATED (data in both locations)
+
+**After Migration**:
+- Materials.yaml: 0 materials WITH machineSettings ✅
+- Settings.yaml: 132 settings WITH machineSettings ✅
+- **Status**: SINGLE SOURCE OF TRUTH ✅
+
+### 📊 Migration Statistics
+
+**Files Modified**: 4
+- `data/materials/Materials.yaml` (132 materials cleaned)
+- `data/materials/loader.py` (Settings.yaml integration)
+- `scripts/data_completeness_check.py` (tier updates)
+- `FIELD_RESTRUCTURING_VERIFICATION.md` (this file)
+
+**Backup Created**: 1
+- `Materials.yaml.backup_20251124_230544`
+
+**Data Removed**: 132 machineSettings blocks from Materials.yaml
+**Data Preserved**: 132 machineSettings blocks in Settings.yaml (untouched)
+
+**Loader Architecture**:
+- Settings.yaml has nested structure: `settings.MaterialName.machineSettings.{params}`
+- Loader extracts and flattens: `{ MaterialName: {params} }`
+- Merged into material_data during load_materials_data()
+- Consumer code unchanged (reads from merged structure)
+
+### ✅ Success Criteria
+
+- [x] Materials.yaml has 0 materials with machineSettings
+- [x] Settings.yaml has 132 settings with machineSettings  
+- [x] Loader successfully extracts machineSettings from Settings.yaml
+- [x] Test materials (Aluminum, Steel, Copper) load machineSettings correctly
+- [x] Data completeness checker shows machineSettings only in Settings tier
+- [x] No code changes needed in generation/enrichment/adapters (uses merged data)
+- [x] Backup created before data modification
+
+---
+
+**Status**: ✅ **Phases 1-4 Complete** | **Ready for Phase 5 (Documentation Updates)**

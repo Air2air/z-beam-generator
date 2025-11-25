@@ -17,8 +17,8 @@ def test_report_writer_creates_default_file(tmp_path):
     
     result = writer.save_individual_report(
         material_name="Aluminum",
-        component_type="subtitle",
-        content="Test content for aluminum subtitle"
+        component_type="material_description",
+        content="Test content for aluminum material_description"
     )
     
     assert result == report_file

@@ -177,9 +177,12 @@ class SimpleGenerator:
         
         result = self.generate_without_save(material_name, component_type, faq_count, humanness_layer)
         
-        # Save to Materials.yaml
+        # Save to appropriate YAML file (Settings.yaml for settings_description, Materials.yaml for others)
         self._save_to_yaml(material_name, component_type, result['content'])
-        self.logger.info("💾 Saved to Materials.yaml")
+        if component_type == 'settings_description':
+            self.logger.info("💾 Saved to Settings.yaml")
+        else:
+            self.logger.info("💾 Saved to Materials.yaml")
         result['saved'] = True
         
         return result
@@ -317,6 +320,61 @@ class SimpleGenerator:
         }
     
     def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
+        """Save generated content to appropriate YAML file with atomic write + immediate frontmatter sync."""
+        
+        # settings_description goes to Settings.yaml, everything else to Materials.yaml
+        if component_type == 'settings_description':
+            self._save_to_settings_yaml(material_name, content)
+        else:
+            self._save_to_materials_yaml(material_name, component_type, content)
+    
+    def _save_to_settings_yaml(self, material_name: str, content: Any):
+        """Save settings_description to Settings.yaml with atomic write + frontmatter sync."""
+        settings_path = Path("data/materials/Settings.yaml")
+        
+        # Load existing data
+        try:
+            with open(settings_path, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+        except Exception as e:
+            raise FileNotFoundError(f"Failed to load Settings.yaml: {e}")
+        
+        if material_name not in data.get('settings', {}):
+            raise ValueError(f"Material '{material_name}' not found in Settings.yaml")
+        
+        # Save settings_description to Settings.yaml
+        data['settings'][material_name]['settings_description'] = content
+        
+        # Update metadata
+        data['_metadata']['last_updated'] = '2025-11-24T21:00:00Z'
+        
+        # Atomic write: write to temp file, then rename
+        try:
+            import tempfile
+            with tempfile.NamedTemporaryFile(
+                mode='w',
+                encoding='utf-8',
+                dir=settings_path.parent,
+                delete=False,
+                suffix='.yaml'
+            ) as temp_f:
+                yaml.safe_dump(data, temp_f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+                temp_path = temp_f.name
+            
+            # Atomic rename (POSIX guarantees atomicity)
+            Path(temp_path).replace(settings_path)
+            
+            # DUAL-WRITE POLICY: Immediately sync field to frontmatter
+            from generation.utils.frontmatter_sync import sync_field_to_frontmatter
+            sync_field_to_frontmatter(material_name, 'settings_description', content)
+            
+        except Exception as e:
+            # Clean up temp file on failure
+            if 'temp_path' in locals():
+                Path(temp_path).unlink(missing_ok=True)
+            raise ValueError(f"Failed to save to Settings.yaml: {e}")
+    
+    def _save_to_materials_yaml(self, material_name: str, component_type: str, content: Any):
         """Save generated content to Materials.yaml with atomic write + immediate frontmatter sync."""
         materials_path = Path("data/materials/Materials.yaml")
         

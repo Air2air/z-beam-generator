@@ -227,7 +227,9 @@ def _show_generation_report(content, material_name, component_type, succeeded=Tr
         print(f"   • Status: {status_emoji} PASSED all quality gates")
         print()
         print("💾 STORAGE:")
-        print("   • Location: data/materials/Materials.yaml")
+        # settings_description goes to Settings.yaml, everything else to Materials.yaml
+        storage_file = "Settings.yaml" if component_type == 'settings_description' else "Materials.yaml"
+        print(f"   • Location: data/materials/{storage_file}")
         print(f"   • Component: {component_type}")
         print(f"   • Material: {material_name}")
         print(f"   • Saved: {status_emoji} YES")
@@ -458,7 +460,7 @@ def handle_material_description_generation(material_name: str, skip_integrity_ch
 
 def handle_settings_description_generation(material_name: str, skip_integrity_check: bool = False):
     """
-    Generate AI-powered settings description for a material and save to Materials.yaml.
+    Generate AI-powered settings description for a material and save to Settings.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
     return handle_generation(material_name, 'settings_description', skip_integrity_check)

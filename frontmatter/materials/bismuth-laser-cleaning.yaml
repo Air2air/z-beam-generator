@@ -11,3 +11,29 @@ settings_description: When laser cleaning Bismuth, the primary challenge arises 
   beam focus closely throughout multiple passes restores the surface integrity reliably.
   Be cautious with dwell times, as prolonged exposure can still cause unintended fusion
   even at conservative settings.
+faq:
+- question: How do I prevent Bismuth from melting during laser cleaning?
+  answer: When laser cleaning Bismuth, its low melting point makes it prone to overheating
+    quickly. I've seen that starting with lower power pulses helps control the heat
+    buildup effectively. Reduce the laser intensity gradually to remove contaminants
+    without reaching the melting threshold. This approach restores the surface integrity
+    while avoiding thermal damage.
+- question: Why does Bismuth reflect laser light so intensely during cleaning?
+  answer: Bismuth's high reflectivity sets it apart from more absorbent metals like
+    iron or copper. This property means much of the laser energy bounces off instead
+    of heating the surface deeply. I've found that using shorter wavelengths can improve
+    absorption slightly in practice. Adjust your setup to account for this reflection
+    to ensure even cleaning coverage.
+- question: What are best practices for cleaning oxidized Bismuth surfaces safely?
+  answer: Oxidized Bismuth layers can trap heat unevenly, leading to uneven removal
+    if not handled carefully. Start by scanning the surface at a slow speed to expose
+    the underlying metal
+caption:
+  before: The contaminated surface displays irregular dark patches scattered across
+    its uneven texture. Oxide layers cling tightly to the metal, dulling any hint
+    of shine below. Debris and fine particles embed into shallow pits, creating a
+    rough and mottled look.
+  after: The cleaned surface reveals a smooth and even metallic gleam without scattered
+    patches. Oxide layers have lifted away completely, exposing the bright underlying
+    material. Debris no longer embeds into pits, leaving a clearer and more uniform
+    finish.

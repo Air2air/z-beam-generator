@@ -297,7 +297,7 @@ class TestWinstonLearningSystem(unittest.TestCase):
 
         result = self.success_predictor.predict_success(
             material="Steel",
-            component_type="subtitle",
+            component_type="material_description",
             temperature=0.8,
             attempt_number=2
         )
@@ -384,7 +384,7 @@ class TestWinstonLearningSystem(unittest.TestCase):
             },
             {
                 'material': 'Steel',
-                'component_type': 'subtitle',
+                'component_type': 'material_description',
                 'temperature': 0.8,
                 'attempt': 1,
                 'content': 'Industrial laser cleaning for steel surfaces.',

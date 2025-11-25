@@ -70,7 +70,7 @@ class TrivialFrontmatterExporter:
         
         self.logger = logging.getLogger(__name__)
         
-        # Load metadata from new architecture (MaterialProperties.yaml, MachineSettings.yaml, CategoryMetadata.yaml, Categories.yaml)
+        # Load metadata from new architecture (MaterialProperties.yaml, Settings.yaml, CategoryMetadata.yaml, Categories.yaml)
         from data.materials.loader import (
             get_parameter_ranges,
             get_property_categories,
@@ -92,9 +92,13 @@ class TrivialFrontmatterExporter:
         # Load property taxonomy for categorization
         self._load_property_taxonomy()
         
+        # Load Settings.yaml for machine settings and material challenges
+        self.settings_data = self._load_settings()
+        
         self.logger.info(f"✅ Loaded {len(self.category_definitions)} material categories")
         self.logger.info(f"✅ Loaded {len(self.machine_settings_ranges)} machine settings ranges")
         self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
+        self.logger.info(f"✅ Loaded {len(self.settings_data.get('settings', {}))} materials from Settings.yaml")
         
         # Load separated content files for orchestration
         self.captions = self._load_captions()
@@ -128,6 +132,18 @@ class TrivialFrontmatterExporter:
             data = yaml.safe_load(f)
         
         return data.get('faqs', {})
+    
+    def _load_settings(self) -> Dict[str, Any]:
+        """Load Settings.yaml for machine settings and material challenges."""
+        settings_file = Path(__file__).resolve().parents[2] / "data" / "materials" / "Settings.yaml"
+        if not settings_file.exists():
+            self.logger.warning(f"⚠️  Settings.yaml not found at {settings_file}")
+            return {'settings': {}}
+        
+        with open(settings_file, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        
+        return data
     
     def _load_regulatory_standards(self) -> Dict[str, Any]:
         """Load RegulatoryStandards.yaml and return regulatory_standards dict."""
@@ -235,13 +251,16 @@ class TrivialFrontmatterExporter:
         # Add enriched author data to frontmatter (from registry, not Materials.yaml)
         frontmatter['author'] = author_data.copy()
         
+        # Load settings from Settings.yaml (machineSettings + material_challenges)
+        settings_entry = self.settings_data.get('settings', {}).get(material_name, {})
+        
         # Define fields that should be exported to frontmatter (per frontmatter_template.yaml)
         EXPORTABLE_FIELDS = {
             'breadcrumb',
             'category', 'subcategory', 'title', 'material_description',
             'datePublished', 'dateModified',  # Schema.org date fields from git history
             'images', 'caption', 'regulatoryStandards', 'eeat',
-            'materialProperties', 'machineSettings', 'faq',
+            'materialProperties', 'machineSettings', 'material_challenges', 'settings_description', 'faq',
             '_metadata', 'material_metadata'
         }
         
@@ -259,12 +278,15 @@ class TrivialFrontmatterExporter:
                 # Strip generation metadata
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
             elif key == 'machineSettings':
-                # Enrich machine settings with min/max from machine settings ranges
-                enriched = self._enrich_machine_settings(value, category_ranges)
-                # Remove description fields
-                cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
-                # Strip generation metadata
-                frontmatter[key] = self._strip_generation_metadata(cleaned)
+                # Load from Settings.yaml instead of Materials.yaml
+                settings_value = settings_entry.get('machineSettings', {})
+                if settings_value:
+                    # Enrich machine settings with min/max from machine settings ranges
+                    enriched = self._enrich_machine_settings(settings_value, category_ranges)
+                    # Remove description fields
+                    cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
+                    # Strip generation metadata
+                    frontmatter[key] = self._strip_generation_metadata(cleaned)
             elif key == 'caption':
                 # Caption is orchestrated from separate Captions.yaml file - skip in this loop
                 # Will be added after the loop from self.captions
@@ -317,15 +339,27 @@ class TrivialFrontmatterExporter:
             normalized = self._normalize_regulatory_standards(regulatory_data)
             frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
         
-        # Add material_challenges from Categories.yaml (category-level diagnostic guidance)
-        if category:
+        # Add material_challenges from Settings.yaml (material-specific challenges)
+        if settings_entry and 'material_challenges' in settings_entry:
+            challenges = settings_entry['material_challenges']
+            if challenges:
+                frontmatter['material_challenges'] = self._strip_generation_metadata(challenges)
+                self.logger.info(f"✅ Added material_challenges for {material_name} from Settings.yaml")
+        elif category:
+            # Fallback to category-level challenges if material-specific not available
             material_challenges = get_material_challenges(category)
             if material_challenges:
-                # Strip generation metadata and add to frontmatter
                 frontmatter['material_challenges'] = self._strip_generation_metadata(material_challenges)
                 self.logger.info(f"✅ Added material_challenges for {material_name} from {category} category")
             else:
                 self.logger.debug(f"No material_challenges found for category: {category}")
+        
+        # Add settings_description from Settings.yaml
+        if settings_entry and 'settings_description' in settings_entry:
+            settings_desc = settings_entry['settings_description']
+            if settings_desc:
+                frontmatter['settings_description'] = self._strip_generation_metadata(settings_desc)
+                self.logger.info(f"✅ Added settings_description for {material_name} from Settings.yaml")
         
         # Override with components if they exist (new generation system saves to components)
         if 'components' in material_data:
