@@ -140,6 +140,17 @@ def _build_contamination_section(contaminants: list, uniformity: int) -> str:
     lines.append("- Distribution should be uneven and realistic (heavier in crevices)")
     lines.append("- Overall darkening due to contamination light absorption")
     
+    lines.append("\n**REALISM IMPERATIVES** (CRITICAL - These determine image acceptability):")
+    lines.append("- **Gravity compliance**: Liquids drip downward, heavy particles settle at bottom")
+    lines.append("- **Layer interaction**: Contaminants overlap naturally, not as separate flat overlays")
+    lines.append("- **Texture variation**: Each contaminant has distinct surface texture (matte dirt, glossy oil, granular rust)")
+    lines.append("- **Light interaction**: Proper shadows, reflections, and light absorption for each material")
+    lines.append("- **Uneven density**: Thicker in protected areas, thinner on exposed surfaces")
+    lines.append("- **Weathering indicators**: Aged contamination shows fading, streaking, stratification")
+    lines.append("- **NO uniform powders**: Avoid artificial-looking white/colored powder overlays")
+    lines.append("- **NO perfect edges**: Contamination boundaries should be irregular and natural")
+    lines.append("- **Reference reality**: Compare to actual photos of contaminated industrial materials")
+    
     return "\n".join(lines)
 
 

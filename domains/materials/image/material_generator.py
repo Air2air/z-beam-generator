@@ -13,6 +13,7 @@ import logging
 from typing import Dict, Any, Optional
 
 from domains.materials.image.prompts.material_researcher import MaterialContaminationResearcher
+from domains.materials.image.prompts.category_contamination_researcher import CategoryContaminationResearcher
 from domains.materials.image.prompts.material_prompts import build_material_cleaning_prompt
 from domains.materials.image.material_config import MaterialImageConfig
 
@@ -23,22 +24,30 @@ class MaterialImageGenerator:
     """
     Generator for material before/after laser cleaning images.
     
-    Automatically researches scientifically accurate contamination data
-    and generates contextually appropriate before/after image prompts.
+    Uses category-level contamination research for photo-realistic patterns
+    with abundant real-world references.
     """
     
-    def __init__(self, gemini_api_key: Optional[str] = None):
+    def __init__(self, gemini_api_key: Optional[str] = None, use_category_research: bool = True):
         """
         Initialize material image generator.
         
         Args:
             gemini_api_key: Optional Gemini API key for contamination research
+            use_category_research: Use category-level research (more realistic, reusable)
         """
-        self.researcher = None
+        self.material_researcher = None
+        self.category_researcher = None
+        self.use_category_research = use_category_research
+        
         if gemini_api_key:
             try:
-                self.researcher = MaterialContaminationResearcher(api_key=gemini_api_key)
-                logger.info("✅ Contamination research enabled")
+                if use_category_research:
+                    self.category_researcher = CategoryContaminationResearcher(api_key=gemini_api_key)
+                    logger.info("✅ Category-level contamination research enabled")
+                else:
+                    self.material_researcher = MaterialContaminationResearcher(api_key=gemini_api_key)
+                    logger.info("✅ Material-specific contamination research enabled")
             except Exception as e:
                 logger.warning(f"⚠️  Contamination research disabled: {e}")
     
@@ -66,14 +75,35 @@ class MaterialImageGenerator:
             config = MaterialImageConfig(material=material_name)
         
         # Get contamination research data if not provided
-        if research_data is None and self.researcher:
-            try:
-                research_data = self.researcher.research_material_contamination(
-                    material_name, material_properties
-                )
-                logger.info(f"🔬 Researched contamination for {material_name}")
-            except Exception as e:
-                logger.warning(f"⚠️  Research failed for {material_name}: {e}")
+        if research_data is None:
+            if self.use_category_research and self.category_researcher:
+                try:
+                    # Get category for this material
+                    category = self.category_researcher.get_category(material_name)
+                    logger.info(f"📂 Material category: {category}")
+                    
+                    # Research category patterns
+                    category_data = self.category_researcher.research_category_contamination(category)
+                    
+                    # Apply patterns to this material
+                    research_data = self.category_researcher.apply_patterns_to_material(
+                        material_name, category_data, config.contamination_uniformity
+                    )
+                    logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns to {material_name}")
+                except Exception as e:
+                    logger.warning(f"⚠️  Category research failed for {material_name}: {e}")
+                    research_data = self._get_fallback_research(material_name)
+            elif self.material_researcher:
+                try:
+                    research_data = self.material_researcher.research_material_contamination(
+                        material_name, material_properties
+                    )
+                    logger.info(f"🔬 Researched contamination for {material_name}")
+                except Exception as e:
+                    logger.warning(f"⚠️  Research failed for {material_name}: {e}")
+                    research_data = self._get_fallback_research(material_name)
+            else:
+                # No researcher available - use fallback
                 research_data = self._get_fallback_research(material_name)
         elif research_data is None:
             # No researcher and no data provided - use fallback
@@ -116,10 +146,16 @@ class MaterialImageGenerator:
         """
         # Base negative prompt for all material images
         base_negative = [
-            # Contamination accuracy
+            # Contamination realism (CRITICAL)
             "unnatural contamination", "fake-looking dirt", "painted-on grime",
             "uniform contamination", "perfectly even dirt", "artificially applied contamination",
             "contamination that defies physics", "contamination in impossible locations",
+            "white powder overlay", "uniform powder coating", "flat contamination layer",
+            "contamination defying gravity", "floating contamination particles",
+            "no texture variation in contamination", "perfectly smooth contamination",
+            "contamination with no shadows", "contamination with uniform reflectance",
+            "digital overlay appearance", "copy-pasted contamination pattern",
+            "contamination without layer interaction", "flat stacked contaminants",
             
             # Material appearance
             f"incorrect {material_name} appearance", "wrong material color",
