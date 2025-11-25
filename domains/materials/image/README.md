@@ -12,7 +12,9 @@ Automated AI-powered image generation system that creates scientifically accurat
 
 **Latest Enhancement (Nov 25, 2025)**: Optimized shared dynamic prompting system - 67.7% smaller prompts (6,113 → 1,976 chars), automatic Imagen API compliance, single source of truth for generation and validation. Deep aging research system treats aging effects as equal to traditional contamination, with 11 research dimensions, micro-scale distribution accuracy, and material-specific priorities.
 
-📖 **Quick Access**: [Full Documentation](#-documentation-quick-links) | [Aging Research Details](docs/AGING_RESEARCH_SYSTEM.md) | [Prompt Optimization](../../../IMAGEN_PROMPT_OPTIMIZATION_COMPLETE.md) | [Shared Prompts](../../../SHARED_PROMPT_IMPLEMENTATION_COMPLETE.md)
+📖 **Quick Access**: [Full Documentation](#-documentation-quick-links) | [Aging Research Details](docs/AGING_RESEARCH_SYSTEM.md) | [Development Archive](docs/archive/)
+
+📚 **Development History**: Complete implementation documentation available in `docs/archive/` including prompt optimization, config simplification, validation fixes, and reference implementations.
 
 ## Architecture
 
