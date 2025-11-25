@@ -96,6 +96,23 @@ Automated AI-powered image generation system that creates scientifically accurat
 - **Cost**: $0.0002 per validation
 - **Status**: ✅ COMPLETE (TIER 1 compliant, no fallbacks, 15/15 tests passing)
 
+### Learning System (SQLite) 🔥 NEW
+- **ImageGenerationLogger**: Automatic attempt tracking and analytics
+- **Database**: SQLite (local, no infrastructure needed)
+- **Automatic Logging**: Every generation logged with parameters and outcomes
+- **Feedback Capture**: Stores full feedback text, category, and source
+- **Analytics Methods**:
+  - Category statistics (success rates by material type)
+  - Physics violation patterns (most common issues)
+  - Feedback effectiveness (before/after comparison)
+  - Feedback patterns (which types work best)
+  - Search capability (find similar issues/solutions)
+  - Best examples (library of successful feedback)
+- **CLI Tool**: `analytics.py` for viewing reports without code
+- **Cost**: Free (local SQLite database)
+- **Status**: ✅ COMPLETE (14/14 tests passing)
+- 📖 **Full Documentation**: `docs/LEARNING_SYSTEM.md`
+
 ---
 
 ## File Structure
@@ -132,6 +149,8 @@ domains/materials/image/
 | Document | Purpose | When to Use |
 |----------|---------|-------------|
 | **README.md** (this file) | System overview | Getting started |
+| **LEARNING_SYSTEM.md** 🔥 **NEW** | Learning & analytics | Understanding feedback system |
+| **FEEDBACK_GUIDELINES.md** | User feedback policy | Adding quality corrections |
 | **AGING_RESEARCH_SYSTEM.md** | Aging methodology | Understanding aging patterns |
 | **AGING_IMPLEMENTATION.md** | Implementation details | Reviewing what was built |
 | **SYSTEM_VERIFICATION.md** | Verification report | Checking system compliance |
@@ -141,10 +160,10 @@ domains/materials/image/
 | **CONFIGURATION.md** | Config options | Customizing generation |
 | **TESTING.md** | Test suite | Running/writing tests |
 | **TROUBLESHOOTING.md** | Common issues | Fixing problems |
-| **IMAGEN_PROMPT_OPTIMIZATION_COMPLETE.md** | Prompt optimization | Understanding condensed templates |
-| **SHARED_PROMPT_IMPLEMENTATION_COMPLETE.md** | Shared prompting | Understanding feedback workflow |
 
 **💡 Quick Access in Code**: Research system automatically loads aging research documentation when initialized.
+
+**🚨 Feedback Policy**: All user corrections must be general/category-level, never material-specific. See `FEEDBACK_GUIDELINES.md`.
 
 ---
 
@@ -239,6 +258,7 @@ guidance_scale = prompt_package["guidance_scale"]
 - ✅ **Template-based** - External .txt files (not hardcoded in code)
 - ✅ **Automatic optimization** - PromptOptimizer ensures Imagen API compliance
 - ✅ **User feedback integration** - Edit text files, automatically applied to both systems
+- ✅ **General/category-level feedback** - Applies to ALL materials in category (never material-specific)
 - ✅ **10x faster iteration** - Text file edits vs code changes (5 min vs 30-45 min)
 - ✅ **Imagen 4 compliant** - 2,060 char prompts (2,036 char margin under 4,096 limit)
 

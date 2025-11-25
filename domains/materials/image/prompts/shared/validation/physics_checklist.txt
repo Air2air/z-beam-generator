@@ -1,39 +1,8 @@
-PHYSICS COMPLIANCE CHECKLIST:
+PHYSICS CHECKLIST (all must pass):
+• Gravity: Drips flow down, pool at bottom, vertical runs
+• Accumulation: Crevices/edges 50-75% heavier than flat areas
+• Thickness: Thin→thick gradient, not uniform coating
+• Layering: Natural stacking, not "painted on"
+• Environment: Directional weathering, stress point aging
 
-Check EACH requirement - ALL must pass for physics_compliant=true:
-
-□ GRAVITY EFFECTS:
-  - Drips flow downward (not horizontal/upward) ✓/✗
-  - Pooling in low areas (not on vertical surfaces) ✓/✗
-  - Vertical runs present (not horizontal streaks) ✓/✗
-  - Bottom-heavy distribution (not top-heavy) ✓/✗
-  - 3-5 visible drip patterns on vertical surfaces ✓/✗
-
-□ ACCUMULATION ZONES:
-  - Crevices 50-80% heavier (not uniform) ✓/✗
-  - Edge concentration 60-75% visible (not evenly distributed) ✓/✗
-  - Corner buildup present (not absent) ✓/✗
-  - Horizontal surface dust layer (if applicable) ✓/✗
-
-□ ENVIRONMENTAL EXPOSURE:
-  - UV side shows more oxidation (if applicable) ✓/✗
-  - Shaded areas show moisture effects (if applicable) ✓/✗
-  - Weather patterns directional (if applicable) ✓/✗
-  - Stress points show concentrated aging ✓/✗
-
-□ THICKNESS VARIATION:
-  - Thin transparent → thick opaque gradient present ✓/✗
-  - NOT uniform coating thickness ✓/✗
-  - Gradual transitions (not sharp boundaries) ✓/✗
-  - Natural thickness distribution visible ✓/✗
-
-□ LAYERING:
-  - Base corrosion under dirt (temporal sequence) ✓/✗
-  - Multiple contaminant types stacked naturally ✓/✗
-  - NOT "painted on" appearance ✓/✗
-  - Organic accumulation visible ✓/✗
-
-RESULT: physics_compliant = (ALL checkboxes ✓)
-
-ISSUES TO REPORT:
-List each ✗ checkbox as a physics_issue in JSON response.
+Report violations as physics_issues.
