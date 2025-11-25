@@ -1,26 +1,44 @@
 # Material Before/After Image Generator
 
-**Status**: ✅ Core System Complete  
-**Date**: November 24, 2025  
+**Status**: ✅ Enhanced with Aging Research System  
+**Date**: November 25, 2025  
 **Architecture**: Gemini 2.0 Flash (research) + Imagen 4 (generation) + Gemini Vision (validation)
 
 ---
 
 ## Overview
 
-Automated AI-powered image generation system that creates scientifically accurate before/after laser cleaning images for materials. Uses Gemini API to research real-world contamination data, then generates 16:9 composite images showing the same object in contaminated (left) and cleaned (right) states.
+Automated AI-powered image generation system that creates scientifically accurate before/after laser cleaning images for materials. Uses Gemini API to research real-world contamination data AND aging effects (weighted equally), then generates 16:9 composite images showing the same object in contaminated/aged (left) and cleaned (right) states.
+
+**Latest Enhancement (Nov 25, 2025)**: Deep aging research system treats aging effects as equal to traditional contamination, with 11 research dimensions, micro-scale distribution accuracy, and material-specific priorities.
+
+📖 **Quick Access**: [Full Documentation](#-documentation-quick-links) | [Aging Research Details](docs/AGING_RESEARCH_SYSTEM.md) | [Prompt Validation](docs/PROMPT_VALIDATION.md)
 
 ## Architecture
 
 ### Research System (Gemini 2.0 Flash)
-- **MaterialContaminationResearcher**: Researches scientifically accurate contamination data
-- **Research Protocol**: 4-step mandatory research
-  1. Most common object made from material
-  2. Typical size/dimensions and environment
-  3. 3-5 scientifically accurate contaminants (chemical formula, cause, appearance)
-  4. Base material appearance when clean
-- **Caching**: @lru_cache(maxsize=128) for cost control
+- **CategoryContaminationResearcher**: Researches contamination AND aging patterns at category level
+- **Enhanced Research Protocol**: 11 dimensions (expanded from 9)
+  1. Pattern name & type (contamination|aging|combined)
+  2. Photo reference descriptions (conservation docs, weathering studies)
+  3. Visual characteristics (color/texture evolution, surface topology changes)
+  4. Distribution physics (gravity, UV gradients, substrate interaction)
+  5. **Aging timeline** (4-stage progression: 0-25%, 25-75%, 75-100%, advanced)
+  6. Layer interaction (synergistic effects: UV + moisture, oil + heat)
+  7. **Micro-scale distribution** (grain following, edge effects, stress points)
+  8. Lighting response (gloss changes, angle-dependent appearance)
+  9. **Environmental context** (formation conditions, accelerating/protective factors)
+  10. Prevalence & real-world frequency
+  11. Realism red flags (10 categories of AI mistakes to avoid)
+- **Material-Specific Priorities**:
+  - Wood/organics: 70% aging, 30% contamination
+  - Polymers: 60% aging, 40% contamination
+  - Metals: 50% corrosion, 50% deposits
+  - Ceramics: 50% weathering, 50% deposits
+- **Caching**: @lru_cache(maxsize=32) at category level for reusability
 - **Cost**: $0.0001 per research query
+
+📖 **Deep Dive**: See `docs/AGING_RESEARCH_SYSTEM.md` for complete aging research methodology
 
 ### Prompt Generation System
 - **Base Template**: `prompts/base_prompt.txt` (7KB comprehensive template)
@@ -59,18 +77,47 @@ Automated AI-powered image generation system that creates scientifically accurat
 
 ```
 domains/materials/image/
+├── docs/                            # 📖 CENTRALIZED DOCUMENTATION
+│   ├── README.md                    # System overview (you are here)
+│   ├── AGING_RESEARCH_SYSTEM.md     # Deep aging research methodology
+│   ├── AGING_IMPLEMENTATION.md      # Implementation details & test results
+│   ├── SYSTEM_VERIFICATION.md       # Verification report (fail-fast, dynamic params)
+│   ├── PROMPT_VALIDATION.md         # Prompt quality validation system
+│   ├── ARCHITECTURE.md              # System architecture & data flow
+│   ├── API_USAGE.md                 # Python API examples
+│   ├── CONFIGURATION.md             # Configuration options guide
+│   ├── TESTING.md                   # Test coverage & validation
+│   └── TROUBLESHOOTING.md           # Common issues & solutions
 ├── prompts/
-│   ├── base_prompt.txt              # 7KB comprehensive research template
-│   ├── material_researcher.py       # Gemini-powered contamination researcher
-│   └── material_prompts.py          # Prompt builder (research + template)
-├── material_generator.py            # Main generator class
-├── material_config.py               # Configuration dataclass
+│   ├── base_prompt.txt              # Ultra-concise template (~600 chars)
+│   ├── category_contamination_researcher.py  # Category-level aging research
+│   ├── material_researcher.py       # Material-specific research (legacy)
+│   └── material_prompts.py          # Prompt builder with validation
+├── material_generator.py            # Main generator (fail-fast architecture)
+├── material_config.py               # Configuration dataclass with validation
 ├── contamination_levels.py          # Level descriptions (1-5 scales)
+├── aging_levels.py                  # Aging progression descriptions
 ├── generate.py                      # CLI script
-├── validator.py                     # Gemini Vision validation (from city generator)
-├── negative_prompts.py              # Negative prompt templates (from city generator)
-└── presets.py                       # Preset configurations (from city generator)
+├── validator.py                     # Prompt & image validation
+└── presets.py                       # Preset configurations
 ```
+
+### 📖 Documentation Quick Links
+
+| Document | Purpose | When to Use |
+|----------|---------|-------------|
+| **README.md** (this file) | System overview | Getting started |
+| **AGING_RESEARCH_SYSTEM.md** | Aging methodology | Understanding aging patterns |
+| **AGING_IMPLEMENTATION.md** | Implementation details | Reviewing what was built |
+| **SYSTEM_VERIFICATION.md** | Verification report | Checking system compliance |
+| **PROMPT_VALIDATION.md** | Prompt quality | Debugging prompt issues |
+| **ARCHITECTURE.md** | System design | Understanding data flow |
+| **API_USAGE.md** | Code examples | Integrating into code |
+| **CONFIGURATION.md** | Config options | Customizing generation |
+| **TESTING.md** | Test suite | Running/writing tests |
+| **TROUBLESHOOTING.md** | Common issues | Fixing problems |
+
+**💡 Quick Access in Code**: Research system automatically loads aging research documentation when initialized.
 
 ---
 

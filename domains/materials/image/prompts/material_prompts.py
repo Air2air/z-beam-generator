@@ -3,14 +3,17 @@
 Material Before/After Image Prompts
 
 Prompt generation for laser cleaning before/after images with scientifically
-accurate contamination research.
+accurate contamination research and quality validation.
 
 Author: AI Assistant  
-Date: November 24, 2025
+Date: November 25, 2025
 """
 
-from typing import Dict, Optional
+from typing import Dict, List, Tuple
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def load_base_prompt_template() -> str:
@@ -30,7 +33,8 @@ def build_material_cleaning_prompt(
     contamination_level: int = 3,
     contamination_uniformity: int = 3,
     view_mode: str = "Contextual",
-    environment_wear: int = 3
+    environment_wear: int = 3,
+    validate: bool = True
 ) -> str:
     """
     Build complete image generation prompt for material laser cleaning.
@@ -42,6 +46,7 @@ def build_material_cleaning_prompt(
         contamination_uniformity: Variety 1-5 (default: 3)
         view_mode: "Contextual" or "Isolated" (default: "Contextual")
         environment_wear: Background aging 1-5 (default: 3)
+        validate: Validate prompt before returning (default: True)
         
     Returns:
         Complete prompt string ready for Imagen 4
@@ -69,6 +74,25 @@ def build_material_cleaning_prompt(
     prompt = prompt.replace('{VIEW_MODE}', view_mode)
     prompt = prompt.replace('{ENVIRONMENT_WEAR}', str(environment_wear))
     prompt = prompt.replace('{CONTAMINANTS_SECTION}', contamination_section)
+    
+    # Validate prompt if requested
+    if validate:
+        validation_result = validate_prompt(prompt, research_data)
+        if not validation_result['valid']:
+            logger.warning(f"⚠️  Prompt validation issues detected:")
+            for issue in validation_result['issues']:
+                logger.warning(f"   • {issue}")
+        
+        if validation_result['warnings']:
+            logger.info(f"ℹ️  Prompt validation warnings:")
+            for warning in validation_result['warnings']:
+                logger.info(f"   • {warning}")
+        
+        metrics = validation_result['metrics']
+        logger.info(f"📊 Prompt metrics: {metrics['length']} chars, "
+                   f"detail {metrics['detail_score']:.0f}/100, "
+                   f"clarity {metrics['clarity_score']:.0f}/100, "
+                   f"duplication {metrics['duplication_score']:.0f}/100")
     
     return prompt
 
@@ -158,3 +182,215 @@ def _build_material_appearance_section(material_name: str, base_appearance: Dict
     lines.append("- Slight laser cleaning texture variation acceptable")
     
     return "\n".join(lines)
+
+
+# ============================================================================
+# PROMPT VALIDATION SYSTEM
+# ============================================================================
+
+def validate_prompt(prompt: str, research_data: Dict) -> Dict[str, any]:
+    """
+    Validate prompt for Imagen 4 generation quality.
+    
+    Checks for:
+    - Length optimization (1,000-2,000 chars ideal)
+    - Detail sufficiency (contamination, aging, distribution)
+    - Contradiction detection (physics violations)
+    - Clarity (no vague/abstract terms)
+    - Duplication (< 10% repeated content)
+    
+    Args:
+        prompt: Generated prompt string
+        research_data: Research data used to build prompt
+        
+    Returns:
+        {
+            "valid": bool,
+            "issues": List[str],
+            "warnings": List[str],
+            "metrics": {
+                "length": int,
+                "detail_score": float,
+                "clarity_score": float,
+                "duplication_score": float
+            }
+        }
+    """
+    issues = []
+    warnings = []
+    
+    # 1. Length validation
+    length = len(prompt)
+    if length > 3000:
+        issues.append(f"Prompt too long ({length} chars). Exceeds Imagen 4 effective limit (3000).")
+    elif length > 2500:
+        warnings.append(f"Prompt lengthy ({length} chars). Consider condensing for clarity.")
+    elif length < 800:
+        warnings.append(f"Prompt short ({length} chars). May lack sufficient detail.")
+    
+    # 2. Detail score
+    detail_score = _calculate_detail_score(prompt, research_data)
+    if detail_score < 60:
+        issues.append(f"Insufficient detail (score: {detail_score}/100). Minimum 60 required.")
+    elif detail_score < 70:
+        warnings.append(f"Low detail score ({detail_score}/100). Consider adding more specifics.")
+    
+    # 3. Contradiction detection
+    contradictions = _detect_contradictions(prompt)
+    if contradictions:
+        for contradiction in contradictions:
+            issues.append(f"Contradiction detected: {contradiction}")
+    
+    # 4. Clarity analysis
+    clarity_issues, clarity_warnings = _analyze_clarity(prompt)
+    issues.extend(clarity_issues)
+    warnings.extend(clarity_warnings)
+    
+    # 5. Duplication detection
+    duplication_percent = _detect_duplication(prompt)
+    if duplication_percent > 20:
+        issues.append(f"High duplication ({duplication_percent:.1f}%). Consolidate repeated content.")
+    elif duplication_percent > 10:
+        warnings.append(f"Moderate duplication ({duplication_percent:.1f}%). Consider consolidating.")
+    
+    clarity_score = 100.0 - (len(clarity_issues) * 25 + len(clarity_warnings) * 10)
+    
+    return {
+        "valid": len(issues) == 0,
+        "issues": issues,
+        "warnings": warnings,
+        "metrics": {
+            "length": length,
+            "detail_score": detail_score,
+            "clarity_score": max(0, clarity_score),
+            "duplication_score": 100 - duplication_percent
+        }
+    }
+
+
+def _calculate_detail_score(prompt: str, research_data: Dict) -> float:
+    """Calculate prompt detail sufficiency score (0-100)."""
+    score = 0.0
+    prompt_lower = prompt.lower()
+    
+    # Contamination patterns described (+20)
+    patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
+    if len(patterns) >= 3:
+        score += 20
+    elif len(patterns) >= 2:
+        score += 15
+    elif len(patterns) >= 1:
+        score += 10
+    
+    # Aging effects included (+15)
+    aging_keywords = ['aging', 'weathering', 'degradation', 'uv', 'oxidation', 'corrosion']
+    if any(kw in prompt_lower for kw in aging_keywords):
+        score += 15
+    
+    # Distribution physics explained (+15)
+    physics_keywords = ['gravity', 'drip', 'pool', 'accumulation', 'gradient', 'exposure']
+    if any(kw in prompt_lower for kw in physics_keywords):
+        score += 15
+    
+    # Micro-scale details (+10)
+    micro_keywords = ['grain', 'edge', 'stress', 'porous', 'crevice', 'corner']
+    if any(kw in prompt_lower for kw in micro_keywords):
+        score += 10
+    
+    # Color specificity (+10)
+    color_keywords = ['orange-brown', 'dark brown', 'silvery', 'gray', 'black', 'yellow', 'green']
+    if any(kw in prompt_lower for kw in color_keywords):
+        score += 10
+    
+    # Texture specificity (+10)
+    texture_keywords = ['matte', 'glossy', 'granular', 'smooth', 'rough', 'chalky', 'flaky']
+    if any(kw in prompt_lower for kw in texture_keywords):
+        score += 10
+    
+    # Thickness variations (+10)
+    thickness_keywords = ['thick', 'thin', 'layer', 'coating', 'film', 'buildup']
+    if any(kw in prompt_lower for kw in thickness_keywords):
+        score += 10
+    
+    # Environmental context (+10)
+    env_keywords = ['environment', 'outdoor', 'indoor', 'industrial', 'moisture', 'uv']
+    if any(kw in prompt_lower for kw in env_keywords):
+        score += 10
+    
+    return min(score, 100.0)
+
+
+def _detect_contradictions(prompt: str) -> List[str]:
+    """Detect physics violations and logical contradictions."""
+    contradictions = []
+    prompt_lower = prompt.lower()
+    
+    # Physics violations
+    if 'uniform' in prompt_lower and any(kw in prompt_lower for kw in ['drip', 'run', 'pool', 'gravity']):
+        contradictions.append("'Uniform' contradicts gravity-driven distribution (drips/pools)")
+    
+    if 'symmetric' in prompt_lower and 'environment' in prompt_lower:
+        contradictions.append("'Symmetric' contradicts environmental exposure gradients")
+    
+    if 'instant' in prompt_lower and 'aging' in prompt_lower:
+        contradictions.append("'Instant' contradicts aging timeline progression")
+    
+    # Spatial inconsistencies
+    if 'same object' in prompt_lower and 'different size' in prompt_lower:
+        contradictions.append("'Same object' contradicts 'different size'")
+    
+    if 'identical position' in prompt_lower and 'shift' in prompt_lower:
+        contradictions.append("'Identical position' contradicts 'shift' requirement")
+    
+    return contradictions
+
+
+def _analyze_clarity(prompt: str) -> Tuple[List[str], List[str]]:
+    """Analyze prompt clarity, return (issues, warnings)."""
+    issues = []
+    warnings = []
+    prompt_lower = prompt.lower()
+    
+    # Vague terms (warnings)
+    vague_terms = ['some', 'various', 'typical', 'normal', 'standard', 'average']
+    found_vague = [term for term in vague_terms if term in prompt_lower]
+    if found_vague:
+        warnings.append(f"Vague terms detected: {', '.join(found_vague)}")
+    
+    # Abstract terms (issues - fail generation)
+    abstract_terms = ['artistic', 'interesting', 'nice', 'beautiful', 'dramatic', 'creative']
+    found_abstract = [term for term in abstract_terms if term in prompt_lower]
+    if found_abstract:
+        issues.append(f"Abstract terms detected: {', '.join(found_abstract)}")
+    
+    # Missing split definition (issue)
+    if 'left' not in prompt_lower or 'right' not in prompt_lower:
+        issues.append("Missing left/right split definition")
+    
+    # Missing contamination level (warning)
+    if not any(str(i) in prompt for i in range(1, 6)):  # 1-5 scale
+        warnings.append("No contamination level specified")
+    
+    return issues, warnings
+
+
+def _detect_duplication(prompt: str) -> float:
+    """Detect duplicate content, return percentage."""
+    # Split into words
+    words = prompt.lower().split()
+    
+    if len(words) == 0:
+        return 0.0
+    
+    # Count word frequencies
+    word_counts = {}
+    for word in words:
+        if len(word) > 3:  # Ignore short words
+            word_counts[word] = word_counts.get(word, 0) + 1
+    
+    # Calculate duplication: (repeated_words / total_words) * 100
+    repeated_words = sum(count - 1 for count in word_counts.values() if count > 1)
+    duplication_percent = (repeated_words / len(words)) * 100
+    
+    return min(duplication_percent, 100.0)
+
