@@ -54,6 +54,19 @@ class CategoryContaminationResearcher:
         # Composites
         "Fiberglass": "composites_polymer_matrix",
         "Carbon Fiber": "composites_polymer_matrix",
+        
+        # Wood
+        "Oak": "wood_hardwood",
+        "Maple": "wood_hardwood",
+        "Maple Wood": "wood_hardwood",
+        "Cherry": "wood_hardwood",
+        "Walnut": "wood_hardwood",
+        "Mahogany": "wood_hardwood",
+        "Pine": "wood_softwood",
+        "Cedar": "wood_softwood",
+        "Spruce": "wood_softwood",
+        "Plywood": "wood_engineered",
+        "MDF": "wood_engineered",
     }
     
     def __init__(self, api_key: Optional[str] = None):
@@ -99,6 +112,12 @@ class CategoryContaminationResearcher:
             return "polymers_thermoplastic"
         elif "fiber" in material_lower or "composite" in material_lower:
             return "composites_polymer_matrix"
+        elif "wood" in material_lower or any(w in material_lower for w in ["oak", "maple", "pine", "cedar", "cherry", "walnut", "mahogany"]):
+            if "plywood" in material_lower or "mdf" in material_lower:
+                return "wood_engineered"
+            elif any(h in material_lower for h in ["oak", "maple", "cherry", "walnut", "mahogany"]):
+                return "wood_hardwood"
+            return "wood_softwood"
         
         # Default to generic
         return "generic_industrial_material"
@@ -137,11 +156,11 @@ class CategoryContaminationResearcher:
             return data
             
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Failed to parse research response: {e}")
-            return self._get_fallback_category_data(category)
+            logger.error(f"❌ Failed to parse research response for {category}: {e}")
+            raise RuntimeError(f"Failed to parse contamination research for {category}. Invalid JSON response.") from e
         except Exception as e:
-            logger.error(f"❌ Research failed: {e}")
-            return self._get_fallback_category_data(category)
+            logger.error(f"❌ Research failed for {category}: {e}")
+            raise RuntimeError(f"Failed to research contamination patterns for {category}.") from e
     
     def _build_category_research_prompt(self, category: str) -> str:
         """Build research prompt for category-level contamination."""
@@ -240,41 +259,7 @@ Format as JSON:
 CRITICAL: Base ALL descriptions on actual photographs and documented cases. 
 Describe what contamination ACTUALLY looks like in industrial settings, not idealized versions."""
     
-    def _get_fallback_category_data(self, category: str) -> Dict:
-        """Provide basic fallback data if research fails."""
-        return {
-            "category": category,
-            "contamination_patterns": [
-                {
-                    "pattern_name": "Environmental buildup",
-                    "photo_reference": "General industrial contamination",
-                    "visual_characteristics": {
-                        "color_range": "Gray to dark brown",
-                        "texture_detail": "Uneven, matte surface",
-                        "thickness_variation": "Heavier in protected areas",
-                        "edge_characteristics": "Irregular boundaries"
-                    },
-                    "distribution_physics": {
-                        "gravity_effects": "Drips downward on vertical surfaces",
-                        "accumulation_zones": "Bottom edges, crevices, horizontal surfaces",
-                        "coverage_pattern": "Patchy and uneven",
-                        "density_variation": "Thicker at bottom, thinner at top"
-                    },
-                    "layer_interaction": "Partially obscures base material",
-                    "lighting_response": "Matte, absorbs most light",
-                    "weathering_progression": "Darkens and hardens over time",
-                    "prevalence": "very common",
-                    "formation_context": "Environmental exposure",
-                    "realism_avoid": ["uniform coverage", "perfect circles", "floating particles"]
-                }
-            ],
-            "base_appearance": {
-                "typical_color_range": "Material-dependent",
-                "surface_characteristics": "Varies by processing",
-                "common_surface_features": "Machining marks, grain patterns"
-            },
-            "photo_reference_notes": "Fallback data - research unavailable"
-        }
+
     
     def apply_patterns_to_material(
         self,

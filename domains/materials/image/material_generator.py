@@ -70,9 +70,9 @@ class MaterialImageGenerator:
         Returns:
             Image prompt string optimized for Imagen 4
         """
-        # Use default config if not provided
+        # Require explicit config
         if config is None:
-            config = MaterialImageConfig(material=material_name)
+            raise ValueError(f"MaterialImageConfig is required for {material_name}. Cannot use default configuration.")
         
         # Get contamination research data if not provided
         if research_data is None:
@@ -89,10 +89,10 @@ class MaterialImageGenerator:
                     research_data = self.category_researcher.apply_patterns_to_material(
                         material_name, category_data, config.contamination_uniformity
                     )
-                    logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns to {material_name}")
+                    logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns")
                 except Exception as e:
-                    logger.warning(f"⚠️  Category research failed for {material_name}: {e}")
-                    research_data = self._get_fallback_research(material_name)
+                    logger.error(f"❌ Category research failed for {material_name}: {e}")
+                raise RuntimeError(f"Failed to research contamination patterns for {material_name}. Category research is required.") from e
             elif self.material_researcher:
                 try:
                     research_data = self.material_researcher.research_material_contamination(
@@ -100,14 +100,12 @@ class MaterialImageGenerator:
                     )
                     logger.info(f"🔬 Researched contamination for {material_name}")
                 except Exception as e:
-                    logger.warning(f"⚠️  Research failed for {material_name}: {e}")
-                    research_data = self._get_fallback_research(material_name)
+                    logger.error(f"❌ Research failed for {material_name}: {e}")
+                raise RuntimeError(f"Failed to research contamination for {material_name}. Research is required.") from e
             else:
-                # No researcher available - use fallback
-                research_data = self._get_fallback_research(material_name)
+                raise RuntimeError(f"No contamination researcher configured. Cannot generate prompt for {material_name}.")
         elif research_data is None:
-            # No researcher and no data provided - use fallback
-            research_data = self._get_fallback_research(material_name)
+            raise RuntimeError(f"No research data provided for {material_name}. Research is required for image generation.")
         
         # Build complete prompt with research data
         prompt = build_material_cleaning_prompt(
@@ -259,9 +257,9 @@ class MaterialImageGenerator:
                 "safety_filter_level": str
             }
         """
-        # Use default config if not provided
+        # Require explicit config
         if config is None:
-            config = MaterialImageConfig(material=material_name)
+            raise ValueError(f"MaterialImageConfig is required for {material_name}. Cannot use default configuration.")
         
         # Get contamination research data (single call)
         research_data = None
@@ -280,8 +278,8 @@ class MaterialImageGenerator:
                 )
                 logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns to {material_name}")
             except Exception as e:
-                logger.warning(f"⚠️  Category research failed for {material_name}: {e}")
-                research_data = self._get_fallback_research(material_name)
+                logger.error(f"❌ Category research failed for {material_name}: {e}")
+                raise RuntimeError(f"Failed to research contamination patterns for {material_name}.") from e
         elif self.material_researcher:
             try:
                 research_data = self.material_researcher.research_material_contamination(
@@ -291,10 +289,10 @@ class MaterialImageGenerator:
                 contam_count = len(research_data.get('contaminants', []))
                 logger.info(f"🔬 {material_name}: {common_obj} with {contam_count} contaminants researched")
             except Exception as e:
-                logger.warning(f"⚠️  Research failed for {material_name}: {e}")
-                research_data = self._get_fallback_research(material_name)
+                logger.error(f"❌ Research failed for {material_name}: {e}")
+                raise RuntimeError(f"Failed to research contamination for {material_name}.") from e
         else:
-            research_data = self._get_fallback_research(material_name)
+                raise RuntimeError(f"No contamination researcher configured for {material_name}.")
         
         # Generate prompt with research data (pass data to avoid duplicate research)
         prompt = self.generate_prompt(
@@ -321,33 +319,4 @@ class MaterialImageGenerator:
             **params
         }
     
-    def _get_fallback_research(self, material_name: str) -> Dict[str, Any]:
-        """Get minimal fallback research data when API unavailable."""
-        logger.warning(f"Using fallback research for {material_name}")
-        return {
-            "common_object": f"{material_name} object",
-            "object_description": f"Common {material_name} item",
-            "typical_size": "standard size",
-            "typical_environment": "typical working environment",
-            "environment_description": "Normal usage environment",
-            "contaminants": [
-                {
-                    "name": "Surface dirt",
-                    "chemical_formula": "",
-                    "cause": "Environmental exposure",
-                    "appearance": {
-                        "color": "Dark gray to black",
-                        "texture": "Matte, dusty",
-                        "pattern": "Uneven, accumulated in crevices",
-                        "thickness": "Thin to moderate layer"
-                    },
-                    "prevalence": "Very common"
-                }
-            ],
-            "base_material_appearance": {
-                "clean_color": f"Natural {material_name} color",
-                "clean_texture": f"Natural {material_name} texture",
-                "clean_sheen": "Natural sheen",
-                "natural_features": "Typical surface features"
-            }
-        }
+

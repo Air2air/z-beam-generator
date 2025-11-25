@@ -46,23 +46,16 @@ def build_material_cleaning_prompt(
     Returns:
         Complete prompt string ready for Imagen 4
     """
-    # Load base template
+    # Load ultra-concise base template
     base_template = load_base_prompt_template()
     
     # Extract research data
     common_object = research_data.get('common_object', f'{material_name} object')
-    object_desc = research_data.get('object_description', '')
-    typical_size = research_data.get('typical_size', 'standard size')
     environment = research_data.get('typical_environment', 'typical environment')
-    env_desc = research_data.get('environment_description', '')
     
-    # Build contamination details from research
-    contaminants = research_data.get('contaminants', [])
-    contamination_details = _build_contamination_section(contaminants, contamination_uniformity)
-    
-    # Build base material appearance
-    base_appearance = research_data.get('base_material_appearance', {})
-    material_details = _build_material_appearance_section(material_name, base_appearance)
+    # Build contamination details from category research patterns
+    patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
+    contamination_section = _build_concise_contamination_section(patterns)
     
     # Build complete prompt by replacing template variables
     prompt = base_template
@@ -75,42 +68,33 @@ def build_material_cleaning_prompt(
     prompt = prompt.replace('{UNIFORMITY}', str(contamination_uniformity))
     prompt = prompt.replace('{VIEW_MODE}', view_mode)
     prompt = prompt.replace('{ENVIRONMENT_WEAR}', str(environment_wear))
-    
-    # Add research-based content sections
-    prompt += "\n\n" + "="*80
-    prompt += "\n## RESEARCH-BASED SPECIFICATIONS\n"
-    prompt += "="*80 + "\n\n"
-    
-    prompt += f"### Material: {material_name}\n"
-    prompt += f"**Common Object**: {common_object}\n"
-    prompt += f"**Description**: {object_desc}\n"
-    prompt += f"**Typical Size**: {typical_size}\n\n"
-    
-    prompt += f"### Environment Context\n"
-    prompt += f"**Environment**: {environment}\n"
-    prompt += f"**Details**: {env_desc}\n\n"
-    
-    prompt += material_details + "\n\n"
-    prompt += contamination_details + "\n\n"
-    
-    prompt += "### Generation Instructions\n"
-    prompt += f"Create a 16:9 composite image showing {common_object} made from {material_name}:\n\n"
-    prompt += "**LEFT SIDE (BEFORE CLEANING)**:\n"
-    prompt += f"- Surface covered with researched contaminants (level {contamination_level}/5)\n"
-    prompt += f"- {contamination_uniformity} types of contamination visible\n"
-    prompt += f"- Darker overall tone due to contamination\n"
-    prompt += f"- Object in {environment} context\n\n"
-    
-    prompt += "**RIGHT SIDE (AFTER LASER CLEANING)**:\n"
-    prompt += f"- Clean {material_name} appearance fully visible\n"
-    prompt += f"- Inverse residual contamination (level {5-contamination_level+1}/5 cleanliness)\n"
-    prompt += f"- True material color and sheen restored\n"
-    prompt += f"- Same object, same viewpoint, subtle position shift\n\n"
-    
-    prompt += f"**VIEW MODE**: {view_mode}\n"
-    prompt += f"**ENVIRONMENT WEAR**: {environment_wear}/5\n"
+    prompt = prompt.replace('{CONTAMINANTS_SECTION}', contamination_section)
     
     return prompt
+
+
+def _build_concise_contamination_section(patterns: list) -> str:
+    """Build concise contamination list from category research patterns."""
+    if not patterns:
+        raise ValueError("No contamination patterns provided. Research data is required.")
+    
+    lines = []
+    for pattern in patterns[:4]:  # Max 4 patterns
+        # Handle both old contaminant format and new pattern format
+        if 'pattern_name' in pattern:
+            name = pattern['pattern_name']
+            visual = pattern.get('visual_characteristics', {})
+            color = visual.get('color_range', 'varied tones')
+            texture = visual.get('texture_detail', 'varied texture')
+            lines.append(f"{name}: {color}, {texture}")
+        else:
+            name = pattern.get('name', 'contamination')
+            appearance = pattern.get('appearance', {})
+            color = appearance.get('color', 'dark')
+            texture = appearance.get('texture', 'uneven')
+            lines.append(f"{name}: {color}, {texture}")
+    
+    return ". ".join(lines) + "."
 
 
 def _build_contamination_section(contaminants: list, uniformity: int) -> str:
