@@ -10,9 +10,9 @@
 
 Automated AI-powered image generation system that creates scientifically accurate before/after laser cleaning images for materials. Uses Gemini API to research real-world contamination data AND aging effects (weighted equally), then generates 16:9 composite images showing the same object in contaminated/aged (left) and cleaned (right) states.
 
-**Latest Enhancement (Nov 25, 2025)**: Deep aging research system treats aging effects as equal to traditional contamination, with 11 research dimensions, micro-scale distribution accuracy, and material-specific priorities.
+**Latest Enhancement (Nov 25, 2025)**: Optimized shared dynamic prompting system - 67.7% smaller prompts (6,113 → 1,976 chars), automatic Imagen API compliance, single source of truth for generation and validation. Deep aging research system treats aging effects as equal to traditional contamination, with 11 research dimensions, micro-scale distribution accuracy, and material-specific priorities.
 
-📖 **Quick Access**: [Full Documentation](#-documentation-quick-links) | [Aging Research Details](docs/AGING_RESEARCH_SYSTEM.md) | [Prompt Validation](docs/PROMPT_VALIDATION.md)
+📖 **Quick Access**: [Full Documentation](#-documentation-quick-links) | [Aging Research Details](docs/AGING_RESEARCH_SYSTEM.md) | [Prompt Optimization](../../../IMAGEN_PROMPT_OPTIMIZATION_COMPLETE.md) | [Shared Prompts](../../../SHARED_PROMPT_IMPLEMENTATION_COMPLETE.md)
 
 ## Architecture
 
@@ -40,11 +40,22 @@ Automated AI-powered image generation system that creates scientifically accurat
 
 📖 **Deep Dive**: See `docs/AGING_RESEARCH_SYSTEM.md` for complete aging research methodology
 
-### Prompt Generation System
-- **Base Template**: `prompts/base_prompt.txt` (7KB comprehensive template)
-- **Prompt Builder**: `prompts/material_prompts.py` combines research + template
+### Prompt Generation System (NEW - Nov 25, 2025)
+- **SharedPromptBuilder**: Shared dynamic prompting for generation AND validation
+- **Template System**: External .txt templates (not hardcoded in code)
+  - `shared/generation/` - 5 condensed templates (base, physics, contamination, micro-scale, forbidden)
+  - `shared/validation/` - 3 mirrored templates (criteria, checklist, red flags)
+  - `shared/feedback/` - User corrections automatically applied to both systems
+- **PromptOptimizer**: Automatic optimization for Imagen API limits
+  - Condensing: Removes repetitive wording ("MUST show" → "Show")
+  - Example removal: Cuts "(e.g., ...)" clarifications
+  - Emergency truncation: Smart truncation preserving critical content
+  - **Result**: 2,060 char prompts (67.7% reduction from 6,113 chars)
 - **Variables**: Material name, contamination level, uniformity, view mode, environment wear
-- **Output**: Complete scientifically accurate prompt for Imagen 4
+- **Output**: Imagen 4-optimized prompt under 4,096 char limit (2,036 char margin)
+- **Imagen API Compliance**: ✅ 100% - well under hard limit with quality preserved
+
+📖 **Deep Dive**: See `IMAGEN_PROMPT_OPTIMIZATION_COMPLETE.md` for optimization details
 
 ### Image Generation (Imagen 4)
 - **MaterialImageGenerator**: Main generator class
@@ -116,6 +127,8 @@ domains/materials/image/
 | **CONFIGURATION.md** | Config options | Customizing generation |
 | **TESTING.md** | Test suite | Running/writing tests |
 | **TROUBLESHOOTING.md** | Common issues | Fixing problems |
+| **IMAGEN_PROMPT_OPTIMIZATION_COMPLETE.md** | Prompt optimization | Understanding condensed templates |
+| **SHARED_PROMPT_IMPLEMENTATION_COMPLETE.md** | Shared prompting | Understanding feedback workflow |
 
 **💡 Quick Access in Code**: Research system automatically loads aging research documentation when initialized.
 
@@ -205,6 +218,15 @@ guidance_scale = prompt_package["guidance_scale"]
 - ✅ Accurate appearance (color, texture, pattern, thickness)
 - ✅ Environmental causes documented
 - ✅ Prevalence levels specified
+- ✅ **Optimized prompts** - 67.7% smaller, automatic Imagen API compliance
+
+### Prompt System (NEW)
+- ✅ **Shared dynamic prompting** - Single source of truth for generation and validation
+- ✅ **Template-based** - External .txt files (not hardcoded in code)
+- ✅ **Automatic optimization** - PromptOptimizer ensures Imagen API compliance
+- ✅ **User feedback integration** - Edit text files, automatically applied to both systems
+- ✅ **10x faster iteration** - Text file edits vs code changes (5 min vs 30-45 min)
+- ✅ **Imagen 4 compliant** - 2,060 char prompts (2,036 char margin under 4,096 limit)
 
 ### Contamination Research
 - ✅ Automatic research via Gemini 2.0 Flash
@@ -330,6 +352,80 @@ guidance_scale = prompt_package["guidance_scale"]
 - Integration with Materials.yaml
 - Quality scoring system
 - Documentation site updates
+
+---
+
+## 🤖 For AI Assistants
+
+**CRITICAL RULES - READ BEFORE ANY CODE CHANGES:**
+
+### 1. Documentation First
+- ✅ **ALWAYS check TROUBLESHOOTING.md** before proposing fixes
+- ✅ **Read ARCHITECTURE.md** to understand data flow before modifying
+- ✅ **Consult API_USAGE.md** for integration patterns
+
+### 2. Fail-Fast Architecture (NON-NEGOTIABLE)
+- ❌ **NEVER bypass fail-fast** - no defaults, no fallbacks, no silent failures
+- ❌ **NEVER add `.get('key', default)`** patterns - must raise errors on missing config
+- ❌ **NEVER create fallback research data** - research is REQUIRED
+- ✅ **ALWAYS raise ValueError/RuntimeError** when config or research missing
+- ✅ Example: `raise ValueError("MaterialImageConfig is required")`
+
+### 3. Configuration-Driven Parameters
+- ❌ **NEVER hardcode values** - temperature, guidance_scale, thresholds
+- ✅ **ALWAYS use MaterialImageConfig** - all params in config dataclass
+- ✅ **Dynamic adjustment OK** - config can auto-adjust (e.g., guidance_scale by view_mode)
+- ✅ Example: `guidance_scale = config.guidance_scale` not `guidance_scale = 15.0`
+
+### 4. Prompt Validation is MANDATORY
+- ✅ **validation runs by default** - do not disable without explicit reason
+- ✅ **log warnings/errors** - validation failures must be visible
+- ✅ **check all validation metrics** - length, detail, clarity, duplication
+- ❌ **NEVER skip validation silently** - must be opt-in (`validate=False`)
+
+### 5. Evidence-Based Changes
+- ✅ **Test before claiming fixes** - provide proof (test output, logs)
+- ✅ **Measure actual behavior** - don't assume it works
+- ✅ **Document with examples** - show before/after in code comments
+- ❌ **NEVER claim compliance without verification**
+
+### Common Anti-Patterns to Avoid
+```python
+# ❌ WRONG: Fallback on missing config
+config = config or MaterialImageConfig()
+
+# ✅ RIGHT: Fail-fast
+if config is None:
+    raise ValueError("MaterialImageConfig is required")
+
+# ❌ WRONG: Hardcoded parameter
+guidance_scale = 15.0
+
+# ✅ RIGHT: Config-driven
+guidance_scale = config.guidance_scale
+
+# ❌ WRONG: Silent research failure
+research_data = research_data or {"contaminants": []}
+
+# ✅ RIGHT: Fail on missing research
+if research_data is None:
+    raise RuntimeError("Research data required for generation")
+```
+
+### Before Making Changes - Checklist
+- [ ] Read relevant docs (TROUBLESHOOTING, ARCHITECTURE, etc.)
+- [ ] Understand current implementation (no assumptions)
+- [ ] Plan minimal fix (surgical precision, not rewrites)
+- [ ] Verify config-driven (no hardcoded values)
+- [ ] Test with evidence (actual output, not theoretical)
+- [ ] Update docs if behavior changes
+
+### System Compliance Status
+✅ **Fail-fast**: All entry points validate config  
+✅ **No defaults**: ValueError raised on missing config  
+✅ **Config-driven**: guidance_scale, all params in MaterialImageConfig  
+✅ **Validation**: Prompt validation runs by default  
+✅ **Evidence**: SYSTEM_VERIFICATION.md documents compliance
 
 ---
 

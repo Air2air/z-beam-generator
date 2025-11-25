@@ -3,60 +3,147 @@
 Material Image Generation Configuration
 
 Configuration dataclass for material before/after laser cleaning images.
+Uses researched defaults based on material category - no manual settings required.
 
 Author: AI Assistant
-Date: November 24, 2025
+Date: November 25, 2025
 """
 
 from dataclasses import dataclass, asdict
-from typing import Dict
+from typing import Dict, Optional
+
+
+# Category-based researched defaults
+CATEGORY_DEFAULTS = {
+    # Metals - realistic industrial contamination
+    "metals_ferrous": {
+        "contamination_uniformity": 3,  # 3 pattern types (rust, oil, dirt)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "metals_non_ferrous": {
+        "contamination_uniformity": 3,  # 3 pattern types (oxidation, grime, fingerprints)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "metals_reactive": {
+        "contamination_uniformity": 2,  # 2 pattern types (oxidation, residue)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "metals_corrosion_resistant": {
+        "contamination_uniformity": 2,  # 2 pattern types (light oxidation, residue)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    
+    # Ceramics & Glass - typically environmental contamination
+    "ceramics_traditional": {
+        "contamination_uniformity": 3,  # 3 pattern types (dirt, stains, mineral deposits)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "ceramics_construction": {
+        "contamination_uniformity": 4,  # 4 pattern types (weathering, biological, mineral, dirt)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "ceramics_glass": {
+        "contamination_uniformity": 2,  # 2 pattern types (fingerprints, residue)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    
+    # Polymers - chemical and environmental
+    "polymers_thermoplastic": {
+        "contamination_uniformity": 2,  # 2 pattern types (residue, discoloration)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "polymers_engineering": {
+        "contamination_uniformity": 2,  # 2 pattern types (oil, dirt)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "polymers_elastomer": {
+        "contamination_uniformity": 3,  # 3 pattern types (dirt, oils, residue)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    
+    # Composites - industrial contamination
+    "composites_polymer_matrix": {
+        "contamination_uniformity": 3,  # 3 pattern types (resin, dust, oils)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    
+    # Wood - organic and environmental
+    "wood_hardwood": {
+        "contamination_uniformity": 3,  # 3 pattern types (dirt, oils, mold)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "wood_softwood": {
+        "contamination_uniformity": 3,  # 3 pattern types (dirt, sap, mold)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    "wood_engineered": {
+        "contamination_uniformity": 2,  # 2 pattern types (dirt, adhesive residue)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    },
+    
+    # Default for unknown categories
+    "default": {
+        "contamination_uniformity": 3,  # 3 pattern types (moderate variety)
+        "view_mode": "Contextual",
+        "guidance_scale": 13.0
+    }
+}
 
 
 @dataclass
 class MaterialImageConfig:
-    """Configuration for material before/after image generation."""
+    """Configuration for material before/after image generation with researched defaults."""
     
     material: str
-    contamination_level: int = 3  # 1-5: Intensity of contamination
-    contamination_uniformity: int = 3  # 1-5: Variety of contaminants (1=single, 5=4+ types)
-    view_mode: str = "Contextual"  # "Contextual" or "Isolated"
-    environment_wear: int = 3  # 1-5: Background aging (clean but shows wear)
-    validate: bool = False  # Whether to validate with Gemini Vision
+    category: Optional[str] = None  # Auto-determined from material
+    validate: bool = True  # Validation is MANDATORY - always enabled
+    
+    # Researched defaults (set automatically based on category)
+    contamination_uniformity: int = 3
+    view_mode: str = "Contextual"
+    guidance_scale: float = 13.0
     
     def __post_init__(self):
-        """Validate configuration values."""
-        # Validate contamination level
-        if not 1 <= self.contamination_level <= 5:
-            raise ValueError(f"contamination_level must be 1-5, got {self.contamination_level}")
-        
-        # Validate uniformity
-        if not 1 <= self.contamination_uniformity <= 5:
-            raise ValueError(f"contamination_uniformity must be 1-5, got {self.contamination_uniformity}")
-        
-        # Validate view mode
-        valid_modes = ["Contextual", "Isolated"]
-        if self.view_mode not in valid_modes:
-            raise ValueError(f"view_mode must be one of {valid_modes}, got {self.view_mode}")
-        
-        # Validate environment wear
-        if not 1 <= self.environment_wear <= 5:
-            raise ValueError(f"environment_wear must be 1-5, got {self.environment_wear}")
+        """Apply researched defaults based on material category."""
+        # If category provided, use it to set researched defaults
+        if self.category:
+            defaults = CATEGORY_DEFAULTS.get(self.category, CATEGORY_DEFAULTS["default"])
+            self.contamination_uniformity = defaults["contamination_uniformity"]
+            self.view_mode = defaults["view_mode"]
+            self.guidance_scale = defaults["guidance_scale"]
     
     def to_dict(self) -> Dict:
         """Convert configuration to dictionary."""
         return asdict(self)
     
-    @property
-    def contamination_intensity_label(self) -> str:
-        """Get human-readable contamination intensity label."""
-        labels = {
-            1: "Minimal",
-            2: "Light",
-            3: "Moderate",
-            4: "Heavy",
-            5: "Severe"
-        }
-        return labels[self.contamination_level]
+    @classmethod
+    def from_material(cls, material: str, category: str, validate: bool = True) -> "MaterialImageConfig":
+        """
+        Create configuration with researched defaults for a material.
+        
+        Args:
+            material: Material name (e.g., "Steel", "Aluminum")
+            category: Material category (e.g., "metals_ferrous")
+            validate: Validation is MANDATORY (default: True, cannot be disabled)
+            
+        Returns:
+            MaterialImageConfig with researched defaults applied
+        """
+        return cls(material=material, category=category, validate=validate)
     
     @property
     def uniformity_label(self) -> str:

@@ -9,13 +9,17 @@ Author: AI Assistant
 Date: November 24, 2025
 """
 
+import json
 import logging
 from typing import Dict, Any, Optional
 
 from domains.materials.image.prompts.material_researcher import MaterialContaminationResearcher
 from domains.materials.image.prompts.category_contamination_researcher import CategoryContaminationResearcher
-from domains.materials.image.prompts.material_prompts import build_material_cleaning_prompt
+from domains.materials.image.prompts.prompt_builder import SharedPromptBuilder
 from domains.materials.image.material_config import MaterialImageConfig
+from domains.materials.image.prompts.image_pipeline_monitor import (
+    get_pipeline_monitor, FailureStage, FailureType
+)
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +43,8 @@ class MaterialImageGenerator:
         self.material_researcher = None
         self.category_researcher = None
         self.use_category_research = use_category_research
+        self.prompt_builder = SharedPromptBuilder()
+        self.pipeline_monitor = get_pipeline_monitor()
         
         if gemini_api_key:
             try:
@@ -79,20 +85,38 @@ class MaterialImageGenerator:
             if self.use_category_research and self.category_researcher:
                 try:
                     # Get category for this material
+                    print(f"\n📂 Determining material category for: {material_name}")
                     category = self.category_researcher.get_category(material_name)
+                    print(f"   ✅ Category: {category}")
                     logger.info(f"📂 Material category: {category}")
                     
-                    # Research category patterns
+                    # Research category patterns (with built-in terminal logging)
                     category_data = self.category_researcher.research_category_contamination(category)
                     
                     # Apply patterns to this material
+                    print(f"\n🎨 Applying patterns to {material_name}")
+                    print(f"   • Selecting {config.contamination_uniformity} pattern(s) from research")
                     research_data = self.category_researcher.apply_patterns_to_material(
                         material_name, category_data, config.contamination_uniformity
                     )
+                    print(f"   ✅ Applied {len(research_data.get('selected_patterns', []))} contamination patterns")
                     logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns")
+                except json.JSONDecodeError as e:
+                    # JSON parsing failure - already handled by category researcher monitor
+                    logger.error(f"❌ JSON parsing failed for {material_name}: {e}")
+                    raise RuntimeError(f"Failed to parse contamination research for {material_name}.") from e
                 except Exception as e:
+                    # General research failure
+                    from domains.materials.image.prompts.image_pipeline_monitor import FailureStage, FailureType
+                    self.pipeline_monitor.record_failure(
+                        material=material_name,
+                        stage=FailureStage.RESEARCH,
+                        failure_type=FailureType.GENERATION_ERROR,
+                        severity="high",
+                        details={'error': str(e), 'category': category if 'category' in locals() else 'unknown'}
+                    )
                     logger.error(f"❌ Category research failed for {material_name}: {e}")
-                raise RuntimeError(f"Failed to research contamination patterns for {material_name}. Category research is required.") from e
+                    raise RuntimeError(f"Failed to research contamination patterns for {material_name}. Category research is required.") from e
             elif self.material_researcher:
                 try:
                     research_data = self.material_researcher.research_material_contamination(
@@ -101,20 +125,18 @@ class MaterialImageGenerator:
                     logger.info(f"🔬 Researched contamination for {material_name}")
                 except Exception as e:
                     logger.error(f"❌ Research failed for {material_name}: {e}")
-                raise RuntimeError(f"Failed to research contamination for {material_name}. Research is required.") from e
+                    raise RuntimeError(f"Failed to research contamination for {material_name}. Research is required.") from e
             else:
                 raise RuntimeError(f"No contamination researcher configured. Cannot generate prompt for {material_name}.")
         elif research_data is None:
             raise RuntimeError(f"No research data provided for {material_name}. Research is required for image generation.")
         
-        # Build complete prompt with research data
-        prompt = build_material_cleaning_prompt(
+        # Build complete prompt with research data using SharedPromptBuilder
+        prompt = self.prompt_builder.build_generation_prompt(
             material_name=material_name,
             research_data=research_data,
-            contamination_level=config.contamination_level,
             contamination_uniformity=config.contamination_uniformity,
-            view_mode=config.view_mode,
-            environment_wear=config.environment_wear
+            view_mode=config.view_mode
         )
         
         return prompt
@@ -219,12 +241,8 @@ class MaterialImageGenerator:
         Returns:
             Dictionary with aspect_ratio, guidance_scale, safety_filter_level
         """
-        # Higher guidance scale for technical accuracy
-        guidance_scale = 15.0  # Elevated for accurate contamination representation
-        
-        # Contextual view may need slightly lower guidance for natural composition
-        if config and config.view_mode == "Contextual":
-            guidance_scale = 13.0
+        # Get guidance scale from config (already validated and auto-adjusted)
+        guidance_scale = config.guidance_scale if config else 15.0
         
         return {
             "aspect_ratio": "16:9",  # Side-by-side format
@@ -307,8 +325,8 @@ class MaterialImageGenerator:
         
         # Log configuration
         logger.info(
-            f"📊 Config: {config.contamination_intensity_label} contamination, "
-            f"{config.uniformity_label}, {config.view_mode} view"
+            f"📊 Config: {config.uniformity_label}, {config.view_mode} view, "
+            f"guidance scale {config.guidance_scale}"
         )
         
         return {

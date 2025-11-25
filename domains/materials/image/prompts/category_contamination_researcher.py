@@ -12,10 +12,14 @@ Date: November 25, 2025
 import json
 import logging
 import os
+import time
 from typing import Dict, Optional, List
 from functools import lru_cache
 
 import google.generativeai as genai
+
+from .persistent_research_cache import PersistentResearchCache
+from .payload_monitor import get_payload_monitor
 
 logger = logging.getLogger(__name__)
 
@@ -69,12 +73,13 @@ class CategoryContaminationResearcher:
         "MDF": "wood_engineered",
     }
     
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, cache_dir: Optional[str] = None):
         """
-        Initialize researcher with Gemini API.
+        Initialize researcher with Gemini API and persistent cache.
         
         Args:
             api_key: Optional Gemini API key (will use env var if not provided)
+            cache_dir: Optional cache directory (default: cache/research/)
         """
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         if not self.api_key:
@@ -83,6 +88,14 @@ class CategoryContaminationResearcher:
         # Configure Gemini
         genai.configure(api_key=self.api_key)
         self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        
+        # Initialize persistent cache
+        from pathlib import Path
+        cache_path = Path(cache_dir) if cache_dir else None
+        self.cache = PersistentResearchCache(cache_dir=cache_path, ttl_days=30)
+        
+        # Initialize payload monitor for conformity tracking
+        self.monitor = get_payload_monitor()
         
         logger.info("✅ Category contamination researcher initialized with Gemini Flash 2.0")
     
@@ -122,45 +135,244 @@ class CategoryContaminationResearcher:
         # Default to generic
         return "generic_industrial_material"
     
-    @lru_cache(maxsize=32)
+    def _clean_json_response(self, json_text: str, attempt: int = 0) -> str:
+        """
+        Clean JSON response with progressive repair strategies.
+        
+        Args:
+            json_text: Raw JSON text from LLM
+            attempt: Retry attempt number (0-2) - determines aggressiveness
+            
+        Returns:
+            Cleaned JSON text ready for parsing
+        """
+        import re
+        
+        # Remove any leading/trailing whitespace
+        json_text = json_text.strip()
+        
+        # STRATEGY 1: Light cleaning (attempt 0)
+        if attempt == 0:
+            # Just strip markdown and trailing commas
+            json_text = re.sub(r',\s*}', '}', json_text)
+            json_text = re.sub(r',\s*]', ']', json_text)
+            return json_text
+        
+        # STRATEGY 2: Moderate cleaning (attempt 1)
+        if attempt == 1:
+            # Fix literal newlines inside strings
+            parts = json_text.split('"')
+            for i in range(1, len(parts), 2):  # Odd indices = inside strings
+                parts[i] = parts[i].replace('\n', '\\n').replace('\r', '\\r')
+            json_text = '"'.join(parts)
+            
+            # Trailing commas
+            json_text = re.sub(r',\s*}', '}', json_text)
+            json_text = re.sub(r',\s*]', ']', json_text)
+            return json_text
+        
+        # STRATEGY 3: Aggressive cleaning (attempt 2+)
+        # Find and escape unescaped quotes inside strings
+        # This is the nuclear option - walk through char by char
+        result = []
+        in_string = False
+        escape_next = False
+        
+        for i, char in enumerate(json_text):
+            if escape_next:
+                result.append(char)
+                escape_next = False
+                continue
+                
+            if char == '\\':
+                result.append(char)
+                escape_next = True
+                continue
+                
+            if char == '"':
+                # Check context to determine if this is a string delimiter or internal quote
+                if not in_string:
+                    # Starting a string
+                    in_string = True
+                    result.append(char)
+                else:
+                    # Could be ending string or internal quote
+                    # Look ahead: if followed by : or , or } or ], it's likely a delimiter
+                    next_meaningful = None
+                    for j in range(i + 1, min(i + 5, len(json_text))):
+                        if json_text[j] not in ' \t\n\r':
+                            next_meaningful = json_text[j]
+                            break
+                    
+                    if next_meaningful in [':', ',', '}', ']', None]:
+                        # This is a string delimiter
+                        in_string = False
+                        result.append(char)
+                    else:
+                        # This is likely an internal quote - escape it
+                        result.append('\\"')
+                continue
+            
+            result.append(char)
+        
+        json_text = ''.join(result)
+        
+        # Final cleanup
+        json_text = re.sub(r',\s*}', '}', json_text)
+        json_text = re.sub(r',\s*]', ']', json_text)
+        
+        return json_text
+    
     def research_category_contamination(
         self,
-        category: str
+        category: str,
+        max_retries: int = 3
     ) -> Dict[str, any]:
         """
-        Research contamination patterns for a material category with photo references.
+        Research contamination patterns for a material category with persistent cache and retry logic.
         
         Args:
             category: Material category (e.g., "metals_ferrous", "ceramics_traditional")
+            max_retries: Maximum retry attempts for JSON parsing failures (default: 3)
             
         Returns:
             Dictionary with comprehensive contamination patterns
         """
-        prompt = self._build_category_research_prompt(category)
+        print(f"\n{'='*80}")
+        print(f"🔬 CATEGORY RESEARCH: {category}")
+        print(f"{'='*80}")
         
+        # Check persistent cache first
+        cached_data = self.cache.get(category)
+        if cached_data is not None:
+            print(f"✅ Cache hit - using stored research for {category}")
+            print(f"   • Patterns cached: {len(cached_data.get('contamination_patterns', []))}")
+            print(f"   • Cache location: {self.cache._get_cache_path(category)}")
+            logger.info(f"📬 Using cached research for {category}")
+            return cached_data
+        
+        # Cache miss - research with API
+        print(f"📭 Cache miss - researching {category} with Gemini API")
+        print(f"   • Building research prompt...")
         logger.info(f"🔬 Researching contamination patterns for category: {category}")
         
-        try:
-            response = self.model.generate_content(prompt)
-            response_text = response.text
-            
-            # Strip markdown code blocks if present
-            if response_text.startswith("```json"):
-                response_text = response_text.split("```json")[1].split("```")[0].strip()
-            elif response_text.startswith("```"):
-                response_text = response_text.split("```")[1].split("```")[0].strip()
-            
-            data = json.loads(response_text)
-            
-            logger.info(f"✅ Category research complete: {len(data.get('contamination_patterns', []))} patterns found")
-            return data
-            
-        except json.JSONDecodeError as e:
-            logger.error(f"❌ Failed to parse research response for {category}: {e}")
-            raise RuntimeError(f"Failed to parse contamination research for {category}. Invalid JSON response.") from e
-        except Exception as e:
-            logger.error(f"❌ Research failed for {category}: {e}")
-            raise RuntimeError(f"Failed to research contamination patterns for {category}.") from e
+        # Get adaptive guidance from monitor based on recent failures
+        adaptive_guidance = self.monitor.get_adaptive_prompt_guidance(category)
+        
+        prompt = self._build_category_research_prompt(category)
+        if adaptive_guidance:
+            print("   • Adding adaptive JSON guidance based on recent failures...")
+            prompt += adaptive_guidance
+        
+        print(f"   • Prompt built: {len(prompt)} characters")
+        
+        # Retry loop for JSON parsing failures
+        for attempt in range(max_retries):
+            try:
+                print(f"\n🌐 API Call (attempt {attempt + 1}/{max_retries})")
+                print(f"   • Sending request to Gemini Flash 2.0...")
+                
+                response = self.model.generate_content(prompt)
+                response_text = response.text
+                
+                print(f"   • Response received: {len(response_text)} characters")
+                print(f"   • Parsing JSON response...")
+                
+                # Strip markdown code blocks if present
+                if response_text.startswith("```json"):
+                    response_text = response_text.split("```json")[1].split("```")[0].strip()
+                    print(f"   • Stripped markdown wrapper")
+                elif response_text.startswith("```"):
+                    response_text = response_text.split("```")[1].split("```")[0].strip()
+                    print(f"   • Stripped code block wrapper")
+                
+                # Clean JSON with progressive strategies based on attempt number
+                print(f"   • Applying JSON cleaning strategy {attempt + 1}/{max_retries}...")
+                response_text = self._clean_json_response(response_text, attempt)
+                
+                data = json.loads(response_text)
+                
+                print(f"   ✅ JSON parsed successfully")
+                
+                # Validate schema conformity
+                is_valid, violations = self.monitor.validate_schema(data, category)
+                if not is_valid:
+                    print(f"   ⚠️  Schema violations detected: {len(violations)}")
+                    for violation in violations[:3]:  # Show first 3
+                        print(f"      • {violation}")
+                else:
+                    print(f"   ✅ Schema validation passed")
+                
+                print(f"   • Patterns found: {len(data.get('contamination_patterns', []))}")
+                print(f"   • Base appearance data: {'Yes' if data.get('base_appearance') else 'No'}")
+                
+                # Record successful parse
+                self.monitor.record_parse_attempt(
+                    category=category,
+                    attempt_num=attempt + 1,
+                    success=True,
+                    cleaning_strategy=attempt
+                )
+                
+                # Success - cache the result
+                print(f"\n💾 Caching research results...")
+                self.cache.set(category, data)
+                print(f"   ✅ Cached to: {self.cache._get_cache_path(category)}")
+                print(f"   • TTL: 30 days")
+                
+                print(f"\n{'='*80}")
+                print(f"✅ RESEARCH COMPLETE: {category}")
+                print(f"{'='*80}\n")
+                
+                logger.info(f"✅ Category research complete: {len(data.get('contamination_patterns', []))} patterns found")
+                return data
+                
+            except json.JSONDecodeError as e:
+                # Record failure in monitor
+                self.monitor.record_parse_attempt(
+                    category=category,
+                    attempt_num=attempt + 1,
+                    success=False,
+                    error=e,
+                    raw_json=response_text if attempt == max_retries - 1 else None,
+                    cleaning_strategy=attempt
+                )
+                
+                # Show diagnostic info about the failure
+                error_line = getattr(e, 'lineno', None)
+                error_col = getattr(e, 'colno', None)
+                error_pos = getattr(e, 'pos', None)
+                
+                print(f"\n❌ JSON parsing failed:")
+                print(f"   • Error: {e.msg}")
+                if error_line and error_col:
+                    print(f"   • Location: line {error_line}, column {error_col}")
+                if error_pos:
+                    # Show context around error position
+                    start = max(0, error_pos - 100)
+                    end = min(len(response_text), error_pos + 100)
+                    context = response_text[start:end]
+                    print(f"   • Context: ...{context}...")
+                
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt  # Exponential backoff: 1s, 2s, 4s
+                    print(f"\n🔄 Retrying with strategy {attempt + 2}/{max_retries} in {wait_time}s...")
+                    logger.warning(f"⚠️  JSON parsing failed for {category} (attempt {attempt + 1}/{max_retries}): {e}")
+                    logger.info(f"🔄 Retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error(f"❌ Failed to parse research response for {category} after {max_retries} attempts: {e}")
+                    
+                    # Show monitoring report
+                    print(self.monitor.get_monitoring_report())
+                    
+                    raise RuntimeError(f"Failed to parse contamination research for {category}. Invalid JSON response after {max_retries} retries.") from e
+            except Exception as e:
+                logger.error(f"❌ Research failed for {category}: {e}")
+                raise RuntimeError(f"Failed to research contamination patterns for {category}.") from e
+        
+        # Should never reach here, but for type safety
+        raise RuntimeError(f"Unexpected error in research for {category}")
     
     def _build_category_research_prompt(self, category: str) -> str:
         """Build research prompt for category-level contamination."""
@@ -191,20 +403,31 @@ For EACH pattern (contamination OR aging), provide:
    - Contamination examples: "Industrial Oil Buildup", "Environmental Dust Layer", "Biological Growth"
    - Aging examples: "UV Photodegradation", "Oxidative Discoloration", "Surface Chalking", "Biodegradation", "Stress Cracking"
 
-2. **Photo Reference Description**: 
+2. **Photo Reference URLs** (CRITICAL FOR REALISM):
+   - Provide 2-4 actual image URLs showing this pattern
+   - Sources: Industrial documentation, conservation projects, material science papers, weathering studies
+   - Simple format: Just the URL, description in separate field
+   - Example URLs (fictitious, for format only):
+     * https://example.com/steel-rust-progression.jpg
+     * https://example.com/aluminum-oil-buildup.jpg
+     * https://example.com/composite-UV-damage.jpg
+   - Include search terms used to find these images
+   - Note: These URLs anchor the AI to real-world photographic evidence
+
+3. **Photo Reference Description**: 
    - Describe what you'd see in actual photos of this pattern
    - Reference specific industrial/conservation/weathering examples
    - Include micro-scale details visible in close-up photography
    - Lighting characteristics (how light interacts with aged/contaminated surface)
 
-3. **Visual Characteristics**:
+4. **Visual Characteristics**:
    - **Color Range**: Specific color variations with aging progression (e.g., "white → cream → yellow-brown over months")
    - **Texture**: Detailed physical texture evolution (smooth → crazed → cracked → flaked)
    - **Thickness Variation**: How pattern depth varies across surface
    - **Edge Characteristics**: Gradual fade vs. sharp boundary, feathering, undercutting
    - **Surface Topology Changes**: Erosion, pitting, roughening, delamination, fiber exposure
 
-4. **Distribution Physics**:
+5. **Distribution Physics**:
    - **Gravity Effects**: Drips, runs, pooling, settling patterns
    - **Environmental Exposure Patterns**: UV-facing vs. shaded, wet vs. dry zones, airflow effects
    - **Accumulation Zones**: Where contamination/degradation concentrates (edges, joints, grain, stress points)
@@ -212,7 +435,7 @@ For EACH pattern (contamination OR aging), provide:
    - **Density Variation**: Thick → thin gradients, severity mapping
    - **Substrate Interaction**: How material structure affects distribution (grain following, stress concentration, porosity effects)
 
-5. **Aging Timeline & Progression**:
+6. **Aging Timeline & Progression**:
    - **Formation Rate**: Hours, days, weeks, months, years for visible change
    - **Early Stage (0-25% progression)**: Initial appearance, barely visible changes
    - **Mid Stage (25-75%)**: Pronounced changes, clear visual impact
@@ -221,14 +444,14 @@ For EACH pattern (contamination OR aging), provide:
    - **Texture Evolution**: Surface transformation sequence
    - **Reversibility**: Can this be cleaned/restored? Permanent damage?
 
-6. **Layer Interaction & Complexity**:
+7. **Layer Interaction & Complexity**:
    - How does this interact with the base material? (penetrates, coats, reacts chemically, breaks down structure)
    - How does it interact with other contaminants/aging? (accelerates, masks, combines with)
    - Synergistic effects (UV + moisture, oil + heat, biological + chemical)
    - Does it obscure or enhance surface features?
    - Stratification patterns (which layers form first, which accumulate on top)
 
-7. **Micro-Scale Distribution Reality**:
+8. **Micro-Scale Distribution Reality**:
    - **Grain Following**: How does pattern follow material grain/structure?
    - **Edge Effects**: Concentration at edges, corners, joints, fasteners
    - **Stress Point Indicators**: Cracks, deformation zones, high-wear areas show different aging
@@ -236,7 +459,7 @@ For EACH pattern (contamination OR aging), provide:
    - **Anisotropic Patterns**: Directional effects (flow marks, extrusion direction, grain orientation)
    - **Boundary Transitions**: How does severity change across zones? (sharp vs. gradual)
 
-8. **Lighting Response & Optical Properties**:
+9. **Lighting Response & Optical Properties**:
    - How does light reflect off this pattern? (absorbs, reflects, scatters, diffuses)
    - Gloss changes (glossy → satin → matte with aging)
    - Shadow characteristics in/around pattern
@@ -244,19 +467,27 @@ For EACH pattern (contamination OR aging), provide:
    - Translucency changes (aging may increase/decrease light transmission)
    - Color shift under different illumination (daylight vs. indoor, directional vs. diffuse)
 
-9. **Environmental Context & Formation Conditions**:
+10. **Environmental Context & Formation Conditions**:
    - **Typical Environments**: Indoor/outdoor, industrial/residential, marine/desert/urban
    - **Required Conditions**: Temperature range, humidity, UV exposure, chemical exposure
    - **Accelerating Factors**: Heat, moisture, pollutants, mechanical stress, biological activity
    - **Protective Factors**: Coatings, shading, low humidity, clean environments
    - **Seasonal Variations**: Winter vs. summer appearance differences
 
-10. **Prevalence & Real-World Frequency**:
+11. **Prevalence & Real-World Frequency**:
    - How common is this pattern? (very common, common, occasional, rare)
    - Which industries/applications see this most?
    - Geographic variations (humid climates vs. arid, industrial vs. clean environments)
 
-11. **Realism Red Flags to AVOID**:
+12. **Material-Specific Structural Damage** (CRITICAL FOR ACCURACY):
+   - **Metals ONLY**: Pitting, corrosion cavities, rust holes, galvanic corrosion
+   - **Ceramics/Glass**: Crazing, chipping, cracking (NO pitting - ceramics don't pit)
+   - **Polymers/Composites**: Delamination, fiber exposure, matrix cracking (NO pitting - polymers don't corrode)
+   - **Wood**: Rot, checking, splitting, fiber separation (NO pitting - wood doesn't corrode)
+   - **AVOID**: Describing metal-specific damage (pitting, corrosion cavities) for non-metallic materials
+   - **Rule**: Match structural damage to material chemistry and failure modes
+
+13. **Realism Red Flags to AVOID**:
    - Artificial patterns that don't occur naturally
    - Common AI-generation mistakes for this pattern
    - Physics violations (e.g., uniform coating where gravity should cause drips)
@@ -264,17 +495,23 @@ For EACH pattern (contamination OR aging), provide:
    - Impossible color combinations or transitions
    - Missing environmental logic (dry rot in constantly wet conditions)
    - Over-symmetry or perfect geometric patterns in natural aging
+   - **CRITICAL**: Material-inappropriate damage (e.g., pitting on polymers/composites, rust on ceramics)
 
 Format as JSON:
 
-{{
+{{{{
     "category": "{category}",
     "contamination_patterns": [
-        {{
+        {{{{
             "pattern_name": "...",
             "pattern_type": "contamination|aging|combined",
+            "photo_reference_urls": [
+                "https://example.com/image1.jpg (description)",
+                "https://example.com/image2.jpg (description)"
+            ],
+            "photo_search_terms": "keywords used to find reference images",
             "photo_reference": "...",
-            "visual_characteristics": {{
+            "visual_characteristics": {{{{
                 "color_range": "...",
                 "color_evolution": "fresh → intermediate → aged color progression",
                 "texture_detail": "...",
@@ -282,51 +519,51 @@ Format as JSON:
                 "thickness_variation": "...",
                 "edge_characteristics": "...",
                 "surface_topology_changes": "erosion, pitting, cracking, delamination details"
-            }},
-            "distribution_physics": {{
+            }}}},
+            "distribution_physics": {{{{
                 "gravity_effects": "...",
                 "environmental_exposure_patterns": "UV-facing, shaded, wet, dry zone differences",
                 "accumulation_zones": "...",
                 "coverage_pattern": "...",
                 "density_variation": "...",
                 "substrate_interaction": "grain following, stress points, porosity effects"
-            }},
-            "aging_timeline": {{
+            }}}},
+            "aging_timeline": {{{{
                 "formation_rate": "hours|days|weeks|months|years",
                 "early_stage_0_25_percent": "barely visible changes...",
                 "mid_stage_25_75_percent": "pronounced changes...",
                 "advanced_stage_75_100_percent": "severe degradation...",
                 "reversibility": "fully reversible|partially reversible|permanent damage"
-            }},
-            "layer_interaction": {{
+            }}}},
+            "layer_interaction": {{{{
                 "base_material_interaction": "coats|penetrates|reacts|breaks down structure",
                 "contaminant_interaction": "masks|accelerates|combines with other patterns",
                 "synergistic_effects": "UV + moisture effects, chemical + biological interactions",
                 "stratification": "which layers form first, accumulation sequence"
-            }},
-            "micro_scale_distribution": {{
+            }}}},
+            "micro_scale_distribution": {{{{
                 "grain_following": "how pattern follows material structure",
                 "edge_effects": "concentration at boundaries, corners, joints",
                 "stress_point_indicators": "cracks, deformation zones",
                 "porosity_effects": "...",
                 "anisotropic_patterns": "directional effects based on material grain/flow",
                 "boundary_transitions": "sharp vs. gradual severity changes"
-            }},
-            "lighting_response": {{
+            }}}},
+            "lighting_response": {{{{
                 "reflection_characteristics": "absorbs|reflects|scatters|diffuses",
                 "gloss_changes": "glossy → satin → matte progression",
                 "shadow_characteristics": "...",
                 "angle_dependent_appearance": "grazing light effects",
                 "translucency_changes": "...",
                 "illumination_color_shift": "daylight vs. indoor appearance"
-            }},
-            "environmental_context": {{
+            }}}},
+            "environmental_context": {{{{
                 "typical_environments": "indoor|outdoor|industrial|marine|urban|rural",
                 "required_conditions": "temperature, humidity, UV, chemical exposure needs",
                 "accelerating_factors": ["heat", "moisture", "pollutants", "mechanical stress"],
                 "protective_factors": ["coatings", "shading", "low humidity"],
                 "seasonal_variations": "winter vs. summer differences"
-            }},
+            }}}},
             "prevalence": "very common|common|occasional|rare",
             "industry_applications": "which industries/applications see this most",
             "geographic_variations": "climate-dependent appearance differences",
@@ -337,14 +574,14 @@ Format as JSON:
                 "impossible color transition",
                 "missing environmental logic"
             ]
-        }}
+        }}}}
     ],
-    "base_appearance": {{
+    "base_appearance": {{{{
         "typical_color_range": "...",
         "fresh_surface_characteristics": "...",
         "common_manufacturing_marks": "...",
         "inherent_variations": "natural color/texture variations in pristine material"
-    }},
+    }}}},
     "aging_priority_notes": "For organics, prioritize aging patterns. For metals, balance corrosion (aging) with deposits. For ceramics, prioritize environmental weathering.",
     "photo_reference_notes": "Documented real-world examples with specific sources",
     "distribution_reality_notes": "Key principles for realistic contamination/aging distribution across this material type"
@@ -363,7 +600,16 @@ CRITICAL REQUIREMENTS:
 10. **Synergistic Effects**: Document how aging + contamination interact and accelerate each other
 
 Base ALL descriptions on actual photographs, conservation documentation, material science research, and weathering studies. 
-Describe what contamination and aging ACTUALLY look like in real-world industrial, outdoor, and conservation settings."""
+Describe what contamination and aging ACTUALLY look like in real-world industrial, outdoor, and conservation settings.
+
+CRITICAL JSON FORMATTING:
+- Escape ALL quotes inside string values: Use \\" not "
+- Keep URLs simple: No quotes in URL descriptions if possible
+- Multi-line strings: Use \\n for line breaks, NOT actual newlines
+- Test your JSON structure before responding
+- If a value contains quotes, escape them properly
+- Example: "description": "Observe \\"aged\\" fiberglass boats" (correct)
+- Example: "description": "Observe "aged" fiberglass boats" (WRONG - breaks JSON)"""
     
 
     
