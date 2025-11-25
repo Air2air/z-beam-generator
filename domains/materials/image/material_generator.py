@@ -146,6 +146,15 @@ class MaterialImageGenerator:
         """
         # Base negative prompt for all material images
         base_negative = [
+            # Split-screen composition (CRITICAL)
+            "single object only", "no comparison", "one state only",
+            "just contaminated", "just clean", "no split",
+            "no before and after", "missing half", "incomplete composite",
+            "single photo", "not a comparison", "no transformation shown",
+            "mirror image", "mirror reflection", "horizontally flipped",
+            "reflected version", "same state both sides", "no transformation",
+            "both sides dirty", "both sides clean", "symmetrical contamination",
+            
             # Contamination realism (CRITICAL)
             "unnatural contamination", "fake-looking dirt", "painted-on grime",
             "uniform contamination", "perfectly even dirt", "artificially applied contamination",
@@ -256,9 +265,26 @@ class MaterialImageGenerator:
         
         # Get contamination research data (single call)
         research_data = None
-        if self.researcher:
+        if self.use_category_research and self.category_researcher:
             try:
-                research_data = self.researcher.research_material_contamination(
+                # Get category for this material
+                category = self.category_researcher.get_category(material_name)
+                logger.info(f"📂 Material category: {category}")
+                
+                # Research category patterns
+                category_data = self.category_researcher.research_category_contamination(category)
+                
+                # Apply patterns to this material
+                research_data = self.category_researcher.apply_patterns_to_material(
+                    material_name, category_data, config.contamination_uniformity
+                )
+                logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns to {material_name}")
+            except Exception as e:
+                logger.warning(f"⚠️  Category research failed for {material_name}: {e}")
+                research_data = self._get_fallback_research(material_name)
+        elif self.material_researcher:
+            try:
+                research_data = self.material_researcher.research_material_contamination(
                     material_name, material_properties
                 )
                 common_obj = research_data.get('common_object', material_name)
