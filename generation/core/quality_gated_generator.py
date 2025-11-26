@@ -1140,7 +1140,7 @@ class QualityGatedGenerator:
     def _get_author_id(self, material_name: str) -> int:
         """Get author_id for material from Materials.yaml"""
         try:
-            from data.materials import load_materials_data
+            from domains.materials.data_loader import load_materials_data
             materials_data = load_materials_data()
             material_data = materials_data.get('materials', {}).get(material_name, {})
             author_id = material_data.get('author', {}).get('id', 2)  # Default to author 2 if not found

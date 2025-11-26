@@ -1,0 +1,696 @@
+# Contaminants Domain Schema
+# Defines contamination patterns and material compatibility rules
+
+schema_version: "1.0.0"
+last_updated: "2025-11-25"
+
+# ============================================================================
+# CONTAMINATION PATTERNS
+# ============================================================================
+# Each pattern defines a type of contamination with its physical/chemical basis
+
+contamination_patterns:
+  
+  rust_oxidation:
+    id: "rust_oxidation"
+    name: "Rust / Iron Oxide Formation"
+    scientific_name: "Iron(III) oxide (Fe₂O₃)"
+    category: "oxidation"
+    
+    description: "Reddish-brown iron oxide formed through oxidation of ferrous metals in presence of oxygen and moisture"
+    
+    required_elements:
+      - iron
+      - Fe
+    
+    chemical_formula: "Fe₂O₃"
+    
+    formation_conditions:
+      - oxygen
+      - moisture
+      - time
+    
+    visual_characteristics:
+      color_range: ["orange", "red-brown", "dark brown", "black"]
+      texture: "porous, flaky, uneven, rough"
+      thickness: "variable - surface staining to thick scale"
+    
+    valid_material_categories:
+      - metals_ferrous
+    
+    valid_materials:
+      - Steel
+      - Iron
+      - Cast Iron
+      - Carbon Steel
+      - Wrought Iron
+    
+    invalid_materials:
+      - Aluminum
+      - Copper
+      - Brass
+      - Bronze
+      - Stainless Steel  # Corrosion-resistant
+      - Plastics  # No iron content
+      - Ceramics  # No metal content
+      - Wood  # Organic material
+      - Glass  # Non-metallic
+    
+    realism_notes: "Rust ONLY occurs on ferrous metals containing iron. Non-ferrous metals undergo different forms of oxidation (patina, tarnish, but NOT rust)."
+  
+  copper_patina:
+    id: "copper_patina"
+    name: "Copper Patina / Verdigris"
+    scientific_name: "Copper carbonate (Cu₂CO₃(OH)₂)"
+    category: "oxidation"
+    
+    description: "Green to blue-green copper carbonate layer formed on copper-containing metals through weathering"
+    
+    required_elements:
+      - copper
+      - Cu
+    
+    chemical_formula: "Cu₂CO₃(OH)₂"
+    
+    formation_conditions:
+      - moisture
+      - carbon_dioxide
+      - time
+      - atmospheric_exposure
+    
+    visual_characteristics:
+      color_range: ["green", "blue-green", "turquoise", "teal"]
+      texture: "smooth to powdery, matte finish"
+      thickness: "thin to medium surface layer"
+    
+    valid_material_categories:
+      - metals_non_ferrous
+    
+    valid_materials:
+      - Copper
+      - Brass  # Copper alloy
+      - Bronze  # Copper alloy
+    
+    invalid_materials:
+      - Steel
+      - Iron
+      - Aluminum  # Different oxidation (white/gray)
+      - Plastics
+      - Ceramics
+      - Wood
+    
+    realism_notes: "Verdigris is specific to copper and copper alloys. It's a protective layer, unlike rust which continues to degrade the metal."
+
+  aluminum_oxidation:
+    id: "aluminum_oxidation"
+    name: "Aluminum Oxidation"
+    scientific_name: "Aluminum oxide (Al₂O₃)"
+    category: "oxidation"
+    
+    description: "White to gray protective oxide layer that forms on aluminum surfaces"
+    
+    required_elements:
+      - aluminum
+      - Al
+    
+    chemical_formula: "Al₂O₃"
+    
+    formation_conditions:
+      - oxygen
+      - atmospheric_exposure
+    
+    visual_characteristics:
+      color_range: ["white", "gray", "chalky"]
+      texture: "powdery, chalky, matte"
+      thickness: "thin surface layer"
+    
+    valid_materials:
+      - Aluminum
+      - Aluminum Alloys
+    
+    invalid_materials:
+      - Steel
+      - Copper
+      - Plastics
+      - Wood
+    
+    realism_notes: "Aluminum forms a protective oxide layer that PREVENTS further corrosion. This is NOT rust."
+
+  uv_chalking:
+    id: "uv_chalking"
+    name: "UV Photodegradation / Polymer Chalking"
+    scientific_name: "Polymer chain scission"
+    category: "photodegradation"
+    
+    description: "White chalky residue from UV-induced breakdown of polymer chains at the surface"
+    
+    required_elements:
+      - organic_polymer
+      - carbon_chains
+    
+    formation_conditions:
+      - uv_radiation
+      - sunlight
+      - time
+      - outdoor_exposure
+    
+    visual_characteristics:
+      color_range: ["white", "chalky white", "faded original color"]
+      texture: "powdery, chalky, rough, crazed"
+      thickness: "thin surface degradation"
+    
+    valid_material_categories:
+      - polymers_thermoplastic
+      - polymers_engineering
+      - polymers_elastomer
+    
+    valid_materials:
+      - ABS
+      - Acrylic (PMMA)
+      - Polycarbonate
+      - PVC
+      - Nylon
+      - Polyethylene
+      - Polypropylene
+    
+    invalid_materials:
+      - Metals  # Don't undergo photodegradation
+      - Ceramics
+      - Glass
+      - Wood  # Has different UV degradation
+    
+    realism_notes: "UV chalking is specific to polymers with carbon-based chains. Metals and ceramics do not chalk."
+
+  industrial_oil:
+    id: "industrial_oil"
+    name: "Industrial Oil / Grease Buildup"
+    category: "contamination"
+    
+    description: "Dark oily or greasy deposits from machinery lubricants, hydraulic fluids, or cutting oils"
+    
+    context_required: true
+    
+    valid_contexts:
+      - machinery
+      - moving_parts
+      - bearings
+      - gears
+      - hydraulic_systems
+      - automotive
+      - manufacturing_equipment
+    
+    visual_characteristics:
+      color_range: ["black", "brown", "amber", "dark gray"]
+      texture: "greasy, sticky, slippery"
+      thickness: "thin film to thick deposits"
+    
+    valid_materials:
+      - ALL  # Can appear on any material IN machinery context
+    
+    conditional_rules:
+      - rule: "Only valid in machinery/industrial equipment context"
+      - rule: "NOT valid on decorative items, furniture, or non-machinery plastic parts"
+      - rule: "Attracts dirt and grime (appears grimy, not just oily)"
+    
+    invalid_without_context:
+      - decorative_plastics
+      - wood_furniture
+      - ceramic_decorations
+      - architectural_elements
+    
+    realism_notes: "Oil/grease appears on MACHINERY parts, not randomly on all materials. Context is critical."
+
+  wood_rot:
+    id: "wood_rot"
+    name: "Wood Rot / Fungal Biodegradation"
+    scientific_name: "Fungal decomposition of cellulose and lignin"
+    category: "biodegradation"
+    
+    description: "Fungal breakdown of wood fibers causing discoloration, softening, and structural weakening"
+    
+    required_elements:
+      - cellulose
+      - lignin
+      - organic_matter
+    
+    formation_conditions:
+      - moisture
+      - fungal_spores
+      - warmth
+      - poor_ventilation
+    
+    visual_characteristics:
+      color_range: ["brown", "yellow", "white", "gray", "black"]
+      texture: "soft, spongy, crumbly, stringy"
+      thickness: "surface to deep penetration"
+    
+    valid_material_categories:
+      - wood_hardwood
+      - wood_softwood
+      - wood_engineered
+    
+    valid_materials:
+      - Oak
+      - Pine
+      - Maple
+      - Cherry
+      - Walnut
+      - Cedar
+      - Plywood
+      - MDF
+    
+    invalid_materials:
+      - Metals  # Not organic
+      - Plastics  # Not organic
+      - Ceramics  # Not organic
+      - Glass  # Not organic
+    
+    realism_notes: "Wood rot ONLY occurs in organic wood materials. Metals and plastics cannot rot."
+
+  environmental_dust:
+    id: "environmental_dust"
+    name: "Environmental Dust Layer"
+    category: "contamination"
+    
+    description: "Fine particulate matter from air settling on surfaces"
+    
+    formation_conditions:
+      - airborne_particles
+      - time
+      - lack_of_cleaning
+    
+    visual_characteristics:
+      color_range: ["gray", "brown", "tan", "varies by location"]
+      texture: "fine, powdery, can cake with moisture"
+      thickness: "thin film to thick accumulation"
+    
+    valid_materials:
+      - ALL  # Dust can settle on any surface
+    
+    context_notes: "Universal contamination - appears on all materials. Thickness varies by exposure and cleaning frequency."
+    
+    realism_notes: "Most common contamination type. Affects all materials but distribution follows gravity and air flow patterns."
+
+  chemical_stains:
+    id: "chemical_stains"
+    name: "Chemical Stains / Acid Etching"
+    category: "contamination"
+    
+    description: "Discoloration or etching from chemical exposure (acids, bases, solvents)"
+    
+    formation_conditions:
+      - chemical_exposure
+      - spills
+      - industrial_process
+    
+    visual_characteristics:
+      color_range: ["varies by chemical", "often lighter or darker than base material"]
+      texture: "smooth to etched, may pit surface"
+      thickness: "surface staining to deep etching"
+    
+    valid_materials:
+      - Metals
+      - Plastics
+      - Ceramics
+      - Concrete
+    
+    material_specific_notes:
+      metals: "Acid etching creates pits and discoloration"
+      plastics: "Solvent damage, crazing, discoloration"
+      ceramics: "Acid etching of surface"
+    
+    realism_notes: "Chemical stains vary dramatically by material and chemical type. Research specific material-chemical interactions."
+
+  scale_buildup:
+    id: "scale_buildup"
+    name: "Mineral Scale / Hard Water Deposits"
+    category: "contamination"
+    
+    description: "White or colored mineral deposits from evaporated water with dissolved minerals"
+    
+    chemical_formula: "CaCO₃ (calcium carbonate) or others"
+    
+    formation_conditions:
+      - hard_water
+      - evaporation
+      - repeated_wetting
+    
+    visual_characteristics:
+      color_range: ["white", "tan", "brown", "orange-brown"]
+      texture: "crusty, crystalline, hard"
+      thickness: "thin coating to thick deposits"
+    
+    valid_materials:
+      - Metals
+      - Ceramics
+      - Glass
+      - Concrete
+      - Stone
+    
+    context_notes: "Common in plumbing, boilers, heat exchangers, and areas with water exposure"
+    
+    realism_notes: "Scale forms where water evaporates repeatedly, leaving mineral deposits behind."
+
+  paint_residue:
+    id: "paint_residue"
+    name: "Paint Residue / Coating Failure"
+    category: "contamination"
+    
+    description: "Flaking, peeling, or degraded paint/coating material"
+    
+    formation_conditions:
+      - poor_adhesion
+      - age
+      - weathering
+      - mechanical_damage
+    
+    visual_characteristics:
+      color_range: ["varies by paint color"]
+      texture: "flaking, peeling, cracked"
+      thickness: "thin chips to thick layers"
+    
+    valid_materials:
+      - Metals
+      - Wood
+      - Concrete
+      - Plastics
+    
+    realism_notes: "Paint residue implies previous coating. Consider underlying substrate characteristics."
+
+  adhesive_residue:
+    id: "adhesive_residue"
+    name: "Adhesive Residue / Tape Marks"
+    category: "contamination"
+    
+    description: "Sticky residue from labels, tapes, or adhesives"
+    
+    visual_characteristics:
+      color_range: ["clear", "yellow", "brown", "amber"]
+      texture: "sticky, tacky, can attract dirt"
+      thickness: "thin film"
+    
+    valid_materials:
+      - Metals
+      - Plastics
+      - Glass
+      - Wood
+      - Ceramics
+    
+    context_notes: "Common on manufactured items, shipped goods, or items with labels/tape"
+    
+    realism_notes: "Adhesive residue often attracts dirt and dust, becoming darker and grittier over time."
+
+# ============================================================================
+# MATERIAL PROPERTIES DATABASE
+# ============================================================================
+# Defines elemental composition and contamination compatibility for each material
+
+material_properties:
+  
+  Steel:
+    category: "metals_ferrous"
+    contains: ["iron", "Fe", "carbon", "C"]
+    can_rust: true
+    valid_contamination:
+      - rust_oxidation
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - paint_residue
+      - chemical_stains
+    prohibited_contamination:
+      - copper_patina  # No copper
+      - wood_rot  # Not organic
+      - uv_chalking  # Not polymer
+  
+  Iron:
+    category: "metals_ferrous"
+    contains: ["iron", "Fe"]
+    can_rust: true
+    valid_contamination:
+      - rust_oxidation
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - paint_residue
+      - chemical_stains
+    prohibited_contamination:
+      - copper_patina
+      - wood_rot
+      - uv_chalking
+
+  Aluminum:
+    category: "metals_non_ferrous"
+    contains: ["aluminum", "Al"]
+    can_rust: false
+    valid_contamination:
+      - aluminum_oxidation
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - paint_residue
+      - chemical_stains
+    prohibited_contamination:
+      - rust_oxidation  # No iron
+      - copper_patina  # No copper
+      - wood_rot
+      - uv_chalking
+
+  Copper:
+    category: "metals_non_ferrous"
+    contains: ["copper", "Cu"]
+    can_rust: false
+    valid_contamination:
+      - copper_patina
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - chemical_stains
+    prohibited_contamination:
+      - rust_oxidation  # No iron
+      - aluminum_oxidation  # No aluminum
+      - wood_rot
+      - uv_chalking
+
+  Brass:
+    category: "metals_non_ferrous"
+    contains: ["copper", "Cu", "zinc", "Zn"]
+    can_rust: false
+    valid_contamination:
+      - copper_patina
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - chemical_stains
+    prohibited_contamination:
+      - rust_oxidation
+      - aluminum_oxidation
+      - wood_rot
+      - uv_chalking
+
+  Bronze:
+    category: "metals_non_ferrous"
+    contains: ["copper", "Cu", "tin", "Sn"]
+    can_rust: false
+    valid_contamination:
+      - copper_patina
+      - industrial_oil
+      - environmental_dust
+      - scale_buildup
+      - chemical_stains
+    prohibited_contamination:
+      - rust_oxidation
+      - aluminum_oxidation
+      - wood_rot
+      - uv_chalking
+
+  "Acrylic (PMMA)":
+    category: "polymers_thermoplastic"
+    contains: ["polymethyl_methacrylate", "organic_polymer", "C", "H", "O"]
+    can_rust: false
+    valid_contamination:
+      - uv_chalking
+      - chemical_stains
+      - environmental_dust
+      - adhesive_residue
+    conditional_contamination:
+      industrial_oil:
+        context: "machinery_parts_only"
+        note: "Only if plastic is part of machinery (gears, housings)"
+    prohibited_contamination:
+      - rust_oxidation  # No iron
+      - copper_patina  # No copper
+      - aluminum_oxidation  # No aluminum
+      - wood_rot  # Not wood
+
+  ABS:
+    category: "polymers_thermoplastic"
+    contains: ["acrylonitrile", "butadiene", "styrene", "organic_polymer"]
+    can_rust: false
+    valid_contamination:
+      - uv_chalking
+      - chemical_stains
+      - environmental_dust
+      - adhesive_residue
+    conditional_contamination:
+      industrial_oil:
+        context: "machinery_parts_only"
+    prohibited_contamination:
+      - rust_oxidation
+      - copper_patina
+      - aluminum_oxidation
+      - wood_rot
+
+  Polycarbonate:
+    category: "polymers_thermoplastic"
+    contains: ["organic_polymer", "carbonate_groups"]
+    can_rust: false
+    valid_contamination:
+      - uv_chalking
+      - chemical_stains
+      - environmental_dust
+      - adhesive_residue
+    conditional_contamination:
+      industrial_oil:
+        context: "machinery_parts_only"
+    prohibited_contamination:
+      - rust_oxidation
+      - copper_patina
+      - aluminum_oxidation
+      - wood_rot
+
+  Oak:
+    category: "wood_hardwood"
+    contains: ["cellulose", "lignin", "organic_matter"]
+    can_rust: false
+    valid_contamination:
+      - wood_rot
+      - environmental_dust
+      - chemical_stains
+      - paint_residue
+    prohibited_contamination:
+      - rust_oxidation  # No metal
+      - copper_patina  # No metal
+      - aluminum_oxidation  # No metal
+      - uv_chalking  # Different UV degradation
+
+  Pine:
+    category: "wood_softwood"
+    contains: ["cellulose", "lignin", "organic_matter"]
+    can_rust: false
+    valid_contamination:
+      - wood_rot
+      - environmental_dust
+      - chemical_stains
+      - paint_residue
+    prohibited_contamination:
+      - rust_oxidation
+      - copper_patina
+      - aluminum_oxidation
+      - uv_chalking
+
+  Concrete:
+    category: "ceramics_construction"
+    contains: ["calcium", "silica", "aggregates"]
+    can_rust: false
+    valid_contamination:
+      - environmental_dust
+      - scale_buildup
+      - chemical_stains
+      - paint_residue
+    prohibited_contamination:
+      - rust_oxidation  # No iron (unless reinforcement visible)
+      - copper_patina
+      - aluminum_oxidation
+      - wood_rot
+      - uv_chalking
+
+  Glass:
+    category: "ceramics_glass"
+    contains: ["silica", "SiO₂"]
+    can_rust: false
+    valid_contamination:
+      - environmental_dust
+      - scale_buildup
+      - chemical_stains
+      - adhesive_residue
+    prohibited_contamination:
+      - rust_oxidation
+      - copper_patina
+      - aluminum_oxidation
+      - wood_rot
+      - uv_chalking
+
+# ============================================================================
+# VALIDATION RULES
+# ============================================================================
+
+validation_rules:
+  
+  elemental_compatibility:
+    description: "Contamination must match material's elemental composition"
+    examples:
+      - "Rust requires iron → Only ferrous metals can rust"
+      - "Copper patina requires copper → Only copper alloys can develop verdigris"
+      - "UV chalking requires organic polymers → Only plastics chalk"
+  
+  context_awareness:
+    description: "Certain contaminations require specific environmental contexts"
+    examples:
+      - "Oil/grease → Requires machinery context, not decorative items"
+      - "Scale buildup → Requires water exposure context"
+      - "Paint residue → Implies previous coating application"
+  
+  physics_compliance:
+    description: "Contamination must follow physical/chemical laws"
+    examples:
+      - "Metals corrode differently: iron→rust, copper→patina, aluminum→oxide"
+      - "Wood rots, metals corrode, plastics degrade - different mechanisms"
+      - "Gravity affects distribution patterns"
+
+# ============================================================================
+# ERROR MESSAGES
+# ============================================================================
+
+error_messages:
+  
+  rust_on_non_ferrous:
+    code: "INCOMPATIBLE_RUST"
+    message: "❌ Rust cannot form on {material} - requires iron content"
+    explanation: "Rust (Fe₂O₃) is iron oxide and ONLY forms on ferrous metals containing iron. {material} contains {elements} and undergoes {correct_process} instead."
+    suggestion: "For {material}, use {recommended_contamination} instead"
+  
+  patina_on_non_copper:
+    code: "INCOMPATIBLE_PATINA"
+    message: "❌ Copper patina cannot form on {material} - requires copper content"
+    explanation: "Verdigris (copper carbonate) ONLY forms on copper and copper alloys. {material} is a {category} and does not contain copper."
+    suggestion: "For {material}, use {recommended_contamination} instead"
+  
+  wood_rot_on_non_organic:
+    code: "INCOMPATIBLE_ROT"
+    message: "❌ Wood rot cannot occur on {material} - requires organic matter"
+    explanation: "Fungal biodegradation ONLY affects organic materials with cellulose and lignin. {material} is a {category} and is not subject to biological decomposition."
+    suggestion: "For {material}, consider {recommended_contamination} instead"
+  
+  uv_chalking_on_non_polymer:
+    code: "INCOMPATIBLE_CHALKING"
+    message: "❌ UV chalking cannot occur on {material} - requires polymer chains"
+    explanation: "Photodegradation chalking ONLY affects organic polymers with carbon-based chains. {material} is a {category} and does not undergo UV chalking."
+    suggestion: "For {material}, UV exposure causes {correct_degradation} instead"
+  
+  oil_without_context:
+    code: "CONTEXT_REQUIRED"
+    message: "⚠️  Oil/grease on {material} requires machinery context"
+    explanation: "Industrial oil/grease contamination is specific to machinery, equipment, and moving parts. Random oil on decorative {material} items is unrealistic."
+    suggestion: "Only apply oil contamination if {material} is part of machinery, gears, bearings, or industrial equipment"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0.0"
+  created: "2025-11-25"
+  author: "AI Assistant"
+  purpose: "Material-contamination compatibility validation for laser cleaning image generation"
+  usage: "Pre-generation validation to prevent physically impossible contamination patterns"

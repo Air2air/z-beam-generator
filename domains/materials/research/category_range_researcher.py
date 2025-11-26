@@ -25,7 +25,7 @@ from collections import defaultdict
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from data.materials.materials import get_material_by_name, load_materials
+from domains.materials.materials_cache import get_material_by_name, load_materials
 from domains.materials.research.unified_material_research import UnifiedMaterialResearch
 
 

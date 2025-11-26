@@ -509,7 +509,7 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Load material data
-            from data.materials.materials import load_materials, get_material_by_name
+            from domains.materials.materials_cache import load_materials, get_material_by_name
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -596,7 +596,7 @@ def run_material_workflow(
                     if research_success:
                         print("✅ Property research completed - Materials.yaml updated")
                         # Reload material data after research
-                        from data.materials.materials import load_materials as reload_materials, get_material_by_name as get_mat
+                        from domains.materials.materials_cache import load_materials as reload_materials, get_material_by_name as get_mat
                         materials = reload_materials()
                         material_data = get_mat(material_name, materials)
                         validation_success = True
@@ -687,7 +687,7 @@ def run_material_workflow(
             print("="*80 + "\n")
             
             # Reload material data to get latest content
-            from data.materials.materials import load_materials, get_material_by_name
+            from domains.materials.materials_cache import load_materials, get_material_by_name
             materials = load_materials()
             material_data = get_material_by_name(material_name, materials)
             
@@ -714,7 +714,7 @@ def run_material_workflow(
             
             try:
                 # Load material data from Materials.yaml
-                from data.materials.materials import load_materials, get_material_by_name  # noqa: F811
+                from domains.materials.materials_cache import load_materials, get_material_by_name  # noqa: F811
                 materials = load_materials()
                 material_data = get_material_by_name(material_name, materials)
                 

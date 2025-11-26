@@ -43,7 +43,7 @@ import sys
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from data.materials.loader import load_materials_data, get_property_definitions
+from domains.materials.data_loader import load_materials_data, get_property_definitions
 from shared.api.client_factory import create_api_client
 from shared.api.client import GenerationRequest
 

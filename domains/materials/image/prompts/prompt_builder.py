@@ -97,7 +97,9 @@ class SharedPromptBuilder:
         material_name: str,
         research_data: Dict,
         contamination_uniformity: int = 3,
-        view_mode: str = "Contextual"
+        view_mode: str = "Contextual",
+        material_category: Optional[str] = None,
+        learned_feedback: Optional[str] = None
     ) -> str:
         """
         Build complete generation prompt from shared templates + researched defaults.
@@ -111,12 +113,15 @@ class SharedPromptBuilder:
         Plus:
         - Forbidden Patterns: Anti-patterns to avoid
         - User Feedback: Your latest quality corrections
+        - Learned Feedback: Category-specific feedback from previous attempts
         
         Args:
             material_name: Name of material (e.g., "Aluminum")
             research_data: Research data with contamination patterns
             contamination_uniformity: Variety 1-5 (default: 3, researched default)
             view_mode: "Contextual" or "Isolated" (default: "Contextual")
+            material_category: Material category for learned feedback (e.g., "metal_ferrous")
+            learned_feedback: Pre-formatted learned feedback from learning system
             
         Returns:
             Complete prompt string for Imagen 4
@@ -171,6 +176,11 @@ class SharedPromptBuilder:
             prompt_parts.append(f"CRITICAL CORRECTIONS (from user review):\n{feedback}")
             logger.info("📝 Applied user feedback corrections to generation prompt")
         
+        # Category-Specific Learned Feedback
+        if learned_feedback:
+            prompt_parts.append(learned_feedback)
+            logger.info(f"🧠 Applied learned feedback from category: {material_category}")
+        
         # Assemble full prompt
         full_prompt = "\n\n".join(prompt_parts)
         
@@ -194,7 +204,9 @@ class SharedPromptBuilder:
         self,
         material_name: str,
         research_data: Dict,
-        config: Optional[Dict] = None
+        config: Optional[Dict] = None,
+        material_category: Optional[str] = None,
+        learned_feedback: Optional[str] = None
     ) -> str:
         """
         Build validation prompt using SAME standards as generation.
@@ -204,11 +216,14 @@ class SharedPromptBuilder:
         - Physics Checklist: Exact same physics as generation/realism_physics.txt
         - Red Flags: Inverse of generation/forbidden_patterns.txt
         - User Feedback: Ensures validator checks updated requirements
+        - Learned Feedback: Category-specific feedback from previous attempts
         
         Args:
             material_name: Name of material being validated
             research_data: Research data with expected contamination patterns
             config: Optional MaterialImageConfig dict with contamination settings
+            material_category: Material category for learned feedback (e.g., "metal_ferrous")
+            learned_feedback: Pre-formatted learned feedback from learning system
             
         Returns:
             Complete validation prompt for Gemini Vision
@@ -272,6 +287,11 @@ EXPECTED CHARACTERISTICS:
         if feedback:
             prompt_parts.append(f"UPDATED VALIDATION CRITERIA (from user review):\n{feedback}")
             logger.info("📝 Applied user feedback corrections to validation prompt")
+        
+        # Category-Specific Learned Feedback
+        if learned_feedback:
+            prompt_parts.append(learned_feedback)
+            logger.info(f"🧠 Applied learned feedback to validation for category: {material_category}")
         
         # JSON response format
         prompt_parts.append(self._get_validation_json_format())
@@ -493,10 +513,14 @@ EXPECTED CHARACTERISTICS:
   "research_deviations": ["<deviation1>", ...] or [],
   "micro_scale_accurate": <true/false>,
   "micro_scale_issues": ["<issue1>", ...] or [],
+  "text_labels_present": <true/false>,
+  "text_label_details": ["<description of any text/labels found>", ...] or [],
   "confidence": <0.0-1.0>,
   "overall_assessment": "<2-3 sentence summary of realism quality>",
   "recommendations": ["<improvement1>", "<improvement2>", ...] or []
-}"""
+}
+
+CRITICAL: Set "text_labels_present" to true if ANY text, labels, watermarks, captions, logos, numbers, letters, or written characters are visible anywhere in the image. Describe what was found in "text_label_details". Images with text/labels automatically fail validation."""
 
 
 def create_prompt_builder() -> SharedPromptBuilder:

@@ -30,7 +30,7 @@ def quick_consistency_check():
         
         # Test 2: Materials data loading
         try:
-            from data.materials.materials import load_materials
+            from domains.materials.materials_cache import load_materials_cached as load_materials
             materials_data = load_materials()
             print("   ✅ Materials data loads successfully")
         except Exception as e:

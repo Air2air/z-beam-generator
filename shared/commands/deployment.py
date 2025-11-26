@@ -12,8 +12,8 @@ def deploy_to_production():
     import os
     
     # Clear ALL caches to ensure fresh data is used
-    from data.materials.materials import clear_materials_cache, invalidate_material_cache
-    from data.materials.loader import clear_cache
+    from domains.materials.materials_cache import clear_materials_cache, invalidate_material_cache
+    from domains.materials.data_loader import clear_cache
     clear_cache()  # Clear loader LRU caches
     clear_materials_cache()  # Clear materials cache
     invalidate_material_cache()  # Clear name lookup cache

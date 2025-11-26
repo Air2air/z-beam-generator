@@ -660,6 +660,69 @@ class ImageGenerationLogger:
         
         return examples
     
+    def get_category_feedback(self, material_category: str, limit: int = 10) -> str:
+        """
+        Get accumulated feedback for a specific material category PLUS global feedback.
+        
+        Retrieves feedback from:
+        1. Failed attempts in the same category (category-specific learning)
+        2. Global feedback (category='all_categories') that applies to ALL materials
+        
+        Args:
+            material_category: Material category (e.g., "metal_ferrous", "wood_hardwood")
+            limit: Maximum number of feedback items to retrieve
+            
+        Returns:
+            Formatted feedback string to add to prompts (empty if no feedback)
+            
+        Example:
+            feedback = logger.get_category_feedback("metal_ferrous")
+            # Returns: "LEARNED FROM PREVIOUS ATTEMPTS:
+            #          [GLOBAL] Generic oil contamination is unrealistic
+            #          - Clean side contaminated - must be visibly clean
+            #          - Rust not visible enough - needs higher contrast"
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # Get feedback from BOTH category-specific AND global sources
+        cursor.execute("""
+            SELECT DISTINCT feedback_text, COUNT(*) as occurrences,
+                   CASE WHEN category = 'all_categories' THEN 1 ELSE 0 END as is_global
+            FROM generation_attempts
+            WHERE (category = ? OR category = 'all_categories')
+                AND passed = 0
+                AND feedback_text IS NOT NULL
+                AND feedback_text != ''
+            GROUP BY feedback_text
+            ORDER BY is_global DESC, occurrences DESC, timestamp DESC
+            LIMIT ?
+        """, (material_category, limit))
+        
+        feedback_items = []
+        for row in cursor.fetchall():
+            feedback_text, count, is_global = row
+            # Clean up feedback text (remove numbers, clean formatting)
+            lines = [line.strip() for line in feedback_text.split('\n') if line.strip()]
+            prefix = "[GLOBAL] " if is_global else ""
+            for line in lines:
+                # Remove leading numbers and dashes
+                clean_line = line.lstrip('0123456789.-) ')
+                if clean_line and clean_line not in feedback_items:
+                    feedback_items.append(f"{prefix}{clean_line}")
+        
+        conn.close()
+        
+        if not feedback_items:
+            return ""
+        
+        # Format for prompt inclusion
+        feedback_str = "LEARNED FROM PREVIOUS ATTEMPTS (category-specific + global):\n"
+        for item in feedback_items[:limit]:
+            feedback_str += f"- {item}\n"
+        
+        return feedback_str.strip()
+    
     def print_analytics_report(self):
         """Print comprehensive analytics report."""
         print("\n" + "=" * 70)

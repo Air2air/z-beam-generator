@@ -12,8 +12,8 @@ Validates that:
 
 import yaml
 from pathlib import Path
-from data.materials import load_materials_data, load_material, get_material_names
-from data.materials.materials import load_materials_cached
+from domains.materials.data_loader import load_materials_data, load_material, get_material_names
+from domains.materials.materials_cache import load_materials_cached
 
 def load_backup() -> dict:
     """Load backup Materials.yaml for comparison"""

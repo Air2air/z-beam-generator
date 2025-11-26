@@ -21,7 +21,7 @@ from pathlib import Path
 import yaml
 
 from .text_field_classifier import TextFieldClassifier, FieldType
-from data.materials.materials import get_material_by_name_cached
+from domains.materials.materials_cache import get_material_by_name_cached
 
 class GenerationMode(Enum):
     """Frontmatter generation modes"""

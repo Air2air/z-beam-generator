@@ -22,7 +22,7 @@ from datetime import datetime
 # Core imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from shared.validation.schema_validator import SchemaValidator
-from data.materials.materials import load_materials_cached as load_materials
+from domains.materials.materials_cache import load_materials_cached as load_materials
 from shared.api.client_factory import create_api_client
 from shared.generators.dynamic_generator import DynamicGenerator
 

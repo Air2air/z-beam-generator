@@ -13,7 +13,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from data.materials.materials import clear_materials_cache, load_materials_cached
+from domains.materials.materials_cache import clear_materials_cache, load_materials_cached
 from export.core.trivial_exporter import TrivialFrontmatterExporter
 import logging
 

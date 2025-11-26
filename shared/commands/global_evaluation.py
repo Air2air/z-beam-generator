@@ -20,7 +20,7 @@ from shared.api.client_factory import create_api_client
 from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
 from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
 from generation.config.config_loader import get_config
-from data.materials.loader import load_material
+from domains.materials.data_loader import load_material
 
 logger = logging.getLogger(__name__)
 

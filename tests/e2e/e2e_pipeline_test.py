@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from materials.caption.generators.generator import CaptionComponentGenerator
 from materials.subtitle.core.subtitle_generator import SubtitleComponentGenerator
 from materials.faq.generators.faq_generator import FAQComponentGenerator
-from data.materials.materials import load_materials, get_material_by_name
+from domains.materials.materials_cache import load_materials_cached as load_materials, get_material_by_name_cached as get_material_by_name
 from shared.api.client_factory import create_api_client
 from shared.voice.post_processor import VoicePostProcessor
 from export.utils.author_manager import get_author_info_for_material

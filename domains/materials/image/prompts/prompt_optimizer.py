@@ -224,11 +224,17 @@ class PromptOptimizer:
         
         Priority order (highest to lowest):
         1. User feedback (always preserve if preserve_feedback=True)
-        2. Base structure
-        3. Physics rules
-        4. Contamination rules
+        2. Contamination restrictions (CRITICAL - material-specific rules)
+        3. Base structure
+        4. Physics rules
         5. Micro-scale details
-        6. Forbidden patterns (truncate to top 3-4 patterns)
+        6. Generic forbidden patterns (safe to truncate)
+        
+        CRITICAL CONTAMINATION RULES (NEVER TRUNCATE):
+        - Oil/grease only on metals/machinery
+        - Rust only on ferrous metals (NOT plastics)
+        - Dirt/soil globally prohibited
+        - Material-specific contamination from research
         
         Args:
             text: Prompt text to truncate
@@ -240,12 +246,19 @@ class PromptOptimizer:
         """
         limit = max_length if max_length is not None else self.hard_limit
         
+        # Critical contamination keywords to ALWAYS preserve
+        critical_keywords = [
+            'oil', 'rust', 'dirt', 'soil', 'grease',
+            'contamination', 'ferrous', 'plastic',
+            'machinery', 'research confirms', 'NEVER'
+        ]
+        
         # Extract sections
         sections = []
         current_section = []
         
         for line in text.split('\n'):
-            if line.strip().startswith(('CRITICAL CORRECTIONS', 'AVOID THESE PATTERNS')):
+            if line.strip().startswith(('CRITICAL CORRECTIONS', 'AVOID THESE PATTERNS', 'LEARNED FROM')):
                 if current_section:
                     sections.append('\n'.join(current_section))
                 current_section = [line]
@@ -255,17 +268,43 @@ class PromptOptimizer:
         if current_section:
             sections.append('\n'.join(current_section))
         
-        # If still over limit, truncate forbidden patterns section
+        # If still over limit, intelligently truncate
         if len(text) > limit:
-            # Find forbidden patterns section
             truncated_sections = []
             for section in sections:
                 if 'AVOID THESE PATTERNS' in section:
-                    # Keep only first 500 chars of forbidden patterns
+                    # Separate contamination rules from generic anti-patterns
                     lines = section.split('\n')
-                    truncated = '\n'.join(lines[:10])  # Keep ~10 lines
-                    truncated += "\n[Additional anti-patterns omitted for brevity]"
+                    contamination_lines = []
+                    generic_lines = []
+                    header_lines = []
+                    
+                    for line in lines:
+                        # Keep header
+                        if 'AVOID THESE PATTERNS' in line or line.strip() == '':
+                            header_lines.append(line)
+                        # ALWAYS keep contamination-related lines
+                        elif any(kw in line.lower() for kw in critical_keywords):
+                            contamination_lines.append(line)
+                        else:
+                            generic_lines.append(line)
+                    
+                    # Build truncated section: header + ALL contamination + limited generic
+                    truncated = '\n'.join(header_lines)
+                    if contamination_lines:
+                        truncated += '\n' + '\n'.join(contamination_lines)
+                    # Only add first 5 generic anti-patterns if space allows
+                    if generic_lines and len(truncated) < limit * 0.7:  # Leave 30% for other sections
+                        truncated += '\n' + '\n'.join(generic_lines[:5])
+                        if len(generic_lines) > 5:
+                            truncated += "\n[Additional generic anti-patterns omitted]"
+                    
                     truncated_sections.append(truncated)
+                    
+                    logger.info(
+                        f"🔧 Truncated anti-patterns: preserved {len(contamination_lines)} "
+                        f"contamination rules, kept {min(5, len(generic_lines))} generic rules"
+                    )
                 else:
                     truncated_sections.append(section)
             
@@ -277,38 +316,30 @@ class PromptOptimizer:
                 f"🚨 Emergency hard truncation required: "
                 f"{len(text)} → {limit} chars"
             )
-            text = text[:limit - 100]  # Leave margin for safety
-            text += "\n\n[Prompt truncated to fit API limits]"
-        
-        return text
-        
-        if current_section:
-            sections.append('\n'.join(current_section))
-        
-        # If still over limit, truncate forbidden patterns section
-        if len(text) > self.hard_limit:
-            # Find forbidden patterns section
-            truncated_sections = []
-            for section in sections:
-                if 'AVOID THESE PATTERNS' in section:
-                    # Keep only first 500 chars of forbidden patterns
-                    lines = section.split('\n')
-                    truncated = '\n'.join(lines[:10])  # Keep ~10 lines
-                    truncated += "\n[Additional anti-patterns omitted for brevity]"
-                    truncated_sections.append(truncated)
-                else:
-                    truncated_sections.append(section)
+            # CRITICAL: Never truncate contamination rules
+            # Find contamination section and preserve it
+            if 'AVOID THESE PATTERNS' in text:
+                parts = text.split('AVOID THESE PATTERNS')
+                pre_patterns = parts[0]
+                patterns_section = 'AVOID THESE PATTERNS' + parts[1] if len(parts) > 1 else ''
+                
+                # Extract contamination rules
+                contamination_rules = []
+                for line in patterns_section.split('\n'):
+                    if any(kw in line.lower() for kw in critical_keywords):
+                        contamination_rules.append(line)
+                
+                # Truncate pre_patterns section if needed
+                if len(pre_patterns) > limit * 0.5:
+                    pre_patterns = pre_patterns[:int(limit * 0.5)]
+                
+                # Rebuild with contamination rules preserved
+                text = pre_patterns + '\n\nAVOID THESE PATTERNS:\n' + '\n'.join(contamination_rules)
+            else:
+                # No patterns section - just truncate
+                text = text[:limit - 100]
             
-            text = '\n\n'.join(truncated_sections)
-        
-        # Final check - hard truncate if absolutely necessary
-        if len(text) > self.hard_limit:
-            logger.warning(
-                f"🚨 Emergency hard truncation required: "
-                f"{len(text)} → {self.hard_limit} chars"
-            )
-            text = text[:self.hard_limit - 100]  # Leave margin for safety
-            text += "\n\n[Prompt truncated to fit API limits]"
+            text += "\n\n[Prompt truncated - contamination rules preserved]"
         
         return text
     

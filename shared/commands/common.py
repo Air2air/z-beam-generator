@@ -16,7 +16,7 @@ from typing import Optional, List, Dict, Any, Tuple
 from dataclasses import dataclass
 
 # Data loading
-from data.materials.materials import (
+from domains.materials.materials_cache import (
     load_materials_cached as load_materials,
     clear_materials_cache,
     get_material_by_name

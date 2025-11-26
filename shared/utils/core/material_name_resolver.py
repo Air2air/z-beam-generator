@@ -17,7 +17,7 @@ from functools import lru_cache
 if __name__ == "__main__":
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from data.materials.materials import load_materials
+from domains.materials.materials_cache import load_materials
 from shared.utils.core.slug_utils import create_material_slug, normalize_material_name
 
 

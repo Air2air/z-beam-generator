@@ -41,7 +41,7 @@ project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 from shared.validation.schema_validator import SchemaValidator
-from data.materials.materials import load_materials
+from domains.materials.materials_cache import load_materials
 from shared.utils.requirements_loader import (
     RequirementsLoader, 
     is_prohibited_field_in_materials,

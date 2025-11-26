@@ -22,8 +22,8 @@ import logging
 import yaml
 from pathlib import Path
 from typing import Dict, Any
-from data.materials.materials import load_materials_cached
-from data.materials.loader import get_material_challenges
+from domains.materials.materials_cache import load_materials_cached
+from domains.materials.data_loader import get_material_challenges
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +71,7 @@ class TrivialFrontmatterExporter:
         self.logger = logging.getLogger(__name__)
         
         # Load metadata from new architecture (MaterialProperties.yaml, Settings.yaml, CategoryMetadata.yaml, Categories.yaml)
-        from data.materials.loader import (
+        from domains.materials.data_loader import (
             get_parameter_ranges,
             get_property_categories,
             get_category_ranges,

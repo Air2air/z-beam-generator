@@ -487,7 +487,7 @@ def main():
             author_data = None
             if args.content_type == 'material':
                 # For materials, load author from material data and enrich from registry
-                from data.materials.materials import get_material_by_name_cached
+                from domains.materials.materials_cache import get_material_by_name_cached
                 from export.utils.author_manager import get_author_info_for_material
                 
                 material_data = get_material_by_name_cached(args.identifier)
@@ -530,7 +530,7 @@ def main():
     
     # Additional imports for material generation
     from shared.api.client_factory import create_api_client
-    from data.materials.materials import load_materials_cached as load_materials, clear_materials_cache
+    from domains.materials.materials_cache import load_materials_cached as load_materials, clear_materials_cache
     
     try:
         from shared.commands.common import (
@@ -588,7 +588,7 @@ def main():
             )
             
             # Get author data from material data (reusable approach)
-            from data.materials.materials import get_material_by_name_cached
+            from domains.materials.materials_cache import get_material_by_name_cached
             from export.utils.author_manager import get_author_info_for_material
             
             author_data = None

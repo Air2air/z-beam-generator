@@ -310,7 +310,7 @@ class ValidationOrchestrator:
             self.logger.info(f"📊 Running post-generation validation for {material_name}")
             
             # Load material data to validate
-            from data.materials.materials import load_materials, get_material_by_name
+            from domains.materials.materials_cache import load_materials, get_material_by_name
             materials_data = load_materials()
             material_info = get_material_by_name(material_name, materials_data)
             

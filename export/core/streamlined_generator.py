@@ -332,7 +332,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         try:
             self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle})")
             # Load material data first (using cached version for performance)
-            from data.materials.materials import get_material_by_name_cached
+            from domains.materials.materials_cache import get_material_by_name_cached
             material_data = get_material_by_name_cached(material_name)
             
             if material_data:

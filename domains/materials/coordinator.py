@@ -168,7 +168,7 @@ class UnifiedMaterialsGenerator:
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
-        from data.materials import load_materials_data
+        from domains.materials.data_loader import load_materials_data
         return load_materials_data()
     
     def generate_caption(self, material_name: str, material_data: Dict) -> Dict:

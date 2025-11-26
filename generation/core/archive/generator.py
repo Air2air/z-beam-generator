@@ -231,7 +231,7 @@ class DynamicGenerator:
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml"""
-        from data.materials import load_materials_data
+        from domains.materials.data_loader import load_materials_data
         return load_materials_data()
     
     def _load_all_personas(self) -> Dict[int, Dict]:

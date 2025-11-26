@@ -49,7 +49,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from shared.voice.post_processor import VoicePostProcessor
 from shared.api.client_factory import create_api_client
 from export.utils.author_manager import get_author_info_for_material
-from data.materials.materials import load_materials, get_material_by_name
+from domains.materials.materials_cache import load_materials, get_material_by_name
 
 logging.basicConfig(
     level=logging.INFO,

@@ -342,7 +342,8 @@ class PropertyValueResearcher:
                              context: ResearchContext) -> Optional[PropertyResult]:
         """Look up property from Materials.yaml data"""
         try:
-            from data.materials import get_material_data, get_material_by_name
+            from domains.materials.data_loader import load_material
+            from domains.materials.materials_cache import get_material_by_name_cached as get_material_by_name
             
             material_data = get_material_by_name(material_name)
             if not material_data:

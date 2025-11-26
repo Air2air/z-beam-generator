@@ -180,7 +180,7 @@ def _parse_materials_input(materials_input: str) -> list:
     """
     if materials_input == "--all" or materials_input.lower() == "all":
         # Load all materials from Materials.yaml
-        from data.materials.materials import load_materials
+        from domains.materials.materials_cache import load_materials
         materials_data = load_materials()
         return list(materials_data['materials'].keys())
     else:

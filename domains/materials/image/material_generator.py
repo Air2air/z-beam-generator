@@ -20,6 +20,8 @@ from domains.materials.image.material_config import MaterialImageConfig
 from domains.materials.image.prompts.image_pipeline_monitor import (
     get_pipeline_monitor, FailureStage, FailureType
 )
+from domains.materials.image.learning import create_logger
+from domains.contaminants import ContaminationValidator, ContaminationContext
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +47,7 @@ class MaterialImageGenerator:
         self.use_category_research = use_category_research
         self.prompt_builder = SharedPromptBuilder()
         self.pipeline_monitor = get_pipeline_monitor()
+        self.contamination_validator = ContaminationValidator()
         
         if gemini_api_key:
             try:
@@ -101,6 +104,53 @@ class MaterialImageGenerator:
                     )
                     print(f"   ✅ Applied {len(research_data.get('selected_patterns', []))} contamination patterns")
                     logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns")
+                    
+                    # 🔥 NEW: Validate contamination patterns against material properties
+                    print(f"\n🔬 Validating contamination patterns for {material_name}...")
+                    validation_result = self.contamination_validator.validate_generation_config(
+                        material_name=material_name,
+                        research_data=research_data,
+                        context=ContaminationContext(usage="laser_cleaning", environment="industrial")
+                    )
+                    
+                    if not validation_result.is_valid:
+                        # Log validation errors
+                        print(f"\n⚠️  Contamination validation found issues:")
+                        for error in validation_result.get_errors():
+                            print(f"   ❌ {error.message}")
+                            print(f"      {error.explanation}")
+                            if error.suggestion:
+                                print(f"      💡 {error.suggestion}")
+                            logger.error(f"Contamination validation error: {error.message}")
+                        
+                        # Filter out incompatible patterns
+                        original_count = len(research_data.get('selected_patterns', []))
+                        valid_patterns = []
+                        for pattern in research_data.get('selected_patterns', []):
+                            pattern_name = pattern.get('pattern_name', '')
+                            single_result = self.contamination_validator.validate_patterns_for_material(
+                                material_name=material_name,
+                                pattern_names=[pattern_name]
+                            )
+                            if single_result.is_valid:
+                                valid_patterns.append(pattern)
+                            else:
+                                print(f"   🚫 Filtered out: {pattern_name}")
+                        
+                        research_data['selected_patterns'] = valid_patterns
+                        filtered_count = original_count - len(valid_patterns)
+                        print(f"\n✅ Filtered {filtered_count} incompatible patterns ({len(valid_patterns)} remain)")
+                        logger.info(f"🔬 Filtered {filtered_count} incompatible contamination patterns")
+                        
+                        # If no valid patterns remain, fail
+                        if not valid_patterns:
+                            error_msg = f"No valid contamination patterns for {material_name}. All researched patterns were incompatible."
+                            logger.error(f"❌ {error_msg}")
+                            raise RuntimeError(error_msg)
+                    else:
+                        print(f"   ✅ All contamination patterns validated successfully")
+                        logger.info(f"✅ Contamination validation passed for {material_name}")
+                    
                 except json.JSONDecodeError as e:
                     # JSON parsing failure - already handled by category researcher monitor
                     logger.error(f"❌ JSON parsing failed for {material_name}: {e}")
@@ -131,12 +181,28 @@ class MaterialImageGenerator:
         elif research_data is None:
             raise RuntimeError(f"No research data provided for {material_name}. Research is required for image generation.")
         
+        # Get learned feedback for this category
+        learned_feedback = None
+        try:
+            from domains.materials.image.learning import create_logger
+            learning_logger = create_logger()
+            learned_feedback = learning_logger.get_category_feedback(
+                material_category=config.category,
+                limit=5  # Top 5 most common issues
+            )
+            if learned_feedback:
+                logger.info(f"🧠 Loaded {len(learned_feedback.split(chr(10)))-1} learned feedback items for {config.category}")
+        except Exception as e:
+            logger.debug(f"Could not load learned feedback: {e}")
+        
         # Build complete prompt with research data using SharedPromptBuilder
         prompt = self.prompt_builder.build_generation_prompt(
             material_name=material_name,
             research_data=research_data,
             contamination_uniformity=config.contamination_uniformity,
-            view_mode=config.view_mode
+            view_mode=config.view_mode,
+            material_category=config.category,
+            learned_feedback=learned_feedback
         )
         
         return prompt

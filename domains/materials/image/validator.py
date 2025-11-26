@@ -56,6 +56,10 @@ class MaterialValidationResult:
     micro_scale_accurate: Optional[bool] = None
     micro_scale_issues: Optional[List[str]] = None
     
+    # Text/Label Detection (CRITICAL - automatic fail if present)
+    text_labels_present: Optional[bool] = None
+    text_label_details: Optional[List[str]] = None
+    
     # Overall Assessment
     confidence_score: Optional[float] = None
     overall_assessment: Optional[str] = None
@@ -146,6 +150,18 @@ class MaterialValidationResult:
                 for issue in self.micro_scale_issues:
                     lines.append(f"    ⚠️  {issue}")
         
+            lines.append("")
+        
+        # Text/Label Detection (CRITICAL)
+        if self.text_labels_present is not None:
+            lines.append("🚨 TEXT/LABEL DETECTION (CRITICAL):")
+            if self.text_labels_present:
+                lines.append(f"  ❌ TEXT/LABELS FOUND - AUTOMATIC FAIL")
+                if self.text_label_details:
+                    for detail in self.text_label_details:
+                        lines.append(f"    ⚠️  {detail}")
+            else:
+                lines.append(f"  ✅ No text, labels, or annotations detected")
             lines.append("")
         
         # Overall assessment
@@ -308,10 +324,27 @@ class MaterialImageValidator:
         reference_image_urls: Optional[List[str]] = None
     ) -> str:
         """Build comprehensive validation prompt using shared templates."""
+        # Get learned feedback for this category
+        learned_feedback = None
+        if config and 'category' in config:
+            try:
+                from domains.materials.image.learning import create_logger
+                learning_logger = create_logger()
+                learned_feedback = learning_logger.get_category_feedback(
+                    material_category=config['category'],
+                    limit=5  # Top 5 most common issues
+                )
+                if learned_feedback:
+                    logger.info(f"🧠 Loaded learned feedback for validation of {config['category']}")
+            except Exception as e:
+                logger.debug(f"Could not load learned feedback: {e}")
+        
         base_prompt = self.prompt_builder.build_validation_prompt(
             material_name=material_name,
             research_data=research_data,
-            config=config
+            config=config,
+            material_category=config.get('category') if config else None,
+            learned_feedback=learned_feedback
         )
         
         # Add reference image comparison if URLs provided
@@ -354,11 +387,16 @@ class MaterialImageValidator:
         if "realism_score" not in analysis:
             raise ValueError("Validation analysis missing required 'realism_score' field")
         realism_score = analysis["realism_score"]
+        
+        # Check for text/labels - AUTOMATIC FAIL if present
+        text_labels_present = analysis.get("text_labels_present", False)
+        
         passed = (
             realism_score >= 75.0 and
             analysis.get("physics_compliant", False) and
             analysis.get("distribution_realistic", False) and
-            analysis.get("same_object", False)
+            analysis.get("same_object", False) and
+            not text_labels_present  # AUTOMATIC FAIL if text/labels detected
         )
         
         return MaterialValidationResult(
@@ -379,6 +417,8 @@ class MaterialImageValidator:
             research_deviations=analysis.get("research_deviations", []),
             micro_scale_accurate=analysis.get("micro_scale_accurate"),
             micro_scale_issues=analysis.get("micro_scale_issues", []),
+            text_labels_present=text_labels_present,
+            text_label_details=analysis.get("text_label_details", []),
             confidence_score=analysis.get("confidence"),
             overall_assessment=analysis.get("overall_assessment"),
             recommendations=analysis.get("recommendations", [])

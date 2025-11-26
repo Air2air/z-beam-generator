@@ -78,13 +78,13 @@ class TestMaterialGenerator:
     def test_material_validation_copper(self):
         """Test material validation for Copper"""
         # Direct validation without initializing full generator
-        from data.materials.materials import get_material_by_name_cached
+        from domains.materials.materials_cache import get_material_by_name_cached
         material_data = get_material_by_name_cached('Copper')
         assert material_data is not None
     
     def test_material_validation_invalid(self):
         """Test material validation for invalid material"""
-        from data.materials.materials import get_material_by_name_cached
+        from domains.materials.materials_cache import get_material_by_name_cached
         material_data = get_material_by_name_cached('NonExistentMaterial123')
         assert material_data is None
     
