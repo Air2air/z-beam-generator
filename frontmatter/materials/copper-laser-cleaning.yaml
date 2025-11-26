@@ -68,7 +68,27 @@ faq:
 - question: 'Copper in Industrial Use: Key Facts and Laser Cleaning'
   answer: "**What makes copper a go-to metal in industry?**  \nCopper stands out as a solid metal choice. It conducts electricity and heat well. Factories use it for wiring, pipes, and heat exchangers. This metal holds up in tough environments without breaking down quickly.\n\n**Tell me about its basic physical properties.**  \nDensity sits around 8.96 grams per cubic centimeter. Porosity stays near zero percent, so it's dense and non-porous. That means water or air won't seep in easily. You get a smooth, reliable surface for most jobs.\n\n**How does laser cleaning work on copper?**  \nLaser cleaning clears off rust, oils, or coatings from copper parts. It restores the finish without damaging the base metal. For standard setups, aim for about 100 watts of power. This level removes contaminants cleanly. Keep the beam moving to avoid overheating. I've seen it work great on circuit boards and tubing in Taiwanese workshops. Just adjust based on the dirt layer—but start low to test.\n\n**Any\
     \ tips for handling copper during cleaning?**  \nWear gloves; copper can stain skin over time. And watch the reflections—lasers bounce off shiny surfaces. Safe practices keep everyone steady. Overall, this process saves time compared to chemicals."
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -255,4 +275,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:31.609592'
+    generated_date: '2025-11-26T09:09:00.939366'

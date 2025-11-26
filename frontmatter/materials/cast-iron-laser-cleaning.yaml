@@ -85,7 +85,27 @@ faq:
   answer: '**Safeguards substrate flatness**. Laser cleaning offers a practical approach to restoring cast iron sealing surfaces at 5 J/cm² fluence and 50 μm spot size. It selectively removes gasket residue and oxides while safeguarding substrate flatness. This process upholds dimensional integrity, yielding an ideal surface for re-sealing without mechanical harm.'
 - question: How do I verify laser cleaning hasn't compromised the structural integrity of critical cast iron components?
   answer: By maintaining fluence below 5 J/cm², you avoid structural damage to cast iron in a practical way. After cleaning, apply microhardness testing and eddy current inspection effectively to check subsurface integrity. This process reveals any changes in mechanical properties, securing overall component reliability.
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -270,4 +290,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:31.363979'
+    generated_date: '2025-11-26T09:09:00.730362'

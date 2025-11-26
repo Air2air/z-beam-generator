@@ -1,0 +1,94 @@
+name: Stainless Steel 304
+slug: stainless-steel-304
+category: metal
+subcategory: alloy
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+title: Stainless Steel 304 Laser Cleaning Settings
+settings_description:
+  before: Before laser cleaning, Stainless Steel 304 surfaces require careful parameter selection
+  after: After cleaning, Stainless Steel 304 surfaces show restored appearance with controlled parameters
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Stainless Steel 304
+  href: /materials/stainless-steel-304
+images:
+  hero:
+    alt: Stainless Steel 304 surface during precision laser cleaning process removing contamination layer
+    url: /images/material/stainless-steel-304-laser-cleaning-hero.jpg
+  micro:
+    alt: Stainless Steel 304 surface at 500x magnification showing laser cleaning results
+    url: /images/material/stainless-steel-304-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+  wavelength:
+    value: 1064
+    unit: nm
+  spotSize:
+    value: 50
+    unit: μm
+  repetitionRate:
+    value: 50
+    unit: kHz
+  energyDensity:
+    value: 2.5
+    unit: J/cm²
+  pulseWidth:
+    value: 10
+    unit: ns
+  scanSpeed:
+    value: 500
+    unit: mm/s
+  passCount:
+    value: 2
+    unit: passes
+  overlapRatio:
+    value: 50
+    unit: '%'
+material_challenges:
+- Requires careful power calibration to prevent material damage
+- Monitor surface temperature during processing
+- Verify cleaning effectiveness through inspection
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.849044'

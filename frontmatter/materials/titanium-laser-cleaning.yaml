@@ -67,7 +67,22 @@ faq:
 - question: Titanium in Industrial Use and Laser Cleaning
   answer: "**What makes titanium a go-to metal in industry?**  \nTitanium stands out as a lightweight metal with strong corrosion resistance. We use it in aerospace parts, medical implants, and chemical processing equipment because it holds up well under tough conditions. Its density sits around 4.5 g/cm³, so components stay light yet durable.\n\n**Key physical properties for handling titanium?**  \nThis metal has a specific heat of roughly 522 J/kg·K, meaning it absorbs heat steadily without quick jumps in temperature. Melting starts at about 1941 K, which helps during high-heat processes. But watch for oxidation at those temps—it can form a tough oxide layer.\n\n**How does laser cleaning apply to titanium?**  \nLaser cleaning removes contaminants like oils or rust from titanium surfaces without damaging the base metal. The process works by vaporizing dirt through precise energy pulses. For titanium, start with a power around 100 W to clear buildup safely. This keeps the surface clean for\
     \ welding or coating, and it avoids chemicals that might etch the material. Just adjust based on the contaminant thickness—thicker layers need a bit more time."
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -312,4 +327,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.916153'
+    generated_date: '2025-11-26T09:09:03.154462'

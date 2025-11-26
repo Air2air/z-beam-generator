@@ -76,7 +76,27 @@ faq:
   answer: '**Yes, suitable for precise removal**. Absolutely; laser cleaning particularly enhances its low neutron absorption and corrosion resistance by precisely removing radioactive contaminants, thus avoiding any alteration to thermal properties or introduction of impurities that could impair reactor efficiency.'
 - question: How does the cost of laser cleaning beryllium **compare to its value** in high-stakes uses?
   answer: '**Long-term savings justify**. While the initial laser setup proves costly, it yields long-term savings by averting damage to pricey beryllium components in defense and electronics. Particularly, beryllium''s superior conductivity and stiffness thus warrant the investment over cheaper, inferior cleaning methods.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -320,4 +340,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:31.140400'
+    generated_date: '2025-11-26T09:09:00.535048'

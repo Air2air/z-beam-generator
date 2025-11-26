@@ -68,7 +68,27 @@ faq:
 - question: 'Brass: Frequently Asked Questions'
   answer: "Brass consists of an alloy that combines copper and zinc. Manufacturers produce it in various compositions to suit different needs. This metal serves in plumbing fittings, electrical components, and decorative hardware due to its corrosion resistance and machinability.\n\nWhat are the key physical properties of brass?  \nBrass offers good electrical conductivity at roughly 15,900,000 siemens per meter. Its electrical resistivity measures about 6.2 × 10⁻⁸ ohm-meters. These values make it suitable for connectors and wiring in industrial settings. The material also shows moderate strength and ductility, which allows shaping without cracking.\n\nHow does brass perform in industrial applications?  \nIndustries use brass for valves, gears, and instruments where durability matters. Its low friction reduces wear in moving parts. Yet, exposure to harsh environments can lead to tarnish over time.\n\nWhat laser cleaning settings apply to brass?  \nLaser cleaning removes oxidation and contaminants\
     \ from brass surfaces. Operators typically select a power range of 100 watts for effective results. This process restores the metal's appearance without damaging the substrate. It exposes clean layers beneath dirt buildup. In practice, short pulses help control heat input and prevent warping. Brass responds well to this method in restoration work for antiques or machinery parts.  \n\n(Word count: 198)"
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -314,4 +334,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:31.223456'
+    generated_date: '2025-11-26T09:09:00.610788'

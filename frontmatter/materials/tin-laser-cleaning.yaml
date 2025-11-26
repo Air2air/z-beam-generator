@@ -82,7 +82,22 @@ faq:
   answer: '**Capture ablated tin particulates**. When cleaning tin scrap using lasers at 1064 nm wavelength and 45 W power, particularly prioritize capturing ablated particulates to prevent tin leaching as an EPA-regulated pollutant. In electronics recycling, ensure RoHS compliance by keeping residues below 0.1% tin limits. Thus, effective ventilation and filtration systems remain essential for mitigating airborne hazards.'
 - question: How does the chemical reactivity of tin with oxygen affect the choice of laser cleaning methods for rusted tin surfaces?
   answer: Tin's strong affinity for oxygen, particularly in creating a tenacious SnO2 rust layer, requires laser cleaning to emphasize ablation over vaporization. This strategy avoids melting the metal and sparking re-oxidation. Specifically, a 1064 nm wavelength at 2.5 J/cm² fluence and 45 W power delivers precise oxide removal without surplus heat, thus typically under inert gas to shield the fresh surface.
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -327,4 +342,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.887788'
+    generated_date: '2025-11-26T09:09:03.126612'

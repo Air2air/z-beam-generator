@@ -82,7 +82,22 @@ faq:
   answer: '**Pulsed lasers curb V2O5**. From my precision laser engineering experience, pulsed lasers at 1064 nm with 5.1 J/cm² fluence notably ablate vanadium oxides cleanly, thus curbing toxic V2O5 formation via controlled heat—unlike CW lasers that overheat and amplify byproducts. In aerospace refurbishments, this nanosecond-pulse method delivers pristine surfaces free of residue or damage.'
 - question: What are the chemical properties of vanadium that make it **prone to re-contamination** after laser surface treatment?
   answer: '**Strong oxygen affinity forms V2O5**. Vanadium shows a strong affinity for oxygen, resulting in rapid formation of stable V2O5 layers on exposed surfaces following laser cleaning. Notably, this heightens re-contamination risks. Such reactivity particularly impairs post-treatment corrosion resistance, especially at 1064 nm wavelength and 5.1 J/cm² fluence. Thus, apply inert gas shielding during 100 W sessions to ensure a pristine, oxide-free finish.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -328,4 +343,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:34.094900'
+    generated_date: '2025-11-26T09:09:03.325409'

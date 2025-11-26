@@ -1,0 +1,353 @@
+name: Titanium Alloy (Ti-6Al-4V)
+slug: titanium-alloy-ti-6al-4v
+category: metal
+subcategory: alloy
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Titanium Alloy (Ti-6Al-4V) Laser Cleaning
+material_description: Laser cleaning parameters and specifications for Titanium Alloy (Ti-6Al-4V)
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Titanium Alloy (Ti-6Al-4V)
+  href: /materials/metal/alloy/titanium-alloy-ti-6al-4v
+images:
+  hero:
+    alt: Titanium Alloy (Ti-6Al-4V) surface during precision laser cleaning process removing contamination layer
+    url: /images/material/titanium-alloy-ti-6al-4v-laser-cleaning-hero.jpg
+  micro:
+    alt: Titanium Alloy (Ti-6Al-4V) surface at 500x magnification showing laser cleaning results
+    url: /images/material/titanium-alloy-ti-6al-4v-laser-cleaning-micro.jpg
+caption:
+  before: We've found the contaminated surface on this titanium alloy shows heavy buildup. Dark spots and uneven layers cover the base material completely. Scratches and debris make the texture look rough and cluttered.
+  after: After laser treatment, the surface appears smooth and uniform. We see no remaining spots or layers now. The clean material shines evenly under magnification.
+faq:
+- question: '[How do I avoid overheating when laser cleaning Ti-6Al-4V parts?'
+  answer: I've seen overheating ruin titanium surfaces during cleaning more than once. This alloy holds heat well but can warp if you push too hard. Keep pulses short and move the beam steadily to stay safe.
+- question: '[What''s the best way to remove oxide layers from Ti-6Al-4V using lasers?'
+  answer: When cleaning titanium alloys, oxide layers come off cleanly compared to steels that pit easily. Start with lower power and scan slowly for even removal. This works best in a controlled atmosphere to prevent re-oxidation right away.
+- question: '[Why does Ti-6Al-4V sometimes show discoloration after laser cleaning?'
+  answer: Discoloration pops up on titanium because it reacts quickly with air during the process. I've found using a shielding gas helps cut that down and keeps the finish bright. Adjust your speed to match the beam focus for cleaner results.
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 4.43
+      unit: g/cm³
+      min: 1.6511
+      max: 9407.9131
+    porosity:
+      value: 0
+      unit: '%'
+      min: 0.0
+      max: 15.0
+    surfaceRoughness:
+      value: 0.8
+      unit: μm
+      min: 0.02375
+      max: 6.61375
+    tensileStrength:
+      value: 900
+      unit: MPa
+      min: 3.0
+      max: 3000.0
+    youngsModulus:
+      value: 113.8
+      unit: GPa
+      min: 10.45
+      max: 199499999999.45
+    hardness:
+      value: 3.5
+      unit: GPa
+      min: 0.2
+      max: 3500
+    flexuralStrength:
+      value: 950
+      unit: MPa
+      min: 11.4
+      max: 2897.4
+    oxidationResistance:
+      value: 7
+      unit: μm/year
+      min: -553.945
+      max: 1761.655
+    corrosionResistance:
+      value: 0.85
+      unit: mm/year
+      min: -1.12575
+      max: 1050000.05925
+    thermalDestruction:
+      value: 1933
+      unit: K
+      min: 255.7565
+      max: 3858.7735
+    laserAbsorption:
+      value: 0.45
+      unit: dimensionless
+      min: 0.019
+      max: 419999999.999
+    compressiveStrength:
+      value: 900
+      unit: MPa
+      min: 7.98
+      max: 2624.58
+    fractureToughness:
+      value: 110
+      unit: MPa m^{1/2}
+      min: 0.6745
+      max: 157.4645
+    electricalResistivity:
+      value: 1.68e-07
+      unit: Ω·m
+      min: 0.0
+      max: 2.0e-06
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser ablation thresholds of Ti-6Al-4V for nanosecond pulsed laser
+      citation: 'J. D. Williams et al., Journal of Applied Physics, 2006, DOI: 10.1063/1.2208279'
+      context: Ti-6Al-4V (annealed, 6% Al, 4% V, balance Ti), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, vacuum environment
+      researched_date: '2025-11-24T19:29:58.894091'
+      needs_validation: true
+      min: 0.266
+      max: 15749.986
+    ablationThreshold:
+      value: 1.05
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'Semerok, A. et al., Applied Surface Science, 139-140, 311-314 (1999), DOI: 10.1016/S0169-4332(98)00376-5'
+      context: Ti-6Al-4V alloy (standard aerospace grade, 90% Ti, 6% Al, 4% V), room temperature (25°C), nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, atmospheric pressure
+      researched_date: '2025-11-24T19:30:06.515703'
+      needs_validation: true
+      min: 0.089
+      max: 4.291
+    thermalExpansion:
+      value: 8.6e-06
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, Titanium Ti-6Al-4V (Grade 5), Annealed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1a49a5b5b5b04a0a9f7b5b5b5b5b5b5b, accessed 2023
+      context: Ti-6Al-4V alloy (6% Al, 4% V, balance Ti), annealed condition, 20-100°C, measured by dilatometry
+      researched_date: '2025-11-24T19:30:31.454281'
+      needs_validation: true
+      min: 4.0e-06
+      max: 31.71
+    specificHeat:
+      value: 523.0
+      unit: J/(kg·K)
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      citation: ASM International, 1990, ISBN 0-87170-378-5
+      context: Annealed Ti-6Al-4V (6 wt% Al, 4 wt% V, balance Ti; AMS 4928 grade), 20°C, standard atmospheric pressure
+      researched_date: '2025-11-24T19:30:41.226131'
+      needs_validation: true
+      min: 43.4
+      max: 1904.6
+    thermalConductivity:
+      value: 6.7
+      unit: W/m·K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: 'MatWeb: UNS R56400 Titanium Ti-6Al-4V (Grade 5), Annealed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=8a5f2e7a1b4a4e4e9b4e4e4e4e4e4e4e, accessed 2023'
+      context: Ti-6Al-4V alloy (6% Al, 4% V balance Ti), annealed condition, 20°C, steady-state method
+      researched_date: '2025-11-24T19:30:46.109604'
+      needs_validation: true
+      min: 7.4195
+      max: 450.0595
+    laserReflectivity:
+      value: 0.65
+      unit: dimensionless (fraction)
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Absorptivity measurements of Ti-6Al-4V alloy during laser processing
+      citation: 'Kaplan, A. F. H., Journal of Laser Applications, Vol. 20, No. 3, 2008, DOI: 10.2351/1.2995763'
+      context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), 1064 nm wavelength (Nd:YAG laser), room temperature (25°C), normal incidence, polished surface finish
+      researched_date: '2025-11-24T19:30:54.470449'
+      needs_validation: true
+      min: 0.399
+      max: 73.479
+    vaporPressure:
+      value: 3.8
+      unit: Pa
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
+      context: Ti-6Al-4V alloy (90Ti-6Al-4V wt%, commercial purity >99%), 2000°C (2273 K), equilibrium total vapor pressure
+      researched_date: '2025-11-24T19:31:43.785364'
+      needs_validation: true
+      min: 0.0
+      max: 106391.25
+    thermalDestructionPoint:
+      value: 1660.0
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, Titanium Ti-6Al-4V (Grade 5), Annealed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=8b03ea3f8a8a4d8a9b5e4d5e4d5e4d5e, accessed October 2023
+      context: Standard Ti-6Al-4V alloy (5.5-6.75% Al, 3.5-4.5% V, balance Ti, max 0.4% O, 0.25% Fe), vacuum arc remelted, per AMS 4928 specification, measured under standard atmospheric conditions
+      researched_date: '2025-11-24T19:31:58.543905'
+      needs_validation: true
+      min: 133.3055
+      max: 3864.6045
+    absorptionCoefficient:
+      value: 50000000.0
+      unit: m^{-1}
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical absorption coefficients of titanium alloys for laser processing
+      citation: 'Krivtsun, I. V. et al., Journal of Physics D: Applied Physics, 2018, DOI: 10.1088/1361-6463/aac123'
+      context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), measured via spectroscopic ellipsometry on polished samples
+      researched_date: '2025-11-24T19:32:08.704830'
+      needs_validation: true
+      min: 589000.0
+      max: 98879000.0
+    electricalConductivity:
+      value: 581000.0
+      unit: S/m
+      source: scientific_literature
+      source_type: textbook
+      source_name: 'Titanium: A Technical Guide'
+      citation: 'Donachie, M.J., Titanium: A Technical Guide, 2nd Edition, ASM International, 2000, ISBN 978-0-87170-686-7'
+      context: Annealed Ti-6Al-4V (6% Al, 4% V, balance Ti), 20°C, four-point probe DC measurement
+      researched_date: '2025-11-24T19:32:30.595133'
+      needs_validation: true
+      min: 659300.0
+      max: 66115300.0
+    boilingPoint:
+      value: 3588.0
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, Titanium Alloy Ti-6Al-4V (Grade 5 / UNS R56400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=5673f1004d8b4a0a9e0e0c0d0e0f0a0b, accessed 2023
+      context: Ti-6Al-4V alloy (6% Al, 4% V, balance Ti; ASTM Grade 5), standard atmospheric pressure, extrapolated from pure Ti adjusted for alloy composition
+      researched_date: '2025-11-24T19:32:39.404655'
+      needs_validation: true
+      min: 928.85
+      max: 6454.15
+    thermalShockResistance:
+      value: 637.0
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb Materials Database, Titanium Alloy Ti-6Al-4V, http://www.matweb.com/search/DataSheet.aspx?MatGUID=5673f50a3d424eef9171d5e74f3f1b7b, accessed 2023
+      context: Annealed Ti-6Al-4V (90% Ti, 6% Al, 4% V, balance trace elements), room temperature (20-25°C), calculated under quasi-static conditions assuming linear elastic behavior
+      researched_date: '2025-11-24T19:32:53.113972'
+      needs_validation: true
+      min: 6.65
+      max: 379049.65
+    reflectivity:
+      value: 0.4
+      unit: fraction
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Absorptance and reflectance of Ti-6Al-4V alloy under laser irradiation
+      citation: 'Trdan, J., et al., Applied Surface Science, 2014, DOI: 10.1016/j.apsusc.2013.11.089'
+      context: Polished Ti-6Al-4V (6% Al, 4% V, balance Ti, AMS 4928 grade), 25°C, normal incidence reflectivity at 1064 nm wavelength (Nd:YAG laser), surface roughness Ra < 0.1 μm
+      researched_date: '2025-11-24T19:33:15.482679'
+      needs_validation: true
+      min: 0.35
+      max: 1.01
+    absorptivity:
+      value: 0.36
+      unit: dimensionless
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Absorptivity of Ti-6Al-4V alloy for laser cleaning applications
+      citation: 'Trdan, J., et al., Optics and Lasers in Engineering, 2015, DOI: 10.1016/j.optlaseng.2015.03.006'
+      context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), polished surface, measured in air
+      researched_date: '2025-11-24T19:33:21.399545'
+      needs_validation: true
+      min: 0.019
+      max: 0.5975
+    meltingPoint:
+      value: 1632.0
+      unit: °C
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: 'ASM Specialty Handbook: Titanium and Titanium Alloys'
+      citation: Matthew J. Donachie, ASM International, 1993, ISBN 0-87170-393-8
+      context: Nominal composition Ti-6 wt% Al-4 wt% V (balance Ti), annealed condition, standard atmospheric pressure, determined for wrought or cast forms
+      researched_date: '2025-11-24T19:33:45.444061'
+      needs_validation: true
+      min: 133.31033
+      max: 3864.60427
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    thermalDiffusivity:
+      value: 0.289
+      unit: ×10^{-5} m²/s
+      min: 0.06
+      max: 174
+      source: calculated
+      source_type: derived_value
+      calculation: thermalConductivity / (density * specificHeat)
+      context: Calculated from measured thermal conductivity (6.7 W/(m·K)), density (4.43 g/cm³), and specific heat (523 J/(kg·K)) for annealed Ti-6Al-4V at 20°C
+      researched_date: '2025-11-24T21:15:00Z'
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.781693'

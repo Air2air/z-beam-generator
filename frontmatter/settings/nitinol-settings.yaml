@@ -1,0 +1,94 @@
+name: Nitinol
+slug: nitinol
+category: metal
+subcategory: alloy
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+title: Nitinol Laser Cleaning Settings
+settings_description:
+  before: Before laser cleaning, Nitinol surfaces require careful parameter selection
+  after: After cleaning, Nitinol surfaces show restored appearance with controlled parameters
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Nitinol
+  href: /materials/nitinol
+images:
+  hero:
+    alt: Nitinol surface during precision laser cleaning process removing contamination layer
+    url: /images/material/nitinol-laser-cleaning-hero.jpg
+  micro:
+    alt: Nitinol surface at 500x magnification showing laser cleaning results
+    url: /images/material/nitinol-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+  wavelength:
+    value: 1064
+    unit: nm
+  spotSize:
+    value: 50
+    unit: μm
+  repetitionRate:
+    value: 50
+    unit: kHz
+  energyDensity:
+    value: 2.5
+    unit: J/cm²
+  pulseWidth:
+    value: 10
+    unit: ns
+  scanSpeed:
+    value: 500
+    unit: mm/s
+  passCount:
+    value: 2
+    unit: passes
+  overlapRatio:
+    value: 50
+    unit: '%'
+material_challenges:
+- Requires careful power calibration to prevent material damage
+- Monitor surface temperature during processing
+- Verify cleaning effectiveness through inspection
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.684031'

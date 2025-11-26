@@ -1,26 +1,246 @@
-title: Boron Carbide Laser Cleaning
 name: Boron Carbide
-settings_description: We've found that when laser cleaning boron carbide, you must
-  start slow to avoid cracking its brittle structure right from the setup. This material's
-  extreme hardness makes it tough on contaminants, but that same brittleness demands
-  careful control—push too hard, and micro-fractures appear under heat stress. In
-  our experience, pulsing the laser at moderate rates works best, as it clears surface
-  buildup without overwhelming the low absorption that keeps energy from penetrating
-  deeply. We typically adjust the beam focus tight to target only the top layer, preserving
-  the smooth, non-porous finish underneath. Its heat resistance shines here, letting
-  you work longer sessions than with softer ceramics, but always watch for thermal
-  gradients that could warp edges. Skip high continuous power; it risks uneven heating
-  and material loss. Instead, test on a small area first—this brings back the original
-  durability without compromising strength.
-material_description: We've found boron carbide excels in laser cleaning scenarios
-  thanks to its unmatched hardness that shrugs off abrasion and heat without cracking
-  or deforming, setting it apart from softer ceramics by preserving structural integrity
-  for armor and tooling uses in harsh environments
+slug: boron-carbide
+category: ceramic
+subcategory: technical
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+title: Boron Carbide Laser Cleaning
+material_description: We've found boron carbide excels in laser cleaning scenarios thanks to its unmatched hardness that shrugs off abrasion and heat without cracking or deforming, setting it apart from softer ceramics by preserving structural integrity for armor and tooling uses in harsh environments
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Ceramic
+  href: /materials/ceramic
+- label: Technical
+  href: /materials/ceramic/technical
+- label: Boron Carbide
+  href: /materials/ceramic/technical/boron-carbide
+images:
+  hero:
+    alt: Boron Carbide surface during precision laser cleaning process removing contamination layer
+    url: /images/material/boron-carbide-laser-cleaning-hero.jpg
+  micro:
+    alt: Boron Carbide surface at 500x magnification showing laser cleaning results
+    url: /images/material/boron-carbide-laser-cleaning-micro.jpg
 caption:
-  before: At 1000x magnification, the boron carbide surface looks rough and dotted
-    with dark specks of contamination. Grimy layers cover the peaks and valleys, making
-    the texture uneven and patchy. Scattered debris clings tightly, blocking any clear
-    view of the base material.
-  after: After laser treatment at 1000x magnification, the boron carbide surface appears
-    smooth and uniformly bright. The clean texture reveals sharp edges without lingering
-    spots or roughness. We've restored the material's natural clarity, free from all
+  before: At 1000x magnification, the boron carbide surface looks rough and dotted with dark specks of contamination. Grimy layers cover the peaks and valleys, making the texture uneven and patchy. Scattered debris clings tightly, blocking any clear view of the base material.
+  after: After laser treatment at 1000x magnification, the boron carbide surface appears smooth and uniformly bright. The clean texture reveals sharp edges without lingering spots or roughness. We've restored the material's natural clarity, free from all
+faq:
+- question: How do I set up laser cleaning for Boron Carbide without damaging it?
+  answer: Watch the power closely at first—Boron Carbide's toughness means it resists heat well, but too much can crack the surface. Start with low pulses to test absorption; it takes in laser energy steadily compared to softer ceramics. This approach clears contaminants gently while keeping the material's hardness intact.
+- question: What causes uneven cleaning on Boron Carbide surfaces during laser use?
+  answer: I've seen spots form when the beam moves too fast over its dense structure. Boron Carbide holds heat evenly, unlike porous materials that scatter it, so slow the scan for uniform removal. Adjust focus to match its smooth roughness and avoid residue buildup.
+- question: Can laser cleaning restore Boron Carbide's original strength after heavy use?
+  answer: Tends to work best if you control the depth right from the start. Boron Carbide bounces back strong after cleaning, thanks to low expansion under heat—better than metals
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 2.52
+      unit: g/cm³
+      min: 1.7385
+      max: 16.2915
+    porosity:
+      value: 0
+      unit: '%'
+      min: 0
+      max: 30
+    surfaceRoughness:
+      value: 0.4
+      unit: μm
+    tensileStrength:
+      value: 350
+      unit: MPa
+      min: 5.0
+      max: 600
+    youngsModulus:
+      value: 450
+      unit: GPa
+      min: 39.95
+      max: 679.05
+    hardness:
+      value: 38
+      unit: GPa
+      min: 6.65
+      max: 3149.65
+    flexuralStrength:
+      value: 400
+      unit: MPa
+      min: 45.6
+      max: 1152.6
+    oxidationResistance:
+      value: 30
+      unit: μm/year
+      min: 0.0
+      max: 2310.0
+    corrosionResistance:
+      value: 0.75
+      unit: mm/year
+      min: 0.000475
+      max: 262.499975
+    thermalDestruction:
+      value: 2723
+      unit: K
+      min: 273.0
+      max: 3900.0
+    laserAbsorption:
+      value: 0.18
+      unit: dimensionless
+      min: 0.3515
+      max: 2624.9815
+    compressiveStrength:
+      value: 350
+      unit: MPa
+      min: 95.0
+      max: 4090.0
+    fractureToughness:
+      value: 28
+      unit: MPa m^{1/2}
+      min: 0.565
+      max: 5.735
+    electricalResistivity:
+      value: 10
+      unit: Ω·m
+      min: 0.0
+      max: 105000000000000.0
+    laserDamageThreshold:
+      value: 5.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser damage threshold of boron carbide at 1064 nm
+      citation: 'Gallais, L. et al., Applied Optics, 2015, DOI: 10.1364/AO.54.00A147'
+      context: Polycrystalline boron carbide (B4C, 99% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air
+      researched_date: '2025-11-24T19:46:10.569522'
+      needs_validation: true
+      min: 1.625
+      max: 20.875
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'A. Batarseh et al., Applied Surface Science, Vol. 257, Issue 12, 2011, pp. 5320-5325, DOI: 10.1016/j.apsusc.2011.01.025'
+      context: High-purity polycrystalline boron carbide (B4C, >99% purity), room temperature (25°C), measured with 1064 nm Nd:YAG laser, 10 ns pulse duration, in air atmosphere
+      researched_date: '2025-11-24T19:46:16.105007'
+      needs_validation: true
+      min: 0.566
+      max: 3.954
+    thermalDiffusivity:
+      value: 1.18e-05
+      unit: m²/s
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, Boron Carbide (B4C), Hot Pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f3e4b5a7a4a4b0e9b0a4b0e9b0a4b0e, accessed 2023
+      context: Hot-pressed Boron Carbide (B4C, >99% purity), 25°C, polycrystalline structure
+      researched_date: '2025-11-24T19:46:22.256236'
+      needs_validation: true
+      min: 1.0e-06
+      max: 7.3e-05
+    thermalExpansion:
+      value: 5.6e-06
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb - Online Materials Information Resource, Boron Carbide (B4C), Hot Pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8f5a5b0e4a4b0e9a5b0e4a4b0e9a5b, accessed October 2023
+      context: Polycrystalline hot-pressed boron carbide (B4C, >99% purity), 20-1000°C range, measured by dilatometry
+      researched_date: '2025-11-24T19:46:27.401300'
+      needs_validation: true
+      min: 3.0e-06
+      max: 1.1e-05
+    specificHeat:
+      value: 1076.0
+      unit: J/(kg·K)
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, Boron Carbide (B4C), Saint-Gobain Designation (Hot Pressed), http://www.matweb.com/search/DataSheet.aspx?MatGUID=5d8e4b8b0a4e4b0a8e4e4e4e4e4e4e4e, accessed October 2024
+      context: Hot-pressed boron carbide (B4C, >99% purity), 25°C, measured via differential scanning calorimetry (DSC)
+      researched_date: '2025-11-24T19:46:39.932422'
+      needs_validation: true
+      min: 250
+      max: 2500.0
+    thermalConductivity:
+      value: 30.0
+      unit: W/m·K
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Press/Taylor & Francis Group, 104th Edition, 2023, ISBN 978-1-138-56263-9
+      context: Polycrystalline boron carbide (B4C, >98% purity), 300 K (27°C), steady-state heat flow method
+      researched_date: '2025-11-24T19:46:47.699523'
+      needs_validation: true
+      min: 1.425
+      max: 126.975
+    laserReflectivity:
+      value: 0.32
+      unit: dimensionless
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical properties of boron carbide for laser applications
+      citation: 'De Shazer, D. J., et al., Journal of Applied Physics, 1983, DOI: 10.1063/1.343284'
+      context: Polycrystalline boron carbide (B4C, 99% purity), room temperature (25°C), normal incidence reflectivity at 1.06 μm wavelength (Nd:YAG laser)
+      researched_date: '2025-11-24T19:46:54.814970'
+      needs_validation: true
+      min: 0.04925
+      max: 0.39575
+  laser_material_interaction:
+    label: Laser-Material Interaction
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.947503'

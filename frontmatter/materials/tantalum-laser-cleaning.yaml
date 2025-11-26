@@ -84,7 +84,22 @@ faq:
   answer: '**Nd:YAG avoids embrittlement risk**. CO2 lasers operating at 10.6 μm particularly face challenges with Tantalum''s high reflectivity, demanding excessive power that can lead to overheating and unwanted hydrogen absorption—worsening its tendency for embrittlement in cleaning processes. To achieve safer oxide removal, select Nd:YAG lasers at 1064 nm, using 2.5 J/cm² fluence and 100 W power for reducing heat-affected zones while preventing substrate damage. Thus, precise and embrittlement-free outcomes emerge for aerospace uses.'
 - question: What handling requirements are discussed in guides for **preparing Tantalum samples** before laser surface treatment in research labs?
   answer: '**Ensures oxide-free surfaces**. Guides particularly stress handling tantalum samples in cleanroom settings to avoid contamination, owing to its rarity and expense—typically via gloves and specialized tools. Pre-cleaning entails ultrasonic baths in isopropyl alcohol, then nitrogen drying, thus yielding oxide-free surfaces for reliable laser ablation at 2.5 J/cm² fluence on this refractory metal.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -330,4 +345,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.737382'
+    generated_date: '2025-11-26T09:09:02.976386'

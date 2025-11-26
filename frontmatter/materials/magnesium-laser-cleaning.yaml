@@ -84,7 +84,27 @@ faq:
   answer: Magnesium's low melting point (~650°C) and high reactivity particularly require precise laser parameters. Specifically, we must control fluence around 1.2 J/cm² to remove oxides without melting the substrate—a far narrower window than for steel or aluminum. Thus, meticulous tuning ensures damage-free outcomes.
 - question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
   answer: For cleaning magnesium surfaces, pulsed fiber lasers at 1064 nm prove particularly optimal. Specifically, employing a fluence of 1.2 J/cm² alongside a 10 ns pulse width minimizes thermal input, thus preventing harm to the delicate substrate. Scanning at 500 mm/s then delivers efficient, uniform oxide layer removal.
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -330,4 +350,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:32.355884'
+    generated_date: '2025-11-26T09:09:01.621231'

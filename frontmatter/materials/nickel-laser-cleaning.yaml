@@ -84,7 +84,27 @@ faq:
   answer: '**Absorption increases post-threshold**. Notably, nickel''s high reflectivity at 1064 nm reduces process efficiency and generates hazardous reflections. Yet, as ablation initiates at the 2.5 J/cm² threshold fluence, surface absorption surges dramatically. We counter this initial hazard particularly via angled beam delivery and protective enclosures that contain stray energy.'
 - question: What are the regulatory (OSHA, NIOSH) exposure limits for **nickel fumes**, and how do they impact laser cleaning operations?
   answer: '**Requires effective fume extraction**. The OSHA PEL for nickel metal fumes stands at 1 mg/m³, a level readily surpassed during laser ablation with 100W average power. Particularly, effective fume extraction proves essential, since the 1064 nm wavelength readily produces inhalable particulates. Thus, ongoing air monitoring helps maintain compliance with these rigorous exposure limits in your nickel processing tasks.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -331,4 +351,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:32.578072'
+    generated_date: '2025-11-26T09:09:01.835678'

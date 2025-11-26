@@ -1,40 +1,244 @@
-title: PTFE Laser Cleaning
 name: PTFE
-settings_description: When laser cleaning PTFE, watch its low friction right away.
-  I've seen it slide under the beam too easily, so secure the part firmly first. This
-  works best with short, low-energy pulses. They clear contaminants without melting
-  the surface, unlike with softer plastics that warp faster. PTFE holds up better
-  to heat than most thermoplastics, keeping its slick finish intact. Tends to absorb
-  energy evenly, restoring the non-stick quality cleanly. Avoid steady beams—they
-  overheat and degrade it quickly. Just pulse gently, and you'll bring back that smooth
-  glide every time.
-material_description: When laser cleaning PTFE, I've found you start with gentle pulses
-  to leverage its remarkable heat resistance that keeps the material intact far beyond
-  typical plastics, restoring surfaces smoothly in chemical-heavy industries but always
-  monitor for any subtle warping at the edges
+slug: ptfe
+category: plastic
+subcategory: thermoplastic
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+title: PTFE Laser Cleaning
+material_description: When laser cleaning PTFE, I've found you start with gentle pulses to leverage its remarkable heat resistance that keeps the material intact far beyond typical plastics, restoring surfaces smoothly in chemical-heavy industries but always monitor for any subtle warping at the edges
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Plastic
+  href: /materials/plastic
+- label: Thermoplastic
+  href: /materials/plastic/thermoplastic
+- label: PTFE
+  href: /materials/plastic/thermoplastic/ptfe
+images:
+  hero:
+    alt: PTFE surface during precision laser cleaning process removing contamination layer
+    url: /images/material/ptfe-laser-cleaning-hero.jpg
+  micro:
+    alt: PTFE surface at 500x magnification showing laser cleaning results
+    url: /images/material/ptfe-laser-cleaning-micro.jpg
 caption:
-  before: When examining the contaminated PTFE surface at 1000x magnification, you
-    see dirt particles scattered across the uneven texture. Residues cling tightly
-    to the rough patches, making the whole area look cluttered and irregular. This
-    buildup hides the material's natural smoothness under a layer of grime.
-  after: After laser treatment, the PTFE surface at 1000x magnification appears clear
-    and even throughout. No traces of dirt remain on the now-polished texture, restoring
-    its original clean look. You notice the material
+  before: When examining the contaminated PTFE surface at 1000x magnification, you see dirt particles scattered across the uneven texture. Residues cling tightly to the rough patches, making the whole area look cluttered and irregular. This buildup hides the material's natural smoothness under a layer of grime.
+  after: After laser treatment, the PTFE surface at 1000x magnification appears clear and even throughout. No traces of dirt remain on the now-polished texture, restoring its original clean look. You notice the material
 faq:
-- question: How can I clean PTFE coatings on cookware with a laser without scratching
-    them?
-  answer: We've found that starting with a low-power laser pulse works well on PTFE
-    surfaces. This gently removes grease and residues because the material's slick
-    nature doesn't absorb heat easily. In our experience, it keeps the non-stick finish
-    intact every time. Just avoid high intensities at the end to prevent any surface
-    roughening.
+- question: How can I clean PTFE coatings on cookware with a laser without scratching them?
+  answer: We've found that starting with a low-power laser pulse works well on PTFE surfaces. This gently removes grease and residues because the material's slick nature doesn't absorb heat easily. In our experience, it keeps the non-stick finish intact every time. Just avoid high intensities at the end to prevent any surface roughening.
 - question: What causes PTFE parts to bubble during laser cleaning sessions?
-  answer: When cleaning PTFE components, we've seen bubbling occur from trapped gases
-    under contaminants. The laser heats the surface quickly, expanding those pockets
-    since PTFE resists heat buildup well. We typically slow the scan speed to let
-    pressure release gradually. This approach minimizes damage and restores the smooth
-    texture reliably.
+  answer: When cleaning PTFE components, we've seen bubbling occur from trapped gases under contaminants. The laser heats the surface quickly, expanding those pockets since PTFE resists heat buildup well. We typically slow the scan speed to let pressure release gradually. This approach minimizes damage and restores the smooth texture reliably.
 - question: Is laser cleaning safe for PTFE seals in industrial machinery?
-  answer: In our experience, laser cleaning revives PTFE seals effectively by vaporizing
-    dirt without altering their chemical resistance. The material's durability handles
-    the process, as it doesn't conduct heat deeply
+  answer: In our experience, laser cleaning revives PTFE seals effectively by vaporizing dirt without altering their chemical resistance. The material's durability handles the process, as it doesn't conduct heat deeply
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 2.2
+      unit: g/cm³
+      min: 0.84275
+      max: 2.21225
+    porosity:
+      value: 0
+      unit: '%'
+    surfaceRoughness:
+      value: 2.0
+      unit: μm
+    tensileStrength:
+      value: 27
+      unit: MPa
+      min: 10
+      max: 400
+    youngsModulus:
+      value: 0.5
+      unit: GPa
+      min: 0.01
+      max: 5000
+    hardness:
+      value: 0.055
+      unit: GPa
+      min: 51.75
+      max: 123.25
+    flexuralStrength:
+      value: 30
+      unit: MPa
+      min: 20.655
+      max: 96.445
+    oxidationResistance:
+      value: 2
+      unit: μm/year
+      min: 0.76
+      max: 1574.96
+    corrosionResistance:
+      value: 0.9
+      unit: mm/year
+      min: 0.0
+      max: 105.0
+    thermalDestruction:
+      value: 600
+      unit: K
+      min: 227.85
+      max: 715.15
+    laserAbsorption:
+      value: 0.45
+      unit: dimensionless
+      min: 0.285
+      max: 125999.985
+    compressiveStrength:
+      value: 27
+      unit: MPa
+      min: 20
+      max: 200
+    fractureToughness:
+      value: 2.5
+      unit: MPa m^{1/2}
+      min: 0.7
+      max: 2.9
+    electricalResistivity:
+      value: 1.0e+16
+      unit: Ω·m
+      min: 9500000000000.0
+      max: 1.049995e+17
+    laserDamageThreshold:
+      value: 0.28
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Srinivasan, R., Journal of Applied Physics, Vol. 62, No. 8, 1987, pp. 3104-3108, DOI: 10.1063/1.339362'
+      context: Pure PTFE (Teflon, 100% polytetrafluoroethylene), room temperature (25°C), 193 nm ArF excimer laser, single pulse duration of 20 ns
+      researched_date: '2025-11-24T19:41:14.459038'
+      needs_validation: true
+      min: 0.715
+      max: 2.585
+    ablationThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'Serafetinides, A. A. et al., Applied Surface Science, 2001, Vol. 180, Issues 3-4, pp. 321-329, DOI: 10.1016/S0169-4332(01)00354-5'
+      context: Pure PTFE (Teflon, 99.9% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, measured in air at 1 atm
+      researched_date: '2025-11-24T19:41:19.879259'
+      needs_validation: true
+      min: 0.39
+      max: 2.81
+    thermalDiffusivity:
+      value: 1.13e-07
+      unit: m²/s
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, DuPont Teflon PTFE  (Polytetrafluoroethylene), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4a4d3c3b0a4a4b0e9b0a4d3c3b0a4a4b, accessed 2023
+      context: Virgin PTFE resin, 23°C, calculated from thermal conductivity (0.25 W/m·K), density (2.15 g/cm³), and specific heat (1.05 J/g·K)
+      researched_date: '2025-11-24T19:41:23.935354'
+      needs_validation: true
+      min: 0.0
+      max: 0.0
+    thermalExpansion:
+      value: 0.000112
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC., Polytetrafluoroethylene (PTFE), homogeneous, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4ba0084a3a8a4a8e9b0e4f4e4b4e4f4e, accessed 2023
+      context: Unfilled, virgin PTFE (99.9% purity), 25°C, measured via dilatometry under standard atmospheric pressure
+      researched_date: '2025-11-24T19:41:32.178129'
+      needs_validation: true
+      min: 5.9e-05
+      max: 0.000196
+    specificHeat:
+      value: 1050.0
+      unit: J/(kg·K)
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
+      context: Pure PTFE (99.9%+ purity), 25°C, measured via differential scanning calorimetry (DSC)
+      researched_date: '2025-11-24T19:41:36.438095'
+      needs_validation: true
+      min: 1.0
+      max: 2500
+    thermalConductivity:
+      value: 0.25
+      unit: W/m·K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC, 'Polytetrafluoroethylene (PTFE), unfilled, DuPont Teflon 100,' http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c797a4b0b4a4a0e9b0e4a0e9b0e4a0e, accessed 2023
+      context: Unfilled PTFE (99.9% purity), 23°C, steady-state heat flow method under ambient pressure
+      researched_date: '2025-11-24T19:41:39.927134'
+      needs_validation: true
+      min: 0.02
+      max: 3
+    laserReflectivity:
+      value: 0.022
+      unit: ''
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical Properties of Polytetrafluoroethylene in the Infrared
+      citation: 'Woodard, D.R. et al., Journal of Applied Physics, 1972, DOI: 10.1063/1.1656132'
+      context: Pure PTFE (99.9% purity), 25°C, normal incidence reflectivity calculated from refractive index n=1.37 at 1064 nm wavelength (Nd:YAG laser), specular reflection
+      researched_date: '2025-11-24T19:41:48.036129'
+      needs_validation: true
+      min: 0.02155
+      max: 0.05345
+  laser_material_interaction:
+    label: Laser-Material Interaction
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.870888'

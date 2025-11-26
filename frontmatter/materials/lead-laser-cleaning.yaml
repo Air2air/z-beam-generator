@@ -85,7 +85,27 @@ faq:
   answer: '**Classified as D008 hazardous waste**. Laser-ablated lead debris stands as a notable hazardous waste under classification D008. For safe handling, it requires sealing in certified containers during transport and disposal. Notably, the fine particulate produced at 2.5 J/cm² fluence lends itself to recycling by specialized facilities—the essential preferred path for this toxic metal.'
 - question: Are there specific laser safety considerations when cleaning lead in **confined spaces**?
   answer: '**Generates concentrated toxic fumes**. Cleaning lead in confined spaces requires extreme caution. Notably, the 1064 nm wavelength at 100W power produces highly concentrated toxic fumes, necessitating continuous atmospheric monitoring. It is essential to deploy enhanced local exhaust ventilation and emergency protocols, since airborne lead levels can swiftly surpass 500 µg/m³, the standard occupational exposure limit.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -324,4 +344,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:32.258964'
+    generated_date: '2025-11-26T09:09:01.532650'

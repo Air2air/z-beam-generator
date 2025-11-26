@@ -85,7 +85,27 @@ faq:
   answer: '**HEPA filters capture silver aerosols**. When cleaning silver via laser ablation, which produces vapors near its 2435 K boiling point, it''s essential to deploy local exhaust ventilation with capture velocities exceeding 0.5 m/s. HEPA filters, offering 99.97% efficacy at 0.3 μm, effectively trap condensed silver aerosols, augmented by activated carbon adsorption. Notably, real-time aerosol spectrometer monitoring keeps exposure below the OSHA PEL of 0.01 mg/m³, averting argyria and respiratory hazards.'
 - question: In medical device applications, how does laser cleaning of silver improve **electrical conductivity** (63,000,000 S/m) compared to traditional methods, and what validation is needed?
   answer: '**Restores conductivity without residue**. Laser cleaning of silver in medical devices notably restores electrical conductivity to 63,000,000 S/m, ablating contaminants at a 0.18 J/cm² threshold via 1064 nm wavelength. This approach sidesteps residues from chemical methods that elevate resistivity. Essential for superior contacts, it preserves 0.12 μm surface roughness, in contrast to abrasive techniques inducing pitting. Validation demands ASTM F1538 conductivity metrics, profilometry, and ISO 10993 compliance testing.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -333,4 +353,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.533363'
+    generated_date: '2025-11-26T09:09:02.787410'

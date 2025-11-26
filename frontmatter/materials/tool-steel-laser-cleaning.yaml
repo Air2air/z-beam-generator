@@ -83,7 +83,22 @@ faq:
   answer: '**Extends cleaning times 20-30%**. Oil-hardening tool steels, such as O-series alloys, exhibit a notable thermal conductivity of around 40 W/m·K, leading to swift heat dissipation that requires elevated laser power—up to 100 W—to maintain ablation without substrate damage. This distinct challenge typically prolongs cleaning times by 20-30%, necessitating reduced scan speeds of 500 mm/s for even contaminant removal at 5.1 J/cm² fluence.'
 - question: What are common issues with laser cleaning tool steel blades, like **edge chipping** or recast layer formation?
   answer: '**Low fluence high scan speed**. In tool steel blades, edge chipping during laser cleaning arises from notable localized overheating that cracks sharp edges. Recast layers—molten residue resolidifying—manifest as distinct uneven surfaces under SEM examination. For high-speed tool steels, it''s essential to apply 5.1 J/cm² fluence and 500 mm/s scan speed to limit thermal buildup, as knifemakers frequently recommend in forums.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -327,4 +342,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.964859'
+    generated_date: '2025-11-26T09:09:03.202428'

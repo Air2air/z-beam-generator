@@ -85,7 +85,27 @@ faq:
   answer: '**SEM-EDS confirms oxide removal**. For niobium, I suggest SEM paired with EDS—it''s essential for verifying oxide removal and identifying surface contaminants. Profilometry offers a notable means to assess roughness, maintaining levels below 1 µm in delicate applications. These non-destructive techniques confirm cleaning efficacy without risking fresh contamination on the vital surface.'
 - question: How does the presence of **niobium in alloys** (like zirconium-niobium or titanium-niobium) change the laser cleaning approach compared to pure niobium?
   answer: '**Avoids differential ablation risks**. Alloying niobium with zirconium or titanium brings notable risks of differential ablation, stemming from their varying thermal properties. It''s essential to fine-tune the 2.5 J/cm² fluence threshold, preventing selective removal of one element that might undermine the alloy''s surface integrity. Such challenges call for a more conservative strategy than with pure niobium.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -330,4 +350,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:32.604984'
+    generated_date: '2025-11-26T09:09:01.864510'

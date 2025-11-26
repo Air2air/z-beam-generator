@@ -84,7 +84,27 @@ faq:
   answer: '**Excels at organics, thin oxides**. Laser cleaning is particularly effective for removing organic residues and thin oxide layers on palladium surfaces at 2.5 J/cm² fluence. Yet, embedded metallic particles or thick oxides typically demand alternative approaches, thus risking substrate damage during removal, even under optimized 500 mm/s scan speeds and 1064 nm wavelength settings.'
 - question: Are there specific laser cleaning challenges for **palladium alloys** compared to pure palladium?
   answer: '**Prevents selective silver removal**. For palladium alloys, particularly Pd-Ag, precise fluence control near 2.5 J/cm² is essential to avoid selective silver removal caused by varying ablation thresholds. This thus preserves the alloy''s composition. Employing 50% overlap at 500 mm/s scan speed specifically addresses differential vaporization rates among elements, ensuring surface integrity.'
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -329,4 +349,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:32.681074'
+    generated_date: '2025-11-26T09:09:01.937279'

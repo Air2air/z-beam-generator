@@ -1,0 +1,94 @@
+name: Gneiss
+slug: gneiss
+category: stone
+subcategory: metamorphic
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+title: Gneiss Laser Cleaning Settings
+settings_description:
+  before: Before laser cleaning, Gneiss surfaces require careful parameter selection
+  after: After cleaning, Gneiss surfaces show restored appearance with controlled parameters
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Metamorphic
+  href: /materials/stone/metamorphic
+- label: Gneiss
+  href: /materials/gneiss
+images:
+  hero:
+    alt: Gneiss surface during precision laser cleaning process removing contamination layer
+    url: /images/material/gneiss-laser-cleaning-hero.jpg
+  micro:
+    alt: Gneiss surface at 500x magnification showing laser cleaning results
+    url: /images/material/gneiss-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+  wavelength:
+    value: 1064
+    unit: nm
+  spotSize:
+    value: 80
+    unit: μm
+  repetitionRate:
+    value: 40
+    unit: kHz
+  energyDensity:
+    value: 2.2
+    unit: J/cm²
+  pulseWidth:
+    value: 10
+    unit: ns
+  scanSpeed:
+    value: 400
+    unit: mm/s
+  passCount:
+    value: 2
+    unit: passes
+  overlapRatio:
+    value: 50
+    unit: '%'
+material_challenges:
+- Requires careful power calibration to prevent material damage
+- Monitor surface temperature during processing
+- Verify cleaning effectiveness through inspection
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.639412'

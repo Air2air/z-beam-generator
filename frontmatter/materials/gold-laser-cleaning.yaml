@@ -85,7 +85,27 @@ faq:
   answer: '**Aerosolizes hazardous alloying elements**. Laser cleaning gold with a 532 nm wavelength and 0.8 J/cm² fluence can aerosolize hazardous alloying elements like nickel or cadmium. This process demands proper fume extraction using HEPA/ULPA filtration for safety. Always consult the alloy''s MSDS in a straightforward way to identify and mitigate risks from vaporized contaminants.'
 - question: Why might a laser cleaning process that works on other precious metals (like silver) not be directly applicable to gold?
   answer: Gold's high thermal conductivity and chemical inertness call for specific laser settings, unlike those for reactive metals like silver. In this process, we precisely manage fluence around 0.8 J/cm² with a 532 nm wavelength to efficiently couple energy, removing contaminants while avoiding substrate microstructure damage.
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -330,4 +350,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:31.955532'
+    generated_date: '2025-11-26T09:09:01.221527'

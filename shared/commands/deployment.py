@@ -19,7 +19,44 @@ def deploy_to_production():
     invalidate_material_cache()  # Clear name lookup cache
     print("🔄 Cleared all caches to ensure fresh data")
     
-    # Define source and target paths - ONLY FRONTMATTER
+    # STEP 1: Regenerate frontmatter from Materials.yaml
+    print("\n" + "=" * 80)
+    print("📦 STEP 1: Regenerating frontmatter from Materials.yaml")
+    print("=" * 80)
+    
+    try:
+        # Use TrivialFrontmatterExporter to regenerate all frontmatter files
+        from export.core.trivial_exporter import export_all_frontmatter
+        import time
+        
+        start_time = time.time()
+        print("🔄 Exporting all materials from Materials.yaml...")
+        
+        results = export_all_frontmatter()
+        
+        elapsed = time.time() - start_time
+        success_count = sum(1 for v in results.values() if v)
+        
+        print(f"\n✅ Frontmatter regeneration complete:")
+        print(f"   • Success: {success_count}/{len(results)} materials")
+        print(f"   • Time: {elapsed:.1f}s")
+        
+        if success_count == 0:
+            print("❌ No materials were successfully exported")
+            return False
+            
+    except Exception as e:
+        print(f"❌ Frontmatter regeneration failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+    
+    # STEP 2: Deploy to Next.js
+    print("\n" + "=" * 80)
+    print("🚀 STEP 2: Deploying frontmatter to Next.js production site")
+    print("=" * 80)
+    
+    # Define source and target paths
     source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/frontmatter"
     target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter"
     
@@ -37,7 +74,6 @@ def deploy_to_production():
         print("🚀 Deploying frontmatter content from generator to Next.js production site...")
         print(f"📂 Source: {source_dir}")
         print(f"📂 Target: {target_dir}")
-        print("📋 Deploying frontmatter component only")
         
         deployment_stats = {
             "updated": 0,

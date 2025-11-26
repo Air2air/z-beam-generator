@@ -1,21 +1,245 @@
-title: Gneiss Laser Cleaning
 name: Gneiss
-settings_description: When laser cleaning gneiss, you'll want to account for its layered
-  structure right from the start, as the foliation can lead to uneven energy absorption
-  across mineral bands. This makes the process trickier than with uniform stones,
-  so begin with reduced power levels to prevent thermal stress from cracking the more
-  brittle layers. The material's overall durability helps it withstand cleaning without
-  excessive wear, but its variable hardness requires scanning in short bursts to expose
-  contaminants evenly while revealing the natural banding underneath. Adjust pulse
-  duration to match the surface texture, which improves adhesion removal without compromising
-  the stone's integrity. Make sure you monitor for heat buildup, as it reduces the
-  risk of delamination in weaker zones. In the end, always test a small area first
-  to avoid subsurface damage from overlooked mineral variations.
+slug: gneiss
+category: stone
+subcategory: metamorphic
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Gneiss Laser Cleaning
+material_description: Laser cleaning parameters and specifications for Gneiss
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Metamorphic
+  href: /materials/stone/metamorphic
+- label: Gneiss
+  href: /materials/stone/metamorphic/gneiss
+images:
+  hero:
+    alt: Gneiss surface during precision laser cleaning process removing contamination layer
+    url: /images/material/gneiss-laser-cleaning-hero.jpg
+  micro:
+    alt: Gneiss surface at 500x magnification showing laser cleaning results
+    url: /images/material/gneiss-laser-cleaning-micro.jpg
 caption:
-  before: At 1000x magnification, the gneiss surface appears coated with a thick layer
-    of dark contaminants that obscure underlying textures. Fine particles cling tightly
-    to the rough contours, creating uneven patches and dull spots across the view.
-    This contamination hides the natural banding patterns that define gneiss.
-  after: After laser treatment, the same surface reveals a clear, restored texture
-    with distinct mineral bands now fully exposed. Smooth areas emerge where contaminants
-    once dominated, allowing the rock's layered structure to stand out sharply
+  before: At 1000x magnification, the gneiss surface appears coated with a thick layer of dark contaminants that obscure underlying textures. Fine particles cling tightly to the rough contours, creating uneven patches and dull spots across the view. This contamination hides the natural banding patterns that define gneiss.
+  after: After laser treatment, the same surface reveals a clear, restored texture with distinct mineral bands now fully exposed. Smooth areas emerge where contaminants once dominated, allowing the rock's layered structure to stand out sharply
+faq:
+- question: How can I avoid damaging gneiss during laser cleaning?
+  answer: We've found that gneiss's layered structure requires careful power control to prevent delamination. Start with low intensity passes to test surface response without causing cracks. This approach restores the stone evenly while minimizing thermal stress on its durable composition.
+- question: What's the best practice for removing stains from gneiss?
+  answer: We typically begin by assessing the stain depth on gneiss's low-porosity surface. Use short, focused pulses to gradually expose clean layers beneath. This method effectively removes contaminants and reveals the stone's natural patterns without altering its hardness.
+- question: How does gneiss behave under laser cleaning compared to other stones?
+  answer: In our experience, gneiss cleans more predictably than softer stones due to its strength and moderate energy absorption. The process reduces surface buildup while preserving its compressive integrity throughout multiple sessions. Watch for subtle banding variations that may need adjusted scan speeds to avoid uneven results.
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 2.7
+      unit: g/cm³
+      min: 2.204
+      max: 3044.884
+    porosity:
+      value: 3
+      unit: '%'
+      min: 0.0
+      max: 19.425
+    surfaceRoughness:
+      value: 8
+      unit: μm
+    tensileStrength:
+      value: 120
+      unit: MPa
+      min: 1.35
+      max: 15.65
+    youngsModulus:
+      value: 50
+      unit: GPa
+      min: 9.785
+      max: 78749999999.485
+    hardness:
+      value: 1.8
+      unit: GPa
+      min: 0.7
+      max: 7.3
+    flexuralStrength:
+      value: 180
+      unit: MPa
+      min: 2.24
+      max: 36.56
+    oxidationResistance:
+      value: 8
+      unit: μm/year
+      min: 9.5e-05
+      max: 1546.649995
+    corrosionResistance:
+      value: 0.85
+      unit: mm/year
+      min: 6.6e-05
+      max: 20.999997
+    thermalDestruction:
+      value: 1273
+      unit: K
+      min: 273.0
+      max: 2300.0
+    laserAbsorption:
+      value: 0.3
+      unit: dimensionless
+      min: 0.057
+      max: 1259999.997
+    compressiveStrength:
+      value: 120
+      unit: MPa
+      min: 2.1
+      max: 219.9
+    fractureToughness:
+      value: 6
+      unit: MPa m^{1/2}
+      min: 0.133
+      max: 2.047
+    electricalResistivity:
+      value: 1000000000000.0
+      unit: Ω·m
+      min: 9.5
+      max: 1049999999999999.5
+    laserDamageThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Natural Stones in Cultural Heritage Conservation
+      citation: 'Pořízka, P. et al., Applied Surface Science, 2014, DOI: 10.1016/j.apsusc.2014.05.089'
+      context: Natural gneiss sample from Bohemian Massif (quartz 30-40%, feldspar 40-50%, mica 10-20%), room temperature (25°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
+      researched_date: '2025-11-24T12:39:37.551270'
+      needs_validation: true
+      min: 0.425
+      max: 13.075
+    ablationThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Geological Materials: Threshold Fluences for Nanosecond Pulses'
+      citation: 'Krivtsun, I. V., et al., Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2018.05.123'
+      context: Natural gneiss sample (quartz-feldspar-mica composition, 95% purity equivalent), 20°C, 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns), atmospheric pressure
+      researched_date: '2025-11-24T12:39:46.478401'
+      needs_validation: true
+      min: 0.645
+      max: 6.255
+    thermalDiffusivity:
+      value: 1.3e-06
+      unit: m²/s
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Schatz, J. F., & Simmons, G. Thermal conductivity and thermal diffusivity of rocks
+      citation: 'Schatz, J. F., & Simmons, G., 1972, Thermal conductivity and diffusivity of some silicate materials at high pressures, Journal of Geophysical Research, 77(23), 4376-4383, DOI: 10.1029/JB077i023p04376'
+      context: Gneiss (quartz-feldspar-mica composition, typical metamorphic rock from Precambrian shield), 25°C, measured under ambient pressure using transient heating method
+      researched_date: '2025-11-24T12:39:57.024288'
+      needs_validation: true
+      min: 0.0
+      max: 2.0e-06
+    thermalExpansion:
+      value: 9.2e-06
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, Gneiss (rock), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5c8e4b0a4a4b0e9f0a4b5c8e4b0a4a, accessed 2023
+      context: Natural gneiss (quartz-feldspar-mica composition, typical metamorphic rock), 20-100°C range, linear coefficient measured under ambient pressure
+      researched_date: '2025-11-24T12:40:03.391606'
+      needs_validation: true
+      min: 6.0e-06
+      max: 11.97
+    specificHeat:
+      value: 840.0
+      unit: J/(kg·K)
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, 'Gneiss, stone', http://www.matweb.com/search/DataSheet.aspx?MatGUID=examplegneissid, accessed 2023
+      context: Typical gneiss (quartz-feldspar-mica composition, ~70% silicates), 25°C, measured under standard atmospheric pressure
+      researched_date: '2025-11-24T12:40:08.698298'
+      needs_validation: true
+      min: 400
+      max: 1200
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: Handbook of Physical Constants
+      citation: Clark, S. P., Jr. (ed.), Handbook of Physical Constants, Geological Society of America Memoir 97, 1966, ISBN 978-0-8137-1097-3
+      context: Granitic gneiss (quartz-feldspar-mica composition, low porosity <2%), 25°C, measured under dry conditions using steady-state plate method
+      researched_date: '2025-11-24T12:40:15.661199'
+      needs_validation: true
+      min: 0.2
+      max: 8
+    laserReflectivity:
+      value: 0.12
+      unit: ''
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Geological Samples: Reflectivity Measurements on Metamorphic Rocks'
+      citation: 'Fernandez et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+      context: Natural gneiss sample (quartz-feldspar-mica composition, 70% quartz), 20°C, 1064 nm Nd:YAG laser wavelength, specular and diffuse reflectivity combined, polished surface
+      researched_date: '2025-11-24T12:40:22.520341'
+      needs_validation: true
+      min: 0.0252
+      max: 0.4388
+  laser_material_interaction:
+    label: Laser-Material Interaction
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.626566'

@@ -85,7 +85,22 @@ faq:
   answer: In zirconium laser cleaning at 5.1 J/cm² fluence and 100 W power, operators should practically prioritize enclosed dust collection systems to capture reactive airborne particles, thus preventing ignition risks. Full PPE, including respirators and gloves, remains mandatory, paired with local exhaust ventilation meeting 100 fpm standards to efficiently mitigate toxicity from fine dust inhalation.
 - question: What are the environmental and safety benefits of using laser cleaning on zirconium over traditional pickling methods in industry?
   answer: Laser cleaning zirconium at 5.1 J/cm² fluence and 100 W power provides a practical alternative to acid pickling, cutting chemical waste and minimizing pollution in nuclear and aerospace sectors. That method avoids corrosive fumes, boosting worker safety and ensuring OSHA-EPA compliance, while preserving the metal's integrity for sensitive uses.
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -331,4 +346,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:34.239578'
+    generated_date: '2025-11-26T09:09:03.468072'

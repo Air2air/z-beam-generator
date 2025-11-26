@@ -67,7 +67,22 @@ faq:
 - question: 'Steel in Laser Cleaning: Key Facts'
   answer: "**What makes steel a go-to material in industry?**  \nSteel stands out as a metal with solid strength and versatility. We use it everywhere—from bridges to machine parts—because it holds up under heavy loads. Its density sits around 7.85 g/cm³, which gives it that hefty feel without being too brittle. Porosity stays low at about 0.1%, so it resists water or gases sneaking in over time. In my projects, this reliability keeps things running smooth.\n\n**How does laser cleaning handle steel surfaces?**  \nLaser cleaning works well on steel by zapping away rust, paint, or grime without damaging the base. The beam heats just the top layer, and buildup vaporizes or flakes off. You get a clean finish that looks almost new. For steel, a power range of 100 W does the job nicely, especially on thinner sheets. It brings back that shiny surface fast, and no chemicals needed. Though thicker pieces might take a pass or two, results stay consistent. I've seen it fix old tools in minutes—practical\
     \ and effective."
-regulatoryStandards: null
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -251,4 +266,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.666155'
+    generated_date: '2025-11-26T09:09:02.909986'

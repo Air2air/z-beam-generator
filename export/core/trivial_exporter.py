@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Dict, Any
 from domains.materials.materials_cache import load_materials_cached
 from domains.materials.data_loader import get_material_challenges
+from shared.utils.core.slug_utils import create_material_slug
 
 logger = logging.getLogger(__name__)
 
@@ -221,7 +222,9 @@ class TrivialFrontmatterExporter:
         category_ranges = self._get_category_ranges(category)
         
         # Generate breadcrumb navigation (before field copying)
-        filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+        # POLICY: Strip parentheses from all filenames for clean URLs and consistency
+        material_slug = create_material_slug(material_name)
+        filename = f"{material_slug}-laser-cleaning.yaml"
         slug = filename.replace('.yaml', '')
         breadcrumb = self._generate_breadcrumb(material_data, slug)
         frontmatter['breadcrumb'] = breadcrumb
@@ -301,8 +304,11 @@ class TrivialFrontmatterExporter:
                 # If no FAQ in Materials.yaml, will try external FAQs.yaml after loop
                 continue
             elif key == 'regulatoryStandards':
-                # Regulatory standards is orchestrated from separate RegulatoryStandards.yaml file - skip in this loop
-                # Will be added after the loop from self.regulatory_standards
+                # Copy regulatoryStandards from Materials.yaml
+                # Keep description field for regulatory standards (user-facing)
+                if value:  # If exists in Materials.yaml, use it
+                    frontmatter['regulatoryStandards'] = self._strip_generation_metadata(value)
+                # If no regulatoryStandards in Materials.yaml, will try external RegulatoryStandards.yaml after loop
                 continue
             else:
                 # Copy as-is but remove description fields and strip generation metadata
@@ -333,8 +339,8 @@ class TrivialFrontmatterExporter:
             formatted_faq = self._format_faq_with_topics(cleaned)
             frontmatter['faq'] = self._strip_generation_metadata(formatted_faq)
         
-        # Add regulatory standards from RegulatoryStandards.yaml
-        if material_name in self.regulatory_standards:
+        # Add regulatory standards from RegulatoryStandards.yaml (if not already present from Materials.yaml)
+        if 'regulatoryStandards' not in frontmatter and material_name in self.regulatory_standards:
             regulatory_data = self.regulatory_standards[material_name]
             normalized = self._normalize_regulatory_standards(regulatory_data)
             frontmatter['regulatoryStandards'] = self._strip_generation_metadata(normalized)
@@ -402,7 +408,8 @@ class TrivialFrontmatterExporter:
         
         # Core metadata
         materials_page['name'] = full_frontmatter.get('name')
-        materials_page['slug'] = material_name.lower().replace(' ', '-')
+        # POLICY: Strip parentheses from slugs
+        materials_page['slug'] = create_material_slug(material_name)
         materials_page['category'] = full_frontmatter.get('category')
         materials_page['subcategory'] = full_frontmatter.get('subcategory')
         materials_page['content_type'] = 'unified_material'
@@ -441,7 +448,9 @@ class TrivialFrontmatterExporter:
         }
         
         # Write materials page YAML
-        filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+        # POLICY: Strip parentheses from filenames
+        material_slug = create_material_slug(material_name)
+        filename = f"{material_slug}-laser-cleaning.yaml"
         output_path = self.materials_output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -531,7 +540,9 @@ class TrivialFrontmatterExporter:
         }
         
         # Write settings page YAML
-        filename = f"{material_name.lower().replace(' ', '-')}-settings.yaml"
+        # POLICY: Strip parentheses from all filenames for clean URLs and consistency
+        material_slug = create_material_slug(material_name)
+        filename = f"{material_slug}-settings.yaml"
         output_path = self.settings_output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -1038,11 +1049,11 @@ class TrivialFrontmatterExporter:
         name = material_data.get('name', '')
         if name:
             # Build final href based on whether there's a subcategory
+            # POLICY: Strip parentheses from all URLs for clean routing
+            material_slug = create_material_slug(name)
             if subcategory:
-                material_slug = name.lower().replace(' ', '-')
                 final_href = f"/materials/{category.lower()}/{subcategory.lower()}/{material_slug}"
             else:
-                material_slug = name.lower().replace(' ', '-')
                 final_href = f"/materials/{category.lower()}/{material_slug}"
             
             breadcrumb.append({

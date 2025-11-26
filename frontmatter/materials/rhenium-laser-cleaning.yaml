@@ -83,7 +83,27 @@ faq:
   answer: '**High melting point thermal expansion**. In training laser cleaning operators for rhenium, highlight its notable melting point of 3186°C to avert unintended substrate melting. It''s essential to cap fluence at 2.5 J/cm², monitoring thermal expansion that risks cracks from uneven heat buildup—use 150 W power and 500 mm/s scans for harmless oxide removal.'
 - question: What regulatory standards apply to laser cleaning of rhenium in medical device production, particularly for biocompatibility?
   answer: For rhenium in medical devices, FDA's Center for Devices and Radiological Health alongside ISO 10993 oversee biocompatibility, requiring meticulous residue checks with XPS or SEM after cleaning. It's essential to validate procedures that yield oxide-free surfaces via 1064 nm wavelength at 2.5 J/cm² fluence, averting cytotoxic residues while upholding the metal's inert nature.
-regulatoryStandards: null
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
@@ -328,4 +348,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-22T23:32:33.180203'
+    generated_date: '2025-11-26T09:09:02.435971'

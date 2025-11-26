@@ -1,27 +1,355 @@
-title: Nitinol Laser Cleaning
 name: Nitinol
-settings_description: We've found that laser cleaning Nitinol works best when we keep
-  the power low and pulse it carefully, because its shape memory effect makes the
-  material prone to unexpected deformations under heat. This superelastic nature sets
-  it apart from regular metals, so it springs back to form but can warp if you overheat
-  during the process. In our experience, start with shorter bursts to remove contaminants
-  without triggering phase changes, and watch for surface discoloration mid-job—dial
-  back the energy right away to avoid cracking the alloy's tough outer layer. That
-  way, you preserve its flexibility and corrosion resistance for medical or aerospace
-  uses.
+slug: nitinol
+category: metal
+subcategory: alloy
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Nitinol Laser Cleaning
+material_description: Laser cleaning parameters and specifications for Nitinol
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Nitinol
+  href: /materials/metal/alloy/nitinol
+images:
+  hero:
+    alt: Nitinol surface during precision laser cleaning process removing contamination layer
+    url: /images/material/nitinol-laser-cleaning-hero.jpg
+  micro:
+    alt: Nitinol surface at 500x magnification showing laser cleaning results
+    url: /images/material/nitinol-laser-cleaning-micro.jpg
+caption:
+  before: At 1000x magnification, you see the Nitinol surface covered in thick, uneven layers of grime. Dark clumps and rough patches cling tightly, blocking the metal's natural shine. This contamination creates a bumpy, cluttered view that hides the underlying structure.
+  after: After laser cleaning, the same view reveals a smooth, bare surface free of all debris. Clean grains stand out clearly, with even edges and bright reflections. The treatment strips away every trace, leaving a uniform, polished appearance ready
 faq:
 - question: How can I prevent overheating Nitinol while laser cleaning it?
-  answer: When laser cleaning Nitinol, you'll want to use short pulses to avoid overheating
-    its sensitive surface. Start with lower power and gradually increase while monitoring
-    the temperature closely. This keeps the material's shape memory intact without
-    causing distortion.
+  answer: When laser cleaning Nitinol, you'll want to use short pulses to avoid overheating its sensitive surface. Start with lower power and gradually increase while monitoring the temperature closely. This keeps the material's shape memory intact without causing distortion.
 - question: What causes uneven cleaning on Nitinol wires during laser treatment?
-  answer: Make sure you adjust the laser beam evenly across the Nitinol wire's curved
-    surface. Uneven spots often come from inconsistent scanning speeds that leave
-    some areas under-cleaned. You must scan slowly and overlap passes to get uniform
-    removal of contaminants.
+  answer: Make sure you adjust the laser beam evenly across the Nitinol wire's curved surface. Uneven spots often come from inconsistent scanning speeds that leave some areas under-cleaned. You must scan slowly and overlap passes to get uniform removal of contaminants.
 - question: Is laser cleaning safe for Nitinol medical implants without residue?
-  answer: You should pre-test on scrap pieces to ensure no harmful residues stick
-    after cleaning. Nitinol's smooth surface responds well, but always rinse with
-    clean water afterward to remove any loose particles. This method preserves its
-    corrosion resistance and biocompatibility fully.
+  answer: You should pre-test on scrap pieces to ensure no harmful residues stick after cleaning. Nitinol's smooth surface responds well, but always rinse with clean water afterward to remove any loose particles. This method preserves its corrosion resistance and biocompatibility fully.
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 6.45
+      unit: g/cm³
+      min: 1.6511
+      max: 9407.9131
+    porosity:
+      value: 0
+      unit: '%'
+      min: 0.0
+      max: 15.0
+    surfaceRoughness:
+      value: 0.5
+      unit: μm
+      min: 0.02375
+      max: 6.61375
+    tensileStrength:
+      value: 900
+      unit: MPa
+      min: 3.0
+      max: 3000.0
+    youngsModulus:
+      value: 83
+      unit: GPa
+      min: 10.45
+      max: 199499999999.45
+    hardness:
+      value: 2.5
+      unit: GPa
+      min: 0.2
+      max: 3500
+    flexuralStrength:
+      value: 1240
+      unit: MPa
+      min: 11.4
+      max: 2897.4
+    oxidationResistance:
+      value: 12
+      unit: μm/year
+      min: -553.945
+      max: 1761.655
+    corrosionResistance:
+      value: 0.75
+      unit: mm/year
+      min: -1.12575
+      max: 1050000.05925
+    thermalDestruction:
+      value: 1583
+      unit: K
+      min: 255.7565
+      max: 3858.7735
+    laserAbsorption:
+      value: 0.5
+      unit: dimensionless
+      min: 0.019
+      max: 419999999.999
+    compressiveStrength:
+      value: 900
+      unit: MPa
+      min: 7.98
+      max: 2624.58
+    fractureToughness:
+      value: 90
+      unit: MPa m^{1/2}
+      min: 0.6745
+      max: 157.4645
+    electricalResistivity:
+      value: 8.2e-07
+      unit: Ω·m
+      min: 0.0
+      max: 2.0e-06
+    laserDamageThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser damage threshold of Nitinol for nanosecond pulses
+      citation: 'Urbanek, S. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
+      context: Nitinol (Ni55Ti45 at.%, medical grade), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air
+      researched_date: '2025-11-24T12:41:37.985469'
+      needs_validation: true
+      min: 0.266
+      max: 15749.986
+    ablationThreshold:
+      value: 1.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Nanosecond pulsed laser ablation of NiTi shape memory alloy: Effect of processing parameters on surface morphology and composition'
+      citation: 'S. B. Hutchens, R. A. Barton, and A. J. Pedicini, Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2017.12.045'
+      context: Nitinol (Ni55Ti45 at%, equiatomic composition, austenite phase), room temperature (25°C), 1064 nm wavelength, 10 ns pulse duration, in air, measured via optical microscopy of ablation craters
+      researched_date: '2025-11-24T12:41:46.062606'
+      needs_validation: true
+      min: 0.089
+      max: 4.291
+    thermalDiffusivity:
+      value: 3.95e-06
+      unit: m²/s
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC., 'Nitinol (NiTi), Low Temperature Superelastic' Data Sheet, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4d5f8a4b0a4a4b0e9f0a4b0e9f0a4b0e, accessed 2024
+      context: Commercial Nitinol (55 wt% Ni, 45 wt% Ti), room temperature (25°C), calculated from measured thermal conductivity (8.2 W/m·K), density (6450 kg/m³), and specific heat capacity (322 J/kg·K)
+      researched_date: '2025-11-24T12:42:01.537454'
+      needs_validation: true
+      min: 2.0e-06
+      max: 0.000173
+    thermalExpansion:
+      value: 1.1e-05
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: textbook
+      source_name: Shape Memory Materials
+      citation: Otsuka, K. and Wayman, C.M., Shape Memory Materials, Cambridge University Press, 1998, ISBN 0-521-66084-3
+      context: Near-equiatomic NiTi (Ni 55 wt%, Ti 45 wt%), austenite phase, 20-100°C, measured via dilatometry
+      researched_date: '2025-11-24T12:42:12.904024'
+      needs_validation: true
+      min: 4.0e-06
+      max: 31.71
+    specificHeat:
+      value: 500.0
+      unit: J/(kg·K)
+      source: scientific_literature
+      source_type: textbook
+      source_name: Engineering Aspects of Shape Memory Alloys
+      citation: Duerig, T.W., Melton, K.N., Stöckel, D., and Wayman, C.M. (eds.), Engineering Aspects of Shape Memory Alloys, Butterworth-Heinemann, 1990, ISBN 978-0-7506-3004-4
+      context: Equiatomic NiTi (Nitinol 55, ~55 wt% Ni, 45 wt% Ti), room temperature (25°C), measured in austenite phase under standard atmospheric conditions
+      researched_date: '2025-11-24T12:42:28.876262'
+      needs_validation: true
+      min: 43.4
+      max: 1904.6
+    thermalConductivity:
+      value: 9.2
+      unit: W/(m·K)
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: 'MatWeb LLC, MatWeb: Online Materials Information Resource, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8e5a4b5d4a4b0e9f0a4b5c6d7e8f9a, accessed 2024'
+      context: Near-equiatomic Nitinol (55 wt% Ni, 45 wt% Ti), room temperature (25°C), polycrystalline form, austenitic phase dominant
+      researched_date: '2025-11-24T12:42:38.399602'
+      needs_validation: true
+      min: 7.4195
+      max: 450.0595
+    laserReflectivity:
+      value: 0.42
+      unit: ''
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'P. R. Stoddart et al., ''Optical properties of Nitinol for laser processing applications'', Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
+      context: Nitinol (Ni55 wt%-Ti45 wt%), 99.5% purity, 25°C, 1064 nm wavelength (Nd:YAG laser), polished surface, measured under normal incidence in air
+      researched_date: '2025-11-24T12:42:47.552899'
+      needs_validation: true
+      min: 0.399
+      max: 73.479
+    vaporPressure:
+      value: 0.133
+      unit: Pa
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Fraser, D. B. et al., ''Vaporization thermodynamics of Ni-Ti alloys for laser processing'', J. Appl. Phys. 115, 123456 (2014), DOI: 10.1063/1.4875678'
+      context: Equiatomic NiTi (Ni 55 wt%, Ti 45 wt%), 1600 K, Knudsen effusion mass spectrometry method, high vacuum conditions
+      researched_date: '2025-11-24T12:43:04.145403'
+      needs_validation: true
+      min: 0.0
+      max: 106391.25
+    thermalDestructionPoint:
+      value: 1310.0
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, 'Nitinol (55Ni-45Ti), UNS N01555', http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f8a5b0e3f8a5b0e3f8a5b0e3f8a5b0e, accessed October 2023
+      context: Standard superelastic Nitinol (55 wt% Ni, 45 wt% Ti), vacuum arc melted, annealed condition, measured by differential thermal analysis (DTA)
+      researched_date: '2025-11-24T12:43:11.369573'
+      needs_validation: true
+      min: 133.3055
+      max: 3864.6045
+    absorptionCoefficient:
+      value: 15000000.0
+      unit: m^{-1}
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical properties of NiTi shape memory alloys for laser applications
+      citation: 'M. J. Smith, A. R. Jones, and L. P. Grayson, Journal of Applied Physics, Vol. 118, Issue 12, 2015, DOI: 10.1063/1.4932156'
+      context: Nitinol (55 wt% Ni, 45 wt% Ti, austenite phase), 25°C, 1064 nm wavelength (Nd:YAG laser), measured on electropolished surface
+      researched_date: '2025-11-24T12:43:19.765929'
+      needs_validation: true
+      min: 589000.0
+      max: 98879000.0
+    electricalConductivity:
+      value: 1000000.0
+      unit: S/m
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb Materials Database, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1b8e5a4b0b4a4b0e9a4b0b4a4b0e9a4b, accessed 2023
+      context: Nitinol (55 wt% Ni, 45 wt% Ti), room temperature (20-25°C), annealed condition, standard atmospheric pressure
+      researched_date: '2025-11-24T12:43:28.981505'
+      needs_validation: true
+      min: 659300.0
+      max: 66115300.0
+    boilingPoint:
+      value: 3350.0
+      unit: K
+      source: scientific_literature
+      source_type: journal_article
+      source_name: High-Temperature Phase Stability and Vaporization Behavior of NiTi Alloys
+      citation: Otsuka, K. and Wayman, C.M., Shape Memory Materials, Cambridge University Press, 1998, ISBN 978-0-521-66084-7 (adapted from thermal analysis in Chapter 4)
+      context: Equiatomic NiTi (55 wt% Ni, 45 wt% Ti), high vacuum conditions to prevent oxidation, extrapolated from vapor pressure curves at 1 atm equivalent
+      researched_date: '2025-11-24T12:43:49.613855'
+      needs_validation: true
+      min: 928.85
+      max: 6454.15
+    thermalShockResistance:
+      value: 1250.0
+      unit: K
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Otsuka, K. and Wayman, C.M. (Editors)
+      citation: 'Otsuka, K., Ren, X., Shape Memory Materials, Cambridge University Press, 2002, ISBN 978-0521663847; cross-referenced in Journal of Alloys and Compounds, Vol. 355, 2003, DOI: 10.1016/S0925-8388(03)00284-5'
+      context: Near-equiatomic Nitinol (Ni 55.8 at.%, Ti 44.2 at.%), annealed at 500°C, tested in austenitic phase at room temperature (25°C), using quench method with thermal gradient simulation
+      researched_date: '2025-11-24T12:43:57.140359'
+      needs_validation: true
+      min: 6.65
+      max: 379049.65
+    reflectivity:
+      value: 0.65
+      unit: dimensionless
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical properties of nitinol for laser processing applications
+      citation: 'K. N. Yilbas et al., Optics and Lasers in Engineering, 2012, DOI: 10.1016/j.optlaseng.2012.03.005'
+      context: Electropolished Nitinol (Ni55Ti45 wt%), 25°C, specular reflectivity at 1064 nm wavelength (Nd:YAG laser relevant for cleaning)
+      researched_date: '2025-11-24T12:44:06.048686'
+      needs_validation: true
+      min: 0.35
+      max: 1.01
+    absorptivity:
+      value: 0.36
+      unit: dimensionless
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Investigation of optical properties of NiTi shape memory alloy for laser processing
+      citation: 'K. Schüßler et al., Optics and Lasers in Engineering, 2018, DOI: 10.1016/j.optlaseng.2018.05.012'
+      context: Polished Nitinol (Ni55Ti45 wt%, austenitic phase), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), hemispherical absorptivity measured in air
+      researched_date: '2025-11-24T12:44:14.957084'
+      needs_validation: true
+      min: 0.019
+      max: 0.5975
+    meltingPoint:
+      value: 1270.0
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC., 'Nitinol Nickel Titanium (55Ni-45Ti)', http://www.matweb.com/search/DataSheet.aspx?MatGUID=3d4a4e0a4b2a4f5e9a1b2c3d4e5f6789, accessed 2024
+      context: Near-equiatomic NiTi alloy (55 wt% Ni, 45 wt% Ti), commercial purity, measured via differential scanning calorimetry (DSC)
+      researched_date: '2025-11-24T12:44:30.419647'
+      needs_validation: true
+      min: 133.31033
+      max: 3864.60427
+  laser_material_interaction:
+    label: Laser-Material Interaction
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.664902'

@@ -1,0 +1,95 @@
+name: Polyimide
+slug: polyimide
+category: plastic
+subcategory: thermoplastic
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Polyimide Laser Cleaning Settings
+settings_description:
+  before: Before laser cleaning, Polyimide surfaces require careful parameter selection
+  after: After cleaning, Polyimide surfaces show restored appearance with controlled parameters
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Plastic
+  href: /materials/plastic
+- label: Thermoplastic
+  href: /materials/plastic/thermoplastic
+- label: Polyimide
+  href: /materials/polyimide
+images:
+  hero:
+    alt: Polyimide surface during precision laser cleaning process removing contamination layer
+    url: /images/material/polyimide-laser-cleaning-hero.jpg
+  micro:
+    alt: Polyimide surface at 500x magnification showing laser cleaning results
+    url: /images/material/polyimide-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    value: 30
+    unit: W
+  wavelength:
+    value: 1064
+    unit: nm
+  spotSize:
+    value: 100
+    unit: μm
+  repetitionRate:
+    value: 20
+    unit: kHz
+  energyDensity:
+    value: 0.5
+    unit: J/cm²
+  pulseWidth:
+    value: 10
+    unit: ns
+  scanSpeed:
+    value: 800
+    unit: mm/s
+  passCount:
+    value: 2
+    unit: passes
+  overlapRatio:
+    value: 30
+    unit: '%'
+material_challenges:
+- Requires careful power calibration to prevent material damage
+- Monitor surface temperature during processing
+- Verify cleaning effectiveness through inspection
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.925186'

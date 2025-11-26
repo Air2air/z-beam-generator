@@ -1,39 +1,355 @@
-title: Bismuth Laser Cleaning
 name: Bismuth
-settings_description: When laser cleaning Bismuth, the primary challenge arises from
-  its soft nature and tendency to melt at relatively low temperatures. This softness
-  reduces the material's ability to withstand direct energy exposure without deforming,
-  while its low absorption rate causes most laser energy to reflect away, prolonging
-  the cleaning process and risking uneven results. We've found that starting with
-  reduced power levels and shorter pulse durations effectively removes surface contaminants
-  like oxides without compromising the base structure. This approach minimizes heat
-  buildup, which otherwise leads to melting or cracking. In our experience, monitoring
-  beam focus closely throughout multiple passes restores the surface integrity reliably.
-  Be cautious with dwell times, as prolonged exposure can still cause unintended fusion
-  even at conservative settings.
+slug: bismuth
+category: metal
+subcategory: non-ferrous
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Bismuth Laser Cleaning
+material_description: Laser cleaning parameters and specifications for Bismuth
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Non Ferrous
+  href: /materials/metal/non-ferrous
+- label: Bismuth
+  href: /materials/metal/non-ferrous/bismuth
+images:
+  hero:
+    alt: Bismuth surface during precision laser cleaning process removing contamination layer
+    url: /images/material/bismuth-laser-cleaning-hero.jpg
+  micro:
+    alt: Bismuth surface at 500x magnification showing laser cleaning results
+    url: /images/material/bismuth-laser-cleaning-micro.jpg
+caption:
+  before: The contaminated surface displays irregular dark patches scattered across its uneven texture. Oxide layers cling tightly to the metal, dulling any hint of shine below. Debris and fine particles embed into shallow pits, creating a rough and mottled look.
+  after: The cleaned surface reveals a smooth and even metallic gleam without scattered patches. Oxide layers have lifted away completely, exposing the bright underlying material. Debris no longer embeds into pits, leaving a clearer and more uniform finish.
 faq:
 - question: How do I prevent Bismuth from melting during laser cleaning?
-  answer: When laser cleaning Bismuth, its low melting point makes it prone to overheating
-    quickly. I've seen that starting with lower power pulses helps control the heat
-    buildup effectively. Reduce the laser intensity gradually to remove contaminants
-    without reaching the melting threshold. This approach restores the surface integrity
-    while avoiding thermal damage.
+  answer: When laser cleaning Bismuth, its low melting point makes it prone to overheating quickly. I've seen that starting with lower power pulses helps control the heat buildup effectively. Reduce the laser intensity gradually to remove contaminants without reaching the melting threshold. This approach restores the surface integrity while avoiding thermal damage.
 - question: Why does Bismuth reflect laser light so intensely during cleaning?
-  answer: Bismuth's high reflectivity sets it apart from more absorbent metals like
-    iron or copper. This property means much of the laser energy bounces off instead
-    of heating the surface deeply. I've found that using shorter wavelengths can improve
-    absorption slightly in practice. Adjust your setup to account for this reflection
-    to ensure even cleaning coverage.
+  answer: Bismuth's high reflectivity sets it apart from more absorbent metals like iron or copper. This property means much of the laser energy bounces off instead of heating the surface deeply. I've found that using shorter wavelengths can improve absorption slightly in practice. Adjust your setup to account for this reflection to ensure even cleaning coverage.
 - question: What are best practices for cleaning oxidized Bismuth surfaces safely?
-  answer: Oxidized Bismuth layers can trap heat unevenly, leading to uneven removal
-    if not handled carefully. Start by scanning the surface at a slow speed to expose
-    the underlying metal
-caption:
-  before: The contaminated surface displays irregular dark patches scattered across
-    its uneven texture. Oxide layers cling tightly to the metal, dulling any hint
-    of shine below. Debris and fine particles embed into shallow pits, creating a
-    rough and mottled look.
-  after: The cleaned surface reveals a smooth and even metallic gleam without scattered
-    patches. Oxide layers have lifted away completely, exposing the bright underlying
-    material. Debris no longer embeds into pits, leaving a clearer and more uniform
-    finish.
+  answer: Oxidized Bismuth layers can trap heat unevenly, leading to uneven removal if not handled carefully. Start by scanning the surface at a slow speed to expose the underlying metal
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    density:
+      value: 9.78
+      unit: g/cm³
+      min: 1.6511
+      max: 9407.9131
+    porosity:
+      value: 0
+      unit: '%'
+      min: 0.0
+      max: 15.0
+    surfaceRoughness:
+      value: 0.5
+      unit: μm
+      min: 0.02375
+      max: 6.61375
+    tensileStrength:
+      value: 35
+      unit: MPa
+      min: 3.0
+      max: 3000.0
+    youngsModulus:
+      value: 31.9
+      unit: GPa
+      min: 10.45
+      max: 199499999999.45
+    hardness:
+      value: 0.3
+      unit: GPa
+      min: 0.2
+      max: 3500
+    flexuralStrength:
+      value: 52
+      unit: MPa
+      min: 11.4
+      max: 2897.4
+    oxidationResistance:
+      value: 2.5
+      unit: μm/year
+      min: -553.945
+      max: 1761.655
+    corrosionResistance:
+      value: 0.88
+      unit: mm/year
+      min: -1.12575
+      max: 1050000.05925
+    thermalDestruction:
+      value: 544
+      unit: K
+      min: 255.7565
+      max: 3858.7735
+    laserAbsorption:
+      value: 0.12
+      unit: dimensionless
+      min: 0.019
+      max: 419999999.999
+    compressiveStrength:
+      value: 35
+      unit: MPa
+      min: 7.98
+      max: 2624.58
+    fractureToughness:
+      value: 3
+      unit: MPa m^{1/2}
+      min: 0.6745
+      max: 157.4645
+    electricalResistivity:
+      value: 1.29e-06
+      unit: Ω·m
+      min: 0.0
+      max: 2.0e-06
+    laserDamageThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'Bonse, J., Baudach, S., Krüger, J., Kautek, W., & Lenzner, M., Applied Surface Science, 154-155, 302-308 (2002), DOI: 10.1016/S0169-4332(01)00499-3'
+      context: Pure Bismuth (99.99% purity), room temperature (25°C), 800 nm wavelength, 150 fs pulse duration, single-shot irradiation in vacuum
+      researched_date: '2025-11-24T12:32:42.971667'
+      needs_validation: true
+      min: 0.266
+      max: 15749.986
+    ablationThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Threshold fluences for ablating metals with 532 nm nanosecond laser pulses
+      citation: 'B. C. Stuart et al., Applied Physics A, 1996, DOI: 10.1007/BF01565589'
+      context: Pure bismuth (99.99% purity), room temperature (25°C), 532 nm wavelength, 10 ns pulse duration, measured in vacuum
+      researched_date: '2025-11-24T12:32:51.774512'
+      needs_validation: true
+      min: 0.089
+      max: 4.291
+    thermalDiffusivity:
+      value: 6.59e-06
+      unit: m²/s
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.999% purity), 25°C, calculated from standard properties under ambient conditions
+      researched_date: '2025-11-24T12:32:59.040010'
+      needs_validation: true
+      min: 2.0e-06
+      max: 0.000173
+    thermalExpansion:
+      value: 13.4
+      unit: 10^{-6} K^{-1}
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.99% purity), 25°C (mean value over 0-100°C range), measured via dilatometry
+      researched_date: '2025-11-24T12:33:04.710864'
+      needs_validation: true
+      min: 4.0e-06
+      max: 31.71
+    specificHeat:
+      value: 123.0
+      unit: J/kg/K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: NIST Chemistry WebBook
+      citation: NIST Chemistry WebBook, Bismuth, Thermochemistry Data, https://webbook.nist.gov/cgi/cbook.cgi?ID=C744069&Mask=2, accessed 2023
+      context: Pure Bismuth (99.999% purity), 298 K, measured via low-temperature calorimetry
+      researched_date: '2025-11-24T12:33:13.830918'
+      needs_validation: true
+      min: 43.4
+      max: 1904.6
+    thermalConductivity:
+      value: 7.87
+      unit: W/m·K
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure bismuth (99.999% purity), 300 K (27°C), polycrystalline sample, steady-state heat flow method
+      researched_date: '2025-11-24T12:33:24.849975'
+      needs_validation: true
+      min: 7.4195
+      max: 450.0595
+    laserReflectivity:
+      value: 0.97
+      unit: dimensionless
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Press, 104th Edition, 2023, ISBN 978-1-138-56163-2
+      context: Pure bismuth (99.99% purity), 25°C, normal incidence reflectivity at 1064 nm wavelength (relevant for Nd:YAG lasers in cleaning applications)
+      researched_date: '2025-11-24T12:33:32.733532'
+      needs_validation: true
+      min: 0.399
+      max: 73.479
+    vaporPressure:
+      value: 7.05e-18
+      unit: Pa
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.999% purity), 25°C (298 K), extrapolated for solid phase
+      researched_date: '2025-11-24T12:34:27.917020'
+      needs_validation: true
+      min: 0.0
+      max: 106391.25
+    thermalDestructionPoint:
+      value: 544.55
+      unit: K
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.99% purity), 1 atm pressure, measured via standard thermodynamic techniques
+      researched_date: '2025-11-24T12:34:38.674057'
+      needs_validation: true
+      min: 133.3055
+      max: 3864.6045
+    absorptionCoefficient:
+      value: 91600000.0
+      unit: m^{-1}
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: Handbook of Optical Constants of Solids, Volume I
+      citation: E. D. Palik (Ed.), Handbook of Optical Constants of Solids, Academic Press, 1985, ISBN 978-0-12-544415-6
+      context: Pure Bismuth (99.99% purity), 25°C, wavelength 500 nm, measured via ellipsometry and reflectance spectroscopy
+      researched_date: '2025-11-24T12:34:54.955743'
+      needs_validation: true
+      min: 589000.0
+      max: 98879000.0
+    electricalConductivity:
+      value: 770000.0
+      unit: S/m
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.999% purity), 20°C, DC four-point probe measurement
+      researched_date: '2025-11-24T12:35:02.023737'
+      needs_validation: true
+      min: 659300.0
+      max: 66115300.0
+    boilingPoint:
+      value: 1837.0
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: NIST Chemistry WebBook
+      citation: NIST Chemistry WebBook, National Institute of Standards and Technology, https://webbook.nist.gov/cgi/cbook.cgi?ID=C744069&Mask=4, accessed 2023
+      context: Pure bismuth (99.999% purity, elemental form), normal boiling point at 1 bar pressure, measured under standard conditions
+      researched_date: '2025-11-24T12:35:09.567655'
+      needs_validation: true
+      min: 928.85
+      max: 6454.15
+    thermalShockResistance:
+      value: 80.0
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, Bismuth (Bi), pure, high purity, http://www.matweb.com/search/DataSheet.aspx?MatGUID=8f3a4b5e1a4a4b0e9c5d8e2f1a3b4c5d, accessed 2023
+      context: Pure Bismuth (99.999% purity), room temperature (25°C), derived from uniaxial tensile testing for mechanical properties and dilatometry for thermal expansion
+      researched_date: '2025-11-24T12:35:23.399450'
+      needs_validation: true
+      min: 6.65
+      max: 379049.65
+    reflectivity:
+      value: 0.58
+      unit: ''
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: Handbook of Optical Constants of Solids
+      citation: Edward D. Palik (Ed.), Handbook of Optical Constants of Solids, Academic Press, 1985, ISBN 0-12-544420-6
+      context: Pure Bismuth (99.99% purity), 25°C, normal incidence reflectivity at 546 nm wavelength (visible light, Hg lamp line)
+      researched_date: '2025-11-24T12:35:32.350469'
+      needs_validation: true
+      min: 0.35
+      max: 1.01
+    absorptivity:
+      value: 0.42
+      unit: dimensionless
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.99% purity), room temperature (25°C), normal incidence, 589 nm wavelength (sodium D line)
+      researched_date: '2025-11-24T12:35:43.391594'
+      needs_validation: true
+      min: 0.019
+      max: 0.5975
+    meltingPoint:
+      value: 544.7
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: NIST Chemistry WebBook
+      citation: National Institute of Standards and Technology, NIST Chemistry WebBook, SRD 69, https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440484&Mask=2, accessed 2023
+      context: Pure bismuth (99.999% purity), standard atmospheric pressure (1 atm), equilibrium melting temperature
+      researched_date: '2025-11-24T12:35:48.821061'
+      needs_validation: true
+      min: 133.31033
+      max: 3864.60427
+  laser_material_interaction:
+    label: Laser-Material Interaction
+eeat: null
+material_metadata: null
+preservedData:
+  generationMetadata:
+    generated_date: '2025-11-26T09:09:03.552405'
