@@ -92,7 +92,7 @@ class DataSourceAdapter(ABC):
         
         Args:
             identifier: Item identifier
-            component_type: Component type (subtitle, caption, etc.)
+            component_type: Component type (caption, faq, etc.)
             content_data: Content to write
             
         Raises:
@@ -126,7 +126,7 @@ class DataSourceAdapter(ABC):
         Different components need different extraction logic:
         - caption: Extract before/after sections
         - faq: Parse JSON structure
-        - subtitle: Return text as-is
+        - description: Return text as-is
         
         Args:
             text: Generated text

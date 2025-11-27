@@ -20,6 +20,7 @@
 | **Fix issues** | `TROUBLESHOOTING.md` |
 | **Learn architecture** | `docs/02-architecture/` |
 | **Review recent changes** | `docs/archive/2025-11/` (52 archived docs) |
+| **Image generation system** | `IMAGE_CENTRALIZATION_PLAN_NOV27_2025.md` |
 
 ---
 
@@ -33,6 +34,7 @@
 ├── QUICK_START.md                     # Fast setup guide
 ├── TROUBLESHOOTING.md                 # Common issues & solutions
 ├── GROK_QUICK_REF.md                  # 🤖 Critical policies (TIER system)
+├── IMAGE_CENTRALIZATION_PLAN_NOV27_2025.md  # Image generation architecture
 ├── .github/
 │   ├── copilot-instructions.md       # 🤖 AI assistant guidelines (PRIMARY)
 │   └── COPILOT_GENERATION_GUIDE.md   # Content generation commands
@@ -193,6 +195,29 @@ processing/
 - **Grade**: C+ → B+ (85/100)
 - **Docs**: `docs/archive/2025-11/E2E_PROCESSING_EVALUATION_NOV17_2025.md`
 - **Tests**: `tests/test_priority1_fixes.py` (10/10 passing)
+
+### Frontmatter Generation Architecture (Nov 27) 🔥 **NEW**
+- **Documentation**: Complete domain-agnostic frontmatter system
+  - `docs/architecture/FRONTMATTER_GENERATION_ARCHITECTURE.md` (1,064 lines)
+  - All domains export similar structures (author, content, metadata, properties)
+- **Minimal Domain Architecture Proposal**: 82% code reduction plan
+  - `docs/architecture/MINIMAL_DOMAIN_ARCHITECTURE_PROPOSAL.md` (600+ lines)
+  - Universal generator + 12 prompt files = 853 → 150 lines of code
+  - Migration plan: 9.5 hours, reversible approach
+- **Author Voice Coverage Verification**: Comprehensive coverage audit
+  - `AUTHOR_VOICE_COVERAGE_VERIFICATION_NOV27_2025.md` (complete analysis)
+  - ✅ VERIFIED: 100% text coverage - ALL text has author voice
+  - ✅ CONFIRMED: Proper pipeline integration in BaseFrontmatterGenerator
+  - Grade: A+ (100/100) - Complete coverage verified
+  - Mandatory post-processing: AI detection + author voice enhancement
+  - Domain-specific prompts as primary user interface
+  - Complete workflow examples for materials, contaminants, applications, regions
+- **Proposal**: Minimal domain architecture (82% code reduction)
+  - `docs/architecture/MINIMAL_DOMAIN_ARCHITECTURE_PROPOSAL.md` (600+ lines)
+  - Replace 4 generators (853 lines) with 1 universal generator (150 lines)
+  - Configuration-driven via config.yaml per domain
+  - Creates 12 new domain-specific prompt files
+  - Migration: ~9.5 hours | Status: 🔄 Ready for review
 
 ### Composite Quality Scoring (Nov 16)
 - Winston (60%) + Subjective (30%) + Readability (10%)

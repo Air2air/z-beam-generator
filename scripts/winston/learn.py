@@ -23,7 +23,7 @@ Usage:
     python3 scripts/winston/learn.py --optimize-prompt prompts/caption.txt --material "Aluminum"
     
     # Predict success before generating
-    python3 scripts/winston/learn.py --predict --material "Steel" --component subtitle --temp 0.7
+    python3 scripts/winston/learn.py --predict --material "Steel" --component caption --temp 0.7
     
     # Full learning dashboard
     python3 scripts/winston/learn.py --dashboard

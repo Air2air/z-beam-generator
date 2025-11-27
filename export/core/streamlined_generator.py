@@ -21,8 +21,8 @@ from typing import Dict, Optional, List
 from shared.generators.component_generators import APIComponentGenerator, ComponentResult
 from export.ordering.field_ordering_service import FieldOrderingService
 from export.research.property_value_researcher import PropertyValueResearcher
-from domains.materials.services.template_service import TemplateService
-from domains.materials.services.pipeline_process_service import PipelineProcessService
+from shared.services.template_service import TemplateService
+from shared.services.pipeline_process_service import PipelineProcessService
 
 # Unified property management service (replaces PropertyDiscoveryService + PropertyResearchService)
 from domains.materials.services.property_manager import PropertyManager

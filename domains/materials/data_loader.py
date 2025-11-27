@@ -4,8 +4,9 @@ Materials Data Loader
 Centralized loader for materials data across multiple YAML files:
 - Materials.yaml: Core material metadata (name, category, descriptions, etc.)
 - MaterialProperties.yaml: Material properties with category metadata, ranges, and definitions
-- Settings.yaml: Laser machine settings with parameter ranges and descriptions (migrated from MachineSettings.yaml)
 - CategoryMetadata.yaml: Templates, frameworks, and regulatory guidance
+
+Note: Settings.yaml moved to domains/settings/ domain (Nov 26, 2025)
 
 This module provides a unified interface to load complete material data
 by merging data from all files based on material names, plus accessor
@@ -28,8 +29,10 @@ Usage:
     # Load individual files
     materials_only = load_materials_yaml()
     properties_only = load_properties_yaml()
-    settings_only = load_settings_yaml()
     metadata_only = load_category_metadata_yaml()
+    
+    # REMOVED (Nov 26, 2025): Use orchestrators.data_orchestrator.load_complete_materials_data() instead
+    # Settings integration now handled at orchestrator layer to avoid cross-domain imports
 """
 
 import yaml
@@ -43,7 +46,7 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data" / "materials"
 MATERIALS_FILE = DATA_DIR / "Materials.yaml"
 PROPERTIES_FILE = DATA_DIR / "MaterialProperties.yaml"
-SETTINGS_FILE = DATA_DIR / "Settings.yaml"  # MIGRATED from MachineSettings.yaml (Nov 24, 2025)
+# SETTINGS_FILE moved to domains/settings/data_loader.py (Nov 26, 2025)
 METADATA_FILE = DATA_DIR / "IndustryApplications.yaml"  # Renamed from CategoryMetadata.yaml
 CATEGORIES_FILE = DATA_DIR / "CategoryTaxonomy.yaml"     # Renamed from Categories.yaml
 PROPERTY_DEFS_FILE = DATA_DIR / "PropertyDefinitions.yaml"  # NEW - Normalized architecture
@@ -100,37 +103,9 @@ def load_properties_yaml() -> Dict[str, Dict[str, Any]]:
         raise MaterialDataError(f"Failed to load MaterialProperties.yaml: {e}")
 
 
-@lru_cache(maxsize=1)
-def load_settings_yaml() -> Dict[str, Dict[str, Any]]:
-    """
-    Load Settings.yaml (migrated from MachineSettings.yaml on Nov 24, 2025)
-    
-    Returns:
-        Dict mapping material names to settings data (extracts from nested structure)
-        Format: { "Aluminum": { "powerRange": {...}, "wavelength": {...}, ... }, ... }
-    
-    Raises:
-        MaterialDataError: If file cannot be loaded
-    """
-    if not SETTINGS_FILE.exists():
-        raise MaterialDataError(f"Settings.yaml not found at {SETTINGS_FILE}")
-    
-    try:
-        with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-            settings = data.get('settings', {})
-            
-            # Extract machineSettings from nested structure
-            # Settings.yaml has: settings.MaterialName.machineSettings.{params}
-            # We need to return: { MaterialName: {params} }
-            extracted = {}
-            for material_name, material_settings in settings.items():
-                if 'machineSettings' in material_settings:
-                    extracted[material_name] = material_settings['machineSettings']
-            
-            return extracted
-    except Exception as e:
-        raise MaterialDataError(f"Failed to load Settings.yaml: {e}")
+# load_settings_yaml moved to domains/settings/data_loader.py (Nov 26, 2025)
+# Import from there if needed:
+# from domains.settings.data_loader import load_settings_yaml
 
 
 @lru_cache(maxsize=1)
@@ -159,11 +134,12 @@ def load_category_metadata_yaml() -> Dict[str, Any]:
 
 def load_materials_data() -> Dict[str, Any]:
     """
-    Load complete materials data by merging all three files
+    DEPRECATED: Use orchestrators.data_orchestrator.load_complete_materials_data() instead.
     
-    This is the primary function to use for loading materials data.
-    It loads Materials.yaml and merges in materialProperties and machineSettings
-    from their respective files.
+    This function is kept for backward compatibility but now delegates to the
+    orchestrator layer to avoid cross-domain imports.
+    
+    Load complete materials data with properties and settings merged.
     
     Returns:
         Complete materials data with structure:
@@ -173,7 +149,7 @@ def load_materials_data() -> Dict[str, Any]:
                     'name': 'Aluminum',
                     'category': 'metal',
                     'materialProperties': { ... },  # Merged from MaterialProperties.yaml
-                    'machineSettings': { ... },     # Merged from Settings.yaml
+                    'machineSettings': { ... },     # Merged from Settings.yaml (via orchestrator)
                     ...
                 },
                 ...
@@ -186,30 +162,9 @@ def load_materials_data() -> Dict[str, Any]:
     Raises:
         MaterialDataError: If any file cannot be loaded or merging fails
     """
-    # Load all three files
-    materials_data = load_materials_yaml()
-    properties_data = load_properties_yaml()
-    settings_data = load_settings_yaml()
-    
-    # Get materials dict
-    materials = materials_data.get('materials', {})
-    
-    # Merge properties and settings into each material
-    merged_count = 0
-    for material_name, material_data in materials.items():
-        # Merge materialProperties if available
-        if material_name in properties_data:
-            material_data['materialProperties'] = properties_data[material_name]
-            merged_count += 1
-        
-        # Merge machineSettings if available
-        if material_name in settings_data:
-            material_data['machineSettings'] = settings_data[material_name]
-    
-    # Update materials in the data structure
-    materials_data['materials'] = materials
-    
-    return materials_data
+    # ✅ FIXED (Nov 26, 2025): Delegate to orchestrator to avoid cross-domain imports
+    from orchestrators.data_orchestrator import load_complete_materials_data
+    return load_complete_materials_data()
 
 
 def load_material(material_name: str) -> Optional[Dict[str, Any]]:
@@ -287,10 +242,10 @@ def clear_cache() -> None:
     """
     load_materials_yaml.cache_clear()
     load_properties_yaml.cache_clear()
-    load_settings_yaml.cache_clear()
     load_category_metadata_yaml.cache_clear()
     load_property_research_yaml.cache_clear()
     load_setting_research_yaml.cache_clear()
+    # Settings cache is in settings domain (call separately if needed)
 
 
 # Convenience function for backward compatibility

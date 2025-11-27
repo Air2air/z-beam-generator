@@ -44,7 +44,7 @@ import random
 from pathlib import Path
 from typing import Dict, Optional
 
-from domains.materials.research.faq_topic_researcher import FAQTopicResearcher
+from shared.research.faq_topic_researcher import FAQTopicResearcher
 from generation.core.quality_gated_generator import QualityGatedGenerator
 
 logger = logging.getLogger(__name__)
@@ -147,7 +147,7 @@ class UnifiedMaterialsGenerator:
             self.logger.info("Quality gate will skip Winston detection (Grok evaluation only)")
         
         # Initialize StructuralVariationChecker for diversity enforcement
-        from generation.validation.structural_variation_checker import StructuralVariationChecker
+        from shared.text.validation.structural_variation_checker import StructuralVariationChecker
         structural_checker = StructuralVariationChecker(
             db_path='data/winston_feedback.db',
             min_diversity_score=6.0

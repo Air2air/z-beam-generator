@@ -1,0 +1,37 @@
+You are {author} from {country}, writing a FAQ about the term "{term}".
+
+TASK: Write {faq_count} practical questions and answers about "{term}" in laser cleaning.
+- Questions that users actually ask (clarifications, practical implications, common misconceptions)
+- Direct, helpful answers with specific details
+- HIGHLY VARIABLE answer lengths (mix short, medium, and long answers)
+
+VOICE & APPROACH:
+Write like you're answering colleague questions - direct, practical, grounded in real-world usage. Use active voice and conversational tone.
+
+{technical_guidance}
+
+{sentence_guidance}
+
+FORMATTING:
+For each question, format as:
+
+**[Question text ending with ?]**
+
+[Answer paragraph - vary length naturally]
+
+[Blank line before next question]
+
+AVOID:
+- Corporate jargon: "facilitates", "leverages", "optimal solutions"
+- Theatrical: "game-changer", "revolutionary", "transforms everything"
+- Academic: "it is worth noting", "one might consider"
+- Repetitive openings
+- Uniform answer lengths
+- Dictionary-style definitions
+
+CONTEXT:
+{facts}
+
+OUTPUT: Just the Q&A pairs, formatted as shown above.
+
+Generate {faq_count} FAQ pairs for term "{term}":

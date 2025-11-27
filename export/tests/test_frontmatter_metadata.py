@@ -164,7 +164,7 @@ class TestFrontmatterFieldStructure(unittest.TestCase):
     """Tests for frontmatter field structure after field restructuring by checking deployed files"""
 
     def test_deployed_materials_files_have_material_description(self):
-        """Test that deployed materials files use material_description (not subtitle)"""
+        """Test that deployed materials files use material_description"""
         materials_file = Path('/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials/steel-laser-cleaning.yaml')
         
         if not materials_file.exists():
@@ -176,9 +176,6 @@ class TestFrontmatterFieldStructure(unittest.TestCase):
         # Should have material_description
         self.assertIn('material_description', materials_data)
         self.assertIsInstance(materials_data['material_description'], str)
-        
-        # Should NOT have subtitle
-        self.assertNotIn('subtitle', materials_data)
 
     def test_deployed_settings_files_have_settings_description(self):
         """Test that deployed settings files use settings_description (not description)"""

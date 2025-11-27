@@ -7,7 +7,7 @@ and OVERWRITES the original fields with voice-enhanced versions in Materials.yam
 
 Workflow:
 1. Read material entry from Materials.yaml
-2. For each qualifying text field (caption, subtitle, FAQ answers)
+2. For each qualifying text field (caption, FAQ answers)
 3. Apply VoicePostProcessor to enhance text
 4. Validate enhanced version (authenticity score ≥70/100)
 5. OVERWRITE original field with enhanced version in Materials.yaml
@@ -132,16 +132,6 @@ class MaterialsVoiceEnhancer:
                 )
                 modified = modified or caption_modified
             
-            # Enhance subtitle
-            if 'subtitle' in material_data:
-                print("\n🎭 Processing subtitle...")
-                subtitle_modified = self._enhance_subtitle(
-                    material_data,
-                    author_info,
-                    intensity
-                )
-                modified = modified or subtitle_modified
-            
             # Enhance FAQ
             if 'faq' in material_data:
                 print("\n❓ Processing FAQ...")
@@ -234,40 +224,6 @@ class MaterialsVoiceEnhancer:
                 print(f"   ✅ Already good")
         
         return modified
-    
-    def _enhance_subtitle(
-        self,
-        material_data: Dict,
-        author_info: Dict,
-        intensity: int
-    ) -> bool:
-        """Enhance subtitle text."""
-        if 'subtitle' not in material_data:
-            return False
-        
-        subtitle_text = material_data['subtitle']
-        if not isinstance(subtitle_text, str):
-            return False
-        
-        score = self.voice_processor.get_voice_score(subtitle_text, author_info)
-        print(f"   Current: {score['authenticity_score']:.0f}/100 ({score['marker_count']} markers)")
-        
-        if score['authenticity_score'] < 70:
-            enhanced_text = self.voice_processor.enhance(
-                text=subtitle_text,
-                author=author_info,
-                voice_intensity=intensity
-            )
-            material_data['subtitle'] = enhanced_text
-            new_score = self.voice_processor.get_voice_score(
-                enhanced_text,
-                author_info
-            )
-            print(f"   ✅ Enhanced: {new_score['authenticity_score']:.0f}/100 ({new_score['marker_count']} markers)")
-            return True
-        else:
-            print(f"   ✅ Already good")
-            return False
     
     def _regenerate_faq_answer_in_english(
         self,
@@ -494,14 +450,6 @@ Answer:"""
                         if score['authenticity_score'] < 70:
                             issues.append(f"{material_name}: Caption after ({score['authenticity_score']:.0f}/100)")
                 
-                # Check subtitle
-                if 'subtitle' in material_data:
-                    score = self.voice_processor.get_voice_score(
-                        material_data['subtitle'],
-                        author_info
-                    )
-                    if score['authenticity_score'] < 70:
-                        issues.append(f"{material_name}: Subtitle ({score['authenticity_score']:.0f}/100)")
                 
                 # Check FAQ
                 if 'faq' in material_data:

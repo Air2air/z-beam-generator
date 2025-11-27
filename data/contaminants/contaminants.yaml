@@ -1,9 +1,10 @@
 schema_version: 1.0.0
-last_updated: '2025-11-25'
+last_updated: '2025-11-26'
 contamination_patterns:
   rust-oxidation:
     name: Rust / Iron Oxide Formation
-    description: Reddish-brown iron oxide formed through oxidation of ferrous metals in presence of oxygen and moisture
+    description: Reddish-brown iron oxide formed through oxidation of ferrous metals
+      in presence of oxygen and moisture
     composition:
     - Fe₂O₃
     valid_materials:
@@ -128,7 +129,8 @@ contamination_patterns:
           skin_protection: gloves
         substrate_compatibility_warnings:
         - Avoid laser cleaning on painted surfaces containing lead or chromates
-        - Ensure substrate is free of oils, solvents, or other contaminants that may produce toxic fumes
+        - Ensure substrate is free of oils, solvents, or other contaminants that may
+          produce toxic fumes
         - Check for galvanized coatings that may produce zinc oxide fume
         fire_explosion_risk: low
         toxic_gas_risk: low
@@ -137,7 +139,8 @@ contamination_patterns:
     name: Copper Patina / Verdigris
     scientific_name: Copper carbonate (Cu₂CO₃(OH)₂)
     category: oxidation
-    description: Green to blue-green copper carbonate layer formed on copper-containing metals through weathering
+    description: Green to blue-green copper carbonate layer formed on copper-containing
+      metals through weathering
     required_elements:
     - copper
     - Cu
@@ -147,14 +150,6 @@ contamination_patterns:
     - carbon_dioxide
     - time
     - atmospheric_exposure
-    visual_characteristics:
-      color_range:
-      - green
-      - blue-green
-      - turquoise
-      - teal
-      texture: smooth to powdery, matte finish
-      thickness: thin to medium surface layer
     valid_material_categories:
     - metals_non_ferrous
     valid_materials:
@@ -168,7 +163,8 @@ contamination_patterns:
     - Plastics
     - Ceramics
     - Wood
-    realism_notes: Verdigris is specific to copper and copper alloys. It's a protective layer, unlike rust which continues to degrade the metal.
+    realism_notes: Verdigris is specific to copper and copper alloys. It's a protective
+      layer, unlike rust which continues to degrade the metal.
     author:
       name: Todd Dunning
       title: MA
@@ -178,15 +174,18 @@ contamination_patterns:
         type: Organization
       email: info@z-beam.com
       image: /images/author/todd-dunning.jpg
-      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+      imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent
+        Inc., with precision optics tools
       url: https://z-beam.com/authors/todd-dunning
       sameAs:
       - https://linkedin.com/in/todd-dunning-optics
       - https://spie.org/profile/Todd.Dunning
     title: Copper Patina / Verdigris Laser Cleaning
     caption:
-      before: Surface shows contamination from copper patina / verdigris affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with copper patina / verdigris successfully removed through precise laser ablation.
+      before: Surface shows contamination from copper patina / verdigris affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with copper patina / verdigris
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -308,6 +307,14 @@ contamination_patterns:
         - Potential for substrate heating and discoloration
         fire_explosion_risk: low
         toxic_gas_risk: low
+    visual_appearance:
+      color_range:
+      - green
+      - blue-green
+      - turquoise
+      - teal
+      texture: smooth to powdery, matte finish
+      thickness: thin to medium surface layer
   aluminum-oxidation:
     id: aluminum_oxidation
     name: Aluminum Oxidation
@@ -321,22 +328,15 @@ contamination_patterns:
     formation_conditions:
     - oxygen
     - atmospheric_exposure
-    visual_characteristics:
-      color_range:
-      - white
-      - gray
-      - chalky
-      texture: powdery, chalky, matte
-      thickness: thin surface layer
     valid_materials:
     - Aluminum
-    - Aluminum Alloys
     invalid_materials:
     - Steel
     - Copper
     - Plastics
     - Wood
-    realism_notes: Aluminum forms a protective oxide layer that PREVENTS further corrosion. This is NOT rust.
+    realism_notes: Aluminum forms a protective oxide layer that PREVENTS further corrosion.
+      This is NOT rust.
     author:
       name: Alessandro Moretti
       title: Ph.D.
@@ -346,15 +346,18 @@ contamination_patterns:
         type: EducationalOrganization
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
-      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
       sameAs: &id002
       - https://scholar.google.com/citations?user=def456
       - https://linkedin.com/in/alessandro-moretti-engineer
     title: Aluminum Oxidation Laser Cleaning
     caption:
-      before: Surface shows contamination from aluminum oxidation affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with aluminum oxidation successfully removed through precise laser ablation.
+      before: Surface shows contamination from aluminum oxidation affecting material
+        appearance and properties.
+      after: Post-cleaning reveals restored surface with aluminum oxidation successfully
+        removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -474,12 +477,20 @@ contamination_patterns:
         - Reflective surfaces require appropriate laser wavelength selection
         fire_explosion_risk: low
         toxic_gas_risk: none
+    visual_appearance:
+      color_range:
+      - white
+      - gray
+      - chalky
+      texture: powdery, chalky, matte
+      thickness: thin surface layer
   uv-chalking:
     id: uv_chalking
     name: UV Photodegradation / Polymer Chalking
     scientific_name: Polymer chain scission
     category: photodegradation
-    description: White chalky residue from UV-induced breakdown of polymer chains at the surface
+    description: White chalky residue from UV-induced breakdown of polymer chains
+      at the surface
     required_elements:
     - organic_polymer
     - carbon_chains
@@ -488,13 +499,6 @@ contamination_patterns:
     - sunlight
     - time
     - outdoor_exposure
-    visual_characteristics:
-      color_range:
-      - white
-      - chalky white
-      - faded original color
-      texture: powdery, chalky, rough, crazed
-      thickness: thin surface degradation
     valid_material_categories:
     - polymers_thermoplastic
     - polymers_engineering
@@ -512,25 +516,29 @@ contamination_patterns:
     - Ceramics
     - Glass
     - Wood
-    realism_notes: UV chalking is specific to polymers with carbon-based chains. Metals and ceramics do not chalk.
+    realism_notes: UV chalking is specific to polymers with carbon-based chains. Metals
+      and ceramics do not chalk.
     author:
       name: Ikmanda Roswati
       title: Ph.D.
       jobTitle: Junior Research Scientist in Laser Physics
-      affiliation: &id003
+      affiliation: &id004
         name: Bandung Institute of Technology
         type: EducationalOrganization
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: &id004
+      sameAs: &id005
       - https://linkedin.com/in/ikmanda-roswati-physicist
       - https://www.academia.edu/profile/IkmandaRoswati
     title: UV Photodegradation / Polymer Chalking Laser Cleaning
     caption:
-      before: Surface shows contamination from uv photodegradation / polymer chalking affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with uv photodegradation / polymer chalking successfully removed through precise laser ablation.
+      before: Surface shows contamination from uv photodegradation / polymer chalking
+        affecting material appearance and properties.
+      after: Post-cleaning reveals restored surface with uv photodegradation / polymer
+        chalking successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -661,11 +669,19 @@ contamination_patterns:
         - Chlorinated polymers may produce phosgene gas under thermal decomposition
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - white
+      - chalky white
+      - faded original color
+      texture: powdery, chalky, rough, crazed
+      thickness: thin surface degradation
   industrial-oil:
     id: industrial_oil
     name: Industrial Oil / Grease Buildup
     category: contamination
-    description: Dark oily or greasy deposits from machinery lubricants, hydraulic fluids, or cutting oils
+    description: Dark oily or greasy deposits from machinery lubricants, hydraulic
+      fluids, or cutting oils
     context_required: true
     valid_contexts:
     - machinery
@@ -675,16 +691,173 @@ contamination_patterns:
     - hydraulic_systems
     - automotive
     - manufacturing_equipment
-    visual_characteristics:
-      color_range:
-      - black
-      - brown
-      - amber
-      - dark gray
-      texture: greasy, sticky, slippery
-      thickness: thin film to thick deposits
-    valid_materials:
-    - ALL
+    valid_materials: &id003
+    - ABS
+    - Acrylic (PMMA)
+    - Alabaster
+    - Alumina
+    - Aluminosilicate Glass
+    - Aluminum
+    - Aluminum Bronze
+    - Aluminum Nitride
+    - Ash
+    - Bamboo
+    - Basalt
+    - Beech
+    - Beryllium
+    - Birch
+    - Bismuth
+    - Bluestone
+    - Boron Carbide
+    - Boron Nitride
+    - Borosilicate Glass
+    - Brass
+    - Breccia
+    - Brick
+    - Bronze
+    - Calcite
+    - Carbon Fiber Reinforced Polymer
+    - Carbon Steel
+    - Cast Iron
+    - Cedar
+    - Cement
+    - Ceramic Matrix Composites CMCs
+    - Cerium
+    - Cherry
+    - Chrome-Plated Steel
+    - Chromium
+    - Cobalt
+    - Concrete
+    - Copper
+    - Crown Glass
+    - Dolomite
+    - Dysprosium
+    - Ebony
+    - Epoxy Resin Composites
+    - Europium
+    - Fiber Reinforced Polyurethane FRPU
+    - Fiberglass
+    - Fir
+    - Float Glass
+    - Fused Silica
+    - Gallium
+    - Gallium Arsenide
+    - Gallium Nitride
+    - Galvanized Steel
+    - Germanium
+    - Glass Fiber Reinforced Polymers GFRP
+    - Gneiss
+    - Gold
+    - Gorilla Glass
+    - Granite
+    - Hafnium
+    - Hastelloy
+    - Hickory
+    - Inconel
+    - Indium
+    - Indium Phosphide
+    - Iridium
+    - Iron
+    - Kevlar-Reinforced Polymer
+    - Lanthanum
+    - Lead
+    - Lead Crystal
+    - Limestone
+    - MDF
+    - Magnesium
+    - Mahogany
+    - Manganese
+    - Maple
+    - Marble
+    - Metal Matrix Composites MMCs
+    - Molybdenum
+    - Mortar
+    - Neodymium
+    - Nickel
+    - Niobium
+    - Nitinol
+    - Nylon
+    - Oak
+    - Onyx
+    - PCB
+    - PEEK
+    - PET
+    - PTFE
+    - PVC
+    - Palladium
+    - Phenolic Resin Composites
+    - Pine
+    - Plaster
+    - Platinum
+    - Plywood
+    - Polycarbonate
+    - Polyester Resin Composites
+    - Polyethylene
+    - Polyimide
+    - Polypropylene
+    - Polystyrene
+    - Polytetrafluoroethylene
+    - Polyvinyl Chloride
+    - Poplar
+    - Porcelain
+    - Porphyry
+    - Praseodymium
+    - Pyrex
+    - Quartz Glass
+    - Quartzite
+    - Redwood
+    - Rhenium
+    - Rhodium
+    - Rosewood
+    - Rubber
+    - Ruthenium
+    - Sandstone
+    - Sapphire Glass
+    - Scandium
+    - Schist
+    - Serpentine
+    - Shale
+    - Silicon
+    - Silicon Carbide
+    - Silicon Carbide (SiC)
+    - Silicon Germanium
+    - Silicon Nitride
+    - Silver
+    - Slate
+    - Soapstone
+    - Soda-Lime Glass
+    - Stainless Steel
+    - Stainless Steel 304
+    - Stainless Steel 316
+    - Steel
+    - Stoneware
+    - Stucco
+    - Tantalum
+    - Teak
+    - Tempered Glass
+    - Terbium
+    - Terracotta
+    - Thermoplastic Elastomer
+    - Tile
+    - Tin
+    - Titanium
+    - Titanium Alloy (Ti-6Al-4V)
+    - Titanium Carbide
+    - Titanium Nitride
+    - Tool Steel
+    - Travertine
+    - Tungsten
+    - Tungsten Carbide
+    - Urethane Composites
+    - Vanadium
+    - Walnut
+    - Willow
+    - Wrought Iron
+    - Yttria-Stabilized Zirconia
+    - Yttrium
+    - Zinc
+    - Zirconia
+    - Zirconium
     conditional_rules:
     - rule: Only valid in machinery/industrial equipment context
     - rule: NOT valid on decorative items, furniture, or non-machinery plastic parts
@@ -694,7 +867,8 @@ contamination_patterns:
     - wood_furniture
     - ceramic_decorations
     - architectural_elements
-    realism_notes: Oil/grease appears on MACHINERY parts, not randomly on all materials. Context is critical.
+    realism_notes: Oil/grease appears on MACHINERY parts, not randomly on all materials.
+      Context is critical.
     author:
       name: Alessandro Moretti
       title: Ph.D.
@@ -702,13 +876,16 @@ contamination_patterns:
       affiliation: *id001
       email: info@z-beam.com
       image: /images/author/alessandro-moretti.jpg
-      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+      imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+        Materials Dept., in research lab
       url: https://z-beam.com/authors/alessandro-moretti-phd
       sameAs: *id002
     title: Industrial Oil / Grease Buildup Laser Cleaning
     caption:
-      before: Surface shows contamination from industrial oil / grease buildup affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with industrial oil / grease buildup successfully removed through precise laser ablation.
+      before: Surface shows contamination from industrial oil / grease buildup affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with industrial oil / grease buildup
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -837,17 +1014,198 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to avoid substrate damage and excessive fume generation
+        - Laser parameters must be optimized to avoid substrate damage and excessive
+          fume generation
         - Test cleaning parameters on small area first to assess fume production
         - Avoid laser cleaning on thin or heat-sensitive materials
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - black
+      - brown
+      - amber
+      - dark gray
+      texture: greasy, sticky, slippery
+      thickness: thin film to thick deposits
+      appearance_on_categories:
+        metal:
+          description: Industrial oil and grease buildup on metal surfaces typically
+            presents as a discolored, often glossy or matte coating that can range
+            from a barely perceptible film to a thick, crusty layer. The color varies
+            depending on the type of oil/grease, contaminants present, and age, but
+            generally progresses from light to dark shades. Coverage patterns are
+            highly variable, influenced by gravity, surface geometry, and the source
+            of contamination.
+          color_variations: 'Fresh: Translucent amber or light yellow. Mildly Aged:
+            Light brown to tan. Moderately Aged: Medium to dark brown, sometimes with
+            reddish hues due to rust staining. Heavily Aged: Dark brown to black,
+            often with greenish or greyish tinges from oxidation or microbial growth.
+            Heat-affected: Blueish-black or iridescent.'
+          texture_details: 'Fresh: Slippery, oily, and smooth to the touch. Mildly
+            Aged: Slightly sticky or tacky. Moderately Aged: Greasy, waxy, or slightly
+            crusty. Heavily Aged: Hard, crusty, gummy, or tar-like. May contain embedded
+            particulate matter, creating a rough surface. Can also be powdery if the
+            oil has dried and oxidized.'
+          common_patterns: Drip marks on vertical surfaces, pooling in low-lying areas,
+            accumulation in corners and crevices, and a general tendency to spread
+            from the point of origin. Streaks and runs are common on inclined surfaces.
+            Flat horizontal surfaces often exhibit a more uniform coating, while vertical
+            surfaces show more pronounced gravitational effects.
+          aged_appearance: Fresh contamination appears as a thin, often transparent
+            film that is easily wiped away. Over time, it darkens in color, thickens,
+            and becomes more viscous or solid. Aged contamination is often more difficult
+            to remove, forming a hard, crusty layer that may require specialized cleaning
+            methods. Oxidation and polymerization contribute to the hardening and
+            darkening process.
+          lighting_effects: Fresh oil/grease often exhibits a glossy or wet appearance
+            under direct lighting, reflecting light specularly. As it ages and oxidizes,
+            the surface becomes more matte and absorbs more light. Iridescence or
+            rainbow effects can be observed in thin films due to interference. Under
+            fluorescent lighting, the color may appear slightly different compared
+            to sunlight.
+          thickness_range: 'Thin film: 0.1 - 10 micrometers. Moderate buildup: 10
+            - 100 micrometers. Heavy buildup: 100 micrometers - 1 millimeter. Extreme
+            buildup: > 1 millimeter (coin-thick or greater).'
+          distribution_patterns: 'Common patterns include: Point source spreading
+            (radial pattern from a leak), Streaky/linear (from dripping or wiping),
+            Edge accumulation (due to surface tension), Gradient from source (decreasing
+            thickness with distance), Patchy/spotty (uneven application or removal),
+            and Uniform coating (rare, but possible with intentional application).'
+          uniformity_assessment: Highly variable/irregular. The distribution is rarely
+            perfectly uniform due to variations in surface roughness, temperature
+            gradients, airflow, and the method of contamination. Gravity and surface
+            tension play significant roles in creating non-uniform patterns.
+          concentration_variations: 'Heavy concentration: Corners, crevices, low-lying
+            areas, and areas directly below the source of contamination. Light concentration:
+            Elevated surfaces, areas exposed to airflow, and areas that have been
+            partially cleaned. Vertical surfaces tend to have a gradient from top
+            (lighter) to bottom (heavier) due to gravity.'
+          typical_formations: Drip marks, runs/streaks, pools/puddles, thin films,
+            thick crusts, discrete patches, spots/dots, stains, and buildups are all
+            common. The specific formation depends on the viscosity of the oil/grease,
+            the surface orientation, and the environmental conditions. Thick crusts
+            form from repeated exposure and oxidation.
+          geometry_effects: Accumulates in corners and crevices due to surface tension
+            and capillary action. Pools on flat areas, especially horizontal surfaces.
+            Drips on vertical surfaces, creating streaks. Collects at edges, forming
+            a visible line. Follows contours of the surface, accentuating imperfections.
+            Fills depressions and small holes.
+          gravity_influence: Strong downward flow behavior on vertical and inclined
+            surfaces. Pooling at bottom edges and in low-lying areas. Drip marks from
+            top to bottom. Vertical streaking is a common manifestation of gravitational
+            effects. Settling on horizontal surfaces, creating a more uniform coating.
+          coverage_ranges: 'Sparse (<10% coverage): Isolated spots or streaks, barely
+            visible film. Light (10-30%): Thin, patchy coating, easily wiped away.
+            Moderate (30-60%): Visible coating, some areas still clean, requires more
+            effort to remove. Heavy (60-85%): Thick, continuous coating, difficult
+            to remove. Extreme (>85%): Very thick, encrusted layer, may obscure the
+            underlying surface features.'
+          edge_center_behavior: Preferentially accumulates at edges and in corners
+            due to surface tension. The oil/grease tends to 'wick' towards the edges,
+            creating a visible line or buildup. Center areas may have a thinner, more
+            uniform coating, especially on flat surfaces.
+          buildup_progression: 'Starts as a thin, often invisible film that gradually
+            thickens over time. Begins at contact points (e.g., leaks, drips) and
+            spreads outward. Accumulation is often faster at edges and in crevices.
+            Layering effects can occur with repeated exposure. Seasonal variations
+            in temperature and humidity can affect the rate of buildup and oxidation.
+            Timeframes: Noticeable film within hours, visible buildup within days,
+            significant crusting within months.'
+        ceramic:
+          description: Industrial oil and grease buildup on ceramic surfaces typically
+            presents as a discolored, often darkened, coating that can range from
+            a barely visible sheen to a thick, sticky layer. The color is usually
+            darker than the original ceramic, and the texture varies from smooth and
+            oily to rough and crusty depending on the age and type of contaminant.
+          color_variations: Fresh contamination often appears as a translucent or
+            light amber/honey color. As it ages and oxidizes, it darkens to shades
+            of brownish-yellow, dark brown, and eventually black. In some cases, especially
+            with metalworking fluids, a greenish-brown tint can be present due to
+            the presence of dissolved metals.
+          texture_details: The texture can range from smooth and oily when fresh,
+            to sticky and tacky as it begins to dry, and eventually hard and crusty
+            as it ages and oxidizes. Dust and debris often become embedded in the
+            grease, creating a rough, sandpaper-like surface. At a microscopic level,
+            the buildup may exhibit a layered or striated structure due to repeated
+            applications and drying cycles.
+          common_patterns: Oil and grease tend to accumulate in low-lying areas, crevices,
+            and edges due to gravity and surface tension. Initial contamination often
+            appears as localized spots or streaks near the source of the leak or application.
+            Over time, these spots can coalesce and spread, forming a more uniform
+            coating, especially on horizontal surfaces.
+          aged_appearance: Fresh contamination appears as a thin, glossy film. Aged
+            contamination becomes thicker, darker, and more matte. It often hardens
+            and forms a crusty or gummy residue that is difficult to remove. The color
+            darkens significantly, and the surface becomes rougher due to the accumulation
+            of dirt and debris.
+          lighting_effects: Under direct sunlight, fresh oil and grease can exhibit
+            a slight sheen or gloss. Indoor fluorescent lighting may reveal subtle
+            color variations and surface irregularities. Aged contamination tends
+            to have a matte finish and absorbs light, making it appear darker and
+            less reflective. Iridescence is rare but possible with very thin films.
+          thickness_range: The thickness can range from a thin film of a few micrometers
+            (µm) to a heavy buildup of several millimeters (mm). A light coating might
+            be paper-thin, while a heavy buildup could be coin-thick or thicker in
+            extreme cases.
+          distribution_patterns: 'Common distribution patterns include: edge accumulation
+            (along joints and seams), point source spreading (radiating outwards from
+            a leak), gradient from source (decreasing concentration with distance),
+            patchy/spotty (uneven distribution due to inconsistent application), streaky/linear
+            (resulting from drips or runs), and localized concentrations (in crevices
+            and corners).'
+          uniformity_assessment: The distribution is typically moderately patchy to
+            highly variable/irregular. Perfect uniformity is rare due to variations
+            in surface roughness, application methods, and environmental factors.
+            The non-uniformity is caused by the interplay of gravity, surface tension,
+            and the viscosity of the oil/grease.
+          concentration_variations: Concentration tends to be heavier at edges, corners,
+            and in crevices where oil and grease can accumulate. Horizontal surfaces
+            often have a more uniform coating than vertical surfaces, where gravity
+            causes drips and runs. Exposed areas may have less buildup due to washing
+            or wiping, while sheltered areas accumulate more.
+          typical_formations: 'Typical formations include: drip marks (vertical streaks
+            caused by gravity), runs/streaks (similar to drip marks but less defined),
+            pools/puddles (on horizontal surfaces), thin films (early stages of contamination),
+            thick crusts (aged, hardened buildup), discrete patches (isolated areas
+            of contamination), spots/dots (small, localized deposits), and stains
+            (discoloration of the ceramic surface).'
+          geometry_effects: Surface geometry significantly affects distribution. Oil
+            and grease accumulate in corners and crevices due to surface tension and
+            capillary action. Flat areas allow for pooling, while vertical surfaces
+            promote dripping. Edges act as barriers, preventing the oil from spreading
+            further and leading to buildup. Depressions and grooves fill up with the
+            contaminant.
+          gravity_influence: Gravity plays a significant role. Downward flow behavior
+            is evident in drip marks and vertical streaking. Pooling occurs at bottom
+            edges and on horizontal surfaces. Runs develop down slopes. Oil and grease
+            can hang from overhead surfaces, forming droplets that eventually detach.
+          coverage_ranges: 'Sparse (<10% coverage): barely visible sheen, very thin
+            film. Light (10-30%): patchy distribution, thin layer, slight discoloration.
+            Moderate (30-60%): noticeable coating, thicker layer, distinct discoloration.
+            Heavy (60-85%): significant buildup, thick and sticky layer, dark color.
+            Extreme (>85%): almost complete coverage, very thick crust, heavily soiled
+            appearance.'
+          edge_center_behavior: Industrial Oil / Grease Buildup preferentially accumulates
+            at edges and in crevices on ceramic surfaces. This is due to surface tension
+            effects, where the oil/grease is drawn to the edges and corners. The edges
+            act as barriers, preventing the oil from spreading further and leading
+            to buildup. Center areas may have a thinner, more uniform coating, especially
+            on horizontal surfaces.
+          buildup_progression: Buildup typically starts as a thin film at contact
+            points or near the source of contamination. It then spreads outwards,
+            often following edges and crevices. Over time, the film thickens and darkens
+            due to oxidation and the accumulation of dirt and debris. Point sources
+            expand outwards, and layering effects can occur with repeated contamination
+            events. This process can take hours for a visible film to form, days for
+            noticeable discoloration, and months for a significant buildup to develop.
   wood-rot:
     id: wood_rot
     name: Wood Rot / Fungal Biodegradation
     scientific_name: Fungal decomposition of cellulose and lignin
     category: biodegradation
-    description: Fungal breakdown of wood fibers causing discoloration, softening, and structural weakening
+    description: Fungal breakdown of wood fibers causing discoloration, softening,
+      and structural weakening
     required_elements:
     - cellulose
     - lignin
@@ -857,15 +1215,6 @@ contamination_patterns:
     - fungal_spores
     - warmth
     - poor_ventilation
-    visual_characteristics:
-      color_range:
-      - brown
-      - yellow
-      - white
-      - gray
-      - black
-      texture: soft, spongy, crumbly, stringy
-      thickness: surface to deep penetration
     valid_material_categories:
     - wood_hardwood
     - wood_softwood
@@ -884,26 +1233,30 @@ contamination_patterns:
     - Plastics
     - Ceramics
     - Glass
-    realism_notes: Wood rot ONLY occurs in organic wood materials. Metals and plastics cannot rot.
+    realism_notes: Wood rot ONLY occurs in organic wood materials. Metals and plastics
+      cannot rot.
     author:
       name: Yi-Chun Lin
       title: Ph.D.
       jobTitle: Laser Processing Engineer
-      affiliation: &id005
+      affiliation: &id006
         name: National Taiwan University
         type: EducationalOrganization
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
-      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: &id006
+      sameAs: &id007
       - https://scholar.google.com/citations?user=ghi789
       - https://linkedin.com/in/yi-chun-lin-engineer
       - https://www.researchgate.net/profile/Yi-Chun-Lin-2
     title: Wood Rot / Fungal Biodegradation Laser Cleaning
     caption:
-      before: Surface shows contamination from wood rot / fungal biodegradation affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation successfully removed through precise laser ablation.
+      before: Surface shows contamination from wood rot / fungal biodegradation affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with wood rot / fungal biodegradation
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1042,6 +1395,15 @@ contamination_patterns:
         - Charred surface may require additional cleaning to remove carbon residue
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - brown
+      - yellow
+      - white
+      - gray
+      - black
+      texture: soft, spongy, crumbly, stringy
+      thickness: surface to deep penetration
   environmental-dust:
     id: environmental_dust
     name: Environmental Dust Layer
@@ -1051,32 +1413,28 @@ contamination_patterns:
     - airborne_particles
     - time
     - lack_of_cleaning
-    visual_characteristics:
-      color_range:
-      - gray
-      - brown
-      - tan
-      - varies by location
-      texture: fine, powdery, can cake with moisture
-      thickness: thin film to thick accumulation
-    valid_materials:
-    - ALL
-    context_notes: Universal contamination - appears on all materials. Thickness varies by exposure and cleaning frequency.
-    realism_notes: Most common contamination type. Affects all materials but distribution follows gravity and air flow patterns.
+    valid_materials: *id003
+    context_notes: Universal contamination - appears on all materials. Thickness varies
+      by exposure and cleaning frequency.
+    realism_notes: Most common contamination type. Affects all materials but distribution
+      follows gravity and air flow patterns.
     author:
       name: Ikmanda Roswati
       title: Ph.D.
       jobTitle: Junior Research Scientist in Laser Physics
-      affiliation: *id003
+      affiliation: *id004
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id004
+      sameAs: *id005
     title: Environmental Dust Layer Laser Cleaning
     caption:
-      before: Surface shows contamination from environmental dust layer affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with environmental dust layer successfully removed through precise laser ablation.
+      before: Surface shows contamination from environmental dust layer affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with environmental dust layer
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1203,10 +1561,19 @@ contamination_patterns:
           skin_protection: gloves
         substrate_compatibility_warnings:
         - Laser parameters must be optimized to prevent substrate damage
-        - Avoid laser cleaning on surfaces containing chlorinated compounds (risk of phosgene gas)
+        - Avoid laser cleaning on surfaces containing chlorinated compounds (risk
+          of phosgene gas)
         - Test on small area first to assess fume generation characteristics
         fire_explosion_risk: low
         toxic_gas_risk: low
+    visual_appearance:
+      color_range:
+      - gray
+      - brown
+      - tan
+      - varies by location
+      texture: fine, powdery, can cake with moisture
+      thickness: thin film to thick accumulation
   chemical-stains:
     id: chemical_stains
     name: Chemical Stains / Acid Etching
@@ -1216,36 +1583,60 @@ contamination_patterns:
     - chemical_exposure
     - spills
     - industrial_process
-    visual_characteristics:
-      color_range:
-      - varies by chemical
-      - often lighter or darker than base material
-      texture: smooth to etched, may pit surface
-      thickness: surface staining to deep etching
     valid_materials:
-    - Metals
-    - Plastics
-    - Ceramics
     - Concrete
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - ABS
+    - Acrylic (PMMA)
+    - Polycarbonate
+    - PET
+    - Polypropylene
+    - PVC
+    - Nylon
+    - PTFE
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     material_specific_notes:
       metals: Acid etching creates pits and discoloration
       plastics: Solvent damage, crazing, discoloration
       ceramics: Acid etching of surface
-    realism_notes: Chemical stains vary dramatically by material and chemical type. Research specific material-chemical interactions.
+    realism_notes: Chemical stains vary dramatically by material and chemical type.
+      Research specific material-chemical interactions.
     author:
       name: Ikmanda Roswati
       title: Ph.D.
       jobTitle: Junior Research Scientist in Laser Physics
-      affiliation: *id003
+      affiliation: *id004
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id004
+      sameAs: *id005
     title: Chemical Stains / Acid Etching Laser Cleaning
     caption:
-      before: Surface shows contamination from chemical stains / acid etching affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with chemical stains / acid etching successfully removed through precise laser ablation.
+      before: Surface shows contamination from chemical stains / acid etching affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with chemical stains / acid etching
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1372,46 +1763,84 @@ contamination_patterns:
         - May generate chlorine gas from chloride-containing stains
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - varies by chemical
+      - often lighter or darker than base material
+      texture: smooth to etched, may pit surface
+      thickness: surface staining to deep etching
   scale-buildup:
     id: scale_buildup
     name: Mineral Scale / Hard Water Deposits
     category: contamination
-    description: White or colored mineral deposits from evaporated water with dissolved minerals
+    description: White or colored mineral deposits from evaporated water with dissolved
+      minerals
     chemical_formula: CaCO₃ (calcium carbonate) or others
     formation_conditions:
     - hard_water
     - evaporation
     - repeated_wetting
-    visual_characteristics:
-      color_range:
-      - white
-      - tan
-      - brown
-      - orange-brown
-      texture: crusty, crystalline, hard
-      thickness: thin coating to thick deposits
     valid_materials:
-    - Metals
-    - Ceramics
-    - Glass
     - Concrete
-    - Stone
-    context_notes: Common in plumbing, boilers, heat exchangers, and areas with water exposure
-    realism_notes: Scale forms where water evaporates repeatedly, leaving mineral deposits behind.
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    context_notes: Common in plumbing, boilers, heat exchangers, and areas with water
+      exposure
+    realism_notes: Scale forms where water evaporates repeatedly, leaving mineral
+      deposits behind.
     author:
       name: Yi-Chun Lin
       title: Ph.D.
       jobTitle: Laser Processing Engineer
-      affiliation: *id005
+      affiliation: *id006
       email: info@z-beam.com
       image: /images/author/yi-chun-lin.jpg
-      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+      imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+        in lab setting
       url: https://z-beam.com/authors/yi-chun-lin
-      sameAs: *id006
+      sameAs: *id007
     title: Mineral Scale / Hard Water Deposits Laser Cleaning
     caption:
-      before: Surface shows contamination from mineral scale / hard water deposits affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with mineral scale / hard water deposits successfully removed through precise laser ablation.
+      before: Surface shows contamination from mineral scale / hard water deposits
+        affecting material appearance and properties.
+      after: Post-cleaning reveals restored surface with mineral scale / hard water
+        deposits successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1526,11 +1955,20 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Thermal decomposition may generate sufficient heat to damage underlying materials
+        - Thermal decomposition may generate sufficient heat to damage underlying
+          materials
         - Rapid expansion during cleaning can propel scale fragments at high velocity
         - Moisture in scale deposits can cause steam explosions
         fire_explosion_risk: low
         toxic_gas_risk: low
+    visual_appearance:
+      color_range:
+      - white
+      - tan
+      - brown
+      - orange-brown
+      texture: crusty, crystalline, hard
+      thickness: thin coating to thick deposits
   paint-residue:
     id: paint_residue
     name: Paint Residue / Coating Failure
@@ -1541,31 +1979,61 @@ contamination_patterns:
     - age
     - weathering
     - mechanical_damage
-    visual_characteristics:
-      color_range:
-      - varies by paint color
-      texture: flaking, peeling, cracked
-      thickness: thin chips to thick layers
     valid_materials:
-    - Metals
-    - Wood
     - Concrete
-    - Plastics
-    realism_notes: Paint residue implies previous coating. Consider underlying substrate characteristics.
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
+    - ABS
+    - Acrylic (PMMA)
+    - Polycarbonate
+    - PET
+    - Polypropylene
+    - PVC
+    - Nylon
+    - PTFE
+    realism_notes: Paint residue implies previous coating. Consider underlying substrate
+      characteristics.
     author:
       name: Ikmanda Roswati
       title: Ph.D.
       jobTitle: Junior Research Scientist in Laser Physics
-      affiliation: *id003
+      affiliation: *id004
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id004
+      sameAs: *id005
     title: Paint Residue / Coating Failure Laser Cleaning
     caption:
-      before: Surface shows contamination from paint residue / coating failure affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with paint residue / coating failure successfully removed through precise laser ablation.
+      before: Surface shows contamination from paint residue / coating failure affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with paint residue / coating failure
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1700,41 +2168,85 @@ contamination_patterns:
         - Reflective surfaces may redirect laser energy
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - varies by paint color
+      texture: flaking, peeling, cracked
+      thickness: thin chips to thick layers
   adhesive-residue:
     id: adhesive_residue
     name: Adhesive Residue / Tape Marks
     category: contamination
     description: Sticky residue from labels, tapes, or adhesives
-    visual_characteristics:
-      color_range:
-      - clear
-      - yellow
-      - brown
-      - amber
-      texture: sticky, tacky, can attract dirt
-      thickness: thin film
     valid_materials:
-    - Metals
-    - Plastics
-    - Glass
-    - Wood
-    - Ceramics
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - ABS
+    - Acrylic (PMMA)
+    - Polycarbonate
+    - PET
+    - Polypropylene
+    - PVC
+    - Nylon
+    - PTFE
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    realism_notes: Adhesive residue often attracts dirt and dust, becoming darker and grittier over time.
+    realism_notes: Adhesive residue often attracts dirt and dust, becoming darker
+      and grittier over time.
     author:
       name: Ikmanda Roswati
       title: Ph.D.
       jobTitle: Junior Research Scientist in Laser Physics
-      affiliation: *id003
+      affiliation: *id004
       email: info@z-beam.com
       image: /images/author/ikmanda-roswati.jpg
-      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+      imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics
+        at Bandung Institute of Technology, fieldwork optics setup
       url: https://z-beam.com/authors/ikmanda-roswati
-      sameAs: *id004
+      sameAs: *id005
     title: Adhesive Residue / Tape Marks Laser Cleaning
     caption:
-      before: Surface shows contamination from adhesive residue / tape marks affecting material appearance and properties.
-      after: Post-cleaning reveals restored surface with adhesive residue / tape marks successfully removed through precise laser ablation.
+      before: Surface shows contamination from adhesive residue / tape marks affecting
+        material appearance and properties.
+      after: Post-cleaning reveals restored surface with adhesive residue / tape marks
+        successfully removed through precise laser ablation.
     eeat:
       reviewedBy: Z-Beam Quality Assurance Team
       citations:
@@ -1873,17 +2385,51 @@ contamination_patterns:
         - Potential for substrate heating on thermally sensitive materials
         fire_explosion_risk: low
         toxic_gas_risk: moderate
+    visual_appearance:
+      color_range:
+      - clear
+      - yellow
+      - brown
+      - amber
+      texture: sticky, tacky, can attract dirt
+      thickness: thin film
   silicone-buildup:
     name: Silicone Sealant Buildup
-    description: Polysiloxane-based sealant and coating residues commonly found in construction and automotive applications
+    description: Polysiloxane-based sealant and coating residues commonly found in
+      construction and automotive applications
     composition:
     - (CH₃)₂SiO
     - SiO₂
     valid_materials:
-    - Metal
-    - Glass
-    - Ceramic
     - Concrete
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Plastics
     - Wood
@@ -2011,7 +2557,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   grease-deposits:
     name: Heavy Machinery Grease
-    description: Petroleum-based lubricant deposits with metallic additives from industrial machinery
+    description: Petroleum-based lubricant deposits with metallic additives from industrial
+      machinery
     composition:
     - Mineral Oil
     - Lithium Soap
@@ -2024,7 +2571,7 @@ contamination_patterns:
     prohibited_materials:
     - Plastics
     - Wood
-    - Textiles
+    - Nylon
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -2157,19 +2704,48 @@ contamination_patterns:
         toxic_gas_risk: high
   carbon-soot:
     name: Carbon Soot Deposits
-    description: Fine particulate carbon from incomplete combustion in engines, furnaces, and industrial processes
+    description: Fine particulate carbon from incomplete combustion in engines, furnaces,
+      and industrial processes
     composition:
     - C
     - PAH
     valid_materials:
-    - Metal
-    - Ceramic
-    - Stone
     - Concrete
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Wood
     - Plastics
-    - Textiles
+    - Nylon
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -2284,14 +2860,16 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to minimize substrate damage and excessive fume generation
+        - Laser parameters must be optimized to minimize substrate damage and excessive
+          fume generation
         - Avoid laser cleaning on painted surfaces containing lead or chromium
         - Test on small area first to assess fume generation characteristics
         fire_explosion_risk: low
         toxic_gas_risk: moderate
   concrete-dust:
     name: Concrete Dust Deposits
-    description: Portland cement and aggregate particulates from construction and grinding operations
+    description: Portland cement and aggregate particulates from construction and
+      grinding operations
     composition:
     - CaCO₃
     - SiO₂
@@ -2299,10 +2877,20 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Concrete
-    - Stone
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Electronics
-    - Optical Glass
+    - Crown Glass
+    - Float Glass
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -2428,7 +3016,20 @@ contamination_patterns:
     valid_materials:
     - Concrete
     - Asphalt
-    - Metal
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
     - Plastics
     - Glass
@@ -2564,7 +3165,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   bitumen-tar:
     name: Bitumen and Tar Coatings
-    description: Heavy petroleum-based coatings from roofing, paving, and waterproofing applications
+    description: Heavy petroleum-based coatings from roofing, paving, and waterproofing
+      applications
     composition:
     - Asphaltene
     - Resin
@@ -2572,7 +3174,16 @@ contamination_patterns:
     valid_materials:
     - Concrete
     - Steel
-    - Stone
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Plastics
     - Wood
@@ -2701,8 +3312,10 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Thermal decomposition may generate hazardous byproducts not present in original material
-        - Laser parameters must be optimized to minimize excessive heating and fume generation
+        - Thermal decomposition may generate hazardous byproducts not present in original
+          material
+        - Laser parameters must be optimized to minimize excessive heating and fume
+          generation
         - Residual contamination may require secondary cleaning methods
         fire_explosion_risk: low
         toxic_gas_risk: moderate
@@ -2714,10 +3327,44 @@ contamination_patterns:
     - MgCO₃
     - CaSO₄
     valid_materials:
-    - Metal
-    - Glass
-    - Ceramic
-    - Stone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Electronics
     - Plastics
@@ -2838,19 +3485,35 @@ contamination_patterns:
         toxic_gas_risk: low
   mold-mildew:
     name: Mold and Mildew Growth
-    description: Fungal colonization producing organic acids and pigmented spores on damp surfaces
+    description: Fungal colonization producing organic acids and pigmented spores
+      on damp surfaces
     composition:
     - Fungal Hyphae
     - Melanin
     - Organic Acids
     valid_materials:
-    - Wood
     - Concrete
     - Drywall
-    - Ceramic
-    prohibited_materials:
-    - Food Surfaces
-    - Medical Equipment
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -2982,15 +3645,39 @@ contamination_patterns:
         toxic_gas_risk: moderate
   wax-buildup:
     name: Wax Coating Buildup
-    description: Paraffin, carnauba, and synthetic wax deposits from protective coatings and polishes
+    description: Paraffin, carnauba, and synthetic wax deposits from protective coatings
+      and polishes
     composition:
     - C₂₅H₅₂
     - Esters
     - Fatty Acids
     valid_materials:
-    - Metal
-    - Wood
-    - Painted Surfaces
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
     prohibited_materials:
     - Plastics
     - Rubber
@@ -3121,15 +3808,30 @@ contamination_patterns:
         toxic_gas_risk: moderate
   epoxy-residue:
     name: Epoxy Resin Deposits
-    description: Cured two-part epoxy adhesive and coating residues with high cross-link density
+    description: Cured two-part epoxy adhesive and coating residues with high cross-link
+      density
     composition:
     - Bisphenol A
     - Epichlorohydrin
     - Amine Hardener
     valid_materials:
-    - Metal
     - Concrete
-    - Composite
+    - Carbon Fiber Reinforced Polymer
+    - Fiberglass
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
     - Thin Plastics
     - Glass
@@ -3264,7 +3966,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   ink-stains:
     name: Printing Ink Residue
-    description: Pigmented ink deposits from industrial printing, markers, and spray paint
+    description: Pigmented ink deposits from industrial printing, markers, and spray
+      paint
     composition:
     - Pigments
     - Binder Resin
@@ -3272,10 +3975,22 @@ contamination_patterns:
     valid_materials:
     - Paper
     - Cardboard
-    - Metal
     - Concrete
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
-    - Fabrics
     - Porous Wood
     laser_properties:
       optical_properties:
@@ -3397,14 +4112,18 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Avoid laser cleaning on chlorinated polymer substrates to prevent phosgene gas formation
-        - Test on inconspicuous area first - laser may discolor or damage underlying material
-        - Metallic substrates may reflect laser energy creating additional safety hazards
+        - Avoid laser cleaning on chlorinated polymer substrates to prevent phosgene
+          gas formation
+        - Test on inconspicuous area first - laser may discolor or damage underlying
+          material
+        - Metallic substrates may reflect laser energy creating additional safety
+          hazards
         fire_explosion_risk: low
         toxic_gas_risk: moderate
   solder-flux:
     name: Soldering Flux Residue
-    description: Rosin-based and no-clean flux residues from electronics soldering operations
+    description: Rosin-based and no-clean flux residues from electronics soldering
+      operations
     composition:
     - Abietic Acid
     - Activators
@@ -3413,7 +4132,6 @@ contamination_patterns:
     - PCB
     - Copper
     - Brass
-    - Electronics
     prohibited_materials:
     - Plastics
     - Optical Components
@@ -3534,14 +4252,17 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to avoid substrate damage to underlying metals
-        - Thermal decomposition increases with higher laser power and slower scanning speeds
+        - Laser parameters must be optimized to avoid substrate damage to underlying
+          metals
+        - Thermal decomposition increases with higher laser power and slower scanning
+          speeds
         - May generate heavy smoke on non-metallic substrates
         fire_explosion_risk: low
         toxic_gas_risk: moderate
   thermal-paste:
     name: Thermal Compound Deposits
-    description: Silicone or metal-based thermal interface materials from CPU/GPU cooling systems
+    description: Silicone or metal-based thermal interface materials from CPU/GPU
+      cooling systems
     composition:
     - ZnO
     - Ag
@@ -3681,7 +4402,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   battery-corrosion:
     name: Battery Leakage Corrosion
-    description: Alkaline hydroxide or sulfuric acid corrosion products from battery leakage
+    description: Alkaline hydroxide or sulfuric acid corrosion products from battery
+      leakage
     composition:
     - KOH
     - K₂CO₃
@@ -3816,7 +4538,8 @@ contamination_patterns:
         toxic_gas_risk: low
   chrome-pitting:
     name: Chromium Oxide Pitting
-    description: Localized chromium oxide layer breakdown causing surface degradation on plated surfaces
+    description: Localized chromium oxide layer breakdown causing surface degradation
+      on plated surfaces
     composition:
     - Cr₂O₃
     - CrO₃
@@ -3944,18 +4667,36 @@ contamination_patterns:
         toxic_gas_risk: moderate
   graphite-marks:
     name: Graphite Deposit Traces
-    description: Carbon-based marks from pencils, graphite lubricants, and electrical contacts
+    description: Carbon-based marks from pencils, graphite lubricants, and electrical
+      contacts
     composition:
     - C (Graphite)
     - Clay Binder
     valid_materials:
     - Paper
-    - Metal
     - Concrete
-    - Ceramic
-    prohibited_materials:
-    - Porous Materials
-    - Fabrics
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -4073,15 +4814,31 @@ contamination_patterns:
         toxic_gas_risk: moderate
   ceramic-glaze:
     name: Ceramic Glaze Deposits
-    description: Vitrified silicate coating residues from fired ceramic manufacturing processes
+    description: Vitrified silicate coating residues from fired ceramic manufacturing
+      processes
     composition:
     - SiO₂
     - Al₂O₃
     - Fluxes
     valid_materials:
-    - Ceramic
     - Porcelain
-    - Stone
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Metal
     - Glass
@@ -4202,7 +4959,8 @@ contamination_patterns:
         toxic_gas_risk: low
   powder-coating:
     name: Powder Coating Buildup
-    description: Electrostatically-applied thermosetting polymer coating used in industrial finishing
+    description: Electrostatically-applied thermosetting polymer coating used in industrial
+      finishing
     composition:
     - Polyester Resin
     - Epoxy
@@ -4344,14 +5102,14 @@ contamination_patterns:
         toxic_gas_risk: moderate
   anodizing-defects:
     name: Anodizing Layer Irregularities
-    description: Aluminum oxide surface layer defects including pitting, staining, and uneven thickness
+    description: Aluminum oxide surface layer defects including pitting, staining,
+      and uneven thickness
     composition:
     - Al₂O₃
     - Dye Molecules
     - Sealed Pores
     valid_materials:
     - Aluminum
-    - Aluminum Alloys
     prohibited_materials:
     - Steel
     - Copper
@@ -4473,7 +5231,8 @@ contamination_patterns:
         toxic_gas_risk: low
   galvanize-corrosion:
     name: White Rust on Galvanized Steel
-    description: Zinc carbonate and hydroxide formation on galvanized coatings exposed to moisture
+    description: Zinc carbonate and hydroxide formation on galvanized coatings exposed
+      to moisture
     composition:
     - ZnO
     - Zn(OH)₂
@@ -4590,22 +5349,43 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser cleaning may damage underlying zinc coating if parameters are not properly controlled
+        - Laser cleaning may damage underlying zinc coating if parameters are not
+          properly controlled
         - White rust removal may create surface etching if laser energy is too high
         fire_explosion_risk: low
         toxic_gas_risk: none
   plastic-residue:
     name: Degraded Polymer Deposits
-    description: Melted, degraded, or oxidized plastic residues from heat exposure or UV degradation
+    description: Melted, degraded, or oxidized plastic residues from heat exposure
+      or UV degradation
     composition:
     - Polyethylene
     - Polypropylene
     - PVC
     - Additives
     valid_materials:
-    - Metal
     - Concrete
-    - Glass
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
     prohibited_materials:
     - Plastics
     - Rubber
@@ -4742,7 +5522,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   biological-stains:
     name: Organic Biofilm Deposits
-    description: Biological matter including algae, bacteria, and organic waste creating surface films
+    description: Biological matter including algae, bacteria, and organic waste creating
+      surface films
     composition:
     - Proteins
     - Polysaccharides
@@ -4750,12 +5531,38 @@ contamination_patterns:
     - Chlorophyll
     valid_materials:
     - Concrete
-    - Stone
-    - Metal
-    - Glass
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
     prohibited_materials:
-    - Food Surfaces
-    - Medical Equipment
     - Wood
     laser_properties:
       optical_properties:
@@ -4889,7 +5696,8 @@ contamination_patterns:
         toxic_gas_risk: moderate
   steel-corrosion:
     name: Steel Surface Corrosion
-    description: General oxidation and corrosion products on carbon steel and alloy steel surfaces
+    description: General oxidation and corrosion products on carbon steel and alloy
+      steel surfaces
     composition:
     - Fe₃O₄
     - FeO
@@ -4897,7 +5705,6 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Carbon Steel
-    - Alloy Steel
     prohibited_materials:
     - Stainless Steel
     - Aluminum
@@ -5029,12 +5836,33 @@ contamination_patterns:
     - MgCl₂
     - CaCl₂
     valid_materials:
-    - Metal
     - Concrete
-    - Stone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Electronics
-    - Painted Surfaces
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -5419,9 +6247,11 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Thermal decomposition may create hazardous byproducts not present in original coolant
+        - Thermal decomposition may create hazardous byproducts not present in original
+          coolant
         - Residue thickness and composition significantly affect fume generation rate
-        - Chlorinated or sulfurized extreme pressure additives may produce additional toxic gases
+        - Chlorinated or sulfurized extreme pressure additives may produce additional
+          toxic gases
         fire_explosion_risk: low
         toxic_gas_risk: moderate
   welding-spatter:
@@ -5439,7 +6269,6 @@ contamination_patterns:
     prohibited_materials:
     - Plastics
     - Glass
-    - Thin Metals
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -6094,7 +6923,8 @@ contamination_patterns:
         substrate_compatibility_warnings:
         - Avoid laser cleaning on galvanized steel due to zinc oxide fume generation
         - Exercise caution on painted surfaces which may contain hazardous pigments
-        - Ensure substrate is free of oils/greases that may produce additional hazardous fumes
+        - Ensure substrate is free of oils/greases that may produce additional hazardous
+          fumes
         fire_explosion_risk: low
         toxic_gas_risk: low
   forging-scale:
@@ -6236,7 +7066,6 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Tool Steel
-    - Alloy Steel
     prohibited_materials:
     - Aluminum
     - Plastics
@@ -6619,8 +7448,10 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to minimize excessive heating and fume generation
-        - Inspect substrate for coatings or contaminants that may produce additional hazardous byproducts
+        - Laser parameters must be optimized to minimize excessive heating and fume
+          generation
+        - Inspect substrate for coatings or contaminants that may produce additional
+          hazardous byproducts
         fire_explosion_risk: low
         toxic_gas_risk: low
   electroplating-residue:
@@ -6758,8 +7589,10 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Laser cleaning may generate toxic hydrogen cyanide gas from cyanide-based plating residues
-        - Thermal decomposition of chromium-plated surfaces can produce carcinogenic hexavalent chromium
+        - Laser cleaning may generate toxic hydrogen cyanide gas from cyanide-based
+          plating residues
+        - Thermal decomposition of chromium-plated surfaces can produce carcinogenic
+          hexavalent chromium
         - Nickel compounds become airborne and present inhalation cancer risk
         fire_explosion_risk: low
         toxic_gas_risk: high
@@ -7048,7 +7881,6 @@ contamination_patterns:
     - Aluminum
     prohibited_materials:
     - Plastics
-    - Soft Metals
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -7184,7 +8016,6 @@ contamination_patterns:
     - Aluminum
     - Cast Iron
     prohibited_materials:
-    - Thin Metals
     - Plastics
     laser_properties:
       optical_properties:
@@ -7322,7 +8153,13 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Stainless Steel
-    - Ceramic
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Aluminum
     - Plastics
@@ -8016,10 +8853,8 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Aluminum
-    - Painted Surfaces
     prohibited_materials:
     - Electronics
-    - Optics
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -8141,7 +8976,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be carefully controlled to prevent substrate damage to underlying automotive surfaces
+        - Laser parameters must be carefully controlled to prevent substrate damage
+          to underlying automotive surfaces
         - Thermal buildup may damage paint, clear coat, or plastic components
         - Reflective surfaces may create beam deflection hazards
         fire_explosion_risk: low
@@ -8301,7 +9137,8 @@ contamination_patterns:
     valid_materials:
     - Aluminum
     - Titanium
-    - Composite
+    - Carbon Fiber Reinforced Polymer
+    - Fiberglass
     prohibited_materials:
     - Plastics
     - Glass
@@ -8425,7 +9262,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to prevent substrate damage to aluminum alloys
+        - Laser parameters must be optimized to prevent substrate damage to aluminum
+          alloys
         - Avoid prolonged exposure on thin composite materials
         - Test for surface discoloration on sensitive aerospace coatings
         fire_explosion_risk: low
@@ -8570,7 +9408,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Thermal decomposition may generate toxic fumes when coating contains organic compounds
+        - Thermal decomposition may generate toxic fumes when coating contains organic
+          compounds
         - Metallic substrates may reflect laser radiation creating secondary hazards
         - Incomplete removal may create mixed hazardous waste requiring special disposal
         fire_explosion_risk: low
@@ -8586,12 +9425,26 @@ contamination_patterns:
     valid_materials:
     - Steel
     - Concrete
-    - Stone
-    - Ceramic
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Wood
     - Plastics
-    - Fabrics
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -8730,10 +9583,38 @@ contamination_patterns:
     - Fe₂O₃
     - Organic Matter
     valid_materials:
-    - Stone
     - Concrete
-    - Metal
-    - Glass
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
     prohibited_materials:
     - Electronics
     - Wood
@@ -8839,7 +9720,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser cleaning of water-stained surfaces may cause thermal stress or discoloration on sensitive materials
+        - Laser cleaning of water-stained surfaces may cause thermal stress or discoloration
+          on sensitive materials
         - Rapid heating of trapped moisture can cause micro-fracturing in porous materials
         fire_explosion_risk: none
         toxic_gas_risk: none
@@ -8851,13 +9733,44 @@ contamination_patterns:
     - Polysaccharides
     - Minerals
     valid_materials:
-    - Stone
     - Concrete
-    - Wood
-    - Metal
-    prohibited_materials:
-    - Food Surfaces
-    - Medical Equipment
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -8994,7 +9907,16 @@ contamination_patterns:
     valid_materials:
     - Concrete
     - Brick
-    - Stone
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Metal
     - Glass
@@ -9126,9 +10048,31 @@ contamination_patterns:
     - Pigments
     valid_materials:
     - Concrete
-    - Stone
-    - Metal
     - Brick
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
     - Porous Surfaces
     - Plastics
@@ -9270,13 +10214,39 @@ contamination_patterns:
     - CaCO₃
     - Organic Matter
     valid_materials:
-    - Stone
-    - Metal
-    - Glass
     - Concrete
-    prohibited_materials:
-    - Food Surfaces
-    - Porous Materials
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -9410,12 +10380,28 @@ contamination_patterns:
     - Resin Acids
     - Sugars
     valid_materials:
-    - Metal
-    - Glass
-    - Painted Surfaces
-    prohibited_materials:
-    - Fabrics
-    - Porous Materials
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -9536,7 +10522,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be carefully controlled to prevent charring of underlying wood surface
+        - Laser parameters must be carefully controlled to prevent charring of underlying
+          wood surface
         - Moisture content in wood may affect fume generation and cleaning efficiency
         - Test on inconspicuous area first to determine optimal laser settings
         fire_explosion_risk: low
@@ -9549,12 +10536,29 @@ contamination_patterns:
     - Lipids
     - Cellulose
     valid_materials:
-    - Glass
-    - Metal
-    - Painted Surfaces
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
     - Electronics
-    - Optics
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -9684,12 +10688,28 @@ contamination_patterns:
     - Chitin
     - Fats
     valid_materials:
-    - Glass
-    - Metal
-    - Painted Surfaces
-    prohibited_materials:
-    - Food Surfaces
-    - Medical Equipment
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -9827,13 +10847,37 @@ contamination_patterns:
     - CaCO₃
     - MgCO₃
     valid_materials:
-    - Glass
-    - Metal
-    - Ceramic
     - Tile
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Electronics
-    - Painted Surfaces
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -9953,10 +10997,22 @@ contamination_patterns:
     - Mg Stearate
     - Surfactants
     valid_materials:
-    - Glass
-    - Ceramic
     - Tile
     - Fiberglass
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Electronics
     - Porous Stone
@@ -10091,9 +11147,18 @@ contamination_patterns:
     - CuO
     valid_materials:
     - Concrete
-    - Stone
     - Tile
     - Grout
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
     prohibited_materials:
     - Metal
     - Electronics
@@ -10209,7 +11274,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - May generate hazardous fumes if substrate contains lead-based paints or coatings
+        - May generate hazardous fumes if substrate contains lead-based paints or
+          coatings
         - Thermal stress can cause spalling on concrete surfaces
         - Potential for reflective surfaces to redirect laser energy
         fire_explosion_risk: low
@@ -10223,11 +11289,32 @@ contamination_patterns:
     - Phosphates
     valid_materials:
     - Concrete
-    - Stone
-    - Metal
+    - Granite
+    - Marble
+    - Limestone
+    - Sandstone
+    - Basalt
+    - Slate
+    - Quartzite
+    - Travertine
+    - Bluestone
+    - Soapstone
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
     - Electronics
-    - Food Surfaces
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -10353,11 +11440,29 @@ contamination_patterns:
     - Pyrethroids
     - Copper Compounds
     valid_materials:
-    - Metal
-    - Glass
     - Concrete
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
     prohibited_materials:
-    - Food Surfaces
     - Wood
     laser_properties:
       optical_properties:
@@ -10493,11 +11598,22 @@ contamination_patterns:
     - Phenolics
     valid_materials:
     - Stainless Steel
-    - Glass
-    - Ceramic
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Aluminum
-    - Soft Plastics
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -10756,11 +11872,21 @@ contamination_patterns:
     - Lipids
     valid_materials:
     - Stainless Steel
-    - Glass
-    - Ceramic
-    prohibited_materials:
-    - Porous Materials
-    - Fabrics
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -10882,7 +12008,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Laser parameters must be carefully controlled to prevent surface damage to underlying material
+        - Laser parameters must be carefully controlled to prevent surface damage
+          to underlying material
         - Biohazard containment required for all generated aerosols and debris
         fire_explosion_risk: low
         toxic_gas_risk: moderate
@@ -10895,11 +12022,15 @@ contamination_patterns:
     - Coatings
     valid_materials:
     - Stainless Steel
-    - Glass
     - Teflon
-    prohibited_materials:
-    - Porous Materials
-    - Soft Plastics
+    - Crown Glass
+    - Float Glass
+    - Borosilicate Glass
+    - Aluminosilicate Glass
+    - Fused Silica
+    - Gorilla Glass
+    - Tempered Glass
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -11017,7 +12148,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to prevent substrate damage and excessive pyrolysis
+        - Laser parameters must be optimized to prevent substrate damage and excessive
+          pyrolysis
         - Residue composition may vary significantly between pharmaceutical products
         - Potential for secondary contamination of surrounding surfaces
         fire_explosion_risk: low
@@ -11162,7 +12294,6 @@ contamination_patterns:
     - Carbide
     - HSS
     prohibited_materials:
-    - Soft Metals
     - Plastics
     laser_properties:
       optical_properties:
@@ -11290,7 +12421,6 @@ contamination_patterns:
     - Titanium
     - Tungsten Carbide
     prohibited_materials:
-    - Soft Metals
     - Ceramics
     laser_properties:
       optical_properties:
@@ -11405,9 +12535,11 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Avoid laser cleaning on substrates containing chlorinated compounds (risk of phosgene generation)
+        - Avoid laser cleaning on substrates containing chlorinated compounds (risk
+          of phosgene generation)
         - Ensure substrate does not contain heavy metals that could vaporize
-        - Test for potential hydrogen cyanide generation if nitrogen-containing compounds are present
+        - Test for potential hydrogen cyanide generation if nitrogen-containing compounds
+          are present
         fire_explosion_risk: low
         toxic_gas_risk: moderate
   teflon-residue:
@@ -11421,7 +12553,6 @@ contamination_patterns:
     - Aluminum
     - Stainless Steel
     prohibited_materials:
-    - Thin Metals
     - Plastics
     laser_properties:
       optical_properties:
@@ -11545,7 +12676,8 @@ contamination_patterns:
         substrate_compatibility_warnings:
         - Thermal decomposition begins at ~260°C - monitor substrate temperature
         - Avoid laser parameters that cause excessive heating rather than ablation
-        - Metallic substrates may reach high temperatures and alter decomposition products
+        - Metallic substrates may reach high temperatures and alter decomposition
+          products
         fire_explosion_risk: low
         toxic_gas_risk: high
   nickel-plating:
@@ -11560,7 +12692,6 @@ contamination_patterns:
     - Aluminum
     - Copper
     prohibited_materials:
-    - Thin Substrates
     - Plastics
     laser_properties:
       optical_properties:
@@ -11675,8 +12806,10 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Thermal decomposition may release toxic nickel compounds - ensure adequate ventilation
-        - Phosphorus content in electroless nickel can form phosphine gas under thermal stress
+        - Thermal decomposition may release toxic nickel compounds - ensure adequate
+          ventilation
+        - Phosphorus content in electroless nickel can form phosphine gas under thermal
+          stress
         - Residual plating solutions may react with laser energy
         fire_explosion_risk: low
         toxic_gas_risk: moderate
@@ -11691,7 +12824,6 @@ contamination_patterns:
     - Stainless Steel
     prohibited_materials:
     - Aluminum
-    - Thin Metals
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -11938,7 +13070,6 @@ contamination_patterns:
     - Brass
     prohibited_materials:
     - Aluminum
-    - Thin Substrates
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -12045,7 +13176,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - May generate higher fume concentrations if substrate contains lead or other alloying elements
+        - May generate higher fume concentrations if substrate contains lead or other
+          alloying elements
         - Avoid laser parameters that cause substrate melting to minimize fume generation
         fire_explosion_risk: low
         toxic_gas_risk: low
@@ -12292,7 +13424,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: gloves
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to minimize substrate damage to underlying material
+        - Laser parameters must be optimized to minimize substrate damage to underlying
+          material
         - Silver residue may reflect laser energy creating secondary hazards
         fire_explosion_risk: low
         toxic_gas_risk: low
@@ -12691,10 +13824,20 @@ contamination_patterns:
     - Oil Binder
     valid_materials:
     - Steel
-    - Wood
     - Concrete
+    - Oak
+    - Maple
+    - Cherry
+    - Walnut
+    - Pine
+    - Cedar
+    - Ash
+    - Birch
+    - Mahogany
+    - Teak
+    - Bamboo
+    - Fir
     prohibited_materials:
-    - Thin Metals
     - Delicate Substrates
     laser_properties:
       optical_properties:
@@ -12831,9 +13974,7 @@ contamination_patterns:
     - Steel Pipes
     - Boilers
     - Concrete
-    prohibited_materials:
-    - Open Environments
-    - Uncontained Areas
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -12963,7 +14104,6 @@ contamination_patterns:
     - Concrete
     - Transformer Housings
     prohibited_materials:
-    - Porous Materials
     - Food Areas
     laser_properties:
       optical_properties:
@@ -13085,7 +14225,8 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to minimize substrate damage and excessive fume generation
+        - Laser parameters must be optimized to minimize substrate damage and excessive
+          fume generation
         - Incomplete combustion may increase PAH formation - ensure proper ventilation
         - Oil residues may create reflective surfaces requiring laser safety considerations
         fire_explosion_risk: low
@@ -13099,9 +14240,20 @@ contamination_patterns:
     valid_materials:
     - Stainless Steel
     - Concrete
-    - Metal
+    - Aluminum
+    - Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
-    - Porous Materials
     - Unsealed Areas
     laser_properties:
       optical_properties:
@@ -13223,7 +14375,6 @@ contamination_patterns:
     - Steel
     - Concrete
     prohibited_materials:
-    - Porous Materials
     - Uncontrolled Environments
     laser_properties:
       optical_properties:
@@ -13352,9 +14503,21 @@ contamination_patterns:
     valid_materials:
     - Concrete
     - Tile
-    - Metal
+    - Aluminum
+    - Steel
+    - Stainless Steel
+    - Cast Iron
+    - Copper
+    - Bronze
+    - Brass
+    - Titanium
+    - Zinc
+    - Nickel
+    - Lead
+    - Tin
+    - Cobalt
+    - Chromium
     prohibited_materials:
-    - Porous Materials
     - Heated Surfaces
     laser_properties:
       optical_properties:
@@ -13476,9 +14639,7 @@ contamination_patterns:
     valid_materials:
     - Copper-Beryllium Alloy
     - Steel
-    prohibited_materials:
-    - Open Environments
-    - Uncontained Areas
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -13600,7 +14761,13 @@ contamination_patterns:
     valid_materials:
     - Silicon Wafers
     - Quartz
-    - Ceramic
+    - Alumina
+    - Silicon Carbide
+    - Zirconia
+    - Aluminum Nitride
+    - Boron Carbide
+    - Boron Nitride
+    - Silicon Nitride
     prohibited_materials:
     - Flexible Substrates
     - Soft Materials
@@ -13725,9 +14892,12 @@ contamination_patterns:
           eye_protection: goggles
           skin_protection: full_suit
         substrate_compatibility_warnings:
-        - Laser parameters must be optimized to prevent substrate damage and excessive fume generation
-        - Residue composition varies significantly by semiconductor process - require material analysis
-        - Dopant materials (arsenic, phosphorus, boron) create highly toxic decomposition products
+        - Laser parameters must be optimized to prevent substrate damage and excessive
+          fume generation
+        - Residue composition varies significantly by semiconductor process - require
+          material analysis
+        - Dopant materials (arsenic, phosphorus, boron) create highly toxic decomposition
+          products
         fire_explosion_risk: low
         toxic_gas_risk: high
   plasma-spray:
@@ -13742,9 +14912,7 @@ contamination_patterns:
     - Steel
     - Titanium
     - Turbine Blades
-    prohibited_materials:
-    - Thin Substrates
-    - Soft Metals
+    prohibited_materials: []
     laser_properties:
       optical_properties:
         absorption_coefficient:
@@ -14124,31 +15292,39 @@ error_messages:
   rust_on_non_ferrous:
     code: INCOMPATIBLE_RUST
     message: ❌ Rust cannot form on {material} - requires iron content
-    explanation: Rust (Fe₂O₃) is iron oxide and ONLY forms on ferrous metals containing iron. {material} contains {elements} and undergoes {correct_process} instead.
+    explanation: Rust (Fe₂O₃) is iron oxide and ONLY forms on ferrous metals containing
+      iron. {material} contains {elements} and undergoes {correct_process} instead.
     suggestion: For {material}, use {recommended_contamination} instead
   patina_on_non_copper:
     code: INCOMPATIBLE_PATINA
     message: ❌ Copper patina cannot form on {material} - requires copper content
-    explanation: Verdigris (copper carbonate) ONLY forms on copper and copper alloys. {material} is a {category} and does not contain copper.
+    explanation: Verdigris (copper carbonate) ONLY forms on copper and copper alloys.
+      {material} is a {category} and does not contain copper.
     suggestion: For {material}, use {recommended_contamination} instead
   wood_rot_on_non_organic:
     code: INCOMPATIBLE_ROT
     message: ❌ Wood rot cannot occur on {material} - requires organic matter
-    explanation: Fungal biodegradation ONLY affects organic materials with cellulose and lignin. {material} is a {category} and is not subject to biological decomposition.
+    explanation: Fungal biodegradation ONLY affects organic materials with cellulose
+      and lignin. {material} is a {category} and is not subject to biological decomposition.
     suggestion: For {material}, consider {recommended_contamination} instead
   uv_chalking_on_non_polymer:
     code: INCOMPATIBLE_CHALKING
     message: ❌ UV chalking cannot occur on {material} - requires polymer chains
-    explanation: Photodegradation chalking ONLY affects organic polymers with carbon-based chains. {material} is a {category} and does not undergo UV chalking.
+    explanation: Photodegradation chalking ONLY affects organic polymers with carbon-based
+      chains. {material} is a {category} and does not undergo UV chalking.
     suggestion: For {material}, UV exposure causes {correct_degradation} instead
   oil_without_context:
     code: CONTEXT_REQUIRED
     message: ⚠️  Oil/grease on {material} requires machinery context
-    explanation: Industrial oil/grease contamination is specific to machinery, equipment, and moving parts. Random oil on decorative {material} items is unrealistic.
-    suggestion: Only apply oil contamination if {material} is part of machinery, gears, bearings, or industrial equipment
+    explanation: Industrial oil/grease contamination is specific to machinery, equipment,
+      and moving parts. Random oil on decorative {material} items is unrealistic.
+    suggestion: Only apply oil contamination if {material} is part of machinery, gears,
+      bearings, or industrial equipment
 metadata:
   version: 1.0.0
   created: '2025-11-25'
   author: AI Assistant
-  purpose: Material-contamination compatibility validation for laser cleaning image generation
-  usage: Pre-generation validation to prevent physically impossible contamination patterns
+  purpose: Material-contamination compatibility validation for laser cleaning image
+    generation
+  usage: Pre-generation validation to prevent physically impossible contamination
+    patterns

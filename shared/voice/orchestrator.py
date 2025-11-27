@@ -148,7 +148,7 @@ class VoiceOrchestrator:
         Get voice configuration for specific component type.
         
         Args:
-            component_type: Component type (caption, subtitle, description, etc.)
+            component_type: Component type (caption, description, etc.)
         
         Returns:
             Component-specific voice config with intensity, formality, etc.

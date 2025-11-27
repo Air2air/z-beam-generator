@@ -8,8 +8,8 @@ Extracted services for specialized frontmatter generation tasks:
 """
 
 from domains.materials.services.property_manager import PropertyManager
-from domains.materials.services.template_service import TemplateService
-from domains.materials.services.pipeline_process_service import PipelineProcessService
+from shared.services.template_service import TemplateService
+from shared.services.pipeline_process_service import PipelineProcessService
 
 __all__ = [
     'PropertyManager',

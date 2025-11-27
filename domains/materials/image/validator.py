@@ -22,7 +22,7 @@ from dataclasses import dataclass, asdict
 import google.generativeai as genai
 from PIL import Image
 
-from domains.materials.image.prompts.prompt_builder import SharedPromptBuilder
+from shared.image.utils.prompt_builder import SharedPromptBuilder
 
 logger = logging.getLogger(__name__)
 
@@ -209,7 +209,7 @@ class MaterialImageValidator:
         self.model = genai.GenerativeModel(model)
         
         # Initialize shared prompt builder for validation prompts
-        from .prompts.prompt_builder import SharedPromptBuilder
+        from shared.image.utils.prompt_builder import SharedPromptBuilder
         self.prompt_builder = SharedPromptBuilder()
         
         logger.info(f"✅ Material image validator initialized with {model}")
@@ -328,7 +328,7 @@ class MaterialImageValidator:
         learned_feedback = None
         if config and 'category' in config:
             try:
-                from domains.materials.image.learning import create_logger
+                from shared.image.learning import create_logger
                 learning_logger = create_logger()
                 learned_feedback = learning_logger.get_category_feedback(
                     material_category=config['category'],

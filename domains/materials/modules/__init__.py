@@ -26,7 +26,7 @@ Architecture:
 from .metadata_module import MetadataModule
 from .author_module import AuthorModule
 from .properties_module import PropertiesModule
-from .settings_module import SettingsModule
+# SettingsModule moved to domains/settings/modules/ (Nov 26, 2025)
 from .simple_modules import ComplianceModule, MediaModule
 
 __all__ = [
@@ -34,7 +34,7 @@ __all__ = [
     'MetadataModule',
     'AuthorModule',
     'PropertiesModule',
-    'SettingsModule',
+    # 'SettingsModule' moved to settings domain (Nov 26, 2025)
     'ComplianceModule',
     'MediaModule',
 ]

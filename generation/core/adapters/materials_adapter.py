@@ -171,7 +171,7 @@ class MaterialsAdapter(DataSourceAdapter):
         
         Args:
             identifier: Material name
-            component_type: Component type (subtitle, caption, faq, description)
+            component_type: Component type (caption, faq, description)
             content_data: Content to write
             
         Raises:
@@ -281,7 +281,7 @@ class MaterialsAdapter(DataSourceAdapter):
         Raises:
             ValueError: If extraction fails or unknown strategy
         """
-        from generation.core.component_specs import ComponentRegistry
+        from shared.text.utils.component_specs import ComponentRegistry
         
         # Get extraction strategy for this component
         try:

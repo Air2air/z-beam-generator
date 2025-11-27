@@ -1,0 +1,40 @@
+# Materials Image Generation Configuration
+# Domain-specific image types and prompts for laser cleaning visualization
+
+domain: materials
+
+# Image types available for materials domain
+image_types:
+  contamination:
+    template_file: contamination.txt
+    requires_research: true
+    description: "Before/after contamination removal split-screen"
+    
+  surface_detail:
+    prompt_template: surface_detail.txt
+    requires_research: false
+    description: "Close-up of material surface and texture"
+    
+  industrial_context:
+    prompt_template: industrial_context.txt
+    requires_research: false
+    description: "Material in industrial/manufacturing context"
+
+# Output path pattern
+# Variables: {domain}, {identifier}, {image_type}
+output_pattern: "static/images/{domain}/{identifier}/{image_type}.png"
+
+# Research configuration
+research:
+  enabled: true
+  use_category_research: true  # Use category-level for reusability
+  
+# Validation
+validation:
+  enabled: true
+  max_prompt_length: 4096  # Imagen 4 limit
+  
+# Learning feedback
+learning:
+  enabled: true
+  feedback_limit: 5  # Top 5 issues per category

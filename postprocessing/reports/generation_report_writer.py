@@ -40,7 +40,7 @@ class GenerationReportWriter:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (caption, subtitle, etc.)
+            component_type: Type of component (caption, faq, etc.)
             content: Generated content
             metrics: Optional quality metrics (Winston, Realism, etc.)
             evaluation: Optional subjective evaluation results

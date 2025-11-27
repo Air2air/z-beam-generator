@@ -1,0 +1,107 @@
+# Materials Domain Configuration
+# Material description and caption generation settings
+
+component_lengths:
+  material_description:
+    target: 1000                       # No effective token limit - let prompt instructions control length
+    extraction_strategy: raw           # Return text as-is
+  
+  caption:
+    target: 75                         # Target word count (variation applied from global slider)
+    extraction_strategy: before_after  # Extract before/after sections
+  
+  faq:
+    target: 150                        # Target word count (variation applied from global slider)
+    extraction_strategy: json_list     # Parse JSON array
+
+# Materials-specific randomization targets
+randomization_targets:
+  
+  # Length variation targets (word counts) - MATERIAL DESCRIPTION
+  # Reduced 15% to account for LLM tendency to exceed targets
+  length:
+    short:
+      range: [42, 63]
+      description: "CONCISE - essential points only"
+      probability: 0.33
+    medium:
+      range: [63, 93]
+      description: "BALANCED - key aspects covered"
+      probability: 0.33
+    long:
+      range: [93, 127]
+      description: "DETAILED - comprehensive coverage"
+      probability: 0.34
+  
+  # Length variation targets for SUBTITLE (50% of description ranges)
+  # Reduced further to account for LLM tendency to exceed targets
+  subtitle_length:
+    short:
+      range: [21, 31]
+      description: "CONCISE - core advantage only"
+      probability: 0.33
+    medium:
+      range: [31, 46]
+      description: "BALANCED - key property with context"
+      probability: 0.33
+    long:
+      range: [46, 63]
+      description: "DETAILED - property with comparison"
+      probability: 0.34
+  
+  # Structural approaches for material descriptions
+  structures:
+    problem_focused:
+      label: "Problem-Focused"
+      description: "Start with challenge → explain why → solution"
+      probability: 0.20
+    contrast_based:
+      label: "Contrast-Based"
+      description: "Compare materials → highlight difference → impact"
+      probability: 0.20
+    process_focused:
+      label: "Process-Focused"
+      description: "Walk through setup → embed properties naturally"
+      probability: 0.20
+    experience_based:
+      label: "Experience-Based"
+      description: "Share what works → why → what to avoid"
+      probability: 0.20
+    property_driven:
+      label: "Property-Driven"
+      description: "Lead with ONE property → deep exploration"
+      probability: 0.20
+  
+  # Property integration strategies
+  property_strategies:
+    scattered:
+      label: "SCATTERED INTEGRATION"
+      description: "Distribute properties throughout narrative (never list)"
+      probability: 0.25
+    deep_dive:
+      label: "DEEP DIVE ONE"
+      description: "Focus deeply on ONE property first, mention others briefly later"
+      probability: 0.25
+    comparative:
+      label: "COMPARATIVE"
+      description: "Use properties to compare/contrast with similar materials"
+      probability: 0.25
+    problem_solution:
+      label: "PROBLEM-SOLUTION"
+      description: "Present property as solution to specific challenge"
+      probability: 0.25
+  
+  # Warning placement options
+  warning_placements:
+    early:
+      label: "EARLY WARNING"
+      description: "Start with critical safety/setup concern (first 2-3 sentences)"
+      probability: 0.33
+    mid_flow:
+      label: "MID-FLOW WARNING"
+      description: "Embed warning naturally in middle of narrative"
+      probability: 0.33
+    concluding:
+      label: "CONCLUDING WARNING"
+      description: "End with key caution or recommendation"
+      probability: 0.34

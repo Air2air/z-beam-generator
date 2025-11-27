@@ -217,7 +217,7 @@ class TestValidationConstantsDynamic:
     
     def test_passes_winston_uses_dynamic_threshold(self):
         """Should use dynamic threshold in passes_winston."""
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         
         # With learned=False, should use default 0.33
         assert ValidationConstants.passes_winston(0.25, use_learned=False) == True  # 0.25 < 0.33
@@ -225,7 +225,7 @@ class TestValidationConstantsDynamic:
     
     def test_deprecated_constant_still_works(self):
         """Deprecated WINSTON_AI_THRESHOLD should still return value."""
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         
         constants = ValidationConstants()
         # Should work but log deprecation warning

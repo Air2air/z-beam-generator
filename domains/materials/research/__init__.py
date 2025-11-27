@@ -25,7 +25,8 @@ from .unified_material_research import (
     ResearchContext,
     ResearchResult
 )
-from .machine_settings_researcher import MachineSettingsResearcher, MachineSettingResult, LaserProcessingContext
+# MachineSettingsResearcher: Available via shared.research interface to avoid cross-domain contamination
+# from .machine_settings_researcher import MachineSettingsResearcher, MachineSettingResult, LaserProcessingContext
 
 __all__ = [
     'UnifiedMaterialResearch',

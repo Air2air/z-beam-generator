@@ -346,8 +346,20 @@ materialProperties:
       calculation: thermalConductivity / (density * specificHeat)
       context: Calculated from measured thermal conductivity (6.7 W/(m·K)), density (4.43 g/cm³), and specific heat (523 J/(kg·K)) for annealed Ti-6Al-4V at 20°C
       researched_date: '2025-11-24T21:15:00Z'
+    thermalConductivity:
+      value: 6.7
+      unit: W/m·K
+      min: 6.0
+      max: 7.5
+      source: ai_research
+    ablationThreshold:
+      value: 1.0
+      unit: J/cm²
+      min: 0.5
+      max: 2.0
+      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T09:09:03.781693'
+    generated_date: '2025-11-26T11:07:36.821464'

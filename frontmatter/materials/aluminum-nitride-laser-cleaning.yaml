@@ -238,8 +238,26 @@ materialProperties:
       max: 0.39575
   laser_material_interaction:
     label: Laser-Material Interaction
+    thermalConductivity:
+      value: 180
+      unit: W/m·K
+      min: 150
+      max: 220
+      source: ai_research
+    thermalDiffusivity:
+      value: 7.5e-05
+      unit: m²/s
+      min: 6.0e-05
+      max: 9.0e-05
+      source: ai_research
+    ablationThreshold:
+      value: 5
+      unit: J/cm²
+      min: 3
+      max: 8
+      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T09:09:03.929803'
+    generated_date: '2025-11-26T11:07:37.207715'

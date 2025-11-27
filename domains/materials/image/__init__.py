@@ -7,7 +7,7 @@ and laser cleaning visualization for materials.
 
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
-from domains.materials.image.contamination_levels import (
+from shared.types.contamination_levels import (
     CONTAMINATION_LEVELS,
     UNIFORMITY_LEVELS,
     VIEW_MODES,

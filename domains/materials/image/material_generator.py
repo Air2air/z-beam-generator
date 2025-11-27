@@ -13,15 +13,17 @@ import json
 import logging
 from typing import Dict, Any, Optional
 
-from domains.materials.image.prompts.material_researcher import MaterialContaminationResearcher
-from domains.materials.image.prompts.category_contamination_researcher import CategoryContaminationResearcher
-from domains.materials.image.prompts.prompt_builder import SharedPromptBuilder
+from domains.materials.image.research.material_researcher import MaterialContaminationResearcher
+from domains.materials.image.research.category_contamination_researcher import CategoryContaminationResearcher
+from shared.image.utils.prompt_builder import SharedPromptBuilder
 from domains.materials.image.material_config import MaterialImageConfig
-from domains.materials.image.prompts.image_pipeline_monitor import (
+from shared.image.utils.image_pipeline_monitor import (
     get_pipeline_monitor, FailureStage, FailureType
 )
-from domains.materials.image.learning import create_logger
-from domains.contaminants import ContaminationValidator, ContaminationContext
+from shared.image.learning import create_logger
+# ✅ FIXED (Nov 26, 2025): Use shared types to avoid cross-domain imports
+from shared.types.contamination import ContaminationContext
+from shared.validation.contamination_validator import ContaminationValidator
 
 logger = logging.getLogger(__name__)
 
@@ -157,7 +159,7 @@ class MaterialImageGenerator:
                     raise RuntimeError(f"Failed to parse contamination research for {material_name}.") from e
                 except Exception as e:
                     # General research failure
-                    from domains.materials.image.prompts.image_pipeline_monitor import FailureStage, FailureType
+                    from shared.image.utils.image_pipeline_monitor import FailureStage, FailureType
                     self.pipeline_monitor.record_failure(
                         material=material_name,
                         stage=FailureStage.RESEARCH,

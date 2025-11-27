@@ -24,7 +24,8 @@ import time
 
 # Import the specialized researchers
 from .unified_material_research import PropertyValueResearcher, ResearchContext, PropertyValue as PropertyResult
-from .machine_settings_researcher import MachineSettingsResearcher, LaserProcessingContext, MachineSettingResult
+# Machine settings research kept in materials domain but accessed via shared interface to avoid contamination
+# from .machine_settings_researcher import MachineSettingsResearcher, LaserProcessingContext, MachineSettingResult
 
 
 @dataclass

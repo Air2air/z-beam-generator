@@ -93,7 +93,7 @@ class ThresholdManager:
             if 'winston_threshold_fallback' in quality_gates:
                 self.fallback_winston = quality_gates['winston_threshold_fallback']
             else:
-                from generation.validation.constants import ValidationConstants
+                from shared.text.validation.constants import ValidationConstants
                 self.fallback_winston = ValidationConstants.DEFAULT_WINSTON_AI_THRESHOLD
         else:
             self.fallback_realism = config_fallbacks.get('realism', 5.5)

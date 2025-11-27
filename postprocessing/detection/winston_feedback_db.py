@@ -708,7 +708,7 @@ class WinstonFeedbackDatabase:
         
         Args:
             material: Material name
-            component_type: Content type (caption, subtitle, etc.)
+            component_type: Content type (caption, faq, etc.)
             original_realism_score: Initial realism score (0-10)
             original_voice_authenticity: Initial voice authenticity (0-10)
             original_tonal_consistency: Initial tonal consistency (0-10)
@@ -808,7 +808,7 @@ class WinstonFeedbackDatabase:
         
         Args:
             topic: Subject matter (material name, etc.)
-            component_type: Content type (caption, subtitle, etc.)
+            component_type: Content type (caption, faq, etc.)
             
         Returns:
             Dict with evaluation data or None if not found

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-AI Detection Snapshot Tool
+"""AI Detection Snapshot Tool
 
 Captures current config state + generates test batch + records results.
 Makes it easy to:
-1. Generate batch of subtitles with current settings
+1. Generate batch of captions with current settings
 2. Record config snapshot with outputs
 3. Compare different config combinations systematically
 4. Track which settings produce best AI detection results
@@ -70,8 +70,8 @@ def get_sentence_variation():
     return None
 
 def get_prompt_version():
-    """Determine prompt version from subtitle.txt content."""
-    prompt_path = Path(__file__).parent.parent / 'prompts' / 'subtitle.txt'
+    """Determine prompt version from caption.txt content."""
+    prompt_path = Path(__file__).parent.parent / 'prompts' / 'components' / 'caption.txt'
     with open(prompt_path, 'r') as f:
         content = f.read()
     
@@ -80,15 +80,15 @@ def get_prompt_version():
             return "primary_advantage_with_banned_patterns"
         else:
             return "primary_advantage_v1"
-    elif 'Legacy Subtitle Prompt' in content:
+    elif 'Legacy Caption Prompt' in content:
         return "simple_legacy"
     else:
         return "unknown"
 
-def generate_subtitle(material):
-    """Generate subtitle for material and capture output + AI detection score."""
+def generate_caption(material):
+    """Generate caption for material and capture output + AI detection score."""
     result = subprocess.run(
-        ['python3', 'run.py', '--subtitle', material],
+        ['python3', 'run.py', '--caption', material],
         capture_output=True,
         text=True,
         cwd=Path(__file__).parent.parent
@@ -155,7 +155,7 @@ def create_snapshot(name, materials):
     test_results = []
     for material in materials:
         print(f"  Generating {material}...")
-        result = generate_subtitle(material)
+        result = generate_caption(material)
         test_results.append(result)
         print(f"    ✓ {result['word_count']}w, {result['sentence_count']} sent")
         print(f"    → {result['output'][:80]}...\n")

@@ -348,10 +348,10 @@ outcomeMetrics:
 
 ### StreamlinedFrontmatterGenerator
 
-**Materials.yaml-Only Architecture**: All data sourced directly from Materials.yaml with template fallbacks for missing data. No AI API calls, completely deterministic output.
+**Dual-Source Architecture**: Materials.yaml for properties, Settings.yaml for machine settings. No AI API calls, completely deterministic output.
 
 - **materialProperties**: Extracted directly from Materials.yaml `materialProperties` section
-- **machineSettings**: Uses Materials.yaml `machineSettings` or sensible template values
+- **machineSettings**: Extracted from Settings.yaml `machineSettings` section
 - **environmentalImpact**: Sourced from Materials.yaml `environmentalImpact` field
 - **applications**: Uses Materials.yaml `applications` data
 - **author**: Extracted from Materials.yaml `author` field
@@ -365,7 +365,7 @@ outcomeMetrics:
    - No API calls, completely self-contained
 
 2. **`_generate_machine_settings_with_ranges(material_data, material_name)`** → machineSettings  
-   - Uses Materials.yaml `machineSettings` if available
+   - Uses Settings.yaml `machineSettings` section
    - Template fallback: Standard laser parameters (1064nm wavelength, 50-200W power, etc.)
    - No AI calculation, uses proven template values
 

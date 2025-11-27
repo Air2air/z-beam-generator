@@ -2289,8 +2289,8 @@ class IntegrityChecker:
         
         # Check 14: Template separation - component vs persona
         start = time.time()
-        components_dir = Path('prompts/components')
-        personas_dir = Path('prompts/personas')
+        components_dir = Path('shared/text/templates/components')
+        personas_dir = Path('shared/prompts/personas')
         
         # Voice keywords that should ONLY be in persona templates
         voice_keywords = [

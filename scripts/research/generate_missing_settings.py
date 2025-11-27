@@ -375,7 +375,7 @@ def main():
     
     # Load existing files
     materials_file = Path('data/materials/Materials.yaml')
-    settings_file = Path('data/materials/Settings.yaml')
+    settings_file = Path('data/settings/Settings.yaml')
     
     with open(materials_file, 'r') as f:
         materials_data = yaml.safe_load(f)

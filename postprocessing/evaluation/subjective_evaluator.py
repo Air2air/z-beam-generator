@@ -110,8 +110,8 @@ class SubjectiveEvaluator:
         self.evaluation_temperature = evaluation_temperature
         
         # Template and pattern file paths
-        self.template_file = Path('prompts/evaluation/subjective_quality.txt')
-        self.patterns_file = Path('prompts/evaluation/learned_patterns.yaml')
+        self.template_file = Path('shared/text/templates/evaluation/subjective_quality.txt')
+        self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
         self._pattern_learner = None
     
     @validate_scores
@@ -128,7 +128,7 @@ class SubjectiveEvaluator:
         Args:
             content: The text content to evaluate
             material_name: Name of the material (e.g., "Aluminum")
-            component_type: Type of content (caption, subtitle, faq, etc.)
+            component_type: Type of content (caption, faq, etc.)
             context: Additional context (properties, author, etc.)
         
         Returns:
@@ -515,7 +515,7 @@ def evaluate_content(
     Args:
         content: Text content to evaluate
         material_name: Material name (e.g., "Aluminum")
-        component_type: Component type (caption, subtitle, etc.)
+        component_type: Component type (caption, faq, etc.)
         api_client: REQUIRED Claude API client (fail-fast if None)
         verbose: Print detailed output
     

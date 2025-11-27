@@ -205,7 +205,7 @@ class DynamicGenerator:
         Load prompt template from /prompts/{component_type}.txt or /prompts/system/{component_type}
         
         Args:
-            component_type: Type of content (caption, faq, subtitle, etc.) 
+            component_type: Type of content (caption, faq, etc.) 
                            or path like 'system/base.txt' for system prompts
             
         Returns:
@@ -242,7 +242,7 @@ class DynamicGenerator:
         Returns:
             Dict mapping author_id to persona configuration
         """
-        personas_dir = Path("domains/materials/prompts/personas")
+        personas_dir = Path("shared/prompts/personas")
         if not personas_dir.exists():
             raise ValueError(f"Personas directory not found: {personas_dir}")
         
@@ -596,7 +596,7 @@ class DynamicGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of content (caption, faq, subtitle, etc.)
+            component_type: Type of content (caption, faq, etc.)
             **kwargs: Additional parameters (e.g., faq_count)
             
         Returns:

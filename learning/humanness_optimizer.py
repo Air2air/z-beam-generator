@@ -93,12 +93,12 @@ class HumannessOptimizer:
         self.structural_db_path = structural_db_path or 'data/winston_feedback.db'
         
         if patterns_file is None:
-            self.patterns_file = Path('prompts/evaluation/learned_patterns.yaml')
+            self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
         else:
             self.patterns_file = patterns_file
         
         # Validate template file exists (fail-fast)
-        self.template_file = Path('prompts/system/humanness_layer.txt')
+        self.template_file = Path('shared/text/templates/system/humanness_layer.txt')
         if not self.template_file.exists():
             raise FileNotFoundError(
                 f"Humanness layer template not found: {self.template_file}. "

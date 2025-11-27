@@ -19,7 +19,7 @@ def handle_generation(
     Generate AI-powered content for ANY component type.
     
     Component-agnostic handler - behavior determined by:
-    - prompts/components/{component_type}.txt (content instructions)
+    - shared/text/templates/components/{component_type}.txt (content instructions)
     - config.yaml component_lengths (length, extraction strategy)
     - ComponentRegistry (structural metadata)
     
@@ -35,7 +35,7 @@ def handle_generation(
         bool: True if generation successful, False otherwise
     """
     # Get component metadata from registry (icon, etc.)
-    from generation.core.component_specs import ComponentRegistry
+    from shared.text.utils.component_specs import ComponentRegistry
     
     try:
         spec = ComponentRegistry.get_spec(component_type)
@@ -309,7 +309,7 @@ def _run_winston_detection(content, material_name, component_type, api_client):
         from postprocessing.detection.winston_integration import WinstonIntegration
         from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
         from generation.config.config_loader import get_config
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         from shared.api.client_factory import APIClientFactory
         
         config = get_config()

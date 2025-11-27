@@ -20,8 +20,8 @@ project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 # Now import from project
-from domains.materials.image.prompts.category_contamination_researcher import CategoryContaminationResearcher
-from domains.materials.image.prompts.persistent_research_cache import PersistentResearchCache
+from domains.materials.image.research.category_contamination_researcher import CategoryContaminationResearcher
+from domains.materials.image.research.persistent_research_cache import PersistentResearchCache
 from domains.materials.image.validator import MaterialImageValidator
 
 

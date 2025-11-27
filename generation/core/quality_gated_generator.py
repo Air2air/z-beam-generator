@@ -128,7 +128,7 @@ class QualityGatedGenerator:
         self.humanness_optimizer = HumannessOptimizer()
         
         # Initialize ForbiddenPhraseValidator for pre-flight checks
-        from generation.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
+        from shared.text.validation.forbidden_phrase_validator import ForbiddenPhraseValidator
         self.phrase_validator = ForbiddenPhraseValidator()
         
         logger.info(f"QualityGatedGenerator initialized (max_attempts={self.max_attempts}, threshold={self.quality_threshold})")
@@ -907,7 +907,7 @@ class QualityGatedGenerator:
             from postprocessing.detection.winston_integration import WinstonIntegration
             from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
             from generation.config.config_loader import get_config
-            from generation.validation.constants import ValidationConstants
+            from shared.text.validation.constants import ValidationConstants
             
             config = get_config()
             db_path = config.config.get('winston_feedback_db_path')

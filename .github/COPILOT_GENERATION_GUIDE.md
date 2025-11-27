@@ -57,9 +57,7 @@ length_variation_range: 50         # Length flexibility
 
 ```bash
 # Subtitles (15 words)
-python3 run.py --subtitle "Aluminum"
-
-# Captions (25 words)
+python3 run.py # Captions (25 words)
 python3 run.py --caption "Steel"
 
 # FAQs (2-8 questions, variable length answers)
@@ -114,7 +112,7 @@ When user requests generation:
 3. **Execute the command:**
    ```python
    run_in_terminal(
-       command='python3 run.py --subtitle "Aluminum"',
+       command='python3 run.py ',
        explanation='Generating subtitle for Aluminum',
        isBackground=False
    )
@@ -136,7 +134,7 @@ When user requests generation:
 **Copilot Action:**
 ```python
 run_in_terminal(
-    command='python3 run.py --subtitle "Aluminum"',
+    command='python3 run.py ',
     explanation='Generating 15-word subtitle for Aluminum',
     isBackground=False
 )
@@ -208,7 +206,7 @@ run_in_terminal(
 ```python
 # Generate subtitle first
 run_in_terminal(
-    command='python3 run.py --subtitle "Brass"',
+    command='python3 run.py ',
     explanation='Generating subtitle for Brass',
     isBackground=False
 )
@@ -278,7 +276,7 @@ run_in_terminal(
 **Then regenerate:**
 ```python
 run_in_terminal(
-    command='python3 run.py --subtitle "Aluminum"',
+    command='python3 run.py ',
     explanation='Regenerating subtitle with new settings',
     isBackground=False
 )
@@ -435,7 +433,7 @@ read_file(
 
 ```bash
 # GENERATION
-python3 run.py --subtitle "Material"    # 15 words
+python3 run.py # 15 words
 python3 run.py --caption "Material"     # 25 words
 python3 run.py --faq "Material"         # 2-8 Q&As
 python3 run.py --run "Material"         # Complete workflow

@@ -25,7 +25,6 @@ from domains.materials.research.factory import ResearcherFactory
 from components.universal.text_generator import UniversalTextGenerator
 from components.universal.faq_generator import UniversalFAQGenerator
 from components.universal.caption_generator import UniversalCaptionGenerator
-from components.universal.subtitle_generator import UniversalSubtitleGenerator
 
 
 class ContentPipeline:
@@ -37,7 +36,7 @@ class ContentPipeline:
     Pipeline Flow:
         1. Initialize content schema (from name or existing data)
         2. Research missing fields (AI-powered discovery)
-        3. Generate components (FAQ, caption, subtitle, etc.)
+        3. Generate components (FAQ, caption, etc.)
         4. Assemble frontmatter (combine all data)
         5. Export to YAML (save to content file)
     
@@ -83,7 +82,6 @@ class ContentPipeline:
         self.text_generator = UniversalTextGenerator(api_client)
         self.faq_generator = UniversalFAQGenerator(api_client)
         self.caption_generator = UniversalCaptionGenerator(api_client)
-        self.subtitle_generator = UniversalSubtitleGenerator(api_client)
         
         # Output configuration
         self.output_base = Path(output_base_dir)
@@ -309,8 +307,7 @@ class ContentPipeline:
         generators = {
             'text': self.text_generator,
             'faq': self.faq_generator,
-            'caption': self.caption_generator,
-            'subtitle': self.subtitle_generator
+            'caption': self.caption_generator
         }
         
         generator = generators.get(component_type)

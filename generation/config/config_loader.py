@@ -216,7 +216,7 @@ class ProcessingConfig:
         Token estimation: words × 1.3 (approximate tokens per word)
         
         Args:
-            component_type: Component type (subtitle, caption, description, faq, etc.)
+            component_type: Component type (caption, description, faq, etc.)
             
         Returns:
             Max tokens value (converted from word count)

@@ -71,7 +71,7 @@ Both methods return **identical structure** - materialProperties and machineSett
 **Size**: 1.2 MB  
 **Contains**:
 - Material names, categories, subcategories
-- Descriptions, titles, subtitles
+- Descriptions, titless
 - FAQs, captions, author metadata
 - Regulatory standards, applications
 - Images, E-E-A-T metadata

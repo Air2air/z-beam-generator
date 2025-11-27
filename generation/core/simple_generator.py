@@ -87,14 +87,11 @@ class SimpleGenerator:
         self.logger.info("SimpleGenerator initialized (single-pass, no validation)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
-        """Load all author personas from prompts/personas/ or domains/materials/prompts/personas/"""
+        """Load all author personas from shared/prompts/personas/"""
         personas = {}
         
-        # Try both locations (for backward compatibility)
-        personas_dir = Path("prompts/personas")
-        if not personas_dir.exists():
-            personas_dir = Path("domains/materials/prompts/personas")
-        
+        # Use shared location
+        personas_dir = Path("shared/prompts/personas")
         if not personas_dir.exists():
             raise FileNotFoundError(f"Personas directory not found: {personas_dir}")
         
@@ -216,7 +213,7 @@ class SimpleGenerator:
         self.logger.info(f"\n🔄 SIMPLE GENERATION: {component_type} for {material_name}")
         
         # Validate component type exists
-        from generation.core.component_specs import ComponentRegistry
+        from shared.text.utils.component_specs import ComponentRegistry
         try:
             spec = ComponentRegistry.get_spec(component_type)
         except KeyError:
@@ -255,7 +252,7 @@ class SimpleGenerator:
         }
         
         # Build prompt (humanness_layer already contains length from randomization_targets)
-        from generation.core.prompt_builder import PromptBuilder
+        from shared.text.utils.prompt_builder import PromptBuilder
         prompt = PromptBuilder.build_unified_prompt(
             topic=material_name,
             voice=voice,
@@ -330,7 +327,8 @@ class SimpleGenerator:
     
     def _save_to_settings_yaml(self, material_name: str, content: Any):
         """Save settings_description to Settings.yaml with atomic write + frontmatter sync."""
-        settings_path = Path("data/materials/Settings.yaml")
+        from domains.settings.data_loader import get_settings_path
+        settings_path = get_settings_path()
         
         # Load existing data
         try:

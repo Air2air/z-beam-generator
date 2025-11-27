@@ -221,7 +221,7 @@ class TestBackwardCompatibility:
     
     def test_ai_to_human_percentage_conversion(self):
         """Old conversion functions still work"""
-        from generation.validation.constants import ai_to_human_percentage
+        from shared.text.validation.constants import ai_to_human_percentage
         
         # Should convert 0-1.0 to 0-100
         assert abs(ai_to_human_percentage(0.15) - 85.0) < 0.1
@@ -229,7 +229,7 @@ class TestBackwardCompatibility:
     
     def test_passes_winston_threshold(self):
         """Winston threshold check works with normalized scores"""
-        from generation.validation.constants import VALIDATION
+        from shared.text.validation.constants import VALIDATION
         
         # Test with static default threshold (use_learned=False)
         # Should pass with < 0.33 AI score

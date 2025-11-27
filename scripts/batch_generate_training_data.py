@@ -124,7 +124,7 @@ if __name__ == '__main__':
     components = [c.strip() for c in args.components.split(',')]
     
     # Validate components
-    valid_components = ['caption', 'subtitle', 'faq', 'description']
+    valid_components = ['caption', 'faq', 'description']
     for c in components:
         if c not in valid_components:
             print(f"❌ Invalid component: {c}")

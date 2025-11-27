@@ -745,10 +745,9 @@ All required components must be explicitly provided - no silent degradation.
 ### 🚨 **MANDATORY: Field Isolation During Generation** 🔥 **NEW (Nov 22, 2025)**
 **Component generation flags (--description, --caption, etc.) MUST ONLY update the specified field.**
 
-- ✅ `--description` → Updates ONLY description field (preserves subtitle, caption, faq, author, etc.)
-- ✅ `--caption` → Updates ONLY caption field (preserves description, subtitle, faq, etc.)
-- ✅ `--subtitle` → Updates ONLY subtitle field (preserves description, caption, faq, etc.)
-- ✅ `--faq` → Updates ONLY faq field (preserves description, caption, subtitle, etc.)
+- ✅ `--description` → Updates ONLY description field (preserves caption, faq, author, etc.)
+- ✅ `--caption` → Updates ONLY caption field (preserves description, faq, etc.)
+- ✅ `--faq` → Updates ONLY faq field (preserves description, caption, etc.)
 - ❌ **VIOLATION**: Overwriting ANY unrelated field during component generation
 
 **Enforcement**: 15 automated tests verify field isolation (`tests/test_frontmatter_partial_field_sync.py`)
@@ -817,7 +816,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 ### 8. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
 **ONLY prompt templates determine content and formatting. NO component-specific methods.**
 
-- ✅ **prompts/components/*.txt** - ALL content instructions and formatting rules
+- ✅ **shared/text/templates/components/*.txt** - ALL content instructions and formatting rules
   - Structure guidelines, style requirements, forbidden phrases
   - Format specifications, example outputs, voice/tone rules
   - COMPLETE content strategy for each component type
@@ -852,7 +851,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 4. ❌ Add content instructions to code
 
 # NEW WAY (COMPLIANT): 1 config + 1 template = ZERO CODE CHANGES
-1. ✅ Create prompts/components/new_component.txt (all instructions)
+1. ✅ Create shared/text/templates/components/new_component.txt (all instructions)
 2. ✅ Add to config.yaml: component_lengths: { new_component: {default: 100, extraction_strategy: raw} }
 ```
 

@@ -67,7 +67,7 @@ class GenerationReport:
     
     Attributes:
         material: Material name
-        component_type: Type of component (caption, subtitle, etc.)
+        component_type: Type of component (caption, faq, etc.)
         status: Generation outcome
         timestamp: When generation occurred
         author: Author persona used (if applicable)

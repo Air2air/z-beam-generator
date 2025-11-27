@@ -31,7 +31,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any
 import yaml
 
-from generation.validation.constants import ValidationConstants
+from shared.text.validation.constants import ValidationConstants
 
 logger = logging.getLogger(__name__)
 
@@ -220,7 +220,7 @@ class BatchGenerator:
                 self.logger.info(f"   Generating: {material}")
                 
                 # Generate using existing generator (quality-gated with auto-retry)
-                # Note: Generator may return string (subtitle) or object (caption/faq)
+                # Note: Generator may return string (description) or object (caption/faq)
                 try:
                     result = self.generator.generate(material, component_type)
                     
@@ -398,9 +398,8 @@ class BatchGenerator:
         """
         # Load base prompt template - try multiple locations
         prompt_locations = [
-            Path(f"prompts/{component_type}.txt"),
-            Path(f"domains/materials/prompts/{component_type}.txt"),
-            Path(f"prompts/components/{component_type}.txt")
+            Path(f"shared/text/templates/components/{component_type}.txt"),
+            Path(f"domains/materials/text/templates/{component_type}.txt")
         ]
         
         prompt_file = None

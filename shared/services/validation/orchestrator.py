@@ -367,23 +367,6 @@ class ValidationOrchestrator:
                         result.post_generation_issues.append(f"Caption: {issue}")
                         result.medium_issues += 1
             
-            # Validate Subtitle
-            if 'subtitle' in material_info and material_info['subtitle']:
-                from shared.validation.integration import validate_generated_content
-                subtitle_result = validate_generated_content(
-                    content=material_info['subtitle'],
-                    component_type='subtitle',
-                    material_name=material_name,
-                    author_info=author_info,
-                    log_report=False
-                )
-                validation_results.append(('Subtitle', subtitle_result))
-                
-                if not subtitle_result.success:
-                    for issue in subtitle_result.critical_issues:
-                        result.post_generation_issues.append(f"Subtitle: {issue}")
-                        result.medium_issues += 1
-            
             return validation_results
             
         except Exception as e:

@@ -1,8 +1,7 @@
 """
-Voice Application Utility with Field-Level Control
+"""Voice Application Utility with Field-Level Control
 
 Applies author voice markers to frontmatter fields based on configuration.
-CRITICAL: Subtitles are NEVER voice-enhanced, only captions and FAQs.
 """
 
 import yaml
@@ -74,16 +73,13 @@ class VoiceApplicationController:
         Check if voice should be applied to this field.
         
         Args:
-            field_name: Field identifier (e.g., 'subtitle', 'caption_before')
+            field_name: Field identifier (e.g., 'caption', 'caption_before')
             content_type: Page type ('materials_page', 'settings_page', etc.)
         
         Returns:
             bool: True if voice should be applied
             
         Examples:
-            >>> controller.should_apply_voice('subtitle', 'materials_page')
-            False  # Subtitles NEVER get voice
-            
             >>> controller.should_apply_voice('caption_before', 'materials_page')
             True  # Captions always get voice
             
@@ -222,13 +218,6 @@ class VoiceApplicationController:
         if 'materials_page' in frontmatter:
             mp = frontmatter['materials_page']
             
-            # Subtitle: MUST NOT have voice
-            if 'subtitle' in mp:
-                is_valid, errors = self.validate_field_voice(
-                    'subtitle', mp['subtitle'], content_type
-                )
-                all_errors.extend(errors)
-            
             # Captions: MUST have voice
             if 'caption' in mp:
                 if 'before' in mp['caption']:
@@ -286,7 +275,7 @@ def apply_voice_with_config(
     Apply voice to frontmatter fields based on configuration.
     
     This is the main entry point for voice enhancement that respects
-    the field-level configuration (no voice on subtitles, etc.).
+    the field-level configuration.
     
     Args:
         frontmatter: Frontmatter dictionary
@@ -313,13 +302,6 @@ def apply_voice_with_config(
     # Apply voice to materials_page fields
     if 'materials_page' in frontmatter:
         mp = frontmatter['materials_page']
-        
-        # Subtitle: SKIP (explicitly disabled)
-        if 'subtitle' in mp:
-            if voice_controller.should_apply_voice('subtitle', content_type):
-                logger.warning("⚠️  subtitle voice is enabled in config - this should be FALSE")
-            else:
-                logger.info("   ✓ Skipping subtitle (voice disabled)")
         
         # Captions: APPLY
         if 'caption' in mp:
@@ -364,7 +346,6 @@ if __name__ == "__main__":
         
         # Test field checks
         print("Field Voice Settings (materials_page):")
-        print(f"  subtitle: {controller.should_apply_voice('subtitle', 'materials_page')}")
         print(f"  caption_before: {controller.should_apply_voice('caption_before', 'materials_page')}")
         print(f"  caption_after: {controller.should_apply_voice('caption_after', 'materials_page')}")
         print(f"  faq_answers: {controller.should_apply_voice('faq_answers', 'materials_page')}")
@@ -372,26 +353,18 @@ if __name__ == "__main__":
         # Test validation
         print("\nValidation Tests:")
         
-        # Test 1: Subtitle with voice (should FAIL)
-        subtitle_with_voice = "Pretty amazing metal basically used everywhere"
-        is_valid, errors = controller.validate_field_voice('subtitle', subtitle_with_voice, 'materials_page')
-        print(f"\n1. Subtitle with voice markers: {'❌ FAILED' if errors else '✓ PASSED'}")
-        if errors:
-            for error in errors:
-                print(f"   {error}")
-        
-        # Test 2: Caption without voice (should FAIL)
+        # Test 1: Caption without voice (should FAIL)
         caption_no_voice = "Surface shows heavy contamination from exposure"
         is_valid, errors = controller.validate_field_voice('caption_before', caption_no_voice, 'materials_page')
-        print(f"\n2. Caption without voice markers: {'❌ FAILED' if errors else '✓ PASSED'}")
+        print(f"\n1. Caption without voice markers: {'❌ FAILED' if errors else '✓ PASSED'}")
         if errors:
             for error in errors:
                 print(f"   {error}")
         
-        # Test 3: Caption with voice (should PASS)
+        # Test 2: Caption with voice (should PASS)
         caption_with_voice = "Surface shows pretty heavy contamination from years of exposure"
         is_valid, errors = controller.validate_field_voice('caption_before', caption_with_voice, 'materials_page')
-        print(f"\n3. Caption with voice markers: {'✓ PASSED' if not errors else '❌ FAILED'}")
+        print(f"\n2. Caption with voice markers: {'✓ PASSED' if not errors else '❌ FAILED'}")
         
     except Exception as e:
         print(f"\n❌ Error: {e}")

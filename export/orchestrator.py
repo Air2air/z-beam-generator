@@ -76,7 +76,7 @@ class FrontmatterOrchestrator:
         frontmatter = {}
         
         try:
-            # 1. Metadata (name, title, subtitle, description, category, subcategory)
+            # 1. Metadata (name, title, description, category, subcategory)
             self.logger.debug("1/6 Generating metadata...")
             metadata = self.metadata_module.generate(material_name, material_data)
             frontmatter.update(metadata)

@@ -1,0 +1,45 @@
+# Settings Domain Configuration
+# Machine settings description generation
+
+component_lengths:
+  settings_description:
+    target: 1000                       # No effective token limit - let prompt instructions control length
+    extraction_strategy: raw           # Return text as-is
+
+# Settings-specific voice styles
+randomization_targets:
+  voices:
+    direct_instructor:
+      label: "DIRECT INSTRUCTOR"
+      examples: ["You must", "Make sure you", "Start with"]
+      description: "Commanding, prescriptive"
+      probability: 0.33
+    team_collaborator:
+      label: "TEAM COLLABORATOR"
+      examples: ["We typically", "We've found", "In our experience"]
+      description: "Inclusive, shared experience"
+      probability: 0.33
+    experience_sharer:
+      label: "EXPERIENCE SHARER"
+      examples: ["I've seen", "This works when", "Tends to"]
+      description: "Observational, practical"
+      probability: 0.34
+  
+  # Sentence rhythm patterns
+  rhythms:
+    short_punchy:
+      label: "SHORT & PUNCHY"
+      description: "Use mostly 5-10 word sentences. Rapid fire. Direct impact. Build momentum."
+      sentence_range: [5, 10]
+      probability: 0.33
+    mixed_cadence:
+      label: "MIXED CADENCE"
+      description: "Alternate short (5-10 word) and long (20-30 word) sentences for natural rhythm."
+      short_range: [5, 10]
+      long_range: [20, 30]
+      probability: 0.33
+    complex_compound:
+      label: "COMPLEX COMPOUND"
+      description: "Use longer, detailed sentences (15-30 words) with clauses and technical depth."
+      sentence_range: [15, 30]
+      probability: 0.34

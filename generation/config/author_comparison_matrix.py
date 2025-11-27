@@ -65,21 +65,21 @@ def main():
     
     print()
     print("-" * 100)
-    print("CALCULATED PARAMETERS (for subtitle generation):")
+    print("CALCULATED PARAMETERS (for caption generation):")
     print()
     
     # Dynamic calculations
     dynamics = [DynamicConfig(base_config=config) for config in configs]
     
     calculations = [
-        ('Temperature', lambda d: f"{d.calculate_temperature('subtitle'):.2f}"),
-        ('Max Tokens', lambda d: f"{d.calculate_max_tokens('subtitle')}"),
+        ('Temperature', lambda d: f"{d.calculate_temperature('caption'):.2f}"),
+        ('Max Tokens', lambda d: f"{d.calculate_max_tokens('caption')}"),
         ('Max Attempts', lambda d: f"{d.calculate_retry_behavior()['max_attempts']}"),
         ('AI Threshold', lambda d: f"{d.calculate_detection_threshold():.1f}"),
         ('Word Rep Threshold', lambda d: f"{d.calculate_repetition_sensitivity()['word_frequency']}"),
         ('Min Readability', lambda d: f"{d.calculate_readability_thresholds()['min']:.1f}"),
         ('Grammar Leniency', lambda d: f"{d.calculate_grammar_strictness():.2f}"),
-        ('Target Length', lambda d: f"{d.calculate_target_length_range('subtitle')['target']}w"),
+        ('Target Length', lambda d: f"{d.calculate_target_length_range('caption')['target']}w"),
     ]
     
     for label, calc_func in calculations:

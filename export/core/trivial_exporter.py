@@ -136,7 +136,9 @@ class TrivialFrontmatterExporter:
     
     def _load_settings(self) -> Dict[str, Any]:
         """Load Settings.yaml for machine settings and material challenges."""
-        settings_file = Path(__file__).resolve().parents[2] / "data" / "materials" / "Settings.yaml"
+        from domains.settings.data_loader import load_settings_yaml, get_settings_path
+        
+        settings_file = get_settings_path()
         if not settings_file.exists():
             self.logger.warning(f"⚠️  Settings.yaml not found at {settings_file}")
             return {'settings': {}}

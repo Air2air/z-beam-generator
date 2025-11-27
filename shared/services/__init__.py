@@ -12,8 +12,12 @@ Last Updated: October 22, 2025
 from .validation.orchestrator import ValidationOrchestrator
 from .validation.unified_schema_validator import UnifiedSchemaValidator
 
-# Research Services (canonical location: research/services/)
-from domains.materials.research.services.ai_research_service import AIResearchEnrichmentService
+# Research Services (canonical location: shared/research/services/)
+from shared.research.services.ai_research_service import AIResearchEnrichmentService
+
+# Generic Services (extracted from materials domain)
+from shared.services.template_service import TemplateService
+from shared.services.pipeline_process_service import PipelineProcessService
 
 # Property Services
 # PropertyManager moved to components/frontmatter/services/property_manager.py
@@ -29,6 +33,10 @@ __all__ = [
     
     # Property Services
     'MaterialAuditor',
+    
+    # Generic Services
+    'TemplateService',
+    'PipelineProcessService',
 ]
 
 # Service registry for dynamic discovery

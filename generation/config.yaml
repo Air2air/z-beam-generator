@@ -60,135 +60,15 @@ length_variation_range: 10               # Maximum variation: ±60%
 word_count_variation: 0.50               # ±50% variation for maximum diversity
 
 # Randomization Targets Configuration
-# All randomization options for humanness layer generation
-# Zero hardcoded values policy: ALL variation options configured here
+# MOVED TO DOMAIN-SPECIFIC CONFIGS:
+# - Materials: domains/materials/config.yaml (structures, property_strategies, warning_placements, length, subtitle_length)
+# - Settings: domains/settings/config.yaml (voices, rhythms)
+# 
+# Shared randomization targets (used across all domains):
 randomization_targets:
-  
-  # Length variation targets (word counts) - DESCRIPTION
-  # Reduced 15% to account for LLM tendency to exceed targets
-  length:
-    short:
-      range: [42, 63]
-      description: "CONCISE - essential points only"
-      probability: 0.33
-    medium:
-      range: [63, 93]
-      description: "BALANCED - key aspects covered"
-      probability: 0.33
-    long:
-      range: [93, 127]
-      description: "DETAILED - comprehensive coverage"
-      probability: 0.34
-  
-  # Length variation targets for SUBTITLE (50% of description ranges)
-  # Reduced further to account for LLM tendency to exceed targets
-  subtitle_length:
-    short:
-      range: [21, 31]
-      description: "CONCISE - core advantage only"
-      probability: 0.33
-    medium:
-      range: [31, 46]
-      description: "BALANCED - key property with context"
-      probability: 0.33
-    long:
-      range: [46, 63]
-      description: "DETAILED - property with comparison"
-      probability: 0.34
-  
-  # Structural approaches
-  structures:
-    problem_focused:
-      label: "Problem-Focused"
-      description: "Start with challenge → explain why → solution"
-      probability: 0.20
-    contrast_based:
-      label: "Contrast-Based"
-      description: "Compare materials → highlight difference → impact"
-      probability: 0.20
-    process_focused:
-      label: "Process-Focused"
-      description: "Walk through setup → embed properties naturally"
-      probability: 0.20
-    experience_based:
-      label: "Experience-Based"
-      description: "Share what works → why → what to avoid"
-      probability: 0.20
-    property_driven:
-      label: "Property-Driven"
-      description: "Lead with ONE property → deep exploration"
-      probability: 0.20
-  
-  # Voice styles (author personas)
-  voices:
-    direct_instructor:
-      label: "DIRECT INSTRUCTOR"
-      examples: ["You must", "Make sure you", "Start with"]
-      description: "Commanding, prescriptive"
-      probability: 0.33
-    team_collaborator:
-      label: "TEAM COLLABORATOR"
-      examples: ["We typically", "We've found", "In our experience"]
-      description: "Inclusive, shared experience"
-      probability: 0.33
-    experience_sharer:
-      label: "EXPERIENCE SHARER"
-      examples: ["I've seen", "This works when", "Tends to"]
-      description: "Observational, practical"
-      probability: 0.34
-  
-  # Sentence rhythm patterns
-  rhythms:
-    short_punchy:
-      label: "SHORT & PUNCHY"
-      description: "Use mostly 5-10 word sentences. Rapid fire. Direct impact. Build momentum."
-      sentence_range: [5, 10]
-      probability: 0.33
-    mixed_cadence:
-      label: "MIXED CADENCE"
-      description: "Alternate short (5-10 word) and long (20-30 word) sentences for natural rhythm."
-      short_range: [5, 10]
-      long_range: [20, 30]
-      probability: 0.33
-    complex_compound:
-      label: "COMPLEX COMPOUND"
-      description: "Use longer, detailed sentences (15-30 words) with clauses and technical depth."
-      sentence_range: [15, 30]
-      probability: 0.34
-  
-  # Property integration strategies
-  property_strategies:
-    scattered:
-      label: "SCATTERED INTEGRATION"
-      description: "Distribute properties throughout narrative (never list)"
-      probability: 0.25
-    deep_dive:
-      label: "DEEP DIVE ONE"
-      description: "Focus deeply on ONE property first, mention others briefly later"
-      probability: 0.25
-    comparative:
-      label: "COMPARATIVE"
-      description: "Use properties to compare/contrast with similar materials"
-      probability: 0.25
-    problem_solution:
-      label: "PROBLEM-SOLUTION"
-      description: "Present property as solution to specific challenge"
-      probability: 0.25
-  
-  # Warning placement options
-  warning_placements:
-    early:
-      label: "EARLY WARNING"
-      description: "Start with critical safety/setup concern (first 2-3 sentences)"
-      probability: 0.33
-    mid_flow:
-      label: "MID-FLOW WARNING"
-      description: "Embed warning naturally in middle of narrative"
-      probability: 0.33
-    concluding:
-      label: "CONCLUDING WARNING"
-      description: "End with key caution or recommendation"
-      probability: 0.34
+  # Voice styles and rhythms now in domain configs
+  # Material-specific structures now in domains/materials/config.yaml
+  # Settings-specific voices now in domains/settings/config.yaml
   
 # Winston Feedback Database
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
@@ -196,22 +76,25 @@ winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 # Component Lengths (word count targets ONLY)
 # Global length_variation_range applies uniformly to all components
 # min/max calculated dynamically: target ± (target * variation_pct)
+# 
+# DOMAIN-SPECIFIC CONFIGS:
+# - Materials: domains/materials/config.yaml (material_description, caption, faq)
+# - Settings: domains/settings/config.yaml (settings_description)
+#
+# Legacy fallback values (used if domain configs not found):
 component_lengths:
   caption:
-    target: 75                         # Target word count (variation applied from global slider)
-    extraction_strategy: before_after  # Extract before/after sections
-  
+    target: 75
+    extraction_strategy: before_after
   material_description:
-    target: 1000                       # No effective token limit - let prompt instructions control length
-    extraction_strategy: raw           # Return text as-is
-  
+    target: 1000
+    extraction_strategy: raw
   settings_description:
-    target: 1000                       # No effective token limit - let prompt instructions control length
-    extraction_strategy: raw           # Return text as-is
-  
+    target: 1000
+    extraction_strategy: raw
   faq:
-    target: 150                        # Target word count (variation applied from global slider)
-    extraction_strategy: json_list     # Parse JSON array
+    target: 150
+    extraction_strategy: json_list
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

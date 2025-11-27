@@ -32,7 +32,7 @@ def main():
     parser.add_argument('--simulate', help='Simulate slider change (e.g., ai_avoidance=80)')
     parser.add_argument('--compare', nargs=2, metavar=('SETTING1', 'SETTING2'),
                        help='Compare two settings (e.g., imperfection=30 imperfection=70)')
-    parser.add_argument('--component', default='subtitle', help='Component type to analyze')
+    parser.add_argument('--component', default='caption', help='Component type to analyze')
     
     args = parser.parse_args()
     
