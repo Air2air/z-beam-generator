@@ -22,7 +22,7 @@ from typing import Dict, Optional
 from domains.materials.modules.metadata_module import MetadataModule
 from domains.materials.modules.author_module import AuthorModule
 from domains.materials.modules.properties_module import PropertiesModule
-from domains.materials.modules.settings_module import SettingsModule
+from domains.settings.modules.settings_module import SettingsModule
 from domains.materials.modules.simple_modules import (
     ComplianceModule,
     MediaModule

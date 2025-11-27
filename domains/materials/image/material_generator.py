@@ -47,7 +47,12 @@ class MaterialImageGenerator:
         self.material_researcher = None
         self.category_researcher = None
         self.use_category_research = use_category_research
-        self.prompt_builder = SharedPromptBuilder()
+        
+        # Initialize prompt builder with correct path
+        from pathlib import Path
+        prompts_dir = Path(__file__).parent / "prompts" / "shared"
+        self.prompt_builder = SharedPromptBuilder(prompts_dir=prompts_dir)
+        
         self.pipeline_monitor = get_pipeline_monitor()
         self.contamination_validator = ContaminationValidator()
         

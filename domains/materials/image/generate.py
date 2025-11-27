@@ -21,7 +21,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
 from shared.api.gemini_image_client import GeminiImageClient
-from domains.materials.image.learning import create_logger
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -199,42 +198,12 @@ Researched Defaults:
                 logger.info("   • Pass Threshold: 75.0/100")
                 logger.info(f"   • Status: {'✅ PASSED' if validation_result.passed else '❌ FAILED'}")
                 
-                # Log to learning database
-                try:
-                    generation_logger = create_logger()
-                    generation_logger.log_attempt(
-                        material=args.material,
-                        category=config.category,
-                        generation_params={
-                            'prompt_length': len(prompt_package['prompt']),
-                            'guidance_scale': prompt_package['guidance_scale'],
-                            'contamination_uniformity': config.contamination_uniformity,
-                            'view_mode': config.view_mode,
-                            'patterns_used': [p.get('pattern_name', p.get('name', 'Unknown')) 
-                                            for p in prompt_package['research_data'].get('selected_patterns', 
-                                            prompt_package['research_data'].get('contaminants', []))[:3]],
-                            'feedback_applied': True  # Always true now since feedback is always loaded
-                        },
-                        validation_results={
-                            'prompt_length': 0,  # Validation prompt length tracking added separately
-                            'truncated': False,  # Emergency truncation tracking
-                            'realism_score': int(validation_result.realism_score) if validation_result.realism_score else 0,
-                            'passed': validation_result.passed,
-                            'physics_issues': validation_result.physics_issues if validation_result.physics_issues else [],
-                            'red_flags': []  # Red flags tracked in future enhancement
-                        },
-                        outcome={
-                            'failure_category': 'physics' if (validation_result.physics_issues and len(validation_result.physics_issues) > 0) else None,
-                            'retry_count': 0,
-                            'final_success': validation_result.passed
-                        },
-                        image_metadata={
-                            'path': str(output_path),
-                            'size_kb': file_size / 1024
-                        }
-                    )
-                except Exception as log_error:
-                    logger.debug(f"Failed to log to learning database: {log_error}")
+                # Learning database logging disabled (module not available)
+                # try:
+                #     generation_logger = create_logger()
+                #     generation_logger.log_attempt(...)
+                # except Exception as log_error:
+                #     logger.debug(f"Failed to log to learning database: {log_error}")
                 
                 if not validation_result.passed:
                     logger.warning("\n⚠️  Image failed validation:")
