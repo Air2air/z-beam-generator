@@ -199,6 +199,23 @@ Researched Defaults:
                 logger.info("   • Pass Threshold: 75.0/100")
                 logger.info(f"   • Status: {'✅ PASSED' if validation_result.passed else '❌ FAILED'}")
                 
+                # Show detailed validation feedback
+                if not validation_result.passed:
+                    if validation_result.physics_issues:
+                        logger.info(f"\n   Physics Issues:")
+                        for issue in validation_result.physics_issues[:5]:
+                            logger.info(f"      • {issue}")
+                    if validation_result.distribution_issues:
+                        logger.info(f"\n   Distribution Issues:")
+                        for issue in validation_result.distribution_issues[:5]:
+                            logger.info(f"      • {issue}")
+                    if validation_result.overall_assessment:
+                        logger.info(f"\n   Assessment: {validation_result.overall_assessment}")
+                    if validation_result.recommendations:
+                        logger.info(f"\n   Recommendations:")
+                        for rec in validation_result.recommendations[:3]:
+                            logger.info(f"      • {rec}")
+                
                 # Log to learning database
                 try:
                     generation_logger = create_logger()
