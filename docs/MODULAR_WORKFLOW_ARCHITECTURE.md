@@ -43,7 +43,7 @@ The Z-Beam Generator now uses a clean 4-stage modular pipeline where each stage 
 │                                                                 │
 │  Quality Evaluation:                                           │
 │    postprocessing/evaluation/subjective_evaluator.py           │
-│    - Loads prompts/evaluation/subjective_quality.txt           │
+│    - Loads shared/text/templates/evaluation/subjective_quality.txt           │
 │    - Uses Grok API for subjective scoring                      │
 │    - Returns 0-10 score + dimension scores                     │
 │                           ↓                                     │
@@ -63,7 +63,7 @@ The Z-Beam Generator now uses a clean 4-stage modular pipeline where each stage 
 │                                                                 │
 │  Pattern Learning:                                             │
 │    learning/subjective_pattern_learner.py                      │
-│    - Updates prompts/evaluation/learned_patterns.yaml          │
+│    - Updates shared/text/templates/evaluation/learned_patterns.yaml          │
 │    - Tracks rejection patterns (AI tendencies)                 │
 │    - Tracks success patterns (EMA α=0.1)                       │
 │                           ↓                                     │

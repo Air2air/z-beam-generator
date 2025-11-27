@@ -64,7 +64,7 @@ Database-driven learning that tracks structural patterns and injects learned div
    - Formats learned patterns for template injection
 
 2. **Template Injection**:
-   - Loads `prompts/system/humanness_layer.txt`
+   - Loads `shared/text/templates/system/humanness_layer.txt`
    - Injects structural data: successful openings, overused patterns, diverse structures
    - Combined with Winston and Subjective patterns
    - Returns complete humanness instructions
@@ -204,7 +204,7 @@ generator = QualityGatedGenerator(
 # generation/core/quality_gated_generator.py
 humanness_optimizer = HumannessOptimizer(
     winston_db_path='z-beam.db',
-    patterns_file=Path('prompts/evaluation/learned_patterns.yaml'),
+    patterns_file=Path('shared/text/templates/evaluation/learned_patterns.yaml'),
     structural_db_path='data/winston_feedback.db'  # NEW
 )
 
@@ -507,7 +507,7 @@ structural_patterns = optimizer._extract_structural_patterns(
 
 - **Structural Variation Checker**: `docs/06-ai-systems/STRUCTURAL_VARIATION_QUALITY_GATE.md`
 - **Humanness Optimizer**: `learning/humanness_optimizer.py`
-- **Template File**: `prompts/system/humanness_layer.txt`
+- **Template File**: `shared/text/templates/system/humanness_layer.txt`
 - **Database Schema**: `generation/validation/structural_variation_checker.py` (lines 70-90)
 
 ---

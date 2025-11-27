@@ -210,7 +210,7 @@ class TestValidationConstantsDynamic:
     
     def test_get_winston_threshold_method(self):
         """Should have get_winston_threshold method."""
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         
         threshold = ValidationConstants.get_winston_threshold(use_learned=False)
         assert threshold == 0.33

@@ -269,7 +269,7 @@ CREATE TABLE structural_patterns (
 ### Basic Check (No Author)
 
 ```python
-from generation.validation.structural_variation_checker import StructuralVariationChecker
+from shared.text.validation.structural_variation_checker import StructuralVariationChecker
 
 checker = StructuralVariationChecker(
     db_path='data/winston_feedback.db',
@@ -335,7 +335,7 @@ print(f"Formulaic Rate: {stats['formulaic_rate']:.0f}%")
 
 ```python
 # In domains/materials/coordinator.py
-from generation.validation.structural_variation_checker import StructuralVariationChecker
+from shared.text.validation.structural_variation_checker import StructuralVariationChecker
 
 structural_checker = StructuralVariationChecker(
     db_path='data/winston_feedback.db',

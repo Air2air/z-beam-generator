@@ -197,7 +197,7 @@ Detects template-driven organization:
 ## 🔧 Implementation
 
 ### Template File
-**Location**: `prompts/evaluation/subjective_quality.txt`
+**Location**: `shared/text/templates/evaluation/subjective_quality.txt`
 
 Contains:
 - 6 dimension evaluation criteria
@@ -279,8 +279,8 @@ pytest tests/test_subjective_evaluation_six_dimensions.py -v
 
 ## 📚 Related Documentation
 
-- **Prompt Template**: `prompts/evaluation/subjective_quality.txt`
-- **Description Prompt**: `prompts/components/description.txt` (jargon avoidance)
+- **Prompt Template**: `shared/text/templates/evaluation/subjective_quality.txt`
+- **Description Prompt**: `shared/text/templates/components/description.txt` (jargon avoidance)
 - **Parser Implementation**: `postprocessing/evaluation/subjective_evaluator.py`
 - **Quality Gates**: `docs/06-ai-systems/QUALITY_GATE_POLICY.md`
 - **Terminal Logging**: `docs/08-development/TERMINAL_LOGGING_POLICY.md`

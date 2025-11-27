@@ -102,8 +102,8 @@ python3 scripts/verify_pipeline_stages.py
 
 🧠 STAGE 6: Humanness Layer Integration
    ✅ Winston patterns: 11 stored
-   ✅ Humanness template: prompts/system/humanness_layer.txt
-   ✅ Subjective patterns: prompts/evaluation/learned_patterns.yaml
+   ✅ Humanness template: shared/text/templates/system/humanness_layer.txt
+   ✅ Subjective patterns: shared/text/templates/evaluation/learned_patterns.yaml
 ```
 
 ### Method 3: Direct Database Inspection
@@ -182,7 +182,7 @@ grep -E "Sweet Spot|Learning|Correlation" /tmp/generation.log
 **Verification commands:**
 ```bash
 # Check template exists
-ls -lh prompts/system/humanness_layer.txt
+ls -lh shared/text/templates/system/humanness_layer.txt
 
 # Check patterns file exists
 ls -lh prompts/evaluation/learned_patterns.yaml
@@ -278,7 +278,7 @@ python3 run.py --caption "Material" 2>&1 | grep -i "realism\|subjective"
 sqlite3 z-beam.db "SELECT topic, component_type, overall_score, passes_quality_gate FROM subjective_evaluations ORDER BY timestamp DESC LIMIT 5;"
 
 # Check learned patterns
-cat prompts/evaluation/learned_patterns.yaml
+cat shared/text/templates/evaluation/learned_patterns.yaml
 ```
 
 **Expected output markers:**

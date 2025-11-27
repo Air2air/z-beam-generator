@@ -34,7 +34,7 @@ class TestScoreNormalization:
     
     def test_validation_constants_consistent(self):
         """ValidationConstants uses consistent 0-1.0 scale"""
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         
         # NOTE: DEFAULT_*_SCORE constants removed per GROK_INSTRUCTIONS.md Core Principle #2
         # No mock/fallback scores permitted in production - fail-fast architecture only
@@ -181,7 +181,7 @@ class TestScoreNormalization:
     
     def test_display_formatting(self):
         """Display functions format normalized scores as percentages"""
-        from generation.validation.constants import ValidationConstants
+        from shared.text.validation.constants import ValidationConstants
         
         # Test conversion to percentage
         normalized = 0.847

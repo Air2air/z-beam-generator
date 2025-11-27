@@ -874,8 +874,8 @@ print(f"Quality Gate: {'PASS' if result.passes_quality_gate else 'FAIL'}")
 **Grade**: A+ (100/100) - Full implementation, all tests passing
 
 **Components**:
-- `prompts/evaluation/subjective_quality.txt` - Template for evaluation prompts (single source of truth)
-- `prompts/evaluation/learned_patterns.yaml` - Auto-updating learned patterns from evaluations
+- `shared/text/templates/evaluation/subjective_quality.txt` - Template for evaluation prompts (single source of truth)
+- `shared/text/templates/evaluation/learned_patterns.yaml` - Auto-updating learned patterns from evaluations
 - `processing/learning/subjective_pattern_learner.py` - Learning system with exponential moving averages
 - `tests/test_learned_evaluation_pipeline.py` - Comprehensive test suite (17 tests)
 
@@ -897,7 +897,7 @@ print(f"Quality Gate: {'PASS' if result.passes_quality_gate else 'FAIL'}")
 **Monitoring Learning Progress**:
 ```bash
 # Check current learned patterns
-cat prompts/evaluation/learned_patterns.yaml
+cat shared/text/templates/evaluation/learned_patterns.yaml
 
 # Watch patterns evolve
 total_evaluations: 42  # Number of evaluations performed
@@ -918,7 +918,7 @@ success_patterns:
 **Editing Evaluation Criteria** (No Code Changes Needed!):
 ```bash
 # Edit prompt template directly
-nano prompts/evaluation/subjective_quality.txt
+nano shared/text/templates/evaluation/subjective_quality.txt
 
 # Changes take effect immediately on next evaluation
 ```
@@ -926,7 +926,7 @@ nano prompts/evaluation/subjective_quality.txt
 **Resetting Learned Patterns**:
 ```bash
 # Restore defaults if patterns become too restrictive
-git checkout prompts/evaluation/learned_patterns.yaml
+git checkout shared/text/templates/evaluation/learned_patterns.yaml
 ```
 
 **Key Features**:
