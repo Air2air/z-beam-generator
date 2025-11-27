@@ -45,7 +45,7 @@ from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 
 from shared.image.utils.prompt_builder import SharedPromptBuilder
-from shared.image.validation.payload_validator import ImagePayloadValidator
+from shared.image.validation.payload_validator import ImagePromptPayloadValidator
 from shared.validation.errors import ConfigurationError, GenerationError
 
 logger = logging.getLogger(__name__)
@@ -101,9 +101,8 @@ class UniversalImageGenerator:
         if config_override:
             self.config.update(config_override)
         
-        # Initialize prompt builder and validator
-        self.prompt_builder = SharedPromptBuilder()
-        self.validator = ImagePayloadValidator()
+        # Initialize validator only (no prompt builder needed - we use templates directly)
+        self.validator = ImagePromptPayloadValidator()
         
         # Load domain data loaders
         self.data_loader = self._initialize_data_loader()
@@ -251,7 +250,7 @@ class UniversalImageGenerator:
         image_config: Dict
     ) -> str:
         """
-        Load domain-specific prompt template.
+        Load prompt template (checks shared first, then domain-specific).
         
         Args:
             image_type: Type of image
@@ -269,19 +268,29 @@ class UniversalImageGenerator:
                 f"No template_file specified for {self.domain}/{image_type}"
             )
         
-        template_path = self.domain_path / "image" / "templates" / template_file
+        # Check shared templates first
+        shared_template_path = Path('shared/image/templates') / template_file
+        if shared_template_path.exists():
+            with open(shared_template_path, 'r') as f:
+                template = f.read()
+            logger.info(f"📄 Loaded shared template: {template_file} ({len(template)} chars)")
+            return template
         
-        if not template_path.exists():
-            raise ConfigurationError(
-                f"Template file not found: {template_path}\n"
-                f"Create domains/{self.domain}/image/templates/{template_file}"
-            )
+        # Fall back to domain-specific template
+        domain_template_path = self.domain_path / "image" / "templates" / template_file
+        if domain_template_path.exists():
+            with open(domain_template_path, 'r') as f:
+                template = f.read()
+            logger.info(f"📄 Loaded domain template: {template_file} ({len(template)} chars)")
+            return template
         
-        with open(template_path, 'r') as f:
-            template = f.read()
-        
-        logger.info(f"📄 Loaded template: {template_file} ({len(template)} chars)")
-        return template
+        # Not found in either location
+        raise ConfigurationError(
+            f"Template file not found: {template_file}\n"
+            f"Checked:\n"
+            f"  - shared/image/templates/{template_file}\n"
+            f"  - domains/{self.domain}/image/templates/{template_file}"
+        )
     
     def _load_research(
         self,

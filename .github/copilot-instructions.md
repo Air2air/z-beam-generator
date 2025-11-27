@@ -24,6 +24,7 @@
 | **Generate content** | `.github/COPILOT_GENERATION_GUIDE.md` (step-by-step) |
 | **Fix bugs/add features** | Pre-Change Checklist (see below) + `docs/SYSTEM_INTERACTIONS.md` |
 | **Check policy compliance** | `docs/08-development/` (HARDCODED_VALUE_POLICY, TERMINAL_LOGGING_POLICY, etc.) |
+| **Prompt chaining/orchestration** | `docs/08-development/PROMPT_CHAINING_POLICY.md` 🔥 **NEW** |
 | **Understand data flow** | `docs/02-architecture/processing-pipeline.md` |
 | **Find quick answers** | `docs/QUICK_REFERENCE.md` |
 | **Troubleshoot errors** | `TROUBLESHOOTING.md` (root) |
@@ -918,6 +919,61 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
 **Compliance**: Mandatory for caption, material_description, FAQ generation
 
+### 11. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
+**Maximum use of prompt chaining and orchestration to preserve separation of concerns and specificity.**
+
+**Core Principle**: Break generation into specialized prompts instead of one monolithic prompt.
+
+**Architecture Pattern**:
+```
+Stage 1: Research → Extract properties (low temp 0.3)
+Stage 2: Visual Description → Generate appearance (high temp 0.7)
+Stage 3: Composition → Layout before/after (balanced 0.5)
+Stage 4: Refinement → Technical accuracy (precise 0.4)
+Stage 5: Assembly → Final polish (balanced 0.5)
+```
+
+**Benefits**:
+- ✅ **Separation of concerns** - Research vs creativity vs accuracy
+- ✅ **Optimal parameters per stage** - Different temps for different tasks
+- ✅ **Reusable components** - Same research for multiple outputs
+- ✅ **Easy debugging** - Test each stage independently
+- ✅ **Better quality** - Focused prompts produce better results
+
+**Requirements**:
+- ✅ **Orchestrator layer** - Chains prompts with context passing
+- ✅ **Specialized templates** - One template per stage/task
+- ✅ **Context passing** - Each stage receives previous output as input
+- ✅ **Independent testability** - Can test each stage separately
+
+**Examples**:
+- ✅ **Text Generation**: `generation/core/quality_gated_generator.py` (already compliant)
+  - Stage 1: Build base prompt from template
+  - Stage 2: Add humanness layer
+  - Stage 3: Generate content
+  - Stage 4: Evaluate quality
+  - Stage 5: Apply feedback if needed
+
+- ✅ **Image Generation**: `shared/image/orchestrator.py` (new implementation)
+  - Stage 1: Research material properties
+  - Stage 2: Generate visual description
+  - Stage 3: Compose hero layout
+  - Stage 4: Technical refinement
+  - Stage 5: Final assembly
+
+**Anti-Patterns**:
+- ❌ **Monolithic prompts** - One massive prompt trying to do everything
+- ❌ **No context passing** - Independent prompts duplicating work
+- ❌ **Single temperature** - Using same temp for research AND creativity
+- ❌ **Hardcoded prompts** - Prompt text in code instead of templates
+
+**Enforcement**:
+- Code review checklist (see policy document)
+- Grade penalties for violations (-30 points for monolithic prompts)
+- Mandatory for ALL generation systems (text, image, future domains)
+
+See `docs/08-development/PROMPT_CHAINING_POLICY.md` for complete policy with examples.
+
 
 
 ## Code Standards
@@ -939,6 +995,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 - **Configuration Validation**: Validate all required files and settings on startup
 - **Linguistic Patterns**: Keep ONLY in `prompts/personas/` - never duplicate elsewhere
 - **Dynamic Calculation**: Use dynamic_config for all thresholds, penalties, temperatures
+- **Prompt Chaining**: Use orchestrated multi-stage prompts for separation of concerns (see PROMPT_CHAINING_POLICY.md) 🔥 **NEW**
 
 ## Error Handling
 - **ConfigurationError**: Missing or invalid configuration files

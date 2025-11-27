@@ -5,8 +5,13 @@ domain: materials
 
 # Image types available for materials domain
 image_types:
+  hero:
+    template_file: hero.txt  # Loads from shared/image/templates/
+    requires_research: false
+    description: "Main before/after laser cleaning split-screen"
+    
   contamination:
-    template_file: contamination.txt
+    template_file: contamination.txt  # Domain-specific template
     requires_research: true
     description: "Before/after contamination removal split-screen"
     
