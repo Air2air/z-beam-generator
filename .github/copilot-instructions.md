@@ -25,6 +25,7 @@
 | **Fix bugs/add features** | Pre-Change Checklist (see below) + `docs/SYSTEM_INTERACTIONS.md` |
 | **Check policy compliance** | `docs/08-development/` (HARDCODED_VALUE_POLICY, TERMINAL_LOGGING_POLICY, etc.) |
 | **Prompt chaining/orchestration** | `docs/08-development/PROMPT_CHAINING_POLICY.md` 🔥 **NEW** |
+| **Naming conventions** | `docs/08-development/NAMING_CONVENTIONS_POLICY.md` 🔥 **NEW** |
 | **Understand data flow** | `docs/02-architecture/processing-pipeline.md` |
 | **Find quick answers** | `docs/QUICK_REFERENCE.md` |
 | **Troubleshoot errors** | `TROUBLESHOOTING.md` (root) |
@@ -984,6 +985,11 @@ See `docs/08-development/PROMPT_CHAINING_POLICY.md` for complete policy with exa
 - Keep code concise and avoid unnecessary complexity
 - Never leave TODOs - provide complete solutions
 - Never hardcode values - use configuration or parameters
+- **Simplify naming** - Remove redundant prefixes (Simple, Basic, Universal, Unified)
+  - ❌ `SimpleGenerator` → ✅ `Generator`
+  - ❌ `UniversalImageGenerator` → ✅ `ImageGenerator`
+  - ❌ `simple_validate()` → ✅ `validate()`
+  - See `docs/08-development/NAMING_CONVENTIONS_POLICY.md` for complete rules
 - **NEVER add content instructions to code** - they belong ONLY in prompts/*.txt
 - **NEVER hardcode component types** - they're discovered from prompts/*.txt
 - **ALWAYS check documentation before implementing** - see Documentation Compliance Checklist

@@ -266,6 +266,29 @@ class SimpleGenerator:
             faq_count=faq_count  # Pass FAQ count for FAQ templates
         )
         
+        # CRITICAL: Validate prompt before API call
+        self.logger.info("🔍 Validating prompt before API submission...")
+        try:
+            from shared.validation.prompt_validator import validate_text_prompt
+            validation_result = validate_text_prompt(prompt)
+            
+            self.logger.info(f"   📊 Validation: {validation_result.get_summary()}")
+            
+            if not validation_result.is_valid:
+                self.logger.warning("   ⚠️  Validation found issues:")
+                for issue in validation_result.issues[:5]:  # Show first 5
+                    self.logger.warning(f"      • {issue.severity.value}: {issue.message}")
+                
+                if validation_result.has_critical_issues:
+                    raise ValueError(
+                        f"Prompt validation failed with critical issues:\n"
+                        f"{validation_result.format_report()}"
+                    )
+            else:
+                self.logger.info("   ✅ Prompt validated successfully")
+        except ImportError:
+            self.logger.warning("⚠️  UniversalPromptValidator not available - skipping validation")
+        
         # Make API call
         self.logger.info("📡 Making API request...")
         from shared.api.client import GenerationRequest

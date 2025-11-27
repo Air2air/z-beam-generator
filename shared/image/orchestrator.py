@@ -45,6 +45,28 @@ from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
 
+# Import universal prompt validator
+try:
+    from shared.validation.prompt_validator import validate_image_prompt
+except ImportError:
+    # Fallback if validator not available
+    logger.warning("⚠️  UniversalPromptValidator not available - skipping validation")
+    
+    @dataclass
+    class FallbackValidationResult:
+        """Fallback validation result when validator unavailable"""
+        is_valid: bool = True
+        
+        def get_summary(self) -> str:
+            return "✅ VALID (validator unavailable)"
+        
+        def format_report(self) -> str:
+            return "Validator not available"
+    
+    def validate_image_prompt(prompt: str, **kwargs):
+        """Fallback validator"""
+        return FallbackValidationResult()
+
 
 @dataclass
 class ChainedPromptResult:
@@ -164,6 +186,36 @@ class ImagePromptOrchestrator:
         print(f"   ✅ Assembled final prompt ({len(final_prompt)} chars)")
         logger.info(f"   ✅ Assembled final prompt ({len(final_prompt)} chars)")
         
+        # CRITICAL: Validate final prompt before returning
+        print("\n🔍 STAGE 6: Final Validation")
+        logger.info("🔍 STAGE 6: Final Validation")
+        validation_result = validate_image_prompt(
+            final_prompt,
+            material=identifier,
+            **kwargs
+        )
+        stage_outputs['validation'] = validation_result
+        
+        print(f"   📊 Validation: {validation_result.get_summary()}")
+        logger.info(f"   📊 Validation: {validation_result.get_summary()}")
+        
+        if not validation_result.is_valid:
+            print(f"   ⚠️  Validation found issues:")
+            logger.warning(f"   ⚠️  Validation found issues:")
+            for issue in validation_result.issues[:5]:  # Show first 5
+                print(f"      • {issue.severity.value}: {issue.message}")
+                logger.warning(f"      • {issue.severity.value}: {issue.message}")
+            
+            if validation_result.has_critical_issues:
+                logger.error("   🚨 CRITICAL issues found - prompt may fail")
+                raise ValueError(
+                    f"Prompt validation failed with critical issues:\n"
+                    f"{validation_result.format_report()}"
+                )
+        else:
+            print(f"   ✅ Prompt validated successfully")
+            logger.info(f"   ✅ Prompt validated successfully")
+        
         return ChainedPromptResult(
             prompt=final_prompt,
             domain=self.domain,
@@ -171,13 +223,21 @@ class ImagePromptOrchestrator:
             image_type='hero',
             stage_outputs=stage_outputs,
             metadata={
-                'stages': ['research', 'visual', 'composition', 'refinement', 'assembly'],
+                'stages': ['research', 'visual', 'composition', 'refinement', 'assembly', 'validation'],
                 'temperatures': {
                     'research': 0.3,
                     'visual': 0.7,
                     'composition': 0.5,
                     'refinement': 0.4,
                     'assembly': 0.5
+                },
+                'validation': {
+                    'is_valid': validation_result.is_valid,
+                    'issues_count': len(validation_result.issues),
+                    'has_critical': validation_result.has_critical_issues,
+                    'has_errors': validation_result.has_errors,
+                    'prompt_length': validation_result.prompt_length,
+                    'estimated_tokens': validation_result.estimated_tokens
                 }
             }
         )
