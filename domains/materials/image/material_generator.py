@@ -20,7 +20,6 @@ from domains.materials.image.material_config import MaterialImageConfig
 from shared.image.utils.image_pipeline_monitor import (
     get_pipeline_monitor, FailureStage, FailureType
 )
-from shared.image.learning import create_logger
 # ✅ FIXED (Nov 26, 2025): Use shared types to avoid cross-domain imports
 from shared.types.contamination import ContaminationContext
 from shared.validation.contamination_validator import ContaminationValidator

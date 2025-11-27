@@ -210,7 +210,9 @@ class MaterialImageValidator:
         
         # Initialize shared prompt builder for validation prompts
         from shared.image.utils.prompt_builder import SharedPromptBuilder
-        self.prompt_builder = SharedPromptBuilder()
+        from pathlib import Path
+        prompts_dir = Path(__file__).parent / "prompts" / "shared"
+        self.prompt_builder = SharedPromptBuilder(prompts_dir=prompts_dir)
         
         logger.info(f"✅ Material image validator initialized with {model}")
     
