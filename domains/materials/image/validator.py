@@ -222,7 +222,9 @@ class MaterialImageValidator:
         material_name: str,
         research_data: Dict[str, Any],
         config: Optional[Dict[str, Any]] = None,
-        reference_image_urls: Optional[List[str]] = None
+        reference_image_urls: Optional[List[str]] = None,
+        original_prompt: Optional[str] = None,
+        validation_result: Optional[Any] = None
     ) -> MaterialValidationResult:
         """
         Validate material before/after image for realism and accuracy.
@@ -233,6 +235,8 @@ class MaterialImageValidator:
             research_data: Research data used for generation
             config: Optional generation config (contamination level, uniformity, etc.)
             reference_image_urls: Optional list of reference image URLs for comparison
+            original_prompt: Optional original prompt used for generation (for reference)
+            validation_result: Optional pre-generation validation result (PromptValidationResult)
             
         Returns:
             MaterialValidationResult with detailed validation metrics

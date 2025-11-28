@@ -203,6 +203,9 @@ class SharedPromptBuilder:
         
         logger.debug(f"FINAL OPTIMIZED PROMPT:\n{'='*80}\n{optimized_prompt}\n{'='*80}")
         
+        # 🔥 TEMPORARY: Print full prompt to terminal for debugging
+        print(f"\n{'='*80}\n🔍 FINAL PROMPT SENT TO IMAGEN API:\n{'='*80}\n{optimized_prompt}\n{'='*80}\n")
+        
         return optimized_prompt
     
     def build_validation_prompt(

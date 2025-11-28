@@ -16,6 +16,7 @@ from typing import Dict, Any, Optional
 from domains.materials.image.research.material_researcher import MaterialContaminationResearcher
 from domains.materials.image.research.category_contamination_researcher import CategoryContaminationResearcher
 from shared.image.utils.prompt_builder import SharedPromptBuilder
+from shared.image.orchestrator import ImagePromptOrchestrator  # ✅ NEW: Orchestrated validation
 from domains.materials.image.material_config import MaterialImageConfig
 from shared.image.utils.image_pipeline_monitor import (
     get_pipeline_monitor, FailureStage, FailureType
@@ -51,6 +52,9 @@ class MaterialImageGenerator:
         from pathlib import Path
         prompts_dir = Path(__file__).parent / "prompts" / "shared"
         self.prompt_builder = SharedPromptBuilder(prompts_dir=prompts_dir)
+        
+        # ✅ NEW: Initialize orchestrator for validated prompt generation
+        self.orchestrator = ImagePromptOrchestrator(domain='materials')
         
         self.pipeline_monitor = get_pipeline_monitor()
         self.contamination_validator = ContaminationValidator()
@@ -213,6 +217,56 @@ class MaterialImageGenerator:
         
         return prompt
     
+    def generate_validated_prompt_package(
+        self,
+        material_name: str,
+        config: Optional[MaterialImageConfig] = None
+    ) -> Dict[str, Any]:
+        """
+        Generate orchestrated prompt with validation for image generation.
+        
+        Uses ImagePromptOrchestrator to build prompt through multi-stage chain
+        (Research → Visual → Composition → Refinement → Assembly → Validation).
+        
+        Returns validated prompt package with validation results for:
+        - Pre-generation quality control
+        - Post-generation reference for image validator
+        - Learning data storage
+        
+        Args:
+            material_name: Name of the material
+            config: Optional MaterialImageConfig
+        
+        Returns:
+            Dict containing:
+                - prompt: str - Validated final prompt
+                - validation_result: PromptValidationResult - Pre-generation validation
+                - stage_outputs: Dict - All stage outputs from orchestrator
+                - metadata: Dict - Additional context
+        
+        Raises:
+            ValidationError: If prompt has critical validation issues
+        """
+        config = config or MaterialImageConfig(material_name=material_name)
+        
+        # Use orchestrator with generic parameters (domain-agnostic)
+        # Orchestrator expects: identifier + **kwargs
+        chained_result = self.orchestrator.generate_hero_prompt(
+            identifier=material_name,
+            category=config.category,
+            api='imagen'
+        )
+        
+        # Extract validation result from stage outputs
+        validation_result = chained_result.stage_outputs.get('validation')
+        
+        return {
+            'prompt': chained_result.prompt,
+            'validation_result': validation_result,
+            'stage_outputs': chained_result.stage_outputs,
+            'metadata': chained_result.metadata
+        }
+    
     def get_negative_prompt(
         self,
         material_name: str,
@@ -335,7 +389,8 @@ class MaterialImageGenerator:
         self,
         material_name: str,
         material_properties: Optional[Dict] = None,
-        config: Optional[MaterialImageConfig] = None
+        config: Optional[MaterialImageConfig] = None,
+        use_validation: bool = True
     ) -> Dict[str, Any]:
         """
         Generate complete prompt package for image generation.
@@ -344,6 +399,7 @@ class MaterialImageGenerator:
             material_name: Name of the material
             material_properties: Optional material properties from Materials.yaml
             config: Optional MaterialImageConfig for contamination control
+            use_validation: If True, use orchestrator with pre-generation validation
             
         Returns:
             Dictionary with prompt, negative_prompt, and generation_params:
@@ -353,7 +409,8 @@ class MaterialImageGenerator:
                 "research_data": Dict,
                 "aspect_ratio": str,
                 "guidance_scale": float,
-                "safety_filter_level": str
+                "safety_filter_level": str,
+                "validation_result": PromptValidationResult (if use_validation=True)
             }
         """
         # Require explicit config
@@ -393,10 +450,38 @@ class MaterialImageGenerator:
         else:
                 raise RuntimeError(f"No contamination researcher configured for {material_name}.")
         
-        # Generate prompt with research data (pass data to avoid duplicate research)
-        prompt = self.generate_prompt(
-            material_name, material_properties, config, research_data
-        )
+        # Generate prompt with optional validation
+        validation_result = None
+        if use_validation:
+            # Use orchestrator with validation
+            try:
+                validated_package = self.generate_validated_prompt_package(material_name, config)
+                prompt = validated_package['prompt']
+                validation_result = validated_package['validation_result']
+                
+                # Log validation results
+                if validation_result:
+                    if validation_result.has_critical_issues:
+                        logger.error(f"❌ Prompt validation FAILED with {len(validation_result.critical_issues)} critical issues")
+                        for issue in validation_result.critical_issues:
+                            logger.error(f"   • {issue.message}")
+                        raise RuntimeError("Prompt validation failed with critical issues")
+                    elif validation_result.errors:
+                        logger.warning(f"⚠️  Prompt has {len(validation_result.errors)} errors")
+                    else:
+                        logger.info(f"✅ Prompt validation passed")
+                        
+            except Exception as e:
+                logger.warning(f"⚠️  Orchestrator validation failed, falling back to SharedPromptBuilder: {e}")
+                # Fallback to standard prompt generation
+                prompt = self.generate_prompt(
+                    material_name, material_properties, config, research_data
+                )
+        else:
+            # Standard prompt generation without validation
+            prompt = self.generate_prompt(
+                material_name, material_properties, config, research_data
+            )
         
         # Generate negative prompt
         negative_prompt = self.get_negative_prompt(material_name, config)
@@ -410,12 +495,18 @@ class MaterialImageGenerator:
             f"guidance scale {config.guidance_scale}"
         )
         
-        return {
+        result = {
             "prompt": prompt,
             "negative_prompt": negative_prompt,
             "research_data": research_data,
             "config": config.to_dict(),
             **params
         }
+        
+        # Add validation result if available
+        if validation_result:
+            result['validation_result'] = validation_result
+            
+        return result
     
 

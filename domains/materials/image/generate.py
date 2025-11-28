@@ -191,7 +191,9 @@ Researched Defaults:
                     image_path=output_path,
                     material_name=args.material,
                     research_data=prompt_package["research_data"],
-                    config=config.to_dict()
+                    config=config.to_dict(),
+                    original_prompt=prompt_package.get("prompt"),
+                    validation_result=prompt_package.get("validation_result")
                 )
                 
                 logger.info("\n📊 VALIDATION RESULTS:")
@@ -218,7 +220,50 @@ Researched Defaults:
                 
                 # Log to learning database
                 try:
+                    # Extract validator feedback for learning (BOTH passes and failures)
+                    feedback_text = None
+                    feedback_category = None
+                    
+                    # Build comprehensive feedback from validator
+                    feedback_parts = []
+                    
+                    # Add overall assessment (always capture for learning)
+                    if validation_result.overall_assessment:
+                        feedback_parts.append(validation_result.overall_assessment)
+                    
+                    # Add recommendations (if any)
+                    if validation_result.recommendations:
+                        feedback_parts.append("Recommendations:")
+                        for rec in validation_result.recommendations[:5]:
+                            feedback_parts.append(f"- {rec}")
+                    
+                    # Combine into feedback text
+                    if feedback_parts:
+                        feedback_text = "\n".join(feedback_parts)
+                        
+                        # Categorize feedback based on issues
+                        if validation_result.physics_issues and len(validation_result.physics_issues) > 0:
+                            feedback_category = 'physics'
+                        elif 'text label' in feedback_text.lower() or 'no visible difference' in feedback_text.lower():
+                            feedback_category = 'aesthetics'
+                        elif validation_result.passed:
+                            feedback_category = 'success'  # Learn from successes too
+                        else:
+                            feedback_category = 'quality'
+                    
                     generation_logger = create_logger()
+                    
+                    # Extract pre-generation validation metrics if available
+                    pre_validation_metrics = {}
+                    if 'validation_result' in prompt_package:
+                        pre_val = prompt_package['validation_result']
+                        pre_validation_metrics = {
+                            'pre_validation_passed': not pre_val.has_critical_issues if pre_val else True,
+                            'pre_validation_errors': len(pre_val.errors) if pre_val else 0,
+                            'pre_validation_warnings': len(pre_val.warnings) if pre_val else 0,
+                            'pre_validation_critical': len(pre_val.critical_issues) if pre_val else 0
+                        }
+                    
                     generation_logger.log_attempt(
                         material=args.material,
                         category=config.category,
@@ -230,7 +275,11 @@ Researched Defaults:
                             'patterns_used': [p.get('pattern_name', p.get('name', 'Unknown')) 
                                             for p in prompt_package['research_data'].get('selected_patterns', 
                                             prompt_package['research_data'].get('contaminants', []))[:3]],
-                            'feedback_applied': True  # Always true now since feedback is always loaded
+                            'feedback_applied': True,  # Always true now since feedback is always loaded
+                            'feedback_text': feedback_text,  # Validator feedback for learning
+                            'feedback_category': feedback_category,  # physics, aesthetics, quality
+                            'feedback_source': 'automated',  # From Gemini Vision validator
+                            **pre_validation_metrics  # Add pre-generation validation metrics
                         },
                         validation_results={
                             'prompt_length': 0,  # Validation prompt length tracking added separately

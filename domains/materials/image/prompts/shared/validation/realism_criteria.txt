@@ -1,8 +1,16 @@
 REALISM SCORE (0-100):
-• 90-100: Photorealistic, perfect physics
-• 75-89: Good, minor issues only (PASS)
-• 60-74: Noticeable flaws, some physics violations
-• 40-59: Poor quality, multiple issues
-• 0-39: Fails validation, reject
+• 90-100: Photorealistic, perfect physics, DRAMATIC before/after difference
+• 75-89: Good, minor issues only (PASS) - clear contamination removal visible
+• 60-74: Noticeable flaws, some physics violations, or weak before/after difference
+• 40-59: Poor quality, multiple issues, or NO visible contamination difference
+• 0-39: Fails validation, reject - identical sides or no contamination shown
 
 PASS THRESHOLD: 75/100
+
+CRITICAL SCORING RULES:
+• If both sides look identical/very similar: MAX score 45/100 (automatic fail)
+• If no contamination visible on BEFORE side: MAX score 50/100 (automatic fail)
+• If AFTER side still heavily contaminated: MAX score 50/100 (automatic fail)
+• If text/labels present: MAX score 70/100 (automatic fail)
+
+The before/after difference must be IMMEDIATELY OBVIOUS without close inspection.
