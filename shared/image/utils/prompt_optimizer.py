@@ -22,8 +22,8 @@ logger = logging.getLogger(__name__)
 
 # Imagen API Limits
 IMAGEN_4_CHAR_LIMIT = 4096  # Hard limit for Imagen 4
-IMAGEN_OPTIMAL_TARGET = 3500  # Safe target with margin
-IMAGEN_WARNING_THRESHOLD = 3800  # Warn if approaching limit
+IMAGEN_OPTIMAL_TARGET = 2800  # Aggressive target with large margin for anti-text
+IMAGEN_WARNING_THRESHOLD = 3500  # Warn if approaching limit
 
 
 class PromptOptimizer:

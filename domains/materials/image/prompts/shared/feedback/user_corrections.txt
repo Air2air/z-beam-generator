@@ -1,65 +1,17 @@
-# Material Image Quality Corrections
-# Updated: 2025-11-25
-# 
-# INSTRUCTIONS: Add your feedback here after reviewing generated images.
-# This file is automatically included in BOTH generation and validation prompts.
-#
-# 🚨 CRITICAL RULE: FEEDBACK MUST BE GENERAL OR CATEGORY-LEVEL ONLY
-# ❌ NEVER material-specific ("Birch must show...", "Steel needs...")
-# ✅ ALWAYS general ("Wood surfaces must...", "Metal oxidation should...")
-# ✅ OR category-specific ("Rust on metals...", "Grain patterns in wood...")
-#
-# WHY: Feedback applies to ALL future materials in that category automatically.
-#      Material-specific feedback creates inconsistency across similar materials.
-# 
-# FORMAT:
-# ───────────────────────────────────────────────────────────
-# ## [Category/Pattern Name] (Updated: YYYY-MM-DD)
-# ISSUE: [Describe what's wrong with the output]
-# FIX: "[Exact instruction to add to prompts]"
-# PRIORITY: [CRITICAL | HIGH | MEDIUM]
-# APPLIES TO: [Category or pattern type]
-# EXAMPLES: [Image IDs showing the issue]
-# ───────────────────────────────────────────────────────────
-#
-# PRIORITY LEVELS:
-# - CRITICAL: Must fix immediately (blocking issue)
-# - HIGH: Should fix soon (quality impact)
-# - MEDIUM: Nice to have (minor improvement)
-#
-# CORRECT EXAMPLES:
-# ✅ "Wood surfaces: Grain patterns must follow material structure"
-# ✅ "Rust patterns: Must show gravity effects with vertical drips"
-# ✅ "All materials: Edge contamination 60-75% heavier than center"
-#
-# INCORRECT EXAMPLES:
-# ❌ "Birch wood: Must show horizontal lenticels" (too specific)
-# ❌ "Steel oxidation needs darker patches" (material-specific)
-# ❌ "Fix Aluminum reflections" (singles out one material)
-#
+# Critical Quality Corrections (Auto-applied to generation)
 
-# ═══════════════════════════════════════════════════════════
-# YOUR CORRECTIONS BELOW THIS LINE:
-# ═══════════════════════════════════════════════════════════
+## Object Realism - CRITICAL
+BEFORE/AFTER must show SAME REAL OBJECT, not composite. Use authentic industrial/commercial objects (panels, tools, parts, furniture). Maintain EXACT object continuity - same item, same angle, only contamination differs.
 
-## Object Realism (Updated: 2025-11-25)
-ISSUE: Generated images show composite/artificial objects instead of realistic single objects
-FIX: "BEFORE/AFTER must show the SAME REAL OBJECT, not a composite. Use authentic industrial/commercial objects (panels, tools, parts, furniture). Maintain EXACT object continuity - same item, same angle, only contamination differs. NO artificial composites or merged objects."
-PRIORITY: CRITICAL
-APPLIES TO: All materials
-EXAMPLES: Birch image showed unrealistic composite instead of real wood object
+## Contamination Matching - HIGH
+Match contaminants to material category. Wood: dust, mold, water stains, UV damage. Metals: rust/oxidation, industrial oils, metal particles. NO generic dirt, NO grass on indoor materials. Research-based patterns ONLY.
 
-## Contamination Appropriateness (Updated: 2025-11-25)
-ISSUE: Inappropriate contaminants appearing (dirt, oil, dry grass on materials where they don't belong)
-FIX: "Match contaminants to material category and typical environment. Wood: dust, mold, water stains, UV damage. Metals: rust/oxidation, industrial oils, metal particles. NO generic 'dirt', NO dry grass on indoor materials, NO inappropriate organic matter. Research-based contamination patterns ONLY."
-PRIORITY: HIGH
-APPLIES TO: All categories
-EXAMPLES: Multiple materials showing dirt/grass instead of material-specific contamination
+## Rust Visibility - CRITICAL
+Rust BEFORE: VISIBLE accumulation (orange-brown oxidation, texture changes, 40-60% coverage). AFTER: CLEAN base metal. Contrast must be dramatic. NO subtle rust.
 
-## Rust Visibility and Contrast (Updated: 2025-11-25)
-ISSUE: Rust patterns don't show clear before/after transformation
-FIX: "Rust patterns: BEFORE side must show VISIBLE rust accumulation (orange-brown oxidation, surface texture changes, 40-60% coverage in affected areas). AFTER side shows CLEAN base metal color. Contrast must be dramatic and obvious. NO subtle rust, NO barely-visible contamination."
-PRIORITY: CRITICAL
-APPLIES TO: metals_ferrous, metals_reactive
-EXAMPLES: Rust not clearly visible in before/after comparison
+## Position Shift - HIGH
+Maintain 5-10% position shift between sides. Prevents mirror effect. Same object, slightly different angle/position.
+
+## NO TEXT/LABELS - CRITICAL
+ABSOLUTELY NO text, labels, captions, words, letters, numbers, typography, signage, markings, annotations, watermarks, logos, "before", "after", or ANY written characters. Pure photographic content ONLY.
 

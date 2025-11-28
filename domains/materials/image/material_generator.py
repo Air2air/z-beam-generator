@@ -277,7 +277,16 @@ class MaterialImageGenerator:
             
             # Quality issues
             "blurry", "low resolution", "pixelated", "artifacts",
-            "watermarks", "text", "labels", "captions", "logos",
+            
+            # Text and labels (CRITICAL - ABSOLUTE PROHIBITION)
+            "text", "words", "letters", "numbers", "digits",
+            "labels", "captions", "annotations", "titles",
+            "watermarks", "logos", "branding", "stamps",
+            "writing", "script", "typography", "font",
+            "signage", "markings", "inscriptions",
+            "before label", "after label", "before text", "after text",
+            "any visible characters", "any readable text",
+            "any written language", "any textual elements",
             
             # Unrealistic elements
             "cartoon", "illustration", "drawing", "CGI", "3D render",

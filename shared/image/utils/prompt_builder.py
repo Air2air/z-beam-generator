@@ -191,12 +191,17 @@ class SharedPromptBuilder:
         )
         
         # Log optimization results
-        if len(optimized_prompt) < len(full_prompt):
-            reduction = len(full_prompt) - len(optimized_prompt)
-            logger.info(
-                f"📐 Prompt optimized: {len(full_prompt)} → {len(optimized_prompt)} chars "
-                f"(-{reduction} chars)"
-            )
+        reduction_pct = ((len(full_prompt) - len(optimized_prompt)) / len(full_prompt) * 100) if full_prompt else 0
+        logger.info(
+            f"📐 Prompt optimized: {len(full_prompt)} → {len(optimized_prompt)} chars "
+            f"(-{len(full_prompt) - len(optimized_prompt)} chars, {reduction_pct:.1f}% reduction)"
+        )
+        
+        # 🔥 DEBUG: Log full optimized prompt to verify anti-text preservation
+        if len(optimized_prompt) > 3000:
+            logger.warning(f"⚠️  Optimized prompt near limit: {len(optimized_prompt)}/4096 chars")
+        
+        logger.debug(f"FINAL OPTIMIZED PROMPT:\n{'='*80}\n{optimized_prompt}\n{'='*80}")
         
         return optimized_prompt
     
