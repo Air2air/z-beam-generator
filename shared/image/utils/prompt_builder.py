@@ -428,6 +428,7 @@ EXPECTED CHARACTERISTICS:
             '{MATERIAL}': material_name,
             '{COMMON_OBJECT}': common_object,
             '{ENVIRONMENT}': environment,
+            '{CONTAMINATION_LEVEL}': str(contamination_uniformity),  # Same value, correct variable name
             '{UNIFORMITY}': str(contamination_uniformity),
             '{VIEW_MODE}': view_mode,
             '{CONTAMINANTS_SECTION}': contamination_section
