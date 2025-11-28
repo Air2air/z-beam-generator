@@ -291,6 +291,11 @@ These policies are **MANDATORY** reading before related work:
 | **Tests** | `test_*.py` | `tests/`, component `tests/` |
 | **Prompts** | `.txt` | `prompts/` |
 | **Data** | `.yaml` | `data/materials/`, `data/authors/`, etc. |
+| **Batch Scripts** | `.sh` | `scripts/`, `batch/` |
+| **Logs** | `.log` | `logs/`, `output/` |
+| **Progress Trackers** | `.txt` | `progress/`, `logs/` |
+| **Coverage Lists** | `.txt` | `coverage/`, `tests/` |
+| **Requirements** | `requirements.txt` | root or `config/` |
 
 ---
 
@@ -368,6 +373,12 @@ These policies are **MANDATORY** reading before related work:
 2. Update `docs/INDEX.md`
 3. Update `.github/copilot-instructions.md` if policy-related
 4. Cross-reference from related documents
+
+### When Organizing Files
+1. Follow explicit file type rules in `.github/copilot-instructions.md` (see "File Organization & Root Cleanliness Policy")
+2. Move batch scripts, logs, progress trackers, and coverage lists to their designated folders
+3. Keep only essential entry points and navigation docs in root
+4. Update this map and navigation docs after any major reorganization
 
 ### When Archiving Documents
 1. Move to appropriate `docs/archive/YYYY-MM/` directory

@@ -60,6 +60,49 @@ Before ANY code change:
 5. [ ] Verify all file paths exist before coding
 6. [ ] Ask permission before major changes or rewrites
 
+## 📦 File Organization & Root Cleanliness Policy (Nov 28, 2025)
+
+**Purpose:** Ensure all file types (.py, .sh, .log, .txt, etc.) are organized for maintainability and AI assistant workflow compliance. Prevent root clutter and legacy file sprawl.
+
+### 🔹 Python Scripts (.py)
+- **Batch/utility scripts:** Move to `scripts/` or `tools/`.
+- **Runner scripts:** Only keep essential entry points (e.g., `run.py`) in root.
+- **Test scripts:** All `test_*.py` files must be in `tests/`.
+
+### 🔹 Shell Scripts (.sh)
+- **Batch/process scripts:** Move to `scripts/` or `batch/`.
+- **Migration/monitoring scripts:** Group by function in subfolders (e.g., `scripts/migration/`, `scripts/monitoring/`).
+
+### 🔹 Log Files (.log)
+- **Operational logs:** Store in `logs/`, set up `.gitignore` for auto-exclusion.
+- **Batch/research logs:** Move to `logs/` or `output/` as appropriate.
+
+### 🔹 Text Files (.txt)
+- **Progress trackers:** Move to `progress/` or `logs/`.
+- **Requirements files:** Keep `requirements.txt` in root or move to `config/` if multiple environments.
+- **Coverage lists:** Store in `coverage/` or `tests/`.
+
+### 🔹 Markdown Files (.md)
+- **Documentation:** Only keep top-level navigation docs in root (e.g., `README.md`, `DOCUMENTATION_MAP.md`).
+- **Guides/architecture:** Move to `docs/` or relevant subdirectories.
+- **Archived docs:** Store in `docs/archive/`.
+
+### 🔹 General Rules
+- **No stray files in root:** Only keep essential entry points and navigation docs.
+- **Use `.gitignore`:** Exclude logs, outputs, and temporary files.
+- **Automate cleanup:** Add scripts to remove old logs and outputs.
+- **Document structure:** Update `DOCUMENTATION_MAP.md` to reflect new locations.
+
+### 🔹 Maintenance
+- **Regular audits:** Periodically check for stray files in root.
+- **Enforce structure:** Use pre-commit hooks or CI checks to prevent root clutter.
+- **Update navigation docs:** Ensure all links in `DOCUMENTATION_MAP.md` and `.github/copilot-instructions.md` are current.
+
+**Compliance:**
+- All file moves and organization must follow this policy.
+- AI assistants must enforce root cleanliness before major documentation or workflow changes.
+- Any exceptions require explicit approval and documentation.
+
 **Full Checklist**: See "Mandatory Pre-Change Checklist" section below (lines ~300)
 
 ---
