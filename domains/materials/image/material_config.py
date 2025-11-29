@@ -17,7 +17,7 @@ from typing import Dict, Optional
 CATEGORY_DEFAULTS = {
     # Metals - realistic industrial contamination
     "metals_ferrous": {
-        "contamination_uniformity": 3,  # 3 pattern types (rust, oil, dirt)
+        "contamination_uniformity": 3,  # 3 pattern types (rust, oil, industrial residue)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
@@ -39,12 +39,12 @@ CATEGORY_DEFAULTS = {
     
     # Ceramics & Glass - typically environmental contamination
     "ceramics_traditional": {
-        "contamination_uniformity": 3,  # 3 pattern types (dirt, stains, mineral deposits)
+        "contamination_uniformity": 3,  # 3 pattern types (dust, stains, mineral deposits)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "ceramics_construction": {
-        "contamination_uniformity": 4,  # 4 pattern types (weathering, biological, mineral, dirt)
+        "contamination_uniformity": 4,  # 4 pattern types (weathering, biological, mineral, dust)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
@@ -61,12 +61,12 @@ CATEGORY_DEFAULTS = {
         "guidance_scale": 15.0
     },
     "polymers_engineering": {
-        "contamination_uniformity": 2,  # 2 pattern types (oil, dirt)
+        "contamination_uniformity": 2,  # 2 pattern types (oil, dust)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "polymers_elastomer": {
-        "contamination_uniformity": 3,  # 3 pattern types (dirt, oils, residue)
+        "contamination_uniformity": 3,  # 3 pattern types (dust, oils, residue)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
@@ -80,17 +80,17 @@ CATEGORY_DEFAULTS = {
     
     # Wood - organic and environmental
     "wood_hardwood": {
-        "contamination_uniformity": 3,  # 3 pattern types (dirt, oils, mold)
+        "contamination_uniformity": 3,  # 3 pattern types (dust, oils, mold)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "wood_softwood": {
-        "contamination_uniformity": 3,  # 3 pattern types (dirt, sap, mold)
+        "contamination_uniformity": 3,  # 3 pattern types (dust, sap, mold)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "wood_engineered": {
-        "contamination_uniformity": 2,  # 2 pattern types (dirt, adhesive residue)
+        "contamination_uniformity": 2,  # 2 pattern types (dust, adhesive residue)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },

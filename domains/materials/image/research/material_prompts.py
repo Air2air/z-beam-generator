@@ -57,6 +57,7 @@ def build_material_cleaning_prompt(
     # Extract research data
     common_object = research_data.get('common_object', f'{material_name} object')
     environment = research_data.get('typical_environment', 'typical environment')
+    setting = research_data.get('setting', 'workshop bench')  # New: contextual setting
     
     # Build contamination details from category research patterns
     patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
@@ -69,6 +70,7 @@ def build_material_cleaning_prompt(
     prompt = prompt.replace('{MATERIAL}', material_name)
     prompt = prompt.replace('{COMMON_OBJECT}', common_object)
     prompt = prompt.replace('{ENVIRONMENT}', environment)
+    prompt = prompt.replace('{SETTING}', setting)  # New: contextual setting
     prompt = prompt.replace('{CONTAMINATION_LEVEL}', str(contamination_level))
     prompt = prompt.replace('{UNIFORMITY}', str(contamination_uniformity))
     prompt = prompt.replace('{VIEW_MODE}', view_mode)
@@ -151,7 +153,7 @@ def _build_contamination_section(contaminants: list, uniformity: int) -> str:
     lines.append("\n**REALISM IMPERATIVES** (CRITICAL - These determine image acceptability):")
     lines.append("- **Gravity compliance**: Liquids drip downward, heavy particles settle at bottom")
     lines.append("- **Layer interaction**: Contaminants overlap naturally, not as separate flat overlays")
-    lines.append("- **Texture variation**: Each contaminant has distinct surface texture (matte dirt, glossy oil, granular rust)")
+    lines.append("- **Texture variation**: Each contaminant has distinct surface texture (matte dust, glossy oil, granular rust)")
     lines.append("- **Light interaction**: Proper shadows, reflections, and light absorption for each material")
     lines.append("- **Uneven density**: Thicker in protected areas, thinner on exposed surfaces")
     lines.append("- **Weathering indicators**: Aged contamination shows fading, streaking, stratification")

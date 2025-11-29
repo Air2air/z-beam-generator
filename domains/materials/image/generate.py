@@ -44,11 +44,11 @@ Examples:
 
 Researched Defaults:
   All contamination settings are automatically determined based on material category.
-  - Metals (ferrous): 3 pattern types (rust, oil, dirt)
+  - Metals (ferrous): 3 pattern types (rust, oil, industrial residue)
   - Metals (non-ferrous): 3 pattern types (oxidation, grime, fingerprints)
   - Ceramics: 2-4 pattern types based on material
-  - Polymers: 2-3 pattern types (residue, oils, dirt)
-  - Wood: 3 pattern types (dirt, oils, mold)
+  - Polymers: 2-3 pattern types (residue, oils, surface deposits)
+  - Wood: 3 pattern types (dust, oils, mold)
   - Composites: 3 pattern types (resin, dust, oils)
   
   All images use Contextual view (3D perspective in realistic environment).
@@ -72,6 +72,10 @@ Researched Defaults:
                        help="Show the generated prompt")
     parser.add_argument("--dry-run", action="store_true",
                        help="Generate prompt but don't create image")
+    
+    # Shape/object override
+    parser.add_argument("--shape", type=str,
+                       help="Override the researched shape/object (e.g., 'I-beam in a building', 'copper pipe in plumbing system')")
     
     args = parser.parse_args()
     
@@ -109,13 +113,16 @@ Researched Defaults:
     logger.info(f"   • Uniformity: {config.uniformity_label} ({config.contamination_uniformity} patterns)")
     logger.info(f"   • View Mode: {config.view_mode}")
     logger.info(f"   • Guidance Scale: {config.guidance_scale}")
+    if args.shape:
+        logger.info(f"   • Shape Override: {args.shape}")
     logger.info("")
     
     # Generate complete prompt package
     logger.info("🔬 Researching contamination data...")
     prompt_package = generator.generate_complete(
         material_name=args.material,
-        config=config
+        config=config,
+        shape_override=args.shape
     )
     
     # Show prompt if requested

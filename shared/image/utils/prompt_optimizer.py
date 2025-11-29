@@ -248,7 +248,7 @@ class PromptOptimizer:
         
         # Critical contamination keywords to ALWAYS preserve
         critical_keywords = [
-            'oil', 'rust', 'dirt', 'soil', 'grease',
+            'oil', 'rust', 'dust', 'soil', 'grease',
             'contamination', 'ferrous', 'plastic',
             'machinery', 'research confirms', 'NEVER'
         ]

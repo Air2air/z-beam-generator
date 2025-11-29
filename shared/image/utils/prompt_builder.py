@@ -405,6 +405,7 @@ EXPECTED CHARACTERISTICS:
         - {MATERIAL}: Material name
         - {COMMON_OBJECT}: Common object type from research
         - {ENVIRONMENT}: Typical environment from research
+        - {SETTING}: Contextual setting (workshop bench, building exterior, etc.)
         - {UNIFORMITY}: 1-5 variety (researched default)
         - {VIEW_MODE}: Contextual or Isolated (researched default)
         - {CONTAMINANTS_SECTION}: Built from research patterns
@@ -421,8 +422,10 @@ EXPECTED CHARACTERISTICS:
         Raises:
             ValueError: If research_data missing required patterns
         """
-        common_object = research_data.get('common_object', f'{material_name} object')
+        # Use researched shape/item if available
+        common_object = research_data.get('common_shape') or research_data.get('common_object', f'{material_name} object')
         environment = research_data.get('typical_environment', 'typical environment')
+        setting = research_data.get('setting', 'a workshop bench')  # Contextual setting
         
         patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
         contamination_section = self._build_contamination_section(patterns)
@@ -431,6 +434,7 @@ EXPECTED CHARACTERISTICS:
             '{MATERIAL}': material_name,
             '{COMMON_OBJECT}': common_object,
             '{ENVIRONMENT}': environment,
+            '{SETTING}': setting,
             '{CONTAMINATION_LEVEL}': str(contamination_uniformity),  # Same value, correct variable name
             '{UNIFORMITY}': str(contamination_uniformity),
             '{VIEW_MODE}': view_mode,

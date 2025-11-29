@@ -130,13 +130,13 @@ ENVIRONMENT_WEAR_LEVELS = {
     },
     4: {
         "name": "Significant Wear",
-        "description": "Heavy use. Environment shows significant aging. Obvious wear, accumulated dirt, scratches, staining on background.",
-        "visible_signs": "Obvious wear, dirt, scratches, stains",
+        "description": "Heavy use. Environment shows significant aging. Obvious wear, accumulated dust, scratches, staining on background.",
+        "visible_signs": "Obvious wear, dust, scratches, stains",
         "age_appearance": "Long-term use, minimal maintenance"
     },
     5: {
         "name": "Extensive Wear",
-        "description": "Extreme use. Environment shows extensive aging. Heavy wear everywhere, significant dirt/dust, damaged surfaces.",
+        "description": "Extreme use. Environment shows extensive aging. Heavy wear everywhere, significant dust/debris, damaged surfaces.",
         "visible_signs": "Heavy wear, significant damage, neglect",
         "age_appearance": "Decades of use, poor maintenance"
     }

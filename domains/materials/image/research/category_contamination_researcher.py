@@ -394,7 +394,7 @@ weathering studies, accelerated aging research, outdoor exposure trials, archaeo
 CONTAMINATION & AGING PATTERNS (5-9 patterns total, ordered by prevalence):
 
 INCLUDE BOTH:
-- Traditional contamination patterns (dirt, oils, deposits, stains)
+- Traditional contamination patterns (dust, oils, deposits, stains)
 - Aging/degradation patterns (oxidation, UV damage, hydrolysis, biological decay, embrittlement, discoloration)
 
 For EACH pattern (contamination OR aging), provide:

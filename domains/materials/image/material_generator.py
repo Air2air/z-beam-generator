@@ -290,61 +290,73 @@ class MaterialImageGenerator:
         Returns:
             Comprehensive negative prompt string
         """
-        # Base negative prompt for all material images
+        # Base negative prompt - PRIORITY ORDER (most critical FIRST)
         base_negative = [
-            # Split-screen composition (CRITICAL)
+            # ═══════════════════════════════════════════════════════════════
+            # PRIORITY 1: TEXT/LABELS (ABSOLUTE PROHIBITION - FIRST POSITION)
+            # ═══════════════════════════════════════════════════════════════
+            "text", "words", "letters", "numbers", "writing",
+            "labels", "captions", "before", "after", "watermarks",
+            "any text whatsoever", "any labels", "any writing",
+            "text overlays", "caption text", "title text",
+            
+            # ═══════════════════════════════════════════════════════════════
+            # PRIORITY 2: WRONG OBJECT SHAPE (CRITICAL - SECOND POSITION)
+            # ═══════════════════════════════════════════════════════════════
+            "crystal", "crystals", "crystal formation", "crystalline structure",
+            "raw ore", "ore chunk", "mineral specimen", "geode",
+            "random chunk", "irregular chunk", "raw material chunk",
+            "wrong shape", "wrong form", "wrong object",
+            "not an ingot", "not a sheet", "not a wire", "not a pipe",
+            "abstract shape", "unidentifiable shape", "generic blob",
+            "decorative object", "art piece", "sculpture",
+            
+            # ═══════════════════════════════════════════════════════════════
+            # PRIORITY 3: SPLIT COMPOSITION (CRITICAL)
+            # ═══════════════════════════════════════════════════════════════
             "single object only", "no comparison", "one state only",
             "just contaminated", "just clean", "no split",
             "no before and after", "missing half", "incomplete composite",
-            "single photo", "not a comparison", "no transformation shown",
-            "mirror image", "mirror reflection", "horizontally flipped",
-            "reflected version", "same state both sides", "no transformation",
-            "both sides dirty", "both sides clean", "symmetrical contamination",
+            "mirror image", "mirror reflection", "same state both sides",
             
-            # Contamination realism (CRITICAL)
+            # ═══════════════════════════════════════════════════════════════
+            # PRIORITY 4: POSITION/ANGLE/ROTATION VIOLATIONS (CRITICAL)
+            # ═══════════════════════════════════════════════════════════════
+            "identical positions", "mirror copy", "exact duplicate",
+            "same angle both sides", "no rotation", "same rotation",
+            "identical orientation", "no horizontal rotation",
+            "tilted up", "tilted down", "vertical tilt", "angled up", "angled down",
+            "same shadows both sides", "no position shift", "static",
+            "perfectly aligned", "symmetrical placement",
+            
+            # ═══════════════════════════════════════════════════════════════
+            # PRIORITY 5: BACKGROUND VIOLATIONS (HIGH)
+            # ═══════════════════════════════════════════════════════════════
+            "outdoor", "nature", "sky", "grass", "trees", "landscape",
+            "white background", "studio backdrop", "abstract background",
+            "plain background", "gradient background",
+            
+            # ═══════════════════════════════════════════════════════════════
+            # STANDARD: CONTAMINATION REALISM
+            # ═══════════════════════════════════════════════════════════════
+            "dirt", "soil", "mud", "generic dirt", "brown dirt",
+            "drips", "drops", "dripping", "pooling", "liquid drips",
             "unnatural contamination", "fake-looking dirt", "painted-on grime",
-            "uniform contamination", "perfectly even dirt", "artificially applied contamination",
-            "contamination that defies physics", "contamination in impossible locations",
-            "white powder overlay", "uniform powder coating", "flat contamination layer",
-            "contamination defying gravity", "floating contamination particles",
-            "no texture variation in contamination", "perfectly smooth contamination",
-            "contamination with no shadows", "contamination with uniform reflectance",
-            "digital overlay appearance", "copy-pasted contamination pattern",
-            "contamination without layer interaction", "flat stacked contaminants",
+            "uniform contamination", "perfectly even dirt",
+            "contamination defying gravity", "floating particles",
+            "digital overlay", "copy-pasted pattern",
             
-            # Material appearance
+            # ═══════════════════════════════════════════════════════════════
+            # STANDARD: MATERIAL APPEARANCE
+            # ═══════════════════════════════════════════════════════════════
             f"incorrect {material_name} appearance", "wrong material color",
             "impossible material texture", "fake material surface",
             
-            # Split composition issues
-            "no clear split", "blurred division", "merged halves",
-            "asymmetric split", "unequal sides", "different objects on each side",
-            "completely different items", "unrelated objects",
-            
-            # Lighting consistency
-            "different lighting on each side", "mismatched shadows",
-            "inconsistent light direction", "different time of day",
-            
-            # Viewpoint consistency
-            "completely different angle", "different perspective",
-            "rotated object", "flipped orientation", "different size",
-            
-            # Quality issues
+            # ═══════════════════════════════════════════════════════════════
+            # STANDARD: QUALITY/UNREALISTIC
+            # ═══════════════════════════════════════════════════════════════
             "blurry", "low resolution", "pixelated", "artifacts",
-            
-            # Text and labels (CRITICAL - ABSOLUTE PROHIBITION)
-            "text", "words", "letters", "numbers", "digits",
-            "labels", "captions", "annotations", "titles",
-            "watermarks", "logos", "branding", "stamps",
-            "writing", "script", "typography", "font",
-            "signage", "markings", "inscriptions",
-            "before label", "after label", "before text", "after text",
-            "any visible characters", "any readable text",
-            "any written language", "any textual elements",
-            
-            # Unrealistic elements
-            "cartoon", "illustration", "drawing", "CGI", "3D render",
-            "unrealistic", "impossible physics", "floating objects"
+            "cartoon", "illustration", "CGI", "3D render"
         ]
         
         # Add view mode specific exclusions
@@ -390,7 +402,8 @@ class MaterialImageGenerator:
         material_name: str,
         material_properties: Optional[Dict] = None,
         config: Optional[MaterialImageConfig] = None,
-        use_validation: bool = True
+        use_validation: bool = True,
+        shape_override: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         Generate complete prompt package for image generation.
@@ -400,6 +413,7 @@ class MaterialImageGenerator:
             material_properties: Optional material properties from Materials.yaml
             config: Optional MaterialImageConfig for contamination control
             use_validation: If True, use orchestrator with pre-generation validation
+            shape_override: Optional override for shape/object (e.g., "I-beam in a building structure")
             
         Returns:
             Dictionary with prompt, negative_prompt, and generation_params:
@@ -433,6 +447,37 @@ class MaterialImageGenerator:
                     material_name, category_data, config.contamination_uniformity
                 )
                 logger.info(f"🔬 Applied {len(research_data.get('selected_patterns', []))} category patterns to {material_name}")
+                # --- Shape/item research (or override) ---
+                if shape_override:
+                    # User provided explicit shape override
+                    # Parse setting from shape if "in/on" present, otherwise use workshop bench
+                    if ' in ' in shape_override.lower() or ' on ' in shape_override.lower():
+                        # Shape includes context (e.g., "I-beam in a building structure")
+                        research_data['common_shape'] = shape_override
+                        research_data['common_object'] = shape_override
+                        research_data['shape_context'] = 'architectural/structural'
+                        research_data['setting'] = 'its installed location'
+                    else:
+                        # Just an object, use workshop bench
+                        research_data['common_shape'] = shape_override
+                        research_data['common_object'] = shape_override
+                        research_data['shape_context'] = 'standalone'
+                        research_data['setting'] = 'a workshop bench'
+                    logger.info(f"🎯 Using shape override for {material_name}: {shape_override}")
+                else:
+                    # Research most common shape/item for this material
+                    try:
+                        from domains.materials.image.research.shape_researcher import MaterialShapeResearcher
+                        shape_researcher = MaterialShapeResearcher()
+                        shape_result = shape_researcher.get_common_shape(material_name)
+                        # New format returns dict with object, context, setting
+                        research_data['common_shape'] = shape_result['object']
+                        research_data['common_object'] = shape_result['object']  # For template compatibility
+                        research_data['shape_context'] = shape_result['context']
+                        research_data['setting'] = shape_result['setting']
+                        logger.info(f"🔎 Researched common shape/item for {material_name}: {shape_result['object']} ({shape_result['context']})")
+                    except Exception as e:
+                        logger.warning(f"⚠️  Shape research unavailable for {material_name}: {e}")
             except Exception as e:
                 logger.error(f"❌ Category research failed for {material_name}: {e}")
                 raise RuntimeError(f"Failed to research contamination patterns for {material_name}.") from e
@@ -444,6 +489,37 @@ class MaterialImageGenerator:
                 common_obj = research_data.get('common_object', material_name)
                 contam_count = len(research_data.get('contaminants', []))
                 logger.info(f"🔬 {material_name}: {common_obj} with {contam_count} contaminants researched")
+                # --- Shape/item research (or override) ---
+                if shape_override:
+                    # User provided explicit shape override
+                    # Parse setting from shape if "in/on" present, otherwise use workshop bench
+                    if ' in ' in shape_override.lower() or ' on ' in shape_override.lower():
+                        # Shape includes context (e.g., "I-beam in a building structure")
+                        research_data['common_shape'] = shape_override
+                        research_data['common_object'] = shape_override
+                        research_data['shape_context'] = 'architectural/structural'
+                        research_data['setting'] = 'its installed location'
+                    else:
+                        # Just an object, use workshop bench
+                        research_data['common_shape'] = shape_override
+                        research_data['common_object'] = shape_override
+                        research_data['shape_context'] = 'standalone'
+                        research_data['setting'] = 'a workshop bench'
+                    logger.info(f"🎯 Using shape override for {material_name}: {shape_override}")
+                else:
+                    # Research most common shape/item for this material
+                    try:
+                        from domains.materials.image.research.shape_researcher import MaterialShapeResearcher
+                        shape_researcher = MaterialShapeResearcher()
+                        shape_result = shape_researcher.get_common_shape(material_name)
+                        # New format returns dict with object, context, setting
+                        research_data['common_shape'] = shape_result['object']
+                        research_data['common_object'] = shape_result['object']  # For template compatibility
+                        research_data['shape_context'] = shape_result['context']
+                        research_data['setting'] = shape_result['setting']
+                        logger.info(f"🔎 Researched common shape/item for {material_name}: {shape_result['object']} ({shape_result['context']})")
+                    except Exception as e:
+                        logger.warning(f"⚠️  Shape research unavailable for {material_name}: {e}")
             except Exception as e:
                 logger.error(f"❌ Research failed for {material_name}: {e}")
                 raise RuntimeError(f"Failed to research contamination for {material_name}.") from e
@@ -456,8 +532,13 @@ class MaterialImageGenerator:
             # Use orchestrator with validation
             try:
                 validated_package = self.generate_validated_prompt_package(material_name, config)
+                # --- Inject common shape/item into prompt builder ---
                 prompt = validated_package['prompt']
                 validation_result = validated_package['validation_result']
+                # If prompt builder supports, pass common_shape via research_data
+                if research_data and 'common_shape' in research_data:
+                    # Optionally log or inject into metadata for downstream use
+                    validated_package['metadata']['common_shape'] = research_data['common_shape']
                 
                 # Log validation results
                 if validation_result:
