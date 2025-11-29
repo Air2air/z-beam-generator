@@ -54,14 +54,29 @@ def build_material_cleaning_prompt(
     # Load ultra-concise base template
     base_template = load_base_prompt_template()
     
-    # Extract research data
-    common_object = research_data.get('common_object', f'{material_name} object')
-    environment = research_data.get('typical_environment', 'typical environment')
-    setting = research_data.get('setting', 'workshop bench')  # New: contextual setting
+    # Extract and VALIDATE research data - FAIL FAST if required fields missing
+    # Per .github/copilot-instructions.md: NO fallbacks or defaults in production code
+    common_object = research_data.get('common_object')
+    if not common_object:
+        raise ValueError(f"Research data missing 'common_object' for {material_name}. "
+                        "Run shape research first or ensure research_data is complete.")
+    
+    environment = research_data.get('typical_environment')
+    if not environment:
+        raise ValueError(f"Research data missing 'typical_environment' for {material_name}. "
+                        "Ensure contamination research completed successfully.")
+    
+    setting = research_data.get('setting')
+    if not setting:
+        raise ValueError(f"Research data missing 'setting' for {material_name}. "
+                        "Ensure shape research completed with context.")
     
     # Build contamination details from category research patterns
-    patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
-    contamination_section = _build_concise_contamination_section(patterns)
+    patterns = research_data.get('selected_patterns') or research_data.get('contaminants')
+    if not patterns:
+        raise ValueError(f"Research data missing contamination patterns for {material_name}. "
+                        "Ensure category contamination research completed.")
+    contamination_section = _build_concise_contamination_section(patterns, material_name=material_name)
     
     # Build complete prompt by replacing template variables
     prompt = base_template
@@ -99,28 +114,83 @@ def build_material_cleaning_prompt(
     return prompt
 
 
-def _build_concise_contamination_section(patterns: list) -> str:
-    """Build concise contamination list from category research patterns."""
+def _build_concise_contamination_section(patterns: list, material_name: str = None) -> str:
+    """
+    Build concise contamination list from pattern selector data.
+    
+    SIMPLIFIED (Nov 29, 2025):
+    - Patterns come directly from ContaminationPatternSelector
+    - Rich appearance data is already embedded in visual_characteristics
+    - No loader fallback needed - data is pre-populated
+    
+    Args:
+        patterns: List of pattern dictionaries from ContaminationPatternSelector
+        material_name: Optional material name (for logging only)
+    """
     if not patterns:
         raise ValueError("No contamination patterns provided. Research data is required.")
     
     lines = []
     for pattern in patterns[:4]:  # Max 4 patterns
-        # Handle both old contaminant format and new pattern format
-        if 'pattern_name' in pattern:
-            name = pattern['pattern_name']
-            visual = pattern.get('visual_characteristics', {})
-            color = visual.get('color_range', 'varied tones')
-            texture = visual.get('texture_detail', 'varied texture')
-            lines.append(f"{name}: {color}, {texture}")
+        name = pattern.get('pattern_name', pattern.get('pattern_id', 'Unknown'))
+        visual = pattern.get('visual_characteristics', {})
+        
+        # Check if we have rich appearance data
+        has_rich = pattern.get('has_rich_appearance_data', False)
+        
+        if has_rich and visual.get('gravity_influence'):
+            # Use rich pre-researched data (16 fields available)
+            lines.append(_format_rich_appearance(name, visual))
         else:
-            name = pattern.get('name', 'contamination')
-            appearance = pattern.get('appearance', {})
-            color = appearance.get('color', 'dark')
-            texture = appearance.get('texture', 'uneven')
+            # Use basic color/texture
+            color = visual.get('color_range', 'varied')
+            texture = visual.get('texture_detail', 'surface buildup')
             lines.append(f"{name}: {color}, {texture}")
     
     return ". ".join(lines) + "."
+
+
+def _format_rich_appearance(name: str, appearance: Dict) -> str:
+    """
+    Format rich appearance data into a concise prompt section.
+    
+    Uses the 16-field appearance data structure for detailed prompts.
+    """
+    parts = [name]
+    
+    # Color - extract readable colors from hex notation
+    colors = appearance.get('color_variations', [])
+    if colors and isinstance(colors, list):
+        color_names = []
+        for c in colors[:3]:
+            if "'" in c:
+                # Extract from format like "#F5DEB3 'Wheat'"
+                color_names.append(c.split("'")[1])
+            elif ' ' in c:
+                color_names.append(c.split()[-1])
+            else:
+                color_names.append(c)
+        parts.append(f"colors: {', '.join(color_names)}")
+    
+    # Texture - first sentence
+    texture = appearance.get('texture_details', '')
+    if texture:
+        texture_short = texture.split('.')[0] if '.' in texture else texture[:80]
+        parts.append(f"texture: {texture_short}")
+    
+    # Distribution physics - critical for realism
+    gravity = appearance.get('gravity_influence', '')
+    if gravity:
+        gravity_short = gravity.split('.')[0] if '.' in gravity else gravity[:60]
+        parts.append(f"gravity: {gravity_short}")
+    
+    # Edge behavior - important for realistic rendering
+    edges = appearance.get('edge_center_behavior', '')
+    if edges:
+        edges_short = edges.split('.')[0] if '.' in edges else edges[:50]
+        parts.append(f"edges: {edges_short}")
+    
+    return "; ".join(parts)
 
 
 def _build_contamination_section(contaminants: list, uniformity: int) -> str:
@@ -170,11 +240,27 @@ def _build_material_appearance_section(material_name: str, base_appearance: Dict
     lines.append(f"### Base {material_name} Appearance (Clean State)")
     
     if base_appearance:
-        lines.append(f"**Color**: {base_appearance.get('clean_color', 'natural color')}")
-        lines.append(f"**Texture**: {base_appearance.get('clean_texture', 'natural texture')}")
-        lines.append(f"**Sheen**: {base_appearance.get('clean_sheen', 'natural sheen')}")
-        lines.append(f"**Natural Features**: {base_appearance.get('natural_features', 'typical features')}")
+        # Validate required appearance fields - fail fast if missing
+        clean_color = base_appearance.get('clean_color')
+        clean_texture = base_appearance.get('clean_texture')
+        clean_sheen = base_appearance.get('clean_sheen')
+        natural_features = base_appearance.get('natural_features')
+        
+        if not all([clean_color, clean_texture, clean_sheen, natural_features]):
+            missing = []
+            if not clean_color: missing.append('clean_color')
+            if not clean_texture: missing.append('clean_texture')
+            if not clean_sheen: missing.append('clean_sheen')
+            if not natural_features: missing.append('natural_features')
+            raise ValueError(f"base_appearance for {material_name} missing required fields: {missing}. "
+                           "Material research data incomplete.")
+        
+        lines.append(f"**Color**: {clean_color}")
+        lines.append(f"**Texture**: {clean_texture}")
+        lines.append(f"**Sheen**: {clean_sheen}")
+        lines.append(f"**Natural Features**: {natural_features}")
     else:
+        # No base_appearance provided - use generic instruction (acceptable)
         lines.append(f"Use authentic {material_name} appearance when clean")
     
     lines.append("\n**CLEAN STATE REQUIREMENTS**:")

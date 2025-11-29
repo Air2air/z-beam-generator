@@ -35,8 +35,10 @@ from typing import Dict, Any, Optional
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from domains.contaminants.research.laser_properties_researcher import LaserPropertiesResearcher
-from domains.contaminants.research.base import ContaminationResearchSpec
+from domains.contaminants.research.laser_properties_researcher import (
+    LaserPropertiesResearcher,
+    ContaminationResearchSpec
+)
 from domains.contaminants.library import ContaminationLibrary
 from shared.api.client_factory import create_api_client
 

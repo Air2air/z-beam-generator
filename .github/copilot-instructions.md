@@ -799,10 +799,46 @@ All required components must be explicitly provided - no silent degradation.
 
 See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 
-### 4. **Component Architecture**
+### 4. **Contaminant Appearance Data Policy** 🔥 **SIMPLIFIED (Nov 29, 2025)**
+**All contaminant visual appearance data MUST be pre-populated in `Contaminants.yaml`.**
+
+**SIMPLIFIED ARCHITECTURE**:
+- ✅ **Single class: `ContaminationPatternSelector`** - ONLY source for contamination data
+- ✅ **ZERO API calls** - Reads from Contaminants.yaml only (no Gemini calls for contamination)
+- ✅ **Pattern selection by valid_materials field** - Deterministic, reproducible
+- ✅ **Priority scoring** - Prefers patterns with rich appearance data
+- ❌ **Deprecated**: CategoryContaminationResearcher, MaterialContaminationResearcher, ContaminantAppearanceLoader
+
+**Only Remaining API Call**: Shape research (optional) - What object form is most common
+
+```python
+# Single source of truth
+from domains.materials.image.research.contamination_pattern_selector import (
+    ContaminationPatternSelector
+)
+selector = ContaminationPatternSelector()
+result = selector.get_patterns_for_image_gen("Aluminum", num_patterns=3)
+# result['api_calls_made'] == 0  # ALWAYS zero for contamination
+```
+
+**Coverage Status** (Nov 29, 2025):
+- 100 contamination patterns
+- 159 materials
+- 15,900 expected combinations
+- ~4% currently populated (652/15,900)
+
+**Populate Missing Data**:
+```bash
+python3 scripts/research/batch_visual_appearance_research.py --all
+```
+
+See `docs/05-data/CONTAMINANT_APPEARANCE_POLICY.md` for complete policy.
+**Enforcement**: 16 automated tests in `tests/domains/materials/image/test_contamination_pattern_selector.py`
+
+### 5. **Component Architecture**
 Use ComponentGeneratorFactory pattern for all generators.
 
-### 5. **Fail-Fast Design with Quality Gates**
+### 6. **Fail-Fast Design with Quality Gates**
 - ✅ **What it IS**: Validate inputs, configurations, and dependencies immediately at startup
 - ✅ **What it IS**: Throw specific exceptions (ConfigurationError, GenerationError) with clear messages
 - ✅ **What it IS**: Enforce quality gates (Winston 69%+, Realism 7.0+, Readability pass)
@@ -815,7 +851,7 @@ Use ComponentGeneratorFactory pattern for all generators.
 4. **Realism Score: 7.0/10 minimum** ← NEW (Nov 18, 2025)
 5. Combined Quality Target: Meets learning target
 
-### 6. **Content Instruction Policy** 🔥 **CRITICAL**
+### 7. **Content Instruction Policy** 🔥 **CRITICAL**
 **Content instructions MUST ONLY exist in prompts/*.txt files.**
 
 - ✅ **prompts/*.txt files** - Single source of truth for ALL content instructions
@@ -835,7 +871,7 @@ Use ComponentGeneratorFactory pattern for all generators.
 
 See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
-### 7. **Component Discovery Policy** 🔥 **NEW (Nov 16, 2025)**
+### 8. **Component Discovery Policy** 🔥 **NEW (Nov 16, 2025)**
 **Component types MUST ONLY be defined in prompts/*.txt and config.yaml.**
 
 - ✅ **prompts/*.txt files** - Define component types by filename
@@ -858,7 +894,7 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 
 See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 
-### 8. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
+### 9. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
 **ONLY prompt templates determine content and formatting. NO component-specific methods.**
 
 - ✅ **shared/text/templates/components/*.txt** - ALL content instructions and formatting rules
@@ -902,7 +938,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 
 See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
 
-### 9. **Prompt Purity Policy** 🔥 **NEW (Nov 18, 2025)**
+### 10. **Prompt Purity Policy** 🔥 **NEW (Nov 18, 2025)**
 **ALL content generation instructions MUST exist ONLY in prompt template files.**
 
 - ✅ **prompts/*.txt files** - Single source of truth for ALL prompts
@@ -922,7 +958,7 @@ See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
 
 See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
-### 10. **Generation Report Policy** 🔥 **NEW (Nov 18, 2025)**
+### 11. **Generation Report Policy** 🔥 **NEW (Nov 18, 2025)**
 **ALWAYS display complete generation report after EVERY content generation.**
 
 **Required Report Sections**:
@@ -963,7 +999,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
 **Compliance**: Mandatory for caption, material_description, FAQ generation
 
-### 11. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
+### 12. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
 **Maximum use of prompt chaining and orchestration to preserve separation of concerns and specificity.**
 
 **Core Principle**: Break generation into specialized prompts instead of one monolithic prompt.

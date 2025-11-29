@@ -21,8 +21,10 @@ from typing import Dict, List
 sys.path.insert(0, str(Path(__file__).parent))
 
 from domains.contaminants.pattern_loader import PatternDataLoader
-from domains.contaminants.research.factory import ContaminationResearcherFactory
-from domains.contaminants.research.base import ContaminationResearchSpec
+from domains.contaminants.research.laser_properties_researcher import (
+    LaserPropertiesResearcher,
+    ContaminationResearchSpec
+)
 from shared.api.client_factory import create_api_client
 
 # Setup logging
@@ -92,11 +94,8 @@ class ContaminantsResearchOrchestrator:
                     material_context=material_context
                 )
                 
-                # Get researcher
-                researcher = ContaminationResearcherFactory.create_researcher(
-                    'laser_properties',
-                    self.api_client
-                )
+                # Create researcher directly
+                researcher = LaserPropertiesResearcher(self.api_client)
                 
                 # Perform research
                 try:

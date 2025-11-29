@@ -8,14 +8,10 @@ from domains.materials.image.research.material_prompts import (
     build_material_cleaning_prompt,
     load_base_prompt_template
 )
-from domains.materials.image.research.material_researcher import MaterialContaminationResearcher
-from domains.materials.image.research.category_contamination_researcher import CategoryContaminationResearcher
-from domains.materials.image.research.persistent_research_cache import PersistentResearchCache
+from domains.materials.image.research.contamination_pattern_selector import ContaminationPatternSelector
 
 __all__ = [
     'build_material_cleaning_prompt',
     'load_base_prompt_template',
-    'MaterialContaminationResearcher',
-    'CategoryContaminationResearcher',
-    'PersistentResearchCache',
+    'ContaminationPatternSelector',
 ]

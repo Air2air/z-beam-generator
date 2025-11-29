@@ -30,6 +30,31 @@ class MaterialShapeResearcher:
     # Cache directory for research results
     CACHE_DIR = Path(__file__).parent.parent.parent.parent / "cache" / "shape_research"
     
+    # Category-specific policies for shape research
+    # These guide the AI toward appropriate object types per category
+    CATEGORY_POLICIES = {
+        "polymers_engineering": {
+            "requirement": "TECHNICAL or ENGINEERING object (gears, housings, connectors, industrial parts)",
+            "examples": ["precision gear", "electrical connector housing", "industrial valve component", "bearing cage"],
+            "avoid": ["consumer products", "toys", "household items", "packaging"]
+        },
+        "polymers_thermoplastic": {
+            "requirement": "TECHNICAL or ENGINEERING object (not consumer goods)",
+            "examples": ["pipe fitting", "cable insulation", "industrial container", "machine guard"],
+            "avoid": ["water bottles", "food containers", "bags", "toys"]
+        },
+        "polymers_elastomer": {
+            "requirement": "TECHNICAL or INDUSTRIAL rubber product",
+            "examples": ["O-ring seal", "vibration dampener", "conveyor belt section", "hydraulic seal"],
+            "avoid": ["balloons", "rubber bands", "toys", "casual footwear"]
+        },
+        "generic_industrial_material": {
+            "requirement": "TECHNICAL or ENGINEERING object for high-performance plastics",
+            "examples": ["aerospace bearing", "medical implant component", "precision bushing", "high-temp seal"],
+            "avoid": ["consumer products", "toys", "household items", "fashion accessories"]
+        }
+    }
+    
     # Fallback lookup for when API is unavailable
     # Format: {"object": str, "context": "standalone"|"architectural"|"industrial", "setting": str}
     FALLBACK_SHAPES = {
@@ -40,7 +65,16 @@ class MaterialShapeResearcher:
         "Brass": {"object": "door handle", "context": "standalone", "setting": "workshop bench"},
         "Stainless Steel": {"object": "kitchen sink", "context": "standalone", "setting": "workshop bench"},
         "Titanium": {"object": "hip implant", "context": "standalone", "setting": "workshop bench"},
-        "Polymer": {"object": "water bottle", "context": "standalone", "setting": "workshop bench"},
+        "Polymer": {"object": "precision gear", "context": "standalone", "setting": "workshop bench"},
+        "Nylon": {"object": "industrial gear", "context": "standalone", "setting": "workshop bench"},
+        "Polyethylene": {"object": "pipe fitting", "context": "standalone", "setting": "workshop bench"},
+        "Polycarbonate": {"object": "safety shield panel", "context": "standalone", "setting": "workshop bench"},
+        "ABS": {"object": "electrical enclosure", "context": "standalone", "setting": "workshop bench"},
+        "PEEK": {"object": "aerospace bearing cage", "context": "standalone", "setting": "workshop bench"},
+        "Acetal": {"object": "precision bushing", "context": "standalone", "setting": "workshop bench"},
+        "PVC": {"object": "industrial pipe section", "context": "standalone", "setting": "workshop bench"},
+        "PTFE": {"object": "valve seal", "context": "standalone", "setting": "workshop bench"},
+        "Rubber": {"object": "O-ring seal", "context": "standalone", "setting": "workshop bench"},
         "Wood": {"object": "cutting board", "context": "standalone", "setting": "workshop bench"},
         "Cast Iron": {"object": "skillet", "context": "standalone", "setting": "workshop bench"},
         "Bronze": {"object": "bell", "context": "standalone", "setting": "workshop bench"},
@@ -120,10 +154,21 @@ class MaterialShapeResearcher:
             **result
         }))
     
-    def _research_shape(self, material_name: str) -> Dict[str, str]:
+    def _research_shape(self, material_name: str, category: str = None) -> Dict[str, str]:
         """Use Gemini to research the most common real-world object and context for this material."""
         if not self.model:
             return self._get_fallback(material_name)
+        
+        # Build category-specific requirements if applicable
+        category_guidance = ""
+        if category and category in self.CATEGORY_POLICIES:
+            policy = self.CATEGORY_POLICIES[category]
+            category_guidance = f"""
+CATEGORY POLICY FOR {category.upper()}:
+- MUST be a {policy['requirement']}
+- Good examples: {', '.join(policy['examples'])}
+- AVOID: {', '.join(policy['avoid'])}
+"""
         
         prompt = f"""For the material "{material_name}", identify:
 1. The most common FINISHED/MANUFACTURED product made from it
@@ -136,7 +181,7 @@ CRITICAL REQUIREMENTS:
 - For construction aggregates/minerals: show the FINAL PRODUCT (concrete block, tile, building panel, paving stone)
 - For building materials: show INSTALLED architectural features
 - AVOID these raw material terms: "aggregate", "crushed", "raw", "sample", "chunk", "piece", "ore", "gravel", "powder"
-
+{category_guidance}
 Respond in EXACTLY this JSON format, nothing else:
 {{"object": "specific manufactured object name", "context": "standalone|architectural|industrial", "setting": "brief setting description"}}
 
@@ -145,8 +190,8 @@ Examples:
 - Steel: {{"object": "I-beam", "context": "architectural", "setting": "construction site with beam in building frame"}}
 - Copper: {{"object": "electrical wire spool", "context": "standalone", "setting": "workshop bench"}}
 - Concrete: {{"object": "precast wall panel", "context": "architectural", "setting": "building exterior wall"}}
-- Limestone: {{"object": "carved building ornament", "context": "architectural", "setting": "historic building facade"}}
-- Marble: {{"object": "polished floor tile", "context": "architectural", "setting": "interior floor installation"}}
+- Nylon: {{"object": "industrial gear", "context": "standalone", "setting": "workshop bench"}}
+- PEEK: {{"object": "aerospace bearing cage", "context": "standalone", "setting": "workshop bench"}}
 
 Material: {material_name}
 Response:"""
@@ -202,18 +247,21 @@ Response:"""
             return self._get_fallback(material_name)
     
     def _get_fallback(self, material_name: str) -> Dict[str, str]:
-        """Get fallback shape from lookup table."""
+        """Get fallback shape from lookup table - FAIL FAST if not found."""
         key = material_name.strip().title()
         fallback = self.FALLBACK_SHAPES.get(key)
         if fallback:
             return fallback
-        return {
-            "object": f"{material_name} sample",
-            "context": "standalone",
-            "setting": "workshop bench"
-        }
+        # Per .github/copilot-instructions.md: NO generic fallbacks
+        # Material must be in FALLBACK_SHAPES or use API research
+        raise ValueError(
+            f"No shape data available for '{material_name}'. "
+            f"Either add '{key}' to FALLBACK_SHAPES dictionary in shape_researcher.py, "
+            f"or ensure Gemini API is available for research. "
+            f"Generic fallbacks like '{material_name} sample' are not permitted."
+        )
     
-    def get_common_shape(self, material_name: str) -> Dict[str, str]:
+    def get_common_shape(self, material_name: str, category: str = None) -> Dict[str, str]:
         """
         Returns the most common real-world object and context for this material.
         
@@ -221,6 +269,7 @@ Response:"""
         
         Args:
             material_name: Name of the material (e.g., "Bismuth", "Steel", "Dolomite")
+            category: Optional material category (e.g., "polymers_engineering") for policy-aware research
             
         Returns:
             Dict with:
@@ -234,9 +283,11 @@ Response:"""
             print(f"📬 Shape cache hit: {material_name} → {cached['object']} ({cached['context']})")
             return cached
         
-        # Research via API
+        # Research via API (pass category for policy-aware research)
         print(f"🔬 Researching common shape for {material_name}...")
-        result = self._research_shape(material_name)
+        if category and category in self.CATEGORY_POLICIES:
+            print(f"   📋 Applying {category} policy: technical/engineering objects")
+        result = self._research_shape(material_name, category)
         
         # Cache the result
         self._save_to_cache(material_name, result)

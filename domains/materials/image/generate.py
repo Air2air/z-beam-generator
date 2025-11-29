@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
 from shared.api.gemini_image_client import GeminiImageClient
-from domains.materials.image.learning import create_logger
+from shared.image.learning import create_logger
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -295,6 +295,14 @@ def generate_and_validate(
 
 
 def main():
+    # Validate feedback consistency before generation
+    try:
+        from domains.materials.image.tools.validate_feedback import validate_before_generation
+        if not validate_before_generation():
+            logger.warning("⚠️  Proceeding with generation despite feedback inconsistencies")
+    except ImportError:
+        pass  # Validation tool not available, continue anyway
+    
     parser = argparse.ArgumentParser(
         description="Generate material before/after laser cleaning images with researched defaults",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -357,12 +365,13 @@ Auto-Retry Feature:
     # Initialize generator
     generator = MaterialImageGenerator(gemini_api_key=gemini_api_key)
     
-    # Get category for this material
+    # Get category for this material from pattern selector (zero API calls)
     category = None
-    if generator.category_researcher:
-        category = generator.category_researcher.get_category(args.material)
-    else:
-        logger.warning("⚠️  Category research unavailable - using default settings")
+    if generator.pattern_selector:
+        result = generator.pattern_selector.get_patterns_for_image_gen(args.material, num_patterns=1)
+        category = result.get('category')
+    if not category:
+        logger.warning("⚠️  Category lookup failed - using default settings")
     
     # Create configuration
     config = MaterialImageConfig.from_material(
@@ -386,6 +395,38 @@ Auto-Retry Feature:
         logger.info(f"   • Shape Override: {args.shape}")
     logger.info("")
     
+    # ══════════════════════════════════════════════════════════════════════════════
+    # UNIFIED VALIDATION - STAGE 1: EARLY (pre-research)
+    # ══════════════════════════════════════════════════════════════════════════════
+    try:
+        from shared.validation import UnifiedValidator, ValidationStatus
+        from pathlib import Path as ValidationPath
+        
+        prompts_dir = ValidationPath(__file__).parent / "prompts" / "shared"
+        unified_validator = UnifiedValidator(prompts_dir=prompts_dir)
+        
+        early_report = unified_validator.validate_early(
+            material=args.material,
+            config={
+                'category': category,
+                'contamination_uniformity': config.contamination_uniformity,
+                'view_mode': config.view_mode
+            }
+        )
+        
+        if early_report.status == ValidationStatus.CRITICAL:
+            logger.error("🚨 Early validation FAILED (critical):")
+            logger.error(early_report.fix_instructions)
+            sys.exit(1)
+        elif early_report.status == ValidationStatus.FAIL:
+            logger.warning("⚠️  Early validation issues found:")
+            logger.warning(early_report.fix_instructions)
+        else:
+            logger.info("✅ Early validation passed")
+    except ImportError as e:
+        logger.debug(f"Unified validator not available: {e}")
+        unified_validator = None
+    
     # Generate prompt package
     logger.info("🔬 Researching contamination data...")
     prompt_package = generator.generate_complete(
@@ -393,6 +434,44 @@ Auto-Retry Feature:
         config=config,
         shape_override=args.shape
     )
+    
+    # ══════════════════════════════════════════════════════════════════════════════
+    # UNIFIED VALIDATION - STAGE 2: PROMPT (pre-generation)
+    # ══════════════════════════════════════════════════════════════════════════════
+    if unified_validator:
+        prompt_report = unified_validator.validate_prompt(
+            prompt=prompt_package["prompt"],
+            negative_prompt=prompt_package["negative_prompt"],
+            material=args.material
+        )
+        
+        if prompt_report.status == ValidationStatus.CRITICAL:
+            logger.error("🚨 Prompt validation FAILED (critical):")
+            logger.error(prompt_report.fix_instructions)
+            sys.exit(1)
+        elif prompt_report.status == ValidationStatus.FAIL:
+            # Try auto-fix
+            if prompt_report.fix_actions:
+                original_len = len(prompt_package["prompt"])
+                prompt_package["prompt"] = prompt_report.apply_auto_fixes(prompt_package["prompt"])
+                fixed_len = len(prompt_package["prompt"])
+                logger.info(f"🔧 Applied auto-fixes: {original_len} → {fixed_len} chars")
+                
+                # Re-validate
+                prompt_report = unified_validator.validate_prompt(
+                    prompt=prompt_package["prompt"],
+                    negative_prompt=prompt_package["negative_prompt"],
+                    material=args.material
+                )
+                
+                if prompt_report.status in (ValidationStatus.FAIL, ValidationStatus.CRITICAL):
+                    logger.warning("⚠️  Auto-fixes insufficient. Manual intervention needed:")
+                    logger.warning(prompt_report.fix_instructions)
+            else:
+                logger.warning("⚠️  Prompt validation issues (no auto-fix available):")
+                logger.warning(prompt_report.fix_instructions)
+        else:
+            logger.info(f"✅ Prompt validation passed ({prompt_report.prompt_length} chars)")
     
     # Show prompt if requested
     if args.show_prompt:

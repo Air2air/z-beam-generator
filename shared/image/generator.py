@@ -323,28 +323,23 @@ class UniversalImageGenerator:
         contaminant: Optional[str] = None,
         **kwargs
     ) -> Dict[str, Any]:
-        """Load contamination research for material"""
+        """Load contamination research for material using YAML data (ZERO API calls)"""
         if not contaminant:
             return {}
         
         try:
-            # Use existing material contamination researcher
-            from domains.materials.image.research.category_contamination_researcher import (
-                CategoryContaminationResearcher
+            # Use ContaminationPatternSelector (reads from Contaminants.yaml, no API calls)
+            from domains.materials.image.research.contamination_pattern_selector import (
+                ContaminationPatternSelector
             )
             
-            researcher = CategoryContaminationResearcher(api_key=self.api_key)
-            category = researcher.get_category(material_name)
-            category_data = researcher.research_category_contamination(category)
-            
-            # Apply patterns to this material
-            research = researcher.apply_patterns_to_material(
-                category_data,
-                material_name,
-                contaminant
+            selector = ContaminationPatternSelector()
+            result = selector.get_patterns_for_image_gen(
+                material_name=material_name,
+                num_patterns=3
             )
             
-            return research
+            return result
         except Exception as e:
             logger.warning(f"⚠️  Research failed: {e}")
             return {}

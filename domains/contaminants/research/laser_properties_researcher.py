@@ -9,20 +9,39 @@ Date: November 25, 2025
 """
 
 import logging
+from dataclasses import dataclass, field
 from typing import Any, Dict, Optional, List
-from domains.contaminants.research.base import (
-    ContaminationResearcher,
-    ContaminationResearchSpec,
-    ContaminationResearchResult
-)
-from domains.contaminants.library import ContaminationLibrary
 from shared.validation.errors import GenerationError
 from shared.api.client import GenerationRequest
 
 logger = logging.getLogger(__name__)
 
 
-class LaserPropertiesResearcher(ContaminationResearcher):
+@dataclass
+class ContaminationResearchSpec:
+    """Specification for contamination research."""
+    pattern_id: str
+    research_type: str
+    material_context: Optional[str] = None
+    context: Optional[Dict] = None
+
+
+@dataclass
+class ContaminationResearchResult:
+    """Result from contamination research."""
+    pattern_id: str
+    data: Dict = field(default_factory=dict)
+    confidence: float = 0.0
+    source: str = "ai_research"
+    error: Optional[str] = None
+    metadata: Dict = field(default_factory=dict)
+    
+    @property
+    def success(self) -> bool:
+        return self.error is None and bool(self.data)
+
+
+class LaserPropertiesResearcher:
     """
     Researcher for laser-specific contamination properties.
     
@@ -76,7 +95,9 @@ class LaserPropertiesResearcher(ContaminationResearcher):
         Raises:
             ValueError: If api_client is None
         """
-        super().__init__(api_client)
+        if api_client is None:
+            raise ValueError("API client required for laser properties research")
+        self.api_client = api_client
         from domains.contaminants.pattern_loader import PatternDataLoader
         self.loader = PatternDataLoader()
         self.logger = logging.getLogger(__name__)

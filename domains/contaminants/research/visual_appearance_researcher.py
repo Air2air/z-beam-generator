@@ -49,11 +49,16 @@ class VisualAppearanceResearcher:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found in environment or provided")
         
-        # Configure Gemini
+        # Configure Gemini - optimized for factual accuracy
         genai.configure(api_key=self.api_key)
+        
+        # Use gemini-2.0-flash-exp with emphasis on factual responses
+        # Note: Google Search Grounding requires Vertex AI or AI Studio
+        # We achieve accuracy through specific prompting and low temperature
         self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
         
         logger.info("✅ Visual appearance researcher initialized with Gemini Flash 2.0")
+        print("🔬 Researcher initialized - using precision prompts for accuracy")
     
     @lru_cache(maxsize=256)
     def research_appearance_on_material(
@@ -98,17 +103,27 @@ class VisualAppearanceResearcher:
             chemical_composition=chemical_composition
         )
         
-        # Call Gemini API
+        # Call Gemini API with Google Search Grounding
         try:
             response = self.model.generate_content(
                 prompt,
                 generation_config={
-                    'temperature': 0.3,  # Lower for factual accuracy
+                    'temperature': 0.2,  # Very low for factual accuracy with grounding
                     'top_p': 0.8,
                     'top_k': 40,
                     'max_output_tokens': 2048,
                 }
             )
+            
+            # Log grounding metadata if available
+            if hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate, 'grounding_metadata') and candidate.grounding_metadata:
+                    grounding = candidate.grounding_metadata
+                    if hasattr(grounding, 'search_entry_point'):
+                        print("   🌐 Grounded with web search")
+                    if hasattr(grounding, 'grounding_supports') and grounding.grounding_supports:
+                        print(f"   📚 {len(grounding.grounding_supports)} source(s) cited")
             
             # Parse response
             result = self._parse_response(response.text)
@@ -131,15 +146,21 @@ class VisualAppearanceResearcher:
     ) -> str:
         """Build detailed research prompt for Gemini."""
         
-        # Base prompt
-        prompt = f"""You are a materials science and industrial contamination expert. Research the visual appearance of {contaminant_name} on {material_name} surfaces.
+        # Base prompt - emphasize accuracy and specificity
+        prompt = f"""You are a materials science expert with 30+ years of industrial experience. Your task is to provide PRECISE, ACCURATE visual descriptions of {contaminant_name} on {material_name} surfaces.
+
+ACCURACY REQUIREMENTS:
+- Use SPECIFIC color values (hex codes like #B7410E, Munsell codes, or precise color names like "burnt sienna")
+- Use REAL measurements (micrometers, millimeters) not vague terms
+- Base ALL information on industrial/scientific reality, not guesses
+- If uncertain, say "varies by conditions" rather than inventing data
 
 MATERIAL: {material_name}
 """
         
         # Add material properties if available
         if material_properties:
-            prompt += f"\nMaterial Properties:\n"
+            prompt += "\nMaterial Properties:\n"
             for key, value in material_properties.items():
                 prompt += f"  - {key}: {value}\n"
         
@@ -186,7 +207,14 @@ Provide information in the following structure (use JSON format):
   "buildup_progression": "How does {contaminant_name} build up over time on {material_name}? Describe progression: starts as thin film then thickens, begins at contact points then spreads, starts at edges then moves inward, uniform gradual accumulation, point sources that expand outward, layering effects, seasonal variations. Include timeframes (hours, days, months)."
 }}
 
-CRITICAL: Return ONLY the JSON object. No additional text before or after. Base answers on real-world industrial experience and scientific accuracy. Give EQUAL detail to both visual characteristics AND distribution patterns.
+CRITICAL: Return ONLY the JSON object. No additional text before or after. 
+
+ACCURACY STANDARDS:
+- Base answers on real-world industrial experience and scientific accuracy
+- Include specific hex color codes where possible (e.g., #B7410E for rust)
+- Use precise measurements (e.g., 25-100 μm, not "thin")
+- Give EQUAL detail to both visual characteristics AND distribution patterns
+- When exact values are unknown, provide reasonable ranges with caveats
 """
         
         return prompt

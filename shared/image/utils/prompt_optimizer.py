@@ -160,6 +160,9 @@ class PromptOptimizer:
         condensed = condensed.replace("It is essential that", "")
         condensed = condensed.replace("Make sure to", "")
         condensed = condensed.replace("Be sure to", "")
+        condensed = condensed.replace("CRITICAL: ", "")  # Keep content, remove label
+        condensed = condensed.replace("MANDATORY: ", "")
+        condensed = condensed.replace("IMPORTANT: ", "")
         
         # Simplify connecting phrases (case-insensitive)
         condensed = condensed.replace("In order to", "To")
@@ -169,6 +172,21 @@ class PromptOptimizer:
         condensed = condensed.replace("For the purpose of", "For")
         condensed = condensed.replace("for the purpose of", "for")
         
+        # Remove duplicate whitespace and empty lines
+        import re
+        condensed = re.sub(r'\n{3,}', '\n\n', condensed)  # Max 2 newlines
+        condensed = re.sub(r'  +', ' ', condensed)  # Single spaces
+        condensed = re.sub(r'\n +', '\n', condensed)  # No leading spaces after newline
+        
+        # Remove verbose section headers that repeat information
+        condensed = re.sub(r'PHYSICS REQUIREMENTS?:', 'PHYSICS:', condensed)
+        condensed = re.sub(r'DISTRIBUTION REQUIREMENTS?:', 'DISTRIBUTION:', condensed)
+        condensed = re.sub(r'CONTAMINATION REQUIREMENTS?:', 'CONTAMINATION:', condensed)
+        
+        # Condense long descriptions
+        condensed = condensed.replace("photographed from TWO DIFFERENT HORIZONTAL ANGLES", "split view")
+        condensed = condensed.replace("Side-by-side composition", "Split composition")
+        
         return condensed
     
     def _convert_to_bullets(self, text: str) -> str:
@@ -177,9 +195,6 @@ class PromptOptimizer:
         
         More compact, easier for Imagen to parse.
         """
-        # This is a simplified implementation
-        # In production, would use NLP to identify list-worthy content
-        
         # Convert numbered lists to more compact format
         lines = text.split('\n')
         optimized_lines = []
@@ -187,11 +202,19 @@ class PromptOptimizer:
         for line in lines:
             stripped = line.strip()
             
+            # Skip empty lines and section separators
+            if not stripped or stripped == '=' * len(stripped):
+                optimized_lines.append(line)
+                continue
+            
             # Condense numbered list items
             if stripped.startswith(('1.', '2.', '3.', '4.', '5.')):
                 # Remove number, convert to dash
                 content = stripped[2:].strip()
                 optimized_lines.append(f"- {content}")
+            # Remove redundant bullet markers
+            elif stripped.startswith('• '):
+                optimized_lines.append(f"- {stripped[2:]}")
             else:
                 optimized_lines.append(line)
         
