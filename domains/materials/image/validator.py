@@ -431,6 +431,201 @@ class MaterialImageValidator:
         )
 
 
+    def validate_with_prompt_awareness(
+        self,
+        image_path: Path,
+        original_prompt: str,
+        material_name: str,
+        config: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Prompt-aware validation that checks image against SPECIFIC prompt requirements.
+        
+        Returns detailed feedback referencing exact prompt sections that were
+        violated or followed, enabling targeted prompt corrections.
+        
+        Args:
+            image_path: Path to generated image
+            original_prompt: The exact prompt used for generation
+            material_name: Material name
+            config: Optional generation config
+            
+        Returns:
+            Dict with:
+                - realism_score: 0-100
+                - prompt_compliance: {requirements_checked, requirements_met, compliance_percentage}
+                - violations: List of specific prompt violations with fixes
+                - compliant_rules: List of rules that were followed
+                - priority_fixes: Top 3 most important prompt changes
+        """
+        # Load image
+        image = Image.open(image_path)
+        
+        # Load prompt-aware validation template
+        template_path = Path(__file__).parent / "prompts" / "shared" / "validation" / "prompt_aware_feedback.txt"
+        if not template_path.exists():
+            raise FileNotFoundError(f"Prompt-aware validation template not found: {template_path}")
+        
+        template = template_path.read_text()
+        
+        # Build validation prompt with original prompt embedded
+        validation_prompt = template.replace("{ORIGINAL_PROMPT}", original_prompt)
+        
+        # Add material context
+        validation_prompt = f"""MATERIAL: {material_name}
+
+{validation_prompt}"""
+        
+        logger.info(f"🔍 Running prompt-aware validation for {material_name}")
+        logger.info(f"📝 Checking against {len(original_prompt)} char generation prompt")
+        
+        # Run validation with Gemini Vision
+        response = self.model.generate_content([validation_prompt, image])
+        
+        # Parse response
+        analysis = self._parse_validation_response(response.text)
+        
+        # Log violations found
+        violations = analysis.get("violations", [])
+        if violations:
+            logger.warning(f"⚠️  Found {len(violations)} prompt violations:")
+            for v in violations[:3]:  # Show top 3
+                logger.warning(f"   • [{v.get('severity', 'unknown').upper()}] {v.get('requirement', 'unknown')[:50]}...")
+        else:
+            logger.info("✅ No prompt violations detected")
+        
+        return analysis
+    
+    def get_prompt_correction_feedback(
+        self,
+        image_path: Path,
+        original_prompt: str,
+        material_name: str,
+        config: Optional[Dict[str, Any]] = None
+    ) -> str:
+        """
+        Get human-readable feedback for prompt corrections.
+        
+        Returns formatted string with specific instructions on how to
+        modify the prompt to fix identified issues.
+        
+        Args:
+            image_path: Path to generated image
+            original_prompt: The exact prompt used for generation
+            material_name: Material name
+            config: Optional generation config
+            
+        Returns:
+            Formatted feedback string ready for injection into next attempt
+        """
+        analysis = self.validate_with_prompt_awareness(
+            image_path=image_path,
+            original_prompt=original_prompt,
+            material_name=material_name,
+            config=config
+        )
+        
+        lines = [
+            "=" * 80,
+            "🔧 PROMPT CORRECTION FEEDBACK",
+            "=" * 80,
+            ""
+        ]
+        
+        # Compliance summary
+        compliance = analysis.get("prompt_compliance", {})
+        lines.append(f"📊 Compliance: {compliance.get('requirements_met', 0)}/{compliance.get('requirements_checked', 0)} requirements met ({compliance.get('compliance_percentage', 0):.0f}%)")
+        lines.append(f"📈 Realism Score: {analysis.get('realism_score', 0)}/100")
+        lines.append("")
+        
+        # Violations with fixes
+        violations = analysis.get("violations", [])
+        if violations:
+            lines.append("❌ VIOLATIONS REQUIRING PROMPT FIXES:")
+            lines.append("")
+            
+            for v in violations:
+                severity = v.get("severity", "unknown").upper()
+                severity_icon = {"CRITICAL": "🚨", "HIGH": "⚠️", "MEDIUM": "📝", "LOW": "💡"}.get(severity, "❓")
+                
+                lines.append(f"{severity_icon} [{severity}] {v.get('requirement', 'Unknown requirement')}")
+                lines.append(f"   📜 Prompt says: \"{v.get('what_prompt_says', 'N/A')[:100]}...\"")
+                lines.append(f"   🖼️  Image shows: {v.get('what_image_shows', 'N/A')}")
+                lines.append(f"   🔧 FIX: {v.get('suggested_fix', 'No fix suggested')}")
+                lines.append("")
+        else:
+            lines.append("✅ No prompt violations detected")
+            lines.append("")
+        
+        # Compliant rules (brief)
+        compliant = analysis.get("compliant_rules", [])
+        if compliant:
+            lines.append(f"✅ {len(compliant)} rules followed correctly")
+            lines.append("")
+        
+        # Priority fixes for next attempt
+        priority_fixes = analysis.get("priority_fixes", [])
+        if priority_fixes:
+            lines.append("🎯 PRIORITY FIXES FOR NEXT ATTEMPT:")
+            for i, fix in enumerate(priority_fixes[:3], 1):
+                lines.append(f"   {i}. {fix}")
+            lines.append("")
+        
+        lines.append("=" * 80)
+        
+        return "\n".join(lines)
+    
+    def build_correction_injection(
+        self,
+        image_path: Path,
+        original_prompt: str,
+        material_name: str,
+        config: Optional[Dict[str, Any]] = None
+    ) -> str:
+        """
+        Build a correction section to inject into the next generation prompt.
+        
+        Returns concise, actionable corrections suitable for prompt injection.
+        
+        Args:
+            image_path: Path to generated image
+            original_prompt: The exact prompt used for generation
+            material_name: Material name
+            config: Optional generation config
+            
+        Returns:
+            Correction text to prepend to next prompt attempt
+        """
+        analysis = self.validate_with_prompt_awareness(
+            image_path=image_path,
+            original_prompt=original_prompt,
+            material_name=material_name,
+            config=config
+        )
+        
+        violations = analysis.get("violations", [])
+        if not violations:
+            return ""  # No corrections needed
+        
+        # Build concise correction injection
+        lines = [
+            "🚨 CRITICAL CORRECTIONS FROM FAILED ATTEMPT:",
+            "The previous generation FAILED these requirements. FIX THEM:"
+        ]
+        
+        # Sort by severity (critical first)
+        severity_order = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+        sorted_violations = sorted(violations, key=lambda v: severity_order.get(v.get("severity", "low"), 4))
+        
+        for v in sorted_violations[:5]:  # Top 5 violations
+            fix = v.get("suggested_fix", v.get("requirement", "Unknown"))
+            lines.append(f"• {fix}")
+        
+        lines.append("")
+        
+        return "\n".join(lines)
+
+
 def create_validator(api_key: Optional[str] = None) -> MaterialImageValidator:
     """Factory function to create material image validator"""
     return MaterialImageValidator(api_key=api_key)

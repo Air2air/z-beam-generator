@@ -64,7 +64,7 @@ class MaterialShapeResearcher:
         "Granite": {"object": "countertop section", "context": "architectural", "setting": "kitchen or bathroom installation"},
         "Limestone": {"object": "building block", "context": "architectural", "setting": "historic building facade"},
         "Sandstone": {"object": "wall cladding", "context": "architectural", "setting": "building exterior"},
-        "Dolomite": {"object": "facade panel", "context": "architectural", "setting": "building exterior wall cladding"},
+        "Dolomite": {"object": "polished countertop section", "context": "architectural", "setting": "kitchen installation"},
         "Slate": {"object": "roof tiles", "context": "architectural", "setting": "rooftop installation"},
         "Terracotta": {"object": "roof tiles", "context": "architectural", "setting": "Mediterranean-style rooftop"},
         "Glass": {"object": "window pane", "context": "architectural", "setting": "building window frame"},
@@ -125,26 +125,28 @@ class MaterialShapeResearcher:
         if not self.model:
             return self._get_fallback(material_name)
         
-        prompt = f"""For the material "{material_name}", provide:
-1. The most common recognizable real-world object/product made from it
-2. Whether it's typically seen as a standalone object OR as part of a building/structure
+        prompt = f"""For the material "{material_name}", identify:
+1. The most common FINISHED/MANUFACTURED product made from it
+2. Whether it's typically a standalone object OR part of a building/structure
 3. The appropriate setting to photograph it
 
-Requirements:
-- Object must be SPECIFIC and visually recognizable (not generic like "component")
-- Consider what commonly needs cleaning or maintenance
-- For building materials (concrete, brick, stone, etc.), show them IN architectural context
-- For small items (tools, utensils, parts), show them as standalone objects
+CRITICAL REQUIREMENTS:
+- Must be a FABRICATED/MANUFACTURED object (NOT raw material, NOT aggregate, NOT crushed/broken form)
+- Must be visually RECOGNIZABLE by a general audience
+- For construction aggregates/minerals: show the FINAL PRODUCT (concrete block, tile, building panel, paving stone)
+- For building materials: show INSTALLED architectural features
+- AVOID these raw material terms: "aggregate", "crushed", "raw", "sample", "chunk", "piece", "ore", "gravel", "powder"
 
 Respond in EXACTLY this JSON format, nothing else:
-{{"object": "specific object name", "context": "standalone|architectural|industrial", "setting": "brief setting description"}}
+{{"object": "specific manufactured object name", "context": "standalone|architectural|industrial", "setting": "brief setting description"}}
 
 Examples:
+- Dolomite: {{"object": "terrazzo floor tile", "context": "architectural", "setting": "interior floor installation"}}
 - Steel: {{"object": "I-beam", "context": "architectural", "setting": "construction site with beam in building frame"}}
 - Copper: {{"object": "electrical wire spool", "context": "standalone", "setting": "workshop bench"}}
-- Concrete: {{"object": "wall section", "context": "architectural", "setting": "building exterior wall"}}
-- Brass: {{"object": "door handle", "context": "standalone", "setting": "workshop bench"}}
-- Marble: {{"object": "floor tile", "context": "architectural", "setting": "interior floor installation"}}
+- Concrete: {{"object": "precast wall panel", "context": "architectural", "setting": "building exterior wall"}}
+- Limestone: {{"object": "carved building ornament", "context": "architectural", "setting": "historic building facade"}}
+- Marble: {{"object": "polished floor tile", "context": "architectural", "setting": "interior floor installation"}}
 
 Material: {material_name}
 Response:"""
@@ -170,8 +172,18 @@ Response:"""
                     
                     # Validate required fields
                     if "object" in result and "context" in result:
+                        obj_name = result.get("object", "").lower()
+                        
+                        # REJECT raw material forms - use fallback instead
+                        raw_material_terms = ["aggregate", "crushed", "raw", "sample", "chunk", 
+                                              "piece", "ore", "gravel", "powder", "rock", "stone ",
+                                              "pellet", "granule", "bead", "particle", "sand"]
+                        if any(term in obj_name for term in raw_material_terms):
+                            print(f"⚠️  Rejecting unsuitable form '{obj_name}', using fallback")
+                            return self._get_fallback(material_name)
+                        
                         return {
-                            "object": result.get("object", "").lower(),
+                            "object": obj_name,
                             "context": result.get("context", "standalone").lower(),
                             "setting": result.get("setting", "workshop bench")
                         }
