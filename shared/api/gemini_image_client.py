@@ -125,35 +125,15 @@ class GeminiImageClient:
             ValueError: If prompt too long or invalid config
             RuntimeError: If generation fails
         """
-        # Validate and auto-optimize prompt length
+        # Validate prompt length (optimization already done by prompt_builder)
         IMAGEN_LIMIT = 4096
-        OPTIMIZATION_THRESHOLD = 2000  # Trigger optimization when above this
         
-        if len(prompt) > OPTIMIZATION_THRESHOLD:
-            print(f"⚠️  [GEMINI] Warning: Long prompt ({len(prompt)} chars)")
-            print(f"🔧 [GEMINI] Auto-optimizing prompt to reduce size...")
-            
-            # Import optimizer and apply aggressive optimization
-            try:
-                from shared.image.utils.prompt_optimizer import PromptOptimizer
-                optimizer = PromptOptimizer(target_length=OPTIMIZATION_THRESHOLD, hard_limit=IMAGEN_LIMIT)
-                
-                original_length = len(prompt)
-                prompt = optimizer.optimize_prompt(prompt, preserve_feedback=True)
-                reduction = original_length - len(prompt)
-                
-                if reduction > 0:
-                    print(f"✅ [GEMINI] Optimized: {original_length} → {len(prompt)} chars (-{reduction} chars, {reduction/original_length*100:.1f}%)")
-                else:
-                    print(f"ℹ️  [GEMINI] Prompt already optimized: {len(prompt)} chars")
-                    
-                # Final safety check - hard truncate if still over limit
-                if len(prompt) > IMAGEN_LIMIT:
-                    print(f"🚨 [GEMINI] Emergency truncation: {len(prompt)} → {IMAGEN_LIMIT} chars")
-                    prompt = prompt[:IMAGEN_LIMIT - 50] + "\n[Truncated for API limit]"
-                    
-            except ImportError:
-                print(f"⚠️  [GEMINI] Optimizer not available - proceeding with long prompt")
+        if len(prompt) > IMAGEN_LIMIT:
+            # Emergency truncation - should rarely happen since prompt_builder optimizes
+            print(f"🚨 [GEMINI] Prompt over limit: {len(prompt)}/{IMAGEN_LIMIT} chars - truncating")
+            prompt = prompt[:IMAGEN_LIMIT - 50] + "\n[Truncated for API limit]"
+        elif len(prompt) > 3500:
+            print(f"⚠️  [GEMINI] Prompt near limit: {len(prompt)}/{IMAGEN_LIMIT} chars")
         
         print("🎨 [GEMINI] Generating image...")
         print(f"📝 [GEMINI] Prompt: {prompt[:80]}{'...' if len(prompt) > 80 else ''}")

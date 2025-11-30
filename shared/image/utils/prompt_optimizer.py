@@ -118,7 +118,12 @@ class PromptOptimizer:
         if len(optimized) > self.target_length:
             optimized = self._aggressive_trim(optimized)
         
-        # Strategy 5: Truncate lowest priority sections if still over hard limit
+        # Strategy 5: Section pruning if still significantly over target (but under hard limit)
+        # This removes lower-priority sections to get closer to target
+        if len(optimized) > self.target_length * 1.3:  # More than 30% over target
+            optimized = self._prune_sections(optimized)
+        
+        # Strategy 6: Truncate lowest priority sections if still over hard limit
         if len(optimized) > self.hard_limit:
             # Account for JSON format length when calculating truncation
             available_space = self.hard_limit - len(json_format) if json_format else self.hard_limit
@@ -318,6 +323,58 @@ class PromptOptimizer:
         result = re.sub(r'\n{3,}', '\n\n', result)
         
         logger.info(f"🔧 Aggressive trim: {len(text)} → {len(result)} chars")
+        return result
+    
+    def _prune_sections(self, text: str) -> str:
+        """
+        Remove lower-priority sections to get closer to target length.
+        
+        Priority order (keep first, remove last):
+        1. KEEP: Base structure (first paragraph with split-screen)
+        2. KEEP: CORRECTIONS section (user feedback)
+        3. KEEP: AVOID THESE PATTERNS (critical rules)
+        4. PRUNE: MICRO-SCALE AUTHENTICITY (nice to have)
+        5. PRUNE: DISTRIBUTION details (can simplify)
+        6. PRUNE: LEARNED FROM PREVIOUS (if empty)
+        """
+        sections = text.split('\n\n')
+        pruned_sections = []
+        
+        for section in sections:
+            section_upper = section.upper()
+            
+            # Always keep these critical sections
+            if any(keep in section_upper for keep in [
+                'SPLIT-SCREEN', 'BACKGROUND:', 'ASSEMBLY CONTEXT',  # Base structure
+                'CORRECTIONS:', 'AVOID THESE PATTERNS',  # Critical rules
+                'PHYSICS:',  # Essential physics
+            ]):
+                pruned_sections.append(section)
+                continue
+            
+            # Remove empty or minimal sections
+            if 'LEARNED FROM PREVIOUS' in section_upper and len(section) < 100:
+                logger.info("🗑️  Pruned: empty LEARNED section")
+                continue
+            
+            # Simplify DISTRIBUTION section (keep header + first 3 items)
+            if 'DISTRIBUTION' in section_upper:
+                lines = section.split('\n')
+                if len(lines) > 4:
+                    section = '\n'.join(lines[:4])
+                    logger.info("✂️  Simplified: DISTRIBUTION section")
+            
+            # Simplify MICRO-SCALE section (keep header + first 2 items)
+            if 'MICRO-SCALE' in section_upper:
+                lines = section.split('\n')
+                if len(lines) > 3:
+                    section = '\n'.join(lines[:3])
+                    logger.info("✂️  Simplified: MICRO-SCALE section")
+            
+            pruned_sections.append(section)
+        
+        result = '\n\n'.join(pruned_sections)
+        logger.info(f"🗑️  Section pruning: {len(text)} → {len(result)} chars")
         return result
 
     def _emergency_truncate(
