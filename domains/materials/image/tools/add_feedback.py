@@ -290,8 +290,13 @@ Categories: """ + ", ".join(FEEDBACK_CATEGORIES)
             mat_lower = material.lower()
             if any(w in mat_lower for w in ['oak', 'pine', 'maple', 'walnut', 'wood', 'lumber', 'timber']):
                 mat_category = 'wood'
-            elif any(w in mat_lower for w in ['steel', 'aluminum', 'copper', 'iron', 'brass', 'metal', 'bronze']):
-                mat_category = 'metal'
+            # Check for copper alloys FIRST (before generic metal check)
+            elif any(w in mat_lower for w in ['copper', 'brass', 'bronze']):
+                mat_category = 'copper_alloy'  # Use verdigris/patina, NOT rust
+            elif any(w in mat_lower for w in ['aluminum', 'aluminium']):
+                mat_category = 'aluminum'  # Use white oxidation, NOT rust
+            elif any(w in mat_lower for w in ['steel', 'iron', 'metal']):
+                mat_category = 'metal'  # Ferrous metals - CAN rust
             elif any(w in mat_lower for w in ['granite', 'marble', 'concrete', 'stone', 'brick']):
                 mat_category = 'stone'
             elif any(w in mat_lower for w in ['glass', 'window']):

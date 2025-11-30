@@ -15,12 +15,21 @@ import re
 class FeedbackRewriter:
     """Rewrites user feedback into more effective Imagen 4 instructions."""
     
+    # Non-ferrous metals - CANNOT rust, use patina/tarnish terminology
+    NON_FERROUS_METALS = {
+        'copper', 'brass', 'bronze', 'aluminum', 'aluminium', 'zinc', 'titanium',
+        'nickel', 'lead', 'tin', 'gold', 'silver', 'platinum', 'magnesium',
+        'chromium', 'cobalt', 'tungsten'
+    }
+    
     # Abstract terms → Concrete visual translations
     TRANSLATIONS: Dict[str, Dict[str, str]] = {
         # Contamination terms
         "contamination": {
             "wood": "weathered gray patina and water stain discoloration",
             "metal": "rust streaks, oxidation patches, and grime buildup",
+            "copper_alloy": "green-blue verdigris patina, tarnish, and salt deposits",
+            "aluminum": "white oxidation powder, water spots, and surface dulling",
             "stone": "dark staining, mineral deposits, and weathering marks",
             "glass": "hazy film, water spots, and grimy residue",
             "plastic": "yellowed discoloration and surface grime",
@@ -29,16 +38,22 @@ class FeedbackRewriter:
         "contaminants": {
             "wood": "gray weathering, water stains, and dark discoloration",
             "metal": "rust, oxidation, and oily residue",
+            "copper_alloy": "verdigris, tarnish, and mineral deposits",
+            "aluminum": "white oxidation and water staining",
             "default": "dirt, grime, and visible staining"
         },
         "dirty": {
             "wood": "gray-brown weathered like old deck boards left outside",
             "metal": "grimy with rust streaks like old tools",
+            "copper_alloy": "tarnished with green patina like old copper pipes",
+            "aluminum": "dulled with white oxidation spots",
             "default": "visibly soiled with dark staining"
         },
         "contaminated": {
             "wood": "weathered gray-brown like barn wood or old fencing",
             "metal": "corroded and grimy like neglected equipment",
+            "copper_alloy": "patinated with green-blue verdigris like aged copper statues",
+            "aluminum": "oxidized with white chalky residue",
             "default": "heavily stained and discolored"
         },
         
@@ -79,16 +94,22 @@ class FeedbackRewriter:
         "aged": {
             "wood": "gray-silver weathered like driftwood or old barn siding",
             "metal": "patina and oxidation like antique hardware",
+            "copper_alloy": "rich green verdigris patina like weathered bronze statues",
+            "aluminum": "dull matte finish with oxidation haze",
             "default": "showing years of wear and exposure"
         },
         "weathered": {
             "wood": "silver-gray like wood left outdoors for years",
             "metal": "oxidized and worn like outdoor fixtures",
+            "copper_alloy": "green-blue patinated like old ship fittings",
+            "aluminum": "chalky white oxidation like old window frames",
             "default": "showing environmental exposure damage"
         },
         "old": {
             "wood": "gray and worn like reclaimed lumber",
             "metal": "tarnished and corroded like vintage equipment",
+            "copper_alloy": "deep brown-green patina like antique brass",
+            "aluminum": "faded with white oxide film",
             "default": "showing significant age and wear"
         },
         
@@ -134,6 +155,19 @@ class FeedbackRewriter:
             "neglected machinery",
             "old car parts"
         ],
+        "copper_alloy": [
+            "the Statue of Liberty's green patina",
+            "aged ship propellers",
+            "antique brass door handles",
+            "weathered copper gutters",
+            "old church bells"
+        ],
+        "aluminum": [
+            "oxidized aluminum siding",
+            "old airplane fuselage",
+            "weathered outdoor furniture",
+            "aged window frames"
+        ],
         "stone": [
             "old gravestones",
             "weathered statues",
@@ -151,6 +185,8 @@ class FeedbackRewriter:
     COLOR_SHIFTS: Dict[str, str] = {
         "wood": "natural blonde/tan → gray/brown/silver",
         "metal": "shiny metallic → dull with rust-orange and dark spots",
+        "copper_alloy": "warm golden/copper → green-blue verdigris patina",
+        "aluminum": "bright silver → dull gray-white with chalky oxidation",
         "stone": "original color → darkened with mineral staining",
         "glass": "clear/transparent → hazy/cloudy/spotted"
     }
