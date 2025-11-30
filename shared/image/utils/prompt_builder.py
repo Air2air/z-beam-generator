@@ -513,7 +513,7 @@ EXPECTED CHARACTERISTICS:
             patterns: List of contamination pattern dicts
             
         Returns:
-            Concise contamination description
+            Concise contamination description including material-specific feedback
             
         Raises:
             ValueError: If no patterns provided
@@ -525,6 +525,8 @@ EXPECTED CHARACTERISTICS:
             )
         
         lines = []
+        feedback_notes = []
+        
         for pattern in patterns[:4]:  # Max 4 patterns
             # Handle both category pattern format and old contaminant format
             if 'pattern_name' in pattern:
@@ -533,6 +535,11 @@ EXPECTED CHARACTERISTICS:
                 color = visual.get('color_range', 'varied tones')
                 texture = visual.get('texture_detail', 'varied texture')
                 lines.append(f"{name}: {color}, {texture}")
+                
+                # Include material-specific image generation feedback if available
+                feedback = pattern.get('image_generation_feedback', '')
+                if feedback:
+                    feedback_notes.append(f"NOTE for {name}: {feedback}")
             else:
                 name = pattern.get('name', 'contamination')
                 appearance = pattern.get('appearance', {})
@@ -540,7 +547,13 @@ EXPECTED CHARACTERISTICS:
                 texture = appearance.get('texture', 'uneven')
                 lines.append(f"{name}: {color}, {texture}")
         
-        return ". ".join(lines) + "."
+        result = ". ".join(lines) + "."
+        
+        # Append material-specific feedback notes
+        if feedback_notes:
+            result += " IMPORTANT: " + " ".join(feedback_notes)
+        
+        return result
     
     def _build_visual_weight_instructions(
         self,

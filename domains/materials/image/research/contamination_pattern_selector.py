@@ -551,6 +551,8 @@ class ContaminationPatternSelector:
             'visual_characteristics': visual_chars,
             'has_rich_appearance_data': has_rich_data,
             'category': pattern.get('category', 'contamination'),
+            # Include material-specific image generation feedback if available
+            'image_generation_feedback': self._get_image_gen_feedback(pattern, material_name),
         }
     
     def _extract_color_summary(self, color_variations: Any) -> str:
@@ -592,6 +594,53 @@ class ContaminationPatternSelector:
         
         return texture_details[:100]
     
+    def _get_image_gen_feedback(self, pattern: Dict, material_name: str) -> str:
+        """
+        Get material-specific image generation feedback for a pattern.
+        
+        This feedback is persisted in Contaminants.yaml under image_generation_feedback
+        and provides learned guidance for how to render this contamination on this material.
+        
+        Args:
+            pattern: The contamination pattern data
+            material_name: The material name
+            
+        Returns:
+            Combined feedback string, or empty string if none available
+        """
+        feedback_section = pattern.get('image_generation_feedback', {})
+        if not feedback_section:
+            return ""
+        
+        # Try exact material match
+        material_key = material_name.lower().replace(' ', '_')
+        mat_feedback = feedback_section.get(material_key, {})
+        
+        if not mat_feedback:
+            # Try fuzzy match (e.g., "aluminum_bronze" matches "bronze")
+            for key, data in feedback_section.items():
+                stored_name = data.get('material_name', '').lower()
+                if (material_name.lower() in stored_name or 
+                    stored_name in material_name.lower() or
+                    key.replace('_', ' ') in material_name.lower()):
+                    mat_feedback = data
+                    break
+        
+        if not mat_feedback:
+            return ""
+        
+        # Combine all notes into single feedback string
+        notes = mat_feedback.get('notes', {})
+        if not notes:
+            return ""
+        
+        parts = []
+        for category, note in notes.items():
+            if note:
+                parts.append(f"[{category.upper()}] {note}")
+        
+        return " | ".join(parts) if parts else ""
+
     def get_patterns_for_image_gen(
         self,
         material_name: str,
