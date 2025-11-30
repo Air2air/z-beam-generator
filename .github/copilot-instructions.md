@@ -60,6 +60,85 @@ Before ANY code change:
 5. [ ] Verify all file paths exist before coding
 6. [ ] Ask permission before major changes or rewrites
 
+---
+
+## 🖼️ **IMAGE FEEDBACK CAPTURE PROTOCOL** 🔥 **NEW (Nov 29, 2025)**
+
+**Purpose**: Automatically detect and capture user feedback on generated images for learning.
+
+### **Explicit Trigger (Option B)**
+User can use `/feedback` command for certainty:
+```
+/feedback Steel: rotation angle too small, both sides look identical
+/feedback Aluminum contamination: oil looks painted on, not realistic
+```
+
+**When user uses `/feedback`, IMMEDIATELY run:**
+```bash
+python3 domains/materials/image/tools/add_feedback.py -m <material> -c <category> -f "<feedback_text>"
+```
+
+**Categories**: `physics`, `rotation`, `contamination`, `object`, `background`, `composition`, `realism`, `text`, `other`
+
+### **Automatic Detection (Option C)**
+When user comments on a generated image WITHOUT `/feedback`, detect these patterns:
+
+**🚨 TRIGGER PHRASES** (offer to log feedback):
+- "rotation is wrong/too small/not enough"
+- "contamination looks wrong/thick/fake/painted"
+- "background is wrong/white/studio"
+- "object looks wrong/different/not the same"
+- "unrealistic/fake looking/AI-looking"
+- "text in image/watermark/label"
+- "shadows wrong/lighting wrong"
+- "not rotated/same angle"
+
+**When detected, respond with:**
+```
+📝 I noticed feedback about the image. Should I log this to the learning database?
+
+Detected:
+- Material: [inferred or ask]
+- Category: [inferred: rotation/contamination/etc]
+- Feedback: "[user's comment]"
+
+Reply 'yes' to log, or provide corrections.
+```
+
+### **After Logging, Confirm:**
+```
+✅ Feedback logged to learning database:
+   Material: Steel
+   Category: rotation
+   Feedback: "rotation angle too small, both sides look identical"
+   
+This will help improve future generations. View all feedback:
+   python3 domains/materials/image/tools/add_feedback.py --list
+```
+
+### **Integration with Generation**
+When generating a new image for a material that has feedback:
+1. Check SQLite for manual feedback on that material
+2. Mention: "Note: Previous feedback for Steel includes rotation issues"
+3. Consider applying corrections proactively
+
+### **Feedback Analytics**
+```bash
+# View recent feedback
+python3 domains/materials/image/tools/add_feedback.py --list
+
+# Search feedback
+python3 domains/materials/image/tools/add_feedback.py --search "rotation"
+
+# Statistics by category
+python3 domains/materials/image/tools/add_feedback.py --stats
+
+# Via analytics CLI
+python3 shared/image/learning/analytics.py --manual-feedback
+```
+
+---
+
 ## 📦 File Organization & Root Cleanliness Policy (Nov 28, 2025)
 
 **Purpose:** Ensure all file types (.py, .sh, .log, .txt, etc.) are organized for maintainability and AI assistant workflow compliance. Prevent root clutter and legacy file sprawl.

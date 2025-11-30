@@ -111,11 +111,11 @@ materialProperties:
     label: Material Characteristics
     percentage: 40.0
     electricalResistivity:
-      value: 100000000000000.0
+      value: 1e+14
       unit: Ω·m
       source: ai_research
-      min: 9500000000000.0
-      max: 1.049995e+17
+      min: '9.5e+12'
+      max: 1e+17
     fractureToughness:
       value: 0.9
       unit: MPa m^{1/2}
@@ -123,16 +123,16 @@ materialProperties:
       min: 0.7
       max: 2.9
     thermalDestruction:
-      value: 623.0
+      value: 623
       unit: K
       source: ai_research
-      min: 227.85
-      max: 715.15
+      min: 228
+      max: 715
     specificHeat:
-      value: 1300.0
+      value: 1300
       unit: J/(kg·K)
       source: ai_research
-      min: 1.0
+      min: 1
       max: 2500
     youngsModulus:
       value: 3.3
@@ -141,17 +141,17 @@ materialProperties:
       min: 0.01
       max: 5000
     oxidationResistance:
-      value: 523.0
+      value: 523
       unit: K
       source: ai_research
       min: 0.76
-      max: 1574.96
+      max: 1575
     laserReflectivity:
-      value: 0.052
+      value: 0.05
       unit: dimensionless
       source: ai_research
-      min: 0.02155
-      max: 0.05345
+      min: 0.02
+      max: 0.05
     thermalConductivity:
       value: 0.12
       unit: W/m·K
@@ -159,55 +159,55 @@ materialProperties:
       min: 0.02
       max: 3
     thermalExpansion:
-      value: 7.0e-05
+      value: 7e-05
       unit: K^{-1}
       source: ai_research
-      min: 5.9e-05
-      max: 0.000196
+      min: '5.9e-05'
+      max: '0.0002'
     density:
-      value: 1.05
+      value: 1.1
       unit: g/cm³
       source: ai_research
-      min: 0.84275
-      max: 2.21225
+      min: 0.84
+      max: 2.2
     hardness:
-      value: 77.0
+      value: 77
       unit: Shore D
       source: ai_research
-      min: 51.75
-      max: 123.25
+      min: 51.8
+      max: 123
     corrosionResistance:
       value: 0.65
       unit: dimensionless (normalized resistance index)
       source: ai_research
-      min: 0.0
-      max: 105.0
+      min: 0
+      max: 105
     laserAbsorption:
-      value: 100.0
+      value: 100
       unit: m^{-1}
       source: ai_research
-      min: 0.285
-      max: 125999.985
+      min: 0.28
+      max: 126000
     compressiveStrength:
-      value: 70.0
+      value: 70
       unit: MPa
       source: ai_research
       min: 20
       max: 200
     thermalDiffusivity:
-      value: 1.02e-07
+      value: 1e-07
       unit: m²/s
       source: ai_research
-      min: 0.0
-      max: 0.0
+      min: 0
+      max: 0
     flexuralStrength:
-      value: 50.0
+      value: 50
       unit: MPa
       source: ai_research
-      min: 20.655
-      max: 96.445
+      min: 20.7
+      max: 96.4
     tensileStrength:
-      value: 40.0
+      value: 40
       unit: MPa
       source: ai_research
       min: 10
@@ -222,22 +222,22 @@ materialProperties:
       max: 0.3
       source: ai_research
     absorptionCoefficient:
-      value: 1000000
+      value: 1e+06
       unit: m⁻¹
       min: 100000
-      max: 5000000
+      max: 5e+06
       source: ai_research
     laserDamageThreshold:
-      value: 2.0
+      value: 2
       unit: J/cm²
-      min: 1.0
-      max: 4.0
+      min: 1
+      max: 4
       source: ai_research
     thermalShockResistance:
-      value: 1.0
+      value: 1
       unit: MW/m
       min: 0.5
-      max: 2.0
+      max: 2
       source: ai_research
     reflectivity:
       value: 0.05
@@ -272,4 +272,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:31.323118'
+    generated_date: '2025-11-29T15:19:08.526566'

@@ -84,10 +84,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 2.53
+      value: 2.5
       unit: g/cm³
-      min: 2.09285
-      max: 2624.88985
+      min: 2.1
+      max: 2625
     porosity:
       value: 0
       unit: '%'
@@ -97,58 +97,58 @@ materialProperties:
     tensileStrength:
       value: 750
       unit: MPa
-      min: 7.0
-      max: 733.0
+      min: 7
+      max: 733
     youngsModulus:
       value: 85
       unit: GPa
       min: 60.8
-      max: 60899999996.8
+      max: '6.1e+10'
     hardness:
       value: 0.85
       unit: GPa
-      min: 3.99
-      max: 2309.79
+      min: 4
+      max: 2310
     flexuralStrength:
       value: 900
       unit: MPa
-      min: 10.0
-      max: 780.0
+      min: 10
+      max: 780
     oxidationResistance:
       value: 12
       unit: μm/year
-      min: 0.0
-      max: 2176.65
+      min: 0
+      max: 2177
     corrosionResistance:
       value: 0.92
       unit: mm/year
-      min: 4.8e-05
-      max: 1.574998
+      min: '4.8e-05'
+      max: 1.6
     thermalDestruction:
       value: 1473
       unit: K
-      min: 637.7
-      max: 2426.3
+      min: 638
+      max: 2426
     laserAbsorption:
       value: 0.05
       unit: dimensionless
-      min: 0.01425
-      max: 73499.99925
+      min: 0.01
+      max: 73500
     compressiveStrength:
       value: 750
       unit: MPa
-      min: 619.5
-      max: 2170.5
+      min: 620
+      max: 2170
     fractureToughness:
       value: 4.5
       unit: MPa m^{1/2}
-      min: 0.5575
-      max: 2.5925
+      min: 0.56
+      max: 2.6
     electricalResistivity:
-      value: 100000000000000.0
+      value: 1e+14
       unit: Ω·m
-      min: 9500000000.0
-      max: 1.04999995e+16
+      min: '9.5e+09'
+      max: 1e+16
     laserDamageThreshold:
       value: 8.5
       unit: J/cm²
@@ -171,10 +171,10 @@ materialProperties:
       context: Alkali aluminosilicate glass (Corning Gorilla Glass composition, ~62% SiO2, 18% Al2O3, 14% Na2O, 6% others), room temperature (25°C), 515 nm wavelength, 400 fs pulse duration, measured in air
       researched_date: '2025-11-24T12:31:35.288251'
       needs_validation: true
-      min: 0.635
-      max: 13.065
+      min: 0.64
+      max: 13.1
     thermalDiffusivity:
-      value: 5.34e-07
+      value: '5.3e-07'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -183,10 +183,10 @@ materialProperties:
       context: Commercial aluminosilicate glass (Corning 1737, ~70% SiO2, 15% Al2O3, 10% Na2O, 5% others), 25°C, properties measured under standard conditions
       researched_date: '2025-11-24T12:31:44.196167'
       needs_validation: true
-      min: 0.0
-      max: 1.0e-05
+      min: 0
+      max: 1e-05
     thermalExpansion:
-      value: 3.8e-06
+      value: '3.8e-06'
       unit: 1/K
       source: scientific_literature
       source_type: materials_database
@@ -195,10 +195,10 @@ materialProperties:
       context: Commercial aluminosilicate glass (e.g., ~60% SiO2, 20% Al2O3, balance alkali oxides), 25-300°C, dilatometry measurement
       researched_date: '2025-11-24T12:31:50.035918'
       needs_validation: true
-      min: 1.0e-06
-      max: 9.66
+      min: 1e-06
+      max: 9.7
     specificHeat:
-      value: 740.0
+      value: 740
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -210,7 +210,7 @@ materialProperties:
       min: 120
       max: 900
     thermalConductivity:
-      value: 1.05
+      value: 1.1
       unit: W/(m·K)
       source: scientific_literature
       source_type: materials_database
@@ -219,10 +219,10 @@ materialProperties:
       context: 'Commercial aluminosilicate glass (e.g., similar to Gorilla Glass composition: ~60% SiO2, ~20% Al2O3, ~10% Na2O/K2O, 99% purity), 25°C, measured via laser flash method'
       researched_date: '2025-11-24T12:32:06.619825'
       needs_validation: true
-      min: 0.7695
-      max: 36.7095
+      min: 0.77
+      max: 36.7
     laserReflectivity:
-      value: 0.042
+      value: 0.04
       unit: ''
       source: scientific_literature
       source_type: materials_database
@@ -231,30 +231,12 @@ materialProperties:
       context: 'Alkali aluminosilicate glass (approx. composition: 65% SiO2, 18% Al2O3, 10% Na2O, 5% MgO, 2% others; commercial grade similar to display glass substrates), 25°C, normal incidence, 1064 nm wavelength (Nd:YAG laser relevant for cleaning applications)'
       researched_date: '2025-11-24T12:32:24.756410'
       needs_validation: true
-      min: 0.03192
-      max: 3.79932
+      min: 0.03
+      max: 3.8
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 1.0
-      unit: W/m·K
-      min: 0.8
-      max: 1.2
-      source: ai_research
-    thermalDiffusivity:
-      value: 5.0e-07
-      unit: m²/s
-      min: 4.0e-07
-      max: 6.0e-07
-      source: ai_research
-    ablationThreshold:
-      value: 10.0
-      unit: J/cm²
-      min: 5.0
-      max: 15.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.171882'
+    generated_date: '2025-11-29T15:19:10.382061'

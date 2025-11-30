@@ -99,7 +99,10 @@ class SharedPromptBuilder:
         contamination_uniformity: int = 3,
         view_mode: str = "Contextual",
         material_category: Optional[str] = None,
-        learned_feedback: Optional[str] = None
+        learned_feedback: Optional[str] = None,
+        severity: str = "moderate",
+        aging_weight: Optional[float] = None,
+        contamination_weight: Optional[float] = None
     ) -> str:
         """
         Build complete generation prompt from shared templates + researched defaults.
@@ -114,6 +117,7 @@ class SharedPromptBuilder:
         - Forbidden Patterns: Anti-patterns to avoid
         - User Feedback: Your latest quality corrections
         - Learned Feedback: Category-specific feedback from previous attempts
+        - Visual Weights: Custom aging/contamination intensity adjustments
         
         Args:
             material_name: Name of material (e.g., "Aluminum")
@@ -122,6 +126,9 @@ class SharedPromptBuilder:
             view_mode: "Contextual" or "Isolated" (default: "Contextual")
             material_category: Material category for learned feedback (e.g., "metal_ferrous")
             learned_feedback: Pre-formatted learned feedback from learning system
+            severity: Contamination severity - "light" (<30%), "moderate" (30-60%), "heavy" (>60%)
+            aging_weight: Visual weight for aging on left side (0.0-2.0, default 1.0)
+            contamination_weight: Visual weight for contamination on right side (0.0-2.0, default 1.0)
             
         Returns:
             Complete prompt string for Imagen 4
@@ -135,7 +142,8 @@ class SharedPromptBuilder:
         # Build replacement context once (using researched defaults)
         replacements = self._build_replacement_dict(
             material_name, research_data,
-            contamination_uniformity, view_mode
+            contamination_uniformity, view_mode,
+            severity
         )
         
         # Layer 1: Base Structure
@@ -170,16 +178,24 @@ class SharedPromptBuilder:
         if forbidden:
             prompt_parts.append(f"AVOID THESE PATTERNS:\n{forbidden}")
         
-        # User Feedback Integration
-        feedback = self._load_feedback()
+        # User Feedback Integration (core + category-specific)
+        feedback = self._load_feedback(material_category=material_category)
         if feedback:
-            prompt_parts.append(f"CRITICAL CORRECTIONS (from user review):\n{feedback}")
+            prompt_parts.append(f"CORRECTIONS:\n{feedback}")
             logger.info("📝 Applied user feedback corrections to generation prompt")
         
         # Category-Specific Learned Feedback
         if learned_feedback:
             prompt_parts.append(learned_feedback)
             logger.info(f"🧠 Applied learned feedback from category: {material_category}")
+        
+        # Visual Weight Adjustments (user-specified intensity overrides)
+        weight_instructions = self._build_visual_weight_instructions(
+            aging_weight, contamination_weight
+        )
+        if weight_instructions:
+            prompt_parts.append(weight_instructions)
+            logger.info(f"⚖️  Applied visual weight adjustments")
         
         # Assemble full prompt
         full_prompt = "\n\n".join(prompt_parts)
@@ -342,35 +358,47 @@ EXPECTED CHARACTERISTICS:
             logger.error(f"❌ Failed to load template {template_path.name}: {e}")
             return ""
     
-    def _load_feedback(self) -> str:
+    def _load_feedback(self, material_category: Optional[str] = None) -> str:
         """
-        Load latest user feedback corrections.
+        Load user feedback corrections - core + category-specific.
+        
+        Args:
+            material_category: Optional category for category-specific rules (e.g., "wood", "metal")
         
         Returns:
-            User feedback content (empty string if no feedback or file doesn't exist)
+            Combined feedback content (core + category-specific)
         """
-        feedback_path = self.feedback_dir / "user_corrections.txt"
+        feedback_parts = []
         
-        if not feedback_path.exists():
-            logger.debug("ℹ️  No user feedback file found (this is normal for initial runs)")
-            return ""
+        # Load core feedback (always)
+        core_path = self.feedback_dir / "user_corrections.txt"
+        if core_path.exists():
+            core = self._load_template(core_path)
+            # Filter out comments
+            lines = [l for l in core.split('\n') if l.strip() and not l.strip().startswith('#')]
+            if lines:
+                feedback_parts.append('\n'.join(lines).strip())
         
-        feedback = self._load_template(feedback_path)
+        # Load category-specific feedback if available
+        if material_category:
+            # Normalize category name (wood_hardwood -> wood, metals_ferrous -> metal)
+            cat_prefix = material_category.split('_')[0].lower()
+            if cat_prefix == 'metals':
+                cat_prefix = 'metal'
+            
+            cat_path = self.feedback_dir / f"{cat_prefix}_corrections.txt"
+            if cat_path.exists():
+                cat_feedback = self._load_template(cat_path)
+                lines = [l for l in cat_feedback.split('\n') if l.strip() and not l.strip().startswith('#')]
+                if lines:
+                    feedback_parts.append('\n'.join(lines).strip())
+                    logger.info(f"📝 Loaded {cat_prefix}-specific feedback")
         
-        # Filter out comments and empty lines
-        lines = []
-        for line in feedback.split('\n'):
-            stripped = line.strip()
-            if stripped and not stripped.startswith('#'):
-                lines.append(line)
+        combined = '\n\n'.join(feedback_parts).strip()
+        if combined:
+            logger.info(f"📝 Loaded user feedback: {len(combined)} chars")
         
-        filtered_feedback = '\n'.join(lines).strip()
-        
-        if filtered_feedback:
-            logger.info(f"📝 Loaded user feedback: {len(filtered_feedback)} chars")
-            return filtered_feedback
-        
-        return ""
+        return combined
     
     def _replace_variables(
         self,
@@ -396,7 +424,8 @@ EXPECTED CHARACTERISTICS:
         material_name: str,
         research_data: Dict,
         contamination_uniformity: int,
-        view_mode: str
+        view_mode: str,
+        severity: str = "moderate"
     ) -> Dict[str, str]:
         """
         Build dictionary of template variable replacements using researched defaults.
@@ -409,12 +438,15 @@ EXPECTED CHARACTERISTICS:
         - {UNIFORMITY}: 1-5 variety (researched default)
         - {VIEW_MODE}: Contextual or Isolated (researched default)
         - {CONTAMINANTS_SECTION}: Built from research patterns
+        - {SEVERITY}: Contamination severity (light, moderate, heavy)
+        - {COVERAGE_DESCRIPTION}: Human-readable coverage description
         
         Args:
             material_name: Material name
             research_data: Research data dict
             contamination_uniformity: 1-5 variety (auto-set by category)
             view_mode: View mode string (auto-set to "Contextual")
+            severity: Contamination severity (light, moderate, heavy)
             
         Returns:
             Dict mapping {VARIABLE} → value
@@ -427,18 +459,36 @@ EXPECTED CHARACTERISTICS:
         environment = research_data.get('typical_environment', 'typical environment')
         setting = research_data.get('setting', 'a workshop bench')  # Contextual setting
         
+        # Get assembly context for complex parts (from AssemblyResearcher)
+        assembly_description = research_data.get('assembly_description', '')
+        
+        # Get background from context settings (loaded from YAML)
+        context_background = research_data.get('context_background', 'neutral environment')
+        
         patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
         contamination_section = self._build_contamination_section(patterns)
+        
+        # Build severity-specific coverage descriptions
+        severity_descriptions = {
+            "light": "scattered spots covering less than 30% of surface, isolated patches with bare material visible between them",
+            "moderate": "connected patches covering 30-60% of surface, contamination forming patterns with some bare areas",
+            "heavy": "continuous coverage over 60% of surface, thick accumulation with minimal bare material visible"
+        }
+        coverage_description = severity_descriptions.get(severity, severity_descriptions["moderate"])
         
         return {
             '{MATERIAL}': material_name,
             '{COMMON_OBJECT}': common_object,
             '{ENVIRONMENT}': environment,
             '{SETTING}': setting,
+            '{BACKGROUND}': context_background,
+            '{ASSEMBLY_CONTEXT}': assembly_description,
             '{CONTAMINATION_LEVEL}': str(contamination_uniformity),  # Same value, correct variable name
             '{UNIFORMITY}': str(contamination_uniformity),
             '{VIEW_MODE}': view_mode,
-            '{CONTAMINANTS_SECTION}': contamination_section
+            '{CONTAMINANTS_SECTION}': contamination_section,
+            '{SEVERITY}': severity,
+            '{COVERAGE_DESCRIPTION}': coverage_description
         }
     
     def _apply_replacements(self, template: str, replacements: Dict[str, str]) -> str:
@@ -493,6 +543,60 @@ EXPECTED CHARACTERISTICS:
                 lines.append(f"{name}: {color}, {texture}")
         
         return ". ".join(lines) + "."
+    
+    def _build_visual_weight_instructions(
+        self,
+        aging_weight: Optional[float],
+        contamination_weight: Optional[float]
+    ) -> Optional[str]:
+        """
+        Build visual weight adjustment instructions for aging and contamination intensity.
+        
+        Args:
+            aging_weight: Weight for aging on left (before) side. 0.0-2.0, default 1.0
+                         <1.0 = less visible aging, >1.0 = more prominent aging
+            contamination_weight: Weight for contamination on right (after) side. 0.0-2.0, default 1.0
+                                 <1.0 = less visible contamination, >1.0 = more contamination
+                                 
+        Returns:
+            Prompt instruction string, or None if no adjustments needed
+        """
+        instructions = []
+        
+        # Aging weight adjustments (left/before side)
+        if aging_weight is not None:
+            if aging_weight > 1.0:
+                intensity = "very prominent" if aging_weight >= 1.5 else "more visible"
+                instructions.append(
+                    f"LEFT SIDE (before): Show {intensity} aging and wear - "
+                    f"deeper patina, more pronounced weathering, visible wear patterns"
+                )
+            elif aging_weight < 1.0:
+                intensity = "minimal" if aging_weight <= 0.5 else "subtle"
+                instructions.append(
+                    f"LEFT SIDE (before): Show {intensity} aging - "
+                    f"lighter patina, subtle wear, fresher appearance"
+                )
+        
+        # Contamination weight adjustments (right/after side)
+        if contamination_weight is not None:
+            if contamination_weight > 1.0:
+                intensity = "very prominent" if contamination_weight >= 1.5 else "more visible"
+                instructions.append(
+                    f"RIGHT SIDE (after/cleaned): Show {intensity} remaining contamination - "
+                    f"some residue still visible, partial cleaning result"
+                )
+            elif contamination_weight < 1.0:
+                intensity = "minimal" if contamination_weight <= 0.5 else "very little"
+                instructions.append(
+                    f"RIGHT SIDE (after/cleaned): Show {intensity} remaining contamination - "
+                    f"thoroughly cleaned surface, pristine appearance, clear laser cleaning result"
+                )
+        
+        if instructions:
+            return "VISUAL INTENSITY ADJUSTMENTS:\n" + "\n".join(instructions)
+        
+        return None
     
     def check_prompt_length(self, prompt: str) -> Dict:
         """

@@ -496,12 +496,15 @@ class PromptStageValidator:
     TARGET_LENGTH = 3500
     WARNING_THRESHOLD = 3800
     
-    # Contradiction patterns
+    # Contradiction patterns - actual contradictions, not negations
+    # These should only trigger when BOTH positive assertions exist
+    # e.g., "must be thick" AND "must be thin" (contradicting)
+    # NOT: "never thick" or "perfectly clean is unrealistic" (consistent guidance)
     CONTRADICTION_PATTERNS = [
-        (r'\b(thick|heavy|caked)\b.*\b(thin|light|film)\b', 'thickness'),
-        (r'\b(thin|light|film)\b.*\b(thick|heavy|caked)\b', 'thickness'),
-        (r'\b(perfectly clean|spotless)\b.*\b(residual|traces)\b', 'cleanliness'),
-        (r'\b(uniform|even)\b.*\b(varied|uneven)\b', 'distribution'),
+        # Only flag if both assertions are positive commands (must/should/need)
+        (r'\b(must|should)\s+be\s+(thick|heavy|caked)\b.*\b(must|should)\s+be\s+(thin|light)\b', 'thickness'),
+        (r'\b(must|should)\s+be\s+perfectly\s+clean\b.*\b(must|should)\s+show\s+residual\b', 'cleanliness'),
+        (r'\b(must|should)\s+be\s+uniform\b.*\b(must|should)\s+be\s+uneven\b', 'distribution'),
     ]
     
     # Required content patterns

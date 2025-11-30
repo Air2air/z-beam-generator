@@ -85,32 +85,32 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 8.0
+      value: 8
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 0.8
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 505
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
       value: 193
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
-      value: 2.15
+      value: 2.1
       unit: GPa
       min: 0.2
       max: 3500
@@ -118,42 +118,42 @@ materialProperties:
       value: 530
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 10
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.8
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 1673
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.35
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 505
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 100
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 7.2e-07
+      value: '7.2e-07'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 1.2
       unit: J/cm²
@@ -164,10 +164,10 @@ materialProperties:
       context: AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under vacuum conditions
       researched_date: '2025-11-24T19:37:02.335279'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
-      value: 1.85
+      value: 1.9
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -176,10 +176,10 @@ materialProperties:
       context: AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni), room temperature (25°C), 1064 nm Nd:YAG laser, 7 ns pulse duration, atmospheric pressure
       researched_date: '2025-11-24T19:37:09.514965'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalDiffusivity:
-      value: 4.09e-06
+      value: '4.1e-06'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -188,8 +188,8 @@ materialProperties:
       context: AISI 304 stainless steel, annealed condition, room temperature (25°C), standard atmospheric pressure
       researched_date: '2025-11-24T19:37:14.430449'
       needs_validation: true
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     thermalExpansion:
       value: 17.3
       unit: ×10^{-6}/K
@@ -200,10 +200,10 @@ materialProperties:
       context: AISI 304 stainless steel (18-8 composition, annealed), mean linear coefficient from 0-100°C, standard atmospheric pressure
       researched_date: '2025-11-24T19:37:29.090971'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 500.0
+      value: 500
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -213,7 +213,7 @@ materialProperties:
       researched_date: '2025-11-24T19:37:35.320768'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
       value: 16.2
       unit: W/m·K
@@ -224,8 +224,8 @@ materialProperties:
       context: Commercial AISI 304 (18% Cr, 8% Ni, balance Fe, <=0.08% C), annealed condition, 100°C, standard atmospheric pressure
       researched_date: '2025-11-24T19:37:55.900862'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.65
       unit: 1 (dimensionless fraction)
@@ -236,10 +236,10 @@ materialProperties:
       context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), polished surface, 1064 nm wavelength (Nd:YAG laser), room temperature (25°C), normal incidence
       researched_date: '2025-11-24T19:38:02.963472'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
-      value: 0.0133
+      value: 0.01
       unit: Pa
       source: scientific_literature
       source_type: journal_article
@@ -248,10 +248,10 @@ materialProperties:
       context: AISI 304 stainless steel (18Cr-8Ni-Fe balance, commercial purity), 2000 K, calculated under vacuum conditions using assessed thermodynamic data
       researched_date: '2025-11-24T19:38:10.851426'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1425.0
+      value: 1425
       unit: °C
       source: scientific_literature
       source_type: reference_handbook
@@ -260,10 +260,10 @@ materialProperties:
       context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard commercial purity, melting range under inert atmosphere, differential thermal analysis method
       researched_date: '2025-11-24T19:38:19.483623'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 47200000.0
+      value: '4.7e+07'
       unit: m^{-1}
       source: scientific_literature
       source_type: journal_article
@@ -272,10 +272,10 @@ materialProperties:
       context: AISI 304 stainless steel (18Cr-8Ni, commercial purity), wavelength 1064 nm, 25°C, measured on polished surface using ellipsometry
       researched_date: '2025-11-24T19:38:33.823270'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 1390000.0
+      value: '1.4e+06'
       unit: S/m
       source: scientific_literature
       source_type: materials_database
@@ -284,10 +284,10 @@ materialProperties:
       context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, 20°C, measured via four-point probe method
       researched_date: '2025-11-24T19:38:43.288256'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 2750.0
+      value: 2750
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -296,10 +296,10 @@ materialProperties:
       context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard atmospheric pressure, estimated for alloy vaporization
       researched_date: '2025-11-24T19:38:58.093224'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
-      value: 132.0
+      value: 132
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -308,8 +308,8 @@ materialProperties:
       context: Commercial AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, room temperature (25°C), properties measured under standard tensile testing (ASTM E8) and dilatometry (ASTM E228)
       researched_date: '2025-11-24T19:39:11.721702'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.62
       unit: fraction
@@ -321,7 +321,7 @@ materialProperties:
       researched_date: '2025-11-24T19:39:19.514338'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
       value: 0.35
       unit: dimensionless
@@ -332,10 +332,10 @@ materialProperties:
       context: AISI 304 stainless steel (commercial grade, 18% Cr, 8% Ni, polished surface), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), normal incidence
       researched_date: '2025-11-24T19:39:25.909297'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 1425.0
+      value: 1425
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -344,30 +344,12 @@ materialProperties:
       context: Commercial grade AISI 304 stainless steel (18-20% Cr, 8-10.5% Ni, ≤2% Mn, ≤0.08% C, balance Fe), standard atmospheric pressure, melting range determined by differential thermal analysis
       researched_date: '2025-11-24T19:39:36.841435'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 16.2
-      unit: W/m·K
-      min: 14.9
-      max: 21.5
-      source: ai_research
-    thermalDiffusivity:
-      value: 4.05e-06
-      unit: m²/s
-      min: 3.7e-06
-      max: 4.4e-06
-      source: ai_research
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      min: 1.5
-      max: 4.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.939979'
+    generated_date: '2025-11-29T15:19:10.761151'

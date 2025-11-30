@@ -84,10 +84,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 5.323
+      value: 5.3
       unit: g/cm³
-      min: 2.1796
-      max: 5.4664
+      min: 2.2
+      max: 5.5
     porosity:
       value: 0
       unit: '%'
@@ -98,12 +98,12 @@ materialProperties:
       value: 52
       unit: MPa
       min: 30.8
-      max: 255.2
+      max: 255
     youngsModulus:
       value: 103
       unit: GPa
-      min: 81.13
-      max: 149099999995.73
+      min: 81.1
+      max: '1.5e+11'
     hardness:
       value: 1.2
       unit: GPa
@@ -113,42 +113,42 @@ materialProperties:
       value: 130
       unit: MPa
       min: 79.9
-      max: 148.1
+      max: 148
     oxidationResistance:
       value: 8
       unit: μm/year
-      min: 0.0
-      max: 2.3835
+      min: 0
+      max: 2.4
     corrosionResistance:
       value: 0.6
       unit: mm/year
-      min: 0.874
-      max: 157499.954
+      min: 0.87
+      max: 157500
     thermalDestruction:
       value: 1211
       unit: K
-      min: 1502.2
-      max: 1695.8
+      min: 1502
+      max: 1696
     laserAbsorption:
       value: 0.55
       unit: dimensionless
-      min: 19380.0
-      max: 1143480.0
+      min: 19380
+      max: '1.1e+06'
     compressiveStrength:
       value: 52
       unit: MPa
-      min: 133.0
-      max: 7343.0
+      min: 133
+      max: 7343
     fractureToughness:
       value: 6
       unit: MPa m^{1/2}
-      min: 0.5195
-      max: 0.9705
+      min: 0.52
+      max: 0.97
     electricalResistivity:
       value: 0.46
       unit: Ω·m
       min: 11.4
-      max: 1364999.4
+      max: '1.4e+06'
     laserDamageThreshold:
       value: 10.2
       unit: J/cm²
@@ -159,8 +159,8 @@ materialProperties:
       context: Single-crystal Germanium (99.999% purity), room temperature (25°C), 10.6 μm wavelength (CO2 laser), 30 ns pulse duration, normal incidence, uncoated surface
       researched_date: '2025-11-24T12:38:39.787316'
       needs_validation: true
-      min: 0.4675
-      max: 8.8825
+      min: 0.47
+      max: 8.9
     ablationThreshold:
       value: 0.42
       unit: J/cm²
@@ -171,10 +171,10 @@ materialProperties:
       context: Polycrystalline Germanium (99.999% purity), room temperature (25°C), femtosecond Ti:sapphire laser at 800 nm wavelength, 150 fs pulse duration, in air
       researched_date: '2025-11-24T12:38:47.500862'
       needs_validation: true
-      min: 1.16
-      max: 2.04
+      min: 1.2
+      max: 2
     thermalDiffusivity:
-      value: 3.6e-05
+      value: '3.6e-05'
       unit: m²/s
       source: scientific_literature
       source_type: reference_handbook
@@ -183,10 +183,10 @@ materialProperties:
       context: Intrinsic single-crystal Germanium (99.999% purity), 300 K, calculated from thermal conductivity, density, and specific heat capacity
       researched_date: '2025-11-24T12:39:01.938208'
       needs_validation: true
-      min: 2.4e-05
-      max: 9.2e-05
+      min: '2.4e-05'
+      max: '9.2e-05'
     thermalExpansion:
-      value: 5.9e-06
+      value: '5.9e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -195,10 +195,10 @@ materialProperties:
       context: Polycrystalline Germanium (99.999% purity), 25°C, measured via dilatometry
       researched_date: '2025-11-24T12:39:09.983521'
       needs_validation: true
-      min: 2.0e-06
-      max: 6.0e-06
+      min: 2e-06
+      max: 6e-06
     specificHeat:
-      value: 322.0
+      value: 322
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -231,30 +231,12 @@ materialProperties:
       context: Polycrystalline Germanium (99.999% purity), 300 K, normal incidence reflectivity for infrared wavelengths (2-14 μm, typical for CO2 lasers at 10.6 μm)
       researched_date: '2025-11-24T12:39:29.175448'
       needs_validation: true
-      min: 0.297
-      max: 0.363
+      min: 0.3
+      max: 0.36
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 60.2
-      unit: W/m·K
-      min: 58
-      max: 62
-      source: ai_research
-    thermalDiffusivity:
-      value: 3.52e-05
-      unit: m²/s
-      min: 3.4e-05
-      max: 3.6e-05
-      source: ai_research
-    ablationThreshold:
-      value: 2.0
-      unit: J/cm²
-      min: 1.5
-      max: 2.5
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.374621'
+    generated_date: '2025-11-29T15:19:10.484218'

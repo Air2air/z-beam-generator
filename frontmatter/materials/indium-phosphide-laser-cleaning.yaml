@@ -85,10 +85,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 4.81
+      value: 4.8
       unit: g/cm³
-      min: 2.1796
-      max: 5.4664
+      min: 2.2
+      max: 5.5
     porosity:
       value: 0
       unit: '%'
@@ -99,12 +99,12 @@ materialProperties:
       value: 41
       unit: MPa
       min: 30.8
-      max: 255.2
+      max: 255
     youngsModulus:
       value: 61
       unit: GPa
-      min: 81.13
-      max: 149099999995.73
+      min: 81.1
+      max: '1.5e+11'
     hardness:
       value: 0.8
       unit: GPa
@@ -114,42 +114,42 @@ materialProperties:
       value: 95
       unit: MPa
       min: 79.9
-      max: 148.1
+      max: 148
     oxidationResistance:
       value: 5
       unit: μm/year
-      min: 0.0
-      max: 2.3835
+      min: 0
+      max: 2.4
     corrosionResistance:
       value: 0.65
       unit: mm/year
-      min: 0.874
-      max: 157499.954
+      min: 0.87
+      max: 157500
     thermalDestruction:
       value: 1335
       unit: K
-      min: 1502.2
-      max: 1695.8
+      min: 1502
+      max: 1696
     laserAbsorption:
       value: 0.3
       unit: dimensionless
-      min: 19380.0
-      max: 1143480.0
+      min: 19380
+      max: '1.1e+06'
     compressiveStrength:
       value: 41
       unit: MPa
-      min: 133.0
-      max: 7343.0
+      min: 133
+      max: 7343
     fractureToughness:
       value: 4.5
       unit: MPa m^{1/2}
-      min: 0.5195
-      max: 0.9705
+      min: 0.52
+      max: 0.97
     electricalResistivity:
-      value: 10000000.0
+      value: 1e+07
       unit: Ω·m
       min: 11.4
-      max: 1364999.4
+      max: '1.4e+06'
     laserDamageThreshold:
       value: 1.5
       unit: J/cm²
@@ -160,8 +160,8 @@ materialProperties:
       context: Undoped single-crystal InP (purity >99.99%), room temperature (25°C), measured with 8 ns pulses from Nd:YAG laser at 1064 nm wavelength, 1-on-1 damage testing
       researched_date: '2025-11-24T12:40:31.120837'
       needs_validation: true
-      min: 0.4675
-      max: 8.8825
+      min: 0.47
+      max: 8.9
     ablationThreshold:
       value: 0.72
       unit: J/cm²
@@ -172,10 +172,10 @@ materialProperties:
       context: Polycrystalline InP (99.99% purity), room temperature (25°C), femtosecond Ti:sapphire laser at 800 nm wavelength, 500 fs pulse duration, measured in air
       researched_date: '2025-11-24T12:40:39.006291'
       needs_validation: true
-      min: 1.16
-      max: 2.04
+      min: 1.2
+      max: 2
     thermalDiffusivity:
-      value: 4.5e-05
+      value: '4.5e-05'
       unit: m²/s
       source: scientific_literature
       source_type: journal_article
@@ -184,10 +184,10 @@ materialProperties:
       context: Single crystal InP (undoped, 99.999% purity), 300 K, measured under vacuum conditions
       researched_date: '2025-11-24T12:41:02.454313'
       needs_validation: true
-      min: 2.4e-05
-      max: 9.2e-05
+      min: '2.4e-05'
+      max: '9.2e-05'
     thermalExpansion:
-      value: 4.56e-06
+      value: '4.6e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -196,10 +196,10 @@ materialProperties:
       context: Single-crystal Indium Phosphide (InP, 99.99% purity), 300 K, measured along <110> direction via X-ray dilatometry
       researched_date: '2025-11-24T12:41:07.983289'
       needs_validation: true
-      min: 2.0e-06
-      max: 6.0e-06
+      min: 2e-06
+      max: 6e-06
     specificHeat:
-      value: 310.0
+      value: 310
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -211,7 +211,7 @@ materialProperties:
       min: 300
       max: 900
     thermalConductivity:
-      value: 68.0
+      value: 68
       unit: W/m·K
       source: scientific_literature
       source_type: reference_handbook
@@ -232,30 +232,12 @@ materialProperties:
       context: Undoped InP (99.99% purity), 300 K, normal incidence reflectivity at 1.06 μm wavelength (Nd:YAG laser), vacuum conditions
       researched_date: '2025-11-24T12:41:25.596681'
       needs_validation: true
-      min: 0.297
-      max: 0.363
+      min: 0.3
+      max: 0.36
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 68
-      unit: W/m·K
-      min: 60
-      max: 75
-      source: ai_research
-    thermalDiffusivity:
-      value: 4.5e-05
-      unit: m²/s
-      min: 4.0e-05
-      max: 5.0e-05
-      source: ai_research
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      min: 1.5
-      max: 3.5
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.467015'
+    generated_date: '2025-11-29T15:19:10.528779'

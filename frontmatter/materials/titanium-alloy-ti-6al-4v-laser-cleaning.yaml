@@ -85,30 +85,30 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 4.43
+      value: 4.4
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 0.8
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 900
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
-      value: 113.8
+      value: 114
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
       value: 3.5
       unit: GPa
@@ -118,42 +118,42 @@ materialProperties:
       value: 950
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 7
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.85
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 1933
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.45
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 900
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 110
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 1.68e-07
+      value: '1.7e-07'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 2.5
       unit: J/cm²
@@ -164,10 +164,10 @@ materialProperties:
       context: Ti-6Al-4V (annealed, 6% Al, 4% V, balance Ti), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, vacuum environment
       researched_date: '2025-11-24T19:29:58.894091'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
-      value: 1.05
+      value: 1.1
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -176,10 +176,10 @@ materialProperties:
       context: Ti-6Al-4V alloy (standard aerospace grade, 90% Ti, 6% Al, 4% V), room temperature (25°C), nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, atmospheric pressure
       researched_date: '2025-11-24T19:30:06.515703'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalExpansion:
-      value: 8.6e-06
+      value: '8.6e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: materials_database
@@ -188,10 +188,10 @@ materialProperties:
       context: Ti-6Al-4V alloy (6% Al, 4% V, balance Ti), annealed condition, 20-100°C, measured by dilatometry
       researched_date: '2025-11-24T19:30:31.454281'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 523.0
+      value: 523
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -201,7 +201,7 @@ materialProperties:
       researched_date: '2025-11-24T19:30:41.226131'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
       value: 6.7
       unit: W/m·K
@@ -212,8 +212,8 @@ materialProperties:
       context: Ti-6Al-4V alloy (6% Al, 4% V balance Ti), annealed condition, 20°C, steady-state method
       researched_date: '2025-11-24T19:30:46.109604'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.65
       unit: dimensionless (fraction)
@@ -224,8 +224,8 @@ materialProperties:
       context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), 1064 nm wavelength (Nd:YAG laser), room temperature (25°C), normal incidence, polished surface finish
       researched_date: '2025-11-24T19:30:54.470449'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
       value: 3.8
       unit: Pa
@@ -236,10 +236,10 @@ materialProperties:
       context: Ti-6Al-4V alloy (90Ti-6Al-4V wt%, commercial purity >99%), 2000°C (2273 K), equilibrium total vapor pressure
       researched_date: '2025-11-24T19:31:43.785364'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1660.0
+      value: 1660
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -248,10 +248,10 @@ materialProperties:
       context: Standard Ti-6Al-4V alloy (5.5-6.75% Al, 3.5-4.5% V, balance Ti, max 0.4% O, 0.25% Fe), vacuum arc remelted, per AMS 4928 specification, measured under standard atmospheric conditions
       researched_date: '2025-11-24T19:31:58.543905'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 50000000.0
+      value: 5e+07
       unit: m^{-1}
       source: scientific_literature
       source_type: journal_article
@@ -260,10 +260,10 @@ materialProperties:
       context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), measured via spectroscopic ellipsometry on polished samples
       researched_date: '2025-11-24T19:32:08.704830'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 581000.0
+      value: 581000
       unit: S/m
       source: scientific_literature
       source_type: textbook
@@ -272,10 +272,10 @@ materialProperties:
       context: Annealed Ti-6Al-4V (6% Al, 4% V, balance Ti), 20°C, four-point probe DC measurement
       researched_date: '2025-11-24T19:32:30.595133'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 3588.0
+      value: 3588
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -284,10 +284,10 @@ materialProperties:
       context: Ti-6Al-4V alloy (6% Al, 4% V, balance Ti; ASTM Grade 5), standard atmospheric pressure, extrapolated from pure Ti adjusted for alloy composition
       researched_date: '2025-11-24T19:32:39.404655'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
-      value: 637.0
+      value: 637
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -296,8 +296,8 @@ materialProperties:
       context: Annealed Ti-6Al-4V (90% Ti, 6% Al, 4% V, balance trace elements), room temperature (20-25°C), calculated under quasi-static conditions assuming linear elastic behavior
       researched_date: '2025-11-24T19:32:53.113972'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.4
       unit: fraction
@@ -309,7 +309,7 @@ materialProperties:
       researched_date: '2025-11-24T19:33:15.482679'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
       value: 0.36
       unit: dimensionless
@@ -320,10 +320,10 @@ materialProperties:
       context: Ti-6Al-4V (grade 5, 90% Ti, 6% Al, 4% V), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), polished surface, measured in air
       researched_date: '2025-11-24T19:33:21.399545'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 1632.0
+      value: 1632
       unit: °C
       source: scientific_literature
       source_type: reference_handbook
@@ -332,12 +332,12 @@ materialProperties:
       context: Nominal composition Ti-6 wt% Al-4 wt% V (balance Ti), annealed condition, standard atmospheric pressure, determined for wrought or cast forms
       researched_date: '2025-11-24T19:33:45.444061'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
     thermalDiffusivity:
-      value: 0.289
+      value: 0.29
       unit: ×10^{-5} m²/s
       min: 0.06
       max: 174
@@ -346,20 +346,8 @@ materialProperties:
       calculation: thermalConductivity / (density * specificHeat)
       context: Calculated from measured thermal conductivity (6.7 W/(m·K)), density (4.43 g/cm³), and specific heat (523 J/(kg·K)) for annealed Ti-6Al-4V at 20°C
       researched_date: '2025-11-24T21:15:00Z'
-    thermalConductivity:
-      value: 6.7
-      unit: W/m·K
-      min: 6.0
-      max: 7.5
-      source: ai_research
-    ablationThreshold:
-      value: 1.0
-      unit: J/cm²
-      min: 0.5
-      max: 2.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.821464'
+    generated_date: '2025-11-29T15:19:10.700942'

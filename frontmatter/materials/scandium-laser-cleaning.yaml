@@ -85,30 +85,30 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 2.989
+      value: 3
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 0.4
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 240
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
       value: 74.4
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
       value: 1.8
       unit: GPa
@@ -118,42 +118,42 @@ materialProperties:
       value: 350
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 8
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.75
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 1814
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.22
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 240
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 15
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 5.62e-07
+      value: '5.6e-07'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 0.85
       unit: J/cm²
@@ -164,10 +164,10 @@ materialProperties:
       context: Pure Scandium (99.99% purity), 20°C, nanosecond pulsed laser at 1064 nm wavelength, measured under vacuum conditions
       researched_date: '2025-11-24T16:21:06.301548'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
-      value: 1.85
+      value: 1.9
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -176,10 +176,10 @@ materialProperties:
       context: Pure scandium (99.99% purity), 300 K, nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, vacuum environment
       researched_date: '2025-11-24T16:21:17.161719'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalDiffusivity:
-      value: 9.33e-06
+      value: '9.3e-06'
       unit: m²/s
       source: scientific_literature
       source_type: reference_handbook
@@ -188,10 +188,10 @@ materialProperties:
       context: Pure Scandium (elemental, 99.99% purity), 25°C, calculated under standard conditions
       researched_date: '2025-11-24T16:21:38.860822'
       needs_validation: true
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     thermalExpansion:
-      value: 1.03e-05
+      value: 1e-05
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -200,10 +200,10 @@ materialProperties:
       context: Pure scandium (99.99% purity), 25°C to 100°C range, polycrystalline sample, measured via dilatometry
       researched_date: '2025-11-24T16:34:32.430975'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 569.0
+      value: 569
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -213,9 +213,9 @@ materialProperties:
       researched_date: '2025-11-24T16:34:39.469170'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
-      value: 16.0
+      value: 16
       unit: W/m·K
       source: scientific_literature
       source_type: reference_handbook
@@ -224,8 +224,8 @@ materialProperties:
       context: Pure Scandium (99.9% purity), 300 K, steady-state method
       researched_date: '2025-11-24T16:34:45.804418'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.72
       unit: ''
@@ -236,10 +236,10 @@ materialProperties:
       context: Pure scandium (99.9% purity), 25°C, normal incidence reflectivity at 1064 nm wavelength using Nd:YAG laser equivalent, measured on evaporated thin films
       researched_date: '2025-11-24T16:34:58.931402'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
-      value: 0.0544
+      value: 0.05
       unit: Pa
       source: scientific_literature
       source_type: journal_article
@@ -248,10 +248,10 @@ materialProperties:
       context: High purity Scandium metal (>99.9%), 2000 K (liquid phase), measured via Knudsen effusion mass spectrometry
       researched_date: '2025-11-24T19:27:23.945963'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1814.0
+      value: 1814
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -260,10 +260,10 @@ materialProperties:
       context: Pure scandium (99.9% purity), standard atmospheric pressure, measured via differential scanning calorimetry (DSC)
       researched_date: '2025-11-24T19:27:28.949075'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 50200000.0
+      value: 5e+07
       unit: m^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -272,10 +272,10 @@ materialProperties:
       context: Pure Scandium (99.9% purity evaporated films), 25°C, measured via ellipsometry and reflectance spectroscopy at 1064 nm wavelength
       researched_date: '2025-11-24T19:27:40.970797'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 1640000.0
+      value: '1.6e+06'
       unit: S/m
       source: scientific_literature
       source_type: reference_handbook
@@ -284,10 +284,10 @@ materialProperties:
       context: Pure scandium (99.99% purity), 20°C, four-point probe method
       researched_date: '2025-11-24T19:27:49.448057'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 3109.0
+      value: 3109
       unit: K
       source: scientific_literature
       source_type: reference_handbook
@@ -296,8 +296,8 @@ materialProperties:
       context: Pure Scandium (99.99% purity), standard atmospheric pressure (1 atm), extrapolated from vapor pressure measurements
       researched_date: '2025-11-24T19:27:55.886698'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
       value: 92.5
       unit: K
@@ -308,8 +308,8 @@ materialProperties:
       context: Pure scandium (99.9% purity), room temperature (25°C), calculated via thermal shock parameter R = σ(1-ν)/(E α) using standard mechanical properties
       researched_date: '2025-11-24T19:28:04.713695'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.88
       unit: ''
@@ -321,7 +321,7 @@ materialProperties:
       researched_date: '2025-11-24T19:28:15.013598'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
       value: 0.45
       unit: ''
@@ -332,10 +332,10 @@ materialProperties:
       context: Evaporated scandium films (99.9% purity), room temperature (25°C), normal incidence at wavelength 546 nm (visible spectrum, relevant for laser cleaning diagnostics), opaque sample assumption
       researched_date: '2025-11-24T19:28:29.326620'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 1814.0
+      value: 1814
       unit: K
       source: scientific_literature
       source_type: reference_handbook
@@ -344,30 +344,12 @@ materialProperties:
       context: Pure Scandium (99.99% purity), standard atmospheric pressure, measured via differential scanning calorimetry (DSC)
       researched_date: '2025-11-24T19:28:35.580166'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 15.8
-      unit: W/m·K
-      min: 15
-      max: 17
-      source: ai_research
-    thermalDiffusivity:
-      value: 9.3e-06
-      unit: m²/s
-      min: 9.0e-06
-      max: 9.6e-06
-      source: ai_research
-    ablationThreshold:
-      value: 1.8
-      unit: J/cm²
-      min: 1.5
-      max: 2.2
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.716306'
+    generated_date: '2025-11-29T15:19:10.647280'

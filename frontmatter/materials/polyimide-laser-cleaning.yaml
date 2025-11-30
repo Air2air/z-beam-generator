@@ -84,15 +84,15 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 1.42
+      value: 1.4
       unit: g/cm³
-      min: 0.84275
-      max: 2.21225
+      min: 0.84
+      max: 2.2
     porosity:
       value: 0
       unit: '%'
     surfaceRoughness:
-      value: 1.0
+      value: 1
       unit: μm
     tensileStrength:
       value: 231
@@ -107,33 +107,33 @@ materialProperties:
     hardness:
       value: 0.35
       unit: GPa
-      min: 51.75
-      max: 123.25
+      min: 51.8
+      max: 123
     flexuralStrength:
       value: 250
       unit: MPa
-      min: 20.655
-      max: 96.445
+      min: 20.7
+      max: 96.4
     oxidationResistance:
       value: 3
       unit: μm/year
       min: 0.76
-      max: 1574.96
+      max: 1575
     corrosionResistance:
       value: 0.88
       unit: mm/year
-      min: 0.0
-      max: 105.0
+      min: 0
+      max: 105
     thermalDestruction:
       value: 673
       unit: K
-      min: 227.85
-      max: 715.15
+      min: 228
+      max: 715
     laserAbsorption:
       value: 0.65
       unit: dimensionless
-      min: 0.285
-      max: 125999.985
+      min: 0.28
+      max: 126000
     compressiveStrength:
       value: 231
       unit: MPa
@@ -145,12 +145,12 @@ materialProperties:
       min: 0.7
       max: 2.9
     electricalResistivity:
-      value: 1000000000000000.0
+      value: 1e+15
       unit: Ω·m
-      min: 9500000000000.0
-      max: 1.049995e+17
+      min: '9.5e+12'
+      max: 1e+17
     laserDamageThreshold:
-      value: 1.25
+      value: 1.2
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -159,8 +159,8 @@ materialProperties:
       context: Kapton-HN polyimide film (DuPont, 25 µm thickness, 99% purity), 25°C, 248 nm KrF excimer laser, 20 ns pulse duration, normal incidence
       researched_date: '2025-11-24T19:44:20.196446'
       needs_validation: true
-      min: 0.715
-      max: 2.585
+      min: 0.71
+      max: 2.6
     ablationThreshold:
       value: 0.58
       unit: J/cm²
@@ -172,9 +172,9 @@ materialProperties:
       researched_date: '2025-11-24T19:44:31.767151'
       needs_validation: true
       min: 0.39
-      max: 2.81
+      max: 2.8
     thermalDiffusivity:
-      value: 7.8e-08
+      value: '7.8e-08'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -183,10 +183,10 @@ materialProperties:
       context: Kapton HN polyimide film (commercial grade, aromatic polyimide), 23°C, measured via laser flash method
       researched_date: '2025-11-24T19:44:36.580590'
       needs_validation: true
-      min: 0.0
-      max: 0.0
+      min: 0
+      max: 0
     thermalExpansion:
-      value: 20.0
+      value: 20
       unit: 10^{-6}/K
       source: scientific_literature
       source_type: materials_database
@@ -195,10 +195,10 @@ materialProperties:
       context: Kapton HN polyimide film (PMDA-ODA, commercial grade, 25 µm thickness), room temperature (25°C) to 200°C, in-plane measurement, dry conditions
       researched_date: '2025-11-24T19:44:44.984479'
       needs_validation: true
-      min: 5.9e-05
-      max: 0.000196
+      min: '5.9e-05'
+      max: '0.0002'
     specificHeat:
-      value: 1090.0
+      value: 1090
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -207,7 +207,7 @@ materialProperties:
       context: Commercial Kapton HN polyimide film (PMDA-ODA, ~99% purity), 25°C, measured via differential scanning calorimetry (DSC)
       researched_date: '2025-11-24T19:44:50.510616'
       needs_validation: true
-      min: 1.0
+      min: 1
       max: 2500
     thermalConductivity:
       value: 0.12
@@ -222,7 +222,7 @@ materialProperties:
       min: 0.02
       max: 3
     laserReflectivity:
-      value: 0.065
+      value: 0.07
       unit: ''
       source: scientific_literature
       source_type: journal_article
@@ -231,30 +231,12 @@ materialProperties:
       context: Kapton-type polyimide (99% purity), 25°C, normal incidence, 633 nm HeNe laser wavelength, vacuum-deposited thin film
       researched_date: '2025-11-24T19:45:02.718968'
       needs_validation: true
-      min: 0.02155
-      max: 0.05345
+      min: 0.02
+      max: 0.05
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      min: 0.1
-      max: 0.3
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.2e-07
-      unit: m²/s
-      min: 1.0e-07
-      max: 2.0e-07
-      source: ai_research
-    ablationThreshold:
-      value: 1.5
-      unit: J/cm²
-      min: 0.5
-      max: 3.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.163067'
+    generated_date: '2025-11-29T15:19:10.866587'

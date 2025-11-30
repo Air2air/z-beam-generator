@@ -52,6 +52,41 @@ class ContaminationPatternSelector:
         'composite': ['uv-chalking', 'environmental-dust', 'industrial-oil', 'chemical-stains', 'mold-mildew'],
     }
     
+    # Context-specific pattern priorities (overrides CATEGORY_PRIORITIES)
+    CONTEXT_PRIORITIES = {
+        'indoor': {
+            'wood': ['environmental-dust', 'fingerprints', 'wax-buildup', 'adhesive-residue', 'food-residue'],
+            'metal': ['fingerprints', 'environmental-dust', 'adhesive-residue', 'food-residue', 'grease-buildup'],
+            'glass': ['fingerprints', 'environmental-dust', 'adhesive-residue', 'hard-water-deposits'],
+            'polymer': ['environmental-dust', 'fingerprints', 'adhesive-residue', 'chemical-stains'],
+            'ceramic': ['environmental-dust', 'hard-water-deposits', 'soap-scum', 'food-residue'],
+            'stone': ['environmental-dust', 'food-residue', 'hard-water-deposits', 'chemical-stains'],
+        },
+        'outdoor': {
+            'wood': ['natural-weathering', 'mold-mildew', 'algae-growth', 'uv-chalking', 'bird-droppings'],
+            'metal': ['rust-oxidation', 'natural-weathering', 'environmental-dust', 'bird-droppings', 'algae-growth'],
+            'glass': ['environmental-dust', 'hard-water-deposits', 'bird-droppings', 'algae-growth'],
+            'polymer': ['uv-chalking', 'natural-weathering', 'environmental-dust', 'algae-growth', 'bird-droppings'],
+            'ceramic': ['natural-weathering', 'algae-growth', 'mold-mildew', 'efflorescence', 'bird-droppings'],
+            'stone': ['natural-weathering', 'algae-growth', 'mold-mildew', 'efflorescence', 'lichen-growth'],
+        },
+        'industrial': {
+            'metal': ['industrial-oil', 'rust-oxidation', 'welding-spatter', 'scale-buildup', 'grease-buildup'],
+            'wood': ['industrial-oil', 'environmental-dust', 'chemical-stains', 'paint-residue', 'adhesive-residue'],
+            'polymer': ['industrial-oil', 'chemical-stains', 'grease-buildup', 'adhesive-residue', 'paint-residue'],
+            'glass': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'paint-residue'],
+            'ceramic': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'scale-buildup'],
+            'composite': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'adhesive-residue'],
+        },
+        'marine': {
+            'metal': ['rust-oxidation', 'salt-deposits', 'natural-weathering', 'algae-growth', 'barnacles'],
+            'wood': ['natural-weathering', 'salt-deposits', 'mold-mildew', 'algae-growth', 'wood-rot'],
+            'polymer': ['salt-deposits', 'uv-chalking', 'natural-weathering', 'algae-growth', 'barnacles'],
+            'glass': ['salt-deposits', 'hard-water-deposits', 'algae-growth', 'environmental-dust'],
+            'composite': ['salt-deposits', 'uv-chalking', 'natural-weathering', 'algae-growth'],
+        },
+    }
+    
     # Material to category mapping (simplified)
     MATERIAL_CATEGORIES = {
         # Metals
@@ -66,7 +101,9 @@ class ContaminationPatternSelector:
         'oak': 'wood', 'pine': 'wood', 'cedar': 'wood', 'maple': 'wood',
         'walnut': 'wood', 'cherry': 'wood', 'mahogany': 'wood', 'teak': 'wood',
         'birch': 'wood', 'ash': 'wood', 'beech': 'wood', 'plywood': 'wood',
-        'mdf': 'wood', 'bamboo': 'wood',
+        'mdf': 'wood', 'bamboo': 'wood', 'hickory': 'wood', 'fir': 'wood',
+        'ebony': 'wood', 'poplar': 'wood', 'redwood': 'wood', 'rosewood': 'wood',
+        'willow': 'wood',
         # Polymers
         'abs': 'polymer', 'pvc': 'polymer', 'acrylic': 'polymer',
         'polycarbonate': 'polymer', 'polyethylene': 'polymer', 'polypropylene': 'polymer',
@@ -120,7 +157,7 @@ class ContaminationPatternSelector:
         # Fuzzy matching
         if any(m in material_lower for m in ['steel', 'iron', 'metal']):
             return 'metal'
-        if any(m in material_lower for m in ['wood', 'oak', 'pine', 'cedar', 'maple']):
+        if any(m in material_lower for m in ['wood', 'oak', 'pine', 'cedar', 'maple', 'hickory', 'walnut']):
             return 'wood'
         if any(m in material_lower for m in ['plastic', 'polymer', 'vinyl', 'acrylic']):
             return 'polymer'
@@ -132,6 +169,18 @@ class ContaminationPatternSelector:
             return 'stone'
         if any(m in material_lower for m in ['fiber', 'composite']):
             return 'composite'
+        
+        # Fall back to Materials.yaml lookup
+        try:
+            materials_file = PROJECT_ROOT / 'data' / 'materials' / 'Materials.yaml'
+            if materials_file.exists():
+                with open(materials_file, 'r', encoding='utf-8') as f:
+                    materials_data = yaml.safe_load(f)
+                materials = materials_data.get('materials', {})
+                if material_name in materials:
+                    return materials[material_name].get('category', 'metal')
+        except Exception:
+            pass
         
         return 'metal'  # Default fallback
     
@@ -160,24 +209,58 @@ class ContaminationPatternSelector:
         
         return valid_pattern_ids
     
+    def _get_category_fallback_patterns(self, category: str, patterns: Dict) -> List[str]:
+        """
+        Get patterns valid for any material in the same category.
+        
+        Used as fallback when a material has no direct patterns defined.
+        For example, Hickory might use patterns defined for Oak (both wood).
+        """
+        # Map categories to representative materials that likely have patterns
+        category_representatives = {
+            'wood': ['Oak', 'Pine', 'Cedar', 'Maple', 'Walnut'],
+            'metal': ['Steel', 'Aluminum', 'Iron', 'Copper'],
+            'polymer': ['PVC', 'ABS', 'Acrylic', 'Nylon'],
+            'glass': ['Glass'],
+            'ceramic': ['Ceramic', 'Porcelain'],
+            'stone': ['Granite', 'Marble', 'Limestone'],
+            'composite': ['Carbon Fiber', 'Fiberglass'],
+        }
+        
+        representatives = category_representatives.get(category, [])
+        fallback_ids = set()
+        
+        for pattern_id, pattern in patterns.items():
+            valid_materials = pattern.get('valid_materials', [])
+            # Check if any representative material is in valid_materials
+            for rep in representatives:
+                if any(rep.lower() == vm.lower() for vm in valid_materials):
+                    fallback_ids.add(pattern_id)
+                    break
+        
+        return list(fallback_ids)
+    
     def select_patterns(
         self,
         material_name: str,
         num_patterns: int = 3,
-        prefer_with_appearance: bool = True
+        prefer_with_appearance: bool = True,
+        context: str = "outdoor"
     ) -> List[Dict[str, Any]]:
         """
         Select contamination patterns for a material.
         
         Selection priority:
-        1. Patterns with material-specific appearance data
-        2. Category-prioritized patterns (most visually interesting)
-        3. Any valid patterns
+        1. Context-appropriate patterns (indoor vs outdoor vs industrial)
+        2. Patterns with material-specific appearance data
+        3. Category-prioritized patterns (most visually interesting)
+        4. Any valid patterns
         
         Args:
             material_name: Material name
             num_patterns: Number of patterns to select (default: 3)
             prefer_with_appearance: Prioritize patterns with appearance_on_materials data
+            context: Environment context (indoor/outdoor/industrial/marine/architectural)
             
         Returns:
             List of pattern data dictionaries ready for image generation
@@ -187,13 +270,29 @@ class ContaminationPatternSelector:
         
         # Get valid patterns for this material
         valid_ids = self.get_valid_patterns_for_material(material_name)
-        if not valid_ids:
-            logger.warning(f"No valid contamination patterns found for {material_name}")
-            return []
         
         # Get material category for prioritization
         category = self.get_material_category(material_name)
-        priority_patterns = self.CATEGORY_PRIORITIES.get(category, [])
+        
+        # FALLBACK: If no direct patterns, use patterns from same category
+        if not valid_ids:
+            logger.warning(f"No direct contamination patterns for {material_name}, using {category} fallback")
+            valid_ids = self._get_category_fallback_patterns(category, patterns)
+            if not valid_ids:
+                logger.warning(f"No contamination patterns found for {material_name} or {category} category")
+                return []
+        
+        # Use context-specific priorities if available, otherwise fall back to category defaults
+        context_priorities = self.CONTEXT_PRIORITIES.get(context, {})
+        priority_patterns = context_priorities.get(category, self.CATEGORY_PRIORITIES.get(category, []))
+        
+        # Load context weights from YAML (stored in data for learning)
+        context_settings = data.get('context_settings', {})
+        ctx_config = context_settings.get(context, {})
+        weights = {
+            'aging_weight': ctx_config.get('aging_weight', 1.0),
+            'contamination_weight': ctx_config.get('contamination_weight', 1.0)
+        }
         
         # Score patterns for selection
         scored_patterns = []
@@ -207,10 +306,17 @@ class ContaminationPatternSelector:
                 if appearance and 'color_variations' in appearance:
                     score += 100  # Strong preference for rich data
             
-            # Bonus for being in category priorities
+            # Bonus for being in context/category priorities
             if pattern_id in priority_patterns:
                 priority_rank = len(priority_patterns) - priority_patterns.index(pattern_id)
                 score += priority_rank * 10
+            
+            # Apply context-based weighting for aging vs contamination
+            pattern_category = pattern.get('category', 'contamination')
+            if pattern_category == 'aging':
+                score *= weights['aging_weight']
+            else:
+                score *= weights['contamination_weight']
             
             scored_patterns.append((score, pattern_id, pattern))
         
@@ -218,11 +324,12 @@ class ContaminationPatternSelector:
         scored_patterns.sort(reverse=True, key=lambda x: x[0])
         selected = scored_patterns[:num_patterns]
         
-        # Build result dictionaries
+        # Build result dictionaries with relevance scores
         results = []
         for score, pattern_id, pattern in selected:
             result = self._build_pattern_result(pattern_id, pattern, material_name)
             if result:
+                result['relevance_score'] = score  # Add score for learning
                 results.append(result)
         
         logger.info(f"📋 Selected {len(results)} patterns for {material_name}: {[r['pattern_id'] for r in results]}")
@@ -347,7 +454,8 @@ class ContaminationPatternSelector:
     def get_patterns_for_image_gen(
         self,
         material_name: str,
-        num_patterns: int = 3
+        num_patterns: int = 3,
+        context: str = "outdoor"
     ) -> Dict[str, Any]:
         """
         Get complete contamination data for image generation.
@@ -357,25 +465,43 @@ class ContaminationPatternSelector:
         Args:
             material_name: Material name
             num_patterns: Number of patterns to include
+            context: Environment context (indoor/outdoor/industrial/marine/architectural)
             
         Returns:
             Dictionary with:
             - material: Material name
             - category: Material category
+            - context: Environment context
             - selected_patterns: List of pattern data
             - base_appearance: Base material appearance notes
         """
-        patterns = self.select_patterns(material_name, num_patterns)
+        patterns = self.select_patterns(material_name, num_patterns, context=context)
         category = self.get_material_category(material_name)
+        
+        # Load context settings from YAML (background, severity defaults)
+        data = self._load_data()
+        context_settings = data.get('context_settings', {})
+        ctx_config = context_settings.get(context, {})
         
         # Count patterns with rich data
         rich_count = sum(1 for p in patterns if p.get('has_rich_appearance_data'))
         
-        logger.info(f"📊 {material_name}: {len(patterns)} patterns selected, {rich_count} with rich appearance data")
+        # Log context-aware selection
+        aging_patterns = [p for p in patterns if p.get('pattern_id') == 'natural-weathering']
+        logger.info(f"📊 {material_name} ({context}): {len(patterns)} patterns selected, {rich_count} with rich data, {len(aging_patterns)} aging patterns")
         
         return {
             'material': material_name,
             'category': category,
+            'context': context,
+            'context_background': ctx_config.get('background', 'neutral environment'),
+            'default_severity': ctx_config.get('default_severity', 'moderate'),
+            'context_settings': {
+                'aging_weight': ctx_config.get('aging_weight', 1.0),
+                'contamination_weight': ctx_config.get('contamination_weight', 1.0),
+                'background': ctx_config.get('background', 'neutral environment'),
+                'default_severity': ctx_config.get('default_severity', 'moderate')
+            },
             'selected_patterns': patterns,
             'base_appearance': None,  # Could be populated from Materials.yaml if needed
             'data_source': 'Contaminants.yaml',  # For transparency
@@ -397,7 +523,8 @@ def get_selector() -> ContaminationPatternSelector:
 
 def select_contamination_patterns(
     material_name: str,
-    num_patterns: int = 3
+    num_patterns: int = 3,
+    context: str = "outdoor"
 ) -> Dict[str, Any]:
     """
     Convenience function to select contamination patterns for image generation.
@@ -405,8 +532,9 @@ def select_contamination_patterns(
     Args:
         material_name: Material name
         num_patterns: Number of patterns
+        context: Environment context (indoor/outdoor/industrial/marine/architectural)
         
     Returns:
         Dictionary ready for image generation pipeline
     """
-    return get_selector().get_patterns_for_image_gen(material_name, num_patterns)
+    return get_selector().get_patterns_for_image_gen(material_name, num_patterns, context=context)

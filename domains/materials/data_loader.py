@@ -410,9 +410,12 @@ def get_category_ranges() -> Dict[str, Any]:
 
 def get_parameter_ranges() -> Dict[str, Any]:
     """
-    Get machine settings parameter ranges from Settings.yaml
+    Get machine settings parameter ranges from Categories.yaml
     
-    Returns min/max ranges and category-specific optimization for laser parameters.
+    Returns min/max ranges for all laser parameters (global ranges).
+    These are used to enrich Settings frontmatter with min/max fields.
+    
+    Source: data/materials/Categories.yaml -> machineSettingsRanges
     
     Returns:
         Dict mapping parameter names to range metadata:
@@ -421,34 +424,30 @@ def get_parameter_ranges() -> Dict[str, Any]:
                 "min": 1.0,
                 "max": 120,
                 "unit": "W",
-                "description": "Laser output power range...",
-                "selection_criteria": "Material thermal conductivity...",
-                "scaling_factors": [...]
+                "description": "Laser power range..."
             },
             "wavelength": {
                 "min": 355,
                 "max": 10640,
                 "unit": "nm",
-                "category_specific_ranges": {
-                    "metal": {"min": 355, "max": 10640, "optimal": 1064},
-                    ...
-                }
+                "description": "Laser wavelength range..."
             },
             ...
         }
     
     Raises:
-        MaterialDataError: If Settings.yaml cannot be loaded
+        MaterialDataError: If Categories.yaml cannot be loaded
     """
-    if not SETTINGS_FILE.exists():
-        raise MaterialDataError("Settings.yaml not found")
+    categories_file = DATA_DIR / "Categories.yaml"
+    if not categories_file.exists():
+        raise MaterialDataError(f"Categories.yaml not found at {categories_file}")
     
     try:
-        with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
+        with open(categories_file, 'r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
-            return data.get('parameterRanges', {})
+        return data.get('machineSettingsRanges', {})
     except Exception as e:
-        raise MaterialDataError(f"Failed to load parameterRanges: {e}")
+        raise MaterialDataError(f"Failed to load machineSettingsRanges: {e}")
 
 
 def get_parameter_descriptions() -> Dict[str, Any]:
@@ -473,13 +472,11 @@ def get_parameter_descriptions() -> Dict[str, Any]:
     Raises:
         MaterialDataError: If Settings.yaml cannot be loaded
     """
-    if not SETTINGS_FILE.exists():
-        raise MaterialDataError("Settings.yaml not found")
-    
+    # Delegate to settings domain (Nov 26, 2025 migration)
+    from domains.settings.data_loader import load_settings_yaml
     try:
-        with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-            return data.get('parameterDescriptions', {})
+        data = load_settings_yaml()
+        return data.get('parameterDescriptions', {})
     except Exception as e:
         raise MaterialDataError(f"Failed to load parameterDescriptions: {e}")
 

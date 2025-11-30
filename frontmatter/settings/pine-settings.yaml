@@ -60,30 +60,48 @@ machineSettings:
   powerRange:
     unit: W
     value: 90
+    min: 1
+    max: 120
   wavelength:
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   repetitionRate:
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   energyDensity:
     unit: J/cm²
     value: 1.8
+    min: 0.1
+    max: 20
   pulseWidth:
     unit: ns
     value: 12
+    min: 0.1
+    max: 1000
   scanSpeed:
     unit: mm/s
     value: 800
+    min: 10
+    max: 5000
   passCount:
     unit: passes
     value: 2
+    min: 1
+    max: 10
   overlapRatio:
     unit: '%'
     value: 30
+    min: 10
+    max: 90
   dwellTime:
     unit: μs
     value: 120
@@ -134,4 +152,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:30.920346'
+    generated_date: '2025-11-29T15:19:08.160444'

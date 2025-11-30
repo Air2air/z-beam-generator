@@ -1,29 +1,30 @@
-# Critical Quality Corrections (Auto-applied to generation)
+# Core Quality Rules (condensed ~1000 chars)
 
-## Object Shape - CRITICAL
-Object MUST be the exact shape specified (ingot, sheet, wire, etc.). Do NOT substitute with crystals, random forms, or generic objects. The specified shape is mandatory and non-negotiable.
+## ABSOLUTE CRITICAL - BEFORE/AFTER CONTRAST
+- LEFT (BEFORE): Must look DIRTY, STAINED, CONTAMINATED - visually obvious contamination
+- RIGHT (AFTER): Must look CLEAN, RESTORED, PRISTINE - dramatic improvement visible
+- NEVER make left and right look similar - they MUST be visually DIFFERENT
+- LEFT must be MUCH DARKER than RIGHT - dramatic tonal difference required
+- Viewer should INSTANTLY recognize: "dirty on left, clean on right"
+- If both sides look the same brightness/color = WRONG
 
-## Object Realism - CRITICAL
-BEFORE/AFTER must show SAME REAL OBJECT, not composite. Use authentic industrial/commercial objects (panels, tools, parts, furniture). Maintain EXACT object continuity - same item, same viewing distance, only contamination differs (horizontal rotation shows different face).
+## CRITICAL - OBJECT ACCURACY
+- Object: Use EXACT specified shape from --shape parameter
+- "stairway railing" = handrail with balusters/spindles going UP STAIRS
+- "deck boards" = horizontal planks, NOT a railing
+- NO substituting different objects - must match user's specification exactly
+- Rotation: RIGHT side rotated 10-20° horizontally from LEFT (different face visible).
+- No Text: NO labels, words, watermarks anywhere.
+- Same Object: BEFORE/AFTER show identical object, only contamination differs.
 
-## Horizontal Rotation Between Sides - CRITICAL (MOST IMPORTANT)
-The RIGHT side MUST be rotated 10-20 degrees HORIZONTALLY (left-right rotation) from the LEFT side. This is rotation around the vertical axis ONLY - do NOT tilt up or down. You MUST see a different face/angle of the object on the right. Left shows one angle, right shows a DIFFERENT horizontal angle of the SAME object. This horizontal rotation is MANDATORY - identical angles are UNACCEPTABLE.
+## HIGH PRIORITY
+- Background: Match setting (workshop bench for tools, building exterior for architectural).
+- Contamination Texture: THIN surface films, stains, dust ONLY - NEVER thick, chunky, caked, or painted-on deposits.
+- NO 3D buildup - contamination is ALWAYS flat against surface, absorbed INTO material, not sitting ON TOP.
+- NO oily or greasy-looking contamination - NEVER wet-looking, shiny slicks, or glossy residue that looks like oil/grease.
+- NO surface dirt or dust - NEVER powdery deposits, loose particles, or dusty/dirty film sitting on surface.
+- Contamination Coverage: CONSISTENT coverage across surface - NOT splotchy, random patches, or polka-dot patterns.
+- Real contamination spreads evenly with gradual gradients, not isolated spots scattered randomly.
+- After Residual: 90-95% clean with 5-10% traces in crevices/pores.
 
-## Background/Setting - HIGH
-Background MUST match the setting context. For workshop items: workshop bench, workbench, or industrial work surface. For architectural/structural items: show in installed location (building exterior, construction site, etc.). NO studio backdrops, NO white backgrounds, NO abstract settings. Setting must be realistic and appropriate for the object type.
-
-## Contamination Matching - HIGH
-Match contaminants to material category. Wood: dust, mold, water stains, UV damage. Metals: rust/oxidation, industrial oils, metal particles. NO generic dirt, NO grass on indoor materials. Research-based patterns ONLY.
-
-## Rust Visibility - HIGH
-Rust BEFORE: VISIBLE accumulation (orange-brown oxidation, texture changes, 40-80% coverage in affected areas). AFTER: mostly clean base metal with subtle residual traces. Contrast must be dramatic but realistic.
-
-## Contamination Thickness - HIGH
-Contamination layers must NEVER appear thick, painted-on, or caked. Keep contamination as thin films, light dustings, surface oxidation, or patina. Realistic contamination is subtle and adheres closely to the surface topology - NOT heavy buildup or glob-like deposits.
-
-## After Side Residual - HIGH  
-The AFTER (cleaned) side must show SLIGHT residual contamination - traces in crevices, faint discoloration in pores, subtle remnants at edges. 100% perfectly clean is unrealistic. Show 90-95% clean with 5-10% residual traces for authenticity.
-
-## No Text/Labels - CRITICAL
-Absolutely NO text, labels, words, "before", "after", watermarks, or any written characters anywhere in the image.
 

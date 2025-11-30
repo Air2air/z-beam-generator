@@ -60,9 +60,7 @@ images:
   micro:
     alt: Aluminum Bronze surface at 500x magnification showing laser cleaning results
     url: /images/material/aluminum-bronze-laser-cleaning-micro.jpg
-caption:
-  before: I've seen the contaminated surface of aluminum bronze up close at high magnification. Dark spots and rough patches cover it everywhere. Tiny particles cling tightly, making the whole thing look uneven and dull.
-  after: After laser treatment, that same surface turns smooth and bright. The dark spots vanish completely, leaving a clean shine. Now it appears uniform and fresh all over.
+caption: null
 faq:
 - question: How can I effectively clean oxidation from aluminum bronze using a laser?
   answer: We've found that oxidation on aluminum bronze builds up stubbornly because of its strong resistance to corrosion, making single passes less effective. You need to use multiple short bursts from the laser to gradually lift the layer without overheating the base material. In our experience, adjusting the beam to a wider focus helps spread the energy and prevents any uneven heating spots.
@@ -87,28 +85,28 @@ materialProperties:
     density:
       value: 7.8
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 1.2
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 655
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
       value: 120
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
       value: 2.5
       unit: GPa
@@ -118,42 +116,42 @@ materialProperties:
       value: 680
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 6
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.65
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 1323
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.28
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 655
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 90
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 1.2e-07
+      value: '1.2e-07'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 2.1
       unit: J/cm²
@@ -164,8 +162,8 @@ materialProperties:
       context: C95400 aluminum bronze (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 10 ns pulse duration at 1064 nm wavelength, single-shot fluence measurement
       researched_date: '2025-11-24T19:41:56.436013'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
       value: 2.1
       unit: J/cm²
@@ -176,10 +174,10 @@ materialProperties:
       context: Aluminum Bronze (UNS C95400, 85% Cu, 9% Al, 4% Fe, 2% Ni), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
       researched_date: '2025-11-24T19:42:02.018655'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalDiffusivity:
-      value: 1.78e-05
+      value: '1.8e-05'
       unit: m^2/s
       source: scientific_literature
       source_type: materials_database
@@ -188,10 +186,10 @@ materialProperties:
       context: UNS C95400 Aluminum Bronze (85Cu-11Al-4Fe-3Ni, as-cast), 25°C, standard atmospheric pressure
       researched_date: '2025-11-24T19:42:22.135717'
       needs_validation: true
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     thermalExpansion:
-      value: 1.62e-05
+      value: '1.6e-05'
       unit: 10^{-6}/K
       source: scientific_literature
       source_type: reference_handbook
@@ -200,10 +198,10 @@ materialProperties:
       context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), 20-100°C, linear coefficient measured by dilatometry under standard atmospheric conditions
       researched_date: '2025-11-24T19:42:30.395035'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 380.0
+      value: 380
       unit: J/kg·K
       source: scientific_literature
       source_type: materials_database
@@ -213,9 +211,9 @@ materialProperties:
       researched_date: '2025-11-24T19:42:40.358770'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
-      value: 59.0
+      value: 59
       unit: W/m·K
       source: scientific_literature
       source_type: materials_database
@@ -224,8 +222,8 @@ materialProperties:
       context: Aluminum Bronze UNS C95400 (88% Cu, 9% Al, 3% Fe), 25°C, as-cast condition, steady-state method
       researched_date: '2025-11-24T19:42:50.315312'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.88
       unit: ''
@@ -236,10 +234,10 @@ materialProperties:
       context: Aluminum bronze (UNS C95400, 85% Cu, 11% Al, 4% Fe), 1064 nm wavelength (Nd:YAG laser), 25°C, polished surface, normal incidence
       researched_date: '2025-11-24T19:42:58.279854'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
-      value: 1.2e-08
+      value: '1.2e-08'
       unit: Pa
       source: scientific_literature
       source_type: journal_article
@@ -248,10 +246,10 @@ materialProperties:
       context: Aluminum Bronze (Cu-9wt%Al-4wt%Fe, UNS C95400), 298 K (25°C), equilibrium vapor pressure over solid alloy, measured using Knudsen effusion mass spectrometry
       researched_date: '2025-11-24T19:43:03.782041'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1038.0
+      value: 1038
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -260,10 +258,10 @@ materialProperties:
       context: UNS C95400 Aluminum Bronze (81% Cu, 9% Al, 3% Fe, 4% Ni), sand cast condition, standard atmospheric pressure
       researched_date: '2025-11-24T19:43:10.259020'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 48000000.0
+      value: '4.8e+07'
       unit: m^{-1}
       source: scientific_literature
       source_type: journal_article
@@ -272,10 +270,10 @@ materialProperties:
       context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), measured via spectroscopic ellipsometry
       researched_date: '2025-11-24T19:43:17.938349'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 4060000.0
+      value: '4.1e+06'
       unit: S/m
       source: scientific_literature
       source_type: materials_database
@@ -284,10 +282,10 @@ materialProperties:
       context: UNS C95400 Aluminum Bronze (9% Al, 4% Fe, balance Cu), as-cast condition, 20°C, standard DC measurement
       researched_date: '2025-11-24T19:43:26.848136'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 2673.0
+      value: 2673
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -296,10 +294,10 @@ materialProperties:
       context: 'Commercial grade Aluminum Bronze (UNS C95400: 83% Cu, 11% Al, 4% Fe, 2% Ni), 99.5% purity, standard atmospheric pressure (1 atm), extrapolated from vapor pressure data'
       researched_date: '2025-11-24T19:43:41.388292'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
-      value: 210.0
+      value: 210
       unit: °C
       source: scientific_literature
       source_type: reference_handbook
@@ -308,8 +306,8 @@ materialProperties:
       context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe, sand cast), room temperature, calculated via thermal shock parameter R = σ(1-ν)/(Eα) using standard tensile test and dilatometry methods
       researched_date: '2025-11-24T19:43:48.981571'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.68
       unit: ''
@@ -321,9 +319,9 @@ materialProperties:
       researched_date: '2025-11-24T19:43:56.234962'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
-      value: 0.072
+      value: 0.07
       unit: dimensionless
       source: scientific_literature
       source_type: journal_article
@@ -332,10 +330,10 @@ materialProperties:
       context: UNS C95400 aluminum bronze (81% Cu, 11% Al, 4% Fe, 4% Ni), polished surface, 25°C, 1064 nm wavelength (Nd:YAG laser), hemispherical absorptivity
       researched_date: '2025-11-24T19:44:02.583469'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 1045.0
+      value: 1045
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -344,30 +342,12 @@ materialProperties:
       context: Commercial Aluminum Bronze alloy (UNS C95400 equivalent, ~9% Al, 4% Fe, balance Cu), standard atmospheric pressure, differential scanning calorimetry measurement
       researched_date: '2025-11-24T19:44:12.517394'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 59
-      unit: W/m·K
-      min: 40
-      max: 80
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.5e-05
-      unit: m²/s
-      min: 1.0e-05
-      max: 2.0e-05
-      source: ai_research
-    ablationThreshold:
-      value: 2.8
-      unit: J/cm²
-      min: 1.5
-      max: 4.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.097508'
+    generated_date: '2025-11-29T15:19:10.836780'

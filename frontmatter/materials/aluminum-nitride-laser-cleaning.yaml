@@ -85,10 +85,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 3.26
+      value: 3.3
       unit: g/cm³
-      min: 1.7385
-      max: 16.2915
+      min: 1.7
+      max: 16.3
     porosity:
       value: 0
       unit: '%'
@@ -100,58 +100,58 @@ materialProperties:
     tensileStrength:
       value: 300
       unit: MPa
-      min: 5.0
+      min: 5
       max: 600
     youngsModulus:
       value: 310
       unit: GPa
-      min: 39.95
-      max: 679.05
+      min: 40
+      max: 679
     hardness:
       value: 12
       unit: GPa
-      min: 6.65
-      max: 3149.65
+      min: 6.7
+      max: 3150
     flexuralStrength:
       value: 350
       unit: MPa
       min: 45.6
-      max: 1152.6
+      max: 1153
     oxidationResistance:
       value: 20
       unit: μm/year
-      min: 0.0
-      max: 2310.0
+      min: 0
+      max: 2310
     corrosionResistance:
       value: 0.78
       unit: mm/year
-      min: 0.000475
-      max: 262.499975
+      min: '0.00047'
+      max: 262
     thermalDestruction:
       value: 2473
       unit: K
-      min: 273.0
-      max: 3900.0
+      min: 273
+      max: 3900
     laserAbsorption:
       value: 0.15
       unit: dimensionless
-      min: 0.3515
-      max: 2624.9815
+      min: 0.35
+      max: 2625
     compressiveStrength:
       value: 300
       unit: MPa
-      min: 95.0
-      max: 4090.0
+      min: 95
+      max: 4090
     fractureToughness:
       value: 18
       unit: MPa m^{1/2}
-      min: 0.565
-      max: 5.735
+      min: 0.56
+      max: 5.7
     electricalResistivity:
-      value: 10000000000000.0
+      value: 1e+13
       unit: Ω·m
-      min: 0.0
-      max: 105000000000000.0
+      min: 0
+      max: 1e+14
     laserDamageThreshold:
       value: 12.5
       unit: J/cm²
@@ -162,8 +162,8 @@ materialProperties:
       context: High-purity polycrystalline AlN (99.8% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, single-shot measurement
       researched_date: '2025-11-24T19:45:14.935486'
       needs_validation: true
-      min: 1.625
-      max: 20.875
+      min: 1.6
+      max: 20.9
     ablationThreshold:
       value: 2.1
       unit: J/cm²
@@ -174,10 +174,10 @@ materialProperties:
       context: Polycrystalline AlN ceramic (99.5% purity, commercial grade), room temperature (25°C), nanosecond pulsed Nd:YAG laser at 532 nm wavelength, single-pulse ablation in air
       researched_date: '2025-11-24T19:45:20.248619'
       needs_validation: true
-      min: 0.566
-      max: 3.954
+      min: 0.57
+      max: 4
     thermalDiffusivity:
-      value: 8.5e-05
+      value: '8.5e-05'
       unit: m²/s
       source: scientific_literature
       source_type: reference_handbook
@@ -186,10 +186,10 @@ materialProperties:
       context: Sintered polycrystalline Aluminum Nitride (>99% purity), 25°C, laser flash method
       researched_date: '2025-11-24T19:45:31.124951'
       needs_validation: true
-      min: 1.0e-06
-      max: 7.3e-05
+      min: 1e-06
+      max: '7.3e-05'
     thermalExpansion:
-      value: 4.5e-06
+      value: '4.5e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -198,10 +198,10 @@ materialProperties:
       context: Polycrystalline Aluminum Nitride (99.5% purity, sintered), 25-1000°C, measured via dilatometry
       researched_date: '2025-11-24T19:45:38.811945'
       needs_validation: true
-      min: 3.0e-06
-      max: 1.1e-05
+      min: 3e-06
+      max: '1.1e-05'
     specificHeat:
-      value: 740.0
+      value: 740
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -211,9 +211,9 @@ materialProperties:
       researched_date: '2025-11-24T19:45:43.028313'
       needs_validation: true
       min: 250
-      max: 2500.0
+      max: 2500
     thermalConductivity:
-      value: 170.0
+      value: 170
       unit: W/m·K
       source: scientific_literature
       source_type: reference_handbook
@@ -222,8 +222,8 @@ materialProperties:
       context: Polycrystalline aluminum nitride (AlN) ceramic, >99% purity, 25°C (298 K), measured by laser flash method under standard atmospheric conditions
       researched_date: '2025-11-24T19:45:55.838309'
       needs_validation: true
-      min: 1.425
-      max: 126.975
+      min: 1.4
+      max: 127
     laserReflectivity:
       value: 0.23
       unit: ''
@@ -234,30 +234,12 @@ materialProperties:
       context: Polycrystalline AlN (99.8% purity), 25°C, normal incidence reflectivity at 1064 nm wavelength (Nd:YAG laser), measured on polished surfaces
       researched_date: '2025-11-24T19:46:04.231512'
       needs_validation: true
-      min: 0.04925
-      max: 0.39575
+      min: 0.05
+      max: 0.4
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 180
-      unit: W/m·K
-      min: 150
-      max: 220
-      source: ai_research
-    thermalDiffusivity:
-      value: 7.5e-05
-      unit: m²/s
-      min: 6.0e-05
-      max: 9.0e-05
-      source: ai_research
-    ablationThreshold:
-      value: 5
-      unit: J/cm²
-      min: 3
-      max: 8
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.207715'
+    generated_date: '2025-11-29T15:19:10.889217'

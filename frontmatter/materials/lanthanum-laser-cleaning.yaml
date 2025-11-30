@@ -111,65 +111,65 @@ materialProperties:
     label: Material Characteristics
     percentage: 40.0
     thermalDestruction:
-      value: 1194.0
+      value: 1194
       unit: K
       source: ai_research
-      min: 273.0
-      max: 3520.0
+      min: 273
+      max: 3520
     specificHeat:
-      value: 195.0
+      value: 195
       unit: J/kg·K
       source: ai_research
-      min: 113.4
-      max: 456.6
+      min: 113
+      max: 457
     youngsModulus:
       value: 61.3
       unit: GPa
       source: ai_research
-      min: 15.835
-      max: 63.465
+      min: 15.8
+      max: 63.5
     oxidationResistance:
-      value: 1.11
+      value: 1.1
       unit: ''
       source: ai_research
-      min: 0.0
-      max: 149.1
+      min: 0
+      max: 149
     laserReflectivity:
       value: 0.42
       unit: dimensionless
       source: ai_research
-      min: 0.395
-      max: 0.945
+      min: 0.4
+      max: 0.94
     thermalConductivity:
       value: 13.4
       unit: W/m·K
       source: ai_research
-      min: 10.375
-      max: 17.525
+      min: 10.4
+      max: 17.5
     thermalExpansion:
-      value: 1.21e-05
+      value: '1.2e-05'
       unit: K^{-1}
       source: ai_research
-      min: 6.0e-06
-      max: 26.25
+      min: 6e-06
+      max: 26.2
     density:
-      value: 6.162
+      value: 6.2
       unit: g/cm³
       source: ai_research
-      min: 4.2681
-      max: 8.7539
+      min: 4.3
+      max: 8.8
     hardness:
       value: 0.35
       unit: GPa
       source: ai_research
-      min: 0.3819
-      max: 906.1299
+      min: 0.38
+      max: 906
     ablationThreshold:
-      value: 1.25
+      value: 1.2
       unit: J/cm²
       source: ai_research
-      min: 0.6475
-      max: 2.9025
+      min: 0.65
+      max: 2.9
     absorptivity:
       value: 0.12
       unit: dimensionless
@@ -177,17 +177,17 @@ materialProperties:
       min: 0.25
       max: 0.6
     boilingPoint:
-      value: 3737.0
+      value: 3737
       unit: K
       source: ai_research
-      min: 1705.25
-      max: 3833.75
+      min: 1705
+      max: 3834
     absorptionCoefficient:
-      value: 28000000.0
+      value: '2.8e+07'
       unit: m^{-1}
       source: ai_research
-      min: 298300.0
-      max: 65924300.0
+      min: 298300
+      max: '6.6e+07'
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -214,4 +214,4 @@ material_metadata:
   - Aerospace Components
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:29.742582'
+    generated_date: '2025-11-29T15:19:07.526766'

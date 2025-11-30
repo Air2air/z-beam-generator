@@ -136,7 +136,8 @@ def log_attempt(
     attempt_num: int,
     feedback_text: Optional[str],
     feedback_category: Optional[str],
-    previous_feedback: Optional[str] = None
+    previous_feedback: Optional[str] = None,
+    shape_override: Optional[str] = None
 ):
     """Log attempt to learning database."""
     try:
@@ -151,6 +152,16 @@ def log_attempt(
                 'pre_validation_critical': len(pre_val.critical_issues) if pre_val else 0
             }
         
+        # Extract context-related data for learning
+        research_data = prompt_package.get('research_data', {})
+        context_data = research_data.get('context_settings', {})
+        
+        # Extract pattern scores if available (for learning which patterns work best)
+        pattern_scores = {}
+        for p in research_data.get('selected_patterns', []):
+            if 'relevance_score' in p:
+                pattern_scores[p.get('pattern_name', 'unknown')] = p['relevance_score']
+        
         generation_logger.log_attempt(
             material=material,
             category=config.category,
@@ -159,15 +170,26 @@ def log_attempt(
                 'guidance_scale': prompt_package['guidance_scale'],
                 'contamination_uniformity': config.contamination_uniformity,
                 'view_mode': config.view_mode,
+                'severity': config.severity,
+                'shape_override': shape_override,
                 'patterns_used': [p.get('pattern_name', p.get('name', 'Unknown')) 
-                                for p in prompt_package['research_data'].get('selected_patterns', 
-                                prompt_package['research_data'].get('contaminants', []))[:3]],
+                                for p in research_data.get('selected_patterns', 
+                                research_data.get('contaminants', []))[:3]],
                 'feedback_applied': previous_feedback is not None,
                 'previous_feedback': previous_feedback,  # Feedback from previous attempt
                 'feedback_text': feedback_text,  # Validator feedback for learning
                 'feedback_category': feedback_category,
                 'feedback_source': 'automated',
                 'attempt_number': attempt_num,
+                # New context parameters for learning
+                'context': config.context,
+                'aging_weight': context_data.get('aging_weight'),
+                'contamination_weight': context_data.get('contamination_weight'),
+                'background': research_data.get('context_background'),
+                'pattern_scores': pattern_scores,
+                # Optimization metrics
+                'prompt_chars_before_opt': prompt_package.get('prompt_chars_before_opt'),
+                'prompt_chars_after_opt': len(prompt_package['prompt']),
                 **pre_validation_metrics
             },
             validation_results={
@@ -188,6 +210,32 @@ def log_attempt(
                 'size_kb': file_size / 1024
             }
         )
+        
+        # Update learning system with outcome
+        patterns_used = [p.get('pattern_name', p.get('name', 'Unknown')) 
+                        for p in research_data.get('selected_patterns', 
+                        research_data.get('contaminants', []))[:3]]
+        
+        # Update pattern effectiveness
+        generation_logger.update_pattern_effectiveness(
+            patterns_used=patterns_used,
+            category=config.category,
+            context=config.context,
+            passed=validation_result.passed,
+            realism_score=validation_result.realism_score or 0
+        )
+        
+        # Update learned defaults if successful
+        if validation_result.passed:
+            generation_logger.update_learned_defaults_from_success(
+                category=config.category,
+                context=config.context,
+                guidance_scale=prompt_package.get('guidance_scale', 15.0),
+                realism_score=validation_result.realism_score or 0,
+                aging_weight=context_data.get('aging_weight'),
+                contamination_weight=context_data.get('contamination_weight')
+            )
+            
     except Exception as log_error:
         logger.debug(f"Failed to log to learning database: {log_error}")
 
@@ -254,14 +302,34 @@ def generate_and_validate(
     # Validate
     logger.info("\n🔍 Validating image with Gemini Vision...")
     
-    validation_result = validator.validate_material_image(
-        image_path=output_path,
-        material_name=material,
-        research_data=prompt_package["research_data"],
-        config=config.to_dict(),
-        original_prompt=prompt,
-        validation_result=prompt_package.get("validation_result")
-    )
+    try:
+        validation_result = validator.validate_material_image(
+            image_path=output_path,
+            material_name=material,
+            research_data=prompt_package["research_data"],
+            config=config.to_dict(),
+            original_prompt=prompt,
+            validation_result=prompt_package.get("validation_result")
+        )
+    except Exception as val_error:
+        error_str = str(val_error)
+        # Check if it's a quota error (429)
+        if "429" in error_str or "quota" in error_str.lower():
+            logger.warning("\n⚠️  Validation API quota exceeded - skipping validation")
+            logger.info("   Image saved successfully, but couldn't validate due to API limits")
+            # Return a "skip" result - image is saved, just not validated
+            from domains.materials.image.validator import MaterialValidationResult
+            skip_result = MaterialValidationResult(
+                passed=True,  # Don't fail the whole run just because validation quota exceeded
+                realism_score=0,
+                overall_assessment="Validation skipped due to API quota limits",
+                recommendations=["Re-run validation when API quota resets"]
+            )
+            skip_result.skipped = True  # Mark as skipped, not failed
+            return skip_result, "Validation skipped (API quota)", file_size
+        else:
+            # Re-raise non-quota errors
+            raise
     
     # Build feedback
     feedback_text, feedback_category = build_feedback_text(validation_result)
@@ -354,6 +422,33 @@ Auto-Retry Feature:
     parser.add_argument("--shape", type=str,
                        help="Override the researched shape/object")
     
+    # Contamination severity
+    parser.add_argument("--severity", type=str, choices=["light", "moderate", "heavy"],
+                       default=None,
+                       help="Contamination severity: light (<30%%), moderate (30-60%%), heavy (>60%%). Auto-set by context if not specified.")
+    
+    # Environmental context
+    parser.add_argument("--context", type=str, choices=["indoor", "outdoor", "industrial", "marine"],
+                       default="outdoor",
+                       help="Environmental context: indoor (light contamination), outdoor (weathering+contamination), industrial (heavy contamination), marine (salt+weathering)")
+    
+    # Contamination variety
+    parser.add_argument("--uniformity", type=int, choices=[1, 2, 3, 4, 5],
+                       default=None,
+                       help="Number of contaminant types (1-5). Default varies by category (typically 3).")
+    
+    # Visual weight adjustments
+    parser.add_argument("--aging-weight", type=float, default=None,
+                       help="Aging intensity on left (before) side. 0.0-2.0, default 1.0. Higher = more visible aging.")
+    parser.add_argument("--contamination-weight", type=float, default=None,
+                       help="Contamination intensity on right (after) side. 0.0-2.0, default 1.0. Higher = more visible contamination.")
+    
+    # Safety options
+    parser.add_argument("--backup", action="store_true",
+                       help="Backup existing image before overwriting (creates .backup.png)")
+    parser.add_argument("--no-overwrite", action="store_true",
+                       help="Don't overwrite existing image - exit if file exists")
+    
     args = parser.parse_args()
     
     # Get API keys
@@ -377,8 +472,16 @@ Auto-Retry Feature:
     config = MaterialImageConfig.from_material(
         material=args.material,
         category=category,
-        validate=not args.no_validate
+        validate=not args.no_validate,
+        severity=args.severity,
+        context=args.context,
+        aging_weight=args.aging_weight,
+        contamination_weight=args.contamination_weight
     )
+    
+    # Override uniformity if specified
+    if args.uniformity:
+        config.contamination_uniformity = args.uniformity
     
     # Log configuration
     logger.info("="*80)
@@ -387,7 +490,9 @@ Auto-Retry Feature:
     logger.info("📊 Configuration:")
     if category:
         logger.info(f"   • Category: {category}")
+    logger.info(f"   • Context: {config.context_description}")
     logger.info(f"   • Uniformity: {config.uniformity_label} ({config.contamination_uniformity} patterns)")
+    logger.info(f"   • Severity: {config.severity_description}")
     logger.info(f"   • View Mode: {config.view_mode}")
     logger.info(f"   • Guidance Scale: {config.guidance_scale}")
     logger.info(f"   • Max Retries: {args.max_retries if not args.no_retry else 'disabled'}")
@@ -500,6 +605,19 @@ Auto-Retry Feature:
         slug = args.material.replace(" ", "-").replace("/", "-").lower()
         output_path = output_dir / f"{slug}-laser-cleaning.png"
     
+    # Check if file exists and handle backup/no-overwrite
+    if output_path.exists():
+        if args.no_overwrite:
+            logger.info(f"⚠️  Image already exists: {output_path}")
+            logger.info("   Use --backup to preserve existing, or remove --no-overwrite to replace")
+            sys.exit(0)
+        
+        if args.backup:
+            import shutil
+            backup_path = output_path.with_suffix('.backup.png')
+            shutil.copy2(output_path, backup_path)
+            logger.info(f"📦 Backed up existing image to: {backup_path}")
+    
     # Initialize clients
     image_client = GeminiImageClient(api_key=gemini_api_key)
     generation_logger = create_logger()
@@ -508,8 +626,9 @@ Auto-Retry Feature:
     from domains.materials.image.validator import MaterialImageValidator
     validator = MaterialImageValidator(gemini_api_key) if config.validate else None
     
-    # Retry loop
-    max_attempts = 1 if args.no_retry or not config.validate else args.max_retries
+    # Retry loop - DEFAULT: 1 attempt (no auto-retry)
+    # Retries waste API calls since validation failures rarely improve with regeneration
+    max_attempts = args.max_retries if args.max_retries > 1 else 1
     correction_feedback = None
     final_validation_result = None
     
@@ -541,10 +660,16 @@ Auto-Retry Feature:
                     attempt_num=attempt,
                     feedback_text=feedback_text,
                     feedback_category=feedback_category,
-                    previous_feedback=correction_feedback
+                    previous_feedback=correction_feedback,
+                    shape_override=args.shape
                 )
                 
                 final_validation_result = validation_result
+                
+                # Check if validation was skipped (quota error) - don't retry
+                if hasattr(validation_result, 'skipped') and validation_result.skipped:
+                    logger.info("\n✅ Image generated successfully (validation skipped due to API quota)")
+                    break
                 
                 # Check if passed
                 if validation_result.passed:

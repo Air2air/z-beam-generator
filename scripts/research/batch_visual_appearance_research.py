@@ -125,7 +125,8 @@ class BatchVisualAppearanceResearcher:
         contam_data: Dict,
         mat_data: Dict,
         patterns: Optional[List[str]] = None,
-        force: bool = False
+        force: bool = False,
+        categories_only: bool = False
     ) -> List[Tuple[str, str, str]]:
         """
         Get list of (pattern_id, pattern_name, material_name) tuples to research.
@@ -135,14 +136,14 @@ class BatchVisualAppearanceResearcher:
             mat_data: Materials.yaml data
             patterns: Optional list of pattern IDs to research (None = all)
             force: If True, re-research existing data
+            categories_only: If True, research categories instead of materials (92% reduction)
         
         Returns:
-            List of (pattern_id, pattern_name, material_name) tuples
+            List of (pattern_id, pattern_name, target_name) tuples
         """
         tasks = []
         
         all_patterns = contam_data.get('contamination_patterns', {})
-        all_materials = list(mat_data.get('materials', {}).keys())
         
         # Filter patterns if specified
         if patterns:
@@ -150,19 +151,42 @@ class BatchVisualAppearanceResearcher:
         else:
             pattern_items = list(all_patterns.items())
         
-        for pattern_id, pattern_data in pattern_items:
-            pattern_name = pattern_data.get('name', pattern_id)
+        if categories_only:
+            # Category-level research: 13 categories instead of 159 materials
+            categories = ['metal', 'wood', 'stone', 'glass', 'ceramic', 'plastic', 
+                         'composite', 'rubber', 'fabric', 'concrete', 'mineral', 
+                         'semiconductor', 'specialty']
             
-            # Get existing researched materials
-            vis = pattern_data.get('visual_characteristics', {})
-            existing = set(k.lower() for k in vis.get('appearance_on_materials', {}).keys())
-            
-            for material_name in all_materials:
-                # Skip if already researched (unless force)
-                if not force and material_name.lower() in existing:
-                    continue
+            for pattern_id, pattern_data in pattern_items:
+                pattern_name = pattern_data.get('name', pattern_id)
                 
-                tasks.append((pattern_id, pattern_name, material_name))
+                # Get existing researched categories
+                vis = pattern_data.get('visual_characteristics', {})
+                existing = set(k.lower() for k in vis.get('appearance_on_categories', {}).keys())
+                
+                for category in categories:
+                    # Skip if already researched (unless force)
+                    if not force and category.lower() in existing:
+                        continue
+                    
+                    tasks.append((pattern_id, pattern_name, f"[CATEGORY]{category}"))
+        else:
+            # Material-level research: all materials
+            all_materials = list(mat_data.get('materials', {}).keys())
+            
+            for pattern_id, pattern_data in pattern_items:
+                pattern_name = pattern_data.get('name', pattern_id)
+                
+                # Get existing researched materials
+                vis = pattern_data.get('visual_characteristics', {})
+                existing = set(k.lower() for k in vis.get('appearance_on_materials', {}).keys())
+                
+                for material_name in all_materials:
+                    # Skip if already researched (unless force)
+                    if not force and material_name.lower() in existing:
+                        continue
+                    
+                    tasks.append((pattern_id, pattern_name, material_name))
         
         return tasks
     
@@ -220,9 +244,38 @@ class BatchVisualAppearanceResearcher:
         print(f"   ❌ Failed after {max_retries} retries: {pattern_name} on {material_name}")
         return None
     
-    def _build_prompt(self, contaminant_name: str, material_name: str) -> str:
+    def _build_prompt(self, contaminant_name: str, target_name: str) -> str:
         """Build research prompt for Gemini."""
-        return f"""You are a materials science expert. Provide PRECISE visual descriptions of {contaminant_name} on {material_name} surfaces.
+        # Check if this is a category-level or material-level request
+        if target_name.startswith("[CATEGORY]"):
+            category = target_name.replace("[CATEGORY]", "")
+            return f"""You are a materials science expert. Provide PRECISE visual descriptions of {contaminant_name} on {category.upper()} surfaces (e.g., {self._get_category_examples(category)}).
+
+ACCURACY: Use specific colors (hex codes), real measurements (micrometers), and industrial/scientific accuracy.
+Focus on characteristics COMMON TO ALL {category.upper()} materials, not specific to one material.
+
+Return ONLY this JSON (no other text):
+
+{{
+  "description": "2-3 sentence overall description with dominant colors and coverage patterns typical for {category}",
+  "color_variations": "3-5 specific colors from fresh to aged (e.g., '#B7410E rust-orange')",
+  "texture_details": "Detailed texture - smooth/rough/crystalline/powdery/sticky/crusty",
+  "common_patterns": "Distribution patterns - uniform coating, localized spots, streaks, drip marks",
+  "aged_appearance": "How it changes over time - fresh (hours/days) vs aged (months/years)",
+  "lighting_effects": "Appearance under different lighting - sheen, gloss, matte, iridescence",
+  "thickness_range": "Typical thickness with measurements (micrometers/millimeters)",
+  "distribution_patterns": "Specific distribution types on {category} surfaces",
+  "uniformity_assessment": "How uniform - perfectly uniform to highly variable",
+  "concentration_variations": "Where heavy vs light - edges, corners, crevices, flat surfaces",
+  "typical_formations": "Physical formations - drip marks, pools, films, crusts, patches",
+  "geometry_effects": "How surface geometry affects distribution",
+  "gravity_influence": "How gravity affects pattern - downward flow, pooling, vertical streaking",
+  "coverage_ranges": "Coverage percentages - sparse (<10%), light (10-30%), moderate (30-60%), heavy (60-85%), extreme (>85%)",
+  "edge_center_behavior": "Prefers edges, center, or uniform distribution",
+  "buildup_progression": "How buildup progresses over time with timeframes"
+}}"""
+        else:
+            return f"""You are a materials science expert. Provide PRECISE visual descriptions of {contaminant_name} on {target_name} surfaces.
 
 ACCURACY: Use specific colors (hex codes), real measurements (micrometers), and industrial/scientific accuracy.
 
@@ -236,7 +289,7 @@ Return ONLY this JSON (no other text):
   "aged_appearance": "How it changes over time - fresh (hours/days) vs aged (months/years)",
   "lighting_effects": "Appearance under different lighting - sheen, gloss, matte, iridescence",
   "thickness_range": "Typical thickness with measurements (micrometers/millimeters)",
-  "distribution_patterns": "Specific distribution types on {material_name}",
+  "distribution_patterns": "Specific distribution types on {target_name}",
   "uniformity_assessment": "How uniform - perfectly uniform to highly variable",
   "concentration_variations": "Where heavy vs light - edges, corners, crevices, flat surfaces",
   "typical_formations": "Physical formations - drip marks, pools, films, crusts, patches",
@@ -246,6 +299,25 @@ Return ONLY this JSON (no other text):
   "edge_center_behavior": "Prefers edges, center, or uniform distribution",
   "buildup_progression": "How buildup progresses over time with timeframes"
 }}"""
+    
+    def _get_category_examples(self, category: str) -> str:
+        """Get example materials for a category."""
+        examples = {
+            'metal': 'steel, aluminum, copper, brass',
+            'wood': 'oak, pine, plywood, MDF',
+            'stone': 'granite, marble, limestone, slate',
+            'glass': 'window glass, tempered glass, borosilicate',
+            'ceramic': 'porcelain, tiles, terracotta',
+            'plastic': 'ABS, PVC, acrylic, polycarbonate',
+            'composite': 'fiberglass, carbon fiber, Corian',
+            'rubber': 'natural rubber, silicone, neoprene',
+            'fabric': 'cotton, polyester, nylon, canvas',
+            'concrete': 'concrete, mortar, cement board',
+            'mineral': 'calcium carbite, calcium oxide',
+            'semiconductor': 'silicon, germanium, gallium arsenide',
+            'specialty': 'graphite, carbon, magnetic materials'
+        }
+        return examples.get(category.lower(), 'various materials')
     
     def _parse_response(self, response_text: str) -> Dict[str, str]:
         """Parse Gemini JSON response."""
@@ -264,7 +336,8 @@ Return ONLY this JSON (no other text):
         self,
         patterns: Optional[List[str]] = None,
         force: bool = False,
-        dry_run: bool = False
+        dry_run: bool = False,
+        categories_only: bool = False
     ) -> Dict[str, int]:
         """
         Run batch research with concurrent workers.
@@ -273,18 +346,20 @@ Return ONLY this JSON (no other text):
             patterns: Optional list of pattern IDs (None = all patterns)
             force: Re-research existing data
             dry_run: Just show what would be researched
+            categories_only: Research at category level (13 vs 159 targets)
         
         Returns:
             Dict with counts: {'completed': N, 'failed': N, 'skipped': N}
         """
         self.start_time = time.time()
+        self.categories_only = categories_only
         
         # Load data
         print("\n📂 Loading data...")
         contam_data, mat_data = self.load_data()
         
         # Get tasks
-        tasks = self.get_research_tasks(contam_data, mat_data, patterns, force)
+        tasks = self.get_research_tasks(contam_data, mat_data, patterns, force, categories_only)
         self.total = len(tasks)
         
         print("\n📊 Research Tasks:")
@@ -371,7 +446,7 @@ Return ONLY this JSON (no other text):
         """Save buffered results to Contaminants.yaml."""
         print(f"   💾 Saving {sum(len(v) for v in results_buffer.values())} results...")
         
-        for pattern_id, materials in results_buffer.items():
+        for pattern_id, targets in results_buffer.items():
             if pattern_id not in contam_data['contamination_patterns']:
                 continue
             
@@ -380,16 +455,24 @@ Return ONLY this JSON (no other text):
             if 'visual_characteristics' not in pattern:
                 pattern['visual_characteristics'] = {}
             
-            if 'appearance_on_materials' not in pattern['visual_characteristics']:
-                pattern['visual_characteristics']['appearance_on_materials'] = {}
+            # Determine if saving to categories or materials
+            if hasattr(self, 'categories_only') and self.categories_only:
+                storage_key = 'appearance_on_categories'
+            else:
+                storage_key = 'appearance_on_materials'
+            
+            if storage_key not in pattern['visual_characteristics']:
+                pattern['visual_characteristics'][storage_key] = {}
             
             # Add results
-            for mat_key, result in materials.items():
-                pattern['visual_characteristics']['appearance_on_materials'][mat_key] = result
+            for target_key, result in targets.items():
+                # Remove [CATEGORY] prefix if present
+                clean_key = target_key.replace('[CATEGORY]', '').lower()
+                pattern['visual_characteristics'][storage_key][clean_key] = result
         
         # Save
         self.save_contaminants(contam_data)
-        print(f"   ✅ Saved to Contaminants.yaml")
+        print("   ✅ Saved to Contaminants.yaml")
 
 
 def main():
@@ -399,6 +482,8 @@ def main():
     parser.add_argument('--pattern', '-p', help="Single pattern ID to research")
     parser.add_argument('--patterns', '-P', help="Comma-separated pattern IDs")
     parser.add_argument('--all', '-a', action='store_true', help="Research all patterns")
+    parser.add_argument('--categories-only', '-c', action='store_true',
+                       help="Research at category level only (13 categories vs 159 materials = 92%% reduction)")
     parser.add_argument('--workers', '-w', type=int, default=3, 
                        help="Number of concurrent workers (default: 3, max: 5)")
     parser.add_argument('--save-interval', '-s', type=int, default=10,
@@ -430,7 +515,8 @@ def main():
     results = researcher.run_batch(
         patterns=patterns,
         force=args.force,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        categories_only=args.categories_only
     )
     
     sys.exit(0 if results['failed'] == 0 else 1)

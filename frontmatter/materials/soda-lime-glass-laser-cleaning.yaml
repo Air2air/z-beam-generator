@@ -102,113 +102,113 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     thermalDestruction:
-      value: 992.0
+      value: 992
       unit: K
       source: ai_research
-      min: 637.7
-      max: 2426.3
+      min: 638
+      max: 2426
     specificHeat:
-      value: 840.0
+      value: 840
       unit: J/(kg·K)
       source: ai_research
       min: 120
       max: 900
     youngsModulus:
-      value: 70.0
+      value: 70
       unit: GPa
       source: ai_research
       min: 60.8
-      max: 60899999996.8
+      max: '6.1e+10'
     oxidationResistance:
-      value: 1.0
+      value: 1
       unit: dimensionless (normalized scale 0-1, where 1 indicates complete resistance)
       source: ai_research
-      min: 0.0
-      max: 2176.65
+      min: 0
+      max: 2177
     laserReflectivity:
-      value: 0.042
+      value: 0.04
       unit: ''
       source: ai_research
-      min: 0.03192
-      max: 3.79932
+      min: 0.03
+      max: 3.8
     thermalConductivity:
-      value: 1.06
+      value: 1.1
       unit: W/m·K
       source: ai_research
-      min: 0.7695
-      max: 36.7095
+      min: 0.77
+      max: 36.7
     thermalExpansion:
-      value: 9.0e-06
+      value: 9e-06
       unit: K^{-1}
       source: ai_research
-      min: 1.0e-06
-      max: 9.66
+      min: 1e-06
+      max: 9.7
     density:
       value: 2.5
       unit: g/cm³
       source: ai_research
-      min: 2.09285
-      max: 2624.88985
+      min: 2.1
+      max: 2625
     hardness:
       value: 5.4
       unit: GPa
       source: ai_research
-      min: 3.99
-      max: 2309.79
+      min: 4
+      max: 2310
     corrosionResistance:
       value: 0.1
       unit: g/m²
       source: ai_research
-      min: 4.8e-05
-      max: 1.574998
+      min: '4.8e-05'
+      max: 1.6
     laserAbsorption:
-      value: 80.0
+      value: 80
       unit: m^{-1}
       source: ai_research
-      min: 0.01425
-      max: 73499.99925
+      min: 0.01
+      max: 73500
     compressiveStrength:
-      value: 1000.0
+      value: 1000
       unit: MPa
       source: ai_research
-      min: 619.5
-      max: 2170.5
+      min: 620
+      max: 2170
     thermalDiffusivity:
-      value: 4.8e-07
+      value: '4.8e-07'
       unit: m²/s
       source: ai_research
-      min: 0.0
-      max: 1.0e-05
+      min: 0
+      max: 1e-05
     flexuralStrength:
-      value: 50.0
+      value: 50
       unit: MPa
       source: ai_research
-      min: 10.0
-      max: 780.0
+      min: 10
+      max: 780
     tensileStrength:
-      value: 50.0
+      value: 50
       unit: MPa
       source: ai_research
-      min: 7.0
-      max: 733.0
+      min: 7
+      max: 733
     fractureToughness:
       value: 0.75
       unit: MPa√m
       source: ai_research
-      min: 0.5575
-      max: 2.5925
+      min: 0.56
+      max: 2.6
     electricalResistivity:
-      value: 100000000000.0
+      value: 1e+11
       unit: Ω·m
       source: ai_research
-      min: 9500000000.0
-      max: 1.04999995e+16
+      min: '9.5e+09'
+      max: 1e+16
     ablationThreshold:
       value: 18.5
       unit: J/cm²
       source: ai_research
-      min: 0.635
-      max: 13.065
+      min: 0.64
+      max: 13.1
     percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
@@ -232,15 +232,15 @@ materialProperties:
       max: 20
       source: ai_research
     thermalShockResistance:
-      value: 1.0
+      value: 1
       unit: MW/m
       min: 0.5
-      max: 2.0
+      max: 2
       source: ai_research
     reflectivity:
       value: 0.04
       unit: dimensionless
-      min: 0.035
+      min: 0.04
       max: 0.05
       source: ai_research
     thermalDestructionPoint:
@@ -250,9 +250,9 @@ materialProperties:
       max: 1500
       source: ai_research
     vaporPressure:
-      value: 0.001
+      value: '0.001'
       unit: Pa
-      min: 0.001
+      min: '0.001'
       max: 0.01
       source: ai_research
 eeat:
@@ -269,4 +269,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:34.274741'
+    generated_date: '2025-11-29T15:19:09.487276'

@@ -25,6 +25,7 @@ from typing import Dict, Any
 from domains.materials.materials_cache import load_materials_cached
 from domains.materials.data_loader import get_material_challenges
 from shared.utils.core.slug_utils import create_material_slug
+from export.utils.numeric_formatting import format_numeric_value
 
 logger = logging.getLogger(__name__)
 
@@ -670,25 +671,35 @@ class TrivialFrontmatterExporter:
         return enriched
     
     def _add_min_max(self, prop_value: Any, prop_name: str, category_ranges: Dict) -> Any:
-        """Add min/max fields to a property if available in category ranges."""
+        """Add min/max fields to a property if available in category ranges.
+        
+        Also applies numeric formatting for readability (see NUMERIC_FORMATTING_POLICY.md).
+        """
         if not isinstance(prop_value, dict):
             return prop_value
         
-        # Already has min/max - don't override
+        # Create enriched property - use shallow copy to preserve structure
+        enriched = prop_value.copy()
+        
+        # Format existing numeric values for readability
+        for field in ['value', 'min', 'max']:
+            if field in enriched and isinstance(enriched[field], (int, float)):
+                enriched[field] = format_numeric_value(enriched[field])
+        
+        # Already has min/max - don't override (but still format)
         if 'min' in prop_value or 'max' in prop_value:
-            return prop_value
+            return enriched
         
         # Look up category range
         range_data = category_ranges.get(prop_name, {})
         if not range_data or not isinstance(range_data, dict):
-            return prop_value
+            return enriched
         
-        # Create enriched property with min/max - use shallow copy to preserve structure
-        enriched = prop_value.copy()
+        # Add and format min/max from category ranges
         if 'min' in range_data:
-            enriched['min'] = range_data['min']
+            enriched['min'] = format_numeric_value(range_data['min'])
         if 'max' in range_data:
-            enriched['max'] = range_data['max']
+            enriched['max'] = format_numeric_value(range_data['max'])
         
         return enriched
     

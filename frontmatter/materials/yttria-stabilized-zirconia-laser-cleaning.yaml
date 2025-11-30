@@ -54,16 +54,10 @@ breadcrumb:
   href: /materials/ceramic/technical
 - label: Yttria-Stabilized Zirconia
   href: /materials/ceramic/technical/yttria-stabilized-zirconia
-images:
-  hero:
-    url: /images/material/yttria-stabilized-zirconia-laser-cleaning-hero.jpg
-    alt: Yttria-Stabilized Zirconia surface undergoing laser cleaning showing precise contamination removal
-  micro:
-    url: /images/material/yttria-stabilized-zirconia-laser-cleaning-micro.jpg
-    alt: Yttria-Stabilized Zirconia microscopic view of laser cleaning showing detailed precise contamination removal
+images: null
 caption:
-  before: The surface looks rough and cluttered with dark spots everywhere. Particles stick tightly, making the whole area uneven and dull. I've seen this buildup hide the material's true texture before cleaning starts.
-  after: Now the surface shines smooth without any leftover marks. It appears uniform and fresh across the entire view. This treatment really brings back the clean, even finish we expect.
+  before: We've found the contaminated surface looks rough and uneven under magnification. Dirt clings tightly to the grains, creating dark spots everywhere. It hides the material's true texture completely.
+  after: After laser treatment, the surface appears smooth and uniform now. Grains stand out clearly without any residue left. This reveals the clean, even finish underneath.
 faq:
 - question: How do I safely laser clean YSZ without causing cracks?
   answer: I've seen YSZ hold up well during cleaning if you start slow. Begin with low power to gently remove dirt and oxides from the surface. Watch the heat buildup closely, as this material resists thermal shock but can crack under sudden changes. Keep the beam moving steadily to avoid hot spots. This approach brings back the clean finish every time.
@@ -71,32 +65,12 @@ faq:
   answer: When cleaning YSZ, focus on a pulsed laser setup first. This works well because the material's toughness lets it handle short bursts without damage. I've found scanning in overlapping passes removes stubborn buildup like soot effectively. Adjust speed based on layer thickness to ensure even results. Tends to restore the original smooth texture nicely.
 - question: Can laser cleaning affect YSZ's thermal properties long-term?
   answer: Start by testing a small area to check response. YSZ's stability means cleaning rarely alters its heat resistance over time
-regulatoryStandards:
-- name: FDA
-  longName: Food and Drug Administration
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://www.iec.ch/homepage
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
     youngsModulus:
-      value: 210.0
+      value: 210
       unit: GPa
       source: scientific_literature
       source_type: textbook
@@ -105,10 +79,10 @@ materialProperties:
       context: Polycrystalline yttria-stabilized tetragonal zirconia polycrystal (Y-TZP, 3 mol% Y2O3), room temperature (25°C), measured via ultrasonic pulse-echo method
       researched_date: '2025-11-23T22:19:22.885156'
       needs_validation: true
-      min: 39.95
-      max: 679.05
+      min: 40
+      max: 679
     thermalDiffusivity:
-      value: 9.14e-07
+      value: '9.1e-07'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -117,10 +91,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 20°C, atmospheric pressure; derived from laser flash method for thermal conductivity
       researched_date: '2025-11-23T22:19:35.721468'
       needs_validation: true
-      min: 1.0e-06
-      max: 7.3e-05
+      min: 1e-06
+      max: '7.3e-05'
     thermalConductivity:
-      value: 2.0
+      value: 2
       unit: W/m·K
       source: scientific_literature
       source_type: materials_database
@@ -129,10 +103,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2, polycrystalline, 25°C, measured via laser flash method
       researched_date: '2025-11-23T22:19:42.705387'
       needs_validation: true
-      min: 1.425
-      max: 126.975
+      min: 1.4
+      max: 127
     oxidationResistance:
-      value: 0.0
+      value: 0
       unit: mg/(cm²·h)
       source: scientific_literature
       source_type: textbook
@@ -141,10 +115,10 @@ materialProperties:
       context: 8 mol% Yttria-Stabilized Zirconia (YSZ), 1000-1500°C, isothermal oxidation in air, thermogravimetric analysis (TGA)
       researched_date: '2025-11-23T22:19:55.381305'
       needs_validation: true
-      min: 0.0
-      max: 2310.0
+      min: 0
+      max: 2310
     corrosionResistance:
-      value: 1.2e-08
+      value: '1.2e-08'
       unit: kg/m²·s
       source: scientific_literature
       source_type: journal_article
@@ -153,8 +127,8 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 (99.5% purity), 80°C, 1 M H2SO4 solution, measured by weight loss after 168 hours immersion
       researched_date: '2025-11-23T22:20:10.244224'
       needs_validation: true
-      min: 0.000475
-      max: 262.499975
+      min: '0.00047'
+      max: 262
     ablationThreshold:
       value: 2.1
       unit: J/cm²
@@ -165,8 +139,8 @@ materialProperties:
       context: 8 wt% yttria-stabilized zirconia (YSZ), room temperature (25°C), 800 nm femtosecond laser pulses (150 fs duration), measured in vacuum (10^-6 Torr)
       researched_date: '2025-11-23T22:20:16.975381'
       needs_validation: true
-      min: 0.566
-      max: 3.954
+      min: 0.57
+      max: 4
     thermalExpansion:
       value: 10.5
       unit: 10^{-6} K^{-1}
@@ -177,8 +151,8 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 25-1200°C, measured via dilatometry
       researched_date: '2025-11-23T22:20:31.322347'
       needs_validation: true
-      min: 3.0e-06
-      max: 1.1e-05
+      min: 3e-06
+      max: '1.1e-05'
     fractureToughness:
       value: 5.7
       unit: MPa m^{1/2}
@@ -189,8 +163,8 @@ materialProperties:
       context: 3 mol% yttria-stabilized tetragonal zirconia polycrystal (3Y-TZP), room temperature (25°C), measured via chevron notch fracture toughness testing
       researched_date: '2025-11-23T22:20:41.315104'
       needs_validation: true
-      min: 0.565
-      max: 5.735
+      min: 0.56
+      max: 5.7
     laserAbsorption:
       value: 0.15
       unit: dimensionless (absorptivity)
@@ -201,8 +175,8 @@ materialProperties:
       context: 8 mol% yttria-stabilized zirconia (3YSZ), 99.5% purity, room temperature (25°C), measured at 1064 nm wavelength (Nd:YAG laser) using spectrophotometry
       researched_date: '2025-11-23T22:20:49.760402'
       needs_validation: true
-      min: 0.3515
-      max: 2624.9815
+      min: 0.35
+      max: 2625
     porosity:
       value: 0.5
       unit: '%'
@@ -225,10 +199,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 ceramic, room temperature, 1064 nm Nd:YAG laser, 10 ns pulse duration, single pulse irradiation
       researched_date: '2025-11-23T22:21:03.803523'
       needs_validation: true
-      min: 1.625
-      max: 20.875
+      min: 1.6
+      max: 20.9
     specificHeat:
-      value: 480.0
+      value: 480
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -238,9 +212,9 @@ materialProperties:
       researched_date: '2025-11-23T22:21:08.309140'
       needs_validation: true
       min: 250
-      max: 2500.0
+      max: 2500
     electricalResistivity:
-      value: 1000000000000.0
+      value: 1e+12
       unit: Ω·m
       source: scientific_literature
       source_type: materials_database
@@ -249,10 +223,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, >99% purity), 25°C, DC volume resistivity measurement
       researched_date: '2025-11-23T22:21:32.678990'
       needs_validation: true
-      min: 0.0
-      max: 105000000000000.0
+      min: 0
+      max: 1e+14
     compressiveStrength:
-      value: 2000.0
+      value: 2000
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -261,10 +235,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized zirconia (YSZ), fully dense, room temperature (25°C), measured via uniaxial compression testing
       researched_date: '2025-11-23T22:21:37.791848'
       needs_validation: true
-      min: 95.0
-      max: 4090.0
+      min: 95
+      max: 4090
     density:
-      value: 6.0
+      value: 6
       unit: g/cm³
       source: scientific_literature
       source_type: materials_database
@@ -273,8 +247,8 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2, fully dense polycrystalline ceramic, room temperature (25°C), theoretical density
       researched_date: '2025-11-23T22:21:42.833706'
       needs_validation: true
-      min: 1.7385
-      max: 16.2915
+      min: 1.7
+      max: 16.3
     hardness:
       value: 12.5
       unit: GPa
@@ -285,10 +259,10 @@ materialProperties:
       context: 3 mol% yttria-stabilized tetragonal zirconia polycrystal (3Y-TZP), >99% density, room temperature (25°C), Vickers microhardness indentation with 0.49 N load
       researched_date: '2025-11-23T22:21:51.315169'
       needs_validation: true
-      min: 6.65
-      max: 3149.65
+      min: 6.7
+      max: 3150
     tensileStrength:
-      value: 250.0
+      value: 250
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -297,10 +271,10 @@ materialProperties:
       context: 3 mol% Y2O3-stabilized tetragonal zirconia polycrystal (TZP), 99.5% theoretical density, room temperature (25°C), uniaxial tensile testing per ASTM C1275
       researched_date: '2025-11-23T22:22:03.705231'
       needs_validation: true
-      min: 5.0
+      min: 5
       max: 600
     thermalDestruction:
-      value: 2923.0
+      value: 2923
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -309,8 +283,8 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2, >99% purity, fully dense sintered ceramic, measured under inert atmosphere via differential scanning calorimetry (DSC)
       researched_date: '2025-11-23T22:22:11.486585'
       needs_validation: true
-      min: 273.0
-      max: 3900.0
+      min: 273
+      max: 3900
     laserReflectivity:
       value: 0.28
       unit: ''
@@ -321,10 +295,10 @@ materialProperties:
       context: 8 mol% Y2O3-stabilized ZrO2 (commercial grade, 99.5% purity), 25°C, 1064 nm wavelength (Nd:YAG laser), normal incidence, polished surface
       researched_date: '2025-11-23T22:22:17.443632'
       needs_validation: true
-      min: 0.04925
-      max: 0.39575
+      min: 0.05
+      max: 0.4
     flexuralStrength:
-      value: 1050.0
+      value: 1050
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -334,29 +308,11 @@ materialProperties:
       researched_date: '2025-11-23T22:22:25.515836'
       needs_validation: true
       min: 45.6
-      max: 1152.6
+      max: 1153
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 2.3
-      unit: W/m·K
-      min: 2.0
-      max: 3.0
-      source: ai_research
-    thermalDiffusivity:
-      value: 7.7e-07
-      unit: m²/s
-      min: 5.0e-07
-      max: 1.0e-06
-      source: ai_research
-    ablationThreshold:
-      value: 3.5
-      unit: J/cm²
-      min: 2.0
-      max: 5.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.417273'
+    generated_date: '2025-11-29T15:19:10.998199'

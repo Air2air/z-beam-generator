@@ -60,30 +60,46 @@ machineSettings:
   powerRange:
     unit: W
     value: 90
+    min: 1
+    max: 120
   wavelength:
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
     unit: μm
     value: 80
+    min: 0.1
+    max: 500
   repetitionRate:
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   pulseWidth:
     unit: ns
     value: 15
+    min: 0.1
+    max: 1000
   scanSpeed:
     unit: mm/s
     value: 800
+    min: 10
+    max: 5000
   passCount:
     unit: passes
     value: 3
+    min: 1
+    max: 10
   overlapRatio:
     unit: '%'
     value: 50
+    min: 10
+    max: 90
   fluence:
     unit: J/cm²
-    value: 3.0
+    value: 3
 material_challenges:
   thermal_management:
   - challenge: Matrix degradation and delamination
@@ -132,4 +148,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:31.183299'
+    generated_date: '2025-11-29T15:19:08.309586'

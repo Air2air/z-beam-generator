@@ -64,13 +64,7 @@ images:
 caption:
   before: At 1000x magnification, the boron carbide surface looks rough and dotted with dark specks of contamination. Grimy layers cover the peaks and valleys, making the texture uneven and patchy. Scattered debris clings tightly, blocking any clear view of the base material.
   after: After laser treatment at 1000x magnification, the boron carbide surface appears smooth and uniformly bright. The clean texture reveals sharp edges without lingering spots or roughness. We've restored the material's natural clarity, free from all
-faq:
-- question: How do I set up laser cleaning for Boron Carbide without damaging it?
-  answer: Watch the power closely at first—Boron Carbide's toughness means it resists heat well, but too much can crack the surface. Start with low pulses to test absorption; it takes in laser energy steadily compared to softer ceramics. This approach clears contaminants gently while keeping the material's hardness intact.
-- question: What causes uneven cleaning on Boron Carbide surfaces during laser use?
-  answer: I've seen spots form when the beam moves too fast over its dense structure. Boron Carbide holds heat evenly, unlike porous materials that scatter it, so slow the scan for uniform removal. Adjust focus to match its smooth roughness and avoid residue buildup.
-- question: Can laser cleaning restore Boron Carbide's original strength after heavy use?
-  answer: Tends to work best if you control the depth right from the start. Boron Carbide bounces back strong after cleaning, thanks to low expansion under heat—better than metals
+faq: null
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -86,10 +80,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 2.52
+      value: 2.5
       unit: g/cm³
-      min: 1.7385
-      max: 16.2915
+      min: 1.7
+      max: 16.3
     porosity:
       value: 0
       unit: '%'
@@ -101,58 +95,58 @@ materialProperties:
     tensileStrength:
       value: 350
       unit: MPa
-      min: 5.0
+      min: 5
       max: 600
     youngsModulus:
       value: 450
       unit: GPa
-      min: 39.95
-      max: 679.05
+      min: 40
+      max: 679
     hardness:
       value: 38
       unit: GPa
-      min: 6.65
-      max: 3149.65
+      min: 6.7
+      max: 3150
     flexuralStrength:
       value: 400
       unit: MPa
       min: 45.6
-      max: 1152.6
+      max: 1153
     oxidationResistance:
       value: 30
       unit: μm/year
-      min: 0.0
-      max: 2310.0
+      min: 0
+      max: 2310
     corrosionResistance:
       value: 0.75
       unit: mm/year
-      min: 0.000475
-      max: 262.499975
+      min: '0.00047'
+      max: 262
     thermalDestruction:
       value: 2723
       unit: K
-      min: 273.0
-      max: 3900.0
+      min: 273
+      max: 3900
     laserAbsorption:
       value: 0.18
       unit: dimensionless
-      min: 0.3515
-      max: 2624.9815
+      min: 0.35
+      max: 2625
     compressiveStrength:
       value: 350
       unit: MPa
-      min: 95.0
-      max: 4090.0
+      min: 95
+      max: 4090
     fractureToughness:
       value: 28
       unit: MPa m^{1/2}
-      min: 0.565
-      max: 5.735
+      min: 0.56
+      max: 5.7
     electricalResistivity:
       value: 10
       unit: Ω·m
-      min: 0.0
-      max: 105000000000000.0
+      min: 0
+      max: 1e+14
     laserDamageThreshold:
       value: 5.2
       unit: J/cm²
@@ -163,8 +157,8 @@ materialProperties:
       context: Polycrystalline boron carbide (B4C, 99% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air
       researched_date: '2025-11-24T19:46:10.569522'
       needs_validation: true
-      min: 1.625
-      max: 20.875
+      min: 1.6
+      max: 20.9
     ablationThreshold:
       value: 2.8
       unit: J/cm²
@@ -175,10 +169,10 @@ materialProperties:
       context: High-purity polycrystalline boron carbide (B4C, >99% purity), room temperature (25°C), measured with 1064 nm Nd:YAG laser, 10 ns pulse duration, in air atmosphere
       researched_date: '2025-11-24T19:46:16.105007'
       needs_validation: true
-      min: 0.566
-      max: 3.954
+      min: 0.57
+      max: 4
     thermalDiffusivity:
-      value: 1.18e-05
+      value: '1.2e-05'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -187,10 +181,10 @@ materialProperties:
       context: Hot-pressed Boron Carbide (B4C, >99% purity), 25°C, polycrystalline structure
       researched_date: '2025-11-24T19:46:22.256236'
       needs_validation: true
-      min: 1.0e-06
-      max: 7.3e-05
+      min: 1e-06
+      max: '7.3e-05'
     thermalExpansion:
-      value: 5.6e-06
+      value: '5.6e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: materials_database
@@ -199,10 +193,10 @@ materialProperties:
       context: Polycrystalline hot-pressed boron carbide (B4C, >99% purity), 20-1000°C range, measured by dilatometry
       researched_date: '2025-11-24T19:46:27.401300'
       needs_validation: true
-      min: 3.0e-06
-      max: 1.1e-05
+      min: 3e-06
+      max: '1.1e-05'
     specificHeat:
-      value: 1076.0
+      value: 1076
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -212,9 +206,9 @@ materialProperties:
       researched_date: '2025-11-24T19:46:39.932422'
       needs_validation: true
       min: 250
-      max: 2500.0
+      max: 2500
     thermalConductivity:
-      value: 30.0
+      value: 30
       unit: W/m·K
       source: scientific_literature
       source_type: reference_handbook
@@ -223,8 +217,8 @@ materialProperties:
       context: Polycrystalline boron carbide (B4C, >98% purity), 300 K (27°C), steady-state heat flow method
       researched_date: '2025-11-24T19:46:47.699523'
       needs_validation: true
-      min: 1.425
-      max: 126.975
+      min: 1.4
+      max: 127
     laserReflectivity:
       value: 0.32
       unit: dimensionless
@@ -235,30 +229,12 @@ materialProperties:
       context: Polycrystalline boron carbide (B4C, 99% purity), room temperature (25°C), normal incidence reflectivity at 1.06 μm wavelength (Nd:YAG laser)
       researched_date: '2025-11-24T19:46:54.814970'
       needs_validation: true
-      min: 0.04925
-      max: 0.39575
+      min: 0.05
+      max: 0.4
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 30
-      unit: W/m·K
-      min: 25
-      max: 35
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.23e-05
-      unit: m²/s
-      min: 1.0e-05
-      max: 1.5e-05
-      source: ai_research
-    ablationThreshold:
-      value: 10
-      unit: J/cm²
-      min: 5
-      max: 15
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.249786'
+    generated_date: '2025-11-29T15:19:10.912123'

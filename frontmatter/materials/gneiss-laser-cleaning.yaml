@@ -63,13 +63,7 @@ images:
 caption:
   before: At 1000x magnification, the gneiss surface appears coated with a thick layer of dark contaminants that obscure underlying textures. Fine particles cling tightly to the rough contours, creating uneven patches and dull spots across the view. This contamination hides the natural banding patterns that define gneiss.
   after: After laser treatment, the same surface reveals a clear, restored texture with distinct mineral bands now fully exposed. Smooth areas emerge where contaminants once dominated, allowing the rock's layered structure to stand out sharply
-faq:
-- question: How can I avoid damaging gneiss during laser cleaning?
-  answer: We've found that gneiss's layered structure requires careful power control to prevent delamination. Start with low intensity passes to test surface response without causing cracks. This approach restores the stone evenly while minimizing thermal stress on its durable composition.
-- question: What's the best practice for removing stains from gneiss?
-  answer: We typically begin by assessing the stain depth on gneiss's low-porosity surface. Use short, focused pulses to gradually expose clean layers beneath. This method effectively removes contaminants and reveals the stone's natural patterns without altering its hardness.
-- question: How does gneiss behave under laser cleaning compared to other stones?
-  answer: In our experience, gneiss cleans more predictably than softer stones due to its strength and moderate energy absorption. The process reduces surface buildup while preserving its compressive integrity throughout multiple sessions. Watch for subtle banding variations that may need adjusted scan speeds to avoid uneven results.
+faq: null
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -87,26 +81,26 @@ materialProperties:
     density:
       value: 2.7
       unit: g/cm³
-      min: 2.204
-      max: 3044.884
+      min: 2.2
+      max: 3045
     porosity:
       value: 3
       unit: '%'
-      min: 0.0
-      max: 19.425
+      min: 0
+      max: 19.4
     surfaceRoughness:
       value: 8
       unit: μm
     tensileStrength:
       value: 120
       unit: MPa
-      min: 1.35
-      max: 15.65
+      min: 1.4
+      max: 15.7
     youngsModulus:
       value: 50
       unit: GPa
-      min: 9.785
-      max: 78749999999.485
+      min: 9.8
+      max: '7.9e+10'
     hardness:
       value: 1.8
       unit: GPa
@@ -115,43 +109,43 @@ materialProperties:
     flexuralStrength:
       value: 180
       unit: MPa
-      min: 2.24
-      max: 36.56
+      min: 2.2
+      max: 36.6
     oxidationResistance:
       value: 8
       unit: μm/year
-      min: 9.5e-05
-      max: 1546.649995
+      min: '9.5e-05'
+      max: 1547
     corrosionResistance:
       value: 0.85
       unit: mm/year
-      min: 6.6e-05
-      max: 20.999997
+      min: '6.6e-05'
+      max: 21
     thermalDestruction:
       value: 1273
       unit: K
-      min: 273.0
-      max: 2300.0
+      min: 273
+      max: 2300
     laserAbsorption:
       value: 0.3
       unit: dimensionless
-      min: 0.057
-      max: 1259999.997
+      min: 0.06
+      max: '1.3e+06'
     compressiveStrength:
       value: 120
       unit: MPa
       min: 2.1
-      max: 219.9
+      max: 220
     fractureToughness:
       value: 6
       unit: MPa m^{1/2}
-      min: 0.133
-      max: 2.047
+      min: 0.13
+      max: 2
     electricalResistivity:
-      value: 1000000000000.0
+      value: 1e+12
       unit: Ω·m
       min: 9.5
-      max: 1049999999999999.5
+      max: 1e+15
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
@@ -162,8 +156,8 @@ materialProperties:
       context: Natural gneiss sample from Bohemian Massif (quartz 30-40%, feldspar 40-50%, mica 10-20%), room temperature (25°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
       researched_date: '2025-11-24T12:39:37.551270'
       needs_validation: true
-      min: 0.425
-      max: 13.075
+      min: 0.42
+      max: 13.1
     ablationThreshold:
       value: 2.3
       unit: J/cm²
@@ -174,10 +168,10 @@ materialProperties:
       context: Natural gneiss sample (quartz-feldspar-mica composition, 95% purity equivalent), 20°C, 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns), atmospheric pressure
       researched_date: '2025-11-24T12:39:46.478401'
       needs_validation: true
-      min: 0.645
-      max: 6.255
+      min: 0.65
+      max: 6.3
     thermalDiffusivity:
-      value: 1.3e-06
+      value: '1.3e-06'
       unit: m²/s
       source: scientific_literature
       source_type: journal_article
@@ -186,10 +180,10 @@ materialProperties:
       context: Gneiss (quartz-feldspar-mica composition, typical metamorphic rock from Precambrian shield), 25°C, measured under ambient pressure using transient heating method
       researched_date: '2025-11-24T12:39:57.024288'
       needs_validation: true
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     thermalExpansion:
-      value: 9.2e-06
+      value: '9.2e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: materials_database
@@ -198,10 +192,10 @@ materialProperties:
       context: Natural gneiss (quartz-feldspar-mica composition, typical metamorphic rock), 20-100°C range, linear coefficient measured under ambient pressure
       researched_date: '2025-11-24T12:40:03.391606'
       needs_validation: true
-      min: 6.0e-06
-      max: 11.97
+      min: 6e-06
+      max: 12
     specificHeat:
-      value: 840.0
+      value: 840
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -234,30 +228,12 @@ materialProperties:
       context: Natural gneiss sample (quartz-feldspar-mica composition, 70% quartz), 20°C, 1064 nm Nd:YAG laser wavelength, specular and diffuse reflectivity combined, polished surface
       researched_date: '2025-11-24T12:40:22.520341'
       needs_validation: true
-      min: 0.0252
-      max: 0.4388
+      min: 0.03
+      max: 0.44
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 2.5
-      unit: W/m·K
-      min: 1.5
-      max: 3.5
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.2e-06
-      unit: m²/s
-      min: 8.0e-07
-      max: 1.5e-06
-      source: ai_research
-    ablationThreshold:
-      value: 5
-      unit: J/cm²
-      min: 3
-      max: 7
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.419220'
+    generated_date: '2025-11-29T15:19:10.504973'

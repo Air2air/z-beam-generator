@@ -86,10 +86,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 1.05
+      value: 1.1
       unit: g/cm³
-      min: 0.84275
-      max: 2.21225
+      min: 0.84
+      max: 2.2
     porosity:
       value: 0
       unit: '%'
@@ -107,35 +107,35 @@ materialProperties:
       min: 0.01
       max: 5000
     hardness:
-      value: 0.075
+      value: 0.07
       unit: GPa
-      min: 51.75
-      max: 123.25
+      min: 51.8
+      max: 123
     flexuralStrength:
       value: 70
       unit: MPa
-      min: 20.655
-      max: 96.445
+      min: 20.7
+      max: 96.4
     oxidationResistance:
       value: 1.8
       unit: μm/year
       min: 0.76
-      max: 1574.96
+      max: 1575
     corrosionResistance:
       value: 0.88
       unit: mm/year
-      min: 0.0
-      max: 105.0
+      min: 0
+      max: 105
     thermalDestruction:
       value: 478
       unit: K
-      min: 227.85
-      max: 715.15
+      min: 228
+      max: 715
     laserAbsorption:
       value: 0.55
       unit: dimensionless
-      min: 0.285
-      max: 125999.985
+      min: 0.28
+      max: 126000
     compressiveStrength:
       value: 40
       unit: MPa
@@ -147,12 +147,12 @@ materialProperties:
       min: 0.7
       max: 2.9
     electricalResistivity:
-      value: 100000000000000.0
+      value: 1e+14
       unit: Ω·m
-      min: 9500000000000.0
-      max: 1.049995e+17
+      min: '9.5e+12'
+      max: 1e+17
     laserReflectivity:
-      value: 0.045
+      value: 0.04
       unit: ''
       source: scientific_literature
       source_type: textbook
@@ -161,10 +161,10 @@ materialProperties:
       context: Commercial-grade ABS (acrylonitrile-butadiene-styrene copolymer, 20-30% acrylonitrile content), 25°C, normal incidence, calculated for wavelengths 400-1100 nm (visible to near-IR, relevant for common laser cleaning wavelengths like 1064 nm Nd:YAG)
       researched_date: '2025-11-24T11:47:38.744450'
       needs_validation: true
-      min: 0.02155
-      max: 0.05345
+      min: 0.02
+      max: 0.05
     thermalExpansion:
-      value: 9.0e-05
+      value: 9e-05
       unit: K^{-1}
       source: scientific_literature
       source_type: materials_database
@@ -173,10 +173,10 @@ materialProperties:
       context: Commercial grade ABS (acrylonitrile-butadiene-styrene copolymer, 20-30% butadiene content), 20-80°C, measured by dilatometry per ASTM E831
       researched_date: '2025-11-24T11:47:48.740013'
       needs_validation: true
-      min: 5.9e-05
-      max: 0.000196
+      min: '5.9e-05'
+      max: '0.0002'
     thermalDiffusivity:
-      value: 1.3e-07
+      value: '1.3e-07'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -185,10 +185,10 @@ materialProperties:
       context: Commercial grade ABS (acrylonitrile butadiene styrene copolymer), 23°C, calculated from thermal conductivity, density, and specific heat
       researched_date: '2025-11-24T11:47:57.170420'
       needs_validation: true
-      min: 0.0
-      max: 0.0
+      min: 0
+      max: 0
     specificHeat:
-      value: 1300.0
+      value: 1300
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -197,7 +197,7 @@ materialProperties:
       context: Standard commercial ABS (acrylonitrile-butadiene-styrene copolymer, ~70% polystyrene, 20% polyacrylonitrile, 10% polybutadiene), 25°C, amorphous state
       researched_date: '2025-11-24T11:48:04.097850'
       needs_validation: true
-      min: 1.0
+      min: 1
       max: 2500
     ablationThreshold:
       value: 1.8
@@ -210,7 +210,7 @@ materialProperties:
       researched_date: '2025-11-24T11:48:15.225679'
       needs_validation: true
       min: 0.39
-      max: 2.81
+      max: 2.8
     thermalConductivity:
       value: 0.19
       unit: W/m·K
@@ -233,30 +233,12 @@ materialProperties:
       context: Commercial ABS (acrylonitrile-butadiene-styrene copolymer, 20% glass fiber reinforced), 248 nm KrF excimer laser, 25 ns pulse duration, room temperature (25°C), vacuum environment
       researched_date: '2025-11-24T11:48:28.468942'
       needs_validation: true
-      min: 0.715
-      max: 2.585
+      min: 0.71
+      max: 2.6
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 0.22
-      unit: W/m·K
-      min: 0.15
-      max: 0.3
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.4e-07
-      unit: m²/s
-      min: 1.0e-07
-      max: 2.0e-07
-      source: ai_research
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      min: 0.5
-      max: 2.5
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.045153'
+    generated_date: '2025-11-29T15:19:10.336349'

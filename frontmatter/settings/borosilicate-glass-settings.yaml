@@ -59,30 +59,48 @@ machineSettings:
   powerRange:
     unit: W
     value: 25
+    min: 1
+    max: 120
   wavelength:
     unit: nm
     value: 1064
+    min: 355
+    max: 10640
   spotSize:
     unit: μm
     value: 100
+    min: 0.1
+    max: 500
   repetitionRate:
     unit: kHz
     value: 50
+    min: 1
+    max: 200
   fluenceThreshold:
     unit: J/cm²
     value: 2.5
+    min: 0.3
+    max: 4.5
   pulseWidth:
     unit: ns
     value: 100
+    min: 0.1
+    max: 1000
   scanSpeed:
     unit: mm/s
     value: 500
+    min: 10
+    max: 5000
   passCount:
     unit: passes
     value: 3
+    min: 1
+    max: 10
   overlapRatio:
     unit: '%'
     value: 50
+    min: 10
+    max: 90
 material_challenges:
   thermal_management:
   - challenge: Thermal shock and catastrophic failure
@@ -133,4 +151,4 @@ material_challenges:
     - Avoid dragging ablated material across clean areas
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:27.534766'
+    generated_date: '2025-11-29T15:19:06.420200'

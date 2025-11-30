@@ -97,7 +97,8 @@ class MaterialImageGenerator:
             print("\n📦 Loading contamination patterns from Contaminants.yaml...")
             research_data = self.pattern_selector.get_patterns_for_image_gen(
                 material_name=material_name,
-                num_patterns=config.contamination_uniformity
+                num_patterns=config.contamination_uniformity,
+                context=config.context
             )
             
             patterns = research_data.get('selected_patterns', [])
@@ -132,7 +133,10 @@ class MaterialImageGenerator:
             contamination_uniformity=config.contamination_uniformity,
             view_mode=config.view_mode,
             material_category=config.category,
-            learned_feedback=learned_feedback
+            learned_feedback=learned_feedback,
+            severity=config.severity,
+            aging_weight=getattr(config, 'aging_weight', None),
+            contamination_weight=getattr(config, 'contamination_weight', None)
         )
         
         return prompt
@@ -350,7 +354,8 @@ class MaterialImageGenerator:
         print("\n📦 Loading contamination patterns from Contaminants.yaml...")
         research_data = self.pattern_selector.get_patterns_for_image_gen(
             material_name=material_name,
-            num_patterns=config.contamination_uniformity
+            num_patterns=config.contamination_uniformity,
+            context=config.context
         )
         
         patterns = research_data.get('selected_patterns', [])
@@ -397,9 +402,37 @@ class MaterialImageGenerator:
             research_data['setting'] = 'a workshop bench'
             print("   📋 No shape research (no API key) - using generic")
         
+        # === ASSEMBLY RESEARCH (for complex parts) ===
+        shape_name = research_data.get('common_object', research_data.get('common_shape', ''))
+        if self.gemini_api_key and shape_name:
+            try:
+                from domains.materials.image.research.assembly_researcher import AssemblyResearcher
+                assembly_researcher = AssemblyResearcher()
+                
+                # Only research if it's a complex part
+                if assembly_researcher.is_complex_part(shape_name):
+                    print("\n🔧 Researching assembly components for complex part...")
+                    assembly_context = assembly_researcher.get_assembly_context(material_name, shape_name)
+                    
+                    if assembly_context:
+                        research_data['assembly_context'] = assembly_context
+                        research_data['assembly_description'] = assembly_researcher.format_for_prompt(assembly_context)
+                        
+                        # Log assembly components
+                        components = assembly_context.get('assembly_components', [])
+                        print(f"   ✅ Found {len(components)} assembly components:")
+                        for comp in components:
+                            print(f"      • {comp['material']} {comp['part']} ({comp['relationship']})")
+            except Exception as e:
+                logger.debug(f"Assembly research skipped: {e}")
+        
         # === PROMPT GENERATION ===
+        # If assembly context was found, skip orchestrator to use SharedPromptBuilder 
+        # which can inject the assembly context into the prompt
+        has_assembly_context = bool(research_data.get('assembly_description'))
+        
         validation_result = None
-        if use_validation:
+        if use_validation and not has_assembly_context:
             try:
                 validated_package = self.generate_validated_prompt_package(material_name, config)
                 prompt = validated_package['prompt']

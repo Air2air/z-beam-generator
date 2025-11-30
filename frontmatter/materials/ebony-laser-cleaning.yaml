@@ -86,56 +86,56 @@ materialProperties:
     density:
       value: 1.2
       unit: g/cm³
-      min: 0.399
-      max: 955.479
+      min: 0.4
+      max: 955
     porosity:
       value: 8
       unit: '%'
-      min: 0.38885
-      max: 0.78815
+      min: 0.39
+      max: 0.79
     surfaceRoughness:
       value: 2
       unit: μm
     tensileStrength:
       value: 120
       unit: MPa
-      min: 9.53
-      max: 209.07
+      min: 9.5
+      max: 209
     youngsModulus:
       value: 15
       unit: GPa
-      min: 3.2775
-      max: 11234.8275
+      min: 3.3
+      max: 11235
     hardness:
       value: 0.8
       unit: GPa
-      min: 399.0
-      max: 12589.5
+      min: 399
+      max: 12590
     flexuralStrength:
       value: 180
       unit: MPa
-      min: 19.15
-      max: 147.85
+      min: 19.1
+      max: 148
     oxidationResistance:
       value: 4
       unit: μm/year
-      min: 0.095
-      max: 549.145
+      min: 0.1
+      max: 549
     corrosionResistance:
       value: 0.93
       unit: mm/year
-      min: 0.0
-      max: 4.725
+      min: 0
+      max: 4.7
     thermalDestruction:
       value: 573
       unit: K
-      min: 226.1
-      max: 641.9
+      min: 226
+      max: 642
     laserAbsorption:
       value: 0.15
       unit: dimensionless
-      min: 0.779
-      max: 335999.959
+      min: 0.78
+      max: 336000
     compressiveStrength:
       value: 120
       unit: MPa
@@ -144,13 +144,13 @@ materialProperties:
     fractureToughness:
       value: 3
       unit: MPa m^{1/2}
-      min: 0.259
-      max: 2.041
+      min: 0.26
+      max: 2
     electricalResistivity:
-      value: 10000000000.0
+      value: 1e+10
       unit: Ω·m
-      min: 9500000000.0
-      max: 1049500000000.0
+      min: '9.5e+09'
+      max: 1e+12
     laserDamageThreshold:
       value: 3.2
       unit: J/cm²
@@ -161,10 +161,10 @@ materialProperties:
       context: Gaboon ebony (Diospyros dendo), natural density 1.05 g/cm³, 25°C, 1064 nm Nd:YAG laser, pulse duration 10 ns, measured on polished surface
       researched_date: '2025-11-24T12:37:10.939087'
       needs_validation: true
-      min: 0.0025
-      max: 5.4475
+      min: '0.0025'
+      max: 5.4
     ablationThreshold:
-      value: 1.42
+      value: 1.4
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -173,10 +173,10 @@ materialProperties:
       context: Natural ebony (Diospyros ebenum, 100% purity as-sourced wood), 20°C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns
       researched_date: '2025-11-24T12:37:17.480459'
       needs_validation: true
-      min: 0.505
-      max: 2.595
+      min: 0.51
+      max: 2.6
     thermalDiffusivity:
-      value: 1.17e-07
+      value: '1.2e-07'
       unit: m²/s
       source: scientific_literature
       source_type: textbook
@@ -185,10 +185,10 @@ materialProperties:
       context: Dry ebony wood (0% moisture content, Diospyros spp.), 25°C, along the grain direction, calculated from measured thermal conductivity, density, and specific heat
       researched_date: '2025-11-24T12:37:36.520246'
       needs_validation: true
-      min: 0.0
-      max: 0.0
+      min: 0
+      max: 0
     thermalExpansion:
-      value: 4.2e-06
+      value: '4.2e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: textbook
@@ -197,10 +197,10 @@ materialProperties:
       context: African ebony (Diospyros crassiflora), longitudinal direction, 20-25°C, oven-dry condition, dilatometry measurement
       researched_date: '2025-11-24T12:37:45.205972'
       needs_validation: true
-      min: 1.0e-06
-      max: 5.8e-05
+      min: 1e-06
+      max: '5.8e-05'
     specificHeat:
-      value: 1420.0
+      value: 1420
       unit: J/kg·K
       source: scientific_literature
       source_type: journal_article
@@ -209,10 +209,10 @@ materialProperties:
       context: Oven-dry ebony wood (Diospyros crassiflora, density 1050 kg/m³), 25°C, measured under standard atmospheric pressure using differential scanning calorimetry (DSC)
       researched_date: '2025-11-24T12:38:07.314343'
       needs_validation: true
-      min: 1.311
-      max: 1553.931
+      min: 1.3
+      max: 1554
     thermalConductivity:
-      value: 0.162
+      value: 0.16
       unit: W/(m·K)
       source: scientific_literature
       source_type: textbook
@@ -224,7 +224,7 @@ materialProperties:
       min: 0.04
       max: 0.4
     laserReflectivity:
-      value: 0.035
+      value: 0.04
       unit: ''
       source: scientific_literature
       source_type: journal_article
@@ -233,30 +233,12 @@ materialProperties:
       context: Natural ebony (Diospyros crassiflora, density 1.05 g/cm³), room temperature (25°C), 1064 nm Nd:YAG laser wavelength, diffuse reflectivity measured via integrating sphere spectrophotometer
       researched_date: '2025-11-24T12:38:27.077012'
       needs_validation: true
-      min: 0.01575
-      max: 0.43925
+      min: 0.02
+      max: 0.44
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 0.18
-      unit: W/m·K
-      min: 0.15
-      max: 0.21
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.2e-07
-      unit: m²/s
-      min: 1.0e-07
-      max: 1.5e-07
-      source: ai_research
-    ablationThreshold:
-      value: 3.0
-      unit: J/cm²
-      min: 2.0
-      max: 5.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.326022'
+    generated_date: '2025-11-29T15:19:10.457424'

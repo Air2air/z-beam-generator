@@ -105,119 +105,119 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     thermalDestruction:
-      value: 3340.0
+      value: 3340
       unit: K
       source: ai_research
-      min: 273.0
-      max: 3900.0
+      min: 273
+      max: 3900
     specificHeat:
-      value: 569.0
+      value: 569
       unit: J/kg·K
       source: ai_research
       min: 250
-      max: 2500.0
+      max: 2500
     youngsModulus:
-      value: 440.0
+      value: 440
       unit: GPa
       source: ai_research
-      min: 39.95
-      max: 679.05
+      min: 40
+      max: 679
     oxidationResistance:
-      value: 1073.0
+      value: 1073
       unit: K
       source: ai_research
-      min: 0.0
-      max: 2310.0
+      min: 0
+      max: 2310
     laserReflectivity:
       value: 0.35
       unit: dimensionless
       source: ai_research
-      min: 0.04925
-      max: 0.39575
+      min: 0.05
+      max: 0.4
     thermalConductivity:
-      value: 21.0
+      value: 21
       unit: W/m·K
       source: ai_research
-      min: 1.425
-      max: 126.975
+      min: 1.4
+      max: 127
     thermalExpansion:
-      value: 7.92e-06
+      value: '7.9e-06'
       unit: K^{-1}
       source: ai_research
-      min: 3.0e-06
-      max: 1.1e-05
+      min: 3e-06
+      max: '1.1e-05'
     density:
-      value: 4.93
+      value: 4.9
       unit: g/cm³
       source: ai_research
-      min: 1.7385
-      max: 16.2915
+      min: 1.7
+      max: 16.3
     hardness:
       value: 29.4
       unit: GPa
       source: ai_research
-      min: 6.65
-      max: 3149.65
+      min: 6.7
+      max: 3150
     corrosionResistance:
       value: 0.95
       unit: ''
       source: ai_research
-      min: 0.000475
-      max: 262.499975
+      min: '0.00047'
+      max: 262
     laserAbsorption:
       value: 0.7
       unit: dimensionless
       source: ai_research
-      min: 0.3515
-      max: 2624.9815
+      min: 0.35
+      max: 2625
     compressiveStrength:
-      value: 4000.0
+      value: 4000
       unit: MPa
       source: ai_research
-      min: 95.0
-      max: 4090.0
+      min: 95
+      max: 4090
     thermalDiffusivity:
-      value: 1.33e-05
+      value: '1.3e-05'
       unit: m²/s
       source: ai_research
-      min: 1.0e-06
-      max: 7.3e-05
+      min: 1e-06
+      max: '7.3e-05'
     flexuralStrength:
-      value: 400.0
+      value: 400
       unit: MPa
       source: ai_research
       min: 45.6
-      max: 1152.6
+      max: 1153
     tensileStrength:
-      value: 345.0
+      value: 345
       unit: MPa
       source: ai_research
-      min: 5.0
+      min: 5
       max: 600
     fractureToughness:
       value: 3.8
       unit: MPa√m
       source: ai_research
-      min: 0.565
-      max: 5.735
+      min: 0.56
+      max: 5.7
     porosity:
-      value: 0.0
+      value: 0
       unit: '%'
       source: ai_research
       min: 0
       max: 30
     electricalResistivity:
-      value: 6.8e-07
+      value: '6.8e-07'
       unit: Ω·m
       source: ai_research
-      min: 0.0
-      max: 105000000000000.0
+      min: 0
+      max: 1e+14
     ablationThreshold:
-      value: 12000.0
+      value: 12000
       unit: J/m²
       source: ai_research
-      min: 0.566
-      max: 3.954
+      min: 0.57
+      max: 4
     percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
@@ -229,16 +229,16 @@ materialProperties:
       max: 0.9
       source: ai_research
     absorptionCoefficient:
-      value: 5000000.0
+      value: 5e+06
       unit: m⁻¹
-      min: 1000000.0
-      max: 10000000.0
+      min: 1e+06
+      max: 1e+07
       source: ai_research
     laserDamageThreshold:
       value: 3.5
       unit: J/cm²
-      min: 1.0
-      max: 5.0
+      min: 1
+      max: 5
       source: ai_research
     thermalShockResistance:
       value: 2.5
@@ -259,10 +259,10 @@ materialProperties:
       max: 3500
       source: ai_research
     vaporPressure:
-      value: 1.0
+      value: 1
       unit: Pa
       min: 0.1
-      max: 10.0
+      max: 10
       source: ai_research
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
@@ -278,4 +278,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:35.131520'
+    generated_date: '2025-11-29T15:19:09.943204'

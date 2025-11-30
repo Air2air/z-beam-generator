@@ -110,230 +110,230 @@ materialProperties:
     label: Material Characteristics
     percentage: 40.0
     electricalConductivity:
-      value: 9490000.0
+      value: '9.5e+06'
       unit: S/m
       source: ai_research
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     electricalResistivity:
-      value: 1.08e-07
+      value: '1.1e-07'
       unit: Ω·m
       source: ai_research
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     fractureToughness:
-      value: 28.0
+      value: 28
       unit: MPa√m
       source: ai_research
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     surfaceRoughness:
-      value: 0.025
+      value: 0.03
       unit: μm
       source: ai_research
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     thermalDestruction:
-      value: 1828.0
+      value: 1828
       unit: K
       source: ai_research
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     specificHeat:
-      value: 244.1
+      value: 244
       unit: J/(kg·K)
       source: ai_research
       min: 43.4
-      max: 1904.6
+      max: 1905
     youngsModulus:
-      value: 121.0
+      value: 121
       unit: GPa
       source: ai_research
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     oxidationResistance:
-      value: 623.0
+      value: 623
       unit: K
       source: ai_research
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     laserReflectivity:
       value: 0.7
       unit: dimensionless (fraction)
       source: ai_research
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     thermalConductivity:
       value: 71.8
       unit: W/m·K
       source: ai_research
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     thermalExpansion:
-      value: 1.18e-05
+      value: '1.2e-05'
       unit: K^{-1}
       source: ai_research
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     density:
-      value: 12.023
+      value: 12
       unit: g/cm³
       source: ai_research
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     hardness:
-      value: 40.0
+      value: 40
       unit: HV
       source: ai_research
       min: 0.2
       max: 3500
     corrosionResistance:
-      value: 0.987
+      value: 0.99
       unit: V
       source: ai_research
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     laserAbsorption:
       value: 0.38
       unit: dimensionless
       source: ai_research
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
-      value: 340.0
+      value: 340
       unit: MPa
       source: ai_research
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     thermalDiffusivity:
-      value: 2.446e-05
+      value: '2.4e-05'
       unit: m²/s
       source: ai_research
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     flexuralStrength:
-      value: 250.0
+      value: 250
       unit: MPa
       source: ai_research
       min: 11.4
-      max: 2897.4
+      max: 2897
     tensileStrength:
-      value: 124.0
+      value: 124
       unit: MPa
       source: ai_research
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     porosity:
-      value: 0.0
+      value: 0
       unit: '%'
       source: ai_research
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     ablationThreshold:
       value: 1.1
       unit: J/cm²
       source: ai_research
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     absorptivity:
-      value: 0.042
+      value: 0.04
       unit: dimensionless
       source: ai_research
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     boilingPoint:
-      value: 3236.0
+      value: 3236
       unit: K
       source: ai_research
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     absorptionCoefficient:
-      value: 84200000.0
+      value: '8.4e+07'
       unit: m^{-1}
       source: ai_research
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     meltingPoint:
-      value: 1828.0
+      value: 1828
       unit: K
       source: ai_research
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
     vaporPressure:
-      value: 3.02
+      value: 3
       unit: Pa
       source: ai_research
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1828.0
+      value: 1828
       unit: K
       source: ai_research
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     reflectivity:
       value: 0.68
       unit: fraction
       source: ai_research
       min: 0.35
-      max: 1.01
+      max: 1
     thermalShockResistance:
-      value: 105.0
+      value: 105
       unit: K
       source: ai_research
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     laserDamageThreshold:
-      value: 1.05
+      value: 1.1
       unit: J/cm²
       source: ai_research
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
     absorptionCoefficient:
       source: ai_research
       unit: m^-1
-      value: 52000000.0
-      min: 589000.0
-      max: 98879000.0
+      value: '5.2e+07'
+      min: 589000
+      max: '9.9e+07'
     absorptivity:
       source: ai_research
       unit: dimensionless
       value: 0.35
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     laserDamageThreshold:
       source: ai_research
       unit: J/cm²
       value: 0.45
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     reflectivity:
       source: ai_research
       unit: dimensionless
       value: 0.71
       min: 0.35
-      max: 1.01
+      max: 1
     thermalDestructionPoint:
       source: ai_research
       unit: K
-      value: 1828.05
-      min: 133.3055
-      max: 3864.6045
+      value: 1828
+      min: 133
+      max: 3865
     thermalShockResistance:
       source: ai_research
       unit: MPa·m^0.5
       value: 1.8
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     vaporPressure:
       source: ai_research
       unit: Pa
-      value: 1.33
-      min: 0.0
-      max: 106391.25
+      value: 1.3
+      min: 0
+      max: 106391
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -349,4 +349,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:30.764309'
+    generated_date: '2025-11-29T15:19:08.078738'

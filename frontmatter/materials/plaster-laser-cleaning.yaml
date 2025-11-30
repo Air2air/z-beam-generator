@@ -116,35 +116,35 @@ materialProperties:
       min: 0.15
       max: 1.1
     thermalDestruction:
-      value: 773.0
+      value: 773
       unit: K
       source: ai_research
-      min: 273.0
-      max: 2500.0
+      min: 273
+      max: 2500
     specificHeat:
-      value: 1090.0
+      value: 1090
       unit: J/(kg·K)
       source: ai_research
-      min: 827.5
-      max: 1102.5
+      min: 828
+      max: 1102
     youngsModulus:
       value: 10.3
       unit: GPa
       source: ai_research
       min: 11.4
-      max: 11759999999.4
+      max: '1.2e+10'
     oxidationResistance:
       value: 0.98
       unit: dimensionless (0-1 scale)
       source: ai_research
-      min: 0.00095
-      max: 1154.99995
+      min: '0.00095'
+      max: 1155
     laserReflectivity:
       value: 0.42
       unit: dimensionless
       source: ai_research
-      min: 0.215
-      max: 0.325
+      min: 0.21
+      max: 0.33
     thermalConductivity:
       value: 0.25
       unit: W/(m·K)
@@ -152,35 +152,35 @@ materialProperties:
       min: 0.08
       max: 2.5
     thermalExpansion:
-      value: 1.4e-05
+      value: '1.4e-05'
       unit: /K
       source: ai_research
-      min: 6.0e-06
-      max: 1.2e-05
+      min: 6e-06
+      max: '1.2e-05'
     density:
-      value: 800.0
+      value: 800
       unit: kg/m³
       source: ai_research
-      min: 682.5
-      max: 3267.5
+      min: 682
+      max: 3268
     hardness:
-      value: 2.0
+      value: 2
       unit: Mohs
       source: ai_research
-      min: 0.285
-      max: 36.735
+      min: 0.28
+      max: 36.7
     corrosionResistance:
       value: 0.92
       unit: dimensionless
       source: ai_research
-      min: 0.019
-      max: 104.999
+      min: 0.02
+      max: 105
     laserAbsorption:
-      value: 118000.0
+      value: 118000
       unit: m^{-1}
       source: ai_research
-      min: 0.114
-      max: 125999.994
+      min: 0.11
+      max: 126000
     compressiveStrength:
       value: 5.2
       unit: MPa
@@ -188,17 +188,17 @@ materialProperties:
       min: 5
       max: 100
     thermalDiffusivity:
-      value: 2.1e-07
+      value: '2.1e-07'
       unit: m²/s
       source: ai_research
-      min: 0.0
-      max: 1.0e-06
+      min: 0
+      max: 1e-06
     flexuralStrength:
-      value: 2.07
+      value: 2.1
       unit: MPa
       source: ai_research
-      min: 0.845
-      max: 13.055
+      min: 0.84
+      max: 13.1
     tensileStrength:
       value: 0.69
       unit: MPa
@@ -266,4 +266,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:30.938797'
+    generated_date: '2025-11-29T15:19:08.175568'

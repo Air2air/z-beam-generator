@@ -22,8 +22,8 @@ logger = logging.getLogger(__name__)
 
 # Imagen API Limits
 IMAGEN_4_CHAR_LIMIT = 4096  # Hard limit for Imagen 4
-IMAGEN_OPTIMAL_TARGET = 2800  # Aggressive target with large margin for anti-text
-IMAGEN_WARNING_THRESHOLD = 3500  # Warn if approaching limit
+IMAGEN_OPTIMAL_TARGET = 2400  # Aggressive target - leaves room for corrections
+IMAGEN_WARNING_THRESHOLD = 3000  # Warn earlier
 
 
 class PromptOptimizer:
@@ -114,7 +114,11 @@ class PromptOptimizer:
         # Strategy 3: Remove redundant examples
         optimized = self._remove_examples(optimized)
         
-        # Strategy 4: Truncate lowest priority sections if still over
+        # Strategy 4: Aggressive section trimming if still over target
+        if len(optimized) > self.target_length:
+            optimized = self._aggressive_trim(optimized)
+        
+        # Strategy 5: Truncate lowest priority sections if still over hard limit
         if len(optimized) > self.hard_limit:
             # Account for JSON format length when calculating truncation
             available_space = self.hard_limit - len(json_format) if json_format else self.hard_limit
@@ -171,6 +175,22 @@ class PromptOptimizer:
         condensed = condensed.replace("due to the fact that", "because")
         condensed = condensed.replace("For the purpose of", "For")
         condensed = condensed.replace("for the purpose of", "for")
+        
+        # AGGRESSIVE: Remove verbose phrases
+        condensed = condensed.replace("This is rotation around the vertical axis ONLY - do NOT tilt up or down.", "")
+        condensed = condensed.replace("This horizontal rotation is MANDATORY - identical angles are UNACCEPTABLE.", "")
+        condensed = condensed.replace("Setting must be realistic and appropriate for the object type.", "")
+        condensed = condensed.replace("The specified shape is mandatory and non-negotiable.", "")
+        condensed = condensed.replace("Realistic contamination is subtle and adheres closely to the surface topology", "")
+        condensed = condensed.replace(" - NOT heavy buildup or glob-like deposits", "")
+        condensed = condensed.replace("100% perfectly clean is unrealistic.", "")
+        
+        # AGGRESSIVE: Shorten common phrases
+        condensed = condensed.replace("horizontal rotation", "H-rotation")
+        condensed = condensed.replace("contamination", "contam")
+        condensed = condensed.replace("BEFORE/AFTER", "B/A")
+        condensed = condensed.replace("workshop bench", "bench")
+        condensed = condensed.replace("building exterior", "exterior")
         
         # Remove duplicate whitespace and empty lines
         import re
@@ -236,6 +256,70 @@ class PromptOptimizer:
         
         return text
     
+    def _aggressive_trim(self, text: str) -> str:
+        """
+        Aggressively trim verbose sections to get under target.
+        
+        Strategies:
+        1. Remove duplicate/similar lines
+        2. Truncate long contamination descriptions
+        3. Remove low-value lines
+        4. Compress multi-line items to single line
+        """
+        import re
+        
+        lines = text.split('\n')
+        trimmed_lines = []
+        seen_concepts = set()
+        
+        for line in lines:
+            stripped = line.strip()
+            
+            # Skip empty lines
+            if not stripped:
+                if trimmed_lines and trimmed_lines[-1].strip():  # Keep one blank between sections
+                    trimmed_lines.append('')
+                continue
+            
+            # Skip lines that repeat concepts we've already covered
+            # NOTE: Rotation removed from dedup - it's CRITICAL and must always appear
+            concept_markers = [
+                ('gravity', 'settles', 'bottom'),
+                ('thick', 'caked', 'buildup'),
+                ('text', 'label', 'watermark'),
+                ('same object', 'identical', 'continuity'),
+            ]
+            
+            skip_line = False
+            lower = stripped.lower()
+            for markers in concept_markers:
+                if any(m in lower for m in markers):
+                    key = markers[0]
+                    if key in seen_concepts:
+                        skip_line = True
+                        break
+                    seen_concepts.add(key)
+            
+            if skip_line:
+                continue
+            
+            # Truncate very long lines (>150 chars)
+            # EXCEPTION: Never truncate the base structure line (first line contains critical format + assembly context)
+            is_base_structure = len(trimmed_lines) == 0 and 'split-screen' in stripped.lower()
+            if len(stripped) > 150 and not is_base_structure:
+                # Keep first 120 chars + ...
+                stripped = stripped[:120].rsplit(' ', 1)[0] + '...'
+            
+            trimmed_lines.append(stripped)
+        
+        result = '\n'.join(trimmed_lines)
+        
+        # Remove duplicate newlines again
+        result = re.sub(r'\n{3,}', '\n\n', result)
+        
+        logger.info(f"🔧 Aggressive trim: {len(text)} → {len(result)} chars")
+        return result
+
     def _emergency_truncate(
         self,
         text: str,

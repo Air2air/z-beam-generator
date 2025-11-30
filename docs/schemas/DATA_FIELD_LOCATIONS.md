@@ -103,35 +103,87 @@ contamination_patterns:
 
 ---
 
-### **MachineSettings.yaml**
+### **Settings.yaml** (domains/settings/)
 
 ```yaml
-materials:
+settings:
   [material_name]:
-    # === CORE SETTINGS ===
-    power: {...}
-    speed: {...}
-    frequency: {...}
-    pulseWidth: {...}
-    # ... ~14 total settings ...
+    # === MACHINE SETTINGS ===
+    machineSettings:
+      powerRange:
+        value: number                 # Material-specific optimal value
+        unit: string                  # W, nm, kHz, etc.
+      wavelength: {...}
+      spotSize: {...}
+      repetitionRate: {...}
+      energyDensity: {...}
+      pulseWidth: {...}
+      scanSpeed: {...}
+      passCount: {...}
+      overlapRatio: {...}
     
     # === METADATA ===
     name: string
     category: string
-    title: string
+    material_challenges: {...}
     settings_description: string      # Similar to material_description
 ```
 
 **Key Points**:
+- ✅ Source of truth for material-specific machineSettings
 - ✅ Uses `settings_description` (not material_description)
-- ✅ 132/166 materials have settings (34 missing)
-- ✅ All settings have min/max ranges
+- ✅ 174 materials have settings
+
+---
+
+### **Settings Frontmatter** (frontmatter/settings/)
+
+```yaml
+name: Aluminum
+machineSettings:
+  powerRange:
+    value: 100                        # From Settings.yaml
+    min: 1.0                          # From Categories.yaml machineSettingsRanges
+    max: 120                          # From Categories.yaml machineSettingsRanges
+    unit: W                           # From Settings.yaml
+  wavelength:
+    value: 1064
+    min: 355
+    max: 10640
+    unit: nm
+  # ... 9 total parameters with min/max ...
+```
+
+**Key Points**:
+- ✅ `value` comes from Settings.yaml (material-specific optimal)
+- ✅ `min`/`max` come from Categories.yaml `machineSettingsRanges` (global ranges)
+- ✅ Enrichment done by `TrivialFrontmatterExporter._enrich_machine_settings()`
+- ✅ 160 settings frontmatter files generated
+- ✅ Added Nov 29, 2025
 
 ---
 
 ### **Categories.yaml**
 
 ```yaml
+# === GLOBAL MACHINE SETTINGS RANGES (Nov 29, 2025) ===
+machineSettingsRanges:
+  powerRange:
+    min: 1.0                          # Global minimum across all materials
+    max: 120                          # Global maximum across all materials
+    unit: W
+    description: "Laser power range..."
+  wavelength:
+    min: 355
+    max: 10640
+    unit: nm
+  energyDensity:
+    min: 0.1
+    max: 20.0
+    unit: J/cm²
+  # ... 11 total parameters ...
+
+# === CATEGORY DEFINITIONS ===
 categories:
   [category_name]:
     # === CATEGORY METADATA ===
@@ -148,6 +200,9 @@ categories:
 ```
 
 **Key Points**:
+- ✅ `machineSettingsRanges` at TOP LEVEL (not nested in categories)
+- ✅ Provides global min/max for all laser parameters
+- ✅ Used by `get_parameter_ranges()` to enrich Settings frontmatter
 - ✅ Defines property ranges at category level
 - ✅ Materials inherit these ranges
 - ✅ Null material ranges = use category range

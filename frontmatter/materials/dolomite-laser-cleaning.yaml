@@ -85,28 +85,28 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 2.85
+      value: 2.9
       unit: g/cm³
-      min: 2.204
-      max: 3044.884
+      min: 2.2
+      max: 3045
     porosity:
       value: 5
       unit: '%'
-      min: 0.0
-      max: 19.425
+      min: 0
+      max: 19.4
     surfaceRoughness:
       value: 6
       unit: μm
     tensileStrength:
       value: 90
       unit: MPa
-      min: 1.35
-      max: 15.65
+      min: 1.4
+      max: 15.7
     youngsModulus:
       value: 65
       unit: GPa
-      min: 9.785
-      max: 78749999999.485
+      min: 9.8
+      max: '7.9e+10'
     hardness:
       value: 1.5
       unit: GPa
@@ -115,45 +115,45 @@ materialProperties:
     flexuralStrength:
       value: 140
       unit: MPa
-      min: 2.24
-      max: 36.56
+      min: 2.2
+      max: 36.6
     oxidationResistance:
       value: 6
       unit: μm/year
-      min: 9.5e-05
-      max: 1546.649995
+      min: '9.5e-05'
+      max: 1547
     corrosionResistance:
       value: 0.88
       unit: mm/year
-      min: 6.6e-05
-      max: 20.999997
+      min: '6.6e-05'
+      max: 21
     thermalDestruction:
       value: 1073
       unit: K
-      min: 273.0
-      max: 2300.0
+      min: 273
+      max: 2300
     laserAbsorption:
       value: 0.25
       unit: dimensionless
-      min: 0.057
-      max: 1259999.997
+      min: 0.06
+      max: '1.3e+06'
     compressiveStrength:
       value: 90
       unit: MPa
       min: 2.1
-      max: 219.9
+      max: 220
     fractureToughness:
       value: 5
       unit: MPa m^{1/2}
-      min: 0.133
-      max: 2.047
+      min: 0.13
+      max: 2
     electricalResistivity:
-      value: 10000000000000.0
+      value: 1e+13
       unit: Ω·m
       min: 9.5
-      max: 1049999999999999.5
+      max: 1e+15
     laserDamageThreshold:
-      value: 1.15
+      value: 1.1
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -162,8 +162,8 @@ materialProperties:
       context: Natural dolomite (CaMg(CO3)2, 98% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under atmospheric pressure
       researched_date: '2025-11-24T12:35:58.497594'
       needs_validation: true
-      min: 0.425
-      max: 13.075
+      min: 0.42
+      max: 13.1
     ablationThreshold:
       value: 1.2
       unit: J/cm²
@@ -174,10 +174,10 @@ materialProperties:
       context: Natural dolomite stone (CaMg(CO3)2, 95% purity), room temperature (25°C), 1064 nm Nd:YAG laser, nanosecond pulse duration (10 ns)
       researched_date: '2025-11-24T12:36:05.828309'
       needs_validation: true
-      min: 0.645
-      max: 6.255
+      min: 0.65
+      max: 6.3
     thermalDiffusivity:
-      value: 1.14e-06
+      value: '1.1e-06'
       unit: m²/s
       source: scientific_literature
       source_type: reference_handbook
@@ -186,10 +186,10 @@ materialProperties:
       context: Pure dolomite (CaMg(CO3)2, stoichiometric composition), 25°C, room temperature and atmospheric pressure, value derived from measured thermal conductivity, density, and specific heat
       researched_date: '2025-11-24T12:36:14.750217'
       needs_validation: true
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     thermalExpansion:
-      value: 8.8e-06
+      value: '8.8e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -198,10 +198,10 @@ materialProperties:
       context: Polycrystalline dolomite (CaMg(CO3)2, natural mineral sample >95% purity), 25-100°C range, measured perpendicular to cleavage planes
       researched_date: '2025-11-24T12:36:32.025866'
       needs_validation: true
-      min: 6.0e-06
-      max: 11.97
+      min: 6e-06
+      max: 12
     specificHeat:
-      value: 880.0
+      value: 880
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -225,7 +225,7 @@ materialProperties:
       min: 0.2
       max: 8
     laserReflectivity:
-      value: 0.067
+      value: 0.07
       unit: ''
       source: scientific_literature
       source_type: reference_handbook
@@ -234,30 +234,12 @@ materialProperties:
       context: Pure single-crystal dolomite (CaMg(CO3)2, >99% purity), 25°C, normal incidence, approximated for 1064 nm laser wavelength using visible refractive index data (n_o = 1.703, n_e = 1.698) due to minimal dispersion in near-IR for carbonates
       researched_date: '2025-11-24T12:37:03.315886'
       needs_validation: true
-      min: 0.0252
-      max: 0.4388
+      min: 0.03
+      max: 0.44
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 2.8
-      unit: W/m·K
-      min: 2.0
-      max: 3.5
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.1e-06
-      unit: m²/s
-      min: 8.0e-07
-      max: 1.5e-06
-      source: ai_research
-    ablationThreshold:
-      value: 2.5
-      unit: J/cm²
-      min: 1.5
-      max: 4.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.279801'
+    generated_date: '2025-11-29T15:19:10.435838'

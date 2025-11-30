@@ -83,32 +83,32 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 8.0
+      value: 8
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 0.8
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 520
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
       value: 193
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
-      value: 2.17
+      value: 2.2
       unit: GPa
       min: 0.2
       max: 3500
@@ -116,42 +116,42 @@ materialProperties:
       value: 550
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 8
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.75
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 1673
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.35
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 520
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 120
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 7.4e-07
+      value: '7.4e-07'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 2.1
       unit: J/cm²
@@ -162,10 +162,10 @@ materialProperties:
       context: AISI 316 stainless steel (commercial grade, 16% Cr, 10% Ni, 2% Mo), polished surface (Ra < 0.1 µm), 1064 nm wavelength, 7 ns pulse duration, room temperature (25°C), single-pulse irradiation in air
       researched_date: '2025-11-24T19:33:55.782404'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
-      value: 1.25
+      value: 1.2
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
@@ -174,10 +174,10 @@ materialProperties:
       context: AISI 316 stainless steel (commercial grade, 16% Cr, 10% Ni, 2% Mo), room temperature (25°C), nanosecond Nd:YAG laser at 1064 nm wavelength, 7 ns pulse duration, vacuum environment (10^-5 mbar)
       researched_date: '2025-11-24T19:34:08.990963'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalDiffusivity:
-      value: 4.05e-06
+      value: '4.1e-06'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -186,10 +186,10 @@ materialProperties:
       context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), annealed condition, room temperature (20-100°C), standard atmospheric pressure
       researched_date: '2025-11-24T19:34:15.487968'
       needs_validation: true
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     thermalExpansion:
-      value: 1.6e-05
+      value: '1.6e-05'
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -198,10 +198,10 @@ materialProperties:
       context: 'AISI 316 stainless steel (nominal composition: 0.08% C max, 16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), 0-100°C temperature range, annealed condition, measured via dilatometry'
       researched_date: '2025-11-24T19:34:27.830683'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 500.0
+      value: 500
       unit: J/(kg·K)
       source: scientific_literature
       source_type: materials_database
@@ -211,7 +211,7 @@ materialProperties:
       researched_date: '2025-11-24T19:34:35.307777'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
       value: 16.3
       unit: W/m·K
@@ -222,8 +222,8 @@ materialProperties:
       context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), annealed condition, average over 0-100°C, steady-state heat flow method
       researched_date: '2025-11-24T19:34:42.269872'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.62
       unit: ''
@@ -234,10 +234,10 @@ materialProperties:
       context: AISI 316 stainless steel (commercial grade, 16% Cr, 12% Ni, 2.5% Mo), 25°C, 1.064 μm wavelength (Nd:YAG laser), normal incidence, polished surface
       researched_date: '2025-11-24T19:34:52.610680'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
-      value: 101325.0
+      value: 101325
       unit: Pa
       source: scientific_literature
       source_type: materials_database
@@ -246,10 +246,10 @@ materialProperties:
       context: AISI 316 stainless steel (Fe-16-18Cr-10-14Ni-2-3Mo balance), at normal boiling point (~2860°C), under standard atmospheric pressure, equilibrium vapor pressure by definition
       researched_date: '2025-11-24T19:35:05.717342'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 1399.0
+      value: 1399
       unit: °C
       source: scientific_literature
       source_type: reference_handbook
@@ -258,10 +258,10 @@ materialProperties:
       context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), annealed condition, solidus temperature from melting range under standard atmospheric pressure
       researched_date: '2025-11-24T19:35:19.233682'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 33000000.0
+      value: '3.3e+07'
       unit: m^{-1}
       source: scientific_literature
       source_type: journal_article
@@ -270,10 +270,10 @@ materialProperties:
       context: AISI 316 stainless steel (commercial grade, 16-18% Cr, 10-14% Ni, 2-3% Mo), 25°C, measured at 1064 nm wavelength using ellipsometry for laser cleaning applications
       researched_date: '2025-11-24T19:35:28.142603'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 1351000.0
+      value: '1.4e+06'
       unit: S/m
       source: scientific_literature
       source_type: materials_database
@@ -282,10 +282,10 @@ materialProperties:
       context: Annealed AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), 20°C, four-point probe method
       researched_date: '2025-11-24T19:35:34.695460'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 3000.0
+      value: 3000
       unit: K
       source: scientific_literature
       source_type: textbook
@@ -294,10 +294,10 @@ materialProperties:
       context: AISI 316 stainless steel (16-18 wt% Cr, 10-14 wt% Ni, 2-3 wt% Mo, balance Fe), at standard atmospheric pressure (1 atm), extrapolated for liquid alloy vaporization
       researched_date: '2025-11-24T19:35:54.017903'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
-      value: 119.0
+      value: 119
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -306,8 +306,8 @@ materialProperties:
       context: Annealed AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), room temperature (20-25°C), standard atmospheric pressure, calculated from tensile, elastic, and thermal properties
       researched_date: '2025-11-24T19:36:19.238959'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.62
       unit: fraction
@@ -319,7 +319,7 @@ materialProperties:
       researched_date: '2025-11-24T19:36:31.258509'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
       value: 0.37
       unit: dimensionless
@@ -330,10 +330,10 @@ materialProperties:
       context: Polished AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo balance Fe), 25°C, 1064 nm wavelength (Nd:YAG laser), normal incidence, vacuum conditions
       researched_date: '2025-11-24T19:36:42.277539'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 1390.0
+      value: 1390
       unit: °C
       source: scientific_literature
       source_type: materials_database
@@ -342,30 +342,12 @@ materialProperties:
       context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), standard atmospheric pressure, melting range from solidus to liquidus
       researched_date: '2025-11-24T19:36:54.667468'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 15.0
-      unit: W/m·K
-      min: 14.0
-      max: 16.5
-      source: ai_research
-    thermalDiffusivity:
-      value: 4.0e-06
-      unit: m²/s
-      min: 3.5e-06
-      max: 4.5e-06
-      source: ai_research
-    ablationThreshold:
-      value: 2.0
-      unit: J/cm²
-      min: 1.0
-      max: 3.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.880376'
+    generated_date: '2025-11-29T15:19:10.731424'

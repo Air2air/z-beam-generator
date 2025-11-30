@@ -86,10 +86,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 3.21
+      value: 3.2
       unit: g/cm³
-      min: 2.1796
-      max: 5.4664
+      min: 2.2
+      max: 5.5
     porosity:
       value: 0
       unit: '%'
@@ -100,12 +100,12 @@ materialProperties:
       value: 450
       unit: MPa
       min: 30.8
-      max: 255.2
+      max: 255
     youngsModulus:
       value: 410
       unit: GPa
-      min: 81.13
-      max: 149099999995.73
+      min: 81.1
+      max: '1.5e+11'
     hardness:
       value: 4.6
       unit: GPa
@@ -115,42 +115,42 @@ materialProperties:
       value: 550
       unit: MPa
       min: 79.9
-      max: 148.1
+      max: 148
     oxidationResistance:
       value: 25
       unit: μm/year
-      min: 0.0
-      max: 2.3835
+      min: 0
+      max: 2.4
     corrosionResistance:
       value: 0.8
       unit: mm/year
-      min: 0.874
-      max: 157499.954
+      min: 0.87
+      max: 157500
     thermalDestruction:
       value: 3103
       unit: K
-      min: 1502.2
-      max: 1695.8
+      min: 1502
+      max: 1696
     laserAbsorption:
       value: 0.15
       unit: dimensionless
-      min: 19380.0
-      max: 1143480.0
+      min: 19380
+      max: '1.1e+06'
     compressiveStrength:
       value: 450
       unit: MPa
-      min: 133.0
-      max: 7343.0
+      min: 133
+      max: 7343
     fractureToughness:
       value: 20
       unit: MPa m^{1/2}
-      min: 0.5195
-      max: 0.9705
+      min: 0.52
+      max: 0.97
     electricalResistivity:
-      value: 100000.0
+      value: 100000
       unit: Ω·m
       min: 11.4
-      max: 1364999.4
+      max: '1.4e+06'
     laserDamageThreshold:
       value: 25.3
       unit: J/cm²
@@ -161,8 +161,8 @@ materialProperties:
       context: 4H-SiC single crystal (high-purity, undoped), 1064 nm wavelength, 3 ns pulse duration, room temperature (25°C), single-shot measurement
       researched_date: '2025-11-24T19:28:49.001385'
       needs_validation: true
-      min: 0.4675
-      max: 8.8825
+      min: 0.47
+      max: 8.9
     ablationThreshold:
       value: 1.8
       unit: J/cm²
@@ -173,10 +173,10 @@ materialProperties:
       context: Polycrystalline 6H-SiC (99.5% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air
       researched_date: '2025-11-24T19:28:54.982773'
       needs_validation: true
-      min: 1.16
-      max: 2.04
+      min: 1.2
+      max: 2
     thermalDiffusivity:
-      value: 0.000104
+      value: '0.0001'
       unit: m²/s
       source: scientific_literature
       source_type: journal_article
@@ -185,10 +185,10 @@ materialProperties:
       context: Single crystal 6H-SiC (high-purity semiconductor grade, >99.999%), 300 K, measured perpendicular to c-axis
       researched_date: '2025-11-24T19:29:07.532978'
       needs_validation: true
-      min: 2.4e-05
-      max: 9.2e-05
+      min: '2.4e-05'
+      max: '9.2e-05'
     thermalExpansion:
-      value: 4.0e-06
+      value: 4e-06
       unit: K^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -197,10 +197,10 @@ materialProperties:
       context: Polycrystalline alpha-SiC (99.5% purity), 25°C to 1000°C range, dilatometry measurement
       researched_date: '2025-11-24T19:29:14.577163'
       needs_validation: true
-      min: 2.0e-06
-      max: 6.0e-06
+      min: 2e-06
+      max: 6e-06
     specificHeat:
-      value: 670.0
+      value: 670
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -212,7 +212,7 @@ materialProperties:
       min: 300
       max: 900
     thermalConductivity:
-      value: 370.0
+      value: 370
       unit: W/m·K
       source: scientific_literature
       source_type: journal_article
@@ -233,30 +233,12 @@ materialProperties:
       context: Polycrystalline 4H-SiC (99.9% purity), room temperature (25°C), normal incidence reflectivity at 1064 nm wavelength (Nd:YAG laser), vacuum conditions
       researched_date: '2025-11-24T19:29:49.210347'
       needs_validation: true
-      min: 0.297
-      max: 0.363
+      min: 0.3
+      max: 0.36
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 370
-      unit: W/m·K
-      min: 250
-      max: 490
-      source: ai_research
-    thermalDiffusivity:
-      value: 0.00017
-      unit: m²/s
-      min: 0.0001
-      max: 0.0002
-      source: ai_research
-    ablationThreshold:
-      value: 7.5
-      unit: J/cm²
-      min: 5
-      max: 10
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.775403'
+    generated_date: '2025-11-29T15:19:10.678676'

@@ -54,47 +54,21 @@ breadcrumb:
   href: /materials/ceramic/coating
 - label: Titanium Nitride
   href: /materials/ceramic/coating/titanium-nitride
-images:
-  hero:
-    url: /images/material/titanium-nitride-laser-cleaning-hero.jpg
-    alt: Titanium Nitride surface undergoing laser cleaning showing precise contamination removal
-  micro:
-    url: /images/material/titanium-nitride-laser-cleaning-micro.jpg
-    alt: Titanium Nitride microscopic view of laser cleaning showing detailed precise contamination removal
+images: null
 caption:
-  before: The contaminated surface appears rough and patchy under magnification. Dark residues cling to uneven bumps and crevices everywhere. Scattered debris obscures the underlying texture completely.
-  after: Laser treatment smooths out the entire area nicely. The clean coating gleams with a uniform shine now. Fine details emerge sharp and free of any buildup.
+  before: I've seen contaminated Titanium Nitride surfaces up close at high magnification, and they always show thick layers of grime clinging tightly to the base. Dark spots and irregular clumps cover everything, making the whole area look dull and uneven under the lens. Scratches from handling add rough edges that hide the material's true form.
+  after: After laser treatment, the same surface transforms into a clear, even field with no trace of those clinging residues. Fine, uniform patterns emerge across the view, giving a
 faq:
 - question: How can I avoid damaging Titanium Nitride coatings during laser cleaning?
   answer: When laser cleaning Titanium Nitride, you'll want to start with lower power settings compared to softer metals like aluminum, since this hard ceramic coating resists heat better but can crack under sudden thermal shock. Make sure you use short pulses to gently remove contaminants without stressing the surface, and always test on a small area first to check for any unwanted changes in the gold-like finish. Watch out for overheating in the middle of the process, as it might weaken the bond to the substrate, so keep the beam moving steadily across the area.
 - question: What settings work best for cleaning Titanium Nitride on tools?
   answer: If you're cleaning Titanium Nitride on cutting tools, begin with a focused beam to target dirt and residue precisely, unlike with reflective metals where energy scatters more easily. You must adjust the wavelength to one that absorbs well into this durable coating, ensuring efficient removal without abrading the tough layer beneath. This approach brings
-regulatoryStandards:
-- name: FDA
-  longName: Food and Drug Administration
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  longName: American National Standards Institute
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  longName: International Electrotechnical Commission
-  description: IEC 60825 - Safety of Laser Products
-  url: https://www.iec.ch/homepage
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  longName: Occupational Safety and Health Administration
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
+regulatoryStandards: null
 materialProperties:
   material_characteristics:
     label: Material Characteristics
     compressiveStrength:
-      value: 3900.0
+      value: 3900
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -103,8 +77,8 @@ materialProperties:
       context: Bulk polycrystalline Titanium Nitride (stoichiometric TiN, >99% purity), room temperature (25°C), measured via uniaxial compression testing per ASTM C1424 standard
       researched_date: '2025-11-23T22:09:16.448036'
       needs_validation: true
-      min: 95.0
-      max: 4090.0
+      min: 95
+      max: 4090
     thermalConductivity:
       value: 19.2
       unit: W/m·K
@@ -115,8 +89,8 @@ materialProperties:
       context: Polycrystalline TiN (stoichiometric TiN_{1.0}, 99% purity), 25°C, measured via laser flash method
       researched_date: '2025-11-23T22:09:24.129472'
       needs_validation: true
-      min: 1.425
-      max: 126.975
+      min: 1.4
+      max: 127
     fractureToughness:
       value: 3.4
       unit: MPa√m
@@ -127,10 +101,10 @@ materialProperties:
       context: Stoichiometric polycrystalline TiN (near 1:1 Ti:N ratio), room temperature (25°C), measured via Vickers indentation fracture method
       researched_date: '2025-11-23T22:09:29.698582'
       needs_validation: true
-      min: 0.565
-      max: 5.735
+      min: 0.56
+      max: 5.7
     thermalDiffusivity:
-      value: 7.03e-06
+      value: 7e-06
       unit: m²/s
       source: scientific_literature
       source_type: textbook
@@ -139,10 +113,10 @@ materialProperties:
       context: Stoichiometric bulk polycrystalline TiN (near 1:1 Ti:N ratio, >99% purity), 300 K (room temperature), values derived under standard conditions
       researched_date: '2025-11-23T22:09:38.323905'
       needs_validation: true
-      min: 1.0e-06
-      max: 7.3e-05
+      min: 1e-06
+      max: '7.3e-05'
     electricalResistivity:
-      value: 2.5e-07
+      value: '2.5e-07'
       unit: Ω·m
       source: scientific_literature
       source_type: materials_database
@@ -151,10 +125,10 @@ materialProperties:
       context: Stoichiometric TiN (TiN_{1.0}), room temperature (25°C), polycrystalline ceramic, measured on bulk samples
       researched_date: '2025-11-23T22:09:54.720367'
       needs_validation: true
-      min: 0.0
-      max: 105000000000000.0
+      min: 0
+      max: 1e+14
     corrosionResistance:
-      value: 0.002
+      value: '0.002'
       unit: mm/year
       source: scientific_literature
       source_type: journal_article
@@ -163,10 +137,10 @@ materialProperties:
       context: Stoichiometric TiN (Ti:N = 1:1), 99.5% purity, room temperature (25°C), 3.5 wt% NaCl aqueous solution, immersion corrosion test per ASTM G31
       researched_date: '2025-11-23T22:10:12.664859'
       needs_validation: true
-      min: 0.000475
-      max: 262.499975
+      min: '0.00047'
+      max: 262
     thermalDestruction:
-      value: 3223.0
+      value: 3223
       unit: K
       source: scientific_literature
       source_type: reference_handbook
@@ -175,10 +149,10 @@ materialProperties:
       context: Stoichiometric TiN (Ti:N = 1:1, >99% purity), melting temperature at 1 atm pressure, determined under inert atmosphere to prevent oxidation
       researched_date: '2025-11-23T22:10:21.162393'
       needs_validation: true
-      min: 273.0
-      max: 3900.0
+      min: 273
+      max: 3900
     tensileStrength:
-      value: 345.0
+      value: 345
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -187,7 +161,7 @@ materialProperties:
       context: Polycrystalline TiN (stoichiometric TiN_{1.0}), room temperature (25°C), measured via uniaxial tensile testing on bulk samples
       researched_date: '2025-11-23T22:10:29.504514'
       needs_validation: true
-      min: 5.0
+      min: 5
       max: 600
     porosity:
       value: 0.5
@@ -211,8 +185,8 @@ materialProperties:
       context: Sputtered TiN thin film (stoichiometric TiN, 200 nm thickness on fused silica substrate), 1064 nm wavelength, 10 ns Nd:YAG laser pulses, room temperature (25°C), vacuum environment
       researched_date: '2025-11-23T22:10:43.996731'
       needs_validation: true
-      min: 1.625
-      max: 20.875
+      min: 1.6
+      max: 20.9
     laserAbsorption:
       value: 0.72
       unit: dimensionless
@@ -223,10 +197,10 @@ materialProperties:
       context: Polycrystalline TiN thin film (99% purity), room temperature (25°C), normal incidence, wavelength 1064 nm (Nd:YAG laser relevant for cleaning applications), measured via ellipsometry and reflectance spectroscopy
       researched_date: '2025-11-23T22:10:53.826484'
       needs_validation: true
-      min: 0.3515
-      max: 2624.9815
+      min: 0.35
+      max: 2625
     oxidationResistance:
-      value: 500.0
+      value: 500
       unit: °C
       source: scientific_literature
       source_type: textbook
@@ -235,8 +209,8 @@ materialProperties:
       context: Stoichiometric TiN (TiN_{0.9-1.0}), dry air atmosphere, onset temperature for significant oxidation (formation of TiO2)
       researched_date: '2025-11-23T22:11:00.494074'
       needs_validation: true
-      min: 0.0
-      max: 2310.0
+      min: 0
+      max: 2310
     ablationThreshold:
       value: 1.2
       unit: J/cm²
@@ -247,10 +221,10 @@ materialProperties:
       context: TiN thin film coating (stoichiometric TiN, 200 nm thickness on steel substrate), room temperature (25°C), nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, atmospheric pressure
       researched_date: '2025-11-23T22:11:06.529693'
       needs_validation: true
-      min: 0.566
-      max: 3.954
+      min: 0.57
+      max: 4
     thermalExpansion:
-      value: 9.35e-06
+      value: '9.4e-06'
       unit: K^{-1}
       source: scientific_literature
       source_type: materials_database
@@ -259,10 +233,10 @@ materialProperties:
       context: Stoichiometric TiN (Ti:N = 1:1), 25-100°C range, dilatometry measurement
       researched_date: '2025-11-23T22:11:11.031128'
       needs_validation: true
-      min: 3.0e-06
-      max: 1.1e-05
+      min: 3e-06
+      max: '1.1e-05'
     youngsModulus:
-      value: 450.0
+      value: 450
       unit: GPa
       source: scientific_literature
       source_type: materials_database
@@ -271,10 +245,10 @@ materialProperties:
       context: Stoichiometric TiN (TiN_{1.0}), polycrystalline bulk ceramic, 25°C, measured via ultrasonic pulse-echo method
       researched_date: '2025-11-23T22:11:19.325326'
       needs_validation: true
-      min: 39.95
-      max: 679.05
+      min: 40
+      max: 679
     flexuralStrength:
-      value: 345.0
+      value: 345
       unit: MPa
       source: scientific_literature
       source_type: materials_database
@@ -284,9 +258,9 @@ materialProperties:
       researched_date: '2025-11-23T22:11:26.426624'
       needs_validation: true
       min: 45.6
-      max: 1152.6
+      max: 1153
     density:
-      value: 5.22
+      value: 5.2
       unit: g/cm³
       source: scientific_literature
       source_type: reference_handbook
@@ -295,8 +269,8 @@ materialProperties:
       context: Stoichiometric TiN (TiN_{1.0}), room temperature (25°C), theoretical density from X-ray diffraction lattice parameters
       researched_date: '2025-11-23T22:11:31.438332'
       needs_validation: true
-      min: 1.7385
-      max: 16.2915
+      min: 1.7
+      max: 16.3
     laserReflectivity:
       value: 0.62
       unit: dimensionless
@@ -307,10 +281,10 @@ materialProperties:
       context: Stoichiometric TiN (Ti/N ratio 1:1, 99.5% purity thin film), room temperature (25°C), normal incidence reflectivity at 1064 nm wavelength (Nd:YAG laser), vacuum-deposited coating on silicon substrate
       researched_date: '2025-11-23T22:11:46.766503'
       needs_validation: true
-      min: 0.04925
-      max: 0.39575
+      min: 0.05
+      max: 0.4
     specificHeat:
-      value: 690.0
+      value: 690
       unit: J/kg·K
       source: scientific_literature
       source_type: materials_database
@@ -320,7 +294,7 @@ materialProperties:
       researched_date: '2025-11-23T22:11:51.985040'
       needs_validation: true
       min: 250
-      max: 2500.0
+      max: 2500
     hardness:
       value: 21.5
       unit: GPa
@@ -331,30 +305,12 @@ materialProperties:
       context: Stoichiometric TiN (Ti:N = 1:1, 99% purity), room temperature (25°C), measured via nanoindentation with Berkovich indenter
       researched_date: '2025-11-23T22:12:08.066083'
       needs_validation: true
-      min: 6.65
-      max: 3149.65
+      min: 6.7
+      max: 3150
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 21.5
-      unit: W/m·K
-      min: 19
-      max: 24
-      source: ai_research
-    thermalDiffusivity:
-      value: 6.2e-06
-      unit: m²/s
-      min: 5.0e-06
-      max: 7.5e-06
-      source: ai_research
-    ablationThreshold:
-      value: 2.1
-      unit: J/cm²
-      min: 1.5
-      max: 3
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:37.357936'
+    generated_date: '2025-11-29T15:19:10.966369'

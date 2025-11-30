@@ -85,30 +85,30 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 9.78
+      value: 9.8
       unit: g/cm³
-      min: 1.6511
-      max: 9407.9131
+      min: 1.7
+      max: 9408
     porosity:
       value: 0
       unit: '%'
-      min: 0.0
-      max: 15.0
+      min: 0
+      max: 15
     surfaceRoughness:
       value: 0.5
       unit: μm
-      min: 0.02375
-      max: 6.61375
+      min: 0.02
+      max: 6.6
     tensileStrength:
       value: 35
       unit: MPa
-      min: 3.0
-      max: 3000.0
+      min: 3
+      max: 3000
     youngsModulus:
       value: 31.9
       unit: GPa
-      min: 10.45
-      max: 199499999999.45
+      min: 10.4
+      max: 2e+11
     hardness:
       value: 0.3
       unit: GPa
@@ -118,42 +118,42 @@ materialProperties:
       value: 52
       unit: MPa
       min: 11.4
-      max: 2897.4
+      max: 2897
     oxidationResistance:
       value: 2.5
       unit: μm/year
-      min: -553.945
-      max: 1761.655
+      min: -554
+      max: 1762
     corrosionResistance:
       value: 0.88
       unit: mm/year
-      min: -1.12575
-      max: 1050000.05925
+      min: -1.1
+      max: '1.1e+06'
     thermalDestruction:
       value: 544
       unit: K
-      min: 255.7565
-      max: 3858.7735
+      min: 256
+      max: 3859
     laserAbsorption:
       value: 0.12
       unit: dimensionless
-      min: 0.019
-      max: 419999999.999
+      min: 0.02
+      max: '4.2e+08'
     compressiveStrength:
       value: 35
       unit: MPa
-      min: 7.98
-      max: 2624.58
+      min: 8
+      max: 2625
     fractureToughness:
       value: 3
       unit: MPa m^{1/2}
-      min: 0.6745
-      max: 157.4645
+      min: 0.67
+      max: 157
     electricalResistivity:
-      value: 1.29e-06
+      value: '1.3e-06'
       unit: Ω·m
-      min: 0.0
-      max: 2.0e-06
+      min: 0
+      max: 2e-06
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
@@ -164,8 +164,8 @@ materialProperties:
       context: Pure Bismuth (99.99% purity), room temperature (25°C), 800 nm wavelength, 150 fs pulse duration, single-shot irradiation in vacuum
       researched_date: '2025-11-24T12:32:42.971667'
       needs_validation: true
-      min: 0.266
-      max: 15749.986
+      min: 0.27
+      max: 15750
     ablationThreshold:
       value: 2.5
       unit: J/cm²
@@ -176,10 +176,10 @@ materialProperties:
       context: Pure bismuth (99.99% purity), room temperature (25°C), 532 nm wavelength, 10 ns pulse duration, measured in vacuum
       researched_date: '2025-11-24T12:32:51.774512'
       needs_validation: true
-      min: 0.089
-      max: 4.291
+      min: 0.09
+      max: 4.3
     thermalDiffusivity:
-      value: 6.59e-06
+      value: '6.6e-06'
       unit: m²/s
       source: scientific_literature
       source_type: reference_handbook
@@ -188,8 +188,8 @@ materialProperties:
       context: Pure Bismuth (99.999% purity), 25°C, calculated from standard properties under ambient conditions
       researched_date: '2025-11-24T12:32:59.040010'
       needs_validation: true
-      min: 2.0e-06
-      max: 0.000173
+      min: 2e-06
+      max: '0.00017'
     thermalExpansion:
       value: 13.4
       unit: 10^{-6} K^{-1}
@@ -200,10 +200,10 @@ materialProperties:
       context: Pure Bismuth (99.99% purity), 25°C (mean value over 0-100°C range), measured via dilatometry
       researched_date: '2025-11-24T12:33:04.710864'
       needs_validation: true
-      min: 4.0e-06
-      max: 31.71
+      min: 4e-06
+      max: 31.7
     specificHeat:
-      value: 123.0
+      value: 123
       unit: J/kg/K
       source: scientific_literature
       source_type: materials_database
@@ -213,9 +213,9 @@ materialProperties:
       researched_date: '2025-11-24T12:33:13.830918'
       needs_validation: true
       min: 43.4
-      max: 1904.6
+      max: 1905
     thermalConductivity:
-      value: 7.87
+      value: 7.9
       unit: W/m·K
       source: scientific_literature
       source_type: reference_handbook
@@ -224,8 +224,8 @@ materialProperties:
       context: Pure bismuth (99.999% purity), 300 K (27°C), polycrystalline sample, steady-state heat flow method
       researched_date: '2025-11-24T12:33:24.849975'
       needs_validation: true
-      min: 7.4195
-      max: 450.0595
+      min: 7.4
+      max: 450
     laserReflectivity:
       value: 0.97
       unit: dimensionless
@@ -236,10 +236,10 @@ materialProperties:
       context: Pure bismuth (99.99% purity), 25°C, normal incidence reflectivity at 1064 nm wavelength (relevant for Nd:YAG lasers in cleaning applications)
       researched_date: '2025-11-24T12:33:32.733532'
       needs_validation: true
-      min: 0.399
-      max: 73.479
+      min: 0.4
+      max: 73.5
     vaporPressure:
-      value: 7.05e-18
+      value: '7.1e-18'
       unit: Pa
       source: scientific_literature
       source_type: reference_handbook
@@ -248,10 +248,10 @@ materialProperties:
       context: Pure Bismuth (99.999% purity), 25°C (298 K), extrapolated for solid phase
       researched_date: '2025-11-24T12:34:27.917020'
       needs_validation: true
-      min: 0.0
-      max: 106391.25
+      min: 0
+      max: 106391
     thermalDestructionPoint:
-      value: 544.55
+      value: 545
       unit: K
       source: scientific_literature
       source_type: reference_handbook
@@ -260,10 +260,10 @@ materialProperties:
       context: Pure Bismuth (99.99% purity), 1 atm pressure, measured via standard thermodynamic techniques
       researched_date: '2025-11-24T12:34:38.674057'
       needs_validation: true
-      min: 133.3055
-      max: 3864.6045
+      min: 133
+      max: 3865
     absorptionCoefficient:
-      value: 91600000.0
+      value: '9.2e+07'
       unit: m^{-1}
       source: scientific_literature
       source_type: reference_handbook
@@ -272,10 +272,10 @@ materialProperties:
       context: Pure Bismuth (99.99% purity), 25°C, wavelength 500 nm, measured via ellipsometry and reflectance spectroscopy
       researched_date: '2025-11-24T12:34:54.955743'
       needs_validation: true
-      min: 589000.0
-      max: 98879000.0
+      min: 589000
+      max: '9.9e+07'
     electricalConductivity:
-      value: 770000.0
+      value: 770000
       unit: S/m
       source: scientific_literature
       source_type: reference_handbook
@@ -284,10 +284,10 @@ materialProperties:
       context: Pure Bismuth (99.999% purity), 20°C, DC four-point probe measurement
       researched_date: '2025-11-24T12:35:02.023737'
       needs_validation: true
-      min: 659300.0
-      max: 66115300.0
+      min: 659300
+      max: '6.6e+07'
     boilingPoint:
-      value: 1837.0
+      value: 1837
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -296,10 +296,10 @@ materialProperties:
       context: Pure bismuth (99.999% purity, elemental form), normal boiling point at 1 bar pressure, measured under standard conditions
       researched_date: '2025-11-24T12:35:09.567655'
       needs_validation: true
-      min: 928.85
-      max: 6454.15
+      min: 929
+      max: 6454
     thermalShockResistance:
-      value: 80.0
+      value: 80
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -308,8 +308,8 @@ materialProperties:
       context: Pure Bismuth (99.999% purity), room temperature (25°C), derived from uniaxial tensile testing for mechanical properties and dilatometry for thermal expansion
       researched_date: '2025-11-24T12:35:23.399450'
       needs_validation: true
-      min: 6.65
-      max: 379049.65
+      min: 6.7
+      max: 379050
     reflectivity:
       value: 0.58
       unit: ''
@@ -321,7 +321,7 @@ materialProperties:
       researched_date: '2025-11-24T12:35:32.350469'
       needs_validation: true
       min: 0.35
-      max: 1.01
+      max: 1
     absorptivity:
       value: 0.42
       unit: dimensionless
@@ -332,10 +332,10 @@ materialProperties:
       context: Pure Bismuth (99.99% purity), room temperature (25°C), normal incidence, 589 nm wavelength (sodium D line)
       researched_date: '2025-11-24T12:35:43.391594'
       needs_validation: true
-      min: 0.019
-      max: 0.5975
+      min: 0.02
+      max: 0.6
     meltingPoint:
-      value: 544.7
+      value: 545
       unit: K
       source: scientific_literature
       source_type: materials_database
@@ -344,30 +344,12 @@ materialProperties:
       context: Pure bismuth (99.999% purity), standard atmospheric pressure (1 atm), equilibrium melting temperature
       researched_date: '2025-11-24T12:35:48.821061'
       needs_validation: true
-      min: 133.31033
-      max: 3864.60427
+      min: 133
+      max: 3865
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 8.0
-      unit: W/m·K
-      min: 7.5
-      max: 8.5
-      source: ai_research
-    thermalDiffusivity:
-      value: 6.7e-06
-      unit: m²/s
-      min: 6.0e-06
-      max: 7.5e-06
-      source: ai_research
-    ablationThreshold:
-      value: 1.5
-      unit: J/cm²
-      min: 1.0
-      max: 2.5
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.219779'
+    generated_date: '2025-11-29T15:19:10.403660'

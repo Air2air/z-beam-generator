@@ -97,6 +97,22 @@ class ImageGenerationLogger:
                 feedback_text TEXT,  -- User feedback content
                 feedback_category TEXT,  -- physics, aesthetics, contamination, etc.
                 feedback_source TEXT,  -- user, automated, system
+                severity TEXT,  -- light, moderate, heavy (contamination coverage)
+                shape_override TEXT,  -- User-specified shape if any
+                
+                -- Context parameters (for learning)
+                context TEXT,  -- indoor/outdoor/industrial/marine/architectural
+                aging_weight REAL,  -- Context weight for aging patterns
+                contamination_weight REAL,  -- Context weight for contamination patterns
+                background TEXT,  -- Environment background description
+                pattern_scores TEXT,  -- JSON: {pattern_name: relevance_score}
+                
+                -- Optimization metrics
+                prompt_chars_before_opt INTEGER,
+                prompt_chars_after_opt INTEGER,
+                pre_validation_passed BOOLEAN,
+                pre_validation_errors INTEGER,
+                pre_validation_warnings INTEGER
                 
                 -- Validation results
                 val_prompt_length INTEGER,
@@ -120,6 +136,36 @@ class ImageGenerationLogger:
             )
         """)
         
+        # Add new columns if they don't exist (migration for existing DBs)
+        try:
+            cursor.execute("ALTER TABLE generation_attempts ADD COLUMN severity TEXT")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+        
+        try:
+            cursor.execute("ALTER TABLE generation_attempts ADD COLUMN shape_override TEXT")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+        
+        # Phase 1 Learning Enhancement columns (Nov 29, 2025)
+        new_columns = [
+            ("context", "TEXT"),
+            ("aging_weight", "REAL"),
+            ("contamination_weight", "REAL"),
+            ("background", "TEXT"),
+            ("pattern_scores", "TEXT"),
+            ("prompt_chars_before_opt", "INTEGER"),
+            ("prompt_chars_after_opt", "INTEGER"),
+            ("pre_validation_passed", "BOOLEAN"),
+            ("pre_validation_errors", "INTEGER"),
+            ("pre_validation_warnings", "INTEGER")
+        ]
+        for col_name, col_type in new_columns:
+            try:
+                cursor.execute(f"ALTER TABLE generation_attempts ADD COLUMN {col_name} {col_type}")
+            except sqlite3.OperationalError:
+                pass  # Column already exists
+        
         # Index for common queries
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_category 
@@ -134,6 +180,98 @@ class ImageGenerationLogger:
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_passed 
             ON generation_attempts(passed)
+        """)
+        
+        # ================================================================
+        # PHASE 2: Learning Tables (Nov 29, 2025)
+        # Single source of truth for all learnable parameters
+        # ================================================================
+        
+        # Learned defaults per category+context combination
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS learned_defaults (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                category TEXT NOT NULL,
+                context TEXT DEFAULT 'outdoor',
+                
+                -- Generation parameters (learned from successful attempts)
+                guidance_scale REAL,
+                contamination_uniformity INTEGER,
+                view_mode TEXT DEFAULT 'Contextual',
+                pass_threshold REAL,
+                
+                -- Context weights (learned optimal values)
+                aging_weight REAL,
+                contamination_weight REAL,
+                
+                -- Statistics
+                sample_count INTEGER DEFAULT 0,
+                success_count INTEGER DEFAULT 0,
+                avg_score REAL,
+                last_updated TEXT,
+                
+                UNIQUE(category, context)
+            )
+        """)
+        
+        # Add view_mode column if missing (migration for existing databases)
+        try:
+            cursor.execute("ALTER TABLE learned_defaults ADD COLUMN view_mode TEXT DEFAULT 'Contextual'")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+        
+        # Pattern effectiveness tracking
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS pattern_effectiveness (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                pattern_id TEXT NOT NULL,
+                category TEXT NOT NULL,
+                context TEXT DEFAULT 'outdoor',
+                
+                -- Effectiveness metrics
+                total_uses INTEGER DEFAULT 0,
+                success_count INTEGER DEFAULT 0,
+                avg_score REAL DEFAULT 0,
+                
+                -- Score distribution
+                score_sum REAL DEFAULT 0,
+                
+                last_updated TEXT,
+                
+                UNIQUE(pattern_id, category, context)
+            )
+        """)
+        
+        # Prompt template versions with effectiveness
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS prompt_templates (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                template_name TEXT NOT NULL,
+                version INTEGER DEFAULT 1,
+                content TEXT,
+                
+                -- Effectiveness tracking
+                usage_count INTEGER DEFAULT 0,
+                success_count INTEGER DEFAULT 0,
+                avg_score REAL DEFAULT 0,
+                
+                created_at TEXT,
+                last_used TEXT,
+                
+                UNIQUE(template_name, version)
+            )
+        """)
+        
+        # Index for learned_defaults queries
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_learned_defaults_cat_ctx
+            ON learned_defaults(category, context)
+        """)
+        
+        # Index for pattern_effectiveness queries
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_pattern_eff_cat_ctx
+            ON pattern_effectiveness(category, context)
         """)
         
         conn.commit()
@@ -167,6 +305,8 @@ class ImageGenerationLogger:
                 - feedback_text: Optional[str] (actual feedback content)
                 - feedback_category: Optional[str] (physics, aesthetics, etc.)
                 - feedback_source: Optional[str] (user, automated, system)
+                - severity: str (light, moderate, heavy)
+                - shape_override: Optional[str]
             validation_results: Dict with:
                 - prompt_length: int
                 - truncated: bool
@@ -200,6 +340,11 @@ class ImageGenerationLogger:
                 gen_prompt_length, guidance_scale, contamination_uniformity,
                 view_mode, patterns_used, feedback_applied,
                 feedback_text, feedback_category, feedback_source,
+                severity, shape_override,
+                context, aging_weight, contamination_weight,
+                background, pattern_scores,
+                prompt_chars_before_opt, prompt_chars_after_opt,
+                pre_validation_passed, pre_validation_errors, pre_validation_warnings,
                 val_prompt_length, val_truncated, realism_score, passed,
                 physics_issues, red_flags,
                 failure_category, retry_count, final_success,
@@ -207,6 +352,11 @@ class ImageGenerationLogger:
             ) VALUES (
                 ?, ?, ?, ?,
                 ?, ?, ?, ?, ?, ?,
+                ?, ?, ?,
+                ?, ?,
+                ?, ?, ?,
+                ?, ?,
+                ?, ?,
                 ?, ?, ?,
                 ?, ?, ?, ?, ?, ?,
                 ?, ?, ?,
@@ -228,6 +378,22 @@ class ImageGenerationLogger:
             generation_params.get('feedback_text'),
             generation_params.get('feedback_category'),
             generation_params.get('feedback_source', 'user' if generation_params.get('feedback_text') else None),
+            generation_params.get('severity', 'moderate'),
+            generation_params.get('shape_override'),
+            
+            # Context parameters (for learning)
+            generation_params.get('context', 'outdoor'),
+            generation_params.get('aging_weight'),
+            generation_params.get('contamination_weight'),
+            generation_params.get('background'),
+            json.dumps(generation_params.get('pattern_scores', {})),
+            
+            # Optimization metrics
+            generation_params.get('prompt_chars_before_opt'),
+            generation_params.get('prompt_chars_after_opt'),
+            generation_params.get('pre_validation_passed'),
+            generation_params.get('pre_validation_errors'),
+            generation_params.get('pre_validation_warnings'),
             
             # Validation
             validation_results.get('prompt_length'),
@@ -374,6 +540,38 @@ class ImageGenerationLogger:
             {'issue': issue, 'count': count, 'percentage': count / len(all_issues) * 100}
             for issue, count in top_issues
         ]
+    
+    def get_severity_stats(self) -> Dict:
+        """
+        Get success statistics by contamination severity level.
+        
+        Returns:
+            Dict with stats for each severity level (light, moderate, heavy)
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        stats = {}
+        for severity in ['light', 'moderate', 'heavy']:
+            cursor.execute("""
+                SELECT 
+                    COUNT(*) as total,
+                    SUM(CASE WHEN passed = 1 THEN 1 ELSE 0 END) as passed,
+                    AVG(realism_score) as avg_score
+                FROM generation_attempts
+                WHERE severity = ?
+            """, (severity,))
+            
+            total, passed, avg_score = cursor.fetchone()
+            stats[severity] = {
+                'total': total or 0,
+                'passed': passed or 0,
+                'success_rate': (passed / total * 100) if total else 0,
+                'avg_score': round(avg_score, 1) if avg_score else 0
+            }
+        
+        conn.close()
+        return stats
     
     def get_feedback_effectiveness(self) -> Dict:
         """
@@ -813,7 +1011,541 @@ class ImageGenerationLogger:
                     print(f"   • {ex['material']} ({ex['realism_score']}/100) - {ex['feedback_category']}")
                     print(f"     \"{ex['feedback_text'][:100]}...\"" if len(ex['feedback_text']) > 100 else f"     \"{ex['feedback_text']}\"")
         
+        # NEW: Context effectiveness analysis
+        context_stats = self.get_context_effectiveness()
+        if any(s['total'] > 0 for s in context_stats.values()):
+            print("\n🌍 CONTEXT EFFECTIVENESS:")
+            for ctx, stats in context_stats.items():
+                if stats['total'] > 0:
+                    print(f"   • {ctx}: {stats['success_rate']:.1f}% pass rate, "
+                          f"{stats['avg_score']:.1f} avg score ({stats['total']} attempts)")
+        
+        # NEW: Category-context combinations
+        cat_ctx_stats = self.get_category_context_stats()
+        if cat_ctx_stats:
+            print("\n📊 BEST CATEGORY-CONTEXT COMBINATIONS:")
+            for item in cat_ctx_stats[:5]:
+                print(f"   • {item['category']} + {item['context']}: "
+                      f"{item['success_rate']:.1f}% ({item['avg_score']:.1f} avg, {item['total']} attempts)")
+        
         print("\n" + "=" * 70)
+    
+    def get_context_effectiveness(self) -> Dict[str, Dict]:
+        """
+        Analyze which contexts produce best results.
+        
+        Returns:
+            Dict mapping context -> {total, passed, success_rate, avg_score}
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        stats = {}
+        for context in ['indoor', 'outdoor', 'industrial', 'marine', 'architectural']:
+            cursor.execute("""
+                SELECT 
+                    COUNT(*) as total,
+                    SUM(CASE WHEN passed = 1 THEN 1 ELSE 0 END) as passed,
+                    AVG(realism_score) as avg_score,
+                    AVG(aging_weight) as avg_aging_weight,
+                    AVG(contamination_weight) as avg_contam_weight
+                FROM generation_attempts
+                WHERE context = ?
+            """, (context,))
+            
+            row = cursor.fetchone()
+            total, passed, avg_score, avg_aging, avg_contam = row
+            stats[context] = {
+                'total': total or 0,
+                'passed': passed or 0,
+                'success_rate': (passed / total * 100) if total else 0,
+                'avg_score': round(avg_score, 1) if avg_score else 0,
+                'avg_aging_weight': round(avg_aging, 2) if avg_aging else None,
+                'avg_contamination_weight': round(avg_contam, 2) if avg_contam else None
+            }
+        
+        conn.close()
+        return stats
+    
+    def get_category_context_stats(self, limit: int = 10) -> List[Dict]:
+        """
+        Get success rates for category+context combinations.
+        
+        Identifies which material categories work best with which contexts.
+        
+        Returns:
+            List of dicts sorted by success rate
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT 
+                category, context,
+                COUNT(*) as total,
+                SUM(CASE WHEN passed = 1 THEN 1 ELSE 0 END) as passed,
+                AVG(realism_score) as avg_score
+            FROM generation_attempts
+            WHERE context IS NOT NULL
+            GROUP BY category, context
+            HAVING total >= 2
+            ORDER BY (passed * 1.0 / total) DESC, avg_score DESC
+            LIMIT ?
+        """, (limit,))
+        
+        results = []
+        for row in cursor.fetchall():
+            cat, ctx, total, passed, avg_score = row
+            results.append({
+                'category': cat,
+                'context': ctx,
+                'total': total,
+                'passed': passed,
+                'success_rate': (passed / total * 100) if total else 0,
+                'avg_score': round(avg_score, 1) if avg_score else 0
+            })
+        
+        conn.close()
+        return results
+    
+    def get_optimal_guidance_scale(self, category: str) -> Optional[float]:
+        """
+        Suggest optimal guidance_scale based on historical success.
+        
+        Returns the average guidance_scale of successful attempts for the category.
+        
+        Args:
+            category: Material category
+            
+        Returns:
+            Suggested guidance_scale or None if insufficient data
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT AVG(guidance_scale), COUNT(*)
+            FROM generation_attempts
+            WHERE category = ? AND passed = 1 AND guidance_scale IS NOT NULL
+        """, (category,))
+        
+        avg_scale, count = cursor.fetchone()
+        conn.close()
+        
+        if count and count >= 3:  # Require at least 3 successes
+            return round(avg_scale, 1)
+        return None
+    
+    def get_pattern_effectiveness(self, limit: int = 15) -> List[Dict]:
+        """
+        Analyze which contamination patterns lead to best results.
+        
+        Returns:
+            List of patterns with success metrics
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT patterns_used, passed, realism_score
+            FROM generation_attempts
+            WHERE patterns_used IS NOT NULL AND patterns_used != '[]'
+        """)
+        
+        pattern_stats = {}
+        for row in cursor.fetchall():
+            patterns_json, passed, score = row
+            patterns = json.loads(patterns_json)
+            for pattern in patterns:
+                if pattern not in pattern_stats:
+                    pattern_stats[pattern] = {'total': 0, 'passed': 0, 'scores': []}
+                pattern_stats[pattern]['total'] += 1
+                if passed:
+                    pattern_stats[pattern]['passed'] += 1
+                if score:
+                    pattern_stats[pattern]['scores'].append(score)
+        
+        conn.close()
+        
+        # Calculate metrics and sort
+        results = []
+        for pattern, stats in pattern_stats.items():
+            if stats['total'] >= 2:  # Minimum 2 uses
+                results.append({
+                    'pattern': pattern,
+                    'total': stats['total'],
+                    'passed': stats['passed'],
+                    'success_rate': (stats['passed'] / stats['total'] * 100),
+                    'avg_score': sum(stats['scores']) / len(stats['scores']) if stats['scores'] else 0
+                })
+        
+        results.sort(key=lambda x: (x['success_rate'], x['avg_score']), reverse=True)
+        return results[:limit]
+    
+    # ================================================================
+    # PHASE 2: Learned Defaults System
+    # Single source of truth for all learnable parameters
+    # ================================================================
+    
+    def seed_defaults_from_config(self, category_defaults: Dict[str, Dict], force_update: bool = False) -> int:
+        """
+        Seed learned_defaults table from hardcoded CATEGORY_DEFAULTS.
+        
+        This migrates hardcoded defaults to SQLite as the single source of truth.
+        
+        Args:
+            category_defaults: Dict mapping category -> {guidance_scale, contamination_uniformity, view_mode}
+            force_update: If True, update existing rows with new values (preserves learned stats)
+            
+        Returns:
+            Number of rows inserted or updated
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        modified = 0
+        timestamp = datetime.utcnow().isoformat()
+        
+        for category, defaults in category_defaults.items():
+            # Check if already exists
+            cursor.execute(
+                "SELECT COUNT(*) FROM learned_defaults WHERE category = ?",
+                (category,)
+            )
+            exists = cursor.fetchone()[0] > 0
+            
+            if not exists:
+                # Insert new row
+                cursor.execute("""
+                    INSERT INTO learned_defaults 
+                    (category, context, guidance_scale, contamination_uniformity, 
+                     view_mode, pass_threshold, sample_count, last_updated)
+                    VALUES (?, 'outdoor', ?, ?, ?, 75.0, 0, ?)
+                """, (
+                    category,
+                    defaults.get('guidance_scale', 15.0),
+                    defaults.get('contamination_uniformity', 3),
+                    defaults.get('view_mode', 'Contextual'),
+                    timestamp
+                ))
+                modified += 1
+            elif force_update:
+                # Update existing row (preserve sample_count, success_count, avg_score)
+                cursor.execute("""
+                    UPDATE learned_defaults 
+                    SET guidance_scale = ?, contamination_uniformity = ?, 
+                        view_mode = ?, last_updated = ?
+                    WHERE category = ? AND context = 'outdoor'
+                """, (
+                    defaults.get('guidance_scale', 15.0),
+                    defaults.get('contamination_uniformity', 3),
+                    defaults.get('view_mode', 'Contextual'),
+                    timestamp,
+                    category
+                ))
+                modified += 1
+        
+        conn.commit()
+        conn.close()
+        
+        if modified > 0:
+            action = "seeded/updated" if force_update else "seeded"
+            logger.info(f"📊 {action.capitalize()} {modified} category defaults in learning database")
+        
+        return modified
+    
+    def get_learned_defaults(self, category: str, context: str = 'outdoor') -> Optional[Dict]:
+        """
+        Get learned optimal parameters for a category+context combination.
+        
+        Returns None if no learned data exists (caller should use fallback or fail).
+        
+        Args:
+            category: Material category (e.g., 'metals_ferrous')
+            context: Environment context (e.g., 'outdoor')
+            
+        Returns:
+            Dict with guidance_scale, contamination_uniformity, pass_threshold, etc.
+            or None if no data
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT guidance_scale, contamination_uniformity, pass_threshold,
+                   aging_weight, contamination_weight, avg_score, sample_count, view_mode
+            FROM learned_defaults
+            WHERE category = ? AND context = ?
+        """, (category, context))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if not row:
+            return None
+        
+        return {
+            'guidance_scale': row[0],
+            'contamination_uniformity': row[1],
+            'pass_threshold': row[2],
+            'aging_weight': row[3],
+            'contamination_weight': row[4],
+            'avg_score': row[5],
+            'sample_count': row[6],
+            'view_mode': row[7] or 'Contextual',
+            'source': 'learned'
+        }
+    
+    def update_learned_defaults_from_success(
+        self,
+        category: str,
+        context: str,
+        guidance_scale: float,
+        realism_score: float,
+        aging_weight: Optional[float] = None,
+        contamination_weight: Optional[float] = None
+    ):
+        """
+        Update learned defaults when a generation succeeds.
+        
+        Uses exponential moving average (EMA) to incorporate new successful params.
+        
+        Args:
+            category: Material category
+            context: Environment context
+            guidance_scale: Guidance scale that worked
+            realism_score: Score achieved
+            aging_weight: Weight used (if applicable)
+            contamination_weight: Weight used (if applicable)
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        timestamp = datetime.utcnow().isoformat()
+        
+        # EMA alpha (0.1 = slow adaptation, 0.3 = faster)
+        alpha = 0.15
+        
+        # Get current values
+        cursor.execute("""
+            SELECT guidance_scale, avg_score, sample_count, success_count,
+                   aging_weight, contamination_weight
+            FROM learned_defaults
+            WHERE category = ? AND context = ?
+        """, (category, context))
+        
+        row = cursor.fetchone()
+        
+        if row:
+            # Update existing with EMA
+            old_guidance = row[0] or guidance_scale
+            old_score = row[1] or realism_score
+            sample_count = (row[2] or 0) + 1
+            success_count = (row[3] or 0) + 1
+            old_aging = row[4]
+            old_contam = row[5]
+            
+            new_guidance = old_guidance * (1 - alpha) + guidance_scale * alpha
+            new_score = old_score * (1 - alpha) + realism_score * alpha
+            new_aging = old_aging * (1 - alpha) + aging_weight * alpha if aging_weight and old_aging else aging_weight
+            new_contam = old_contam * (1 - alpha) + contamination_weight * alpha if contamination_weight and old_contam else contamination_weight
+            
+            cursor.execute("""
+                UPDATE learned_defaults
+                SET guidance_scale = ?,
+                    avg_score = ?,
+                    sample_count = ?,
+                    success_count = ?,
+                    aging_weight = ?,
+                    contamination_weight = ?,
+                    last_updated = ?
+                WHERE category = ? AND context = ?
+            """, (new_guidance, new_score, sample_count, success_count,
+                  new_aging, new_contam, timestamp, category, context))
+        else:
+            # Insert new
+            cursor.execute("""
+                INSERT INTO learned_defaults
+                (category, context, guidance_scale, avg_score, sample_count, success_count,
+                 aging_weight, contamination_weight, pass_threshold, last_updated)
+                VALUES (?, ?, ?, ?, 1, 1, ?, ?, 75.0, ?)
+            """, (category, context, guidance_scale, realism_score,
+                  aging_weight, contamination_weight, timestamp))
+        
+        conn.commit()
+        conn.close()
+        
+        logger.debug(f"📈 Updated learned defaults for {category}/{context}")
+    
+    def update_pattern_effectiveness(
+        self,
+        patterns_used: List[str],
+        category: str,
+        context: str,
+        passed: bool,
+        realism_score: float
+    ):
+        """
+        Update pattern effectiveness based on generation outcome.
+        
+        Args:
+            patterns_used: List of pattern IDs used
+            category: Material category
+            context: Environment context  
+            passed: Whether generation passed validation
+            realism_score: Score achieved
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        timestamp = datetime.utcnow().isoformat()
+        
+        for pattern_id in patterns_used:
+            # Check if exists
+            cursor.execute("""
+                SELECT total_uses, success_count, score_sum
+                FROM pattern_effectiveness
+                WHERE pattern_id = ? AND category = ? AND context = ?
+            """, (pattern_id, category, context))
+            
+            row = cursor.fetchone()
+            
+            if row:
+                total = row[0] + 1
+                successes = row[1] + (1 if passed else 0)
+                score_sum = row[2] + (realism_score or 0)
+                avg_score = score_sum / total
+                
+                cursor.execute("""
+                    UPDATE pattern_effectiveness
+                    SET total_uses = ?,
+                        success_count = ?,
+                        score_sum = ?,
+                        avg_score = ?,
+                        last_updated = ?
+                    WHERE pattern_id = ? AND category = ? AND context = ?
+                """, (total, successes, score_sum, avg_score, timestamp,
+                      pattern_id, category, context))
+            else:
+                cursor.execute("""
+                    INSERT INTO pattern_effectiveness
+                    (pattern_id, category, context, total_uses, success_count, 
+                     score_sum, avg_score, last_updated)
+                    VALUES (?, ?, ?, 1, ?, ?, ?, ?)
+                """, (pattern_id, category, context, 
+                      1 if passed else 0, realism_score or 0, realism_score or 0, 
+                      timestamp))
+        
+        conn.commit()
+        conn.close()
+    
+    def get_best_patterns_for_category(
+        self,
+        category: str,
+        context: str = 'outdoor',
+        limit: int = 5,
+        min_uses: int = 2
+    ) -> List[Dict]:
+        """
+        Get most effective patterns for a category+context based on learning data.
+        
+        Args:
+            category: Material category
+            context: Environment context
+            limit: Max patterns to return
+            min_uses: Minimum uses to be considered
+            
+        Returns:
+            List of pattern dicts sorted by effectiveness
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT pattern_id, total_uses, success_count, avg_score,
+                   (success_count * 1.0 / total_uses) as success_rate
+            FROM pattern_effectiveness
+            WHERE category = ? AND context = ? AND total_uses >= ?
+            ORDER BY success_rate DESC, avg_score DESC
+            LIMIT ?
+        """, (category, context, min_uses, limit))
+        
+        results = []
+        for row in cursor.fetchall():
+            results.append({
+                'pattern_id': row[0],
+                'total_uses': row[1],
+                'success_count': row[2],
+                'avg_score': round(row[3], 1) if row[3] else 0,
+                'success_rate': round(row[4] * 100, 1) if row[4] else 0
+            })
+        
+        conn.close()
+        return results
+    
+    def get_suggested_threshold(self, category: str, context: str = 'outdoor') -> float:
+        """
+        Get suggested pass threshold based on what's achievable for this combination.
+        
+        Uses 25th percentile of successful scores (conservative) or default 75.0.
+        
+        Args:
+            category: Material category
+            context: Environment context
+            
+        Returns:
+            Suggested threshold (default 75.0 if insufficient data)
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # Get scores from passed attempts
+        cursor.execute("""
+            SELECT realism_score
+            FROM generation_attempts
+            WHERE category = ? AND context = ? AND passed = 1
+            ORDER BY realism_score ASC
+        """, (category, context))
+        
+        scores = [row[0] for row in cursor.fetchall() if row[0]]
+        conn.close()
+        
+        if len(scores) >= 5:
+            # Use 25th percentile as threshold (achievable but quality)
+            idx = len(scores) // 4
+            return max(scores[idx], 60.0)  # Floor at 60
+        
+        return 75.0  # Default
+    
+    def print_learned_defaults_report(self):
+        """Print report of learned defaults."""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        print("\n" + "=" * 80)
+        print("📊 LEARNED DEFAULTS REPORT (Single Source of Truth)")
+        print("=" * 80)
+        
+        cursor.execute("""
+            SELECT category, context, guidance_scale, contamination_uniformity, 
+                   view_mode, pass_threshold, avg_score, sample_count, success_count
+            FROM learned_defaults
+            ORDER BY category, context
+        """)
+        
+        rows = cursor.fetchall()
+        
+        if not rows:
+            print("\n⚠️  No learned defaults yet. Run --seed-defaults or generate images.")
+        else:
+            print(f"\n{'Category':<28} {'Ctx':<8} {'G.Scl':<6} {'Unif':<5} {'ViewMode':<12} {'Samples':<8}")
+            print("-" * 80)
+            for row in rows:
+                cat, ctx, gs, unif, vm, thresh, avg, samples, successes = row
+                success_rate = (successes / samples * 100) if samples else 0
+                vm_short = (vm or 'Contextual')[:11]
+                print(f"{cat:<28} {ctx:<8} {gs or 15.0:<6.1f} {unif or 3:<5} {vm_short:<12} {samples or 0:<8} ({success_rate:.0f}%)")
+        
+        conn.close()
+        print("\n" + "=" * 80)
 
 
 def create_logger(db_path: Optional[Path] = None) -> ImageGenerationLogger:

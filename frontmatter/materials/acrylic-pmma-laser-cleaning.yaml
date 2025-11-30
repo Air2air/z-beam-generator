@@ -85,10 +85,10 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     density:
-      value: 1.18
+      value: 1.2
       unit: g/cm³
-      min: 0.84275
-      max: 2.21225
+      min: 0.84
+      max: 2.2
     porosity:
       value: 0
       unit: '%'
@@ -106,35 +106,35 @@ materialProperties:
       min: 0.01
       max: 5000
     hardness:
-      value: 0.095
+      value: 0.1
       unit: GPa
-      min: 51.75
-      max: 123.25
+      min: 51.8
+      max: 123
     flexuralStrength:
       value: 90
       unit: MPa
-      min: 20.655
-      max: 96.445
+      min: 20.7
+      max: 96.4
     oxidationResistance:
       value: 2.5
       unit: μm/year
       min: 0.76
-      max: 1574.96
+      max: 1575
     corrosionResistance:
       value: 0.92
       unit: mm/year
-      min: 0.0
-      max: 105.0
+      min: 0
+      max: 105
     thermalDestruction:
       value: 433
       unit: K
-      min: 227.85
-      max: 715.15
+      min: 228
+      max: 715
     laserAbsorption:
       value: 0.15
       unit: dimensionless
-      min: 0.285
-      max: 125999.985
+      min: 0.28
+      max: 126000
     compressiveStrength:
       value: 72
       unit: MPa
@@ -146,10 +146,10 @@ materialProperties:
       min: 0.7
       max: 2.9
     electricalResistivity:
-      value: 100000000000000.0
+      value: 1e+14
       unit: Ω·m
-      min: 9500000000000.0
-      max: 1.049995e+17
+      min: '9.5e+12'
+      max: 1e+17
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
@@ -160,8 +160,8 @@ materialProperties:
       context: Commercial-grade clear PMMA (99% purity), 25°C, 532 nm Nd:YAG laser, 10 ns pulse duration, single-shot irradiation in air
       researched_date: '2025-11-24T12:30:31.076360'
       needs_validation: true
-      min: 0.715
-      max: 2.585
+      min: 0.71
+      max: 2.6
     ablationThreshold:
       value: 0.7
       unit: J/cm²
@@ -173,9 +173,9 @@ materialProperties:
       researched_date: '2025-11-24T12:30:39.539163'
       needs_validation: true
       min: 0.39
-      max: 2.81
+      max: 2.8
     thermalDiffusivity:
-      value: 1.1e-07
+      value: '1.1e-07'
       unit: m²/s
       source: scientific_literature
       source_type: materials_database
@@ -184,10 +184,10 @@ materialProperties:
       context: Commercial grade PMMA (density 1.18 g/cm³, 99% purity), 25°C, calculated from thermal conductivity (0.19 W/m·K), density, and specific heat (1.46 J/g·K)
       researched_date: '2025-11-24T12:30:44.295139'
       needs_validation: true
-      min: 0.0
-      max: 0.0
+      min: 0
+      max: 0
     thermalExpansion:
-      value: 8.0e-05
+      value: 8e-05
       unit: 1/K
       source: scientific_literature
       source_type: materials_database
@@ -196,10 +196,10 @@ materialProperties:
       context: Cast PMMA sheet, commercial grade (99% purity), 25°C, linear expansion measured by dilatometry
       researched_date: '2025-11-24T12:30:51.668519'
       needs_validation: true
-      min: 5.9e-05
-      max: 0.000196
+      min: '5.9e-05'
+      max: '0.0002'
     specificHeat:
-      value: 1460.0
+      value: 1460
       unit: J/(kg·K)
       source: scientific_literature
       source_type: reference_handbook
@@ -208,7 +208,7 @@ materialProperties:
       context: Atactic poly(methyl methacrylate) (PMMA), 99% purity, 25°C, amorphous state, measured under standard atmospheric pressure
       researched_date: '2025-11-24T12:30:58.489536'
       needs_validation: true
-      min: 1.0
+      min: 1
       max: 2500
     thermalConductivity:
       value: 0.19
@@ -223,7 +223,7 @@ materialProperties:
       min: 0.02
       max: 3
     laserReflectivity:
-      value: 0.038
+      value: 0.04
       unit: ''
       source: scientific_literature
       source_type: journal_article
@@ -232,30 +232,12 @@ materialProperties:
       context: Clear PMMA (99% purity), 1064 nm wavelength (Nd:YAG laser), normal incidence, 25°C, vacuum-deposited thin film measurement
       researched_date: '2025-11-24T12:31:12.656518'
       needs_validation: true
-      min: 0.02155
-      max: 0.05345
+      min: 0.02
+      max: 0.05
   laser_material_interaction:
     label: Laser-Material Interaction
-    thermalConductivity:
-      value: 0.19
-      unit: W/m·K
-      min: 0.15
-      max: 0.25
-      source: ai_research
-    thermalDiffusivity:
-      value: 1.2e-07
-      unit: m²/s
-      min: 1.0e-07
-      max: 1.5e-07
-      source: ai_research
-    ablationThreshold:
-      value: 2.0
-      unit: J/cm²
-      min: 1.0
-      max: 3.0
-      source: ai_research
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-11-26T11:07:36.114507'
+    generated_date: '2025-11-29T15:19:10.357357'
