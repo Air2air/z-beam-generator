@@ -89,6 +89,25 @@ class ContaminationPatternSelector:
         },
     }
     
+    # Ferrous metals (can rust) vs non-ferrous metals (cannot rust - develop patina instead)
+    # CRITICAL: Rust/iron oxide is ONLY valid for ferrous metals
+    FERROUS_METALS = {
+        'steel', 'stainless steel', 'iron', 'cast iron', 'wrought iron',
+        'carbon steel', 'tool steel', 'galvanized steel', 'weathering steel'
+    }
+    
+    # Non-ferrous metals develop patina, tarnish, or oxidation - NOT rust
+    NON_FERROUS_METALS = {
+        # Copper alloys (develop green/blue patina)
+        'copper', 'brass', 'bronze', 'aluminum bronze', 'phosphor bronze',
+        'silicon bronze', 'naval brass', 'red brass', 'yellow brass',
+        # Aluminum alloys (develop white oxidation)
+        'aluminum', 'aluminium', 'aluminum alloy',
+        # Other non-ferrous
+        'zinc', 'titanium', 'nickel', 'lead', 'tin', 'cobalt', 'chromium',
+        'tungsten', 'magnesium', 'gold', 'silver', 'platinum', 'palladium'
+    }
+    
     # Material to category mapping (simplified)
     MATERIAL_CATEGORIES = {
         # Metals
@@ -99,6 +118,9 @@ class ContaminationPatternSelector:
         'tin': 'metal', 'cobalt': 'metal', 'chromium': 'metal',
         'tungsten': 'metal', 'magnesium': 'metal', 'gold': 'metal',
         'silver': 'metal', 'platinum': 'metal',
+        # Copper alloys (all map to 'metal' but are non-ferrous)
+        'aluminum bronze': 'metal', 'phosphor bronze': 'metal',
+        'silicon bronze': 'metal', 'naval brass': 'metal',
         # Woods
         'oak': 'wood', 'pine': 'wood', 'cedar': 'wood', 'maple': 'wood',
         'walnut': 'wood', 'cherry': 'wood', 'mahogany': 'wood', 'teak': 'wood',
@@ -209,11 +231,87 @@ class ContaminationPatternSelector:
         self._category_cache[material_name] = 'metal'
         return 'metal'  # Default fallback
     
+    def is_ferrous_metal(self, material_name: str) -> bool:
+        """
+        Check if a material is a ferrous metal (contains iron, can rust).
+        
+        Non-ferrous metals like copper, aluminum, bronze, brass develop
+        patina/oxidation but NOT rust (iron oxide).
+        
+        Args:
+            material_name: Material name
+            
+        Returns:
+            True if ferrous (can rust), False otherwise
+        """
+        material_lower = material_name.lower()
+        
+        # Explicit check for ferrous metals
+        if any(f in material_lower for f in ['steel', 'iron']):
+            return True
+        
+        # Explicit check for non-ferrous metals
+        for nf in self.NON_FERROUS_METALS:
+            if nf in material_lower or material_lower in nf:
+                return False
+        
+        # Check category - only metals can be ferrous
+        category = self.get_material_category(material_name)
+        if category != 'metal':
+            return False
+        
+        # If it contains keywords like bronze, brass, copper, aluminum - NOT ferrous
+        non_ferrous_keywords = ['bronze', 'brass', 'copper', 'aluminum', 'aluminium', 
+                                'zinc', 'titanium', 'nickel', 'magnesium', 'gold', 
+                                'silver', 'platinum', 'tin', 'lead', 'cobalt']
+        if any(kw in material_lower for kw in non_ferrous_keywords):
+            return False
+        
+        return False  # Default to non-ferrous (safer - prevents rust on wrong materials)
+    
+    def _is_pattern_valid_for_material(self, pattern_id: str, pattern: Dict, material_name: str) -> bool:
+        """
+        Check if a pattern is chemically/physically valid for a material.
+        
+        Implements contamination physics rules:
+        - Rust only on ferrous metals
+        - Copper patina only on copper alloys
+        - etc.
+        
+        Args:
+            pattern_id: Pattern identifier
+            pattern: Pattern data dict
+            material_name: Material name
+            
+        Returns:
+            True if pattern is valid for material
+        """
+        # Check invalid_materials list
+        invalid_materials = pattern.get('invalid_materials', [])
+        material_lower = material_name.lower()
+        if any(material_lower == im.lower() for im in invalid_materials):
+            return False
+        
+        # CRITICAL: Rust/iron oxide ONLY on ferrous metals
+        if pattern_id in ['rust-oxidation', 'rust', 'iron-oxide']:
+            if not self.is_ferrous_metal(material_name):
+                logger.debug(f"🚫 Excluding {pattern_id} - {material_name} is non-ferrous")
+                return False
+        
+        # Copper patina ONLY on copper-containing alloys
+        if pattern_id in ['copper-patina', 'verdigris']:
+            copper_keywords = ['copper', 'bronze', 'brass']
+            if not any(kw in material_lower for kw in copper_keywords):
+                logger.debug(f"🚫 Excluding {pattern_id} - {material_name} doesn't contain copper")
+                return False
+        
+        return True
+    
     def get_valid_patterns_for_material(self, material_name: str) -> List[str]:
         """
         Get list of pattern IDs that are valid for a material.
         
-        Uses the valid_materials field in each pattern to determine compatibility.
+        Uses the valid_materials field AND chemical compatibility rules.
         
         Args:
             material_name: Material name (e.g., "Aluminum", "Oak")
@@ -227,6 +325,10 @@ class ContaminationPatternSelector:
         
         valid_pattern_ids = []
         for pattern_id, pattern in patterns.items():
+            # First check chemical compatibility (rust only on ferrous, etc.)
+            if not self._is_pattern_valid_for_material(pattern_id, pattern, material_name):
+                continue
+                
             valid_materials = pattern.get('valid_materials', [])
             # Check if material is in valid_materials (case-insensitive)
             if any(material_lower == vm.lower() for vm in valid_materials):
@@ -323,6 +425,12 @@ class ContaminationPatternSelector:
         scored_patterns = []
         for pattern_id in valid_ids:
             pattern = patterns.get(pattern_id, {})
+            
+            # CRITICAL: Filter out chemically incompatible patterns (rust on non-ferrous, etc.)
+            if not self._is_pattern_valid_for_material(pattern_id, pattern, material_name):
+                logger.info(f"🚫 Filtered out {pattern_id} - incompatible with {material_name}")
+                continue
+            
             score = 0
             
             # Bonus for having material-specific appearance data
