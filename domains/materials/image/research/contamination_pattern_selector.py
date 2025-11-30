@@ -79,11 +79,13 @@ class ContaminationPatternSelector:
             'composite': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'adhesive-residue'],
         },
         'marine': {
-            'metal': ['rust-oxidation', 'salt-deposits', 'natural-weathering', 'algae-growth', 'barnacles'],
-            'wood': ['natural-weathering', 'salt-deposits', 'mold-mildew', 'algae-growth', 'wood-rot'],
-            'polymer': ['salt-deposits', 'uv-chalking', 'natural-weathering', 'algae-growth', 'barnacles'],
-            'glass': ['salt-deposits', 'hard-water-deposits', 'algae-growth', 'environmental-dust'],
-            'composite': ['salt-deposits', 'uv-chalking', 'natural-weathering', 'algae-growth'],
+            # Note: use actual pattern IDs from Contaminants.yaml
+            # salt-residue (not salt-deposits), industrial-oil works for most metals
+            'metal': ['salt-residue', 'mineral-deposits', 'industrial-oil', 'algae-growth', 'scale-buildup'],
+            'wood': ['salt-residue', 'mold-mildew', 'algae-growth', 'environmental-dust', 'biological-stains'],
+            'polymer': ['salt-residue', 'uv-chalking', 'algae-growth', 'environmental-dust', 'chemical-stains'],
+            'glass': ['salt-residue', 'hard-water-deposits', 'algae-growth', 'environmental-dust'],
+            'composite': ['salt-residue', 'uv-chalking', 'algae-growth', 'environmental-dust'],
         },
     }
     
@@ -148,40 +150,63 @@ class ContaminationPatternSelector:
     
     def get_material_category(self, material_name: str) -> str:
         """Get the category for a material (for pattern prioritization)."""
+        # Check cache first
+        if not hasattr(self, '_category_cache'):
+            self._category_cache = {}
+        if material_name in self._category_cache:
+            return self._category_cache[material_name]
+        
         material_lower = material_name.lower()
         
         # Direct lookup
         if material_lower in self.MATERIAL_CATEGORIES:
-            return self.MATERIAL_CATEGORIES[material_lower]
+            result = self.MATERIAL_CATEGORIES[material_lower]
+            self._category_cache[material_name] = result
+            return result
         
-        # Fuzzy matching
-        if any(m in material_lower for m in ['steel', 'iron', 'metal']):
+        # Fuzzy matching - extended list for better coverage
+        if any(m in material_lower for m in ['steel', 'iron', 'metal', 'bronze', 'brass', 'copper', 'aluminum', 'zinc', 'nickel', 'titanium', 'alloy']):
+            self._category_cache[material_name] = 'metal'
             return 'metal'
-        if any(m in material_lower for m in ['wood', 'oak', 'pine', 'cedar', 'maple', 'hickory', 'walnut']):
+        if any(m in material_lower for m in ['wood', 'oak', 'pine', 'cedar', 'maple', 'hickory', 'walnut', 'birch', 'mahogany', 'teak']):
+            self._category_cache[material_name] = 'wood'
             return 'wood'
-        if any(m in material_lower for m in ['plastic', 'polymer', 'vinyl', 'acrylic']):
+        if any(m in material_lower for m in ['plastic', 'polymer', 'vinyl', 'acrylic', 'nylon', 'pvc', 'abs', 'hdpe', 'ldpe']):
+            self._category_cache[material_name] = 'polymer'
             return 'polymer'
         if 'glass' in material_lower:
+            self._category_cache[material_name] = 'glass'
             return 'glass'
         if any(m in material_lower for m in ['ceramic', 'porcelain', 'tile']):
+            self._category_cache[material_name] = 'ceramic'
             return 'ceramic'
-        if any(m in material_lower for m in ['stone', 'granite', 'marble']):
+        if any(m in material_lower for m in ['stone', 'granite', 'marble', 'limestone', 'slate']):
+            self._category_cache[material_name] = 'stone'
             return 'stone'
-        if any(m in material_lower for m in ['fiber', 'composite']):
+        if any(m in material_lower for m in ['fiber', 'composite', 'carbon', 'fiberglass']):
+            self._category_cache[material_name] = 'composite'
             return 'composite'
         
-        # Fall back to Materials.yaml lookup
+        # Fall back to Materials.yaml lookup (with caching)
         try:
-            materials_file = PROJECT_ROOT / 'data' / 'materials' / 'Materials.yaml'
-            if materials_file.exists():
-                with open(materials_file, 'r', encoding='utf-8') as f:
-                    materials_data = yaml.safe_load(f)
-                materials = materials_data.get('materials', {})
-                if material_name in materials:
-                    return materials[material_name].get('category', 'metal')
+            if not hasattr(self, '_materials_data'):
+                materials_file = PROJECT_ROOT / 'data' / 'materials' / 'Materials.yaml'
+                if materials_file.exists():
+                    logger.info("📦 Loading Materials.yaml for category lookup (one-time)...")
+                    with open(materials_file, 'r', encoding='utf-8') as f:
+                        self._materials_data = yaml.safe_load(f)
+                else:
+                    self._materials_data = {}
+            
+            materials = self._materials_data.get('materials', {})
+            if material_name in materials:
+                result = materials[material_name].get('category', 'metal')
+                self._category_cache[material_name] = result
+                return result
         except Exception:
             pass
         
+        self._category_cache[material_name] = 'metal'
         return 'metal'  # Default fallback
     
     def get_valid_patterns_for_material(self, material_name: str) -> List[str]:
@@ -440,10 +465,18 @@ class ContaminationPatternSelector:
         
         return str(color_variations)[:50]
     
-    def _extract_texture_summary(self, texture_details: str) -> str:
+    def _extract_texture_summary(self, texture_details) -> str:
         """Extract concise texture summary."""
         if not texture_details:
             return 'varied surface texture'
+        
+        # Handle dict (appearance_on_materials structure may have nested data)
+        if isinstance(texture_details, dict):
+            # Try to get a description or convert to string
+            texture_details = texture_details.get('description', str(texture_details))
+        
+        # Ensure it's a string
+        texture_details = str(texture_details)
         
         # Take first sentence
         if '.' in texture_details:

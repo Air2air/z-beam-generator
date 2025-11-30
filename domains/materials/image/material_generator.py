@@ -297,6 +297,19 @@ class MaterialImageGenerator:
                 "natural environment", "realistic setting"
             ])
         
+        # Add material-specific exclusions for corrosion-resistant materials
+        # These materials should NOT show rust/oxidation
+        corrosion_resistant_materials = [
+            "stainless steel", "titanium", "aluminum", "brass", "bronze",
+            "copper", "nickel", "chromium", "gold", "silver", "platinum",
+            "zinc", "galvanized"
+        ]
+        if any(cr in material_name.lower() for cr in corrosion_resistant_materials):
+            base_negative.extend([
+                "rust", "rusty", "rust spots", "orange rust", "red rust",
+                "iron oxide", "rust streaks", "rust stains", "corroded rust"
+            ])
+        
         return ", ".join(base_negative)
     
     def get_generation_params(

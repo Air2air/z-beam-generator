@@ -510,6 +510,47 @@ Realism Score: 5.0/10 (threshold: 5.5) ❌ FAIL
 
 ---
 
+## 📋 **IMAGE GENERATION MONITORING POLICY** 🔥 **NEW (Nov 30, 2025)**
+
+**AI assistants MUST actively monitor image generation terminal output for bottlenecks.**
+
+**Monitoring Requirements**:
+1. **Watch for slow stages** - If any stage takes >30 seconds without output, investigate
+2. **Identify API timeouts** - Note if Imagen or Gemini calls exceed expected times
+3. **Report hanging operations** - If no output for 60+ seconds, alert user
+4. **Never truncate output** - Always show FULL terminal output during generation
+
+**Expected Timings** (flag if exceeded):
+- Contamination pattern loading: <1 second
+- Assembly research (cached): <1 second  
+- Assembly research (API): 5-15 seconds
+- Imagen generation: 15-45 seconds
+- Validation: 5-15 seconds
+- **Total expected**: 30-90 seconds
+
+**Required Stage Logging**:
+```
+🔬 MATERIAL IMAGE GENERATION: [Material]
+📊 Configuration: [settings]
+🔬 Researching contamination data...
+📋 Selected [N] patterns for [Material]
+🔧 Researching assembly components...
+🎨 ATTEMPT [N]/[MAX] - Generating image...
+✅ Image saved to: [path] ([size] KB)
+🔍 Validating image with Gemini Vision...
+📊 VALIDATION RESULTS: [score, status]
+```
+
+**AI Assistant Responsibilities**:
+- Run with full output (no truncation)
+- Monitor actively for stalls
+- Report issues immediately if hung
+- Ask about hangs after 2 minutes without progress
+
+**Documentation**: `docs/08-development/IMAGE_GENERATION_MONITORING_POLICY.md`
+
+---
+
 ## 📋 **TERMINAL OUTPUT LOGGING POLICY** 🔥 **NEW (Nov 22, 2025) - CRITICAL**
 
 **ALL generation operations MUST stream comprehensive output to terminal in real-time.**

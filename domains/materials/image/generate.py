@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
 
 # Constants
-MAX_RETRIES = 3
+MAX_RETRIES = 1  # Default: single attempt, wait for user feedback before retry
 PASS_THRESHOLD = 75.0
 
 
@@ -338,6 +338,21 @@ def generate_and_validate(
     logger.info("\n📊 VALIDATION RESULTS:")
     logger.info(f"   • Realism Score: {validation_result.realism_score:.1f}/100")
     logger.info(f"   • Pass Threshold: {PASS_THRESHOLD}/100")
+    
+    # Show text label detection (critical failure reason)
+    if validation_result.text_labels_present:
+        logger.info(f"   • Text/Labels: ❌ DETECTED (automatic fail)")
+        if validation_result.text_label_details:
+            for detail in validation_result.text_label_details:
+                logger.info(f"      → {detail}")
+    else:
+        logger.info(f"   • Text/Labels: ✅ None detected")
+    
+    # Show position shift check
+    if validation_result.position_shift_appropriate is not None:
+        shift_status = "✅ Appropriate" if validation_result.position_shift_appropriate else "❌ Identical/Wrong"
+        logger.info(f"   • Position Shift: {shift_status}")
+    
     logger.info(f"   • Status: {'✅ PASSED' if validation_result.passed else '❌ FAILED'}")
     
     # Always show feedback (pass or fail)
