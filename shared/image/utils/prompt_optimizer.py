@@ -353,8 +353,11 @@ class PromptOptimizer:
         """
         limit = max_length if max_length is not None else self.hard_limit
         
-        # Critical contamination keywords to ALWAYS preserve
+        # Critical keywords to ALWAYS preserve (contamination + text prohibition)
         critical_keywords = [
+            # Text prohibition (CRITICAL - Imagen generates text labels if not explicitly forbidden)
+            'no text', 'no labels', 'no words', 'no letters', 'absolutely no text',
+            # Contamination rules
             'oil', 'rust', 'dust', 'soil', 'grease',
             'contamination', 'ferrous', 'plastic',
             'machinery', 'research confirms', 'NEVER'
