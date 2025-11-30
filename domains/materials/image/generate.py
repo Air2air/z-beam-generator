@@ -3,11 +3,11 @@
 Material Image Generator CLI
 
 Generate before/after laser cleaning images with researched contamination defaults.
-Includes auto-retry with feedback injection on validation failure.
+Single attempt mode with validation feedback for manual review.
 
 Usage:
     python3 domains/materials/image/generate.py --material "Aluminum"
-    python3 domains/materials/image/generate.py --material "Stainless Steel" --max-retries 5
+    python3 domains/materials/image/generate.py --material "Stainless Steel"
 """
 
 import argparse
@@ -29,7 +29,6 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
 
 # Constants
-MAX_RETRIES = 1  # Default: single attempt, wait for user feedback before retry
 PASS_THRESHOLD = 75.0
 
 
@@ -391,23 +390,15 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Generate with auto-retry on failure (default: 3 attempts)
+  # Generate image with validation
   python3 domains/materials/image/generate.py --material "Aluminum"
-  
-  # Generate with more retry attempts
-  python3 domains/materials/image/generate.py --material "Steel" --max-retries 5
   
   # Show prompt without generating
   python3 domains/materials/image/generate.py --material "Brass" --show-prompt --dry-run
 
-Auto-Retry Feature:
-  When validation fails, the system will automatically:
-  1. Extract feedback from the validator (assessment, issues, recommendations)
-  2. Inject corrections into the next prompt
-  3. Regenerate with feedback-enhanced prompt
-  4. Repeat up to --max-retries times (default: 3)
-  
-  All attempts are logged to the learning database for analysis.
+Single Attempt Mode:
+  Generates one image and validates. If validation fails, provides feedback for
+  manual review before regenerating. All attempts logged to learning database.
         """
     )
     
@@ -428,10 +419,7 @@ Auto-Retry Feature:
                        help="Show the generated prompt")
     parser.add_argument("--dry-run", action="store_true",
                        help="Generate prompt but don't create image")
-    parser.add_argument("--max-retries", type=int, default=MAX_RETRIES,
-                       help=f"Maximum retry attempts on validation failure (default: {MAX_RETRIES})")
-    parser.add_argument("--no-retry", action="store_true",
-                       help="Disable auto-retry on validation failure")
+
     
     # Shape/object override
     parser.add_argument("--shape", type=str,
@@ -510,7 +498,6 @@ Auto-Retry Feature:
     logger.info(f"   • Severity: {config.severity_description}")
     logger.info(f"   • View Mode: {config.view_mode}")
     logger.info(f"   • Guidance Scale: {config.guidance_scale}")
-    logger.info(f"   • Max Retries: {args.max_retries if not args.no_retry else 'disabled'}")
     if args.shape:
         logger.info(f"   • Shape Override: {args.shape}")
     logger.info("")
@@ -641,9 +628,9 @@ Auto-Retry Feature:
     from domains.materials.image.validator import MaterialImageValidator
     validator = MaterialImageValidator(gemini_api_key) if config.validate else None
     
-    # Retry loop - DEFAULT: 1 attempt (no auto-retry)
+    # Single attempt mode - no auto-retry
     # Retries waste API calls since validation failures rarely improve with regeneration
-    max_attempts = args.max_retries if args.max_retries > 1 else 1
+    max_attempts = 1
     correction_feedback = None
     final_validation_result = None
     
