@@ -323,14 +323,12 @@ EXPECTED CHARACTERISTICS:
         # Assemble full validation prompt
         full_prompt = "\n\n".join(prompt_parts)
         
-        # Optimize for API limits - PRESERVE JSON format specification
-        optimized_prompt = self.optimizer.optimize_prompt(
-            full_prompt,
-            preserve_feedback=True,
-            preserve_json_format=True  # Critical: JSON format must not be truncated
-        )
+        # NOTE: Validation prompts go to Gemini Vision, NOT Imagen
+        # Gemini has 1M+ token context window, so NO optimization needed
+        # The Imagen optimizer (4096 char limit) was incorrectly truncating validation prompts
+        logger.info(f"📝 Validation prompt: {len(full_prompt):,} chars (Gemini limit: ~4M chars)")
         
-        return optimized_prompt
+        return full_prompt
     
     def _load_template(self, template_path: Path) -> str:
         """
