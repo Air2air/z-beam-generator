@@ -226,8 +226,10 @@ class SimpleGenerator:
         
         material_data = materials_data['materials'][material_name]
         
-        # Get author and voice
-        author_id = material_data.get('author', {}).get('id', 2)
+        # Get author and voice - FAIL-FAST if author missing
+        from data.authors.registry import resolve_author_for_generation
+        author_info = resolve_author_for_generation(material_data)
+        author_id = author_info['id']
         voice = self._get_persona_by_author_id(author_id)
         
         # Get facts and context

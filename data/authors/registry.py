@@ -251,6 +251,25 @@ def get_all_authors() -> list[Dict[str, str]]:
     return [author.copy() for author in AUTHOR_REGISTRY.values()]
 
 
+def assign_random_author() -> Dict[str, str]:
+    """
+    Randomly assign an author for new materials.
+    
+    This is the ONLY way to assign an author to a new material.
+    Ensures even distribution across all 4 authors over time.
+    
+    Returns:
+        Complete author information dictionary (copy)
+        
+    Example:
+        >>> from data.authors.registry import assign_random_author
+        >>> new_material['author'] = assign_random_author()
+    """
+    import random
+    author_id = random.choice(list(AUTHOR_REGISTRY.keys()))
+    return AUTHOR_REGISTRY[author_id].copy()
+
+
 def resolve_author_for_generation(material_data: Dict) -> Dict[str, str]:
     """
     Single author resolution path for content generation - NO fallbacks.
@@ -311,5 +330,6 @@ __all__ = [
     "validate_author_id",
     "list_valid_author_ids",
     "get_all_authors",
+    "assign_random_author",
     "resolve_author_for_generation",
 ]

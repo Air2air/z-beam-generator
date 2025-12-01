@@ -1138,13 +1138,16 @@ class QualityGatedGenerator:
         self.generator._save_to_yaml(material_name, component_type, content)
     
     def _get_author_id(self, material_name: str) -> int:
-        """Get author_id for material from Materials.yaml"""
-        try:
-            from domains.materials.data_loader import load_materials_data
-            materials_data = load_materials_data()
-            material_data = materials_data.get('materials', {}).get(material_name, {})
-            author_id = material_data.get('author', {}).get('id', 2)  # Default to author 2 if not found
-            return author_id
-        except Exception as e:
-            logger.warning(f"Could not load author_id for {material_name}: {e}")
-            return 2  # Default to author 2
+        """Get author_id for material from Materials.yaml - FAIL-FAST if missing"""
+        from domains.materials.data_loader import load_materials_data
+        from data.authors.registry import resolve_author_for_generation
+        
+        materials_data = load_materials_data()
+        material_data = materials_data.get('materials', {}).get(material_name)
+        
+        if not material_data:
+            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
+        
+        # FAIL-FAST: No fallbacks - material must have valid author.id
+        author_info = resolve_author_for_generation(material_data)
+        return author_info['id']

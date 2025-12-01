@@ -618,8 +618,10 @@ class DynamicGenerator:
         
         material_data = materials_data['materials'][material_name]
         
-        # Get author ID and load corresponding persona
-        author_id = material_data.get('author', {}).get('id', 2)
+        # Get author ID and load corresponding persona - FAIL-FAST if missing
+        from data.authors.registry import resolve_author_for_generation
+        author_info = resolve_author_for_generation(material_data)
+        author_id = author_info['id']
         voice = self._get_persona_by_author_id(author_id)
         
         # Enrich with real facts

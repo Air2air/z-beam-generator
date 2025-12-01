@@ -149,14 +149,13 @@ class MaterialsAdapter(DataSourceAdapter):
                     material_name = name
                     break
         
-        # Use hash of material name for consistent rotation (1-4)
-        if material_name:
-            name_hash = hash(material_name)
-            author_id = (abs(name_hash) % 4) + 1  # Maps to 1, 2, 3, or 4
-            return author_id
+        # FAIL-FAST: Material must have author.id - no hash fallback
+        if not item_data:
+            raise ValueError("item_data is required - cannot determine author without material data")
         
-        # Fallback to author 2 (Italy - Alessandro) if can't determine
-        return 2
+        from data.authors.registry import resolve_author_for_generation
+        author_info = resolve_author_for_generation(item_data)
+        return author_info['id']
     
     def write_component(
         self,

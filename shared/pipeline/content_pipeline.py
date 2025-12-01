@@ -197,21 +197,12 @@ class ContentPipeline:
             content = content_schema_class.from_dict(existing_data)
             self.logger.info(f"📂 Loaded existing data")
         else:
-            # Create new content
-            if not category:
-                raise ValueError("category required for new content")
-            
-            content_type = content_schema_class.__name__.replace('Content', '').lower()
-            
-            content = content_schema_class(
-                content_type=content_type,
-                name=content_name,
-                category=category,
-                title=f"{content_name}",
-                description="",
-                author=self._get_default_author()
+            # Create new content - FAIL-FAST: requires author in existing data
+            raise ValueError(
+                f"Cannot create new content for '{content_name}' without existing data. "
+                f"Materials must exist in Materials.yaml with author.id assigned. "
+                f"Use data.authors.registry to assign authors first."
             )
-            self.logger.info(f"✨ Created new {content_type} content")
         
         return content
     
@@ -373,11 +364,12 @@ class ContentPipeline:
         return frontmatter
     
     def _get_default_author(self) -> Dict[str, Any]:
-        """Get default author (for new content)"""
-        # TODO: Implement author assignment logic
-        return {
-            'id': 1,
-            'name': 'Dr. Sarah Chen',
-            'country': 'Taiwan',
-            'expertise': 'Materials Science and Laser Technology'
-        }
+        """Get default author - DEPRECATED, use resolve_author_for_generation instead.
+        
+        This method should not be called. Materials must have author.id assigned.
+        Raises error to enforce fail-fast architecture.
+        """
+        raise NotImplementedError(
+            "_get_default_author is deprecated. Materials must have author.id assigned. "
+            "Use data.authors.registry.resolve_author_for_generation(material_data) instead."
+        )
