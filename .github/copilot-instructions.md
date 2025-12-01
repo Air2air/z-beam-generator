@@ -122,6 +122,51 @@ When generating a new image for a material that has feedback:
 2. Mention: "Note: Previous feedback for Steel includes rotation issues"
 3. Consider applying corrections proactively
 
+### **Feedback Integration Policy** 🔥 **NEW (Nov 30, 2025) - CRITICAL**
+
+**Feedback MUST be analyzed and consolidated into appropriate prompt sections, NOT just concatenated.**
+
+**PROHIBITED Approach** (Grade F):
+```
+❌ Append feedback to CORRECTIONS section
+❌ Add more text to already-long prompts
+❌ Let optimizer truncate important feedback
+❌ Create feedback files that just get concatenated
+```
+
+**REQUIRED Approach** (Grade A):
+```
+✅ ANALYZE feedback to identify root cause location in prompt chain
+✅ MODIFY the source template where the issue originates
+✅ CONSOLIDATE feedback into existing prompt sections
+✅ REWRITE sections if needed to integrate modifications
+✅ REMOVE contradicting text when adding corrections
+```
+
+**Feedback Processing Steps**:
+1. **Trace the prompt chain** - Find all templates that touch the issue
+2. **Identify root location** - Which template is the source of the problem?
+3. **Check for contradictions** - Does existing text contradict the feedback?
+4. **Modify at source** - Edit the template, don't add another layer
+5. **Verify integration** - Run dry-run to confirm feedback appears in final prompt
+6. **Check prompt length** - Ensure changes don't exceed limits
+
+**Example - "Glass contamination too thick"**:
+```
+❌ WRONG: Add "glass contamination should be thin" to user_corrections.txt
+✅ RIGHT: 
+   1. Find contamination_rules.txt (source of contamination description)
+   2. Find base_structure.txt (describes contamination appearance)
+   3. Modify BOTH to specify thin/uniform for glass
+   4. Create glass_corrections.txt for glass-specific overrides
+   5. Remove "chunky" or "thick" language if present
+```
+
+**Prompt Length Management**:
+- If prompt exceeds 4096 chars after integration, REWRITE sections to be more concise
+- Prioritize: Material-specific rules > Generic rules > Examples
+- Never let optimizer truncate critical feedback
+
 ### **Feedback Analytics**
 ```bash
 # View recent feedback
@@ -548,6 +593,37 @@ Realism Score: 5.0/10 (threshold: 5.5) ❌ FAIL
 - Ask about hangs after 2 minutes without progress
 
 **Documentation**: `docs/08-development/IMAGE_GENERATION_MONITORING_POLICY.md`
+
+---
+
+## 🚫 **NO AUTO-REGENERATION POLICY** 🔥 **NEW (Nov 30, 2025) - CRITICAL**
+
+**AI assistants MUST NOT automatically retry or regenerate images after a failed attempt.**
+
+**Policy Requirements**:
+1. **ONE attempt only** - Generate once, report results, STOP
+2. **Wait for user instruction** - Do NOT retry unless user explicitly requests it
+3. **Report and wait** - Show validation score, recommendations, then ASK user what to do next
+4. **No "let me try again"** - Even if score is close to threshold, do NOT auto-retry
+
+**After ANY image generation (pass or fail)**:
+```
+✅ CORRECT: "Score: 75/100. Validation failed. Would you like me to retry with different parameters?"
+❌ WRONG: "Score: 75/100. Let me try again with heavier contamination..." [auto-generates]
+```
+
+**Rationale**:
+- Each generation costs API credits
+- User may want to adjust parameters manually
+- User may want to review output before deciding
+- Prevents runaway retry loops
+
+**Exceptions** (ONLY when user explicitly says):
+- "retry", "try again", "regenerate"
+- "keep trying until it passes"
+- "run batch generation" (batch mode has its own retry logic)
+
+**Grade**: F violation if auto-regenerating without explicit user instruction
 
 ---
 

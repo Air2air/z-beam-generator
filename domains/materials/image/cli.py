@@ -46,7 +46,7 @@ Examples:
     parser.add_argument("--output-dir", type=Path,
                        help="Output directory (default: public/images/materials)")
     parser.add_argument("--filename",
-                       help="Output filename (default: {material-slug}-laser-cleaning.png)")
+                       help="Output filename (default: {material-slug}-laser-cleaning-hero.png)")
     
     # Control options
     parser.add_argument('--no-validate', action='store_true',
@@ -130,7 +130,7 @@ def main():
         output_path = output_dir / args.filename
     else:
         slug = args.material.replace(" ", "-").replace("/", "-").lower()
-        output_path = output_dir / f"{slug}-laser-cleaning.png"
+        output_path = output_dir / f"{slug}-laser-cleaning-hero.png"
     
     # Handle existing file
     if output_path.exists():

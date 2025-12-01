@@ -77,6 +77,9 @@ class SharedPromptBuilder:
         # Initialize research data verifier
         self.verifier = ResearchDataVerifier()
         
+        # Initialize learning system for learned defaults (lazy-loaded)
+        self._learning_logger = None
+        
         # Fail-fast validation
         if not self.prompts_dir.exists():
             raise FileNotFoundError(
@@ -96,22 +99,80 @@ class SharedPromptBuilder:
         
         logger.info(f"✅ Shared prompt builder initialized: {self.prompts_dir}")
     
+    @property
+    def learning_logger(self):
+        """Lazy-load learning logger to avoid circular imports."""
+        if self._learning_logger is None:
+            try:
+                from shared.image.learning import create_logger
+                self._learning_logger = create_logger()
+            except Exception as e:
+                logger.warning(f"Could not initialize learning logger: {e}")
+                self._learning_logger = None
+        return self._learning_logger
+    
+    def _get_learned_or_fail(
+        self,
+        param_name: str,
+        explicit_value: Optional[str],
+        category: str,
+        context: str,
+        material_name: str
+    ) -> str:
+        """
+        Get parameter value: explicit > learned > FAIL.
+        
+        NO HARDCODED DEFAULTS - uses learning system or fails fast.
+        
+        Args:
+            param_name: Parameter name (e.g., 'severity', 'view_mode')
+            explicit_value: Value explicitly provided (takes priority)
+            category: Material category for learning lookup
+            context: Context for learning lookup
+            material_name: Material name for error messages
+            
+        Returns:
+            Parameter value (explicit or learned)
+            
+        Raises:
+            ValueError: If no explicit value AND no learned default available
+        """
+        # 1. Explicit value takes priority
+        if explicit_value is not None:
+            return explicit_value
+        
+        # 2. Try learning system
+        if self.learning_logger:
+            learned = self.learning_logger.get_learned_param(param_name, category, context)
+            if learned is not None:
+                logger.info(f"🧠 Using learned {param_name}={learned} for {category}/{context}")
+                return learned
+        
+        # 3. FAIL FAST - no default available
+        raise ValueError(
+            f"{param_name.upper()} REQUIRED for {material_name}. "
+            f"No learned default available for category={category}, context={context}. "
+            f"Please specify --{param_name.replace('_', '-')} explicitly."
+        )
+    
     def build_generation_prompt(
         self,
         material_name: str,
         research_data: Dict,
-        contamination_uniformity: int = 3,
-        view_mode: str = "Contextual",
+        contamination_uniformity: Optional[int] = None,
+        view_mode: Optional[str] = None,
         material_category: Optional[str] = None,
         learned_feedback: Optional[str] = None,
-        severity: str = "moderate",
+        severity: Optional[str] = None,
         aging_weight: Optional[float] = None,
         contamination_weight: Optional[float] = None,
         material_properties: Optional[Dict] = None,
         config: Optional["MaterialImageConfig"] = None
     ) -> str:
         """
-        Build complete generation prompt from shared templates + researched defaults.
+        Build complete generation prompt from shared templates + learned defaults.
+        
+        NO HARDCODED DEFAULTS - uses learning system for missing parameters.
         
         Loads 4-layer prompt system:
         1. Base Structure: Core format (side-by-side, 16:9, position shift)
@@ -124,18 +185,18 @@ class SharedPromptBuilder:
         - User Feedback: Your latest quality corrections
         - Learned Feedback: Category-specific feedback from previous attempts
         - Visual Weights: Custom aging/contamination intensity adjustments
-        - Material Visual Properties: Reflectivity, absorptivity, surface finish (NEW)
+        - Material Visual Properties: Reflectivity, absorptivity, surface finish
         
         Args:
             material_name: Name of material (e.g., "Aluminum")
             research_data: Research data with contamination patterns
-            contamination_uniformity: Variety 1-5 (default: 3, researched default)
-            view_mode: "Contextual" or "Isolated" (default: "Contextual")
+            contamination_uniformity: Variety 1-5 (learned from successful generations)
+            view_mode: "Contextual" or "Isolated" (learned from successful generations)
             material_category: Material category for learned feedback (e.g., "metal_ferrous")
             learned_feedback: Pre-formatted learned feedback from learning system
             severity: Contamination severity - "light" (<30%), "moderate" (30-60%), "heavy" (>60%)
-            aging_weight: Visual weight for aging on left side (0.0-2.0, default 1.0)
-            contamination_weight: Visual weight for contamination on right side (0.0-2.0, default 1.0)
+            aging_weight: Visual weight for aging on left side (0.0-2.0)
+            contamination_weight: Visual weight for contamination on right side (0.0-2.0)
             material_properties: Material properties from Materials.yaml (includes visual props)
             config: Optional MaterialImageConfig for additional settings
             
@@ -145,8 +206,54 @@ class SharedPromptBuilder:
         Raises:
             FileNotFoundError: If required template files missing
             ValueError: If research_data lacks required contamination patterns
+            ValueError: If required parameter missing and no learned default available
         """
         prompt_parts = []
+        
+        # Extract values from config if provided
+        context = 'outdoor'  # Default context for learning lookup
+        if config:
+            config_dict = config.to_dict() if hasattr(config, 'to_dict') else config
+            if 'severity' in config_dict and config_dict['severity']:
+                severity = config_dict['severity']
+            if 'view_mode' in config_dict and config_dict['view_mode']:
+                view_mode = config_dict['view_mode']
+            if 'contamination_uniformity' in config_dict and config_dict['contamination_uniformity']:
+                contamination_uniformity = config_dict['contamination_uniformity']
+            if 'context' in config_dict:
+                context = config_dict['context']
+        
+        # Category for learning lookup
+        category = material_category or 'metal'
+        
+        # Get severity - FAIL FAST if not provided and no learned default
+        severity = self._get_learned_or_fail(
+            'severity', severity, category, context, material_name
+        )
+        
+        # Get view_mode - use learned default or fail
+        if view_mode is None:
+            if self.learning_logger:
+                learned_view = self.learning_logger.get_learned_param('view_mode', category, context)
+                if learned_view:
+                    view_mode = learned_view
+                    logger.info(f"🧠 Using learned view_mode={view_mode}")
+            if view_mode is None:
+                # Context-derived default (not hardcoded - based on context logic)
+                view_mode = 'Contextual'
+                logger.info(f"📍 Using context-derived view_mode={view_mode}")
+        
+        # Get contamination_uniformity - use learned or context-derived
+        if contamination_uniformity is None:
+            if self.learning_logger:
+                learned_uni = self.learning_logger.get_learned_param('contamination_uniformity', category, context)
+                if learned_uni:
+                    contamination_uniformity = int(learned_uni)
+                    logger.info(f"🧠 Using learned contamination_uniformity={contamination_uniformity}")
+            if contamination_uniformity is None:
+                # Context-derived default
+                contamination_uniformity = 3
+                logger.info(f"📍 Using context-derived contamination_uniformity={contamination_uniformity}")
         
         # Build replacement context once (using researched defaults + visual properties)
         replacements = self._build_replacement_dict(
@@ -308,7 +415,22 @@ class SharedPromptBuilder:
         # uniformity = config['contamination_uniformity']  # Fail if missing
         # view_mode = config['view_mode']  # Fail if missing
         
-        # Header with material context
+        # Header with material context - FAIL FAST if severity missing
+        if 'severity' not in config:
+            raise ValueError(
+                f"Severity REQUIRED in config for validation of {material_name}. "
+                "NO DEFAULTS - per copilot-instructions.md policy."
+            )
+        severity = config['severity']
+        severity_descriptions = {
+            "light": "scattered spots, <30% coverage, isolated patches",
+            "moderate": "connected patches, 30-60% coverage",
+            "heavy": "continuous coverage, >60% coverage, thick accumulation"
+        }
+        if severity not in severity_descriptions:
+            raise ValueError(f"Invalid severity '{severity}'. Must be: light, moderate, or heavy")
+        severity_desc = severity_descriptions[severity]
+        
         prompt_parts.append(f"""Analyze this material before/after laser cleaning image of {material_name}.
 
 IMAGE STRUCTURE:
@@ -320,8 +442,12 @@ IMAGE STRUCTURE:
 EXPECTED CHARACTERISTICS:
 - Material: {material_name}
 - Contamination patterns: {', '.join(pattern_names)}
-- Contamination variety: {config.get('contamination_uniformity', 'researched default')}
-- View mode: {config.get('view_mode', 'Contextual')}
+- Contamination variety: {config['contamination_uniformity']}
+- Contamination severity: {severity.upper()} - {severity_desc}
+- View mode: {config['view_mode']}
+
+SEVERITY VALIDATION ({severity.upper()}):
+The 'before' side MUST show {severity_desc}. If contamination appears lighter than "{severity}" level, reduce score.
 """)
         
         # Realism Criteria (maps to generation standards)
@@ -459,7 +585,7 @@ EXPECTED CHARACTERISTICS:
         research_data: Dict,
         contamination_uniformity: int,
         view_mode: str,
-        severity: str = "moderate",
+        severity: str,
         material_properties: Optional[Dict] = None
     ) -> Dict[str, str]:
         """

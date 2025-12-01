@@ -366,11 +366,23 @@ class PromptOptimizer:
                 logger.info("🗑️  Pruned: empty LEARNED section")
                 continue
             
-            # Simplify DISTRIBUTION section (keep header + first 3 items)
+            # Simplify DISTRIBUTION section (keep header + first 3 items + material-specific rules)
             if 'DISTRIBUTION' in section_upper:
                 lines = section.split('\n')
-                if len(lines) > 4:
-                    section = '\n'.join(lines[:4])
+                # Keep material-specific rules (lines containing material category keywords)
+                material_keywords = ['GLASS', 'METAL', 'WOOD', 'PLASTIC', 'STONE', 'CONCRETE', 'CERAMIC']
+                preserved_lines = []
+                regular_lines = []
+                for line in lines:
+                    if any(kw in line.upper() for kw in material_keywords):
+                        preserved_lines.append(line)
+                    else:
+                        regular_lines.append(line)
+                # Keep header + first 3 regular items + all material-specific rules
+                section = '\n'.join(regular_lines[:4] + preserved_lines)
+                if preserved_lines:
+                    logger.info(f"✂️  Simplified: DISTRIBUTION section (preserved {len(preserved_lines)} material rules)")
+                else:
                     logger.info("✂️  Simplified: DISTRIBUTION section")
             
             # Simplify MICRO-SCALE section (keep header + first 2 items)
@@ -423,7 +435,10 @@ class PromptOptimizer:
         critical_keywords = [
             # Text prohibition (CRITICAL - Imagen generates text labels if not explicitly forbidden)
             'no text', 'no labels', 'no words', 'no letters', 'absolutely no text',
-            # Contamination rules
+            # Contamination texture rules (CRITICAL - prevents chunky/thick deposits)
+            'chunk', 'thick', '3d', 'buildup', 'caked', 'blob', 'deposit',
+            'thin', 'flat', 'film', 'stain', 'discoloration',
+            # Contamination type rules
             'oil', 'rust', 'dust', 'soil', 'grease',
             'contamination', 'ferrous', 'plastic',
             'machinery', 'research confirms', 'NEVER'

@@ -254,7 +254,7 @@ class MaterialImageConfig:
         descriptions = {
             "light": "Light contamination (<30% coverage, scattered spots)",
             "moderate": "Moderate contamination (30-60% coverage, connected patches)",
-            "heavy": "Heavy contamination (>60% coverage, continuous layers)"
+            "heavy": "Extreme contamination (90%+ coverage, surface completely buried under thick crusty buildup, original material barely visible)"
         }
         return descriptions.get(self.severity, descriptions["moderate"])
     

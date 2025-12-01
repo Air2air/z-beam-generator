@@ -220,6 +220,12 @@ class ImageGenerationLogger:
         except sqlite3.OperationalError:
             pass  # Column already exists
         
+        # Add severity column if missing (migration for learning-based defaults)
+        try:
+            cursor.execute("ALTER TABLE learned_defaults ADD COLUMN severity TEXT")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+        
         # Pattern effectiveness tracking
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS pattern_effectiveness (
@@ -1265,7 +1271,7 @@ class ImageGenerationLogger:
             context: Environment context (e.g., 'outdoor')
             
         Returns:
-            Dict with guidance_scale, contamination_uniformity, pass_threshold, etc.
+            Dict with guidance_scale, contamination_uniformity, pass_threshold, severity, etc.
             or None if no data
         """
         conn = sqlite3.connect(self.db_path)
@@ -1273,7 +1279,7 @@ class ImageGenerationLogger:
         
         cursor.execute("""
             SELECT guidance_scale, contamination_uniformity, pass_threshold,
-                   aging_weight, contamination_weight, avg_score, sample_count, view_mode
+                   aging_weight, contamination_weight, avg_score, sample_count, view_mode, severity
             FROM learned_defaults
             WHERE category = ? AND context = ?
         """, (category, context))
@@ -1292,9 +1298,91 @@ class ImageGenerationLogger:
             'contamination_weight': row[4],
             'avg_score': row[5],
             'sample_count': row[6],
-            'view_mode': row[7] or 'Contextual',
+            'view_mode': row[7],
+            'severity': row[8],
             'source': 'learned'
         }
+    
+    def get_learned_param(
+        self,
+        param_name: str,
+        category: str,
+        context: str
+    ) -> Optional[str]:
+        """
+        Get a specific learned parameter from successful generations.
+        
+        FAIL-FAST: Returns None if no learned data exists - caller MUST handle.
+        This method replaces hardcoded defaults with learning-based defaults.
+        
+        Args:
+            param_name: Parameter to retrieve ('severity', 'view_mode', 'guidance_scale', etc.)
+            category: Material category (e.g., 'metal', 'wood')
+            context: Environment context (e.g., 'outdoor', 'marine', 'indoor')
+            
+        Returns:
+            Learned value or None if not available (triggers fail-fast in caller)
+            
+        Example:
+            severity = logger.get_learned_param('severity', 'metal', 'marine')
+            if severity is None:
+                raise ValueError("No learned severity for metal/marine - specify explicitly")
+        """
+        defaults = self.get_learned_defaults(category, context)
+        if defaults is None:
+            # Try to infer from successful generation attempts
+            return self._infer_param_from_attempts(param_name, category, context)
+        
+        return defaults.get(param_name)
+    
+    def _infer_param_from_attempts(
+        self,
+        param_name: str,
+        category: str,
+        context: str
+    ) -> Optional[str]:
+        """
+        Infer parameter from successful generation attempts when learned_defaults is empty.
+        
+        Queries generation_attempts table for most common successful value.
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # Map param names to table columns
+        column_map = {
+            'severity': 'severity',
+            'view_mode': 'view_mode',
+            'guidance_scale': 'guidance_scale',
+            'contamination_uniformity': 'contamination_uniformity',
+        }
+        
+        column = column_map.get(param_name)
+        if not column:
+            conn.close()
+            return None
+        
+        # Find most common successful value for this param+category+context
+        cursor.execute(f"""
+            SELECT {column}, COUNT(*) as count, AVG(realism_score) as avg_score
+            FROM generation_attempts
+            WHERE passed = 1
+            AND category LIKE ?
+            AND context = ?
+            AND {column} IS NOT NULL
+            GROUP BY {column}
+            ORDER BY count DESC, avg_score DESC
+            LIMIT 1
+        """, (f"%{category}%", context))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row and row[0]:
+            logger.info(f"🧠 Inferred {param_name}={row[0]} from {row[1]} successful attempts (avg score: {row[2]:.1f})")
+            return row[0]
+        
+        return None
     
     def update_learned_defaults_from_success(
         self,

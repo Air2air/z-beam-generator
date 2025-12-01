@@ -46,40 +46,61 @@ class ContaminationPatternSelector:
     # Common contamination patterns by category (for intelligent selection)
     # These are the most visually interesting patterns per material type
     CATEGORY_PRIORITIES = {
-        'metal': ['rust-oxidation', 'industrial-oil', 'environmental-dust', 'welding-spatter', 'scale-buildup'],
+        'metal': ['rust-oxidation', 'industrial-oil', 'environmental-dust', 'scale-buildup', 'grease-buildup'],
         'wood': ['wood-rot', 'mold-mildew', 'environmental-dust', 'algae-growth', 'uv-chalking'],
-        'polymer': ['uv-chalking', 'environmental-dust', 'industrial-oil', 'chemical-stains', 'adhesive-residue'],
-        'glass': ['environmental-dust', 'hard-water-deposits', 'chemical-stains', 'fingerprints', 'adhesive-residue'],
+        'polymer': ['uv-chalking', 'environmental-dust', 'industrial-oil', 'chemical-stains', 'grease-buildup'],
+        'glass': ['environmental-dust', 'hard-water-deposits', 'chemical-stains', 'fingerprints', 'soap-scum'],
         'ceramic': ['environmental-dust', 'hard-water-deposits', 'mold-mildew', 'efflorescence', 'algae-growth'],
         'stone': ['environmental-dust', 'algae-growth', 'mold-mildew', 'efflorescence', 'chemical-stains'],
         'composite': ['uv-chalking', 'environmental-dust', 'industrial-oil', 'chemical-stains', 'mold-mildew'],
     }
     
+    # GLOBAL POLICY: Texture normalization - convert thick/3D descriptions to thin film equivalents
+    # Contamination must appear as THIN FLAT discoloration/staining in images
+    # Instead of filtering out patterns, we normalize their texture descriptions
+    TEXTURE_NORMALIZATIONS = {
+        'rough': 'slightly textured',
+        'crusty': 'thin dried film',
+        'chunky': 'varied thin layer',
+        'thick': 'thin',
+        'caked': 'dried thin film',
+        'flaky': 'thin peeling film',
+        'scaly': 'thin layered film',
+        'buildup': 'accumulation',
+        'deposit': 'residue',
+        'blob': 'spot',
+        'glob': 'patch',
+        'clump': 'cluster',
+        'lump': 'slight raised area',
+        'powdery': 'fine dust film',
+        'chalky': 'matte thin film',
+    }
+    
     # Context-specific pattern priorities (overrides CATEGORY_PRIORITIES)
     CONTEXT_PRIORITIES = {
         'indoor': {
-            'wood': ['environmental-dust', 'fingerprints', 'wax-buildup', 'adhesive-residue', 'food-residue'],
-            'metal': ['fingerprints', 'environmental-dust', 'adhesive-residue', 'food-residue', 'grease-buildup'],
-            'glass': ['fingerprints', 'environmental-dust', 'adhesive-residue', 'hard-water-deposits'],
-            'polymer': ['environmental-dust', 'fingerprints', 'adhesive-residue', 'chemical-stains'],
+            'wood': ['environmental-dust', 'fingerprints', 'wax-buildup', 'food-residue', 'grease-buildup'],
+            'metal': ['fingerprints', 'environmental-dust', 'food-residue', 'grease-buildup', 'scale-buildup'],
+            'glass': ['fingerprints', 'environmental-dust', 'hard-water-deposits', 'soap-scum'],
+            'polymer': ['environmental-dust', 'fingerprints', 'chemical-stains', 'grease-buildup'],
             'ceramic': ['environmental-dust', 'hard-water-deposits', 'soap-scum', 'food-residue'],
             'stone': ['environmental-dust', 'food-residue', 'hard-water-deposits', 'chemical-stains'],
         },
         'outdoor': {
-            'wood': ['natural-weathering', 'mold-mildew', 'algae-growth', 'uv-chalking', 'bird-droppings'],
-            'metal': ['rust-oxidation', 'natural-weathering', 'environmental-dust', 'bird-droppings', 'algae-growth'],
-            'glass': ['environmental-dust', 'hard-water-deposits', 'bird-droppings', 'algae-growth'],
-            'polymer': ['uv-chalking', 'natural-weathering', 'environmental-dust', 'algae-growth', 'bird-droppings'],
-            'ceramic': ['natural-weathering', 'algae-growth', 'mold-mildew', 'efflorescence', 'bird-droppings'],
+            'wood': ['natural-weathering', 'mold-mildew', 'algae-growth', 'uv-chalking', 'lichen-growth'],
+            'metal': ['rust-oxidation', 'natural-weathering', 'environmental-dust', 'algae-growth', 'scale-buildup'],
+            'glass': ['environmental-dust', 'hard-water-deposits', 'algae-growth', 'mineral-deposits'],
+            'polymer': ['uv-chalking', 'natural-weathering', 'environmental-dust', 'algae-growth', 'chemical-stains'],
+            'ceramic': ['natural-weathering', 'algae-growth', 'mold-mildew', 'efflorescence', 'environmental-dust'],
             'stone': ['natural-weathering', 'algae-growth', 'mold-mildew', 'efflorescence', 'lichen-growth'],
         },
         'industrial': {
-            'metal': ['industrial-oil', 'rust-oxidation', 'welding-spatter', 'scale-buildup', 'grease-buildup'],
-            'wood': ['industrial-oil', 'environmental-dust', 'chemical-stains', 'paint-residue', 'adhesive-residue'],
-            'polymer': ['industrial-oil', 'chemical-stains', 'grease-buildup', 'adhesive-residue', 'paint-residue'],
+            'metal': ['industrial-oil', 'rust-oxidation', 'scale-buildup', 'grease-buildup', 'environmental-dust'],
+            'wood': ['industrial-oil', 'environmental-dust', 'chemical-stains', 'paint-residue', 'grease-buildup'],
+            'polymer': ['industrial-oil', 'chemical-stains', 'grease-buildup', 'paint-residue', 'environmental-dust'],
             'glass': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'paint-residue'],
             'ceramic': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'scale-buildup'],
-            'composite': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'adhesive-residue'],
+            'composite': ['industrial-oil', 'chemical-stains', 'environmental-dust', 'grease-buildup'],
         },
         'marine': {
             # Note: use actual pattern IDs from Contaminants.yaml
@@ -261,14 +282,24 @@ class ContaminationPatternSelector:
             
             materials = self._materials_data.get('materials', {})
             if material_name in materials:
-                result = materials[material_name].get('category', 'metal')
-                self._category_cache[material_name] = result
-                return result
-        except Exception:
-            pass
+                category = materials[material_name].get('category')
+                if not category:
+                    raise ValueError(
+                        f"Material '{material_name}' missing required 'category' field in Materials.yaml. "
+                        "NO DEFAULTS - per copilot-instructions.md policy."
+                    )
+                self._category_cache[material_name] = category
+                return category
+        except Exception as e:
+            raise ValueError(
+                f"Failed to get category for material '{material_name}': {e}. "
+                "Material must exist in Materials.yaml with a 'category' field."
+            )
         
-        self._category_cache[material_name] = 'metal'
-        return 'metal'  # Default fallback
+        raise ValueError(
+            f"Material '{material_name}' not found in Materials.yaml. "
+            "NO FALLBACK to 'metal' - per copilot-instructions.md policy."
+        )
     
     def is_ferrous_metal(self, material_name: str) -> bool:
         """
@@ -288,6 +319,39 @@ class ContaminationPatternSelector:
         classifier = get_classifier()
         return classifier.is_ferrous(material_name)
     
+    def _normalize_texture_description(self, texture_text: str) -> str:
+        """
+        GLOBAL POLICY: Normalize texture descriptions to thin film standards.
+        
+        Instead of filtering out patterns with thick/3D textures, we normalize
+        their descriptions to conform to thin flat film appearance standards.
+        This allows all patterns to be used while ensuring consistent image output.
+        
+        Args:
+            texture_text: Original texture description (string or dict)
+            
+        Returns:
+            Normalized texture description with thick/3D terms replaced
+        """
+        if not texture_text:
+            return ''
+        
+        # Handle dict input (some YAML fields are dicts)
+        if isinstance(texture_text, dict):
+            # Convert dict to string representation
+            texture_text = str(texture_text)
+        
+        normalized = str(texture_text)
+        for thick_term, thin_replacement in self.TEXTURE_NORMALIZATIONS.items():
+            # Case-insensitive replacement
+            import re
+            pattern = re.compile(re.escape(thick_term), re.IGNORECASE)
+            if pattern.search(normalized):
+                normalized = pattern.sub(thin_replacement, normalized)
+                logger.debug(f"🔄 Normalized texture: '{thick_term}' → '{thin_replacement}'")
+        
+        return normalized
+    
     def _is_pattern_valid_for_material(self, pattern_id: str, pattern: Dict, material_name: str) -> bool:
         """
         Check if a pattern is chemically/physically valid for a material.
@@ -295,6 +359,7 @@ class ContaminationPatternSelector:
         Implements contamination physics rules:
         - Rust only on ferrous metals
         - Copper patina only on copper alloys
+        - GLOBAL: No patterns with thick/chunky texture descriptions
         - etc.
         
         Args:
@@ -305,6 +370,9 @@ class ContaminationPatternSelector:
         Returns:
             True if pattern is valid for material
         """
+        # NOTE: Texture normalization happens in _build_pattern_result, not here
+        # All patterns are allowed; their textures are normalized to thin film standards
+        
         # Check invalid_materials list
         invalid_materials = pattern.get('invalid_materials', [])
         material_lower = material_name.lower()
@@ -572,12 +640,15 @@ class ContaminationPatternSelector:
             
             if is_rich_format:
                 # Format B: Rich 16-field structure
+                # GLOBAL POLICY: Normalize texture descriptions to thin film standards
+                raw_texture = appearance.get('texture_details', '')
+                normalized_texture = self._normalize_texture_description(raw_texture)
                 visual_chars = {
                     'color_range': self._extract_color_summary(appearance.get('color_variations', ''), material_name),
-                    'texture_detail': self._extract_texture_summary(appearance.get('texture_details', '')),
+                    'texture_detail': self._normalize_texture_description(self._extract_texture_summary(raw_texture)),
                     'description': appearance.get('aged_appearance', ''),
                     'color_variations': appearance.get('color_variations', ''),
-                    'texture_details': appearance.get('texture_details', ''),
+                    'texture_details': normalized_texture,
                     'common_patterns': appearance.get('common_patterns', ''),
                     'aged_appearance': appearance.get('aged_appearance', ''),
                     'lighting_effects': appearance.get('lighting_effects', ''),
@@ -592,13 +663,16 @@ class ContaminationPatternSelector:
                 logger.debug(f"✅ Rich format (Format B) appearance data for {material_name}")
             else:
                 # Format A: Simple 3-field structure
+                # GLOBAL POLICY: Normalize texture descriptions to thin film standards
+                raw_appearance = appearance.get('appearance', '')
+                normalized_appearance = self._normalize_texture_description(raw_appearance)
                 visual_chars = {
-                    'description': appearance.get('appearance', ''),
+                    'description': normalized_appearance,
                     'coverage': appearance.get('coverage', ''),
                     'pattern': appearance.get('pattern', ''),
                     # Extract color/texture info from appearance text
-                    'color_range': self._extract_colors_from_text(appearance.get('appearance', '')),
-                    'texture_detail': self._extract_texture_from_text(appearance.get('appearance', '')),
+                    'color_range': self._extract_colors_from_text(raw_appearance),
+                    'texture_detail': self._normalize_texture_description(self._extract_texture_from_text(raw_appearance)),
                     'distribution_patterns': appearance.get('pattern', ''),
                     'coverage_ranges': appearance.get('coverage', ''),
                 }

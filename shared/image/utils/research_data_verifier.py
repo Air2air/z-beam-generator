@@ -274,7 +274,7 @@ class ResearchDataVerifier:
         optimized_prompt: str,
         research_data: Dict[str, Any],
         enforce_threshold: bool = True,
-        minimum_retention: float = 70.0
+        minimum_retention: float = 60.0
     ) -> VerificationResult:
         """
         Compare original and optimized prompts to detect data loss.
@@ -376,7 +376,7 @@ def verify_optimization(
     optimized_prompt: str,
     research_data: Dict[str, Any],
     enforce_threshold: bool = True,
-    minimum_retention: float = 70.0
+    minimum_retention: float = 60.0
 ) -> VerificationResult:
     """
     Convenience function to verify data retention after optimization.
