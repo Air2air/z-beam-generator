@@ -3,38 +3,44 @@ Image Prompt Orchestrator - Chained Prompt Architecture
 
 Implements PROMPT_CHAINING_POLICY.md for image generation.
 
-Architecture Pattern (mirrors text generation):
-    Stage 1: Research → Extract properties (low temp 0.3)
-    Stage 2: Visual Description → Generate appearance (high temp 0.7)  
-    Stage 3: Composition → Layout before/after (balanced 0.5)
-    Stage 4: Refinement → Technical accuracy (precise 0.4)
-    Stage 5: Assembly → Final polish (balanced 0.5)
+SIMPLIFIED ARCHITECTURE (November 30, 2025):
+    Stage 1: RESEARCH → Load/use provided research data
+    Stage 2: ASSEMBLY → SharedPromptBuilder creates comprehensive prompt
+    Stage 3: VALIDATION → UnifiedValidator checks prompt quality
 
 Each stage:
-- ONE specialized prompt template
+- ONE clear responsibility
 - Receives output from previous stage as input
-- Optimized temperature for task type
 - Can be tested independently
 
 Benefits:
-- Separation of concerns (research vs creativity vs accuracy)
-- Optimal parameters per stage
-- Reusable components
+- Separation of concerns
+- Clear data flow
 - Easy debugging
-- Better quality output
+- SharedPromptBuilder handles all prompt assembly complexity
+- UnifiedValidator handles all validation (consolidated)
+
+Legacy Note:
+    Previous 6-stage design had stages 2-4 (Visual/Composition/Refinement)
+    that were no-ops without an API client. Simplified to 3 actual stages.
 
 Example Usage:
+    from shared.image.utils.prompt_builder import SharedPromptBuilder
+    
+    prompt_builder = SharedPromptBuilder(prompts_dir=Path('prompts/shared'))
     orchestrator = ImagePromptOrchestrator(
         domain='materials',
-        api_client=api_client
+        prompt_builder=prompt_builder
     )
     
     result = orchestrator.generate_hero_prompt(
         identifier='Aluminum',
-        category='metal'
+        research_data=my_research_data,  # Pre-gathered research data
+        material_properties=props,
+        config=config
     )
     
-    print(result.prompt)          # Final chained prompt
+    print(result.prompt)          # Final prompt from SharedPromptBuilder
     print(result.stage_outputs)   # Debug individual stages
 """
 
@@ -43,29 +49,19 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 from dataclasses import dataclass
 
+# FAIL-FAST: Import unified validator - validation is REQUIRED per copilot-instructions.md
+# No try/except fallback - if validator unavailable, fail immediately
+from shared.validation.unified_validator import (
+    validate_prompt_quick,
+    ValidationReport
+)
+
 logger = logging.getLogger(__name__)
 
-# Import universal prompt validator
-try:
-    from shared.validation.prompt_validator import validate_image_prompt
-except ImportError:
-    # Fallback if validator not available
-    logger.warning("⚠️  UniversalPromptValidator not available - skipping validation")
-    
-    @dataclass
-    class FallbackValidationResult:
-        """Fallback validation result when validator unavailable"""
-        is_valid: bool = True
-        
-        def get_summary(self) -> str:
-            return "✅ VALID (validator unavailable)"
-        
-        def format_report(self) -> str:
-            return "Validator not available"
-    
-    def validate_image_prompt(prompt: str, **kwargs):
-        """Fallback validator"""
-        return FallbackValidationResult()
+
+def validate_image_prompt(prompt: str, **kwargs) -> ValidationReport:
+    """Validate image prompt using unified validator."""
+    return validate_prompt_quick(prompt, material=kwargs.get('material', ''))
 
 
 @dataclass
@@ -81,64 +77,72 @@ class ChainedPromptResult:
 
 class ImagePromptOrchestrator:
     """
-    Orchestrates chained prompts for image generation.
+    Orchestrates 3-stage prompt generation for images.
     
-    Implements separation of concerns through specialized prompt stages:
-    - Research stage: Extract factual properties (temp=0.3)
-    - Visual stage: Generate creative descriptions (temp=0.7)
-    - Composition stage: Layout and structure (temp=0.5)
-    - Refinement stage: Technical accuracy (temp=0.4)
-    - Assembly stage: Final polish (temp=0.5)
+    SIMPLIFIED ARCHITECTURE (November 30, 2025):
+    - Stage 1: RESEARCH - Load/use provided research data
+    - Stage 2: ASSEMBLY - SharedPromptBuilder creates comprehensive prompt
+    - Stage 3: VALIDATION - UnifiedValidator checks prompt quality
     
-    Each stage has:
-    - Dedicated template file
-    - Optimized temperature
-    - Clear input/output contract
-    - Independent testability
+    SharedPromptBuilder handles all the complexity:
+    - 4-layer templates (base + physics + contamination + micro)
+    - Variable replacements (material, patterns, visual properties)
+    - Prompt optimization for Imagen API limits
+    - Research data retention verification
+    
+    UnifiedValidator handles all validation:
+    - Length limits
+    - Contradictions and logic
+    - Material-contamination compatibility
+    - Physics plausibility
     """
     
     def __init__(
         self,
         domain: str,
         api_client=None,
-        data_loader=None
+        data_loader=None,
+        prompt_builder=None
     ):
         """
         Initialize orchestrator.
         
         Args:
             domain: Domain name (materials, contaminants, etc.)
-            api_client: Optional API client for multi-stage generation
+            api_client: Optional API client (rarely used)
             data_loader: Optional data loader for property extraction
-        
-        Note: If api_client not provided, only template loading works
-              (useful for prompt generation without API calls)
+            prompt_builder: SharedPromptBuilder for assembly stage (RECOMMENDED)
         """
         self.domain = domain
         self.api_client = api_client
         self.data_loader = data_loader
+        self.prompt_builder = prompt_builder
         
-        # Template paths
+        # Template paths (fallback if no prompt_builder)
         self.shared_templates = Path('shared/image/templates')
         self.domain_templates = Path(f'domains/{domain}/image/templates')
     
     def generate_hero_prompt(
         self,
         identifier: str,
+        research_data: Optional[Dict[str, Any]] = None,
+        material_properties: Optional[Dict[str, Any]] = None,
+        config: Optional[Any] = None,
         **kwargs
     ) -> ChainedPromptResult:
         """
-        Generate hero image prompt through chained stages.
+        Generate hero image prompt through 3-stage pipeline.
         
-        Chain:
-        1. Research: Extract properties from data
-        2. Visual: Generate appearance description
-        3. Composition: Create before/after layout
-        4. Refinement: Ensure technical accuracy
-        5. Assembly: Final prompt with all details
+        SIMPLIFIED CHAIN (November 30, 2025):
+        1. RESEARCH: Use provided research_data or extract from data_loader
+        2. ASSEMBLY: SharedPromptBuilder creates comprehensive prompt
+        3. VALIDATION: UnifiedValidator checks prompt quality
         
         Args:
             identifier: Material/contaminant/etc name
+            research_data: Pre-gathered research data (contamination, shape, etc.)
+            material_properties: Material properties from Materials.yaml
+            config: Domain-specific config object (e.g., MaterialImageConfig)
             **kwargs: Additional context (category, etc.)
         
         Returns:
@@ -146,49 +150,57 @@ class ImagePromptOrchestrator:
         """
         stage_outputs = {}
         
-        # Stage 1: Research properties
-        print("\n🔬 STAGE 1: Research Properties")
-        logger.info("🔬 STAGE 1: Research Properties")
-        research_data = self._research_stage(identifier, **kwargs)
-        stage_outputs['research'] = research_data
-        print(f"   ✅ Extracted {len(research_data)} properties")
-        logger.info(f"   ✅ Extracted {len(research_data)} properties")
+        # ═══════════════════════════════════════════════════════════════════════
+        # STAGE 1: RESEARCH - Load or use provided research data
+        # ═══════════════════════════════════════════════════════════════════════
+        print("\n🔬 STAGE 1/3: Research Data")
+        logger.info("🔬 STAGE 1/3: Research Data")
         
-        # Stage 2: Generate visual description
-        print("\n🎨 STAGE 2: Visual Description")
-        logger.info("🎨 STAGE 2: Visual Description")
-        visual_desc = self._visual_stage(identifier, research_data)
-        stage_outputs['visual'] = visual_desc
-        print(f"   ✅ Generated visual description ({len(visual_desc)} chars)")
-        logger.info(f"   ✅ Generated visual description ({len(visual_desc)} chars)")
+        if research_data:
+            # Use pre-gathered research data (from MaterialImageGenerator)
+            internal_research = research_data.copy()
+            print(f"   ✅ Using provided research data ({len(internal_research)} keys)")
+            logger.info(f"   ✅ Using provided research data ({len(internal_research)} keys)")
+        else:
+            # Extract properties from data_loader or kwargs
+            internal_research = self._research_stage(identifier, **kwargs)
+            print(f"   ✅ Extracted {len(internal_research)} properties")
+            logger.info(f"   ✅ Extracted {len(internal_research)} properties")
+        stage_outputs['research'] = internal_research
         
-        # Stage 3: Compose before/after layout
-        print("\n📐 STAGE 3: Composition Layout")
-        logger.info("📐 STAGE 3: Composition Layout")
-        composition = self._composition_stage(identifier, visual_desc, research_data)
-        stage_outputs['composition'] = composition
-        print(f"   ✅ Composed layout ({len(composition)} chars)")
-        logger.info(f"   ✅ Composed layout ({len(composition)} chars)")
+        # ═══════════════════════════════════════════════════════════════════════
+        # STAGE 2: ASSEMBLY - SharedPromptBuilder creates comprehensive prompt
+        # ═══════════════════════════════════════════════════════════════════════
+        print("\n🎯 STAGE 2/3: Prompt Assembly")
+        logger.info("🎯 STAGE 2/3: Prompt Assembly")
         
-        # Stage 4: Technical refinement
-        print("\n🔧 STAGE 4: Technical Refinement")
-        logger.info("🔧 STAGE 4: Technical Refinement")
-        refined = self._refinement_stage(composition, research_data)
-        stage_outputs['refinement'] = refined
-        print(f"   ✅ Applied technical refinement ({len(refined)} chars)")
-        logger.info(f"   ✅ Applied technical refinement ({len(refined)} chars)")
-        
-        # Stage 5: Final assembly
-        print("\n🎯 STAGE 5: Final Assembly")
-        logger.info("🎯 STAGE 5: Final Assembly")
-        final_prompt = self._assembly_stage(refined, **kwargs)
+        if self.prompt_builder and material_properties is not None:
+            # Use SharedPromptBuilder for comprehensive prompt generation
+            print("   📦 Using SharedPromptBuilder (4-layer templates)")
+            logger.info("   📦 Using SharedPromptBuilder (4-layer templates)")
+            final_prompt = self.prompt_builder.build_generation_prompt(
+                material_name=identifier,
+                material_properties=material_properties,
+                config=config,
+                research_data=internal_research
+            )
+            print(f"   ✅ Assembled prompt: {len(final_prompt)} chars")
+            logger.info(f"   ✅ Assembled prompt: {len(final_prompt)} chars")
+        else:
+            # Fallback to legacy assembly (template-based)
+            print("   ⚠️  No prompt_builder - using legacy assembly")
+            logger.warning("   ⚠️  No prompt_builder - using legacy assembly")
+            final_prompt = self._legacy_assembly(identifier, internal_research, **kwargs)
+            print(f"   ✅ Legacy assembly: {len(final_prompt)} chars")
+            logger.info(f"   ✅ Legacy assembly: {len(final_prompt)} chars")
         stage_outputs['assembly'] = final_prompt
-        print(f"   ✅ Assembled final prompt ({len(final_prompt)} chars)")
-        logger.info(f"   ✅ Assembled final prompt ({len(final_prompt)} chars)")
         
-        # CRITICAL: Validate final prompt before returning
-        print("\n🔍 STAGE 6: Final Validation")
-        logger.info("🔍 STAGE 6: Final Validation")
+        # ═══════════════════════════════════════════════════════════════════════
+        # STAGE 3: VALIDATION - UnifiedValidator checks prompt quality
+        # ═══════════════════════════════════════════════════════════════════════
+        print("\n🔍 STAGE 3/3: Validation")
+        logger.info("🔍 STAGE 3/3: Validation")
+        
         validation_result = validate_image_prompt(
             final_prompt,
             material=identifier,
@@ -196,25 +208,32 @@ class ImagePromptOrchestrator:
         )
         stage_outputs['validation'] = validation_result
         
-        print(f"   📊 Validation: {validation_result.get_summary()}")
-        logger.info(f"   📊 Validation: {validation_result.get_summary()}")
+        print(f"   📊 Result: {validation_result.status.value}")
+        logger.info(f"   📊 Result: {validation_result.status.value}")
         
-        if not validation_result.is_valid:
-            print(f"   ⚠️  Validation found issues:")
-            logger.warning(f"   ⚠️  Validation found issues:")
-            for issue in validation_result.issues[:5]:  # Show first 5
-                print(f"      • {issue.severity.value}: {issue.message}")
-                logger.warning(f"      • {issue.severity.value}: {issue.message}")
+        # Check validation status
+        is_valid = getattr(validation_result, 'is_valid', True)
+        if hasattr(validation_result, 'status'):
+            from shared.validation.unified_validator import ValidationStatus
+            is_valid = validation_result.status in (ValidationStatus.PASS, ValidationStatus.WARN)
+        
+        if not is_valid:
+            print("   ⚠️  Issues found:")
+            logger.warning("   ⚠️  Issues found:")
+            for issue in validation_result.issues[:5]:
+                sev_val = issue.severity.value if hasattr(issue.severity, 'value') else str(issue.severity)
+                print(f"      • {sev_val}: {issue.message}")
+                logger.warning(f"      • {sev_val}: {issue.message}")
             
-            if validation_result.has_critical_issues:
-                logger.error("   🚨 CRITICAL issues found - prompt may fail")
+            if getattr(validation_result, 'has_critical', False):
+                logger.error("   🚨 CRITICAL issues - prompt may fail")
                 raise ValueError(
-                    f"Prompt validation failed with critical issues:\n"
-                    f"{validation_result.format_report()}"
+                    f"Prompt validation failed:\n"
+                    f"{validation_result.to_report() if hasattr(validation_result, 'to_report') else str(validation_result)}"
                 )
         else:
-            print(f"   ✅ Prompt validated successfully")
-            logger.info(f"   ✅ Prompt validated successfully")
+            print("   ✅ Validation passed")
+            logger.info("   ✅ Validation passed")
         
         return ChainedPromptResult(
             prompt=final_prompt,
@@ -223,19 +242,11 @@ class ImagePromptOrchestrator:
             image_type='hero',
             stage_outputs=stage_outputs,
             metadata={
-                'stages': ['research', 'visual', 'composition', 'refinement', 'assembly', 'validation'],
-                'temperatures': {
-                    'research': 0.3,
-                    'visual': 0.7,
-                    'composition': 0.5,
-                    'refinement': 0.4,
-                    'assembly': 0.5
-                },
+                'stages': ['research', 'assembly', 'validation'],
                 'validation': {
-                    'is_valid': validation_result.is_valid,
+                    'is_valid': is_valid,
                     'issues_count': len(validation_result.issues),
-                    'has_critical': validation_result.has_critical_issues,
-                    'has_errors': validation_result.has_errors,
+                    'has_critical': getattr(validation_result, 'has_critical', False),
                     'prompt_length': validation_result.prompt_length,
                     'estimated_tokens': validation_result.estimated_tokens
                 }
@@ -248,172 +259,118 @@ class ImagePromptOrchestrator:
         **kwargs
     ) -> Dict[str, Any]:
         """
-        Stage 1: Research and extract properties.
+        Stage 1: Extract properties from data sources.
         
-        Temperature: 0.3 (low for factual accuracy)
-        Purpose: Extract factual properties from data
-        Input: identifier + kwargs
-        Output: Dict of properties
+        FAIL-FAST: Requires either data_loader with valid data OR complete kwargs.
+        No hardcoded defaults - missing data raises errors.
         
-        If data_loader available: Extract from data files
-        If API client available: Could use AI for research
-        Otherwise: Use provided kwargs as properties
+        Priority:
+        1. Use data_loader if available
+        2. Fall back to provided kwargs (must be complete)
+        
+        Returns basic property dict for prompt building.
+        
+        Raises:
+            ValueError: If required properties are missing
         """
         if self.data_loader:
             # Extract from data files (Materials.yaml, etc.)
             data = self.data_loader.load_data(identifier)
             
+            # FAIL-FAST: Require category (essential for prompt generation)
+            category = data.get('category') or kwargs.get('category')
+            if not category:
+                raise ValueError(
+                    f"FAIL-FAST: 'category' is required for {identifier}. "
+                    f"Add to data source or provide via kwargs."
+                )
+            
             return {
                 'name': identifier,
-                'category': data.get('category', kwargs.get('category', 'unknown')),
-                'color': data.get('color', kwargs.get('color', 'natural')),
-                'texture': data.get('surface_finish', kwargs.get('texture', 'smooth')),
-                'reflectivity': data.get('reflectivity', kwargs.get('reflectivity', 'moderate')),
-                'common_contamination': data.get('typical_contamination', []),
-                'applications': data.get('applications', [])
+                'category': category,
+                # Optional properties - use None instead of fake defaults
+                'color': data.get('color') or kwargs.get('color'),
+                'texture': data.get('surface_finish') or kwargs.get('texture'),
+                'reflectivity': data.get('reflectivity') or kwargs.get('reflectivity'),
+                'common_contamination': data.get('typical_contamination') or [],
+                'applications': data.get('applications') or []
             }
         else:
-            # Use provided kwargs or defaults
+            # FAIL-FAST: Require category when no data_loader
+            category = kwargs.get('category')
+            if not category:
+                raise ValueError(
+                    f"FAIL-FAST: 'category' is required for {identifier}. "
+                    f"Provide via kwargs or configure a data_loader."
+                )
+            
             return {
                 'name': identifier,
-                'category': kwargs.get('category', 'unknown'),
-                'color': kwargs.get('color', 'natural'),
-                'texture': kwargs.get('texture', 'smooth'),
-                'reflectivity': kwargs.get('reflectivity', 'moderate'),
+                'category': category,
+                # Optional properties - use None instead of fake defaults
+                'color': kwargs.get('color'),
+                'texture': kwargs.get('texture'),
+                'reflectivity': kwargs.get('reflectivity'),
                 'common_contamination': kwargs.get('common_contamination', []),
                 'applications': kwargs.get('applications', [])
             }
     
-    def _visual_stage(
+    def _legacy_assembly(
         self,
         identifier: str,
-        research: Dict[str, Any]
-    ) -> str:
-        """
-        Stage 2: Generate visual appearance description.
-        
-        Temperature: 0.7 (high for creative descriptions)
-        Purpose: Create vivid visual description from properties
-        Input: identifier + research properties
-        Output: Creative visual description
-        
-        If API available: Generate with creative prompt
-        Otherwise: Construct from research data
-        """
-        if self.api_client:
-            # Load specialized visual template
-            template = self._load_template('generation/visual_appearance.txt')
-            if template:
-                prompt = template.format(
-                    name=identifier,
-                    color=research.get('color', 'natural'),
-                    texture=research.get('texture', 'smooth'),
-                    reflectivity=research.get('reflectivity', 'moderate')
-                )
-                
-                # Generate with high temperature for creativity
-                return self.api_client.generate(prompt, temperature=0.7)
-        
-        # Fallback: Construct description from research
-        parts = [
-            f"{identifier} exhibits a {research.get('color', 'natural')} coloration",
-            f"with a {research.get('texture', 'smooth')} surface texture",
-            f"and {research.get('reflectivity', 'moderate')} reflectivity."
-        ]
-        return ' '.join(parts)
-    
-    def _composition_stage(
-        self,
-        identifier: str,
-        visual_desc: str,
-        research: Dict[str, Any]
-    ) -> str:
-        """
-        Stage 3: Compose before/after split-screen layout.
-        
-        Temperature: 0.5 (balanced for structure + creativity)
-        Purpose: Create detailed composition description
-        Input: identifier + visual description + research data
-        Output: Before/after composition layout
-        
-        Uses hero template with context from previous stages.
-        """
-        # Load hero template (shared, universal)
-        template = self._load_template('hero.txt')
-        if not template:
-            raise FileNotFoundError(f"Hero template not found in shared or domain templates")
-        
-        # Render template with data from previous stages
-        return template.format(
-            material_name=identifier,
-            category=research.get('category', 'unknown'),
-            color=research.get('color', 'natural'),
-            surface_finish=research.get('texture', 'smooth'),
-            reflectivity=research.get('reflectivity', 'moderate'),
-            visual_description=visual_desc
-        )
-    
-    def _refinement_stage(
-        self,
-        composition: str,
-        research: Dict[str, Any]
-    ) -> str:
-        """
-        Stage 4: Technical refinement and accuracy check.
-        
-        Temperature: 0.4 (low for precision)
-        Purpose: Ensure technical accuracy and add specifications
-        Input: composition + research constraints
-        Output: Technically refined composition
-        
-        If API available: Check and refine with technical prompt
-        Otherwise: Add technical details from research
-        """
-        if self.api_client:
-            # Load refinement template
-            template = self._load_template('refinement/technical_accuracy.txt')
-            if template:
-                prompt = template.format(
-                    composition=composition,
-                    technical_constraints=research.get('applications', [])
-                )
-                
-                # Generate with low temperature for precision
-                return self.api_client.generate(prompt, temperature=0.4)
-        
-        # Fallback: Return composition as-is
-        return composition
-    
-    def _assembly_stage(
-        self,
-        refined: str,
+        research: Dict[str, Any],
         **kwargs
     ) -> str:
         """
-        Stage 5: Final assembly and polish.
+        Legacy assembly: Template-based prompt generation when no SharedPromptBuilder.
         
-        Temperature: 0.5 (balanced)
-        Purpose: Add final details and polish
-        Input: refined composition + additional requirements
-        Output: Final complete prompt
+        DEPRECATED: Use SharedPromptBuilder for comprehensive prompt generation.
+        This method exists only for backward compatibility.
         
-        If API available: Apply final polish
-        Otherwise: Add any additional kwargs to prompt
+        FAIL-FAST: Raises error if template not found or required variables missing.
         """
-        if self.api_client:
-            # Load assembly template
-            template = self._load_template('refinement/final_polish.txt')
-            if template:
-                prompt = template.format(
-                    content=refined,
-                    **kwargs
-                )
-                
-                # Generate with balanced temperature
-                return self.api_client.generate(prompt, temperature=0.5)
+        logger.warning("⚠️  Using legacy assembly - prefer SharedPromptBuilder")
+        print("⚠️  Using legacy assembly - prefer SharedPromptBuilder")
         
-        # Fallback: Return refined as final prompt
-        return refined
+        # Load hero template - FAIL-FAST if not found
+        template = self._load_template('hero.txt')
+        if not template:
+            raise FileNotFoundError(
+                f"FAIL-FAST: hero.txt template not found in shared or domain templates. "
+                f"Searched: {self.shared_templates}/hero.txt, {self.domain_templates}/hero.txt"
+            )
+        
+        # FAIL-FAST: Require category in research data
+        if 'category' not in research or not research['category']:
+            raise ValueError(
+                f"FAIL-FAST: 'category' is required in research data for {identifier}. "
+                f"Got research keys: {list(research.keys())}"
+            )
+        
+        # FAIL-FAST: Check for required template variables
+        # color, texture, reflectivity are optional - use empty string if None
+        color = research.get('color') or ''
+        texture = research.get('texture') or ''
+        reflectivity = research.get('reflectivity') or ''
+        
+        # Filter out kwargs that would conflict with explicit template vars
+        filtered_kwargs = {k: v for k, v in kwargs.items() 
+                           if k not in ('material_name', 'category', 'color', 
+                                       'surface_finish', 'reflectivity')}
+        try:
+            return template.format(
+                material_name=identifier,
+                category=research['category'],
+                color=color,
+                surface_finish=texture,
+                reflectivity=reflectivity,
+                **filtered_kwargs
+            )
+        except KeyError as e:
+            raise KeyError(
+                f"FAIL-FAST: Template variable {e} missing for {identifier}. "
+                f"Available research: {list(research.keys())}, kwargs: {list(kwargs.keys())}"
+            )
     
     def _load_template(self, template_file: str) -> Optional[str]:
         """

@@ -1,32 +1,40 @@
-# Payload Validator Quick Reference
+# Prompt Validation Quick Reference
 
-**Purpose**: Validate Imagen prompts BEFORE API submission  
-**File**: `shared/image/validation/payload_validator.py`  
-**Status**: ✅ Complete and ready to use
+**Purpose**: Validate image prompts BEFORE API submission  
+**File**: `shared/validation/unified_validator.py`  
+**Status**: ✅ Complete and ready to use (Consolidated November 30, 2025)
 
 ## 30-Second Quick Start
 
 ```python
-from shared.image.validation.payload_validator import ImagePromptPayloadValidator
-
-validator = ImagePromptPayloadValidator()
-result = validator.validate(
-    prompt="Your prompt here",
-    material="Aluminum",
-    contaminant="oil-grease"
+from shared.validation.unified_validator import (
+    UnifiedValidator, 
+    validate_prompt_quick,
+    ValidationStatus
 )
 
-if result.has_critical_issues:
-    print("❌ CANNOT SUBMIT:", result.get_summary())
-elif result.has_errors:
-    print("⚠️ HAS ERRORS:", result.format_report())
-elif result.has_warnings:
-    print("⚠️ WARNINGS:", result.format_report())
+# Quick validation (simplest)
+result = validate_prompt_quick(
+    prompt="Your prompt here",
+    material="Aluminum"
+)
+
+if result.status == ValidationStatus.CRITICAL:
+    print("❌ CANNOT SUBMIT:", result.to_report())
+elif result.status == ValidationStatus.FAIL:
+    print("⚠️ HAS ERRORS:", result.to_report())
+elif result.status == ValidationStatus.WARN:
+    print("⚠️ WARNINGS:", result.to_report())
 else:
     print("✅ Valid - safe to submit to Imagen")
+
+# Full validation (with early stage)
+validator = UnifiedValidator()
+early_result = validator.validate_early(material="Aluminum", config={})
+prompt_result = validator.validate_prompt(prompt, material="Aluminum")
 ```
 
-## 7 Validation Categories
+## Validation Categories
 
 | Category | What It Checks | Severity |
 |----------|----------------|----------|

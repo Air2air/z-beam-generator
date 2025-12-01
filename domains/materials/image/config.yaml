@@ -3,6 +3,11 @@
 
 domain: materials
 
+# Quality thresholds (REQUIRED - no hardcoded defaults per copilot-instructions.md)
+quality:
+  pass_threshold: 75.0  # Minimum validation score to pass
+  guidance_scale_default: 15.0  # Default guidance scale for Imagen
+
 # Image types available for materials domain
 image_types:
   hero:

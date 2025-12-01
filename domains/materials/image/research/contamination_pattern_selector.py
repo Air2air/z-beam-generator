@@ -20,6 +20,9 @@ import yaml
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
+# Use central metal classifier for ferrous/non-ferrous logic
+from shared.utils.metal_classifier import get_classifier
+
 logger = logging.getLogger(__name__)
 
 # Project root
@@ -89,24 +92,10 @@ class ContaminationPatternSelector:
         },
     }
     
-    # Ferrous metals (can rust) vs non-ferrous metals (cannot rust - develop patina instead)
-    # CRITICAL: Rust/iron oxide is ONLY valid for ferrous metals
-    FERROUS_METALS = {
-        'steel', 'stainless steel', 'iron', 'cast iron', 'wrought iron',
-        'carbon steel', 'tool steel', 'galvanized steel', 'weathering steel'
-    }
-    
-    # Non-ferrous metals develop patina, tarnish, or oxidation - NOT rust
-    NON_FERROUS_METALS = {
-        # Copper alloys (develop green/blue patina)
-        'copper', 'brass', 'bronze', 'aluminum bronze', 'phosphor bronze',
-        'silicon bronze', 'naval brass', 'red brass', 'yellow brass',
-        # Aluminum alloys (develop white oxidation)
-        'aluminum', 'aluminium', 'aluminum alloy',
-        # Other non-ferrous
-        'zinc', 'titanium', 'nickel', 'lead', 'tin', 'cobalt', 'chromium',
-        'tungsten', 'magnesium', 'gold', 'silver', 'platinum', 'palladium'
-    }
+    # Metal classification now uses central MetalClassifier (shared/utils/metal_classifier.py)
+    # This ensures consistent ferrous/non-ferrous logic across the entire codebase
+    # - Ferrous metals (steel, iron) can rust
+    # - Non-ferrous metals (copper, aluminum, bronze) develop patina, NOT rust
     
     # Material to category mapping (simplified)
     MATERIAL_CATEGORIES = {
@@ -147,18 +136,24 @@ class ContaminationPatternSelector:
         'carbon fiber': 'composite', 'fiberglass': 'composite', 'pcb': 'composite',
     }
     
-    def __init__(self, contaminants_file: Optional[Path] = None):
+    def __init__(self, contaminants_file: Optional[Path] = None, materials_file: Optional[Path] = None):
         """
-        Initialize selector with path to Contaminants.yaml.
+        Initialize selector with paths to Contaminants.yaml and Materials.yaml.
         
         Args:
             contaminants_file: Optional path to Contaminants.yaml
+            materials_file: Optional path to Materials.yaml for contamination rules
         """
         self.contaminants_file = contaminants_file or PROJECT_ROOT / 'data' / 'contaminants' / 'Contaminants.yaml'
+        self.materials_file = materials_file or PROJECT_ROOT / 'data' / 'materials' / 'Materials.yaml'
         self._data: Optional[Dict] = None
+        self._materials_data: Optional[Dict] = None
         
         if not self.contaminants_file.exists():
             raise FileNotFoundError(f"Contaminants.yaml not found at: {self.contaminants_file}")
+        
+        if not self.materials_file.exists():
+            logger.warning(f"⚠️ Materials.yaml not found at: {self.materials_file} - contamination rules unavailable")
         
         logger.info("✅ ContaminationPatternSelector initialized (zero API calls)")
     
@@ -170,6 +165,50 @@ class ContaminationPatternSelector:
             logger.debug(f"📦 Loaded {len(self._data.get('contamination_patterns', {}))} patterns from YAML")
         return self._data
     
+    def _load_materials_data(self) -> Optional[Dict]:
+        """Load materials data (lazy loading with caching)."""
+        if self._materials_data is None:
+            if self.materials_file.exists():
+                with open(self.materials_file, 'r', encoding='utf-8') as f:
+                    self._materials_data = yaml.safe_load(f)
+                logger.debug(f"📦 Loaded Materials.yaml with {len(self._materials_data.get('materials', {}))} materials")
+            else:
+                self._materials_data = {}
+        return self._materials_data
+    
+    def _get_material_contamination_rules(self, material_name: str) -> Dict[str, List[str]]:
+        """
+        Get contamination valid/prohibited rules from Materials.yaml.
+        
+        Args:
+            material_name: Material name (e.g., "Aluminum Bronze")
+            
+        Returns:
+            Dict with 'valid' and 'prohibited' lists of pattern IDs
+            Empty lists if material not found or no rules defined
+        """
+        materials_data = self._load_materials_data()
+        if not materials_data:
+            return {'valid': [], 'prohibited': []}
+        
+        materials = materials_data.get('materials', {})
+        material_info = materials.get(material_name, {})
+        contamination = material_info.get('contamination', {})
+        
+        valid = contamination.get('valid', [])
+        prohibited = contamination.get('prohibited', [])
+        
+        # Normalize pattern IDs: convert underscores to hyphens (yaml uses underscores, patterns use hyphens)
+        valid = [p.replace('_', '-') for p in valid]
+        prohibited = [p.replace('_', '-') for p in prohibited]
+        
+        if valid or prohibited:
+            logger.info(f"📋 Material rules for {material_name}: valid={len(valid)}, prohibited={len(prohibited)}")
+            if prohibited:
+                logger.info(f"   🚫 Prohibited: {prohibited}")
+        
+        return {'valid': valid, 'prohibited': prohibited}
+
     def get_material_category(self, material_name: str) -> str:
         """Get the category for a material (for pattern prioritization)."""
         # Check cache first
@@ -235,6 +274,8 @@ class ContaminationPatternSelector:
         """
         Check if a material is a ferrous metal (contains iron, can rust).
         
+        Uses centralized MetalClassifier for consistent logic across codebase.
+        
         Non-ferrous metals like copper, aluminum, bronze, brass develop
         patina/oxidation but NOT rust (iron oxide).
         
@@ -244,30 +285,8 @@ class ContaminationPatternSelector:
         Returns:
             True if ferrous (can rust), False otherwise
         """
-        material_lower = material_name.lower()
-        
-        # Explicit check for ferrous metals
-        if any(f in material_lower for f in ['steel', 'iron']):
-            return True
-        
-        # Explicit check for non-ferrous metals
-        for nf in self.NON_FERROUS_METALS:
-            if nf in material_lower or material_lower in nf:
-                return False
-        
-        # Check category - only metals can be ferrous
-        category = self.get_material_category(material_name)
-        if category != 'metal':
-            return False
-        
-        # If it contains keywords like bronze, brass, copper, aluminum - NOT ferrous
-        non_ferrous_keywords = ['bronze', 'brass', 'copper', 'aluminum', 'aluminium', 
-                                'zinc', 'titanium', 'nickel', 'magnesium', 'gold', 
-                                'silver', 'platinum', 'tin', 'lead', 'cobalt']
-        if any(kw in material_lower for kw in non_ferrous_keywords):
-            return False
-        
-        return False  # Default to non-ferrous (safer - prevents rust on wrong materials)
+        classifier = get_classifier()
+        return classifier.is_ferrous(material_name)
     
     def _is_pattern_valid_for_material(self, pattern_id: str, pattern: Dict, material_name: str) -> bool:
         """
@@ -401,10 +420,30 @@ class ContaminationPatternSelector:
         # Get material category for prioritization
         category = self.get_material_category(material_name)
         
+        # CRITICAL: Apply Materials.yaml contamination rules (valid/prohibited lists)
+        material_rules = self._get_material_contamination_rules(material_name)
+        prohibited_patterns = set(material_rules.get('prohibited', []))
+        
+        if prohibited_patterns:
+            before_count = len(valid_ids)
+            valid_ids = [pid for pid in valid_ids if pid not in prohibited_patterns]
+            filtered_count = before_count - len(valid_ids)
+            if filtered_count > 0:
+                logger.info(f"🚫 Filtered {filtered_count} patterns prohibited by Materials.yaml rules")
+        
         # FALLBACK: If no direct patterns, use patterns from same category
         if not valid_ids:
             logger.warning(f"No direct contamination patterns for {material_name}, using {category} fallback")
             valid_ids = self._get_category_fallback_patterns(category, patterns)
+            
+            # Apply prohibited filter to fallback patterns too!
+            if prohibited_patterns and valid_ids:
+                before_count = len(valid_ids)
+                valid_ids = [pid for pid in valid_ids if pid not in prohibited_patterns]
+                filtered_count = before_count - len(valid_ids)
+                if filtered_count > 0:
+                    logger.info(f"🚫 Filtered {filtered_count} fallback patterns prohibited by Materials.yaml rules")
+            
             if not valid_ids:
                 logger.warning(f"No contamination patterns found for {material_name} or {category} category")
                 return []
@@ -506,35 +545,65 @@ class ContaminationPatternSelector:
         Build pattern result dictionary for image generation.
         
         Uses material-specific appearance if available, otherwise uses base pattern data.
+        
+        YAML has TWO structures for appearance_on_categories:
+        
+        Format A (simple, 3 fields):
+        - appearance: Visual description
+        - coverage: Coverage description
+        - pattern: Pattern description
+        
+        Format B (rich, 16+ fields):
+        - color_variations, texture_details, common_patterns, aged_appearance,
+        - lighting_effects, thickness_range, distribution_patterns, etc.
+        
+        This method handles both formats.
         """
         if not pattern:
             return None
         
-        # Get material-specific appearance (16-field rich data)
+        # Get material/category-specific appearance data
         appearance = self._get_appearance(pattern, material_name)
         
-        # Build visual characteristics
+        # Build visual characteristics - handle BOTH YAML formats
         if appearance:
-            # Rich material-specific data available
-            visual_chars = {
-                'color_range': self._extract_color_summary(appearance.get('color_variations', [])),
-                'texture_detail': self._extract_texture_summary(appearance.get('texture_details', '')),
-                # Include full rich data
-                'description': appearance.get('description', ''),
-                'color_variations': appearance.get('color_variations', []),
-                'texture_details': appearance.get('texture_details', ''),
-                'common_patterns': appearance.get('common_patterns', ''),
-                'aged_appearance': appearance.get('aged_appearance', ''),
-                'lighting_effects': appearance.get('lighting_effects', ''),
-                'thickness_range': appearance.get('thickness_range', ''),
-                # Distribution physics
-                'distribution_patterns': appearance.get('distribution_patterns', ''),
-                'gravity_influence': appearance.get('gravity_influence', ''),
-                'geometry_effects': appearance.get('geometry_effects', ''),
-                'edge_center_behavior': appearance.get('edge_center_behavior', ''),
-                'coverage_ranges': appearance.get('coverage_ranges', ''),
-                'buildup_progression': appearance.get('buildup_progression', ''),
-            }
+            # Detect which format this appearance data uses
+            is_rich_format = 'color_variations' in appearance or 'aged_appearance' in appearance
+            
+            if is_rich_format:
+                # Format B: Rich 16-field structure
+                visual_chars = {
+                    'color_range': self._extract_color_summary(appearance.get('color_variations', ''), material_name),
+                    'texture_detail': self._extract_texture_summary(appearance.get('texture_details', '')),
+                    'description': appearance.get('aged_appearance', ''),
+                    'color_variations': appearance.get('color_variations', ''),
+                    'texture_details': appearance.get('texture_details', ''),
+                    'common_patterns': appearance.get('common_patterns', ''),
+                    'aged_appearance': appearance.get('aged_appearance', ''),
+                    'lighting_effects': appearance.get('lighting_effects', ''),
+                    'thickness_range': appearance.get('thickness_range', ''),
+                    'distribution_patterns': appearance.get('distribution_patterns', ''),
+                    'gravity_influence': appearance.get('gravity_influence', ''),
+                    'geometry_effects': appearance.get('geometry_effects', ''),
+                    'edge_center_behavior': appearance.get('edge_center_behavior', ''),
+                    'coverage_ranges': appearance.get('coverage_ranges', ''),
+                    'buildup_progression': appearance.get('buildup_progression', ''),
+                }
+                logger.debug(f"✅ Rich format (Format B) appearance data for {material_name}")
+            else:
+                # Format A: Simple 3-field structure
+                visual_chars = {
+                    'description': appearance.get('appearance', ''),
+                    'coverage': appearance.get('coverage', ''),
+                    'pattern': appearance.get('pattern', ''),
+                    # Extract color/texture info from appearance text
+                    'color_range': self._extract_colors_from_text(appearance.get('appearance', '')),
+                    'texture_detail': self._extract_texture_from_text(appearance.get('appearance', '')),
+                    'distribution_patterns': appearance.get('pattern', ''),
+                    'coverage_ranges': appearance.get('coverage', ''),
+                }
+                logger.debug(f"✅ Simple format (Format A) appearance data for {material_name}")
+            
             has_rich_data = True
         else:
             # Fallback to base pattern description
@@ -545,20 +614,85 @@ class ContaminationPatternSelector:
             }
             has_rich_data = False
         
+        # Get realism notes (expert knowledge for accurate rendering)
+        realism_notes = pattern.get('realism_notes', '')
+        
         return {
             'pattern_id': pattern_id,
             'pattern_name': pattern.get('name', pattern_id),
             'visual_characteristics': visual_chars,
             'has_rich_appearance_data': has_rich_data,
             'category': pattern.get('category', 'contamination'),
+            # Expert realism notes (NEW - for image accuracy)
+            'realism_notes': realism_notes,
             # Include material-specific image generation feedback if available
             'image_generation_feedback': self._get_image_gen_feedback(pattern, material_name),
         }
     
-    def _extract_color_summary(self, color_variations: Any) -> str:
-        """Extract concise color summary from color_variations field."""
+    def _extract_colors_from_text(self, text: str) -> str:
+        """Extract color information from appearance description text."""
+        if not text:
+            return 'varied'
+        
+        import re
+        # Common color words to look for
+        color_pattern = r'\b(red|orange|brown|black|white|gray|grey|green|blue|yellow|rust|patina|silver|gold|dark|light|translucent|opaque|yellowish|grayish|greenish|brownish|whitish|golden|copper|bronze|tan|beige|cream|ivory)\b'
+        colors = re.findall(color_pattern, text.lower())
+        
+        if colors:
+            # Deduplicate and limit
+            unique_colors = list(dict.fromkeys(colors))[:5]
+            return ', '.join(unique_colors)
+        
+        return 'varied'
+    
+    def _extract_texture_from_text(self, text: str) -> str:
+        """Extract texture information from appearance description text."""
+        if not text:
+            return 'varied surface texture'
+        
+        import re
+        # Common texture words to look for
+        texture_pattern = r'\b(rough|smooth|flaky|powdery|granular|porous|glossy|matte|pitted|scaly|sticky|gummy|crusty|filmy|slimy|chalky|crystalline|gritty|tacky|dull|shiny)\b'
+        textures = re.findall(texture_pattern, text.lower())
+        
+        if textures:
+            # Deduplicate and limit
+            unique_textures = list(dict.fromkeys(textures))[:3]
+            return ', '.join(unique_textures) + ' texture'
+        
+        return 'varied surface texture'
+    
+    def _extract_color_summary(self, color_variations: Any, material_name: str = '') -> str:
+        """Extract concise color summary from color_variations field.
+        
+        Handles multiple structures:
+        - String: Direct color description (Format B prose)
+        - List: Color entries like "#F5DEB3 'Wheat'" (Format B list)
+        - Dict: Keyed by material name {'aluminum': '...', 'copper': '...'} (Format B nested)
+        """
         if not color_variations:
             return 'varied'
+        
+        # Handle dict keyed by material name
+        if isinstance(color_variations, dict):
+            # Try to find the specific material's color info
+            material_key = material_name.lower().replace(' ', '_')
+            for key, value in color_variations.items():
+                if key.lower() == material_key or material_key in key.lower():
+                    # Found material-specific color data
+                    if isinstance(value, str):
+                        return self._extract_colors_from_text(value)
+            # Fall back to first entry's value
+            first_value = next(iter(color_variations.values()), '')
+            if isinstance(first_value, str):
+                return self._extract_colors_from_text(first_value)
+            return 'varied'
+        
+        # Handle string format (Format B rich structure - color_variations is a prose string)
+        if isinstance(color_variations, str):
+            # Extract colors from prose description
+            return self._extract_colors_from_text(color_variations)
         
         if isinstance(color_variations, list):
             # Extract color names from entries like "#F5DEB3 'Wheat'"
@@ -576,7 +710,10 @@ class ContaminationPatternSelector:
         return str(color_variations)[:50]
     
     def _extract_texture_summary(self, texture_details) -> str:
-        """Extract concise texture summary."""
+        """Extract concise texture summary.
+        
+        Handles both Format A (prose string) and Format B (structured) textures.
+        """
         if not texture_details:
             return 'varied surface texture'
         
@@ -587,6 +724,9 @@ class ContaminationPatternSelector:
         
         # Ensure it's a string
         texture_details = str(texture_details)
+        
+        # Extract texture words from prose
+        return self._extract_texture_from_text(texture_details)
         
         # Take first sentence
         if '.' in texture_details:

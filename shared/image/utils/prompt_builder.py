@@ -17,6 +17,7 @@ from typing import Dict, List, Optional
 import logging
 
 from .prompt_optimizer import PromptOptimizer
+from .research_data_verifier import ResearchDataVerifier, verify_optimization
 
 logger = logging.getLogger(__name__)
 
@@ -73,6 +74,9 @@ class SharedPromptBuilder:
         # Initialize prompt optimizer
         self.optimizer = PromptOptimizer()
         
+        # Initialize research data verifier
+        self.verifier = ResearchDataVerifier()
+        
         # Fail-fast validation
         if not self.prompts_dir.exists():
             raise FileNotFoundError(
@@ -102,7 +106,9 @@ class SharedPromptBuilder:
         learned_feedback: Optional[str] = None,
         severity: str = "moderate",
         aging_weight: Optional[float] = None,
-        contamination_weight: Optional[float] = None
+        contamination_weight: Optional[float] = None,
+        material_properties: Optional[Dict] = None,
+        config: Optional["MaterialImageConfig"] = None
     ) -> str:
         """
         Build complete generation prompt from shared templates + researched defaults.
@@ -118,6 +124,7 @@ class SharedPromptBuilder:
         - User Feedback: Your latest quality corrections
         - Learned Feedback: Category-specific feedback from previous attempts
         - Visual Weights: Custom aging/contamination intensity adjustments
+        - Material Visual Properties: Reflectivity, absorptivity, surface finish (NEW)
         
         Args:
             material_name: Name of material (e.g., "Aluminum")
@@ -129,6 +136,8 @@ class SharedPromptBuilder:
             severity: Contamination severity - "light" (<30%), "moderate" (30-60%), "heavy" (>60%)
             aging_weight: Visual weight for aging on left side (0.0-2.0, default 1.0)
             contamination_weight: Visual weight for contamination on right side (0.0-2.0, default 1.0)
+            material_properties: Material properties from Materials.yaml (includes visual props)
+            config: Optional MaterialImageConfig for additional settings
             
         Returns:
             Complete prompt string for Imagen 4
@@ -139,11 +148,11 @@ class SharedPromptBuilder:
         """
         prompt_parts = []
         
-        # Build replacement context once (using researched defaults)
+        # Build replacement context once (using researched defaults + visual properties)
         replacements = self._build_replacement_dict(
             material_name, research_data,
             contamination_uniformity, view_mode,
-            severity
+            severity, material_properties
         )
         
         # Layer 1: Base Structure
@@ -195,7 +204,7 @@ class SharedPromptBuilder:
         )
         if weight_instructions:
             prompt_parts.append(weight_instructions)
-            logger.info(f"⚖️  Applied visual weight adjustments")
+            logger.info("⚖️  Applied visual weight adjustments")
         
         # Assemble full prompt
         full_prompt = "\n\n".join(prompt_parts)
@@ -213,14 +222,41 @@ class SharedPromptBuilder:
             f"(-{len(full_prompt) - len(optimized_prompt)} chars, {reduction_pct:.1f}% reduction)"
         )
         
+        # ═══════════════════════════════════════════════════════════════════════════
+        # POST-OPTIMIZATION VERIFICATION: Ensure research data was preserved
+        # ═══════════════════════════════════════════════════════════════════════════
+        verification_result = verify_optimization(full_prompt, optimized_prompt, research_data)
+        
+        if not verification_result.is_valid:
+            logger.error("🚨 RESEARCH DATA LOST DURING OPTIMIZATION:")
+            for item in verification_result.missing_data:
+                logger.error(f"   • {item}")
+            print(f"\n⚠️  CRITICAL: Research data lost during optimization!")
+            print(verification_result.format_report())
+        elif verification_result.warnings:
+            logger.warning(f"⚠️  Optimization warnings ({len(verification_result.warnings)}):")
+            for warning in verification_result.warnings[:3]:
+                logger.warning(f"   • {warning}")
+        else:
+            logger.info(f"✅ Post-optimization verification: {verification_result.get_summary()}")
+        
+        # Additional verification: Check material name specifically
+        material_verification = self.verifier.verify(
+            optimized_prompt, research_data, material_name
+        )
+        if not material_verification.is_valid:
+            logger.warning(f"⚠️  Material verification issues detected")
+        
         # 🔥 DEBUG: Log full optimized prompt to verify anti-text preservation
         if len(optimized_prompt) > 3000:
             logger.warning(f"⚠️  Optimized prompt near limit: {len(optimized_prompt)}/4096 chars")
         
         logger.debug(f"FINAL OPTIMIZED PROMPT:\n{'='*80}\n{optimized_prompt}\n{'='*80}")
         
-        # 🔥 TEMPORARY: Print full prompt to terminal for debugging
+        # Print full prompt to terminal for debugging
         print(f"\n{'='*80}\n🔍 FINAL PROMPT SENT TO IMAGEN API:\n{'='*80}\n{optimized_prompt}\n{'='*80}\n")
+        
+        return optimized_prompt
         
         return optimized_prompt
     
@@ -423,7 +459,8 @@ EXPECTED CHARACTERISTICS:
         research_data: Dict,
         contamination_uniformity: int,
         view_mode: str,
-        severity: str = "moderate"
+        severity: str = "moderate",
+        material_properties: Optional[Dict] = None
     ) -> Dict[str, str]:
         """
         Build dictionary of template variable replacements using researched defaults.
@@ -438,6 +475,10 @@ EXPECTED CHARACTERISTICS:
         - {CONTAMINANTS_SECTION}: Built from research patterns
         - {SEVERITY}: Contamination severity (light, moderate, heavy)
         - {COVERAGE_DESCRIPTION}: Human-readable coverage description
+        - {REFLECTIVITY}: Material reflectivity value (e.g., "0.95")
+        - {ABSORPTIVITY}: Material absorptivity value (e.g., "0.06")
+        - {SURFACE_FINISH}: Material surface finish description
+        - {VISUAL_APPEARANCE}: Combined visual appearance description
         
         Args:
             material_name: Material name
@@ -445,6 +486,7 @@ EXPECTED CHARACTERISTICS:
             contamination_uniformity: 1-5 variety (auto-set by category)
             view_mode: View mode string (auto-set to "Contextual")
             severity: Contamination severity (light, moderate, heavy)
+            material_properties: Material properties from Materials.yaml
             
         Returns:
             Dict mapping {VARIABLE} → value
@@ -462,6 +504,56 @@ EXPECTED CHARACTERISTICS:
         
         # Get background from context settings (loaded from YAML)
         context_background = research_data.get('context_background', 'neutral environment')
+        
+        # === EXTRACT VISUAL PROPERTIES FROM material_properties ===
+        reflectivity = "unknown"
+        absorptivity = "unknown"
+        surface_finish = "typical"
+        visual_appearance = ""
+        
+        if material_properties:
+            chars = material_properties.get('materialCharacteristics', {})
+            
+            # Get reflectivity
+            refl_data = chars.get('reflectivity', {})
+            if isinstance(refl_data, dict) and 'value' in refl_data:
+                refl_value = refl_data['value']
+                reflectivity = f"{refl_value:.2f}" if isinstance(refl_value, (int, float)) else str(refl_value)
+                # Add human-readable description
+                if isinstance(refl_value, (int, float)):
+                    if refl_value > 0.8:
+                        reflectivity += " (highly reflective, mirror-like)"
+                    elif refl_value > 0.5:
+                        reflectivity += " (moderately reflective)"
+                    elif refl_value > 0.2:
+                        reflectivity += " (low reflectivity)"
+                    else:
+                        reflectivity += " (absorptive, matte)"
+            
+            # Get absorptivity
+            abs_data = chars.get('absorptivity', {})
+            if isinstance(abs_data, dict) and 'value' in abs_data:
+                abs_value = abs_data['value']
+                absorptivity = f"{abs_value:.2f}" if isinstance(abs_value, (int, float)) else str(abs_value)
+            
+            # Get surface finish (could be in various places)
+            sf_data = chars.get('surfaceFinish', chars.get('surface_finish', {}))
+            if isinstance(sf_data, dict) and 'value' in sf_data:
+                surface_finish = sf_data['value']
+            elif isinstance(sf_data, str):
+                surface_finish = sf_data
+            
+            # Build combined visual appearance description
+            visual_parts = []
+            if reflectivity != "unknown":
+                visual_parts.append(f"reflectivity {reflectivity}")
+            if absorptivity != "unknown":
+                visual_parts.append(f"absorptivity {absorptivity}")
+            if surface_finish != "typical":
+                visual_parts.append(f"{surface_finish} surface finish")
+            visual_appearance = ", ".join(visual_parts) if visual_parts else f"typical {material_name} appearance"
+            
+            logger.info(f"📊 Visual properties extracted: {visual_appearance}")
         
         patterns = research_data.get('selected_patterns', research_data.get('contaminants', []))
         contamination_section = self._build_contamination_section(patterns)
@@ -486,7 +578,12 @@ EXPECTED CHARACTERISTICS:
             '{VIEW_MODE}': view_mode,
             '{CONTAMINANTS_SECTION}': contamination_section,
             '{SEVERITY}': severity,
-            '{COVERAGE_DESCRIPTION}': coverage_description
+            '{COVERAGE_DESCRIPTION}': coverage_description,
+            # NEW: Visual properties from Materials.yaml
+            '{REFLECTIVITY}': reflectivity,
+            '{ABSORPTIVITY}': absorptivity,
+            '{SURFACE_FINISH}': surface_finish,
+            '{VISUAL_APPEARANCE}': visual_appearance
         }
     
     def _apply_replacements(self, template: str, replacements: Dict[str, str]) -> str:
@@ -507,13 +604,19 @@ EXPECTED CHARACTERISTICS:
     
     def _build_contamination_section(self, patterns: list) -> str:
         """
-        Build contamination list from research patterns.
+        Build contamination list from research patterns with full distribution physics.
+        
+        Includes:
+        - Pattern names and visual characteristics
+        - Distribution physics (gravity, edges, coverage)
+        - Material-specific image generation feedback
+        - Expert realism notes (NEW)
         
         Args:
             patterns: List of contamination pattern dicts
             
         Returns:
-            Concise contamination description including material-specific feedback
+            Rich contamination description including distribution physics and material feedback
             
         Raises:
             ValueError: If no patterns provided
@@ -526,20 +629,59 @@ EXPECTED CHARACTERISTICS:
         
         lines = []
         feedback_notes = []
+        realism_insights = []
         
-        for pattern in patterns[:4]:  # Max 4 patterns
+        for pattern in patterns[:3]:  # Max 3 patterns for richer detail each
             # Handle both category pattern format and old contaminant format
             if 'pattern_name' in pattern:
                 name = pattern['pattern_name']
                 visual = pattern.get('visual_characteristics', {})
-                color = visual.get('color_range', 'varied tones')
-                texture = visual.get('texture_detail', 'varied texture')
-                lines.append(f"{name}: {color}, {texture}")
+                
+                # Helper to convert lists/dicts to strings
+                def to_str(val, max_len=80):
+                    if isinstance(val, list):
+                        return ', '.join(str(v) for v in val)[:max_len]
+                    elif isinstance(val, dict):
+                        return ', '.join(f"{k}: {v}" for k, v in val.items())[:max_len]
+                    elif val:
+                        return str(val)[:max_len]
+                    return ''
+                
+                # Extract all available visual data
+                color = to_str(visual.get('color_variations', visual.get('color_range', '')), 80)
+                texture = to_str(visual.get('texture_details', visual.get('texture_detail', '')), 60)
+                distribution = to_str(visual.get('distribution_patterns', ''), 60)
+                coverage = to_str(visual.get('coverage_ranges', ''), 50)
+                edge_behavior = to_str(visual.get('edge_center_behavior', ''), 50)
+                gravity = to_str(visual.get('gravity_influence', ''), 40)
+                lighting = to_str(visual.get('lighting_effects', ''), 40)
+                
+                # Build rich description
+                desc_parts = [name]
+                if color:
+                    desc_parts.append(f"colors: {color}")
+                if texture:
+                    desc_parts.append(f"texture: {texture}")
+                if distribution:
+                    desc_parts.append(f"distribution: {distribution}")
+                if edge_behavior:
+                    desc_parts.append(f"edges: {edge_behavior}")
+                if gravity:
+                    desc_parts.append(f"gravity: {gravity}")
+                if lighting:
+                    desc_parts.append(f"lighting: {lighting}")
+                
+                lines.append(", ".join(desc_parts))
                 
                 # Include material-specific image generation feedback if available
                 feedback = pattern.get('image_generation_feedback', '')
                 if feedback:
-                    feedback_notes.append(f"NOTE for {name}: {feedback}")
+                    feedback_notes.append(f"{name}: {feedback}")
+                
+                # Include expert realism notes (NEW - from Contaminants.yaml)
+                realism = pattern.get('realism_notes', '')
+                if realism:
+                    realism_insights.append(f"{name}: {realism}")
             else:
                 name = pattern.get('name', 'contamination')
                 appearance = pattern.get('appearance', {})
@@ -549,9 +691,13 @@ EXPECTED CHARACTERISTICS:
         
         result = ". ".join(lines) + "."
         
-        # Append material-specific feedback notes
+        # Append expert realism insights (for accuracy)
+        if realism_insights:
+            result += " REALISM: " + " ".join(realism_insights[:2])  # Limit to 2 for space
+        
+        # Append material-specific feedback notes (critical for accuracy)
         if feedback_notes:
-            result += " IMPORTANT: " + " ".join(feedback_notes)
+            result += " CRITICAL: " + " ".join(feedback_notes)
         
         return result
     

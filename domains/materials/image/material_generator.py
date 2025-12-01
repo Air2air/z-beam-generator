@@ -26,6 +26,8 @@ from shared.image.orchestrator import ImagePromptOrchestrator
 from domains.materials.image.material_config import MaterialImageConfig
 from shared.image.utils.image_pipeline_monitor import get_pipeline_monitor
 from shared.validation.contamination_validator import ContaminationValidator
+# Centralized metal classification for accurate rust prevention
+from shared.utils.metal_classifier import get_classifier
 
 logger = logging.getLogger(__name__)
 
@@ -57,13 +59,18 @@ class MaterialImageGenerator:
         prompts_dir = Path(__file__).parent / "prompts" / "shared"
         self.prompt_builder = SharedPromptBuilder(prompts_dir=prompts_dir)
         
-        # Orchestrator for validated prompt generation
-        self.orchestrator = ImagePromptOrchestrator(domain='materials')
+        # Orchestrator for validated prompt generation - WITH SharedPromptBuilder
+        # This ensures 6-stage chain uses comprehensive prompt building
+        self.orchestrator = ImagePromptOrchestrator(
+            domain='materials',
+            prompt_builder=self.prompt_builder  # Assembly stage uses SharedPromptBuilder
+        )
         
         self.pipeline_monitor = get_pipeline_monitor()
         self.contamination_validator = ContaminationValidator()
         
         logger.info("✅ MaterialImageGenerator initialized (zero API calls for contamination)")
+        logger.info("   • Orchestrator integrated with SharedPromptBuilder")
         if gemini_api_key:
             logger.info("   • Shape research enabled (Gemini API available)")
     
@@ -298,13 +305,10 @@ class MaterialImageGenerator:
             ])
         
         # Add material-specific exclusions for corrosion-resistant materials
-        # These materials should NOT show rust/oxidation
-        corrosion_resistant_materials = [
-            "stainless steel", "titanium", "aluminum", "brass", "bronze",
-            "copper", "nickel", "chromium", "gold", "silver", "platinum",
-            "zinc", "galvanized"
-        ]
-        if any(cr in material_name.lower() for cr in corrosion_resistant_materials):
+        # Use centralized MetalClassifier - non-ferrous metals cannot rust
+        classifier = get_classifier()
+        if not classifier.can_rust(material_name):
+            # This material is non-ferrous or non-metallic - exclude rust terms
             base_negative.extend([
                 "rust", "rusty", "rust spots", "orange rust", "red rust",
                 "iron oxide", "rust streaks", "rust stains", "corroded rust"
@@ -339,11 +343,18 @@ class MaterialImageGenerator:
         material_name: str,
         material_properties: Optional[Dict] = None,
         config: Optional[MaterialImageConfig] = None,
-        use_validation: bool = True,
         shape_override: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Generate complete prompt package for image generation.
+        Generate complete prompt package for image generation via orchestrator.
+        
+        USES 6-STAGE ORCHESTRATOR CHAIN:
+        1. Research → Extract/use provided research data
+        2. Visual → Generate appearance description
+        3. Composition → Layout before/after
+        4. Refinement → Technical accuracy
+        5. Assembly → SharedPromptBuilder (comprehensive prompt)
+        6. Validation → Pre-generation quality check
         
         SIMPLIFIED (Nov 29, 2025):
         - Contamination data: From Contaminants.yaml (ZERO API calls)
@@ -353,11 +364,10 @@ class MaterialImageGenerator:
             material_name: Name of the material
             material_properties: Optional material properties from Materials.yaml
             config: Optional MaterialImageConfig for contamination control
-            use_validation: If True, use orchestrator with pre-generation validation
             shape_override: Optional override for shape/object (e.g., "I-beam in a building structure")
             
         Returns:
-            Dictionary with prompt, negative_prompt, and generation_params
+            Dictionary with prompt, negative_prompt, stage_outputs, and generation_params
         """
         # Require explicit config
         if config is None:
@@ -439,31 +449,58 @@ class MaterialImageGenerator:
             except Exception as e:
                 logger.debug(f"Assembly research skipped: {e}")
         
-        # === PROMPT GENERATION ===
-        # If assembly context was found, skip orchestrator to use SharedPromptBuilder 
-        # which can inject the assembly context into the prompt
-        has_assembly_context = bool(research_data.get('assembly_description'))
+        # === PROMPT GENERATION VIA ORCHESTRATOR ===
+        # Use orchestrator as PRIMARY path - it now uses SharedPromptBuilder in assembly stage
+        # This ensures 6-stage chain with comprehensive prompt building and validation
         
         validation_result = None
-        if use_validation and not has_assembly_context:
-            try:
-                validated_package = self.generate_validated_prompt_package(material_name, config)
-                prompt = validated_package['prompt']
-                validation_result = validated_package['validation_result']
-                
-                if validation_result and validation_result.has_critical_issues:
+        prompt = None
+        stage_outputs = {}
+        
+        print("\n" + "=" * 60)
+        print("🎭 ORCHESTRATOR: 6-Stage Prompt Generation Chain")
+        print("=" * 60)
+        
+        try:
+            # Use orchestrator with SharedPromptBuilder integration
+            chained_result = self.orchestrator.generate_hero_prompt(
+                identifier=material_name,
+                research_data=research_data,
+                material_properties=material_properties,
+                config=config,
+                category=config.category,
+                api='imagen'
+            )
+            
+            prompt = chained_result.prompt
+            stage_outputs = chained_result.stage_outputs
+            validation_result = stage_outputs.get('validation')
+            
+            print("\n" + "=" * 60)
+            print(f"✅ ORCHESTRATOR COMPLETE: {len(prompt)} char prompt generated")
+            print("=" * 60)
+            
+            # Check validation result
+            if validation_result:
+                if hasattr(validation_result, 'has_critical_issues') and validation_result.has_critical_issues:
                     logger.error("❌ Prompt validation FAILED with critical issues")
-                    raise RuntimeError("Prompt validation failed with critical issues")
-                elif validation_result and validation_result.errors:
-                    logger.warning(f"⚠️  Prompt has {len(validation_result.errors)} errors")
+                    # Raise to prevent bad prompt from proceeding
+                    raise ValueError(f"Prompt validation failed: {validation_result.format_report()}")
+                elif hasattr(validation_result, 'errors') and validation_result.errors:
+                    logger.warning(f"⚠️  Prompt has {len(validation_result.errors)} non-critical errors")
                 else:
                     logger.info("✅ Prompt validation passed")
-                        
-            except Exception as e:
-                logger.warning(f"⚠️  Orchestrator failed, using SharedPromptBuilder: {e}")
-                prompt = self.generate_prompt(material_name, material_properties, config, research_data)
-        else:
-            prompt = self.generate_prompt(material_name, material_properties, config, research_data)
+                    
+        except Exception as e:
+            # FAIL-FAST: Do not silently fall back - raise the error
+            # Per copilot-instructions.md: NO fallbacks in production code
+            logger.error(f"❌ Orchestrator failed: {e}")
+            print(f"\n❌ FAIL-FAST: Orchestrator error - {e}")
+            raise RuntimeError(
+                f"FAIL-FAST: Orchestrator failed for {material_name}. "
+                f"Error: {e}. "
+                f"Fix the orchestrator issue instead of using fallback."
+            ) from e
         
         # Generate negative prompt
         negative_prompt = self.get_negative_prompt(material_name, config)
@@ -482,6 +519,7 @@ class MaterialImageGenerator:
             "negative_prompt": negative_prompt,
             "research_data": research_data,
             "config": config.to_dict(),
+            "stage_outputs": stage_outputs,  # Include orchestrator stage outputs
             **params
         }
         

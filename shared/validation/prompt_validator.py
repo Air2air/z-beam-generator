@@ -1,6 +1,21 @@
 """
 Universal Prompt Validator - Text and Image Generation
 
+⚠️  DEPRECATION NOTICE (November 30, 2025):
+    This module is maintained for backward compatibility.
+    For new code, prefer using `shared.validation.unified_validator`:
+    
+        from shared.validation.unified_validator import (
+            validate_prompt_quick,  # Quick validation
+            UnifiedValidator,       # Full validation
+        )
+    
+    The UnifiedValidator provides:
+    - 3-stage validation (early, prompt, post)
+    - AI-friendly fix instructions
+    - Auto-optimization capabilities
+    - More comprehensive issue detection
+
 Validates final prompts before API submission (Grok, Imagen, etc.).
 Ensures prompts are optimal for generation by checking:
 1. Length: Within API limits with safety margins
@@ -16,6 +31,7 @@ Author: AI Assistant
 Date: November 27, 2025
 """
 
+import warnings
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Optional, Literal
@@ -23,6 +39,14 @@ import re
 import logging
 
 logger = logging.getLogger(__name__)
+
+# Emit deprecation warning on module import
+warnings.warn(
+    "prompt_validator is deprecated. Use unified_validator for new code. "
+    "See module docstring for migration guide.",
+    DeprecationWarning,
+    stacklevel=2
+)
 
 
 class ValidationSeverity(Enum):

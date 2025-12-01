@@ -169,9 +169,8 @@ class PromptOptimizer:
         condensed = condensed.replace("It is essential that", "")
         condensed = condensed.replace("Make sure to", "")
         condensed = condensed.replace("Be sure to", "")
-        condensed = condensed.replace("CRITICAL: ", "")  # Keep content, remove label
-        condensed = condensed.replace("MANDATORY: ", "")
-        condensed = condensed.replace("IMPORTANT: ", "")
+        # NOTE: Preserving CRITICAL/MANDATORY/IMPORTANT markers - they signal priority to the model
+        # (removed: condensed.replace("CRITICAL: ", ""), etc.)
         
         # Simplify connecting phrases (case-insensitive)
         condensed = condensed.replace("In order to", "To")
@@ -288,15 +287,22 @@ class PromptOptimizer:
             
             # Skip lines that repeat concepts we've already covered
             # NOTE: Rotation removed from dedup - it's CRITICAL and must always appear
+            # NOTE: Use word boundaries to avoid matching 'text' in 'texture'
             concept_markers = [
                 ('gravity', 'settles', 'bottom'),
                 ('thick', 'caked', 'buildup'),
-                ('text', 'label', 'watermark'),
+                ('no text', 'no labels', 'watermark'),  # Fixed: More specific to avoid matching 'texture'
                 ('same object', 'identical', 'continuity'),
             ]
             
             skip_line = False
             lower = stripped.lower()
+            
+            # NEVER skip lines containing critical contamination data
+            if 'contamination specifics' in lower:
+                trimmed_lines.append(stripped)
+                continue
+                
             for markers in concept_markers:
                 if any(m in lower for m in markers):
                     key = markers[0]
@@ -310,8 +316,10 @@ class PromptOptimizer:
             
             # Truncate very long lines (>150 chars)
             # EXCEPTION: Never truncate the base structure line (first line contains critical format + assembly context)
+            # EXCEPTION: Never truncate CONTAMINATION SPECIFICS (contains critical research data)
             is_base_structure = len(trimmed_lines) == 0 and 'split-screen' in stripped.lower()
-            if len(stripped) > 150 and not is_base_structure:
+            is_contamination = 'contamination specifics' in stripped.lower()
+            if len(stripped) > 150 and not is_base_structure and not is_contamination:
                 # Keep first 120 chars + ...
                 stripped = stripped[:120].rsplit(' ', 1)[0] + '...'
             
@@ -346,6 +354,7 @@ class PromptOptimizer:
             # Always keep these critical sections
             if any(keep in section_upper for keep in [
                 'SPLIT-SCREEN', 'BACKGROUND:', 'ASSEMBLY CONTEXT',  # Base structure
+                'CONTAMINATION SPECIFICS',  # Research-based contamination details
                 'CORRECTIONS:', 'AVOID THESE PATTERNS',  # Critical rules
                 'PHYSICS:',  # Essential physics
             ]):

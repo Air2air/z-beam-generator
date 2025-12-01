@@ -27,7 +27,7 @@ from dataclasses import dataclass
 # Local imports
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
-from shared.image.validation.payload_validator import ImagePromptPayloadValidator
+from shared.validation.unified_validator import UnifiedValidator, ValidationStatus
 from shared.api.gemini_image_client import GeminiImageClient
 
 
@@ -70,7 +70,7 @@ class ImageGenerationHandler:
         """
         self.materials_data = self._load_materials_yaml()
         self.contaminants_data = self._load_contaminants_yaml()
-        self.validator = ImagePromptPayloadValidator()
+        self.validator = UnifiedValidator()
         
         # MaterialImageGenerator with category research
         self.generator = MaterialImageGenerator(
@@ -415,17 +415,16 @@ class ImageGenerationHandler:
                 'error': str(e)
             }
         
-        # Validate prompt with payload validator
+        # Validate prompt with unified validator
         print(f"\n🔍 Validating prompt...")
-        validation_result = self.validator.validate(
+        validation_result = self.validator.validate_prompt(
             prompt=prompt,
-            material=parsed.material_name,
-            contaminant=parsed.contaminant_id
+            material=parsed.material_name
         )
         
-        if validation_result.has_critical_issues:
+        if validation_result.status == ValidationStatus.CRITICAL:
             print(f"\n❌ Validation FAILED (critical issues):")
-            print(validation_result.format_report())
+            print(validation_result.to_report())
             return {
                 'success': False,
                 'request': parsed,
@@ -434,9 +433,9 @@ class ImageGenerationHandler:
                 'error': 'Prompt validation failed critically'
             }
         
-        if validation_result.has_errors or validation_result.has_warnings:
+        if validation_result.status in (ValidationStatus.FAIL, ValidationStatus.WARN):
             print(f"\n⚠️  Validation warnings:")
-            print(validation_result.format_report())
+            print(validation_result.to_report())
         else:
             print(f"   ✅ Prompt validated successfully")
         

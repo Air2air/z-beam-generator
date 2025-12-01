@@ -66,6 +66,7 @@ class IssueCategory(Enum):
     REALISM = "REALISM"         # Realism score
     COMPLIANCE = "COMPLIANCE"   # Prompt compliance
     FEEDBACK = "FEEDBACK"       # Feedback consistency
+    CONTAMINATION = "CONTAMINATION"  # Material-contamination compatibility
 
 
 # =============================================================================
@@ -488,6 +489,8 @@ class PromptStageValidator:
     - No contradictions
     - No duplications
     - Required sections present
+    - Material-contamination compatibility
+    - Physics plausibility
     - Auto-optimize if needed
     """
     
@@ -495,6 +498,37 @@ class PromptStageValidator:
     IMAGEN_LIMIT = 4096
     TARGET_LENGTH = 3500
     WARNING_THRESHOLD = 3800
+    
+    # Forbidden content - material-contamination impossibilities (from payload_validator)
+    FORBIDDEN_CONTENT = [
+        # Material-contamination impossibilities
+        (r'\brust\b.*\baluminum\b', 'Aluminum does not rust (forms oxide, not rust)'),
+        (r'\baluminum\b.*\brust\b', 'Aluminum does not rust (forms oxide, not rust)'),
+        (r'\brust\b.*\bplastic\b', 'Plastic cannot rust (ferrous metals only)'),
+        (r'\bplastic\b.*\brust\b', 'Plastic cannot rust (ferrous metals only)'),
+        (r'\brust\b.*\bglass\b', 'Glass cannot rust (ferrous metals only)'),
+        (r'\brust\b.*\bcopper\b', 'Copper does not rust (forms patina/verdigris, not rust)'),
+        (r'\bcopper\b.*\brust\b', 'Copper does not rust (forms patina/verdigris, not rust)'),
+        (r'\brust\b.*\bbronze\b', 'Bronze does not rust (forms patina, not rust)'),
+        (r'\bbronze\b.*\brust\b', 'Bronze does not rust (forms patina, not rust)'),
+        # Physics violations
+        (r'\bfloating\b.*\bcontaminat', 'Contamination must obey gravity'),
+        (r'\bupward\b.*\bdrip', 'Drips cannot flow upward (gravity violation)'),
+    ]
+    
+    # Confusion patterns (ambiguous language)
+    CONFUSION_PATTERNS = [
+        (r'\b(maybe|possibly|perhaps|might)\b', 'Use definitive language'),
+        (r'\b(some kind of|sort of|kind of)\b', 'Be specific'),
+        (r'\b(etc\.|and so on|and more)\b', 'List all items explicitly'),
+    ]
+    
+    # Quality anti-patterns
+    QUALITY_ANTIPATTERNS = [
+        (r'\b(very|really|extremely|highly)\b', 'Remove intensifiers (redundant)'),
+        (r'\b(somewhat|relatively|fairly)\b', 'Remove hedging language (be specific)'),
+        (r'(!!|!!!)', 'Remove excessive punctuation'),
+    ]
     
     # Contradiction patterns - actual contradictions, not negations
     # These should only trigger when BOTH positive assertions exist
@@ -541,6 +575,12 @@ class PromptStageValidator:
         
         # Check required content
         self._validate_required_content(prompt, material, report)
+        
+        # Check material-contamination compatibility and physics
+        self._validate_contamination_physics(prompt, report)
+        
+        # Check quality anti-patterns
+        self._validate_quality(prompt, report)
         
         # Check negative prompt
         if negative_prompt:
@@ -700,6 +740,69 @@ class PromptStageValidator:
                     suggestion="Add missing anti-text terms to negative prompt"
                 )
             )
+    
+    def _validate_contamination_physics(self, prompt: str, report: ValidationReport):
+        """
+        Check for material-contamination impossibilities and physics violations.
+        
+        Merged from ImagePromptPayloadValidator for consolidated validation.
+        """
+        prompt_lower = prompt.lower()
+        
+        # Check forbidden content (material-contamination impossibilities + physics)
+        for pattern, reason in self.FORBIDDEN_CONTENT:
+            if re.search(pattern, prompt_lower, re.IGNORECASE):
+                # Determine category based on pattern
+                if 'gravity' in reason.lower() or 'drip' in reason.lower():
+                    category = IssueCategory.PHYSICS
+                else:
+                    category = IssueCategory.CONTAMINATION
+                
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.CRITICAL,
+                        category=category,
+                        message=f"Impossible combination: {reason}",
+                        suggestion="Remove this contamination-material combination"
+                    ),
+                    FixAction(
+                        action_type='remove',
+                        severity=IssueSeverity.CRITICAL,
+                        description=f"Fix: {reason}",
+                        ai_instruction=f"Remove or fix impossible combination: {reason}",
+                        safe_to_auto_apply=False,
+                        requires_review=True
+                    )
+                )
+        
+        # Check confusion patterns (ambiguous language)
+        for pattern, suggestion in self.CONFUSION_PATTERNS:
+            matches = list(re.finditer(pattern, prompt_lower, re.IGNORECASE))
+            for match in matches[:2]:  # Limit to 2 per pattern
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.LOW,
+                        category=IssueCategory.QUALITY,
+                        message=f"Ambiguous language: \"{match.group(0)}\"",
+                        location=f"chars {match.start()}-{match.end()}",
+                        suggestion=suggestion
+                    )
+                )
+    
+    def _validate_quality(self, prompt: str, report: ValidationReport):
+        """Check for quality anti-patterns (intensifiers, hedging, punctuation)."""
+        for pattern, suggestion in self.QUALITY_ANTIPATTERNS:
+            matches = list(re.finditer(pattern, prompt, re.IGNORECASE))
+            # Only flag if more than 3 occurrences (occasional use is OK)
+            if len(matches) > 3:
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.LOW,
+                        category=IssueCategory.QUALITY,
+                        message=f"Quality pattern found {len(matches)} times: matches first pattern",
+                        suggestion=suggestion
+                    )
+                )
 
 
 class PostStageValidator:
