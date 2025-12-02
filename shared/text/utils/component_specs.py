@@ -97,7 +97,13 @@ class ComponentRegistry:
         Returns:
             Domain config dict or None if not found
         """
-        domain_config_path = Path(__file__).parent.parent.parent / 'domains' / domain / 'config.yaml'
+        # Path from shared/text/utils/ -> project root is 4 levels up
+        project_root = Path(__file__).parent.parent.parent.parent
+        domain_config_path = project_root / 'domains' / domain / 'config.yaml'
+        
+        if not domain_config_path.exists():
+            # Fallback: try relative path from cwd
+            domain_config_path = Path('domains') / domain / 'config.yaml'
         
         if not domain_config_path.exists():
             return None
@@ -225,27 +231,41 @@ class ComponentRegistry:
     
     @classmethod
     def _discover_components(cls) -> Dict[str, Dict]:
-        """Discover available components from all domain prompts directories.
+        """Discover available components from all domain text/prompts directories.
         
-        Returns component specs by scanning domains/*/prompts/*.txt files.
+        Returns component specs by scanning domains/*/text/prompts/*.txt files.
         Each .txt file defines a component type.
+        
+        Directory structure:
+        domains/
+        ├── materials/text/prompts/caption.txt, faq.txt, material_description.txt
+        ├── settings/text/prompts/settings_description.txt
+        ├── contaminants/text/prompts/caption.txt
+        └── etc.
         """
         specs = {}
-        domains_dir = Path(__file__).parent.parent.parent / 'domains'
+        # Path from shared/text/utils/ -> project root is 4 levels up
+        # shared/text/utils/component_specs.py -> shared/text/utils -> shared/text -> shared -> project_root
+        project_root = Path(__file__).parent.parent.parent.parent
+        domains_dir = project_root / 'domains'
+        
+        if not domains_dir.exists():
+            # Fallback: try relative path from cwd
+            domains_dir = Path('domains')
         
         if not domains_dir.exists():
             return specs
         
-        # Scan each domain's prompts directory
+        # Scan each domain's text/prompts directory
         for domain_dir in domains_dir.iterdir():
             if not domain_dir.is_dir():
                 continue
             
-            prompts_dir = domain_dir / 'prompts'
+            prompts_dir = domain_dir / 'text' / 'prompts'
             if not prompts_dir.exists():
                 continue
             
-            # Scan for .txt files in this domain's prompts directory
+            # Scan for .txt files in this domain's text/prompts directory
             for prompt_file in prompts_dir.glob('*.txt'):
                 component_type = prompt_file.stem  # filename without .txt
                 
@@ -254,7 +274,7 @@ class ComponentRegistry:
                     continue
                 
                 # Store relative path from workspace root
-                relative_path = f'domains/{domain_dir.name}/prompts/{prompt_file.name}'
+                relative_path = f'domains/{domain_dir.name}/text/prompts/{prompt_file.name}'
                 
                 specs[component_type] = {
                     'end_punctuation': True,  # Default, can be overridden in config

@@ -1,1 +1,0 @@
-"""Regions content type module"""

@@ -1,0 +1,93 @@
+name: Polytetrafluoroethylene (PTFE)
+slug: polytetrafluoroethylene-(ptfe)
+category: plastic
+subcategory: thermoplastic
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Polytetrafluoroethylene (PTFE) Laser Cleaning Settings
+settings_description: When laser cleaning Polytetrafluoroethylene, watch its high reflectivity right away. It reflects light much more than typical plastics, slowing the process down. Start low on power to build absorption gradually. I've seen multiple passes work best here. Unlike conductive metals, its poor heat spread risks local burns, so keep scans quick. This restores surfaces cleanly without warping.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Plastic
+  href: /materials/plastic
+- label: Thermoplastic
+  href: /materials/plastic/thermoplastic
+- label: Polytetrafluoroethylene (PTFE)
+  href: /materials/polytetrafluoroethylene-(ptfe)
+images:
+  hero:
+    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
+  micro:
+    alt: Polytetrafluoroethylene microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
+machineSettings: null
+material_challenges:
+  thermal_management:
+  - challenge: Low melting/degradation temperatures
+    severity: high
+    threshold_range: 80-300°C depending on polymer type
+    impact: Melting, warping, or chemical degradation at low temperatures
+    solutions:
+    - Use lowest power settings (20-40W)
+    - Fast scan speeds (2000-4000 mm/s)
+    - Pulse mode with extended cooling (5-10 seconds between passes)
+  - challenge: Outgassing and fume generation
+    severity: high
+    impact: Toxic fumes, smoke, and potential fire hazard
+    solutions:
+    - Mandatory fume extraction system
+    - Work in well-ventilated areas
+    - Monitor for smoke/discoloration
+  surface_characteristics:
+  - challenge: Variable absorption by color and additives
+    severity: medium
+    impact: Black plastics absorb 80-90%, white plastics absorb 10-30%
+    solutions:
+    - Adjust power based on plastic color (dark = lower, light = higher)
+    - Test on sample pieces first
+  contamination_challenges:
+  - challenge: Coating and label removal
+    severity: medium
+    impact: Adhesives melt and smear rather than ablate cleanly
+    solutions:
+    - Use UV wavelength (355nm) for better photochemical ablation
+    - Multiple gentle passes instead of single high-power pass
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-01T18:15:19.241891'

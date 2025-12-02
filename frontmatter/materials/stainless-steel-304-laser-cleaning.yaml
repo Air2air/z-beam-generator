@@ -129,16 +129,6 @@ materialProperties:
       unit: mm/year
       min: -1.1
       max: '1.1e+06'
-    thermalDestruction:
-      value: 1673
-      unit: K
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.35
-      unit: dimensionless
-      min: 0.02
-      max: '4.2e+08'
     compressiveStrength:
       value: 505
       unit: MPa
@@ -154,6 +144,56 @@ materialProperties:
       unit: Ω·m
       min: 0
       max: 2e-06
+    electricalConductivity:
+      value: '1.4e+06'
+      unit: S/m
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, 'AISI Type 304 Stainless Steel', http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2b2e5d4b4a0e9b0e5d4b4a0e9b0e, accessed October 2023
+      context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, 20°C, measured via four-point probe method
+      researched_date: '2025-11-24T19:38:43.288256'
+      needs_validation: true
+      min: 659300
+      max: '6.6e+07'
+    boilingPoint:
+      value: 2750
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb LLC, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2c0e5a4b4b0e9b0e5a4b4b0e9b0e, accessed 2024
+      context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard atmospheric pressure, estimated for alloy vaporization
+      researched_date: '2025-11-24T19:38:58.093224'
+      needs_validation: true
+      min: 929
+      max: 6454
+    meltingPoint:
+      value: 1425
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7b4f2e5d4b4a0e9d5e6f7a8b9c0d1e, accessed 2023
+      context: Commercial grade AISI 304 stainless steel (18-20% Cr, 8-10.5% Ni, ≤2% Mn, ≤0.08% C, balance Fe), standard atmospheric pressure, melting range determined by differential thermal analysis
+      researched_date: '2025-11-24T19:39:36.841435'
+      needs_validation: true
+      min: 133
+      max: 3865
+    percentage: 60.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    thermalDestruction:
+      value: 1673
+      unit: K
+      min: 256
+      max: 3859
+    laserAbsorption:
+      value: 0.35
+      unit: dimensionless
+      min: 0.02
+      max: '4.2e+08'
     laserDamageThreshold:
       value: 1.2
       unit: J/cm²
@@ -274,30 +314,6 @@ materialProperties:
       needs_validation: true
       min: 589000
       max: '9.9e+07'
-    electricalConductivity:
-      value: '1.4e+06'
-      unit: S/m
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb LLC, 'AISI Type 304 Stainless Steel', http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2b2e5d4b4a0e9b0e5d4b4a0e9b0e, accessed October 2023
-      context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), annealed condition, 20°C, measured via four-point probe method
-      researched_date: '2025-11-24T19:38:43.288256'
-      needs_validation: true
-      min: 659300
-      max: '6.6e+07'
-    boilingPoint:
-      value: 2750
-      unit: °C
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb LLC, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7e2c0e5a4b4b0e9b0e5a4b4b0e9b0e, accessed 2024
-      context: AISI 304 stainless steel (18% Cr, 8% Ni, balance Fe), standard atmospheric pressure, estimated for alloy vaporization
-      researched_date: '2025-11-24T19:38:58.093224'
-      needs_validation: true
-      min: 929
-      max: 6454
     thermalShockResistance:
       value: 132
       unit: K
@@ -334,22 +350,8 @@ materialProperties:
       needs_validation: true
       min: 0.02
       max: 0.6
-    meltingPoint:
-      value: 1425
-      unit: °C
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, AISI Type 304 Stainless Steel (UNS S30400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=cf7b4f2e5d4b4a0e9d5e6f7a8b9c0d1e, accessed 2023
-      context: Commercial grade AISI 304 stainless steel (18-20% Cr, 8-10.5% Ni, ≤2% Mn, ≤0.08% C, balance Fe), standard atmospheric pressure, melting range determined by differential thermal analysis
-      researched_date: '2025-11-24T19:39:36.841435'
-      needs_validation: true
-      min: 133
-      max: 3865
-  laser_material_interaction:
-    label: Laser-Material Interaction
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:18.908453'
+    generated_date: '2025-12-01T18:15:21.029985'

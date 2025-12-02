@@ -16,30 +16,32 @@ from typing import Dict, Optional
 # Category-based researched defaults
 CATEGORY_DEFAULTS = {
     # Metals - realistic industrial contamination
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "metals_ferrous": {
-        "contamination_uniformity": 3,  # 3 pattern types (rust, oil, industrial residue)
+        "contamination_uniformity": 4,  # 4 pattern types (rust, oil, industrial residue, dust)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "metals_non_ferrous": {
-        "contamination_uniformity": 3,  # 3 pattern types (oxidation, grime, fingerprints)
+        "contamination_uniformity": 4,  # 4 pattern types (oxidation, grime, fingerprints, dust)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "metals_reactive": {
-        "contamination_uniformity": 2,  # 2 pattern types (oxidation, residue)
+        "contamination_uniformity": 4,  # 4 pattern types per policy (Dec 1, 2025)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "metals_corrosion_resistant": {
-        "contamination_uniformity": 2,  # 2 pattern types (light oxidation, residue)
+        "contamination_uniformity": 4,  # 4 pattern types per policy (Dec 1, 2025)
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     
     # Ceramics & Glass - typically environmental contamination
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "ceramics_traditional": {
-        "contamination_uniformity": 3,  # 3 pattern types (dust, stains, mineral deposits)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
@@ -49,55 +51,59 @@ CATEGORY_DEFAULTS = {
         "guidance_scale": 15.0
     },
     "ceramics_glass": {
-        "contamination_uniformity": 2,  # 2 pattern types (fingerprints, residue)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     
     # Polymers - chemical and environmental
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "polymers_thermoplastic": {
-        "contamination_uniformity": 2,  # 2 pattern types (residue, discoloration)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "polymers_engineering": {
-        "contamination_uniformity": 2,  # 2 pattern types (oil, dust)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "polymers_elastomer": {
-        "contamination_uniformity": 3,  # 3 pattern types (dust, oils, residue)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     
     # Composites - industrial contamination
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "composites_polymer_matrix": {
-        "contamination_uniformity": 3,  # 3 pattern types (resin, dust, oils)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     
     # Wood - organic and environmental
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "wood_hardwood": {
-        "contamination_uniformity": 3,  # 3 pattern types (dust, oils, mold)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "wood_softwood": {
-        "contamination_uniformity": 3,  # 3 pattern types (dust, sap, mold)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     "wood_engineered": {
-        "contamination_uniformity": 2,  # 2 pattern types (dust, adhesive residue)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     },
     
     # Default for unknown categories
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
     "default": {
-        "contamination_uniformity": 3,  # 3 pattern types (moderate variety)
+        "contamination_uniformity": 4,  # 4 pattern types per policy
         "view_mode": "Contextual",
         "guidance_scale": 15.0
     }
@@ -113,7 +119,8 @@ class MaterialImageConfig:
     validate: bool = True  # Validation is MANDATORY - always enabled
     
     # Researched defaults (set automatically based on category)
-    contamination_uniformity: int = 3
+    # POLICY (Dec 1, 2025): Always 4 patterns (range 3-5)
+    contamination_uniformity: int = 4
     view_mode: str = "Contextual"
     guidance_scale: float = 13.0
     
@@ -134,7 +141,7 @@ class MaterialImageConfig:
             # Try learned defaults first (from SQLite - single source of truth)
             learned = self._get_learned_defaults(self.category, self.context)
             if learned:
-                self.contamination_uniformity = learned.get('contamination_uniformity') or 3
+                self.contamination_uniformity = learned.get('contamination_uniformity') or 4  # POLICY: default 4
                 self.view_mode = learned.get('view_mode') or "Contextual"
                 self.guidance_scale = learned.get('guidance_scale') or 15.0
             else:
@@ -143,7 +150,7 @@ class MaterialImageConfig:
                 # Then try again
                 learned = self._get_learned_defaults(self.category, self.context)
                 if learned:
-                    self.contamination_uniformity = learned.get('contamination_uniformity') or 3
+                    self.contamination_uniformity = learned.get('contamination_uniformity') or 4  # POLICY: default 4
                     self.view_mode = learned.get('view_mode') or "Contextual"
                     self.guidance_scale = learned.get('guidance_scale') or 15.0
                 else:

@@ -14,10 +14,9 @@ Responsibilities:
 - Error aggregation and reporting
 
 Supported Content Types:
-- material: Material frontmatter (existing)
-- region: Geographic/regulatory frontmatter (new)
-- application: Use-case specific frontmatter (new)
-- thesaurus: Terminology/knowledge frontmatter (new)
+- material: Material frontmatter
+- contaminant: Contaminant frontmatter
+- settings: Settings frontmatter
 
 Usage:
     from export.core.orchestrator import FrontmatterOrchestrator
@@ -114,30 +113,6 @@ class FrontmatterOrchestrator:
             self.logger.info("Registered contaminant generator")
         except ImportError as e:
             self.logger.debug(f"Contaminant generator not available: {e}")
-        
-        # Register region generator from root /regions folder
-        try:
-            from regions.generator import RegionFrontmatterGenerator
-            self.register_generator('region', RegionFrontmatterGenerator)
-            self.logger.info("Registered region generator")
-        except ImportError as e:
-            self.logger.debug(f"Region generator not available: {e}")
-        
-        # Register application generator from root /applications folder
-        try:
-            from applications.generator import ApplicationFrontmatterGenerator
-            self.register_generator('application', ApplicationFrontmatterGenerator)
-            self.logger.info("Registered application generator")
-        except ImportError as e:
-            self.logger.debug(f"Application generator not available: {e}")
-        
-        # Register thesaurus generator from root /thesaurus folder
-        try:
-            from thesaurus.generator import ThesaurusFrontmatterGenerator
-            self.register_generator('thesaurus', ThesaurusFrontmatterGenerator)
-            self.logger.info("Registered thesaurus generator")
-        except ImportError as e:
-            self.logger.debug(f"Thesaurus generator not available: {e}")
     
     def register_generator(self, content_type: str, generator_class: type):
         """

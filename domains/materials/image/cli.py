@@ -129,7 +129,11 @@ def main():
     if args.filename:
         output_path = output_dir / args.filename
     else:
-        slug = args.material.replace(" ", "-").replace("/", "-").lower()
+        # Generate safe slug: lowercase, replace spaces/slashes with hyphens, strip parentheses
+        slug = args.material.lower()
+        slug = slug.replace(" ", "-").replace("/", "-")
+        slug = slug.replace("(", "").replace(")", "")  # Strip parentheses
+        slug = "-".join(part for part in slug.split("-") if part)  # Remove empty parts/double hyphens
         output_path = output_dir / f"{slug}-laser-cleaning-hero.png"
     
     # Handle existing file

@@ -7,7 +7,7 @@ that need to be removed from surfaces via laser cleaning (rust, paint, oxide lay
 biological growth, etc.).
 
 This follows the equal-weight content type architecture - contaminant has the same
-status as material, region, application, and thesaurus.
+status as material and settings.
 """
 
 import logging

@@ -383,6 +383,39 @@ class MaterialImageGenerator:
         
         patterns = research_data.get('selected_patterns', [])
         rich_count = sum(1 for p in patterns if p.get('has_rich_appearance_data'))
+        
+        # === MANDATORY TERMINAL OUTPUT: All Associated Contaminants ===
+        # Per policy: List ALL contaminants selected for image generation
+        print(f"\n{'='*70}")
+        print(f"🧪 CONTAMINATION PATTERNS FOR: {material_name}")
+        print(f"{'='*70}")
+        print(f"   Context: {config.context}")
+        print(f"   Patterns requested: {config.contamination_uniformity}")
+        print(f"   Patterns selected: {len(patterns)}")
+        print(f"   Rich appearance data: {rich_count}/{len(patterns)}")
+        print(f"\n   📋 SELECTED CONTAMINATION PATTERNS:")
+        for i, p in enumerate(patterns, 1):
+            pattern_id = p.get('pattern_id', 'unknown')
+            pattern_name = p.get('pattern_name', pattern_id)
+            has_rich = '✅' if p.get('has_rich_appearance_data') else '⚠️'
+            category = p.get('category', 'contamination')
+            
+            # Get visual characteristics summary
+            visual = p.get('visual_characteristics', {})
+            colors = visual.get('color_range', 'N/A')
+            texture = visual.get('texture_detail', 'N/A')[:50] if visual.get('texture_detail') else 'N/A'
+            
+            print(f"\n   {i}. {pattern_name} ({pattern_id})")
+            print(f"      {has_rich} Rich data | Category: {category}")
+            print(f"      Colors: {colors}")
+            print(f"      Texture: {texture}...")
+            
+            # Show realism notes if available
+            realism = p.get('realism_notes', '')
+            if realism:
+                print(f"      Realism: {realism[:60]}...")
+        
+        print(f"\n{'='*70}")
         print(f"   ✅ Selected {len(patterns)} patterns (ZERO API calls)")
         print(f"   📊 {rich_count}/{len(patterns)} have rich appearance data")
         

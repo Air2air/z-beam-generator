@@ -394,21 +394,66 @@ class ContaminationPatternSelector:
         
         return True
     
+    def _material_matches_valid_list(self, material_name: str, valid_materials: List[str]) -> bool:
+        """
+        Check if a material matches any entry in valid_materials list.
+        
+        Uses intelligent matching to handle:
+        - Exact matches: "Titanium" matches "Titanium"
+        - Alloy variants: "Titanium Alloy (Ti-6Al-4V)" matches "Titanium"
+        - Base material extraction: "Stainless Steel 316" matches "Stainless Steel"
+        
+        Args:
+            material_name: Full material name (e.g., "Titanium Alloy (Ti-6Al-4V)")
+            valid_materials: List of valid materials from pattern (e.g., ["Titanium", "Steel"])
+            
+        Returns:
+            True if material matches any entry in valid_materials
+        """
+        material_lower = material_name.lower()
+        
+        for vm in valid_materials:
+            vm_lower = vm.lower()
+            
+            # Exact match
+            if material_lower == vm_lower:
+                return True
+            
+            # Check if valid_material is a base component of the material name
+            # e.g., "Titanium" is in "Titanium Alloy (Ti-6Al-4V)"
+            # e.g., "Steel" is in "Stainless Steel 316"
+            if vm_lower in material_lower:
+                return True
+            
+            # Check if material name starts with valid_material
+            # e.g., "Stainless Steel" matches "Stainless Steel 304"
+            if material_lower.startswith(vm_lower):
+                return True
+            
+            # Extract base name (before parenthesis) and check
+            # e.g., "Titanium Alloy" from "Titanium Alloy (Ti-6Al-4V)"
+            if '(' in material_lower:
+                base_name = material_lower.split('(')[0].strip()
+                if vm_lower in base_name or base_name.startswith(vm_lower):
+                    return True
+        
+        return False
+    
     def get_valid_patterns_for_material(self, material_name: str) -> List[str]:
         """
         Get list of pattern IDs that are valid for a material.
         
         Uses the valid_materials field AND chemical compatibility rules.
+        Uses intelligent matching to handle alloy variants and base materials.
         
         Args:
-            material_name: Material name (e.g., "Aluminum", "Oak")
+            material_name: Material name (e.g., "Aluminum", "Titanium Alloy (Ti-6Al-4V)")
             
         Returns:
             List of pattern IDs valid for this material
         """
         data = self._load_data()
         patterns = data.get('contamination_patterns', {})
-        material_lower = material_name.lower()
         
         valid_pattern_ids = []
         for pattern_id, pattern in patterns.items():
@@ -417,8 +462,8 @@ class ContaminationPatternSelector:
                 continue
                 
             valid_materials = pattern.get('valid_materials', [])
-            # Check if material is in valid_materials (case-insensitive)
-            if any(material_lower == vm.lower() for vm in valid_materials):
+            # Check if material matches valid_materials (intelligent matching)
+            if self._material_matches_valid_list(material_name, valid_materials):
                 valid_pattern_ids.append(pattern_id)
         
         return valid_pattern_ids
@@ -457,28 +502,34 @@ class ContaminationPatternSelector:
     def select_patterns(
         self,
         material_name: str,
-        num_patterns: int = 3,
+        num_patterns: int = 4,
         prefer_with_appearance: bool = True,
         context: str = "outdoor"
     ) -> List[Dict[str, Any]]:
         """
         Select contamination patterns for a material.
         
+        MANDATORY POLICIES (Dec 1, 2025):
+        1. Always select 3-5 contaminants (default: 4)
+        2. Context is NOT a factor in selection - select most common for material
+        3. Priority: patterns with rich appearance data > high commonality score
+        
         Selection priority:
-        1. Context-appropriate patterns (indoor vs outdoor vs industrial)
-        2. Patterns with material-specific appearance data
-        3. Category-prioritized patterns (most visually interesting)
-        4. Any valid patterns
+        1. Patterns with material-specific appearance data (rich data preferred)
+        2. Patterns with high commonality scores (most common for this material)
+        3. Any valid patterns for this material
         
         Args:
             material_name: Material name
-            num_patterns: Number of patterns to select (default: 3)
+            num_patterns: Number of patterns to select (default: 4, range: 3-5)
             prefer_with_appearance: Prioritize patterns with appearance_on_materials data
-            context: Environment context (indoor/outdoor/industrial/marine/architectural)
+            context: Environment context (passed through but NOT used for selection)
             
         Returns:
             List of pattern data dictionaries ready for image generation
         """
+        # POLICY: Enforce 3-5 pattern range
+        num_patterns = max(3, min(5, num_patterns))
         data = self._load_data()
         patterns = data.get('contamination_patterns', {})
         
@@ -516,19 +567,21 @@ class ContaminationPatternSelector:
                 logger.warning(f"No contamination patterns found for {material_name} or {category} category")
                 return []
         
-        # Use context-specific priorities if available, otherwise fall back to category defaults
-        context_priorities = self.CONTEXT_PRIORITIES.get(context, {})
-        priority_patterns = context_priorities.get(category, self.CATEGORY_PRIORITIES.get(category, []))
+        # POLICY: Context is NOT a factor - select most common patterns for this material
+        # We ignore context_priorities and context_weights entirely
+        # Priority is based solely on: rich appearance data + commonality score
         
-        # Load context weights from YAML (stored in data for learning)
-        context_settings = data.get('context_settings', {})
-        ctx_config = context_settings.get(context, {})
-        weights = {
-            'aging_weight': ctx_config.get('aging_weight', 1.0),
-            'contamination_weight': ctx_config.get('contamination_weight', 1.0)
+        # POLICY (Dec 1, 2025): Reduce weight of generic/ubiquitous patterns
+        # These are too common and less visually interesting - prefer specific contaminants
+        GENERIC_PATTERN_PENALTY = {
+            'environmental-dust': 0.3,  # Very common, reduce significantly
+            'industrial-oil': 0.4,      # Common on machinery, reduce
+            'grease-buildup': 0.4,      # Similar to oil
+            'fingerprints': 0.5,        # Too generic
+            'water-stain': 0.5,         # Too common
         }
         
-        # Score patterns for selection
+        # Score patterns for selection - MOST COMMON for material, NOT context-based
         scored_patterns = []
         for pattern_id in valid_ids:
             pattern = patterns.get(pattern_id, {})
@@ -540,36 +593,85 @@ class ContaminationPatternSelector:
             
             score = 0
             
-            # Bonus for having material-specific appearance data
+            # Apply per-pattern commonality_score from Contaminants.yaml
+            # This represents how common this contamination is for this material type
+            # Higher score = more commonly found on this material
+            commonality_score = pattern.get('commonality_score', 50)  # Default: moderate commonality
+            score += commonality_score
+            
+            # Strong bonus for having material-specific appearance data (rich data)
             if prefer_with_appearance:
                 appearance = self._get_appearance(pattern, material_name)
-                if appearance and 'color_variations' in appearance:
-                    score += 100  # Strong preference for rich data
+                if appearance:
+                    if 'color_variations' in appearance:
+                        score += 200  # Very strong preference for rich Format B data
+                    else:
+                        score += 100  # Good preference for Format A data
             
-            # Bonus for being in context/category priorities
-            if pattern_id in priority_patterns:
-                priority_rank = len(priority_patterns) - priority_patterns.index(pattern_id)
-                score += priority_rank * 10
+            # Bonus for patterns that explicitly list this material (not just ALL)
+            valid_materials = pattern.get('valid_materials', [])
+            if 'ALL' not in valid_materials:
+                # Material is explicitly listed = more specific/common for this material
+                score += 50
             
-            # Apply context-based weighting for aging vs contamination
-            pattern_category = pattern.get('category', 'contamination')
-            if pattern_category == 'aging':
-                score *= weights['aging_weight']
-            else:
-                score *= weights['contamination_weight']
+            # Apply per-pattern priority_weight if specified
+            pattern_weight = pattern.get('priority_weight', 1.0)
+            score *= pattern_weight
             
-            scored_patterns.append((score, pattern_id, pattern))
+            # POLICY: Apply penalty to generic/ubiquitous patterns
+            generic_penalty = GENERIC_PATTERN_PENALTY.get(pattern_id, 1.0)
+            if generic_penalty < 1.0:
+                logger.debug(f"📉 Applying generic penalty {generic_penalty} to {pattern_id}")
+            score *= generic_penalty
+            
+            scored_patterns.append((score, pattern_id, pattern, pattern_weight))
         
         # Sort by score (highest first) and select top N
         scored_patterns.sort(reverse=True, key=lambda x: x[0])
         selected = scored_patterns[:num_patterns]
         
+        # MANDATORY TERMINAL OUTPUT: Log ALL evaluated patterns with names and weights
+        # POLICY: One line per contaminant showing NAME and WEIGHT
+        # This is required by policy - see copilot-instructions.md "Contaminant Appearance Data Policy"
+        print(f"\n{'='*70}")
+        print(f"🧪 CONTAMINATION PATTERNS FOR: {material_name}")
+        print(f"{'='*70}")
+        print(f"   Context: {context}")
+        print(f"   Patterns requested: {num_patterns}")
+        print(f"   Patterns selected: {len(selected)}")
+        rich_count = sum(1 for _, _, p, _ in selected if self._get_appearance(p, material_name))
+        print(f"   Rich appearance data: {rich_count}/{len(selected)}")
+        print(f"\n   📋 SELECTED CONTAMINATION PATTERNS:\n")
+        for i, (score, pattern_id, pattern, weight) in enumerate(selected, 1):
+            pattern_name = pattern.get('name', pattern_id)
+            has_rich = "✅ Rich data" if self._get_appearance(pattern, material_name) else "⚠️ Base data"
+            cat = pattern.get('category', 'contamination')
+            
+            # Get appearance info for display
+            appearance = self._get_appearance(pattern, material_name)
+            colors = "N/A"
+            texture = "N/A"
+            if appearance:
+                colors = self._extract_colors_from_text(str(appearance.get('color_variations', appearance.get('appearance', ''))))
+                texture = self._extract_texture_from_text(str(appearance.get('texture_details', appearance.get('appearance', ''))))[:50]
+            
+            print(f"   {i}. {pattern_name} ({pattern_id})")
+            print(f"      {has_rich} | Category: {cat}")
+            print(f"      Colors: {colors}")
+            print(f"      Texture: {texture}...")
+            realism = pattern.get('realism_notes', '')
+            if realism:
+                print(f"      Realism: {realism[:60]}...")
+            print()
+        print(f"{'='*70}\n")
+        
         # Build result dictionaries with relevance scores
         results = []
-        for score, pattern_id, pattern in selected:
+        for score, pattern_id, pattern, weight in selected:
             result = self._build_pattern_result(pattern_id, pattern, material_name)
             if result:
                 result['relevance_score'] = score  # Add score for learning
+                result['priority_weight'] = weight  # Include weight in result
                 results.append(result)
         
         logger.info(f"📋 Selected {len(results)} patterns for {material_name}: {[r['pattern_id'] for r in results]}")
@@ -858,25 +960,28 @@ class ContaminationPatternSelector:
     def get_patterns_for_image_gen(
         self,
         material_name: str,
-        num_patterns: int = 3,
+        num_patterns: int = 4,
         context: str = "outdoor"
     ) -> Dict[str, Any]:
         """
         Get complete contamination data for image generation.
         
-        Returns a dictionary compatible with the image generator pipeline.
+        MANDATORY POLICIES (Dec 1, 2025):
+        - Always returns 3-5 contamination patterns (default: 4)
+        - Context is passed through for logging but NOT used for selection
+        - Patterns selected by commonality for material, NOT context
         
         Args:
             material_name: Material name
-            num_patterns: Number of patterns to include
-            context: Environment context (indoor/outdoor/industrial/marine/architectural)
+            num_patterns: Number of patterns (default: 4, enforced range: 3-5)
+            context: Environment context (for logging only, not selection)
             
         Returns:
             Dictionary with:
             - material: Material name
             - category: Material category
             - context: Environment context
-            - selected_patterns: List of pattern data
+            - selected_patterns: List of pattern data (3-5 most common)
             - base_appearance: Base material appearance notes
         """
         patterns = self.select_patterns(material_name, num_patterns, context=context)
@@ -927,16 +1032,20 @@ def get_selector() -> ContaminationPatternSelector:
 
 def select_contamination_patterns(
     material_name: str,
-    num_patterns: int = 3,
+    num_patterns: int = 4,
     context: str = "outdoor"
 ) -> Dict[str, Any]:
     """
     Convenience function to select contamination patterns for image generation.
     
+    MANDATORY POLICIES (Dec 1, 2025):
+    - Always returns 3-5 contamination patterns (default: 4)
+    - Context NOT used for selection - most common patterns for material
+    
     Args:
         material_name: Material name
-        num_patterns: Number of patterns
-        context: Environment context (indoor/outdoor/industrial/marine/architectural)
+        num_patterns: Number of patterns (default: 4, range: 3-5)
+        context: Environment context (for logging only)
         
     Returns:
         Dictionary ready for image generation pipeline

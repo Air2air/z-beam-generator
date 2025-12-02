@@ -127,16 +127,6 @@ materialProperties:
       unit: mm/year
       min: '6.6e-05'
       max: 21
-    thermalDestruction:
-      value: 1073
-      unit: K
-      min: 273
-      max: 2300
-    laserAbsorption:
-      value: 0.25
-      unit: dimensionless
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 90
       unit: MPa
@@ -152,6 +142,20 @@ materialProperties:
       unit: Ω·m
       min: 9.5
       max: 1e+15
+    percentage: 60.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    thermalDestruction:
+      value: 1073
+      unit: K
+      min: 273
+      max: 2300
+    laserAbsorption:
+      value: 0.25
+      unit: dimensionless
+      min: 0.06
+      max: '1.3e+06'
     laserDamageThreshold:
       value: 1.1
       unit: J/cm²
@@ -236,10 +240,8 @@ materialProperties:
       needs_validation: true
       min: 0.03
       max: 0.44
-  laser_material_interaction:
-    label: Laser-Material Interaction
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:18.659226'
+    generated_date: '2025-12-01T18:15:20.764442'

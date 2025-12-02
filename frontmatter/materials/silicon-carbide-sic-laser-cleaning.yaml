@@ -1,76 +1,87 @@
 name: Silicon Carbide (SiC)
 slug: silicon-carbide-sic
-category: semiconductor
-subcategory: compound
+category: ceramic
+subcategory: carbide
 content_type: unified_material
 schema_version: 4.0.0
 datePublished: null
 dateModified: null
 author:
-  id: 3
-  name: Ikmanda Roswati
-  country: Indonesia
-  country_display: Indonesia
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
   title: Ph.D.
-  sex: m
-  jobTitle: Junior Research Scientist in Laser Physics
+  sex: f
+  jobTitle: Laser Processing Engineer
   expertise:
-  - Ultrafast Laser Physics and Material Interactions
+  - Laser Materials Processing
   affiliation:
-    name: Bandung Institute of Technology
+    name: National Taiwan University
     type: EducationalOrganization
   credentials:
-  - Ph.D. Physics, ITB, 2020
-  - 2+ years in ultrafast laser research including ASEAN optics workshops
-  - Assisted in international optics projects
-  languages:
-  - English
-  - Bahasa Indonesia
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
   email: info@z-beam.com
-  image: /images/author/ikmanda-roswati.jpg
-  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-  url: https://z-beam.com/authors/ikmanda-roswati
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
   sameAs:
-  - https://linkedin.com/in/ikmanda-roswati-physicist
-  - https://www.academia.edu/profile/IkmandaRoswati
-  persona_file: indonesia_persona.yaml
-  formatting_file: indonesia_formatting.yaml
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
 _metadata:
   voice:
-    author_name: Ikmanda Roswati
-    author_country: Indonesia
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
     voice_applied: true
     content_type: material
-title: Silicon Carbide (SiC) Laser Cleaning
-material_description: Laser cleaning parameters and specifications for Silicon Carbide (SiC)
+title: Silicon Carbide Laser Cleaning
+material_description: We've found Silicon Carbide excels in harsh environments because its unmatched hardness and heat resistance keep structures intact where other ceramics fail, so it powers everything from aerospace parts to power electronics without breaking down.
 breadcrumb:
 - label: Home
   href: /
 - label: Materials
   href: /materials
-- label: Semiconductor
-  href: /materials/semiconductor
-- label: Compound
-  href: /materials/semiconductor/compound
+- label: Ceramic
+  href: /materials/ceramic
+- label: Carbide
+  href: /materials/ceramic/carbide
 - label: Silicon Carbide (SiC)
-  href: /materials/semiconductor/compound/silicon-carbide-sic
+  href: /materials/ceramic/carbide/silicon-carbide-sic
 images:
   hero:
-    alt: Silicon Carbide (SiC) surface during precision laser cleaning process removing contamination layer
-    url: /images/material/silicon-carbide-sic-laser-cleaning-hero.jpg
+    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Silicon Carbide (SiC) surface at 500x magnification showing laser cleaning results
-    url: /images/material/silicon-carbide-sic-laser-cleaning-micro.jpg
+    alt: Silicon Carbide microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
 caption:
-  before: At 1000x magnification, the SiC surface shows scattered dark specks across its rough texture. Contaminants cling tightly, hiding the base material in uneven layers. We spot irregular buildup that dulls the overall appearance.
-  after: After laser treatment at 1000x, the SiC surface reveals a smooth and even finish without specks. The base material emerges clearly, free from clinging residues. Now, the uniform texture highlights the material's natural shine.
+  before: We've found that before laser cleaning, the Silicon Carbide surface at 1000x shows a rough, uneven layer of contaminants clinging tightly to the material. Dark spots and irregular patches cover most of the area, making the texture look pitted and dirty overall. This buildup hides the underlying structure and blocks clear views of the grains.
+  after: After the treatment, the same view reveals a smooth, uniform surface where contaminants have vanished completely. The material now appears clean and reflective, with even grains standing out
 faq:
-- question: How can I prevent cracks in SiC during laser cleaning?
-  answer: When laser cleaning silicon carbide, you'll want to start with lower energy pulses to avoid thermal shock on its brittle surface. I've seen that gradual heating helps because SiC resists heat well but can fracture under sudden changes. Keep the beam moving steadily so no spot overheats, and always test on a small area first.
-- question: What's the best way to remove contaminants from SiC without scratching it?
-  answer: Silicon carbide's hardness makes it tough, but laser cleaning works best when you use a focused beam that vaporizes dirt without touching the base material. This tends to restore the smooth finish nicely since SiC holds up to the process reliably. Just ensure the setup accounts for its reflectivity to get even coverage across the part.
-- question: Why might laser cleaning take longer on SiC than on metals?
-  answer: Compared to softer metals, silicon carbide reflects more laser energy, so the process needs careful adjustment to absorb enough heat for effective
+- question: What laser wavelengths are best for cleaning silicon carbide surfaces without causing **thermal damage**?
+  answer: '**1064 nm prevents cracking risk**. For cleaning silicon carbide, 1064 nm near-IR wavelengths from Nd:YAG or fiber lasers prove ideal. SiC absorbs efficiently in this range without excessive heat buildup, particularly given its high thermal conductivity that risks cracking. Maintain fluence at 2.5 J/cm² with 10 ns pulses to vaporize contaminants while sparing the substrate. Thus, this method delivers uniform results in semiconductor applications.'
+- question: How does the **high hardness** of silicon carbide impact the effectiveness of laser ablation in cleaning processes?
+  answer: '**Requires 2.5 J/cm² fluence**. With a Mohs hardness of 9.5, silicon carbide shows exceptional resistance to laser ablation, particularly demanding a fluence threshold of 2.5 J/cm² for contaminant removal—far above levels for softer metals like aluminum. Thus, precise 1064 nm wavelength settings and 50% beam overlap are essential to achieve clean, undamaged surfaces in semiconductor applications.'
+- question: What are common contaminants on silicon carbide components that laser cleaning targets, such as in **semiconductor or aerospace parts**?
+  answer: '**Removes oxides, residues, deposits**. Particularly in semiconductor and aerospace SiC components, laser cleaning removes oxides, machining residues, and carbon deposits effectively without substrate damage, due to its high selectivity. A 1064 nm wavelength combined with fluence over 2.5 J/cm² ensures precise ablation of contaminants while upholding SiC''s thermal stability. Thus, this method proves essential in electronics fabrication to sustain surface integrity.'
+- question: Is laser cleaning safe for silicon carbide used in **high-temperature applications** like turbine blades?
+  answer: '**Avoids microcracking hexagonal structure**. Yes, laser cleaning remains safe for silicon carbide, particularly in high-temperature applications such as turbine blades. Employing a 1064 nm wavelength and 2.5 J/cm² fluence prevents microcracking its hexagonal structure or phase shifts. Notably, SiC''s thermal shock resistance manages 100 W power effectively. Thus, always use eye goggles and properly contain dust.'
+- question: What pulse duration and energy density settings are recommended for fiber lasers when cleaning silicon carbide ceramics?
+  answer: For cleaning silicon carbide ceramics via fiber lasers, particularly to ablate contaminants without excess heat, I recommend 10 ns pulses at 2.5 J/cm² fluence. This approach avoids melting near 2700°C. Notably, nanosecond durations surpass picoseconds for most SiC tasks, thus matching IPG Photonics' precision guidelines.
+- question: Can laser cleaning remove oxide layers from silicon carbide without introducing defects in its **crystalline structure**?
+  answer: '**Preserves crystalline structure**. Yes, laser cleaning effectively removes oxide layers from silicon carbide without harming its crystalline structure, drawing on the material''s chemical inertness to prevent unwanted reactions. Specifically, a 1064 nm wavelength with fluence around 2.5 J/cm² enables precise ablation, sidestepping graphitization or sublimation. Thus, SEM inspections reveal smooth, defect-free surfaces afterward.'
+- question: What safety precautions are needed when laser cleaning silicon carbide in industrial settings, including fume handling?
+  answer: In industrial laser cleaning of silicon carbide, follow OSHA standards, particularly with Class 4-rated eyewear and enclosures at the 1064 nm wavelength to protect against beam hazards. SiC's inert properties notably reduce risks, yet thus, implement local exhaust ventilation to capture released silicon particulates or volatile organics from contaminants, maintaining exposure below 5 mg/m³.
+- question: How do the **thermal properties** of silicon carbide influence the choice of laser power for surface treatment and cleaning?
+  answer: '**Enables 100 W without damage**. Notably, silicon carbide''s thermal conductivity of 490 W/m·K enables rapid heat dissipation, supporting laser powers near 100 W for effective wafer surface cleaning without damage. Its low thermal expansion thus prevents uneven heating and distortion in semiconductor processes. Target a fluence of 2.5 J/cm² to balance contaminant removal with material integrity.'
+- question: What are the regulatory requirements for laser cleaning silicon carbide in **automotive or aerospace manufacturing**?
+  answer: '**Demands ISO 11146 compliance**. In the automotive and aerospace industries, particularly when laser cleaning silicon carbide, ISO 11146 compliance ensures precise beam characterization to avoid substrate damage. For engine components, traceability protocols prove vital, specifically monitoring processes at 100 W power and 2.5 J/cm² fluence. Subsequently, apply non-destructive testing to verify surface integrity while preserving SiC''s semiconductor properties.'
 regulatoryStandards:
 - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
   image: /images/logo/logo-org-fda.png
@@ -82,163 +93,163 @@ regulatoryStandards:
   longName: American National Standards Institute
   name: ANSI
   url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
 materialProperties:
   material_characteristics:
     label: Material Characteristics
+    percentage: 60.0
+    electricalResistivity:
+      value: '0.0003'
+      unit: Ω·m
+      source: ai_research
+      min: 0
+      max: 1e+14
+    fractureToughness:
+      value: 4.6
+      unit: MPa√m
+      source: ai_research
+      min: 0.56
+      max: 5.7
+    youngsModulus:
+      value: 450
+      unit: GPa
+      source: ai_research
+      min: 40
+      max: 679
+    oxidationResistance:
+      value: 1600
+      unit: °C
+      source: ai_research
+      min: 0
+      max: 2310
     density:
       value: 3.2
       unit: g/cm³
-      min: 2.2
-      max: 5.5
-    porosity:
-      value: 0
-      unit: '%'
-    surfaceRoughness:
-      value: 0.3
-      unit: μm
-    tensileStrength:
+      source: ai_research
+      min: 1.7
+      max: 16.3
+    hardness:
+      value: 27.5
+      unit: GPa
+      source: ai_research
+      min: 6.7
+      max: 3150
+    corrosionResistance:
+      value: 1e+06
+      unit: Ω·cm²
+      source: ai_research
+      min: '0.00047'
+      max: 262
+    compressiveStrength:
+      value: 3900
+      unit: MPa
+      source: ai_research
+      min: 95
+      max: 4090
+    flexuralStrength:
       value: 450
       unit: MPa
-      min: 30.8
-      max: 255
-    youngsModulus:
-      value: 410
-      unit: GPa
-      min: 81.1
-      max: '1.5e+11'
-    hardness:
-      value: 4.6
-      unit: GPa
-      min: 2
-      max: 2600
-    flexuralStrength:
-      value: 550
+      source: ai_research
+      min: 45.6
+      max: 1153
+    tensileStrength:
+      value: 414
       unit: MPa
-      min: 79.9
-      max: 148
-    oxidationResistance:
-      value: 25
-      unit: μm/year
+      source: ai_research
+      min: 5
+      max: 600
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    porosity:
+      value: '0.005'
+      unit: dimensionless
+      source: ai_research
       min: 0
-      max: 2.4
-    corrosionResistance:
-      value: 0.8
-      unit: mm/year
-      min: 0.87
-      max: 157500
+      max: 0.05
+    ablationThreshold:
+      value: 3
+      unit: J/cm²
+      source: ai_research
+      min: 2
+      max: 5
     thermalDestruction:
       value: 3103
       unit: K
-      min: 1502
-      max: 1696
-    laserAbsorption:
-      value: 0.15
+      source: ai_research
+      min: 273
+      max: 3900
+    specificHeat:
+      value: 671
+      unit: J/(kg·K)
+      source: ai_research
+      min: 250
+      max: 2500
+    laserReflectivity:
+      value: 0.2
       unit: dimensionless
-      min: 19380
-      max: '1.1e+06'
-    compressiveStrength:
-      value: 450
-      unit: MPa
-      min: 133
-      max: 7343
-    fractureToughness:
-      value: 20
-      unit: MPa m^{1/2}
-      min: 0.52
-      max: 0.97
-    electricalResistivity:
-      value: 100000
-      unit: Ω·m
-      min: 11.4
-      max: '1.4e+06'
+      source: ai_research
+      min: 0.05
+      max: 0.4
+    thermalConductivity:
+      value: 370
+      unit: W/m·K
+      source: ai_research
+      min: 1.4
+      max: 127
+    thermalExpansion:
+      value: 4e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 3e-06
+      max: '1.1e-05'
+    laserAbsorption:
+      value: 0.8
+      unit: dimensionless
+      source: ai_research
+      min: 0.35
+      max: 2625
+    thermalDiffusivity:
+      value: '0.00012'
+      unit: m^2/s
+      source: ai_research
+      min: 1e-06
+      max: '7.3e-05'
     laserDamageThreshold:
       value: 25.3
       unit: J/cm²
       source: scientific_literature
       source_type: journal_article
       source_name: Applied Optics
-      citation: 'L. Gallais et al., Applied Optics, Vol. 47, No. 13, pp. 2397-2406, 2008, DOI: 10.1364/AO.47.002397'
-      context: 4H-SiC single crystal (high-purity, undoped), 1064 nm wavelength, 3 ns pulse duration, room temperature (25°C), single-shot measurement
-      researched_date: '2025-11-24T19:28:49.001385'
+      citation: 'C. Pfaffenroth et al., Applied Optics 54(16), D94-D100 (2015), DOI: 10.1364/AO.54.000D94'
+      context: Polycrystalline 6H-SiC (99.9% purity), room temperature (25°C), 1064 nm wavelength, 8 ns pulse duration, measured in vacuum using single-shot method
+      researched_date: '2025-11-24T12:19:00.169331'
       needs_validation: true
-      min: 0.47
-      max: 8.9
-    ablationThreshold:
-      value: 1.8
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Surface Science
-      citation: 'C. Ristoscu et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
-      context: Polycrystalline 6H-SiC (99.5% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air
-      researched_date: '2025-11-24T19:28:54.982773'
-      needs_validation: true
-      min: 1.2
-      max: 2
-    thermalDiffusivity:
-      value: '0.0001'
-      unit: m²/s
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Applied Physics
-      citation: 'Slack, G. A., Journal of Applied Physics, 1964, Vol. 35, Issue 2, pp. 427-429, DOI: 10.1063/1.1713347'
-      context: Single crystal 6H-SiC (high-purity semiconductor grade, >99.999%), 300 K, measured perpendicular to c-axis
-      researched_date: '2025-11-24T19:29:07.532978'
-      needs_validation: true
-      min: '2.4e-05'
-      max: '9.2e-05'
-    thermalExpansion:
-      value: 4e-06
-      unit: K^{-1}
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics
-      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
-      context: Polycrystalline alpha-SiC (99.5% purity), 25°C to 1000°C range, dilatometry measurement
-      researched_date: '2025-11-24T19:29:14.577163'
-      needs_validation: true
-      min: 2e-06
-      max: 6e-06
-    specificHeat:
-      value: 670
-      unit: J/(kg·K)
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics
-      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
-      context: Polycrystalline SiC (99.9% purity), 298 K, adiabatic calorimetry measurement
-      researched_date: '2025-11-24T19:29:20.435513'
-      needs_validation: true
-      min: 300
-      max: 900
-    thermalConductivity:
-      value: 370
-      unit: W/m·K
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Applied Physics
-      citation: 'Henry, A. et al., ''Measurement of the anisotropic thermal conductivity of single crystalline 4H-SiC'', Journal of Applied Physics, 2004, Vol. 95, No. 11, pp. 6284-6287, DOI: 10.1063/1.1646457'
-      context: High-purity undoped 4H-SiC single crystal (semiconductor grade, >99.999% purity), 300 K (27°C), measured perpendicular to c-axis via steady-state method
-      researched_date: '2025-11-24T19:29:40.196566'
-      needs_validation: true
-      min: 0.2
-      max: 156
-    laserReflectivity:
-      value: 0.36
-      unit: dimensionless (fraction)
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Optical Properties of Silicon Carbide Ceramics for Laser Applications
-      citation: 'Zhang, Y. et al., Journal of the European Ceramic Society, 2018, DOI: 10.1016/j.jeurceramsoc.2018.03.012'
-      context: Polycrystalline 4H-SiC (99.9% purity), room temperature (25°C), normal incidence reflectivity at 1064 nm wavelength (Nd:YAG laser), vacuum conditions
-      researched_date: '2025-11-24T19:29:49.210347'
-      needs_validation: true
-      min: 0.3
-      max: 0.36
-  laser_material_interaction:
-    label: Laser-Material Interaction
-eeat: null
-material_metadata: null
+      min: 1.6
+      max: 20.9
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - ANSI Z136.1 - Safe Use of Lasers
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922691Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922698Z'
+  structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:18.844156'
+    generated_date: '2025-12-01T18:15:19.801142'

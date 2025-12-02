@@ -1,1 +1,0 @@
-"""Applications content type module"""

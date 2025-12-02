@@ -127,16 +127,6 @@ materialProperties:
       unit: mm/year
       min: -1.1
       max: '1.1e+06'
-    thermalDestruction:
-      value: 1673
-      unit: K
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.35
-      unit: dimensionless
-      min: 0.02
-      max: '4.2e+08'
     compressiveStrength:
       value: 520
       unit: MPa
@@ -152,6 +142,56 @@ materialProperties:
       unit: Ω·m
       min: 0
       max: 2e-06
+    electricalConductivity:
+      value: '1.4e+06'
+      unit: S/m
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb Materials Database, AISI Type 316 Austenitic Stainless Steel, http://www.matweb.com/search/DataSheet.aspx?MatGUID=7a5a4e3b8b4a4b0e9f0a1b2c3d4e5f6g, accessed October 2023
+      context: Annealed AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), 20°C, four-point probe method
+      researched_date: '2025-11-24T19:35:34.695460'
+      needs_validation: true
+      min: 659300
+      max: '6.6e+07'
+    boilingPoint:
+      value: 3000
+      unit: K
+      source: scientific_literature
+      source_type: textbook
+      source_name: Introduction to the Thermodynamics of Materials
+      citation: David R. Gaskell, Taylor & Francis, 6th Edition, 2017, ISBN 978-1-4398-8080-5
+      context: AISI 316 stainless steel (16-18 wt% Cr, 10-14 wt% Ni, 2-3 wt% Mo, balance Fe), at standard atmospheric pressure (1 atm), extrapolated for liquid alloy vaporization
+      researched_date: '2025-11-24T19:35:54.017903'
+      needs_validation: true
+      min: 929
+      max: 6454
+    meltingPoint:
+      value: 1390
+      unit: °C
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, AISI Type 316 (UNS S31600) Stainless Steel, http://www.matweb.com/search/DataSheet.aspx?MatGUID=daecb8a5d8b64a5a9e9c4b0b0b0b0b0b, accessed 2024
+      context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), standard atmospheric pressure, melting range from solidus to liquidus
+      researched_date: '2025-11-24T19:36:54.667468'
+      needs_validation: true
+      min: 133
+      max: 3865
+    percentage: 60.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    thermalDestruction:
+      value: 1673
+      unit: K
+      min: 256
+      max: 3859
+    laserAbsorption:
+      value: 0.35
+      unit: dimensionless
+      min: 0.02
+      max: '4.2e+08'
     laserDamageThreshold:
       value: 2.1
       unit: J/cm²
@@ -272,30 +312,6 @@ materialProperties:
       needs_validation: true
       min: 589000
       max: '9.9e+07'
-    electricalConductivity:
-      value: '1.4e+06'
-      unit: S/m
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb Materials Database, AISI Type 316 Austenitic Stainless Steel, http://www.matweb.com/search/DataSheet.aspx?MatGUID=7a5a4e3b8b4a4b0e9f0a1b2c3d4e5f6g, accessed October 2023
-      context: Annealed AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), 20°C, four-point probe method
-      researched_date: '2025-11-24T19:35:34.695460'
-      needs_validation: true
-      min: 659300
-      max: '6.6e+07'
-    boilingPoint:
-      value: 3000
-      unit: K
-      source: scientific_literature
-      source_type: textbook
-      source_name: Introduction to the Thermodynamics of Materials
-      citation: David R. Gaskell, Taylor & Francis, 6th Edition, 2017, ISBN 978-1-4398-8080-5
-      context: AISI 316 stainless steel (16-18 wt% Cr, 10-14 wt% Ni, 2-3 wt% Mo, balance Fe), at standard atmospheric pressure (1 atm), extrapolated for liquid alloy vaporization
-      researched_date: '2025-11-24T19:35:54.017903'
-      needs_validation: true
-      min: 929
-      max: 6454
     thermalShockResistance:
       value: 119
       unit: K
@@ -332,22 +348,8 @@ materialProperties:
       needs_validation: true
       min: 0.02
       max: 0.6
-    meltingPoint:
-      value: 1390
-      unit: °C
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, AISI Type 316 (UNS S31600) Stainless Steel, http://www.matweb.com/search/DataSheet.aspx?MatGUID=daecb8a5d8b64a5a9e9c4b0b0b0b0b0b, accessed 2024
-      context: AISI 316 stainless steel (16-18% Cr, 10-14% Ni, 2-3% Mo, balance Fe), standard atmospheric pressure, melting range from solidus to liquidus
-      researched_date: '2025-11-24T19:36:54.667468'
-      needs_validation: true
-      min: 133
-      max: 3865
-  laser_material_interaction:
-    label: Laser-Material Interaction
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:18.885294'
+    generated_date: '2025-12-01T18:15:21.002980'

@@ -54,7 +54,13 @@ breadcrumb:
   href: /materials/ceramic/technical
 - label: Boron Nitride
   href: /materials/ceramic/technical/boron-nitride
-images: null
+images:
+  hero:
+    alt: Boron Nitride surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/boron-nitride-laser-cleaning-hero.jpg
+  micro:
+    alt: Boron Nitride microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/boron-nitride-laser-cleaning-micro.jpg
 caption:
   before: When laser cleaning boron nitride, we've found the contaminated surface shows heavy buildup of irregular debris. Dark patches scatter across the uneven texture, trapping fine particles that dull the overall sheen. This layer hides the material's natural smoothness, making it look worn and inconsistent.
   after: After treatment, the surface reveals a uniform, glossy finish free from those clinging residues. Clean facets emerge brightly, restoring the inherent polish without any lingering spots. We've seen this brings back clarity, but watch for overexposure to avoid subtle
@@ -79,18 +85,6 @@ materialProperties:
       needs_validation: true
       min: 95
       max: 4090
-    thermalConductivity:
-      value: 29.3
-      unit: W/m·K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Boron Nitride, grade AX05 (Saint-Gobain), http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b5d5f3b0e4a4b0e8a5b0e4a4b0e8a5b, accessed 2024
-      context: Hot-pressed hexagonal boron nitride ceramic (99% purity, density ~2.0 g/cm³), 25°C, isotropic effective value via laser flash diffusivity method
-      researched_date: '2025-11-23T22:06:02.398985'
-      needs_validation: true
-      min: 1.4
-      max: 127
     fractureToughness:
       value: 3.5
       unit: MPa√m
@@ -103,18 +97,6 @@ materialProperties:
       needs_validation: true
       min: 0.56
       max: 5.7
-    thermalDiffusivity:
-      value: '1.6e-05'
-      unit: m²/s
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Boron Nitride, hot pressed (HPBN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4d0f6a3b8e4a4b0b8e4a4b0b8e4a4b0b, accessed 2024
-      context: Hot-pressed boron nitride ceramic (95% theoretical density, commercial grade), 25°C, atmospheric pressure, effective isotropic value for engineering applications
-      researched_date: '2025-11-23T22:06:29.455500'
-      needs_validation: true
-      min: 1e-06
-      max: '7.3e-05'
     electricalResistivity:
       value: 1e+12
       unit: Ω·m
@@ -139,18 +121,6 @@ materialProperties:
       needs_validation: true
       min: '0.00047'
       max: 262
-    thermalDestruction:
-      value: 3273
-      unit: K
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics
-      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
-      context: High-purity hexagonal boron nitride (99.5% purity), inert atmosphere (nitrogen), sublimation temperature measured via high-temperature effusion cell method
-      researched_date: '2025-11-23T22:07:05.074434'
-      needs_validation: true
-      min: 273
-      max: 3900
     tensileStrength:
       value: 38
       unit: MPa
@@ -175,30 +145,6 @@ materialProperties:
       needs_validation: true
       min: 0
       max: 30
-    laserDamageThreshold:
-      value: 15.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Damage Threshold of Boron Nitride Ceramics at 1064 nm
-      citation: 'Wood et al., Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412'
-      context: Hexagonal boron nitride (h-BN) ceramic, 99.5% purity, room temperature (25°C), measured with 10 ns Nd:YAG laser pulses at 1064 nm wavelength
-      researched_date: '2025-11-23T22:07:25.789831'
-      needs_validation: true
-      min: 1.6
-      max: 20.9
-    laserAbsorption:
-      value: 25000
-      unit: m^{-1}
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Optical Properties of Hexagonal Boron Nitride in the Near-Infrared Region
-      citation: 'Tanaka, T. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
-      context: Hexagonal boron nitride (h-BN, 99.5% purity), room temperature (25°C), measured at 1064 nm wavelength using spectroscopic ellipsometry
-      researched_date: '2025-11-23T22:07:33.747015'
-      needs_validation: true
-      min: 0.35
-      max: 2625
     oxidationResistance:
       value: 1173
       unit: K
@@ -211,30 +157,6 @@ materialProperties:
       needs_validation: true
       min: 0
       max: 2310
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Ablation of Hexagonal Boron Nitride Films
-      citation: 'A. V. Kabashin et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
-      context: Hexagonal boron nitride (h-BN) thin films (99.5% purity), room temperature (25°C), KrF excimer laser (248 nm, 25 ns pulse duration), measured under vacuum conditions
-      researched_date: '2025-11-23T22:07:47.057906'
-      needs_validation: true
-      min: 0.57
-      max: 4
-    thermalExpansion:
-      value: 2e-06
-      unit: K^{-1}
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb - The Online Materials Information Resource
-      citation: MatWeb Materials Database, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5d5e3b0a4a4b0e9f0a4b5d5e3b0a4a, accessed 2023
-      context: Hot-pressed polycrystalline hexagonal boron nitride (h-BN, >99% purity), 25-800°C, measured by dilatometry
-      researched_date: '2025-11-23T22:07:55.750786'
-      needs_validation: true
-      min: 3e-06
-      max: '1.1e-05'
     youngsModulus:
       value: 70
       unit: GPa
@@ -271,6 +193,106 @@ materialProperties:
       needs_validation: true
       min: 1.7
       max: 16.3
+    hardness:
+      value: 48
+      unit: GPa
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: Lide, D.R. (Editor-in-Chief), CRC Press, 104th Edition, 2023, ISBN 978-1-138-56163-2
+      context: Cubic boron nitride (c-BN, synthetic polycrystalline), room temperature (25°C), Vickers indentation method with 1-10 kg load
+      researched_date: '2025-11-23T22:09:08.565343'
+      needs_validation: true
+      min: 6.7
+      max: 3150
+    percentage: 60.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    thermalConductivity:
+      value: 29.3
+      unit: W/m·K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC., Boron Nitride, grade AX05 (Saint-Gobain), http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b5d5f3b0e4a4b0e8a5b0e4a4b0e8a5b, accessed 2024
+      context: Hot-pressed hexagonal boron nitride ceramic (99% purity, density ~2.0 g/cm³), 25°C, isotropic effective value via laser flash diffusivity method
+      researched_date: '2025-11-23T22:06:02.398985'
+      needs_validation: true
+      min: 1.4
+      max: 127
+    thermalDiffusivity:
+      value: '1.6e-05'
+      unit: m²/s
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb Materials Database
+      citation: MatWeb, LLC., Boron Nitride, hot pressed (HPBN), http://www.matweb.com/search/DataSheet.aspx?MatGUID=4d0f6a3b8e4a4b0b8e4a4b0b8e4a4b0b, accessed 2024
+      context: Hot-pressed boron nitride ceramic (95% theoretical density, commercial grade), 25°C, atmospheric pressure, effective isotropic value for engineering applications
+      researched_date: '2025-11-23T22:06:29.455500'
+      needs_validation: true
+      min: 1e-06
+      max: '7.3e-05'
+    thermalDestruction:
+      value: 3273
+      unit: K
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: High-purity hexagonal boron nitride (99.5% purity), inert atmosphere (nitrogen), sublimation temperature measured via high-temperature effusion cell method
+      researched_date: '2025-11-23T22:07:05.074434'
+      needs_validation: true
+      min: 273
+      max: 3900
+    laserDamageThreshold:
+      value: 15.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Damage Threshold of Boron Nitride Ceramics at 1064 nm
+      citation: 'Wood et al., Journal of Applied Physics, 2015, DOI: 10.1063/1.4926412'
+      context: Hexagonal boron nitride (h-BN) ceramic, 99.5% purity, room temperature (25°C), measured with 10 ns Nd:YAG laser pulses at 1064 nm wavelength
+      researched_date: '2025-11-23T22:07:25.789831'
+      needs_validation: true
+      min: 1.6
+      max: 20.9
+    laserAbsorption:
+      value: 25000
+      unit: m^{-1}
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Optical Properties of Hexagonal Boron Nitride in the Near-Infrared Region
+      citation: 'Tanaka, T. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+      context: Hexagonal boron nitride (h-BN, 99.5% purity), room temperature (25°C), measured at 1064 nm wavelength using spectroscopic ellipsometry
+      researched_date: '2025-11-23T22:07:33.747015'
+      needs_validation: true
+      min: 0.35
+      max: 2625
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation of Hexagonal Boron Nitride Films
+      citation: 'A. V. Kabashin et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
+      context: Hexagonal boron nitride (h-BN) thin films (99.5% purity), room temperature (25°C), KrF excimer laser (248 nm, 25 ns pulse duration), measured under vacuum conditions
+      researched_date: '2025-11-23T22:07:47.057906'
+      needs_validation: true
+      min: 0.57
+      max: 4
+    thermalExpansion:
+      value: 2e-06
+      unit: K^{-1}
+      source: scientific_literature
+      source_type: materials_database
+      source_name: MatWeb - The Online Materials Information Resource
+      citation: MatWeb Materials Database, Boron Nitride, hot pressed, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4b5d5e3b0a4a4b0e9f0a4b5d5e3b0a4a, accessed 2023
+      context: Hot-pressed polycrystalline hexagonal boron nitride (h-BN, >99% purity), 25-800°C, measured by dilatometry
+      researched_date: '2025-11-23T22:07:55.750786'
+      needs_validation: true
+      min: 3e-06
+      max: '1.1e-05'
     laserReflectivity:
       value: 0.92
       unit: ''
@@ -295,22 +317,8 @@ materialProperties:
       needs_validation: true
       min: 250
       max: 2500
-    hardness:
-      value: 48
-      unit: GPa
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics
-      citation: Lide, D.R. (Editor-in-Chief), CRC Press, 104th Edition, 2023, ISBN 978-1-138-56163-2
-      context: Cubic boron nitride (c-BN, synthetic polycrystalline), room temperature (25°C), Vickers indentation method with 1-10 kg load
-      researched_date: '2025-11-23T22:09:08.565343'
-      needs_validation: true
-      min: 6.7
-      max: 3150
-  laser_material_interaction:
-    label: Laser-Material Interaction
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:19.041478'
+    generated_date: '2025-12-01T18:15:21.165764'

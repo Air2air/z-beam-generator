@@ -995,8 +995,40 @@ All required components must be explicitly provided - no silent degradation.
 
 See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 
-### 4. **Contaminant Appearance Data Policy** 🔥 **SIMPLIFIED (Nov 29, 2025)**
+### 4. **Contaminant Appearance Data Policy** 🔥 **UPDATED (Dec 1, 2025)**
 **All contaminant visual appearance data MUST be pre-populated in `Contaminants.yaml`.**
+
+**🚨 MANDATORY: Contaminants.yaml is the ONLY Source of Truth for Image Generation**
+
+**STRICT REQUIREMENTS**:
+1. ✅ **ALL contamination patterns MUST come from Contaminants.yaml** - NO fallbacks, NO defaults
+2. ✅ **Material matching MUST use intelligent lookup** - "Titanium Alloy (Ti-6Al-4V)" matches "Titanium"
+3. ✅ **EVERY pattern used MUST have valid_materials entry** - No arbitrary pattern selection
+4. ✅ **Pattern selection MUST be logged** - Show exactly which patterns were selected and why
+5. ❌ **NO category-only fallbacks** - If a material has no patterns in valid_materials, FAIL
+
+**🚨 MANDATORY SELECTION POLICIES** (Dec 1, 2025) 🔥 **NEW**:
+1. ✅ **ALWAYS select 3-5 contaminants** - Default is 4, enforced range 3-5
+2. ✅ **Context is NOT a factor in selection** - Ignore indoor/outdoor/industrial/marine
+3. ✅ **Select most common contaminants for that material** - Based on:
+   - Patterns with rich appearance data (highest priority)
+   - Patterns explicitly listing this material (not just ALL)
+   - Commonality score (how frequently this contamination appears on this material)
+
+**Selection Priority** (Dec 1, 2025):
+```
+1. Rich appearance data (Format B with 16 fields): +200 points
+2. Simple appearance data (Format A): +100 points  
+3. Material explicitly listed (not ALL): +50 points
+4. Commonality score from Contaminants.yaml: +score points
+5. Priority weight multiplier: score × weight
+```
+
+**INTELLIGENT MATERIAL MATCHING** (Fixed Dec 1, 2025):
+- ✅ Exact match: "Titanium" matches "Titanium"
+- ✅ Base material in name: "Titanium" matches "Titanium Alloy (Ti-6Al-4V)"
+- ✅ Alloy variants: "Steel" matches "Stainless Steel 316"
+- ❌ WRONG: Only exact string matching (breaks alloy materials)
 
 **SIMPLIFIED ARCHITECTURE**:
 - ✅ **Single class: `ContaminationPatternSelector`** - ONLY source for contamination data
@@ -1004,6 +1036,51 @@ See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 - ✅ **Pattern selection by valid_materials field** - Deterministic, reproducible
 - ✅ **Priority scoring** - Prefers patterns with rich appearance data
 - ❌ **Deprecated**: CategoryContaminationResearcher, MaterialContaminationResearcher, ContaminantAppearanceLoader
+
+**VERIFICATION REQUIREMENT**:
+When generating images, the terminal MUST show:
+```
+📋 Selected 4 patterns for [Material]: ['pattern-1', 'pattern-2', 'pattern-3', 'pattern-4']
+📊 [Material] ([context]): 4 patterns selected, 4 with rich data, N aging patterns
+```
+
+Note: Pattern count should always be 3-5 (default: 4). Context is logged but NOT used for selection.
+
+If you see "using metal fallback" or "No direct contamination patterns", the system is NOT working correctly.
+
+**🚨 MANDATORY TERMINAL OUTPUT POLICY** (Dec 1, 2025):
+During EVERY image generation, the terminal MUST display a detailed contamination report:
+```
+======================================================================
+🧪 CONTAMINATION PATTERNS FOR: [Material Name]
+======================================================================
+   Context: [industrial/outdoor/indoor/marine]
+   Patterns requested: [N]
+   Patterns selected: [N]
+   Rich appearance data: [N]/[N]
+
+   📋 SELECTED CONTAMINATION PATTERNS:
+
+   1. [Pattern Name] ([pattern-id])
+      ✅ Rich data | Category: [contamination/aging]
+      Colors: [color list]
+      Texture: [texture description]...
+      Realism: [realism notes if available]...
+
+   2. [Pattern Name] ([pattern-id])
+      ...
+======================================================================
+```
+This output is MANDATORY to verify that contaminants are being properly evaluated from Contaminants.yaml.
+
+**CONTAMINANT WEIGHTING** (Dec 1, 2025):
+Contaminant weighting can be applied at two levels:
+1. **Context-level** (in `context_settings` of Contaminants.yaml):
+   - `aging_weight`: Boost/reduce aging patterns (e.g., 1.5 for outdoor)
+   - `contamination_weight`: Boost/reduce contamination patterns
+2. **Per-pattern level** (future enhancement):
+   - Add `priority_weight` field to individual patterns in Contaminants.yaml
+   - Higher weight = more likely to be selected
 
 **Only Remaining API Call**: Shape research (optional) - What object form is most common
 

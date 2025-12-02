@@ -129,16 +129,6 @@ materialProperties:
       unit: mm/year
       min: -1.1
       max: '1.1e+06'
-    thermalDestruction:
-      value: 544
-      unit: K
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.12
-      unit: dimensionless
-      min: 0.02
-      max: '4.2e+08'
     compressiveStrength:
       value: 35
       unit: MPa
@@ -154,6 +144,56 @@ materialProperties:
       unit: Ω·m
       min: 0
       max: 2e-06
+    electricalConductivity:
+      value: 770000
+      unit: S/m
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
+      context: Pure Bismuth (99.999% purity), 20°C, DC four-point probe measurement
+      researched_date: '2025-11-24T12:35:02.023737'
+      needs_validation: true
+      min: 659300
+      max: '6.6e+07'
+    boilingPoint:
+      value: 1837
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: NIST Chemistry WebBook
+      citation: NIST Chemistry WebBook, National Institute of Standards and Technology, https://webbook.nist.gov/cgi/cbook.cgi?ID=C744069&Mask=4, accessed 2023
+      context: Pure bismuth (99.999% purity, elemental form), normal boiling point at 1 bar pressure, measured under standard conditions
+      researched_date: '2025-11-24T12:35:09.567655'
+      needs_validation: true
+      min: 929
+      max: 6454
+    meltingPoint:
+      value: 545
+      unit: K
+      source: scientific_literature
+      source_type: materials_database
+      source_name: NIST Chemistry WebBook
+      citation: National Institute of Standards and Technology, NIST Chemistry WebBook, SRD 69, https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440484&Mask=2, accessed 2023
+      context: Pure bismuth (99.999% purity), standard atmospheric pressure (1 atm), equilibrium melting temperature
+      researched_date: '2025-11-24T12:35:48.821061'
+      needs_validation: true
+      min: 133
+      max: 3865
+    percentage: 60.0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    thermalDestruction:
+      value: 544
+      unit: K
+      min: 256
+      max: 3859
+    laserAbsorption:
+      value: 0.12
+      unit: dimensionless
+      min: 0.02
+      max: '4.2e+08'
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
@@ -274,30 +314,6 @@ materialProperties:
       needs_validation: true
       min: 589000
       max: '9.9e+07'
-    electricalConductivity:
-      value: 770000
-      unit: S/m
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: CRC Handbook of Chemistry and Physics
-      citation: CRC Handbook of Chemistry and Physics, 104th Ed., CRC Press, 2023, ISBN 978-1-138-56163-2
-      context: Pure Bismuth (99.999% purity), 20°C, DC four-point probe measurement
-      researched_date: '2025-11-24T12:35:02.023737'
-      needs_validation: true
-      min: 659300
-      max: '6.6e+07'
-    boilingPoint:
-      value: 1837
-      unit: K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: NIST Chemistry WebBook
-      citation: NIST Chemistry WebBook, National Institute of Standards and Technology, https://webbook.nist.gov/cgi/cbook.cgi?ID=C744069&Mask=4, accessed 2023
-      context: Pure bismuth (99.999% purity, elemental form), normal boiling point at 1 bar pressure, measured under standard conditions
-      researched_date: '2025-11-24T12:35:09.567655'
-      needs_validation: true
-      min: 929
-      max: 6454
     thermalShockResistance:
       value: 80
       unit: K
@@ -334,22 +350,8 @@ materialProperties:
       needs_validation: true
       min: 0.02
       max: 0.6
-    meltingPoint:
-      value: 545
-      unit: K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: NIST Chemistry WebBook
-      citation: National Institute of Standards and Technology, NIST Chemistry WebBook, SRD 69, https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440484&Mask=2, accessed 2023
-      context: Pure bismuth (99.999% purity), standard atmospheric pressure (1 atm), equilibrium melting temperature
-      researched_date: '2025-11-24T12:35:48.821061'
-      needs_validation: true
-      min: 133
-      max: 3865
-  laser_material_interaction:
-    label: Laser-Material Interaction
 eeat: null
 material_metadata: null
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T13:33:18.636833'
+    generated_date: '2025-12-01T18:15:20.739035'

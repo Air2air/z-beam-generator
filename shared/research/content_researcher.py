@@ -2,7 +2,7 @@
 Content Researcher
 
 Reusable AI research functionality for all content types.
-Supports applications, contaminants, thesaurus, and materials.
+Supports materials, contaminants, and settings.
 
 Author: AI Assistant
 Date: October 30, 2025
