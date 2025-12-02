@@ -67,7 +67,7 @@ Examples:
     
     # Environmental context
     parser.add_argument("--context", type=str, 
-                       choices=["indoor", "outdoor", "industrial", "marine"],
+                       choices=["indoor", "outdoor", "industrial", "marine", "laboratory"],
                        default="outdoor",
                        help="Environmental context")
     
@@ -88,6 +88,14 @@ Examples:
     parser.add_argument("--no-overwrite", action="store_true",
                        help="Don't overwrite existing image")
     
+    # Model selection
+    parser.add_argument("--use-flash", action="store_true",
+                       help="Use Gemini 2.0 Flash instead of Imagen (faster, more available)")
+    
+    # Validation options
+    parser.add_argument("--skip-validation", action="store_true",
+                       help="Skip Gemini vision validation (useful for testing)")
+    
     return parser.parse_args()
 
 
@@ -101,8 +109,11 @@ def main():
         logger.error("❌ GEMINI_API_KEY environment variable not set")
         sys.exit(1)
     
-    # Initialize pipeline
-    pipeline = ImageGenerationPipeline(gemini_api_key=gemini_api_key)
+    # Initialize pipeline (with optional Gemini Flash)
+    pipeline = ImageGenerationPipeline(
+        gemini_api_key=gemini_api_key,
+        use_flash=args.use_flash
+    )
     
     # Get category for this material
     category = pipeline.get_material_category(args.material)
@@ -170,7 +181,8 @@ def main():
         output_path=output_path,
         shape_override=args.shape,
         show_prompt=args.show_prompt,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        skip_validation=args.skip_validation
     )
     
     # Final summary

@@ -272,6 +272,7 @@ class MaterialImageConfig:
             "indoor": "Indoor environment (minimal UV/weathering, touch-zone contamination)",
             "outdoor": "Outdoor environment (UV aging, weather exposure, biological growth)",
             "industrial": "Industrial environment (heavy contamination, oils, scale, residues)",
-            "marine": "Marine environment (salt corrosion, heavy weathering, biological)"
+            "marine": "Marine environment (salt corrosion, heavy weathering, biological)",
+            "laboratory": "Laboratory environment (chemical residues, biological films, sterile process contamination)"
         }
         return descriptions.get(self.context, descriptions["outdoor"])

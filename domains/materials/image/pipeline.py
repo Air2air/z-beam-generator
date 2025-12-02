@@ -18,6 +18,7 @@ import yaml
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
 from shared.api.gemini_image_client import GeminiImageClient
+from shared.api.gemini_flash_image_client import GeminiFlashImageClient
 from shared.image.learning import create_logger
 
 logger = logging.getLogger(__name__)
@@ -183,16 +184,28 @@ class ImageGenerationPipeline:
     
     Responsibilities:
     - Research: Load material properties and contamination data
-    - Generate: Create prompt and generate image via Imagen
+    - Generate: Create prompt and generate image via Imagen or Gemini Flash
     - Validate: Check image quality via Gemini Vision
     - Learn: Log results to learning database
     """
     
-    def __init__(self, gemini_api_key: str):
-        """Initialize pipeline with API key."""
+    def __init__(self, gemini_api_key: str, use_flash: bool = False):
+        """Initialize pipeline with API key.
+        
+        Args:
+            gemini_api_key: API key for Gemini services
+            use_flash: If True, use Gemini 2.0 Flash for generation (faster, more available)
+        """
         self.gemini_api_key = gemini_api_key
+        self.use_flash = use_flash
         self.generator = MaterialImageGenerator(gemini_api_key=gemini_api_key)
-        self.image_client = GeminiImageClient(api_key=gemini_api_key)
+        
+        # Select image generation client
+        if use_flash:
+            self.image_client = GeminiFlashImageClient()
+        else:
+            self.image_client = GeminiImageClient(api_key=gemini_api_key)
+        
         self.learning_logger = create_logger()
     
     def get_material_category(self, material: str) -> Optional[str]:
@@ -209,7 +222,8 @@ class ImageGenerationPipeline:
         output_path: Path,
         shape_override: Optional[str] = None,
         show_prompt: bool = False,
-        dry_run: bool = False
+        dry_run: bool = False,
+        skip_validation: bool = False
     ) -> GenerationResult:
         """
         Run the full image generation pipeline.
@@ -221,6 +235,7 @@ class ImageGenerationPipeline:
             shape_override: Optional shape/object override
             show_prompt: If True, display prompt before generation
             dry_run: If True, generate prompt but don't create image
+            skip_validation: If True, skip Gemini vision validation
             
         Returns:
             GenerationResult with outcome details
@@ -263,7 +278,8 @@ class ImageGenerationPipeline:
             config=config,
             prompt_package=prompt_package,
             output_path=output_path,
-            shape_override=shape_override
+            shape_override=shape_override,
+            skip_validation=skip_validation
         )
     
     def _run_early_validation(self, material: str, config: MaterialImageConfig):
@@ -347,7 +363,8 @@ class ImageGenerationPipeline:
         config: MaterialImageConfig,
         prompt_package: Dict[str, Any],
         output_path: Path,
-        shape_override: Optional[str] = None
+        shape_override: Optional[str] = None,
+        skip_validation: bool = False
     ) -> GenerationResult:
         """Generate image and run validation."""
         
@@ -372,8 +389,10 @@ class ImageGenerationPipeline:
         logger.info(f"✅ Image saved to: {output_path}")
         logger.info(f"   • Size: {file_size / 1024:.1f} KB")
         
-        # Skip validation if disabled
-        if not config.validate:
+        # Skip validation if disabled or explicitly skipped
+        if not config.validate or skip_validation:
+            if skip_validation:
+                logger.info("\n⏭️  Validation skipped (--skip-validation)")
             return GenerationResult(
                 passed=True,
                 output_path=output_path,

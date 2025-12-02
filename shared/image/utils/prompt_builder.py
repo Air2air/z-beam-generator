@@ -271,39 +271,39 @@ class SharedPromptBuilder:
         base = self._apply_replacements(base, replacements)
         prompt_parts.append(base)
         
-        # Layer 2: Realism Physics
-        physics = self._load_template(self.generation_dir / "realism_physics.txt")
-        if physics:
-            physics = self._apply_replacements(physics, replacements)
-            prompt_parts.append(physics)
+        # Layer 2: Realism Physics - DISABLED (now integrated into contamination_rules.txt)
+        # physics = self._load_template(self.generation_dir / "realism_physics.txt")
+        # if physics:
+        #     physics = self._apply_replacements(physics, replacements)
+        #     prompt_parts.append(physics)
         
-        # Layer 3: Contamination Rules
+        # Layer 3: Contamination Rules (includes REALISM section)
         contamination = self._load_template(self.generation_dir / "contamination_rules.txt")
         if contamination:
             contamination = self._apply_replacements(contamination, replacements)
             prompt_parts.append(contamination)
         
-        # Layer 4: Micro-Scale Details
-        micro_scale = self._load_template(self.generation_dir / "micro_scale_details.txt")
-        if micro_scale:
-            micro_scale = self._apply_replacements(micro_scale, replacements)
-            prompt_parts.append(micro_scale)
+        # Layer 4: Micro-Scale Details - DISABLED (REALISM now in contamination_rules.txt)
+        # micro_scale = self._load_template(self.generation_dir / "micro_scale_details.txt")
+        # if micro_scale:
+        #     micro_scale = self._apply_replacements(micro_scale, replacements)
+        #     prompt_parts.append(micro_scale)
         
         # Anti-Layer: Forbidden Patterns
         forbidden = self._load_template(self.generation_dir / "forbidden_patterns.txt")
         if forbidden:
             prompt_parts.append(f"AVOID THESE PATTERNS:\n{forbidden}")
         
-        # User Feedback Integration (core + category-specific)
-        feedback = self._load_feedback(material_category=material_category)
-        if feedback:
-            prompt_parts.append(f"CORRECTIONS:\n{feedback}")
-            logger.info("📝 Applied user feedback corrections to generation prompt")
+        # User Feedback Integration - DISABLED (now integrated into base templates)
+        # feedback = self._load_feedback(material_category=material_category)
+        # if feedback:
+        #     prompt_parts.append(f"CORRECTIONS:\n{feedback}")
+        #     logger.info("📝 Applied user feedback corrections to generation prompt")
         
-        # Category-Specific Learned Feedback
-        if learned_feedback:
-            prompt_parts.append(learned_feedback)
-            logger.info(f"🧠 Applied learned feedback from category: {material_category}")
+        # Category-Specific Learned Feedback - DISABLED (now integrated into templates)
+        # if learned_feedback:
+        #     prompt_parts.append(learned_feedback)
+        #     logger.info(f"🧠 Applied learned feedback from category: {material_category}")
         
         # Visual Weight Adjustments (user-specified intensity overrides)
         weight_instructions = self._build_visual_weight_instructions(

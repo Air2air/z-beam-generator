@@ -574,11 +574,23 @@ class ContaminationPatternSelector:
         # POLICY (Dec 1, 2025): Reduce weight of generic/ubiquitous patterns
         # These are too common and less visually interesting - prefer specific contaminants
         GENERIC_PATTERN_PENALTY = {
-            'environmental-dust': 0.3,  # Very common, reduce significantly
-            'industrial-oil': 0.4,      # Common on machinery, reduce
-            'grease-buildup': 0.4,      # Similar to oil
-            'fingerprints': 0.5,        # Too generic
-            'water-stain': 0.5,         # Too common
+            'environmental-dust': 0.2,  # Very common, reduce significantly
+            'industrial-oil': 0.25,     # Common on machinery, reduce more
+            'grease-buildup': 0.25,     # Similar to oil
+            'fingerprints': 0.3,        # Too generic
+            'water-stain': 0.4,         # Too common
+            'general-grime': 0.3,       # Too generic
+        }
+        
+        # POLICY (Dec 1, 2025): Boost aging patterns - more visually interesting
+        AGING_PATTERN_BOOST = {
+            'uv-chalking': 1.5,         # UV degradation - visual aging
+            'thermal-discoloration': 1.4,  # Heat aging
+            'oxidation': 1.3,           # Natural aging
+            'patina': 1.4,              # Attractive aging
+            'weathering': 1.3,          # Natural weathering
+            'annealing-scale': 1.3,     # Heat treatment scale
+            'surface-crazing': 1.4,     # Polymer aging cracks
         }
         
         # Score patterns for selection - MOST COMMON for material, NOT context-based
@@ -623,6 +635,12 @@ class ContaminationPatternSelector:
             if generic_penalty < 1.0:
                 logger.debug(f"📉 Applying generic penalty {generic_penalty} to {pattern_id}")
             score *= generic_penalty
+            
+            # POLICY: Apply boost to aging patterns
+            aging_boost = AGING_PATTERN_BOOST.get(pattern_id, 1.0)
+            if aging_boost > 1.0:
+                logger.debug(f"📈 Applying aging boost {aging_boost} to {pattern_id}")
+            score *= aging_boost
             
             scored_patterns.append((score, pattern_id, pattern, pattern_weight))
         
@@ -699,9 +717,23 @@ class ContaminationPatternSelector:
         # Fallback to category-level
         categories = visual.get('appearance_on_categories', {})
         material_category = self.get_material_category(material_name)
-        if material_category and material_category in categories:
-            logger.debug(f"📁 Using category-level appearance ({material_category}) for {material_name}")
-            return categories[material_category]
+        
+        # Category aliases - YAML uses 'plastic' but our system uses 'polymer'
+        CATEGORY_ALIASES = {
+            'polymer': 'plastic',
+            'alloy': 'metal',
+        }
+        
+        if material_category:
+            # Try direct match first
+            if material_category in categories:
+                logger.debug(f"📁 Using category-level appearance ({material_category}) for {material_name}")
+                return categories[material_category]
+            # Try alias
+            alias = CATEGORY_ALIASES.get(material_category)
+            if alias and alias in categories:
+                logger.debug(f"📁 Using aliased category appearance ({material_category}→{alias}) for {material_name}")
+                return categories[alias]
         
         return None
     
