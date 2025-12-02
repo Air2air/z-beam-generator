@@ -276,3 +276,15 @@ class MaterialImageConfig:
             "laboratory": "Laboratory environment (chemical residues, biological films, sterile process contamination)"
         }
         return descriptions.get(self.context, descriptions["outdoor"])
+    
+    @property
+    def context_background(self) -> str:
+        """Get visual background setting for prompt based on context."""
+        backgrounds = {
+            "indoor": "neutral indoor environment with soft diffused lighting",
+            "outdoor": "neutral environment",
+            "industrial": "industrial workshop setting with metal surfaces",
+            "marine": "neutral environment with subtle maritime atmosphere",
+            "laboratory": "clean laboratory bench with white surfaces and clinical lighting"
+        }
+        return backgrounds.get(self.context, backgrounds["outdoor"])

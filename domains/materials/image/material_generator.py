@@ -421,6 +421,9 @@ class MaterialImageGenerator:
         
         category = research_data.get('category', 'metal')
         
+        # Add context-specific background to research_data
+        research_data['context_background'] = config.context_background
+        
         # === SHAPE RESEARCH (optional API call) ===
         if shape_override:
             # User provided explicit shape override
