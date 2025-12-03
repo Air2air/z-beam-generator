@@ -7019,7 +7019,7 @@ settings:
         - Multiple gentle passes instead of single high-power pass
     settings_description: "When laser cleaning Polystyrene, watch its tendency to soften under heat—I've seen it deform quickly if you push the power too high right away. This plastic heats unevenly compared to tougher thermoplastics like acrylic, so start slow to avoid melting the surface. \n\nFirst, lower the energy input to let the laser gently lift dirt without penetrating deep. Polystyrene's lightweight nature makes it less forgiving than metals, which shrug off minor overheating, but it cleans up nicely once you control the beam. \n\nScan at a steady pace, overlapping passes lightly to build even coverage. I've found this works best when you keep the spot focused, preventing hot spots that could warp the material. Unlike denser plastics, its poor heat spread means you must pause between passes to cool down. \n\nFinish by checking for residue—Polystyrene holds onto grime stubbornly, but a second gentle run brings back its smooth finish without yellowing. Tends to shine up well for packaging\
       \ or electronics jobs."
-  Polytetrafluoroethylene:
+  Polytetrafluoroethylene (PTFE):
     machineSettings:
       powerRange:
         description: Optimal average power range for Polytetrafluoroethylene surface cleaning without thermal degradation
@@ -8880,7 +8880,7 @@ settings:
         - Oxygen-rich environment aids in organic ablation
         - Post-cleaning oxygen plasma for complete residue removal
     settings_description: When laser cleaning silicon, start with low power settings to leverage its strong thermal conductivity. This property lets heat spread quickly, unlike brittle ceramics that trap it locally. You must keep pulse durations short to avoid microcracks, since silicon's stiffness makes it prone to fracturing under sudden stress. We've found that moderate scan speeds work best, revealing contaminants without altering the surface. Adjust overlap ratios carefully to ensure even coverage, as silicon's moderate reflectivity absorbs energy steadily compared to shiny metals. This approach restores semiconductor wafers effectively for electronics use. Make sure you monitor for thermal buildup at the end, or you risk subsurface damage that compromises device performance.
-  Silicon Carbide:
+  Silicon Carbide (SiC):
     machineSettings:
       powerRange:
         description: Optimal average power for SiC surface cleaning without thermal damage
