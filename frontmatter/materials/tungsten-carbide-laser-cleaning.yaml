@@ -102,18 +102,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 3143
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3900
-    specificHeat:
-      value: 210
-      unit: J/kg·K
-      source: ai_research
-      min: 250
-      max: 2500
     youngsModulus:
       value: 650
       unit: GPa
@@ -126,24 +114,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2310
-    laserReflectivity:
-      value: 0.68
-      unit: dimensionless
-      source: ai_research
-      min: 0.05
-      max: 0.4
-    thermalConductivity:
-      value: 84
-      unit: W/m·K
-      source: ai_research
-      min: 1.4
-      max: 127
-    thermalExpansion:
-      value: '4.7e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 3e-06
-      max: '1.1e-05'
     density:
       value: 15.6
       unit: g/cm³
@@ -162,24 +132,12 @@ materialProperties:
       source: ai_research
       min: '0.00047'
       max: 262
-    laserAbsorption:
-      value: 0.37
-      unit: dimensionless
-      source: ai_research
-      min: 0.35
-      max: 2625
     compressiveStrength:
       value: 4200
       unit: MPa
       source: ai_research
       min: 95
       max: 4090
-    thermalDiffusivity:
-      value: '1.9e-05'
-      unit: m²/s
-      source: ai_research
-      min: 1e-06
-      max: '7.3e-05'
     flexuralStrength:
       value: 414
       unit: MPa
@@ -210,13 +168,67 @@ materialProperties:
       source: ai_research
       min: 0
       max: 1e+14
+    percentage: 60.0
+    laserDamageThreshold:
+      value: 3.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'A. A. Semerok et al., Journal of Applied Physics, 2001, DOI: 10.1063/1.1352678'
+      context: Polycrystalline Tungsten Carbide (WC, 99.9% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 7 ns pulse duration, measured in vacuum
+      researched_date: '2025-11-24T12:28:56.719829'
+      needs_validation: true
+      min: 1.6
+      max: 20.9
+    thermalDestruction:
+      value: 3143
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3900
+    specificHeat:
+      value: 210
+      unit: J/kg·K
+      source: ai_research
+      min: 250
+      max: 2500
+    laserReflectivity:
+      value: 0.68
+      unit: dimensionless
+      source: ai_research
+      min: 0.05
+      max: 0.4
+    thermalConductivity:
+      value: 84
+      unit: W/m·K
+      source: ai_research
+      min: 1.4
+      max: 127
+    thermalExpansion:
+      value: '4.7e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 3e-06
+      max: '1.1e-05'
+    laserAbsorption:
+      value: 0.37
+      unit: dimensionless
+      source: ai_research
+      min: 0.35
+      max: 2625
+    thermalDiffusivity:
+      value: '1.9e-05'
+      unit: m²/s
+      source: ai_research
+      min: 1e-06
+      max: '7.3e-05'
     ablationThreshold:
       value: 2.5
       unit: J/cm²
       source: ai_research
       min: 0.57
       max: 4
-    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -262,6 +274,54 @@ materialProperties:
       min: 0.1
       max: 10
       source: ai_research
+    thermalDestruction:
+      value: 3143
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3900
+    specificHeat:
+      value: 210
+      unit: J/kg·K
+      source: ai_research
+      min: 250
+      max: 2500
+    laserReflectivity:
+      value: 0.68
+      unit: dimensionless
+      source: ai_research
+      min: 0.05
+      max: 0.4
+    thermalConductivity:
+      value: 84
+      unit: W/m·K
+      source: ai_research
+      min: 1.4
+      max: 127
+    thermalExpansion:
+      value: '4.7e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 3e-06
+      max: '1.1e-05'
+    laserAbsorption:
+      value: 0.37
+      unit: dimensionless
+      source: ai_research
+      min: 0.35
+      max: 2625
+    thermalDiffusivity:
+      value: '1.9e-05'
+      unit: m²/s
+      source: ai_research
+      min: 1e-06
+      max: '7.3e-05'
+    ablationThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: ai_research
+      min: 0.57
+      max: 4
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -277,4 +337,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.459222'
+    generated_date: '2025-12-02T23:33:56.867040'

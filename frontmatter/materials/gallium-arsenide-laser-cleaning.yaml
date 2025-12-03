@@ -115,12 +115,6 @@ materialProperties:
       min: 11.4
       max: '1.4e+06'
     fractureToughness: 0.44
-    thermalDestruction:
-      value: 1511
-      unit: K
-      source: ai_research
-      min: 1502
-      max: 1696
     density:
       value: 5.3
       unit: g/cm³
@@ -133,6 +127,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2.4
+    youngsModulus:
+      value: 85.4
+      unit: GPa
+      source: ai_research
+      min: 81.1
+      max: '1.5e+11'
+    hardness:
+      value: 7.5
+      unit: GPa
+      source: ai_research
+      min: 2
+      max: 2600
+    compressiveStrength:
+      value: 1170
+      unit: MPa
+      source: ai_research
+      min: 133
+      max: 7343
+    tensileStrength:
+      value: 41
+      unit: MPa
+      source: ai_research
+      min: 30.8
+      max: 255
+    flexuralStrength:
+      value: 140
+      unit: MPa
+      source: ai_research
+      min: 79.9
+      max: 148
+    corrosionResistance:
+      value: 0.85
+      unit: dimensionless (normalized resistance scale 0-1)
+      source: ai_research
+      min: 0.87
+      max: 157500
+    laserDamageThreshold:
+      value: 10.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Physics Letters
+      citation: 'G. R. Huggett, F. W. Chambers, and R. A. House, Applied Physics Letters, 1975, Vol. 27, Issue 6, pp. 298-300, DOI: 10.1063/1.88493'
+      context: Undoped single-crystal Gallium Arsenide (99.999% purity), room temperature (25°C), 1.06 μm wavelength, 20 ns pulse duration, single-shot measurement in vacuum
+      researched_date: '2025-11-24T11:58:47.098498'
+      needs_validation: true
+      min: 0.47
+      max: 8.9
+    thermalDestruction:
+      value: 1511
+      unit: K
+      source: ai_research
+      min: 1502
+      max: 1696
     laserReflectivity:
       value: 0.3
       unit: '1'
@@ -151,18 +199,6 @@ materialProperties:
       source: ai_research
       min: 0.2
       max: 156
-    youngsModulus:
-      value: 85.4
-      unit: GPa
-      source: ai_research
-      min: 81.1
-      max: '1.5e+11'
-    hardness:
-      value: 7.5
-      unit: GPa
-      source: ai_research
-      min: 2
-      max: 2600
     specificHeat:
       value: 322
       unit: J/(kg·K)
@@ -175,36 +211,12 @@ materialProperties:
       source: ai_research
       min: 19380
       max: '1.1e+06'
-    compressiveStrength:
-      value: 1170
-      unit: MPa
-      source: ai_research
-      min: 133
-      max: 7343
-    tensileStrength:
-      value: 41
-      unit: MPa
-      source: ai_research
-      min: 30.8
-      max: 255
     thermalDiffusivity:
       value: '3.2e-05'
       unit: m²/s
       source: ai_research
       min: '2.4e-05'
       max: '9.2e-05'
-    flexuralStrength:
-      value: 140
-      unit: MPa
-      source: ai_research
-      min: 79.9
-      max: 148
-    corrosionResistance:
-      value: 0.85
-      unit: dimensionless (normalized resistance scale 0-1)
-      source: ai_research
-      min: 0.87
-      max: 157500
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -250,6 +262,60 @@ materialProperties:
       min: 0.1
       max: 50
       source: ai_research
+    thermalDestruction:
+      value: 1511
+      unit: K
+      source: ai_research
+      min: 1502
+      max: 1696
+    laserReflectivity:
+      value: 0.3
+      unit: '1'
+      source: ai_research
+      min: 0.3
+      max: 0.36
+    thermalExpansion:
+      value: '5.7e-06'
+      unit: 1/K
+      source: ai_research
+      min: 2e-06
+      max: 6e-06
+    thermalConductivity:
+      value: 55
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 156
+    specificHeat:
+      value: 322
+      unit: J/(kg·K)
+      source: ai_research
+      min: 300
+      max: 900
+    laserAbsorption:
+      value: 0.68
+      unit: dimensionless
+      source: ai_research
+      min: 19380
+      max: '1.1e+06'
+    thermalDiffusivity:
+      value: '3.2e-05'
+      unit: m²/s
+      source: ai_research
+      min: '2.4e-05'
+      max: '9.2e-05'
+    ablationThreshold:
+      value: 0.85
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'J. Bonse, J. Krüger, S. Höhm, A. Rosenfeld, ''Femtosecond laser ablation of gallium arsenide: threshold fluences and incubation effects'', Applied Surface Science, 2012, DOI: 10.1016/j.apsusc.2012.04.123'
+      context: Undoped single-crystal GaAs (purity >99.99%), room temperature (25°C), 800 nm wavelength Ti:sapphire femtosecond laser, 100 fs pulse duration, measured in air at 1 atm
+      researched_date: '2025-11-24T11:58:55.625892'
+      needs_validation: true
+      min: 1.2
+      max: 2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -265,4 +331,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.399589'
+    generated_date: '2025-12-02T23:33:53.714318'

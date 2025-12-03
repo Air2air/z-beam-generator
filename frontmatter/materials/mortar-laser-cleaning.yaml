@@ -118,18 +118,6 @@ materialProperties:
       source: ai_research
       min: 0.15
       max: 1.1
-    thermalDestruction:
-      value: 550
-      unit: °C
-      source: ai_research
-      min: 273
-      max: 2500
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 828
-      max: 1102
     youngsModulus:
       value: 22
       unit: GPa
@@ -142,24 +130,6 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
-    laserReflectivity:
-      value: 0.28
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.21
-      max: 0.33
-    thermalConductivity:
-      value: 0.72
-      unit: W/m·K
-      source: ai_research
-      min: 0.08
-      max: 2.5
-    thermalExpansion:
-      value: 11
-      unit: ×10^{-6} K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: '1.2e-05'
     density:
       value: 2160
       unit: kg/m³
@@ -178,24 +148,12 @@ materialProperties:
       source: ai_research
       min: 0.02
       max: 105
-    laserAbsorption:
-      value: 42000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.11
-      max: 126000
     compressiveStrength:
       value: 5.2
       unit: MPa
       source: ai_research
       min: 5
       max: 100
-    thermalDiffusivity:
-      value: '5.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-06
     flexuralStrength:
       value: 2.8
       unit: MPa
@@ -208,6 +166,60 @@ materialProperties:
       source: ai_research
       min: 1
       max: 15
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Cementitious Materials in Cultural Heritage Conservation
+      citation: 'Pouli, P., et al., Journal of Cultural Heritage, 2008, DOI: 10.1016/j.culher.2007.07.002'
+      context: 'Portland cement mortar (standard mix: 1:3 cement:sand ratio, aged 28 days), 20°C, 1064 nm Nd:YAG laser, measured via optical microscopy and profilometry'
+      researched_date: '2025-11-24T12:02:47.127642'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 550
+      unit: °C
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.28
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: 11
+      unit: ×10^{-6} K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 42000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '5.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -253,6 +265,60 @@ materialProperties:
       min: 0.01
       max: 10
       source: ai_research
+    thermalDestruction:
+      value: 550
+      unit: °C
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.28
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: 11
+      unit: ×10^{-6} K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 42000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '5.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Cultural Heritage
+      citation: 'A. Moropoulou, A.S. Cakmak, G. Biscontin, A. Zendri, B. Borruso, Advanced Byzantine mortar mixtures: The role of organic additions in the durability of historic structures, Journal of Cultural Heritage, 2002, DOI: 10.1016/S1296-2074(02)01177-5'
+      context: Traditional lime-based mortar (calcium hydroxide with sand aggregate, 70/30 ratio), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:02:56.452561'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -267,4 +333,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.382522'
+    generated_date: '2025-12-02T23:33:54.480323'

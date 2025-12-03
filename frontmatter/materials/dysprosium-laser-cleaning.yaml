@@ -108,12 +108,6 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    thermalDestruction:
-      value: 1685
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3520
     density:
       value: 8550
       unit: kg/m³
@@ -126,6 +120,36 @@ materialProperties:
       source: ai_research
       min: 0
       max: 149
+    youngsModulus:
+      value: 28
+      unit: GPa
+      source: ai_research
+      min: 15.8
+      max: 63.5
+    hardness:
+      value: 0.41
+      unit: GPa
+      source: ai_research
+      min: 0.38
+      max: 906
+    boilingPoint:
+      value: 2840
+      unit: K
+      source: ai_research
+      min: 1705
+      max: 3834
+    absorptivity:
+      value: 0.28
+      unit: dimensionless
+      source: ai_research
+      min: 0.25
+      max: 0.6
+    thermalDestruction:
+      value: 1685
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
     laserReflectivity:
       value: 0.93
       unit: dimensionless
@@ -144,18 +168,6 @@ materialProperties:
       source: ai_research
       min: 10.4
       max: 17.5
-    youngsModulus:
-      value: 28
-      unit: GPa
-      source: ai_research
-      min: 15.8
-      max: 63.5
-    hardness:
-      value: 0.41
-      unit: GPa
-      source: ai_research
-      min: 0.38
-      max: 906
     specificHeat:
       value: 172
       unit: J/(kg·K)
@@ -168,18 +180,6 @@ materialProperties:
       source: ai_research
       min: 0.65
       max: 2.9
-    boilingPoint:
-      value: 2840
-      unit: K
-      source: ai_research
-      min: 1705
-      max: 3834
-    absorptivity:
-      value: 0.28
-      unit: dimensionless
-      source: ai_research
-      min: 0.25
-      max: 0.6
     absorptionCoefficient:
       value: '1.2e+06'
       unit: cm^{-1}
@@ -195,6 +195,72 @@ materialProperties:
       value: 0.72
       min: 0.25
       max: 0.6
+    thermalDestruction:
+      value: 1685
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    laserReflectivity:
+      value: 0.93
+      unit: dimensionless
+      source: ai_research
+      min: 0.4
+      max: 0.94
+    thermalExpansion:
+      value: '2.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 26.2
+    thermalConductivity:
+      value: 10.7
+      unit: W/m·K
+      source: ai_research
+      min: 10.4
+      max: 17.5
+    specificHeat:
+      value: 172
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
+    ablationThreshold:
+      value: 0.82
+      unit: J/cm²
+      source: ai_research
+      min: 0.65
+      max: 2.9
+    absorptionCoefficient:
+      value: '1.2e+06'
+      unit: cm^{-1}
+      source: ai_research
+      min: 298300
+      max: '6.6e+07'
+    thermalDiffusivity:
+      value: '7.4e-06'
+      unit: m²/s
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
+      context: High-purity elemental Dysprosium (>99.9%), 298 K, polycrystalline solid, standard atmospheric pressure
+      researched_date: '2025-11-24T11:56:26.662981'
+      needs_validation: true
+      min: 7e-06
+      max: '1.9e-05'
+    laserDamageThreshold:
+      value: 0.42
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Damage Threshold of Rare-Earth Metals: Dysprosium and Its Alloys'
+      citation: 'Wood, R.M. et al., Applied Optics, Vol. 58, No. 12, 2019, DOI: 10.1364/AO.58.003212'
+      context: High-purity Dysprosium (99.99% purity), room temperature (25°C), nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, single-shot measurement
+      researched_date: '2025-11-24T12:27:01.996420'
+      needs_validation: true
+      min: 1.1
+      max: 3.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -211,4 +277,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.066066'
+    generated_date: '2025-12-02T23:33:53.432600'

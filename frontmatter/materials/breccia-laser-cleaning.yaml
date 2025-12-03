@@ -110,12 +110,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 1673
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
     density:
       value: 2710
       unit: kg/m³
@@ -128,24 +122,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.22
-      unit: ''
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalExpansion:
-      value: '8.2e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
-    thermalConductivity:
-      value: 2.3
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
     youngsModulus:
       value: 32.5
       unit: GPa
@@ -158,18 +134,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 7.3
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
-    laserAbsorption:
-      value: 4500
-      unit: cm^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 125
       unit: MPa
@@ -182,12 +146,6 @@ materialProperties:
       source: ai_research
       min: 1.4
       max: 15.7
-    thermalDiffusivity:
-      value: 1e-06
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 11.2
       unit: MPa
@@ -206,6 +164,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Geological Materials: Damage Thresholds for Sedimentary Rocks Including Breccia'
+      citation: 'Poole, A. B., et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028374'
+      context: Natural breccia stone (angular fragments of limestone and sandstone, 95% purity equivalent, no coatings), 20°C, measured using Q-switched Nd:YAG laser at 1064 nm wavelength, 10 ns pulse duration
+      researched_date: '2025-11-24T11:52:28.276919'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 1673
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    laserReflectivity:
+      value: 0.22
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalExpansion:
+      value: '8.2e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserAbsorption:
+      value: 4500
+      unit: cm^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: 1e-06
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -251,6 +263,60 @@ materialProperties:
       min: 0.1
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 1673
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    laserReflectivity:
+      value: 0.22
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalExpansion:
+      value: '8.2e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserAbsorption:
+      value: 4500
+      unit: cm^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: 1e-06
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 1.4
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds of Natural Stones for Cultural Heritage Conservation
+      citation: 'Pořízka, P. et al., Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2018.05.123'
+      context: Breccia Paesina (limestone-based breccia, 95% CaCO3 composition), 20°C, measured using 1064 nm Nd:YAG nanosecond pulsed laser, single pulse regime
+      researched_date: '2025-11-24T11:52:33.374892'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -267,4 +333,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.608562'
+    generated_date: '2025-12-02T23:33:52.941158'

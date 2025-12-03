@@ -115,12 +115,6 @@ materialProperties:
       source: ai_research
       min: 0.15
       max: 1.1
-    thermalDestruction:
-      value: 1323
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
     density:
       value: 1920
       unit: kg/m³
@@ -133,6 +127,60 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
+    youngsModulus:
+      value: 11
+      unit: GPa
+      source: ai_research
+      min: 11.4
+      max: '1.2e+10'
+    hardness:
+      value: 2.5
+      unit: Mohs
+      source: ai_research
+      min: 0.28
+      max: 36.7
+    compressiveStrength:
+      value: 20
+      unit: MPa
+      source: ai_research
+      min: 5
+      max: 100
+    tensileStrength:
+      value: 2.5
+      unit: MPa
+      source: ai_research
+      min: 1
+      max: 15
+    flexuralStrength:
+      value: 8.3
+      unit: MPa
+      source: ai_research
+      min: 0.84
+      max: 13.1
+    corrosionResistance:
+      value: '0.0005'
+      unit: mm/year
+      source: ai_research
+      min: 0.02
+      max: 105
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Brick Masonry: Damage Thresholds and Surface Effects'
+      citation: 'Moropoulou, A., et al., Journal of Cultural Heritage, 2003, DOI: 10.1016/S1296-2074(03)00045-7'
+      context: Fired clay brick (common red brick, 70% silica composition), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
+      researched_date: '2025-11-24T11:52:43.595001'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 1323
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
     laserReflectivity:
       value: 0.28
       unit: dimensionless
@@ -151,18 +199,6 @@ materialProperties:
       source: ai_research
       min: 0.08
       max: 2.5
-    youngsModulus:
-      value: 11
-      unit: GPa
-      source: ai_research
-      min: 11.4
-      max: '1.2e+10'
-    hardness:
-      value: 2.5
-      unit: Mohs
-      source: ai_research
-      min: 0.28
-      max: 36.7
     specificHeat:
       value: 880
       unit: J/(kg·K)
@@ -175,36 +211,12 @@ materialProperties:
       source: ai_research
       min: 0.11
       max: 126000
-    compressiveStrength:
-      value: 20
-      unit: MPa
-      source: ai_research
-      min: 5
-      max: 100
-    tensileStrength:
-      value: 2.5
-      unit: MPa
-      source: ai_research
-      min: 1
-      max: 15
     thermalDiffusivity:
       value: '4.3e-07'
       unit: m²/s
       source: ai_research
       min: 0
       max: 1e-06
-    flexuralStrength:
-      value: 8.3
-      unit: MPa
-      source: ai_research
-      min: 0.84
-      max: 13.1
-    corrosionResistance:
-      value: '0.0005'
-      unit: mm/year
-      source: ai_research
-      min: 0.02
-      max: 105
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -250,6 +262,60 @@ materialProperties:
       min: '0.001'
       max: 10
       source: ai_research
+    thermalDestruction:
+      value: 1323
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    laserReflectivity:
+      value: 0.28
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalExpansion:
+      value: 6e-06
+      unit: 1/K
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserAbsorption:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '4.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of soot from brick masonry: Ablation thresholds and surface effects'
+      citation: 'Sanz, M., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
+      context: Fired clay brick (common red brick, SiO2-Al2O3 based composition), room temperature (20°C), Nd:YAG laser at 1064 nm wavelength, measured under atmospheric pressure
+      researched_date: '2025-11-24T11:52:49.880552'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -264,4 +330,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.630666'
+    generated_date: '2025-12-02T23:33:52.970402'

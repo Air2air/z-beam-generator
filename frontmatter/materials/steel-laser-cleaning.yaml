@@ -131,18 +131,6 @@ materialProperties:
       unit: scale (1-10)
       min: 1
       max: 10
-    thermalDestruction:
-      value: 1773
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
     compressiveStrength:
       value: 250
       unit: MPa
@@ -161,12 +149,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2e-06
-    absorptivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
     boilingPoint:
       value: 3134
       unit: K
@@ -185,6 +167,25 @@ materialProperties:
       source: ai_research
       min: 133
       max: 3865
+    percentage: 60.0
+    thermalDestruction:
+      value: 1773
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    laserAbsorption:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    absorptivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.6
     vaporPressure:
       value: 10
       unit: Pa
@@ -203,7 +204,6 @@ materialProperties:
       source: ai_research
       min: 0.35
       max: 1
-    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
     thermalConductivity:
@@ -252,6 +252,42 @@ materialProperties:
       min: 0.1
       max: 20
     percentage: 40.0
+    thermalDestruction:
+      value: 1773
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    laserAbsorption:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    absorptivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.6
+    vaporPressure:
+      value: 10
+      unit: Pa
+      source: ai_research
+      min: 0
+      max: 106391
+    thermalDestructionPoint:
+      value: 1773
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    reflectivity:
+      value: 0.59
+      unit: ''
+      source: ai_research
+      min: 0.35
+      max: 1
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -266,4 +302,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.011652'
+    generated_date: '2025-12-02T23:33:56.406747'

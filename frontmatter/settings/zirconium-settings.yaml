@@ -56,7 +56,55 @@ images:
   micro:
     alt: Microscopic view of Zirconium surface after laser cleaning showing detailed surface structure
     url: /images/materials/zirconium-laser-cleaning-micro.png
-machineSettings: null
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 100
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 5.1
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+  dwellTime:
+    unit: μs
+    value: 100
 thermalProperties:
   thermalDiffusivity:
     value: 12.17
@@ -137,4 +185,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:48:04.064587'
+    generated_date: '2025-12-02T23:33:57.129617'

@@ -113,18 +113,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 613
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 14.9
       unit: GPa
@@ -137,24 +125,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.14
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.16
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '3.4e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 800
       unit: kg/m³
@@ -173,24 +143,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 0.82
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 51.6
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m^2/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 126
       unit: MPa
@@ -209,6 +167,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds of Hardwoods for Nd:YAG Laser Cleaning
+      citation: 'Albertano, P., et al., Journal of Cultural Heritage, 2015, DOI: 10.1016/j.culher.2014.12.005'
+      context: Dry hickory wood (Carya spp., 8% moisture content), 25°C, 1064 nm Nd:YAG pulsed laser, threshold for surface carbonization
+      researched_date: '2025-11-24T11:59:55.883371'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 613
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.14
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.16
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.4e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.82
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m^2/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -254,6 +266,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 613
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.14
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.16
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.4e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.82
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m^2/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Wood: Threshold Fluence for Different Species'
+      citation: 'Yilbas, B.S. et al., Optics and Lasers in Engineering, 2015, DOI: 10.1016/j.optlaseng.2014.10.012'
+      context: Dry hickory wood (Carya spp., density 0.82 g/cm³, moisture content <5%), room temperature (25°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
+      researched_date: '2025-11-24T12:00:00.480148'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -269,4 +335,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.604456'
+    generated_date: '2025-12-02T23:33:53.925015'

@@ -129,12 +129,6 @@ materialProperties:
       source: ai_research
       min: 0.56
       max: 5.7
-    thermalDestruction:
-      value: 2345
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3900
     density:
       value: 4
       unit: g/cm³
@@ -147,24 +141,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2310
-    laserReflectivity:
-      value: 0.07
-      unit: dimensionless
-      source: ai_research
-      min: 0.05
-      max: 0.4
-    thermalExpansion:
-      value: '8.1e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 3e-06
-      max: '1.1e-05'
-    thermalConductivity:
-      value: 25
-      unit: W/m·K
-      source: ai_research
-      min: 1.4
-      max: 127
     youngsModulus:
       value: 393
       unit: GPa
@@ -177,18 +153,6 @@ materialProperties:
       source: ai_research
       min: 6.7
       max: 3150
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 250
-      max: 2500
-    laserAbsorption:
-      value: 50
-      unit: m^{-1}
-      source: ai_research
-      min: 0.35
-      max: 2625
     compressiveStrength:
       value: 2500
       unit: MPa
@@ -201,12 +165,6 @@ materialProperties:
       source: ai_research
       min: 5
       max: 600
-    thermalDiffusivity:
-      value: '8.6e-06'
-      unit: m²/s
-      source: ai_research
-      min: 1e-06
-      max: '7.3e-05'
     flexuralStrength:
       value: 310
       unit: MPa
@@ -225,6 +183,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 30
+    laserDamageThreshold:
+      value: 14.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Optics
+      citation: 'Gallais, L., et al., ''Laser-induced damage of hafnia/alumina multilayer mirrors: measurement of absorption and correlation with a model'', Applied Optics, 2008, DOI: 10.1364/AO.47.004960'
+      context: Polycrystalline alumina (99.9% purity), room temperature (25°C), 1064 nm wavelength, 10 ns pulse duration, measured on bulk samples via raster scan method
+      researched_date: '2025-11-24T11:50:21.142652'
+      needs_validation: true
+      min: 1.6
+      max: 20.9
+    thermalDestruction:
+      value: 2345
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3900
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless
+      source: ai_research
+      min: 0.05
+      max: 0.4
+    thermalExpansion:
+      value: '8.1e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 3e-06
+      max: '1.1e-05'
+    thermalConductivity:
+      value: 25
+      unit: W/m·K
+      source: ai_research
+      min: 1.4
+      max: 127
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 250
+      max: 2500
+    laserAbsorption:
+      value: 50
+      unit: m^{-1}
+      source: ai_research
+      min: 0.35
+      max: 2625
+    thermalDiffusivity:
+      value: '8.6e-06'
+      unit: m²/s
+      source: ai_research
+      min: 1e-06
+      max: '7.3e-05'
     ablationThreshold:
       value: 2.1
       unit: J/cm²
@@ -276,6 +288,54 @@ materialProperties:
       min: '0.001'
       max: 1
       source: ai_research
+    thermalDestruction:
+      value: 2345
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3900
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless
+      source: ai_research
+      min: 0.05
+      max: 0.4
+    thermalExpansion:
+      value: '8.1e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 3e-06
+      max: '1.1e-05'
+    thermalConductivity:
+      value: 25
+      unit: W/m·K
+      source: ai_research
+      min: 1.4
+      max: 127
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 250
+      max: 2500
+    laserAbsorption:
+      value: 50
+      unit: m^{-1}
+      source: ai_research
+      min: 0.35
+      max: 2625
+    thermalDiffusivity:
+      value: '8.6e-06'
+      unit: m²/s
+      source: ai_research
+      min: 1e-06
+      max: '7.3e-05'
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.57
+      max: 4
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -292,4 +352,4 @@ material_metadata:
   - ISO 23146 - Technical Ceramics
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.353106'
+    generated_date: '2025-12-02T23:33:52.639364'

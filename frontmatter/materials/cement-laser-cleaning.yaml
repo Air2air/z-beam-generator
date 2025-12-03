@@ -120,12 +120,6 @@ materialProperties:
       source: ai_research
       min: 0.15
       max: 1.1
-    thermalDestruction:
-      value: 773
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
     density:
       value: 3150
       unit: kg/m³
@@ -138,6 +132,60 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
+    youngsModulus:
+      value: 21
+      unit: GPa
+      source: ai_research
+      min: 11.4
+      max: '1.2e+10'
+    hardness:
+      value: 0.3
+      unit: GPa
+      source: ai_research
+      min: 0.28
+      max: 36.7
+    compressiveStrength:
+      value: 42.5
+      unit: MPa
+      source: ai_research
+      min: 5
+      max: 100
+    tensileStrength:
+      value: 3.2
+      unit: MPa
+      source: ai_research
+      min: 1
+      max: 15
+    flexuralStrength:
+      value: 7.5
+      unit: MPa
+      source: ai_research
+      min: 0.84
+      max: 13.1
+    corrosionResistance:
+      value: 0.92
+      unit: dimensionless (normalized resistance index 0-1)
+      source: ai_research
+      min: 0.02
+      max: 105
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Cementitious Substrates: Damage Thresholds and Surface Morphology'
+      citation: 'Venkatesan, S. et al., Optics and Lasers in Engineering, 2018, DOI: 10.1016/j.optlaseng.2018.05.012'
+      context: Hardened Portland cement paste (OPC, water/cement ratio 0.5), 20°C, 1064 nm Nd:YAG laser, 10 ns pulse duration, measured via ablation onset under scanning electron microscopy
+      researched_date: '2025-11-24T11:53:58.631294'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
     laserReflectivity:
       value: 0.35
       unit: dimensionless
@@ -156,18 +204,6 @@ materialProperties:
       source: ai_research
       min: 0.08
       max: 2.5
-    youngsModulus:
-      value: 21
-      unit: GPa
-      source: ai_research
-      min: 11.4
-      max: '1.2e+10'
-    hardness:
-      value: 0.3
-      unit: GPa
-      source: ai_research
-      min: 0.28
-      max: 36.7
     specificHeat:
       value: 880
       unit: J/(kg·K)
@@ -180,36 +216,12 @@ materialProperties:
       source: ai_research
       min: 0.11
       max: 126000
-    compressiveStrength:
-      value: 42.5
-      unit: MPa
-      source: ai_research
-      min: 5
-      max: 100
-    tensileStrength:
-      value: 3.2
-      unit: MPa
-      source: ai_research
-      min: 1
-      max: 15
     thermalDiffusivity:
       value: '5.3e-07'
       unit: m^2/s
       source: ai_research
       min: 0
       max: 1e-06
-    flexuralStrength:
-      value: 7.5
-      unit: MPa
-      source: ai_research
-      min: 0.84
-      max: 13.1
-    corrosionResistance:
-      value: 0.92
-      unit: dimensionless (normalized resistance index 0-1)
-      source: ai_research
-      min: 0.02
-      max: 105
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -255,6 +267,60 @@ materialProperties:
       min: 0.1
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    laserReflectivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalExpansion:
+      value: '1.1e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserAbsorption:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '5.3e-07'
+      unit: m^2/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Cement-Based Historical Buildings: Ablation Thresholds and Surface Effects'
+      citation: 'Vergès-Belmin, V., et al., Studies in Conservation, 2015, DOI: 10.1179/2047058415Y.0000000007'
+      context: Portland cement mortar (standard composition with 20% lime, 80% cement), room temperature (25°C), measured using Q-switched Nd:YAG laser at 1064 nm wavelength
+      researched_date: '2025-11-24T11:54:06.181358'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -269,4 +335,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.782671'
+    generated_date: '2025-12-02T23:33:53.155944'

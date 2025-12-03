@@ -122,12 +122,6 @@ materialProperties:
       source: ai_research
       min: 0.56
       max: 2.6
-    thermalDestruction:
-      value: 719
-      unit: °C
-      source: ai_research
-      min: 638
-      max: 2426
     density:
       value: 2500
       unit: kg/m³
@@ -140,6 +134,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2177
+    youngsModulus:
+      value: 70
+      unit: GPa
+      source: ai_research
+      min: 60.8
+      max: '6.1e+10'
+    hardness:
+      value: 5.5
+      unit: GPa
+      source: ai_research
+      min: 4
+      max: 2310
+    compressiveStrength:
+      value: 1000
+      unit: MPa
+      source: ai_research
+      min: 620
+      max: 2170
+    tensileStrength:
+      value: 40
+      unit: MPa
+      source: ai_research
+      min: 7
+      max: 733
+    flexuralStrength:
+      value: 50
+      unit: MPa
+      source: ai_research
+      min: 10
+      max: 780
+    corrosionResistance:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: '4.8e-05'
+      max: 1.6
+    laserDamageThreshold:
+      value: 15
+      unit: J/cm²
+      source: scientific_literature
+      source_type: textbook
+      source_name: Handbook of Laser Technology and Applications
+      citation: Colin E. Webb and Julian D. C. Jones (Editors), Institute of Physics Publishing, 2004, ISBN 978-0-7503-0602-1
+      context: Commercial float glass (soda-lime silicate composition, ~71% SiO2, 13% Na2O, 8% CaO), room temperature (25°C), 1064 nm wavelength, 10 ns pulse duration, single-shot fluence
+      researched_date: '2025-11-24T11:58:12.283986'
+      needs_validation: true
+      min: 2.4
+      max: 15.6
+    thermalDestruction:
+      value: 719
+      unit: °C
+      source: ai_research
+      min: 638
+      max: 2426
     laserReflectivity:
       value: 0.04
       unit: dimensionless (fraction)
@@ -158,18 +206,6 @@ materialProperties:
       source: ai_research
       min: 0.77
       max: 36.7
-    youngsModulus:
-      value: 70
-      unit: GPa
-      source: ai_research
-      min: 60.8
-      max: '6.1e+10'
-    hardness:
-      value: 5.5
-      unit: GPa
-      source: ai_research
-      min: 4
-      max: 2310
     specificHeat:
       value: 837
       unit: J/(kg·K)
@@ -182,36 +218,12 @@ materialProperties:
       source: ai_research
       min: 0.01
       max: 73500
-    compressiveStrength:
-      value: 1000
-      unit: MPa
-      source: ai_research
-      min: 620
-      max: 2170
-    tensileStrength:
-      value: 40
-      unit: MPa
-      source: ai_research
-      min: 7
-      max: 733
     thermalDiffusivity:
       value: '4.7e-07'
       unit: m²/s
       source: ai_research
       min: 0
       max: 1e-05
-    flexuralStrength:
-      value: 50
-      unit: MPa
-      source: ai_research
-      min: 10
-      max: 780
-    corrosionResistance:
-      value: 0.92
-      unit: dimensionless
-      source: ai_research
-      min: '4.8e-05'
-      max: 1.6
     ablationThreshold:
       value: 4.2
       unit: J/cm²
@@ -263,6 +275,54 @@ materialProperties:
       min: '0.001'
       max: 1
       source: ai_research
+    thermalDestruction:
+      value: 719
+      unit: °C
+      source: ai_research
+      min: 638
+      max: 2426
+    laserReflectivity:
+      value: 0.04
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.03
+      max: 3.8
+    thermalExpansion:
+      value: 9e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: 9.7
+    thermalConductivity:
+      value: 1
+      unit: W/m·K
+      source: ai_research
+      min: 0.77
+      max: 36.7
+    specificHeat:
+      value: 837
+      unit: J/(kg·K)
+      source: ai_research
+      min: 120
+      max: 900
+    laserAbsorption:
+      value: 10
+      unit: m^{-1}
+      source: ai_research
+      min: 0.01
+      max: 73500
+    thermalDiffusivity:
+      value: '4.7e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-05
+    ablationThreshold:
+      value: 4.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.64
+      max: 13.1
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -278,4 +338,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.306471'
+    generated_date: '2025-12-02T23:33:53.622553'

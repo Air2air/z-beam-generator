@@ -104,18 +104,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 1629
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3520
-    specificHeat:
-      value: 182
-      unit: J/(kg·K)
-      source: ai_research
-      min: 113
-      max: 457
     youngsModulus:
       value: 55.3
       unit: GPa
@@ -128,24 +116,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 149
-    laserReflectivity:
-      value: 0.92
-      unit: ''
-      source: ai_research
-      min: 0.4
-      max: 0.94
-    thermalConductivity:
-      value: 11.5
-      unit: W/m·K
-      source: ai_research
-      min: 10.4
-      max: 17.5
-    thermalExpansion:
-      value: '1.1e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 26.2
     density:
       value: 8.2
       unit: g/cm³
@@ -158,12 +128,6 @@ materialProperties:
       source: ai_research
       min: 0.38
       max: 906
-    ablationThreshold:
-      value: 1.1
-      unit: J/cm²
-      source: ai_research
-      min: 0.65
-      max: 2.9
     absorptivity:
       value: 0.15
       unit: (dimensionless)
@@ -183,6 +147,54 @@ materialProperties:
       min: 298300
       max: '6.6e+07'
     percentage: 60.0
+    laserDamageThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Liu, Y. et al., Laser-induced damage threshold of terbium metal thin films, Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+      context: Pure terbium (99.99% purity), 25°C, 1064 nm wavelength, 8 ns pulse duration, measured under vacuum conditions
+      researched_date: '2025-11-24T12:27:37.526262'
+      needs_validation: true
+      min: 1.1
+      max: 3.3
+    thermalDestruction:
+      value: 1629
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    specificHeat:
+      value: 182
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
+    laserReflectivity:
+      value: 0.92
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 0.94
+    thermalConductivity:
+      value: 11.5
+      unit: W/m·K
+      source: ai_research
+      min: 10.4
+      max: 17.5
+    thermalExpansion:
+      value: '1.1e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 26.2
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.65
+      max: 2.9
   laser_material_interaction:
     label: Laser-Material Interaction
     absorptivity:
@@ -228,6 +240,54 @@ materialProperties:
       max: 100
       source: ai_research
     percentage: 40.0
+    thermalDestruction:
+      value: 1629
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    specificHeat:
+      value: 182
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
+    laserReflectivity:
+      value: 0.92
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 0.94
+    thermalConductivity:
+      value: 11.5
+      unit: W/m·K
+      source: ai_research
+      min: 10.4
+      max: 17.5
+    thermalExpansion:
+      value: '1.1e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 26.2
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.65
+      max: 2.9
+    thermalDiffusivity:
+      value: '7.4e-06'
+      unit: m²/s
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: Lide, D.R. (Ed.), CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, Boca Raton, FL, 2023, ISBN 978-1-138-56163-2
+      context: Pure Terbium (99.99% purity), 298 K, polycrystalline form, standard conditions
+      researched_date: '2025-11-24T12:27:49.050075'
+      needs_validation: true
+      min: 7e-06
+      max: '1.9e-05'
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -244,4 +304,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.181939'
+    generated_date: '2025-12-02T23:33:56.585340'

@@ -55,7 +55,32 @@ images:
   micro:
     alt: Soda-Lime Glass microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/materials/soda-lime-glass-laser-cleaning-micro.png
-machineSettings: null
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  scanSpeed:
+    unit: mm/s
+    value: 1150
+    min: 10
+    max: 5000
 thermalProperties:
   thermalDiffusivity:
     value: 0.48
@@ -130,4 +155,4 @@ material_challenges:
     - Avoid dragging ablated material across clean areas
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:48:03.479547'
+    generated_date: '2025-12-02T23:33:56.369748'

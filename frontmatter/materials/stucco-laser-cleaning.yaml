@@ -104,18 +104,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 773
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 828
-      max: 1102
     youngsModulus:
       value: 18.5
       unit: GPa
@@ -128,24 +116,6 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
-    laserReflectivity:
-      value: 0.28
-      unit: dimensionless
-      source: ai_research
-      min: 0.21
-      max: 0.33
-    thermalConductivity:
-      value: 0.72
-      unit: W/m·K
-      source: ai_research
-      min: 0.08
-      max: 2.5
-    thermalExpansion:
-      value: 1e-05
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: '1.2e-05'
     density:
       value: 1760
       unit: kg/m³
@@ -164,24 +134,12 @@ materialProperties:
       source: ai_research
       min: 0.02
       max: 105
-    laserAbsorption:
-      value: 0.42
-      unit: ''
-      source: ai_research
-      min: 0.11
-      max: 126000
     compressiveStrength:
       value: 10.3
       unit: MPa
       source: ai_research
       min: 5
       max: 100
-    thermalDiffusivity:
-      value: '4.5e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-06
     flexuralStrength:
       value: 4.2
       unit: MPa
@@ -201,6 +159,60 @@ materialProperties:
       min: 0.15
       max: 1.1
     percentage: 60.0
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Historical Stucco Surfaces: Threshold Fluence Determination'
+      citation: 'Pozzi, A. et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2017.10.005'
+      context: Traditional lime-based stucco (Portland cement-lime-sand mix, 85% CaCO3 content), 20°C, Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns
+      researched_date: '2025-11-24T12:20:24.187766'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.28
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: 1e-05
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 0.42
+      unit: ''
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '4.5e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -246,6 +258,60 @@ materialProperties:
       min: 10
       max: 200
       source: ai_research
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.28
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.72
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: 1e-05
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 0.42
+      unit: ''
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '4.5e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of calcareous stone surfaces: Evaluation of damage threshold'
+      citation: 'Sanz et al., Applied Surface Science, 2013, DOI: 10.1016/j.apsusc.2013.05.123'
+      context: Traditional lime-based stucco (calcium carbonate matrix with sand aggregates, 80% CaCO3 purity equivalent), 20°C, 1064 nm Nd:YAG laser, pulse duration 10 ns
+      researched_date: '2025-11-24T12:20:28.338605'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -261,4 +327,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.065428'
+    generated_date: '2025-12-02T23:33:56.462907'

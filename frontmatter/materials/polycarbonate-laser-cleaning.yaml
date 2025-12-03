@@ -121,18 +121,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 2.9
-    thermalDestruction:
-      value: 460
-      unit: °C
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 1170
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
     youngsModulus:
       value: 2.3
       unit: GPa
@@ -145,24 +133,6 @@ materialProperties:
       source: ai_research
       min: 0.76
       max: 1575
-    laserReflectivity:
-      value: 0.05
-      unit: ''
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.2
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: '6.8e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
     density:
       value: 1.2
       unit: g/cm³
@@ -181,24 +151,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 105
-    laserAbsorption:
-      value: 94000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
     compressiveStrength:
       value: 86
       unit: MPa
       source: ai_research
       min: 20
       max: 200
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 83
       unit: MPa
@@ -211,6 +169,60 @@ materialProperties:
       source: ai_research
       min: 10
       max: 400
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'A. M. K. Esch, J. Ihlemann, and B. Wolff, ''UV laser ablation of polymers: polycarbonate and polyimide'', Applied Surface Science, 1993, DOI: 10.1016/0169-4332(93)90096-5'
+      context: Bisphenol A polycarbonate (commercial grade, >99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
+      researched_date: '2025-11-24T12:05:29.457464'
+      needs_validation: true
+      min: 0.71
+      max: 2.6
+    thermalDestruction:
+      value: 460
+      unit: °C
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1170
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.05
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.2
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '6.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 94000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -256,6 +268,60 @@ materialProperties:
       min: '0.001'
       max: 0.1
       source: ai_research
+    thermalDestruction:
+      value: 460
+      unit: °C
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1170
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.05
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.2
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '6.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 94000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 0.25
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'R. Srinivasan and B. Braren, Applied Surface Science, 46 (1990) 22-30, DOI: 10.1016/0169-4332(90)90004-8'
+      context: Commercial grade polycarbonate (Lexan, ~99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
+      researched_date: '2025-11-24T12:05:40.580498'
+      needs_validation: true
+      min: 0.39
+      max: 2.8
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -271,4 +337,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.724499'
+    generated_date: '2025-12-02T23:33:54.847627'

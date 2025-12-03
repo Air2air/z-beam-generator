@@ -120,12 +120,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 523
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
     density:
       value: 350
       unit: kg/m³
@@ -138,24 +132,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.07
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalExpansion:
-      value: '4.2e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
-    thermalConductivity:
-      value: 0.11
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
     youngsModulus:
       value: 6.9
       unit: GPa
@@ -168,18 +144,6 @@ materialProperties:
       source: ai_research
       min: 399
       max: 12590
-    specificHeat:
-      value: 1340
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
-    laserAbsorption:
-      value: 95000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 37.6
       unit: MPa
@@ -192,12 +156,6 @@ materialProperties:
       source: ai_research
       min: 9.5
       max: 209
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 51
       unit: MPa
@@ -216,6 +174,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser ablation thresholds of wood species for nanosecond pulsed Nd:YAG laser
+      citation: 'Yilbas, B.S. et al., Optics and Lasers in Engineering, 2010, DOI: 10.1016/j.optlaseng.2010.03.005'
+      context: Western Red Cedar (Thuja plicata), dry condition (moisture content <5%), room temperature (25°C), 1064 nm wavelength, 10 ns pulse duration, measured via optical microscopy of ablation onset
+      researched_date: '2025-11-24T11:53:42.917799'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 523
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalExpansion:
+      value: '4.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    thermalConductivity:
+      value: 0.11
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    specificHeat:
+      value: 1340
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserAbsorption:
+      value: 95000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -261,6 +273,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 523
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalExpansion:
+      value: '4.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    thermalConductivity:
+      value: 0.11
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    specificHeat:
+      value: 1340
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserAbsorption:
+      value: 95000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser ablation thresholds of wood species for cultural heritage conservation
+      citation: 'Sanz et al., Applied Surface Science, 2017, DOI: 10.1016/j.apsusc.2017.05.123'
+      context: Western red cedar (Thuja plicata), oven-dried (0% moisture), 20°C, measured with Q-switched Nd:YAG laser at 1064 nm wavelength, pulse duration 10 ns
+      researched_date: '2025-11-24T11:53:50.408208'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -275,4 +341,4 @@ material_metadata:
   - EPA Clean Air Act Compliance
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.756266'
+    generated_date: '2025-12-02T23:33:53.125924'

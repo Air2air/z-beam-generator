@@ -120,18 +120,6 @@ materialProperties:
       source: ai_research
       min: 0.52
       max: 0.97
-    thermalDestruction:
-      value: 1273
-      unit: K
-      source: ai_research
-      min: 1502
-      max: 1696
-    specificHeat:
-      value: 680
-      unit: J/(kg·K)
-      source: ai_research
-      min: 300
-      max: 900
     youngsModulus:
       value: '1.5e+11'
       unit: Pa
@@ -144,24 +132,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2.4
-    laserReflectivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.3
-      max: 0.36
-    thermalConductivity:
-      value: 10.2
-      unit: W/(m·K)
-      source: ai_research
-      min: 0.2
-      max: 156
-    thermalExpansion:
-      value: '3.6e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 2e-06
-      max: 6e-06
     density:
       value: 3.2
       unit: g/cm^3
@@ -180,24 +150,12 @@ materialProperties:
       source: ai_research
       min: 0.87
       max: 157500
-    laserAbsorption:
-      value: 25000
-      unit: m^{-1}
-      source: ai_research
-      min: 19380
-      max: '1.1e+06'
     compressiveStrength:
       value: 8500
       unit: MPa
       source: ai_research
       min: 133
       max: 7343
-    thermalDiffusivity:
-      value: '2.5e-05'
-      unit: m²/s
-      source: ai_research
-      min: '2.4e-05'
-      max: '9.2e-05'
     flexuralStrength:
       value: 280
       unit: MPa
@@ -210,6 +168,60 @@ materialProperties:
       source: ai_research
       min: 30.8
       max: 255
+    laserDamageThreshold:
+      value: 0.75
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'B. Liu et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028294'
+      context: Si_{0.7}Ge_{0.3} epitaxial layer (99.9% purity), 25°C, 10 ns pulse duration at 1064 nm wavelength, single-shot damage testing
+      researched_date: '2025-11-24T12:19:07.746685'
+      needs_validation: true
+      min: 0.47
+      max: 8.9
+    thermalDestruction:
+      value: 1273
+      unit: K
+      source: ai_research
+      min: 1502
+      max: 1696
+    specificHeat:
+      value: 680
+      unit: J/(kg·K)
+      source: ai_research
+      min: 300
+      max: 900
+    laserReflectivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.3
+      max: 0.36
+    thermalConductivity:
+      value: 10.2
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.2
+      max: 156
+    thermalExpansion:
+      value: '3.6e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 2e-06
+      max: 6e-06
+    laserAbsorption:
+      value: 25000
+      unit: m^{-1}
+      source: ai_research
+      min: 19380
+      max: '1.1e+06'
+    thermalDiffusivity:
+      value: '2.5e-05'
+      unit: m²/s
+      source: ai_research
+      min: '2.4e-05'
+      max: '9.2e-05'
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -255,6 +267,60 @@ materialProperties:
       min: 0.01
       max: 10
       source: ai_research
+    thermalDestruction:
+      value: 1273
+      unit: K
+      source: ai_research
+      min: 1502
+      max: 1696
+    specificHeat:
+      value: 680
+      unit: J/(kg·K)
+      source: ai_research
+      min: 300
+      max: 900
+    laserReflectivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.3
+      max: 0.36
+    thermalConductivity:
+      value: 10.2
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.2
+      max: 156
+    thermalExpansion:
+      value: '3.6e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 2e-06
+      max: 6e-06
+    laserAbsorption:
+      value: 25000
+      unit: m^{-1}
+      source: ai_research
+      min: 19380
+      max: '1.1e+06'
+    thermalDiffusivity:
+      value: '2.5e-05'
+      unit: m²/s
+      source: ai_research
+      min: '2.4e-05'
+      max: '9.2e-05'
+    ablationThreshold:
+      value: 0.85
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'S. J. Henley et al., Journal of Applied Physics, 91(8), 2002, DOI: 10.1063/1.1459112'
+      context: Polycrystalline Si0.75Ge0.25 (25% Ge content, 99.9% purity), room temperature (25°C), measured with 10 ns Nd:YAG laser at 532 nm wavelength
+      researched_date: '2025-11-24T12:19:15.214379'
+      needs_validation: true
+      min: 1.2
+      max: 2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -271,4 +337,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.812359'
+    generated_date: '2025-12-02T23:33:56.192536'

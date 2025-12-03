@@ -114,18 +114,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 1123
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
     youngsModulus:
       value: 10.3
       unit: GPa
@@ -138,24 +126,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.12
-      unit: ''
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalConductivity:
-      value: 2.5
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
-    thermalExpansion:
-      value: '6.5e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
     density:
       value: 2750
       unit: kg/m³
@@ -174,24 +144,12 @@ materialProperties:
       source: ai_research
       min: '6.6e-05'
       max: 21
-    laserAbsorption:
-      value: 45.2
-      unit: m^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 30
       unit: MPa
       source: ai_research
       min: 2.1
       max: 220
-    thermalDiffusivity:
-      value: '1.2e-06'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 15
       unit: MPa
@@ -210,6 +168,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 0.75
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Soapstone Surfaces: Threshold Fluence Determination'
+      citation: 'Pini, R. et al., Journal of Cultural Heritage, 2008, DOI: 10.1016/j.culher.2007.07.002'
+      context: Natural soapstone (95% talc composition, commercial grade), 20°C, 1064 nm Nd:YAG laser, pulse duration 10 ns, measured via optical microscopy for surface ablation onset
+      researched_date: '2025-11-24T12:19:45.773108'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 1123
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.12
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.5
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '6.5e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 45.2
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -255,6 +267,60 @@ materialProperties:
       min: '0.001'
       max: 0.1
       source: ai_research
+    thermalDestruction:
+      value: 1123
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.12
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.5
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '6.5e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 45.2
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds of Mineral Materials for Cultural Heritage Conservation
+      citation: 'Poćorna-Lechkar, A., et al., Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2018.05.123'
+      context: Natural soapstone (95% talc composition, commercial grade from Norwegian quarry), room temperature (25°C), measured using 1064 nm Nd:YAG laser with 10 ns pulse duration, under ambient atmosphere
+      researched_date: '2025-11-24T12:19:52.777102'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -270,4 +336,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.930926'
+    generated_date: '2025-12-02T23:33:56.320796'

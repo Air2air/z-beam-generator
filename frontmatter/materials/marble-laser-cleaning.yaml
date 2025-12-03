@@ -131,18 +131,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 825
-      unit: °C
-      source: ai_research
-      min: 273
-      max: 2300
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
     youngsModulus:
       value: 55
       unit: GPa
@@ -155,24 +143,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.38
-      unit: dimensionless
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalConductivity:
-      value: 2.8
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
-    thermalExpansion:
-      value: '6.5e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
     density:
       value: 2710
       unit: kg/m³
@@ -191,24 +161,12 @@ materialProperties:
       source: ai_research
       min: '6.6e-05'
       max: 21
-    laserAbsorption:
-      value: 5000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 100
       unit: MPa
       source: ai_research
       min: 2.1
       max: 220
-    thermalDiffusivity:
-      value: '1.2e-06'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 11
       unit: MPa
@@ -227,6 +185,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of marble: Damage threshold determination'
+      citation: 'Pou, J., et al., Journal of Cultural Heritage, 2003, DOI: 10.1016/S1296-2074(03)00045-7'
+      context: Carrara marble (95% calcite composition), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured under vacuum conditions to simulate cleaning applications
+      researched_date: '2025-11-24T12:02:04.149249'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 825
+      unit: °C
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.38
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.8
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '6.5e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 5000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -272,6 +284,60 @@ materialProperties:
       min: 0.01
       max: 1
       source: ai_research
+    thermalDestruction:
+      value: 825
+      unit: °C
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.38
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.8
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '6.5e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 5000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'J. Pou, B. Arias, F. Quintero, F. Lusquiños, M. Pérez-Amor, C. Riveiro, R. Souto, J.C. Fernández, M. Boutinguiza, F. López de Silanes, Ablation thresholds of carbonated stones for laser cleaning, Applied Surface Science 197–198 (2002) 896–900, DOI: 10.1016/S0169-4332(02)00123-4'
+      context: Carrara marble (primarily calcite, 98% CaCO3), room temperature (25°C), 1064 nm Nd:YAG laser, single-pulse irradiation in air
+      researched_date: '2025-11-24T12:02:15.400512'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -287,4 +353,4 @@ material_metadata:
   - UNESCO Guidelines for Cultural Heritage Conservation
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.276263'
+    generated_date: '2025-12-02T23:33:54.387202'

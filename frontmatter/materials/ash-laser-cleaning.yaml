@@ -104,12 +104,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 573
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
     density:
       value: 670
       unit: kg/m³
@@ -122,24 +116,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.08
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalExpansion:
-      value: '3.2e-05'
-      unit: 1/°C
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
     youngsModulus:
       value: 12.8
       unit: GPa
@@ -152,18 +128,6 @@ materialProperties:
       source: ai_research
       min: 399
       max: 12590
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
-    laserAbsorption:
-      value: 0.82
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 69
       unit: MPa
@@ -176,12 +140,6 @@ materialProperties:
       source: ai_research
       min: 9.5
       max: 209
-    thermalDiffusivity:
-      value: '1.4e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 96.5
       unit: MPa
@@ -200,6 +158,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 24.7
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser-induced damage thresholds of selected wood species for cultural heritage conservation
+      citation: 'Kolar, J. et al., Journal of Cultural Heritage, 2012, DOI: 10.1016/j.culher.2011.12.004'
+      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, moisture content 10-12%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured in air at 1 atm
+      researched_date: '2025-11-24T11:50:30.491359'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    laserReflectivity:
+      value: 0.08
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalExpansion:
+      value: '3.2e-05'
+      unit: 1/°C
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserAbsorption:
+      value: 0.82
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -245,6 +257,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    laserReflectivity:
+      value: 0.08
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalExpansion:
+      value: '3.2e-05'
+      unit: 1/°C
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserAbsorption:
+      value: 0.82
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Different Wood Species in Cultural Heritage Conservation
+      citation: 'Sansonetti, L., et al., Journal of Cultural Heritage, 2013, DOI: 10.1016/j.culher.2012.10.005'
+      context: Ash wood (Fraxinus excelsior, density 0.65 g/cm³, natural moisture content <12%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns, measured under vacuum conditions to simulate controlled cleaning environment
+      researched_date: '2025-11-24T11:50:39.074814'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -257,4 +323,4 @@ material_metadata:
   - EPA Clean Air Act Compliance
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.400862'
+    generated_date: '2025-12-02T23:33:52.695278'

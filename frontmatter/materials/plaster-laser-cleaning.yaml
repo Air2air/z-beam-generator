@@ -115,18 +115,6 @@ materialProperties:
       source: ai_research
       min: 0.15
       max: 1.1
-    thermalDestruction:
-      value: 773
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
-    specificHeat:
-      value: 1090
-      unit: J/(kg·K)
-      source: ai_research
-      min: 828
-      max: 1102
     youngsModulus:
       value: 10.3
       unit: GPa
@@ -139,24 +127,6 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
-    laserReflectivity:
-      value: 0.42
-      unit: dimensionless
-      source: ai_research
-      min: 0.21
-      max: 0.33
-    thermalConductivity:
-      value: 0.25
-      unit: W/(m·K)
-      source: ai_research
-      min: 0.08
-      max: 2.5
-    thermalExpansion:
-      value: '1.4e-05'
-      unit: /K
-      source: ai_research
-      min: 6e-06
-      max: '1.2e-05'
     density:
       value: 800
       unit: kg/m³
@@ -175,24 +145,12 @@ materialProperties:
       source: ai_research
       min: 0.02
       max: 105
-    laserAbsorption:
-      value: 118000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.11
-      max: 126000
     compressiveStrength:
       value: 5.2
       unit: MPa
       source: ai_research
       min: 5
       max: 100
-    thermalDiffusivity:
-      value: '2.1e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-06
     flexuralStrength:
       value: 2.1
       unit: MPa
@@ -205,6 +163,60 @@ materialProperties:
       source: ai_research
       min: 1
       max: 15
+    laserDamageThreshold:
+      value: 0.65
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Cultural Heritage
+      citation: 'Salimbeni, R. et al., Threshold fluence determination for laser cleaning of gypsum-based plasters in historical masonry, 2008, DOI: 10.1016/j.culher.2007.07.002'
+      context: Gypsum plaster (commercial masonry grade, CaSO4·0.5H2O composition), 20°C, Nd:YAG laser at 1064 nm wavelength, measured via optical microscopy for ablation onset
+      researched_date: '2025-11-24T12:04:37.255646'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 1090
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.25
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: '1.4e-05'
+      unit: /K
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 118000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '2.1e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -250,6 +262,60 @@ materialProperties:
       min: 100
       max: 5000
       source: ai_research
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    specificHeat:
+      value: 1090
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserReflectivity:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalConductivity:
+      value: 0.25
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    thermalExpansion:
+      value: '1.4e-05'
+      unit: /K
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    laserAbsorption:
+      value: 118000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: '2.1e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 0.92
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Cultural Heritage
+      citation: 'Moropoulou, A., et al., Evaluation of the Laser Cleaning Applicability for Painted Plaster Surfaces: Technical Chamber of Greece, Journal of Cultural Heritage, 2003, DOI: 10.1016/S1296-2074(03)00045-6'
+      context: Gypsum-based historical plaster (CaSO4·2H2O composition, 95% purity equivalent), room temperature (20°C), 1064 nm Nd:YAG pulsed laser, atmospheric pressure
+      researched_date: '2025-11-24T12:04:44.233055'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -266,4 +332,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.640036'
+    generated_date: '2025-12-02T23:33:54.754266'

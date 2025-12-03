@@ -124,18 +124,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 2.9
-    thermalDestruction:
-      value: 480
-      unit: °C
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 2300
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
     youngsModulus:
       value: 1
       unit: GPa
@@ -148,24 +136,6 @@ materialProperties:
       source: ai_research
       min: 0.76
       max: 1575
-    laserReflectivity:
-      value: 0.04
-      unit: '1'
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.38
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: '0.00015'
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
     density:
       value: 940
       unit: kg/m³
@@ -184,24 +154,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 105
-    laserAbsorption:
-      value: 50
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
     compressiveStrength:
       value: 25
       unit: MPa
       source: ai_research
       min: 20
       max: 200
-    thermalDiffusivity:
-      value: '1.6e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 25
       unit: MPa
@@ -214,6 +172,60 @@ materialProperties:
       source: ai_research
       min: 10
       max: 400
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser damage thresholds of polymers at 1064 nm
+      citation: 'J. Bonse et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
+      context: Low-density polyethylene (LDPE, 99% purity), room temperature (25°C), nanosecond Nd:YAG laser at 1064 nm, single-pulse irradiation
+      researched_date: '2025-11-24T12:06:02.455581'
+      needs_validation: true
+      min: 0.71
+      max: 2.6
+    thermalDestruction:
+      value: 480
+      unit: °C
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 2300
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.04
+      unit: '1'
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.38
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '0.00015'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 50
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '1.6e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -259,6 +271,60 @@ materialProperties:
       min: '0.001'
       max: 10
       source: ai_research
+    thermalDestruction:
+      value: 480
+      unit: °C
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 2300
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.04
+      unit: '1'
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.38
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '0.00015'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 50
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '1.6e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 0.28
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Bityurin, N., et al., ''Photothermal and photomechanical effects in laser ablation of polymers'', Journal of Applied Physics, 1998, DOI: 10.1063/1.367819'
+      context: Low-density polyethylene (LDPE, 99% purity), room temperature (25°C), 248 nm KrF excimer laser, nanosecond pulse duration
+      researched_date: '2025-11-24T12:06:07.438218'
+      needs_validation: true
+      min: 0.39
+      max: 2.8
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -274,4 +340,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.779811'
+    generated_date: '2025-12-02T23:33:54.906233'

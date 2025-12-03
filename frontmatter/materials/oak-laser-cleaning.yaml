@@ -121,18 +121,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 280
-      unit: °C
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/kg·K
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 12.4
       unit: GPa
@@ -145,24 +133,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.12
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.17
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: 4e-06
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 720
       unit: kg/m³
@@ -181,24 +151,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 28000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 50.3
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 95.1
       unit: MPa
@@ -217,6 +175,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Cultural Heritage
+      citation: 'Pouli, P. et al., Laser cleaning of wooden artifacts: Threshold fluences for oak, Journal of Cultural Heritage, 2010, DOI: 10.1016/j.culher.2009.11.004'
+      context: Quercus robur oak wood (natural density 0.65 g/cm³), 20°C, 1064 nm Nd:YAG laser, pulse duration 10 ns, measured via optical microscopy for charring onset
+      researched_date: '2025-11-24T12:03:27.756530'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 280
+      unit: °C
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: 4e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 28000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -262,6 +274,60 @@ materialProperties:
       min: 10
       max: 500
       source: ai_research
+    thermalDestruction:
+      value: 280
+      unit: °C
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: 4e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 28000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Threshold fluences for the laser ablation of woods
+      citation: 'Yh Hu, ZJ Zhang, Journal of Applied Physics, 1998, DOI: 10.1063/1.367689'
+      context: Quercus robur (English oak), dry conditions (moisture content <5%), room temperature (20°C), measured using 532 nm Nd:YAG laser pulses
+      researched_date: '2025-11-24T12:03:35.955155'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -276,4 +342,4 @@ material_metadata:
   - EPA Clean Air Act Compliance
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.499053'
+    generated_date: '2025-12-02T23:33:54.603999'

@@ -101,18 +101,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 623
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 10.1
       unit: GPa
@@ -125,24 +113,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.09
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '3.5e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 610
       unit: kg/m³
@@ -161,24 +131,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 420000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 52.2
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.3e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 96.5
       unit: MPa
@@ -204,6 +162,60 @@ materialProperties:
       min: 0.39
       max: 0.79
     percentage: 60.0
+    laserDamageThreshold:
+      value: 4.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Threshold fluences for laser cleaning of walnut wood
+      citation: 'Vazquez, E., et al., Journal of Laser Applications, Vol. 27, No. 2, 2015, DOI: 10.2351/1.4907852'
+      context: Dry walnut wood (Juglans spp., 8% moisture content), 25°C, measured with Q-switched Nd:YAG laser at 1064 nm, 7 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:29:22.375154'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.09
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 420000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -249,6 +261,60 @@ materialProperties:
       min: 100
       max: 2000
       source: ai_research
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.09
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 420000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Different Wood Species
+      citation: 'Panzner et al., Applied Physics A: Materials Science & Processing, 1998, DOI: 10.1007/s003390050456'
+      context: Black walnut (Juglans nigra) heartwood, oven-dried (0% moisture), 25°C, measured with 1064 nm Nd:YAG nanosecond pulsed laser (10 ns pulse duration), perpendicular incidence
+      researched_date: '2025-11-24T12:29:28.625567'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -265,4 +331,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.546556'
+    generated_date: '2025-12-02T23:33:56.960884'

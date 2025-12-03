@@ -102,12 +102,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 1098
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
     density:
       value: 2710
       unit: kg/m³
@@ -120,24 +114,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.05
-      unit: ''
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalExpansion:
-      value: '1.2e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
-    thermalConductivity:
-      value: 2.9
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
     youngsModulus:
       value: 69
       unit: GPa
@@ -150,18 +126,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 7.3
-    specificHeat:
-      value: 831
-      unit: J/kg·K
-      source: ai_research
-      min: 400
-      max: 1200
-    laserAbsorption:
-      value: 800000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 150
       unit: MPa
@@ -174,12 +138,6 @@ materialProperties:
       source: ai_research
       min: 1.4
       max: 15.7
-    thermalDiffusivity:
-      value: '1.3e-06'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 15
       unit: MPa
@@ -198,6 +156,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 2.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'Sanz et al., Laser cleaning of calcareous stones: Evaluation of damage threshold, Applied Surface Science, 2013, DOI: 10.1016/j.apsusc.2013.05.123'
+      context: Single-crystal calcite (99.9% purity), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured on polished surfaces
+      researched_date: '2025-11-24T11:53:00.421879'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 1098
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    laserReflectivity:
+      value: 0.05
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalExpansion:
+      value: '1.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    thermalConductivity:
+      value: 2.9
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    specificHeat:
+      value: 831
+      unit: J/kg·K
+      source: ai_research
+      min: 400
+      max: 1200
+    laserAbsorption:
+      value: 800000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.3e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -243,6 +255,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 1098
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    laserReflectivity:
+      value: 0.05
+      unit: ''
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalExpansion:
+      value: '1.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    thermalConductivity:
+      value: 2.9
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    specificHeat:
+      value: 831
+      unit: J/kg·K
+      source: ai_research
+      min: 400
+      max: 1200
+    laserAbsorption:
+      value: 800000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.3e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'A. Zafiropulos et al., Applied Surface Science, 1999, DOI: 10.1016/S0169-4332(99)00094-3'
+      context: Polycrystalline calcite (natural limestone sample, 95% CaCO3 purity), room temperature (25°C), Nd:YAG laser at 1064 nm wavelength, 10 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T11:53:15.934626'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -257,4 +323,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.679931'
+    generated_date: '2025-12-02T23:33:53.030144'

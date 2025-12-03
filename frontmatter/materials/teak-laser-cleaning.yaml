@@ -101,18 +101,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 588
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/kg·K
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 11.2
       unit: GPa
@@ -125,24 +113,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.12
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.15
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '3.8e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 660
       unit: kg/m³
@@ -161,24 +131,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 0.87
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 54
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.4e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 110
       unit: MPa
@@ -204,6 +162,60 @@ materialProperties:
       min: 0.39
       max: 0.79
     percentage: 60.0
+    laserDamageThreshold:
+      value: 0.28
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds of Tropical Hardwoods
+      citation: 'Poon, A.C.H. et al., Optics and Lasers in Engineering, 2007, DOI: 10.1016/j.optlaseng.2006.07.004'
+      context: Teak wood (Tectona grandis, density 650 kg/m³, natural moisture content 12%), 1064 nm Nd:YAG laser, room temperature (25°C), pulse duration 10 ns
+      researched_date: '2025-11-24T12:27:11.810670'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 588
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.8e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.87
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -249,6 +261,60 @@ materialProperties:
       min: 1
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 588
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.8e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.87
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Tropical Hardwoods in Conservation Applications
+      citation: 'Hernandez et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2018.03.005'
+      context: Teak wood (Tectona grandis, density 650 kg/m³, natural moisture content 12%), 1064 nm Nd:YAG laser, 10 ns pulse duration, room temperature (25°C), atmospheric pressure
+      researched_date: '2025-11-24T12:27:16.436260'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -263,4 +329,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.125893'
+    generated_date: '2025-12-02T23:33:56.525606'

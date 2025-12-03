@@ -104,18 +104,6 @@ regulatoryStandards:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    thermalDestruction:
-      value: 993
-      unit: K
-      source: ai_research
-      min: 638
-      max: 2426
-    specificHeat:
-      value: 840
-      unit: J/kg·K
-      source: ai_research
-      min: 120
-      max: 900
     youngsModulus:
       value: 7e+10
       unit: Pa
@@ -128,24 +116,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2177
-    laserReflectivity:
-      value: 0.04
-      unit: fraction
-      source: ai_research
-      min: 0.03
-      max: 3.8
-    thermalConductivity:
-      value: 1.1
-      unit: W/(m·K)
-      source: ai_research
-      min: 0.77
-      max: 36.7
-    thermalExpansion:
-      value: 9
-      unit: ×10^{-6} K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: 9.7
     density:
       value: 2.5
       unit: g/cm³
@@ -164,24 +134,12 @@ materialProperties:
       source: ai_research
       min: '4.8e-05'
       max: 1.6
-    laserAbsorption:
-      value: 35
-      unit: m^{-1}
-      source: ai_research
-      min: 0.01
-      max: 73500
     compressiveStrength:
       value: 1000
       unit: MPa
       source: ai_research
       min: 620
       max: 2170
-    thermalDiffusivity:
-      value: 5e-07
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-05
     flexuralStrength:
       value: 200
       unit: MPa
@@ -206,13 +164,67 @@ materialProperties:
       source: ai_research
       min: '9.5e+09'
       max: 1e+16
+    percentage: 60.0
+    laserDamageThreshold:
+      value: 12.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Wood, R. M., et al., ''Laser-induced damage thresholds of soda-lime-silica glasses including tempered variants'', Journal of Applied Physics, 2008, DOI: 10.1063/1.2958294'
+      context: Tempered soda-lime glass (commercial automotive grade, ~70% SiO2, 15% Na2O, 10% CaO), 25°C, 1064 nm Nd:YAG laser, 10 ns pulse duration, single-shot fluence measurement
+      researched_date: '2025-11-24T12:27:25.063715'
+      needs_validation: true
+      min: 2.4
+      max: 15.6
+    thermalDestruction:
+      value: 993
+      unit: K
+      source: ai_research
+      min: 638
+      max: 2426
+    specificHeat:
+      value: 840
+      unit: J/kg·K
+      source: ai_research
+      min: 120
+      max: 900
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.03
+      max: 3.8
+    thermalConductivity:
+      value: 1.1
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.77
+      max: 36.7
+    thermalExpansion:
+      value: 9
+      unit: ×10^{-6} K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: 9.7
+    laserAbsorption:
+      value: 35
+      unit: m^{-1}
+      source: ai_research
+      min: 0.01
+      max: 73500
+    thermalDiffusivity:
+      value: 5e-07
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-05
     ablationThreshold:
       value: 15.2
       unit: J/cm²
       source: ai_research
       min: 0.64
       max: 13.1
-    percentage: 60.0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -258,6 +270,54 @@ materialProperties:
       min: '0.001'
       max: 1
       source: ai_research
+    thermalDestruction:
+      value: 993
+      unit: K
+      source: ai_research
+      min: 638
+      max: 2426
+    specificHeat:
+      value: 840
+      unit: J/kg·K
+      source: ai_research
+      min: 120
+      max: 900
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.03
+      max: 3.8
+    thermalConductivity:
+      value: 1.1
+      unit: W/(m·K)
+      source: ai_research
+      min: 0.77
+      max: 36.7
+    thermalExpansion:
+      value: 9
+      unit: ×10^{-6} K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: 9.7
+    laserAbsorption:
+      value: 35
+      unit: m^{-1}
+      source: ai_research
+      min: 0.01
+      max: 73500
+    thermalDiffusivity:
+      value: 5e-07
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-05
+    ablationThreshold:
+      value: 15.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.64
+      max: 13.1
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -273,4 +333,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.152909'
+    generated_date: '2025-12-02T23:33:56.554499'

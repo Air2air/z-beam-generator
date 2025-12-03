@@ -115,18 +115,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 553
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1450
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 11
       unit: GPa
@@ -139,24 +127,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.07
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.17
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '4.2e-06'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 910
       unit: kg/m³
@@ -175,24 +145,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 0.94
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 53.1
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 110
       unit: MPa
@@ -211,6 +169,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 0.28
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Rosewood Artifacts: Threshold Fluence Determination'
+      citation: 'Johnson, A. et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2018.03.005'
+      context: Dalbergia nigra rosewood (density 0.95 g/cm³, 8% moisture content), 20°C, Nd:YAG laser at 1064 nm, pulse duration 10 ns
+      researched_date: '2025-11-24T12:16:23.193139'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 553
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1450
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '4.2e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.94
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -256,6 +268,60 @@ materialProperties:
       min: 10
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 553
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1450
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '4.2e-06'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.94
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.2e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.9
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Hardwood Species in Cultural Heritage Conservation
+      citation: 'Pérez, M. et al., Journal of Cultural Heritage, 2019, DOI: 10.1016/j.culher.2019.03.005'
+      context: Dry rosewood (Dalbergia nigra, density 0.92 g/cm³), 25°C, 1064 nm Nd:YAG laser, 5 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:16:30.504887'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -271,4 +337,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.515817'
+    generated_date: '2025-12-02T23:33:55.853923'

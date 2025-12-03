@@ -27,6 +27,41 @@ class DataOrchestrationError(Exception):
     pass
 
 
+def _deep_merge(base: Dict[str, Any], overlay: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Deep merge two dictionaries.
+    
+    Values from overlay take precedence, but base values fill gaps where
+    overlay has None or missing keys. Recursively merges nested dicts.
+    
+    Args:
+        base: Base dictionary (values preserved if overlay is None/missing)
+        overlay: Overlay dictionary (non-None values take precedence)
+        
+    Returns:
+        Merged dictionary
+    """
+    result = base.copy()
+    
+    for key, overlay_value in overlay.items():
+        if key in result:
+            base_value = result[key]
+            # If both are dicts, recursively merge
+            if isinstance(base_value, dict) and isinstance(overlay_value, dict):
+                result[key] = _deep_merge(base_value, overlay_value)
+            # If overlay is None, keep base value
+            elif overlay_value is None:
+                pass  # Keep result[key] (base_value)
+            # Otherwise, overlay takes precedence
+            else:
+                result[key] = overlay_value
+        else:
+            # Key not in base, use overlay (even if None)
+            result[key] = overlay_value
+    
+    return result
+
+
 def merge_materials_settings(
     materials_data: Dict[str, Any],
     properties_data: Dict[str, Any],
@@ -56,9 +91,12 @@ def merge_materials_settings(
         # Merge properties and settings into each material
         merged_count = 0
         for material_name, material_data in materials.items():
-            # Merge materialProperties if available
+            # Merge materialProperties if available (DEEP MERGE to preserve existing data)
             if material_name in properties_data:
-                material_data['materialProperties'] = properties_data[material_name]
+                existing_props = material_data.get('materialProperties', {})
+                new_props = properties_data[material_name]
+                # Deep merge: new_props values override existing, but existing fills gaps
+                material_data['materialProperties'] = _deep_merge(existing_props, new_props)
                 merged_count += 1
             
             # Merge machineSettings if available

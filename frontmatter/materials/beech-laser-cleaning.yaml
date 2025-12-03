@@ -122,12 +122,6 @@ materialProperties:
       source: ai_research
       min: 19.1
       max: 148
-    laserReflectivity:
-      value: 0.42
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
     oxidationResistance:
       value: 19.7
       unit: vol% O2
@@ -140,6 +134,54 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    tensileStrength:
+      value: 100
+      unit: MPa
+      source: ai_research
+      min: 9.5
+      max: 209
+    compressiveStrength:
+      value: 40
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 80
+    youngsModulus:
+      value: 11.4
+      unit: GPa
+      source: ai_research
+      min: 3.3
+      max: 11235
+    density:
+      value: 720
+      unit: kg/m³
+      source: ai_research
+      min: 0.4
+      max: 955
+    hardness:
+      value: 5782
+      unit: N
+      source: ai_research
+      min: 399
+      max: 12590
+    laserDamageThreshold:
+      value: 14.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser ablation thresholds of wood materials for nanosecond pulsed laser cleaning
+      citation: 'Panzner et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(01)00735-4'
+      context: Beech wood (Fagus sylvatica, density 0.68 g/cm³, natural moisture content <10%), room temperature (20°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, measured as fluence for onset of ablation/carbonization
+      researched_date: '2025-11-24T11:51:23.064286'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    laserReflectivity:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
     thermalDestruction:
       value: 573
       unit: K
@@ -158,18 +200,6 @@ materialProperties:
       source: ai_research
       min: 1.3
       max: 1554
-    tensileStrength:
-      value: 100
-      unit: MPa
-      source: ai_research
-      min: 9.5
-      max: 209
-    compressiveStrength:
-      value: 40
-      unit: MPa
-      source: ai_research
-      min: 20
-      max: 80
     laserAbsorption:
       value: 31000
       unit: m^{-1}
@@ -182,30 +212,12 @@ materialProperties:
       source: ai_research
       min: 0.04
       max: 0.4
-    youngsModulus:
-      value: 11.4
-      unit: GPa
-      source: ai_research
-      min: 3.3
-      max: 11235
     thermalDiffusivity:
       value: '1.6e-07'
       unit: m²/s
       source: ai_research
       min: 0
       max: 0
-    density:
-      value: 720
-      unit: kg/m³
-      source: ai_research
-      min: 0.4
-      max: 955
-    hardness:
-      value: 5782
-      unit: N
-      source: ai_research
-      min: 399
-      max: 12590
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -251,6 +263,60 @@ materialProperties:
       min: 100
       max: 5000
       source: ai_research
+    laserReflectivity:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalDestruction:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    thermalExpansion:
+      value: 4e-05
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserAbsorption:
+      value: 31000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalDiffusivity:
+      value: '1.6e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of wooden artifacts: Ablation thresholds for hardwoods'
+      citation: 'Konstantinidis, A. et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2018.03.005'
+      context: Beech wood (Fagus sylvatica, density 0.72 g/cm³, natural moisture content <10%), room temperature (20°C), 1064 nm Nd:YAG laser, pulse duration 10 ns
+      researched_date: '2025-11-24T11:51:28.696295'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -265,4 +331,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.467004'
+    generated_date: '2025-12-02T23:33:52.774226'

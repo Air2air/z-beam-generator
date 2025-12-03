@@ -57,7 +57,52 @@ images:
   micro:
     alt: Acrylic (PMMA) surface at 500x magnification showing laser cleaning results
     url: /images/materials/acrylic-laser-cleaning-micro.png
-machineSettings: null
+machineSettings:
+  powerRange:
+    value: 30
+    unit: W
+    min: 1
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    min: 355
+    max: 10640
+  spotSize:
+    value: 100
+    unit: μm
+    min: 0.1
+    max: 500
+  repetitionRate:
+    value: 20
+    unit: kHz
+    min: 1
+    max: 200
+  energyDensity:
+    value: 0.5
+    unit: J/cm²
+    min: 0.1
+    max: 20
+  pulseWidth:
+    value: 10
+    unit: ns
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    value: 800
+    unit: mm/s
+    min: 10
+    max: 5000
+  passCount:
+    value: 2
+    unit: passes
+    min: 1
+    max: 10
+  overlapRatio:
+    value: 30
+    unit: '%'
+    min: 10
+    max: 90
 thermalProperties:
   thermalDiffusivity:
     value: 0.11
@@ -85,4 +130,4 @@ material_challenges:
 - Verify cleaning effectiveness through inspection
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:48:04.082692'
+    generated_date: '2025-12-02T23:33:57.153342'

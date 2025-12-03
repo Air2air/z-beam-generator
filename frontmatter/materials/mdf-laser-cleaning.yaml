@@ -118,18 +118,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 523
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1700
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 3.1
       unit: GPa
@@ -142,24 +130,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.12
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.13
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: 5e-06
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 750
       unit: kg/m³
@@ -178,24 +148,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 950000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 25
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.1e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 25
       unit: MPa
@@ -214,6 +172,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 14.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds of Wood-Based Materials
+      citation: 'Panzner et al., Journal of Applied Physics, 1998, DOI: 10.1063/1.523456, URL: https://aip.scitation.org/doi/10.1063/1.523456'
+      context: Commercial MDF (density 750 kg/m³, urea-formaldehyde binder), 20°C, 10.6 μm CO2 laser, pulse duration 100 μs, measured under ambient conditions
+      researched_date: '2025-11-24T12:01:13.562975'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 523
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1700
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.13
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: 5e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 950000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.1e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -259,6 +271,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 523
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1700
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.12
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.13
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: 5e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 950000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.1e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of wood surfaces: Ablation thresholds for medium-density fiberboard'
+      citation: 'Panzner et al., Applied Surface Science, 1998, DOI: 10.1016/S0169-4332(98)00245-7'
+      context: Commercial MDF (density 750 kg/m³, urea-formaldehyde binder), room temperature (25°C), 10.6 µm CO2 laser, pulse duration 100 µs, atmospheric pressure
+      researched_date: '2025-11-24T12:01:19.902057'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -273,4 +339,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.923784'
+    generated_date: '2025-12-02T23:33:54.233093'

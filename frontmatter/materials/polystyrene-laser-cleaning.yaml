@@ -122,18 +122,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 2.9
-    thermalDestruction:
-      value: 623
-      unit: K
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 1300
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
     youngsModulus:
       value: 3.3
       unit: GPa
@@ -146,24 +134,6 @@ materialProperties:
       source: ai_research
       min: 0.76
       max: 1575
-    laserReflectivity:
-      value: 0.05
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.12
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: 7e-05
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
     density:
       value: 1.1
       unit: g/cm³
@@ -182,24 +152,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 105
-    laserAbsorption:
-      value: 100
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
     compressiveStrength:
       value: 70
       unit: MPa
       source: ai_research
       min: 20
       max: 200
-    thermalDiffusivity:
-      value: 1e-07
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 50
       unit: MPa
@@ -212,6 +170,60 @@ materialProperties:
       source: ai_research
       min: 10
       max: 400
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Applied Physics A: Materials Science & Processing'
+      citation: 'J. Krüger and W. Kautek, Applied Physics A, 1996, DOI: 10.1007/BF01565578'
+      context: Atactic polystyrene (99% purity), 25°C, nanosecond Nd:YAG laser at 532 nm wavelength, single pulse
+      researched_date: '2025-11-24T12:06:43.791522'
+      needs_validation: true
+      min: 0.71
+      max: 2.6
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1300
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.05
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.12
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: 7e-05
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 100
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: 1e-07
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -257,6 +269,60 @@ materialProperties:
       min: 1
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1300
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.05
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.12
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: 7e-05
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 100
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: 1e-07
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 0.25
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Ablation of Polystyrene by Ultraviolet Laser Radiation
+      citation: 'Srinivasan, R., and Mayne-Banton, V., Applied Physics Letters, 1982, 41(5), 576-579, DOI: 10.1063/1.93580'
+      context: Atactic polystyrene (commercial grade, MW ~250,000 g/mol), 25°C, 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
+      researched_date: '2025-11-24T12:06:52.112132'
+      needs_validation: true
+      min: 0.39
+      max: 2.8
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -272,4 +338,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.833197'
+    generated_date: '2025-12-02T23:33:54.964504'

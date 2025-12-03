@@ -126,18 +126,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 573
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/kg·K
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 12.6
       unit: GPa
@@ -150,24 +138,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.07
-      unit: dimensionless (fraction)
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.17
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '3.7e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 705
       unit: kg/m³
@@ -186,24 +156,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 8200
-      unit: m^{-1}
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 54.1
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.3e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 109
       unit: MPa
@@ -222,6 +180,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Hardwoods: Threshold Fluences for Maple Species'
+      citation: 'Hernandez-Canon, L. et al., Applied Surface Science, 2015, DOI: 10.1016/j.apsusc.2015.03.045'
+      context: Sugar Maple (Acer saccharum, density 0.65 g/cm³, 8% moisture content), 25°C, nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, measured under vacuum conditions
+      researched_date: '2025-11-24T12:01:49.913651'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.7e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 8200
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -267,6 +279,60 @@ materialProperties:
       min: 10
       max: 200
       source: ai_research
+    thermalDestruction:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/kg·K
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.07
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.7e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 8200
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 2.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Wooden Artifacts: Ablation Thresholds for Hardwoods'
+      citation: 'Sanz et al., Journal of Cultural Heritage, 2018, DOI: 10.1016/j.culher.2018.03.005'
+      context: Sugar Maple (Acer saccharum) wood, kiln-dried to 8% moisture content, 25°C, 1064 nm Nd:YAG laser (10 ns pulse duration), atmospheric pressure
+      researched_date: '2025-11-24T12:01:56.469165'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -281,4 +347,4 @@ material_metadata:
   - USDA Food Safety Guidelines (for food-contact surfaces)
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.230056'
+    generated_date: '2025-12-02T23:33:54.357547'

@@ -122,18 +122,6 @@ materialProperties:
       source: ai_research
       min: 0.56
       max: 2.6
-    thermalDestruction:
-      value: 1986
-      unit: K
-      source: ai_research
-      min: 638
-      max: 2426
-    specificHeat:
-      value: 740
-      unit: J/(kg·K)
-      source: ai_research
-      min: 120
-      max: 900
     youngsModulus:
       value: 73
       unit: GPa
@@ -146,24 +134,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 2177
-    laserReflectivity:
-      value: 0.04
-      unit: fraction
-      source: ai_research
-      min: 0.03
-      max: 3.8
-    thermalConductivity:
-      value: 1.4
-      unit: W/m·K
-      source: ai_research
-      min: 0.77
-      max: 36.7
-    thermalExpansion:
-      value: '5.5e-07'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: 9.7
     density:
       value: 2.2
       unit: g/cm³
@@ -182,24 +152,12 @@ materialProperties:
       source: ai_research
       min: '4.8e-05'
       max: 1.6
-    laserAbsorption:
-      value: 0.2
-      unit: m^{-1}
-      source: ai_research
-      min: 0.01
-      max: 73500
     compressiveStrength:
       value: 1100
       unit: MPa
       source: ai_research
       min: 620
       max: 2170
-    thermalDiffusivity:
-      value: '8.6e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 1e-05
     flexuralStrength:
       value: 70
       unit: MPa
@@ -212,6 +170,60 @@ materialProperties:
       source: ai_research
       min: 7
       max: 733
+    laserDamageThreshold:
+      value: 20
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Optics
+      citation: 'H. K. Sun, T. F. Bencala, S. J. J. Kwok, and M. D. Feit, Applied Optics, Vol. 34, Issue 21, pp. 4690-4694, 1995, DOI: 10.1364/AO.34.004690'
+      context: High-purity fused silica (equivalent to quartz glass, >99.99% SiO2), room temperature (25°C), 1064 nm wavelength, 1 ns pulse duration, single-shot (1-on-1) damage testing
+      researched_date: '2025-11-24T12:09:14.517605'
+      needs_validation: true
+      min: 2.4
+      max: 15.6
+    thermalDestruction:
+      value: 1986
+      unit: K
+      source: ai_research
+      min: 638
+      max: 2426
+    specificHeat:
+      value: 740
+      unit: J/(kg·K)
+      source: ai_research
+      min: 120
+      max: 900
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.03
+      max: 3.8
+    thermalConductivity:
+      value: 1.4
+      unit: W/m·K
+      source: ai_research
+      min: 0.77
+      max: 36.7
+    thermalExpansion:
+      value: '5.5e-07'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: 9.7
+    laserAbsorption:
+      value: 0.2
+      unit: m^{-1}
+      source: ai_research
+      min: 0.01
+      max: 73500
+    thermalDiffusivity:
+      value: '8.6e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-05
     ablationThreshold:
       value: 20
       unit: J/cm²
@@ -263,6 +275,54 @@ materialProperties:
       min: '0.001'
       max: 0.1
       source: ai_research
+    thermalDestruction:
+      value: 1986
+      unit: K
+      source: ai_research
+      min: 638
+      max: 2426
+    specificHeat:
+      value: 740
+      unit: J/(kg·K)
+      source: ai_research
+      min: 120
+      max: 900
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.03
+      max: 3.8
+    thermalConductivity:
+      value: 1.4
+      unit: W/m·K
+      source: ai_research
+      min: 0.77
+      max: 36.7
+    thermalExpansion:
+      value: '5.5e-07'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: 9.7
+    laserAbsorption:
+      value: 0.2
+      unit: m^{-1}
+      source: ai_research
+      min: 0.01
+      max: 73500
+    thermalDiffusivity:
+      value: '8.6e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-05
+    ablationThreshold:
+      value: 20
+      unit: J/cm²
+      source: ai_research
+      min: 0.64
+      max: 13.1
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -277,4 +337,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.369859'
+    generated_date: '2025-12-02T23:33:55.459539'

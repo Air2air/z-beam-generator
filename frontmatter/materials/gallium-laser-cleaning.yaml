@@ -133,12 +133,6 @@ materialProperties:
       source: ai_research
       min: 0.02
       max: 6.6
-    thermalDestruction:
-      value: 303
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
     density:
       value: 5.9
       unit: g/cm³
@@ -151,24 +145,6 @@ materialProperties:
       source: ai_research
       min: -554
       max: 1762
-    laserReflectivity:
-      value: 0.72
-      unit: ''
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalExpansion:
-      value: '1.8e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    thermalConductivity:
-      value: 40.6
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
     youngsModulus:
       value: 11
       unit: GPa
@@ -181,18 +157,6 @@ materialProperties:
       source: ai_research
       min: 0.2
       max: 3500
-    specificHeat:
-      value: 371
-      unit: J/(kg·K)
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserAbsorption:
-      value: '7.8e+07'
-      unit: m^{-1}
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
     compressiveStrength:
       value: 21
       unit: MPa
@@ -205,12 +169,6 @@ materialProperties:
       source: ai_research
       min: 3
       max: 3000
-    thermalDiffusivity:
-      value: '1.8e-05'
-      unit: m²/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
     flexuralStrength:
       value: 16.5
       unit: MPa
@@ -229,12 +187,6 @@ materialProperties:
       source: ai_research
       min: 0
       max: 15
-    ablationThreshold:
-      value: 0.42
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
     boilingPoint:
       value: 2676
       unit: K
@@ -289,6 +241,54 @@ materialProperties:
       source: ai_research
       min: 0.27
       max: 15750
+    thermalDestruction:
+      value: 303
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    laserReflectivity:
+      value: 0.72
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalExpansion:
+      value: '1.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    thermalConductivity:
+      value: 40.6
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    specificHeat:
+      value: 371
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserAbsorption:
+      value: '7.8e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: '1.8e-05'
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 0.42
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -334,6 +334,54 @@ materialProperties:
       value: '1.3e-06'
       min: 0
       max: 106391
+    thermalDestruction:
+      value: 303
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    laserReflectivity:
+      value: 0.72
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalExpansion:
+      value: '1.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    thermalConductivity:
+      value: 40.6
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    specificHeat:
+      value: 371
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserAbsorption:
+      value: '7.8e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: '1.8e-05'
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 0.42
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -349,4 +397,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.368666'
+    generated_date: '2025-12-02T23:33:53.682432'

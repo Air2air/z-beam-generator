@@ -109,18 +109,6 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    thermalDestruction:
-      value: 1204
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3520
-    specificHeat:
-      value: 195
-      unit: J/(kg·K)
-      source: ai_research
-      min: 113
-      max: 457
     youngsModulus:
       value: 37.3
       unit: GPa
@@ -133,6 +121,42 @@ materialProperties:
       source: ai_research
       min: 0
       max: 149
+    density:
+      value: 6.8
+      unit: g/cm³
+      source: ai_research
+      min: 4.3
+      max: 8.8
+    hardness:
+      value: 26
+      unit: HV
+      source: ai_research
+      min: 0.38
+      max: 906
+    absorptivity:
+      value: 0.32
+      unit: ''
+      source: ai_research
+      min: 0.25
+      max: 0.6
+    boilingPoint:
+      value: 3512
+      unit: K
+      source: ai_research
+      min: 1705
+      max: 3834
+    thermalDestruction:
+      value: 1204
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    specificHeat:
+      value: 195
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
     laserReflectivity:
       value: 0.72
       unit: dimensionless
@@ -151,36 +175,12 @@ materialProperties:
       source: ai_research
       min: 6e-06
       max: 26.2
-    density:
-      value: 6.8
-      unit: g/cm³
-      source: ai_research
-      min: 4.3
-      max: 8.8
-    hardness:
-      value: 26
-      unit: HV
-      source: ai_research
-      min: 0.38
-      max: 906
     ablationThreshold:
       value: 2.9
       unit: J/cm²
       source: ai_research
       min: 0.65
       max: 2.9
-    absorptivity:
-      value: 0.32
-      unit: ''
-      source: ai_research
-      min: 0.25
-      max: 0.6
-    boilingPoint:
-      value: 3512
-      unit: K
-      source: ai_research
-      min: 1705
-      max: 3834
     absorptionCoefficient:
       value: '6.3e+07'
       unit: m^{-1}
@@ -196,6 +196,72 @@ materialProperties:
       value: 0.72
       min: 0.25
       max: 0.6
+    thermalDestruction:
+      value: 1204
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    specificHeat:
+      value: 195
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
+    laserReflectivity:
+      value: 0.72
+      unit: dimensionless
+      source: ai_research
+      min: 0.4
+      max: 0.94
+    thermalConductivity:
+      value: 17
+      unit: W/(m·K)
+      source: ai_research
+      min: 10.4
+      max: 17.5
+    thermalExpansion:
+      value: 11.3
+      unit: 10^{-6} K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 26.2
+    ablationThreshold:
+      value: 2.9
+      unit: J/cm²
+      source: ai_research
+      min: 0.65
+      max: 2.9
+    absorptionCoefficient:
+      value: '6.3e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 298300
+      max: '6.6e+07'
+    laserDamageThreshold:
+      value: 1.9
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Applied Physics
+      citation: 'Wood et al., Laser-induced damage in rare-earth metals: Praseodymium case study, Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+      context: Pure Praseodymium (99.99% purity), 25°C, 1064 nm wavelength, 10 ns pulse duration, single-shot fluence measurement
+      researched_date: '2025-11-24T12:08:29.973904'
+      needs_validation: true
+      min: 1.1
+      max: 3.3
+    thermalDiffusivity:
+      value: '1.3e-05'
+      unit: m^2/s
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press/Taylor & Francis, 2023, ISBN 978-1-138-56163-2
+      context: Pure praseodymium (99.99% purity), 25°C, calculated from thermal conductivity (17 W/m·K), density (6770 kg/m³), and specific heat capacity (192 J/kg·K)
+      researched_date: '2025-11-24T12:08:43.081185'
+      needs_validation: true
+      min: 7e-06
+      max: '1.9e-05'
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -210,4 +276,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.317602'
+    generated_date: '2025-12-02T23:33:55.401702'

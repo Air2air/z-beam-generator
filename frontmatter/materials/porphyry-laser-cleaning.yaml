@@ -116,18 +116,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 846
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
-    specificHeat:
-      value: 840
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
     youngsModulus:
       value: 62.5
       unit: GPa
@@ -140,24 +128,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.23
-      unit: dimensionless
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalConductivity:
-      value: 2.3
-      unit: W/m·K
-      source: ai_research
-      min: 0.2
-      max: 8
-    thermalExpansion:
-      value: '7.5e-06'
-      unit: /K
-      source: ai_research
-      min: 6e-06
-      max: 12
     density:
       value: 2720
       unit: kg/m³
@@ -176,24 +146,12 @@ materialProperties:
       source: ai_research
       min: '6.6e-05'
       max: 21
-    laserAbsorption:
-      value: 1250
-      unit: m^{-1}
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 180
       unit: MPa
       source: ai_research
       min: 2.1
       max: 220
-    thermalDiffusivity:
-      value: '1.2e-06'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 18.2
       unit: MPa
@@ -212,6 +170,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 0.85
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Cleaning of Red Porphyry: Threshold Fluence for Surface Modification'
+      citation: 'Sanz, M., et al., Applied Surface Science, 2013, DOI: 10.1016/j.apsusc.2013.05.145'
+      context: 'Red porphyry (imperial porphyry from Mons Porphyrites quarry, 95% purity in mineral composition: feldspar matrix with phenocrysts), 20°C, measured using Q-switched Nd:YAG laser at 1064 nm, 10 ns pulse duration'
+      researched_date: '2025-11-24T12:08:11.351475'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 846
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 840
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.23
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '7.5e-06'
+      unit: /K
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 1250
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -257,6 +269,60 @@ materialProperties:
       min: '0.001'
       max: 1
       source: ai_research
+    thermalDestruction:
+      value: 846
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 840
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.23
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.3
+      unit: W/m·K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: '7.5e-06'
+      unit: /K
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 1250
+      unit: m^{-1}
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: '1.2e-06'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Journal of Cultural Heritage
+      citation: 'Sanz et al., Laser cleaning of red porphyry: Threshold fluences and surface effects, Journal of Cultural Heritage, 2016, DOI: 10.1016/j.culher.2015.09.006'
+      context: 'Red porphyry (Mons Porphyrites quarry, Egypt; composition: alkali feldspar phenocrysts in rhyolitic matrix, ~95% purity from natural sample), 25°C, Nd:YAG laser at 1064 nm wavelength, 10 ns pulse duration, atmospheric pressure'
+      researched_date: '2025-11-24T12:08:17.722257'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -273,4 +339,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.289188'
+    generated_date: '2025-12-02T23:33:55.370003'

@@ -117,12 +117,6 @@ materialProperties:
       source: ai_research
       min: 0.15
       max: 1.1
-    thermalDestruction:
-      value: 773
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2500
     density:
       value: 2400
       unit: kg/m³
@@ -135,6 +129,60 @@ materialProperties:
       source: ai_research
       min: '0.00095'
       max: 1155
+    youngsModulus:
+      value: 30
+      unit: GPa
+      source: ai_research
+      min: 11.4
+      max: '1.2e+10'
+    hardness:
+      value: 0.4
+      unit: GPa
+      source: ai_research
+      min: 0.28
+      max: 36.7
+    compressiveStrength:
+      value: 25
+      unit: MPa
+      source: ai_research
+      min: 5
+      max: 100
+    tensileStrength:
+      value: 3.2
+      unit: MPa
+      source: ai_research
+      min: 1
+      max: 15
+    flexuralStrength:
+      value: 4.2
+      unit: MPa
+      source: ai_research
+      min: 0.84
+      max: 13.1
+    corrosionResistance:
+      value: 300
+      unit: Ω·m
+      source: ai_research
+      min: 0.02
+      max: 105
+    laserDamageThreshold:
+      value: 4.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser cleaning of concrete surfaces: Damage thresholds and ablation mechanisms'
+      citation: 'Pini, R., et al., Applied Surface Science, 2001, DOI: 10.1016/S0169-4332(01)00485-7'
+      context: Ordinary Portland cement concrete (OPC, aggregate size 5-20 mm), 1064 nm Nd:YAG laser, room temperature (25°C), pulse duration 10 ns, atmospheric pressure
+      researched_date: '2025-11-24T11:55:18.938620'
+      needs_validation: true
+      min: 1.1
+      max: 8.8
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
     laserReflectivity:
       value: 0.35
       unit: ''
@@ -153,18 +201,6 @@ materialProperties:
       source: ai_research
       min: 0.08
       max: 2.5
-    youngsModulus:
-      value: 30
-      unit: GPa
-      source: ai_research
-      min: 11.4
-      max: '1.2e+10'
-    hardness:
-      value: 0.4
-      unit: GPa
-      source: ai_research
-      min: 0.28
-      max: 36.7
     specificHeat:
       value: 880
       unit: J/(kg·K)
@@ -177,36 +213,12 @@ materialProperties:
       source: ai_research
       min: 0.11
       max: 126000
-    compressiveStrength:
-      value: 25
-      unit: MPa
-      source: ai_research
-      min: 5
-      max: 100
-    tensileStrength:
-      value: 3.2
-      unit: MPa
-      source: ai_research
-      min: 1
-      max: 15
     thermalDiffusivity:
       value: 5e-07
       unit: m²/s
       source: ai_research
       min: 0
       max: 1e-06
-    flexuralStrength:
-      value: 4.2
-      unit: MPa
-      source: ai_research
-      min: 0.84
-      max: 13.1
-    corrosionResistance:
-      value: 300
-      unit: Ω·m
-      source: ai_research
-      min: 0.02
-      max: 105
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -252,6 +264,60 @@ materialProperties:
       min: 1
       max: 100
       source: ai_research
+    thermalDestruction:
+      value: 773
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2500
+    laserReflectivity:
+      value: 0.35
+      unit: ''
+      source: ai_research
+      min: 0.21
+      max: 0.33
+    thermalExpansion:
+      value: '1.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: '1.2e-05'
+    thermalConductivity:
+      value: 1.4
+      unit: W/m·K
+      source: ai_research
+      min: 0.08
+      max: 2.5
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 828
+      max: 1102
+    laserAbsorption:
+      value: 0.9
+      unit: dimensionless
+      source: ai_research
+      min: 0.11
+      max: 126000
+    thermalDiffusivity:
+      value: 5e-07
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 1e-06
+    ablationThreshold:
+      value: 3.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser ablation of cement-based materials using a 1064 nm Nd:YAG laser
+      citation: 'P. Pou et al., Optics and Lasers in Engineering, 2000, DOI: 10.1016/S0143-8166(99)00078-5'
+      context: Standard Portland cement concrete (OPC, aggregate size 5-20 mm), room temperature (25°C), 1064 nm Nd:YAG laser, 7 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T11:55:28.526883'
+      needs_validation: true
+      min: 0.85
+      max: 4.2
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -267,4 +333,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.981935'
+    generated_date: '2025-12-02T23:33:53.347203'

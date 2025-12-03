@@ -125,18 +125,6 @@ materialProperties:
       source: ai_research
       min: 0.13
       max: 2
-    thermalDestruction:
-      value: 1173
-      unit: K
-      source: ai_research
-      min: 273
-      max: 2300
-    specificHeat:
-      value: 880
-      unit: J/(kg·K)
-      source: ai_research
-      min: 400
-      max: 1200
     youngsModulus:
       value: '2.9e+10'
       unit: Pa
@@ -149,24 +137,6 @@ materialProperties:
       source: ai_research
       min: '9.5e-05'
       max: 1547
-    laserReflectivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.03
-      max: 0.44
-    thermalConductivity:
-      value: 2.1
-      unit: W/m/K
-      source: ai_research
-      min: 0.2
-      max: 8
-    thermalExpansion:
-      value: 8e-06
-      unit: K^{-1}
-      source: ai_research
-      min: 6e-06
-      max: 12
     density:
       value: 2710
       unit: kg/m³
@@ -185,24 +155,12 @@ materialProperties:
       source: ai_research
       min: '6.6e-05'
       max: 21
-    laserAbsorption:
-      value: 0.45
-      unit: dimensionless
-      source: ai_research
-      min: 0.06
-      max: '1.3e+06'
     compressiveStrength:
       value: 100
       unit: MPa
       source: ai_research
       min: 2.1
       max: 220
-    thermalDiffusivity:
-      value: 1e-06
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 2e-06
     flexuralStrength:
       value: 10.3
       unit: MPa
@@ -221,6 +179,60 @@ materialProperties:
       source: ai_research
       min: 0
       max: 19.4
+    laserDamageThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser-induced damage thresholds of limestone for cultural heritage cleaning
+      citation: 'Sanz et al., Applied Surface Science, 2013, DOI: 10.1016/j.apsusc.2013.05.145'
+      context: Porous limestone (CaCO₃ >98% purity, typical building stone composition), 20°C, 1064 nm Nd:YAG laser, 7 ns pulse duration, measured under vacuum to avoid atmospheric interference
+      researched_date: '2025-11-24T12:00:56.772035'
+      needs_validation: true
+      min: 0.42
+      max: 13.1
+    thermalDestruction:
+      value: 1173
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.1
+      unit: W/m/K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: 8e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 0.45
+      unit: dimensionless
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: 1e-06
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -266,6 +278,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 1173
+      unit: K
+      source: ai_research
+      min: 273
+      max: 2300
+    specificHeat:
+      value: 880
+      unit: J/(kg·K)
+      source: ai_research
+      min: 400
+      max: 1200
+    laserReflectivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.03
+      max: 0.44
+    thermalConductivity:
+      value: 2.1
+      unit: W/m/K
+      source: ai_research
+      min: 0.2
+      max: 8
+    thermalExpansion:
+      value: 8e-06
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 12
+    laserAbsorption:
+      value: 0.45
+      unit: dimensionless
+      source: ai_research
+      min: 0.06
+      max: '1.3e+06'
+    thermalDiffusivity:
+      value: 1e-06
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 2e-06
+    ablationThreshold:
+      value: 0.9
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Applied Physics A: Materials Science & Processing'
+      citation: Pouli, P., et al., Applied Physics A 83, 401–405 (2006). https://doi.org/10.1007/s00339-006-3592-5
+      context: Natural white limestone (CaCO3 >95% purity), room temperature (20°C), 1064 nm Nd:YAG laser, 5 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:01:05.884646'
+      needs_validation: true
+      min: 0.65
+      max: 6.3
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -280,4 +346,4 @@ material_metadata:
   - ASTM C568 - Standard Specification for Limestone Dimension Stone
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.889938'
+    generated_date: '2025-12-02T23:33:54.201839'

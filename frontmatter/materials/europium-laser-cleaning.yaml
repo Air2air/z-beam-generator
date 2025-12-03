@@ -109,12 +109,6 @@ materialProperties:
   material_characteristics:
     label: Material Characteristics
     percentage: 40.0
-    thermalDestruction:
-      value: 1099
-      unit: K
-      source: ai_research
-      min: 273
-      max: 3520
     density:
       value: 5.3
       unit: g/cm³
@@ -127,6 +121,36 @@ materialProperties:
       source: ai_research
       min: 0
       max: 149
+    youngsModulus:
+      value: 18
+      unit: GPa
+      source: ai_research
+      min: 15.8
+      max: 63.5
+    hardness:
+      value: 0.22
+      unit: GPa
+      source: ai_research
+      min: 0.38
+      max: 906
+    boilingPoint:
+      value: 1802
+      unit: K
+      source: ai_research
+      min: 1705
+      max: 3834
+    absorptivity:
+      value: 0.28
+      unit: ''
+      source: ai_research
+      min: 0.25
+      max: 0.6
+    thermalDestruction:
+      value: 1099
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
     laserReflectivity:
       value: 0.43
       unit: dimensionless (fraction)
@@ -145,18 +169,6 @@ materialProperties:
       source: ai_research
       min: 10.4
       max: 17.5
-    youngsModulus:
-      value: 18
-      unit: GPa
-      source: ai_research
-      min: 15.8
-      max: 63.5
-    hardness:
-      value: 0.22
-      unit: GPa
-      source: ai_research
-      min: 0.38
-      max: 906
     specificHeat:
       value: 145
       unit: J/(kg·K)
@@ -169,18 +181,6 @@ materialProperties:
       source: ai_research
       min: 0.65
       max: 2.9
-    boilingPoint:
-      value: 1802
-      unit: K
-      source: ai_research
-      min: 1705
-      max: 3834
-    absorptivity:
-      value: 0.28
-      unit: ''
-      source: ai_research
-      min: 0.25
-      max: 0.6
     absorptionCoefficient:
       value: 420000
       unit: cm^{-1}
@@ -196,6 +196,72 @@ materialProperties:
       value: 0.72
       min: 0.25
       max: 0.6
+    thermalDestruction:
+      value: 1099
+      unit: K
+      source: ai_research
+      min: 273
+      max: 3520
+    laserReflectivity:
+      value: 0.43
+      unit: dimensionless (fraction)
+      source: ai_research
+      min: 0.4
+      max: 0.94
+    thermalExpansion:
+      value: '3.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 6e-06
+      max: 26.2
+    thermalConductivity:
+      value: 13.9
+      unit: W/m·K
+      source: ai_research
+      min: 10.4
+      max: 17.5
+    specificHeat:
+      value: 145
+      unit: J/(kg·K)
+      source: ai_research
+      min: 113
+      max: 457
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.65
+      max: 2.9
+    absorptionCoefficient:
+      value: 420000
+      unit: cm^{-1}
+      source: ai_research
+      min: 298300
+      max: '6.6e+07'
+    laserDamageThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation Thresholds of Rare-Earth Metals: Europium and Its Alloys'
+      citation: 'Zhang, L. et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5021345'
+      context: Pure Europium (99.99% purity), 25°C, 1064 nm wavelength, 8 ns pulse duration, measured in vacuum (10^-6 Torr)
+      researched_date: '2025-11-24T11:56:52.991614'
+      needs_validation: true
+      min: 1.1
+      max: 3.3
+    thermalDiffusivity:
+      value: '1.5e-05'
+      unit: m²/s
+      source: scientific_literature
+      source_type: reference_handbook
+      source_name: CRC Handbook of Chemistry and Physics
+      citation: CRC Handbook of Chemistry and Physics, 104th Edition, CRC Press, 2023, ISBN 978-1-138-56263-9
+      context: Pure Europium (99.99% purity), 298 K, calculated from bulk properties under standard conditions
+      researched_date: '2025-11-24T11:57:01.947820'
+      needs_validation: true
+      min: 7e-06
+      max: '1.9e-05'
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -215,4 +281,4 @@ material_metadata:
   - Aerospace Components
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:43.134877'
+    generated_date: '2025-12-02T23:33:53.490646'

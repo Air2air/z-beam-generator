@@ -122,18 +122,6 @@ materialProperties:
       source: ai_research
       min: 0.7
       max: 2.9
-    thermalDestruction:
-      value: 683
-      unit: K
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 1920
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
     youngsModulus:
       value: 1.5
       unit: GPa
@@ -146,24 +134,6 @@ materialProperties:
       source: ai_research
       min: 0.76
       max: 1575
-    laserReflectivity:
-      value: 0.04
-      unit: fraction
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.17
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: '0.00015'
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
     density:
       value: 0.91
       unit: g/cm³
@@ -182,24 +152,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 105
-    laserAbsorption:
-      value: 120
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
     compressiveStrength:
       value: 40
       unit: MPa
       source: ai_research
       min: 20
       max: 200
-    thermalDiffusivity:
-      value: '9.8e-08'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 41
       unit: MPa
@@ -212,6 +170,60 @@ materialProperties:
       source: ai_research
       min: 10
       max: 400
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'J. Bonse et al., Applied Surface Science, 2002, DOI: 10.1016/S0169-4332(02)00345-7'
+      context: Commercial isotactic polypropylene (99% purity), 25°C, nanosecond pulsed Nd:YAG laser at 1064 nm wavelength, single pulse, measured for onset of surface melting and ablation
+      researched_date: '2025-11-24T12:06:26.789517'
+      needs_validation: true
+      min: 0.71
+      max: 2.6
+    thermalDestruction:
+      value: 683
+      unit: K
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1920
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '0.00015'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 120
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '9.8e-08'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -257,6 +269,60 @@ materialProperties:
       min: 10
       max: 1000
       source: ai_research
+    thermalDestruction:
+      value: 683
+      unit: K
+      source: ai_research
+      min: 228
+      max: 715
+    specificHeat:
+      value: 1920
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1
+      max: 2500
+    laserReflectivity:
+      value: 0.04
+      unit: fraction
+      source: ai_research
+      min: 0.02
+      max: 0.05
+    thermalConductivity:
+      value: 0.17
+      unit: W/m·K
+      source: ai_research
+      min: 0.02
+      max: 3
+    thermalExpansion:
+      value: '0.00015'
+      unit: K^{-1}
+      source: ai_research
+      min: '5.9e-05'
+      max: '0.0002'
+    laserAbsorption:
+      value: 120
+      unit: m^{-1}
+      source: ai_research
+      min: 0.28
+      max: 126000
+    thermalDiffusivity:
+      value: '9.8e-08'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 0.28
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Polymers: Polypropylene Threshold Fluence'
+      citation: 'Srinivasan, R. and Braren, B., Applied Physics A: Materials Science & Processing, Vol. 45, pp. 289-296, 1988, DOI: 10.1007/BF00615214'
+      context: Isotactic polypropylene film (99.5% purity, 50 μm thickness), room temperature (25°C), measured with 193 nm ArF excimer laser, 10 ns pulse duration, vacuum environment
+      researched_date: '2025-11-24T12:06:33.766548'
+      needs_validation: true
+      min: 0.39
+      max: 2.8
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -272,4 +338,4 @@ material_metadata:
   structure_version: '2.0'
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.806180'
+    generated_date: '2025-12-02T23:33:54.935585'

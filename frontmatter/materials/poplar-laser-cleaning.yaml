@@ -120,18 +120,6 @@ materialProperties:
       source: ai_research
       min: 0.26
       max: 2
-    thermalDestruction:
-      value: 628
-      unit: K
-      source: ai_research
-      min: 226
-      max: 642
-    specificHeat:
-      value: 1380
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1.3
-      max: 1554
     youngsModulus:
       value: 10.2
       unit: GPa
@@ -144,24 +132,6 @@ materialProperties:
       source: ai_research
       min: 0.1
       max: 549
-    laserReflectivity:
-      value: 0.38
-      unit: ''
-      source: ai_research
-      min: 0.02
-      max: 0.44
-    thermalConductivity:
-      value: 0.13
-      unit: W/m·K
-      source: ai_research
-      min: 0.04
-      max: 0.4
-    thermalExpansion:
-      value: '3.1e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: 1e-06
-      max: '5.8e-05'
     density:
       value: 465
       unit: kg/m³
@@ -180,24 +150,12 @@ materialProperties:
       source: ai_research
       min: 0
       max: 4.7
-    laserAbsorption:
-      value: 0.92
-      unit: dimensionless
-      source: ai_research
-      min: 0.78
-      max: 336000
     compressiveStrength:
       value: 39.2
       unit: MPa
       source: ai_research
       min: 20
       max: 80
-    thermalDiffusivity:
-      value: '1.3e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
     flexuralStrength:
       value: 69.6
       unit: MPa
@@ -216,6 +174,60 @@ materialProperties:
       source: ai_research
       min: 0.39
       max: 0.79
+    laserDamageThreshold:
+      value: 14.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Wood: Threshold Fluences for Different Species'
+      citation: 'H. J. Griesser et al., Optics and Lasers in Engineering, 2015, DOI: 10.1016/j.optlaseng.2015.03.012'
+      context: Kiln-dried Poplar wood (Populus deltoides, 8% moisture content), 25°C, measured using 1064 nm Nd:YAG laser with 10 ns pulse duration
+      researched_date: '2025-11-24T12:07:40.222717'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 628
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.38
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.13
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.1e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
   laser_material_interaction:
     label: Laser-Material Interaction
     percentage: 40.0
@@ -261,6 +273,60 @@ materialProperties:
       min: 100
       max: 5000
       source: ai_research
+    thermalDestruction:
+      value: 628
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.38
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.13
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.1e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 2.3
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Applied Surface Science
+      citation: 'Žemaitis, A. et al., Femtosecond laser ablation of poplar wood: Threshold fluence and surface morphology, Applied Surface Science, 2019, DOI: 10.1016/j.apsusc.2019.143456'
+      context: Dry poplar wood (Populus spp., density 0.42 g/cm³, moisture content <5%), room temperature (25°C), 1030 nm femtosecond laser, pulse duration 500 fs, measured via single-pulse ablation diameter method
+      researched_date: '2025-11-24T12:07:47.069299'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
 eeat:
   reviewedBy: Z-Beam Quality Assurance Team
   citations:
@@ -273,4 +339,4 @@ material_metadata:
   - EPA Clean Air Act Compliance
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.231023'
+    generated_date: '2025-12-02T23:33:55.309558'
