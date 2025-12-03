@@ -345,9 +345,11 @@ class ComponentGeneratorFactory:
 
                 return StreamlinedFrontmatterGenerator(api_client=api_client)
             elif component_type == "author":
-                from components.author.generator import AuthorComponentGenerator
-
-                return AuthorComponentGenerator()
+                # Author component was removed - authors come from registry
+                raise ValueError(
+                    f"Author component type is deprecated. "
+                    f"Authors are loaded from data/authors/AuthorRegistry.yaml"
+                )
             elif component_type == "caption":
                 # Use refactored caption generator (68% code reduction: 928 → 315 lines)
                 from materials.caption.core.generator import RefactoredCaptionGenerator
