@@ -11,7 +11,7 @@ Copilot will automatically:
 1. ✅ Parse "Bismuth" → Look up in Materials.yaml  
 2. ✅ Find category: `metal`  
 3. ✅ Detect image type: `hero` (default)  
-4. ✅ Build output path: `/images/materials/bismuth-laser-cleaning.png`  
+4. ✅ Build output path: `/images/material/bismuth-laser-cleaning-hero.jpg`  
 5. ✅ Validate material-contaminant compatibility  
 6. ✅ Generate prompt with contamination research  
 7. ✅ Validate prompt (7-category validation)  
@@ -32,7 +32,7 @@ Copilot will automatically:
 **What happens**:
 - Material: Automatically looked up in Materials.yaml
 - Category: Automatically determined (metal, ceramic, wood, etc.)
-- Output: `/images/materials/{material}-laser-cleaning.png`
+- Output: `/images/material/{material}-laser-cleaning-hero.jpg`
 - Type: Hero image (before/after split with laser cleaning)
 
 ### Contamination Images (Before/After Splits)
@@ -50,7 +50,7 @@ Copilot will automatically:
 - Validation: Checks if contaminant can occur on material
   - ✅ Oil on Aluminum → VALID
   - ❌ Rust on Aluminum → BLOCKED (impossible)
-- Output: `/images/materials/{material}-{contaminant}-before-after.png`
+- Output: `/images/material/{material}-{contaminant}-before-after.jpg`
 
 ### Microscopic Images
 
@@ -62,7 +62,7 @@ Copilot will automatically:
 
 **What happens**:
 - Type: Microscopic (500x magnification)
-- Output: `/images/materials/{material}-laser-cleaning-micro.png`
+- Output: `/images/material/{material}-laser-cleaning-micro.jpg`
 - Shows: Detailed surface structure and laser cleaning effects
 
 ## 🚫 Automatic Validation
@@ -133,7 +133,7 @@ Request: Make me a Bismuth Hero image
    • Category: metal
    • Image Type: hero
    • Domain: materials
-   • Output: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/public/images/materials/bismuth-laser-cleaning.png
+   • Output: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/public/images/material/bismuth-laser-cleaning-hero.jpg
 
 ✅ Prompt Generated (3456 chars)
 
@@ -143,7 +143,7 @@ Request: Make me a Bismuth Hero image
 🎨 Generating image...
 
 ✅ Image generated successfully!
-   💾 Saved to: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/public/images/materials/bismuth-laser-cleaning.png
+   💾 Saved to: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/public/images/material/bismuth-laser-cleaning-hero.jpg
 ```
 
 ## 📊 Supported Materials

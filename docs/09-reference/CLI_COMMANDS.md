@@ -54,9 +54,9 @@ Detection keywords:
 ### 5. **Output Path** (Automatic)
 ```
 Materials domain:
-  Hero: /images/materials/bismuth-laser-cleaning.png
-  Micro: /images/materials/bismuth-laser-cleaning-micro.png
-  Contamination: /images/materials/bismuth-oil-contamination.png
+  Hero: /images/material/bismuth-laser-cleaning-hero.jpg
+  Micro: /images/material/bismuth-laser-cleaning-micro.jpg
+  Contamination: /images/material/bismuth-oil-contamination.jpg
 ```
 
 ## ✅ Validation Steps
