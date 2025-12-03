@@ -1392,7 +1392,7 @@ grep -r "feature_name|threshold|validation" docs/**/*.md
 - [ ] **processing-pipeline.md** - For generation flow and validation steps
 
 ### Step 3: Check Component-Specific Documentation
-- [ ] `components/[component]/docs/` or `components/[component]/README.md`
+- [ ] `docs/03-components/` for component-specific docs
 - [ ] `[feature]/README.md` for feature-specific guidance
 
 ### Step 4: Verify Approach Matches Architecture
@@ -1496,7 +1496,7 @@ I won't report this as a violation until you clarify.
 - **Quick answers**: `docs/QUICK_REFERENCE.md`
 - **Policies**: `docs/08-development/`
 - **Architecture**: `docs/02-architecture/`
-- **Component docs**: `components/[name]/docs/` or `docs/03-components/`
+- **Component docs**: `docs/03-components/`
 - **API guidance**: `docs/07-api/`
 - **Data operations**: `docs/05-data/`
 
@@ -1922,7 +1922,7 @@ git revert <commit>  # Revert to known working state
 1. **Immediate Problem Resolution**: `docs/QUICK_REFERENCE.md` 
 2. **Comprehensive Navigation**: `docs/INDEX.md`
 3. **API Issues**: `docs/api/ERROR_HANDLING.md` (includes terminal diagnostics)
-4. **Component Help**: `components/[component]/README.md` or `components/[component]/docs/README.md`
+4. **Component Help**: `docs/03-components/` for all component documentation
 5. **Setup Issues**: `setup/API_CONFIGURATION.md` and `API_SETUP.md`
 6. **Data Architecture**: `docs/DATA_ARCHITECTURE.md` (range propagation, null ranges explained)
 
@@ -2011,10 +2011,10 @@ fi
 
 ### Mandatory Documentation Review
 **BEFORE** making ANY changes to text component code, you MUST:
-1. **READ** the complete documentation: `components/text/docs/README.md`
-2. **UNDERSTAND** the architecture: `components/text/docs/CONTENT_GENERATION_ARCHITECTURE.md`
-3. **STUDY** the prompt system: `components/text/docs/PROMPT_SYSTEM.md`
-4. **REFERENCE** the API: `components/text/docs/API_REFERENCE.md`
+1. **READ** the complete documentation: `docs/03-components/text/README.md`
+2. **UNDERSTAND** the architecture: `docs/02-architecture/processing-pipeline.md`
+3. **STUDY** the prompt system: `shared/text/templates/` and `shared/text/prompts/`
+4. **REFERENCE** the generation code: `generation/core/quality_gated_generator.py`
 
 ### Text Component Forbidden Actions
 1. **NEVER** modify `fail_fast_generator.py` without explicit permission - it's 25,679 bytes of working production code
@@ -2042,13 +2042,13 @@ fi
 - **Configuration Caching**: LRU cache for YAML files, lazy loading for performance
 
 ### When Working on Text Component
-1. **READ THE DOCS FIRST** - All answers are in `components/text/docs/`
+1. **READ THE DOCS FIRST** - Check `docs/03-components/text/README.md` and `docs/02-architecture/processing-pipeline.md`
 2. **Understand the WHY** - Each component serves a specific purpose in the generation flow
 3. **Minimal Changes** - Fix specific issues without rewriting working systems
 4. **Test Thoroughly** - Validate all 4 author personas work correctly
 5. **Ask Permission** - Get explicit approval before major modifications
 
-The text component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference for understanding and working with text generation code.
+The text component documentation and processing pipeline docs cover the generation system. Use them as your primary reference for understanding and working with text generation code.
 
 When suggesting code changes:
 1. Maintain fail-fast behavior
@@ -2069,7 +2069,7 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
 3. Patching output files is **TEMPORARY** - they get regenerated
 
 **THE CORRECT APPROACH:**
-1. ✅ **Fix the exporter code** (`components/frontmatter/core/trivial_exporter.py`) to ALWAYS generate correct structure
+1. ✅ **Fix the exporter code** (`export/core/trivial_exporter.py`) to ALWAYS generate correct structure
 2. ✅ **Regenerate all frontmatter** with `--deploy` to apply the fix
 3. ✅ **Verify the fix persists** by checking files after regeneration
 4. ❌ **NEVER create one-off patch scripts** that modify frontmatter files directly
@@ -2127,7 +2127,7 @@ If you create a "fix script" that patches frontmatter files directly, the fix wi
 - [ ] **If fixing frontmatter: I'm fixing the EXPORTER, not patching files**
 
 **For text component work:**
-- [ ] I've read the documentation in `components/text/docs/`
+- [ ] I've read the documentation in `docs/03-components/text/` and `docs/02-architecture/processing-pipeline.md`
 - [ ] I understand the multi-layered architecture
 - [ ] I have permission for any major changes
 - [ ] I'm testing with real API clients

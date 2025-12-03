@@ -63,7 +63,10 @@ docs/
 │   └── [29 more architecture docs]
 │
 ├── 03-components/                     # Component-specific docs
-│   └── [See /components/ directories for detailed docs]
+│   ├── README.md
+│   ├── text/                          # Text generation component
+│   │   └── README.md
+│   └── [other component docs]
 │
 ├── 04-operations/                     # Daily operations
 │   ├── content-generation.md
@@ -114,22 +117,17 @@ docs/
         └── test-reports/              # Test completion reports
 ```
 
-### Component Documentation (`/components/`)
+### Generation Code (`/generation/`)
 ```
-components/
-├── text/                              # Text generation
-│   ├── docs/
-│   │   ├── README.md
-│   │   ├── CONTENT_GENERATION_ARCHITECTURE.md
-│   │   ├── PROMPT_SYSTEM.md
-│   │   └── API_REFERENCE.md
-│   └── [source files]
-│
-├── frontmatter/                       # Frontmatter generation
-│   ├── README.md
-│   └── [source files]
-│
-└── [other components]/
+generation/
+├── core/                              # Core generation
+│   ├── quality_gated_generator.py     # Main quality-gated generator
+│   ├── simple_generator.py            # Simple generation
+│   └── batch_generator.py             # Batch processing
+├── config/                            # Configuration
+│   ├── config_loader.py               # Config loading
+│   └── dynamic_config.py              # Dynamic calculations
+└── [other generation modules]
 ```
 
 ### Processing Documentation (`/processing/`)
@@ -285,7 +283,7 @@ These policies are **MANDATORY** reading before related work:
 ### By File Type
 | Need | Extension | Primary Location |
 |------|-----------|------------------|
-| **Python Code** | `.py` | `processing/`, `materials/`, `components/` |
+| **Python Code** | `.py` | `generation/`, `export/`, `shared/`, `domains/` |
 | **Configuration** | `.yaml`, `.json` | `data/`, `processing/config.yaml` |
 | **Documentation** | `.md` | `docs/`, component `docs/` folders |
 | **Tests** | `test_*.py` | `tests/`, component `tests/` |
@@ -318,9 +316,9 @@ These policies are **MANDATORY** reading before related work:
 ### Contributing Code?
 1. `.github/copilot-instructions.md` - Coding rules
 2. `docs/08-development/` - All policies
-3. Component-specific docs in `/components/[name]/docs/`
+3. `docs/03-components/` - Component documentation
 4. `tests/test_priority1_fixes.py` - Compliance examples
-5. `processing/integrity/integrity_checker.py` - Validation
+5. `generation/integrity/integrity_checker.py` - Validation
 
 ### Understanding Data Flow?
 1. `docs/05-data/DATA_STORAGE_POLICY.md` - Data rules
@@ -393,6 +391,6 @@ These policies are **MANDATORY** reading before related work:
 
 ---
 
-**Last Review**: November 17, 2025  
-**Next Review**: December 2025 (or when major changes occur)  
+**Last Review**: December 3, 2025  
+**Next Review**: January 2026 (or when major changes occur)  
 **Maintainer**: See git log for recent contributors
