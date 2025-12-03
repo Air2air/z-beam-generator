@@ -45,6 +45,139 @@ LASER_INTERACTION_PROPS = [
     'thermalShockResistance', 'meltingPoint', 'boilingPoint', 'vaporPressure'
 ]
 
+# Category defaults for thermal properties (used when material-specific data missing)
+# Values in mm²/s for thermalDiffusivity, J/cm² for thresholds
+THERMAL_CATEGORY_DEFAULTS = {
+    ('metal', 'precious'): {
+        'thermalDiffusivity': 150.0,
+        'thermalConductivity': 350.0,
+        'thermalDestructionPoint': 1337,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 12.0,
+        'ablationThreshold': 3.0,
+    },
+    ('metal', 'non-ferrous'): {
+        'thermalDiffusivity': 70.0,
+        'thermalConductivity': 200.0,
+        'thermalDestructionPoint': 1000,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 8.0,
+        'ablationThreshold': 2.0,
+    },
+    ('metal', 'ferrous'): {
+        'thermalDiffusivity': 8.0,
+        'thermalConductivity': 50.0,
+        'thermalDestructionPoint': 1800,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 12.0,
+        'ablationThreshold': 4.0,
+    },
+    ('wood', 'hardwood'): {
+        'thermalDiffusivity': 0.12,
+        'thermalConductivity': 0.17,
+        'thermalDestructionPoint': 523,
+        'destructionType': 'charring',
+        'laserDamageThreshold': 3.5,
+        'ablationThreshold': 1.0,
+    },
+    ('wood', 'softwood'): {
+        'thermalDiffusivity': 0.10,
+        'thermalConductivity': 0.12,
+        'thermalDestructionPoint': 513,
+        'destructionType': 'charring',
+        'laserDamageThreshold': 2.5,
+        'ablationThreshold': 0.8,
+    },
+    ('plastic', 'thermoplastic'): {
+        'thermalDiffusivity': 0.12,
+        'thermalConductivity': 0.20,
+        'thermalDestructionPoint': 473,
+        'destructionType': 'softening',
+        'laserDamageThreshold': 2.0,
+        'ablationThreshold': 0.8,
+    },
+    ('plastic', 'thermoset'): {
+        'thermalDiffusivity': 0.15,
+        'thermalConductivity': 0.30,
+        'thermalDestructionPoint': 573,
+        'destructionType': 'decomposition',
+        'laserDamageThreshold': 4.0,
+        'ablationThreshold': 1.5,
+    },
+    ('composite', 'carbon-fiber'): {
+        'thermalDiffusivity': 15.0,
+        'thermalConductivity': 50.0,
+        'thermalDestructionPoint': 673,
+        'destructionType': 'decomposition',
+        'laserDamageThreshold': 5.0,
+        'ablationThreshold': 2.0,
+    },
+    ('composite', 'fiberglass'): {
+        'thermalDiffusivity': 0.22,
+        'thermalConductivity': 0.40,
+        'thermalDestructionPoint': 573,
+        'destructionType': 'decomposition',
+        'laserDamageThreshold': 3.5,
+        'ablationThreshold': 1.5,
+    },
+    ('stone', 'natural'): {
+        'thermalDiffusivity': 1.2,
+        'thermalConductivity': 2.5,
+        'thermalDestructionPoint': 1400,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 15.0,
+        'ablationThreshold': 5.0,
+    },
+    ('ceramic', 'traditional'): {
+        'thermalDiffusivity': 1.0,
+        'thermalConductivity': 2.0,
+        'thermalDestructionPoint': 1500,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 20.0,
+        'ablationThreshold': 6.0,
+    },
+    ('ceramic', 'advanced'): {
+        'thermalDiffusivity': 12.0,
+        'thermalConductivity': 70.0,
+        'thermalDestructionPoint': 2700,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 35.0,
+        'ablationThreshold': 12.0,
+    },
+    ('glass', 'standard'): {
+        'thermalDiffusivity': 0.5,
+        'thermalConductivity': 1.0,
+        'thermalDestructionPoint': 1000,
+        'destructionType': 'softening',
+        'laserDamageThreshold': 8.0,
+        'ablationThreshold': 3.0,
+    },
+    ('rubber', None): {
+        'thermalDiffusivity': 0.12,
+        'thermalConductivity': 0.16,
+        'thermalDestructionPoint': 523,
+        'destructionType': 'decomposition',
+        'laserDamageThreshold': 2.5,
+        'ablationThreshold': 1.0,
+    },
+    ('textile', 'natural'): {
+        'thermalDiffusivity': 0.07,
+        'thermalConductivity': 0.07,
+        'thermalDestructionPoint': 503,
+        'destructionType': 'charring',
+        'laserDamageThreshold': 2.0,
+        'ablationThreshold': 0.5,
+    },
+    ('textile', 'synthetic'): {
+        'thermalDiffusivity': 0.10,
+        'thermalConductivity': 0.15,
+        'thermalDestructionPoint': 523,
+        'destructionType': 'melting',
+        'laserDamageThreshold': 3.0,
+        'ablationThreshold': 1.0,
+    },
+}
+
 
 class TrivialFrontmatterExporter:
     """
@@ -399,7 +532,7 @@ class TrivialFrontmatterExporter:
         
         # Export dual-file structure: materials page and settings page
         self._export_materials_page(material_name, frontmatter)
-        self._export_settings_page(material_name, frontmatter)
+        self._export_settings_page(material_name, frontmatter, material_data)
     
     def _export_materials_page(self, material_name: str, full_frontmatter: Dict) -> None:
         """
@@ -470,11 +603,16 @@ class TrivialFrontmatterExporter:
         
         self.logger.info(f"✅ Exported materials page: {material_name} → {filename}")
     
-    def _export_settings_page(self, material_name: str, full_frontmatter: Dict) -> None:
+    def _export_settings_page(self, material_name: str, full_frontmatter: Dict, material_data: Dict = None) -> None:
         """
         Export settings page frontmatter: /settings/{material}-settings.yaml
         
-        Includes: machine settings, diagnostics (future), challenges (future)
+        Includes: machine settings, thermal properties, laser interaction, diagnostics (future), challenges (future)
+        
+        Args:
+            material_name: Name of the material
+            full_frontmatter: Frontmatter dict with common fields
+            material_data: Raw material data from Materials.yaml for extracting thermal/laser properties
         """
         settings_page = {}
         
@@ -530,6 +668,71 @@ class TrivialFrontmatterExporter:
         
         # Content (settings page specific)
         settings_page['machineSettings'] = full_frontmatter.get('machineSettings')
+        
+        # Extract and add thermalProperties block for interactive components
+        # Source: materialProperties.laser_material_interaction in Materials.yaml
+        if material_data:
+            thermal_props = self._extract_thermal_properties(material_data)
+            if thermal_props:
+                settings_page['thermalProperties'] = thermal_props
+                self.logger.debug(f"✅ Added thermalProperties for {material_name}")
+            else:
+                # Use category defaults
+                category = full_frontmatter.get('category', '')
+                subcategory = full_frontmatter.get('subcategory', '')
+                defaults = self._get_thermal_defaults(category, subcategory)
+                if defaults:
+                    settings_page['thermalProperties'] = {
+                        'thermalDiffusivity': {
+                            'value': defaults.get('thermalDiffusivity'),
+                            'unit': 'mm²/s'
+                        },
+                        'thermalConductivity': {
+                            'value': defaults.get('thermalConductivity'),
+                            'unit': 'W/(m·K)'
+                        },
+                        'thermalDestructionPoint': {
+                            'value': defaults.get('thermalDestructionPoint'),
+                            'unit': 'K',
+                            'type': defaults.get('destructionType', 'melting')
+                        }
+                    }
+                    self.logger.debug(f"✅ Added thermalProperties (category defaults) for {material_name}")
+            
+            # Extract and add laserMaterialInteraction block for heatmap components
+            laser_props = self._extract_laser_interaction(material_data)
+            if laser_props:
+                settings_page['laserMaterialInteraction'] = laser_props
+                self.logger.debug(f"✅ Added laserMaterialInteraction for {material_name}")
+            else:
+                # Use category defaults
+                category = full_frontmatter.get('category', '')
+                subcategory = full_frontmatter.get('subcategory', '')
+                defaults = self._get_thermal_defaults(category, subcategory)
+                if defaults:
+                    damage = defaults.get('laserDamageThreshold')
+                    ablation = defaults.get('ablationThreshold')
+                    settings_page['laserMaterialInteraction'] = {
+                        'laserDamageThreshold': {
+                            'value': damage,
+                            'unit': 'J/cm²'
+                        },
+                        'ablationThreshold': {
+                            'value': ablation,
+                            'unit': 'J/cm²'
+                        }
+                    }
+                    # Calculate optimal range
+                    if damage and ablation:
+                        min_opt = round(ablation * 1.2, 3)
+                        max_opt = round(damage * 0.8, 3)
+                        if min_opt < max_opt:
+                            settings_page['laserMaterialInteraction']['optimalFluenceRange'] = {
+                                'min': min_opt,
+                                'max': max_opt,
+                                'unit': 'J/cm²'
+                            }
+                    self.logger.debug(f"✅ Added laserMaterialInteraction (category defaults) for {material_name}")
         
         # Add material_challenges (category-level diagnostic guidance)
         settings_page['material_challenges'] = full_frontmatter.get('material_challenges')
@@ -669,6 +872,239 @@ class TrivialFrontmatterExporter:
             enriched[setting_name] = self._add_min_max(setting_value, setting_name, self.machine_settings_ranges)
         
         return enriched
+    
+    def _normalize_thermal_diffusivity(self, value: float, unit: str) -> float:
+        """
+        Normalize thermalDiffusivity to mm²/s for frontend components.
+        
+        Input formats from Materials.yaml:
+        - value=9.7, unit='×10^{-5} m²/s' → 97.0 mm²/s
+        - value=1.25e-07, unit='m²/s' → 0.125 mm²/s  
+        - value=6.2e-07, unit='m^2/s' → 0.62 mm²/s
+        - value=0.12, unit='mm²/s' → 0.12 mm²/s (already correct)
+        
+        Returns:
+            Thermal diffusivity in mm²/s
+        """
+        if value is None:
+            return None
+        
+        # Already in mm²/s - check this FIRST before m²/s
+        if 'mm²/s' in unit or 'mm^2/s' in unit:
+            return value
+        
+        # Handle multiplier format: ×10^{-5} m²/s
+        if '×10^{-5}' in unit or '10^{-5}' in unit:
+            # value is in 10^-5 m²/s, convert to mm²/s
+            # 10^-5 m²/s = 10 mm²/s
+            return value * 10
+        
+        # Handle standard m²/s or m^2/s
+        if 'm²/s' in unit or 'm^2/s' in unit:
+            # Scientific notation: 1.25e-07 m²/s = 0.125 mm²/s
+            return value * 1_000_000
+        
+        # Unknown format - assume m²/s and convert
+        self.logger.warning(f"Unknown thermal diffusivity unit: {unit}, assuming m²/s")
+        return value * 1_000_000
+    
+    def _extract_thermal_properties(self, material_data: Dict) -> Dict:
+        """
+        Extract thermalProperties block from material data for settings page.
+        
+        Source: materialProperties.laser_material_interaction
+        
+        Returns:
+            Dict with thermalDiffusivity, thermalConductivity, thermalDestructionPoint
+            formatted for frontend interactive components
+        """
+        thermal_props = {}
+        
+        # Get laser_material_interaction data
+        mat_props = material_data.get('materialProperties', {})
+        lmi = mat_props.get('laser_material_interaction', {})
+        
+        if not lmi:
+            return thermal_props
+        
+        # Extract thermalDiffusivity (convert to mm²/s)
+        td = lmi.get('thermalDiffusivity', {})
+        if isinstance(td, dict) and td.get('value') is not None:
+            unit = td.get('unit', 'm²/s')
+            value_mm2_s = self._normalize_thermal_diffusivity(td['value'], unit)
+            if value_mm2_s is not None:
+                thermal_props['thermalDiffusivity'] = {
+                    'value': round(value_mm2_s, 4),
+                    'unit': 'mm²/s'
+                }
+        
+        # Extract thermalConductivity (already in W/(m·K))
+        tc = lmi.get('thermalConductivity', {})
+        if isinstance(tc, dict) and tc.get('value') is not None:
+            thermal_props['thermalConductivity'] = {
+                'value': tc['value'],
+                'unit': 'W/(m·K)'
+            }
+        
+        # Extract thermalDestructionPoint
+        tdp = lmi.get('thermalDestructionPoint', {})
+        if isinstance(tdp, dict) and tdp.get('value') is not None:
+            unit = tdp.get('unit', 'K')
+            value = tdp['value']
+            
+            # Convert to K if in °C
+            if unit == '°C':
+                value = value + 273.15
+                unit = 'K'
+            
+            # Determine destruction type based on category
+            category = material_data.get('category', '')
+            subcategory = material_data.get('subcategory', '')
+            destruction_type = self._get_destruction_type(category, subcategory)
+            
+            thermal_props['thermalDestructionPoint'] = {
+                'value': round(value, 2),
+                'unit': 'K',
+                'type': destruction_type
+            }
+        
+        return thermal_props
+    
+    def _extract_laser_interaction(self, material_data: Dict) -> Dict:
+        """
+        Extract laserMaterialInteraction block from material data for settings page.
+        
+        Source: materialProperties.laser_material_interaction
+        
+        Returns:
+            Dict with laserDamageThreshold, ablationThreshold, optimalFluenceRange
+            formatted for frontend interactive components
+        """
+        laser_props = {}
+        
+        # Get laser_material_interaction data
+        mat_props = material_data.get('materialProperties', {})
+        lmi = mat_props.get('laser_material_interaction', {})
+        
+        if not lmi:
+            return laser_props
+        
+        # Extract laserDamageThreshold
+        ldt = lmi.get('laserDamageThreshold', {})
+        if isinstance(ldt, dict) and ldt.get('value') is not None:
+            unit = ldt.get('unit', 'J/cm²')
+            value = ldt['value']
+            
+            # Convert J/m² to J/cm² if needed
+            if unit == 'J/m²':
+                value = value / 10000  # 1 J/m² = 0.0001 J/cm²
+                unit = 'J/cm²'
+            
+            laser_props['laserDamageThreshold'] = {
+                'value': round(value, 3),
+                'unit': 'J/cm²'
+            }
+        
+        # Extract ablationThreshold
+        abt = lmi.get('ablationThreshold', {})
+        if isinstance(abt, dict) and abt.get('value') is not None:
+            unit = abt.get('unit', 'J/cm²')
+            value = abt['value']
+            
+            # Convert J/m² to J/cm² if needed
+            if unit == 'J/m²':
+                value = value / 10000
+                unit = 'J/cm²'
+            
+            laser_props['ablationThreshold'] = {
+                'value': round(value, 3),
+                'unit': 'J/cm²'
+            }
+        
+        # Calculate optimalFluenceRange if both thresholds available
+        if 'laserDamageThreshold' in laser_props and 'ablationThreshold' in laser_props:
+            ablation = laser_props['ablationThreshold']['value']
+            damage = laser_props['laserDamageThreshold']['value']
+            
+            # Optimal starts 20% above ablation, ends 20% below damage
+            min_optimal = round(ablation * 1.2, 3)
+            max_optimal = round(damage * 0.8, 3)
+            
+            # Ensure min < max
+            if min_optimal < max_optimal:
+                laser_props['optimalFluenceRange'] = {
+                    'min': min_optimal,
+                    'max': max_optimal,
+                    'unit': 'J/cm²'
+                }
+        
+        # Extract thermalShockResistance if available
+        tsr = lmi.get('thermalShockResistance', {})
+        if isinstance(tsr, dict) and tsr.get('value') is not None:
+            laser_props['thermalShockResistance'] = {
+                'value': tsr['value'],
+                'unit': 'K'
+            }
+        
+        # Extract reflectivity if available
+        refl = lmi.get('laserReflectivity', {}) or lmi.get('reflectivity', {})
+        if isinstance(refl, dict) and refl.get('value') is not None:
+            laser_props['reflectivity'] = {
+                'value': refl['value'],
+                'wavelength': 1064  # Default to common laser wavelength
+            }
+        
+        return laser_props
+    
+    def _get_destruction_type(self, category: str, subcategory: str) -> str:
+        """
+        Determine thermal destruction type based on material category.
+        
+        Returns: 'melting', 'charring', 'decomposition', or 'softening'
+        """
+        # Check specific subcategory first
+        key = (category, subcategory)
+        if key in THERMAL_CATEGORY_DEFAULTS:
+            return THERMAL_CATEGORY_DEFAULTS[key].get('destructionType', 'melting')
+        
+        # Fall back to category only
+        key_cat = (category, None)
+        if key_cat in THERMAL_CATEGORY_DEFAULTS:
+            return THERMAL_CATEGORY_DEFAULTS[key_cat].get('destructionType', 'melting')
+        
+        # Category-based defaults
+        destruction_types = {
+            'metal': 'melting',
+            'wood': 'charring',
+            'plastic': 'softening',
+            'rubber': 'decomposition',
+            'textile': 'charring',
+            'composite': 'decomposition',
+            'ceramic': 'melting',
+            'glass': 'softening',
+            'stone': 'melting',
+        }
+        
+        return destruction_types.get(category, 'melting')
+    
+    def _get_thermal_defaults(self, category: str, subcategory: str) -> Dict:
+        """
+        Get category-level thermal defaults when material-specific data is missing.
+        
+        Returns dict with thermalDiffusivity, thermalConductivity, etc.
+        """
+        # Try specific subcategory first
+        key = (category, subcategory)
+        if key in THERMAL_CATEGORY_DEFAULTS:
+            return THERMAL_CATEGORY_DEFAULTS[key].copy()
+        
+        # Fall back to category only
+        key_cat = (category, None)
+        if key_cat in THERMAL_CATEGORY_DEFAULTS:
+            return THERMAL_CATEGORY_DEFAULTS[key_cat].copy()
+        
+        # Default to non-ferrous metal if nothing matches
+        return THERMAL_CATEGORY_DEFAULTS.get(('metal', 'non-ferrous'), {}).copy()
     
     def _add_min_max(self, prop_value: Any, prop_name: str, category_ranges: Dict) -> Any:
         """Add min/max fields to a property if available in category ranges.

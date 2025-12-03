@@ -102,6 +102,21 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+thermalProperties:
+  thermalDestructionPoint:
+    value: 1100
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 2.5
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.9
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Thermal shock and microcracking
@@ -155,4 +170,4 @@ material_challenges:
     - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:18.421206'
+    generated_date: '2025-12-02T22:39:44.299608'

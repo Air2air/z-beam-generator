@@ -102,6 +102,21 @@ machineSettings:
     value: 40
     min: 10
     max: 90
+thermalProperties:
+  thermalDestructionPoint:
+    value: 773
+    unit: K
+    type: decomposition
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 3.5
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.75
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Matrix degradation and delamination
@@ -150,4 +165,4 @@ material_challenges:
     - Monitor for matrix damage; stop if surface texture changes
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:18.145861'
+    generated_date: '2025-12-02T22:39:43.786301'

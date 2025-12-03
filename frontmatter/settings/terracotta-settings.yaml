@@ -107,6 +107,21 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+thermalProperties:
+  thermalDestructionPoint:
+    value: 1473
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 3
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.5
+    unit: K
+  reflectivity:
+    value: 0.25
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Moisture-induced spalling and explosive failure
@@ -158,4 +173,4 @@ material_challenges:
     - Heritage masonry requires gentler approach (max 60W)
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:20.225680'
+    generated_date: '2025-12-02T22:39:46.226394'

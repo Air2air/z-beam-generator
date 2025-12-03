@@ -103,10 +103,34 @@ machineSettings:
     unit: '%'
     min: 10
     max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 4.09
+    unit: mm²/s
+  thermalConductivity:
+    value: 16.2
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1698.15
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 1.2
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.85
+    unit: J/cm²
+  thermalShockResistance:
+    value: 132.0
+    unit: K
+  reflectivity:
+    value: 0.65
+    wavelength: 1064
 material_challenges:
 - Requires careful power calibration to prevent material damage
 - Monitor surface temperature during processing
 - Verify cleaning effectiveness through inspection
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:21.050071'
+    generated_date: '2025-12-02T22:39:47.021120'

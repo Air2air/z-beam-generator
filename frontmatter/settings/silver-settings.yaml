@@ -102,6 +102,21 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+thermalProperties:
+  thermalDestructionPoint:
+    value: 1234.93
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 0.45
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.985
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: High thermal conductivity and heat spread
@@ -154,4 +169,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:19.904078'
+    generated_date: '2025-12-02T22:39:45.890211'

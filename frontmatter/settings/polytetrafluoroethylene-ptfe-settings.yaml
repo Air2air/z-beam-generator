@@ -57,6 +57,34 @@ images:
     alt: Polytetrafluoroethylene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/materials/polytetrafluoroethylene-laser-cleaning-micro.png
 machineSettings: null
+thermalProperties:
+  thermalDiffusivity:
+    value: 0.11
+    unit: mm²/s
+  thermalConductivity:
+    value: 0.25
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 673
+    unit: K
+    type: softening
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  ablationThreshold:
+    value: 0.28
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 0.336
+    max: 4.0
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.95
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Low melting/degradation temperatures
@@ -90,4 +118,4 @@ material_challenges:
     - Multiple gentle passes instead of single high-power pass
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:19.241891'
+    generated_date: '2025-12-02T22:39:45.192176'

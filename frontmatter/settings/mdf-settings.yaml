@@ -105,6 +105,21 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+thermalProperties:
+  thermalDestructionPoint:
+    value: 550
+    unit: K
+    type: charring
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.5
+    unit: K
+  reflectivity:
+    value: 0.15
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Charring and carbonization
@@ -152,4 +167,4 @@ material_challenges:
     - Limit to 2-3 passes maximum to avoid substrate damage
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:18.281936'
+    generated_date: '2025-12-02T22:39:43.942665'

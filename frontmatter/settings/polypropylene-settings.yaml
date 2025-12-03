@@ -105,6 +105,21 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+thermalProperties:
+  thermalDestructionPoint:
+    value: 650
+    unit: K
+    type: softening
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 2
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1
+    unit: K
+  reflectivity:
+    value: 0.05
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Low melting/degradation temperatures
@@ -138,4 +153,4 @@ material_challenges:
     - Multiple gentle passes instead of single high-power pass
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:18.942118'
+    generated_date: '2025-12-02T22:39:44.823936'

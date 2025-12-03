@@ -103,10 +103,27 @@ machineSettings:
     unit: '%'
     min: 10
     max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 1.3
+    unit: mm²/s
+  thermalConductivity:
+    value: 2.3
+    unit: W/(m·K)
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 1.8
+    unit: J/cm²
+  ablationThreshold:
+    value: 2.3
+    unit: J/cm²
+  reflectivity:
+    value: 0.12
+    wavelength: 1064
 material_challenges:
 - Requires careful power calibration to prevent material damage
 - Monitor surface temperature during processing
 - Verify cleaning effectiveness through inspection
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:20.837180'
+    generated_date: '2025-12-02T22:39:46.838517'

@@ -107,6 +107,21 @@ machineSettings:
     value: 30
     min: 10
     max: 90
+thermalProperties:
+  thermalDestructionPoint:
+    value: 1799
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  thermalShockResistance:
+    value: 2.5
+    unit: K
+  reflectivity:
+    value: 0.65
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Rapid oxidation and pyrophoricity
@@ -167,4 +182,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:20.584928'
+    generated_date: '2025-12-02T22:39:46.619372'

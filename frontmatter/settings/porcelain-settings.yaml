@@ -105,6 +105,21 @@ machineSettings:
   dwellTime:
     unit: μs
     value: 100
+thermalProperties:
+  thermalDestructionPoint:
+    value: 1600
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 3
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.5
+    unit: K
+  reflectivity:
+    value: 0.7
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Thermal shock and cracking
@@ -153,4 +168,4 @@ material_challenges:
     - PVD coatings may require chemical assist for complete removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:19.321696'
+    generated_date: '2025-12-02T22:39:45.278107'

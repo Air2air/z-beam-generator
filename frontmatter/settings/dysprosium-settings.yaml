@@ -102,6 +102,28 @@ machineSettings:
     value: 50
     min: 10
     max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 70.0
+    unit: mm²/s
+  thermalConductivity:
+    value: 200.0
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1000
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 8.0
+    unit: J/cm²
+  ablationThreshold:
+    value: 2.0
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 2.4
+    max: 6.4
+    unit: J/cm²
 material_challenges:
   thermal_management:
   - challenge: Rapid oxidation and pyrophoricity
@@ -162,4 +184,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-01T18:15:17.555579'
+    generated_date: '2025-12-02T22:39:43.081239'
