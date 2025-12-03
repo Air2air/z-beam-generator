@@ -443,7 +443,7 @@ python3 domains/materials/image/generate.py "Steel"
 ## 📚 **Related Documentation**
 
 ### Architecture
-- **Architecture Overview**: `ARCHITECTURE_OVERVIEW.md` - System architecture
+- **Architecture Overview**: `docs/02-architecture/ARCHITECTURE_OVERVIEW.md` - System architecture
 - **Domain Independence**: `docs/02-architecture/DOMAIN_ARCHITECTURE.md`
 - **Image Architecture**: `docs/02-architecture/IMAGE_ARCHITECTURE.md`
 

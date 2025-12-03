@@ -239,7 +239,7 @@ Located in `docs/08-development/`:
 1. **Policies**: `GROK_QUICK_REF.md` - TIER priorities
 2. **Generation**: `.github/COPILOT_GENERATION_GUIDE.md`
 3. **Architecture**: This file
-4. **Images**: `IMAGE_GENERATION_GUIDE.md`
+4. **Images**: `docs/04-operations/IMAGE_GENERATION_GUIDE.md`
 5. **Quick Ref**: `docs/QUICK_REFERENCE.md`
 
 ### Before ANY Code Change
@@ -299,7 +299,7 @@ Frontmatter receives immediate field-level updates but is NEVER read for persist
 - **Primary Guide**: `.github/copilot-instructions.md` - Complete AI guidelines
 - **Quick Start**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation
 - **Generation**: `.github/COPILOT_GENERATION_GUIDE.md` - Content generation commands
-- **Images**: `IMAGE_GENERATION_GUIDE.md` - Image generation workflow
+- **Images**: `docs/04-operations/IMAGE_GENERATION_GUIDE.md` - Image generation workflow
 
 ### For Developers
 - **Quick Start**: `QUICK_START.md` - Fast setup

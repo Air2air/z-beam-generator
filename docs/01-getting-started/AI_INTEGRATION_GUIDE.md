@@ -11,8 +11,8 @@
 ### Quick Access to Any Documentation
 1. **Policies & Rules**: `GROK_QUICK_REF.md` - TIER priorities, critical rules
 2. **Content Generation**: `.github/COPILOT_GENERATION_GUIDE.md` - Step-by-step generation commands
-3. **Architecture**: `ARCHITECTURE_OVERVIEW.md` - System design overview
-4. **Image Generation**: `IMAGE_GENERATION_GUIDE.md` - Complete image workflow
+3. **Architecture**: `docs/02-architecture/ARCHITECTURE_OVERVIEW.md` - System design overview
+4. **Image Generation**: `docs/04-operations/IMAGE_GENERATION_GUIDE.md` - Complete image workflow
 5. **Quick Answers**: `docs/QUICK_REFERENCE.md` - Problem → solution mappings
 
 ### Before ANY Code Change
@@ -84,7 +84,7 @@ Break generation into specialized prompts:
 **Benefits**: Separation of concerns, optimal parameters per stage, reusable components, easy debugging
 
 ### Image Generation
-**→ `IMAGE_GENERATION_GUIDE.md`**
+**→ `docs/04-operations/IMAGE_GENERATION_GUIDE.md`**
 
 Complete workflow:
 - Domain adapter pattern (materials, contaminants)
@@ -368,14 +368,14 @@ python3 domains/materials/image/learning/analytics.py attempts
 ## 🔗 **Related Documentation**
 
 ### For AI Assistants (Primary)
-- **This Guide**: `AI_INTEGRATION_GUIDE.md` - Complete workflow
+- **This Guide**: `docs/01-getting-started/AI_INTEGRATION_GUIDE.md` - Complete workflow
 - **Quick Start**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation
 - **Policies**: `GROK_QUICK_REF.md` - TIER priorities
 - **Generation**: `.github/COPILOT_GENERATION_GUIDE.md` - Commands
 
 ### Architecture & Design
-- **Architecture**: `ARCHITECTURE_OVERVIEW.md` - System design
-- **Images**: `IMAGE_GENERATION_GUIDE.md` - Image workflow
+- **Architecture**: `docs/02-architecture/ARCHITECTURE_OVERVIEW.md` - System design
+- **Images**: `docs/04-operations/IMAGE_GENERATION_GUIDE.md` - Image workflow
 - **Quick Ref**: `docs/QUICK_REFERENCE.md` - Problem → solution
 
 ### Development Policies
