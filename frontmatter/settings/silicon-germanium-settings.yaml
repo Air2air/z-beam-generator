@@ -56,53 +56,14 @@ images:
   micro:
     alt: Silicon Germanium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/materials/silicon-germanium-laser-cleaning-micro.png
-machineSettings:
-  powerRange:
-    unit: W
-    value: 45
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 1.2
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 15
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
+  thermalDiffusivity:
+    value: 25.0
+    unit: mm²/s
+  thermalConductivity:
+    value: 10.2
+    unit: W/(m·K)
   thermalDestructionPoint:
     value: 1400
     unit: K
@@ -111,11 +72,18 @@ laserMaterialInteraction:
   laserDamageThreshold:
     value: 2.0
     unit: J/cm²
+  ablationThreshold:
+    value: 0.85
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.02
+    max: 1.6
+    unit: J/cm²
   thermalShockResistance:
     value: 1.5
     unit: K
   reflectivity:
-    value: 0.4
+    value: 0.35
     wavelength: 1064
 material_challenges:
   thermal_management:
@@ -167,4 +135,4 @@ material_challenges:
     - Post-cleaning oxygen plasma for complete residue removal
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:45.829507'
+    generated_date: '2025-12-02T22:48:03.357044'

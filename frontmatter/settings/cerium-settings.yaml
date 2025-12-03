@@ -56,79 +56,24 @@ images:
   micro:
     alt: Cerium microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/materials/cerium-laser-cleaning-micro.png
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 5.1
-    min: 0.3
-    max: 4.5
-  energyDensity:
-    unit: J/cm²
-    value: 5.1
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
-    value: 70.0
+    value: 8.67
     unit: mm²/s
   thermalConductivity:
-    value: 200.0
+    value: 11.3
     unit: W/(m·K)
-  thermalDestructionPoint:
-    value: 1000
-    unit: K
-    type: melting
 laserMaterialInteraction:
   laserDamageThreshold:
-    value: 8.0
+    value: 1.8
     unit: J/cm²
   ablationThreshold:
-    value: 2.0
+    value: 1.5
     unit: J/cm²
-  optimalFluenceRange:
-    min: 2.4
-    max: 6.4
-    unit: J/cm²
+  reflectivity:
+    value: 0.92
+    wavelength: 1064
 material_challenges:
   thermal_management:
   - challenge: Rapid oxidation and pyrophoricity
@@ -189,4 +134,4 @@ material_challenges:
     - Chain of custody documentation for high-value materials
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:42.872760'
+    generated_date: '2025-12-02T22:48:01.192629'

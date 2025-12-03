@@ -55,53 +55,14 @@ images:
   micro:
     alt: Microscopic view of Titanium surface after laser cleaning showing detailed surface structure
     url: /images/materials/titanium-laser-cleaning-micro.png
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 100
-    min: 1
-    max: 200
-  fluenceThreshold:
-    unit: J/cm²
-    value: 2.5
-    min: 0.3
-    max: 4.5
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
+  thermalDiffusivity:
+    value: 9.29
+    unit: mm²/s
+  thermalConductivity:
+    value: 21.9
+    unit: W/(m·K)
   thermalDestructionPoint:
     value: 1941
     unit: K
@@ -110,11 +71,18 @@ laserMaterialInteraction:
   laserDamageThreshold:
     value: 5
     unit: J/cm²
+  ablationThreshold:
+    value: 1.5
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.8
+    max: 4.0
+    unit: J/cm²
   thermalShockResistance:
     value: 2.5
     unit: K
   reflectivity:
-    value: 0.6
+    value: 0.66
     wavelength: 1064
 material_challenges:
   thermal_management:
@@ -168,4 +136,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.319395'
+    generated_date: '2025-12-02T22:48:03.758034'

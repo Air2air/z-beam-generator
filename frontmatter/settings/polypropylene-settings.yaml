@@ -56,56 +56,14 @@ images:
   micro:
     alt: Polypropylene microscopic view of laser cleaning showing detailed precise contamination removal
     url: /images/materials/polypropylene-laser-cleaning-micro.png
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 100
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 1.2
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 2
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
-  dwellTime:
-    unit: μs
-    value: 100
+machineSettings: null
 thermalProperties:
+  thermalDiffusivity:
+    value: 0.0978
+    unit: mm²/s
+  thermalConductivity:
+    value: 0.17
+    unit: W/(m·K)
   thermalDestructionPoint:
     value: 650
     unit: K
@@ -114,11 +72,18 @@ laserMaterialInteraction:
   laserDamageThreshold:
     value: 2
     unit: J/cm²
+  ablationThreshold:
+    value: 0.28
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 0.336
+    max: 1.6
+    unit: J/cm²
   thermalShockResistance:
     value: 1
     unit: K
   reflectivity:
-    value: 0.05
+    value: 0.039
     wavelength: 1064
 material_challenges:
   thermal_management:
@@ -153,4 +118,4 @@ material_challenges:
     - Multiple gentle passes instead of single high-power pass
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:44.823936'
+    generated_date: '2025-12-02T22:48:02.581704'

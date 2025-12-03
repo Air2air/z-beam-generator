@@ -55,52 +55,7 @@ images:
   micro:
     alt: Microscopic view of Steel surface after laser cleaning showing detailed surface structure
     url: /images/materials/steel-laser-cleaning-micro.png
-machineSettings:
-  powerRange:
-    unit: W
-    value: 100
-    min: 1
-    max: 120
-  wavelength:
-    unit: nm
-    value: 1064
-    min: 355
-    max: 10640
-  spotSize:
-    unit: μm
-    value: 50
-    min: 0.1
-    max: 500
-  repetitionRate:
-    unit: kHz
-    value: 50
-    min: 1
-    max: 200
-  energyDensity:
-    unit: J/cm²
-    value: 5
-    min: 0.1
-    max: 20
-  pulseWidth:
-    unit: ns
-    value: 10
-    min: 0.1
-    max: 1000
-  scanSpeed:
-    unit: mm/s
-    value: 500
-    min: 10
-    max: 5000
-  passCount:
-    unit: passes
-    value: 3
-    min: 1
-    max: 10
-  overlapRatio:
-    unit: '%'
-    value: 50
-    min: 10
-    max: 90
+machineSettings: null
 thermalProperties:
   thermalDiffusivity:
     value: 14.0
@@ -108,6 +63,10 @@ thermalProperties:
   thermalConductivity:
     value: 50.0
     unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1773.0
+    unit: K
+    type: melting
 laserMaterialInteraction:
   laserDamageThreshold:
     value: 2.0
@@ -173,4 +132,4 @@ material_challenges:
     - Chemical pre-cleaning for heavy contamination
 preservedData:
   generationMetadata:
-    generated_date: '2025-12-02T22:39:46.025785'
+    generated_date: '2025-12-02T22:48:03.520149'
