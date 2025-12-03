@@ -11928,24 +11928,6 @@ settings:
     settings_description:
       before: Before laser cleaning, Aluminum Nitride surfaces require careful parameter selection
       after: After cleaning, Aluminum Nitride surfaces show restored appearance with controlled parameters
-  Bismuth:
-    machineSettings:
-      powerRange: *id010
-      wavelength: *id011
-      spotSize: *id012
-      repetitionRate: *id013
-      energyDensity: *id014
-      pulseWidth: *id015
-      scanSpeed: *id016
-      passCount: *id017
-      overlapRatio: *id018
-    material_challenges:
-    - Requires careful power calibration to prevent material damage
-    - Monitor surface temperature during processing
-    - Verify cleaning effectiveness through inspection
-    settings_description:
-      before: Before laser cleaning, Bismuth surfaces require careful parameter selection
-      after: After cleaning, Bismuth surfaces show restored appearance with controlled parameters
   Boron Carbide:
     machineSettings:
       powerRange: *id019
@@ -12171,24 +12153,6 @@ settings:
     settings_description:
       before: Before laser cleaning, Indium Phosphide surfaces require careful parameter selection
       after: After cleaning, Indium Phosphide surfaces show restored appearance with controlled parameters
-  Nitinol:
-    machineSettings:
-      powerRange: *id010
-      wavelength: *id011
-      spotSize: *id012
-      repetitionRate: *id013
-      energyDensity: *id014
-      pulseWidth: *id015
-      scanSpeed: *id016
-      passCount: *id017
-      overlapRatio: *id018
-    material_challenges:
-    - Requires careful power calibration to prevent material damage
-    - Monitor surface temperature during processing
-    - Verify cleaning effectiveness through inspection
-    settings_description:
-      before: Before laser cleaning, Nitinol surfaces require careful parameter selection
-      after: After cleaning, Nitinol surfaces show restored appearance with controlled parameters
   Nylon:
     machineSettings:
       powerRange: *id001
@@ -12261,24 +12225,6 @@ settings:
     settings_description:
       before: Before laser cleaning, Polyimide surfaces require careful parameter selection
       after: After cleaning, Polyimide surfaces show restored appearance with controlled parameters
-  Scandium:
-    machineSettings:
-      powerRange: *id010
-      wavelength: *id011
-      spotSize: *id012
-      repetitionRate: *id013
-      energyDensity: *id014
-      pulseWidth: *id015
-      scanSpeed: *id016
-      passCount: *id017
-      overlapRatio: *id018
-    material_challenges:
-    - Requires careful power calibration to prevent material damage
-    - Monitor surface temperature during processing
-    - Verify cleaning effectiveness through inspection
-    settings_description:
-      before: Before laser cleaning, Scandium surfaces require careful parameter selection
-      after: After cleaning, Scandium surfaces show restored appearance with controlled parameters
   Stainless Steel 304:
     machineSettings:
       powerRange: *id010

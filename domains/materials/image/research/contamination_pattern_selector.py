@@ -271,16 +271,9 @@ class ContaminationPatternSelector:
         
         # Fall back to Materials.yaml lookup (with caching)
         try:
-            if not hasattr(self, '_materials_data'):
-                materials_file = PROJECT_ROOT / 'data' / 'materials' / 'Materials.yaml'
-                if materials_file.exists():
-                    logger.info("📦 Loading Materials.yaml for category lookup (one-time)...")
-                    with open(materials_file, 'r', encoding='utf-8') as f:
-                        self._materials_data = yaml.safe_load(f)
-                else:
-                    self._materials_data = {}
-            
-            materials = self._materials_data.get('materials', {})
+            # Use _load_materials_data() instead of inline loading
+            materials_data = self._load_materials_data()
+            materials = materials_data.get('materials', {}) if materials_data else {}
             if material_name in materials:
                 category = materials[material_name].get('category')
                 if not category:
@@ -399,6 +392,7 @@ class ContaminationPatternSelector:
         Check if a material matches any entry in valid_materials list.
         
         Uses intelligent matching to handle:
+        - ALL keyword: Matches any material
         - Exact matches: "Titanium" matches "Titanium"
         - Alloy variants: "Titanium Alloy (Ti-6Al-4V)" matches "Titanium"
         - Base material extraction: "Stainless Steel 316" matches "Stainless Steel"
@@ -414,6 +408,10 @@ class ContaminationPatternSelector:
         
         for vm in valid_materials:
             vm_lower = vm.lower()
+            
+            # ALL keyword matches any material
+            if vm_lower == 'all':
+                return True
             
             # Exact match
             if material_lower == vm_lower:

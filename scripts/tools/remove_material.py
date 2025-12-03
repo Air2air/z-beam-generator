@@ -72,9 +72,14 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
     """
     base_path = Path(__file__).parent.parent.parent
     materials_file = base_path / 'data' / 'materials' / 'Materials.yaml'
+    settings_file = base_path / 'data' / 'settings' / 'Settings.yaml'
     frontmatter_dir = base_path / 'frontmatter' / 'materials'
-    settings_dir = base_path / 'frontmatter' / 'settings'
+    settings_frontmatter_dir = base_path / 'frontmatter' / 'settings'
     images_dir = base_path / 'public' / 'images' / 'materials'
+    progress_dir = base_path / 'progress'
+    
+    # z-beam destination frontmatter (production site)
+    zbeam_frontmatter_dir = Path('/Users/todddunning/Desktop/Z-Beam/z-beam/frontmatter/materials')
     
     # Load materials data
     if not materials_file.exists():
@@ -103,7 +108,8 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
     # Generate expected file paths
     slug = slugify(effective_key)
     frontmatter_file = frontmatter_dir / f"{slug}-laser-cleaning.yaml"
-    settings_file = settings_dir / f"{slug}-settings.yaml"
+    zbeam_frontmatter_file = zbeam_frontmatter_dir / f"{slug}-laser-cleaning.yaml"
+    settings_frontmatter_file = settings_frontmatter_dir / f"{slug}-settings.yaml"
     
     # Find any matching images
     image_files = list(images_dir.glob(f"{slug}*.png")) if images_dir.exists() else []
@@ -138,23 +144,42 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
     else:
         print("   ○ Not found in category_mapping section")
     
-    # Step 4: Check frontmatter file
-    print("\n📁 Frontmatter file:")
+    # Step 4: Check Settings.yaml
+    print("\n⚙️  Settings.yaml:")
+    settings_data = load_yaml(settings_file) if settings_file.exists() else {}
+    settings_materials = settings_data.get('settings', {})
+    settings_key = find_material_key(settings_materials, material_name) if settings_materials else None
+    if settings_key and settings_key in settings_materials:
+        print(f"   ✓ Will remove key: '{settings_key}'")
+        removals.append(('settings_yaml', settings_key, settings_data, settings_file))
+    else:
+        print("   ○ Not found in Settings.yaml")
+    
+    # Step 5: Check frontmatter file (generator)
+    print("\n📁 Frontmatter file (z-beam-generator):")
     if frontmatter_file.exists():
         print(f"   ✓ Will delete: {frontmatter_file.relative_to(base_path)}")
         removals.append(('frontmatter', frontmatter_file))
     else:
         print(f"   ○ Not found: {frontmatter_file.relative_to(base_path)}")
     
-    # Step 5: Check settings file
-    print("\n⚙️  Settings file:")
-    if settings_file.exists():
-        print(f"   ✓ Will delete: {settings_file.relative_to(base_path)}")
-        removals.append(('settings', settings_file))
+    # Step 6: Check frontmatter file (z-beam production)
+    print("\n📁 Frontmatter file (z-beam production):")
+    if zbeam_frontmatter_file.exists():
+        print(f"   ✓ Will delete: {zbeam_frontmatter_file}")
+        removals.append(('zbeam_frontmatter', zbeam_frontmatter_file))
     else:
-        print(f"   ○ Not found: {settings_file.relative_to(base_path)}")
+        print(f"   ○ Not found: {zbeam_frontmatter_file}")
     
-    # Step 6: Check image files
+    # Step 7: Check settings frontmatter file
+    print("\n⚙️  Settings frontmatter file:")
+    if settings_frontmatter_file.exists():
+        print(f"   ✓ Will delete: {settings_frontmatter_file.relative_to(base_path)}")
+        removals.append(('settings_frontmatter', settings_frontmatter_file))
+    else:
+        print(f"   ○ Not found: {settings_frontmatter_file.relative_to(base_path)}")
+    
+    # Step 8: Check image files
     print("\n🖼️  Image files:")
     if image_files:
         for img in image_files:
@@ -162,6 +187,22 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
             removals.append(('image', img))
     else:
         print(f"   ○ No images found matching '{slug}*'")
+    
+    # Step 9: Check progress files
+    print("\n📝 Progress files:")
+    progress_files_updated = []
+    for progress_file in progress_dir.glob("*.txt"):
+        try:
+            content = progress_file.read_text()
+            if effective_key in content:
+                print(f"   ✓ Will remove from: {progress_file.name}")
+                progress_files_updated.append(progress_file)
+        except Exception:
+            pass
+    if progress_files_updated:
+        removals.append(('progress_files', progress_files_updated, effective_key))
+    else:
+        print("   ○ Not found in any progress files")
     
     # Summary
     print(f"\n📊 Summary: {len(removals)} items to remove")
@@ -189,19 +230,51 @@ def remove_material(material_name: str, dry_run: bool = False, auto_yes: bool = 
     print(f"\n📦 Backup created: {backup_file.name}")
     
     # Execute removals
-    for removal_type, target in removals:
+    for removal in removals:
+        removal_type = removal[0]
         if removal_type == 'materials_entry':
+            target = removal[1]
             del materials[target]
             print(f"✅ Removed '{target}' from materials section")
         elif removal_type == 'material_index':
+            target = removal[1]
             del material_index[target]
             print(f"✅ Removed '{target}' from material_index section")
         elif removal_type == 'category_mapping':
+            target = removal[1]
             del category_mapping[target]
             print(f"✅ Removed '{target}' from category_mapping section")
-        elif removal_type in ('frontmatter', 'settings', 'image'):
+        elif removal_type == 'settings_yaml':
+            settings_key = removal[1]
+            settings_data_ref = removal[2]
+            settings_file_path = removal[3]
+            del settings_data_ref['settings'][settings_key]
+            save_yaml(settings_file_path, settings_data_ref)
+            print(f"✅ Removed '{settings_key}' from Settings.yaml")
+        elif removal_type == 'frontmatter':
+            target = removal[1]
             target.unlink()
             print(f"✅ Deleted {target.relative_to(base_path)}")
+        elif removal_type == 'zbeam_frontmatter':
+            target = removal[1]
+            target.unlink()
+            print(f"✅ Deleted {target} (z-beam production)")
+        elif removal_type == 'settings_frontmatter':
+            target = removal[1]
+            target.unlink()
+            print(f"✅ Deleted {target.relative_to(base_path)}")
+        elif removal_type == 'image':
+            target = removal[1]
+            target.unlink()
+            print(f"✅ Deleted {target.relative_to(base_path)}")
+        elif removal_type == 'progress_files':
+            files = removal[1]
+            material_to_remove = removal[2]
+            for pf in files:
+                content = pf.read_text()
+                new_content = '\n'.join(line for line in content.split('\n') if material_to_remove not in line)
+                pf.write_text(new_content)
+                print(f"✅ Removed from {pf.name}")
     
     # Save updated Materials.yaml
     save_yaml(materials_file, data)

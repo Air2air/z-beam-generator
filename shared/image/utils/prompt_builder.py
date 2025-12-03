@@ -920,7 +920,7 @@ The 'before' side MUST show {severity_desc}. If contamination appears lighter th
   "recommendations": ["<improvement1>", "<improvement2>", ...] or []
 }
 
-CRITICAL: Set "text_labels_present" to true if ANY text, labels, watermarks, captions, logos, numbers, letters, or written characters are visible anywhere in the image. Describe what was found in "text_label_details". Images with text/labels automatically fail validation."""
+NOTE: Set "text_labels_present" to true if ANY prominent text, labels, watermarks, captions, or logos are visible ON THE MAIN OBJECT. Describe what was found in "text_label_details". IGNORE: volume markings on glassware/labware, background text, measurement gradations - these are expected on laboratory equipment. Only flag prominent brand labels or artificial text that doesn't belong."""
 
 
 def create_prompt_builder() -> SharedPromptBuilder:

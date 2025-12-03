@@ -285,6 +285,6 @@ class MaterialImageConfig:
             "outdoor": "neutral environment",
             "industrial": "industrial workshop setting with metal surfaces",
             "marine": "neutral environment with subtle maritime atmosphere",
-            "laboratory": "clean laboratory bench with white surfaces and clinical lighting"
+            "laboratory": "engineering laboratory workbench"
         }
         return backgrounds.get(self.context, backgrounds["outdoor"])

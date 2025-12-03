@@ -1861,9 +1861,9 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             
             # Add image URL for micro image (standard pattern)
             if caption_data:
-                # Generate standard micro image URL following the pattern: material-laser-cleaning-micro.jpg
+                # Generate standard micro image URL following the pattern: material-laser-cleaning-micro.png
                 material_slug = material_name.lower().replace(' ', '-')
-                caption_data['imageUrl'] = f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
+                caption_data['imageUrl'] = f"/images/materials/{material_slug}-laser-cleaning-micro.png"
                 
                 self.logger.info(f"✅ Built caption structure with {len(caption_data)} fields")
                 return caption_data
@@ -2129,11 +2129,11 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             return {
                 'hero': {
                     'alt': hero_alt,
-                    'url': f'/images/material/{material_slug}-laser-cleaning-hero.jpg'
+                    'url': f'/images/materials/{material_slug}-laser-cleaning-hero.png'
                 },
                 'micro': {
                     'alt': micro_alt,
-                    'url': f'/images/material/{material_slug}-laser-cleaning-micro.jpg'
+                    'url': f'/images/materials/{material_slug}-laser-cleaning-micro.png'
                 }
             }
         except Exception as e:
@@ -2476,7 +2476,7 @@ Generate exactly two text blocks:
                 },
                 'imageUrl': {
                     'alt': f'Microscopic view of {material_name} surface after laser cleaning showing detailed surface structure',
-                    'url': f'/images/material/{material_name.lower().replace(" ", "-")}-laser-cleaning-micro.jpg'
+                    'url': f'/images/materials/{material_name.lower().replace(" ", "-")}-laser-cleaning-micro.png'
                 }
             }
             self.logger.info(f"✅ Added caption section for {material_name}")

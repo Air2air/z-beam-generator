@@ -394,15 +394,16 @@ class MaterialImageValidator:
             raise ValueError("Validation analysis missing required 'realism_score' field")
         realism_score = analysis["realism_score"]
         
-        # Check for text/labels - AUTOMATIC FAIL if present
+        # Note: text_labels_present is logged but NOT an automatic fail
+        # Too many false positives (volume markings, background elements)
         text_labels_present = analysis.get("text_labels_present", False)
         
         passed = (
             realism_score >= 75.0 and
             analysis.get("physics_compliant", False) and
             analysis.get("distribution_realistic", False) and
-            analysis.get("same_object", False) and
-            not text_labels_present  # AUTOMATIC FAIL if text/labels detected
+            analysis.get("same_object", False)
+            # text_labels_present removed - too many false positives
         )
         
         return MaterialValidationResult(
