@@ -178,6 +178,377 @@ THERMAL_CATEGORY_DEFAULTS = {
     },
 }
 
+# Service Offering configuration for SEO rich snippets
+# Estimated hours based on material difficulty (from SERVICE_OFFERING_FRONTMATTER_SPEC.md)
+SERVICE_OFFERING_HOURS = {
+    # Easy materials: 2-3 hours typical
+    'easy': {'min': 1, 'typical': 3},
+    # Standard materials: 3-5 hours typical  
+    'standard': {'min': 1, 'typical': 4},
+    # Complex materials: 5-8 hours typical
+    'complex': {'min': 2, 'typical': 6},
+    # Delicate materials: 2-3 hours typical
+    'delicate': {'min': 1, 'typical': 2},
+    # Heavy materials: 4-8 hours typical
+    'heavy': {'min': 2, 'typical': 6},
+    # Precision materials: 2-4 hours typical
+    'precision': {'min': 1, 'typical': 3},
+    # Careful materials (wood): 2-4 hours typical
+    'careful': {'min': 1, 'typical': 3},
+}
+
+# Material to difficulty mapping based on category/subcategory
+# Actual subcategories from Materials.yaml:
+# metal: non-ferrous(17), specialty(11), alloy(11), lanthanide(7), ferrous(4), elemental(4), scandium-group(1)
+# stone: sedimentary(14), metamorphic(3), igneous(2)
+# plastic: thermoplastic(11), general(5)
+# composite: fiber-reinforced(11)
+# ceramic: oxide(7), technical(4), carbide(1)
+# glass: soda-lime(9), specialty-glass(2)
+# wood: hardwood(18), softwood(3)
+# concrete: concrete(2), structural(2)
+# rare-earth: lanthanide, scandium-group, compound
+MATERIAL_DIFFICULTY = {
+    # Easy - Non-ferrous metals (aluminum, copper, brass)
+    ('metal', 'non-ferrous'): 'easy',
+    ('metal', 'precious'): 'easy',
+    ('metal', 'elemental'): 'easy',  # Pure metals like copper, zinc
+    # Standard - Ferrous metals and common alloys
+    ('metal', 'ferrous'): 'standard',
+    ('metal', 'alloy'): 'standard',
+    # Complex - Specialty/high-performance metals (titanium, inconel, etc.)
+    ('metal', 'specialty'): 'complex',
+    ('metal', 'refractory'): 'complex',
+    ('metal', 'superalloy'): 'complex',
+    ('metal', 'lanthanide'): 'complex',
+    ('metal', 'scandium-group'): 'complex',
+    # Delicate - Plastics and composites
+    ('plastic', 'thermoplastic'): 'delicate',
+    ('plastic', 'thermoset'): 'delicate',
+    ('plastic', 'general'): 'delicate',
+    ('composite', 'fiber-reinforced'): 'delicate',
+    ('composite', 'carbon-fiber'): 'delicate',
+    ('composite', 'fiberglass'): 'delicate',
+    ('composite', None): 'delicate',
+    # Heavy - Stone and masonry
+    ('stone', 'sedimentary'): 'heavy',
+    ('stone', 'metamorphic'): 'heavy',
+    ('stone', 'igneous'): 'heavy',
+    ('stone', 'natural'): 'heavy',
+    ('stone', 'engineered'): 'heavy',
+    ('concrete', 'concrete'): 'heavy',
+    ('concrete', 'structural'): 'heavy',
+    ('concrete', None): 'heavy',
+    ('masonry', None): 'heavy',
+    # Precision - Glass and ceramics
+    ('glass', 'soda-lime'): 'precision',
+    ('glass', 'specialty-glass'): 'precision',
+    ('glass', 'standard'): 'precision',
+    ('glass', 'optical'): 'precision',
+    ('ceramic', 'oxide'): 'precision',
+    ('ceramic', 'technical'): 'precision',
+    ('ceramic', 'carbide'): 'precision',
+    ('ceramic', 'traditional'): 'precision',
+    ('ceramic', 'advanced'): 'precision',
+    # Careful - Wood
+    ('wood', 'hardwood'): 'careful',
+    ('wood', 'softwood'): 'careful',
+    # Rubber and textiles
+    ('rubber', 'natural'): 'delicate',
+    ('rubber', 'coating'): 'delicate',
+    ('rubber', None): 'delicate',
+    ('textile', 'natural'): 'delicate',
+    ('textile', 'synthetic'): 'delicate',
+    # Rare earth elements
+    ('rare-earth', 'lanthanide'): 'complex',
+    ('rare-earth', 'scandium-group'): 'complex',
+    ('rare-earth', 'compound'): 'complex',
+}
+
+# Target contaminants by category (from SERVICE_OFFERING_FRONTMATTER_SPEC.md)
+# Extended to cover all actual subcategories in Materials.yaml
+TARGET_CONTAMINANTS = {
+    # Ferrous metals
+    ('metal', 'ferrous'): [
+        'Rust and corrosion',
+        'Mill scale',
+        'Paint and coatings',
+        'Weld discoloration',
+        'Heat treatment scale'
+    ],
+    # Non-ferrous metals (aluminum, copper, etc.)
+    ('metal', 'non-ferrous'): [
+        'Oxide layer',
+        'Paint and coatings',
+        'Grease and oils',
+        'Anodizing removal',
+        'Tarnish and patina'
+    ],
+    ('metal', 'precious'): [
+        'Oxide layer',
+        'Tarnish and patina',
+        'Surface contamination',
+        'Polishing residue'
+    ],
+    ('metal', 'elemental'): [
+        'Oxide layer',
+        'Tarnish and patina',
+        'Surface contamination',
+        'Grease and oils'
+    ],
+    # Specialty metals (titanium, inconel, etc.)
+    ('metal', 'specialty'): [
+        'Oxide scale',
+        'Heat discoloration',
+        'Alpha case layer',
+        'Thermal barrier coatings'
+    ],
+    ('metal', 'refractory'): [
+        'Oxide scale',
+        'Heat discoloration',
+        'Alpha case layer',
+        'Thermal barrier coatings'
+    ],
+    ('metal', 'superalloy'): [
+        'Oxide scale',
+        'Heat discoloration',
+        'Thermal barrier coatings',
+        'Surface contamination'
+    ],
+    ('metal', 'alloy'): [
+        'Oxide layer',
+        'Paint and coatings',
+        'Mill scale',
+        'Surface contamination'
+    ],
+    ('metal', 'lanthanide'): [
+        'Oxide layer',
+        'Surface contamination',
+        'Atmospheric deposits',
+        'Processing residue'
+    ],
+    ('metal', 'scandium-group'): [
+        'Oxide layer',
+        'Surface contamination',
+        'Atmospheric deposits',
+        'Processing residue'
+    ],
+    # Plastics and composites
+    ('plastic', 'thermoplastic'): [
+        'Surface contamination',
+        'Mold release agents',
+        'Adhesive residue',
+        'Paint overspray'
+    ],
+    ('plastic', 'thermoset'): [
+        'Surface contamination',
+        'Mold release agents',
+        'Adhesive residue',
+        'Paint overspray'
+    ],
+    ('plastic', 'general'): [
+        'Surface contamination',
+        'Mold release agents',
+        'Adhesive residue',
+        'Paint overspray'
+    ],
+    ('composite', 'fiber-reinforced'): [
+        'Surface contamination',
+        'Mold release agents',
+        'Adhesive residue',
+        'Matrix surface prep'
+    ],
+    ('composite', 'carbon-fiber'): [
+        'Surface contamination',
+        'Mold release agents',
+        'Adhesive residue',
+        'Matrix surface prep'
+    ],
+    ('composite', 'fiberglass'): [
+        'Surface contamination',
+        'Gelcoat oxidation',
+        'Paint and coatings',
+        'Adhesive residue'
+    ],
+    # Stone and masonry
+    ('stone', 'sedimentary'): [
+        'Efflorescence',
+        'Paint and graffiti',
+        'Biological growth',
+        'Weathering deposits'
+    ],
+    ('stone', 'metamorphic'): [
+        'Efflorescence',
+        'Paint and graffiti',
+        'Biological growth',
+        'Soot and smoke damage'
+    ],
+    ('stone', 'igneous'): [
+        'Surface contamination',
+        'Paint and coatings',
+        'Biological growth',
+        'Weathering deposits'
+    ],
+    ('stone', 'natural'): [
+        'Efflorescence',
+        'Paint and graffiti',
+        'Biological growth',
+        'Soot and smoke damage'
+    ],
+    ('stone', 'engineered'): [
+        'Surface contamination',
+        'Paint and coatings',
+        'Adhesive residue',
+        'Staining'
+    ],
+    ('concrete', 'concrete'): [
+        'Efflorescence',
+        'Paint and coatings',
+        'Oil stains',
+        'Biological growth'
+    ],
+    ('concrete', 'structural'): [
+        'Efflorescence',
+        'Paint and coatings',
+        'Oil stains',
+        'Surface contamination'
+    ],
+    ('concrete', None): [
+        'Efflorescence',
+        'Paint and coatings',
+        'Oil stains',
+        'Biological growth'
+    ],
+    # Wood
+    ('wood', 'hardwood'): [
+        'Char and weathering',
+        'Paint and finish',
+        'Stain removal',
+        'Surface contamination'
+    ],
+    ('wood', 'softwood'): [
+        'Char and weathering',
+        'Paint and finish',
+        'Stain removal',
+        'Surface contamination'
+    ],
+    # Glass and ceramics
+    ('glass', 'soda-lime'): [
+        'Organic deposits',
+        'Paint overspray',
+        'Adhesive residue',
+        'Surface contamination'
+    ],
+    ('glass', 'specialty-glass'): [
+        'Organic deposits',
+        'Coatings and films',
+        'Adhesive residue',
+        'Surface contamination'
+    ],
+    ('glass', 'standard'): [
+        'Organic deposits',
+        'Paint overspray',
+        'Adhesive residue',
+        'Surface contamination'
+    ],
+    ('glass', 'optical'): [
+        'Organic deposits',
+        'Coatings and films',
+        'Adhesive residue',
+        'Fingerprints and oils'
+    ],
+    ('ceramic', 'oxide'): [
+        'Surface contamination',
+        'Oxide scale',
+        'Processing residue',
+        'Adhesive residue'
+    ],
+    ('ceramic', 'technical'): [
+        'Surface contamination',
+        'Oxide scale',
+        'Thermal spray coatings',
+        'Adhesive residue'
+    ],
+    ('ceramic', 'carbide'): [
+        'Surface contamination',
+        'Oxide layer',
+        'Processing residue',
+        'Adhesive residue'
+    ],
+    ('ceramic', 'traditional'): [
+        'Surface contamination',
+        'Glaze defects',
+        'Organic deposits',
+        'Adhesive residue'
+    ],
+    ('ceramic', 'advanced'): [
+        'Surface contamination',
+        'Oxide layer',
+        'Thermal spray coatings',
+        'Adhesive residue'
+    ],
+    # Rubber and textiles
+    ('rubber', 'natural'): [
+        'Mold release agents',
+        'Surface contamination',
+        'Adhesive residue',
+        'Oxidation'
+    ],
+    ('rubber', 'coating'): [
+        'Surface contamination',
+        'Adhesive residue',
+        'Oxidation',
+        'Paint overspray'
+    ],
+    ('rubber', None): [
+        'Mold release agents',
+        'Surface contamination',
+        'Adhesive residue',
+        'Oxidation'
+    ],
+    ('textile', 'natural'): [
+        'Surface contamination',
+        'Staining',
+        'Biological growth',
+        'Adhesive residue'
+    ],
+    ('textile', 'synthetic'): [
+        'Surface contamination',
+        'Adhesive residue',
+        'Paint overspray',
+        'Mold release agents'
+    ],
+}
+
+# Service offering notes by material characteristics
+SERVICE_NOTES = {
+    # High reflectivity materials
+    ('metal', 'non-ferrous'): 'Lower power settings recommended due to high reflectivity',
+    ('metal', 'precious'): 'Precision settings required for delicate surfaces',
+    ('metal', 'elemental'): 'Lower power settings recommended due to high reflectivity',
+    # Oxidation-sensitive materials
+    ('metal', 'specialty'): 'Controlled atmosphere may be required to prevent re-oxidation',
+    ('metal', 'refractory'): 'Controlled atmosphere may be required to prevent re-oxidation',
+    ('metal', 'superalloy'): 'Controlled environment recommended for aerospace-grade cleaning',
+    ('metal', 'lanthanide'): 'Controlled environment required - highly reactive materials',
+    ('metal', 'scandium-group'): 'Controlled environment required - highly reactive materials',
+    # Heat-sensitive materials  
+    ('plastic', 'thermoplastic'): 'Low fluence required to prevent melting or warping',
+    ('plastic', 'thermoset'): 'Moderate power to avoid thermal decomposition',
+    ('plastic', 'general'): 'Low fluence required to prevent surface damage',
+    ('composite', 'fiber-reinforced'): 'Careful parameter control to avoid matrix damage',
+    ('composite', 'carbon-fiber'): 'Careful parameter control to avoid matrix damage',
+    # Porous materials
+    ('stone', 'sedimentary'): 'Multiple passes may be required for porous surfaces',
+    ('stone', 'natural'): 'Multiple passes may be required for porous surfaces',
+    ('concrete', 'concrete'): 'Higher power settings tolerated - porous surface requires multiple passes',
+    ('concrete', 'structural'): 'Higher power settings tolerated - structural cleaning applications',
+    ('concrete', None): 'Higher power settings tolerated - porous surface requires multiple passes',
+    # Combustible materials
+    ('wood', 'hardwood'): 'Careful power control to avoid charring',
+    ('wood', 'softwood'): 'Low power settings to prevent ignition',
+}
+
 
 class TrivialFrontmatterExporter:
     """
@@ -574,6 +945,21 @@ class TrivialFrontmatterExporter:
         materials_page['materialProperties'] = full_frontmatter.get('materialProperties')
         materials_page['eeat'] = full_frontmatter.get('eeat')
         materials_page['material_metadata'] = full_frontmatter.get('material_metadata')
+        
+        # Generate serviceOffering for SEO rich snippets (Service/Product JSON-LD schema)
+        # Uses category/subcategory to determine difficulty, hours, and target contaminants
+        category = full_frontmatter.get('category', '')
+        subcategory = full_frontmatter.get('subcategory', '')
+        machine_settings = full_frontmatter.get('machineSettings')
+        material_properties = full_frontmatter.get('materialProperties')
+        
+        materials_page['serviceOffering'] = self._generate_service_offering(
+            material_name=material_name,
+            category=category,
+            subcategory=subcategory,
+            machine_settings=machine_settings,
+            material_properties=material_properties
+        )
         
         # Add preservedData with generation timestamp for metadata sync validation
         from datetime import datetime
@@ -1448,6 +1834,85 @@ class TrivialFrontmatterExporter:
             })
         
         return formatted_faqs
+    
+    def _generate_service_offering(self, material_name: str, category: str, subcategory: str, 
+                                   machine_settings: Dict = None, material_properties: Dict = None) -> Dict:
+        """
+        Generate serviceOffering data for SEO rich snippets.
+        
+        Uses material category/subcategory to determine:
+        - Difficulty level → estimated hours
+        - Target contaminants (from mapping or machineSettings.contaminantType)
+        - Material-specific notes
+        
+        Args:
+            material_name: Name of the material
+            category: Material category (e.g., 'metal', 'plastic')
+            subcategory: Material subcategory (e.g., 'ferrous', 'non-ferrous')
+            machine_settings: Optional machineSettings dict to extract contaminantType
+            material_properties: Optional materialProperties for notes generation
+            
+        Returns:
+            serviceOffering dict per SERVICE_OFFERING_FRONTMATTER_SPEC.md
+        """
+        # Determine difficulty level based on category/subcategory
+        category_key = (category.lower() if category else '', subcategory.lower() if subcategory else None)
+        category_key_no_sub = (category.lower() if category else '', None)
+        
+        # Try with subcategory first, then without
+        difficulty = MATERIAL_DIFFICULTY.get(category_key)
+        if not difficulty:
+            difficulty = MATERIAL_DIFFICULTY.get(category_key_no_sub, 'standard')  # Default to standard
+        
+        # Get estimated hours for this difficulty level
+        hours = SERVICE_OFFERING_HOURS.get(difficulty, SERVICE_OFFERING_HOURS['standard'])
+        
+        # Get target contaminants - priority: machineSettings.contaminantType > mapping
+        target_contaminants = []
+        
+        # Try to get from machineSettings first
+        if machine_settings and isinstance(machine_settings, dict):
+            contaminant_type = machine_settings.get('contaminantType')
+            if contaminant_type:
+                if isinstance(contaminant_type, list):
+                    target_contaminants = contaminant_type
+                elif isinstance(contaminant_type, str):
+                    target_contaminants = [contaminant_type]
+        
+        # Fall back to category-based mapping if no machineSettings contaminants
+        if not target_contaminants:
+            target_contaminants = TARGET_CONTAMINANTS.get(category_key)
+            if not target_contaminants:
+                target_contaminants = TARGET_CONTAMINANTS.get(category_key_no_sub, [
+                    'Surface contamination',
+                    'Paint and coatings',
+                    'Oxide layer',
+                    'Adhesive residue'
+                ])
+        
+        # Get material-specific notes
+        notes = SERVICE_NOTES.get(category_key)
+        if not notes:
+            notes = SERVICE_NOTES.get(category_key_no_sub)
+        
+        # Build serviceOffering structure per spec
+        service_offering = {
+            'enabled': True,
+            'type': 'professionalCleaning',
+            'materialSpecific': {
+                'estimatedHoursMin': hours['min'],
+                'estimatedHoursTypical': hours['typical'],
+                'targetContaminants': target_contaminants
+            }
+        }
+        
+        # Only add notes if we have them
+        if notes:
+            service_offering['materialSpecific']['notes'] = notes
+        
+        self.logger.debug(f"✅ Generated serviceOffering for {material_name}: {difficulty} difficulty, {hours['typical']} typical hours")
+        
+        return service_offering
     
     def _generate_breadcrumb(self, material_data: Dict, slug: str) -> list:
         """
