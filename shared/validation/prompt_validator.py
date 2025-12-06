@@ -177,9 +177,9 @@ class PromptValidationResult:
         return "\n".join(lines)
 
 
-class UniversalPromptValidator:
+class PromptValidator:
     """
-    Universal prompt validator for text and image generation.
+    Prompt validator for text and image generation.
     
     Validates prompts before API submission to:
     - Grok API (text generation)
@@ -193,13 +193,13 @@ class UniversalPromptValidator:
     - Technical: Format compliance, encoding issues
     
     Example (Text):
-        validator = UniversalPromptValidator(prompt_type='text')
+        validator = PromptValidator(prompt_type='text')
         result = validator.validate(prompt)
         if not result.is_valid:
             raise ValueError(f"Prompt validation failed: {result.get_summary()}")
     
     Example (Image):
-        validator = UniversalPromptValidator(prompt_type='image')
+        validator = PromptValidator(prompt_type='image')
         result = validator.validate(prompt, material="Aluminum", contaminant="rust")
         if not result.is_valid:
             print(result.format_report())
@@ -507,7 +507,7 @@ def validate_text_prompt(prompt: str) -> PromptValidationResult:
     Returns:
         PromptValidationResult
     """
-    validator = UniversalPromptValidator(prompt_type='text')
+    validator = PromptValidator(prompt_type='text')
     return validator.validate(prompt)
 
 
@@ -525,7 +525,7 @@ def validate_image_prompt(
     Returns:
         PromptValidationResult
     """
-    validator = UniversalPromptValidator(prompt_type='image')
+    validator = PromptValidator(prompt_type='image')
     return validator.validate(prompt, **context)
 
 
@@ -545,7 +545,7 @@ def validate_and_raise(
     Raises:
         ValueError: If prompt validation fails
     """
-    validator = UniversalPromptValidator(prompt_type=prompt_type)
+    validator = PromptValidator(prompt_type=prompt_type)
     result = validator.validate(prompt, **context)
     
     if not result.is_valid:

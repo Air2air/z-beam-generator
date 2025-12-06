@@ -404,12 +404,12 @@ class UnifiedMaterialsGenerator:
     
     def _generate_production(self, material_name: str, content_type: str, **kwargs):
         """Production mode: Fast single-pass generation, no quality gates."""
-        from generation.core.simple_generator import SimpleGenerator
+        from generation.core.generator import Generator
         
-        generator = SimpleGenerator(self.api_client)
+        generator = Generator(self.api_client)
         result = generator.generate(material_name, content_type, **kwargs)
         
-        # SimpleGenerator returns content directly (not wrapped)
+        # Generator returns content directly (not wrapped)
         return result
     
     def _generate_training(self, material_name: str, content_type: str, **kwargs):

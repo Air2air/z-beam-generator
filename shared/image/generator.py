@@ -44,7 +44,7 @@ from dataclasses import dataclass
 
 # Emit deprecation warning on import
 warnings.warn(
-    "UniversalImageGenerator is deprecated. Use ImagePromptOrchestrator + SharedPromptBuilder instead. "
+    "ImageGenerator (formerly UniversalImageGenerator) is deprecated. Use ImagePromptOrchestrator + SharedPromptBuilder instead. "
     "See module docstring for migration guide.",
     DeprecationWarning,
     stacklevel=2
@@ -68,9 +68,9 @@ class ImagePrompt:
     metadata: Dict[str, Any]
 
 
-class UniversalImageGenerator:
+class ImageGenerator:
     """
-    Universal image generator that works across all domains.
+    Image generator that works across all domains.
     
     Loads domain-specific prompts from domains/{domain}/image/prompts/
     Accesses domain data via domain-specific data loaders
@@ -113,7 +113,7 @@ class UniversalImageGenerator:
         # Load domain data loaders
         self.data_loader = self._initialize_data_loader()
         
-        logger.info(f"✅ UniversalImageGenerator initialized for domain: {domain}")
+        logger.info(f"✅ ImageGenerator initialized for domain: {domain}")
     
     def _load_domain_config(self) -> Dict[str, Any]:
         """

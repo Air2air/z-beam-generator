@@ -111,9 +111,9 @@ class QualityGatedGenerator:
         self.max_attempts = max_attempts or quality_gate_config['max_retry_attempts']
         self.quality_threshold = quality_threshold  # MUST be provided, no fallback
         
-        # Initialize SimpleGenerator (does NOT save to YAML)
-        from generation.core.simple_generator import SimpleGenerator
-        self.generator = SimpleGenerator(api_client)
+        # Initialize Generator (does NOT save to YAML)
+        from generation.core.generator import Generator
+        self.generator = Generator(api_client)
         
         # Initialize RealismOptimizer for parameter adjustments
         from learning.realism_optimizer import RealismOptimizer

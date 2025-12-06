@@ -31,7 +31,7 @@ import yaml
 logger = logging.getLogger(__name__)
 
 
-class SimpleGenerator:
+class Generator:
     """
     Single-pass generator for content creation.
     
