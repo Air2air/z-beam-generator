@@ -396,16 +396,21 @@ class BatchGenerator:
         Returns:
             Batch prompt with structured format for extraction
         """
-        # Load base prompt template from domain-specific location
-        prompt_file = Path(f"domains/materials/text/prompts/{component_type}.txt")
+        # Load base prompt template from materials config.yaml
+        import yaml
+        config_file = Path("domains/materials/config.yaml")
         
-        if not prompt_file.exists():
+        if not config_file.exists():
             raise FileNotFoundError(
-                f"Prompt template not found: {prompt_file}"
+                f"Materials config not found: {config_file}"
             )
         
-        with open(prompt_file, 'r') as f:
-            base_prompt = f.read()
+        with open(config_file, 'r') as f:
+            config_data = yaml.safe_load(f)
+        
+        base_prompt = config_data.get('prompts', {}).get(component_type)
+        if not base_prompt:
+            raise KeyError(f"Prompt 'prompts.{component_type}' not found in materials/config.yaml")
         
         # Substitute placeholders in base prompt
         base_prompt = base_prompt.replace('{material}', '[MATERIAL_NAME]')

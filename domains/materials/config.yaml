@@ -1,53 +1,24 @@
 # Materials Domain Configuration
 # Material description and caption generation settings
+#
+# NOTE: Word counts are defined in domain prompts (Option B: Prompts Only)
+# NOTE: Extraction strategies are centralized in generation/config.yaml
 
-component_lengths:
-  material_description:
-    target: 1000                       # No effective token limit - let prompt instructions control length
-    extraction_strategy: raw           # Return text as-is
-  
-  caption:
-    target: 75                         # Target word count (variation applied from global slider)
-    extraction_strategy: before_after  # Extract before/after sections
-  
-  faq:
-    target: 150                        # Target word count (variation applied from global slider)
-    extraction_strategy: json_list     # Parse JSON array
+# =============================================================================
+# DOMAIN ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_path: "data/materials/Materials.yaml"
+data_root_key: "materials"
+author_key: "author.id"
+context_keys:
+  - category
+  - subcategory
+  - properties.density
+  - properties.melting_point
 
 # Materials-specific randomization targets
+# NOTE: Length targets REMOVED - now in prompts
 randomization_targets:
-  
-  # Length variation targets (word counts) - MATERIAL DESCRIPTION
-  # Reduced 15% to account for LLM tendency to exceed targets
-  length:
-    short:
-      range: [42, 63]
-      description: "CONCISE - essential points only"
-      probability: 0.33
-    medium:
-      range: [63, 93]
-      description: "BALANCED - key aspects covered"
-      probability: 0.33
-    long:
-      range: [93, 127]
-      description: "DETAILED - comprehensive coverage"
-      probability: 0.34
-  
-  # Length variation targets for SUBTITLE (50% of description ranges)
-  # Reduced further to account for LLM tendency to exceed targets
-  subtitle_length:
-    short:
-      range: [21, 31]
-      description: "CONCISE - core advantage only"
-      probability: 0.33
-    medium:
-      range: [31, 46]
-      description: "BALANCED - key property with context"
-      probability: 0.33
-    long:
-      range: [46, 63]
-      description: "DETAILED - property with comparison"
-      probability: 0.34
   
   # Structural approaches for material descriptions
   structures:
@@ -105,3 +76,119 @@ randomization_targets:
       label: "CONCLUDING WARNING"
       description: "End with key caution or recommendation"
       probability: 0.34
+
+# =============================================================================
+# PROMPT TEMPLATES
+# =============================================================================
+# Usage:
+#   from shared.generation.yaml_helper import load_yaml_file
+#   config = load_yaml_file("domains/materials/config.yaml")
+#   template = config['prompts']['caption']
+
+prompts:
+  # Caption for before/after images at 1000x magnification
+  caption: |
+    You are {author} from {country}, writing a caption about {material}.
+
+    LENGTH: 50-75 words total (both paragraphs combined).
+
+    TASK: Write two short paragraphs describing {material} at 1000x magnification.
+    - Paragraph 1: Contaminated surface before laser cleaning  
+    - Paragraph 2: Clean surface after laser treatment
+
+    VOICE & APPROACH:
+    Write like you're explaining results to a colleague - direct, practical, grounded in what you see. Use active voice and straightforward descriptions.
+
+    {technical_guidance}
+
+    {sentence_guidance}
+
+    FORMATTING:
+    - Complete sentences (no fragments)
+    - Vary sentence lengths (mix short, medium, longer)
+    - Start each sentence differently
+    - Separate the two paragraphs with ONE blank line
+    - NO labels like "Before:", "After:"
+
+    AVOID:
+    - Corporate jargon: "facilitates", "leverages", "demonstrates"
+    - Theatrical: "zapped clean", "stares back", "changes everything"
+    - Academic: "results suggest", "testament to"
+    - Repetitive openings
+
+    OUTPUT: Just the two paragraphs.
+
+    Generate caption for {material}:
+
+  # FAQ questions and answers for material page
+  faq: |
+    You are {author} from {country}, writing a FAQ about {material}.
+
+    LENGTH: Each answer 40-100 words. Vary lengths naturally (some short, some longer).
+
+    TASK: Write {faq_count} practical questions and answers about laser cleaning {material}.
+    - Questions that users actually ask (troubleshooting, best practices, material behavior)
+    - Direct, helpful answers with specific details
+
+    VOICE & APPROACH:
+    Write like you're answering colleague questions - direct, practical, grounded in real-world use. Use active voice and conversational tone.
+
+    {technical_guidance}
+
+    {sentence_guidance}
+
+    FORMATTING:
+    For each question, format as:
+
+    **[Question text ending with ?]**
+
+    [Answer paragraph - vary length naturally]
+
+    [Blank line before next question]
+
+    AVOID:
+    - Corporate jargon: "facilitates", "leverages", "optimal solutions"
+    - Theatrical: "game-changer", "revolutionary", "transforms everything"
+    - Academic: "it is worth noting", "one might consider"
+    - Repetitive openings
+    - Uniform answer lengths
+
+    CONTEXT:
+    {facts}
+
+    OUTPUT: Just the Q&A pairs, formatted as shown above.
+
+    Generate {faq_count} FAQ pairs for {material}:
+
+  # Material description subtitle (15-25 words)
+  material_description: |
+    You are {author}, writing a professional technical subtitle about {material}.
+
+    LENGTH: 15-25 words (single sentence subtitle).
+
+    CONTENT STRATEGY:
+    - Focus on: The material's PRIMARY advantage (e.g., aluminum = lightweight, silver = conductivity, titanium = strength-to-weight)
+    - Secondary mention: Laser cleaning characteristics ONLY if they're the material's most distinctive trait
+    - Logic: Focus on practical outcome ("what it does", "why it's popular") not technical cause ("what it measures")
+
+    STRUCTURE REQUIREMENTS:
+    - Format: Direct declarative statement  
+    - NO questions, NO "What makes...", NO "Why choose..."
+    - VARY sentence openings - avoid repetitive patterns
+    - End without period (concise statement)
+
+    FORMATTING:
+    - Single sentence
+
+    CONTENT APPROACH:
+    - Describe differences with materials in the same category 
+    - Avoid raw technical specifications (Ω·m, g/cm³, MPa, W)
+    - Explain advantages in plain terms
+
+    BANNED OPENING PATTERNS:
+    - "[Material] enables/achieves/delivers/provides..."
+    - "Laser cleaning of [material]..."
+    - "[Gerund phrase] with [material]..."
+    - "[Abstract process subject] gains/enables..."
+
+    Write the subtitle:

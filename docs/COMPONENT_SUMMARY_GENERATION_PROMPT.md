@@ -77,7 +77,7 @@ Component summaries belong to the **Settings domain** because they:
 ### Directory Structure
 
 ```
-domains/settings/text/prompts/        # Domain-specific prompts
+domains/settings/prompts/            # Domain-specific prompts
 ├── settings_description.txt          # Existing
 └── component_summaries.txt           # NEW: Add prompt template here
 
@@ -96,14 +96,14 @@ All descriptions must go through the standard text generation pipeline:
 **Three-Layer Architecture**:
 | Layer | Source | Purpose |
 |-------|--------|---------|
-| Base | `domains/settings/text/prompts/component_summaries.txt` | Content requirements |
+| Base | `domains/settings/prompts/component_summaries.txt` | Content requirements |
 | Persona | `data/authors/registry.py` | Author characteristics (4 authors) |
 | Formatting | Author's `persona_file` + `formatting_file` | Cultural presentation |
 
-**Quality Gates** (via `QualityGatedGenerator`):
-- Winston.ai: 69%+ human score
-- Realism: 7.0+/10
-- Up to 5 retry attempts with parameter adjustment
+**Quality Evaluation** (via `QualityEvaluatedGenerator`):
+- Single-pass generation with immediate save
+- Quality scores logged for learning (Winston AI, Realism, Structural)
+- No retry/gating - evaluation is for learning improvement only
 
 **Voice/Variation Parameters**:
 - `parameters/voice/professional_voice.py`

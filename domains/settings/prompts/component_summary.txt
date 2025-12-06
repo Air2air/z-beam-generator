@@ -1,0 +1,32 @@
+You are {author} from {country}, writing a brief UI help description for a Settings page component.
+
+=== VOICE STYLE ===
+Write in conversational professional English. Use active voice (75%) with natural, direct phrasing.
+Mix sentence lengths naturally: one short punchy sentence (8-12 words), one longer detailed sentence (18-25 words).
+
+TASK: Write exactly 2 sentences describing what this component shows and how it helps operators configure laser cleaning for {material}.
+
+LENGTH: 40-70 total words. Exactly 2 sentences with varied lengths.
+
+CONTEXT: This description appears as help text next to an interactive component. Write as if helping someone actively using the interface.
+
+=== COMPONENT ===
+{component_title}
+
+{component_description}
+
+=== MATERIAL DATA ===
+{facts}
+
+=== UNIQUE CHARACTERISTICS ===
+What makes {material} DIFFERENT from other materials:
+- Which properties most affect this component's display?
+- What specific insight does this component provide for {material}?
+
+=== OUTPUT FORMAT ===
+Write ONLY the description text (exactly 2 sentences). No title, no YAML, no formatting.
+Reference specific {material} properties. Focus on "what this helps you DO."
+
+Example tone: "This heatmap reveals where {material}'s high reflectivity creates narrow safe zones. Watch for the red boundary near 45W—that's where oxide reformation typically begins."
+
+Generate the description for {material}:

@@ -158,21 +158,6 @@ class PromptBuilder:
         return guidance.strip()
 
     @staticmethod
-    def _load_anti_ai_rules() -> str:
-        """
-        Load anti-AI rules from prompts/rules/anti_ai_rules.txt.
-        
-        Returns:
-            Anti-AI rules string
-            
-        Raises:
-            FileNotFoundError: If prompts/rules/anti_ai_rules.txt doesn't exist
-        """
-        rules_path = os.path.join('prompts', 'rules', 'anti_ai_rules.txt')
-        with open(rules_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-    
-    @staticmethod
     def _load_component_template(component_type: str) -> Optional[str]:
         """
         Load component-specific prompt template from prompts/components/{component}.txt.
@@ -404,7 +389,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
                 requirements.append("\n⚠️ TECHNICAL LANGUAGE: Minimal specs only (1-2 max, prefer conceptual)")
             # High (slider 6-10): Allow 3-5 specs (no restriction needed)
         
-        # NOTE: Emotional tone now controlled by prompts/anti_ai_rules.txt and persona files
+        # NOTE: Emotional tone controlled by base.txt system template and persona files
         # Dynamic emotional_tone parameter removed per Option A architecture decision
         
         if not spec.end_punctuation:
@@ -571,28 +556,10 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         
         # Phase 3+: Technical language guidance moved to REQUIREMENTS section for higher priority
         
-        # Phase 3B: Load anti-AI rules (static from file)
-        # NOTE: Rule strictness now controlled by prompts/anti_ai_rules.txt only
-        # Dynamic structural_predictability parameter removed per Option A architecture decision
-        try:
-            anti_ai = PromptBuilder._load_anti_ai_rules()
-                
-        except Exception as e:
-            logger.warning(f"Failed to load anti_ai_rules.txt: {e}. Using embedded fallback.")
-            anti_ai = """CRITICAL - AVOID AI PATTERNS & ADD VARIATION:
-- BANNED PHRASES: "facilitates", "enables", "leverages", "demonstrates", "exhibits", "optimal", "enhanced", "robust", "comprehensive"
-- BANNED CONNECTORS: "paired with", "relies on", "thrives on", "swear by", "testament to"
-- BANNED STRUCTURES: "while maintaining/preserving/ensuring", "across diverse/various/multiple"
-- NO formulaic structures (e.g., "X does Y while preserving Z")
-- NO abstract transitions ("results suggest", "data indicate")
-- VARY opening words dramatically - start each sentence differently
-- VARY sentence structures - mix questions, statements, fragments
-- BALANCE technical data with accessible language (don't frontload numbers)
-- ADD conversational elements but NATURALLY (occasional "though", "but", "yet" for flow)
-- USE active voice predominantly
-- MIX precision with approximation ("around 2.7", "roughly 237")
-- INCLUDE qualitative descriptions alongside quantitative data
-- PREFER concrete verbs: "use", "need", "work", "choose", "apply" over abstract ones"""
+        # Phase 3B: Anti-AI rules are now in base.txt system template
+        # The humanness_layer already contains comprehensive anti-AI guidance
+        # This section is kept minimal to avoid prompt bloat
+        anti_ai = ""  # Rules consolidated into base.txt and humanness_layer
         
         # Component-specific enrichment hints are in prompt templates
         # NO content instructions in code - see Content Instruction Policy

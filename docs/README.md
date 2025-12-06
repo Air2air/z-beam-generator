@@ -111,7 +111,7 @@ This documentation hub is specifically designed for Copilot AI assistants to qui
 
 #### **Text Component** (Most Complex)
 - **[Text Component Blueprint](components/text/README.md)** - Complete implementation guide
-- **[Three-Layer Prompt System](components/text/prompts/README.md)** - Prompt architecture
+- **[Prompt System](../domains/materials/prompts/)** - Domain-specific prompts
 - **[Fail-Fast Generator](components/text/generators/README.md)** - Core generation logic
 - **[Author Personas](components/text/personas/README.md)** - Persona implementation
 

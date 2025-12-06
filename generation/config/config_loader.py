@@ -249,13 +249,39 @@ class ProcessingConfig:
         return api.get('retry_temperature_increase', 0.1)
     
     # =========================================================================
-    # COMPONENT LENGTHS
+    # COMPONENT EXTRACTION STRATEGIES
     # =========================================================================
     
-    def get_component_length(self, component_type: str) -> int:
-        """Get target word count for component type."""
+    def get_extraction_strategy(self, component_type: str) -> str:
+        """Get extraction strategy for component type.
+        
+        Looks in component_extraction (new) then component_lengths (legacy).
+        """
+        # Try new location first
+        extraction = self.config.get('component_extraction', {})
+        if component_type in extraction:
+            return extraction[component_type].get('extraction_strategy', 'raw')
+        
+        # Fall back to legacy location
         lengths = self.config.get('component_lengths', {})
-        return lengths.get(component_type, 100)
+        if component_type in lengths and isinstance(lengths[component_type], dict):
+            return lengths[component_type].get('extraction_strategy', 'raw')
+        
+        return 'raw'  # Default
+    
+    def get_component_length(self, component_type: str) -> int:
+        """Get target word count for component type.
+        
+        NOTE: Word counts are now defined in prompts (Option B).
+        This returns a legacy fallback value only.
+        """
+        lengths = self.config.get('component_lengths', {})
+        if component_type in lengths:
+            val = lengths[component_type]
+            if isinstance(val, dict):
+                return val.get('target', 100)
+            return val
+        return 100  # Default fallback
     
     # =========================================================================
     # DATA SOURCES

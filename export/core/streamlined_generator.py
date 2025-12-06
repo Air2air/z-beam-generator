@@ -94,7 +94,7 @@ THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 from shared.validation.schema_validator import SchemaValidator
 logger.info("Unified schema validation loaded successfully")
 # Import material-aware prompt system (OPTIONAL - archived infrastructure)
-# TODO: Re-enable when material_prompting module is restored
+# NOTE: material_prompting module archived - functionality merged into main generation pipeline
 # from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
 # from material_prompting.exceptions.handler import MaterialExceptionHandler
 # logger.info("Material-aware prompt system loaded successfully")
@@ -145,13 +145,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Enhanced validator (optional - currently unused)
         self.enhanced_validator = None
         # Material-aware prompt system (OPTIONAL - archived infrastructure)
-        # TODO: Re-enable when material_prompting module is restored
+        # NOTE: material_prompting module archived - functionality merged into main generation pipeline
         # try:
         #     self.material_aware_generator = MaterialAwarePromptGenerator()
         #     self.logger.info("Material-aware prompt system initialized")
         # except Exception as e:
         #     raise ConfigurationError(f"Material-aware prompt system required but setup failed: {e}")
-        self.material_aware_generator = None  # Temporarily disabled
+        self.material_aware_generator = None  # Archived - not needed
         
         # Initialize specialized prompt builders for enhanced quality
         # (NOT separate generators - just improved prompts within frontmatter)

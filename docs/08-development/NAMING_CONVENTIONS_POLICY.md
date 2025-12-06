@@ -126,7 +126,7 @@ universal_image_generator.py # Both prefixes redundant
 ```python
 # ✅ RIGHT: File in generation/core/
 generator.py                 # Simple and clear
-quality_gated_generator.py   # Descriptor adds meaning
+evaluated_generator.py       # Descriptor adds meaning
 
 # ✅ RIGHT: File in shared/validation/
 prompt_validator.py          # Clear purpose, context from directory

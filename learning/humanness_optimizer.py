@@ -97,13 +97,20 @@ class HumannessOptimizer:
         else:
             self.patterns_file = patterns_file
         
-        # Validate template file exists (fail-fast)
+        # Validate template files exist (fail-fast)
         self.template_file = Path('shared/text/templates/system/humanness_layer.txt')
+        self.template_file_compact = Path('shared/text/templates/system/humanness_layer_compact.txt')
         if not self.template_file.exists():
             raise FileNotFoundError(
                 f"Humanness layer template not found: {self.template_file}. "
                 f"Cannot operate without template per template-only policy."
             )
+        # Compact template is optional - will use full template if not found
+        
+        # Components using compact humanness layer (to stay under 8000 char API limit)
+        # Caption prompts are ~5500 chars with compact template, would exceed limit with full
+        # Settings_description also needs compact to avoid exceeding limits
+        self.compact_components = {'caption', 'settings_description', 'component_summaries'}
         
         # Load configuration for randomization targets (fail-fast)
         self.config_path = Path(config_path)
@@ -116,9 +123,34 @@ class HumannessOptimizer:
         with open(self.config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
         
-        if 'randomization_targets' not in self.config:
+        # Merge domain-specific configs (randomization_targets moved to domain configs)
+        # Load materials domain config for structures, property_strategies, length, etc.
+        materials_config_path = Path('domains/materials/config.yaml')
+        if materials_config_path.exists():
+            with open(materials_config_path, 'r', encoding='utf-8') as f:
+                materials_config = yaml.safe_load(f)
+            
+            # Merge randomization_targets from materials config
+            if 'randomization_targets' in materials_config:
+                if self.config.get('randomization_targets') is None:
+                    self.config['randomization_targets'] = {}
+                self.config['randomization_targets'].update(materials_config['randomization_targets'])
+        
+        # Load settings domain config for voices, rhythms, etc.
+        settings_config_path = Path('domains/settings/config.yaml')
+        if settings_config_path.exists():
+            with open(settings_config_path, 'r', encoding='utf-8') as f:
+                settings_config = yaml.safe_load(f)
+            
+            # Merge randomization_targets from settings config
+            if 'randomization_targets' in settings_config:
+                if self.config.get('randomization_targets') is None:
+                    self.config['randomization_targets'] = {}
+                self.config['randomization_targets'].update(settings_config['randomization_targets'])
+        
+        if not self.config.get('randomization_targets'):
             raise ValueError(
-                f"Missing 'randomization_targets' in {self.config_path}. "
+                f"Missing 'randomization_targets' in {self.config_path} and domain configs. "
                 f"Zero hardcoded values policy requires config-driven randomization."
             )
         
@@ -372,6 +404,9 @@ class HumannessOptimizer:
         - Previous attempt feedback
         - RANDOMIZED SELECTIONS: length target, structure approach, voice style
         
+        Uses COMPACT template for short-form content (caption, subtitle) to stay
+        within prompt length limits. Full template for descriptions/FAQ.
+        
         Args:
             winston_patterns: Patterns from Winston passing samples
             subjective_patterns: Patterns from subjective learning
@@ -382,27 +417,20 @@ class HumannessOptimizer:
         Returns:
             Formatted humanness instructions with randomization
         """
-        # Load template (fail-fast if missing - already validated in __init__)
-        template = self.template_file.read_text(encoding='utf-8')
+        # Select template: compact for caption (8000 char API limit), full for others
+        use_compact = component_type in self.compact_components and self.template_file_compact.exists()
         
-        # 🎲 RANDOMIZE LENGTH TARGET (from config - zero hardcoded values)
-        # Use subtitle_length for material_description, default to 'length' for others
-        length_config_key = 'subtitle_length' if component_type == 'material_description' else 'length'
-        if length_config_key in self.config['randomization_targets']:
-            length_config = self.config['randomization_targets'][length_config_key]
+        if use_compact:
+            template = self.template_file_compact.read_text(encoding='utf-8')
+            logger.info(f"📝 Using COMPACT humanness template for {component_type}")
         else:
-            # Fallback to 'length' if component-specific config not found
-            length_config = self.config['randomization_targets']['length']
+            template = self.template_file.read_text(encoding='utf-8')
+            logger.info(f"📝 Using humanness template for {component_type}")
         
-        length_options = []
-        length_labels = {}
-        for key, value in length_config.items():
-            length_options.append(key)
-            range_str = f"{value['range'][0]}-{value['range'][1]} words"
-            length_labels[key] = f"{range_str} ({value['description']})"
-        
-        selected_length_key = random.choice(length_options)
-        selected_length = length_labels[selected_length_key]
+        # LENGTH: Now defined in domain prompts (Option B: Prompts Only)
+        # Humanness layer does NOT inject length - it would conflict with prompt's word count
+        selected_length_key = "FROM_PROMPT"
+        selected_length = "(See domain prompt for word count)"
         
         # 🎲 RANDOMIZE STRUCTURAL APPROACH (from config)
         structure_config = self.config['randomization_targets']['structures']
@@ -477,7 +505,21 @@ class HumannessOptimizer:
         # Format previous attempt feedback
         feedback_section = self._format_previous_feedback(previous_ai_tendencies, strictness_level)
         
-        # Inject all data into template (including randomization)
+        # Handle compact vs full template differently
+        if use_compact:
+            # Compact template uses simpler placeholders
+            instructions = template.format(
+                selected_length=selected_length,
+                selected_structure=selected_structure,
+                selected_voice=selected_voice,
+                selected_rhythm=selected_rhythm
+            )
+            # Log size for visibility
+            logger.info(f"✅ Generated {len(instructions)} character COMPACT instruction block")
+            print(f"   ✅ Generated {len(instructions)} character COMPACT instruction block")
+            return instructions
+        
+        # Full template with all placeholders
         instructions = template.format(
             attempt_number=strictness_level,
             component_type=component_type,
@@ -525,6 +567,8 @@ dramatic variation between generations. No two outputs should be similar!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
+        logger.info(f"✅ Generated {len(instructions + randomization_addendum)} character instruction block")
+        print(f"   ✅ Generated {len(instructions + randomization_addendum)} character instruction block")
         return instructions + randomization_addendum
     
     def _format_winston_patterns(self, patterns: WinstonPatterns) -> str:

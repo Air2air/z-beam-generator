@@ -10,6 +10,7 @@ from .generation import (
     handle_caption_generation,
     handle_material_description_generation,
     handle_settings_description_generation,
+    handle_component_summaries_generation,
     handle_faq_generation,
 )
 

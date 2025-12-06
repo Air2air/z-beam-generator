@@ -1,165 +1,63 @@
-# Universal Text Prompt System
+# Shared Prompts
 
 ## Overview
 
-Simplified, universal approach for all text generation (subtitles, captions, FAQs, etc.):
+This directory contains shared prompt resources used across the generation system.
+
+## Current Structure
 
 ```
-Context Prompt → API Generation → Voice Postprocessor → Materials.yaml
+shared/prompts/
+├── README.md           # This file
+├── __init__.py         # Module exports
+└── personas/           # Author voice personas
+    ├── indonesia.yaml
+    ├── italy.yaml
+    ├── taiwan.yaml
+    └── united_states.yaml
 ```
 
-## Architecture
+## Author Personas
 
-### 1. **Context-Only Prompts** (`text_prompt_builder.py`)
-- Generates prompts with ONLY context and requirements
-- NO voice markers in the prompt
-- Plain professional language instructions
-- Component-specific: length, tone, examples
+The `personas/` directory contains YAML files defining author voice characteristics:
+- Linguistic patterns and cultural nuances
+- Writing style preferences
+- Regional expressions and idioms
 
-### 2. **API Generation**
-- Receives neutral professional prompt
-- Generates content without voice markers
-- Uses standard API client (Grok, GPT, etc.)
+These are loaded by `generation/core/generator.py` to add authentic voice variation.
 
-### 3. **Voice Postprocessor** (`/shared/voice/post_processor.py`)
-- Adds author-specific voice markers AFTER generation
-- Intensity levels: 1-5 (light to strong)
-- Author profiles: USA, Taiwan, Italy, Indonesia
-- Validates voice authenticity (score ≥70/100)
+## Domain Prompts (In config.yaml Files)
 
-### 4. **Save to Materials.yaml**
-- Voice-enhanced content saved to source of truth
-- Frontmatter export uses Materials.yaml data
-- All text generation happens on Materials.yaml first
+Text prompt templates are now in domain config.yaml files under `prompts:` key:
 
-## Usage
+```
+domains/materials/
+├── config.yaml              # Contains prompts.caption, prompts.faq, prompts.material_description
+└── prompts/personas/        # Author voice personas (materials-specific)
 
-### For Subtitles
-
-```python
-from shared.prompts.text_prompt_builder import TextPromptBuilder
-from shared.voice.post_processor import VoicePostProcessor
-from components.frontmatter.utils.author_manager import get_author_by_id
-
-# 1. Build context-only prompt
-builder = TextPromptBuilder()
-prompt = builder.build_prompt(
-    component_type='subtitle',
-    material_name='Bronze',
-    category='Metals',
-    subcategory='Non-Ferrous',
-    focus_area=focus_area_obj,
-    siblings=['Copper', 'Brass']
-)
-
-# 2. Generate neutral content
-response = api_client.generate_simple(
-    prompt=prompt,
-    system_prompt="Write in neutral professional tone.",
-    temperature=0.7
-)
-neutral_text = response.content
-
-# 3. Apply voice postprocessor
-author = get_author_by_id(author_id)
-voice_processor = VoicePostProcessor(api_client)
-enhanced_text = voice_processor.enhance(
-    text=neutral_text,
-    author=author,
-    intensity=2  # Light voice for subtitles
-)
-
-# 4. Save to Materials.yaml
-material_data['subtitle'] = enhanced_text
+domains/settings/
+├── config.yaml              # Contains prompts.component_summary_base, prompts.settings_description
+└── config/
+    └── component_summaries.yaml  # Component definitions (titles, descriptions)
 ```
 
-### For Captions
+This follows the **Template-Only Policy**: all content instructions exist in YAML template
+files, not hardcoded in Python code.
 
-```python
-enhanced_caption = voice_processor.enhance(
-    text=neutral_caption,
-    author=author,
-    intensity=3  # Moderate voice for captions
-)
-```
+## Current Architecture
 
-### For FAQ Answers
+The generation pipeline now uses:
 
-```python
-enhanced_faq = voice_processor.enhance(
-    text=neutral_faq,
-    author=author,
-    intensity=4  # Strong voice for FAQs
-)
-```
+1. **Domain prompt templates** (`domains/*/prompts/*.txt`) - Content instructions
+2. **Humanness optimizer** (`learning/humanness_optimizer.py`) - Voice variation
+3. **Single-pass generation** - No post-processing voice enhancement
+4. **Direct save** - Content saved immediately to YAML files
 
-## Voice Intensity Levels
+## Migration Note (Dec 2025)
 
-| Level | Type | Use Case | Example Markers |
-|-------|------|----------|----------------|
-| 1 | Minimal | Technical docs | None or very rare |
-| 2 | Light | Subtitles | "helps", "ensures", "offers" |
-| 3 | Moderate | Captions | "pretty", "basically" (occasional) |
-| 4 | Strong | FAQs | "pretty", "basically", "fairly" |
-| 5 | Maximum | Conversational | Heavy marker usage |
+The old `text_prompt_builder.py` was removed because it:
+1. Hardcoded component configs in Python (violates Template-Only Policy)
+2. Used post-processor voice architecture (no longer used)
+3. Was not imported by the main generation pipeline
 
-## Component Configuration
-
-Add new components to `COMPONENT_CONFIGS` in `text_prompt_builder.py`:
-
-```python
-COMPONENT_CONFIGS = {
-    "your_component": {
-        "length": "20-30 words",
-        "tone": "Descriptive and informative",
-        "examples": {
-            "excellent": ["Example 1", "Example 2"],
-            "avoid": ["Bad example"]
-        }
-    }
-}
-```
-
-Then set voice intensity in `components/text/config/voice_application.yaml`:
-
-```yaml
-materials_page:
-  your_component: true  # Enable voice
-  # Intensity: 3 (moderate) - set in code when calling voice_processor.enhance()
-```
-
-## Benefits
-
-1. **Clean Separation**: Prompts focus on context, voice is postprocessing
-2. **Consistency**: Same postprocessor for all text types
-3. **Flexibility**: Easy to adjust voice intensity per component
-4. **Reusability**: One prompt builder for all components
-5. **Maintainability**: Single source of voice logic
-
-## Migration from Legacy Systems
-
-### Old Approach (❌ Deprecated)
-- Voice markers embedded in prompts
-- Author-specific prompt construction
-- Complex prompt templates with voice instructions
-
-### New Approach (✅ Current)
-- Context-only prompts
-- Universal postprocessor
-- Simple, consistent pipeline
-
-## Files
-
-- **`text_prompt_builder.py`** - Universal prompt builder (context only)
-- **`/shared/voice/post_processor.py`** - Voice enhancement postprocessor
-- **`/components/text/config/voice_application.yaml`** - Voice policy per component
-- **`/scripts/regenerate_subtitles.py`** - Example implementation
-
-## Legacy Code
-
-The following methods are DEPRECATED and kept only for backwards compatibility:
-- `shared/voice/orchestrator.py:_build_subtitle_prompt_legacy()`
-- `components/frontmatter/core/hybrid_generation_manager.py:_build_subtitle_prompt_legacy()`
-- `components/frontmatter/core/streamlined_generator.py:_generate_subtitle_legacy()`
-
-DO NOT use these for new development. Use the universal text approach instead.
+The current architecture uses domain prompt templates loaded directly by generators.

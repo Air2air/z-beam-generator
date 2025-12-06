@@ -4,30 +4,39 @@ Generation Command Handlers
 
 Handles AI-powered content generation commands.
 
-Architecture: Component-agnostic design - all components use same handler with
-different templates/config. No hardcoded component types or branching logic.
+Architecture: Domain-agnostic design - all domains use same handler with
+different configs from domains/*/config.yaml. No hardcoded domain logic.
+
+The unified pipeline:
+1. Load domain config from domains/{domain}/config.yaml
+2. Use DomainAdapter for data access
+3. Use Generator for content generation
+4. Use PromptBuilder for prompt construction
+5. Use DynamicConfig for generation parameters
 """
 
 
 def handle_generation(
-    material_name: str,
+    identifier: str,
     component_type: str,
+    domain: str = 'materials',
     skip_integrity_check: bool = False,
     **kwargs
 ):
     """
-    Generate AI-powered content for ANY component type.
+    Generate AI-powered content for ANY domain and component type.
     
-    Component-agnostic handler - behavior determined by:
-    - shared/text/templates/components/{component_type}.txt (content instructions)
-    - config.yaml component_lengths (length, extraction strategy)
-    - ComponentRegistry (structural metadata)
+    Domain-agnostic handler - behavior determined by:
+    - domains/{domain}/config.yaml (prompts, data paths)
+    - generation/config.yaml (extraction strategies)
+    - DynamicConfig (generation parameters)
     
-    NO component-specific branching in this code.
+    NO domain-specific branching in this code.
     
     Args:
-        material_name: Name of material to generate for
+        identifier: Item name (material, setting, etc.) - domain agnostic
         component_type: Type of component (caption, subtitle, faq, etc.)
+        domain: Domain name (e.g., 'materials', 'settings')
         skip_integrity_check: Skip pre-generation checks
         **kwargs: Additional parameters (e.g., faq_count for FAQ generation)
         
@@ -43,19 +52,20 @@ def handle_generation(
         print(f"❌ Error: {e}")
         return False
     
-    # Display header with component type
+    # Display header with component type and domain
     component_label = component_type.upper().replace('_', ' ')
     icon_map = {
         'caption': '📝',
         'material_description': '📌',
         'settings_description': '⚙️',
+        'component_summary': '📋',
         'faq': '❓',
         'troubleshooter': '🔧'
     }
     icon = icon_map.get(component_type, '📝')
     
     print("="*80)
-    print(f"{icon} {component_label} GENERATION: {material_name}")
+    print(f"{icon} {component_label} GENERATION: {identifier} ({domain} domain)")
     print("="*80)
     print()
     
@@ -65,8 +75,8 @@ def handle_generation(
         return False
     
     try:
-        # === Use UnifiedMaterialsGenerator with training_mode parameter ===
-        from domains.materials.coordinator import UnifiedMaterialsGenerator
+        # === Use unified Generator with domain adapter ===
+        from generation.core.generator import Generator
         
         # Initialize API client
         from shared.api.client_factory import create_api_client
@@ -75,17 +85,17 @@ def handle_generation(
         print("✅ API client ready")
         print()
         
-        # Initialize unified materials generator (PRODUCTION MODE: training_mode=False)
-        print("🔧 Initializing UnifiedMaterialsGenerator...")
-        generator = UnifiedMaterialsGenerator(api_client, training_mode=False)
-        print("✅ Generator ready (production mode: fast, no quality gates)")
+        # Initialize generator with domain (uses DomainAdapter internally)
+        print(f"🔧 Initializing Generator for '{domain}' domain...")
+        generator = Generator(api_client, domain=domain)
+        print("✅ Generator ready")
         print()
         
-        # Generate content (component-agnostic)
+        # Generate content (domain-agnostic)
         print(f"🤖 Generating AI-powered {component_type}...")
         print(f"   Component: {component_type}")
+        print(f"   Domain: {domain}")
         print(f"   Target: {spec.default_length} words (range: {spec.min_length}-{spec.max_length})")
-        print("   Note: Voice enhancement happens in post-processing")
         print()
         
         generation_succeeded = True
@@ -93,9 +103,9 @@ def handle_generation(
         generation_error = None
         
         try:
-            content_data = generator.generate(material_name, component_type, **kwargs)
+            content_data = generator.generate(identifier, component_type, **kwargs)
             
-            print(f"✅ {component_label.capitalize()} generated and saved to Materials.yaml")
+            print(f"✅ {component_label.capitalize()} generated and saved")
             print()
             
         except Exception as gen_error:
@@ -112,14 +122,14 @@ def handle_generation(
                 conn = sqlite3.connect('z-beam.db')
                 cursor = conn.cursor()
                 
-                # Get most recent attempt for this material/component
+                # Get most recent attempt for this identifier/component
                 cursor.execute("""
                     SELECT generated_text
                     FROM detection_results
                     WHERE material = ? AND component_type = ?
                     ORDER BY timestamp DESC
                     LIMIT 1
-                """, (material_name, component_type))
+                """, (identifier, component_type))
                 
                 result = cursor.fetchone()
                 if result:
@@ -134,10 +144,12 @@ def handle_generation(
         
         # Extract content for display (even on failure)
         if content_data:
-            full_content = _extract_content_for_display(content_data, component_type, spec)
+            # Generator returns dict with 'content' key; database returns raw content
+            actual_content = content_data.get('content', content_data) if isinstance(content_data, dict) and 'content' in content_data else content_data
+            full_content = _extract_content_for_display(actual_content, component_type, spec)
             
             # POLICY: Always show complete generation report after each generation (success OR failure)
-            _show_generation_report(full_content, material_name, component_type, 
+            _show_generation_report(full_content, identifier, component_type, 
                                    succeeded=generation_succeeded, error=generation_error)
         
         # NOTE: Subjective evaluation is ONLY for training mode (quality-gated generation)
@@ -150,13 +162,13 @@ def handle_generation(
             
             # Run post-generation validation
             from shared.commands.integrity_helper import run_post_generation_validation
-            run_post_generation_validation(material_name, component_type, quick=True)
+            run_post_generation_validation(identifier, component_type, quick=True)
             
             # Check if we should update sweet spot recommendations (generic learning)
-            _update_sweet_spot_if_needed(material_name, component_type)
+            _update_sweet_spot_if_needed(identifier, component_type)
             
             # Run post-generation integrity check
-            _run_post_generation_integrity(material_name, component_type)
+            _run_post_generation_integrity(identifier, component_type)
             
             return True
         else:
@@ -199,11 +211,18 @@ def _extract_content_for_display(content_data, component_type, spec):
         return str(content_data)
 
 
-def _show_generation_report(content, material_name, component_type, succeeded=True, error=None):
+def _show_generation_report(content, identifier, component_type, succeeded=True, error=None):
     """
     Display complete generation report (policy requirement).
     
     Shows content even when generation fails quality gates, enabling analysis.
+    
+    Args:
+        content: Generated content to display
+        identifier: Domain-agnostic item identifier (material name, setting name, etc.)
+        component_type: Type of component generated
+        succeeded: Whether generation passed quality gates
+        error: Error message if generation failed
     """
     status_emoji = "✅" if succeeded else "⚠️"
     status_text = "SUCCESS" if succeeded else "FAILED QUALITY GATES"
@@ -227,11 +246,14 @@ def _show_generation_report(content, material_name, component_type, succeeded=Tr
         print(f"   • Status: {status_emoji} PASSED all quality gates")
         print()
         print("💾 STORAGE:")
-        # settings_description goes to Settings.yaml, everything else to Materials.yaml
-        storage_file = "Settings.yaml" if component_type == 'settings_description' else "Materials.yaml"
+        # Determine storage file based on component type (domain-agnostic)
+        if 'settings' in component_type or component_type == 'component_summary':
+            storage_file = "Settings.yaml"
+        else:
+            storage_file = "Materials.yaml"
         print(f"   • Location: data/materials/{storage_file}")
         print(f"   • Component: {component_type}")
-        print(f"   • Material: {material_name}")
+        print(f"   • Item: {identifier}")
         print(f"   • Saved: {status_emoji} YES")
     else:
         print("📈 QUALITY METRICS:")
@@ -243,7 +265,7 @@ def _show_generation_report(content, material_name, component_type, succeeded=Tr
         print("💾 STORAGE:")
         print("   • Location: NOT SAVED (failed quality gates)")
         print(f"   • Component: {component_type}")
-        print(f"   • Material: {material_name}")
+        print(f"   • Item: {identifier}")
         print(f"   • Saved: ❌ NO")
         print()
         print("💡 ANALYSIS:")
@@ -258,8 +280,14 @@ def _show_generation_report(content, material_name, component_type, succeeded=Tr
     print()
 
 
-def _run_subjective_evaluation(content, material_name, component_type):
-    """Run subjective evaluation (component-agnostic)."""
+def _run_subjective_evaluation(content, identifier, component_type):
+    """Run subjective evaluation (domain-agnostic).
+    
+    Args:
+        content: Generated content to evaluate
+        identifier: Domain-agnostic item identifier
+        component_type: Type of component generated
+    """
     from shared.commands.subjective_evaluation_helper import SubjectiveEvaluationHelper
     from shared.api.client_factory import create_api_client
     
@@ -270,11 +298,17 @@ def _run_subjective_evaluation(content, material_name, component_type):
         verbose=True
     )
     
+    # Determine domain from component type
+    if 'settings' in component_type or component_type == 'component_summary':
+        domain = 'settings'
+    else:
+        domain = 'materials'
+    
     eval_result = helper.evaluate_generation(
         content=content,
-        topic=material_name,
+        topic=identifier,
         component_type=component_type,
-        domain='materials'
+        domain=domain
     )
     
     # Display narrative assessment if available
@@ -293,7 +327,7 @@ def _run_subjective_evaluation(content, material_name, component_type):
         'narrative_assessment': eval_result.narrative_assessment if eval_result else None
     }
     report_path = writer.save_individual_report(
-        material_name=material_name,
+        material_name=identifier,  # Keep param name for compatibility
         component_type=component_type,
         content=content,
         evaluation=evaluation_data
@@ -302,8 +336,15 @@ def _run_subjective_evaluation(content, material_name, component_type):
     print()
 
 
-def _run_winston_detection(content, material_name, component_type, api_client):
-    """Run Winston API detection (component-agnostic)."""
+def _run_winston_detection(content, identifier, component_type, api_client):
+    """Run Winston API detection (domain-agnostic).
+    
+    Args:
+        content: Generated content to analyze
+        identifier: Domain-agnostic item identifier
+        component_type: Type of component generated
+        api_client: API client for generation (not used for Winston)
+    """
     print("🤖 Running Winston AI detection...")
     try:
         from postprocessing.detection.winston_integration import WinstonIntegration
@@ -341,7 +382,7 @@ def _run_winston_detection(content, material_name, component_type, api_client):
         # Detect and log
         winston_result = winston.detect_and_log(
             text=content,
-            material=material_name,
+            material=identifier,
             component_type=component_type,
             temperature=generation_temp,
             attempt=1,
@@ -381,8 +422,13 @@ def _run_winston_detection(content, material_name, component_type, api_client):
             raise RuntimeError(f"Winston API detection required but failed: {e}")
 
 
-def _update_sweet_spot_if_needed(material_name, component_type):
-    """Update sweet spot recommendations if threshold met (component-agnostic)."""
+def _update_sweet_spot_if_needed(identifier, component_type):
+    """Update sweet spot recommendations if threshold met (domain-agnostic).
+    
+    Args:
+        identifier: Domain-agnostic item identifier
+        component_type: Type of component generated
+    """
     from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
     from generation.config.config_loader import get_config
     
@@ -409,13 +455,18 @@ def _update_sweet_spot_if_needed(material_name, component_type):
             print()
 
 
-def _run_post_generation_integrity(material_name, component_type):
-    """Run post-generation integrity check (component-agnostic)."""
+def _run_post_generation_integrity(identifier, component_type):
+    """Run post-generation integrity check (domain-agnostic).
+    
+    Args:
+        identifier: Domain-agnostic item identifier
+        component_type: Type of component generated
+    """
     print("🔍 Running post-generation integrity check...")
     from generation.integrity import IntegrityChecker
     checker = IntegrityChecker()
     post_results = checker.run_post_generation_checks(
-        material=material_name,
+        material=identifier,
         component_type=component_type
     )
     
@@ -437,7 +488,7 @@ def _run_post_generation_integrity(material_name, component_type):
 # DEPRECATED COMPONENT-SPECIFIC HANDLERS (Backward Compatibility)
 # ============================================================================
 # These handlers are maintained for backward compatibility but are DEPRECATED.
-# All new code should use handle_generation(material, component_type) instead.
+# All new code should use handle_generation(identifier, component_type, domain=...) instead.
 # ============================================================================
 
 def handle_caption_generation(material_name: str, skip_integrity_check: bool = False):
@@ -447,23 +498,38 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
     Generate AI-powered caption for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'caption', skip_integrity_check)
+    return handle_generation(material_name, 'caption', skip_integrity_check, domain='materials')
 
 
 def handle_material_description_generation(material_name: str, skip_integrity_check: bool = False):
     """
+    DEPRECATED: Use handle_generation(material_name, 'material_description') instead.
+    
     Generate AI-powered material description for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'material_description', skip_integrity_check)
+    return handle_generation(material_name, 'material_description', skip_integrity_check, domain='materials')
 
 
 def handle_settings_description_generation(material_name: str, skip_integrity_check: bool = False):
     """
+    DEPRECATED: Use handle_generation(material_name, 'settings_description', domain='settings') instead.
+    
     Generate AI-powered settings description for a material and save to Settings.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'settings_description', skip_integrity_check)
+    return handle_generation(material_name, 'settings_description', skip_integrity_check, domain='settings')
+
+
+def handle_component_summaries_generation(material_name: str, skip_integrity_check: bool = False):
+    """
+    DEPRECATED: Use generate_component_summaries(material_name, domain='settings') instead.
+    
+    Generate AI-powered component summaries for a material's Settings page.
+    Uses per-component generation to keep prompts under API limits.
+    """
+    from .component_summaries_handler import generate_component_summaries
+    return generate_component_summaries(material_name, skip_integrity_check, domain='settings')
 
 
 def handle_faq_generation(material_name: str, skip_integrity_check: bool = False):

@@ -28,8 +28,9 @@ prompts/
 ├── description.txt        # 150-word description prompts
 ├── faq.txt               # FAQ generation prompts
 ├── troubleshooter.txt    # Troubleshooting guide prompts
-├── anti_ai_rules.txt     # AI detection avoidance rules
 └── voice_rules.txt       # Voice enhancement rules
+
+# Note: Anti-AI rules are now in shared/text/templates/system/base.txt
 ```
 
 ### Processing Configuration

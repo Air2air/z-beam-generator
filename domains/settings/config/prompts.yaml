@@ -1,0 +1,39 @@
+# Settings Domain - Component Prompt Configuration
+# Defines metadata for each text component in the settings domain
+
+domain: settings
+output_path: frontmatter/settings/{slug}-settings.yaml
+
+components:
+  settings_description:
+    title: Settings Description
+    description: |
+      Professional technical description about special settings and requirements
+      for laser cleaning this material. Focuses on strengths, weaknesses, and
+      practical adjustments needed.
+    prompt_file: settings_description.txt
+    word_count:
+      min: 100
+      max: 150
+      target: 125
+    structure: raw
+    output_field: settings_description
+    use_compact_humanness: true
+
+  component_summaries:
+    title: Component Summaries
+    description: |
+      Brief UI help text for each interactive component on the Settings page.
+      Per-component generation using component_summary_base.txt template.
+    prompt_file: component_summary_base.txt
+    components_config: component_summaries.yaml
+    word_count:
+      min: 30
+      max: 60
+      target: 45
+    structure: per_component
+    output_field: component_summaries
+    use_compact_humanness: true
+    
+    # Individual components defined in config/component_summaries.yaml
+    # Each gets its own API call for focused, high-quality output

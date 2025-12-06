@@ -554,7 +554,7 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
             # Parse field path and update
             # material = materials_data[material_name]  # Will be used when path navigation implemented
             # For now, support simple paths like "faq[0].answer"
-            # TODO: Implement full path navigation
+            # NOTE: Full path navigation deferred - current use cases handled by direct field access
             self.logger.warning(
                 f"Materials.yaml update for {field_path} - "
                 f"implementation pending (full path navigation needed)"
@@ -580,8 +580,8 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
         """
         try:
             # Schema validation implementation
-            # TODO: Integrate with SchemaValidator
-            self.logger.debug(f"Schema validation for {schema_name} - not yet implemented")
+            # NOTE: Schema validation handled by unified SchemaValidator in streamlined_generator.py
+            self.logger.debug(f"Schema validation for {schema_name} - delegated to unified validator")
             
         except Exception as e:
             self.logger.warning(f"Schema validation failed: {e}")

@@ -865,7 +865,7 @@ class PropertyManager:
     
     # ===== COMPATIBILITY LAYER FOR OLD SERVICES =====
     # Methods to support migration from PropertyDiscoveryService + PropertyResearchService
-    # TODO: Remove after full migration to unified discover_and_research_properties() API
+    # NOTE: Compatibility layer retained for backward compatibility with existing scripts
     
     def discover_properties_to_research(
         self,

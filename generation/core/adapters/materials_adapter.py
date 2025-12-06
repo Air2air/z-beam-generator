@@ -297,6 +297,8 @@ class MaterialsAdapter(DataSourceAdapter):
             return self._extract_before_after(text)
         elif strategy == 'json_list':
             return self._extract_json_list(text)
+        elif strategy == 'yaml':
+            return self._extract_yaml(text)
         else:
             raise ValueError(f"Unknown extraction strategy: {strategy}")
     
@@ -465,3 +467,58 @@ class MaterialsAdapter(DataSourceAdapter):
             return faq_list
         
         raise ValueError("Could not extract FAQ Q&A pairs from response")
+
+    def _extract_yaml(self, text: str) -> Dict:
+        """
+        Extract YAML structure from text (used by component_summaries).
+        
+        Handles:
+        - Code blocks with ```yaml ... ``` markers
+        - Raw YAML without code block markers
+        
+        Args:
+            text: Generated text containing YAML structure
+            
+        Returns:
+            Parsed YAML as dict
+            
+        Raises:
+            ValueError: If extraction fails
+        """
+        import yaml
+        
+        # Strategy 1: Extract from ```yaml code block
+        yaml_block_pattern = r'```(?:yaml)?\s*\n?(.*?)```'
+        matches = re.findall(yaml_block_pattern, text, re.DOTALL)
+        
+        if matches:
+            # Use the last match (most complete)
+            yaml_text = matches[-1].strip()
+            try:
+                return yaml.safe_load(yaml_text)
+            except yaml.YAMLError:
+                pass  # Fall through to raw parsing
+        
+        # Strategy 2: Try to parse raw text as YAML
+        # Look for YAML-like structure (key: value patterns)
+        if ':' in text:
+            try:
+                # Remove any leading/trailing non-YAML content
+                lines = text.split('\n')
+                yaml_lines = []
+                in_yaml = False
+                
+                for line in lines:
+                    # Start capturing at first key: line
+                    if not in_yaml and re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*:', line):
+                        in_yaml = True
+                    if in_yaml:
+                        yaml_lines.append(line)
+                
+                if yaml_lines:
+                    yaml_text = '\n'.join(yaml_lines)
+                    return yaml.safe_load(yaml_text)
+            except yaml.YAMLError:
+                pass
+        
+        raise ValueError("Could not extract YAML structure from response")

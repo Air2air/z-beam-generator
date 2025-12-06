@@ -47,24 +47,26 @@ class Generator:
     - Learning feedback (post-processing)
     """
     
-    def __init__(self, api_client, adapter=None):
+    def __init__(self, api_client, domain: str = 'materials', adapter=None):
         """
-        Initialize simple generator.
+        Initialize generator for any domain.
         
         Args:
             api_client: API client for content generation (required)
-            adapter: Domain adapter for extraction (optional)
+            domain: Domain name (e.g., 'materials', 'settings') - determines config
+            adapter: Optional pre-configured adapter (overrides domain parameter)
         """
         if not api_client:
             raise ValueError("API client required for content generation")
         
         self.api_client = api_client
+        self.domain = domain
         self.logger = logging.getLogger(__name__)
         
-        # Initialize adapter
+        # Initialize adapter - use DomainAdapter for config-driven behavior
         if adapter is None:
-            from generation.core.adapters.materials_adapter import MaterialsAdapter
-            self.adapter = MaterialsAdapter()
+            from generation.core.adapters.domain_adapter import DomainAdapter
+            self.adapter = DomainAdapter(domain)
         else:
             self.adapter = adapter
         
@@ -84,7 +86,7 @@ class Generator:
         # Load personas
         self.personas = self._load_all_personas()
         
-        self.logger.info("SimpleGenerator initialized (single-pass, no validation)")
+        self.logger.info(f"Generator initialized for '{domain}' domain (single-pass)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
         """Load all author personas from shared/prompts/personas/"""
@@ -111,29 +113,17 @@ class Generator:
             raise ValueError(f"Persona not found for author_id {author_id}")
         return self.personas[author_id]
     
-    def _load_materials_data(self) -> Dict:
-        """Load materials data from Materials.yaml"""
-        materials_path = Path("data/materials/Materials.yaml")
-        if not materials_path.exists():
-            raise FileNotFoundError(f"Materials.yaml not found: {materials_path}")
-        
-        with open(materials_path, 'r') as f:
-            return yaml.safe_load(f)
+    def _load_data(self) -> Dict:
+        """Load data using domain adapter"""
+        return self.adapter.load_all_data()
     
-    def _build_context(self, material_data: Dict) -> str:
-        """Build context from material properties"""
-        properties = material_data.get('properties', {})
-        context_parts = []
-        
-        for prop_name, prop_value in properties.items():
-            if isinstance(prop_value, dict):
-                value = prop_value.get('value', 'N/A')
-                unit = prop_value.get('unit', '')
-                context_parts.append(f"{prop_name}: {value} {unit}".strip())
-            else:
-                context_parts.append(f"{prop_name}: {prop_value}")
-        
-        return "\n".join(context_parts)
+    def _get_item_data(self, identifier: str) -> Dict:
+        """Get item data using domain adapter"""
+        return self.adapter.get_item_data(identifier)
+    
+    def _build_context(self, item_data: Dict) -> str:
+        """Build context using domain adapter"""
+        return self.adapter.build_context(item_data)
     
     def _get_base_parameters(self, component_type: str) -> Dict[str, Any]:
         """Get base generation parameters from dynamic config"""
@@ -144,15 +134,15 @@ class Generator:
     
     def generate(
         self,
-        material_name: str,
+        identifier: str,
         component_type: str,
         faq_count: int = None
     ) -> Dict[str, Any]:
         """
-        Generate content with single API call AND save to Materials.yaml.
+        Generate content with single API call AND save to domain data file.
         
         Args:
-            material_name: Name of material
+            identifier: Item name (material, setting, etc.) - domain agnostic
             component_type: Type of component (caption, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             
@@ -160,7 +150,7 @@ class Generator:
             Dict with 'content', 'length', 'word_count', 'saved', 'temperature'
             
         Raises:
-            ValueError: If material not found or generation fails
+            ValueError: If identifier not found or generation fails
             FileNotFoundError: If required files missing
         """
         # Generate humanness layer with randomized length from config
@@ -172,33 +162,30 @@ class Generator:
         )
         self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
         
-        result = self.generate_without_save(material_name, component_type, faq_count, humanness_layer)
+        result = self.generate_without_save(identifier, component_type, faq_count, humanness_layer)
         
-        # Save to appropriate YAML file (Settings.yaml for settings_description, Materials.yaml for others)
-        self._save_to_yaml(material_name, component_type, result['content'])
-        if component_type == 'settings_description':
-            self.logger.info("💾 Saved to Settings.yaml")
-        else:
-            self.logger.info("💾 Saved to Materials.yaml")
+        # Save using domain adapter (handles correct file path automatically)
+        self.adapter.write_component(identifier, component_type, result['content'])
+        self.logger.info(f"💾 Saved to {self.adapter.get_data_path()}")
         result['saved'] = True
         
         return result
     
     def generate_without_save(
         self,
-        material_name: str,
+        identifier: str,
         component_type: str,
         faq_count: int = None,
         humanness_layer: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Generate content WITHOUT saving to Materials.yaml.
+        Generate content WITHOUT saving.
         
-        Used by QualityGatedGenerator to generate content that will only be
-        saved if it passes quality gates.
+        Used by QualityEvaluatedGenerator for single-pass generation
+        with post-save quality evaluation for learning.
         
         Args:
-            material_name: Name of material
+            identifier: Item name (material, setting, etc.) - domain agnostic
             component_type: Type of component (caption, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
@@ -207,10 +194,10 @@ class Generator:
             Dict with 'content', 'length', 'word_count', 'saved'=False, 'temperature'
             
         Raises:
-            ValueError: If material not found or generation fails
+            ValueError: If identifier not found or generation fails
             FileNotFoundError: If required files missing
         """
-        self.logger.info(f"\n🔄 SIMPLE GENERATION: {component_type} for {material_name}")
+        self.logger.info(f"\n🔄 GENERATION: {component_type} for {identifier} ({self.domain} domain)")
         
         # Validate component type exists
         from shared.text.utils.component_specs import ComponentRegistry
@@ -219,33 +206,25 @@ class Generator:
         except KeyError:
             raise ValueError(f"Unknown component type: {component_type}")
         
-        # Load material data
-        materials_data = self._load_materials_data()
-        if material_name not in materials_data['materials']:
-            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
+        # Load item data using domain adapter
+        item_data = self._get_item_data(identifier)
         
-        material_data = materials_data['materials'][material_name]
-        
-        # Get author and voice - FAIL-FAST if author missing
-        from data.authors.registry import resolve_author_for_generation
-        author_info = resolve_author_for_generation(material_data)
-        author_id = author_info['id']
+        # Get author ID using adapter (domain-agnostic)
+        author_id = self.adapter.get_author_id(item_data)
         voice = self._get_persona_by_author_id(author_id)
         
         # Get facts and context
-        facts = self.enricher.fetch_real_facts(material_name)
-        context = self._build_context(material_data)
-        
-        # Length is determined by humanness_layer (uses randomization_targets.length)
-        # No need to calculate target_length here - humanness layer contains it
+        facts = self.enricher.fetch_real_facts(identifier)
+        context = self._build_context(item_data)
         
         # Get base parameters
         params = self._get_base_parameters(component_type)
         self.logger.info(f"🌡️  Temperature: {params['temperature']:.3f}")
         
+        # Build prompt using unified builder for all components
+        from shared.text.utils.prompt_builder import PromptBuilder
+        
         # Get technical intensity from config and normalize to 0.0-1.0 scale
-        # Config uses 1-3 scale, prompt_builder expects 0.0-1.0
-        # Conversion: 1 → 0.0 (no specs), 2 → 0.5 (moderate), 3 → 1.0 (full detail)
         config_technical_intensity = self.config.get('voice_parameters', {}).get('technical_intensity', 2)
         normalized_intensity = (config_technical_intensity - 1) / 2.0  # 1→0.0, 2→0.5, 3→1.0
         
@@ -253,20 +232,19 @@ class Generator:
             'technical_intensity': normalized_intensity
         }
         
-        # Build prompt (humanness_layer already contains length from randomization_targets)
-        from shared.text.utils.prompt_builder import PromptBuilder
         prompt = PromptBuilder.build_unified_prompt(
-            topic=material_name,
+            topic=identifier,
             voice=voice,
             length=None,  # Length is in humanness_layer, not passed separately
             facts=facts,
             context=context,
             component_type=component_type,
-            domain='materials',
-            enrichment_params=enrichment_params,  # Pass technical_intensity
-            humanness_layer=humanness_layer,  # Contains length from randomization_targets
-            faq_count=faq_count  # Pass FAQ count for FAQ templates
+            domain=self.domain,
+            enrichment_params=enrichment_params,
+            humanness_layer=humanness_layer,
+            faq_count=faq_count
         )
+        self.logger.info(f"📝 Prompt built for {component_type}")
         
         # CRITICAL: Validate prompt before API call
         self.logger.info("🔍 Validating prompt before API submission...")

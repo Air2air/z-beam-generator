@@ -121,8 +121,8 @@ docs/
 ```
 generation/
 ├── core/                              # Core generation
-│   ├── quality_gated_generator.py     # Main quality-gated generator
-│   ├── simple_generator.py            # Simple generation
+│   ├── evaluated_generator.py         # Single-pass generator with quality evaluation
+│   ├── generator.py                   # Base generator
 │   └── batch_generator.py             # Batch processing
 ├── config/                            # Configuration
 │   ├── config_loader.py               # Config loading
@@ -146,10 +146,10 @@ processing/
 z-beam-generator/
 ├── domains/                # Domain-specific code & prompts
 │   ├── materials/          # Materials domain (text + image prompts)
-│   │   ├── text/prompts/   # Component prompts: caption.txt, faq.txt, material_description.txt
+│   │   ├── prompts/        # Component prompts: caption.txt, faq.txt, material_description.txt
 │   │   └── image/          # Image generation for materials
 │   ├── settings/           # Settings domain
-│   │   └── text/prompts/   # settings_description.txt
+│   │   └── prompts/        # settings_description.txt, component_summaries.txt
 │   ├── contaminants/       # Contaminants domain
 │   └── data_orchestrator.py  # Cross-domain data coordination
 ├── generation/             # Core generation system

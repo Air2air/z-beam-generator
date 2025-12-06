@@ -1,0 +1,46 @@
+# Materials Domain - Component Prompt Configuration
+# Defines metadata for each text component in the materials domain
+
+domain: materials
+output_path: frontmatter/materials/{slug}-laser-cleaning.yaml
+
+components:
+  caption:
+    title: Caption
+    description: |
+      Two-paragraph description of material at 1000x magnification.
+      Before (contaminated) and After (clean) laser treatment.
+    prompt_file: caption.txt
+    word_count:
+      min: 50
+      max: 75
+      target: 60
+    structure: before_after
+    output_field: caption
+    
+  material_description:
+    title: Material Description
+    description: |
+      Single-sentence subtitle highlighting the material's primary advantage.
+      Focuses on practical outcomes and distinguishing characteristics.
+    prompt_file: material_description.txt
+    word_count:
+      min: 15
+      max: 25
+      target: 20
+    structure: raw
+    output_field: material_description
+    
+  faq:
+    title: FAQ
+    description: |
+      Practical questions and answers about laser cleaning this material.
+      Troubleshooting, best practices, and material behavior.
+    prompt_file: faq.txt
+    word_count:
+      min: 40
+      max: 100
+      target: 70
+    structure: qa_pairs
+    output_field: faq
+    default_count: 5

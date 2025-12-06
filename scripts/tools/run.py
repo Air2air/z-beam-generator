@@ -140,6 +140,7 @@ from shared.commands import (
     handle_caption_generation,
     handle_material_description_generation,
     handle_settings_description_generation,
+    handle_component_summaries_generation,
     handle_faq_generation,
     deploy_to_production,
     handle_material_audit,
@@ -192,6 +193,7 @@ def main():
     parser.add_argument("--caption", help="Generate AI-powered caption")
     parser.add_argument("--material-description", help="Generate AI-powered material description")
     parser.add_argument("--settings-description", help="Generate AI-powered settings description")
+    parser.add_argument("--component-summaries", help="Generate AI-powered component summaries for Settings page")
     parser.add_argument("--faq", help="Generate AI-powered FAQ")
     
     # Batch Generation Commands
@@ -420,6 +422,11 @@ def main():
     
     if getattr(args, 'settings_description', None):
         result = handle_settings_description_generation(args.settings_description, skip_integrity_check=args.skip_integrity_check)
+        # Per-iteration learning happens inline - no global evaluation needed
+        return result
+    
+    if getattr(args, 'component_summaries', None):
+        result = handle_component_summaries_generation(args.component_summaries, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     

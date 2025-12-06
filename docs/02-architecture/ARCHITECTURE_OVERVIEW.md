@@ -62,7 +62,7 @@ domains/contaminants/image/          ← Domain adapter (ContaminantImageConfig 
 ### 5. Template-Only Content
 **Policy**: `docs/08-development/TEMPLATE_ONLY_POLICY.md`
 
-- ALL content instructions in `domains/*/text/prompts/*.txt`
+- ALL content instructions in `domains/*/prompts/*.txt`
 - ZERO component-specific code in generators
 - Generic extraction strategies in config (before_after, raw, etc.)
 - Add new component = template file + config entry ONLY
@@ -136,14 +136,14 @@ z-beam-generator/
 
 ### Text Generation Flow
 1. **Input**: Material name + component type (caption, description, faq)
-2. **Template Loading**: Load `domains/{domain}/text/prompts/{component}.txt`
+2. **Template Loading**: Load `domains/{domain}/prompts/{component}.txt`
 3. **Prompt Building**: Inject material data into template
-4. **Quality Gating**: Winston AI detection, realism scoring, readability
-5. **Learning**: Log attempts, parameters, outcomes to SQLite
-6. **Storage**: Write to Materials.yaml + sync field to frontmatter
-7. **Verification**: Validate completeness and quality
+4. **Generation**: Single-pass API call with humanness layer
+5. **Storage**: Write to Materials.yaml + sync field to frontmatter
+6. **Evaluation (for learning)**: Winston AI detection, realism scoring (NO gating)
+7. **Learning**: Log attempt, parameters, quality scores to SQLite
 
-**Implementation**: `generation/core/quality_gated_generator.py`
+**Implementation**: `generation/core/evaluated_generator.py` (QualityEvaluatedGenerator)
 
 ### Image Generation Flow
 1. **Input**: Material/contaminant + category + contamination level
@@ -174,15 +174,16 @@ Each domain has its own learning database capturing:
 
 **Storage**: `domains/{domain}/image/learning/learned_data.db`
 
-### Quality Gates
-**All** must pass before content acceptance:
+### Quality Evaluation
+**Metrics logged for learning (NOT blocking - single-pass save)**:
 
-**Text Generation**:
-1. Winston AI Detection: 69%+ human score (configurable)
-2. Readability Check: Pass status
-3. Subjective Language: No violations
-4. Realism Score: 7.0/10 minimum
-5. Combined Quality Target: Meets learning target
+**Text Generation** (evaluated AFTER save):
+1. Winston AI Detection: Human score logged for trends
+2. Subjective Realism: Score logged for pattern analysis
+3. Voice Authenticity: Score logged for quality tracking
+4. Tonal Consistency: Score logged for quality tracking
+5. AI Tendencies: Patterns logged to identify issues
+6. Structural Diversity: Score logged for variety tracking
 
 **Image Generation**:
 1. Prompt Length: Within Imagen 4 limits (4,096 chars/field)

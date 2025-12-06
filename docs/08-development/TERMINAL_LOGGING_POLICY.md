@@ -342,7 +342,7 @@ See `tests/test_terminal_logging_policy.py`:
 ### November 22, 2025 - Policy Created
 - **Status**: MANDATORY enforcement
 - **Coverage**: All generation operations
-- **Implementation**: quality_gated_generator.py updated
+- **Implementation**: evaluated_generator.py updated
 - **Tests**: test_terminal_logging_policy.py created
 - **Grade**: A+ (100/100) - Complete implementation
 

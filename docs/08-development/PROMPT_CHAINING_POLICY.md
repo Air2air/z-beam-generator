@@ -143,12 +143,12 @@ stage3 = compose_prompt(material)  # Duplicates work!
 
 ## 📐 Text Generation Example
 
-### Current Architecture (Already Compliant)
+### Current Architecture (Single-Pass with Learning)
 
-**File**: `generation/core/quality_gated_generator.py`
+**File**: `generation/core/evaluated_generator.py` (QualityEvaluatedGenerator)
 
 ```python
-def generate(self, material: str, component: str) -> str:
+def generate(self, material: str, component: str) -> QualityEvaluatedResult:
     # Stage 1: Build base prompt from template
     base_prompt = self.prompt_builder.build_prompt(
         component_type=component,
@@ -156,33 +156,33 @@ def generate(self, material: str, component: str) -> str:
         voice_params=self.voice_params
     )
     
-    # Stage 2: Add humanness layer
-    humanness_prompt = self.humanness_optimizer.enhance(
-        base_prompt,
-        intensity=self.config['humanness_intensity']
+    # Stage 2: Add humanness layer (randomized voice, structure)
+    humanness_prompt = self.humanness_optimizer.generate_humanness_instructions(
+        component_type=component,
+        strictness_level=1  # Fixed level, no retry escalation
     )
     
-    # Stage 3: Generate content
+    # Stage 3: Generate content (single API call)
     content = self.api.generate(humanness_prompt)
     
-    # Stage 4: Evaluate quality
+    # Stage 4: Save immediately to Materials.yaml (no gating)
+    self._save_to_yaml(material, component, content)
+    
+    # Stage 5: Evaluate quality (for learning, NOT gating)
     evaluation = self.evaluator.evaluate(content)
+    winston_result = self._check_winston_detection(content)
     
-    # Stage 5: Apply feedback if needed
-    if evaluation.score < threshold:
-        content = self._regenerate_with_feedback(
-            humanness_prompt,
-            evaluation.feedback
-        )
+    # Stage 6: Log to learning database
+    self._log_attempt_for_learning(evaluation, winston_result)
     
-    return content
+    return QualityEvaluatedResult(success=True, content=content, quality_scores=...)
 ```
 
 **Why This Works**:
-- ✅ Each stage has ONE responsibility
-- ✅ Clear data flow: template → humanness → generation → evaluation → feedback
-- ✅ Easy to debug which stage failed
-- ✅ Reusable components (prompt_builder, humanness_optimizer)
+- ✅ Single-pass: fast generation (~5 seconds)
+- ✅ Always saves: 100% completion rate
+- ✅ Still evaluates: quality scores logged for learning
+- ✅ Clear data flow: template → humanness → generation → save → evaluate → log
 
 ---
 
@@ -423,7 +423,7 @@ print(result.metadata['composition'])    # Check composition stage
 
 ### **MANDATORY for ALL Generation Systems**
 
-✅ **Text Generation**: Already compliant (quality_gated_generator.py)
+✅ **Text Generation**: Already compliant (evaluated_generator.py)
 ✅ **Image Generation**: Must implement orchestrator pattern
 ✅ **Any New Domains**: Must follow chaining pattern
 
@@ -455,7 +455,7 @@ Before accepting any generation code:
 
 ### ✅ **GOOD: Text Generation Chaining**
 
-**File**: `generation/core/quality_gated_generator.py` (lines 150-250)
+**File**: `generation/core/evaluated_generator.py` (lines 150-250)
 
 ```python
 # Stage 1: Base prompt

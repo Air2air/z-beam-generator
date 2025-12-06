@@ -491,11 +491,13 @@ class PromptStageValidator:
     - Required sections present
     - Material-contamination compatibility
     - Physics plausibility
+    - AI clarity (no confusion, contradiction, redundancy)
     - Auto-optimize if needed
     """
     
     # API Limits
     IMAGEN_LIMIT = 4096
+    GROK_LIMIT = 8000
     TARGET_LENGTH = 3500
     WARNING_THRESHOLD = 3800
     
@@ -531,14 +533,29 @@ class PromptStageValidator:
     ]
     
     # Contradiction patterns - actual contradictions, not negations
-    # These should only trigger when BOTH positive assertions exist
-    # e.g., "must be thick" AND "must be thin" (contradicting)
-    # NOT: "never thick" or "perfectly clean is unrealistic" (consistent guidance)
     CONTRADICTION_PATTERNS = [
-        # Only flag if both assertions are positive commands (must/should/need)
         (r'\b(must|should)\s+be\s+(thick|heavy|caked)\b.*\b(must|should)\s+be\s+(thin|light)\b', 'thickness'),
         (r'\b(must|should)\s+be\s+perfectly\s+clean\b.*\b(must|should)\s+show\s+residual\b', 'cleanliness'),
         (r'\b(must|should)\s+be\s+uniform\b.*\b(must|should)\s+be\s+uneven\b', 'distribution'),
+    ]
+    
+    # AI Clarity patterns - check for AI-confusing content
+    AI_CONFUSION_PATTERNS = [
+        # Contradictory instructions within same prompt
+        (r'(DO NOT|NEVER|AVOID)\s+[\w\s]+\.\s*.*?(MUST|ALWAYS|REQUIRED):\s*\1', 'Contradictory DO NOT / MUST for same concept'),
+        (r'(short|brief|concise).*\b(detailed|comprehensive|thorough)\b', 'Length guidance contradiction: short vs detailed'),
+        (r'(formal|professional).*\b(casual|conversational|informal)\b', 'Tone contradiction: formal vs casual'),
+        (r'(technical|precise).*\b(simple|plain|accessible)\b', 'Style contradiction: technical vs simple'),
+        # Multiple conflicting lengths
+        (r'\b(\d+)\s*words?\b.*\b(\d+)\s*words?\b', 'Multiple word count targets'),
+        (r'\b(\d+)\s*sentences?\b.*\b(\d+)\s*sentences?\b', 'Multiple sentence count targets'),
+    ]
+    
+    # Redundancy patterns - repeated instructions that add confusion
+    REDUNDANCY_PATTERNS = [
+        (r'(CRITICAL|IMPORTANT|REQUIRED)[:\s]+.*\1[:\s]+', 'Repeated emphasis markers'),
+        (r'(NO|NEVER|AVOID)\s+(\w+).*\1\s+\2', 'Repeated prohibition'),
+        (r'(MUST|ALWAYS)\s+(\w+).*\1\s+\2', 'Repeated requirement'),
     ]
     
     # Required content patterns
@@ -553,9 +570,22 @@ class PromptStageValidator:
         prompt: str,
         negative_prompt: str = "",
         material: str = "",
-        auto_optimize: bool = True
+        auto_optimize: bool = True,
+        prompt_type: str = "image"
     ) -> ValidationReport:
-        """Run prompt stage validation."""
+        """
+        Run prompt stage validation.
+        
+        Args:
+            prompt: The orchestrated final prompt
+            negative_prompt: Negative prompt (for image generation)
+            material: Material name for context
+            auto_optimize: Whether to suggest auto-optimizations
+            prompt_type: Type of prompt ('text' for Grok, 'image' for Imagen)
+            
+        Returns:
+            ValidationReport with all issues found
+        """
         report = ValidationReport(
             stage=ValidationStage.PROMPT,
             material=material,
@@ -564,8 +594,11 @@ class PromptStageValidator:
             estimated_tokens=len(prompt) // 4
         )
         
+        # Determine limit based on prompt type
+        limit = self.GROK_LIMIT if prompt_type == 'text' else self.IMAGEN_LIMIT
+        
         # Check length
-        self._validate_length(prompt, report)
+        self._validate_length(prompt, report, limit)
         
         # Check logic (contradictions)
         self._validate_logic(prompt, report)
@@ -573,8 +606,12 @@ class PromptStageValidator:
         # Check duplications
         self._validate_duplications(prompt, report)
         
-        # Check required content
-        self._validate_required_content(prompt, material, report)
+        # NEW: Check AI clarity (confusion, contradiction, redundancy)
+        self._validate_ai_clarity(prompt, report)
+        
+        # Check required content (image prompts only)
+        if prompt_type == 'image':
+            self._validate_required_content(prompt, material, report)
         
         # Check material-contamination compatibility and physics
         self._validate_contamination_physics(prompt, report)
@@ -586,19 +623,26 @@ class PromptStageValidator:
         if negative_prompt:
             self._validate_negative_prompt(negative_prompt, report)
         
+        # Calculate overall AI clarity score
+        ai_issues = sum(1 for i in report.issues if 'AI' in str(i.message) or 'contradiction' in str(i.message).lower())
+        report.scores['ai_clarity'] = max(0, 100 - ai_issues * 15)
+        
         return report
     
-    def _validate_length(self, prompt: str, report: ValidationReport):
+    def _validate_length(self, prompt: str, report: ValidationReport, limit: int = None):
         """Validate prompt length."""
+        if limit is None:
+            limit = self.IMAGEN_LIMIT
+            
         length = len(prompt)
         
-        if length > self.IMAGEN_LIMIT:
-            over = length - self.IMAGEN_LIMIT
+        if length > limit:
+            over = length - limit
             report.add_issue(
                 ValidationIssue(
                     severity=IssueSeverity.CRITICAL,
                     category=IssueCategory.LENGTH,
-                    message=f"Prompt exceeds limit: {length}/{self.IMAGEN_LIMIT} chars (+{over})",
+                    message=f"Prompt exceeds limit: {length}/{limit} chars (+{over})",
                     suggestion=f"Must reduce by {over} characters"
                 ),
                 FixAction(
@@ -687,6 +731,146 @@ class PromptStageValidator:
         
         # Calculate quality score
         report.scores['quality'] = max(0, 100 - duplicates * 10)
+    
+    def _validate_ai_clarity(self, prompt: str, report: ValidationReport):
+        """
+        Validate prompt is clear and understandable for AI assistants.
+        
+        Checks for:
+        1. Confusion: Contradictory instructions that confuse the AI
+        2. Contradiction: Mutually exclusive requirements
+        3. Redundancy: Repeated instructions that add noise
+        4. Structure: Clear, parseable prompt organization
+        
+        AI assistants need unambiguous, non-conflicting instructions.
+        This validation ensures the orchestrated prompt is AI-friendly.
+        """
+        prompt_lower = prompt.lower()
+        confusion_count = 0
+        redundancy_count = 0
+        
+        # 1. Check for AI confusion patterns (contradictory instructions)
+        for pattern, issue_desc in self.AI_CONFUSION_PATTERNS:
+            matches = list(re.finditer(pattern, prompt_lower, re.IGNORECASE | re.DOTALL))
+            for match in matches[:2]:  # Report first 2 per pattern
+                confusion_count += 1
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.HIGH,
+                        category=IssueCategory.LOGIC,
+                        message=f"AI confusion: {issue_desc}",
+                        location=f"chars {match.start()}-{match.end()}",
+                        suggestion="Remove contradicting instruction - AI cannot follow both"
+                    ),
+                    FixAction(
+                        action_type='remove',
+                        severity=IssueSeverity.HIGH,
+                        description=f"Remove conflicting instruction: {issue_desc}",
+                        ai_instruction=f"Resolve contradiction: {issue_desc}. Keep only ONE of the conflicting instructions.",
+                        safe_to_auto_apply=False,
+                        requires_review=True
+                    )
+                )
+        
+        # 2. Check for redundancy patterns (repeated instructions)
+        for pattern, issue_desc in self.REDUNDANCY_PATTERNS:
+            matches = list(re.finditer(pattern, prompt, re.IGNORECASE | re.DOTALL))
+            for match in matches[:2]:
+                redundancy_count += 1
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.MEDIUM,
+                        category=IssueCategory.QUALITY,
+                        message=f"Redundancy: {issue_desc}",
+                        location=f"chars {match.start()}-{match.end()}",
+                        suggestion="Remove duplicate instruction - adds noise without value"
+                    ),
+                    FixAction(
+                        action_type='remove',
+                        severity=IssueSeverity.MEDIUM,
+                        description=f"Remove redundant: {issue_desc}",
+                        ai_instruction=f"Remove one occurrence of: {issue_desc}",
+                        safe_to_auto_apply=False
+                    )
+                )
+        
+        # 3. Check for multiple conflicting section headers
+        section_headers = re.findall(r'(?:^|\n)([A-Z][A-Z\s]+):', prompt)
+        header_counts = {}
+        for header in section_headers:
+            header_clean = header.strip().upper()
+            header_counts[header_clean] = header_counts.get(header_clean, 0) + 1
+        
+        for header, count in header_counts.items():
+            if count > 1:
+                redundancy_count += 1
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.MEDIUM,
+                        category=IssueCategory.QUALITY,
+                        message=f"Duplicate section header '{header}' appears {count} times",
+                        suggestion=f"Consolidate '{header}' sections into one for clarity"
+                    ),
+                    FixAction(
+                        action_type='optimize',
+                        severity=IssueSeverity.MEDIUM,
+                        description=f"Merge duplicate '{header}' sections",
+                        ai_instruction=f"Combine the {count} '{header}' sections into a single section",
+                        safe_to_auto_apply=False
+                    )
+                )
+        
+        # 4. Check for conflicting numeric constraints
+        word_counts = re.findall(r'(\d+)\s*(?:to|-)?\s*(\d+)?\s*words?', prompt_lower)
+        if len(word_counts) > 1:
+            unique_targets = set()
+            for match in word_counts:
+                if match[1]:  # Range like "50-100 words"
+                    unique_targets.add(f"{match[0]}-{match[1]}")
+                else:  # Single like "50 words"
+                    unique_targets.add(match[0])
+            
+            if len(unique_targets) > 1:
+                confusion_count += 1
+                report.add_issue(
+                    ValidationIssue(
+                        severity=IssueSeverity.HIGH,
+                        category=IssueCategory.LOGIC,
+                        message=f"Multiple word count targets found: {', '.join(unique_targets)}",
+                        suggestion="Use ONE word count target - multiple targets confuse the AI"
+                    ),
+                    FixAction(
+                        action_type='optimize',
+                        severity=IssueSeverity.HIGH,
+                        description="Consolidate word count targets",
+                        ai_instruction="Remove all but one word count instruction. Keep the most specific one.",
+                        safe_to_auto_apply=False,
+                        requires_review=True
+                    )
+                )
+        
+        # 5. Check for too many CRITICAL/IMPORTANT markers (dilutes importance)
+        critical_count = len(re.findall(r'\b(CRITICAL|IMPORTANT|MUST|REQUIRED|ESSENTIAL)\b', prompt, re.IGNORECASE))
+        if critical_count > 5:
+            report.add_issue(
+                ValidationIssue(
+                    severity=IssueSeverity.LOW,
+                    category=IssueCategory.QUALITY,
+                    message=f"Too many emphasis markers ({critical_count}): dilutes importance",
+                    suggestion="Use emphasis sparingly - if everything is CRITICAL, nothing is"
+                )
+            )
+        
+        # 6. Calculate AI clarity score
+        ai_clarity_score = max(0, 100 - (confusion_count * 20) - (redundancy_count * 10))
+        report.scores['ai_clarity'] = ai_clarity_score
+        
+        # Log summary
+        if confusion_count > 0 or redundancy_count > 0:
+            logger.warning(
+                f"⚠️  AI Clarity issues: {confusion_count} confusion, {redundancy_count} redundancy "
+                f"(score: {ai_clarity_score}/100)"
+            )
     
     def _validate_required_content(self, prompt: str, material: str, report: ValidationReport):
         """Check required content is present."""

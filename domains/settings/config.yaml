@@ -1,10 +1,18 @@
 # Settings Domain Configuration
 # Machine settings description generation
+#
+# NOTE: Word counts are defined in domain prompts (Option B: Prompts Only)
+# NOTE: Extraction strategies are centralized in generation/config.yaml
 
-component_lengths:
-  settings_description:
-    target: 1000                       # No effective token limit - let prompt instructions control length
-    extraction_strategy: raw           # Return text as-is
+# =============================================================================
+# DOMAIN ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_path: "data/settings/Settings.yaml"
+data_root_key: "settings"
+author_key: "author.id"
+context_keys:
+  - material
+  - machine_settings
 
 # Settings-specific voice styles
 randomization_targets:
@@ -43,3 +51,192 @@ randomization_targets:
       description: "Use longer, detailed sentences (15-30 words) with clauses and technical depth."
       sentence_range: [15, 30]
       probability: 0.34
+
+# =============================================================================
+# PROMPT TEMPLATES
+# =============================================================================
+# Usage:
+#   from shared.generation.yaml_helper import load_yaml_file
+#   config = load_yaml_file("domains/settings/config.yaml")
+#   template = config['prompts']['component_summary_base']
+
+prompts:
+  # Per-component summary generation (individual API calls)
+  component_summary_base: |
+    You are {author} from {country}, writing a brief UI help description for the {component_title} on the {material} Settings page.
+
+    === VOICE STYLE ===
+    {voice_instruction}
+
+    TASK: Write exactly 2 sentences describing what this component shows and how it helps operators configure laser cleaning for {material}.
+
+    LENGTH VARIATION: Vary sentence lengths naturally. Mix short punchy sentences (8-12 words) with longer detailed ones (18-25 words). Target 40-70 total words but prioritize natural flow over exact counts.
+
+    CONTEXT: This description appears as help text next to an interactive component. Write as if helping someone actively using the interface.
+
+    === COMPONENT: {component_title} ===
+
+    {component_description}
+
+    === MATERIAL DATA ===
+
+    {facts}
+
+    === UNIQUE CHARACTERISTICS ===
+
+    What makes {material} DIFFERENT from other materials:
+    - Which properties most affect this component's display?
+    - What specific insight does this component provide for {material}?
+
+    === OUTPUT FORMAT ===
+
+    Write ONLY the description text (exactly 2 sentences). No title, no YAML, no formatting.
+    Reference specific {material} properties. Focus on "what this helps you DO."
+
+    Example tone: "This heatmap reveals where {material}'s high reflectivity creates narrow safe zones. Watch for the red boundary near 45W—that's where oxide reformation typically begins."
+
+    Generate the {component_id} description for {material}:
+
+  # Monolithic component summaries generation (all 11 at once - deprecated, use component_summary_base instead)
+  component_summaries: |
+    You are {author} from {country}, writing brief UI help text for the {material} Settings page.
+
+    TASK: Generate exactly 2 sentence descriptions for each of the 11 interactive components on the Settings page.
+
+    LENGTH VARIATION: Mix sentence lengths naturally. One short punchy sentence (8-12 words), one longer detailed sentence (18-25 words).
+
+    CONTEXT: These descriptions appear as help text on a technical settings page where operators configure laser cleaning parameters for {material}. Write as if helping someone actively using the interface.
+
+    === COMPONENT DEFINITIONS ===
+
+    1. **machine_settings**: Table of recommended parameters (power, pulse width, repetition rate, scan speed)
+    2. **material_safety_heatmap**: 2D heatmap showing safe (green) to dangerous (red) zones by power × pulse width
+    3. **energy_coupling_heatmap**: Laser energy transfer efficiency across parameter combinations
+    4. **thermal_stress_heatmap**: Warping/distortion risk across parameters
+    5. **process_effectiveness_heatmap**: Cleaning effectiveness (under/optimal/over) across parameters
+    6. **heat_buildup_simulator**: Animated temperature accumulation over multiple passes
+    7. **diagnostic_center**: Material Challenges tab + Troubleshooting tab
+    8. **research_citations**: Academic/industry papers supporting recommendations
+    9. **faq_settings**: Common questions about configuring this material
+    10. **dataset_download**: JSON exports of settings and properties
+    11. **parameter_relationships**: Network visualization of parameter dependencies
+
+    === MATERIAL DATA ===
+
+    {facts}
+
+    === UNIQUE CHARACTERISTICS ===
+
+    Identify what makes {material} DIFFERENT from other materials in its category:
+    - Which properties most affect laser cleaning?
+    - What specific challenges does this material present?
+    - What safety concerns are unique to this material?
+
+    Reference these differences in EACH component description.
+
+    === OUTPUT FORMAT ===
+
+    Output YAML format exactly as shown:
+
+    ```yaml
+    component_summaries:
+      machine_settings:
+        title: Machine Settings
+        description: |
+          [2 sentences referencing specific {material} properties]
+      
+      material_safety_heatmap:
+        title: Material Safety Heatmap
+        description: |
+          [2 sentences about {material}'s safe operating zones]
+      
+      energy_coupling_heatmap:
+        title: Energy Coupling Heatmap
+        description: |
+          [2 sentences about energy transfer for {material}]
+      
+      thermal_stress_heatmap:
+        title: Thermal Stress Heatmap
+        description: |
+          [2 sentences about {material}'s thermal stress risks]
+      
+      process_effectiveness_heatmap:
+        title: Process Effectiveness Heatmap
+        description: |
+          [2 sentences about cleaning effectiveness for {material}]
+      
+      heat_buildup_simulator:
+        title: Heat Buildup Simulator
+        description: |
+          [2 sentences about heat accumulation in {material}]
+      
+      diagnostic_center:
+        title: Diagnostic Center
+        description: |
+          [2 sentences about {material}-specific troubleshooting]
+      
+      research_citations:
+        title: Research Citations
+        description: |
+          [2 sentences about research relevant to {material}]
+      
+      faq_settings:
+        title: Settings FAQ
+        description: |
+          [2 sentences about common {material} questions]
+      
+      dataset_download:
+        title: Dataset Download
+        description: |
+          [2 sentences about downloading {material} data]
+      
+      parameter_relationships:
+        title: Parameter Relationships
+        description: |
+          [2 sentences about parameter interactions for {material}]
+    ```
+
+    === QUALITY GUIDELINES ===
+
+    DO ✅:
+    - Reference specific numeric values from the material data
+    - Mention properties by name (thermal conductivity, melting point, etc.)
+    - Focus on "what this helps you DO" not "what this IS"
+    - Use active voice, operator-focused language
+    - Highlight what makes THIS material unique
+
+    DON'T ❌:
+    - Use generic descriptions that apply to any material
+    - Include jargon without context
+    - Make claims not supported by the data
+    - Exceed 2 sentences per component
+    - Copy the same structure for each description
+
+    Generate component summaries for {material}:
+
+  # Settings description for main settings page
+  settings_description: |
+    You are {author}, writing a professional technical description about special settings and requirements for laser cleaning {material}.
+
+    LENGTH: 100-150 words.
+
+    === DESCRIPTION-SPECIFIC FORMATTING ===
+
+    CONTENT FOCUS:
+    - The material's strengths and weaknesses for laser cleaning (and what to DO about them)
+    - What makes this material DIFFERENT and how that affects your approach
+    - UNUSUAL properties and their practical implications
+    - PITFALLS to avoid and settings adjustments needed
+
+    💡 REMEMBER: Every sentence should help someone WORK WITH this material, not just know about it.
+
+    🚫 AVOID EXCESSIVE TECHNICAL JARGON:
+    - NO multiple decimal places in one sentence (0.95, 0.06, 933.47)
+    - NO wavelength citations without context ("at 1064 nm")
+    - NO physics textbook language ("presents a primary challenge")
+    - NO temperature in Kelvin (use °C or descriptive terms)
+    - NO property bombardment (listing specs without practical use)
+    - YES practical guidance: "Start with lower power to avoid..."
+    - YES conversational technical: Expert explaining, not documenting
+
+    Write the description:

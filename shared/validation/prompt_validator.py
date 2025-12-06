@@ -495,11 +495,77 @@ class PromptValidator:
                 message=f"Unicode encoding error: {e}",
                 suggestion="Fix character encoding issues"
             ))
+    
+    def _validate_ai_clarity(self, prompt: str, result: PromptValidationResult):
+        """
+        Validate prompt is clear and understandable for AI assistants.
+        
+        Checks for confusion, contradiction, and redundancy that could
+        confuse the AI and produce poor output.
+        """
+        prompt_lower = prompt.lower()
+        
+        # AI confusion patterns - contradictory instructions
+        ai_confusion_patterns = [
+            (r'(short|brief|concise).*\b(detailed|comprehensive|thorough)\b', 'Length contradiction: short vs detailed'),
+            (r'(formal|professional).*\b(casual|conversational|informal)\b', 'Tone contradiction: formal vs casual'),
+            (r'(technical|precise).*\b(simple|plain|accessible)\b', 'Style contradiction: technical vs simple'),
+        ]
+        
+        for pattern, issue_desc in ai_confusion_patterns:
+            if re.search(pattern, prompt_lower, re.IGNORECASE | re.DOTALL):
+                result.add_issue(ValidationIssue(
+                    severity=ValidationSeverity.WARNING,
+                    category=ValidationCategory.LOGIC,
+                    message=f"AI clarity issue: {issue_desc}",
+                    suggestion="Resolve conflicting instructions - AI cannot follow both"
+                ))
+        
+        # Check for multiple word count targets
+        word_counts = re.findall(r'(\d+)\s*(?:to|-)?\s*(\d+)?\s*words?', prompt_lower)
+        if len(word_counts) > 1:
+            result.add_issue(ValidationIssue(
+                severity=ValidationSeverity.WARNING,
+                category=ValidationCategory.LOGIC,
+                message=f"Multiple word count targets found ({len(word_counts)})",
+                suggestion="Use ONE word count target to avoid AI confusion"
+            ))
+        
+        # Check for too many CRITICAL markers
+        critical_count = len(re.findall(r'\b(CRITICAL|IMPORTANT|MUST|REQUIRED)\b', prompt, re.IGNORECASE))
+        if critical_count > 5:
+            result.add_issue(ValidationIssue(
+                severity=ValidationSeverity.INFO,
+                category=ValidationCategory.QUALITY,
+                message=f"Too many emphasis markers ({critical_count})",
+                suggestion="Use emphasis sparingly - overuse dilutes importance"
+            ))
+        
+        # Check for duplicate section headers
+        section_headers = re.findall(r'(?:^|\n)([A-Z][A-Z\s]+):', prompt)
+        header_counts = {}
+        for header in section_headers:
+            header_clean = header.strip().upper()
+            header_counts[header_clean] = header_counts.get(header_clean, 0) + 1
+        
+        for header, count in header_counts.items():
+            if count > 1:
+                result.add_issue(ValidationIssue(
+                    severity=ValidationSeverity.WARNING,
+                    category=ValidationCategory.LOGIC,
+                    message=f"Duplicate section header '{header}' appears {count} times",
+                    suggestion=f"Consolidate '{header}' sections into one for clarity"
+                ))
 
 
 def validate_text_prompt(prompt: str) -> PromptValidationResult:
     """
     Validate text generation prompt (Grok API).
+    
+    Includes AI clarity checks for:
+    - Confusion: Contradictory instructions
+    - Contradiction: Mutually exclusive requirements  
+    - Redundancy: Repeated instructions
     
     Args:
         prompt: Final prompt for Grok API
@@ -508,7 +574,12 @@ def validate_text_prompt(prompt: str) -> PromptValidationResult:
         PromptValidationResult
     """
     validator = PromptValidator(prompt_type='text')
-    return validator.validate(prompt)
+    result = validator.validate(prompt)
+    
+    # Additional AI clarity validation
+    validator._validate_ai_clarity(prompt, result)
+    
+    return result
 
 
 def validate_image_prompt(

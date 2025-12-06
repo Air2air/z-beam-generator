@@ -50,7 +50,7 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
         
         print("🔧 Initializing generators...")
         api_client = create_api_client('deepseek')
-        generator = UnifiedMaterialsGenerator(api_client=api_client, training_mode=False)
+        generator = UnifiedMaterialsGenerator(api_client=api_client)
         batch_gen = BatchGenerator(generator)
         print("✅ Generators ready (production mode)")
         print()

@@ -1,16 +1,15 @@
 # Generation Configuration
-# Quality-gated generation with automatic retry and parameter adjustment
+# Single-pass production generation
 
-# Quality Gate Settings
-# CRITICAL: Thresholds are LEARNED dynamically from database (ThresholdManager)
-# These fallback values are ONLY used when insufficient learning data (<10 samples)
+# Quality Gate Settings (used for post-generation analysis)
+# Thresholds for logging and learning - generation always succeeds
 quality_gates:
-  realism_threshold_fallback: 3.0        # PRODUCTION MODE: Accept good-enough content (was 4.0)
-  max_retry_attempts: 5                  # Maximum generation attempts before failure
-  voice_authenticity_threshold_fallback: 3.0  # PRODUCTION MODE: Accept good-enough content (was 4.0)
-  tonal_consistency_threshold_fallback: 3.0   # PRODUCTION MODE: Accept good-enough content (was 4.0)
-  winston_threshold_fallback: 0.70       # PRODUCTION MODE: 70% AI allowed (was 0.50)
-  require_zero_ai_tendencies: false      # RELAXED: Allow AI patterns
+  realism_threshold: 3.0                 # Minimum realism score for logging
+  max_retry_attempts: 5                  # Maximum generation attempts
+  voice_authenticity_threshold: 3.0      # Voice authenticity minimum
+  tonal_consistency_threshold: 3.0       # Tonal consistency minimum
+  winston_threshold: 0.70                # Winston AI detection threshold (70% AI allowed)
+  require_zero_ai_tendencies: false      # Allow AI patterns
   adaptive_threshold: true               # Learn from 75th percentile of successful content
 
 # Evaluation Settings
@@ -31,13 +30,7 @@ voice_parameters:
   colloquialism_frequency: 0.3           # Base: low casual language (0.0-1.0)
   technical_intensity: 1                 # Base: minimal technical detail (1-3 scale) - reduced jargon
 
-# Simple Mode Configuration (Legacy - Deprecated)
-# Use quality_gates instead for production
-simple_mode:
-  enabled: false                         # DISABLED: Using quality-gated generation
-  fixed_temperature: 0.9                 # Fixed temperature (proven to work)
-  max_attempts: 1                        # Single-pass generation (no retries in generation phase)
-  temperature_increase_per_retry: 0.0    # N/A - no retries in generation phase
+# (simple_mode section REMOVED - always production mode)
 
 # Length Variation Control (1-10 scale)
 # This SINGLE slider controls variation for ALL components
@@ -73,28 +66,37 @@ randomization_targets:
 # Winston Feedback Database
 winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 
-# Component Lengths (word count targets ONLY)
-# Global length_variation_range applies uniformly to all components
-# min/max calculated dynamically: target ± (target * variation_pct)
-# 
-# DOMAIN-SPECIFIC CONFIGS:
-# - Materials: domains/materials/config.yaml (material_description, caption, faq)
-# - Settings: domains/settings/config.yaml (settings_description)
-#
-# Legacy fallback values (used if domain configs not found):
+# Component Extraction Strategies
+# Word counts are defined in domain prompts (Option B: Prompts Only)
+# Config only defines HOW to parse the LLM output
+component_extraction:
+  caption:
+    extraction_strategy: before_after  # Extract before/after paragraphs
+  material_description:
+    extraction_strategy: raw            # Return text as-is
+  settings_description:
+    extraction_strategy: raw            # Return text as-is
+  component_summary:
+    extraction_strategy: raw            # Return text as-is (single component description)
+  component_summaries:
+    extraction_strategy: yaml           # Parse as YAML (deprecated monolithic)
+  faq:
+    extraction_strategy: json_list      # Parse as JSON array
+
+# Component Token Targets
+# Used by config_loader.get_max_tokens() to calculate API max_tokens
+# Calculation: target_words × 1.3 = tokens
 component_lengths:
   caption:
-    target: 75
-    extraction_strategy: before_after
+    target: 50                          # ~65 tokens
   material_description:
-    target: 1000
-    extraction_strategy: raw
+    target: 100                         # ~130 tokens
   settings_description:
-    target: 1000
-    extraction_strategy: raw
+    target: 100                         # ~130 tokens
+  component_summary:
+    target: 70                          # 2 sentences × ~35 words = ~91 tokens
   faq:
-    target: 150
-    extraction_strategy: json_list
+    target: 500                         # FAQ can be longer (~650 tokens)
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

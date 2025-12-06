@@ -2,18 +2,25 @@
 """
 Frontmatter Partial Field Sync Utility
 
-PURPOSE: Update individual fields in frontmatter files when Materials.yaml changes.
+PURPOSE: Update individual fields in frontmatter files when source YAML changes.
 DESIGN: Partial field updates only - preserves all other frontmatter fields.
 
 POLICY: Dual-Write Architecture (Nov 22, 2025)
-- Materials.yaml: Full write (source of truth)
+- Materials.yaml/Settings.yaml: Full write (source of truth)
 - Frontmatter: Partial field update only (immediate sync)
+
+Routes fields to correct frontmatter directory:
+- Settings fields → frontmatter/settings/{slug}-settings.yaml
+- Material fields → frontmatter/materials/{slug}-laser-cleaning.yaml
 
 Usage:
     from generation.utils.frontmatter_sync import sync_field_to_frontmatter
     
     # After saving to Materials.yaml
-    sync_field_to_frontmatter('Aluminum', 'description', new_content)
+    sync_field_to_frontmatter('Aluminum', 'caption', new_content)
+    
+    # After saving to Settings.yaml  
+    sync_field_to_frontmatter('Aluminum', 'settings_description', new_content)
 """
 
 import logging
@@ -24,23 +31,34 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
+# Fields that belong in settings frontmatter (frontmatter/settings/)
+SETTINGS_FIELDS = {'settings_description', 'component_summaries'}
 
-def get_frontmatter_path(material_name: str) -> Path:
+# Fields that belong in materials frontmatter (frontmatter/materials/)
+MATERIALS_FIELDS = {'caption', 'material_description', 'faq'}
+
+
+def get_frontmatter_path(material_name: str, field_name: str = None) -> Path:
     """
-    Get frontmatter file path for material.
+    Get frontmatter file path for material based on field type.
     
     Args:
         material_name: Name of material (e.g., "Aluminum")
+        field_name: Field being updated (determines settings vs materials path)
         
     Returns:
         Path to frontmatter file
     """
     # Convert material name to slug
     slug = material_name.lower().replace(' ', '-').replace('_', '-')
-    frontmatter_dir = Path("frontmatter/materials")
     
-    # Standard naming: {slug}-laser-cleaning.yaml
-    return frontmatter_dir / f"{slug}-laser-cleaning.yaml"
+    # Route to correct directory based on field type
+    if field_name and field_name in SETTINGS_FIELDS:
+        frontmatter_dir = Path("frontmatter/settings")
+        return frontmatter_dir / f"{slug}-settings.yaml"
+    else:
+        frontmatter_dir = Path("frontmatter/materials")
+        return frontmatter_dir / f"{slug}-laser-cleaning.yaml"
 
 
 def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: Any):
@@ -49,6 +67,7 @@ def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: 
     
     Preserves all other fields - only updates the specified field.
     Creates frontmatter file if it doesn't exist (initializes with minimal structure).
+    Routes to correct frontmatter directory based on field type.
     
     Args:
         material_name: Name of material
@@ -59,8 +78,12 @@ def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: 
     - Frontmatter receives immediate field-level updates
     - Never read frontmatter for data persistence
     - Only updated field written, others preserved
+    - Settings fields → frontmatter/settings/
+    - Material fields → frontmatter/materials/
     """
-    frontmatter_path = get_frontmatter_path(material_name)
+    # Get correct path based on field type
+    frontmatter_path = get_frontmatter_path(material_name, field_name)
+    is_settings = field_name in SETTINGS_FIELDS
     
     try:
         # Read existing frontmatter (or create minimal structure)
@@ -68,22 +91,24 @@ def sync_field_to_frontmatter(material_name: str, field_name: str, field_value: 
             with open(frontmatter_path, 'r', encoding='utf-8') as f:
                 frontmatter_data = yaml.safe_load(f) or {}
         else:
-            # Initialize minimal frontmatter structure
-            frontmatter_data = {
-                'title': f"{material_name} Laser Cleaning",
-                'name': material_name
-            }
+            # Initialize minimal frontmatter structure based on type
+            if is_settings:
+                frontmatter_data = {
+                    'name': material_name,
+                    'slug': material_name.lower().replace(' ', '-').replace('_', '-'),
+                    'title': f"{material_name} Laser Cleaning Settings"
+                }
+            else:
+                frontmatter_data = {
+                    'title': f"{material_name} Laser Cleaning",
+                    'name': material_name
+                }
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
-        # Handle component fields - all stored at root level in frontmatter
-        if field_name in ['caption', 'material_description', 'settings_description', 'faq']:
-            # All text component fields at root level
-            frontmatter_data[field_name] = field_value
-            logger.info(f"   ✅ Updated frontmatter {field_name} for {material_name}")
-        else:
-            # Generic field update at root
-            frontmatter_data[field_name] = field_value
-            logger.info(f"   ✅ Updated frontmatter {field_name} for {material_name}")
+        # Update the field at root level
+        frontmatter_data[field_name] = field_value
+        dest_type = "settings" if is_settings else "materials"
+        logger.info(f"   ✅ Updated {dest_type} frontmatter {field_name} for {material_name}")
         
         # Atomic write: temp file → rename
         frontmatter_path.parent.mkdir(parents=True, exist_ok=True)

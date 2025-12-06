@@ -66,6 +66,7 @@ class ComponentRegistry:
         'caption': 'materials',
         'faq': 'materials',
         'settings_description': 'settings',
+        'component_summaries': 'settings',
     }
     
     @classmethod
@@ -128,27 +129,30 @@ class ComponentRegistry:
         """
         if cls._config is None:
             if cls._config_path is None:
-                # Default path relative to this file
-                cls._config_path = Path(__file__).parent.parent / "config.yaml"
+                # Path to generation/config.yaml from shared/text/utils/
+                # shared/text/utils/ -> parent.parent.parent = shared
+                # Need to go up to project root then into generation/
+                project_root = Path(__file__).parent.parent.parent.parent
+                cls._config_path = project_root / "generation" / "config.yaml"
             
-            # Load global config
-            try:
-                with open(cls._config_path, 'r', encoding='utf-8') as f:
-                    cls._config = yaml.safe_load(f)
-            except Exception as e:
-                # Fallback to defaults if config not found
-                cls._config = {
-                    'component_lengths': {
-                        'caption': {'default': 25, 'min': 23, 'max': 27},
-                        'settings_description': {'default': 150, 'min': 140, 'max': 160},
-                        'faq': {'default': 100, 'min': 80, 'max': 120},
-                        'troubleshooter': {'default': 120, 'min': 100, 'max': 140}
-                    }
-                }
+            # Load global config - FAIL-FAST: No fallbacks
+            if not cls._config_path.exists():
+                raise FileNotFoundError(
+                    f"Config file not found: {cls._config_path}. "
+                    f"Cannot operate without configuration - fail-fast architecture."
+                )
+            
+            with open(cls._config_path, 'r', encoding='utf-8') as f:
+                cls._config = yaml.safe_load(f)
+            
+            if not cls._config:
+                raise ValueError(f"Config file is empty: {cls._config_path}")
             
             # Merge domain-specific configs
             # Discover all domains with config files
-            domains_dir = Path(__file__).parent.parent.parent / 'domains'
+            # Path: shared/text/utils/ -> parent.parent.parent.parent = project root
+            project_root = Path(__file__).parent.parent.parent.parent
+            domains_dir = project_root / 'domains'
             if domains_dir.exists():
                 for domain_dir in domains_dir.iterdir():
                     if domain_dir.is_dir():
@@ -164,23 +168,36 @@ class ComponentRegistry:
     def _get_component_lengths(cls, component_type: str) -> Dict[str, int]:
         """Get length configuration for component type from config.yaml.
         
-        Dynamically calculates min/max from length_variation_range slider.
+        NOTE: Word counts are now in prompts (Option B: Prompts Only).
+        This function now primarily returns extraction_strategy.
+        Default word count is used only for legacy compatibility.
+        
+        Looks for config in:
+        1. component_extraction (new - extraction_strategy only)
+        2. component_lengths (legacy - backward compatibility)
         """
         config = cls._load_config()
+        
+        # Try new config location first (extraction_strategy only)
+        extraction_config = config.get('component_extraction', {}).get(component_type, {})
+        
+        # Fall back to legacy location
         lengths = config.get('component_lengths', {}).get(component_type, {})
         
-        # Get default length (simplified config format)
-        if isinstance(lengths, int):
-            default = lengths
-            extraction_strategy = None
-        elif isinstance(lengths, dict):
-            # Support both 'target' (new) and 'default' (legacy) keys
-            default = lengths.get('target') or lengths.get('default')
-            if default is None:
-                raise ValueError(f"Component '{component_type}' missing 'target' or 'default' length in config")
-            extraction_strategy = lengths.get('extraction_strategy')  # May be None
+        # Get extraction_strategy - FAIL-FAST: Must be explicitly configured
+        if isinstance(extraction_config, dict) and 'extraction_strategy' in extraction_config:
+            extraction_strategy = extraction_config['extraction_strategy']
+        elif isinstance(lengths, dict) and 'extraction_strategy' in lengths:
+            extraction_strategy = lengths['extraction_strategy']
         else:
-            raise ValueError(f"Component '{component_type}' has invalid length config format: {type(lengths)}")
+            raise ValueError(
+                f"No extraction_strategy found for component '{component_type}'. "
+                f"Must be defined in component_extraction.{component_type}.extraction_strategy - fail-fast architecture."
+            )
+        
+        # Word count is now in prompts (Option B: Prompts Only)
+        # Use a nominal default for range calculation only - actual length from prompt
+        default = 100  # Nominal value for range calculation
         
         # Calculate dynamic range from length_variation_range slider
         try:
@@ -210,19 +227,12 @@ class ComponentRegistry:
                 result['extraction_strategy'] = extraction_strategy
             
             return result
-        except Exception:
-            # Fallback calculation
-            result = {
-                'default': default,
-                'min': max(int(default * 0.9), default - 5),
-                'max': min(int(default * 1.1), default + 5)
-            }
-            
-            # Add extraction_strategy if present
-            if extraction_strategy is not None:
-                result['extraction_strategy'] = extraction_strategy
-            
-            return result
+        except Exception as e:
+            # FAIL-FAST: No fallback calculation
+            raise ValueError(
+                f"Failed to calculate length range for '{component_type}': {e}. "
+                f"Check 'length_variation_range' in config.yaml - fail-fast architecture."
+            )
     
     # Component specifications discovered dynamically from:
     # 1. prompts/*.txt files (content instructions)
@@ -231,16 +241,16 @@ class ComponentRegistry:
     
     @classmethod
     def _discover_components(cls) -> Dict[str, Dict]:
-        """Discover available components from all domain text/prompts directories.
+        """Discover available components from all domain prompts directories.
         
-        Returns component specs by scanning domains/*/text/prompts/*.txt files.
+        Returns component specs by scanning domains/*/prompts/*.txt files.
         Each .txt file defines a component type.
         
         Directory structure:
         domains/
-        ├── materials/text/prompts/caption.txt, faq.txt, material_description.txt
-        ├── settings/text/prompts/settings_description.txt
-        ├── contaminants/text/prompts/caption.txt
+        ├── materials/prompts/caption.txt, faq.txt, material_description.txt
+        ├── settings/prompts/settings_description.txt, component_summaries.txt
+        ├── contaminants/prompts/caption.txt
         └── etc.
         """
         specs = {}
@@ -256,16 +266,16 @@ class ComponentRegistry:
         if not domains_dir.exists():
             return specs
         
-        # Scan each domain's text/prompts directory
+        # Scan each domain's prompts directory
         for domain_dir in domains_dir.iterdir():
             if not domain_dir.is_dir():
                 continue
             
-            prompts_dir = domain_dir / 'text' / 'prompts'
+            prompts_dir = domain_dir / 'prompts'
             if not prompts_dir.exists():
                 continue
             
-            # Scan for .txt files in this domain's text/prompts directory
+            # Scan for .txt files in this domain's prompts directory
             for prompt_file in prompts_dir.glob('*.txt'):
                 component_type = prompt_file.stem  # filename without .txt
                 
@@ -274,7 +284,7 @@ class ComponentRegistry:
                     continue
                 
                 # Store relative path from workspace root
-                relative_path = f'domains/{domain_dir.name}/text/prompts/{prompt_file.name}'
+                relative_path = f'domains/{domain_dir.name}/prompts/{prompt_file.name}'
                 
                 specs[component_type] = {
                     'end_punctuation': True,  # Default, can be overridden in config

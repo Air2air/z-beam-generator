@@ -830,7 +830,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 5. **run.py**: Marked --skip-integrity-check as [DEV ONLY] with warnings
 6. **integrity_helper.py**: 3 violations - fixed silent failures on exceptions
 7. **subtitle_generator.py**: Removed hardcoded temperature (0.6), now uses dynamic config
-8. **quality_gated_generator.py**: Removed TODO, documented design decision
+8. **evaluated_generator.py**: Removed TODO, documented design decision
 9. **threshold_manager.py**: 2 TODOs → documented as future work with design rationale
 10. **test_score_normalization_e2e.py**: Updated tests to remove assertions on deleted constants
 
@@ -1170,7 +1170,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 ### 9. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
 **ONLY prompt templates determine content and formatting. NO component-specific methods.**
 
-- ✅ **domains/*/text/prompts/*.txt** - ALL content instructions and formatting rules
+- ✅ **domains/*/prompts/*.txt** - ALL content instructions and formatting rules
   - Structure guidelines, style requirements, forbidden phrases
   - Format specifications, example outputs, voice/tone rules
   - COMPLETE content strategy for each component type
@@ -1205,7 +1205,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 4. ❌ Add content instructions to code
 
 # NEW WAY (COMPLIANT): 1 config + 1 template = ZERO CODE CHANGES
-1. ✅ Create domains/{domain}/text/prompts/new_component.txt (all instructions)
+1. ✅ Create domains/{domain}/prompts/new_component.txt (all instructions)
 2. ✅ Add to config.yaml: component_lengths: { new_component: {default: 100, extraction_strategy: raw} }
 ```
 
@@ -1300,12 +1300,13 @@ Stage 5: Assembly → Final polish (balanced 0.5)
 - ✅ **Independent testability** - Can test each stage separately
 
 **Examples**:
-- ✅ **Text Generation**: `generation/core/quality_gated_generator.py` (already compliant)
+- ✅ **Text Generation**: `generation/core/evaluated_generator.py` (single-pass with learning)
   - Stage 1: Build base prompt from template
-  - Stage 2: Add humanness layer
-  - Stage 3: Generate content
-  - Stage 4: Evaluate quality
-  - Stage 5: Apply feedback if needed
+  - Stage 2: Add humanness layer (randomized voice, structure)
+  - Stage 3: Generate content (single API call)
+  - Stage 4: Save immediately to Materials.yaml
+  - Stage 5: Evaluate quality for learning (Winston, Realism, Structural)
+  - Stage 6: Log to learning database
 
 - ✅ **Image Generation**: `shared/image/orchestrator.py` (new implementation)
   - Stage 1: Research material properties
@@ -2013,8 +2014,8 @@ fi
 **BEFORE** making ANY changes to text component code, you MUST:
 1. **READ** the complete documentation: `docs/03-components/text/README.md`
 2. **UNDERSTAND** the architecture: `docs/02-architecture/processing-pipeline.md`
-3. **STUDY** the prompt system: `shared/text/templates/` and `shared/text/prompts/`
-4. **REFERENCE** the generation code: `generation/core/quality_gated_generator.py`
+3. **STUDY** the prompt system: `domains/*/prompts/` and `shared/text/templates/`
+4. **REFERENCE** the generation code: `generation/core/evaluated_generator.py`
 
 ### Text Component Forbidden Actions
 1. **NEVER** modify `fail_fast_generator.py` without explicit permission - it's 25,679 bytes of working production code
