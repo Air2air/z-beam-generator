@@ -2207,8 +2207,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             author_id = None
             if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
                 author_id = material_data['author']['id']
-            else:
-                author_id = 3  # Default to Ikmanda Roswati
+            
+            if author_id is None:
+                raise PropertyDiscoveryError(
+                    f"Author ID missing for material '{material_name}'. "
+                    f"All materials must have author.id assigned. "
+                    f"See Author Assignment Immutability Policy."
+                )
             
             author_info = get_author_by_id(author_id)
             if not author_info:

@@ -763,7 +763,7 @@ class IntegrityChecker:
         start = time.time()
         try:
             # Get any available component type for testing
-            from processing.generation.component_specs import ComponentRegistry
+            from shared.text.utils.component_specs import ComponentRegistry
             available_types = ComponentRegistry.list_types()
             test_component = available_types[0] if available_types else 'text'
             
@@ -810,7 +810,7 @@ class IntegrityChecker:
         # Check 2.2: Values don't mutate during propagation
         start = time.time()
         # Get any available component for testing
-        from processing.generation.component_specs import ComponentRegistry
+        from shared.text.utils.component_specs import ComponentRegistry
         available_types = ComponentRegistry.list_types()
         test_component = available_types[0] if available_types else 'text'
         

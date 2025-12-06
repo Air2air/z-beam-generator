@@ -125,12 +125,17 @@ class SettingsAdapter(DataSourceAdapter):
                 if material_data:
                     material_author = material_data.get('author', {})
                     if isinstance(material_author, dict):
-                        return material_author.get('id', 1)
-            except Exception:
-                pass
+                        author_id = material_author.get('id')
+                        if author_id:
+                            return author_id
+            except Exception as e:
+                logger.debug(f"Could not load author from Materials.yaml: {e}")
         
-        # Default to author 1 if not found
-        return 1
+        # Fail fast - no default author
+        raise ValueError(
+            "Author ID missing for settings. Check Materials.yaml for author assignment. "
+            "See Author Assignment Immutability Policy."
+        )
     
     def write_component(
         self,

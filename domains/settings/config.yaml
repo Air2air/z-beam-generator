@@ -14,26 +14,28 @@ context_keys:
   - material
   - machine_settings
 
-# Settings-specific voice styles
+# Frontmatter sync configuration (domain-agnostic architecture)
+frontmatter_directory: "frontmatter/settings"
+frontmatter_filename_pattern: "{slug}-settings.yaml"
+
+# =============================================================================
+# AUTHOR VOICE ARCHITECTURE (Dec 6, 2025)
+# =============================================================================
+# Voice control is handled ONLY by persona files (shared/prompts/personas/*.yaml)
+# Author assignment happens ONCE per material and NEVER changes thereafter
+# All voice characteristics (tone, style, phrases) come from assigned author persona
+# Domain config should contain ZERO voice/content instructions
+# See: Content Instruction Policy, Author Assignment Immutability Policy
+
+# =============================================================================
+# STRUCTURAL VARIATION (Per-Generation Randomization)
+# =============================================================================
+# Humanness optimizer randomizes STRUCTURE and RHYTHM (not voice/tone)
+# These settings provide variation without changing author voice
 randomization_targets:
-  voices:
-    direct_instructor:
-      label: "DIRECT INSTRUCTOR"
-      examples: ["You must", "Make sure you", "Start with"]
-      description: "Commanding, prescriptive"
-      probability: 0.33
-    team_collaborator:
-      label: "TEAM COLLABORATOR"
-      examples: ["We typically", "We've found", "In our experience"]
-      description: "Inclusive, shared experience"
-      probability: 0.33
-    experience_sharer:
-      label: "EXPERIENCE SHARER"
-      examples: ["I've seen", "This works when", "Tends to"]
-      description: "Observational, practical"
-      probability: 0.34
-  
-  # Sentence rhythm patterns
+  # NOTE: 'voices' section REMOVED - persona files control ALL voice behavior
+  # Author voice is immutable after initial assignment
+  # Rhythm patterns provide structural variation without content instruction
   rhythms:
     short_punchy:
       label: "SHORT & PUNCHY"

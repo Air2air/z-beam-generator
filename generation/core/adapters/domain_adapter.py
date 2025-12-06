@@ -170,6 +170,9 @@ class DomainAdapter(DataSourceAdapter):
         """
         Extract author ID from item data using configured path.
         
+        For settings domain: Falls back to Materials.yaml to get material's author.
+        This maintains voice consistency - settings use same author as the material.
+        
         Args:
             item_data: Data for specific item
             
@@ -185,9 +188,35 @@ class DomainAdapter(DataSourceAdapter):
                 value = None
                 break
         
+        # If not found and domain is settings, check Materials.yaml
+        if value is None and self.domain == 'settings':
+            material_name = item_data.get('material')
+            if material_name:
+                try:
+                    # Load material data to get author
+                    materials_path = Path('data/materials/Materials.yaml')
+                    if materials_path.exists():
+                        import yaml
+                        with open(materials_path, 'r') as f:
+                            materials_data = yaml.safe_load(f)
+                        
+                        material = materials_data.get('materials', {}).get(material_name, {})
+                        author_data = material.get('author', {})
+                        author_id = author_data.get('id')
+                        
+                        if author_id:
+                            logger.info(f"Using author {author_id} from Materials.yaml for {material_name}")
+                            return int(author_id)
+                except Exception as e:
+                    logger.debug(f"Could not load author from Materials.yaml: {e}")
+        
+        # Fail fast - author assignment is mandatory
         if value is None:
-            logger.warning(f"Author ID not found at '{self.author_key}', using default 1")
-            return 1
+            raise ValueError(
+                f"Author ID not found at '{self.author_key}'. "
+                "All items must have author.id assigned. "
+                "See Author Assignment Immutability Policy in copilot-instructions.md"
+            )
         
         return int(value)
     

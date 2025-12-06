@@ -498,7 +498,7 @@ def handle_caption_generation(material_name: str, skip_integrity_check: bool = F
     Generate AI-powered caption for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'caption', skip_integrity_check, domain='materials')
+    return handle_generation(material_name, 'caption', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
 def handle_material_description_generation(material_name: str, skip_integrity_check: bool = False):
@@ -508,7 +508,7 @@ def handle_material_description_generation(material_name: str, skip_integrity_ch
     Generate AI-powered material description for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'material_description', skip_integrity_check, domain='materials')
+    return handle_generation(material_name, 'material_description', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
 def handle_settings_description_generation(material_name: str, skip_integrity_check: bool = False):
@@ -518,7 +518,7 @@ def handle_settings_description_generation(material_name: str, skip_integrity_ch
     Generate AI-powered settings description for a material and save to Settings.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'settings_description', skip_integrity_check, domain='settings')
+    return handle_generation(material_name, 'settings_description', domain='settings', skip_integrity_check=skip_integrity_check)
 
 
 def handle_component_summaries_generation(material_name: str, skip_integrity_check: bool = False):
@@ -537,7 +537,7 @@ def handle_faq_generation(material_name: str, skip_integrity_check: bool = False
     Generate AI-powered FAQ for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'faq', skip_integrity_check)
+    return handle_generation(material_name, 'faq', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
 

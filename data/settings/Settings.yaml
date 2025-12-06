@@ -113,15 +113,14 @@ settings:
         - Third pass 40W very slow (400 mm/s) for deep staining
         - Chemical biocide pre-treatment kills roots and reduces laser exposure
         - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    settings_description: When laser cleaning alabaster, you must prioritize its softness
-      compared to harder stones like marble, as it scratches easily under aggressive
-      energy. This low durability means the material absorbs heat unevenly, risking
-      cracks if you push too hard right away. Start with gentle passes at lower intensities
-      to lift surface dirt without stressing the pores, which trap residues but also
-      make it fragile. Watch for discoloration mid-process—dial back if you spot yellowing,
-      and follow up with a cooling interval between sweeps. This approach preserves
-      the fine texture alabaster brings to sculptures and heritage pieces, restoring
-      clarity without harm.
+    settings_description: When laser cleaning alabaster, you'll want to start gentle
+      to avoid cracking its soft surface. This stone responds well to low-intensity
+      pulses, which clear away grime without etching the fine details. We've found
+      that steady, short bursts bring back the natural glow in artifacts or sculptures,
+      especially in heritage work. Watch for any surface whitening—dial back if needed,
+      as it holds up nicely against oxidation but stays delicate overall.
+    author:
+      id: 2
   Alumina:
     machineSettings:
       powerRange:
@@ -324,12 +323,13 @@ settings:
         - Use fume extraction to prevent redeposition
         - Higher scan speeds (3000-5000 mm/s) for thin films
         - Chemical pre-cleaning for heavy contamination
-    settings_description: When laser cleaning aluminum, you'll want to adjust for
-      its lightweight nature and good conductivity. We've found low-power pulses work
-      best to remove oxides without warping the surface. This restores shine on automotive
-      parts or aerospace components. Watch for heat buildup, as it reduces corrosion
-      resistance if overdone. In our experience, it exposes clean metal quickly for
-      packaging or marine uses, improving durability overall.
+    settings_description: When laser cleaning aluminum, you'll want to start with
+      a low pulse energy to avoid surface damage on this lightweight metal. We've
+      found it responds well to shorter wavelengths, which reveal underlying contaminants
+      without pitting the soft structure. Watch for quick heat buildup, so adjust
+      scan speed to keep things even— this reduces oxidation and restores the natural
+      corrosion resistance. In practice, it improves finish quality for aerospace
+      or automotive parts.
     component_summaries:
       machine_settings:
         title: Machine Settings
@@ -440,6 +440,8 @@ settings:
           safe adjustment ranges—such as keeping power below 50W to avoid oxide reformation—ensuring
           efficient contaminant removal without subsurface melting. Hover over nodes
           to simulate changes and optimize your laser cleaning setup in real-time.
+    author:
+      id: 4
   Ash:
     machineSettings:
       powerRange:
@@ -633,12 +635,15 @@ settings:
         - Second pass 60W slow (800 mm/s) for residue
         - Use fume extraction to prevent redeposition
         - Limit to 2-3 passes maximum to avoid substrate damage
-    settings_description: When laser cleaning bamboo, you'll want to treat it differently
-      from typical hardwoods because its grass-like fibers make it more flexible and
-      porous. This high absorption pulls in laser energy quickly, clearing contaminants
-      without deep penetration. But watch out mid-process—its low heat spread can
-      cause localized scorching if you push power too high. So start low and scan
-      slowly to keep the structure intact.
+    settings_description: When working with bamboo in laser processing, you'll want
+      to start with gentle settings because it's naturally flexible and porous. This
+      material shines in applications like furniture or sports gear, where its strength
+      and lightness make it ideal. We've found that adjusting for its toughness helps
+      avoid splintering, so keep pulses short and focused—it cleans surfaces smoothly
+      without damaging the heritage feel in cultural pieces. Watch for even coverage
+      to highlight its renewable vibe in construction.
+    author:
+      id: 1
   Basalt:
     machineSettings:
       powerRange:
@@ -1343,13 +1348,13 @@ settings:
         - Use fume extraction to prevent redeposition
         - Higher scan speeds (3000-5000 mm/s) for thin films
         - Chemical pre-cleaning for heavy contamination
-    settings_description: When laser cleaning brass, you'll want to tackle its high
-      reflectivity first, since the beam often bounces off the surface, absorbing
-      little energy and slowing the process. Make sure you start with higher power
-      levels to overcome this, but watch out mid-job for overheating spots that could
-      warp delicate parts due to its solid heat spreading. Adjust by slowing the scan
-      speed and adding passes, which clears tarnish cleanly without scratching the
-      finish.
+    settings_description: When laser cleaning brass, you'll want to start with a lower
+      pulse frequency because it reflects light so well, which means you avoid overheating
+      the surface right away. We've found that gentle passes work best on fittings
+      or instruments, as brass stays durable and corrosion-resistant without pitting.
+      If buildup is stubborn, adjust the scan speed slower to clear contaminants fully,
+      so the finish looks polished and even afterward. Watch for any color shifts,
+      though—they usually fade with a quick follow-up.
   Breccia:
     machineSettings:
       powerRange:
@@ -1441,15 +1446,14 @@ settings:
         - Third pass 40W very slow (400 mm/s) for deep staining
         - Chemical biocide pre-treatment kills roots and reduces laser exposure
         - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-    settings_description: When laser cleaning Breccia, you'll want to treat it differently
-      from smoother sedimentary stones like limestone, since its fragmented makeup—think
-      angular pebbles bound in a matrix—makes it more prone to uneven energy uptake.
-      Start with gentler power levels to handle that irregularity without chipping
-      the edges. Make sure you overlap scans by at least half the spot size, as the
-      varying density can trap heat in porous spots and lead to micro-cracks if you're
-      too aggressive. Adjust speeds upward on the matrix areas for even contaminant
-      removal, restoring that natural, rugged finish without compromising the stone's
-      modest strength.
+    settings_description: When laser cleaning Breccia, you'll want to start low on
+      power. This sedimentary stone holds together well but has some give. It resists
+      oxidation nicely, so gentle pulses clear dirt without harm. Watch for its natural
+      fractures—they can trap grime, but steady passes restore the surface evenly.
+      We've found this keeps the porous texture intact for heritage work. Adjust fluence
+      slowly to avoid any surface stress.
+    author:
+      id: 3
   Brick:
     machineSettings:
       powerRange:

@@ -8,7 +8,20 @@
 
 **BEFORE** any work, review these files organized by category:
 
-### ⚡ Recent Updates (November 20, 2025)
+### ⚡ Recent Updates (November-December 2025)
+- **🚨 Author Assignment Immutability Policy** (Dec 6): Once author assigned, NEVER changes
+  - See: `.github/copilot-instructions.md` - Author Assignment Immutability Policy
+  - Tests: `tests/test_author_assignment_immutability.py` (9/9 tests passing ✅)
+  - Voice control: Author personas (`shared/prompts/personas/*.yaml`) define ALL voice behavior
+  - Humanness optimizer: Provides structural variation ONLY (rhythm, opening) NOT voice
+  - Domain configs: NO voice/content instructions (removed from settings/materials configs)
+  - Grade F violation: Changing author or voice on regeneration
+  - **Voice Compliance Issue**: LLM (Grok-4-fast) ignores persona instructions
+    - Architecture verified correct (95/100) - immutability working, personas distinct
+    - Generated content identical across all 4 authors (0/100) - LLM limitation
+    - All outputs contain forbidden phrases despite persona rules
+    - E2E testing: Aluminum (USA), Bamboo (Indonesia), Alabaster (Italy), Breccia (Taiwan)
+    - Recommendation: Switch to Claude/GPT-4 or add post-generation persona validation
 - **🚨 Mock/Fallback Violations Fixed** (Nov 20): Complete fail-fast architecture enforcement
   - See: `VIOLATION_FIXES_NOV20_2025.md`
   - Fixed: 26 violations across 9 files (generation.py, constants.py, batch_generator.py, run.py, integrity_helper.py, subtitle_generator.py, quality_gated_generator.py, threshold_manager.py)

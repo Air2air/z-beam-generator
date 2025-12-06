@@ -330,6 +330,10 @@ class Generator:
     
     def _save_to_settings_yaml(self, material_name: str, content: Any):
         """Save settings_description to Settings.yaml with atomic write + frontmatter sync."""
+        import sys
+        print(f"🔧 [DEBUG] _save_to_settings_yaml called for {material_name}")
+        sys.stdout.flush()
+        
         from domains.settings.data_loader import get_settings_path
         settings_path = get_settings_path()
         
@@ -365,9 +369,25 @@ class Generator:
             # Atomic rename (POSIX guarantees atomicity)
             Path(temp_path).replace(settings_path)
             
+            print(f"✅ settings_description written to data/settings/Settings.yaml → settings.{material_name}.settings_description")
+            import sys
+            sys.stdout.flush()
+            
             # DUAL-WRITE POLICY: Immediately sync field to frontmatter
-            from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-            sync_field_to_frontmatter(material_name, 'settings_description', content)
+            print(f"🔄 Syncing to frontmatter...")
+            sys.stdout.flush()
+            try:
+                from generation.utils.frontmatter_sync import sync_field_to_frontmatter
+                sync_field_to_frontmatter(material_name, 'settings_description', content, domain='settings')
+                print(f"✅ Frontmatter sync complete for {material_name}")
+                sys.stdout.flush()
+            except Exception as sync_error:
+                print(f"❌ Frontmatter sync FAILED: {sync_error}")
+                sys.stdout.flush()
+                import traceback
+                traceback.print_exc()
+                # Don't fail the whole generation - sync can be done manually
+                print(f"⚠️  Continuing despite sync failure...")
             
         except Exception as e:
             # Clean up temp file on failure
@@ -416,10 +436,13 @@ class Generator:
             # Atomic rename (POSIX guarantees atomicity)
             Path(temp_path).replace(materials_path)
             
+            print(f"💾 Saved to data/materials/Materials.yaml")
+            
             # DUAL-WRITE POLICY (Nov 22, 2025): Immediately sync field to frontmatter
             # Only updated field written to frontmatter, others preserved
+            print(f"🔄 Syncing {component_type} to frontmatter...")
             from generation.utils.frontmatter_sync import sync_field_to_frontmatter
-            sync_field_to_frontmatter(material_name, component_type, content)
+            sync_field_to_frontmatter(material_name, component_type, content, domain='materials')
             
         except Exception as e:
             # Clean up temp file on failure

@@ -88,11 +88,7 @@ def get_item_facts(identifier: str, domain: str = 'settings') -> str:
     Returns:
         Formatted facts string for prompt context
     """
-    # For settings domain, get material facts from materials domain
-    if domain == 'settings':
-        return _get_material_facts(identifier)
-    
-    # For other domains, use generic approach
+    # Use DomainAdapter for all domains (domain-agnostic)
     from generation.core.adapters.domain_adapter import DomainAdapter
     adapter = DomainAdapter(domain)
     
@@ -101,37 +97,6 @@ def get_item_facts(identifier: str, domain: str = 'settings') -> str:
         return adapter.build_context(item_data)
     except ValueError:
         return f"Item: {identifier}"
-
-
-def _get_material_facts(material_name: str) -> str:
-    """Get material facts for prompt context (settings domain helper)."""
-    from domains.materials.data_loader import load_material
-    
-    material_data = load_material(material_name)
-    
-    if not material_data:
-        return f"Material: {material_name}"
-    
-    # Build facts string from material properties
-    facts_lines = [f"Material: {material_name}"]
-    
-    # Add category
-    if 'category' in material_data:
-        facts_lines.append(f"Category: {material_data['category']}")
-    
-    # Add key properties
-    props = material_data.get('materialProperties', {})
-    if props:
-        facts_lines.append("\nKey Properties:")
-        for key, value in list(props.items())[:10]:  # Limit to 10 properties
-            if isinstance(value, dict):
-                val = value.get('value', value.get('typical', 'N/A'))
-                unit = value.get('unit', '')
-                facts_lines.append(f"  - {key}: {val} {unit}".strip())
-            else:
-                facts_lines.append(f"  - {key}: {value}")
-    
-    return "\n".join(facts_lines)
 
 
 def load_persona_voice(country: str) -> str:

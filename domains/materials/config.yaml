@@ -9,12 +9,16 @@
 # =============================================================================
 data_path: "data/materials/Materials.yaml"
 data_root_key: "materials"
-author_key: "author.id"
+author_key: "author.id"  # Author assigned ONCE, never changes (immutable)
 context_keys:
   - category
   - subcategory
   - properties.density
   - properties.melting_point
+
+# Frontmatter sync configuration (domain-agnostic architecture)
+frontmatter_directory: "frontmatter/materials"
+frontmatter_filename_pattern: "{slug}-laser-cleaning.yaml"
 
 # Materials-specific randomization targets
 # NOTE: Length targets REMOVED - now in prompts

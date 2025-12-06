@@ -26,6 +26,14 @@ from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
 
+# Import voice compliance validator
+try:
+    from shared.voice.post_processor import VoicePostProcessor
+    VOICE_VALIDATION_AVAILABLE = True
+except ImportError:
+    VOICE_VALIDATION_AVAILABLE = False
+    logger.warning("VoicePostProcessor not available - voice compliance validation disabled")
+
 
 @dataclass
 class QualityEvaluatedResult:
@@ -173,8 +181,53 @@ class QualityEvaluatedGenerator:
                 error_message=f"Generation error: {e}"
             )
         
-        # SAVE IMMEDIATELY (no gating)
-        print(f"💾 Saving to Materials.yaml...")
+        # VOICE COMPLIANCE VALIDATION (post-generation, pre-save)
+        voice_compliance = None
+        if VOICE_VALIDATION_AVAILABLE:
+            try:
+                print(f"\n🎭 Checking voice compliance...")
+                author_data = self._get_author_data(material_name)
+                voice_validator = VoicePostProcessor(self.api_client)
+                
+                # Run comprehensive voice validation
+                language_check = voice_validator.detect_language(content_text)
+                linguistic_patterns = voice_validator.detect_linguistic_patterns(content_text, author_data)
+                
+                voice_compliance = {
+                    'language': language_check,
+                    'linguistic_patterns': linguistic_patterns
+                }
+                
+                # Log results
+                print(f"   • Language: {language_check['language']} (confidence: {language_check['confidence']:.2f})")
+                print(f"   • Linguistic Pattern Score: {linguistic_patterns['pattern_score']:.1f}/100")
+                print(f"   • Pattern Quality: {linguistic_patterns['pattern_quality']}")
+                
+                if linguistic_patterns['patterns_found']:
+                    print(f"   • Patterns Found: {', '.join(linguistic_patterns['patterns_found'][:3])}")
+                
+                if linguistic_patterns['linguistic_issues']:
+                    print(f"   ⚠️  Issues: {', '.join(linguistic_patterns['linguistic_issues'][:3])}")
+                
+                # Check for wrong language (critical error)
+                if language_check['language'] != 'english':
+                    logger.error(f"❌ Content not in English: {language_check['language']}")
+                    print(f"\n❌ VOICE COMPLIANCE FAILED: Content in {language_check['language']}, not English")
+                    print(f"   Indicators: {', '.join(language_check['indicators'][:5])}")
+                
+                # Warn on weak linguistic patterns
+                if linguistic_patterns['pattern_score'] < 30:
+                    logger.warning(f"⚠️  Weak nationality-specific patterns for {author_data.get('country')}")
+                    print(f"   ⚠️  Warning: Weak {author_data.get('country')} linguistic markers")
+                
+            except Exception as e:
+                logger.warning(f"   ⚠️  Voice compliance check failed: {e}")
+                voice_compliance = {'error': str(e)}
+        else:
+            logger.debug("Voice validation skipped - VoicePostProcessor not available")
+        
+        # SAVE IMMEDIATELY (no gating - voice validation for logging only)
+        print(f"\n💾 Saving to Materials.yaml...")
         self._save_to_yaml(material_name, component_type, content)
         print(f"   ✅ Saved successfully")
         
@@ -186,7 +239,8 @@ class QualityEvaluatedGenerator:
             'ai_tendencies': [],
             'winston_human_score': None,
             'winston_ai_score': None,
-            'diversity_score': None
+            'diversity_score': None,
+            'voice_compliance': voice_compliance  # Add voice compliance data
         }
         evaluation_logged = False
         
@@ -761,6 +815,29 @@ class QualityEvaluatedGenerator:
         # FAIL-FAST: No fallbacks - material must have valid author.id
         author_info = resolve_author_for_generation(material_data)
         return author_info['id']
+    
+    def _get_author_data(self, material_name: str) -> Dict[str, Any]:
+        """
+        Get complete author data for voice compliance validation.
+        
+        Returns dict with 'name' and 'country' keys required by VoicePostProcessor.
+        """
+        from domains.materials.data_loader import load_materials_data
+        from data.authors.registry import resolve_author_for_generation
+        
+        materials_data = load_materials_data()
+        material_data = materials_data.get('materials', {}).get(material_name)
+        
+        if not material_data:
+            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
+        
+        # Get full author info
+        author_info = resolve_author_for_generation(material_data)
+        
+        return {
+            'name': author_info.get('name', 'Unknown'),
+            'country': author_info.get('country', 'United States')
+        }
 
 
 # Backward compatibility aliases

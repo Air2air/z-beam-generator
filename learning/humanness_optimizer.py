@@ -1,6 +1,12 @@
 """
 Universal Humanness Layer - Dual-Feedback Pattern Optimizer
 
+CRITICAL ARCHITECTURE RULE (Dec 6, 2025):
+- Author voice is NEVER randomized per generation
+- Voice is determined by author assignment (happens ONCE, persists forever)
+- This class provides STRUCTURAL variation ONLY (rhythm, opening, structure)
+- Voice characteristics come from shared/prompts/personas/*.yaml
+
 Integrates learned patterns from TWO feedback systems:
 1. Winston AI Detection (quantitative) - conversational markers from passing samples
 2. Subjective Evaluation (qualitative) - AI tendencies and theatrical phrases to avoid
@@ -8,7 +14,7 @@ Integrates learned patterns from TWO feedback systems:
 Generates dynamic humanness instructions that improve with each retry attempt (1-5 strictness levels).
 
 Created: November 20, 2025
-Updated: November 22, 2025 - Config-driven randomization (zero hardcoded values)
+Updated: December 6, 2025 - Removed voice randomization (author-controlled only)
 Policy Compliance: Zero hardcoded values, template-only approach, fail-fast architecture
 """
 
@@ -442,15 +448,11 @@ class HumannessOptimizer:
             )
         selected_structure = random.choice(structure_options)
         
-        # 🎲 RANDOMIZE VOICE STYLE (from config)
-        voice_config = self.config['randomization_targets']['voices']
-        voice_options = []
-        for key, value in voice_config.items():
-            examples = ', '.join(f'"{ex}"' for ex in value['examples'])
-            voice_options.append(
-                f"{value['label']}: {examples} ({value['description']})"
-            )
-        selected_voice = random.choice(voice_options)
+        # 🎲 VOICE STYLE: Controlled by author persona assignment (NOT randomized per generation)
+        # Voice is determined at author assignment time and stays consistent thereafter
+        # See: shared/prompts/personas/*.yaml for author-specific voice definitions
+        # Domain config 'voices' section is DEPRECATED and should not be used
+        selected_voice = "(Controlled by assigned author persona - see shared/prompts/personas/*.yaml)"
         
         # 🎲 RANDOMIZE SENTENCE RHYTHM (from config)
         rhythm_config = self.config['randomization_targets']['rhythms']
