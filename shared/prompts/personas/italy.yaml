@@ -65,3 +65,9 @@ grammar_norms:
   preferred_punctuation: [".", ",", ";"]  # Comma-heavy, semicolon for nuance (Romance style)
   compound_sentence_ratio: 0.40  # Higher use of nested/subordinate clauses (Italian structure)
   subordinate_clause_preference: true  # Favor complex structures with embedded clauses
+
+# Forbidden Patterns (voice compliance)
+forbidden:
+  direct_address: ["you", "your", "you'll", "you should", "you need to", "you can", "you will"]
+  conversational_filler: ["Well,", "So,", "Now,", "just", "simply", "basically"]
+  theatrical: ["game-changer", "revolutionary", "eliminates all", "completely transforms"]

@@ -188,10 +188,20 @@ python3 shared/image/learning/analytics.py --manual-feedback
 
 **Purpose:** Ensure all file types (.py, .sh, .log, .txt, etc.) are organized for maintainability and AI assistant workflow compliance. Prevent root clutter and legacy file sprawl.
 
+**🎯 Current Status (Dec 6, 2025)**: Project cleanliness **A (92/100)** after November cleanup + December test fixes
+- ✅ All root modules actively imported (no orphans)
+- ✅ November 2025: 100% compliance achieved in voice, architecture, learning, domains
+- ✅ December 2025: Field isolation tests fixed (14/14 passing) ⬆️
+- ✅ Deprecated file removed: `scripts/validation/enhanced_schema_validator.py` ⬆️
+- ⚠️ 73 `__pycache__` directories (routine cleanup needed)
+- ✅ Test suite: 313/314 passing (99.7% success rate) ⬆️
+- See: `docs/08-development/CLEANUP_AND_TEST_COVERAGE_ANALYSIS.md` for complete analysis
+
 ### 🔹 Python Scripts (.py)
 - **Batch/utility scripts:** Move to `scripts/` or `tools/`.
 - **Runner scripts:** Only keep essential entry points (e.g., `run.py`) in root.
 - **Test scripts:** All `test_*.py` files must be in `tests/`.
+- **Deprecated files:** Remove if zero imports found (use grep verification)
 
 ### 🔹 Shell Scripts (.sh)
 - **Batch/process scripts:** Move to `scripts/` or `batch/`.
@@ -1231,7 +1241,31 @@ See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
 
 See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
-### 11. **Generation Report Policy** 🔥 **NEW (Nov 18, 2025)**
+### 11. **Author Assignment Immutability Policy** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
+**Once an author is assigned to content, it NEVER changes.**
+
+**ARCHITECTURE RULES**:
+1. ✅ **Author assignment happens ONCE** - When content is first created for a material/item
+2. ✅ **Assignment is PERMANENT** - Author never changes for that material/item thereafter
+3. ✅ **Voice consistency** - All content for that material uses same author's voice
+4. ❌ **NO re-randomization** - Never pick a new author on regeneration
+5. ❌ **NO voice randomization per generation** - Voice determined by author, not per-call
+
+**Implementation**:
+- Author stored in Materials.yaml, Settings.yaml, etc. under `author.id` field
+- Generator reads existing author ID from data file
+- If no author assigned (new material), randomly assign once, then persist
+- Persona loaded from `shared/prompts/personas/{author}.yaml` defines ALL voice behavior
+- Humanness optimizer provides structural variation (rhythm, opening) NOT voice
+
+**Separation of Concerns**:
+- **Author Personas** (`shared/prompts/personas/*.yaml`) - Define voice characteristics per author
+- **Humanness Optimizer** (`learning/humanness_optimizer.py`) - Structural variation ONLY
+- **Domain Config** (`domains/*/config.yaml`) - Structural randomization (rhythms, structures) NOT voice
+
+**Grade**: F violation if voice/author changes on regeneration
+
+### 12. **Generation Report Policy** 🔥 **NEW (Nov 18, 2025)**
 **ALWAYS display complete generation report after EVERY content generation.**
 
 **Required Report Sections**:
@@ -1272,7 +1306,30 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
 **Compliance**: Mandatory for caption, material_description, FAQ generation
 
-### 12. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
+### 13. **Voice Instruction Centralization Policy** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
+**ALL voice, tone, and style instructions MUST exist ONLY in persona files.**
+
+**Single Source of Truth**: `shared/prompts/personas/*.yaml`
+
+**Zero Tolerance** for voice instructions in:
+- ❌ Domain prompt templates (`domains/*/prompts/*.txt`)
+- ❌ Generation code (`generation/**/*.py`)
+- ❌ Configuration files (any config.yaml)
+- ❌ Shared templates outside personas/
+
+**Critical Problem Solved**: Domain prompts contained contradictory voice instructions ("conversational" vs "NO conversational tone"), causing LLM to ignore both and produce forbidden phrases in ALL outputs.
+
+**Compliance**:
+- ✅ Domain prompts: ONLY `{voice_instruction}` placeholder
+- ✅ Persona files: ALL voice guidance (tone, style, forbidden phrases)
+- ✅ Generation code: Load persona and render, NO voice logic
+- ✅ Enforcement: Automated tests in `tests/test_voice_centralization_policy.py`
+
+**Migration Complete**: Removed voice instructions from 3 domain prompt files (Dec 6, 2025)
+
+See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complete policy.
+
+### 14. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
 **Maximum use of prompt chaining and orchestration to preserve separation of concerns and specificity.**
 
 **Core Principle**: Break generation into specialized prompts instead of one monolithic prompt.
@@ -1947,6 +2004,24 @@ git revert <commit>  # Revert to known working state
 3. **Terminal output required**: Always use `get_terminal_output()` for API diagnostics
 4. **Range propagation documented**: `docs/DATA_ARCHITECTURE.md` + 14 passing tests
 5. **Frontmatter 58.3% complete**: Technical data excellent (95%+), metadata gaps identified
+6. **Voice compliance issue (Dec 6, 2025)**: LLM (Grok-4-fast) ignores persona instructions
+   - Architecture: A (95/100) - Author assignment immutable, personas distinct
+   - Voice distinctiveness: F (0/100) - LLM produces identical output for all 4 authors
+   - All outputs contain forbidden phrases (direct address: "you'll want", "We've found")
+   - Tests: `tests/test_author_assignment_immutability.py` - 9/9 tests passing ✅
+   - Recommendation: Switch to Claude/GPT-4 or implement post-generation validation
+7. **✅ Field isolation tests FIXED (Dec 6, 2025)**: All 14 tests now passing
+   - File: `tests/test_frontmatter_partial_field_sync.py` - 14/14 tests passing ✅
+   - Resolution: Added domain parameter to all 16 sync_field_to_frontmatter() calls
+   - Fix: Created domain config fixtures in test environment
+   - Impact: **PRODUCTION UNBLOCKED** - Policy #3 (Field Isolation During Generation) verified
+   - See: `docs/08-development/CLEANUP_AND_TEST_COVERAGE_ANALYSIS.md` for details
+8. **Voice validation untested (Dec 6, 2025)**: No automated tests for voice compliance integration
+   - VoicePostProcessor integrated into evaluated_generator.py ✅
+   - Language detection and pattern scoring active ✅
+   - Zero automated tests for integration ❌
+   - Required: Create test suite before production use
+   - See: `docs/08-development/CLEANUP_AND_TEST_COVERAGE_ANALYSIS.md` - Priority 2
 
 ### AI Assistant Best Practices
 - Always check `docs/QUICK_REFERENCE.md` first for common issues

@@ -65,5 +65,11 @@ grammar_norms:
   voice_specific_only: true  # Generic rules in grammar_rules.txt
   # East Asian EFL-specific patterns:
   preferred_punctuation: [".", ",", ":"]  # Colon for data presentation (technical precision)
+
+# Forbidden Patterns (voice compliance)
+forbidden:
+  direct_address: ["you", "your", "you'll", "you should", "you need to", "you can", "you will"]
+  conversational_filler: ["Well,", "So,", "Now,", "just", "simply", "basically"]
+  theatrical: ["game-changer", "revolutionary", "eliminates all", "completely transforms"]
   compound_sentence_ratio: 0.30  # Prefer simple statements over compound (concise style)
   data_focus_preference: true  # Front-load numerical data and measurements

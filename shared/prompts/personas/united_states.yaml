@@ -65,3 +65,9 @@ grammar_norms:
   preferred_punctuation: [".", "—"]  # Period + em-dash (American directness)
   compound_sentence_ratio: 0.25  # Lower use of coordination (favor simple statements)
   american_directness: true  # Front-load main clause, avoid nested structures
+
+# Forbidden Patterns (voice compliance)
+forbidden:
+  direct_address: ["you", "your", "you'll", "you should", "you need to", "you can", "you will"]
+  conversational_filler: ["Well,", "So,", "Now,", "just", "simply", "basically"]
+  theatrical: ["game-changer", "revolutionary", "eliminates all", "completely transforms"]
