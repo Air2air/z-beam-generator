@@ -396,21 +396,12 @@ class BatchGenerator:
         Returns:
             Batch prompt with structured format for extraction
         """
-        # Load base prompt template - try multiple locations
-        prompt_locations = [
-            Path(f"shared/text/templates/components/{component_type}.txt"),
-            Path(f"domains/materials/text/templates/{component_type}.txt")
-        ]
+        # Load base prompt template from domain-specific location
+        prompt_file = Path(f"domains/materials/text/prompts/{component_type}.txt")
         
-        prompt_file = None
-        for location in prompt_locations:
-            if location.exists():
-                prompt_file = location
-                break
-        
-        if not prompt_file:
+        if not prompt_file.exists():
             raise FileNotFoundError(
-                f"Prompt template not found for {component_type}. Tried: {', '.join(str(p) for p in prompt_locations)}"
+                f"Prompt template not found: {prompt_file}"
             )
         
         with open(prompt_file, 'r') as f:

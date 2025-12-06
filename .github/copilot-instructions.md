@@ -1170,7 +1170,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 ### 9. **Template-Only Policy** 🔥 **NEW (Nov 18, 2025) - CRITICAL**
 **ONLY prompt templates determine content and formatting. NO component-specific methods.**
 
-- ✅ **shared/text/templates/components/*.txt** - ALL content instructions and formatting rules
+- ✅ **domains/*/text/prompts/*.txt** - ALL content instructions and formatting rules
   - Structure guidelines, style requirements, forbidden phrases
   - Format specifications, example outputs, voice/tone rules
   - COMPLETE content strategy for each component type
@@ -1205,7 +1205,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 4. ❌ Add content instructions to code
 
 # NEW WAY (COMPLIANT): 1 config + 1 template = ZERO CODE CHANGES
-1. ✅ Create shared/text/templates/components/new_component.txt (all instructions)
+1. ✅ Create domains/{domain}/text/prompts/new_component.txt (all instructions)
 2. ✅ Add to config.yaml: component_lengths: { new_component: {default: 100, extraction_strategy: raw} }
 ```
 

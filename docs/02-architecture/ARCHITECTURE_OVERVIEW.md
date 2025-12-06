@@ -62,7 +62,7 @@ domains/contaminants/image/          ← Domain adapter (ContaminantImageConfig 
 ### 5. Template-Only Content
 **Policy**: `docs/08-development/TEMPLATE_ONLY_POLICY.md`
 
-- ALL content instructions in `shared/text/templates/components/*.txt`
+- ALL content instructions in `domains/*/text/prompts/*.txt`
 - ZERO component-specific code in generators
 - Generic extraction strategies in config (before_after, raw, etc.)
 - Add new component = template file + config entry ONLY
@@ -136,7 +136,7 @@ z-beam-generator/
 
 ### Text Generation Flow
 1. **Input**: Material name + component type (caption, description, faq)
-2. **Template Loading**: Load `shared/text/templates/components/{component}.txt`
+2. **Template Loading**: Load `domains/{domain}/text/prompts/{component}.txt`
 3. **Prompt Building**: Inject material data into template
 4. **Quality Gating**: Winston AI detection, realism scoring, readability
 5. **Learning**: Log attempts, parameters, outcomes to SQLite

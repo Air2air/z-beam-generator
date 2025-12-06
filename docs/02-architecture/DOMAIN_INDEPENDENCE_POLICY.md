@@ -259,7 +259,7 @@ from domains.settings.data_loader import load_settings_yaml
 
 ### Orchestrators Can Access Multiple Domains  
 ```python
-# orchestrators/content_orchestrator.py - ALLOWED
+# domains/data_orchestrator.py - ALLOWED
 from domains.materials.coordinator import MaterialsCoordinator
 from domains.settings.data_loader import get_settings_path
 

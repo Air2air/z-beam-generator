@@ -2289,7 +2289,12 @@ class IntegrityChecker:
         
         # Check 14: Template separation - component vs persona
         start = time.time()
-        components_dir = Path('shared/text/templates/components')
+        # Domain-specific component prompts
+        components_dirs = [
+            Path('domains/materials/text/prompts'),
+            Path('domains/settings/text/prompts'),
+            Path('domains/contaminants/text/prompts')
+        ]
         personas_dir = Path('shared/prompts/personas')
         
         # Voice keywords that should ONLY be in persona templates
@@ -2306,14 +2311,17 @@ class IntegrityChecker:
         ]
         
         violations = []
+        total_components_checked = 0
         
         # Check component templates don't have voice instructions
-        if components_dir.exists():
-            for template_file in components_dir.glob('*.txt'):
-                content = template_file.read_text()
-                found_voice_keywords = [kw for kw in voice_keywords if kw in content.lower()]
-                if found_voice_keywords:
-                    violations.append(f"{template_file.name}: has voice keywords {found_voice_keywords}")
+        for components_dir in components_dirs:
+            if components_dir.exists():
+                for template_file in components_dir.glob('*.txt'):
+                    total_components_checked += 1
+                    content = template_file.read_text()
+                    found_voice_keywords = [kw for kw in voice_keywords if kw in content.lower()]
+                    if found_voice_keywords:
+                        violations.append(f"{components_dir.name}/{template_file.name}: has voice keywords {found_voice_keywords}")
         
         # Check persona templates don't have content instructions
         if personas_dir.exists():
@@ -2336,7 +2344,7 @@ class IntegrityChecker:
                 check_name="Template Separation: Component vs Persona",
                 status=IntegrityStatus.PASS,
                 message="✅ Component and persona templates properly separated",
-                details={'components_checked': len(list(components_dir.glob('*.txt'))) if components_dir.exists() else 0,
+                details={'components_checked': total_components_checked,
                         'personas_checked': len(list(personas_dir.glob('*.yaml'))) if personas_dir.exists() else 0},
                 duration_ms=(time.time() - start) * 1000
             ))

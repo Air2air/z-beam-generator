@@ -140,6 +140,48 @@ processing/
 
 ---
 
+## 📂 Project Structure (Updated December 2025)
+
+```
+z-beam-generator/
+├── domains/                # Domain-specific code & prompts
+│   ├── materials/          # Materials domain (text + image prompts)
+│   │   ├── text/prompts/   # Component prompts: caption.txt, faq.txt, material_description.txt
+│   │   └── image/          # Image generation for materials
+│   ├── settings/           # Settings domain
+│   │   └── text/prompts/   # settings_description.txt
+│   ├── contaminants/       # Contaminants domain
+│   └── data_orchestrator.py  # Cross-domain data coordination
+├── generation/             # Core generation system
+│   ├── core/               # Generators (quality_gated, batch, simple)
+│   ├── config/             # Dynamic config, config loader
+│   └── integrity/          # Integrity checks
+├── learning/               # Learning/optimization modules
+│   ├── humanness_optimizer.py
+│   ├── realism_optimizer.py
+│   ├── sweet_spot_analyzer.py
+│   └── threshold_manager.py
+├── postprocessing/         # Post-generation processing
+├── shared/                 # Shared utilities
+│   ├── text/               # Text processing utilities
+│   └── image/              # Image processing utilities
+├── scripts/                # Organized scripts
+│   ├── batch/              # Batch processing scripts
+│   ├── research/           # Research/data population scripts
+│   ├── migrations/         # Migration scripts
+│   ├── tools/              # Utility scripts
+│   ├── analysis/           # Analysis scripts
+│   ├── testing/            # Testing scripts
+│   ├── maintenance/        # Maintenance scripts
+│   └── operations/         # Operational scripts
+├── data/                   # Data files (YAML)
+├── frontmatter/            # Generated frontmatter files
+├── tests/                  # Test suite
+└── docs/                   # Documentation
+```
+
+---
+
 ## 🤖 For AI Assistants
 
 ### Primary Reference (READ FIRST)

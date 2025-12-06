@@ -21,7 +21,7 @@ The **Prompt Purity Policy** ensures that all content generation instructions re
 
 ### 1. Single Source of Truth
 
-**Prompt templates** (`shared/text/templates/components/*.txt`, `shared/text/templates/personas/*.yaml`) are the ONLY authoritative source for:
+**Prompt templates** (`domains/*/text/prompts/*.txt`, `shared/text/templates/personas/*.yaml`) are the ONLY authoritative source for:
 - Content instructions
 - Style guidance
 - Voice/tone rules
@@ -91,7 +91,7 @@ prompt = template.format(
 **✅ CORRECT approach**:
 Put the instruction IN THE TEMPLATE FILE:
 ```
-# In shared/text/templates/components/caption.txt:
+# In domains/materials/text/prompts/caption.txt:
 Write about {material_name} properties.
 
 CRITICAL: Never use numbers, measurements, or units.
@@ -170,7 +170,7 @@ prompt = prompt.replace(
 
 **FIX**: Define intensity levels IN THE TEMPLATE:
 ```
-# In shared/text/templates/components/caption.txt:
+# In domains/materials/text/prompts/caption.txt:
 
 {qualitative_emphasis}
 

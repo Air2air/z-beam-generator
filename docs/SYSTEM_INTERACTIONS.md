@@ -47,7 +47,7 @@ Failure: Retry with adjusted parameters
 
 ### When You Change Prompts
 
-**File**: `shared/text/templates/components/*.txt` or `shared/text/templates/evaluation/*.txt`
+**File**: `domains/*/text/prompts/*.txt` or `shared/text/templates/evaluation/*.txt`
 
 **Direct Impact**:
 - Content generation immediately affected

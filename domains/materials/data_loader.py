@@ -163,7 +163,7 @@ def load_materials_data() -> Dict[str, Any]:
         MaterialDataError: If any file cannot be loaded or merging fails
     """
     # ✅ FIXED (Nov 26, 2025): Delegate to orchestrator to avoid cross-domain imports
-    from orchestrators.data_orchestrator import load_complete_materials_data
+    from domains.data_orchestrator import load_complete_materials_data
     return load_complete_materials_data()
 
 
