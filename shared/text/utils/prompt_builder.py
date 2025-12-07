@@ -488,12 +488,24 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             # Core voice instruction (mandatory technical style, no theatrical elements)
             core_instruction = voice.get('core_voice_instruction', '').strip()
             if core_instruction:
-                voice_section += f"\n- Core Style: {core_instruction}"
+                # Break long instructions at sentence boundaries for better parsing
+                if len(core_instruction) > 400:
+                    sentences = core_instruction.replace('. ', '.||').split('||')
+                    formatted_instruction = '\n  '.join(s.strip() for s in sentences if s.strip())
+                    voice_section += f"\n- Core Style:\n  {formatted_instruction}"
+                else:
+                    voice_section += f"\n- Core Style: {core_instruction}"
             
             # Tonal restraint (objective technical documentation mandate)
             tonal_restraint = voice.get('tonal_restraint', '').strip()
             if tonal_restraint:
-                voice_section += f"\n- Tone Requirements: {tonal_restraint}"
+                # Break long instructions at sentence boundaries
+                if len(tonal_restraint) > 400:
+                    sentences = tonal_restraint.replace('. ', '.||').split('||')
+                    formatted_restraint = '\n  '.join(s.strip() for s in sentences if s.strip())
+                    voice_section += f"\n- Tone Requirements:\n  {formatted_restraint}"
+                else:
+                    voice_section += f"\n- Tone Requirements: {tonal_restraint}"
             
             # Technical verbs required
             tech_verbs = voice.get('technical_verbs_required', [])
