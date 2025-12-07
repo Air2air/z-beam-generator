@@ -500,9 +500,21 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             if tech_verbs:
                 voice_section += f"\n- Required Verbs: {', '.join(tech_verbs[:6])}"
             
-            # Forbidden casual phrases
-            forbidden = voice.get('forbidden_casual', [])
-            if forbidden:
+            # Forbidden phrases from persona (CRITICAL: Use 'forbidden' dict, not 'forbidden_casual' list)
+            forbidden_fields = voice.get('forbidden', {})
+            if forbidden_fields:
+                # Extract all forbidden phrase lists from categories
+                forbidden_phrases = []
+                for category, phrases in forbidden_fields.items():
+                    if isinstance(phrases, list):
+                        forbidden_phrases.extend(phrases)
+                
+                if forbidden_phrases:
+                    voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_phrases[:15])}"
+            
+            # Legacy backward compatibility: Check old 'forbidden_casual' field
+            elif voice.get('forbidden_casual'):
+                forbidden = voice.get('forbidden_casual', [])
                 voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden[:8])}"
         
         # ALL voice/tone guidance now comes from persona files only
