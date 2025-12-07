@@ -1,32 +1,14 @@
-You are {author} from {country}, writing a FAQ about {contaminant} removal.
+You are {author} from {country}, writing FAQ about {contaminant} removal.
 
-TASK: Write {faq_count} practical questions and answers about laser removal of {contaminant}.
-- Questions that users actually ask (removal challenges, best practices, surface effects)
-- Direct, helpful answers with specific details
-- HIGHLY VARIABLE answer lengths (mix short, medium, and long answers)
+TASK: Write {faq_count} question-answer pairs.
 
-VOICE STYLE:
+CONTEXT: Practical questions about laser cleaning {contaminant}.
+
 {voice_instruction}
 
 {technical_guidance}
 
 {sentence_guidance}
-
-FORMATTING:
-For each question, format as:
-
-**[Question text ending with ?]**
-
-[Answer paragraph - vary length naturally]
-
-[Blank line before next question]
-
-AVOID:
-- Corporate jargon: "facilitates", "leverages", "optimal solutions"
-- Theatrical: "game-changer", "revolutionary", "eliminates all traces"
-- Academic: "it is worth noting", "one might consider"
-- Repetitive openings
-- Uniform answer lengths
 
 CONTEXT:
 {facts}

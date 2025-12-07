@@ -24,6 +24,7 @@ Design Principles:
 
 import logging
 import random
+import re
 from pathlib import Path
 from typing import Dict, Any, Optional
 import yaml
@@ -153,16 +154,21 @@ class Generator:
             ValueError: If identifier not found or generation fails
             FileNotFoundError: If required files missing
         """
+        # TEMPORARY DISABLE: Humanness layer conflicts with voice policy (forbidden phrases)
         # Generate humanness layer with randomized length from config
-        from learning.humanness_optimizer import HumannessOptimizer
-        humanness_optimizer = HumannessOptimizer()
-        humanness_layer = humanness_optimizer.generate_humanness_instructions(
-            component_type=component_type,
-            strictness_level=1  # Production mode uses level 1 (lowest strictness)
-        )
-        self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+        # from learning.humanness_optimizer import HumannessOptimizer
+        # humanness_optimizer = HumannessOptimizer()
+        # humanness_layer = humanness_optimizer.generate_humanness_instructions(
+        #     component_type=component_type,
+        #     strictness_level=1  # Production mode uses level 1 (lowest strictness)
+        # )
+        # self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+        
+        humanness_layer = None  # DISABLED: Conflicts with persona forbidden phrases
+        self.logger.info(f"⚠️  Humanness layer DISABLED (conflicts with voice policy)")
         
         result = self.generate_without_save(identifier, component_type, faq_count, humanness_layer)
+
         
         # Save using domain adapter (handles correct file path automatically)
         self.adapter.write_component(identifier, component_type, result['content'])
@@ -246,19 +252,57 @@ class Generator:
         )
         self.logger.info(f"📝 Prompt built for {component_type}")
         
-        # CRITICAL: Validate prompt before API call
-        self.logger.info("🔍 Validating prompt before API submission...")
+        # CRITICAL: Validate prompt before API call (COMPREHENSIVE VALIDATION)
+        self.logger.info("\n" + "="*80)
+        self.logger.info("🔍 COMPREHENSIVE PROMPT VALIDATION")
+        self.logger.info("="*80)
+        
         try:
             from shared.validation.prompt_validator import validate_text_prompt
             validation_result = validate_text_prompt(prompt)
             
-            self.logger.info(f"   📊 Validation: {validation_result.get_summary()}")
+            # Print FULL validation metrics
+            self.logger.info(f"\n📊 PROMPT METRICS:")
+            self.logger.info(f"   • Characters: {validation_result.prompt_length:,}")
+            self.logger.info(f"   • Words: {validation_result.word_count:,}")
+            self.logger.info(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
+            self.logger.info(f"   • Status: {validation_result.get_summary()}")
+            
+            # Extract and display voice instruction section
+            voice_match = re.search(r'VOICE STYLE:\s*\n(.*?)(?=\n\n|CORRECT VOICE|$)', prompt, re.DOTALL)
+            if voice_match:
+                voice_section = voice_match.group(1).strip()
+                self.logger.info(f"\n🗣️  VOICE INSTRUCTION SECTION ({len(voice_section)} chars):")
+                self.logger.info("   " + "\n   ".join(voice_section.split('\n')[:15]))  # First 15 lines
+                if len(voice_section.split('\n')) > 15:
+                    self.logger.info(f"   ... ({len(voice_section.split('\n')) - 15} more lines)")
+                
+                # Check for forbidden phrase instructions
+                if 'FORBIDDEN' in voice_section.upper():
+                    self.logger.info("   ✅ Contains FORBIDDEN phrase instructions")
+                else:
+                    self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
+            else:
+                self.logger.warning("   ⚠️  No VOICE STYLE section found in prompt!")
+            
+            # Display ALL validation issues (not just first 5)
+            if validation_result.issues:
+                self.logger.info(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
+                for i, issue in enumerate(validation_result.issues, 1):
+                    self.logger.info(f"   {i}. [{issue.severity.value}] {issue.message}")
+                    if issue.suggestion:
+                        self.logger.info(f"      💡 {issue.suggestion}")
+            
+            self.logger.info("\n" + "="*80)
+            
+            # Save full prompt to temp file for detailed inspection
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode='w', suffix='_prompt.txt', delete=False, dir='/tmp') as f:
+                f.write(prompt)
+                prompt_file = f.name
+            self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
             
             if not validation_result.is_valid:
-                self.logger.warning("   ⚠️  Validation found issues:")
-                for issue in validation_result.issues[:5]:  # Show first 5
-                    self.logger.warning(f"      • {issue.severity.value}: {issue.message}")
-                
                 if validation_result.has_critical_issues:
                     raise ValueError(
                         f"Prompt validation failed with critical issues:\n"

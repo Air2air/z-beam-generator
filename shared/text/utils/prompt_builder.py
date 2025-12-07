@@ -158,6 +158,74 @@ class PromptBuilder:
         return guidance.strip()
 
     @staticmethod
+    def _build_voice_instruction(
+        author: str,
+        country: str,
+        esl_traits: str,
+        voice: Optional[Dict],
+        voice_params: Optional[Dict[str, float]],
+        length: int
+    ) -> str:
+        """
+        Build complete voice instruction section from persona data.
+        
+        This extracts voice instructions from persona files and formats them
+        for injection into domain prompt templates via {voice_instruction} placeholder.
+        
+        Args:
+            author: Author name
+            country: Author country
+            esl_traits: ESL linguistic patterns
+            voice: Full voice/persona dict
+            voice_params: Voice parameters (intensity, rhythm, etc.)
+            length: Target word count
+            
+        Returns:
+            Formatted voice instruction string
+        """
+        voice_section = f"""VOICE: {author} from {country}
+- Regional patterns: {esl_traits}"""
+        
+        # CRITICAL: Extract and apply persona voice instructions
+        if voice:
+            # Core voice instruction (mandatory technical style, no theatrical elements)
+            core_instruction = voice.get('core_voice_instruction', '').strip()
+            if core_instruction:
+                voice_section += f"\n- Core Style: {core_instruction}"
+            
+            # Tonal restraint (objective technical documentation mandate)
+            tonal_restraint = voice.get('tonal_restraint', '').strip()
+            if tonal_restraint:
+                voice_section += f"\n- Tone Requirements: {tonal_restraint}"
+            
+            # Technical verbs required
+            tech_verbs = voice.get('technical_verbs_required', [])
+            if tech_verbs:
+                voice_section += f"\n- Required Verbs: {', '.join(tech_verbs[:6])}"
+            
+            # Forbidden phrases from persona (NEW: Critical for voice policy compliance)
+            forbidden_fields = voice.get('forbidden', {})
+            if forbidden_fields:
+                # Extract all forbidden phrase lists
+                forbidden_phrases = []
+                for category, phrases in forbidden_fields.items():
+                    if isinstance(phrases, list):
+                        forbidden_phrases.extend(phrases)
+                
+                if forbidden_phrases:
+                    voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_phrases[:10])}"
+            
+            # Legacy forbidden_casual field (backward compatibility)
+            forbidden_casual = voice.get('forbidden_casual', [])
+            if forbidden_casual and not forbidden_fields:
+                voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_casual[:8])}"
+        
+        # ALL voice/tone guidance now comes from persona files only
+        # No generic additions - respects Voice Instruction Centralization Policy
+        
+        return voice_section
+
+    @staticmethod
     def _load_component_template(component_type: str) -> Optional[str]:
         """
         Load component-specific prompt template from prompts/components/{component}.txt.
@@ -319,6 +387,17 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         if context:
             context_section += f"\n\nADDITIONAL CONTEXT:\n{context}"
         
+        # Build voice_instruction FIRST (before template formatting)
+        # This needs to be built early so it can be injected into component templates
+        voice_instruction = PromptBuilder._build_voice_instruction(
+            author=author,
+            country=country,
+            esl_traits=esl_traits,
+            voice=voice,
+            voice_params=voice_params,
+            length=length
+        )
+        
         # Load component-specific template if available
         component_template = PromptBuilder._load_component_template(spec.name)
         if component_template:
@@ -349,7 +428,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
                 sentence_guidance=sentence_guidance,
                 facts=facts,
                 context=facts if facts else context,  # Use facts as context for template
-                faq_count=faq_count  # Add FAQ count for FAQ templates
+                faq_count=faq_count,  # Add FAQ count for FAQ templates
+                voice_instruction=voice_instruction  # CRITICAL FIX: Populate {voice_instruction} placeholder
             )
             # Template contains all content instructions (focus, format, style)
             context_section = f"""{component_context}
@@ -425,131 +505,9 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             if forbidden:
                 voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden[:8])}"
         
-        # Check if modular parameters are enabled
-        use_modular = voice_params.get('_use_modular', False) if voice_params else False
-        parameter_instances = voice_params.get('_parameter_instances', {}) if voice_params else {}
-        
-        if use_modular and parameter_instances:
-            # MODULAR MODE: Use parameter instances to generate guidance
-            logger.debug(f"Using modular parameters: {list(parameter_instances.keys())}")
-            
-            # Determine content length category for parameters
-            if length <= 30:
-                content_length = 'short'
-            elif length <= 100:
-                content_length = 'medium'
-            else:
-                content_length = 'long'
-            
-            # Collect guidance from each parameter instance
-            for param_name, param_instance in sorted(parameter_instances.items()):
-                try:
-                    guidance = param_instance.generate_prompt_guidance(content_length)
-                    if guidance:
-                        voice_section += f"\n{guidance}"
-                        logger.debug(f"Added modular guidance from {param_name}")
-                except Exception as e:
-                    logger.warning(f"Failed to generate guidance from {param_name}: {e}")
-            
-        else:
-            # LEGACY MODE: Inline parameter logic (original implementation)
-            logger.debug("Using legacy inline parameter logic")
-            
-            # Apply voice parameter intensity if provided
-            trait_freq = voice_params.get('trait_frequency', 0.5) if voice_params else 0.5
-            if trait_freq < 0.3:
-                voice_section += "\n- Voice intensity: Subtle - minimize author personality, keep neutral"
-            elif trait_freq < 0.7:
-                voice_section += "\n- Voice intensity: Moderate - apply traits naturally"
-            else:
-                voice_section += "\n- Voice intensity: Strong - emphasize author personality throughout"
-        
-            # DYNAMIC SENTENCE CALCULATION: Use sentence_rhythm_variation parameter first
-            rhythm_variation = voice_params.get('sentence_rhythm_variation', 0.5) if voice_params else 0.5
-            
-            if rhythm_variation < 0.3:
-                # Low variation: Uniform, consistent sentence lengths
-                if length <= 30:
-                    voice_section += "\n- Sentence structure: Keep sentences consistent (8-12 words); maintain uniform rhythm"
-                elif length <= 100:
-                    voice_section += "\n- Sentence structure: Use consistent sentence lengths (12-16 words); avoid dramatic variation"
-                else:
-                    voice_section += "\n- Sentence structure: Maintain steady rhythm (14-18 words per sentence); consistent flow"
-            elif rhythm_variation < 0.7:
-                # Moderate variation: Mix short and medium
-                if length <= 30:
-                    voice_section += "\n- Sentence structure: Mix short (5-8 words) and medium (10-14 words) sentences naturally"
-                elif length <= 100:
-                    voice_section += "\n- Sentence structure: Balance short and medium sentences; vary rhythm naturally"
-                else:
-                    voice_section += "\n- Sentence structure: Mix short, medium, and longer sentences for natural flow"
-            else:
-                # High variation: Dramatic differences in sentence length
-                if length <= 30:
-                    voice_section += "\n- Sentence structure: WILD variation - mix very short (3-5 words) with much longer (15-20 words); unpredictable rhythm"
-                elif length <= 100:
-                    voice_section += "\n- Sentence structure: DRAMATIC variation - alternate between very short (3-6 words) and long (18-25 words); avoid patterns"
-                else:
-                    voice_section += "\n- Sentence structure: EXTREME variation - range from tiny (2-4 words) to extended (25+ words); chaotic, unpredictable rhythm"
-            
-            # Fallback to grammar_norms if available (legacy support)
-            grammar_norms = voice.get('grammar_norms', {}) if voice else {}
-            if grammar_norms and rhythm_variation == 0.5:  # Only use as fallback at default setting
-                sentence_guidance = SentenceCalculator.get_sentence_guidance(length, grammar_norms)
-                logger.debug(f"Using grammar_norms fallback: {sentence_guidance}")
-            
-            # Add jargon removal guidance based on jargon_removal parameter
-            jargon_level = voice_params.get('jargon_removal', 0.5) if voice_params else 0.5
-            
-            # NOTE: jargon_level is "jargon_REMOVAL" so HIGH value = REMOVE jargon
-            if jargon_level > 0.7:
-                # High jargon removal: Plain language only
-                voice_section += "\n- Technical terminology: AVOID jargon completely; use plain language (say 'strong material' not 'MPa', 'laser wavelength' not '1064nm', 'material stiffness' not 'Young's modulus')"
-            elif jargon_level > 0.3:
-                # Moderate: Essential terms only
-                voice_section += "\n- Technical terminology: Use essential terms but explain when needed; prefer clarity over precision"
-            else:
-                # Low jargon removal: Allow technical terminology
-                voice_section += "\n- Technical terminology: Use industry-standard terms (ISO, ASTM, specifications, certifications)"
-            
-            # Add imperfection guidance based on imperfection_tolerance parameter
-            imperfection = voice_params.get('imperfection_tolerance', 0.5) if voice_params else 0.5
-            
-            if imperfection < 0.3:
-                # Low tolerance: Perfect grammar
-                voice_section += "\n- Perfect grammar and structure required; no imperfections"
-            elif imperfection < 0.7:
-                # Moderate: Some natural imperfections
-                voice_section += "\n- Natural imperfections allowed (makes text more human)"
-            else:
-                # High tolerance: Embrace imperfections
-                voice_section += """
-- EMBRACE natural imperfections:
-  * Occasional informal contractions (gonna, wanna)
-  * Minor article quirks ("the steel" vs "steel")
-  * Slight awkward phrasings that feel human
-  * Fragment sentences for emphasis
-  * Starting sentences with And, But, Or
-  * Deliberate informality and speech patterns"""
-            
-            # Add professional voice guidance based on professional_voice parameter
-            professional_level = voice_params.get('professional_voice', 0.5) if voice_params else 0.5
-            
-            if professional_level < 0.3:
-                # Low professional: Casual vocabulary
-                voice_section += "\n- Vocabulary level: CASUAL - use informal language (kinda, stuff, pretty good, sorta, really nice)"
-            elif professional_level < 0.7:
-                # Moderate: Balanced professional
-                voice_section += "\n- Vocabulary level: Professional but accessible; avoid extremes (casual or overly formal)"
-            else:
-                # High professional: Formal vocabulary
-                voice_section += "\n- Vocabulary level: HIGHLY FORMAL - use sophisticated language (consequently, therefore, pursuant to, facilitate, utilize)"
-        
-        # Common voice elements (applies to both modular and legacy modes)
-        voice_section += """
-- Mix formal and conversational
-- Vary sentence openings and structures naturally
-- Occasional article flexibility (ESL style)"""
+        # ALL voice/tone guidance now comes from persona files only
+        # No dynamic voice_params additions - respects Voice Instruction Centralization Policy
+        # Sentence structure, jargon, imperfection, professional voice all defined in personas
         
         # NOTE: Personality traits now controlled by persona files only
         # Dynamic personality parameters removed per Option A architecture decision

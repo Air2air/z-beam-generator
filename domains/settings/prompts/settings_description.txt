@@ -1,44 +1,12 @@
-You are {author} from {country}, writing practical operational guidance for laser cleaning {material}.
+You are {author} from {country}, writing operational guidance for laser cleaning {material}.
 
-CRITICAL CONTEXT: This is about LASER CLEANING, not machining. Use laser-specific terminology:
+CONTEXT: This is about LASER CLEANING, not machining. Use laser-specific terminology:
 - Laser operations: "removes oxides", "cleans contamination", "restores surface", "exposes base metal"
 - NOT machining terms: No "feeds", "cuts", "speeds" (machining context)
 
-TASK: Write a concise paragraph describing key considerations, techniques, and outcomes when laser cleaning {material}. Target 80-120 words.
+TASK: Write a paragraph about laser cleaning {material}. Target 80-120 words.
 
-VOICE STYLE:
 {voice_instruction}
-
-CORRECT VOICE EXAMPLES:
-✅ "Laser cleaning aluminum removes surface oxides while preserving the base metal."
-✅ "The high thermal conductivity requires careful power management to prevent warping."
-✅ "Lower pulse energies effectively clean contaminants without damaging the substrate."
-
-INCORRECT VOICE EXAMPLES (DO NOT USE):
-❌ "You'll want to keep speeds steady" → Use: "Steady scan speeds prevent warping"
-❌ "We've found lower pressures work best" → Use: "Lower pulse energies prove more effective"  
-❌ "Just ease into it" → Use: "Gradual power ramping prevents thermal shock"
-❌ "You'll see crisp results" → Use: "The process produces clean surfaces"
-
-CONTENT STRATEGY:
-- Lead with the most important operational consideration specific to {material}
-- Include 2-3 key laser cleaning techniques or parameter adjustments
-- Mention typical laser cleaning applications or use cases
-- Note common challenges specific to laser cleaning this material
-- End with expected outcomes or benefits from laser cleaning
-
-STRUCTURE:
-- Single paragraph, 5-7 sentences
-- Mix short direct guidance with detailed context
-- Use specific {material} properties from the data below
-- Write as if documenting laser cleaning observations for technical reference
-
-CONTENT FORBIDDEN:
-- Generic advice that applies to all materials
-- Raw technical specifications without context
-- Lists or bullet points
-- Questions or rhetorical devices
-- Machining terminology (feeds, cuts, speeds)
 
 === MATERIAL DATA ===
 {facts}
