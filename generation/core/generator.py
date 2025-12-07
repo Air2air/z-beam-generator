@@ -253,6 +253,9 @@ class Generator:
         self.logger.info(f"📝 Prompt built for {component_type}")
         
         # CRITICAL: Validate FULL ASSEMBLED PROMPT before API call
+        print("\n" + "="*80)
+        print("🔍 COMPREHENSIVE PROMPT VALIDATION (FULL PROMPT)")
+        print("="*80)
         self.logger.info("\n" + "="*80)
         self.logger.info("🔍 COMPREHENSIVE PROMPT VALIDATION (FULL PROMPT)")
         self.logger.info("="*80)
@@ -261,14 +264,27 @@ class Generator:
             from shared.validation.prompt_validator import validate_text_prompt
             validation_result = validate_text_prompt(prompt)
             
-            # Print FULL validation metrics
+            # Print FULL validation metrics (TERMINAL + FILE LOGGING)
+            print(f"\n📊 PROMPT METRICS:")
+            print(f"   • Characters: {validation_result.prompt_length:,}")
+            print(f"   • Words: {validation_result.word_count:,}")
+            print(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
+            print(f"   • Status: {validation_result.get_summary()}")
             self.logger.info(f"\n📊 PROMPT METRICS:")
             self.logger.info(f"   • Characters: {validation_result.prompt_length:,}")
             self.logger.info(f"   • Words: {validation_result.word_count:,}")
             self.logger.info(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
             self.logger.info(f"   • Status: {validation_result.get_summary()}")
             
-            # Display FULL PROMPT STRUCTURE
+            # Display FULL PROMPT STRUCTURE (TERMINAL + FILE LOGGING)
+            print(f"\n📜 FULL PROMPT STRUCTURE:")
+            print(f"   • Total lines: {len(prompt.split('\n'))}")
+            print(f"   • First 15 lines:")
+            for i, line in enumerate(prompt.split('\n')[:15], 1):
+                print(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
+            if len(prompt.split('\n')) > 15:
+                print(f"   • ... ({len(prompt.split('\n')) - 15} more lines)")
+            
             self.logger.info(f"\n📜 FULL PROMPT STRUCTURE:")
             prompt_lines = prompt.split('\n')
             self.logger.info(f"   • Total lines: {len(prompt_lines)}")
@@ -278,26 +294,47 @@ class Generator:
             if len(prompt_lines) > 10:
                 self.logger.info(f"   • ... ({len(prompt_lines) - 10} more lines)")
             
-            # Check for voice instruction rendering
+            # Check for voice instruction rendering (TERMINAL + FILE LOGGING)
+            print(f"\n🔍 CRITICAL SECTIONS CHECK:")
             if 'VOICE:' in prompt or 'voice_instruction' in prompt:
+                print("   • Voice instructions: ✅ PRESENT")
                 self.logger.info("   ✅ Voice instructions present in prompt")
             else:
+                print("   • Voice instructions: ❌ MISSING")
                 self.logger.warning("   ⚠️  NO voice instructions found in prompt!")
             
             # Check for forbidden phrase instructions
             if 'FORBIDDEN' in prompt.upper() or 'forbidden' in prompt:
+                print("   • Forbidden phrases: ✅ PRESENT")
                 self.logger.info("   ✅ Contains forbidden phrase instructions")
             else:
+                print("   • Forbidden phrases: ❌ MISSING")
                 self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
             
-            # Display ALL validation issues (not just first 5)
+            # Check for component requirements
+            if 'REQUIREMENTS:' in prompt.upper():
+                print("   • Component requirements: ✅ PRESENT")
+            else:
+                print("   • Component requirements: ❌ MISSING")
+            
+            # Display ALL validation issues (TERMINAL + FILE LOGGING)
             if validation_result.issues:
+                print(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
+                for i, issue in enumerate(validation_result.issues, 1):
+                    print(f"   {i}. [{issue.severity.value}] {issue.message}")
+                    if issue.suggestion:
+                        print(f"      💡 {issue.suggestion}")
+                
                 self.logger.info(f"\n⚠️  VALIDATION ISSUES ({len(validation_result.issues)} total):")
                 for i, issue in enumerate(validation_result.issues, 1):
                     self.logger.info(f"   {i}. [{issue.severity.value}] {issue.message}")
                     if issue.suggestion:
                         self.logger.info(f"      💡 {issue.suggestion}")
+            else:
+                print(f"\n✅ No validation issues found")
+                self.logger.info(f"\n✅ No validation issues found")
             
+            print("\n" + "="*80)
             self.logger.info("\n" + "="*80)
             
             # Save full prompt to temp file for detailed inspection
@@ -305,18 +342,28 @@ class Generator:
             with tempfile.NamedTemporaryFile(mode='w', suffix='_prompt.txt', delete=False, dir='/tmp') as f:
                 f.write(prompt)
                 prompt_file = f.name
+            print(f"📄 Full prompt saved to: {prompt_file}")
+            print(f"   View with: cat {prompt_file}")
             self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
             
             if not validation_result.is_valid:
                 if validation_result.has_critical_issues:
+                    print(f"\n❌ CRITICAL VALIDATION FAILURE")
+                    print(validation_result.format_report())
                     raise ValueError(
                         f"Prompt validation failed with critical issues:\n"
                         f"{validation_result.format_report()}"
                     )
+                else:
+                    print(f"   ⚠️  Validation warnings present (not blocking)")
+                    self.logger.info("   ⚠️  Validation warnings present (not blocking)")
             else:
+                print(f"   ✅ Prompt validated successfully")
                 self.logger.info("   ✅ Prompt validated successfully")
-        except ImportError:
-            self.logger.warning("⚠️  UniversalPromptValidator not available - skipping validation")
+        except ImportError as e:
+            print(f"\n⚠️  Prompt validator not available - skipping validation")
+            print(f"   Error: {e}")
+            self.logger.warning(f"⚠️  UniversalPromptValidator not available - skipping validation: {e}")
         
         # Make API call
         self.logger.info("📡 Making API request...")
