@@ -274,6 +274,19 @@ class DomainAdapter(DataSourceAdapter):
         self.invalidate_cache()
         
         logger.info(f"✅ {component_type} written to {self.data_path} → {self.data_root_key}.{identifier}.{component_type}")
+        
+        # DUAL-WRITE POLICY (MANDATORY): Immediately sync field to frontmatter
+        logger.info(f"🔄 Syncing {component_type} to frontmatter for {identifier}...")
+        try:
+            from generation.utils.frontmatter_sync import sync_field_to_frontmatter
+            sync_field_to_frontmatter(identifier, component_type, content_data, domain=self.domain)
+            logger.info(f"✅ Frontmatter sync complete for {identifier}")
+        except Exception as sync_error:
+            logger.error(f"❌ Frontmatter sync FAILED: {sync_error}")
+            import traceback
+            logger.error(traceback.format_exc())
+            # Don't fail the whole generation - sync failure is non-fatal
+            logger.warning("⚠️  Continuing despite sync failure - frontmatter can be manually updated")
     
     def extract_content(self, raw_response: str, component_type: str) -> Any:
         """

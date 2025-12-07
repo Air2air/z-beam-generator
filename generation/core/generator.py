@@ -252,9 +252,9 @@ class Generator:
         )
         self.logger.info(f"📝 Prompt built for {component_type}")
         
-        # CRITICAL: Validate prompt before API call (COMPREHENSIVE VALIDATION)
+        # CRITICAL: Validate FULL ASSEMBLED PROMPT before API call
         self.logger.info("\n" + "="*80)
-        self.logger.info("🔍 COMPREHENSIVE PROMPT VALIDATION")
+        self.logger.info("🔍 COMPREHENSIVE PROMPT VALIDATION (FULL PROMPT)")
         self.logger.info("="*80)
         
         try:
@@ -268,22 +268,27 @@ class Generator:
             self.logger.info(f"   • Estimated tokens: {validation_result.estimated_tokens:,}")
             self.logger.info(f"   • Status: {validation_result.get_summary()}")
             
-            # Extract and display voice instruction section
-            voice_match = re.search(r'VOICE STYLE:\s*\n(.*?)(?=\n\n|CORRECT VOICE|$)', prompt, re.DOTALL)
-            if voice_match:
-                voice_section = voice_match.group(1).strip()
-                self.logger.info(f"\n🗣️  VOICE INSTRUCTION SECTION ({len(voice_section)} chars):")
-                self.logger.info("   " + "\n   ".join(voice_section.split('\n')[:15]))  # First 15 lines
-                if len(voice_section.split('\n')) > 15:
-                    self.logger.info(f"   ... ({len(voice_section.split('\n')) - 15} more lines)")
-                
-                # Check for forbidden phrase instructions
-                if 'FORBIDDEN' in voice_section.upper():
-                    self.logger.info("   ✅ Contains FORBIDDEN phrase instructions")
-                else:
-                    self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
+            # Display FULL PROMPT STRUCTURE
+            self.logger.info(f"\n📜 FULL PROMPT STRUCTURE:")
+            prompt_lines = prompt.split('\n')
+            self.logger.info(f"   • Total lines: {len(prompt_lines)}")
+            self.logger.info(f"   • First 10 lines:")
+            for i, line in enumerate(prompt_lines[:10], 1):
+                self.logger.info(f"      {i:2d}. {line[:100]}{'...' if len(line) > 100 else ''}")
+            if len(prompt_lines) > 10:
+                self.logger.info(f"   • ... ({len(prompt_lines) - 10} more lines)")
+            
+            # Check for voice instruction rendering
+            if 'VOICE:' in prompt or 'voice_instruction' in prompt:
+                self.logger.info("   ✅ Voice instructions present in prompt")
             else:
-                self.logger.warning("   ⚠️  No VOICE STYLE section found in prompt!")
+                self.logger.warning("   ⚠️  NO voice instructions found in prompt!")
+            
+            # Check for forbidden phrase instructions
+            if 'FORBIDDEN' in prompt.upper() or 'forbidden' in prompt:
+                self.logger.info("   ✅ Contains forbidden phrase instructions")
+            else:
+                self.logger.warning("   ⚠️  NO forbidden phrase instructions found!")
             
             # Display ALL validation issues (not just first 5)
             if validation_result.issues:
