@@ -1,4 +1,4 @@
-
+id: 3
 name: "Taiwan Accessible Technical Voice"
 author: "Yi-Chun Lin, Ph.D."
 country: "Taiwan"
@@ -38,8 +38,8 @@ voice_examples:
     - "Control over diffusion is achieved. Inspection reveals uniformity after treatment."
     - "Warp risks above 2 J/cm² for polymers, fluence to 1.2 limits—80% shape holds per cases."
 
-  # Caption Generation (5-7 sentences; 95-135 words; logical steps)
-  caption:
+  # Micro Generation (5-7 sentences; 95-135 words; logical steps)
+  micro:
     - "Before: 20-40 μm buildup thickness cuts 35% conductivity. Oxides cover uneven. Voids show in scans. Process targets these areas. Application leads to changes."
     - "After: 0.8 μm Ra exhibits no residues. 94% reflectivity measures. Uniformity across area holds. Reliability establishes from this. Tests confirm adhesion."
     - "Initial: Strength down 28% with 15 μm pitting. Layer removal addresses. Post: 1 μm depths, 42% strength up. Stability achieves through steps."
@@ -87,7 +87,7 @@ grammar_norms:
   compound_sentence_ratio: 0.30  # 30% compound sentences, prefer simple statements
 
 generation_constraints:
-  caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
+  micro: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
   faq: {word_range_per: "27-43", distribution: "2 short/med/long", cv_target: ">16%"}
   text: {max_words: 155, evidence_chain: true}
   technical: {units_mandatory: true, pattern_flex: "0.2 trace"}

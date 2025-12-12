@@ -136,9 +136,9 @@ class FrontmatterVoiceReprocessor:
         
         return frontmatter, author_data
     
-    def apply_voice_to_caption(
+    def apply_voice_to_micro(
         self,
-        caption: Dict,
+        micro: Dict,
         author: Dict,
         voice_intensity: int = 3
     ) -> Tuple[Dict, bool]:
@@ -146,18 +146,18 @@ class FrontmatterVoiceReprocessor:
         Apply voice to caption before/after text.
         
         Args:
-            caption: Caption dictionary with 'before' and 'after' keys
+            micro: Caption dictionary with 'before' and 'after' keys
             author: Author data
             voice_intensity: Voice intensity level (1-5)
             
         Returns:
-            Tuple of (updated_caption, was_modified)
+            Tuple of (updated_micro, was_modified)
         """
         modified = False
-        updated_caption = caption.copy()
+        updated_micro = caption.copy()
         
         # Process 'before' text
-        if 'before' in caption:
+        if 'before' in micro:
             before_text = caption['before']
             enhanced_before = self.voice_processor.enhance(
                 text=before_text,
@@ -168,12 +168,12 @@ class FrontmatterVoiceReprocessor:
             )
             
             if enhanced_before != before_text:
-                updated_caption['before'] = enhanced_before
+                updated_micro['before'] = enhanced_before
                 modified = True
                 logger.info(f"✅ Enhanced caption 'before' section")
         
         # Process 'after' text
-        if 'after' in caption:
+        if 'after' in micro:
             after_text = caption['after']
             enhanced_after = self.voice_processor.enhance(
                 text=after_text,
@@ -184,16 +184,16 @@ class FrontmatterVoiceReprocessor:
             )
             
             if enhanced_after != after_text:
-                updated_caption['after'] = enhanced_after
+                updated_micro['after'] = enhanced_after
                 modified = True
                 logger.info(f"✅ Enhanced caption 'after' section")
         
         # Update metadata
         if modified:
-            updated_caption['voice_applied'] = datetime.utcnow().isoformat() + 'Z'
-            updated_caption['voice_intensity'] = voice_intensity
+            updated_micro['voice_applied'] = datetime.utcnow().isoformat() + 'Z'
+            updated_micro['voice_intensity'] = voice_intensity
         
-        return updated_caption, modified
+        return updated_micro, modified
     
     def apply_voice_to_subtitle(
         self,
@@ -305,14 +305,14 @@ class FrontmatterVoiceReprocessor:
             modified = False
             
             # Process caption
-            if 'caption' in frontmatter:
-                updated_caption, caption_modified = self.apply_voice_to_caption(
-                    frontmatter['caption'],
+            if 'micro' in frontmatter:
+                updated_micro, micro_modified = self.apply_voice_to_micro(
+                    frontmatter['micro'],
                     author,
                     voice_intensity
                 )
-                if caption_modified:
-                    frontmatter['caption'] = updated_caption
+                if micro_modified:
+                    frontmatter['micro'] = updated_micro
                     modified = True
             
             # Process subtitle
@@ -426,22 +426,22 @@ class FrontmatterVoiceReprocessor:
                 'file': file_path.name,
                 'author': author.get('name'),
                 'country': author.get('country'),
-                'caption': None,
+                'micro': None,
                 'subtitle': None,
                 'faq': None
             }
             
             # Validate caption
-            if 'caption' in frontmatter:
+            if 'micro' in frontmatter:
                 before_score = self.voice_processor.get_voice_score(
-                    frontmatter['caption'].get('before', ''),
+                    frontmatter['micro'].get('before', ''),
                     author
                 )
                 after_score = self.voice_processor.get_voice_score(
-                    frontmatter['caption'].get('after', ''),
+                    frontmatter['micro'].get('after', ''),
                     author
                 )
-                results['caption'] = {
+                results['micro'] = {
                     'before': {
                         'score': before_score['authenticity_score'],
                         'markers': before_score['marker_count']
@@ -620,9 +620,9 @@ def main():
             if 'valid' in result and not result['valid']:
                 print(f"  ❌ {result.get('reason', 'Unknown error')}")
             else:
-                if result.get('caption'):
-                    print(f"  Caption before: {result['caption']['before']['score']:.1f}/100 ({result['caption']['before']['markers']} markers)")
-                    print(f"  Caption after:  {result['caption']['after']['score']:.1f}/100 ({result['caption']['after']['markers']} markers)")
+                if result.get('micro'):
+                    print(f"  Caption before: {result['micro']['before']['score']:.1f}/100 ({result['micro']['before']['markers']} markers)")
+                    print(f"  Caption after:  {result['micro']['after']['score']:.1f}/100 ({result['micro']['after']['markers']} markers)")
                 if result.get('subtitle'):
                     print(f"  Subtitle: {result['subtitle']['score']:.1f}/100 ({result['subtitle']['markers']} markers)")
                 if result.get('faq'):

@@ -27,7 +27,7 @@ Copilot will automatically:
 
 ```
 "Generate a subtitle for Steel"
-"Create a caption for Brass"
+"Create a micro for Brass"
 "Make an FAQ for Copper"
 "Write a description for Aluminum"
 ```
@@ -56,7 +56,7 @@ Copilot will automatically:
 ```
 prompts/
 ├── subtitle.txt        ← 21-63 word subtitle instructions
-├── caption.txt         ← 25-word caption instructions
+├── micro.txt         ← 25-word caption instructions
 ├── description.txt     ← 150-word description instructions
 ├── faq.txt            ← FAQ generation instructions
 └── troubleshooter.txt ← Troubleshooting guide instructions
@@ -81,7 +81,7 @@ data/materials/Materials.yaml   ← Generated content saved here
 
 Aluminum:
   subtitle: "Generated subtitle appears here"
-  caption: "Generated caption appears here"
+  micro: "Generated caption appears here"
   faq:
     - question: "Generated question"
       answer: "Generated answer"
@@ -164,12 +164,12 @@ python3 run.py --subtitle "Steel"
 ### Example 3: Multiple Components
 
 **You ask:**
-> "Generate subtitle, caption, and FAQ for Brass"
+> "Generate subtitle, micro, and FAQ for Brass"
 
 **Copilot does:**
 ```bash
 python3 run.py --subtitle "Brass"
-python3 run.py --caption "Brass"
+python3 run.py --micro "Brass"
 python3 run.py --faq "Brass"
 ```
 
@@ -316,7 +316,7 @@ Just start asking Copilot to generate content. Examples:
 
 ```
 "Generate a subtitle for Titanium"
-"Create a caption for Stainless Steel"
+"Create a micro for Stainless Steel"
 "Make an FAQ for Copper"
 "Increase technical language then generate subtitle for Aluminum"
 "Show me current settings"

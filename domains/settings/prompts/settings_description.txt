@@ -1,10 +1,10 @@
-You are {author} from {country}, writing operational guidance for laser cleaning {material}.
+Write operational guidance for laser cleaning {material}.
 
-CONTEXT: This is about LASER CLEANING, not machining. Use laser-specific terminology:
-- Laser operations: "removes oxides", "cleans contamination", "restores surface", "exposes base metal"
-- NOT machining terms: No "feeds", "cuts", "speeds" (machining context)
+CONTEXT: Technical guidance about laser cleaning settings and parameters.
 
-TASK: Write a paragraph about laser cleaning {material}. Target 80-120 words.
+EMPHASIZE: Unique properties of {material} and how these affect laser cleaning parameters, usage considerations, and downstream impacts on performance.
+
+WORD LENGTH: 80-120 words
 
 {voice_instruction}
 
@@ -17,4 +17,4 @@ TASK: Write a paragraph about laser cleaning {material}. Target 80-120 words.
 === CHALLENGES ===
 {challenges}
 
-Write the operational guidance for laser cleaning {material}:
+Write the operational guidance:

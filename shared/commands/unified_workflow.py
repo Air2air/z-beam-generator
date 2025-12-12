@@ -5,7 +5,7 @@ Unified workflow commands for single-command content generation.
 This module provides COMPLETE INLINE orchestration that combines:
 0. Data Completeness Validation (inline)
 1. Auto-Remediation Research (inline, if needed)
-2. Content Generation (caption, subtitle, FAQ)
+2. Content Generation (micro, subtitle, FAQ)
 3. Voice Enhancement (post-processing)
 4. Content Validation (quality checks)
 5. Frontmatter Export
@@ -18,7 +18,7 @@ from typing import Dict, Any
 
 # Import generation commands
 from shared.commands import (
-    handle_caption_generation,
+    handle_micro_generation,
     handle_material_description_generation,
     handle_faq_generation,
 )
@@ -387,11 +387,11 @@ def _validate_content_quality_inline(material_name: str, material_data: Dict) ->
         'issues': []
     }
     
-    # Check caption
-    caption = material_data.get('caption', {})
-    if caption:
-        before = caption.get('before', '')
-        after = caption.get('after', '')
+    # Check micro
+    micro = material_data.get('micro', {})
+    if micro:
+        before = micro.get('before', '')
+        after = micro.get('after', '')
         
         if not before or len(before.split()) < 10:
             quality['issues'].append("Caption 'before' too short or missing")
@@ -417,7 +417,7 @@ def _validate_content_quality_inline(material_name: str, material_data: Dict) ->
         quality['passed'] = False
     
     # Check for voice markers (Taiwan markers)
-    text_content = str(caption) + str(subtitle) + str(faq)
+    text_content = str(micro) + str(subtitle) + str(faq)
     voice_markers = ['particularly', 'specifically', 'notably', 'thereby', 'thus', 'hence']
     found_markers = [m for m in voice_markers if m.lower() in text_content.lower()]
     
@@ -443,7 +443,7 @@ def run_material_workflow(
     0. System integrity check (inline)
     1. Data completeness validation (inline)
     2. Auto-remediation research (inline, if needed)
-    3. Content generation (caption, subtitle, FAQ)
+    3. Content generation (micro, subtitle, FAQ)
     4. Voice enhancement with validation
     5. Content quality validation (inline)
     6. Frontmatter export
@@ -622,10 +622,10 @@ def run_material_workflow(
             print("STEP 2: TEXT CONTENT GENERATION")
             print("="*80 + "\n")
             
-            # Generate caption
-            print("→ Generating caption...")
-            caption_success = handle_caption_generation(material_name)
-            step_results['generation']['caption'] = caption_success
+            # Generate micro
+            print("→ Generating micro...")
+            micro_success = handle_micro_generation(material_name)
+            step_results['generation']['micro'] = micro_success
             
             # Generate material description
             print("→ Generating material description...")
@@ -637,7 +637,7 @@ def run_material_workflow(
             faq_success = handle_faq_generation(material_name)
             step_results['generation']['faq'] = faq_success
             
-            generation_success = caption_success and material_desc_success and faq_success
+            generation_success = micro_success and material_desc_success and faq_success
             if not generation_success:
                 print("\n⚠️  Some text generation steps failed. Check logs above.")
             else:
@@ -802,7 +802,7 @@ def run_material_workflow(
         if not skip_generation:
             gen_status = "✅" if generation_success else "❌"
             print("  " + gen_status + " Generation: Caption=" + 
-                  str(step_results['generation'].get('caption', False)) +
+                  str(step_results['generation'].get('micro', False)) +
                   ", Subtitle=" + str(step_results['generation'].get('subtitle', False)) +
                   ", FAQ=" + str(step_results['generation'].get('faq', False)))
         

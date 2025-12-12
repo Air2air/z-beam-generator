@@ -49,7 +49,7 @@ CANONICAL_ORDER = [
     'description',
     'author',
     'images',
-    'caption',
+    'micro',
     'regulatoryStandards',
     'applications',
     'materialProperties',

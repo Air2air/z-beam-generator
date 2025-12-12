@@ -263,12 +263,12 @@ pre-commit run black --all-files
 
 ✅ **Fully Tested:**
 - text, frontmatter, content, author, tags, metatags, badgesymbol, propertiestable
-- caption, bullets, table, jsonld (Phase 4 - Complete)
+- micro, bullets, table, jsonld (Phase 4 - Complete)
 
 ### Phase 4 Completion Summary
 
 **Completed Components:**
-- **caption** (9 tests): API-based technical image caption generation
+- **micro** ( tests): API-based technical image micro generation
 - **bullets** (10 tests): API-based technical bullet point generation
 - **table** (11 tests): Static technical table generation
 - **jsonld** (4 tests): Frontmatter-based JSON-LD structured data generation
@@ -315,9 +315,9 @@ def test_component_scenario_expected_result():
 ### Example Test Addition
 
 ```python
-def test_caption_generation_success():
-    """Test successful caption generation with valid inputs."""
-    generator = get_caption_generator()
+def test_micro_generation_success():
+    """Test successful micro generation with valid inputs."""
+    generator = get_micro_generator()
 
     result = generator.generate(
         material_name="Aluminum",
@@ -326,7 +326,7 @@ def test_caption_generation_success():
     )
 
     assert result.success
-    assert "caption" in result.content.lower()
+    assert "micro" in result.content.lower()
 ```
 
 ## Troubleshooting

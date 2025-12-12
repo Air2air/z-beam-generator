@@ -35,6 +35,14 @@ contamination_patterns:
       texture: "porous, flaky, uneven, rough"
       thickness: "variable - surface staining to thick scale"
     
+    # Text content (AI-generated via domains/contaminants/prompts/)
+    text_content:
+      material_description: null  # 10-20 word subtitle about removal challenge
+      micro:
+        before: null  # Contaminated surface at 1000x magnification
+        after: null   # Clean surface after laser removal at 1000x
+      faq: []  # List of FAQ pairs about removal process
+    
     valid_material_categories:
       - metals_ferrous
     

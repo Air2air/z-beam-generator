@@ -5,7 +5,7 @@ CRITICAL ARCHITECTURE RULE (Dec 6, 2025):
 - Author voice is NEVER randomized per generation
 - Voice is determined by author assignment (happens ONCE, persists forever)
 - This class provides STRUCTURAL variation ONLY (rhythm, opening, structure)
-- Voice characteristics come from shared/prompts/personas/*.yaml
+- Voice characteristics come from shared/voice/profiles/*.yaml
 
 Integrates learned patterns from TWO feedback systems:
 1. Winston AI Detection (quantitative) - conversational markers from passing samples
@@ -114,9 +114,9 @@ class HumannessOptimizer:
         # Compact template is optional - will use full template if not found
         
         # Components using compact humanness layer (to stay under 8000 char API limit)
-        # Caption prompts are ~5500 chars with compact template, would exceed limit with full
+        # Micro prompts are ~5500 chars with compact template, would exceed limit with full
         # Settings_description also needs compact to avoid exceeding limits
-        self.compact_components = {'caption', 'settings_description', 'component_summaries'}
+        self.compact_components = {'micro', 'settings_description', 'component_summaries'}
         
         # Load configuration for randomization targets (fail-fast)
         self.config_path = Path(config_path)
@@ -179,7 +179,7 @@ class HumannessOptimizer:
         to produce prompt instructions that increase in strictness with each retry.
         
         Args:
-            component_type: Type of component (caption, subtitle, description, etc.)
+            component_type: Type of component (micro, subtitle, description, etc.)
             strictness_level: 1-5 (increases with retry attempts)
             previous_ai_tendencies: AI patterns detected in previous attempt
         
@@ -410,7 +410,7 @@ class HumannessOptimizer:
         - Previous attempt feedback
         - RANDOMIZED SELECTIONS: length target, structure approach, voice style
         
-        Uses COMPACT template for short-form content (caption, subtitle) to stay
+        Uses COMPACT template for short-form content (micro, subtitle) to stay
         within prompt length limits. Full template for descriptions/FAQ.
         
         Args:
@@ -423,7 +423,7 @@ class HumannessOptimizer:
         Returns:
             Formatted humanness instructions with randomization
         """
-        # Select template: compact for caption (8000 char API limit), full for others
+        # Select template: compact for micro (8000 char API limit), full for others
         use_compact = component_type in self.compact_components and self.template_file_compact.exists()
         
         if use_compact:
@@ -450,9 +450,9 @@ class HumannessOptimizer:
         
         # 🎲 VOICE STYLE: Controlled by author persona assignment (NOT randomized per generation)
         # Voice is determined at author assignment time and stays consistent thereafter
-        # See: shared/prompts/personas/*.yaml for author-specific voice definitions
+        # See: shared/voice/profiles/*.yaml for author-specific voice definitions
         # Domain config 'voices' section is DEPRECATED and should not be used
-        selected_voice = "(Controlled by assigned author persona - see shared/prompts/personas/*.yaml)"
+        selected_voice = "(Controlled by assigned author voice profile - see shared/voice/profiles/*.yaml)"
         
         # 🎲 RANDOMIZE SENTENCE RHYTHM (from config)
         rhythm_config = self.config['randomization_targets']['rhythms']
@@ -714,7 +714,7 @@ def generate_humanness_layer(
     Generate humanness instructions (convenience function).
     
     Args:
-        component_type: Type of component (caption, material_description, etc.)
+        component_type: Type of component (micro, material_description, etc.)
         strictness_level: 1-5 (retry attempt number)
         previous_ai_tendencies: AI patterns from previous attempt
         winston_db_path: Path to Winston database

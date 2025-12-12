@@ -123,14 +123,14 @@ class MaterialsVoiceEnhancer:
             modified = False
             
             # Enhance caption
-            if 'caption' in material_data:
+            if 'micro' in material_data:
                 print("\n📸 Processing caption...")
-                caption_modified = self._enhance_caption(
-                    material_data['caption'],
+                micro_modified = self._enhance_micro(
+                    material_data['micro'],
                     author_info,
                     intensity
                 )
-                modified = modified or caption_modified
+                modified = modified or micro_modified
             
             # Enhance FAQ
             if 'faq' in material_data:
@@ -168,9 +168,9 @@ class MaterialsVoiceEnhancer:
             self.stats['errors'] += 1
             return False
     
-    def _enhance_caption(
+    def _enhance_micro(
         self,
-        caption: Dict,
+        micro: Dict,
         author_info: Dict,
         intensity: int
     ) -> bool:
@@ -178,7 +178,7 @@ class MaterialsVoiceEnhancer:
         modified = False
         
         # Check before text
-        if 'before' in caption:
+        if 'before' in micro:
             before_text = caption['before']
             score = self.voice_processor.get_voice_score(before_text, author_info)
             
@@ -201,7 +201,7 @@ class MaterialsVoiceEnhancer:
                 print(f"   ✅ Already good")
         
         # Check after text
-        if 'after' in caption:
+        if 'after' in micro:
             after_text = caption['after']
             score = self.voice_processor.get_voice_score(after_text, author_info)
             
@@ -432,9 +432,9 @@ Answer:"""
                 author_info = get_author_info_for_material(material_data)
                 
                 # Check caption
-                if 'caption' in material_data:
-                    caption = material_data['caption']
-                    if 'before' in caption:
+                if 'micro' in material_data:
+                    caption = material_data['micro']
+                    if 'before' in micro:
                         score = self.voice_processor.get_voice_score(
                             caption['before'],
                             author_info
@@ -442,7 +442,7 @@ Answer:"""
                         if score['authenticity_score'] < 70:
                             issues.append(f"{material_name}: Caption before ({score['authenticity_score']:.0f}/100)")
                     
-                    if 'after' in caption:
+                    if 'after' in micro:
                         score = self.voice_processor.get_voice_score(
                             caption['after'],
                             author_info

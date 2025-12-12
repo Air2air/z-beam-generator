@@ -94,7 +94,7 @@ class BaseParameter(ABC):
         Args:
             context: Context dict with keys:
                 - length: Target word count
-                - component_type: caption, faq, etc.
+                - component_type: micro, faq, etc.
                 - voice: Voice profile dict
                 - other parameters as needed
                 

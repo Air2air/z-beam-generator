@@ -350,18 +350,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             )
             
             # Enforce camelCase for caption keys (fix snake_case if present)
-            if 'caption' in ordered_content and isinstance(ordered_content['caption'], dict):
-                caption = ordered_content['caption']
+            if 'micro' in ordered_content and isinstance(ordered_content['micro'], dict):
+                caption = ordered_content['micro']
                 # Convert snake_case to camelCase if needed
-                if 'before_text' in caption:
+                if 'before_text' in micro:
                     caption['beforeText'] = caption.pop('before_text')
-                if 'after_text' in caption:
+                if 'after_text' in micro:
                     caption['afterText'] = caption.pop('after_text')
-                if 'technical_analysis' in caption:
+                if 'technical_analysis' in micro:
                     caption['technicalAnalysis'] = caption.pop('technical_analysis')
-                if 'material_properties' in caption:
+                if 'material_properties' in micro:
                     caption['materialProperties'] = caption.pop('material_properties')
-                if 'image_url' in caption:
+                if 'image_url' in micro:
                     caption['imageUrl'] = caption.pop('image_url')
                 self.logger.debug("Enforced camelCase for caption keys")
             # Enhanced validation if available
@@ -607,13 +607,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter.update(author_info)
             
             # Add caption section - check direct field first, then ai_text_fields
-            if 'caption' in material_data and material_data['caption']:
-                frontmatter['caption'] = material_data['caption']
-                self.logger.info(f"✅ Copied caption from Materials.yaml (keys: {list(material_data['caption'].keys())})")
+            if 'micro' in material_data and material_data['micro']:
+                frontmatter['micro'] = material_data['micro']
+                self.logger.info(f"✅ Copied caption from Materials.yaml (keys: {list(material_data['micro'].keys())})")
             else:
-                caption_data = self._get_caption_from_ai_fields(material_data, material_name)
-                if caption_data:
-                    frontmatter['caption'] = caption_data
+                micro_data = self._get_caption_from_ai_fields(material_data, material_name)
+                if micro_data:
+                    frontmatter['micro'] = micro_data
                     self.logger.info("✅ Using caption from Materials.yaml ai_text_fields")
                 else:
                     self.logger.info(f"⚠️ No caption found for {material_name}")
@@ -1777,12 +1777,12 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # Check for ai_text_fields caption data
             ai_text_fields = material_data.get('ai_text_fields', {})
             
-            caption_data = {}
+            micro_data = {}
             
-            # Extract beforeText from caption_beforeText field
-            if 'caption_beforeText' in ai_text_fields:
-                before_content = ai_text_fields['caption_beforeText']['content']
-                self.logger.info(f"✅ Found caption_beforeText in ai_text_fields ({len(before_content)} chars)")
+            # Extract beforeText from micro_beforeText field
+            if 'micro_beforeText' in ai_text_fields:
+                before_content = ai_text_fields['micro_beforeText']['content']
+                self.logger.info(f"✅ Found micro_beforeText in ai_text_fields ({len(before_content)} chars)")
                 
                 # Parse the content - it might be JSON format or plain text
                 try:
@@ -1792,16 +1792,16 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                         try:
                             parsed = json.loads(before_content)
                             if 'content' in parsed:
-                                caption_data['beforeText'] = parsed['content']
+                                micro_data['beforeText'] = parsed['content']
                             else:
-                                caption_data['beforeText'] = before_content
+                                micro_data['beforeText'] = before_content
                         except json.JSONDecodeError:
                             # If JSON is malformed, try to extract content manually
                             import re
                             # Try to extract content from truncated JSON
                             content_match = re.search(r'"content":\s*"([^"]*)', before_content)
                             if content_match:
-                                caption_data['beforeText'] = content_match.group(1)
+                                micro_data['beforeText'] = content_match.group(1)
                             else:
                                 # Fallback: look for any text after "content": 
                                 fallback_match = re.search(r'"content":\s*"(.+)', before_content, re.DOTALL)
@@ -1810,19 +1810,19 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                                     text = fallback_match.group(1)
                                     # Remove trailing quote and JSON artifacts
                                     text = re.sub(r'["}]*$', '', text).strip()
-                                    caption_data['beforeText'] = text
+                                    micro_data['beforeText'] = text
                                 else:
-                                    caption_data['beforeText'] = before_content
+                                    micro_data['beforeText'] = before_content
                     else:
-                        caption_data['beforeText'] = before_content
+                        micro_data['beforeText'] = before_content
                 except Exception:
                     # If all parsing fails, use as plain text
-                    caption_data['beforeText'] = before_content
+                    micro_data['beforeText'] = before_content
             
-            # Extract afterText from caption_afterText field
-            if 'caption_afterText' in ai_text_fields:
-                after_content = ai_text_fields['caption_afterText']['content']
-                self.logger.info(f"✅ Found caption_afterText in ai_text_fields ({len(after_content)} chars)")
+            # Extract afterText from micro_afterText field
+            if 'micro_afterText' in ai_text_fields:
+                after_content = ai_text_fields['micro_afterText']['content']
+                self.logger.info(f"✅ Found micro_afterText in ai_text_fields ({len(after_content)} chars)")
                 
                 # Parse the content - it might be JSON format or plain text
                 try:
@@ -1832,16 +1832,16 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                         try:
                             parsed = json.loads(after_content)
                             if 'content' in parsed:
-                                caption_data['afterText'] = parsed['content']
+                                micro_data['afterText'] = parsed['content']
                             else:
-                                caption_data['afterText'] = after_content
+                                micro_data['afterText'] = after_content
                         except json.JSONDecodeError:
                             # If JSON is malformed, try to extract content manually
                             import re
                             # Try to extract content from truncated JSON
                             content_match = re.search(r'"content":\s*"([^"]*)', after_content)
                             if content_match:
-                                caption_data['afterText'] = content_match.group(1)
+                                micro_data['afterText'] = content_match.group(1)
                             else:
                                 # Fallback: look for any text after "content": 
                                 fallback_match = re.search(r'"content":\s*"(.+)', after_content, re.DOTALL)
@@ -1850,23 +1850,23 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                                     text = fallback_match.group(1)
                                     # Remove trailing quote and JSON artifacts
                                     text = re.sub(r'["}]*$', '', text).strip()
-                                    caption_data['afterText'] = text
+                                    micro_data['afterText'] = text
                                 else:
-                                    caption_data['afterText'] = after_content
+                                    micro_data['afterText'] = after_content
                     else:
-                        caption_data['afterText'] = after_content
+                        micro_data['afterText'] = after_content
                 except Exception:
                     # If all parsing fails, use as plain text
-                    caption_data['afterText'] = after_content
+                    micro_data['afterText'] = after_content
             
             # Add image URL for micro image (standard pattern)
-            if caption_data:
+            if micro_data:
                 # Generate standard micro image URL following the pattern: material-laser-cleaning-micro.jpg
                 material_slug = material_name.lower().replace(' ', '-')
-                caption_data['imageUrl'] = f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
+                micro_data['imageUrl'] = f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
                 
-                self.logger.info(f"✅ Built caption structure with {len(caption_data)} fields")
-                return caption_data
+                self.logger.info(f"✅ Built caption structure with {len(micro_data)} fields")
+                return micro_data
             else:
                 self.logger.info(f"⚠️ No caption fields found in ai_text_fields for {material_name}")
                 return {}
@@ -2420,25 +2420,25 @@ Generate exactly two text blocks:
                 # Use dynamic temperature calculation from config
                 from generation.config.dynamic_config import DynamicConfig
                 dynamic_config = DynamicConfig()
-                temperature = dynamic_config.calculate_temperature('caption')
+                temperature = dynamic_config.calculate_temperature('micro')
                 
                 # Call API for caption generation
                 response = self.api_client.generate_simple(
                     prompt=prompt,
-                    max_tokens=2000,  # Enough for both captions
+                    max_tokens=2000,  # Enough for both micros
                     temperature=temperature
                 )
                 # Extract content from APIResponse object if needed
                 if hasattr(response, 'content'):
-                    caption_text = response.content
+                    micro_text = response.content
                 elif isinstance(response, str):
-                    caption_text = response
+                    micro_text = response
                 else:
-                    caption_text = str(response)
+                    micro_text = str(response)
                 # Parse the response to extract before_text and after_text
                 import re
-                before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*\n(.*?)(?=\*\*AFTER_TEXT:|\Z)', caption_text, re.DOTALL)
-                after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*\n(.*?)(?=\Z)', caption_text, re.DOTALL)
+                before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*\n(.*?)(?=\*\*AFTER_TEXT:|\Z)', micro_text, re.DOTALL)
+                after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*\n(.*?)(?=\Z)', micro_text, re.DOTALL)
                 
                 if before_match and after_match:
                     before_text = before_match.group(1).strip()
@@ -2454,7 +2454,7 @@ Generate exactly two text blocks:
             author_info = frontmatter.get('author', {})
             author_name = author_info.get('name', 'Unknown Author') if isinstance(author_info, dict) else str(author_info)
             # Build complete caption structure matching Gallium format
-            frontmatter['caption'] = {
+            frontmatter['micro'] = {
                 'beforeText': before_text,
                 'afterText': after_text,
                 'description': f'Microscopic analysis of {material_name.lower()} surface before and after laser cleaning treatment',
@@ -2472,7 +2472,7 @@ Generate exactly two text blocks:
                     'method': 'frontmatter_integrated_generation',
                     'timestamp': '2025-10-02T00:00:00.000000Z',
                     'generator': 'FrontmatterCaptionGenerator',
-                    'componentType': 'template_caption'
+                    'componentType': 'template_micro'
                 },
                 'author': author_name,
                 'materialProperties': {

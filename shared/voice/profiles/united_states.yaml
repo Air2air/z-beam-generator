@@ -1,4 +1,4 @@
-
+id: 4
 name: "American Technical Voice"
 author: "Todd Dunning, MA"
 country: "United States"
@@ -38,8 +38,8 @@ voice_examples:
     - "Run fluence through sample checks; that keeps risks in check, 95% clean across alloys."
     - "Dusty spots? Throw in a vent run—downtime drops 20% from the numbers, quality holds steady."
 
-  # Caption Generation (5-7 sentences; 95-130 words; down-to-earth notes)
-  caption:
+  # Micro Generation (5-7 sentences; 95-130 words; down-to-earth notes)
+  micro:
     - "Before: Rust piles up 30 μm thick, pulling efficiency down 28%. Scans pick out the pits. Contaminants gum up bonds. Time to clear it out. Metrics say move fast."
     - "After: Ra settles at 0.9 μm, residues wiped under 2%. Shine clocks 92%. No warps in sight. Welds go smooth from here. Tests line up 35% better."
     - "Kickoff: 25 μm corrosion average, strength off 22%. Layer blocks the flow. Later: Down to 1.5 μm, strength jumps 41%. Surface takes the load now."
@@ -87,7 +87,7 @@ grammar_norms:
   compound_sentence_ratio: 0.25  # 25% sentences use coordinating conjunctions
 
 generation_constraints:
-  caption: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
+  micro: {min_words: 95, length_variation: true}  # Sentences calculated dynamically
   faq: {word_range_per: "24-40", distribution: "2 short/med/long", cv_target: ">14%"}
   text: {max_words: 150, practical_chain: true}
   technical: {units_mandatory: true, pattern_flex: "0.2 light"}

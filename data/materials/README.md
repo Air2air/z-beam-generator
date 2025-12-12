@@ -12,7 +12,7 @@ The materials data is now organized across **three dedicated YAML files** for be
 ```
 materials/data/
 ├── Materials.yaml              # Core metadata (1.2 MB)
-│   └── Material definitions, descriptions, FAQs, captions, etc.
+│   └── Material definitions, descriptions, FAQs, micros, etc.
 │
 ├── MaterialProperties.yaml     # Material properties (490 KB)
 │   └── Physical, mechanical, chemical, and thermal properties
@@ -72,7 +72,7 @@ Both methods return **identical structure** - materialProperties and machineSett
 **Contains**:
 - Material names, categories, subcategories
 - Descriptions, titless
-- FAQs, captions, author metadata
+- FAQs, micros, author metadata
 - Regulatory standards, applications
 - Images, E-E-A-T metadata
 - Material characteristics (legacy field)
@@ -91,7 +91,7 @@ materials:
     description: "Laser cleaning parameters for Aluminum"
     title: "Aluminum Laser Cleaning"
     faq: [...]
-    caption: {...}
+    micro: {...}
     # materialProperties merged at runtime from MaterialProperties.yaml
     # machineSettings merged at runtime from MachineSettings.yaml
 ```

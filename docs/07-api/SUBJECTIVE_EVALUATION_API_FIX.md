@@ -10,7 +10,7 @@
 ## Problem Statement
 
 ### Symptom
-During caption generation for Brass (November 16, 2025), subjective evaluation failed:
+During micro generation for Brass (November 16, 2025), subjective evaluation failed:
 
 ```
 Error in subjective evaluation: CachedAPIClient.generate() got an unexpected keyword argument 'prompt'
@@ -254,8 +254,8 @@ def test_no_kwargs_api_calls():
 **Command**: Generate content and check subjective evaluation runs
 
 ```bash
-# Generate caption for a material
-python3 run.py --material "Aluminum" --caption
+# Generate micro for a material
+python3 run.py --material "Aluminum" --micro
 
 # Expected output (CHECK FOR):
 # ✅ "Running subjective evaluation..." (NOT "Falling back to rule-based")

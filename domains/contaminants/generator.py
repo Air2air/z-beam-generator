@@ -136,7 +136,7 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         context: GenerationContext
     ) -> Dict[str, Any]:
         """
-        Build complete contaminant frontmatter data.
+        Build complete contaminant frontmatter data with AI-generated text.
         
         Args:
             identifier: Contaminant name/type
@@ -158,10 +158,43 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
                 'layout': 'contaminant',
                 'title': f"{contaminant_data['name']} Laser Cleaning",
                 'contaminant': contaminant_data['name'],
-                'description': f"Laser cleaning parameters for {contaminant_data['name']} removal",
                 'generated': datetime.utcnow().isoformat() + 'Z',
-                'placeholder': True,  # Mark as placeholder content
             }
+            
+            # Generate text content using Generator
+            if self.api_client:
+                from generation.core.generator import Generator
+                text_generator = Generator(self.api_client)
+                
+                # Generate material_description (subtitle)
+                self.logger.info(f"Generating material_description for {identifier}...")
+                subtitle_result = text_generator.generate(identifier, 'material_description', domain='contaminants')
+                frontmatter['description'] = subtitle_result.get('content', f"Laser cleaning parameters for {contaminant_data['name']} removal")
+                
+                # Generate micro (before/after at 1000x magnification)
+                self.logger.info(f"Generating micro for {identifier}...")
+                micro_result = text_generator.generate(identifier, 'micro', domain='contaminants')
+                micro_content = micro_result.get('content', '')
+                
+                # Split micro into before/after (assumes two paragraphs)
+                micro_paragraphs = [p.strip() for p in micro_content.split('\n\n') if p.strip()]
+                frontmatter['micro'] = {
+                    'before': micro_paragraphs[0] if len(micro_paragraphs) > 0 else '',
+                    'after': micro_paragraphs[1] if len(micro_paragraphs) > 1 else ''
+                }
+                
+                # Generate FAQ
+                self.logger.info(f"Generating FAQ for {identifier}...")
+                faq_result = text_generator.generate(identifier, 'faq', domain='contaminants', faq_count=3)
+                frontmatter['faq'] = faq_result.get('content', [])
+            else:
+                # No API client - use placeholders
+                frontmatter['description'] = f"Laser cleaning parameters for {contaminant_data['name']} removal"
+                frontmatter['micro'] = {
+                    'before': f"Surface shows contamination from {contaminant_data['name']} affecting material appearance and properties.",
+                    'after': f"Post-cleaning reveals restored surface with {contaminant_data['name']} successfully removed through precise laser ablation."
+                }
+                frontmatter['faq'] = []
             
             # Add contaminant-specific properties
             frontmatter['contaminantProperties'] = {
@@ -212,15 +245,16 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
                 frontmatter['author'] = context.author_data
             
             # Add metadata
+            status = 'complete' if self.api_client else 'placeholder'
             frontmatter['_metadata'] = {
                 'generator': 'ContaminantFrontmatterGenerator',
                 'version': '1.0.0',
                 'content_type': 'contaminant',
-                'status': 'placeholder',
-                'requires_research': True
+                'status': status,
+                'requires_research': not bool(self.api_client)
             }
             
-            self.logger.info(f"Built placeholder frontmatter for contaminant: {identifier}")
+            self.logger.info(f"Built frontmatter for contaminant: {identifier} (status: {status})")
             return frontmatter
             
         except Exception as e:

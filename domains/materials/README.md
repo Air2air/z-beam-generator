@@ -17,12 +17,12 @@ The materials module has TWO generation systems:
 
 **A. NEW System** (`unified_generator.py` - 391 lines)
 - **Purpose**: Caption, FAQ, and Subtitle generation
-- **Used By**: shared/commands/generation.py (--caption, --subtitle, --faq flags)
+- **Used By**: shared/commands/generation.py (--micro, --subtitle, --faq flags)
 - **Approach**: Single generator with prompt templates
 - **Status**: ✅ Active, modern approach
 
 **B. OLD System** (Component generators in subdirectories)
-- **Caption**: `caption/generators/generator.py` (388 lines)
+- **Micro**: `micro/generators/generator.py` (388 lines)
 - **Subtitle**: `subtitle/core/subtitle_generator.py` (333 lines)
 - **FAQ**: `faq/generators/faq_generator.py` (493 lines)
 - **Used By**: Tests, ComponentGeneratorFactory, batch scripts
@@ -31,9 +31,9 @@ The materials module has TWO generation systems:
 ## Structure
 
 - `generator.py` - Main frontmatter generator (orchestrator entry point)
-- `unified_generator.py` - Text content generator (caption/FAQ/subtitle)
+- `unified_generator.py` - Text content generator (micro/FAQ/subtitle)
 - `data/materials.yaml` - 132 material definitions with properties
-- `caption/`, `subtitle/`, `faq/` - Legacy component generators
+- `micro/`, `subtitle/`, `faq/` - Legacy component generators
 - `modules/` - 6 active modules for frontmatter assembly
 - `services/` - Property management and validation
 - `research/` - AI-powered property research tools
@@ -57,7 +57,7 @@ Each material in `data.yaml` follows the GROUPED structure defined in `data/fron
 
 ### Core Fields
 - **Identification**: name, category, subcategory, title, subtitle
-- **Content**: author, caption
+- **Content**: author, micro
 - **Assets**: images (hero, micro)
 - **Standards**: regulatoryStandards
 - **FAQ**: Frequently asked questions
@@ -109,7 +109,7 @@ Inherits from `components/frontmatter/core/base_generator.py` and uses shared in
 
 ### Generator Migration (If Needed)
 - Migrate remaining references from legacy component generators to `unified_generator.py`
-- Remove `caption/`, `subtitle/`, `faq/` subdirectories
+- Remove `micro/`, `subtitle/`, `faq/` subdirectories
 - Update tests and ComponentGeneratorFactory
 - **Trigger**: When legacy generators cause maintenance burden
 - **Effort**: 1-2 days

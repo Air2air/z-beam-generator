@@ -224,9 +224,9 @@ def main():
     print("=" * 80)
     print()
     print("💡 VERIFICATION METHODS:")
-    print("   1. Real-time logging: python3 run.py --caption Material 2>&1 | grep '✅\\|🎯\\|Quality Gate'")
+    print("   1. Real-time logging: python3 run.py --micro Material 2>&1 | grep '✅\\|🎯\\|Quality Gate'")
     print("   2. Database queries: python3 scripts/verify_pipeline_stages.py")
-    print("   3. Integrity checks: python3 run.py --caption Material (without --skip-integrity-check)")
+    print("   3. Integrity checks: python3 run.py --micro Material (without --skip-integrity-check)")
     print("   4. Manual inspection: sqlite3 z-beam.db 'SELECT * FROM detection_results'")
     print()
 

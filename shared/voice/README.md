@@ -16,7 +16,7 @@ Centralized voice management for country-specific linguistic variations in conte
 
 ```bash
 # Step 1: Generate raw content (no voice) → Saves to Materials.yaml
-python3 run.py --caption "Steel"
+python3 run.py --micro "Steel"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Steel"
 
@@ -42,7 +42,7 @@ python3 run.py --data-only
 
 ### Key Points
 
-- ✅ **Voice postprocessor OVERWRITES qualifying text fields** (caption, subtitle, FAQ answers)
+- ✅ **Voice postprocessor OVERWRITES qualifying text fields** (micro, subtitle, FAQ answers)
 - ✅ **Valid enhanced output replaces original content** in Materials.yaml
 - ✅ **Export is a separate manual step** that combines Materials.yaml with Categories.yaml
 - ✅ **Categories.yaml provides metadata only** (NO fallback ranges - Materials.yaml must be 100% complete)
@@ -105,19 +105,19 @@ voice/
 
 ## Component Integration Examples
 
-### Caption Component
+### Micro Component
 
 ```python
 class CaptionComponentGenerator:
     def _build_prompt(self, material_data, author_country):
         voice = VoiceOrchestrator(country=author_country)
-        voice_instructions = voice.get_voice_for_component("caption")
+        voice_instructions = voice.get_voice_for_component("micro")
         
         return f"""
 {voice_instructions}
 
 MATERIAL: {material_data['name']}
-TASK: Generate before/after captions...
+TASK: Generate before/after micros...
 """
 ```
 
@@ -199,13 +199,13 @@ python3 scripts/voice/enhance_materials_voice.py --material "Steel" --voice-inte
 
 **What it does:**
 1. Reads material entry from `materials/data/Materials.yaml`
-2. Applies VoicePostProcessor to qualifying text fields (caption, subtitle, FAQ)
+2. Applies VoicePostProcessor to qualifying text fields (micro, subtitle, FAQ)
 3. Validates voice markers (target: ≥70/100 authenticity)
 4. **OVERWRITES original text fields** with voice-enhanced versions in Materials.yaml
 5. Adds `voice_enhanced` timestamp to track enhancement
 
 **Processing Details:**
-- **Caption**: Enhances both `before` and `after` sections → **OVERWRITES** in Materials.yaml
+- **Micro**: Enhances both `before` and `after` sections → **OVERWRITES** in Materials.yaml
 - **Subtitle**: Enhances subtitle text → **OVERWRITES** in Materials.yaml
 - **FAQ**: Enhances all answer texts → **OVERWRITES** in Materials.yaml
 - **Validation**: Only saves if authenticity score ≥70/100
@@ -249,13 +249,13 @@ The voice system works identically for **all content types**:
 
 ```python
 # ❌ WRONG - Don't do this in generators
-def generate_caption():
+def generate_micro():
     text = generate_raw_text()
     enhanced = voice_processor.enhance(text)  # NO!
     save_to_yaml(enhanced)
 
 # ✅ CORRECT - Generators write raw content
-def generate_caption():
+def generate_micro():
     text = generate_raw_text()
     save_to_yaml(text)  # Save raw, no voice
 
@@ -284,7 +284,7 @@ validator = VoiceValidator()
 result = validator.validate_content(
     content=generated_text,
     country="Taiwan",
-    component_type="caption"
+    component_type="micro"
 )
 
 assert result.is_valid, f"Voice issues: {result.issues}"

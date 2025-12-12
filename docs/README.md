@@ -125,7 +125,7 @@ This documentation hub is specifically designed for Copilot AI assistants to qui
 - **[Badgesymbol Component](components/badgesymbol/README.md)** - Symbol generation
 - **[Author Component](components/author/README.md)** - Author information
 - **[Bullets Component](components/bullets/README.md)** - Characteristics lists
-- **[Caption Component](components/caption/README.md)** - Description generation
+- **[Micro Component](components/micro/README.md)** - Description generation
 
 ---
 
@@ -246,7 +246,7 @@ All blueprint documents follow this structure:
 ## 🔍 **Search & Discovery**
 
 ### **By Component Type**
-- **Content Generation**: Text, frontmatter, bullets, caption
+- **Content Generation**: Text, frontmatter, bullets, micro
 - **Metadata**: Author, badgesymbol, tags, metatags
 - **Structure**: Table, propertiestable (4-field), jsonld
 - **Presentation**: Formatting, themes, layouts
@@ -454,7 +454,7 @@ This documentation hub ensures the Z-Beam Generator system remains maintainable,
 |-----------|---------|--------------|--------------|----------------|
 | `text` | ✅ **Real-time updates** | ✅ Winston.ai | deepseek | ✅ Every 10s + changes |
 | `bullets` | ✅ Working | ✅ Enabled | deepseek | ❌ |
-| `caption` | ✅ Working | ✅ Enabled | gemini | ❌ |
+| `micro` | ✅ Working | ✅ Enabled | gemini | ❌ |
 | `frontmatter` | ✅ Working | ❌ Disabled | deepseek | ❌ |
 | `tags` | ✅ Working | ❌ Disabled | deepseek | ❌ |
 | `author` | ✅ Working | ❌ Disabled | none | ❌ |

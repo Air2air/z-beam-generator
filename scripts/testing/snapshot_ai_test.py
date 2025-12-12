@@ -4,7 +4,7 @@
 
 Captures current config state + generates test batch + records results.
 Makes it easy to:
-1. Generate batch of captions with current settings
+1. Generate batch of micros with current settings
 2. Record config snapshot with outputs
 3. Compare different config combinations systematically
 4. Track which settings produce best AI detection results
@@ -70,8 +70,8 @@ def get_sentence_variation():
     return None
 
 def get_prompt_version():
-    """Determine prompt version from caption.txt content."""
-    prompt_path = Path(__file__).parent.parent / 'prompts' / 'components' / 'caption.txt'
+    """Determine prompt version from micro.txt content."""
+    prompt_path = Path(__file__).parent.parent / 'prompts' / 'components' / 'micro.txt'
     with open(prompt_path, 'r') as f:
         content = f.read()
     
@@ -85,10 +85,10 @@ def get_prompt_version():
     else:
         return "unknown"
 
-def generate_caption(material):
+def generate_micro(material):
     """Generate caption for material and capture output + AI detection score."""
     result = subprocess.run(
-        ['python3', 'run.py', '--caption', material],
+        ['python3', 'run.py', '--micro', material],
         capture_output=True,
         text=True,
         cwd=Path(__file__).parent.parent
@@ -155,7 +155,7 @@ def create_snapshot(name, materials):
     test_results = []
     for material in materials:
         print(f"  Generating {material}...")
-        result = generate_caption(material)
+        result = generate_micro(material)
         test_results.append(result)
         print(f"    ✓ {result['word_count']}w, {result['sentence_count']} sent")
         print(f"    → {result['output'][:80]}...\n")

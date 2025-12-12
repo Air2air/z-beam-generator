@@ -134,11 +134,11 @@ def handle_batch_subtitle_generation(materials_input: str, skip_integrity_check:
         return False
 
 
-def handle_batch_caption_generation(materials_input: str, skip_integrity_check: bool = False):
+def handle_batch_micro_generation(materials_input: str, skip_integrity_check: bool = False):
     """
-    Generate captions for multiple materials in batches.
+    Generate micros for multiple materials in batches.
     
-    Note: Captions already meet Winston 300-char minimum individually,
+    Note: Micros already meet Winston 300-char minimum individually,
     so batch generation may not provide cost savings. This command exists
     for consistency and potential future optimization.
     
@@ -153,7 +153,7 @@ def handle_batch_caption_generation(materials_input: str, skip_integrity_check: 
     print("🔄 BATCH CAPTION GENERATION")
     print("="*80)
     print()
-    print("ℹ️  Note: Captions already meet Winston minimum individually.")
+    print("ℹ️  Note: Micros already meet Winston minimum individually.")
     print("   Batch generation available for consistency but may not save costs.")
     print()
     
@@ -164,8 +164,8 @@ def handle_batch_caption_generation(materials_input: str, skip_integrity_check: 
         print("❌ No materials specified")
         return False
     
-    # Use individual generation (captions don't benefit from batching)
-    return _generate_individually(materials, 'caption', skip_integrity_check)
+    # Use individual generation (micros don't benefit from batching)
+    return _generate_individually(materials, 'micro', skip_integrity_check)
 
 
 def _parse_materials_input(materials_input: str) -> list:
@@ -194,7 +194,7 @@ def _generate_individually(materials: list, component_type: str, skip_integrity_
     
     Args:
         materials: List of material names
-        component_type: Type of component (caption, subtitle, etc.)
+        component_type: Type of component (micro, subtitle, etc.)
         skip_integrity_check: Skip integrity validation
         
     Returns:

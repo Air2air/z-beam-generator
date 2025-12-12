@@ -7,7 +7,7 @@ Organized command handlers extracted from run.py for better modularity.
 
 # Generation commands
 from .generation import (
-    handle_caption_generation,
+    handle_micro_generation,
     handle_material_description_generation,
     handle_settings_description_generation,
     handle_component_summaries_generation,
@@ -54,7 +54,7 @@ from .global_evaluation import (
 
 __all__ = [
     # Generation
-    'handle_caption_generation',
+    'handle_micro_generation',
     'handle_material_description_generation',
     'handle_settings_description_generation',
     'handle_faq_generation',

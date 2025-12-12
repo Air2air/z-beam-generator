@@ -69,7 +69,7 @@ class WinstonAuditor:
         # Define which fields to check - ONLY TEXT FIELDS
         component_fields = {
             'subtitle': 'subtitle',
-            'caption': 'caption',
+            'micro': 'micro',
             'faq': 'faq'  # Will check all FAQ entries
         }
         
@@ -271,7 +271,7 @@ class WinstonAuditor:
 def main():
     parser = argparse.ArgumentParser(description='Audit Materials.yaml content with Winston AI')
     parser.add_argument('--material', help='Specific material to audit')
-    parser.add_argument('--component', choices=['subtitle', 'caption', 'faq'], 
+    parser.add_argument('--component', choices=['subtitle', 'micro', 'faq'], 
                        help='Specific component type to audit')
     parser.add_argument('--threshold', type=float, default=70.0,
                        help='Minimum human score threshold (0-100, default: 70)')

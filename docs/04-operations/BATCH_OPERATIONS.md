@@ -27,7 +27,7 @@
 ✅ metatags (API-driven, priority 2) 
 ✅ propertiestable (API-driven, priority 3)
 ✅ bullets (API-driven, priority 4)
-✅ caption (API-driven, priority 5)
+✅ micro (API-driven, priority 5)
 ✅ text (API-driven, priority 6)
 ✅ table (static, priority 7)
 ✅ tags (API-driven, priority 8)

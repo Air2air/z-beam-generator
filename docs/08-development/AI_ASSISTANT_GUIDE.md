@@ -56,8 +56,8 @@
 
 ### **Generate Content**
 ```bash
-# Caption
-python3 run.py --caption "MaterialName"
+# Micro
+python3 run.py --micro "MaterialName"
 
 # Subtitle
 python3 run.py --subtitle "MaterialName"
@@ -218,7 +218,7 @@ Generate → Evaluate → Save → Improve Continuously (Option C)
 ### **New to the Project?**
 1. Read: `README.md`
 2. Follow: `QUICK_START.md`
-3. Generate: Your first caption/subtitle
+3. Generate: Your first micro/subtitle
 4. Review: `docs/SYSTEM_INTERACTIONS.md`
 
 ### **Contributing Code?**

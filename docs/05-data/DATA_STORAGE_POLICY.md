@@ -24,13 +24,13 @@
 
 ### 🚨 MANDATORY REQUIREMENT: Field Isolation During Generation
 
-**Component generation with flags (--description, --caption, --subtitle, --faq) MUST ONLY update the specified field in frontmatter.**
+**Component generation with flags (--description, --micro, --subtitle, --faq) MUST ONLY update the specified field in frontmatter.**
 
 **FIELD UPDATE RULES:**
-- ✅ `--description` → Updates ONLY `description` field (preserves subtitle, caption, faq, author, properties, etc.)
-- ✅ `--caption` → Updates ONLY `caption` field (preserves description, subtitle, faq, author, properties, etc.)
-- ✅ `--subtitle` → Updates ONLY `subtitle` field (preserves description, caption, faq, author, properties, etc.)
-- ✅ `--faq` → Updates ONLY `faq` field (preserves description, caption, subtitle, author, properties, etc.)
+- ✅ `--description` → Updates ONLY `description` field (preserves subtitle, micro, faq, author, properties, etc.)
+- ✅ `--micro` → Updates ONLY `caption` field (preserves description, subtitle, faq, author, properties, etc.)
+- ✅ `--subtitle` → Updates ONLY `subtitle` field (preserves description, micro, faq, author, properties, etc.)
+- ✅ `--faq` → Updates ONLY `faq` field (preserves description, micro, subtitle, author, properties, etc.)
 
 **VIOLATIONS:**
 - ❌ Overwriting ANY unrelated field during component generation
@@ -77,7 +77,7 @@ Data Flow Rules:
 ### Frontmatter Export is Trivial
 
 **All complex operations happen on Materials.yaml:**
-- ✅ AI text generation (captions, descriptions, etc.) → Materials.yaml
+- ✅ AI text generation (micros, descriptions, etc.) → Materials.yaml
 - ✅ Voice enhancement (OVERWRITES text fields) → Materials.yaml
 - ✅ Property research and discovery → Materials.yaml
 - ✅ Completeness validation → Materials.yaml
@@ -101,7 +101,7 @@ Data Flow Rules:
 **Workflow Commands:**
 ```bash
 # Step 1: Generate content → Materials.yaml
-python3 run.py --caption "Steel"
+python3 run.py --micro "Steel"
 
 # Step 2: Apply voice → OVERWRITES fields in Materials.yaml  
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
@@ -162,7 +162,7 @@ def export_to_frontmatter(material_name):
     # Simple field mapping (no generation, no validation)
     frontmatter = {
         'title': material_data['title'],
-        'caption': material_data['caption'],  # Already generated in Materials.yaml
+        'micro': material_data['micro'],  # Already generated in Materials.yaml
         'properties': material_data['materialProperties'],  # Already validated
         'applications': material_data['applications'],  # Already researched
         # ... just copy fields ...
@@ -603,7 +603,7 @@ Result: Materials.yaml + Categories.yaml = 100% complete
 ┌────────────────────────────────────────────────────────────────────┐
 │  STEP 1: TEXT CONTENT GENERATION → Materials.yaml                 │
 └────────────────────────────────────────────────────────────────────┘
-- Generate caption (before/after) → Save to Materials.yaml
+- Generate micro (before/after) → Save to Materials.yaml
 - Generate subtitle → Save to Materials.yaml
 - Generate FAQ (2-8 questions) → Save to Materials.yaml
 - Uses UnifiedMaterialsGenerator with prompt templates
@@ -614,7 +614,7 @@ Result: Materials.yaml has raw text content (no voice yet)
 ┌────────────────────────────────────────────────────────────────────┐
 │  STEP 2: VOICE ENHANCEMENT → OVERWRITES Materials.yaml TEXT       │
 └────────────────────────────────────────────────────────────────────┘
-- Load TEXT fields from Materials.yaml (caption, subtitle, FAQ)
+- Load TEXT fields from Materials.yaml (micro, subtitle, FAQ)
 - Apply author-specific voice markers (Italian, Korean, Taiwan, India)
 - OVERWRITE text fields in Materials.yaml with voice-enhanced versions
 - Voice enhancement is PERMANENT in Materials.yaml
@@ -624,8 +624,8 @@ Result: Materials.yaml has voice-enhanced content
 ┌────────────────────────────────────────────────────────────────────┐
 │  STEP 3: QUALITY VALIDATION                                        │
 └────────────────────────────────────────────────────────────────────┘
-- Check voice markers present in caption/subtitle
-- Validate word counts (10+ words per caption, 2-8 FAQs)
+- Check voice markers present in micro/subtitle
+- Validate word counts (10+ words per micro, 2-8 FAQs)
 - Ensure completeness (all required fields present)
 - Quality gates: human believability, tone consistency
 

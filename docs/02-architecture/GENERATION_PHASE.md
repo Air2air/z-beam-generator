@@ -17,7 +17,7 @@ The generation phase produces initial content with a single API call per materia
 
 ### ✅ What Generation Phase DOES
 1. **Single-pass content creation** - One API request per material
-2. **Basic format validation** - Ensure valid structure (e.g., two paragraphs for captions)
+2. **Basic format validation** - Ensure valid structure (e.g., two paragraphs for micros)
 3. **Length targeting** - Apply global variation range from config
 4. **Save to Materials.yaml** - Persist generated content immediately
 

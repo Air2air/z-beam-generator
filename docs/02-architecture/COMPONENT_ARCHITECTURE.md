@@ -25,7 +25,7 @@ All three content generators (FAQ, Caption, Subtitle) now follow the **same simp
 |-----------|-------|------------|----------------------|----------|-----------|
 | **FAQ** | 115 | 15-45/answer | 2/1 (Light/Minimal) | Q&A pairs (3-9) | 1 |
 | **Subtitle** | 180 | 7-12 total | 4/3 (Strong/Moderate) | Single tagline | 1 |
-| **Caption** | 229 | 30-70/section | 3/2 (Moderate/Light) | Before/After (2) | 1 |
+| **Micro** | 229 | 30-70/section | 3/2 (Moderate/Light) | Before/After (2) | 1 |
 | **Total** | **524** | - | - | - | **3** |
 
 **Previous Total**: 899 lines (42% reduction overall)
@@ -182,7 +182,7 @@ class ComponentGenerator(APIComponentGenerator):
 
 **Prompt Focus**: Research simulation → Questions → Answers
 
-### Caption Generator (229 lines)
+### Micro Generator (229 lines)
 
 **Unique Aspects**:
 - Dual-section structure (before/after)
@@ -215,9 +215,9 @@ class ComponentGenerator(APIComponentGenerator):
 - ❌ Question templates and scoring
 - ❌ 422 → 115 lines (73% reduction)
 
-**Caption Component**:
+**Micro Component**:
 - ❌ CaptionGenerator wrapper class
-- ❌ generate_caption_content() function
+- ❌ generate_micro_content() function
 - ❌ Inline VoicePostProcessor calls
 - ❌ Dual API call architecture
 - ❌ 426 → 229 lines (46% reduction)
@@ -288,8 +288,8 @@ material_data = get_material_by_name(material_name, materials_data)
 
 voice_processor = VoicePostProcessor(api_client)
 
-# Enhance qualifying text fields (caption, subtitle, FAQ answers)
-for field in ['caption', 'subtitle', 'faq']:
+# Enhance qualifying text fields (micro, subtitle, FAQ answers)
+for field in ['micro', 'subtitle', 'faq']:
     if field in material_data:
         enhanced = voice_processor.enhance(
             material_data[field],
@@ -316,7 +316,7 @@ python3 run.py --material "MaterialName" --data-only
 **Commands**:
 ```bash
 # Generate → Materials.yaml
-python3 run.py --caption "Steel"
+python3 run.py --micro "Steel"
 
 # Voice enhance → OVERWRITES in Materials.yaml
 python3 scripts/voice/enhance_materials_voice.py --material "Steel"
@@ -339,8 +339,8 @@ materials:
       - question: "..."
         answer: "..."
     
-    # Caption
-    caption:
+    # Micro
+    micro:
       before: "..."
       after: "..."
       generated: "2025-10-28T12:34:56Z"

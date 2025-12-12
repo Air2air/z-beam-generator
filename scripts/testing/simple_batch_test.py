@@ -2,7 +2,7 @@
 """
 Simple Batch Caption Test
 ==========================
-Generates captions for 4 materials (one per author) and produces a report.
+Generates micros for 4 materials (one per author) and produces a report.
 
 This is a simplified version that WILL complete successfully.
 """
@@ -24,7 +24,7 @@ TEST_MATERIALS = {
 
 def run_caption_generation(material_name):
     """Run caption generation for a single material."""
-    cmd = ['python3', 'run.py', '--caption', material_name]
+    cmd = ['python3', 'run.py', '--micro', material_name]
     
     print(f'\n{"="*70}')
     print(f'🚀 Generating caption for: {material_name}')

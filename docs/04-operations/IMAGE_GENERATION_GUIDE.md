@@ -242,7 +242,7 @@ imagen_api.generate_image(
 
 **Categories**:
 - Base forbidden patterns (~50 items): text, logos, watermarks, etc.
-- Anti-text terms (18 items): typography, lettering, captions, etc.
+- Anti-text terms (18 items): typography, lettering, micros, etc.
 
 **Total**: ~1,450 chars (35% of Imagen 4 limit)
 

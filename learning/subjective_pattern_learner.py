@@ -59,7 +59,7 @@ class SubjectivePatternLearner:
             evaluation_result: Subjective evaluation result dictionary
             content: Generated content that was evaluated
             accepted: Whether content passed quality gates
-            component_type: Type of component (caption, subtitle, etc.)
+            component_type: Type of component (micro, subtitle, etc.)
             material_name: Material being generated for
         """
         try:

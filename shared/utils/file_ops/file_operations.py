@@ -56,7 +56,7 @@ def get_component_file_extension(component_type: str) -> str:
         File extension including the dot (e.g., '.yaml', '.md')
     """
     # Map component types to extensions
-    yaml_components = ['table', 'jsonld', 'metatags', 'author', 'caption']
+    yaml_components = ['table', 'jsonld', 'metatags', 'author', 'micro']
     return '.yaml' if component_type in yaml_components else '.md'
 
 

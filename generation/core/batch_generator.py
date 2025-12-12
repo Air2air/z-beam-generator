@@ -53,7 +53,7 @@ class BatchGenerator:
             'max_batch_size': 4,         # Maximum 4 material descriptions = 560+ chars (was 3)
             'winston_min_chars': 300,n            'separator': '\n\n',         # Clear separation for Winston sentence analysis
         },
-        'caption': {
+        'micro': {
             'eligible': False,           # Already meets minimum individually
             'chars_per_component': 400,
             'min_batch_size': 1,

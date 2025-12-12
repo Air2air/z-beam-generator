@@ -32,7 +32,7 @@ Text prompt templates are now in domain config.yaml files under `prompts:` key:
 
 ```
 domains/materials/
-├── config.yaml              # Contains prompts.caption, prompts.faq, prompts.material_description
+├── config.yaml              # Contains prompts.micro, prompts.faq, prompts.material_description
 └── prompts/personas/        # Author voice personas (materials-specific)
 
 domains/settings/

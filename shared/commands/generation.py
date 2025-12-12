@@ -35,7 +35,7 @@ def handle_generation(
     
     Args:
         identifier: Item name (material, setting, etc.) - domain agnostic
-        component_type: Type of component (caption, subtitle, faq, etc.)
+        component_type: Type of component (micro, subtitle, faq, etc.)
         domain: Domain name (e.g., 'materials', 'settings')
         skip_integrity_check: Skip pre-generation checks
         **kwargs: Additional parameters (e.g., faq_count for FAQ generation)
@@ -55,7 +55,7 @@ def handle_generation(
     # Display header with component type and domain
     component_label = component_type.upper().replace('_', ' ')
     icon_map = {
-        'caption': '📝',
+        'micro': '📝',
         'material_description': '📌',
         'settings_description': '⚙️',
         'component_summary': '📋',
@@ -190,7 +190,7 @@ def handle_generation(
 def _extract_content_for_display(content_data, component_type, spec):
     """Extract content for display based on component type and extraction strategy."""
     if spec.extraction_strategy == 'before_after':
-        # Caption: dict with 'before' and 'after'
+        # Micro: dict with 'before' and 'after'
         if isinstance(content_data, dict):
             before_text = content_data.get('before', '')
             after_text = content_data.get('after', '')
@@ -403,7 +403,7 @@ def _run_winston_detection(content, identifier, component_type, api_client):
         print()
         
     except Exception as e:
-        # Winston detection optional for short content (captions often <300 chars)
+        # Winston detection optional for short content (micros often <300 chars)
         error_msg = str(e)
         if 'Text too short' in error_msg or 'not configured' in error_msg:
             print("\n⚠️  WARNING: Winston detection skipped")
@@ -491,14 +491,14 @@ def _run_post_generation_integrity(identifier, component_type):
 # All new code should use handle_generation(identifier, component_type, domain=...) instead.
 # ============================================================================
 
-def handle_caption_generation(material_name: str, skip_integrity_check: bool = False):
+def handle_micro_generation(material_name: str, skip_integrity_check: bool = False):
     """
-    DEPRECATED: Use handle_generation(material_name, 'caption') instead.
+    DEPRECATED: Use handle_generation(material_name, 'micro') instead.
     
-    Generate AI-powered caption for a material and save to Materials.yaml.
+    Generate AI-powered micro for a material and save to Materials.yaml.
     This is a backward compatibility wrapper around the generic handler.
     """
-    return handle_generation(material_name, 'caption', domain='materials', skip_integrity_check=skip_integrity_check)
+    return handle_generation(material_name, 'micro', domain='materials', skip_integrity_check=skip_integrity_check)
 
 
 def handle_material_description_generation(material_name: str, skip_integrity_check: bool = False):

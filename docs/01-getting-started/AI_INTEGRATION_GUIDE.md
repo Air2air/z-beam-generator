@@ -35,7 +35,7 @@
 
 Step-by-step instructions for:
 - Material descriptions (`python3 run.py --description "MaterialName"`)
-- Captions (`python3 run.py --caption "MaterialName"`)
+- Captions (`python3 run.py --micro "MaterialName"`)
 - FAQs (`python3 run.py --faq "MaterialName"`)
 - Machine settings descriptions
 - Hero images
@@ -269,7 +269,7 @@ python3 run.py --description "Aluminum"
 
 ### Generate Material Caption
 ```bash
-python3 run.py --caption "Steel"
+python3 run.py --micro "Steel"
 ```
 
 ### Generate Hero Image
@@ -329,7 +329,7 @@ python3 domains/materials/image/learning/analytics.py attempts
 - ✅ `prompts/*.txt` - ALL prompt text
 - ❌ `processing/*.py` - ZERO prompt text (NO EXCEPTIONS)
 - ❌ `system_prompt = "You are..."` - Forbidden
-- ✅ `prompt = self._load_prompt_template('caption.txt')` - Correct
+- ✅ `prompt = self._load_prompt_template('micro.txt')` - Correct
 
 ### Terminal Logging Policy
 **Document**: `docs/08-development/TERMINAL_LOGGING_POLICY.md`

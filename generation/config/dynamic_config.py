@@ -17,7 +17,7 @@ Usage:
     config = DynamicConfig()
     
     # Get dynamically calculated values
-    temperature = config.calculate_temperature('caption')
+    temperature = config.calculate_temperature('micro')
     detection_threshold = config.calculate_detection_threshold()
     max_tokens = config.calculate_max_tokens('description')
 """
@@ -449,7 +449,7 @@ class DynamicConfig:
             'engagement_level': engagement_normalized
         }
     
-    def get_all_generation_params(self, component_type: str = 'caption') -> Dict[str, Any]:
+    def get_all_generation_params(self, component_type: str = 'micro') -> Dict[str, Any]:
         """
         Get ALL parameters needed for generation in one call.
         Orchestrator should call this once and pass bundles to components.
@@ -518,7 +518,7 @@ class DynamicConfig:
     # SUMMARY REPORT
     # =========================================================================
     
-    def get_dynamic_settings_report(self, component_type: str = 'caption') -> str:
+    def get_dynamic_settings_report(self, component_type: str = 'micro') -> str:
         """
         Generate human-readable report of all dynamically calculated settings.
         

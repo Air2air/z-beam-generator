@@ -48,7 +48,7 @@ python3 run.py --clean
 | **metatags** | HTML meta tags | `.yaml` | ✅ DeepSeek/Grok |
 | **jsonld** | Structured data | `.yaml` | ✅ DeepSeek/Grok |
 | **tags** | Content tags | `.yaml` | ✅ DeepSeek/Grok |
-| **caption** | Image captions | `.yaml` | ✅ DeepSeek/Grok |
+| **micro** | Image micros | `.yaml` | ✅ DeepSeek/Grok |
 
 ### Component Dependencies
 
@@ -61,7 +61,7 @@ graph TD
     A --> F[metatags]
     A --> G[jsonld]
     A --> H[tags]
-    A --> I[caption]
+    A --> I[micro]
 ```
 
 **Generation Order**: frontmatter → other components (parallel)
@@ -90,7 +90,7 @@ content/components/
 ├── metatags/material-laser-cleaning.yaml      # HTML meta tags
 ├── jsonld/material-laser-cleaning.yaml        # Structured data
 ├── tags/material-laser-cleaning.yaml          # Content tags
-└── caption/material-laser-cleaning.yaml       # Image captions
+└── micro/material-laser-cleaning.yaml       # Image micros
 ```
 
 ### Workflow 2: Essential Content Only
@@ -178,7 +178,7 @@ python3 run.py --list-materials | grep -i steel
 python3 run.py --material "Steel" --components "frontmatter,text"
 
 # Marketing components
-python3 run.py --material "Aluminum" --components "bullets,tags,caption"
+python3 run.py --material "Aluminum" --components "bullets,tags,micro"
 
 # Technical components
 python3 run.py --material "Copper" --components "table,jsonld"
@@ -187,7 +187,7 @@ python3 run.py --material "Copper" --components "table,jsonld"
 #### Component Exclusion
 ```bash
 # Generate all except specific components
-python3 run.py --material "Steel" --exclude "author,caption"
+python3 run.py --material "Steel" --exclude "author,micro"
 ```
 
 ### API Provider Selection

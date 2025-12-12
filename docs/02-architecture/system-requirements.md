@@ -27,7 +27,7 @@ This document defines the 7 critical requirements that the Z-Beam processing sys
 ### Validation
 ```bash
 # Test human readability
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 # Expected: Human score ≥20%, AI score ≤0.409
 
 # Check recent results
@@ -37,7 +37,7 @@ sqlite3 data/winston_feedback.db "SELECT material, AVG(human_score), AVG(ai_scor
 ### Tests
 - `tests/test_winston_integration.py` - Winston API integration
 - `tests/test_content_quality.py` - Content quality validation
-- E2E caption generation tests
+- E2E micro generation tests
 
 ### Metrics
 - **Target**: 20%+ human score (learning target)
@@ -101,7 +101,7 @@ sqlite3 data/winston_feedback.db "SELECT COUNT(*) FROM generation_parameters"
 python3 -c "
 from processing.learning.pattern_learner import PatternLearner
 learner = PatternLearner('data/winston_feedback.db')
-patterns = learner.get_learned_patterns('Steel', 'caption')
+patterns = learner.get_learned_patterns('Steel', 'micro')
 print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 "
 ```
@@ -121,7 +121,7 @@ print(f'Risky: {len(patterns[\"risky\"])}, Safe: {len(patterns[\"safe\"])}')
 ### Post-Generation Integrity Checks
 - **File**: `processing/integrity/integrity_checker.py`
 - **Method**: `IntegrityChecker.run_post_generation_checks()`
-- **Integration**: All generation commands (caption, subtitle, FAQ)
+- **Integration**: All generation commands (micro, subtitle, FAQ)
 - **Checks**:
   1. Database exists and is accessible
   2. Detection result logged (Winston.ai scores)

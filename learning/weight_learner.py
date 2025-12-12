@@ -46,7 +46,7 @@ class WeightSet:
     readability_weight: float
     sample_count: int
     prediction_accuracy: float  # R² score
-    context: str  # "global", "material:Steel", "component:caption"
+    context: str  # "global", "material:Steel", "component:micro"
 
 
 class WeightLearner:

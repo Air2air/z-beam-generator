@@ -227,7 +227,7 @@ class MaterialImageGenerator:
             # PRIORITY 1: TEXT/LABELS (ABSOLUTE PROHIBITION - FIRST POSITION)
             # ═══════════════════════════════════════════════════════════════
             "text", "words", "letters", "numbers", "writing",
-            "labels", "captions", "before", "after", "watermarks",
+            "labels", "micros", "before", "after", "watermarks",
             "any text whatsoever", "any labels", "any writing",
             "text overlays", "caption text", "title text",
             

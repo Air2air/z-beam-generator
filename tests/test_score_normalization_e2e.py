@@ -100,7 +100,7 @@ class TestScoreNormalization:
             with pytest.raises(ValueError, match="must be 0-1.0"):
                 db.log_detection(
                     material="Test",
-                    component_type="caption",
+                    component_type="micro",
                     generated_text="test",
                     winston_result={
                         'human_score': 85.0,  # Wrong scale!
@@ -115,7 +115,7 @@ class TestScoreNormalization:
             # Should accept 0-1.0 scores
             detection_id = db.log_detection(
                 material="Test",
-                component_type="caption",
+                component_type="micro",
                 generated_text="test",
                 winston_result={
                     'human_score': 0.85,  # Correct scale

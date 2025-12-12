@@ -55,7 +55,7 @@
 
 ### Subjective Module ✅ **DATA COLLECTION**
 - **Status**: 111 evaluations logged (7 days)
-- **Integration**: Old component handlers (caption/subtitle/FAQ)
+- **Integration**: Old component handlers (micro/subtitle/FAQ)
 - **Evaluation**: Grok AI with 6 dimensions + narrative assessment
 - **Learning**: Passive (data collected but not yet used for decisions)
 - **Database**: `subjective_evaluations` table

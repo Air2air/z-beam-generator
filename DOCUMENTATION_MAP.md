@@ -146,7 +146,7 @@ processing/
 z-beam-generator/
 ├── domains/                # Domain-specific code & prompts
 │   ├── materials/          # Materials domain (text + image prompts)
-│   │   ├── prompts/        # Component prompts: caption.txt, faq.txt, material_description.txt
+│   │   ├── prompts/        # Component prompts: micro.txt, faq.txt, material_description.txt
 │   │   └── image/          # Image generation for materials
 │   ├── settings/           # Settings domain
 │   │   └── prompts/        # settings_description.txt, component_summaries.txt

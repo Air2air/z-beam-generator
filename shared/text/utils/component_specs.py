@@ -28,7 +28,7 @@ class ComponentSpec:
         prompt_template_file: Path to prompt template file
         extraction_strategy: How to extract content from generated text
             - 'raw': Return text as-is (description)
-            - 'before_after': Parse before/after sections (caption)
+            - 'before_after': Parse before/after sections (micro)
             - 'json_list': Parse JSON array (faq)
     """
     name: str
@@ -63,7 +63,7 @@ class ComponentRegistry:
     # Used to load domain-specific configs from domains/{domain}/config.yaml
     _component_domain_map = {
         'material_description': 'materials',
-        'caption': 'materials',
+        'micro': 'materials',
         'faq': 'materials',
         'settings_description': 'settings',
         'component_summaries': 'settings',
@@ -248,9 +248,9 @@ class ComponentRegistry:
         
         Directory structure:
         domains/
-        ├── materials/prompts/caption.txt, faq.txt, material_description.txt
+        ├── materials/prompts/micro.txt, faq.txt, material_description.txt
         ├── settings/prompts/settings_description.txt, component_summaries.txt
-        ├── contaminants/prompts/caption.txt
+        ├── contaminants/prompts/micro.txt
         └── etc.
         """
         specs = {}

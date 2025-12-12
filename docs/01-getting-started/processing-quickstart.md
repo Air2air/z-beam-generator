@@ -83,7 +83,7 @@ else:
 ## 🎯 Key Features
 
 ### 1. Flexible Component Types
-**Supported**: subtitle, caption, description, faq, troubleshooter
+**Supported**: subtitle, micro, description, faq, troubleshooter
 
 Each type has its own specification (length, format rules, style notes) but uses the same generation pipeline. Add new types easily via `ComponentRegistry`.
 

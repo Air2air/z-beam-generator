@@ -350,9 +350,9 @@ class ComponentGeneratorFactory:
                     f"Author component type is deprecated. "
                     f"Authors are loaded from data/authors/AuthorRegistry.yaml"
                 )
-            elif component_type == "caption":
-                # Use refactored caption generator (68% code reduction: 928 → 315 lines)
-                from materials.caption.core.generator import RefactoredCaptionGenerator
+            elif component_type == "micro":
+                # Use refactored micro generator (68% code reduction: 928 → 315 lines)
+                from materials.micro.core.generator import RefactoredMicroGenerator
 
                 return RefactoredCaptionGenerator()
             elif component_type == "subtitle":

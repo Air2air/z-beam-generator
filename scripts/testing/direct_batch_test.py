@@ -33,9 +33,9 @@ def run_caption_generation_direct(material_name):
     
     try:
         # Import and call directly (no subprocess)
-        from shared.commands.generation import handle_caption_generation
+        from shared.commands.generation import handle_micro_generation
         
-        success = handle_caption_generation(material_name)
+        success = handle_micro_generation(material_name)
         elapsed = time.time() - start_time
         
         return {

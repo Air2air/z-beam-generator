@@ -48,7 +48,7 @@ class FrontmatterDependencyValidator:
         return {
             "text": ["name", "category", "properties", "applications", "author"],
             "bullets": ["name", "category", "properties", "applications"],
-            "caption": ["name", "category", "properties"],
+            "micro": ["name", "category", "properties"],
             "table": ["name", "properties", "technicalSpecifications"],
             "frontmatter": ["name", "category", "formula", "properties"],
         }

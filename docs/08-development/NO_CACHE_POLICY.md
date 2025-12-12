@@ -88,7 +88,7 @@ Generation 3: Fresh API call → Evaluation: "could tip into AI-like" (new criti
 
 Watch for these indicators that caching should be re-enabled:
 - 🟡 API costs exceeding budget
-- 🟡 Generation times too slow (>2 minutes per caption)
+- 🟡 Generation times too slow (>2 minutes per micro)
 - 🟡 Rate limiting issues from providers
 - 🟢 All fixes validated and stable
 

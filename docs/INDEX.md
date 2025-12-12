@@ -109,14 +109,15 @@
 **Purpose**: Individual component documentation  
 **For**: Component developers, maintainers
 
-- **NEW**: Merged from `docs/components/` (7 additional files):
+- **Active Files**:
   - `AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md`
-  - `OPTIMIZER_CONSOLIDATED_GUIDE.md`
   - `README.md` - Component overview
-  - `SMART_OPTIMIZER_ARCHITECTURE.md`
-  - `SMART_OPTIMIZER_COMPREHENSIVE_GUIDE.md`
   - `generator_base.md`
-  - `text/README.md` - Text component documentation
+  - `text/README.md` - Text component documentation (deprecated, see TEXT_GENERATION_GUIDE.md)
+
+- **Archived** (2025-12-11): Optimizer documentation moved to `archive/2025-12-pre-consolidation/optimizer/`
+  - See `archive/README.md` for archived optimizer guides
+  - See `02-architecture/TEXT_GENERATION_GUIDE.md` for current unified quality system
 
 **Note**: Component-specific docs also remain in `/components/` directory for proximity to code.
 

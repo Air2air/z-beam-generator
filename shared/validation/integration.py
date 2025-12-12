@@ -32,7 +32,7 @@ def validate_generated_content(
             Validates:
             - Caption: dict with 'before' and 'after'
             - Subtitle: str or dict with 'subtitle'
-        component_type: 'faq', 'caption', or 'subtitle'
+        component_type: 'faq', 'micro', or 'subtitle'
         material_name: Material name
         author_info: Dict with 'name' and 'country' keys
         voice_profile: Optional voice profile from VoiceOrchestrator

@@ -29,7 +29,7 @@ from processing.reports import GenerationReport, GenerationStatus, WinstonMetric
 
 report = GenerationReport(
     material="Steel",
-    component_type="caption",
+    component_type="micro",
     status=GenerationStatus.SUCCESS,
     timestamp=datetime.now(),
     winston_metrics=WinstonMetrics(
@@ -107,7 +107,7 @@ from processing.reports import QualityReport
 
 quality = QualityReport(
     material="Steel",
-    component_type="caption",
+    component_type="micro",
     timestamp=datetime.now(),
     winston_score=45.2,
     subjective_score=7.5,
@@ -239,7 +239,7 @@ def generate_post_report(material: str, result: dict):
     
     report = GenerationReport(
         material=material,
-        component_type="caption",
+        component_type="micro",
         status=GenerationStatus.SUCCESS if result['success'] else GenerationStatus.FAILED,
         timestamp=datetime.now(),
         winston_metrics=WinstonMetrics(
@@ -273,7 +273,7 @@ def run_batch_test(materials: List[str]) -> str:
     )
     
     for material in materials:
-        result = generate_caption(material)  # Your generation function
+        result = generate_micro(material)  # Your generation function
         report = create_generation_report(material, result)
         batch.reports.append(report)
     
@@ -301,7 +301,7 @@ def analyze_quality(material: str, metrics: dict):
     
     report = QualityReport(
         material=material,
-        component_type="caption",
+        component_type="micro",
         timestamp=datetime.now(),
         winston_score=metrics['winston_score'],
         subjective_score=metrics['subjective_score'],
@@ -363,7 +363,7 @@ def analyze_parameters(db_results: List[dict]):
 
 ### 1. Generate Single Material Report
 ```bash
-python3 run.py --caption "Steel" --generate-report
+python3 run.py --micro "Steel" --generate-report
 ```
 
 ### 2. Run Batch Test with Report
@@ -378,7 +378,7 @@ from processing.reports import QualityReport
 # After generation
 quality_report = QualityReport(
     material=material,
-    component_type="caption",
+    component_type="micro",
     timestamp=datetime.now(),
     winston_score=winston_result['human_score'],
     subjective_score=subjective_result['score'],

@@ -80,7 +80,7 @@
 │                     REUSABLE SERVICES                                        │
 │               (Shared Across Components - Not Duplicated)                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  • VoiceOrchestrator     - Country-specific author voice (caption/subtitle)  │
+│  • VoiceOrchestrator     - Country-specific author voice (micro/subtitle)  │
 │  • PropertyManager       - Property extraction and management                │
 │  • ValidationOrchestrator - Confidence normalization and validation          │
 │  • TemplateService       - Reusable content templates                        │
@@ -134,7 +134,7 @@ BEFORE: 11 components (overcomplicated)
 AFTER:  6 components (streamlined)
 
 Orchestrator:     1 (frontmatter)
-Discrete:         2 (caption, subtitle)
+Discrete:         2 (micro, subtitle)
 Static:           5 (author, badgesymbol, metatags, jsonld, propertiestable)
 ────────────────────
 TOTAL:            6 active components

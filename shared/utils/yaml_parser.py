@@ -18,7 +18,7 @@ class YAMLParser:
     
     def __init__(self):
         self.component_dirs = {
-            "caption": Path("content/components/caption"),
+            "micro": Path("content/components/caption"),
             "jsonld": Path("content/components/jsonld"),
             "metatags": Path("content/components/metatags"),
             "table": Path("content/components/table"),
@@ -200,7 +200,7 @@ class YAMLParser:
         
         # Basic validation rules for each component type
         validation_rules = {
-            'caption': lambda d: 'before' in d or 'after' in d,
+            'micro': lambda d: 'before' in d or 'after' in d,
             'jsonld': lambda d: '@context' in d or 'structuredData' in d or 'content' in d,
             'metatags': lambda d: 'title' in d or 'meta' in d or 'htmlMeta' in d,
             'tags': lambda d: isinstance(d, list) or 'tags' in d or 'contentTags' in d,

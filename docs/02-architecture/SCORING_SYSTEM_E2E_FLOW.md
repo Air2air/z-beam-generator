@@ -533,14 +533,14 @@ Apply recommendations in next generation cycle
 ### 1. UnifiedOrchestrator.generate()
 **Inputs**:
 - `identifier`: Material name (e.g., "Aluminum")
-- `component_type`: Component type (e.g., "caption")
+- `component_type`: Component type (e.g., "micro")
 - `api_client`: Grok API client
 
 **Outputs**:
 ```python
 {
     'success': True,
-    'content': "Generated caption text",
+    'content': "Generated micro text",
     'text': "Full generated text",
     'attempts': 1,
     'ai_score': 0.15,        # 0-1 scale
@@ -827,7 +827,7 @@ def analyze_and_optimize_parameters(self):
     )
     
     # Get current parameters
-    current_params = self.dynamic_config.get_all_generation_params('caption')
+    current_params = self.dynamic_config.get_all_generation_params('micro')
     
     # Generate recommendations
     recommendations = correlator.generate_adjustment_recommendations(

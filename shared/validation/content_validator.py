@@ -6,7 +6,7 @@ import warnings
 from shared.validation.core.content import (
     ContentValidator,
     ContentQualityScore,
-    CaptionIntegrationValidator
+    MicroIntegrationValidator
 )
 from shared.validation.errors import ValidationResult
 

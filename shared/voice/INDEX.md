@@ -52,7 +52,7 @@
 - Integration architecture plan
 - Implementation steps (completed)
 
-**Read this for** understanding how voice profiles connect to caption generation.
+**Read this for** understanding how voice profiles connect to micro generation.
 
 ---
 
@@ -101,7 +101,7 @@
 **Contents:**
 - Code changes made to `generator.py`
 - Test results for all 4 authors (Bamboo, Bronze, Alumina, Aluminum)
-- Structural patterns observed in generated captions
+- Structural patterns observed in generated micros
 - Emotive/signature/cultural reference checks
 - Comparative analysis table
 
@@ -124,9 +124,9 @@
 ---
 
 ### 9. TEST_RESULTS_4_AUTHORS.md
-**Purpose:** Production caption generation validation  
+**Purpose:** Production micro generation validation  
 **Contents:**
-- Generated captions for all 4 authors
+- Generated micros for all 4 authors
 - Voice marker analysis per author
 - VOICE_RULES.md compliance check
 - Performance metrics (API response times)
@@ -256,16 +256,16 @@
 - `get_quality_thresholds()` - Get scoring criteria
 - Loads `ai_evasion_parameters` from profiles (sentence targets, markers, author-specific rules)
 
-**Integration Point:** Used by `components/caption/generators/generator.py`
+**Integration Point:** Used by `components/micro/generators/generator.py`
 
 ---
 
 ### 20. scripts/test_ai_evasion.py ⭐ NEW
-**Purpose:** Test AI-evasion rules in generated captions  
+**Purpose:** Test AI-evasion rules in generated micros  
 **Key Functions:**
-- `analyze_caption()` - Analyze sentence length, markers, lexical variety
+- `analyze_micro()` - Analyze sentence length, markers, lexical variety
 - `evaluate_targets()` - Compare against enhancement rule targets
-- `test_material()` - Test specific material caption
+- `test_material()` - Test specific material micro
 - Author-specific pattern detection (topic-comment, demonstratives, passive voice, phrasal verbs)
 
 **Usage:** `python3 scripts/test_ai_evasion.py --all`
@@ -274,7 +274,7 @@
 
 ## Integration Code
 
-### 21. components/caption/generators/generator.py
+### 21. components/micro/generators/generator.py
 **Modified Lines:**
 - Line 11: Added `from voice.orchestrator import VoiceOrchestrator`
 - Lines 63-83: Voice profile loading logic in `_build_prompt()`
@@ -283,9 +283,9 @@
 **How it works:**
 1. Extract author country from frontmatter
 2. Initialize VoiceOrchestrator with country
-3. Get voice instructions for caption generation (includes ai_evasion_parameters)
+3. Get voice instructions for micro generation (includes ai_evasion_parameters)
 4. Inject instructions into AI prompt
-5. AI generates caption with grammatical patterns
+5. AI generates micro with grammatical patterns
 
 **Next Step:** Add AI-evasion instructions to prompt (see IMPLEMENTATION_GUIDE.md)
 
@@ -295,16 +295,16 @@
 
 ### For Content Generators
 
-**Generating captions with voice profiles:**
+**Generating micros with voice profiles:**
 ```bash
-python3 scripts/generate_caption_to_frontmatter.py --material "MaterialName"
+python3 scripts/generate_micro_to_frontmatter.py --material "MaterialName"
 ```
 
 The system automatically:
 1. Loads frontmatter for material
 2. Extracts author country
 3. Loads appropriate voice profile
-4. Generates caption with structural patterns
+4. Generates micro with structural patterns
 5. Saves to frontmatter file
 
 **No manual intervention required** - voice profiles are applied automatically.
@@ -322,7 +322,7 @@ voice = VoiceOrchestrator(country="Taiwan")
 
 # Get voice instructions
 instructions = voice.get_voice_for_component(
-    'caption_generation',
+    'micro_generation',
     context={'material': 'Aluminum'}
 )
 
@@ -335,7 +335,7 @@ thresholds = voice.get_quality_thresholds()
 
 ### For Quality Reviewers
 
-**Checking voice compliance in generated captions:**
+**Checking voice compliance in generated micros:**
 
 1. **Check for structural patterns:**
    - Taiwan: Look for topic-comment, article omission, "very" overuse
@@ -456,7 +456,7 @@ tests/
 - Verify YAML syntax with `python3 -c "import yaml; yaml.safe_load(open('voice/profiles/COUNTRY.yaml'))"`
 - Ensure `signature_phrases: []` exists (required by orchestrator)
 
-### Generated caption doesn't show patterns
+### Generated micro doesn't show patterns
 - Verify frontmatter has `author.country` field
 - Check logs for "Loaded voice profile" message
 - Ensure voice instructions are non-empty (1000+ chars)
@@ -466,7 +466,7 @@ tests/
 2. Follow VOICE_RULES.md constraints strictly
 3. Add `signature_phrases: []` (empty list required)
 4. Validate with VoiceOrchestrator
-5. Test with caption generation
+5. Test with micro generation
 
 ---
 

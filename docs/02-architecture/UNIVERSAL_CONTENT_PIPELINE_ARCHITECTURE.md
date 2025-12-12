@@ -139,7 +139,7 @@ class ContentSchema(ABC):
     
     @abstractmethod
     def get_component_requirements(self) -> List[str]:
-        """Return required component types (faq, caption, etc.)"""
+        """Return required component types (faq, micro, etc.)"""
         pass
     
     @abstractmethod
@@ -207,7 +207,7 @@ class MaterialContent(ContentSchema):
         }
     
     def get_component_requirements(self) -> List[str]:
-        return ['text', 'faq', 'caption', 'subtitle']
+        return ['text', 'faq', 'micro', 'subtitle']
 ```
 
 **ProductContent** (extends ContentSchema):
@@ -572,7 +572,7 @@ z-beam-generator/
 │   ├── universal/                  # Universal generators
 │   │   ├── text_generator.py      # Works with any ContentSchema
 │   │   ├── faq_generator.py
-│   │   ├── caption_generator.py
+│   │   ├── micro_generator.py
 │   │   └── subtitle_generator.py
 │   │
 │   └── specialized/                # Content-type specific (if needed)

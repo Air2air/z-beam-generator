@@ -66,7 +66,7 @@ COMPONENT_CONFIG = {
   - No AI API calls
   - Faster generation
   - Lower operational costs
-- **API-driven components**: `frontmatter`, `bullets`, `caption`, `text`, `tags`
+- **API-driven components**: `frontmatter`, `bullets`, `micro`, `text`, `tags`
   - AI detection enabled where needed
   - Iterative improvement for quality
 
@@ -86,7 +86,7 @@ COMPONENT_CONFIG = {
 |-----------|---------|--------------|--------------|-------|
 | `frontmatter` | YAML metadata | ❌ Disabled | deepseek | Data generation only |
 | `bullets` | Key characteristics | ✅ Enabled | deepseek | Content with AI detection |
-| `caption` | Brief description | ✅ Enabled | gemini | Content with AI detection |
+| `micro` | Brief description | ✅ Enabled | gemini | Content with AI detection |
 | `text` | Full article | ✅ Enabled | deepseek | Content with AI detection |
 | `tags` | SEO tags | ❌ Disabled | deepseek | Metadata generation only |
 

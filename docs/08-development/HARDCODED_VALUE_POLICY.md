@@ -209,7 +209,7 @@ results = checker.run_quick_checks()
 
 The integrity check runs automatically before every generation:
 ```bash
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 # 🔍 Running pre-generation integrity check...
 # ❌ Integrity check FAILED - Found 36 hardcoded values
 ```

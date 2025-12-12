@@ -4,8 +4,8 @@ Documentation for individual system components.
 
 ## Available Components
 
-### Caption Component
-- Generates before/after captions for laser cleaning materials
+### Micro Component
+- Generates before/after micros for laser cleaning materials
 - Multi-author voice system (Taiwan, Italy, Indonesia, USA)
 - Quality scoring and AI detection evasion
 
@@ -21,11 +21,12 @@ Documentation for individual system components.
 ### Voice System
 See [voice/README.md](../../voice/README.md) for complete voice system documentation
 
+### Quality Analysis System
+- **[../02-architecture/TEXT_GENERATION_GUIDE.md](../02-architecture/TEXT_GENERATION_GUIDE.md)** - Unified quality analysis with QualityAnalyzer
+- **[../archive/README.md](../archive/README.md)** - Archived optimizer documentation (pre-consolidation)
+
 ## Component Guides
 
-- **[OPTIMIZER_CONSOLIDATED_GUIDE.md](OPTIMIZER_CONSOLIDATED_GUIDE.md)** - Optimizer component guide
-- **[SMART_OPTIMIZER_COMPREHENSIVE_GUIDE.md](SMART_OPTIMIZER_COMPREHENSIVE_GUIDE.md)** - Smart optimizer details
-- **[SMART_OPTIMIZER_ARCHITECTURE.md](SMART_OPTIMIZER_ARCHITECTURE.md)** - Optimizer architecture
 - **[AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)** - AI detection chain
 
 ## Creating New Components
@@ -36,7 +37,7 @@ See: [development/new_component_guide.md](../development/new_component_guide.md)
 
 ```
 components/
-├── caption/          # Before/after captions
+├── micro/          # Before/after micros
 ├── frontmatter/      # YAML frontmatter
 ├── text/             # Text content generation
 └── [future]/         # FAQ, tags, etc.
@@ -46,7 +47,7 @@ components/
 
 ```bash
 # Generate with specific component
-python3 run.py --material "Steel" --component caption
+python3 run.py --material "Steel" --component micro
 
 # List available components
 python3 run.py --list-components

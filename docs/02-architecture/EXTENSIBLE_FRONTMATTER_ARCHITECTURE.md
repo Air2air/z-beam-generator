@@ -387,7 +387,7 @@ class AuthorVoiceProcessor:
             result = {}
             for key, value in content.items():
                 # Apply voice to text fields
-                if key in ['description', 'caption', 'explanation', 'notes', 'summary']:
+                if key in ['description', 'micro', 'explanation', 'notes', 'summary']:
                     if isinstance(value, str):
                         result[key] = self.voice_engine.transform_text(
                             text=value,

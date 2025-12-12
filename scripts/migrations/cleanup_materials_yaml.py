@@ -37,16 +37,16 @@ def remove_extracted_fields(materials_data: Dict[str, Any]) -> Dict[str, Any]:
     materials_section = materials_data.get('materials', {})
     
     removed_stats = {
-        'caption': 0,
+        'micro': 0,
         'faq': 0,
         'regulatoryStandards': 0
     }
     
     for material_name, material_data in materials_section.items():
         # Remove extracted fields
-        if 'caption' in material_data:
-            del material_data['caption']
-            removed_stats['caption'] += 1
+        if 'micro' in material_data:
+            del material_data['micro']
+            removed_stats['micro'] += 1
         
         if 'faq' in material_data:
             del material_data['faq']
@@ -92,7 +92,7 @@ def main():
     print(f"\n🗑️  Removing extracted fields...")
     cleaned_data, removed_stats = remove_extracted_fields(materials_data)
     
-    print(f"   ✅ Removed caption from {removed_stats['caption']} materials")
+    print(f"   ✅ Removed caption from {removed_stats['micro']} materials")
     print(f"   ✅ Removed faq from {removed_stats['faq']} materials")
     print(f"   ✅ Removed regulatoryStandards from {removed_stats['regulatoryStandards']} materials")
     

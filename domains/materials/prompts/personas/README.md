@@ -380,10 +380,10 @@ python3 run.py --material "Aluminum" --component subtitle
 **Compare all 4 authors**:
 ```bash
 # Generate same component for materials with different authors
-python3 run.py --material "Steel" --component caption      # USA
-python3 run.py --material "Aluminum" --component caption   # Italy
-python3 run.py --material "Copper" --component caption     # Indonesia
-python3 run.py --material "Titanium" --component caption   # Taiwan
+python3 run.py --material "Steel" --component micro      # USA
+python3 run.py --material "Aluminum" --component micro   # Italy
+python3 run.py --material "Copper" --component micro     # Indonesia
+python3 run.py --material "Titanium" --component micro   # Taiwan
 ```
 
 **Validate voice consistency**:

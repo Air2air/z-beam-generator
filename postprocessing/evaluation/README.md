@@ -60,7 +60,7 @@ from processing.evaluation.claude_evaluator import evaluate_content
 result = evaluate_content(
     content=generated_text,
     material_name="Aluminum",
-    component_type="caption",
+    component_type="micro",
     verbose=True
 )
 
@@ -77,7 +77,7 @@ from shared.commands.claude_evaluation_helper import evaluate_after_generation
 result = evaluate_after_generation(
     content=generated_text,
     material_name="Steel",
-    component_type="caption",
+    component_type="micro",
     api_client=claude_client,  # Optional
     verbose=True,
     skip_evaluation=False
@@ -103,7 +103,7 @@ evaluator = ClaudeEvaluationHelper(
 evaluation = evaluator.evaluate_generation(
     content=final_output,
     material_name=material_name,
-    component_type="caption",
+    component_type="micro",
     context={'author': author_name, 'properties': properties}
 )
 

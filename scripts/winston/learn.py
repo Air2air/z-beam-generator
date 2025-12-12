@@ -20,7 +20,7 @@ Usage:
     python3 scripts/winston/learn.py --temperature --material "Aluminum" --component caption
     
     # Optimize prompt with learned patterns
-    python3 scripts/winston/learn.py --optimize-prompt prompts/caption.txt --material "Aluminum"
+    python3 scripts/winston/learn.py --optimize-prompt prompts/micro.txt --material "Aluminum"
     
     # Predict success before generating
     python3 scripts/winston/learn.py --predict --material "Steel" --component caption --temp 0.7
@@ -302,7 +302,7 @@ def main():
     parser.add_argument(
         '--component',
         type=str,
-        choices=['caption', 'subtitle', 'faq'],
+        choices=['micro', 'subtitle', 'faq'],
         help="Filter by component type"
     )
     

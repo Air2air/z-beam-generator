@@ -154,7 +154,7 @@ Generated Content → Validation → Quality Scoring → Improvement → Final C
 
 **Validation Rules**:
 - **Applications**: Minimum 2, simple strings "Industry: Description"
-- **Caption**: CamelCase keys (beforeText, afterText), full structure
+- **Micro**: CamelCase keys (beforeText, afterText), full structure
 - **Tags**: 4-10 items, includes category + industries + processes
 - **Properties**: Required fields present, valid values
 
@@ -168,7 +168,7 @@ Generated Content → Validation → Quality Scoring → Improvement → Final C
 1. **frontmatter**: YAML metadata (applications, properties, machine settings)
 2. **text**: Long-form blog content with author personas
 3. **author**: Author profiles and biographies
-4. **caption**: Before/after image captions
+4. **micro**: Before/after image micros
 5. **tags**: SEO and categorization tags
 6. **categories**: Industry and application categories
 7. **jsonld**: Structured data (JSON-LD)
@@ -371,7 +371,7 @@ class TextComponentGenerator(ComponentGenerator):
 6. Validation
    └─> validate_and_improve_frontmatter('Aluminum', result.content)
    └─> Check: applications (simple strings, min 2)
-   └─> Check: caption (camelCase, full structure)
+   └─> Check: micro (camelCase, full structure)
    └─> Check: tags (4-10 items)
 
 7. Quality Scoring
@@ -396,7 +396,7 @@ class TextComponentGenerator(ComponentGenerator):
 3. Status Assessment
    └─> For each material:
        ├─> Check if frontmatter file exists
-       ├─> Validate format (applications, caption, tags)
+       ├─> Validate format (applications, micro, tags)
        └─> Mark: ✅ up-to-date or ⚠️ needs regen
 
 4. Batch Processing
@@ -521,7 +521,7 @@ Input: Material Name
 3. Generate Caption (CamelCase)
    - API Call: DeepSeek
    - Keys: beforeText, afterText, description, alt, etc.
-   - Structure: Full caption object
+   - Structure: Full micro object
    - Format: CamelCase (NOT snake_case)
   ↓
 4. Generate Tags (10 items)
@@ -646,10 +646,10 @@ def validate_frontmatter(data):
         for app in data['applications']
     ), "Applications must be simple strings 'Industry: Description'"
     
-    # Caption: CamelCase
-    caption = data['images']['caption']
-    assert 'beforeText' in caption, "Caption must use camelCase"
-    assert 'afterText' in caption, "Caption must use camelCase"
+    # Micro: CamelCase
+    caption = data['images']['micro']
+    assert 'beforeText' in micro, "Caption must use camelCase"
+    assert 'afterText' in micro, "Caption must use camelCase"
     
     # Tags: 4-10 items
     assert 4 <= len(data['tags']) <= 10, "Tags must be 4-10 items"
@@ -811,7 +811,7 @@ Performance considerations:
 | Flattened data structure | Simpler AI navigation, O(1) lookups |
 | Component factory pattern | Extensible, discoverable generators |
 | Simple string applications | Easier to generate, validate, read |
-| CamelCase captions | Consistent with JSON conventions |
+| CamelCase micros | Consistent with JSON conventions |
 | 10-tag generation | Optimal for SEO and categorization |
 
 ---

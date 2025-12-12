@@ -9,7 +9,7 @@
 
 profiles:
   # CAPTION: Two-paragraph visual comparison
-  caption:
+  micro:
     name: "Two-Paragraph Narrative"
     structure: "Two distinct paragraphs with natural sentence rhythm"
     
@@ -140,7 +140,7 @@ profiles:
 #     Use "consistent" rhythm pattern
 #
 # Example injection into template:
-#   {sentence_guidance} → profiles.caption.rhythm_patterns.varied
+#   {sentence_guidance} → profiles.micro.rhythm_patterns.varied
 
 # INTEGRATION WITH VOICE PERSONAS:
 # Voice personas (author_profiles.yaml) define WHO is writing

@@ -347,23 +347,23 @@ class ValidationOrchestrator:
                         result.medium_issues += 1
             
             # Validate Caption
-            caption_data = material_info.get('caption', {})
-            if isinstance(caption_data, dict) and ('before' in caption_data or 'after' in caption_data):
+            micro_data = material_info.get('micro', {})
+            if isinstance(micro_data, dict) and ('before' in micro_data or 'after' in micro_data):
                 from shared.validation.integration import validate_generated_content
-                caption_result = validate_generated_content(
+                micro_result = validate_generated_content(
                     content={
-                        'before': caption_data.get('before', ''),
-                        'after': caption_data.get('after', '')
+                        'before': micro_data.get('before', ''),
+                        'after': micro_data.get('after', '')
                     },
-                    component_type='caption',
+                    component_type='micro',
                     material_name=material_name,
                     author_info=author_info,
                     log_report=False
                 )
-                validation_results.append(('Caption', caption_result))
+                validation_results.append(('Caption', micro_result))
                 
-                if not caption_result.success:
-                    for issue in caption_result.critical_issues:
+                if not micro_result.success:
+                    for issue in micro_result.critical_issues:
                         result.post_generation_issues.append(f"Caption: {issue}")
                         result.medium_issues += 1
             

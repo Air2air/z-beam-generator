@@ -2,13 +2,13 @@
 """
 Consolidated Content Validation
 
-Combines content quality, author voice, caption integration, and text analysis
+Combines content quality, author voice, micro integration, and text analysis
 into a unified content validation service.
 
 Merges functionality from:
 - validation/content_validator.py
 - validation/quality_validator.py  
-- validation/caption_integration_validator.py
+- validation/micro_integration_validator.py
 """
 
 from typing import Dict, Any, Optional, List
@@ -48,7 +48,7 @@ class ContentValidator(BaseValidator):
     Validates:
     - Author voice consistency
     - Content quality and readability
-    - Caption integration
+    - Micro integration
     - Human believability
     - AI detection avoidance
     """
@@ -227,23 +227,23 @@ class ContentValidator(BaseValidator):
         return max(0.0, 1.0 - (repetition_ratio * 5))
 
 
-class CaptionIntegrationValidator(BaseValidator):
+class MicroIntegrationValidator(BaseValidator):
     """
-    Validates caption integration into frontmatter.
+    Validates micro integration into frontmatter.
     
-    Checks that captions are:
+    Checks that micros are:
     - Present and non-empty
     - Properly formatted
     - Contextually appropriate
     """
     
     def __init__(self, strict_mode: bool = False):
-        """Initialize caption validator"""
+        """Initialize micro validator"""
         super().__init__(strict_mode=strict_mode)
     
     def get_validator_name(self) -> str:
         """Return validator name"""
-        return "CaptionIntegrationValidator"
+        return "MicroIntegrationValidator"
     
     def validate(
         self,
@@ -251,10 +251,10 @@ class CaptionIntegrationValidator(BaseValidator):
         context: Optional[ValidationContext] = None
     ) -> ValidationResult:
         """
-        Validate caption integration.
+        Validate micro integration.
         
         Args:
-            data: Dict with 'caption' key
+            data: Dict with 'micro' key
             context: Optional validation context
             
         Returns:
@@ -265,36 +265,36 @@ class CaptionIntegrationValidator(BaseValidator):
         if not isinstance(data, dict):
             self.add_error(
                 ErrorType.INVALID_FIELD,
-                "Caption data must be a dictionary",
+                "Micro data must be a dictionary",
                 ErrorSeverity.ERROR
             )
             return self.create_result(success=False)
         
-        caption = data.get('caption', '')
+        caption = data.get('micro', '')
         
-        # Check caption exists
-        if not caption:
+        # Check micro exists
+        if not micro:
             self.add_error(
                 ErrorType.MISSING_FIELD,
-                "Caption is missing",
+                "Micro is missing",
                 ErrorSeverity.WARNING,  # Warning, not error
-                field='caption'
+                field='micro'
             )
         
-        # Check caption length (reasonable bounds)
+        # Check micro length (reasonable bounds)
         elif len(caption) < 10:
             self.add_error(
                 ErrorType.INVALID_VALUE,
-                f"Caption too short ({len(caption)} chars)",
+                f"Micro too short ({len(caption)} chars)",
                 ErrorSeverity.WARNING,
-                field='caption'
+                field='micro'
             )
         elif len(caption) > 500:
             self.add_error(
                 ErrorType.INVALID_VALUE,
-                f"Caption too long ({len(caption)} chars)",
+                f"Micro too long ({len(caption)} chars)",
                 ErrorSeverity.WARNING,
-                field='caption'
+                field='micro'
             )
         
         success = not self.has_errors()

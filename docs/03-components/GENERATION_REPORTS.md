@@ -8,7 +8,7 @@
 
 ## Overview
 
-Every content generation (caption, subtitle, FAQ) automatically saves a comprehensive report to `GENERATION_REPORT.md` in the project root. This file is **overwritten** on each generation, always showing the most recent generation details.
+Every content generation (micro, subtitle, FAQ) automatically saves a comprehensive report to `GENERATION_REPORT.md` in the project root. This file is **overwritten** on each generation, always showing the most recent generation details.
 
 ## Report Location
 
@@ -84,7 +84,7 @@ cat GENERATION_REPORT.md
 ### Generated Content
 - Full text of the generated content
 - Properly formatted with code blocks
-- Shows BEFORE/AFTER for captions
+- Shows BEFORE/AFTER for micros
 - Shows all Q&As for FAQs
 
 ### Statistics
@@ -94,7 +94,7 @@ cat GENERATION_REPORT.md
 
 ### Storage Information
 - Always saved to: `data/materials/Materials.yaml`
-- Component type (caption, subtitle, faq)
+- Component type (micro, subtitle, faq)
 - Material name
 
 ### Quality Metrics (when available)

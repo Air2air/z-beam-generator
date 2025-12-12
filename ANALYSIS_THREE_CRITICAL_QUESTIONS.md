@@ -279,7 +279,7 @@ Total Rows: 959
 By Component:
   - description: 888 rows (avg 13.9% human, latest: Nov 22, 2025)
   - subtitle: 37 rows (avg 5.4% human, latest: Nov 20, 2025)
-  - caption: 22 rows (avg 36.7% human, latest: Nov 19, 2025)
+  - micro: 22 rows (avg 36.7% human, latest: Nov 19, 2025)
   - faq: 12 rows (100% human, latest: Nov 19, 2025)
 
 === SUBJECTIVE EVALUATIONS (Realism) ===

@@ -75,6 +75,14 @@ class Generator:
         from generation.enrichment.data_enricher import DataEnricher
         self.enricher = DataEnricher()
         
+        # Initialize research capabilities (NEW - Dec 11, 2025)
+        from shared.text.research import SystemDataResearcher
+        self.researcher = SystemDataResearcher()
+        
+        # Initialize cross-linking builder (NEW - Dec 11, 2025)
+        from shared.text.cross_linking import CrossLinkBuilder
+        self.link_builder = CrossLinkBuilder()
+        
         # Load config for base parameters
         from generation.config.config_loader import get_config
         config = get_config()
@@ -87,16 +95,16 @@ class Generator:
         # Load personas
         self.personas = self._load_all_personas()
         
-        self.logger.info(f"Generator initialized for '{domain}' domain (single-pass)")
+        self.logger.info(f"Generator initialized for '{domain}' domain (single-pass with research + cross-linking)")
     
     def _load_all_personas(self) -> Dict[int, Dict[str, Any]]:
-        """Load all author personas from shared/prompts/personas/"""
+        """Load all author voice profiles from shared/voice/profiles/"""
         personas = {}
         
-        # Use shared location
-        personas_dir = Path("shared/prompts/personas")
+        # Use shared/voice location (correct path per policy)
+        personas_dir = Path("shared/voice/profiles")
         if not personas_dir.exists():
-            raise FileNotFoundError(f"Personas directory not found: {personas_dir}")
+            raise FileNotFoundError(f"Voice profiles directory not found: {personas_dir}")
         
         for persona_file in personas_dir.glob("*.yaml"):
             with open(persona_file, 'r') as f:
@@ -391,9 +399,23 @@ class Generator:
         except Exception as e:
             raise ValueError(f"Content extraction failed: {e}")
         
+        # Add sparse cross-links (NEW - Dec 11, 2025)
+        # Only for string content (not micro dict or FAQ list)
+        if isinstance(content, str) and len(content) > 100:
+            try:
+                self.logger.info("🔗 Adding cross-links...")
+                content = self.link_builder.add_links(
+                    content=content,
+                    current_item=identifier,
+                    domain=self.domain
+                )
+                self.logger.info("✅ Cross-linking complete")
+            except Exception as e:
+                self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
+        
         # Calculate word count (handle both string and dict content)
         if isinstance(content, dict):
-            # Caption has before/after structure
+            # Micro has before/after structure
             word_count = sum(len(str(v).split()) for v in content.values() if v)
             char_count = sum(len(str(v)) for v in content.values() if v)
         elif isinstance(content, list):
@@ -506,12 +528,12 @@ class Generator:
             raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
         
         # material_description/settings_description/faq go at ROOT level (not in components)
-        # Caption goes in components (before/after structure)
+        # Micro goes in components (before/after structure)
         if component_type in ['material_description', 'settings_description', 'faq']:
             # Save to root level for consistency with existing structure
             data['materials'][material_name][component_type] = content
         else:
-            # Caption and other components go in components section
+            # Micro and other components go in components section
             if 'components' not in data['materials'][material_name]:
                 data['materials'][material_name]['components'] = {}
             data['materials'][material_name]['components'][component_type] = content

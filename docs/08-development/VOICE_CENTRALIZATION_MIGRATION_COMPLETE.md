@@ -32,7 +32,7 @@
    - **Removed**: "VOICE & APPROACH" section with voice guidance
    - **Added**: `{voice_instruction}` placeholder
 
-4. `domains/contaminants/prompts/caption.txt`
+4. `domains/contaminants/prompts/micro.txt`
    - **Removed**: Voice instructions ("Write like you're explaining...")
    - **Added**: `{voice_instruction}` placeholder
 

@@ -181,50 +181,82 @@ class QualityEvaluatedGenerator:
                 error_message=f"Generation error: {e}"
             )
         
-        # VOICE COMPLIANCE VALIDATION (post-generation, pre-save)
-        voice_compliance = None
+        # UNIFIED QUALITY ANALYSIS (post-generation, pre-save) 🔥 CONSOLIDATED
+        quality_analysis = None
+        
         if VOICE_VALIDATION_AVAILABLE:
             try:
-                print(f"\n🎭 Checking voice compliance...")
+                print(f"\n🎭 Analyzing quality (unified system)...")
                 author_data = self._get_author_data(material_name)
-                voice_validator = VoicePostProcessor(self.api_client)
                 
-                # Run comprehensive voice validation
-                language_check = voice_validator.detect_language(content_text)
-                linguistic_patterns = voice_validator.detect_linguistic_patterns(content_text, author_data)
+                # Use unified quality analyzer (consolidates AI + Voice + Structural)
+                from shared.voice.quality_analyzer import QualityAnalyzer
+                analyzer = QualityAnalyzer(self.api_client, strict_mode=False)
                 
-                voice_compliance = {
-                    'language': language_check,
-                    'linguistic_patterns': linguistic_patterns
+                # Single comprehensive analysis
+                quality_analysis = analyzer.analyze(
+                    text=content_text,
+                    author=author_data,
+                    include_recommendations=True
+                )
+                
+                print(f"   ✅ Quality Analysis Complete:")
+                print(f"      • Overall Score: {quality_analysis['overall_score']}/100")
+                print(f"      • AI Patterns: {quality_analysis['ai_patterns']['score']}/100")
+                print(f"      • Voice Authenticity: {quality_analysis['voice_authenticity']['score']}/100")
+                print(f"      • Structural Quality: {quality_analysis['structural_quality']['sentence_variation']:.1f}/100")
+                
+                # Legacy compatibility: extract voice_compliance and ai_pattern_detection
+                voice_compliance = quality_analysis['voice_authenticity']
+                ai_pattern_detection = {
+                    'ai_score': quality_analysis['ai_patterns']['score'],
+                    'is_ai_like': quality_analysis['ai_patterns']['is_ai_like'],
+                    'issues': quality_analysis['ai_patterns']['issues'],
+                    'details': quality_analysis['ai_patterns']['details']
                 }
                 
-                # Log results
-                print(f"   • Language: {language_check['language']} (confidence: {language_check['confidence']:.2f})")
-                print(f"   • Linguistic Pattern Score: {linguistic_patterns['pattern_score']:.1f}/100")
-                print(f"   • Pattern Quality: {linguistic_patterns['pattern_quality']}")
+                # Show recommendations if any
+                if quality_analysis.get('recommendations'):
+                    print(f"\n   📋 Quality Recommendations:")
+                    for rec in quality_analysis['recommendations'][:3]:  # Show top 3
+                        print(f"      • {rec}")
                 
-                if linguistic_patterns['patterns_found']:
-                    print(f"   • Patterns Found: {', '.join(linguistic_patterns['patterns_found'][:3])}")
+                # Check for critical issues
+                if quality_analysis['voice_authenticity']['language'] != 'english':
+                    logger.error(f"❌ Content not in English: {quality_analysis['voice_authenticity']['language']}")
+                    print(f"\n❌ VOICE COMPLIANCE FAILED: Non-English content detected")
                 
-                if linguistic_patterns['linguistic_issues']:
-                    print(f"   ⚠️  Issues: {', '.join(linguistic_patterns['linguistic_issues'][:3])}")
-                
-                # Check for wrong language (critical error)
-                if language_check['language'] != 'english':
-                    logger.error(f"❌ Content not in English: {language_check['language']}")
-                    print(f"\n❌ VOICE COMPLIANCE FAILED: Content in {language_check['language']}, not English")
-                    print(f"   Indicators: {', '.join(language_check['indicators'][:5])}")
-                
-                # Warn on weak linguistic patterns
-                if linguistic_patterns['pattern_score'] < 30:
-                    logger.warning(f"⚠️  Weak nationality-specific patterns for {author_data.get('country')}")
-                    print(f"   ⚠️  Warning: Weak {author_data.get('country')} linguistic markers")
+                if quality_analysis['ai_patterns']['is_ai_like']:
+                    logger.warning(f"⚠️  High AI pattern score detected")
+                    print(f"   ⚠️  Warning: High AI likelihood")
                 
             except Exception as e:
-                logger.warning(f"   ⚠️  Voice compliance check failed: {e}")
+                logger.warning(f"   ⚠️  Quality analysis failed: {e}")
                 voice_compliance = {'error': str(e)}
+                ai_pattern_detection = None
+                
+                # Fallback to legacy AI detection only
+                try:
+                    from shared.voice.ai_detection import AIDetector
+                    print(f"\n🤖 Checking AI patterns (fallback)...")
+                    
+                    detector = AIDetector(strict_mode=False)
+                    ai_check = detector.detect_ai_patterns(content_text)
+                    
+                    ai_pattern_detection = {
+                        'ai_score': 100 - ai_check['ai_score'],  # Invert for consistency
+                        'is_ai_like': ai_check['is_ai_like'],
+                        'issues': ai_check['issues'][:5] if 'issues' in ai_check else []
+                    }
+                    
+                    print(f"   • AI Pattern Score: {ai_pattern_detection['ai_score']:.1f}/100")
+                    print(f"   • AI-like: {'Yes' if ai_check['is_ai_like'] else 'No'}")
+                    
+                except Exception as e2:
+                    logger.warning(f"   ⚠️  Fallback AI detection also failed: {e2}")
+                    ai_pattern_detection = {'error': str(e2)}
         else:
-            logger.debug("Voice validation skipped - VoicePostProcessor not available")
+            logger.debug("Quality analysis skipped - VoicePostProcessor not available")
         
         # SAVE IMMEDIATELY (no gating - voice validation for logging only)
         print(f"\n💾 Saving to Materials.yaml...")
@@ -240,7 +272,8 @@ class QualityEvaluatedGenerator:
             'winston_human_score': None,
             'winston_ai_score': None,
             'diversity_score': None,
-            'voice_compliance': voice_compliance  # Add voice compliance data
+            'voice_compliance': voice_compliance,  # Voice compliance data
+            'ai_pattern_detection': ai_pattern_detection  # Legacy AI detection with pattern variation
         }
         evaluation_logged = False
         
@@ -407,7 +440,7 @@ class QualityEvaluatedGenerator:
     def _content_to_text(self, content: Any, component_type: str) -> str:
         """Convert content to text string for evaluation"""
         if isinstance(content, dict):
-            # Caption: before/after structure
+            # Micro: before/after structure
             before = content.get('before', '')
             after = content.get('after', '')
             return f"BEFORE:\n{before}\n\nAFTER:\n{after}"

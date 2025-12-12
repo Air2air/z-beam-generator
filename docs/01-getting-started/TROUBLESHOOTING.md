@@ -412,7 +412,7 @@ chmod -R 755 content/
 sudo chown -R $USER:$USER content/
 
 # Create directories if missing
-mkdir -p content/components/{frontmatter,text,table,author,bullets,metatags,jsonld,tags,caption}
+mkdir -p content/components/{frontmatter,text,table,author,bullets,metatags,jsonld,tags,micro}
 ```
 
 #### Symptom: Cannot write to logs
@@ -512,7 +512,7 @@ python3 run.py --list-components
 ls -la components/
 
 # Expected components:
-# frontmatter, text, table, author, bullets, metatags, jsonld, tags, caption
+# frontmatter, text, table, author, bullets, metatags, jsonld, tags, micro
 
 # Use correct component names
 python3 run.py --material "Steel" --components "frontmatter,text"

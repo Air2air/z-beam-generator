@@ -57,9 +57,9 @@ Domain (page type)
 
 | Domain | Page URL | Components |
 |--------|----------|------------|
-| **materials** | `/laser-cleaning/{material}` | `material_description`, `caption`, `faq` |
+| **materials** | `/laser-cleaning/{material}` | `material_description`, `micro`, `faq` |
 | **settings** | `/laser-cleaning/{material}/settings` | `settings_description`, `component_summaries` |
-| **contaminants** | `/contaminants/{pattern}` | `material_description`, `caption`, `faq` |
+| **contaminants** | `/contaminants/{pattern}` | `material_description`, `micro`, `faq` |
 
 ### This Document: Settings Domain
 

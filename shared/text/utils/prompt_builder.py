@@ -72,7 +72,7 @@ class PromptBuilder:
         return PromptBuilder._rhythm_profiles_cache
     
     @staticmethod
-    def _get_technical_guidance(voice_params: Optional[Dict[str, float]], enrichment_params: Optional[Dict], component_type: str = "caption") -> str:
+    def _get_technical_guidance(voice_params: Optional[Dict[str, float]], enrichment_params: Optional[Dict], component_type: str = "micro") -> str:
         """
         Returns technical guidance from profiles YAML file.
         
@@ -118,7 +118,7 @@ class PromptBuilder:
         return guidance.strip()
     
     @staticmethod
-    def _get_sentence_guidance(voice_params: Optional[Dict[str, float]], length: int, component_type: str = "caption") -> str:
+    def _get_sentence_guidance(voice_params: Optional[Dict[str, float]], length: int, component_type: str = "micro") -> str:
         """
         Returns sentence structure guidance from rhythm profiles YAML file.
         
@@ -231,7 +231,7 @@ class PromptBuilder:
         Load component-specific prompt template from prompts/components/{component}.txt.
         
         Args:
-            component_type: Component type (caption, faq, etc.)
+            component_type: Component type (micro, faq, etc.)
             
         Returns:
             Template string or None if file doesn't exist
@@ -249,7 +249,7 @@ class PromptBuilder:
         length: Optional[int] = None,
         facts: str = "",
         context: str = "",
-        component_type: str = "caption",
+        component_type: str = "micro",
         domain: str = "materials",
         voice_params: Optional[Dict[str, float]] = None,  # NEW: Voice parameters from config
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity control
@@ -266,7 +266,7 @@ class PromptBuilder:
             length: Target word count (uses component default if None)
             facts: Formatted facts string
             context: Additional domain-specific context
-            component_type: Type of content (caption, description, faq, etc.)
+            component_type: Type of content (micro, description, faq, etc.)
             domain: Content domain (materials, history, recipes, etc.)
             variation_seed: Optional seed for variation (defeats caching)
             humanness_layer: Dynamic humanness instructions from HumannessOptimizer (NEW)

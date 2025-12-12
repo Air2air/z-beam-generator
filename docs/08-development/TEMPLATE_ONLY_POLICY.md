@@ -20,8 +20,8 @@
 - **ALL** structural rules → `prompts/components/{component}.txt`
 
 ### 2. Generic Processing Code
-- **NO** `if component_type == 'caption':` checks
-- **NO** component-specific methods (`_build_caption_prompt()`)
+- **NO** `if component_type == 'micro':` checks
+- **NO** component-specific methods (`_build_micro_prompt()`)
 - **NO** hardcoded component lists
 - **NO** component-specific extraction logic in generators
 - **USE** registry-based discovery: `ComponentRegistry.get_spec(component_type)`
@@ -46,9 +46,9 @@
 - Structural variations
 - Example outputs
 
-**Example** (`prompts/components/caption.txt`):
+**Example** (`prompts/components/micro.txt`):
 ```
-# Caption Generation Template
+# Micro Generation Template
 
 ## Voice & Tone
 - Professional technical documentation
@@ -82,7 +82,7 @@
 **Example**:
 ```yaml
 component_lengths:
-  caption:
+  micro:
     default: 50
     min_words_before: 20
     max_words_before: 120
@@ -116,12 +116,12 @@ def generate(self, identifier: str, component_type: str):
 ```
 
 ### ❌ FORBIDDEN in Code
-- `if component_type == 'caption':`
-- `def _build_caption_prompt():`
-- `def _extract_caption():`
+- `if component_type == 'micro':`
+- `def _build_micro_prompt():`
+- `def _extract_micro():`
 - Inline content instructions: `"Write ONLY technical descriptions..."`
 - Component-specific enrichment hints
-- Hardcoded component lists: `['caption', 'subtitle', 'faq']`
+- Hardcoded component lists: `['micro', 'subtitle', 'faq']`
 
 ---
 
@@ -139,8 +139,8 @@ def _extract_content(self, text: str, component_type: str):
 **❌ FORBIDDEN**:
 ```python
 def _extract_content(self, text: str, component_type: str):
-    if component_type == 'caption':
-        return self._extract_caption(text)  # ❌ HARDCODED DISPATCH
+    if component_type == 'micro':
+        return self._extract_micro(text)  # ❌ HARDCODED DISPATCH
     elif component_type == 'faq':
         return self._extract_faq(text)      # ❌ HARDCODED DISPATCH
 ```
@@ -158,8 +158,8 @@ def build_prompt(self, component_type: str, **kwargs):
 **❌ FORBIDDEN**:
 ```python
 def build_prompt(self, component_type: str, **kwargs):
-    if component_type == 'caption':
-        return self._build_caption_prompt(**kwargs)  # ❌ COMPONENT-SPECIFIC METHOD
+    if component_type == 'micro':
+        return self._build_micro_prompt(**kwargs)  # ❌ COMPONENT-SPECIFIC METHOD
 ```
 
 ### For Domain Adapters (`processing/adapters/*.py`)
@@ -183,8 +183,8 @@ def extract_content(self, text: str, component_type: str):
 **❌ FORBIDDEN**:
 ```python
 def extract_content(self, text: str, component_type: str):
-    if component_type == 'caption':
-        return self._extract_caption(text)  # ❌ HARDCODED DISPATCH
+    if component_type == 'micro':
+        return self._extract_micro(text)  # ❌ HARDCODED DISPATCH
 ```
 
 ---
@@ -235,7 +235,7 @@ python3 run.py --integrity-check
 - [ ] Zero hardcoded component names in `/processing`
 - [ ] All content instructions in template files
 - [ ] All extraction strategies in config.yaml
-- [ ] Generic method names (`_extract_before_after`, not `_extract_caption`)
+- [ ] Generic method names (`_extract_before_after`, not `_extract_micro`)
 - [ ] Registry pattern used for component discovery
 - [ ] Strategy pattern used for extraction
 
@@ -245,7 +245,7 @@ python3 run.py --integrity-check
 
 ### 1. Full Reusability
 - `/processing` works for **ANY** domain:
-  - ✅ Materials (caption, subtitle, faq, description)
+  - ✅ Materials (micro, subtitle, faq, description)
   - ✅ Contaminants (subtitle, troubleshooter)
   - ✅ Applications (description, use_case)
   - ✅ Regions (overview, regulations)
@@ -277,8 +277,8 @@ python3 run.py --integrity-check
 **Before**:
 ```python
 def _extract_content(self, text, component_type):
-    if component_type == 'caption':
-        return self._extract_caption(text)
+    if component_type == 'micro':
+        return self._extract_micro(text)
 ```
 
 **After**:
@@ -291,8 +291,8 @@ def _extract_content(self, text, component_type):
 **Before**:
 ```python
 def extract_content(self, text, component_type):
-    if component_type == 'caption':
-        return self._extract_caption(text)
+    if component_type == 'micro':
+        return self._extract_micro(text)
 ```
 
 **After**:
@@ -309,7 +309,7 @@ def extract_content(self, text, component_type):
 ### Phase 3: Remove Component-Specific Prompt Methods
 **Before**:
 ```python
-def _build_caption_prompt(self, ...):
+def _build_micro_prompt(self, ...):
     return f"""You are {author}, describing...
     CAPTION-SPECIFIC INSTRUCTIONS...
     """
@@ -318,7 +318,7 @@ def _build_caption_prompt(self, ...):
 **After**:
 ```python
 # REMOVED - Use generic template loading
-# Content instructions now in prompts/components/caption.txt
+# Content instructions now in prompts/components/micro.txt
 ```
 
 ### Phase 4: Move Content Instructions to Templates
@@ -414,8 +414,8 @@ python3 run.py --material "Aluminum" --component troubleshooter
 ```python
 # ❌ WRONG - Hardcoded component dispatch
 def _extract_content(self, text, component_type):
-    if component_type == 'caption':
-        return self._extract_caption(text)
+    if component_type == 'micro':
+        return self._extract_micro(text)
     elif component_type == 'faq':
         return self._extract_faq(text)
 ```
@@ -423,7 +423,7 @@ def _extract_content(self, text, component_type):
 **Problem**: Content instructions in code
 ```python
 # ❌ WRONG - Content rules in code
-if spec.name == "caption":
+if spec.name == "micro":
     instructions = """
     - Write ONLY technical descriptions
     - NO theatrical language
@@ -433,7 +433,7 @@ if spec.name == "caption":
 **Problem**: Component-specific prompt methods
 ```python
 # ❌ WRONG - Component-specific method
-def _build_caption_prompt(self, ...):
+def _build_micro_prompt(self, ...):
     return f"""Caption-specific prompt..."""
 ```
 

@@ -180,7 +180,7 @@ class PersonaDriftDetector:
         """
         return {
             1: {  # Taiwan - Yi-Chun Lin
-                "word_range": (200, 800),  # Flexible range for caption variation
+                "word_range": (200, 800),  # Flexible range for micro variation
                 "structural_patterns": ["article_omission", "topic_comment", "measurement_first"],
                 "technical_focus": "semiconductor processing",
             },

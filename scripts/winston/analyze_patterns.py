@@ -19,7 +19,7 @@ Usage:
     python3 scripts/winston/analyze_patterns.py --material "Aluminum" --problematic
     
     # Show patterns for specific component type
-    python3 scripts/winston/analyze_patterns.py --component "caption" --problematic
+    python3 scripts/winston/analyze_patterns.py --component "micro" --problematic
     
     # Full dashboard
     python3 scripts/winston/analyze_patterns.py --dashboard

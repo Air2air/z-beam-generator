@@ -149,7 +149,7 @@ class StructuralVariationChecker:
         Args:
             content: Generated content to analyze
             material_name: Material name
-            component_type: Component type (caption, description, etc.)
+            component_type: Component type (micro, description, etc.)
             author_id: Author ID for voice preservation (optional)
             recent_window: Number of recent generations to compare against
         
@@ -400,9 +400,9 @@ class StructuralVariationChecker:
         
         # Map author IDs to persona files
         author_files = {
-            2: 'shared/prompts/personas/italy.yaml',
-            3: 'shared/prompts/personas/taiwan.yaml',
-            4: 'shared/prompts/personas/united_states.yaml'
+            2: 'shared/voice/profiles/italy.yaml',
+            3: 'shared/voice/profiles/taiwan.yaml',
+            4: 'shared/voice/profiles/united_states.yaml'
         }
         
         if author_id not in author_files:

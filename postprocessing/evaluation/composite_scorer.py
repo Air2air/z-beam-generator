@@ -12,7 +12,7 @@ Static config weights (config.yaml) are ONLY fallback defaults when insufficient
 data exists. System learns optimal weights as generations accumulate.
 
 Example learned weights:
-- Winston: 0.65 (captions), 0.50 (FAQs) - varies by component
+- Winston: 0.65 (micros), 0.50 (FAQs) - varies by component
 - Subjective: 0.25 (Steel), 0.35 (Aluminum) - varies by material
 - Readability: 0.10 global baseline
 

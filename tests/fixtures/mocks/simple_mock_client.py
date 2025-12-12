@@ -90,8 +90,8 @@ class MockAPIClient:
             return self._mock_metatags()
         elif "json-ld" in prompt_lower or "jsonld" in prompt_lower:
             return self._mock_jsonld()
-        elif "caption" in prompt_lower:
-            return "Mock caption for laser cleaning process."
+        elif "micro" in prompt_lower:
+            return "Mock micro for laser cleaning process."
         elif "table" in prompt_lower:
             return self._mock_table()
         else:

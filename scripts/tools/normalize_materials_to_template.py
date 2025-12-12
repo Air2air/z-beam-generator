@@ -59,7 +59,7 @@ def save_materials(data):
 # Canonical field order from frontmatter_template.yaml
 CANONICAL_ORDER = [
     'name', 'category', 'subcategory', 'title', 'subtitle', 'description',
-    'author', 'images', 'caption', 'regulatoryStandards', 'applications',
+    'author', 'images', 'micro', 'regulatoryStandards', 'applications',
     'materialProperties', 'materialCharacteristics', 'machineSettings',
     'faq', '_metadata'
 ]

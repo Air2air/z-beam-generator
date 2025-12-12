@@ -213,7 +213,7 @@ structured_params = {
 {
     'timestamp': '2025-11-17T10:30:00',
     'topic': 'Aluminum',
-    'component_type': 'caption',
+    'component_type': 'micro',
     'overall_score': 8.5,
     'clarity_score': 9.0,
     'professionalism_score': 8.0,

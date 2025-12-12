@@ -2,7 +2,7 @@
 """
 Batch Caption Generation for All Materials
 
-Generates captions for all 132 materials with progress tracking.
+Generates micros for all 132 materials with progress tracking.
 """
 
 import sys
@@ -25,7 +25,7 @@ with open(materials_file, 'r') as f:
     data = yaml.safe_load(f)
     materials = sorted(data['materials'].keys())
 
-print(f"📋 Generating captions for {len(materials)} materials")
+print(f"📋 Generating micros for {len(materials)} materials")
 print()
 
 results = {
@@ -41,7 +41,7 @@ for i, material in enumerate(materials, 1):
     print("=" * 80)
     
     # Force regeneration - skip the check
-    # if 'caption' in data['materials'][material]:
+    # if 'micro' in data['materials'][material]:
     #     print("⏭️  Caption already exists, skipping...")
     #     results['skipped'].append(material)
     #     print()
@@ -50,7 +50,7 @@ for i, material in enumerate(materials, 1):
     test_start = time.time()
     
     # Run caption generation
-    cmd = ["python3", "run.py", "--caption", material]
+    cmd = ["python3", "run.py", "--micro", material]
     
     try:
         result = subprocess.run(

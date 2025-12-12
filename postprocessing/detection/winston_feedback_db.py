@@ -1187,7 +1187,7 @@ class WinstonFeedbackDatabase:
         
         Args:
             material: Material name (e.g., "Aluminum")
-            component_type: Component type (e.g., "caption")
+            component_type: Component type (e.g., "micro")
             limit: Number of top results to return
             
         Returns:

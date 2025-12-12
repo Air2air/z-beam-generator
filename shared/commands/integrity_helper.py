@@ -105,7 +105,7 @@ def run_post_generation_validation(material: str, component_type: str, quick: bo
     
     Args:
         material: Material name that was generated
-        component_type: Component type (caption, subtitle, faq)
+        component_type: Component type (micro, subtitle, faq)
         quick: If True, skip expensive validations
     
     Returns:

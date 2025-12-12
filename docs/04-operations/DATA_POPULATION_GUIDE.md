@@ -176,9 +176,9 @@ EOF
 
 **Step 4: Generate Text Content**
 ```bash
-# Generate descriptions, captions, etc.
+# Generate descriptions, micros, etc.
 python3 run.py --material-description "Boron Nitride"
-python3 run.py --caption "Boron Nitride"
+python3 run.py --micro "Boron Nitride"
 python3 run.py --faq "Boron Nitride"
 ```
 

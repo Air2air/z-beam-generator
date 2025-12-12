@@ -33,7 +33,7 @@ class ComplianceModule:
 
 
 class MediaModule:
-    """Extract images and caption for frontmatter"""
+    """Extract images and micro for frontmatter"""
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -69,7 +69,7 @@ class MediaModule:
         }
     
     def generate(self, material_data: Dict) -> Dict:
-        """Extract media data (images, caption)"""
+        """Extract media data (images, micro)"""
         self.logger.info("Extracting media data")
         
         result = {}
@@ -85,13 +85,13 @@ class MediaModule:
             result['images'] = self._generate_images_for_material(material_name)
             self.logger.info(f"📸 Generated images for {material_name} (was missing/null)")
         
-        # Extract caption
-        if 'caption' in material_data:
-            result['caption'] = material_data['caption']
-            self.logger.info(f"📸 Caption extracted with keys: {list(material_data['caption'].keys())}")
+        # Extract micro
+        if 'micro' in material_data:
+            result['micro'] = material_data['micro']
+            self.logger.info(f"📸 Caption extracted with keys: {list(material_data['micro'].keys())}")
         else:
-            self.logger.warning("⚠️ No caption found in material_data")
-            result['caption'] = {}
+            self.logger.warning("⚠️ No micro found in material_data")
+            result['micro'] = {}
         
         self.logger.info("✅ Extracted media data")
         return result

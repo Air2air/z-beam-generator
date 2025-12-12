@@ -6,7 +6,7 @@ The frontmatter component exports Materials.yaml data to frontmatter YAML files 
 
 ### **ALL Generation/Validation Happens on Materials.yaml**
 
-- ✅ **AI Text Generation** → Materials.yaml (captions, descriptions, etc.)
+- ✅ **AI Text Generation** → Materials.yaml (micros, descriptions, etc.)
 - ✅ **Property Research** → Materials.yaml (AI discovery, ranges, values)
 - ✅ **Completeness Validation** → Materials.yaml (100% data coverage)
 - ✅ **Quality Scoring** → Materials.yaml (thresholds, human believability)

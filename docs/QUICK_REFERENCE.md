@@ -157,10 +157,10 @@ python3 scripts/winston/learn.py --dashboard
 python3 scripts/winston/learn.py --patterns --material "Aluminum"
 
 # Find optimal temperature
-python3 scripts/winston/learn.py --temperature --material "Steel" --component caption
+python3 scripts/winston/learn.py --temperature --material "Steel" --component micro
 
 # Optimize prompts with learned patterns
-python3 scripts/winston/learn.py --optimize-prompt prompts/caption.txt --output prompts/caption_v2.txt
+python3 scripts/winston/learn.py --optimize-prompt prompts/micro.txt --output prompts/micro_v2.txt
 
 # Predict success before generation
 python3 scripts/winston/learn.py --predict --material "Copper" --component subtitle --temp 0.7
@@ -585,11 +585,11 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Features**: Grammatical authenticity, AI-evasion markers, 100% VOICE_RULES compliance
 
 **→ Workflow (3 Steps)**:
-1. Generate content: `python3 run.py --caption "Steel"` → saves to Materials.yaml
+1. Generate content: `python3 run.py --micro "Steel"` → saves to Materials.yaml
 2. Apply voice: `python3 scripts/voice/enhance_materials_voice.py --material "Steel"` → **OVERWRITES** fields in Materials.yaml
 3. Export: `python3 run.py --material "Steel" --data-only` → combines Materials.yaml + Categories.yaml → frontmatter
 
-**→ Key**: Voice postprocessor **OVERWRITES text fields** in Materials.yaml (caption, subtitle, FAQ answers)
+**→ Key**: Voice postprocessor **OVERWRITES text fields** in Materials.yaml (micro, subtitle, FAQ answers)
 
 ### "Prompt architecture" / "AI detection + localization"
 **→ Immediate Response**: [AI Detection + Localization Architecture](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)
@@ -631,7 +631,7 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 
 ### User needs component help → Look in:
 - `components/text/docs/README.md` - Text generation (comprehensive)
-- `components/caption/README.md` - Caption generation with voice profiles
+- `components/micro/README.md` - Micro generation with voice profiles
 - `components/frontmatter/README.md` - YAML frontmatter
 - `components/[component]/README.md` - Component-specific guides
 
@@ -695,11 +695,11 @@ python3 run.py --optimize text --material copper
 # ✅ [AI DETECTOR] Composite scoring applied - Original: 0.0 → Composite: 59.5 (+59.5)
 ```
 
-### Optimizer System Consolidation ✅ COMPLETE  
-**Purpose**: Organized all optimizer documentation into single guide
-**Documentation**: [Optimizer Consolidated Guide](OPTIMIZER_CONSOLIDATED_GUIDE.md)
-**Features**: Complete API reference, troubleshooting, learning system documentation
-**Quick Start**: [5-Minute Setup](../optimizer/QUICK_START.md)
+### Quality Analysis System Consolidation ✅ COMPLETE (Dec 11, 2025)
+**Purpose**: Unified quality analysis system replacing dual AIDetector + VoicePostProcessor
+**Documentation**: [Text Generation Guide](02-architecture/TEXT_GENERATION_GUIDE.md)
+**Features**: Single QualityAnalyzer interface, composite scoring (AI 40% + Voice 30% + Structural 30%)
+**Archived**: Old optimizer docs moved to [archive/2025-12-pre-consolidation/optimizer/](archive/README.md)
 
 ## 🔧 Essential Commands for AI to Recommend
 
@@ -725,10 +725,10 @@ python3 scripts/tools/api_terminal_diagnostics.py winston
 
 ```bash
 # Integrity check runs automatically (~20ms overhead)
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 
 # Skip integrity check if needed (not recommended)
-python3 run.py --caption "Aluminum" --skip-integrity-check
+python3 run.py --micro "Aluminum" --skip-integrity-check
 ```
 
 **What It Validates:**
@@ -862,7 +862,7 @@ from shared.commands.claude_evaluation_helper import evaluate_after_generation
 result = evaluate_after_generation(
     content=generated_text,
     topic="Aluminum",           # Any subject (material, event, recipe, etc.)
-    component_type="caption",   # Any component (caption, subtitle, FAQ, etc.)
+    component_type="micro",   # Any component (micro, subtitle, FAQ, etc.)
     domain="materials",         # Any domain (materials, history, recipes, etc.)
     feedback_db=feedback_db     # Optional: logs to learning database
 )
@@ -979,12 +979,12 @@ from processing.detection.winston_feedback_db import WinstonFeedbackDB
 
 # Find best parameters for material
 db = WinstonFeedbackDB()
-best = db.get_best_parameters_for_material('Steel', 'caption', limit=5)
+best = db.get_best_parameters_for_material('Steel', 'micro', limit=5)
 for p in best:
     print(f"Temp: {p['temperature']:.2f}, Human: {p['human_score']:.1f}%")
 
 # Analyze parameter correlation
-correlation = db.get_parameter_correlation('api.temperature', 'caption', days=30)
+correlation = db.get_parameter_correlation('api.temperature', 'micro', days=30)
 for temp, stats in correlation.items():
     print(f"{temp:.2f}: {stats['avg_human_score']:.1f}% human")
 ```
@@ -1021,7 +1021,7 @@ for temp, stats in correlation.items():
 **Quick Commands**:
 ```bash
 # Analyze and save sweet spot recommendations
-python3 scripts/winston/sweet_spot.py --material Copper --component caption
+python3 scripts/winston/sweet_spot.py --material Copper --component micro
 
 # Show optimal parameter ranges
 python3 scripts/winston/sweet_spot.py --sweet-spots --material Steel
@@ -1040,11 +1040,11 @@ from processing.detection.winston_feedback_db import WinstonFeedbackDatabase
 
 # Analyze and save
 analyzer = SweetSpotAnalyzer('data/winston_feedback.db')
-analysis = analyzer.get_sweet_spot_table('Copper', 'caption', save_to_db=True)
+analysis = analyzer.get_sweet_spot_table('Copper', 'micro', save_to_db=True)
 
 # Retrieve sweet spot
 db = WinstonFeedbackDatabase('data/winston_feedback.db')
-sweet_spot = db.get_sweet_spot('Copper', 'caption')
+sweet_spot = db.get_sweet_spot('Copper', 'micro')
 if sweet_spot:
     temp = sweet_spot['parameters']['temperature']['median']
     print(f"Optimal temperature: {temp:.3f}")

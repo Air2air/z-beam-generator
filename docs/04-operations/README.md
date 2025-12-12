@@ -29,10 +29,10 @@ Documentation for running, operating, and maintaining the Z-Beam Generator.
 python3 run.py --material "MaterialName"
 
 # Batch generate all materials
-python3 scripts/batch/batch_generate_captions.py
+python3 scripts/batch/batch_generate_micros.py
 
 # Generate with specific component
-python3 run.py --material "Steel" --component caption
+python3 run.py --material "Steel" --component micro
 
 # Check generation status
 python3 run.py --status

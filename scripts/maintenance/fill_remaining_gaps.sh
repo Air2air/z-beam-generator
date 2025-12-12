@@ -15,15 +15,15 @@ echo "📝 CAPTIONS (3 missing)"
 echo "----------------------------------------"
 
 echo "1/5: Boron Nitride caption..."
-python3 run.py --caption "Boron Nitride" --skip-integrity-check
+python3 run.py --micro "Boron Nitride" --skip-integrity-check
 echo ""
 
 echo "2/5: Titanium Nitride caption..."
-python3 run.py --caption "Titanium Nitride" --skip-integrity-check
+python3 run.py --micro "Titanium Nitride" --skip-integrity-check
 echo ""
 
 echo "3/5: Yttria-Stabilized Zirconia caption..."
-python3 run.py --caption "Yttria-Stabilized Zirconia" --skip-integrity-check
+python3 run.py --micro "Yttria-Stabilized Zirconia" --skip-integrity-check
 echo ""
 
 # FAQ gaps (2)

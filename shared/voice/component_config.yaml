@@ -42,9 +42,9 @@ default:
 # COMPONENT-SPECIFIC CONFIGURATIONS
 # ============================================================================
 
-# Caption: Before/After microscopy descriptions
-caption:
-  # Captions describe surface analysis - technical audience
+# Micro: Before/After microscopy descriptions
+micro:
+  # Micros describe surface analysis - technical audience
   intensity_level: "level_4_plus_enhanced"  # Enhanced technical (2-4 measurements, formulas)
   formality: "professional-technical"
   target_audience: "engineers and materials specialists"
@@ -71,7 +71,7 @@ subtitle:
   intensity_level: "level_1_minimal"  # Zero measurements, everyday language
   formality: "professional-engaging"
   target_audience: "technical professionals and decision-makers"
-  word_count_range: [8, 20]  # Random length like captions for variety
+  word_count_range: [8, 20]  # Random length like micros for variety
   
   style_notes:
     - "Concise and engaging"

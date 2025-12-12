@@ -443,13 +443,13 @@ bullets:
     target: 30
 ```
 
-### Caption Component
+### Micro Component
 
-#### Configuration File: `components/caption/config.yaml`
+#### Configuration File: `components/micro/config.yaml`
 
 ```yaml
-caption:
-  # Caption types
+micro:
+  # Micro types
   types:
     - process_image
     - equipment_image
@@ -532,7 +532,7 @@ class DeepSeekConfig:
         'metatags': {'temperature': 0.5, 'max_tokens': 500},
         'jsonld': {'temperature': 0.4, 'max_tokens': 1000},
         'tags': {'temperature': 0.6, 'max_tokens': 300},
-        'caption': {'temperature': 0.7, 'max_tokens': 400},
+        'micro': {'temperature': 0.7, 'max_tokens': 400},
     }
 ```
 
@@ -563,7 +563,7 @@ class GrokConfig:
         'metatags': {'temperature': 0.4, 'max_tokens': 600},
         'jsonld': {'temperature': 0.3, 'max_tokens': 1200},
         'tags': {'temperature': 0.5, 'max_tokens': 400},
-        'caption': {'temperature': 0.65, 'max_tokens': 500},
+        'micro': {'temperature': 0.65, 'max_tokens': 500},
     }
 ```
 
@@ -747,7 +747,7 @@ class ValidationConfig:
     # Component validation
     valid_components: List[str] = [
         'frontmatter', 'text', 'table', 'author', 'bullets',
-        'metatags', 'jsonld', 'tags', 'caption'
+        'metatags', 'jsonld', 'tags', 'micro'
     ]
     
     # API validation
@@ -789,7 +789,7 @@ CONFIG_SCHEMA = {
         "components": {
             "type": "object",
             "patternProperties": {
-                "^(frontmatter|text|table|author|bullets|metatags|jsonld|tags|caption)$": {
+                "^(frontmatter|text|table|author|bullets|metatags|jsonld|tags|micro)$": {
                     "type": "object"
                 }
             }

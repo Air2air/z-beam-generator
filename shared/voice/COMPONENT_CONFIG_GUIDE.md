@@ -206,13 +206,13 @@ subtitle:
 - ✅ `VoiceOrchestrator._load_component_config()` - Config loader
 - ✅ `VoiceOrchestrator.get_component_config()` - Config accessor
 - ✅ `_build_subtitle_prompt()` - Uses config for intensity
-- ✅ Component types: `caption`, `subtitle`, `description`, `environmental_impact`, `health_safety`, `quality_control`
+- ✅ Component types: `micro`, `subtitle`, `description`, `environmental_impact`, `health_safety`, `quality_control`
 
 **Currently Using Config:**
 - ✅ **Subtitle generator** - Reads `level_2_light` intensity from config
 
 **To Be Updated:**
-- ⏳ **Caption generator** - Still uses hardcoded `level_4_plus_enhanced`
+- ⏳ **Micro generator** - Still uses hardcoded `level_4_plus_enhanced`
 - ⏳ **Future components** - Description, environmental impact, etc.
 
 ---
@@ -224,7 +224,7 @@ Modify `_build_microscopy_prompt()` to use config:
 
 ```python
 def _build_microscopy_prompt(...):
-    config = self.get_component_config('caption')
+    config = self.get_component_config('micro')
     intensity_level = config.get('intensity_level', 'level_4_plus_enhanced')
     # Rest uses config...
 ```

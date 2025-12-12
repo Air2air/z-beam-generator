@@ -29,10 +29,10 @@ components/
 │   │   └── templates/ (markdown prompt files)
 │   └── services/ (property management, templates, etc.)
 │
-├── caption/              # Discrete component - dual voice generation
+├── micro/              # Discrete component - dual voice generation
 │   ├── generators/
-│   │   └── generator.py (caption-specific logic)
-│   ├── config/ (caption settings)
+│   │   └── generator.py (micro-specific logic)
+│   ├── config/ (micro settings)
 │   └── ARCHITECTURE.md (reference pattern)
 │
 ├── subtitle/             # Discrete component - single voice generation
@@ -125,18 +125,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 - Component-specific prompts in dedicated folder
 - Clear separation from shared services
 
-**Example: Caption Component**
+**Example: Micro Component**
 
 ```
-components/caption/
+components/micro/
 ├── generators/
-│   └── generator.py          # Caption-specific dual-voice logic
+│   └── generator.py          # Micro-specific dual-voice logic
 ├── config/
-│   └── config.yaml           # Caption settings (word counts, etc.)
+│   └── config.yaml           # Micro settings (word counts, etc.)
 └── ARCHITECTURE.md           # Reference pattern documentation
 ```
 
-**Key Pattern**: Caption calls Voice service **twice** (before/after sections) but keeps caption-specific logic separate.
+**Key Pattern**: Micro calls Voice service **twice** (before/after sections) but keeps micro-specific logic separate.
 
 **Example: Subtitle Component**
 
@@ -266,7 +266,7 @@ components/subtitle/
 - ✅ Template-based prompts (markdown files)
 
 ### 3. Separation of Concerns
-- ✅ Voice service: Reusable across caption/subtitle
+- ✅ Voice service: Reusable across micro/subtitle
 - ✅ Property services: Shared across frontmatter
 - ✅ Component logic: Self-contained in discrete components
 - ✅ No circular dependencies
@@ -328,8 +328,8 @@ components/subtitle/
 
 ## 📚 Reference Implementations
 
-### Caption Component (Discrete Pattern)
-**File**: `components/caption/ARCHITECTURE.md`
+### Micro Component (Discrete Pattern)
+**File**: `components/micro/ARCHITECTURE.md`
 
 **Key Features**:
 - Dual voice call architecture (before/after)
@@ -379,8 +379,8 @@ def test_industry_applications_2phase():
 
 ### Discrete Components (Caption/Subtitle)
 ```python
-def test_caption_dual_voice():
-    """Test caption's dual voice call pattern"""
+def test_micro_dual_voice():
+    """Test micro's dual voice call pattern"""
     generator = CaptionComponentGenerator()
     
     result = generator.generate(
@@ -415,7 +415,7 @@ def test_caption_dual_voice():
 ## 📖 Quick Reference
 
 **For Enhanced Prompting**: Add prompt builder to `components/frontmatter/prompts/`  
-**For Discrete Components**: Follow caption/subtitle pattern with `core/`, `prompts/`, `config/`  
+**For Discrete Components**: Follow micro/subtitle pattern with `core/`, `prompts/`, `config/`  
 **For Shared Services**: Use `voice/`, `services/`, `utils/` - never duplicate  
 **For Testing**: Write component tests + prompt builder tests  
 **For Documentation**: Update this file when adding new patterns
@@ -424,4 +424,4 @@ def test_caption_dual_voice():
 
 **Last Updated**: October 26, 2025  
 **Maintainer**: Z-Beam Generator Architecture Team  
-**Related Docs**: `components/caption/ARCHITECTURE.md`, `README.md`, `GROK fail-fast principles`
+**Related Docs**: `components/micro/ARCHITECTURE.md`, `README.md`, `GROK fail-fast principles`

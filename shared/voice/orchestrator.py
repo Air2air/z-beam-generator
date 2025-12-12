@@ -148,7 +148,7 @@ class VoiceOrchestrator:
         Get voice configuration for specific component type.
         
         Args:
-            component_type: Component type (caption, description, etc.)
+            component_type: Component type (micro, description, etc.)
         
         Returns:
             Component-specific voice config with intensity, formality, etc.
@@ -175,7 +175,7 @@ class VoiceOrchestrator:
         Get voice instructions for specific component type.
         
         Args:
-            component_type: Type of component (caption, text, tags, etc.)
+            component_type: Type of component (micro, text, tags, etc.)
             context: Optional context (material, technical_level, etc.)
         
         Returns:
@@ -206,7 +206,7 @@ class VoiceOrchestrator:
         Generate complete prompt using voice_base.yaml + country profile layering.
         
         Args:
-            component_type: Type of component (microscopy_description for captions)
+            component_type: Type of component (microscopy_description for micros)
             material_context: Material name, category, properties, etc.
             author: Author name, country, expertise, etc.
             **kwargs: Additional template variables (section_focus, target_words, etc.)
@@ -886,7 +886,7 @@ Consider incorporating these natural expressions when appropriate:
             return "Standard technical communication guidelines apply."
         
         # Get voice profile parameters
-        adaptation = self.profile.get('voice_adaptation', {}).get('caption_generation', {})
+        adaptation = self.profile.get('voice_adaptation', {}).get('micro_generation', {})
         ai_params = self.profile.get('ai_evasion_parameters', {})
         
         # Get all template variables needed
@@ -946,7 +946,7 @@ Consider incorporating these natural expressions when appropriate:
         # Build complete format context with all possible variables
         format_context = {
             **author_specific,
-            'minimum_sentences': self.profile.get('voice_adaptation', {}).get('caption_generation', {}).get('validation_requirements', {}).get('minimum_sentences', 5),
+            'minimum_sentences': self.profile.get('voice_adaptation', {}).get('micro_generation', {}).get('validation_requirements', {}).get('minimum_sentences', 5),
             'very_short': sentence_targets.get('very_short', 15),
             'medium': sentence_targets.get('medium', 35),
             'long': sentence_targets.get('long', 35),
@@ -1058,7 +1058,7 @@ def get_voice_instructions(country: str, component_type: str, context: Optional[
     
     Args:
         country: Author's country
-        component_type: Component type (caption, text, tags)
+        component_type: Component type (micro, text, tags)
         context: Optional context dictionary
     
     Returns:

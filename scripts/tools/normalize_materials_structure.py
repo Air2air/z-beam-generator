@@ -19,12 +19,12 @@ from datetime import datetime, timezone
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-def normalize_caption(caption):
+def normalize_micro(caption):
     """
     Normalize caption structure to use 'before' and 'after' keys.
     
     Args:
-        caption: Caption dict with potential beforeText/afterText keys
+        micro: Caption dict with potential beforeText/afterText keys
         
     Returns:
         Normalized caption dict with before/after keys
@@ -35,15 +35,15 @@ def normalize_caption(caption):
     normalized = {}
     
     # Convert beforeText → before
-    if 'beforeText' in caption:
+    if 'beforeText' in micro:
         normalized['before'] = caption['beforeText']
-    elif 'before' in caption:
+    elif 'before' in micro:
         normalized['before'] = caption['before']
     
     # Convert afterText → after
-    if 'afterText' in caption:
+    if 'afterText' in micro:
         normalized['after'] = caption['afterText']
-    elif 'after' in caption:
+    elif 'after' in micro:
         normalized['after'] = caption['after']
     
     # Preserve other fields
@@ -126,7 +126,7 @@ def normalize_materials_yaml(dry_run=False):
     materials = data['materials']
     stats = {
         'total': len(materials),
-        'caption_normalized': 0,
+        'micro_normalized': 0,
         'faq_normalized': 0,
         'subtitle_normalized': 0,
         'no_changes': 0
@@ -137,11 +137,11 @@ def normalize_materials_yaml(dry_run=False):
         changed = False
         
         # Normalize caption
-        if 'caption' in material:
-            old_caption = material['caption']
-            if isinstance(old_caption, dict) and ('beforeText' in old_caption or 'afterText' in old_caption):
-                material['caption'] = normalize_caption(old_caption)
-                stats['caption_normalized'] += 1
+        if 'micro' in material:
+            old_micro = material['micro']
+            if isinstance(old_micro, dict) and ('beforeText' in old_micro or 'afterText' in old_micro):
+                material['micro'] = normalize_micro(old_micro)
+                stats['micro_normalized'] += 1
                 changed = True
                 print(f'📸 {name}: Caption normalized (beforeText/afterText → before/after)')
         
@@ -170,7 +170,7 @@ def normalize_materials_yaml(dry_run=False):
     print('📊 NORMALIZATION SUMMARY')
     print('=' * 70)
     print(f'Total materials: {stats["total"]}')
-    print(f'Caption normalized: {stats["caption_normalized"]}')
+    print(f'Caption normalized: {stats["micro_normalized"]}')
     print(f'FAQ normalized: {stats["faq_normalized"]}')
     print(f'Subtitle normalized: {stats["subtitle_normalized"]}')
     print(f'No changes needed: {stats["no_changes"]}')

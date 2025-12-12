@@ -54,10 +54,10 @@ python3 -m processing.integrity.check_integrity --json > report.json
 
 ```bash
 # Integrity check runs automatically (~20ms overhead)
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 
 # Skip integrity check if needed (not recommended)
-python3 run.py --caption "Aluminum" --skip-integrity-check
+python3 run.py --micro "Aluminum" --skip-integrity-check
 
 # Run standalone integrity check
 python3 run.py --integrity-check
@@ -67,7 +67,7 @@ python3 run.py --integrity-check --quick
 ### Integration Status
 
 **✅ Integrated Components:**
-- Caption generation (`handle_caption_generation`)
+- Caption generation (`handle_micro_generation`)
 - Material description generation (`handle_material_description_generation`)
 - FAQ generation (`handle_faq_generation`)
 - Unified workflow (`run_material_workflow` - Step 0)

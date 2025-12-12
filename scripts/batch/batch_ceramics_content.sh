@@ -14,7 +14,7 @@ for material in "${MATERIALS[@]}"; do
     python3 run.py --material-description "$material" --skip-integrity-check 2>&1 | grep -E "(✅|❌|Generated|Saved)" | tail -5
     
     echo "   ├─ Caption..."
-    python3 run.py --caption "$material" --skip-integrity-check 2>&1 | grep -E "(✅|❌|Generated|Saved)" | tail -5
+    python3 run.py --micro "$material" --skip-integrity-check 2>&1 | grep -E "(✅|❌|Generated|Saved)" | tail -5
     
     echo "   └─ FAQ..."
     python3 run.py --faq "$material" --skip-integrity-check 2>&1 | grep -E "(✅|❌|Generated|Saved)" | tail -5

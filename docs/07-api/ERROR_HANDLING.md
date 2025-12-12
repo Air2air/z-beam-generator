@@ -20,7 +20,7 @@ The Z-Beam Generator now uses a **consolidated 6-component architecture**:
 #### **Archived Components (No Longer Supported)**
 - ~~text~~ - Consolidated into frontmatter
 - ~~bullets~~ - Functionality distributed across other components
-- ~~caption~~ - Integrated into frontmatter
+- ~~micro~~ - Integrated into frontmatter
 - ~~tags~~ - Replaced by metatags
 - ~~settings~~ - Consolidated into frontmatter
 - ~~table~~ - Replaced by propertiestable

@@ -51,8 +51,8 @@ python3 run.py --integrity-check
 ### Single Component
 
 ```bash
-# Generate a caption
-python3 run.py --caption "Aluminum"
+# Generate a micro
+python3 run.py --micro "Aluminum"
 
 # Generate a material description
 python3 run.py --material-description "Steel"

@@ -17,7 +17,7 @@ DEFAULT_MATERIALS = [
     "Bronze", "Iron", "Zinc", "Nickel", "Stainless Steel"
 ]
 
-DEFAULT_COMPONENTS = ["caption"]
+DEFAULT_COMPONENTS = ["micro"]
 
 
 def generate_samples(
@@ -100,8 +100,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate training data')
     parser.add_argument('--materials', default=None,
                        help='Comma-separated material names (default: top 10)')
-    parser.add_argument('--components', default='caption',
-                       help='Comma-separated component types (default: caption)')
+    parser.add_argument('--components', default='micro',
+                       help='Comma-separated component types (default: micro)')
     parser.add_argument('--samples-per', type=int, default=3,
                        help='Number of samples per material/component (default: 3)')
     parser.add_argument('--no-skip-integrity', action='store_true',
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     components = [c.strip() for c in args.components.split(',')]
     
     # Validate components
-    valid_components = ['caption', 'faq', 'description']
+    valid_components = ['micro', 'faq', 'description']
     for c in components:
         if c not in valid_components:
             print(f"❌ Invalid component: {c}")

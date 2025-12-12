@@ -1,7 +1,7 @@
 """
 Global Subjective Evaluation System
 
-Centralized evaluation that runs after ANY content generation (caption, subtitle, FAQ, etc.).
+Centralized evaluation that runs after ANY content generation (micro, subtitle, FAQ, etc.).
 Eliminates duplicate evaluation code in component handlers.
 
 Architecture:
@@ -39,7 +39,7 @@ def run_global_subjective_evaluation(
     
     Args:
         topic: Material name, region name, etc.
-        component_type: 'caption', 'subtitle', 'faq', etc.
+        component_type: 'micro', 'subtitle', 'faq', etc.
         domain: 'materials', 'regions', 'applications', etc.
         verbose: Show detailed output
         
@@ -135,7 +135,7 @@ def _load_generated_content(topic: str, component_type: str, domain: str) -> Opt
     
     Args:
         topic: Material name, region name, etc.
-        component_type: 'caption', 'subtitle', 'faq', etc.
+        component_type: 'micro', 'subtitle', 'faq', etc.
         domain: 'materials', 'regions', 'applications', etc.
         
     Returns:
@@ -149,12 +149,12 @@ def _load_generated_content(topic: str, component_type: str, domain: str) -> Opt
                 logger.warning(f"Material {topic} not found")
                 return None
             
-            if component_type == 'caption':
-                caption_data = material.get('caption')
-                if isinstance(caption_data, dict):
-                    # Caption has 'before' and 'after' - evaluate the 'after' version
-                    return caption_data.get('after', caption_data.get('before'))
-                return caption_data
+            if component_type == 'micro':
+                micro_data = material.get('micro')
+                if isinstance(micro_data, dict):
+                    # Micro has 'before' and 'after' - evaluate the 'after' version
+                    return micro_data.get('after', micro_data.get('before'))
+                return micro_data
             elif component_type == 'subtitle':
                 return material.get('subtitle')
             elif component_type == 'faq':
@@ -198,7 +198,7 @@ def _apply_realism_learning(
     Args:
         result: SubjectiveEvaluationResult with realism metrics
         topic: Material/region/etc. name
-        component_type: 'caption', 'subtitle', etc.
+        component_type: 'micro', 'subtitle', etc.
         feedback_db: WinstonFeedbackDatabase instance
     """
     

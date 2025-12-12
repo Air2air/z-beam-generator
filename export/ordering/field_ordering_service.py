@@ -86,8 +86,8 @@ class FieldOrderingService:
             ordered_data["images"] = frontmatter_data["images"]
             
         # === 5. CAPTION (new per template) ===
-        if "caption" in frontmatter_data:
-            ordered_data["caption"] = frontmatter_data["caption"]
+        if "micro" in frontmatter_data:
+            ordered_data["micro"] = frontmatter_data["micro"]
             
         # === 6. REGULATORY STANDARDS (moved earlier per template) ===
         if "regulatoryStandards" in frontmatter_data:

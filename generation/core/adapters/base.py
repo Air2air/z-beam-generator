@@ -124,7 +124,7 @@ class DataSourceAdapter(ABC):
         Extract component-specific content from generated text.
         
         Different components need different extraction logic:
-        - caption: Extract before/after sections
+        - micro: Extract before/after sections
         - faq: Parse JSON structure
         - description: Return text as-is
         

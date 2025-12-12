@@ -7,7 +7,7 @@ Active Modules (6):
 - PropertiesModule: materialProperties with GROUPED structure
 - SettingsModule: machineSettings with ranges
 - ComplianceModule: regulatoryStandards extraction
-- MediaModule: images, caption
+- MediaModule: images, micro
 
 Removed Modules (Nov 2, 2025):
 - ApplicationsModule: applications field removed from template

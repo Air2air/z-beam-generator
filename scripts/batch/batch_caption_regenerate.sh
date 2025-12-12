@@ -36,7 +36,7 @@ for i in "${!MATERIALS[@]}"; do
     
     echo "[$NUM/$TOTAL] Generating caption for: $MATERIAL"
     
-    if python3 run.py --caption "$MATERIAL" --skip-integrity-check 2>&1 | grep -q "✅ Caption generated"; then
+    if python3 run.py --micro "$MATERIAL" --skip-integrity-check 2>&1 | grep -q "✅ Micro generated"; then
         echo "   ✅ SUCCESS"
         ((SUCCESS++))
     else

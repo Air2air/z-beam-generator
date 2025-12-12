@@ -20,7 +20,7 @@ cp .env.example .env
 # Add your API keys: GROK_API_KEY, DEEPSEEK_API_KEY
 
 # Generate content
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 python3 run.py --subtitle "Steel"
 python3 run.py --faq "Copper"
 
@@ -141,7 +141,7 @@ Complete navigation for all documentation with quick links by goal.
 ```
 Z-Beam Generator
 ├── Content Generation (Single-Pass)
-│   ├── Components: caption, subtitle, faq, description
+│   ├── Components: micro, subtitle, faq, description
 │   ├── AI Providers: Grok, DeepSeek
 │   └── SimpleGenerator: One API call, atomic writes
 │
@@ -278,7 +278,7 @@ See LICENSE file for details.
 - **🔍 INTEGRATED**: Automatic pre-generation integrity validation
 - **⚡ PERFORMANCE**: Quick checks complete in ~20ms (minimal overhead)
 - **🛡️ VALIDATION**: 5 categories (config mapping, parameter propagation, API health, docs alignment, test validity)
-- **✅ COVERAGE**: Integrated in caption, subtitle, FAQ, and unified workflow
+- **✅ COVERAGE**: Integrated in micro, subtitle, FAQ, and unified workflow
 - **🚀 CLI FLAGS**: `--integrity-check` for standalone, `--skip-integrity-check` to bypass
 - **📊 RESULTS**: 4 passed, 1 warning (penalties not in bundle - expected with legacy system)
 - **🧪 TESTING**: 15+ unit tests + 3 integration tests covering all functionality
@@ -296,7 +296,7 @@ See LICENSE file for details.
 
 ### November 13, 2025: Processing Pipeline Architecture ✅ **NEW**
 - **🏗️ IMPLEMENTED**: Unified `/processing` module for flexible content generation
-- **📦 COMPONENTS**: 5 types supported (subtitle, caption, description, faq, troubleshooter)
+- **📦 COMPONENTS**: 5 types supported (subtitle, micro, description, faq, troubleshooter)
 - **🌐 DOMAINS**: 2 domains (materials, settings) with easy extension
 - **🎯 ARCHITECTURE**: Specification-driven design (ComponentRegistry + DomainContext)
 - **🤖 AI DETECTION**: Ensemble detection (pattern + optional ML) with < 30% target
@@ -1175,7 +1175,7 @@ python3 -m pytest test_*.py -v
 - **PropertyResearcher Integration**: Tests two-stage property discovery system
 - **Architecture Stability**: Validates core architectural patterns and reliability
 
-#### Caption Integration Tests (`tests/test_caption_integration.py`)
+#### Micro Integration Tests (`tests/test_caption_integration.py`)
 - **Case-Insensitive Resolution**: Material name variations handled correctly
 - **End-to-End AI Generation**: Complete pipeline with real API clients
 - **Content Consistency**: Cross-case variation validation
@@ -1195,7 +1195,7 @@ All integration tests passing for consolidated 6-component architecture:
 - ✅ **Dependency validation** for author and badgesymbol components
 - ✅ **Schema compliance** for all generated content
 - ✅ **PropertyResearcher** integration and confidence thresholds
-- ✅ **Caption integration** with 100% test pass rate (12/12 tests passing)
+- ✅ **Micro integration** with 100% test pass rate (12/12 tests passing)
 
 ## ✅ System Status
 
@@ -1210,7 +1210,7 @@ All component consolidation work has been completed successfully:
 - ✅ **Factory Pattern Working**: ComponentGeneratorFactory supports all 6 components
 - ✅ **Testing Complete**: Integration test suite covers all workflows
 - ✅ **Documentation Updated**: Architecture guide and main README refreshed
-- ✅ **Caption Integration Complete**: AI-powered caption generation integrated with Materials.yaml storage
+- ✅ **Micro Integration Complete**: AI-powered caption generation integrated with Materials.yaml storage
 
 ### Recent Achievements
 - **210 files removed** during consolidation (metricsproperties, metricsmachinesettings, text components)

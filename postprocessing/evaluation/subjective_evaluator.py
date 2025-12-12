@@ -119,7 +119,7 @@ class SubjectiveEvaluator:
         self,
         content: str,
         material_name: str,
-        component_type: str = "caption",
+        component_type: str = "micro",
         context: Optional[Dict[str, Any]] = None
     ) -> SubjectiveEvaluationResult:
         """
@@ -505,7 +505,7 @@ class SubjectiveEvaluator:
 def evaluate_content(
     content: str,
     material_name: str,
-    component_type: str = "caption",
+    component_type: str = "micro",
     api_client = None,
     verbose: bool = True
 ) -> SubjectiveEvaluationResult:
@@ -548,7 +548,7 @@ if __name__ == "__main__":
     result = evaluate_content(
         content=test_content,
         material_name="Aluminum",
-        component_type="caption",
+        component_type="micro",
         verbose=True
     )
     

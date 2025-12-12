@@ -70,7 +70,7 @@ winston_feedback_db_path: "z-beam.db"    # SQLite database for Winston feedback
 # Word counts are defined in domain prompts (Option B: Prompts Only)
 # Config only defines HOW to parse the LLM output
 component_extraction:
-  caption:
+  micro:
     extraction_strategy: before_after  # Extract before/after paragraphs
   material_description:
     extraction_strategy: raw            # Return text as-is
@@ -87,7 +87,7 @@ component_extraction:
 # Used by config_loader.get_max_tokens() to calculate API max_tokens
 # Calculation: target_words × 1.3 = tokens
 component_lengths:
-  caption:
+  micro:
     target: 50                          # ~65 tokens
   material_description:
     target: 100                         # ~130 tokens

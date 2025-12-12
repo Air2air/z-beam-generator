@@ -1,6 +1,6 @@
 # Copilot Generation Guide
 
-**For AI Assistants:** This guide explains how to handle user requests to generate content (subtitles, captions, FAQs, etc.)
+**For AI Assistants:** This guide explains how to handle user requests to generate content (subtitles, micros, FAQs, etc.)
 
 ---
 
@@ -8,7 +8,7 @@
 
 When the user says:
 - "Generate a subtitle for Aluminum"
-- "Create caption for Steel"
+- "Create micro for Steel"
 - "Generate FAQ for Brass"
 - "Make a description for Copper"
 
@@ -24,7 +24,7 @@ All component prompt templates are in `/prompts/`:
 ```
 prompts/
 ├── subtitle.txt           # 15-word subtitle prompts
-├── caption.txt            # 25-word caption prompts
+├── micro.txt            # 25-word caption prompts
 ├── description.txt        # 150-word description prompts
 ├── faq.txt               # FAQ generation prompts
 ├── troubleshooter.txt    # Troubleshooting guide prompts
@@ -58,8 +58,8 @@ length_variation_range: 50         # Length flexibility
 
 ```bash
 # Subtitles (15 words)
-python3 run.py # Captions (25 words)
-python3 run.py --caption "Steel"
+python3 run.py # Micros (25 words)
+python3 run.py --micro "Steel"
 
 # FAQs (2-8 questions, variable length answers)
 python3 run.py --faq "Brass"
@@ -102,7 +102,7 @@ When user requests generation:
 
 1. **Identify the component type:**
    - subtitle → `--subtitle`
-   - caption → `--caption`
+   - caption → `--micro`
    - faq → `--faq`
    - description → (use unified workflow `--run`)
 
@@ -191,7 +191,7 @@ Saved to Materials.yaml. Next step: Apply voice enhancement with voice/enhance_m
 **Copilot Action:**
 ```python
 run_in_terminal(
-    command='python3 run.py --caption "Steel"',
+    command='python3 run.py --micro "Steel"',
     explanation='Generating 25-word caption for Steel',
     isBackground=False
 )
@@ -214,7 +214,7 @@ run_in_terminal(
 
 # Then generate caption
 run_in_terminal(
-    command='python3 run.py --caption "Brass"',
+    command='python3 run.py --micro "Brass"',
     explanation='Generating caption for Brass',
     isBackground=False
 )
@@ -305,7 +305,7 @@ run_in_terminal(
 
 # Then regenerate
 run_in_terminal(
-    command='python3 run.py --caption "Steel"',
+    command='python3 run.py --micro "Steel"',
     explanation='Regenerating caption with increased technical depth',
     isBackground=False
 )
@@ -322,7 +322,7 @@ Generated content is saved to `data/materials/Materials.yaml`:
 ```yaml
 Aluminum:
   subtitle: "Removes oxide layers while preserving aluminum's natural finish"
-  caption: "Laser cleaning targets aluminum oxide at 1064nm wavelength..."
+  micro: "Laser cleaning targets aluminum oxide at 1064nm wavelength..."
   faq:
     - question: "Why choose laser cleaning for aluminum?"
       answer: "Laser cleaning removes contaminants without chemicals..."
@@ -435,7 +435,7 @@ read_file(
 ```bash
 # GENERATION
 python3 run.py # 15 words
-python3 run.py --caption "Material"     # 25 words
+python3 run.py --micro "Material"     # 25 words
 python3 run.py --faq "Material"         # 2-8 Q&As
 python3 run.py --run "Material"         # Complete workflow
 

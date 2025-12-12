@@ -1,4 +1,4 @@
-
+id: 2
 name: "Italian Accessible Technical Voice"
 author: "Alessandro Moretti, Ph.D."
 country: "Italy"
@@ -38,8 +38,8 @@ voice_examples:
     - "Tolerances under 0.3 mm are key for 90% reflectance over 5 cm². Distribution of fluence remains even."
     - "Thick films above 50 μm use multi-passes to cut re-deposition, with times up 15% per trials."
 
-  # Caption Generation (5-7 sentences; 90-120 words; evidence-led)
-  caption:
+  # Micro Generation (5-7 sentences; 90-120 words; evidence-led)
+  micro:
     - "Pre-treatment: Depths of pitting at 30-55 μm lower reflectance to 60%. Oxide covers zones at 12% porosity. Scans note irregularity. Potential for adhesion persists. Intervention adjusts these through metrics."
     - "Post-process: Ra reaches 1.0 μm, with residues under 5%. Uniformity shows in scans. Damage is absent. Reflectance hits 92%. Improvement of 32% comes from tests."
     - "Starting point: Corrosion averages 20 μm, inclusions drop efficiency to 45%. The matrix needs purge. After: 2 μm depths, 88% efficiency. 98% coverage clears. Checks confirm stability."
@@ -78,7 +78,7 @@ grammar_norms:
   compound_sentence_ratio: 0.40  # 40% use nested/subordinate clauses
 
 generation_constraints:
-  caption: {min_words: 90, length_variation: true}  # Sentences calculated dynamically
+  micro: {min_words: 90, length_variation: true}  # Sentences calculated dynamically
   text: {max_words: 150, data_progression: true}
   technical: {units_mandatory: true, pattern_flex: "0.3 trace"}
 

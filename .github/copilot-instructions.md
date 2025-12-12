@@ -56,9 +56,10 @@ Before ANY code change:
 1. [ ] Search `docs/QUICK_REFERENCE.md` for existing guidance
 2. [ ] Check `docs/08-development/` for relevant policy
 3. [ ] Review `docs/SYSTEM_INTERACTIONS.md` for side effects
-4. [ ] Plan minimal fix (one sentence description)
-5. [ ] Verify all file paths exist before coding
-6. [ ] Ask permission before major changes or rewrites
+4. [ ] **Check `.github/PROTECTED_FILES.md`** - Is this file protected?
+5. [ ] Plan minimal fix (one sentence description)
+6. [ ] Verify all file paths exist before coding
+7. [ ] Ask permission before major changes or rewrites
 
 ---
 
@@ -241,7 +242,35 @@ python3 shared/image/learning/analytics.py --manual-feedback
 
 ---
 
-## 🚨 **CRITICAL FAILURE PATTERNS TO AVOID** 🔥 **UPDATED (Nov 22, 2025)**
+## 🚨 **CRITICAL FAILURE PATTERNS TO AVOID** 🔥 **UPDATED (Dec 11, 2025)**
+
+### **Pattern 0A: Bypassing the Text Processing Pipeline** 🔥 **NEW - CRITICAL (Dec 11, 2025)**
+**What It Is**: Generating text without going through QualityEvaluatedGenerator pipeline
+**Why It's Grade F**: Bypasses author voice, AI detection avoidance, quality learning, and architectural consistency
+**Impact**:
+- Content generated without author voice consistency (violates immutability policy)
+- No humanness layer applied (fails AI detection)
+- No quality evaluation or learning (system doesn't improve)
+- Inconsistent text quality across domains
+**Correct Behavior**:
+```python
+# ✅ CORRECT - All text goes through pipeline
+from generation.core.evaluated_generator import QualityEvaluatedGenerator
+result = generator.generate(material_name, component_type, author_id)
+
+# ❌ WRONG - Direct API call bypasses pipeline
+text = api_client.generate(prompt, temperature=0.7)
+
+# ❌ WRONG - Custom generation logic
+text = custom_function(material)
+```
+
+**MANDATORY REQUIREMENTS (Dec 11, 2025):**
+1. **Universal Pipeline** - ALL text in ALL domains uses QualityEvaluatedGenerator
+2. **Single Voice Source** - ONLY `shared/prompts/personas/*.yaml` defines voice
+3. **Zero Bypass** - NO text generated outside pipeline (NO EXCEPTIONS)
+
+**Grade:** F violation - Immediate architectural failure
 
 ### **Pattern 0: Documentation Claims Contradicting Code Reality** 🔥 **NEW - MOST CRITICAL**
 **What Happened**: Documentation claimed "Option C implemented - saves all attempts" but code was still blocking saves (10% success rate proved gates were active)
@@ -432,15 +461,56 @@ Before documenting as "COMPLETE":
 
 ---
 
+## 🔒 **PROTECTED FILES POLICY** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
+
+**MANDATORY: Check `.github/PROTECTED_FILES.md` before modifying any file.**
+
+### Quick Reference - Files That Require Permission
+
+**TIER 1 (NEVER TOUCH without explicit permission)**:
+- `shared/prompts/personas/*.yaml` - Author voice definitions
+- `domains/*/prompts/*.txt` - Domain prompt templates
+- `generation/core/evaluated_generator.py` - Main generation orchestrator (25KB+)
+- `generation/core/generator.py` - Core generation logic
+- `shared/text/utils/prompt_builder.py` - Prompt assembly (has known bug, needs surgical fix only)
+
+**TIER 2 (ASK FIRST)**:
+- `generation/config.yaml`, `domains/*/config.yaml` - All configuration files
+- `data/materials/Materials.yaml`, `data/settings/Settings.yaml` - Primary data files
+- `learning/*.py` - Learning system files
+
+**TIER 3 (VERIFY WITH TESTS)**:
+- `domains/*/coordinator.py` - Coordination logic
+- `domains/*/data_loader.py` - Data loading utilities
+- `shared/text/adapters/*.py` - Domain adapters
+
+### Required Protocol
+
+**Before ANY modification**:
+1. Check if file is in `.github/PROTECTED_FILES.md`
+2. If TIER 1: **STOP and ASK user for permission**
+3. If TIER 2: **EXPLAIN impact and wait for approval**
+4. If TIER 3: **PROCEED but verify with tests**
+
+**Common Mistakes to Avoid**:
+- ❌ "The prompt isn't working" → Rewriting prompt file
+- ❌ "Generation is slow" → Modifying generator.py
+- ❌ "Voice needs work" → Changing persona files
+- ✅ **ALWAYS ask first, suggest minimal changes, respect existing architecture**
+
+**Full details**: `.github/PROTECTED_FILES.md`
+
+---
+
 ## 📖 **Detailed Navigation for AI Assistants**
 
 **🔍 Already checked 30-SECOND QUICK START above?** If not, scroll to top first.
 
 ### **User Requests Content Generation?**
 → **READ THIS FIRST**: `.github/COPILOT_GENERATION_GUIDE.md`
-- Handles: "Generate material description for Aluminum", "Create caption for Steel", etc.
+- Handles: "Generate material description for Aluminum", "Create micro for Steel", etc.
 - Shows: Exact commands to run, terminal output handling, result reporting
-- Covers: All component types (material_description, caption, FAQ, settings_description)
+- Covers: All component types (material_description, micro, FAQ, settings_description)
 
 ### **Need Documentation?**
 → **PRIMARY GUIDE**: `docs/08-development/AI_ASSISTANT_GUIDE.md` - 30-second navigation (NEW)
@@ -772,6 +842,9 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 **GOLDEN RULES:**
 - 🚫 **NEVER rewrite working code**
 - 🚫 **NEVER expand beyond requested scope**
+- 🚫 **NEVER bypass text processing pipeline** - ALL text uses QualityEvaluatedGenerator 🔥 **NEW (Dec 11, 2025)**
+- 🚫 **NEVER generate text with direct API calls** - Use pipeline ONLY 🔥 **NEW (Dec 11, 2025)**
+- 🚫 **NEVER put voice instructions outside personas/*.yaml** - Single source only 🔥 **NEW (Dec 11, 2025)**
 - 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
 - ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
@@ -938,19 +1011,50 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 
 ## 📖 Core Principles
 
-### 1. **No Mocks or Fallbacks in Production Code**
+### 0. **Universal Text Processing Pipeline** 🔥 **NEW MANDATE (Dec 11, 2025)**
+ALL text generation MUST go through the standardized processing pipeline. **ZERO EXCEPTIONS**.
+
+**MANDATORY ARCHITECTURE:**
+- ✅ **ALL domains use QualityEvaluatedGenerator** - materials, contaminants, settings, future domains
+- ✅ **ONLY `shared/prompts/personas/*.yaml` defines voice** - Single source of truth for author voice
+- ✅ **NO bypassing pipeline** - No direct API calls, no custom generation logic
+- ❌ **NO voice instructions in domain prompts** - Use `{voice_instruction}` placeholder only
+- ❌ **NO text generation outside pipeline** - Every text component uses evaluated_generator
+
+**Pipeline ensures:**
+- Author voice consistency (persona-based, immutable)
+- AI detection avoidance (humanness layer)
+- Quality evaluation and learning
+- Structural diversity
+- Parameter optimization
+
+**Grade:** F violation if ANY text bypasses this pipeline
+
+**Documentation:** `docs/02-architecture/processing-pipeline.md`
+
+### 1. **No Mocks or Fallbacks in Production Code** 🔥 **MANDATORY FIRM POLICY (Dec 11, 2025)**
 System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for:
 - MockAPIClient or mock responses in production
-- Default values that bypass validation (`or "default"`)
+- Default values that bypass validation (`or "default"`, `.get('key', 'default')`)
 - Skip logic that bypasses checks (`if not exists: return True`)
 - Placeholder return values (`return {}`)
 - Silent failures (`except: pass`)
 - **Category fallback ranges** (`if prop missing: use category_range`)
 - **Template fallbacks** (`if data missing: use template`)
+- **Any defaults in generators** - Generators MUST fail if data/config missing
+
+**FIRM POLICY applies to:**
+- ✅ **ALL generators** - Must fail fast if data/config/dependencies missing
+- ✅ **ALL data loaders** - Must fail if files missing (no empty returns)
+- ✅ **ALL configuration** - Must fail if required keys missing (no defaults)
+- ✅ **ALL API clients** - Must fail if credentials missing (no mock mode)
+- ✅ **ALL validators** - Must fail if validation impossible (no skip logic)
 
 **✅ EXCEPTION**: Mocks and fallbacks **ARE ALLOWED in test code** for proper testing infrastructure.
 
 **🔍 TESTING REQUIREMENT**: Part of testing should include verifying ZERO presence of mocks and fallbacks in production code.
+
+**Grade:** F violation for ANY default/fallback in production code, especially generators.
 
 ### 2. **No Hardcoded Values in Production Code** 🔥 **NEW POLICY**
 All configuration values MUST come from config files or dynamic calculation. **ZERO TOLERANCE** for:
@@ -975,7 +1079,7 @@ All required components must be explicitly provided - no silent degradation.
 **ALL generation and validation happens on Materials.yaml ONLY.**
 
 - ✅ **Materials.yaml** - Single source of truth + all generation/validation happens here
-  - ALL AI text generation (captions, descriptions, etc.)
+  - ALL AI text generation (micros, descriptions, etc.)
   - ALL property research and discovery
   - ALL completeness validation
   - ALL quality scoring and thresholds
@@ -994,11 +1098,11 @@ All required components must be explicitly provided - no silent degradation.
 - ✅ **Dual-Write**: Every Materials.yaml update triggers frontmatter field sync
 
 ### 🚨 **MANDATORY: Field Isolation During Generation** 🔥 **NEW (Nov 22, 2025)**
-**Component generation flags (--description, --caption, etc.) MUST ONLY update the specified field.**
+**Component generation flags (--description, --micro, etc.) MUST ONLY update the specified field.**
 
-- ✅ `--description` → Updates ONLY description field (preserves caption, faq, author, etc.)
-- ✅ `--caption` → Updates ONLY caption field (preserves description, faq, etc.)
-- ✅ `--faq` → Updates ONLY faq field (preserves description, caption, etc.)
+- ✅ `--description` → Updates ONLY description field (preserves micro, faq, author, etc.)
+- ✅ `--micro` → Updates ONLY caption field (preserves description, faq, etc.)
+- ✅ `--faq` → Updates ONLY faq field (preserves description, micro, etc.)
 - ❌ **VIOLATION**: Overwriting ANY unrelated field during component generation
 
 **Enforcement**: 15 automated tests verify field isolation (`tests/test_frontmatter_partial_field_sync.py`)
@@ -1158,18 +1262,18 @@ See `docs/prompts/CONTENT_INSTRUCTION_POLICY.md` for complete policy.
 **Component types MUST ONLY be defined in prompts/*.txt and config.yaml.**
 
 - ✅ **prompts/*.txt files** - Define component types by filename
-  - Create `prompts/caption.txt` to define 'caption' component
+  - Create `prompts/micro.txt` to define 'micro' component
   - Create `prompts/material_description.txt` to define 'material_description' component
   - Each .txt file = one component type
 - ✅ **config.yaml** - Define component word counts
   ```yaml
   component_lengths:
-    caption: 25
+    micro: 25
     material_description: 15
   ```
 - ❌ **processing/*.py files** - NO hardcoded component types
-  - ❌ `if component_type == 'caption':`
-  - ❌ `SPEC_DEFINITIONS = {'caption': {...}}`
+  - ❌ `if component_type == 'micro':`
+  - ❌ `SPEC_DEFINITIONS = {'micro': {...}}`
   - ❌ Hardcoded component lists
 - ✅ **Dynamic Discovery**: Components discovered at runtime from prompts/
 - ✅ **Generic Code**: Use `component_type` parameter, iterate `ComponentRegistry.list_types()`
@@ -1185,14 +1289,14 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
   - Format specifications, example outputs, voice/tone rules
   - COMPLETE content strategy for each component type
 - ❌ **processing/*.py** - ZERO component-specific code
-  - ❌ NO `if component_type == 'caption':` checks
-  - ❌ NO component-specific methods (`_build_caption_prompt()`, `_extract_caption()`)
+  - ❌ NO `if component_type == 'micro':` checks
+  - ❌ NO component-specific methods (`_build_caption_prompt()`, `_extract_micro()`)
   - ❌ NO hardcoded content instructions in code
   - ❌ NO component-specific extraction logic in generators
 - ✅ **Strategy Pattern**: Use `extraction_strategy` in config.yaml
   ```yaml
   component_lengths:
-    caption:
+    micro:
       default: 50
       extraction_strategy: before_after  # Strategy-based extraction
     material_description:
@@ -1202,7 +1306,7 @@ See `docs/architecture/COMPONENT_DISCOVERY.md` for complete policy.
 - ✅ **Generic Methods**: Use strategy dispatch, not component checks
   - ✅ `adapter.extract_content(text, component_type)` - delegates to strategy
   - ✅ `_load_prompt_template(component_type)` - loads generic template
-  - ❌ `_extract_caption(text)` - component-specific method
+  - ❌ `_extract_micro(text)` - component-specific method
 - ✅ **Full Reusability**: /processing works for ANY domain (materials, contaminants, regions)
 - ✅ **Zero Code Changes**: Add new component = create template + config entry only
 
@@ -1234,7 +1338,7 @@ See `docs/08-development/TEMPLATE_ONLY_POLICY.md` for complete policy.
   - ❌ `prompt.replace("text", "YOU MUST NOT...")`
   - ❌ Inline content instructions of any kind
 - ✅ **Generator code** - Load prompts from templates ONLY
-  - ✅ `prompt = self._load_prompt_template('caption.txt')`
+  - ✅ `prompt = self._load_prompt_template('micro.txt')`
   - ✅ Technical parameters (temperature, penalties) in code
   - ✅ Data insertion (material names, properties) allowed
 - ✅ **ENFORCEMENT**: Automated tests verify zero hardcoded prompts
@@ -1304,7 +1408,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
 **Purpose**: Provides complete transparency and verification of generation results.
 **Implementation**: `shared/commands/generation.py` - all generation handlers
-**Compliance**: Mandatory for caption, material_description, FAQ generation
+**Compliance**: Mandatory for micro, material_description, FAQ generation
 
 ### 13. **Voice Instruction Centralization Policy** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
 **ALL voice, tone, and style instructions MUST exist ONLY in persona files.**

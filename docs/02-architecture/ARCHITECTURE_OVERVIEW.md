@@ -135,7 +135,7 @@ z-beam-generator/
 ## 🔄 **Generation Pipeline**
 
 ### Text Generation Flow
-1. **Input**: Material name + component type (caption, description, faq)
+1. **Input**: Material name + component type (micro, description, faq)
 2. **Template Loading**: Load `domains/{domain}/prompts/{component}.txt`
 3. **Prompt Building**: Inject material data into template
 4. **Generation**: Single-pass API call with humanness layer

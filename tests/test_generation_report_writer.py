@@ -32,7 +32,7 @@ def test_report_contains_required_sections(tmp_path):
     
     writer.save_individual_report(
         material_name="Steel",
-        component_type="caption",
+        component_type="micro",
         content="BEFORE: Dirty\nAFTER: Clean"
     )
     
@@ -41,7 +41,7 @@ def test_report_contains_required_sections(tmp_path):
     # Check required sections
     assert "# Generation Report" in content
     assert "**Material**: Steel" in content
-    assert "**Component**: caption" in content
+    assert "**Component**: micro" in content
     assert "## 📝 Generated Content" in content
     assert "## 📏 Statistics" in content
     assert "## 💾 Storage" in content
@@ -86,7 +86,7 @@ def test_report_overwrites_on_second_generation(tmp_path):
     # Second generation (should overwrite)
     writer.save_individual_report(
         material_name="Titanium",
-        component_type="caption",
+        component_type="micro",
         content="Second generation content"
     )
     

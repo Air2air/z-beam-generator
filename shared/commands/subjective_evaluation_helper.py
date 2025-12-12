@@ -30,7 +30,7 @@ class SubjectiveEvaluationHelper:
         result = helper.evaluate_generation(
             content=generated_text,
             topic="Aluminum",
-            component_type="caption",
+            component_type="micro",
             domain="materials"
         )
         
@@ -73,7 +73,7 @@ class SubjectiveEvaluationHelper:
         self,
         content: str,
         topic: str,  # Changed from material_name for reusability
-        component_type: str = "caption",
+        component_type: str = "micro",
         domain: str = "materials",
         context: Optional[Dict[str, Any]] = None,
         fail_on_low_quality: bool = False,
@@ -86,7 +86,7 @@ class SubjectiveEvaluationHelper:
         Args:
             content: Generated text to evaluate
             topic: Subject matter (material name, historical event, recipe name, etc.)
-            component_type: Type of content (caption, subtitle, etc.)
+            component_type: Type of content (micro, subtitle, etc.)
             domain: Content domain (materials, history, recipes, etc.)
             context: Additional context (properties, author, etc.)
             fail_on_low_quality: Raise exception if quality gate fails
@@ -148,7 +148,7 @@ class SubjectiveEvaluationHelper:
         self,
         generations: Dict[str, str],
         topic: str,
-        component_type: str = "caption",
+        component_type: str = "micro",
         domain: str = "materials"
     ) -> Dict[str, SubjectiveEvaluationResult]:
         """
@@ -227,7 +227,7 @@ class SubjectiveEvaluationHelper:
 def evaluate_after_generation(
     content: str,
     topic: str,  # Changed from material_name for reusability
-    component_type: str = "caption",
+    component_type: str = "micro",
     domain: str = "materials",
     api_client = None,
     verbose: bool = True,

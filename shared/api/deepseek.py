@@ -165,8 +165,8 @@ Generate high-quality, accurate, and professional content that follows industry 
 - Use parallel structure and consistent formatting
 - Include specific measurements and technical details
 - Prioritize most important information first""",
-            "caption": """
-- Generate descriptive, informative image captions
+            "micro": """
+- Generate descriptive, informative image micros
 - Include technical context and relevant details
 - Describe visual elements and technical processes
 - Use appropriate technical terminology

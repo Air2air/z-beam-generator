@@ -107,7 +107,7 @@ class FrontmatterOrchestrator:
             self.logger.debug("6/6 Extracting media...")
             media_data = self.media_module.generate(material_data)
             frontmatter['images'] = media_data['images']
-            frontmatter['caption'] = media_data['caption']
+            frontmatter['micro'] = media_data['micro']
             
             # Optional: Include FAQ
             if include_faq and 'faq' in material_data:

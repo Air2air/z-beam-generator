@@ -87,7 +87,7 @@ class TestVoiceInstructionCentralization:
                 error_msg += f"File: {v['file']}\n"
                 error_msg += f"Pattern: {v['pattern']}\n"
                 error_msg += f"Context: ...{v['context']}...\n\n"
-            error_msg += "❌ Voice instructions must ONLY exist in shared/prompts/personas/*.yaml\n"
+            error_msg += "❌ Voice instructions must ONLY exist in shared/voice/profiles/*.yaml\n"
             error_msg += "✅ Use {voice_instruction} placeholder instead\n"
             pytest.fail(error_msg)
     
@@ -163,8 +163,8 @@ class TestVoiceInstructionCentralization:
                 error_msg += f"File: {v['file']}:{v['line']}\n"
                 error_msg += f"Pattern: {v['pattern']}\n"
                 error_msg += f"Code: {v['context']}\n\n"
-            error_msg += "❌ Voice instructions must ONLY exist in shared/prompts/personas/*.yaml\n"
-            error_msg += "✅ Load persona and use persona['core_voice_instruction'] instead\n"
+            error_msg += "❌ Voice instructions must ONLY exist in shared/voice/profiles/*.yaml\n"
+            error_msg += "✅ Load voice profile and use profile['core_voice_instruction'] instead\n"
             pytest.fail(error_msg)
     
     def test_shared_code_no_voice_overrides(self, shared_code):

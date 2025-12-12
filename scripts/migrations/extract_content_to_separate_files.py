@@ -3,7 +3,7 @@
 Extract Content from Materials.yaml to Separate Files
 
 Extracts caption, faq, and regulatoryStandards from Materials.yaml into:
-- materials/data/content/Captions.yaml
+- materials/data/content/Micros.yaml
 - materials/data/content/FAQs.yaml
 - materials/data/content/RegulatoryStandards.yaml
 
@@ -32,7 +32,7 @@ def extract_content():
     materials_file = project_root / 'materials' / 'data' / 'Materials.yaml'
     content_dir = project_root / 'materials' / 'data' / 'content'
     
-    captions_file = content_dir / 'Captions.yaml'
+    captions_file = content_dir / 'Micros.yaml'
     faqs_file = content_dir / 'FAQs.yaml'
     regulatory_file = content_dir / 'RegulatoryStandards.yaml'
     
@@ -45,20 +45,20 @@ def extract_content():
     print(f"✅ Loaded {len(materials_section)} materials\n")
     
     # Extract data
-    captions = {}
+    micros = {}
     faqs = {}
     regulatory_standards = {}
     
-    caption_count = 0
+    micro_count = 0
     faq_count = 0
     regulatory_count = 0
     
     print("🔄 Extracting content...")
     for material_name, material_data in materials_section.items():
-        # Extract captions
-        if 'caption' in material_data:
-            captions[material_name] = material_data['caption']
-            caption_count += 1
+        # Extract micros
+        if 'micro' in material_data:
+            micros[material_name] = material_data['micro']
+            micro_count += 1
         
         # Extract FAQs
         if 'faq' in material_data:
@@ -70,7 +70,7 @@ def extract_content():
             regulatory_standards[material_name] = material_data['regulatoryStandards']
             regulatory_count += 1
     
-    print(f"   ✅ Extracted {caption_count} captions")
+    print(f"   ✅ Extracted {micro_count} micros")
     print(f"   ✅ Extracted {faq_count} FAQ sets")
     print(f"   ✅ Extracted {regulatory_count} regulatory standard sets\n")
     
@@ -82,19 +82,19 @@ def extract_content():
         'schema_version': '1.0.0'
     }
     
-    # Write Captions.yaml
+    # Write Micros.yaml
     print(f"💾 Writing {captions_file.name}...")
     captions_output = {
         '_metadata': {
             **extraction_metadata,
-            'description': 'Material-specific before/after captions extracted from Materials.yaml',
-            'total_entries': len(captions)
+            'description': 'Material-specific before/after micros extracted from Materials.yaml',
+            'total_entries': len(micros)
         },
-        'captions': captions
+        'micros': micros
     }
     with open(captions_file, 'w', encoding='utf-8') as f:
         yaml.dump(captions_output, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
-    print(f"   ✅ Wrote {len(captions)} captions ({captions_file.stat().st_size // 1024}KB)")
+    print(f"   ✅ Wrote {len(micros)} micros ({captions_file.stat().st_size // 1024}KB)")
     
     # Write FAQs.yaml
     print(f"💾 Writing {faqs_file.name}...")
@@ -128,10 +128,10 @@ def extract_content():
     print("\n" + "="*80)
     print("📊 EXTRACTION SUMMARY")
     print("="*80)
-    print(f"   Captions:            {len(captions)} materials → {captions_file.name}")
+    print(f"   Micros:            {len(micros)} materials → {captions_file.name}")
     print(f"   FAQs:                {len(faqs)} materials → {faqs_file.name}")
     print(f"   Regulatory Standards: {len(regulatory_standards)} materials → {regulatory_file.name}")
-    print(f"\n   Total extracted entries: {caption_count + faq_count + regulatory_count}")
+    print(f"\n   Total extracted entries: {micro_count + faq_count + regulatory_count}")
     print("="*80 + "\n")
     
     print("✅ Content extraction complete!")

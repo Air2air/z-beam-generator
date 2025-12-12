@@ -18,7 +18,7 @@ Usage:
     from generation.utils.frontmatter_sync import sync_field_to_frontmatter
     
     # After saving to any domain YAML
-    sync_field_to_frontmatter('Aluminum', 'caption', new_content, domain='materials')
+    sync_field_to_frontmatter('Aluminum', 'micro', new_content, domain='materials')
     sync_field_to_frontmatter('Aluminum', 'settings_description', new_content, domain='settings')
 """
 
@@ -79,7 +79,7 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
     
     Args:
         item_name: Name of item
-        field_name: Field to update (e.g., 'settings_description', 'material_description', 'caption')
+        field_name: Field to update (e.g., 'settings_description', 'material_description', 'micro')
         field_value: New value for field
         domain: Domain name (e.g., 'materials', 'settings')
         

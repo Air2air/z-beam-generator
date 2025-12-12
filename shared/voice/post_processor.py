@@ -40,7 +40,7 @@ class VoicePostProcessor:
     Design Philosophy:
     - Single Responsibility: Only voice enhancement, nothing else
     - Minimal Interface: text + author → enhanced_text
-    - No Dependencies: Doesn't know about materials, FAQs, captions, etc.
+    - No Dependencies: Doesn't know about materials, FAQs, micros, etc.
     - Reusable: Works with any text from any component
     - Configurable: All behavior controlled by caller
     """

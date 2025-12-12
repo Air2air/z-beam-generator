@@ -3,7 +3,7 @@ Consolidated Validation Core
 
 Provides unified validation interface through 4 core modules:
 - base_validator: Abstract base class and validation framework
-- content: Content quality, author voice, caption integration
+- content: Content quality, author voice, micro integration
 - schema: Schema validation and duplication detection  
 - quality: Quality scoring and thresholds
 
@@ -22,7 +22,7 @@ from shared.validation.core.base_validator import (
 
 from shared.validation.core.content import (
     ContentValidator,
-    CaptionIntegrationValidator,
+    MicroIntegrationValidator,
     ContentQualityScore
 )
 
@@ -41,7 +41,7 @@ __all__ = [
     
     # Content validation
     'ContentValidator',
-    'CaptionIntegrationValidator',
+    'MicroIntegrationValidator',
     'ContentQualityScore',
     
     # Schema validation

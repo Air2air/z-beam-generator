@@ -276,7 +276,7 @@ def validate_components():
     
     expected_components = [
         'frontmatter', 'text', 'table', 'author', 'bullets',
-        'metatags', 'jsonld', 'tags', 'caption'
+        'metatags', 'jsonld', 'tags', 'micro'
     ]
     
     for component_type in expected_components:
@@ -613,7 +613,7 @@ def validate_generated_content(material_name: str, component_type: str,
         validation_result['metrics']['word_count'] = word_count
     
     # YAML format validation
-    if component_type in ['frontmatter', 'table', 'author', 'bullets', 'metatags', 'jsonld', 'tags', 'caption']:
+    if component_type in ['frontmatter', 'table', 'author', 'bullets', 'metatags', 'jsonld', 'tags', 'micro']:
         try:
             parsed_yaml = yaml.safe_load(content)
             validation_result['metrics']['yaml_valid'] = True

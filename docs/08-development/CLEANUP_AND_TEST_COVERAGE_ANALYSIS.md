@@ -55,7 +55,7 @@ rm scripts/validation/enhanced_schema_validator.py
 **Status**: 14/14 tests passing ✅ (was 0/14 failing)
 
 **Failed Tests**:
-1. ❌ `test_caption_update_preserves_all_other_fields`
+1. ❌ `test_micro_update_preserves_all_other_fields`
 2. ❌ `test_faq_update_preserves_all_other_fields`
 3. ❌ `test_sequential_field_updates`
 4. ❌ `test_uses_atomic_write_temp_file_rename`
@@ -64,8 +64,8 @@ rm scripts/validation/enhanced_schema_validator.py
 7. ❌ `test_settings_description_routes_to_settings_dir`
 8. ❌ `test_description_generation_workflow`
 9. ❌ `test_component_summaries_routes_to_settings_dir`
-10. ❌ `test_caption_routes_to_materials_dir`
-11. ❌ `test_caption_generation_workflow`
+10. ❌ `test_micro_routes_to_materials_dir`
+11. ❌ `test_micro_generation_workflow`
 12. ❌ `test_material_description_routes_to_materials_dir`
 13. ❌ `test_description_update_preserves_all_other_fields`
 14. ❌ `test_material_description_update_preserves_all_other_fields`
@@ -289,11 +289,11 @@ tests/integration/test_voice_compliance_e2e.py     # Voice validation
 
 **Policy Requirement**:
 ```
-Component generation flags (--description, --caption, etc.) 
+Component generation flags (--description, --micro, etc.) 
 MUST ONLY update the specified field.
 
 ✅ --description → Updates ONLY description field
-✅ --caption → Updates ONLY caption field  
+✅ --micro → Updates ONLY caption field  
 ✅ --faq → Updates ONLY faq field
 ❌ VIOLATION: Overwriting ANY unrelated field
 ```
@@ -309,7 +309,7 @@ Possible root causes (investigation needed):
 **Required Investigation**:
 ```bash
 # Debug test execution
-python3 -m pytest tests/test_frontmatter_partial_field_sync.py::TestPartialFieldUpdate::test_caption_update_preserves_all_other_fields -vv
+python3 -m pytest tests/test_frontmatter_partial_field_sync.py::TestPartialFieldUpdate::test_micro_update_preserves_all_other_fields -vv
 
 # Check frontmatter_sync implementation
 grep -A 20 "def sync_field" generation/utils/frontmatter_sync.py

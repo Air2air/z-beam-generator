@@ -427,7 +427,7 @@ class MaterialImporter:
                         'url': f"/images/material/{name.lower().replace(' ', '-').replace('(', '').replace(')', '')}-laser-cleaning-micro.jpg"
                     }
                 },
-                'caption': {
+                'micro': {
                     'before': f"{name} laser cleaning requires careful parameter selection to optimize contamination removal while preserving substrate integrity.",
                     'after': ''
                 },
@@ -488,7 +488,7 @@ class MaterialImporter:
             'title': material_data.get('title', f"{material_data['name']} Laser Cleaning"),
             'author': material_data.get('author', {}),
             'images': material_data.get('images', {}),
-            'caption': material_data.get('caption', {}),
+            'micro': material_data.get('micro', {}),
             'regulatoryStandards': material_data.get('regulatoryStandards', []),
             'materialProperties': material_data.get('materialProperties', {}),
             'material_description': material_data.get('material_description', f"Laser cleaning parameters and specifications for {material_data['name']}")

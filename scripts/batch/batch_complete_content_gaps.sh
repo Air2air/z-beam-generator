@@ -57,7 +57,7 @@ while IFS= read -r material; do
     echo "" | tee -a "$LOG_FILE"
     echo "[$CAPTION_COUNT/114] Generating Caption: $material" | tee -a "$LOG_FILE"
     
-    if python3 run.py --caption "$material" --skip-integrity-check >> "$LOG_FILE" 2>&1; then
+    if python3 run.py --micro "$material" --skip-integrity-check >> "$LOG_FILE" 2>&1; then
         CAPTION_SUCCESS=$((CAPTION_SUCCESS + 1))
         echo "  ✅ SUCCESS" | tee -a "$LOG_FILE"
     else

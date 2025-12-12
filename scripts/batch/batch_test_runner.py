@@ -38,7 +38,7 @@ for i, material in enumerate(materials, 1):
     test_start = time.time()
     
     # Run caption generation with real-time output
-    cmd = ["python3", "run.py", "--caption", material]
+    cmd = ["python3", "run.py", "--micro", material]
     
     print(f"🚀 Running: {' '.join(cmd)}")
     print()

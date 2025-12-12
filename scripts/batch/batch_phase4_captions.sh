@@ -55,7 +55,7 @@ for INDEX in "${!MATERIALS[@]}"; do
     echo -e "${BLUE}📸 [$ACTUAL_INDEX/$TOTAL] Generating caption: ${MATERIAL}${NC}" | tee -a "$LOG_FILE"
     echo -e "⏰ Started: $(date)" | tee -a "$LOG_FILE"
     
-    if python3 run.py --caption "$MATERIAL" --skip-integrity-check >> "$LOG_FILE" 2>&1; then
+    if python3 run.py --micro "$MATERIAL" --skip-integrity-check >> "$LOG_FILE" 2>&1; then
         echo -e "${GREEN}✅ SUCCESS: ${MATERIAL}${NC}" | tee -a "$LOG_FILE"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     else

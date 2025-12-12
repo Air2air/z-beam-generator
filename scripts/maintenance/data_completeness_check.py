@@ -17,7 +17,7 @@ from typing import Dict, List, Tuple
 # TIER DEFINITIONS
 FIELD_TIERS = {
     'critical_ai_content': {
-        'materials': ['material_description', 'caption', 'faq'],
+        'materials': ['material_description', 'micro', 'faq'],
         'settings': ['settings_description'],
         'description': 'AI-generated text content',
         'required': True,
@@ -95,7 +95,7 @@ def check_materials_completeness() -> Dict:
                 # Determine field type
                 if field in ['material_description', 'faq', 'name', 'category', 'title']:
                     field_type = 'string'
-                elif field in ['caption', 'author', 'images', 'materialProperties']:
+                elif field in ['micro', 'author', 'images', 'materialProperties']:
                     field_type = 'dict'
                 elif field in ['applications', 'materialCharacteristics', 'regulatoryStandards', 'breadcrumb']:
                     field_type = 'list'
@@ -309,7 +309,7 @@ def print_summary(materials_stats: Dict, settings_stats: Dict):
     print("   • Tier 2 (Structural Metadata) = 100%")
     print()
     print("💡 Quick Commands:")
-    print("   python3 run.py --caption \"MaterialName\" --skip-integrity-check")
+    print("   python3 run.py --micro \"MaterialName\" --skip-integrity-check")
     print("   python3 run.py --material-description \"MaterialName\" --skip-integrity-check")
     print("   python3 run.py --faq \"MaterialName\" --skip-integrity-check")
     print()

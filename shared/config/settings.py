@@ -20,7 +20,7 @@ GLOBAL_OPERATIONAL_CONFIG = {
     # Default timeout settings for scripts and batch operations
     "batch_timeouts": {
         "default_per_material": 120,  # 2 minutes per material
-        "caption_generation": 60,     # 1 minute for caption generation  
+        "micro_generation": 60,     # 1 minute for caption generation  
         "frontmatter_generation": 60, # 1 minute for frontmatter
         "jsonld_generation": 120      # 2 minutes for JSON-LD
     },
@@ -160,7 +160,7 @@ API_PROVIDERS = {
         "env_var": "DEEPSEEK_API_KEY",
         "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat",
-        "max_tokens": 500,  # Increased for caption generation
+        "max_tokens": 500,  # Increased for micro generation
         "temperature": 0.9,  # Match simple_mode fixed temperature
         "timeout_connect": 60,  # Increased significantly to prevent hangs
         "timeout_read": 180,    # Increased significantly for reliability
@@ -201,7 +201,7 @@ API_PROVIDERS = {
         "base_url": "https://api.x.ai",
         "model": "grok-4-fast",
         "max_tokens": 550,  # Final optimized setting to consistently produce 400-500 total words
-        "temperature": 0.2,  # Slightly higher for creative caption generation
+        "temperature": 0.2,  # Slightly higher for creative micro generation
         "timeout_connect": 30,
         "timeout_read": 120,
         "max_retries": 5,
@@ -240,6 +240,26 @@ API_PROVIDERS = {
         },
         "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
     },
+    "claude": {
+        "name": "Claude (Anthropic)",
+        "type": "openai",  # Uses OpenAI-compatible API
+        "env_var": "OPENAI_API_KEY",  # Uses OpenAI key for now
+        "base_url": "https://api.openai.com/v1",
+        "model": "gpt-4o-mini",  # OpenAI model
+        "max_tokens": 550,
+        "temperature": 0.815,  # Match learned sweet spot
+        "timeout_connect": 30,
+        "timeout_read": 120,
+        "max_retries": 5,
+        "retry_delay": 2.0,
+        "enabled": True,
+        "timeout": 30,
+        "rate_limit": {
+            "requests_per_minute": 60,
+            "tokens_per_minute": 30000,
+        },
+        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
+    },
 }
 
 # Component Configuration - FRONTMATTER-ONLY ARCHITECTURE
@@ -248,15 +268,15 @@ API_PROVIDERS = {
 COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text fields)
-        "text_api_provider": "deepseek",  # ✅ SWITCHED TO DEEPSEEK (avoiding Grok API hang)
+        "text_api_provider": "claude",  # ✅ SWITCHED TO CLAUDE for voice testing
         "priority": 1,
         "enabled": True,  # ENABLED - Only component in frontmatter-only architecture
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
         "generation_modes": {
             "data_only": {"api_provider": "none", "description": "Refresh non-text data from Materials.yaml only"},
-            "text_only": {"api_provider": "deepseek", "description": "Update text fields with DeepSeek AI"},
-            "hybrid": {"api_provider": "deepseek", "description": "Data from Materials.yaml + DeepSeek text generation"},
-            "full": {"api_provider": "deepseek", "description": "Complete AI generation with DeepSeek"}
+            "text_only": {"api_provider": "claude", "description": "Update text fields with Claude AI"},
+            "hybrid": {"api_provider": "claude", "description": "Data from Materials.yaml + Claude text generation"},
+            "full": {"api_provider": "claude", "description": "Complete AI generation with Claude"}
         },
         "default_mode": "hybrid",  # Recommended mode for most use cases
     },
@@ -264,7 +284,7 @@ COMPONENT_CONFIG = {
     # REMOVED COMPONENTS - Frontend extracts from frontmatter structure:
     # - metatags: Extracted from frontmatter metadata
     # - badgesymbol: Extracted from frontmatter material properties  
-    # - caption: Extracted from frontmatter.caption section
+    # - micro: Extracted from frontmatter.caption section
     # - text: Extracted from frontmatter text fields
     # - table: Extracted from frontmatter.machineSettings section
     # - jsonld: Extracted from frontmatter structured data

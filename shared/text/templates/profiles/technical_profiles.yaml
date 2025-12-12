@@ -9,7 +9,7 @@
 
 profiles:
   # CAPTION: Visual comparison narrative
-  caption:
+  micro:
     name: "Visual Comparison"
     purpose: "Describe before/after surface appearance at microscale"
     
@@ -148,7 +148,7 @@ profiles:
 #     Use "detailed" approach
 #
 # Example injection into template:
-#   {technical_guidance} → profiles.caption.technical_approach.moderate
+#   {technical_guidance} → profiles.micro.technical_approach.moderate
 
 # INTEGRATION POINTS:
 # 1. PromptBuilder._get_technical_guidance() reads this file

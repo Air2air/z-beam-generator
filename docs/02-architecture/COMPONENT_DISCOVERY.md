@@ -21,7 +21,7 @@
 ### Component Discovery Flow
 
 ```
-1. Application requests component (e.g., "caption")
+1. Application requests component (e.g., "micro")
    ↓
 2. ComponentRegistry._discover_components()
    ↓
@@ -45,7 +45,7 @@
 ```
 z-beam-generator/
 ├── prompts/
-│   ├── caption.txt          # Defines 'caption' component
+│   ├── micro.txt          # Defines 'micro' component
 │   ├── subtitle.txt         # Defines 'subtitle' component  
 │   ├── description.txt      # Defines 'description' component
 │   ├── faq.txt              # Defines 'faq' component
@@ -54,7 +54,7 @@ z-beam-generator/
 ├── processing/
 │   ├── config.yaml          # Component lengths only
 │   │   component_lengths:
-│   │     caption: 25
+│   │     micro: 25
 │   │     subtitle: 15
 │   │     description: 150
 │   │
@@ -135,10 +135,10 @@ def test_no_hardcoded_components():
         content = file.read_text()
         
         # Should NOT find hardcoded component strings like:
-        # if component_type == 'caption':
-        # SPEC_DEFINITIONS = {'caption': ...}
+        # if component_type == 'micro':
+        # SPEC_DEFINITIONS = {'micro': ...}
         
-        assert 'caption' not in content or is_allowed_usage(content)
+        assert 'micro' not in content or is_allowed_usage(content)
 ```
 
 ### Test 3: Prompt Files Exist
@@ -165,14 +165,14 @@ def test_prompt_files_exist():
 1. ✅ **DO**: Use `component_type` as a parameter/variable
 2. ✅ **DO**: Iterate over `ComponentRegistry.list_types()`
 3. ✅ **DO**: Load component specs dynamically
-4. ❌ **DON'T**: Hardcode component names (`'caption'`, `'subtitle'`, etc.)
+4. ❌ **DON'T**: Hardcode component names (`'micro'`, `'subtitle'`, etc.)
 5. ❌ **DON'T**: Create if/else chains for specific components
 6. ❌ **DON'T**: Store component specs in Python code
 
 **Example - Wrong:**
 ```python
 # ❌ WRONG - Hardcoded component
-if component_type == 'caption':
+if component_type == 'micro':
     length = 25
 elif component_type == 'subtitle':
     length = 15
@@ -204,7 +204,7 @@ If you find hardcoded components in `/processing`, fix them:
 - [ ] Remove `SPEC_DEFINITIONS` dictionary
 - [ ] Replace with `_discover_components()` method
 - [ ] Update docstrings to remove component examples
-- [ ] Change `'caption'` references to `component_type` variable
+- [ ] Change `'micro'` references to `component_type` variable
 - [ ] Update tests to verify dynamic discovery
 - [ ] Add test for "no hardcoded components"
 - [ ] Document in `COMPONENT_DISCOVERY.md`

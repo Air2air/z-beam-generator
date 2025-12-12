@@ -920,7 +920,7 @@ The 'before' side MUST show {severity_desc}. If contamination appears lighter th
   "recommendations": ["<improvement1>", "<improvement2>", ...] or []
 }
 
-NOTE: Set "text_labels_present" to true if ANY prominent text, labels, watermarks, captions, or logos are visible ON THE MAIN OBJECT. Describe what was found in "text_label_details". IGNORE: volume markings on glassware/labware, background text, measurement gradations - these are expected on laboratory equipment. Only flag prominent brand labels or artificial text that doesn't belong."""
+NOTE: Set "text_labels_present" to true if ANY prominent text, labels, watermarks, micros, or logos are visible ON THE MAIN OBJECT. Describe what was found in "text_label_details". IGNORE: volume markings on glassware/labware, background text, measurement gradations - these are expected on laboratory equipment. Only flag prominent brand labels or artificial text that doesn't belong."""
 
 
 def create_prompt_builder() -> SharedPromptBuilder:

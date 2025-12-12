@@ -51,7 +51,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
 from shared.validation.schema_validator import SchemaValidator, ValidationResult as SchemaValidationResult
-from shared.validation.caption_integration_validator import CaptionIntegrationValidator
+from shared.validation.micro_integration_validator import MicroIntegrationValidator
 
 logger = logging.getLogger(__name__)
 
@@ -134,7 +134,7 @@ class PostGenerationQualityService:
         
         # Initialize validators
         self.schema_validator = SchemaValidator(self.schema_path)
-        self.caption_validator = CaptionIntegrationValidator()
+        self.micro_validator = MicroIntegrationValidator()
         
         # Quality thresholds
         self.quality_threshold = 0.7
@@ -157,7 +157,7 @@ class PostGenerationQualityService:
         
         Args:
             content: Generated content to validate
-            component_type: Type of component ('frontmatter', 'caption', etc.)
+            component_type: Type of component ('frontmatter', 'micro', etc.)
             material_name: Name of material for reporting
             
         Returns:
@@ -230,8 +230,8 @@ class PostGenerationQualityService:
         try:
             if component_type == 'frontmatter':
                 quality_score = self._score_frontmatter_quality(content)
-            elif component_type == 'caption':
-                quality_score = self._score_caption_quality(content)
+            elif component_type == 'micro':
+                quality_score = self._score_micro_quality(content)
             else:
                 # Basic scoring for other components
                 quality_score = QualityScore(
@@ -323,18 +323,18 @@ class PostGenerationQualityService:
             passed=overall_score >= self.quality_threshold
         )
     
-    def _score_caption_quality(self, caption: Dict) -> QualityScore:
-        """Score caption quality"""
+    def _score_micro_quality(self, micro: Dict) -> QualityScore:
+        """Score micro quality"""
         issues = []
         
-        # Check required caption fields
+        # Check required micro fields
         required_fields = ['heading', 'subheading', 'description']
         present_fields = sum(1 for field in required_fields if field in caption and caption[field])
         completeness_score = present_fields / len(required_fields)
         
         # Check content length
         accuracy_score = 1.0
-        if 'description' in caption:
+        if 'description' in micro:
             desc_length = len(str(caption['description']))
             if desc_length < 100:
                 accuracy_score = 0.6
@@ -362,7 +362,7 @@ class PostGenerationQualityService:
     def validate_integration(
         self,
         frontmatter: Dict,
-        caption: Optional[Dict] = None,
+        micro: Optional[Dict] = None,
         material_name: str = "unknown"
     ) -> IntegrationResult:
         """
@@ -370,7 +370,7 @@ class PostGenerationQualityService:
         
         Args:
             frontmatter: Frontmatter data
-            caption: Optional caption data
+            micro: Optional caption data
             material_name: Name of material
             
         Returns:
@@ -384,22 +384,22 @@ class PostGenerationQualityService:
         
         try:
             # Validate frontmatter structure
-            if not self.caption_validator.validate_caption_structure(frontmatter):
-                integration_issues.extend(self.caption_validator.validation_errors)
+            if not self.micro_validator.validate_caption_structure(frontmatter):
+                integration_issues.extend(self.micro_validator.validation_errors)
             
             # Score frontmatter quality
             frontmatter_quality = self._score_frontmatter_quality(frontmatter)
             quality_scores['frontmatter'] = frontmatter_quality
             
             # Validate caption if provided
-            if caption:
-                components_validated.append('caption')
-                caption_quality = self._score_caption_quality(caption)
-                quality_scores['caption'] = caption_quality
+            if micro:
+                components_validated.append('micro')
+                micro_quality = self._score_micro_quality(caption)
+                quality_scores['micro'] = micro_quality
                 
                 # Check integration metadata
-                if not self.caption_validator.validate_integration_metadata(frontmatter):
-                    integration_issues.extend(self.caption_validator.validation_errors)
+                if not self.micro_validator.validate_integration_metadata(frontmatter):
+                    integration_issues.extend(self.micro_validator.validation_errors)
             
             success = len(integration_issues) == 0
             

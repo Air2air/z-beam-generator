@@ -19,7 +19,7 @@ Usage:
     # Use dynamic config with author-specific values
     from processing.dynamic_config import DynamicConfig
     dynamic = DynamicConfig(base_config=config)
-    temp = dynamic.calculate_temperature('caption')
+    temp = dynamic.calculate_temperature('micro')
 """
 
 import yaml
@@ -207,7 +207,7 @@ def get_author_config(author_id: int) -> ProcessingConfig:
 def compare_author_configs(
     author_id_1: int, 
     author_id_2: int,
-    component_type: str = "caption"
+    component_type: str = "micro"
 ) -> str:
     """
     Compare configuration values between two authors.

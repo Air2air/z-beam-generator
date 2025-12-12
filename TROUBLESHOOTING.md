@@ -8,7 +8,7 @@
 
 ### Generation Fails Completely
 
-**Symptoms**: `python3 run.py --caption "Material"` exits with error
+**Symptoms**: `python3 run.py --micro "Material"` exits with error
 
 **Diagnosis**:
 ```bash
@@ -189,7 +189,7 @@ pytest tests/ -v --tb=short
 **Common Fixes**:
 1. Missing dependencies: `pip install -r requirements.txt`
 2. API keys not set for tests
-3. Database not initialized: `python3 run.py --caption "Aluminum"` (creates DB)
+3. Database not initialized: `python3 run.py --micro "Aluminum"` (creates DB)
 
 ### Integrity Check Failures
 
@@ -358,12 +358,12 @@ python3 run.py --integrity-check
 ### Common Command Patterns
 ```bash
 # Test before generating
-python3 run.py --test-api && python3 run.py --caption "Material"
+python3 run.py --test-api && python3 run.py --micro "Material"
 
 # Full diagnostic run
 python3 run.py --integrity-check && \
 python3 run.py --data-completeness-report && \
-python3 run.py --caption "Aluminum"
+python3 run.py --micro "Aluminum"
 ```
 
 ---

@@ -47,7 +47,7 @@ def generate_content_validation_report(output_file: str) -> bool:
             'author': author_info.get('name'),
             'country': author_info.get('country'),
             'faq': None,
-            'caption': None,
+            'micro': None,
             'subtitle': None
         }
         
@@ -76,21 +76,21 @@ def generate_content_validation_report(output_file: str) -> bool:
                 material_results['faq'] = {'error': str(e)}
         
         # Validate Caption if exists
-        caption_data = material_info.get('caption', {})
-        if isinstance(caption_data, dict):
-            before_text = caption_data.get('before')
-            after_text = caption_data.get('after')
+        micro_data = material_info.get('micro', {})
+        if isinstance(micro_data, dict):
+            before_text = micro_data.get('before')
+            after_text = micro_data.get('after')
             if before_text or after_text:
                 has_content = True
                 try:
                     result = validate_generated_content(
                         content={'before': before_text or '', 'after': after_text or ''},
-                        component_type='caption',
+                        component_type='micro',
                         material_name=material_name,
                         author_info=author_info,
                         log_report=False
                     )
-                    material_results['caption'] = {
+                    material_results['micro'] = {
                         'success': result.success,
                         'overall_score': result.overall_score,
                         'grade': result.grade,
@@ -100,7 +100,7 @@ def generate_content_validation_report(output_file: str) -> bool:
                         'recommendations': result.recommendations
                     }
                 except Exception as e:
-                    material_results['caption'] = {'error': str(e)}
+                    material_results['micro'] = {'error': str(e)}
         
         # Validate Subtitle if exists
         subtitle = material_info.get('subtitle')
@@ -129,7 +129,7 @@ def generate_content_validation_report(output_file: str) -> bool:
         if has_content:
             materials_with_content += 1
             validation_results.append(material_results)
-            print(f"✅ Validated {material_name}: FAQ={material_results['faq'] is not None}, Caption={material_results['caption'] is not None}, Subtitle={material_results['subtitle'] is not None}")
+            print(f"✅ Validated {material_name}: FAQ={material_results['faq'] is not None}, Caption={material_results['micro'] is not None}, Subtitle={material_results['subtitle'] is not None}")
     
     # Generate report
     print(f"\n📝 Generating report to {output_file}")
@@ -142,11 +142,11 @@ def generate_content_validation_report(output_file: str) -> bool:
         f.write("---\n\n")
         
         # Summary statistics
-        total_scores = {'faq': [], 'caption': [], 'subtitle': []}
-        total_grades = {'faq': {}, 'caption': {}, 'subtitle': {}}
+        total_scores = {'faq': [], 'micro': [], 'subtitle': []}
+        total_grades = {'faq': {}, 'micro': {}, 'subtitle': {}}
         
         for result in validation_results:
-            for component in ['faq', 'caption', 'subtitle']:
+            for component in ['faq', 'micro', 'subtitle']:
                 if result[component] and 'overall_score' in result[component]:
                     total_scores[component].append(result[component]['overall_score'])
                     grade = result[component]['grade']

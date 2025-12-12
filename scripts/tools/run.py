@@ -16,7 +16,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
 
 🎯 GENERATION & VALIDATION WORKFLOW (NEW - Single-Pass):
   # Step 1: Generate (single API call, no validation)
-  python3 run.py --caption "Aluminum"      # Generate AI caption → Materials.yaml (single-pass)
+  python3 run.py --micro "Aluminum"      # Generate AI caption → Materials.yaml (single-pass)
   python3 run.py --material-description "Aluminum"     # Generate AI material description → Materials.yaml (single-pass)
   python3 run.py --faq "Aluminum"          # Generate AI FAQ → Materials.yaml (single-pass)
   
@@ -31,13 +31,13 @@ For advanced operations, use run_unified.py with the unified pipeline.
   python3 run.py --material "Aluminum" --data-only  # Export → frontmatter
   
   # ⚠️  DEVELOPMENT ONLY - Skip integrity check (bypasses fail-fast validation):
-  python3 run.py --caption "Aluminum" --skip-integrity-check
+  python3 run.py --micro "Aluminum" --skip-integrity-check
   # WARNING: Never use --skip flags in production - violates fail-fast architecture
 
 🔄 BATCH GENERATION (Meet Winston Minimums Efficiently):
   python3 run.py --batch-material-description "Aluminum,Steel,Copper"  # Batch generate material descriptions (2-5 materials)
   python3 run.py --batch-material-description --all                     # Batch ALL material descriptions (132 materials → ~33 batches)
-  python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate captions (fallback to individual)
+  python3 run.py --batch-caption "Aluminum,Steel,Copper"   # Batch generate micros (fallback to individual)
   
   # Cost savings: 75% reduction vs individual Winston calls
   # Winston minimum: 300 chars (material descriptions ~180 chars each, need batching)
@@ -137,7 +137,7 @@ import argparse
 
 # Import command handlers from modular structure
 from shared.commands import (
-    handle_caption_generation,
+    handle_micro_generation,
     handle_material_description_generation,
     handle_settings_description_generation,
     handle_component_summaries_generation,
@@ -190,7 +190,7 @@ def main():
     # Legacy Material-Specific Commands (Backward Compatibility)
     parser.add_argument("--material", help="Generate frontmatter for specific material (legacy)")
     parser.add_argument("--all", action="store_true", help="Generate frontmatter for all materials")
-    parser.add_argument("--caption", help="Generate AI-powered caption")
+    parser.add_argument("--micro", help="Generate AI-powered caption")
     parser.add_argument("--material-description", help="Generate AI-powered material description")
     parser.add_argument("--settings-description", help="Generate AI-powered settings description")
     parser.add_argument("--component-summaries", help="Generate AI-powered component summaries for Settings page")
@@ -198,7 +198,7 @@ def main():
     
     # Batch Generation Commands
     parser.add_argument("--batch-material-description", help="Generate material descriptions for multiple materials (comma-separated) or --all")
-    parser.add_argument("--batch-caption", help="Generate captions for multiple materials (comma-separated) or --all")
+    parser.add_argument("--batch-caption", help="Generate micros for multiple materials (comma-separated) or --all")
     
     # Deployment Commands
     parser.add_argument("--deploy", action="store_true", help="Deploy to Next.js production site")
@@ -212,7 +212,7 @@ def main():
     parser.add_argument("--content-validation-report", help="Content quality validation report")
     parser.add_argument("--validate-ai-detection", action="store_true", help="Audit content with Winston AI")
     parser.add_argument("--winston-threshold", type=float, default=70.0, help="Winston human score threshold (0-100)")
-    parser.add_argument("--winston-component", choices=['material_description', 'caption', 'faq'], 
+    parser.add_argument("--winston-component", choices=['material_description', 'micro', 'faq'], 
                        help="Specific component type to audit with Winston")
     
     # Data Research & Completeness Commands
@@ -365,7 +365,7 @@ def main():
         try:
             # Stream directly to terminal without saving to file
             result = subprocess.run(
-                ['python3', 'scripts/batch_caption_test.py'],
+                ['python3', 'scripts/batch_micro_test.py'],
                 cwd=os.path.dirname(os.path.abspath(__file__))
             )
             
@@ -379,9 +379,9 @@ def main():
         result = handle_batch_material_description_generation(args.batch_material_description, skip_integrity_check=args.skip_integrity_check)
         return result
     
-    if args.batch_caption:
-        from shared.commands.batch import handle_batch_caption_generation
-        result = handle_batch_caption_generation(args.batch_caption, skip_integrity_check=args.skip_integrity_check)
+    if args.batch_micro:
+        from shared.commands.batch import handle_batch_micro_generation
+        result = handle_batch_micro_generation(args.batch_micro, skip_integrity_check=args.skip_integrity_check)
         return result
     
     if args.validate_content:
@@ -397,7 +397,7 @@ def main():
         print("  • Feature was never used in production")
         print()
         print("USE INSTEAD:")
-        print("  • python3 run.py --caption \"Material\"")
+        print("  • python3 run.py --micro \"Material\"")
         print("  • python3 run.py --material-description \"Material\"")
         print("  • python3 run.py --faq \"Material\"")
         print()
@@ -411,7 +411,7 @@ def main():
         return False
     
     if args.caption:
-        result = handle_caption_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
+        result = handle_micro_generation(args.caption, skip_integrity_check=args.skip_integrity_check)
         # Per-iteration learning happens inline - no global evaluation needed
         return result
     

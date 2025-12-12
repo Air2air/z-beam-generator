@@ -57,7 +57,7 @@ instructions = "ABSOLUTELY FORBIDDEN: Any numbers, measurements..."
 **CORRECT approach**:
 ```python
 # ✅ CORRECT: Load prompt from template file
-prompt_template = self._load_prompt_template('caption.txt')
+prompt_template = self._load_prompt_template('micro.txt')
 
 # ✅ CORRECT: Apply parameters to template
 prompt = self._apply_parameters(prompt_template, parameters)
@@ -91,7 +91,7 @@ prompt = template.format(
 **✅ CORRECT approach**:
 Put the instruction IN THE TEMPLATE FILE:
 ```
-# In domains/materials/prompts/caption.txt:
+# In domains/materials/prompts/micro.txt:
 Write about {material_name} properties.
 
 CRITICAL: Never use numbers, measurements, or units.
@@ -170,7 +170,7 @@ prompt = prompt.replace(
 
 **FIX**: Define intensity levels IN THE TEMPLATE:
 ```
-# In domains/materials/prompts/caption.txt:
+# In domains/materials/prompts/micro.txt:
 
 {qualitative_emphasis}
 
@@ -218,7 +218,7 @@ Use descriptive words instead: 'strong', 'heat-resistant', 'conductive', 'durabl
 
 Then include it in relevant prompts:
 ```python
-base_prompt = self._load_prompt_template('components/caption.txt')
+base_prompt = self._load_prompt_template('components/micro.txt')
 if tech_intensity < 0.15:
     rules = self._load_prompt_template('rules/no_technical_specs.txt')
     prompt = f"{base_prompt}\n\n{rules}"

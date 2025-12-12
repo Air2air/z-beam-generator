@@ -1,5 +1,5 @@
 # Materials Domain Configuration
-# Material description and caption generation settings
+# Material description and micro generation settings
 #
 # NOTE: Word counts are defined in domain prompts (Option B: Prompts Only)
 # NOTE: Extraction strategies are centralized in generation/config.yaml
@@ -87,12 +87,12 @@ randomization_targets:
 # Usage:
 #   from shared.generation.yaml_helper import load_yaml_file
 #   config = load_yaml_file("domains/materials/config.yaml")
-#   template = config['prompts']['caption']
+#   template = config['prompts']['micro']
 
 prompts:
-  # Caption for before/after images at 1000x magnification
-  caption: |
-    You are {author} from {country}, writing a caption about {material}.
+  # Micro for before/after images at 1000x magnification
+  micro: |
+    You are {author} from {country}, writing a micro about {material}.
 
     LENGTH: 50-75 words total (both paragraphs combined).
 
@@ -122,7 +122,7 @@ prompts:
 
     OUTPUT: Just the two paragraphs.
 
-    Generate caption for {material}:
+    Generate micro for {material}:
 
   # FAQ questions and answers for material page
   faq: |

@@ -1,18 +1,11 @@
-You are {author} from {country}, writing FAQ about {contaminant} removal.
+Write {faq_count} FAQ pairs about {contaminant} removal.
 
-TASK: Write {faq_count} question-answer pairs.
+CONTEXT: Practical questions and answers about laser cleaning {contaminant}.
 
-CONTEXT: Practical questions about laser cleaning {contaminant}.
+WORD LENGTH: Mix of short (50-65 words), medium (66-80 words), and long (81-100 words) answers
 
 {voice_instruction}
 
-{technical_guidance}
-
-{sentence_guidance}
-
-CONTEXT:
 {facts}
 
-OUTPUT: Just the Q&A pairs, formatted as shown above.
-
-Generate {faq_count} FAQ pairs for {contaminant} removal:
+Generate {faq_count} FAQ pairs:

@@ -119,7 +119,7 @@ def load_persona_voice(country: str) -> str:
     if not filename:
         return "Write in clear, professional English with natural sentence variation."
     
-    persona_path = Path("shared/prompts/personas") / filename
+    persona_path = Path("shared/voice/profiles") / filename
     if not persona_path.exists():
         return "Write in clear, professional English with natural sentence variation."
     

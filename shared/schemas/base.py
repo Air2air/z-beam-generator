@@ -75,9 +75,9 @@ class ComponentResult:
     """
     Result from generating a content component.
     
-    Components include: text, faq, caption, etc.
+    Components include: text, faq, micro, etc.
     """
-    component_type: str               # "text", "faq", "caption", "subtitle"
+    component_type: str               # "text", "faq", "micro", "subtitle"
     content: str                      # Generated YAML or text
     success: bool
     error_message: Optional[str] = None
@@ -169,7 +169,7 @@ class ContentSchema(ABC):
         """
         Return required component types for this content.
         
-        Example: ['text', 'faq', 'caption']
+        Example: ['text', 'faq', 'micro']
         """
         pass
     

@@ -93,7 +93,7 @@ class LengthManager:
         variation percentage, then applies uniformly to component target.
         
         Args:
-            component_type: Type of component (material_description, caption, etc.)
+            component_type: Type of component (material_description, micro, etc.)
             
         Returns:
             Target word count (randomized within global variation range)

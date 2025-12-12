@@ -225,7 +225,7 @@ class DomainAdapter(DataSourceAdapter):
         Get prompt template for component type from domain config.
         
         Args:
-            component_type: Component type (e.g., 'caption', 'component_summary')
+            component_type: Component type (e.g., 'micro', 'component_summary')
             
         Returns:
             Prompt template string or None if not found

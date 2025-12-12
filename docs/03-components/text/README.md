@@ -1,7 +1,19 @@
-# 🎯 Text Component Blueprint
+# ⚠️ **DEPRECATED** - Text Component Blueprint
 
-## **Purpose**
+**🚨 This documentation is DEPRECATED as of December 11, 2025**
+
+**→ See Instead**: `docs/02-architecture/TEXT_GENERATION_GUIDE.md` (consolidated guide)  
+**→ Complete Details**: `docs/DEPRECATION_NOTICE_DEC11_2025.md`
+
+---
+
+## **Purpose** (Historical)
 The Text Component is the most complex component in the Z-Beam system, responsible for generating comprehensive technical articles about laser cleaning materials. It implements the three-layer prompt architecture (Base + Persona + Formatting) and includes real-time AI detection with iterative improvement.
+
+**Note**: Architecture has been simplified (Dec 11, 2025):
+- Dual quality systems → Unified QualityAnalyzer
+- Domain-specific adapters → Generic DomainAdapter  
+- See new documentation for current architecture
 
 ## 📋 Requirements
 

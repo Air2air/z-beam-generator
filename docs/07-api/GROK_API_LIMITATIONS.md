@@ -100,7 +100,7 @@ def test_api_penalties_calculated_for_logging(self):
     Design allows future provider switching and ML research.
     """
     config = DynamicConfig()
-    all_params = config.get_all_generation_params('caption')
+    all_params = config.get_all_generation_params('micro')
     
     assert 'penalties' in all_params['api_params']
     # Penalties calculated but NOT sent to Grok

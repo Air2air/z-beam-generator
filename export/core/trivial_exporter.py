@@ -607,25 +607,25 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Loaded {len(self.settings_data.get('settings', {}))} materials from Settings.yaml")
         
         # Load separated content files for orchestration
-        self.captions = self._load_captions()
+        self.micros = self._load_captions()
         self.faqs = self._load_faqs()
         self.regulatory_standards = self._load_regulatory_standards()
         
-        self.logger.info(f"✅ Loaded {len(self.captions)} captions from content files")
+        self.logger.info(f"✅ Loaded {len(self.micros)} micros from content files")
         self.logger.info(f"✅ Loaded {len(self.faqs)} FAQ sets from content files")
         self.logger.info(f"✅ Loaded {len(self.regulatory_standards)} regulatory standards from content files")
     
     def _load_captions(self) -> Dict[str, Any]:
-        """Load Captions.yaml and return captions dict."""
-        captions_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "Captions.yaml"
+        """Load Micros.yaml and return micros dict."""
+        captions_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "Micros.yaml"
         if not captions_file.exists():
-            self.logger.warning(f"Captions.yaml not found at {captions_file}")
+            self.logger.warning(f"Micros.yaml not found at {captions_file}")
             return {}
         
         with open(captions_file, 'r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
         
-        return data.get('captions', {})
+        return data.get('micros', {})
     
     def _load_faqs(self) -> Dict[str, Any]:
         """Load FAQs.yaml and return faqs dict."""
@@ -769,7 +769,7 @@ class TrivialFrontmatterExporter:
             'breadcrumb',
             'category', 'subcategory', 'title', 'material_description',
             'datePublished', 'dateModified',  # Schema.org date fields from git history
-            'images', 'caption', 'regulatoryStandards', 'eeat',
+            'images', 'micro', 'regulatoryStandards', 'eeat',
             'materialProperties', 'machineSettings', 'material_challenges', 'settings_description', 'faq',
             '_metadata', 'material_metadata'
         }
@@ -797,9 +797,9 @@ class TrivialFrontmatterExporter:
                     cleaned = self._remove_descriptions(enriched, preserve_regulatory=False)
                     # Strip generation metadata
                     frontmatter[key] = self._strip_generation_metadata(cleaned)
-            elif key == 'caption':
-                # Caption is orchestrated from separate Captions.yaml file - skip in this loop
-                # Will be added after the loop from self.captions
+            elif key == 'micro':
+                # Micro is orchestrated from separate Micros.yaml file - skip in this loop
+                # Will be added after the loop from self.micros
                 continue
             elif key == 'faq':
                 # FAQ may exist in Materials.yaml OR in external FAQs.yaml
@@ -822,22 +822,22 @@ class TrivialFrontmatterExporter:
                 cleaned = self._remove_descriptions(value, preserve_regulatory=False)
                 frontmatter[key] = self._strip_generation_metadata(cleaned)
         
-        # Orchestrate content from separated content files (Captions.yaml, FAQs.yaml, RegulatoryStandards.yaml)
+        # Orchestrate content from separated content files (Micros.yaml, FAQs.yaml, RegulatoryStandards.yaml)
         # These files were extracted from Materials.yaml for better organization while maintaining single-file output
         
-        # Add caption from Captions.yaml (if not already present)
-        if 'caption' not in frontmatter and material_name in self.captions:
-            caption_data = self.captions[material_name]
-            cleaned = self._remove_descriptions(caption_data, preserve_regulatory=False)
+        # Add caption from Micros.yaml (if not already present)
+        if 'micro' not in frontmatter and material_name in self.micros:
+            micro_data = self.micros[material_name]
+            cleaned = self._remove_descriptions(micro_data, preserve_regulatory=False)
             stripped = self._strip_generation_metadata(cleaned)
             # Ensure only before/after remain
             if isinstance(stripped, dict):
-                frontmatter['caption'] = {
+                frontmatter['micro'] = {
                     k: v for k, v in stripped.items()
                     if k in ['before', 'after']
                 }
             else:
-                frontmatter['caption'] = stripped
+                frontmatter['micro'] = stripped
         
         # Add FAQ from FAQs.yaml (if not already present from Materials.yaml)
         if 'faq' not in frontmatter and material_name in self.faqs:
@@ -882,17 +882,17 @@ class TrivialFrontmatterExporter:
                 frontmatter['material_description'] = components['material_description']
             if 'settings_description' in components:
                 frontmatter['settings_description'] = components['settings_description']
-            if 'caption' in components:
-                caption = components['caption']
+            if 'micro' in components:
+                caption = components['micro']
                 cleaned = self._remove_descriptions(caption, preserve_regulatory=False)
                 stripped = self._strip_generation_metadata(cleaned)
                 if isinstance(stripped, dict):
-                    frontmatter['caption'] = {
+                    frontmatter['micro'] = {
                         k: v for k, v in stripped.items()
                         if k in ['before', 'after']
                     }
                 else:
-                    frontmatter['caption'] = stripped
+                    frontmatter['micro'] = stripped
                 self.logger.debug(f"Using caption from components")
             if 'faq' in components:
                 faq = components['faq']
@@ -909,7 +909,7 @@ class TrivialFrontmatterExporter:
         """
         Export materials page frontmatter: /materials/{material}-laser-cleaning.yaml
         
-        Includes: caption, FAQ, regulatory standards, material properties, images, author
+        Includes: micro, FAQ, regulatory standards, material properties, images, author
         """
         materials_page = {}
         
@@ -939,7 +939,7 @@ class TrivialFrontmatterExporter:
         materials_page['images'] = full_frontmatter.get('images')
         
         # Content (materials page specific)
-        materials_page['caption'] = full_frontmatter.get('caption')
+        materials_page['micro'] = full_frontmatter.get('micro')
         materials_page['faq'] = full_frontmatter.get('faq')
         materials_page['regulatoryStandards'] = full_frontmatter.get('regulatoryStandards')
         materials_page['materialProperties'] = full_frontmatter.get('materialProperties')
@@ -1578,7 +1578,7 @@ class TrivialFrontmatterExporter:
         METADATA_FIELDS = {
             'generated', 'word_count', 'word_count_before', 'word_count_after',
             'total_words', 'question_count', 'character_count',
-            'author', 'generation_method'  # Caption-specific metadata
+            'author', 'generation_method'  # Micro-specific metadata
         }
         
         if isinstance(data, dict):
