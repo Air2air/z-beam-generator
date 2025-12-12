@@ -24,6 +24,8 @@ import random
 from pathlib import Path
 from typing import Dict, Optional
 
+from generation.core.evaluated_generator import QualityEvaluatedGenerator
+from postprocessing.evaluation.subjective_evaluator import SubjectiveEvaluator
 from shared.research.faq_topic_researcher import FAQTopicResearcher
 
 logger = logging.getLogger(__name__)
@@ -48,7 +50,7 @@ class UnifiedMaterialsGenerator:
     
     def __init__(self, api_client):
         """
-        Initialize unified generator.
+        Initialize unified generator with learning pipeline.
         
         Args:
             api_client: API client for content generation (required)
@@ -58,7 +60,27 @@ class UnifiedMaterialsGenerator:
         
         self.api_client = api_client
         self.logger = logging.getLogger(__name__)
-        self.logger.info("🚀 UnifiedMaterialsGenerator initialized (production mode)")
+        
+        # Initialize SubjectiveEvaluator for quality learning
+        self.subjective_evaluator = SubjectiveEvaluator(api_client)
+        
+        # Initialize Winston client (optional - graceful degradation if not configured)
+        try:
+            from postprocessing.detection.winston_client import WinstonClient
+            self.winston_client = WinstonClient()
+            self.logger.info("✅ Winston client initialized")
+        except Exception as e:
+            self.winston_client = None
+            self.logger.warning(f"⚠️  Winston not configured (will continue without AI detection): {e}")
+        
+        # Initialize QualityEvaluatedGenerator with learning components
+        self.generator = QualityEvaluatedGenerator(
+            api_client=api_client,
+            subjective_evaluator=self.subjective_evaluator,
+            winston_client=self.winston_client
+        )
+        
+        self.logger.info("🚀 UnifiedMaterialsGenerator initialized with learning pipeline")
     
     def _load_materials_data(self) -> Dict:
         """Load Materials.yaml using centralized loader"""
@@ -144,9 +166,13 @@ class UnifiedMaterialsGenerator:
     
     def generate(self, material_name: str, content_type: str, **kwargs):
         """
-        Generate content for material (production mode).
+        Generate content for material with learning pipeline.
         
-        Single-pass generation via Generator with quality logging.
+        Single-pass generation via QualityEvaluatedGenerator:
+        - Generate content
+        - Save to Materials.yaml
+        - Evaluate quality (Winston + Subjective + Structural)
+        - Log to winston_feedback.db for learning
         
         Args:
             material_name: Name of material
@@ -156,8 +182,6 @@ class UnifiedMaterialsGenerator:
         Returns:
             Generated content (string for micro/description, list for faq)
         """
-        from generation.core.generator import Generator
-        
         # Handle EEAT separately (pure Python, no AI)
         if content_type == 'eeat':
             materials_data = self._load_materials_data()
@@ -165,9 +189,8 @@ class UnifiedMaterialsGenerator:
                 raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
             return self.generate_eeat(material_name, materials_data['materials'][material_name])
         
-        # All other types use Generator for single-pass generation
-        generator = Generator(self.api_client)
-        result = generator.generate(material_name, content_type, **kwargs)
+        # All other types use QualityEvaluatedGenerator with learning pipeline
+        result = self.generator.generate(material_name, content_type, **kwargs)
         
-        # Generator returns dict with 'content' key
+        # QualityEvaluatedGenerator returns dict with 'content' key
         return result

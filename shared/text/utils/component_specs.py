@@ -419,6 +419,17 @@ class DomainContext:
         )
     
     @classmethod
+    def contaminants(cls) -> 'DomainContext':
+        """Context for contaminants and contamination patterns domain"""
+        return cls(
+            domain='contaminants',
+            focus_template='Contamination characteristics, formation patterns, material-specific behavior, cleaning challenges',
+            enrichment_strategy='Extract from Contaminants.yaml: category, context notes, description, visual characteristics',
+            example_facts='Hardness: 2.5-3 Mohs; Melting point: 660°C; Applications: Aerospace, automotive',
+            terminology_style='Descriptive and precise; focus on visual characteristics; explain formation and behavior'
+        )
+    
+    @classmethod
     def get_domain(cls, domain: str) -> 'DomainContext':
         """
         Get domain context by name.
@@ -431,7 +442,8 @@ class DomainContext:
         """
         method_map = {
             'materials': cls.materials,
-            'settings': cls.settings
+            'settings': cls.settings,
+            'contaminants': cls.contaminants
         }
         
         factory = method_map.get(domain)

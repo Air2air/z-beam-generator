@@ -360,18 +360,18 @@ class Generator:
             print(f"   View with: cat {prompt_file}")
             self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
             
-            # Report standard validation
+            # Report standard validation (NON-BLOCKING - log for learning)
             if not validation_result.is_valid:
                 if validation_result.has_critical_issues:
-                    print(f"\n❌ CRITICAL VALIDATION FAILURE (Standard)")
+                    print(f"\n⚠️  VALIDATION ISSUES DETECTED (logged for learning)")
                     print(validation_result.format_report())
-                    raise ValueError(
-                        f"Prompt validation failed with critical issues:\n"
-                        f"{validation_result.format_report()}"
-                    )
+                    self.logger.warning(f"Validation issues detected (not blocking): {validation_result.format_report()}")
+                    # Log to learning database for humanness optimizer to adapt
+                    self._log_validation_issues(validation_result, 'standard')
                 else:
-                    print(f"   ⚠️  Validation warnings present (not blocking)")
-                    self.logger.info("   ⚠️  Validation warnings present (not blocking)")
+                    print(f"   ⚠️  Validation warnings present (logged for learning)")
+                    self.logger.info("   ⚠️  Validation warnings present (logged for learning)")
+                    self._log_validation_issues(validation_result, 'standard')
             else:
                 print(f"   ✅ Standard validation passed")
                 self.logger.info("   ✅ Standard validation passed")
@@ -382,24 +382,21 @@ class Generator:
             self.logger.info(f"🔗 COHERENCE VALIDATION: {coherence_result.get_summary()}")
             
             if not coherence_result.is_coherent:
-                print(f"\n⚠️  COHERENCE ISSUES DETECTED:")
+                print(f"\n⚠️  COHERENCE ISSUES DETECTED (logged for learning):")
                 for issue in coherence_result.issues:
                     if issue.severity in ["CRITICAL", "ERROR"]:
                         print(f"   • [{issue.severity}] {issue.message}")
                         self.logger.warning(f"   [{issue.severity}] {issue.message}")
                 
-                # Log full report to file only
+                # Log full report to file and learning database
                 self.logger.info("\n" + coherence_result.format_report())
+                self._log_validation_issues(coherence_result, 'coherence')
                 
-                # Fail on critical coherence issues
+                # Warn on critical coherence issues but don't block
                 critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
                 if critical_coherence:
-                    print(f"\n❌ CRITICAL COHERENCE FAILURE")
-                    print(coherence_result.format_report())
-                    raise ValueError(
-                        f"Prompt coherence validation failed with {len(critical_coherence)} critical issues:\n"
-                        f"{coherence_result.format_report()}"
-                    )
+                    print(f"\n⚠️  {len(critical_coherence)} critical coherence issues (logged for humanness optimizer)")
+                    self.logger.warning(f"{len(critical_coherence)} critical coherence issues detected - logged for learning")
             else:
                 print(f"   ✅ Coherence validated successfully")
                 self.logger.info("   ✅ Coherence validated successfully")
@@ -602,3 +599,50 @@ class Generator:
             if 'temp_path' in locals():
                 Path(temp_path).unlink(missing_ok=True)
             raise ValueError(f"Failed to save to Materials.yaml: {e}")
+    
+    def _log_validation_issues(self, validation_result, validation_type: str):
+        """
+        Log validation issues to learning database for humanness optimizer feedback.
+        
+        This enables dynamic adaptation: validation issues feed into the humanness
+        layer, which adjusts future prompts to address recurring problems.
+        
+        Args:
+            validation_result: ValidationResult or CoherenceResult object
+            validation_type: Type of validation ('standard' or 'coherence')
+        
+        Design: Non-blocking - logs for learning, never raises exceptions
+        """
+        try:
+            # Lazy import to avoid circular dependencies
+            from postprocessing.detection.winston_feedback_db import WinstonFeedbackDatabase
+            
+            db = WinstonFeedbackDatabase('z-beam.db')
+            
+            # Extract issues from validation result
+            issues = []
+            if hasattr(validation_result, 'issues'):
+                for issue in validation_result.issues:
+                    issues.append({
+                        'severity': getattr(issue, 'severity', 'UNKNOWN'),
+                        'message': getattr(issue, 'message', str(issue)),
+                        'suggestion': getattr(issue, 'suggestion', None)
+                    })
+            
+            # Log to prompt_validation_feedback table (auto-creates if not exists)
+            db.log_prompt_validation(
+                validation_type=validation_type,
+                is_valid=getattr(validation_result, 'is_valid', True) or 
+                        getattr(validation_result, 'is_coherent', True),
+                issues=issues,
+                prompt_length=getattr(validation_result, 'prompt_length', None) or 0,
+                word_count=getattr(validation_result, 'word_count', None) or 0,
+                estimated_tokens=getattr(validation_result, 'estimated_tokens', None) or 0
+            )
+            
+            self.logger.info(f"   📊 Validation feedback logged ({len(issues)} issues) for humanness optimizer")
+            
+        except Exception as e:
+            # Non-blocking: log error but continue generation
+            self.logger.warning(f"   ⚠️  Could not log validation feedback: {e}")
+

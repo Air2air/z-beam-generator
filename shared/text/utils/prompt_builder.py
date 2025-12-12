@@ -176,13 +176,24 @@ class PromptBuilder:
             author: Author name
             country: Author country
             esl_traits: ESL linguistic patterns
-            voice: Full voice/persona dict
+            voice: Full voice/persona dict (MANDATORY - must not be None)
             voice_params: Voice parameters (intensity, rhythm, etc.)
             length: Target word count
             
         Returns:
             Formatted voice instruction string
+            
+        Raises:
+            ValueError: If voice dict is None or empty (fail-fast requirement)
         """
+        # MANDATORY: Voice instructions must be present for all text generation
+        if not voice:
+            raise ValueError(
+                f"Voice instructions are MANDATORY for all text generation. "
+                f"Author '{author}' from '{country}' has no voice/persona data loaded. "
+                f"Check that persona file exists in shared/voice/profiles/"
+            )
+        
         voice_section = f"""VOICE: {author} from {country}
 - Regional patterns: {esl_traits}"""
         
@@ -413,7 +424,7 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         )
         
         # Load component-specific template if available (domain-specific first)
-        component_template = PromptBuilder._load_component_template(spec.name, domain)
+        component_template = PromptBuilder._load_component_template(spec.name, domain_ctx.domain)
         if component_template:
             # NEW: Build dynamic guidance sections based on config
             technical_guidance = PromptBuilder._get_technical_guidance(
@@ -433,18 +444,33 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             if faq_count is None:
                 faq_count = 3  # Default FAQ count
             
-            component_context = component_template.format(
-                author=author,
-                material=topic,
-                country=country,
-                length=length,
-                technical_guidance=technical_guidance,
-                sentence_guidance=sentence_guidance,
-                facts=facts,
-                context=facts if facts else context,  # Use facts as context for template
-                faq_count=faq_count,  # Add FAQ count for FAQ templates
-                voice_instruction=voice_instruction  # CRITICAL FIX: Populate {voice_instruction} placeholder
-            )
+            # Build template parameters dict with all possible placeholders
+            # CRITICAL: These are OPTIONAL placeholders for cross-domain compatibility.
+            # Templates that use placeholders not listed here MUST provide them via facts/context.
+            # Empty strings allow templates to use {placeholder} without KeyError IF the value is optional.
+            template_params = {
+                'author': author,
+                'material': topic,
+                'identifier': topic,  # Some templates use {identifier} instead of {material}
+                'country': country,
+                'length': length,
+                'technical_guidance': technical_guidance,
+                'sentence_guidance': sentence_guidance,
+                'facts': facts,
+                'context': facts if facts else context,
+                'faq_count': faq_count,
+                'voice_instruction': voice_instruction,  # CRITICAL: Must be present
+                # Optional cross-domain placeholders (empty if not provided)
+                'category': '',
+                'context_notes': '',
+                'description': '',
+                'machine_settings': '',
+                'challenges': ''
+            }
+            
+            # FAIL-FAST: No try/except fallback. If template requires a placeholder not in
+            # template_params, generation MUST fail with KeyError.
+            component_context = component_template.format(**template_params)
             # Template contains all content instructions (focus, format, style)
             context_section = f"""{component_context}
 
@@ -491,64 +517,9 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         
         requirements_section = "\n".join(requirements)
         
-        # Build voice section with dynamic sentence structure guidance from author profile
-        # Phase 2: Apply voice_params to control personality intensity
-        # NOTE: Voice/tone enforcement handled by subjective evaluator, not prompt instructions
-        voice_section = f"""VOICE: {author} from {country}
-- Regional patterns: {esl_traits}"""
-        
-        # CRITICAL: Extract and apply persona voice instructions
-        if voice:
-            # Core voice instruction (mandatory technical style, no theatrical elements)
-            core_instruction = voice.get('core_voice_instruction', '').strip()
-            if core_instruction:
-                # Break long instructions at sentence boundaries for better parsing
-                if len(core_instruction) > 400:
-                    sentences = core_instruction.replace('. ', '.||').split('||')
-                    formatted_instruction = '\n  '.join(s.strip() for s in sentences if s.strip())
-                    voice_section += f"\n- Core Style:\n  {formatted_instruction}"
-                else:
-                    voice_section += f"\n- Core Style: {core_instruction}"
-            
-            # Tonal restraint (objective technical documentation mandate)
-            tonal_restraint = voice.get('tonal_restraint', '').strip()
-            if tonal_restraint:
-                # Break long instructions at sentence boundaries
-                if len(tonal_restraint) > 400:
-                    sentences = tonal_restraint.replace('. ', '.||').split('||')
-                    formatted_restraint = '\n  '.join(s.strip() for s in sentences if s.strip())
-                    voice_section += f"\n- Tone Requirements:\n  {formatted_restraint}"
-                else:
-                    voice_section += f"\n- Tone Requirements: {tonal_restraint}"
-            
-            # Technical verbs required
-            tech_verbs = voice.get('technical_verbs_required', [])
-            if tech_verbs:
-                voice_section += f"\n- Required Verbs: {', '.join(tech_verbs[:6])}"
-            
-            # Forbidden phrases from persona (CRITICAL: Use 'forbidden' dict, not 'forbidden_casual' list)
-            forbidden_fields = voice.get('forbidden', {})
-            if forbidden_fields:
-                # Extract all forbidden phrase lists from categories
-                forbidden_phrases = []
-                for category, phrases in forbidden_fields.items():
-                    if isinstance(phrases, list):
-                        forbidden_phrases.extend(phrases)
-                
-                if forbidden_phrases:
-                    voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_phrases[:15])}"
-            
-            # Legacy backward compatibility: Check old 'forbidden_casual' field
-            elif voice.get('forbidden_casual'):
-                forbidden = voice.get('forbidden_casual', [])
-                voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden[:8])}"
-        
-        # ALL voice/tone guidance now comes from persona files only
-        # No dynamic voice_params additions - respects Voice Instruction Centralization Policy
-        # Sentence structure, jargon, imperfection, professional voice all defined in personas
-        
-        # NOTE: Personality traits now controlled by persona files only
-        # Dynamic personality parameters removed per Option A architecture decision
+        # Voice section already built via voice_instruction at line 406
+        # and injected into component template via {voice_instruction} placeholder
+        # NO DUPLICATION - voice appears only once in final prompt
         
         # Phase 3+: Technical language guidance moved to REQUIREMENTS section for higher priority
         
@@ -572,18 +543,16 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             humanness_section = f"\n\n{humanness_layer}\n"
         
         # Assemble complete prompt
+        # NOTE: Voice instructions already in context_section via {voice_instruction} placeholder
+        # No generic "be unique" override that negates specific voice rules
         prompt = f"""You are {author}, writing a {spec.name} about {topic}.
 
 {context_section}
-
-{voice_section}
 {humanness_section}
 REQUIREMENTS:
 {requirements_section}
 
-{anti_ai}{enrichment_hints}
-
-REMEMBER: Every generation should feel unique. Vary your approach, opening, and structure.{variation_note}
+{anti_ai}{enrichment_hints}{variation_note}
 
 Generate {spec.name} for {topic}:"""
         

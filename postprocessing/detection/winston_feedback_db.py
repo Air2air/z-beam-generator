@@ -253,6 +253,22 @@ class WinstonFeedbackDatabase:
                     UNIQUE(material, component_type)
                 );
                 
+                CREATE TABLE IF NOT EXISTS prompt_validation_feedback (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp TEXT NOT NULL,
+                    validation_type TEXT NOT NULL,  -- 'standard' or 'coherence'
+                    is_valid BOOLEAN NOT NULL,
+                    prompt_length INTEGER NOT NULL,
+                    word_count INTEGER NOT NULL,
+                    estimated_tokens INTEGER NOT NULL,
+                    issues TEXT NOT NULL,  -- JSON array of {severity, message, suggestion}
+                    material TEXT,
+                    component_type TEXT,
+                    domain TEXT DEFAULT 'materials',
+                    generation_parameters_id INTEGER,
+                    FOREIGN KEY (generation_parameters_id) REFERENCES generation_parameters(id)
+                );
+                
                 CREATE TABLE IF NOT EXISTS realism_learning (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp TEXT NOT NULL,
@@ -289,6 +305,11 @@ class WinstonFeedbackDatabase:
                     attempt_number INTEGER,
                     FOREIGN KEY (subjective_evaluation_id) REFERENCES subjective_evaluations(id)
                 );
+                
+                CREATE INDEX IF NOT EXISTS idx_prompt_validation_timestamp ON prompt_validation_feedback(timestamp);
+                CREATE INDEX IF NOT EXISTS idx_prompt_validation_type ON prompt_validation_feedback(validation_type);
+                CREATE INDEX IF NOT EXISTS idx_prompt_validation_valid ON prompt_validation_feedback(is_valid);
+                CREATE INDEX IF NOT EXISTS idx_prompt_validation_component ON prompt_validation_feedback(component_type);
                 
                 CREATE INDEX IF NOT EXISTS idx_realism_material ON realism_learning(material);
                 CREATE INDEX IF NOT EXISTS idx_realism_component ON realism_learning(component_type);
@@ -797,6 +818,72 @@ class WinstonFeedbackDatabase:
                 logger.info(f"   Improvement: {improvement:+.2f} ({status})")
             
             return learning_id
+    
+    def log_prompt_validation(
+        self,
+        validation_type: str,
+        is_valid: bool,
+        issues: List[Dict[str, str]],
+        prompt_length: int,
+        word_count: int,
+        estimated_tokens: int,
+        material: Optional[str] = None,
+        component_type: Optional[str] = None,
+        domain: str = 'materials',
+        generation_parameters_id: Optional[int] = None
+    ) -> int:
+        """
+        Log prompt validation issues for humanness optimizer learning.
+        
+        This enables the humanness optimizer to adapt prompts based on validation
+        failures (length, contradictions, coherence issues).
+        
+        Args:
+            validation_type: Type of validation ('standard' or 'coherence')
+            is_valid: Whether prompt passed validation
+            issues: List of issue dicts with {severity, message, suggestion}
+            prompt_length: Total prompt length in characters
+            word_count: Total prompt word count
+            estimated_tokens: Estimated token count
+            material: Material name (if applicable)
+            component_type: Content type (if applicable)
+            domain: Content domain
+            generation_parameters_id: Reference to generation_parameters table
+            
+        Returns:
+            ID of logged validation entry
+        """
+        import json
+        from datetime import datetime
+        
+        timestamp = datetime.now().isoformat()
+        issues_json = json.dumps(issues)
+        
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO prompt_validation_feedback
+                (timestamp, validation_type, is_valid, prompt_length, word_count,
+                 estimated_tokens, issues, material, component_type, domain,
+                 generation_parameters_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                timestamp, validation_type, is_valid, prompt_length, word_count,
+                estimated_tokens, issues_json, material, component_type, domain,
+                generation_parameters_id
+            ))
+            
+            validation_id = cursor.lastrowid
+            conn.commit()
+            
+            status = "✅ VALID" if is_valid else "❌ INVALID"
+            logger.info(f"{status} [PROMPT VALIDATION] Logged validation #{validation_id} ({validation_type})")
+            logger.info(f"   Length: {prompt_length} chars, {word_count} words, ~{estimated_tokens} tokens")
+            if not is_valid:
+                logger.info(f"   Issues: {len(issues)} recorded for learning")
+            
+            return validation_id
     
     def get_latest_subjective_evaluation(
         self,

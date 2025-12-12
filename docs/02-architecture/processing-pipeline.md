@@ -17,6 +17,8 @@
 - ✅ **Settings domain** - description, technical content
 - ✅ **Future domains** - ANY text generation
 - ❌ **NO direct API calls** - All text generation goes through QualityEvaluatedGenerator
+- ✅ **Prompt validation** - Validates length, format, coherence (non-blocking)
+- ✅ **Learning feedback** - Validation issues logged for humanness optimizer adaptation
 - ❌ **NO bypassing pipeline** - No custom generation logic outside this system
 
 ### **2. Zero Defaults/Fallbacks Policy** 🔥 **MANDATORY (Dec 11, 2025)**

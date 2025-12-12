@@ -116,7 +116,8 @@ class HumannessOptimizer:
         # Components using compact humanness layer (to stay under 8000 char API limit)
         # Micro prompts are ~5500 chars with compact template, would exceed limit with full
         # Settings_description also needs compact to avoid exceeding limits
-        self.compact_components = {'micro', 'settings_description', 'component_summaries'}
+        # Material_description needs compact to prevent prompt bloat (full version causes 12k+ char prompts)
+        self.compact_components = {'micro', 'settings_description', 'component_summaries', 'material_description'}
         
         # Load configuration for randomization targets (fail-fast)
         self.config_path = Path(config_path)

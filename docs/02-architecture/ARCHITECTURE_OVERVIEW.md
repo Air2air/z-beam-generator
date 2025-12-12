@@ -144,6 +144,8 @@ z-beam-generator/
 7. **Learning**: Log attempt, parameters, quality scores to SQLite
 
 **Implementation**: `generation/core/evaluated_generator.py` (QualityEvaluatedGenerator)
+**Coordinator**: `domains/materials/coordinator.py` (UnifiedMaterialsGenerator - uses QualityEvaluatedGenerator)
+**Validation**: Non-blocking prompt validation with learning feedback to humanness optimizer
 
 ### Image Generation Flow
 1. **Input**: Material/contaminant + category + contamination level

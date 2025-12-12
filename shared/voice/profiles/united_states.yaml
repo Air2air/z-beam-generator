@@ -93,4 +93,25 @@ generation_constraints:
   technical: {units_mandatory: true, pattern_flex: "0.2 light"}
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
+
+forbidden:
+  theatrical:
+    - "presents a challenge"
+    - "presents a unique"
+    - "offers significant"
+    - "provides excellent"
+    - "you'll want"
+    - "you'll need"
+    - "you'll find"
+  direct_address:
+    - "you"
+    - "your"
+    - "we"
+    - "our"
+  abstract_subjects:
+    - "this presents"
+    - "that offers"
+    - "which provides"
+    - "making it ideal"
+
 quality_checks: {formality: 75+, accuracy: 95+, authenticity: 90+, directness: 90+, variation: 85+}

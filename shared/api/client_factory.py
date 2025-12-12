@@ -201,7 +201,7 @@ class APIClientFactory:
 
 
 # Convenience functions for backward compatibility
-def create_api_client(provider: str = "deepseek", **kwargs) -> APIClient:
+def create_api_client(provider: str = "grok", **kwargs) -> APIClient:
     """Create an API client (convenience function)"""
     return APIClientFactory.create_client(provider, **kwargs)
 

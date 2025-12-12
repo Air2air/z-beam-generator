@@ -1227,10 +1227,12 @@ materials:
         like localized melting if you monitor for any discoloration during the first
         run—adjust by slowing the repetition rate slightly if needed to reduce thermal
         stress.
-    material_description: When laser cleaning aluminum, you'll want to start with
-      its exceptional reflectivity that bounces most energy away so you must adjust
-      power levels carefully to avoid overheating while revealing clean surfaces without
-      warping the lightweight structure beneath
+    material_description: Aluminum shines in laser cleaning thanks to its lightweight
+      build and strong resistance to corrosion. This non-ferrous metal handles contaminants
+      like oils or oxides efficiently, especially in aerospace and automotive parts.
+      Lasers strip away surface grime without deep penetration, preserving the material's
+      integrity and electrical conductivity. High reflectivity poses a hurdle, though—operators
+      adjust pulse energy to avoid scattering and ensure clean results every time.
     settings_description: Aluminum's high reflectivity stands out as the primary property
       influencing laser cleaning approaches. We've found that this trait requires
       careful power modulation to ensure the beam interacts effectively without excessive
@@ -9779,9 +9781,14 @@ materials:
         midway—push too hard and the surface can soften unevenly, so we dial back
         intensity and overlap scans to keep things cool and restore that clean, conductive
         finish for electronics or plumbing jobs.
-    material_description: When laser cleaning copper, start by adjusting power and
-      speed to handle its exceptional reflectivity that outshines other metals, ensuring
-      contaminants lift cleanly without risking surface overheating or distortion
+    material_description: Copper, a non-ferrous metal, exhibits excellent thermal
+      and electrical conductivity along with strong corrosion resistance and ductility.
+      In laser cleaning applications, its reflective surface demands precise wavelength
+      selection for optimal energy absorption, thus enabling efficient removal of
+      oxides and contaminants. Durability ensures minimal thermal damage, preserving
+      conductivity and structural integrity—surface cleanliness improves, performance
+      in electronics and plumbing follows. Challenges arise from rapid heat dissipation,
+      yet controlled processes yield clean, restored finishes.
     contamination:
       valid:
       - copper_patina
@@ -40132,11 +40139,13 @@ materials:
         the dense structure beneath. Overlap passes slightly to restore even surfaces.
         Tends to clean efficiently in industrial settings like automotive parts, but
         watch for uneven heating that could warp thin sections.
-    material_description: Steel combines exceptional strength and ductility that allow
-      it to withstand heavy loads and impacts far better than most other ferrous metals,
-      making it the go-to choice for robust structures in construction and automotive
-      applications where reliability under stress directly translates to longer service
-      life and reduced maintenance needs
+    material_description: Steel stands out as a durable ferrous metal widely used
+      in automotive, construction, and manufacturing sectors. Its strong structure
+      and resistance to oxidation make it ideal for laser cleaning, where the process
+      removes contaminants like rust or coatings without altering the base material.
+      This approach preserves surface integrity, cuts down on waste, and speeds up
+      preparation for further applications. High reflectivity can demand tuned laser
+      settings, yet the results hold up well across industrial uses.
     contamination:
       valid:
       - rust_oxidation
@@ -43703,12 +43712,13 @@ materials:
         building up multiple light passes clears buildup effectively while preserving
         its durability. Just watch out at the end for any signs of discoloration,
         and dial back if needed to keep that protective shine intact.
-    material_description: In our experience, Titanium's exceptional corrosion resistance
-      tackles the persistent challenge of material breakdown in demanding sectors
-      like aerospace and marine operations, where it delivers lightweight durability
-      that outlasts traditional metals under constant exposure to harsh elements and
-      chemicals, so we can design reliable structures without compromising on strength
-      or longevity
+    material_description: Titanium displays strong durability and low weight. Its
+      corrosion resistance protects surfaces in harsh environments. For laser cleaning,
+      high heat tolerance allows contaminant removal without base material harm. Moderate
+      light absorption aids precise energy delivery, and dense structure prevents
+      deep penetration. These traits suit aerospace and medical uses, where clean,
+      intact finishes maintain performance. Low surface irregularities facilitate
+      even treatment results.
     contamination:
       valid:
       - industrial_oil

@@ -214,7 +214,10 @@ class CrossLinkBuilder:
                 if contaminant_name in linked_items:
                     continue
                 
-                # Create link
+                # Create link only if contaminant_name is valid
+                if not contaminant_name or not contaminant_name.strip():
+                    continue
+                    
                 slug = self._make_slug(contaminant_name)
                 link_path = f"../contaminants/{slug}.md"
                 
