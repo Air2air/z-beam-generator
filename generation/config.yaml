@@ -76,6 +76,8 @@ component_extraction:
     extraction_strategy: raw            # Return text as-is
   settings_description:
     extraction_strategy: raw            # Return text as-is
+  description:
+    extraction_strategy: raw            # Return text as-is (contamination descriptions)
   component_summary:
     extraction_strategy: raw            # Return text as-is (single component description)
   component_summaries:
@@ -93,6 +95,8 @@ component_lengths:
     target: 100                         # ~130 tokens
   settings_description:
     target: 100                         # ~130 tokens
+  description:
+    target: 200                         # ~260 tokens (contamination descriptions)
   component_summary:
     target: 70                          # 2 sentences × ~35 words = ~91 tokens
   faq:

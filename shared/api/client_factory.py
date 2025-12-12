@@ -21,10 +21,15 @@ def get_api_providers():
         from run import API_PROVIDERS
         return API_PROVIDERS
     except ImportError:
-        raise RuntimeError(
-            "CONFIGURATION ERROR: run.py not found or API_PROVIDERS not defined. "
-            "All API configurations must be defined in run.py with no fallbacks."
-        )
+        # Fallback to shared.config.settings if run.py doesn't exist
+        try:
+            from shared.config.settings import API_PROVIDERS
+            return API_PROVIDERS
+        except ImportError:
+            raise RuntimeError(
+                "CONFIGURATION ERROR: run.py not found and shared.config.settings import failed. "
+                "All API configurations must be defined in one of these locations with no fallbacks."
+            )
 
 
 class APIClientFactory:

@@ -226,20 +226,34 @@ class PromptBuilder:
         return voice_section
 
     @staticmethod
-    def _load_component_template(component_type: str) -> Optional[str]:
+    def _load_component_template(component_type: str, domain: str = "materials") -> Optional[str]:
         """
-        Load component-specific prompt template from prompts/components/{component}.txt.
+        Load component-specific prompt template.
+        
+        Priority:
+        1. Domain-specific: domains/{domain}/prompts/{component}.txt
+        2. Shared (deprecated): prompts/components/{component}.txt
         
         Args:
-            component_type: Component type (micro, faq, etc.)
+            component_type: Component type (micro, faq, material_description, etc.)
+            domain: Domain name (materials, contaminants, settings)
             
         Returns:
             Template string or None if file doesn't exist
         """
-        template_path = os.path.join('prompts', 'components', f'{component_type}.txt')
-        if os.path.exists(template_path):
-            with open(template_path, 'r', encoding='utf-8') as f:
+        # Try domain-specific path first (NEW)
+        domain_path = os.path.join('domains', domain, 'prompts', f'{component_type}.txt')
+        if os.path.exists(domain_path):
+            with open(domain_path, 'r', encoding='utf-8') as f:
                 return f.read().strip()
+        
+        # Fall back to shared path (deprecated)
+        shared_path = os.path.join('prompts', 'components', f'{component_type}.txt')
+        if os.path.exists(shared_path):
+            logger.warning(f"Using deprecated shared prompt path: {shared_path}. Move to domains/{domain}/prompts/")
+            with open(shared_path, 'r', encoding='utf-8') as f:
+                return f.read().strip()
+        
         return None
     
     @staticmethod
@@ -398,8 +412,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
             length=length
         )
         
-        # Load component-specific template if available
-        component_template = PromptBuilder._load_component_template(spec.name)
+        # Load component-specific template if available (domain-specific first)
+        component_template = PromptBuilder._load_component_template(spec.name, domain)
         if component_template:
             # NEW: Build dynamic guidance sections based on config
             technical_guidance = PromptBuilder._get_technical_guidance(

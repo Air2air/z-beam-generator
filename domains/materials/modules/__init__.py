@@ -2,7 +2,7 @@
 Frontmatter Generation Modules
 
 Active Modules (6):
-- MetadataModule: name, title, subtitle, description, category, subcategory
+- MetadataModule: name, title, description, category, subcategory
 - AuthorModule: author metadata extraction
 - PropertiesModule: materialProperties with GROUPED structure
 - SettingsModule: machineSettings with ranges

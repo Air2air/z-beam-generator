@@ -2,7 +2,7 @@
 """
 Unified Materials Content Generator
 
-TEXT CONTENT GENERATOR for all material content (micro, FAQ, subtitle, description).
+TEXT CONTENT GENERATOR for all material content (micro, FAQ, description).
 Used by shared/commands/generation.py for all generation commands.
 
 ARCHITECTURE (Updated December 2025 - Production Only):
@@ -150,11 +150,11 @@ class UnifiedMaterialsGenerator:
         
         Args:
             material_name: Name of material
-            content_type: Type of content ('micro', 'faq', 'subtitle', 'description', 'eeat')
+            content_type: Type of content ('micro', 'faq', 'description', 'eeat')
             **kwargs: Additional parameters (e.g., faq_count=8)
             
         Returns:
-            Generated content (string for micro/subtitle/description, list for faq)
+            Generated content (string for micro/description, list for faq)
         """
         from generation.core.generator import Generator
         

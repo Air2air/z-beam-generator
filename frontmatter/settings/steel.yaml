@@ -1,0 +1,120 @@
+name: Steel
+slug: steel
+title: Steel Laser Cleaning Settings
+machineSettings:
+  powerRange:
+    description: Optimal average power for Steel surface cleaning and oxide removal
+    unit: W
+    value: 100
+  wavelength:
+    description: Near-infrared wavelength with good absorption in Steel oxides and
+      contaminants
+    unit: nm
+    value: 1064
+  spotSize:
+    description: Beam spot diameter for balanced cleaning efficiency and coverage
+      area
+    unit: μm
+    value: 50
+  repetitionRate:
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    unit: kHz
+    value: 50
+  energyDensity:
+    description: Fluence level sufficient for contaminant ablation while preserving
+      Steel substrate
+    unit: J/cm²
+    value: 5
+  pulseWidth:
+    description: Nanosecond pulse duration for effective contaminant removal without
+      substrate damage
+    unit: ns
+    value: 10
+  scanSpeed:
+    description: Optimal scanning speed for uniform cleaning and process efficiency
+    unit: mm/s
+    value: 500
+  passCount:
+    description: Recommended number of passes for complete contaminant removal
+    unit: passes
+    value: 3
+  overlapRatio:
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      heat accumulation
+    unit: '%'
+    value: 50
+material_challenges:
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base
+      metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination
+settings_description: When laser cleaning steel, start by selecting a moderate power
+  level to account for its reflective surface, which tends to scatter energy and slow
+  initial progress. This works well when you scan slowly across the area, allowing
+  the laser to gradually remove oxidation without stressing the dense structure beneath.
+  Overlap passes slightly to restore even surfaces. Tends to clean efficiently in
+  industrial settings like automotive parts, but watch for uneven heating that could
+  warp thin sections.
+eeat:
+  citations:
+  - ISO 11146 - Lasers and laser-related equipment
+  - IEC 60825 - Safety of Laser Products
+  - OSHA laser safety standards
+  isBasedOn:
+    name: ISO 11146 - Test methods for laser beam widths
+    url: https://www.iso.org/standard/33625.html
+  reviewedBy: Z-Beam Quality Assurance Team
+layout: settings
+_metadata:
+  generator: SettingsFrontmatterGenerator
+  version: 2.0.0
+  content_type: settings
+  export_method: modular_trivial_export
+  data_source: Settings.yaml

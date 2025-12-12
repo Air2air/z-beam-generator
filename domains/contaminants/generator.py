@@ -2,21 +2,27 @@
 """
 Contaminant Frontmatter Generator
 
-Generator for contaminant-specific frontmatter content. Contaminants are substances
-that need to be removed from surfaces via laser cleaning (rust, paint, oxide layers,
-biological growth, etc.).
+Modular generator for contaminant frontmatter following materials architecture.
+Uses specialized modules for metadata, laser properties, media, etc.
 
-This follows the equal-weight content type architecture - contaminant has the same
-status as material and settings.
+Data Source: data/contaminants/Contaminants.yaml
+Output: frontmatter/contaminants/*.yaml
+
+Architecture:
+- Loads from Contaminants.yaml (single source of truth)
+- Uses modular components (metadata, laser, media, eeat)
+- Trivial YAML-to-YAML export (no generation, just extraction)
+- Fail-fast on missing data
 """
 
 import logging
 from typing import Dict, Any, Optional
-from datetime import datetime
+from pathlib import Path
+import yaml
 
 from export.core.base_generator import BaseFrontmatterGenerator, GenerationContext
 from shared.generators.component_generators import ComponentResult
-from shared.validation.errors import GenerationError
+from shared.validation.errors import GenerationError, ConfigurationError
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +47,10 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         **kwargs
     ):
         """
-        Initialize contaminant generator.
+        Initialize contaminant generator with modular components.
         
         Args:
-            api_client: API client for AI-assisted generation (optional)
+            api_client: API client (not used - trivial export)
             config: Configuration dictionary (optional)
             **kwargs: Additional parameters
         """
@@ -55,53 +61,89 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
             **kwargs
         )
         
-        self.logger.info("ContaminantFrontmatterGenerator initialized")
+        # Initialize modules
+        from .modules import (
+            MetadataModule,
+            LaserModule,
+            MediaModule,
+            EEATModule,
+            OpticalModule,
+            RemovalModule,
+            SafetyModule,
+            SEOModule,
+            QuickFactsModule,
+            IndustriesModule,
+            AppearanceModule,
+            CrosslinkingModule,
+            AuthorModule,
+        )
+        
+        # Basic modules (v1.0)
+        self.metadata_module = MetadataModule()
+        self.laser_module = LaserModule()
+        self.media_module = MediaModule()
+        self.eeat_module = EEATModule()
+        self.optical_module = OpticalModule()
+        self.removal_module = RemovalModule()
+        self.safety_module = SafetyModule()
+        self.author_module = AuthorModule()
+        
+        # Enhanced modules (v2.0 - Spec compliant)
+        self.seo_module = SEOModule()
+        self.quick_facts_module = QuickFactsModule()
+        self.industries_module = IndustriesModule()
+        self.appearance_module = AppearanceModule()
+        self.crosslinking_module = CrosslinkingModule()
+        
+        self.logger.info("ContaminantFrontmatterGenerator initialized with 13 modules")
     
     def _load_type_data(self):
         """
-        Load contaminant-specific data from data.yaml in same directory
-        """
-        import yaml
-        from pathlib import Path
+        Load contaminant data from Contaminants.yaml
         
-        # Data file is now in same directory as generator
-        data_file = Path(__file__).parent / 'data.yaml'
+        Raises:
+            ConfigurationError: If Contaminants.yaml not found or invalid
+        """
+        # Load from centralized data file
+        data_file = Path('data/contaminants/Contaminants.yaml')
+        
+        if not data_file.exists():
+            raise ConfigurationError(f"Contaminants.yaml not found: {data_file}")
         
         try:
             with open(data_file, 'r') as f:
                 data = yaml.safe_load(f)
-                self._contaminant_types = data.get('contaminants', {})
-                self._laser_guidelines = data.get('laser_guidelines', {})
-                self.logger.info(f"Loaded {len(self._contaminant_types)} contaminant types from {data_file}")
-        except FileNotFoundError:
-            self.logger.error(f"Contaminant data file not found: {data_file}")
-            self._contaminant_types = {}
-            self._laser_guidelines = {}
-        except Exception as e:
-            self.logger.error(f"Failed to load contaminant data: {e}")
-            self._contaminant_types = {}
-            self._laser_guidelines = {}
+                self._contaminants = data.get('contamination_patterns', {})
+                
+                if not self._contaminants:
+                    raise ConfigurationError("contamination_patterns not found in Contaminants.yaml")
+                
+                self.logger.info(f"Loaded {len(self._contaminants)} contaminants from {data_file}")
+                
+        except yaml.YAMLError as e:
+            raise ConfigurationError(f"Invalid YAML in {data_file}: {e}")
     
     def _validate_identifier(self, identifier: str) -> bool:
         """
-        Validate that contaminant type exists.
+        Validate that contaminant exists in Contaminants.yaml.
         
         Args:
-            identifier: Contaminant name/type
+            identifier: Contaminant slug (e.g., 'adhesive-residue')
             
         Returns:
             True if contaminant is valid
             
         Raises:
-            GenerationError: If contaminant type not found
+            GenerationError: If contaminant not found
         """
-        # Normalize identifier
-        identifier_key = identifier.lower().replace(' ', '_')
+        # Normalize identifier (slug format with hyphens)
+        identifier_key = identifier.lower().replace(' ', '-').replace('_', '-')
         
-        if identifier_key not in self._contaminant_types:
+        if identifier_key not in self._contaminants:
+            available = ', '.join(sorted(self._contaminants.keys())[:10])  # Show first 10
             raise GenerationError(
-                f"Contaminant type '{identifier}' not found. "
-                f"Available types: {', '.join(self._contaminant_types.keys())}"
+                f"Contaminant '{identifier}' not found. "
+                f"Available (sample): {available}..."
             )
         return True
     
@@ -121,14 +163,14 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         Get output filename for frontmatter file.
         
         Args:
-            identifier: Content identifier
+            identifier: Content identifier (slug format)
             
         Returns:
-            Output filename (e.g., "rust-laser-cleaning.yaml")
+            Output filename (e.g., "adhesive-residue.yaml")
         """
-        # Normalize identifier: lowercase, replace spaces with hyphens
+        # Normalize identifier: lowercase, replace spaces/underscores with hyphens
         normalized = identifier.lower().replace(' ', '-').replace('_', '-')
-        return f"{normalized}-laser-cleaning.yaml"
+        return f"{normalized}.yaml"
 
     def _build_frontmatter_data(
         self,
@@ -136,10 +178,13 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
         context: GenerationContext
     ) -> Dict[str, Any]:
         """
-        Build complete contaminant frontmatter data with AI-generated text.
+        Build complete contaminant frontmatter using modular components.
+        
+        This is a trivial YAML-to-YAML export - all data already exists
+        in Contaminants.yaml (description, micro, eeat, laser_properties, etc.)
         
         Args:
-            identifier: Contaminant name/type
+            identifier: Contaminant slug (e.g., 'adhesive-residue')
             context: Generation context with author data
             
         Returns:
@@ -149,114 +194,129 @@ class ContaminantFrontmatterGenerator(BaseFrontmatterGenerator):
             GenerationError: If frontmatter construction fails
         """
         try:
+            self.logger.info(f"Building frontmatter for contaminant: {identifier}")
+            
             # Normalize identifier
-            identifier_key = identifier.lower().replace(' ', '_')
-            contaminant_data = self._contaminant_types[identifier_key]
+            identifier_key = identifier.lower().replace(' ', '-').replace('_', '-')
+            contaminant_data = self._contaminants[identifier_key]
             
-            # Build base structure
-            frontmatter = {
-                'layout': 'contaminant',
-                'title': f"{contaminant_data['name']} Laser Cleaning",
-                'contaminant': contaminant_data['name'],
-                'generated': datetime.utcnow().isoformat() + 'Z',
-            }
+            # Build frontmatter using modules
+            frontmatter = {}
             
-            # Generate text content using Generator
-            if self.api_client:
-                from generation.core.generator import Generator
-                text_generator = Generator(self.api_client)
-                
-                # Generate material_description (subtitle)
-                self.logger.info(f"Generating material_description for {identifier}...")
-                subtitle_result = text_generator.generate(identifier, 'material_description', domain='contaminants')
-                frontmatter['description'] = subtitle_result.get('content', f"Laser cleaning parameters for {contaminant_data['name']} removal")
-                
-                # Generate micro (before/after at 1000x magnification)
-                self.logger.info(f"Generating micro for {identifier}...")
-                micro_result = text_generator.generate(identifier, 'micro', domain='contaminants')
-                micro_content = micro_result.get('content', '')
-                
-                # Split micro into before/after (assumes two paragraphs)
-                micro_paragraphs = [p.strip() for p in micro_content.split('\n\n') if p.strip()]
-                frontmatter['micro'] = {
-                    'before': micro_paragraphs[0] if len(micro_paragraphs) > 0 else '',
-                    'after': micro_paragraphs[1] if len(micro_paragraphs) > 1 else ''
-                }
-                
-                # Generate FAQ
-                self.logger.info(f"Generating FAQ for {identifier}...")
-                faq_result = text_generator.generate(identifier, 'faq', domain='contaminants', faq_count=3)
-                frontmatter['faq'] = faq_result.get('content', [])
-            else:
-                # No API client - use placeholders
-                frontmatter['description'] = f"Laser cleaning parameters for {contaminant_data['name']} removal"
-                frontmatter['micro'] = {
-                    'before': f"Surface shows contamination from {contaminant_data['name']} affecting material appearance and properties.",
-                    'after': f"Post-cleaning reveals restored surface with {contaminant_data['name']} successfully removed through precise laser ablation."
-                }
-                frontmatter['faq'] = []
+            # 1. Metadata (name, title, slug, description, category)
+            metadata = self.metadata_module.generate(identifier_key, contaminant_data)
+            frontmatter.update(metadata)
             
-            # Add contaminant-specific properties
-            frontmatter['contaminantProperties'] = {
-                'description': contaminant_data['description'],
-                'removal_difficulty': 'moderate',  # Placeholder
-                'typical_thickness': 'varies',  # Placeholder
-                'common_substrates': contaminant_data.get('common_substrates', [])
-            }
-            
-            # Add chemical info if available
-            if 'chemical_formula' in contaminant_data:
-                frontmatter['contaminantProperties']['chemical_formula'] = contaminant_data['chemical_formula']
-            
-            if 'types' in contaminant_data:
-                frontmatter['contaminantProperties']['types'] = contaminant_data['types']
-            
-            # Add placeholder laser parameters
-            frontmatter['laserParameters'] = {
-                'wavelength': {
-                    'min': 1064,
-                    'max': 1064,
-                    'unit': 'nm',
-                    'note': 'Placeholder - requires research'
-                },
-                'power': {
-                    'min': 100,
-                    'max': 500,
-                    'unit': 'W',
-                    'note': 'Placeholder - requires research'
-                },
-                'pulseWidth': {
-                    'min': 100,
-                    'max': 200,
-                    'unit': 'ns',
-                    'note': 'Placeholder - requires research'
-                }
-            }
-            
-            # Add applications
-            frontmatter['applications'] = [
-                'Surface Cleaning',
-                'Restoration',
-                'Industrial Maintenance'
-            ]
-            
-            # Add author data if provided
-            if context.author_data:
+            # 2. Author data (enriched from registry)
+            author = self.author_module.generate(contaminant_data)
+            if author:
+                frontmatter['author'] = author
+            elif context.author_data:
                 frontmatter['author'] = context.author_data
             
-            # Add metadata
-            status = 'complete' if self.api_client else 'placeholder'
-            frontmatter['_metadata'] = {
-                'generator': 'ContaminantFrontmatterGenerator',
-                'version': '1.0.0',
-                'content_type': 'contaminant',
-                'status': status,
-                'requires_research': not bool(self.api_client)
-            }
+            # Add _metadata for voice tracking (after author enrichment)
+            if 'author' in frontmatter:
+                frontmatter['_metadata'] = {
+                    'voice': {
+                        'author_name': frontmatter['author'].get('name', 'Unknown'),
+                        'author_country': frontmatter['author'].get('country', 'Unknown'),
+                        'voice_applied': True,
+                        'content_type': 'contaminant'
+                    }
+                }
             
-            self.logger.info(f"Built frontmatter for contaminant: {identifier} (status: {status})")
+            # 3. Media (micro, images)
+            media = self.media_module.generate(contaminant_data)
+            if media:
+                frontmatter.update(media)
+            
+            # 4. Laser properties
+            laser_props = self.laser_module.generate(contaminant_data)
+            if laser_props:
+                frontmatter['laser_properties'] = laser_props
+            
+            # 5. Optical properties
+            optical_props = self.optical_module.generate(contaminant_data)
+            if optical_props:
+                frontmatter['optical_properties'] = optical_props
+            
+            # 6. Removal characteristics
+            removal_chars = self.removal_module.generate(contaminant_data)
+            if removal_chars:
+                frontmatter['removal_characteristics'] = removal_chars
+            
+            # 7. Safety data
+            safety_data = self.safety_module.generate(contaminant_data)
+            if safety_data:
+                frontmatter['safety_data'] = safety_data
+            
+            # 8. EEAT
+            eeat = self.eeat_module.generate(contaminant_data)
+            if eeat:
+                frontmatter['eeat'] = eeat
+            
+            # === ENHANCED SECTIONS (v2.0 - Spec Compliant) ===
+            
+            # 9. SEO Optimization (meta_description, keywords, canonical_url)
+            seo = self.seo_module.generate(identifier_key, contaminant_data)
+            if seo:
+                frontmatter.update(seo)
+            
+            # 10. Quick Facts (above-fold value proposition)
+            quick_facts = self.quick_facts_module.generate(contaminant_data)
+            if quick_facts:
+                frontmatter['quick_facts'] = quick_facts
+            
+            # 11. Industries Served (lead qualification)
+            industries = self.industries_module.generate(contaminant_data)
+            if industries:
+                frontmatter['industries_served'] = industries
+            
+            # 12. Appearance by Category (visual characteristics)
+            appearance = self.appearance_module.generate(contaminant_data)
+            if appearance:
+                frontmatter['appearance_by_category'] = appearance
+            
+            # 13. Crosslinking (affected_materials, related_content)
+            pattern_id = identifier_key  # Use slug as pattern_id
+            crosslinking = self.crosslinking_module.generate(contaminant_data, pattern_id)
+            if crosslinking:
+                frontmatter.update(crosslinking)
+            
+            # 14. Context notes (if present)
+            if 'context_notes' in contaminant_data:
+                frontmatter['context_notes'] = contaminant_data['context_notes']
+            
+            # 15. Layout
+            frontmatter['layout'] = 'contaminant'
+            
+            # Update _metadata with generator details (merge with voice metadata if exists)
+            if '_metadata' not in frontmatter:
+                frontmatter['_metadata'] = {}
+            
+            frontmatter['_metadata'].update({
+                'generator': 'ContaminantFrontmatterGenerator',
+                'version': '2.0.0',
+                'content_type': 'contaminant',
+                'export_method': 'modular_trivial_export',
+                'data_source': 'Contaminants.yaml',
+                'spec_compliance': 'CONTAMINATION_FRONTMATTER_SPEC.md',
+                'enhancements': [
+                    'seo_optimization',
+                    'quick_facts',
+                    'industries_served',
+                    'appearance_by_category',
+                    'crosslinking_strategies'
+                ]
+            })
+            
+            self.logger.info(f"✅ Built complete frontmatter for: {identifier}")
             return frontmatter
             
+        except KeyError as e:
+            raise GenerationError(
+                f"Missing required field in contaminant data for '{identifier}': {e}"
+            )
         except Exception as e:
             raise GenerationError(
                 f"Failed to build contaminant frontmatter for '{identifier}': {e}"

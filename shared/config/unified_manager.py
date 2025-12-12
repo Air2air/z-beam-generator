@@ -120,10 +120,15 @@ class UnifiedConfigManager:
             from run import API_PROVIDERS
             self._api_providers = API_PROVIDERS
         except ImportError:
-            raise ConfigurationError(
-                "CONFIGURATION ERROR: run.py not found or API_PROVIDERS not defined. "
-                "All API configurations must be defined in run.py with no fallbacks."
-            )
+            # Fallback to shared.config.settings if run.py doesn't exist
+            try:
+                from shared.config.settings import API_PROVIDERS
+                self._api_providers = API_PROVIDERS
+            except ImportError:
+                raise ConfigurationError(
+                    "CONFIGURATION ERROR: run.py not found and shared.config.settings import failed. "
+                    "All API configurations must be defined in one of these locations with no fallbacks."
+                )
         
         if not self._api_providers:
             raise ConfigurationError(

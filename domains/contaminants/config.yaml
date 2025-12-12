@@ -1,0 +1,53 @@
+# Contaminants Domain Configuration
+# Contamination pattern description generation settings
+
+# =============================================================================
+# DOMAIN ADAPTER CONFIGURATION (Required for DomainAdapter)
+# =============================================================================
+data_path: "data/contaminants/Contaminants.yaml"
+data_root_key: "contamination_patterns"
+author_key: "author.id"  # Author assigned ONCE, never changes (immutable)
+context_keys:
+  - category
+  - context_notes
+  - description
+
+# Frontmatter sync configuration (domain-agnostic architecture)
+frontmatter_directory: "frontmatter/contaminants"
+frontmatter_filename_pattern: "{slug}.yaml"
+
+# =============================================================================
+# PROMPT TEMPLATES
+# =============================================================================
+# Prompt templates for contaminant content generation
+# Uses voice placeholders that are filled by persona files
+
+prompts:
+  # Description for contamination pattern pages
+  description: |
+    You are {author} from {country}, writing about {item_name} contamination.
+
+    CONTEXT:
+    - Category: {category}
+    - Context: {context_notes}
+    - Brief description: {description}
+
+    TASK: Write a comprehensive description of this contamination pattern for a laser cleaning service website.
+    
+    LENGTH: 150-250 words
+    
+    VOICE: {voice_instruction}
+    
+    STRUCTURE:
+    - Start with what this contamination is and where it typically occurs
+    - Explain how it forms or develops
+    - Describe its visual characteristics and impact on materials
+    - Mention common materials affected
+    - Conclude with why laser cleaning is effective for this type of contamination
+    
+    REQUIREMENTS:
+    - Write in {author}'s authentic voice and style
+    - Be informative but accessible to general audience
+    - Focus on practical, real-world understanding
+    - Avoid overly technical jargon unless necessary
+    - Make it engaging and relevant to potential customers

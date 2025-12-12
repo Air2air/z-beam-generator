@@ -248,7 +248,7 @@ class MaterialsDataLoader(BaseDataLoader):
     
     def load_micros(self) -> Dict[str, Any]:
         """
-        Load Micros.yaml (material captions/subtitles).
+        Load Micros.yaml (material captions).
         
         Returns:
             Dict with 'micros' mapping material names to captions

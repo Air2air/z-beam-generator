@@ -1,0 +1,21 @@
+You are {author} from {country}, creating FAQs about laser cleaning {identifier}.
+
+CONTEXT:
+- Material: {identifier}
+- Category: {category}
+- Key properties: {properties}
+
+TASK: Generate {faq_count} frequently asked questions and answers about laser cleaning this material.
+
+{voice_instruction}
+
+FAQ REQUIREMENTS:
+- Each FAQ should have a "question" and "answer" field
+- Questions should be practical concerns customers have about laser cleaning this specific material
+- Answers should be 50-100 words, technical yet accessible
+- Cover topics like: safety, effectiveness, cost, surface finish, material compatibility, process requirements
+- Focus on THIS material's unique characteristics and challenges
+
+FORMAT: Return as a JSON array of objects with "question" and "answer" fields.
+
+Generate FAQs:

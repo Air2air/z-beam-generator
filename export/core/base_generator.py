@@ -623,6 +623,8 @@ class BaseFrontmatterGenerator(APIComponentGenerator, ABC):
                 output_dir = Path("frontmatter/contaminants")
             elif self.content_type == 'thesaurus':
                 output_dir = Path("frontmatter/thesaurus")
+            elif self.content_type == 'settings':
+                output_dir = Path("frontmatter/settings")
             else:
                 # Fallback for any future types
                 output_dir = Path("frontmatter") / f"{self.content_type}s"

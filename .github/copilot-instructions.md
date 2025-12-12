@@ -2114,6 +2114,19 @@ git revert <commit>  # Revert to known working state
    - All outputs contain forbidden phrases (direct address: "you'll want", "We've found")
    - Tests: `tests/test_author_assignment_immutability.py` - 9/9 tests passing ✅
    - Recommendation: Switch to Claude/GPT-4 or implement post-generation validation
+7. **✅ RESOLVED: Persona files consolidated (Dec 11, 2025)** 🔥 **FIXED**
+   - **Issue**: TWO DIFFERENT persona sets existed with conflicting voice instructions
+     * `shared/prompts/personas/*.yaml` - "Conversational" style (simplified)
+     * `shared/voice/profiles/*.yaml` - "Comprehensive Formal" style (detailed EFL patterns)
+   - **Resolution**: Consolidated to comprehensive personas with detailed linguistics
+     * Initial: Copied conversational → profiles (Option B attempt)
+     * Final: Restored comprehensive from `shared/voice/profiles.backup` (Option A)
+     * Duplicate directory removed: `shared/prompts/personas/` deleted
+     * Single source of truth: `shared/voice/profiles/` (comprehensive versions)
+   - **Current personas include**: Full EFL patterns, voice examples, grammar norms, generation constraints
+   - **Generation pipeline uses** `shared/voice/profiles/` (via Generator._load_all_personas())
+   - **Status**: ✅ CONSOLIDATED with comprehensive linguistic characteristics restored
+   - **Verification**: test_persona_loading_simple.py confirms correct loading (838-897 char voice instructions)
 7. **✅ Field isolation tests FIXED (Dec 6, 2025)**: All 14 tests now passing
    - File: `tests/test_frontmatter_partial_field_sync.py` - 14/14 tests passing ✅
    - Resolution: Added domain parameter to all 16 sync_field_to_frontmatter() calls

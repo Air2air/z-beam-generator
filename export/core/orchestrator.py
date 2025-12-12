@@ -91,28 +91,36 @@ class FrontmatterOrchestrator:
     
     def _register_default_generators(self):
         """Register default generator types"""
+        # Register material generator
         try:
-            # Import material generator from root /materials folder
             from materials.generator import MaterialFrontmatterGenerator
             self.register_generator('material', MaterialFrontmatterGenerator)
-            self.logger.info("Registered material generator (Phase 1 wrapper with author voice)")
+            self.logger.info("✅ Registered material generator (Phase 1 wrapper with author voice)")
         except ImportError as e:
             # Fallback to legacy generator for backward compatibility
             self.logger.warning(f"New material generator not available, using legacy: {e}")
             try:
                 from export.core.streamlined_generator import StreamlinedFrontmatterGenerator
                 self.register_generator('material', StreamlinedFrontmatterGenerator)
-                self.logger.info("Registered legacy material generator (streamlined)")
+                self.logger.info("✅ Registered legacy material generator (streamlined)")
             except ImportError as e2:
                 self.logger.warning(f"Material generator not available: {e2}")
         
-        # Register contaminant generator from root /contaminants folder
+        # Register contaminant generator
         try:
-            from contaminants.generator import ContaminantFrontmatterGenerator
+            from domains.contaminants.generator import ContaminantFrontmatterGenerator
             self.register_generator('contaminant', ContaminantFrontmatterGenerator)
-            self.logger.info("Registered contaminant generator")
+            self.logger.info("✅ Registered contaminant generator (modular v2.0)")
         except ImportError as e:
-            self.logger.debug(f"Contaminant generator not available: {e}")
+            self.logger.warning(f"Contaminant generator not available: {e}")
+        
+        # Register settings generator
+        try:
+            from domains.settings.generator import SettingsFrontmatterGenerator
+            self.register_generator('settings', SettingsFrontmatterGenerator)
+            self.logger.info("✅ Registered settings generator (modular v2.0)")
+        except ImportError as e:
+            self.logger.warning(f"Settings generator not available: {e}")
     
     def register_generator(self, content_type: str, generator_class: type):
         """

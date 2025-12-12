@@ -1,11 +1,10 @@
 """
 MetadataModule - Generate frontmatter metadata fields
 
-Handles: name, title, subtitle, description, category, subcategory
+Handles: name, title, description, category, subcategory
 
 Architecture:
 - Pure extraction from Materials.yaml
-- Template-based subtitle generation (NO AI)
 - Abbreviation template support (FRPU, GFRP, etc.)
 - Fail-fast validation
 """
@@ -85,7 +84,6 @@ class MetadataModule:
             Dictionary with metadata fields:
             - name: Material name (may be abbreviation)
             - title: Full title with "Laser Cleaning"
-            - subtitle: Generated subtitle
             - description: Material description
             - category: Material category (capitalized)
             - subcategory: Material subcategory
@@ -118,7 +116,6 @@ class MetadataModule:
         metadata = {
             'name': template.get('name', material_name) if template else material_name,
             'title': self._generate_title(material_name, template),
-            'subtitle': self._generate_subtitle(material_name, category_display, subcategory, template, material_data),
             'description': self._generate_description(material_name, material_data, template),
             'category': category_display,
             'subcategory': subcategory,
@@ -149,36 +146,6 @@ class MetadataModule:
             return template['title']
         
         return f"{material_name} Laser Cleaning"
-    
-    def _generate_subtitle(
-        self, 
-        material_name: str, 
-        category: str, 
-        subcategory: str,
-        template: Optional[Dict],
-        material_data: Dict = None
-    ) -> str:
-        """
-        Get subtitle from Materials.yaml (voice-enhanced content)
-        
-        Priority:
-        1. Use subtitle from Materials.yaml if present (voice-enhanced)
-        2. Fall back to template only if missing
-        
-        This ensures voice-enhanced subtitles from Materials.yaml are preserved.
-        """
-        # Use voice-enhanced subtitle from Materials.yaml if available
-        if material_data and 'subtitle' in material_data and material_data['subtitle']:
-            subtitle = material_data['subtitle']
-            self.logger.debug(f"Using voice-enhanced subtitle from Materials.yaml: {subtitle}")
-            return subtitle
-        
-        # Fall back to template if subtitle missing
-        display_name = template.get('name', material_name) if template else material_name
-        subtitle = f"Laser cleaning parameters and specifications for {display_name}"
-        
-        self.logger.warning(f"⚠️  No subtitle in Materials.yaml, using template: {subtitle}")
-        return subtitle
     
     def _generate_description(
         self, 

@@ -52,21 +52,16 @@ class SettingsModule:
         
         Args:
             material_name: Name of material
-            material_data: Material data from Materials.yaml
+            material_data: Settings data from Settings.yaml (not Materials.yaml)
             
         Returns:
             Dictionary with machine settings
-            Each setting has: {value, unit, min, max, confidence}
+            Each setting has: {value, unit, description}
             
-        Raises:
-            ValueError: If category not found or data invalid
+        Note: Settings.yaml doesn't have category field - settings are
+        already per-material. No ranges applied (would come from Categories.yaml).
         """
         self.logger.info(f"Generating machine settings for {material_name}")
-        
-        # Get category
-        category = material_data.get('category', '').lower()
-        if not category:
-            raise ValueError(f"Category missing for {material_name}")
         
         # Get settings from material data
         if 'machineSettings' not in material_data:
@@ -75,15 +70,10 @@ class SettingsModule:
         
         settings = material_data['machineSettings']
         
-        # Apply ranges from Categories.yaml
-        settings_with_ranges = self._apply_ranges(
-            settings,
-            category,
-            material_name
-        )
-        
-        self.logger.info(f"✅ Generated machine settings for {material_name}")
-        return settings_with_ranges
+        # Settings.yaml has description, value, unit per setting
+        # Return as-is (already in correct format)
+        self.logger.info(f"✅ Extracted machine settings for {material_name}")
+        return settings
     
     def _apply_ranges(
         self,

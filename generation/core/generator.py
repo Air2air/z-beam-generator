@@ -270,7 +270,13 @@ class Generator:
         
         try:
             from shared.validation.prompt_validator import validate_text_prompt
+            from shared.validation.prompt_coherence_validator import validate_prompt_coherence
+            
+            # Stage 1: Standard validation (length, format, technical)
             validation_result = validate_text_prompt(prompt)
+            
+            # Stage 2: Coherence validation (separation of concerns, contradictions)
+            coherence_result = validate_prompt_coherence(prompt)
             
             # Print FULL validation metrics (TERMINAL + FILE LOGGING)
             print(f"\n📊 PROMPT METRICS:")
@@ -354,9 +360,10 @@ class Generator:
             print(f"   View with: cat {prompt_file}")
             self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
             
+            # Report standard validation
             if not validation_result.is_valid:
                 if validation_result.has_critical_issues:
-                    print(f"\n❌ CRITICAL VALIDATION FAILURE")
+                    print(f"\n❌ CRITICAL VALIDATION FAILURE (Standard)")
                     print(validation_result.format_report())
                     raise ValueError(
                         f"Prompt validation failed with critical issues:\n"
@@ -366,8 +373,36 @@ class Generator:
                     print(f"   ⚠️  Validation warnings present (not blocking)")
                     self.logger.info("   ⚠️  Validation warnings present (not blocking)")
             else:
-                print(f"   ✅ Prompt validated successfully")
-                self.logger.info("   ✅ Prompt validated successfully")
+                print(f"   ✅ Standard validation passed")
+                self.logger.info("   ✅ Standard validation passed")
+            
+            # Report coherence validation
+            print(f"\n🔗 COHERENCE VALIDATION:")
+            print(f"   {coherence_result.get_summary()}")
+            self.logger.info(f"🔗 COHERENCE VALIDATION: {coherence_result.get_summary()}")
+            
+            if not coherence_result.is_coherent:
+                print(f"\n⚠️  COHERENCE ISSUES DETECTED:")
+                for issue in coherence_result.issues:
+                    if issue.severity in ["CRITICAL", "ERROR"]:
+                        print(f"   • [{issue.severity}] {issue.message}")
+                        self.logger.warning(f"   [{issue.severity}] {issue.message}")
+                
+                # Log full report to file only
+                self.logger.info("\n" + coherence_result.format_report())
+                
+                # Fail on critical coherence issues
+                critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
+                if critical_coherence:
+                    print(f"\n❌ CRITICAL COHERENCE FAILURE")
+                    print(coherence_result.format_report())
+                    raise ValueError(
+                        f"Prompt coherence validation failed with {len(critical_coherence)} critical issues:\n"
+                        f"{coherence_result.format_report()}"
+                    )
+            else:
+                print(f"   ✅ Coherence validated successfully")
+                self.logger.info("   ✅ Coherence validated successfully")
         except ImportError as e:
             print(f"\n⚠️  Prompt validator not available - skipping validation")
             print(f"   Error: {e}")
