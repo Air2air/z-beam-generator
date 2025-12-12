@@ -20,7 +20,7 @@ from typing import Dict, List
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from domains.contaminants.pattern_loader import PatternDataLoader
+from domains.contaminants.data_loader import PatternDataLoader
 from domains.contaminants.research.laser_properties_researcher import (
     LaserPropertiesResearcher,
     ContaminationResearchSpec

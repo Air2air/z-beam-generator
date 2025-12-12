@@ -58,7 +58,7 @@ domains/
 ├── contaminants/
 │   ├── data.yaml  ← Different name
 │   ├── generator.py
-│   ├── pattern_loader.py  ← Different name (should be data_loader.py?)
+│   ├── data_loader.py     ✅ NORMALIZED (was pattern_loader.py)
 │   └── prompts/
 └── settings/
     ├── config.yaml
@@ -68,7 +68,7 @@ domains/
 ```
 
 ### Issues
-1. **Inconsistent file naming**: `data_loader.py` vs `pattern_loader.py`
+1. **✅ FIXED: File naming normalized**: All domains now use `data_loader.py`
 2. **Missing files**: Contaminants domain missing `coordinator.py`
 3. **Config naming**: `data.yaml` vs `config.yaml`
 
@@ -90,7 +90,7 @@ domains/{domain}/
 ```
 
 ### Action
-1. Rename `contaminants/pattern_loader.py` → `contaminants/data_loader.py`
+1. ✅ DONE: Renamed `contaminants/pattern_loader.py` → `contaminants/data_loader.py`
 2. Rename `contaminants/data.yaml` → `contaminants/config.yaml`
 3. Create `contaminants/coordinator.py` (if needed)
 4. Document mandatory structure in `docs/02-architecture/DOMAIN_STRUCTURE_POLICY.md`
@@ -295,7 +295,7 @@ tests/test_*.py
 tests/
 ├── unit/
 │   ├── test_author_normalization.py
-│   ├── test_pattern_loader.py
+│   ├── test_data_loader.py
 │   └── test_generators.py
 ├── integration/
 │   ├── test_4author_generation.py
@@ -371,7 +371,7 @@ grep -h "{" domains/*/prompts/*.txt | sort | uniq
 1. **Complete author normalization** (current task)
 2. **Domain structure audit** - Create DOMAIN_STRUCTURE_POLICY.md
 3. **Rename inconsistent files**:
-   - `contaminants/pattern_loader.py` → `data_loader.py`
+   - ✅ `contaminants/data_loader.py` (normalized from pattern_loader.py)
    - `contaminants/data.yaml` → `config.yaml`
 4. **Move test files** from root to tests/
 5. **Document import patterns** in architecture docs

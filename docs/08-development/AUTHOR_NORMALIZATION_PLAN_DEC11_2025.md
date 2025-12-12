@@ -281,7 +281,7 @@ def test_registry_is_single_source():
 3. ✅ `data/settings/Settings.yaml` - Already correct (no changes)
 
 ### Code Files
-4. `domains/contaminants/pattern_loader.py` - Add author resolution
+4. `domains/contaminants/data_loader.py` - Add author resolution
 5. `domains/contaminants/generator.py` - Ensure uses resolved author
 6. `export/core/trivial_exporter.py` or contaminant exporter - Fix frontmatter export
 
@@ -349,7 +349,7 @@ git diff data/contaminants/Contaminants.yaml  # Review changes
 ```
 
 **Step 4: Update Loader Code** (15 min)
-- Modify `domains/contaminants/pattern_loader.py`
+- Modify `domains/contaminants/data_loader.py`
 - Add `resolve_author_for_generation()` integration
 - Test loader returns complete author objects
 

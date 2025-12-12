@@ -98,7 +98,7 @@ class LaserPropertiesResearcher:
         if api_client is None:
             raise ValueError("API client required for laser properties research")
         self.api_client = api_client
-        from domains.contaminants.pattern_loader import PatternDataLoader
+        from domains.contaminants.data_loader import PatternDataLoader
         self.loader = PatternDataLoader()
         self.logger = logging.getLogger(__name__)
     

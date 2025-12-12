@@ -599,7 +599,7 @@ tokens = config.calculate_max_tokens('description')
 ```python
 # During prompt building, check if research needed
 from domains.materials.data_loader import MaterialsDataLoader
-from domains.contaminants.pattern_loader import ContaminationPatternLoader
+from domains.contaminants.data_loader import ContaminationPatternLoader
 
 # Example: Generating micro for Steel contamination removal
 materials_loader = MaterialsDataLoader()
