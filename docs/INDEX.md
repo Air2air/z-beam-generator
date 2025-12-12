@@ -1,7 +1,21 @@
 # Z-Beam Generator Documentation Index
 
-**Last Updated**: November 18, 2025  
+**Last Updated**: December 12, 2025  
 **Structure**: Numbered directories (01-09) for AI-friendly navigation
+
+---
+
+## 🤖 AI Assistant Navigation
+
+**⭐ PRIMARY**: [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) - Complete AI assistant guide (1,398 lines)
+
+**Essential for AI Assistants**:
+- 🚀 [30-Second Quick Start](../.github/copilot-instructions.md) - Immediate navigation to any answer
+- 🎯 [Generation Guide](../.github/COPILOT_GENERATION_GUIDE.md) - Content generation commands
+- ⚡ [AI Assistant Guide](08-development/AI_ASSISTANT_GUIDE.md) - 30-second navigation lookup
+- 🔍 [Quick Reference](QUICK_REFERENCE.md) - Fast problem resolution
+- 🔧 [System Interactions](SYSTEM_INTERACTIONS.md) - Before making changes
+- 📚 [For AI Assistants](FOR_AI_ASSISTANTS.md) - Dedicated AI entry point
 
 ---
 

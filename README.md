@@ -9,6 +9,27 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ---
 
+## 🤖 For AI Assistants
+
+**⭐ PRIMARY GUIDE**: [`.github/copilot-instructions.md`](.github/copilot-instructions.md) (1,398 lines)
+
+Comprehensive guide for AI assistants (GitHub Copilot, Grok, Claude, etc.) containing:
+- 🚀 **30-second quick start** - Navigate to any answer instantly
+- 🚦 **TIER 1-3 rules** - Critical → Quality → Evidence hierarchy
+- 📋 **8-step checklist** - Mandatory before ANY code change
+- 🚫 **Failure patterns** - Critical mistakes to avoid
+- 🔒 **Protected files** - Files requiring explicit permission
+- 📖 **14 core principles** - Architectural rules and policies
+
+**Quick Links for AI Assistants**:
+- [Generate Content](.github/COPILOT_GENERATION_GUIDE.md) - Step-by-step content generation
+- [30-Second Nav](docs/08-development/AI_ASSISTANT_GUIDE.md) - Fast lookup and navigation
+- [Quick Reference](docs/QUICK_REFERENCE.md) - Immediate problem resolution
+- [Troubleshooting](TROUBLESHOOTING.md) - Common issues & solutions
+- [For AI Assistants](docs/FOR_AI_ASSISTANTS.md) - Dedicated AI assistant entry point
+
+---
+
 ## 🚀 Quick Start
 
 ```bash

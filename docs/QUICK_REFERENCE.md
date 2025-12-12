@@ -4,6 +4,28 @@
 
 ---
 
+## 🚨 CRITICAL: Read First
+
+**⭐ PRIMARY GUIDE**: [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (1,398 lines)
+
+**Before ANY code change, consult the primary guide for**:
+- ✅ **Mandatory pre-change checklist** (8 steps) - Lines 300-400
+- 🚦 **TIER 1-3 rule priorities** - Lines 200-250 (system-breaking → quality → evidence)
+- 🚫 **Critical failure patterns** - Lines 100-200 (Grade F violations)
+- 🔒 **Protected files** - Lines 450-500 (require permission before editing)
+- 📖 **14 core principles** - Lines 500-800 (architectural rules)
+- 🔥 **Recent critical updates** - Lines 50-100 (Nov-Dec 2025)
+
+**This document (QUICK_REFERENCE.md)** provides fast problem resolution.  
+**The primary guide** provides comprehensive architectural rules and policies.
+
+**Additional AI Resources**:
+- 🚀 [Generation Guide](../.github/COPILOT_GENERATION_GUIDE.md) - Step-by-step content generation
+- ⚡ [AI Assistant Guide](08-development/AI_ASSISTANT_GUIDE.md) - 30-second navigation
+- 📚 [For AI Assistants](FOR_AI_ASSISTANTS.md) - Dedicated entry point
+
+---
+
 ## 📚 Critical Documentation for AI Assistants
 
 **BEFORE** any work, review these files organized by category:

@@ -7,7 +7,29 @@
 
 ---
 
-## 🎯 Start Here Based on Your Goal
+## 🤖 For AI Assistants - Start Here
+
+**⭐ PRIMARY GUIDE**: [`.github/copilot-instructions.md`](.github/copilot-instructions.md) (1,398 lines)
+
+This is THE comprehensive guide for all AI assistants. Contains:
+- **Complete rules hierarchy** - TIER 1-3 priorities (system-breaking → quality → evidence)
+- **Mandatory pre-change checklist** - 8 steps before ANY code modification
+- **Critical failure patterns** - Documented mistakes to avoid (Grade F violations)
+- **Protected files policy** - Files requiring explicit permission before editing
+- **14 core principles** - Architectural rules (fail-fast, no mocks, template-only, etc.)
+- **Recent updates** - Nov-Dec 2025 critical changes and policy additions
+
+**Quick Navigation for AI Assistants**:
+- 🚀 **30-second quick start** → Lines 1-100 (immediate navigation)
+- 🚦 **TIER priorities** → Lines 200-250 (rule hierarchy)
+- 📋 **Pre-change checklist** → Lines 300-400 (mandatory steps)
+- 🎯 **Common tasks** → [COPILOT_GENERATION_GUIDE.md](.github/COPILOT_GENERATION_GUIDE.md)
+- 🔍 **Fast answers** → [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)
+- 📚 **AI entry point** → [docs/FOR_AI_ASSISTANTS.md](docs/FOR_AI_ASSISTANTS.md)
+
+---
+
+## 🎯 Start Here Based on Your Goal (For All Users)
 
 | I Want To... | Go Here |
 |--------------|---------|
