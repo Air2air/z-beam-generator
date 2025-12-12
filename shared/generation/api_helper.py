@@ -7,11 +7,13 @@ Handles request building, error handling, and response extraction.
 
 Usage:
     from shared.generation.api_helper import generate_text
+    from generation.config.dynamic_config import DynamicConfig
     
+    dynamic_config = DynamicConfig()
     result = generate_text(
         prompt="Write a description...",
         max_tokens=150,
-        temperature=0.7
+        temperature=dynamic_config.calculate_temperature('default')
     )
 """
 

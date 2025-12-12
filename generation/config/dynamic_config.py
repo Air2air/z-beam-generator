@@ -54,19 +54,29 @@ class DynamicConfig:
     
     def calculate_temperature(self, component_type: str = 'default') -> float:
         """
-        Calculate optimal API temperature based on sliders.
+        Calculate optimal API temperature based on component type and sliders.
         
+        Component Types:
+        - 'research': Low temp (0.1-0.3) for scientific accuracy and factual data
+        - 'default': Dynamic temp (0.7-1.1) for human-like content
+        
+        For default/content generation:
         Higher imperfection + higher rhythm variation = higher temperature
         Higher structural predictability = lower temperature
         
         Logic:
+        - Research needs precision → very low temp
         - Imperfection tolerance pushes toward randomness
         - Sentence rhythm needs variety → higher temp
         - Structural predictability wants consistency → lower temp
         
         Returns:
-            Temperature between 0.5 and 1.1
+            Temperature between 0.1 and 1.1 depending on component type
         """
+        # Research operations need low temperature for factual accuracy
+        if component_type == 'research':
+            return 0.3  # Low temp for scientific precision
+        
         imperfection = self.base_config.get_imperfection_tolerance()  # 0-100
         rhythm = self.base_config.get_sentence_rhythm_variation()  # 0-100
         structural = self.base_config.get_structural_predictability()  # 0-100

@@ -140,6 +140,52 @@ def get_settings_loader() -> SettingsDataLoader:
     return get_data_loader('settings')
 
 
+# Content loading convenience functions (December 11, 2025)
+def load_material_micros():
+    """
+    Load material micros (captions/subtitles).
+    
+    Returns:
+        Dict mapping material names to caption strings
+    
+    Example:
+        >>> from shared.data.unified_loader import load_material_micros
+        >>> micros = load_material_micros()
+        >>> aluminum_caption = micros.get('Aluminum', '')
+    """
+    return get_materials_loader().load_micros()
+
+
+def load_material_faqs():
+    """
+    Load material FAQs.
+    
+    Returns:
+        Dict mapping material names to FAQ lists
+    
+    Example:
+        >>> from shared.data.unified_loader import load_material_faqs
+        >>> faqs = load_material_faqs()
+        >>> steel_faqs = faqs.get('Steel', [])
+    """
+    return get_materials_loader().load_faqs()
+
+
+def load_regulatory_standards():
+    """
+    Load material regulatory standards from content directory.
+    
+    Returns:
+        Dict mapping material names to regulatory standards
+    
+    Example:
+        >>> from shared.data.unified_loader import load_regulatory_standards
+        >>> standards = load_regulatory_standards()
+        >>> titanium_standards = standards.get('Titanium', [])
+    """
+    return get_materials_loader().load_regulatory_standards_content()
+
+
 def clear_all_loaders():
     """
     Clear all cached loader instances.

@@ -1333,10 +1333,13 @@ Requirements:
 
 Generate transformed subtitle:"""
 
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 system_prompt="You are a text transformation specialist. Transform structure while preserving meaning.",
-                temperature=0.7,
+                temperature=dynamic_config.calculate_temperature('default'),
                 max_tokens=50
             )
             

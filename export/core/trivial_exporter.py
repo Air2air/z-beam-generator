@@ -606,64 +606,37 @@ class TrivialFrontmatterExporter:
         self.logger.info(f"✅ Loaded property taxonomy with {len(self.property_taxonomy)} categories")
         self.logger.info(f"✅ Loaded {len(self.settings_data.get('settings', {}))} materials from Settings.yaml")
         
-        # Load separated content files for orchestration
-        self.micros = self._load_captions()
-        self.faqs = self._load_faqs()
-        self.regulatory_standards = self._load_regulatory_standards()
+        # Load separated content files for orchestration using unified_loader
+        from shared.data.unified_loader import (
+            load_material_micros,
+            load_material_faqs,
+            load_regulatory_standards
+        )
+        
+        self.micros = load_material_micros()
+        self.faqs = load_material_faqs()
+        self.regulatory_standards = load_regulatory_standards()
         
         self.logger.info(f"✅ Loaded {len(self.micros)} micros from content files")
         self.logger.info(f"✅ Loaded {len(self.faqs)} FAQ sets from content files")
         self.logger.info(f"✅ Loaded {len(self.regulatory_standards)} regulatory standards from content files")
     
-    def _load_captions(self) -> Dict[str, Any]:
-        """Load Micros.yaml and return micros dict."""
-        captions_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "Micros.yaml"
-        if not captions_file.exists():
-            self.logger.warning(f"Micros.yaml not found at {captions_file}")
-            return {}
-        
-        with open(captions_file, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-        
-        return data.get('micros', {})
-    
-    def _load_faqs(self) -> Dict[str, Any]:
-        """Load FAQs.yaml and return faqs dict."""
-        faqs_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "FAQs.yaml"
-        if not faqs_file.exists():
-            self.logger.warning(f"FAQs.yaml not found at {faqs_file}")
-            return {}
-        
-        with open(faqs_file, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-        
-        return data.get('faqs', {})
+    # Content loading methods removed - now using unified_loader
+    # See load_material_micros(), load_material_faqs(), load_regulatory_standards()
+    # in shared/data/unified_loader.py
     
     def _load_settings(self) -> Dict[str, Any]:
         """Load Settings.yaml for machine settings and material challenges."""
-        from domains.settings.data_loader import load_settings_yaml, get_settings_path
+        from shared.data.unified_loader import get_settings_loader
         
-        settings_file = get_settings_path()
-        if not settings_file.exists():
-            self.logger.warning(f"⚠️  Settings.yaml not found at {settings_file}")
+        try:
+            loader = get_settings_loader()
+            # Load raw structure (includes 'settings' key and '_metadata')
+            data = loader.load_settings(extract_machine_settings=False)
+            return data
+        except Exception as e:
+            self.logger.warning(f"⚠️  Failed to load Settings.yaml: {e}")
             return {'settings': {}}
-        
-        with open(settings_file, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-        
-        return data
-    
-    def _load_regulatory_standards(self) -> Dict[str, Any]:
-        """Load RegulatoryStandards.yaml and return regulatory_standards dict."""
-        regulatory_file = Path(__file__).resolve().parents[3] / "materials" / "data" / "content" / "RegulatoryStandards.yaml"
-        if not regulatory_file.exists():
-            self.logger.warning(f"RegulatoryStandards.yaml not found at {regulatory_file}")
-            return {}
-        
-        with open(regulatory_file, 'r', encoding='utf-8') as f:
-            data = yaml.safe_load(f)
-        
-        return data.get('regulatory_standards', {})
     
     def _load_property_taxonomy(self):
         """Load property taxonomy from MaterialProperties.yaml to categorize properties correctly."""

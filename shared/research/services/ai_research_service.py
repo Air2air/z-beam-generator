@@ -195,11 +195,14 @@ class AIResearchEnrichmentService:
         )
         
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             # Execute AI research - FAIL immediately if API unavailable
             response = self.api_client.generate_simple(
                 prompt=research_prompt,
                 max_tokens=1000,
-                temperature=0.1  # Low temperature for scientific accuracy
+                temperature=dynamic_config.calculate_temperature('research')
             )
             
             if not response or not response.success or not response.content:

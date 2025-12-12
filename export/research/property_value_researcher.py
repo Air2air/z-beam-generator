@@ -423,10 +423,13 @@ Provide:
 Return ONLY valid data from real sources. Do not estimate or guess.
 Format as JSON: {{"value": <number>, "unit": "<unit>", "confidence": <0-100>, "source": "<reference>"}}"""
 
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=200,
-                temperature=0.1  # Low temperature for factual accuracy
+                temperature=dynamic_config.calculate_temperature('research')
             )
             
             # Parse response

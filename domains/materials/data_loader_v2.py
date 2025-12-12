@@ -246,6 +246,94 @@ class MaterialsDataLoader(BaseDataLoader):
         
         return data
     
+    def load_micros(self) -> Dict[str, Any]:
+        """
+        Load Micros.yaml (material captions/subtitles).
+        
+        Returns:
+            Dict with 'micros' mapping material names to captions
+        """
+        content_dir = self.project_root / 'materials' / 'data' / 'content'
+        micros_file = content_dir / 'Micros.yaml'
+        
+        if not micros_file.exists():
+            logger.warning(f"Micros.yaml not found at {micros_file}")
+            return {}
+        
+        # Check cache
+        cached = cache_manager.get('materials', 'micros_yaml')
+        if cached:
+            return cached
+        
+        # Load file
+        data = read_yaml_file(micros_file)
+        micros = data.get('micros', {})
+        
+        # Cache for 1 hour
+        cache_manager.set('materials', 'micros_yaml', micros, ttl=3600)
+        
+        return micros
+    
+    def load_faqs(self) -> Dict[str, Any]:
+        """
+        Load FAQs.yaml (material FAQs).
+        
+        Returns:
+            Dict with 'faqs' mapping material names to FAQ lists
+        """
+        content_dir = self.project_root / 'materials' / 'data' / 'content'
+        faqs_file = content_dir / 'FAQs.yaml'
+        
+        if not faqs_file.exists():
+            logger.warning(f"FAQs.yaml not found at {faqs_file}")
+            return {}
+        
+        # Check cache
+        cached = cache_manager.get('materials', 'faqs_yaml')
+        if cached:
+            return cached
+        
+        # Load file
+        data = read_yaml_file(faqs_file)
+        faqs = data.get('faqs', {})
+        
+        # Cache for 1 hour
+        cache_manager.set('materials', 'faqs_yaml', faqs, ttl=3600)
+        
+        return faqs
+    
+    def load_regulatory_standards_content(self) -> Dict[str, Any]:
+        """
+        Load RegulatoryStandards.yaml (material-specific standards).
+        
+        Note: Different from load_regulatory_standards() which loads
+        from data/materials/RegulatoryStandards.yaml. This loads from
+        materials/data/content/RegulatoryStandards.yaml.
+        
+        Returns:
+            Dict with 'regulatory_standards' mapping material names to standards
+        """
+        content_dir = self.project_root / 'materials' / 'data' / 'content'
+        regulatory_file = content_dir / 'RegulatoryStandards.yaml'
+        
+        if not regulatory_file.exists():
+            logger.warning(f"RegulatoryStandards.yaml not found at {regulatory_file}")
+            return {}
+        
+        # Check cache
+        cached = cache_manager.get('materials', 'regulatory_content_yaml')
+        if cached:
+            return cached
+        
+        # Load file
+        data = read_yaml_file(regulatory_file)
+        standards = data.get('regulatory_standards', {})
+        
+        # Cache for 1 hour
+        cache_manager.set('materials', 'regulatory_content_yaml', standards, ttl=3600)
+        
+        return standards
+    
     def get_material(self, material_name: str) -> Optional[Dict[str, Any]]:
         """
         Get specific material by name.

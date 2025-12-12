@@ -211,9 +211,12 @@ REQUIREMENTS:
 Provide ONLY the YAML structure with realistic numerical values and a 2-sentence recommendation."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.3,  # Lower for numerical precision
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=800
             )
             response = self.api_client.generate(request)
@@ -293,12 +296,15 @@ REQUIREMENTS:
 4. Consider substrate is {material_context} with typical damage threshold 0.5-2 J/cm²
 5. Provide realistic engineering values based on {existing_pattern.get('chemical_formula', 'the material')}
 
-Provide ONLY the YAML structure with values and 2-sentence analysis."""
+Provide ONLY the YAML with realistic values."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.3,
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=900
             )
             response = self.api_client.generate(request)
@@ -382,9 +388,12 @@ REQUIREMENTS:
 Provide ONLY the YAML with realistic values."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.4,
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=1000
             )
             response = self.api_client.generate(request)
@@ -468,9 +477,12 @@ REQUIREMENTS:
 YAML only, with 1-sentence rationale."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.3,
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=900
             )
             response = self.api_client.generate(request)
@@ -553,9 +565,12 @@ REQUIREMENTS:
 YAML only."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.3,
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=1000
             )
             response = self.api_client.generate(request)
@@ -633,9 +648,12 @@ REQUIREMENTS:
 YAML only, with brief risk summary."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             request = GenerationRequest(
                 prompt=prompt,
-                temperature=0.3,
+                temperature=dynamic_config.calculate_temperature('research'),
                 max_tokens=1200
             )
             response = self.api_client.generate(request)

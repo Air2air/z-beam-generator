@@ -381,10 +381,13 @@ Focus on material-specific aspects of this environmental benefit. Be technical a
 Output ONLY the description text, no prefix or explanation."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=150,
-                temperature=0.7
+                temperature=dynamic_config.calculate_temperature('default')
             )
             
             description = response.content.strip()
@@ -419,10 +422,13 @@ Include specific percentages or measurable outcomes. Be concise (one sentence).
 Output ONLY the statement, no prefix or explanation."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=80,
-                temperature=0.7
+                temperature=dynamic_config.calculate_temperature('default')
             )
             
             return response.content.strip()
@@ -467,10 +473,13 @@ Focus on material-specific measurement considerations. Be technical and specific
 Output ONLY the description text, no prefix or explanation."""
 
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=150,
-                temperature=0.7
+                temperature=dynamic_config.calculate_temperature('default')
             )
             
             description = response.content.strip()

@@ -120,11 +120,14 @@ class FAQTopicResearcher:
         prompt = self._build_topic_research_prompt(material_name, question, answer)
         
         try:
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            
             # Generate with Grok
             response = self.api_client.generate_simple(
                 prompt,
                 max_tokens=200,  # Short response
-                temperature=0.3  # Low temp for consistency
+                temperature=dynamic_config.calculate_temperature('research')
             )
             
             if not response.success:

@@ -106,7 +106,9 @@ CHALLENGES:
 Format as clear sections. Be technical and specific."""
 
         try:
-            api_response = self.api_client.generate_simple(prompt, max_tokens=2500, temperature=0.3)
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            api_response = self.api_client.generate_simple(prompt, max_tokens=2500, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_application_response(response_text, name, industry, category)
         except Exception as e:
@@ -172,7 +174,9 @@ APPLICATIONS:
 Be technical and specific. This is for laser cleaning professionals."""
 
         try:
-            api_response = self.api_client.generate_simple(prompt, max_tokens=2000, temperature=0.3)
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            api_response = self.api_client.generate_simple(prompt, max_tokens=2000, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_contaminant_response(response_text, name, category)
         except Exception as e:
@@ -233,7 +237,9 @@ RELATED CONCEPTS:
 Be precise, technical, and comprehensive. This is for engineers and technicians."""
 
         try:
-            api_response = self.api_client.generate_simple(prompt, max_tokens=1500, temperature=0.3)
+            from generation.config.dynamic_config import DynamicConfig
+            dynamic_config = DynamicConfig()
+            api_response = self.api_client.generate_simple(prompt, max_tokens=1500, temperature=dynamic_config.calculate_temperature('research'))
             response_text = api_response.content if hasattr(api_response, 'content') else str(api_response)
             return self._parse_thesaurus_response(response_text, term, category)
         except Exception as e:
