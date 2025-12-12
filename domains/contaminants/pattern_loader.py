@@ -38,6 +38,13 @@ import threading
 
 logger = logging.getLogger(__name__)
 
+# Import author registry for author resolution
+try:
+    from data.authors.registry import resolve_author_for_generation
+except ImportError:
+    logger.warning("Could not import author registry - author resolution will be limited")
+    resolve_author_for_generation = None
+
 
 class ConfigurationError(Exception):
     """Raised when pattern data configuration is invalid"""
@@ -137,12 +144,13 @@ class PatternDataLoader:
         """
         return self._get_key('contamination_patterns')
     
-    def get_pattern(self, pattern_id: str) -> Dict[str, Any]:
+    def get_pattern(self, pattern_id: str, resolve_author: bool = True) -> Dict[str, Any]:
         """
         Get single contamination pattern by ID.
         
         Args:
             pattern_id: Pattern identifier (e.g., 'rust_oxidation')
+            resolve_author: If True, resolve author ID to complete author object
         
         Returns:
             Pattern data dictionary
@@ -158,7 +166,19 @@ class PatternDataLoader:
                 f"Available: {list(patterns.keys())}"
             )
         
-        return patterns[pattern_id]
+        pattern_data = patterns[pattern_id].copy()
+        
+        # Resolve author from registry if requested and available
+        if resolve_author and resolve_author_for_generation and 'author' in pattern_data:
+            try:
+                author = resolve_author_for_generation(pattern_data)
+                if author:
+                    pattern_data['author'] = author
+                    logger.debug(f"Resolved author for pattern '{pattern_id}'")
+            except Exception as e:
+                logger.warning(f"Could not resolve author for pattern '{pattern_id}': {e}")
+        
+        return pattern_data
     
     def get_pattern_metadata(self, pattern_id: Optional[str] = None) -> Dict[str, Any]:
         """
