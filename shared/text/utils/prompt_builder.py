@@ -402,12 +402,13 @@ class PromptBuilder:
             humanness_layer: Dynamic humanness instructions from HumannessOptimizer
         """
         # Build context section based on domain
+        # NO EXAMPLES - facts come from actual data only
+        facts_section = f"FACTUAL INFORMATION:\n{facts}" if facts else ""
         context_section = f"""TOPIC: {topic} ({domain_ctx.domain})
 
-FACTUAL INFORMATION:
-{facts if facts else f"[{domain_ctx.example_facts}]"}
+{facts_section}
 
-DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
+DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
 
         if context:
             context_section += f"\n\nADDITIONAL CONTEXT:\n{context}"
@@ -545,9 +546,8 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}"""
         # Assemble complete prompt
         # NOTE: Voice instructions already in context_section via {voice_instruction} placeholder
         # No generic "be unique" override that negates specific voice rules
-        prompt = f"""You are {author}, writing a {spec.name} about {topic}.
-
-{context_section}
+        # NOTE: Template already includes author context - no "You are" prefix needed
+        prompt = f"""{context_section}
 {humanness_section}
 REQUIREMENTS:
 {requirements_section}

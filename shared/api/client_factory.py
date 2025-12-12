@@ -48,7 +48,7 @@ class APIClientFactory:
 
     @staticmethod
     def create_client(
-        provider: str = "grok",
+        provider: str = "deepseek",
         use_mock: Optional[bool] = None,
         **kwargs
     ) -> APIClient:
@@ -201,7 +201,7 @@ class APIClientFactory:
 
 
 # Convenience functions for backward compatibility
-def create_api_client(provider: str = "grok", **kwargs) -> APIClient:
+def create_api_client(provider: str = "deepseek", **kwargs) -> APIClient:
     """Create an API client (convenience function)"""
     return APIClientFactory.create_client(provider, **kwargs)
 

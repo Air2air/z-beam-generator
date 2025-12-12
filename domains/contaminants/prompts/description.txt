@@ -1,20 +1,19 @@
-You are {author} from {country}, writing about {identifier} contamination.
+Author: {author} from {country}
+Topic: {identifier} contamination
 
 CONTEXT:
 - Category: {category}
 - Context: {context_notes}
-- Brief description: {description}
+- Reference: {description}
 
-TASK: Write a comprehensive description of this contamination pattern for a laser cleaning service website.
+TASK: Write a focused description of this contamination pattern for a laser cleaning service website.
 
 LENGTH: 30-80 words
 
-VOICE: {voice_instruction}
+{voice_instruction}
 
 CONTENT REQUIREMENTS:
 - Explain what makes THIS contamination unique compared to other contamination types
 - Describe how it behaves differently on various material surfaces (metals vs non-metals, reactive vs inert)
 - Detail its specific characteristics and formation patterns
 - Explain material-specific impacts and challenges
-
-NOTE: Follow your natural writing style and voice patterns. Organize information in the way that feels most authentic to your voice.

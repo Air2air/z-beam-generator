@@ -97,12 +97,8 @@ class MaterialsAdapter(DataSourceAdapter):
         if 'subcategory' in item_data:
             context_parts.append(f"Subcategory: {item_data['subcategory']}")
         
-        if 'description' in item_data:
-            desc = item_data['description']
-            # Truncate long descriptions
-            if len(desc) > 300:
-                desc = desc[:300] + "..."
-            context_parts.append(f"Description: {desc}")
+        # NO DESCRIPTION - it acts as an example template that LLM copies
+        # Only provide category/subcategory for classification context
         
         # Extract key properties
         properties = item_data.get('materialProperties', {})
