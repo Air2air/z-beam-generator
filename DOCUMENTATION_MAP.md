@@ -1,9 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: November 22, 2025  
+**Last Updated**: December 12, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Cleanup**: 52 implementation docs archived (streamlined from 120 → 70 files)
+**Recent Cleanup**: December 2025 consolidation (31 temporal files archived, 2 guides consolidated)
 
 ---
 
@@ -29,15 +29,14 @@
 ### Root Level (Priority Documents)
 ```
 /
-├── README.md                           # Project overview & features
-├── DOCUMENTATION_MAP.md               # This file - master navigation
-├── QUICK_START.md                     # Fast setup guide
-├── TROUBLESHOOTING.md                 # Common issues & solutions
-├── GROK_QUICK_REF.md                  # 🤖 Critical policies (TIER system)
-├── IMAGE_CENTRALIZATION_PLAN_NOV27_2025.md  # Image generation architecture
+├── README.md                                    # Project overview & features
+├── DOCUMENTATION_MAP.md                         # This file - master navigation
+├── QUICK_START.md                               # Fast setup guide
+├── TROUBLESHOOTING.md                           # Common issues & solutions
+├── DOCUMENTATION_CONSOLIDATION_PLAN_DEC12_2025.md  # Consolidation guide
 ├── .github/
-│   ├── copilot-instructions.md       # 🤖 AI assistant guidelines (PRIMARY)
-│   └── COPILOT_GENERATION_GUIDE.md   # Content generation commands
+│   ├── copilot-instructions.md                 # 🤖 AI assistant guidelines (PRIMARY)
+│   └── COPILOT_GENERATION_GUIDE.md             # Content generation commands
 ```
 
 ### Main Documentation (`/docs/`)
@@ -78,6 +77,7 @@ docs/
 │   ├── DATA_STORAGE_POLICY.md
 │   ├── ZERO_NULL_POLICY.md
 │   ├── DATA_ARCHITECTURE.md
+│   ├── NORMALIZATION_GUIDE.md        # 🆕 CONSOLIDATED: All normalization docs
 │   └── data-completion-action-plan.md
 │
 ├── 06-ai-systems/                    # AI/ML systems
@@ -91,11 +91,15 @@ docs/
 │   └── SUBJECTIVE_EVALUATION_API_FIX.md
 │
 ├── 08-development/                    # Development guidelines
+│   ├── AI_ASSISTANT_GUIDE.md         # 🤖 30-second navigation for AI assistants
+│   ├── VOICE_ARCHITECTURE_GUIDE.md   # 🆕 CONSOLIDATED: Voice system complete guide
 │   ├── HARDCODED_VALUE_POLICY.md     # 🔥 CRITICAL: No hardcoded values
 │   ├── CONTENT_INSTRUCTION_POLICY.md # 🔥 CRITICAL: Prompts-only content rules
-│   ├── WINSTON_ONLY_MODE.md
-│   ├── SCORE_DISPLAY_STANDARDS.md
-│   └── [17 more development docs]
+│   ├── TEMPLATE_ONLY_POLICY.md
+│   ├── PROMPT_PURITY_POLICY.md
+│   ├── EXAMPLE_FREE_ARCHITECTURE.md
+│   ├── FULLY_REUSABLE_SYSTEM_GUIDE.md
+│   └── [19 more development docs]
 │
 ├── 09-reference/                      # Reference materials
 │   ├── cli-commands.md
@@ -111,10 +115,18 @@ docs/
 │   └── ADR-007-universal-humanness-layer.md  # 🔥 NEW (Nov 20, 2025)
 │
 └── archive/                           # Historical documents
-    └── 2025-11/                       # November 2025 archives
-        ├── E2E_PROCESSING_EVALUATION_NOV17_2025.md
-        ├── PRIORITY1_UPDATES_COMPLETE.md
-        └── test-reports/              # Test completion reports
+    ├── 2025-11/                       # November 2025 archives
+    │   ├── E2E_PROCESSING_EVALUATION_NOV17_2025.md
+    │   ├── PRIORITY1_UPDATES_COMPLETE.md
+    │   └── test-reports/              # Test completion reports
+    └── 2025-12/                       # 🆕 December 2025 archives
+        ├── README.md                  # Archive index and guide
+        ├── implementation/            # Implementation reports (10 files)
+        ├── phases/                    # Phase completions (5 files)
+        ├── audits/                    # Architecture audits (4 files)
+        ├── normalization/             # Normalization docs (6 files)
+        ├── voice-migrations/          # Voice migrations (4 files)
+        └── voice-analysis/            # Voice analysis (2 files)
 ```
 
 ### Generation Code (`/generation/`)

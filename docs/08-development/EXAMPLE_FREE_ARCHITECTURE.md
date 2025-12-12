@@ -98,13 +98,13 @@ Voice influence: 35%  ← Was 23%
 Requirements: 65%     ← Was 77%
 ```
 
-### Expected Outcomes
+**Expected Outcomes**:
 
 **Voice Distinctiveness**:
-- Taiwan (Yi-Chun): Topic-comment structure ("..., this/it...")
-- Italy (Alessandro): Subjunctive/hedging ("it seems", "would")
-- USA (Todd): Phrasal verbs ("set up", "carry out")
-- Indonesia (Dewi): Passive constructions, formal tone
+- Taiwan (Yi-Chun Lin, Ph.D., id=3): Topic-comment structure ("..., this/it...")
+- Italy (Alessandro Moretti, Ph.D., id=2): Subjunctive/hedging ("it seems", "would")
+- USA (Todd Dunning, MA, id=4): Phrasal verbs ("set up", "carry out")
+- Indonesia (Ikmanda Roswati, Ph.D., id=1): Passive constructions, formal tone
 
 **Vocabulary Diversity**:
 - Different word choices per author

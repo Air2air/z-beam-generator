@@ -189,11 +189,11 @@ VOICE RULES:
 ### Four Authors, Distinct Voices
 
 | Author | Country | Voice Markers | Example |
-|--------|---------|---------------|---------|
-| Todd Dunning | USA | Phrasal verbs, direct | "set up", "carry out" |
-| Alessandro Moretti | Italy | Subjunctive, hedging | "it seems", "would" |
-| Yi-Chun Lin | Taiwan | Topic-comment structure | ", this", ", which" |
-| Dewi Santoso | Indonesia | Passive constructions | "is formed", "are used" |
+|--------|---------|---------------|---------||
+| Todd Dunning, MA | USA (id=4) | Phrasal verbs, direct | "set up", "carry out" |
+| Alessandro Moretti, Ph.D. | Italy (id=2) | Subjunctive, hedging | "it seems", "would" |
+| Yi-Chun Lin, Ph.D. | Taiwan (id=3) | Topic-comment structure | ", this", ", which" |
+| Ikmanda Roswati, Ph.D. | Indonesia (id=1) | Passive constructions | "is formed", "are used" |
 
 ### Voice Files
 

@@ -2,6 +2,7 @@ contamination_patterns:
   adhesive-residue:
     author:
       id: 3
+      name: Yi-Chun Lin
     micro:
       after: Post-cleaning reveals restored surface with adhesive residue / tape marks
         successfully removed through precise laser ablation.
@@ -9,15 +10,13 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive residue distinguishes itself from other contaminants by
-      its persistent stickiness, arising from label or tape remnants on manufactured
-      and shipped goods. This pliable, durable film clings tenaciously, outlasting
-      dust or oils in resistance. Formation follows solvent evaporation, yielding
-      irregular layers that conform unevenly. On reactive metals, it bonds deeply,
-      fostering corrosion threats; on inert non-metals like plastics, it spreads sporadically,
-      distorting surface textures. Such tenacity heightens removal difficulties, risking
-      substrate damage without targeted laser cleaning, thus ensuring assembly integrity
-      in aerospace and automotive uses.
+    description: Adhesive-residue contamination differs from particulate or oily types
+      through its sticky, polymeric nature, forming tenacious films from tape or glue
+      remnants. On metals, it bonds tightly and promotes corrosion on reactive surfaces,
+      while inert metals resist deeper penetration. Non-metals experience pore infiltration,
+      leading to uneven adhesion loss. Formation occurs via peeling residues that
+      cling persistently, thus complicating cleaning. Impacts include surface energy
+      disruption, and removal demands precise laser control to avoid substrate damage.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -595,6 +594,7 @@ contamination_patterns:
   aluminum-oxidation:
     author:
       id: 2
+      name: Alessandro Moretti
     micro:
       after: Post-cleaning reveals restored surface with aluminum oxidation successfully
         removed through precise laser ablation.
@@ -602,14 +602,15 @@ contamination_patterns:
         appearance and properties.
     category: oxidation
     chemical_formula: Al₂O₃
-    description: '[Aluminum](../materials/aluminum.md) oxidation forms a distinctive
-      natural layer on metal surfaces, unlike loose deposited contaminants that erode
-      integrity. This adherent film shields reactive metals such as aluminum from
-      deeper corrosion, bolstering durability in aerospace and automotive uses, while
-      it adheres weakly to inert non-metals, showing minimal presence. It develops
-      uniformly through air exposure, preserving core strength yet complicating surface
-      preparation. Laser cleaning targets this layer precisely, it seems, without
-      underlying damage.'
+    description: '[Aluminum](../materials/aluminum.md) oxidation contamination differs
+      from other types by forming a thin, self-limiting oxide layer that passivates
+      the surface, unlike thicker, more aggressive scales on ferrous metals. On reactive
+      metals such as aluminum, it adheres tightly and spreads evenly upon air exposure,
+      inhibiting further corrosion. In contrast, inert non-metals exhibit minimal
+      layer formation, with loose particulates that detach readily. This pattern,
+      it seems, arises from rapid electrochemical reactions. Challenges involve precise
+      removal to avoid base material weakening, particularly on delicate aluminum
+      alloys.'
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -6431,6 +6432,7 @@ contamination_patterns:
   copper-patina:
     author:
       id: 4
+      name: Todd Dunning
     micro:
       after: Post-cleaning reveals restored surface with copper patina / verdigris
         successfully removed through precise laser ablation.
@@ -6438,14 +6440,13 @@ contamination_patterns:
         material appearance and properties.
     category: oxidation
     chemical_formula: Cu₂CO₃(OH)₂
-    description: '[Copper](../materials/copper.md) patina forms as a tight oxide layer
-      on copper surfaces exposed to air and moisture, creating a green or blue-green
-      finish that sets it apart from loose rust or dirt on other metals. It bonds
-      firmly to reactive metals like copper, acting as a shield against further corrosion
-      while preserving conductivity and strength. On inert non-metals such as stone
-      or plastic, it fails to adhere or develop. This protective coating resists standard
-      cleaning but yields cleanly to laser methods, restoring the base material without
-      damage.'
+    description: '[Copper](../materials/copper.md) patina forms a distinctive green
+      oxidation layer on copper, setting it apart from broader rust patterns on iron
+      or aluminum. It arises from air and moisture exposure, building a tight, protective
+      film that contaminates by adhering unevenly. On reactive metals, it spreads
+      and bonds deeply, accelerating corrosion beneath. Inert metals resist buildup,
+      while non-metals show loose flaking and staining. This embedding poses cleaning
+      hurdles, as it clings to pores and risks surface etching during removal.'
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -19225,8 +19226,13 @@ contamination_patterns:
   rust-oxidation:
     composition:
     - Fe₂O₃
-    description: Reddish-brown iron oxide formed through oxidation of ferrous metals
-      in presence of oxygen and moisture
+    description: Rust-oxidation contamination forms through exposure to moisture and
+      oxygen on [Iron](../materials/iron.md)-containing surfaces, creating a flaky,
+      reddish layer that differs from uniform deposits like dust or oils by its progressive
+      expansion and adhesion. On reactive metals such as steel, it penetrates deeply
+      and weakens structure, while on inert non-metals like ceramics, it remains superficial
+      and less adherent. Formation occurs gradually at joints and scratches, so cleaning
+      targets these patterns to restore integrity without further degradation.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -19639,6 +19645,9 @@ contamination_patterns:
             creates concentrated staining
           texture_details: Stains penetrate wood fibers without significantly altering
             surface texture; may feel slightly rougher if iron particles are deposited
+    author:
+      id: 1
+      name: Ikmanda Roswati
   salt-residue:
     composition:
     - NaCl

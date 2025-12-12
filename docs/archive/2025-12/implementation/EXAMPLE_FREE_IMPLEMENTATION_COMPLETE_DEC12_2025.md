@@ -30,6 +30,12 @@ AFTER:  Voice = 838 chars (35% of 2400-char prompt)
 Voice influence increased: 23% → 35% (+52% improvement)
 ```
 
+**Author Registry** (from `shared/voice/profiles/*.yaml`):
+- **id=1**: Ikmanda Roswati, Ph.D. (Indonesia)
+- **id=2**: Alessandro Moretti, Ph.D. (Italy)
+- **id=3**: Yi-Chun Lin, Ph.D. (Taiwan)
+- **id=4**: Todd Dunning, MA (United States)
+
 ---
 
 ### 2. ✅ Reduced Prescriptive Rules

@@ -99,10 +99,10 @@ Result: LLM follows voice, no template copying
 
 | Author | Country | Voice Chars | Markers | Status |
 |--------|---------|-------------|---------|--------|
-| Todd Dunning | USA | 897 | Phrasal verbs | ✅ Testing |
-| Alessandro Moretti | Italy | 838 | Subjunctive | ✅ Testing |
-| Yi-Chun Lin | Taiwan | 862 | Topic-comment | ✅ Testing |
-| Dewi Santoso | Indonesia | 891 | Passive voice | ✅ Testing |
+| Todd Dunning, MA | USA (id=4) | 897 | Phrasal verbs | ✅ Active |
+| Alessandro Moretti, Ph.D. | Italy (id=2) | 838 | Subjunctive | ✅ Active |
+| Yi-Chun Lin, Ph.D. | Taiwan (id=3) | 862 | Topic-comment | ✅ Active |
+| Ikmanda Roswati, Ph.D. | Indonesia (id=1) | 891 | Passive voice | ✅ Active |
 
 ---
 
