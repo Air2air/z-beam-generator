@@ -56,7 +56,8 @@ class SEOModule:
         
         # Get name
         name = contaminant_data.get('id', contaminant_id).replace('_', ' ').replace('-', ' ').title()
-        slug = contaminant_id.lower().replace('_', '-')
+        # POLICY: Append '-contamination' suffix to all contaminant domain URLs
+        slug = contaminant_id.lower().replace('_', '-') + '-contamination'
         category = contaminant_data.get('category', 'contamination')
         
         # Detect contamination type for speed multiplier

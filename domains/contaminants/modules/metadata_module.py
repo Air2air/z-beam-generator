@@ -47,7 +47,8 @@ class MetadataModule:
         name_display = name.replace('_', ' ').replace('-', ' ').title()
         
         # Create slug (URL-safe, lowercase with hyphens)
-        slug = contaminant_id.lower().replace('_', '-')
+        # POLICY: Append '-contamination' suffix to all contaminant domain URLs
+        slug = contaminant_id.lower().replace('_', '-') + '-contamination'
         
         # Generate title
         title = f"{name_display} Laser Cleaning"
