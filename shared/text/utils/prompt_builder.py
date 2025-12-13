@@ -194,45 +194,31 @@ class PromptBuilder:
                 f"Check that persona file exists in shared/voice/profiles/"
             )
         
-        voice_section = f"""VOICE: {author} from {country}
-- Regional patterns: {esl_traits}"""
+        # VOICE INSTRUCTION CENTRALIZATION POLICY:
+        # Voice instructions ONLY exist in shared/voice/profiles/*.yaml
+        # They are injected directly into domain prompts via {voice_instruction} placeholder
+        # Humanness layer provides structural variation only (separate concern)
         
-        # CRITICAL: Extract and apply persona voice instructions
-        if voice:
-            # Core voice instruction (mandatory technical style, no theatrical elements)
-            core_instruction = voice.get('core_voice_instruction', '').strip()
-            if core_instruction:
-                voice_section += f"\n- Core Style: {core_instruction}"
-            
-            # Tonal restraint (objective technical documentation mandate)
-            tonal_restraint = voice.get('tonal_restraint', '').strip()
-            if tonal_restraint:
-                voice_section += f"\n- Tone Requirements: {tonal_restraint}"
-            
-            # Technical verbs required
-            tech_verbs = voice.get('technical_verbs_required', [])
-            if tech_verbs:
-                voice_section += f"\n- Required Verbs: {', '.join(tech_verbs[:6])}"
-            
-            # Forbidden phrases from persona (NEW: Critical for voice policy compliance)
-            forbidden_fields = voice.get('forbidden', {})
-            if forbidden_fields:
-                # Extract all forbidden phrase lists
-                forbidden_phrases = []
-                for category, phrases in forbidden_fields.items():
-                    if isinstance(phrases, list):
-                        forbidden_phrases.extend(phrases)
-                
-                if forbidden_phrases:
-                    voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_phrases[:10])}"
-            
-            # Legacy forbidden_casual field (backward compatibility)
-            forbidden_casual = voice.get('forbidden_casual', [])
-            if forbidden_casual and not forbidden_fields:
-                voice_section += f"\n- FORBIDDEN Phrases: {', '.join(forbidden_casual[:8])}"
+        # Extract voice instructions from persona
+        core_voice = voice.get('core_voice_instruction', '')
+        tonal_restraint = voice.get('tonal_restraint', '')
+        forbidden = voice.get('forbidden_phrases', [])
         
-        # ALL voice/tone guidance now comes from persona files only
-        # No generic additions - respects Voice Instruction Centralization Policy
+        voice_section = f"""AUTHOR: {author} from {country}
+- Regional patterns: {esl_traits}
+
+VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_').replace(',', '').replace('.', '')}.yaml):
+{core_voice}"""
+        
+        if tonal_restraint:
+            voice_section += f"\n\n{tonal_restraint}"
+        
+        if forbidden:
+            forbidden_str = "\n".join([f"  - {phrase}" for phrase in forbidden])
+            voice_section += f"\n\n**FORBIDDEN PHRASES** (never use these):\n{forbidden_str}"
+        
+        # NO voice instruction duplication - violates Voice Instruction Centralization Policy
+        # Humanness layer will inject full persona through {voice_instruction} placeholder
         
         return voice_section
 

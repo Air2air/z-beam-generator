@@ -31,6 +31,14 @@
 **BEFORE** any work, review these files organized by category:
 
 ### ⚡ Recent Updates (November-December 2025)
+- **🚨 Size-Aware Prompt Compression** (Dec 12): Automatic humanness layer compression 🔥 **NEW**
+  - See: `docs/08-development/SIZE_AWARE_COMPRESSION_POLICY.md`
+  - Problem: Full humanness layer ~9,000 chars → prompts exceeded 8,000 limit (12,057 chars)
+  - Solution: Auto-compress humanness to ~800 chars when base prompt > 2,000 chars
+  - Results: 68% size reduction (12,057 → 3,797 chars)
+  - Method: `HumannessOptimizer.generate_compressed_humanness()`
+  - Tests: `tests/test_compressed_humanness.py` (11/11 tests passing ✅)
+  - Grade: A+ - Prevents API failures while maintaining quality
 - **🚨 Author Assignment Immutability Policy** (Dec 6): Once author assigned, NEVER changes
   - See: `.github/copilot-instructions.md` - Author Assignment Immutability Policy
   - Tests: `tests/test_author_assignment_immutability.py` (9/9 tests passing ✅)

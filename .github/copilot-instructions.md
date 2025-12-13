@@ -860,6 +860,7 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 - ✅ **ALWAYS maintain runtime error recovery**
 - ✅ **ALWAYS verify documentation matches reality with tests** 🔥 **NEW**
 - ✅ **ALWAYS sync Materials.yaml updates to frontmatter (dual-write)** 🔥 **NEW (Nov 22, 2025)**
+- ✅ **ALWAYS save to frontmatter whenever you save to data** 🔥 **MANDATORY (Dec 12, 2025)**
 
 ---
 
@@ -1108,6 +1109,45 @@ All required components must be explicitly provided - no silent degradation.
 **Enforcement**: 15 automated tests verify field isolation (`tests/test_frontmatter_partial_field_sync.py`)
 
 See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
+
+### 3.5. **Dual-Write Policy** 🔥 **MANDATORY (Dec 12, 2025) - CRITICAL**
+**EVERY save to data YAML files MUST immediately trigger a save to frontmatter.**
+
+**STRICT REQUIREMENTS**:
+1. ✅ **ALWAYS dual-write** - Save to data/*.yaml AND frontmatter/*.yaml in same operation
+2. ✅ **IMMEDIATE sync** - Frontmatter update happens immediately after data save
+3. ✅ **NEVER data-only** - No operation should save ONLY to data files without frontmatter
+4. ✅ **Field-level sync** - Only modified fields written to frontmatter (preserves other fields)
+5. ✅ **Same transaction** - Both saves should succeed or fail together
+
+**Implementation Pattern**:
+```python
+# ✅ CORRECT - Dual-write pattern
+def save_content(material_name, field, value):
+    # 1. Save to data source
+    save_to_materials_yaml(material_name, field, value)
+    
+    # 2. IMMEDIATELY sync to frontmatter (same operation)
+    sync_field_to_frontmatter(material_name, field, domain='materials')
+    
+# ❌ WRONG - Data-only save
+def save_content(material_name, field, value):
+    save_to_materials_yaml(material_name, field, value)
+    # Missing frontmatter sync!
+```
+
+**Why This Matters**:
+- Frontmatter files are displayed on website - users see stale content if not synced
+- Data consistency across system - no divergence between sources
+- Immediate visibility - generated content appears in frontmatter instantly
+- Field isolation - partial updates preserve unmodified fields
+
+**Enforcement**: 
+- Code review requirement - all data save operations must include frontmatter sync
+- Test requirement - verify frontmatter updated after data operations
+- Grade F violation if data saved without frontmatter sync
+
+See `docs/data/DATA_STORAGE_POLICY.md` for complete dual-write implementation details.
 
 ### 4. **Contaminant Appearance Data Policy** 🔥 **UPDATED (Dec 1, 2025)**
 **All contaminant visual appearance data MUST be pre-populated in `Contaminants.yaml`.**
@@ -1363,9 +1403,10 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 - Humanness optimizer provides structural variation (rhythm, opening) NOT voice
 
 **Separation of Concerns**:
-- **Author Personas** (`shared/voice/profiles/*.yaml`) - Define voice characteristics per author
-- **Humanness Optimizer** (`learning/humanness_optimizer.py`) - Structural variation ONLY
-- **Domain Config** (`domains/*/config.yaml`) - Structural randomization (rhythms, structures) NOT voice
+- **Author Personas** (`shared/voice/profiles/*.yaml`) - Define ALL voice characteristics (ONLY source)
+- **Humanness Optimizer** (`learning/humanness_optimizer.py`) - Structural variation ONLY (rhythm, opening, diversity) NOT voice
+- **Domain Prompts** (`domains/*/prompts/*.txt`) - Content requirements + `{voice_instruction}` placeholder
+- **Prompt Assembly**: Domain prompt → inject voice from persona → add humanness (structure) → send to LLM
 
 **Grade**: F violation if voice/author changes on regeneration
 
@@ -2108,12 +2149,11 @@ git revert <commit>  # Revert to known working state
 3. **Terminal output required**: Always use `get_terminal_output()` for API diagnostics
 4. **Range propagation documented**: `docs/DATA_ARCHITECTURE.md` + 14 passing tests
 5. **Frontmatter 58.3% complete**: Technical data excellent (95%+), metadata gaps identified
-6. **Voice compliance issue (Dec 6, 2025)**: LLM (Grok-4-fast) ignores persona instructions
-   - Architecture: A (95/100) - Author assignment immutable, personas distinct
-   - Voice distinctiveness: F (0/100) - LLM produces identical output for all 4 authors
-   - All outputs contain forbidden phrases (direct address: "you'll want", "We've found")
-   - Tests: `tests/test_author_assignment_immutability.py` - 9/9 tests passing ✅
-   - Recommendation: Switch to Claude/GPT-4 or implement post-generation validation
+6. **✅ RESOLVED: Voice validation false negative (Dec 12, 2025)** 🔥 **FIXED**
+   - **Issue**: Validation check was looking for 'VOICE:' or 'voice_instruction' but actual prompt contains 'VOICE INSTRUCTIONS'
+   - **Symptom**: Terminal showed "⚠️ NO voice instructions found in prompt!" despite voice being present
+   - **Resolution**: Fixed validation check in generator.py line 350 to check for 'VOICE INSTRUCTIONS'
+   - **Impact**: Voice instructions were ALWAYS being included in prompts, validation was just reporting false negative
 7. **✅ RESOLVED: Persona files consolidated (Dec 11, 2025)** 🔥 **FIXED**
    - **Issue**: TWO DIFFERENT persona sets existed with conflicting voice instructions
      * Deprecated location: `shared/prompts/personas/` (no longer exists)

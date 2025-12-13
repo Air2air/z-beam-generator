@@ -49,8 +49,29 @@ length_variation_range: 10               # Maximum variation: ±60%
 #   0.05 = ±5% (target 100 → range 95-105)
 #   0.10 = ±10% (target 100 → range 90-110)
 #   0.20 = ±20% (target 100 → range 80-120)
-# Recommended: 0.10 (±10%) - supports ≥5% variance requirement
+#   0.40 = ±40% (target 100 → range 60-140)
+#   0.50 = ±50% (target 100 → range 50-150)
+# Recommended: 0.40-0.50 for maximum diversity
 word_count_variation: 0.50               # ±50% variation for maximum diversity
+
+# Temperature Variation Range (NEW - Dec 12, 2025)
+# Adds randomness to base temperature for each generation
+# Base temperature from dynamic_config, then add random variation
+# Examples:
+#   0.00 = No variation (always base temp)
+#   0.05 = ±0.05 variation (base 0.80 → range 0.75-0.85)
+#   0.10 = ±0.10 variation (base 0.80 → range 0.70-0.90)
+#   0.15 = ±0.15 variation (base 0.80 → range 0.65-0.95)
+temperature_variation: 0.15              # ±0.15 for diverse outputs
+
+# Structural Diversity Boost (NEW - Dec 12, 2025)
+# Controls how aggressively to vary structural elements
+# Higher values = more dramatic differences between generations
+# Scale 0.0-1.0:
+#   0.0 = Minimal variation (consistent structure)
+#   0.5 = Moderate variation (balanced)
+#   1.0 = Maximum variation (dramatically different each time)
+structural_diversity_factor: 0.8         # High diversity for distinct outputs
 
 # Randomization Targets Configuration
 # MOVED TO DOMAIN-SPECIFIC CONFIGS:

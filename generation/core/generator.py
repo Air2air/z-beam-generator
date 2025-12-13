@@ -162,18 +162,13 @@ class Generator:
             ValueError: If identifier not found or generation fails
             FileNotFoundError: If required files missing
         """
-        # TEMPORARY DISABLE: Humanness layer conflicts with voice policy (forbidden phrases)
-        # Generate humanness layer with randomized length from config
-        # from learning.humanness_optimizer import HumannessOptimizer
-        # humanness_optimizer = HumannessOptimizer()
-        # humanness_layer = humanness_optimizer.generate_humanness_instructions(
-        #     component_type=component_type,
-        #     strictness_level=1  # Production mode uses level 1 (lowest strictness)
-        # )
-        # self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
-        
-        humanness_layer = None  # DISABLED: Conflicts with persona forbidden phrases
-        self.logger.info(f"⚠️  Humanness layer DISABLED (conflicts with voice policy)")
+        # Generate humanness layer (structural variation only - voice comes from persona)
+        from learning.humanness_optimizer import HumannessOptimizer
+        humanness_optimizer = HumannessOptimizer()
+        humanness_layer = humanness_optimizer.generate_humanness_instructions(
+            component_type=component_type
+        )
+        self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
         
         result = self.generate_without_save(identifier, component_type, faq_count, humanness_layer)
 
@@ -246,18 +241,60 @@ class Generator:
             'technical_intensity': normalized_intensity
         }
         
-        prompt = PromptBuilder.build_unified_prompt(
+        # 🎯 SIZE-AWARE HUMANNESS LAYER: Check base prompt size BEFORE adding humanness
+        # Build base prompt WITHOUT humanness first
+        base_prompt = PromptBuilder.build_unified_prompt(
             topic=identifier,
             voice=voice,
-            length=None,  # Length is in humanness_layer, not passed separately
+            length=None,
             facts=facts,
             context=context,
             component_type=component_type,
             domain=self.domain,
             enrichment_params=enrichment_params,
-            humanness_layer=humanness_layer,
+            humanness_layer="",  # Empty first to measure base size
             faq_count=faq_count
         )
+        
+        base_size = len(base_prompt)
+        
+        # 🎯 SIZE-AWARE DECISION: Compress humanness if base already large
+        # API limit: 8,000 chars. Full humanness ~9K would push any base > 0 over limit
+        # Compressed humanness ~1K allows base up to ~6.5K
+        SIZE_THRESHOLD = 2000  # If base exceeds this, use compressed humanness
+        
+        if base_size > SIZE_THRESHOLD:
+            # Base prompt moderate - use COMPRESSED humanness (essential rules only ~1K)
+            print(f"📦 Base prompt {base_size:,} chars > {SIZE_THRESHOLD:,} - using COMPRESSED humanness")
+            self.logger.info(f"📦 Base prompt {base_size:,} chars > {SIZE_THRESHOLD:,} - using COMPRESSED humanness")
+            # Generate compressed version (10-15% of normal size, learning-optimized)
+            from learning.humanness_optimizer import HumannessOptimizer
+            optimizer = HumannessOptimizer(winston_db_path='z-beam.db')
+            final_humanness = optimizer.generate_compressed_humanness(
+                component_type=component_type
+            )
+        else:
+            # Base prompt small - use FULL humanness layer
+            print(f"✅ Base prompt {base_size:,} chars < {SIZE_THRESHOLD:,} - using FULL humanness")
+            self.logger.info(f"✅ Base prompt {base_size:,} chars < {SIZE_THRESHOLD:,} - using FULL humanness")
+            final_humanness = humanness_layer
+        
+        # Rebuild prompt with appropriate humanness
+        prompt = PromptBuilder.build_unified_prompt(
+            topic=identifier,
+            voice=voice,
+            length=None,
+            facts=facts,
+            context=context,
+            component_type=component_type,
+            domain=self.domain,
+            enrichment_params=enrichment_params,
+            humanness_layer=final_humanness,
+            faq_count=faq_count
+        )
+        
+        print(f"📊 Final prompt: {len(prompt):,} chars (base: {base_size:,}, humanness: {len(final_humanness):,})")
+        self.logger.info(f"📊 Final prompt: {len(prompt):,} chars (base: {base_size:,}, humanness: {len(final_humanness):,})")
         self.logger.info(f"📝 Prompt built for {component_type}")
         
         # CRITICAL: Validate FULL ASSEMBLED PROMPT before API call
@@ -310,7 +347,7 @@ class Generator:
             
             # Check for voice instruction rendering (TERMINAL + FILE LOGGING)
             print(f"\n🔍 CRITICAL SECTIONS CHECK:")
-            if 'VOICE:' in prompt or 'voice_instruction' in prompt:
+            if 'VOICE INSTRUCTIONS' in prompt or 'VOICE:' in prompt or 'voice_instruction' in prompt:
                 print("   • Voice instructions: ✅ PRESENT")
                 self.logger.info("   ✅ Voice instructions present in prompt")
             else:
@@ -360,43 +397,100 @@ class Generator:
             print(f"   View with: cat {prompt_file}")
             self.logger.info(f"📄 Full prompt saved to: {prompt_file}\n")
             
-            # Report standard validation (NON-BLOCKING - log for learning)
-            if not validation_result.is_valid:
-                if validation_result.has_critical_issues:
-                    print(f"\n⚠️  VALIDATION ISSUES DETECTED (logged for learning)")
+            # Report standard validation (AUTO-FIX CRITICAL/WARNING issues)
+            if not validation_result.is_valid or validation_result.has_warnings:
+                if validation_result.has_critical_issues or validation_result.has_warnings:
+                    # CRITICAL/WARNING ISSUES: AUTO-FIX
+                    severity_label = "CRITICAL" if validation_result.has_critical_issues else "WARNING"
+                    print(f"\n⚠️  {severity_label} VALIDATION ISSUES - AUTO-FIXING")
                     print(validation_result.format_report())
-                    self.logger.warning(f"Validation issues detected (not blocking): {validation_result.format_report()}")
-                    # Log to learning database for humanness optimizer to adapt
-                    self._log_validation_issues(validation_result, 'standard')
+                    self.logger.warning(f"{severity_label} validation issues detected - attempting auto-fix")
+                    
+                    # Auto-optimize prompt
+                    from shared.validation.prompt_optimizer import optimize_prompt
+                    optimized_prompt = optimize_prompt(prompt, validation_result)
+                    
+                    if optimized_prompt != prompt:
+                        print(f"\n✅ PROMPT AUTO-OPTIMIZED:")
+                        print(f"   Original: {len(prompt):,} chars")
+                        print(f"   Optimized: {len(optimized_prompt):,} chars")
+                        print(f"   Reduction: {len(prompt) - len(optimized_prompt):,} chars ({100*(len(prompt)-len(optimized_prompt))/len(prompt):.1f}%)")
+                        self.logger.info(f"Prompt optimized: {len(prompt)} → {len(optimized_prompt)} chars")
+                        prompt = optimized_prompt
+                        
+                        # Re-validate optimized prompt
+                        validation_result = validate_text_prompt(prompt)
+                        if validation_result.has_critical_issues or validation_result.has_warnings:
+                            print(f"   ⚠️  Still has issues after optimization")
+                            self.logger.warning(f"Optimization insufficient - proceeding anyway")
+                        else:
+                            print(f"   ✅ Issues resolved")
+                            self.logger.info(f"Issues resolved by optimization")
+                    
+                    self._log_validation_issues(
+                        validation_result, 
+                        'standard',
+                        material=identifier,
+                        component_type=component_type,
+                        domain=self.domain
+                    )
                 else:
-                    print(f"   ⚠️  Validation warnings present (logged for learning)")
-                    self.logger.info("   ⚠️  Validation warnings present (logged for learning)")
-                    self._log_validation_issues(validation_result, 'standard')
+                    # INFO ONLY: Log but don't block (learning feedback)
+                    print(f"\n💡 VALIDATION INFO (logged for learning)")
+                    print(validation_result.format_report())
+                    self.logger.info(f"Validation info detected: {validation_result.format_report()}")
+                    # Log to learning database for humanness optimizer to adapt
+                    self._log_validation_issues(
+                        validation_result, 
+                        'standard',
+                        material=identifier,
+                        component_type=component_type,
+                        domain=self.domain
+                    )
             else:
                 print(f"   ✅ Standard validation passed")
                 self.logger.info("   ✅ Standard validation passed")
             
-            # Report coherence validation
+            # Report coherence validation (AUTO-FIX CRITICAL issues)
             print(f"\n🔗 COHERENCE VALIDATION:")
             print(f"   {coherence_result.get_summary()}")
             self.logger.info(f"🔗 COHERENCE VALIDATION: {coherence_result.get_summary()}")
             
             if not coherence_result.is_coherent:
-                print(f"\n⚠️  COHERENCE ISSUES DETECTED (logged for learning):")
-                for issue in coherence_result.issues:
-                    if issue.severity in ["CRITICAL", "ERROR"]:
+                critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
+                
+                if critical_coherence:
+                    # CRITICAL COHERENCE ISSUES: LOG AND PROCEED
+                    print(f"\n⚠️  CRITICAL COHERENCE ISSUES (logged for learning):")
+                    for issue in critical_coherence:
                         print(f"   • [{issue.severity}] {issue.message}")
                         self.logger.warning(f"   [{issue.severity}] {issue.message}")
-                
-                # Log full report to file and learning database
-                self.logger.info("\n" + coherence_result.format_report())
-                self._log_validation_issues(coherence_result, 'coherence')
-                
-                # Warn on critical coherence issues but don't block
-                critical_coherence = [i for i in coherence_result.issues if i.severity == "CRITICAL"]
-                if critical_coherence:
-                    print(f"\n⚠️  {len(critical_coherence)} critical coherence issues (logged for humanness optimizer)")
-                    self.logger.warning(f"{len(critical_coherence)} critical coherence issues detected - logged for learning")
+                    
+                    self.logger.warning(f"{len(critical_coherence)} critical coherence issues - logged for learning")
+                    self._log_validation_issues(
+                        coherence_result, 
+                        'coherence',
+                        material=identifier,
+                        component_type=component_type,
+                        domain=self.domain
+                    )
+                else:
+                    # ERROR/WARNING: Log but don't block
+                    print(f"\n⚠️  COHERENCE ISSUES DETECTED (logged for learning):")
+                    for issue in coherence_result.issues:
+                        if issue.severity in ["ERROR", "WARNING"]:
+                            print(f"   • [{issue.severity}] {issue.message}")
+                            self.logger.warning(f"   [{issue.severity}] {issue.message}")
+                    
+                    # Log full report to file and learning database
+                    self.logger.info("\n" + coherence_result.format_report())
+                    self._log_validation_issues(
+                        coherence_result, 
+                        'coherence',
+                        material=identifier,
+                        component_type=component_type,
+                        domain=self.domain
+                    )
             else:
                 print(f"   ✅ Coherence validated successfully")
                 self.logger.info("   ✅ Coherence validated successfully")
@@ -469,19 +563,28 @@ class Generator:
             'temperature': params['temperature']
         }
     
-    def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
-        """Save generated content to appropriate YAML file with atomic write + immediate frontmatter sync."""
+    def _save_to_yaml(self, identifier: str, component_type: str, content: Any):
+        """
+        Save generated content to domain data YAML file using domain adapter.
         
-        # settings_description goes to Settings.yaml, everything else to Materials.yaml
-        if component_type == 'settings_description':
-            self._save_to_settings_yaml(material_name, content)
-        else:
-            self._save_to_materials_yaml(material_name, component_type, content)
+        Domain-aware: Uses adapter.write_component() which automatically:
+        - Writes to correct YAML file (Materials.yaml, Contaminants.yaml, Settings.yaml, etc.)
+        - Uses correct root key (materials, contamination_patterns, settings, etc.)
+        - Performs atomic write with temp file
+        - Syncs to frontmatter immediately (dual-write policy)
+        """
+        self.adapter.write_component(identifier, component_type, content)
     
     def _save_to_settings_yaml(self, material_name: str, content: Any):
-        """Save settings_description to Settings.yaml with atomic write + frontmatter sync."""
+        """
+        DEPRECATED: Hardcoded for Settings.yaml only.
+        Use adapter.write_component() instead (domain-aware).
+        
+        This method is kept for backward compatibility but should not be used.
+        """
         import sys
-        print(f"🔧 [DEBUG] _save_to_settings_yaml called for {material_name}")
+        print(f"⚠️  [DEPRECATED] _save_to_settings_yaml called for {material_name}")
+        print(f"💡 Use adapter.write_component() instead (domain-aware)")
         sys.stdout.flush()
         
         from domains.settings.data_loader import get_settings_path
@@ -546,7 +649,17 @@ class Generator:
             raise ValueError(f"Failed to save to Settings.yaml: {e}")
     
     def _save_to_materials_yaml(self, material_name: str, component_type: str, content: Any):
-        """Save generated content to Materials.yaml with atomic write + immediate frontmatter sync."""
+        """
+        DEPRECATED: Hardcoded for Materials.yaml only.
+        Use adapter.write_component() instead (domain-aware).
+        
+        This method is kept for backward compatibility but should not be used.
+        """
+        import sys
+        print(f"⚠️  [DEPRECATED] _save_to_materials_yaml called for {material_name}")
+        print(f"💡 Use adapter.write_component() instead (domain-aware)")
+        sys.stdout.flush()
+        
         materials_path = Path("data/materials/Materials.yaml")
         
         # Load existing data
@@ -600,7 +713,14 @@ class Generator:
                 Path(temp_path).unlink(missing_ok=True)
             raise ValueError(f"Failed to save to Materials.yaml: {e}")
     
-    def _log_validation_issues(self, validation_result, validation_type: str):
+    def _log_validation_issues(
+        self, 
+        validation_result, 
+        validation_type: str,
+        material: Optional[str] = None,
+        component_type: Optional[str] = None,
+        domain: str = 'materials'
+    ):
         """
         Log validation issues to learning database for humanness optimizer feedback.
         
@@ -610,6 +730,9 @@ class Generator:
         Args:
             validation_result: ValidationResult or CoherenceResult object
             validation_type: Type of validation ('standard' or 'coherence')
+            material: Material/item name for correlation with Winston results
+            component_type: Content type for correlation analysis
+            domain: Content domain (materials, contaminants, settings)
         
         Design: Non-blocking - logs for learning, never raises exceptions
         """
@@ -623,8 +746,12 @@ class Generator:
             issues = []
             if hasattr(validation_result, 'issues'):
                 for issue in validation_result.issues:
+                    # Convert enum to string value for JSON serialization
+                    severity = getattr(issue, 'severity', 'UNKNOWN')
+                    if hasattr(severity, 'value'):
+                        severity = severity.value
                     issues.append({
-                        'severity': getattr(issue, 'severity', 'UNKNOWN'),
+                        'severity': severity,
                         'message': getattr(issue, 'message', str(issue)),
                         'suggestion': getattr(issue, 'suggestion', None)
                     })
@@ -637,7 +764,10 @@ class Generator:
                 issues=issues,
                 prompt_length=getattr(validation_result, 'prompt_length', None) or 0,
                 word_count=getattr(validation_result, 'word_count', None) or 0,
-                estimated_tokens=getattr(validation_result, 'estimated_tokens', None) or 0
+                estimated_tokens=getattr(validation_result, 'estimated_tokens', None) or 0,
+                material=material,
+                component_type=component_type,
+                domain=domain
             )
             
             self.logger.info(f"   📊 Validation feedback logged ({len(issues)} issues) for humanness optimizer")

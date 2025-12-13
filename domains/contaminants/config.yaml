@@ -16,6 +16,102 @@ context_keys:
 frontmatter_directory: "frontmatter/contaminants"
 frontmatter_filename_pattern: "{slug}.yaml"
 
+# Contaminants-specific randomization targets
+# Provides structural variety and diverse approaches to contamination descriptions
+randomization_targets:
+  
+  # Structural approaches for contamination descriptions
+  structures:
+    problem_focused:
+      label: "Problem-Focused"
+      description: "Start with contamination challenge → why it's difficult → laser solution"
+      probability: 0.14
+    formation_process:
+      label: "Formation Process"
+      description: "Explain how contamination develops → materials affected → removal approach"
+      probability: 0.14
+    material_impact:
+      label: "Material Impact"
+      description: "Different materials respond differently → specific challenges → cleaning approach"
+      probability: 0.14
+    visual_characteristics:
+      label: "Visual-First"
+      description: "Describe appearance/texture → where it occurs → why laser works"
+      probability: 0.14
+    comparison_based:
+      label: "Comparison-Based"
+      description: "Compare to similar contaminations → unique challenges → specialized solution"
+      probability: 0.14
+    experience_driven:
+      label: "Experience-Driven"
+      description: "Real-world observations → common scenarios → practical removal"
+      probability: 0.15
+    chemical_properties:
+      label: "Chemical-Properties"
+      description: "Chemical composition → bonding mechanism → laser interaction"
+      probability: 0.15
+  
+  # Property integration strategies
+  property_strategies:
+    scattered:
+      label: "SCATTERED INTEGRATION"
+      description: "Distribute contamination properties throughout narrative naturally"
+      probability: 0.20
+    formation_focus:
+      label: "FORMATION FOCUS"
+      description: "Deep dive into how contamination forms, mention removal briefly"
+      probability: 0.20
+    material_specific:
+      label: "MATERIAL-SPECIFIC"
+      description: "Emphasize different behavior on different material types"
+      probability: 0.20
+    removal_challenge:
+      label: "REMOVAL CHALLENGE"
+      description: "Present contamination characteristics as removal obstacles"
+      probability: 0.20
+    comparative:
+      label: "COMPARATIVE"
+      description: "Compare contamination to similar patterns, highlight differences"
+      probability: 0.20
+  
+  # Warning placement options
+  warning_placements:
+    early:
+      label: "EARLY WARNING"
+      description: "Start with critical contamination characteristic (first 2-3 sentences)"
+      probability: 0.33
+    mid_flow:
+      label: "MID-FLOW WARNING"
+      description: "Embed key challenge naturally in middle of description"
+      probability: 0.33
+    concluding:
+      label: "CONCLUDING CAUTION"
+      description: "End with important consideration or removal challenge"
+      probability: 0.34
+  
+  # Opening variety strategies (NEW - for greater variation)
+  opening_styles:
+    direct_definition:
+      label: "DIRECT DEFINITION"
+      description: "Start with clear statement of what contamination is"
+      probability: 0.20
+    context_setting:
+      label: "CONTEXT SETTING"
+      description: "Begin with where/when this contamination typically occurs"
+      probability: 0.20
+    material_focus:
+      label: "MATERIAL FOCUS"
+      description: "Lead with which materials are most affected"
+      probability: 0.20
+    challenge_statement:
+      label: "CHALLENGE STATEMENT"
+      description: "Open with the main cleaning challenge it presents"
+      probability: 0.20
+    characteristic_description:
+      label: "CHARACTERISTIC DESCRIPTION"
+      description: "Start with distinctive visual or physical characteristics"
+      probability: 0.20
+
 # =============================================================================
 # PROMPT TEMPLATES
 # =============================================================================

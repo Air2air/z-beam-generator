@@ -143,11 +143,10 @@ class QualityEvaluatedGenerator:
         for param, value in current_params.items():
             print(f"   • {param}: {value}")
         
-        # Generate humanness layer (strictness level 1 - no retry escalation)
+        # Generate humanness layer (learning-optimized, structural variation only)
         print(f"\n🧠 Generating humanness instructions...")
         humanness_instructions = self.humanness_optimizer.generate_humanness_instructions(
-            component_type=component_type,
-            strictness_level=1  # Fixed level, no escalation
+            component_type=component_type
         )
         print(f"   ✅ Humanness layer generated ({len(humanness_instructions)} chars)")
         

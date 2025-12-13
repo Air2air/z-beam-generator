@@ -113,11 +113,20 @@ class HumannessOptimizer:
             )
         # Compact template is optional - will use full template if not found
         
-        # Components using compact humanness layer (to stay under 8000 char API limit)
+        # Components using compact humanness layer (structural variation ONLY, no voice)
+        # Compact template follows separation of concerns: voice from personas, structure from humanness
         # Micro prompts are ~5500 chars with compact template, would exceed limit with full
         # Settings_description also needs compact to avoid exceeding limits
         # Material_description needs compact to prevent prompt bloat (full version causes 12k+ char prompts)
-        self.compact_components = {'micro', 'settings_description', 'component_summaries', 'material_description'}
+        # Contaminant descriptions need compact to prevent voice override issues
+        self.compact_components = {
+            'micro', 
+            'settings_description', 
+            'component_summaries', 
+            'material_description',
+            'description',  # Generic description component (used by contaminants, materials, settings)
+            'frontmatter_description'  # Frontmatter-specific descriptions
+        }
         
         # Load configuration for randomization targets (fail-fast)
         self.config_path = Path(config_path)
@@ -169,37 +178,28 @@ class HumannessOptimizer:
     
     def generate_humanness_instructions(
         self,
-        component_type: str,
-        strictness_level: int = 1,
-        previous_ai_tendencies: Optional[List[str]] = None
+        component_type: str
     ) -> str:
         """
-        Generate dynamic humanness instructions for this generation attempt.
+        Generate dynamic humanness instructions from learned patterns.
         
-        Combines insights from Winston passing samples and subjective learned patterns
-        to produce prompt instructions that increase in strictness with each retry.
+        Uses learned patterns from database (Winston samples, subjective evaluation,
+        structural diversity). Learning system optimizes parameters BETWEEN generations,
+        not during retries.
+        
+        Provides STRUCTURAL VARIATION ONLY (opening patterns, rhythm, diversity).
+        Voice and tone come from author persona (injected separately in domain prompt).
         
         Args:
             component_type: Type of component (micro, subtitle, description, etc.)
-            strictness_level: 1-5 (increases with retry attempts)
-            previous_ai_tendencies: AI patterns detected in previous attempt
         
         Returns:
             Formatted humanness instructions ready for prompt injection
-        
-        Raises:
-            ValueError: If strictness_level out of range (fail-fast)
         """
-        if not 1 <= strictness_level <= 5:
-            raise ValueError(f"strictness_level must be 1-5, got {strictness_level}")
-        
         logger.info(f"\n{'='*70}")
         logger.info(f"🧠 GENERATING HUMANNESS INSTRUCTIONS")
         logger.info(f"{'='*70}")
         logger.info(f"   Component: {component_type}")
-        logger.info(f"   Strictness Level: {strictness_level}/5")
-        if previous_ai_tendencies:
-            logger.info(f"   Previous AI Tendencies: {', '.join(previous_ai_tendencies)}")
         
         # 1. Extract Winston patterns from passing samples
         winston_patterns = self._extract_winston_patterns()
@@ -213,20 +213,51 @@ class HumannessOptimizer:
         structural_patterns = self._extract_structural_patterns(component_type)
         logger.info(f"   ✅ Structural patterns: {structural_patterns.sample_count} samples, avg diversity {structural_patterns.average_diversity:.1f}/10")
         
-        # 4. Build instructions with strictness progression
+        # 4. Extract validation feedback (NEW - Dec 12, 2025)
+        validation_feedback = self._extract_validation_feedback(domain=None)  # Global feedback
+        if validation_feedback['total_feedback_count'] > 0:
+            logger.info(f"   ✅ Validation feedback: {validation_feedback['total_feedback_count']} recent issues analyzed")
+            if validation_feedback['errors']:
+                top_error = validation_feedback['errors'][0]
+                logger.info(f"      🔴 Most common error: \"{top_error['message']}\" ({top_error['count']} occurrences)")
+            if validation_feedback['warnings']:
+                top_warning = validation_feedback['warnings'][0]
+                logger.info(f"      ⚠️  Most common warning: \"{top_warning['message']}\" ({top_warning['count']} occurrences)")
+        
+        # 5. Build instructions from learned patterns
         instructions = self._build_instructions(
             winston_patterns=winston_patterns,
             subjective_patterns=subjective_patterns,
             structural_patterns=structural_patterns,
-            component_type=component_type,
-            strictness_level=strictness_level,
-            previous_ai_tendencies=previous_ai_tendencies or []
+            validation_feedback=validation_feedback,
+            component_type=component_type
         )
         
         logger.info(f"   ✅ Generated {len(instructions)} character instruction block")
         logger.info(f"{'='*70}\n")
         
         return instructions
+    
+    def generate_compressed_humanness(
+        self,
+        component_type: str
+    ) -> str:
+        """
+        Generate COMPRESSED humanness instructions (10-20% of full size).
+        
+        Delegates to generate_humanness_instructions() which automatically uses compact
+        template for components in self.compact_components list.
+        
+        Template-only approach - zero hardcoded prompts.
+        
+        Args:
+            component_type: Type of component
+        
+        Returns:
+            Compressed humanness instructions from template file
+        """
+        # Delegate to main method - it handles compact vs full template selection
+        return self.generate_humanness_instructions(component_type=component_type)
     
     def _extract_winston_patterns(self) -> WinstonPatterns:
         """
@@ -283,6 +314,90 @@ class HumannessOptimizer:
             success_patterns=success,
             penalty_weights=avoidance.get('penalty_weights', {})
         )
+    
+    def _extract_validation_feedback(self, domain: str = None) -> Dict[str, Any]:
+        """
+        Extract common validation issues from prompt_validation_feedback table.
+        
+        Analyzes recent validation feedback to identify:
+        - Most common errors (ERROR, CRITICAL)
+        - Recurring warnings (WARNING)
+        - Issue frequency trends
+        
+        This data helps optimizer avoid generating prompts that trigger known issues.
+        
+        Args:
+            domain: Optional domain filter (contaminants, materials, settings)
+        
+        Returns:
+            Dict with issue frequencies, top problems, and avoidance guidance
+        """
+        import sqlite3
+        import json
+        from datetime import datetime, timedelta
+        
+        try:
+            conn = sqlite3.connect(self.winston_db_path)
+            cursor = conn.cursor()
+            
+            # Get recent validation feedback (last 7 days)
+            lookback = (datetime.now() - timedelta(days=7)).isoformat()
+            
+            # Query for issue frequencies
+            query = """
+                SELECT 
+                    json_extract(value, '$.severity') as severity,
+                    json_extract(value, '$.message') as message,
+                    COUNT(*) as occurrences
+                FROM prompt_validation_feedback, json_each(issues)
+                WHERE timestamp > ?
+            """
+            params = [lookback]
+            
+            if domain:
+                query += " AND domain = ?"
+                params.append(domain)
+            
+            query += """
+                GROUP BY severity, message
+                ORDER BY occurrences DESC
+                LIMIT 20
+            """
+            
+            cursor.execute(query, params)
+            rows = cursor.fetchall()
+            
+            # Categorize by severity
+            critical_issues = []
+            error_issues = []
+            warning_issues = []
+            
+            for severity, message, count in rows:
+                issue = {'message': message, 'count': count}
+                if severity == 'CRITICAL':
+                    critical_issues.append(issue)
+                elif severity == 'ERROR':
+                    error_issues.append(issue)
+                elif severity == 'WARNING':
+                    warning_issues.append(issue)
+            
+            conn.close()
+            
+            return {
+                'critical': critical_issues[:5],  # Top 5 critical
+                'errors': error_issues[:10],      # Top 10 errors
+                'warnings': warning_issues[:10],  # Top 10 warnings
+                'total_feedback_count': len(rows)
+            }
+            
+        except Exception as e:
+            logger.warning(f"Could not extract validation feedback: {e}")
+            return {
+                'critical': [],
+                'errors': [],
+                'warnings': [],
+                'total_feedback_count': 0
+            }
     
     def _extract_structural_patterns(self, component_type: str) -> StructuralPatterns:
         """
@@ -395,21 +510,25 @@ class HumannessOptimizer:
         winston_patterns: WinstonPatterns,
         subjective_patterns: SubjectivePatterns,
         structural_patterns: StructuralPatterns,
-        component_type: str,
-        strictness_level: int,
-        previous_ai_tendencies: List[str]
+        validation_feedback: Dict[str, Any],
+        component_type: str
     ) -> str:
         """
         Combine patterns into dynamic humanness instructions.
+        
+        Provides STRUCTURAL VARIATION ONLY (opening patterns, rhythm, diversity).
+        Voice and tone come from author persona (injected separately in domain prompt).
+        
+        NEW (Dec 12, 2025): Integrates validation feedback to avoid generating
+        prompts that trigger known issues.
         
         Loads template from prompts/system/humanness_layer.txt and injects:
         - Winston conversational markers and number patterns
         - Subjective theatrical phrases and AI tendencies
         - Structural diversity patterns (openings to avoid, successful structures)
+        - Validation feedback (common errors/warnings to prevent)
         - Success patterns (professional verbs, tone markers)
-        - Strictness-appropriate guidance
-        - Previous attempt feedback
-        - RANDOMIZED SELECTIONS: length target, structure approach, voice style
+        - RANDOMIZED SELECTIONS: length target, structure approach
         
         Uses COMPACT template for short-form content (micro, subtitle) to stay
         within prompt length limits. Full template for descriptions/FAQ.
@@ -417,9 +536,9 @@ class HumannessOptimizer:
         Args:
             winston_patterns: Patterns from Winston passing samples
             subjective_patterns: Patterns from subjective learning
+            structural_patterns: Structural diversity patterns
+            validation_feedback: Common validation issues to avoid
             component_type: Type of component being generated
-            strictness_level: 1-5 (controls emphasis)
-            previous_ai_tendencies: AI patterns from last failed attempt
         
         Returns:
             Formatted humanness instructions with randomization
@@ -449,12 +568,6 @@ class HumannessOptimizer:
             )
         selected_structure = random.choice(structure_options)
         
-        # 🎲 VOICE STYLE: Controlled by author persona assignment (NOT randomized per generation)
-        # Voice is determined at author assignment time and stays consistent thereafter
-        # See: shared/voice/profiles/*.yaml for author-specific voice definitions
-        # Domain config 'voices' section is DEPRECATED and should not be used
-        selected_voice = "(Controlled by assigned author voice profile - see shared/voice/profiles/*.yaml)"
-        
         # 🎲 RANDOMIZE SENTENCE RHYTHM (from config)
         rhythm_config = self.config['randomization_targets']['rhythms']
         rhythm_options = []
@@ -476,14 +589,24 @@ class HumannessOptimizer:
             warning_options.append(f"{value['label']}: {value['description']}")
         selected_warning = random.choice(warning_options)
         
+        # 🎲 RANDOMIZE OPENING STYLE (from config - if available)
+        selected_opening = None
+        if 'opening_styles' in self.config['randomization_targets']:
+            opening_config = self.config['randomization_targets']['opening_styles']
+            opening_options = []
+            for key, value in opening_config.items():
+                opening_options.append(f"{value['label']}: {value['description']}")
+            selected_opening = random.choice(opening_options)
+        
         # Log randomization selections for terminal visibility
         print("\n🎲 RANDOMIZATION APPLIED:")
         print(f"   • Length Target: {selected_length_key.upper()} ({selected_length})")
         print(f"   • Structure: {selected_structure}")
-        print(f"   • Voice Style: {selected_voice}")
         print(f"   • Sentence Rhythm: {selected_rhythm}")
         print(f"   • Property Strategy: {selected_property_strategy}")
         print(f"   • Warning Placement: {selected_warning}")
+        if selected_opening:
+            print(f"   • Opening Style: {selected_opening}")
         
         # Format Winston success patterns
         winston_section = self._format_winston_patterns(winston_patterns)
@@ -502,19 +625,12 @@ class HumannessOptimizer:
         overused_section = self._format_overused_patterns(structural_patterns.overused_openings)
         diverse_structures_section = self._format_diverse_structures(structural_patterns.diverse_structures)
         
-        # Get strictness guidance
-        strictness_guidance = self._get_strictness_guidance(strictness_level)
-        
-        # Format previous attempt feedback
-        feedback_section = self._format_previous_feedback(previous_ai_tendencies, strictness_level)
-        
         # Handle compact vs full template differently
         if use_compact:
-            # Compact template uses simpler placeholders
+            # Compact template uses simpler placeholders (NO voice - structural only)
             instructions = template.format(
                 selected_length=selected_length,
                 selected_structure=selected_structure,
-                selected_voice=selected_voice,
                 selected_rhythm=selected_rhythm
             )
             # Log size for visibility
@@ -524,7 +640,6 @@ class HumannessOptimizer:
         
         # Full template with all placeholders
         instructions = template.format(
-            attempt_number=strictness_level,
             component_type=component_type,
             passing_sample_count=winston_patterns.sample_count,
             total_evaluations=self._get_total_evaluations(),
@@ -535,10 +650,7 @@ class HumannessOptimizer:
             structural_sample_count=structural_patterns.sample_count,
             successful_structural_patterns=structural_section,
             overused_opening_patterns=overused_section,
-            diverse_linguistic_patterns=diverse_structures_section,
-            strictness_level=strictness_level,
-            strictness_guidance=strictness_guidance,
-            previous_attempt_feedback=feedback_section
+            diverse_linguistic_patterns=diverse_structures_section
         )
         
         # Append randomization selections to instructions (template placeholder approach)
@@ -549,24 +661,56 @@ class HumannessOptimizer:
 
 📏 **LENGTH TARGET**: {selected_length}
 
-🏗️ **STRUCTURAL APPROACH** (pick THIS one from 5 options):
-   {selected_structure}
+🏗️ **STRUCTURAL APPROACH**: {selected_structure}
 
-🗣️ **VOICE STYLE** (use THIS persona):
-   {selected_voice}
+🎵 **SENTENCE RHYTHM**: {selected_rhythm}
 
-🎵 **SENTENCE RHYTHM**:
-   {selected_rhythm}
+🔧 **PROPERTY STRATEGY**: {selected_property_strategy}
 
-🔢 **PROPERTY INTEGRATION**:
-   {selected_property_strategy}
-
-⚠️ **WARNING PLACEMENT**:
-   {selected_warning}
-
+⚠️ **WARNING PLACEMENT**: {selected_warning}
+"""
+        # Add opening style if available
+        if selected_opening:
+            randomization_addendum += f"""
+🎬 **OPENING STYLE**: {selected_opening}
+"""
+        
+        # Add validation feedback guidance if available (NEW - Dec 12, 2025)
+        if validation_feedback['total_feedback_count'] > 0:
+            randomization_addendum += """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ **VALIDATION LEARNING - AVOID THESE COMMON ISSUES** ⚠️
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+            
+            # Add top errors
+            if validation_feedback['errors']:
+                randomization_addendum += "\n🔴 **TOP ERRORS TO PREVENT**:\n"
+                for error in validation_feedback['errors'][:3]:  # Top 3 errors
+                    randomization_addendum += f"   • {error['message']} ({error['count']} recent occurrences)\n"
+            
+            # Add top warnings
+            if validation_feedback['warnings']:
+                randomization_addendum += "\n⚠️ **TOP WARNINGS TO AVOID**:\n"
+                for warning in validation_feedback['warnings'][:3]:  # Top 3 warnings
+                    randomization_addendum += f"   • {warning['message']} ({warning['count']} recent occurrences)\n"
+            
+            randomization_addendum += """
+💡 These issues were detected in recent generations. Structure your response
+to avoid triggering them. The system auto-fixes these but prevention is better!
+
+"""
+        
+        randomization_addendum += """
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ **FOLLOW THESE EXACTLY** - They define your unique approach for THIS generation.
+Each generation gets different random selections to maximize diversity.
+
 🚨 CRITICAL: These randomization targets are MANDATORY - use them to ensure 
 dramatic variation between generations. No two outputs should be similar!
+
+NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUCTIONS).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
         
