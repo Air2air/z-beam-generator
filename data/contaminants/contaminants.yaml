@@ -10,12 +10,13 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive residue forms when tapes or labels peel away from surfaces.
-      This leaves sticky films behind. On metals, it clings tightly and resists wiping.
-      Plastics show uneven buildup so cleaning risks scratches. Glass surfaces attract
-      dust to the residue, making spots worse. Challenges arise because solvents harm
-      substrates. Laser cleaning targets residue precisely. After treatment, surfaces
-      regain smoothness. Process applies heat briefly, so no damage occurs.
+    description: Adhesive residue contamination arises from leftover glue and tape
+      marks on surfaces. It forms sticky layers that bond tightly to materials like
+      metals and plastics. On glass, residue spreads unevenly so cleaning becomes
+      tricky. This pattern clings because of its chemical hold, and it yellows over
+      time during exposure. Removal challenges include avoiding substrate damage,
+      so laser treatment applies gentle pulses. Process targets residue without scratching,
+      and surfaces regain smoothness after.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -2048,13 +2049,13 @@ contamination_patterns:
     - KOH
     - K₂CO₃
     - PbSO₄
-    description: Battery corrosion contamination stems from electrolyte leaks in devices.
-      It creates pitting and oxide buildup on metal surfaces. This pattern penetrates
-      deeply, weakening casings and disrupting electrical flow. On [Steel](../materials/steel.md)
-      components, corrosion spreads unevenly and resists simple wiping. Aluminum parts
-      show flaking layers that cling stubbornly. Removal proves tricky—harsh methods
-      risk further erosion. Laser cleaning dissolves these contaminants gently. Surface
-      restores smoothness and functionality thus.
+    description: Battery corrosion, it forms from electrolyte leaks and creates crystalline
+      deposits. On [Steel](../materials/steel.md) surfaces, this contamination penetrates
+      deeply and causes pitting. Aluminum, it behaves differently—spreads thinly yet
+      clings tightly. Unique pattern shows irregular salt layers. Removal challenges
+      arise, thus laser cleaning must target precisely. Adhesion resists efforts,
+      and residue lingers on edges. Treatment applies, surface restores durability.
+      Process yields clean uniformity.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10738,14 +10739,12 @@ contamination_patterns:
     - Enamel
     - Solvents
     - Pigments
-    description: 'Graffiti paint stands out for its aggressive adhesion, forming thick,
-      uneven layers that seep into porous materials like [Brick](../materials/brick.md)
-      and concrete. This contaminant bonds tightly to metals and glass too, creating
-      a glossy, resilient film that resists weathering yet flakes under direct sun.
-      Removal poses a significant challenge: traditional methods often damage substrates,
-      but laser cleaning cuts through these bonds cleanly, preserving the underlying
-      surface without residue. In practice, it delivers a fresh start for affected
-      structures.'
+    description: Graffiti paint sets up as a tough, layered contaminant that lines
+      up in bold colors from aerosol sprays. It bonds tightly to porous surfaces like
+      [Brick](../materials/brick.md), soaking in deep and staining over time, while
+      on smooth metals or glass it forms a slick film that resists weathering. Removal
+      poses a significant challenge, as traditional methods often damage substrates;
+      laser cleaning, however, clears it efficiently without harming the base material.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11750,14 +11749,15 @@ contamination_patterns:
     - rule: NOT valid on decorative items, furniture, or non-machinery plastic parts
     - rule: Attracts dirt and grime (appears grimy, not just oily)
     context_required: true
-    description: Industrial oil contamination arises in manufacturing settings, where
-      lubricants from heavy machinery form persistent films on equipment surfaces.
-      This residue, it adheres tenaciously to metals like [Steel](../materials/steel.md)
-      and aluminum, penetrating microscopic pores that complicate thorough removal.
-      On non-metallic substrates, such as plastics, the oil softens and discolors
-      the material, exacerbating degradation over time. Key challenges include its
-      viscous nature, which resists mechanical wiping, demanding precise laser ablation
-      to vaporize the layer effectively, preserving underlying integrity.
+    description: Industrial-oil contamination, it manifests as a viscous residue that
+      penetrates deeply into surfaces, particularly in manufacturing environments.
+      This layer, it adheres tenaciously to metals like [Steel](../materials/steel.md),
+      where it forms a persistent film influenced from prolonged exposure to heat
+      and friction, yet on non-ferrous alloys, it exhibits greater fluidity, which
+      leads to uneven spreading. Removal challenges arise from its chemical stability,
+      that resists conventional solvents, demanding precise laser ablation to dislodge
+      the bonds without substrate damage. The process, it shows effectiveness in restoring
+      integrity.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
