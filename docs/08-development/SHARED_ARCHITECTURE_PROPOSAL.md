@@ -155,7 +155,7 @@ shared/
 
 **Files Moved**:
 ```
-shared/prompts/personas/*.yaml           → shared/voice/personas/
+shared/prompts/personas/*.yaml           → shared/voice/profiles/
 parameters/voice/*.py                    → shared/voice/parameters/
 postprocessing/detection/voice_*.py      → shared/voice/detection/
 ```

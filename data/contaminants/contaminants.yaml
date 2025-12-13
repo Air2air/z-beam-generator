@@ -10,13 +10,14 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive-residue contamination differs from particulate or oily types
-      through its sticky, polymeric nature, forming tenacious films from tape or glue
-      remnants. On metals, it bonds tightly and promotes corrosion on reactive surfaces,
-      while inert metals resist deeper penetration. Non-metals experience pore infiltration,
-      leading to uneven adhesion loss. Formation occurs via peeling residues that
-      cling persistently, thus complicating cleaning. Impacts include surface energy
-      disruption, and removal demands precise laser control to avoid substrate damage.
+    description: Adhesive-residue contamination stands out from particulate or oily
+      types through its tenacious, film-like bonding that persists after adhesive
+      removal. It forms irregular, sticky layers from peeled tapes or glues, embedding
+      deeply on reactive metals where chemical interactions accelerate degradation.
+      On inert non-metals, adhesion softens yet traps further debris, leading to uneven
+      surface weakening. Cleaning challenges arise as residues alter laser absorption
+      differently across materials, thus demanding precise energy adjustments for
+      effective removal without substrate damage.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -602,15 +603,14 @@ contamination_patterns:
         appearance and properties.
     category: oxidation
     chemical_formula: Al₂O₃
-    description: '[Aluminum](../materials/aluminum.md) oxidation contamination differs
-      from other types by forming a thin, self-limiting oxide layer that passivates
-      the surface, unlike thicker, more aggressive scales on ferrous metals. On reactive
-      metals such as aluminum, it adheres tightly and spreads evenly upon air exposure,
-      inhibiting further corrosion. In contrast, inert non-metals exhibit minimal
-      layer formation, with loose particulates that detach readily. This pattern,
-      it seems, arises from rapid electrochemical reactions. Challenges involve precise
-      removal to avoid base material weakening, particularly on delicate aluminum
-      alloys.'
+    description: '[Aluminum](../materials/aluminum.md) oxidation stands out among
+      contaminants for its self-limiting nature, forming a thin, adherent layer that
+      halts further corrosion, unlike the expansive rust seen in iron. On reactive
+      metals like aluminum, it develops swiftly upon air exposure, creating a durable
+      barrier; inert non-metals resist such bonding, showing minimal adherence. This
+      layer, often translucent and porous, impacts adhesion in coatings and welding.
+      Challenges arise in removal, as it embeds deeply, demanding precise laser ablation
+      to preserve substrate integrity.'
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -6440,13 +6440,13 @@ contamination_patterns:
         material appearance and properties.
     category: oxidation
     chemical_formula: Cu₂CO₃(OH)₂
-    description: '[Copper](../materials/copper.md) patina forms a distinctive green
-      oxidation layer on copper, setting it apart from broader rust patterns on iron
-      or aluminum. It arises from air and moisture exposure, building a tight, protective
-      film that contaminates by adhering unevenly. On reactive metals, it spreads
-      and bonds deeply, accelerating corrosion beneath. Inert metals resist buildup,
-      while non-metals show loose flaking and staining. This embedding poses cleaning
-      hurdles, as it clings to pores and risks surface etching during removal.'
+    description: '[Copper](../materials/copper.md) patina stands out from other oxidations
+      by forming a distinctive green layer on copper surfaces through prolonged air
+      and moisture exposure. This adherent film clings tightly to reactive metals,
+      accelerating corrosion beneath, while it spreads unevenly on inert non-metals,
+      creating patchy buildup. It resists simple removal, embedding into substrates
+      and complicating cleaning on delicate alloys without scratching or residue.
+      Laser methods strip it cleanly, restoring original luster.'
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -19901,12 +19901,14 @@ contamination_patterns:
     chemical_formula: CaCO₃ (calcium carbonate) or others
     context_notes: Common in plumbing, boilers, heat exchangers, and areas with water
       exposure
-    description: Scale-buildup appears as layered mineral deposits in water-exposed
-      systems like plumbing and boilers. Unlike loose dust or oils, it adheres firmly
-      and grows gradually through repeated moisture cycles, forming insulating barriers
-      that reduce efficiency. On reactive metals, its porous texture accelerates corrosion
-      and traps heat, while on inert non-metals, it blocks flow without deep penetration.
-      This persistence requires precise cleaning to restore surfaces and prevent damage.
+    description: Scale-buildup forms as adherent oxide layers from prolonged heat
+      exposure, differing from loose particulates or oily residues by its tenacious
+      bonding to surfaces. On reactive metals like [Iron](../materials/iron.md), it
+      creates thick, insulating coatings that promote further corrosion underneath,
+      while on inert non-metals such as ceramics, layers remain thinner and less disruptive.
+      Formation occurs gradually through oxidation, resulting in rough, porous structures.
+      This contamination hinders heat transfer on metals and invites cracking on non-metals,
+      so laser cleaning ablates it precisely without substrate damage.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
