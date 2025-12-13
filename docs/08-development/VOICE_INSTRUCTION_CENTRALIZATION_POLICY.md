@@ -16,7 +16,7 @@
 - ❌ Configuration files (`config.yaml`, domain-specific configs)
 - ❌ Shared templates outside persona directory
 
-**Single source of truth**: `shared/prompts/personas/*.yaml`
+**Single source of truth**: `shared/voice/profiles/*.yaml`
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## ✅ What IS Allowed
 
-### Persona Files (`shared/prompts/personas/*.yaml`)
+### Persona Files (`shared/voice/profiles/*.yaml`)
 **ONLY location for voice instructions:**
 - ✅ `core_voice_instruction` - Complete voice guidance
 - ✅ `tonal_restraint` - Tone and approach
@@ -99,7 +99,7 @@
 
 Before ANY content generation work:
 
-- [ ] **Personas**: All voice instructions in `shared/prompts/personas/*.yaml`
+- [ ] **Personas**: All voice instructions in `shared/voice/profiles/*.yaml`
 - [ ] **Domain prompts**: ONLY `{voice_instruction}` placeholder, no voice rules
 - [ ] **Generation code**: ONLY loads persona, no voice instructions
 - [ ] **Config files**: ONLY technical parameters, no voice guidance
@@ -177,7 +177,7 @@ File: `tests/test_voice_centralization_policy.py`
 - [ ] `grep -r "conversational tone" domains/*/prompts/*.txt` → No matches
 - [ ] `grep -r "MANDATORY VOICE" domains/*/prompts/*.txt` → No matches
 - [ ] `grep -r "active voice" domains/*/prompts/*.txt` → No matches
-- [ ] All voice guidance exists in `shared/prompts/personas/*.yaml`
+- [ ] All voice guidance exists in `shared/voice/profiles/*.yaml`
 
 ---
 
@@ -205,7 +205,7 @@ File: `tests/test_voice_centralization_policy.py`
 ## 🎓 Example: Correct Architecture
 
 ### Persona File (Source of Truth)
-`shared/prompts/personas/indonesia.yaml`:
+`shared/voice/profiles/indonesia.yaml`:
 ```yaml
 core_voice_instruction: |
   Write in conversational professional English: Use active voice (75%) with 

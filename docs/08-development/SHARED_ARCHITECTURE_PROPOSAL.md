@@ -30,10 +30,10 @@ parameters/          → Voice parameters (root level)
 - No clear pattern for adding new generation types (video, audio, etc.)
 
 ### 4. **Voice Architecture Split**
-- Voice personas: `shared/prompts/personas/`
-- Voice parameters: `parameters/voice/`
-- Voice detection: `postprocessing/detection/`
-- Voice validation: `postprocessing/evaluation/`
+- Voice personas: `shared/voice/profiles/` (current location)
+- Voice parameters: `parameters/voice/` (deprecated)
+- Voice detection: `postprocessing/detection/` (deprecated)
+- Voice validation: `postprocessing/evaluation/` (deprecated)
 
 ---
 
@@ -97,7 +97,7 @@ shared/
 │   └── weight_learner.py
 │
 ├── voice/                   # ALL voice (CONSOLIDATED)
-│   ├── personas/           # Voice definitions (EXISTS)
+│   ├── profiles/           # Voice definitions (CURRENT LOCATION)
 │   │   ├── indonesia.yaml
 │   │   ├── italy.yaml
 │   │   ├── taiwan.yaml
@@ -110,8 +110,7 @@ shared/
 │       └── vocabulary.py
 │
 ├── prompts/                 # Prompt templates (EXISTS)
-│   ├── personas/           # → MOVED to shared/voice/personas/
-│   └── templates/          # Shared prompt templates
+│   ├── templates/          # Shared prompt templates (domain templates in domains/)
 │
 ├── research/                # Research utilities (EXISTS)
 │   ├── gemini_researcher.py

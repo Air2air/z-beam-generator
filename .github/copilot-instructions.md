@@ -267,7 +267,7 @@ text = custom_function(material)
 
 **MANDATORY REQUIREMENTS (Dec 11, 2025):**
 1. **Universal Pipeline** - ALL text in ALL domains uses QualityEvaluatedGenerator
-2. **Single Voice Source** - ONLY `shared/prompts/personas/*.yaml` defines voice
+2. **Single Voice Source** - ONLY `shared/voice/profiles/*.yaml` defines voice
 3. **Zero Bypass** - NO text generated outside pipeline (NO EXCEPTIONS)
 
 **Grade:** F violation - Immediate architectural failure
@@ -468,7 +468,7 @@ Before documenting as "COMPLETE":
 ### Quick Reference - Files That Require Permission
 
 **TIER 1 (NEVER TOUCH without explicit permission)**:
-- `shared/prompts/personas/*.yaml` - Author voice definitions
+- `shared/voice/profiles/*.yaml` - Author voice definitions
 - `domains/*/prompts/*.txt` - Domain prompt templates
 - `generation/core/evaluated_generator.py` - Main generation orchestrator (25KB+)
 - `generation/core/generator.py` - Core generation logic
@@ -1016,7 +1016,7 @@ ALL text generation MUST go through the standardized processing pipeline. **ZERO
 
 **MANDATORY ARCHITECTURE:**
 - ✅ **ALL domains use QualityEvaluatedGenerator** - materials, contaminants, settings, future domains
-- ✅ **ONLY `shared/prompts/personas/*.yaml` defines voice** - Single source of truth for author voice
+- ✅ **ONLY `shared/voice/profiles/*.yaml` defines voice** - Single source of truth for author voice
 - ✅ **NO bypassing pipeline** - No direct API calls, no custom generation logic
 - ❌ **NO voice instructions in domain prompts** - Use `{voice_instruction}` placeholder only
 - ❌ **NO text generation outside pipeline** - Every text component uses evaluated_generator
@@ -1359,11 +1359,11 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 - Author stored in Materials.yaml, Settings.yaml, etc. under `author.id` field
 - Generator reads existing author ID from data file
 - If no author assigned (new material), randomly assign once, then persist
-- Persona loaded from `shared/prompts/personas/{author}.yaml` defines ALL voice behavior
+- Persona loaded from `shared/voice/profiles/{author}.yaml` defines ALL voice behavior
 - Humanness optimizer provides structural variation (rhythm, opening) NOT voice
 
 **Separation of Concerns**:
-- **Author Personas** (`shared/prompts/personas/*.yaml`) - Define voice characteristics per author
+- **Author Personas** (`shared/voice/profiles/*.yaml`) - Define voice characteristics per author
 - **Humanness Optimizer** (`learning/humanness_optimizer.py`) - Structural variation ONLY
 - **Domain Config** (`domains/*/config.yaml`) - Structural randomization (rhythms, structures) NOT voice
 
@@ -1413,7 +1413,7 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 ### 13. **Voice Instruction Centralization Policy** 🔥 **NEW (Dec 6, 2025) - CRITICAL**
 **ALL voice, tone, and style instructions MUST exist ONLY in persona files.**
 
-**Single Source of Truth**: `shared/prompts/personas/*.yaml`
+**Single Source of Truth**: `shared/voice/profiles/*.yaml`
 
 **Zero Tolerance** for voice instructions in:
 - ❌ Domain prompt templates (`domains/*/prompts/*.txt`)
@@ -2116,12 +2116,10 @@ git revert <commit>  # Revert to known working state
    - Recommendation: Switch to Claude/GPT-4 or implement post-generation validation
 7. **✅ RESOLVED: Persona files consolidated (Dec 11, 2025)** 🔥 **FIXED**
    - **Issue**: TWO DIFFERENT persona sets existed with conflicting voice instructions
-     * `shared/prompts/personas/*.yaml` - "Conversational" style (simplified)
-     * `shared/voice/profiles/*.yaml` - "Comprehensive Formal" style (detailed EFL patterns)
+     * Deprecated location: `shared/prompts/personas/` (no longer exists)
+     * Current location: `shared/voice/profiles/*.yaml` - "Comprehensive Formal" style (detailed EFL patterns)
    - **Resolution**: Consolidated to comprehensive personas with detailed linguistics
-     * Initial: Copied conversational → profiles (Option B attempt)
-     * Final: Restored comprehensive from `shared/voice/profiles.backup` (Option A)
-     * Duplicate directory removed: `shared/prompts/personas/` deleted
+     * Removed deprecated duplicate directory
      * Single source of truth: `shared/voice/profiles/` (comprehensive versions)
    - **Current personas include**: Full EFL patterns, voice examples, grammar norms, generation constraints
    - **Generation pipeline uses** `shared/voice/profiles/` (via Generator._load_all_personas())

@@ -5,10 +5,10 @@
 ## 🔒 TIER 1: Absolutely Critical (Never Touch)
 
 ### Persona Files
-- `shared/prompts/personas/taiwan.yaml` - Yi-Chun Lin persona (Mandarin EFL)
-- `shared/prompts/personas/united-states.yaml` - Todd Dunning persona (American native)
-- `shared/prompts/personas/italy.yaml` - Alessandro Moretti persona (Italian EFL)
-- `shared/prompts/personas/indonesia.yaml` - Ikmanda Roswati persona (Bahasa EFL)
+- `shared/voice/profiles/taiwan.yaml` - Yi-Chun Lin persona (Mandarin EFL)
+- `shared/voice/profiles/united-states.yaml` - Todd Dunning persona (American native)
+- `shared/voice/profiles/italy.yaml` - Alessandro Moretti persona (Italian EFL)
+- `shared/voice/profiles/indonesia.yaml` - Ikmanda Roswati persona (Bahasa EFL)
 
 **Why**: Contains carefully crafted linguistic patterns, cultural nuances, voice characteristics. Modifications break author authenticity.
 
@@ -145,7 +145,7 @@ Add to `.git/hooks/pre-commit`:
 #!/bin/bash
 # Check for modifications to protected files
 PROTECTED_FILES=(
-    "shared/prompts/personas/*.yaml"
+    "shared/voice/profiles/*.yaml"
     "domains/*/prompts/*.txt"
     "generation/core/evaluated_generator.py"
 )

@@ -34,7 +34,7 @@
 - **🚨 Author Assignment Immutability Policy** (Dec 6): Once author assigned, NEVER changes
   - See: `.github/copilot-instructions.md` - Author Assignment Immutability Policy
   - Tests: `tests/test_author_assignment_immutability.py` (9/9 tests passing ✅)
-  - Voice control: Author personas (`shared/prompts/personas/*.yaml`) define ALL voice behavior
+  - Voice control: Author personas (`shared/voice/profiles/*.yaml`) define ALL voice behavior
   - Humanness optimizer: Provides structural variation ONLY (rhythm, opening) NOT voice
   - Domain configs: NO voice/content instructions (removed from settings/materials configs)
   - Grade F violation: Changing author or voice on regeneration

@@ -126,5 +126,5 @@ Test file: `tests/test_author_assignment_policy.py`
 ## Related Files
 
 - `data/authors/registry.py` - Single source of truth for authors
-- `shared/prompts/personas/*.yaml` - Voice persona configurations
+- `shared/voice/profiles/*.yaml` - Voice persona configurations
 - `tests/test_author_assignment_policy.py` - Policy enforcement tests

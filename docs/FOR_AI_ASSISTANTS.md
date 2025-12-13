@@ -195,7 +195,7 @@ Understanding side effects:
 ## 🔒 Protected Files (Require Permission)
 
 **TIER 1 (NEVER TOUCH without explicit permission)**:
-- `shared/prompts/personas/*.yaml` - Author voice definitions
+- `shared/voice/profiles/*.yaml` - Author voice definitions
 - `domains/*/prompts/*.txt` - Domain prompt templates
 - `generation/core/evaluated_generator.py` - Main generation orchestrator (25KB+)
 - `generation/core/generator.py` - Core generation logic
