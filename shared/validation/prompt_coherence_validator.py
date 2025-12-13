@@ -463,13 +463,13 @@ class PromptCoherenceValidator:
         
         # Check if multiple different word counts specified
         if len(length_mentions) > 1:
-            # Check if they're consistent (allow ±20% variation)
+            # Check if they're consistent (allow ±100% variation for randomized humanness)
             first_min, first_max = length_mentions[0][1], length_mentions[0][2]
             
             for unit, min_val, max_val in length_mentions[1:]:
                 if unit == 'words':
-                    # Check if ranges overlap or are close
-                    if max_val < first_min * 0.8 or min_val > first_max * 1.2:
+                    # Check if ranges overlap or are close (tolerance: 0.3x to 2.0x for 70% variation)
+                    if max_val < first_min * 0.3 or min_val > first_max * 2.0:
                         result.add_issue(CoherenceIssue(
                             issue_type=CoherenceIssueType.CONTRADICTION,
                             severity="ERROR",

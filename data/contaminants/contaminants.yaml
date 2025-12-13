@@ -10,14 +10,13 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive-residue contamination occurs when sticky remnants from tapes
-      or glues cling to surfaces during manufacturing. This buildup differs from dust
-      or oil contaminants because it forms tenacious bonds, especially on plastics
-      and metals, and resists simple wiping. On metals, residue spreads thinly and
-      hardens, while on polymers, it embeds deeply so removal risks surface damage.
-      Challenges arise during cleaning, as solvents dissolve the adhesive but may
-      etch underlying materials, so gentle methods like abrasion apply carefully.
-      In observations, this pattern demands targeted treatments for effective decontamination.
+    description: Adhesive-residue contamination forms sticky layers from tape or glue
+      remnants, and it clings tenaciously to surfaces. Before removal attempts, buildup
+      resists wiping, so solvents often fail to dissolve it completely. Unlike dust
+      that brushes away easily or oils that evaporate under heat, this residue bonds
+      strongly to metals and plastics, causing uneven adhesion during cleaning. Challenges
+      arise because scraping damages substrates, so careful mechanical methods apply
+      in observations.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -2050,13 +2049,12 @@ contamination_patterns:
     - KOH
     - K₂CO₃
     - PbSO₄
-    description: Battery-corrosion contamination, it arises from electrolyte leaks
-      and forms irregular deposits on battery casings. This pattern differs from uniform
-      rust in pipes, where oxidation spreads evenly; here, it creates localized pits
-      and conductive films that accelerate short circuits. On metals, contamination
-      etches deeply and resists solvents, while on plastics, it softens surfaces thus
-      invites cracks. Removal challenges persist, as scrubbing damages seals, so gentle
-      wiping follows, yet residues still linger in crevices.
+    description: Battery-corrosion contamination forms via electrolyte reactions in
+      devices. This pattern, it penetrates electrodes deeply and accelerates under
+      electrical stress. Unlike atmospheric rust on steels, battery type resists oxidation
+      reversal and clings to alloys tightly. On metals like [Copper](../materials/copper.md),
+      it builds insulating films; on polymers, it induces cracking. Challenges in
+      removal follow, thus demands careful dissolution methods.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -10740,13 +10738,12 @@ contamination_patterns:
     - Enamel
     - Solvents
     - Pigments
-    description: Graffiti-paint contamination hits urban surfaces hard, spreading
-      quickly through aerosol application and bonding tightly to substrates like [Concrete](../materials/concrete.md)
-      or metal. Unlike dirt or rust that rinse away with basic pressure washing, this
-      paint penetrates porous materials deeply, forming a durable film that resists
-      standard cleaners. Removal demands specialized solvents to break it down without
-      etching the base, turning out a clean finish in most cases while addressing
-      the key challenge of color bleed on varied textures.
+    description: Graffiti paint stands out as a deliberate contaminant that bonds
+      aggressively to urban surfaces like [Concrete](../materials/concrete.md), metal,
+      and glass. Unlike natural dirt or bird droppings, it penetrates porous materials
+      deeply, while forming slick layers on smooth ones, making removal tricky. Teams
+      typically line up solvents or abrasives to strip it, yet it often leaves stains
+      that hold up against basic cleaning.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -11751,13 +11748,11 @@ contamination_patterns:
     - rule: NOT valid on decorative items, furniture, or non-machinery plastic parts
     - rule: Attracts dirt and grime (appears grimy, not just oily)
     context_required: true
-    description: Industrial-oil contamination, it manifests differently from particulate
-      residues, adhering tenaciously to metallic surfaces while penetrating porous
-      substrates like alloys. This persistence, influenced from prolonged exposure,
-      leads to challenges in removal, as solvents often fail to dislodge it completely,
-      unlike water-based contaminants that evaporate readily. On non-ferrous materials,
-      it exhibits greater viscosity, complicating mechanical cleaning, which demands
-      specialized techniques for effective restoration.
+    description: Industrial-oil contamination exhibits tenacious adhesion on metals,
+      which sets it apart from volatile solvents that dissipate quickly. This film,
+      it infiltrates porous substrates like [Rubber](../materials/rubber.md), manifesting
+      persistent films. Removal proves challenging, influenced from its greasy nature,
+      that resists aqueous washes and demands specialized degreasers for efficacy.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products

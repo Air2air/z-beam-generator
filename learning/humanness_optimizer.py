@@ -97,6 +97,7 @@ class HumannessOptimizer:
         """
         self.winston_db_path = winston_db_path
         self.structural_db_path = structural_db_path or 'data/winston_feedback.db'
+        self._current_variation = None  # Store randomized variation for access
         
         if patterns_file is None:
             self.patterns_file = Path('shared/text/templates/evaluation/learned_patterns.yaml')
@@ -553,10 +554,25 @@ class HumannessOptimizer:
             template = self.template_file.read_text(encoding='utf-8')
             logger.info(f"📝 Using humanness template for {component_type}")
         
-        # LENGTH: Now defined in domain prompts (Option B: Prompts Only)
-        # Humanness layer does NOT inject length - it would conflict with prompt's word count
-        selected_length_key = "FROM_PROMPT"
-        selected_length = "(See domain prompt for word count)"
+        # 🎲 RANDOMIZE WORD COUNT VARIATION (NEW - Dec 12, 2025)
+        # Base variation from config, then add randomization for each generation
+        # This creates unpredictable variation percentages (not just fixed ±50%)
+        base_variation = self.config.get('word_count_variation', 0.50)
+        
+        # Random adjustment: ±20% of base variation
+        # Examples: base 0.50 → range 0.40-0.60 (±40% to ±60%)
+        variation_adjustment = random.uniform(-0.20, 0.20) * base_variation
+        randomized_variation = base_variation + variation_adjustment
+        
+        # Clamp to reasonable bounds (20% to 100%)
+        randomized_variation = max(0.20, min(1.0, randomized_variation))
+        
+        variation_pct = int(randomized_variation * 100)
+        selected_length_key = "RANDOMIZED"
+        selected_length = f"±{variation_pct}% variation (base: ±{int(base_variation*100)}%, adjusted: {variation_adjustment:+.2f})"
+        
+        # Store randomized variation for prompt_builder to use
+        self._current_variation = randomized_variation
         
         # 🎲 RANDOMIZE STRUCTURAL APPROACH (from config)
         structure_config = self.config['randomization_targets']['structures']
@@ -846,6 +862,17 @@ NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUC
         
         patterns = self._pattern_learner.get_current_patterns()
         return patterns.get('total_evaluations', 0)
+    
+    def get_current_variation(self) -> float:
+        """
+        Get the randomized word count variation for current generation.
+        
+        Returns:
+            Current variation (0.0-1.0), or base from config if not yet randomized
+        """
+        if self._current_variation is not None:
+            return self._current_variation
+        return self.config.get('word_count_variation', 0.50)
 
 
 # Convenience function for standalone usage
