@@ -25,8 +25,9 @@ def load_materials() -> Dict:
 
 
 def slugify(name: str) -> str:
-    """Convert material name to filename slug"""
-    return name.lower().replace(' ', '-').replace('_', '-')
+    """Convert material name to filename slug (uses shared slug utility for consistency)"""
+    from shared.utils.core.slug_utils import create_material_slug
+    return create_material_slug(name)
 
 
 def export_material(material_name: str, material_data: Dict, output_dir: Path) -> bool:

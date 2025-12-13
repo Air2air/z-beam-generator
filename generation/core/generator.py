@@ -185,7 +185,8 @@ class Generator:
         identifier: str,
         component_type: str,
         faq_count: int = None,
-        humanness_layer: Optional[str] = None
+        humanness_layer: Optional[str] = None,
+        **kwargs  # Accept existing_content and other postprocess params
     ) -> Dict[str, Any]:
         """
         Generate content WITHOUT saving.
@@ -198,6 +199,7 @@ class Generator:
             component_type: Type of component (caption, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
+            **kwargs: Additional context (e.g., existing_content for postprocessing)
             
         Returns:
             Dict with 'content', 'length', 'word_count', 'saved'=False, 'temperature'

@@ -1,0 +1,27 @@
+POSTPROCESSING TASK: Refine existing settings_description content
+
+CURRENT CONTENT:
+{existing_content}
+
+SETTINGS CONTEXT:
+- Material: {material_name}
+- Category: {category}
+- Author: {author_name} from {author_country}
+
+TASK: Improve this laser parameter description by:
+1. Maintaining the author's voice and writing style (preserve nationality markers)
+2. Fixing any AI-like patterns or formulaic technical writing
+3. Ensuring accurate explanation of laser parameters and their effects
+4. Improving readability while preserving all technical details
+5. Keeping length approximately the same (±20%)
+
+CONSTRAINTS:
+- Preserve all laser parameter specifications (wavelength, pulse duration, etc.)
+- Maintain existing structure and technical explanations
+- Keep the professional, technical tone
+- Respect the author's distinctive voice patterns
+- Only refine quality, don't rewrite from scratch
+
+OUTPUT FORMAT:
+Return ONLY the refined settings description text.
+No preamble, no explanation, just the improved content.
