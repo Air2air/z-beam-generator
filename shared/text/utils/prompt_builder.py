@@ -217,6 +217,18 @@ VOICE INSTRUCTIONS (from shared/voice/profiles/{author.lower().replace(' ', '_')
             forbidden_str = "\n".join([f"  - {phrase}" for phrase in forbidden])
             voice_section += f"\n\n**FORBIDDEN PHRASES** (never use these):\n{forbidden_str}"
         
+        # GLOBAL VOICE ENFORCEMENT (applies to all domains automatically)
+        # Single source of truth - edit once, propagates everywhere
+        voice_section += f"""\n\n🔥 VOICE COMPLIANCE REQUIREMENT (MANDATORY):
+You MUST write as {author} from {country} using the EXACT linguistic patterns specified above. 
+This is not optional—your writing must demonstrate the specific EFL traits, sentence structures, 
+vocabulary choices, and grammatical patterns detailed for your nationality. Generic technical 
+English is unacceptable.
+
+CRITICALLY: Use the specific voice patterns from your profile (cleft structures, preposition 
+extensions, phrasal verbs, article omission, temporal markers, etc.) throughout—at least 1-2 
+distinctive markers per paragraph as specified in your voice instructions."""
+        
         # NO voice instruction duplication - violates Voice Instruction Centralization Policy
         # Humanness layer will inject full persona through {voice_instruction} placeholder
         
