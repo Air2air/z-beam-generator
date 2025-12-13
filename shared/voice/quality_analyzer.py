@@ -113,6 +113,36 @@ class QualityAnalyzer:
         """
         logger.debug(f"Analyzing text quality ({len(text)} chars)")
         
+        # 0. MINIMUM LENGTH CHECK - Content too short to evaluate properly
+        MIN_CONTENT_LENGTH = 150  # Minimum chars for meaningful content
+        if len(text) < MIN_CONTENT_LENGTH:
+            return {
+                'overall_score': 0.0,  # Auto-fail short content
+                'ai_patterns': {
+                    'score': 0.0,
+                    'is_ai_like': False,
+                    'issues': [f'Content too short: {len(text)} chars < {MIN_CONTENT_LENGTH} minimum'],
+                    'details': {}
+                },
+                'voice_authenticity': {
+                    'score': 0.0,
+                    'language': 'unknown',
+                    'linguistic_patterns': {},
+                    'issues': ['Content too short for voice analysis']
+                },
+                'structural_quality': {
+                    'sentence_variation': 0.0,
+                    'rhythm_score': 0.0,
+                    'complexity_variation': 0.0,
+                    'sentence_count': len([s for s in text.split('.') if s.strip()])
+                },
+                'recommendations': [
+                    f'Content is only {len(text)} characters (minimum: {MIN_CONTENT_LENGTH})',
+                    'Generate proper material_description content',
+                    'Content appears to be placeholder or title text'
+                ]
+            }
+        
         # 1. AI Pattern Detection
         ai_result = self.ai_detector.detect_ai_patterns(text)
         

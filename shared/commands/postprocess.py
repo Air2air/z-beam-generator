@@ -376,8 +376,12 @@ class PostprocessCommand:
         
         # Use pipeline's threshold (70/100 is typical quality gate)
         QUALITY_THRESHOLD = 70
+        MIN_CONTENT_LENGTH = 150  # Minimum characters for acceptable content
         
-        if quality_analysis['overall_score'] >= QUALITY_THRESHOLD:
+        # Check minimum length first
+        if len(existing_content) < MIN_CONTENT_LENGTH:
+            print(f"\n⚠️  Content too short ({len(existing_content)} chars < {MIN_CONTENT_LENGTH} minimum) - regenerating...")
+        elif quality_analysis['overall_score'] >= QUALITY_THRESHOLD:
             print(f"\n✅ Content meets quality threshold ({QUALITY_THRESHOLD}/100) - keeping original")
             return {
                 'item': item_name,
@@ -432,7 +436,7 @@ class PostprocessCommand:
             
             # Check new quality
             new_ai_patterns = self._detect_ai_patterns(new_content)
-            new_readability = self.phrase_validator.validate(new_content)
+            new_readability = self._check_readability(new_content)
             
             print(f"🔍 New quality:")
             print(f"   • Readability: {new_readability.get('status', 'unknown')}")
