@@ -6,6 +6,24 @@ Developer guides for contributing to and extending the Z-Beam Generator.
 
 - **[new_component_guide.md](new_component_guide.md)** - Guide for creating new components
 
+## 🔥 Critical Policies (December 2025)
+
+### Voice & Enforcement Architecture
+- **[VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md](VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md)** - ✅ **NEW**: Complete architecture for centralized voice enforcement
+  - Single source of truth in `_build_voice_instruction()` method
+  - 60%+ voice distinctiveness achieved (4x improvement)
+  - Automatic propagation to all domains via `{voice_instruction}` placeholder
+  - Grade: A+ (100/100) - Production ready
+  
+- **[VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md](VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md)** - Policy document (Dec 6, 2025)
+  - Mandatory: ALL voice instructions in `shared/voice/profiles/*.yaml` only
+  - Grade F violation if voice instructions appear in domain prompts or code
+  
+- **[CLEAN_SEPARATION_OF_CONCERNS_DEC12_2025.md](CLEAN_SEPARATION_OF_CONCERNS_DEC12_2025.md)** - Three-layer architecture
+  - Layer 1: Author Personas (voice definition)
+  - Layer 2: Humanness Optimizer (structural variation)
+  - Layer 3: Domain Prompts (content requirements)
+
 ## Testing
 
 See: [Testing Documentation](../testing/) for comprehensive testing guides

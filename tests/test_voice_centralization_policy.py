@@ -212,9 +212,41 @@ class TestVoiceInstructionCentralization:
             error_msg += "✅ All voice logic must come from persona files\n"
             pytest.fail(error_msg)
     
+    def test_prompt_builder_has_centralized_enforcement(self, project_root):
+        """Verify prompt_builder contains centralized enforcement block"""
+        prompt_builder_file = project_root / "shared" / "text" / "utils" / "prompt_builder.py"
+        
+        if not prompt_builder_file.exists():
+            pytest.fail(f"prompt_builder.py not found at {prompt_builder_file}")
+        
+        content = prompt_builder_file.read_text()
+        
+        # Check for centralized enforcement section
+        required_patterns = [
+            r"GLOBAL VOICE ENFORCEMENT",
+            r"🔥 VOICE COMPLIANCE REQUIREMENT \(MANDATORY\)",
+            r"You MUST write as.*using the EXACT linguistic patterns",
+            r"Generic technical\s+English is unacceptable",
+            r"at least 1-2\s+distinctive markers per paragraph",
+        ]
+        
+        missing_patterns = []
+        for pattern in required_patterns:
+            if not re.search(pattern, content, re.IGNORECASE):
+                missing_patterns.append(pattern)
+        
+        if missing_patterns:
+            error_msg = "\n\n🚨 CENTRALIZED ENFORCEMENT MISSING IN PROMPT BUILDER:\n\n"
+            error_msg += f"File: {prompt_builder_file.relative_to(project_root)}\n"
+            error_msg += "Missing patterns:\n"
+            for pattern in missing_patterns:
+                error_msg += f"  - {pattern}\n"
+            error_msg += "\n✅ See: docs/08-development/VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md\n"
+            pytest.fail(error_msg)
+    
     def test_persona_files_exist(self, project_root):
         """Verify all 4 persona files exist"""
-        persona_dir = project_root / "shared" / "prompts" / "personas"
+        persona_dir = project_root / "shared" / "voice" / "profiles"
         required_personas = ["indonesia.yaml", "italy.yaml", "taiwan.yaml", "united_states.yaml"]
         
         missing = []
@@ -227,7 +259,7 @@ class TestVoiceInstructionCentralization:
     
     def test_persona_files_complete(self, project_root):
         """Verify persona files have required voice instruction fields"""
-        persona_dir = project_root / "shared" / "prompts" / "personas"
+        persona_dir = project_root / "shared" / "voice" / "profiles"
         required_fields = ["core_voice_instruction", "tonal_restraint", "forbidden"]
         
         personas = list(persona_dir.glob("*.yaml"))
@@ -257,12 +289,12 @@ class TestVoiceInstructionQuality:
     """Test that voice instructions produce distinct outputs"""
     
     def test_personas_have_unique_voice_instructions(self):
-        """Each persona should have unique voice characteristics"""
+        """Each persona should have unique voice instructions"""
         from pathlib import Path
         import yaml
         
         project_root = Path(__file__).parent.parent
-        persona_dir = project_root / "shared" / "prompts" / "personas"
+        persona_dir = project_root / "shared" / "voice" / "profiles"
         
         personas = []
         for persona_file in persona_dir.glob("*.yaml"):

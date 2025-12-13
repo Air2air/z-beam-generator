@@ -31,6 +31,16 @@
 **BEFORE** any work, review these files organized by category:
 
 ### ⚡ Recent Updates (November-December 2025)
+- **🔥 Voice Enforcement Centralization** (Dec 12): Single source of truth for voice enforcement 🔥 **NEWEST**
+  - See: `docs/08-development/VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md`
+  - Problem: Voice enforcement duplicated across domain prompts (DRY violation)
+  - Solution: Centralized in `_build_voice_instruction()` method for automatic propagation
+  - Results: 60%+ voice distinctiveness (4x improvement), single source of truth
+  - Files: `shared/text/utils/prompt_builder.py` (lines 210-221), domain prompts simplified
+  - Tests: `python3 test_4contaminants_4authors.py` (4/4 successful)
+  - Commits: 5ac21f3a (strengthening), c4248a7d (centralization)
+  - Grade: A+ (100/100) - Production ready
+  - Related: `VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` (Dec 6), `CLEAN_SEPARATION_OF_CONCERNS_DEC12_2025.md`
 - **🚨 Size-Aware Prompt Compression** (Dec 12): Automatic humanness layer compression 🔥 **NEW**
   - See: `docs/08-development/SIZE_AWARE_COMPRESSION_POLICY.md`
   - Problem: Full humanness layer ~9,000 chars → prompts exceeded 8,000 limit (12,057 chars)

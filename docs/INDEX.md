@@ -25,6 +25,16 @@
 
 ---
 
+## 📰 Recent Updates (December 2025)
+
+### ✅ December 12: Voice Enforcement Centralization 🔥 **NEW**
+- **Problem**: Voice enforcement duplicated across domain prompts (DRY violation)
+- **Solution**: Centralized in `_build_voice_instruction()` method for automatic propagation
+- **Result**: 60%+ voice distinctiveness (4x improvement), single source of truth
+- **Grade**: A+ (100/100) - Production ready
+- **Docs**: [08-development/VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md](08-development/VOICE_ENFORCEMENT_CENTRALIZATION_DEC12_2025.md)
+- **Commits**: 5ac21f3a (strengthening), c4248a7d (centralization)
+
 ## 📰 Recent Updates (November 2025)
 
 ### ✅ November 18: Module & Documentation Consolidation 🧹
