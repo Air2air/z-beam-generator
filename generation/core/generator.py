@@ -545,19 +545,41 @@ class Generator:
         except Exception as e:
             raise ValueError(f"Content extraction failed: {e}")
         
-        # Add sparse cross-links (NEW - Dec 11, 2025)
-        # Only for string content (not micro dict or FAQ list)
-        if isinstance(content, str) and len(content) > 100:
-            try:
-                self.logger.info("🔗 Adding cross-links...")
+        # Add sparse cross-links (UPDATED - Dec 14, 2025)
+        # Apply to all text fields: strings, dicts (micro), and lists (FAQ)
+        try:
+            self.logger.info("🔗 Adding cross-links...")
+            
+            if isinstance(content, str) and len(content) > 50:
+                # String content (material_description, description, etc.)
                 content = self.link_builder.add_links(
                     content=content,
                     current_item=identifier,
                     domain=self.domain
                 )
-                self.logger.info("✅ Cross-linking complete")
-            except Exception as e:
-                self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
+            elif isinstance(content, dict):
+                # Dict content (micro with before/after)
+                for key, value in content.items():
+                    if isinstance(value, str) and len(value) > 50:
+                        content[key] = self.link_builder.add_links(
+                            content=value,
+                            current_item=identifier,
+                            domain=self.domain
+                        )
+            elif isinstance(content, list):
+                # List content (FAQ with Q&A pairs)
+                for item in content:
+                    if isinstance(item, dict) and 'answer' in item:
+                        if isinstance(item['answer'], str) and len(item['answer']) > 50:
+                            item['answer'] = self.link_builder.add_links(
+                                content=item['answer'],
+                                current_item=identifier,
+                                domain=self.domain
+                            )
+            
+            self.logger.info("✅ Cross-linking complete")
+        except Exception as e:
+            self.logger.warning(f"⚠️  Cross-linking failed: {e} (continuing without links)")
         
         # Calculate word count (handle both string and dict content)
         if isinstance(content, dict):

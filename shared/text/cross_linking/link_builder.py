@@ -180,31 +180,30 @@ class CrossLinkBuilder:
         # Track what we've already linked to avoid duplicates
         linked_items: Set[str] = set()
         
-        # Find material mentions (if not in materials domain or if cross-domain linking)
-        if domain != 'materials':
-            material_mentions = self._find_material_mentions(content, exclude=current_item)
-            
-            for material_name, position in material_mentions[:max_links]:
-                if links_added >= max_links:
-                    break
-                
-                if material_name in linked_items:
-                    continue
-                
-                # Create link
-                slug = self._make_slug(material_name)
-                link_path = f"../materials/{slug}.md"
-                
-                # Replace first occurrence only
-                pattern = re.compile(r'\b' + re.escape(material_name) + r'\b', re.IGNORECASE)
-                modified_content = pattern.sub(f"[{material_name}]({link_path})", modified_content, count=1)
-                
-                linked_items.add(material_name)
-                links_added += 1
-                logger.debug(f"Added link: {material_name} → {link_path}")
+        # Find material mentions (allow all domains, exclude current item only)
+        material_mentions = self._find_material_mentions(content, exclude=current_item)
         
-        # Find contaminant mentions (if not in contaminants domain)
-        if domain != 'contaminants' and links_added < max_links:
+        for material_name, position in material_mentions[:max_links]:
+            if links_added >= max_links:
+                break
+            
+            if material_name in linked_items:
+                continue
+            
+            # Create link
+            slug = self._make_slug(material_name)
+            link_path = f"../materials/{slug}.md"
+            
+            # Replace first occurrence only
+            pattern = re.compile(r'\b' + re.escape(material_name) + r'\b', re.IGNORECASE)
+            modified_content = pattern.sub(f"[{material_name}]({link_path})", modified_content, count=1)
+            
+            linked_items.add(material_name)
+            links_added += 1
+            logger.debug(f"Added link: {material_name} → {link_path}")
+        
+        # Find contaminant mentions (allow all domains, exclude current item only)
+        if links_added < max_links:
             contaminant_mentions = self._find_contaminant_mentions(content, exclude=current_item)
             
             for contaminant_name, pattern_id, position in contaminant_mentions:
