@@ -6,10 +6,10 @@ Added emphasis to ALL text context prompts across all 3 domains to focus on **un
 
 ## Change Summary
 
-**Files Updated:** 16 total prompt files
-- Materials domain: 6 files
-- Contaminants domain: 7 files
-- Settings domain: 3 files
+**Files Updated:** 8 total prompt files (8 postprocess prompts removed Dec 13, 2025)
+- Materials domain: 3 files
+- Contaminants domain: 4 files
+- Settings domain: 1 file
 
 ## Emphasis Added
 
@@ -33,7 +33,7 @@ unknown properties and behaviors can be researched to add interest.
 
 ## Files Updated
 
-### Materials Domain (6 files)
+### Materials Domain (3 files)
 
 **Generation Prompts:**
 1. `domains/materials/prompts/material_description.txt`
@@ -49,19 +49,11 @@ unknown properties and behaviors can be researched to add interest.
    - Material-specific unique characteristics
 
 **Postprocessing Prompts:**
-4. `domains/materials/prompts/postprocess_material_description.txt`
-   - Refinement of technical subtitles
-   - Enhance unique property emphasis
+~~4-6. Postprocess prompts (removed Dec 13, 2025)~~
+   - System regenerates from scratch using original prompts, not refinement prompts
+   - No specialized postprocess templates needed
 
-5. `domains/materials/prompts/postprocess_micro.txt`
-   - Refinement of microscopic descriptions
-   - Preserve unique visual details
-
-6. `domains/materials/prompts/postprocess_faq.txt`
-   - Refinement of FAQ content
-   - Maintain material-specific uniqueness
-
-### Contaminants Domain (7 files)
+### Contaminants Domain (4 files)
 
 **Generation Prompts:**
 1. `domains/contaminants/prompts/description.txt`
@@ -81,19 +73,11 @@ unknown properties and behaviors can be researched to add interest.
    - Primary unique removal challenge
 
 **Postprocessing Prompts:**
-5. `domains/contaminants/prompts/postprocess_description.txt`
-   - Refinement of contamination descriptions
-   - Enhance unique behavior emphasis
+~~5-7. Postprocess prompts (removed Dec 13, 2025)~~
+   - System regenerates from scratch using original prompts, not refinement prompts
+   - No specialized postprocess templates needed
 
-6. `domains/contaminants/prompts/postprocess_micro.txt`
-   - Refinement of microscopic descriptions
-   - Preserve unique contamination patterns
-
-7. `domains/contaminants/prompts/postprocess_faq.txt`
-   - Refinement of FAQ content
-   - Maintain contaminant-specific uniqueness
-
-### Settings Domain (3 files)
+### Settings Domain (1 file)
 
 **Generation Prompts:**
 1. `domains/settings/prompts/settings_description.txt`
@@ -101,13 +85,9 @@ unknown properties and behaviors can be researched to add interest.
    - Unique material properties affecting parameters
 
 **Postprocessing Prompts:**
-2. `domains/settings/prompts/postprocess_settings_description.txt`
-   - Refinement of settings descriptions
-   - Enhance unique parameter effects
-
-3. `domains/settings/prompts/postprocess_material_challenges.txt`
-   - Refinement of material challenges
-   - Emphasize unique challenge characteristics
+~~2-3. Postprocess prompts (removed Dec 13, 2025)~~
+   - System regenerates from scratch using original prompts, not refinement prompts
+   - No specialized postprocess templates needed
 
 ## Implementation Details
 

@@ -7,24 +7,20 @@
 
 ## 📋 **WHAT WAS BUILT**
 
-### 1. Postprocess Prompt Templates (8 files)
-Created category-specific prompts for refining existing content:
+### 1. Postprocessing Architecture
+**Regeneration Strategy**: When content quality is below 60/100 threshold, the system performs a **complete regeneration from scratch** using the original domain prompt templates.
 
-**Materials Domain:**
-- `domains/materials/prompts/postprocess_material_description.txt`
-- `domains/materials/prompts/postprocess_micro.txt`
-- `domains/materials/prompts/postprocess_faq.txt`
+**Original Domain Prompts Used** (NOT refinement prompts):
+- `domains/materials/prompts/material_description.txt`
+- `domains/materials/prompts/micro.txt`
+- `domains/materials/prompts/faq.txt`
+- `domains/contaminants/prompts/description.txt`
+- `domains/contaminants/prompts/micro.txt`
+- `domains/contaminants/prompts/faq.txt`
+- `domains/settings/prompts/settings_description.txt`
+- `domains/settings/prompts/material_challenges.txt`
 
-**Contaminants Domain:**
-- `domains/contaminants/prompts/postprocess_description.txt`
-- `domains/contaminants/prompts/postprocess_micro.txt`
-- `domains/contaminants/prompts/postprocess_faq.txt`
-
-**Settings Domain:**
-- `domains/settings/prompts/postprocess_settings_description.txt`
-- `domains/settings/prompts/postprocess_material_challenges.txt`
-
-**Note**: Postprocessing does NOT use these prompt files. When content fails quality validation, the system regenerates from scratch using the original domain prompt template (e.g., `domains/materials/prompts/material_description.txt`), not a postprocessing refinement prompt.
+**Design Decision**: The system does NOT use specialized "postprocess refinement" prompts. Instead, it treats low-quality content as if it never existed and generates completely fresh content using the same pipeline as initial generation. This ensures consistency and leverages the full learning system (sweet spot parameters, learned weights, validation correlation).
 
 ---
 
