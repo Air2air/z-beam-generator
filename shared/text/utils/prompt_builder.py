@@ -335,14 +335,14 @@ distinctive markers per paragraph as specified in your voice instructions."""
         if length is None:
             length = spec.default_length if spec else 100
         
-        # Option C: Add ±30% randomization to length for natural variation
+        # Option C: Add ±80% randomization to length for natural variation
         # Use material name hash as seed for consistent but varied results per material
         if variation_seed is None:
             # Generate seed from topic name for per-material consistency
             variation_seed = hash(topic) % (2**31)
         
         random.seed(variation_seed)
-        variation_factor = random.uniform(0.7, 1.3)  # ±30% (increased from ±20%)
+        variation_factor = random.uniform(0.2, 1.8)  # ±80% range (0.2 = -80%, 1.8 = +80%)
         length = int(length * variation_factor)
         logger.debug(f"Length randomization: base × {variation_factor:.2f} = {length} words (seed={variation_seed})")
         

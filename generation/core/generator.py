@@ -526,7 +526,7 @@ class Generator:
         try:
             request = GenerationRequest(
                 prompt=prompt,
-                max_tokens=params['max_tokens'],
+                max_tokens=4096,  # Large limit to allow natural completion (Grok max context)
                 temperature=params['temperature'],
                 **params.get('api_penalties', {})
             )
