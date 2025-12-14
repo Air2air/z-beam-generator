@@ -72,12 +72,26 @@ class PostprocessCommand:
         self.generator.generator = domain_generator
     
     def _load_frontmatter(self, item_name: str) -> Dict[str, Any]:
-        """Load frontmatter YAML file for item"""
+        """Load frontmatter YAML file for item using domain config pattern"""
         frontmatter_dir = f"frontmatter/{self.domain}"
         
-        # Find the frontmatter file (slug-based naming)
+        # Get filename pattern from domain config
+        from generation.core.adapters.domain_adapter import DomainAdapter
+        try:
+            adapter = DomainAdapter(self.domain)
+            pattern = adapter.config.get('frontmatter_filename_pattern', '{slug}.yaml')
+        except:
+            pattern = '{slug}.yaml'
+        
+        # Create slug (remove parentheses for consistency)
         slug = item_name.lower().replace(' ', '-').replace('(', '').replace(')', '')
-        yaml_file = f"{frontmatter_dir}/{slug}.yaml"
+        while '--' in slug:
+            slug = slug.replace('--', '-')
+        slug = slug.strip('-')
+        
+        # Apply pattern
+        filename = pattern.format(slug=slug)
+        yaml_file = f"{frontmatter_dir}/{filename}"
         
         if not os.path.exists(yaml_file):
             # Try alternative naming patterns

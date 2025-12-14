@@ -10,12 +10,12 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive residue forms tenacious films. It clings to metals and plastics
-      so surfaces show persistent tackiness. After exposure, residue hardens and resists
-      solvents because bonds hold firmly. Unlike dust that brushes away or oils that
-      evaporate, this contamination demands gentle cleaning. Scraping risks damage,
-      so methods apply carefully. In observations, it differs from water-based stains
-      that rinse off readily.
+    description: Adhesive-residue contamination forms during shipping or labeling
+      processes, and clings tenaciously to metals and plastics. Unlike dust that brushes
+      away easily or oils that evaporate quickly, layer hardens over time so tackiness
+      persists after exposure. During cleaning, bonds resist solvents, so gentle methods
+      apply to prevent surface damage. Buildup is observed as sticky films, distinct
+      because it demands careful removal without scratching.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -330,7 +330,13 @@ contamination_patterns:
     - Chlorophyll
     - Polysaccharides
     - Minerals
-    description: Photosynthetic organism colonization on outdoor surfaces
+    description: This algae-growth contamination, it manifests as a tenacious photosynthetic
+      layer on outdoor surfaces, which thrives under light exposure to form vibrant
+      green patinas that penetrate porous materials like stone and [Concrete](../materials/concrete.md).
+      On metals, the organisms adhere resiliently, influenced from moisture cycles,
+      exhibiting rapid regrowth unlike fungal biofilms or bacterial slimes that yield
+      easily to abrasion. It seems that targeted biocides prove essential for clearance,
+      given this persistence.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
@@ -603,14 +609,12 @@ contamination_patterns:
         appearance and properties.
     category: oxidation
     chemical_formula: Al₂O₃
-    description: '[Aluminum](../materials/aluminum.md) oxidation stands out among
-      contaminants for its self-limiting nature, forming a thin, adherent layer that
-      halts further corrosion, unlike the expansive rust seen in iron. On reactive
-      metals like aluminum, it develops swiftly upon air exposure, creating a durable
-      barrier; inert non-metals resist such bonding, showing minimal adherence. This
-      layer, often translucent and porous, impacts adhesion in coatings and welding.
-      Challenges arise in removal, as it embeds deeply, demanding precise laser ablation
-      to preserve substrate integrity.'
+    description: '[Aluminum](../materials/aluminum.md) oxidation contamination forms
+      thin layer already upon air exposure. This layer adheres tenaciously and halts
+      deeper corrosion thus. Unlike expansive rust on iron, oxide remains compact
+      and non-flaking, so protects substrate durably. Porous structure embeds particles
+      deeply and resists removal on alloys. Cleaning challenges persist, yet surface
+      integrity enhances long-term.'
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -854,7 +858,12 @@ contamination_patterns:
     - Fe₃O₄
     - FeO
     - Cr₂O₃
-    description: Thick oxide layer from annealing and heat treatment processes
+    description: In practice, annealing-scale forms a thick oxide layer on steels
+      and alloys during heat treatment, digging in deeper than surface rust or mill
+      scale ever does. It clings tenaciously, resisting mild cleaners that handle
+      those lighter contaminants easily. Blasting removes it effectively, but pickling
+      drags without etching the base. Turns out, this beast alters surface conductivity
+      uniquely, ramping up cleaning headaches overall.
     laser_properties:
       laser_parameters:
         beam_profile: flat_top
