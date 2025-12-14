@@ -189,7 +189,7 @@ class EnhancedAIDetector:
         if self.winston:
             try:
                 winston_result = self.winston.check_text(text)
-                winston_score = winston_result.get('human_score', 0) * 100
+                winston_score = winston_result.get('human_score', 0)  # Already 0-100 range
                 scores['winston'] = winston_score
                 
                 # STRICT THRESHOLD: 69% minimum (per copilot-instructions.md)

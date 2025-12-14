@@ -4311,10 +4311,10 @@ materials:
         could warp delicate parts due to its solid heat spreading. Adjust by slowing
         the scan speed and adding passes, which clears tarnish cleanly without scratching
         the finish.
-    material_description: Brass differs from other non-ferrous metals because high
-      reflectivity reduces laser energy absorption during cleaning. So, contaminants
-      remove selectively on surfaces, and substrate avoids thermal damage, while corrosion
-      resistance maintains durability in marine or plumbing applications after treatment.
+    material_description: After laser cleaning, brass surface removes contaminants
+      effectively and preserves underlying structure because of its high reflectivity.
+      This unique property sets brass apart from other non-ferrous metals, so treatment
+      avoids excessive heat absorption during exposure.
     contamination:
       valid:
       - copper_patina
@@ -5338,12 +5338,13 @@ materials:
         mid-process for uneven patina removal—it can fade historical value—so adjust
         scans slower and use multiple light passes to lift dirt without erasing the
         alloy's natural shield.
-    material_description: Bronze, this non-ferrous metal, it exhibits tenacious oxidation
-      resistance that distinguishes it from ferrous counterparts, enabling laser cleaning
-      to remove contaminants from art and architectural surfaces with minimal substrate
-      alteration. The material's inherent durability, influenced from environmental
-      exposure, persists under laser action, which demonstrates practical benefits
-      in preserving historical monuments and marine elements.
+    material_description: Bronze, it stands distinct from ferrous alloys by its inherent
+      corrosion resistance, which manifests tenaciously in marine and architectural
+      exposures, thereby enabling laser cleaning to selectively ablate surface contaminants
+      without undermining the substrate's integrity. This protective patina, that
+      develops naturally and shields the material from further degradation, yields
+      practical benefits in preserving intricate details of sculptures and monuments
+      during restoration processes.
     contamination:
       valid:
       - copper_patina
@@ -23795,11 +23796,10 @@ materials:
         cleaning uncovers a durable base without extra damage risks. We typically
         use multiple light passes for even removal. Watch out at the end—overdo the
         power, and you risk surface cracks from thermal stress.
-    material_description: Nickel delivers a standout edge in laser cleaning through
-      its robust thermal shock resistance, which lets operators ramp up pulse intensities
-      without risking cracks or warping on delicate surfaces. This sets it apart from
-      more brittle metals by ensuring a clean, precise removal of contaminants while
-      maintaining tight tolerances in demanding fields like aerospace and electronics.
+    material_description: Nickel delivers a standout edge in laser cleaning thanks
+      to its robust corrosion resistance and thermal shock handling. Engineers line
+      it up for tough jobs like aerospace parts, where it wraps up sessions with a
+      clean finish and minimal degradation—unlike softer metals that warp under heat.
     contamination:
       valid:
       - industrial_oil
@@ -47634,10 +47634,11 @@ materials:
         This keeps the surface cool and removes grime without melting. But watch the
         heat buildup mid-process—it spreads fast because zinc conducts well. Adjust
         overlap to stay safe, and you'll get a smooth finish every time.
-    material_description: Zinc applies in laser cleaning for galvanized surfaces in
-      construction and automotive uses. High reflectivity limits energy uptake, so
-      ablation risks melting at low heat. Process cleans oxides effectively, yet demands
-      controlled pulses to avoid damage.
+    material_description: Zinc for laser cleaning, it stands out with high reflectivity
+      that bounces back laser energy mostly, and thus shields underlying layers from
+      overheating unlike more absorptive metals. After treatment, surface already
+      exhibits smoothness without residue buildup, so process yields clean results
+      quickly in galvanizing or automotive uses.
     contamination:
       valid:
       - industrial_oil

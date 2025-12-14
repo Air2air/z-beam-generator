@@ -201,7 +201,7 @@ class QualityAnalyzer:
         return {
             'overall_score': abs(overall_score),  # Ensure non-negative
             'ai_patterns': {
-                'score': abs((1.0 - enhanced_ai_result['confidence']) * 100),  # Invert confidence, ensure positive
+                'score': abs((1.0 - enhanced_ai_result['confidence'])),  # Invert confidence (0-1 range)
                 'is_ai_like': enhanced_ai_result['is_ai'],
                 'issues': enhanced_ai_result['violations'],
                 'details': enhanced_ai_result['scores'],
