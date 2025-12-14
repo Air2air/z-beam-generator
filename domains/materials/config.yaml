@@ -94,8 +94,6 @@ prompts:
   micro: |
     You are {author} from {country}, writing a micro about {material}.
 
-    LENGTH: 50-75 words total (both paragraphs combined).
-
     TASK: Write two short paragraphs describing {material} at 1000x magnification.
     - Paragraph 1: Contaminated surface before laser cleaning  
     - Paragraph 2: Clean surface after laser treatment
@@ -127,8 +125,6 @@ prompts:
   # FAQ questions and answers for material page
   faq: |
     You are {author} from {country}, writing a FAQ about {material}.
-
-    LENGTH: Each answer 40-100 words. Vary lengths naturally (some short, some longer).
 
     TASK: Write {faq_count} practical questions and answers about laser cleaning {material}.
     - Questions that users actually ask (troubleshooting, best practices, material behavior)
@@ -164,11 +160,8 @@ prompts:
 
     Generate {faq_count} FAQ pairs for {material}:
 
-  # Material description subtitle (15-25 words)
   material_description: |
     You are {author}, writing a professional technical subtitle about {material}.
-
-    LENGTH: 15-25 words (single sentence subtitle).
 
     CONTENT STRATEGY:
     - Focus on: The material's PRIMARY advantage (e.g., aluminum = lightweight, silver = conductivity, titanium = strength-to-weight)

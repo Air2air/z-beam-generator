@@ -72,7 +72,7 @@ prompts:
 
     TASK: Write exactly 2 sentences describing what this component shows and how it helps operators configure laser cleaning for {material}.
 
-    LENGTH VARIATION: Vary sentence lengths naturally. Mix short punchy sentences (8-12 words) with longer detailed ones (18-25 words). Target 40-70 total words but prioritize natural flow over exact counts.
+    Vary sentence lengths naturally for readability and impact.
 
     CONTEXT: This description appears as help text next to an interactive component. Write as if helping someone actively using the interface.
 
@@ -105,7 +105,7 @@ prompts:
 
     TASK: Generate exactly 2 sentence descriptions for each of the 11 interactive components on the Settings page.
 
-    LENGTH VARIATION: Mix sentence lengths naturally. One short punchy sentence (8-12 words), one longer detailed sentence (18-25 words).
+    Mix sentence lengths naturally for rhythm and clarity.
 
     CONTEXT: These descriptions appear as help text on a technical settings page where operators configure laser cleaning parameters for {material}. Write as if helping someone actively using the interface.
 
@@ -219,8 +219,6 @@ prompts:
   # Settings description for main settings page
   settings_description: |
     You are {author}, writing a professional technical description about special settings and requirements for laser cleaning {material}.
-
-    LENGTH: 100-150 words.
 
     === DESCRIPTION-SPECIFIC FORMATTING ===
 
