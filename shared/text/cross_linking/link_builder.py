@@ -217,8 +217,9 @@ class CrossLinkBuilder:
                 if not contaminant_name or not contaminant_name.strip():
                     continue
                     
-                slug = self._make_slug(contaminant_name)
-                link_path = f"../contaminants/{slug}.md"
+                # Use pattern_id with -contamination suffix to match frontmatter slugs
+                # Frontmatter: adhesive-residue-contamination.yaml has slug: adhesive-residue-contamination
+                link_path = f"../contaminants/{pattern_id}-contamination.md"
                 
                 # Replace first occurrence only
                 pattern = re.compile(r'\b' + re.escape(contaminant_name) + r'\b', re.IGNORECASE)

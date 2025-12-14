@@ -81,6 +81,9 @@ materials = self._load_materials()['materials']
 ```python
 # Material: "Aluminum" → slug: "aluminum" → URL: ../materials/aluminum.md
 # Material: "Steel" → slug: "steel" → URL: ../materials/steel.md
+
+# Contaminant: pattern_id "adhesive-residue" → URL: ../contaminants/adhesive-residue-contamination.md
+# (Note: -contamination suffix added to match frontmatter slug)
 ```
 
 **Step 5: Link Insertion**
@@ -96,14 +99,15 @@ materials = self._load_materials()['materials']
 - Generated slug: `"aluminum"` (lowercase, hyphenated)
 - Link URL: `../materials/aluminum.md`
 - Frontmatter file: `frontmatter/materials/aluminum-laser-cleaning.yaml`
+- Frontmatter slug: `aluminum`
 - Web URL: `/materials/aluminum` (slug only, not filename)
 
 **Contaminants**:
 - Data file key: `"adhesive-residue"` (pattern ID from Contaminants.yaml)
 - Contaminant name: `"Adhesive Residue"` (from pattern data)
-- Generated slug: `"adhesive-residue"` (already slug format)
-- Link URL: `../contaminants/adhesive-residue.md`
+- Link URL: `../contaminants/adhesive-residue-contamination.md` ⬅️ **Uses pattern_id + -contamination suffix**
 - Frontmatter file: `frontmatter/contaminants/adhesive-residue-contamination.yaml`
+- Frontmatter slug: `adhesive-residue-contamination`
 - Web URL: `/contaminants/adhesive-residue-contamination` (full slug with suffix)
 
 ---
