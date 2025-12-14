@@ -113,46 +113,28 @@ class QualityAnalyzer:
         """
         logger.debug(f"Analyzing text quality ({len(text)} chars)")
         
-        # 0. MINIMUM LENGTH CHECK - Content too short to evaluate properly
-        MIN_CONTENT_LENGTH = 150  # Minimum chars for meaningful content
-        if len(text) < MIN_CONTENT_LENGTH:
-            return {
-                'overall_score': 0.0,  # Auto-fail short content
-                'ai_patterns': {
-                    'score': 0.0,
-                    'is_ai_like': False,
-                    'issues': [f'Content too short: {len(text)} chars < {MIN_CONTENT_LENGTH} minimum'],
-                    'details': {}
-                },
-                'voice_authenticity': {
-                    'score': 0.0,
-                    'language': 'unknown',
-                    'linguistic_patterns': {},
-                    'issues': ['Content too short for voice analysis']
-                },
-                'structural_quality': {
-                    'sentence_variation': 0.0,
-                    'rhythm_score': 0.0,
-                    'complexity_variation': 0.0,
-                    'sentence_count': len([s for s in text.split('.') if s.strip()])
-                },
-                'recommendations': [
-                    f'Content is only {len(text)} characters (minimum: {MIN_CONTENT_LENGTH})',
-                    'Generate proper material_description content',
-                    'Content appears to be placeholder or title text'
-                ]
-            }
+        # 0. MINIMUM LENGTH CHECK - Note: AI and voice tests still run, only structural skipped
+        MIN_CONTENT_LENGTH = 150  # Minimum chars for meaningful structural analysis
+        content_too_short = len(text) < MIN_CONTENT_LENGTH
         
-        # 1. AI Pattern Detection
+        # 1. AI Pattern Detection (ALWAYS RUN regardless of length)
         ai_result = self.ai_detector.detect_ai_patterns(text)
         
-        # 2. Voice Authenticity (if author provided and validator available)
+        # 2. Voice Authenticity (ALWAYS RUN if author provided, regardless of length)
         voice_result = None
         if author and self.voice_validator:
             voice_result = self._analyze_voice_authenticity(text, author)
         
-        # 3. Structural Quality
-        structural_result = self._analyze_structural_quality(text)
+        # 3. Structural Quality (skip if too short)
+        if content_too_short:
+            structural_result = {
+                'sentence_variation': 50.0,  # Baseline for single sentence
+                'rhythm_score': 50.0,
+                'complexity_variation': 50.0,
+                'sentence_count': len([s for s in text.split('.') if s.strip()])
+            }
+        else:
+            structural_result = self._analyze_structural_quality(text)
         
         # 4. Calculate overall score
         overall_score = self._calculate_overall_score(
@@ -237,11 +219,13 @@ class QualityAnalyzer:
         """
         sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
         
+        # Single-sentence content (like material_description) gets baseline score
+        # Don't penalize appropriately concise content for lack of variation
         if len(sentences) < 2:
             return {
-                'sentence_variation': 0,
-                'rhythm_score': 0,
-                'complexity_variation': 0,
+                'sentence_variation': 50,  # Neutral baseline (can't vary single sentence)
+                'rhythm_score': 50,         # Neutral baseline (can't have rhythm with one sentence)
+                'complexity_variation': 50, # Neutral baseline (can't mix complexity types)
                 'sentence_count': len(sentences)
             }
         

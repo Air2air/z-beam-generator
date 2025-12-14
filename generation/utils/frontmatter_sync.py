@@ -35,13 +35,17 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
     """
     Get frontmatter file path using domain config (domain-agnostic).
     
+    Checks for existing files with legacy naming (parentheses removed) before
+    creating new files. This prevents duplicate files when material names contain
+    parentheses (e.g., "Acrylic (PMMA)" has legacy file "acrylic-pmma-..." not "acrylic-(pmma)-...").
+    
     Args:
-        item_name: Name of item (e.g., "Aluminum")
+        item_name: Name of item (e.g., "Aluminum", "Acrylic (PMMA)")
         field_name: Field being updated (for logging)
         domain: Domain name (e.g., 'materials', 'settings')
         
     Returns:
-        Path to frontmatter file
+        Path to frontmatter file (existing legacy file or new normalized path)
     """
     # Use DomainAdapter to get frontmatter config
     from generation.core.adapters.domain_adapter import DomainAdapter
@@ -56,16 +60,32 @@ def get_frontmatter_path(item_name: str, field_name: str, domain: str) -> Path:
         # Get filename pattern from config (e.g., "{slug}-laser-cleaning.yaml")
         pattern = config.get('frontmatter_filename_pattern', '{slug}.yaml')
         
-        # Convert item name to slug
-        slug = item_name.lower().replace(' ', '-').replace('_', '-')
-        filename = pattern.format(slug=slug)
+        # NEW: Legacy slug (parentheses REMOVED - old behavior)
+        # Example: "Acrylic (PMMA)" → "acrylic-pmma"
+        slug_legacy = item_name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+        # Remove consecutive hyphens that result from removing parentheses
+        while '--' in slug_legacy:
+            slug_legacy = slug_legacy.replace('--', '-')
+        slug_legacy = slug_legacy.strip('-')
         
-        return Path(frontmatter_dir) / filename
+        filename_legacy = pattern.format(slug=slug_legacy)
+        path_legacy = Path(frontmatter_dir) / filename_legacy
+        
+        # If legacy file exists, use it (preserve existing complete files)
+        if path_legacy.exists():
+            logger.info(f"   📂 Using existing file: {path_legacy.name}")
+            return path_legacy
+        
+        # Otherwise create new file with same normalization
+        return path_legacy
         
     except Exception as e:
         # Fallback to legacy behavior if config not found
         logger.warning(f"Could not load domain config for {domain}, using fallback: {e}")
-        slug = item_name.lower().replace(' ', '-').replace('_', '-')
+        slug = item_name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+        while '--' in slug:
+            slug = slug.replace('--', '-')
+        slug = slug.strip('-')
         return Path(f"frontmatter/{domain}") / f"{slug}.yaml"
 
 

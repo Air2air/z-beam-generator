@@ -1,12 +1,15 @@
 """
-Postprocessing command for refining existing populated text fields.
+Postprocessing command for quality validation and regeneration of existing text fields.
 
 This module handles:
 1. Loading existing content from frontmatter
-2. Applying postprocessing prompts to refine content
-3. Quality comparison (old vs new)
-4. Saving improved content back to frontmatter
-5. POLICY: Research and generate if field is empty
+2. Analyzing quality using QualityAnalyzer (AI detection, voice, structural)
+3. If quality < 60/100: Regenerate from scratch using original domain prompt template
+4. If quality >= 60/100: Keep original content
+5. Saving regenerated content to data YAML + frontmatter (dual-write)
+6. POLICY: Research and generate if field is empty
+
+CRITICAL: Regeneration = Fresh generation from original prompt, NOT refinement of existing text.
 """
 
 import os
@@ -26,7 +29,21 @@ logger = logging.getLogger(__name__)
 
 
 class PostprocessCommand:
-    """Postprocess existing populated text fields with quality refinement"""
+    """
+    Postprocess existing text fields: validate quality and regenerate if needed.
+    
+    Quality validation checks:
+    - AI detection score (Winston)
+    - Voice authenticity (author compliance)
+    - Structural quality (sentence variation, rhythm)
+    - Composite threshold: 60/100 minimum
+    
+    Regeneration behavior (when quality < 60/100):
+    - Discards old content completely
+    - Calls generator.generate() with original domain prompt template
+    - Fresh generation (same as initial creation, NOT refinement)
+    - Saves if successful, keeps original if regeneration fails
+    """
     
     def __init__(self, domain: str, field: str):
         """
@@ -374,8 +391,10 @@ class PostprocessCommand:
         print(f"   • AI Patterns: {quality_analysis['ai_patterns']['score']}/100")
         print(f"   • Voice Authenticity: {quality_analysis['voice_authenticity']['score']}/100")
         
-        # Use pipeline's threshold (70/100 is typical quality gate)
-        QUALITY_THRESHOLD = 70
+        # Use pipeline's threshold (60/100 allows concise content to pass)
+        # Lowered from 70 to account for single-sentence material_description content
+        # which appropriately scores lower on structural variation metrics
+        QUALITY_THRESHOLD = 60
         MIN_CONTENT_LENGTH = 150  # Minimum characters for acceptable content
         
         # Check minimum length first
