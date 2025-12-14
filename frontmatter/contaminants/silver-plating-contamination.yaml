@@ -1,0 +1,119 @@
+id: silver-plating
+name: silver-plating
+slug: silver-plating
+description: Silver coating and tarnish on electrical contacts and tableware
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 50
+      min_ns: 4
+      recommended_ns: 10
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.08
+      min: 0.02
+      recommended: 0.05
+    wavelength_preference:
+    - 355
+    - 1064
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 85000
+      wavelength_355nm: 450000
+      wavelength_532nm: 210000
+    reflectivity:
+      wavelength_1064nm: 0.12
+      wavelength_355nm: 0.04
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.45
+      real_part: 1.85
+    transmission_depth: 1.18
+  removal_characteristics:
+    byproducts:
+    - compound: Ag
+      hazard_level: moderate
+      phase: gas
+    - compound: AgO
+      hazard_level: low
+      phase: solid
+    - compound: Ag2O
+      hazard_level: low
+      phase: solid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 120
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 5
+      optimal_passes: 3
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Silver Oxide (Ag2O)
+      concentration_mg_m3: 2.5
+      exposure_limit_mg_m3: 0.01
+      hazard_class: toxic
+    - compound: Silver Nanoparticles
+      concentration_mg_m3: 1.8
+      exposure_limit_mg_m3: 0.01
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.85
+      size_range_um:
+      - 0.02
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Laser parameters must be optimized to minimize substrate damage to underlying
+      material
+    - Silver residue may reflect laser energy creating secondary hazards
+    toxic_gas_risk: low
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.7
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 280
+    heat_affected_zone_depth: 15
+    melting_point: 961
+    specific_heat: 235
+    thermal_conductivity: 429
+    thermal_diffusivity: 174
+    vaporization_temperature: 2212
+valid_materials:
+- Copper
+- Brass
+- Bronze

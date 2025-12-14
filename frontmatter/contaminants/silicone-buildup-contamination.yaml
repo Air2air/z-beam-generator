@@ -1,0 +1,157 @@
+id: silicone-buildup
+name: silicone-buildup
+slug: silicone-buildup
+description: Polysiloxane-based sealant and coating residues commonly found in construction
+  and automotive applications
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.4
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 100
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 355
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 120
+      wavelength_355nm: 2800
+      wavelength_532nm: 450
+    reflectivity:
+      wavelength_1064nm: 0.25
+      wavelength_355nm: 0.08
+      wavelength_532nm: 0.18
+    refractive_index:
+      imaginary_part: 0.002
+      real_part: 1.41
+    transmission_depth: 83
+  removal_characteristics:
+    byproducts:
+    - compound: SiO₂
+      hazard_level: low
+      phase: solid
+    - compound: CO₂
+      hazard_level: low
+      phase: gas
+    - compound: H₂O
+      hazard_level: low
+      phase: gas
+    - compound: Volatile Organic Compounds
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 5
+      optimal_passes: 3
+      single_pass: 0.4
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Silicon Dioxide (amorphous)
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 10
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 2-15
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Acetaldehyde
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 10-100
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: full_face
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Thermal decomposition may occur on painted surfaces
+    - Potential for substrate discoloration on metals
+    - Avoid use on heat-sensitive materials
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 3.5
+      pulse_duration_10ns: 2.1
+      wavelength_1064nm: 1.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 25
+    melting_point: N/A
+    specific_heat: 1500
+    thermal_conductivity: 0.2
+    thermal_diffusivity: 0.13
+    vaporization_temperature: 450
+valid_materials:
+- Concrete
+- Aluminum
+- Steel
+- Stainless Steel
+- Cast Iron
+- Copper
+- Bronze
+- Brass
+- Titanium
+- Zinc
+- Nickel
+- Lead
+- Tin
+- Cobalt
+- Chromium
+- Crown Glass
+- Float Glass
+- Borosilicate Glass
+- Aluminosilicate Glass
+- Fused Silica
+- Gorilla Glass
+- Tempered Glass
+- Alumina
+- Silicon Carbide
+- Zirconia
+- Aluminum Nitride
+- Boron Carbide
+- Boron Nitride
+- Silicon Nitride

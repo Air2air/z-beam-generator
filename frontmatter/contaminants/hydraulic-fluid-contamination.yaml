@@ -1,0 +1,132 @@
+id: hydraulic-fluid
+name: hydraulic-fluid
+slug: hydraulic-fluid
+description: Petroleum-based hydraulic oil deposits from heavy machinery leaks
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: any
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 50
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 355
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 120
+      wavelength_532nm: 850
+    reflectivity:
+      wavelength_1064nm: 0.05
+      wavelength_355nm: 0.02
+      wavelength_532nm: 0.03
+    refractive_index:
+      imaginary_part: 0.008
+      real_part: 1.46
+    transmission_depth: 83.3
+  removal_characteristics:
+    byproducts:
+    - compound: CO
+      hazard_level: high
+      phase: gas
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: amorphous carbon
+      hazard_level: moderate
+      phase: solid
+    - compound: hydrocarbon aerosols
+      hazard_level: moderate
+      phase: liquid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 5
+      optimal_passes: 3
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: moderate
+    fumes_generated:
+    - compound: Acrolein
+      concentration_mg_m3: 0.5
+      exposure_limit_mg_m3: 0.23
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 1.2
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 15
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Particulate Polycyclic Aromatic Hydrocarbons
+      concentration_mg_m3: 0.8
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Laser may ignite residual hydraulic fluid causing flash fire
+    - Thermal decomposition creates toxic byproducts even at low laser powers
+    - Surface may become slippery from fluid mobilization
+    toxic_gas_risk: high
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 2000
+    thermal_conductivity: 0.15
+    thermal_diffusivity: 0.08
+    vaporization_temperature: 450
+valid_materials:
+- Steel
+- Aluminum
+- Concrete

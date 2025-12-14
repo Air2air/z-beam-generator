@@ -1,0 +1,169 @@
+id: natural-weathering
+name: natural_weathering
+slug: natural-weathering
+micro:
+  before: Surface shows natural weathering and aging from environmental exposure.
+  after: Post-cleaning reveals restored surface with weathering effects removed through
+    laser ablation.
+category: aging
+context_notes: Natural weathering from UV, moisture cycling, thermal stress, and oxidation.
+  Distribution varies significantly by surface orientation.
+description: Natural environmental aging from sun exposure, moisture, and temperature
+  cycling
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.2
+      recommended_j_cm2: 0.6
+    overlap_percentage: 50
+    polarization: any
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.6
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.02
+      recommended: 0.05
+    wavelength_preference:
+    - 355
+    - 266
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 150
+      wavelength_355nm: 8500
+      wavelength_532nm: 1200
+    reflectivity:
+      wavelength_1064nm: 0.08
+      wavelength_355nm: 0.03
+      wavelength_532nm: 0.05
+    refractive_index:
+      imaginary_part: 0.012
+      real_part: 1.55
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: carbon_particulates
+      hazard_level: moderate
+      phase: solid
+    - compound: volatile_organic_compounds
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 5.0
+      exposure_limit_mg_m3: 29.0
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 1.2
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Acetaldehyde
+      concentration_mg_m3: 0.8
+      exposure_limit_mg_m3: 45.0
+      hazard_class: irritant
+    - compound: Volatile Organic Compounds (VOCs)
+      concentration_mg_m3: 15.0
+      exposure_limit_mg_m3: 100.0
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: half_mask
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - UV laser interaction may generate ozone near work surface
+    - Polymer substrates may produce hydrogen cyanide if containing nitrogen compounds
+    - Chlorinated polymers may produce phosgene gas under thermal decomposition
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 0.4
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 1500
+    thermal_conductivity: 0.2
+    thermal_diffusivity: 0.08
+    vaporization_temperature: 450
+valid_materials:
+- Oak
+- Pine
+- Cedar
+- Walnut
+- Teak
+- Bamboo
+- Plywood
+- MDF
+- Steel
+- Iron
+- Aluminum
+- Copper
+- Brass
+- Bronze
+- Zinc
+- Granite
+- Marble
+- Limestone
+- Sandstone
+- Slate
+- Concrete
+- Cement
+- PVC
+- Polyethylene
+- Polypropylene
+- ABS
+- Acrylic
+- Brick
+- Tile
+- Terracotta
+- Porcelain
+- Glass
+- Redwood
+title: Natural Weathering

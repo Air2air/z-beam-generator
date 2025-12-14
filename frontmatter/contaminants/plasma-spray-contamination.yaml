@@ -1,0 +1,122 @@
+id: plasma-spray
+name: plasma-spray
+slug: plasma-spray
+description: Plasma-sprayed ceramic and metal coatings for repair or removal
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 3.0
+      min_j_cm2: 1.5
+      recommended_j_cm2: 2.0
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 50
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.03
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 8500
+      wavelength_532nm: 48000
+    reflectivity:
+      wavelength_1064nm: 0.35
+      wavelength_355nm: 0.08
+      wavelength_532nm: 0.18
+    refractive_index:
+      imaginary_part: 0.15
+      real_part: 2.4
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: Metal oxides (varies by coating)
+      hazard_level: moderate
+      phase: solid
+    - compound: Metal vapor/particulates
+      hazard_level: high
+      phase: gas/plasma
+    - compound: CO/CO2 (from binder decomposition)
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: medium
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 6
+      optimal_passes: 4
+      single_pass: 0.3
+    secondary_mechanisms:
+    - mechanical_spallation
+    - thermal_stress_fracturing
+    surface_quality_after_removal:
+      color_change: 'yes'
+      residual_stress: compressive
+      roughness_increase: moderate
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Metal oxides (various)
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 5.0
+      hazard_class: irritant
+    - compound: Carbon monoxide
+      concentration_mg_m3: 10-100
+      exposure_limit_mg_m3: 29.0
+      hazard_class: toxic
+    - compound: Volatile organic compounds
+      concentration_mg_m3: 2-20
+      exposure_limit_mg_m3: 100.0
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: full_suit
+    substrate_compatibility_warnings:
+    - May generate toxic fumes if coating contains heavy metals
+    - Potential for substrate material to vaporize and create additional hazards
+    - Watch for reflective surfaces causing laser beam deflection
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 10
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 4.5
+      pulse_duration_10ns: 3.2
+      wavelength_1064nm: 2.8
+    decomposition_temperature: 1800
+    heat_affected_zone_depth: 45
+    melting_point: 1500
+    specific_heat: 650
+    thermal_conductivity: 8.5
+    thermal_diffusivity: 1.6
+    vaporization_temperature: 2800
+valid_materials:
+- Steel
+- Titanium
+- Turbine Blades

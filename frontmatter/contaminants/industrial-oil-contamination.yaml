@@ -1,0 +1,187 @@
+id: industrial-oil
+name: industrial_oil
+slug: industrial-oil
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: contaminant
+micro:
+  after: Post-cleaning reveals restored surface with industrial oil / grease buildup
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from industrial oil / grease buildup affecting
+    material appearance and properties.
+category: contamination
+description: Industrial-oil contamination exhibits tenacious adhesion on metals, which
+  sets it apart from volatile solvents that dissipate quickly. This film, it infiltrates
+  porous substrates like [Rubber](../materials/rubber.md), manifesting persistent
+  films. Removal proves challenging, influenced from its greasy nature, that resists
+  aqueous washes and demands specialized degreasers for efficacy.
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.7
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 50
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.02
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 1200
+      wavelength_355nm: 28000
+      wavelength_532nm: 4500
+    reflectivity:
+      wavelength_1064nm: 0.05
+      wavelength_355nm: 0.02
+      wavelength_532nm: 0.03
+    refractive_index:
+      imaginary_part: 0.08
+      real_part: 1.47
+    transmission_depth: 8.3
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: CO
+      hazard_level: moderate
+      phase: gas
+    - compound: C (soot)
+      hazard_level: moderate
+      phase: solid
+    - compound: VOCs
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 480
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acrolein
+      concentration_mg_m3: 2.5
+      exposure_limit_mg_m3: 0.23
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 1.8
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: 0.8
+      exposure_limit_mg_m3: 0.32
+      hazard_class: carcinogenic
+    - compound: Polycyclic Aromatic Hydrocarbons (PAHs)
+      concentration_mg_m3: 1.2
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Laser parameters must be optimized to avoid substrate damage and excessive fume
+      generation
+    - Test cleaning parameters on small area first to assess fume production
+    - Avoid laser cleaning on thin or heat-sensitive materials
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: N/A
+    specific_heat: 2000
+    thermal_conductivity: 0.15
+    thermal_diffusivity: 0.075
+    vaporization_temperature: 450
+valid_materials:
+- ALL
+title: Industrial Oil

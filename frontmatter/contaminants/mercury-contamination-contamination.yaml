@@ -1,0 +1,132 @@
+id: mercury-contamination
+name: mercury-contamination
+slug: mercury-contamination
+description: Elemental mercury and amalgam contamination
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.6
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 50
+      min_ns: 5
+      recommended_ns: 20
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 85000
+      wavelength_355nm: 180000
+      wavelength_532nm: 120000
+    reflectivity:
+      wavelength_1064nm: 0.75
+      wavelength_355nm: 0.15
+      wavelength_532nm: 0.65
+    refractive_index:
+      imaginary_part: 4.12
+      real_part: 1.73
+    transmission_depth: 0.12
+  removal_characteristics:
+    byproducts:
+    - compound: Hg
+      hazard_level: high
+      phase: gas
+    - compound: HgO
+      hazard_level: high
+      phase: gas
+    - compound: carbon_soot
+      hazard_level: moderate
+      phase: solid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 4
+      optimal_passes: 3
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - vaporization
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: none
+    fumes_generated:
+    - compound: Elemental Mercury Vapor
+      concentration_mg_m3: 0.5
+      exposure_limit_mg_m3: 0.025
+      hazard_class: toxic
+    - compound: Mercury Oxide
+      concentration_mg_m3: 0.1
+      exposure_limit_mg_m3: 0.05
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.8
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: full_suit
+    substrate_compatibility_warnings:
+    - Laser cleaning may vaporize mercury from porous surfaces
+    - Heating may increase mercury vaporization rate significantly
+    - Residual mercury can be redistributed as fine particulate
+    toxic_gas_risk: high
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 15
+    visibility_hazard: low
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 0.4
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 357
+    heat_affected_zone_depth: 15
+    melting_point: -39
+    specific_heat: 140
+    thermal_conductivity: 8.3
+    thermal_diffusivity: 8.5
+    vaporization_temperature: 357
+valid_materials:
+- Concrete
+- Tile
+- Aluminum
+- Steel
+- Stainless Steel
+- Cast Iron
+- Copper
+- Bronze
+- Brass
+- Titanium
+- Zinc
+- Nickel
+- Lead
+- Tin
+- Cobalt
+- Chromium
