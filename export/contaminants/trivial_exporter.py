@@ -125,15 +125,15 @@ class TrivialContaminantsExporter:
             pattern_id: ID of the contamination pattern (e.g., 'adhesive-residue')
             pattern_data: Pattern data from Contaminants.yaml
         """
-        # Start with pattern ID and name
-        frontmatter = {
-            'id': pattern_id,
-            'name': pattern_data.get('id', pattern_id)  # Use 'id' field if present, fallback to pattern_id
-        }
-        
-        # Create slug for URL
+        # Create slug for URL (with -contamination suffix)
         slug = self._create_slug(pattern_id)
-        frontmatter['slug'] = slug
+        
+        # Start with pattern ID, name, and slug (all with -contamination suffix for URL consistency)
+        frontmatter = {
+            'id': f"{pattern_id}-contamination",
+            'name': f"{pattern_data.get('id', pattern_id)}-contamination",
+            'slug': f"{slug}-contamination"
+        }
         
         # Enrich author data from registry
         author_field = pattern_data.get('author', {})
