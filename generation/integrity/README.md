@@ -67,7 +67,7 @@ python3 run.py --integrity-check --quick
 ### Integration Status
 
 **✅ Integrated Components:**
-- Caption generation (`handle_micro_generation`)
+- Micro generation (`handle_micro_generation`)
 - Material description generation (`handle_material_description_generation`)
 - FAQ generation (`handle_faq_generation`)
 - Unified workflow (`run_material_workflow` - Step 0)

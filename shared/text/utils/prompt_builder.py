@@ -335,7 +335,8 @@ distinctive markers per paragraph as specified in your voice instructions."""
         if length is None:
             length = spec.default_length if spec else 100
         
-        # Option C: Add ±80% randomization to length for natural variation
+        # SINGLE SOURCE OF TRUTH: Length variation calculated here ONLY
+        # ±80% randomization for dramatic length differences
         # Use material name hash as seed for consistent but varied results per material
         if variation_seed is None:
             # Generate seed from topic name for per-material consistency
@@ -344,7 +345,7 @@ distinctive markers per paragraph as specified in your voice instructions."""
         random.seed(variation_seed)
         variation_factor = random.uniform(0.2, 1.8)  # ±80% range (0.2 = -80%, 1.8 = +80%)
         length = int(length * variation_factor)
-        logger.debug(f"Length randomization: base × {variation_factor:.2f} = {length} words (seed={variation_seed})")
+        logger.info(f"📏 Length variation: {length} words (base × {variation_factor:.2f}, seed={variation_seed})")
         
         # Extract voice characteristics
         country = voice.get('country', 'USA')

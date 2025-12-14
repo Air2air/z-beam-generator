@@ -152,7 +152,7 @@ class Generator:
         
         Args:
             identifier: Item name (material, setting, etc.) - domain agnostic
-            component_type: Type of component (caption, material_description, faq)
+            component_type: Type of component (micro, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             
         Returns:
@@ -196,7 +196,7 @@ class Generator:
         
         Args:
             identifier: Item name (material, setting, etc.) - domain agnostic
-            component_type: Type of component (caption, material_description, faq)
+            component_type: Type of component (micro, material_description, faq)
             faq_count: Number of FAQ items (ignored for non-FAQ components)
             humanness_layer: Dynamic humanness instructions (from HumannessOptimizer)
             **kwargs: Additional context (e.g., existing_content for postprocessing)

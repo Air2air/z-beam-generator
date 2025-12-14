@@ -166,7 +166,7 @@ class MaterialsAdapter(DataSourceAdapter):
         
         Args:
             identifier: Material name
-            component_type: Component type (caption, faq, description)
+            component_type: Component type (micro, faq, description)
             content_data: Content to write
             
         Raises:
@@ -319,13 +319,13 @@ class MaterialsAdapter(DataSourceAdapter):
     
     def _extract_before_after(self, text: str) -> Dict[str, str]:
         """
-        Extract before/after sections from text (used by caption component).
+        Extract before/after sections from text (used by micro component).
         
         Looks for **BEFORE_TEXT:** and **AFTER_TEXT:** markers,
         falls back to paragraph splitting if markers not found.
         
         Args:
-            text: Generated caption text
+            text: Generated micro text
             
         Returns:
             Dict with 'before' and 'after' keys
@@ -349,7 +349,7 @@ class MaterialsAdapter(DataSourceAdapter):
             # Fallback: split by paragraphs
             paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
             if len(paragraphs) < 2:
-                # Only one paragraph - treat as "before" caption only
+                # Only one paragraph - treat as "before" micro only
                 before_text = paragraphs[0] if paragraphs else text.strip()
                 after_text = ''
             else:

@@ -24,7 +24,7 @@ All component prompt templates are in `/prompts/`:
 ```
 prompts/
 ├── subtitle.txt           # 15-word subtitle prompts
-├── micro.txt            # 25-word caption prompts
+├── micro.txt            # 25-word micro prompts
 ├── description.txt        # 150-word description prompts
 ├── faq.txt               # FAQ generation prompts
 ├── troubleshooter.txt    # Troubleshooting guide prompts
@@ -102,7 +102,7 @@ When user requests generation:
 
 1. **Identify the component type:**
    - subtitle → `--subtitle`
-   - caption → `--micro`
+   - micro → `--micro`
    - faq → `--faq`
    - description → (use unified workflow `--run`)
 

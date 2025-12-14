@@ -12,7 +12,7 @@ Field Order (per template):
 1. name, category, subcategory, title, material_description, settings_description
 2. author (determines voice)
 3. images (hero, micro)
-4. caption (description, before, after)
+4. micro (description, before, after)
 5. regulatoryStandards
 6. applications
 7. materialProperties (GROUPED: material_characteristics, laser_material_interaction)
@@ -45,7 +45,7 @@ class FieldOrderingService:
         2. Content Metadata (title, material_description, settings_description)
         3. Author (determines voice generation)
         4. Visual Assets (images: hero, micro)
-        5. Caption (description, before, after)
+        5. Micro (description, before, after)
         6. Regulatory Standards
         7. Applications
         8. Material Properties (GROUPED: material_characteristics, laser_material_interaction)
@@ -85,7 +85,7 @@ class FieldOrderingService:
         if "images" in frontmatter_data:
             ordered_data["images"] = frontmatter_data["images"]
             
-        # === 5. CAPTION (new per template) ===
+        # === 5. MICRO (new per template) ===
         if "micro" in frontmatter_data:
             ordered_data["micro"] = frontmatter_data["micro"]
             

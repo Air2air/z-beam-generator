@@ -126,7 +126,7 @@ class QualityEvaluatedGenerator:
         
         Args:
             material_name: Name of material
-            component_type: Type of component (caption, material_description, faq)
+            component_type: Type of component (micro, material_description, faq)
             **kwargs: Additional parameters (e.g., faq_count)
             
         Returns:

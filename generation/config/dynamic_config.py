@@ -469,7 +469,7 @@ class DynamicConfig:
         These calculated values are only used when NO database history exists.
         
         Args:
-            component_type: Component being generated (caption, faq, etc.)
+            component_type: Component being generated (micro, faq, etc.)
             
         Returns:
             Dict containing all parameter bundles:

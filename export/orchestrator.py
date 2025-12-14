@@ -103,7 +103,7 @@ class FrontmatterOrchestrator:
                 material_data
             )
             
-            # 6. Media (images, caption)
+            # 6. Media (images, micro)
             self.logger.debug("6/6 Extracting media...")
             media_data = self.media_module.generate(material_data)
             frontmatter['images'] = media_data['images']

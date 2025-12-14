@@ -555,6 +555,9 @@ class HumannessOptimizer:
             logger.info(f"📝 Using humanness template for {component_type}")
         
         # 🎲 RANDOMIZE WORD COUNT VARIATION (NEW - Dec 12, 2025)
+        # NOTE: This generates the INSTRUCTION text for the humanness layer ONLY
+        # Actual length multiplication happens in prompt_builder.py (single source of truth)
+        # This layer tells LLM "aim for ±X% variation" to encourage flexibility
         # Base variation from config, then add randomization for each generation
         # This creates unpredictable variation percentages (not just fixed ±50%)
         base_variation = self.config.get('word_count_variation', 0.80)  # ±80% default

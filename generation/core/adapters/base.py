@@ -92,7 +92,7 @@ class DataSourceAdapter(ABC):
         
         Args:
             identifier: Item identifier
-            component_type: Component type (caption, faq, etc.)
+            component_type: Component type (micro, faq, etc.)
             content_data: Content to write
             
         Raises:

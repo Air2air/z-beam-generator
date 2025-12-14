@@ -92,7 +92,7 @@ class BatchGenerator:
         Check if component type is eligible for batch generation.
         
         Args:
-            component_type: Type of component (caption, material_description, etc.)
+            component_type: Type of component (micro, material_description, etc.)
             
         Returns:
             True if component should use batch generation
@@ -220,7 +220,7 @@ class BatchGenerator:
                 self.logger.info(f"   Generating: {material}")
                 
                 # Generate using existing generator (quality-gated with auto-retry)
-                # Note: Generator may return string (description) or object (caption/faq)
+                # Note: Generator may return string (description) or object (micro/faq)
                 try:
                     result = self.generator.generate(material, component_type)
                     
@@ -231,7 +231,7 @@ class BatchGenerator:
                             'success': True
                         }
                         self.logger.info(f"   ✅ Generated {len(result)} chars")
-                    # Handle GenerationResult object (caption/faq case)
+                    # Handle GenerationResult object (micro/faq case)
                     elif hasattr(result, 'success') and result.success and result.content:
                         individual_results[material] = {
                             'content': result.content,
