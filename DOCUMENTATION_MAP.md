@@ -3,7 +3,7 @@
 **🗺️ Master Navigation for All Documentation**  
 **Last Updated**: December 13, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Updates**: Enhanced AI detection system, unique properties emphasis in prompts
+**Recent Updates**: Learning module integration, item_data bug fix, enhanced AI detection, unique properties emphasis
 
 ---
 
@@ -45,6 +45,7 @@ This is THE comprehensive guide for all AI assistants. Contains:
 | **Image generation system** | `IMAGE_CENTRALIZATION_PLAN_NOV27_2025.md` |
 | **Enhanced AI detection** | `ENHANCED_AI_DETECTION_DEC13_2025.md` ⭐ NEW |
 | **Unique properties emphasis** | `UNIQUE_PROPERTIES_EMPHASIS_DEC13_2025.md` ⭐ NEW |
+| **Learning integration & bug fix** | `LEARNING_INTEGRATION_AND_BUG_FIX_DEC13_2025.md` ⭐ NEW |
 
 ---
 
