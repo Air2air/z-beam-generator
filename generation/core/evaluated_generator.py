@@ -100,7 +100,19 @@ class QualityEvaluatedGenerator:
         from learning.humanness_optimizer import HumannessOptimizer
         self.humanness_optimizer = HumannessOptimizer()
         
+        # Initialize learning modules for continuous improvement
+        from learning.sweet_spot_analyzer import SweetSpotAnalyzer
+        from learning.weight_learner import WeightLearner
+        from learning.validation_winston_correlator import ValidationWinstonCorrelator
+        from pathlib import Path
+        
+        db_path = Path('z-beam.db')
+        self.sweet_spot_analyzer = SweetSpotAnalyzer(db_path=str(db_path))
+        self.weight_learner = WeightLearner(db_path=db_path)
+        self.validation_correlator = ValidationWinstonCorrelator(db_path=str(db_path))
+        
         logger.info(f"QualityEvaluatedGenerator initialized (single-pass with learning)")
+        logger.info(f"   - Learning modules: SweetSpot, WeightLearner, ValidationCorrelator")
 
     
     def generate(
@@ -135,13 +147,23 @@ class QualityEvaluatedGenerator:
         print(f"📝 SINGLE-PASS GENERATION: {component_type} for {material_name}")
         print(f"{'='*80}\n")
         
-        # Get base parameters
+        # Get base parameters with sweet spot learning
         current_params = self._get_base_parameters(component_type)
         
         # Log parameters
         print("🌡️  Generation Parameters:")
         for param, value in current_params.items():
             print(f"   • {param}: {value}")
+        
+        # Check for learned insights from validation-winston correlation
+        try:
+            insights = self.validation_correlator.get_top_issues(lookback_days=7, limit=3)
+            if insights:
+                print(f"\n💡 Recent Quality Insights:")
+                for insight in insights:
+                    print(f"   ⚠️  {insight['issue']}: {insight['impact']:+.1f} impact on Winston")
+        except Exception as e:
+            logger.debug(f"Could not load validation insights: {e}")
         
         # Generate humanness layer (learning-optimized, structural variation only)
         print(f"\n🧠 Generating humanness instructions...")
@@ -188,9 +210,17 @@ class QualityEvaluatedGenerator:
                 print(f"\n🎭 Analyzing quality (unified system)...")
                 author_data = self._get_author_data(material_name)
                 
-                # Use unified quality analyzer (consolidates AI + Voice + Structural)
+                # Use unified quality analyzer with learned weights
                 from shared.voice.quality_analyzer import QualityAnalyzer
-                analyzer = QualityAnalyzer(self.api_client, strict_mode=False)
+                
+                # Get learned weights from weight_learner
+                learned_weights = self._get_learned_quality_weights()
+                
+                analyzer = QualityAnalyzer(
+                    self.api_client, 
+                    strict_mode=False,
+                    weights=learned_weights  # Use learned weights if available
+                )
                 
                 # Single comprehensive analysis
                 quality_analysis = analyzer.analyze(
@@ -361,15 +391,16 @@ class QualityEvaluatedGenerator:
         Get base generation parameters from config and sweet spot learning.
         
         Now integrates learned parameter ranges from database:
-        1. Load sweet spot recommendations from database
+        1. Load sweet spot recommendations from SweetSpotAnalyzer
         2. Use median values from top 25% performers
-        3. Fall back to config.yaml only if insufficient learning data
+        3. Filter out negatively correlated parameters
+        4. Fall back to config.yaml only if insufficient learning data
         """
         from generation.config.config_loader import get_config
         config = get_config()
         
-        # Try to load learned sweet spot parameters
-        learned_params = self._load_sweet_spot_parameters()
+        # Try to load learned sweet spot parameters with correlation filtering
+        learned_params = self._load_sweet_spot_parameters_with_filtering()
         
         # Get voice parameters from config (fail-fast if missing)
         voice_params = config.config.get('voice_parameters', {})
@@ -404,6 +435,73 @@ class QualityEvaluatedGenerator:
             'colloquialism_frequency': learned_params.get('colloquialism_frequency') or voice_params['colloquialism_frequency'],
             'technical_intensity': voice_params['technical_intensity']
         }
+    
+    def _get_learned_quality_weights(self) -> Optional[Dict[str, float]]:
+        """
+        Get learned quality metric weights from WeightLearner.
+        
+        Returns learned weights if sufficient data exists, otherwise None
+        to fall back to QualityAnalyzer defaults.
+        """
+        try:
+            weights = self.weight_learner.get_optimal_weights()
+            if weights and weights.sample_count >= self.weight_learner.MIN_GLOBAL_SAMPLES:
+                logger.info(f"   Using learned weights: W={weights.winston_weight:.2f}, S={weights.subjective_weight:.2f}, R={weights.readability_weight:.2f}")
+                return {
+                    'winston': weights.winston_weight,
+                    'subjective': weights.subjective_weight,
+                    'readability': weights.readability_weight
+                }
+            else:
+                logger.debug(f"Insufficient data for learned weights ({weights.sample_count if weights else 0} samples)")
+                return None
+        except Exception as e:
+            logger.debug(f"Could not load learned weights: {e}")
+            return None
+    
+    def _load_sweet_spot_parameters_with_filtering(self) -> Dict[str, float]:
+        """
+        Load sweet spot parameters using integrated SweetSpotAnalyzer.
+        Filters out parameters with negative correlation to quality.
+        
+        Returns:
+            Dict of parameter_name -> optimal_value, or empty dict if insufficient data
+        """
+        try:
+            # Get sweet spot analysis
+            analysis = self.sweet_spot_analyzer.get_sweet_spot_table(save_to_db=False)
+            
+            if not analysis or not analysis.get('sweet_spots'):
+                logger.debug("No sweet spot data available - using config defaults")
+                return {}
+            
+            sweet_spots = analysis['sweet_spots']
+            correlations = {param: corr for param, corr in analysis.get('correlations', [])}
+            
+            learned = {}
+            filtered_count = 0
+            
+            for param_name, sweet_spot in sweet_spots.items():
+                correlation = correlations.get(param_name, 0)
+                
+                # Filter out negatively correlated parameters
+                if correlation < -0.3:
+                    logger.debug(f"   ❌ {param_name}: Negative correlation {correlation:.3f} - excluded")
+                    filtered_count += 1
+                    continue
+                
+                # Use median value from sweet spot
+                learned[param_name] = sweet_spot.optimal_median
+                logger.debug(f"   ✅ {param_name}: {sweet_spot.optimal_median:.3f} (correlation: {correlation:+.3f})")
+            
+            if filtered_count > 0:
+                logger.info(f"   Filtered {filtered_count} negatively correlated parameters from learning")
+            
+            return learned
+            
+        except Exception as e:
+            logger.debug(f"Could not load sweet spot parameters: {e}")
+            return {}
     
     def _generate_content_only(
         self,

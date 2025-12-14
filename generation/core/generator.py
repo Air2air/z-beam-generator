@@ -226,6 +226,16 @@ class Generator:
             if key not in item_data and value is not None:
                 item_data[key] = value
         
+        # Generate humanness layer if not provided
+        if humanness_layer is None:
+            from learning.humanness_optimizer import HumannessOptimizer
+            humanness_optimizer = HumannessOptimizer()
+            humanness_layer = humanness_optimizer.generate_humanness_instructions(
+                component_type=component_type
+            )
+            print(f"🧠 Generating humanness instructions...")
+            self.logger.info(f"🧠 Generated humanness layer ({len(humanness_layer)} chars)")
+        
         # Get author ID using adapter (domain-agnostic)
         author_id = self.adapter.get_author_id(item_data)
         voice = self._get_persona_by_author_id(author_id)

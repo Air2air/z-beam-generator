@@ -374,6 +374,45 @@ class ValidationWinstonCorrelator:
         except Exception as e:
             logger.error(f"Fix effectiveness tracking failed: {e}")
             return {}
+    
+    def get_top_issues(
+        self,
+        lookback_days: int = 7,
+        limit: int = 3
+    ) -> List[Dict[str, Any]]:
+        """
+        Get top validation issues impacting Winston scores.
+        
+        Lightweight method for quick insights during generation.
+        
+        Args:
+            lookback_days: Days to look back for data
+            limit: Maximum number of issues to return
+        
+        Returns:
+            List of dicts with 'issue' and 'impact' keys
+        """
+        try:
+            insights = self.analyze_correlation(
+                lookback_days=lookback_days,
+                min_samples=3  # Lower threshold for quick check
+            )
+            
+            # Return top N issues with significant impact
+            results = []
+            for insight in insights[:limit]:
+                if abs(insight.impact_score) > 2.0:  # Only significant impacts
+                    results.append({
+                        'issue': insight.issue_message,
+                        'impact': insight.impact_score,
+                        'occurrences': insight.occurrences
+                    })
+            
+            return results
+            
+        except Exception as e:
+            logger.debug(f"Could not get top issues: {e}")
+            return []
 
 
 if __name__ == "__main__":

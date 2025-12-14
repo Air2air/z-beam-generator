@@ -1229,10 +1229,9 @@ materials:
         like localized melting if you monitor for any discoloration during the first
         run—adjust by slowing the repetition rate slightly if needed to reduce thermal
         stress.
-    material_description: Aluminum lines up nicely for laser cleaning thanks to its
-      lightweight build and strong conductivity, which speed up contaminant removal
-      in automotive and aerospace parts. Reflectivity challenges absorption, so operators
-      dial in pulses for clean, damage-free results.
+    material_description: Aluminum sets itself apart from denser metals in laser cleaning
+      by leveraging its lightweight build and reflective surface, which dial in precise
+      contaminant removal while preserving structural integrity for aerospace parts.
     settings_description: Aluminum's high reflectivity stands out as the primary property
       influencing laser cleaning approaches. We've found that this trait requires
       careful power modulation to ensure the beam interacts effectively without excessive
@@ -9790,14 +9789,9 @@ materials:
         midway—push too hard and the surface can soften unevenly, so we dial back
         intensity and overlap scans to keep things cool and restore that clean, conductive
         finish for electronics or plumbing jobs.
-    material_description: Copper, a non-ferrous metal, demonstrates excellent thermal
-      and electrical conductivity, along with robust corrosion resistance and ductility.
-      In laser cleaning, its reflective surface requires thoughtful wavelength selection
-      to ensure sufficient energy absorption, enabling effective removal of oxides
-      and contaminants. The material's inherent durability minimizes thermal damage,
-      protecting conductivity and structural integrity—cleaner surfaces boost performance
-      in electronics and plumbing. Its quick heat dissipation can complicate the task,
-      yet controlled processes yield clean, restored finishes.
+    material_description: Copper's superior thermal conductivity, it dissipates heat
+      rapidly during laser cleaning and thus preserves surface integrity unlike ferrous
+      metals that warp easily.
     contamination:
       valid:
       - copper_patina
@@ -40149,13 +40143,9 @@ materials:
         the dense structure beneath. Overlap passes slightly to restore even surfaces.
         Tends to clean efficiently in industrial settings like automotive parts, but
         watch for uneven heating that could warp thin sections.
-    material_description: Steel stands out as a durable ferrous metal widely used
-      in automotive, construction, and manufacturing sectors. Its strong structure
-      and resistance to oxidation make it ideal for laser cleaning, where the process
-      removes contaminants like rust or coatings without altering the base material.
-      This approach preserves surface integrity, cuts down on waste, and speeds up
-      preparation for further applications. High reflectivity can demand tuned laser
-      settings, yet the results hold up well across industrial uses.
+    material_description: Steel excels in laser cleaning applications through its
+      robust oxidation resistance, enabling precise contaminant removal without compromising
+      structural integrity or surface quality.
     contamination:
       valid:
       - rust_oxidation
@@ -43725,13 +43715,9 @@ materials:
         building up multiple light passes clears buildup effectively while preserving
         its durability. Just watch out at the end for any signs of discoloration,
         and dial back if needed to keep that protective shine intact.
-    material_description: Titanium shows strong durability and low weight. Its corrosion
-      resistance safeguards surfaces in harsh environments. In laser cleaning, high
-      heat tolerance enables contaminant removal without damaging the base material.
-      Moderate light absorption supports precise energy delivery, while its dense
-      structure limits deep penetration. These properties fit well for aerospace and
-      medical applications, where clean, intact finishes ensure reliable performance.
-      Low surface irregularities help achieve uniform treatment results.
+    material_description: Titanium shows unique self-healing oxide layer so laser
+      cleaning removes contaminants precisely from surfaces in medical devices without
+      causing thermal damage during exposure.
     contamination:
       valid:
       - industrial_oil

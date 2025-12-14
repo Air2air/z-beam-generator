@@ -383,7 +383,8 @@ distinctive markers per paragraph as specified in your voice instructions."""
                 variation_seed=variation_seed,
                 voice=voice,  # NEW: Pass full voice profile for grammar_norms access
                 humanness_layer=humanness_layer,  # NEW: Universal Humanness Layer
-                faq_count=faq_count  # Pass FAQ count
+                faq_count=faq_count,  # Pass FAQ count
+                item_data=item_data  # NEW: Pass item_data for template placeholders
             )
         else:
             # Fallback to legacy generic prompt
@@ -408,7 +409,8 @@ distinctive markers per paragraph as specified in your voice instructions."""
         variation_seed: Optional[int] = None,
         voice: Optional[Dict] = None,  # NEW: Full voice profile for grammar_norms access
         humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer
-        faq_count: Optional[int] = None  # For FAQ generation
+        faq_count: Optional[int] = None,  # For FAQ generation
+        item_data: Optional[Dict] = None  # NEW: Full item data for template placeholders
     ) -> str:
         """
         Build prompt using component specification and domain context.

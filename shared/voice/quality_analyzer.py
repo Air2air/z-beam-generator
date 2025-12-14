@@ -55,7 +55,13 @@ class QualityAnalyzer:
     Provides single interface for all text quality assessment.
     """
     
-    def __init__(self, api_client=None, strict_mode: bool = True, learning_db_path: str = 'z-beam.db'):
+    def __init__(
+        self, 
+        api_client=None, 
+        strict_mode: bool = True, 
+        learning_db_path: str = 'z-beam.db',
+        weights: Optional[Dict[str, float]] = None
+    ):
         """
         Initialize quality analyzer.
         
@@ -63,6 +69,7 @@ class QualityAnalyzer:
             api_client: Optional API client (Winston + voice enhancement)
             strict_mode: Use STRICT thresholds for AI detection (DEFAULT: True)
             learning_db_path: Path to learning database for benchmarks
+            weights: Optional learned weights for quality scoring (winston, subjective, readability)
         """
         # PRIORITY 1: Enhanced AI Detection (strict mode DEFAULT TRUE)
         self.enhanced_ai_detector = EnhancedAIDetector(
@@ -74,6 +81,11 @@ class QualityAnalyzer:
         self.ai_detector = AIDetector(strict_mode=strict_mode)
         
         self.strict_mode = strict_mode
+        
+        # Store learned weights (if provided)
+        self.learned_weights = weights
+        if weights:
+            logger.info(f"Using learned weights: {weights}")
         
         # Voice validation requires API client (optional)
         self.voice_validator = VoicePostProcessor(api_client) if api_client else None
