@@ -546,7 +546,9 @@ class Generator:
             raise ValueError(f"Content extraction failed: {e}")
         
         # Add sparse cross-links (UPDATED - Dec 14, 2025)
+        # Documentation: docs/03-components/text/CROSSLINKING.md
         # Apply to all text fields: strings, dicts (micro), and lists (FAQ)
+        # Automatically links materials/contaminants mentioned in generated text
         try:
             self.logger.info("🔗 Adding cross-links...")
             
