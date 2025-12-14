@@ -1,9 +1,9 @@
 # Documentation Map - Z-Beam Generator
 
 **🗺️ Master Navigation for All Documentation**  
-**Last Updated**: December 12, 2025  
+**Last Updated**: December 13, 2025  
 **For**: AI Assistants, Developers, Contributors, and Users  
-**Recent Cleanup**: December 2025 consolidation (31 temporal files archived, 2 guides consolidated)
+**Recent Updates**: Enhanced AI detection system, unique properties emphasis in prompts
 
 ---
 
@@ -43,6 +43,8 @@ This is THE comprehensive guide for all AI assistants. Contains:
 | **Learn architecture** | `docs/02-architecture/` |
 | **Review recent changes** | `docs/archive/2025-11/` (52 archived docs) |
 | **Image generation system** | `IMAGE_CENTRALIZATION_PLAN_NOV27_2025.md` |
+| **Enhanced AI detection** | `ENHANCED_AI_DETECTION_DEC13_2025.md` ⭐ NEW |
+| **Unique properties emphasis** | `UNIQUE_PROPERTIES_EMPHASIS_DEC13_2025.md` ⭐ NEW |
 
 ---
 
