@@ -557,10 +557,10 @@ class HumannessOptimizer:
         # 🎲 RANDOMIZE WORD COUNT VARIATION (NEW - Dec 12, 2025)
         # Base variation from config, then add randomization for each generation
         # This creates unpredictable variation percentages (not just fixed ±50%)
-        base_variation = self.config.get('word_count_variation', 0.50)
+        base_variation = self.config.get('word_count_variation', 0.80)  # ±80% default
         
         # Random adjustment: ±20% of base variation
-        # Examples: base 0.50 → range 0.40-0.60 (±40% to ±60%)
+        # Examples: base 0.80 → range 0.64-0.96 (±64% to ±96%)
         variation_adjustment = random.uniform(-0.20, 0.20) * base_variation
         randomized_variation = base_variation + variation_adjustment
         
@@ -872,7 +872,7 @@ NOTE: Voice style comes from assigned author persona (specified in VOICE INSTRUC
         """
         if self._current_variation is not None:
             return self._current_variation
-        return self.config.get('word_count_variation', 0.50)
+        return self.config.get('word_count_variation', 0.80)  # ±80% default
 
 
 # Convenience function for standalone usage
