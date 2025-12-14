@@ -220,6 +220,12 @@ class Generator:
         # Load item data using domain adapter
         item_data = self._get_item_data(identifier)
         
+        # Merge any additional context from kwargs (e.g., existing_content for postprocessing)
+        # CRITICAL: Don't overwrite item_data keys, only add missing ones
+        for key, value in kwargs.items():
+            if key not in item_data and value is not None:
+                item_data[key] = value
+        
         # Get author ID using adapter (domain-agnostic)
         author_id = self.adapter.get_author_id(item_data)
         voice = self._get_persona_by_author_id(author_id)
@@ -255,7 +261,8 @@ class Generator:
             domain=self.domain,
             enrichment_params=enrichment_params,
             humanness_layer="",  # Empty first to measure base size
-            faq_count=faq_count
+            faq_count=faq_count,
+            item_data=item_data  # Pass item_data for template placeholders
         )
         
         base_size = len(base_prompt)
@@ -292,7 +299,8 @@ class Generator:
             domain=self.domain,
             enrichment_params=enrichment_params,
             humanness_layer=final_humanness,
-            faq_count=faq_count
+            faq_count=faq_count,
+            item_data=item_data  # Pass item_data for template placeholders
         )
         
         print(f"📊 Final prompt: {len(prompt):,} chars (base: {base_size:,}, humanness: {len(final_humanness):,})")

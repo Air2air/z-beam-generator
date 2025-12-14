@@ -87,10 +87,17 @@ class PromptBuilder:
         # Load profiles
         profiles = PromptBuilder._load_technical_profiles()
         
-        # Fallback if profiles not loaded or component not found
-        if not profiles or 'profiles' not in profiles or component_type not in profiles['profiles']:
-            logger.warning(f"Technical profile not found for {component_type}, using fallback")
-            return "Include measurements naturally when they help explain the result."
+        # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
+        if not profiles or 'profiles' not in profiles:
+            raise FileNotFoundError(
+                f"Technical profiles file not found or invalid at shared/text/templates/profiles/technical_profiles.yaml. "
+                f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
+            )
+        
+        if component_type not in profiles['profiles']:
+            # Component doesn't use technical profiles - return empty string (not a fallback)
+            logger.debug(f"Component '{component_type}' does not use technical profiles (not in profiles YAML)")
+            return ""
         
         component_profile = profiles['profiles'][component_type]
         
@@ -106,13 +113,17 @@ class PromptBuilder:
         else:
             level = 'detailed'
         
-        # Get guidance from profile
+        # Get guidance from profile - FAIL-FAST if missing
         technical_approach = component_profile.get('technical_approach', {})
         guidance = technical_approach.get(level, '')
         
         if not guidance:
-            logger.warning(f"No {level} guidance for {component_type}, using fallback")
-            return "Include measurements naturally when they help explain the result."
+            raise ValueError(
+                f"No '{level}' technical guidance found for component '{component_type}'. "
+                f"Profile exists but missing technical_approach.{level} entry. "
+                f"Fix shared/text/templates/profiles/technical_profiles.yaml. "
+                f"NO FALLBACKS permitted."
+            )
         
         logger.debug(f"Using {level} technical guidance for {component_type}")
         return guidance.strip()
@@ -133,10 +144,17 @@ class PromptBuilder:
         # Load profiles
         profiles = PromptBuilder._load_rhythm_profiles()
         
-        # Fallback if profiles not loaded or component not found
-        if not profiles or 'profiles' not in profiles or component_type not in profiles['profiles']:
-            logger.warning(f"Rhythm profile not found for {component_type}, using fallback")
-            return "Mix sentence lengths naturally."
+        # FAIL-FAST: No fallbacks permitted per .github/copilot-instructions.md
+        if not profiles or 'profiles' not in profiles:
+            raise FileNotFoundError(
+                f"Rhythm profiles file not found or invalid at shared/text/templates/profiles/rhythm_profiles.yaml. "
+                f"This file is REQUIRED for all text generation. NO FALLBACKS permitted."
+            )
+        
+        if component_type not in profiles['profiles']:
+            # Component doesn't use rhythm profiles - return empty string (not a fallback)
+            logger.debug(f"Component '{component_type}' does not use rhythm profiles (not in profiles YAML)")
+            return ""
         
         component_profile = profiles['profiles'][component_type]
         
@@ -278,7 +296,8 @@ distinctive markers per paragraph as specified in your voice instructions."""
         enrichment_params: Optional[Dict] = None,  # Phase 3+: Technical intensity control
         variation_seed: Optional[int] = None,
         humanness_layer: Optional[str] = None,  # NEW: Universal Humanness Layer instructions
-        faq_count: Optional[int] = None  # For FAQ generation
+        faq_count: Optional[int] = None,  # For FAQ generation
+        item_data: Optional[Dict] = None  # NEW: Full item data for template placeholders
     ) -> str:
         """
         Build unified prompt combining all elements.
@@ -293,6 +312,7 @@ distinctive markers per paragraph as specified in your voice instructions."""
             domain: Content domain (materials, history, recipes, etc.)
             variation_seed: Optional seed for variation (defeats caching)
             humanness_layer: Dynamic humanness instructions from HumannessOptimizer (NEW)
+            item_data: Full item data dict for extracting template placeholders (NEW)
             
         Returns:
             Complete prompt string
@@ -447,24 +467,36 @@ DOMAIN GUIDANCE: {domain_ctx.focus_template}""".strip()
             # CRITICAL: These are OPTIONAL placeholders for cross-domain compatibility.
             # Templates that use placeholders not listed here MUST provide them via facts/context.
             # Empty strings allow templates to use {placeholder} without KeyError IF the value is optional.
+            
+            # Extract from item_data if provided, otherwise use defaults/empty
+            item_data = item_data or {}
+            
             template_params = {
                 'author': author,
+                'author_name': author,  # Alias for postprocess templates
+                'author_country': country,  # Explicit country for postprocess
                 'material': topic,
-                'identifier': topic,  # Some templates use {identifier} instead of {material}
+                'material_name': topic,  # Alias for postprocess templates
+                'identifier': topic,  # Generic identifier
+                'contaminant': topic,  # For contaminants domain
+                'contaminant_name': topic,  # Alias for contaminants
                 'country': country,
                 'length': length,
                 'technical_guidance': technical_guidance,
                 'sentence_guidance': sentence_guidance,
                 'facts': facts,
+                'properties': facts,  # Alias - properties are in facts
                 'context': facts if facts else context,
                 'faq_count': faq_count,
                 'voice_instruction': voice_instruction,  # CRITICAL: Must be present
-                # Optional cross-domain placeholders (empty if not provided)
-                'category': '',
-                'context_notes': '',
-                'description': '',
-                'machine_settings': '',
-                'challenges': ''
+                # Extract from item_data (postprocess and domain-specific)
+                'category': item_data.get('category', ''),
+                'subcategory': item_data.get('subcategory', ''),
+                'context_notes': item_data.get('context_notes', ''),
+                'description': item_data.get('description', ''),
+                'machine_settings': item_data.get('machine_settings', ''),
+                'challenges': item_data.get('challenges', ''),
+                'existing_content': item_data.get('existing_content', '')  # For postprocess templates
             }
             
             # FAIL-FAST: No try/except fallback. If template requires a placeholder not in
