@@ -51,7 +51,7 @@ class QualityEvaluatedGenerator:
     
     Responsibilities:
     - Generate content using Generator (single-pass)
-    - Save immediately to Materials.yaml
+    - Save immediately to domain data file
     - Evaluate with SubjectiveEvaluator AFTER save
     - Log learning data (Winston, Realism, Structural)
     - Return success with quality scores
@@ -290,8 +290,8 @@ class QualityEvaluatedGenerator:
             logger.debug("Quality analysis skipped - VoicePostProcessor not available")
         
         # SAVE IMMEDIATELY (no gating - voice validation for logging only)
-        print(f"\n💾 Saving to Materials.yaml...")
-        self._save_to_yaml(material_name, component_type, content)
+        print(f"\n💾 Saving to {self.generator.domain} data...")
+        self._save(material_name, component_type, content)
         print(f"   ✅ Saved successfully")
         
         # Initialize quality scores
@@ -928,24 +928,27 @@ class QualityEvaluatedGenerator:
             logger.warning(f"   ⚠️  Failed to log attempt to database: {e}")
             print(f"   ⚠️  Failed to log attempt to database: {e}")
     
-    def _save_to_yaml(self, material_name: str, component_type: str, content: Any):
-        """Save content to Materials.yaml (atomic write)"""
-        # Use SimpleGenerator's save method
+    def _save(self, material_name: str, component_type: str, content: str):
+        """Save content to domain data file (atomic write)"""
+        # Use Generator's save method (domain-aware)
         self.generator._save_to_yaml(material_name, component_type, content)
     
     def _get_author_id(self, material_name: str) -> int:
-        """Get author_id for material from Materials.yaml - FAIL-FAST if missing"""
-        from domains.materials.data_loader import load_materials_data
+        """Get author_id for item from domain data file - FAIL-FAST if missing"""
         from data.authors.registry import resolve_author_for_generation
         
-        materials_data = load_materials_data()
-        material_data = materials_data.get('materials', {}).get(material_name)
+        # Use generator's domain adapter to load data
+        all_data = self.generator.adapter.load_all_data()
+        data_root_key = self.generator.adapter.data_root_key
+        domain = self.generator.domain
         
-        if not material_data:
-            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
+        item_data = all_data.get(data_root_key, {}).get(material_name)
         
-        # FAIL-FAST: No fallbacks - material must have valid author.id
-        author_info = resolve_author_for_generation(material_data)
+        if not item_data:
+            raise ValueError(f"Item '{material_name}' not found in {domain} data")
+        
+        # FAIL-FAST: No fallbacks - item must have valid author.id
+        author_info = resolve_author_for_generation(item_data)
         return author_info['id']
     
     def _get_author_data(self, material_name: str) -> Dict[str, Any]:
@@ -954,17 +957,20 @@ class QualityEvaluatedGenerator:
         
         Returns dict with 'name' and 'country' keys required by VoicePostProcessor.
         """
-        from domains.materials.data_loader import load_materials_data
         from data.authors.registry import resolve_author_for_generation
         
-        materials_data = load_materials_data()
-        material_data = materials_data.get('materials', {}).get(material_name)
+        # Use generator's domain adapter to load data
+        all_data = self.generator.adapter.load_all_data()
+        data_root_key = self.generator.adapter.data_root_key
+        domain = self.generator.domain
         
-        if not material_data:
-            raise ValueError(f"Material '{material_name}' not found in Materials.yaml")
+        item_data = all_data.get(data_root_key, {}).get(material_name)
+        
+        if not item_data:
+            raise ValueError(f"Item '{material_name}' not found in {domain} data")
         
         # Get full author info
-        author_info = resolve_author_for_generation(material_data)
+        author_info = resolve_author_for_generation(item_data)
         
         return {
             'name': author_info.get('name', 'Unknown'),

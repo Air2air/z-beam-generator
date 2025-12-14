@@ -10,12 +10,12 @@ contamination_patterns:
         material appearance and properties.
     category: contamination
     context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-    description: Adhesive-residue contamination clings tenaciously to surfaces from
-      tape remnants. Before cleaning attempts, sticky layers resist simple wiping,
-      so solvents dissolve incompletely and leave bonds intact. Unlike dust that brushes
-      away freely or oils that evaporate readily under heat, this residue hardens
-      on metals and plastics, causing uneven adhesion during removal. Scraping risks
-      substrate damage, so gentle methods are needed.
+    description: Adhesive residue forms tenacious films. It clings to metals and plastics
+      so surfaces show persistent tackiness. After exposure, residue hardens and resists
+      solvents because bonds hold firmly. Unlike dust that brushes away or oils that
+      evaporate, this contamination demands gentle cleaning. Scraping risks damage,
+      so methods apply carefully. In observations, it differs from water-based stains
+      that rinse off readily.
     eeat:
       citations:
       - IEC 60825 - Safety of Laser Products
@@ -590,9 +590,11 @@ contamination_patterns:
           coverage: Variable, from sparse spots to extensive coverage in humid conditions.
           pattern: Scattered patches or streaks, often following grain lines or in
             moist, unsealed areas.
-  aluminum-oxidation:
     author:
       id: 2
+  aluminum-oxidation:
+    author:
+      id: 3
       name: Alessandro Moretti
     micro:
       after: Post-cleaning reveals restored surface with aluminum oxidation successfully
@@ -1086,6 +1088,8 @@ contamination_patterns:
             intensity and duration.
           pattern: It appears in irregular patches or streaks, following the wood's
             grain or areas of direct heat contact, and can be spotty or more widespread.
+    author:
+      id: 4
   anodizing-defects:
     composition:
     - Al₂O₃
