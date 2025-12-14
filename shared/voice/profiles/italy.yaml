@@ -83,4 +83,25 @@ generation_constraints:
   technical: {units_mandatory: true, pattern_flex: "0.3 trace"}
 
 signature_phrases: []  # REMOVED - use direct statements without abstract subjects
+
+forbidden:
+  theatrical:
+    - "presents a challenge"
+    - "offers significant"
+    - "provides excellent"
+    - "making it ideal"
+  direct_address:
+    - "you"
+    - "your"
+    - "we"
+    - "our"
+  conversational:
+    - "quite"
+    - "rather"
+    - "pretty much"
+  abstract_subjects:
+    - "this presents"
+    - "that offers"
+    - "which provides"
+
 quality_checks: {formality: 80+, accuracy: 95+, authenticity: 85+, restraint: 95+, variation: 85+}

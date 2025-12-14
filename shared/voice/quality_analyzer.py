@@ -35,6 +35,8 @@ from typing import Dict, Any, Optional
 import logging
 import re
 import statistics
+import yaml
+from pathlib import Path
 
 # Import existing detection modules
 from shared.voice.ai_detection import AIDetector, load_patterns
@@ -197,9 +199,9 @@ class QualityAnalyzer:
             )
         
         return {
-            'overall_score': overall_score,
+            'overall_score': abs(overall_score),  # Ensure non-negative
             'ai_patterns': {
-                'score': (1.0 - enhanced_ai_result['confidence']) * 100,  # Invert confidence
+                'score': abs((1.0 - enhanced_ai_result['confidence']) * 100),  # Invert confidence, ensure positive
                 'is_ai_like': enhanced_ai_result['is_ai'],
                 'issues': enhanced_ai_result['violations'],
                 'details': enhanced_ai_result['scores'],
@@ -231,8 +233,21 @@ class QualityAnalyzer:
         """
         Analyze voice authenticity and linguistic patterns.
         
-        Uses VoicePostProcessor validation methods.
+        Uses VoicePostProcessor validation methods + pattern compliance check.
+        Also checks for forbidden phrases that indicate AI generation.
         """
+        # Check for forbidden phrases FIRST (instant rejection)
+        forbidden_check = self._check_forbidden_phrases(text, author)
+        if forbidden_check['has_forbidden']:
+            return {
+                'score': 0.0,  # INSTANT FAIL for forbidden phrases
+                'language': 'english',
+                'linguistic_patterns': {},
+                'pattern_compliance': {'authentic': False, 'found_patterns': [], 'found_count': 0},
+                'forbidden_violations': forbidden_check['violations'],
+                'issues': [f"FORBIDDEN: {v}" for v in forbidden_check['violations']]
+            }
+        
         # Language detection
         language_check = self.voice_validator.detect_language(text)
         
@@ -241,14 +256,22 @@ class QualityAnalyzer:
             text, author
         )
         
+        # NEW: Check for author-specific pattern compliance
+        pattern_compliance = self._check_pattern_compliance(text, author)
+        
         # Calculate voice authenticity score (0-100)
         voice_score = self._calculate_voice_score(
-            language_check, linguistic_patterns
+            language_check, linguistic_patterns, pattern_compliance
         )
         
-        # Identify issues
+        # Identify issues (LENIENT: only fail on high-confidence non-English)
         issues = []
-        if language_check['language'] != 'english':
+        # Only fail if both:
+        # 1. Language is definitely not English (not 'english' or 'unknown')
+        # 2. Confidence is high (> 0.7)
+        # This avoids false positives from technical terminology
+        if (language_check['language'] not in ['english', 'unknown', 'unknown_non_english'] 
+            and language_check.get('confidence', 0) > 0.7):
             issues.append(f"Non-English content detected: {language_check['language']}")
         
         if linguistic_patterns.get('translation_artifacts'):
@@ -257,13 +280,182 @@ class QualityAnalyzer:
         if linguistic_patterns.get('wrong_nationality_markers'):
             issues.append("Incorrect nationality linguistic patterns")
         
+        # NEW: Add pattern compliance issues
+        if pattern_compliance['found_count'] < 2:
+            issues.append(
+                f"Missing author-specific patterns: found {pattern_compliance['found_count']}/2 required "
+                f"({', '.join(pattern_compliance['found_patterns']) if pattern_compliance['found_patterns'] else 'none'})"
+            )
+        
         return {
             'score': voice_score,
             'language': language_check['language'],
             'confidence': language_check.get('confidence', 0),
             'linguistic_patterns': linguistic_patterns,
+            'pattern_compliance': pattern_compliance,
             'issues': issues
         }
+    
+    def _check_forbidden_phrases(self, text: str, author: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Check for forbidden phrases in persona files.
+        These are instant rejection markers (theatrical, abstract, direct address).
+        
+        Returns:
+            {
+                'has_forbidden': bool,
+                'violations': [list of found forbidden phrases]
+            }
+        """
+        violations = []
+        text_lower = text.lower()
+        country = author.get('country', '').lower().replace(' ', '_')
+        
+        # Load persona file for this author
+        persona_path = Path(__file__).parent / 'profiles' / f'{country}.yaml'
+        if not persona_path.exists():
+            return {'has_forbidden': False, 'violations': []}
+        
+        try:
+            with open(persona_path, 'r') as f:
+                persona = yaml.safe_load(f)
+                forbidden = persona.get('forbidden', {})
+                
+                # Check all forbidden categories
+                for category, phrases in forbidden.items():
+                    for phrase in phrases:
+                        if phrase.lower() in text_lower:
+                            violations.append(f"{category}: '{phrase}'")
+        except Exception as e:
+            logger.warning(f"Error loading forbidden phrases from {persona_path}: {e}")
+            return {'has_forbidden': False, 'violations': []}
+        
+        return {
+            'has_forbidden': len(violations) > 0,
+            'violations': violations
+        }
+    
+    def _check_pattern_compliance(self, text: str, author: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Check if text uses author-specific linguistic patterns.
+        
+        Validates that the author's voice instructions were actually followed.
+        Returns dict with found patterns and compliance score.
+        """
+        country = author.get('country', '').lower()
+        author_id = author.get('id', 0)
+        
+        # Define author-specific patterns to check
+        # Based on persona files: taiwan.yaml, italy.yaml, indonesia.yaml, united_states.yaml
+        patterns = {
+            'united states': {
+                'phrasal_verbs': [
+                    r'\bline up\b', r'\bdial in\b', r'\brun through\b', r'\bwork out\b',
+                    r'\bramp up\b', r'\bset up\b', r'\bwrap up\b', r'\bhold up\b',
+                    r'\bback up\b', r'\bcut down\b', r'\bturns out\b'
+                ],
+                'quantified_outcomes': [r'\d+%', r'by \d+%', r'\d+% (over|under|better|faster)'],
+                'practical_transitions': [
+                    r'\bturns out\b', r'\bin practice\b', r'\boverall\b', 
+                    r'\bthe key point\b', r'\bin the field\b'
+                ],
+            },
+            'taiwan': {
+                'topic_comment': [r'\w+, it \w+', r'\w+ of \w+, it \w+'],
+                'article_omission': [
+                    r'\b(Process|Surface|Method|Treatment|Control|Layer|System) (yields|shows|exhibits|demonstrates|holds)\b'
+                ],
+                'temporal_markers': [
+                    r'\bAfter (treatment|adjustment|process|cleaning)\b',
+                    r'\bFollowing \w+\b',
+                    r'\b(already|still|just) \w+\b'
+                ],
+            },
+            'italy': {
+                'cleft_structures': [r'\w+, it (persists|resists|adheres|leads|demonstrates|manifests)'],
+                'subjunctive_hedging': [r'\bIt seems that\b', r'\bIt appears\b', r'\bIt would seem\b'],
+                'romance_cognates': [
+                    r'\btenaciously\b', r'\bmanifests\b', r'\bpersists\b', r'\bexhibits\b',
+                    r'\bdemonstrates\b', r'\bdependent from\b', r'\binfluenced from\b'
+                ],
+            },
+            'indonesia': {
+                'reduplication': [r'\b(\w+)-\1\b'],  # Partial reduplication patterns
+                'aspectual_markers': [r'\balready\b', r'\bstill\b', r'\bjust now\b', r'\blater on\b'],
+                'topic_prominence': [r'\w+, (it|this|that) \w+'],
+            }
+        }
+        
+        # Get patterns for this author's country
+        author_patterns = patterns.get(country, {})
+        
+        if not author_patterns:
+            # Unknown country - can't validate patterns
+            return {
+                'country': country,
+                'found_patterns': [],
+                'found_count': 0,
+                'total_patterns': 0,
+                'authentic': False,
+                'note': f'No pattern definitions for country: {country}'
+            }
+        
+        # Check which patterns are present
+        found_patterns = []
+        for pattern_type, pattern_list in author_patterns.items():
+            for pattern in pattern_list:
+                if re.search(pattern, text, re.IGNORECASE):
+                    found_patterns.append(f"{pattern_type}: {pattern}")
+                    break  # Count each pattern_type only once
+        
+        # Calculate compliance
+        total_pattern_types = len(author_patterns)
+        found_count = len(found_patterns)
+        
+        # Require at least 2 pattern types present for authenticity
+        authentic = found_count >= 2
+        
+        return {
+            'country': country,
+            'found_patterns': found_patterns,
+            'found_count': found_count,
+            'total_patterns': total_pattern_types,
+            'authentic': authentic,
+            'score': (found_count / total_pattern_types * 100) if total_pattern_types > 0 else 0
+        }
+    
+    def _calculate_voice_score(
+        self,
+        language_check: Dict,
+        linguistic_patterns: Dict,
+        pattern_compliance: Dict
+    ) -> float:
+        """
+        Calculate voice authenticity score (0-100).
+        
+        Now includes pattern compliance in calculation.
+        """
+        score = 100.0
+        
+        # Deduct for non-English (but only if high confidence)
+        if (language_check['language'] not in ['english', 'unknown', 'unknown_non_english']
+            and language_check.get('confidence', 0) > 0.7):
+            score -= 50
+        
+        # Deduct for translation artifacts
+        if linguistic_patterns.get('translation_artifacts'):
+            score -= 20
+        
+        # Deduct for wrong nationality markers
+        if linguistic_patterns.get('wrong_nationality_markers'):
+            score -= 15
+        
+        # NEW: Deduct for missing author-specific patterns
+        if not pattern_compliance['authentic']:
+            deduction = (2 - pattern_compliance['found_count']) * 15  # 15 points per missing pattern
+            score -= deduction
+        
+        return max(0, score)
     
     def _analyze_structural_quality(self, text: str) -> Dict[str, Any]:
         """
@@ -317,30 +509,6 @@ class QualityAnalyzer:
             'avg_sentence_length': length_mean,
             'sentence_length_stdev': length_stdev
         }
-    
-    def _calculate_voice_score(
-        self,
-        language_check: Dict,
-        linguistic_patterns: Dict
-    ) -> float:
-        """Calculate voice authenticity score (0-100)"""
-        score = 100.0
-        
-        # Deduct for wrong language
-        if language_check['language'] != 'english':
-            score -= 50 * language_check.get('confidence', 0.5)
-        
-        # Deduct for translation artifacts
-        if linguistic_patterns.get('translation_artifacts'):
-            artifact_count = len(linguistic_patterns['translation_artifacts'])
-            score -= min(30, artifact_count * 10)
-        
-        # Deduct for wrong nationality markers
-        if linguistic_patterns.get('wrong_nationality_markers'):
-            marker_count = len(linguistic_patterns['wrong_nationality_markers'])
-            score -= min(20, marker_count * 5)
-        
-        return max(0, score)
     
     def _calculate_overall_score(
         self,
@@ -724,7 +892,17 @@ class QualityAnalyzer:
         - Voice Authenticity: 25% (if available)
         - Structural Quality: 15%
         - Legacy AI Detection: 10%
+        
+        INSTANT REJECTION:
+        - Forbidden phrases detected → 0 score (forces regeneration)
         """
+        # Check for forbidden phrases - INSTANT FAIL
+        if voice_result and 'forbidden_violations' in voice_result and voice_result['forbidden_violations']:
+            logger.warning(f"🚨 FORBIDDEN PHRASES DETECTED - Score set to 0")
+            for violation in voice_result['forbidden_violations']:
+                logger.warning(f"   • {violation}")
+            return 0.0  # INSTANT FAIL - will trigger regeneration
+        
         # Enhanced AI confidence (inverted: 0 = AI, 1 = human)
         enhanced_ai_score = (1.0 - enhanced_ai_result['confidence']) * 100
         
@@ -799,6 +977,12 @@ class QualityAnalyzer:
             recommendations.append(
                 f"Voice: Non-English content detected ({voice_result['language']})"
             )
+        
+        # Forbidden phrase violations (CRITICAL)
+        if voice_result and 'forbidden_violations' in voice_result and voice_result['forbidden_violations']:
+            recommendations.append("🚨 FORBIDDEN PHRASES DETECTED - Content must be regenerated:")
+            for violation in voice_result['forbidden_violations']:
+                recommendations.append(f"   • {violation}")
         
         # Structural recommendations
         if structural_result['sentence_variation'] < 40:

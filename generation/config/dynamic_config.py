@@ -100,23 +100,22 @@ class DynamicConfig:
     
     def calculate_max_tokens(self, component_type: str) -> int:
         """
-        Calculate max tokens directly from word count target.
+        Return effectively unlimited max_tokens to allow natural variation.
         
-        NO MULTIPLIER - config_loader already converts words × 1.3 = tokens.
-        Previously had 0.8-1.3 multiplier causing double-conversion:
-        - 80 words → 104 tokens → 83 tokens (× 0.8) → truncated at 66 words
+        CHANGE (Dec 13, 2025): Removed token limits entirely.
+        - Previously: target_words × 1.3 = tokens (e.g., 100 words → 130 tokens)
+        - Now: High limit (4096) allows LLM to determine natural length
         
-        Now returns tokens directly from config_loader conversion.
+        Length variation now comes from:
+        1. word_count_variation setting (±70-80%)
+        2. Author voice patterns (persona-specific preferences)
+        3. Prompt instructions (domain-specific guidance)
         
         Returns:
-            Max tokens for component (from word target × 1.3)
+            4096 tokens (effectively unlimited for short content)
         """
-        # Get tokens from config (already converted from words)
-        tokens = self.base_config.get_max_tokens(component_type)
-        
-        # Return directly - NO MULTIPLIER
-        # Length variation is handled by config target, not runtime multiplication
-        return tokens
+        # Return high token limit - let variation come from other factors
+        return 4096
     
     def calculate_retry_behavior(self) -> Dict[str, Any]:
         """

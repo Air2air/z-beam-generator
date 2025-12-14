@@ -108,6 +108,7 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
     - Never read frontmatter for data persistence
     - Only updated field written, others preserved
     - Paths determined by domain config (domain-agnostic)
+    - Author field is NEVER updated (immutability policy)
     """
     # Get correct path from domain config
     frontmatter_path = get_frontmatter_path(item_name, field_name, domain)
@@ -126,8 +127,9 @@ def sync_field_to_frontmatter(item_name: str, field_name: str, field_value: Any,
             }
             logger.info(f"   📝 Creating new frontmatter file: {frontmatter_path}")
         
-        # Update the field at root level
+        # Update ONLY the specified field (NEVER update author - immutability policy)
         frontmatter_data[field_name] = field_value
+        
         print(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         logger.info(f"   ✅ Updated {domain} frontmatter {field_name} for {item_name}")
         

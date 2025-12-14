@@ -106,22 +106,14 @@ component_extraction:
   faq:
     extraction_strategy: json_list      # Parse as JSON array
 
-# Component Token Targets
-# Used by config_loader.get_max_tokens() to calculate API max_tokens
-# Calculation: target_words × 1.3 = tokens
-component_lengths:
-  micro:
-    target: 50                          # ~65 tokens
-  material_description:
-    target: 100                         # ~130 tokens
-  settings_description:
-    target: 100                         # ~130 tokens
-  description:
-    target: 200                         # ~260 tokens (contamination descriptions)
-  component_summary:
-    target: 70                          # 2 sentences × ~35 words = ~91 tokens
-  faq:
-    target: 500                         # FAQ can be longer (~650 tokens)
+# Component Token Targets - REMOVED (Dec 13, 2025)
+# Token limits removed to allow natural length variation across authors
+# Length is now controlled by:
+#   1. Prompt instructions (domain prompts define style/structure)
+#   2. word_count_variation setting (±70% variation)
+#   3. Author voice patterns (persona-specific preferences)
+# NO max_tokens limits - LLM determines natural stopping point
+component_lengths: {}
 
 # Dynamic Calculation Parameters
 # Zero hardcoded values policy: All calculation factors configured here

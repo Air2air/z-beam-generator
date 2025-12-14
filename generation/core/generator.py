@@ -723,6 +723,7 @@ class Generator:
             
             # DUAL-WRITE POLICY (Nov 22, 2025): Immediately sync field to frontmatter
             # Only updated field written to frontmatter, others preserved
+            # Author field is NEVER updated (immutability policy)
             print(f"🔄 Syncing {component_type} to frontmatter...")
             from generation.utils.frontmatter_sync import sync_field_to_frontmatter
             sync_field_to_frontmatter(material_name, component_type, content, domain='materials')

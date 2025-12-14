@@ -85,10 +85,11 @@ class WeightLearner:
         Initialize weight learner with database connection.
         
         Args:
-            db_path: Path to SQLite database (default: processing/learning/data/learning.db)
+            db_path: Path to SQLite database (default: z-beam.db - legacy database)
         """
         if db_path is None:
-            db_path = Path(__file__).parent / "data" / "learning.db"
+            # Use legacy z-beam.db database (root of project)
+            db_path = Path('z-beam.db')
         
         self.db_path = db_path
         self._ensure_database()
@@ -184,16 +185,16 @@ class WeightLearner:
             conn = sqlite3.connect(str(self.db_path))
             cursor = conn.cursor()
             
-            # Query ALL generations (no filtering by material/component)
+            # Query ALL generations from legacy detection_results table
             query = """
                 SELECT 
                     r.human_score as winston,
-                    r.subjective_overall_score as subjective,
+                    r.composite_quality_score as subjective,
                     r.readability_score as readability,
                     r.success as actual_success
-                FROM generation_results r
+                FROM detection_results r
                 WHERE r.human_score IS NOT NULL
-                    AND r.subjective_overall_score IS NOT NULL
+                    AND r.composite_quality_score IS NOT NULL
                     AND r.readability_score IS NOT NULL
                     AND r.success IS NOT NULL
             """
@@ -316,12 +317,12 @@ class WeightLearner:
             conn = sqlite3.connect(str(self.db_path))
             cursor = conn.cursor()
             
-            # Count total samples
+            # Count total samples from legacy detection_results table
             cursor.execute("""
                 SELECT COUNT(*) 
-                FROM generation_results 
+                FROM detection_results 
                 WHERE human_score IS NOT NULL 
-                    AND subjective_overall_score IS NOT NULL
+                    AND composite_quality_score IS NOT NULL
                     AND readability_score IS NOT NULL
                     AND success IS NOT NULL
             """)

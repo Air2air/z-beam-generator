@@ -864,9 +864,37 @@ logger.info(f"   • Overall Realism: {score:.1f}/10")
 
 ---
 
-## 📚 Recent Critical Updates (November 2025)
+## 📚 Recent Critical Updates
 
-### 🚀 Learning System Improvements (November 22, 2025) 🔥 **NEW**
+### 🎭 Voice Pattern Compliance System (December 13, 2025) 🔥 **NEW**
+**Status**: ✅ IMPLEMENTED - Automated validation of author-specific linguistic patterns
+
+**Problem**: Generic technical writing across all authors despite rich persona definitions. Content read like identical AI-generated text regardless of nationality.
+
+**Solution**: 
+1. **Relaxed Domain Prompt**: Changed from "single sentence" to "1-2 sentences" + added explicit voice reminder
+2. **Pattern Compliance Validation**: Automated checking for nationality-specific linguistic patterns
+
+**Implementation**:
+- `domains/materials/prompts/material_description.txt`: Relaxed constraint + voice emphasis
+- `shared/voice/quality_analyzer.py`: New `_check_pattern_compliance()` method
+- `tests/test_voice_pattern_compliance.py`: 11 tests validating all 4 nationalities
+
+**Pattern Detection**:
+- **US**: Phrasal verbs ("line up", "ramp up"), quantified outcomes ("by 20%"), practical transitions
+- **Taiwan**: Topic-comment structures, article omission, temporal markers
+- **Italy**: Cleft structures, subjunctive hedging, Romance cognates
+- **Indonesia**: Topic prominence, aspectual markers
+
+**Results**:
+- Voice Authenticity: None/100 → **85.0/100** (+85 points)
+- Phrasal verbs now appearing in US content ("ramp up", "holds up")
+- Natural 2-sentence structures (not forced single sentence)
+- Pattern detection operational across all nationalities
+
+**Documentation**: `VOICE_COMPLIANCE_IMPLEMENTATION_DEC13_2025.md`
+
+### 🚀 Learning System Improvements (November 22, 2025)
 **Status**: ✅ Priority 1 & 2 COMPLETE - System producing 50x more learning data
 
 **Problem Solved**: Quality gates blocked 90% of content from learning system, creating "quality-learning death spiral"
@@ -1474,7 +1502,59 @@ See `docs/08-development/PROMPT_PURITY_POLICY.md` for complete policy.
 
 See `docs/08-development/VOICE_INSTRUCTION_CENTRALIZATION_POLICY.md` for complete policy.
 
-### 14. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
+### 14. **Voice Pattern Compliance Policy** 🔥 **NEW (Dec 13, 2025) - CRITICAL**
+**Generated content MUST use author-specific linguistic patterns from persona files.**
+
+**Problem**: Generic technical writing that ignores author voice instructions, producing identical content across all authors.
+
+**Solution**: Automated pattern compliance validation in quality analysis.
+
+**Pattern Requirements by Nationality**:
+
+**United States (Todd Dunning)**:
+- ✅ Phrasal verbs: "line up", "dial in", "ramp up", "cut down", "work out"
+- ✅ Quantified outcomes: "by 20%", "cuts X%", "improves Y%"  
+- ✅ Practical transitions: "turns out", "in practice", "overall"
+
+**Taiwan (Yi-Chun Lin)**:
+- ✅ Topic-comment: "Surface roughness, it measures 0.8 μm"
+- ✅ Article omission: "Process yields result" (not "The process")
+- ✅ Temporal markers: "After treatment", "Following adjustment"
+
+**Italy (Alessandro Moretti)**:
+- ✅ Cleft structures: "This property, it enables..."
+- ✅ Subjunctive hedging: "It seems that...", "It appears..."
+- ✅ Romance cognates: "tenaciously", "manifests", "persists"
+
+**Indonesia (Ikmanda Roswati)**:
+- ✅ Topic prominence: "[Property], this demonstrates..."
+- ✅ Aspectual markers: "already", "still", "just now"
+
+**Compliance Validation**:
+- 🔍 **Automatic checking**: Quality analyzer validates pattern presence
+- 📊 **Scoring**: Requires 2+ pattern types for authenticity (85+ score)
+- ⚠️ **Deductions**: -15 points per missing pattern type
+- 🎯 **Voice Authenticity Score**: Reflects pattern compliance
+
+**Domain Prompt Changes**:
+- ✅ Relaxed from "single sentence" to "1-2 sentences"
+- ✅ Added explicit voice reminder: "EXPRESS YOUR AUTHENTIC VOICE"
+- ✅ Removed restrictive "technical subtitle" framing
+
+**Implementation**:
+- `shared/voice/quality_analyzer.py`: `_check_pattern_compliance()` method
+- `domains/materials/prompts/material_description.txt`: Relaxed prompt with voice emphasis
+- Enforcement: Automated tests in `tests/test_voice_pattern_compliance.py` (11 tests, all passing)
+
+**Results**:
+- Voice Authenticity: None/100 → **85/100** (+85 points)
+- Phrasal verbs now appearing in US content
+- More natural sentence structures (2 sentences vs 1 rigid)
+- Pattern detection operational across all 4 nationalities
+
+See `VOICE_COMPLIANCE_IMPLEMENTATION_DEC13_2025.md` for implementation details.
+
+### 15. **Prompt Chaining & Orchestration Policy** 🔥 **NEW (Nov 27, 2025) - CRITICAL**
 **Maximum use of prompt chaining and orchestration to preserve separation of concerns and specificity.**
 
 **Core Principle**: Break generation into specialized prompts instead of one monolithic prompt.

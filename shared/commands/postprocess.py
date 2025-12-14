@@ -70,22 +70,6 @@ class PostprocessCommand:
             subjective_evaluator=self.evaluator
         )
         self.generator.generator = domain_generator
-        
-        # Load postprocessing prompt template
-        self.postprocess_prompt = self._load_postprocess_prompt()
-        
-    def _load_postprocess_prompt(self) -> str:
-        """Load postprocessing prompt template for this field type"""
-        prompt_file = f"domains/{self.domain}/prompts/postprocess_{self.field}.txt"
-        
-        if not os.path.exists(prompt_file):
-            raise FileNotFoundError(
-                f"Postprocessing prompt not found: {prompt_file}\n"
-                f"Expected postprocess_{self.field}.txt in {self.domain}/prompts/"
-            )
-        
-        with open(prompt_file, 'r', encoding='utf-8') as f:
-            return f.read()
     
     def _load_frontmatter(self, item_name: str) -> Dict[str, Any]:
         """Load frontmatter YAML file for item"""
