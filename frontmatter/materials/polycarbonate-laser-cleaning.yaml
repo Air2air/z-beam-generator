@@ -1,352 +1,353 @@
-name: Polycarbonate
-slug: polycarbonate
-category: plastic
-subcategory: thermoplastic
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Polycarbonate Laser Cleaning
-material_description: When laser cleaning polycarbonate, I've noticed the biggest hurdle is keeping heat from building up and warping softer plastics like acrylic, but this material's superior toughness and heat resistance mean it can take strong pulses without any distortion, letting you strip contaminants from aerospace components or medical devices while holding onto its clear finish and solid strength
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Plastic
-  href: /materials/plastic
-- label: Thermoplastic
-  href: /materials/plastic/thermoplastic
-- label: Polycarbonate
-  href: /materials/plastic/thermoplastic/polycarbonate
-images:
-  hero:
-    alt: Polycarbonate surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/polycarbonate-laser-cleaning-hero.jpg
+metadata:
+  name: Polycarbonate
+  slug: polycarbonate
+  category: plastic
+  subcategory: thermoplastic
+  content_type: unified_material
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: material
+  title: Polycarbonate Laser Cleaning
+  material_description: When laser cleaning polycarbonate, I've noticed the biggest hurdle is keeping heat from building up and warping softer plastics like acrylic, but this material's superior toughness and heat resistance mean it can take strong pulses without any distortion, letting you strip contaminants from aerospace components or medical devices while holding onto its clear finish and solid strength
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Plastic
+    href: /materials/plastic
+  - label: Thermoplastic
+    href: /materials/plastic/thermoplastic
+  - label: Polycarbonate
+    href: /materials/plastic/thermoplastic/polycarbonate
+  images:
+    hero:
+      alt: Polycarbonate surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/polycarbonate-laser-cleaning-hero.jpg
+    micro:
+      alt: Polycarbonate microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/polycarbonate-laser-cleaning-micro.jpg
   micro:
-    alt: Polycarbonate microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/polycarbonate-laser-cleaning-micro.jpg
-micro:
-  before: You see the polycarbonate surface covered in dark spots and uneven bumps. Dust and grime cling tightly, making the texture rough and patchy under high magnification. This contamination hides the material's natural smoothness and clarity.
-  after: After laser treatment, the surface looks even and bright without those spots. The texture turns smooth and uniform, revealing the clean, glossy finish underneath. Now the polycarbonate shines clearly, free from any clinging dirt.
-faq:
-- question: Can you safely laser clean polycarbonate surfaces without causing **yellowing or clouding**?
-  answer: '**Low fluence prevents yellowing**. Yes, polycarbonate can be safely laser cleaned without yellowing, particularly with a 1064 nm wavelength and fluence carefully controlled below 0.8 J/cm². This technique removes contaminants while holding the substrate temperature well under its thermal degradation threshold, thus avoiding photochemical damage and maintaining optical clarity.'
-- question: What **laser wavelength** is safest for cleaning contaminants from polycarbonate without damaging the substrate?
-  answer: '**Near-IR minimizes thermal damage**. Particularly for polycarbonate cleaning, near-IR wavelengths like 1064 nm remain safest, as they experience poor absorption by the substrate and thus minimize thermal damage. Keep fluence below 0.8 J/cm² using nanosecond pulses at 20 kHz. This method removes contaminants effectively while upholding the polymer''s integrity.'
-- question: How do you remove **mold release agents** from polycarbonate components using laser cleaning?
-  answer: '**Low fluence below damage threshold**. For silicone-based mold releases on polycarbonate, we specifically use a 1064 nm laser at ~0.8 J/cm² fluence. Notably, this ablates the thin organic film effectively while keeping the substrate''s temperature safely below its damage threshold, thus ensuring complete removal.'
-- question: What are the maximum safe fluence levels for laser cleaning polycarbonate surfaces?
-  answer: For laser cleaning of polycarbonate, particularly to avoid melting, keep fluence below 1.0 J/cm². Notably, optimal results emerge around 0.8 J/cm² using 1064 nm wavelength, effectively removing contaminants while preserving the polymer's integrity.
-- question: Can laser cleaning create micro-cracks or stress concentrations in polycarbonate components?
-  answer: Yes, laser cleaning can induce micro-cracks in polycarbonate, particularly from its notch sensitivity. Thus, to avoid this, keep fluence below 0.8 J/cm² and apply a 50% overlap ratio, preventing excessive thermal stress that weakens mechanical properties.
-- question: How does laser cleaning affect the **optical clarity** and light transmission of polycarbonate lenses or windows?
-  answer: '**Maintains high light transmission**. By adopting gentle parameters like 0.8 J/cm² fluence and 500 mm/s scan speed, proper laser cleaning particularly safeguards polycarbonate optics. Notably, this technique eliminates contaminants while curbing surface roughness and haze, thus upholding superior light transmission.'
-- question: What safety precautions are needed when laser cleaning polycarbonate due to potential **hazardous fume generation**?
-  answer: '**Requires HEPA fume extraction**. Decomposition of polycarbonate notably releases bisphenol A along with phenolic compounds. For safety, deploy a high-efficiency fume extractor equipped with HEPA and activated carbon filtration, while limiting laser fluence to below 0.8 J/cm² to curb hazardous fume production. Proper ventilation is thus vital for operator protection.'
-- question: Is laser cleaning suitable for preparing polycarbonate surfaces for **adhesion or coating applications**?
-  answer: '**Increases surface energy micro-textures**. Laser cleaning excels at readying polycarbonate for adhesion, particularly through elevating surface energy and generating micro-textures. Notably, a 1064 nm wavelength at 0.8 J/cm² fluence eliminates contaminants and adjusts surface chemistry, thus exceeding solvent wiping in bond strength.'
-- question: How do you remove oxidation or **UV degradation** from aged polycarbonate using laser cleaning?
-  answer: '**Selective ablation below 0.8 J/cm²**. For aged polycarbonate, we apply a 1064 nm laser, with fluence specifically maintained below 0.8 J/cm². This method particularly targets the degraded surface layer for ablation, thus safeguarding the intact substrate underneath. It thereby restores optical clarity and surface integrity, avoiding thermal damage.'
-- question: What **real-time monitoring techniques** work best for laser cleaning polycarbonate to prevent damage?
-  answer: '**Fluorescence detects spectral shifts**. Laser-induced fluorescence monitoring, particularly effective, detects early polycarbonate degradation by tracking spectral shifts around 450-550 nm. These changes indicate molecular breakdown before visible damage appears. Meanwhile, thermal imaging keeps surface temperature below 150°C, thus ensuring the process stays within the safe fluence threshold of 0.8 J/cm² for this sensitive polymer.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 40.0
-    electricalResistivity:
-      value: 1e+14
-      unit: Ω·m
-      source: ai_research
-      min: '9.5e+12'
-      max: 1e+17
-    fractureToughness:
-      value: 2.3
-      unit: MPa m^{1/2}
-      source: ai_research
-      min: 0.7
-      max: 2.9
-    youngsModulus:
-      value: 2.3
-      unit: GPa
-      source: ai_research
-      min: 0.01
-      max: 5000
-    oxidationResistance:
-      value: 18
-      unit: vol% O2
-      source: ai_research
-      min: 0.76
-      max: 1575
-    density:
-      value: 1.2
-      unit: g/cm³
-      source: ai_research
-      min: 0.84
-      max: 2.2
-    hardness:
-      value: 118
-      unit: Rockwell R
-      source: ai_research
-      min: 51.8
-      max: 123
-    corrosionResistance:
-      value: 0.93
-      unit: ''
-      source: ai_research
-      min: 0
-      max: 105
-    compressiveStrength:
-      value: 86
-      unit: MPa
-      source: ai_research
-      min: 20
-      max: 200
-    flexuralStrength:
-      value: 83
-      unit: MPa
-      source: ai_research
-      min: 20.7
-      max: 96.4
-    tensileStrength:
-      value: 66
-      unit: MPa
-      source: ai_research
-      min: 10
-      max: 400
-    laserDamageThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Surface Science
-      citation: 'A. M. K. Esch, J. Ihlemann, and B. Wolff, ''UV laser ablation of polymers: polycarbonate and polyimide'', Applied Surface Science, 1993, DOI: 10.1016/0169-4332(93)90096-5'
-      context: Bisphenol A polycarbonate (commercial grade, >99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
-      researched_date: '2025-11-24T12:05:29.457464'
-      needs_validation: true
-      min: 0.71
-      max: 2.6
-    thermalDestruction:
-      value: 460
-      unit: °C
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 1170
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
-    laserReflectivity:
-      value: 0.05
-      unit: ''
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.2
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: '6.8e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
-    laserAbsorption:
-      value: 94000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.1
-      unit: dimensionless
-      min: 0.05
-      max: 0.2
-      source: ai_research
-    absorptionCoefficient:
-      value: 2000
-      unit: m⁻¹
-      min: 1000
-      max: 5000
-      source: ai_research
-    laserDamageThreshold:
-      value: 5
-      unit: J/cm²
-      min: 1
-      max: 10
-      source: ai_research
-    thermalShockResistance:
-      value: 0.8
-      unit: MW/m
-      min: 0.5
-      max: 1.5
-      source: ai_research
-    reflectivity:
-      value: 0.05
-      unit: dimensionless
-      min: 0.04
-      max: 0.06
-      source: ai_research
-    thermalDestructionPoint:
-      value: 673
-      unit: K
-      min: 600
-      max: 700
-      source: ai_research
-    vaporPressure:
-      value: 0.01
-      unit: Pa
-      min: '0.001'
-      max: 0.1
-      source: ai_research
-    thermalDestruction:
-      value: 460
-      unit: °C
-      source: ai_research
-      min: 228
-      max: 715
-    specificHeat:
-      value: 1170
-      unit: J/(kg·K)
-      source: ai_research
-      min: 1
-      max: 2500
-    laserReflectivity:
-      value: 0.05
-      unit: ''
-      source: ai_research
-      min: 0.02
-      max: 0.05
-    thermalConductivity:
-      value: 0.2
-      unit: W/m·K
-      source: ai_research
-      min: 0.02
-      max: 3
-    thermalExpansion:
-      value: '6.8e-05'
-      unit: K^{-1}
-      source: ai_research
-      min: '5.9e-05'
-      max: '0.0002'
-    laserAbsorption:
-      value: 94000
-      unit: m^{-1}
-      source: ai_research
-      min: 0.28
-      max: 126000
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: 0
-    ablationThreshold:
-      value: 0.25
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Surface Science
-      citation: 'R. Srinivasan and B. Braren, Applied Surface Science, 46 (1990) 22-30, DOI: 10.1016/0169-4332(90)90004-8'
-      context: Commercial grade polycarbonate (Lexan, ~99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
-      researched_date: '2025-11-24T12:05:40.580498'
-      needs_validation: true
-      min: 0.39
-      max: 2.8
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - IEC 60825 - Safety of Laser Products
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  isBasedOn:
-    name: IEC 60825 - Safety of Laser Products
+    before: You see the polycarbonate surface covered in dark spots and uneven bumps. Dust and grime cling tightly, making the texture rough and patchy under high magnification. This contamination hides the material's natural smoothness and clarity.
+    after: After laser treatment, the surface looks even and bright without those spots. The texture turns smooth and uniform, revealing the clean, glossy finish underneath. Now the polycarbonate shines clearly, free from any clinging dirt.
+  faq:
+  - question: Can you safely laser clean polycarbonate surfaces without causing **yellowing or clouding**?
+    answer: '**Low fluence prevents yellowing**. Yes, polycarbonate can be safely laser cleaned without yellowing, particularly with a 1064 nm wavelength and fluence carefully controlled below 0.8 J/cm². This technique removes contaminants while holding the substrate temperature well under its thermal degradation threshold, thus avoiding photochemical damage and maintaining optical clarity.'
+  - question: What **laser wavelength** is safest for cleaning contaminants from polycarbonate without damaging the substrate?
+    answer: '**Near-IR minimizes thermal damage**. Particularly for polycarbonate cleaning, near-IR wavelengths like 1064 nm remain safest, as they experience poor absorption by the substrate and thus minimize thermal damage. Keep fluence below 0.8 J/cm² using nanosecond pulses at 20 kHz. This method removes contaminants effectively while upholding the polymer''s integrity.'
+  - question: How do you remove **mold release agents** from polycarbonate components using laser cleaning?
+    answer: '**Low fluence below damage threshold**. For silicone-based mold releases on polycarbonate, we specifically use a 1064 nm laser at ~0.8 J/cm² fluence. Notably, this ablates the thin organic film effectively while keeping the substrate''s temperature safely below its damage threshold, thus ensuring complete removal.'
+  - question: What are the maximum safe fluence levels for laser cleaning polycarbonate surfaces?
+    answer: For laser cleaning of polycarbonate, particularly to avoid melting, keep fluence below 1.0 J/cm². Notably, optimal results emerge around 0.8 J/cm² using 1064 nm wavelength, effectively removing contaminants while preserving the polymer's integrity.
+  - question: Can laser cleaning create micro-cracks or stress concentrations in polycarbonate components?
+    answer: Yes, laser cleaning can induce micro-cracks in polycarbonate, particularly from its notch sensitivity. Thus, to avoid this, keep fluence below 0.8 J/cm² and apply a 50% overlap ratio, preventing excessive thermal stress that weakens mechanical properties.
+  - question: How does laser cleaning affect the **optical clarity** and light transmission of polycarbonate lenses or windows?
+    answer: '**Maintains high light transmission**. By adopting gentle parameters like 0.8 J/cm² fluence and 500 mm/s scan speed, proper laser cleaning particularly safeguards polycarbonate optics. Notably, this technique eliminates contaminants while curbing surface roughness and haze, thus upholding superior light transmission.'
+  - question: What safety precautions are needed when laser cleaning polycarbonate due to potential **hazardous fume generation**?
+    answer: '**Requires HEPA fume extraction**. Decomposition of polycarbonate notably releases bisphenol A along with phenolic compounds. For safety, deploy a high-efficiency fume extractor equipped with HEPA and activated carbon filtration, while limiting laser fluence to below 0.8 J/cm² to curb hazardous fume production. Proper ventilation is thus vital for operator protection.'
+  - question: Is laser cleaning suitable for preparing polycarbonate surfaces for **adhesion or coating applications**?
+    answer: '**Increases surface energy micro-textures**. Laser cleaning excels at readying polycarbonate for adhesion, particularly through elevating surface energy and generating micro-textures. Notably, a 1064 nm wavelength at 0.8 J/cm² fluence eliminates contaminants and adjusts surface chemistry, thus exceeding solvent wiping in bond strength.'
+  - question: How do you remove oxidation or **UV degradation** from aged polycarbonate using laser cleaning?
+    answer: '**Selective ablation below 0.8 J/cm²**. For aged polycarbonate, we apply a 1064 nm laser, with fluence specifically maintained below 0.8 J/cm². This method particularly targets the degraded surface layer for ablation, thus safeguarding the intact substrate underneath. It thereby restores optical clarity and surface integrity, avoiding thermal damage.'
+  - question: What **real-time monitoring techniques** work best for laser cleaning polycarbonate to prevent damage?
+    answer: '**Fluorescence detects spectral shifts**. Laser-induced fluorescence monitoring, particularly effective, detects early polycarbonate degradation by tracking spectral shifts around 450-550 nm. These changes indicate molecular breakdown before visible damage appears. Meanwhile, thermal imaging keeps surface temperature below 150°C, thus ensuring the process stays within the safe fluence threshold of 0.8 J/cm² for this sensitive polymer.'
+  regulatoryStandards:
+  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    image: /images/logo/logo-org-fda.png
+    longName: Food and Drug Administration
+    name: FDA
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - description: ANSI Z136.1 - Safe Use of Lasers
+    image: /images/logo/logo-org-ansi.png
+    longName: American National Standards Institute
+    name: ANSI
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  - description: IEC 60825 - Safety of Laser Products
+    image: /images/logo/logo-org-iec.png
+    longName: International Electrotechnical Commission
+    name: IEC
     url: https://webstore.iec.ch/publication/3587
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.922384Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.922389Z'
-  structure_version: '2.0'
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 2
-    targetContaminants:
-    - Surface contamination
-    - Mold release agents
-    - Adhesive residue
-    - Paint overspray
-    notes: Low fluence required to prevent melting or warping
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-14T22:41:31.571038'
+  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    image: /images/logo/logo-org-osha.png
+    longName: Occupational Safety and Health Administration
+    name: OSHA
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  materialProperties:
+    material_characteristics:
+      label: Material Characteristics
+      percentage: 40.0
+      electricalResistivity:
+        value: 1e+14
+        unit: Ω·m
+        source: ai_research
+        min: '9.5e+12'
+        max: 1e+17
+      fractureToughness:
+        value: 2.3
+        unit: MPa m^{1/2}
+        source: ai_research
+        min: 0.7
+        max: 2.9
+      youngsModulus:
+        value: 2.3
+        unit: GPa
+        source: ai_research
+        min: 0.01
+        max: 5000
+      oxidationResistance:
+        value: 18
+        unit: vol% O2
+        source: ai_research
+        min: 0.76
+        max: 1575
+      density:
+        value: 1.2
+        unit: g/cm³
+        source: ai_research
+        min: 0.84
+        max: 2.2
+      hardness:
+        value: 118
+        unit: Rockwell R
+        source: ai_research
+        min: 51.8
+        max: 123
+      corrosionResistance:
+        value: 0.93
+        unit: ''
+        source: ai_research
+        min: 0
+        max: 105
+      compressiveStrength:
+        value: 86
+        unit: MPa
+        source: ai_research
+        min: 20
+        max: 200
+      flexuralStrength:
+        value: 83
+        unit: MPa
+        source: ai_research
+        min: 20.7
+        max: 96.4
+      tensileStrength:
+        value: 66
+        unit: MPa
+        source: ai_research
+        min: 10
+        max: 400
+      laserDamageThreshold:
+        value: 1.2
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Applied Surface Science
+        citation: 'A. M. K. Esch, J. Ihlemann, and B. Wolff, ''UV laser ablation of polymers: polycarbonate and polyimide'', Applied Surface Science, 1993, DOI: 10.1016/0169-4332(93)90096-5'
+        context: Bisphenol A polycarbonate (commercial grade, >99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
+        researched_date: '2025-11-24T12:05:29.457464'
+        needs_validation: true
+        min: 0.71
+        max: 2.6
+      thermalDestruction:
+        value: 460
+        unit: °C
+        source: ai_research
+        min: 228
+        max: 715
+      specificHeat:
+        value: 1170
+        unit: J/(kg·K)
+        source: ai_research
+        min: 1
+        max: 2500
+      laserReflectivity:
+        value: 0.05
+        unit: ''
+        source: ai_research
+        min: 0.02
+        max: 0.05
+      thermalConductivity:
+        value: 0.2
+        unit: W/m·K
+        source: ai_research
+        min: 0.02
+        max: 3
+      thermalExpansion:
+        value: '6.8e-05'
+        unit: K^{-1}
+        source: ai_research
+        min: '5.9e-05'
+        max: '0.0002'
+      laserAbsorption:
+        value: 94000
+        unit: m^{-1}
+        source: ai_research
+        min: 0.28
+        max: 126000
+      thermalDiffusivity:
+        value: '1.2e-07'
+        unit: m²/s
+        source: ai_research
+        min: 0
+        max: 0
+    laser_material_interaction:
+      label: Laser-Material Interaction
+      percentage: 40.0
+      absorptivity:
+        value: 0.1
+        unit: dimensionless
+        min: 0.05
+        max: 0.2
+        source: ai_research
+      absorptionCoefficient:
+        value: 2000
+        unit: m⁻¹
+        min: 1000
+        max: 5000
+        source: ai_research
+      laserDamageThreshold:
+        value: 5
+        unit: J/cm²
+        min: 1
+        max: 10
+        source: ai_research
+      thermalShockResistance:
+        value: 0.8
+        unit: MW/m
+        min: 0.5
+        max: 1.5
+        source: ai_research
+      reflectivity:
+        value: 0.05
+        unit: dimensionless
+        min: 0.04
+        max: 0.06
+        source: ai_research
+      thermalDestructionPoint:
+        value: 673
+        unit: K
+        min: 600
+        max: 700
+        source: ai_research
+      vaporPressure:
+        value: 0.01
+        unit: Pa
+        min: '0.001'
+        max: 0.1
+        source: ai_research
+      thermalDestruction:
+        value: 460
+        unit: °C
+        source: ai_research
+        min: 228
+        max: 715
+      specificHeat:
+        value: 1170
+        unit: J/(kg·K)
+        source: ai_research
+        min: 1
+        max: 2500
+      laserReflectivity:
+        value: 0.05
+        unit: ''
+        source: ai_research
+        min: 0.02
+        max: 0.05
+      thermalConductivity:
+        value: 0.2
+        unit: W/m·K
+        source: ai_research
+        min: 0.02
+        max: 3
+      thermalExpansion:
+        value: '6.8e-05'
+        unit: K^{-1}
+        source: ai_research
+        min: '5.9e-05'
+        max: '0.0002'
+      laserAbsorption:
+        value: 94000
+        unit: m^{-1}
+        source: ai_research
+        min: 0.28
+        max: 126000
+      thermalDiffusivity:
+        value: '1.2e-07'
+        unit: m²/s
+        source: ai_research
+        min: 0
+        max: 0
+      ablationThreshold:
+        value: 0.25
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Applied Surface Science
+        citation: 'R. Srinivasan and B. Braren, Applied Surface Science, 46 (1990) 22-30, DOI: 10.1016/0169-4332(90)90004-8'
+        context: Commercial grade polycarbonate (Lexan, ~99% purity), room temperature (25°C), 248 nm KrF excimer laser, 20 ns pulse duration, vacuum environment
+        researched_date: '2025-11-24T12:05:40.580498'
+        needs_validation: true
+        min: 0.39
+        max: 2.8
+  eeat:
+    reviewedBy: Z-Beam Quality Assurance Team
+    citations:
+    - IEC 60825 - Safety of Laser Products
+    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    isBasedOn:
+      name: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+  material_metadata:
+    last_updated: '2025-10-27T23:48:40.922384Z'
+    normalization_applied: true
+    normalization_date: '2025-10-27T23:48:40.922389Z'
+    structure_version: '2.0'
+  serviceOffering:
+    enabled: true
+    type: professionalCleaning
+    materialSpecific:
+      estimatedHoursMin: 1
+      estimatedHoursTypical: 2
+      targetContaminants:
+      - Surface contamination
+      - Mold release agents
+      - Adhesive residue
+      - Paint overspray
+      notes: Low fluence required to prevent melting or warping
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T23:08:08.191121'

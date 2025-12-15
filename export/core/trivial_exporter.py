@@ -942,6 +942,9 @@ class TrivialFrontmatterExporter:
             }
         }
         
+        # NORMALIZATION: Wrap all fields in metadata property to match settings/contaminants structure
+        output_data = {'metadata': materials_page}
+        
         # Write materials page YAML
         # POLICY: Strip parentheses from filenames
         material_slug = create_material_slug(material_name)
@@ -949,7 +952,7 @@ class TrivialFrontmatterExporter:
         output_path = self.materials_output_dir / filename
         
         with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.dump(materials_page, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+            yaml.dump(output_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
         
         # Verify what was written
         if material_name == 'Aluminum':

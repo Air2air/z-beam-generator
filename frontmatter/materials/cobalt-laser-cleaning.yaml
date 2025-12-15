@@ -1,411 +1,412 @@
-name: Cobalt
-slug: cobalt
-category: metal
-subcategory: specialty
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Cobalt Laser Cleaning
-material_description: When laser cleaning cobalt, begin with lower power settings to account for its strong heat resistance—stronger than softer metals like nickel—but monitor for surface oxidation that may build up midway through passes to ensure a clean, durable finish.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Specialty
-  href: /materials/metal/specialty
-- label: Cobalt
-  href: /materials/metal/specialty/cobalt
-images:
-  hero:
-    alt: Cobalt surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/cobalt-laser-cleaning-hero.jpg
+metadata:
+  name: Cobalt
+  slug: cobalt
+  category: metal
+  subcategory: specialty
+  content_type: unified_material
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: material
+  title: Cobalt Laser Cleaning
+  material_description: When laser cleaning cobalt, begin with lower power settings to account for its strong heat resistance—stronger than softer metals like nickel—but monitor for surface oxidation that may build up midway through passes to ensure a clean, durable finish.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Metal
+    href: /materials/metal
+  - label: Specialty
+    href: /materials/metal/specialty
+  - label: Cobalt
+    href: /materials/metal/specialty/cobalt
+  images:
+    hero:
+      alt: Cobalt surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/cobalt-laser-cleaning-hero.jpg
+    micro:
+      alt: Cobalt microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/cobalt-laser-cleaning-micro.jpg
   micro:
-    alt: Cobalt microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/cobalt-laser-cleaning-micro.jpg
-micro:
-  before: At 1000x magnification, the cobalt surface bristles with jagged contaminants that scatter light unevenly. I've seen how these dark flecks and rough patches cling tightly, hiding the metal's base texture. This buildup creates a chaotic, obscured view that blocks clear observation.
-  after: After laser treatment at the same scale, the cobalt surface lies flat and reflective without any clinging debris. The once-jagged areas now form smooth, uninterrupted planes that catch light consistently. This cleaned state reveals the metal's inherent
-faq:
-- question: Can laser cleaning effectively remove **cobalt-containing thermal barrier coatings** from turbine blades without damaging the substrate?
-  answer: '**Low fluence preserves superalloy substrate**. Using optimized 1064nm parameters, laser cleaning particularly excels at removing cobalt-based thermal barrier coatings. Specifically, keeping fluence under 2.5 J/cm² with a 50μm spot size safeguards the nickel superalloy substrate. Notably, this technique surpasses mechanical methods by preventing surface damage and ensuring complete removal in roughly three passes.'
-- question: What safety precautions are needed when laser cleaning cobalt-based alloys to prevent **inhalation of toxic fumes**?
-  answer: '**Implement high-efficiency fume extraction**. For laser cleaning of cobalt alloys at a 1064 nm wavelength, particularly due to the toxic submicron particles generated, high-efficiency fume extraction is essential. Keep exposure under the 0.02 mg/m³ OSHA limit with powered air-purifying respirators featuring P100 filters. Thus, 100W laser settings produce inhalable fumes that demand local exhaust ventilation at the source.'
-- question: How do laser parameters need to be adjusted when cleaning **cobalt-chromium alloys** compared to steel or aluminum?
-  answer: '**Higher fluence threshold 2.5 J/cm²**. For Co-Cr alloys, particularly given their superior thermal resistance, apply a higher fluence threshold around 2.5 J/cm² than for steel or aluminum. Thus, a 1064 nm wavelength with nanosecond pulses works best to counter surface reflectivity and remove oxides without harming the substrate.'
-- question: Does laser cleaning create any surface modification or phase changes in cobalt superalloys that could affect material performance?
-  answer: Specifically tuned 1064nm nanosecond lasers at ~2.5 J/cm² fluence effectively remove cobalt oxides. Notably, the minimal heat-affected zone prevents significant phase changes, despite possible localized residual stress. Thus, the superalloy's critical microstructural integrity remains preserved.
-- question: What is the best laser cleaning approach for removing oxide layers from **cobalt-based stellite surfaces** without removing base material?
-  answer: '**1064nm nanosecond pulses 2.5 J/cm²**. For cobalt stellite oxide removal, apply 1064nm nanosecond pulses at 2.5 J/cm² fluence. Notably, this threshold ablates oxides effectively while preserving the base alloy, thus maintaining surface integrity for critical applications.'
-- question: Can laser cleaning be used to decontaminate **cobalt-60 contaminated surfaces** in nuclear applications?
-  answer: '**Removes Co-60 with minimal waste**. Laser cleaning notably removes Co-60 contamination from cobalt surfaces with a 1064 nm wavelength and 2.5 J/cm² fluence. Specifically, this approach cuts secondary waste versus traditional chemical methods, thus boosting radionuclide removal efficiency in nuclear decommissioning.'
-- question: How does the high melting point and thermal conductivity of cobalt affect laser cleaning efficiency and parameter selection?
-  answer: Cobalt's high melting point (1495°C) and thermal conductivity particularly require precise fluence control near 2.5 J/cm². Thus, we fine-tune nanosecond pulses with 500 mm/s scanning for rapid oxide ablation, while controlling heat diffusion to safeguard the substrate.
-- question: What are the waste management considerations for **cobalt particles** generated during laser cleaning operations?
-  answer: '**Requires hazardous waste classification**. Notably, cobalt debris demands hazardous waste classification owing to its toxic fine particles. Specifically, use HEPA filtration rated for sub-micron capture, given that our 50μm spot size at 100W produces substantial aerosol. Always check local regulations for disposing of this regulated metal.'
-- question: Is laser cleaning suitable for preparing cobalt surfaces for **thermal spray or welding** applications?
-  answer: '**removes oxides without substrate damage**. Specifically, laser cleaning prepares cobalt surfaces for thermal spray by removing oxides at 2.5 J/cm² without substrate damage. This technique outperforms abrasive blasting, notably through enhanced cleanliness and surface activation, thus guaranteeing strong adhesion in aerospace and medical device uses. It delivers a highly active, contaminant-free surface.'
-- question: How do you prevent the **formation of cobalt oxide** during laser cleaning of cobalt components?
-  answer: '**Inert argon and low fluence**. To prevent cobalt oxide formation, particularly by maintaining an inert argon atmosphere during laser processing. Control thermal input with 100W average power and 2.5 J/cm² fluence, thus remaining below the oxidation threshold. A final low-power pass can also ensure a pristine surface.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 40.0
-    electricalConductivity:
-      value: '1.6e+07'
-      unit: S/m
-      source: ai_research
-      min: 659300
-      max: '6.6e+07'
-    electricalResistivity:
-      value: '6.2e-08'
-      unit: Ω·m
-      source: ai_research
-      min: 0
-      max: 2e-06
-    fractureToughness:
-      value: 56
-      unit: MPa√m
-      source: ai_research
-      min: 0.67
-      max: 157
-    surfaceRoughness:
-      value: 0.32
-      unit: μm
-      source: ai_research
-      min: 0.02
-      max: 6.6
-    density:
-      value: 8900
-      unit: kg/m³
-      source: ai_research
-      min: 1.7
-      max: 9408
-    oxidationResistance:
-      value: 873
-      unit: K
-      source: ai_research
-      min: -554
-      max: 1762
-    youngsModulus:
-      value: 210
-      unit: GPa
-      source: ai_research
-      min: 10.4
-      max: 2e+11
-    hardness:
-      value: 220
-      unit: HV
-      source: ai_research
-      min: 0.2
-      max: 3500
-    compressiveStrength:
-      value: 241
-      unit: MPa
-      source: ai_research
-      min: 8
-      max: 2625
-    tensileStrength:
-      value: 241
-      unit: MPa
-      source: ai_research
-      min: 3
-      max: 3000
-    flexuralStrength:
-      value: 310
-      unit: MPa
-      source: ai_research
-      min: 11.4
-      max: 2897
-    corrosionResistance:
-      value: 0.02
-      unit: mm/year
-      source: ai_research
-      min: -1.1
-      max: '1.1e+06'
-    porosity:
-      value: 0
-      unit: fraction
-      source: ai_research
-      min: 0
-      max: 15
-    boilingPoint:
-      value: 3200
-      unit: K
-      source: ai_research
-      min: 929
-      max: 6454
-    absorptivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: 0.6
-    absorptionCoefficient:
-      value: '4.5e+07'
-      unit: m^{-1}
-      source: ai_research
-      min: 589000
-      max: '9.9e+07'
-    reflectivity:
-      value: 0.66
-      unit: dimensionless
-      source: ai_research
-      min: 0.35
-      max: 1
-    vaporPressure:
-      value: 101325
-      unit: Pa
-      source: ai_research
-      min: 0
-      max: 106391
-    meltingPoint:
-      value: 1768
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    thermalDestructionPoint:
-      value: 1768
-      unit: K
-      source: ai_research
-      min: 133
-      max: 3865
-    thermalShockResistance:
-      value: 78.5
-      unit: K
-      source: ai_research
-      min: 6.7
-      max: 379050
-    laserDamageThreshold:
-      value: 1.8
-      unit: J/cm²
-      source: ai_research
-      min: 0.27
-      max: 15750
-    thermalDestruction:
-      value: 1768
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserReflectivity:
-      value: 0.68
-      unit: dimensionless
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalExpansion:
-      value: 12.5
-      unit: 10^{-6} K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    thermalConductivity:
-      value: 100
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    specificHeat:
-      value: 421
-      unit: J/kg·K
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserAbsorption:
-      value: 0.37
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '2.7e-05'
-      unit: m^2/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptionCoefficient:
-      source: ai_research
-      unit: m⁻¹
-      value: '1.1e+07'
-      min: 589000
-      max: '9.9e+07'
-    absorptivity:
-      source: ai_research
-      unit: dimensionless
-      value: 0.35
-      min: 0.02
-      max: 0.6
-    laserDamageThreshold:
-      source: ai_research
-      unit: J/cm²
-      value: 0.45
-      min: 0.27
-      max: 15750
-    reflectivity:
-      source: ai_research
-      unit: dimensionless (reflectance)
-      value: 0.66
-      min: 0.35
-      max: 1
-    thermalDestructionPoint:
-      source: ai_research
-      unit: K
-      value: 1768
-      min: 133
-      max: 3865
-    thermalShockResistance:
-      source: ai_research
-      unit: MPa·m^0.5
-      value: 4.2
-      min: 6.7
-      max: 379050
-    vaporPressure:
-      source: ai_research
-      unit: Pa
-      value: 1.3
-      min: 0
-      max: 106391
-    thermalDestruction:
-      value: 1768
-      unit: K
-      source: ai_research
-      min: 256
-      max: 3859
-    laserReflectivity:
-      value: 0.68
-      unit: dimensionless
-      source: ai_research
-      min: 0.4
-      max: 73.5
-    thermalExpansion:
-      value: 12.5
-      unit: 10^{-6} K^{-1}
-      source: ai_research
-      min: 4e-06
-      max: 31.7
-    thermalConductivity:
-      value: 100
-      unit: W/m·K
-      source: ai_research
-      min: 7.4
-      max: 450
-    specificHeat:
-      value: 421
-      unit: J/kg·K
-      source: ai_research
-      min: 43.4
-      max: 1905
-    laserAbsorption:
-      value: 0.37
-      unit: dimensionless
-      source: ai_research
-      min: 0.02
-      max: '4.2e+08'
-    thermalDiffusivity:
-      value: '2.7e-05'
-      unit: m^2/s
-      source: ai_research
-      min: 2e-06
-      max: '0.00017'
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-      source: ai_research
-      min: 0.09
-      max: 4.3
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - ANSI Z136.1 - Safe Use of Lasers
-  isBasedOn:
-    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    before: At 1000x magnification, the cobalt surface bristles with jagged contaminants that scatter light unevenly. I've seen how these dark flecks and rough patches cling tightly, hiding the metal's base texture. This buildup creates a chaotic, obscured view that blocks clear observation.
+    after: After laser treatment at the same scale, the cobalt surface lies flat and reflective without any clinging debris. The once-jagged areas now form smooth, uninterrupted planes that catch light consistently. This cleaned state reveals the metal's inherent
+  faq:
+  - question: Can laser cleaning effectively remove **cobalt-containing thermal barrier coatings** from turbine blades without damaging the substrate?
+    answer: '**Low fluence preserves superalloy substrate**. Using optimized 1064nm parameters, laser cleaning particularly excels at removing cobalt-based thermal barrier coatings. Specifically, keeping fluence under 2.5 J/cm² with a 50μm spot size safeguards the nickel superalloy substrate. Notably, this technique surpasses mechanical methods by preventing surface damage and ensuring complete removal in roughly three passes.'
+  - question: What safety precautions are needed when laser cleaning cobalt-based alloys to prevent **inhalation of toxic fumes**?
+    answer: '**Implement high-efficiency fume extraction**. For laser cleaning of cobalt alloys at a 1064 nm wavelength, particularly due to the toxic submicron particles generated, high-efficiency fume extraction is essential. Keep exposure under the 0.02 mg/m³ OSHA limit with powered air-purifying respirators featuring P100 filters. Thus, 100W laser settings produce inhalable fumes that demand local exhaust ventilation at the source.'
+  - question: How do laser parameters need to be adjusted when cleaning **cobalt-chromium alloys** compared to steel or aluminum?
+    answer: '**Higher fluence threshold 2.5 J/cm²**. For Co-Cr alloys, particularly given their superior thermal resistance, apply a higher fluence threshold around 2.5 J/cm² than for steel or aluminum. Thus, a 1064 nm wavelength with nanosecond pulses works best to counter surface reflectivity and remove oxides without harming the substrate.'
+  - question: Does laser cleaning create any surface modification or phase changes in cobalt superalloys that could affect material performance?
+    answer: Specifically tuned 1064nm nanosecond lasers at ~2.5 J/cm² fluence effectively remove cobalt oxides. Notably, the minimal heat-affected zone prevents significant phase changes, despite possible localized residual stress. Thus, the superalloy's critical microstructural integrity remains preserved.
+  - question: What is the best laser cleaning approach for removing oxide layers from **cobalt-based stellite surfaces** without removing base material?
+    answer: '**1064nm nanosecond pulses 2.5 J/cm²**. For cobalt stellite oxide removal, apply 1064nm nanosecond pulses at 2.5 J/cm² fluence. Notably, this threshold ablates oxides effectively while preserving the base alloy, thus maintaining surface integrity for critical applications.'
+  - question: Can laser cleaning be used to decontaminate **cobalt-60 contaminated surfaces** in nuclear applications?
+    answer: '**Removes Co-60 with minimal waste**. Laser cleaning notably removes Co-60 contamination from cobalt surfaces with a 1064 nm wavelength and 2.5 J/cm² fluence. Specifically, this approach cuts secondary waste versus traditional chemical methods, thus boosting radionuclide removal efficiency in nuclear decommissioning.'
+  - question: How does the high melting point and thermal conductivity of cobalt affect laser cleaning efficiency and parameter selection?
+    answer: Cobalt's high melting point (1495°C) and thermal conductivity particularly require precise fluence control near 2.5 J/cm². Thus, we fine-tune nanosecond pulses with 500 mm/s scanning for rapid oxide ablation, while controlling heat diffusion to safeguard the substrate.
+  - question: What are the waste management considerations for **cobalt particles** generated during laser cleaning operations?
+    answer: '**Requires hazardous waste classification**. Notably, cobalt debris demands hazardous waste classification owing to its toxic fine particles. Specifically, use HEPA filtration rated for sub-micron capture, given that our 50μm spot size at 100W produces substantial aerosol. Always check local regulations for disposing of this regulated metal.'
+  - question: Is laser cleaning suitable for preparing cobalt surfaces for **thermal spray or welding** applications?
+    answer: '**removes oxides without substrate damage**. Specifically, laser cleaning prepares cobalt surfaces for thermal spray by removing oxides at 2.5 J/cm² without substrate damage. This technique outperforms abrasive blasting, notably through enhanced cleanliness and surface activation, thus guaranteeing strong adhesion in aerospace and medical device uses. It delivers a highly active, contaminant-free surface.'
+  - question: How do you prevent the **formation of cobalt oxide** during laser cleaning of cobalt components?
+    answer: '**Inert argon and low fluence**. To prevent cobalt oxide formation, particularly by maintaining an inert argon atmosphere during laser processing. Control thermal input with 100W average power and 2.5 J/cm² fluence, thus remaining below the oxidation threshold. A final low-power pass can also ensure a pristine surface.'
+  regulatoryStandards:
+  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    image: /images/logo/logo-org-fda.png
+    longName: Food and Drug Administration
+    name: FDA
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - description: ANSI Z136.1 - Safe Use of Lasers
+    image: /images/logo/logo-org-ansi.png
+    longName: American National Standards Institute
+    name: ANSI
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  - description: IEC 60825 - Safety of Laser Products
+    image: /images/logo/logo-org-iec.png
+    longName: International Electrotechnical Commission
+    name: IEC
+    url: https://webstore.iec.ch/publication/3587
+  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    image: /images/logo/logo-org-osha.png
+    longName: Occupational Safety and Health Administration
+    name: OSHA
     url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921829Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921838Z'
-  structure_version: '2.0'
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 2
-    estimatedHoursTypical: 6
-    targetContaminants:
-    - Oxide scale
-    - Heat discoloration
-    - Alpha case layer
-    - Thermal barrier coatings
-    notes: Controlled atmosphere may be required to prevent re-oxidation
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-14T22:41:29.697141'
+  materialProperties:
+    material_characteristics:
+      label: Material Characteristics
+      percentage: 40.0
+      electricalConductivity:
+        value: '1.6e+07'
+        unit: S/m
+        source: ai_research
+        min: 659300
+        max: '6.6e+07'
+      electricalResistivity:
+        value: '6.2e-08'
+        unit: Ω·m
+        source: ai_research
+        min: 0
+        max: 2e-06
+      fractureToughness:
+        value: 56
+        unit: MPa√m
+        source: ai_research
+        min: 0.67
+        max: 157
+      surfaceRoughness:
+        value: 0.32
+        unit: μm
+        source: ai_research
+        min: 0.02
+        max: 6.6
+      density:
+        value: 8900
+        unit: kg/m³
+        source: ai_research
+        min: 1.7
+        max: 9408
+      oxidationResistance:
+        value: 873
+        unit: K
+        source: ai_research
+        min: -554
+        max: 1762
+      youngsModulus:
+        value: 210
+        unit: GPa
+        source: ai_research
+        min: 10.4
+        max: 2e+11
+      hardness:
+        value: 220
+        unit: HV
+        source: ai_research
+        min: 0.2
+        max: 3500
+      compressiveStrength:
+        value: 241
+        unit: MPa
+        source: ai_research
+        min: 8
+        max: 2625
+      tensileStrength:
+        value: 241
+        unit: MPa
+        source: ai_research
+        min: 3
+        max: 3000
+      flexuralStrength:
+        value: 310
+        unit: MPa
+        source: ai_research
+        min: 11.4
+        max: 2897
+      corrosionResistance:
+        value: 0.02
+        unit: mm/year
+        source: ai_research
+        min: -1.1
+        max: '1.1e+06'
+      porosity:
+        value: 0
+        unit: fraction
+        source: ai_research
+        min: 0
+        max: 15
+      boilingPoint:
+        value: 3200
+        unit: K
+        source: ai_research
+        min: 929
+        max: 6454
+      absorptivity:
+        value: 0.35
+        unit: dimensionless
+        source: ai_research
+        min: 0.02
+        max: 0.6
+      absorptionCoefficient:
+        value: '4.5e+07'
+        unit: m^{-1}
+        source: ai_research
+        min: 589000
+        max: '9.9e+07'
+      reflectivity:
+        value: 0.66
+        unit: dimensionless
+        source: ai_research
+        min: 0.35
+        max: 1
+      vaporPressure:
+        value: 101325
+        unit: Pa
+        source: ai_research
+        min: 0
+        max: 106391
+      meltingPoint:
+        value: 1768
+        unit: K
+        source: ai_research
+        min: 133
+        max: 3865
+      thermalDestructionPoint:
+        value: 1768
+        unit: K
+        source: ai_research
+        min: 133
+        max: 3865
+      thermalShockResistance:
+        value: 78.5
+        unit: K
+        source: ai_research
+        min: 6.7
+        max: 379050
+      laserDamageThreshold:
+        value: 1.8
+        unit: J/cm²
+        source: ai_research
+        min: 0.27
+        max: 15750
+      thermalDestruction:
+        value: 1768
+        unit: K
+        source: ai_research
+        min: 256
+        max: 3859
+      laserReflectivity:
+        value: 0.68
+        unit: dimensionless
+        source: ai_research
+        min: 0.4
+        max: 73.5
+      thermalExpansion:
+        value: 12.5
+        unit: 10^{-6} K^{-1}
+        source: ai_research
+        min: 4e-06
+        max: 31.7
+      thermalConductivity:
+        value: 100
+        unit: W/m·K
+        source: ai_research
+        min: 7.4
+        max: 450
+      specificHeat:
+        value: 421
+        unit: J/kg·K
+        source: ai_research
+        min: 43.4
+        max: 1905
+      laserAbsorption:
+        value: 0.37
+        unit: dimensionless
+        source: ai_research
+        min: 0.02
+        max: '4.2e+08'
+      thermalDiffusivity:
+        value: '2.7e-05'
+        unit: m^2/s
+        source: ai_research
+        min: 2e-06
+        max: '0.00017'
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        source: ai_research
+        min: 0.09
+        max: 4.3
+    laser_material_interaction:
+      label: Laser-Material Interaction
+      percentage: 40.0
+      absorptionCoefficient:
+        source: ai_research
+        unit: m⁻¹
+        value: '1.1e+07'
+        min: 589000
+        max: '9.9e+07'
+      absorptivity:
+        source: ai_research
+        unit: dimensionless
+        value: 0.35
+        min: 0.02
+        max: 0.6
+      laserDamageThreshold:
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+        min: 0.27
+        max: 15750
+      reflectivity:
+        source: ai_research
+        unit: dimensionless (reflectance)
+        value: 0.66
+        min: 0.35
+        max: 1
+      thermalDestructionPoint:
+        source: ai_research
+        unit: K
+        value: 1768
+        min: 133
+        max: 3865
+      thermalShockResistance:
+        source: ai_research
+        unit: MPa·m^0.5
+        value: 4.2
+        min: 6.7
+        max: 379050
+      vaporPressure:
+        source: ai_research
+        unit: Pa
+        value: 1.3
+        min: 0
+        max: 106391
+      thermalDestruction:
+        value: 1768
+        unit: K
+        source: ai_research
+        min: 256
+        max: 3859
+      laserReflectivity:
+        value: 0.68
+        unit: dimensionless
+        source: ai_research
+        min: 0.4
+        max: 73.5
+      thermalExpansion:
+        value: 12.5
+        unit: 10^{-6} K^{-1}
+        source: ai_research
+        min: 4e-06
+        max: 31.7
+      thermalConductivity:
+        value: 100
+        unit: W/m·K
+        source: ai_research
+        min: 7.4
+        max: 450
+      specificHeat:
+        value: 421
+        unit: J/kg·K
+        source: ai_research
+        min: 43.4
+        max: 1905
+      laserAbsorption:
+        value: 0.37
+        unit: dimensionless
+        source: ai_research
+        min: 0.02
+        max: '4.2e+08'
+      thermalDiffusivity:
+        value: '2.7e-05'
+        unit: m^2/s
+        source: ai_research
+        min: 2e-06
+        max: '0.00017'
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        source: ai_research
+        min: 0.09
+        max: 4.3
+  eeat:
+    reviewedBy: Z-Beam Quality Assurance Team
+    citations:
+    - ANSI Z136.1 - Safe Use of Lasers
+    isBasedOn:
+      name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  material_metadata:
+    last_updated: '2025-10-27T23:48:40.921829Z'
+    normalization_applied: true
+    normalization_date: '2025-10-27T23:48:40.921838Z'
+    structure_version: '2.0'
+  serviceOffering:
+    enabled: true
+    type: professionalCleaning
+    materialSpecific:
+      estimatedHoursMin: 2
+      estimatedHoursTypical: 6
+      targetContaminants:
+      - Oxide scale
+      - Heat discoloration
+      - Alpha case layer
+      - Thermal barrier coatings
+      notes: Controlled atmosphere may be required to prevent re-oxidation
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T23:08:06.386007'

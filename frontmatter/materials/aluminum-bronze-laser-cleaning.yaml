@@ -1,366 +1,367 @@
-name: Aluminum Bronze
-slug: aluminum-bronze
-category: metal
-subcategory: alloy
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: Aluminum Bronze Laser Cleaning
-material_description: Aluminum Bronze acts as strong, corrosion-resistant alloy for laser cleaning. Its durability withstands heat during treatment, so contaminants remove easily from surface. Hardness poses challenge, because process needs careful control to avoid damage.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Metal
-  href: /materials/metal
-- label: Alloy
-  href: /materials/metal/alloy
-- label: Aluminum Bronze
-  href: /materials/metal/alloy/aluminum-bronze
-images:
-  hero:
-    alt: Aluminum Bronze surface during precision laser cleaning process removing contamination layer
-    url: /images/material/aluminum-bronze-laser-cleaning-hero.jpg
-  micro:
-    alt: Aluminum Bronze surface at 500x magnification showing laser cleaning results
-    url: /images/material/aluminum-bronze-laser-cleaning-micro.jpg
-micro: null
-faq:
-- question: How can I effectively clean oxidation from aluminum bronze using a laser?
-  answer: We've found that oxidation on aluminum bronze builds up stubbornly because of its strong resistance to corrosion, making single passes less effective. You need to use multiple short bursts from the laser to gradually lift the layer without overheating the base material. In our experience, adjusting the beam to a wider focus helps spread the energy and prevents any uneven heating spots.
-- question: What settings work best for laser cleaning aluminum bronze parts?
-  answer: When laser cleaning aluminum bronze, the main challenge comes from its high reflectivity, which bounces much of the laser energy away compared to less shiny metals like steel. We typically start with lower power levels and slower scan speeds to build up absorption gradually over the surface. This approach ensures you remove contaminants like grease or scale while keeping the alloy's durable structure intact.
-- question: Why does aluminum bronze sometimes warp during laser cleaning?
-  answer: Aluminum bronze can warp if the laser heat isn't managed well, especially since it conducts heat
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    density:
-      value: 7.8
-      unit: g/cm³
-      min: 1.7
-      max: 9408
-    porosity:
-      value: 0
-      unit: '%'
-      min: 0
-      max: 15
-    surfaceRoughness:
-      value: 1.2
-      unit: μm
-      min: 0.02
-      max: 6.6
-    tensileStrength:
-      value: 655
-      unit: MPa
-      min: 3
-      max: 3000
-    youngsModulus:
-      value: 120
-      unit: GPa
-      min: 10.4
-      max: 2e+11
-    hardness:
-      value: 2.5
-      unit: GPa
-      min: 0.2
-      max: 3500
-    flexuralStrength:
-      value: 680
-      unit: MPa
-      min: 11.4
-      max: 2897
-    oxidationResistance:
-      value: 6
-      unit: μm/year
-      min: -554
-      max: 1762
-    corrosionResistance:
-      value: 0.65
-      unit: mm/year
-      min: -1.1
-      max: '1.1e+06'
-    compressiveStrength:
-      value: 655
-      unit: MPa
-      min: 8
-      max: 2625
-    fractureToughness:
-      value: 90
-      unit: MPa m^{1/2}
-      min: 0.67
-      max: 157
-    electricalResistivity:
-      value: '1.2e-07'
-      unit: Ω·m
-      min: 0
-      max: 2e-06
-    electricalConductivity:
-      value: '4.1e+06'
-      unit: S/m
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: 'MatWeb: Aluminum Bronze (UNS C95400), Sand Cast, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5a4d2b0a4a4b0e9f0b0a4b0a4b0a4b, accessed October 2023'
-      context: UNS C95400 Aluminum Bronze (9% Al, 4% Fe, balance Cu), as-cast condition, 20°C, standard DC measurement
-      researched_date: '2025-11-24T19:43:26.848136'
-      needs_validation: true
-      min: 659300
-      max: '6.6e+07'
-    boilingPoint:
-      value: 2673
-      unit: K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f3b6d5e4a2b1c8d9e7f0a5b2c4d6e8f, accessed 2024
-      context: 'Commercial grade Aluminum Bronze (UNS C95400: 83% Cu, 11% Al, 4% Fe, 2% Ni), 99.5% purity, standard atmospheric pressure (1 atm), extrapolated from vapor pressure data'
-      researched_date: '2025-11-24T19:43:41.388292'
-      needs_validation: true
-      min: 929
-      max: 6454
-    meltingPoint:
-      value: 1045
-      unit: °C
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, Aluminum Bronze (9-11% Al), http://www.matweb.com/search/DataSheet.aspx?MatGUID=8f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c, accessed 2023
-      context: Commercial Aluminum Bronze alloy (UNS C95400 equivalent, ~9% Al, 4% Fe, balance Cu), standard atmospheric pressure, differential scanning calorimetry measurement
-      researched_date: '2025-11-24T19:44:12.517394'
-      needs_validation: true
-      min: 133
-      max: 3865
-    percentage: 60.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    thermalDestruction:
-      value: 1323
-      unit: K
-      min: 256
-      max: 3859
-    laserAbsorption:
-      value: 0.28
-      unit: dimensionless
-      min: 0.02
-      max: '4.2e+08'
-    laserDamageThreshold:
-      value: 2.1
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser Ablation Thresholds of Copper-Aluminum Alloys for Nanosecond Pulses
-      citation: 'K. J. Grant et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
-      context: C95400 aluminum bronze (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 10 ns pulse duration at 1064 nm wavelength, single-shot fluence measurement
-      researched_date: '2025-11-24T19:41:56.436013'
-      needs_validation: true
-      min: 0.27
-      max: 15750
-    ablationThreshold:
-      value: 2.1
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Surface Science
-      citation: 'A. A. C. Gomes et al., Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2017.11.123'
-      context: Aluminum Bronze (UNS C95400, 85% Cu, 9% Al, 4% Fe, 2% Ni), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
-      researched_date: '2025-11-24T19:42:02.018655'
-      needs_validation: true
-      min: 0.09
-      max: 4.3
-    thermalDiffusivity:
-      value: '1.8e-05'
-      unit: m^2/s
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb - Online Materials Information Resource
-      citation: MatWeb, Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b5b0d4d6f4d4e4a8c5d7e6f0a1b2c3d, ASM International (data sourced from), accessed October 2024
-      context: UNS C95400 Aluminum Bronze (85Cu-11Al-4Fe-3Ni, as-cast), 25°C, standard atmospheric pressure
-      researched_date: '2025-11-24T19:42:22.135717'
-      needs_validation: true
-      min: 2e-06
-      max: '0.00017'
-    thermalExpansion:
-      value: '1.6e-05'
-      unit: 10^{-6}/K
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: 'ASM Specialty Handbook: Copper and Copper Alloys'
-      citation: 'Davis, J.R. (Ed.), ASM Specialty Handbook: Copper and Copper Alloys, ASM International, Materials Park, OH, 2001, ISBN 978-0-87170-721-7'
-      context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), 20-100°C, linear coefficient measured by dilatometry under standard atmospheric conditions
-      researched_date: '2025-11-24T19:42:30.395035'
-      needs_validation: true
-      min: 4e-06
-      max: 31.7
-    specificHeat:
-      value: 380
-      unit: J/kg·K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: 'MatWeb LLC, Aluminum Bronze, UNS C95400, MatWeb: The Online Materials Information Resource, http://www.matweb.com/search/DataSheet.aspx?MatGUID=8a5a4b5e5f5e4b5a8b5a4b5e5f5e4b5a, accessed 2023'
-      context: UNS C95400 (9.0-11.0 wt.% Al, 3.0-5.0 wt.% Fe, balance Cu), as-cast condition, 20-25°C, standard atmospheric pressure
-      researched_date: '2025-11-24T19:42:40.358770'
-      needs_validation: true
-      min: 43.4
-      max: 1905
-    thermalConductivity:
-      value: 59
-      unit: W/m·K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb - Online Materials Information Resource, Key to Metals AG, Aluminum Bronze, UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4e4b5a5e1b4a4b0e9f0a1b2c3d4e5f6g, accessed 2023
-      context: Aluminum Bronze UNS C95400 (88% Cu, 9% Al, 3% Fe), 25°C, as-cast condition, steady-state method
-      researched_date: '2025-11-24T19:42:50.315312'
-      needs_validation: true
-      min: 7.4
-      max: 450
-    laserReflectivity:
-      value: 0.88
-      unit: ''
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Optical Properties of Copper-Aluminum Alloys for Laser Processing
-      citation: 'Trapp, J., et al., Journal of Laser Applications, Vol. 27, No. 2, 2015, DOI: 10.2351/1.4906789'
-      context: Aluminum bronze (UNS C95400, 85% Cu, 11% Al, 4% Fe), 1064 nm wavelength (Nd:YAG laser), 25°C, polished surface, normal incidence
-      researched_date: '2025-11-24T19:42:58.279854'
-      needs_validation: true
-      min: 0.4
-      max: 73.5
-    vaporPressure:
-      value: '1.2e-08'
-      unit: Pa
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Vapor Pressure Measurements of Copper-Aluminum Alloys
-      citation: 'Okamoto, H., et al., Journal of Phase Equilibria and Diffusion, 2005, DOI: 10.1361/154770605X56789'
-      context: Aluminum Bronze (Cu-9wt%Al-4wt%Fe, UNS C95400), 298 K (25°C), equilibrium vapor pressure over solid alloy, measured using Knudsen effusion mass spectrometry
-      researched_date: '2025-11-24T19:43:03.782041'
-      needs_validation: true
-      min: 0
-      max: 106391
-    thermalDestructionPoint:
-      value: 1038
-      unit: °C
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8d5c5b0a4a4b0e9a5e5b0a4a4b0e9a, accessed October 2023
-      context: UNS C95400 Aluminum Bronze (81% Cu, 9% Al, 3% Fe, 4% Ni), sand cast condition, standard atmospheric pressure
-      researched_date: '2025-11-24T19:43:10.259020'
-      needs_validation: true
-      min: 133
-      max: 3865
-    absorptionCoefficient:
-      value: '4.8e+07'
-      unit: m^{-1}
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Optical Properties and Laser Interaction with Copper-Aluminum Alloys
-      citation: 'Johnson, R. et al., Optics and Lasers in Engineering, 2019, DOI: 10.1016/j.optlaseng.2019.03.012'
-      context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), measured via spectroscopic ellipsometry
-      researched_date: '2025-11-24T19:43:17.938349'
-      needs_validation: true
-      min: 589000
-      max: '9.9e+07'
-    thermalShockResistance:
-      value: 210
-      unit: °C
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      citation: ASM International, 1990, ISBN 978-0-87170-376-7
-      context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe, sand cast), room temperature, calculated via thermal shock parameter R = σ(1-ν)/(Eα) using standard tensile test and dilatometry methods
-      researched_date: '2025-11-24T19:43:48.981571'
-      needs_validation: true
-      min: 6.7
-      max: 379050
-    reflectivity:
-      value: 0.68
-      unit: ''
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC, Aluminum Bronze (UNS C95400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=ab0b8a3e7a4a4b0e9f0e4b0e9f0e4b0e, accessed 2023
-      context: UNS C95400 Aluminum Bronze alloy (81% Cu, 11% Al, 4% Fe, 4% Ni), polished surface, room temperature (25°C), normal incidence reflectivity at 500 nm wavelength (visible spectrum, relevant for laser cleaning applications)
-      researched_date: '2025-11-24T19:43:56.234962'
-      needs_validation: true
-      min: 0.35
-      max: 1
-    absorptivity:
-      value: 0.07
-      unit: dimensionless
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Absorptivity of Copper Alloys in the Infrared for Laser Processing
-      citation: 'Trapp, J., et al., Journal of Laser Applications, Vol. 27, No. 3, 2015, DOI: 10.2351/1.4927583'
-      context: UNS C95400 aluminum bronze (81% Cu, 11% Al, 4% Fe, 4% Ni), polished surface, 25°C, 1064 nm wavelength (Nd:YAG laser), hemispherical absorptivity
-      researched_date: '2025-11-24T19:44:02.583469'
-      needs_validation: true
-      min: 0.02
-      max: 0.6
-eeat: null
-material_metadata: null
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 4
-    targetContaminants:
-    - Oxide layer
-    - Paint and coatings
-    - Mill scale
-    - Surface contamination
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-14T22:41:33.610381'
+metadata:
+  name: Aluminum Bronze
+  slug: aluminum-bronze
+  category: metal
+  subcategory: alloy
+  content_type: unified_material
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: material
+  title: Aluminum Bronze Laser Cleaning
+  material_description: Aluminum Bronze acts as strong, corrosion-resistant alloy for laser cleaning. Its durability withstands heat during treatment, so contaminants remove easily from surface. Hardness poses challenge, because process needs careful control to avoid damage.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Metal
+    href: /materials/metal
+  - label: Alloy
+    href: /materials/metal/alloy
+  - label: Aluminum Bronze
+    href: /materials/metal/alloy/aluminum-bronze
+  images:
+    hero:
+      alt: Aluminum Bronze surface during precision laser cleaning process removing contamination layer
+      url: /images/material/aluminum-bronze-laser-cleaning-hero.jpg
+    micro:
+      alt: Aluminum Bronze surface at 500x magnification showing laser cleaning results
+      url: /images/material/aluminum-bronze-laser-cleaning-micro.jpg
+  micro: null
+  faq:
+  - question: How can I effectively clean oxidation from aluminum bronze using a laser?
+    answer: We've found that oxidation on aluminum bronze builds up stubbornly because of its strong resistance to corrosion, making single passes less effective. You need to use multiple short bursts from the laser to gradually lift the layer without overheating the base material. In our experience, adjusting the beam to a wider focus helps spread the energy and prevents any uneven heating spots.
+  - question: What settings work best for laser cleaning aluminum bronze parts?
+    answer: When laser cleaning aluminum bronze, the main challenge comes from its high reflectivity, which bounces much of the laser energy away compared to less shiny metals like steel. We typically start with lower power levels and slower scan speeds to build up absorption gradually over the surface. This approach ensures you remove contaminants like grease or scale while keeping the alloy's durable structure intact.
+  - question: Why does aluminum bronze sometimes warp during laser cleaning?
+    answer: Aluminum bronze can warp if the laser heat isn't managed well, especially since it conducts heat
+  regulatoryStandards:
+  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    image: /images/logo/logo-org-fda.png
+    longName: Food and Drug Administration
+    name: FDA
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - description: ANSI Z136.1 - Safe Use of Lasers
+    image: /images/logo/logo-org-ansi.png
+    longName: American National Standards Institute
+    name: ANSI
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  materialProperties:
+    material_characteristics:
+      label: Material Characteristics
+      density:
+        value: 7.8
+        unit: g/cm³
+        min: 1.7
+        max: 9408
+      porosity:
+        value: 0
+        unit: '%'
+        min: 0
+        max: 15
+      surfaceRoughness:
+        value: 1.2
+        unit: μm
+        min: 0.02
+        max: 6.6
+      tensileStrength:
+        value: 655
+        unit: MPa
+        min: 3
+        max: 3000
+      youngsModulus:
+        value: 120
+        unit: GPa
+        min: 10.4
+        max: 2e+11
+      hardness:
+        value: 2.5
+        unit: GPa
+        min: 0.2
+        max: 3500
+      flexuralStrength:
+        value: 680
+        unit: MPa
+        min: 11.4
+        max: 2897
+      oxidationResistance:
+        value: 6
+        unit: μm/year
+        min: -554
+        max: 1762
+      corrosionResistance:
+        value: 0.65
+        unit: mm/year
+        min: -1.1
+        max: '1.1e+06'
+      compressiveStrength:
+        value: 655
+        unit: MPa
+        min: 8
+        max: 2625
+      fractureToughness:
+        value: 90
+        unit: MPa m^{1/2}
+        min: 0.67
+        max: 157
+      electricalResistivity:
+        value: '1.2e-07'
+        unit: Ω·m
+        min: 0
+        max: 2e-06
+      electricalConductivity:
+        value: '4.1e+06'
+        unit: S/m
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: 'MatWeb: Aluminum Bronze (UNS C95400), Sand Cast, http://www.matweb.com/search/DataSheet.aspx?MatGUID=1c5a4d2b0a4a4b0e9f0b0a4b0a4b0a4b, accessed October 2023'
+        context: UNS C95400 Aluminum Bronze (9% Al, 4% Fe, balance Cu), as-cast condition, 20°C, standard DC measurement
+        researched_date: '2025-11-24T19:43:26.848136'
+        needs_validation: true
+        min: 659300
+        max: '6.6e+07'
+      boilingPoint:
+        value: 2673
+        unit: K
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, LLC., Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3f3b6d5e4a2b1c8d9e7f0a5b2c4d6e8f, accessed 2024
+        context: 'Commercial grade Aluminum Bronze (UNS C95400: 83% Cu, 11% Al, 4% Fe, 2% Ni), 99.5% purity, standard atmospheric pressure (1 atm), extrapolated from vapor pressure data'
+        researched_date: '2025-11-24T19:43:41.388292'
+        needs_validation: true
+        min: 929
+        max: 6454
+      meltingPoint:
+        value: 1045
+        unit: °C
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, Aluminum Bronze (9-11% Al), http://www.matweb.com/search/DataSheet.aspx?MatGUID=8f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c, accessed 2023
+        context: Commercial Aluminum Bronze alloy (UNS C95400 equivalent, ~9% Al, 4% Fe, balance Cu), standard atmospheric pressure, differential scanning calorimetry measurement
+        researched_date: '2025-11-24T19:44:12.517394'
+        needs_validation: true
+        min: 133
+        max: 3865
+      percentage: 60.0
+    laser_material_interaction:
+      label: Laser-Material Interaction
+      percentage: 40.0
+      thermalDestruction:
+        value: 1323
+        unit: K
+        min: 256
+        max: 3859
+      laserAbsorption:
+        value: 0.28
+        unit: dimensionless
+        min: 0.02
+        max: '4.2e+08'
+      laserDamageThreshold:
+        value: 2.1
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Laser Ablation Thresholds of Copper-Aluminum Alloys for Nanosecond Pulses
+        citation: 'K. J. Grant et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
+        context: C95400 aluminum bronze (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 10 ns pulse duration at 1064 nm wavelength, single-shot fluence measurement
+        researched_date: '2025-11-24T19:41:56.436013'
+        needs_validation: true
+        min: 0.27
+        max: 15750
+      ablationThreshold:
+        value: 2.1
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Applied Surface Science
+        citation: 'A. A. C. Gomes et al., Applied Surface Science, 2018, DOI: 10.1016/j.apsusc.2017.11.123'
+        context: Aluminum Bronze (UNS C95400, 85% Cu, 9% Al, 4% Fe, 2% Ni), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
+        researched_date: '2025-11-24T19:42:02.018655'
+        needs_validation: true
+        min: 0.09
+        max: 4.3
+      thermalDiffusivity:
+        value: '1.8e-05'
+        unit: m^2/s
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb - Online Materials Information Resource
+        citation: MatWeb, Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=3b5b0d4d6f4d4e4a8c5d7e6f0a1b2c3d, ASM International (data sourced from), accessed October 2024
+        context: UNS C95400 Aluminum Bronze (85Cu-11Al-4Fe-3Ni, as-cast), 25°C, standard atmospheric pressure
+        researched_date: '2025-11-24T19:42:22.135717'
+        needs_validation: true
+        min: 2e-06
+        max: '0.00017'
+      thermalExpansion:
+        value: '1.6e-05'
+        unit: 10^{-6}/K
+        source: scientific_literature
+        source_type: reference_handbook
+        source_name: 'ASM Specialty Handbook: Copper and Copper Alloys'
+        citation: 'Davis, J.R. (Ed.), ASM Specialty Handbook: Copper and Copper Alloys, ASM International, Materials Park, OH, 2001, ISBN 978-0-87170-721-7'
+        context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), 20-100°C, linear coefficient measured by dilatometry under standard atmospheric conditions
+        researched_date: '2025-11-24T19:42:30.395035'
+        needs_validation: true
+        min: 4e-06
+        max: 31.7
+      specificHeat:
+        value: 380
+        unit: J/kg·K
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: 'MatWeb LLC, Aluminum Bronze, UNS C95400, MatWeb: The Online Materials Information Resource, http://www.matweb.com/search/DataSheet.aspx?MatGUID=8a5a4b5e5f5e4b5a8b5a4b5e5f5e4b5a, accessed 2023'
+        context: UNS C95400 (9.0-11.0 wt.% Al, 3.0-5.0 wt.% Fe, balance Cu), as-cast condition, 20-25°C, standard atmospheric pressure
+        researched_date: '2025-11-24T19:42:40.358770'
+        needs_validation: true
+        min: 43.4
+        max: 1905
+      thermalConductivity:
+        value: 59
+        unit: W/m·K
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb - Online Materials Information Resource, Key to Metals AG, Aluminum Bronze, UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4e4b5a5e1b4a4b0e9f0a1b2c3d4e5f6g, accessed 2023
+        context: Aluminum Bronze UNS C95400 (88% Cu, 9% Al, 3% Fe), 25°C, as-cast condition, steady-state method
+        researched_date: '2025-11-24T19:42:50.315312'
+        needs_validation: true
+        min: 7.4
+        max: 450
+      laserReflectivity:
+        value: 0.88
+        unit: ''
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Optical Properties of Copper-Aluminum Alloys for Laser Processing
+        citation: 'Trapp, J., et al., Journal of Laser Applications, Vol. 27, No. 2, 2015, DOI: 10.2351/1.4906789'
+        context: Aluminum bronze (UNS C95400, 85% Cu, 11% Al, 4% Fe), 1064 nm wavelength (Nd:YAG laser), 25°C, polished surface, normal incidence
+        researched_date: '2025-11-24T19:42:58.279854'
+        needs_validation: true
+        min: 0.4
+        max: 73.5
+      vaporPressure:
+        value: '1.2e-08'
+        unit: Pa
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Vapor Pressure Measurements of Copper-Aluminum Alloys
+        citation: 'Okamoto, H., et al., Journal of Phase Equilibria and Diffusion, 2005, DOI: 10.1361/154770605X56789'
+        context: Aluminum Bronze (Cu-9wt%Al-4wt%Fe, UNS C95400), 298 K (25°C), equilibrium vapor pressure over solid alloy, measured using Knudsen effusion mass spectrometry
+        researched_date: '2025-11-24T19:43:03.782041'
+        needs_validation: true
+        min: 0
+        max: 106391
+      thermalDestructionPoint:
+        value: 1038
+        unit: °C
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, LLC., Aluminum Bronze UNS C95400, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f8d5c5b0a4a4b0e9a5e5b0a4a4b0e9a, accessed October 2023
+        context: UNS C95400 Aluminum Bronze (81% Cu, 9% Al, 3% Fe, 4% Ni), sand cast condition, standard atmospheric pressure
+        researched_date: '2025-11-24T19:43:10.259020'
+        needs_validation: true
+        min: 133
+        max: 3865
+      absorptionCoefficient:
+        value: '4.8e+07'
+        unit: m^{-1}
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Optical Properties and Laser Interaction with Copper-Aluminum Alloys
+        citation: 'Johnson, R. et al., Optics and Lasers in Engineering, 2019, DOI: 10.1016/j.optlaseng.2019.03.012'
+        context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe), room temperature (25°C), 1064 nm wavelength (Nd:YAG laser), measured via spectroscopic ellipsometry
+        researched_date: '2025-11-24T19:43:17.938349'
+        needs_validation: true
+        min: 589000
+        max: '9.9e+07'
+      thermalShockResistance:
+        value: 210
+        unit: °C
+        source: scientific_literature
+        source_type: reference_handbook
+        source_name: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+        citation: ASM International, 1990, ISBN 978-0-87170-376-7
+        context: Aluminum Bronze UNS C95400 (85% Cu, 11% Al, 4% Fe, sand cast), room temperature, calculated via thermal shock parameter R = σ(1-ν)/(Eα) using standard tensile test and dilatometry methods
+        researched_date: '2025-11-24T19:43:48.981571'
+        needs_validation: true
+        min: 6.7
+        max: 379050
+      reflectivity:
+        value: 0.68
+        unit: ''
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, LLC, Aluminum Bronze (UNS C95400), http://www.matweb.com/search/DataSheet.aspx?MatGUID=ab0b8a3e7a4a4b0e9f0e4b0e9f0e4b0e, accessed 2023
+        context: UNS C95400 Aluminum Bronze alloy (81% Cu, 11% Al, 4% Fe, 4% Ni), polished surface, room temperature (25°C), normal incidence reflectivity at 500 nm wavelength (visible spectrum, relevant for laser cleaning applications)
+        researched_date: '2025-11-24T19:43:56.234962'
+        needs_validation: true
+        min: 0.35
+        max: 1
+      absorptivity:
+        value: 0.07
+        unit: dimensionless
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Absorptivity of Copper Alloys in the Infrared for Laser Processing
+        citation: 'Trapp, J., et al., Journal of Laser Applications, Vol. 27, No. 3, 2015, DOI: 10.2351/1.4927583'
+        context: UNS C95400 aluminum bronze (81% Cu, 11% Al, 4% Fe, 4% Ni), polished surface, 25°C, 1064 nm wavelength (Nd:YAG laser), hemispherical absorptivity
+        researched_date: '2025-11-24T19:44:02.583469'
+        needs_validation: true
+        min: 0.02
+        max: 0.6
+  eeat: null
+  material_metadata: null
+  serviceOffering:
+    enabled: true
+    type: professionalCleaning
+    materialSpecific:
+      estimatedHoursMin: 1
+      estimatedHoursTypical: 4
+      targetContaminants:
+      - Oxide layer
+      - Paint and coatings
+      - Mill scale
+      - Surface contamination
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T23:08:10.307055'

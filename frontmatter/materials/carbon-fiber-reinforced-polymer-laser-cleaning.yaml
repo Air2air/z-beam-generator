@@ -1,356 +1,357 @@
-name: Carbon Fiber Reinforced Polymer
-slug: carbon-fiber-reinforced-polymer
-category: composite
-subcategory: fiber-reinforced
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: CFRP Laser Cleaning
-material_description: In my experience, Carbon Fiber Reinforced Polymer works wonders in aerospace and automotive designs by combining incredible tensile strength with remarkably low weight compared to traditional metals, enabling lighter structures that perform better—though you should avoid sharp impacts to prevent fiber breakage.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Composite
-  href: /materials/composite
-- label: Fiber Reinforced
-  href: /materials/composite/fiber-reinforced
-- label: Carbon Fiber Reinforced Polymer
-  href: /materials/composite/fiber-reinforced/carbon-fiber-reinforced-polymer
-images:
-  hero:
-    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+metadata:
+  name: Carbon Fiber Reinforced Polymer
+  slug: carbon-fiber-reinforced-polymer
+  category: composite
+  subcategory: fiber-reinforced
+  content_type: unified_material
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: material
+  title: CFRP Laser Cleaning
+  material_description: In my experience, Carbon Fiber Reinforced Polymer works wonders in aerospace and automotive designs by combining incredible tensile strength with remarkably low weight compared to traditional metals, enabling lighter structures that perform better—though you should avoid sharp impacts to prevent fiber breakage.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Composite
+    href: /materials/composite
+  - label: Fiber Reinforced
+    href: /materials/composite/fiber-reinforced
+  - label: Carbon Fiber Reinforced Polymer
+    href: /materials/composite/fiber-reinforced/carbon-fiber-reinforced-polymer
+  images:
+    hero:
+      alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
+      url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+    micro:
+      alt: Carbon Fiber Reinforced Polymer microscopic view of laser cleaning showing detailed precise contamination removal
+      url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
   micro:
-    alt: Carbon Fiber Reinforced Polymer microscopic view of laser cleaning showing detailed precise contamination removal
-    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
-micro:
-  before: We've found the contaminated surface shows fibers matted with dark residues. Dirt clings tightly to the matrix, hiding the weave below. Scattered particles block the smooth flow of strands.
-  after: After treatment, the laser reveals crisp fibers standing out clearly. The matrix gleams evenly without any leftover grime. Strands now connect smoothly across the whole area.
-faq:
-- question: What laser wavelength is most effective for cleaning CFRP without damaging the fibers or resin?
-  answer: For CFRP laser cleaning, near-IR at 1064 nm is generally preferred over UV, particularly due to its superior absorption by carbon contaminants while minimizing resin damage at fluences around 5 J/cm². Thus, this wavelength ablates surface layers effectively without compromising underlying fiber integrity.
-- question: How do I remove release agents and mold residues from CFRP surfaces without compromising **structural integrity**?
-  answer: '**Preserves fiber-matrix interface**. For CFRP surface preparation, use nanosecond pulses at 1064 nm and a fluence of 5 J/cm². Specifically, this wavelength gets absorbed by contaminants such as silicone, allowing their removal without harming the epoxy matrix underneath. Thus, scanning at 500 mm/s with 50% overlap avoids thermal damage to the fiber-matrix interface.'
-- question: Can laser cleaning effectively prepare CFRP surfaces for bonding and repair **without mechanical abrasion**?
-  answer: '**Activates surfaces without fiber damage**. Laser cleaning, particularly at 5 J/cm² fluence with 1064 nm wavelength, effectively activates CFRP surfaces. Notably, it removes contaminants and optimizes surface roughness, thus achieving bond strength akin to grit blasting without harming composite fibers.'
-- question: What are the safety concerns when laser cleaning CFRP, particularly regarding **toxic fume generation**?
-  answer: '**Generates HCN and benzene fumes**. Laser cleaning of CFRP at 1064 nm produces toxic hydrogen cyanide and benzene fumes, particularly endangering health. Proper fume extraction remains essential, with operators specifically needing supplied-air respirators. Thus, strictly adhere to the 5 J/cm² fluence threshold to reduce hazardous byproducts.'
-- question: How do I prevent thermal damage to the **epoxy matrix** when laser cleaning CFRP composites?
-  answer: '**ultrashort pulses minimize heat diffusion**. Employ ultrashort pulses under 10 ps, particularly to curb heat diffusion into the epoxy matrix. Target fluence around 5 J/cm² via a 50 μm spot size for precise contaminant removal. Thus, real-time thermal monitoring avoids surpassing the matrix degradation threshold.'
-- question: What laser parameters work best for removing paint and coatings from CFRP **without fiber exposure**?
-  answer: '**Preserves underlying resin matrix**. For CFRP paint removal, particularly employ a 1064 nm wavelength with fluence under 5 J/cm². Thus, apply multiple passes at 500 mm/s using 50% overlap to selectively ablate coatings, while safeguarding the underlying resin matrix for later recoating.'
-- question: How does laser cleaning affect the **surface chemistry and wettability** of CFRP for subsequent processing?
-  answer: '**Functionalizes surfaces enhancing adhesion**. Laser cleaning at 5 J/cm² fluence chemically functionalizes CFRP surfaces, notably by generating oxygen-containing groups. Thus, it boosts surface energy and wettability, markedly aiding adhesion in later bonding or coating steps. The 1064 nm wavelength specifically minimizes matrix damage.'
-- question: What are the challenges with automated laser cleaning of **complex CFRP geometries** and curved surfaces?
-  answer: '**Requires precise robotic path planning**. Achieving consistent 5 J/cm² fluence on curved CFRP surfaces demands precise robotic path planning. Particularly, complex geometries hinder stand-off distance control, potentially causing thermal damage from defocused beams. Thus, beam delivery systems should adapt to contoured parts for uniform energy distribution.'
-- question: Can laser cleaning detect and remove **barely visible impact damage** (BVID) in CFRP while cleaning?
-  answer: '**Requires complementary NDI for subsurface**. Notably, laser cleaning at 5 J/cm² reveals BVID via surface morphology changes, though it cannot directly detect subsurface delamination. LIBS specifically identifies contaminants during processing, yet internal fiber damage assessment thus requires complementary NDI methods owing to CFRP''s opacity.'
-- question: How does carbon **fiber orientation** and weave pattern affect laser cleaning results and parameter selection?
-  answer: '**Affects thermal conduction adjustments**. Fiber orientation notably influences thermal conduction, thus necessitating parameter tweaks. Unidirectional composites, particularly along the fibers, require lower fluence around 5 J/cm², whereas woven patterns demand precise beam overlap to manage variations in resin pocket ablation.'
-- question: What quality control methods are most effective for verifying successful laser cleaning of CFRP?
-  answer: For CFRP laser cleaning verification, we particularly rely on contact angle measurements to confirm surface energy increases, alongside optical profilometry for validating sub-micron roughness. At 5 J/cm² fluence, successful cleaning thus delivers 30-50% adhesion gains in pull-tests, while thermography enables non-destructive subsurface thermal damage detection.
-- question: How does laser cleaning compare to traditional methods (grit blasting, chemical stripping) for CFRP in terms of **cost and performance**?
-  answer: '**Superior efficiency without matrix damage**. Laser cleaning delivers superior cost efficiency, particularly for CFRP maintenance in aerospace settings. Operating at 100W with 5 J/cm² fluence, it selectively removes contaminants without harming the composite matrix. Notably, this eliminates pricey consumables and hazardous waste, thus cutting operational costs far below those of traditional abrasive or chemical methods.'
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-- description: IEC 60825 - Safety of Laser Products
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-  name: IEC
-  url: https://webstore.iec.ch/publication/3587
-- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-  name: OSHA
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    percentage: 40.0
-    electricalResistivity:
-      value: '0.0015'
-      unit: Ω·m
-      source: ai_research
-      min: 0
-      max: 1e+14
-    fractureToughness:
-      value: 1.2
-      unit: MPa√m
-      source: ai_research
-      min: 0.01
-      max: 26.2
-    density:
-      value: 1.6
-      unit: g/cm³
-      source: ai_research
-      min: 1
-      max: 2520
-    oxidationResistance:
-      value: 673
-      unit: K
-      source: ai_research
-      min: 0
-      max: 1668
-    youngsModulus:
-      value: '1.5e+11'
-      unit: Pa
-      source: ai_research
-      min: '0.0047'
-      max: '1.4e+11'
-    hardness:
-      value: 250
-      unit: MPa
-      source: ai_research
-      min: 5
-      max: 120
-    compressiveStrength:
-      value: 1500
-      unit: MPa
-      source: ai_research
-      min: 6.6
-      max: 1260
-    tensileStrength:
-      value: 1480
-      unit: MPa
-      source: ai_research
-      min: 16.1
-      max: 1627
-    flexuralStrength:
-      value: 690
-      unit: MPa
-      source: ai_research
-      min: 4.6
-      max: 1197
-    corrosionResistance:
-      value: 0.98
-      unit: dimensionless (normalized resistance index)
-      source: ai_research
-      min: 0
-      max: 4725
-    laserDamageThreshold:
-      value: 2.3
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Laser-induced damage threshold of carbon fiber reinforced polymer composites
-      citation: 'Negel, J.P. et al., Journal of Laser Applications, 2018, DOI: 10.2351/1.5026123'
-      context: CFRP with T800 carbon fibers in epoxy matrix (60% fiber volume), 1064 nm Nd:YAG laser, 10 ns pulse duration, room temperature (25°C), vacuum conditions
-      researched_date: '2025-11-24T11:53:25.595894'
-      needs_validation: true
-      min: 0.44
-      max: 8.4
-    thermalDestruction:
-      value: 673
-      unit: K
-      source: ai_research
-      min: 206
-      max: 1952
-    laserReflectivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: '0.0043'
-      max: 0.92
-    thermalExpansion:
-      value: '2.7e-07'
-      unit: K^{-1}
-      source: ai_research
-      min: -1
-      max: 250
-    thermalConductivity:
-      value: 0.92
-      unit: W/m·K
-      source: ai_research
-      min: 0.03
-      max: 400
-    specificHeat:
-      value: 920
-      unit: J/(kg·K)
-      source: ai_research
-      min: 500
-      max: 2500
-    laserAbsorption:
-      value: 0.92
-      unit: dimensionless (absorptivity)
-      source: ai_research
-      min: 0.14
-      max: 525000
-    thermalDiffusivity:
-      value: '5.7e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: '7.6e-05'
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    absorptivity:
-      value: 0.3
-      unit: dimensionless
-      min: 0.1
-      max: 0.5
-      source: ai_research
-    absorptionCoefficient:
-      value: 50000
-      unit: m⁻¹
-      min: 10000
-      max: 100000
-      source: ai_research
-    laserDamageThreshold:
-      value: 3
-      unit: J/cm²
-      min: 1
-      max: 5
-      source: ai_research
-    thermalShockResistance:
-      value: 1.5
-      unit: MW/m
-      min: 0.5
-      max: 3
-      source: ai_research
-    reflectivity:
-      value: 0.7
-      unit: dimensionless
-      min: 0.5
-      max: 0.9
-      source: ai_research
-    thermalDestructionPoint:
-      value: 700
-      unit: K
-      min: 500
-      max: 900
-      source: ai_research
-    vaporPressure:
-      value: 100
-      unit: Pa
-      min: 1
-      max: 1000
-      source: ai_research
-    thermalDestruction:
-      value: 673
-      unit: K
-      source: ai_research
-      min: 206
-      max: 1952
-    laserReflectivity:
-      value: 0.35
-      unit: dimensionless
-      source: ai_research
-      min: '0.0043'
-      max: 0.92
-    thermalExpansion:
-      value: '2.7e-07'
-      unit: K^{-1}
-      source: ai_research
-      min: -1
-      max: 250
-    thermalConductivity:
-      value: 0.92
-      unit: W/m·K
-      source: ai_research
-      min: 0.03
-      max: 400
-    specificHeat:
-      value: 920
-      unit: J/(kg·K)
-      source: ai_research
-      min: 500
-      max: 2500
-    laserAbsorption:
-      value: 0.92
-      unit: dimensionless (absorptivity)
-      source: ai_research
-      min: 0.14
-      max: 525000
-    thermalDiffusivity:
-      value: '5.7e-07'
-      unit: m²/s
-      source: ai_research
-      min: 0
-      max: '7.6e-05'
-    ablationThreshold:
-      value: 2.3
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: 'Laser cleaning of carbon fiber reinforced polymer composites: Ablation thresholds and surface morphology'
-      citation: 'B. Liu et al., Optics and Lasers in Engineering, 2019, DOI: 10.1016/j.optlaseng.2019.04.012'
-      context: CFRP with 60% carbon fiber volume fraction in epoxy matrix (T300/EPON 828), 1064 nm Nd:YAG laser, room temperature (25°C), atmospheric pressure
-      researched_date: '2025-11-24T11:53:30.939302'
-      needs_validation: true
-      min: 0.49
-      max: 2.9
-eeat:
-  reviewedBy: Z-Beam Quality Assurance Team
-  citations:
-  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  isBasedOn:
-    name: ANSI Z136.1 - Safe Use of Lasers
+    before: We've found the contaminated surface shows fibers matted with dark residues. Dirt clings tightly to the matrix, hiding the weave below. Scattered particles block the smooth flow of strands.
+    after: After treatment, the laser reveals crisp fibers standing out clearly. The matrix gleams evenly without any leftover grime. Strands now connect smoothly across the whole area.
+  faq:
+  - question: What laser wavelength is most effective for cleaning CFRP without damaging the fibers or resin?
+    answer: For CFRP laser cleaning, near-IR at 1064 nm is generally preferred over UV, particularly due to its superior absorption by carbon contaminants while minimizing resin damage at fluences around 5 J/cm². Thus, this wavelength ablates surface layers effectively without compromising underlying fiber integrity.
+  - question: How do I remove release agents and mold residues from CFRP surfaces without compromising **structural integrity**?
+    answer: '**Preserves fiber-matrix interface**. For CFRP surface preparation, use nanosecond pulses at 1064 nm and a fluence of 5 J/cm². Specifically, this wavelength gets absorbed by contaminants such as silicone, allowing their removal without harming the epoxy matrix underneath. Thus, scanning at 500 mm/s with 50% overlap avoids thermal damage to the fiber-matrix interface.'
+  - question: Can laser cleaning effectively prepare CFRP surfaces for bonding and repair **without mechanical abrasion**?
+    answer: '**Activates surfaces without fiber damage**. Laser cleaning, particularly at 5 J/cm² fluence with 1064 nm wavelength, effectively activates CFRP surfaces. Notably, it removes contaminants and optimizes surface roughness, thus achieving bond strength akin to grit blasting without harming composite fibers.'
+  - question: What are the safety concerns when laser cleaning CFRP, particularly regarding **toxic fume generation**?
+    answer: '**Generates HCN and benzene fumes**. Laser cleaning of CFRP at 1064 nm produces toxic hydrogen cyanide and benzene fumes, particularly endangering health. Proper fume extraction remains essential, with operators specifically needing supplied-air respirators. Thus, strictly adhere to the 5 J/cm² fluence threshold to reduce hazardous byproducts.'
+  - question: How do I prevent thermal damage to the **epoxy matrix** when laser cleaning CFRP composites?
+    answer: '**ultrashort pulses minimize heat diffusion**. Employ ultrashort pulses under 10 ps, particularly to curb heat diffusion into the epoxy matrix. Target fluence around 5 J/cm² via a 50 μm spot size for precise contaminant removal. Thus, real-time thermal monitoring avoids surpassing the matrix degradation threshold.'
+  - question: What laser parameters work best for removing paint and coatings from CFRP **without fiber exposure**?
+    answer: '**Preserves underlying resin matrix**. For CFRP paint removal, particularly employ a 1064 nm wavelength with fluence under 5 J/cm². Thus, apply multiple passes at 500 mm/s using 50% overlap to selectively ablate coatings, while safeguarding the underlying resin matrix for later recoating.'
+  - question: How does laser cleaning affect the **surface chemistry and wettability** of CFRP for subsequent processing?
+    answer: '**Functionalizes surfaces enhancing adhesion**. Laser cleaning at 5 J/cm² fluence chemically functionalizes CFRP surfaces, notably by generating oxygen-containing groups. Thus, it boosts surface energy and wettability, markedly aiding adhesion in later bonding or coating steps. The 1064 nm wavelength specifically minimizes matrix damage.'
+  - question: What are the challenges with automated laser cleaning of **complex CFRP geometries** and curved surfaces?
+    answer: '**Requires precise robotic path planning**. Achieving consistent 5 J/cm² fluence on curved CFRP surfaces demands precise robotic path planning. Particularly, complex geometries hinder stand-off distance control, potentially causing thermal damage from defocused beams. Thus, beam delivery systems should adapt to contoured parts for uniform energy distribution.'
+  - question: Can laser cleaning detect and remove **barely visible impact damage** (BVID) in CFRP while cleaning?
+    answer: '**Requires complementary NDI for subsurface**. Notably, laser cleaning at 5 J/cm² reveals BVID via surface morphology changes, though it cannot directly detect subsurface delamination. LIBS specifically identifies contaminants during processing, yet internal fiber damage assessment thus requires complementary NDI methods owing to CFRP''s opacity.'
+  - question: How does carbon **fiber orientation** and weave pattern affect laser cleaning results and parameter selection?
+    answer: '**Affects thermal conduction adjustments**. Fiber orientation notably influences thermal conduction, thus necessitating parameter tweaks. Unidirectional composites, particularly along the fibers, require lower fluence around 5 J/cm², whereas woven patterns demand precise beam overlap to manage variations in resin pocket ablation.'
+  - question: What quality control methods are most effective for verifying successful laser cleaning of CFRP?
+    answer: For CFRP laser cleaning verification, we particularly rely on contact angle measurements to confirm surface energy increases, alongside optical profilometry for validating sub-micron roughness. At 5 J/cm² fluence, successful cleaning thus delivers 30-50% adhesion gains in pull-tests, while thermography enables non-destructive subsurface thermal damage detection.
+  - question: How does laser cleaning compare to traditional methods (grit blasting, chemical stripping) for CFRP in terms of **cost and performance**?
+    answer: '**Superior efficiency without matrix damage**. Laser cleaning delivers superior cost efficiency, particularly for CFRP maintenance in aerospace settings. Operating at 100W with 5 J/cm² fluence, it selectively removes contaminants without harming the composite matrix. Notably, this eliminates pricey consumables and hazardous waste, thus cutting operational costs far below those of traditional abrasive or chemical methods.'
+  regulatoryStandards:
+  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    image: /images/logo/logo-org-fda.png
+    longName: Food and Drug Administration
+    name: FDA
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - description: ANSI Z136.1 - Safe Use of Lasers
+    image: /images/logo/logo-org-ansi.png
+    longName: American National Standards Institute
+    name: ANSI
     url: https://webstore.ansi.org/standards/lia/ansiz1362022
-material_metadata:
-  last_updated: '2025-10-27T23:48:40.921753Z'
-  normalization_applied: true
-  normalization_date: '2025-10-27T23:48:40.921759Z'
-  structure_version: '2.0'
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 2
-    targetContaminants:
-    - Surface contamination
-    - Mold release agents
-    - Adhesive residue
-    - Matrix surface prep
-    notes: Careful parameter control to avoid matrix damage
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-14T22:41:29.452410'
+  - description: IEC 60825 - Safety of Laser Products
+    image: /images/logo/logo-org-iec.png
+    longName: International Electrotechnical Commission
+    name: IEC
+    url: https://webstore.iec.ch/publication/3587
+  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    image: /images/logo/logo-org-osha.png
+    longName: Occupational Safety and Health Administration
+    name: OSHA
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  materialProperties:
+    material_characteristics:
+      label: Material Characteristics
+      percentage: 40.0
+      electricalResistivity:
+        value: '0.0015'
+        unit: Ω·m
+        source: ai_research
+        min: 0
+        max: 1e+14
+      fractureToughness:
+        value: 1.2
+        unit: MPa√m
+        source: ai_research
+        min: 0.01
+        max: 26.2
+      density:
+        value: 1.6
+        unit: g/cm³
+        source: ai_research
+        min: 1
+        max: 2520
+      oxidationResistance:
+        value: 673
+        unit: K
+        source: ai_research
+        min: 0
+        max: 1668
+      youngsModulus:
+        value: '1.5e+11'
+        unit: Pa
+        source: ai_research
+        min: '0.0047'
+        max: '1.4e+11'
+      hardness:
+        value: 250
+        unit: MPa
+        source: ai_research
+        min: 5
+        max: 120
+      compressiveStrength:
+        value: 1500
+        unit: MPa
+        source: ai_research
+        min: 6.6
+        max: 1260
+      tensileStrength:
+        value: 1480
+        unit: MPa
+        source: ai_research
+        min: 16.1
+        max: 1627
+      flexuralStrength:
+        value: 690
+        unit: MPa
+        source: ai_research
+        min: 4.6
+        max: 1197
+      corrosionResistance:
+        value: 0.98
+        unit: dimensionless (normalized resistance index)
+        source: ai_research
+        min: 0
+        max: 4725
+      laserDamageThreshold:
+        value: 2.3
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Laser-induced damage threshold of carbon fiber reinforced polymer composites
+        citation: 'Negel, J.P. et al., Journal of Laser Applications, 2018, DOI: 10.2351/1.5026123'
+        context: CFRP with T800 carbon fibers in epoxy matrix (60% fiber volume), 1064 nm Nd:YAG laser, 10 ns pulse duration, room temperature (25°C), vacuum conditions
+        researched_date: '2025-11-24T11:53:25.595894'
+        needs_validation: true
+        min: 0.44
+        max: 8.4
+      thermalDestruction:
+        value: 673
+        unit: K
+        source: ai_research
+        min: 206
+        max: 1952
+      laserReflectivity:
+        value: 0.35
+        unit: dimensionless
+        source: ai_research
+        min: '0.0043'
+        max: 0.92
+      thermalExpansion:
+        value: '2.7e-07'
+        unit: K^{-1}
+        source: ai_research
+        min: -1
+        max: 250
+      thermalConductivity:
+        value: 0.92
+        unit: W/m·K
+        source: ai_research
+        min: 0.03
+        max: 400
+      specificHeat:
+        value: 920
+        unit: J/(kg·K)
+        source: ai_research
+        min: 500
+        max: 2500
+      laserAbsorption:
+        value: 0.92
+        unit: dimensionless (absorptivity)
+        source: ai_research
+        min: 0.14
+        max: 525000
+      thermalDiffusivity:
+        value: '5.7e-07'
+        unit: m²/s
+        source: ai_research
+        min: 0
+        max: '7.6e-05'
+    laser_material_interaction:
+      label: Laser-Material Interaction
+      percentage: 40.0
+      absorptivity:
+        value: 0.3
+        unit: dimensionless
+        min: 0.1
+        max: 0.5
+        source: ai_research
+      absorptionCoefficient:
+        value: 50000
+        unit: m⁻¹
+        min: 10000
+        max: 100000
+        source: ai_research
+      laserDamageThreshold:
+        value: 3
+        unit: J/cm²
+        min: 1
+        max: 5
+        source: ai_research
+      thermalShockResistance:
+        value: 1.5
+        unit: MW/m
+        min: 0.5
+        max: 3
+        source: ai_research
+      reflectivity:
+        value: 0.7
+        unit: dimensionless
+        min: 0.5
+        max: 0.9
+        source: ai_research
+      thermalDestructionPoint:
+        value: 700
+        unit: K
+        min: 500
+        max: 900
+        source: ai_research
+      vaporPressure:
+        value: 100
+        unit: Pa
+        min: 1
+        max: 1000
+        source: ai_research
+      thermalDestruction:
+        value: 673
+        unit: K
+        source: ai_research
+        min: 206
+        max: 1952
+      laserReflectivity:
+        value: 0.35
+        unit: dimensionless
+        source: ai_research
+        min: '0.0043'
+        max: 0.92
+      thermalExpansion:
+        value: '2.7e-07'
+        unit: K^{-1}
+        source: ai_research
+        min: -1
+        max: 250
+      thermalConductivity:
+        value: 0.92
+        unit: W/m·K
+        source: ai_research
+        min: 0.03
+        max: 400
+      specificHeat:
+        value: 920
+        unit: J/(kg·K)
+        source: ai_research
+        min: 500
+        max: 2500
+      laserAbsorption:
+        value: 0.92
+        unit: dimensionless (absorptivity)
+        source: ai_research
+        min: 0.14
+        max: 525000
+      thermalDiffusivity:
+        value: '5.7e-07'
+        unit: m²/s
+        source: ai_research
+        min: 0
+        max: '7.6e-05'
+      ablationThreshold:
+        value: 2.3
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: 'Laser cleaning of carbon fiber reinforced polymer composites: Ablation thresholds and surface morphology'
+        citation: 'B. Liu et al., Optics and Lasers in Engineering, 2019, DOI: 10.1016/j.optlaseng.2019.04.012'
+        context: CFRP with 60% carbon fiber volume fraction in epoxy matrix (T300/EPON 828), 1064 nm Nd:YAG laser, room temperature (25°C), atmospheric pressure
+        researched_date: '2025-11-24T11:53:30.939302'
+        needs_validation: true
+        min: 0.49
+        max: 2.9
+  eeat:
+    reviewedBy: Z-Beam Quality Assurance Team
+    citations:
+    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    isBasedOn:
+      name: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  material_metadata:
+    last_updated: '2025-10-27T23:48:40.921753Z'
+    normalization_applied: true
+    normalization_date: '2025-10-27T23:48:40.921759Z'
+    structure_version: '2.0'
+  serviceOffering:
+    enabled: true
+    type: professionalCleaning
+    materialSpecific:
+      estimatedHoursMin: 1
+      estimatedHoursTypical: 2
+      targetContaminants:
+      - Surface contamination
+      - Mold release agents
+      - Adhesive residue
+      - Matrix surface prep
+      notes: Careful parameter control to avoid matrix damage
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T23:08:06.063503'

@@ -1,257 +1,258 @@
-name: PET
-slug: pet
-category: plastic
-subcategory: thermoplastic
-content_type: unified_material
-schema_version: 4.0.0
-datePublished: null
-dateModified: null
-author:
-  id: 1
-  name: Yi-Chun Lin
-  country: Taiwan
-  country_display: Taiwan
-  title: Ph.D.
-  sex: f
-  jobTitle: Laser Processing Engineer
-  expertise:
-  - Laser Materials Processing
-  affiliation:
-    name: National Taiwan University
-    type: EducationalOrganization
-  credentials:
-  - Ph.D. Materials Engineering, National Taiwan University, 2018
-  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-  - 3+ years in laser processing R&D
-  - Assisted in projects on ultrafast laser applications
-  email: info@z-beam.com
-  image: /images/author/yi-chun-lin.jpg
-  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-  url: https://z-beam.com/authors/yi-chun-lin
-  sameAs:
-  - https://scholar.google.com/citations?user=ghi789
-  - https://linkedin.com/in/yi-chun-lin-engineer
-  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-  persona_file: taiwan_persona.yaml
-  formatting_file: taiwan_formatting.yaml
-_metadata:
-  voice:
-    author_name: Yi-Chun Lin
-    author_country: Taiwan
-    voice_applied: true
-    content_type: material
-title: PET Laser Cleaning
-material_description: PET exhibits non-porous and smooth characteristics, so laser cleaning removes contaminants effectively from surfaces without damaging underlying structure.
-breadcrumb:
-- label: Home
-  href: /
-- label: Materials
-  href: /materials
-- label: Plastic
-  href: /materials/plastic
-- label: Thermoplastic
-  href: /materials/plastic/thermoplastic
-- label: PET
-  href: /materials/plastic/thermoplastic/pet
-images:
-  hero:
-    alt: PET surface during precision laser cleaning process removing contamination layer
-    url: /images/material/pet-laser-cleaning-hero.jpg
+metadata:
+  name: PET
+  slug: pet
+  category: plastic
+  subcategory: thermoplastic
+  content_type: unified_material
+  schema_version: 4.0.0
+  datePublished: null
+  dateModified: null
+  author:
+    id: 1
+    name: Yi-Chun Lin
+    country: Taiwan
+    country_display: Taiwan
+    title: Ph.D.
+    sex: f
+    jobTitle: Laser Processing Engineer
+    expertise:
+    - Laser Materials Processing
+    affiliation:
+      name: National Taiwan University
+      type: EducationalOrganization
+    credentials:
+    - Ph.D. Materials Engineering, National Taiwan University, 2018
+    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+    - 3+ years in laser processing R&D
+    - Assisted in projects on ultrafast laser applications
+    email: info@z-beam.com
+    image: /images/author/yi-chun-lin.jpg
+    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+    url: https://z-beam.com/authors/yi-chun-lin
+    sameAs:
+    - https://scholar.google.com/citations?user=ghi789
+    - https://linkedin.com/in/yi-chun-lin-engineer
+    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+    persona_file: taiwan_persona.yaml
+    formatting_file: taiwan_formatting.yaml
+  _metadata:
+    voice:
+      author_name: Yi-Chun Lin
+      author_country: Taiwan
+      voice_applied: true
+      content_type: material
+  title: PET Laser Cleaning
+  material_description: PET exhibits non-porous and smooth characteristics, so laser cleaning removes contaminants effectively from surfaces without damaging underlying structure.
+  breadcrumb:
+  - label: Home
+    href: /
+  - label: Materials
+    href: /materials
+  - label: Plastic
+    href: /materials/plastic
+  - label: Thermoplastic
+    href: /materials/plastic/thermoplastic
+  - label: PET
+    href: /materials/plastic/thermoplastic/pet
+  images:
+    hero:
+      alt: PET surface during precision laser cleaning process removing contamination layer
+      url: /images/material/pet-laser-cleaning-hero.jpg
+    micro:
+      alt: PET surface at 500x magnification showing laser cleaning results
+      url: /images/material/pet-laser-cleaning-micro.jpg
   micro:
-    alt: PET surface at 500x magnification showing laser cleaning results
-    url: /images/material/pet-laser-cleaning-micro.jpg
-micro:
-  before: When you examine the contaminated PET surface up close, you spot irregular patches of grime and tiny debris scattered everywhere. Dust particles cling tightly to the uneven texture, making the whole area look dull and cluttered. This buildup hides the material's natural smoothness beneath layers of residue.
-  after: After laser treatment, you notice the PET surface turns remarkably even and clear overall. The grime vanishes completely, leaving behind a polished finish without any visible spots. Now the texture appears uniform and bright, ready for practical
-faq:
-- question: Why does PET sometimes warp during laser cleaning?
-  answer: I've seen PET warp more easily than metals because it softens at lower temperatures. This happens when the laser heat builds up quickly on its smooth surface, unlike tougher materials that handle it better. To avoid this, keep the laser moving steadily and use shorter pulses so the material stays intact without deforming.
-- question: How do I prepare PET surfaces for effective laser cleaning?
-  answer: When cleaning PET, start by removing loose dirt first to let the laser focus on the real contaminants. This works best because PET's non-porous nature means contaminants stick tight, and prepping helps the laser remove them cleanly without residue. I've found wiping with a mild solvent beforehand makes the process faster and leaves a spotless finish every time.
-- question: What's the best speed for laser cleaning PET to avoid damage?
-  answer: Tending to go slow with PET helps control the heat so it cleans without burning the edges. Compared to denser plastics, PET's flexibility means it
-regulatoryStandards:
-- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-  name: FDA
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-- description: ANSI Z136.1 - Safe Use of Lasers
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-  name: ANSI
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    density:
-      value: 1.4
-      unit: g/cm³
-      min: 0.84
-      max: 2.2
-    porosity:
-      value: 0
-      unit: '%'
-    surfaceRoughness:
-      value: 0.8
-      unit: μm
-    tensileStrength:
-      value: 55
-      unit: MPa
-      min: 10
-      max: 400
-    youngsModulus:
-      value: 2.8
-      unit: GPa
-      min: 0.01
-      max: 5000
-    hardness:
-      value: 0.09
-      unit: GPa
-      min: 51.8
-      max: 123
-    flexuralStrength:
-      value: 85
-      unit: MPa
-      min: 20.7
-      max: 96.4
-    oxidationResistance:
-      value: 2.2
-      unit: μm/year
-      min: 0.76
-      max: 1575
-    corrosionResistance:
-      value: 0.9
-      unit: mm/year
-      min: 0
-      max: 105
-    compressiveStrength:
-      value: 55
-      unit: MPa
-      min: 20
-      max: 200
-    fractureToughness:
-      value: 4
-      unit: MPa m^{1/2}
-      min: 0.7
-      max: 2.9
-    electricalResistivity:
-      value: 1e+16
-      unit: Ω·m
-      min: '9.5e+12'
-      max: 1e+17
-    percentage: 60.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    percentage: 40.0
-    thermalDestruction:
-      value: 523
-      unit: K
-      min: 228
-      max: 715
-    laserAbsorption:
-      value: 0.48
-      unit: dimensionless
-      min: 0.28
-      max: 126000
-    laserDamageThreshold:
-      value: 0.62
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: 'Laser Ablation of Polymers: PET Damage Threshold'
-      citation: 'Srinivasan, R. and Braren, B., Applied Physics A: Materials Science & Processing, 1989, Vol. 48, pp. 419-423, DOI: 10.1007/BF00615347'
-      context: Amorphous PET film (100 μm thickness, commercial grade), 25°C, 248 nm KrF excimer laser, 20 ns pulse duration, measured via optical microscopy of ablation craters
-      researched_date: '2025-11-24T12:58:12.983238'
-      needs_validation: true
-      min: 0.71
-      max: 2.6
-    ablationThreshold:
-      value: 0.03
-      unit: J/cm²
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Applied Physics Letters
-      citation: 'R. Srinivasan and B. Braren, Appl. Phys. Lett. 53, 1203 (1988), DOI: 10.1063/1.100065'
-      context: Commercial polyethylene terephthalate (PET) film (biaxially oriented, ~25 μm thickness), room temperature (25°C), 193 nm ArF excimer laser, 14 ns pulse duration, vacuum environment
-      researched_date: '2025-11-24T13:02:26.087545'
-      needs_validation: true
-      min: 0.39
-      max: 2.8
-    thermalDiffusivity:
-      value: '1.2e-07'
-      unit: m²/s
-      source: scientific_literature
-      source_type: textbook
-      source_name: Physical Properties of Polymers Handbook
-      citation: J. E. Mark (ed.), Physical Properties of Polymers Handbook, 2nd Edition, Springer, 2007, ISBN 978-0-387-69002-5
-      context: Amorphous PET (polyethylene terephthalate), 25°C, density 1330-1380 kg/m³, measured via laser flash method on thin films
-      researched_date: '2025-11-24T13:27:52.253885'
-      needs_validation: true
-      min: 0
-      max: 0
-    thermalExpansion:
-      value: 7e-05
-      unit: K^{-1}
-      source: scientific_literature
-      source_type: reference_handbook
-      source_name: Polymer Handbook
-      citation: Brandrup, J., Immergut, E.H., Grulke, E.A. (Eds.), Polymer Handbook, 4th Edition, John Wiley & Sons, Inc., 2004, ISBN 978-0-471-69469-5
-      context: Amorphous PET (polyethylene terephthalate), 25°C, measured via dilatometry on melt-quenched samples
-      researched_date: '2025-11-24T13:28:01.138793'
-      needs_validation: true
-      min: '5.9e-05'
-      max: '0.0002'
-    specificHeat:
-      value: 1170
-      unit: J/(kg·K)
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Polyethylene Terephthalate (PET, Thermoplastic Polyester) Generic, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4bbdf6a2b7a04a0a9f8b0e1a2b3c4d5e, accessed 2023
-      context: Amorphous PET (100% crystallinity not specified, commercial grade), 25°C, measured via differential scanning calorimetry (DSC)
-      researched_date: '2025-11-24T13:28:07.803748'
-      needs_validation: true
-      min: 1
-      max: 2500
-    thermalConductivity:
-      value: 0.24
-      unit: W/m·K
-      source: scientific_literature
-      source_type: materials_database
-      source_name: MatWeb Materials Database
-      citation: MatWeb, LLC., Polyethylene Terephthalate (PET, PETP), unfilled, http://www.matweb.com/search/DataSheet.aspx?MatGUID=de6a4a5b8b4e4a0a8b4e4a0a8b4e4a0a, accessed 2024
-      context: Unfilled amorphous PET, 25°C, room temperature and standard atmospheric pressure
-      researched_date: '2025-11-24T13:28:26.074352'
-      needs_validation: true
-      min: 0.02
-      max: 3
-    laserReflectivity:
-      value: 0.04
-      unit: fraction
-      source: scientific_literature
-      source_type: journal_article
-      source_name: Journal of Applied Physics
-      citation: 'A. M. Morales et al., ''Optical properties of polyethylene terephthalate (PET) in the near-infrared for laser processing'', Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
-      context: Commercial PET (density 1.38 g/cm³, 99% purity), 1064 nm wavelength (Nd:YAG laser), normal incidence, 25°C, vacuum conditions
-      researched_date: '2025-11-24T15:42:36.520118'
-      needs_validation: true
-      min: 0.02
-      max: 0.05
-eeat: null
-material_metadata: null
-serviceOffering:
-  enabled: true
-  type: professionalCleaning
-  materialSpecific:
-    estimatedHoursMin: 1
-    estimatedHoursTypical: 2
-    targetContaminants:
-    - Surface contamination
-    - Mold release agents
-    - Adhesive residue
-    - Paint overspray
-    notes: Low fluence required to prevent melting or warping
-preservedData:
-  generationMetadata:
-    generated_date: '2025-12-14T22:41:33.497540'
+    before: When you examine the contaminated PET surface up close, you spot irregular patches of grime and tiny debris scattered everywhere. Dust particles cling tightly to the uneven texture, making the whole area look dull and cluttered. This buildup hides the material's natural smoothness beneath layers of residue.
+    after: After laser treatment, you notice the PET surface turns remarkably even and clear overall. The grime vanishes completely, leaving behind a polished finish without any visible spots. Now the texture appears uniform and bright, ready for practical
+  faq:
+  - question: Why does PET sometimes warp during laser cleaning?
+    answer: I've seen PET warp more easily than metals because it softens at lower temperatures. This happens when the laser heat builds up quickly on its smooth surface, unlike tougher materials that handle it better. To avoid this, keep the laser moving steadily and use shorter pulses so the material stays intact without deforming.
+  - question: How do I prepare PET surfaces for effective laser cleaning?
+    answer: When cleaning PET, start by removing loose dirt first to let the laser focus on the real contaminants. This works best because PET's non-porous nature means contaminants stick tight, and prepping helps the laser remove them cleanly without residue. I've found wiping with a mild solvent beforehand makes the process faster and leaves a spotless finish every time.
+  - question: What's the best speed for laser cleaning PET to avoid damage?
+    answer: Tending to go slow with PET helps control the heat so it cleans without burning the edges. Compared to denser plastics, PET's flexibility means it
+  regulatoryStandards:
+  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    image: /images/logo/logo-org-fda.png
+    longName: Food and Drug Administration
+    name: FDA
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  - description: ANSI Z136.1 - Safe Use of Lasers
+    image: /images/logo/logo-org-ansi.png
+    longName: American National Standards Institute
+    name: ANSI
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  materialProperties:
+    material_characteristics:
+      label: Material Characteristics
+      density:
+        value: 1.4
+        unit: g/cm³
+        min: 0.84
+        max: 2.2
+      porosity:
+        value: 0
+        unit: '%'
+      surfaceRoughness:
+        value: 0.8
+        unit: μm
+      tensileStrength:
+        value: 55
+        unit: MPa
+        min: 10
+        max: 400
+      youngsModulus:
+        value: 2.8
+        unit: GPa
+        min: 0.01
+        max: 5000
+      hardness:
+        value: 0.09
+        unit: GPa
+        min: 51.8
+        max: 123
+      flexuralStrength:
+        value: 85
+        unit: MPa
+        min: 20.7
+        max: 96.4
+      oxidationResistance:
+        value: 2.2
+        unit: μm/year
+        min: 0.76
+        max: 1575
+      corrosionResistance:
+        value: 0.9
+        unit: mm/year
+        min: 0
+        max: 105
+      compressiveStrength:
+        value: 55
+        unit: MPa
+        min: 20
+        max: 200
+      fractureToughness:
+        value: 4
+        unit: MPa m^{1/2}
+        min: 0.7
+        max: 2.9
+      electricalResistivity:
+        value: 1e+16
+        unit: Ω·m
+        min: '9.5e+12'
+        max: 1e+17
+      percentage: 60.0
+    laser_material_interaction:
+      label: Laser-Material Interaction
+      percentage: 40.0
+      thermalDestruction:
+        value: 523
+        unit: K
+        min: 228
+        max: 715
+      laserAbsorption:
+        value: 0.48
+        unit: dimensionless
+        min: 0.28
+        max: 126000
+      laserDamageThreshold:
+        value: 0.62
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: 'Laser Ablation of Polymers: PET Damage Threshold'
+        citation: 'Srinivasan, R. and Braren, B., Applied Physics A: Materials Science & Processing, 1989, Vol. 48, pp. 419-423, DOI: 10.1007/BF00615347'
+        context: Amorphous PET film (100 μm thickness, commercial grade), 25°C, 248 nm KrF excimer laser, 20 ns pulse duration, measured via optical microscopy of ablation craters
+        researched_date: '2025-11-24T12:58:12.983238'
+        needs_validation: true
+        min: 0.71
+        max: 2.6
+      ablationThreshold:
+        value: 0.03
+        unit: J/cm²
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Applied Physics Letters
+        citation: 'R. Srinivasan and B. Braren, Appl. Phys. Lett. 53, 1203 (1988), DOI: 10.1063/1.100065'
+        context: Commercial polyethylene terephthalate (PET) film (biaxially oriented, ~25 μm thickness), room temperature (25°C), 193 nm ArF excimer laser, 14 ns pulse duration, vacuum environment
+        researched_date: '2025-11-24T13:02:26.087545'
+        needs_validation: true
+        min: 0.39
+        max: 2.8
+      thermalDiffusivity:
+        value: '1.2e-07'
+        unit: m²/s
+        source: scientific_literature
+        source_type: textbook
+        source_name: Physical Properties of Polymers Handbook
+        citation: J. E. Mark (ed.), Physical Properties of Polymers Handbook, 2nd Edition, Springer, 2007, ISBN 978-0-387-69002-5
+        context: Amorphous PET (polyethylene terephthalate), 25°C, density 1330-1380 kg/m³, measured via laser flash method on thin films
+        researched_date: '2025-11-24T13:27:52.253885'
+        needs_validation: true
+        min: 0
+        max: 0
+      thermalExpansion:
+        value: 7e-05
+        unit: K^{-1}
+        source: scientific_literature
+        source_type: reference_handbook
+        source_name: Polymer Handbook
+        citation: Brandrup, J., Immergut, E.H., Grulke, E.A. (Eds.), Polymer Handbook, 4th Edition, John Wiley & Sons, Inc., 2004, ISBN 978-0-471-69469-5
+        context: Amorphous PET (polyethylene terephthalate), 25°C, measured via dilatometry on melt-quenched samples
+        researched_date: '2025-11-24T13:28:01.138793'
+        needs_validation: true
+        min: '5.9e-05'
+        max: '0.0002'
+      specificHeat:
+        value: 1170
+        unit: J/(kg·K)
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, LLC., Polyethylene Terephthalate (PET, Thermoplastic Polyester) Generic, http://www.matweb.com/search/DataSheet.aspx?MatGUID=4bbdf6a2b7a04a0a9f8b0e1a2b3c4d5e, accessed 2023
+        context: Amorphous PET (100% crystallinity not specified, commercial grade), 25°C, measured via differential scanning calorimetry (DSC)
+        researched_date: '2025-11-24T13:28:07.803748'
+        needs_validation: true
+        min: 1
+        max: 2500
+      thermalConductivity:
+        value: 0.24
+        unit: W/m·K
+        source: scientific_literature
+        source_type: materials_database
+        source_name: MatWeb Materials Database
+        citation: MatWeb, LLC., Polyethylene Terephthalate (PET, PETP), unfilled, http://www.matweb.com/search/DataSheet.aspx?MatGUID=de6a4a5b8b4e4a0a8b4e4a0a8b4e4a0a, accessed 2024
+        context: Unfilled amorphous PET, 25°C, room temperature and standard atmospheric pressure
+        researched_date: '2025-11-24T13:28:26.074352'
+        needs_validation: true
+        min: 0.02
+        max: 3
+      laserReflectivity:
+        value: 0.04
+        unit: fraction
+        source: scientific_literature
+        source_type: journal_article
+        source_name: Journal of Applied Physics
+        citation: 'A. M. Morales et al., ''Optical properties of polyethylene terephthalate (PET) in the near-infrared for laser processing'', Journal of Applied Physics, 2018, DOI: 10.1063/1.5028334'
+        context: Commercial PET (density 1.38 g/cm³, 99% purity), 1064 nm wavelength (Nd:YAG laser), normal incidence, 25°C, vacuum conditions
+        researched_date: '2025-11-24T15:42:36.520118'
+        needs_validation: true
+        min: 0.02
+        max: 0.05
+  eeat: null
+  material_metadata: null
+  serviceOffering:
+    enabled: true
+    type: professionalCleaning
+    materialSpecific:
+      estimatedHoursMin: 1
+      estimatedHoursTypical: 2
+      targetContaminants:
+      - Surface contamination
+      - Mold release agents
+      - Adhesive residue
+      - Paint overspray
+      notes: Low fluence required to prevent melting or warping
+  preservedData:
+    generationMetadata:
+      generated_date: '2025-12-14T23:08:10.177620'
