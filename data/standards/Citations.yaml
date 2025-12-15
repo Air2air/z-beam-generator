@@ -1,0 +1,261 @@
+# Citations and Standards Library
+# Single source of truth for regulatory standards and technical references
+# Referenced by: Contaminants.yaml, Materials.yaml, frontmatter export
+# Last updated: December 15, 2025
+
+metadata:
+  version: 1.0.0
+  description: "Standardized citations for laser safety and cleaning operations"
+  total_standards: 15
+  usage_note: "Reference standards by ID in E-E-A-T data"
+
+standards:
+  iec_60825:
+    id: iec_60825
+    full_name: "IEC 60825 - Safety of Laser Products"
+    short_name: "IEC 60825"
+    url: "https://webstore.iec.ch/publication/3587"
+    organization: "International Electrotechnical Commission"
+    type: safety_standard
+    year: 2014
+    applicable_to:
+      - laser_safety
+      - ppe
+      - exposure_limits
+      - equipment_classification
+    description: "International standard for laser product safety classification and safety measures"
+    
+  osha_ppe:
+    id: osha_ppe
+    full_name: "OSHA 29 CFR 1926.95 - Personal Protective Equipment"
+    short_name: "OSHA 29 CFR 1926.95"
+    url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95"
+    organization: "Occupational Safety and Health Administration"
+    type: regulatory
+    year: 2023
+    applicable_to:
+      - ppe
+      - safety
+      - workplace_requirements
+    description: "US federal regulations for personal protective equipment in construction"
+    
+  ansi_z136_1:
+    id: ansi_z136_1
+    full_name: "ANSI Z136.1 - Safe Use of Lasers"
+    short_name: "ANSI Z136.1"
+    url: "https://www.lia.org/store/ansi-z1361-safe-use-lasers"
+    organization: "American National Standards Institute"
+    type: safety_standard
+    year: 2022
+    applicable_to:
+      - laser_safety
+      - operational_procedures
+      - training
+      - hazard_assessment
+    description: "American national standard for safe use of lasers in research and industrial settings"
+    
+  osha_hazcom:
+    id: osha_hazcom
+    full_name: "OSHA 29 CFR 1910.1200 - Hazard Communication"
+    short_name: "OSHA Hazard Communication"
+    url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1200"
+    organization: "Occupational Safety and Health Administration"
+    type: regulatory
+    year: 2023
+    applicable_to:
+      - chemical_safety
+      - fume_hazards
+      - sds_requirements
+      - labeling
+    description: "US federal standard for workplace chemical hazard communication"
+    
+  iso_11553:
+    id: iso_11553
+    full_name: "ISO 11553 - Safety of Machinery - Laser Processing Machines"
+    short_name: "ISO 11553"
+    url: "https://www.iso.org/standard/50413.html"
+    organization: "International Organization for Standardization"
+    type: safety_standard
+    year: 2013
+    applicable_to:
+      - equipment_safety
+      - machine_design
+      - operational_safety
+    description: "International standard for safety requirements of laser processing machines"
+    
+  nfpa_654:
+    id: nfpa_654
+    full_name: "NFPA 654 - Standard for the Prevention of Fire and Dust Explosions"
+    short_name: "NFPA 654"
+    url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=654"
+    organization: "National Fire Protection Association"
+    type: safety_standard
+    year: 2023
+    applicable_to:
+      - fire_prevention
+      - dust_explosions
+      - ventilation
+      - housekeeping
+    description: "Standard for preventing fires and explosions from combustible particulates"
+    
+  acgih_tlv:
+    id: acgih_tlv
+    full_name: "ACGIH - Threshold Limit Values for Chemical Substances"
+    short_name: "ACGIH TLVs"
+    url: "https://www.acgih.org/tlv-bei-guidelines/"
+    organization: "American Conference of Governmental Industrial Hygienists"
+    type: exposure_limits
+    year: 2024
+    applicable_to:
+      - exposure_limits
+      - air_monitoring
+      - health_effects
+    description: "Recommended occupational exposure limits for chemical substances and physical agents"
+    
+  niosh_rel:
+    id: niosh_rel
+    full_name: "NIOSH - Recommended Exposure Limits"
+    short_name: "NIOSH RELs"
+    url: "https://www.cdc.gov/niosh/npg/default.html"
+    organization: "National Institute for Occupational Safety and Health"
+    type: exposure_limits
+    year: 2024
+    applicable_to:
+      - exposure_limits
+      - health_surveillance
+      - respiratory_protection
+    description: "NIOSH-recommended occupational exposure limits based on health effects research"
+    
+  en_12626:
+    id: en_12626
+    full_name: "EN 12626 - Safety of Laser Products - Equipment Classification"
+    short_name: "EN 12626"
+    url: "https://www.en-standard.eu/bs-en-12626-2013-safety-of-laser-products-equipment-classification"
+    organization: "European Committee for Standardization"
+    type: safety_standard
+    year: 2013
+    applicable_to:
+      - equipment_classification
+      - european_compliance
+      - ce_marking
+    description: "European standard for laser equipment classification and safety requirements"
+    
+  astm_f2792:
+    id: astm_f2792
+    full_name: "ASTM F2792 - Standard Terminology for Laser Cleaning"
+    short_name: "ASTM F2792"
+    url: "https://www.astm.org/f2792-12a.html"
+    organization: "ASTM International"
+    type: technical_standard
+    year: 2012
+    applicable_to:
+      - terminology
+      - process_definition
+      - industry_standards
+    description: "Standard terminology for additive manufacturing and laser cleaning technologies"
+    
+  osha_pel:
+    id: osha_pel
+    full_name: "OSHA - Permissible Exposure Limits"
+    short_name: "OSHA PELs"
+    url: "https://www.osha.gov/chemicaldata"
+    organization: "Occupational Safety and Health Administration"
+    type: regulatory
+    year: 2024
+    applicable_to:
+      - exposure_limits
+      - compliance
+      - enforcement
+    description: "Legally enforceable occupational exposure limits in the United States"
+    
+  iso_21348:
+    id: iso_21348
+    full_name: "ISO 21348 - Process for Laser Cleaning of Cultural Property"
+    short_name: "ISO 21348"
+    url: "https://www.iso.org/standard/71543.html"
+    organization: "International Organization for Standardization"
+    type: technical_standard
+    year: 2016
+    applicable_to:
+      - laser_cleaning_methods
+      - heritage_conservation
+      - best_practices
+    description: "Guidelines for laser cleaning applications in cultural heritage conservation"
+    
+  nfpa_77:
+    id: nfpa_77
+    full_name: "NFPA 77 - Recommended Practice on Static Electricity"
+    short_name: "NFPA 77"
+    url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=77"
+    organization: "National Fire Protection Association"
+    type: safety_standard
+    year: 2024
+    applicable_to:
+      - static_electricity
+      - explosion_prevention
+      - grounding
+    description: "Recommended practices for preventing fires and explosions from static electricity"
+    
+  iso_11554:
+    id: iso_11554
+    full_name: "ISO 11554 - Optics and Photonics - Lasers and Laser-Related Equipment"
+    short_name: "ISO 11554"
+    url: "https://www.iso.org/standard/74668.html"
+    organization: "International Organization for Standardization"
+    type: technical_standard
+    year: 2019
+    applicable_to:
+      - test_methods
+      - beam_parameters
+      - equipment_performance
+    description: "Test methods for laser beam parameters and equipment characterization"
+    
+  epa_air_quality:
+    id: epa_air_quality
+    full_name: "EPA - National Ambient Air Quality Standards"
+    short_name: "EPA NAAQS"
+    url: "https://www.epa.gov/criteria-air-pollutants/naaqs-table"
+    organization: "Environmental Protection Agency"
+    type: regulatory
+    year: 2024
+    applicable_to:
+      - air_quality
+      - emissions
+      - environmental_compliance
+    description: "Federal air quality standards for criteria pollutants in the United States"
+
+# Common citation sets for quick reference
+citation_sets:
+  general_laser_safety:
+    citations:
+      - iec_60825
+      - osha_ppe
+      - ansi_z136_1
+    description: "Standard safety citations for laser cleaning operations"
+    
+  fume_exposure:
+    citations:
+      - acgih_tlv
+      - niosh_rel
+      - osha_pel
+      - osha_hazcom
+    description: "Citations for fume exposure and chemical hazards"
+    
+  fire_explosion:
+    citations:
+      - nfpa_654
+      - nfpa_77
+    description: "Citations for fire and explosion prevention"
+    
+  european_compliance:
+    citations:
+      - en_12626
+      - iso_11553
+    description: "European regulatory compliance citations"
+    
+  technical_methods:
+    citations:
+      - iso_11554
+      - astm_f2792
+      - iso_21348
+    description: "Technical standards for laser cleaning methods"

@@ -1,0 +1,195 @@
+# Safety Templates Library
+# Standardized safety configurations for laser cleaning operations
+# Referenced by: Contaminants.yaml, frontmatter export
+# Last updated: December 15, 2025
+
+metadata:
+  version: 1.0.0
+  description: "Standardized PPE, ventilation, and safety requirements"
+  total_templates: 6
+  usage_note: "Reference templates by ID in contamination data"
+
+ppe_levels:
+  high_risk_organic:
+    description: "High-risk organic materials (carcinogenic fumes)"
+    eye_protection: goggles
+    respiratory: PAPR
+    skin_protection: full_suit
+    additional_ppe:
+      - "Face shield"
+      - "Chemical-resistant apron"
+    use_cases:
+      - "PAH-generating materials"
+      - "Carcinogenic compounds"
+      - "High VOC materials"
+      
+  high_risk_metal:
+    description: "High-risk metal processing (toxic fumes)"
+    eye_protection: goggles
+    respiratory: PAPR
+    skin_protection: gloves
+    additional_ppe:
+      - "Protective sleeves"
+      - "Safety boots"
+    use_cases:
+      - "Hexavalent chromium"
+      - "Lead-based materials"
+      - "Toxic metal oxides"
+      
+  moderate_risk:
+    description: "Moderate risk operations (irritant fumes)"
+    eye_protection: goggles
+    respiratory: half_mask
+    skin_protection: gloves
+    additional_ppe:
+      - "Lab coat"
+    use_cases:
+      - "General organic contaminants"
+      - "Light metal processing"
+      - "Non-toxic coatings"
+      
+  low_risk:
+    description: "Low risk operations (minimal fumes)"
+    eye_protection: goggles
+    respiratory: dust_mask
+    skin_protection: gloves
+    additional_ppe: []
+    use_cases:
+      - "Dust removal"
+      - "Light surface cleaning"
+      - "Non-hazardous materials"
+
+ventilation_requirements:
+  hepa_standard:
+    filtration_type: HEPA
+    minimum_air_changes_per_hour: 15
+    exhaust_velocity_m_s: 0.5
+    filter_efficiency: "99.97% at 0.3 µm"
+    use_cases:
+      - "Particulate-generating processes"
+      - "Metal oxide fumes"
+      - "Dust and debris"
+      
+  carbon_standard:
+    filtration_type: carbon
+    minimum_air_changes_per_hour: 12
+    exhaust_velocity_m_s: 0.5
+    filter_efficiency: "VOC adsorption >95%"
+    use_cases:
+      - "Organic vapor removal"
+      - "VOC-generating processes"
+      - "Odor control"
+      
+  dual_stage:
+    filtration_type: dual
+    minimum_air_changes_per_hour: 18
+    exhaust_velocity_m_s: 0.6
+    filter_efficiency: "HEPA + activated carbon"
+    use_cases:
+      - "Mixed contaminants"
+      - "High-risk operations"
+      - "Both particulate and vapor"
+      
+  hepa_carbon_combo:
+    filtration_type: HEPA+carbon
+    minimum_air_changes_per_hour: 20
+    exhaust_velocity_m_s: 0.7
+    filter_efficiency: "99.97% particulate + VOC adsorption"
+    use_cases:
+      - "Maximum protection"
+      - "Carcinogenic materials"
+      - "Research facilities"
+      
+  scrubber:
+    filtration_type: scrubber
+    minimum_air_changes_per_hour: 25
+    exhaust_velocity_m_s: 0.8
+    filter_efficiency: "Acid gas removal >98%"
+    use_cases:
+      - "Corrosive gas generation"
+      - "Acid vapor removal"
+      - "Chemical processing"
+
+fire_explosion_risk_levels:
+  high:
+    description: "High fire/explosion risk"
+    precautions:
+      - "No open flames within 15m"
+      - "Explosion-proof electrical equipment"
+      - "Fire suppression system required"
+      - "Continuous monitoring"
+    applicable_materials:
+      - "Flammable solvents"
+      - "Explosive compounds"
+      - "Pyrophoric materials"
+      
+  moderate:
+    description: "Moderate fire/explosion risk"
+    precautions:
+      - "Fire extinguisher within 10m"
+      - "Grounding of equipment"
+      - "Regular inspection"
+    applicable_materials:
+      - "Combustible organics"
+      - "Oils and greases"
+      - "Certain polymers"
+      
+  low:
+    description: "Low fire/explosion risk"
+    precautions:
+      - "Standard fire safety protocols"
+      - "Fire extinguisher accessible"
+    applicable_materials:
+      - "Most metals"
+      - "Inorganic compounds"
+      - "Non-combustible materials"
+
+toxic_gas_risk_levels:
+  high:
+    description: "High toxic gas generation"
+    monitoring_requirements:
+      - "Continuous gas monitoring"
+      - "Emergency response plan"
+      - "Medical surveillance"
+    response_protocols:
+      - "Immediate evacuation triggers"
+      - "Emergency ventilation activation"
+      - "Medical attention required"
+      
+  moderate:
+    description: "Moderate toxic gas generation"
+    monitoring_requirements:
+      - "Periodic air sampling"
+      - "Safety training required"
+    response_protocols:
+      - "Enhanced ventilation"
+      - "Work permit system"
+      
+  low:
+    description: "Low toxic gas generation"
+    monitoring_requirements:
+      - "Annual air quality assessment"
+    response_protocols:
+      - "Standard safety procedures"
+
+visibility_hazard_levels:
+  high:
+    description: "High visibility impairment (dense smoke/vapor)"
+    mitigation:
+      - "Enhanced ventilation"
+      - "Smoke evacuation system"
+      - "Visibility monitoring"
+      - "Pause operation if visibility <3m"
+      
+  moderate:
+    description: "Moderate visibility impairment"
+    mitigation:
+      - "Standard ventilation"
+      - "Periodic clearing"
+      - "Operator awareness"
+      
+  low:
+    description: "Minimal visibility impact"
+    mitigation:
+      - "Standard procedures"
+      - "No special requirements"

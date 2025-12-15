@@ -1,0 +1,699 @@
+# Hazardous Compounds Data
+# Domain: compounds
+# Generated fume compounds from laser cleaning operations
+# Last updated: December 15, 2025
+
+metadata:
+  version: 1.0.0
+  total_compounds: 20
+  schema_version: "4.0.0"
+  description: "Hazardous chemical compounds generated during laser cleaning operations"
+
+compounds:
+  carbon-monoxide:
+    id: carbon-monoxide
+    name: "Carbon Monoxide"
+    display_name: "Carbon Monoxide (CO)"
+    slug: carbon-monoxide
+    chemical_formula: "CO"
+    cas_number: "630-08-0"
+    molecular_weight: 28.01
+    category: toxic_gas
+    subcategory: asphyxiant
+    author: {id: 4}  # Todd Dunning (US)
+    description: null  # To be generated
+    health_effects: null  # To be generated
+    exposure_guidelines: null  # To be generated
+    detection_methods: null  # To be generated
+    first_aid: null  # To be generated
+    exposure_limits:
+      osha_pel_ppm: 50
+      osha_pel_mg_m3: 55
+      niosh_rel_ppm: 35
+      niosh_rel_mg_m3: 40
+      acgih_tlv_ppm: 25
+      acgih_tlv_mg_m3: 29
+    hazard_class: toxic
+    health_effects_keywords:
+      - asphyxiation
+      - cardiovascular_effects
+      - headache
+      - dizziness
+      - fatal_at_high_dose
+    monitoring_required: true
+    typical_concentration_range: "10-50 mg/m³"
+    sources_in_laser_cleaning:
+      - incomplete_organic_combustion
+      - thermal_decomposition_carbon_compounds
+      - oxygen_deficient_conditions
+    
+  formaldehyde:
+    id: formaldehyde
+    name: "Formaldehyde"
+    display_name: "Formaldehyde (CH₂O)"
+    slug: formaldehyde
+    chemical_formula: "CH2O"
+    cas_number: "50-00-0"
+    molecular_weight: 30.03
+    category: carcinogen
+    subcategory: aldehyde
+    author: {id: 1}  # Yi-Chun Lin (Taiwan)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 0.75
+      osha_pel_mg_m3: 0.92
+      niosh_rel_ppm: 0.016
+      niosh_rel_mg_m3: 0.02
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 0.3
+    hazard_class: carcinogenic
+    health_effects_keywords:
+      - respiratory_irritation
+      - eye_irritation
+      - skin_sensitization
+      - nasopharyngeal_cancer
+      - leukemia
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    sources_in_laser_cleaning:
+      - polymer_decomposition
+      - organic_coating_pyrolysis
+      - adhesive_breakdown
+    
+  benzene:
+    id: benzene
+    name: "Benzene"
+    display_name: "Benzene (C₆H₆)"
+    slug: benzene
+    chemical_formula: "C6H6"
+    cas_number: "71-43-2"
+    molecular_weight: 78.11
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    author: {id: 2}  # Alessandro Moretti (Italy)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 1
+      osha_pel_mg_m3: 3.2
+      niosh_rel_ppm: 0.1
+      niosh_rel_mg_m3: 0.32
+      acgih_tlv_ppm: 0.5
+      acgih_tlv_mg_m3: 1.6
+    hazard_class: carcinogenic
+    health_effects_keywords:
+      - leukemia
+      - bone_marrow_damage
+      - blood_disorders
+      - dizziness
+      - drowsiness
+    monitoring_required: true
+    typical_concentration_range: "0.5-5 mg/m³"
+    sources_in_laser_cleaning:
+      - aromatic_polymer_decomposition
+      - solvent_residue_vaporization
+      - plastic_pyrolysis
+    
+  pahs:
+    id: pahs
+    name: "Polycyclic Aromatic Hydrocarbons"
+    display_name: "PAHs"
+    slug: pahs
+    chemical_formula: "Various"
+    cas_number: "N/A"
+    molecular_weight: null
+    category: carcinogen
+    subcategory: aromatic_hydrocarbon
+    author: {id: 3}  # Ikmanda Roswati (Indonesia)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: 0.2
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 0.1
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 0.2
+    hazard_class: carcinogenic
+    health_effects_keywords:
+      - lung_cancer
+      - skin_cancer
+      - mutagenic
+      - reproductive_toxicity
+    monitoring_required: true
+    typical_concentration_range: "0.1-2 mg/m³"
+    sources_in_laser_cleaning:
+      - organic_material_incomplete_combustion
+      - carbon_rich_contamination
+      - high_temperature_pyrolysis
+    
+  hydrogen-cyanide:
+    id: hydrogen-cyanide
+    name: "Hydrogen Cyanide"
+    display_name: "Hydrogen Cyanide (HCN)"
+    slug: hydrogen-cyanide
+    chemical_formula: "HCN"
+    cas_number: "74-90-8"
+    molecular_weight: 27.03
+    category: toxic_gas
+    subcategory: cyanide
+    author: {id: 4}  # Todd Dunning (US)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 10
+      osha_pel_mg_m3: 11
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 5
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 4.7
+    hazard_class: toxic
+    health_effects_keywords:
+      - cellular_asphyxiation
+      - rapid_unconsciousness
+      - respiratory_failure
+      - fatal_at_high_dose
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    sources_in_laser_cleaning:
+      - nitrogen_containing_polymers
+      - polyurethane_decomposition
+      - nylon_pyrolysis
+    
+  acetaldehyde:
+    id: acetaldehyde
+    name: "Acetaldehyde"
+    display_name: "Acetaldehyde (C₂H₄O)"
+    slug: acetaldehyde
+    chemical_formula: "C2H4O"
+    cas_number: "75-07-0"
+    molecular_weight: 44.05
+    category: irritant
+    subcategory: aldehyde
+    author: {id: 1}  # Yi-Chun Lin (Taiwan)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 200
+      osha_pel_mg_m3: 360
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_ppm: 25
+      acgih_tlv_mg_m3: 45
+    hazard_class: irritant
+    health_effects_keywords:
+      - respiratory_irritation
+      - eye_irritation
+      - suspected_carcinogen
+      - narcotic_effects
+    monitoring_required: true
+    typical_concentration_range: "5-25 mg/m³"
+    sources_in_laser_cleaning:
+      - alcohol_oxidation
+      - polymer_decomposition
+      - organic_solvent_breakdown
+    
+  acrolein:
+    id: acrolein
+    name: "Acrolein"
+    display_name: "Acrolein (C₃H₄O)"
+    slug: acrolein
+    chemical_formula: "C3H4O"
+    cas_number: "107-02-8"
+    molecular_weight: 56.06
+    category: toxic_gas
+    subcategory: aldehyde
+    author: {id: 2}  # Alessandro Moretti (Italy)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 0.1
+      osha_pel_mg_m3: 0.25
+      niosh_rel_ppm: 0.1
+      niosh_rel_mg_m3: 0.25
+      acgih_tlv_ppm: 0.1
+      acgih_tlv_mg_m3: 0.23
+    hazard_class: toxic
+    health_effects_keywords:
+      - severe_respiratory_irritation
+      - pulmonary_edema
+      - eye_irritation
+      - lacrimation
+    monitoring_required: true
+    typical_concentration_range: "0.5-5 mg/m³"
+    sources_in_laser_cleaning:
+      - acrylic_decomposition
+      - fat_pyrolysis
+      - glycerin_breakdown
+    
+  hydrogen-chloride:
+    id: hydrogen-chloride
+    name: "Hydrogen Chloride"
+    display_name: "Hydrogen Chloride (HCl)"
+    slug: hydrogen-chloride
+    chemical_formula: "HCl"
+    cas_number: "7647-01-0"
+    molecular_weight: 36.46
+    category: corrosive_gas
+    subcategory: acid_gas
+    author: {id: 3}  # Ikmanda Roswati (Indonesia)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: 7
+      niosh_rel_ppm: 5
+      niosh_rel_mg_m3: 7
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 2
+    hazard_class: corrosive
+    health_effects_keywords:
+      - severe_respiratory_irritation
+      - corrosive_to_tissue
+      - pulmonary_edema
+      - tooth_erosion
+    monitoring_required: true
+    typical_concentration_range: "5-20 mg/m³"
+    sources_in_laser_cleaning:
+      - pvc_decomposition
+      - chlorinated_polymer_pyrolysis
+      - chlorinated_solvent_breakdown
+    
+  toluene:
+    id: toluene
+    name: "Toluene"
+    display_name: "Toluene (C₇H₈)"
+    slug: toluene
+    chemical_formula: "C7H8"
+    cas_number: "108-88-3"
+    molecular_weight: 92.14
+    category: solvent
+    subcategory: aromatic_hydrocarbon
+    author: {id: 4}  # Todd Dunning (US)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 200
+      osha_pel_mg_m3: 754
+      niosh_rel_ppm: 100
+      niosh_rel_mg_m3: 375
+      acgih_tlv_ppm: 20
+      acgih_tlv_mg_m3: 75
+    hazard_class: toxic
+    health_effects_keywords:
+      - neurological_effects
+      - liver_damage
+      - kidney_damage
+      - narcotic_effects
+      - hearing_loss
+    monitoring_required: true
+    typical_concentration_range: "2-15 mg/m³"
+    sources_in_laser_cleaning:
+      - paint_solvent_vaporization
+      - polymer_decomposition
+      - adhesive_breakdown
+    
+  styrene:
+    id: styrene
+    name: "Styrene"
+    display_name: "Styrene (C₈H₈)"
+    slug: styrene
+    chemical_formula: "C8H8"
+    cas_number: "100-42-5"
+    molecular_weight: 104.15
+    category: irritant
+    subcategory: aromatic_hydrocarbon
+    author: {id: 1}  # Yi-Chun Lin (Taiwan)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 100
+      osha_pel_mg_m3: 425
+      niosh_rel_ppm: 50
+      niosh_rel_mg_m3: 215
+      acgih_tlv_ppm: 20
+      acgih_tlv_mg_m3: 85
+    hazard_class: irritant
+    health_effects_keywords:
+      - respiratory_irritation
+      - neurological_effects
+      - reproductive_toxicity
+      - suspected_carcinogen
+    monitoring_required: true
+    typical_concentration_range: "3-20 mg/m³"
+    sources_in_laser_cleaning:
+      - polystyrene_decomposition
+      - styrene_polymer_pyrolysis
+      - plastic_breakdown
+    
+  zinc-oxide:
+    id: zinc-oxide
+    name: "Zinc Oxide"
+    display_name: "Zinc Oxide (ZnO)"
+    slug: zinc-oxide
+    chemical_formula: "ZnO"
+    cas_number: "1314-13-2"
+    molecular_weight: 81.38
+    category: metal_fume
+    subcategory: metal_oxide
+    author: {id: 2}  # Alessandro Moretti (Italy)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: 5
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 5
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 2
+    hazard_class: irritant
+    health_effects_keywords:
+      - metal_fume_fever
+      - respiratory_irritation
+      - flu_like_symptoms
+      - temporary_effects
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    sources_in_laser_cleaning:
+      - galvanized_steel_cleaning
+      - zinc_coating_removal
+      - zinc_alloy_processing
+    
+  iron-oxide:
+    id: iron-oxide
+    name: "Iron Oxide Fume"
+    display_name: "Iron Oxide (Fe₂O₃)"
+    slug: iron-oxide
+    chemical_formula: "Fe2O3"
+    cas_number: "1309-37-1"
+    molecular_weight: 159.69
+    category: metal_fume
+    subcategory: metal_oxide
+    author: {id: 3}  # Ikmanda Roswati (Indonesia)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: 10
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 5
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 5
+    hazard_class: irritant
+    health_effects_keywords:
+      - siderosis
+      - respiratory_irritation
+      - benign_pneumoconiosis
+      - lung_discoloration
+    monitoring_required: true
+    typical_concentration_range: "2-15 mg/m³"
+    sources_in_laser_cleaning:
+      - rust_removal
+      - steel_surface_cleaning
+      - iron_oxide_scale_removal
+    
+  chromium-vi:
+    id: chromium-vi
+    name: "Hexavalent Chromium"
+    display_name: "Chromium(VI)"
+    slug: chromium-vi
+    chemical_formula: "Cr(VI)"
+    cas_number: "18540-29-9"
+    molecular_weight: 52.00
+    category: carcinogen
+    subcategory: heavy_metal
+    author: {id: 4}  # Todd Dunning (US)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: 0.005
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 0.001
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 0.0002
+    hazard_class: carcinogenic
+    health_effects_keywords:
+      - lung_cancer
+      - respiratory_irritation
+      - skin_ulceration
+      - nasal_septum_perforation
+    monitoring_required: true
+    typical_concentration_range: "0.001-0.01 mg/m³"
+    sources_in_laser_cleaning:
+      - stainless_steel_cleaning
+      - chrome_plating_removal
+      - chromate_coating_removal
+    
+  nitrogen-oxides:
+    id: nitrogen-oxides
+    name: "Nitrogen Oxides"
+    display_name: "NOₓ"
+    slug: nitrogen-oxides
+    chemical_formula: "NOx"
+    cas_number: "Various"
+    molecular_weight: null
+    category: toxic_gas
+    subcategory: oxidizing_gas
+    author: {id: 1}  # Yi-Chun Lin (Taiwan)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 25
+      osha_pel_mg_m3: 9
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: 1.8
+      acgih_tlv_ppm: 3
+      acgih_tlv_mg_m3: 5.6
+    hazard_class: toxic
+    health_effects_keywords:
+      - respiratory_irritation
+      - pulmonary_edema
+      - bronchitis
+      - delayed_effects
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    sources_in_laser_cleaning:
+      - high_energy_laser_interaction
+      - nitrogen_compound_oxidation
+      - atmospheric_nitrogen_fixation
+    
+  sulfur-dioxide:
+    id: sulfur-dioxide
+    name: "Sulfur Dioxide"
+    display_name: "Sulfur Dioxide (SO₂)"
+    slug: sulfur-dioxide
+    chemical_formula: "SO2"
+    cas_number: "7446-09-5"
+    molecular_weight: 64.06
+    category: toxic_gas
+    subcategory: acid_gas
+    author: {id: 2}  # Alessandro Moretti (Italy)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 5
+      osha_pel_mg_m3: 13
+      niosh_rel_ppm: 2
+      niosh_rel_mg_m3: 5
+      acgih_tlv_ppm: 0.25
+      acgih_tlv_mg_m3: 0.65
+    hazard_class: toxic
+    health_effects_keywords:
+      - respiratory_irritation
+      - bronchospasm
+      - asthma_trigger
+      - pulmonary_edema
+    monitoring_required: true
+    typical_concentration_range: "2-10 mg/m³"
+    sources_in_laser_cleaning:
+      - sulfur_containing_compound_oxidation
+      - vulcanized_rubber_decomposition
+      - sulfide_coating_removal
+    
+  phosgene:
+    id: phosgene
+    name: "Phosgene"
+    display_name: "Phosgene (COCl₂)"
+    slug: phosgene
+    chemical_formula: "COCl2"
+    cas_number: "75-44-5"
+    molecular_weight: 98.92
+    category: toxic_gas
+    subcategory: reactive_gas
+    author: {id: 3}  # Ikmanda Roswati (Indonesia)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 0.1
+      osha_pel_mg_m3: 0.4
+      niosh_rel_ppm: 0.1
+      niosh_rel_mg_m3: 0.4
+      acgih_tlv_ppm: 0.1
+      acgih_tlv_mg_m3: 0.4
+    hazard_class: toxic
+    health_effects_keywords:
+      - severe_pulmonary_edema
+      - delayed_effects
+      - fatal
+      - chemical_warfare_agent
+    monitoring_required: true
+    typical_concentration_range: "0.1-1 mg/m³"
+    sources_in_laser_cleaning:
+      - chlorinated_solvent_decomposition
+      - carbon_chlorine_interaction
+      - chlorinated_polymer_pyrolysis
+    
+  ammonia:
+    id: ammonia
+    name: "Ammonia"
+    display_name: "Ammonia (NH₃)"
+    slug: ammonia
+    chemical_formula: "NH3"
+    cas_number: "7664-41-7"
+    molecular_weight: 17.03
+    category: corrosive_gas
+    subcategory: alkaline_gas
+    author: {id: 4}  # Todd Dunning (US)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 50
+      osha_pel_mg_m3: 35
+      niosh_rel_ppm: 25
+      niosh_rel_mg_m3: 18
+      acgih_tlv_ppm: 25
+      acgih_tlv_mg_m3: 17
+    hazard_class: corrosive
+    health_effects_keywords:
+      - respiratory_irritation
+      - eye_irritation
+      - chemical_burns
+      - pulmonary_edema
+    monitoring_required: true
+    typical_concentration_range: "5-25 mg/m³"
+    sources_in_laser_cleaning:
+      - nitrogen_compound_decomposition
+      - protein_pyrolysis
+      - amine_breakdown
+    
+  carbon-dioxide:
+    id: carbon-dioxide
+    name: "Carbon Dioxide"
+    display_name: "Carbon Dioxide (CO₂)"
+    slug: carbon-dioxide
+    chemical_formula: "CO2"
+    cas_number: "124-38-9"
+    molecular_weight: 44.01
+    category: asphyxiant
+    subcategory: simple_asphyxiant
+    author: {id: 1}  # Yi-Chun Lin (Taiwan)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: 5000
+      osha_pel_mg_m3: 9000
+      niosh_rel_ppm: 5000
+      niosh_rel_mg_m3: 9000
+      acgih_tlv_ppm: 5000
+      acgih_tlv_mg_m3: 9000
+    hazard_class: asphyxiant
+    health_effects_keywords:
+      - asphyxiation_at_high_concentration
+      - respiratory_stimulation
+      - narcosis
+      - generally_non_toxic
+    monitoring_required: false
+    typical_concentration_range: "50-200 mg/m³"
+    sources_in_laser_cleaning:
+      - complete_organic_combustion
+      - universal_organic_decomposition
+      - carbon_oxidation
+    
+  vocs:
+    id: vocs
+    name: "Volatile Organic Compounds"
+    display_name: "VOCs"
+    slug: vocs
+    chemical_formula: "Various"
+    cas_number: "N/A"
+    molecular_weight: null
+    category: irritant
+    subcategory: organic_vapor
+    author: {id: 2}  # Alessandro Moretti (Italy)
+    description: null
+    health_effects: null
+    exposure_guidelines: null
+    detection_methods: null
+    first_aid: null
+    exposure_limits:
+      osha_pel_ppm: null
+      osha_pel_mg_m3: null
+      niosh_rel_ppm: null
+      niosh_rel_mg_m3: null
+      acgih_tlv_ppm: null
+      acgih_tlv_mg_m3: 100
+    hazard_class: irritant
+    health_effects_keywords:
+      - respiratory_irritation
+      - neurological_effects
+      - variable_toxicity
+      - mixture_effects
+    monitoring_required: true
+    typical_concentration_range: "10-100 mg/m³"
+    sources_in_laser_cleaning:
+      - organic_material_vaporization
+      - polymer_decomposition
+      - solvent_evaporation

@@ -13,7 +13,7 @@ Last Updated: October 22, 2025
 """
 
 from .orchestrator import ValidationOrchestrator, ComprehensiveValidationResult
-from .unified_schema_validator import (
+from .schema_validator import (
     UnifiedSchemaValidator,
     UnifiedValidationResult,
     ValidationMode,
@@ -22,7 +22,7 @@ from .unified_schema_validator import (
 
 # Convenience functions
 from .orchestrator import validate_material_lifecycle, validate_material
-from .unified_schema_validator import (
+from .schema_validator import (
     validate_frontmatter,
     validate_materials_yaml,
     validate_categories_yaml

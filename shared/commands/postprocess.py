@@ -63,7 +63,7 @@ class PostprocessCommand:
         Initialize postprocessing command.
         
         Args:
-            domain: Domain name (materials, contaminants, settings)
+            domain: Domain name (materials, contaminants, settings, compounds)
             field: Field name to postprocess (description, micro, faq, etc.)
         """
         self.domain = domain

@@ -8,7 +8,7 @@ and other validation tasks.
 from .quality_validator import QualityScoreValidator
 from .frontmatter_validator import FrontmatterDependencyValidator
 from .layer_validator import LayerValidator
-from .unified_validator import (
+from .validator import (
     UnifiedValidator,
     ValidationReport,
     ValidationStatus,

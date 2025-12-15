@@ -1,0 +1,231 @@
+# Fume Compound Library
+# Single source of truth for hazardous compound data generated during laser cleaning
+# Referenced by: Contaminants.yaml, frontmatter export
+# Last updated: December 15, 2025
+
+metadata:
+  version: 1.0.0
+  description: "Standardized fume compound data for laser cleaning operations"
+  total_compounds: 20
+  usage_note: "Reference compounds by ID in contamination data"
+
+compounds:
+  carbon_monoxide:
+    name: "Carbon Monoxide"
+    chemical_formula: "CO"
+    cas_number: "630-08-0"
+    exposure_limit_mg_m3: 29
+    exposure_limit_ppm: 25
+    hazard_class: toxic
+    health_effects: "Asphyxiation, cardiovascular effects"
+    monitoring_required: true
+    typical_concentration_range: "10-50 mg/m³"
+    
+  formaldehyde:
+    name: "Formaldehyde"
+    chemical_formula: "CH2O"
+    cas_number: "50-00-0"
+    exposure_limit_mg_m3: 0.3
+    exposure_limit_ppm: 0.75
+    hazard_class: carcinogenic
+    health_effects: "Respiratory irritation, carcinogenic"
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    
+  carbon_dioxide:
+    name: "Carbon Dioxide"
+    chemical_formula: "CO2"
+    cas_number: "124-38-9"
+    exposure_limit_mg_m3: 9000
+    exposure_limit_ppm: 5000
+    hazard_class: asphyxiant
+    health_effects: "Asphyxiation at high concentrations"
+    monitoring_required: false
+    typical_concentration_range: "50-200 mg/m³"
+    
+  pahs:
+    name: "Polycyclic Aromatic Hydrocarbons (PAHs)"
+    chemical_formula: "Various"
+    cas_number: "N/A"
+    exposure_limit_mg_m3: 0.2
+    exposure_limit_ppm: null
+    hazard_class: carcinogenic
+    health_effects: "Carcinogenic, mutagenic"
+    monitoring_required: true
+    typical_concentration_range: "0.1-2 mg/m³"
+    
+  benzene:
+    name: "Benzene"
+    chemical_formula: "C6H6"
+    cas_number: "71-43-2"
+    exposure_limit_mg_m3: 0.5
+    exposure_limit_ppm: 1
+    hazard_class: carcinogenic
+    health_effects: "Leukemia, bone marrow damage"
+    monitoring_required: true
+    typical_concentration_range: "0.5-5 mg/m³"
+    
+  acetaldehyde:
+    name: "Acetaldehyde"
+    chemical_formula: "C2H4O"
+    cas_number: "75-07-0"
+    exposure_limit_mg_m3: 25
+    exposure_limit_ppm: 25
+    hazard_class: irritant
+    health_effects: "Respiratory irritation, suspected carcinogen"
+    monitoring_required: true
+    typical_concentration_range: "5-25 mg/m³"
+    
+  acrolein:
+    name: "Acrolein"
+    chemical_formula: "C3H4O"
+    cas_number: "107-02-8"
+    exposure_limit_mg_m3: 0.25
+    exposure_limit_ppm: 0.1
+    hazard_class: toxic
+    health_effects: "Severe respiratory irritation, pulmonary edema"
+    monitoring_required: true
+    typical_concentration_range: "0.5-5 mg/m³"
+    
+  hydrogen_cyanide:
+    name: "Hydrogen Cyanide"
+    chemical_formula: "HCN"
+    cas_number: "74-90-8"
+    exposure_limit_mg_m3: 11
+    exposure_limit_ppm: 10
+    hazard_class: toxic
+    health_effects: "Cellular asphyxiation, fatal at high doses"
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    
+  hydrogen_chloride:
+    name: "Hydrogen Chloride"
+    chemical_formula: "HCl"
+    cas_number: "7647-01-0"
+    exposure_limit_mg_m3: 7
+    exposure_limit_ppm: 5
+    hazard_class: corrosive
+    health_effects: "Severe respiratory irritation, corrosive"
+    monitoring_required: true
+    typical_concentration_range: "5-20 mg/m³"
+    
+  vocs:
+    name: "Volatile Organic Compounds"
+    chemical_formula: "Various"
+    cas_number: "N/A"
+    exposure_limit_mg_m3: 100
+    exposure_limit_ppm: null
+    hazard_class: irritant
+    health_effects: "Respiratory irritation, neurological effects"
+    monitoring_required: true
+    typical_concentration_range: "10-100 mg/m³"
+    
+  toluene:
+    name: "Toluene"
+    chemical_formula: "C7H8"
+    cas_number: "108-88-3"
+    exposure_limit_mg_m3: 20
+    exposure_limit_ppm: 50
+    hazard_class: toxic
+    health_effects: "Neurological effects, liver damage"
+    monitoring_required: true
+    typical_concentration_range: "2-15 mg/m³"
+    
+  styrene:
+    name: "Styrene"
+    chemical_formula: "C8H8"
+    cas_number: "100-42-5"
+    exposure_limit_mg_m3: 50
+    exposure_limit_ppm: 20
+    hazard_class: irritant
+    health_effects: "Respiratory irritation, neurological effects"
+    monitoring_required: true
+    typical_concentration_range: "3-20 mg/m³"
+    
+  zinc_oxide:
+    name: "Zinc Oxide"
+    chemical_formula: "ZnO"
+    cas_number: "1314-13-2"
+    exposure_limit_mg_m3: 5
+    exposure_limit_ppm: null
+    hazard_class: irritant
+    health_effects: "Metal fume fever, respiratory irritation"
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    
+  iron_oxide:
+    name: "Iron Oxide Fume"
+    chemical_formula: "Fe2O3"
+    cas_number: "1309-37-1"
+    exposure_limit_mg_m3: 5
+    exposure_limit_ppm: null
+    hazard_class: irritant
+    health_effects: "Siderosis, respiratory irritation"
+    monitoring_required: true
+    typical_concentration_range: "2-15 mg/m³"
+    
+  water_vapor:
+    name: "Water Vapor"
+    chemical_formula: "H2O"
+    cas_number: "7732-18-5"
+    exposure_limit_mg_m3: null
+    exposure_limit_ppm: null
+    hazard_class: low
+    health_effects: "Generally non-hazardous"
+    monitoring_required: false
+    typical_concentration_range: "Variable"
+    
+  nitrogen_oxides:
+    name: "Nitrogen Oxides"
+    chemical_formula: "NOx"
+    cas_number: "Various"
+    exposure_limit_mg_m3: 5
+    exposure_limit_ppm: 3
+    hazard_class: toxic
+    health_effects: "Respiratory irritation, pulmonary edema"
+    monitoring_required: true
+    typical_concentration_range: "1-10 mg/m³"
+    
+  sulfur_dioxide:
+    name: "Sulfur Dioxide"
+    chemical_formula: "SO2"
+    cas_number: "7446-09-5"
+    exposure_limit_mg_m3: 5
+    exposure_limit_ppm: 2
+    hazard_class: toxic
+    health_effects: "Respiratory irritation, bronchospasm"
+    monitoring_required: true
+    typical_concentration_range: "2-10 mg/m³"
+    
+  phosgene:
+    name: "Phosgene"
+    chemical_formula: "COCl2"
+    cas_number: "75-44-5"
+    exposure_limit_mg_m3: 0.4
+    exposure_limit_ppm: 0.1
+    hazard_class: toxic
+    health_effects: "Severe pulmonary edema, fatal"
+    monitoring_required: true
+    typical_concentration_range: "0.1-1 mg/m³"
+    
+  ammonia:
+    name: "Ammonia"
+    chemical_formula: "NH3"
+    cas_number: "7664-41-7"
+    exposure_limit_mg_m3: 18
+    exposure_limit_ppm: 25
+    hazard_class: corrosive
+    health_effects: "Respiratory irritation, chemical burns"
+    monitoring_required: true
+    typical_concentration_range: "5-25 mg/m³"
+    
+  chromium_vi:
+    name: "Hexavalent Chromium"
+    chemical_formula: "Cr(VI)"
+    cas_number: "18540-29-9"
+    exposure_limit_mg_m3: 0.005
+    exposure_limit_ppm: null
+    hazard_class: carcinogenic
+    health_effects: "Lung cancer, respiratory irritation"
+    monitoring_required: true
+    typical_concentration_range: "0.001-0.01 mg/m³"

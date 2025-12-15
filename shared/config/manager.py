@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
-from validation.errors import ConfigurationError
+from shared.validation.errors import ConfigurationError
 
 
 @dataclass

@@ -10,7 +10,7 @@ Last Updated: October 22, 2025
 
 # Validation Services
 from .validation.orchestrator import ValidationOrchestrator
-from .validation.unified_schema_validator import UnifiedSchemaValidator
+from .validation.schema_validator import UnifiedSchemaValidator
 
 # Research Services (canonical location: shared/research/services/)
 from shared.research.services.ai_research_service import AIResearchEnrichmentService

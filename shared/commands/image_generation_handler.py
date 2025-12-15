@@ -27,7 +27,7 @@ from dataclasses import dataclass
 # Local imports
 from domains.materials.image.material_generator import MaterialImageGenerator
 from domains.materials.image.material_config import MaterialImageConfig
-from shared.validation.unified_validator import UnifiedValidator, ValidationStatus
+from shared.validation.validator import UnifiedValidator, ValidationStatus
 from shared.api.gemini_image_client import GeminiImageClient
 
 

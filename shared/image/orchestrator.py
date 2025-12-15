@@ -51,7 +51,7 @@ from dataclasses import dataclass
 
 # FAIL-FAST: Import unified validator - validation is REQUIRED per copilot-instructions.md
 # No try/except fallback - if validator unavailable, fail immediately
-from shared.validation.unified_validator import (
+from shared.validation.validator import (
     validate_prompt_quick,
     ValidationReport
 )
@@ -214,7 +214,7 @@ class ImagePromptOrchestrator:
         # Check validation status
         is_valid = getattr(validation_result, 'is_valid', True)
         if hasattr(validation_result, 'status'):
-            from shared.validation.unified_validator import ValidationStatus
+            from shared.validation.validator import ValidationStatus
             is_valid = validation_result.status in (ValidationStatus.PASS, ValidationStatus.WARN)
         
         if not is_valid:

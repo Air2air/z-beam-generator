@@ -232,16 +232,16 @@ class TrivialContaminantsExporter:
         frontmatter['datePublished'] = pattern_data.get('datePublished', None)
         frontmatter['dateModified'] = pattern_data.get('dateModified', None)
         
-        # 9: Author (Phase 1: Add FULL author block from registry)
+        # 9: Author (Phase 1: Add FULL author block from Authors.yaml)
         author_field = pattern_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
         if author_id:
-            # Get full author data from registry
-            from data.authors.registry import get_author
+            # Get full author data from Authors.yaml
+            from shared.data.author_loader import get_author
             try:
                 author_data = get_author(author_id)
-                # Use full author data with all 17 fields
+                # Use full author data with all 18 fields
                 frontmatter['author'] = author_data.copy()
             except KeyError:
                 self.logger.warning(f"⚠️  Invalid author ID {author_id} for pattern {pattern_id}")

@@ -156,7 +156,7 @@ from shared.commands import (
 # from shared.commands.global_evaluation import run_global_subjective_evaluation
 
 # Import unified workflow commands
-from shared.commands.unified_workflow import (
+from shared.commands.workflow import (
     run_material_workflow,
     run_region_workflow,
     run_application_workflow,

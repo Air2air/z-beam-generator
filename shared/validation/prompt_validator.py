@@ -5,7 +5,7 @@ Universal Prompt Validator - Text and Image Generation
     This module is maintained for backward compatibility.
     For new code, prefer using `shared.validation.unified_validator`:
     
-        from shared.validation.unified_validator import (
+        from shared.validation.validator import (
             validate_prompt_quick,  # Quick validation
             UnifiedValidator,       # Full validation
         )

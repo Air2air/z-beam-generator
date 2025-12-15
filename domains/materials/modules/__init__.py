@@ -27,7 +27,7 @@ from .metadata_module import MetadataModule
 from .author_module import AuthorModule
 from .properties_module import PropertiesModule
 # SettingsModule moved to domains/settings/modules/ (Nov 26, 2025)
-from .simple_modules import ComplianceModule, MediaModule
+from .modules import ComplianceModule, MediaModule
 
 __all__ = [
     # Active modules

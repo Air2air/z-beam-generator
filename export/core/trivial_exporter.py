@@ -627,7 +627,7 @@ class TrivialFrontmatterExporter:
     
     def _load_settings(self) -> Dict[str, Any]:
         """Load Settings.yaml for machine settings and material challenges."""
-        from shared.data.unified_loader import get_settings_loader
+        from shared.data.loader import get_settings_loader
         
         try:
             loader = get_settings_loader()
@@ -709,12 +709,12 @@ class TrivialFrontmatterExporter:
         breadcrumb = self._generate_breadcrumb(material_data, slug)
         frontmatter['breadcrumb'] = breadcrumb
         
-        # Enrich author data from registry (Materials.yaml only has author.id)
+        # Enrich author data from Authors.yaml (Materials.yaml only has author.id)
         author_field = material_data.get('author', {})
         author_id = author_field.get('id') if isinstance(author_field, dict) else author_field
         
-        # Get full author data from registry
-        from data.authors.registry import get_author
+        # Get full author data from Authors.yaml
+        from shared.data.author_loader import get_author
         try:
             author_data = get_author(author_id)
         except KeyError:

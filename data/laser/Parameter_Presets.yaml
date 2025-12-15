@@ -1,0 +1,428 @@
+# Laser Parameter Presets Library
+# Standardized laser parameter configurations for different contamination types
+# Referenced by: Contaminants.yaml, frontmatter export
+# Last updated: December 15, 2025
+
+metadata:
+  version: 1.0.0
+  description: "Standardized laser parameter presets for common contamination classes"
+  total_presets: 12
+  usage_note: "Reference presets by ID, override specific parameters as needed"
+
+presets:
+  organic_light:
+    name: "Light Organic Contaminants"
+    description: "Adhesives, tapes, light oils, organic films"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.3
+        max_j_cm2: 1.2
+        recommended_j_cm2: 0.8
+      pulse_duration_range:
+        min_ns: 10
+        max_ns: 100
+        recommended_ns: 30
+      repetition_rate_khz:
+        min: 20
+        max: 200
+        recommended: 50
+      scan_speed_mm_s:
+        min: 500
+        max: 2000
+        recommended: 1000
+      wavelength_preference: [1064, 532]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 50
+      spot_size_mm:
+        min: 0.02
+        max: 0.1
+        recommended: 0.05
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - adhesive-residue
+      - tape-marks
+      - light-oils
+      - organic-films
+      
+  organic_heavy:
+    name: "Heavy Organic Contaminants"
+    description: "Heavy greases, thick oils, carbon deposits, soot"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.8
+        max_j_cm2: 2.5
+        recommended_j_cm2: 1.5
+      pulse_duration_range:
+        min_ns: 30
+        max_ns: 200
+        recommended_ns: 100
+      repetition_rate_khz:
+        min: 10
+        max: 100
+        recommended: 30
+      scan_speed_mm_s:
+        min: 300
+        max: 1500
+        recommended: 800
+      wavelength_preference: [1064, 532]
+      beam_profile: gaussian
+      polarization: circular
+      overlap_percentage: 60
+      spot_size_mm:
+        min: 0.05
+        max: 0.15
+        recommended: 0.1
+      safety_margin_factor: 0.65
+    applicable_contaminants:
+      - heavy-grease
+      - carbon-soot
+      - carbonized-residue
+      - thick-oils
+      
+  metal_oxide_light:
+    name: "Light Metal Oxides"
+    description: "Surface oxidation, light rust, tarnish"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.5
+        max_j_cm2: 2.0
+        recommended_j_cm2: 1.2
+      pulse_duration_range:
+        min_ns: 20
+        max_ns: 150
+        recommended_ns: 50
+      repetition_rate_khz:
+        min: 20
+        max: 150
+        recommended: 60
+      scan_speed_mm_s:
+        min: 400
+        max: 1800
+        recommended: 1000
+      wavelength_preference: [1064, 532, 355]
+      beam_profile: flat_top
+      polarization: linear
+      overlap_percentage: 55
+      spot_size_mm:
+        min: 0.03
+        max: 0.12
+        recommended: 0.06
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - surface-rust
+      - tarnish
+      - light-oxidation
+      - copper-oxide
+      
+  metal_oxide_heavy:
+    name: "Heavy Metal Oxides"
+    description: "Heavy rust, mill scale, annealing scale"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 1.0
+        max_j_cm2: 3.5
+        recommended_j_cm2: 2.2
+      pulse_duration_range:
+        min_ns: 50
+        max_ns: 250
+        recommended_ns: 120
+      repetition_rate_khz:
+        min: 10
+        max: 80
+        recommended: 30
+      scan_speed_mm_s:
+        min: 200
+        max: 1200
+        recommended: 600
+      wavelength_preference: [1064, 532]
+      beam_profile: gaussian
+      polarization: linear
+      overlap_percentage: 70
+      spot_size_mm:
+        min: 0.08
+        max: 0.2
+        recommended: 0.12
+      safety_margin_factor: 0.6
+    applicable_contaminants:
+      - heavy-rust
+      - mill-scale
+      - annealing-scale
+      - forge-scale
+      
+  coating_organic:
+    name: "Organic Coatings"
+    description: "Paints, lacquers, polymers, varnish"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.4
+        max_j_cm2: 1.8
+        recommended_j_cm2: 1.0
+      pulse_duration_range:
+        min_ns: 15
+        max_ns: 120
+        recommended_ns: 40
+      repetition_rate_khz:
+        min: 15
+        max: 180
+        recommended: 60
+      scan_speed_mm_s:
+        min: 400
+        max: 1800
+        recommended: 900
+      wavelength_preference: [1064, 532, 355]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 55
+      spot_size_mm:
+        min: 0.04
+        max: 0.12
+        recommended: 0.07
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - paint
+      - lacquer
+      - polymer-coating
+      - varnish
+      
+  coating_inorganic:
+    name: "Inorganic Coatings"
+    description: "Ceramics, enamels, glass coatings"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 1.5
+        max_j_cm2: 4.0
+        recommended_j_cm2: 2.5
+      pulse_duration_range:
+        min_ns: 50
+        max_ns: 300
+        recommended_ns: 150
+      repetition_rate_khz:
+        min: 10
+        max: 60
+        recommended: 25
+      scan_speed_mm_s:
+        min: 200
+        max: 1000
+        recommended: 500
+      wavelength_preference: [1064, 532]
+      beam_profile: gaussian
+      polarization: linear
+      overlap_percentage: 75
+      spot_size_mm:
+        min: 0.1
+        max: 0.25
+        recommended: 0.15
+      safety_margin_factor: 0.55
+    applicable_contaminants:
+      - ceramic-coating
+      - enamel
+      - glass-coating
+      
+  plating_thin:
+    name: "Thin Metal Plating"
+    description: "Chrome, nickel, zinc, thin electroplating"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.6
+        max_j_cm2: 2.2
+        recommended_j_cm2: 1.4
+      pulse_duration_range:
+        min_ns: 20
+        max_ns: 120
+        recommended_ns: 50
+      repetition_rate_khz:
+        min: 20
+        max: 120
+        recommended: 50
+      scan_speed_mm_s:
+        min: 300
+        max: 1500
+        recommended: 800
+      wavelength_preference: [532, 355, 1064]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 60
+      spot_size_mm:
+        min: 0.03
+        max: 0.1
+        recommended: 0.06
+      safety_margin_factor: 0.75
+    applicable_contaminants:
+      - chrome-plating
+      - nickel-plating
+      - zinc-plating
+      - thin-electroplating
+      
+  biological:
+    name: "Biological Contaminants"
+    description: "Mold, algae, biofilms, organic growth"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.2
+        max_j_cm2: 1.0
+        recommended_j_cm2: 0.6
+      pulse_duration_range:
+        min_ns: 10
+        max_ns: 80
+        recommended_ns: 25
+      repetition_rate_khz:
+        min: 30
+        max: 250
+        recommended: 80
+      scan_speed_mm_s:
+        min: 600
+        max: 2500
+        recommended: 1200
+      wavelength_preference: [355, 532, 1064]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 50
+      spot_size_mm:
+        min: 0.02
+        max: 0.08
+        recommended: 0.04
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - mold
+      - algae
+      - biofilm
+      - fungal-growth
+      
+  mineral_light:
+    name: "Light Mineral Deposits"
+    description: "Water scale, light calcium deposits, efflorescence"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.5
+        max_j_cm2: 1.8
+        recommended_j_cm2: 1.0
+      pulse_duration_range:
+        min_ns: 25
+        max_ns: 150
+        recommended_ns: 60
+      repetition_rate_khz:
+        min: 20
+        max: 150
+        recommended: 50
+      scan_speed_mm_s:
+        min: 400
+        max: 1600
+        recommended: 900
+      wavelength_preference: [1064, 532]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 55
+      spot_size_mm:
+        min: 0.04
+        max: 0.12
+        recommended: 0.07
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - water-scale
+      - calcium-deposit
+      - efflorescence
+      
+  mineral_heavy:
+    name: "Heavy Mineral Deposits"
+    description: "Concrete residue, mortar, cement, heavy scale"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 1.2
+        max_j_cm2: 3.8
+        recommended_j_cm2: 2.4
+      pulse_duration_range:
+        min_ns: 60
+        max_ns: 300
+        recommended_ns: 150
+      repetition_rate_khz:
+        min: 10
+        max: 70
+        recommended: 25
+      scan_speed_mm_s:
+        min: 200
+        max: 1000
+        recommended: 500
+      wavelength_preference: [1064]
+      beam_profile: gaussian
+      polarization: linear
+      overlap_percentage: 75
+      spot_size_mm:
+        min: 0.1
+        max: 0.25
+        recommended: 0.15
+      safety_margin_factor: 0.6
+    applicable_contaminants:
+      - concrete-residue
+      - mortar
+      - cement
+      - heavy-scale
+      
+  particulate:
+    name: "Particulate Contaminants"
+    description: "Dust, powder, dry residues, particulates"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.2
+        max_j_cm2: 0.8
+        recommended_j_cm2: 0.5
+      pulse_duration_range:
+        min_ns: 10
+        max_ns: 60
+        recommended_ns: 20
+      repetition_rate_khz:
+        min: 40
+        max: 300
+        recommended: 100
+      scan_speed_mm_s:
+        min: 800
+        max: 3000
+        recommended: 1500
+      wavelength_preference: [1064, 532]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 40
+      spot_size_mm:
+        min: 0.03
+        max: 0.1
+        recommended: 0.05
+      safety_margin_factor: 0.75
+    applicable_contaminants:
+      - dust
+      - powder
+      - dry-residue
+      - particulates
+      
+  salt_marine:
+    name: "Salt and Marine Deposits"
+    description: "Sea salt, marine growth, salt spray corrosion"
+    laser_parameters:
+      fluence_range:
+        min_j_cm2: 0.4
+        max_j_cm2: 1.5
+        recommended_j_cm2: 0.9
+      pulse_duration_range:
+        min_ns: 15
+        max_ns: 100
+        recommended_ns: 40
+      repetition_rate_khz:
+        min: 25
+        max: 180
+        recommended: 70
+      scan_speed_mm_s:
+        min: 500
+        max: 2000
+        recommended: 1000
+      wavelength_preference: [532, 1064, 355]
+      beam_profile: flat_top
+      polarization: circular
+      overlap_percentage: 50
+      spot_size_mm:
+        min: 0.03
+        max: 0.1
+        recommended: 0.06
+      safety_margin_factor: 0.7
+    applicable_contaminants:
+      - sea-salt
+      - marine-growth
+      - salt-spray-corrosion

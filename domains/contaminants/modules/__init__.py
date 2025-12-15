@@ -9,7 +9,7 @@ Per CONTAMINATION_FRONTMATTER_SPEC.md
 
 from .metadata_module import MetadataModule
 from .laser_module import LaserModule
-from .simple_modules import (
+from .modules import (
     MediaModule,
     EEATModule,
     OpticalModule,

@@ -19,7 +19,7 @@ def postprocess_command(args):
     # Validate required arguments
     if not args.domain:
         print("❌ Error: --domain is required for postprocessing")
-        print("   Available: materials, contaminants, settings")
+        print("   Available: materials, contaminants, settings, compounds")
         sys.exit(1)
     
     if not args.field:
@@ -27,6 +27,7 @@ def postprocess_command(args):
         print("   Materials: material_description, micro, faq")
         print("   Contaminants: description, micro, faq")
         print("   Settings: settings_description, material_challenges")
+        print("   Compounds: compound_description, health_effects, exposure_guidelines")
         sys.exit(1)
     
     # Create postprocess command
@@ -91,7 +92,7 @@ Examples:
     
     # Postprocessing arguments
     parser.add_argument('--domain', type=str,
-                        choices=['materials', 'contaminants', 'settings'],
+                        choices=['materials', 'contaminants', 'settings', 'compounds'],
                         help='Domain to postprocess')
     parser.add_argument('--field', type=str,
                         help='Field type to postprocess (e.g., description, micro, faq)')
