@@ -1,405 +1,404 @@
-metadata:
-  name: Tin
-  slug: tin
-  category: metal
-  subcategory: alloy
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: material
-  title: Tin Laser Cleaning
-  material_description: For laser cleaning of tin, begin with low power to carefully manage its low melting point, in contrast to tougher metals that endure higher intensities without deformation.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Alloy
-    href: /materials/metal/alloy
-  - label: Tin
-    href: /materials/metal/alloy/tin
-  images:
-    hero:
-      alt: Tin surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/tin-laser-cleaning-hero.jpg
-    micro:
-      alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
-      url: /images/material/tin-laser-cleaning-micro.jpg
+name: Tin
+slug: tin
+category: metal
+subcategory: alloy
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Tin Laser Cleaning
+material_description: For laser cleaning of tin, begin with low power to carefully manage its low melting point, in contrast to tougher metals that endure higher intensities without deformation.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Tin
+  href: /materials/metal/alloy/tin
+images:
+  hero:
+    alt: Tin surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/tin-laser-cleaning-hero.jpg
   micro:
-    before: When we examine the tin surface before laser cleaning at 1000x magnification, dirty smudges cover most of it unevenly. Grimy particles cling tightly to the rough texture, making the whole area look dull and patchy. Scattered dark spots mar the base metal, hiding its natural shine completely.
-    after: After the laser treatment, the same view shows a smooth and even surface free from all grime. The metal gleams brightly now, with no rough patches or clinging debris left behind
-  faq:
-  - question: What laser parameters, such as wavelength and pulse duration, are optimal for cleaning **tin oxide layers** without melting the underlying tin surface?
-    answer: '**1064 nm limits substrate heating**. For cleaning tin oxide without melting the underlying metal at 231.9°C, choose a 1064 nm fiber laser rather than 532 nm—particularly its near-IR wavelength boosts oxide absorption while tin''s high reflectivity limits substrate heating. Thus, pair this setup with 12 ns pulses, 45 W power, and 2.5 J/cm² fluence for controlled ablation.'
-  - question: How effective is laser cleaning at removing contaminants from tin-plated steel without **damaging the tin coating**?
-    answer: '**Safeguards adhesion below delamination thresholds**. Laser cleaning particularly shines in removing contaminants from tin-plated steel, while protecting the coating''s robust adhesion by staying below delamination limits like 2.5 J/cm² fluence at 1064 nm. Notably, this nanosecond-pulse approach at around 45 W power prevents pitting, unlike abrasive blasting that causes surface scratches or chemicals leaving residues in electronics and aerospace.'
-  - question: What safety risks arise from **laser-induced fumes** when cleaning tin surfaces, and how can they be mitigated?
-    answer: '**Mitigates toxic tin vapor inhalation**. Laser cleaning tin at 2.5 J/cm² fluence releases toxic vapors and oxides, particularly endangering workers via heavy metal inhalation and chronic health risks. Thus, implement robust local exhaust ventilation, NIOSH respirators, and OSHA-compliant monitoring to maintain exposure below 2 mg/m³ limits.'
-  - question: In electronics manufacturing, can laser cleaning be used to remove flux residues from **tin-lead solder joints** without affecting solder integrity?
-    answer: '**Minimizes heat for thermal sensitivity**. Yes, laser cleaning effectively removes flux residues from tin-lead solder joints in electronics manufacturing, while preserving joint integrity through its non-contact approach. Particularly mindful of tin''s thermal sensitivity, a 1064 nm wavelength and 45 W power thus minimize heat buildup, as PCB rework case studies notably demonstrate for consistent outcomes.'
-  - question: How does tin's **high reflectivity** impact the efficiency of laser cleaning, and what adjustments are needed for different laser types?
-    answer: '**Requires shorter wavelengths or pre-treatment**. Tin''s reflectivity, particularly exceeding 90% in the near-IR spectrum, scatters most laser energy and thus limits absorption, slashing cleaning efficiency. For better uptake, switch to shorter wavelengths or apply surface pre-treatment to enhance adherence. Specifically at 1064 nm with 45 W power, aim for 2.5 J/cm² fluence to ablate oxide layers effectively without damaging the base metal.'
-  - question: What are common issues with laser cleaning of historical tin artifacts, such as pewter items, and how to **preserve patina**?
-    answer: '**Low fluence prevents patina erosion**. When cleaning historical pewter artifacts, laser methods particularly risk eroding the valued patina via excessive ablation. To protect it, apply low fluence below 2.5 J/cm² at 45 W power using reversible techniques; thus, this adheres to American Institute for Conservation guidelines for gentle contaminant removal without oxide harm.'
-  - question: Does laser cleaning alter the **microstructure or hardness** of pure tin or tin alloys during surface treatment?
-    answer: '**Preserves beta-phase microstructure**. Laser cleaning of pure tin or alloys at fluences around 2.5 J/cm² and 1064 nm wavelength generally preserves the beta-phase microstructure, thus avoiding recrystallization or notable hardness shifts in Vickers testing. Post-treatment SEM analysis specifically confirms minimal subsurface changes, owing to controlled 45 W power and 500 mm/s scan speeds.'
-  - question: What environmental and regulatory concerns should be addressed when using laser cleaning on **tin-containing waste** or scrap metal?
-    answer: '**Capture ablated tin particulates**. When cleaning tin scrap using lasers at 1064 nm wavelength and 45 W power, particularly prioritize capturing ablated particulates to prevent tin leaching as an EPA-regulated pollutant. In electronics recycling, ensure RoHS compliance by keeping residues below 0.1% tin limits. Thus, effective ventilation and filtration systems remain essential for mitigating airborne hazards.'
-  - question: How does the chemical reactivity of tin with oxygen affect the choice of laser cleaning methods for rusted tin surfaces?
-    answer: Tin's strong affinity for oxygen, particularly in creating a tenacious SnO2 rust layer, requires laser cleaning to emphasize ablation over vaporization. This strategy avoids melting the metal and sparking re-oxidation. Specifically, a 1064 nm wavelength at 2.5 J/cm² fluence and 45 W power delivers precise oxide removal without surplus heat, thus typically under inert gas to shield the fresh surface.
-  regulatoryStandards:
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
+    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
+    url: /images/material/tin-laser-cleaning-micro.jpg
+micro:
+  before: When we examine the tin surface before laser cleaning at 1000x magnification, dirty smudges cover most of it unevenly. Grimy particles cling tightly to the rough texture, making the whole area look dull and patchy. Scattered dark spots mar the base metal, hiding its natural shine completely.
+  after: After the laser treatment, the same view shows a smooth and even surface free from all grime. The metal gleams brightly now, with no rough patches or clinging debris left behind
+faq:
+- question: What laser parameters, such as wavelength and pulse duration, are optimal for cleaning **tin oxide layers** without melting the underlying tin surface?
+  answer: '**1064 nm limits substrate heating**. For cleaning tin oxide without melting the underlying metal at 231.9°C, choose a 1064 nm fiber laser rather than 532 nm—particularly its near-IR wavelength boosts oxide absorption while tin''s high reflectivity limits substrate heating. Thus, pair this setup with 12 ns pulses, 45 W power, and 2.5 J/cm² fluence for controlled ablation.'
+- question: How effective is laser cleaning at removing contaminants from tin-plated steel without **damaging the tin coating**?
+  answer: '**Safeguards adhesion below delamination thresholds**. Laser cleaning particularly shines in removing contaminants from tin-plated steel, while protecting the coating''s robust adhesion by staying below delamination limits like 2.5 J/cm² fluence at 1064 nm. Notably, this nanosecond-pulse approach at around 45 W power prevents pitting, unlike abrasive blasting that causes surface scratches or chemicals leaving residues in electronics and aerospace.'
+- question: What safety risks arise from **laser-induced fumes** when cleaning tin surfaces, and how can they be mitigated?
+  answer: '**Mitigates toxic tin vapor inhalation**. Laser cleaning tin at 2.5 J/cm² fluence releases toxic vapors and oxides, particularly endangering workers via heavy metal inhalation and chronic health risks. Thus, implement robust local exhaust ventilation, NIOSH respirators, and OSHA-compliant monitoring to maintain exposure below 2 mg/m³ limits.'
+- question: In electronics manufacturing, can laser cleaning be used to remove flux residues from **tin-lead solder joints** without affecting solder integrity?
+  answer: '**Minimizes heat for thermal sensitivity**. Yes, laser cleaning effectively removes flux residues from tin-lead solder joints in electronics manufacturing, while preserving joint integrity through its non-contact approach. Particularly mindful of tin''s thermal sensitivity, a 1064 nm wavelength and 45 W power thus minimize heat buildup, as PCB rework case studies notably demonstrate for consistent outcomes.'
+- question: How does tin's **high reflectivity** impact the efficiency of laser cleaning, and what adjustments are needed for different laser types?
+  answer: '**Requires shorter wavelengths or pre-treatment**. Tin''s reflectivity, particularly exceeding 90% in the near-IR spectrum, scatters most laser energy and thus limits absorption, slashing cleaning efficiency. For better uptake, switch to shorter wavelengths or apply surface pre-treatment to enhance adherence. Specifically at 1064 nm with 45 W power, aim for 2.5 J/cm² fluence to ablate oxide layers effectively without damaging the base metal.'
+- question: What are common issues with laser cleaning of historical tin artifacts, such as pewter items, and how to **preserve patina**?
+  answer: '**Low fluence prevents patina erosion**. When cleaning historical pewter artifacts, laser methods particularly risk eroding the valued patina via excessive ablation. To protect it, apply low fluence below 2.5 J/cm² at 45 W power using reversible techniques; thus, this adheres to American Institute for Conservation guidelines for gentle contaminant removal without oxide harm.'
+- question: Does laser cleaning alter the **microstructure or hardness** of pure tin or tin alloys during surface treatment?
+  answer: '**Preserves beta-phase microstructure**. Laser cleaning of pure tin or alloys at fluences around 2.5 J/cm² and 1064 nm wavelength generally preserves the beta-phase microstructure, thus avoiding recrystallization or notable hardness shifts in Vickers testing. Post-treatment SEM analysis specifically confirms minimal subsurface changes, owing to controlled 45 W power and 500 mm/s scan speeds.'
+- question: What environmental and regulatory concerns should be addressed when using laser cleaning on **tin-containing waste** or scrap metal?
+  answer: '**Capture ablated tin particulates**. When cleaning tin scrap using lasers at 1064 nm wavelength and 45 W power, particularly prioritize capturing ablated particulates to prevent tin leaching as an EPA-regulated pollutant. In electronics recycling, ensure RoHS compliance by keeping residues below 0.1% tin limits. Thus, effective ventilation and filtration systems remain essential for mitigating airborne hazards.'
+- question: How does the chemical reactivity of tin with oxygen affect the choice of laser cleaning methods for rusted tin surfaces?
+  answer: Tin's strong affinity for oxygen, particularly in creating a tenacious SnO2 rust layer, requires laser cleaning to emphasize ablation over vaporization. This strategy avoids melting the metal and sparking re-oxidation. Specifically, a 1064 nm wavelength at 2.5 J/cm² fluence and 45 W power delivers precise oxide removal without surplus heat, thus typically under inert gas to shield the fresh surface.
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    youngsModulus:
+      value: 50
+      unit: GPa
+      source: ai_research
+      min: 10.4
+      max: 2e+11
+    oxidationResistance:
+      value: 1.3
+      unit: dimensionless
+      source: ai_research
+      min: -554
+      max: 1762
+    density:
+      value: 7310
+      unit: kg/m^3
+      source: ai_research
+      min: 1.7
+      max: 9408
+    hardness:
+      value: 4.5
+      unit: HB
+      source: ai_research
+      min: 0.2
+      max: 3500
+    corrosionResistance:
+      value: 0.95
+      unit: dimensionless (0-1 scale)
+      source: ai_research
+      min: -1.1
+      max: '1.1e+06'
+    compressiveStrength:
+      value: 35
+      unit: MPa
+      source: ai_research
+      min: 8
+      max: 2625
+    flexuralStrength:
+      value: 30.5
+      unit: MPa
+      source: ai_research
+      min: 11.4
+      max: 2897
+    tensileStrength:
+      value: 23
+      unit: MPa
+      source: ai_research
+      min: 3
+      max: 3000
+    fractureToughness:
+      value: 2.8
+      unit: MPa√m
+      source: ai_research
+      min: 0.67
+      max: 157
+    porosity:
+      value: 0
+      unit: '%'
+      source: ai_research
+      min: 0
+      max: 15
+    electricalResistivity:
+      value: '1.1e-07'
+      unit: Ω·m
+      source: ai_research
+      min: 0
+      max: 2e-06
+    absorptivity:
+      value: 0.4
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.6
+    boilingPoint:
+      value: 2875
+      unit: K
+      source: ai_research
+      min: 929
+      max: 6454
+    absorptionCoefficient:
+      value: '4.7e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 589000
+      max: '9.9e+07'
+    electricalConductivity:
+      value: '8.7e+06'
+      unit: S/m
+      source: ai_research
+      min: 659300
+      max: '6.6e+07'
+    meltingPoint:
+      value: 505
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    vaporPressure:
+      value: '1.6e-42'
+      unit: Pa
+      source: ai_research
+      min: 0
+      max: 106391
+    thermalDestructionPoint:
+      value: 505
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    reflectivity:
+      value: 0.56
+      unit: fraction
+      source: ai_research
+      min: 0.35
+      max: 1
+    thermalShockResistance:
+      value: 13.4
+      unit: K
+      source: ai_research
+      min: 6.7
+      max: 379050
+    surfaceRoughness:
+      value: 0.8
+      unit: μm
+      source: ai_research
+      min: 0.02
+      max: 6.6
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.27
+      max: 15750
+    percentage: 60.0
+    thermalDestruction:
+      value: 505
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 227
+      unit: J/kg·K
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.71
+      unit: dimensionless
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 66.8
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '2.3e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 4e-05
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    absorptivity:
+      value: 0.08
+      unit: dimensionless
+      min: 0.02
+      max: 0.15
+      source: ai_research
+    absorptionCoefficient:
+      value: 6e+07
+      unit: m⁻¹
+      min: 4e+07
+      max: 8e+07
+      source: ai_research
+    laserDamageThreshold:
+      value: 1.5
+      unit: J/cm²
+      min: 0.8
+      max: 3
+      source: ai_research
+    thermalShockResistance:
+      value: 1.2
+      unit: MW/m
+      min: 0.7
+      max: 2
+      source: ai_research
+    reflectivity:
+      value: 0.92
+      unit: dimensionless
+      min: 0.85
+      max: 0.98
+      source: ai_research
+    thermalDestructionPoint:
+      value: 505
+      unit: K
+      min: 500
+      max: 510
+      source: ai_research
+    vaporPressure:
+      value: '0.001'
+      unit: Pa
+      min: '0.0001'
+      max: 0.01
+      source: ai_research
+    percentage: 40.0
+    thermalDestruction:
+      value: 505
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 227
+      unit: J/kg·K
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.71
+      unit: dimensionless
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 66.8
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '2.3e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.42
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 4e-05
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/en/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      youngsModulus:
-        value: 50
-        unit: GPa
-        source: ai_research
-        min: 10.4
-        max: 2e+11
-      oxidationResistance:
-        value: 1.3
-        unit: dimensionless
-        source: ai_research
-        min: -554
-        max: 1762
-      density:
-        value: 7310
-        unit: kg/m^3
-        source: ai_research
-        min: 1.7
-        max: 9408
-      hardness:
-        value: 4.5
-        unit: HB
-        source: ai_research
-        min: 0.2
-        max: 3500
-      corrosionResistance:
-        value: 0.95
-        unit: dimensionless (0-1 scale)
-        source: ai_research
-        min: -1.1
-        max: '1.1e+06'
-      compressiveStrength:
-        value: 35
-        unit: MPa
-        source: ai_research
-        min: 8
-        max: 2625
-      flexuralStrength:
-        value: 30.5
-        unit: MPa
-        source: ai_research
-        min: 11.4
-        max: 2897
-      tensileStrength:
-        value: 23
-        unit: MPa
-        source: ai_research
-        min: 3
-        max: 3000
-      fractureToughness:
-        value: 2.8
-        unit: MPa√m
-        source: ai_research
-        min: 0.67
-        max: 157
-      porosity:
-        value: 0
-        unit: '%'
-        source: ai_research
-        min: 0
-        max: 15
-      electricalResistivity:
-        value: '1.1e-07'
-        unit: Ω·m
-        source: ai_research
-        min: 0
-        max: 2e-06
-      absorptivity:
-        value: 0.4
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.6
-      boilingPoint:
-        value: 2875
-        unit: K
-        source: ai_research
-        min: 929
-        max: 6454
-      absorptionCoefficient:
-        value: '4.7e+07'
-        unit: m^{-1}
-        source: ai_research
-        min: 589000
-        max: '9.9e+07'
-      electricalConductivity:
-        value: '8.7e+06'
-        unit: S/m
-        source: ai_research
-        min: 659300
-        max: '6.6e+07'
-      meltingPoint:
-        value: 505
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      vaporPressure:
-        value: '1.6e-42'
-        unit: Pa
-        source: ai_research
-        min: 0
-        max: 106391
-      thermalDestructionPoint:
-        value: 505
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      reflectivity:
-        value: 0.56
-        unit: fraction
-        source: ai_research
-        min: 0.35
-        max: 1
-      thermalShockResistance:
-        value: 13.4
-        unit: K
-        source: ai_research
-        min: 6.7
-        max: 379050
-      surfaceRoughness:
-        value: 0.8
-        unit: μm
-        source: ai_research
-        min: 0.02
-        max: 6.6
-      laserDamageThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: ai_research
-        min: 0.27
-        max: 15750
-      percentage: 60.0
-      thermalDestruction:
-        value: 505
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 227
-        unit: J/kg·K
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.71
-        unit: dimensionless
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 66.8
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '2.3e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.42
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 4e-05
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      absorptivity:
-        value: 0.08
-        unit: dimensionless
-        min: 0.02
-        max: 0.15
-        source: ai_research
-      absorptionCoefficient:
-        value: 6e+07
-        unit: m⁻¹
-        min: 4e+07
-        max: 8e+07
-        source: ai_research
-      laserDamageThreshold:
-        value: 1.5
-        unit: J/cm²
-        min: 0.8
-        max: 3
-        source: ai_research
-      thermalShockResistance:
-        value: 1.2
-        unit: MW/m
-        min: 0.7
-        max: 2
-        source: ai_research
-      reflectivity:
-        value: 0.92
-        unit: dimensionless
-        min: 0.85
-        max: 0.98
-        source: ai_research
-      thermalDestructionPoint:
-        value: 505
-        unit: K
-        min: 500
-        max: 510
-        source: ai_research
-      vaporPressure:
-        value: '0.001'
-        unit: Pa
-        min: '0.0001'
-        max: 0.01
-        source: ai_research
-      percentage: 40.0
-      thermalDestruction:
-        value: 505
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 227
-        unit: J/kg·K
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.71
-        unit: dimensionless
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 66.8
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '2.3e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.42
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 4e-05
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    isBasedOn:
-      name: IEC 60825 - Safety of Laser Products
-      url: https://webstore.iec.ch/en/publication/3587
-  material_metadata:
-    last_updated: '2025-10-27T23:48:40.922890Z'
-    normalization_applied: true
-    normalization_date: '2025-10-27T23:48:40.922896Z'
-    structure_version: '2.0'
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 1
-      estimatedHoursTypical: 4
-      targetContaminants:
-      - Oxide layer
-      - Paint and coatings
-      - Mill scale
-      - Surface contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:33.124066'
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922890Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922896Z'
+  structure_version: '2.0'
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 1
+    estimatedHoursTypical: 4
+    targetContaminants:
+    - Oxide layer
+    - Paint and coatings
+    - Mill scale
+    - Surface contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:03.339501'

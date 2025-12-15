@@ -1,406 +1,405 @@
-metadata:
-  name: Vanadium
-  slug: vanadium
-  category: metal
-  subcategory: alloy
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: material
-  title: Vanadium Laser Cleaning
-  material_description: When laser cleaning vanadium alloys, I've seen how their natural corrosion resistance keeps surfaces intact even under intense pulses, so you start with moderate power to gently lift contaminants without risking the underlying strength that makes them ideal for aerospace parts and chemical gear.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Alloy
-    href: /materials/metal/alloy
-  - label: Vanadium
-    href: /materials/metal/alloy/vanadium
-  images:
-    hero:
-      alt: Vanadium surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/vanadium-laser-cleaning-hero.jpg
-    micro:
-      alt: Microscopic view of Vanadium surface after laser cleaning showing detailed surface structure
-      url: /images/material/vanadium-laser-cleaning-micro.jpg
+name: Vanadium
+slug: vanadium
+category: metal
+subcategory: alloy
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Vanadium Laser Cleaning
+material_description: When laser cleaning vanadium alloys, I've seen how their natural corrosion resistance keeps surfaces intact even under intense pulses, so you start with moderate power to gently lift contaminants without risking the underlying strength that makes them ideal for aerospace parts and chemical gear.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Vanadium
+  href: /materials/metal/alloy/vanadium
+images:
+  hero:
+    alt: Vanadium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/vanadium-laser-cleaning-hero.jpg
   micro:
-    before: Looking at the vanadium surface before cleaning under high magnification reveals a cluttered mess of contaminants clinging tightly. Dark residues and scattered particles create an uneven, bumpy texture that hides the metal's true form. It all looks dull and choked, with layers building up in irregular spots.
-    after: After the laser treatment, that same vanadium surface transforms into a clear, smooth expanse free of any buildup. Fine metallic grains stand out sharply now, without the old debris interrupting. The whole area gleams evenly and feels polished
-  faq:
-  - question: What laser wavelengths are most effective for cleaning **vanadium oxide layers** from steel alloys without substrate damage?
-    answer: '**1064 nm efficient absorption**. 1064 nm near-IR lasers prove optimal for cleaning vanadium oxide from steel alloys, absorbing efficiently into the reflective metal. Notably, unlike 532 nm visible light—which scatters more due to vanadium''s properties—thus, target 5.1 J/cm² fluence with 100 W pulses to ablate the layer cleanly without substrate heating.'
-  - question: How do vanadium fumes generated during laser cleaning of vanadium-containing alloys affect worker safety?
-    answer: Vanadium pentoxide fumes arising from laser cleaning of vanadium alloys at 5.1 J/cm² fluence create serious inhalation hazards, particularly by irritating lungs and risking long-term damage such as pneumoconiosis. Thus, keep exposure under 0.05 mg/m³ via robust local exhaust ventilation, while outfitting workers with NIOSH-approved half-face respirators using P100 filters for metal oxides.
-  - question: What are common challenges in using fiber lasers to remove contaminants from **vanadium-titanium alloys** in aerospace applications?
-    answer: '**Strong adhesion requires high fluence**. In aerospace, contaminants adhere strongly to vanadium-titanium alloys, particularly demanding fiber laser fluence above 5.1 J/cm² at 1064 nm, which limits scan speeds to roughly 500 mm/s. Post-ablation re-oxidation risks thus necessitate inert gases, unlike chemical approaches that sidestep heat yet produce residues and environmental threats.'
-  - question: In laser cleaning equipment for vanadium steel surfaces, what scan speeds prevent overheating and material loss?
-    answer: When processing vanadium steel surfaces, target scan speeds of 100-500 mm/s to reduce overheating risks, notably employing 50% beam overlap at 100 W power and 1064 nm wavelength. Thus, fluence stays below 5.1 J/cm², averting evaporation or cracking. Employ IR thermography to track surface temperature for immediate tweaks.
-  - question: Are there specific regulatory guidelines for disposing of vanadium residues produced from laser ablation in surface treatment?
-    answer: Vanadium residues generated by laser ablation, particularly those with toxic pentoxide, qualify as hazardous waste under EPA's RCRA, demanding secure disposal to avoid leaching. OSHA requires clear labeling for safe handling, and notably, environmental impact assessments assess site-specific risks. To minimize dust at 5.1 J/cm² fluence and 1064 nm wavelength, optimize scan speeds around 500 mm/s.
-  - question: How does the **high melting point** of vanadium influence the choice of laser power for surface decontamination in nuclear reactor components?
-    answer: '**Demands higher laser power**. Vanadium''s 1910°C melting point notably requires higher laser power—typically 100 W at 1064 nm—to ablate surface oxides in nuclear components without risking substrate melt. Its good thermal conductivity spreads heat quickly; thus, we target 5.1 J/cm² fluence for efficient decontamination, minimizing incomplete removal from uneven absorption.'
-  - question: What training is recommended for operators handling laser cleaning of **vanadium-coated tools** to minimize health hazards?
-    answer: '**Vanadium particulate irritation training**. Operators cleaning vanadium-coated tools with 1064 nm lasers require integrated training that combines standard eye and skin protection protocols with sessions particularly focused on particulate-induced irritation from vanadium. Thus, emphasize monitoring airborne exposure below 0.05 mg/m³ during 100 W operations, alongside hands-on practice for safe ablation without substrate damage.'
-  - question: 'In online forums, users often ask: Can pulsed lasers effectively clean vanadium without generating **toxic byproducts** compared to continuous wave lasers?'
-    answer: '**Pulsed lasers curb V2O5**. From my precision laser engineering experience, pulsed lasers at 1064 nm with 5.1 J/cm² fluence notably ablate vanadium oxides cleanly, thus curbing toxic V2O5 formation via controlled heat—unlike CW lasers that overheat and amplify byproducts. In aerospace refurbishments, this nanosecond-pulse method delivers pristine surfaces free of residue or damage.'
-  - question: What are the chemical properties of vanadium that make it **prone to re-contamination** after laser surface treatment?
-    answer: '**Strong oxygen affinity forms V2O5**. Vanadium shows a strong affinity for oxygen, resulting in rapid formation of stable V2O5 layers on exposed surfaces following laser cleaning. Notably, this heightens re-contamination risks. Such reactivity particularly impairs post-treatment corrosion resistance, especially at 1064 nm wavelength and 5.1 J/cm² fluence. Thus, apply inert gas shielding during 100 W sessions to ensure a pristine, oxide-free finish.'
-  regulatoryStandards:
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
+    alt: Microscopic view of Vanadium surface after laser cleaning showing detailed surface structure
+    url: /images/material/vanadium-laser-cleaning-micro.jpg
+micro:
+  before: Looking at the vanadium surface before cleaning under high magnification reveals a cluttered mess of contaminants clinging tightly. Dark residues and scattered particles create an uneven, bumpy texture that hides the metal's true form. It all looks dull and choked, with layers building up in irregular spots.
+  after: After the laser treatment, that same vanadium surface transforms into a clear, smooth expanse free of any buildup. Fine metallic grains stand out sharply now, without the old debris interrupting. The whole area gleams evenly and feels polished
+faq:
+- question: What laser wavelengths are most effective for cleaning **vanadium oxide layers** from steel alloys without substrate damage?
+  answer: '**1064 nm efficient absorption**. 1064 nm near-IR lasers prove optimal for cleaning vanadium oxide from steel alloys, absorbing efficiently into the reflective metal. Notably, unlike 532 nm visible light—which scatters more due to vanadium''s properties—thus, target 5.1 J/cm² fluence with 100 W pulses to ablate the layer cleanly without substrate heating.'
+- question: How do vanadium fumes generated during laser cleaning of vanadium-containing alloys affect worker safety?
+  answer: Vanadium pentoxide fumes arising from laser cleaning of vanadium alloys at 5.1 J/cm² fluence create serious inhalation hazards, particularly by irritating lungs and risking long-term damage such as pneumoconiosis. Thus, keep exposure under 0.05 mg/m³ via robust local exhaust ventilation, while outfitting workers with NIOSH-approved half-face respirators using P100 filters for metal oxides.
+- question: What are common challenges in using fiber lasers to remove contaminants from **vanadium-titanium alloys** in aerospace applications?
+  answer: '**Strong adhesion requires high fluence**. In aerospace, contaminants adhere strongly to vanadium-titanium alloys, particularly demanding fiber laser fluence above 5.1 J/cm² at 1064 nm, which limits scan speeds to roughly 500 mm/s. Post-ablation re-oxidation risks thus necessitate inert gases, unlike chemical approaches that sidestep heat yet produce residues and environmental threats.'
+- question: In laser cleaning equipment for vanadium steel surfaces, what scan speeds prevent overheating and material loss?
+  answer: When processing vanadium steel surfaces, target scan speeds of 100-500 mm/s to reduce overheating risks, notably employing 50% beam overlap at 100 W power and 1064 nm wavelength. Thus, fluence stays below 5.1 J/cm², averting evaporation or cracking. Employ IR thermography to track surface temperature for immediate tweaks.
+- question: Are there specific regulatory guidelines for disposing of vanadium residues produced from laser ablation in surface treatment?
+  answer: Vanadium residues generated by laser ablation, particularly those with toxic pentoxide, qualify as hazardous waste under EPA's RCRA, demanding secure disposal to avoid leaching. OSHA requires clear labeling for safe handling, and notably, environmental impact assessments assess site-specific risks. To minimize dust at 5.1 J/cm² fluence and 1064 nm wavelength, optimize scan speeds around 500 mm/s.
+- question: How does the **high melting point** of vanadium influence the choice of laser power for surface decontamination in nuclear reactor components?
+  answer: '**Demands higher laser power**. Vanadium''s 1910°C melting point notably requires higher laser power—typically 100 W at 1064 nm—to ablate surface oxides in nuclear components without risking substrate melt. Its good thermal conductivity spreads heat quickly; thus, we target 5.1 J/cm² fluence for efficient decontamination, minimizing incomplete removal from uneven absorption.'
+- question: What training is recommended for operators handling laser cleaning of **vanadium-coated tools** to minimize health hazards?
+  answer: '**Vanadium particulate irritation training**. Operators cleaning vanadium-coated tools with 1064 nm lasers require integrated training that combines standard eye and skin protection protocols with sessions particularly focused on particulate-induced irritation from vanadium. Thus, emphasize monitoring airborne exposure below 0.05 mg/m³ during 100 W operations, alongside hands-on practice for safe ablation without substrate damage.'
+- question: 'In online forums, users often ask: Can pulsed lasers effectively clean vanadium without generating **toxic byproducts** compared to continuous wave lasers?'
+  answer: '**Pulsed lasers curb V2O5**. From my precision laser engineering experience, pulsed lasers at 1064 nm with 5.1 J/cm² fluence notably ablate vanadium oxides cleanly, thus curbing toxic V2O5 formation via controlled heat—unlike CW lasers that overheat and amplify byproducts. In aerospace refurbishments, this nanosecond-pulse method delivers pristine surfaces free of residue or damage.'
+- question: What are the chemical properties of vanadium that make it **prone to re-contamination** after laser surface treatment?
+  answer: '**Strong oxygen affinity forms V2O5**. Vanadium shows a strong affinity for oxygen, resulting in rapid formation of stable V2O5 layers on exposed surfaces following laser cleaning. Notably, this heightens re-contamination risks. Such reactivity particularly impairs post-treatment corrosion resistance, especially at 1064 nm wavelength and 5.1 J/cm² fluence. Thus, apply inert gas shielding during 100 W sessions to ensure a pristine, oxide-free finish.'
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    youngsModulus:
+      value: 128
+      unit: GPa
+      source: ai_research
+      min: 10.4
+      max: 2e+11
+    oxidationResistance:
+      value: 0.65
+      unit: dimensionless
+      source: ai_research
+      min: -554
+      max: 1762
+    density:
+      value: 6110
+      unit: kg/m³
+      source: ai_research
+      min: 1.7
+      max: 9408
+    hardness:
+      value: 175
+      unit: HV
+      source: ai_research
+      min: 0.2
+      max: 3500
+    corrosionResistance:
+      value: 0.92
+      unit: dimensionless (normalized corrosion resistance index)
+      source: ai_research
+      min: -1.1
+      max: '1.1e+06'
+    compressiveStrength:
+      value: 345
+      unit: MPa
+      source: ai_research
+      min: 8
+      max: 2625
+    flexuralStrength:
+      value: 310
+      unit: MPa
+      source: ai_research
+      min: 11.4
+      max: 2897
+    tensileStrength:
+      value: 345
+      unit: MPa
+      source: ai_research
+      min: 3
+      max: 3000
+    fractureToughness:
+      value: 99
+      unit: MPa√m
+      source: ai_research
+      min: 0.67
+      max: 157
+    porosity:
+      value: 0
+      unit: '%'
+      source: ai_research
+      min: 0
+      max: 15
+    electricalResistivity:
+      value: 2e-07
+      unit: Ω·m
+      source: ai_research
+      min: 0
+      max: 2e-06
+    absorptivity:
+      value: 0.36
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.6
+    boilingPoint:
+      value: 3680
+      unit: K
+      source: ai_research
+      min: 929
+      max: 6454
+    absorptionCoefficient:
+      value: '6.3e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 589000
+      max: '9.9e+07'
+    electricalConductivity:
+      value: 4e+06
+      unit: S/m
+      source: ai_research
+      min: 659300
+      max: '6.6e+07'
+    meltingPoint:
+      value: 2183
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    vaporPressure:
+      value: 3.4
+      unit: Pa
+      source: ai_research
+      min: 0
+      max: 106391
+    thermalDestructionPoint:
+      value: 2183
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    reflectivity:
+      value: 0.72
+      unit: fraction
+      source: ai_research
+      min: 0.35
+      max: 1
+    thermalShockResistance:
+      value: 251
+      unit: K
+      source: ai_research
+      min: 6.7
+      max: 379050
+    surfaceRoughness:
+      value: 0.12
+      unit: μm
+      source: ai_research
+      min: 0.02
+      max: 6.6
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      source: ai_research
+      min: 0.27
+      max: 15750
+    percentage: 60.0
+    thermalDestruction:
+      value: 2183
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 489
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.65
+      unit: fraction
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 30.7
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: 8.4
+      unit: 10^{-6} K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.38
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 1e-05
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.4
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    absorptivity:
+      value: 0.3
+      unit: dimensionless
+      min: 0.2
+      max: 0.4
+      source: ai_research
+    absorptionCoefficient:
+      value: 5e+06
+      unit: m⁻¹
+      min: 1e+06
+      max: 1e+07
+      source: ai_research
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      min: 1
+      max: 5
+      source: ai_research
+    thermalShockResistance:
+      value: 2.5
+      unit: MW/m
+      min: 1.5
+      max: 3.5
+      source: ai_research
+    reflectivity:
+      value: 0.7
+      unit: dimensionless
+      min: 0.6
+      max: 0.8
+      source: ai_research
+    thermalDestructionPoint:
+      value: 2183
+      unit: K
+      min: 2100
+      max: 2250
+      source: ai_research
+    vaporPressure:
+      value: 10
+      unit: Pa
+      min: 1
+      max: 100
+      source: ai_research
+    percentage: 40.0
+    thermalDestruction:
+      value: 2183
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 489
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.65
+      unit: fraction
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 30.7
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: 8.4
+      unit: 10^{-6} K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.38
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 1e-05
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.4
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
     url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
-    url: https://webstore.iec.ch/en/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      youngsModulus:
-        value: 128
-        unit: GPa
-        source: ai_research
-        min: 10.4
-        max: 2e+11
-      oxidationResistance:
-        value: 0.65
-        unit: dimensionless
-        source: ai_research
-        min: -554
-        max: 1762
-      density:
-        value: 6110
-        unit: kg/m³
-        source: ai_research
-        min: 1.7
-        max: 9408
-      hardness:
-        value: 175
-        unit: HV
-        source: ai_research
-        min: 0.2
-        max: 3500
-      corrosionResistance:
-        value: 0.92
-        unit: dimensionless (normalized corrosion resistance index)
-        source: ai_research
-        min: -1.1
-        max: '1.1e+06'
-      compressiveStrength:
-        value: 345
-        unit: MPa
-        source: ai_research
-        min: 8
-        max: 2625
-      flexuralStrength:
-        value: 310
-        unit: MPa
-        source: ai_research
-        min: 11.4
-        max: 2897
-      tensileStrength:
-        value: 345
-        unit: MPa
-        source: ai_research
-        min: 3
-        max: 3000
-      fractureToughness:
-        value: 99
-        unit: MPa√m
-        source: ai_research
-        min: 0.67
-        max: 157
-      porosity:
-        value: 0
-        unit: '%'
-        source: ai_research
-        min: 0
-        max: 15
-      electricalResistivity:
-        value: 2e-07
-        unit: Ω·m
-        source: ai_research
-        min: 0
-        max: 2e-06
-      absorptivity:
-        value: 0.36
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.6
-      boilingPoint:
-        value: 3680
-        unit: K
-        source: ai_research
-        min: 929
-        max: 6454
-      absorptionCoefficient:
-        value: '6.3e+07'
-        unit: m^{-1}
-        source: ai_research
-        min: 589000
-        max: '9.9e+07'
-      electricalConductivity:
-        value: 4e+06
-        unit: S/m
-        source: ai_research
-        min: 659300
-        max: '6.6e+07'
-      meltingPoint:
-        value: 2183
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      vaporPressure:
-        value: 3.4
-        unit: Pa
-        source: ai_research
-        min: 0
-        max: 106391
-      thermalDestructionPoint:
-        value: 2183
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      reflectivity:
-        value: 0.72
-        unit: fraction
-        source: ai_research
-        min: 0.35
-        max: 1
-      thermalShockResistance:
-        value: 251
-        unit: K
-        source: ai_research
-        min: 6.7
-        max: 379050
-      surfaceRoughness:
-        value: 0.12
-        unit: μm
-        source: ai_research
-        min: 0.02
-        max: 6.6
-      laserDamageThreshold:
-        value: 2.5
-        unit: J/cm²
-        source: ai_research
-        min: 0.27
-        max: 15750
-      percentage: 60.0
-      thermalDestruction:
-        value: 2183
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 489
-        unit: J/(kg·K)
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.65
-        unit: fraction
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 30.7
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: 8.4
-        unit: 10^{-6} K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.38
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 1e-05
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.4
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      absorptivity:
-        value: 0.3
-        unit: dimensionless
-        min: 0.2
-        max: 0.4
-        source: ai_research
-      absorptionCoefficient:
-        value: 5e+06
-        unit: m⁻¹
-        min: 1e+06
-        max: 1e+07
-        source: ai_research
-      laserDamageThreshold:
-        value: 2.5
-        unit: J/cm²
-        min: 1
-        max: 5
-        source: ai_research
-      thermalShockResistance:
-        value: 2.5
-        unit: MW/m
-        min: 1.5
-        max: 3.5
-        source: ai_research
-      reflectivity:
-        value: 0.7
-        unit: dimensionless
-        min: 0.6
-        max: 0.8
-        source: ai_research
-      thermalDestructionPoint:
-        value: 2183
-        unit: K
-        min: 2100
-        max: 2250
-        source: ai_research
-      vaporPressure:
-        value: 10
-        unit: Pa
-        min: 1
-        max: 100
-        source: ai_research
-      percentage: 40.0
-      thermalDestruction:
-        value: 2183
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 489
-        unit: J/(kg·K)
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.65
-        unit: fraction
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 30.7
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: 8.4
-        unit: 10^{-6} K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.38
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 1e-05
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.4
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    isBasedOn:
-      name: ANSI Z136.1 - Safe Use of Lasers
-      url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  material_metadata:
-    last_updated: '2025-10-27T23:48:40.922977Z'
-    normalization_applied: true
-    normalization_date: '2025-10-27T23:48:40.922982Z'
-    structure_version: '2.0'
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 1
-      estimatedHoursTypical: 4
-      targetContaminants:
-      - Oxide layer
-      - Paint and coatings
-      - Mill scale
-      - Surface contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:33.382286'
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922977Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922982Z'
+  structure_version: '2.0'
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 1
+    estimatedHoursTypical: 4
+    targetContaminants:
+    - Oxide layer
+    - Paint and coatings
+    - Mill scale
+    - Surface contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:03.559019'

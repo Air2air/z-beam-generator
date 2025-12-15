@@ -1,186 +1,185 @@
-metadata:
-  name: Iron
-  slug: iron
-  category: metal
-  subcategory: ferrous
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 3
-    name: Ikmanda Roswati
-    country: Indonesia
-    country_display: Indonesia
-    title: Ph.D.
-    sex: m
-    jobTitle: Junior Research Scientist in Laser Physics
-    expertise:
-    - Ultrafast Laser Physics and Material Interactions
-    affiliation:
-      name: Bandung Institute of Technology
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Physics, ITB, 2020
-    - 2+ years in ultrafast laser research including ASEAN optics workshops
-    - Assisted in international optics projects
-    languages:
-    - English
-    - Bahasa Indonesia
-    email: info@z-beam.com
-    image: /images/author/ikmanda-roswati.jpg
-    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-    url: https://z-beam.com/authors/ikmanda-roswati
-    sameAs:
-    - https://linkedin.com/in/ikmanda-roswati-physicist
-    - https://www.academia.edu/profile/IkmandaRoswati
-    persona_file: indonesia_persona.yaml
-    formatting_file: indonesia_formatting.yaml
-  title: Iron Laser Cleaning Settings
-  settings_description: When laser cleaning iron, watch out for its strong thermal conductivity right from the start—it spreads heat quickly across the surface, so you must use controlled, lower power settings to prevent warping or unintended melting in thicker sections. I've seen this property make iron a solid choice for heavy-duty jobs like restoring marine parts or automotive frames, as it absorbs laser energy well enough to clear rust and scale without deep penetration. What sets iron apart from non-ferrous metals is its tendency to oxidize easily, which means you should follow up with a pass that minimizes re-exposure to air, keeping the beam focused and speed steady. Tends to shine in cultural heritage work too, where its durability lets you strip contaminants gently. Just avoid rushing the process; overlap scans moderately to ensure even coverage without hotspots.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Ferrous
-    href: /materials/metal/ferrous
-  - label: Iron
-    href: /materials/iron
-  images:
-    hero:
-      alt: Iron surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/iron-laser-cleaning-hero.jpg
-    micro:
-      alt: Iron microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/iron-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 50
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    energyDensity:
-      unit: J/cm²
-      value: 5.1
-      min: 0.1
-      max: 20
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 2
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 23.1
-      unit: mm²/s
-    thermalConductivity:
-      value: 80.2
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1811.0
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 2.5
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.5
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 1.8
-      max: 2.0
-      unit: J/cm²
-    thermalShockResistance:
-      value: 1.2
-      unit: K
-    reflectivity:
-      value: 0.62
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: High thermal conductivity and heat spread
-      severity: medium
-      property_value: 4-400 W/(m·K) depending on metal
-      impact: Heat spreads rapidly causing large heat-affected zones
-      solutions:
-      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-      - Increase scan speed to minimize dwell time
-      - Apply cooling between passes for thick sections
-    - challenge: Melting and heat-affected zone formation
-      severity: high
-      threshold_range: 660°C (Al) to 3422°C (W)
-      impact: Substrate melting or microstructural changes in heat-affected zone
-      solutions:
-      - Stay below 70% of melting temperature
-      - Use pulse mode with adequate cooling time
-      - Monitor for surface discoloration indicating oxidation
-    surface_characteristics:
-    - challenge: High reflectivity
-      severity: high
-      reflectivity_range: 60-95% at 1064nm for polished metals
-      impact: Most laser energy reflected, requiring higher power; safety hazard
-      solutions:
-      - Use shorter wavelengths (355nm UV) for better absorption
-      - Increase power density but monitor for thermal damage
-      - Ensure proper beam containment and safety measures
-      - Surface oxidation/roughness improves absorption
-    - challenge: Surface finish variations
-      severity: medium
-      impact: Polished surfaces reflect more, rough surfaces absorb better
-      solutions:
-      - Adjust power based on surface condition
-      - Test parameters on similar finish samples
-      - Polished surfaces need 20-40% more power
-    contamination_challenges:
-    - challenge: Rust and oxide layer removal
-      severity: medium
-      impact: Requires multiple passes; rust/oxide has different absorption than base metal
-      solutions:
-      - First pass at higher power (100-120W) to remove bulk oxide
-      - Second pass at lower power (60-80W) for final cleaning
-      - Monitor for base metal exposure to avoid over-processing
-    - challenge: Oil and grease removal
-      severity: low
-      impact: Organic contaminants vaporize easily but can redeposit
-      solutions:
-      - Use fume extraction to prevent redeposition
-      - Higher scan speeds (3000-5000 mm/s) for thin films
-      - Chemical pre-cleaning for heavy contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:30.523921'
+name: Iron
+slug: iron
+category: metal
+subcategory: ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Iron Laser Cleaning Settings
+settings_description: When laser cleaning iron, watch out for its strong thermal conductivity right from the start—it spreads heat quickly across the surface, so you must use controlled, lower power settings to prevent warping or unintended melting in thicker sections. I've seen this property make iron a solid choice for heavy-duty jobs like restoring marine parts or automotive frames, as it absorbs laser energy well enough to clear rust and scale without deep penetration. What sets iron apart from non-ferrous metals is its tendency to oxidize easily, which means you should follow up with a pass that minimizes re-exposure to air, keeping the beam focused and speed steady. Tends to shine in cultural heritage work too, where its durability lets you strip contaminants gently. Just avoid rushing the process; overlap scans moderately to ensure even coverage without hotspots.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Ferrous
+  href: /materials/metal/ferrous
+- label: Iron
+  href: /materials/iron
+images:
+  hero:
+    alt: Iron surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/iron-laser-cleaning-hero.jpg
+  micro:
+    alt: Iron microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/iron-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 5.1
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 23.1
+    unit: mm²/s
+  thermalConductivity:
+    value: 80.2
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1811.0
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 2.5
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.5
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.8
+    max: 2.0
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.62
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:01.416766'

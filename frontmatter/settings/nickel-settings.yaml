@@ -1,181 +1,180 @@
-metadata:
-  name: Nickel
-  slug: nickel
-  category: metal
-  subcategory: specialty
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 4
-    name: Todd Dunning
-    country: United States
-    country_display: United States
-    title: MA
-    sex: m
-    jobTitle: Junior Optical Materials Specialist
-    expertise:
-    - Optical Materials for Laser Systems
-    affiliation:
-      name: Coherent Inc.
-      type: Organization
-    credentials:
-    - BA Physics, UC Irvine, 2017
-    - Hands-on at JPL optics internship, 2018
-    - MA Optics and Photonics, UC Irvine, 2019
-    - 3+ years in laser systems development
-    - Hands-on experience with optical fabrication
-    email: info@z-beam.com
-    image: /images/author/todd-dunning.jpg
-    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-    url: https://z-beam.com/authors/todd-dunning
-    sameAs:
-    - https://linkedin.com/in/todd-dunning-optics
-    - https://spie.org/profile/Todd.Dunning
-    persona_file: usa_persona.yaml
-    formatting_file: usa_formatting.yaml
-  title: Nickel Laser Cleaning Settings
-  settings_description: When laser cleaning nickel, we often run into its strong reflectivity first. This bounces back a good portion of the beam. So, the energy doesn't sink in as deeply as we'd like. We've found that starting with focused pulses helps overcome this. Nickel conducts heat quickly too. That spreads warmth evenly and avoids hot spots. But it also means you need steady control to prevent warping. Its tough surface resists corrosion well. So, cleaning uncovers a durable base without extra damage risks. We typically use multiple light passes for even removal. Watch out at the end—overdo the power, and you risk surface cracks from thermal stress.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Specialty
-    href: /materials/metal/specialty
-  - label: Nickel
-    href: /materials/nickel
-  images:
-    hero:
-      alt: Nickel surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/nickel-laser-cleaning-hero.jpg
-    micro:
-      alt: Nickel microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/nickel-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 50
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 100
-      min: 1
-      max: 200
-    fluenceThreshold:
-      unit: J/cm²
-      value: 2.5
-      min: 0.3
-      max: 4.5
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 3
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 22.9
-      unit: mm²/s
-    thermalConductivity:
-      value: 90.7
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1726.0
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 0.45
-      unit: J/cm²
-    ablationThreshold:
-      value: 2.1
-      unit: J/cm²
-    thermalShockResistance:
-      value: 450.0
-      unit: K
-    reflectivity:
-      value: 0.65
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: High thermal conductivity and heat spread
-      severity: medium
-      property_value: 4-400 W/(m·K) depending on metal
-      impact: Heat spreads rapidly causing large heat-affected zones
-      solutions:
-      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-      - Increase scan speed to minimize dwell time
-      - Apply cooling between passes for thick sections
-    - challenge: Melting and heat-affected zone formation
-      severity: high
-      threshold_range: 660°C (Al) to 3422°C (W)
-      impact: Substrate melting or microstructural changes in heat-affected zone
-      solutions:
-      - Stay below 70% of melting temperature
-      - Use pulse mode with adequate cooling time
-      - Monitor for surface discoloration indicating oxidation
-    surface_characteristics:
-    - challenge: High reflectivity
-      severity: high
-      reflectivity_range: 60-95% at 1064nm for polished metals
-      impact: Most laser energy reflected, requiring higher power; safety hazard
-      solutions:
-      - Use shorter wavelengths (355nm UV) for better absorption
-      - Increase power density but monitor for thermal damage
-      - Ensure proper beam containment and safety measures
-      - Surface oxidation/roughness improves absorption
-    - challenge: Surface finish variations
-      severity: medium
-      impact: Polished surfaces reflect more, rough surfaces absorb better
-      solutions:
-      - Adjust power based on surface condition
-      - Test parameters on similar finish samples
-      - Polished surfaces need 20-40% more power
-    contamination_challenges:
-    - challenge: Rust and oxide layer removal
-      severity: medium
-      impact: Requires multiple passes; rust/oxide has different absorption than base metal
-      solutions:
-      - First pass at higher power (100-120W) to remove bulk oxide
-      - Second pass at lower power (60-80W) for final cleaning
-      - Monitor for base metal exposure to avoid over-processing
-    - challenge: Oil and grease removal
-      severity: low
-      impact: Organic contaminants vaporize easily but can redeposit
-      solutions:
-      - Use fume extraction to prevent redeposition
-      - Higher scan speeds (3000-5000 mm/s) for thin films
-      - Chemical pre-cleaning for heavy contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:31.222100'
+name: Nickel
+slug: nickel
+category: metal
+subcategory: specialty
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+title: Nickel Laser Cleaning Settings
+settings_description: When laser cleaning nickel, we often run into its strong reflectivity first. This bounces back a good portion of the beam. So, the energy doesn't sink in as deeply as we'd like. We've found that starting with focused pulses helps overcome this. Nickel conducts heat quickly too. That spreads warmth evenly and avoids hot spots. But it also means you need steady control to prevent warping. Its tough surface resists corrosion well. So, cleaning uncovers a durable base without extra damage risks. We typically use multiple light passes for even removal. Watch out at the end—overdo the power, and you risk surface cracks from thermal stress.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Specialty
+  href: /materials/metal/specialty
+- label: Nickel
+  href: /materials/nickel
+images:
+  hero:
+    alt: Nickel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/nickel-laser-cleaning-hero.jpg
+  micro:
+    alt: Nickel microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/nickel-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 100
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 22.9
+    unit: mm²/s
+  thermalConductivity:
+    value: 90.7
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1726.0
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 0.45
+    unit: J/cm²
+  ablationThreshold:
+    value: 2.1
+    unit: J/cm²
+  thermalShockResistance:
+    value: 450.0
+    unit: K
+  reflectivity:
+    value: 0.65
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:01.890179'

@@ -1,405 +1,404 @@
-metadata:
-  name: Tool Steel
-  slug: tool-steel
-  category: metal
-  subcategory: alloy
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Alessandro Moretti
-      author_country: Italy
-      voice_applied: true
-      content_type: material
-  title: Tool Steel Laser Cleaning
-  material_description: Tool steel excels with its exceptional hardness and heat resistance, allowing tools to keep sharp edges intact during intense machining operations without deforming or weakening.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Alloy
-    href: /materials/metal/alloy
-  - label: Tool Steel
-    href: /materials/metal/alloy/tool-steel
-  images:
-    hero:
-      alt: Tool Steel surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/tool-steel-laser-cleaning-hero.jpg
-    micro:
-      alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed surface structure
-      url: /images/material/tool-steel-laser-cleaning-micro.jpg
+name: Tool Steel
+slug: tool-steel
+category: metal
+subcategory: alloy
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: material
+title: Tool Steel Laser Cleaning
+material_description: Tool steel excels with its exceptional hardness and heat resistance, allowing tools to keep sharp edges intact during intense machining operations without deforming or weakening.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Alloy
+  href: /materials/metal/alloy
+- label: Tool Steel
+  href: /materials/metal/alloy/tool-steel
+images:
+  hero:
+    alt: Tool Steel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/tool-steel-laser-cleaning-hero.jpg
   micro:
-    before: At 1000x magnification, the tool steel surface looks rough and patchy. Dark spots cluster together, trapping dirt and debris in cracks. This uneven layer hides the metal's true texture underneath.
-    after: After laser treatment at 1000x, the tool steel surface shines smooth and even. No spots remain, and cracks disappear into a clean polish. This fresh layer reveals the metal's solid, uniform structure.
-  faq:
-  - question: What laser parameters are best for cleaning oxidized tool steel like D2 without **causing microcracking**?
-    answer: '**Fiber lasers curb heat-affected zones**. For cleaning oxidized D2 tool steel without microcracking, I favor fiber lasers at 1064 nm wavelength, 10 ns pulse duration, and 5.1 J/cm² fluence to ablate oxides while curbing heat-affected zones in its high-chromium makeup—a notable edge. CO2 lasers absorb poorly on metals, risking greater thermal damage, so it''s essential to stick with 100 W power and 500 mm/s scans over two passes at 50% overlap.'
-  - question: Does laser cleaning restore the **surface hardness** of heat-treated tool steel tools, or does it require re-tempering?
-    answer: '**Preserves martensitic hardness**. Laser cleaning tool steels such as A2 or O1 at 5.1 J/cm² fluence notably preserves Rockwell hardness, by limiting thermal diffusion within the martensitic structure and preventing unintended tempering. Yet, should local surface temperatures surpass 200°C, essential re-tempering at 180-220°C could be required to regain full properties. Our 100 W setup delivers distinct precise control for most applications.'
-  - question: How do I safely remove **carbide buildup** from tool steel cutting inserts using laser cleaning?
-    answer: '**Target 5.1 J/cm² ablation**. To safely remove tungsten carbide buildup from tool steel inserts, aim for an essential ablation threshold of 5.1 J/cm² using a 1064 nm laser at 100 W power, thus avoiding substrate damage on materials like M2 high-speed steel. Forum case studies notably stress strong ventilation for metal vapors, with two passes at 500 mm/s yielding clean results.'
-  - question: What are the risks of **laser-induced phase transformations** in water-hardening tool steels during cleaning?
-    answer: '**Triggers austenite softening martensite**. When working with water-hardening W-series tool steels, it''s notable how excessive laser heat in cleaning can induce austenite formation above 727°C, which softens the martensitic structure and undermines hardness critical for die and mold uses. It''s essential to stay under 5.1 J/cm² fluences with 10 ns pulses at 1064 nm, curbing thermal diffusion and phase changes.'
-  - question: In laser cleaning of tool steel molds, how do **alloying elements like vanadium** affect the cleaning efficiency?
-    answer: '**Vanadium enhances laser absorption**. In tool steel molds, the notable vanadium content forms tough carbides that boost laser absorption at 1064 nm, accelerating contaminant removal. With shock-resistant alloys like S7, it''s essential to set fluence at 5.1 J/cm² for efficient oxide stripping without damaging the substrate—molders in injection circles praise this adjustment for cleaner finishes.'
-  - question: What safety precautions are needed when laser cleaning tool steel parts that contain **cobalt or molybdenum**?
-    answer: '**Mitigate toxic vaporization fumes**. When cleaning tool steel alloys containing cobalt or molybdenum via a 1064 nm laser at 5.1 J/cm² fluence, it''s notable that toxic fumes such as cobalt oxide may arise from vaporization. It''s essential to don NIOSH-approved respirators with HEPA filters, eye protection, and gloves, while providing robust ventilation to adhere to OSHA exposure limits.'
-  - question: Can pulsed laser cleaning remove rust from hot-work tool steel dies without **warping the substrate**?
-    answer: '**Modest thermal expansion limits distortion**. Yes, pulsed laser cleaning serves as a notable approach to strip rust from H13 hot-work tool steel dies, preventing warping thanks to its modest thermal expansion of 11.5 × 10⁻⁶/K that essentially curbs distortion. Employing 5.1 J/cm² fluence, 500 mm/s scan speed, and 50% overlap keeps heat buildup low—die-casting forums affirm consistent results over repeated passes.'
-  - question: How does the **high thermal conductivity** of oil-hardening tool steel impact laser cleaning process times?
-    answer: '**Extends cleaning times 20-30%**. Oil-hardening tool steels, such as O-series alloys, exhibit a notable thermal conductivity of around 40 W/m·K, leading to swift heat dissipation that requires elevated laser power—up to 100 W—to maintain ablation without substrate damage. This distinct challenge typically prolongs cleaning times by 20-30%, necessitating reduced scan speeds of 500 mm/s for even contaminant removal at 5.1 J/cm² fluence.'
-  - question: What are common issues with laser cleaning tool steel blades, like **edge chipping** or recast layer formation?
-    answer: '**Low fluence high scan speed**. In tool steel blades, edge chipping during laser cleaning arises from notable localized overheating that cracks sharp edges. Recast layers—molten residue resolidifying—manifest as distinct uneven surfaces under SEM examination. For high-speed tool steels, it''s essential to apply 5.1 J/cm² fluence and 500 mm/s scan speed to limit thermal buildup, as knifemakers frequently recommend in forums.'
-  regulatoryStandards:
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
+    alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed surface structure
+    url: /images/material/tool-steel-laser-cleaning-micro.jpg
+micro:
+  before: At 1000x magnification, the tool steel surface looks rough and patchy. Dark spots cluster together, trapping dirt and debris in cracks. This uneven layer hides the metal's true texture underneath.
+  after: After laser treatment at 1000x, the tool steel surface shines smooth and even. No spots remain, and cracks disappear into a clean polish. This fresh layer reveals the metal's solid, uniform structure.
+faq:
+- question: What laser parameters are best for cleaning oxidized tool steel like D2 without **causing microcracking**?
+  answer: '**Fiber lasers curb heat-affected zones**. For cleaning oxidized D2 tool steel without microcracking, I favor fiber lasers at 1064 nm wavelength, 10 ns pulse duration, and 5.1 J/cm² fluence to ablate oxides while curbing heat-affected zones in its high-chromium makeup—a notable edge. CO2 lasers absorb poorly on metals, risking greater thermal damage, so it''s essential to stick with 100 W power and 500 mm/s scans over two passes at 50% overlap.'
+- question: Does laser cleaning restore the **surface hardness** of heat-treated tool steel tools, or does it require re-tempering?
+  answer: '**Preserves martensitic hardness**. Laser cleaning tool steels such as A2 or O1 at 5.1 J/cm² fluence notably preserves Rockwell hardness, by limiting thermal diffusion within the martensitic structure and preventing unintended tempering. Yet, should local surface temperatures surpass 200°C, essential re-tempering at 180-220°C could be required to regain full properties. Our 100 W setup delivers distinct precise control for most applications.'
+- question: How do I safely remove **carbide buildup** from tool steel cutting inserts using laser cleaning?
+  answer: '**Target 5.1 J/cm² ablation**. To safely remove tungsten carbide buildup from tool steel inserts, aim for an essential ablation threshold of 5.1 J/cm² using a 1064 nm laser at 100 W power, thus avoiding substrate damage on materials like M2 high-speed steel. Forum case studies notably stress strong ventilation for metal vapors, with two passes at 500 mm/s yielding clean results.'
+- question: What are the risks of **laser-induced phase transformations** in water-hardening tool steels during cleaning?
+  answer: '**Triggers austenite softening martensite**. When working with water-hardening W-series tool steels, it''s notable how excessive laser heat in cleaning can induce austenite formation above 727°C, which softens the martensitic structure and undermines hardness critical for die and mold uses. It''s essential to stay under 5.1 J/cm² fluences with 10 ns pulses at 1064 nm, curbing thermal diffusion and phase changes.'
+- question: In laser cleaning of tool steel molds, how do **alloying elements like vanadium** affect the cleaning efficiency?
+  answer: '**Vanadium enhances laser absorption**. In tool steel molds, the notable vanadium content forms tough carbides that boost laser absorption at 1064 nm, accelerating contaminant removal. With shock-resistant alloys like S7, it''s essential to set fluence at 5.1 J/cm² for efficient oxide stripping without damaging the substrate—molders in injection circles praise this adjustment for cleaner finishes.'
+- question: What safety precautions are needed when laser cleaning tool steel parts that contain **cobalt or molybdenum**?
+  answer: '**Mitigate toxic vaporization fumes**. When cleaning tool steel alloys containing cobalt or molybdenum via a 1064 nm laser at 5.1 J/cm² fluence, it''s notable that toxic fumes such as cobalt oxide may arise from vaporization. It''s essential to don NIOSH-approved respirators with HEPA filters, eye protection, and gloves, while providing robust ventilation to adhere to OSHA exposure limits.'
+- question: Can pulsed laser cleaning remove rust from hot-work tool steel dies without **warping the substrate**?
+  answer: '**Modest thermal expansion limits distortion**. Yes, pulsed laser cleaning serves as a notable approach to strip rust from H13 hot-work tool steel dies, preventing warping thanks to its modest thermal expansion of 11.5 × 10⁻⁶/K that essentially curbs distortion. Employing 5.1 J/cm² fluence, 500 mm/s scan speed, and 50% overlap keeps heat buildup low—die-casting forums affirm consistent results over repeated passes.'
+- question: How does the **high thermal conductivity** of oil-hardening tool steel impact laser cleaning process times?
+  answer: '**Extends cleaning times 20-30%**. Oil-hardening tool steels, such as O-series alloys, exhibit a notable thermal conductivity of around 40 W/m·K, leading to swift heat dissipation that requires elevated laser power—up to 100 W—to maintain ablation without substrate damage. This distinct challenge typically prolongs cleaning times by 20-30%, necessitating reduced scan speeds of 500 mm/s for even contaminant removal at 5.1 J/cm² fluence.'
+- question: What are common issues with laser cleaning tool steel blades, like **edge chipping** or recast layer formation?
+  answer: '**Low fluence high scan speed**. In tool steel blades, edge chipping during laser cleaning arises from notable localized overheating that cracks sharp edges. Recast layers—molten residue resolidifying—manifest as distinct uneven surfaces under SEM examination. For high-speed tool steels, it''s essential to apply 5.1 J/cm² fluence and 500 mm/s scan speed to limit thermal buildup, as knifemakers frequently recommend in forums.'
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    youngsModulus:
+      value: 200
+      unit: GPa
+      source: ai_research
+      min: 10.4
+      max: 2e+11
+    oxidationResistance:
+      value: 773
+      unit: K
+      source: ai_research
+      min: -554
+      max: 1762
+    density:
+      value: 7850
+      unit: kg/m³
+      source: ai_research
+      min: 1.7
+      max: 9408
+    hardness:
+      value: 60
+      unit: HRC
+      source: ai_research
+      min: 0.2
+      max: 3500
+    corrosionResistance:
+      value: 0.3
+      unit: dimensionless (resistance index)
+      source: ai_research
+      min: -1.1
+      max: '1.1e+06'
+    compressiveStrength:
+      value: 1850
+      unit: MPa
+      source: ai_research
+      min: 8
+      max: 2625
+    flexuralStrength:
+      value: 1720
+      unit: MPa
+      source: ai_research
+      min: 11.4
+      max: 2897
+    tensileStrength:
+      value: 1520
+      unit: MPa
+      source: ai_research
+      min: 3
+      max: 3000
+    fractureToughness:
+      value: 22
+      unit: MPa√m
+      source: ai_research
+      min: 0.67
+      max: 157
+    porosity:
+      value: 0
+      unit: '%'
+      source: ai_research
+      min: 0
+      max: 15
+    electricalResistivity:
+      value: '2.5e-07'
+      unit: Ω·m
+      source: ai_research
+      min: 0
+      max: 2e-06
+    absorptivity:
+      value: 0.35
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.6
+    boilingPoint:
+      value: 3134
+      unit: K
+      source: ai_research
+      min: 929
+      max: 6454
+    absorptionCoefficient:
+      value: '4.8e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 589000
+      max: '9.9e+07'
+    electricalConductivity:
+      value: '2.1e+06'
+      unit: S/m
+      source: ai_research
+      min: 659300
+      max: '6.6e+07'
+    meltingPoint:
+      value: 1450
+      unit: °C
+      source: ai_research
+      min: 133
+      max: 3865
+    vaporPressure:
+      value: 4.2
+      unit: Pa
+      source: ai_research
+      min: 0
+      max: 106391
+    thermalDestructionPoint:
+      value: 1440
+      unit: °C
+      source: ai_research
+      min: 133
+      max: 3865
+    reflectivity:
+      value: 0.65
+      unit: ''
+      source: ai_research
+      min: 0.35
+      max: 1
+    thermalShockResistance:
+      value: 310
+      unit: K
+      source: ai_research
+      min: 6.7
+      max: 379050
+    surfaceRoughness:
+      value: 0.4
+      unit: μm
+      source: ai_research
+      min: 0.02
+      max: 6.6
+    laserDamageThreshold:
+      value: 2.1
+      unit: J/cm²
+      source: ai_research
+      min: 0.27
+      max: 15750
+    percentage: 60.0
+    thermalDestruction:
+      value: 1723
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 480
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.68
+      unit: fraction
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 25
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '1.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.35
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 5e-06
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.4
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    absorptivity:
+      value: 0.3
+      unit: dimensionless
+      min: 0.1
+      max: 0.5
+      source: ai_research
+    absorptionCoefficient:
+      value: 5e+07
+      unit: m⁻¹
+      min: 1e+07
+      max: 1e+08
+      source: ai_research
+    laserDamageThreshold:
+      value: 2.5
+      unit: J/cm²
+      min: 0.5
+      max: 10
+      source: ai_research
+    thermalShockResistance:
+      value: 2.5
+      unit: MW/m
+      min: 1
+      max: 4
+      source: ai_research
+    reflectivity:
+      value: 0.7
+      unit: dimensionless
+      min: 0.5
+      max: 0.9
+      source: ai_research
+    thermalDestructionPoint:
+      value: 1723
+      unit: K
+      min: 1600
+      max: 1800
+      source: ai_research
+    vaporPressure:
+      value: 1
+      unit: Pa
+      min: 0.1
+      max: 10
+      source: ai_research
+    percentage: 40.0
+    thermalDestruction:
+      value: 1723
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 480
+      unit: J/(kg·K)
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.68
+      unit: fraction
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 25
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '1.2e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.35
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: 5e-06
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.4
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
     url: https://webstore.iec.ch/en/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      youngsModulus:
-        value: 200
-        unit: GPa
-        source: ai_research
-        min: 10.4
-        max: 2e+11
-      oxidationResistance:
-        value: 773
-        unit: K
-        source: ai_research
-        min: -554
-        max: 1762
-      density:
-        value: 7850
-        unit: kg/m³
-        source: ai_research
-        min: 1.7
-        max: 9408
-      hardness:
-        value: 60
-        unit: HRC
-        source: ai_research
-        min: 0.2
-        max: 3500
-      corrosionResistance:
-        value: 0.3
-        unit: dimensionless (resistance index)
-        source: ai_research
-        min: -1.1
-        max: '1.1e+06'
-      compressiveStrength:
-        value: 1850
-        unit: MPa
-        source: ai_research
-        min: 8
-        max: 2625
-      flexuralStrength:
-        value: 1720
-        unit: MPa
-        source: ai_research
-        min: 11.4
-        max: 2897
-      tensileStrength:
-        value: 1520
-        unit: MPa
-        source: ai_research
-        min: 3
-        max: 3000
-      fractureToughness:
-        value: 22
-        unit: MPa√m
-        source: ai_research
-        min: 0.67
-        max: 157
-      porosity:
-        value: 0
-        unit: '%'
-        source: ai_research
-        min: 0
-        max: 15
-      electricalResistivity:
-        value: '2.5e-07'
-        unit: Ω·m
-        source: ai_research
-        min: 0
-        max: 2e-06
-      absorptivity:
-        value: 0.35
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.6
-      boilingPoint:
-        value: 3134
-        unit: K
-        source: ai_research
-        min: 929
-        max: 6454
-      absorptionCoefficient:
-        value: '4.8e+07'
-        unit: m^{-1}
-        source: ai_research
-        min: 589000
-        max: '9.9e+07'
-      electricalConductivity:
-        value: '2.1e+06'
-        unit: S/m
-        source: ai_research
-        min: 659300
-        max: '6.6e+07'
-      meltingPoint:
-        value: 1450
-        unit: °C
-        source: ai_research
-        min: 133
-        max: 3865
-      vaporPressure:
-        value: 4.2
-        unit: Pa
-        source: ai_research
-        min: 0
-        max: 106391
-      thermalDestructionPoint:
-        value: 1440
-        unit: °C
-        source: ai_research
-        min: 133
-        max: 3865
-      reflectivity:
-        value: 0.65
-        unit: ''
-        source: ai_research
-        min: 0.35
-        max: 1
-      thermalShockResistance:
-        value: 310
-        unit: K
-        source: ai_research
-        min: 6.7
-        max: 379050
-      surfaceRoughness:
-        value: 0.4
-        unit: μm
-        source: ai_research
-        min: 0.02
-        max: 6.6
-      laserDamageThreshold:
-        value: 2.1
-        unit: J/cm²
-        source: ai_research
-        min: 0.27
-        max: 15750
-      percentage: 60.0
-      thermalDestruction:
-        value: 1723
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 480
-        unit: J/(kg·K)
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.68
-        unit: fraction
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 25
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '1.2e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.35
-        unit: ''
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 5e-06
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.4
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      absorptivity:
-        value: 0.3
-        unit: dimensionless
-        min: 0.1
-        max: 0.5
-        source: ai_research
-      absorptionCoefficient:
-        value: 5e+07
-        unit: m⁻¹
-        min: 1e+07
-        max: 1e+08
-        source: ai_research
-      laserDamageThreshold:
-        value: 2.5
-        unit: J/cm²
-        min: 0.5
-        max: 10
-        source: ai_research
-      thermalShockResistance:
-        value: 2.5
-        unit: MW/m
-        min: 1
-        max: 4
-        source: ai_research
-      reflectivity:
-        value: 0.7
-        unit: dimensionless
-        min: 0.5
-        max: 0.9
-        source: ai_research
-      thermalDestructionPoint:
-        value: 1723
-        unit: K
-        min: 1600
-        max: 1800
-        source: ai_research
-      vaporPressure:
-        value: 1
-        unit: Pa
-        min: 0.1
-        max: 10
-        source: ai_research
-      percentage: 40.0
-      thermalDestruction:
-        value: 1723
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 480
-        unit: J/(kg·K)
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.68
-        unit: fraction
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 25
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '1.2e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.35
-        unit: ''
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: 5e-06
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.4
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    isBasedOn:
-      name: IEC 60825 - Safety of Laser Products
-      url: https://webstore.iec.ch/en/publication/3587
-  material_metadata:
-    last_updated: '2025-10-27T23:48:40.922915Z'
-    normalization_applied: true
-    normalization_date: '2025-10-27T23:48:40.922921Z'
-    structure_version: '2.0'
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 1
-      estimatedHoursTypical: 4
-      targetContaminants:
-      - Oxide layer
-      - Paint and coatings
-      - Mill scale
-      - Surface contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:33.237085'
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922915Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922921Z'
+  structure_version: '2.0'
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 1
+    estimatedHoursTypical: 4
+    targetContaminants:
+    - Oxide layer
+    - Paint and coatings
+    - Mill scale
+    - Surface contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:03.420871'

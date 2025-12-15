@@ -1,186 +1,185 @@
-metadata:
-  name: Basalt
-  slug: basalt
-  category: stone
-  subcategory: igneous
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  title: Basalt Laser Cleaning Settings
-  settings_description: When laser cleaning basalt, it stands out from softer stones like limestone because of its dense, hard nature. I've seen this density help absorb laser energy quickly, so contaminants lift off without much residue left behind. That makes the process efficient for tough buildup in construction or heritage sites. But watch out mid-way—basalt tends to fracture if heat builds unevenly, unlike those porous limestones that just fizz away. This works best when you keep passes steady and overlap spots well, solving the brittleness by spreading the energy. In my experience, it preserves the stone's strength for marine or aerospace uses, avoiding cracks that could weaken structures later. Just ease into higher intensities gradually to handle its heat resistance without surprises.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Stone
-    href: /materials/stone
-  - label: Igneous
-    href: /materials/stone/igneous
-  - label: Basalt
-    href: /materials/basalt
-  images:
-    hero:
-      alt: Basalt surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/basalt-laser-cleaning-hero.jpg
-    micro:
-      alt: Basalt microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/basalt-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 100
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    energyDensity:
-      unit: J/cm²
-      value: 12
-      min: 0.1
-      max: 20
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 3
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 0.85
-      unit: mm²/s
-    thermalConductivity:
-      value: 1.74
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1573
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 5
-      unit: J/cm²
-    ablationThreshold:
-      value: 2.8
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 3.36
-      max: 4.0
-      unit: J/cm²
-    thermalShockResistance:
-      value: 3
-      unit: K
-    reflectivity:
-      value: 0.1
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: Thermal shock and microcracking
-      severity: critical
-      threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-      impact: Natural stone contains microfissures that propagate under thermal stress
-      solutions:
-      - Use pulse mode with 8-12 second cooling between passes
-      - Reduce power by 40-50% for weathered or damaged stone
-      - Preheat substrate if possible to reduce thermal gradients
-      - Granite more resistant than marble; sandstone most vulnerable
-      - Monitor for surface crazing; stop immediately if cracks appear
-    - challenge: Moisture-induced spalling
-      severity: high
-      threshold_temperature: Steam formation >100°C with trapped moisture
-      impact: Porous stone traps moisture that explosively converts to steam
-      solutions:
-      - Test moisture content before cleaning (>3% requires drying)
-      - Allow 48-72 hours drying after rain before laser cleaning
-      - Reduce power by 50% for damp stone
-      - Use pulse mode with extended cooling (15-20 seconds)
-      - Heritage stone requires especially gentle approach
-    surface_characteristics:
-    - challenge: Weathering and surface degradation
-      severity: high
-      impact: Aged stone has weaker surface layer more susceptible to damage
-      solutions:
-      - Reduce power 40-60% for weathered stone vs fresh stone
-      - Test on inconspicuous area first
-      - Multiple gentle passes (4-6 at 40-60W) preferred
-      - Monitor for powdering or flaking; adjust power immediately
-      - Heritage conservation requires documentation and testing
-    - challenge: Mineral composition heterogeneity
-      severity: medium
-      impact: Mixed minerals have different absorption and damage thresholds
-      solutions:
-      - Use moderate power (60-80W) suitable for both light and dark minerals
-      - Crosshatch scan pattern for uniform coverage
-      - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-      - Quartzite and marble more homogeneous than granite
-    contamination_challenges:
-    - challenge: Biological growth and deep staining
-      severity: medium
-      porosity_range: 0.5-25% (sandstone highly porous)
-      impact: Algae, lichen, and pollution penetrate deep into porous structure
-      solutions:
-      - First pass 80W fast (1200 mm/s) for surface growth
-      - Second pass 60W slow (700 mm/s) for roots and stains
-      - Third pass 40W very slow (400 mm/s) for deep staining
-      - Chemical biocide pre-treatment kills roots and reduces laser exposure
-      - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:29.239603'
+name: Basalt
+slug: basalt
+category: stone
+subcategory: igneous
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+title: Basalt Laser Cleaning Settings
+settings_description: When laser cleaning basalt, it stands out from softer stones like limestone because of its dense, hard nature. I've seen this density help absorb laser energy quickly, so contaminants lift off without much residue left behind. That makes the process efficient for tough buildup in construction or heritage sites. But watch out mid-way—basalt tends to fracture if heat builds unevenly, unlike those porous limestones that just fizz away. This works best when you keep passes steady and overlap spots well, solving the brittleness by spreading the energy. In my experience, it preserves the stone's strength for marine or aerospace uses, avoiding cracks that could weaken structures later. Just ease into higher intensities gradually to handle its heat resistance without surprises.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Igneous
+  href: /materials/stone/igneous
+- label: Basalt
+  href: /materials/basalt
+images:
+  hero:
+    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/basalt-laser-cleaning-hero.jpg
+  micro:
+    alt: Basalt microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/basalt-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 12
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 0.85
+    unit: mm²/s
+  thermalConductivity:
+    value: 1.74
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1573
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 3.36
+    max: 4.0
+    unit: J/cm²
+  thermalShockResistance:
+    value: 3
+    unit: K
+  reflectivity:
+    value: 0.1
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: Thermal shock and microcracking
+    severity: critical
+    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
+    impact: Natural stone contains microfissures that propagate under thermal stress
+    solutions:
+    - Use pulse mode with 8-12 second cooling between passes
+    - Reduce power by 40-50% for weathered or damaged stone
+    - Preheat substrate if possible to reduce thermal gradients
+    - Granite more resistant than marble; sandstone most vulnerable
+    - Monitor for surface crazing; stop immediately if cracks appear
+  - challenge: Moisture-induced spalling
+    severity: high
+    threshold_temperature: Steam formation >100°C with trapped moisture
+    impact: Porous stone traps moisture that explosively converts to steam
+    solutions:
+    - Test moisture content before cleaning (>3% requires drying)
+    - Allow 48-72 hours drying after rain before laser cleaning
+    - Reduce power by 50% for damp stone
+    - Use pulse mode with extended cooling (15-20 seconds)
+    - Heritage stone requires especially gentle approach
+  surface_characteristics:
+  - challenge: Weathering and surface degradation
+    severity: high
+    impact: Aged stone has weaker surface layer more susceptible to damage
+    solutions:
+    - Reduce power 40-60% for weathered stone vs fresh stone
+    - Test on inconspicuous area first
+    - Multiple gentle passes (4-6 at 40-60W) preferred
+    - Monitor for powdering or flaking; adjust power immediately
+    - Heritage conservation requires documentation and testing
+  - challenge: Mineral composition heterogeneity
+    severity: medium
+    impact: Mixed minerals have different absorption and damage thresholds
+    solutions:
+    - Use moderate power (60-80W) suitable for both light and dark minerals
+    - Crosshatch scan pattern for uniform coverage
+    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
+    - Quartzite and marble more homogeneous than granite
+  contamination_challenges:
+  - challenge: Biological growth and deep staining
+    severity: medium
+    porosity_range: 0.5-25% (sandstone highly porous)
+    impact: Algae, lichen, and pollution penetrate deep into porous structure
+    solutions:
+    - First pass 80W fast (1200 mm/s) for surface growth
+    - Second pass 60W slow (700 mm/s) for roots and stains
+    - Third pass 40W very slow (400 mm/s) for deep staining
+    - Chemical biocide pre-treatment kills roots and reduces laser exposure
+    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:00.180421'

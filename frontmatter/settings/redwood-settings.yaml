@@ -1,190 +1,189 @@
-metadata:
-  name: Redwood
-  slug: redwood
-  category: wood
-  subcategory: hardwood
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 3
-    name: Ikmanda Roswati
-    country: Indonesia
-    country_display: Indonesia
-    title: Ph.D.
-    sex: m
-    jobTitle: Junior Research Scientist in Laser Physics
-    expertise:
-    - Ultrafast Laser Physics and Material Interactions
-    affiliation:
-      name: Bandung Institute of Technology
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Physics, ITB, 2020
-    - 2+ years in ultrafast laser research including ASEAN optics workshops
-    - Assisted in international optics projects
-    languages:
-    - English
-    - Bahasa Indonesia
-    email: info@z-beam.com
-    image: /images/author/ikmanda-roswati.jpg
-    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-    url: https://z-beam.com/authors/ikmanda-roswati
-    sameAs:
-    - https://linkedin.com/in/ikmanda-roswati-physicist
-    - https://www.academia.edu/profile/IkmandaRoswati
-    persona_file: indonesia_persona.yaml
-    formatting_file: indonesia_formatting.yaml
-  title: Redwood Laser Cleaning Settings
-  settings_description: 'We''ve found that cleaning redwood with lasers requires careful initial setup to avoid surface charring from its porous structure. Start low on power and speed. This softwood, unlike denser hardwoods, absorbs energy quickly but holds heat poorly.
+name: Redwood
+slug: redwood
+category: wood
+subcategory: hardwood
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Redwood Laser Cleaning Settings
+settings_description: 'We''ve found that cleaning redwood with lasers requires careful initial setup to avoid surface charring from its porous structure. Start low on power and speed. This softwood, unlike denser hardwoods, absorbs energy quickly but holds heat poorly.
 
 
-    In our experience, it cleans beautifully for heritage pieces or outdoor restorations. We typically use short pulses to lift dirt without digging into the grain. Its natural oils help resist moisture, so it shines up fast after marine or garden use.
+  In our experience, it cleans beautifully for heritage pieces or outdoor restorations. We typically use short pulses to lift dirt without digging into the grain. Its natural oils help resist moisture, so it shines up fast after marine or garden use.
 
 
-    But watch the high porosity—it soaks up residue if you overlap too much. Adjust by increasing passes lightly. Compared to oak, redwood flexes more under heat, so steady scanning prevents cracks. This keeps the wood''s warm tone intact for furniture or art work.'
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Wood
-    href: /materials/wood
-  - label: Hardwood
-    href: /materials/wood/hardwood
-  - label: Redwood
-    href: /materials/redwood
-  images:
-    hero:
-      alt: Redwood surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/redwood-laser-cleaning-hero.jpg
-    micro:
-      alt: Redwood microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/redwood-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 100
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    energyDensity:
-      unit: J/cm²
-      value: 1.2
-      min: 0.1
-      max: 20
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 2
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-    dwellTime:
-      unit: μs
-      value: 100
-  thermalProperties:
-    thermalDiffusivity:
-      value: 0.125
-      unit: mm²/s
-    thermalConductivity:
-      value: 0.11
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 600
-      unit: K
-      type: charring
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 5
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.05
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 1.26
-      max: 4.0
-      unit: J/cm²
-    thermalShockResistance:
-      value: 1
-      unit: K
-    reflectivity:
-      value: 0.032
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: Charring and carbonization
-      severity: high
-      threshold_temperature: 250-300°C
-      impact: Wood chars at low temperatures leaving black marks and structural damage
-      solutions:
-      - Use pulse mode with 2-5 second cooling between passes
-      - Reduce power by 30-40% compared to metals
-      - Increase scan speed to reduce dwell time
-      - Monitor surface for discoloration; stop if browning occurs
-    - challenge: Slow thermal diffusivity
-      severity: medium
-      property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
-      impact: Heat accumulates rapidly causing thermal damage zones
-      solutions:
-      - Increase cooling time between passes
-      - Use lower repetition rates (<20 kHz)
-      - Apply crosshatch patterns to distribute heat
-    surface_characteristics:
-    - challenge: Grain direction sensitivity
-      severity: medium
-      variation: 20-40% absorption variation by grain orientation
-      impact: Laser absorption varies significantly with grain direction
-      solutions:
-      - Scan parallel to grain for consistent results
-      - Use crosshatch pattern (0° and 90°) for uniform cleaning
-      - Test on scrap to determine optimal scan direction
-    - challenge: Porous structure with deep contamination
-      severity: medium
-      porosity_range: 12-65% (softwoods highest)
-      impact: Contaminants penetrate deep into wood structure
-      solutions:
-      - Multiple passes with progressive power increase
-      - Reduce scan speed for deeper penetration (600 mm/s)
-      - Chemical pre-treatment for deep-seated contamination
-    contamination_challenges:
-    - challenge: Varnish and coating removal
-      severity: medium
-      impact: Thick coatings require multiple passes and generate smoke/fumes
-      solutions:
-      - First pass 80W fast (1500 mm/s) for bulk removal
-      - Second pass 60W slow (800 mm/s) for residue
-      - Use fume extraction to prevent redeposition
-      - Limit to 2-3 passes maximum to avoid substrate damage
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:32.007713'
+  But watch the high porosity—it soaks up residue if you overlap too much. Adjust by increasing passes lightly. Compared to oak, redwood flexes more under heat, so steady scanning prevents cracks. This keeps the wood''s warm tone intact for furniture or art work.'
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Redwood
+  href: /materials/redwood
+images:
+  hero:
+    alt: Redwood surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/redwood-laser-cleaning-hero.jpg
+  micro:
+    alt: Redwood microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/redwood-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 1.2
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+  dwellTime:
+    unit: μs
+    value: 100
+thermalProperties:
+  thermalDiffusivity:
+    value: 0.125
+    unit: mm²/s
+  thermalConductivity:
+    value: 0.11
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 600
+    unit: K
+    type: charring
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.05
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.26
+    max: 4.0
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1
+    unit: K
+  reflectivity:
+    value: 0.032
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: Charring and carbonization
+    severity: high
+    threshold_temperature: 250-300°C
+    impact: Wood chars at low temperatures leaving black marks and structural damage
+    solutions:
+    - Use pulse mode with 2-5 second cooling between passes
+    - Reduce power by 30-40% compared to metals
+    - Increase scan speed to reduce dwell time
+    - Monitor surface for discoloration; stop if browning occurs
+  - challenge: Slow thermal diffusivity
+    severity: medium
+    property_value: 0.10-0.15 mm²/s (100x slower than aluminum)
+    impact: Heat accumulates rapidly causing thermal damage zones
+    solutions:
+    - Increase cooling time between passes
+    - Use lower repetition rates (<20 kHz)
+    - Apply crosshatch patterns to distribute heat
+  surface_characteristics:
+  - challenge: Grain direction sensitivity
+    severity: medium
+    variation: 20-40% absorption variation by grain orientation
+    impact: Laser absorption varies significantly with grain direction
+    solutions:
+    - Scan parallel to grain for consistent results
+    - Use crosshatch pattern (0° and 90°) for uniform cleaning
+    - Test on scrap to determine optimal scan direction
+  - challenge: Porous structure with deep contamination
+    severity: medium
+    porosity_range: 12-65% (softwoods highest)
+    impact: Contaminants penetrate deep into wood structure
+    solutions:
+    - Multiple passes with progressive power increase
+    - Reduce scan speed for deeper penetration (600 mm/s)
+    - Chemical pre-treatment for deep-seated contamination
+  contamination_challenges:
+  - challenge: Varnish and coating removal
+    severity: medium
+    impact: Thick coatings require multiple passes and generate smoke/fumes
+    solutions:
+    - First pass 80W fast (1500 mm/s) for bulk removal
+    - Second pass 60W slow (800 mm/s) for residue
+    - Use fume extraction to prevent redeposition
+    - Limit to 2-3 passes maximum to avoid substrate damage
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:02.532655'

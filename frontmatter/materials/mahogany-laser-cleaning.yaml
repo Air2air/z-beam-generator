@@ -1,362 +1,361 @@
-metadata:
-  name: Mahogany
-  slug: mahogany
-  category: wood
-  subcategory: hardwood
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 4
-    name: Todd Dunning
-    country: United States
-    country_display: United States
-    title: MA
-    sex: m
-    jobTitle: Junior Optical Materials Specialist
-    expertise:
-    - Optical Materials for Laser Systems
-    affiliation:
-      name: Coherent Inc.
-      type: Organization
-    credentials:
-    - BA Physics, UC Irvine, 2017
-    - Hands-on at JPL optics internship, 2018
-    - MA Optics and Photonics, UC Irvine, 2019
-    - 3+ years in laser systems development
-    - Hands-on experience with optical fabrication
-    email: info@z-beam.com
-    image: /images/author/todd-dunning.jpg
-    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
-    url: https://z-beam.com/authors/todd-dunning
-    sameAs:
-    - https://linkedin.com/in/todd-dunning-optics
-    - https://spie.org/profile/Todd.Dunning
-    persona_file: usa_persona.yaml
-    formatting_file: usa_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Todd Dunning
-      author_country: United States
-      voice_applied: true
-      content_type: material
-  title: Mahogany Laser Cleaning
-  material_description: When cleaning mahogany surfaces, leverage its inherent corrosion resistance to guard against moisture damage in marine and architectural applications while upholding the wood's structural integrity
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Wood
-    href: /materials/wood
-  - label: Hardwood
-    href: /materials/wood/hardwood
-  - label: Mahogany
-    href: /materials/wood/hardwood/mahogany
-  images:
-    hero:
-      alt: Mahogany surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/mahogany-laser-cleaning-hero.jpg
-    micro:
-      alt: Mahogany microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/mahogany-laser-cleaning-micro.jpg
+name: Mahogany
+slug: mahogany
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc., with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: material
+title: Mahogany Laser Cleaning
+material_description: When cleaning mahogany surfaces, leverage its inherent corrosion resistance to guard against moisture damage in marine and architectural applications while upholding the wood's structural integrity
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Mahogany
+  href: /materials/wood/hardwood/mahogany
+images:
+  hero:
+    alt: Mahogany surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/mahogany-laser-cleaning-hero.jpg
   micro:
-    before: At 1000x magnification, the mahogany surface shows dark spots and fine dust layers covering the wood fibers. Grime clings tightly to the uneven texture, blocking the natural grain patterns below. Contaminants create a rough, mottled appearance across the entire area.
-    after: After laser treatment at 1000x magnification, the surface reveals clear, exposed wood fibers without any residue. The grain patterns emerge smoothly, restoring the material's original even texture. Cleaning removes all visible dirt, leaving
-  faq:
-  - question: What are the optimal laser settings (wavelength, power, pulse duration) for cleaning soot and grime from mahogany without **damaging the wood surface**?
-    answer: '**Preserves delicate lignin structure**. For mahogany, I''d typically go with a 1064 nm wavelength at 40 W average power and 100 ns pulses. Aim for fluence around 2.5 J/cm² plus a 500 mm/s scan speed to pretty effectively remove soot while safeguarding the wood''s delicate lignin structure. This basically avoids thermal damage and discoloration.'
-  - question: How does the natural oil content in mahogany affect the laser cleaning process, and are there any special precautions needed?
-    answer: 'Mahogany''s natural oils absorb the 1064 nm wavelength pretty well, so you''ll need careful fluence control around 2.5 J/cm² to avoid resinous exudation. Fairly straightforward: hold average power at 40W with a 500 mm/s scan speed to manage heat and prevent surface charring from volatile compounds.'
-  - question: Can laser cleaning be used to remove old varnish or shellac from antique mahogany furniture without altering the **wood's patina**?
-    answer: '**Preserves patina avoiding cellular damage**. Yeah, using a pretty precise 1064nm wavelength and 2.5 J/cm² fluence, laser ablation can typically strip away aged varnish selectively. This keeps the underlying mahogany''s patina intact by dodging thermal damage to the wood''s cellular structure.'
-  - question: What is the risk of causing **color change or 'bleaching'** on mahogany when using a laser cleaner, especially on high-density areas like the grain?
-    answer: '**2.5 J/cm² threshold prevents bleaching**. That 2.5 J/cm² fluence threshold is pretty critical; pushing beyond it risks photochemical bleaching, particularly on dense grain. At 1064 nm, lignin absorption often leads to fairly uneven lightening. Tight control of the 100 µm spot and 500 mm/s scan speed helps maintain original color integrity.'
-  - question: Is fume extraction different for laser cleaning mahogany compared to other woods, given its **specific VOC profile** and potential for fine particulate?
-    answer: '**Requires dual-stage HEPA filtration**. Mahogany''s higher lignin content typically generates finer particulates and fairly complex VOCs at your 2.5 J/cm² fluence. We recommend a dual-stage HEPA and activated carbon filtration system to capture these sub-micron aerosols and organic compounds effectively for operator safety.'
-  - question: How do you test and validate laser cleaning parameters on a **sample of mahogany** before working on a valuable piece?
-    answer: '**Tests for lignin disruption**. We typically kick off with test spots at a low fluence, say around 2.5 J/cm², then inspect the surface under magnification for lignin disruption. This fairly ensures a safe, repeatable protocol suited to mahogany''s unique cellular structure before tackling the full artifact.'
-  - question: What are the limitations of laser cleaning for **deeply embedded stains** or ink marks in mahogany compared to traditional chemical or mechanical methods?
-    answer: '**Limited to 100μm penetration**. Laser cleaning typically struggles with deep stains exceeding its ~100μm spot penetration. At our 2.5 J/cm² fluence threshold, deeply embedded ink basically requires complementary chemical poultices to draw contaminants into the laser''s effective removal zone.'
-  - question: After laser cleaning, does the surface of mahogany require any **special post-treatment** or conditioning before refinishing?
-    answer: '**Vacuum open grain pores**. At 2.5 J/cm², our process fairly effectively decontaminates the surface. That said, you''ll typically still need to vacuum the open grain pores for optimal adhesion when applying oil or sealant to the cleaned mahogany.'
-  - question: For laser cleaning large mahogany architectural elements (e.g., paneling, doors), what scanning strategies and **beam overlap** are recommended to ensure uniform results?
-    answer: '**Requires 30% beam overlap**. For large mahogany surfaces, apply a fairly generous 30% beam overlap and 500 mm/s scan speed to avoid tiger-striping. Pairing this with a 2.5 J/cm² fluence basically guarantees even contaminant removal, preserving the wood''s fine structure. Set robotic paths to deliver steady energy density across the full architectural feature.'
-  - question: How does the porosity and **open grain structure** of mahogany influence the laser cleaning effectiveness for dirt trapped within the pores?
-    answer: '**Requires multiple passes for pores**. Mahogany''s open grain poses a pretty tough cleaning challenge, with contaminants lodging deep in its pores. Our optimal 2.5 J/cm² fluence and 100 µm spot size effectively ablate surface grime, but multiple passes at 500 mm/s are typically needed to gently address the pore structure without subsurface thermal damage or sealing the wood''s natural texture.'
-  regulatoryStandards:
-  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    image: /images/logo/logo-org-fda.png
-    longName: Food and Drug Administration
-    name: FDA
+    alt: Mahogany microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/mahogany-laser-cleaning-micro.jpg
+micro:
+  before: At 1000x magnification, the mahogany surface shows dark spots and fine dust layers covering the wood fibers. Grime clings tightly to the uneven texture, blocking the natural grain patterns below. Contaminants create a rough, mottled appearance across the entire area.
+  after: After laser treatment at 1000x magnification, the surface reveals clear, exposed wood fibers without any residue. The grain patterns emerge smoothly, restoring the material's original even texture. Cleaning removes all visible dirt, leaving
+faq:
+- question: What are the optimal laser settings (wavelength, power, pulse duration) for cleaning soot and grime from mahogany without **damaging the wood surface**?
+  answer: '**Preserves delicate lignin structure**. For mahogany, I''d typically go with a 1064 nm wavelength at 40 W average power and 100 ns pulses. Aim for fluence around 2.5 J/cm² plus a 500 mm/s scan speed to pretty effectively remove soot while safeguarding the wood''s delicate lignin structure. This basically avoids thermal damage and discoloration.'
+- question: How does the natural oil content in mahogany affect the laser cleaning process, and are there any special precautions needed?
+  answer: 'Mahogany''s natural oils absorb the 1064 nm wavelength pretty well, so you''ll need careful fluence control around 2.5 J/cm² to avoid resinous exudation. Fairly straightforward: hold average power at 40W with a 500 mm/s scan speed to manage heat and prevent surface charring from volatile compounds.'
+- question: Can laser cleaning be used to remove old varnish or shellac from antique mahogany furniture without altering the **wood's patina**?
+  answer: '**Preserves patina avoiding cellular damage**. Yeah, using a pretty precise 1064nm wavelength and 2.5 J/cm² fluence, laser ablation can typically strip away aged varnish selectively. This keeps the underlying mahogany''s patina intact by dodging thermal damage to the wood''s cellular structure.'
+- question: What is the risk of causing **color change or 'bleaching'** on mahogany when using a laser cleaner, especially on high-density areas like the grain?
+  answer: '**2.5 J/cm² threshold prevents bleaching**. That 2.5 J/cm² fluence threshold is pretty critical; pushing beyond it risks photochemical bleaching, particularly on dense grain. At 1064 nm, lignin absorption often leads to fairly uneven lightening. Tight control of the 100 µm spot and 500 mm/s scan speed helps maintain original color integrity.'
+- question: Is fume extraction different for laser cleaning mahogany compared to other woods, given its **specific VOC profile** and potential for fine particulate?
+  answer: '**Requires dual-stage HEPA filtration**. Mahogany''s higher lignin content typically generates finer particulates and fairly complex VOCs at your 2.5 J/cm² fluence. We recommend a dual-stage HEPA and activated carbon filtration system to capture these sub-micron aerosols and organic compounds effectively for operator safety.'
+- question: How do you test and validate laser cleaning parameters on a **sample of mahogany** before working on a valuable piece?
+  answer: '**Tests for lignin disruption**. We typically kick off with test spots at a low fluence, say around 2.5 J/cm², then inspect the surface under magnification for lignin disruption. This fairly ensures a safe, repeatable protocol suited to mahogany''s unique cellular structure before tackling the full artifact.'
+- question: What are the limitations of laser cleaning for **deeply embedded stains** or ink marks in mahogany compared to traditional chemical or mechanical methods?
+  answer: '**Limited to 100μm penetration**. Laser cleaning typically struggles with deep stains exceeding its ~100μm spot penetration. At our 2.5 J/cm² fluence threshold, deeply embedded ink basically requires complementary chemical poultices to draw contaminants into the laser''s effective removal zone.'
+- question: After laser cleaning, does the surface of mahogany require any **special post-treatment** or conditioning before refinishing?
+  answer: '**Vacuum open grain pores**. At 2.5 J/cm², our process fairly effectively decontaminates the surface. That said, you''ll typically still need to vacuum the open grain pores for optimal adhesion when applying oil or sealant to the cleaned mahogany.'
+- question: For laser cleaning large mahogany architectural elements (e.g., paneling, doors), what scanning strategies and **beam overlap** are recommended to ensure uniform results?
+  answer: '**Requires 30% beam overlap**. For large mahogany surfaces, apply a fairly generous 30% beam overlap and 500 mm/s scan speed to avoid tiger-striping. Pairing this with a 2.5 J/cm² fluence basically guarantees even contaminant removal, preserving the wood''s fine structure. Set robotic paths to deliver steady energy density across the full architectural feature.'
+- question: How does the porosity and **open grain structure** of mahogany influence the laser cleaning effectiveness for dirt trapped within the pores?
+  answer: '**Requires multiple passes for pores**. Mahogany''s open grain poses a pretty tough cleaning challenge, with contaminants lodging deep in its pores. Our optimal 2.5 J/cm² fluence and 100 µm spot size effectively ablate surface grime, but multiple passes at 500 mm/s are typically needed to gently address the pore structure without subsurface thermal damage or sealing the wood''s natural texture.'
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+- description: EPA Clean Air Act Compliance
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+  name: Unknown
+  url: ''
+- description: CITES Regulations for Sustainable Mahogany Use
+  image: /images/logo/logo-org-generic.png
+  longName: Unknown Organization
+  name: Unknown
+  url: ''
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    fractureToughness:
+      value: 0.35
+      unit: MPa√m
+      source: ai_research
+      min: 0.26
+      max: 2
+    youngsModulus:
+      value: 9
+      unit: GPa
+      source: ai_research
+      min: 3.3
+      max: 11235
+    oxidationResistance:
+      value: 0.78
+      unit: dimensionless (relative resistance index)
+      source: ai_research
+      min: 0.1
+      max: 549
+    density:
+      value: 560
+      unit: kg/m³
+      source: ai_research
+      min: 0.4
+      max: 955
+    hardness:
+      value: 3558
+      unit: N
+      source: ai_research
+      min: 399
+      max: 12590
+    corrosionResistance:
+      value: 0.85
+      unit: dimensionless (durability index)
+      source: ai_research
+      min: 0
+      max: 4.7
+    compressiveStrength:
+      value: 47.5
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 80
+    flexuralStrength:
+      value: 82.7
+      unit: MPa
+      source: ai_research
+      min: 19.1
+      max: 148
+    tensileStrength:
+      value: 96.5
+      unit: MPa
+      source: ai_research
+      min: 9.5
+      max: 209
+    porosity:
+      value: 0.67
+      unit: fraction
+      source: ai_research
+      min: 0.39
+      max: 0.79
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Tropical Hardwoods Including Mahogany
+      citation: 'Hernandez-Canon et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028374'
+      context: Kiln-dried Mahogany (Swietenia macrophylla, density 590 kg/m³), 20°C, 1064 nm Nd:YAG laser, 10 ns pulse duration, normal incidence
+      researched_date: '2025-11-24T12:01:32.618959'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 553
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1340
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.11
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '4.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: '2.1e+06'
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptivity:
+      value: 0.9
+      unit: dimensionless
+      min: 0.8
+      max: 0.95
+      source: ai_research
+    absorptionCoefficient:
+      value: 50000
+      unit: m⁻¹
+      min: 10000
+      max: 100000
+      source: ai_research
+    laserDamageThreshold:
+      value: 3
+      unit: J/cm²
+      min: 1
+      max: 5
+      source: ai_research
+    thermalShockResistance:
+      value: 1.5
+      unit: MW/m
+      min: 0.5
+      max: 3
+      source: ai_research
+    reflectivity:
+      value: 0.1
+      unit: dimensionless
+      min: 0.05
+      max: 0.2
+      source: ai_research
+    thermalDestructionPoint:
+      value: 500
+      unit: K
+      min: 450
+      max: 550
+      source: ai_research
+    vaporPressure:
+      value: 500
+      unit: Pa
+      min: 100
+      max: 1000
+      source: ai_research
+    thermalDestruction:
+      value: 553
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1340
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.11
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '4.8e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: '2.1e+06'
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.4e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: 'Laser Ablation of Tropical Hardwoods: Threshold Fluence for Mahogany (Swietenia macrophylla)'
+      citation: 'Hernandez-Ceron et al., Optics and Lasers in Engineering, 2018, DOI: 10.1016/j.optlastec.2017.11.012'
+      context: Natural Mahogany wood (Swietenia macrophylla, density 0.55 g/cm³), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:01:41.235063'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
     url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
-    url: https://webstore.iec.ch/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  - description: EPA Clean Air Act Compliance
-    image: /images/logo/logo-org-generic.png
-    longName: Unknown Organization
-    name: Unknown
-    url: ''
-  - description: CITES Regulations for Sustainable Mahogany Use
-    image: /images/logo/logo-org-generic.png
-    longName: Unknown Organization
-    name: Unknown
-    url: ''
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      percentage: 40.0
-      fractureToughness:
-        value: 0.35
-        unit: MPa√m
-        source: ai_research
-        min: 0.26
-        max: 2
-      youngsModulus:
-        value: 9
-        unit: GPa
-        source: ai_research
-        min: 3.3
-        max: 11235
-      oxidationResistance:
-        value: 0.78
-        unit: dimensionless (relative resistance index)
-        source: ai_research
-        min: 0.1
-        max: 549
-      density:
-        value: 560
-        unit: kg/m³
-        source: ai_research
-        min: 0.4
-        max: 955
-      hardness:
-        value: 3558
-        unit: N
-        source: ai_research
-        min: 399
-        max: 12590
-      corrosionResistance:
-        value: 0.85
-        unit: dimensionless (durability index)
-        source: ai_research
-        min: 0
-        max: 4.7
-      compressiveStrength:
-        value: 47.5
-        unit: MPa
-        source: ai_research
-        min: 20
-        max: 80
-      flexuralStrength:
-        value: 82.7
-        unit: MPa
-        source: ai_research
-        min: 19.1
-        max: 148
-      tensileStrength:
-        value: 96.5
-        unit: MPa
-        source: ai_research
-        min: 9.5
-        max: 209
-      porosity:
-        value: 0.67
-        unit: fraction
-        source: ai_research
-        min: 0.39
-        max: 0.79
-      laserDamageThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: scientific_literature
-        source_type: journal_article
-        source_name: Laser Ablation Thresholds for Tropical Hardwoods Including Mahogany
-        citation: 'Hernandez-Canon et al., Journal of Applied Physics, 2018, DOI: 10.1063/1.5028374'
-        context: Kiln-dried Mahogany (Swietenia macrophylla, density 590 kg/m³), 20°C, 1064 nm Nd:YAG laser, 10 ns pulse duration, normal incidence
-        researched_date: '2025-11-24T12:01:32.618959'
-        needs_validation: true
-        min: '0.0025'
-        max: 5.4
-      thermalDestruction:
-        value: 553
-        unit: K
-        source: ai_research
-        min: 226
-        max: 642
-      specificHeat:
-        value: 1340
-        unit: J/(kg·K)
-        source: ai_research
-        min: 1.3
-        max: 1554
-      laserReflectivity:
-        value: 0.11
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.44
-      thermalConductivity:
-        value: 0.15
-        unit: W/m·K
-        source: ai_research
-        min: 0.04
-        max: 0.4
-      thermalExpansion:
-        value: '4.8e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 1e-06
-        max: '5.8e-05'
-      laserAbsorption:
-        value: '2.1e+06'
-        unit: m^{-1}
-        source: ai_research
-        min: 0.78
-        max: 336000
-      thermalDiffusivity:
-        value: '1.4e-07'
-        unit: m²/s
-        source: ai_research
-        min: 0
-        max: 0
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      percentage: 40.0
-      absorptivity:
-        value: 0.9
-        unit: dimensionless
-        min: 0.8
-        max: 0.95
-        source: ai_research
-      absorptionCoefficient:
-        value: 50000
-        unit: m⁻¹
-        min: 10000
-        max: 100000
-        source: ai_research
-      laserDamageThreshold:
-        value: 3
-        unit: J/cm²
-        min: 1
-        max: 5
-        source: ai_research
-      thermalShockResistance:
-        value: 1.5
-        unit: MW/m
-        min: 0.5
-        max: 3
-        source: ai_research
-      reflectivity:
-        value: 0.1
-        unit: dimensionless
-        min: 0.05
-        max: 0.2
-        source: ai_research
-      thermalDestructionPoint:
-        value: 500
-        unit: K
-        min: 450
-        max: 550
-        source: ai_research
-      vaporPressure:
-        value: 500
-        unit: Pa
-        min: 100
-        max: 1000
-        source: ai_research
-      thermalDestruction:
-        value: 553
-        unit: K
-        source: ai_research
-        min: 226
-        max: 642
-      specificHeat:
-        value: 1340
-        unit: J/(kg·K)
-        source: ai_research
-        min: 1.3
-        max: 1554
-      laserReflectivity:
-        value: 0.11
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.44
-      thermalConductivity:
-        value: 0.15
-        unit: W/m·K
-        source: ai_research
-        min: 0.04
-        max: 0.4
-      thermalExpansion:
-        value: '4.8e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 1e-06
-        max: '5.8e-05'
-      laserAbsorption:
-        value: '2.1e+06'
-        unit: m^{-1}
-        source: ai_research
-        min: 0.78
-        max: 336000
-      thermalDiffusivity:
-        value: '1.4e-07'
-        unit: m²/s
-        source: ai_research
-        min: 0
-        max: 0
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: scientific_literature
-        source_type: journal_article
-        source_name: 'Laser Ablation of Tropical Hardwoods: Threshold Fluence for Mahogany (Swietenia macrophylla)'
-        citation: 'Hernandez-Ceron et al., Optics and Lasers in Engineering, 2018, DOI: 10.1016/j.optlastec.2017.11.012'
-        context: Natural Mahogany wood (Swietenia macrophylla, density 0.55 g/cm³), room temperature (25°C), 1064 nm Nd:YAG laser, 10 ns pulse duration, atmospheric pressure
-        researched_date: '2025-11-24T12:01:41.235063'
-        needs_validation: true
-        min: 0.51
-        max: 2.6
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    isBasedOn:
-      name: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  material_metadata:
-    regulatoryStandards:
-    - EPA Clean Air Act Compliance
-    - CITES Regulations for Sustainable Mahogany Use
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 1
-      estimatedHoursTypical: 3
-      targetContaminants:
-      - Char and weathering
-      - Paint and finish
-      - Stain removal
-      - Surface contamination
-      notes: Careful power control to avoid charring
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:30.761557'
+material_metadata:
+  regulatoryStandards:
+  - EPA Clean Air Act Compliance
+  - CITES Regulations for Sustainable Mahogany Use
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 1
+    estimatedHoursTypical: 3
+    targetContaminants:
+    - Char and weathering
+    - Paint and finish
+    - Stain removal
+    - Surface contamination
+    notes: Careful power control to avoid charring
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:01.624542'

@@ -1,347 +1,346 @@
-metadata:
-  name: Walnut
-  slug: walnut
-  category: wood
-  subcategory: hardwood
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: material
-  title: Walnut Laser Cleaning
-  material_description: I've found walnut stands out from denser hardwoods by providing lighter weight alongside solid strength, which lets it excel in varied applications like musical instruments and fine architecture.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Wood
-    href: /materials/wood
-  - label: Hardwood
-    href: /materials/wood/hardwood
-  - label: Walnut
-    href: /materials/wood/hardwood/walnut
-  images:
-    hero:
-      alt: Walnut surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/walnut-laser-cleaning-hero.jpg
-    micro:
-      alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
-      url: /images/material/walnut-laser-cleaning-micro.jpg
+name: Walnut
+slug: walnut
+category: wood
+subcategory: hardwood
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Walnut Laser Cleaning
+material_description: I've found walnut stands out from denser hardwoods by providing lighter weight alongside solid strength, which lets it excel in varied applications like musical instruments and fine architecture.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Wood
+  href: /materials/wood
+- label: Hardwood
+  href: /materials/wood/hardwood
+- label: Walnut
+  href: /materials/wood/hardwood/walnut
+images:
+  hero:
+    alt: Walnut surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/walnut-laser-cleaning-hero.jpg
   micro:
-    before: I've examined the walnut surface at high magnification before any treatment. Dark specks and uneven buildup cover the fibers completely. Grime clogs the tiny pores, making everything look dull and rough.
-    after: After the laser passes over it, the walnut surface transforms noticeably. Fibers stand out clear and smooth without any residue. Pores open up wide, revealing a fresh and even texture.
-  faq:
-  - question: What laser power settings are recommended for cleaning **walnut shell residues** from aerospace components without damaging underlying alloys?
-    answer: '**Low fluence minimizes lignin damage**. For removing walnut shell residues from aerospace alloys, I recommend a 1064 nm wavelength laser operating at 40 W average power, with 100 ns pulses and 20 kHz repetition rate. Specifically, maintain fluence under 2.5 J/cm² to ablate organic contaminants effectively without harming the metal substrate, while scanning at 500 mm/s across two passes. Thus, this configuration limits thermal damage to the walnut''s lignin structure.'
-  - question: How effective is fiber laser cleaning at removing **walnut media** from painted surfaces compared to traditional abrasive methods?
-    answer: '**98% removal preserves wood grain**. Fiber lasers notably excel in stripping walnut shell media from painted surfaces, delivering 98% residue removal across two passes at 2.5 J/cm² fluence and 500 mm/s speed, all while safeguarding delicate wood grain from abrasion damage. On Reddit''s r/LaserCutting, users particularly favor this non-contact precision compared to gritty blasting, which can erode paint and leave incomplete cleanup; thus, lasers necessitate precise thermal management to prevent charring.'
-  - question: What safety precautions should be taken when using lasers to clean walnut wood furniture to avoid toxic fume release from natural oils?
-    answer: For laser cleaning walnut furniture at a 1064 nm wavelength and 2.5 J/cm² fluence, particularly prioritize robust local exhaust ventilation to capture vapors from its natural oils, adhering to OSHA guidelines limiting wood dust exposure under 5 mg/m³. Wear NIOSH-approved respirators, gloves, and laser-safety goggles; thus, restoration training emphasizes avoiding charring to minimize toxic emissions.
-  - question: Can CO2 lasers be used to strip **walnut shell blasting media** from delicate electronics without static buildup?
-    answer: '**Fiber lasers minimize ESD risk**. CO2 lasers operating at 10.6 μm particularly excel in ablating organic walnut shell media through strong absorption, yet they risk damaging delicate electronics via excess heat—thus, limit fluences to under 2.5 J/cm² at 40 W power. Notably, for minimal ESD, fiber lasers at 1064 nm prove safer, as IPG indicates, by avoiding static buildup on sensitive components.'
-  - question: What are the common issues with laser cleaning walnut hulls from turbine blades, such as incomplete removal or **surface pitting**?
-    answer: '**Fibrous lignin causes residues**. Incomplete removal of walnut hulls from turbine blades particularly happens when fluence falls below 2.5 J/cm², leaving residues tied to the wood''s fibrous lignin structure. Surface pitting, by contrast, stems from overheating at powers exceeding 40 W, which chars the hulls unevenly. Thus, optimize using 500 mm/s scan speed and 50% overlap for clean, pit-free results.'
-  - question: How does the **moisture content** in walnut shells affect the efficiency of laser ablation during surface preparation?
-    answer: '**Enhances ablation via steam vaporization**. Walnut shells, notably hygroscopic, absorb moisture to boost laser ablation efficiency through steam vaporization at 2.5 J/cm² fluence, accelerating contaminant removal. However, excess water can cause thermal cracking; thus, dry samples beforehand and apply 40 W power at 500 mm/s scan speed for precise, damage-free processing.'
-  - question: Are there regulatory standards for laser cleaning **walnut residues** in food processing equipment to ensure no contamination remains?
-    answer: '**Ablates without charring traces**. Yes, FDA''s 21 CFR 177 standards particularly require food equipment to be residue-free after cleaning walnut contaminants. Employing 1064 nm lasers at 2.5 J/cm² fluence effectively ablates residues from surfaces without charring or traces, thus supporting ISO 22000 food safety compliance.'
-  - question: What training is required for operators using lasers to clean **walnut media** from molds in injection molding applications?
-    answer: '**Prevents walnut charring**. Operators require laser safety certification from organizations like the Laser Institute of America, which specifically covers setup for 1064 nm wavelength systems and fluence monitoring below 2.5 J/cm² to avoid walnut charring in mold cleaning. Notably, training focuses on preventing errors, including consistent 500 mm/s scan speeds for even walnut media removal without substrate harm in injection molding.'
-  - question: How do the chemical properties of walnut shells, like their **lignin content**, influence laser-induced thermal effects during cleaning?
-    answer: '**Boosts absorption, lowers ablation threshold**. Notably, walnut shells'' high lignin content enhances absorption of 1064 nm laser light, thereby increasing thermal buildup and reducing the ablation threshold to 2.5 J/cm² for contaminant removal. This trait specifically calls for precise fluence management to avoid charring the wood substrate. At 40 W power, cleaning remains effective without undue heat damage.'
-  regulatoryStandards:
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
-    url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
-    url: https://webstore.iec.ch/en/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
+    url: /images/material/walnut-laser-cleaning-micro.jpg
+micro:
+  before: I've examined the walnut surface at high magnification before any treatment. Dark specks and uneven buildup cover the fibers completely. Grime clogs the tiny pores, making everything look dull and rough.
+  after: After the laser passes over it, the walnut surface transforms noticeably. Fibers stand out clear and smooth without any residue. Pores open up wide, revealing a fresh and even texture.
+faq:
+- question: What laser power settings are recommended for cleaning **walnut shell residues** from aerospace components without damaging underlying alloys?
+  answer: '**Low fluence minimizes lignin damage**. For removing walnut shell residues from aerospace alloys, I recommend a 1064 nm wavelength laser operating at 40 W average power, with 100 ns pulses and 20 kHz repetition rate. Specifically, maintain fluence under 2.5 J/cm² to ablate organic contaminants effectively without harming the metal substrate, while scanning at 500 mm/s across two passes. Thus, this configuration limits thermal damage to the walnut''s lignin structure.'
+- question: How effective is fiber laser cleaning at removing **walnut media** from painted surfaces compared to traditional abrasive methods?
+  answer: '**98% removal preserves wood grain**. Fiber lasers notably excel in stripping walnut shell media from painted surfaces, delivering 98% residue removal across two passes at 2.5 J/cm² fluence and 500 mm/s speed, all while safeguarding delicate wood grain from abrasion damage. On Reddit''s r/LaserCutting, users particularly favor this non-contact precision compared to gritty blasting, which can erode paint and leave incomplete cleanup; thus, lasers necessitate precise thermal management to prevent charring.'
+- question: What safety precautions should be taken when using lasers to clean walnut wood furniture to avoid toxic fume release from natural oils?
+  answer: For laser cleaning walnut furniture at a 1064 nm wavelength and 2.5 J/cm² fluence, particularly prioritize robust local exhaust ventilation to capture vapors from its natural oils, adhering to OSHA guidelines limiting wood dust exposure under 5 mg/m³. Wear NIOSH-approved respirators, gloves, and laser-safety goggles; thus, restoration training emphasizes avoiding charring to minimize toxic emissions.
+- question: Can CO2 lasers be used to strip **walnut shell blasting media** from delicate electronics without static buildup?
+  answer: '**Fiber lasers minimize ESD risk**. CO2 lasers operating at 10.6 μm particularly excel in ablating organic walnut shell media through strong absorption, yet they risk damaging delicate electronics via excess heat—thus, limit fluences to under 2.5 J/cm² at 40 W power. Notably, for minimal ESD, fiber lasers at 1064 nm prove safer, as IPG indicates, by avoiding static buildup on sensitive components.'
+- question: What are the common issues with laser cleaning walnut hulls from turbine blades, such as incomplete removal or **surface pitting**?
+  answer: '**Fibrous lignin causes residues**. Incomplete removal of walnut hulls from turbine blades particularly happens when fluence falls below 2.5 J/cm², leaving residues tied to the wood''s fibrous lignin structure. Surface pitting, by contrast, stems from overheating at powers exceeding 40 W, which chars the hulls unevenly. Thus, optimize using 500 mm/s scan speed and 50% overlap for clean, pit-free results.'
+- question: How does the **moisture content** in walnut shells affect the efficiency of laser ablation during surface preparation?
+  answer: '**Enhances ablation via steam vaporization**. Walnut shells, notably hygroscopic, absorb moisture to boost laser ablation efficiency through steam vaporization at 2.5 J/cm² fluence, accelerating contaminant removal. However, excess water can cause thermal cracking; thus, dry samples beforehand and apply 40 W power at 500 mm/s scan speed for precise, damage-free processing.'
+- question: Are there regulatory standards for laser cleaning **walnut residues** in food processing equipment to ensure no contamination remains?
+  answer: '**Ablates without charring traces**. Yes, FDA''s 21 CFR 177 standards particularly require food equipment to be residue-free after cleaning walnut contaminants. Employing 1064 nm lasers at 2.5 J/cm² fluence effectively ablates residues from surfaces without charring or traces, thus supporting ISO 22000 food safety compliance.'
+- question: What training is required for operators using lasers to clean **walnut media** from molds in injection molding applications?
+  answer: '**Prevents walnut charring**. Operators require laser safety certification from organizations like the Laser Institute of America, which specifically covers setup for 1064 nm wavelength systems and fluence monitoring below 2.5 J/cm² to avoid walnut charring in mold cleaning. Notably, training focuses on preventing errors, including consistent 500 mm/s scan speeds for even walnut media removal without substrate harm in injection molding.'
+- question: How do the chemical properties of walnut shells, like their **lignin content**, influence laser-induced thermal effects during cleaning?
+  answer: '**Boosts absorption, lowers ablation threshold**. Notably, walnut shells'' high lignin content enhances absorption of 1064 nm laser light, thereby increasing thermal buildup and reducing the ablation threshold to 2.5 J/cm² for contaminant removal. This trait specifically calls for precise fluence management to avoid charring the wood substrate. At 40 W power, cleaning remains effective without undue heat damage.'
+regulatoryStandards:
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/en/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    youngsModulus:
+      value: 10.1
+      unit: GPa
+      source: ai_research
+      min: 3.3
+      max: 11235
+    oxidationResistance:
+      value: 573
+      unit: K
+      source: ai_research
+      min: 0.1
+      max: 549
+    density:
+      value: 610
+      unit: kg/m³
+      source: ai_research
+      min: 0.4
+      max: 955
+    hardness:
+      value: 4494
+      unit: N
+      source: ai_research
+      min: 399
+      max: 12590
+    corrosionResistance:
+      value: 0.72
+      unit: dimensionless
+      source: ai_research
+      min: 0
+      max: 4.7
+    compressiveStrength:
+      value: 52.2
+      unit: MPa
+      source: ai_research
+      min: 20
+      max: 80
+    flexuralStrength:
+      value: 96.5
+      unit: MPa
+      source: ai_research
+      min: 19.1
+      max: 148
+    tensileStrength:
+      value: 82.3
+      unit: MPa
+      source: ai_research
+      min: 9.5
+      max: 209
+    fractureToughness:
+      value: 0.38
+      unit: MPa m^{1/2}
+      source: ai_research
+      min: 0.26
+      max: 2
+    porosity:
+      value: 0.63
+      unit: ''
+      source: ai_research
+      min: 0.39
+      max: 0.79
+    percentage: 60.0
+    laserDamageThreshold:
+      value: 4.8
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Threshold fluences for laser cleaning of walnut wood
+      citation: 'Vazquez, E., et al., Journal of Laser Applications, Vol. 27, No. 2, 2015, DOI: 10.2351/1.4907852'
+      context: Dry walnut wood (Juglans spp., 8% moisture content), 25°C, measured with Q-switched Nd:YAG laser at 1064 nm, 7 ns pulse duration, atmospheric pressure
+      researched_date: '2025-11-24T12:29:22.375154'
+      needs_validation: true
+      min: '0.0025'
+      max: 5.4
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.09
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 420000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptivity:
+      value: 0.85
+      unit: dimensionless
+      min: 0.7
+      max: 0.95
+      source: ai_research
+    absorptionCoefficient:
+      value: 500000
+      unit: m⁻¹
+      min: 100000
+      max: 1e+06
+      source: ai_research
+    laserDamageThreshold:
+      value: 3.5
+      unit: J/cm²
+      min: 1
+      max: 10
+      source: ai_research
+    thermalShockResistance:
+      value: 1.2
+      unit: MW/m
+      min: 0.5
+      max: 2.5
+      source: ai_research
+    reflectivity:
+      value: 0.15
+      unit: dimensionless
+      min: 0.05
+      max: 0.3
+      source: ai_research
+    thermalDestructionPoint:
+      value: 523
+      unit: K
+      min: 473
+      max: 673
+      source: ai_research
+    vaporPressure:
+      value: 500
+      unit: Pa
+      min: 100
+      max: 2000
+      source: ai_research
+    thermalDestruction:
+      value: 623
+      unit: K
+      source: ai_research
+      min: 226
+      max: 642
+    specificHeat:
+      value: 1380
+      unit: J/(kg·K)
+      source: ai_research
+      min: 1.3
+      max: 1554
+    laserReflectivity:
+      value: 0.09
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: 0.44
+    thermalConductivity:
+      value: 0.15
+      unit: W/m·K
+      source: ai_research
+      min: 0.04
+      max: 0.4
+    thermalExpansion:
+      value: '3.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 1e-06
+      max: '5.8e-05'
+    laserAbsorption:
+      value: 420000
+      unit: m^{-1}
+      source: ai_research
+      min: 0.78
+      max: 336000
+    thermalDiffusivity:
+      value: '1.3e-07'
+      unit: m²/s
+      source: ai_research
+      min: 0
+      max: 0
+    ablationThreshold:
+      value: 1.1
+      unit: J/cm²
+      source: scientific_literature
+      source_type: journal_article
+      source_name: Laser Ablation Thresholds for Different Wood Species
+      citation: 'Panzner et al., Applied Physics A: Materials Science & Processing, 1998, DOI: 10.1007/s003390050456'
+      context: Black walnut (Juglans nigra) heartwood, oven-dried (0% moisture), 25°C, measured with 1064 nm Nd:YAG nanosecond pulsed laser (10 ns pulse duration), perpendicular incidence
+      researched_date: '2025-11-24T12:29:28.625567'
+      needs_validation: true
+      min: 0.51
+      max: 2.6
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - IEC 60825 - Safety of Laser Products
+  isBasedOn:
+    name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
     url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      youngsModulus:
-        value: 10.1
-        unit: GPa
-        source: ai_research
-        min: 3.3
-        max: 11235
-      oxidationResistance:
-        value: 573
-        unit: K
-        source: ai_research
-        min: 0.1
-        max: 549
-      density:
-        value: 610
-        unit: kg/m³
-        source: ai_research
-        min: 0.4
-        max: 955
-      hardness:
-        value: 4494
-        unit: N
-        source: ai_research
-        min: 399
-        max: 12590
-      corrosionResistance:
-        value: 0.72
-        unit: dimensionless
-        source: ai_research
-        min: 0
-        max: 4.7
-      compressiveStrength:
-        value: 52.2
-        unit: MPa
-        source: ai_research
-        min: 20
-        max: 80
-      flexuralStrength:
-        value: 96.5
-        unit: MPa
-        source: ai_research
-        min: 19.1
-        max: 148
-      tensileStrength:
-        value: 82.3
-        unit: MPa
-        source: ai_research
-        min: 9.5
-        max: 209
-      fractureToughness:
-        value: 0.38
-        unit: MPa m^{1/2}
-        source: ai_research
-        min: 0.26
-        max: 2
-      porosity:
-        value: 0.63
-        unit: ''
-        source: ai_research
-        min: 0.39
-        max: 0.79
-      percentage: 60.0
-      laserDamageThreshold:
-        value: 4.8
-        unit: J/cm²
-        source: scientific_literature
-        source_type: journal_article
-        source_name: Threshold fluences for laser cleaning of walnut wood
-        citation: 'Vazquez, E., et al., Journal of Laser Applications, Vol. 27, No. 2, 2015, DOI: 10.2351/1.4907852'
-        context: Dry walnut wood (Juglans spp., 8% moisture content), 25°C, measured with Q-switched Nd:YAG laser at 1064 nm, 7 ns pulse duration, atmospheric pressure
-        researched_date: '2025-11-24T12:29:22.375154'
-        needs_validation: true
-        min: '0.0025'
-        max: 5.4
-      thermalDestruction:
-        value: 623
-        unit: K
-        source: ai_research
-        min: 226
-        max: 642
-      specificHeat:
-        value: 1380
-        unit: J/(kg·K)
-        source: ai_research
-        min: 1.3
-        max: 1554
-      laserReflectivity:
-        value: 0.09
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.44
-      thermalConductivity:
-        value: 0.15
-        unit: W/m·K
-        source: ai_research
-        min: 0.04
-        max: 0.4
-      thermalExpansion:
-        value: '3.5e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 1e-06
-        max: '5.8e-05'
-      laserAbsorption:
-        value: 420000
-        unit: m^{-1}
-        source: ai_research
-        min: 0.78
-        max: 336000
-      thermalDiffusivity:
-        value: '1.3e-07'
-        unit: m²/s
-        source: ai_research
-        min: 0
-        max: 0
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      percentage: 40.0
-      absorptivity:
-        value: 0.85
-        unit: dimensionless
-        min: 0.7
-        max: 0.95
-        source: ai_research
-      absorptionCoefficient:
-        value: 500000
-        unit: m⁻¹
-        min: 100000
-        max: 1e+06
-        source: ai_research
-      laserDamageThreshold:
-        value: 3.5
-        unit: J/cm²
-        min: 1
-        max: 10
-        source: ai_research
-      thermalShockResistance:
-        value: 1.2
-        unit: MW/m
-        min: 0.5
-        max: 2.5
-        source: ai_research
-      reflectivity:
-        value: 0.15
-        unit: dimensionless
-        min: 0.05
-        max: 0.3
-        source: ai_research
-      thermalDestructionPoint:
-        value: 523
-        unit: K
-        min: 473
-        max: 673
-        source: ai_research
-      vaporPressure:
-        value: 500
-        unit: Pa
-        min: 100
-        max: 2000
-        source: ai_research
-      thermalDestruction:
-        value: 623
-        unit: K
-        source: ai_research
-        min: 226
-        max: 642
-      specificHeat:
-        value: 1380
-        unit: J/(kg·K)
-        source: ai_research
-        min: 1.3
-        max: 1554
-      laserReflectivity:
-        value: 0.09
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: 0.44
-      thermalConductivity:
-        value: 0.15
-        unit: W/m·K
-        source: ai_research
-        min: 0.04
-        max: 0.4
-      thermalExpansion:
-        value: '3.5e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 1e-06
-        max: '5.8e-05'
-      laserAbsorption:
-        value: 420000
-        unit: m^{-1}
-        source: ai_research
-        min: 0.78
-        max: 336000
-      thermalDiffusivity:
-        value: '1.3e-07'
-        unit: m²/s
-        source: ai_research
-        min: 0
-        max: 0
-      ablationThreshold:
-        value: 1.1
-        unit: J/cm²
-        source: scientific_literature
-        source_type: journal_article
-        source_name: Laser Ablation Thresholds for Different Wood Species
-        citation: 'Panzner et al., Applied Physics A: Materials Science & Processing, 1998, DOI: 10.1007/s003390050456'
-        context: Black walnut (Juglans nigra) heartwood, oven-dried (0% moisture), 25°C, measured with 1064 nm Nd:YAG nanosecond pulsed laser (10 ns pulse duration), perpendicular incidence
-        researched_date: '2025-11-24T12:29:28.625567'
-        needs_validation: true
-        min: 0.51
-        max: 2.6
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    isBasedOn:
-      name: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  material_metadata:
-    last_updated: '2025-10-27T23:48:40.922989Z'
-    normalization_applied: true
-    normalization_date: '2025-10-27T23:48:40.922995Z'
-    structure_version: '2.0'
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 1
-      estimatedHoursTypical: 3
-      targetContaminants:
-      - Char and weathering
-      - Paint and finish
-      - Stain removal
-      - Surface contamination
-      notes: Careful power control to avoid charring
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:33.412140'
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922989Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922995Z'
+  structure_version: '2.0'
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 1
+    estimatedHoursTypical: 3
+    targetContaminants:
+    - Char and weathering
+    - Paint and finish
+    - Stain removal
+    - Surface contamination
+    notes: Careful power control to avoid charring
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:03.586492'

@@ -1,135 +1,134 @@
-metadata:
-  name: Boron Nitride
-  slug: boron-nitride
-  category: ceramic
-  subcategory: technical
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  title: Boron Nitride Laser Cleaning Settings
-  settings_description:
-    before: Before laser cleaning, Boron Nitride surfaces require careful parameter selection
-    after: After cleaning, Boron Nitride surfaces show restored appearance with controlled parameters
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Ceramic
-    href: /materials/ceramic
-  - label: Technical
-    href: /materials/ceramic/technical
-  - label: Boron Nitride
-    href: /materials/boron-nitride
-  images:
-    hero:
-      alt: Boron Nitride surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/boron-nitride-laser-cleaning-hero.jpg
-    micro:
-      alt: Boron Nitride microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/boron-nitride-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      value: 80
-      unit: W
-      min: 1
-      max: 120
-    wavelength:
-      value: 1064
-      unit: nm
-      min: 355
-      max: 10640
-    spotSize:
-      value: 50
-      unit: μm
-      min: 0.1
-      max: 500
-    repetitionRate:
-      value: 50
-      unit: kHz
-      min: 1
-      max: 200
-    energyDensity:
-      value: 2
-      unit: J/cm²
-      min: 0.1
-      max: 20
-    pulseWidth:
-      value: 10
-      unit: ns
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      value: 500
-      unit: mm/s
-      min: 10
-      max: 5000
-    passCount:
-      value: 3
-      unit: passes
-      min: 1
-      max: 10
-    overlapRatio:
-      value: 50
-      unit: '%'
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 15.5
-      unit: mm²/s
-    thermalConductivity:
-      value: 29.3
-      unit: W/(m·K)
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 15.2
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.2
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 1.44
-      max: 12.16
-      unit: J/cm²
-    reflectivity:
-      value: 0.92
-      wavelength: 1064
-  material_challenges:
-  - Requires careful power calibration to prevent material damage
-  - Monitor surface temperature during processing
-  - Verify cleaning effectiveness through inspection
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:34.015994'
+name: Boron Nitride
+slug: boron-nitride
+category: ceramic
+subcategory: technical
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+title: Boron Nitride Laser Cleaning Settings
+settings_description:
+  before: Before laser cleaning, Boron Nitride surfaces require careful parameter selection
+  after: After cleaning, Boron Nitride surfaces show restored appearance with controlled parameters
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Ceramic
+  href: /materials/ceramic
+- label: Technical
+  href: /materials/ceramic/technical
+- label: Boron Nitride
+  href: /materials/boron-nitride
+images:
+  hero:
+    alt: Boron Nitride surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/boron-nitride-laser-cleaning-hero.jpg
+  micro:
+    alt: Boron Nitride microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/boron-nitride-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    value: 80
+    unit: W
+    min: 1
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    min: 355
+    max: 10640
+  spotSize:
+    value: 50
+    unit: μm
+    min: 0.1
+    max: 500
+  repetitionRate:
+    value: 50
+    unit: kHz
+    min: 1
+    max: 200
+  energyDensity:
+    value: 2
+    unit: J/cm²
+    min: 0.1
+    max: 20
+  pulseWidth:
+    value: 10
+    unit: ns
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    min: 10
+    max: 5000
+  passCount:
+    value: 3
+    unit: passes
+    min: 1
+    max: 10
+  overlapRatio:
+    value: 50
+    unit: '%'
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 15.5
+    unit: mm²/s
+  thermalConductivity:
+    value: 29.3
+    unit: W/(m·K)
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 15.2
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.44
+    max: 12.16
+    unit: J/cm²
+  reflectivity:
+    value: 0.92
+    wavelength: 1064
+material_challenges:
+- Requires careful power calibration to prevent material damage
+- Monitor surface temperature during processing
+- Verify cleaning effectiveness through inspection
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:04.138443'

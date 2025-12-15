@@ -1,185 +1,184 @@
-metadata:
-  name: Cement
-  slug: cement
-  category: masonry
-  subcategory: general
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  title: Cement Laser Cleaning Settings
-  settings_description: When laser cleaning cement, the key property to lead with is its brittleness compared to tougher masonry like stone. This makes it prone to cracking under heat, unlike denser bricks that hold up better. I've seen surfaces chip easily if you push too hard. So, start slow with gentle pulses to loosen grime without stressing the matrix. Tends to clean cleanly once you avoid over-heating the pores mid-pass. Adjust overlap minimally to prevent uneven wear.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Masonry
-    href: /materials/masonry
-  - label: General
-    href: /materials/masonry/general
-  - label: Cement
-    href: /materials/cement
-  images:
-    hero:
-      alt: Cement surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/cement-laser-cleaning-hero.jpg
-    micro:
-      alt: Cement microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/cement-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: mm
-      value: 0.2
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    energyDensity:
-      unit: J/cm²
-      value: 3.2
-      min: 0.1
-      max: 20
-    pulseWidth:
-      unit: ns
-      value: 12
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 2
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 0.526
-      unit: mm²/s
-    thermalConductivity:
-      value: 0.72
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1000
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 8
-      unit: J/cm²
-    ablationThreshold:
-      value: 2.1
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 2.52
-      max: 6.4
-      unit: J/cm²
-    thermalShockResistance:
-      value: 1.5
-      unit: K
-    reflectivity:
-      value: 0.35
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: Moisture-induced spalling and explosive failure
-      severity: critical
-      threshold_temperature: Steam formation >100°C with trapped moisture
-      impact: Trapped moisture converts to steam causing explosive surface spalling
-      solutions:
-      - Test moisture content before cleaning (>5% moisture requires drying)
-      - Use pulse mode with 10-15 second cooling for wet materials
-      - Reduce power by 50-60% for damp masonry
-      - Allow 24-48 hours drying after rain before laser cleaning
-      - Monitor for popping sounds or surface lifting; stop immediately
-    - challenge: Low thermal diffusivity and heat accumulation
-      severity: high
-      property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
-      impact: Heat concentrates in surface layer causing thermal stress
-      solutions:
-      - Increase cooling time between passes (8-12 seconds)
-      - Use low repetition rates (<20 kHz)
-      - Defocused beam reduces peak intensity
-      - Multiple gentle passes preferred over aggressive single pass
-    surface_characteristics:
-    - challenge: High porosity and deep contamination
-      severity: high
-      porosity_range: 10-25% (brick and concrete highly porous)
-      impact: Contaminants penetrate deep into porous structure
-      solutions:
-      - Multiple progressive passes with power increase (50W → 80W → 100W)
-      - Reduce scan speed for deeper penetration (400-600 mm/s)
-      - Chemical pre-treatment for biological growth (algae, lichen)
-      - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
-    - challenge: Surface heterogeneity and aggregate exposure
-      severity: medium
-      impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
-      solutions:
-      - Use moderate power (70-90W) suitable for both matrix and aggregates
-      - Crosshatch scan pattern for uniform coverage
-      - Monitor for differential ablation; adjust power if aggregates become prominent
-      - Aged masonry more challenging than new construction
-    contamination_challenges:
-    - challenge: Paint and coating removal from porous substrate
-      severity: medium
-      impact: Paint penetrates into pores requiring deep cleaning without substrate damage
-      solutions:
-      - First pass 100W fast (1500 mm/s) for surface paint layer
-      - Second pass 70W slow (800 mm/s) for paint in pores
-      - Third pass 50W very slow (500 mm/s) for residual staining
-      - Chemical stripping pre-treatment reduces laser exposure
-      - Heritage masonry requires gentler approach (max 60W)
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:29.628450'
+name: Cement
+slug: cement
+category: masonry
+subcategory: general
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+title: Cement Laser Cleaning Settings
+settings_description: When laser cleaning cement, the key property to lead with is its brittleness compared to tougher masonry like stone. This makes it prone to cracking under heat, unlike denser bricks that hold up better. I've seen surfaces chip easily if you push too hard. So, start slow with gentle pulses to loosen grime without stressing the matrix. Tends to clean cleanly once you avoid over-heating the pores mid-pass. Adjust overlap minimally to prevent uneven wear.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Masonry
+  href: /materials/masonry
+- label: General
+  href: /materials/masonry/general
+- label: Cement
+  href: /materials/cement
+images:
+  hero:
+    alt: Cement surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/cement-laser-cleaning-hero.jpg
+  micro:
+    alt: Cement microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/cement-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: mm
+    value: 0.2
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  energyDensity:
+    unit: J/cm²
+    value: 3.2
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 12
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 0.526
+    unit: mm²/s
+  thermalConductivity:
+    value: 0.72
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1000
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 8
+    unit: J/cm²
+  ablationThreshold:
+    value: 2.1
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 2.52
+    max: 6.4
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.5
+    unit: K
+  reflectivity:
+    value: 0.35
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: Moisture-induced spalling and explosive failure
+    severity: critical
+    threshold_temperature: Steam formation >100°C with trapped moisture
+    impact: Trapped moisture converts to steam causing explosive surface spalling
+    solutions:
+    - Test moisture content before cleaning (>5% moisture requires drying)
+    - Use pulse mode with 10-15 second cooling for wet materials
+    - Reduce power by 50-60% for damp masonry
+    - Allow 24-48 hours drying after rain before laser cleaning
+    - Monitor for popping sounds or surface lifting; stop immediately
+  - challenge: Low thermal diffusivity and heat accumulation
+    severity: high
+    property_value: 0.1-1.0 mm²/s (3-10x slower than metals)
+    impact: Heat concentrates in surface layer causing thermal stress
+    solutions:
+    - Increase cooling time between passes (8-12 seconds)
+    - Use low repetition rates (<20 kHz)
+    - Defocused beam reduces peak intensity
+    - Multiple gentle passes preferred over aggressive single pass
+  surface_characteristics:
+  - challenge: High porosity and deep contamination
+    severity: high
+    porosity_range: 10-25% (brick and concrete highly porous)
+    impact: Contaminants penetrate deep into porous structure
+    solutions:
+    - Multiple progressive passes with power increase (50W → 80W → 100W)
+    - Reduce scan speed for deeper penetration (400-600 mm/s)
+    - Chemical pre-treatment for biological growth (algae, lichen)
+    - Expect 3-5 passes for complete cleaning vs 1-2 for dense materials
+  - challenge: Surface heterogeneity and aggregate exposure
+    severity: medium
+    impact: Mixed composition (cement matrix, aggregates, voids) causes variable absorption
+    solutions:
+    - Use moderate power (70-90W) suitable for both matrix and aggregates
+    - Crosshatch scan pattern for uniform coverage
+    - Monitor for differential ablation; adjust power if aggregates become prominent
+    - Aged masonry more challenging than new construction
+  contamination_challenges:
+  - challenge: Paint and coating removal from porous substrate
+    severity: medium
+    impact: Paint penetrates into pores requiring deep cleaning without substrate damage
+    solutions:
+    - First pass 100W fast (1500 mm/s) for surface paint layer
+    - Second pass 70W slow (800 mm/s) for paint in pores
+    - Third pass 50W very slow (500 mm/s) for residual staining
+    - Chemical stripping pre-treatment reduces laser exposure
+    - Heritage masonry requires gentler approach (max 60W)
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:00.525415'

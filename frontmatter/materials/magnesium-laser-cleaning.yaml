@@ -1,414 +1,413 @@
-metadata:
-  name: Magnesium
-  slug: magnesium
-  category: metal
-  subcategory: specialty
-  content_type: unified_material
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: material
-  title: Magnesium Laser Cleaning
-  material_description: When laser cleaning magnesium, I've found it works best to start with lower power settings, as its lightweight nature and high reflectivity set it apart from denser metals like steel. This allows quick contaminant removal without much heat buildup, but always monitor closely to avoid surface melting at the end.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Specialty
-    href: /materials/metal/specialty
-  - label: Magnesium
-    href: /materials/metal/specialty/magnesium
-  images:
-    hero:
-      alt: Magnesium surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/magnesium-laser-cleaning-hero.jpg
-    micro:
-      alt: Magnesium microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/magnesium-laser-cleaning-micro.jpg
+name: Magnesium
+slug: magnesium
+category: metal
+subcategory: specialty
+content_type: unified_material
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: material
+title: Magnesium Laser Cleaning
+material_description: When laser cleaning magnesium, I've found it works best to start with lower power settings, as its lightweight nature and high reflectivity set it apart from denser metals like steel. This allows quick contaminant removal without much heat buildup, but always monitor closely to avoid surface melting at the end.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Specialty
+  href: /materials/metal/specialty
+- label: Magnesium
+  href: /materials/metal/specialty/magnesium
+images:
+  hero:
+    alt: Magnesium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/magnesium-laser-cleaning-hero.jpg
   micro:
-    before: When examining the magnesium surface before laser cleaning at 1000x magnification, we see a rough texture covered in scattered dark patches. Grime and oxide layers cling tightly to the uneven contours, blocking any hint of the underlying metal. These contaminants create a mottled appearance that obscures the material's natural form.
-    after: After the laser treatment, the same surface reveals a smooth and even finish under 1000x view. All the grime lifts away cleanly, exposing a bright and uniform gleam
-  faq:
-  - question: What are the specific laser settings and parameters for cleaning **magnesium alloys** without causing damage?
-    answer: '**10ns pulses prevent thermal damage**. For cleaning magnesium alloys, use a 1064 nm wavelength with 10 ns pulses at 1.2 J/cm² fluence. Specifically, keep the repetition rate at 50 kHz and scan speed at 500 mm/s to avoid thermal damage. Thus, these parameters ablate oxides effectively while preserving substrate integrity.'
-  - question: How do you safely remove **oxide layers and corrosion** from magnesium surfaces using laser cleaning?
-    answer: '**Argon shielding prevents re-oxidation**. In the removal of magnesium oxide, we utilize 1064 nm wavelength lasers at 1.2 J/cm² fluence. Specifically, this ablates MgO selectively without harming the base metal. Thus, an inert argon gas shield during the 500 mm/s scan prevents immediate re-oxidation, delivering a pristine, corrosion-free surface.'
-  - question: What special safety precautions are needed when laser cleaning magnesium due to **fire risk**?
-    answer: '**Requires inert gas shielding**. Mandatory inert gas shielding, particularly at the 1064 nm wavelength, prevents magnesium ignition. Thus, keep fluence below 1.2 J/cm² to avoid excessive heat input. Employ robust fume extraction for highly reactive MgO particles, which pose explosion risks.'
-  - question: Can laser cleaning be used to prepare magnesium surfaces for **welding or coating applications**?
-    answer: '**removes oxides without thermal damage**. Using a 1064 nm wavelength at 1.2 J/cm² fluence, laser cleaning effectively prepares magnesium surfaces. Specifically, this approach removes oxides without thermal damage, thus yielding an ideal surface profile for enhanced coating adhesion and robust welds, notably in aerospace and medical fields.'
-  - question: What are the challenges with laser cleaning **cast magnesium alloys** versus wrought forms?
-    answer: '**Porosity requires fluence <1.2 J/cm²**. Notably, cast magnesium alloys pose greater challenges from their inherent porosity, which can trap contaminants and thus requires careful fluence control below ~1.2 J/cm² to avoid subsurface damage. Their varied surface texture, particularly compared to wrought forms, demands more precise parameter tuning.'
-  - question: How effective is laser cleaning for removing contaminants like **oils and lubricants** from magnesium parts?
-    answer: '**Vaporizes oils without residue**. Laser cleaning, specifically employing a 1064nm wavelength and 1.2 J/cm² fluence, effectively removes organic oils from magnesium surfaces. Notably, this method vaporizes contaminants without chemical residue, thus serving as a superior, eco-friendly alternative to solvent-based approaches for precision parts.'
-  - question: Does laser cleaning affect the **fatigue strength** or mechanical properties of magnesium components?
-    answer: '**Preserves fatigue strength integrity**. When laser cleaning is properly configured at 1.2 J/cm² fluence, it particularly preserves magnesium''s structural integrity. Notably, the 10 ns pulse width limits thermal input, thus avoiding micro-cracking and notable shifts in fatigue strength to sustain component longevity.'
-  - question: What is the best way to **validate the success** of magnesium laser cleaning?
-    answer: '**Confirm oxide removal integrity**. Validate magnesium laser cleaning through microscopic inspection and surface roughness measurement. Particularly, confirm complete oxide removal while preserving base material integrity, thus ensuring parameters like 1.2 J/cm² fluence avoid inducing thermal damage.'
-  - question: Why is magnesium considered more difficult to laser clean than aluminum or steel?
-    answer: Magnesium's low melting point (~650°C) and high reactivity particularly require precise laser parameters. Specifically, we must control fluence around 1.2 J/cm² to remove oxides without melting the substrate—a far narrower window than for steel or aluminum. Thus, meticulous tuning ensures damage-free outcomes.
-  - question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
-    answer: For cleaning magnesium surfaces, pulsed fiber lasers at 1064 nm prove particularly optimal. Specifically, employing a fluence of 1.2 J/cm² alongside a 10 ns pulse width minimizes thermal input, thus preventing harm to the delicate substrate. Scanning at 500 mm/s then delivers efficient, uniform oxide layer removal.
-  regulatoryStandards:
-  - description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    image: /images/logo/logo-org-fda.png
-    longName: Food and Drug Administration
-    name: FDA
-    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  - description: ANSI Z136.1 - Safe Use of Lasers
-    image: /images/logo/logo-org-ansi.png
-    longName: American National Standards Institute
-    name: ANSI
+    alt: Magnesium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/magnesium-laser-cleaning-micro.jpg
+micro:
+  before: When examining the magnesium surface before laser cleaning at 1000x magnification, we see a rough texture covered in scattered dark patches. Grime and oxide layers cling tightly to the uneven contours, blocking any hint of the underlying metal. These contaminants create a mottled appearance that obscures the material's natural form.
+  after: After the laser treatment, the same surface reveals a smooth and even finish under 1000x view. All the grime lifts away cleanly, exposing a bright and uniform gleam
+faq:
+- question: What are the specific laser settings and parameters for cleaning **magnesium alloys** without causing damage?
+  answer: '**10ns pulses prevent thermal damage**. For cleaning magnesium alloys, use a 1064 nm wavelength with 10 ns pulses at 1.2 J/cm² fluence. Specifically, keep the repetition rate at 50 kHz and scan speed at 500 mm/s to avoid thermal damage. Thus, these parameters ablate oxides effectively while preserving substrate integrity.'
+- question: How do you safely remove **oxide layers and corrosion** from magnesium surfaces using laser cleaning?
+  answer: '**Argon shielding prevents re-oxidation**. In the removal of magnesium oxide, we utilize 1064 nm wavelength lasers at 1.2 J/cm² fluence. Specifically, this ablates MgO selectively without harming the base metal. Thus, an inert argon gas shield during the 500 mm/s scan prevents immediate re-oxidation, delivering a pristine, corrosion-free surface.'
+- question: What special safety precautions are needed when laser cleaning magnesium due to **fire risk**?
+  answer: '**Requires inert gas shielding**. Mandatory inert gas shielding, particularly at the 1064 nm wavelength, prevents magnesium ignition. Thus, keep fluence below 1.2 J/cm² to avoid excessive heat input. Employ robust fume extraction for highly reactive MgO particles, which pose explosion risks.'
+- question: Can laser cleaning be used to prepare magnesium surfaces for **welding or coating applications**?
+  answer: '**removes oxides without thermal damage**. Using a 1064 nm wavelength at 1.2 J/cm² fluence, laser cleaning effectively prepares magnesium surfaces. Specifically, this approach removes oxides without thermal damage, thus yielding an ideal surface profile for enhanced coating adhesion and robust welds, notably in aerospace and medical fields.'
+- question: What are the challenges with laser cleaning **cast magnesium alloys** versus wrought forms?
+  answer: '**Porosity requires fluence <1.2 J/cm²**. Notably, cast magnesium alloys pose greater challenges from their inherent porosity, which can trap contaminants and thus requires careful fluence control below ~1.2 J/cm² to avoid subsurface damage. Their varied surface texture, particularly compared to wrought forms, demands more precise parameter tuning.'
+- question: How effective is laser cleaning for removing contaminants like **oils and lubricants** from magnesium parts?
+  answer: '**Vaporizes oils without residue**. Laser cleaning, specifically employing a 1064nm wavelength and 1.2 J/cm² fluence, effectively removes organic oils from magnesium surfaces. Notably, this method vaporizes contaminants without chemical residue, thus serving as a superior, eco-friendly alternative to solvent-based approaches for precision parts.'
+- question: Does laser cleaning affect the **fatigue strength** or mechanical properties of magnesium components?
+  answer: '**Preserves fatigue strength integrity**. When laser cleaning is properly configured at 1.2 J/cm² fluence, it particularly preserves magnesium''s structural integrity. Notably, the 10 ns pulse width limits thermal input, thus avoiding micro-cracking and notable shifts in fatigue strength to sustain component longevity.'
+- question: What is the best way to **validate the success** of magnesium laser cleaning?
+  answer: '**Confirm oxide removal integrity**. Validate magnesium laser cleaning through microscopic inspection and surface roughness measurement. Particularly, confirm complete oxide removal while preserving base material integrity, thus ensuring parameters like 1.2 J/cm² fluence avoid inducing thermal damage.'
+- question: Why is magnesium considered more difficult to laser clean than aluminum or steel?
+  answer: Magnesium's low melting point (~650°C) and high reactivity particularly require precise laser parameters. Specifically, we must control fluence around 1.2 J/cm² to remove oxides without melting the substrate—a far narrower window than for steel or aluminum. Thus, meticulous tuning ensures damage-free outcomes.
+- question: What type of laser (fiber, pulsed, continuous wave) works best for magnesium cleaning applications?
+  answer: For cleaning magnesium surfaces, pulsed fiber lasers at 1064 nm prove particularly optimal. Specifically, employing a fluence of 1.2 J/cm² alongside a 10 ns pulse width minimizes thermal input, thus preventing harm to the delicate substrate. Scanning at 500 mm/s then delivers efficient, uniform oxide layer removal.
+regulatoryStandards:
+- description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+  name: FDA
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+- description: ANSI Z136.1 - Safe Use of Lasers
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+  name: ANSI
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+- description: IEC 60825 - Safety of Laser Products
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+  name: IEC
+  url: https://webstore.iec.ch/publication/3587
+- description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+  name: OSHA
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    percentage: 40.0
+    electricalConductivity:
+      value: '2.2e+07'
+      unit: S/m
+      source: ai_research
+      min: 659300
+      max: '6.6e+07'
+    electricalResistivity:
+      value: '4.5e-08'
+      unit: Ω·m
+      source: ai_research
+      min: 0
+      max: 2e-06
+    fractureToughness:
+      value: 23
+      unit: MPa√m
+      source: ai_research
+      min: 0.67
+      max: 157
+    surfaceRoughness:
+      value: 1.6
+      unit: μm
+      source: ai_research
+      min: 0.02
+      max: 6.6
+    youngsModulus:
+      value: 45
+      unit: GPa
+      source: ai_research
+      min: 10.4
+      max: 2e+11
+    oxidationResistance:
+      value: 0.81
+      unit: dimensionless
+      source: ai_research
+      min: -554
+      max: 1762
+    density:
+      value: 1738
+      unit: kg/m³
+      source: ai_research
+      min: 1.7
+      max: 9408
+    hardness:
+      value: 38
+      unit: HV
+      source: ai_research
+      min: 0.2
+      max: 3500
+    corrosionResistance:
+      value: -2.4
+      unit: V
+      source: ai_research
+      min: -1.1
+      max: '1.1e+06'
+    compressiveStrength:
+      value: 160
+      unit: MPa
+      source: ai_research
+      min: 8
+      max: 2625
+    flexuralStrength:
+      value: 170
+      unit: MPa
+      source: ai_research
+      min: 11.4
+      max: 2897
+    tensileStrength:
+      value: 160
+      unit: MPa
+      source: ai_research
+      min: 3
+      max: 3000
+    porosity:
+      value: 0
+      unit: fraction
+      source: ai_research
+      min: 0
+      max: 15
+    absorptivity:
+      value: 0.09
+      unit: ''
+      source: ai_research
+      min: 0.02
+      max: 0.6
+    boilingPoint:
+      value: 1363
+      unit: K
+      source: ai_research
+      min: 929
+      max: 6454
+    absorptionCoefficient:
+      value: '5.9e+07'
+      unit: m^{-1}
+      source: ai_research
+      min: 589000
+      max: '9.9e+07'
+    meltingPoint:
+      value: 923
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    vaporPressure:
+      value: 398
+      unit: Pa
+      source: ai_research
+      min: 0
+      max: 106391
+    thermalDestructionPoint:
+      value: 923
+      unit: K
+      source: ai_research
+      min: 133
+      max: 3865
+    reflectivity:
+      value: 0.92
+      unit: dimensionless
+      source: ai_research
+      min: 0.35
+      max: 1
+    thermalShockResistance:
+      value: 52
+      unit: K
+      source: ai_research
+      min: 6.7
+      max: 379050
+    laserDamageThreshold:
+      value: 1.2
+      unit: J/cm²
+      source: ai_research
+      min: 0.27
+      max: 15750
+    thermalDestruction:
+      value: 923
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 1023
+      unit: J/kg·K
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.94
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 156
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '2.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.06
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: '8.8e-05'
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    percentage: 40.0
+    absorptionCoefficient:
+      source: ai_research
+      unit: m⁻¹
+      value: '1.1e+07'
+      min: 589000
+      max: '9.9e+07'
+    absorptivity:
+      source: ai_research
+      unit: dimensionless
+      value: 0.12
+      min: 0.02
+      max: 0.6
+    laserDamageThreshold:
+      source: ai_research
+      unit: J/cm²
+      value: 0.15
+      min: 0.27
+      max: 15750
+    reflectivity:
+      source: ai_research
+      unit: dimensionless (ratio)
+      value: 0.74
+      min: 0.35
+      max: 1
+    thermalDestructionPoint:
+      source: ai_research
+      unit: K
+      value: 923
+      min: 133
+      max: 3865
+    thermalShockResistance:
+      source: ai_research
+      unit: W/m
+      value: 1.8
+      min: 6.7
+      max: 379050
+    vaporPressure:
+      source: ai_research
+      unit: Pa
+      value: 36.1
+      min: 0
+      max: 106391
+    thermalDestruction:
+      value: 923
+      unit: K
+      source: ai_research
+      min: 256
+      max: 3859
+    specificHeat:
+      value: 1023
+      unit: J/kg·K
+      source: ai_research
+      min: 43.4
+      max: 1905
+    laserReflectivity:
+      value: 0.94
+      unit: ''
+      source: ai_research
+      min: 0.4
+      max: 73.5
+    thermalConductivity:
+      value: 156
+      unit: W/m·K
+      source: ai_research
+      min: 7.4
+      max: 450
+    thermalExpansion:
+      value: '2.5e-05'
+      unit: K^{-1}
+      source: ai_research
+      min: 4e-06
+      max: 31.7
+    laserAbsorption:
+      value: 0.06
+      unit: dimensionless
+      source: ai_research
+      min: 0.02
+      max: '4.2e+08'
+    thermalDiffusivity:
+      value: '8.8e-05'
+      unit: m²/s
+      source: ai_research
+      min: 2e-06
+      max: '0.00017'
+    ablationThreshold:
+      value: 1.8
+      unit: J/cm²
+      source: ai_research
+      min: 0.09
+      max: 4.3
+eeat:
+  reviewedBy: Z-Beam Quality Assurance Team
+  citations:
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  - ANSI Z136.1 - Safe Use of Lasers
+  - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  isBasedOn:
+    name: ANSI Z136.1 - Safe Use of Lasers
     url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  - description: IEC 60825 - Safety of Laser Products
-    image: /images/logo/logo-org-iec.png
-    longName: International Electrotechnical Commission
-    name: IEC
-    url: https://webstore.iec.ch/publication/3587
-  - description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    image: /images/logo/logo-org-osha.png
-    longName: Occupational Safety and Health Administration
-    name: OSHA
-    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  materialProperties:
-    material_characteristics:
-      label: Material Characteristics
-      percentage: 40.0
-      electricalConductivity:
-        value: '2.2e+07'
-        unit: S/m
-        source: ai_research
-        min: 659300
-        max: '6.6e+07'
-      electricalResistivity:
-        value: '4.5e-08'
-        unit: Ω·m
-        source: ai_research
-        min: 0
-        max: 2e-06
-      fractureToughness:
-        value: 23
-        unit: MPa√m
-        source: ai_research
-        min: 0.67
-        max: 157
-      surfaceRoughness:
-        value: 1.6
-        unit: μm
-        source: ai_research
-        min: 0.02
-        max: 6.6
-      youngsModulus:
-        value: 45
-        unit: GPa
-        source: ai_research
-        min: 10.4
-        max: 2e+11
-      oxidationResistance:
-        value: 0.81
-        unit: dimensionless
-        source: ai_research
-        min: -554
-        max: 1762
-      density:
-        value: 1738
-        unit: kg/m³
-        source: ai_research
-        min: 1.7
-        max: 9408
-      hardness:
-        value: 38
-        unit: HV
-        source: ai_research
-        min: 0.2
-        max: 3500
-      corrosionResistance:
-        value: -2.4
-        unit: V
-        source: ai_research
-        min: -1.1
-        max: '1.1e+06'
-      compressiveStrength:
-        value: 160
-        unit: MPa
-        source: ai_research
-        min: 8
-        max: 2625
-      flexuralStrength:
-        value: 170
-        unit: MPa
-        source: ai_research
-        min: 11.4
-        max: 2897
-      tensileStrength:
-        value: 160
-        unit: MPa
-        source: ai_research
-        min: 3
-        max: 3000
-      porosity:
-        value: 0
-        unit: fraction
-        source: ai_research
-        min: 0
-        max: 15
-      absorptivity:
-        value: 0.09
-        unit: ''
-        source: ai_research
-        min: 0.02
-        max: 0.6
-      boilingPoint:
-        value: 1363
-        unit: K
-        source: ai_research
-        min: 929
-        max: 6454
-      absorptionCoefficient:
-        value: '5.9e+07'
-        unit: m^{-1}
-        source: ai_research
-        min: 589000
-        max: '9.9e+07'
-      meltingPoint:
-        value: 923
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      vaporPressure:
-        value: 398
-        unit: Pa
-        source: ai_research
-        min: 0
-        max: 106391
-      thermalDestructionPoint:
-        value: 923
-        unit: K
-        source: ai_research
-        min: 133
-        max: 3865
-      reflectivity:
-        value: 0.92
-        unit: dimensionless
-        source: ai_research
-        min: 0.35
-        max: 1
-      thermalShockResistance:
-        value: 52
-        unit: K
-        source: ai_research
-        min: 6.7
-        max: 379050
-      laserDamageThreshold:
-        value: 1.2
-        unit: J/cm²
-        source: ai_research
-        min: 0.27
-        max: 15750
-      thermalDestruction:
-        value: 923
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 1023
-        unit: J/kg·K
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.94
-        unit: ''
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 156
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '2.5e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.06
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: '8.8e-05'
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.8
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-    laser_material_interaction:
-      label: Laser-Material Interaction
-      percentage: 40.0
-      absorptionCoefficient:
-        source: ai_research
-        unit: m⁻¹
-        value: '1.1e+07'
-        min: 589000
-        max: '9.9e+07'
-      absorptivity:
-        source: ai_research
-        unit: dimensionless
-        value: 0.12
-        min: 0.02
-        max: 0.6
-      laserDamageThreshold:
-        source: ai_research
-        unit: J/cm²
-        value: 0.15
-        min: 0.27
-        max: 15750
-      reflectivity:
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.74
-        min: 0.35
-        max: 1
-      thermalDestructionPoint:
-        source: ai_research
-        unit: K
-        value: 923
-        min: 133
-        max: 3865
-      thermalShockResistance:
-        source: ai_research
-        unit: W/m
-        value: 1.8
-        min: 6.7
-        max: 379050
-      vaporPressure:
-        source: ai_research
-        unit: Pa
-        value: 36.1
-        min: 0
-        max: 106391
-      thermalDestruction:
-        value: 923
-        unit: K
-        source: ai_research
-        min: 256
-        max: 3859
-      specificHeat:
-        value: 1023
-        unit: J/kg·K
-        source: ai_research
-        min: 43.4
-        max: 1905
-      laserReflectivity:
-        value: 0.94
-        unit: ''
-        source: ai_research
-        min: 0.4
-        max: 73.5
-      thermalConductivity:
-        value: 156
-        unit: W/m·K
-        source: ai_research
-        min: 7.4
-        max: 450
-      thermalExpansion:
-        value: '2.5e-05'
-        unit: K^{-1}
-        source: ai_research
-        min: 4e-06
-        max: 31.7
-      laserAbsorption:
-        value: 0.06
-        unit: dimensionless
-        source: ai_research
-        min: 0.02
-        max: '4.2e+08'
-      thermalDiffusivity:
-        value: '8.8e-05'
-        unit: m²/s
-        source: ai_research
-        min: 2e-06
-        max: '0.00017'
-      ablationThreshold:
-        value: 1.8
-        unit: J/cm²
-        source: ai_research
-        min: 0.09
-        max: 4.3
-  eeat:
-    reviewedBy: Z-Beam Quality Assurance Team
-    citations:
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - ANSI Z136.1 - Safe Use of Lasers
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    isBasedOn:
-      name: ANSI Z136.1 - Safe Use of Lasers
-      url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  material_metadata:
-    last_updated: '2025-10-27T23:48:40.922179Z'
-    normalization_applied: true
-    normalization_date: '2025-10-27T23:48:40.922187Z'
-    structure_version: '2.0'
-  serviceOffering:
-    enabled: true
-    type: professionalCleaning
-    materialSpecific:
-      estimatedHoursMin: 2
-      estimatedHoursTypical: 6
-      targetContaminants:
-      - Oxide scale
-      - Heat discoloration
-      - Alpha case layer
-      - Thermal barrier coatings
-      notes: Controlled atmosphere may be required to prevent re-oxidation
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:30.714859'
+material_metadata:
+  last_updated: '2025-10-27T23:48:40.922179Z'
+  normalization_applied: true
+  normalization_date: '2025-10-27T23:48:40.922187Z'
+  structure_version: '2.0'
+serviceOffering:
+  enabled: true
+  type: professionalCleaning
+  materialSpecific:
+    estimatedHoursMin: 2
+    estimatedHoursTypical: 6
+    targetContaminants:
+    - Oxide scale
+    - Heat discoloration
+    - Alpha case layer
+    - Thermal barrier coatings
+    notes: Controlled atmosphere may be required to prevent re-oxidation
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:01.591848'

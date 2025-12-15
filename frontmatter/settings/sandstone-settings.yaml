@@ -1,187 +1,186 @@
-metadata:
-  name: Sandstone
-  slug: sandstone
-  category: stone
-  subcategory: sedimentary
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  title: Sandstone Laser Cleaning Settings
-  settings_description: When laser cleaning sandstone, the biggest hurdle I've seen is its porous, layered structure that traps grime deep inside while heating unevenly during treatment. This tends to cause micro-cracks if you push too hard, since the stone's sedimentary makeup varies from spot to spot. To handle it, go slow with gentle pulses that let the laser seep into those pores without overwhelming the surface, focusing on dry runs first to map weak areas. Watch out at the end—overlapping passes can still fracture edges, so always cool between them.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Stone
-    href: /materials/stone
-  - label: Sedimentary
-    href: /materials/stone/sedimentary
-  - label: Sandstone
-    href: /materials/sandstone
-  images:
-    hero:
-      alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/sandstone-laser-cleaning-hero.jpg
-    micro:
-      alt: Sandstone microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/sandstone-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 100
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    fluenceThreshold:
-      unit: J/cm²
-      value: 2.5
-      min: 0.3
-      max: 4.5
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 3
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 1.42
-      unit: mm²/s
-    thermalConductivity:
-      value: 2.3
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 950
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 3.5
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.1
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 1.32
-      max: 2.8
-      unit: J/cm²
-    thermalShockResistance:
-      value: 1.2
-      unit: K
-    reflectivity:
-      value: 0.05
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: Thermal shock and microcracking
-      severity: critical
-      threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
-      impact: Natural stone contains microfissures that propagate under thermal stress
-      solutions:
-      - Use pulse mode with 8-12 second cooling between passes
-      - Reduce power by 40-50% for weathered or damaged stone
-      - Preheat substrate if possible to reduce thermal gradients
-      - Granite more resistant than marble; sandstone most vulnerable
-      - Monitor for surface crazing; stop immediately if cracks appear
-    - challenge: Moisture-induced spalling
-      severity: high
-      threshold_temperature: Steam formation >100°C with trapped moisture
-      impact: Porous stone traps moisture that explosively converts to steam
-      solutions:
-      - Test moisture content before cleaning (>3% requires drying)
-      - Allow 48-72 hours drying after rain before laser cleaning
-      - Reduce power by 50% for damp stone
-      - Use pulse mode with extended cooling (15-20 seconds)
-      - Heritage stone requires especially gentle approach
-    surface_characteristics:
-    - challenge: Weathering and surface degradation
-      severity: high
-      impact: Aged stone has weaker surface layer more susceptible to damage
-      solutions:
-      - Reduce power 40-60% for weathered stone vs fresh stone
-      - Test on inconspicuous area first
-      - Multiple gentle passes (4-6 at 40-60W) preferred
-      - Monitor for powdering or flaking; adjust power immediately
-      - Heritage conservation requires documentation and testing
-    - challenge: Mineral composition heterogeneity
-      severity: medium
-      impact: Mixed minerals have different absorption and damage thresholds
-      solutions:
-      - Use moderate power (60-80W) suitable for both light and dark minerals
-      - Crosshatch scan pattern for uniform coverage
-      - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
-      - Quartzite and marble more homogeneous than granite
-    contamination_challenges:
-    - challenge: Biological growth and deep staining
-      severity: medium
-      porosity_range: 0.5-25% (sandstone highly porous)
-      impact: Algae, lichen, and pollution penetrate deep into porous structure
-      solutions:
-      - First pass 80W fast (1200 mm/s) for surface growth
-      - Second pass 60W slow (700 mm/s) for roots and stains
-      - Third pass 40W very slow (400 mm/s) for deep staining
-      - Chemical biocide pre-treatment kills roots and reduces laser exposure
-      - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:32.196841'
+name: Sandstone
+slug: sandstone
+category: stone
+subcategory: sedimentary
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+title: Sandstone Laser Cleaning Settings
+settings_description: When laser cleaning sandstone, the biggest hurdle I've seen is its porous, layered structure that traps grime deep inside while heating unevenly during treatment. This tends to cause micro-cracks if you push too hard, since the stone's sedimentary makeup varies from spot to spot. To handle it, go slow with gentle pulses that let the laser seep into those pores without overwhelming the surface, focusing on dry runs first to map weak areas. Watch out at the end—overlapping passes can still fracture edges, so always cool between them.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Stone
+  href: /materials/stone
+- label: Sedimentary
+  href: /materials/stone/sedimentary
+- label: Sandstone
+  href: /materials/sandstone
+images:
+  hero:
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/sandstone-laser-cleaning-hero.jpg
+  micro:
+    alt: Sandstone microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/sandstone-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 100
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 1.42
+    unit: mm²/s
+  thermalConductivity:
+    value: 2.3
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 950
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 3.5
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.1
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.32
+    max: 2.8
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.2
+    unit: K
+  reflectivity:
+    value: 0.05
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: Thermal shock and microcracking
+    severity: critical
+    threshold_temperature: ΔT > 50-150°C rapid cooling (stone-dependent)
+    impact: Natural stone contains microfissures that propagate under thermal stress
+    solutions:
+    - Use pulse mode with 8-12 second cooling between passes
+    - Reduce power by 40-50% for weathered or damaged stone
+    - Preheat substrate if possible to reduce thermal gradients
+    - Granite more resistant than marble; sandstone most vulnerable
+    - Monitor for surface crazing; stop immediately if cracks appear
+  - challenge: Moisture-induced spalling
+    severity: high
+    threshold_temperature: Steam formation >100°C with trapped moisture
+    impact: Porous stone traps moisture that explosively converts to steam
+    solutions:
+    - Test moisture content before cleaning (>3% requires drying)
+    - Allow 48-72 hours drying after rain before laser cleaning
+    - Reduce power by 50% for damp stone
+    - Use pulse mode with extended cooling (15-20 seconds)
+    - Heritage stone requires especially gentle approach
+  surface_characteristics:
+  - challenge: Weathering and surface degradation
+    severity: high
+    impact: Aged stone has weaker surface layer more susceptible to damage
+    solutions:
+    - Reduce power 40-60% for weathered stone vs fresh stone
+    - Test on inconspicuous area first
+    - Multiple gentle passes (4-6 at 40-60W) preferred
+    - Monitor for powdering or flaking; adjust power immediately
+    - Heritage conservation requires documentation and testing
+  - challenge: Mineral composition heterogeneity
+    severity: medium
+    impact: Mixed minerals have different absorption and damage thresholds
+    solutions:
+    - Use moderate power (60-80W) suitable for both light and dark minerals
+    - Crosshatch scan pattern for uniform coverage
+    - Avoid dwelling on dark minerals (feldspar, mica) which absorb more energy
+    - Quartzite and marble more homogeneous than granite
+  contamination_challenges:
+  - challenge: Biological growth and deep staining
+    severity: medium
+    porosity_range: 0.5-25% (sandstone highly porous)
+    impact: Algae, lichen, and pollution penetrate deep into porous structure
+    solutions:
+    - First pass 80W fast (1200 mm/s) for surface growth
+    - Second pass 60W slow (700 mm/s) for roots and stains
+    - Third pass 40W very slow (400 mm/s) for deep staining
+    - Chemical biocide pre-treatment kills roots and reduces laser exposure
+    - Dense stones (granite, marble) clean in 1-2 passes vs 3-4 for porous stones
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:02.701846'

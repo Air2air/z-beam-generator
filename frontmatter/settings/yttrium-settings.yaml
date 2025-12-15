@@ -1,199 +1,198 @@
-metadata:
-  name: Yttrium
-  slug: yttrium
-  category: rare-earth
-  subcategory: scandium-group
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 3
-    name: Ikmanda Roswati
-    country: Indonesia
-    country_display: Indonesia
-    title: Ph.D.
-    sex: m
-    jobTitle: Junior Research Scientist in Laser Physics
-    expertise:
-    - Ultrafast Laser Physics and Material Interactions
-    affiliation:
-      name: Bandung Institute of Technology
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Physics, ITB, 2020
-    - 2+ years in ultrafast laser research including ASEAN optics workshops
-    - Assisted in international optics projects
-    languages:
-    - English
-    - Bahasa Indonesia
-    email: info@z-beam.com
-    image: /images/author/ikmanda-roswati.jpg
-    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
-    url: https://z-beam.com/authors/ikmanda-roswati
-    sameAs:
-    - https://linkedin.com/in/ikmanda-roswati-physicist
-    - https://www.academia.edu/profile/IkmandaRoswati
-    persona_file: indonesia_persona.yaml
-    formatting_file: indonesia_formatting.yaml
-  title: Yttrium Laser Cleaning Settings
-  settings_description: The key with Yttrium is its high reflectivity, which makes laser cleaning a bit tricky at first. We've found it bounces back most laser energy, so we typically start with multiple passes to gradually remove contaminants without wasting power. This soft metal holds up well for precision work in electronics or magnet production, but its low thermal conductivity means heat lingers in spots—watch out here to avoid localized melting or oxidation during longer sessions. Keep scan speeds steady and overlap low to restore surfaces cleanly. In our experience, this approach clears residues effectively while preserving its optical qualities.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Rare-Earth
-    href: /materials/rare-earth
-  - label: Scandium Group
-    href: /materials/rare-earth/scandium-group
-  - label: Yttrium
-    href: /materials/yttrium
-  images:
-    hero:
-      alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/yttrium-laser-cleaning-hero.jpg
-    micro:
-      alt: Microscopic view of Yttrium surface after laser cleaning showing detailed surface structure
-      url: /images/material/yttrium-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 100
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 50
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    fluenceThreshold:
-      unit: J/cm²
-      value: 5.1
-      min: 0.3
-      max: 4.5
-    energyDensity:
-      unit: J/cm²
-      value: 5.1
-      min: 0.1
-      max: 20
-    pulseWidth:
-      unit: ns
-      value: 10
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 2
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 30
-      min: 10
-      max: 90
-  thermalProperties:
-    thermalDiffusivity:
-      value: 12.8
-      unit: mm²/s
-    thermalConductivity:
-      value: 17.2
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1799
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 5
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.25
-      unit: J/cm²
-    optimalFluenceRange:
-      min: 1.5
-      max: 4.0
-      unit: J/cm²
-    thermalShockResistance:
-      value: 2.5
-      unit: K
-    reflectivity:
-      value: 0.92
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: Rapid oxidation and pyrophoricity
-      severity: critical
-      threshold_temperature: Above 150-300°C causes spontaneous ignition in air
-      impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
-      solutions:
-      - Process in inert atmosphere (argon or nitrogen) or high vacuum
-      - Use pulse mode with 10-15 second cooling to prevent sustained heating
-      - Keep surface temperature below 150°C monitored with IR camera
-      - Have fire suppression ready for pyrophoric materials
-      - Immediate passivation after cleaning to prevent further oxidation
-    - challenge: Variable thermal properties across series
-      severity: medium
-      property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
-      impact: Different lanthanides require different cooling strategies
-      solutions:
-      - Light lanthanides (La, Ce, Pr) require more cooling time
-      - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
-      - Adjust parameters by specific element, not just category
-      - Test on small area to determine optimal cooling requirements
-    surface_characteristics:
-    - challenge: Oxide layer formation and removal
-      severity: high
-      impact: Surface oxidizes within seconds to minutes forming opaque layer
-      solutions:
-      - Clean in controlled atmosphere to prevent immediate reoxidation
-      - Multiple passes may be required as oxide reforms between passes
-      - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
-      - Chemical passivation immediately after cleaning
-      - Store in inert atmosphere or vacuum after processing
-    - challenge: Magnetic property sensitivity
-      severity: high
-      impact: Heating above Curie temperature permanently alters magnetic properties
-      solutions:
-      - Monitor temperature strictly; Nd magnets lose magnetism above 310-400°C
-      - Use ultrashort pulses (picosecond) for minimal heat-affected zone
-      - Reduce power by 60-70% compared to non-magnetic metals
-      - Test magnetic properties before and after cleaning to verify preservation
-    contamination_challenges:
-    - challenge: High-value material recovery
-      severity: medium
-      impact: Rare-earth elements extremely valuable; contamination removal must preserve material
-      solutions:
-      - First pass 15W very slow (500 mm/s) for assessment
-      - Gradual power increase (15W → 25W → 35W) across multiple passes
-      - Collect all ablated material for potential recovery
-      - Document process for traceability and quality control
-      - Consider chemical pre-treatment to reduce laser exposure
-    - challenge: Strategic material handling requirements
-      severity: medium
-      impact: Export-controlled materials require documentation and secure handling
-      solutions:
-      - Clean in controlled access facility
-      - Document all processing parameters and material quantities
-      - Secure storage of cleaned materials
-      - Follow applicable export control regulations
-      - Chain of custody documentation for high-value materials
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:33.496795'
+name: Yttrium
+slug: yttrium
+category: rare-earth
+subcategory: scandium-group
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+title: Yttrium Laser Cleaning Settings
+settings_description: The key with Yttrium is its high reflectivity, which makes laser cleaning a bit tricky at first. We've found it bounces back most laser energy, so we typically start with multiple passes to gradually remove contaminants without wasting power. This soft metal holds up well for precision work in electronics or magnet production, but its low thermal conductivity means heat lingers in spots—watch out here to avoid localized melting or oxidation during longer sessions. Keep scan speeds steady and overlap low to restore surfaces cleanly. In our experience, this approach clears residues effectively while preserving its optical qualities.
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Rare-Earth
+  href: /materials/rare-earth
+- label: Scandium Group
+  href: /materials/rare-earth/scandium-group
+- label: Yttrium
+  href: /materials/yttrium
+images:
+  hero:
+    alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/yttrium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed surface structure
+    url: /images/material/yttrium-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 100
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 50
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 5.1
+    min: 0.3
+    max: 4.5
+  energyDensity:
+    unit: J/cm²
+    value: 5.1
+    min: 0.1
+    max: 20
+  pulseWidth:
+    unit: ns
+    value: 10
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 2
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 30
+    min: 10
+    max: 90
+thermalProperties:
+  thermalDiffusivity:
+    value: 12.8
+    unit: mm²/s
+  thermalConductivity:
+    value: 17.2
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1799
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 5
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.25
+    unit: J/cm²
+  optimalFluenceRange:
+    min: 1.5
+    max: 4.0
+    unit: J/cm²
+  thermalShockResistance:
+    value: 2.5
+    unit: K
+  reflectivity:
+    value: 0.92
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: Rapid oxidation and pyrophoricity
+    severity: critical
+    threshold_temperature: Above 150-300°C causes spontaneous ignition in air
+    impact: Rare-earth metals oxidize rapidly forming insulating oxide layer; fine particles pyrophoric
+    solutions:
+    - Process in inert atmosphere (argon or nitrogen) or high vacuum
+    - Use pulse mode with 10-15 second cooling to prevent sustained heating
+    - Keep surface temperature below 150°C monitored with IR camera
+    - Have fire suppression ready for pyrophoric materials
+    - Immediate passivation after cleaning to prevent further oxidation
+  - challenge: Variable thermal properties across series
+    severity: medium
+    property_value: 3-8 mm²/s thermal diffusivity (2.7x variation)
+    impact: Different lanthanides require different cooling strategies
+    solutions:
+    - Light lanthanides (La, Ce, Pr) require more cooling time
+    - Heavy lanthanides (Dy, Er, Yb) tolerate slightly higher power
+    - Adjust parameters by specific element, not just category
+    - Test on small area to determine optimal cooling requirements
+  surface_characteristics:
+  - challenge: Oxide layer formation and removal
+    severity: high
+    impact: Surface oxidizes within seconds to minutes forming opaque layer
+    solutions:
+    - Clean in controlled atmosphere to prevent immediate reoxidation
+    - Multiple passes may be required as oxide reforms between passes
+    - Oxide removal threshold (1-3 J/cm²) lower than metal substrate (2-5 J/cm²)
+    - Chemical passivation immediately after cleaning
+    - Store in inert atmosphere or vacuum after processing
+  - challenge: Magnetic property sensitivity
+    severity: high
+    impact: Heating above Curie temperature permanently alters magnetic properties
+    solutions:
+    - Monitor temperature strictly; Nd magnets lose magnetism above 310-400°C
+    - Use ultrashort pulses (picosecond) for minimal heat-affected zone
+    - Reduce power by 60-70% compared to non-magnetic metals
+    - Test magnetic properties before and after cleaning to verify preservation
+  contamination_challenges:
+  - challenge: High-value material recovery
+    severity: medium
+    impact: Rare-earth elements extremely valuable; contamination removal must preserve material
+    solutions:
+    - First pass 15W very slow (500 mm/s) for assessment
+    - Gradual power increase (15W → 25W → 35W) across multiple passes
+    - Collect all ablated material for potential recovery
+    - Document process for traceability and quality control
+    - Consider chemical pre-treatment to reduce laser exposure
+  - challenge: Strategic material handling requirements
+    severity: medium
+    impact: Export-controlled materials require documentation and secure handling
+    solutions:
+    - Clean in controlled access facility
+    - Document all processing parameters and material quantities
+    - Secure storage of cleaned materials
+    - Follow applicable export control regulations
+    - Chain of custody documentation for high-value materials
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:03.664855'

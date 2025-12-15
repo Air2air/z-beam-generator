@@ -1,193 +1,192 @@
-metadata:
-  name: Palladium
-  slug: palladium
-  category: metal
-  subcategory: non-ferrous
-  content_type: unified_settings
-  schema_version: 4.0.0
-  active: true
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  title: Palladium Laser Cleaning Settings
-  settings_description: 'When laser cleaning Palladium, you''ll want to begin with a careful setup to handle its high reflectivity. Start by selecting a lower power level right from the outset. This metal reflects a lot of the laser energy, so you must dial it back to ensure the beam gets absorbed enough for effective cleaning without wasting shots.
+name: Palladium
+slug: palladium
+category: metal
+subcategory: non-ferrous
+content_type: unified_settings
+schema_version: 4.0.0
+active: true
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University, in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+title: Palladium Laser Cleaning Settings
+settings_description: 'When laser cleaning Palladium, you''ll want to begin with a careful setup to handle its high reflectivity. Start by selecting a lower power level right from the outset. This metal reflects a lot of the laser energy, so you must dial it back to ensure the beam gets absorbed enough for effective cleaning without wasting shots.
 
 
-    Move on to your scan speed next. Keep it moderate to allow the heat to spread evenly across the dense surface. Palladium''s strong thermal conductivity helps here—it pulls heat away quickly, which prevents hot spots and protects the underlying structure during the process.
+  Move on to your scan speed next. Keep it moderate to allow the heat to spread evenly across the dense surface. Palladium''s strong thermal conductivity helps here—it pulls heat away quickly, which prevents hot spots and protects the underlying structure during the process.
 
 
-    Watch out midway through: don''t push the fluence too high, or you risk uneven ablation on this corrosion-resistant material. Its noble nature means contaminants cling stubbornly, so make multiple passes with good overlap to lift them without scratching the finish.
+  Watch out midway through: don''t push the fluence too high, or you risk uneven ablation on this corrosion-resistant material. Its noble nature means contaminants cling stubbornly, so make multiple passes with good overlap to lift them without scratching the finish.
 
 
-    Finish by checking the dwell time—short bursts work best. This approach cleans jewelry or aerospace parts cleanly every time, leaving no residue behind.'
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Materials
-    href: /materials
-  - label: Metal
-    href: /materials/metal
-  - label: Non Ferrous
-    href: /materials/metal/non-ferrous
-  - label: Palladium
-    href: /materials/palladium
-  images:
-    hero:
-      alt: Palladium surface undergoing laser cleaning showing precise contamination removal
-      url: /images/material/palladium-laser-cleaning-hero.jpg
-    micro:
-      alt: Palladium microscopic view of laser cleaning showing detailed precise contamination removal
-      url: /images/material/palladium-laser-cleaning-micro.jpg
-  machineSettings:
-    powerRange:
-      unit: W
-      value: 90
-      min: 1
-      max: 120
-    wavelength:
-      unit: nm
-      value: 1064
-      min: 355
-      max: 10640
-    spotSize:
-      unit: μm
-      value: 80
-      min: 0.1
-      max: 500
-    repetitionRate:
-      unit: kHz
-      value: 50
-      min: 1
-      max: 200
-    fluenceThreshold:
-      unit: J/cm²
-      value: 2.5
-      min: 0.3
-      max: 4.5
-    pulseWidth:
-      unit: ns
-      value: 12
-      min: 0.1
-      max: 1000
-    scanSpeed:
-      unit: mm/s
-      value: 500
-      min: 10
-      max: 5000
-    passCount:
-      unit: passes
-      value: 3
-      min: 1
-      max: 10
-    overlapRatio:
-      unit: '%'
-      value: 50
-      min: 10
-      max: 90
-    dwellTime:
-      unit: μs
-      value: 100
-  thermalProperties:
-    thermalDiffusivity:
-      value: 24.46
-      unit: mm²/s
-    thermalConductivity:
-      value: 71.8
-      unit: W/(m·K)
-    thermalDestructionPoint:
-      value: 1828.05
-      unit: K
-      type: melting
-  laserMaterialInteraction:
-    laserDamageThreshold:
-      value: 0.45
-      unit: J/cm²
-    ablationThreshold:
-      value: 1.1
-      unit: J/cm²
-    thermalShockResistance:
-      value: 1.8
-      unit: K
-    reflectivity:
-      value: 0.7
-      wavelength: 1064
-  material_challenges:
-    thermal_management:
-    - challenge: High thermal conductivity and heat spread
-      severity: medium
-      property_value: 4-400 W/(m·K) depending on metal
-      impact: Heat spreads rapidly causing large heat-affected zones
-      solutions:
-      - Use shorter pulse durations (picosecond/femtosecond) for localized heating
-      - Increase scan speed to minimize dwell time
-      - Apply cooling between passes for thick sections
-    - challenge: Melting and heat-affected zone formation
-      severity: high
-      threshold_range: 660°C (Al) to 3422°C (W)
-      impact: Substrate melting or microstructural changes in heat-affected zone
-      solutions:
-      - Stay below 70% of melting temperature
-      - Use pulse mode with adequate cooling time
-      - Monitor for surface discoloration indicating oxidation
-    surface_characteristics:
-    - challenge: High reflectivity
-      severity: high
-      reflectivity_range: 60-95% at 1064nm for polished metals
-      impact: Most laser energy reflected, requiring higher power; safety hazard
-      solutions:
-      - Use shorter wavelengths (355nm UV) for better absorption
-      - Increase power density but monitor for thermal damage
-      - Ensure proper beam containment and safety measures
-      - Surface oxidation/roughness improves absorption
-    - challenge: Surface finish variations
-      severity: medium
-      impact: Polished surfaces reflect more, rough surfaces absorb better
-      solutions:
-      - Adjust power based on surface condition
-      - Test parameters on similar finish samples
-      - Polished surfaces need 20-40% more power
-    contamination_challenges:
-    - challenge: Rust and oxide layer removal
-      severity: medium
-      impact: Requires multiple passes; rust/oxide has different absorption than base metal
-      solutions:
-      - First pass at higher power (100-120W) to remove bulk oxide
-      - Second pass at lower power (60-80W) for final cleaning
-      - Monitor for base metal exposure to avoid over-processing
-    - challenge: Oil and grease removal
-      severity: low
-      impact: Organic contaminants vaporize easily but can redeposit
-      solutions:
-      - Use fume extraction to prevent redeposition
-      - Higher scan speeds (3000-5000 mm/s) for thin films
-      - Chemical pre-cleaning for heavy contamination
-  preservedData:
-    generationMetadata:
-      generated_date: '2025-12-15T00:23:31.368045'
+  Finish by checking the dwell time—short bursts work best. This approach cleans jewelry or aerospace parts cleanly every time, leaving no residue behind.'
+breadcrumb:
+- label: Home
+  href: /
+- label: Materials
+  href: /materials
+- label: Metal
+  href: /materials/metal
+- label: Non Ferrous
+  href: /materials/metal/non-ferrous
+- label: Palladium
+  href: /materials/palladium
+images:
+  hero:
+    alt: Palladium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/palladium-laser-cleaning-hero.jpg
+  micro:
+    alt: Palladium microscopic view of laser cleaning showing detailed precise contamination removal
+    url: /images/material/palladium-laser-cleaning-micro.jpg
+machineSettings:
+  powerRange:
+    unit: W
+    value: 90
+    min: 1
+    max: 120
+  wavelength:
+    unit: nm
+    value: 1064
+    min: 355
+    max: 10640
+  spotSize:
+    unit: μm
+    value: 80
+    min: 0.1
+    max: 500
+  repetitionRate:
+    unit: kHz
+    value: 50
+    min: 1
+    max: 200
+  fluenceThreshold:
+    unit: J/cm²
+    value: 2.5
+    min: 0.3
+    max: 4.5
+  pulseWidth:
+    unit: ns
+    value: 12
+    min: 0.1
+    max: 1000
+  scanSpeed:
+    unit: mm/s
+    value: 500
+    min: 10
+    max: 5000
+  passCount:
+    unit: passes
+    value: 3
+    min: 1
+    max: 10
+  overlapRatio:
+    unit: '%'
+    value: 50
+    min: 10
+    max: 90
+  dwellTime:
+    unit: μs
+    value: 100
+thermalProperties:
+  thermalDiffusivity:
+    value: 24.46
+    unit: mm²/s
+  thermalConductivity:
+    value: 71.8
+    unit: W/(m·K)
+  thermalDestructionPoint:
+    value: 1828.05
+    unit: K
+    type: melting
+laserMaterialInteraction:
+  laserDamageThreshold:
+    value: 0.45
+    unit: J/cm²
+  ablationThreshold:
+    value: 1.1
+    unit: J/cm²
+  thermalShockResistance:
+    value: 1.8
+    unit: K
+  reflectivity:
+    value: 0.7
+    wavelength: 1064
+material_challenges:
+  thermal_management:
+  - challenge: High thermal conductivity and heat spread
+    severity: medium
+    property_value: 4-400 W/(m·K) depending on metal
+    impact: Heat spreads rapidly causing large heat-affected zones
+    solutions:
+    - Use shorter pulse durations (picosecond/femtosecond) for localized heating
+    - Increase scan speed to minimize dwell time
+    - Apply cooling between passes for thick sections
+  - challenge: Melting and heat-affected zone formation
+    severity: high
+    threshold_range: 660°C (Al) to 3422°C (W)
+    impact: Substrate melting or microstructural changes in heat-affected zone
+    solutions:
+    - Stay below 70% of melting temperature
+    - Use pulse mode with adequate cooling time
+    - Monitor for surface discoloration indicating oxidation
+  surface_characteristics:
+  - challenge: High reflectivity
+    severity: high
+    reflectivity_range: 60-95% at 1064nm for polished metals
+    impact: Most laser energy reflected, requiring higher power; safety hazard
+    solutions:
+    - Use shorter wavelengths (355nm UV) for better absorption
+    - Increase power density but monitor for thermal damage
+    - Ensure proper beam containment and safety measures
+    - Surface oxidation/roughness improves absorption
+  - challenge: Surface finish variations
+    severity: medium
+    impact: Polished surfaces reflect more, rough surfaces absorb better
+    solutions:
+    - Adjust power based on surface condition
+    - Test parameters on similar finish samples
+    - Polished surfaces need 20-40% more power
+  contamination_challenges:
+  - challenge: Rust and oxide layer removal
+    severity: medium
+    impact: Requires multiple passes; rust/oxide has different absorption than base metal
+    solutions:
+    - First pass at higher power (100-120W) to remove bulk oxide
+    - Second pass at lower power (60-80W) for final cleaning
+    - Monitor for base metal exposure to avoid over-processing
+  - challenge: Oil and grease removal
+    severity: low
+    impact: Organic contaminants vaporize easily but can redeposit
+    solutions:
+    - Use fume extraction to prevent redeposition
+    - Higher scan speeds (3000-5000 mm/s) for thin films
+    - Chemical pre-cleaning for heavy contamination
+preservedData:
+  generationMetadata:
+    generated_date: '2025-12-15T12:03:01.999401'
