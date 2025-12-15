@@ -3687,8 +3687,8 @@ contamination_patterns:
             by surface texture and environmental factors like wind.
     author:
       id: 2
-    category: organic-residue
-    subcategory: biological-fluid
+    category: inorganic-coating
+    subcategory: mineral
   brass-plating:
     composition:
     - Cu-Zn Alloy
@@ -7649,8 +7649,8 @@ contamination_patterns:
             or form patches if not properly absorbed.
     author:
       id: 4
-    category: oxidation
-    subcategory: non-ferrous
+    category: inorganic-coating
+    subcategory: coating
   cutting-fluid:
     composition:
     - Emulsified Oil
@@ -7921,8 +7921,8 @@ contamination_patterns:
             the wood grain and accumulating in porous areas, with no uniform distribution.
     author:
       id: 4
-    category: thermal-damage
-    subcategory: coating
+    category: organic-residue
+    subcategory: lubricant
   diamond-coating:
     composition:
     - Amorphous Carbon
@@ -12214,7 +12214,7 @@ contamination_patterns:
     author:
       id: 2
     category: organic-residue
-    subcategory: biological-fluid
+    subcategory: petroleum
   industrial-oil:
     author:
       id: 2
@@ -23316,8 +23316,8 @@ contamination_patterns:
             grooves or application strokes.
     author:
       id: 1
-    category: thermal-damage
-    subcategory: coating
+    category: organic-residue
+    subcategory: other
   thread-locker:
     composition:
     - Dimethacrylate
