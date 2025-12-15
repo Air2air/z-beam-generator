@@ -172,7 +172,14 @@ See `/components/` for:
 - `data-architecture.md` - Complete data structure
 - `category-refactoring-complete.md` - Category system (8 modular files)
 - `data-completion-action-plan.md` - Path to 100% data coverage
-- Plus 13 more data guides
+- `CONTAMINANT_BREADCRUMB_STRUCTURE.md` - Breadcrumb URL structure for contaminants
+- `CONTAMINATION_FRONTMATTER_IMPROVEMENTS.md` - Contamination frontmatter enhancements
+- `CONTAMINATION_FRONTMATTER_SPEC.md` - Complete contamination frontmatter specification
+- `FRONTMATTER_NORMALIZATION_GUIDE.md` - ✅ Frontmatter normalization (complete Dec 15, 2025)
+- `THERMAL_DATA_GAPS.md` - Thermal data completeness analysis
+- `SERVICE_OFFERING_FRONTMATTER_SPEC.md` - Service offering frontmatter structure
+- `SETTINGS_THERMAL_DATA_SPEC.md` - Settings thermal data specification
+- Plus 6 more data guides
 
 ### 06-ai-systems/
 **Purpose**: AI/ML systems and learning  
@@ -198,6 +205,8 @@ See `/components/` for:
 
 - `LEARNED_EVALUATION_PROPOSAL.md` - 🎯 **IMPLEMENTED** Learned subjective evaluation system (Nov 18, 2025)
 - `PROMPT_PURITY_POLICY.md` - 🔥 **NEW** Zero prompt text in generators (Nov 18, 2025)
+- `COMPONENT_SUMMARY_GENERATION_PROMPT.md` - Component summary generation template
+- Plus 30+ more development policies and guides
 - `REALISM_QUALITY_GATE.md` - 🔥 **NEW** Realism quality gate policy (mandatory 7.0/10 minimum)
 - `chain-verification.md` - Chain verification guide
 - `database-parameter-priority.md` - Database-first parameter policy
@@ -221,6 +230,13 @@ See `/components/` for:
 ---
 
 ## 📚 Archive
+
+### archive/2025-12/
+**Historical Documentation**: December 2025 consolidation
+
+- `PROPERTY_SERVICES_MIGRATION.md` - Property services migration (completed)
+- `YAML_LOADING_MIGRATION_PATTERN.md` - YAML loading pattern migration (completed)
+- `DEPRECATION_NOTICE_DEC11_2025.md` - Deprecation notice (archived Dec 15, 2025)
 
 ### archive/2025-11/
 **Historical Documentation**: November 2025 cleanup
@@ -262,14 +278,24 @@ See [archive/2025-11/README.md](archive/2025-11/README.md) for complete archive 
 
 ## 📊 Documentation Stats
 
-**Total Active Docs**: ~109 markdown files  
-**Archived Docs**: 33 files in archive/2025-11/  
-**Last Major Cleanup**: November 16, 2025 (Phase 1-3)  
-**Structure**: Numbered directories (01-09) for predictable navigation
+**Total Active Docs**: ~99 markdown files (-10 from consolidation)  
+**Archived Docs**: 36 files (33 in 2025-11/, 3 in 2025-12/)  
+**Last Major Cleanup**: December 15, 2025 (Documentation consolidation)  
+**Structure**: Numbered directories (01-09) for predictable navigation  
+**Reduction**: 38% fewer files through consolidation
 
 ---
 
 ## 🔄 Recent Updates
+
+### Documentation Consolidation (December 15, 2025) 🔥 **NEW**
+- ✅ Moved 7 data spec files from root to `05-data/`
+- ✅ Moved prompt generation file to `08-development/`
+- ✅ Archived 3 outdated migration/deprecation docs
+- ✅ Removed duplicate GENERATION_REPORTS.md
+- ✅ Updated INDEX.md with new file locations
+- **Result**: Root directory cleaned (15 → 5 files), better organization
+- **Impact**: Easier navigation, less clutter, clearer structure
 
 ### Scoring Module (November 16, 2025)
 - ✅ Created unified Scoring Module for quality assessment
