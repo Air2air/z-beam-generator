@@ -298,8 +298,7 @@ class TrivialContaminantsExporter:
             frontmatter['commonality_score'] = pattern_data['commonality_score']
         
         # Write to file with -contamination suffix
-        # NORMALIZATION: Wrap all fields in metadata property to match materials structure
-        output_data = {'metadata': frontmatter}
+        output_data = frontmatter
         
         filename = f"{slug}.yaml"
         output_path = self.output_dir / filename

@@ -1,200 +1,199 @@
-metadata:
-  name: Paint Primer Layers
-  slug: primer-coating-contamination
-  category: inorganic-coating
-  subcategory: paint
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-      in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: contaminant
-  title: Paint Primer Layers Contamination
-  contamination_description: Primer-coating contamination forms when zinc-rich and
-    epoxy-based layers degrade on metal surfaces after environmental exposure, creating
-    adhesive buildup that bonds tightly to substrate. Unlike rust, which flakes loosely,
-    this contamination exhibits sticky resilience and uneven thickness, so it distinguishes
-    by requiring targeted removal to avoid surface scarring. On steel, adhesion persists
-    strongly while on aluminum and galvanized metal, peeling occurs faster because
-    of weaker interfacial links, yet challenges arise from potential heat-induced
-    cracking during cleaning. Laser cleaning succeeds so because focused pulses vaporize
-    coating selectively, preserving underlying material integrity.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Inorganic-Coating
-    href: /contaminants/inorganic-coating
-  - label: Paint Primer Layers
-    href: /contaminants/inorganic-coating/paint/primer-coating-contamination
-  images:
-    hero:
-      url: /images/contamination/primer-coating-contamination-hero.jpg
-      alt: Paint Primer Layers contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/primer-coating-contamination-micro.jpg
-      alt: Paint Primer Layers contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: gaussian
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.1
-        min: 0.03
-        recommended: 0.05
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 800
-        wavelength_355nm: 28000
-        wavelength_532nm: 4500
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.04
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.012
-        real_part: 1.55
-      transmission_depth: 12.5
-    removal_characteristics:
-      byproducts:
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: VOCs
-        hazard_level: moderate
-        phase: gas
-      - compound: carbon_particulates
-        hazard_level: moderate
-        phase: solid
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 480
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 3
-        optimal_passes: 2
-        single_pass: 0.7
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: none
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Carbon Monoxide
-        concentration_mg_m3: 5-50
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      - compound: Carbon Dioxide
-        concentration_mg_m3: 900-5000
-        exposure_limit_mg_m3: 9000
-        hazard_class: toxic
-      - compound: Formaldehyde
-        concentration_mg_m3: 0.5-5.0
-        exposure_limit_mg_m3: 0.37
-        hazard_class: carcinogenic
-      - compound: Volatile Organic Compounds (VOCs)
-        concentration_mg_m3: 10-100
-        exposure_limit_mg_m3: 100
-        hazard_class: irritant
-      - compound: Hydrogen Chloride
-        concentration_mg_m3: 1-10
-        exposure_limit_mg_m3: 2
-        hazard_class: corrosive
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10.0
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: half_mask
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Thermal decomposition may generate hazardous fumes from paint additives
-      - Chlorinated compounds in some primers may produce corrosive gases
-      - Heavy metal pigments (lead, chromium) may become airborne
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: carbon
-        minimum_air_changes_per_hour: 10
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 1.2
-        pulse_duration_10ns: 0.6
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 350
-      heat_affected_zone_depth: 15
-      melting_point: null
-      specific_heat: 1200
-      thermal_conductivity: 0.25
-      thermal_diffusivity: 0.21
-      vaporization_temperature: 450
-  valid_materials:
-  - Steel
-  - Aluminum
-  - Galvanized Metal
+name: Paint Primer Layers
+slug: primer-coating-contamination
+category: inorganic-coating
+subcategory: paint
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Paint Primer Layers Contamination
+contamination_description: Primer-coating contamination forms when zinc-rich and epoxy-based
+  layers degrade on metal surfaces after environmental exposure, creating adhesive
+  buildup that bonds tightly to substrate. Unlike rust, which flakes loosely, this
+  contamination exhibits sticky resilience and uneven thickness, so it distinguishes
+  by requiring targeted removal to avoid surface scarring. On steel, adhesion persists
+  strongly while on aluminum and galvanized metal, peeling occurs faster because of
+  weaker interfacial links, yet challenges arise from potential heat-induced cracking
+  during cleaning. Laser cleaning succeeds so because focused pulses vaporize coating
+  selectively, preserving underlying material integrity.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Inorganic-Coating
+  href: /contaminants/inorganic-coating
+- label: Paint Primer Layers
+  href: /contaminants/inorganic-coating/paint/primer-coating-contamination
+images:
+  hero:
+    url: /images/contaminants/primer-coating-contamination-hero.jpg
+    alt: Paint Primer Layers contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/primer-coating-contamination-micro.jpg
+    alt: Paint Primer Layers contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: gaussian
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.03
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 800
+      wavelength_355nm: 28000
+      wavelength_532nm: 4500
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.04
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.012
+      real_part: 1.55
+    transmission_depth: 12.5
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: VOCs
+      hazard_level: moderate
+      phase: gas
+    - compound: carbon_particulates
+      hazard_level: moderate
+      phase: solid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 480
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.7
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 900-5000
+      exposure_limit_mg_m3: 9000
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 0.5-5.0
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Volatile Organic Compounds (VOCs)
+      concentration_mg_m3: 10-100
+      exposure_limit_mg_m3: 100
+      hazard_class: irritant
+    - compound: Hydrogen Chloride
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 2
+      hazard_class: corrosive
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: half_mask
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Thermal decomposition may generate hazardous fumes from paint additives
+    - Chlorinated compounds in some primers may produce corrosive gases
+    - Heavy metal pigments (lead, chromium) may become airborne
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 10
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 1200
+    thermal_conductivity: 0.25
+    thermal_diffusivity: 0.21
+    vaporization_temperature: 450
+valid_materials:
+- Steel
+- Aluminum
+- Galvanized Metal

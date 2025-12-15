@@ -1,188 +1,187 @@
-metadata:
-  name: Depleted Uranium Oxide
-  slug: uranium-oxide-contamination
-  category: chemical-residue
-  subcategory: hazardous
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-      in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: contaminant
-  title: Depleted Uranium Oxide Contamination
-  contamination_description: Uranium oxide forms on surfaces after exposure to nuclear
-    materials in manufacturing and military settings. Unlike rust or dust, it exhibits
-    dense layering and radioactivity so distinguishes itself clearly. On steel, bond
-    holds tightly, while on concrete, penetration deepens into structure, and challenges
-    arise from hardness during removal. Laser cleaning succeeds because ablation vaporizes
-    contamination precisely without residue spread.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Chemical-Residue
-    href: /contaminants/chemical-residue
-  - label: Depleted Uranium Oxide
-    href: /contaminants/chemical-residue/hazardous/uranium-oxide-contamination
-  images:
-    hero:
-      url: /images/contamination/uranium-oxide-contamination-hero.jpg
-      alt: Depleted Uranium Oxide contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/uranium-oxide-contamination-micro.jpg
-      alt: Depleted Uranium Oxide contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.4
-        min_j_cm2: 0.8
-        recommended_j_cm2: 1.1
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 100
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 8500
-        wavelength_355nm: 185000
-        wavelength_532nm: 42000
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.03
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.42
-        real_part: 2.35
-      transmission_depth: 1.18
-    removal_characteristics:
-      byproducts:
-      - compound: UO2 nanoparticles
-        hazard_level: high
-        phase: solid
-      - compound: UO3
-        hazard_level: high
-        phase: solid
-      - compound: O2
-        hazard_level: moderate
-        phase: gas
-      - compound: UO vapor
-        hazard_level: high
-        phase: gas
-      damage_risk_to_substrate: medium
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 120
-        typical_scan_speed_mm_s: 200
-      removal_efficiency:
-        diminishing_returns_after: 5
-        optimal_passes: 3
-        single_pass: 0.85
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'yes'
-        residual_stress: compressive
-        roughness_increase: moderate
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Uranium Oxide (as U)
-        concentration_mg_m3: 0.5
-        exposure_limit_mg_m3: 0.2
-        hazard_class: toxic
-      - compound: Uranium Dioxide (UO₂)
-        concentration_mg_m3: 0.3
-        exposure_limit_mg_m3: 0.2
-        hazard_class: toxic
-      - compound: Uranium Trioxide (UO₃)
-        concentration_mg_m3: 0.1
-        exposure_limit_mg_m3: 0.05
-        hazard_class: toxic
-      particulate_generation:
-        respirable_fraction: 0.8
-        size_range_um:
-        - 0.1
-        - 10.0
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: full_suit
-      substrate_compatibility_warnings:
-      - Laser parameters must be carefully controlled to minimize aerosolization
-      - Surface may produce refractory particles that persist in work area
-      - Contaminated runoff and debris require radioactive waste protocols
-      toxic_gas_risk: low
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: HEPA
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 4.1
-        pulse_duration_10ns: 3.2
-        wavelength_1064nm: 2.8
-      decomposition_temperature: 650
-      heat_affected_zone_depth: 18
-      melting_point: 3140
-      specific_heat: 235
-      thermal_conductivity: 2.5
-      thermal_diffusivity: 0.45
-      vaporization_temperature: 4130
-  valid_materials:
-  - Steel
-  - Concrete
+name: Depleted Uranium Oxide
+slug: uranium-oxide-contamination
+category: chemical-residue
+subcategory: hazardous
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Depleted Uranium Oxide Contamination
+contamination_description: Uranium oxide forms on surfaces after exposure to nuclear
+  materials in manufacturing and military settings. Unlike rust or dust, it exhibits
+  dense layering and radioactivity so distinguishes itself clearly. On steel, bond
+  holds tightly, while on concrete, penetration deepens into structure, and challenges
+  arise from hardness during removal. Laser cleaning succeeds because ablation vaporizes
+  contamination precisely without residue spread.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Chemical-Residue
+  href: /contaminants/chemical-residue
+- label: Depleted Uranium Oxide
+  href: /contaminants/chemical-residue/hazardous/uranium-oxide-contamination
+images:
+  hero:
+    url: /images/contaminants/uranium-oxide-contamination-hero.jpg
+    alt: Depleted Uranium Oxide contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/uranium-oxide-contamination-micro.jpg
+    alt: Depleted Uranium Oxide contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.4
+      min_j_cm2: 0.8
+      recommended_j_cm2: 1.1
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 8500
+      wavelength_355nm: 185000
+      wavelength_532nm: 42000
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.03
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.42
+      real_part: 2.35
+    transmission_depth: 1.18
+  removal_characteristics:
+    byproducts:
+    - compound: UO2 nanoparticles
+      hazard_level: high
+      phase: solid
+    - compound: UO3
+      hazard_level: high
+      phase: solid
+    - compound: O2
+      hazard_level: moderate
+      phase: gas
+    - compound: UO vapor
+      hazard_level: high
+      phase: gas
+    damage_risk_to_substrate: medium
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 120
+      typical_scan_speed_mm_s: 200
+    removal_efficiency:
+      diminishing_returns_after: 5
+      optimal_passes: 3
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'yes'
+      residual_stress: compressive
+      roughness_increase: moderate
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Uranium Oxide (as U)
+      concentration_mg_m3: 0.5
+      exposure_limit_mg_m3: 0.2
+      hazard_class: toxic
+    - compound: Uranium Dioxide (UO₂)
+      concentration_mg_m3: 0.3
+      exposure_limit_mg_m3: 0.2
+      hazard_class: toxic
+    - compound: Uranium Trioxide (UO₃)
+      concentration_mg_m3: 0.1
+      exposure_limit_mg_m3: 0.05
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.8
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: full_suit
+    substrate_compatibility_warnings:
+    - Laser parameters must be carefully controlled to minimize aerosolization
+    - Surface may produce refractory particles that persist in work area
+    - Contaminated runoff and debris require radioactive waste protocols
+    toxic_gas_risk: low
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 4.1
+      pulse_duration_10ns: 3.2
+      wavelength_1064nm: 2.8
+    decomposition_temperature: 650
+    heat_affected_zone_depth: 18
+    melting_point: 3140
+    specific_heat: 235
+    thermal_conductivity: 2.5
+    thermal_diffusivity: 0.45
+    vaporization_temperature: 4130
+valid_materials:
+- Steel
+- Concrete

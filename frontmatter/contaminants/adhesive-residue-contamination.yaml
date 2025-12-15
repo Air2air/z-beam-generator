@@ -1,261 +1,260 @@
-metadata:
-  name: Adhesive Residue / Tape Marks
-  slug: adhesive-residue-contamination
-  category: organic-residue
-  subcategory: adhesive
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-      in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: contaminant
-  title: Adhesive Residue / Tape Marks Contamination
-  contamination_description: Adhesive-residue contamination forms during shipping
-    or labeling processes, and clings tenaciously to metals and plastics. Unlike dust
-    that brushes away easily or oils that evaporate quickly, layer hardens over time
-    so tackiness persists after exposure. During cleaning, bonds resist solvents,
-    so gentle methods apply to prevent surface damage. Buildup is observed as sticky
-    films, distinct because it demands careful removal without scratching.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Organic-Residue
-    href: /contaminants/organic-residue
-  - label: Adhesive Residue / Tape Marks
-    href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
-  images:
-    hero:
-      url: /images/contamination/adhesive-residue-contamination-hero.jpg
-      alt: Adhesive Residue / Tape Marks contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/adhesive-residue-contamination-micro.jpg
-      alt: Adhesive Residue / Tape Marks contamination microscopic detail
+name: Adhesive Residue / Tape Marks
+slug: adhesive-residue-contamination
+category: organic-residue
+subcategory: adhesive
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Adhesive Residue / Tape Marks Contamination
+contamination_description: Adhesive-residue contamination forms during shipping or
+  labeling processes, and clings tenaciously to metals and plastics. Unlike dust that
+  brushes away easily or oils that evaporate quickly, layer hardens over time so tackiness
+  persists after exposure. During cleaning, bonds resist solvents, so gentle methods
+  apply to prevent surface damage. Buildup is observed as sticky films, distinct because
+  it demands careful removal without scratching.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Organic-Residue
+  href: /contaminants/organic-residue
+- label: Adhesive Residue / Tape Marks
+  href: /contaminants/organic-residue/adhesive/adhesive-residue-contamination
+images:
+  hero:
+    url: /images/contaminants/adhesive-residue-contamination-hero.jpg
+    alt: Adhesive Residue / Tape Marks contamination on surface before laser cleaning
   micro:
-    after: Post-cleaning reveals restored surface with adhesive residue / tape marks
-      successfully removed through precise laser ablation.
-    before: Surface shows contamination from adhesive residue / tape marks affecting
-      material appearance and properties.
-  context_notes: Common on manufactured items, shipped goods, or items with labels/tape
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.1
-        min: 0.02
-        recommended: 0.05
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 850
-        wavelength_355nm: 18500
-        wavelength_532nm: 4200
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.04
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.023
-        real_part: 1.52
-      transmission_depth: 11.8
-    removal_characteristics:
-      byproducts:
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: carbon_particulates
-        hazard_level: moderate
-        phase: solid
-      - compound: volatile_organic_compounds
-        hazard_level: moderate
-        phase: gas
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 240
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 5
-        optimal_passes: 3
-        single_pass: 0.7
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: compressive
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Acetaldehyde
-        concentration_mg_m3: 5-25
-        exposure_limit_mg_m3: 25
-        hazard_class: irritant
-      - compound: Formaldehyde
-        concentration_mg_m3: 1-10
-        exposure_limit_mg_m3: 0.3
-        hazard_class: carcinogenic
-      - compound: Benzene
-        concentration_mg_m3: 0.5-5
-        exposure_limit_mg_m3: 0.5
-        hazard_class: carcinogenic
-      - compound: Toluene
-        concentration_mg_m3: 2-15
-        exposure_limit_mg_m3: 20
-        hazard_class: toxic
-      - compound: Styrene
-        concentration_mg_m3: 3-20
-        exposure_limit_mg_m3: 50
-        hazard_class: irritant
-      - compound: Carbon Monoxide
-        concentration_mg_m3: 10-50
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: full_face
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - May cause surface discoloration on painted surfaces
-      - Can damage thin coatings or plated surfaces
-      - Potential for substrate heating on thermally sensitive materials
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: carbon
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 1.2
-        pulse_duration_10ns: 0.6
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 350
-      heat_affected_zone_depth: 15
-      melting_point: null
-      specific_heat: 1500
-      thermal_conductivity: 0.15
-      thermal_diffusivity: 0.1
-      vaporization_temperature: 450
-  eeat:
-    citations:
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    isBasedOn:
-      name: IEC 60825 - Safety of Laser Products
-      url: https://webstore.iec.ch/publication/3587
-    reviewedBy: Z-Beam Quality Assurance Team
-  valid_materials:
-  - Aluminum
-  - Steel
-  - Stainless Steel
-  - Cast Iron
-  - Copper
-  - Bronze
-  - Brass
-  - Titanium
-  - Zinc
-  - Nickel
-  - Lead
-  - Tin
-  - Cobalt
-  - Chromium
-  - ABS
-  - Acrylic (PMMA)
-  - Polycarbonate
-  - PET
-  - Polypropylene
-  - PVC
-  - Nylon
-  - PTFE
-  - Crown Glass
-  - Float Glass
-  - Borosilicate Glass
-  - Aluminosilicate Glass
-  - Fused Silica
-  - Gorilla Glass
-  - Tempered Glass
-  - Oak
-  - Maple
-  - Cherry
-  - Walnut
-  - Pine
-  - Cedar
-  - Ash
-  - Birch
-  - Mahogany
-  - Teak
-  - Bamboo
-  - Fir
-  - Alumina
-  - Silicon Carbide
-  - Zirconia
-  - Aluminum Nitride
-  - Boron Carbide
-  - Boron Nitride
-  - Silicon Nitride
-  - Redwood
+    url: /images/contaminants/adhesive-residue-contamination-micro.jpg
+    alt: Adhesive Residue / Tape Marks contamination microscopic detail
+micro:
+  after: Post-cleaning reveals restored surface with adhesive residue / tape marks
+    successfully removed through precise laser ablation.
+  before: Surface shows contamination from adhesive residue / tape marks affecting
+    material appearance and properties.
+context_notes: Common on manufactured items, shipped goods, or items with labels/tape
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.02
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 850
+      wavelength_355nm: 18500
+      wavelength_532nm: 4200
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.04
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.023
+      real_part: 1.52
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: carbon_particulates
+      hazard_level: moderate
+      phase: solid
+    - compound: volatile_organic_compounds
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 5
+      optimal_passes: 3
+      single_pass: 0.7
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acetaldehyde
+      concentration_mg_m3: 5-25
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Benzene
+      concentration_mg_m3: 0.5-5
+      exposure_limit_mg_m3: 0.5
+      hazard_class: carcinogenic
+    - compound: Toluene
+      concentration_mg_m3: 2-15
+      exposure_limit_mg_m3: 20
+      hazard_class: toxic
+    - compound: Styrene
+      concentration_mg_m3: 3-20
+      exposure_limit_mg_m3: 50
+      hazard_class: irritant
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 10-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: full_face
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - May cause surface discoloration on painted surfaces
+    - Can damage thin coatings or plated surfaces
+    - Potential for substrate heating on thermally sensitive materials
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 1500
+    thermal_conductivity: 0.15
+    thermal_diffusivity: 0.1
+    vaporization_temperature: 450
+eeat:
+  citations:
+  - IEC 60825 - Safety of Laser Products
+  - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  isBasedOn:
+    name: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/publication/3587
+  reviewedBy: Z-Beam Quality Assurance Team
+valid_materials:
+- Aluminum
+- Steel
+- Stainless Steel
+- Cast Iron
+- Copper
+- Bronze
+- Brass
+- Titanium
+- Zinc
+- Nickel
+- Lead
+- Tin
+- Cobalt
+- Chromium
+- ABS
+- Acrylic (PMMA)
+- Polycarbonate
+- PET
+- Polypropylene
+- PVC
+- Nylon
+- PTFE
+- Crown Glass
+- Float Glass
+- Borosilicate Glass
+- Aluminosilicate Glass
+- Fused Silica
+- Gorilla Glass
+- Tempered Glass
+- Oak
+- Maple
+- Cherry
+- Walnut
+- Pine
+- Cedar
+- Ash
+- Birch
+- Mahogany
+- Teak
+- Bamboo
+- Fir
+- Alumina
+- Silicon Carbide
+- Zirconia
+- Aluminum Nitride
+- Boron Carbide
+- Boron Nitride
+- Silicon Nitride
+- Redwood

@@ -1,198 +1,197 @@
-metadata:
-  name: Exhaust System Deposits
-  slug: exhaust-residue-contamination
-  category: thermal-damage
-  subcategory: fire
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-      Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Alessandro Moretti
-      author_country: Italy
-      voice_applied: true
-      content_type: contaminant
-  title: Exhaust System Deposits Contamination
-  contamination_description: 'Exhaust-residue contamination, it arises from carbonaceous
-    and metallic deposits in engine emissions, which accumulate tenaciously on surfaces
-    exposed to high-heat flows. This layer, it distinguishes itself by its oily, layered
-    adhesion, unlike dry rust that flakes easily, and behaves differently on metals:
-    on steel and stainless steel, it penetrates deeply, while on titanium, it manifests
-    as a superficial film resistant to abrasion. Removal challenges stem from its
-    chemical bonding, yet laser cleaning proves effective, as the process vaporizes
-    residues selectively without substrate damage.'
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Thermal-Damage
-    href: /contaminants/thermal-damage
-  - label: Exhaust System Deposits
-    href: /contaminants/thermal-damage/fire/exhaust-residue-contamination
-  images:
-    hero:
-      url: /images/contamination/exhaust-residue-contamination-hero.jpg
-      alt: Exhaust System Deposits contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/exhaust-residue-contamination-micro.jpg
-      alt: Exhaust System Deposits contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.4
-        min_j_cm2: 0.8
-        recommended_j_cm2: 1.1
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 200
-        min_ns: 10
-        recommended_ns: 100
-      repetition_rate_khz:
-        max: 100
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.55
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 850
-        wavelength_532nm: 18500
-      reflectivity:
-        wavelength_1064nm: 0.12
-        wavelength_355nm: 0.05
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.22
-        real_part: 1.65
-      transmission_depth: 11.8
-    removal_characteristics:
-      byproducts:
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: Carbon nanoparticles
-        hazard_level: moderate
-        phase: solid
-      - compound: SO2
-        hazard_level: moderate
-        phase: gas
-      - compound: PAH compounds
-        hazard_level: high
-        phase: solid
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 240
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 4
-        optimal_passes: 3
-        single_pass: 0.65
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: compressive
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Metal oxides (mixed)
-        concentration_mg_m3: 5-50
-        exposure_limit_mg_m3: 5
-        hazard_class: toxic
-      - compound: Carbon monoxide
-        concentration_mg_m3: 10-100
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      - compound: Volatile organic compounds
-        concentration_mg_m3: 2-20
-        exposure_limit_mg_m3: 100
-        hazard_class: irritant
-      - compound: Polycyclic aromatic hydrocarbons
-        concentration_mg_m3: 0.1-2
-        exposure_limit_mg_m3: 0.2
-        hazard_class: carcinogenic
-      particulate_generation:
-        respirable_fraction: 0.8
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - May generate toxic fumes when cleaning painted or coated surfaces
-      - Organic deposits may produce cyanide compounds during decomposition
-      - Chlorinated compounds may form phosgene gas
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: dual
-        minimum_air_changes_per_hour: 15
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 3.5
-        pulse_duration_10ns: 2.1
-        wavelength_1064nm: 1.8
-      decomposition_temperature: 450
-      heat_affected_zone_depth: 15
-      melting_point: 520
-      specific_heat: 1200
-      thermal_conductivity: 0.8
-      thermal_diffusivity: 0.25
-      vaporization_temperature: 650
-  valid_materials:
-  - Steel
-  - Stainless Steel
-  - Titanium
+name: Exhaust System Deposits
+slug: exhaust-residue-contamination
+category: thermal-damage
+subcategory: fire
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: contaminant
+title: Exhaust System Deposits Contamination
+contamination_description: 'Exhaust-residue contamination, it arises from carbonaceous
+  and metallic deposits in engine emissions, which accumulate tenaciously on surfaces
+  exposed to high-heat flows. This layer, it distinguishes itself by its oily, layered
+  adhesion, unlike dry rust that flakes easily, and behaves differently on metals:
+  on steel and stainless steel, it penetrates deeply, while on titanium, it manifests
+  as a superficial film resistant to abrasion. Removal challenges stem from its chemical
+  bonding, yet laser cleaning proves effective, as the process vaporizes residues
+  selectively without substrate damage.'
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Thermal-Damage
+  href: /contaminants/thermal-damage
+- label: Exhaust System Deposits
+  href: /contaminants/thermal-damage/fire/exhaust-residue-contamination
+images:
+  hero:
+    url: /images/contaminants/exhaust-residue-contamination-hero.jpg
+    alt: Exhaust System Deposits contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/exhaust-residue-contamination-micro.jpg
+    alt: Exhaust System Deposits contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.4
+      min_j_cm2: 0.8
+      recommended_j_cm2: 1.1
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 100
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.55
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 850
+      wavelength_532nm: 18500
+    reflectivity:
+      wavelength_1064nm: 0.12
+      wavelength_355nm: 0.05
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.22
+      real_part: 1.65
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: Carbon nanoparticles
+      hazard_level: moderate
+      phase: solid
+    - compound: SO2
+      hazard_level: moderate
+      phase: gas
+    - compound: PAH compounds
+      hazard_level: high
+      phase: solid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 4
+      optimal_passes: 3
+      single_pass: 0.65
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Metal oxides (mixed)
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 5
+      hazard_class: toxic
+    - compound: Carbon monoxide
+      concentration_mg_m3: 10-100
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Volatile organic compounds
+      concentration_mg_m3: 2-20
+      exposure_limit_mg_m3: 100
+      hazard_class: irritant
+    - compound: Polycyclic aromatic hydrocarbons
+      concentration_mg_m3: 0.1-2
+      exposure_limit_mg_m3: 0.2
+      hazard_class: carcinogenic
+    particulate_generation:
+      respirable_fraction: 0.8
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - May generate toxic fumes when cleaning painted or coated surfaces
+    - Organic deposits may produce cyanide compounds during decomposition
+    - Chlorinated compounds may form phosgene gas
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: dual
+      minimum_air_changes_per_hour: 15
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 3.5
+      pulse_duration_10ns: 2.1
+      wavelength_1064nm: 1.8
+    decomposition_temperature: 450
+    heat_affected_zone_depth: 15
+    melting_point: 520
+    specific_heat: 1200
+    thermal_conductivity: 0.8
+    thermal_diffusivity: 0.25
+    vaporization_temperature: 650
+valid_materials:
+- Steel
+- Stainless Steel
+- Titanium

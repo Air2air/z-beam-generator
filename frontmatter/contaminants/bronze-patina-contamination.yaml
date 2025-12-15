@@ -1,196 +1,195 @@
-metadata:
-  name: Bronze Patina and Corrosion
-  slug: bronze-patina-contamination
-  category: oxidation
-  subcategory: non-ferrous
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 3
-    name: Ikmanda Roswati
-    country: Indonesia
-    country_display: Indonesia
-    title: Ph.D.
-    sex: m
-    jobTitle: Junior Research Scientist in Laser Physics
-    expertise:
-    - Ultrafast Laser Physics and Material Interactions
-    affiliation:
-      name: Bandung Institute of Technology
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Physics, ITB, 2020
-    - 2+ years in ultrafast laser research including ASEAN optics workshops
-    - Assisted in international optics projects
-    languages:
-    - English
-    - Bahasa Indonesia
-    email: info@z-beam.com
-    image: /images/author/ikmanda-roswati.jpg
-    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-      Bandung Institute of Technology, fieldwork optics setup
-    url: https://z-beam.com/authors/ikmanda-roswati
-    sameAs:
-    - https://linkedin.com/in/ikmanda-roswati-physicist
-    - https://www.academia.edu/profile/IkmandaRoswati
-    persona_file: indonesia_persona.yaml
-    formatting_file: indonesia_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Ikmanda Roswati
-      author_country: Indonesia
-      voice_applied: true
-      content_type: contaminant
-  title: Bronze Patina and Corrosion Contamination
-  contamination_description: Bronze-patina contamination, it arises from oxidation
-    of copper-tin alloys in bronze when exposed to moist air and pollutants, thus
-    forming adherent green-brown layers that alter surface appearance. This patina
-    shows earthy color and porous texture, it distinguishes from similar contaminants
-    by adhering tightly on bronze while spreading unevenly on brass surfaces and thinly
-    on copper, so chemical bonding resists mechanical scraping and poses key removal
-    challenges. Laser cleaning applies precise energy pulses to ablate the layer selectively,
-    thus restoring underlying metal without heat damage, and surface already exhibits
-    integrity after treatment.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Oxidation
-    href: /contaminants/oxidation
-  - label: Bronze Patina and Corrosion
-    href: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
-  images:
-    hero:
-      url: /images/contamination/bronze-patina-contamination-hero.jpg
-      alt: Bronze Patina and Corrosion contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/bronze-patina-contamination-micro.jpg
-      alt: Bronze Patina and Corrosion contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.4
-        min_j_cm2: 0.8
-        recommended_j_cm2: 1.1
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 100
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 8500
-        wavelength_355nm: 45000
-        wavelength_532nm: 22000
-      reflectivity:
-        wavelength_1064nm: 0.35
-        wavelength_355nm: 0.07
-        wavelength_532nm: 0.18
-      refractive_index:
-        imaginary_part: 0.85
-        real_part: 2.45
-      transmission_depth: 11.8
-    removal_characteristics:
-      byproducts:
-      - compound: CuO
-        hazard_level: moderate
-        phase: solid
-      - compound: Cu2O
-        hazard_level: moderate
-        phase: solid
-      - compound: SnO2
-        hazard_level: moderate
-        phase: solid
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: Metal vapor
-        hazard_level: high
-        phase: gas
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 240
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 4
-        optimal_passes: 3
-        single_pass: 0.7
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: compressive
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Copper Oxide Fume
-        concentration_mg_m3: 5.0
-        exposure_limit_mg_m3: 0.1
-        hazard_class: irritant
-      - compound: Tin Oxide Fume
-        concentration_mg_m3: 2.0
-        exposure_limit_mg_m3: 2.0
-        hazard_class: irritant
-      - compound: Lead Oxide Fume
-        concentration_mg_m3: 0.05
-        exposure_limit_mg_m3: 0.05
-        hazard_class: toxic
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10.0
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Lead content in bronze alloys may generate toxic lead oxide fumes
-      - Chloride-containing patinas may produce chlorine gas when heated
-      - Sulfur-containing compounds in corrosion may produce sulfur oxides
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: HEPA
-        minimum_air_changes_per_hour: 10
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 2.2
-        pulse_duration_10ns: 1.5
-        wavelength_1064nm: 1.8
-      decomposition_temperature: 280
-      heat_affected_zone_depth: 15
-      melting_point: N/A
-      specific_heat: 380
-      thermal_conductivity: 0.8
-      thermal_diffusivity: 0.25
-      vaporization_temperature: 1085
-  valid_materials:
-  - Bronze
-  - Brass
-  - Copper
+name: Bronze Patina and Corrosion
+slug: bronze-patina-contamination
+category: oxidation
+subcategory: non-ferrous
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: contaminant
+title: Bronze Patina and Corrosion Contamination
+contamination_description: Bronze-patina contamination, it arises from oxidation of
+  copper-tin alloys in bronze when exposed to moist air and pollutants, thus forming
+  adherent green-brown layers that alter surface appearance. This patina shows earthy
+  color and porous texture, it distinguishes from similar contaminants by adhering
+  tightly on bronze while spreading unevenly on brass surfaces and thinly on copper,
+  so chemical bonding resists mechanical scraping and poses key removal challenges.
+  Laser cleaning applies precise energy pulses to ablate the layer selectively, thus
+  restoring underlying metal without heat damage, and surface already exhibits integrity
+  after treatment.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Oxidation
+  href: /contaminants/oxidation
+- label: Bronze Patina and Corrosion
+  href: /contaminants/oxidation/non-ferrous/bronze-patina-contamination
+images:
+  hero:
+    url: /images/contaminants/bronze-patina-contamination-hero.jpg
+    alt: Bronze Patina and Corrosion contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/bronze-patina-contamination-micro.jpg
+    alt: Bronze Patina and Corrosion contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.4
+      min_j_cm2: 0.8
+      recommended_j_cm2: 1.1
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 8500
+      wavelength_355nm: 45000
+      wavelength_532nm: 22000
+    reflectivity:
+      wavelength_1064nm: 0.35
+      wavelength_355nm: 0.07
+      wavelength_532nm: 0.18
+    refractive_index:
+      imaginary_part: 0.85
+      real_part: 2.45
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: CuO
+      hazard_level: moderate
+      phase: solid
+    - compound: Cu2O
+      hazard_level: moderate
+      phase: solid
+    - compound: SnO2
+      hazard_level: moderate
+      phase: solid
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: Metal vapor
+      hazard_level: high
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 4
+      optimal_passes: 3
+      single_pass: 0.7
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Copper Oxide Fume
+      concentration_mg_m3: 5.0
+      exposure_limit_mg_m3: 0.1
+      hazard_class: irritant
+    - compound: Tin Oxide Fume
+      concentration_mg_m3: 2.0
+      exposure_limit_mg_m3: 2.0
+      hazard_class: irritant
+    - compound: Lead Oxide Fume
+      concentration_mg_m3: 0.05
+      exposure_limit_mg_m3: 0.05
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Lead content in bronze alloys may generate toxic lead oxide fumes
+    - Chloride-containing patinas may produce chlorine gas when heated
+    - Sulfur-containing compounds in corrosion may produce sulfur oxides
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 10
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 2.2
+      pulse_duration_10ns: 1.5
+      wavelength_1064nm: 1.8
+    decomposition_temperature: 280
+    heat_affected_zone_depth: 15
+    melting_point: N/A
+    specific_heat: 380
+    thermal_conductivity: 0.8
+    thermal_diffusivity: 0.25
+    vaporization_temperature: 1085
+valid_materials:
+- Bronze
+- Brass
+- Copper

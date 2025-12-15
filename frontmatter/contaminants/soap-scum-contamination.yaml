@@ -1,211 +1,210 @@
-metadata:
-  name: Soap Scum Buildup
-  slug: soap-scum-contamination
-  category: organic-residue
-  subcategory: cleaning-agent
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-      Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Alessandro Moretti
-      author_country: Italy
-      voice_applied: true
-      content_type: contaminant
-  title: Soap Scum Buildup Contamination
-  contamination_description: Soap-scum contamination, it manifests as fatty acid salt
-    deposits that arise from the interaction between soap residues and hard water
-    minerals, which tenaciously adhere to surfaces in humid environments. This layer,
-    it distinguishes itself from mineral scales or organic films through its waxy,
-    translucent consistency and sensitivity to pH variations, behaving differently
-    on materials like tile or glass where it spreads unevenly and resists mechanical
-    abrasion, yet persists less stubbornly on ceramics compared to metals. Key challenges
-    for removal include its strong bonding influenced from repeated exposure, but
-    laser cleaning proves effective, as the process selectively ablates the scum without
-    damaging the substrate, leading to efficient restoration.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Organic-Residue
-    href: /contaminants/organic-residue
-  - label: Soap Scum Buildup
-    href: /contaminants/organic-residue/cleaning-agent/soap-scum-contamination
-  images:
-    hero:
-      url: /images/contamination/soap-scum-contamination-hero.jpg
-      alt: Soap Scum Buildup contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/soap-scum-contamination-micro.jpg
-      alt: Soap Scum Buildup contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.7
-      overlap_percentage: 50
-      polarization: any
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 100
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.6
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 120
-        wavelength_355nm: 2800
-        wavelength_532nm: 450
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.05
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.012
-        real_part: 1.45
-      transmission_depth: 83.3
-    removal_characteristics:
-      byproducts:
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: carbon_particulates
-        hazard_level: moderate
-        phase: solid
-      - compound: organic_vapors
-        hazard_level: moderate
-        phase: gas
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 240
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 3
-        optimal_passes: 2
-        single_pass: 0.7
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: none
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Acetaldehyde
-        concentration_mg_m3: 5-25
-        exposure_limit_mg_m3: 25
-        hazard_class: irritant
-      - compound: Formaldehyde
-        concentration_mg_m3: 1-10
-        exposure_limit_mg_m3: 0.3
-        hazard_class: carcinogenic
-      - compound: Carbon monoxide
-        concentration_mg_m3: 10-50
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      - compound: Volatile Organic Compounds (VOCs)
-        concentration_mg_m3: 15-60
-        exposure_limit_mg_m3: 100
-        hazard_class: irritant
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: half_mask
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - May damage acrylic/plastic surfaces due to localized heating
-      - Can cause discoloration or etching on certain metals
-      - Avoid use on surfaces with underlying coatings or paints
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: carbon
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 2.5
-        pulse_duration_10ns: 1.2
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 350
-      heat_affected_zone_depth: 15
-      melting_point: null
-      specific_heat: 1500
-      thermal_conductivity: 0.25
-      thermal_diffusivity: 0.17
-      vaporization_temperature: 450
-  valid_materials:
-  - Tile
-  - Fiberglass
-  - Crown Glass
-  - Float Glass
-  - Borosilicate Glass
-  - Aluminosilicate Glass
-  - Fused Silica
-  - Gorilla Glass
-  - Tempered Glass
-  - Alumina
-  - Silicon Carbide
-  - Zirconia
-  - Aluminum Nitride
-  - Boron Carbide
-  - Boron Nitride
-  - Silicon Nitride
+name: Soap Scum Buildup
+slug: soap-scum-contamination
+category: organic-residue
+subcategory: cleaning-agent
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: contaminant
+title: Soap Scum Buildup Contamination
+contamination_description: Soap-scum contamination, it manifests as fatty acid salt
+  deposits that arise from the interaction between soap residues and hard water minerals,
+  which tenaciously adhere to surfaces in humid environments. This layer, it distinguishes
+  itself from mineral scales or organic films through its waxy, translucent consistency
+  and sensitivity to pH variations, behaving differently on materials like tile or
+  glass where it spreads unevenly and resists mechanical abrasion, yet persists less
+  stubbornly on ceramics compared to metals. Key challenges for removal include its
+  strong bonding influenced from repeated exposure, but laser cleaning proves effective,
+  as the process selectively ablates the scum without damaging the substrate, leading
+  to efficient restoration.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Organic-Residue
+  href: /contaminants/organic-residue
+- label: Soap Scum Buildup
+  href: /contaminants/organic-residue/cleaning-agent/soap-scum-contamination
+images:
+  hero:
+    url: /images/contaminants/soap-scum-contamination-hero.jpg
+    alt: Soap Scum Buildup contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/soap-scum-contamination-micro.jpg
+    alt: Soap Scum Buildup contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.7
+    overlap_percentage: 50
+    polarization: any
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.6
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 120
+      wavelength_355nm: 2800
+      wavelength_532nm: 450
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.05
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.012
+      real_part: 1.45
+    transmission_depth: 83.3
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: carbon_particulates
+      hazard_level: moderate
+      phase: solid
+    - compound: organic_vapors
+      hazard_level: moderate
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.7
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acetaldehyde
+      concentration_mg_m3: 5-25
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 1-10
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Carbon monoxide
+      concentration_mg_m3: 10-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Volatile Organic Compounds (VOCs)
+      concentration_mg_m3: 15-60
+      exposure_limit_mg_m3: 100
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: half_mask
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - May damage acrylic/plastic surfaces due to localized heating
+    - Can cause discoloration or etching on certain metals
+    - Avoid use on surfaces with underlying coatings or paints
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 2.5
+      pulse_duration_10ns: 1.2
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 350
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 1500
+    thermal_conductivity: 0.25
+    thermal_diffusivity: 0.17
+    vaporization_temperature: 450
+valid_materials:
+- Tile
+- Fiberglass
+- Crown Glass
+- Float Glass
+- Borosilicate Glass
+- Aluminosilicate Glass
+- Fused Silica
+- Gorilla Glass
+- Tempered Glass
+- Alumina
+- Silicon Carbide
+- Zirconia
+- Aluminum Nitride
+- Boron Carbide
+- Boron Nitride
+- Silicon Nitride

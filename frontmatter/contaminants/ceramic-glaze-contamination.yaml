@@ -1,203 +1,202 @@
-metadata:
-  name: Ceramic Glaze Deposits
-  slug: ceramic-glaze-contamination
-  category: inorganic-coating
-  subcategory: ceramic
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-      in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: contaminant
-  title: Ceramic Glaze Deposits Contamination
-  contamination_description: Ceramic-glaze contamination consists of vitrified silicate
-    residues that form during high-temperature firing in ceramic manufacturing, so
-    layer adheres tightly to surfaces after cooling. This contamination shows unique
-    glassy hardness and chemical inertness, which distinguish it from softer organic
-    residues or metallic scales, and on materials like porcelain or alumina, it behaves
-    as a uniform coating that resists cracking under stress. Removal faces challenges
-    from its durable bond, but laser cleaning proves effective because precise energy
-    pulses ablate the glaze selectively, so substrate remains undamaged during treatment.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Inorganic-Coating
-    href: /contaminants/inorganic-coating
-  - label: Ceramic Glaze Deposits
-    href: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
-  images:
-    hero:
-      url: /images/contamination/ceramic-glaze-contamination-hero.jpg
-      alt: Ceramic Glaze Deposits contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/ceramic-glaze-contamination-micro.jpg
-      alt: Ceramic Glaze Deposits contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.5
-        min_j_cm2: 0.8
-        recommended_j_cm2: 1.1
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.1
-        min: 0.03
-        recommended: 0.05
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 1200
-        wavelength_355nm: 28000
-        wavelength_532nm: 4500
-      reflectivity:
-        wavelength_1064nm: 0.25
-        wavelength_355nm: 0.08
-        wavelength_532nm: 0.15
-      refractive_index:
-        imaginary_part: 0.012
-        real_part: 1.65
-      transmission_depth: 8.3
-    removal_characteristics:
-      byproducts:
-      - compound: SiO2 nanoparticles
-        hazard_level: moderate
-        phase: solid
-      - compound: Metal oxide vapors
-        hazard_level: moderate
-        phase: gas
-      - compound: Glaze fragments
-        hazard_level: low
-        phase: solid
-      damage_risk_to_substrate: medium
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 240
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 6
-        optimal_passes: 4
-        single_pass: 0.3
-      secondary_mechanisms:
-      - thermal_stress_fracturing
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: compressive
-        roughness_increase: moderate
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Silicon Dioxide (crystalline silica)
-        concentration_mg_m3: 5.0
-        exposure_limit_mg_m3: 0.025
-        hazard_class: toxic
-      - compound: Lead Oxide
-        concentration_mg_m3: 0.5
-        exposure_limit_mg_m3: 0.05
-        hazard_class: toxic
-      - compound: Metal Oxides (various)
-        concentration_mg_m3: 2.0
-        exposure_limit_mg_m3: 5.0
-        hazard_class: irritant
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10.0
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Thermal shock may cause substrate damage or fragmentation
-      - Incomplete removal may create respirable dust during cleanup
-      - Potential for reflective surfaces to redirect laser energy
-      toxic_gas_risk: low
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: HEPA
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 4.5
-        pulse_duration_10ns: 3.2
-        wavelength_1064nm: 2.8
-      decomposition_temperature: 1200
-      heat_affected_zone_depth: 25
-      melting_point: 1100
-      specific_heat: 850
-      thermal_conductivity: 1.2
-      thermal_diffusivity: 0.8
-      vaporization_temperature: 1800
-  valid_materials:
-  - Porcelain
-  - Alumina
-  - Silicon Carbide
-  - Zirconia
-  - Aluminum Nitride
-  - Boron Carbide
-  - Boron Nitride
-  - Silicon Nitride
-  - Granite
-  - Marble
-  - Limestone
-  - Sandstone
-  - Basalt
-  - Slate
-  - Quartzite
-  - Travertine
-  - Bluestone
-  - Soapstone
+name: Ceramic Glaze Deposits
+slug: ceramic-glaze-contamination
+category: inorganic-coating
+subcategory: ceramic
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Ceramic Glaze Deposits Contamination
+contamination_description: Ceramic-glaze contamination consists of vitrified silicate
+  residues that form during high-temperature firing in ceramic manufacturing, so layer
+  adheres tightly to surfaces after cooling. This contamination shows unique glassy
+  hardness and chemical inertness, which distinguish it from softer organic residues
+  or metallic scales, and on materials like porcelain or alumina, it behaves as a
+  uniform coating that resists cracking under stress. Removal faces challenges from
+  its durable bond, but laser cleaning proves effective because precise energy pulses
+  ablate the glaze selectively, so substrate remains undamaged during treatment.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Inorganic-Coating
+  href: /contaminants/inorganic-coating
+- label: Ceramic Glaze Deposits
+  href: /contaminants/inorganic-coating/ceramic/ceramic-glaze-contamination
+images:
+  hero:
+    url: /images/contaminants/ceramic-glaze-contamination-hero.jpg
+    alt: Ceramic Glaze Deposits contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/ceramic-glaze-contamination-micro.jpg
+    alt: Ceramic Glaze Deposits contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.5
+      min_j_cm2: 0.8
+      recommended_j_cm2: 1.1
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.1
+      min: 0.03
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 1200
+      wavelength_355nm: 28000
+      wavelength_532nm: 4500
+    reflectivity:
+      wavelength_1064nm: 0.25
+      wavelength_355nm: 0.08
+      wavelength_532nm: 0.15
+    refractive_index:
+      imaginary_part: 0.012
+      real_part: 1.65
+    transmission_depth: 8.3
+  removal_characteristics:
+    byproducts:
+    - compound: SiO2 nanoparticles
+      hazard_level: moderate
+      phase: solid
+    - compound: Metal oxide vapors
+      hazard_level: moderate
+      phase: gas
+    - compound: Glaze fragments
+      hazard_level: low
+      phase: solid
+    damage_risk_to_substrate: medium
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 240
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 6
+      optimal_passes: 4
+      single_pass: 0.3
+    secondary_mechanisms:
+    - thermal_stress_fracturing
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: moderate
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Silicon Dioxide (crystalline silica)
+      concentration_mg_m3: 5.0
+      exposure_limit_mg_m3: 0.025
+      hazard_class: toxic
+    - compound: Lead Oxide
+      concentration_mg_m3: 0.5
+      exposure_limit_mg_m3: 0.05
+      hazard_class: toxic
+    - compound: Metal Oxides (various)
+      concentration_mg_m3: 2.0
+      exposure_limit_mg_m3: 5.0
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Thermal shock may cause substrate damage or fragmentation
+    - Incomplete removal may create respirable dust during cleanup
+    - Potential for reflective surfaces to redirect laser energy
+    toxic_gas_risk: low
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 4.5
+      pulse_duration_10ns: 3.2
+      wavelength_1064nm: 2.8
+    decomposition_temperature: 1200
+    heat_affected_zone_depth: 25
+    melting_point: 1100
+    specific_heat: 850
+    thermal_conductivity: 1.2
+    thermal_diffusivity: 0.8
+    vaporization_temperature: 1800
+valid_materials:
+- Porcelain
+- Alumina
+- Silicon Carbide
+- Zirconia
+- Aluminum Nitride
+- Boron Carbide
+- Boron Nitride
+- Silicon Nitride
+- Granite
+- Marble
+- Limestone
+- Sandstone
+- Basalt
+- Slate
+- Quartzite
+- Travertine
+- Bluestone
+- Soapstone

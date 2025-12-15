@@ -1,226 +1,225 @@
-metadata:
-  name: Graffiti and Spray Paint
-  slug: graffiti-paint-contamination
-  category: inorganic-coating
-  subcategory: paint
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 4
-    name: Todd Dunning
-    country: United States
-    country_display: United States
-    title: MA
-    sex: m
-    jobTitle: Junior Optical Materials Specialist
-    expertise:
-    - Optical Materials for Laser Systems
-    affiliation:
-      name: Coherent Inc.
-      type: Organization
-    credentials:
-    - BA Physics, UC Irvine, 2017
-    - Hands-on at JPL optics internship, 2018
-    - MA Optics and Photonics, UC Irvine, 2019
-    - 3+ years in laser systems development
-    - Hands-on experience with optical fabrication
-    email: info@z-beam.com
-    image: /images/author/todd-dunning.jpg
-    imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
-      with precision optics tools
-    url: https://z-beam.com/authors/todd-dunning
-    sameAs:
-    - https://linkedin.com/in/todd-dunning-optics
-    - https://spie.org/profile/Todd.Dunning
-    persona_file: usa_persona.yaml
-    formatting_file: usa_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Todd Dunning
-      author_country: United States
-      voice_applied: true
-      content_type: contaminant
-  title: Graffiti and Spray Paint Contamination
-  contamination_description: Graffiti paint acts as a deliberate contaminant that
-    spray artists apply to urban surfaces, where it quickly bonds through chemical
-    adhesion and solvent penetration. Unlike everyday dirt or pollutants, it sets
-    up deep into porous substrates while creating slick, resistant films on non-porous
-    ones, turning removal into a significant challenge that often leaves behind stubborn
-    stains. Laser cleaning tackles this effectively by vaporizing the paint layer
-    precisely without damaging the base material, achieving a clean finish that traditional
-    solvents struggle to match.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Inorganic-Coating
-    href: /contaminants/inorganic-coating
-  - label: Graffiti and Spray Paint
-    href: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
-  images:
-    hero:
-      url: /images/contamination/graffiti-paint-contamination-hero.jpg
-      alt: Graffiti and Spray Paint contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/graffiti-paint-contamination-micro.jpg
-      alt: Graffiti and Spray Paint contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 30
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 100
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 8500
-        wavelength_355nm: 45000
-        wavelength_532nm: 22000
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.05
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.12
-        real_part: 1.55
-      transmission_depth: 11.8
-    removal_characteristics:
-      byproducts:
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: VOCs
-        hazard_level: moderate
-        phase: gas
-      - compound: carbon_particulates
-        hazard_level: moderate
-        phase: solid
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 480
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 3
-        optimal_passes: 2
-        single_pass: 0.7
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: none
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Carbon Monoxide
-        concentration_mg_m3: 5-50
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      - compound: Carbon Dioxide
-        concentration_mg_m3: 900-9000
-        exposure_limit_mg_m3: 9000
-        hazard_class: toxic
-      - compound: Benzene
-        concentration_mg_m3: 0.1-5
-        exposure_limit_mg_m3: 1.6
-        hazard_class: carcinogenic
-      - compound: Toluene
-        concentration_mg_m3: 1-20
-        exposure_limit_mg_m3: 75
-        hazard_class: toxic
-      - compound: Formaldehyde
-        concentration_mg_m3: 0.1-2
-        exposure_limit_mg_m3: 0.37
-        hazard_class: carcinogenic
-      - compound: Hydrogen Chloride
-        concentration_mg_m3: 0.5-10
-        exposure_limit_mg_m3: 2.5
-        hazard_class: corrosive
-      particulate_generation:
-        respirable_fraction: 0.8
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Thermal damage possible on wood, plastic, or painted surfaces
-      - Reflective surfaces may redirect laser energy
-      - Moisture in substrate may cause steam explosion
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: carbon
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 0.4
-        pulse_duration_10ns: 0.6
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 300
-      heat_affected_zone_depth: 15
-      melting_point: null
-      specific_heat: 1200
-      thermal_conductivity: 0.2
-      thermal_diffusivity: 0.17
-      vaporization_temperature: 450
-  valid_materials:
-  - Concrete
-  - Brick
-  - Granite
-  - Marble
-  - Limestone
-  - Sandstone
-  - Basalt
-  - Slate
-  - Quartzite
-  - Travertine
-  - Bluestone
-  - Soapstone
-  - Aluminum
-  - Steel
-  - Stainless Steel
-  - Cast Iron
-  - Copper
-  - Bronze
-  - Brass
-  - Titanium
-  - Zinc
-  - Nickel
-  - Lead
-  - Tin
-  - Cobalt
-  - Chromium
+name: Graffiti and Spray Paint
+slug: graffiti-paint-contamination
+category: inorganic-coating
+subcategory: paint
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 4
+  name: Todd Dunning
+  country: United States
+  country_display: United States
+  title: MA
+  sex: m
+  jobTitle: Junior Optical Materials Specialist
+  expertise:
+  - Optical Materials for Laser Systems
+  affiliation:
+    name: Coherent Inc.
+    type: Organization
+  credentials:
+  - BA Physics, UC Irvine, 2017
+  - Hands-on at JPL optics internship, 2018
+  - MA Optics and Photonics, UC Irvine, 2019
+  - 3+ years in laser systems development
+  - Hands-on experience with optical fabrication
+  email: info@z-beam.com
+  image: /images/author/todd-dunning.jpg
+  imageAlt: Todd Dunning, MA, Junior Optical Materials Specialist at Coherent Inc.,
+    with precision optics tools
+  url: https://z-beam.com/authors/todd-dunning
+  sameAs:
+  - https://linkedin.com/in/todd-dunning-optics
+  - https://spie.org/profile/Todd.Dunning
+  persona_file: usa_persona.yaml
+  formatting_file: usa_formatting.yaml
+_metadata:
+  voice:
+    author_name: Todd Dunning
+    author_country: United States
+    voice_applied: true
+    content_type: contaminant
+title: Graffiti and Spray Paint Contamination
+contamination_description: Graffiti paint acts as a deliberate contaminant that spray
+  artists apply to urban surfaces, where it quickly bonds through chemical adhesion
+  and solvent penetration. Unlike everyday dirt or pollutants, it sets up deep into
+  porous substrates while creating slick, resistant films on non-porous ones, turning
+  removal into a significant challenge that often leaves behind stubborn stains. Laser
+  cleaning tackles this effectively by vaporizing the paint layer precisely without
+  damaging the base material, achieving a clean finish that traditional solvents struggle
+  to match.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Inorganic-Coating
+  href: /contaminants/inorganic-coating
+- label: Graffiti and Spray Paint
+  href: /contaminants/inorganic-coating/paint/graffiti-paint-contamination
+images:
+  hero:
+    url: /images/contaminants/graffiti-paint-contamination-hero.jpg
+    alt: Graffiti and Spray Paint contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/graffiti-paint-contamination-micro.jpg
+    alt: Graffiti and Spray Paint contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 30
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 100
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 8500
+      wavelength_355nm: 45000
+      wavelength_532nm: 22000
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.05
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.12
+      real_part: 1.55
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: VOCs
+      hazard_level: moderate
+      phase: gas
+    - compound: carbon_particulates
+      hazard_level: moderate
+      phase: solid
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 480
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.7
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 900-9000
+      exposure_limit_mg_m3: 9000
+      hazard_class: toxic
+    - compound: Benzene
+      concentration_mg_m3: 0.1-5
+      exposure_limit_mg_m3: 1.6
+      hazard_class: carcinogenic
+    - compound: Toluene
+      concentration_mg_m3: 1-20
+      exposure_limit_mg_m3: 75
+      hazard_class: toxic
+    - compound: Formaldehyde
+      concentration_mg_m3: 0.1-2
+      exposure_limit_mg_m3: 0.37
+      hazard_class: carcinogenic
+    - compound: Hydrogen Chloride
+      concentration_mg_m3: 0.5-10
+      exposure_limit_mg_m3: 2.5
+      hazard_class: corrosive
+    particulate_generation:
+      respirable_fraction: 0.8
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Thermal damage possible on wood, plastic, or painted surfaces
+    - Reflective surfaces may redirect laser energy
+    - Moisture in substrate may cause steam explosion
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 0.4
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 300
+    heat_affected_zone_depth: 15
+    melting_point: null
+    specific_heat: 1200
+    thermal_conductivity: 0.2
+    thermal_diffusivity: 0.17
+    vaporization_temperature: 450
+valid_materials:
+- Concrete
+- Brick
+- Granite
+- Marble
+- Limestone
+- Sandstone
+- Basalt
+- Slate
+- Quartzite
+- Travertine
+- Bluestone
+- Soapstone
+- Aluminum
+- Steel
+- Stainless Steel
+- Cast Iron
+- Copper
+- Bronze
+- Brass
+- Titanium
+- Zinc
+- Nickel
+- Lead
+- Tin
+- Cobalt
+- Chromium

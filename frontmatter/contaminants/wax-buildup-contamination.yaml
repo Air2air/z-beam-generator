@@ -1,222 +1,221 @@
-metadata:
-  name: Wax Coating Buildup
-  slug: wax-buildup-contamination
-  category: organic-residue
-  subcategory: wax
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 3
-    name: Ikmanda Roswati
-    country: Indonesia
-    country_display: Indonesia
-    title: Ph.D.
-    sex: m
-    jobTitle: Junior Research Scientist in Laser Physics
-    expertise:
-    - Ultrafast Laser Physics and Material Interactions
-    affiliation:
-      name: Bandung Institute of Technology
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Physics, ITB, 2020
-    - 2+ years in ultrafast laser research including ASEAN optics workshops
-    - Assisted in international optics projects
-    languages:
-    - English
-    - Bahasa Indonesia
-    email: info@z-beam.com
-    image: /images/author/ikmanda-roswati.jpg
-    imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
-      Bandung Institute of Technology, fieldwork optics setup
-    url: https://z-beam.com/authors/ikmanda-roswati
-    sameAs:
-    - https://linkedin.com/in/ikmanda-roswati-physicist
-    - https://www.academia.edu/profile/IkmandaRoswati
-    persona_file: indonesia_persona.yaml
-    formatting_file: indonesia_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Ikmanda Roswati
-      author_country: Indonesia
-      voice_applied: true
-      content_type: contaminant
-  title: Wax Coating Buildup Contamination
-  contamination_description: Wax-buildup contamination arises from paraffin, carnauba,
-    and synthetic deposits in protective coatings and polishes, and it accumulates
-    layer by layer on surfaces. This buildup, hydrophobic and soft in texture, distinguishes
-    itself from greasy oils or dust by even spreading and resistance to solvents.
-    On metals such as steel and aluminum, it clings tightly yet vaporizes readily
-    under laser pulse, thus challenges like incomplete removal diminish, and laser
-    cleaning succeeds through precise ablation without substrate harm.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Organic-Residue
-    href: /contaminants/organic-residue
-  - label: Wax Coating Buildup
-    href: /contaminants/organic-residue/wax/wax-buildup-contamination
-  images:
-    hero:
-      url: /images/contamination/wax-buildup-contamination-hero.jpg
-      alt: Wax Coating Buildup contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/wax-buildup-contamination-micro.jpg
-      alt: Wax Coating Buildup contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 50
-      polarization: any
-      pulse_duration_range:
-        max_ns: 100
-        min_ns: 10
-        recommended_ns: 30
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.6
-      scan_speed_mm_s:
-        max: 5000
-        min: 500
-        recommended: 2000
-      spot_size_mm:
-        max: 0.2
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 120
-        wavelength_532nm: 2800
-      reflectivity:
-        wavelength_1064nm: 0.15
-        wavelength_355nm: 0.04
-        wavelength_532nm: 0.08
-      refractive_index:
-        imaginary_part: 0.002
-        real_part: 1.45
-      transmission_depth: 83
-    removal_characteristics:
-      byproducts:
-      - compound: hydrocarbons (CxHy)
-        hazard_level: moderate
-        phase: gas
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: carbon particulates
-        hazard_level: low
-        phase: solid
-      - compound: water vapor
-        hazard_level: low
-        phase: gas
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 480
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 3
-        optimal_passes: 2
-        single_pass: 0.85
-      secondary_mechanisms:
-      - thermal_decomposition
-      - vaporization
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: none
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Acetaldehyde
-        concentration_mg_m3: 5-50
-        exposure_limit_mg_m3: 25
-        hazard_class: irritant
-      - compound: Formaldehyde
-        concentration_mg_m3: 1-15
-        exposure_limit_mg_m3: 0.3
-        hazard_class: carcinogenic
-      - compound: Acrolein
-        concentration_mg_m3: 0.5-5
-        exposure_limit_mg_m3: 0.1
-        hazard_class: toxic
-      - compound: Benzene
-        concentration_mg_m3: 0.5-8
-        exposure_limit_mg_m3: 0.5
-        hazard_class: carcinogenic
-      - compound: Toluene
-        concentration_mg_m3: 2-20
-        exposure_limit_mg_m3: 20
-        hazard_class: toxic
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: full_face
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Thermal effects may damage underlying material
-      - Potential for surface discoloration or etching
-      - Reflective surfaces may create beam hazards
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: carbon
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 1.2
-        pulse_duration_10ns: 0.6
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 300
-      heat_affected_zone_depth: 15
-      melting_point: 60
-      specific_heat: 2500
-      thermal_conductivity: 0.25
-      thermal_diffusivity: 0.1
-      vaporization_temperature: 400
-  valid_materials:
-  - Aluminum
-  - Steel
-  - Stainless Steel
-  - Cast Iron
-  - Copper
-  - Bronze
-  - Brass
-  - Titanium
-  - Zinc
-  - Nickel
-  - Lead
-  - Tin
-  - Cobalt
-  - Chromium
-  - Oak
-  - Maple
-  - Cherry
-  - Walnut
-  - Pine
-  - Cedar
-  - Ash
-  - Birch
-  - Mahogany
-  - Teak
-  - Bamboo
-  - Fir
-  - Redwood
+name: Wax Coating Buildup
+slug: wax-buildup-contamination
+category: organic-residue
+subcategory: wax
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 3
+  name: Ikmanda Roswati
+  country: Indonesia
+  country_display: Indonesia
+  title: Ph.D.
+  sex: m
+  jobTitle: Junior Research Scientist in Laser Physics
+  expertise:
+  - Ultrafast Laser Physics and Material Interactions
+  affiliation:
+    name: Bandung Institute of Technology
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Physics, ITB, 2020
+  - 2+ years in ultrafast laser research including ASEAN optics workshops
+  - Assisted in international optics projects
+  languages:
+  - English
+  - Bahasa Indonesia
+  email: info@z-beam.com
+  image: /images/author/ikmanda-roswati.jpg
+  imageAlt: Ikmanda Roswati, Ph.D., Junior Research Scientist in Laser Physics at
+    Bandung Institute of Technology, fieldwork optics setup
+  url: https://z-beam.com/authors/ikmanda-roswati
+  sameAs:
+  - https://linkedin.com/in/ikmanda-roswati-physicist
+  - https://www.academia.edu/profile/IkmandaRoswati
+  persona_file: indonesia_persona.yaml
+  formatting_file: indonesia_formatting.yaml
+_metadata:
+  voice:
+    author_name: Ikmanda Roswati
+    author_country: Indonesia
+    voice_applied: true
+    content_type: contaminant
+title: Wax Coating Buildup Contamination
+contamination_description: Wax-buildup contamination arises from paraffin, carnauba,
+  and synthetic deposits in protective coatings and polishes, and it accumulates layer
+  by layer on surfaces. This buildup, hydrophobic and soft in texture, distinguishes
+  itself from greasy oils or dust by even spreading and resistance to solvents. On
+  metals such as steel and aluminum, it clings tightly yet vaporizes readily under
+  laser pulse, thus challenges like incomplete removal diminish, and laser cleaning
+  succeeds through precise ablation without substrate harm.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Organic-Residue
+  href: /contaminants/organic-residue
+- label: Wax Coating Buildup
+  href: /contaminants/organic-residue/wax/wax-buildup-contamination
+images:
+  hero:
+    url: /images/contaminants/wax-buildup-contamination-hero.jpg
+    alt: Wax Coating Buildup contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/wax-buildup-contamination-micro.jpg
+    alt: Wax Coating Buildup contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: any
+    pulse_duration_range:
+      max_ns: 100
+      min_ns: 10
+      recommended_ns: 30
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.6
+    scan_speed_mm_s:
+      max: 5000
+      min: 500
+      recommended: 2000
+    spot_size_mm:
+      max: 0.2
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 120
+      wavelength_532nm: 2800
+    reflectivity:
+      wavelength_1064nm: 0.15
+      wavelength_355nm: 0.04
+      wavelength_532nm: 0.08
+    refractive_index:
+      imaginary_part: 0.002
+      real_part: 1.45
+    transmission_depth: 83
+  removal_characteristics:
+    byproducts:
+    - compound: hydrocarbons (CxHy)
+      hazard_level: moderate
+      phase: gas
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: carbon particulates
+      hazard_level: low
+      phase: solid
+    - compound: water vapor
+      hazard_level: low
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 480
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.85
+    secondary_mechanisms:
+    - thermal_decomposition
+    - vaporization
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: none
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Acetaldehyde
+      concentration_mg_m3: 5-50
+      exposure_limit_mg_m3: 25
+      hazard_class: irritant
+    - compound: Formaldehyde
+      concentration_mg_m3: 1-15
+      exposure_limit_mg_m3: 0.3
+      hazard_class: carcinogenic
+    - compound: Acrolein
+      concentration_mg_m3: 0.5-5
+      exposure_limit_mg_m3: 0.1
+      hazard_class: toxic
+    - compound: Benzene
+      concentration_mg_m3: 0.5-8
+      exposure_limit_mg_m3: 0.5
+      hazard_class: carcinogenic
+    - compound: Toluene
+      concentration_mg_m3: 2-20
+      exposure_limit_mg_m3: 20
+      hazard_class: toxic
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: full_face
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Thermal effects may damage underlying material
+    - Potential for surface discoloration or etching
+    - Reflective surfaces may create beam hazards
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: carbon
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 1.2
+      pulse_duration_10ns: 0.6
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 300
+    heat_affected_zone_depth: 15
+    melting_point: 60
+    specific_heat: 2500
+    thermal_conductivity: 0.25
+    thermal_diffusivity: 0.1
+    vaporization_temperature: 400
+valid_materials:
+- Aluminum
+- Steel
+- Stainless Steel
+- Cast Iron
+- Copper
+- Bronze
+- Brass
+- Titanium
+- Zinc
+- Nickel
+- Lead
+- Tin
+- Cobalt
+- Chromium
+- Oak
+- Maple
+- Cherry
+- Walnut
+- Pine
+- Cedar
+- Ash
+- Birch
+- Mahogany
+- Teak
+- Bamboo
+- Fir
+- Redwood

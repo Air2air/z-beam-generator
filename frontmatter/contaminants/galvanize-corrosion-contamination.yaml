@@ -1,184 +1,183 @@
-metadata:
-  name: White Rust on Galvanized Steel
-  slug: galvanize-corrosion-contamination
-  category: oxidation
-  subcategory: ferrous
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 2
-    name: Alessandro Moretti
-    country: Italy
-    country_display: Italy
-    title: Ph.D.
-    sex: m
-    jobTitle: Materials Engineer
-    expertise:
-    - Laser-Based Additive Manufacturing
-    affiliation:
-      name: Politecnico di Milano's Materials Dept.
-      type: EducationalOrganization
-    alumniOf:
-      name: University of Bologna
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Science, TU Milano, 2015
-    - 5+ years industrial ceramics experience
-    - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
-    email: info@z-beam.com
-    image: /images/author/alessandro-moretti.jpg
-    imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
-      Materials Dept., in research lab
-    url: https://z-beam.com/authors/alessandro-moretti-phd
-    sameAs:
-    - https://scholar.google.com/citations?user=def456
-    - https://linkedin.com/in/alessandro-moretti-engineer
-    persona_file: italy_persona.yaml
-    formatting_file: italy_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Alessandro Moretti
-      author_country: Italy
-      voice_applied: true
-      content_type: contaminant
-  title: White Rust on Galvanized Steel Contamination
-  contamination_description: Galvanize-corrosion contamination, it manifests as zinc
-    carbonate and hydroxide layers on galvanized steel and zinc-coated metal, forming
-    through moisture exposure that initiates electrochemical reactions. This pattern,
-    it distinguishes itself from rust by its white, powdery tenacity, which adheres
-    more firmly, influenced from prolonged humidity, and behaves variably—persisting
-    tenaciously on zinc surfaces while exhibiting less grip on underlying steel. Key
-    removal challenges arise from its protective yet stubborn bond, yet laser cleaning
-    proves effective, as the process selectively ablates these layers without substrate
-    harm.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Oxidation
-    href: /contaminants/oxidation
-  - label: White Rust on Galvanized Steel
-    href: /contaminants/oxidation/ferrous/galvanize-corrosion-contamination
-  images:
-    hero:
-      url: /images/contamination/galvanize-corrosion-contamination-hero.jpg
-      alt: White Rust on Galvanized Steel contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/galvanize-corrosion-contamination-micro.jpg
-      alt: White Rust on Galvanized Steel contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 200
-        min_ns: 10
-        recommended_ns: 50
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 3000
-        min: 500
-        recommended: 1500
-      spot_size_mm:
-        max: 0.1
-        min: 0.03
-        recommended: 0.05
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 850
-        wavelength_532nm: 18500
-      reflectivity:
-        wavelength_1064nm: 0.65
-        wavelength_355nm: 0.08
-        wavelength_532nm: 0.35
-      refractive_index:
-        imaginary_part: 0.12
-        real_part: 1.85
-      transmission_depth: 5.4
-    removal_characteristics:
-      byproducts:
-      - compound: ZnO
-        hazard_level: moderate
-        phase: solid
-      - compound: Zn vapor
-        hazard_level: moderate
-        phase: gas
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      damage_risk_to_substrate: low
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 480
-        typical_scan_speed_mm_s: 800
-      removal_efficiency:
-        diminishing_returns_after: 3
-        optimal_passes: 2
-        single_pass: 0.85
-      secondary_mechanisms:
-      - thermal_decomposition
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'yes'
-        residual_stress: compressive
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Zinc Oxide (ZnO)
-        concentration_mg_m3: 5-25
-        exposure_limit_mg_m3: 5
-        hazard_class: irritant
-      - compound: Iron Oxide (Fe2O3)
-        concentration_mg_m3: 2-10
-        exposure_limit_mg_m3: 5
-        hazard_class: irritant
-      particulate_generation:
-        respirable_fraction: 0.7
-        size_range_um:
-        - 0.1
-        - 10
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: half_mask
-        skin_protection: gloves
-      substrate_compatibility_warnings:
-      - Laser cleaning may damage underlying zinc coating if parameters are not properly
-        controlled
-      - White rust removal may create surface etching if laser energy is too high
-      toxic_gas_risk: none
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5
-        filtration_type: HEPA
-        minimum_air_changes_per_hour: 10
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 2.5
-        pulse_duration_10ns: 1.2
-        wavelength_1064nm: 0.8
-      decomposition_temperature: 200
-      heat_affected_zone_depth: 15
-      melting_point: N/A
-      specific_heat: 900
-      thermal_conductivity: 0.5
-      thermal_diffusivity: 0.6
-      vaporization_temperature: 120
-  valid_materials:
-  - Galvanized Steel
-  - Zinc-Coated Metal
+name: White Rust on Galvanized Steel
+slug: galvanize-corrosion-contamination
+category: oxidation
+subcategory: ferrous
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 2
+  name: Alessandro Moretti
+  country: Italy
+  country_display: Italy
+  title: Ph.D.
+  sex: m
+  jobTitle: Materials Engineer
+  expertise:
+  - Laser-Based Additive Manufacturing
+  affiliation:
+    name: Politecnico di Milano's Materials Dept.
+    type: EducationalOrganization
+  alumniOf:
+    name: University of Bologna
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Science, TU Milano, 2015
+  - 5+ years industrial ceramics experience
+  - Assisted in EU Horizon 2020 laser additive projects, 2016-2019
+  email: info@z-beam.com
+  image: /images/author/alessandro-moretti.jpg
+  imageAlt: Alessandro Moretti, Ph.D., Materials Engineer at Politecnico di Milano's
+    Materials Dept., in research lab
+  url: https://z-beam.com/authors/alessandro-moretti-phd
+  sameAs:
+  - https://scholar.google.com/citations?user=def456
+  - https://linkedin.com/in/alessandro-moretti-engineer
+  persona_file: italy_persona.yaml
+  formatting_file: italy_formatting.yaml
+_metadata:
+  voice:
+    author_name: Alessandro Moretti
+    author_country: Italy
+    voice_applied: true
+    content_type: contaminant
+title: White Rust on Galvanized Steel Contamination
+contamination_description: Galvanize-corrosion contamination, it manifests as zinc
+  carbonate and hydroxide layers on galvanized steel and zinc-coated metal, forming
+  through moisture exposure that initiates electrochemical reactions. This pattern,
+  it distinguishes itself from rust by its white, powdery tenacity, which adheres
+  more firmly, influenced from prolonged humidity, and behaves variably—persisting
+  tenaciously on zinc surfaces while exhibiting less grip on underlying steel. Key
+  removal challenges arise from its protective yet stubborn bond, yet laser cleaning
+  proves effective, as the process selectively ablates these layers without substrate
+  harm.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Oxidation
+  href: /contaminants/oxidation
+- label: White Rust on Galvanized Steel
+  href: /contaminants/oxidation/ferrous/galvanize-corrosion-contamination
+images:
+  hero:
+    url: /images/contaminants/galvanize-corrosion-contamination-hero.jpg
+    alt: White Rust on Galvanized Steel contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/galvanize-corrosion-contamination-micro.jpg
+    alt: White Rust on Galvanized Steel contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 50
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 3000
+      min: 500
+      recommended: 1500
+    spot_size_mm:
+      max: 0.1
+      min: 0.03
+      recommended: 0.05
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 850
+      wavelength_532nm: 18500
+    reflectivity:
+      wavelength_1064nm: 0.65
+      wavelength_355nm: 0.08
+      wavelength_532nm: 0.35
+    refractive_index:
+      imaginary_part: 0.12
+      real_part: 1.85
+    transmission_depth: 5.4
+  removal_characteristics:
+    byproducts:
+    - compound: ZnO
+      hazard_level: moderate
+      phase: solid
+    - compound: Zn vapor
+      hazard_level: moderate
+      phase: gas
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    damage_risk_to_substrate: low
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 480
+      typical_scan_speed_mm_s: 800
+    removal_efficiency:
+      diminishing_returns_after: 3
+      optimal_passes: 2
+      single_pass: 0.85
+    secondary_mechanisms:
+    - thermal_decomposition
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'yes'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Zinc Oxide (ZnO)
+      concentration_mg_m3: 5-25
+      exposure_limit_mg_m3: 5
+      hazard_class: irritant
+    - compound: Iron Oxide (Fe2O3)
+      concentration_mg_m3: 2-10
+      exposure_limit_mg_m3: 5
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.7
+      size_range_um:
+      - 0.1
+      - 10
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: half_mask
+      skin_protection: gloves
+    substrate_compatibility_warnings:
+    - Laser cleaning may damage underlying zinc coating if parameters are not properly
+      controlled
+    - White rust removal may create surface etching if laser energy is too high
+    toxic_gas_risk: none
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 10
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 2.5
+      pulse_duration_10ns: 1.2
+      wavelength_1064nm: 0.8
+    decomposition_temperature: 200
+    heat_affected_zone_depth: 15
+    melting_point: N/A
+    specific_heat: 900
+    thermal_conductivity: 0.5
+    thermal_diffusivity: 0.6
+    vaporization_temperature: 120
+valid_materials:
+- Galvanized Steel
+- Zinc-Coated Metal

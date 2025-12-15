@@ -1,209 +1,208 @@
-metadata:
-  name: Lead-Based Paint Removal
-  slug: lead-paint-contamination
-  category: inorganic-coating
-  subcategory: paint
-  content_type: unified_contamination
-  schema_version: 4.0.0
-  datePublished: null
-  dateModified: null
-  author:
-    id: 1
-    name: Yi-Chun Lin
-    country: Taiwan
-    country_display: Taiwan
-    title: Ph.D.
-    sex: f
-    jobTitle: Laser Processing Engineer
-    expertise:
-    - Laser Materials Processing
-    affiliation:
-      name: National Taiwan University
-      type: EducationalOrganization
-    credentials:
-    - Ph.D. Materials Engineering, National Taiwan University, 2018
-    - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
-    - 3+ years in laser processing R&D
-    - Assisted in projects on ultrafast laser applications
-    email: info@z-beam.com
-    image: /images/author/yi-chun-lin.jpg
-    imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
-      in lab setting
-    url: https://z-beam.com/authors/yi-chun-lin
-    sameAs:
-    - https://scholar.google.com/citations?user=ghi789
-    - https://linkedin.com/in/yi-chun-lin-engineer
-    - https://www.researchgate.net/profile/Yi-Chun-Lin-2
-    persona_file: taiwan_persona.yaml
-    formatting_file: taiwan_formatting.yaml
-  _metadata:
-    voice:
-      author_name: Yi-Chun Lin
-      author_country: Taiwan
-      voice_applied: true
-      content_type: contaminant
-  title: Lead-Based Paint Removal Contamination
-  contamination_description: Lead paint contamination consists of hazardous layers
-    from old coatings in historic structures, and it forms through repeated exposure
-    to environmental elements that bind toxic lead particles to surfaces. This differs
-    from other paints because lead creates dense, adherent films that resist flaking
-    and release harmful dust during disturbance, so removal challenges include avoiding
-    inhalation risks and substrate damage on materials like steel or oak. Laser cleaning
-    proves effective since precise pulses ablate the paint selectively, so it preserves
-    underlying concrete or wood without chemical residues.
-  breadcrumb:
-  - label: Home
-    href: /
-  - label: Contaminants
-    href: /contaminants
-  - label: Inorganic-Coating
-    href: /contaminants/inorganic-coating
-  - label: Lead-Based Paint Removal
-    href: /contaminants/inorganic-coating/paint/lead-paint-contamination
-  images:
-    hero:
-      url: /images/contamination/lead-paint-contamination-hero.jpg
-      alt: Lead-Based Paint Removal contamination on surface before laser cleaning
-    micro:
-      url: /images/contamination/lead-paint-contamination-micro.jpg
-      alt: Lead-Based Paint Removal contamination microscopic detail
-  laser_properties:
-    laser_parameters:
-      beam_profile: flat_top
-      fluence_range:
-        max_j_cm2: 1.2
-        min_j_cm2: 0.3
-        recommended_j_cm2: 0.8
-      overlap_percentage: 50
-      polarization: circular
-      pulse_duration_range:
-        max_ns: 200
-        min_ns: 10
-        recommended_ns: 100
-      repetition_rate_khz:
-        max: 200
-        min: 20
-        recommended: 50
-      safety_margin_factor: 0.7
-      scan_speed_mm_s:
-        max: 2000
-        min: 500
-        recommended: 1000
-      spot_size_mm:
-        max: 0.3
-        min: 0.05
-        recommended: 0.1
-      wavelength_preference:
-      - 1064
-      - 532
-    optical_properties:
-      absorption_coefficient:
-        wavelength_1064nm: 850
-        wavelength_355nm: 18500
-        wavelength_532nm: 4200
-      reflectivity:
-        wavelength_1064nm: 0.45
-        wavelength_355nm: 0.12
-        wavelength_532nm: 0.28
-      refractive_index:
-        imaginary_part: 0.08
-        real_part: 1.65
-      transmission_depth: 11.8
-    removal_characteristics:
-      byproducts:
-      - compound: PbO
-        hazard_level: high
-        phase: gas
-      - compound: Pb
-        hazard_level: high
-        phase: gas
-      - compound: CO2
-        hazard_level: low
-        phase: gas
-      - compound: H2O
-        hazard_level: low
-        phase: gas
-      - compound: Pb-containing particulates
-        hazard_level: high
-        phase: solid
-      damage_risk_to_substrate: medium
-      primary_mechanism: thermal_ablation
-      process_speed:
-        area_coverage_rate_cm2_min: 1200
-        typical_scan_speed_mm_s: 500
-      removal_efficiency:
-        diminishing_returns_after: 4
-        optimal_passes: 3
-        single_pass: 0.85
-      secondary_mechanisms:
-      - photochemical
-      - mechanical_spallation
-      surface_quality_after_removal:
-        color_change: 'no'
-        residual_stress: compressive
-        roughness_increase: minimal
-    safety_data:
-      fire_explosion_risk: low
-      fumes_generated:
-      - compound: Lead Oxide (PbO)
-        concentration_mg_m3: 0.5-5.0
-        exposure_limit_mg_m3: 0.05
-        hazard_class: toxic
-      - compound: Carbon Monoxide
-        concentration_mg_m3: 10-50
-        exposure_limit_mg_m3: 29
-        hazard_class: toxic
-      - compound: Carbon Dioxide
-        concentration_mg_m3: 500-2000
-        exposure_limit_mg_m3: 9000
-        hazard_class: irritant
-      - compound: Various Hydrocarbons
-        concentration_mg_m3: 5-20
-        exposure_limit_mg_m3: 100
-        hazard_class: irritant
-      particulate_generation:
-        respirable_fraction: 0.8
-        size_range_um:
-        - 0.1
-        - 10.0
-      ppe_requirements:
-        eye_protection: goggles
-        respiratory: PAPR
-        skin_protection: full_suit
-      substrate_compatibility_warnings:
-      - May generate toxic hexavalent chromium if removing lead chromate paints
-      - Can create lead dust on surrounding surfaces requiring cleanup
-      - Thermal stress may damage underlying substrate
-      toxic_gas_risk: moderate
-      ventilation_requirements:
-        exhaust_velocity_m_s: 0.5-1.0
-        filtration_type: HEPA
-        minimum_air_changes_per_hour: 12
-      visibility_hazard: moderate
-    thermal_properties:
-      ablation_threshold:
-        pulse_duration_100ns: 3.5
-        pulse_duration_10ns: 2.1
-        wavelength_1064nm: 1.8
-      decomposition_temperature: 400
-      heat_affected_zone_depth: 25
-      melting_point: 327
-      specific_heat: 1300
-      thermal_conductivity: 0.8
-      thermal_diffusivity: 0.6
-      vaporization_temperature: 650
-  valid_materials:
-  - Steel
-  - Concrete
-  - Oak
-  - Maple
-  - Cherry
-  - Walnut
-  - Pine
-  - Cedar
-  - Ash
-  - Birch
-  - Mahogany
-  - Teak
-  - Bamboo
-  - Fir
+name: Lead-Based Paint Removal
+slug: lead-paint-contamination
+category: inorganic-coating
+subcategory: paint
+content_type: unified_contamination
+schema_version: 4.0.0
+datePublished: null
+dateModified: null
+author:
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
+  country_display: Taiwan
+  title: Ph.D.
+  sex: f
+  jobTitle: Laser Processing Engineer
+  expertise:
+  - Laser Materials Processing
+  affiliation:
+    name: National Taiwan University
+    type: EducationalOrganization
+  credentials:
+  - Ph.D. Materials Engineering, National Taiwan University, 2018
+  - Post-Ph.D. fellowship at TSMC's laser fab lab, 2018-2020
+  - 3+ years in laser processing R&D
+  - Assisted in projects on ultrafast laser applications
+  email: info@z-beam.com
+  image: /images/author/yi-chun-lin.jpg
+  imageAlt: Yi-Chun Lin, Ph.D., Laser Processing Engineer at National Taiwan University,
+    in lab setting
+  url: https://z-beam.com/authors/yi-chun-lin
+  sameAs:
+  - https://scholar.google.com/citations?user=ghi789
+  - https://linkedin.com/in/yi-chun-lin-engineer
+  - https://www.researchgate.net/profile/Yi-Chun-Lin-2
+  persona_file: taiwan_persona.yaml
+  formatting_file: taiwan_formatting.yaml
+_metadata:
+  voice:
+    author_name: Yi-Chun Lin
+    author_country: Taiwan
+    voice_applied: true
+    content_type: contaminant
+title: Lead-Based Paint Removal Contamination
+contamination_description: Lead paint contamination consists of hazardous layers from
+  old coatings in historic structures, and it forms through repeated exposure to environmental
+  elements that bind toxic lead particles to surfaces. This differs from other paints
+  because lead creates dense, adherent films that resist flaking and release harmful
+  dust during disturbance, so removal challenges include avoiding inhalation risks
+  and substrate damage on materials like steel or oak. Laser cleaning proves effective
+  since precise pulses ablate the paint selectively, so it preserves underlying concrete
+  or wood without chemical residues.
+breadcrumb:
+- label: Home
+  href: /
+- label: Contaminants
+  href: /contaminants
+- label: Inorganic-Coating
+  href: /contaminants/inorganic-coating
+- label: Lead-Based Paint Removal
+  href: /contaminants/inorganic-coating/paint/lead-paint-contamination
+images:
+  hero:
+    url: /images/contaminants/lead-paint-contamination-hero.jpg
+    alt: Lead-Based Paint Removal contamination on surface before laser cleaning
+  micro:
+    url: /images/contaminants/lead-paint-contamination-micro.jpg
+    alt: Lead-Based Paint Removal contamination microscopic detail
+laser_properties:
+  laser_parameters:
+    beam_profile: flat_top
+    fluence_range:
+      max_j_cm2: 1.2
+      min_j_cm2: 0.3
+      recommended_j_cm2: 0.8
+    overlap_percentage: 50
+    polarization: circular
+    pulse_duration_range:
+      max_ns: 200
+      min_ns: 10
+      recommended_ns: 100
+    repetition_rate_khz:
+      max: 200
+      min: 20
+      recommended: 50
+    safety_margin_factor: 0.7
+    scan_speed_mm_s:
+      max: 2000
+      min: 500
+      recommended: 1000
+    spot_size_mm:
+      max: 0.3
+      min: 0.05
+      recommended: 0.1
+    wavelength_preference:
+    - 1064
+    - 532
+  optical_properties:
+    absorption_coefficient:
+      wavelength_1064nm: 850
+      wavelength_355nm: 18500
+      wavelength_532nm: 4200
+    reflectivity:
+      wavelength_1064nm: 0.45
+      wavelength_355nm: 0.12
+      wavelength_532nm: 0.28
+    refractive_index:
+      imaginary_part: 0.08
+      real_part: 1.65
+    transmission_depth: 11.8
+  removal_characteristics:
+    byproducts:
+    - compound: PbO
+      hazard_level: high
+      phase: gas
+    - compound: Pb
+      hazard_level: high
+      phase: gas
+    - compound: CO2
+      hazard_level: low
+      phase: gas
+    - compound: H2O
+      hazard_level: low
+      phase: gas
+    - compound: Pb-containing particulates
+      hazard_level: high
+      phase: solid
+    damage_risk_to_substrate: medium
+    primary_mechanism: thermal_ablation
+    process_speed:
+      area_coverage_rate_cm2_min: 1200
+      typical_scan_speed_mm_s: 500
+    removal_efficiency:
+      diminishing_returns_after: 4
+      optimal_passes: 3
+      single_pass: 0.85
+    secondary_mechanisms:
+    - photochemical
+    - mechanical_spallation
+    surface_quality_after_removal:
+      color_change: 'no'
+      residual_stress: compressive
+      roughness_increase: minimal
+  safety_data:
+    fire_explosion_risk: low
+    fumes_generated:
+    - compound: Lead Oxide (PbO)
+      concentration_mg_m3: 0.5-5.0
+      exposure_limit_mg_m3: 0.05
+      hazard_class: toxic
+    - compound: Carbon Monoxide
+      concentration_mg_m3: 10-50
+      exposure_limit_mg_m3: 29
+      hazard_class: toxic
+    - compound: Carbon Dioxide
+      concentration_mg_m3: 500-2000
+      exposure_limit_mg_m3: 9000
+      hazard_class: irritant
+    - compound: Various Hydrocarbons
+      concentration_mg_m3: 5-20
+      exposure_limit_mg_m3: 100
+      hazard_class: irritant
+    particulate_generation:
+      respirable_fraction: 0.8
+      size_range_um:
+      - 0.1
+      - 10.0
+    ppe_requirements:
+      eye_protection: goggles
+      respiratory: PAPR
+      skin_protection: full_suit
+    substrate_compatibility_warnings:
+    - May generate toxic hexavalent chromium if removing lead chromate paints
+    - Can create lead dust on surrounding surfaces requiring cleanup
+    - Thermal stress may damage underlying substrate
+    toxic_gas_risk: moderate
+    ventilation_requirements:
+      exhaust_velocity_m_s: 0.5-1.0
+      filtration_type: HEPA
+      minimum_air_changes_per_hour: 12
+    visibility_hazard: moderate
+  thermal_properties:
+    ablation_threshold:
+      pulse_duration_100ns: 3.5
+      pulse_duration_10ns: 2.1
+      wavelength_1064nm: 1.8
+    decomposition_temperature: 400
+    heat_affected_zone_depth: 25
+    melting_point: 327
+    specific_heat: 1300
+    thermal_conductivity: 0.8
+    thermal_diffusivity: 0.6
+    vaporization_temperature: 650
+valid_materials:
+- Steel
+- Concrete
+- Oak
+- Maple
+- Cherry
+- Walnut
+- Pine
+- Cedar
+- Ash
+- Birch
+- Mahogany
+- Teak
+- Bamboo
+- Fir
