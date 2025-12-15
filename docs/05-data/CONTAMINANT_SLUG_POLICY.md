@@ -63,9 +63,59 @@ def _create_slug(self, name: str) -> str:
 ```yaml
 name: Industrial Oil
 slug: industrial-oil-contamination  # MUST have -contamination suffix
-category: contamination
+category: organic_residue            # REQUIRED: One of 8 main categories
+subcategory: hydrocarbons           # REQUIRED: Valid subcategory for category
 # ... other fields
 ```
+
+---
+
+## Category Requirements 🔥 **MANDATORY (Dec 14, 2025)**
+
+**ALL contaminants MUST have both `category` and `subcategory` fields.**
+
+### Required Fields
+- **category**: One of 8 allowed main categories (see schema.yaml)
+- **subcategory**: Valid subcategory for the specified category
+
+### 8 Main Categories
+1. **oxidation** - Rust, tarnish, patina, corrosion
+2. **organic_residue** - Oils, greases, waxes, adhesives
+3. **inorganic_coating** - Dust, dirt, mineral deposits, concrete
+4. **metallic_coating** - Plating, metallic paints, metal deposits
+5. **thermal_damage** - Heat discoloration, burn marks, charring
+6. **biological** - Mold, algae, biofilms, organic growth
+7. **chemical_residue** - Chemical stains, etchants, process residues
+8. **aging** - General weathering and degradation
+
+### Fail-Fast Enforcement
+**File**: `export/contaminants/trivial_exporter.py`  
+**Lines**: 198-213
+
+The exporter will **raise ValueError** if category or subcategory is missing:
+
+```python
+# Validate required categorization fields
+if 'category' not in pattern or not pattern['category']:
+    raise ValueError(
+        f"Contamination pattern '{pattern_id}' missing required 'category' field. "
+        f"All contaminants must have a category."
+    )
+
+if 'subcategory' not in pattern or not pattern['subcategory']:
+    raise ValueError(
+        f"Contamination pattern '{pattern_id}' missing required 'subcategory' field. "
+        f"All contaminants must have a subcategory."
+    )
+```
+
+**Result**: System will NOT export contaminants with missing categories. This ensures 100% data quality.
+
+### Schema Documentation
+See `domains/contaminants/schema.yaml` for complete list of:
+- Allowed categories (8 total)
+- Allowed subcategories by category (27 total)
+- Subcategory descriptions and examples
 
 ---
 
@@ -73,14 +123,16 @@ category: contamination
 
 ### Full URL Path
 ```
-/contamination/{category}/{slug}
+/contaminants/{slug}
 ```
+
+**Note**: Flat structure - no category subdirectories (as of Dec 14, 2025)
 
 ### Examples
 ```
-/contamination/hydrocarbons/industrial-oil-contamination
-/contamination/corrosion/rust-formation-contamination
-/contamination/adhesives/adhesive-residue-contamination
+/contaminants/industrial-oil-contamination
+/contaminants/rust-formation-contamination
+/contaminants/adhesive-residue-contamination
 ```
 
 ### Breadcrumb Navigation
@@ -88,12 +140,10 @@ category: contamination
 breadcrumb:
   - label: Home
     href: /
-  - label: Contamination
-    href: /contamination
-  - label: Hydrocarbons
-    href: /contamination/hydrocarbons
+  - label: Contaminants
+    href: /contaminants
   - label: Industrial Oil Contamination
-    href: /contamination/hydrocarbons/industrial-oil-contamination
+    href: /contaminants/industrial-oil-contamination
 ```
 
 ---
@@ -222,14 +272,18 @@ When adding a new contamination pattern:
 
 - [ ] Pattern ID in Contaminants.yaml (e.g., `industrial-oil`)
 - [ ] Name field (e.g., `Industrial Oil`)
+- [ ] **Category field** (e.g., `organic_residue`) - **REQUIRED** ✅
+- [ ] **Subcategory field** (e.g., `hydrocarbons`) - **REQUIRED** ✅
+- [ ] Category/subcategory validated against schema.yaml ✅
 - [ ] Exporter generates slug: `industrial-oil-contamination` ✅
 - [ ] Frontmatter file created: `industrial-oil-contamination.yaml` ✅
 - [ ] Breadcrumb includes full slug ✅
 - [ ] Images use full slug in URLs ✅
 - [ ] Tests verify suffix presence ✅
+- [ ] Tests verify category/subcategory presence ✅
 
 ---
 
 **Last Updated**: December 14, 2025  
 **Policy Status**: MANDATORY - No exceptions  
-**Compliance**: 100% (99/99 contaminants)
+**Compliance**: 100% (98/98 contaminants with category/subcategory)

@@ -1,21 +1,84 @@
 # Contaminants Domain Schema
 # Defines contamination patterns and material compatibility rules
 
-schema_version: "1.0.0"
-last_updated: "2025-11-25"
+schema_version: "2.0.0"
+last_updated: "2025-12-14"
+
+# ============================================================================
+# CATEGORIZATION SYSTEM
+# ============================================================================
+# All contamination patterns MUST have category and subcategory fields
+# Categories organize patterns by contamination type for navigation and filtering
+
+allowed_categories:
+  - oxidation           # Rust, corrosion, tarnish, patina
+  - organic_residue     # Oils, adhesives, polymers, biological fluids
+  - inorganic_coating   # Paint, ceramic, mineral deposits
+  - metallic_coating    # Plating, anodizing
+  - thermal_damage      # Scale, fire damage, heat treatment
+  - biological          # Mold, algae, growth, biofilms
+  - chemical_residue    # Hazardous materials, industrial chemicals
+  - aging               # Weathering, photodegradation
+
+allowed_subcategories:
+  oxidation:
+    - ferrous           # Iron rust, steel corrosion
+    - non-ferrous       # Aluminum, copper, bronze oxidation
+    - battery           # Battery acid corrosion
+  
+  organic_residue:
+    - petroleum         # Oils, grease, fuel, tar
+    - adhesive          # Tape marks, epoxy, sealants
+    - polymer           # Plastics, rubber, PTFE
+    - biological_fluid  # Hydraulic fluid, brake dust, coolant
+    - wax               # Polish, wax buildup
+    - marking           # Ink, graphite, laser marks
+    - lubricant         # Anti-seize, flux
+    - cleaning_agent    # Soap scum, detergent
+    - natural           # Tree sap, resin
+    - other             # Miscellaneous organic contamination
+  
+  inorganic_coating:
+    - paint             # Paint, graffiti, primer
+    - ceramic           # Ceramic coatings, glaze
+    - mineral           # Lime scale, efflorescence, salt
+    - coating           # Conversion coating, PVD, diamond-like carbon
+    - hazardous         # Asbestos, lead paint
+  
+  metallic_coating:
+    - plating           # Electroplating (gold, silver, nickel, etc.)
+    - anodizing         # Anodizing layer defects
+  
+  thermal_damage:
+    - scale             # Heat treatment scale, mineral deposits
+    - fire              # Fire damage, smoke, exhaust
+    - coating           # Thermal spray, coolant residue
+  
+  biological:
+    - growth            # Mold, algae, lichen, fungal
+    - deposit           # Biofilms, blood, insect residue, pollen
+  
+  chemical_residue:
+    - hazardous         # Radioactive, mercury, beryllium, uranium
+    - industrial        # PCB, pharmaceutical, semiconductor, pesticide
+  
+  aging:
+    - photodegradation  # UV chalking, weathering
 
 # ============================================================================
 # CONTAMINATION PATTERNS
 # ============================================================================
 # Each pattern defines a type of contamination with its physical/chemical basis
+# NOTE: Pattern IDs use kebab-case (e.g., rust-oxidation, not rust_oxidation)
 
 contamination_patterns:
   
-  rust_oxidation:
-    id: "rust_oxidation"
+  rust-oxidation:
+    pattern_id: "rust-oxidation"
     name: "Rust / Iron Oxide Formation"
     scientific_name: "Iron(III) oxide (Fe₂O₃)"
-    category: "oxidation"
+    category: "oxidation"              # REQUIRED: One of allowed_categories
+    subcategory: "ferrous"             # REQUIRED: Must match category's allowed subcategories
     
     description: "Reddish-brown iron oxide formed through oxidation of ferrous metals in presence of oxygen and moisture"
     
@@ -66,11 +129,12 @@ contamination_patterns:
     
     realism_notes: "Rust ONLY occurs on ferrous metals containing iron. Non-ferrous metals undergo different forms of oxidation (patina, tarnish, but NOT rust)."
   
-  copper_patina:
-    id: "copper_patina"
+  copper-patina:
+    pattern_id: "copper-patina"
     name: "Copper Patina / Verdigris"
     scientific_name: "Copper carbonate (Cu₂CO₃(OH)₂)"
-    category: "oxidation"
+    category: "oxidation"              # REQUIRED
+    subcategory: "non-ferrous"         # REQUIRED
     
     description: "Green to blue-green copper carbonate layer formed on copper-containing metals through weathering"
     
